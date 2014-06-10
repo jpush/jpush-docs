@@ -52,3 +52,9 @@ coverage.xml
 # Sphinx documentation
 docs/_build/
 
+# docs
+site/
+zh/site/
+en/site/
+
+
