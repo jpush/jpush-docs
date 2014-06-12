@@ -57,4 +57,11 @@ site/
 zh/site/
 en/site/
 
+*.pdf
+_book/
+.DS_Store
+zh/.DS_Store
+en/.DS_Store
+
+
 
