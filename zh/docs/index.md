@@ -41,11 +41,8 @@
 
 [API调试指南](server_apis/api_debug_guide/)
 
-[HTTP-Status-Code](server_apis/http_status_code/)
+[HTTP-Status-Code](server_pais/http_status_code)
 
-[App-Create-API](server_apis/app_create_api/)
-
-[Report-API-v3](server_apis/report_api_v3/)
 
 ## 最佳实践
 [高级应用场景](best_practice/advanced_scene/)
