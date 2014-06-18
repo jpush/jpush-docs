@@ -14,8 +14,9 @@
 
 [iOS SDK 集成指南](dev_guides/ios_guide/)
 
-[示例与代码 集成指南](dev_guides/sample_code/)
+[Windows Phone SDK 集成指南](dev_guides/winphone_guide/)
 
+[示例与代码 集成指南](dev_guides/sample_code/)
 ## 客户端SDK
 
 [Android SDK](client_sdks/android_sdk/)
@@ -56,6 +57,8 @@
 [已知BUG](best_practice/known_bug/)
 
 ##更多
+[最近更新](more/contact_us/)
+
 [极光推送SDK 使用许可协议](more/use_license/)
 
 [统计与报表说明](more/statistical_report/)
