@@ -39,9 +39,9 @@
 #### 1、在JPush Portal上创建应用
 
 + 在JPush的管理Portal上 上传证书并创建应用。如果对APNs证书不太了解 请参考 iOS 证书设置指南
-![](create_ios_app.png)
+![](image/create_ios_app.png)
 + 创建成功后自动生成 AppKey 用以标识该应用。
-![](Screenshot_13-4_2_create.png)
+![](image/Screenshot_13-4_2_create.png)
 
 #### 2、导入API开发包到应用程序项目
 

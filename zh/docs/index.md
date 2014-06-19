@@ -14,8 +14,9 @@
 
 [iOS SDK 集成指南](dev_guides/ios_guide/)
 
-
 [Windows Phone SDK 集成指南](dev_guides/winphone_guide/)
+
+[示例与代码 集成指南](dev_guides/sample_code/)
 
 ## 客户端SDK
 
