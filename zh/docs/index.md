@@ -39,6 +39,7 @@
 
 [Windows Phone SDK API](client_sdks/winphone_api/)
 
+[Rich Push 开发指南](client_sdks/rich_push/)
 
 [Clinet Plugin](client_sdks/winphone_sdk/)
 
