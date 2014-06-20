@@ -10,17 +10,35 @@ pages:
 - [dev_guides/android_3m.md, 开发指南, 3 分钟快速集成 JPush Android SDK]
 - [dev_guides/sample_code.md, 开发指南, 示例与代码集成指南]
 
-- [client_sdks/android_sdk.md, 客户端SDK, Andorid SDK]
 - [client_sdks/android_tutorials.md, 客户端SDK, Andorid SDK 教程]
-- [client_sdks/ios_sdk.md, 客户端SDK, iOS SDK]
+- [client_sdks/android_sdk.md, 客户端SDK, Andorid SDK]
+- [client_sdks/android_api.md, 客户端SDK, Andorid SDK API]
 - [client_sdks/ios_tutorials.md, 客户端SDK, iOS SDK 教程]
-- [client_sdks/winphone_sdk.md, 客户端SDK, WinPhone SDK]
+- [client_sdks/ios_sdk.md, 客户端SDK, iOS SDK]
+- [client_sdks/ios_api.md, 客户端SDK, iOS SDK API]
 - [client_sdks/winphone_tutorials.md, 客户端SDK, WinPhone SDK 教程]
+- [client_sdks/winphone_sdk.md, 客户端SDK, WinPhone SDK]
+- [client_sdks/winphone_api.md, 客户端SDK, WinPhone SDK API]
 - [client_sdks/client_plugins.md, 客户端SDK, 客户端集成插件]
+
 - [server_apis/server_sdks.md, REST API, 服务器端SDK]
 - [server_apis/push_api_v3.md, REST API, Push API v3]
-- [server_apis/push_api_v2.md, REST API, Push API v3]
-- [server_apis/report_api_v3.md, REST API, Report API v3]
+- [server_apis/push_api_v2.md, REST API, Push API v2]
+- [server_apis/report_api.md, REST API, Report API]
 - [server_apis/api_rate_limiting.md, REST API, API 频率控制]
+- [server_apis/api_debug_guide.md, REST API, API调试指南]
+- [server_apis/http_status_code.md, REST API, HTTP-Status-Code]
+
 - [updates.md, 最近更新]
 - [resouces.md, 资源下载]
+
+- [best_practice/advanced_scene.md, 最佳实践,高级应用场景]
+- [best_practice/advanced_subject.md, 最佳实践,高级话题]
+
+
+- [use_license.md, 使用许可协议]
+
+- [more/statistical_report.md, 更多,统计与报表说明]
+- [more/known_bug.md, 更多,已知BUG]
+- [more/contact_us.md, 更多,联系我们]
+
