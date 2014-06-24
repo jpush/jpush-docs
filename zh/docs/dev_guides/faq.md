@@ -109,13 +109,212 @@ Portal上不会限制推送消息的数量。
 + 对于 Android 还可以使用 IMEI 来推送。由于有很多 Android 设备取不到 IMEI，所以我们建议根据 IMEI 推送仅用于测试目的。
 
 
+
 ## Android 常见问题
 
-[Android 常见问题](../android_guide)
+### 为什么应用程序无法收到 Push 消息（Android）？
++ 确认 appKey（在Portal上生成的）已经正确的写入 Androidmanifest.xml
++ 确认测试手机（或者模拟器）已成功连入网络
++ 确认有客户端 "Login succeed" 日志
+
+详情请参考教程：[Android SDK 调试指南。]()
+
+### Java.lang.UnsatisfiedLinkError
+
+![](../image/error.jpg)
+
+此错误是由于没有正确的加载libjpush.so文件，请检查libjpush.so是否在正确的位置(libs–>armeabi–>libjpush.so)
+
+
+如果您的项目有libs/armeabi-v7a这个目录，请把libjpush.so也复制一份到这个目录。
+
+如果您的应用需要支持 x86、mips 架构的CPU 需要下载对应的SDK，下载路径：[http://docs.jpush.cn/display/dev/Android](http://docs.jpush.cn/display/dev/Android) 
+
+![](../image/dictionary_path.png)
+
+### The permission should be defined 
+
+![](../image/permission.jpg)
+
+	<permission android:name="您应用的包名.permission.JPUSH_MESSAGE" android:protectionLevel="signature" />
+	<uses-permission android:name="您应用的包名.permission.JPUSH_MESSAGE" />
+	
+### 如何在代码时混淆忽略 jpush-sdk-release.jar？
+
++ 请下载最新的[proguard.jar](http://sourceforge.net/projects/proguard/files/)， 并替换你Android Sdk "tools\proguard\lib\proguard.jar"
+
++ 在你的proguard.cfg加上代码：如果是使用新版本的ADT 将project.properties的中“# proguard.config=${sdk.dir}/tools/proguard/proguard-android.txt:proguard-project.txt”的“#”注释去掉，然后在proguard-android.txt中配置
+
+		-dontwarn cn.jpush.**
+		-keep class cn.jpush.** { *; }
+		
++ 请使用 SDK1.3.X 及以后的版本
+
+### 推送成功了，为什么有部分客户端收不到推送？
+
+请检查收不到通知的手机：
+
++ 请在logcat查看日志，确定客户端的jpush是否集成成功，网络是否有问题
++ 请看日志或使用接口 isPushStopped来检查是否调用了stoppush
++ 检查手机的JPush高级设置中是否设置了“允许推送时间”
++ 手机的应用中是否勾选了“显示通知”
+
+### MIUI 系统或小米手机收不到推送通知
+
+由于第三方 ROM 的管理软件需要用户手动操作
+
++ 自启动管理：默认情况下，手机开机后，只有系统默认的服务可以启动起来。除非在自启动管理界面，设置允许第三方程序自启动。
++ 网络助手：可以手动禁止已安装的第三方程序访问2G/3G和WIFI的网络和设置以后新安装程序是否允许访问2G/3G和WIFI的网络。
+
+### Tag、Alias、Registrationid需要每次初始化时都重新设置吗，会变化吗？
+
++ tag、alias可以参考别名与标签 API进行设置，每次设置是覆盖设置，而不是增量设置。Tag和alias一经设置成功，除非取消或覆盖，是不会变化的。设置好的tag、alias与客户端的对应关系保存在Jpush服务器，目前没有从JPush服务器查询这个对应关系的接口，所以需要客户将对应关系保存在APP应用服务器。
+
++ Registrationid是客户端SDK第一次成功连接到Jpush服务器时，Jpush服务器给分配的。可以通过获取 RegistrationID API来获取Registrationid进行推送。Registrationid对应一个应用的一个客户端。
+
+### 没有沙箱API怎么测试？
+
+ 直接用JPush的api测试就行。
+
+### 其他国家能否使用极光推送（局域网能否使用极光推送）？
+
+ 只要能连网到Jpush服务器都可以。判断能否联网到Jpush服务器的方法：ping通 api.jpush.cn 8800
+
+
+### 用设置的标签或别名推送，出现下面提示：
+
+![](../image/none_target.png)
+
+这可能有两种情况：
+
++ SDK没有集成成功，客户端有 "Login succeed" 日志才表示SDK集成成功。
++ 设置别名或标签失败，请调用带返回值的函数Method - setAliasAndTags (with Callback)来设置标签或别名，同时参考错误码定义来修改直到设置成功返回0.
+
+### 可以打开 www.jpush.cn，但打不开docs，提示无法找到docs.jpush.cn
+
++ 提示客户换个浏览器试试
++ 如果还是不行，执行下面的命令反馈结果排查一下问题
+	1. ping docs.jpush.cn
+	2. nslookup docs.jpush.cn
+	3. telnet docs.jpush.cn
+	4. 提供一下自己机器访问外网其他网站是否正常
+
+### appkey是怎么对应的？
+
+android的包名和appkey需对应。
+
+### 内网使用极光推送应该怎么设置？
+
+内网使用极光推送需要服务器开放下列端口限制，用于JPush的登录注册及保持推送长链接：   
+
++ 19000
++ 3000-3020
 
 ## iOS 常见问题
 
-[iOS 常见问题](../ios_guide)
+### 为什么iOS收不到推送消息？
+
+如果你确认 appKey 在 SDK 客户端与 Portal 上设置是一致，其他环节也按照文档正确地操作。但还是收不到推送消息。那么，有一定的可能性，是你在 Portal 上上传的证书，不是 APNs (Push) 证书。
+
+请参考[iOS 证书设置指南]()再次检查证书选择是否正确。
+
+请注意：iOS能接受消息的必要条件是：应用程序的证书要和你上传到jpush portal上的证书对应，如果你的程序是直接在xcode上运行的，你的应用部署环境必须是开发状态才能收到APNS消息。
+
+温馨提示：目前api推送的时候可以通过参数apns_production可以指定推送环境，如果api有传apns_production则以此值为准，否则以应用详情的部署环境为准。
+
+
+### 为什么启动的时候出现 Did Fail To Register For Remote Notifications With Error的错误
+
+程序运行的时候出现下面的错误信息：
+
+	did Fail To Register For Remote Notifications With Error: Error Domain=NSCocoaErrorDomain Code=3000 "未找到应用程序的“aps-environment”的权利字符串" UserInfo=0x1c55e000 {NSLocalizedDescription=未找到应用程序的“aps-environment”的权利字符串}
+	
+这个是由于你的Provisioning Profile文件，不具备APNS功能导致的。请登陆Apple Developer 网站设置好证书，更新Provisioning Profile，重新导入Xcode。
+
+或参考：[http://blog.csdn.net/stefzeus/article/details/7418552](http://blog.csdn.net/stefzeus/article/details/7418552)
+
+### 如何在接收到 APN 的时候获取 APN 消息内容并进行跳转或做出响应处理？
+
+[获取 APNs 推送内容]()
+
+### 如何关闭 APN  推送？
+
+关闭推送有以下两种方式关闭：
+
+1. 在iOS系统设置的通知设置中更改对应app的推送设置（推荐）；
+2. 在代码中调用 [[UIApplication sharedApplication] unregisterForRemoteNotifications]；
+
+对应以上关闭方式的重新打开推送方法：
+
+1. 在iOS系统设置的通知设置中修改对应app的推送设置；
+2. 在代码中重新调用 [APService registerForRemoteNotificationTypes:]；
+
+### App badge number（角标）如何更改与清空？
+
+iOS每条 APN 推送可以指定 badge number，iOS 系统无法为某个 App 的badge number做自动累加。
+
+JPush 推送 iOS 消息时，有指定 badge 的参数。在手机上显示的数值，就是每条推送指定的 badge 参数。
+
+Badge number 的清空方法：
+
+1. APN 推送内容指定 badge number 为 0；
+2. 在代码中使用如下代码清空 badge number：  [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
+
+
+### 为何推送一条 APN 后，点击通知中心的 APN 通知打开 App，可是 APN 通知在通知中心依然存在而未被删除？
+
+如果推送 APN 时，Badge number 被指定为0 ，则可能出现 APN 消息在通知中心被点击后，尽管调用了   [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0]; 但 APN 消息在通知中心不会被删除的情况。 这种情况可以按如下代码调用以清除通知中心的 APN 通知。
+
+	[[UIApplication sharedApplication] setApplicationIconBadgeNumber:1];
+	[[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
+
+### 出现Not get deviceToken yet. Maybe: your certificate not configured APNs?...错误日志时如何排除问题?
+
+如果出现上述日志，则说明一段时间内都无法获取device token，那么：
+
+1. 确认你的app配置了apns权限，如果未配置apns权限，则应该会出现此错误提示。
+2. 确认你的app运行在ios真机而非模拟器上，且通知中心中对应app的通知权限没有完全关闭（alert/sound/badge至少有一个权限是打开的）。
+3. 确认你的网络状况，与apple的服务器的连接是通过tcp的 5223端口连接，确认你网络的对应端口是否可用，可通过下列命令来确认这点：
+
+		telnet 1-courier.push.apple.com 5223
+
+4. 在代码中可在以下两个函数中断点以确认device token的获取状态。
+
+		- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken;
+		- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error;
+
+
+	如果app运行进入	didFailToRegisterForRemoteNotificationsWithError 则说明app的APNS权限问题或者app运行在模拟器，参考 证书设置文档。
+
+	如果app运行进入didRegisterForRemoteNotificationsWithDeviceToken 则说明运行正常，请确认你在此函数中的代码中有将token传递给jpush的调用：
+
+		[APService registerDeviceToken:deviceToken];
+
+5. 如果以上两个registerRemoteNotification的函数都未进入， 请确认你的代码中有注册申请apns的函数调用：
+
+		[APService registerForRemoteNotificationTypes:];
+6. 如果上述情况都已确认且未进入第4步的任意回调函数，则可以判断无法获取token的原因在于设备与apple的网络连通性问题（注：一个设备只有在未申请过token的情况下才会需要与apple的网络交互来获取token，已经获取过某一环境token的设备在无网络的情况下也能获取到对应环境的token（环境分为 开发/生产）），这种情况下切换网络能够在大部分情况下解决此问题。
+
+7. 如果仍然有问题，请将上述步骤的结果以邮件附件的形式发送到JPush支持邮箱，我们将协助你解决此问题。
+
+### 上传到appStore的版本为什么收不到推送？
+
+1. 请确认xcode选择的生产证书和上传的证书的bundleid一致；
+2. 如果是在jpush网站上推送，请确认新建通知时推送对象是否选择了生产环境；
+3. 如果是api推送，请确认是否使用了apns_production参数，值是否为：1；如果没有使用apns_production参数请确认jpush网站上该应用的部署环境是否已经切换到生产环境。
+
+
+### iOS 平台上传证书一直为未通过状态
+
+证书上传未通过的原因一般有：
+
+1. 当前上传的p12证书密码输入有误；
+2. 证书导出的时候展开了证书，把个人私钥导了出来，导证书的时候请不要展开证书；
+3. 当前上传的证书环境不对，如：在上传开发证书的地方上传了生产证书；
+4. 该证书已在本账号的其它应用使用；
+5. 现上传的证书与当前应用已上传成功的证书的bundle id不一致。
+
+具体请看上传后显示的错误输出内容。
 
 ## 服务器api
 

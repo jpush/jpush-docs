@@ -51,7 +51,7 @@
 + 复制 libs/jpush-sdk-release1.x.y.jar 到工程 libs/ 目录下
 + 复制 libs/armeabi/libjpush.so 到工程 libs/armeabi 目录下
 
-		如果您的项目有 libs/armeabi-v7a 这个目录，请把 libjpush.so 也复制一份到这个目录。
+>如果您的项目有 libs/armeabi-v7a 这个目录，请把 libjpush.so 也复制一份到这个目录。
 
 ### 2、配置 AndroidManifest.xml
 
@@ -63,109 +63,109 @@
 + 将备注为替换包名的部分，替换为当前应用程序的包名
 + 将AppKey替换为在Portal上注册该应用的的Key,例如（9fed5bcb7b9b87413678c407）
 
-
-		权限配置：
-		<?xml version="1.0" encoding="utf-8"?>
-		<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    		package="Your Package"
-    		android:versionCode="100"
-    		android:versionName="1.0.0"
-    		>
+```
+权限配置：
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="Your Package"
+    android:versionCode="100"
+    android:versionName="1.0.0"
+    >
   
- 		   <!-- Required -->
-    		<permission android:name="Your Package.permission.JPUSH_MESSAGE" android:protectionLevel="signature" />
+    <!-- Required -->
+    <permission android:name="Your Package.permission.JPUSH_MESSAGE" android:protectionLevel="signature" />
    
-    		<!-- Required -->
-    		<uses-permission android:name="You Package.permission.JPUSH_MESSAGE" />
-    		<uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
-    		<uses-permission android:name="android.permission.INTERNET" />
-    		<uses-permission android:name="android.permission.WAKE_LOCK" />
-    		<uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    		<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-		    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-		    <uses-permission android:name="android.permission.VIBRATE" />
-		    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
-		    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-		    <uses-permission android:name="android.permission.WRITE_SETTINGS" /> 		<!--since 1.6.0 -->
+    <!-- Required -->
+    <uses-permission android:name="You Package.permission.JPUSH_MESSAGE" />
+    <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" /> <!--since 1.6.0 -->
      
-		    <!-- Optional. Required for location feature -->
-		    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-		    <uses-permission android:name="android.permission.ACCESS_COARSE_UPDATES" />
-		    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-		    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
-		    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-		    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
-		    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <!-- Optional. Required for location feature -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_UPDATES" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
      
-		应用包名及appkey替换：    
-		    <application
-		        android:icon="@drawable/ic_launcher"
-		        android:label="@string/app_name"
-		        android:name="Your Application">
-		         
-        		<!-- Required -->
-		        <service
-		            android:name="cn.jpush.android.service.PushService"
-		            android:enabled="true"
-		            android:exported="false" >
-		            <intent-filter>
-		                <action android:name="cn.jpush.android.intent.REGISTER" />
-		                <action android:name="cn.jpush.android.intent.REPORT" />
-		                <action android:name="cn.jpush.android.intent.PushService" />
-		                <action android:name="cn.jpush.android.intent.PUSH_TIME" />
-		            </intent-filter>
-		        </service>
+应用包名及appkey替换：    
+    <application
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:name="Your Application">
          
-		        <!-- Required -->
-		        <receiver
-		            android:name="cn.jpush.android.service.PushReceiver"
-		            android:enabled="true" >
-		          <intent-filter android:priority="1000"> <!--since 1.3.5 -->
-		                <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED_PROXY" /> <!--since 1.3.5 -->
-		                <category android:name="Your Package" /> <!--since 1.3.5 -->
-		            </intent-filter> <!--since 1.3.5 -->
-		            <intent-filter>
-		                <action android:name="android.intent.action.USER_PRESENT" />
-		                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
-		            </intent-filter>
-		            <intent-filter>
-		                <action android:name="android.intent.action.PACKAGE_ADDED" />
-		                <action android:name="android.intent.action.PACKAGE_REMOVED" />
-		                <data android:scheme="package" />
-		            </intent-filter>
-		        </receiver>
-		     <!-- Required SDK核心功能-->
-		        <activity
-		            android:name="cn.jpush.android.ui.PushActivity"
-		            android:theme="@android:style/Theme.Translucent.NoTitleBar"
-		            android:configChanges="orientation|keyboardHidden" >
-		            <intent-filter>
-		                <action android:name="cn.jpush.android.ui.PushActivity" />
-		                <category android:name="android.intent.category.DEFAULT" />
-		                <category android:name="Your Package" />
-		            </intent-filter>
-		        </activity>
-		        <!-- Required SDK核心功能-->
-		        <service
-		            android:name="cn.jpush.android.service.DownloadService"
-		            android:enabled="true"
-		            android:exported="false" >
-		        </service>
-		        <!-- Required SDK核心功能-->
-		        <receiver android:name="cn.jpush.android.service.AlarmReceiver" />
+        <!-- Required -->
+        <service
+            android:name="cn.jpush.android.service.PushService"
+            android:enabled="true"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="cn.jpush.android.intent.REGISTER" />
+                <action android:name="cn.jpush.android.intent.REPORT" />
+                <action android:name="cn.jpush.android.intent.PushService" />
+                <action android:name="cn.jpush.android.intent.PUSH_TIME" />
+            </intent-filter>
+        </service>
+         
+        <!-- Required -->
+        <receiver
+            android:name="cn.jpush.android.service.PushReceiver"
+            android:enabled="true" >
+          <intent-filter android:priority="1000"> <!--since 1.3.5 -->
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED_PROXY" /> <!--since 1.3.5 -->
+                <category android:name="Your Package" /> <!--since 1.3.5 -->
+            </intent-filter> <!--since 1.3.5 -->
+            <intent-filter>
+                <action android:name="android.intent.action.USER_PRESENT" />
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_ADDED" />
+                <action android:name="android.intent.action.PACKAGE_REMOVED" />
+                <data android:scheme="package" />
+            </intent-filter>
+        </receiver>
+     <!-- Required SDK核心功能-->
+        <activity
+            android:name="cn.jpush.android.ui.PushActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:configChanges="orientation|keyboardHidden" >
+            <intent-filter>
+                <action android:name="cn.jpush.android.ui.PushActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="Your Package" />
+            </intent-filter>
+        </activity>
+        <!-- Required SDK核心功能-->
+        <service
+            android:name="cn.jpush.android.service.DownloadService"
+            android:enabled="true"
+            android:exported="false" >
+        </service>
+        <!-- Required SDK核心功能-->
+        <receiver android:name="cn.jpush.android.service.AlarmReceiver" />
       
-		        <!-- Required. For publish channel feature -->
-		        <!-- JPUSH_CHANNEL 是为了方便开发者统计APK分发渠道。-->
-		        <!-- 例如: -->
-		        <!-- 发到 Google Play 的APK可以设置为 google-play; -->
-		        <!-- 发到其他市场的 APK 可以设置为 xxx-market。 -->
-		        <!-- 目前这个渠道统计功能的报表还未开放。-->
-		        <meta-data android:name="JPUSH_CHANNEL" android:value="developer-default"/>
-		        <!-- Required. AppKey copied from Portal -->
-		        <meta-data android:name="JPUSH_APPKEY" android:value="Your AppKey"/> 
-		    </application>
-		</manifest>
-
+        <!-- Required. For publish channel feature -->
+        <!-- JPUSH_CHANNEL 是为了方便开发者统计APK分发渠道。-->
+        <!-- 例如: -->
+        <!-- 发到 Google Play 的APK可以设置为 google-play; -->
+        <!-- 发到其他市场的 APK 可以设置为 xxx-market。 -->
+        <!-- 目前这个渠道统计功能的报表还未开放。-->
+        <meta-data android:name="JPUSH_CHANNEL" android:value="developer-default"/>
+        <!-- Required. AppKey copied from Portal -->
+        <meta-data android:name="JPUSH_APPKEY" android:value="Your AppKey"/> 
+    </application>
+</manifest>
+```
 ### 3、添加代码
 
 JPush SDK 提供的 API 接口，都主要集中在 cn.jpush.android.api.JPushInterface 类里。
@@ -177,9 +177,10 @@ JPush SDK 提供的 API 接口，都主要集中在 cn.jpush.android.api.JPushIn
 		
 + setDebugMode 设置调试模式
 
-		// You can enable debug mode in developing state. You should close debug mode when release.
-		public static void setDebugMode(boolean debugEnalbed)
-		
+	```
+	// You can enable debug mode in developing state. You should close debug mode when release.
+	public static void setDebugMode(boolean debugEnalbed)
+	```		
 #### 添加统计代码
 
 + 参考文档： 统计分析 API
@@ -190,16 +191,16 @@ JPush SDK 提供的 API 接口，都主要集中在 cn.jpush.android.api.JPushIn
 
 + 以下代码定制一个本应用程序 Application 类。需要在 AndoridManifest.xml 里配置。请参考上面 AndroidManifest.xml 片断，或者 example 项目。
 
-
-		public class ExampleApplication extends Application {
-			@Override
-        	public void onCreate() {
-         		super.onCreate();
-				JPushInterface.setDebugMode(true);
-				JPushInterface.init(this);
-				}
-		}
-		
+	```
+	public class ExampleApplication extends Application {
+		@Override
+       	public void onCreate() {
+        		super.onCreate();
+			JPushInterface.setDebugMode(true);
+			JPushInterface.init(this);
+			}
+	}
+	```	
 		
 		
 ### 4、测试确认
@@ -214,18 +215,11 @@ JPush SDK 提供的 API 接口，都主要集中在 cn.jpush.android.api.JPushIn
 
 请参考：
 
-统计分析API
-
-标签与别名API
-
-通知栏样式定制API
-
-接收推送消息 Receiver
-
+[API: Android](../../client_sdks/android_api)
 
 ## 技术支持
 
-邮件联系： support@jpush.cn
+邮件联系：<support@jpush.cn>
 
-问答社区：http://www.jpush.cn/qa/
+问答社区：[http://www.jpush.cn/qa/](http://www.jpush.cn/qa/)
 
