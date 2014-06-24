@@ -236,17 +236,75 @@ public static HashSet<string> FilterValidTags(HashSet<string> tags)
 
 ### 错误码定义
 
-
-|Code|	描述|	详细解释|
+|Code|描述|详细解释|
 |-|-|-|
-|6001	无效的设置，tag/alias 不应参数都为 null	 
-|6002	设置超时	建议重试
-|6003	alias 字符串不合法	有效的别名、标签组成：字母（区分大小写）、数字、下划线、汉字。
-|6004	alias超长。最多 40个字节	中文 UTF-8 是 3 个字节
-|6005	某一个 tag 字符串不合法	有效的别名、标签组成：字母（区分大小写）、数字、下划线、汉字。
-6006	某一个 tag 超长。一个 tag 最多 40个字符	中文 UTF-8 是 3 个字节
-6007	tags 数量超出限制。最多 100个	这是一台设备的限制。一个应用全局的标签数量无限制。
-6008	tag/alias 超出总长度限制。总长度最多 1K 字节	 
+|6001|	无效的设置，tag/alias 不应参数都为 null||
+|6002|	设置超时	建议重试||	 
+|6003|	alias 字符串不合法|	有效的别名、标签组成：字母（区分大小写）、数字、下划线、汉字。|
+|6004	alias超长。最多 40个字节|	中文 UTF-8 是 3 个字节|
+|6005	某一个 tag 字符串不合法|	有效的别名、标签组成：字母（区分大小写）、数字、下划线、汉字。|
+|6006|	某一个 tag 超长。|一个 tag 最多 40个字符	中文 UTF-8 是 3 个字节|
+|6007|	tags 数量超出限制。|最多 100个	这是一台设备的限制。一个应用全局的标签数量无限制。|
+|6008|	tag/alias 超出总长度限制。|总长度最多 1K 字节|	 
 
 ## 统计功能
+
+用于统计Toast点击，页面切换等事件
+
+### Method-HandleToastNotification
+
+用于统计点击Toast通知进入应用程序的事件，需要放入到与Toast通知对应的页面和默认的页面，比如MainPage.xaml页面
+
+#### 支持版本
+开始支持v1.0.0
+
+#### 接口定义
+	public static void HandleToastNotification(IDictionary<string, string> remotoInfo)
+#### 参数说明
++ remoteInfo
+	+ 页面切换时，由wp 8 sdk的接口：NavigationContext.QueryString获取
+### Method-TrackPageInto
+
+用于统计用户进入页面的事件，在需要统计页面的OnNavigatedTo中加入这个函数
+
+#### 支持版本
+开始支持版本v1.0.0
+
+#### 接口定义
+	public static void TrackPageInto(string pageName)
+
+#### 参数说明
++ pageName
+	+ 页面名称
+
+### Method-TrackPageOut
+
+用于统计用户离开页面的事件，在需要统计的页面的OnNavigatedFrom中加入这个函数
+
+#### 支持版本
+开始支持版本v1.0.0
+
+#### 接口定义
+```
+public static void TrackPageOut(string pageName)
+```
+
+####参数说明
+
++ pageName
+	+页面名称
+	
+		
 ## 获取RegistrationID
+这个API中在名空间JPushSDK的类JServer中
+
+###  Method-GetRegisrtationID
+获取RegistrationID,没有登录成功之前返回空的字符串，登录成功后返回 RegistrationID
+
+#### 支持版本
+开始支持V1.0.0
+
+####  接口定义
+	public static string   GetRegisrtationID()
+
+
