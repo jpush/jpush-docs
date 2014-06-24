@@ -20,22 +20,21 @@
 
 ## 客户端SDK
 
-[Android SDK教程](client_sdks/android_tutorials/)
+[Android SDK 概述](client_sdks/android_sdk/)
 
-[Android SDK](client_sdks/android_sdk/)
+[Android SDK 教程](client_sdks/android_tutorials/)
 
 [Android SDK API](client_sdks/android_api/)
 
-[iOS SDK教程](client_sdks/ios_tutorials/)
+[iOS SDK 概述](client_sdks/ios_sdk/)
 
-[iOS SDK](client_sdks/ios_sdk/)
+[iOS SDK 教程](client_sdks/ios_tutorials/)
 
 [iOS SDK API](client_sdks/ios_api/)
 
+[Windows Phone SDK 概述](client_sdks/winphone_sdk/)
 
 [Windows Phone SDK教程](client_sdks/winphone_tutorials/)
-
-[Windows Phone SDK](client_sdks/winphone_sdk/)
 
 [Windows Phone SDK API](client_sdks/winphone_api/)
 
@@ -59,12 +58,11 @@
 [HTTP-Status-Code](server_pais/http_status_code)
 
 
-## 最佳实践
-[高级应用场景](best_practice/advanced_scene/)
-
-[高级话题](best_practice/advanced_subject/)
 
 ##更多
+[高级应用场景](more/advanced_scene/)
+
+[高级话题](more/advanced_subject/)
 
 [统计与报表说明](more/statistical_report/)
 
