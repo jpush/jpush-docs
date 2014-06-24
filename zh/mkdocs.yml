@@ -18,8 +18,6 @@ pages:
 - [client_sdks/ios_sdk.md, 客户端SDK, iOS SDK]
 - [client_sdks/ios_tutorials.md, 客户端SDK, iOS SDK 教程]
 - [client_sdks/ios_api.md, 客户端SDK, iOS SDK API]
-- [client_sdks/winphone_sdk.md, 客户端SDK, WinPhone SDK]
-- [client_sdks/winphone_tutorials.md, 客户端SDK, WinPhone SDK 教程]
 - [client_sdks/winphone_api.md, 客户端SDK, WinPhone SDK API]
 - [client_sdks/rich_push.md, 客户端SDK, Rich Push 开发指南]
 - [client_sdks/client_plugins.md, 客户端SDK, 客户端集成插件]
