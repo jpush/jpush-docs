@@ -14,4 +14,4 @@
 + r1.2.8 以及之前的版本：部分设备的 device token 上报不正常，导致不能够收到推送消息。
 	+ FIXED: r1.3.0 已经发布。
 + r1.2.6 以及之前的版本：JPush iOS SDK 内部使用 OpenUdid 方式来唯一地标识设备。但是，发挥发现 iOS 6 上 OpenUdid 值会改变，不能唯一地标识一台设备了。这会导致，同一台设备，JPush SDK 会注册为多个用户。群发推送时，同一条消息可能会收到多个。
-	+ FIXED: r1.2.7 提供 UDID 版本下载，JPush iOS SDK 内部使用原生的 UDID 来唯一地标识设备。
+	+ FIXED: r1.2.7 提供 UDID 版本下载，JPush iOS SDK 内部使用原生的 UDID 来唯一地标识设备。[https://www.jpush.cn/home/download-ios.jsp](https://www.jpush.cn/home/download-ios.jsp)

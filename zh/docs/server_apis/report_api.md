@@ -31,7 +31,7 @@ GET /v2/received
 + HTTP Header Authorization 的值：Basic base64_auth_string
 	+ base64_auth_string 生成规则是：base64(appKey:masterSecret) 
 	+ 留意 appKey 与 masterSecret 中间使用 ":" 冒号隔开
-	+ 请参考相关规范文档：[HTTP基本认证。]()
+	+ 请参考相关规范文档：[HTTP基本认证。](http://zh.wikipedia.org/zh/HTTP基本认证)
 
 
 ##Example Response
@@ -76,7 +76,7 @@ JSON Array.
 
 ##HTTP 返回码
 
-参考文档：[HTTP-Status-Code]()
+参考文档：[HTTP-Status-Code](http://zh.wikipedia.org/zh/HTTP基本认证)
 
 ##错误码定义
 

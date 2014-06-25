@@ -20,7 +20,7 @@
 推送的内容只能是 JSON 表示的一个推送对象。
 
 调用地址：  
-[POST https://api.jpush.cn/v3/push](POST https://api.jpush.cn/v3/push)
+POST [https://api.jpush.cn/v3/push](POST https://api.jpush.cn/v3/push)
 ### 请求示例
 
 ```

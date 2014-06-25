@@ -35,25 +35,25 @@
 + md5有问题，需要32位大写
 + 你的编码不是utf-8
 
-具体看[Push API v2]()中的verification_code参数
+具体看[Push API v2](../push_api_v2)中的verification_code参数
 
 ###不用登录Jpush的portal界面，在APP的面板中直接发送通知可以吗？
 
-可以。直接封装Jpush的V2 API就可以了，具体可参考 [Push API v2]()
+可以。直接封装Jpush的V2 API就可以了，具体可参考 [Push API v2](../push_api_v2)
 
 
 ##官方帮助
 
-当出现问题时，建议仔细阅读官方文档，看看有没有什么遗漏信息。如果还是无法解决，建议在QA问答网站搜索，有没有碰到类似信息
+当出现问题时，建议仔细阅读官方文档，看看有没有什么遗漏信息。如果还是无法解决，建议在[QA问答网站](https://www.jpush.cn/qa/)搜索，有没有碰到类似信息
 
 如果还是无法解决，可以通过以下途径寻求帮助
 
-1. 官方的QA问答网站  https://www.jpush.cn/qa/ 
-2. 给我们的support发邮件 (如果有敏感信息，建议使用support邮箱)   support@jpush.cn
+1. 官方的QA问答网站  [https://www.jpush.cn/qa/ ](https://www.jpush.cn/qa/ )
+2. 给我们的support发邮件 (如果有敏感信息，建议使用support邮箱)   <support@jpush.cn>
 
 为了更高效，快速的解决问题，在寻求帮助时，请提供下列信息：
 
-1. API的接口， 比如  http://api.jpush.cn:8800/v2/push
+1. API的接口， 比如  [http://api.jpush.cn:8800/v2/push](http://api.jpush.cn:8800/v2/push)
 2. 提供appkey，massageid信息
 3. 提供调用API出现问题时的时间
 

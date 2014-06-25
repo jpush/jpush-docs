@@ -17,13 +17,13 @@
 
 http://api.jpush.cn:8800/v2/push
 
-+ 请使用域名访问 JPush API，不要直接使用 IP。
-+ 本接口只支持 HTTP Post 请求。
-+ 若无特殊说明，接口中统一使用 utf-8  编码。
-+ HTTP Post 的Content-Type 需采用 application/x-www-form-urlencoded
-+ 考虑内容里可能有一些特殊字符，有必要在调用接口前对内容进行 URL Encode。更详细说明请参考：特殊字符问题。
-+ 如果你很重视接口安全，请使用 SSL 接口，默认走443ssl加密协议端口，即接口URL改为 :https://+ api.jpush.cn/v2/push。  
-+ 无论你在极光推送Portal上的应用是生产环境还是测试环境，都使用这个 API 地址推送消息。
+> 1. 请使用域名访问 JPush API，不要直接使用 IP。
+> 2. 本接口只支持 HTTP Post 请求。
+> 3. 若无特殊说明，接口中统一使用 utf-8  编码。
+> 4. HTTP Post 的Content-Type 需采用 application/x-www-form-urlencoded
+> 5. 考虑内容里可能有一些特殊字符，有必要在调用接口前对内容进行 URL Encode。更详细说明请参考：特殊字符问题。
+> 6. 如果你很重视接口安全，请使用 SSL 接口，默认走443ssl加密协议端口，即接口URL改为: [https://+ api.jpush.cn/v2/push](https://+ api.jpush.cn/v2/push)。
+> 7. 无论你在极光推送Portal上的应用是生产环境还是测试环境，都使用这个 API 地址推送消息。
 
 ### 调用参数
 
@@ -71,6 +71,8 @@ http://api.jpush.cn:8800/v2/push
 |n_title|可选	|通知标题。不填则默认使用该应用的名称。只有 Android支持这个参数。|
 |n_content|	必须	|通知内容。|
 |n_extras|	可选	|通知附加参数。JSON格式。客户端可取得全部内容。|
+	
+		
 
 >关于长度限制，请参考：通知长度限制说明。
 
@@ -187,9 +189,9 @@ HTTP 返回码为 200 时，是业务相关的错误。
 	
 ## See Also
 
-查询消息送达情况请参考： [Report-API]()
+查询消息送达情况请参考： [Report-API](../report_api)
 
-了解API 频率限制：[API 频率限制]()
+了解API 频率限制：[API 频率限制](../api_rate_limiting)
 
 
 
