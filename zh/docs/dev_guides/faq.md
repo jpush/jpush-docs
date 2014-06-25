@@ -1,5 +1,5 @@
-#常见问题
-##问题概述
+# 常见问题
+## 从这里开始了解JPush
 #### JPush有什么优势？
 
 + 全面的 Push 能力，随时到达你的用户
@@ -23,9 +23,9 @@
 
 #### 使用JPush从哪里开始？
 
-+ 注册与登录管理Portal
-+ 在管理Portal上创建应用程序
-+ 在客户端集成SDK
++ [注册](https://www.jpush.cn/#signup)与[登录](https://www.jpush.cn)管理Portal
++ 在[管理Portal](https://www.jpush.cn/app/application_list.jsp)上创建应用程序
++ 在[客户端](../../resouces)集成SDK
 
 #### SDK 与 服务器端通过什么互相识别？
 
@@ -60,7 +60,13 @@ Portal上不会限制推送消息的数量。
 
 在客户端使用 setAliasAndTags API 来为该用户指定别名。以便服务器端对该别名推送消息。
 
-进一步了解请参考文档：标签与别名API。
+进一步了解请参考文档：[标签与别名API。](../../client_sdks/android_api)
+
+#### 怎么样向指定的一群用户推送消息？
+
+在客户端使用 setAliasAndTags API 来为该用户设置标签。这样服务器可以向所有具有该标签的用户群发消息。
+
+进一步了解请参考文档：[标签与别名API。](../../client_sdks/android_api)
 
 #### 怎么样保证推送消息的安全？
 
@@ -78,7 +84,7 @@ Portal上不会限制推送消息的数量。
 
 #### 通知与自定义消息有什么区别？
 
-下图是个简单的区分。详情请参考文档：通知 vs. 自定义消息。
+下图是个简单的区分。详情请参考文档：[通知 vs. 自定义消息。](../../clinet_sdks/android_tutorials)
 
 ![](../image/jpush_notification_vs_msg.png)
 
@@ -104,7 +110,7 @@ Portal上不会限制推送消息的数量。
 
 + 如果推送方式是群发，则表示：该应用还没有一个客户端成功地集成了 JPush SDK 并连接到 JPush 服务器。如果您确实做了客户端App集成 JPush SDK的工作，请检查客户端日志，看是不是注册失败。
 
-+ 如果推送方式是别名或者标签，则表示：该别名或者标签，在客户端还未被成功地调用 setAliasAndTags 设置成功。请参考：别名与标签使用教程。
++ 如果推送方式是别名或者标签，则表示：该别名或者标签，在客户端还未被成功地调用 setAliasAndTags 设置成功。请参考：[别名与标签使用教程。](../../client_sdks/android_api)
 
 + 对于 Android 还可以使用 IMEI 来推送。由于有很多 Android 设备取不到 IMEI，所以我们建议根据 IMEI 推送仅用于测试目的。
 
@@ -112,34 +118,39 @@ Portal上不会限制推送消息的数量。
 
 ## Android 常见问题
 
-### 为什么应用程序无法收到 Push 消息（Android）？
+#### 为什么应用程序无法收到 Push 消息（Android）？
+
 + 确认 appKey（在Portal上生成的）已经正确的写入 Androidmanifest.xml
 + 确认测试手机（或者模拟器）已成功连入网络
 + 确认有客户端 "Login succeed" 日志
 
-详情请参考教程：[Android SDK 调试指南。]()
+详情请参考教程：[Android SDK 调试指南。](../../client_sdks/android_tutorials)
 
-### Java.lang.UnsatisfiedLinkError
+
+#### Java.lang.UnsatisfiedLinkError
 
 ![](../image/error.jpg)
 
 此错误是由于没有正确的加载libjpush.so文件，请检查libjpush.so是否在正确的位置(libs–>armeabi–>libjpush.so)
 
-
 如果您的项目有libs/armeabi-v7a这个目录，请把libjpush.so也复制一份到这个目录。
 
-如果您的应用需要支持 x86、mips 架构的CPU 需要下载对应的SDK，下载路径：[http://docs.jpush.cn/display/dev/Android](http://docs.jpush.cn/display/dev/Android) 
+如果您的应用需要支持 x86、mips 架构的CPU 需要下载对应的SDK，[下载地址 ](../../resouces)
 
 ![](../image/dictionary_path.png)
 
-### The permission should be defined 
+#### The permission should be defined 
 
 ![](../image/permission.jpg)
 
-	<permission android:name="您应用的包名.permission.JPUSH_MESSAGE" android:protectionLevel="signature" />
-	<uses-permission android:name="您应用的包名.permission.JPUSH_MESSAGE" />
-	
-### 如何在代码时混淆忽略 jpush-sdk-release.jar？
+此错误是没有正确的定义permision，请添加权限：
+
+```
+<permission android:name="您应用的包名.permission.JPUSH_MESSAGE" android:protectionLevel="signature" />
+<uses-permission android:name="您应用的包名.permission.JPUSH_MESSAGE" />
+```
+
+#### 如何在代码时混淆忽略 jpush-sdk-release.jar？
 
 + 请下载最新的[proguard.jar](http://sourceforge.net/projects/proguard/files/)， 并替换你Android Sdk "tools\proguard\lib\proguard.jar"
 
@@ -150,7 +161,7 @@ Portal上不会限制推送消息的数量。
 		
 + 请使用 SDK1.3.X 及以后的版本
 
-### 推送成功了，为什么有部分客户端收不到推送？
+#### 推送成功了，为什么有部分客户端收不到推送？
 
 请检查收不到通知的手机：
 
@@ -159,38 +170,38 @@ Portal上不会限制推送消息的数量。
 + 检查手机的JPush高级设置中是否设置了“允许推送时间”
 + 手机的应用中是否勾选了“显示通知”
 
-### MIUI 系统或小米手机收不到推送通知
+#### MIUI 系统或小米手机收不到推送通知
 
 由于第三方 ROM 的管理软件需要用户手动操作
 
 + 自启动管理：默认情况下，手机开机后，只有系统默认的服务可以启动起来。除非在自启动管理界面，设置允许第三方程序自启动。
 + 网络助手：可以手动禁止已安装的第三方程序访问2G/3G和WIFI的网络和设置以后新安装程序是否允许访问2G/3G和WIFI的网络。
 
-### Tag、Alias、Registrationid需要每次初始化时都重新设置吗，会变化吗？
+#### Tag、Alias、Registrationid需要每次初始化时都重新设置吗，会变化吗？
 
-+ tag、alias可以参考别名与标签 API进行设置，每次设置是覆盖设置，而不是增量设置。Tag和alias一经设置成功，除非取消或覆盖，是不会变化的。设置好的tag、alias与客户端的对应关系保存在Jpush服务器，目前没有从JPush服务器查询这个对应关系的接口，所以需要客户将对应关系保存在APP应用服务器。
++ tag、alias可以参考[别名与标签 API](../../client_sdks/android_api)进行设置，每次设置是覆盖设置，而不是增量设置。Tag和alias一经设置成功，除非取消或覆盖，是不会变化的。设置好的tag、alias与客户端的对应关系保存在Jpush服务器，目前没有从JPush服务器查询这个对应关系的接口，所以需要客户将对应关系保存在APP应用服务器。
 
-+ Registrationid是客户端SDK第一次成功连接到Jpush服务器时，Jpush服务器给分配的。可以通过获取 RegistrationID API来获取Registrationid进行推送。Registrationid对应一个应用的一个客户端。
++ Registrationid是客户端SDK第一次成功连接到Jpush服务器时，Jpush服务器给分配的。可以通过[获取 RegistrationID](../../client_sdks/android_api) API来获取Registrationid进行推送。Registrationid对应一个应用的一个客户端。
 
-### 没有沙箱API怎么测试？
+#### 没有沙箱API怎么测试？
 
  直接用JPush的api测试就行。
 
-### 其他国家能否使用极光推送（局域网能否使用极光推送）？
+#### 其他国家能否使用极光推送（局域网能否使用极光推送）？
 
  只要能连网到Jpush服务器都可以。判断能否联网到Jpush服务器的方法：ping通 api.jpush.cn 8800
 
 
-### 用设置的标签或别名推送，出现下面提示：
+#### 用设置的标签或别名推送，出现下面提示：
 
 ![](../image/none_target.png)
 
 这可能有两种情况：
 
 + SDK没有集成成功，客户端有 "Login succeed" 日志才表示SDK集成成功。
-+ 设置别名或标签失败，请调用带返回值的函数Method - setAliasAndTags (with Callback)来设置标签或别名，同时参考错误码定义来修改直到设置成功返回0.
++ 设置别名或标签失败，请调用带返回值的函数[Method - setAliasAndTags (with Callback)](../../client_sdks/android_api)来设置标签或别名，同时参考[错误码定义](../../client_sdks/android_api)来修改直到设置成功返回0.
 
-### 可以打开 www.jpush.cn，但打不开docs，提示无法找到docs.jpush.cn
+#### 可以打开 www.jpush.cn，但打不开docs，提示无法找到docs.jpush.cn
 
 + 提示客户换个浏览器试试
 + 如果还是不行，执行下面的命令反馈结果排查一下问题
@@ -199,11 +210,11 @@ Portal上不会限制推送消息的数量。
 	3. telnet docs.jpush.cn
 	4. 提供一下自己机器访问外网其他网站是否正常
 
-### appkey是怎么对应的？
+#### appkey是怎么对应的？
 
 android的包名和appkey需对应。
 
-### 内网使用极光推送应该怎么设置？
+#### 内网使用极光推送应该怎么设置？
 
 内网使用极光推送需要服务器开放下列端口限制，用于JPush的登录注册及保持推送长链接：   
 
@@ -212,18 +223,18 @@ android的包名和appkey需对应。
 
 ## iOS 常见问题
 
-### 为什么iOS收不到推送消息？
+#### 为什么iOS收不到推送消息？
 
 如果你确认 appKey 在 SDK 客户端与 Portal 上设置是一致，其他环节也按照文档正确地操作。但还是收不到推送消息。那么，有一定的可能性，是你在 Portal 上上传的证书，不是 APNs (Push) 证书。
 
-请参考[iOS 证书设置指南]()再次检查证书选择是否正确。
+请参考[iOS 证书设置指南](../../client_sdks/ios_tutorials)再次检查证书选择是否正确。
 
 请注意：iOS能接受消息的必要条件是：应用程序的证书要和你上传到jpush portal上的证书对应，如果你的程序是直接在xcode上运行的，你的应用部署环境必须是开发状态才能收到APNS消息。
 
 温馨提示：目前api推送的时候可以通过参数apns_production可以指定推送环境，如果api有传apns_production则以此值为准，否则以应用详情的部署环境为准。
 
 
-### 为什么启动的时候出现 Did Fail To Register For Remote Notifications With Error的错误
+#### 为什么启动的时候出现 Did Fail To Register For Remote Notifications With Error的错误
 
 程序运行的时候出现下面的错误信息：
 
@@ -233,11 +244,11 @@ android的包名和appkey需对应。
 
 或参考：[http://blog.csdn.net/stefzeus/article/details/7418552](http://blog.csdn.net/stefzeus/article/details/7418552)
 
-### 如何在接收到 APN 的时候获取 APN 消息内容并进行跳转或做出响应处理？
+#### 如何在接收到 APN 的时候获取 APN 消息内容并进行跳转或做出响应处理？
 
-[获取 APNs 推送内容]()
+[获取 APNs 推送内容](../../client_sdks/ios_api)
 
-### 如何关闭 APN  推送？
+#### 如何关闭 APN  推送？
 
 关闭推送有以下两种方式关闭：
 
@@ -249,7 +260,7 @@ android的包名和appkey需对应。
 1. 在iOS系统设置的通知设置中修改对应app的推送设置；
 2. 在代码中重新调用 [APService registerForRemoteNotificationTypes:]；
 
-### App badge number（角标）如何更改与清空？
+#### App badge number（角标）如何更改与清空？
 
 iOS每条 APN 推送可以指定 badge number，iOS 系统无法为某个 App 的badge number做自动累加。
 
@@ -261,14 +272,16 @@ Badge number 的清空方法：
 2. 在代码中使用如下代码清空 badge number：  [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
 
 
-### 为何推送一条 APN 后，点击通知中心的 APN 通知打开 App，可是 APN 通知在通知中心依然存在而未被删除？
+#### 为何推送一条 APN 后，点击通知中心的 APN 通知打开 App，可是 APN 通知在通知中心依然存在而未被删除？
 
 如果推送 APN 时，Badge number 被指定为0 ，则可能出现 APN 消息在通知中心被点击后，尽管调用了   [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0]; 但 APN 消息在通知中心不会被删除的情况。 这种情况可以按如下代码调用以清除通知中心的 APN 通知。
 
 	[[UIApplication sharedApplication] setApplicationIconBadgeNumber:1];
 	[[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
 
-### 出现Not get deviceToken yet. Maybe: your certificate not configured APNs?...错误日志时如何排除问题?
+如果仍有其他消息，则考虑清除 local notification 通知。（ [[UIApplication sharedApplication] cancelAllLocalNotifications] ）
+
+#### 出现Not get deviceToken yet. Maybe: your certificate not configured APNs?...错误日志时如何排除问题?
 
 如果出现上述日志，则说明一段时间内都无法获取device token，那么：
 
@@ -293,18 +306,19 @@ Badge number 的清空方法：
 5. 如果以上两个registerRemoteNotification的函数都未进入， 请确认你的代码中有注册申请apns的函数调用：
 
 		[APService registerForRemoteNotificationTypes:];
+		
 6. 如果上述情况都已确认且未进入第4步的任意回调函数，则可以判断无法获取token的原因在于设备与apple的网络连通性问题（注：一个设备只有在未申请过token的情况下才会需要与apple的网络交互来获取token，已经获取过某一环境token的设备在无网络的情况下也能获取到对应环境的token（环境分为 开发/生产）），这种情况下切换网络能够在大部分情况下解决此问题。
 
 7. 如果仍然有问题，请将上述步骤的结果以邮件附件的形式发送到JPush支持邮箱，我们将协助你解决此问题。
 
-### 上传到appStore的版本为什么收不到推送？
+#### 上传到appStore的版本为什么收不到推送？
 
 1. 请确认xcode选择的生产证书和上传的证书的bundleid一致；
 2. 如果是在jpush网站上推送，请确认新建通知时推送对象是否选择了生产环境；
 3. 如果是api推送，请确认是否使用了apns_production参数，值是否为：1；如果没有使用apns_production参数请确认jpush网站上该应用的部署环境是否已经切换到生产环境。
 
 
-### iOS 平台上传证书一直为未通过状态
+#### iOS 平台上传证书一直为未通过状态
 
 证书上传未通过的原因一般有：
 

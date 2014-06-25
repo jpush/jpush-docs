@@ -3,13 +3,14 @@
 
 本文是 Android SDK 标准的集成指南文档。
 
-匹配的 SDK 版本为：r1.6.x。
+匹配的 SDK 版本为：r1.3.x。
 
 本文随SDK压缩包分发。在你看到本文时，可能当前的版本与本文已经不是很适配。所以建议关注在线文档：
 
-+ 3 分钟快速 Demo（Android）：如果您想要快速地测试、感受下极光推送的效果，请参考本文在几分钟内跑通Demo。
-+ 极光推送文档网站上，有极光推送相关的所有指南、API、教程等全部的文档。包括本文档的更新版本，都会及JPUSH_CHANNEL时地发布到该网站上。
-+ 如果您看到本文档，但还未下载Android SDK，请访问SDK下载页面下载。
++ [3 分钟快速 Demo（Android）](../androiud_3m)：如果您想要快速地测试、感受下极光推送的效果，请参考本文在几分钟内跑通Demo。
++ [极光推送文档](http://docs.jpush.cn/display/dev/Index)网站上，有极光推送相关的所有指南、API、教程等全部的文档。包括本文档的更新版本，都会及JPUSH_CHANNEL时地发布到该网站上。
++ [极光推送问答](https://www.jpush.cn/qa/)网站：大家除了文档之外，还有问题与疑问，会到这里来提问题，以及时地得到解答。
++ 如果您看到本文档，但还未下载Android SDK，请访问[SDK下载页面](../../resouces)下载。
 
 ## 产品功能说明
 
@@ -177,10 +178,9 @@ JPush SDK 提供的 API 接口，都主要集中在 cn.jpush.android.api.JPushIn
 		
 + setDebugMode 设置调试模式
 
-	```
-	// You can enable debug mode in developing state. You should close debug mode when release.
-	public static void setDebugMode(boolean debugEnalbed)
-	```		
+		// You can enable debug mode in developing state. You should close debug mode when release.
+		public static void setDebugMode(boolean debugEnalbed)
+
 #### 添加统计代码
 
 + 参考文档： 统计分析 API
@@ -191,21 +191,34 @@ JPush SDK 提供的 API 接口，都主要集中在 cn.jpush.android.api.JPushIn
 
 + 以下代码定制一个本应用程序 Application 类。需要在 AndoridManifest.xml 里配置。请参考上面 AndroidManifest.xml 片断，或者 example 项目。
 
-	```
-	public class ExampleApplication extends Application {
+	
+		public class ExampleApplication extends Application {
 		@Override
-       	public void onCreate() {
-        		super.onCreate();
+		     	public void onCreate() {
+		      		super.onCreate();
 			JPushInterface.setDebugMode(true);
 			JPushInterface.init(this);
 			}
-	}
-	```	
+		}
+
 		
 		
 ### 4、测试确认
 
 1. 确认所需的权限都已经添加。如果必须的权限未添加，日志会提示错误。
+2. 确认 AppKey（在Portal上生成的）已经正确的写入 Androidmanifest.xml 。
+3. 确认在程序启动时候调用了init(context) 接口
+4. 确认测试手机（或者模拟器）已成功连入网络
+	＋ 客户端调用 init 后不久，如果一切正常，应有登录成功的日志信息
+5. 启动应用程序，在 Portal 上向应用程序发送自定义消息或者通知栏提示。详情请参考管理Portal。
+	+ 在几秒内，客户端应可收到下发的通知或者正定义消息
+如果 SDK 工作正常，则日志信息会如下图所示：
+
+![](../image/jpush_android_log.jpg) 
+
+如图所示，客户端启动分为 4 步：
+
+1. 检查 metadata 的 appKey 和 channel ，如果不存在，则启动失败
 2. 初始化 JPush SDK，检查 JNI 等库文件的有效性，如果库文件无效，则启动失败
 3. 检查 Androidmanifest.xml，如果有 Required 的权限不存在，则启动失败
 4. 连接服务器登录，如果存在网络问题，则登陆失败,或者前面三步有问题，不会启动JPush SDK
