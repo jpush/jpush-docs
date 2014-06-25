@@ -117,8 +117,8 @@ JPush SDK 收到推送，通过广播的方式，转发给开发者App，这样�
 
 如果不做这个动作，即不写自定义 Receiver，也不在 AndroidManifest.xml 里配置这个 Receiver，则默认的行为是：
 
-＋ 接收到推送的自定义消息，则没有被处理
-＋ 可以正常收到通知，用户点击打开应用主界面
++ 接收到推送的自定义消息，则没有被处理
++ 可以正常收到通知，用户点击打开应用主界面
 
 ### 接受广播
 
@@ -191,6 +191,8 @@ SDK 对自定义消息，只是传递，不会有任何界面上的展示。
 	
 			Bundle bundle = intent.getExtras();
 			String extras = bundle.getString(JPushInterface.EXTRA_EXTRA);
+			
+			
 + JPushInterface.EXTRA_CONTENT_TYPE
 	+ 保存服务器推送下来的内容类型。
 	+ 对应 API 消息内容的 content_type 字段。	
@@ -214,7 +216,8 @@ SDK 对自定义消息，只是传递，不会有任何界面上的展示。
 			
 #### Action - cn.jpush.android.intent.NOTIFICATION_RECEIVED
 
-`如果通知的内容为空，则在通知栏上不会展示通知。但是，这个广播 Intent 还是会有。开发者可以取到通知内容外的其他信息。`
+收到了通知 Push。
+> 如果通知的内容为空，则在通知栏上不会展示通知。但是，这个广播 Intent 还是会有。开发者可以取到通知内容外的其他信息。
 
 ##### Intent 参数
 
@@ -232,6 +235,17 @@ SDK 对自定义消息，只是传递，不会有任何界面上的展示。
 
 			Bundle bundle = intent.getExtras();
 			String content = bundle.getString(JPushInterface.EXTRA_ALERT);
+			
+
++ JPushInterface.EXTRA_EXTRA
+	+ SDK 1.2.9 以上版本支持。
+	+ 保存服务器推送下来的附加字段。这是个 JSON 字符串。
+	+ 对应 API 通知内容的 n_extras 字段。
+	+ 对应 Portal 推送通知界面上的“自定义内容”字段。
+
+			Bundle bundle = intent.getExtras();
+			String extras = bundle.getString(JPushInterface.EXTRA_EXTRA);
+			
 
 + JPushInterface.EXTRA_NOTIFICATION_ID
 	+ SDK 1.3.5 以上版本支持。
@@ -246,7 +260,9 @@ SDK 对自定义消息，只是传递，不会有任何界面上的展示。
 	+ Portal 上暂时未提供输入字段。
 
 			Bundle bundle = intent.getExtras();
-			String type = bundle.getString(JPushInterface.EXTRA_CONTENT_TYPE);			
+			String type = bundle.getString(JPushInterface.EXTRA_CONTENT_TYPE);
+			
+						
 + JPushInterface.EXTRA_RICHPUSH_HTML_PATH
 	+ SDK 1.4.0 以上版本支持。
 	+ 富媒体通知推送下载的HTML的文件路径,用于展现WebView。
@@ -307,7 +323,9 @@ SDK 对自定义消息，只是传递，不会有任何界面上的展示。
 	+ 对应 Portal 推送通知界面上的“自定义内容”字段。
 	
 			Bundle bundle = intent.getExtras();
-			String type = bundle.getString(JPushInterface.EXTRA_EXTRA);				
+			String type = bundle.getString(JPushInterface.EXTRA_EXTRA);
+			
+							
 + JPushInterface.EXTRA_NOTIFICATION_ID
 	
 	+ SDK 1.3.5 以上版本支持。
@@ -362,9 +380,9 @@ SDK 对自定义消息，只是传递，不会有任何界面上的展示。
 
 同一个应用程序内，对不同的用户，建议取不同的别名。这样，尽可能根据别名来唯一确定用户。
 
-系统不限定一个别名只能指定一个用户。如果一个别名被指定到了多个用户，当给指定这个别名发消息时，[服务器端API]()会同时给这多个用户发送消息。
+系统不限定一个别名只能指定一个用户。如果一个别名被指定到了多个用户，当给指定这个别名发消息时，[服务器端API](../../server_apis/server_sdks)会同时给这多个用户发送消息。
 
-举例：在一个用户要登录的游戏中，可能设置别名为 userid。游戏运营时，发现该用户 3 天没有玩游戏了，则根据 userid 调用[服务器端API]()发通知到客户端提醒用户。
+举例：在一个用户要登录的游戏中，可能设置别名为 userid。游戏运营时，发现该用户 3 天没有玩游戏了，则根据 userid 调用[服务器端API](../../server_apis/server_sdks)发通知到客户端提醒用户。
 
 #### 标签 tag
 
@@ -698,7 +716,8 @@ r1.6.0 版本开始。
 	+ Context context：应用的ApplicationContext
 	+ int notificationId：通知ID
 
-`此 notificationId 来源于intent参数 JPushInterface.EXTRA_NOTIFICATION_ID，可参考文档 接收推送消息Receiver
+> 此 notificationId 来源于intent参数 JPushInterface.EXTRA_NOTIFICATION_ID，可参考文档 接收推送消息Receiver
+
 
 ## 设置允许推送时间 API
 
@@ -714,9 +733,10 @@ r1.6.0 版本开始。
 
 如果不在该时间段内收到消息，当前的行为是：推送到的通知会被扔掉。
 
-	这是一个纯粹客户端的实现。
+> 这是一个纯粹客户端的实现。
+> 
+> 所以与客户端时间是否准确、时区等这些，都没有关系。
 
-	所以与客户端时间是否准确、时区等这些，都没有关系。
 #### API - setPushTime
 
 ##### 接口定义

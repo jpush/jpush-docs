@@ -1,6 +1,8 @@
 #Windows phone API
 ## API概述
+
 APIs 主要都集中在名空间JPushSDK的类JServer中
+
 ### Property-IsDebug
 开启调试模式，帮助了解集成的情况，打印相关log，发布商店时，`请关闭调试模式，否则会导致无法通过微软应用商店的审核`
 
@@ -225,7 +227,8 @@ API 可以在 App 里任何地方调用。
 开始支持的版本：1.0.0
 
 #### 接口定义
-public static HashSet<string> FilterValidTags(HashSet<string> tags)
+
+	public static HashSet<string> FilterValidTags(HashSet<string> tags)
 
 #### 参数说明
 + tags
@@ -292,7 +295,7 @@ public static void TrackPageOut(string pageName)
 ####参数说明
 
 + pageName
-	+页面名称
+	+ 页面名称
 	
 		
 ## 获取RegistrationID

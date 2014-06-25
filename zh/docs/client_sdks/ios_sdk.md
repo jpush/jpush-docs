@@ -20,13 +20,13 @@ JPush iOS 推送也是基于对 APNs 的封装。但是JPush iOS 推送比起开
 
 APNs 通知：是指开发者向应用推送通知后由 APNs 服务器下发的到系统，由 iOS 系统提供展现方式。用户可以通过系统的 “设置” >> “通知” 进行设置。
 
-[获取 APNs 推送内容](../ios_tutorials)
+[获取 APNs 推送内容](../ios_api)
 
 ## 应用内消息
 
 应用内消息：为了保证推送的可靠性，JPush SDK 提供了应用内消息，当应用打开后可以直接从JPush server 获取推送消息。此消息不经过 APNS 服务器。 
 
-[获取应用内推送信息](../ios_tutorials)
+[获取应用内推送信息](../ios_api)
 
 ## APNs消息与应用内消息对比
 

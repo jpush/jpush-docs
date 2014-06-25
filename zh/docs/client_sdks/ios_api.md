@@ -11,8 +11,8 @@ Apple 现在对 Device UDID 限制使用，我们使用 [OpenUDID](https://githu
 
 ###功能说明
 
-`温馨提示，设置标签别名请注意处理call back结果。只有call back 返回值为 0 才设置成功，才可以向目标推送。否则服务器 API 会返回1011错误
-`
+> 温馨提示，设置标签别名请注意处理call back结果。只有call back 返回值为 0 才设置成功，才可以向目标推送。否则服务器 API 会返回1011错误
+
 提供几个相关 API 用来设置别名（alias）与标签（tags）。
 
 这几个 API 可以在 App 里任何地方调用。
@@ -90,11 +90,11 @@ Apple 现在对 Device UDID 限制使用，我们使用 [OpenUDID](https://githu
 
 该方法是 setTagsWithAlias (with Callback) 的简化版本，用于只变更标签的情况。
 
-	使用建议
-	
-	如果待设置的 alias / tags 是动态的，有可能在调用 setTagsWithAlias 时因为 alias / tags 无效而整调用失败。
-
-	调用此方法只设置 tags，可以排除可能的无效的 alias 对本次调用的影响。
+> 使用建议
+> 
+> 如果待设置的 alias / tags 是动态的，有可能在调用 setTagsWithAlias 时因为 alias / tags 无效而整调用失败。
+> 
+> 调用此方法只设置 tags，可以排除可能的无效的 alias 对本次调用的影响。
 
 #### 支持的版本
 
@@ -115,6 +115,9 @@ Apple 现在对 Device UDID 限制使用，我们使用 [OpenUDID](https://githu
 	+ nil 此次调用不需要 Callback。
 	+ 用于回掉返回对应的参数 alias, tags。并返回对应的状态码：0为成功，其他返回码请参考错误码定义。
 	+ 回调函数请参考SDK 实现。
++ callbackSelector
+	+ nil 此次调用不需要 Callback。
+	+ 用于回掉返回对应的参数 alias, tags。并返回对应的状态码：0为成功，其他返回码请参考错误码定义。
 + theTarget
 	+ 参数值为实现了callbackSelector的实例对象。
 	+ nil 此次调用不需要 Callback。
@@ -164,13 +167,13 @@ Apple 现在对 Device UDID 限制使用，我们使用 [OpenUDID](https://githu
 
 如果总数量超出最大限制则返回最大数量的靠前的可用tags。
 
-	使用建议
-	
-	设置 tags 时，如果其中一个 tag 无效，则整个设置过程失败。
-
-	如果 App 的 tags 会在运行过程中动态设置，并且存在对 JPush SDK tag 规定的无效字符，则有可能一个 tag 无效导致这次调用里所有的 tags 更新失败。
-	
-	这时你可以调用本方法 filterValidTags 来过滤掉无效的 tags，得到有效的 tags，再调用 JPush SDK 的 set tags / alias 方法。
+> 使用建议
+> 
+> 设置 tags 时，如果其中一个 tag 无效，则整个设置过程失败。
+> 
+> 如果 App 的 tags 会在运行过程中动态设置，并且存在对 JPush SDK tag 规定的无效字符，则有可能一个 tag 无效导致这次调用里所有的 tags 更新失败。
+> 
+> 这时你可以调用本方法 filterValidTags 来过滤掉无效的 tags，得到有效的 tags，再调用 JPush SDK 的 set tags / alias 方法。
 
 
 #### 支持的版本
@@ -188,6 +191,20 @@ Apple 现在对 Device UDID 限制使用，我们使用 [OpenUDID](https://githu
 #### 接口返回
 
 有效的 tag 集合。
+
+
+### 错误码定义
+
+Code|描述|详细解释
+-|-|
+6001|无效的设置，tag/alias 不应参数都为 null|
+6002|设置超时	|建议重试
+6003|alias 字符串不合法	|有效的别名、标签组成：字母（区分大小写）、数字、下划线、汉字。
+6004|alias超长。最多 40个字节	|中文 UTF-8 是 3 个字节
+6005|某一个 tag 字符串不合法	|有效的别名、标签组成：字母（区分大小写）、数字、下划线、汉字。
+6006|某一个 tag 超长。一个 tag 最多 40个字节	|中文 UTF-8 是 3 个字节
+6007|tags 数量超出限制。最多 100个	|这是一台设备的限制。一个应用全局的标签数量无限制。
+6008|tag/alias 超出总长度限制。总长度最多 1K 字节	|
 
 
 ##获取 APNs 推送内容
@@ -211,6 +228,8 @@ iOS 设备收到一条推送（APNs），用户点击推送通知打开应用时
 
 		- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo;
 		// apn内容为userInfo
+		
+		
 + 如果是使用 iOS 7 的 Remote Notification 特性那么处理函数需要使用
 
 		- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler;
@@ -265,7 +284,8 @@ r1.2.5 以后。
 		NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
 		[defaultCenter addObserver:self selector:@selector(networkDidReceiveMessage:) name:kAPNetworkDidReceiveMessageNotification object:nil];
 
-2、实现回调方法 networkDidReceiveMessage
+
+2. 实现回调方法 networkDidReceiveMessage
 
 		- (void)networkDidReceiveMessage:(NSNotification *)notification {
 		    NSDictionary * userInfo = [notification userInfo];
@@ -274,7 +294,9 @@ r1.2.5 以后。
 		    NSString *customizeField1 = [extras valueForKey:@"customizeField1"]; //自定义参数，key是自己定义的
 		 
 		}
-参数描述：
+		
+		
+####参数描述：
 
 content：获取推送的内容
 
@@ -310,15 +332,15 @@ r1.7.0 开始支持。
 
 	+ (NSString *)registrationID
 
-`开发者在自定义的监听kAPNetworkDidRegisterNotification时也可以通过"RegistrationID"这个key值来获取对应的 RegistrationID。
-`			
+> 开发者在自定义的监听kAPNetworkDidRegisterNotification时也可以通过"RegistrationID"这个key值来获取对应的 RegistrationID。
+		
 ###	 附加说明
 
 ####通过 RegistrationID 推送消息和通知
 
 可以通过 RegistrationID 来推送消息和通知， 参考文档 Push API v2， 当 receiver_type = 5 并且设置 receiver_value 为 RegistrationID 时候即可根据 RegistrationID 推送。
 
-`注：要使用此功能，客户端 App 一定要集成有 r1.7.0 及以上版本的 JPush IOS SDK`
+> 注：要使用此功能，客户端 App 一定要集成有 r1.7.0 及以上版本的 JPush IOS SDK
 
 ## 页面的统计
 
@@ -348,8 +370,8 @@ r1.7.0 版本开始。
 
  应在所有的需要统计得页面得 viewWillAppear 和 viewWillDisappear 加入 startLogPageView 和 stopLogPageView 来统计当前页面的停留时间。
 
-`或者直接使用 beginLogPageView 来自定义加入页面和时间信息。
-`
+> 或者直接使用 beginLogPageView 来自定义加入页面和时间信息。
+
 ### 代码示例
 
 	- (void)viewWillAppear:(BOOL)animated

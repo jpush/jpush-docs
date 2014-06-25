@@ -79,7 +79,7 @@ JPush 目前在网络策略方面没有像微信这种聊天工具做得积极�
 5. 检查网络是否可用，如果网络可用则连接服务器登录，否则启动失败
 6. 登陆成功后可以从log中看到如下log
 
-![](image/jpush.jpg)
+![](../image/jpush.jpg)
 
 ### 测试确认
 
@@ -96,7 +96,8 @@ JPush 目前在网络策略方面没有像微信这种聊天工具做得积极�
 
 推送消息时，要指定推送的对象：全部，某一个人，或者某一群人。
 
-	JPush 目前还提供根据 IMEI 推送。但这个建议仅用于测试目的。原因很简单：很多 Android 设备是取不到 IMEI 的。
+> JPush 目前还提供根据 IMEI 推送。但这个建议仅用于测试目的。原因很简单：很多 Android 设备是取不到 IMEI 的。
+
 	
 全部很好办，针对某应用“群发”就好了。Portal与API都支持向指定的 appKey 群发消息。
 
@@ -121,7 +122,7 @@ JPush 目前在网络策略方面没有像微信这种聊天工具做得积极�
 2. JPush SDK 把该关系设置保存到 JPush Server 上
 3. 在服务器端推送消息时，指定向之前设置过的别名或者标签推送
 
-SDK 支持的 setAliasAndTags 请参考相应的文档：别名与标签 API
+SDK 支持的 setAliasAndTags 请参考相应的文档：[别名与标签 API](../android_api)
 
 使用过程中有几个点做特别说明：
 
@@ -252,21 +253,21 @@ JPush 通知推送到客户端时，默认使用手机的默认设置来显示�
 
 通知栏样式在服务器端向下推送时，只体现为一个编号（数字）。
 
-	推送通知的样式编号，应该是在客户端做了自定义通知栏样式设置的。
+> 推送通知的样式编号，应该是在客户端做了自定义通知栏样式设置的。
+> 
+> 如果通知上的样式编号，在客户端检查不存在，则使用默认的通知栏样式。
 
-	如果通知上的样式编号，在客户端检查不存在，则使用默认的通知栏样式。
-	
 开发者不自定义通知栏样式时，则此编号默认为 0。
 
 开发者自定义的通知栏样式编号应大于 0，小于 1000。
 
 在 Portal 上发送通知时，最下边的“可选”部分展开，开发者可指定当前要推送的通知的样式编号。如下图所示：
 
-![](image/image2012-11-6 9_16_45.png)
+![](../image/image2012-11-6_9_16_45.png)
 
 ### 客户端定义通知栏样式
 
-自定义的通知栏样式，是在客户端进行的。请参考 [通知栏样式定制API]() 来看所支持的功能。
+自定义的通知栏样式，是在客户端进行的。请参考 [通知栏样式定制API](../android_api) 来看所支持的功能。
 
 ####自定义通知栏样式设计
 
@@ -297,7 +298,8 @@ JPush 通知推送到客户端时，默认使用手机的默认设置来显示�
 
 基于基础的 PushNotificationBuilder，可进一步地定制 Notification 的 Layout。
 
-`这里作为 example 的 customer_notitfication_layout 在我们的 example 项目的 /res/layout/ 下可以找到。你完全可以用自己的 layout。`
+> 这里作为 example 的 customer_notitfication_layout 在我们的 example 项目的 /res/layout/ 下可以找到。你完全可以用自己的 layout。
+
 
 	CustomPushNotificationBuilder builder = new 
 	CustomPushNotificationBuilder(MainActivity.this,
@@ -326,7 +328,7 @@ JPush 通知推送到客户端时，默认使用手机的默认设置来显示�
 
 ###参考
 
-+ [通知栏样式定制 API]()
++ [通知栏样式定制 API](../android_api)
 
 ##通知 vs. 自定义消息
 
@@ -354,9 +356,9 @@ JPush 通知推送到客户端时，默认使用手机的默认设置来显示�
 
 自定义消息主要用于应用的内部业务逻辑。一条自定义消息推送过来，有可能没有任何界面显示。
 
-	本质上：自定义消息是原始的消息，JPush SDK 不做处理。而通知，则 JPush SDK 会做通知展示处理，其目的是为了减轻开发人员的工作量。
-
-	所以，如果通知功能不太符合您的需求，你都可以使用自定义消息来实现（客户端展现App自己来做）。
+> 本质上：自定义消息是原始的消息，JPush SDK 不做处理。而通知，则 JPush SDK 会做通知展示处理，其目的是为了减轻开发人员的工作量。
+> 
+> 所以，如果通知功能不太符合您的需求，你都可以使用自定义消息来实现（客户端展现App自己来做）。
 
 
 
@@ -382,21 +384,217 @@ SDK 不会把自定义消息展示到通知栏。
 
 请参考以下示例代码。
 
-__插入代码__
-
+```
+public class MyReceiver extends BroadcastReceiver {
+    private static final String TAG = "MyReceiver";
+     
+    private NotificationManager nm;
+     
+    @Override
+    public void onReceive(Context context, Intent intent) {
+        if (null == nm) {
+            nm = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+        }
+         
+        Bundle bundle = intent.getExtras();
+        Logger.d(TAG, "onReceive - " + intent.getAction() + ", extras: " + AndroidUtil.printBundle(bundle));
+         
+        if (JPushInterface.ACTION_REGISTRATION_ID.equals(intent.getAction())) {
+            Logger.d(TAG, "JPush用户注册成功");
+             
+        } else if (JPushInterface.ACTION_MESSAGE_RECEIVED.equals(intent.getAction())) {
+            Logger.d(TAG, "接受到推送下来的自定义消息");
+                     
+        } else if (JPushInterface.ACTION_NOTIFICATION_RECEIVED.equals(intent.getAction())) {
+            Logger.d(TAG, "接受到推送下来的通知");
+     
+            receivingNotification(context,bundle);
+ 
+        } else if (JPushInterface.ACTION_NOTIFICATION_OPENED.equals(intent.getAction())) {
+            Logger.d(TAG, "用户点击打开了通知");
+        
+           openNotification(context,bundle);
+ 
+        } else {
+            Logger.d(TAG, "Unhandled intent - " + intent.getAction());
+        }
+    }
+ 
+   private void receivingNotification(Context context, Bundle bundle){
+        String title = bundle.getString(JPushInterface.EXTRA_NOTIFICATION_TITLE);
+        Logger.d(TAG, " title : " + title);
+        String message = bundle.getString(JPushInterface.EXTRA_ALERT);
+        Logger.d(TAG, "message : " + message);
+        String extras = bundle.getString(JPushInterface.EXTRA_EXTRA);
+        Logger.d(TAG, "extras : " + extras);
+    } 
+ 
+   private void openNotification(Context context, Bundle bundle){
+        String extras = bundle.getString(JPushInterface.EXTRA_EXTRA);
+        String myValue = ""; 
+        try {
+            JSONObject extrasJson = new JSONObject(extras);
+            myValue = extrasJson.optString("myKey");
+        } catch (Exception e) {
+            Logger.w(TAG, "Unexpected: extras is not a valid json", e);
+            return;
+        }
+        if (TYPE_THIS.equals(myValue)) {
+            Intent mIntent = new Intent(context, ThisActivity.class);
+            mIntent.putExtras(bundle);
+            mIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(mIntent);
+        } else if (TYPE_ANOTHER.equals(myValue)){
+            Intent mIntent = new Intent(context, AnotherActivity.class);
+            mIntent.putExtras(bundle);
+            mIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(mIntent);
+        }
+    }
+}
+```
 ### 使用自定义消息
 
 使用自定义消息，在客户端App里一定要写代码，去接受 JPush SDK 的广播，从而取得推送下来的消息内容。具体请参考文档：接收推送消息Receiver。
 
 以下代码来自于推聊。
 
-__插入代码__
-
-
+```
+public class TalkReceiver extends BroadcastReceiver {
+    private static final String TAG = "TalkReceiver";
+     
+    private NotificationManager nm;
+     
+    @Override
+    public void onReceive(Context context, Intent intent) {
+        if (null == nm) {
+            nm = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+        }
+         
+        Bundle bundle = intent.getExtras();
+        Logger.d(TAG, "onReceive - " + intent.getAction() + ", extras: " + AndroidUtil.printBundle(bundle));
+         
+        if (JPushInterface.ACTION_REGISTRATION_ID.equals(intent.getAction())) {
+            Logger.d(TAG, "JPush用户注册成功");
+             
+        } else if (JPushInterface.ACTION_MESSAGE_RECEIVED.equals(intent.getAction())) {
+            Logger.d(TAG, "接受到推送下来的自定义消息");
+             
+            // Push Talk messages are push down by custom message format
+            processCustomMessage(context, bundle);
+         
+        } else if (JPushInterface.ACTION_NOTIFICATION_RECEIVED.equals(intent.getAction())) {
+            Logger.d(TAG, "接受到推送下来的通知");
+     
+            receivingNotification(context,bundle);
+ 
+        } else if (JPushInterface.ACTION_NOTIFICATION_OPENED.equals(intent.getAction())) {
+            Logger.d(TAG, "用户点击打开了通知");
+        
+           openNotification(context,bundle);
+ 
+        } else {
+            Logger.d(TAG, "Unhandled intent - " + intent.getAction());
+        }
+    }
+     
+    private void processCustomMessage(Context context, Bundle bundle) {
+        String title = bundle.getString(JPushInterface.EXTRA_TITLE);
+        String message = bundle.getString(JPushInterface.EXTRA_MESSAGE);
+        if (StringUtils.isEmpty(title)) {
+            Logger.w(TAG, "Unexpected: empty title (friend). Give up");
+            return;
+        }
+         
+        boolean needIncreaseUnread = true;
+         
+        if (title.equalsIgnoreCase(Config.myName)) {
+            Logger.d(TAG, "Message from myself. Give up");
+            needIncreaseUnread = false;
+            if (!Config.IS_TEST_MODE) {
+                return;
+            }
+        }
+         
+        String channel = null;
+        String extras = bundle.getString(JPushInterface.EXTRA_EXTRA);
+        try {
+            JSONObject extrasJson = new JSONObject(extras);
+            channel = extrasJson.optString(Constants.KEY_CHANNEL);
+        } catch (Exception e) {
+            Logger.w(TAG, "Unexpected: extras is not a valid json", e);
+        }
+         
+        // Send message to UI (Webview) only when UI is up 
+        if (!Config.isBackground) {
+            Intent msgIntent = new Intent(MainActivity.MESSAGE_RECEIVED_ACTION);
+            msgIntent.putExtra(Constants.KEY_MESSAGE, message);
+            msgIntent.putExtra(Constants.KEY_TITLE, title);
+            if (null != channel) {
+                msgIntent.putExtra(Constants.KEY_CHANNEL, channel);
+            }
+             
+            JSONObject all = new JSONObject();
+            try {
+                all.put(Constants.KEY_TITLE, title);
+                all.put(Constants.KEY_MESSAGE, message);
+                all.put(Constants.KEY_EXTRAS, new JSONObject(extras));
+            } catch (JSONException e) {
+            }
+            msgIntent.putExtra("all", all.toString());
+             
+            context.sendBroadcast(msgIntent);
+        }
+         
+        String chatting = title;
+        if (!StringUtils.isEmpty(channel)) {
+            chatting = channel;
+        }
+         
+        String currentChatting = MyPreferenceManager.getString(Constants.PREF_CURRENT_CHATTING, null);
+        if (chatting.equalsIgnoreCase(currentChatting)) {
+            Logger.d(TAG, "Is now chatting with - " + chatting + ". Dont show notificaiton.");
+            needIncreaseUnread = false;
+            if (!Config.IS_TEST_MODE) {
+                return;
+            }
+        }
+         
+        if (needIncreaseUnread) {
+            unreadMessage(title, channel);
+        }
+         
+        NotificationHelper.showMessageNotification(context, nm, title, message, channel);
+    }
+     
+    // When received message, increase unread number for Recent Chat
+    private void unreadMessage(final String friend, final String channel) {
+        new Thread() {
+            public void run() {
+                String chattingFriend = null;
+                if (StringUtils.isEmpty(channel)) {
+                    chattingFriend = friend;
+                }
+                 
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("udid", Config.udid);
+                params.put("friend", chattingFriend);
+                params.put("channel_name", channel);
+                 
+                try {
+                    HttpHelper.post(Constants.PATH_UNREAD, params);
+                } catch (Exception e) {
+                    Logger.e(TAG, "Call pushtalk api to report unread error", e);
+                }
+            }
+        }.start();
+    }
+}
+```
 ### 参考
 + [接收推送消息Receiver
-]()
+](../android_api)
 + [自定义通知栏样式教程
-]()
+](../android_api)
 + [通知栏样式定制 API
-]()
+](../android_api)

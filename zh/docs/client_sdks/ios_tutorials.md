@@ -29,7 +29,7 @@
 
 ### 可能存在的其他问题
 
-收到消息不够稳定
+####收到消息不够稳定
 
 JPush iOS 是对原生官方 APNs 推送的一个补充，是对其的封装，以帮助开发人员更轻松地使用 APNs 。
 
@@ -43,61 +43,61 @@ JPush iOS 是对原生官方 APNs 推送的一个补充，是对其的封装，�
 
 + 登陆 [iOS Dev Center](https://developer.apple.com/devcenter/ios/index.action) 选择进入iOS Provisioning Portal。
 
-![](image/login.png)
+![](../image/login.png)
 
 + 在 [iOS Provisioning Portal](https://daw.apple.com/cgi-bin/WebObjects/DSAuthWeb.woa/wa/login?&appIdKey=891bd3417a7776362562d2197f89480a8547b108fd934911bcbea0110d07f757&path=%2F%2Faccount%2Findex.action)中，点击App IDs进入App ID列表。
 
-![](image/appid.png)
+![](../image/appid.png)
 
 + 创建 App ID，如果 ID 已经存在可以直接跳过此步骤
 
-![](image/appid2.png)
+![](../image/appid2.png)
 
 + 为 App 开启 Push Notification 功能。如果是已经创建的 App ID 也可以通过设置开启 Push Notification 功能。
 
-![](image/appservice.png)
+![](../image/appservice.png)
 
 根据实际情况完善 App ID 信息并提交,注意此处需要指定具体的 Bundle ID 不要使用通配符。
 
-![](image/appid3.png)
+![](../image/appid3.png)
 
 ### 配置和下载证书
 
 + 如果你之前没有创建过 Push 证书或者是要重新创建一个新的，请在证书列表下面新建。
 
-![](image/cer0.png)
+![](../image/cer0.png)
 
 + 新建证书需要注意选择证书种类（开发证书用于开发和调试使用，生产证书用于 App Store 发布）
 
-![](image/cer1.png)
+![](../image/cer1.png)
 
 + 点击 Continue 后选择证书对应的应用ID，然后继续会出现“About Creating a Certificate Signing Request (CSR)”。
 
-![](image/cer2.png)
+![](../image/cer2.png)
 
 + 根据它的说明创建打开KeychainAccess 创建 Certificate Signing Request。
 
-![](image/Screenshot_13-4-1_5_22.png)
+![](../image/Screenshot_13-4-1_5_22.png)
 
 + 填写“User Email Address”和“Common Name” 后选择 Saved to disk 进行保存 。
 
-![](image/Snip20140122_7.png)
+![](../image/Snip20140122_7.png)
 
 + 继续返回Apple developer 网站点击 Continue ，上传刚刚生成的 .certSigningRequest 文件生成 APNs Push  Certificate。
 + 下载并双击打开证书，证书打开时会启动“钥匙串访问”工具。
 + 在“钥匙串访问”中你的证书会显示在“我的证书”中，注意选择“My Certificates” 和"login"
 
-![](image/keychain_cert.png)
+![](../image/keychain_cert.png)
 
 + 导出 .p12 证书文件
 
-`注意要选“login”和“My Certificates” 导出证书时要选中证书文件，不要展开private key。
-`
-![](image/export_p12.png)
+> 注意要选“login”和“My Certificates” 导出证书时要选中证书文件，不要展开private key。
+
+![](../image/export_p12.png)
 
 + 将文件保存为Personal Information Exchange (.p12)格式。
 
-![](image/export_filename.png)
+![](../image/export_filename.png)
 
 + 将文件保存为Personal Information Exchange (.p12)格式。
 
@@ -113,13 +113,13 @@ JPush iOS 是对原生官方 APNs 推送的一个补充，是对其的封装，�
 
 Remote Notifications 与之前版本的对比可以参考下面两张 Apple 官方的图片便可一目了然。
 
-![](image/iOS6_push.jpg)
+![](../image/iOS6_push.jpg)
 
-![](image/iOS7.png)
+![](../image/iOS7.png)
 
 如果只携带content-available: 1 不携带任何badge，sound 和消息内容等参数，则可以不打扰用户的情况下进行内容更新等操作即为“Silent Remote Notifications”。
 
-![](image/silent.png)
+![](../image/silent.png)
 
 ### 客户端设置
 
@@ -127,7 +127,7 @@ Remote Notifications 与之前版本的对比可以参考下面两张 Apple 官�
 
 需要在Xcode 中修改应用的 Capabilities 开启Remote notifications，请参考下图：
 
-![](image/Snip20131119_1.png)
+![](../image/Snip20131119_1.png)
 
 #### 修改通知处理函数
 
@@ -143,7 +143,7 @@ Remote Notifications 与之前版本的对比可以参考下面两张 Apple 官�
 
 在“可选设置内”选择对应的参数。
 
-![](image/push.png)
+![](../image/push.png)
 
 #### 使用 API 推送
 
