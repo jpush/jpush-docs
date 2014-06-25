@@ -30,24 +30,24 @@
 + pdf文件：开发指南
 + demo文件夹：示例
 
-#### 开发环境
+### 开发环境
 
 + 建议使用 XCode 4.5 或以上版本
 
 ##SDK集成步骤
 
-#### 1、在JPush Portal上创建应用
+### 1、在JPush Portal上创建应用
 
 + 在JPush的管理Portal上 上传证书并创建应用。如果对APNs证书不太了解 请参考 iOS 证书设置指南
-![](image/create_ios_app.png)
+![](../image/create_ios_app.png)
 + 创建成功后自动生成 AppKey 用以标识该应用。
-![](image/Screenshot_13-4_2_create.png)
+![](../image/Screenshot_13-4_2_create.png)
 
-#### 2、导入API开发包到应用程序项目
+### 2、导入API开发包到应用程序项目
 
 + 将SDK包解压，在XCode中选择“Add files to 'Your project name'...”，将解压后的lib子文件夹（包含APService.h、libPushSDK.a）添加到你的工程目录中。
 
-#### 3、必要的框架
+### 3、必要的框架
 
 + CFNetwork.framework
 + CoreFoundation.framework
@@ -59,11 +59,11 @@
 + Security.framework
 + libz.dylib
 
-#### 4、Build Settings
+### 4、Build Settings
 
 + 设置 Search Paths 下的 User Header Search Paths 和 Library Search Paths，比如SDK文件夹（默认为lib）与工程文件在同一级目录下，则都设置为"$(SRCROOT)/[文件夹名称]"即可。
 
-#### 5、创建并配置PushConfig.plist文件
+### 5、创建并配置PushConfig.plist文件
 
 在你的工程中创建一个新的Property List文件，并将其命名为PushConfig.plist，填入Portal为你的应用提供的APP_KEY等参数。
 
@@ -72,9 +72,21 @@
 	 "CHANNEL" = "Publish channel";
 	 "APP_KEY" = "AppKey copied from JPush Portal application";
 	}
-#### 6、添加代码
+	
++ CHANNEL
+	+ 指明应用程序包的下载渠道，为方便分渠道统计。根据你的需求自行定义即可。
++ APP_KEY
+	+ 在管理Portal上创建应用时自动生成的（AppKey）用以标识该应用。请确保应用内配置的 AppKey 与第1步在 Portal 上创建应用时生成的 AppKey 一致，AppKey 可以在应用详情中查询。
+	
+![](../image/Screenshot_13-4-15_3_31.png)
 
-######API
++ APS_FOR_PRODUCTION
+	+ 1.3.1版本新增，表示应用是否采用生产证书发布( Ad_Hoc 或 APP Store )，0 (默认值)表示采用的是开发者证书，1 表示采用生产证书发布应用。请注意此处配置与 Web Portal 应用环境设置匹配。
++ 在1.2.2或之前版本的配置文件中，有 TEST_MODE 这个键，新版的SDK不再使用，可以将它删除。
+
+### 6、添加代码
+
+#### API
 
 APIs 主要集中在 APService 接口类里。
 
@@ -92,7 +104,7 @@ APIs 主要集中在 APService 接口类里。
 	// handle notification recieved
 	+ (void)handleRemoteNotification:(NSDictionary *)remoteInfo;
 	
-######调用代码
+#### 调用代码
 监听系统事件，相应地调用 JPush SDK 提供的 API 来实现功能。
 
 以下 ３ 个事件监听与调用 JPush SDK API 都是必须的。请直接复制如下代码块里，注释为 "Required" 的行，到你的应用程序代理类里相应的监听方法里。
@@ -120,7 +132,7 @@ APIs 主要集中在 APService 接口类里。
 		// Required
 		[APService handleRemoteNotification:userInfo];
 	}
-######监听通知
+#### 监听通知
 
 API里面提供了下面 5 种类型的通知：
 
@@ -140,16 +152,12 @@ extern NSString * const kAPNetworkDidReceiveMessageNotification; // 收到消息
 
 请参考：
 
-标签与别名API
+[标签与别名API](../../client_sdks/ios_api)
 
-页面的统计
+[页面的统计](../../client_sdks/ios_api)
 
 ##技术支持
 
-邮件联系：support@jpush.cn
+邮件联系：<support@jpush.cn>
 
-问答社区：http://www.jpush.cn/qa/
-
-
-
-
+问答社区：[http://www.jpush.cn/qa/](http://www.jpush.cn/qa/)

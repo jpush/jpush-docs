@@ -10,7 +10,7 @@ pages:
 - [dev_guides/android_3m.md, 开发指南, 3 分钟快速集成 JPush Android SDK]
 - [dev_guides/winphone_3m.md, 开发指南, 3 分钟快速集成 JPush Windows Phone SDK]
 
-- [dev_guides/sample_code.md, 开发指南, 示例与代码集成指南]
+- [dev_guides/sample_code.md, 开发指南, 示例与代码]
 
 - [client_sdks/android_sdk.md, 客户端SDK, Andorid SDK 概述]
 - [client_sdks/android_tutorials.md, 客户端SDK, Andorid SDK 教程]

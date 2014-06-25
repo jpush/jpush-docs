@@ -8,7 +8,7 @@
 + 客户端收到推送并显示在状态栏pi
 
 ## 第一步：创建极光推送开发者帐号
-要创建极光推送开发者帐号，请访问极光推送官方网站 [http://jpush.cn](http://jpush.cn)
+要创建极光推送开发者帐号，请访问[极光推送官方网站http://jpush.cn](http://jpush.cn)
 
 ![](../image/jpush_app_register.png)
  
@@ -60,6 +60,8 @@
 ![](../image/Screenshot_13-4-10.png)
 
 ## 第九步：在LogCat中查看收到的消息
+推送消息可以在LogCat日志中查看，开发者根据自己需要做展现处理，Jpush不做干预。
+
 
 ![](../image/Screenshot_13-4-10_log.png)
 
