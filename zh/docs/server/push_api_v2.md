@@ -1,4 +1,4 @@
-# Push API v2
+# REST API v2
 
 > 特别提示：建议不要在客户端里写代码直接调用此 API。因为 Android apk 比较容易破解，别人很容易从客户端代码里找出来调用 JPush Remote API 所需要的保密信息，从而可以模拟到你的身份来发起恶意的推送。
 
@@ -191,7 +191,7 @@ HTTP 返回码为 200 时，是业务相关的错误。
 
 查询消息送达情况请参考： [Report-API](../report_api)
 
-了解API 频率限制：[API 频率限制](../api_rate_limiting)
+了解API 频率限制：[API 频率限制](../api_rate_limiting/)
 
 
 
