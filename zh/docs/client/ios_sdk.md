@@ -1,6 +1,6 @@
 # iOS SDK
 
-## JPush iOS 的意义
+### JPush iOS 的意义
 
 由于 iOS 平台的特殊性不允许在后台常驻工作，推送采用统一的下发通道：APNs（Apple Push Notification Service）。
 
@@ -16,19 +16,19 @@ JPush iOS 推送也是基于对 APNs 的封装。但是JPush iOS 推送比起开
 + 应用内推送：
 	+ 嵌入了 JPush iOS SDK 的应用，当应用启动后，可以在应用内从 JPush 的服务器上直接获取推送消息以及获取离线消息，极大的保证了推送的可靠性。
 
-## APNs 通知
+### APNs 通知
 
 APNs 通知：是指开发者向应用推送通知后由 APNs 服务器下发的到系统，由 iOS 系统提供展现方式。用户可以通过系统的 “设置” >> “通知” 进行设置。
 
 [获取 APNs 推送内容](../ios_api)
 
-## 应用内消息
+### 应用内消息
 
 应用内消息：为了保证推送的可靠性，JPush SDK 提供了应用内消息，当应用打开后可以直接从JPush server 获取推送消息。此消息不经过 APNS 服务器。 
 
 [获取应用内推送信息](../ios_api)
 
-## APNs消息与应用内消息对比
+### APNs消息与应用内消息对比
 
 如果只需要发送通知，则可以忽略应用内消息的处理。对于两种消息的代码处理可以参考API部分的描述。
 
@@ -41,12 +41,7 @@ APNs 通知：是指开发者向应用推送通知后由 APNs 服务器下发的
 |展示效果|如果应用后台或退出，会以系统通知方式展现。<p>如果应用处于打开状态，不展示。|默认不展示。|
 |处理函数|didReceiveRemoteNotification|networkDidReceiveMessage|
 
-## iOS实现与架构图
+### iOS实现与架构图
 
 JPush APNs 的实现可以参考极光博客的一篇文章：[http://blog.jpush.cn/apns/](http://blog.jpush.cn/apns/)
-
-## 开发者贡献：集成到其他平台
-
-+ [客户端 SDK集成插件](../client_plugins)
-
 

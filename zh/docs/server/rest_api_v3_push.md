@@ -1,9 +1,7 @@
-<h1>REST API <small>v3</small></h1>
-
-## Push API
+<h1>Push API <small>v3</small></h1>
 
 
-	这是 Push API 最新的版本。在 v3 新版本启用后，原 v2 版本不再维护，会继续支持运行一段时间。
+	这是 Push API 最新的版本。
 	相比 API v2 版本，v3 版本的改进为：
 	* 完全基于 https，不再提供 http 访问；
 	* 使用 HTTP  Basic Authentication 的方式做访问授权。这样整个 API 请求可以使用常见的 HTTP 工具来完成，比如：curl, 浏览器插件等；
@@ -52,17 +50,9 @@ HTTP Header（头）里加一个字段（Key/Value对）：
 
 ### 推送对象
 
-一个推送对象，以 JSON 格式表达，表示一条推送相关的所有信息，最多包含以下五个方面：
+一个推送对象，以 JSON 格式表达，表示一条推送相关的所有信息。
 
-关键字||含义
--|-|-
-platform | 必填 | 推送平台设置
-audience | 必填 | 推送设备指定 
-notification|可选|通知内容体。是被推送到客户端的内容。与 message 一起二者必须有其一，可以二者并存
-message|可选|消息内容体。是被推送到客户端的内容。与 notification 一起二者必须有其一，可以二者并存 
-options | 可选  | 推送参数 
-
-
+##### 示例与说明
 
 ```
 {
@@ -77,11 +67,22 @@ options | 可选  | 推送参数
 		 "extras" : { "newsid" : 321}
 	  }
    },
+   "message": {
+   	"msg_content": "Demo msg"   }
    "options" : {
 	  "time_to_live" : 60
    }
 }
 ```
+
+关键字||含义
+-|-|-
+platform | 必填 | 推送平台设置
+audience | 必填 | 推送设备指定 
+notification|可选|通知内容体。是被推送到客户端的内容。与 message 一起二者必须有其一，可以二者并存
+message|可选|消息内容体。是被推送到客户端的内容。与 notification 一起二者必须有其一，可以二者并存 
+options | 可选  | 推送参数 
+
 
 #### platform 
 
@@ -309,7 +310,7 @@ extras|	JSON Array	|可选	|扩展字段|	作为参数附加到上述打开页�
 
 
 
-###### message
+#### message
 
 应用内消息。或者称作：自定义消息，透传消息。
 
@@ -330,7 +331,7 @@ Windows Phone 平台上，暂时不支持应用内消息。
 
 > notification 与 message 并存（一次推送都发）时，当前版本 Android 只能收到通知部分，message 部分暂未时透传给 App。稍后的 Android SDK 版本升级会支持。
 
-##### options
+#### options
 
 推送可选项。
 
@@ -371,11 +372,9 @@ Code|	描述|	详细解释|	实际提示信息|	HTTP Status Code
 
 ### 参考
 
-+ 获取推送送达API：[Report-API](../report_api)
-+ 老版本 [Push v2 API：Push API v2](../push_api_v2)
++ 获取推送送达API：[Report-API](../report_api_v3)
++ 老版本 Push API：[Push API v2](../push_api_v2)
 + HTTP规范参考：[HTTP基本认证](http://zh.wikipedia.org/zh/HTTP基本认证)
 + Apple APNs 规范：[Apple Push Notification Service](https://developer.apple.com/library/ios/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW12)
 + Microsoft MPNs 规范：[Push notifications for Windows Phone 8](http://msdn.microsoft.com/en-us/library/windowsphone/develop/ff402558(v=vs.105).aspx)
 
-
-## Report API

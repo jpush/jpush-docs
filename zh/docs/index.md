@@ -4,7 +4,7 @@
 .home_section {
 	margin-left: 16px;
 	margin-right: 16px;
-	margin-top: 14px;	margin-bottom: 14px;}
+	margin-top: 14px;}
 </style>
 
 

@@ -1,9 +1,4 @@
-# REST API v2
-
-> 特别提示：建议不要在客户端里写代码直接调用此 API。因为 Android apk 比较容易破解，别人很容易从客户端代码里找出来调用 JPush Remote API 所需要的保密信息，从而可以模拟到你的身份来发起恶意的推送。
-
-
-> 建议的使用方式是：调用 JPush Remote API 的代码放在你自己的应用服务器上。你自己的应用服务器对自己的客户端提供接口来推送消息。具体请参考推聊的作法：[示例与代码。]()
+<h1>REST API <small>v2</small></h1>
 
 ## 推送全功能接口
 
@@ -27,21 +22,105 @@ http://api.jpush.cn:8800/v2/push
 
 ### 调用参数
 
+#### sendno
+
+int 必须 
+
+发送编号（最大支持32位正整数(即 4294967295 )）。由开发者自己维护，用于开发者自己标识一次发送请求。
+
+#### app_key
+
+int 必须
+
+待发送的应用程序(appKey)，只能填一个。
+
+#### receiver_type
+
+int 必须
+
+接收者类型。
+
+2 - 指定的 tag。    
+3 - 指定的 alias。    
+4 - 广播：对 app_key 下的所有用户推送消息。    
+5 - 根据 RegistrationID 进行推送。Android SDK r1.6.0 及以上版本支持。    
+
+#### receiver_value
+
+string 可选
+
+发送范围值，与 receiver_type 相对应。
+
+2 - App 调用 SDK API 设置的 tag （标签）。支持多达 10 个，使用 "," 间隔。填写多个 tag 时，最后推送对象是这多个 tag 的 user set 的并集，而不会有重复用户。    
+3 - App 调用 SDK API 设置的 alias （别名）。支持多达 1000 个，使用 "," 间隔。    
+4 - 不需要填。    
+5 - 目标设备的 RegistrationID。支持多达 1000 个，使用 “,” （逗号）间隔。    
+
+#### verification_code
+
+string 必须
+
+验证串，用于校验发送的合法性。
+
+由 sendno, receiver_type, receiver_value, master_secret 4个值拼接起来（直接拼接字符串）后，进行一次MD5 (32位大写) 生成。
+
+参考：[verification code 拼接示例]()
+
+由于验证串的组成部分有 String 内容，而 JPush采用 UTF-8 编码。所以，如果你的 API 调用没有使用 UTF-8 编码时，首先会遇到 verification_code 不正确验证失败的错误返回，导致调用不成功。
+
+#### msg_type
+
+int 必须
+
+发送消息的类型：
+
+1 - 通知
+
+2 - 自定义消息（只有 Android 支持） 
+
+#### msg_content
+
+int 必须
+
+描述此次发送调用。
+
+不会发到用户。
 
 
-| 参数名称	     | 参数类型    | 是否可选 |  说明   |
-| ------------- |:-------------:| -----:|----:|
-| sendno    | int | 必须 |发送编号（最大支持32位正整数(即 4294967295 )）。由开发者自己维护，用于开发者自己标识一次发送请求。|
-| app_key      | String      |   必须 |待发送的应用程序(appKey)，只能填一个。|
-| receiver_type | int      |    必须 |接收者类型。<p>2、指定的 tag。<p>3、指定的 alias<p>4、广播：对 app_key 下的所有用户推送消息。<>5、根据 RegistrationID 进行推送。Android SDK r1.6.0 及以上版本支持。相关文档：JPush Android SDK r1.6.0 版本更新支持 RegistrationID 精确对点推送。|
-|receiver_value|String|可选|发送范围值，与 receiver_type 相对应。<p>2、App 调用 SDK API 设置的 tag （标签）。支持多达 10 个，使用 "," 间隔。填写多个 tag 时，最后推送对象是这多个 tag 的 user set 的并集，而不会有重复用户。<p>3、App 调用 SDK API 设置的 alias （别名）。支持多达 1000 个，使用 "," 间隔。<p>4、不需要填<p>5、目标设备的 RegistrationID。支持多达 1000 个，使用 “,” （逗号）间隔
-|verification_code|String|必须	|验证串，用于校验发送的合法性。<p>由 sendno, receiver_type, receiver_value, master_secret 4个值拼接起来（直接拼接字符串）后，进行一次MD5 (32位大写) 生成。<p>参考：[verification code 拼接示例]()<p>由于验证串的组成部分有 String 内容，而 JPush采用 UTF-8 编码。所以，如果你的 API 调用没有使用 UTF-8 编码时，首先会遇到 verification_code 不正确验证失败的错误返回，导致调用不成功。|
-|msg_type|int|必须|发送消息的类型：<p>１、通知 <p>２、自定义消息（只有 Android 支持） |
-|msg_content|String|可选|描述此次发送调用。<p>不会发到用户。|
-|platform|String|必须	|目标用户终端手机的平台类型，如： android, ios, winphone 多个请使用逗号分隔。|
-|apns_production	|int	|可选	|指定 APNS 通知发送环境：0: 开发环境，1：生产环境。<p>如果不携带此参数则推送环境与 JPush Web 上的应用 APNS 环境设置相同。|
-|time_to_live|int|可选	|从消息推送时起，保存离线的时长。秒为单位。最多支持10天（864000秒）。<p> 0 表示该消息不保存离线。即：用户在线马上发出，当前不在线用户将不会收到此消息。<p>此参数不设置则表示默认，默认为保存1天的离线消息（86400秒）。|
-|override_msg_id|String|可选	|待覆盖的上一条消息的 ID。<p>指明了此参数，则当前消息会覆盖指定 ID 的消息。覆盖的具体行为是：1）如果被覆盖的消息用户暂时未收到，则以后也不会收到；2）如果被覆盖的消息 Android 用户已经收到，但未清除通知栏，则 Android 通知栏上展示时新的一条将覆盖前一条。<p>覆盖功能起作用的时限是：1 天。<p>如果在覆盖指定时限内该 msg_id 不存在，则返回 1003 错误，提示不是一次有效的消息覆盖操作，当前的消息不会被推送。|
+#### platform
+
+string 必须
+
+目标用户终端手机的平台类型，如： android, ios, winphone 多个请使用逗号分隔。
+
+#### apns_production
+
+int 可选	
+
+指定 APNS 通知发送环境：0: 开发环境，1：生产环境。<p>如果不携带此参数则推送环境与 JPush Web 上的应用 APNS 环境设置相同。
+
+#### time_to_live
+
+int 可选
+
+从消息推送时起，保存离线的时长。秒为单位。最多支持10天（864000秒）。<p> 0 表示该消息不保存离线。即：用户在线马上发出，当前不在线用户将不会收到此消息。<p>此参数不设置则表示默认，默认为保存1天的离线消息（86400秒）。
+
+#### override_msg_id
+
+string 可选
+
+待覆盖的上一条消息的 ID。
+
+指明了此参数，则当前消息会覆盖指定 ID 的消息。覆盖的具体行为是：
+
+1）如果被覆盖的消息用户暂时未收到，则以后也不会收到；
+
+2）如果被覆盖的消息 Android 用户已经收到，但未清除通知栏，则 Android 通知栏上展示时新的一条将覆盖前一条。
+
+覆盖功能起作用的时限是：1 天。
+如果在覆盖指定时限内该 msg_id 不存在，则返回 1003 错误，提示不是一次有效的消息覆盖操作，当前的消息不会被推送。
+
+
 
 ### 调用返回
 
@@ -186,8 +265,9 @@ HTTP 返回码为 200 时，是业务相关的错误。
 |1012|	iOS 不支持推送自定义消息。只有 Android 支持推送自定义消息。
 |1013|	content-type 只支持 application/x-www-form-urlencoded
 |1014|	消息内容包含敏感词汇。
-	
-## See Also
+
+
+## 参考
 
 查询消息送达情况请参考： [Report-API](../report_api)
 

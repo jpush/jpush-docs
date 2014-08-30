@@ -1,9 +1,10 @@
-# http status code
+# HTTP 状态码
+
 本文档定义 JPush REST API 的 HTTP 返回码规范。
 
 JPush Push API v3 新版本 API 满足此规范。JPush Report API 也满足此规范。
 
-## 状态码定义
+### 状态码定义
 
 Code         | 描述           |详细解释 
 ------------ | ------------  | ------------
@@ -20,14 +21,14 @@ Code         | 描述           |详细解释
 503          |服务暂时失效     | 服务器无法响应请求。请稍后重试。
 504          |代理超时	      | 服务器在运行，但是无法响应请求。请稍后重试。
 
-## 遵守的规范
+### 遵守的规范
 
 + 200 一定是正确。所有异常都不使用 200 返回码
 + 业务逻辑上的错误，有特别的错误码尽量使用 4xx，否则使用 400。
 + 服务器端内部错误，无特别错误码使用 500。
 + 业务异常时，返回内容使用 JSON 格式定义 error 信息。
 
-## 文档参考
+### 文档参考
 
 + [Twitter Status Codes](http://docs.jpush.cn/display/dev/HTTP-Status-Code)
 + [Wikipedia HTTP Status Codes](http://wiki.jpushoa.com/display/KKPush/2013/04/16/Wikipedia+HTTP+Status+Codes)

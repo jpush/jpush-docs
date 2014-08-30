@@ -1,5 +1,9 @@
 # 常见问题
-## 从这里开始了解JPush
+
+### Start 从这里开始
+
+<br />
+
 #### JPush有什么优势？
 
 + 全面的 Push 能力，随时到达你的用户
@@ -7,48 +11,68 @@
 + 经过考验的大规模用户 Push 平台
 + 简单易用的 Portal，可以用来发送通知，统计分析推送效果
 
-#### JPush支持哪些手机平台？	
+<br />
 
-当前支持：[AndroidAPI: Android](../android_guide) 、 [iOS](../ios_guide) 以及[Windows Phone](../winphone_guide)。
+#### JPush支持哪些平台？	
+
+当前支持：Android, iOS, Winphone 三大手机平台。暂不支持 Web。
+
+<br />
 
 #### JPush如何收费？
 
 基础服务免费。
+
 高级服务收取一定的费用。
+
 详情请参考：[https://www.jpush.cn/price/](https://www.jpush.cn/price/)
+
+<br />
 
 #### JPush的赢利模式是怎么样的？
 
-学习国外 Evernote, Dropbox 的云服务模式，对高级服务收费，为大多数用户提供免费的基础服务。 
+学习流行的 Evernote, Dropbox 的云服务模式，对高级服务收费，为大多数用户提供免费的基础服务。 
+
+<br />
 
 #### 使用JPush从哪里开始？
 
-+ [注册](https://www.jpush.cn/#signup)与[登录](https://www.jpush.cn)管理Portal
-+ 在[管理Portal](https://www.jpush.cn/app/application_list.jsp)上创建应用程序
-+ 在[客户端](../../resouces)集成SDK
+- 到 [极光推送官方网站](http://www.jpush.cn/) 注册开发者帐号，然后登录
+- 进入 [管理控制台](https://www.jpush.cn/apps/) ，创建应用程序，得到 Appkey
+- 下载 [SDK](../../resources/) 集成到 App 里
+
+<br />
 
 #### SDK 与 服务器端通过什么互相识别？
 
 AppKey
 
+<br />
+
 #### 会不会限制推送消息的数量？
 
 没有限制！
 
-Portal上不会限制推送消息的数量。
+Portal上不会限制推送消息的数量。  
+通过API 推送也不会限制消息数量。
 
-通过API 推送也不会限制消息数量
-推送的用户数量没有限制，每天推送的消息条数也没有限制
+推送的用户数量没有限制，每天推送的消息条数也没有限制。
+
+<br />
 
 #### 服务器容量如何？并发有多大？
 
-极光推送的系统目前已经支持亿级用户并发访问。
+极光推送的系统目前已经支持 10 亿级用户并发访问。
 
 整体架构设计上，任何单点失败不会影响整体系统运行。并且可在线升级。
 
+<br />
+
 #### 极光推送做了多久了？是否稳定可靠？
 
-我们从2012年的2月份开始发布极光推送产品，是国内最早的第三方推送服务。
+我们从 2012 年的 2 月份开始发布极光推送产品，是国内最早的第三方推送服务。
+
+<br />
 
 #### 极光推送后台使用什么技术实现的？是 XMPP 协议么？
 
@@ -56,45 +80,23 @@ Portal上不会限制推送消息的数量。
 
 使用自定义的二进制协议，以尽可能节约流量。
 
-#### 怎么样向特定的某个用户推送消息？
-
-在客户端使用 setAliasAndTags API 来为该用户指定别名。以便服务器端对该别名推送消息。
-
-进一步了解请参考文档：[标签与别名API。](../../client_sdks/android_api)
-
-#### 怎么样向指定的一群用户推送消息？
-
-在客户端使用 setAliasAndTags API 来为该用户设置标签。这样服务器可以向所有具有该标签的用户群发消息。
-
-进一步了解请参考文档：[标签与别名API。](../../client_sdks/android_api)
+<br />
 
 #### 怎么样保证推送消息的安全？
 
 我们建议开发者不要推送保密的信息，就像QQ建议你不要在聊天时发送保密的信息一样。
 
-
 如果开发者的确有保密的信息，需要送达到用户，则可以考虑这样做：
 
-
 先通过 JPush 推送一条消息，这条消息触发客户端App去与开发者服务器交互保密信息。
+
+<br />
 
 #### 在免费推送内容上，会加上“极光推送”等字样吗？
 
 不会，所有推送的内容，都是开发者自己定义的，不会添加任何内容。
 
-#### 通知与自定义消息有什么区别？
-
-下图是个简单的区分。详情请参考文档：[通知 vs. 自定义消息。](../../clinet_sdks/android_tutorials)
-
-![](../image/jpush_notification_vs_msg.png)
-
-#### 可以推送多媒体文件到客户端么？
-
-推送消息本身是限定长度的文本。
-
-不直接支持文件的推送，但可以通过推送 url 来实现。
-
-即先推送文件下载 url，到客户端触发逻辑来通过 url 下载文件。
+<br />
 
 #### 极光推送耗电、耗流量如何？
 
@@ -103,6 +105,8 @@ Portal上不会限制推送消息的数量。
 另外，实测电量、流量消耗，与网络状况相关比较大。
 
 所以这里的数据是理论平均值：流量消耗 20K/天，电量消耗 30mAh/天。
+
+<br />
 
 #### 为什么在 Portal 上或者调用 API 推送消息时提示：找不到目标用户？
 
@@ -114,9 +118,47 @@ Portal上不会限制推送消息的数量。
 
 + 对于 Android 还可以使用 IMEI 来推送。由于有很多 Android 设备取不到 IMEI，所以我们建议根据 IMEI 推送仅用于测试目的。
 
+<br />
+
+#### 通知与自定义消息有什么区别？
+
+下图是个简单的区分。详情请参考文档：[通知 vs. 自定义消息。](../../clinet_sdks/android_tutorials)
+
+![](../image/jpush_notification_vs_msg.png)
+
+<br />
+
+#### 可以推送多媒体文件到客户端么？
+
+推送消息本身是限定长度的文本。
+
+不直接支持文件的推送，但可以通过推送 url 来实现。
+
+即先推送文件下载 url，到客户端触发逻辑来通过 url 下载文件。
+
+<br />
+
+#### 怎么样向特定的某个用户推送消息？
+
+在客户端使用 setAliasAndTags API 来为该用户指定别名。以便服务器端对该别名推送消息。
+
+进一步了解请参考文档：[标签与别名API。](../../client_sdks/android_api)
+
+<br />
+
+#### 怎么样向指定的一群用户推送消息？
+
+在客户端使用 setAliasAndTags API 来为该用户设置标签。这样服务器可以向所有具有该标签的用户群发消息。
+
+进一步了解请参考文档：[标签与别名API。](../../client_sdks/android_api)
+
+<br />
 
 
-## Android 常见问题
+
+### Android 常见问题
+
+<br />
 
 #### 为什么应用程序无法收到 Push 消息（Android）？
 
@@ -124,8 +166,9 @@ Portal上不会限制推送消息的数量。
 + 确认测试手机（或者模拟器）已成功连入网络
 + 确认有客户端 "Login succeed" 日志
 
-详情请参考教程：[Android SDK 调试指南。](../../client_sdks/android_tutorials)
+详情请参考教程：[Android SDK 调试指南](../../client_sdks/android_tutorials)
 
+<br />
 
 #### Java.lang.UnsatisfiedLinkError
 
@@ -139,6 +182,8 @@ Portal上不会限制推送消息的数量。
 
 ![](../image/dictionary_path.png)
 
+<br />
+
 #### The permission should be defined 
 
 ![](../image/permission.jpg)
@@ -149,6 +194,8 @@ Portal上不会限制推送消息的数量。
 <permission android:name="您应用的包名.permission.JPUSH_MESSAGE" android:protectionLevel="signature" />
 <uses-permission android:name="您应用的包名.permission.JPUSH_MESSAGE" />
 ```
+
+<br />
 
 #### 如何在代码时混淆忽略 jpush-sdk-release.jar？
 
@@ -161,6 +208,8 @@ Portal上不会限制推送消息的数量。
 		
 + 请使用 SDK1.3.X 及以后的版本
 
+<br />
+
 #### 推送成功了，为什么有部分客户端收不到推送？
 
 请检查收不到通知的手机：
@@ -170,6 +219,8 @@ Portal上不会限制推送消息的数量。
 + 检查手机的JPush高级设置中是否设置了“允许推送时间”
 + 手机的应用中是否勾选了“显示通知”
 
+<br />
+
 #### MIUI 系统或小米手机收不到推送通知
 
 由于第三方 ROM 的管理软件需要用户手动操作
@@ -177,20 +228,27 @@ Portal上不会限制推送消息的数量。
 + 自启动管理：默认情况下，手机开机后，只有系统默认的服务可以启动起来。除非在自启动管理界面，设置允许第三方程序自启动。
 + 网络助手：可以手动禁止已安装的第三方程序访问2G/3G和WIFI的网络和设置以后新安装程序是否允许访问2G/3G和WIFI的网络。
 
+<br />
+
 #### Tag、Alias、Registrationid需要每次初始化时都重新设置吗，会变化吗？
 
 + tag、alias可以参考[别名与标签 API](../../client_sdks/android_api)进行设置，每次设置是覆盖设置，而不是增量设置。Tag和alias一经设置成功，除非取消或覆盖，是不会变化的。设置好的tag、alias与客户端的对应关系保存在Jpush服务器，目前没有从JPush服务器查询这个对应关系的接口，所以需要客户将对应关系保存在APP应用服务器。
 
 + Registrationid是客户端SDK第一次成功连接到Jpush服务器时，Jpush服务器给分配的。可以通过[获取 RegistrationID](../../client_sdks/android_api) API来获取Registrationid进行推送。Registrationid对应一个应用的一个客户端。
 
+<br />
+
 #### 没有沙箱API怎么测试？
 
- 直接用JPush的api测试就行。
+ 直接用 JPush 的 API 测试就行。
+ 
+<br />
 
 #### 其他国家能否使用极光推送（局域网能否使用极光推送）？
 
- 只要能连网到Jpush服务器都可以。判断能否联网到Jpush服务器的方法：ping通 api.jpush.cn 8800
+只要能连网到Jpush服务器都可以。判断能否联网到Jpush服务器的方法：ping通 api.jpush.cn 8800
 
+<br />
 
 #### 用设置的标签或别名推送，出现下面提示：
 
@@ -201,6 +259,8 @@ Portal上不会限制推送消息的数量。
 + SDK没有集成成功，客户端有 "Login succeed" 日志才表示SDK集成成功。
 + 设置别名或标签失败，请调用带返回值的函数[Method - setAliasAndTags (with Callback)](../../client_sdks/android_api)来设置标签或别名，同时参考[错误码定义](../../client_sdks/android_api)来修改直到设置成功返回0.
 
+<br />
+
 #### 可以打开 www.jpush.cn，但打不开docs，提示无法找到docs.jpush.cn
 
 + 提示客户换个浏览器试试
@@ -210,9 +270,13 @@ Portal上不会限制推送消息的数量。
 	3. telnet docs.jpush.cn
 	4. 提供一下自己机器访问外网其他网站是否正常
 
+<br />
+
 #### appkey是怎么对应的？
 
-android的包名和appkey需对应。
+android 的包名和 appkey 需对应。
+
+<br />
 
 #### 内网使用极光推送应该怎么设置？
 
@@ -221,7 +285,12 @@ android的包名和appkey需对应。
 + 19000
 + 3000-3020
 
-## iOS 常见问题
+<br />
+
+
+### iOS 常见问题
+
+<br />
 
 #### 为什么iOS收不到推送消息？
 
@@ -233,6 +302,7 @@ android的包名和appkey需对应。
 
 温馨提示：目前api推送的时候可以通过参数apns_production可以指定推送环境，如果api有传apns_production则以此值为准，否则以应用详情的部署环境为准。
 
+<br />
 
 #### 为什么启动的时候出现 Did Fail To Register For Remote Notifications With Error的错误
 
@@ -244,9 +314,13 @@ android的包名和appkey需对应。
 
 或参考：[http://blog.csdn.net/stefzeus/article/details/7418552](http://blog.csdn.net/stefzeus/article/details/7418552)
 
+<br />
+
 #### 如何在接收到 APN 的时候获取 APN 消息内容并进行跳转或做出响应处理？
 
 [获取 APNs 推送内容](../../client_sdks/ios_api)
+
+<br />
 
 #### 如何关闭 APN  推送？
 
@@ -260,6 +334,8 @@ android的包名和appkey需对应。
 1. 在iOS系统设置的通知设置中修改对应app的推送设置；
 2. 在代码中重新调用 [APService registerForRemoteNotificationTypes:]；
 
+<br />
+
 #### App badge number（角标）如何更改与清空？
 
 iOS每条 APN 推送可以指定 badge number，iOS 系统无法为某个 App 的badge number做自动累加。
@@ -271,6 +347,7 @@ Badge number 的清空方法：
 1. APN 推送内容指定 badge number 为 0；
 2. 在代码中使用如下代码清空 badge number：  [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
 
+<br />
 
 #### 为何推送一条 APN 后，点击通知中心的 APN 通知打开 App，可是 APN 通知在通知中心依然存在而未被删除？
 
@@ -280,6 +357,8 @@ Badge number 的清空方法：
 	[[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
 
 如果仍有其他消息，则考虑清除 local notification 通知。（ [[UIApplication sharedApplication] cancelAllLocalNotifications] ）
+
+<br />
 
 #### 出现Not get deviceToken yet. Maybe: your certificate not configured APNs?...错误日志时如何排除问题?
 
@@ -311,12 +390,15 @@ Badge number 的清空方法：
 
 7. 如果仍然有问题，请将上述步骤的结果以邮件附件的形式发送到JPush支持邮箱，我们将协助你解决此问题。
 
+<br />
+
 #### 上传到appStore的版本为什么收不到推送？
 
 1. 请确认xcode选择的生产证书和上传的证书的bundleid一致；
 2. 如果是在jpush网站上推送，请确认新建通知时推送对象是否选择了生产环境；
 3. 如果是api推送，请确认是否使用了apns_production参数，值是否为：1；如果没有使用apns_production参数请确认jpush网站上该应用的部署环境是否已经切换到生产环境。
 
+<br />
 
 #### iOS 平台上传证书一直为未通过状态
 
@@ -330,7 +412,9 @@ Badge number 的清空方法：
 
 具体请看上传后显示的错误输出内容。
 
-## 服务器api
+<br />
+
+### REST API 服务器 
 
 
 

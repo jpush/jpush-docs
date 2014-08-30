@@ -1,15 +1,8 @@
 #iOS API
-##获取 OpenUDID
 
-Apple 现在对 Device UDID 限制使用，我们使用 [OpenUDID](https://github.com/ylechelle/OpenUDID) 的方案来定义 UDID。
+###标签与别名 API (iOS)
 
-注：我们根据需要，对具体生成出来的内容有适当的调整。
-
-	+ (NSString *)openUDID;
-	
-##标签与别名 API (iOS)
-
-###功能说明
+####功能说明
 
 > 温馨提示，设置标签别名请注意处理call back结果。只有call back 返回值为 0 才设置成功，才可以向目标推送。否则服务器 API 会返回1011错误
 
@@ -17,7 +10,7 @@ Apple 现在对 Device UDID 限制使用，我们使用 [OpenUDID](https://githu
 
 这几个 API 可以在 App 里任何地方调用。
 
-#### 别名 alias
+##### 别名 alias
 
 为安装了应用程序的用户，取个别名来标识。以后给该用户 Push 消息时，就可以用此别名来指定。
 
@@ -29,7 +22,7 @@ Apple 现在对 Device UDID 限制使用，我们使用 [OpenUDID](https://githu
 
 举例：在一个用户要登录的游戏中，可能设置别名为 userid。游戏运营时，发现该用户 3 天没有玩游戏了，则根据 userid 调用服务器端API发通知到客户端提醒用户。
 
-#### 标签 tag
+##### 标签 tag
 
 为安装了应用程序的用户，打上标签。其目的主要是方便开发者根据标签，来批量下发 Push 消息。
 
@@ -39,7 +32,7 @@ Apple 现在对 Device UDID 限制使用，我们使用 [OpenUDID](https://githu
 
 举例： game, old_page,  women
 
-### Method - setTagsWithAlias (with Callback)
+#### Method - setTagsWithAlias (with Callback)
 
 
 调用此 API 来同时设置别名与标签，支持回掉函数。
@@ -48,15 +41,15 @@ Apple 现在对 Device UDID 限制使用，我们使用 [OpenUDID](https://githu
 
 在之前调用过后，如果需要再次改变别名与标签，只需要重新调用此 API 即可。
 
-#### 支持的版本
+##### 支持的版本
 
 开始支持的版本：1.4.0
 
-#### 接口定义
+##### 接口定义
 
 	+ (void)setTags:(NSSet *)tags alias:(NSString *)alias callbackSelector:(SEL)cbSelector object:(id)theTarget;
 	
-####参数说明
+#####参数说明
 
 + alias
 	+ nil 此次调用不设置此值。
@@ -84,7 +77,7 @@ Apple 现在对 Device UDID 限制使用，我们使用 [OpenUDID](https://githu
 			   		NSLog(@"rescode: %d, \ntags: %@, \nalias: %@\n", iResCode, tags , alias);
 			}
 
-#### Method - setTags
+##### Method - setTags
 
 调用此 API 来设置标签，支持回掉函数。
 
@@ -96,15 +89,15 @@ Apple 现在对 Device UDID 限制使用，我们使用 [OpenUDID](https://githu
 > 
 > 调用此方法只设置 tags，可以排除可能的无效的 alias 对本次调用的影响。
 
-#### 支持的版本
+##### 支持的版本
 
 开始支持的版本：1.4.0
 
-#### 接口定义
+##### 接口定义
 
 	+ (void)setTags:(NSSet *)tags callbackSelector:(SEL)cbSelector object:(id)theTarget;
 	
-#### 参数说明
+##### 参数说明
 
 + tags
 	+ nil 此次调用不设置此值。
@@ -127,21 +120,21 @@ Apple 现在对 Device UDID 限制使用，我们使用 [OpenUDID](https://githu
 			}
 
 
-### Method - setAlias
+#### Method - setAlias
 
 调用此 API 来设置别名，支持回掉函数。
 
 该方法是 setTagsWithAlias (with Callback) 的简化版本，用于只变更别名的情况。
 
-#### 支持的版本
+##### 支持的版本
 
 开始支持的版本：1.4.0
 
-#### 接口定义
+##### 接口定义
 
 		+ (void)setAlias:(NSString *)alias callbackSelector:(SEL)cbSelector object:(id)theTarget;
 		
-#### 参数说明
+##### 参数说明
 
 + alias
 	+ 空字符串 （@""）表示取消之前的设置。
@@ -161,7 +154,7 @@ Apple 现在对 Device UDID 限制使用，我们使用 [OpenUDID](https://githu
 					NSLog(@"rescode: %d, \ntags: %@, \nalias: %@\n", iResCode, tags , alias)		}
 					
 					
-### Method - filterValidTags
+#### Method - filterValidTags
 
 用于过滤出正确可用的 tags。
 
@@ -176,24 +169,25 @@ Apple 现在对 Device UDID 限制使用，我们使用 [OpenUDID](https://githu
 > 这时你可以调用本方法 filterValidTags 来过滤掉无效的 tags，得到有效的 tags，再调用 JPush SDK 的 set tags / alias 方法。
 
 
-#### 支持的版本
+##### 支持的版本
 
 开始支持的版本：1.4.0
 
-#### 接口定义
+##### 接口定义
 
 	+ (NSSet*)filterValidTags:(NSSet*)tags;
-#### 参数说明
+
+##### 参数说明
 
 + tags
 	+ 原 tag 集合。
 
-#### 接口返回
+##### 接口返回
 
 有效的 tag 集合。
 
 
-### 错误码定义
+#### 错误码定义
 
 Code|描述|详细解释
 -|-|
@@ -207,14 +201,14 @@ Code|描述|详细解释
 6008|tag/alias 超出总长度限制。总长度最多 1K 字节	|
 
 
-##获取 APNs 推送内容
+###获取 APNs 推送内容
 
-### 支持的版本
+#### 支持的版本
 
 最初的版本。
 
 
-### 功能说明
+#### 功能说明
 
 iOS 设备收到一条推送（APNs），用户点击推送通知打开应用时，应用程序根据状态不同进行处理需在 AppDelegate 中的以下两个方法中添加代码以获取apn内容
 
@@ -237,7 +231,7 @@ iOS 设备收到一条推送（APNs），用户点击推送通知打开应用时
 
 
 
-### 示例代码
+#### 示例代码
 
 	- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
 	    // 取得 APNs 标准信息内容
@@ -265,17 +259,17 @@ iOS 设备收到一条推送（APNs），用户点击推送通知打开应用时
 
 参考文档：[Handling Local and Remote Notifications](https://developer.apple.com/library/ios/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/IPhoneOSClientImp.html#//apple_ref/doc/uid/TP40008194-CH103-SW4)
 		
-## 获取应用内推送信息
+### 获取应用内推送信息
 
-### 支持的版本
+#### 支持的版本
 
 r1.2.5 以后。
 
-### 功能说明
+#### 功能说明
 
 从jpush服务器获取用户推送的内容和标题。
 
-### 实现方法
+#### 实现方法
 
 获取iOS的推送内容需要在delegate类中注册通知并实现回调方法。
 
@@ -296,7 +290,7 @@ r1.2.5 以后。
 		}
 		
 		
-####参数描述：
+#####参数描述：
 
 content：获取推送的内容
 
@@ -306,73 +300,76 @@ customizeField1：根据自定义key获取自定义的value
 
 更多实现参考 SDK下载压缩包中的 demo。
 
-## 获取 RegistrationID
 
-### 支持的版本
+### 获取 RegistrationID
+
+#### 支持的版本
 
 r1.7.0 开始支持。
 
-### 功能说明
+#### 功能说明
 
-#### RegistrationID 定义
+##### RegistrationID 定义
 
 集成了 JPush SDK 的应用程序在第一次成功注册到 JPush 服务器时，JPush 服务器会给客户端返回一个唯一的该设备的标识 - RegistrationID。JPush SDK 会以广播的形式发送 RegistrationID 到应用程序。
 
 应用程序可以把此 RegistrationID 保存以自己的应用服务器上，然后就可以根据 RegistrationID 来向设备推送消息或者通知。
 
-### API - getRegistrationID
+#### API - getRegistrationID
 
 调用此 API 来取得应用程序对应的 RegistrationID。 只有当应用程序成功注册到 JPush 的服务器时才返回对应的值，否则返回空字符串。
 
-#### 支持的版本
+##### 支持的版本
+
 开始支持的版本：1.7.0。
 
 
-#### 接口定义
+##### 接口定义
 
 	+ (NSString *)registrationID
 
 > 开发者在自定义的监听kAPNetworkDidRegisterNotification时也可以通过"RegistrationID"这个key值来获取对应的 RegistrationID。
 		
-###	 附加说明
+#### 附加说明
 
-####通过 RegistrationID 推送消息和通知
+#####通过 RegistrationID 推送消息和通知
 
 可以通过 RegistrationID 来推送消息和通知， 参考文档 Push API v2， 当 receiver_type = 5 并且设置 receiver_value 为 RegistrationID 时候即可根据 RegistrationID 推送。
 
 > 注：要使用此功能，客户端 App 一定要集成有 r1.7.0 及以上版本的 JPush IOS SDK
 
-## 页面的统计
 
-### 支持的版本
+### 页面的统计
+
+#### 支持的版本
 
 r1.7.0 版本开始。
 
-### 功能说明
+#### 功能说明
 
 本 API 用于“用户指定页面使用时长”的统计，并上报到服务器，在 Portal 上展示给开发者。页面统计集成正确，才能够获取正确的页面访问路径、访问深度（PV）的数据。
 
-### API
+#### API
 
-#### 接口定义
+##### 接口定义
 
 	+ (void)startLogPageView:(NSString*)pageName;
 	+ (void)stopLogPageView:(NSString*)pageName;
 	+ (void)beginLogPageView:(NSString*)pageName duration:(int)seconds;
 	
-#### 参数说明
+##### 参数说明
 
 + pageName 需要统计页面自定义名称
 
 + duration 自定义的页面时间
 
-#### 调用说明
+##### 调用说明
 
  应在所有的需要统计得页面得 viewWillAppear 和 viewWillDisappear 加入 startLogPageView 和 stopLogPageView 来统计当前页面的停留时间。
 
 > 或者直接使用 beginLogPageView 来自定义加入页面和时间信息。
 
-### 代码示例
+#### 代码示例
 
 	- (void)viewWillAppear:(BOOL)animated
 	    {
@@ -388,3 +385,13 @@ r1.7.0 版本开始。
 	   {
 	       [APService beginLogPageView:@"PageTwo" duration:10];
 	   }
+
+
+### 获取 OpenUDID
+
+Apple 现在对 Device UDID 限制使用，我们使用 [OpenUDID](https://github.com/ylechelle/OpenUDID) 的方案来定义 UDID。
+
+注：我们根据需要，对具体生成出来的内容有适当的调整。
+
+	+ (NSString *)openUDID;
+	
