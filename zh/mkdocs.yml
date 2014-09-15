@@ -27,10 +27,10 @@ pages:
 
 
 - [server/server_overview.md, 服务器端, 服务器端 概述]
-- [server/rest_api_v3_push.md, 服务器端, REST API v3 - Push]
-- [server/rest_api_v3_report.md, 服务器端, REST API v3 - Report]
-- [server/rest_api_v2_push.md, 服务器端, REST API v2 - Push, True]
-- [server/rest_api_v2_report.md, 服务器端, REST API v2 - Report, True]
+- [server/rest_api_v3_push.md, 服务器端, REST API - Push]
+- [server/rest_api_v3_report.md, 服务器端, REST API - Report]
+- [server/rest_api_v2_push.md, 服务器端, REST API v2 - Push, Hidden]
+- [server/rest_api_v2_report.md, 服务器端, REST API v2 - Report, Hidden]
 - [server/http_status_code.md, 服务器端, HTTP 状态码]
 - [server/server_sdks.md, 服务器端, 服务器端 SDK]
 

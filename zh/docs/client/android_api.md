@@ -1,11 +1,12 @@
 # Android API
 
-## 停止与恢复推送服务 API
-### 支持的版本
+### 停止与恢复推送服务 API
+
+#### 支持的版本
 
 开始的版本：v1.3.3
 
-### 功能说明
+#### 功能说明
 
 JPush SDK 提供的推送服务是默认开启的。
 
@@ -15,7 +16,7 @@ JPush SDK 提供的推送服务是默认开启的。
 > 
 > 本功能其行为类似于网络中断的效果，即：推送服务停止期间推送的消息，恢复推送服务后，如果推送的消息还在保留的时长范围内，则客户端是会收到离线消息。
 
-### API - stopPush
+#### API - stopPush
 
 停止推送服务。
 
@@ -26,35 +27,36 @@ JPush SDK 提供的推送服务是默认开启的。
 + 不能通过 JPushInterface.init 恢复，需要调用resumePush恢复。
 + 极光推送所有的其他 API 调用都无效
 
-#### 接口定义
+##### 接口定义
 
 	public static void stopPush(Context context);
 	
-#### 参数说明
+##### 参数说明
 
 + context 应用的 ApplicationContext
 
-### API - resumePush
+
+#### API - resumePush
 
 恢复推送服务。
 
 调用了此 API 后，极光推送完全恢复正常工作。
 
-#### 接口定义
+##### 接口定义
 
 	public static void resumePush(Context context);
 	
-#### 参数说明
+##### 参数说明
 
 	context 应用的 ApplicationContext
 
-### API - isPushStopped
+#### API - isPushStopped
 
 用来检查 Push Service 是否已经被停止
 
 + SDK 1.5.2 以上版本支持。
 
-#### 接口定义
+##### 接口定义
 
 	public static boolean isPushStopped(Context context);
 

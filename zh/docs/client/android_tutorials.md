@@ -1,6 +1,6 @@
 # Android SDK 教程
 
-## Android SDK 网络问题解析
+### Android SDK 网络问题解析
 
 Android 客户端网络不稳定，会导致App 有时候无法及时收到 Push 消息。
 
@@ -8,7 +8,7 @@ Android 客户端网络不稳定，会导致App 有时候无法及时收到 Push
 
 本文目的是从各个方面来分析 Android 网络导致的 JPush 不能正常工作的问题。
 
-### JPush 正常工作的必要条件
+#### JPush 正常工作的必要条件
 
 首先，我们需要知道，JPush SDK  并不是集成到App 后就必然一直工作的。
 
@@ -23,22 +23,22 @@ Android 客户端网络不稳定，会导致App 有时候无法及时收到 Push
 + JPush 收到消息一定是及时的。其延迟是秒级的，一般在 1 秒之内。如果超过 10 秒，则一定是客户端网络出了问题。
 + 手机休眠时，也能够及时地收到推送消息。
 
-### 部分系统的特殊处理导致问题
+#### 部分系统的特殊处理导致问题
 
-#### MIUI V5 系统
+##### MIUI V5 系统
 
 + 自启动管理：默认情况下，手机开机后，只有系统默认的服务可以启动起来。除非在自启动管理界面，设置允许第三方程序自启动。
 
 + 网络助手：可以手动禁止已安装的第三方程序访问2G/3G和WIFI的网络和设置以后新安装程序是否允许访问2G/3G和WIFI的网络。
 
 
-#### 4.0以上的android系统
+##### 4.0以上的android系统
 
 + 在设置－>应用，强行停止 应用程序后该程序无法再自启动，就算重新开机也一样，一定要手动开启才能运行起来。
 
-### 让我们从目前得到的反馈来整理调试的思路
+#### 让我们从目前得到的反馈来整理调试的思路
 
-#### 手机休眠时收不到 JPush 消息，解锁或屏幕灯亮则可以成功接收
+##### 手机休眠时收不到 JPush 消息，解锁或屏幕灯亮则可以成功接收
 
 这个现象表明，手机休眠时，JPush SDK “被迫”与服务器端的网络失去了连接。
 
@@ -51,7 +51,7 @@ JPush SDK 的工作原理是要确保在手机休眠时也能正常的工作，�
 
 上述的特殊机制会关闭网络。网络一旦连接上，JPush也会连接上服务器，从而Push消息就会收到。
 
-#### 有时候收到 JPush 消息很及时，有时候则要等几分钟
+##### 有时候收到 JPush 消息很及时，有时候则要等几分钟
 
 JPush 会监听网络切换广播。当网络关闭时，把原来JPush连接关闭。当有新的网络时，创建JPush连接。
 
@@ -63,14 +63,15 @@ JPush 会监听网络切换广播。当网络关闭时，把原来JPush连接关
 
 JPush 目前在网络策略方面没有像微信这种聊天工具做得积极。如果这样做到，电量和流量的消耗必然会成倍地增加。
 
-####完全收不到 JPush 消息
+#####完全收不到 JPush 消息
 
 如果集成之后就完全收不到Push消息，则很有可能是某个地方配置错误。请根据文档仔细检查：Android SDK 集成指南，iOS SDK 集成指南，或者根据参考教程：Android SDK 调试指南，iOS SDK 调试指南。
 
 
-## Android SDK 调试指南
 
-### SDK启动过程
+### Android SDK 调试指南
+
+#### SDK启动过程
 
 1. 检查AndroidManifest.xml中是否有配置AppKey，如果没有，则启动失败
 2. 检查 Androidmanifest.xml文件配置的正确性，必须要保证“Android SDK 集成指南”中所有标注“ 
@@ -81,7 +82,7 @@ JPush 目前在网络策略方面没有像微信这种聊天工具做得积极�
 
 ![](../image/jpush.jpg)
 
-### 测试确认
+#### 测试确认
 
 + 确认 Androidmanifest.xml 中所需的所有 “Required” 项都已经添加。如果有 "Required" 项未添加，日志会提示错误。
 + 确认 AppKey (在Portal上生成的) 已经正确的写入 Androidmanifest.xml 中,没写会有日志提示错误。
@@ -90,9 +91,9 @@ JPush 目前在网络策略方面没有像微信这种聊天工具做得积极�
 + 启动应用程序，登陆 Portal 系统，并向应用程序发送自定义消息或者通知栏提示。在几秒内，客户端应可收到下发的通知或者正定义消息.
 
 
-## 别名与标签使用教程
+### 别名与标签使用教程
 
-### 为什么需要别名与标签
+#### 为什么需要别名与标签
 
 推送消息时，要指定推送的对象：全部，某一个人，或者某一群人。
 
@@ -114,7 +115,7 @@ JPush 目前在网络策略方面没有像微信这种聊天工具做得积极�
 
 后者，则是 JPush 提供的另外一套 RegistrationID 机制。这套机制开发者需要有应用服务器来维护绑定关系，不适用于普通开发者。Android SDK r1.6.0 版本开始支持。
 
-### 使用方式
+#### 使用方式
 
 别名与标签的机制，其工作方式是：
 
@@ -132,20 +133,20 @@ SDK 支持的 setAliasAndTags 请参考相应的文档：[别名与标签 API](.
 	
 2. Portal 上推送或者 API 调用向别名或者标签推送时，可能会报错：不存在推送目标用户。该报错表明，JPush Server 上还没有针对你所推送的别名或者标签的用户绑定关系，所以没有推送目标。这时请开发者检查确认，开发者App是否正确地调用了 setAliasAndTags API，以及调用时是否网络不好，JPush SDK 暂时未能保存成功。
 
-### 使用别名
+#### 使用别名
 
 用于给某特定用户推送消息。
 
 所谓别名，可以近似地被认为，是用户帐号里的昵称。
 
 
-### 使用标签
+#### 使用标签
 
 用于给某一群人推送消息。
 
 标签类似于博客里为文章打上 tag ，即为某资源分类。
 
-#### 动态标签
+##### 动态标签
 
 JPush 提供的设置标签的 API 是在客户端的。开发者如何做到在自己的服务器端动态去设置分组呢？ 比如一个企业OA系统，经常需要去变更部门人员分组。以下是大概的思路：
 
@@ -156,12 +157,7 @@ JPush 提供的设置标签的 API 是在客户端的。开发者如何做到在
 + 客户端App 调用 JPush SDK API 来设置新的标签
 
 
-
-### 参考
-
-[别名与标签 API]()
-
-##别名与标签设置异常处理
+###别名与标签设置异常处理
 
 由于网络连接不稳定的原因，有一定的概率 JPush SDK 设置别名与标签会失败。
 		
@@ -236,9 +232,10 @@ App 开发者合理地处理设置失败，则偶尔失败对应用的正常使�
 		};
 		
 			
-## 自定义通知栏样式教程
 
-### 关于自定义通知栏样式
+### 自定义通知栏样式教程
+
+#### 关于自定义通知栏样式
 
 JPush 通知推送到客户端时，默认使用手机的默认设置来显示通知栏，包括铃声、震动等效果。
 
@@ -249,7 +246,7 @@ JPush 通知推送到客户端时，默认使用手机的默认设置来显示�
 	+ 显示图标
 	+ 替换默认的通知栏样式。
  
-### 推送消息指定通知栏样式编号
+#### 推送消息指定通知栏样式编号
 
 通知栏样式在服务器端向下推送时，只体现为一个编号（数字）。
 
@@ -265,26 +262,26 @@ JPush 通知推送到客户端时，默认使用手机的默认设置来显示�
 
 ![](../image/image2012-11-6_9_16_45.png)
 
-### 客户端定义通知栏样式
+#### 客户端定义通知栏样式
 
 自定义的通知栏样式，是在客户端进行的。请参考 [通知栏样式定制API](../android_api) 来看所支持的功能。
 
-####自定义通知栏样式设计
+#####自定义通知栏样式设计
 
 + 有个 PushNotificationBuilder 概念，开发者使用 setPushNotificationBuilder 方法为某种类型的 PushNotificationBuilder 指定编号。
 + setPushNotificationBuilder 可以在 JPushInterface.init() 之后任何地方调用，可以是开发者应用的逻辑来触发调用，或者初始化时调用。
 + 只需要设置一次，JPush SDK 会记住这个设置。在下次收到推送通知时，就根据通知里指定的编号来找到 PushNotificationBuilder 来展现、执行。
 
-#### API - setDefaultPushNotificationBuilder 设置默认
+##### API - setDefaultPushNotificationBuilder 设置默认
 
 此 API 改变默认的编号为 0 的通知栏样式。
 
 
-#### API - setPushNotificationBuilder 指定编号
+##### API - setPushNotificationBuilder 指定编号
 
 此 API 为开发者指定的编号，设置一个自定义的 PushNotificationBuilder（通知样式构建器）。
 
-####Example - 基础的 PushNotificationBuilder
+#####Example - 基础的 PushNotificationBuilder
 
 定制声音、震动、闪灯等 Notification 样式。
 
@@ -294,7 +291,7 @@ JPush 通知推送到客户端时，默认使用手机的默认设置来显示�
 	builder.notificationDefaults = Notification.DEFAULT_SOUND ｜ Notification.DEFAULT_VIBRATE | Notification.DEFAULT_LIGHTS;  // 设置为铃声与震动都要
 	JPushInterface.setPushNotificationBuilder(1, builder);
 	
-####Example - 高级自定义的 PushNotificationBuilder
+#####Example - 高级自定义的 PushNotificationBuilder
 
 基于基础的 PushNotificationBuilder，可进一步地定制 Notification 的 Layout。
 
@@ -314,7 +311,7 @@ JPush 通知推送到客户端时，默认使用手机的默认设置来显示�
 	// 指定下拉状态栏时显示的通知图标
 	JPushInterface.setPushNotificationBuilder(2, builder);                
 
-###通知栏样式定义不符合要求？
+####通知栏样式定义不符合要求？
 
 以上提供的自定义通知栏样式的功能是有限的。比如：Android SDK 4.0 以后的 [Notification](http://developer.android.com/reference/android/app/Notification.html) 支持指定 Style ，而这种复杂的通知样式定义 JPush SDK 还未有支持。
 
@@ -326,19 +323,13 @@ JPush 通知推送到客户端时，默认使用手机的默认设置来显示�
 
 
 
-###参考
-
-+ [通知栏样式定制 API](../android_api)
-
-##通知 vs. 自定义消息
+###通知 vs. 自定义消息
 
 极光推送包含有通知与自定义消息两种类型的推送。本文描述他们的区别，以及建议的应用场景。
 
 只有 Android 支持自定义消息。
 
-### 两者的区别
-
-#### 功能角度
+#### 两者的区别 - 功能角度
 
 ##### 通知
 
@@ -362,7 +353,7 @@ JPush 通知推送到客户端时，默认使用手机的默认设置来显示�
 
 
 
-#### 开发者使用角度
+#### 两者的区别 - 开发者使用角度
 
 ##### 通知
 
@@ -380,7 +371,7 @@ SDK 不会把自定义消息展示到通知栏。
 自定义消息一定要由开发者写[ 接收推送消息Receiver]() 来处理收到的消息。
 
 
-### 使用通知  
+#### 使用通知  
 
 请参考以下示例代码。
 
@@ -453,7 +444,9 @@ public class MyReceiver extends BroadcastReceiver {
     }
 }
 ```
-### 使用自定义消息
+
+
+#### 使用自定义消息
 
 使用自定义消息，在客户端App里一定要写代码，去接受 JPush SDK 的广播，从而取得推送下来的消息内容。具体请参考文档：接收推送消息Receiver。
 
@@ -591,10 +584,5 @@ public class TalkReceiver extends BroadcastReceiver {
     }
 }
 ```
-### 参考
-+ [接收推送消息Receiver
-](../android_api)
-+ [自定义通知栏样式教程
-](../android_api)
-+ [通知栏样式定制 API
-](../android_api)
+
+

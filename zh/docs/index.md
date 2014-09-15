@@ -127,10 +127,10 @@
                 <h5>APIs</h5>
                 <table width="100%">
                 <tr>
-                	<td width="25%"><a href="server/push_api_v3">Push API v3</a></td>
-                	<td width="25%"><a href="server/report_api_v3">Report API v3</a></td>
-                    <td width="25%"><a href="server/push_api_v2">Push API v2</a></td>
-                    <td width="25%"><a href="server/report_api_v2">Report API v2</a></td>
+                	<td width="25%"><a href="server/rest_api_v3_push">Push API v3</a></td>
+                	<td width="25%"><a href="server/rest_api_v3_report">Report API v3</a></td>
+                    <td width="25%"><a href="server/rest_api_v2_push">Push API v2</a></td>
+                    <td width="25%"><a href="server/rest_api_v2_report">Report API v2</a></td>
                 </tr>
                 </table>
             </div>
