@@ -1,4 +1,9 @@
 site_name: 极光文档
+site_author: JPush Offical
+site_url: http://docs.jpush.io
+site_favicon: favicon.ico
+site_description: JPush, 极光推送, Android Push, Android 推送, 安卓推送, iOS Push, APNs, Push Notification
+repo_url: https://github.com/jpush/jpush-docs
 theme: bootstrap 
 
 pages:
