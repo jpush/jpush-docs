@@ -67,7 +67,6 @@ JPush APNs 做推送代理，其意义又在哪里呢？JPush APNs 相比直接�
 + 提供应用内推送：
 	+ 除了使得 APNs 推送更简单，也另外提供应用内消息推送。这在类似于聊天的场景里很有必要。
 
-
 ### JPush APNs 实现
 
 JPush APNs 的实现可以参考极光博客的一篇文章：[http://blog.jpush.cn/apns/](http://blog.jpush.cn/apns/)
