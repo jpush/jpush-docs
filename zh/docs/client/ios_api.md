@@ -199,7 +199,7 @@ Code|描述|详细解释
 6006|某一个 tag 超长。一个 tag 最多 40个字节	|中文 UTF-8 是 3 个字节
 6007|tags 数量超出限制。最多 100个	|这是一台设备的限制。一个应用全局的标签数量无限制。
 6008|tag/alias 超出总长度限制。总长度最多 1K 字节	|
-
+6011|10s内设置tag或alias大于3次  |短时间内操作过于频繁
 
 ###获取 APNs 推送内容
 
@@ -241,7 +241,7 @@ iOS 设备收到一条推送（APNs），用户点击推送通知打开应用时
 	    NSString *sound = [aps valueForKey:@"sound"]; //播放的声音
 	     
 	    // 取得自定义字段内容
-	    NSString *customizeField1 = [userInfo valueForKey:@"customizeField1"]; //自	定义参数，key是自己定义的
+	    NSString *customizeField1 = [userInfo valueForKey:@"customizeField1"]; //自定义参数，key是自己定义的
 	    NSLog(@"content =[%@], badge=[%d], sound=[%@], customize field 	=[%@]",content,badge,sound,customizeField1);
 	     
 	    // Required
