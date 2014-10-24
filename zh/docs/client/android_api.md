@@ -173,7 +173,7 @@ SDK 对自定义消息，只是传递，不会有任何界面上的展示。
 + JPushInterface.EXTRA_TITLE
 	+ 保存服务器推送下来的消息的标题。
 	+ 对应 API 消息内容的 title 字段。
-	+ 对应 Portal 推送消息界面上的“标题”字段（可选）
+    +  Portal 推送消息界上不作展示
 
 			Bundle bundle = intent.getExtras();
 			String title = bundle.getString(JPushInterface.EXTRA_TITLE);
@@ -181,7 +181,7 @@ SDK 对自定义消息，只是传递，不会有任何界面上的展示。
 + JPushInterface.EXTRA_MESSAGE
 	+ 保存服务器推送下来的消息内容。
 	+ 对应 API 消息内容的 message 字段。
-	+ 对应 Portal 推送消息界面上的"消息内容”字段。
+	+ 对应 Portal 推送消息界面上的"自定义消息内容”字段。
 	
 			Bundle bundle = intent.getExtras();
 			String message = bundle.getString(JPushInterface.EXTRA_MESSAGE);
@@ -189,7 +189,7 @@ SDK 对自定义消息，只是传递，不会有任何界面上的展示。
 + JPushInterface.EXTRA_EXTRA
 	+ 保存服务器推送下来的附加字段。这是个 JSON 字符串。
 	+ 对应 API 消息内容的 extras 字段。
-	+ 对应 Portal 推送消息界面上的“自定义内容”。
+	+ 对应 Portal 推送消息界面上的“可选设置”里的附加字段。
 	
 			Bundle bundle = intent.getExtras();
 			String extras = bundle.getString(JPushInterface.EXTRA_EXTRA);
@@ -228,8 +228,9 @@ SDK 对自定义消息，只是传递，不会有任何界面上的展示。
 	+ 对应 API 通知内容的 n_title 字段。
 	+ 对应 Portal 推送通知界面上的“通知标题”字段。
 
-			Bundle bundle = intent.getExtras();			String title = bundle.getString(JPushInterface.EXTRA_NOTIFICATION_TITLE);
-				
+			Bundle bundle = intent.getExtras();			
+			String title = bundle.getString(JPushInterface.EXTRA_NOTIFICATION_TITLE);
+			
 + JPushInterface.EXTRA_ALERT
 	+ 保存服务器推送下来的通知内容。
 	+ 对应 API 通知内容的 n_content 字段。
@@ -243,7 +244,7 @@ SDK 对自定义消息，只是传递，不会有任何界面上的展示。
 	+ SDK 1.2.9 以上版本支持。
 	+ 保存服务器推送下来的附加字段。这是个 JSON 字符串。
 	+ 对应 API 通知内容的 n_extras 字段。
-	+ 对应 Portal 推送通知界面上的“自定义内容”字段。
+	+ 对应 Portal 推送消息界面上的“可选设置”里的附加字段。
 
 			Bundle bundle = intent.getExtras();
 			String extras = bundle.getString(JPushInterface.EXTRA_EXTRA);
@@ -322,7 +323,7 @@ SDK 对自定义消息，只是传递，不会有任何界面上的展示。
 	+ SDK 1.2.9 以上版本支持。
 	+ 保存服务器推送下来的附加字段。这是个 JSON 字符串。
 	+ 对应 API 消息内容的 n_extras 字段。
-	+ 对应 Portal 推送通知界面上的“自定义内容”字段。
+	+ 对应 Portal 推送消息界面上的“可选设置”里的附加字段。
 	
 			Bundle bundle = intent.getExtras();
 			String type = bundle.getString(JPushInterface.EXTRA_EXTRA);
@@ -335,7 +336,7 @@ SDK 对自定义消息，只是传递，不会有任何界面上的展示。
 	
 			Bundle bundle = intent.getExtras();
 			int notificationId = bundle.getInt(JPushInterface.EXTRA_NOTIFICATION_ID
-			
+			  
 + JPushInterface.EXTRA_MSG_ID
 	+ SDK 1.6.1 以上版本支持。
 	+ 唯一标识调整消息的 ID, 可用于上报统计等。
@@ -558,7 +559,7 @@ Code|描述|详细解释
 6006|某一个 tag 超长。一个 tag 最多 40个字节	|中文 UTF-8 是 3 个字节
 6007|tags 数量超出限制。最多 100个	|这是一台设备的限制。一个应用全局的标签数量无限制。
 6008|tag/alias 超出总长度限制。总长度最多 1K 字节	|
-
+6011|10s内设置tag或alias大于3次|短时间内操作过于频繁
 ###  相关文档
 
 + Android[别名与标签使用教程](../android_tutorials)
@@ -974,3 +975,5 @@ if (JPushInterface.ACTION_RICHPUSH_CALLBACK.equals(intent.getAction())) {
 |1005	|包名和Appkey不匹配|
 |-996	|网络连接断开<p>如果确保设备网络正常，可能是由于包名不正确，服务器强制断开客户端的连接。|
 |-994	|网络连接超时|
+
+
