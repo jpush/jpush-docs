@@ -21,7 +21,8 @@
 
 ### C# SDK
 
-|最近更新|特性支持|项目地址|下载链接| |v2 api|ios 1.7.3版本收v2的通知会无法解析应用内消息|[https://github.com/jpush/jpush-api-csharp-client][6]|
+|最近更新|特性支持|项目地址|下载链接|   
+|v2 api|ios 1.7.3版本收v2的通知会无法解析应用内消息|[https://github.com/jpush/jpush-api-csharp-client][6]|
 
 ### Node.js SDK
 
