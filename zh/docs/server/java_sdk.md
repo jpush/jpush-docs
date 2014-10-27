@@ -36,7 +36,7 @@
 
 ## 第三方提供（代码）
 
-### C#
+### C #
 
 |开发者|最近更新|特性支持|项目地址|   
 |Rynn Wang|支持Push API v3|Push v3,v2|[https://jpush.codeplex.com/][11]
