@@ -656,7 +656,7 @@ r1.6.0 版本开始。
 
 ##### 功能说明
 
-+ 用于上报用户的通知栏被打开，或者用户自定义消息被展示等客户端需要统计的事件。
++ 用于上报用户自定义消息被展示等客户端需要统计的事件。
 
 ##### 接口定义
 
@@ -744,7 +744,7 @@ r1.6.0 版本开始。
 
 ##### 接口定义
 
-	public static void setPushTime(Context context, Set<Integer> weekDays, int startHour, int int endHour)
+	public static void setPushTime(Context context, Set<Integer> weekDays, int startHour, int endHour)
 
 ##### 参数说明
 
