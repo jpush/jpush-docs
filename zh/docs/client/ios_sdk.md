@@ -1,10 +1,14 @@
 # iOS SDK
 
-### JPush iOS Push
+### JPush iOS
 
+![jpush_ios](../image/jpush_ios.png)
 
+从上图可以看出，JPush iOS Push 包括 2 个部分，APNs 推送（代理），与 JPush 应用内消息。
 
-从上图可以看出，JPush iOS Push 包括 2 个部分，APNs 推送代理，与 JPush 应用内消息。
+红色部分是 APNs 推送，JPush 代理开发者的应用（需要基于开发者提供的应用证书），向苹果 APNs 服务器推送。由 APNs Server 推送到 iOS 设备上。
+
+蓝色部分是 JPush 应用内推送部分，即 App 启动时，内嵌的 JPush SDK 会开启长连接到 JPush Server，从而 JPush Server 可以推送消息到 App 里。
 
 #### APNs 通知
 
@@ -18,13 +22,15 @@ JPush iOS SDK 不负责 APNs 通知的展现，只是向 JPush 服务器端上�
 
 应用内消息：JPush iOS SDK 提供的应用内消息功能，在 App 在前台时能够收到推送下来的消息。App 可使用此功能来做消息下发动作。
 
-此消息不经过 APNS 服务器，完全由 JPush 提供功能支持。
+此消息不经过 APNs 服务器，完全由 JPush 提供功能支持。
 
 [获取应用内消息推送内容](../ios_api)
 
-#### APNs消息与应用内消息对比
+#### APNs通知与应用内消息对比
 
-如果只需要发送通知，则可以忽略应用内消息的处理。对于两种消息的代码处理可以参考API部分的描述。
+如果只需要发送通知，则可以忽略应用内消息的处理。对于两种消息的代码处理可以参考API 部分的描述。
+
+JPush API v3 支持同时一次调用同时推送 APNs 通知与 JPush 应用内消息。这在某些应用场景里是有意义的。
 
 ||APNS|应用内消息|
 |-|-|-|
@@ -36,21 +42,30 @@ JPush iOS SDK 不负责 APNs 通知的展现，只是向 JPush 服务器端上�
 |处理函数|didReceiveRemoteNotification|networkDidReceiveMessage|
 
 
-### JPush APNs 的意义
+### iOS SDK 说明
 
-由于 iOS 平台的特殊性不允许在后台常驻工作，推送采用统一的下发通道：APNs（Apple Push Notification Service）。
+#### iOS 版本支持
 
-JPush iOS 推送也是基于对 APNs 的封装。但是JPush iOS 推送比起开发者直接对接 APNs 有如下几个方面的优势。
+#### 组成
+
+#### 注意事项
+
+
+### JPush APNs 通知的意义
+
+iOS 平台上，只有 APNs 这个官方的推送通道，是可以随时送达的。一般开发者都是自己部署应用服务器向 APNs Server 推送。
+
+JPush APNs 做推送代理，其意义又在哪里呢？JPush APNs 相比直接向 APNs 推送有什么好处呢？
 
 + 减少开发及维护成本：
 	+ 应用开发者不需要去开发维护自己的推送服务器与 APNs 对接。
-	+ 集成了JPush iOS SDK后可以通过 JPush 的 web portal 直接推送通知。也可以调用JPush的 Http 协议 API 来完成。
-+ 统一推送服务：
-	+ 极光推送同时推送 Android 与 iOS 两个平台，支持统一的 API与推送界面，以及别名与标签用户绑定方法。
-+ 更方便的推送：
-	+ JPush iOS 推送同样支持标签，广播和别名的推送方式，开发者只需要一次推送，JPush服务器会根据匹配条件逐条发送到 APNs 服务器，提高了推送性能。
-+ 应用内推送：
-	+ 嵌入了 JPush iOS SDK 的应用，当应用启动后，可以在应用内从 JPush 的服务器上直接获取推送消息以及获取离线消息，极大的保证了推送的可靠性。
+	+ 集成了 JPush iOS SDK 后不必自己维护更新 device token。
+	+ 通过 JPush 的 Web Portal 直接推送，也可以调用JPush的 HTTP 协议 API 来完成，开发工作量大大减少。
++ 减少运营成本：
+	+ 极光推送支持一次推送，同时向 Android, iOS, WinPhone 三个平台。支持统一的 API 与推送界面。
+	+ 极光推送提供标签、别名绑定机制，以及提供了非常细分的用户分群方式，运营起来非常简单、直观。
++ 提供应用内推送：
+	+ 除了使得 APNs 推送更简单，也另外提供应用内消息推送。这在类似于聊天的场景里很有必要。
 
 
 ### JPush APNs 实现
