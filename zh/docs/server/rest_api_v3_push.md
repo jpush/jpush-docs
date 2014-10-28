@@ -112,20 +112,15 @@ JPush 当前支持 Android, iOS, Windows Phone 三个平台的推送。其关键
 
 * 推送给全部（广播）：
 
-{ "platform": "all", "audience" : "all", "notification" : { "alert" : "Hi, JPush!", } }
-* 推送给多个标签（只要在任何一个标签范围内都满足）：在深圳、广州、或者北京
+{ "platform": "all", "audience" : "all", "notification" : { "alert" : "Hi, JPush!", } } * 推送给多个标签（只要在任何一个标签范围内都满足）：在深圳、广州、或者北京
 
-{ "audience" : { "tag" : [ "深圳", "广州", "北京" ] } }
-* 推送给多个标签（需要同时在多个标签范围内）：在深圳并且是“女”
+{ "audience" : { "tag" : [ "深圳", "广州", "北京" ] } } * 推送给多个标签（需要同时在多个标签范围内）：在深圳并且是“女”
 
-{ "audience" : { "tag_and" : [ "深圳", "女" ] } }
-* 推送给多个别名：
+{ "audience" : { "tag_and" : [ "深圳", "女" ] } } * 推送给多个别名：
 
-{ "audience" : { "alias" : [ "4314", "892", "4531" ] } }
-* 推送给多个注册ID：
+{ "audience" : { "alias" : [ "4314", "892", "4531" ] } } * 推送给多个注册ID：
 
-{ "audience" : { "registration_id" : [ "4312kjklfds2", "8914afd2", "45fdsa31" ] } }
-* 可同时推送指定多类推送目标：在深圳或者广州，并且是 ”女“ “会员”
+{ "audience" : { "registration_id" : [ "4312kjklfds2", "8914afd2", "45fdsa31" ] } } * 可同时推送指定多类推送目标：在深圳或者广州，并且是 ”女“ “会员”
 
 { "audience" : { "tag" : [ "深圳", "广州" ] "tag_and" : [ “女”, "会员“ ] } }
 
@@ -268,7 +263,7 @@ Code| 描述| 详细解释| 实际提示信息| HTTP Status Code -|-|-|-|- 1000|
 
 JPush 限制整个的消息体长度为 1K 字节。
 
-iOS 通知长度不得超过220字节（包括自定义参数和符号）。||400 1008| app_key参数非法| 必须改正。|| 400 1011| 没有满足条件的推送目标 ||| 400 1020| 只支持 HTTPS 请求| 必须改正。|| 404
+iOS 通知长度不得超过220字节（包括自定义参数和符号）。||400 1008| app_key参数非法| 必须改正。|| 400 1011| 没有满足条件的推送目标 ||| 400 1020| 只支持 HTTPS 请求| 必须改正。|| 404 1030| 内部服务超时| 稍后重试。|| 503
 
 ### 参考
 
@@ -278,7 +273,7 @@ iOS 通知长度不得超过220字节（包括自定义参数和符号）。||40
 * Apple APNs 规范：[Apple Push Notification Service][3]
 * Microsoft MPNs 规范：[Push notifications for Windows Phone 8][4]
 
-[0]: POST https://api.jpush.cn/v3/push
+[0][0]: POST https://api.jpush.cn/v3/push
 
 [0]: ../report_api_v3
 [1]: ../push_api_v2
