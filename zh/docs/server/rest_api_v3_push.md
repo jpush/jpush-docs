@@ -276,7 +276,7 @@ iOS 通知长度不得超过220字节（包括自定义参数和符号）。||40
 [0][0]: POST https://api.jpush.cn/v3/push
 
 [0]: ../report_api_v3
-[1]: ../push_api_v2
+[1]: ../rest_api_v2_push
 [2]: http://zh.wikipedia.org/zh/HTTP基本认证
 [3]: https://developer.apple.com/library/ios/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW12
 [4]: http://msdn.microsoft.com/en-us/library/windowsphone/develop/ff402558(v=vs.105).aspx
