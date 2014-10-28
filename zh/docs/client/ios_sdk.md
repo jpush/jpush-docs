@@ -1,36 +1,36 @@
 # iOS SDK
 
-### JPush iOS 的意义
+### JPush iOS
 
-由于 iOS 平台的特殊性不允许在后台常驻工作，推送采用统一的下发通道：APNs（Apple Push Notification Service）。
+![jpush_ios](../image/jpush_ios.png)
 
-JPush iOS 推送也是基于对 APNs 的封装。但是JPush iOS 推送比起开发者直接对接 APNS 有如下几个方面的优势。
+从上图可以看出，JPush iOS Push 包括 2 个部分，APNs 推送（代理），与 JPush 应用内消息。
 
-+ 减少开发及维护成本：
-	+ 应用开发者不需要去开发维护自己的推送服务器与 APNs 对接。
-	+ 集成了JPush iOS SDK后可以通过 JPush 的 web portal 直接推送通知。也可以调用JPush的 Http 协议 API 来完成。
-+ 统一推送服务：
-	+ 极光推送同时推送 Android 与 iOS 两个平台，支持统一的 API与推送界面，以及别名与标签用户绑定方法。
-+ 更方便的推送：
-	+ JPush iOS 推送同样支持标签，广播和别名的推送方式，开发者只需要一次推送，JPush服务器会根据匹配条件逐条发送到 APNs 服务器，提高了推送性能。
-+ 应用内推送：
-	+ 嵌入了 JPush iOS SDK 的应用，当应用启动后，可以在应用内从 JPush 的服务器上直接获取推送消息以及获取离线消息，极大的保证了推送的可靠性。
+红色部分是 APNs 推送，JPush 代理开发者的应用（需要基于开发者提供的应用证书），向苹果 APNs 服务器推送。由 APNs Server 推送到 iOS 设备上。
 
-### APNs 通知
+蓝色部分是 JPush 应用内推送部分，即 App 启动时，内嵌的 JPush SDK 会开启长连接到 JPush Server，从而 JPush Server 可以推送消息到 App 里。
 
-APNs 通知：是指开发者向应用推送通知后由 APNs 服务器下发的到系统，由 iOS 系统提供展现方式。用户可以通过系统的 “设置” >> “通知” 进行设置。
+#### APNs 通知
+
+APNs 通知：是指通过向 Apple APNs 服务器发送通知，到达 iOS 设备，由 iOS 系统提供展现的推送。用户可以通过 IOS 系统的 “设置” >> “通知” 进行设置，开启或者关闭某一个 App 的推送能力。
+
+JPush iOS SDK 不负责 APNs 通知的展现，只是向 JPush 服务器端上传 Device Token 信息，JPush 服务器端代理开发者向 Apple APNs 推送通知。
 
 [获取 APNs 推送内容](../ios_api)
 
-### 应用内消息
+#### 应用内消息
 
-应用内消息：为了保证推送的可靠性，JPush SDK 提供了应用内消息，当应用打开后可以直接从JPush server 获取推送消息。此消息不经过 APNS 服务器。 
+应用内消息：JPush iOS SDK 提供的应用内消息功能，在 App 在前台时能够收到推送下来的消息。App 可使用此功能来做消息下发动作。
 
-[获取应用内推送信息](../ios_api)
+此消息不经过 APNs 服务器，完全由 JPush 提供功能支持。
 
-### APNs消息与应用内消息对比
+[获取应用内消息推送内容](../ios_api)
 
-如果只需要发送通知，则可以忽略应用内消息的处理。对于两种消息的代码处理可以参考API部分的描述。
+#### APNs通知与应用内消息对比
+
+如果只需要发送通知，则可以忽略应用内消息的处理。对于两种消息的代码处理可以参考API 部分的描述。
+
+JPush API v3 支持同时一次调用同时推送 APNs 通知与 JPush 应用内消息。这在某些应用场景里是有意义的。
 
 ||APNS|应用内消息|
 |-|-|-|
@@ -41,7 +41,34 @@ APNs 通知：是指开发者向应用推送通知后由 APNs 服务器下发的
 |展示效果|如果应用后台或退出，会以系统通知方式展现。<p>如果应用处于打开状态，不展示。|默认不展示。|
 |处理函数|didReceiveRemoteNotification|networkDidReceiveMessage|
 
-### iOS实现与架构图
+
+### iOS SDK 说明
+
+#### iOS 版本支持
+
+#### 组成
+
+#### 注意事项
+
+
+### JPush APNs 通知的意义
+
+iOS 平台上，只有 APNs 这个官方的推送通道，是可以随时送达的。一般开发者都是自己部署应用服务器向 APNs Server 推送。
+
+JPush APNs 做推送代理，其意义又在哪里呢？JPush APNs 相比直接向 APNs 推送有什么好处呢？
+
++ 减少开发及维护成本：
+	+ 应用开发者不需要去开发维护自己的推送服务器与 APNs 对接。
+	+ 集成了 JPush iOS SDK 后不必自己维护更新 device token。
+	+ 通过 JPush 的 Web Portal 直接推送，也可以调用JPush的 HTTP 协议 API 来完成，开发工作量大大减少。
++ 减少运营成本：
+	+ 极光推送支持一次推送，同时向 Android, iOS, WinPhone 三个平台。支持统一的 API 与推送界面。
+	+ 极光推送提供标签、别名绑定机制，以及提供了非常细分的用户分群方式，运营起来非常简单、直观。
++ 提供应用内推送：
+	+ 除了使得 APNs 推送更简单，也另外提供应用内消息推送。这在类似于聊天的场景里很有必要。
+
+### JPush APNs 实现
 
 JPush APNs 的实现可以参考极光博客的一篇文章：[http://blog.jpush.cn/apns/](http://blog.jpush.cn/apns/)
+
 
