@@ -2,7 +2,13 @@
 
 ### 客户端 SDK
 
-#### [Android - SDK下载地址][0]
+##### [Android - SDK下载地址][0]
+
+```
+注：默认开发者只需下载标准版本SDK即可，如果需要额外的CPU的支持请单独下载如下的SDK
+```
++ [X86 SDK](https://www.jpush.cn/downloads/sdk/android-with-x86/)
++ [MIPS SDK](https://www.jpush.cn/downloads/sdk/android-with-mips/)
 
 请参考如下文档来集成SDK：
 
@@ -10,16 +16,18 @@
 * [3分钟快速 Demo(Android)][2]
 * [Android SDK 教程][3]
 
-#### [IOS - SDK下载地址][4]
+##### [IOS - SDK下载地址][4]
 
-> 对于旧版本 XCode 用户或者暂不想支持到 IOS 8 的可以继续使用旧版本[> JPush-IOS-SDK-1.7.4.zip][5]
+对于旧版本 XCode 用户或者暂不想支持到 IOS 8 的可以继续使用如下旧版本 :
+[ JPush-IOS-SDK-1.7.4.zip ](http://docs.jpush.cn/download/attachments/7864408/JPush-iOS-SDK-1.7.4.zip?version=1&modificationDate=1411121271000)
+
 
 请参考如下文档来集成SDK：
 
 * [IOS 集成指南][6]
 * [IOS SDK 教程][7]
 
-#### [WP - SDK下载地址][8]
+##### [WP - SDK下载地址][8]
 
 请参考如下文档来集成SDK:
 
