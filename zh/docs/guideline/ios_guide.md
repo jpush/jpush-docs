@@ -145,17 +145,17 @@ APIs 主要集中在 APService 接口类里。
 
 API里面提供了下面 5 种类型的通知：
 
-extern NSString * const kAPNetworkDidSetupNotification; // 建立连接
+extern NSString * const kJPFNetworkDidSetupNotification; // 建立连接
 
-extern NSString * const kAPNetworkDidCloseNotification; // 关闭连接
+extern NSString * const kJPFNetworkDidCloseNotification; // 关闭连接
 
-extern NSString * const kAPNetworkDidRegisterNotification; // 注册成功
+extern NSString * const kJPFNetworkDidRegisterNotification; // 注册成功
 
-extern NSString * const kAPNetworkDidLoginNotification; // 登录成功
+extern NSString * const kJPFNetworkDidLoginNotification; // 登录成功
 
-extern NSString * const kAPNetworkDidReceiveMessageNotification; // 收到消息(非APNS)
+extern NSString * const kJPFNetworkDidReceiveMessageNotification; // 收到消息(非APNS)
 
-其中，kAPNetworkDidReceiveMessageNotification通知是有传递数据的，可以通过NSNotification中的userInfo方法获取，包括标题、内容、内容类型、扩展信息等
+其中，kJPFNetworkDidReceiveMessageNotification通知是有传递数据的，可以通过NSNotification中的userInfo方法获取，包括标题、内容、内容类型、扩展信息等
 
 ## 高级功能
 
