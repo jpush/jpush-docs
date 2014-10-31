@@ -2,6 +2,8 @@
 
 JPush's officially supported Python client library for accessing JPush APIs.
 
+版本更新：[Release页面](https://github.com/jpush/jpush-api-python-client/releases)。下载更新请到这里。
+
 #### Dependencies
 
 You need to install requests, the python http library, to use jpush python client.
