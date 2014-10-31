@@ -10,6 +10,7 @@
 + [REST API - Report](../rest_api_v3_report/)
 + [JPush Api PHP client doc](https://github.com/jpush/jpush-api-php-client/blob/master/doc/api.md)
 
+版本更新:[Release](https://github.com/jpush/jpush-api-php-client/releases/)页面有详细的版本发布记录与下载。
 
 ###依赖
 
@@ -86,6 +87,3 @@ foreach($result->received_list as  $received) {
 ```
 
 
-###版本更新
-
-[Release](https://github.com/jpush/jpush-api-php-client/releases/)页面有详细的版本发布记录与下载。
