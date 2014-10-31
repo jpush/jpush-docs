@@ -1,19 +1,36 @@
-# 服务器端 SDK
+<h1>JPush API Python Client</h1>
 
+JPush's officially supported Python client library for accessing JPush APIs.
 
-服务SDK，基于多种服务器端编程语言，封装了REST API，简化了开发者调用远程 API 来推送消息的难度。
+#### Dependencies
 
-我们提供的开发包，编程语言类别上有限。如果不在您想要的范围内，请尝试直接基于 API 定义来进行开发，或者使用参考第三方提供的 SDK或者代码片断。
+You need to install requests, the python http library, to use jpush python client.
 
-### Java SDK
+```
+$ sudo pip install requests
+```
 
+#### Installation
 
+To install jpush-api-python-client, simply:
 
-### PHP SDK
+```
+$ sudo pip install jpush
+```
+or alternatively install via easy_install:
 
+```
+$ sudo easy_install jpush
+```
+or from source:
 
-### Python SDK
+```
+$ sudo python setup.py install
+```
+#### Examples
 
+Details refer to [examples](https://github.com/jpush/jpush-api-python-client/blob/master/examples)
 
-### Ruby SDK
+Thanks to
 
+[crystal-wei](https://github.com/crystal-wei) for reporting the jpush-api-python-client issues;
