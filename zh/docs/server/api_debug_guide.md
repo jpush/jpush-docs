@@ -1,6 +1,8 @@
 # API Deubg Guide
 
->请选用 v2 版本 API。 v1 版本已经停止使用。
+```
+请选用 v3 版本 API。 v1 版本已经停止使用,v2版本会将在2015不在维护。
+```
 
 ##Library 选择
 
@@ -35,11 +37,11 @@
 + md5有问题，需要32位大写
 + 你的编码不是utf-8
 
-具体看[Push API v2](../push_api_v2)中的verification_code参数
+具体看[Push API v2](../rest_api_v2_push)中的verification_code参数
 
 ###不用登录Jpush的portal界面，在APP的面板中直接发送通知可以吗？
 
-可以。直接封装Jpush的V2 API就可以了，具体可参考 [Push API v2](../push_api_v2)
+可以。直接封装Jpush的V2 API就可以了，具体可参考 [Push API v2](../rest_api_v2_push)
 
 
 ##官方帮助

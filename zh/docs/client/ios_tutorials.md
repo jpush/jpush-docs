@@ -14,7 +14,7 @@ img[alt=jpush_ios] { width: 800px; }
 
 请到“应用详情页面”确认证书可用性：
 
-![](../image/ios_tut_cert_ok.png)
+![  ](../image/ios_tut_cert_ok.png)
 
 #### 开发环境测试
 

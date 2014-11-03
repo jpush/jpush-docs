@@ -34,7 +34,7 @@ HTTP Header Authorization 的值：Basic base64_auth_string
 
 + base64_auth_string 生成规则是：base64(dev_key:dev_secret),dev_key及dev_secret请登录官  网的帐号页面获取。
 + 留意 dev_key与 dev_secret中间使用 ":" 冒号隔开
-+ 请参考相关规范文档：HTTP基本认证。
++ 请参考相关规范文档：[HTTP基本认证](http://zh.wikipedia.org/zh/HTTP基本认证)。
 
 ### 请求体
 

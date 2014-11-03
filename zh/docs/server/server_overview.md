@@ -51,8 +51,8 @@ JPush API 对访问次数，具有频率控制。即一定的时间窗口内，A
 
 |API 类型|频率（次/分钟）|
 |-|-|
-|[Push API v2](../push_api_v2)|600|
-|[Report-API](../report_api)	|2400|
+|[Push API v3](../rest_api_v3_push)|600|
+|[Report-API](../rest_api_v3_report)|2400|
 
 收费版本根据终端用户规模的不同，具有不同级别的频率。如有需要，请访问 [价格说明](价格说明)了解更多。
 
