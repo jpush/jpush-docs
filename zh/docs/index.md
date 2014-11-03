@@ -4,7 +4,8 @@
 .home_section {
 	margin-left: 16px;
 	margin-right: 16px;
-	margin-top: 14px;}
+	margin-top: 14px;
+}
 </style>
 
 
@@ -93,9 +94,9 @@
                 <h5>Winphone SDK</h5>
                 <table width="100%">
                 <tr>
-                	<td width="25%"><a href="client/winphone_sdk">Winphone SDK 概述</a></td>
+                	<!-- <td width="25%"><a href="client/winphone_sdk">Winphone SDK 概述</a></td> --> 
                 	<td width="25%"><a href="client/winphone_api">Winphone SDK APIs</a></td>
-                    <td width="25%"><a href="client/winphone_tutorials">Winphone SDK 教程</a></td>
+                    <!-- <td width="25%"><a href="client/winphone_tutorials">Winphone SDK 教程</a></td> -->
                     <td width="25%">&nbsp;</td>
                 </tr>
                 </table>
@@ -131,6 +132,8 @@
                 	<td width="25%"><a href="server/rest_api_v3_report">Report API v3</a></td>
                     <td width="25%"><a href="server/rest_api_v2_push">Push API v2</a></td>
                     <td width="25%"><a href="server/rest_api_v2_report">Report API v2</a></td>
+                    <td width="25%"><a href="server/rest_api_Device">
+                    Device API</a></td>
                 </tr>
                 </table>
             </div>
