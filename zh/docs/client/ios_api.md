@@ -267,7 +267,7 @@ r1.2.5 以后。
 1. 在方法- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *) launchOptions 加入下面的代码：
 
     NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
-    [defaultCenter addObserver:self selector:@selector(networkDidReceiveMessage:) name:kAPNetworkDidReceiveMessageNotification object:nil];
+    [defaultCenter addObserver:self selector:@selector(networkDidReceiveMessage:) name:kJPFNetworkDidReceiveMessageNotification object:nil];
 1. 实现回调方法 networkDidReceiveMessage
 
     - (void)networkDidReceiveMessage:(NSNotification *)notification {
@@ -315,7 +315,7 @@ r1.7.0 开始支持。
     + (NSString *)registrationID
     
 
-> 开发者在自定义的监听kAPNetworkDidRegisterNotification时也可以通过"RegistrationID"这个key值来获取对应的 RegistrationID。
+> 开发者在自定义的监听kJPFNetworkDidRegisterNotification时也可以通过"RegistrationID"这个key值来获取对应的 RegistrationID。
 
 #### 附加说明
 
