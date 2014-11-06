@@ -130,10 +130,11 @@
                 <tr>
                 	<td width="25%"><a href="server/rest_api_v3_push">Push API v3</a></td>
                 	<td width="25%"><a href="server/rest_api_v3_report">Report API v3</a></td>
+                    <td width="25%"><a href="server/rest_api_v3_device/">Device API</a></td>
+                </tr>
+                <tr>
                     <td width="25%"><a href="server/rest_api_v2_push">Push API v2</a></td>
                     <td width="25%"><a href="server/rest_api_v2_report">Report API v2</a></td>
-                    <td width="25%"><a href="server/rest_api_Device">
-                    Push Device API</a></td>
                 </tr>
                 </table>
             </div>
