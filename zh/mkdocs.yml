@@ -36,7 +36,6 @@ pages:
 - [server/rest_api_v2_push.md, 服务器端, REST API v2 - Push, Hidden]
 - [server/rest_api_v2_report.md, 服务器端, REST API v2 - Report, Hidden]
 - [server/http_status_code.md, 服务器端, HTTP 状态码]
-- [server/server_sdks.md, 服务器端, 服务器SDKs]
 - [server/java_sdk.md, 服务器端, Java SDK]
 - [server/python_sdk.md, 服务器端, Python SDK]
 - [server/php_sdk.md, 服务器端, PHP SDK]
