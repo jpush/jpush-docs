@@ -4,9 +4,11 @@
 	这是 Push API 最新的版本。
 	相比 API v2 版本，v3 版本的改进为：
 	* 完全基于 https，不再提供 http 访问；
-	* 使用 HTTP  Basic Authentication 的方式做访问授权。这样整个 API 请求可以使用常见的 HTTP 工具来完成，比如：curl, 浏览器插件等；
+	* 使用 HTTP  Basic Authentication 的方式做访问授权。这样整个 API 请求可以
+	  使用常见的 HTTP 工具来完成，比如：curl, 浏览器插件等；
 	* 推送内容完全使用 JSON 的格式；
-	* 支持的功能有所改进：支持多 tag 的与或操作；可单独发送通知或自定义消息，也可同时推送通知与自定义消息; windows phone 目前只有通知。 
+	* 支持的功能有所改进：支持多 tag 的与或操作；可单独发送通知或自定义消息，
+	  也可同时推送通知与自定义消息; windows phone 目前只有通知。 
 
 
 ### 推送概述
@@ -24,7 +26,9 @@ POST [https://api.jpush.cn/v3/push](POST https://api.jpush.cn/v3/push)
 #### 请求示例
 
 ```
-curl --insecure -X POST -v https://api.jpush.cn/v3/push -u "7d431e42dfa6a6d693ac2d04:5e987ac6d2e04d95a9d8f0d1" -d  '{"platform":"all","audience":"all","notification":{"alert":"Hi,JPush!"}}'
+curl --insecure -X POST -v https://api.jpush.cn/v3/push 
+-u "7d431e42dfa6a6d693ac2d04:5e987ac6d2e04d95a9d8f0d1" 
+-d  '{"platform":"all","audience":"all","notification":{"alert":"Hi,JPush!"}}'
  
 > POST /v3/push HTTP/1.1
 > Authorization: Basic N2Q0MzFlNDJkZmE2YTZkNjkzYWMyZDA0OjVlOTg3YWM2ZDJlMDRkOTVhOWQ4ZjBkMQ==
@@ -76,13 +80,13 @@ HTTP Header（头）里加一个字段（Key/Value对）：
 }
 ```
 
-关键字||含义
--|-|-
-platform | 必填 | 推送平台设置
-audience | 必填 | 推送设备指定 
-notification|可选|通知内容体。是被推送到客户端的内容。与 message 一起二者必须有其一，可以二者并存
-message|可选|消息内容体。是被推送到客户端的内容。与 notification 一起二者必须有其一，可以二者并存 
-options | 可选  | 推送参数 
+关键字 			| 含义
+:---------------| :-------------
+platform  		| 必填  	推送平台设置
+audience  		| 必填  	推送设备指定 
+notification 	| 可选  	通知内容体。是被推送到客户端的内容。与 message 一起二者必须有其一，可以二者并存
+message 		| 可选 	消息内容体。是被推送到客户端的内容。与 notification 一起二者必须有其一，可以二者并存 
+options   		| 可选    推送参数 
 
 
 #### platform 
