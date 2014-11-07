@@ -1,14 +1,14 @@
-# REST API v2
+<h1>REST API v2</h1>
 
-## 推送全功能接口
+### 推送全功能接口
 
-### 功能说明
+#### 功能说明
 
 开发者调用此远程接口，向指定的用户推送通知消息，或者自定义消息。
 
 此 API 可用于开发者想要在自己的业务服务器上，灵活地向指定的某个或者某些用户推送消息的场景。
 
-### 调用地址
+#### 调用地址
 
 http://api.jpush.cn:8800/v2/push
 
@@ -22,21 +22,21 @@ http://api.jpush.cn:8800/v2/push
 7.  无论你在极光推送Portal上的应用是生产环境还是测试环境，都使用这个 API 地址推送消息。
 ```
 
-### 调用参数
+#### 调用参数
 
-#### sendno
+##### sendno
 
 int 必须 
 
 发送编号（最大支持32位正整数(即 4294967295 )）。由开发者自己维护，用于开发者自己标识一次发送请求。
 
-#### app_key
+##### app_key
 
 int 必须
 
 待发送的应用程序(appKey)，只能填一个。
 
-#### receiver_type
+##### receiver_type
 
 int 必须
 
@@ -47,7 +47,7 @@ int 必须
 4 - 广播：对 app_key 下的所有用户推送消息。   
 5 - 根据 RegistrationID 进行推送。Android SDK r1.6.0 及以上版本支持。 
 
-#### receiver_value
+##### receiver_value
 
 string 可选
 
@@ -58,7 +58,7 @@ string 可选
 4 - 不需要填。   
 5 - 目标设备的 RegistrationID。支持多达 1000 个，使用 “,” （逗号）间隔。 
 
-#### verification_code
+##### verification_code
 
 string 必须
 
@@ -70,7 +70,7 @@ string 必须
 
 由于验证串的组成部分有 String 内容，而 JPush采用 UTF-8 编码。所以，如果你的 API 调用没有使用 UTF-8 编码时，首先会遇到 verification_code 不正确验证失败的错误返回，导致调用不成功。
 
-#### msg_type
+##### msg_type
 
 int 必须
 
@@ -80,7 +80,7 @@ int 必须
 
 2 - 自定义消息（只有 Android 支持） 
 
-#### msg_content
+##### msg_content
 
 int 必须
 
@@ -88,13 +88,13 @@ int 必须
 
 不会发到用户。
 
-#### platform
+##### platform
 
 string 必须
 
 目标用户终端手机的平台类型，如： android, ios, winphone 多个请使用逗号分隔。
 
-#### apns_production
+##### apns_production
 
 int 可选 
 
@@ -102,7 +102,7 @@ int 可选
 
 如果不携带此参数则推送环境与 JPush Web 上的应用 APNS 环境设置相同。
 
-#### time_to_live
+##### time_to_live
 
 int 可选
 
@@ -112,7 +112,7 @@ int 可选
 
 此参数不设置则表示默认，默认为保存1天的离线消息（86400秒）。
 
-#### override_msg_id
+##### override_msg_id
 
 string 可选
 
@@ -126,14 +126,14 @@ string 可选
 
 覆盖功能起作用的时限是：1 天。 如果在覆盖指定时限内该 msg_id 不存在，则返回 1003 错误，提示不是一次有效的消息覆盖操作，当前的消息不会被推送。
 
-### 调用返回
+#### 调用返回
 
 当调用接口时，极光Push Server会进行简单的校验检查，并立即返回结果。
 
 正常情况下返回码为 200，返回内容类型为字符串，形式为 JSON。
 
-|Key名称|Value内容说明| 
-|-|-| 
+| Key名称 | Value内容说明 | 
+| :---| :---| 
 |errcode|错误码。参考：错误码定义| 
 |errmsg |错误说明|
 | msg_id|该消息的 ID|
@@ -148,9 +148,9 @@ string 可选
 
 当调用参数 msg_type = 1 时，msg_content JSON 要求：
 
-|Key名称|是否必须|Value内容说明|
-|-|-|-| 
-|n_builder_id|可选 |1-1000的数值，不填则默认为 0，使用 极光Push SDK 的默认通知样式。只有 Android 支持这个参数。进一步了解请参考文档 通知栏样式定制 API| 
+| Key名称 | 是否必须 | Value内容说明 |
+| :---| :---| :---| 
+|n_builder_id|可选 |1-1000的数值，不填则默认为 0，使用 极光Push SDK 的默认通知样式。只有 Android 支持这个参数。进一步了解请参考文档 [通知栏样式定制 API](../../client/android_api)| 
 |n_title|可选 |通知标题。不填则默认使用该应用的名称。只有 Android支持这个参数。| 
 |n_content| 必须 |通知内容。| 
 |n_extras| 可选 |通知附加参数。JSON格式。客户端可取得全部内容。|
@@ -165,14 +165,14 @@ string 可选
 
 通过 JPush API 同时推送 iOS APNs 消息时，有一些内容需要与 APNs 适配。
 
-关于 APNs 的具体详细定义，请参考官方文档：Apple Push Notification Service。
+关于 APNs 的具体详细定义，请参考官方文档：[Apple Push Notification Service](http://developer.apple.com/library/ios/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/ApplePushService/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW12)。
 
-|JPush 字段 |APNs 字段|
- |-|-| 
- |n_content |alert| 
- |n_extras -> ios -> badge |badge| 
- |n_extras -> ios -> sound |sound| 
- |n_extras -> ios >content-available |content-available|
+| JPush 字段 | APNs 字段 |
+| :---| :---| 
+|n_content |alert| 
+|n_extras -> ios -> badge |badge| 
+|n_extras -> ios -> sound |sound| 
+|n_extras -> ios >content-available |content-available|
 
 n_content 字段必须存在，但可以为空字符串。这时，如果 extras 里带了 badge 字段，则收到的通知会显示应用图标右上角数字，而没有通知栏内容。
 
@@ -180,7 +180,17 @@ n_extras 整体可以不填。
 
 指定了 iOS 特定参数的完整的通知 msg_content JSON串示例：
 
-    {"n_content":"通知内容", "n_extras":{"ios":{"badge":88, "sound":"default", "content-available":1}, "user_param_1":"value1", "user_param_2":"value2"}}
+    {
+     "n_content":"通知内容", 
+     "n_extras":{
+     	"ios":{
+     		"badge":88, 
+     		"sound":"default", 
+     		"content-available":1
+     		}, 
+     "user_param_1":"value1", 
+     "user_param_2":"value2"}
+    }
     
 
 #### 通知长度限制说明
@@ -189,9 +199,15 @@ JPush API 同时支持 Andorid 与 iOS 平台的通知推送。
 
 由于 APNs 限制是 255 个字节，所以 JPush 推送通知也依据 APNs 来统一限制。
 
-> 通知长度限制的设计，一方面的确是因为 APNs 的原因。另一方面，我们也认为，对于“通知”，在通知栏展示的信息，这么长的长度足够了。
+```
+ 通知长度限制的设计，一方面的确是因为 APNs 的原因。
+ 另一方面，我们也认为，对于“通知”，在通知栏展示的信息，
+ 这么长的长度足够了。
+```
 
-> 另外请留意：这里说的长度，是指字节。由于使用 UTF-8 编码，所以一个中文字符占 3 个字节。
+```
+另外请留意：这里说的长度，是指字节。由于使用 UTF-8 编码，所以一个中文字符占 3 个字节。
+```
 
 由于组装 APNs 有几个 JSON 字段，所以 JPush API 通知限制具体大小为：220 个字节。
 
@@ -199,12 +215,14 @@ JPush API 同时支持 Andorid 与 iOS 平台的通知推送。
 
 #### 自定义消息类型
 
-> 只有 Android 支持自定义消息
+```
+只有 Android 支持自定义消息
+```
 
 当调用参数 msg_type = 2 时，msg_content JSON 要求：
 
-|Key名称| 是否必须| Value内容说明| 
-|-|-|-| 
+| Key名称 | 是否必须 | Value内容说明 | 
+| :---| :---| :---| 
 |message| 必须| 自定义消息的内容。 
 |content_type| 可选| message 字段里的内容类型。用于特定的 message 内容解析 
 |title| 可选| 消息标题 
@@ -212,20 +230,24 @@ JPush API 同时支持 Andorid 与 iOS 平台的通知推送。
 
 注：自定义消息所有字段信息的总长度，不得超过 1000 个字节。
 
-> 值得注意的是，这些信息极光 Push SDK 本身都不去解析，而是客户端提供 API 给到开发者自己的应用程序去处理。请参考相关文档 接收推送消息。
+```
+值得注意的是，这些信息极光 Push SDK 本身都不去解析，
+而是客户端提供 API 给到开发者自己的应用程序去处理。请参考相关文档 接收推送消息。
+```
 
-### verification_code 拼接示例
+#### verification_code 拼接示例
 
     int sendno = 3321;
     int receiverType = 2;
     String receiverValue = "game, oldman, student";
-    String masterSecret = "71638202938228382811FCB1CB308ADC"; //极光推送portal 上分配的 appKey 的验证串(masterSecret)
+    String masterSecret = "71638202938228382811FCB1CB308ADC"; //极光推送portal 
+    上分配的 appKey 的验证串(masterSecret)
      
     String input = String.valueOf(sendno) + receiverType + receiverValue + masterSecret;
     String verificationCode = StringUtils.toMD5(input);
     
 
-## 特殊字符问题
+### 特殊字符问题
 
 如果你在调用 API 时直接使用官方的 Java Library - Java v2，在内容里可以发送任何特殊字符。
 
@@ -248,8 +270,8 @@ URL encode 一般来说，各开发语言平台都提供了这方面的工具方
 
 HTTP 返回码为 200 时，是业务相关的错误。
 
-|错误码| 错误描述| 
-|-|-| 
+| 错误码 | 错误描述 | 
+| :---| :---| 
 |0| 调用成功 
 |10| 系统内部错误 
 |1001| 只支持 HTTP Post 方法，不支持 Get 方法 
@@ -257,7 +279,6 @@ HTTP 返回码为 200 时，是业务相关的错误。
 |1003| 参数值不合法 
 |1004| verification_code 验证失败 
 |1005| 消息体太大。 
-|1006| 用户名或密码错误 
 |1007| receiver_value 参数 非法 
 |1008| appkey参数非法 
 |1010| msg_content 不合法 
@@ -265,6 +286,7 @@ HTTP 返回码为 200 时，是业务相关的错误。
 |1012| iOS 不支持推送自定义消息。只有 Android 支持推送自定义消息。 
 |1013| content-type 只支持 application/x-www-form-urlencoded 
 |1014| 消息内容包含敏感词汇。
+|1030| 内部服务超市。稍后重试。
 
 ```
 返回1011时：
@@ -275,13 +297,12 @@ HTTP 返回码为 200 时，是业务相关的错误。
 
 ```
 
-## 参考
+### 参考
 
 查询消息送达情况请参考： [Report-API][2]
 
 了解API 频率限制：[API 频率限制][3]
 
-[0]: https://+ api.jpush.cn/v2/push
 [1]: http://www.json.org/
 [2]: ../rest_api_v3_report
 [3]: ../api_rate_limiting
