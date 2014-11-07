@@ -40,6 +40,7 @@ pages:
 - [server/python_sdk.md, 服务器端, Python SDK]
 - [server/php_sdk.md, 服务器端, PHP SDK]
 - [server/ruby_sdk.md, 服务器端, Ruby SDK]
+- [server/csharp_sdk.md, 服务器端, C Sharp SDK]
 - [server/nodejs_sdk.md, 服务器端, Node.js SDK]
 
 
