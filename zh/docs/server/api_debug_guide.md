@@ -4,18 +4,18 @@
 请选用 v3 版本 API。 v1 版本已经停止使用,v2版本会将在2015不在维护。
 ```
 
-##Library 选择
+###Library 选择
 
 + 如果 API 调用使用 Java，则建议使用 JPush 提供的 JPush API Library。
 + 避免自己写代码组装 JSON 字符串，而使用一些成熟的第三方 library 来生成。
 
-##具体问题
+###具体问题
 
-###拼接verification_code的最后一个参数master_secret如何获取
+####拼接verification_code的最后一个参数master_secret如何获取
 
 请登陆portal，在你所创建应用的应用详情界面可以获取到。
 
-###1002：app_key doesn't exist 
+####1002：app_key doesn't exist 
 
 可能有两个原因：
 
@@ -24,14 +24,14 @@
 + 只有msg_content的内容是json，其它的参数都是post的键值
  
 
-###1003 msg_content should be JSON format
+####1003 msg_content should be JSON format
 
 大多数时候是由于自己写代码拼装 JSON，而 JSON 的特殊字符没有做转义引起的。建议使用第三方 JSON 库来生成 JSON 字符串。
 
 另外一个常见的原因是，字符串不是 utf-8 编码。
 
 
-###1004 verification_code is incorrect
+####1004 verification_code is incorrect
 
 + 拼接verification_code的参数不对：由 sendno, receiver_type, receiver_value, master_secret 4个值拼接起来（直接拼接字符串）
 + md5有问题，需要32位大写
@@ -39,12 +39,12 @@
 
 具体看[Push API v2](../rest_api_v2_push)中的verification_code参数
 
-###不用登录Jpush的portal界面，在APP的面板中直接发送通知可以吗？
+####不用登录Jpush的portal界面，在APP的面板中直接发送通知可以吗？
 
 可以。直接封装Jpush的V2 API就可以了，具体可参考 [Push API v2](../rest_api_v2_push)
 
 
-##官方帮助
+###官方帮助
 
 当出现问题时，建议仔细阅读官方文档，看看有没有什么遗漏信息。如果还是无法解决，建议在[QA问答网站](https://www.jpush.cn/qa/)搜索，有没有碰到类似信息
 
