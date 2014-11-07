@@ -65,7 +65,7 @@ is_new_created   |boolean 	    |
 参考文档：[HTTP-Status-Code]()
 
 HTTP Status Code| Code|描述|详细解释|提示信息
--| -| -| -|-
+----- | ----- | ----- | ----- |------
 200||OK|Success!|
 405|4001|只支持 HTTP Post 方法|不支持 Get 方法。|Get HTTP method is not allowed
 400|4002|请求参数非法|必须改正。|Request parameter {param} is null or empty
