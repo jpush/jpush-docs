@@ -42,6 +42,15 @@ JPush API v3 支持同时一次调用同时推送 APNs 通知与 JPush 应用内
 |处理函数|didReceiveRemoteNotification|networkDidReceiveMessage|
 
 
+### iOS SDK 集成
+
+请参考以下文档与教程，来集成 IOS SDK。
+
++ [IOS 集成指南](../../guideline/ios_guide)
++ [IOS 教程](../ios_tutorials)
++ [IOS 常见问题](../../guideline/faq)
+
+
 ### iOS SDK 说明
 
 #### iOS 版本支持

@@ -8,7 +8,7 @@ JPush WP Push 包括 1个部分，MPNs 推送（代理）。
 
 蓝色部分是 JPush 应用内推送部分，但目前暂不支持应用内消息。
 
-### Windows Phone 平台上的通知:
+### Windows Phone 平台上的通知
 
 该通知由 JPush 服务器代理向微软的 MPNs 服务器发送，并在 Windows Phone 客户端的系统通知栏上展示。
 
@@ -17,3 +17,11 @@ JPush WP Push 包括 1个部分，MPNs 推送（代理）。
 ```
 Windows Phone 平台上，暂时不支持应用内消息。
 ```
+
+### WP SDK 集成
+
+请参考以下文档与教程，来集成 WP SDK。
+
++ [3分钟快速Demo(Winphone)](../../guideline/winphone_3m)
++ [WP 集成指南](../../guideline/winphone_guide)
++ [WP API](../winphone_api)
