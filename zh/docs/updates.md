@@ -1,6 +1,6 @@
 # 最近更新
 
-### JPush Android SDK r1.7.0版本发布
+### 2014-09-25 JPush Andrdoi SDK r1.7.0
 ####Change Log
 
 + 优化改进：根据服务器时间优化统计信息时间准确性 
@@ -22,7 +22,7 @@
 + 如果要支持 mips CPU 的机型，请下载单独的 mips JPush SDK 压缩包，解压缩后复制 libs/mips/libjpush170.so 到你项目的 libs/mips/ 目录下。
 
 
-### JPush IOS SDK v1.8.1 版本发布
+### 2014-09-23 JPush IOS SDK v1.8.1
 ####Change Log
 
 + 优化改进：修改与部分第三方 SDK 变量冲突问题
@@ -39,7 +39,7 @@
 + 新版本不再需要 libPushSDK-Simulator.a 。如果你的老版本 SDK 包含此文件，请删除。
 
 
-### JPush iOS SDK v1.8.0 版本发布
+### 2014-09-19 JPush iOS SDK v1.8.0 
 
 ####Change Log
 
@@ -64,7 +64,7 @@
 + 新版本不再需要 libPushSDK-Simulator.a 。如果你的老版本 SDK 包含此文件，请删除。
 
 
-### JPush Android SDK r1.6.4 版本发布
+### 2014-08-27 JPush Android SDK r1.6.4 
 ####Change Log
 
 + 新增功能：支持 Push v3 API 同时推送通知与自定义消息，接收后广播给 App；
@@ -87,7 +87,7 @@
 + 如果要支持 mips CPU 的机型，请下载单独的 mips JPush SDK 压缩包，解压缩后复制 libs/mips/libjpush164.so 到你项目的 libs/mips/ 目录下。
 
 
-### JPush WinPhone SDK v1.0.2 版本发布
+### 2014-08-14 JPush WinPhone SDK v1.0.2 
 
 ####Change Log
 
@@ -105,7 +105,7 @@
 + 新加入库：JPushSDK-v1.0.2.dll ，同时删除老版本的dll
 
 
-### JPush iOS SDK v1.7.4 版本发布
+### 2014-08-06 JPush iOS SDK v1.7.4 
 Change Log
 新增功能：增加设置 badge 值更新到 JPush 服务器功能。
 此 SDK 版本配合服务器端推送通知 badge +1 功能使用，实现群推 iOS 通知时 badge 值各用户不同的值。
@@ -119,7 +119,7 @@ Change Log
 新版本不再需要 libPushSDK-Simulator.a 。如果你的老版本 SDK 包含此文件，请删除。
 
 
-### JPush Android SDK r1.6.3 版本发布
+### 2014-07-01 JPush Android SDK r1.6.3 
 
 ####Change Log
 
@@ -140,7 +140,7 @@ Change Log
 + 如果要支持 mips CPU 的机型，请下载单独的 mips JPush SDK 压缩包，解压缩后复制 libs/mips/libjpush.so 到你项目的 libs/mips/ 目录下。
 
 
-### JPush iOS SDK v1.7.3 版本发布
+### 2014-07-24 JPush iOS SDK v1.7.3 
 
 ####Change Log
 
@@ -156,7 +156,7 @@ Change Log
 + 工程添加libz.dylib、Security.framework两个库；
 + 新版本不再需要 libPushSDK-Simulator.a 。如果你的老版本 SDK 包含此文件，请删除。
 
-### JPush iOS SDK v1.7.2 版本发布
+### 2014-11-07 JPush iOS SDK v1.7.2 
 
 ##### Change Log
 
@@ -176,7 +176,7 @@ Change Log
 + 关于 iOS 7 Background Push，JPush 提供一个教程文档：[iOS 7 Background Remote Notification](../client/ios_tutorials)
 
 
-### JPush iOS SDK v1.7.1 版本发布
+### 2014-07-24 JPush iOS SDK v1.7.1 
 
 ##### Change Log
 
@@ -211,7 +211,7 @@ JPush 对 Windows Phone 推送的支持，与对 iOS 推送的支持类似，主
 + API 调用对 Windows Phone 设备推送通知；
 
 
-### JPush iOS SDK v1.7.0 版本发布
+### 2014-09-17 JPush iOS SDK v1.7.0 
 
 #####Change Log
 
@@ -231,7 +231,7 @@ JPush 对 Windows Phone 推送的支持，与对 iOS 推送的支持类似，主
 
 
 
-### JPush Android SDK r1.6.1 发布
+### 2014-03-09 JPush Android SDK r1.6.1 
 
 ####Change Log
 
@@ -252,7 +252,7 @@ JPush 对 Windows Phone 推送的支持，与对 iOS 推送的支持类似，主
 6. 如果要支持 x86 CPU 的机型，请下载单独的 x86 JPush SDK 压缩包，解压缩后复制 libs/x86/libjpush.so 到你项目的 libs/x86/ 目录下。
 7. 如果要支持 mips CPU 的机型，请下载单独的 mips JPush SDK 压缩包，解压缩后复制 libs/mips/libjpush.so 到你项目的 libs/mips/ 目录下。
 
-### JPush Android SDK r1.6.0 发布
+### 2014-02-25 JPush Android SDK r1.6.0 
 
 #### Change Log
 1. 新增功能：增加统计分析 API。
@@ -271,7 +271,7 @@ JPush 对 Windows Phone 推送的支持，与对 iOS 推送的支持类似，主
 6. 如果要支持 x86 CPU 的机型，请下载单独的 x86 JPush SDK 压缩包，解压缩后复制 libs/x86/libjpush.so 到你项目的 libs/x86/ 目录下。
 7. 如果要支持 mips CPU 的机型，请下载单独的 mips JPush SDK 压缩包，解压缩后复制 libs/mips/libjpush.so 到你项目的 libs/mips/ 目录下。
 
-### JPush iOS SDK r1.6.3 版本发布
+### 2014-07-01 JPush iOS SDK r1.6.3 
 
 #### Change Log
 
@@ -291,7 +291,7 @@ JPush 对 Windows Phone 推送的支持，与对 iOS 推送的支持类似，主
 
 
 
-### JPush Android SDK r1.5.6 发布
+### 2014-01-03 JPush Android SDK r1.5.6 
 
 #### Change Log
 
@@ -310,7 +310,7 @@ JPush 对 Windows Phone 推送的支持，与对 iOS 推送的支持类似，主
 + 如果是从较早的版本升级过来，建议参考 SDK下载包最新版本的 example 来更新 AndroidManifest.xml 文件配置。
 
 
-### JPush iOS SDK r1.6.2 版本发布
+### 2014-01-15 JPush iOS SDK r1.6.2 
 
 #### Change Log
 
@@ -330,7 +330,7 @@ JPush 对 Windows Phone 推送的支持，与对 iOS 推送的支持类似，主
 
 
 
-### JPush iOS SDK r1.6.0 版本发布
+### 2014-02-25 JPush iOS SDK r1.6.0 
 
 #### Change Log
 
