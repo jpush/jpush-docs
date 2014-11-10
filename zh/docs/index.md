@@ -27,16 +27,22 @@
                       <a href="client/winphone_sdk/" class="thumbnail"><img src="image/product_winphone.png" alt="winphone sdk" /></a>
                     </div>
                     <div class="col-md-1">
-                      <a href="server/server_sdks#java-sdk" class="thumbnail"><img src="image/sdk_java.png" alt="java sdk" /></a>
+                      <a href="server/java_sdk/" class="thumbnail"><img src="image/sdk_java.png" alt="java sdk" /></a>
                     </div>
                     <div class="col-md-1">
-                      <a href="server/server_sdks#php-sdk" class="thumbnail"><img src="image/sdk_php.png" alt="php sdk" /></a>
+                      <a href="server/python_sdk/" class="thumbnail"><img src="image/sdk_python.png" alt="python sdk" /></a>
                     </div>
                     <div class="col-md-1">
-                      <a href="server/server_sdks#python-sdk" class="thumbnail"><img src="image/sdk_python.png" alt="python sdk" /></a>
+                      <a href="server/php_sdk/" class="thumbnail"><img src="image/sdk_php.png" alt="php sdk" /></a>
                     </div>
                     <div class="col-md-1">
-                      <a href="server/server_sdks#ruby-sdk" class="thumbnail"><img src="image/sdk_ruby.png" alt="ruby sdk" /></a>
+                      <a href="server/ruby_sdk/" class="thumbnail"><img src="image/sdk_ruby.png" alt="ruby sdk" /></a>
+                    </div>
+                    <div class="col-md-1">
+                      <a href="server/csharp_sdk/" class="thumbnail"><img src="image/sdk_c_sharp.png" alt="csharp sdk" /></a>
+                    </div>
+                    <div class="col-md-1">
+                      <a href="server/nodejs_sdk/" class="thumbnail"><img src="image/sdk_node_js.png" alt="nodejs sdk" /></a>
                     </div>
                 </div>
             </div>
