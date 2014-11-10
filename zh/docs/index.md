@@ -94,7 +94,7 @@
                 <h5>Winphone SDK</h5>
                 <table width="100%">
                 <tr>
-                	<!-- <td width="25%"><a href="client/winphone_sdk">Winphone SDK 概述</a></td> --> 
+                	<td width="25%"><a href="client/winphone_sdk">Winphone SDK 概述</a></td> 
                 	<td width="25%"><a href="client/winphone_api">Winphone SDK APIs</a></td>
                     <!-- <td width="25%"><a href="client/winphone_tutorials">Winphone SDK 教程</a></td> -->
                     <td width="25%">&nbsp;</td>

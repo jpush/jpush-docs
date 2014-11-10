@@ -25,6 +25,7 @@ pages:
 - [client/ios_sdk.md, 客户端, iOS SDK 概述]
 - [client/ios_tutorials.md, 客户端, iOS SDK 教程]
 - [client/ios_api.md, 客户端, iOS SDK API]
+- [client/winphone_sdk.md, 客户端, WinPhone SDK 概述]
 - [client/winphone_api.md, 客户端, WinPhone SDK API]
 - [client/client_plugins.md, 客户端, 客户端集成插件]
 
