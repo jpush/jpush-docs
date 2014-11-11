@@ -1,6 +1,6 @@
 # 最近更新
 
-### 2014-09-25 JPush Andrdoi SDK r1.7.0
+### 2014-09-25 JPush Andrdoi SDK v1.7.0
 ####Change Log
 
 + 优化改进：根据服务器时间优化统计信息时间准确性 
@@ -64,7 +64,7 @@
 + 新版本不再需要 libPushSDK-Simulator.a 。如果你的老版本 SDK 包含此文件，请删除。
 
 
-### 2014-08-27 JPush Android SDK r1.6.4 
+### 2014-08-27 JPush Android SDK v1.6.4 
 ####Change Log
 
 + 新增功能：支持 Push v3 API 同时推送通知与自定义消息，接收后广播给 App；
@@ -119,7 +119,7 @@ Change Log
 新版本不再需要 libPushSDK-Simulator.a 。如果你的老版本 SDK 包含此文件，请删除。
 
 
-### 2014-07-01 JPush Android SDK r1.6.3 
+### 2014-07-01 JPush Android SDK v1.6.3 
 
 ####Change Log
 
@@ -193,7 +193,7 @@ Change Log
 + 工程添加libz.dylib、Security.framework两个库；
 + 新版本不再需要 libPushSDK-Simulator.a 。如果你的老版本 SDK 包含此文件，请删除。
   
-### JPush WinPhone 推送上线
+### 2014-07-24 JPush WinPhone SDK v1.0.0
 
 JPush 对 Windows Phone 推送的支持，与对 iOS 推送的支持类似，主要的功能是： 
 
@@ -231,7 +231,7 @@ JPush 对 Windows Phone 推送的支持，与对 iOS 推送的支持类似，主
 
 
 
-### 2014-03-09 JPush Android SDK r1.6.1 
+### 2014-03-09 JPush Android SDK v1.6.1 
 
 ####Change Log
 
@@ -252,7 +252,7 @@ JPush 对 Windows Phone 推送的支持，与对 iOS 推送的支持类似，主
 6. 如果要支持 x86 CPU 的机型，请下载单独的 x86 JPush SDK 压缩包，解压缩后复制 libs/x86/libjpush.so 到你项目的 libs/x86/ 目录下。
 7. 如果要支持 mips CPU 的机型，请下载单独的 mips JPush SDK 压缩包，解压缩后复制 libs/mips/libjpush.so 到你项目的 libs/mips/ 目录下。
 
-### 2014-02-25 JPush Android SDK r1.6.0 
+### 2014-02-25 JPush Android SDK v1.6.0 
 
 #### Change Log
 1. 新增功能：增加统计分析 API。
@@ -271,7 +271,7 @@ JPush 对 Windows Phone 推送的支持，与对 iOS 推送的支持类似，主
 6. 如果要支持 x86 CPU 的机型，请下载单独的 x86 JPush SDK 压缩包，解压缩后复制 libs/x86/libjpush.so 到你项目的 libs/x86/ 目录下。
 7. 如果要支持 mips CPU 的机型，请下载单独的 mips JPush SDK 压缩包，解压缩后复制 libs/mips/libjpush.so 到你项目的 libs/mips/ 目录下。
 
-### 2014-07-01 JPush iOS SDK r1.6.3 
+### 2014-07-01 JPush iOS SDK v1.6.3 
 
 #### Change Log
 
@@ -291,7 +291,7 @@ JPush 对 Windows Phone 推送的支持，与对 iOS 推送的支持类似，主
 
 
 
-### 2014-01-03 JPush Android SDK r1.5.6 
+### 2014-01-03 JPush Android SDK v1.5.6 
 
 #### Change Log
 
@@ -310,7 +310,7 @@ JPush 对 Windows Phone 推送的支持，与对 iOS 推送的支持类似，主
 + 如果是从较早的版本升级过来，建议参考 SDK下载包最新版本的 example 来更新 AndroidManifest.xml 文件配置。
 
 
-### 2014-01-15 JPush iOS SDK r1.6.2 
+### 2014-01-15 JPush iOS SDK v1.6.2 
 
 #### Change Log
 
@@ -330,7 +330,7 @@ JPush 对 Windows Phone 推送的支持，与对 iOS 推送的支持类似，主
 
 
 
-### 2014-02-25 JPush iOS SDK r1.6.0 
+### 2014-02-25 JPush iOS SDK v1.6.0 
 
 #### Change Log
 
