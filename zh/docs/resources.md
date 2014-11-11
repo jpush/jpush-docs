@@ -39,15 +39,16 @@
 
 
 ### 服务器端 SDK 下载
+<body>
 
 <div class="row">
-    <div class="col-md-8"> <!-- left content -->
+    <div class="col-md-8" style="width:850px"> <!-- left content -->
         <div class="panel panel-default">
-            <div class="panel-heading">
-            </div>
+            <!-- <div class="panel-heading" style="width:800px; solid #000;">
+            </div> -->
             <div class = "panel-content home_section">
-            	<table width="300%"   cellspacing="100">
-            		<tr>
+            	<table width="100%"   cellspacing="100">
+            		<tr >
             			<td width="25%" align="center" valign="middle">
                                     <br>
             				<img src="../image/sdk_java.png" width="100" height="100" alt="java sdk">
@@ -67,6 +68,7 @@
                   
                         
             			<td width="25%" align="center" valign="middle">
+                                    <br>
             				<img src="../image/sdk_python.png" width="100" height="100" alt="python sdk">
                                     <br>
                                     <br>
@@ -120,6 +122,7 @@
                         
                         
             			<td width="25%" align="center" valign="middle">
+                                    <br>
             				<img src="../image/sdk_c_sharp.png" width="100" height="100" alt="csharp sdk">
                                     <br>
             				<br>
@@ -161,7 +164,7 @@
             
     </div>
 </div>
-
+</body>
 
 ### 服务器端第三方代码
 
