@@ -50,7 +50,7 @@
             	<table width="10%">
             		<tr>
             			<td width="25%" align="center" valign="middle">
-            				<img src="image/sdk_java.png" width="100" height="100" alt="java sdk">
+            				<img src="../image/sdk_java.png" width="100" height="100" alt="java sdk">
             				<br>
             					<a href="http://docs.jpush.cn/download/attachments/2228302/jpush-client-3.2.3.zip?version=2&modificationDate=1415166491000">Java SDK 下载</a>
             				</br>
@@ -64,7 +64,7 @@
             			</td>
 
             			<td width="25%" align="center" valign="middle">
-            				<img src="image/sdk_python.png" width="100" height="100" alt="python sdk">
+            				<img src="../image/sdk_python.png" width="100" height="100" alt="python sdk">
             				<br>
             					<a href="http://docs.jpush.cn/download/attachments/2228302/jpush-api-python-client-3.0.1.zip?version=1&modificationDate=1404872913000">Python SDK 下载</a>
             				<p align=left class ="topmargin">版本号：v3.0.1
@@ -77,7 +77,7 @@
                         </tr>
                         <tr>
             			<td width="25%" align="center" valign="middle">
-            				<img src="image/sdk_php.png" width="100" height="100" alt="php sdk">
+            				<img src="../image/sdk_php.png" width="100" height="100" alt="php sdk">
             				<br>
             					<a href="http://jpushsdk.qiniudn.com/jpush-api-php-client-3.2.0.zip">PHP SDK下载</a>
             				</br>
@@ -94,7 +94,7 @@
             			</td>
             		
             			<td width="25%" align="center" valign="middle">
-            				<img src="image/sdk_ruby.png" width="100" height="100" alt="ruby sdk">
+            				<img src="../image/sdk_ruby.png" width="100" height="100" alt="ruby sdk">
             				<br>
             					<a href="http://docs.jpush.cn/download/attachments/2228302/jpush-api-ruby-client-3.1.1.zip?version=1&modificationDate=1407735179000">Ruby SDK 下载</a>
             				</br>
@@ -110,7 +110,7 @@
                         </tr>
                         <tr>
             			<td width="25%" align="center" valign="middle">
-            				<img src="image/sdk_c_sharp.png" width="100" height="100" alt="csharp sdk">
+            				<img src="../image/sdk_c_sharp.png" width="100" height="100" alt="csharp sdk">
             				<br>
             					<a href="https://github.com/jpush/jpush-api-csharp-client/archive/develop.zip">C# SDK 下载</a>
             				<p align=left>版本号：v2.3.0
@@ -122,7 +122,7 @@
             			</td>
 
             			<td width="25%" align="center" valign="middle">
-            				<img src="image/sdk_node_js.png" width="100" height="100" alt="nodejs sdk">
+            				<img src="../image/sdk_node_js.png" width="100" height="100" alt="nodejs sdk">
             				<br>
             					<a href="http://docs.jpush.cn/download/attachments/2228302/jpush-api-nodejs-client-3.1.0.zip?version=1&modificationDate=1404872549000">Nodejs SDK下载</a>
             				</br>
