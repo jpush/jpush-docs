@@ -994,6 +994,7 @@ if (JPushInterface.ACTION_RICHPUSH_CALLBACK.equals(intent.getAction())) {
 | --- | --- |
 |-997	|注册失败（一般是由于没有网络造成的）<p>如果确保设备网络正常，还是一直遇到此问题，则还有另外一个原因：JPush 服务器端拒绝注册。<p>而这个的原因一般是：你当前的 App 的 Android 包名，以及 appKey ，与你在 Portal 上注册的应用的 Android 包名与 appKey 不相同。|
 |1005	|包名和Appkey不匹配|
+|1008   |Appkey参数非法|
 |-996	|网络连接断开<p>如果确保设备网络正常，可能是由于包名不正确，服务器强制断开客户端的连接。|
 |-994	|网络连接超时|
 
