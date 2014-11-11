@@ -59,9 +59,9 @@
             				<br>
             					<p align=left>版本号：v3.2.3
             					</p>
-            				<p align=left >发布时间:2014-10-30</p>
+            				<p align=left >更新时间：2014-10-30</p>
                                     <p align=left ><a href="https://github.com/jpush/jpush-api-java-client">Java项目地址</a>
-            				<p align=left >支持：Push API v3;Report API
+            				<p align=left >支持：Push API v3, Report API
             				
             				</br>
             			</td>
@@ -76,7 +76,7 @@
             				</br>
                                     <br>
                                     <p align=left class ="topmargin">版本号：v3.0.1
-            				<p align=left>发布时间:2014-06-28
+            				<p align=left>更新时间：2014-06-28
                                     <p align=left ><a href="https://github.com/jpush/jpush-api-python-client">Python项目地址</a>
             				<p align=left>支持: Push API v3       
             				</br>
@@ -92,9 +92,9 @@
             				</br>
             				<br>
             				<p align=left>版本号：v3.2.0
-            				<p align=left>发布时间:2014-10-30</p>
+            				<p align=left>更新时间：2014-10-30</p>
                                     <p align=left ><a href="https://github.com/jpush/jpush-api-php-client">PHP项目地址</a>
-            				<p align=left>支持：Push API v3;Report API
+            				<p align=left>支持：Push API v3, Report API
             					
             				</br>
 
@@ -111,9 +111,9 @@
             				<br>
             					<p align=left>版本号：v3.1.1
             					</p>
-            				<p align=left>发布时间:2014-08-11</p>
+            				<p align=left>更新时间：2014-08-11</p>
                                     <p align=left ><a href="https://github.com/jpush/jpush-api-ruby-client">Ruby项目地址</a>
-            				<p align=left>支持：Push API v3;Report API
+            				<p align=left>支持：Push API v3, Report API
             					
             				</br>
 
@@ -132,7 +132,7 @@
                                     
                               
             				<p align=left>版本号：v2.3.0
-            				<p align=left>发布时间:2014-01-21
+            				<p align=left>更新时间：2014-01-21
                                     <p align=left ><a href="https://github.com/jpush/jpush-api-csharp-client">C#项目地址</a>
             				<p align=left>支持: Push API v2
             					
@@ -151,9 +151,9 @@
             				<br>
             					<p align=left>版本号：v3.1.0
             					</p>
-            				<p align=left>发布时间:2014-07-05</p>
+            				<p align=left>发布时间：2014-07-05</p>
                                     <p align=left ><a href="https://github.com/jpush/jpush-api-nodejs-client">Nodejs项目地址</a>
-            				<p align=left>支持：Push API v3;Report API
+            				<p align=left>支持：Push API v3, Report API
             					
             				</br>
 
