@@ -1,5 +1,7 @@
 # Android SDK 概述
 
++ [Android 常见问题](../../guideline/faq/#android)
++ [Andrdoi 客户端 SDK 下载](../../resources/#android-sdk)
 
 ### JPush Android
 
@@ -47,7 +49,7 @@ AndroidManifest.xml 配置示例可能在版本升级时，会有变更。请留
 + [3分钟快速Demo(Android)](../../guideline/android_3m)
 + [Android 集成指南](../../guideline/android_guide)
 + [Android 教程](../android_tutorials)
-+ [Android 常见问题](../../guideline/faq)
+
 
 
 ### 集成到其他平台

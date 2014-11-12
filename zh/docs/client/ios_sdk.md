@@ -1,5 +1,7 @@
 # iOS SDK 概述
 
++ [IOS 常见问题](../../guideline/faq/#ios)
++ [IOS 客户端 SDK 下载](../../resources/#ios-sdk)
 ### JPush iOS
 
 ![jpush_ios](../image/jpush_ios.png)
@@ -16,7 +18,7 @@ APNs 通知：是指通过向 Apple APNs 服务器发送通知，到达 iOS 设�
 
 JPush iOS SDK 不负责 APNs 通知的展现，只是向 JPush 服务器端上传 Device Token 信息，JPush 服务器端代理开发者向 Apple APNs 推送通知。
 
-[获取 APNs 推送内容](../ios_api)
+[获取 APNs 推送内容](../ios_api/#apns)
 
 #### 应用内消息
 
@@ -24,7 +26,7 @@ JPush iOS SDK 不负责 APNs 通知的展现，只是向 JPush 服务器端上�
 
 此消息不经过 APNs 服务器，完全由 JPush 提供功能支持。
 
-[获取应用内消息推送内容](../ios_api)
+[获取应用内消息推送内容](../ios_api/#_19)
 
 #### APNs通知与应用内消息对比
 
@@ -48,20 +50,22 @@ JPush API v3 支持同时一次调用同时推送 APNs 通知与 JPush 应用内
 
 + [IOS 集成指南](../../guideline/ios_guide)
 + [IOS 教程](../ios_tutorials)
-+ [IOS 常见问题](../../guideline/faq)
+
 
 
 ### iOS SDK 说明
 
 #### iOS 版本支持
 
-
+支持的iOS版本为5.0及以上版本.
 
 #### 组成
 
++ 头文件 APService.h
++ 静态库文件 libPushSDK.a
 
 #### 注意事项
-
+[请参考iOS常见问题](../../guideline/faq/#ios)
 
 ### JPush APNs 通知的意义
 
