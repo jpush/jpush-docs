@@ -49,9 +49,6 @@
 ### 服务器端 SDK 下载
 
 <html>
-<style type="text/css">
-p.leftmargin {margin-left: :2cm;}
-</style>
 <body>
 
 <div class="row">
@@ -70,11 +67,11 @@ p.leftmargin {margin-left: :2cm;}
             					<a href="http://docs.jpush.cn/download/attachments/2228302/jpush-client-3.2.3.zip?version=2&modificationDate=1415166491000">Java SDK 下载</a>
             				</br>
             				<br>
-            					<p align=left>版本号：v3.2.3
+            					<p style="margin-right:50px">版本号：v3.2.3
             					</p>
-            				<p align=left >更新时间：2014-10-30</p>
-                                    <p align=left ><a href="https://github.com/jpush/jpush-api-java-client">Java项目地址</a>
-            				<p align=left >支持：Push API v3, Report API
+            				<p style="margin-right:7px">更新时间：2014-10-30</p>
+                                    <p style="margin-right:70px" ><a href="https://github.com/jpush/jpush-api-java-client">Java项目地址</a>
+            				<p  >支持：Push API v3, Report API
             				
             				</br>
             			</td>
@@ -88,10 +85,10 @@ p.leftmargin {margin-left: :2cm;}
             					<a href="http://docs.jpush.cn/download/attachments/2228302/jpush-api-python-client-3.0.1.zip?version=1&modificationDate=1404872913000">Python SDK 下载</a>
             				</br>
                                     <br>
-                                    <p align=left class ="topmargin">版本号：v3.0.1
-            				<p align=left>更新时间：2014-06-28
-                                    <p align=left ><a href="https://github.com/jpush/jpush-api-python-client">Python项目地址</a>
-            				<p align=left>支持：Push API v3       
+                                    <p style="margin-right:50px" class ="topmargin">版本号：v3.0.1
+            				<p style="margin-right:7px">更新时间：2014-06-28
+                                    <p style="margin-right:50px" ><a href="https://github.com/jpush/jpush-api-python-client">Python项目地址</a>
+            				<p style="margin-right:50px">支持：Push API v3       
             				</br>
 
             			</td>
@@ -104,10 +101,10 @@ p.leftmargin {margin-left: :2cm;}
             					<a href="http://jpushsdk.qiniudn.com/jpush-api-php-client-3.2.0.zip">PHP SDK下载</a>
             				</br>
             				<br>
-            				<p align=left>版本号：v3.2.0
-            				<p align=left>更新时间：2014-10-30</p>
-                                    <p align=left ><a href="https://github.com/jpush/jpush-api-php-client">PHP项目地址</a>
-            				<p align=left>支持：Push API v3, Report API
+            				<p style="margin-right:50px">版本号：v3.2.0
+            				<p style="margin-right:7px">更新时间：2014-10-30</p>
+                                    <p style="margin-right:60px" ><a href="https://github.com/jpush/jpush-api-php-client">PHP项目地址</a>
+            				<p >支持：Push API v3, Report API
             					
             				</br>
 
@@ -122,11 +119,11 @@ p.leftmargin {margin-left: :2cm;}
             					<a href="http://docs.jpush.cn/download/attachments/2228302/jpush-api-ruby-client-3.1.1.zip?version=1&modificationDate=1407735179000">Ruby SDK 下载</a>
             				</br>
             				<br>
-            					<p align=left>版本号：v3.1.1
+            					<p style="margin-right:50px">版本号：v3.1.1
             					</p>
-            				<p align=left>更新时间：2014-08-11</p>
-                                    <p align=left ><a href="https://github.com/jpush/jpush-api-ruby-client">Ruby项目地址</a>
-            				<p align=left>支持：Push API v3, Report API
+            				<p style="margin-right:7px">更新时间：2014-08-11</p>
+                                    <p style="margin-right:60px" ><a href="https://github.com/jpush/jpush-api-ruby-client">Ruby项目地址</a>
+            				<p >支持：Push API v3, Report API
             					
             				</br>
 
@@ -144,10 +141,10 @@ p.leftmargin {margin-left: :2cm;}
                                     </br>
                                     
                               
-            				<p align=left>版本号：v2.3.0
-            				<p align=left>更新时间：2014-01-21
-                                    <p align=left ><a href="https://github.com/jpush/jpush-api-csharp-client">C#项目地址</a>
-            				<p align=left>支持：Push API v2
+            				<p style="margin-right:50px">版本号：v2.3.0
+            				<p style="margin-right:7px">更新时间：2014-01-21
+                                    <p style="margin-right:70px" ><a href="https://github.com/jpush/jpush-api-csharp-client">C#项目地址</a>
+            				<p style="margin-right:50px">支持：Push API v2
             					
             				</br>
 
@@ -162,11 +159,11 @@ p.leftmargin {margin-left: :2cm;}
             					<a href="http://docs.jpush.cn/download/attachments/2228302/jpush-api-nodejs-client-3.1.0.zip?version=1&modificationDate=1404872549000">Nodejs SDK下载</a>
             				</br>
             				<br>
-            					<p align=left>版本号：v3.1.0
+            					<p style="margin-right:50px">版本号：v3.1.0
             					</p>
-            				<p align=left>发布时间：2014-07-05</p>
-                                    <p align=left ><a href="https://github.com/jpush/jpush-api-nodejs-client">Nodejs项目地址</a>
-            				<p align=left>支持：Push API v3, Report API
+            				<p style="margin-right:7px">更新时间：2014-07-05</p>
+                                    <p style="margin-right:50px"><a href="https://github.com/jpush/jpush-api-nodejs-client">Nodejs项目地址</a>
+            				<p >支持：Push API v3, Report API
             					
             				</br>
 
@@ -181,7 +178,7 @@ p.leftmargin {margin-left: :2cm;}
 </html>
 ### 服务器端第三方代码
 
-#### C ##
+#### <p>C \#</p>
 
 + 开发者：Rynn Wang 
 + 支持 Push v3,v2 
