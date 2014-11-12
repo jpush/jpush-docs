@@ -165,7 +165,113 @@ Remote Notifications 与之前版本的对比可以参考下面两张 Apple 官�
 
 更详细的说明资料请查阅 Apple 官方的 iOS 开发文档。
 
+### IOS 8 UIUserNotificationSettings
+
+#### 简介
+
++ 本次iOS 8在推送方面最大的变化就是修改了推送的注册接口，在原本的推送type的基础上，增加了一个categories参数，这个参数的目的是用来注册一组和通知关联起来的button的事件。
++ 这个categories由一系列的 UIUserNotificationCategory组成。每个UIUserNotificationCategory对象包含你的app用来响应本地或者远程通知的信息。每一个对象的title作为通知上每一个button的title展示给用户。当用户点击了某一个button，系统将会调用应用内的回调函数[application:handleActionWithIdentifier:forRemoteNotification:completionHandler:](https://developer.apple.com/library/prerelease/ios/documentation/UIKit/Reference/UIApplicationDelegate_Protocol/index.html#//apple_ref/occ/intfm/UIApplicationDelegate/application:handleActionWithIdentifier:forRemoteNotification:completionHandler:)或者[application:handleActionWithIdentifier:forLocalNotification:completionHandler:](https://developer.apple.com/library/prerelease/ios/documentation/UIKit/Reference/UIApplicationDelegate_Protocol/index.html#//apple_ref/occ/intfm/UIApplicationDelegate/application:handleActionWithIdentifier:forLocalNotification:completionHandler:)。
+
+#### 客户端设置
+
+##### 使用UIUserNotificationCategory
+
+```
+if ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0) {
+ 
+ NSMutableSet *categories = [NSMutableSet set];
+ 
+ UIMutableUserNotificationCategory *category = [[UIMutableUserNotificationCategory alloc] init];
+ 
+ category.identifier = @"identifier";
+ 
+ UIMutableUserNotificationAction *action = [[UIMutableUserNotificationAction alloc] init];
+ 
+ action.identifier = @"test2";
+ 
+ action.title = @"test";
+ 
+ action.activationMode = UIUserNotificationActivationModeBackground;
+ 
+ action.authenticationRequired = YES;
+ 
+ //YES显示为红色，NO显示为蓝色
+ action.destructive = NO;
+ 
+ NSArray *actions = @[ action ];
+ 
+ [category setActions:actions forContext:UIUserNotificationActionContextMinimal];
+ 
+ [categories addObject:category];
+}
+```
+
+##### 使用UIUserNotificationType
+
+```
+if ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0) {
+[APService registerForRemoteNotificationTypes:(UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert)                      categories:categories];
+}else{
+[APService registerForRemoteNotificationTypes:(UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert)                      categories:nil];
+}
+```
+
+##### 使用回调函数
+
+```
+// Called when your app has been activated by the user selecting an action from
+// a remote notification.
+// A nil action identifier indicates the default action.
+// You should call the completion handler as soon as you've finished handling
+// the action.
+- (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forRemoteNotification:(NSDictionary *)userInfo
+  completionHandler:(void (^)())completionHandler {
+}
+```
+
+#### 服务端设置
+
+服务端payload格式:aps增加category字段，当该字段与客户端UIMutableUserNotificationCategory的identifier匹配时，触发设定的action和button显示。
+
+```
+payload example:
+{"aps":{"alert":"example", "sound":"default", "badge": 1, "category":"identifier"}}
+
+```
 
 
+### IOS 8 UILocalNotification
 
+#### 简介
 
+本次iOS 8 UILocalNotification增加了三个参数: region、regionTriggersOnce、category。
+
++ region: 用于控制当用户进入或者离开某一个地理位置时候，触发通知。使用此功能，用户需要拥有CoreLocation的"when-in-use"权限。
++ regionTriggersOnce(BOOL)：当为YES时，通知只会触发一次，当为NO时，通知将会在每一次进入或者离开时都触发。
++ category:如果localNotification通过+[UIUserNotificationSettings settingsForUserNotificationTypes:userNotificationActionSettings:]注册了，通过该category可以获取该通知的注册category.
+
+#### 客户端设置
+
+##### 使用UILocalNotification
+
+```
+// set localNotification
+  CLLocationCoordinate2D coordinate2D;
+  coordinate2D.latitude = 100.0;
+  coordinate2D.longitude = 100.0;
+  CLRegion *currentRegion =
+      [[CLCircularRegion alloc] initWithCenter:coordinate2D
+                                        radius:CLLocationDistanceMax
+                                    identifier:@"test"];
+ 
+  [APService setLocalNotification:[NSDate dateWithTimeIntervalSinceNow:120]
+                        alertBody:@"test ios8 notification"
+                            badge:0
+                      alertAction:@"取消"
+                    identifierKey:@"1"
+                         userInfo:nil
+                        soundName:nil
+                           region:currentRegion
+               regionTriggersOnce:YES
+                         category:@"test"];
+```

@@ -280,12 +280,17 @@ r1.2.5 以后。
 
 获取iOS的推送内容需要在delegate类中注册通知并实现回调方法。
 
-1. 在方法- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *) launchOptions 加入下面的代码：
+ 在方法- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *) launchOptions 加入下面的代码：
+
+```
 
     NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
     [defaultCenter addObserver:self selector:@selector(networkDidReceiveMessage:) name:kJPFNetworkDidReceiveMessageNotification object:nil];
-1. 实现回调方法 networkDidReceiveMessage
+```
 
+ 实现回调方法 networkDidReceiveMessage
+
+```
     - (void)networkDidReceiveMessage:(NSNotification *)notification {
         NSDictionary * userInfo = [notification userInfo];
         NSString *content = [userInfo valueForKey:@"content"];
@@ -293,6 +298,7 @@ r1.2.5 以后。
         NSString *customizeField1 = [extras valueForKey:@"customizeField1"]; //自定义参数，key是自己定义的
      
     }
+```
 
 ##### 参数描述：
 
@@ -402,6 +408,462 @@ Apple 现在对 Device UDID 限制使用，我们使用 [OpenUDID][1] 的方案�
 
     + (NSString *)openUDID;
     
+### 设置Badge
+
+#### 支持的版本
+
+v1.7.4及后续版本
+
+#### 功能说明
+
+badge是iOS用来标记应用程序状态的一个数字，出现在程序图标右上角。
+JPush封装badge功能，允许应用上传badge值至JPush服务器，由JPush后台帮助管理每个用户所对应的推送badge值，简化了设置推送badge的操作。
+
+实际应用中，开发者可以直接对badge值做增减操作，无需自己维护用户与badge值之间的对应关系。
+
+#### API setBadge
+
+设置JPush服务器中存储的badge值
+
+##### 接口定义
+
+```
++ (BOOL)setBadge:(int)value
+```
+##### 参数说明
+
+* value 取值范围：[0,99999]
+
+```
+  设置badge值，本地仍须调用UIApplication:setApplicationIconBadgeNumber函数
+```
+
+* 返回值 在value的取值区间内返回 TRUE，否则返回FALSE
+
+#### API resetBadge
+
+清空JPush服务器中存储的badge值，即 [setBadge:0]
+
+##### 接口定义
+
+```
++ (void)resetBadge
+```
+
+#### NSURLErrorDomain codes
+部分常见错误码
+
+```
+enum
+{
+   NSURLErrorUnknown = -1,
+   NSURLErrorTimedOut = -1001,
+   NSURLErrorUnsupportedURL = -1002,
+   NSURLErrorCannotFindHost = -1003,
+   NSURLErrorCannotConnectToHost = -1004,
+   NSURLErrorDataLengthExceedsMaximum = -1103,
+   NSURLErrorNetworkConnectionLost = -1005,
+   NSURLErrorDNSLookupFailed = -1006,
+   NSURLErrorHTTPTooManyRedirects = -1007,
+   NSURLErrorResourceUnavailable = -1008,
+   NSURLErrorNotConnectedToInternet = -1009,
+   NSURLErrorRedirectToNonExistentLocation = -1010,
+   NSURLErrorBadServerResponse = -1011,
+   NSURLErrorUserCancelledAuthentication = -1012,
+   NSURLErrorUserAuthenticationRequired = -1013,
+   NSURLErrorZeroByteResource = -1014,
+   NSURLErrorCannotDecodeRawData = -1015,
+   NSURLErrorCannotDecodeContentData = -1016,
+   NSURLErrorCannotParseResponse = -1017,
+   NSURLErrorRequestBodyStreamExhausted = -1021,
+}
+```
+
+### 本地通知
+
+#### 支持的版本
+
+v1.8.0及后续版本
+
+#### 功能说明
+
+IOS 设备收到一条本地通知，用户点击通知打开应用时，应用程序根据状态不同进行处理需在 AppDelegate 中的以下两个方法中添加代码以获取本地通知内容
+
++ 如果 App 状态为未运行，此函数将被调用，如果launchOptions包含UIApplicationLaunchOptionsLocalNotificationKey表示用户点击本地通知导致app被启动运行；如果不含有对应键值则表示 App 不是因点击本地通知而被启动，可能为直接点击icon被启动或其他。
+
+```
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions; 
+// 本地通知内容获取：NSDictionary *localNotification = [launchOptions objectForKey: UIApplicationLaunchOptionsLocalNotificationKey]
+```
+
++ 如果 App状态为正在前台或者后台运行，那么此函数将被调用，并且可通过AppDelegate的applicationState是否为UIApplicationStateActive判断程序是否在前台运行。此种情况在此函数中处理：
+
+```
+- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification;
+// 本地通知为notification
+```
+
+#### Method  SetLocalNotification
+
+##### 功能说明
+API 用于注册本地通知
+
+##### 接口定义
+
+```
++ (UILocalNotification *)setLocalNotification:(NSDate *)fireDate
+                                    alertBody:(NSString *)alertBody
+                                        badge:(int)badge
+                                  alertAction:(NSString *)alertAction
+                                identifierKey:(NSString *)notificationKey
+                                     userInfo:(NSDictionary *)userInfo
+                                    soundName:(NSString *)soundName;
+```
+IOS8 新参数使用API。非IOS8版本或者不需要使用IOS8新功能请使用上面的API 
+
+```
+
++ (UILocalNotification *)setLocalNotification:(NSDate *)fireDate
+                                    alertBody:(NSString *)alertBody
+                                        badge:(int)badge
+                                  alertAction:(NSString *)alertAction
+                                identifierKey:(NSString *)notificationKey
+                                     userInfo:(NSDictionary *)userInfo
+                                    soundName:(NSString *)soundName
+                                       region:(CLRegion *)region
+                           regionTriggersOnce:(BOOL)regionTriggersOnce
+                                     category:(NSString *)category
+```
+##### 参数说明
+
++ fireDate 本地推送触发的时间
++ alertBody 本地推送需要显示的内容
++ badge 角标的数字。如果不需要改变角标传-1
++ alertAction 弹框的按钮显示的内容（IOS 8默认为"打开",其他默认为"启动"）
++ notificationKey 本地推送标示符
++ userInfo 自定义参数，可以用来标识推送和增加附加信息
++ soundName 本地通知声音名称设置，空为默认声音
+
+#### 调用说明
+
+fireDate必须大于当前时间，同时不能为空。注册通知数目必须小于64个。
+
+##### 代码示例
+
+```
+[APService setLocalNotification:[NSDate dateWithTimeIntervalSinceNow:100]
+                      alertBody:@"alert content"
+                          badge:1
+                    alertAction:@"buttonText"
+                  identifierKey:@"identifierKey"
+                       userInfo:nil
+                      soundName:nil];
+```
+
+#### Method  showLocalNotificationAtFront
+
+##### 功能说明
+API用来在APP前台运行时，仍然将通知显示出来。(样式为UIAlertView)
+
+##### 接口定义
+
+```
++ (void)showLocalNotificationAtFront:(UILocalNotification *)notification
+                       identifierKey:(NSString *)notificationKey;
+```
+
+##### 参数说明
++ notification  当前触发的UILocalNotification
++ notificationKey  过滤不需要前台显示的通知。只有notificationKey标示符的通知才会在前台显示。如果需要全部都显示，该参数传nil。
+
+##### 调用说明
+
+API必须放在 - (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification（AppDelegate.m) 苹果的回调函数下。
+
+##### 代码示例
+
+```
+- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification { [APService showLocalNotificationAtFront:notification identifierKey:@"identifierKey"]; }
+```
+
+#### Delegate Method  findLocalNotificationWithIdentifier
+
+##### 功能说明
+API 用于获取自定义的identifierKey标示符的UILocationNotification对象
+
+##### 接口定义
+
+```
++ (NSArray *)findLocalNotificationWithIdentifier:(NSString *)notificationKey;
+
+```
+##### 参数说明
+
++ notificationKey  获取通知对象的标示符
+
+##### 调用说明
+API返回数组，包含所有和identifierKey匹配的LocalNotification对象，如果没找到，则为一个空的数组对象。
+
+##### 代码示例
+
+```
+
+NSArray *LocalNotifications = [APService findLocalNotificationWithIdentifier:@"identifierKey"];
+```
+
+#### Delegate Method  deleteLocalNotification
+API 用于删除指定的LocalNotification对象
+
+##### 接口定义
+
+```
++ (void)deleteLocalNotification:(UILocalNotification *)localNotification;
+```
+##### 参数说明
+
++ localNotification 删除的本地通知对象
+
+##### 调用说明
+
+API参数localNotification不能为nil.
+
+##### 代码示例
+
+```
+[APService deleteLocalNotification:localNotification];
+```
+
+#### Delegate Method  deleteLocalNotificationWithIdentifierKey
+
+##### 功能说明
+API 用于删除指定所有identifierKey标示符的通知对象
+
+##### 接口定义
+```
++ (void)deleteLocalNotificationWithIdentifierKey:(NSString *)notificationKey;
+```
+
+##### 参数说明
+
++ notificationKey  删除的通知拥有的标示符
+
+##### 调用说明
+
+API参数notificationKey不能为nil.
+
+##### 代码示例
+```
+[APService deleteLocalNotificationWithIdentifierKey:@"identifierKey"]; 
+```
+
+#### Delegate Method  clearAllLocalNotification
+
+##### 功能说明
+
+API 用于清除所有注册的通知
+
+##### 接口定义
+```
++ (void)clearAllLocalNotifications;
+```
+
+##### 代码示例
+```
+[APService clearAllLocalNotifications];
+```
+
+### 日志等级设置
+
+#### 支持版本
+v1.8.0 版本开始
+
+#### Method - setDebugMode
+
+##### 功能说明
+
+API 用于开启Debug模式，显示更多的日志信息
+
+##### 接口定义
+
+```
++ (void)setDebugMode;
+```
+##### 调用说明
+
+当需要了解更多的调试信息时候，调用API开启Debug模式
+
+##### 代码示例
+
+```
+[APService setDebugMode];
+```
+#### Method  setLogOFF
+
+##### 功能说明
+
+API用来关闭日志信息（除了必要的错误信息）
+
+##### 接口定义
+```
++ (void)setLogOFF;
+```
+
+##### 调用说明
+
+不需要任何调试信息的时候，调用此API （发布时建议调用此API，用来屏蔽日志信息，节省性能消耗)
+
+##### 代码示例
+
+```
+[APService setLogOFF];
+```
+
+### 地理位置统计
+
+#### 支持版本
+v1.8.0版本开始
+
+#### Method  SetLatitude: longitude
+
+##### 功能说明
+
+API 用于统计用户地理信息
+
+##### 接口定义
+
+```
++ (void)setLatitude:(double)latitude longitude:(double)longitude;
+```
+
+##### 参数说明
+
++ latitude   地理位置纬度
++ longitude  地理位置经度
+
+
+##### 调用说明
+
+需要加入 CoreLocation.framework库， 并且引入<CoreLocation/CoreLocation.h>头文件（#import <CoreLocation/CoreLocation.h>）
+
+经度和纬度需要开发者自己调用苹果的地理位置信息API获取。
+
+##### 代码示例
+```
+
+[APService setLatitude:100.0 longitude:100.0];
+```
+
+#### Method  setLocation
+##### 功能说明
+API用来统计地理位置信息
+
+##### 接口定义
+```
++ (void)setLocation:(CLLocation *)location;
+```
+
+##### 参数说明
+
++ location   当前地理位置的CLLocation对象
+
+##### 调用说明
+
+需要加入 CoreLocation.framework库， 并且引入<CoreLocation/CoreLocation.h>头文件（#import <CoreLocation/CoreLocation.h>）
+
+CLLocation对象需要开发者自己调用苹果的地理位置信息API获取。
+
+##### 代码示例
+
+```
+Build Phases中Link Binary With Libraries添加CoreLocation.framework
+应用的plist增加NSLocationAlwaysUsageDescription或NSLocationWhenInUseUsageDescription字段，内容为是否允许alert的内容
+ 
+.h
+#import <CoreLocation/CoreLocation.h>
+@interface xxx : UIViewController<CLLocationManagerDelegate>
+@property(nonatomic, strong) CLLocationManager *currentLoaction;
+ 
+.m
+ 
+- (void)viewDidLoad {
+  //注册LocationManager
+  _currentLoaction = [[CLLocationManager alloc] init];
+  _currentLoaction.delegate = self;
+#ifdef __IPHONE_8_0
+  if ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0) {
+    [_currentLoaction requestAlwaysAuthorization];
+  }
+#endif
+  if ([CLLocationManager locationServicesEnabled]) {
+    NSLog(@"地理位置服务已开启");
+    [_currentLoaction startUpdatingLocation];
+  }
+ 
+#ifdef __IPHONE_6_0
+- (void)locationManager:(CLLocationManager *)manager
+     didUpdateLocations:(NSArray *)locations {
+  if ([[UIDevice currentDevice].systemVersion floatValue] >= 6.0) {
+    CLLocation *newLocation = [locations lastObject];
+    float longtitude = newLocation.coordinate.longitude;
+    float latitude = newLocation.coordinate.latitude;
+    [APService setLocation:newLocation];
+    //[APService setLatitude:latitude longitude:longtitude];
+    [manager stopUpdatingLocation];
+  }
+}
+#endif
+ 
+- (void)locationManager:(CLLocationManager *)manager
+    didUpdateToLocation:(CLLocation *)newLocation
+           fromLocation:(CLLocation *)oldLocation {
+  if ([[UIDevice currentDevice].systemVersion floatValue] < 6.0) {
+    float longtitude = newLocation.coordinate.longitude;
+    float latitude = newLocation.coordinate.latitude;
+    [APService setLocation:newLocation];
+    //[APService setLatitude:latitude longitude:longtitude];
+    [manager stopUpdatingLocation];
+  }
+}
+ 
+- (void)locationManager:(CLLocationManager *)manager   
+       didFailWithError:(NSError *)error{
+//获取地理位置错误处理
+}
+```
+
+### 崩溃日志统计
+
+#### 支持版本
+v1.8.0版本开始
+
+#### Method  crashLogON
+##### 功能说明
+
+API 用于统计用户应用崩溃日志
+
+##### 接口定义
+```
++ (void)crashLogON;
+```
+
+##### 调用说明
+
+如果需要统计Log信息，调用该接口。当你需要自己收集错误信息时，切记不要调用该接口。
+
+##### 代码示例
+
+```
+[APService crashLogON];
+```
+
+
+
+更多地说明请参考Apple的官方文档
+
+
+
+
+
 
 [0]: https://developer.apple.com/library/ios/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/IPhoneOSClientImp.html#//apple_ref/doc/uid/TP40008194-CH103-SW4
 [1]: https://github.com/ylechelle/OpenUDID
