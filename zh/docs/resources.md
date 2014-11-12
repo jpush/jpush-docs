@@ -2,6 +2,8 @@
 
 ### 客户端 SDK
 
+
+![](../image/product_android.png)
 ##### [Android - SDK下载地址][0]
 
 ```
@@ -15,6 +17,10 @@
 * [Android SDK集成指南][1]
 * [3分钟快速 Demo(Android)][2]
 * [Android SDK 教程][3]
+
+
+
+![](../image/product_ios.png)
 
 ##### [IOS - SDK下载地址][4]
 
@@ -30,6 +36,8 @@
 * [IOS 集成指南][6]
 * [IOS SDK 教程][7]
 
+![](../image/product_win.png)
+
 ##### [WP - SDK下载地址][8]
 
 请参考如下文档来集成SDK:
@@ -39,6 +47,11 @@
 
 
 ### 服务器端 SDK 下载
+
+<html>
+<style type="text/css">
+p.leftmargin {margin-left: :2cm;}
+</style>
 <body>
 
 <div class="row">
@@ -78,7 +91,7 @@
                                     <p align=left class ="topmargin">版本号：v3.0.1
             				<p align=left>更新时间：2014-06-28
                                     <p align=left ><a href="https://github.com/jpush/jpush-api-python-client">Python项目地址</a>
-            				<p align=left>支持: Push API v3       
+            				<p align=left>支持：Push API v3       
             				</br>
 
             			</td>
@@ -134,7 +147,7 @@
             				<p align=left>版本号：v2.3.0
             				<p align=left>更新时间：2014-01-21
                                     <p align=left ><a href="https://github.com/jpush/jpush-api-csharp-client">C#项目地址</a>
-            				<p align=left>支持: Push API v2
+            				<p align=left>支持：Push API v2
             					
             				</br>
 
@@ -165,10 +178,10 @@
     </div>
 </div>
 </body>
-
+</html>
 ### 服务器端第三方代码
 
-#### C Sharp
+#### C ##
 
 + 开发者：Rynn Wang 
 + 支持 Push v3,v2 
