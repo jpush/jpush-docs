@@ -1,6 +1,6 @@
 # 最近更新
 
-### 2014-09-25 JPush Andrdoi SDK v1.7.0
+### 2014-09-25 JPush Android SDK v1.7.0
 ####Change Log
 
 + 优化改进：根据服务器时间优化统计信息时间准确性 
