@@ -69,7 +69,7 @@ JPush SDK 提供的推送服务是默认开启的。
 
 + context 应用的 ApplicationContext
 
-###代码示例
+####代码示例
 	
 以下代码来自于 [JPush Android Example。]()
 
@@ -998,3 +998,147 @@ if (JPushInterface.ACTION_RICHPUSH_CALLBACK.equals(intent.getAction())) {
 |-994	|网络连接超时|
 
 
+
+
+## 获取推送连接状态
+### 支持的版本
+
+开始的版本：1.6.3。
+
+### 功能说明
+开发者可以使用此功能获取当前Push服务的连接状态
+
+当连接状态发生变化时（连接，断开），会发出一个广播，开发者可以在自定义的Receiver监听cn.jpush.android.intent.CONNECTION获取变化的状态，也可通过API主动获取。
+
+### API getConnectionState
+
+#### 功能说明
+获取当前连接状态
+
+#### 接口定义
+
+```
+public static boolean getConnectionState(Context context);
+```
+
+#### 参数说明
++ context 应用的 ApplicationContext
+
+#### ACTION  cn.jpush.android.intent.CONNECTION
+
+##### intent参数
+JPushInterface.EXTRA_CONNECTION_CHANGE
+Push连接状态变化广播传过来的值
+```
+boolean connected = bundle.getBooleanExtra(JPushInterface.EXTRA_CONNECTION_CHANGE, false);
+```
+
+##### 示例代码
+在JPush Demo 的MyReceiver onReceive方法添加下面代码：
+```
+else if(JPushInterface.ACTION_CONNECTION_CHANGE.equals(intent.getAction())) {
+            boolean connected = intent.getBooleanExtra(JPushInterface.EXTRA_CONNECTION_CHANGE, false);
+            Log.e(TAG, "[MyReceiver]" + intent.getAction() +" connected:"+connected);
+        }
+```
+
+##本地通知API
+### 支持的版本
+开始的版本：v1.6.4
+
+###功能说明
+通过极光推送的SDK，开发者只需要简单调用几个接口，便可以在应用中定时发送本地通知
+
+```
+本地通知API不依赖于网络，无网条件下依旧可以触发
+
+本地通知与网络推送的通知是相互独立的，不受保留最近通知条数上限的限制
+
+本地通知的定时时间是自发送时算起的，不受中间关机等操作的影响
+```
+
+### API  addLocalNotification 添加一个本地通知
+
+####接口定义
+```
+public static void addLocalNotification(Context context, JPushLocalNotification notification)
+```
+
+#### 参数说明
++ context 是应用的 ApplicationContext
++ notification 是本地通知对象
+
+#### 调用说明
+本接口可以在 JPushInterface.init 之后任何地方调用
+
+### API  removeLocalNotification 移除指定的本地通知
+#### 接口定义
+```
+public static void removeLocalNotification(Context context, long notificationId)
+```
+
+#### 参数说明
++ context 是应用的 ApplicationContext
++ notificationId是要移除的本地通知的ID
+
+#### 调用说明
+本接口可以在 JPushInterface.init 之后任何地方调用
+
+### API  clearLocalNotifications 移除所有的本地通知
+
+####接口定义
+```
+public static void clearLocalNotifications(Context context)
+```
+####参数说明
++ context 是应用的 ApplicationContext
+
+####调用说明
+本接口可以在 JPushInterface.init 之后任何地方调用
+
+###本地通知相关设置
+```
+//设置本地通知样式
+ 
+public void setBuilderId(long)
+ 
+//设置本地通知的title
+ 
+public void setTitle(String paramString)
+ 
+//设置本地通知的content
+ 
+public void setContent(String paramString)
+ 
+//设置额外的数据信息extras为json字符串
+ 
+public void setExtras(String extras)
+ 
+//设置本地通知的ID
+ 
+public void setNotificationId(long notificationId)
+ 
+//设置本地通知触发时间
+ 
+public void setBroadcastTime(long broadCastTime)
+ 
+public void setBroadcastTime(Date date)
+ 
+public void setBroadcastTime(int year, int month, int day, int hour, int minute, int second)
+```
+###示例代码
+```
+JPushLocalNotification ln = new JPushLocalNotification();
+ln.setBuilderId(0);
+ln.setContent("hhh");
+ln.setTitle("ln");
+ln.setNotificationId(11111111) ;
+ln.setBroadcastTime(System.currentTimeMillis() + 1000 * 60 * 10);
+ 
+Map<String , Object> map = new HashMap<String, Object>() ;
+map.put("name", "jpush") ;
+map.put("test", "111") ;
+JSONObject json = new JSONObject(map) ;
+ln.setExtras(json.toString()) ;
+JPushInterface.addLocalNotification(getApplicationContext(), ln);
+```
