@@ -1,7 +1,7 @@
 # iOS SDK 概述
 
-+ [IOS 常见问题](../../guideline/faq/#ios)
-+ [IOS 客户端 SDK 下载](../../resources/#ios-sdk)
++ [iOS 常见问题](../../guideline/faq/#ios)
++ [iOS 客户端 SDK 下载](../../resources/#ios-sdk)
 ### JPush iOS
 
 ![jpush_ios](../image/jpush_ios.png)
