@@ -863,7 +863,7 @@ public static void setPushNotificationBuilder(Integer notificationBuilderId, Bas
 
 ### 教程与代码示例
 
-请参考文档：[自定义通知栏样式教程](../android_tutorials)
+请参考文档：[自定义通知栏样式教程](../android_tutorials/#_11)
 
 ## 设置保留最近通知条数 API
 
