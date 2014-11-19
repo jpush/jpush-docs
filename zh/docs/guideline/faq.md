@@ -176,7 +176,6 @@ Portal上不会限制推送消息的数量。
 
 此错误是由于没有正确的加载libjpush.so文件，请检查libjpush.so是否在正确的位置(libs–>armeabi–>libjpush.so)
 
-如果您的项目有libs/armeabi-v7a这个目录，请把libjpush.so也复制一份到这个目录。
 
 如果您的应用需要支持 x86、mips 架构的CPU 需要下载对应的SDK，[下载地址 ](../../resouces)
 
@@ -199,7 +198,7 @@ Portal上不会限制推送消息的数量。
 
 #### 如何在代码时混淆忽略 jpush-sdk-release.jar？
 
-+ 请下载最新的[proguard.jar](http://sourceforge.net/projects/proguard/files/)， 并替换你Android Sdk "tools\proguard\lib\proguard.jar"
++ 请下载4.x版本的[proguard.jar](http://sourceforge.net/projects/proguard/files/)， 并替换你Android Sdk "tools\proguard\lib\proguard.jar"
 
 + 在你的proguard.cfg加上代码：如果是使用新版本的ADT 将project.properties的中“# proguard.config=${sdk.dir}/tools/proguard/proguard-android.txt:proguard-project.txt”的“#”注释去掉，然后在proguard-android.txt中配置
 
@@ -294,13 +293,13 @@ android 的包名和 appkey 需对应。
 
 #### 为什么iOS收不到推送消息？
 
-如果你确认 appKey 在 SDK 客户端与 Portal 上设置是一致，其他环节也按照文档正确地操作。但还是收不到推送消息。那么，有一定的可能性，是你在 Portal 上上传的证书，不是 APNs (Push) 证书。
+如果你确认 appKey 在 SDK 客户端与 Portal 上设置是一致，其他环节也按照文档正确地操作。但还是收不到推送消息。那么，有一定的可能性，是你在 Portal 上上传的证书，不是 APNs (Push) 证书。推送时指定的iOS推送环境和应用证书是同一个环境。
 
 请参考[iOS 证书设置指南](../../client_sdks/ios_tutorials)再次检查证书选择是否正确。
 
 请注意：iOS能接受消息的必要条件是：应用程序的证书要和你上传到jpush portal上的证书对应，如果你的程序是直接在xcode上运行的，你的应用部署环境必须是开发状态才能收到APNS消息。
 
-温馨提示：目前api推送的时候可以通过参数apns_production可以指定推送环境，如果api有传apns_production则以此值为准，否则以应用详情的部署环境为准。
+温馨提示：目前api推送的时候可以通过参数apns_production可以指定推送环境，false为开发环境，true为生产环境。V3 api不带此参数则默认为生产环境，V3 api封装的sdk 默认为开发环境。如果api有传apns_production则以此值为准，否则以应用详情的部署环境为准。
 
 <br />
 

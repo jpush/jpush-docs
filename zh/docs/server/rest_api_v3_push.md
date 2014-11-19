@@ -62,23 +62,31 @@ HTTP Header（头）里加一个字段（Key/Value对）：
 {
    "platform": "all",
    "audience" : {
-	  "tag" : ["深圳", "北京"]
+      "tag" : ["深圳", "北京"]
    },
    "notification" : {
-	  "alert" : "Hi, JPush!",
-	  "android" : {}, 
-	  "ios" : {
-		 "extras" : { "newsid" : 321}
-	  }
+ 
+      "android" : {
+            "alert" : "Hi, JPush!",
+            "title":"Send to Android",
+            "builder_id":1,
+            "extras" : { "newsid" : 321}
+ 
+}, 
+      "ios" : {
+            "alert" : "Hi, JPush!",
+            "sound":"default",
+            "badge":"+1",
+            "extras" : { "newsid" : 321}
+      }
    },
-   "message": {
-   	"msg_content": "Demo msg"
-   }
    "options" : {
-	  "time_to_live" : 60
+      "time_to_live" : 60,"apns_production":false
    }
 }
 ```
+
+
 
 
 关键字 			| 选项        | 含义
@@ -250,7 +258,7 @@ extras|JSON Array|可选|扩展字段。	|这里自定义 JSON 格式的 Key/Val
 }
 ```
 
-##### ios
+##### iOS
 
 iOS 平台上 APNs 通知。
 

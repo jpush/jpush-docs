@@ -27,7 +27,7 @@ img[alt=jpush_android_3m] { width: 800px; }
 ![jpush_android_3m](../image/jpush_app_detail.png)
 
 
-点击 ”下载应用Example “后，你将下载到一个 .zip 压缩文件。解压后，即看到一个同名目录。这个目录下，是一个 Anddroid 项目里的所有文件。
+点击 ”下载应用Example “后，你将下载到一个 .zip 压缩文件。解压后，即看到一个同名目录。这个目录下，是一个 Android 项目里的所有文件。
 
 
 ![jpush_android_3m](../image/jpush_app_zipfile.png)

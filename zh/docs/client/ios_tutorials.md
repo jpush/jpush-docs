@@ -167,6 +167,9 @@ Remote Notifications 与之前版本的对比可以参考下面两张 Apple 官�
 
 ### IOS 8 UIUserNotificationSettings
 
+#### 支持版本
+v1.8.0 版本开始。
+
 #### 简介
 
 + 本次iOS 8在推送方面最大的变化就是修改了推送的注册接口，在原本的推送type的基础上，增加了一个categories参数，这个参数的目的是用来注册一组和通知关联起来的button的事件。
