@@ -1,184 +1,210 @@
-<h1> 资源下载</h1>
+# 资源下载
+### 客户端 SDK 下载
 
-### 客户端 SDK
-
-
-![](../image/product_android.png)
-##### [Android - SDK下载地址][0]
-
-```
-注：默认开发者只需下载标准版本SDK即可，如果需要额外的CPU的支持请单独下载如下的SDK
-```
-+ [X86 SDK](https://www.jpush.cn/downloads/sdk/android-with-x86/)
-+ [MIPS SDK](https://www.jpush.cn/downloads/sdk/android-with-mips/)
-
-请参考如下文档来集成SDK：
-
-* [Android SDK集成指南][1]
-* [3分钟快速 Demo(Android)][2]
-* [Android SDK 教程][3]
-
-
-
-![](../image/product_ios.png)
-
-##### [IOS - SDK下载地址][4]
-
-对于旧版本 XCode 用户或者暂不想支持到 IOS 8 的，
-
-
-可以继续使用如下旧版本 :
-[ JPush-IOS-SDK-1.7.4.zip ](http://docs.jpush.cn/download/attachments/7864408/JPush-iOS-SDK-1.7.4.zip?version=1&modificationDate=1411121271000)
-
-
-请参考如下文档来集成SDK：
-
-* [IOS 集成指南][6]
-* [IOS SDK 教程][7]
-
-![](../image/product_win.png)
-
-##### [WP - SDK下载地址][8]
-
-请参考如下文档来集成SDK:
-
-* [WinPhone SDK 集成指南][9]
-* [3分钟快速 Demo(WinPhone)][10]
+<div class="row">
+      <div class="col-md-8" style="width:850px">
+            <div class="panel panel-default">
+                  <div class = "panel-content home_section">
+                        <table width="100%"   cellspacing="100" >
+                              <tr>
+                                    <td width="140" style="text-align: center;padding: 30px 0;vertical-align: top;"><img src="../image/resource_android.png" width="71" height="71" /></td>
+                                    <td style="padding: 20px 0;">
+                                          <h4 style="font-weight: bold;font-size: 14px;">Android - SDK下载</h4>
+                                          <p style="font-size: 12px; color:#aaa;">注：默认开发者只需下载标准版本SDK即可，如果需要额外的CPU的支持请单独下载如下的SDK</p>
+                                          <ul style="list-style: none;margin: 0;padding: 0;font-size: 12px;">
+                                                <li><a href="https://www.jpush.cn/downloads/sdk/android-with-x86/">- X86 SDK</a></li>
+                                                <li><a href="https://www.jpush.cn/downloads/sdk/android-with-mips/">- MIPS SDK</a></li>
+                                          </ul>
+                                          <p>请参考如下文档来集成SDK：</p>
+                                          <ul style="list-style: none;margin: 0;padding: 0;font-size: 12px;">
+                                                <li><a href="../guideline/android_guide">- Android SDK集成指南</a></li>
+                                                <li><a href="../guideline/android_3m">- 3分钟快速 Demo(Android)</a></li>
+                                                <li><a href="../client/android_tutorials">- Android SDK 教程</a></li>
+                                          </ul>
+                                    </td>
+                                    <td width="180" style="text-align: center;vertical-align: middle">
+                                          <a href="https://www.jpush.cn/downloads/sdk/android/" style="display: inline-block; height: 30px; line-height: 30px; width: 100px; border: 1px solid #ccc;border-radius: 3px;color: #999;font-size: 12px;">
+                                                <i style="display: inline-block; width: 11px; height: 11px; background: url(../image/resource_sdk_download.png) 0 0;vertical-align: middle;"></i>&nbsp;&nbsp;下载
+                                          </a>
+                                    </td>
+                              </tr> 
+                              <tr style="border-top: 1px solid #ddd">
+                                    <td width="140" style="text-align: center;padding: 30px 0;vertical-align: top;"><img src="../image/resource_ios.png" width="71" height="71" /></td>
+                                    <td style="padding: 20px 0;">
+                                          <h4 style="font-weight: bold;font-size: 14px;">iOS - SDK下载</h4>
+                                          <p style="font-size: 12px; color:#aaa;">注：对于旧版本 XCode 用户或者暂不想支持到 IOS 8 的，可以继续使用如下旧版本 : <br><a href="http://docs.jpush.cn/download/attachments/7864408/JPush-iOS-SDK-1.7.4.zip?version=1&modificationDate=1411121271000">JPush-IOS-SDK-1.7.4.zip</a></p>
+                                          <p>请参考如下文档来集成SDK：</p>
+                                          <ul style="list-style: none;margin: 0;padding: 0;font-size: 12px;">
+                                                <li><a href="../guideline/ios_guide">- iOS 集成指南</a></li>
+                                                <li><a href="../client/ios_tutorials">- iOS SDK 教程</a></li>
+                                          </ul>
+                                    </td>
+                                    <td width="180" style="text-align: center;vertical-align: middle">
+                                          <a href="https://www.jpush.cn/downloads/sdk/ios8/" style="display: inline-block; height: 30px; line-height: 30px; width: 100px; border: 1px solid #ccc;border-radius: 3px;color: #999;font-size: 12px;">
+                                                <i style="display: inline-block; width: 11px; height: 11px; background: url(../image/resource_sdk_download.png) 0 0;vertical-align: middle;"></i>&nbsp;&nbsp;下载
+                                          </a>
+                                    </td>
+                              </tr>     
+                              <tr style="border-top: 1px solid #ddd">
+                                    <td width="140" style="text-align: center;padding: 30px 0;vertical-align: top;"><img src="../image/resource_wp.png" width="71" height="71" /></td>
+                                    <td style="padding: 20px 0;">
+                                          <h4 style="font-weight: bold;font-size: 14px;">Windows Phone - SDK下载</h4>
+                                          <p>请参考如下文档来集成SDK：</p>
+                                          <ul style="list-style: none;margin: 0;padding: 0;font-size: 12px;">
+                                                <li><a href="../guideline/winphone_guide">- WinPhone SDK 集成指南</a></li>
+                                                <li><a href="../guideline/winphone_3m">- 3分钟快速 Demo(WinPhone)</a></li>
+                                          </ul>
+                                    </td>
+                                    <td width="180" style="text-align: center;vertical-align: middle">
+                                          <a href="https://www.jpush.cn/downloads/sdk/winphone/" style="display: inline-block; height: 30px; line-height: 30px; width: 100px; border: 1px solid #ccc;border-radius: 3px;color: #999;font-size: 12px;">
+                                                <i style="display: inline-block; width: 11px; height: 11px; background: url(../image/resource_sdk_download.png) 0 0;vertical-align: middle;"></i>&nbsp;&nbsp;下载
+                                          </a>
+                                    </td>
+                              </tr>    
+                        </table>
+                  </div>      
+            </div>
+      </div>
+</div>
 
 
 ### 服务器端 SDK 下载
-
-<html>
-<body>
-
 <div class="row">
-    <div class="col-md-8" style="width:850px"> <!-- left content -->
-        <div class="panel panel-default">
-            <!-- <div class="panel-heading" style="width:800px; solid #000;">
-            </div> -->
-            <div class = "panel-content home_section">
-            	<table width="100%"   cellspacing="100">
-            		<tr >
-            			<td width="25%" align="center" valign="middle">
-                                    <br>
-            				<img src="../image/sdk_java.png" width="100" height="100" alt="java sdk">
-            				<br>
-                                    <br>
-            					<a href="http://docs.jpush.cn/download/attachments/2228302/jpush-client-3.2.3.zip?version=2&modificationDate=1415166491000">Java SDK 下载</a>
-            				</br>
-            				<br>
-            					<p style="margin-right:50px">版本号：v3.2.3
-            					</p>
-            				<p style="margin-right:7px">更新时间：2014-10-30</p>
-                                    <p style="margin-right:70px" ><a href="https://github.com/jpush/jpush-api-java-client">Java项目地址</a>
-            				<p  >支持：Push API v3, Report API
-            				
-            				</br>
-            			</td>
-                  
-                        
-            			<td width="25%" align="center" valign="middle">
-                                    <br>
-            				<img src="../image/sdk_python.png" width="100" height="100" alt="python sdk">
-                                    <br>
-                                    <br>
-            					<a href="http://docs.jpush.cn/download/attachments/2228302/jpush-api-python-client-3.0.1.zip?version=1&modificationDate=1404872913000">Python SDK 下载</a>
-            				</br>
-                                    <br>
-                                    <p style="margin-right:50px" class ="topmargin">版本号：v3.0.1
-            				<p style="margin-right:7px">更新时间：2014-06-28
-                                    <p style="margin-right:50px" ><a href="https://github.com/jpush/jpush-api-python-client">Python项目地址</a>
-            				<p style="margin-right:50px">支持：Push API v3       
-            				</br>
-
-            			</td>
-                        
-            			<td width="25%" align="center" valign="middle">
-                                    <br>
-            				<img src="../image/sdk_php.png" width="100" height="100" alt="php sdk">
-                                    <br>
-            				<br>
-            					<a href="http://jpushsdk.qiniudn.com/jpush-api-php-client-3.2.0.zip">PHP SDK下载</a>
-            				</br>
-            				<br>
-            				<p style="margin-right:50px">版本号：v3.2.0
-            				<p style="margin-right:7px">更新时间：2014-10-30</p>
-                                    <p style="margin-right:60px" ><a href="https://github.com/jpush/jpush-api-php-client">PHP项目地址</a>
-            				<p >支持：Push API v3, Report API
-            					
-            				</br>
-
-            			</td>
-            		</tr>
-                        <tr>
-            			<td width="25%" align="center" valign="middle">
-                                    <br>
-            				<img src="../image/sdk_ruby.png" width="100" height="100" alt="ruby sdk">
-                                    <br>
-            				<br>
-            					<a href="http://docs.jpush.cn/download/attachments/2228302/jpush-api-ruby-client-3.1.1.zip?version=1&modificationDate=1407735179000">Ruby SDK 下载</a>
-            				</br>
-            				<br>
-            					<p style="margin-right:50px">版本号：v3.1.1
-            					</p>
-            				<p style="margin-right:7px">更新时间：2014-08-11</p>
-                                    <p style="margin-right:60px" ><a href="https://github.com/jpush/jpush-api-ruby-client">Ruby项目地址</a>
-            				<p >支持：Push API v3, Report API
-            					
-            				</br>
-
-            			</td>
-                        
-                        
-                        
-            			<td width="25%" align="center" valign="middle">
-                                    <br>
-            				<img src="../image/sdk_c_sharp.png" width="100" height="100" alt="csharp sdk">
-                                    <br>
-            				<br>
-            					<a href="https://github.com/jpush/jpush-api-csharp-client/archive/develop.zip">C# SDK 下载</a>
-                                    <br>
-                                    </br>
-                                    
-                              
-            				<p style="margin-right:50px">版本号：v2.3.0
-            				<p style="margin-right:7px">更新时间：2014-01-21
-                                    <p style="margin-right:70px" ><a href="https://github.com/jpush/jpush-api-csharp-client">C#项目地址</a>
-            				<p style="margin-right:50px">支持：Push API v2
-            					
-            				</br>
-
-            			</td>
-                        
-                        
-            			<td width="25%" align="center" valign="middle">
-                                    <br>
-            				<img src="../image/sdk_node_js.png" width="100" height="100" alt="nodejs sdk">
-                                    <br>
-            				<br>
-            					<a href="http://docs.jpush.cn/download/attachments/2228302/jpush-api-nodejs-client-3.1.0.zip?version=1&modificationDate=1404872549000">Nodejs SDK下载</a>
-            				</br>
-            				<br>
-            					<p style="margin-right:50px">版本号：v3.1.0
-            					</p>
-            				<p style="margin-right:7px">更新时间：2014-07-05</p>
-                                    <p style="margin-right:50px"><a href="https://github.com/jpush/jpush-api-nodejs-client">Nodejs项目地址</a>
-            				<p >支持：Push API v3, Report API
-            					
-            				</br>
-
-            			</td>
-            		</tr>
-            
-            	</table>
-            
-    </div>
+      <div class="col-md-8" style="width:850px">
+            <div class="panel panel-default">
+                  <div class = "panel-content home_section">
+                        <table width="100%"   cellspacing="0" style="font-size: 12px;">
+                              <tr>
+                                    <td width="50%" style="border-right: 1px solid #ddd;">
+                                          <table widht="100%">
+                                                <tr>
+                                                      <td width="160" style="text-align: center; padding: 30px 0; vertical-align: top;">
+                                                            <img src="../image/resource_sdk_java.png" width="95" height="57" />
+                                                      </td>
+                                                      <td style="padding: 20px 0;">
+                                                            <h4 style="font-weight: bold;font-size: 14px;">Java - SDK下载</h4>
+                                                            <p style="margin: 2px 0;">版本号：v3.2.3</p>
+                                                            <p style="margin: 2px 0;">更新时间：2014-10-30</p>
+                                                            <p style="margin: 2px 0;"><a href="https://github.com/jpush/jpush-api-java-client">Java项目地址</a></p>
+                                                            <p style="margin: 2px 0 10px;">支持：Push API v3, Report API</p>
+                                                            <p><a href="http://docs.jpush.cn/download/attachments/2228302/jpush-client-3.2.3.zip?version=2&modificationDate=1415166491000" style="display: inline-block; height: 30px; line-height: 30px; width: 100px; border: 1px solid #ccc;border-radius: 3px;color: #999;text-align: center;">
+                                                                  <i style="vertical-align: middle; display: inline-block; width: 11px; height: 11px; background: url(../image/resource_sdk_download.png) 0 0;"></i style="vertical-align: middle;">&nbsp;&nbsp;下载
+                                                            </a></p>
+                                                      </td>
+                                                </tr>
+                                          </table>
+                                    </td>
+                                    <td width="50%">
+                                          <table widht="100%">
+                                                <tr>
+                                                      <td width="160" style="text-align: center; padding: 30px 0; vertical-align: top;">
+                                                            <img src="../image/resource_sdk_python.png" width="95" height="57" />
+                                                      </td>
+                                                      <td style="padding: 20px 0;">
+                                                            <h4 style="font-weight: bold;font-size: 14px;">Python - SDK下载</h4>
+                                                            <p style="margin: 2px 0;">版本号：v3.0.1</p>
+                                                            <p style="margin: 2px 0;">更新时间：2014-06-28</p>
+                                                            <p style="margin: 2px 0;"><a href="https://github.com/jpush/jpush-api-python-client">Python项目地址</a></p>
+                                                            <p style="margin: 2px 0 10px;">支持：Push API v3</p>
+                                                            <p><a href="http://docs.jpush.cn/download/attachments/2228302/jpush-api-python-client-3.0.1.zip?version=1&modificationDate=1404872913000" style="display: inline-block; height: 30px; line-height: 30px; width: 100px; border: 1px solid #ccc;border-radius: 3px;color: #999;text-align: center;">
+                                                                  <i style="vertical-align: middle; display: inline-block; width: 11px; height: 11px; background: url(../image/resource_sdk_download.png) 0 0;"></i style="vertical-align: middle;">&nbsp;&nbsp;下载
+                                                            </a></p>
+                                                      </td>
+                                                </tr>
+                                          </table>
+                                    </td>
+                              </tr>
+                              <tr style="border-top: 1px solid #ddd;">
+                                    <td width="50%" style="border-right: 1px solid #ddd;">
+                                          <table widht="100%">
+                                                <tr>
+                                                      <td width="160" style="text-align: center; padding: 30px 0; vertical-align: top;">
+                                                            <img src="../image/resource_sdk_php.png" width="95" height="57" />
+                                                      </td>
+                                                      <td style="padding: 20px 0;">
+                                                            <h4 style="font-weight: bold;font-size: 14px;">PHP - SDK下载</h4>
+                                                            <p style="margin: 2px 0;">版本号：v3.2.0</p>
+                                                            <p style="margin: 2px 0;">更新时间：2014-10-30</p>
+                                                            <p style="margin: 2px 0;"><a href="https://github.com/jpush/jpush-api-php-client">PHP项目地址</a></p>
+                                                            <p style="margin: 2px 0 10px;">支持：Push API v3, Report API</p>
+                                                            <p><a href="http://jpushsdk.qiniudn.com/jpush-api-php-client-3.2.0.zip" style="display: inline-block; height: 30px; line-height: 30px; width: 100px; border: 1px solid #ccc;border-radius: 3px;color: #999;text-align: center;">
+                                                                  <i style="vertical-align: middle; display: inline-block; width: 11px; height: 11px; background: url(../image/resource_sdk_download.png) 0 0;"></i style="vertical-align: middle;">&nbsp;&nbsp;下载
+                                                            </a></p>
+                                                      </td>
+                                                </tr>
+                                          </table>
+                                    </td>
+                                    <td width="50%">
+                                          <table widht="100%">
+                                                <tr>
+                                                      <td width="160" style="text-align: center; padding: 30px 0; vertical-align: top;">
+                                                            <img src="../image/resource_sdk_csharp.png" width="95" height="57" />
+                                                      </td>
+                                                      <td style="padding: 20px 0;">
+                                                            <h4 style="font-weight: bold;font-size: 14px;">C# - SDK下载</h4>
+                                                            <p style="margin: 2px 0;">版本号：v2.3.0</p>
+                                                            <p style="margin: 2px 0;">更新时间：2014-01-21</p>
+                                                            <p style="margin: 2px 0;"><a href="https://github.com/jpush/jpush-api-csharp-client">C#项目地址</a></p>
+                                                            <p style="margin: 2px 0 10px;">支持：Push API v2</p>
+                                                            <p><a href="https://github.com/jpush/jpush-api-csharp-client/archive/develop.zip" style="display: inline-block; height: 30px; line-height: 30px; width: 100px; border: 1px solid #ccc;border-radius: 3px;color: #999;text-align: center;">
+                                                                  <i style="vertical-align: middle; display: inline-block; width: 11px; height: 11px; background: url(../image/resource_sdk_download.png) 0 0;"></i style="vertical-align: middle;">&nbsp;&nbsp;下载
+                                                            </a></p>
+                                                      </td>
+                                                </tr>
+                                          </table>
+                                    </td>
+                              </tr>
+                              <tr style="border-top: 1px solid #ddd;">
+                                    <td width="50%" style="border-right: 1px solid #ddd;">
+                                          <table widht="100%">
+                                                <tr>
+                                                      <td width="160" style="text-align: center; padding: 30px 0; vertical-align: top;">
+                                                            <img src="../image/resource_sdk_nodejs.png" width="95" height="57" />
+                                                      </td>
+                                                      <td style="padding: 20px 0;">
+                                                            <h4 style="font-weight: bold;font-size: 14px;">Nodejs - SDK下载</h4>
+                                                            <p style="margin: 2px 0;">版本号：v3.1.0</p>
+                                                            <p style="margin: 2px 0;">更新时间：2014-10-30</p>
+                                                            <p style="margin: 2px 0;"><a href="https://github.com/jpush/jpush-api-nodejs-client">Nodejs项目地址</a></p>
+                                                            <p style="margin: 2px 0 10px;">支持：Push API v3, Report API</p>
+                                                            <p><a href="http://docs.jpush.cn/download/attachments/2228302/jpush-api-nodejs-client-3.1.0.zip?version=1&modificationDate=1404872549000" style="display: inline-block; height: 30px; line-height: 30px; width: 100px; border: 1px solid #ccc;border-radius: 3px;color: #999;text-align: center;">
+                                                                  <i style="vertical-align: middle; display: inline-block; width: 11px; height: 11px; background: url(../image/resource_sdk_download.png) 0 0;"></i style="vertical-align: middle;">&nbsp;&nbsp;下载
+                                                            </a></p>
+                                                      </td>
+                                                </tr>
+                                          </table>
+                                    </td>
+                                    <td width="50%">
+                                          <table widht="100%">
+                                                <tr>
+                                                      <td width="160" style="text-align: center; padding: 30px 0; vertical-align: top;">
+                                                            <img src="../image/resource_sdk_ruby.png" width="95" height="57" />
+                                                      </td>
+                                                      <td style="padding: 20px 0;">
+                                                            <h4 style="font-weight: bold;font-size: 14px;">Ruby - SDK下载</h4>
+                                                            <p style="margin: 2px 0;">版本号：v3.1.1</p>
+                                                            <p style="margin: 2px 0;">更新时间：2014-08-11</p>
+                                                            <p style="margin: 2px 0;"><a href="https://github.com/jpush/jpush-api-ruby-client">Ruby项目地址</a></p>
+                                                            <p style="margin: 2px 0 10px;">支持：Push API v3, Report API</p>
+                                                            <p><a href="http://docs.jpush.cn/download/attachments/2228302/jpush-api-ruby-client-3.1.1.zip?version=1&modificationDate=1407735179000" style="display: inline-block; height: 30px; line-height: 30px; width: 100px; border: 1px solid #ccc;border-radius: 3px;color: #999;text-align: center;">
+                                                                  <i style="vertical-align: middle; display: inline-block; width: 11px; height: 11px; background: url(../image/resource_sdk_download.png) 0 0;"></i style="vertical-align: middle;">&nbsp;&nbsp;下载
+                                                            </a></p>
+                                                      </td>
+                                                </tr>
+                                          </table>
+                                    </td>
+                              </tr>
+                        </table>
+                  </div>
+            </div>
+      </div>
 </div>
-</body>
-</html>
+
+
+
 ### 服务器端第三方代码
 
-#### <p>C \#</p>
+#### <p>C\#</p>
 
 + 开发者：Rynn Wang 
 + 支持 Push v3,v2 
