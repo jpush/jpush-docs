@@ -228,7 +228,7 @@ JPush SDK 提供的 API 接口，都主要集中在 cn.jpush.android.api.JPushIn
 
 请参考：
 
-[API: Android](../../client_sdks/android_api)
+[API: Android](../../client/android_api)
 
 ## 技术支持
 
