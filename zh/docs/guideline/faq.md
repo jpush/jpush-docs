@@ -457,7 +457,7 @@ Badge number 的清空方法：
 
 ####不用登录Jpush的portal界面，在APP的面板中直接发送通知可以吗？
 
-可以。直接封装Jpush的V2 API就可以了，具体可参考 [Push API v2](../rest_api_v2_push)
+可以。直接封装Jpush的V3 API就可以了，具体可参考 [Push API v3](../../server/rest_api_v3_push)
 
 
 ####官方帮助
