@@ -108,7 +108,7 @@ toast 通知点击提示
 ##高级功能
 请参考：
 
-[winphone API](../../client_sdks/winphone_api)
+[winphone API](../../client/winphone_api)
 
 ##技术支持
 
