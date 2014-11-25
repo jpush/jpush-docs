@@ -85,4 +85,8 @@ JPush API 对访问次数，具有频率控制。即一定的时间窗口内，A
 + 根据 alias 大量请求时，避免无效的 alias。
 + 如果大量针对 alias 的请求内容一致，可以每次 API + 调用填写多个 alias 。具体请参考推送 API 说明。
 
+##### 外部参考
++ HTTP 错误码关于 429 的定义：[http://en.wikipedia.org/wiki/List_of_HTTP_status_codes#4xx_Client_Error](http://en.wikipedia.org/wiki/List_of_HTTP_status_codes#4xx_Client_Error)
+
++ Twitter API 频率控制定义：[https://dev.twitter.com/docs/rate-limiting/1.1](https://dev.twitter.com/docs/rate-limiting/1.1)
 

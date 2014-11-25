@@ -13,8 +13,8 @@ pages:
 - [guideline/android_guide.md, 入门指南, Android 集成指南]
 - [guideline/ios_guide.md, 入门指南, iOS 集成指南]
 - [guideline/winphone_guide.md, 入门指南, WinPhone 集成指南]
-- [guideline/android_3m.md, 入门指南, 3 分钟快速集成 JPush Android SDK]
-- [guideline/winphone_3m.md, 入门指南, 3 分钟快速集成 JPush Windows Phone SDK]
+- [guideline/android_3m.md, 入门指南, 3 分钟集成 Android SDK]
+- [guideline/winphone_3m.md, 入门指南, 3 分钟集成 Windows Phone SDK]
 - [guideline/sample_code.md, 入门指南, 示例与代码]
 - [guideline/statistical_report.md, 入门指南, 统计与报表说明]
 

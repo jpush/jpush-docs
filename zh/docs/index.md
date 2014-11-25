@@ -64,12 +64,14 @@
                 <tr>
                 	<td width="25%"><a href="guideline/android_guide/">Android SDK 集成指南</a></td>
                 	<td width="25%"><a href="guideline/ios_guide/">iOS SDK 集成指南</a></td>
-                    <td width="25%"><a href="guideline/winphone_guide/">Winphne SDK 集成指南</a></td>
+                    <td width="25%"><a href="guideline/winphone_guide/">Winphone SDK 集成指南</a></td>
                     <td width="25%">&nbsp;</td>
                 </tr>
                 <tr>
-                	<td width="25%" colspan=2><a href="guideline/android_3m/">3 分钟快速集成 JPush Android SDK</a></td>
-                	<td width="25%" colspan=2"><a href="guideline/winphone_3m">3 分钟快速集成 JPusn Winphone SDK</a></td>
+                	<td width="25%" ><a href="guideline/android_3m/">3 分钟集成 Android SDK</a></td>
+                	<td width="25%" ><a href="guideline/winphone_3m">3 分钟集成 Winphone SDK</a></td>
+                    <td width="25%">&nbsp;</td>
+                    <td width="25%">&nbsp;</td>
                 </tr>
                 </table>
             </div>
@@ -104,6 +106,7 @@
                 	<td width="25%"><a href="client/winphone_api">Winphone SDK APIs</a></td>
                     <!-- <td width="25%"><a href="client/winphone_tutorials">Winphone SDK 教程</a></td> -->
                     <td width="25%">&nbsp;</td>
+                    <td width="25%">&nbsp;</td>
                 </tr>
                 </table>
                 <h5>客户端插件</h5>
@@ -125,9 +128,9 @@
                 <h5>API 规则</h5>
                 <table width="100%">
                 <tr>
-                	<td width="25%"><a href="server/server_summary">API 概述</a></td>
-                	<td width="25%"><a href="server/api_rate_limiting">API 频率限制</a></td>
-                    <td width="25%"><a href="server/api_blacklist">黑名单</td>
+                	<td width="25%"><a href="server/server_overview">API 概述</a></td>
+                	<td width="25%"><a href="server/server_overview/#api">API 频率限制</a></td>
+                    <td width="25%"><a href="server/server_overview/#black_list">黑名单</td>
                     <td width="25%"><a href="server/http_status_code">HTTP 状态码</a></td>
                 </tr>
                 </table>
@@ -137,10 +140,13 @@
                 	<td width="25%"><a href="server/rest_api_v3_push">Push API v3</a></td>
                 	<td width="25%"><a href="server/rest_api_v3_report">Report API v3</a></td>
                     <td width="25%"><a href="server/rest_api_v3_device/">Device API</a></td>
+                    <td width="25%">&nbsp;</td>
                 </tr>
                 <tr>
                     <td width="25%"><a href="server/rest_api_v2_push">Push API v2</a></td>
                     <td width="25%"><a href="server/rest_api_v2_report">Report API v2</a></td>
+                    <td width="25%">&nbsp;</td>
+                    <td width="25%">&nbsp;</td>
                 </tr>
                 </table>
             </div>
@@ -155,7 +161,7 @@
                 <ul>
                 <li><a href="guideline/faq/#android">Android 常见问题</a></li>
 	         <li><a href="guideline/faq/#ios">iOS 常见问题</a></li>
-	         <li><a href="guideline/faq/#api">Server API 常见问题</a></li>
+	         <li><a href="guideline/faq/#rest-api">Server API 常见问题</a></li> 
                 </ul>
             </div>
         </div>
