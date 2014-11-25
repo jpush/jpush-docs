@@ -2,7 +2,7 @@
 
 JPush 提供遵从 REST 规范的 HTTP API，以供开发者远程调用 JPush 提供的服务。
 
-与此同时，为方便开发者使用 JPush API，还提供[多种常用编程语言的开发包（SDK）](../server_sdks)。
+与此同时，为方便开发者使用 JPush API，还提供[多种常用编程语言的开发包（SDK）](../../resources/#sdk_1)。
 
 
 ### REST API 基本约束
