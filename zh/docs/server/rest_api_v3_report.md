@@ -77,7 +77,7 @@ JSON Array.
 
 ###HTTP 返回码
 
-参考文档：[HTTP-Status-Code](http://zh.wikipedia.org/zh/HTTP基本认证)
+参考文档：[HTTP-Status-Code](../http_status_code)
 
 ###错误码定义
 
