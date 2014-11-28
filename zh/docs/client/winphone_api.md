@@ -1,4 +1,4 @@
-#Windows phone API
+#Windows Phone API
 ## API概述
 
 APIs 主要都集中在名空间JPushSDK的类JServer中
@@ -148,7 +148,7 @@ public  static void RegisterNotification()
 #### 接口定义
 	public  static bool IsOpneNotification()
 
-## 标签与别名 API (WP)
+## 标签与别名 API 
 
 ```
  温馨提示，设置标签别名请注意处理call back结果。

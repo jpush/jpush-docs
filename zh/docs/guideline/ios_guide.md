@@ -161,9 +161,11 @@ extern NSString * const kJPFNetworkDidReceiveMessageNotification; // 收到消�
 
 请参考：
 
-[标签与别名API][3]
 
-[页面的统计][3]
+
+[标签与别名API](../../../client/ios_api/#api-ios)
+
+[页面的统计](../../../client/ios_api/#_29)
 
 ## 技术支持
 
