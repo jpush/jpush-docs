@@ -413,6 +413,17 @@ Badge number 的清空方法：
 
 <br />
 
+#### 为什么日志里面会打印：You've implemented -[ <UIApplicationDelegate\> application:didReceiveRemoteNotification:fetchCompletionHandler:], but you still need to add "remote-notification" to the list of your supported UIBackgroundModes in your Info.plist.
+
+这个主要是提示开发者如果要支持UIBackgroundModes，需要开启Remote notifications，具体操作可以看：[iOS 7 Background Remote Notification](../../client/ios_tutorials/#ios-7-background-remote-notification)
+
+
+<br />
+
+
+
+
+
 ### REST API 服务器 
 
 
