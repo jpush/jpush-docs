@@ -1,5 +1,34 @@
 # 最近更新
 
+### JPush Android SDK v1.7.1
+
+#### 更新时间
+2014-12-03
+
+#### Change Log
++ 优化改进：内部协议由 32 位的升级为 64 位
++ 优化改进：优化 demo 的日志打印内容
++ 修复bug：在使用 TabActivity 的时候，不管是否集成了统计代码，都会提示没有集成的问题
++ 修复bug：修正由于配置文件中没有 MainActivity 或者 LAUNCHER 导致的空指针异常
++ 修复bug：支持推送自定义消息内容为空
++ 修复bug：修改提供设置最大通知条数的接口名
++ 修复bug：为 JS 调用的 java 代码添加 @JavascriptInterface 注解
+
+
+#### 升级提示
+
+建议升级！
+
+#### 升级指南
++ 新加入 .jar 包：同时删除原来各老版本的 jar 包。
++ 新加入 .so 包：libs/armeabi/libjpush171.so ，同时删除原来各老版本的 so 包。
++ 如果使用的老版本统计的 API activityStarted/activityStopped, 请使用最新的 API onResume/onPause 替换，参考文档 [统计消息API](../client/android_api/#api_2)
++ 在 AndroidManifest.xml 增加权限 <uses-permission android:name="android.permission.WRITE_SETTINGS" />。
++ 如果是从早期的版本升级过来，建议参考 SDK下载包最新版本的 example 来更新 AndroidManifest.xml 文件配置。
++ 如果要支持 x86 CPU 的机型，请下载单独的 x86 JPush SDK 压缩包，解压缩后复制 libs/x86/libjpush171.so 到你项目的 libs/x86/ 目录下。
++ 如果要支持 mips CPU 的机型，请下载单独的 mips JPush SDK 压缩包，解压缩后复制 libs/mips/libjpush171.so 到你项目的 libs/mips/ 目录下。
+
+
 ###  JPush Android SDK v1.7.0
 
 #### 更新时间 
@@ -19,7 +48,7 @@
 
 + 新加入 .jar 包：同时删除原来各老版本的 jar 包。
 + 新加入 .so 包：libs/armeabi/libjpush170.so ，同时删除原来各老版本的 so 包。
-+ 如果使用的老版本统计的 API activityStarted/activityStopped, 请使用最新的 API onResume/onPause 替换，参考文档 [统计消息API](../client/android_api)
++ 如果使用的老版本统计的 API activityStarted/activityStopped, 请使用最新的 API onResume/onPause 替换，参考文档 [统计消息API](../client/android_api/#api_2)
 + 在 AndroidManifest.xml 增加权限 <uses-permission android:name="android.permission.WRITE_SETTINGS" />。
 + 如果是从早期的版本升级过来，建议参考 SDK下载包最新版本的 example 来更新 AndroidManifest.xml 文件配置。
 + 如果要支持 x86 CPU 的机型，请下载单独的 x86 JPush SDK 压缩包，解压缩后复制 libs/x86/libjpush170.so 到你项目的 libs/x86/ 目录下。
@@ -95,7 +124,7 @@
 
 + 新加入 .jar 包：同时删除原来各老版本的 jar 包。
 + 新加入 .so 包：libs/armeabi/libjpush164.so ，同时删除原来各老版本的 so 包。
-+ 如果使用的老版本统计的 API activityStarted/activityStopped, 请使用最新的 API onResume/onPause 替换，参考文档 [统计消息API](../client/android_api)
++ 如果使用的老版本统计的 API activityStarted/activityStopped, 请使用最新的 API onResume/onPause 替换，参考文档 [统计消息API](../client/android_api/#api_2)
 + 在 AndroidManifest.xml 增加权限 <uses-permission android:name="android.permission.WRITE_SETTINGS" />。
 + 如果是从早期的版本升级过来，建议参考 SDK下载包最新版本的 example 来更新 AndroidManifest.xml 文件配置。
 + 如果要支持 x86 CPU 的机型，请下载单独的 x86 JPush SDK 压缩包，解压缩后复制 libs/x86/libjpush164.so 到你项目的 libs/x86/ 目录下。
@@ -159,7 +188,7 @@
 ####升级指南
 + 新加入 .jar 包：同时删除原来各老版本的 jar 包。
 + 新加入 .so 包：libs/armeabi/libjpush163.so ，同时删除原来各老版本的 so 包。
-+ 如果使用的老版本统计的 API activityStarted/activityStopped, 请使用最新的 API onResume/onPause 替换，参考文档 [统计消息API](../client/android_api)
++ 如果使用的老版本统计的 API activityStarted/activityStopped, 请使用最新的 API onResume/onPause 替换，参考文档 [统计消息API](../client/android_api/#api_2)
 在 AndroidManifest.xml 增加权限 <uses-permission android:name="android.permission.WRITE_SETTINGS" />。
 + 如果是从早期的版本升级过来，建议参考 SDK下载包最新版本的 example 来更新 AndroidManifest.xml 文件配置。
 + 如果要支持 x86 CPU 的机型，请下载单独的 x86 JPush SDK 压缩包，解压缩后复制 libs/x86/libjpush.so 到你项目的 libs/x86/ 目录下。
@@ -205,7 +234,7 @@
 + 替换 lib 文件夹里的文件
 + 需要删除旧的 libPushSDK-Simulator.a
 + 如果是1.2.7及之前版本升级 请在Build Settings里面，找到Other Linker Flags，去掉-all_load, -ObjC 
-+ 关于 iOS 7 Background Push，JPush 提供一个教程文档：[iOS 7 Background Remote Notification](../client/ios_tutorials)
++ 关于 iOS 7 Background Push，JPush 提供一个教程文档：[iOS 7 Background Remote Notification](../client/ios_tutorials/#ios-7-background-remote-notification)
 
 
 ###  JPush iOS SDK v1.7.1 
@@ -336,7 +365,7 @@ JPush 对 Windows Phone 推送的支持，与对 iOS 推送的支持类似，主
 
 + 替换 lib 文件夹里的文件
 + 需要删除旧的 libPushSDK-Simulator.a
-+ 关于 iOS 7 Background Push，JPush 提供一个教程文档：[iOS 7 Background Remote Notification](../client/ios_tutorials)
++ 关于 iOS 7 Background Push，JPush 提供一个教程文档：[iOS 7 Background Remote Notification](../client/ios_tutorials/#ios-7-background-remote-notification)
 + 如果是1.2.7及之前版本升级 请在Build Settings里面，找到Other Linker Flags，去掉-all_load, -ObjC 
 
 
@@ -381,7 +410,7 @@ JPush 对 Windows Phone 推送的支持，与对 iOS 推送的支持类似，主
 
 + 替换 lib 文件夹里的文件
 + 需要删除旧的 libPushSDK-Simulator.a
-+ 关于 iOS 7 Background Push，JPush 提供一个教程文档：[iOS 7 Background Remote Notification](../client/ios_tutorials)
++ 关于 iOS 7 Background Push，JPush 提供一个教程文档：[iOS 7 Background Remote Notification](../client/ios_tutorials/#ios-7-background-remote-notification)
 + 如果是1.2.7及之前版本升级 请在Build Settings里面，找到Other Linker Flags，去掉-all_load, -ObjC 
 
 
@@ -406,5 +435,5 @@ JPush 对 Windows Phone 推送的支持，与对 iOS 推送的支持类似，主
 + 替换 lib 文件夹里的文件
 + 需要删除旧的 libPushSDK-Simulator.a
 + 如果是1.2.7及之前版本升级 请在Build Settings里面，找到Other Linker Flags，去掉-all_load, -ObjC 
-+ 关于 iOS 7 Background Push，JPush 提供一个教程文档：[iOS 7 Background Remote Notification](../client/ios_tutorials)
++ 关于 iOS 7 Background Push，JPush 提供一个教程文档：[iOS 7 Background Remote Notification](../client/ios_tutorials/#ios-7-background-remote-notification)
 
