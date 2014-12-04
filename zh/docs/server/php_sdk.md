@@ -6,8 +6,11 @@
 
 
 对应的 REST API 文档：
+
 + [REST API - Push](../rest_api_v3_push/)
+
 + [REST API - Report](../rest_api_v3_report/)
+
 + [JPush Api PHP client doc](https://github.com/jpush/jpush-api-php-client/blob/master/doc/api.md)
 
 版本更新:[Release](https://github.com/jpush/jpush-api-php-client/releases/)页面有详细的版本发布记录与下载。
@@ -18,25 +21,55 @@ PHP >= 5.3
 
 #### 快速安装
 
-解压 examples/vendor.tar.gz 到项目目录，在需要使用JPush的源文件头部 引入 vendor/autoload.php 既可使用。
+JPush PHP Library 使用 Composer管理项目依赖, 鉴于某些原因, 国内的用户使用Composer下载依赖库比较困难,所以我们将Composer依赖打包. 用户可以通过以下方式在您的项目中加入JPush PHP Library.
+
+* 下载依赖包 [vendor.tar.gz](../../server_sdk_files/jpush-api-php-vendor.tar.gz)
+* 解压vendor.tar.gz到您的项目目录下，在需要使用JPush的源文件头部 引入 vendor/autoload.php 既可使用.
 
 ```
-require_once 'vendor/autoload.php';
+# 引入代码
+php require_once 'vendor/autoload.php';
 ```
 
-#### Composer install
+#### 使用Composer 
 
+如果你的项目使用composer管理依赖, 可以通过以下方式使用JPush PHP Library.
 
-Use composer to fetch the library and dependencies defined in composer.json, and install them:
+* 在 composer.json 中添加 jpush依赖, 如目前最新版本为 v3.2.1
 
 ```
-#download the composer.phar
-$ curl -sS https://getcomposer.org/installer | php
-#install by composer.json
-$ php composer.phar install
+{
+    "require":{
+        "jpush/jpush": "v3.2.1"
+    }
+}
 ```
+
+* 执行 php composer.phar install 或 php composer.phar update
+
 
 ### 快速使用
+
+####Example
+
+下载的[JPush PHP Library](../../server_sdk_files/jpush-api-php-client-3.2.1.zip) example文件夹有简单示例代码, 开发者可参考以快速使用该库
+
+├── examples
+
+│   ├── composer.json　项目依赖
+
+│   ├── DeviceExample.php 对Tag, Alias, Registeration_id的操作示例
+
+│   ├── PushExample.php　推送示例
+
+│   ├── README.md　说明
+
+│   ├── ReportExample.php　获取统计信息示例
+
+│   └── ValidateExample.php　使用validate接口示例
+
+
+
 
 ####Easy Push
 
@@ -87,3 +120,20 @@ foreach($result->received_list as  $received) {
 ```
 
 
+### FAQ
+Q: 运行示例提示　require_once(vendor/autoload.php): failed to open stream 怎么解决?
+
+A: 下载下载依赖包 [vendor.tar.gz](../../server_sdk_files/jpush-api-php-vendor.tar.gz) 并解压到examples目录即可, 也可以使用composer管理依赖, 在composer.json中加入 "jpush/jpush": "v3.2.1" 并执行 php composer.phar install 即可.
+
+Q: 运行示例提示
+
+```
+Fatal error: Uncaught exception 'UnexpectedValueException' with message 'The stream or file "jpush.log" could not be opened: failed to open stream: Permission denied
+```
+该如何解决?
+
+A: 此问题是因为工程没有写入权限导致不能生成日志文件. 只需对赋予该项目对本目录的写入权限即可,如 sudo chmod 777 example
+
+Q: 使用示例每次推送都会打印推送的JSON, 如何禁止其打印?
+
+A: 在调用示例推送的时候, 注释掉 ->printJSON() 即可, 该函数可以打印当前构建的推送对象.
