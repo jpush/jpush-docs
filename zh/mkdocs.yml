@@ -5,7 +5,7 @@ site_favicon: favicon.ico
 site_description: JPush, 极光推送, Android Push, Android 推送, 安卓推送, iOS Push, APNs, Push Notification
 repo_url: http://docs.jpush.cn
 repo_name: 老版本文档
-copyright: Copyright 2011-2014, jpush.cn, All Rights Reserved. <br />粤ICP备12056275号-5
+copyright: Copyright 2011-2014, jpush.cn, All Rights Reserved. <br />粤ICP备12056275号-5 深圳市和讯华谷信息技术有限公司
 theme: bootstrap 
 
 pages:
