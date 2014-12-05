@@ -85,6 +85,26 @@ JPush API 对访问次数，具有频率控制。即一定的时间窗口内，A
 + 根据 alias 大量请求时，避免无效的 alias。
 + 如果大量针对 alias 的请求内容一致，可以每次 API + 调用填写多个 alias 。具体请参考推送 API 说明。
 
+
+##### 推送场景举例
+A, B 两应用都有千万的用户量。
+
+A 应用推送方式，主要是群发
+一次推送（即一次 API 调用）面向大量用户。这种使用广播，或者基于 Tag 做推送。
+
+这种情况下，由于群发几乎不可能短期内推送很多次，从而几乎不可能触发 API 频率控制。
+
+进一步地说，API 频率控制与推送送达的终端用户数无关。一次 API 广播推送，可以送达所有用户。
+
+B 应用推送方式，主要是单点
+一次推送（即一次 API 调用）只面向一个用户。这种基于 alias 或者 registrationI 做推送。
+
+由于用户量大，向每个用户推送都需要调用一次 API，则相对比较容易触发到频率控制。
+
+有一个技巧可以减少 API 调用次数：推送 API 支持向 alias, registrationId 推送时，最多一次可以向 1000 个目标对象推送。也就是把推送请求批量化。
+
+但这个作法不好的是：1 批量一起推送到很多对象，需要统一时间；2 批量一起的推送，其内容体只能一样，不能根据每个对象不同。
+
 ##### 外部参考
 + HTTP 错误码关于 429 的定义：[http://en.wikipedia.org/wiki/List_of_HTTP_status_codes#4xx_Client_Error](http://en.wikipedia.org/wiki/List_of_HTTP_status_codes#4xx_Client_Error)
 
