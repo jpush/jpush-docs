@@ -146,7 +146,7 @@
                                                             <p style="margin: 2px 0;">更新时间：2014-01-21</p>
                                                             <p style="margin: 2px 0;"><a href="https://github.com/jpush/jpush-api-csharp-client">C#项目地址</a></p>
                                                             <p style="margin: 2px 0 10px;">支持：Push API v2</p>
-                                                            <p><a href="../server_sdk_files/jpush-api-csharp-client-develop.zip" style="display: inline-block; height: 30px; line-height: 30px; width: 100px; border: 1px solid #ccc;border-radius: 3px;color: #999;text-align: center;">
+                                                            <p><a href="https://github.com/jpush/jpush-api-csharp-client/releases" style="display: inline-block; height: 30px; line-height: 30px; width: 100px; border: 1px solid #ccc;border-radius: 3px;color: #999;text-align: center;">
                                                                   <i style="vertical-align: middle; display: inline-block; width: 11px; height: 11px; background: url(../image/resource_sdk_download.png) 0 0;"></i style="vertical-align: middle;">&nbsp;&nbsp;下载
                                                             </a></p>
                                                       </td>
