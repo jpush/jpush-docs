@@ -1,7 +1,7 @@
 # Android SDK 概述
 
 + [Android 常见问题](../../guideline/faq/#android)
-+ [Andrdoi 客户端 SDK 下载](../../resources/#android-sdk)
++ [Android 客户端 SDK 下载](../../resources/#android-sdk)
 
 ### JPush Android
 
