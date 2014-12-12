@@ -141,7 +141,7 @@
                                                             <img src="../image/resource_sdk_csharp.png" width="95" height="57" />
                                                       </td>
                                                       <td style="padding: 20px 0;">
-                                                            <h4 style="font-weight: bold;font-size: 14px;">C# - SDK下载</h4>
+                                                            <h4 style="font-weight:   bold;font-size: 14px;">C# - SDK下载</h4>
                                                             <p style="margin: 2px 0;">版本号：v3.0.0</p>
                                                             <p style="margin: 2px 0;">更新时间：2014-12-10</p>
                                                             <p style="margin: 2px 0;"><a href="https://github.com/jpush/jpush-api-csharp-client">C#项目地址</a></p>
