@@ -232,6 +232,7 @@ iOS 设备收到一条推送（APNs），用户点击推送通知打开应用时
 
     - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo;
     // apn内容为userInfo
+
 * 如果是使用 iOS 7 的 Remote Notification 特性那么处理函数需要使用
 
     - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler;
