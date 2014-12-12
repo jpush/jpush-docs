@@ -689,8 +689,6 @@ MessageResult SendPush(PushPayload payload)
 	* 包含错误的信息：比如超时，无网络等情况
 
 
-### Report-API
-
 Method - MessageResult SendPush(string payloadString)
 
 调用此API来进行推送信息，其中包含平台信息，推送目标，通知内容，消息内容与可选参数
@@ -724,6 +722,8 @@ MessageResult SendPush(string payloadString)
 * APIConnectionException
 	* 包含错误的信息：比如超时，无网络等情况
 
+
+### Report-API
 
 Method -ReceivedResult getReceivedApi(String msg_ids)
 

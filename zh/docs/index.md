@@ -69,8 +69,8 @@
                 </tr>
                 <tr>
                 	<td width="25%" ><a href="guideline/android_3m/">3 分钟集成 Android SDK</a></td>
-                	<td width="25%" ><a href="guideline/winphone_3m">3 分钟集成 Winphone SDK</a></td>
                     <td width="25%">&nbsp;</td>
+                	<td width="25%" ><a href="guideline/winphone_3m">3 分钟集成 Winphone SDK</a></td>
                     <td width="25%">&nbsp;</td>
                 </tr>
                 </table>
@@ -138,8 +138,8 @@
                 <table width="100%">
                 <tr>
                 	<td width="25%"><a href="server/rest_api_v3_push">Push API v3</a></td>
-                	<td width="25%"><a href="server/rest_api_v3_report">Report API v3</a></td>
                     <td width="25%"><a href="server/rest_api_v3_device/">Device API</a></td>
+                    <td width="25%">&nbsp;</td>
                     <td width="25%">&nbsp;</td>
                 </tr>
                 <tr>
