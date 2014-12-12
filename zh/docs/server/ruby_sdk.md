@@ -11,7 +11,7 @@ gem : ([https://rubygems.org/gems/jpush](https://rubygems.org/gems/jpush))
 
 本开发包 Rubydoc：[JPush API Ruby Client Doc](http://www.rdoc.info/github/jpush/jpush-api-ruby-client/master/frames)
 
-版本更新：[Release页面](https://github.com/jpush/jpush-api-ruby-client/releases)。下载更新请到这里。
+版本更新：[Release页面](../../resources/#sdk_1)。下载更新请到这里。
 
 ### Installation
 
