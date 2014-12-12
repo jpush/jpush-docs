@@ -8,7 +8,7 @@
 
 本开发包 Javadoc：[API Docs](http://jpush.github.io/jpush-api-java-client/apidocs/)
 
-版本更新：[Release页面](https://github.com/jpush/jpush-api-java-client/releases)。下载更新请到这里。
+版本更新：[Release页面](../../resources/#sdk_1)。下载更新请到这里。
 
 
 ### 安装

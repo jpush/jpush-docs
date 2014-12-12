@@ -6,6 +6,8 @@
 
 对应的 REST API 文档：[rest_api](../rest_api_v3_push)
 
+版本更新：[Release页面](../../resources/#sdk_1)。下载更新请到这里。
+
 ### Push-API-v3
 
 向某单个设备或者某设备列表推送一条通知或者消息
@@ -22,44 +24,17 @@ JPush 当前支持Android,Ios,Windows Phone三个平台的推送 支持一下几
 
 将构造函数私有化，不提供new方法进行创建
 
-* 所有平台推送
+| 平台 | 实现 |
+| :---| :---|
+| 所有平台推送 | Platform platform=Platform.all() |
+| ios平台 | Platform platform=Platform.ios()|
+| android平台 | Platform platform=Platform.android() |
+| windows phone平台 | Platform platform=Platform.winphone()|
+| android和ios平台| Platform platform=Platform.android_ios() |
+| android和winphone平台 | Platform platform=Platform.android_winphone()|
+| ios平台和winphone平台 | Platform platform=Platform.ios_winphone() |
 
-```
-Platform platform=Platform.all() 
-```
-* ios平台
 
-```
-Platform platform=Platform.ios()
-```
-
-* android平台
-
-```
-Platform platform=Platform.android() 
-```
-* windows phone平台
-
-```
-Platform platform=Platform.winphone()
-```
-
-* android和ios平台
-
-```
-Platform platform=Platform.android_ios() 
-```
-* android和winphone平台
-
-```
-Platform platform=Platform.android_winphone()
-```
-
-* ios平台和winphone平台
-
-```
-Platform platform=Platform.ios_winphone() 
-```
 
 #### Audience 推送目标（必填）
 
@@ -69,170 +44,61 @@ Platform platform=Platform.ios_winphone()
 
 s_表示是静态函数的意思，Audience中还有个tag的成员函数，为了避免命名冲突
 
-* 推送所有目标
 
-```
-Audience audience= Audience.all()
-```
-
-* 推送给多个标签（只要任意一个标签满足）：在深圳，广州或者北京
-
-```
-Audience audience= Audience.s_tag("深圳","广州","北京")；
-```
-
-* 推送给多个标签（需要同时在多个标签范围之内）：在深圳并且是女的
-
-```
-Audience audience= Audience.s_tag_and("深圳","女")；
-```
-
-* 推送给多个别名：
-
-```
-Audience audience= Audience.s_alias("4314", "892", "4531")；
-```
-
-* 推送给多个注册ID
-
-```
-Audience audience= Audience.s_registrationId("4312kjklfds2", "8914afd2", "45fdsa31")；
-```
-
-* 可同时推送指定多类推送目标：在深圳或者广州，并且是 ”女“ “会员”
-
-```
-Audience audience= Audience.s_tag("广州", "深圳").tag("女"，"会员")；
-```
+| 方式 | 实现 |
+| :---| :---|
+| 推送所有目标 | Audience audience= Audience.all()|
+| 推送给多个标签（只要任意一个标签满足）：在深圳，广州或者北京 | Audience audience= Audience.s_tag("深圳","广州","北京")；|
+| 推送给多个别名 | Audience audience= Audience.s_alias("4314", "892", "4531")；|
+| 推送给多个注册ID | Audience audience= Audience.s_registrationId("4312kjklfds2", "8914afd2", "45fdsa31")；|
+| 可同时推送指定多类推送目标：在深圳或者广州，并且是 ”女“ “会员” | Audience audience= Audience.s_tag("广州", "深圳").tag("女"，"会员")；|
 
 ###### Audience API
 
 将构造函数私有化，不提供new方法进行创建，只能用all和s_xxx的函数创建Audience
 
-* 推送所有目标
-
 ```
-public static Audience all()
-```
+public static Audience all() // 推送所有目标
 
-* 推送给多个标签，参数为：HashSet
+public static Audience s_tag(HashSet<string> values) //推送给多个标签，参数为：HashSet
 
-```
-public static Audience s_tag(HashSet<string> values)
-```
+public static Audience s_tag(params string[] values) //推送给多个标签 参数为："xxxxx1","xxxxxx2","xxxxxx3"
 
-* 推送给多个标签 参数为："xxxxx1","xxxxxx2","xxxxxx3"
+public static Audience s_tag_and(HashSet<string> values) //推送给多个标签（需要同时在多个标签范围之内），参数为：HashSet
 
-```
-public static Audience s_tag(params string[] values)
-```
+public static Audience s_tag_and(params string[] values) //推送给多个标签（需要同时在多个标签范围之内），参数为："xxxxx1","xxxxxx2","xxxxxx3"
 
-* 推送给多个标签（需要同时在多个标签范围之内），参数为：HashSet
+public static Audience s_alias(HashSet<string> values) //推送给多个别名 ，参数为：HashSet 
 
-```
-public static Audience s_tag_and(HashSet<string> values)
-```
+public static Audience s_alias(params string[] values) //推送给多个别名，参数为："xxxxx1","xxxxxx2","xxxxxx3"
 
-* 推送给多个标签（需要同时在多个标签范围之内），参数为："xxxxx1","xxxxxx2","xxxxxx3"
+public static Audience s_segment(HashSet<string> values) //推送给多个segment ，参数为：HashSet 
 
-```
-public static Audience s_tag_and(params string[] values)
-```
+public static Audience s_segment(params string[] values) 推送给多个segment，参数为："xxxxx1","xxxxxx2","xxxxxx3"
 
-* 推送给多个别名 ，参数为：HashSet ：
+public static Audience s_registrationId(HashSet<string> values) //推送给多个设备id ，参数为：HashSet 
 
-```
-public static Audience s_alias(HashSet<string> values)
-```
+public static Audience s_registrationId(params string[] values) //推送给多个设备id，参数为："xxxxx1","xxxxxx2","xxxxxx3"
 
-* 推送给多个别名，参数为："xxxxx1","xxxxxx2","xxxxxx3"：
+public Audience tag(HashSet<string> values) //推送给多个标签，参数为：HashSet
 
-```
-public static Audience s_alias(params string[] values)
-```
+public Audience tag(params string[] values) //推送给多个标签 参数为："xxxxx1","xxxxxx2","xxxxxx3"
 
-* 推送给多个segment ，参数为：HashSet ：
+public Audience tag_and(HashSet<string> values) //推送给多个标签（需要同时在多个标签范围之内），参数为：HashSet
 
-```
-public static Audience s_segment(HashSet<string> values)
-```
+public Audience tag_and(params string[] values) //推送给多个标签（需要同时在多个标签范围之内），参数为："xxxxx1","xxxxxx2","xxxxxx3"
 
-* 推送给多个segment，参数为："xxxxx1","xxxxxx2","xxxxxx3"：
+public Audience alias(HashSet<string> values) //推送给多个别名 ，参数为：HashSet ：
 
-```
-public static Audience s_segment(params string[] values)
-```
+public Audience alias(params string[] values) //推送给多个别名，参数为："xxxxx1","xxxxxx2","xxxxxx3"
 
-* 推送给多个设备id ，参数为：HashSet ：
+public Audience segment(HashSet<string> values) //推送给多个segment ，参数为：HashSet 
 
-```
-public static Audience s_registrationId(HashSet<string> values)
-```
+public Audience segment(params string[] values) //推送给多个segment，参数为："xxxxx1","xxxxxx2","xxxxxx3"
 
-* 推送给多个设备id，参数为："xxxxx1","xxxxxx2","xxxxxx3"：
+public Audience registrationId(HashSet<string> values) //推送给多个设备id ，参数为：HashSet 
 
-```
-public static Audience s_registrationId(params string[] values)
-```
-
-* 推送给多个标签，参数为：HashSet
-
-```
-public Audience tag(HashSet<string> values)
-```
-
-* 推送给多个标签 参数为："xxxxx1","xxxxxx2","xxxxxx3"
-
-```
-public Audience tag(params string[] values)
-```
-
-* 推送给多个标签（需要同时在多个标签范围之内），参数为：HashSet
-
-```
-public Audience tag_and(HashSet<string> values)
-```
-
-* 推送给多个标签（需要同时在多个标签范围之内），参数为："xxxxx1","xxxxxx2","xxxxxx3"
-
-```
-public Audience tag_and(params string[] values)
-```
-
-* 推送给多个别名 ，参数为：HashSet ：
-
-```
-public Audience alias(HashSet<string> values)
-```
-
-* 推送给多个别名，参数为："xxxxx1","xxxxxx2","xxxxxx3"：
-
-```
-public Audience alias(params string[] values)
-```
-
-* 推送给多个segment ，参数为：HashSet ：
-
-```
-public Audience segment(HashSet<string> values)
-```
-
-* 推送给多个segment，参数为："xxxxx1","xxxxxx2","xxxxxx3"：
-
-```
-public Audience segment(params string[] values)
-```
-
-* 推送给多个设备id ，参数为：HashSet ：
-
-```
-public Audience registrationId(HashSet<string> values)
-```
-
-* 推送给多个设备id，参数为："xxxxx1","xxxxxx2","xxxxxx3"：
-
-```
-public Audience registrationId(params string[] values)
+public Audience registrationId(params string[] values) //推送给多个设备id，参数为："xxxxx1","xxxxxx2","xxxxxx3"
 ```
 
 #### Notification 通知内容（可选）

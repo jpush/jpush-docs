@@ -7,7 +7,7 @@
 [REST API 文档](../rest_api_v3_push/)
 [NodeJS API DOC](https://github.com/jpush/jpush-api-nodejs-client/blob/master/doc/api.md)
 
-版本更新：[Release页面](https://github.com/jpush/jpush-api-nodejs-client/releases)。下载更新请到这里。
+版本更新：[Release页面](../../resources/#sdk_1)。下载更新请到这里。
 
 ###Install
 
