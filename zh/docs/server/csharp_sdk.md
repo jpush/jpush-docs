@@ -6,13 +6,11 @@
 
 对应的 REST API 文档：[rest_api](../rest_api_v3_push)
 
-### 环境配置
-
-#### Push-API-v3
+### Push-API-v3
 
 向某单个设备或者某设备列表推送一条通知或者消息
 
-### 推送的载体：类PushPayload
+#### 推送的载体：类PushPayload
 
 先说名下每个成员变量的用法，再演示下PushPayload如何创建
 
@@ -20,7 +18,7 @@
 
 JPush 当前支持Android,Ios,Windows Phone三个平台的推送 支持一下几种方法创建Platform
 
-##### Platform API
+###### Platform API
 
 将构造函数私有化，不提供new方法进行创建
 
@@ -107,7 +105,7 @@ Audience audience= Audience.s_registrationId("4312kjklfds2", "8914afd2", "45fdsa
 Audience audience= Audience.s_tag("广州", "深圳").tag("女"，"会员")；
 ```
 
-##### Audience API
+###### Audience API
 
 将构造函数私有化，不提供new方法进行创建，只能用all和s_xxx的函数创建Audience
 
@@ -243,7 +241,7 @@ public Audience registrationId(params string[] values)
 
 Notification字段简介如下：
 
-##### alert
+###### alert
 
 是一个快捷定义，各平台的 alert 信息如果都一样，则可不定义。如果各平台有定义，则覆盖这里的定义。
 
@@ -253,7 +251,7 @@ Notification字段简介如下：
 Notification not = new Notification().setAlert("alert");
 ```
 
-##### iOS
+###### iOS
 
 iOS 平台上 APNs 通知。
 
@@ -301,7 +299,7 @@ IOS 通知 JPush 要转发给 APNs 服务器。APNs 协议定义通知长度为 
 另外，JPush 在推送时使用 utf-8 编码，所以一个汉字占用 3 个字节长度。
 ```
 
-##### IosNotification API
+###### IosNotification API
 
 * 设置alert字段
 
@@ -660,7 +658,7 @@ public long big_push_duration
  options.sendno=1234;
 ```
 
-#### Method - MessageResult SendPush(PushPayload payload)
+##### Method - MessageResult SendPush(PushPayload payload)
 调用此API来进行推送信息，其中包含平台信息，推送目标，通知内容，消息内容与可选参数
 
 ##### 支持版本
@@ -693,20 +691,21 @@ MessageResult SendPush(PushPayload payload)
 
 ### Report-API
 
-#### Method - MessageResult SendPush(string payloadString)
+Method - MessageResult SendPush(string payloadString)
 
 调用此API来进行推送信息，其中包含平台信息，推送目标，通知内容，消息内容与可选参数
 
-##### 支持版本
+ 支持版本
+
 开始支持的版本:3.0.0
 
-##### 接口定义
+ 接口定义
 
 ```
 MessageResult SendPush(string payloadString)
 ```
 
-##### 参数说明
+ 参数说明
 
 * payloadString，自行组建的json串，如果json字符串不合法，会抛出APIRequestException异常
 
@@ -716,7 +715,7 @@ MessageResult SendPush(string payloadString)
 	* sendno 由你赋值的字段，这里会传递回来
 	* ResponseResult http返回的相关信息
 
-##### 异常
+ 异常
 
 * APIRequestException
 
@@ -726,7 +725,7 @@ MessageResult SendPush(string payloadString)
 	* 包含错误的信息：比如超时，无网络等情况
 
 
-#### Method -ReceivedResult getReceivedApi(String msg_ids)
+Method -ReceivedResult getReceivedApi(String msg_ids)
 
 该接口为v2版本的Report-API
 
@@ -736,16 +735,17 @@ Received API 以 msg_id 作为参数，去获取该 msg_id 的送达统计数据
 
 每条推送消息的送达统计数据最多保留 10 天。即发起推送请求后从最后一个推送送达记录时间点开始保留10天，如果保留期间有新的送达，将在这个新送达的时间点起再往后保留10天。
 
-##### 支持版本
+支持版本
+
 开支持的版本:3.0.0
 
-##### 接口定义
+接口定义
 
 ```
 public ReceivedResult getReceivedApi(String msg_ids)
 ```
 
-##### 参数说明
+参数说明
 
 * msg_ids
 
@@ -757,7 +757,7 @@ public ReceivedResult getReceivedApi(String msg_ids)
 	* 列表包含：android_received，android平台的送达
 	* 列表包含：ios_apns_sent， ios平台想apns发送的数目
 
-##### 异常
+异常
 
 * APIRequestException
 
@@ -767,7 +767,7 @@ public ReceivedResult getReceivedApi(String msg_ids)
 	* 包含错误的信息：比如超时，无网络等情况
 
 
-#### Method -ReceivedResult getReceivedApi_v3(String msg_ids)
+Method -ReceivedResult getReceivedApi_v3(String msg_ids)
 该接口为v3版本的Report-API
 
 Received API 以 msg_id 作为参数，去获取该 msg_id 的送达统计数据。
@@ -776,16 +776,17 @@ Received API 以 msg_id 作为参数，去获取该 msg_id 的送达统计数据
 
 每条推送消息的送达统计数据最多保留 10 天。即发起推送请求后从最后一个推送送达记录时间点开始保留10天，如果保留期间有新的送达，将在这个新送达的时间点起再往后保留10天。
 
-##### 支持版本
+支持版本
+
 开支持的版本:3.0.0
 
-##### 接口定义
+接口定义
 
 ```
 public ReceivedResult getReceivedApi(String msg_ids)
 ```
 
-##### 参数说明
+参数说明
 * msg_ids
 
 	* msg_ids 推送API返回的 msg_id 列表，多个 msg_id 用逗号隔开，最多支持100个msg_id。
@@ -796,7 +797,7 @@ public ReceivedResult getReceivedApi(String msg_ids)
 	* 列表包含：android_received，android平台的送达
 	* 列表包含：ios_apns_sent， ios平台想apns发送的数目
 
-##### 异常
+异常
 * APIRequestException
 
 	* 包含http错误码：如401,404等，http错误信息
@@ -806,7 +807,7 @@ public ReceivedResult getReceivedApi(String msg_ids)
 
 
 
-#### Method -UsersResult getReportUsers(TimeUnit timeUnit, String start, int duration)
+Method -UsersResult getReportUsers(TimeUnit timeUnit, String start, int duration)
 
 用户统计查询接口，这个接口是vip用户专用
 
@@ -814,15 +815,17 @@ public ReceivedResult getReceivedApi(String msg_ids)
 
 时间单位支持：HOUR（小时）、DAY（天）、MONTH（月）。
 
-##### 支持版本
+支持版本
+
 开支持的版本:3.0.0
-##### 接口定义
+
+接口定义
 
 ```
 public UsersResult getReportUsers(TimeUnit timeUnit, String start, int duration)
 ```
 
-##### 参数说明
+参数说明
 
 * timeUnit
 
@@ -850,21 +853,21 @@ public UsersResult getReportUsers(TimeUnit timeUnit, String start, int duration)
 		* active 活跃用户
 
 
-#### Method MessagesResult getReportMessages(params String[] msgIds)
+Method MessagesResult getReportMessages(params String[] msgIds)
 
 消息统计查询接口，这个接口是vip用户专用
 
 与“送达统计” API 不同的是，该 API 提供更多的针对一个 msgid 的统计数据。
 
-##### 支持版本
+支持版本
 
 支持的版本:3.0.0
 
-##### 接口定义
+接口定义
 ```
 public MessagesResult getReportMessages(params String[] msgIds)
 ```
-##### 参数说明
+参数说明
 
 * msgIds
 	* msg_ids 推送API返回的 msg_id 列表，多个 msg_id 用逗号隔开，最多支持100个msg_id。
@@ -881,7 +884,7 @@ public MessagesResult getReportMessages(params String[] msgIds)
 	* apns_sent APNS通知成功推送数
 	* click 用户点击数
 
-##### 异常
+异常
 
 * APIRequestException
 
@@ -907,20 +910,20 @@ Device API 用于在服务器端查询、设置、更新、删除设备的 tag,a
 
 device 用于查询/设置设备的各种属性，包含tags, alias； tag 用于查询/设置/删除设备的标签； alias 用于查询/设置/删除设备的别名。
 
-#### Method TagAliasResult getDeviceTagAlias(String registrationId)
+##### Method TagAliasResult getDeviceTagAlias(String registrationId)
 
 获取当前设备的所有属性，包含tags, alias。
 
-##### 支持版本
+###### 支持版本
 支持的版本:3.0.0
 
-##### 接口定义
+###### 接口定义
 
 ```
  public  TagAliasResult getDeviceTagAlias(String registrationId)
 ```
 
-##### 参数说明
+###### 参数说明
 
 * registrationId
 	* 设备id
@@ -930,7 +933,7 @@ device 用于查询/设置设备的各种属性，包含tags, alias； tag 用�
 	* alias
 		* 找不到统计项就是 null，否则为统计项的值
 
-##### 异常
+###### 异常
 
 * APIRequestException
 	* 包含http错误码：如401,404等，http错误信息
@@ -939,20 +942,20 @@ device 用于查询/设置设备的各种属性，包含tags, alias； tag 用�
 * APIConnectionException
 	* 包含错误的信息：比如超时，无网络等情况
 
-#### Method - DefaultResult updateDeviceTagAlias(String registrationId, bool clearAlias, bool clearTag)
+##### Method - DefaultResult updateDeviceTagAlias(String registrationId, bool clearAlias, bool clearTag)
 
 删除当前设备的所有属性，包括tags和alias
 
-##### 支持版本
+###### 支持版本
 支持的版本:3.0.0
 
-##### 接口定义
+###### 接口定义
 
 ```
 public  DefaultResult updateDeviceTagAlias(String registrationId, bool clearAlias, bool clearTag)
 ```
 
-##### 参数说明
+###### 参数说明
 
 * registrationId
 	* 设备id
@@ -963,7 +966,7 @@ public  DefaultResult updateDeviceTagAlias(String registrationId, bool clearAlia
 	* true:清空tag
 	* false:保持tag不变
 
-##### 异常
+###### 异常
 
 * APIRequestException
 	* 包含http错误码：如401,404等，http错误信息
@@ -971,20 +974,20 @@ public  DefaultResult updateDeviceTagAlias(String registrationId, bool clearAlia
 * APIConnectionException
 	* 包含错误的信息：比如超时，无网络等情况
 
-#### Method - DefaultResult updateDeviceTagAlias(String registrationId,String alias,HashSet tagsToAdd,HashSet tagsToRemove)
+##### Method - DefaultResult updateDeviceTagAlias(String registrationId,String alias,HashSet tagsToAdd,HashSet tagsToRemove)
 
 删除当前设备的所有属性，包括tags和alias
 
-##### 支持版本
+###### 支持版本
 支持的版本:3.0.0
 
-##### 接口定义
+###### 接口定义
 
 ```
 public  DefaultResult updateDeviceTagAlias(String registrationId,String alias,HashSet<String> tagsToAdd,HashSet<String> tagsToRemove)
 ```
 
-##### 参数说明
+###### 参数说明
 
 * registrationId
 	* 设备id
@@ -997,31 +1000,31 @@ public  DefaultResult updateDeviceTagAlias(String registrationId,String alias,Ha
 * DefaultResult
 	* 更新成功时isResultOK()==true
 
-##### 异常
+###### 异常
 * APIRequestException
 	* 包含http错误码：如401,404等，http错误信息
 	* JPush returen code和JPush returen mssage
 * APIConnectionException
 	* 包含错误的信息：比如超时，无网络等情况
 
-#### Method - TagListResult getTagList()
+##### Method - TagListResult getTagList()
 
 获取当前应用的所有标签列表
 
-##### 支持版本
+###### 支持版本
 
 支持的版本：3.0.0
 
-##### 接口定义
+###### 接口定义
 
 ```
 public TagListResult getTagList()
 ```
-##### 参数说明
+###### 参数说明
 * DefaultResult
 	* 更新成功时isResultOK()==true
 
-##### 异常
+###### 异常
 
 * APIRequestException
 
@@ -1030,20 +1033,20 @@ public TagListResult getTagList()
 * APIConnectionException
 	* 包含错误的信息：比如超时，无网络等情况
 
-#### Method - BooleanResult isDeviceInTag(String theTag, String registrationID)
+##### Method - BooleanResult isDeviceInTag(String theTag, String registrationID)
 
 查询某个设备是否在 tag 下。
 
-##### 支持版本
+###### 支持版本
 
 支持的版本：3.0.0
 
-##### 接口定义
+###### 接口定义
 
 ```
 public BooleanResult isDeviceInTag(String theTag, String registrationID)
 ```
-##### 参数说明
+###### 参数说明
 * theTag
 	* 需要确认的tag
 * registrationID +相对应的设备
@@ -1051,7 +1054,7 @@ public BooleanResult isDeviceInTag(String theTag, String registrationID)
 * BooleanResult
 	* result 成功为true 失败为false
 
-##### 异常
+###### 异常
 
 * APIRequestException
 
@@ -1060,22 +1063,22 @@ public BooleanResult isDeviceInTag(String theTag, String registrationID)
 * APIConnectionException
 	* 包含错误的信息：比如超时，无网络等情况
 
-#### Method - public DefaultResult addRemoveDevicesFromTag(String theTag,HashSet toAddUsers, HashSet toRemoveUsers)
+##### Method - public DefaultResult addRemoveDevicesFromTag(String theTag,HashSet toAddUsers, HashSet toRemoveUsers)
 
 为一个标签添加或者删除设备。
 
-##### 支持版本
+###### 支持版本
 
 支持的版本：3.0.0
 
-##### 接口定义
+###### 接口定义
 
 ```
 public DefaultResult addRemoveDevicesFromTag(String theTag,
                                              HashSet<String> toAddUsers,
                                              HashSet<String> toRemoveUsers)
 ```
-##### 参数说明
+###### 参数说明
 * theTag
 	* 要在该tag下删除或添加设备
 * toAddUsers
@@ -1085,7 +1088,7 @@ public DefaultResult addRemoveDevicesFromTag(String theTag,
 * DefaultResult
 	* 成功 isResultOK()==true,否则isResultOK()==false
 
-##### 异常
+###### 异常
 
 * APIRequestException
 
@@ -1095,19 +1098,19 @@ public DefaultResult addRemoveDevicesFromTag(String theTag,
 	* 包含错误的信息：比如超时，无网络等情况
 
 
-#### Method - public DefaultResult deleteTag(String theTag, String platform)
+##### Method - public DefaultResult deleteTag(String theTag, String platform)
 
 删除一个标签，以及标签与设备之间的关联关系
 
-##### 支持版本
+###### 支持版本
 支持的版本：3.0.0
 
-##### 接口定义
+###### 接口定义
 
 ```
 public DefaultResult deleteTag(String theTag, String platform)
 ```
-##### 参数说明
+###### 参数说明
 * theTag
 	* 删除的标签
 * platform
@@ -1115,7 +1118,7 @@ public DefaultResult deleteTag(String theTag, String platform)
 * DefaultResult
 	* 成功 isResultOK()==true,否则isResultOK()==false
 
-##### 异常
+###### 异常
 
 * APIRequestException
 
@@ -1125,19 +1128,19 @@ public DefaultResult deleteTag(String theTag, String platform)
 	* 包含错误的信息：比如超时，无网络等情况
 
 
-#### Method - AliasDeviceListResult getAliasDeviceList(String alias, String platform)
+##### Method - AliasDeviceListResult getAliasDeviceList(String alias, String platform)
 
 获取指定alias下的设备，最多输出10个
 
-##### 支持版本
+###### 支持版本
 支持的版本：3.0.0
 
-##### 接口定义
+###### 接口定义
 
 ```
 public AliasDeviceListResult getAliasDeviceList(String alias, String platform)
 ```
-##### 参数说明
+###### 参数说明
 
 * alias
 	* 指定别名
@@ -1146,7 +1149,7 @@ public AliasDeviceListResult getAliasDeviceList(String alias, String platform)
 * AliasDeviceListResult
 	* 找不到统计项就是 registration_ids是null，否则为["reg_id1", "reg_id2"]
 
-##### 异常
+###### 异常
 
 * APIRequestException
 
@@ -1156,19 +1159,19 @@ public AliasDeviceListResult getAliasDeviceList(String alias, String platform)
 	* 包含错误的信息：比如超时，无网络等情况
 
 
-#### Method - public DefaultResult deleteAlias(String alias, String platform)
+##### Method - public DefaultResult deleteAlias(String alias, String platform)
 
 删除一个别名，以及该别名与设备的绑定关系。
 
-##### 支持版本
+###### 支持版本
 支持的版本：3.0.0
 
-##### 接口定义
+###### 接口定义
 
 ```
 public DefaultResult deleteAlias(String alias, String platform)
 ```
-##### 参数说明
+###### 参数说明
 
 * alias
 
@@ -1182,7 +1185,7 @@ public DefaultResult deleteAlias(String alias, String platform)
 
 	* 成功 isResultOK()==true,否则isResultOK()==false
 
-##### 异常
+###### 异常
 
 * APIRequestException
 
