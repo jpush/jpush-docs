@@ -3,7 +3,7 @@ pages:
 - [index.md, 首页]
 - [server_apis/push_api.md, REST API, Push API]
 - [server_apis/server_sdks.md, REST API, 服务器端SDK]
-- [client_sdks/android_sdk.md, 客户端SDK, Andorid SDK]
+- [client_sdks/android_sdk.md, 客户端SDK, Android SDK]
 - [user_guides/android_guide.md, 使用指南, Android 集成指南]
 - [about.md, 关于]
 
