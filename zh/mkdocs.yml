@@ -21,9 +21,9 @@ pages:
 - [guideline/statistical_report.md, 入门指南, 统计与报表说明]
 
 
-- [client/android_sdk.md, 客户端, Andorid SDK 概述]
-- [client/android_tutorials.md, 客户端, Andorid SDK 教程]
-- [client/android_api.md, 客户端, Andorid SDK API]
+- [client/android_sdk.md, 客户端, Android SDK 概述]
+- [client/android_tutorials.md, 客户端, Android SDK 教程]
+- [client/android_api.md, 客户端, Android SDK API]
 - [client/ios_sdk.md, 客户端, iOS SDK 概述]
 - [client/ios_tutorials.md, 客户端, iOS SDK 教程]
 - [client/ios_api.md, 客户端, iOS SDK API]
