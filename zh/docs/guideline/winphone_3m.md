@@ -1,7 +1,7 @@
 #Windows phone 3分钟快速demo
 
 <style>
-img[alt=jpush_winphone_3m] { width: 800px; }
+img[alt=jpush_winphone_3m] { width: 500px; }
 </style>
 
 本文的目的在于，指导新接触借光推送的开发者，在短短几分钟内把极光推送跑起来
