@@ -1,25 +1,22 @@
-# 常见问题
+#常见问题
 
 ### Start 从这里开始
 
-<br />
-
-#### JPush有什么优势？
+####JPush有什么优势？
 
 + 全面的 Push 能力，随时到达你的用户
 + 客户端 SDK 资源占用少，流量占用少
 + 经过考验的大规模用户 Push 平台
 + 简单易用的 Portal，可以用来发送通知，统计分析推送效果
 
-<br />
 
-#### JPush支持哪些平台？	
+####JPush支持哪些平台？	
 
 当前支持：Android, iOS, Winphone 三大手机平台。暂不支持 Web。
 
 <br />
 
-#### JPush如何收费？
+####JPush如何收费？
 
 基础服务免费。
 
@@ -29,13 +26,13 @@
 
 <br />
 
-#### JPush的赢利模式是怎么样的？
+####JPush的赢利模式是怎么样的？
 
 学习流行的 Evernote, Dropbox 的云服务模式，对高级服务收费，为大多数用户提供免费的基础服务。 
 
 <br />
 
-#### 使用JPush从哪里开始？
+####使用JPush从哪里开始？
 
 - 到 [极光推送官方网站](http://www.jpush.cn/) 注册开发者帐号，然后登录
 - 进入 [管理控制台](https://www.jpush.cn/apps/) ，创建应用程序，得到 Appkey
@@ -43,13 +40,13 @@
 
 <br />
 
-#### SDK 与 服务器端通过什么互相识别？
+####SDK 与 服务器端通过什么互相识别？
 
 AppKey
 
 <br />
 
-#### 会不会限制推送消息的数量？
+####会不会限制推送消息的数量？
 
 没有限制！
 
@@ -60,7 +57,7 @@ Portal上不会限制推送消息的数量。
 
 <br />
 
-#### 服务器容量如何？并发有多大？
+####服务器容量如何？并发有多大？
 
 极光推送的系统目前已经支持 10 亿级用户并发访问。
 
@@ -68,13 +65,13 @@ Portal上不会限制推送消息的数量。
 
 <br />
 
-#### 极光推送做了多久了？是否稳定可靠？
+####极光推送做了多久了？是否稳定可靠？
 
 我们从 2012 年的 2 月份开始发布极光推送产品，是国内最早的第三方推送服务。
 
 <br />
 
-#### 极光推送后台使用什么技术实现的？是 XMPP 协议么？
+####极光推送后台使用什么技术实现的？是 XMPP 协议么？
 
 后台主要使用纯 C 语言实现。
 
@@ -82,7 +79,7 @@ Portal上不会限制推送消息的数量。
 
 <br />
 
-#### 怎么样保证推送消息的安全？
+####怎么样保证推送消息的安全？
 
 我们建议开发者不要推送保密的信息，就像QQ建议你不要在聊天时发送保密的信息一样。
 
@@ -92,13 +89,13 @@ Portal上不会限制推送消息的数量。
 
 <br />
 
-#### 在免费推送内容上，会加上“极光推送”等字样吗？
+####在免费推送内容上，会加上“极光推送”等字样吗？
 
 不会，所有推送的内容，都是开发者自己定义的，不会添加任何内容。
 
 <br />
 
-#### 极光推送耗电、耗流量如何？
+####极光推送耗电、耗流量如何？
 
 以下说到的，不考虑推送的内容部分。推送内容的多少是由开发者决定的。
 
@@ -108,7 +105,7 @@ Portal上不会限制推送消息的数量。
 
 <br />
 
-#### 为什么在 Portal 上或者调用 API 推送消息时提示：找不到目标用户？
+####为什么在 Portal 上或者调用 API 推送消息时提示：找不到目标用户？
 
 其含义是：当向客户端推送消息时，发现对于指定的推送方式，找不到该方式下的目标用户。
 
@@ -120,7 +117,7 @@ Portal上不会限制推送消息的数量。
 
 <br />
 
-#### 通知与自定义消息有什么区别？
+####通知与自定义消息有什么区别？
 
 下图是个简单的区分。详情请参考文档：[通知 vs. 自定义消息。](../../client/android_tutorials)
 
@@ -128,7 +125,7 @@ Portal上不会限制推送消息的数量。
 
 <br />
 
-#### 可以推送多媒体文件到客户端么？
+####可以推送多媒体文件到客户端么？
 
 推送消息本身是限定长度的文本。
 
@@ -138,15 +135,14 @@ Portal上不会限制推送消息的数量。
 
 <br />
 
-#### 怎么样向特定的某个用户推送消息？
+####怎么样向特定的某个用户推送消息？
 
 在客户端使用 setAliasAndTags API 来为该用户指定别名。以便服务器端对该别名推送消息。
 
 进一步了解请参考文档：[标签与别名API。](../../client/android_api)
 
-<br />
 
-#### 怎么样向指定的一群用户推送消息？
+####怎么样向指定的一群用户推送消息？
 
 在客户端使用 setAliasAndTags API 来为该用户设置标签。这样服务器可以向所有具有该标签的用户群发消息。
 
@@ -156,24 +152,20 @@ Portal上不会限制推送消息的数量。
 
 
 
-### Android 常见问题
-
-<br />
-
-#### 为什么应用程序无法收到 Push 消息（Android）？
+## Android 常见问题
+####为什么应用程序无法收到 Push 消息（Android）？
 
 + 确认 appKey（在Portal上生成的）已经正确的写入 Androidmanifest.xml
 + 确认测试手机（或者模拟器）已成功连入网络
 + 确认有客户端 "Login succeed" 日志
 
 详情请参考教程：[Android SDK 调试指南](../../client/android_tutorials)
-
-<br />
-
-#### Java.lang.UnsatisfiedLinkError
+####Java.lang.UnsatisfiedLinkError
 
 ![](../image/error.jpg)
 
+
+<br />
 此错误是由于没有正确的加载libjpush.so文件，请检查libjpush.so是否在正确的位置(libs–>armeabi–>libjpush.so)
 
 
@@ -183,7 +175,7 @@ Portal上不会限制推送消息的数量。
 
 <br />
 
-#### The permission should be defined 
+####The permission should be defined 
 
 ![](../image/permission.jpg)
 
@@ -196,7 +188,7 @@ Portal上不会限制推送消息的数量。
 
 <br />
 
-#### 如何在代码时混淆忽略 jpush-sdk-release.jar？
+####如何在代码时混淆忽略 jpush-sdk-release.jar？
 
 + 请下载4.x版本的[proguard.jar](http://sourceforge.net/projects/proguard/files/)， 并替换你Android Sdk "tools\proguard\lib\proguard.jar"
 
@@ -209,7 +201,7 @@ Portal上不会限制推送消息的数量。
 
 <br />
 
-#### 推送成功了，为什么有部分客户端收不到推送？
+####推送成功了，为什么有部分客户端收不到推送？
 
 请检查收不到通知的手机：
 
@@ -220,7 +212,7 @@ Portal上不会限制推送消息的数量。
 
 <br />
 
-#### MIUI 系统或小米手机收不到推送通知
+####MIUI 系统或小米手机收不到推送通知
 
 由于第三方 ROM 的管理软件需要用户手动操作
 
@@ -229,7 +221,7 @@ Portal上不会限制推送消息的数量。
 
 <br />
 
-#### Tag、Alias、Registrationid需要每次初始化时都重新设置吗，会变化吗？
+####Tag、Alias、Registrationid需要每次初始化时都重新设置吗，会变化吗？
 
 + tag、alias可以参考[别名与标签 API](../../client/android_api)进行设置，每次设置是覆盖设置，而不是增量设置。Tag和alias一经设置成功，除非取消或覆盖，是不会变化的。设置好的tag、alias与客户端的对应关系保存在Jpush服务器，目前没有从JPush服务器查询这个对应关系的接口，所以需要客户将对应关系保存在APP应用服务器。
 
@@ -237,19 +229,19 @@ Portal上不会限制推送消息的数量。
 
 <br />
 
-#### 没有沙箱API怎么测试？
+####没有沙箱API怎么测试？
 
  直接用 JPush 的 API 测试就行。
  
 <br />
 
-#### 其他国家能否使用极光推送（局域网能否使用极光推送）？
+####其他国家能否使用极光推送（局域网能否使用极光推送）？
 
 只要能连网到Jpush服务器都可以。判断能否联网到Jpush服务器的方法：ping通 api.jpush.cn 8800
 
 <br />
 
-#### 用设置的标签或别名推送，出现下面提示：
+####用设置的标签或别名推送，出现下面提示：
 
 ![](../image/none_target.png)
 
@@ -260,7 +252,7 @@ Portal上不会限制推送消息的数量。
 
 <br />
 
-#### 可以打开 www.jpush.cn，但打不开docs，提示无法找到docs.jpush.cn
+####可以打开 www.jpush.cn，但打不开docs，提示无法找到docs.jpush.cn
 
 + 提示客户换个浏览器试试
 + 如果还是不行，执行下面的命令反馈结果排查一下问题
@@ -271,13 +263,13 @@ Portal上不会限制推送消息的数量。
 
 <br />
 
-#### appkey是怎么对应的？
+####appkey是怎么对应的？
 
 android 的包名和 appkey 需对应。
 
 <br />
 
-#### 内网使用极光推送应该怎么设置？
+####内网使用极光推送应该怎么设置？
 
 内网使用极光推送需要服务器开放下列端口限制，用于JPush的登录注册及保持推送长链接：   
 
@@ -287,11 +279,11 @@ android 的包名和 appkey 需对应。
 <br />
 
 
-### iOS 常见问题
+## iOS 常见问题
 
 <br />
 
-#### 为什么iOS收不到推送消息？
+####为什么iOS收不到推送消息？
 
 如果你确认 appKey 在 SDK 客户端与 Portal 上设置是一致，其他环节也按照文档正确地操作。但还是收不到推送消息。那么，有一定的可能性，是你在 Portal 上上传的证书，不是 APNs (Push) 证书。推送时指定的iOS推送环境和应用证书是同一个环境。
 
@@ -303,7 +295,7 @@ android 的包名和 appkey 需对应。
 
 <br />
 
-#### 为什么启动的时候出现 Did Fail To Register For Remote Notifications With Error的错误
+####为什么启动的时候出现 Did Fail To Register For Remote Notifications With Error的错误
 
 程序运行的时候出现下面的错误信息：
 
@@ -315,13 +307,13 @@ android 的包名和 appkey 需对应。
 
 <br />
 
-#### 如何在接收到 APN 的时候获取 APN 消息内容并进行跳转或做出响应处理？
+####如何在接收到 APN 的时候获取 APN 消息内容并进行跳转或做出响应处理？
 
 [获取 APNs 推送内容](../../client/ios_api)
 
 <br />
 
-#### 如何关闭 APN  推送？
+####如何关闭 APN  推送？
 
 关闭推送有以下两种方式关闭：
 
@@ -335,20 +327,20 @@ android 的包名和 appkey 需对应。
 
 <br />
 
-#### App badge number（角标）如何更改与清空？
+####App badge number（角标）如何更改与清空？
 
 JPush 网站上推送 iOS 通知时，可选设置里面有选项可以指定 badge 的参数的值，如：1或"+1"。
 
 api上指定badge的参数请看：[Push-API-v3#API-v3-ios](../../client/ios_api/#badge)。
 
-Badge number 的清空方法：
+####Badge number 的清空方法：
 
 1. APN 推送内容指定 badge number 为 0；
 2. 在代码中使用如下代码清空 badge number：  [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
 
 <br />
 
-#### 为何推送一条 APN 后，点击通知中心的 APN 通知打开 App，可是 APN 通知在通知中心依然存在而未被删除？
+####为何推送一条 APN 后，点击通知中心的 APN 通知打开 App，可是 APN 通知在通知中心依然存在而未被删除？
 
 如果推送 APN 时，Badge number 被指定为0 ，则可能出现 APN 消息在通知中心被点击后，尽管调用了   [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0]; 但 APN 消息在通知中心不会被删除的情况。 这种情况可以按如下代码调用以清除通知中心的 APN 通知。
 
@@ -359,7 +351,7 @@ Badge number 的清空方法：
 
 <br />
 
-#### 出现Not get deviceToken yet. Maybe: your certificate not configured APNs?...错误日志时如何排除问题?
+####出现Not get deviceToken yet. Maybe: your certificate not configured APNs?...错误日志时如何排除问题?
 
 如果出现上述日志，则说明一段时间内都无法获取device token，那么：
 
@@ -391,7 +383,7 @@ Badge number 的清空方法：
 
 <br />
 
-#### 上传到appStore的版本为什么收不到推送？
+####上传到appStore的版本为什么收不到推送？
 
 1. 请确认xcode选择的生产证书和上传的证书的bundleid一致；
 2. 如果是在jpush网站上推送，请确认新建通知时推送对象是否选择了生产环境；
@@ -399,7 +391,7 @@ Badge number 的清空方法：
 
 <br />
 
-#### iOS 平台上传证书一直为未通过状态
+####iOS 平台上传证书一直为未通过状态
 
 证书上传未通过的原因一般有：
 
@@ -413,7 +405,7 @@ Badge number 的清空方法：
 
 <br />
 
-#### 为什么日志里面会打印：You've implemented -[ <UIApplicationDelegate\> application:didReceiveRemoteNotification:fetchCompletionHandler:], but you still need to add "remote-notification" to the list of your supported UIBackgroundModes in your Info.plist.
+####为什么日志里面会打印：You've implemented -[ <UIApplicationDelegate\> application:didReceiveRemoteNotification:fetchCompletionHandler:], but you still need to add "remote-notification" to the list of your supported UIBackgroundModes in your Info.plist.
 
 这个主要是提示开发者如果要支持UIBackgroundModes，需要开启Remote notifications，具体操作可以看：[iOS 7 Background Remote Notification](../../client/ios_tutorials/#ios-7-background-remote-notification)
 
@@ -424,21 +416,21 @@ Badge number 的清空方法：
 
 
 
-### REST API 服务器 
+## REST API 服务器 
 
 
 ```
 请选用 v3 版本 API。 v1 版本已经停止使用,v2版本会将在2015不再维护。
 ```
 
-#### v2 API 调试指南
+###v2 API 调试指南
 
-####Library 选择
+Library 选择
 
 + 如果 API 调用使用 Java，则建议使用 JPush 提供的 JPush API Library。
 + 避免自己写代码组装 JSON 字符串，而使用一些成熟的第三方 library 来生成。
 
-####具体问题
+具体问题
 
 #####拼接verification_code的最后一个参数master_secret如何获取
 
@@ -469,7 +461,7 @@ Badge number 的清空方法：
 具体看[Push API v2](../rest_api_v2_push)中的verification_code参数
 
 
-#### v3 API 调试指南
+###v3 API 调试指南
 
 ##### 不用登录Jpush的portal界面，在APP的面板中直接发送通知可以吗？
 
@@ -480,7 +472,7 @@ Badge number 的清空方法：
 + 详情请看：[调用验证](../../server/rest_api_v3_push/#_5)
 
 
-####官方帮助
+官方帮助
 
 当出现问题时，建议仔细阅读官方文档，看看有没有什么遗漏信息。如果还是无法解决，建议在[QA问答网站](https://www.jpush.cn/qa/)搜索，有没有碰到类似信息
 
