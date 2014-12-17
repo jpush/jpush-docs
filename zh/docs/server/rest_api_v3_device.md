@@ -198,12 +198,12 @@ POST /v3/tags/{tag_value}
 {  
         "registration_ids":{
             "add": [
-                "registration_id_1_to_add",
-                "registration_id_2_to_add"
+                "registration_id1",
+                "registration_id2"
             ],
             "remove": [
-                "registration_id_1_to_remove",
-                "registration_id_2_to_remove"
+                "registration_id1",
+                "registration_id2"
             ]
         }
 }
@@ -267,7 +267,7 @@ HTTP/1.1 200 OK
 ###### Response Data
 ```
 {
-     "registration_ids": ["reg_id1", "reg_id2"]
+     "registration_ids": ["registration_id1", "registration_id2"]
 }
 ```
 + 找不到统计项就是 null，否则为统计项的值。
