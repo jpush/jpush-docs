@@ -26,10 +26,10 @@ POST [https://api.jpush.cn/v3/push](POST https://api.jpush.cn/v3/push)
 #### 请求示例
 
 ```
-curl --insecure -X POST -v https://api.jpush.cn/v3/push 
+curl --insecure -X POST -v https://api.jpush.cn/v3/push -H "Content-Type: application/json" 
 -u "7d431e42dfa6a6d693ac2d04:5e987ac6d2e04d95a9d8f0d1" 
 -d  '{"platform":"all","audience":"all","notification":{"alert":"Hi,JPush!"}}'
- 
+
 > POST /v3/push HTTP/1.1
 > Authorization: Basic N2Q0MzFlNDJkZmE2YTZkNjkzYWMyZDA0OjVlOTg3YWM2ZDJlMDRkOTVhOWQ4ZjBkMQ==
 ```
@@ -392,7 +392,7 @@ Code |	描述 |	详细解释 |	实际提示信息 |	HTTP Status Code
 1001|只支持 HTTP Post 方法	|不支持 Get 方法。||405
 1002|	缺少了必须的参数|	必须改正。||	 	400
 1003|	参数值不合法|	必须改正。||	 	400
-1004|	验证失败	|必须改正。||	 	401
+1004|	验证失败	|必须改正。详情请看：[调用验证](./#_5)||	 	401
 1005|	消息体太大|必须改正。<p>通知 “iOS”:{ } 内的总体长度不超过：220 个字节（包括自定义参数和符号）。JPush 的 消息加通知 部分长度不超过 1K 字节。||400
 1008|	app_key参数非法|	必须改正。||	 	400
 1011|	没有满足条件的推送目标	||| 	 	400

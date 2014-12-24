@@ -76,14 +76,18 @@
   * 用于回掉返回对应的参数 alias, tags。并返回对应的状态码：0为成功，其他返回码请参考错误码定义。
   * 回调函数请参考SDK 实现。
 * theTarget
-
-
   * 参数值为实现了callbackSelector的实例对象。
   * nil 此次调用不需要 Callback。
 
-    - (void)tagsAliasCallback:(int)iResCode tags:(NSSet*)tags alias:(NSString*)alias {
-            NSLog(@"rescode: %d, \ntags: %@, \nalias: %@\n", iResCode, tags , alias);
-    }
+```
+-(void)tagsAliasCallback:(int)iResCode
+                    tags:(NSSet*)tags
+                   alias:(NSString*)alias
+{
+    NSLog(@"rescode: %d, \ntags: %@, \nalias: %@\n", iResCode, tags , alias);
+}
+
+```
 
 ##### Method - setTags
 
