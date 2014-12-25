@@ -114,7 +114,7 @@ Portal上不会限制推送消息的数量。
 
 + 如果推送方式是群发，则表示：该应用还没有一个客户端成功地集成了 JPush SDK 并连接到 JPush 服务器。如果您确实做了客户端App集成 JPush SDK的工作，请检查客户端日志，看是不是注册失败。
 
-+ 如果推送方式是别名或者标签，则表示：该别名或者标签，在客户端还未被成功地调用 setAliasAndTags 设置成功。请参考：[别名与标签使用教程。](../../client_sdks/android_api)
++ 如果推送方式是别名或者标签，则表示：该别名或者标签，在客户端还未被成功地调用 setAliasAndTags 设置成功。请参考：[别名与标签使用教程。](../../client/android_api)
 
 + 对于 Android 还可以使用 IMEI 来推送。由于有很多 Android 设备取不到 IMEI，所以我们建议根据 IMEI 推送仅用于测试目的。
 
@@ -122,7 +122,7 @@ Portal上不会限制推送消息的数量。
 
 #### 通知与自定义消息有什么区别？
 
-下图是个简单的区分。详情请参考文档：[通知 vs. 自定义消息。](../../clinet_sdks/android_tutorials)
+下图是个简单的区分。详情请参考文档：[通知 vs. 自定义消息。](../../client/android_tutorials)
 
 ![](../image/jpush_notification_vs_msg.png)
 
@@ -142,7 +142,7 @@ Portal上不会限制推送消息的数量。
 
 在客户端使用 setAliasAndTags API 来为该用户指定别名。以便服务器端对该别名推送消息。
 
-进一步了解请参考文档：[标签与别名API。](../../client_sdks/android_api)
+进一步了解请参考文档：[标签与别名API。](../../client/android_api)
 
 <br />
 
@@ -150,7 +150,7 @@ Portal上不会限制推送消息的数量。
 
 在客户端使用 setAliasAndTags API 来为该用户设置标签。这样服务器可以向所有具有该标签的用户群发消息。
 
-进一步了解请参考文档：[标签与别名API。](../../client_sdks/android_api)
+进一步了解请参考文档：[标签与别名API。](../../client/android_api)
 
 <br />
 
@@ -166,7 +166,7 @@ Portal上不会限制推送消息的数量。
 + 确认测试手机（或者模拟器）已成功连入网络
 + 确认有客户端 "Login succeed" 日志
 
-详情请参考教程：[Android SDK 调试指南](../../client_sdks/android_tutorials)
+详情请参考教程：[Android SDK 调试指南](../../client/android_tutorials)
 
 <br />
 
@@ -231,9 +231,9 @@ Portal上不会限制推送消息的数量。
 
 #### Tag、Alias、Registrationid需要每次初始化时都重新设置吗，会变化吗？
 
-+ tag、alias可以参考[别名与标签 API](../../client_sdks/android_api)进行设置，每次设置是覆盖设置，而不是增量设置。Tag和alias一经设置成功，除非取消或覆盖，是不会变化的。设置好的tag、alias与客户端的对应关系保存在Jpush服务器，目前没有从JPush服务器查询这个对应关系的接口，所以需要客户将对应关系保存在APP应用服务器。
++ tag、alias可以参考[别名与标签 API](../../client/android_api)进行设置，每次设置是覆盖设置，而不是增量设置。Tag和alias一经设置成功，除非取消或覆盖，是不会变化的。设置好的tag、alias与客户端的对应关系保存在Jpush服务器，目前没有从JPush服务器查询这个对应关系的接口，所以需要客户将对应关系保存在APP应用服务器。
 
-+ Registrationid是客户端SDK第一次成功连接到Jpush服务器时，Jpush服务器给分配的。可以通过[获取 RegistrationID](../../client_sdks/android_api) API来获取Registrationid进行推送。Registrationid对应一个应用的一个客户端。
++ Registrationid是客户端SDK第一次成功连接到Jpush服务器时，Jpush服务器给分配的。可以通过[获取 RegistrationID](../../client/android_api) API来获取Registrationid进行推送。Registrationid对应一个应用的一个客户端。
 
 <br />
 
@@ -256,7 +256,7 @@ Portal上不会限制推送消息的数量。
 这可能有两种情况：
 
 + SDK没有集成成功，客户端有 "Login succeed" 日志才表示SDK集成成功。
-+ 设置别名或标签失败，请调用带返回值的函数[Method - setAliasAndTags (with Callback)](../../client_sdks/android_api)来设置标签或别名，同时参考[错误码定义](../../client_sdks/android_api)来修改直到设置成功返回0.
++ 设置别名或标签失败，请调用带返回值的函数[Method - setAliasAndTags (with Callback)](../../client/android_api)来设置标签或别名，同时参考[错误码定义](../../client/android_api)来修改直到设置成功返回0.
 
 <br />
 
@@ -295,7 +295,7 @@ android 的包名和 appkey 需对应。
 
 如果你确认 appKey 在 SDK 客户端与 Portal 上设置是一致，其他环节也按照文档正确地操作。但还是收不到推送消息。那么，有一定的可能性，是你在 Portal 上上传的证书，不是 APNs (Push) 证书。推送时指定的iOS推送环境和应用证书是同一个环境。
 
-请参考[iOS 证书设置指南](../../client_sdks/ios_tutorials)再次检查证书选择是否正确。
+请参考[iOS 证书设置指南](../../client/ios_tutorials)再次检查证书选择是否正确。
 
 请注意：iOS能接受消息的必要条件是：应用程序的证书要和你上传到jpush portal上的证书对应，如果你的程序是直接在xcode上运行的，你的应用部署环境必须是开发状态才能收到APNS消息。
 
@@ -317,7 +317,7 @@ android 的包名和 appkey 需对应。
 
 #### 如何在接收到 APN 的时候获取 APN 消息内容并进行跳转或做出响应处理？
 
-[获取 APNs 推送内容](../../client_sdks/ios_api)
+[获取 APNs 推送内容](../../client/ios_api)
 
 <br />
 
@@ -337,9 +337,9 @@ android 的包名和 appkey 需对应。
 
 #### App badge number（角标）如何更改与清空？
 
-iOS每条 APN 推送可以指定 badge number，iOS 系统无法为某个 App 的badge number做自动累加。
+iJPush 网站上推送 iOS 通知时，可选设置里面有选项可以指定 badge 的参数的值，如：1或"+1"。
 
-JPush 推送 iOS 消息时，有指定 badge 的参数。在手机上显示的数值，就是每条推送指定的 badge 参数。
+api上指定badge的参数请看：[Push-API-v3#API-v3-ios](../../client/ios_api/#badge)。
 
 Badge number 的清空方法：
 
