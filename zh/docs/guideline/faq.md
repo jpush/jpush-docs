@@ -337,7 +337,7 @@ android 的包名和 appkey 需对应。
 
 #### App badge number（角标）如何更改与清空？
 
-iJPush 网站上推送 iOS 通知时，可选设置里面有选项可以指定 badge 的参数的值，如：1或"+1"。
+JPush 网站上推送 iOS 通知时，可选设置里面有选项可以指定 badge 的参数的值，如：1或"+1"。
 
 api上指定badge的参数请看：[Push-API-v3#API-v3-ios](../../client/ios_api/#badge)。
 
@@ -428,8 +428,10 @@ Badge number 的清空方法：
 
 
 ```
-请选用 v3 版本 API。 v1 版本已经停止使用,v2版本会将在2015不在维护。
+请选用 v3 版本 API。 v1 版本已经停止使用,v2版本会将在2015不再维护。
 ```
+
+#### v2 API 调试指南
 
 ####Library 选择
 
@@ -466,9 +468,16 @@ Badge number 的清空方法：
 
 具体看[Push API v2](../rest_api_v2_push)中的verification_code参数
 
-####不用登录Jpush的portal界面，在APP的面板中直接发送通知可以吗？
+
+#### v3 API 调试指南
+
+##### 不用登录Jpush的portal界面，在APP的面板中直接发送通知可以吗？
 
 可以。直接封装Jpush的V3 API就可以了，具体可参考 [Push API v3](../../server/rest_api_v3_push)
+
+##### 1004 Authen failed
+
++ 详情请看：[调用验证](../../server/rest_api_v3_push/#_5)
 
 
 ####官方帮助
