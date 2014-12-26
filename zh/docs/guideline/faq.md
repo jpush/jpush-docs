@@ -177,7 +177,7 @@ Portal上不会限制推送消息的数量。
 此错误是由于没有正确的加载libjpush.so文件，请检查libjpush.so是否在正确的位置(libs–>armeabi–>libjpush.so)
 
 
-如果您的应用需要支持 x86、mips 架构的CPU 需要下载对应的SDK，[下载地址 ](../../resouces)
+如果您的应用需要支持 x86、mips 架构的CPU 需要下载对应的SDK，[下载地址 ](../../resources/)
 
 ![](../image/dictionary_path.png)
 
