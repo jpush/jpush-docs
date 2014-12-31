@@ -113,7 +113,7 @@ JPush 当前支持 Android, iOS, Windows Phone 三个平台的推送。其关键
 
 指定特定推送平台：
 
-	{ "platform" : ["android", "winphone"] }
+	{ "platform" : ["android", "ios"] }
 
 #### audience
 
