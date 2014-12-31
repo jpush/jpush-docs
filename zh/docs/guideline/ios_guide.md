@@ -116,30 +116,64 @@ APIs 主要集中在 APService 接口类里。
 
 以下 ３ 个事件监听与调用 JPush SDK API 都是必须的。请直接复制如下代码块里，注释为 "Required" 的行，到你的应用程序代理类里相应的监听方法里。
 
+```
+
     - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-    {
-        self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
-        self.window.backgroundColor = [UIColor whiteColor];
-        [self.window makeKeyAndVisible];
+{
+    self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
+    self.window.backgroundColor = [UIColor whiteColor];
+    [self.window makeKeyAndVisible];
+ 
+    // Required
+#if __IPHONE_OS_VERSION_MAX_ALLOWED > __IPHONE_7_1
+   if ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0) {
+    //可以添加自定义categories
+    [APService registerForRemoteNotificationTypes:(UIUserNotificationTypeBadge |
+                                                   UIUserNotificationTypeSound |
+                                                   UIUserNotificationTypeAlert)
+                                       categories:nil];
+  } else {
+    //categories 必须为nil
+    [APService registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge |
+                                                   UIRemoteNotificationTypeSound |
+                                                   UIRemoteNotificationTypeAlert)
+                                       categories:nil];
+  }
+#else
+    //categories 必须为nil
+  [APService registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge |
+                                                 UIRemoteNotificationTypeSound |
+                                                 UIRemoteNotificationTypeAlert)
+                                     categories:nil];
+#endif
+    // Required
+    [APService setupWithOption:launchOptions];
     
-        // Required
-        [APService registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge|UIRemoteNotificationTypeSound|UIRemoteNotificationTypeAlert]
-        // Required
-        [APService setupWithOption:launchOptions];
+    return YES;
+}
+ 
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+     
+    // Required
+    [APService registerDeviceToken:deviceToken];
+}
+ 
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+     
+    // Required
+    [APService handleRemoteNotification:userInfo];
+}
+ 
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+ 
+ 
+  // IOS 7 Support Required
+  [APService handleRemoteNotification:userInfo];
+  completionHandler(UIBackgroundFetchResultNewData);
+}
     
-        return YES;
-    }
-    - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
-    
-        // Required
-        [APService registerDeviceToken:deviceToken];
-    }
-    - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-    
-        // Required
-        [APService handleRemoteNotification:userInfo];
-    }
-    
+```
+
 
 #### 监听通知
 

@@ -155,7 +155,7 @@ Remote Notifications 与之前版本的对比可以参考下面两张 Apple 官�
 
 ##### 使用 API 推送
 
-只需在[Push API v2]() 的 n_extras->ios 内附加content-available":1 字段即可
+只需在[Push API v3](../../server/rest_api_v3_push/#notification) 的 ios 内附加content-available":true 字段即可
 
 #### 限制与注意
 
