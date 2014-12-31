@@ -54,30 +54,32 @@
 
 ##### 参数说明
 
-* alias
+- alias
+    - nil 此次调用不设置此值。
+    - 空字符串 （@""）表示取消之前的设置。
+    - 每次调用设置有效的别名，覆盖之前的设置。
+    - 有效的别名组成：字母（区分大小写）、数字、下划线、汉字。
+    - 限制：alias 命名长度限制为 40 字节。（判断长度需采用UTF-8编码）
 
-
-  * nil 此次调用不设置此值。
-  * 空字符串 （@""）表示取消之前的设置。
-  * 每次调用设置有效的别名，覆盖之前的设置。
-  * 有效的别名组成：字母（区分大小写）、数字、下划线、汉字。
-  * 限制：alias 命名长度限制为 40 字节。（判断长度需采用UTF-8编码）
 * tags
 
+    * nil 此次调用不设置此值。
+    * 空集合（[NSSet set]）表示取消之前的设置。
+    * 每次调用至少设置一个 tag，覆盖之前的设置，不是新增。
+    * 有效的标签组成：字母（区分大小写）、数字、下划线、汉字。
+    * 限制：每个 tag 命名长度限制为 40 字节，最多支持设置 100 个 tag，但总长度不得超过1K字节。（判断长度需采用UTF-8编码）
+    * 单个设备最多支持设置 100 个 tag。App 全局 tag 数量无限制。
 
-  * nil 此次调用不设置此值。
-  * 空集合（[NSSet set]）表示取消之前的设置。
-  * 每次调用至少设置一个 tag，覆盖之前的设置，不是新增。
-  * 有效的标签组成：字母（区分大小写）、数字、下划线、汉字。
-  * 限制：每个 tag 命名长度限制为 40 字节，最多支持设置 100 个 tag，但总长度不得超过1K字节。（判断长度需采用UTF-8编码）
-  * 单个设备最多支持设置 100 个 tag。App 全局 tag 数量无限制。
 * callbackSelector 
-  * nil 此次调用不需要 Callback。
-  * 用于回掉返回对应的参数 alias, tags。并返回对应的状态码：0为成功，其他返回码请参考错误码定义。
-  * 回调函数请参考SDK 实现。
+
+    * nil 此次调用不需要 Callback。
+    * 用于回掉返回对应的参数 alias, tags。并返回对应的状态码：0为成功，其他返回码请参考错误码定义。
+    * 回调函数请参考SDK 实现。
+
 * theTarget
-  * 参数值为实现了callbackSelector的实例对象。
-  * nil 此次调用不需要 Callback。
+
+    * 参数值为实现了callbackSelector的实例对象。
+    * nil 此次调用不需要 Callback。
 
 ```
 -(void)tagsAliasCallback:(int)iResCode
@@ -114,23 +116,25 @@
 
 ##### 参数说明
 
-* tags 
-  * nil 此次调用不设置此值。
-  * 空集合（[NSSet set]）表示取消之前的设置。
-  * 每次调用至少设置一个 tag，覆盖之前的设置，不是新增。
-  * 有效的标签组成：字母（区分大小写）、数字、下划线、汉字。
-  * 限制：每个 tag 命名长度限制为 40 字节，最多支持设置 100 个 + callbackSelector
-  * nil 此次调用不需要 Callback。
-  * 用于回掉返回对应的参数 alias, tags。并返回对应的状态码：0为成功，其他返回码请参考错误码定义。
-  * 回调函数请参考SDK 实现。
-* callbackSelector 
-  * nil 此次调用不需要 Callback。
-  * 用于回掉返回对应的参数 alias, tags。并返回对应的状态码：0为成功，其他返回码请参考错误码定义。
+* tags
+
+    * nil 此次调用不设置此值。
+    * 空集合（[NSSet set]）表示取消之前的设置。
+    * 每次调用至少设置一个 tag，覆盖之前的设置，不是新增。
+    * 有效的标签组成：字母（区分大小写）、数字、下划线、汉字。
+    * 限制：每个 tag 命名长度限制为 40 字节，最多支持设置 100 个tag，但总长度不得超过1K字节。（判断长度需采用UTF-8编码）
+    * 单个设备最多支持设置 100 个 tag。App 全局 tag 数量无限制。
+
+* callbackSelector
+
+    * nil 此次调用不需要 Callback。
+    * 用于回掉返回对应的参数 alias, tags。并返回对应的状态码：0为成功，其他返回码请参考错误码定义。
+    * 回调函数请参考SDK 实现。
+
 * theTarget
 
-
-  * 参数值为实现了callbackSelector的实例对象。
-  * nil 此次调用不需要 Callback。
+   * 参数值为实现了callbackSelector的实例对象。
+   * nil 此次调用不需要 Callback。
 
     - (void)tagsAliasCallback:(int)iResCode tags:(NSSet*)tags alias:(NSString*)alias {
                 NSLog(@"rescode: %d, \ntags: %@, \nalias: %@\n", iResCode, tags , alias);}
@@ -153,19 +157,19 @@
 ##### 参数说明
 
 * alias 
-  * 空字符串 （@""）表示取消之前的设置。
-  * 每次调用设置有效的别名，覆盖之前的设置。
-  * 有效的别名组成：字母（区分大小写）、数字、下划线、汉字。
-  * 限制：alias 命名长度限制为 40 字节。（判断长度需采用UTF-8编码）
+     * 空字符串 （@""）表示取消之前的设置。
+     * 每次调用设置有效的别名，覆盖之前的设置。
+     * 有效的别名组成：字母（区分大小写）、数字、下划线、汉字。
+     * 限制：alias 命名长度限制为 40 字节。（判断长度需采用UTF-8编码）
 * callbackSelector 
-  * nil 此次调用不需要 Callback。
-  * 用于回掉返回对应的参数 alias, tags。并返回对应的状态码：0为成功，其他返回码请参考错误码定义。
-  * 回调函数请参考SDK 实现。
+     * nil 此次调用不需要 Callback。
+     * 用于回掉返回对应的参数 alias, tags。并返回对应的状态码：0为成功，其他返回码请参考错误码定义。
+     * 回调函数请参考SDK 实现。
 * theTarget
 
 
-  * 参数值为实现了callbackSelector的实例对象。
-  * nil 此次调用不需要 Callback。
+     * 参数值为实现了callbackSelector的实例对象。
+     * nil 此次调用不需要 Callback。
 
     - (void)tagsAliasCallback:(int)iResCode tags:(NSSet*)tags alias:(NSString*)alias {
             NSLog(@"rescode: %d, \ntags: %@, \nalias: %@\n", iResCode, tags , alias)        }
@@ -198,7 +202,7 @@
 ##### 参数说明
 
 * tags 
-  * 原 tag 集合。
+     * 原 tag 集合。
 
 ##### 接口返回
 
@@ -218,7 +222,7 @@
 |6008|tag/alias 超出总长度限制。总长度最多 1K 字节 | 
 |6011|10s内设置tag或alias大于3次 |短时间内操作过于频繁
 
-### 获取 APNs 推送内容
+### 获取 APNs（通知） 推送内容
 
 #### 支持的版本
 
@@ -230,16 +234,17 @@ iOS 设备收到一条推送（APNs），用户点击推送通知打开应用时
 
 * 如果 App 状态为未运行，此函数将被调用，如果launchOptions包含UIApplicationLaunchOptionsLocalNotificationKey表示用户点击apn 通知导致app被启动运行；如果不含有对应键值则表示 App 不是因点击apn而被启动，可能为直接点击icon被启动或其他。
 
-    - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions; 
+    - (BOOL)application:(UIApplication \*)application didFinishLaunchingWithOptions:(NSDictionary \*)launchOptions; 
     // apn 内容获取：NSDictionary *remoteNotification = [launchOptions objectForKey: UIApplicationLaunchOptionsRemoteNotificationKey]
+
 * 如果 App状态为正在前台或者后台运行，那么此函数将被调用，并且可通过AppDelegate的applicationState是否为UIApplicationStateActive判断程序是否在前台运行。此种情况在此函数中处理：
 
-    - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo;
+    - (void)application:(UIApplication \*)application didReceiveRemoteNotification:(NSDictionary \*)userInfo;
     // apn内容为userInfo
 
 * 如果是使用 iOS 7 的 Remote Notification 特性那么处理函数需要使用
 
-    - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler;
+    - (void)application:(UIApplication \*)application didReceiveRemoteNotification:(NSDictionary \*)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler;
     // apn内容为userInfo
 
 #### 示例代码
@@ -271,7 +276,7 @@ iOS 设备收到一条推送（APNs），用户点击推送通知打开应用时
 
 参考文档：[Handling Local and Remote Notifications][0]
 
-### 获取应用内推送信息
+### 获取自定义消息推送内容
 
 #### 支持的版本
 
@@ -279,13 +284,15 @@ r1.2.5 以后。
 
 #### 功能说明
 
-从jpush服务器获取用户推送的内容和标题。
+只有在前端运行的时候才能收到自定义消息的推送。
+
+从jpush服务器获取用户推送的自定义消息内容和标题以及附加字段等。
 
 #### 实现方法
 
 获取iOS的推送内容需要在delegate类中注册通知并实现回调方法。
 
- 在方法- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *) launchOptions 加入下面的代码：
+ 在方法- (BOOL)application:(UIApplication \*)application didFinishLaunchingWithOptions:(NSDictionary \*) launchOptions 加入下面的代码：
 
 ```
 
@@ -339,7 +346,7 @@ r1.7.0 开始支持。
 
 ##### 接口定义
 
-    + (NSString *)registrationID
++(NSString *)registrationID
     
 ```
  开发者在自定义的监听kJPFNetworkDidRegisterNotification时也可以通过"RegistrationID"这个key值来获取对应的 RegistrationID。
@@ -443,7 +450,8 @@ JPush封装badge功能，允许应用上传badge值至JPush服务器，由JPush�
   设置badge值，本地仍须调用UIApplication:setApplicationIconBadgeNumber函数
 ```
 
-* 返回值 在value的取值区间内返回 TRUE，否则返回FALSE
+* 返回值 
+     * 在value的取值区间内返回 TRUE，否则返回FALSE
 
 #### API resetBadge
 
@@ -548,6 +556,9 @@ IOS8 新参数使用API。非IOS8版本或者不需要使用IOS8新功能请使�
 + notificationKey 本地推送标示符
 + userInfo 自定义参数，可以用来标识推送和增加附加信息
 + soundName 本地通知声音名称设置，空为默认声音
++ region
++ regionTriggersOnce
++ category
 
 #### 调用说明
 
@@ -583,7 +594,7 @@ API用来在APP前台运行时，仍然将通知显示出来。(样式为UIAlert
 
 ##### 调用说明
 
-API必须放在 - (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification（AppDelegate.m) 苹果的回调函数下。
+API必须放在 - (void)application:(UIApplication \*)application didReceiveLocalNotification:(UILocalNotification \*)notification（AppDelegate.m) 苹果的回调函数下。
 
 ##### 代码示例
 
@@ -748,7 +759,7 @@ API 用于统计用户地理信息
 
 ##### 调用说明
 
-需要加入 CoreLocation.framework库， 并且引入<CoreLocation/CoreLocation.h>头文件（#import <CoreLocation/CoreLocation.h>）
+需要加入 CoreLocation.framework库， 并且引入 <CoreLocation/CoreLocation.h\>头文件（#import <CoreLocation/CoreLocation.h \>）
 
 经度和纬度需要开发者自己调用苹果的地理位置信息API获取。
 
@@ -773,7 +784,7 @@ API用来统计地理位置信息
 
 ##### 调用说明
 
-需要加入 CoreLocation.framework库， 并且引入<CoreLocation/CoreLocation.h>头文件（#import <CoreLocation/CoreLocation.h>）
+需要加入 CoreLocation.framework库， 并且引入<CoreLocation/CoreLocation.h\>头文件（#import <CoreLocation/CoreLocation.h\>）
 
 CLLocation对象需要开发者自己调用苹果的地理位置信息API获取。
 

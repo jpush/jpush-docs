@@ -395,7 +395,7 @@ Badge number 的清空方法：
 
 1. 请确认xcode选择的生产证书和上传的证书的bundleid一致；
 2. 如果是在jpush网站上推送，请确认新建通知时推送对象是否选择了生产环境；
-3. 如果是api推送，请确认是否使用了apns_production参数，值是否为：1；如果没有使用apns_production参数请确认jpush网站上该应用的部署环境是否已经切换到生产环境。
+3. 如果是v3 api推送，请确认是否使用了apns_production参数，值是否为：true；如果没有使用apns_production参数请确认jpush网站上该应用的部署环境是否已经切换到生产环境。
 
 <br />
 
