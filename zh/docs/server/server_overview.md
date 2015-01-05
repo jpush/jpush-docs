@@ -32,7 +32,7 @@ JPush 提供遵从 REST 规范的 HTTP API，以供开发者远程调用 JPush �
 
 	{
 	  "error": {
-	       "code": 2002, 
+	       "code": 2003, 
 	       "message": "The appKey is in black list."
 	   }
 	}
@@ -74,7 +74,7 @@ JPush API 对访问次数，具有频率控制。即一定的时间窗口内，A
 
 	{
 	  "error": {
-	       "code": 2001, 
+	       "code": 2002, 
 	       "message": "Rate limit exceeded"
 	   }
 	}
