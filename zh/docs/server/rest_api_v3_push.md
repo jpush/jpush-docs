@@ -243,7 +243,7 @@ Android 平台上的通知。
 alert|string|必填|通知内容|这里指定了，则会覆盖上级统一指定的 alert 信息；内容可以为空字符串，则表示不展示到通知栏。
 title|string|可选|通知标题|如果指定了，则通知里原来展示 App名称的地方，将展示成这个字段。
 builder_id|int|可选|通知栏样式ID|Android SDK 可设置通知栏样式，这里根据样式 ID 来指定该使用哪套样式。
-extras|JSON Array|可选|扩展字段。	|这里自定义 JSON 格式的 Key/Value 信息，以供业务使用。
+extras|JSON Object|可选|扩展字段。	|这里自定义 JSON 格式的 Key/Value 信息，以供业务使用。
 
 
 ```
@@ -276,8 +276,8 @@ alert| string| 必填| 通知内容| 这里指定了，将会覆盖上级统一�
 sound| string| 可选| 通知提示声音| 如果无此字段，则此消息无声音提示；有此字段，如果找到了指定的声音就播放该声音，否则播放默认声音,如果此字段为空字符串，iOS 7 为默认声音，iOS 8 为无声音。(消息) 说明：JPush 官方 API Library (SDK) 会默认填充声音字段。提供另外的方法关闭声音。
 badge| int| 可选| 应用角标| 如果不填，表示不改变角标数字；否则把角标数字改为指定的数字；为 0 表示清除。JPush 官方 API Library(SDK) 会默认填充badge值为"+1",详情参考：[badge +1](http://blog.jpush.cn/ios_apns_badge_plus/)
 content-available| boolean| 可选| 推送唤醒| 推送的时候携带"content-availiable":true 说明是 Background Remote Notification，如果不携带此字段则是普通的Remote Notification。详情参考：[Background Remote Notification](../../client/ios_tutorials/#ios-7-background-remote-notification)
-category| string | 可选 | | IOS8才支持。设置apns payload中的"category"字段值
-extras| JSON Array| 可选| 扩展字段| 这里自定义 Key/value 信息，以供业务使用。
+category| string | 可选 | | IOS8才支持。设置APNs payload中的"category"字段值
+extras| JSON Object| 可选| 扩展字段| 这里自定义 Key/value 信息，以供业务使用。
 
 ```	   
  iOS 通知 JPush 要转发给 APNs 服务器。APNs 协议定义通知长度为 255 字节。
@@ -350,7 +350,7 @@ Windows Phone 平台上，暂时不支持应用内消息。
 |msg_content|	string|	必填|	消息内容本身|	 
 |title|	string|	可选|	消息标题|	 
 |content_type|	string|	可选|	消息内容类型	 
-|extras|	JSON Array|	可选|	JSON 格式的可选参数|	
+|extras|	JSON Object|	可选|	JSON 格式的可选参数|	
 
 ```
  Android 1.6.2及以下版本 接收notification 与message并存（即本次api调用同时推送通知和消息）
@@ -395,7 +395,7 @@ Code |	描述 |	详细解释 |	实际提示信息 |	HTTP Status Code
 1004|	验证失败	|必须改正。详情请看：[调用验证](./#_5)||	 	401
 1005|	消息体太大|必须改正。<p>通知 “iOS”:{ } 内的总体长度不超过：220 个字节（包括自定义参数和符号）。JPush 的 消息加通知 部分长度不超过 1K 字节。||400
 1008|	app_key参数非法|	必须改正。||	 	400
-1011|	没有满足条件的推送目标	||| 	 	400
+1011|	没有满足条件的推送目标	|  请检查audience|| 	 	400
 1020|	只支持 HTTPS 请求|	必须改正。||	 	404
 1030|内部服务超时|稍后重试。 || 503
 
