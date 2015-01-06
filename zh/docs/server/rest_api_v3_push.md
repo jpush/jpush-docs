@@ -401,7 +401,7 @@ Code |	描述 |	详细解释 |	实际提示信息 |	HTTP Status Code
 
 
 ### 推送校验 API
-POST [http://api.jpush.cn/v3/push/validate](http://api.jpush.cn/v3/push/validate)
+POST [https://api.jpush.cn/v3/push/validate](https://api.jpush.cn/v3/push/validate)
 
 #### 功能说明
 该 API 只用于验证推送调用是否能够成功，与推送 API 的区别在于：不向用户发送任何消息。
