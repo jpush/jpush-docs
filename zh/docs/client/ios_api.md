@@ -467,7 +467,7 @@ JPush封装badge功能，允许应用上传badge值至JPush服务器，由JPush�
 + (void)resetBadge
 ```
 
-#### NSURLErrorDomain codes
+### NSURLErrorDomain codes
 部分常见错误码
 
 ```
