@@ -64,13 +64,13 @@
                 <tr>
                 	<td width="25%"><a href="guideline/android_guide/">Android SDK 集成指南</a></td>
                 	<td width="25%"><a href="guideline/ios_guide/">iOS SDK 集成指南</a></td>
-                    <td width="25%"><a href="guideline/winphone_guide/">Winphone SDK 集成指南</a></td>
+                    <td width="25%"><a href="guideline/winphone_guide/">WinPhone SDK 集成指南</a></td>
                     <td width="25%">&nbsp;</td>
                 </tr>
                 <tr>
                 	<td width="25%" ><a href="guideline/android_3m/">3 分钟集成 Android SDK</a></td>
                     <td width="25%">&nbsp;</td>
-                	<td width="25%" ><a href="guideline/winphone_3m">3 分钟集成 Winphone SDK</a></td>
+                	<td width="25%" ><a href="guideline/winphone_3m">3 分钟集成 WinPhone SDK</a></td>
                     <td width="25%">&nbsp;</td>
                 </tr>
                 </table>
@@ -102,8 +102,8 @@
                 <h5>Winphone SDK</h5>
                 <table width="100%">
                 <tr>
-                	<td width="25%"><a href="client/winphone_sdk">Winphone SDK 概述</a></td> 
-                	<td width="25%"><a href="client/winphone_api">Winphone SDK APIs</a></td>
+                	<td width="25%"><a href="client/winphone_sdk">WinPhone SDK 概述</a></td> 
+                	<td width="25%"><a href="client/winphone_api">WinPhone SDK APIs</a></td>
                     <!-- <td width="25%"><a href="client/winphone_tutorials">Winphone SDK 教程</a></td> -->
                     <td width="25%">&nbsp;</td>
                     <td width="25%">&nbsp;</td>
