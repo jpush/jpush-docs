@@ -674,7 +674,7 @@ r1.6.0 版本开始。
 
 ##### 功能说明
 
-+ 用于上报用户自定义消息被展示等客户端需要统计的事件。
++ 用于上报用户的通知栏被打开，或者用于上报用户自定义消息被展示等客户端需要统计的事件。
 
 ##### 接口定义
 
@@ -685,24 +685,10 @@ r1.6.0 版本开始。
 + context：应用的 ApplicationContext
 + msgId：推送每一条消息和通知对应的唯一 ID。（msgId 来源于发送消息和通知的 Extra 字段 JPushInterface.EXTRA_MSG_ID，参考 接收推送消息Receiver）
 
-##### 代码示例
-	
-	if (JPushInterface.ACTION_NOTIFICATION_OPENED.equals(intent.getAction())) {
-	
-	            Log.d(TAG, "[MyReceiver] 用户点击打开了通知");
-	            //打开自定义的Activity
-	            
-	            Intent i = new Intent(context, TestActivity.class);
-	            i.putExtras(bundle);
-	 
-	            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-	            context.startActivity(i);         
-	            // Activity 被打开，上报服务器统计。
-	            
-	            JPushInterface.reportNotificationOpened(
-	            	context, 	                  
-	            	bundle.getString(JPushInterface.EXTRA_MSG_ID));
-	        }
+##### 代码示例	
+
+	   JPushInterface.reportNotificationOpened(context,bundle.getString(JPushInterface.EXTRA_MSG_ID));
+	        
 
 ## 清除通知 API
 

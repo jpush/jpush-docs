@@ -338,6 +338,8 @@ api上指定badge的参数请看：[Push-API-v3#API-v3-ios](../../client/ios_api
 1. APN 推送内容指定 badge number 为 0；
 2. 在代码中使用如下代码清空 badge number：  [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
 
+> 注意：badge累加只能通过v3 api推送，且只有1.7.4版本以上才能支持。
+
 <br />
 
 ####为何推送一条 APN 后，点击通知中心的 APN 通知打开 App，可是 APN 通知在通知中心依然存在而未被删除？
