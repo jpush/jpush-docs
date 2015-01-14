@@ -150,7 +150,11 @@ registration_id|JSON Array|注册ID|数组。多个注册ID之间是 OR 关系�
    "platform": "all",
    "audience" : "all",
    "notification" : {
-	  "alert" : "Hi, JPush!",
+      "alert" : "Hi, JPush!",
+      "android" : {}, 
+      "ios" : {
+         "extras" : { "newsid" : 321}
+      }
    }
 }
 ```
