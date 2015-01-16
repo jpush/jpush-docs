@@ -1,5 +1,31 @@
 # 最近更新
 
+### JPush Android SDK v1.7.2
+
+#### 更新时间
++ 2015-01-16
+
+#### Change Log
++ 优化改进：Android SDK 改进 SIS 多地址重试策略
++ 优化改进：Android SDK 支持更多备选接入 IP
++ 优化改进：优化 socket连接的策略
++ 优化改进：优化 DNS 域名解析
++ 修复 bug：修改 Android SDK 发起注册所需检查的条件
+
+#### 升级提示
+
++ 建议升级！
+
+#### 升级指南
++ 新加入 .jar 包：同时删除原来各老版本的 jar 包。
++ 新加入 .so 包：libs/armeabi/libjpush172.so ，同时删除原来各老版本的 so 包。
++ 如果使用的老版本统计的 API activityStarted/activityStopped, 请使用最新的 API onResume/onPause 替换，参考文档 [统计消息API](../client/android_api/#api_2)
++ 在 AndroidManifest.xml 增加权限 <uses-permission android:name="android.permission.WRITE_SETTINGS" />。
++ 如果是从早期的版本升级过来，建议参考 SDK下载包最新版本的 example 来更新 AndroidManifest.xml 文件配置。
++ 如果要支持 x86 CPU 的机型，请下载单独的 x86 JPush SDK 压缩包，解压缩后复制 libs/x86/libjpush172.so 到你项目的 libs/x86/ 目录下。
++ 如果要支持 mips CPU 的机型，请下载单独的 mips JPush SDK 压缩包，解压缩后复制 libs/mips/libjpush172.so 到你项目的 libs/mips/ 目录下。
+
+
 ### JPush iOS SDK v1.8.2 
 
 #### 更新时间
