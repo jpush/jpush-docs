@@ -874,7 +874,7 @@ public static void setPushNotificationBuilder(Integer notificationBuilderId, Bas
 ### API - setLatestNotificationNumber
 
 #### 接口定义
-	public static void setLatestNotifactionNumber(Context context, int maxNum)
+	public static void setLatestNotificationNumber(Context context, int maxNum)
 #### 参数说明
 + context 应用的 ApplicationContext
 + maxNum 最多显示的条数

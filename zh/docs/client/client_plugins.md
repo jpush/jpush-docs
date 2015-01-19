@@ -34,5 +34,5 @@
 
 #### Adobe ANE
 
-+ Github 源码：[https://github.com/lincolnlk/JPushAne](https://github.com/lincolnlk/JPushAne)
++ Github 源码：[https://github.com/lincolnlk/JPushAne](https://github.com/linlsyf/JPushAne)
 
