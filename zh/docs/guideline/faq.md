@@ -341,9 +341,9 @@ android 的包名和 appkey 需对应。
 
 JPush 网站上推送 iOS 通知时，可选设置里面有选项可以指定 badge 的参数的值，如：1或"+1"。
 
-api上指定badge的参数请看：[Push-API-v3#API-v3-ios](../../client/ios_api/#badge)。
+api上指定badge的参数请看：[Push-API-v3#API-v3-ios](../../client/ios_api/#badge),客户端上报badge到JPush服务器的接口请看:[设置badge](../../client/ios_api/#badge)
 
-####Badge number 的清空方法：
+####Icon Badge number 的清空方法：
 
 1. APN 推送内容指定 badge number 为 0；
 2. 在代码中使用如下代码清空 badge number：  [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
