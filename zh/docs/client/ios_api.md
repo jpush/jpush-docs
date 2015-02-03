@@ -91,7 +91,7 @@
 
 ```
 
-##### Method - setTags
+#### Method - setTags
 
 调用此 API 来设置标签，支持回掉函数。
 
