@@ -16,13 +16,13 @@ https://report.jpush.cn
 
 ###Resource
 
-GET /v2/received
+GET /v3/received
 
 ###Example Request
 
-	curl -v https://report.jpush.cn/v2/received?msg_ids=1613113584,1229760629,1174658841,1174658641 -u "7d431e42dfa6a6d693ac2d04:5e987ac6d2e04d95a9d8f0d1"
+	curl -v https://report.jpush.cn/v3/received?msg_ids=1613113584,1229760629,1174658841,1174658641 -u "7d431e42dfa6a6d693ac2d04:5e987ac6d2e04d95a9d8f0d1"
 	 
-	< GET /v2/received?msg_ids=1613113584,1229760629,1174658841,1174658641 HTTP/1.1
+	< GET /v3/received?msg_ids=1613113584,1229760629,1174658841,1174658641 HTTP/1.1
 	< Authorization: Basic N2Q0MzFlNDJkZmE2YTZkNjkzYWMyZDA0OjVlOTg3YWM2ZDJlMDRkOTVhOWQ4ZjBkMQ==
 
 
