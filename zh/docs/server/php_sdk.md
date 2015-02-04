@@ -24,7 +24,7 @@ PHP >= 5.3
 JPush PHP Library 使用 Composer管理项目依赖, 鉴于某些原因, 国内的用户使用Composer下载依赖库比较困难,所以我们将Composer依赖打包. 用户可以通过以下方式在您的项目中加入JPush PHP Library.
 
 
-* 下载依赖包 [vendor.tar.gz](http://jpushsdk.qiniudn.com/vendor.tar.gz)
+* 下载依赖包 [vendor.tar.gz](http://docs.jpush.cn/download/attachments/2228302/vendor.tar.gz)
 
 * 解压vendor.tar.gz到您的项目目录下，在需要使用JPush的源文件头部 引入 vendor/autoload.php 既可使用.
 
@@ -127,7 +127,7 @@ foreach($result->received_list as  $received) {
 ### FAQ
 Q: 运行示例提示　require_once(vendor/autoload.php): failed to open stream 怎么解决?
 
-A: 下载下载依赖包 [vendor.tar.gz](http://jpushsdk.qiniudn.com/vendor.tar.gz) 并解压到examples目录即可, 也可以使用composer管理依赖, 在composer.json中加入 "jpush/jpush": "v3.2.1" 并执行 php composer.phar install 即可.
+A: 下载下载依赖包 [vendor.tar.gz](http://docs.jpush.cn/download/attachments/2228302/vendor.tar.gz) 并解压到examples目录即可, 也可以使用composer管理依赖, 在composer.json中加入 "jpush/jpush": "v3.2.1" 并执行 php composer.phar install 即可.
 
 
 Q: 运行示例提示
