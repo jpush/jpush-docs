@@ -55,7 +55,7 @@ php require_once 'vendor/autoload.php';
 ####Example
 
 
-下载的[JPush PHP Library](http://docs.jpush.cn/download/attachments/2228302/jpush-api-php-client-3.2.1.zip?version=1&modificationDate=1417592951000) example文件夹有简单示例代码, 开发者可参考以快速使用该库
+下载的[JPush PHP Library](http://docs.jpush.cn/download/attachments/2228302/jpush-api-php-client-3.2.2.zip?version=1&modificationDate=1422968810000) example文件夹有简单示例代码, 开发者可参考以快速使用该库
 
 
 ├── examples
