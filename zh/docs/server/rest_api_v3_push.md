@@ -357,12 +357,12 @@ Windows Phone 平台上，暂时不支持应用内消息。
 |extras|	JSON Object|	可选|	JSON 格式的可选参数|	
 
 ```
- Android 1.6.2及以下版本 接收notification 与message并存（即本次api调用同时推送通知和消息）
- 的离线推送， 只能收到通知部分，message 部分没有透传给 App。 
+ Android 1.6.2及以下版本 接收notification 与message并存（即本次api调用同时推送通知和消息）的离线推送， 只能收到通知部分，message 部分没有透传给 App。 
+
  Android 1.6.3及以上SDK 版本已做相应调整，能正常接收同时推送通知和消息的离线记录。
 
-iOS 1.7.3及以上的版本才能正确解析v3的message，
-但是无法解析v2推送通知同时下发的应用内消息。
+ iOS 1.7.3及以上的版本才能正确解析v3的message，但是无法解析v2推送通知同时下发的应用内消息。
+
 ```
 
 #### options
