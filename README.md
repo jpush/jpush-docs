@@ -1,8 +1,8 @@
-<<<<<<< HEAD
 JPush Docs
 ==========
 
-暂未上线，正在转换过程中。。。
+已经上线。文档地址：http://docs.jpush.io
 
 ## MKDocs
+本文档基于 Markdown 编写，使用 [MKDocs](https://github.com/tomchristie/mkdocs) 工具生成 HTML 布局与页面。
 
