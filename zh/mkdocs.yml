@@ -19,6 +19,7 @@ pages:
 - [guideline/winphone_3m.md, 入门指南, 3 分钟集成 Windows Phone SDK]
 - [guideline/sample_code.md, 入门指南, 示例与代码]
 - [guideline/statistical_report.md, 入门指南, 统计与报表说明]
+- [guideline/jpush_im_guide.md, 入门指南, JPush IM 入门, Hidden]
 
 
 - [client/android_sdk.md, 客户端, Android SDK 概述]
@@ -30,6 +31,7 @@ pages:
 - [client/winphone_sdk.md, 客户端, WinPhone SDK 概述]
 - [client/winphone_api.md, 客户端, WinPhone SDK API]
 - [client/client_plugins.md, 客户端, 客户端集成插件]
+- [client/im_sdk.md, 客户端, IM SDK 概述, Hidden]
 
 
 - [server/server_overview.md, 服务器端, 服务器端 概述]
@@ -38,6 +40,7 @@ pages:
 - [server/rest_api_v3_device.md, 服务器端, REST API - Device]
 - [server/rest_api_v2_push.md, 服务器端, REST API v2 - Push, Hidden]
 - [server/rest_api_v2_report.md, 服务器端, REST API v2 - Report, Hidden]
+- [server/rest_api_im.md, 服务器端, IM REST API, Hidden]
 - [server/http_status_code.md, 服务器端, HTTP 状态码]
 - [server/java_sdk.md, 服务器端, Java SDK]
 - [server/python_sdk.md, 服务器端, Python SDK]
