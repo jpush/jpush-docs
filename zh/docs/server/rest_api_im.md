@@ -111,4 +111,4 @@ HTTP 返回码参考文档：[HTTP-Status-Code](../http_status_code)
 + [IM SDK for Android](../../client/im_sdk_android/)
 + [IM SDK for iOS](../../client/im_sdk_ios/)
 + [JPush IM 指南](../../guideline/jpush_im_guide/)
-
++ [IM 消息协议](../../client/im_message_protocol/)

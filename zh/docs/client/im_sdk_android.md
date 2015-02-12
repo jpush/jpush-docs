@@ -212,6 +212,7 @@ public static abstract class GetUserInfoCallback extends BasicCallback {
 
 ### 相关文档
 
++ [IM 消息协议](../../client/im_message_protocol/)
 + [IM SDK for iOS](../../client/im_sdk_ios/)
 + [JPush IM 指南](../../guideline/jpush_im_guide/)
 + [JPush IM REST API](../../server/rest_api_im/)
