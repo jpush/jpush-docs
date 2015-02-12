@@ -61,6 +61,7 @@ Web 控制台上，还是原来的基础流程，只是增加了 IM 功能。
 
 ### 相关文档
 
-+ [IM SDK](../../client/im_sdk/)
++ [IM SDK for Android](../../client/im_sdk_android/)
++ [IM SDK for iOS](../../client/im_sdk_ios/)
 + [IM REST API](../../server/rest_api_im/)
 
