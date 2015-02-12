@@ -1,5 +1,5 @@
-# Report API 
-JPush Report API 提供各类统计数据查询功能。
+# Report API V3
+JPush Report API V3 提供各类统计数据查询功能。
 
 这类 API 地址统一为（注意与 Push API 不同）：https://report.jpush.cn
 
