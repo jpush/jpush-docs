@@ -1,4 +1,4 @@
-# IM REST API
+<h1>IM REST API</h1>
 
 JPush IM API 为开发者提供 IM 相关功能。
 
@@ -8,53 +8,76 @@ JPush IM API 为开发者提供 IM 相关功能。
 
 参考统一文档。
 
-###  用户注册
+###  用户注册与登录
 
+#### 注册用户
 
+批量注册用户到 JPush IM 服务器。
 
-#### Resource
+	POST /v1/users/
 
-POST /v1/users/
-
-#### Example Request
-
-```
-curl -v https://report.jpush.cn/v3/received?msg_ids=1613113584,1229760629,1174658841,1174658641 -u "7d431e42dfa6a6d693ac2d04:5e987ac6d2e04d95a9d8f0d1"
-
-< GET /v3/received?msg_ids=1613113584,1229760629,1174658841,1174658641 HTTP/1.1
-< Authorization: Basic N2Q0MzFlNDJkZmE2YTZkNjkzYWMyZDA0OjVlOTg3YWM2ZDJlMDRkOTVhOWQ4ZjBkMQ==
-```
-
-#### Request Params
-
-+ msg_ids 推送API返回的 msg_id 列表，多个 msg_id 用逗号隔开，最多支持100个msg_id。
-
-#### Example Response
+##### Example Request
 
 ```
-< HTTP/1.1 200 OK 
-< Content-Type: application/json
-< 
-[  {"android_received":62,
-    "ios_apns_sent":11,
-    "msg_id":1613113584},
-   {"android_received":56,
-     "ios_apns_sent":33,
-     "msg_id":1229760629},
-   {"android_received":null,
-    "ios_apns_sent":14,
-    "msg_id":1174658841},
-   {"android_received":32,
-    "ios_apns_sent":null,
-    "msg_id":1174658641}
-]
+[{"username": "dev_fang", "password": "password"}, 
+ {"username": "dev_fang", "password": "password"}, 
+] 
 ```
-#### Response Params
+
+##### Request Params
 
 JSON Array.
 
-+ android_received Android 送达。如果无此项数据则为 null。
-+ ios_apns_sent iOS 推送成功。如果无此项数据则为 null。
++ username 用户名
++ password 密码
+
+##### Example Response
+
+```
+< HTTP/1.1 201 Created
+< Content-Type: application/json
+< 
+[{"username": "dev_fang",  }, 
+ {"username": "dev_javen",  "error":{"code":8001,"message":"user exit"}}, 
+] 
+```
+##### Response Params
+
+JSON Array.
+
++ username
++ error 某个用户注册出错时，该对象里会有 error 对象，说明错误原因。
+
+### 消息相关
+
+#### 发送消息
+
+	POST /messages
+	
+##### Example Request
+
+```
+
+```
+
+### 用户维护
+
+#### 获取用户信息
+
+	GET /users/{username}
+		
+##### Request Params
+
++ username 用户名。填充到请求路径上。
+
+#### 更新用户信息
+
+### 群组维护
+
+#### 创建群组
+
+#### 添加群组成员
+
 
 
 
