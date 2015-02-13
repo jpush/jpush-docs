@@ -8,10 +8,19 @@ App 集成了 IM SDK 就不应再集成 Push SDK（只提供 Push 功能的 SDK�
 
 ### Demo App
 
-JPush IM SDK 提供一个完整的 Demo App，它就是一个 IM App。或者说，如果你的 App 需求只是 IM 功能，可以只做这样两个变更就是你自己的 IM App 了：1）换 Logo； 2）在 JPush Web 控制上注册应用，获取到的 Appkey 更新到 Demo App 里。
+JPush IM SDK 提供一个完整的 Demo App，它就是一个 IM App。或者说，如果你的 App 需求只是 IM 功能，可以只做这样两个变更就是你自己的 IM App 了：1）换 Logo； 2）在 JPush Web 控制台上注册应用，获取到的 Appkey 更新到 Demo App 里。
 
 
 ### 功能
+
+#### 消息
+
+JPush IM 最核心的功能是 IM 即时消息的功能。
+
+- 保证消息及时下发；
+- 单聊，群聊；
+- 用户未在线时保存离线消息；
+- 基于 JPush 原有的大容量稳定的长连接、大容量消息并发能力；
 
 #### 用户
 
@@ -19,7 +28,7 @@ JPush IM SDK 提供一个完整的 Demo App，它就是一个 IM App。或者说
 
 SDK 侧可以发起注册用户，也可由服务器端批量发起注册。
 
-用户登录 App，也同时登录到 JPush IM。登录后，就可以向其他 username 发聊天消息。
+用户登录 App，也同时登录到 JPush IM。登录后，就可以向其他 username 发聊天消息，也可以收到来自其他 username 的消息，或者群组消息了。
 
 用户 A 是否有权限向用户 B 发消息，由 App 逻辑自己控制。（由 JPush IM 提供好友关系时，JPush IM 会做控制）
 
@@ -29,13 +38,16 @@ SDK 侧可以发起注册用户，也可由服务器端批量发起注册。
 
 可以把多个 username 加入到一个群组里，向群组发群聊消息。
 
+- 创建群组、退出群组；
+- 加群组成员、移除群组成员；
+
+
 #### 好友（还未提供）
 
 
 ### 基本概念
 
 参考文档：[JPush IM 指南](../../guideline/jpush_im_guide)
-
 
 
 
@@ -91,6 +103,16 @@ SDK 侧可以发起注册用户，也可由服务器端批量发起注册。
 + info 用户信息（对象）
 + callback 结果回调
 
+##### 更新用户密码
+
+	public static void updateUserPassword(String oldPassword, String newPassword, BasicCallback callback);
+	
+##### 更新用户头像
+
+	public static void updateAvatar(File avatar, FileUpdateCallback callback);
+	
+
+
 #### 会话与发送消息
 
 ##### 发送消息
@@ -117,6 +139,14 @@ SDK 侧可以发起注册用户，也可由服务器端批量发起注册。
 
 + List<Conversation> 会话列表。暂未有分页。
 
+##### 获取单个会话
+
+	public Conversation getConversation(String target);
+	
+##### 删除单个会议
+	
+	public boolean deleteConversation(String target);
+
 #### 接收消息
 
 SDK 从服务器端接收到消息，先会保存地本地数据库。然后以广播的形式通知 App。 App 需要注册一个 BroadcastReceiver，来处理 IM SDK 发出的消息。
@@ -141,13 +171,74 @@ private class MyMessageBroadcastReceiver extends BroadcastReceiver {
         //消息id 
         String msgId = intent.getStringExtra("msg_id"); 
         //发消息的对象的id
-        String target = intent.getStringExtra("target"); 
-        //通过target和messageID拿到Message对象。
-        Conversation conv = JPushIMInterface.getConversation(target);
+        String targetId = intent.getStringExtra("target_id"); 
+        
+        // 通过targetId和 msgId 拿到Message 对象。
+        Conversation conv = JPushIMInterface.getConversation(targetId);
         Message msg = conv.getMessage(msgId);
     } 
 }
 ```
+
+#### 群组维护
+
+##### 创建群组
+
+	public static void createGroup(String groupName, String groupDesc, int groupLevel, CreateGroupCallback callback);
+	
+参数说明 
+
++ groupName 群名称
++ groupDesc 群描述
++ groupLevel 
++ callback 结果回调
+
+##### 更新群组详情
+
+	public static void updateGroupInfo(long groupID, String groupName, String groupDesc, int groupLevel, BasicCallback callback);
+
+##### 加群组成员
+
+	public static void addGroupMembers(long groupId, List<String> usernameList, BasicCallback callback);
+	
+参数说明
+
++ groupId 群组ID。创建群组时会返回。
++ usernameList 群组成员 username。
++ callback 结果回调
+
+##### 移除群组成员
+
+	public static void removeGroupMembers(long groupId, List<String> usernameList, BasicCallback callback);
+	
+##### 退出群组
+
+	public static void exitGroup(long groupId, BasicCallback callback);
+	
+##### 获取我的群组（服务器端）
+
+	public static void getGroupIdListFromServer(GetGroupListCallback callback)
+	
+##### 获取我的群组（本地）
+
+	public static List<Long> getGroupIdListFromLocal()
+	
+##### 获取群组详情（服务器）
+
+	public static void getGroupInfoFromServer(long groupId, GetGroupInfoCallback callback)
+	
+##### 获取群组详情（本地）
+
+	public static Group getGroupInfoFromLocal(long groupId)
+	
+##### 获取群组成员列表（服务器）
+
+	public static void getGroupMembersFromServer(long groupID, GetGroupMembersCallback callback)
+	
+##### 获取群组成员列表（本地）
+
+	public static List<String> getGroupMembersFromLocal(long groupID)
+	
 
 
 ### 类定义
