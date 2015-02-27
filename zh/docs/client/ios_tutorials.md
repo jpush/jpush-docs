@@ -111,10 +111,64 @@ JPush iOS 是对原生官方 APNs 推送的一个补充，是对其的封装，�
 在 [JPush 管理 Portal 上](https://www.jpush.cn/apps/)，针对某应用程序，上传上面步骤得到 .p12 证书文件。这是 iOS SDK 能够接收到 JPush 推送消息的必要步骤。
 
 
+#### Provisioning Profile的创建
+
++ 假设创建了一个App ID：cn.jpush.examlpe，并为此App ID配置开发环境的Push Notifications：
+
+![](../image/appidpp.png)
+
++ 创建该App ID的推送证书，如下图:
+
+![jpush_ios](../image/appidcer.png)
+
+
++ 创建App ID、APN证书和p12证书的导出的具体步骤请看 :[iOS 证书 设置指南](./#ios_1)
+
++ 点击下图按钮开始创建Provisioning Profile：
+
+![jpush_ios](../image/provision_profile.png)
+
++ 选择此Provisioning Profile的环境后点击[Continue]：
+
+![jpush_ios](../image/create_pp_type.png)
+
++ 选择要创建Provisioning Profile的App ID后点击[Continue]：
+
+![jpush_ios](../image/pp_appid_new.png)
+
++ 选择所属的开发者证书，（这里创建了多个开发者证书，建议只创建一个，方便管理）为了方便，选择了[Select All]，再点击[Continue]进入下一步：
+
+![jpush_ios](../image/select_cer.png)
+
++ 为该Provisioning Profile选择将要安装的设备（一般选择[Select All]），点击[Continue]:
+
+![jpush_ios](../image/select_devices.png)
+
++ 给该Provisioning Profile填写Profile Name，点击[generate]完成创建。
+
+![jpush_ios](../image/pp_name.png)
+
+点击[DownLoad]下载Provisioning Profile：
+
+![jpush_ios](../image/download_pp.png)
+
++ 双击下载下来的Provisioning Profile，添加到xcode。
+
+#### XCode的证书配置教程
+
+参照[iOS SDK 集成指南](../../guideline/ios_guide/)集成JPush SDK 和上传了推送用到的p12证书后在编译运行前需要先配置一下证书，步骤如下：
+
++ 打开xxx-info.plist的Bundle identifier项把上传到JPush 控制台的bundle id填写进去：
+
+![jpush_ios](../image/xcode_bundle.png)
+
++ 点击项目，进入Build Setting 界面，向下滑动，去到Code Signing 配置证书：
+
+![jpush_ios](../image/xcode_buildsettings_cs.png)
+
 
 ### iOS 7 Background Remote Notification
 
-#### 简介
 
 本次iOS 7在推送方面最大的变化就是允许，应用收到通知后在后台（background）状态下运行一段代码，可用于从服务器获取内容更新。功能使用场景：（多媒体）聊天，Email更新，基于通知的订阅内容同步等功能，提升了终端用户的体验。
 
@@ -165,12 +219,10 @@ Remote Notifications 与之前版本的对比可以参考下面两张 Apple 官�
 
 更详细的说明资料请查阅 Apple 官方的 iOS 开发文档。
 
-### IOS 8 UIUserNotificationSettings
+###IOS 8 UIUserNotificationSettings
 
 #### 支持版本
 v1.8.0 版本开始。
-
-#### 简介
 
 + 本次iOS 8在推送方面最大的变化就是修改了推送的注册接口，在原本的推送type的基础上，增加了一个categories参数，这个参数的目的是用来注册一组和通知关联起来的button的事件。
 + 这个categories由一系列的 UIUserNotificationCategory组成。每个UIUserNotificationCategory对象包含你的app用来响应本地或者远程通知的信息。每一个对象的title作为通知上每一个button的title展示给用户。当用户点击了某一个button，系统将会调用应用内的回调函数[application:handleActionWithIdentifier:forRemoteNotification:completionHandler:](https://developer.apple.com/library/prerelease/ios/documentation/UIKit/Reference/UIApplicationDelegate_Protocol/index.html#//apple_ref/occ/intfm/UIApplicationDelegate/application:handleActionWithIdentifier:forRemoteNotification:completionHandler:)或者[application:handleActionWithIdentifier:forLocalNotification:completionHandler:](https://developer.apple.com/library/prerelease/ios/documentation/UIKit/Reference/UIApplicationDelegate_Protocol/index.html#//apple_ref/occ/intfm/UIApplicationDelegate/application:handleActionWithIdentifier:forLocalNotification:completionHandler:)。
@@ -245,7 +297,6 @@ payload example:
 
 ### IOS 8 UILocalNotification
 
-#### 简介
 
 本次iOS 8 UILocalNotification增加了三个参数: region、regionTriggersOnce、category。
 
