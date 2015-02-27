@@ -2,7 +2,7 @@
 
 ### 认识 JPush IM
 
-JPush IM 为开发者提供快速集成 IM 功能到 App 里的功能。开发者只需要很少的工作，集成 IM SDK 到 App 里，做简单的接口集成，就可以使得 App 具有了全流程的 IM 功能。
+开发者可以通过 JPush IM 服务快速集成 IM 功能到 App 里。只需要很少的工作，集成 IM SDK，做简单的接口集成，就可以使得自己的 App 具备了用户间聊天的功能。
 
 JPush IM 的致力于帮 App 解决 IM 聊天问题。其核心能力在于 IM 聊天本身。其他的附属功能是可选的：用户信息提交、群组维护、好友维护。 
 
@@ -10,16 +10,23 @@ JPush IM 的致力于帮 App 解决 IM 聊天问题。其核心能力在于 IM �
 
 鉴于好友关系的敏感性，我们暂未实现开放这部分功能。
 
+#### JPush IM 与 JPush 的关系
+JPush IM 以 JPush 技术作为基础，共享 JPush 的网络长连接。在保留了 JPush 推送全部功能的基础上增加了额外的 IM 功能。 
 
-### JPush IM 与 JPush 的关系
+集成 JPush IM 服务的应用，从SDK接口，服务端 REST API，Web 控制台都具备并且兼容 JPush 的推送功能。
 
-JPush IM 是以 JPush 作为基础的，共享 JPush 的网络长连接。
+![image](../image/jpush_im_sdk.png)
 
-SDK 侧，IM SDK 包含了 JPush 的完整功能，以 JPush SDK 的基础之上再附加上 IM 功能。
+```
+对于同一个应用 JPush IM 与 JPush 使用同样的 APPkey 和 master secret
+```
 
-REST API 部分，原有 Push 相关的 REST API 可继续使用，可向集成了 IM SDK 的客户端做 Push 相关操作。
+#### JPush IM 与 JPush 的区别
+JPush IM 以 IM 使用场景出发，面向用户根据登录帐号来收发消息，而 JPush 推送则是面向移动设备，根据设备的标签以及使用属性进行推送。
 
-Web 控制台上，还是原来的基础流程，只是增加了 IM 功能。
+#### 推送与 IM 服务如何选择
+开发者可以根据自身业务场景来选择适用的业务。
+
 
 ### JPush IM 基本概念
 
@@ -42,12 +49,18 @@ App 使用 JPush IM 提供的群组功能创建群组时，得到的群组标识
 同一个 AppKey 里用户名必须唯一！ 不同的 AppKey 之间用户名可以重名。
 
 
-### JPush IM 功能集
+* 如果你的应用需要实现用户之间相互传递消息的 IM 功能，那么使用 JPush IM 则是为您准备的。
+* 如果应用主要以发送功能通知，活动推广，订阅与广播内容为主，应该选择更为简洁的推送服务。如果后续业务上需要扩展，可以再集成 JPush IM，平滑添加，对原有的 Push 功能无任何影响。
+
+
+
+
+### JPush IM 功能与特性
 
 #### IM SDK
 
-+ 注册用户（可选不在客户端注册）
-+ 登录用户
++ 注册用户（Webporal 可以控制是否允许客户端自由注册）
++ 用户登录
 + 更新用户信息
 + 单聊
 + 支持的消息类型：文本、语音、图片
@@ -62,6 +75,7 @@ App 使用 JPush IM 提供的群组功能创建群组时，得到的群组标识
 
 + 注册用户
 + 发送消息
++ 维护用户
 + 维护群组
 
 #### Web Portal
