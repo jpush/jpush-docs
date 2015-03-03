@@ -43,6 +43,13 @@ JPush 提供遵从 REST 规范的 HTTP API，以供开发者远程调用 JPush �
 <a name="rate_limiting"></a>
 JPush API 对访问次数，具有频率控制。即一定的时间窗口内，API 允许调用的次数是有限制的。
 
+<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px;  padding-bottom: 0;margin-bottom: 0;">
+<p>请注意:
+	<br>
+	<p>API 频率有限制，不意味着对终端用户的推送数量与速度有控制。简单地说，一次 API 调用可以是广播，推送送达你应用的所有用户。
+</div>
+
+
 #### 频率控制定义
 
 一个时间窗口，当前定义为：1 分钟。

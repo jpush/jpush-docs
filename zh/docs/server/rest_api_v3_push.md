@@ -1,18 +1,19 @@
 <h1>Push API <small>v3</small></h1>
 
 
-	这是 Push API 最新的版本。
-	相比 API v2 版本，v3 版本的改进为：
-	* 完全基于 https，不再提供 http 访问；
-	* 使用 HTTP  Basic Authentication 的方式做访问授权。这样整个 API 请求可以
-	  使用常见的 HTTP 工具来完成，比如：curl, 浏览器插件等；
-	* 推送内容完全使用 JSON 的格式；
-	* 支持的功能有所改进：支持多 tag 的与或操作；可单独发送通知或自定义消息，
-	  也可同时推送通知与自定义消息; windows phone 目前只有通知。 
+<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px;">
+<p>这是 Push API 最近的版本。</p>
+<p>相比于 API v2 版本，v3 版本的改进为：</p>
+<ul style="margin-bottom: 0;">
+<li>完全基于 https，不再提供 http 访问；</li>
+<li>使用 HTTP Basic Authentication 的方式做访问授权。这样整个 API 请求可以使用常见的 HTTP 工具来完成，比如：curl，浏览器插件等；</li>
+<li>推送内容完全使用 JSON 的格式；</li>
+<li>支持的功能有所改进：支持多 tag 的与或操作；可单独发送通知或者自定义消息，也可同时推送通知与自定义消息；windows phone 目前只有通知。</li>
+</ul>
+</div>
 
 
 ### 推送概述
-
 
 #### 功能说明
 
@@ -85,9 +86,41 @@ HTTP Header（头）里加一个字段（Key/Value对）：
    }
 }
 ```
-
-
-
+<!-- <table border="1" cellspacing="0" bordercolor="#000000" width = "100%" style="border-collapse:collapse;" bordercolor="#008000"  style="padding-bottom:100px; padding-left:7px; padding-right:7px; padding-top:5px; text-align:left; vertical-align:top; min-width:8px;" padding="0 20px;"> -->
+<div class="table-d" align="center" >
+	<table border="1" width = "100%">
+		<tr  bgcolor="#D3D3D3" >
+			<th style="padding: 0 20px;">关键字</th>
+			<th>选项</th>
+			<th>含义</th>
+		</tr>
+		<tr >
+			<td style="padding: 0 20px;">platform</td>
+			<td>必填</td>
+			<td>推送平台设置</td>
+		</tr>
+		<tr >
+			<td>audience</td>
+			<td>必填</td>
+			<td>推送设备指定</td>
+		</tr>
+		<tr >
+			<td>notification</td>
+			<td>可选</td>
+			<td>通知内容体。是被推送到客户端的内容。与 message 一起二者必须有其一，可以二者并存</td>
+		</tr>
+		<tr >
+			<td>message</td>
+			<td>可选</td>
+			<td>消息内容体。是被推送到客户端的内容。与 notification 一起二者必须有其一，可以二者并存 </td>
+		</tr>
+		<tr >
+			<td>options</td>
+			<td>可选</td>
+			<td>推送参数 </td>
+		</tr>
+	</table>
+</div>
 
 关键字 			| 选项        | 含义
 :---------------| :-----------| :---------------
@@ -103,9 +136,10 @@ options   		| 可选    	  | 推送参数
 
 JPush 当前支持 Android, iOS, Windows Phone 三个平台的推送。其关键字分别为："android", "ios", "winphone"。
 
-```
-如果目标平台为 iOS 平台 需要在 options 中通过 apns_production 字段来制定推送环境。True 表示推送生产环境，False 表示要推送开发环境； 如果不指定则为推送生产环境。
-```
+<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px;  padding-bottom: 0;margin-bottom: 0;">
+<p>如果目标平台为 iOS 平台 需要在 options 中通过 apns_production 字段来制定推送环境。True 表示推送生产环境，False 表示要推送开发环境； 如果不指定则为推送生产环境</p>
+</div>
+<br>
 
 推送到所有平台：
 
@@ -134,12 +168,14 @@ tag_and|JSON Array|标签AND|数组。多个标签之间是 AND 关系，即取�
 alias|JSON Array |别名|数组。多个别名之间是 OR 关系，即取并集。 | 用别名来标识一个用户。一个设备只能绑定一个别名，但多个设备可以绑定同一个别名。一次推送最多 1000 个。
 registration_id|JSON Array|注册ID|数组。多个注册ID之间是 OR 关系，即取并集。设备标识。一次推送最多 1000 个。
 
+<br>
+<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px;">
+<p>每种类型的值都是数组（Array），数组里多个值之间隐含的关系是是 OR，即取并集。但 tag_and 不同，其数组里多个值之间是 AND 关系，即取交集。</p>
+<p>4 种类型至少需要有其一。如果值数组长度为 0，表示该类型不存在。</p>
+<p>这几种类型可以并存。并存时多项的隐含关系是 AND，即取交集。</p>
+</div>
+<br>
 
-每种类型的值都是数组（Array），数组里多个值之间隐含的关系是是 OR，即取并集。但 tag_and 不同，其数组里多个值之间是 AND 关系，即取交集。
-
-4 种类型至少需要有其一。如果值数组长度为 0，表示该类型不存在。
-
-这几种类型可以并存。并存时多项的隐含关系是 AND，即取交集。
 
 ##### 示例
 
@@ -283,14 +319,16 @@ content-available| boolean| 可选| 推送唤醒| 推送的时候携带"content-
 category| string | 可选 | | IOS8才支持。设置APNs payload中的"category"字段值
 extras| JSON Object| 可选| 扩展字段| 这里自定义 Key/value 信息，以供业务使用。
 
-```	   
- iOS 通知 JPush 要转发给 APNs 服务器。APNs 协议定义通知长度为 2048 字节。
- JPush 因为需要重新组包，并且考虑一点安全冗余，要求"iOS":{ } 及大括号内的总体长度不超过：2000 个字节。
+<br>
+<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px;">
+<p>iOS 通知 JPush 要转发给 APNs 服务器。APNs 协议定义通知长度为 2048 字节。</p>
+<p>JPush 因为需要重新组包，并且考虑一点安全冗余，要求"iOS":{ } 及大括号内的总体长度不超过：2000 个字节。</p>
+<br>
+ <p>另外，JPush 在推送时使用 utf-8 编码，所以一个汉字占用 3 个字节长度。</p>
+</div>
 
- 另外，JPush 在推送时使用 utf-8 编码，所以一个汉字占用 3 个字节长度。
+
 ```
-
-
 	{
 	    "notification" : {
 	        "ios" : {
@@ -304,7 +342,7 @@ extras| JSON Object| 可选| 扩展字段| 这里自定义 Key/value 信息，�
 	        }
 	    }
 	}				 
-
+```
 ##### winphone
 
 Windows Phone 平台上的通知。
@@ -356,14 +394,16 @@ Windows Phone 平台上，暂时不支持应用内消息。
 |content_type|	string|	可选|	消息内容类型	 
 |extras|	JSON Object|	可选|	JSON 格式的可选参数|	
 
-```
- Android 1.6.2及以下版本 接收notification 与message并存（即本次api调用同时推送通知和消息）的离线推送， 只能收到通知部分，message 部分没有透传给 App。 
+<br>
+<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px;">
+	<p>Android 1.6.2及以下版本 接收notification 与message并存（即本次api调用同时推送通知和消息）的离线推送， 只能收到通知部分，message 部分没有透传给 App。 </p>
+	<br>
+	<p> Android 1.6.3及以上SDK 版本已做相应调整，能正常接收同时推送通知和消息的离线记录。</p>
+	<br>
+	<p>iOS 1.7.3及以上的版本才能正确解析v3的message，但是无法解析v2推送通知同时下发的应用内消息。</p>
+</div>
 
- Android 1.6.3及以上SDK 版本已做相应调整，能正常接收同时推送通知和消息的离线记录。
 
- iOS 1.7.3及以上的版本才能正确解析v3的message，但是无法解析v2推送通知同时下发的应用内消息。
-
-```
 
 #### options
 

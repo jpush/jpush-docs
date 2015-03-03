@@ -96,12 +96,13 @@ JPush 目前在网络策略方面没有像微信这种聊天工具做得积极�
 #### 为什么需要别名与标签
 
 推送消息时，要指定推送的对象：全部，某一个人，或者某一群人。
-
-```
-JPush 目前还提供根据 IMEI 推送。但这个建议仅用于测试目的。
-原因很简单：很多 Android 设备是取不到 IMEI 的。
-```
-	
+<br>
+<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px;">
+<p style="margin-bottom: 0;">JPush 目前还提供根据 IMEI 推送。但这个建议仅用于测试目的。</p>
+<br>
+<p style="margin-bottom: 0;">原因很简单：很多 Android 设备是取不到 IMEI 的。</p>
+</div>
+<br>
 全部很好办，针对某应用“群发”就好了。Portal与API都支持向指定的 appKey 群发消息。
 
 要指定向某一个特定的人，或者某一群特定的人，则相对复杂。因为对于 JPush 来说，某一个人就是一个注册ID，这个注册ID与开发者App没有任何关系，或者说对开发者App是没有意义的。
@@ -252,12 +253,13 @@ JPush 通知推送到客户端时，默认使用手机的默认设置来显示�
 
 通知栏样式在服务器端向下推送时，只体现为一个编号（数字）。
 
-```
- 推送通知的样式编号，应该是在客户端做了自定义通知栏样式设置的。
- 
- 如果通知上的样式编号，在客户端检查不存在，则使用默认的通知栏样式。
-```
+<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">
+<p> 推送通知的样式编号，应该是在客户端做了自定义通知栏样式设置的。
+<br>
+<p>如果通知上的样式编号，在客户端检查不存在，则使用默认的通知栏样式。
+</div>
 
+<br>
 开发者不自定义通知栏样式时，则此编号默认为 0。
 
 开发者自定义的通知栏样式编号应大于 0，小于 1000。
@@ -299,11 +301,12 @@ JPush 通知推送到客户端时，默认使用手机的默认设置来显示�
 
 基于基础的 PushNotificationBuilder，可进一步地定制 Notification 的 Layout。
 
-``` 
-这里作为 example 的 customer_notitfication_layout 在我们的 example 项目的 /res/layout/ 下可以找到。你完全可以用自己的 layout。
+<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">
+<p>这里作为 example 的 customer_notitfication_layout 在我们的 example 项目的 /res/layout/ 下可以找到。你完全可以用自己的 layout。</p>
+</div>
+<br>
+
 ```
-
-
 	CustomPushNotificationBuilder builder = new 
 	CustomPushNotificationBuilder(MainActivity.this,
 	                          R.layout.customer_notitfication_layout, 
@@ -315,7 +318,8 @@ JPush 通知推送到客户端时，默认使用手机的默认设置来显示�
 	// 指定最顶层状态栏小图标
 	builder.layoutIconDrawable = R.drawable.your_2_notification_icon;   
 	// 指定下拉状态栏时显示的通知图标
-	JPushInterface.setPushNotificationBuilder(2, builder);                
+	JPushInterface.setPushNotificationBuilder(2, builder);
+``` 
 
 ####通知栏样式定义不符合要求？
 
@@ -329,7 +333,7 @@ JPush 通知推送到客户端时，默认使用手机的默认设置来显示�
 
 
 
-###通知 vs. 自定义消息
+###通知 vs 自定义消息
 
 极光推送包含有通知与自定义消息两种类型的推送。本文描述他们的区别，以及建议的应用场景。
 
@@ -353,11 +357,12 @@ JPush 通知推送到客户端时，默认使用手机的默认设置来显示�
 
 自定义消息主要用于应用的内部业务逻辑。一条自定义消息推送过来，有可能没有任何界面显示。
 
-```
- 本质上：自定义消息是原始的消息，JPush SDK 不做处理。而通知，则 JPush SDK 会做通知展示处理，其目的是为了减轻开发人员的工作量。
- 
- 所以，如果通知功能不太符合您的需求，你都可以使用自定义消息来实现（客户端展现App自己来做）。
-```
+<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">
+ <p>本质上：
+ <p>自定义消息是原始的消息，JPush SDK 不做处理。而通知，则 JPush SDK 会做通知展示处理，其目的是为了减轻开发人员的工作量。
+ <br>
+ <p>所以，如果通知功能不太符合您的需求，你都可以使用自定义消息来实现（客户端展现App自己来做）。
+</div>
 
 
 #### 两者的区别 - 开发者使用角度
@@ -377,7 +382,12 @@ SDK 不会把自定义消息展示到通知栏。
 
 自定义消息一定要由开发者写[ 接收推送消息Receiver](../android_api/#receiver) 来处理收到的消息。
 
-
+<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">
+<p>注意：
+	<p>当自定义消息内容msg_content为空时，SDK不会对消息进行广播，使得app无法接收到推送的消息，因此建议在使用自定义消息推送时添
+		<br>
+		<p>加内容
+</div>
 #### 使用通知  
 
 请参考以下示例代码。

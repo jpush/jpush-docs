@@ -1,12 +1,15 @@
 <h1>Device-API</h1>
 
-```
-   Device API 用于在服务器端查询、设置、更新、删除设备的 tag,alias 信息，
-   使用时需要注意不要让服务端设置的标签又被客户端给覆盖了。
-   *如果不是熟悉 tag，alias的逻辑建议只使用客户端或服务端二者中的一种。
-   *如果是两边同时使用，请确认自己应用可以处理好标签和别名的同步。
+<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px;">
 
-```
+<p> Device API 用于在服务器端查询、设置、更新、删除设备的 tag,alias 信息，使用时需要注意不要让服务端设置的标签又被客户端给覆盖了。</p>
+<ul style="margin-bottom: 0;">
+   <li>如果不是熟悉 tag，alias的逻辑建议只使用客户端或服务端二者中的一种。</li>
+   <li>如果是两边同时使用，请确认自己应用可以处理好标签和别名的同步。</li>
+ </ul>
+</div>
+
+<br>
 
 * 需要了解tag,alias的详细信息，请参考对应客户端平台的API说明。
 
