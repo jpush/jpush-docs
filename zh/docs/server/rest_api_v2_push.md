@@ -1,5 +1,13 @@
 <h1>REST API v2</h1>
 
+<div style="font-size:13px;background: #F0E68C;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">
+<p>特别提示：建议不要在客户端里写代码直接调用此 API。因为 Android apk 比较容易破解，别人很容易从客户端代码里找出来调用 JPush Remote API 所需要的保密信息，从而可以模拟到你的身份来发起恶意的推送。
+<br>
+<p>建议的使用方式是：调用 JPush Remote API 的代码放在你自己的应用服务器上。你自己的应用服务器对自己的客户端提供接口来推送消息。具体请参考推聊的作法：示例与代码。
+<br>
+<p>升级到 v3 Push API：建议开发者升级到 v3 版本。此版本会继续支持到 2015 年。
+</div>
+
 ### 推送全功能接口
 
 #### 功能说明

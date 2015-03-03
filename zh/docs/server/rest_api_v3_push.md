@@ -86,50 +86,41 @@ HTTP Header（头）里加一个字段（Key/Value对）：
    }
 }
 ```
-<!-- <table border="1" cellspacing="0" bordercolor="#000000" width = "100%" style="border-collapse:collapse;" bordercolor="#008000"  style="padding-bottom:100px; padding-left:7px; padding-right:7px; padding-top:5px; text-align:left; vertical-align:top; min-width:8px;" padding="0 20px;"> -->
+
 <div class="table-d" align="center" >
 	<table border="1" width = "100%">
 		<tr  bgcolor="#D3D3D3" >
-			<th style="padding: 0 20px;">关键字</th>
-			<th>选项</th>
-			<th>含义</th>
+			<th style="padding: 0 5px;text-align:center;" >关键字</th>
+			<th style="padding: 0 5px;text-align:center;" >选项</th>
+			<th style="padding: 0 5px;" >含义</th>
 		</tr>
 		<tr >
-			<td style="padding: 0 20px;">platform</td>
-			<td>必填</td>
-			<td>推送平台设置</td>
+			<td style="padding: 0 5px;text-align:center;">platform</td>
+			<td style="padding: 0 5px;text-align:center;">必填</td>
+			<td style="padding: 0 5px;">推送平台设置</td>
 		</tr>
 		<tr >
-			<td>audience</td>
-			<td>必填</td>
-			<td>推送设备指定</td>
+			<td style="padding: 0 5px;text-align:center;">audience</td>
+			<td style="padding: 0 5px;text-align:center;">必填</td>
+			<td style="padding: 0 5px;">推送设备指定</td>
 		</tr>
 		<tr >
-			<td>notification</td>
-			<td>可选</td>
-			<td>通知内容体。是被推送到客户端的内容。与 message 一起二者必须有其一，可以二者并存</td>
+			<td style="padding: 0 5px;text-align:center;">notification</td>
+			<td style="padding: 0 5px;text-align:center;">可选</td>
+			<td style="padding: 0 5px;">通知内容体。是被推送到客户端的内容。与 message 一起二者必须有其一，可以二者并存</td>
 		</tr>
 		<tr >
-			<td>message</td>
-			<td>可选</td>
-			<td>消息内容体。是被推送到客户端的内容。与 notification 一起二者必须有其一，可以二者并存 </td>
+			<td style="padding: 0 5px;text-align:center;">message</td>
+			<td style="padding: 0 5px;text-align:center;">可选</td>
+			<td style="padding: 0 5px;">消息内容体。是被推送到客户端的内容。与 notification 一起二者必须有其一，可以二者并存 </td>
 		</tr>
 		<tr >
-			<td>options</td>
-			<td>可选</td>
-			<td>推送参数 </td>
+			<td style="padding: 0 5px;text-align:center;">options</td>
+			<td style="padding: 0 5px;text-align:center;">可选</td>
+			<td style="padding: 0 5px;">推送参数 </td>
 		</tr>
 	</table>
 </div>
-
-关键字 			| 选项        | 含义
-:---------------| :-----------| :---------------
-platform  		| 必填  	  | 推送平台设置
-audience  		| 必填  	  | 推送设备指定 
-notification 	| 可选  	  | 通知内容体。是被推送到客户端的内容。与 message 一起二者必须有其一，可以二者并存
-message 		| 可选 		  | 消息内容体。是被推送到客户端的内容。与 notification 一起二者必须有其一，可以二者并存 
-options   		| 可选    	  | 推送参数 
-
 
 
 #### platform 
@@ -161,12 +152,46 @@ JPush 当前支持 Android, iOS, Windows Phone 三个平台的推送。其关键
 
 广播外的设备选择方式，有如下几种：
 
-关键字 | 含义 | 值类型 | 说明 | 备注
-:---| :---| :---| :---| :---
-tag|JSON Array|标签|数组。多个标签之间是 OR 的关系，即取并集。 | 用标签来进行大规模的设备属性、用户属性分群。 一次推送最多 20 个。
-tag_and|JSON Array|标签AND|数组。多个标签之间是 AND 关系，即取交集。 | 注册与 tag 区分。一次推送最多 20 个。
-alias|JSON Array |别名|数组。多个别名之间是 OR 关系，即取并集。 | 用别名来标识一个用户。一个设备只能绑定一个别名，但多个设备可以绑定同一个别名。一次推送最多 1000 个。
-registration_id|JSON Array|注册ID|数组。多个注册ID之间是 OR 关系，即取并集。设备标识。一次推送最多 1000 个。
+<div class="table-d" align="center" >
+	<table border="1" width = "100%">
+		<tr  bgcolor="#D3D3D3" >
+			<th style="padding: 0 5px;text-align:center;" >关键字</th>
+			<th style="padding: 0 5px;text-align:center;" >含义</th>
+			<th style="padding: 0 5px;text-align:center;" >类型</th>
+			<th style="padding: 0 5px;text-align:center;" >说明</th>
+			<th style="padding: 0 5px;" >备注</th>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;text-align:center;">tag</td>
+			<td style="padding: 0 5px;text-align:center;">JSON Array</td>
+			<td style="padding: 0 5px;text-align:center;">标签</td>
+			<td style="padding: 0 5px;text-align:center;">数组。多个标签之间是 OR 的关系，即取并集。 </td>
+			<td style="padding: 0 5px;">用标签来进行大规模的设备属性、用户属性分群。 一次推送最多 20 个。<ul style="margin-bottom: 0;"><li>有效的 tag 组成：字母（区分大小写）、数字、下划线、汉字。</li><li>限制：每一个 tag 的长度限制为 40 字节。（判断长度需采用UTF-8编码）</li></td>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;text-align:center;">tag_and</td>
+			<td style="padding: 0 5px;text-align:center;">JSON Array</td>
+			<td style="padding: 0 5px;text-align:center;">标签AND</td>
+			<td style="padding: 0 5px;text-align:center;">数组。多个标签之间是 AND 关系，即取交集。</td>
+			<td style="padding: 0 5px;">注册与 tag 区分。一次推送最多 20 个。</td>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;text-align:center;">alias</td>
+			<td style="padding: 0 5px;text-align:center;">JSON Array</td>
+			<td style="padding: 0 5px;text-align:center;">别名</td>
+			<td style="padding: 0 5px;text-align:center;">数组。多个别名之间是 OR 关系，即取并集。</td>
+			<td style="padding: 0 5px;">用别名来标识一个用户。一个设备只能绑定一个别名，但多个设备可以绑定同一个别名。一次推送最多 1000 个。<ul style="margin-bottom: 0;"><li>有效的 tag 组成：字母（区分大小写）、数字、下划线、汉字。</li><li>限制：每一个 tag 的长度限制为 40 字节。（判断长度需采用UTF-8编码）</li></td>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;text-align:center;">registration_id</td>
+			<td style="padding: 0 5px;text-align:center;">JSON Array</td>
+			<td style="padding: 0 5px;text-align:center;">注册ID</td>
+			<td style="padding: 0 5px;text-align:center;">数组。多个注册ID之间是 OR 关系，即取并集。</td>
+			<td style="padding: 0 5px;">设备标识。一次推送最多 1000 个。</td>
+		</tr>
+	</table>
+</div>
+
 
 <br>
 <div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px;">
@@ -278,13 +303,47 @@ Android 平台上的通知。
 支持的字段有：
 
 
-关键字| 类型 | 选项 | 含义 | 说明
-:---| :---| :---| :---| :---
-alert|string|必填|通知内容|这里指定了，则会覆盖上级统一指定的 alert 信息；内容可以为空字符串，则表示不展示到通知栏。
-title|string|可选|通知标题|如果指定了，则通知里原来展示 App名称的地方，将展示成这个字段。
-builder_id|int|可选|通知栏样式ID|Android SDK 可设置通知栏样式，这里根据样式 ID 来指定该使用哪套样式。
-extras|JSON Object|可选|扩展字段。	|这里自定义 JSON 格式的 Key/Value 信息，以供业务使用。
+<div class="table-d" align="center" >
+	<table border="1" width = "100%">
+		<tr  bgcolor="#D3D3D3" >
+			<th style="padding: 0 5px;text-align:center;" >关键字</th>
+			<th style="padding: 0 5px;text-align:center;" >类型</th>
+			<th style="padding: 0 5px;text-align:center;" >值</th>
+			<th style="padding: 0 5px;text-align:center;" >含义</th>
+			<th style="padding: 0 5px;" >说明</th>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;text-align:center;">alert</td>
+			<td style="padding: 0 5px;text-align:center;">string</td>
+			<td style="padding: 0 5px;text-align:center;">必填</td>
+			<td style="padding: 0 5px;text-align:center;">通知内容</td>
+			<td style="padding: 0 5px;">这里指定了，则会覆盖上级统一指定的 alert 信息；内容可以为空字符串，则表示不展示到通知栏。</td>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;text-align:center;">title</td>
+			<td style="padding: 0 5px;text-align:center;">string</td>
+			<td style="padding: 0 5px;text-align:center;">可选</td>
+			<td style="padding: 0 5px;text-align:center;">通知标题</td>
+			<td style="padding: 0 5px;">如果指定了，则通知里原来展示 App名称的地方，将展示成这个字段。</td>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;text-align:center;">builder_id</td>
+			<td style="padding: 0 5px;text-align:center;">int</td>
+			<td style="padding: 0 5px;text-align:center;">可选</td>
+			<td style="padding: 0 5px;text-align:center;">通知栏样式ID</td>
+			<td style="padding: 0 5px;">Android SDK 可设置通知栏样式，这里根据样式 ID 来指定该使用哪套样式。</td>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;text-align:center;">extras</td>
+			<td style="padding: 0 5px;text-align:center;">JSON Object</td>
+			<td style="padding: 0 5px;text-align:center;">可选</td>
+			<td style="padding: 0 5px;text-align:center;">扩展字段</td>
+			<td style="padding: 0 5px;">这里自定义 JSON 格式的 Key/Value 信息，以供业务使用。</td>
+		</tr>
+	</table>
+</div>
 
+<br>
 
 ```
 {
@@ -310,14 +369,60 @@ iOS 平台上 APNs 通知。
 
 该通知内容满足 APNs 的规范，支持的字段如下：
 
-关键字| 类型 | 选项 | 含义 | 说明
-:---| :---| :---| :---| :---
-alert| string| 必填| 通知内容| 这里指定了，将会覆盖上级统一指定的 alert 信息；内容为空则不展示到通知栏。支持 emoji 表情。
-sound| string| 可选| 通知提示声音| 如果无此字段，则此消息无声音提示；有此字段，如果找到了指定的声音就播放该声音，否则播放默认声音,如果此字段为空字符串，iOS 7 为默认声音，iOS 8 为无声音。(消息) 说明：JPush 官方 API Library (SDK) 会默认填充声音字段。提供另外的方法关闭声音。
-badge| int| 可选| 应用角标| 如果不填，表示不改变角标数字；否则把角标数字改为指定的数字；为 0 表示清除。JPush 官方 API Library(SDK) 会默认填充badge值为"+1",详情参考：[badge +1](http://blog.jpush.cn/ios_apns_badge_plus/)
-content-available| boolean| 可选| 推送唤醒| 推送的时候携带"content-availiable":true 说明是 Background Remote Notification，如果不携带此字段则是普通的Remote Notification。详情参考：[Background Remote Notification](../../client/ios_tutorials/#ios-7-background-remote-notification)
-category| string | 可选 | | IOS8才支持。设置APNs payload中的"category"字段值
-extras| JSON Object| 可选| 扩展字段| 这里自定义 Key/value 信息，以供业务使用。
+<div class="table-d" align="center" >
+	<table border="1" width = "100%">
+		<tr  bgcolor="#D3D3D3" >
+			<th style="padding: 0 5px;text-align:center;" >关键字</th>
+			<th style="padding: 0 5px;text-align:center;" >类型</th>
+			<th style="padding: 0 5px;text-align:center;" >值</th>
+			<th style="padding: 0 5px;text-align:center;" > </th>
+			<th style="padding: 0 5px;" >说明</th>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;text-align:center;">alert</td>
+			<td style="padding: 0 5px;text-align:center;">string</td>
+			<td style="padding: 0 5px;text-align:center;">必填</td>
+			<td style="padding: 0 5px;text-align:center;">通知内容</td>
+			<td style="padding: 0 5px;">这里指定了，将会覆盖上级统一指定的 alert 信息；内容为空则不展示到通知栏。支持 emoji 表情。</td>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;text-align:center;">sound</td>
+			<td style="padding: 0 5px;text-align:center;">string</td>
+			<td style="padding: 0 5px;text-align:center;">可选</td>
+			<td style="padding: 0 5px;text-align:center;">通知提示声音</td>
+			<td style="padding: 0 5px;">如果无此字段，则此消息无声音提示；有此字段，如果找到了指定的声音就播放该声音，否则播放默认声音,如果此字段为空字符串，iOS 7 为默认声音，iOS 8 为无声音。(消息) 说明：JPush 官方 API Library (SDK) 会默认填充声音字段。提供另外的方法关闭声音。</td>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;text-align:center;">badge</td>
+			<td style="padding: 0 5px;text-align:center;">int</td>
+			<td style="padding: 0 5px;text-align:center;">可选</td>
+			<td style="padding: 0 5px;text-align:center;">应用角标</td>
+			<td style="padding: 0 5px;">如果不填，表示不改变角标数字；否则把角标数字改为指定的数字；为 0 表示清除。JPush 官方 API Library(SDK) 会默认填充badge值为"+1",详情参考：<a href="http://blog.jpush.cn/ios_apns_badge_plus/">badge +1</a></td>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;text-align:center;">content-available</td>
+			<td style="padding: 0 5px;text-align:center;">boolean</td>
+			<td style="padding: 0 5px;text-align:center;">可选</td>
+			<td style="padding: 0 5px;text-align:center;">推送唤醒</td>
+			<td style="padding: 0 5px;">推送的时候携带"content-availiable":true 说明是 Background Remote Notification，如果不携带此字段则是普通的Remote Notification。详情参考：<a href="../../client/ios_tutorials/#ios-7-background-remote-notification">Background Remote Notification</a></td>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;text-align:center;">category</td>
+			<td style="padding: 0 5px;text-align:center;">string</td>
+			<td style="padding: 0 5px;text-align:center;">可选</td>
+			<td style="padding: 0 5px;text-align:center;"> </td>
+			<td style="padding: 0 5px;">IOS8才支持。设置APNs payload中的"category"字段值</td>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;text-align:center;">extras</td>
+			<td style="padding: 0 5px;text-align:center;">JSON Object</td>
+			<td style="padding: 0 5px;text-align:center;">可选</td>
+			<td style="padding: 0 5px;text-align:center;">扩展字段</td>
+			<td style="padding: 0 5px;">这里自定义 Key/value 信息，以供业务使用。</td>
+		</tr>
+	</table>
+</div>
+
 
 <br>
 <div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px;">
@@ -351,14 +456,48 @@ Windows Phone 平台上的通知。
 
 该通知满足 MPNs 的相关规范。当前 JPush 仅支持 toast 类型：
 
-关键字 | 类型 | 选项 | 含义 | 说明
-:---| :---| :---| :---| :---
-alert|string|必填|通知内容|会填充到 toast 类型 text2 字段上。这里指定了，将会覆盖上级统一指定的 alert 信息；内容为空则不展示到通知栏。
-title|	string|	可选	|通知标题	|会填充到 toast 类型 text1 字段上。
-_open_page	|string|	可选	|点击打开的页面名称	|点击打开的页面。会填充到推送信息的 param 字段上，表示由哪个 App 页面打开该通知。可不填，则由默认的首页打开。
-extras|	JSON Object	|可选	|扩展字段|	作为参数附加到上述打开页面的后边。
+<div class="table-d" align="center" >
+	<table border="1" width = "100%">
+		<tr  bgcolor="#D3D3D3" >
+			<th style="padding: 0 5px;text-align:center;" >关键字</th>
+			<th style="padding: 0 5px;text-align:center;" >类型</th>
+			<th style="padding: 0 5px;text-align:center;" >值</th>
+			<th style="padding: 0 5px;text-align:center;" >含义</th>
+			<th style="padding: 0 5px;" >说明</th>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;text-align:center;">alert</td>
+			<td style="padding: 0 5px;text-align:center;">string</td>
+			<td style="padding: 0 5px;text-align:center;">必填</td>
+			<td style="padding: 0 5px;text-align:center;">通知内容</td>
+			<td style="padding: 0 5px;">会填充到 toast 类型 text2 字段上。这里指定了，将会覆盖上级统一指定的 alert 信息；内容为空则不展示到通知栏。</td>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;text-align:center;">title</td>
+			<td style="padding: 0 5px;text-align:center;">string</td>
+			<td style="padding: 0 5px;text-align:center;">可选</td>
+			<td style="padding: 0 5px;text-align:center;">通知标题</td>
+			<td style="padding: 0 5px;">会填充到 toast 类型 text1 字段上。</td>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;text-align:center;">_open_page</td>
+			<td style="padding: 0 5px;text-align:center;">string</td>
+			<td style="padding: 0 5px;text-align:center;">可选</td>
+			<td style="padding: 0 5px;text-align:center;">点击打开的页面名称</td>
+			<td style="padding: 0 5px;">点击打开的页面。会填充到推送信息的 param 字段上，表示由哪个 App 页面打开该通知。可不填，则由默认的首页打开。</td>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;text-align:center;">extras</td>
+			<td style="padding: 0 5px;text-align:center;">JSON Object</td>
+			<td style="padding: 0 5px;text-align:center;">可选</td>
+			<td style="padding: 0 5px;text-align:center;">扩展字段</td>
+			<td style="padding: 0 5px;">作为参数附加到上述打开页面的后边。</td>
+		</tr>
+	</table>
+</div>
 
-
+<br>
+```
 	{
 	    "notification" : {
 	        "winphone" : {
@@ -372,7 +511,7 @@ extras|	JSON Object	|可选	|扩展字段|	作为参数附加到上述打开页�
 	        }
 	    }
 	}
-
+```
 
 
 #### message
@@ -387,12 +526,46 @@ Windows Phone 平台上，暂时不支持应用内消息。
 
 消息包含如下字段：
 
-| 关键字 | 类型| 选项 | 含义 | 说明
-| :---| :---| :---| :---| :---|
-|msg_content|	string|	必填|	消息内容本身|	 
-|title|	string|	可选|	消息标题|	 
-|content_type|	string|	可选|	消息内容类型	 
-|extras|	JSON Object|	可选|	JSON 格式的可选参数|	
+<div class="table-d" align="center" >
+	<table border="1" width = "100%">
+		<tr  bgcolor="#D3D3D3" >
+			<th style="padding: 0 5px;text-align:center;" >关键字</th>
+			<th style="padding: 0 5px;text-align:center;" >类型</th>
+			<th style="padding: 0 5px;text-align:center;" >值</th>
+			<th style="padding: 0 5px;text-align:center;" >含义</th>
+			<th style="padding: 0 5px;" >说明</th>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;text-align:center;">msg_content</td>
+			<td style="padding: 0 5px;text-align:center;">string</td>
+			<td style="padding: 0 5px;text-align:center;">必填</td>
+			<td style="padding: 0 5px;text-align:center;">通知内容</td>
+			<td style="padding: 0 5px;">会填充到 toast 类型 text2 字段上。这里指定了，将会覆盖上级统一指定的 alert 信息；内容为空则不展示到通知栏。</td>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;text-align:center;">title</td>
+			<td style="padding: 0 5px;text-align:center;">string</td>
+			<td style="padding: 0 5px;text-align:center;">可选</td>
+			<td style="padding: 0 5px;text-align:center;">通知标题</td>
+			<td style="padding: 0 5px;">会填充到 toast 类型 text1 字段上。</td>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;text-align:center;">_open_page</td>
+			<td style="padding: 0 5px;text-align:center;">string</td>
+			<td style="padding: 0 5px;text-align:center;">可选</td>
+			<td style="padding: 0 5px;text-align:center;">点击打开的页面名称</td>
+			<td style="padding: 0 5px;">点击打开的页面。会填充到推送信息的 param 字段上，表示由哪个 App 页面打开该通知。可不填，则由默认的首页打开。</td>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;text-align:center;">extras</td>
+			<td style="padding: 0 5px;text-align:center;">JSON Object</td>
+			<td style="padding: 0 5px;text-align:center;">可选</td>
+			<td style="padding: 0 5px;text-align:center;">扩展字段</td>
+			<td style="padding: 0 5px;">作为参数附加到上述打开页面的后边。</td>
+		</tr>
+	</table>
+</div>
+
 
 <br>
 <div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px;">
@@ -411,14 +584,52 @@ Windows Phone 平台上，暂时不支持应用内消息。
 
 当前包含如下几个可选项：
 
-
-关键字 | 类型 | 选项 | 含义	| 说明
-:---| :---| :---| :---| :---
-sendno	|int|	可选	|推送序号|	纯粹用来作为 API 调用标识，API 返回时被原样返回，以方便 API 调用方匹配请求与返回。
-time_to_live	|int	|可选|	离线消息保留时长|	推送当前用户不在线时，为该用户保留多长时间的离线消息，以便其上线时再次推送。默认 86400 （1 天），最长 10 天。设置为 0 表示不保留离线消息，只有推送当前在线的用户可以收到。
-override_msg_id|	long|	可选|	要覆盖的消息ID|	如果当前的推送要覆盖之前的一条推送，这里填写前一条推送的 msg_id 就会产生覆盖效果，即：1）该 msg_id 离线收到的消息是覆盖后的内容；2）即使该 msg_id Android 端用户已经收到，如果通知栏还未清除，则新的消息内容会覆盖之前这条通知；覆盖功能起作用的时限是：1 天。如果在覆盖指定时限内该 msg_id 不存在，则返回 1003 错误，提示不是一次有效的消息覆盖操作，当前的消息不会被推送。
-apns_production|	boolean|	可选|	APNs是否生产环境|	True 表示推送生产环境，False 表示要推送开发环境；如果不指定则为推送生产环境。JPush 官方 API LIbrary (SDK) 默认设置为推送 “开发环境”。
-big_push_duration|	int|	可选|	定速推送时长(分钟)|	又名缓慢推送，把原本尽可能快的推送速度，降低下来，给定的n分钟内，均匀地向这次推送的目标用户推送。最大值为1400.未设置则不是定速推送。
+<div class="table-d" align="center" >
+	<table border="1" width = "100%">
+		<tr  bgcolor="#D3D3D3" >
+			<th style="padding: 0 5px;text-align:center;" >关键字</th>
+			<th style="padding: 0 5px;text-align:center;" >类型</th>
+			<th style="padding: 0 5px;text-align:center;" >值</th>
+			<th style="padding: 0 5px;text-align:center;" >含义</th>
+			<th style="padding: 0 5px;" >说明</th>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;text-align:center;">sendno</td>
+			<td style="padding: 0 5px;text-align:center;">int</td>
+			<td style="padding: 0 5px;text-align:center;">可选</td>
+			<td style="padding: 0 5px;text-align:center;">推送序号</td>
+			<td style="padding: 0 5px;">纯粹用来作为 API 调用标识，API 返回时被原样返回，以方便 API 调用方匹配请求与返回。</td>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;text-align:center;">time_to_live</td>
+			<td style="padding: 0 5px;text-align:center;">int</td>
+			<td style="padding: 0 5px;text-align:center;">可选</td>
+			<td style="padding: 0 5px;text-align:center;">离线消息保留时长</td>
+			<td style="padding: 0 5px;">推送当前用户不在线时，为该用户保留多长时间的离线消息，以便其上线时再次推送。默认 86400 （1 天），最长 10 天。设置为 0 表示不保留离线消息，只有推送当前在线的用户可以收到。</td>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;text-align:center;">override_msg_id</td>
+			<td style="padding: 0 5px;text-align:center;">long</td>
+			<td style="padding: 0 5px;text-align:center;">可选</td>
+			<td style="padding: 0 5px;text-align:center;">要覆盖的消息ID</td>
+			<td style="padding: 0 5px;">如果当前的推送要覆盖之前的一条推送，这里填写前一条推送的 msg_id 就会产生覆盖效果，即：1）该 msg_id 离线收到的消息是覆盖后的内容；2）即使该 msg_id Android 端用户已经收到，如果通知栏还未清除，则新的消息内容会覆盖之前这条通知；覆盖功能起作用的时限是：1 天。如果在覆盖指定时限内该 msg_id 不存在，则返回 1003 错误，提示不是一次有效的消息覆盖操作，当前的消息不会被推送。</td>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;text-align:center;">apns_production</td>
+			<td style="padding: 0 5px;text-align:center;">boolean</td>
+			<td style="padding: 0 5px;text-align:center;">可选</td>
+			<td style="padding: 0 5px;text-align:center;">APNs是否生产环境</td>
+			<td style="padding: 0 5px;">True 表示推送生产环境，False 表示要推送开发环境；如果不指定则为推送生产环境。JPush 官方 API LIbrary (SDK) 默认设置为推送 “开发环境”。</td>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;text-align:center;">big_push_duration</td>
+			<td style="padding: 0 5px;text-align:center;">int</td>
+			<td style="padding: 0 5px;text-align:center;">可选</td>
+			<td style="padding: 0 5px;text-align:center;">定速推送时长(分钟)</td>
+			<td style="padding: 0 5px;">又名缓慢推送，把原本尽可能快的推送速度，降低下来，给定的n分钟内，均匀地向这次推送的目标用户推送。最大值为1400.未设置则不是定速推送。</td>
+		</tr>
+	</table>
+</div>
 
 
 
@@ -430,19 +641,76 @@ big_push_duration|	int|	可选|	定速推送时长(分钟)|	又名缓慢推送�
 
 ##### 业务返回码
 
-
-Code |	描述 |	详细解释 |	实际提示信息 |	HTTP Status Code
-:---| :---| :---| :---| :---
-1000|系统内部错误|服务器端内部逻辑错误，请稍后重试。||500
-1001|只支持 HTTP Post 方法	|不支持 Get 方法。||405
-1002|	缺少了必须的参数|	必须改正。||	 	400
-1003|	参数值不合法|	必须改正。||	 	400
-1004|	验证失败	|必须改正。详情请看：[调用验证](./#_5)||	 	401
-1005|	消息体太大|必须改正。<p>通知 “iOS”:{ } 及大括号内的总体长度不超过：2000个字节（包括自定义参数和符号）。JPush 的 消息部分长度不超过 1K 字节。||400
-1008|	app_key参数非法|	必须改正。||	 	400
-1011|	没有满足条件的推送目标	|  请检查audience|| 	 	400
-1020|	只支持 HTTPS 请求|	必须改正。||	 	404
-1030|内部服务超时|稍后重试。 || 503
+<div class="table-d" align="center" >
+	<table border="1" width = "100%">
+		<tr  bgcolor="#D3D3D3" >
+			<th style="padding: 0 5px;text-align:center;" >Code</th>
+			<th style="padding: 0 5px;text-align:center;" >描述</th>
+			<th style="padding: 0 5px;" >详细解释</th>
+			<th style="padding: 0 5px;text-align:center;" >HTTP Status Code</th>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;text-align:center;">1000</td>
+			<td style="padding: 0 5px;text-align:center;">系统内部错误</td>
+			<td style="padding: 0 5px;">服务器端内部逻辑错误，请稍后重试。</td>
+			<td style="padding: 0 5px;text-align:center;">500</td>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;text-align:center;">1001</td>
+			<td style="padding: 0 5px;text-align:center;">只支持 HTTP Post 方法</td>
+			<td style="padding: 0 5px;">不支持 Get 方法。</td>
+			<td style="padding: 0 5px;text-align:center;">405</td>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;text-align:center;">1002</td>
+			<td style="padding: 0 5px;text-align:center;">缺少了必须的参数</td>
+			<td style="padding: 0 5px;">必须改正</td>
+			<td style="padding: 0 5px;text-align:center;">400</td>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;text-align:center;">1003</td>
+			<td style="padding: 0 5px;text-align:center;">参数值不合法</td>
+			<td style="padding: 0 5px;">必须改正</td>
+			<td style="padding: 0 5px;text-align:center;">400</td>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;text-align:center;">1004</td>
+			<td style="padding: 0 5px;text-align:center;">验证失败</td>
+			<td style="padding: 0 5px;">必须改正。详情请看：<a href="./#_5">调用验证</a></td>
+			<td style="padding: 0 5px;text-align:center;">401</td>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;text-align:center;">1005</td>
+			<td style="padding: 0 5px;text-align:center;">消息体太大</td>
+			<td style="padding: 0 5px;">必须改正。通知 “iOS”:{ } 及大括号内的总体长度不超过：2000个字节（包括自定义参数和符号）。JPush 的 消息部分长度不超过 1K 字节。</td>
+			<td style="padding: 0 5px;text-align:center;">400</td>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;text-align:center;">1008</td>
+			<td style="padding: 0 5px;text-align:center;">app_key参数非法</td>
+			<td style="padding: 0 5px;">必须改正</td>
+			<td style="padding: 0 5px;text-align:center;">400</td>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;text-align:center;">1011</td>
+			<td style="padding: 0 5px;text-align:center;">没有满足条件的推送目标</td>
+			<td style="padding: 0 5px;">请检查audience</td>
+			<td style="padding: 0 5px;text-align:center;">400</td>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;text-align:center;">1020</td>
+			<td style="padding: 0 5px;text-align:center;">只支持 HTTPS 请求</td>
+			<td style="padding: 0 5px;">必须改正</td>
+			<td style="padding: 0 5px;text-align:center;">404</td>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;text-align:center;">1030</td>
+			<td style="padding: 0 5px;text-align:center;">内部服务超时</td>
+			<td style="padding: 0 5px;">稍后重试</td>
+			<td style="padding: 0 5px;text-align:center;">503</td>
+		</tr>
+	</table>
+</div>
 
 
 ### 推送校验 API
