@@ -191,32 +191,32 @@ JSON Object
   <table border="1" width = "100%">
     <tr  bgcolor="#D3D3D3" >
       <th style="padding: 0 5px;text-align:center;" >Code</th>
-      <th style="padding: 0 5px;text-align:center;" >描述</th>
-      <th style="padding: 0 5px;text-align:center;" >详细解释</th>
+      <th style="padding: 0 5px;" >描述</th>
+      <th style="padding: 0 5px;" >详细解释</th>
     </tr>
     <tr >
       <td style="padding: 0 5px;text-align:center;">10</td>
-      <td style="padding: 0 5px;text-align:center;">系统内部错误</td>
+      <td style="padding: 0 5px;">系统内部错误</td>
       <td style="padding: 0 5px;">系统内部错误</a></td>
     </tr>
     <tr >
       <td style="padding: 0 5px;text-align:center;">2003</td>
-      <td style="padding: 0 5px;text-align:center;">无权使用此接口</td>
+      <td style="padding: 0 5px;">无权使用此接口</td>
       <td style="padding: 0 5px;">必须改正，详情请看：<a href="./#_1">调用验证说明。</a></td>
     </tr>
     <tr >
       <td style="padding: 0 5px;text-align:center;">3001</td>
-      <td style="padding: 0 5px;text-align:center;">HTTP Basic authorization 失败。</td>
+      <td style="padding: 0 5px;">HTTP Basic authorization 失败。</td>
       <td style="padding: 0 5px;">请参考 API 文档相关说明</td>
     </tr>
     <tr >
       <td style="padding: 0 5px;text-align:center;">3004</td>
-      <td style="padding: 0 5px;text-align:center;">time_unit与start参数值不匹配</td>
+      <td style="padding: 0 5px;">time_unit与start参数值不匹配</td>
       <td style="padding: 0 5px;">必须修正，详情请看：<a href="./#_1">调用验证说明。</a></td>
     </tr>
     <tr >
       <td style="padding: 0 5px;text-align:center;">3005</td>
-      <td style="padding: 0 5px;text-align:center;">只支持查询60天以内的用户信息</td>
+      <td style="padding: 0 5px;">只支持查询60天以内的用户信息</td>
       <td style="padding: 0 5px;"></td>
     </tr>
   </table>
