@@ -12,14 +12,14 @@ JPush SDK 提供的推送服务是默认开启的。
 
 开发者App可以通过调用停止推送服务API来停止极光推送服务。当又需要使用极光推送服务时，则必须要调用恢复推送服务 API。
 
-```
- 本功能是一个完全本地的状态操作。也就是说：停止推送服务的状态不会保存到服务器上。
- 如果停止推送服务后，开发者App被重新安装，或者被清除数据，
- JPush SDK 会恢复正常的默认行为。（因为保存在本地的状态数据被清除掉了）。
- 
- 本功能其行为类似于网络中断的效果，即：推送服务停止期间推送的消息，
- 恢复推送服务后，如果推送的消息还在保留的时长范围内，则客户端是会收到离线消息。
-```
+<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px;">
+<p> 本功能是一个完全本地的状态操作。也就是说：停止推送服务的状态不会保存到服务器上。
+ <p>如果停止推送服务后，开发者App被重新安装，或者被清除数据，
+ <p>JPush SDK 会恢复正常的默认行为。（因为保存在本地的状态数据被清除掉了）。
+<br> 
+ <p>本功能其行为类似于网络中断的效果，即：推送服务停止期间推送的消息，
+ <p>恢复推送服务后，如果推送的消息还在保留的时长范围内，则客户端是会收到离线消息。
+</div>
 
 #### API - stopPush
 
@@ -571,7 +571,7 @@ SDK 对自定义消息，只是传递，不会有任何界面上的展示。
 	<table border="1" width = "100%">
 		<tr  bgcolor="#D3D3D3" >
 			<th style="padding: 0 5px;text-align:center;" >Code</th>
-			<th style="padding: 0 5px;text-align:center;" >描述</th>
+			<th style="padding: 0 5px;" >描述</th>
 			<th style="padding: 0 5px;" >详细解释</th>
 		</tr>
 		<tr >
@@ -1030,7 +1030,7 @@ if (JPushInterface.ACTION_RICHPUSH_CALLBACK.equals(intent.getAction())) {
 	<table border="1" width = "100%">
 		<tr  bgcolor="#D3D3D3" >
 			<th style="padding: 0 5px;text-align:center;" >Code</th>
-			<th style="padding: 0 5px;text-align:center;" >描述</th>
+			<th style="padding: 0 5px;" >描述</th>
 		</tr>
 		<tr >
 			<td style="padding: 0 5px;text-align:center;">-997</td>
@@ -1106,13 +1106,13 @@ else if(JPushInterface.ACTION_CONNECTION_CHANGE.equals(intent.getAction())) {
 ###功能说明
 通过极光推送的SDK，开发者只需要简单调用几个接口，便可以在应用中定时发送本地通知
 
-```
-本地通知API不依赖于网络，无网条件下依旧可以触发
-
-本地通知与网络推送的通知是相互独立的，不受保留最近通知条数上限的限制
-
-本地通知的定时时间是自发送时算起的，不受中间关机等操作的影响
-```
+<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px;">
+<p>本地通知API不依赖于网络，无网条件下依旧可以触发
+<br>
+<p>本地通知与网络推送的通知是相互独立的，不受保留最近通知条数上限的限制
+<br>
+<p>本地通知的定时时间是自发送时算起的，不受中间关机等操作的影响
+</div>
 
 ### API  addLocalNotification 添加一个本地通知
 

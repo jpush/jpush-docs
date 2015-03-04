@@ -216,7 +216,7 @@
   <table border="1" width = "100%">
     <tr  bgcolor="#D3D3D3" >
       <th style="padding: 0 5px;text-align:center;" >Code</th>
-      <th style="padding: 0 5px;text-align:center;" >描述</th>
+      <th style="padding: 0 5px;" >描述</th>
       <th style="padding: 0 5px;" >详细解释</th>
     </tr>
     <tr >
