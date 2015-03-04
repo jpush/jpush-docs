@@ -150,10 +150,10 @@ public  static void RegisterNotification()
 
 ## 标签与别名 API 
 
-```
- 温馨提示，设置标签别名请注意处理call back结果。
- 只有call back 返回值为 0 才设置成功，才可以向目标推送。否则服务器 API 会返回1011错误。
-```
+<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">
+ <p>温馨提示，设置标签别名请注意处理call back结果。
+ <p>只有call back 返回值为 0 才设置成功，才可以向目标推送。否则服务器 API 会返回1011错误。
+</div>
 
 提供相关 API 用来设置别名（alias）与标签（tags）。
 
@@ -220,14 +220,15 @@ API 可以在 App 里任何地方调用。
 
 如果总数量超出最大限制则返回最大数量的靠前的可用tags。
 
-```
- 使用建议
- 设置 tags 时，如果其中一个 tag 无效，则整个设置过程失败。
- 
- 如果 App 的 tags 会在运行过程中动态设置，并且存在对 JPush SDK tag 规定的无效字符，则有可能一个 tag 无效导致这次调用里所有的 tags 更新失败。
- 
- 这时你可以调用本方法 FilterValidTags 来过滤掉无效的 tags，得到有效的 tags，再调用 JPush SDK 的 set tags / alias 方法。
-```
+<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">
+ <p>使用建议:
+ 	<br>
+<p>设置 tags 时，如果其中一个 tag 无效，则整个设置过程失败。
+<br>
+<p>如果 App 的 tags 会在运行过程中动态设置，并且存在对 JPush SDK tag 规定的无效字符，则有可能一个 tag 无效导致这次调用里所有的 tags 更新失败。
+ <br>
+ <p>这时你可以调用本方法 FilterValidTags 来过滤掉无效的 tags，得到有效的 tags，再调用 JPush SDK 的 set tags / alias 方法。
+</div>
 
 #### 支持的版本
 开始支持的版本：1.0.0

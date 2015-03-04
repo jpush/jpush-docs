@@ -4,10 +4,12 @@
 
 #### 功能说明
 
-```
- 温馨提示，设置标签别名请注意处理call back结果。
- 只有call back 返回值为 0 才设置成功，才可以向目标推送。否则服务器 API 会返回1011错误。所有回调函数都在主线程运行。
-```
+<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">
+<p>温馨提示，设置标签别名请注意处理call back结果。
+<p>只有call back 返回值为 0 才设置成功，才可以向目标推送。否则服务器 API 会返回1011错误。所有回调函数都在主线程运行。
+</div>
+
+<br>
 
 提供几个相关 API 用来设置别名（alias）与标签（tags）。
 
@@ -97,13 +99,13 @@
 
 该方法是 setTagsWithAlias (with Callback) 的简化版本，用于只变更标签的情况。
 
-```
- 使用建议
-
- 如果待设置的 alias / tags 是动态的，有可能在调用 setTagsWithAlias 时因为 alias / tags 无效而整调用失败。
-
- 调用此方法只设置 tags，可以排除可能的无效的 alias 对本次调用的影响。
-```
+<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">
+<p>使用建议
+<br>
+<p>如果待设置的 alias / tags 是动态的，有可能在调用 setTagsWithAlias 时因为 alias / tags 无效而整调用失败。
+<br>
+<p>调用此方法只设置 tags，可以排除可能的无效的 alias 对本次调用的影响。
+</div>
 
 ##### 支持的版本
 
@@ -180,15 +182,15 @@
 
 如果总数量超出最大限制则返回最大数量的靠前的可用tags。
 
-```
- 使用建议
-
- 设置 tags 时，如果其中一个 tag 无效，则整个设置过程失败。
-
- 如果 App 的 tags 会在运行过程中动态设置，并且存在对 JPush SDK tag 规定的无效字符，则有可能一个 tag 无效导致这次调用里所有的 tags 更新失败。
-
- 这时你可以调用本方法 filterValidTags 来过滤掉无效的 tags，得到有效的 tags，再调用 JPush SDK 的 set tags / alias 方法。
-```
+<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">
+<p>使用建议
+<br>
+ <p>设置 tags 时，如果其中一个 tag 无效，则整个设置过程失败。
+<br>
+ <p>如果 App 的 tags 会在运行过程中动态设置，并且存在对 JPush SDK tag 规定的无效字符，则有可能一个 tag 无效导致这次调用里所有的 tags 更新失败。
+<br>
+ <p>这时你可以调用本方法 filterValidTags 来过滤掉无效的 tags，得到有效的 tags，再调用 JPush SDK 的 set tags / alias 方法。
+</div>
 
 ##### 支持的版本
 
@@ -210,17 +212,61 @@
 
 #### 错误码定义
 
-| Code | 描述 | 详细解释 
-| :---- | :---- | :----- 
-|6001|无效的设置，tag/alias 不应参数都为 null| 
-|6002|设置超时 |建议重试 
-|6003|alias 字符串不合法 |有效的别名、标签组成：字母（区分大小写）、数字、下划线、汉字。 
-|6004|alias超长。最多 40个字节 |中文 UTF-8 是 3 个字节 
-|6005|某一个 tag 字符串不合法 |有效的别名、标签组成：字母（区分大小写）、数字、下划线、汉字。
-|6006|某一个 tag 超长。一个 tag 最多 40个字节 |中文 UTF-8 是 3 个字节 
-|6007|tags 数量超出限制。最多 100个 |这是一台设备的限制。一个应用全局的标签数量无限制。 
-|6008|tag/alias 超出总长度限制。总长度最多 1K 字节 | 
-|6011|10s内设置tag或alias大于3次 |短时间内操作过于频繁
+<div class="table-d" align="center" >
+  <table border="1" width = "100%">
+    <tr  bgcolor="#D3D3D3" >
+      <th style="padding: 0 5px;text-align:center;" >Code</th>
+      <th style="padding: 0 5px;text-align:center;" >描述</th>
+      <th style="padding: 0 5px;" >详细解释</th>
+    </tr>
+    <tr >
+      <td style="padding: 0 5px;text-align:center;">6001</td>
+      <td style="padding: 0 5px;">无效的设置，tag/alias 不应参数都为 null</td>
+      <td style="padding: 0 5px;"></td>
+    </tr>
+    <tr >
+      <td style="padding: 0 5px;text-align:center;">6002</td>
+      <td style="padding: 0 5px;">设置超时</td>
+      <td style="padding: 0 5px;">建议重试</td>
+    </tr>
+    <tr >
+      <td style="padding: 0 5px;text-align:center;">6003</td>
+      <td style="padding: 0 5px;">alias 字符串不合法</td>
+      <td style="padding: 0 5px;">有效的别名、标签组成：字母（区分大小写）、数字、下划线、汉字。</td>
+    </tr>
+    <tr >
+      <td style="padding: 0 5px;text-align:center;">6004</td>
+      <td style="padding: 0 5px;">alias超长。最多 40个字节</td>
+      <td style="padding: 0 5px;">中文 UTF-8 是 3 个字节</td>
+    </tr>
+    <tr >
+      <td style="padding: 0 5px;text-align:center;">6005</td>
+      <td style="padding: 0 5px;">某一个 tag 字符串不合法</td>
+      <td style="padding: 0 5px;">有效的别名、标签组成：字母（区分大小写）、数字、下划线、汉字。</td>
+    </tr>
+    <tr >
+      <td style="padding: 0 5px;text-align:center;">6006</td>
+      <td style="padding: 0 5px;">某一个 tag 超长。一个 tag 最多 40个字节</td>
+      <td style="padding: 0 5px;">中文 UTF-8 是 3 个字节</td>
+    </tr>
+    <tr >
+      <td style="padding: 0 5px;text-align:center;">6007</td>
+      <td style="padding: 0 5px;">tags 数量超出限制。最多 100个</td>
+      <td style="padding: 0 5px;">这是一台设备的限制。一个应用全局的标签数量无限制。</td>
+    </tr>
+    <tr >
+      <td style="padding: 0 5px;text-align:center;">6008</td>
+      <td style="padding: 0 5px;">tag/alias 超出总长度限制</td>
+      <td style="padding: 0 5px;">总长度最多 1K 字节</td>
+    </tr>
+    <tr >
+      <td style="padding: 0 5px;text-align:center;">6011</td>
+      <td style="padding: 0 5px;">10s内设置tag或alias大于3次</td>
+      <td style="padding: 0 5px;">短时间内操作过于频繁</td>
+    </tr>
+  </table>
+</div>
+
 
 ### 获取 APNs（通知） 推送内容
 
@@ -348,9 +394,11 @@ r1.7.0 开始支持。
 
 +(NSString *)registrationID
     
-```
- 开发者在自定义的监听kJPFNetworkDidRegisterNotification时也可以通过"RegistrationID"这个key值来获取对应的 RegistrationID。
-```
+<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">
+<p>温馨提示：
+  <br>
+<p>开发者在自定义的监听kJPFNetworkDidRegisterNotification时也可以通过"RegistrationID"这个key值来获取对应的 RegistrationID。
+</div>
 
 #### 附加说明
 
@@ -358,9 +406,11 @@ r1.7.0 开始支持。
 
 可以通过 RegistrationID 来推送消息和通知， 参考文档 Push API v2， 当 receiver_type = 5 并且设置 receiver_value 为 RegistrationID 时候即可根据 RegistrationID 推送。
 
-```
- 注：要使用此功能，客户端 App 一定要集成有 r1.7.0 及以上版本的 JPush IOS SDK
-```
+<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">
+<p>注：
+  <br>
+  <p>要使用此功能，客户端 App 一定要集成有 r1.7.0 及以上版本的 JPush IOS SDK
+</div>
 
 ### 页面的统计
 
@@ -390,9 +440,9 @@ r1.7.0 版本开始。
 
 应在所有的需要统计得页面得 viewWillAppear 和 viewWillDisappear 加入 startLogPageView 和 stopLogPageView 来统计当前页面的停留时间。
 
-```
- 或者直接使用 beginLogPageView 来自定义加入页面和时间信息。
-```
+<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">
+<p>或者直接使用 beginLogPageView 来自定义加入页面和时间信息。
+</div>
 
 #### 代码示例
 
@@ -414,9 +464,13 @@ r1.7.0 版本开始。
 
 ### 获取 OpenUDID
 
+使用
 
-> Open UDID 已经过期，将不能用于唯一标识 iOS 用户，建议及早放弃使用。
+<div style="font-size:13px;background: #ffa07a;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">
+<p>Open UDID 已经过期，将不能用于唯一标识 iOS 用户，建议及早放弃使用。
+</div>
 
+<br>
 
 Apple 现在对 Device UDID 限制使用，我们使用 [OpenUDID][1] 的方案来定义 UDID。
 
@@ -450,9 +504,11 @@ JPush封装badge功能，允许应用上传badge值至JPush服务器，由JPush�
 
 * value 取值范围：[0,99999]
 
-```
-  设置badge值，本地仍须调用UIApplication:setApplicationIconBadgeNumber函数
-```
+<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">
+<p>设置badge值，本地仍须调用UIApplication:setApplicationIconBadgeNumber函数
+</div>
+
+<br>
 
 * 返回值 
      * 在value的取值区间内返回 TRUE，否则返回FALSE
