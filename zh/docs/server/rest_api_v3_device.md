@@ -1,4 +1,4 @@
-<h1>Device-API</h1>
+# Device-API
 
 <div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px;">
 

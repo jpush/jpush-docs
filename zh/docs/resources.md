@@ -229,7 +229,7 @@
 + [项目地址](https://github.com/issacsonjj/JPushDemo)
 
 
-### 更新
+### 更新记录
 
 [了解最近更新][11]
 

@@ -14,7 +14,6 @@ JPush 提供遵从 REST 规范的 HTTP API，以供开发者远程调用 JPush �
 
 
 ### REST API 资源列表
-<a name="api_resources"></a>
 
 | 名称 | 	资源 | Base URL	 |描述|
 | ------------ | ------------- | ------------ |----------------|
@@ -24,7 +23,6 @@ JPush 提供遵从 REST 规范的 HTTP API，以供开发者远程调用 JPush �
 | [REST API v2 - Report](../rest_api_v2_report) | GET /v2/received  | https://report.jpush.cn | 获取统计数据 - 消息送达 |
 
 ### 黑名单
-<a name="black_list"></a>
 
 如果某应用被认为是恶意推送，或者其 API 调用非法，其 AppKey 会被加入黑名单。
 
@@ -40,7 +38,7 @@ JPush 提供遵从 REST 规范的 HTTP API，以供开发者远程调用 JPush �
 如果您的应用被加入黑名单，请发邮件到 <support@jpush.cn> 以进一步沟通协调。
 
 ### API 频率控制
-<a name="rate_limiting"></a>
+
 JPush API 对访问次数，具有频率控制。即一定的时间窗口内，API 允许调用的次数是有限制的。
 
 <div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px;  padding-bottom: 0;margin-bottom: 0;">
@@ -56,10 +54,11 @@ JPush API 对访问次数，具有频率控制。即一定的时间窗口内，A
 
 频率控制基于 AppKey 来定义，每个 AppKey 有一个基础的调用频率限制数量。免费版本如下表：
 
-|API 类型|频率（次/分钟）|
-| ---- | ---- |
-|[Push API v3](../rest_api_v3_push)|600|
-|[Report-API](../rest_api_v3_report)|2400|
+| API 类型                            | 频率（次/分钟） |
+|-------------------------------------|-----------------|
+| [Push API v3](../rest_api_v3_push)  | 600             |
+| [Report-API](../rest_api_v3_report) | 2400            |
+| [Device-API](../rest_api_v3_device) | 1200            |
 
 收费版本根据终端用户规模的不同，具有不同级别的频率。如有需要，请联系商务，了解更多。
 
