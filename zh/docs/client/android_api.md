@@ -12,14 +12,14 @@ JPush SDK 提供的推送服务是默认开启的。
 
 开发者App可以通过调用停止推送服务API来停止极光推送服务。当又需要使用极光推送服务时，则必须要调用恢复推送服务 API。
 
-```
- 本功能是一个完全本地的状态操作。也就是说：停止推送服务的状态不会保存到服务器上。
- 如果停止推送服务后，开发者App被重新安装，或者被清除数据，
- JPush SDK 会恢复正常的默认行为。（因为保存在本地的状态数据被清除掉了）。
- 
- 本功能其行为类似于网络中断的效果，即：推送服务停止期间推送的消息，
- 恢复推送服务后，如果推送的消息还在保留的时长范围内，则客户端是会收到离线消息。
-```
+<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px;">
+<p> 本功能是一个完全本地的状态操作。也就是说：停止推送服务的状态不会保存到服务器上。
+ <p>如果停止推送服务后，开发者App被重新安装，或者被清除数据，
+ <p>JPush SDK 会恢复正常的默认行为。（因为保存在本地的状态数据被清除掉了）。
+<br> 
+ <p>本功能其行为类似于网络中断的效果，即：推送服务停止期间推送的消息，
+ <p>恢复推送服务后，如果推送的消息还在保留的时长范围内，则客户端是会收到离线消息。
+</div>
 
 #### API - stopPush
 
@@ -484,13 +484,13 @@ SDK 对自定义消息，只是传递，不会有任何界面上的展示。
 
 需要理解的是，这个接口是覆盖逻辑，而不是增量逻辑。即新的调用会覆盖之前的设置。
 
-```
-使用建议
- 
- 如果待设置的 alias / tags 是动态的，有可能在调用 setAliasAndTags 时因为 alias / tags 无效而整调用失败。
- 
- 调用此方法只设置 tags，可以排除可能无效的 alias 对本次调用的影响。
-```
+<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px;">
+<p>使用建议
+ <br>
+ <p>如果待设置的 alias / tags 是动态的，有可能在调用 setAliasAndTags 时因为 alias / tags 无效而整调用失败。
+ <br>
+ <p>调用此方法只设置 tags，可以排除可能无效的 alias 对本次调用的影响。
+</div>
 
 #### 支持的版本
 
@@ -519,17 +519,17 @@ SDK 对自定义消息，只是传递，不会有任何界面上的展示。
 
 ### Method - filterValidTag
 
-```
-使用建议
- 
- 设置 tags 时，如果其中一个 tag 无效，则整个设置过程失败。
- 
- 如果 App 的 tags 会在运行过程中动态设置，并且存在对 JPush SDK tag 规定的无效字符，
- 则有可能一个 tag 无效导致这次调用里所有的 tags 更新失败。
- 
- 这时你可以调用本方法 filterValidTags 来过滤掉无效的 tags，得到有效的 tags，
- 再调用 JPush SDK 的 set tags / alias 方法。
-```
+<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px;">
+<p>使用建议
+ <br>
+ <p>设置 tags 时，如果其中一个 tag 无效，则整个设置过程失败。
+ <br>
+ <p>如果 App 的 tags 会在运行过程中动态设置，并且存在对 JPush SDK tag 规定的无效字符，
+ <p>则有可能一个 tag 无效导致这次调用里所有的 tags 更新失败。
+ <br>
+ <p>这时你可以调用本方法 filterValidTags 来过滤掉无效的 tags，得到有效的 tags，
+ <p>再调用 JPush SDK 的 set tags / alias 方法。
+</div>
 
 #### 支持的版本
 
@@ -567,17 +567,64 @@ SDK 对自定义消息，只是传递，不会有任何界面上的展示。
 
 ### 错误码定义
 
-Code|描述|详细解释
---- | --- |
-6001|无效的设置，tag/alias 不应参数都为 null|
-6002|设置超时	|建议重试
-6003|alias 字符串不合法	|有效的别名、标签组成：字母（区分大小写）、数字、下划线、汉字。
-6004|alias超长。最多 40个字节	|中文 UTF-8 是 3 个字节
-6005|某一个 tag 字符串不合法	|有效的别名、标签组成：字母（区分大小写）、数字、下划线、汉字。
-6006|某一个 tag 超长。一个 tag 最多 40个字节	|中文 UTF-8 是 3 个字节
-6007|tags 数量超出限制。最多 100个	|这是一台设备的限制。一个应用全局的标签数量无限制。
-6008|tag/alias 超出总长度限制。总长度最多 1K 字节	|
-6011|10s内设置tag或alias大于3次|短时间内操作过于频繁
+<div class="table-d" align="center" >
+	<table border="1" width = "100%">
+		<tr  bgcolor="#D3D3D3" >
+			<th style="padding: 0 5px;text-align:center;" >Code</th>
+			<th style="padding: 0 5px;" >描述</th>
+			<th style="padding: 0 5px;" >详细解释</th>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;text-align:center;">6001</td>
+			<td style="padding: 0 5px;">无效的设置，tag/alias 不应参数都为 null</td>
+			<td style="padding: 0 5px;"></td>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;text-align:center;">6002</td>
+			<td style="padding: 0 5px;">设置超时</td>
+			<td style="padding: 0 5px;">建议重试</td>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;text-align:center;">6003</td>
+			<td style="padding: 0 5px;">alias 字符串不合法</td>
+			<td style="padding: 0 5px;">有效的别名、标签组成：字母（区分大小写）、数字、下划线、汉字。</td>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;text-align:center;">6004</td>
+			<td style="padding: 0 5px;">alias超长。最多 40个字节</td>
+			<td style="padding: 0 5px;">中文 UTF-8 是 3 个字节</td>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;text-align:center;">6005</td>
+			<td style="padding: 0 5px;">某一个 tag 字符串不合法</td>
+			<td style="padding: 0 5px;">有效的别名、标签组成：字母（区分大小写）、数字、下划线、汉字。</td>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;text-align:center;">6006</td>
+			<td style="padding: 0 5px;">某一个 tag 超长。一个 tag 最多 40个字节</td>
+			<td style="padding: 0 5px;">中文 UTF-8 是 3 个字节</td>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;text-align:center;">6007</td>
+			<td style="padding: 0 5px;">tags 数量超出限制。最多 100个</td>
+			<td style="padding: 0 5px;">这是一台设备的限制。一个应用全局的标签数量无限制。</td>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;text-align:center;">6008</td>
+			<td style="padding: 0 5px;">tag/alias 超出总长度限制</td>
+			<td style="padding: 0 5px;">总长度最多 1K 字节</td>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;text-align:center;">6011</td>
+			<td style="padding: 0 5px;">10s内设置tag或alias大于3次</td>
+			<td style="padding: 0 5px;">短时间内操作过于频繁</td>
+		</tr>
+	</table>
+</div>
+
+
+
+
 ###  相关文档
 
 + Android[别名与标签使用教程](../android_api/#api_1)
@@ -978,14 +1025,35 @@ if (JPushInterface.ACTION_RICHPUSH_CALLBACK.equals(intent.getAction())) {
 
 
 ## 客户端错误码定义
-|错误码|错误描述|
-| --- | --- |
-|-997	|注册失败（一般是由于没有网络造成的）<p>如果确保设备网络正常，还是一直遇到此问题，则还有另外一个原因：JPush 服务器端拒绝注册。<p>而这个的原因一般是：你当前的 App 的 Android 包名，以及 appKey ，与你在 Portal 上注册的应用的 Android 包名与 AppKey 不相同。|
-|1008  |AppKey非法|
-|1005	|包名和AppKey不匹配|
-|-996	|网络连接断开<p>如果确保设备网络正常，可能是由于包名不正确，服务器强制断开客户端的连接。|
-|-994	|网络连接超时|
 
+<div class="table-d" align="center" >
+	<table border="1" width = "100%">
+		<tr  bgcolor="#D3D3D3" >
+			<th style="padding: 0 5px;text-align:center;" >Code</th>
+			<th style="padding: 0 5px;" >描述</th>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;text-align:center;">-997</td>
+			<td style="padding: 0 5px;">注册失败（一般是由于没有网络造成的）
+如果确保设备网络正常，还是一直遇到此问题，则还有另外一个原因：JPush 服务器端拒绝注册。
+
+而这个的原因一般是：你当前的 App 的 Android 包名，以及 appKey ，与你在 Portal 上注册的应用的 Android 包名与 AppKey 不相同。</td>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;text-align:center;">1008</td>
+			<td style="padding: 0 5px;">AppKey非法</td>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;text-align:center;">-996</td>
+			<td style="padding: 0 5px;">网络连接断开
+如果确保设备网络正常，可能是由于包名不正确，服务器强制断开客户端的连接。</td>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;text-align:center;">-994</td>
+			<td style="padding: 0 5px;">网络连接超时</td>
+		</tr>
+	</table>
+</div>
 
 
 
@@ -1038,13 +1106,13 @@ else if(JPushInterface.ACTION_CONNECTION_CHANGE.equals(intent.getAction())) {
 ###功能说明
 通过极光推送的SDK，开发者只需要简单调用几个接口，便可以在应用中定时发送本地通知
 
-```
-本地通知API不依赖于网络，无网条件下依旧可以触发
-
-本地通知与网络推送的通知是相互独立的，不受保留最近通知条数上限的限制
-
-本地通知的定时时间是自发送时算起的，不受中间关机等操作的影响
-```
+<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px;">
+<p>本地通知API不依赖于网络，无网条件下依旧可以触发
+<br>
+<p>本地通知与网络推送的通知是相互独立的，不受保留最近通知条数上限的限制
+<br>
+<p>本地通知的定时时间是自发送时算起的，不受中间关机等操作的影响
+</div>
 
 ### API  addLocalNotification 添加一个本地通知
 
