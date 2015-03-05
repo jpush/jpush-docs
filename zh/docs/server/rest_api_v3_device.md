@@ -315,25 +315,25 @@ DELETE /v3/aliases/{alias_value}?platform=android,ios
       <th style="padding: 0 5px;text-align:center;" >HTTP Status Code</th>
     </tr>
     <tr >
-      <td style="padding: 0 5px;text-align:center;">7000</td>
+      <td style="padding: 0 5px;">7000</td>
       <td style="padding: 0 5px;">内部错误</td>
       <td style="padding: 0 5px;">系统内部错误</a></td>
       <td style="padding: 0 5px;text-align:center;">500</td>
     </tr>
     <tr >
-      <td style="padding: 0 5px;text-align:center;">7001</td>
+      <td style="padding: 0 5px;">7001</td>
       <td style="padding: 0 5px;">校验信息为空</td>
       <td style="padding: 0 5px;">必须改正，详情请看：<a href="./#_1">调用验证说明。</a></td>
-      <td style="padding: 0 5px;text-align:center;"></td>
+      <td style="padding: 0 5px;text-align:center;">401</td>
     </tr>
     <tr >
-      <td style="padding: 0 5px;text-align:center;">7002</td>
+      <td style="padding: 0 5px;">7002</td>
       <td style="padding: 0 5px;">请求参数非法</td>
       <td style="padding: 0 5px;">必须改正</td>
       <td style="padding: 0 5px;text-align:center;">400</td>
     </tr>
     <tr >
-      <td style="padding: 0 5px;text-align:center;">7004</td>
+      <td style="padding: 0 5px;">7004</td>
       <td style="padding: 0 5px;">校验失败</td>
       <td style="padding: 0 5px;">必须修正，详情请看：<a href="./#_1">调用验证说明。</a></td>
       <td style="padding: 0 5px;text-align:center;">401</td>
