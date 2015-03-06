@@ -32,7 +32,7 @@
                                     <td width="140" style="text-align: center;padding: 30px 0;vertical-align: top;"><img src="../image/resource_ios.png" width="71" height="71" /></td>
                                     <td style="padding: 20px 0;">
                                           <h4 style="font-weight: bold;font-size: 14px;">iOS - SDK下载</h4>
-                                          <p style="font-size: 12px; color:#aaa;">注：对于旧版本 XCode 用户或者暂不想支持到 IOS 8 的，可以继续使用如下旧版本 : <br><a href="http://docs.jpush.cn/download/attachments/7864408/JPush-iOS-SDK-1.7.4.zip?version=1&modificationDate=1411121271000">JPush-IOS-SDK-1.7.4.zip</a></p>
+                                          <p style="font-size: 12px; color:#aaa;">注：对于旧版本 XCode 用户或者暂不想支持到 IOS 8 的，可以继续使用<a href="http://docs.jpush.cn/download/attachments/7864408/JPush-iOS-SDK-1.7.4.zip?version=1&modificationDate=1411121271000">旧版本</a>。</p>
                                           <p>请参考如下文档来集成SDK：</p>
                                           <ul style="list-style: none;margin: 0;padding: 0;font-size: 12px;">
                                                 <li><a href="../guideline/ios_guide">- iOS 集成指南</a></li>
