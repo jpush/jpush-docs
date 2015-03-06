@@ -52,7 +52,9 @@
 + 复制 libs/jpush-sdk-release1.x.y.jar 到工程 libs/ 目录下
 + 复制 libs/armeabi/libjpush.so 到工程 libs/armeabi 目录下
 
->如果您的项目有 libs/armeabi-v7a 这个目录，请把 libjpush.so 也复制一份到这个目录。
+<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; ">
+<p style="padding-bottom:0; margin-bottom: 0;">如果您的项目有 libs/armeabi-v7a 这个目录，请把 libjpush.so 也复制一份到这个目录。</p>
+</div>
 
 ### 2、配置 AndroidManifest.xml
 

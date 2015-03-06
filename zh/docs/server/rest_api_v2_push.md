@@ -1,5 +1,13 @@
 <h1>REST API v2</h1>
 
+<div style="font-size:13px;background: #F0E68C;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">
+<p>特别提示：建议不要在客户端里写代码直接调用此 API。因为 Android apk 比较容易破解，别人很容易从客户端代码里找出来调用 JPush Remote API 所需要的保密信息，从而可以模拟到你的身份来发起恶意的推送。
+<br>
+<p>建议的使用方式是：调用 JPush Remote API 的代码放在你自己的应用服务器上。你自己的应用服务器对自己的客户端提供接口来推送消息。具体请参考推聊的作法：示例与代码。
+<br>
+<p>升级到 v3 Push API：建议开发者升级到 v3 版本。此版本会继续支持到 2015 年。
+</div>
+
 ### 推送全功能接口
 
 #### 功能说明
@@ -12,15 +20,15 @@
 
 http://api.jpush.cn:8800/v2/push
 
-```
-1.  请使用域名访问 JPush API，不要直接使用 IP。
-2.  本接口只支持 HTTP Post 请求。
-3.  若无特殊说明，接口中统一使用 utf-8 编码。
-4.  HTTP Post 的Content-Type 需采用 application/x-www-form-urlencoded
-5.  考虑内容里可能有一些特殊字符，有必要在调用接口前对内容进行 URL Encode。更详细说明请参考：特殊字符问题。
-6.  如果你很重视接口安全，请使用 SSL 接口，默认走443ssl加密协议端口，即接口URL改为: [> https://+ api.jpush.cn/v2/push][0]> 。
-7.  无论你在极光推送Portal上的应用是生产环境还是测试环境，都使用这个 API 地址推送消息。
-```
+<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">
+<p>1.  请使用域名访问 JPush API，不要直接使用 IP。
+<p>2.  本接口只支持 HTTP Post 请求。
+<p>3.  若无特殊说明，接口中统一使用 utf-8 编码。
+<p>4.  HTTP Post 的Content-Type 需采用 application/x-www-form-urlencoded
+<p>5.  考虑内容里可能有一些特殊字符，有必要在调用接口前对内容进行 URL Encode。更详细说明请参考：特殊字符问题。
+<p>6.  如果你很重视接口安全，请使用 SSL 接口，默认走443ssl加密协议端口，即接口URL改为: [> https://+ api.jpush.cn/v2/push][0]> 。
+<p>7.  无论你在极光推送Portal上的应用是生产环境还是测试环境，都使用这个 API 地址推送消息。
+</div>
 
 #### 调用参数
 
@@ -199,15 +207,14 @@ JPush API 同时支持 Andorid 与 iOS 平台的通知推送。
 
 由于 APNs 限制是 255 个字节，所以 JPush 推送通知也依据 APNs 来统一限制。
 
-```
- 通知长度限制的设计，一方面的确是因为 APNs 的原因。
- 另一方面，我们也认为，对于“通知”，在通知栏展示的信息，
+<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">
+ <p>通知长度限制的设计，一方面的确是因为 APNs 的原因。
+ <br>
+ <p>另一方面，我们也认为，对于“通知”，在通知栏展示的信息，
  这么长的长度足够了。
-```
-
-```
-另外请留意：这里说的长度，是指字节。由于使用 UTF-8 编码，所以一个中文字符占 3 个字节。
-```
+<br>
+<br>另外请留意：这里说的长度，是指字节。由于使用 UTF-8 编码，所以一个中文字符占 3 个字节。
+</div>
 
 由于组装 APNs 有几个 JSON 字段，所以 JPush API 通知限制具体大小为：220 个字节。
 

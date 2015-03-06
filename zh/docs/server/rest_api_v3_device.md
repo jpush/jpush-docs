@@ -1,12 +1,15 @@
-<h1>Device-API</h1>
+# Device-API
 
-```
-   Device API 用于在服务器端查询、设置、更新、删除设备的 tag,alias 信息，
-   使用时需要注意不要让服务端设置的标签又被客户端给覆盖了。
-   *如果不是熟悉 tag，alias的逻辑建议只使用客户端或服务端二者中的一种。
-   *如果是两边同时使用，请确认自己应用可以处理好标签和别名的同步。
+<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px;">
 
-```
+<p> Device API 用于在服务器端查询、设置、更新、删除设备的 tag,alias 信息，使用时需要注意不要让服务端设置的标签又被客户端给覆盖了。</p>
+<ul style="margin-bottom: 0;">
+   <li>如果不是熟悉 tag，alias的逻辑建议只使用客户端或服务端二者中的一种。</li>
+   <li>如果是两边同时使用，请确认自己应用可以处理好标签和别名的同步。</li>
+ </ul>
+</div>
+
+<br>
 
 * 需要了解tag,alias的详细信息，请参考对应客户端平台的API说明。
 
@@ -302,10 +305,40 @@ DELETE /v3/aliases/{alias_value}?platform=android,ios
 参考文档：[Http-Status-Code](../http_status_code)
 
 #### 业务返回码
-|Code | 描述 |详细解释|HTTP Status Code|
-|-|-|-|-|
-|7000|内部错误|系统内部错误|500|
-|7001|校验信息为空|必须改正，详情请看：调用验证说明。|401|
-|7002|请求参数非法|必须改正|400|
-|7004|校验失败|必须修正，详情请看：调用验证说明。|401|
+
+<div class="table-d" align="center" >
+  <table border="1" width = "100%">
+    <tr  bgcolor="#D3D3D3" >
+      <th style="padding: 0 5px;" >Code</th>
+      <th style="padding: 0 5px;" >描述</th>
+      <th style="padding: 0 5px;t;" >详细解释</th>
+      <th style="padding: 0 5px;text-align:center;" >HTTP Status Code</th>
+    </tr>
+    <tr >
+      <td style="padding: 0 5px;">7000</td>
+      <td style="padding: 0 5px;">内部错误</td>
+      <td style="padding: 0 5px;">系统内部错误</a></td>
+      <td style="padding: 0 5px;text-align:center;">500</td>
+    </tr>
+    <tr >
+      <td style="padding: 0 5px;">7001</td>
+      <td style="padding: 0 5px;">校验信息为空</td>
+      <td style="padding: 0 5px;">必须改正，详情请看：<a href="./#_1">调用验证说明。</a></td>
+      <td style="padding: 0 5px;text-align:center;">401</td>
+    </tr>
+    <tr >
+      <td style="padding: 0 5px;">7002</td>
+      <td style="padding: 0 5px;">请求参数非法</td>
+      <td style="padding: 0 5px;">必须改正</td>
+      <td style="padding: 0 5px;text-align:center;">400</td>
+    </tr>
+    <tr >
+      <td style="padding: 0 5px;">7004</td>
+      <td style="padding: 0 5px;">校验失败</td>
+      <td style="padding: 0 5px;">必须修正，详情请看：<a href="./#_1">调用验证说明。</a></td>
+      <td style="padding: 0 5px;text-align:center;">401</td>
+    </tr>
+  </table>
+</div>
+
 
