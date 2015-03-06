@@ -1,4 +1,4 @@
-# IM REST API
+<h1>IM REST API</h1>
 
 JPush IM API 为开发者提供 IM 相关功能。
 
@@ -8,55 +8,146 @@ JPush IM API 为开发者提供 IM 相关功能。
 
 参考统一文档。
 
-###  用户注册
+###  用户注册与登录
 
+#### 注册用户
 
+批量注册用户到 JPush IM 服务器。
 
-#### Resource
+	POST /v1/users/
 
-POST /v1/users/
-
-#### Example Request
-
-```
-curl -v https://report.jpush.cn/v3/received?msg_ids=1613113584,1229760629,1174658841,1174658641 -u "7d431e42dfa6a6d693ac2d04:5e987ac6d2e04d95a9d8f0d1"
-
-< GET /v3/received?msg_ids=1613113584,1229760629,1174658841,1174658641 HTTP/1.1
-< Authorization: Basic N2Q0MzFlNDJkZmE2YTZkNjkzYWMyZDA0OjVlOTg3YWM2ZDJlMDRkOTVhOWQ4ZjBkMQ==
-```
-
-#### Request Params
-
-+ msg_ids 推送API返回的 msg_id 列表，多个 msg_id 用逗号隔开，最多支持100个msg_id。
-
-#### Example Response
+##### Example Request
 
 ```
-< HTTP/1.1 200 OK 
-< Content-Type: application/json
-< 
-[  {"android_received":62,
-    "ios_apns_sent":11,
-    "msg_id":1613113584},
-   {"android_received":56,
-     "ios_apns_sent":33,
-     "msg_id":1229760629},
-   {"android_received":null,
-    "ios_apns_sent":14,
-    "msg_id":1174658841},
-   {"android_received":32,
-    "ios_apns_sent":null,
-    "msg_id":1174658641}
-]
+[{"username": "dev_fang", "password": "password"}, 
+ {"username": "dev_fang", "password": "password"}, 
+] 
 ```
-#### Response Params
+
+##### Request Params
 
 JSON Array.
 
-+ android_received Android 送达。如果无此项数据则为 null。
-+ ios_apns_sent iOS 推送成功。如果无此项数据则为 null。
++ username 用户名
++ password 密码
+
+##### Example Response
+
+```
+< HTTP/1.1 201 Created
+< Content-Type: application/json
+< 
+[{"username": "dev_fang",  }, 
+ {"username": "dev_javen",  "error":{"code":8001,"message":"user exit"}}, 
+] 
+```
+##### Response Params
+
+JSON Array.
+
++ username
++ error 某个用户注册出错时，该对象里会有 error 对象，说明错误原因。
+
+### 消息相关
+
+#### 发送消息
+
+	POST /messages
+	
+##### Example Request
+
+```
+{
+	"version": 1, 
+	"target_type": "single",
+	"target_id": "javen",
+	"target_name": "Javen Fang",
+	"from_type": "user",
+	"from_id": "fang", 
+	"from_name": "Fang Javen", 
+	"create_time": "2015-02-12 15:49 09",
+	
+	"msg_type": "text",
+	"msg_body": {
+		"content": "Hello, JPush IM!"		}}
+```
+##### Request Params
+
+遵循协议文档：[IM 消息协议](../../client/im_message_protocol/)
+
+##### Response Code
+
++ 200 发送消息成功
++ 400 消息体异常
 
 
+### 用户维护
+
+#### 获取用户信息
+
+	GET /users/{username}
+		
+##### Request Params
+
++ username 用户名。填充到请求路径上。##### Example Response
+
+```
+{
+	"user_name" : "test", 
+	"nickname" : "hello", 
+	"star" : 2, 
+	"avatar" = "/avatar", 
+	"birthday" : "1990-01-24 00:00:00", 
+	"gender" : 0, 
+	"signature" : "orz", 
+	"region" : "shenzhen", 
+	"address" : "shenzhen", 
+	"mtime" : "2015-01-01 00:00:00", 
+	"ctime" : "2015-01-01 00:00:00"}
+```
+
+#### 更新用户信息
+
+	PUT /users/{username}
+		
+##### Example Request
+
+##### Response Code
+
++ 200 OK
+
+#### 删除用户
+
+	DELETE /users/
+
+#### 获取用户列表（分页）
+
+	GET /users/?start={number}&count={number}
+
+
+		
+
+### 群组维护
+
+#### 创建群组
+
+	POST /groups/
+
+#### 获取群组详情
+
+	GET /groups/{gid}	
+#### 添加群组成员
+
+	POST /groups/{gid}/members
+
+#### 删除群组成员
+
+	DELETE /groups/{gid}/members
+
+#### 删除群组
+
+	DELETE /groups/{gid}
+	
 
 ### HTTP 返回
 
@@ -85,6 +176,7 @@ HTTP 返回码参考文档：[HTTP-Status-Code](../http_status_code)
 
 ### 相关文档
 
-+ [IM SDK](../../client/im_sdk/)
++ [IM SDK for Android](../../client/im_sdk_android/)
++ [IM SDK for iOS](../../client/im_sdk_ios/)
 + [JPush IM 指南](../../guideline/jpush_im_guide/)
-
++ [IM 消息协议](../../client/im_message_protocol/)

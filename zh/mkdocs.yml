@@ -31,7 +31,9 @@ pages:
 - [client/winphone_sdk.md, 客户端, WinPhone SDK 概述]
 - [client/winphone_api.md, 客户端, WinPhone SDK API]
 - [client/client_plugins.md, 客户端, 客户端集成插件]
-- [client/im_sdk.md, 客户端, IM SDK 概述, Hidden]
+- [client/im_sdk_android.md, 客户端, IM SDK 概述, Hidden]
+- [client/im_sdk_ios.md, 客户端, IM SDK 概述, Hidden]
+- [client/im_message_protocol.md, 客户端, IM 消息定义, Hidden]
 
 
 - [server/server_overview.md, 服务器端, 服务器端 概述]
