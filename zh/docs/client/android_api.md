@@ -912,11 +912,11 @@ public static void setPushNotificationBuilder(Integer notificationBuilderId, Bas
 
 开发者可通过调用此 API 来定义为不同的数量。
 
-```
- 所谓保留最近的，意思是，如果有新的通知到达，之前列表里最老的那条会被移除。
- 
- 例如，设置为保留最近 5 条通知。假设已经有 5 条显示在通知栏，当第 6 条到达时，第 1 条将会被移除。
-```
+<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px;">
+ <p>仅对通知有效。所谓保留最近的，意思是，如果有新的通知到达，之前列表里最老的那条会被移除。
+ <br>
+ <p>例如，设置为保留最近 5 条通知。假设已经有 5 条显示在通知栏，当第 6 条到达时，第 1 条将会被移除。
+</div>
 
 ### API - setLatestNotificationNumber
 
