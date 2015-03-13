@@ -1,7 +1,6 @@
 # Device-API
 
 <div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px;">
-
 <p> Device API 用于在服务器端查询、设置、更新、删除设备的 tag,alias 信息，使用时需要注意不要让服务端设置的标签又被客户端给覆盖了。</p>
 <ul style="margin-bottom: 0;">
    <li>如果不是熟悉 tag，alias的逻辑建议只使用客户端或服务端二者中的一种。</li>
