@@ -4,7 +4,7 @@
 
 JPush IM SDK 基于 JPush 推送 SDK 开发，提供了 Push SDK 的完整功能，并提供 IM 即时通讯功能。
 
-App 集成了 IM SDK 就不应再集成 Push SDK（只提供 Push 功能的 SDK）。
+App 集成了 IM SDK 就不应再集成 JPush SDK（只提供 Push 功能的 SDK）。
 
 ### Demo App
 
@@ -62,9 +62,9 @@ SDK 侧可以发起注册用户，也可由服务器端批量发起注册。
 	
 参数说明
 
-+ username 用户名
-+ password 用户密码
-+ BasicCallback 结果回调
++ String username 用户名
++ String password 用户密码
++ BasicCallback callback 结果回调
 
 ##### 登录
 
@@ -72,9 +72,9 @@ SDK 侧可以发起注册用户，也可由服务器端批量发起注册。
 	
 参数说明
  
-+ username 用户名
-+ password 用户密码
-+ BasicCallback 结果回调
++ String username 用户名
++ String password 用户密码
++ BasicCallback callback 结果回调
 
 ##### 退出登录
 
@@ -82,7 +82,7 @@ SDK 侧可以发起注册用户，也可由服务器端批量发起注册。
 	
 参数说明
 
-无
+- 无
 
 #### 用户属性维护
 
@@ -92,26 +92,42 @@ SDK 侧可以发起注册用户，也可由服务器端批量发起注册。
 	
 参数说明
 
-+ username 用户名
-+ callback 结果回调
++ String username 用户名
++ GetUserInfoCallback callback 结果回调
+
+回调
+
+	public abstract void gotResult(int responseCode, String responseMessage, UserInfo userInfo);
+
++ UserInfo userInfo 用户信息
 
 ##### 更新用户信息
 
-	public static void updateUserInfo(UserInfo info, BasicCallback callback);
+	public static void updateUserInfo(UserInfo userInfo, BasicCallback callback);
 	
 参数说明
 
-+ info 用户信息（对象）
-+ callback 结果回调
++ UserInfo userInfo 用户信息（对象）。不必每次更新所有的信息，设置的字段为 null 表示不更新此字段信息。
++ BasicCallback callback 结果回调
 
 ##### 更新用户密码
 
 	public static void updateUserPassword(String oldPassword, String newPassword, BasicCallback callback);
 	
+参数说明
+
++ String oldPassword 更新前密码
++ String newPassword 更新后密码
++ BasicCallback callback 结果回调
+	
 ##### 更新用户头像
 
-	public static void updateAvatar(File avatar, FileUpdateCallback callback);
+	public static void updateUserAvatar(File avatar, BasicCallback callback);
 	
+参数说明
+
++ File avatar 用户头像文件
++ BasicCallback callback 结果回调
 
 
 #### 会话与发送消息
@@ -124,7 +140,8 @@ SDK 侧可以发起注册用户，也可由服务器端批量发起注册。
 	
 参数说明
 
-+ message 消息（对象）
++ Message message 消息（对象）
+
 
 ##### 获取会话列表
 
@@ -136,17 +153,36 @@ SDK 侧可以发起注册用户，也可由服务器端批量发起注册。
 
 + 无
 
-返回说明
+返回
 
-+ List<Conversation> 会话列表。暂未有分页。
++ List<Conversation> 会话列表。
 
 ##### 获取单个会话
 
-	public Conversation getConversation(String target);
+	public Conversation getConversation(ConversationType type, String target);
+
+参数说明
+
++ ConversationType type 会话类型。可选项：single, group。
++ String target 会话对象。单聊时是 username，群聊时是 group_id。
+
+返回
+
+- 根据参数匹配得到的会话对象。
 	
 ##### 删除单个会议
 	
-	public boolean deleteConversation(String target);
+	public boolean deleteConversation(ConversationType type, String target);
+
+参数说明
+
++ ConversationType type 会话类型。可选项：single, group。
++ String target 会话对象。单聊时是 username，群聊时是 group_id。
+
+返回
+
+- 是否删除成功。
+
 
 #### 接收消息
 
@@ -181,6 +217,7 @@ private class MyMessageBroadcastReceiver extends BroadcastReceiver {
 }
 ```
 
+
 #### 群组维护
 
 ##### 创建群组
@@ -189,14 +226,44 @@ private class MyMessageBroadcastReceiver extends BroadcastReceiver {
 	
 参数说明 
 
-+ groupName 群名称
-+ groupDesc 群描述
-+ groupLevel 
-+ callback 结果回调
++ String groupName 群名称
++ String groupDesc 群描述
++ int groupLevel 群等级
++ CreateGroupCallback callback 结果回调
+
+回调
+
+	public abstract void gotResult(int responseCode, String responseMsg, long groupId);
+	
++ long groupId 新创建成功的群组ID（resopnseCode = 0时）。
+
+##### 获取群组详情
+
+	public static void getGroupInfo(long groupId, GetGroupInfoCallback callback)
+
+参数说明
+
++ long groupId 群ID
++ GetGroupInfoCallback callback 结果回调
+
+回调
+
+	public void gotResult(int responseCode, String responseMessage, Group group)
+
++ Group group 返回的群组详情
 
 ##### 更新群组详情
 
 	public static void updateGroupInfo(long groupID, String groupName, String groupDesc, int groupLevel, BasicCallback callback);
+
+参数说明
+
++ long groupID 待更新信息的群组ID
++ String groupName 新的名称
++ String groupDesc 新的描述
++ int level 新的级别
++ BasicCallback callback 结果回调
+
 
 ##### 加群组成员
 
@@ -204,47 +271,69 @@ private class MyMessageBroadcastReceiver extends BroadcastReceiver {
 	
 参数说明
 
-+ groupId 群组ID。创建群组时会返回。
-+ usernameList 群组成员 username。
-+ callback 结果回调
++ long groupId 待加群的群组ID。创建群组时返回的。
++ List usernameList 群组成员列表，使用成员 username。
++ BasicCallback callback 结果回调
 
 ##### 移除群组成员
 
 	public static void removeGroupMembers(long groupId, List<String> usernameList, BasicCallback callback);
-	
+
+参数说明
+
++ long groupId 待删除成员的群ID。
++ List usernameList 待删除的成员列表。
++ BasicCallback callback 结果回调。
+
 ##### 退出群组
 
 	public static void exitGroup(long groupId, BasicCallback callback);
-	
-##### 获取我的群组（服务器端）
 
-	public static void getGroupIdListFromServer(GetGroupListCallback callback)
-	
-##### 获取我的群组（本地）
+参数说明
 
-	public static List<Long> getGroupIdListFromLocal()
++ long groupId 待退出的群ID。
++ BasicCallback callback 结果回调。
 	
-##### 获取群组详情（服务器）
+##### 获取群组成员列表
 
-	public static void getGroupInfoFromServer(long groupId, GetGroupInfoCallback callback)
-	
-##### 获取群组详情（本地）
+	public static void getGroupMembersFromServer(long groupId, GetGroupMembersCallback callback)
 
-	public static Group getGroupInfoFromLocal(long groupId)
-	
-##### 获取群组成员列表（服务器）
+参数说明
 
-	public static void getGroupMembersFromServer(long groupID, GetGroupMembersCallback callback)
-	
-##### 获取群组成员列表（本地）
++ long groupId 群组ID
++ GetGroupMembersCallback callback
 
-	public static List<String> getGroupMembersFromLocal(long groupID)
+回调
+
+	public void gotResult(int responseCode, String responseMessage, List<String> members);
 	
++ List members 成员列表(username)。
 
 
 ### 类定义
 
-#### 聊天与消息
+#### 会话与消息
+
+```
+cn.jpush.im.api.Conversation
+
+```
+
+```
+cn.jpush.im.api.Message
+
+
+
+```
+
+#### 聊天内容
+
+```
+cn.jpush.im.api.content.TextContent
+
+
+
+```
 
 #### 回调定义
 
@@ -281,24 +370,10 @@ public abstract class BasicCallback {
 
 ```
 
-##### GetUserInfoCallback
-
-```
-public static abstract class GetUserInfoCallback extends BasicCallback {
-    protected GetUserInfoCallback() {}
-
-    protected GetUserInfoCallback(boolean isRunInUIThread) {
-        super(isRunInUIThread);
-    }
-
-    public abstract void gotResult(int responseCode, String responseMessage, UserInfo info);
-
-}
-
-```
 
 
 ### 错误码定义
+
 
 
 
