@@ -15,30 +15,37 @@ JPush IM 对于不同的消息类型，有一个 JSON 格式的消息协议。�
 + target_type String 
 	+ 必须。
 	+ 接收者类型。
-	+ 选项：single单聊, group群聊
+	+ 选项：single, group
 + target_id  String
 	+ 必须。
-	+ 接收者ID。可能值：{username}, {gid} 
+	+ 接收者ID。
+	+ 可能值：${username}, ${gid} 
 	+ 接收方可用此字段，校验消息是不是发给自己的。
 + target_name String 
 	+ 可选。
 	+ 接收者的展示名。
 + from_type String 
 	+ 必须。
-	+ 发送者类型。选项：user, robot, api, console...  
-	+ 用户只允许发送from_type = user 的消息。
-+ from_id Number 
+	+ 发送方来源。
+	+ 选项：user, robot, admin, ...。可用于扩展特定消息来源。 
+	+ 用户只允许发送 from_type = user 的消息。
++ from_id String 
 	+ 必须。
 	+ 发送者 username
 + from_name String 
 	+ 可选。
-	+ 发送者展示名。
-+ create_time String 
+	+ 发送方展示名。
++ from_platform String
 	+ 必须。
-	+ 消息发送时间。用于展示目的。
+	+ 发送方平台。
+	+ 可选项： a - Android, i - iOS, w - WinPhone, web - Web
++ create_time Number 
+	+ 必须。
+	+ 消息发送时间。
+	+ 精确到秒。
 + msg_type String 
 	+ 必须。
-	+ 选项：text, image, voice, location, custom 消息命令
+	+ 选项：text, voice, image, custom
 + msg_body JsonObject 
 	+ 必须。
 	+ 消息实体。
@@ -49,11 +56,12 @@ JPush IM 对于不同的消息类型，有一个 JSON 格式的消息协议。�
 
 + extras
 	+ 可选。
-	+ 用于附加参数。所有的消息类型都可以有。
+	+ JsonObject
+	+ 用于附加参数。所有的消息类型都可以带此字段。
 
 msg_type = text
 
-+ content String
++ text String
 	+ 必须。
 	+ 文本类型消息内容。
 
@@ -106,11 +114,10 @@ msg_type = image
 	"from_type": "user",
 	"from_id": "fang", 
 	"from_name": "Fang Javen", 
-	"create_time": "2015-02-12 15:49 09",
-	
+	"create_time": 135432432187,
 	"msg_type": "text",
 	"msg_body": {
-		"content": "Hello, JPush IM!"		}
+		"text": "Hello, JPush IM!"		}
 }
 ```
 
