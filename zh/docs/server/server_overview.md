@@ -9,8 +9,8 @@ JPush 提供遵从 REST 规范的 HTTP API，以供开发者远程调用 JPush �
 
 * API 被设计为符合 HTTP, REST 规范。例如：查询请求使用 Get 方法，提交请求使用 Post 方法。如果一个请求不是相应的 HTTP 方法，将返回错误。
 * 如无特殊说明，调用参数值应转码为：UTF-8, [URL Encoded](http://en.wikipedia.org/wiki/Percent_encoding)。
-* API 请求有[频率限制](#rate_limiting)。
-* API 请求有[黑名单机制](#black_list)。
+* API 请求有[频率限制](#api)。
+* API 请求有[黑名单机制](#_2)。
 
 
 ### REST API 资源列表

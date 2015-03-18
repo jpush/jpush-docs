@@ -397,7 +397,8 @@ r1.7.0 开始支持。
 <div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">
 <p>温馨提示：
   <br>
-<p>开发者在自定义的监听kJPFNetworkDidRegisterNotification时也可以通过"RegistrationID"这个key值来获取对应的 RegistrationID。
+<p>开发者在自定义的监听extern NSString * const kJPFNetworkDidLoginNotification; // 登录成功时
+<p>也可以通过"RegistrationID"这个key值来获取对应的 RegistrationID。
 </div>
 
 #### 附加说明
