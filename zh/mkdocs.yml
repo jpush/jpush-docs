@@ -2,7 +2,7 @@ site_name: 极光文档
 site_author: JPush Offical
 site_url: http://docs.jpush.io
 site_favicon: favicon.ico
-site_description: JPush, 极光推送, Android Push, Android 推送, 安卓推送, iOS Push, APNs, Push Notification
+site_description: JPush, JMessage, 极光推送, 极光IM, Android Push, Android 推送, 安卓推送, iOS Push, APNs, Push Notification
 repo_url: http://docs.jpush.cn
 repo_name: 老版本文档
 copyright: Copyright 2011-2014, jpush.cn, All Rights Reserved. <br />粤ICP备12056275号-5 深圳市和讯华谷信息技术有限公司
@@ -19,7 +19,7 @@ pages:
 - [guideline/winphone_3m.md, 入门指南, 3 分钟集成 Windows Phone SDK]
 - [guideline/sample_code.md, 入门指南, 示例与代码]
 - [guideline/statistical_report.md, 入门指南, 统计与报表说明]
-- [guideline/jpush_im_guide.md, 入门指南, JPush IM 入门, Hidden]
+- [guideline/jmessage_guide.md, 入门指南, 极光IM 指南, Hidden]
 
 
 - [client/android_sdk.md, 客户端, Android SDK 概述]

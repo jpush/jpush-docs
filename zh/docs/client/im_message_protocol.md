@@ -101,6 +101,9 @@ msg_type = image
 	+ 可选。
 	+ 图片链接。
 
+msg_type = custom
+
+开发者自定义字段。JsonObject。
 
 
 ### Examples 消息示例
@@ -123,7 +126,7 @@ msg_type = image
 
 ### See Also 相关文档
 
++ [极光IM 指南](../../guideline/jmessage_guide/)
 + [IM SDK for Android](../../client/im_sdk_android/)
 + [IM SDK for iOS](../../client/im_sdk_ios/)
-+ [JPush IM 指南](../../guideline/jpush_im_guide/)
-+ [JPush IM REST API](../../server/rest_api_im/)
++ [IM REST API](../../server/rest_api_im/)
