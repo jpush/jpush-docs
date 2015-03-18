@@ -17,7 +17,7 @@ App 集成了 IM SDK 就不应再集成 Push SDK（只提供 Push 功能的 SDK�
 
 ### See Also 相关文档
 
++ [极光IM 指南](../../guideline/jmessage_guide/)
 + [IM 消息协议](../../client/im_message_protocol/)
 + [IM SDK for Android](../../client/im_sdk_android/)
-+ [JPush IM 指南](../../guideline/jpush_im_guide/)
-+ [JPush IM REST API](../../server/rest_api_im/)
++ [IM REST API](../../server/rest_api_im/)

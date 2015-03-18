@@ -379,8 +379,8 @@ public abstract class BasicCallback {
 
 ### 相关文档
 
++ [极光IM 指南](../../guideline/jmessage_guide/)
 + [IM 消息协议](../../client/im_message_protocol/)
 + [IM SDK for iOS](../../client/im_sdk_ios/)
-+ [JPush IM 指南](../../guideline/jmessage_guide/)
-+ [JPush IM REST API](../../server/rest_api_im/)
++ [IM REST API](../../server/rest_api_im/)
 

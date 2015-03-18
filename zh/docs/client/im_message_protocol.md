@@ -126,7 +126,7 @@ msg_type = custom
 
 ### See Also 相关文档
 
++ [极光IM 指南](../../guideline/jmessage_guide/)
 + [IM SDK for Android](../../client/im_sdk_android/)
 + [IM SDK for iOS](../../client/im_sdk_ios/)
-+ [JPush IM 指南](../../guideline/jpush_im_guide/)
-+ [JPush IM REST API](../../server/rest_api_im/)
++ [IM REST API](../../server/rest_api_im/)
