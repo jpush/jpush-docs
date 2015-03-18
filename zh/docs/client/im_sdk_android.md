@@ -1,21 +1,21 @@
-<h1>IM SDK for Android</h1>
+<h1>极光IM SDK - Android</h1>
 
 ### 概述
 
-JPush IM SDK 基于 JPush 推送 SDK 开发，提供了 Push SDK 的完整功能，并提供 IM 即时通讯功能。
+极光IM（英文名JMessage） SDK 基于 JPush 推送 SDK 开发，提供了 Push SDK 的完整功能，并提供 IM 即时通讯功能。
 
 App 集成了 IM SDK 就不应再集成 JPush SDK（只提供 Push 功能的 SDK）。
 
 ### Demo App
 
-JPush IM SDK 提供一个完整的 Demo App，它就是一个 IM App。或者说，如果你的 App 需求只是 IM 功能，可以只做这样两个变更就是你自己的 IM App 了：1）换 Logo； 2）在 JPush Web 控制台上注册应用，获取到的 Appkey 更新到 Demo App 里。
+极光 IM SDK 提供一个完整的 Demo App，它就是一个 IM App。或者说，如果你的 App 需求只是 IM 功能，可以只做这样两个变更就是你自己的 IM App 了：1）换 Logo； 2）在 JPush Web 控制台上注册应用，获取到的 Appkey 更新到 Demo App 里。
 
 
 ### 功能
 
 #### 消息
 
-JPush IM 最核心的功能是 IM 即时消息的功能。
+极光IM 最核心的功能是 IM 即时消息的功能。
 
 - 保证消息及时下发；
 - 单聊，群聊；
@@ -48,7 +48,7 @@ SDK 侧可以发起注册用户，也可由服务器端批量发起注册。
 
 ### 基本概念
 
-参考文档：[JPush IM 指南](../../guideline/jpush_im_guide)
+参考文档：[JPush IM 指南](../../guideline/jmessage_guide)
 
 
 
@@ -147,7 +147,7 @@ SDK 侧可以发起注册用户，也可由服务器端批量发起注册。
 
 从本地数据库取得。同步返回。
 
-	public java.util.List<Conversation> getConversationList();
+	public List<Conversation> getConversationList();
 	
 参数说明
 
@@ -381,6 +381,6 @@ public abstract class BasicCallback {
 
 + [IM 消息协议](../../client/im_message_protocol/)
 + [IM SDK for iOS](../../client/im_sdk_ios/)
-+ [JPush IM 指南](../../guideline/jpush_im_guide/)
++ [JPush IM 指南](../../guideline/jmessage_guide/)
 + [JPush IM REST API](../../server/rest_api_im/)
 

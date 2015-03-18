@@ -101,6 +101,9 @@ msg_type = image
 	+ 可选。
 	+ 图片链接。
 
+msg_type = custom
+
+开发者自定义字段。JsonObject。
 
 
 ### Examples 消息示例
