@@ -1,4 +1,4 @@
-# 服务器端基础
+# 服务器端概述
 
 JPush 提供遵从 REST 规范的 HTTP API，以供开发者远程调用 JPush 提供的服务。
 
@@ -19,10 +19,48 @@ JPush 提供遵从 REST 规范的 HTTP API，以供开发者远程调用 JPush �
 | ------------ | ------------- | ------------ |----------------|
 | [REST API v3 - Push](../rest_api_v3_push)	 | POST /v3/push  | https://api.jpush.cn | 推送 |
 | [REST API v3 - Report](../rest_api_v3_report) | GET /v2/received  | https://report.jpush.cn | 获取统计数据 - 消息送达 |
+| [REST API v3 - Devices](../rest_api_v3_device) | /v3/devices | https://device.jpush.cn | tag,alias 操作 |
+
+以下为老版本 API，仍然可用，但不鼓励使用。
+
+| 名称 | 	资源 | Base URL	 |描述|
+| ------------ | ------------- | ------------ |----------------|
 | [REST API v2 - Push](../rest_api_v2_push)  | POST /v2/push  | http://api.jpush.cn:8800 <br /> https://api.jpush.cn | 推送消息或通知|
 | [REST API v2 - Report](../rest_api_v2_report) | GET /v2/received  | https://report.jpush.cn | 获取统计数据 - 消息送达 |
 
-### 黑名单
+### Authorization 用户认证
+
+JPush/JMessage REST API 都采用 HTTP基本认证[^1] 的验证方式。
+
+[^1]: [HTTP 基本认证 - Wikipedia定义](http://zh.wikipedia.org/wiki/HTTP%E5%9F%BA%E6%9C%AC%E8%AE%A4%E8%AF%81)
+
+基本作法为，HTTP Header（头）里加 Authorization：
+
+    Authorization: Basic ${base64_auth_string}
+
+Header 名称是 "Authorization"，值是 base64 转换过的 "username:password" 对（中间有个冒号）。在 JPush API 的场景里，username 是 appKey，密码是 masterSecret。这二者可以在 JPush Web 控制台上生成的应用上获取。
+
+即，上述 base64_auth_string 的生成算法为：base64(appKey:masterSecret)
+
+#### 用户认证举例
+
+你的 appKey 是 "7d431e42dfa6a6d693ac2d04", masterSecret 是 "5e987ac6d2e04d95a9d8f0d1"，则调用 Push API v3 时，使用 curl 命令的话，是这样写：
+
+```
+curl --insecure -X POST -v https://api.jpush.cn/v3/push -H "Content-Type: application/json" 
+-u "7d431e42dfa6a6d693ac2d04:5e987ac6d2e04d95a9d8f0d1" 
+-d  '{"platform":"all","audience":"all","notification":{"alert":"Hi,JPush!"}}'
+```
+
+HTTP 请求发出的请求是：
+
+```
+> POST /v3/push HTTP/1.1
+> Authorization: Basic N2Q0MzFlNDJkZmE2YTZkNjkzYWMyZDA0OjVlOTg3YWM2ZDJlMDRkOTVhOWQ4ZjBkMQ==
+```
+
+
+### BlackList 黑名单
 
 如果某应用被认为是恶意推送，或者其 API 调用非法，其 AppKey 会被加入黑名单。
 
@@ -93,9 +131,11 @@ JPush API 对访问次数，具有频率控制。即一定的时间窗口内，A
 
 
 ##### 推送场景举例
+
 A, B 两应用都有千万的用户量。
 
 A 应用推送方式，主要是群发
+
 一次推送（即一次 API 调用）面向大量用户。这种使用广播，或者基于 Tag 做推送。
 
 这种情况下，由于群发几乎不可能短期内推送很多次，从而几乎不可能触发 API 频率控制。
@@ -103,6 +143,7 @@ A 应用推送方式，主要是群发
 进一步地说，API 频率控制与推送送达的终端用户数无关。一次 API 广播推送，可以送达所有用户。
 
 B 应用推送方式，主要是单点
+
 一次推送（即一次 API 调用）只面向一个用户。这种基于 alias 或者 registrationI 做推送。
 
 由于用户量大，向每个用户推送都需要调用一次 API，则相对比较容易触发到频率控制。
@@ -112,7 +153,7 @@ B 应用推送方式，主要是单点
 但这个作法不好的是：1 批量一起推送到很多对象，需要统一时间；2 批量一起的推送，其内容体只能一样，不能根据每个对象不同。
 
 ##### 外部参考
-+ HTTP 错误码关于 429 的定义：[http://en.wikipedia.org/wiki/List_of_HTTP_status_codes#4xx_Client_Error](http://en.wikipedia.org/wiki/List_of_HTTP_status_codes#4xx_Client_Error)
 
-+ Twitter API 频率控制定义：[https://dev.twitter.com/docs/rate-limiting/1.1](https://dev.twitter.com/docs/rate-limiting/1.1)
++ [HTTP 错误码 429  - Wikipedia定义](http://en.wikipedia.org/wiki/List_of_HTTP_status_codes#4xx_Client_Error)
++ [Twitter API 频率控制定义](https://dev.twitter.com/docs/rate-limiting/1.1)
 
