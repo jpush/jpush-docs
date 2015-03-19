@@ -44,6 +44,7 @@ curl --insecure -X POST -v https://api.jpush.cn/v3/push -H "Content-Type: applic
 ```
 
 
+
 #### 调用验证
 
 HTTP Header（头）里加一个字段（Key/Value对）：

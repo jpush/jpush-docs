@@ -4,9 +4,6 @@
 
 这类 API 地址统一为（注意与 Push API 不同）：https://api.im.jpush.cn
 
-### API 访问鉴权
-
-参考统一文档。
 
 ###  用户注册与登录
 

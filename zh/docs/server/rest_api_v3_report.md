@@ -3,14 +3,6 @@ JPush Report API V3 提供各类统计数据查询功能。
 
 这类 API 地址统一为（注意与 Push API 不同）：https://report.jpush.cn
 
-### API 访问鉴权
-
-使用 Basic Authorization 方式认证。了解详情请参考相关规范文档：[HTTP基本认证](http://zh.wikipedia.org/zh/HTTP%E5%9F%BA%E6%9C%AC%E8%AE%A4%E8%AF%81)。
-
-具体体现为，HTTP Header 里有一个属性 Authorization，其内容为：Basic base64_auth_string
-
-+ base64_auth_string 生成规则是：base64(appKey:masterSecret);
-+ 留意 appKey 与 masterSecret 中间使用 ":" 冒号隔开。
 
 ###  送达统计
 
