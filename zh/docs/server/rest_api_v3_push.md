@@ -43,15 +43,6 @@ curl --insecure -X POST -v https://api.jpush.cn/v3/push -H "Content-Type: applic
 {"sendno":"18","msg_id":"1828256757"}
 ```
 
-#### 调用验证
-
-HTTP Header（头）里加一个字段（Key/Value对）：
-
-	Authorization: Basic base64_auth_string
-
-其中 base64_auth_string 的生成算法为：base64(appKey:masterSecret)
-
-即，对 appKey 加上冒号，加上 masterSecret 拼装起来的字符串，再做 base64 转换。
 
 ### 推送对象
 
