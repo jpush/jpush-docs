@@ -54,7 +54,7 @@ JSON Array.
 暂未开放。
 
 	POST /messages
-	
+
 ##### Example Request
 
 ```
@@ -70,7 +70,7 @@ JSON Array.
 	"msg_type": "text",
 	"msg_body": {
 	    "extras": {},
-		"text": "Hello, JPush IM!"		}}
+		"text": "Hello, JMessage!"		}}
 ```
 
 ##### Request Params

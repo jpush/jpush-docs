@@ -6,12 +6,16 @@
 
 App 集成了 IM SDK 就不应再集成 JPush SDK（只提供 Push 功能的 SDK）。
 
-### Demo App
-
-极光 IM SDK 提供一个完整的 Demo App，它就是一个 IM App。或者说，如果你的 App 需求只是 IM 功能，可以只做这样两个变更就是你自己的 IM App 了：1）换 Logo； 2）在 JPush Web 控制台上注册应用，获取到的 Appkey 更新到 Demo App 里。
-
+要了解极光IM的概述信息，请参考文档：[极光IM指南](../../guideline/jmessage_guide)
 
 ### 功能
+
+#### Demo App
+
+极光 IM SDK 提供一个完整的 Demo App，它就是一个 IM App。或者说，如果你的 App 需求只是 IM 功能，可以只做这样两个变更就是你自己的 IM App 了：
+
++ 换 Logo； 
++ 在 JPush Web 控制台上注册应用，获取到的 Appkey 更新到 Demo App 里。
 
 #### 消息
 
@@ -25,15 +29,15 @@ App 集成了 IM SDK 就不应再集成 JPush SDK（只提供 Push 功能的 SDK
 
 #### 用户
 
-开发者的用户，基于 username / password 注册到 JPush IM。
+开发者的用户，基于 username / password 注册到 JMessage。
 
 SDK 侧可以发起注册用户，也可由服务器端批量发起注册。
 
-用户登录 App，也同时登录到 JPush IM。登录后，就可以向其他 username 发聊天消息，也可以收到来自其他 username 的消息，或者群组消息了。
+用户登录 App，也同时登录到 JMessage。登录后，就可以向其他 username 发聊天消息，也可以收到来自其他 username 的消息，或者群组消息了。
 
-用户 A 是否有权限向用户 B 发消息，由 App 逻辑自己控制。（由 JPush IM 提供好友关系时，JPush IM 会做控制）
+用户 A 是否有权限向用户 B 发消息，由 App 逻辑自己控制。（由 JMessage 提供好友关系时，JMessage 会做控制）
 
-可选让用户把头像等用户属性更新到 JPush IM。
+可选让用户把头像等用户属性更新到 JMessage。
 
 #### 群组
 
@@ -44,11 +48,6 @@ SDK 侧可以发起注册用户，也可由服务器端批量发起注册。
 
 
 #### 好友（还未提供）
-
-
-### 基本概念
-
-参考文档：[JPush IM 指南](../../guideline/jmessage_guide)
 
 
 
@@ -235,7 +234,7 @@ private class MyMessageBroadcastReceiver extends BroadcastReceiver {
 
 	public abstract void gotResult(int responseCode, String responseMsg, long groupId);
 	
-+ long groupId 新创建成功的群组ID（resopnseCode = 0时）。
++ long groupId 新创建成功的群组ID（resopnseCode = 0 时）。
 
 ##### 获取群组详情
 
@@ -380,7 +379,7 @@ public abstract class BasicCallback {
 ### 相关文档
 + [JPush Android SDK 集成指南](../../guideline/android_guide/)
 + [JPush Android SDK 概述](../../client/android_sdk/)
-+ [极光IM 指南](../../guideline/jmessage_guide/)
++ [极光IM指南](../../guideline/jmessage_guide/)
 + [IM 消息协议](../../client/im_message_protocol/)
 + [IM SDK for iOS](../../client/im_sdk_ios/)
 + [IM REST API](../../server/rest_api_im/)
