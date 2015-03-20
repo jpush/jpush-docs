@@ -1,4 +1,4 @@
-# 极光IM 指南
+# 极光IM指南
 
 ### 认识极光IM
 
@@ -171,7 +171,7 @@ JMessage SDK 是基于 JPush SDK 开发的，完整支持 JPush 推送的全部�
 
 在应用的自定义 Application 的 onCreate 方法里，加上如下的代码段，来初始化 JMessage SDK。
 
-···
+```
 @Override
 public void onCreate() {
     super.onCreate();
@@ -180,7 +180,7 @@ public void onCreate() {
 	 JMessageClient.init(getApplicationContext());
     JPushInterface.setDebugMode(true);
 }
-···
+```
 
 上述代码，即在原 JPush SDK 初始化调 JPushInterface.init 位置，替换为 JMessageClient.ini 方法。其他一样。
 
