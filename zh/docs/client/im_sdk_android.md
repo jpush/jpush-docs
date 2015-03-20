@@ -378,7 +378,8 @@ public abstract class BasicCallback {
 
 
 ### 相关文档
-
++ [JPush Android SDK 集成指南](../../guideline/android_guide/)
++ [JPush Android SDK 概述](../../client/android_sdk/)
 + [极光IM 指南](../../guideline/jmessage_guide/)
 + [IM 消息协议](../../client/im_message_protocol/)
 + [IM SDK for iOS](../../client/im_sdk_ios/)

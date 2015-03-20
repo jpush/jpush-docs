@@ -127,8 +127,40 @@ App 使用 JMessage 提供的群组功能创建群组时，得到的群组标识
 	+ 集成 IM SDK 到 App 里。具体参考 Android, iOS 各平台的相应文档。
 	+ 如果 App 里之前已经集成过 JPush SDK，则可直接升级换成 IM SDK。
 3. 通过 Web 控制台，或者调用 REST API 管理用户，发送消息。
-...
 
+#### Android IM SDK 集成
+
+JMessage SDK 是基于 JPush SDK 开发的，完整支持 JPush 推送的全部功能。所以 IM SDK 的集成，是在 Push SDK 的集成操作基础上，附加少量的步骤来完成。
+
+如果您之前未集成 JPush SDK（推送SDK），请参考其集成文档：[JPush Android SDK 集成指南](../../guideline/android_guide/)
+
+在上述文档基础上，需要如下几个集成操作：
+
+1. 复制 IM SDK jar 包文件：jmessage-sdk-v2.0.0.jar
+2. 修改 AndroidManifest.xml 文件
+3. 代码初始化
+
+以上步骤以下详述。
+
+##### jar 包文件
+
+
+
+##### 修改 AndroidManifest.xml 文件
+
+##### 代码初始化
+
+
+
+#### iOS IM SDK 集成
+
+敬请期待。
+
+#### Web Client 使用
+
+在 Web 控制台上，应用的展示界面，可以找到该应用的 Web IM 入口。从这个入口，该 App 的用户，可以凭用户名与密码登录，使用 Web 端参与聊天。
+
+以后将发布 Web Client 给开发定制，嵌入到自己的网站上。
 
 ### 相关文档
 
@@ -136,3 +168,5 @@ App 使用 JMessage 提供的群组功能创建群组时，得到的群组标识
 + [IM SDK for iOS](../../client/im_sdk_ios/)
 + [IM REST API](../../server/rest_api_im/)
 + [IM 内部消息协议](../../client/im_message_protocol/)
++ [JPush Android SDK 集成指南](../../guideline/android_guide/)
+
