@@ -316,6 +316,16 @@ private class MyMessageBroadcastReceiver extends BroadcastReceiver {
 ```
 cn.jpush.im.api.Conversation
 
+public File getAvatar();
+public String getDisplayName();
+public Message getLatestMessage();
+public List<Message> getAllMessage();
+public List<Message> getNewMessagesFromNewest(int offset, int limit);
+
+public Message createSendMessage(MessageContent content);
+public boolean resetUnreadCount();
+
+
 ```
 
 ```
@@ -325,13 +335,43 @@ cn.jpush.im.api.Message
 
 ```
 
+使用举例
+
+```
+Conversation conv = JMessageClient.getConversation("tom", ConversationType.single);
+
+TextContent text = new TextContent("Hi, JMessage!");
+Message message = conv.createSendMessage(text);
+
+JMessageClient.sendMessage(message);
+```
+
 #### 聊天内容
+
+聊天内容父类
+
+    cn.jpush.im.api.content.MessageContent
+
+当前支持的聊天内容类型
 
 ```
 cn.jpush.im.api.content.TextContent
+cn.jpush.im.api.content.VoiceContent
+cn.jpush.im.api.content.ImageContent
+cn.jpush.im.api.content.CustomContent
+```
 
+使用举例
 
+```
+// 参数：文本内容
+TextContent text = new TextContent("Hi, JMessage");
 
+// 参数：语音文件的路径，语音文件时长
+VoiceContent voice = new VoiceContent("/sdcard/voice.amr", 21);
+
+// 参数：图片文件路径
+ImageContent image = new ImageContent("/sdcard/image.amr");
 ```
 
 #### 回调定义

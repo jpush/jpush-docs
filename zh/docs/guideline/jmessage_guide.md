@@ -159,8 +159,7 @@ JMessage SDK 是基于 JPush SDK 开发的，完整支持 JPush 推送的全部�
 ```
 <receiver android:name="cn.jpush.im.android.api.CommandReceiver">
     <intent-filter>
-        <action android:name="cn.jpush.im.intent.IM_ACK"/>
-        <action android:name="cn.jpush.im.intent.IM_RESPONSE_TIMEOUT"/>
+        <action android:name="cn.jpush.im.intent.IM_RESPONSE"/>
         <category android:name="cn.jpush.im.android.demo"/>
     </intent-filter>
 </receiver>
@@ -177,7 +176,7 @@ public void onCreate() {
     super.onCreate();
     Log.i("JMessageDemoApplication", "Application onCreate");
 	 
-	 JMessageClient.init(getApplicationContext());
+	JMessageClient.init(getApplicationContext());
     JPushInterface.setDebugMode(true);
 }
 ```
