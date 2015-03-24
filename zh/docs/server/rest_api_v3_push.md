@@ -681,7 +681,10 @@ Windows Phone 平台上，暂时不支持应用内消息。
 		<tr >
 			<td style="padding: 0 5px;text-align:center;">1005</td>
 			<td style="padding: 0 5px;">消息体太大</td>
-			<td style="padding: 0 5px;">必须改正。通知 “iOS”:{ } 及大括号内的总体长度不超过：2000个字节（包括自定义参数和符号）。JPush 的 消息部分长度不超过 1K 字节。</td>
+			<td style="padding: 0 5px;">必须改正。
+				Android平台Notification+Message长度限制为1000字节；
+				iOS Notification 中 “iOS”:{ } 及大括号内的总体长度不超过：2000个字节（包括自定义参数和符号），iOS 的 Message部分长度不超过 1000 字节；
+				WinPhone平台Notification长度限制为1000字节</td>
 			<td style="padding: 0 5px;text-align:center;">400</td>
 		</tr>
 		<tr >

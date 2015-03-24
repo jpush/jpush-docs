@@ -261,7 +261,7 @@
     </tr>
     <tr >
       <td style="padding: 0 5px;text-align:center;">6011</td>
-      <td style="padding: 0 5px;">10s内设置tag或alias大于3次</td>
+      <td style="padding: 0 5px;">10s内设置tag或alias大于10次</td>
       <td style="padding: 0 5px;">短时间内操作过于频繁</td>
     </tr>
   </table>
@@ -397,8 +397,7 @@ r1.7.0 开始支持。
 <div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">
 <p>温馨提示：
   <br>
-<p>开发者在自定义的监听extern NSString * const kJPFNetworkDidLoginNotification; // 登录成功时
-<p>也可以通过"RegistrationID"这个key值来获取对应的 RegistrationID。
+<p>开发者在自定义的监听kJPFNetworkDidLoginNotification也可以通过"RegistrationID"这个key值来获取对应的 RegistrationID。
 </div>
 
 #### 附加说明
@@ -560,6 +559,7 @@ enum
 v1.8.0及后续版本
 
 #### 功能说明
+
 
 IOS 设备收到一条本地通知，用户点击通知打开应用时，应用程序根据状态不同进行处理需在 AppDelegate 中的以下两个方法中添加代码以获取本地通知内容
 

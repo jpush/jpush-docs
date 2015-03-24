@@ -616,7 +616,7 @@ SDK 对自定义消息，只是传递，不会有任何界面上的展示。
 		</tr>
 		<tr >
 			<td style="padding: 0 5px;text-align:center;">6011</td>
-			<td style="padding: 0 5px;">10s内设置tag或alias大于3次</td>
+			<td style="padding: 0 5px;">10s内设置tag或alias大于10次</td>
 			<td style="padding: 0 5px;">短时间内操作过于频繁</td>
 		</tr>
 	</table>
