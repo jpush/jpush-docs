@@ -296,7 +296,7 @@ API 可以在 App 里任何地方调用。
     </tr>
     <tr >
       <td style="padding: 0 5px;text-align:center;">6011</td>
-      <td style="padding: 0 5px;">10s内设置tag或alias大于3次</td>
+      <td style="padding: 0 5px;">10s内设置tag或alias大于10次</td>
       <td style="padding: 0 5px;">短时间内操作过于频繁</td>
     </tr>
   </table>
