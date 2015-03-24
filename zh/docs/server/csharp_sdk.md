@@ -418,7 +418,7 @@ iOS 1.7.3及以上的版本才能正确解析v3的message，但是无法解析v2
 
 ##### Message API
 
-* 创建Message的静态工厂函数，因为cotent是必填字段，所以将狗仔函数私有，只用此API创建
+* 创建Message的静态工厂函数，因为cotent是必填字段，所以将构造函数私有，只用此API创建
 
 ```
 public static Message content(string msgContent)

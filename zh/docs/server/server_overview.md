@@ -19,7 +19,7 @@ JPush 提供遵从 REST 规范的 HTTP API，以供开发者远程调用 JPush �
 | 名称 | 	资源 | Base URL	 |描述|
 | ------------ | ------------- | ------------ |----------------|
 | [REST API v3 - Push](../rest_api_v3_push)	 | POST /v3/push  | https://api.jpush.cn | 推送 |
-| [REST API v3 - Report](../rest_api_v3_report) | GET /v2/received  | https://report.jpush.cn | 获取统计数据 - 消息送达 |
+| [REST API v3 - Report](../rest_api_v3_report) | GET /v3/received  | https://report.jpush.cn | 获取统计数据 - 消息送达 |
 | [REST API v3 - Devices](../rest_api_v3_device) | /v3/devices | https://device.jpush.cn | tag,alias 操作 |
 
 以下为老版本 API，仍然可用，但不鼓励使用。
