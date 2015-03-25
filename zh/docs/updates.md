@@ -1,5 +1,27 @@
 # 最近更新
 
+### JPush iOS SDK v1.8.3
+
+#### 更新时间
+2015-03-25
+
+#### Change Log
++ Bug修复：修复少数情况下 cpu 升至100%的问题
++ Bug修复：有极低几率写入文件 Crash
++ 优化改进：正式弃用 OpenUDID 接口
+
+#### 升级提示
+
+可选升级！
+
+#### 升级指南
+
++ 替换 lib 文件夹里的文件 .a 文件为新版本；
++ 替换 lib 文件夹里的文件 .h 文件为新版本；
++ 工程添加libz.dylib、Security.framework两个库；
++ 新版本不再需要 libPushSDK-Simulator.a 。如果你的老版本 SDK 包含此文件，请删除。
+
+
 ### JPush Android SDK v1.7.3
 
 #### 更新时间
