@@ -2,7 +2,15 @@
 
 ###概述
 
+<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px;">
+<p>温馨提示：</p>
+<p>详细API介绍文档地址   <a href="https://github.com/jpush/jpush-api-php-client/blob/master/doc/api.md">JPush Api PHP client doc</a></p>
+</div>
+
+<br>
+
 这是 JPush REST API 的 PHP 版本封装开发包，是由极光推送官方提供的，一般支持最新的 API 功能。
+
 
 
 对应的 REST API 文档：
@@ -10,8 +18,6 @@
 + [REST API - Push](../rest_api_v3_push/)
 
 + [REST API - Report](../rest_api_v3_report/)
-
-+ [JPush Api PHP client doc](https://github.com/jpush/jpush-api-php-client/blob/master/doc/api.md)
 
 版本更新:[Release](../../resources/#sdk_1)页面有详细的版本发布记录与下载。
 

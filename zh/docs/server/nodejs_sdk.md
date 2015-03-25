@@ -2,10 +2,17 @@
 
 ###概述
 
+<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px;">
+<p>温馨提示：</p>
+<p>详细API介绍文档地址   <a href="https://github.com/jpush/jpush-api-nodejs-client/blob/master/doc/api.md">NodeJS API DOC</a></p>
+</div>
+
+<br>
+
 本SDK提供JPush服务端接口的Node封装，与 JPush Rest API 组件通信。使用时引用该模块即可，可参考附带Demo学习使用方法。
 
 [REST API 文档](../rest_api_v3_push/)
-[NodeJS API DOC](https://github.com/jpush/jpush-api-nodejs-client/blob/master/doc/api.md)
+
 
 版本更新：[Release页面](../../resources/#sdk_1)。下载更新请到这里。
 
