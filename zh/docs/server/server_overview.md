@@ -12,7 +12,7 @@ JPush 提供遵从 REST 规范的 HTTP API，以供开发者远程调用 JPush �
 * API 请求有[频率限制](#api-rating)。
 * API 请求有[黑名单机制](#blacklist)。
 
-[^1]: [URL编码 - WikiPedia定义](http://zh.wikipedia.org/wiki/%E7%99%BE%E5%88%86%E5%8F%B7%E7%BC%96%E7%A0%81)
+[1]: [URL编码 - WikiPedia定义](http://zh.wikipedia.org/wiki/%E7%99%BE%E5%88%86%E5%8F%B7%E7%BC%96%E7%A0%81)
 
 ### REST API 资源列表
 
@@ -33,7 +33,7 @@ JPush 提供遵从 REST 规范的 HTTP API，以供开发者远程调用 JPush �
 
 JPush/JMessage REST API 都采用 HTTP基本认证[^2] 的验证方式。
 
-[^2]: [HTTP 基本认证 - WikiPedia定义](http://zh.wikipedia.org/wiki/HTTP%E5%9F%BA%E6%9C%AC%E8%AE%A4%E8%AF%81)
+[2]: [HTTP 基本认证 - WikiPedia定义](http://zh.wikipedia.org/wiki/HTTP%E5%9F%BA%E6%9C%AC%E8%AE%A4%E8%AF%81)
 
 基本作法为，HTTP Header（头）里加 Authorization：
 
