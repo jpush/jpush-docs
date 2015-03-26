@@ -373,7 +373,7 @@ SDK 对自定义消息，只是传递，不会有任何界面上的展示。
 	            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 	            context.startActivity(i);
 	        } else {
-	            Log.d(TAG, "Unhandled intent - " + intent.getAcion());
+	            Log.d(TAG, "Unhandled intent - " + intent.getAction());
 	  }
 	}
 
