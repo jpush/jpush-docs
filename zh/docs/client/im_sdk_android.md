@@ -197,7 +197,7 @@ SDK 从服务器端接收到消息，先会保存地本地数据库。然后以�
 
 ```
 MyMessageBroadcastReceiver msgReceiver = new MyMessageBroadcastReceiver (); 
-IntentFilter intentFilter = new IntentFilter(JPushIMInterface.ACTION_RECEIVE_CONVERSATION_MESSAGE); 
+IntentFilter intentFilter = new IntentFilter(JMessageClient.ACTION_RECEIVE_IM_MESSAGE); 
 IntentFilter.addCategory(context.getPackageName());
 registerReceiver(msgReceiver, intentFilter);
  
@@ -205,9 +205,10 @@ private class MyMessageBroadcastReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) { 
         //消息id 
-        String msgId = intent.getStringExtra("msg_id"); 
+        int messageID = data.getIntExtra("messageID", 0);
+        
         //发消息的对象的id
-        String targetId = intent.getStringExtra("target_id"); 
+        String targetID = data.getStringExtra("targetID");
         
         // 通过targetId和 msgId 拿到Message 对象。
         Conversation conv = JPushIMInterface.getConversation(targetId);
@@ -216,6 +217,7 @@ private class MyMessageBroadcastReceiver extends BroadcastReceiver {
 }
 ```
 
+上面的 Receiver 也可以考虑定义为静态的注册，写到 AndroidManifest.xml 里。
 
 #### 群组维护
 
