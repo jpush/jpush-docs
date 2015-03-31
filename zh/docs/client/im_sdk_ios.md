@@ -1,5 +1,7 @@
 # IM SDK for iOS
 
+### Coming soon
+
 ### Summary 概述
 
 JPush IM SDK 基于 JPush 推送 SDK 开发，提供了 Push SDK 的完整功能，并提供 IM 即时通讯功能。
