@@ -1,5 +1,27 @@
 # 最近更新
 
+### JMessage Android SDK v1.0.18
+
+#### 更新时间
+2015-04-01
+
+#### Change Log
++ JMesssage Android SDK 首次发布
++ 聊天支持：单聊，群聊
++ 聊天内容：文本，图片，语音对讲
++ 提供用户管理 ，群组管理功能
+
+#### 升级提示
+
+可选升级！
+
+#### 升级指南
+
++ 打开后请按照AndroidManifest的提示替换您的包名和APPKey；
++ 全局替换："import cn.jpush.im.android.demo.R;" 替换为 "import 您的包名.R;"
++ 如果是Android Studio用户注意检查 build.gradle 中的 applicationId 与你的包名一致
+
+
 ### JPush iOS SDK v1.8.3
 
 #### 更新时间
