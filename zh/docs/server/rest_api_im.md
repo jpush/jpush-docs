@@ -53,7 +53,7 @@ JSON Array.
 
 暂未开放。
 
-	POST /messages
+	POST /v1/messages
 
 ##### Example Request
 
@@ -92,7 +92,7 @@ JSON Object.
 
 #### 获取用户信息
 
-	GET /users/:username
+	GET /v1/users/:username
 		
 ##### Request Params
 
@@ -115,7 +115,7 @@ JSON Object.
 
 #### 更新用户信息
 
-	PUT /users/:username
+	PUT /v1/users/:username
 
 ##### Example Request
 
@@ -139,7 +139,7 @@ JSON Object.
 
 #### 删除用户
 
-	DELETE /users/:username
+	DELETE /v1/users/:username
 	
 Request Params
 
@@ -155,7 +155,7 @@ Example Response
 
 #### 获取用户列表
 
-	GET /users/?start=:start&count=:count
+	GET /v1/users/?start=:start&count=:count
 
 Request Params
 
@@ -179,7 +179,7 @@ Request Params
 
 #### 创建群组
 
-	POST /groups/
+	POST /v1/groups/
 
 Example Request
 
@@ -210,7 +210,7 @@ Example Response
 
 #### 获取群组详情
 
-	GET /groups/:gid
+	GET /v1/groups/:gid
 Request Params
 
 + gid 群组ID。由创建群组时分配。Example Response
@@ -234,7 +234,7 @@ Request Params
 
 该群组的所有成员都会收到群组被解散通知。
 
-	DELETE /groups/:gid
+	DELETE /v1/groups/:gid
 
 Request Params
 
@@ -253,7 +253,7 @@ Example Response
 
 群组成员将收到增加与删除成员的通知。
 
-	POST /groups/:gid/members
+	POST /v1/groups/:gid/members
 
 Request Params
 
@@ -280,7 +280,7 @@ Example Response
 
 #### 获取群组成员列表
 
-    GET /groups/:gid/members/
+    GET /v1/groups/:gid/members/
 
 Request Params
 
@@ -300,7 +300,7 @@ Example Response
 
 #### 获取某用户的群组列表
 
-    GET /users/:username/groups/
+    GET /v1/users/:username/groups/
 
 Request Params
 
@@ -317,7 +317,7 @@ Example Response
 
 #### 获取当前应用的群组列表
 
-    GET /groups/?start=:start&count=:count
+    GET /v1/groups/?start=:start&count=:count
 
 Request Params
 
