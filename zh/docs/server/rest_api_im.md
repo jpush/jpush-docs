@@ -70,7 +70,9 @@ JSON Array.
 	"msg_type": "text",
 	"msg_body": {
 	    "extras": {},
-		"text": "Hello, JMessage!"		}}
+		"text": "Hello, JMessage!"	
+	}
+}
 ```
 
 ##### Request Params
@@ -96,7 +98,9 @@ JSON Object.
 		
 ##### Request Params
 
-+ username 用户名。填充到请求路径上。##### Example Response
++ username 用户名。填充到请求路径上。
+
+##### Example Response
 
 ```
 {
@@ -161,8 +165,8 @@ Request Params
 
 + start 开始的记录数
 + count 要获取的记录个数
-Example Response
-```
+Example Response
+```
 < HTTP/1.1 204 NO CONTENT
 < Content-Type: application/json
 
@@ -210,11 +214,14 @@ Example Response
 
 #### 获取群组详情
 
-	GET /v1/groups/:gid
+	GET /v1/groups/:gid
+
 Request Params
 
-+ gid 群组ID。由创建群组时分配。Example Response
-```
++ gid 群组ID。由创建群组时分配。
+
+Example Response
+```
 < HTTP/1.1 200 OK
 < Content-Type: application/json
 < 
@@ -373,6 +380,9 @@ HTTP 返回码参考文档：[HTTP-Status-Code](../http_status_code)
 |899008| 401	| Basic authentication failed. | 校验失败
 |899009| 400	| appkey not exists | appkey不存在
 |899010| 400 | Delete fail	| 删除失败
+|800011| 400 | Repeat to add the members     |  重复添加 |
+|800012| 403 | no enough space for members   | 群组剩余位置不够 |
+|899013| 403 | user list is bigger than 500  | 注册列表过长     |
 |899030| 503 | Server response time out, please try again later | 系统繁忙，稍后重试
 
 
