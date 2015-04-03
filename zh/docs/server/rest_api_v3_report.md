@@ -97,16 +97,19 @@ curl -v https://report.jpush.cn/v3/messages?msg_ids=269978303 -u "7d431e42dfa6a6
 #### Response Params
 
 JSON Array
+
 + msg_id 查询的消息ID
+
 + android Android统计数据
-	+ target 推送目标数
-	+ online_push 在线推送数
-	+ received 推送送达数
-	+ click 用户点击数
+	   + target 推送目标数
+	   + online_push 在线推送数
+	   + received 推送送达数
+	   + click 用户点击数
+     
 + ios iOS统计数据
-	+ apns_target APNs通知推送目标数
-	+ apns_sent APNS通知成功推送数
-	+ click 用户点击数
+	   + apns_target APNs通知推送目标数
+	   + apns_sent APNS通知成功推送数
+	   + click 用户点击数
 
 
 
