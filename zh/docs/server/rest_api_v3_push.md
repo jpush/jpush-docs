@@ -182,7 +182,7 @@ JPush 当前支持 Android, iOS, Windows Phone 三个平台的推送。其关键
 			<td style="padding: 0 5px;text-align:center;">JSON Array</td>
 			<td style="padding: 0 5px;text-align:center;">别名</td>
 			<td style="padding: 0 5px;">数组。多个别名之间是 OR 关系，即取并集。</td>
-			<td style="padding: 0 5px;">用别名来标识一个用户。一个设备只能绑定一个别名，但多个设备可以绑定同一个别名。一次推送最多 1000 个。<ul style="margin-bottom: 0;"><li>有效的 tag 组成：字母（区分大小写）、数字、下划线、汉字。</li><li>限制：每一个 tag 的长度限制为 40 字节。（判断长度需采用UTF-8编码）</li></td>
+			<td style="padding: 0 5px;">用别名来标识一个用户。一个设备只能绑定一个别名，但多个设备可以绑定同一个别名。一次推送最多 1000 个。<ul style="margin-bottom: 0;"><li>有效的 alias 组成：字母（区分大小写）、数字、下划线、汉字。</li><li>限制：每一个 tag 的长度限制为 40 字节。（判断长度需采用UTF-8编码）</li></td>
 		</tr>
 		<tr >
 			<td style="padding: 0 5px;">registration_id</td>
@@ -296,7 +296,7 @@ JPush 当前支持 Android, iOS, Windows Phone 三个平台的推送。其关键
 
 上面定义的 notification 对象，将被推送到 "platform" 指定的多个平台，并且其通知 alert 信息都一样。
 
-###### android
+#### android
 
 Android 平台上的通知。
 
@@ -363,7 +363,7 @@ Android 平台上的通知。
 }
 ```
 
-##### iOS
+#### iOS
 
 iOS 平台上 APNs 通知。
 
@@ -450,7 +450,7 @@ iOS 平台上 APNs 通知。
 	    }
 	}				 
 ```
-##### winphone
+#### winphone
 
 Windows Phone 平台上的通知。
 
