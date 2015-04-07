@@ -29,8 +29,7 @@ JPush SDK 提供的推送服务是默认开启的。
 
 + JPush Service 不在后台运行
 + 收不到推送消息
-+ 不能通过 JPushInterface.init 恢复，需要调用resumePush恢复。
-+ 极光推送所有的其他 API 调用都无效
++ 极光推送所有的其他 API 调用都无效,不能通过 JPushInterface.init 恢复，需要调用resumePush恢复。
 
 ##### 接口定义
 
