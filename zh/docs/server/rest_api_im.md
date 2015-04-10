@@ -359,7 +359,7 @@ HTTP 返回码参考文档：[HTTP-Status-Code](../http_status_code)
 <
 { 
   "error": {
-        "code": 3001, 
+        "code": 899008, 
         "message": "Basic authentication failed"
      }
 }
@@ -367,23 +367,107 @@ HTTP 返回码参考文档：[HTTP-Status-Code](../http_status_code)
 
 #### 业务错误码定义
 
-| Code | HTTP| Error Message | 说明     |
-| ---- | --- | ------------- | ------- |
-|899000| 500 | Server internal error | 系统内部错误 |
-|899001| 403 | User exists  | 用户已存在 |
-|899002| 403 | No sush user | 用户不存在 |
-|899003| 400 | Parameter invalid! | 请求参数不合法 |
-|899004| 403 | Password error  | 密码错误 |
-|899005| 403 | Invalid uid     | uid 不存在 |
-|899006| 403	| gid invalid	 | gid 不存在
-|899007| 401	| Missing authen info. | 校验信息为空
-|899008| 401	| Basic authentication failed. | 校验失败
-|899009| 400	| appkey not exists | appkey不存在
-|899010| 400 | Delete fail	| 删除失败
-|800011| 400 | Repeat to add the members     |  重复添加 |
-|800012| 403 | no enough space for members   | 群组剩余位置不够 |
-|899013| 403 | user list is bigger than 500  | 注册列表过长     |
-|899030| 503 | Server response time out, please try again later | 系统繁忙，稍后重试
+<div class="table-d" align="center" >
+	<table border="1" width = "100%">
+		<tr  bgcolor="#D3D3D3" >
+			<th style="padding: 0 5px;text-align:center;" >Code</th>
+			<th style="padding: 0 5px;" >HTTP</th>
+			<th style="padding: 0 5px;" >Error Message</th>
+			<th style="padding: 0 5px;" >说明</th>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;text-align:center;">899000</td>
+			<td style="padding: 0 5px;">500</td>
+			<td style="padding: 0 5px;">Server internal error</td>
+			<td style="padding: 0 5px;">系统内部错误</td>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;text-align:center;">899001</td>
+			<td style="padding: 0 5px;">403</td>
+			<td style="padding: 0 5px;">User exists</td>
+			<td style="padding: 0 5px;">用户已存在</td>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;text-align:center;">899002</td>
+			<td style="padding: 0 5px;">403</td>
+			<td style="padding: 0 5px;">No sush user</td>
+			<td style="padding: 0 5px;">用户不存在</td>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;text-align:center;">899003</td>
+			<td style="padding: 0 5px;">400</td>
+			<td style="padding: 0 5px;">Parameter invalid!</td>
+			<td style="padding: 0 5px;">请求参数不合法 </td>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;text-align:center;">899004</td>
+			<td style="padding: 0 5px;">403</td>
+			<td style="padding: 0 5px;">Password error</a></td>
+			<td style="padding: 0 5px;">密码错误</td>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;text-align:center;">899005</td>
+			<td style="padding: 0 5px;">403</td>
+			<td style="padding: 0 5px;">Invalid uid </td>
+			<td style="padding: 0 5px;">uid 不存在</td>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;text-align:center;">899006</td>
+			<td style="padding: 0 5px;">403</td>
+			<td style="padding: 0 5px;">gid invalid</td>
+			<td style="padding: 0 5px;">gid 不存在</td>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;text-align:center;">899007</td>
+			<td style="padding: 0 5px;">401</td>
+			<td style="padding: 0 5px;">Missing authen info.</td>
+			<td style="padding: 0 5px;">校验信息为空</td>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;text-align:center;">899008</td>
+			<td style="padding: 0 5px;">401</td>
+			<td style="padding: 0 5px;">Basic authentication failed.</td>
+			<td style="padding: 0 5px;">校验失败</td>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;text-align:center;">899009</td>
+			<td style="padding: 0 5px;">400</td>
+			<td style="padding: 0 5px;">appkey not exists</td>
+			<td style="padding: 0 5px;">appkey不存在</td>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;text-align:center;">899010</td>
+			<td style="padding: 0 5px;">400</td>
+			<td style="padding: 0 5px;">Delete fail</td>
+			<td style="padding: 0 5px;">删除失败</td>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;text-align:center;">800011</td>
+			<td style="padding: 0 5px;">400</td>
+			<td style="padding: 0 5px;">Repeat to add the members</td>
+			<td style="padding: 0 5px;">重复添加</td>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;text-align:center;">800012</td>
+			<td style="padding: 0 5px;">403</td>
+			<td style="padding: 0 5px;">no enough space for members</td>
+			<td style="padding: 0 5px;">群组剩余位置不够</td>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;text-align:center;">899013</td>
+			<td style="padding: 0 5px;">403</td>
+			<td style="padding: 0 5px;">user list is bigger than 500 </td>
+			<td style="padding: 0 5px;">注册列表过长</td>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;text-align:center;">899030</td>
+			<td style="padding: 0 5px;">503</td>
+			<td style="padding: 0 5px;">Server response time out, please try again later</td>
+			<td style="padding: 0 5px;">系统繁忙，稍后重试</td>
+		</tr>
+	</table>
+</div>
+
 
 
 ### 相关文档
