@@ -196,6 +196,8 @@ public void onCreate() {
 + [IM SDK for Android](../../client/im_sdk_android/)
 + [IM SDK for iOS](../../client/im_sdk_ios/)
 + [IM REST API](../../server/rest_api_im/)
-+ [IM 内部消息协议](../../client/im_message_protocol/)
++ [IM 内部消息协议](../../advanced/im_message_protocol/)
++ [IM 业务对象](../../advanced/im_objects/)
 + [JPush Android SDK 集成指南](../../guideline/android_guide/)
 
+I

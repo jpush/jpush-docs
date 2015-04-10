@@ -389,7 +389,7 @@ HTTP 返回码参考文档：[HTTP-Status-Code](../http_status_code)
 ### 相关文档
 
 + [极光IM 指南](../../guideline/jmessage_guide/)
-+ [IM 消息协议](../../client/im_message_protocol/)
++ [IM 消息协议](../../advanced/im_message_protocol/)
 + [IM SDK for Android](../../client/im_sdk_android/)
 + [IM SDK for iOS](../../client/im_sdk_ios/)
 
