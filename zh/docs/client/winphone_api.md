@@ -1,30 +1,30 @@
 #Windows Phone API
-## API概述
+### API概述
 
 APIs 主要都集中在名空间JPushSDK的类JServer中
 
-### Property-IsDebug
+#### Property-IsDebug
 开启调试模式，帮助了解集成的情况，打印相关log，发布商店时，`请关闭调试模式，否则会导致无法通过微软应用商店的审核`
 
 #### 支持版本
 开始支持v1.0.0
 
 	public static  bool  IsDebug{get;set;}
-#### 参数说明
+##### 参数说明
 + IsDebug=true  开启调试模式
 + IsDebug=false 关闭调试模式
 
-### Method - Setup
+#### Method - Setup
 
 调用此API将APP_KEY上报给JPush后台
 
-#### 支持的版本
+##### 支持的版本
 开始支持v1.0.0
 
-#### 接口定义
+##### 接口定义
 	public  static void  Setup(string APP_KEY, string CHANNEL,Action<string> action)
 	
-#### 参数说明
+##### 参数说明
 + APP_KEY
 	+ JPush Portal上注册应用后生成的 appkey
 + CHANNEL
@@ -36,37 +36,37 @@ APIs 主要都集中在名空间JPushSDK的类JServer中
 	  Debug.WriteLine(registrationID);
 	} 
 
-### Method -Activated
+#### Method -Activated
 
 应用程序进入Activated状态的调用，以正确的处理Tomstoning状态
 
-#### 支持版本
+##### 支持版本
 开始支持v1.0.0
 
-#### 接口定义
+##### 接口定义
 	public  static void Activated()
-### Method-Deactiveted
+#### Method-Deactiveted
 
 应用程序进入Deactivated状态调用，用来正确的保存应用程序的退出状态
 
-#### 支持版本
+##### 支持版本
 开始支持v1.0.0
 
-#### 接口定义
+##### 接口定义
 
 	public  static void Deactivated()
 	
-## JPush SDK的状态和MPNs的通知
+### JPush SDK的状态和MPNs的通知
 
 注册JPush SDK中的事件，用来监听JPush SDK的运行情况和接收MPNs发送的信息
 
-### 支持版本
+#### 支持版本
 开始支持v1.0.0
-### 接口定义
+#### 接口定义
 	
 	public static void AddNotification(string name, Action<Dictionary<string, string>> selector)
 
-### 参数说明
+#### 参数说明
 + name
 	+ 监听的消息类型，JPush SDK提供以下5种类型
 	+ NotificationCenter.kNetworkDidSetupNotification                  建立连接
@@ -80,7 +80,7 @@ APIs 主要都集中在名空间JPushSDK的类JServer中
 	+ Dictionary在kNetworkDidSetupNotification时会带一个MPNs的消息
 	
 	
-###示例代码
+####示例代码
 	void callBack(Dictionary<string, string> dict)
 	{
 	   Debug.WriteLine(dict.ToString());
@@ -94,61 +94,61 @@ APIs 主要都集中在名空间JPushSDK的类JServer中
 	      });
 	}); 
 
-## 开启、查询和停止MPNs推送功能
+### 开启、查询和停止MPNs推送功能
 
 与Windows Phone推送相关的API说明
 
-### Method - RegisterNotification
+#### Method - RegisterNotification
 注册MPNs服务的接口。当自行定制弹出用户允许推送的窗口，`请使用这个接口。用户关闭了MPNs通知后，如果再次开启通知请调用此函数。不能调用RegisterNotificationWithMessagebox`
 
-#### 支持的版本
+##### 支持的版本
 
 开始支持v1.0.0
 
-#### 接口定义
+##### 接口定义
 
 public  static void RegisterNotification()
 
-### Method - RegisterNotificationWithMessagebox
+#### Method - RegisterNotificationWithMessagebox
 
  注册MPNs的接口，帮助管理首次注册弹出messagebox，并保存用户选择状态
 
-#### 支持的版本
+##### 支持的版本
 开始支持v1.0.0
 
-#### 接口定义
+##### 接口定义
 
 	public  static void RegisterNotificationWithMessagebox(string content, string title, Action<bool> callBack)
 	 
-#### 参数说明
+##### 参数说明
 + content
 	+ 弹出框的内容
 + title
 	+ 弹出框的标题
 + callBack
 	+回调函数通知用户选择结果
-### Method-CloseNotification
+#### Method-CloseNotification
 
 关闭MPNs推送
 
-#### 支持的版本
+##### 支持的版本
 开始支持的版本v1.0.0
 
-#### 接口定义
+##### 接口定义
 	public  static void CloseNotification()
 	
-### Method-IsOpneNotification
+#### Method-IsOpneNotification
 
 检查MPNs是否开启
 
 
-#### 支持版本
+##### 支持版本
 开始支持版本v1.0.0
 
-#### 接口定义
+##### 接口定义
 	public  static bool IsOpneNotification()
 
-## 标签与别名 API 
+### 标签与别名 API 
 
 <div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">
  <p>温馨提示，设置标签别名请注意处理call back结果。
@@ -159,7 +159,7 @@ public  static void RegisterNotification()
 
 API 可以在 App 里任何地方调用。
 
-### 别名 alias
+#### 别名 alias
 为安装了应用程序的用户，取个别名来标识。以后给该用户 Push 消息时，就可以用此别名来指定。
 
 每个用户只能指定一个别名。
@@ -170,7 +170,7 @@ API 可以在 App 里任何地方调用。
 
 举例：在一个用户要登录的游戏中，可能设置别名为 userid。游戏运营时，发现该用户 3 天没有玩游戏了，则根据 userid 调用服务器端API发通知到客户端提醒用户。
 
-### 标签 tag
+#### 标签 tag
 为安装了应用程序的用户，打上标签。其目的主要是方便开发者根据标签，来批量下发 Push 消息。
 
 可为每个用户打多个标签。
@@ -179,7 +179,7 @@ API 可以在 App 里任何地方调用。
 
 举例： game, old_page,  women
 
-### Method - SetTagsWithAlias(with Callback)
+#### Method - SetTagsWithAlias(with Callback)
 
 调用此 API 来同时设置别名与标签，支持回掉函数。
 
@@ -187,13 +187,13 @@ API 可以在 App 里任何地方调用。
 
 在之前调用过后，如果需要再次改变别名与标签，只需要重新调用此 API 即可。
 
-#### 支持的版本
+##### 支持的版本
 开始支持的版本：1.0.0
 
-#### 接口定义
+##### 接口定义
 	public static void  SetTagsWithAlias(HashSet<string> tags, string alias, Action<int, HashSet<string>, string> callback)
 	
-#### 参数说明
+##### 参数说明
 + tags
 	+ null 此次调用不设置此值。
 	+ 空集合表示取消之前的设置。
@@ -214,7 +214,7 @@ API 可以在 App 里任何地方调用。
 			private void TagsAliasCallBack(int resultCode, HashSet<string> tags, string alias);	
 
 
-### Method - FilterValidTags
+#### Method - FilterValidTags
 
 用于过滤出正确可用的 tags。
 
@@ -230,22 +230,22 @@ API 可以在 App 里任何地方调用。
  <p>这时你可以调用本方法 FilterValidTags 来过滤掉无效的 tags，得到有效的 tags，再调用 JPush SDK 的 set tags / alias 方法。
 </div>
 
-#### 支持的版本
+##### 支持的版本
 开始支持的版本：1.0.0
 
-#### 接口定义
+##### 接口定义
 
 	public static HashSet<string> FilterValidTags(HashSet<string> tags)
 
-#### 参数说明
+##### 参数说明
 + tags
 	+ 原 tag 集合。
 	
-#### 接口返回
+##### 接口返回
 
 有效的 tag 集合。
 
-### 错误码定义
+#### 错误码定义
 
 <div class="table-d" align="center" >
   <table border="1" width = "100%">
@@ -302,64 +302,83 @@ API 可以在 App 里任何地方调用。
   </table>
 </div>
 
-## 统计功能
+### 统计功能
 
 用于统计Toast点击，页面切换等事件
 
-### Method-HandleToastNotification
+#### Method-HandleToastNotification
 
 用于统计点击Toast通知进入应用程序的事件，需要放入到与Toast通知对应的页面和默认的页面，比如MainPage.xaml页面
 
-#### 支持版本
+##### 支持版本
 开始支持v1.0.0
 
-#### 接口定义
+##### 接口定义
 	public static void HandleToastNotification(IDictionary<string, string> remotoInfo)
-#### 参数说明
+##### 参数说明
 + remoteInfo
 	+ 页面切换时，由wp 8 sdk的接口：NavigationContext.QueryString获取
-### Method-TrackPageInto
+#### Method-TrackPageInto
 
 用于统计用户进入页面的事件，在需要统计页面的OnNavigatedTo中加入这个函数
 
-#### 支持版本
+##### 支持版本
 开始支持版本v1.0.0
 
-#### 接口定义
+##### 接口定义
 	public static void TrackPageInto(string pageName)
 
-#### 参数说明
+##### 参数说明
 + pageName
 	+ 页面名称
 
-### Method-TrackPageOut
+#### Method-TrackPageOut
 
 用于统计用户离开页面的事件，在需要统计的页面的OnNavigatedFrom中加入这个函数
 
-#### 支持版本
+##### 支持版本
 开始支持版本v1.0.0
 
-#### 接口定义
+##### 接口定义
 ```
 public static void TrackPageOut(string pageName)
 ```
 
-####参数说明
+#####参数说明
 
 + pageName
 	+ 页面名称
 	
 		
-## 获取RegistrationID
+### 获取RegistrationID
 这个API中在名空间JPushSDK的类JServer中
 
-###  Method-GetRegisrtationID
+####  Method-GetRegisrtationID
 获取RegistrationID,没有登录成功之前返回空的字符串，登录成功后返回 RegistrationID
 
-#### 支持版本
+##### 支持版本
 开始支持V1.0.0
 
-####  接口定义
+#####  接口定义
 	public static string   GetRegisrtationID()
+
+### 客户端错误码定义
+
+<div class="table-d" align="center" >
+  <table border="1" width = "100%">
+    <tr  bgcolor="#D3D3D3" >
+      <th style="padding: 0 5px;text-align:center;" >Code</th>
+      <th style="padding: 0 5px;" >描述</th>
+    </tr>
+    <tr >
+      <td style="padding: 0 5px;text-align:center;">1008</td>
+      <td style="padding: 0 5px;">AppKey非法</td>
+    </tr>
+    <tr >
+      <td style="padding: 0 5px;text-align:center;">1009</td>
+      <td style="padding: 0 5px;">当前的appkey下没有创建WinPhone应用。请到官网检查此应用的应用详情</td>
+    </tr>
+  </table>
+</div>
 
 

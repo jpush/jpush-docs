@@ -933,6 +933,26 @@ API 用于统计用户应用崩溃日志
 [APService crashLogON];
 ```
 
+### 客户端错误码定义
+
+<div class="table-d" align="center" >
+  <table border="1" width = "100%">
+    <tr  bgcolor="#D3D3D3" >
+      <th style="padding: 0 5px;text-align:center;" >Code</th>
+      <th style="padding: 0 5px;" >描述</th>
+    </tr>
+    <tr >
+      <td style="padding: 0 5px;text-align:center;">1008</td>
+      <td style="padding: 0 5px;">AppKey非法</td>
+    </tr>
+    <tr >
+      <td style="padding: 0 5px;text-align:center;">1009</td>
+      <td style="padding: 0 5px;">当前的appkey下没有创建iOS应用。请到官网检查此应用的应用详情</td>
+    </tr>
+  </table>
+</div>
+
+
 
 
 更多地说明请参考Apple的官方文档

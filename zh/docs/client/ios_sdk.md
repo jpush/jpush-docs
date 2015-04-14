@@ -34,14 +34,48 @@ JPush iOS SDK 不负责 APNs 通知的展现，只是向 JPush 服务器端上�
 
 JPush API v3 支持同时一次调用同时推送 APNs 通知与 JPush 应用内消息。这在某些应用场景里是有意义的。
 
-||APNS|应用内消息|
-| ---- | ---- | ---- |
-|推送原则|每次推送都会发给APNS 服务器发送经由APNS服务器下发到手机。|每次推送都会尝试发送，如果用户在线则立即发送。|
-|离线消息	|离线消息由APNS服务器缓存按照apple的逻辑处理。|用户不在线JPush server 会保存离线消息。离线消息保留5条。|
-|是否有APNS生产和开发环境区别。|是，只有证书和应用环境匹配才可以收到。|否，应用内消息与iOS 环境这是状态无关。|
-|接收方式|应用退出，后台或者是打开是都会收到APNS|需要应用打并与jpush 建立连接，然后接收离线消息和在线消息。|
-|展示效果|如果应用后台或退出，会以系统通知方式展现。<p>如果应用处于打开状态，不展示。|默认不展示。|
-|处理函数|didReceiveRemoteNotification|networkDidReceiveMessage|
+
+<div class="table-d" align="center" >
+  <table border="1" width = "100%">
+    <tr  bgcolor="#D3D3D3" >
+      <th style="padding: 0 5px;" ></th>
+      <th style="padding: 0 5px;" >APNS</th>
+      <th style="padding: 0 5px;" >应用内消息</th>
+    </tr>
+    <tr >
+      <td style="padding: 0 5px;">推送原则</td>
+      <td style="padding: 0 5px;">每次推送都会发给APNS 服务器发送经由APNS服务器下发到手机。</td>
+      <td style="padding: 0 5px;">每次推送都会尝试发送，如果用户在线则立即发送。</td>
+    </tr>
+    <tr >
+      <td style="padding: 0 5px;">离线消息</td>
+      <td style="padding: 0 5px;">离线消息由APNS服务器缓存按照apple的逻辑处理。</td>
+      <td style="padding: 0 5px;">用户不在线JPush server 会保存离线消息。离线消息保留5条。</td>
+    </tr>
+    <tr >
+      <td style="padding: 0 5px;">是否有APNS生产和开发环境区别。</td>
+      <td style="padding: 0 5px;">是，只有证书和应用环境匹配才可以收到。</td>
+      <td style="padding: 0 5px;">否，应用内消息与iOS 环境这是状态无关。</td>
+    </tr>
+    <tr >
+      <td style="padding: 0 5px;">接收方式</td>
+      <td style="padding: 0 5px;">应用退出，后台或者是打开是都会收到APNS</td>
+      <td style="padding: 0 5px;">需要应用打并与jpush 建立连接，然后接收离线消息和在线消息。</td>
+    </tr>
+    <tr >
+      <td style="padding: 0 5px;">展示效果</td>
+      <td style="padding: 0 5px;">如果应用后台或退出，会以系统通知方式展现。<p>如果应用处于打开状态，不展示。</td>
+      <td style="padding: 0 5px;">默认不展示。</td>
+    </tr>
+    <tr >
+      <td style="padding: 0 5px;">处理函数</td>
+      <td style="padding: 0 5px;">didReceiveRemoteNotification</td>
+      <td style="padding: 0 5px;">networkDidReceiveMessage</td>
+    </tr>
+  </table>
+</div>
+
+
 
 
 ### iOS SDK 集成

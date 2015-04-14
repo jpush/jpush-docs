@@ -1039,8 +1039,16 @@ if (JPushInterface.ACTION_RICHPUSH_CALLBACK.equals(intent.getAction())) {
 而这个的原因一般是：你当前的 App 的 Android 包名，以及 appKey ，与你在 Portal 上注册的应用的 Android 包名与 AppKey 不相同。</td>
 		</tr>
 		<tr >
+			<td style="padding: 0 5px;text-align:center;">1005</td>
+			<td style="padding: 0 5px;">包名和AppKey 不匹配</td>
+		</tr>
+		<tr >
 			<td style="padding: 0 5px;text-align:center;">1008</td>
 			<td style="padding: 0 5px;">AppKey非法</td>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;text-align:center;">1009</td>
+			<td style="padding: 0 5px;">当前的appkey下没有创建Android应用。请到官网检查此应用的应用详情</td>
 		</tr>
 		<tr >
 			<td style="padding: 0 5px;text-align:center;">-996</td>
