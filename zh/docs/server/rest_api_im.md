@@ -205,10 +205,12 @@ Example Response
 
 {
     "gid": 13579,
-    “owner_username”: "tom", 
     "group_name": "泡否", 
-    "members_username": ["eddie", "annie"], 
-    "group_desc": "你懂的。。。"
+    "group_desc": "你懂的。。。",
+    "appkey": "dcf71ef5082057832bd44fbd",
+    "level": 3,
+    "mtime": "2014-07-01 00:00:00",
+    "ctime": "2014-07-01 00:00:00"
 }
 ```
 
@@ -228,10 +230,12 @@ Example Response
 
 {
     "gid": 13579,
-    “owner_username”: "tom", 
     "group_name": "泡否", 
-    "members_username": ["eddie", "javen"], 
-    "group_desc": "你懂的。。。"
+    "group_desc": "你懂的。。。",
+    "appkey": "dcf71ef5082057832bd44fbd",
+    "level": 3,
+    "mtime": "2014-07-01 00:00:00",
+    "ctime": "2014-07-01 00:00:00"
 }
 ```
 
