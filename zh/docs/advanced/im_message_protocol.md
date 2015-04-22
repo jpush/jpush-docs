@@ -79,6 +79,9 @@ msg_type = voice
 + format String
 	+ 必须。
 	+ 语音类型。
++ fsize  Number
+	+ 必须
+	+ 文件大小（字节数）
 
 msg_type = image
 
@@ -97,6 +100,9 @@ msg_type = image
 + format String
 	+ 可选。
 	+ 图片格式。
++ fsize  Number
+	+ 必须
+	+ 文件大小（字节数）
 + img_link String
 	+ 可选。
 	+ 图片链接。
@@ -120,8 +126,9 @@ msg_type = custom
 	"create_time": 135432432187,
 	"msg_type": "text",
 	"msg_body": {
-		"text": "Hello, JPush IM!"		}
-}
+		"text": "Hello, JPush IM!"	
+	}
+}
 ```
 
 ### See Also 相关文档
