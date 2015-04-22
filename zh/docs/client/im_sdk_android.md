@@ -185,7 +185,7 @@ SDK 侧可以发起注册用户，也可由服务器端批量发起注册。
 
 - 根据参数匹配得到的会话对象。
 	
-##### 删除单个会议
+##### 删除单个会话
 	
 	public boolean deleteConversation(ConversationType type, String target);
 
