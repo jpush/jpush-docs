@@ -866,6 +866,10 @@ r1.6.0 版本开始。
 
 则请使用本通知栏定制API提供的能力。
 
+### 教程与代码示例
+
+请参考文档：[自定义通知栏样式教程](../android_tutorials/#_11)
+
 ### API - 设置默认通知栏样式构建类
 	public static void setDefaultPushNotificationBuilder(BasicPushNotificationBuilder builder)
 
@@ -892,10 +896,6 @@ public static void setPushNotificationBuilder(Integer notificationBuilderId, Bas
 
 设置时，开发者自己维护 notificationBuilderId 这个编号，下发通知时使用 n_builder_id 指定该编号，从而 Push SDK 会调用开发者应用程序里设置过的指定编号的通知栏构建类，来定制通知栏样式。
 
-
-### 教程与代码示例
-
-请参考文档：[自定义通知栏样式教程](../android_tutorials/#_11)
 
 ## 设置保留最近通知条数 API
 

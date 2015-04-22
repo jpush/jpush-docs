@@ -100,13 +100,29 @@ SDK 侧可以发起注册用户，也可由服务器端批量发起注册。
 
 + UserInfo userInfo 用户信息
 
+##### 从本地获取当前登录账号的用户信息
+	public static UserInfo getMyInfo();
+参数说明
+
+- 无
+
+返回
+
+- UserInfo  当前登录用户的用户信息。
+
 ##### 更新用户信息
 
-	public static void updateUserInfo(UserInfo userInfo, BasicCallback callback);
+	public static void updateMyInfo(UserInfo.Field updateField, UserInfo info, BasicCallback callback);
 	
 参数说明
 
-+ UserInfo userInfo 用户信息（对象）。不必每次更新所有的信息，设置的字段为 null 表示不更新此字段信息。
++ UserInfo.Field updateField 枚举类型，表示需要更新的用户信息字段。包括：
+	+ nickname
+	+ birthday
+	+ signature
+	+ gender
+	+ region
++ UserInfo userInfo 待更新的用户信息（对象）。SDK将根据field参数来判断需要将哪个属性更新到服务器上去。
 + BasicCallback callback 结果回调
 
 ##### 更新用户密码
@@ -183,41 +199,234 @@ SDK 侧可以发起注册用户，也可由服务器端批量发起注册。
 - 是否删除成功。
 
 
-#### 接收消息
+#### 事件处理
+##### 1、事件接收类的注册
+	public static void registerEventReceiver(Object receiver);
+	public static void registerEventReceiver(Object receiver, int priority);
+参数说明
++ Object receiver 消息接收类对象
++ int priority 定义事件接收者接收事件的优先级，默认值为0，优先级越高将越先接收到事件。（优先级只对同一个线程模式中的接收者有效）
 
-SDK 从服务器端接收到消息，先会保存地本地数据库。然后以广播的形式通知 App。 App 需要注册一个 BroadcastReceiver，来处理 IM SDK 发出的消息。
+##### 2、事件接收类的解绑
+	public static void unRegisterEventReceiver(Object receiver);
+参数说明
++ Object receiver 消息接收类对象，对象解绑之后将不再接收到任何event。
 
-+ action: JPushIMInterface.ACTION_RECEIVE_CONVERSATION_MESSAGE
-+ extras: 
-	* key: target_type 目标类型。单聊或者群聊。
-	* key: target_id 目标ID。单聊则是 username，群聊则是 groupId。
-	* key: msg_id
+##### 3、事件接收
+注册事件接收类之后，需要在消息接收类中实现如下方法来接收对应消息。sdk将根据实现方法的方法名来区分不同的线程模式，常用的线程模式有onEvent(默认线程模式)和onEventMainThread(主线程模式)两种。
 
-代码示例
+可以通过定义不同类型的参数，来接收不同种类的事件。具体事件类型定义见 “事件类型” 一节
 
+###### 默认线程（子线程）模式
 ```
-MyMessageBroadcastReceiver msgReceiver = new MyMessageBroadcastReceiver (); 
-IntentFilter intentFilter = new IntentFilter(JMessageClient.ACTION_RECEIVE_IM_MESSAGE); 
-IntentFilter.addCategory(context.getPackageName());
-registerReceiver(msgReceiver, intentFilter);
- 
-private class MyMessageBroadcastReceiver extends BroadcastReceiver { 
-    @Override
-    public void onReceive(Context context, Intent intent) { 
-        //消息id 
-        int messageID = data.getIntExtra("messageID", 0);
-        
-        //发消息的对象的id
-        String targetID = data.getStringExtra("targetID");
-        
-        // 通过targetId和 msgId 拿到Message 对象。
-        Conversation conv = JPushIMInterface.getConversation(targetId);
-        Message msg = conv.getMessage(msgId);
-    } 
+public void onEvent(EventEntity event){
+	//do your own business
+}
+```
+方法体将在默认线程（子线程）中被调用， 可以用来处理耗时操作。
+
+参数定义
++ EventEntity event 事件对象。（ 定义不同类型参数可以接收不同种类事件，具体用法可以参考“示例代码“。）
+
+###### 主线程模式
+```
+public void onEventMainThread(EventEntity event){
+	//do your own business
+}
+```
+方法体将在主线程中被调用，可以用来刷新UI。
+
+参数定义
++ EventEntity event 事件对象。
+
+##### 4、事件类型
+
+消息事件实体类 MessageEvent
+
+<div class="table-d" align="left" >
+  <table border="1" width = "100%">
+    <tr  bgcolor="#D3D3D3" >
+      <th style="padding: 0 5px; " width="10px">方法</th>
+      <th style="padding: 0 5px; " width="61px">类型</th>
+      <th style="padding: 0 5px; " width="468px">说明</th>
+    </tr>
+    <tr >
+      <td style="padding: 0 5px; " >getConversationType()</td>
+      <td style="padding: 0 5px; " >String</td>
+      <td style="padding: 0 5px; " >获取消息所属的会话类型</td>
+    </tr>
+    <tr >
+      <td style="padding: 0 5px;">getTargetID()</td>
+      <td style="padding: 0 5px;">String</td>
+      <td style="padding: 0 5px;">获取消息所属的会话targetID</td>
+    </tr>
+    <tr >
+      <td style="padding: 0 5px;">getMsgID()</td>
+      <td style="padding: 0 5px;">int</td>
+      <td style="padding: 0 5px;">获取消息在数据库中的ID</td>
+    </tr>
+  </table>
+</div>
+
+</br>
+
+群成员添加事件实体类 GroupMemberAddedEvent
+
+<div class="table-d" align="left" >
+  <table border="1" width = "100%">
+    <tr  bgcolor="#D3D3D3" >
+      <th style="padding: 0 5px;" width="50px">方法</th>
+      <th style="padding: 0 5px;" width="30px">类型</th>
+      <th style="padding: 0 5px;" width="300px">说明</th>
+    </tr>
+    <tr >
+      <td style="padding: 0 5px;">getGroupID()</td>
+      <td style="padding: 0 5px;">long</td>
+      <td style="padding: 0 5px;">获取事件对应的群组ID</td>
+    </tr>
+    <tr >
+      <td style="padding: 0 5px;">getMembers()</td>
+      <td style="padding: 0 5px;">List<String> </td>
+      <td style="padding: 0 5px;">获取本次加群的成员userName列表</td>
+    </tr>
+  </table>
+</div>
+
+</br>
+
+群成员移除事件实体类 GroupMemberRemovedEvent
+
+<div class="table-d" align="left" >
+  <table border="1" width = "100%">
+    <tr  bgcolor="#D3D3D3" >
+      <th style="padding: 0 5px;" width="50px">方法</th>
+      <th style="padding: 0 5px;" width="30px">类型</th>
+      <th style="padding: 0 5px;" width="300px">说明</th>
+    </tr>
+    <tr >
+      <td style="padding: 0 5px;">getGroupID()</td>
+      <td style="padding: 0 5px;">long</td>
+      <td style="padding: 0 5px;">获取事件对应的群组ID</td>
+    </tr>
+    <tr >
+      <td style="padding: 0 5px;">getMembers()</td>
+      <td style="padding: 0 5px;">List<String> </td>
+      <td style="padding: 0 5px;">获取本次被移出的群成员userName列表</td>
+    </tr>
+  </table>
+</div>
+
+</br>
+
+群成员退群实体类 GroupMemberExitEvent
+
+<div class="table-d" align="left" >
+  <table border="1" width = "100%">
+    <tr  bgcolor="#D3D3D3" >
+      <th style="padding: 0 5px;" width="20px">方法</th>
+      <th style="padding: 0 5px;" width="48px">类型</th>
+      <th style="padding: 0 5px;" width="460px">说明</th>
+    </tr>
+    <tr >
+      <td style="padding: 0 5px;">getGroupID()</td>
+      <td style="padding: 0 5px;">long</td>
+      <td style="padding: 0 5px;">获取事件对应的群组ID</td>
+    </tr>
+    <tr >
+      <td style="padding: 0 5px;">getMembers()</td>
+      <td style="padding: 0 5px;">List<String> </td>
+      <td style="padding: 0 5px;">获取本次被移出的群成员userName列表</td>
+    </tr>
+    <tr >
+      <td style="padding: 0 5px;">containsGroupOwner()</td>
+      <td style="padding: 0 5px;">boolean</td>
+      <td style="padding: 0 5px;">本次退群的群成员中是否包含群主</td>
+    </tr>
+  </table>
+</div>
+
+</br>
+
+
+
+会话刷新事件实体类 ConversationRefreshEvent
+
+方法说明
+
+- 无
+
+
+#####5、示例代码
+接收消息事件
+```Java
+class MessageEventReceiver extends Activity{
+
+  @Override
+  protected void onCreate() {
+    super.onCreate(savedInstanceState);
+    JMessageClient.registerEventReceiver(this);//注册消息接收者
+  }
+
+  @Override
+  protected void onDestroy() {
+    JMessageClient.unRegisterEventReceiver(this);//activity销毁时需要解绑
+    super.onDestroy();
+  }
+
+  public void onEvent(MessageEvent event){
+    ConversationType convType = event.getConversationType();//获取消息的会话类型
+    String targetID = event.getTargetID();//获取消息的会话对象ID
+    int msgID = event.getMsgID();//获取消息在本地数据库中的ID
+
+    //通过target和messageID拿到Message对象。
+    Conversation conv = JMessageClient.getConversation(convType ,targetID);
+    Message msg = conv.getMessage(msgId);
+
+    //do your own business
+    ...
+
+  }
 }
 ```
 
-上面的 Receiver 也可以考虑定义为静态的注册，写到 AndroidManifest.xml 里。
+接受群成员变化事件
+```Java
+class GroupMemberChangeEventReceiver extends Activity{
+
+  @Override
+  protected void onCreate() {
+    super.onCreate(savedInstanceState);
+    JMessageClient.registerEventReceiver(this);
+  }
+
+  @Override
+  protected void onDestroy() {
+    JMessageClient.unRegisterEventReceiver(this);
+    super.onDestroy();
+  }
+
+  public void onEvent(GroupMemberAddedEvent event){
+    //do your own business
+    ...
+
+  }
+
+  public void onEvent(GroupMemberRemovedEvent event){
+    //do your own business
+    ...
+  }
+
+  public void onEvent(GroupMemberExitEvent event){
+    //do your own business
+    ...
+  }
+
+  public void onEventMainThread(GroupMemberExitEvent event){
+    //do your own business 
+    ...
+  }
+}
+```
 
 #### 群组维护
 
