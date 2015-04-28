@@ -555,7 +555,7 @@ cn.jpush.im.api.Message
 使用举例
 
 ```
-Conversation conv = JMessageClient.getConversation("tom", ConversationType.single);
+Conversation conv = JMessageClient.getConversation(ConversationType.single,"tom");
 
 TextContent text = new TextContent("Hi, JMessage!");
 Message message = conv.createSendMessage(text);

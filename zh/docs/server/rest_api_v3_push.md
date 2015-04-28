@@ -601,7 +601,7 @@ Windows Phone 平台上，暂时不支持应用内消息。
 			<td style="padding: 0 5px;">time_to_live</td>
 			<td style="padding: 0 5px;text-align:center;">int</td>
 			<td style="padding: 0 5px;text-align:center;">可选</td>
-			<td style="padding: 0 5px;">离线消息保留时长</td>
+			<td style="padding: 0 5px;">离线消息保留时长(秒)</td>
 			<td style="padding: 0 5px;">推送当前用户不在线时，为该用户保留多长时间的离线消息，以便其上线时再次推送。默认 86400 （1 天），最长 10 天。设置为 0 表示不保留离线消息，只有推送当前在线的用户可以收到。</td>
 		</tr>
 		<tr >
