@@ -552,7 +552,7 @@ SDK 对自定义消息，只是传递，不会有任何界面上的展示。
 
 #### 接口定义
 
-	public static Set<String> filterValidTags(Set<String> tags)
+	public void gotResult(int responseCode, String alias, Set<String> tags);
 
 #### 参数定义
 
