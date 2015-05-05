@@ -406,7 +406,7 @@ iOS 平台上 APNs 通知。
 			<td style="padding: 0 5px;text-align:center;">boolean</td>
 			<td style="padding: 0 5px;text-align:center;">可选</td>
 			<td style="padding: 0 5px;">推送唤醒</td>
-			<td style="padding: 0 5px;">推送的时候携带"content-availiable":true 说明是 Background Remote Notification，如果不携带此字段则是普通的Remote Notification。详情参考：<a href="../../client/ios_tutorials/#ios-7-background-remote-notification">Background Remote Notification</a></td>
+			<td style="padding: 0 5px;">推送的时候携带"content-available":true 说明是 Background Remote Notification，如果不携带此字段则是普通的Remote Notification。详情参考：<a href="../../client/ios_tutorials/#ios-7-background-remote-notification">Background Remote Notification</a></td>
 		</tr>
 		<tr >
 			<td style="padding: 0 5px;">category</td>
