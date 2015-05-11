@@ -1,4 +1,38 @@
 # 最近更新
+### JPush Android SDK v1.7.4
+
+#### 更新时间
++ 2015-05-11
+
+#### Change Log
++ 新增功能：支持64bit CPU, 提供arm,x86,mips平台对应64位CPU的.so文件。
++ 优化改进：优化代码防止出现TransactionTooLargeException。
++ 优化改进：优化对本地数据库的操作代码。
++ 优化改进：catch AssertionError ，避免framework层的网络接口错误。
++ 优化改进：添加 API setLatestNotificationNum 的客户端打印。
++ 优化改进：Manifest中appKey填写为非Android平台的appKey时提示相应信息。
++ 修复bug：修复创建应用设置仅有iOS版本的应用时重复尝试注册。
++ 修复bug：修复appKey填写为null时会发起注册的问题。
++ 修复bug：特殊操作导致设置保留通知条数失效。
++ 修复bug：本地通知重复弹出。
++ 修复bug：修复由外部应用异常启动JPush内部组件出现的崩溃。
++ 修复bug：修复上报代码，防止出现ConcurrentModificationException。
+
+#### 升级提示
+
++ 建议升级！
+
+#### 升级指南
++ 新加入 .jar 包：同时删除原来各老版本的 jar 包。
++ 新加入 .so 包：libs/armeabi/libjpush174.so ，同时删除原来各老版本的 so 包。
++ 如果使用的老版本统计的 API activityStarted/activityStopped, 请使用最新的 API onResume/onPause 替换，参考文档 [统计消息API](../client/android_api/#api_2)
++ 在 AndroidManifest.xml 增加权限 <uses-permission android:name="android.permission.WRITE_SETTINGS" />。
++ 如果是从早期的版本升级过来，建议参考 SDK下载包最新版本的 example 来更新 AndroidManifest.xml 文件配置。
++ 如果要支持 x86 CPU 的机型，请下载单独的 x86 JPush SDK 压缩包，解压缩后复制 libs/x86/libjpush174.so 到你项目的 libs/x86/ 目录下。
++ 如果要支持 mips CPU 的机型，请下载单独的 mips JPush SDK 压缩包，解压缩后复制 libs/mips/libjpush174.so 到你项目的 libs/mips/ 目录下。
+
+
+
 
 ### JMessage Android SDK v1.0.18
 
