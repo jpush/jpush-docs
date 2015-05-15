@@ -1,5 +1,5 @@
 # IM SDK for iOS
-
+iOS SDK download coming soon. 
 ### Summary 概述
 
 极光IM（英文名JMessage） SDK 基于 JPush 推送 SDK 开发，提供了 Push SDK 的完整功能，并提供 IM 即时通讯功能。
@@ -12,9 +12,6 @@ App 集成了 IM SDK 就不应再集成 JPush SDK（只提供 Push 功能的 SDK
 ### Functions 功能
 
 与 Android 集类似。
-
-暂缺少群组相关功能。Comming soon.
-
 
 ### API 接口列表
 
