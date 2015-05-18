@@ -631,12 +631,23 @@ public static void setNotificationMode(int mode);
 ```
 参数说明
 
-+ int mode  显示通知的模式
- + JMessageClient.NOTI_MODE_DEFAULT  显示通知，有声音，有震动。 
- + JMessageClient.NOTI_MODE_NO_SOUND 显示通知，无声音，有震动。
- + JMessageClient.NOTI_MODE_NO_VIBRATE 显示通知，有声音，无震动。
- + JMessageClient.NOTI_MODE_SILENCE 显示通知，无声音，无震动。
- + JMessageClient.NOTI_MODE_NO_NOTIFICATION 不显示通知。
++ int mode  
+    + 显示通知的模式
+
++ JMessageClient.NOTI_MODE_DEFAULT  
+    + 显示通知，有声音，有震动。 
+
++ JMessageClient.NOTI_MODE_NO_SOUND 
+    + 显示通知，无声音，有震动。
+
++ JMessageClient.NOTI_MODE_NO_VIBRATE 
+    + 显示通知，有声音，无震动。
+
++ JMessageClient.NOTI_MODE_SILENCE 
+    + 显示通知，无声音，无震动。
+
++ JMessageClient.NOTI_MODE_NO_NOTIFICATION 
+    + 不显示通知。
 
 
 ##### 进入单聊回话
