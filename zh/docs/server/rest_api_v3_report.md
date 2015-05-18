@@ -153,13 +153,15 @@ curl -v "https://report.jpush.cn/v3/users?time_unit=DAY&start=2014-06-10&duratio
 
 #### Response Params
 JSON Object
+
 + time_unit 请求时的时间单位。
 + start 请求时的起始时间。
 + duration 请求时的持续时长。
 + items 获取到的统计数据项。是一个 JSON Array。
-	+ new 新增用户
-	+ online 在线用户
-	+ active 活跃用户
+  	+ new 新增用户
+  	+ online 在线用户
+  	+ active 活跃用户
+
 
 
 ###HTTP 返回码

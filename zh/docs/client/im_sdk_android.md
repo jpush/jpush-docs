@@ -53,6 +53,14 @@ SDK 侧可以发起注册用户，也可由服务器端批量发起注册。
 
 ### API 列表
 
+#####SDK初始化
+在调用IM其他接口前必须先调此接口初始化SDK，推荐在application类中调用。
+```
+public static synchronized void init(Context context)
+```
+参数说明
++ Context context 应用程序上下文对象。
+
 #### 注册与登录
 
 ##### 注册
@@ -147,6 +155,101 @@ SDK 侧可以发起注册用户，也可由服务器端批量发起注册。
 
 #### 会话与发送消息
 
+##### 创建文字消息
+```
+ /**
+  * 创建一条单聊文本消息
+  *
+  * @param username  聊天对象用户名
+  * @param text  文本内容
+  * @return 消息对象
+  */
+public static Message createSingleTextMessage(String username, String text)
+
+ /**
+  * 创建一条群聊文本信息
+  *
+  * @param groupID  群组的groupID
+  * @param text  文本内容
+  * @return  消息对象
+  */
+public static Message createGroupTextMessage(long groupID, String text)
+```
+
+#####创建图片消息
+```
+ /**
+  * 创建一条单聊图片信息
+  *
+  * @param username  聊天对象的用户名
+  * @param imageFile 图片文件
+  * @return  消息对象
+  * @throws FileNotFoundException
+  */
+public static Message createSingleImageMessage(String username, File imageFile)
+
+
+ /**
+  * 创建一条群聊图片信息
+  *
+  * @param groupID  群组的groupID
+  * @param imageFile 图片文件
+  * @return  消息对象
+  * @throws FileNotFoundException
+  */
+public static Message createGroupImageMessage(long groupID, File imageFile)
+```
+
+##### 创建语音消息
+```
+ /**
+  * 创建一条单聊语音信息
+  *
+  * @param username  聊天对象的用户名
+  * @param voiceFile 语音文件
+  * @param duration  语音文件时长
+  * @return  消息对象
+  * @throws FileNotFoundException
+  */
+public static Message createSingleVoiceMessage(String username, 
+	File voiceFile, int duration) throws FileNotFoundException
+	
+ /**
+  * 创建一条群聊语音信息
+  *
+  * @param groupID   群组groupID
+  * @param voiceFile 语音文件
+  * @param duration  语音文件时长
+  * @return  消息对象
+  * @throws FileNotFoundException
+  */
+public static Message createGroupVoiceMessage(long groupID, 
+	File voiceFile, int duration) throws FileNotFoundException
+```
+
+##### 创建自定义消息
+```
+ /**
+  * 创建一条单聊自定义消息
+  *
+  * @param username  聊天对象username
+  * @param valuesMap 包含自定义键值对的map.
+  * @return 消息对象
+  */
+public static Message createSingleCustomMessage(String username,
+	 Map<? extends String, ?> valuesMap)
+
+ /**
+  * 创建一条群聊自定义消息
+  *
+  * @param groupID   群组groupID
+  * @param valuesMap 包含了自定义键值对的map
+  * @return  消息对象
+  */
+public static Message createGroupCustomMessage(long groupID, 
+	Map<? extends String, ?> valuesMap)
+```
+
 ##### 发送消息
 
 向服务器给发送对象发送消息，并且保存到本地会话。
@@ -170,29 +273,53 @@ SDK 侧可以发起注册用户，也可由服务器端批量发起注册。
 
 返回
 
-+ List<Conversation> 会话列表。
++ `List<Conversation>` 会话列表。
 
-##### 获取单个会话
+##### 获取单个单聊会话
 
-	public Conversation getConversation(ConversationType type, String target);
+	public static Conversation getSingleConversation(String username);
 
 参数说明
 
-+ ConversationType type 会话类型。可选项：single, group。
-+ String target 会话对象。单聊时是 username，群聊时是 group_id。
++ String username 目标的用户用户名。
 
 返回
 
-- 根据参数匹配得到的会话对象。
-	
-##### 删除单个会话
-	
-	public boolean deleteConversation(ConversationType type, String target);
+- 根据参数匹配得到的单聊会话对象。
+
+##### 获取单个群聊会话
+
+	public static Conversation getGroupConversation(long groupID);
 
 参数说明
 
-+ ConversationType type 会话类型。可选项：single, group。
-+ String target 会话对象。单聊时是 username，群聊时是 group_id。
++ long groupID 目标的群的群ID。
+
+返回
+
+- 根据参数匹配得到的群聊会话对象。
+
+
+	
+##### 删除单个单聊会话
+	
+	public static boolean deleteSingleConversation(String username);
+
+参数说明
+
++ String username 目标的用户用户名。
+
+返回
+
+- 是否删除成功。
+
+##### 删除单个群聊会话
+	
+	public static boolean deleteGroupConversation(long groupID);
+
+参数说明
+
++ long groupID 目标群的群ID。
 
 返回
 
@@ -203,17 +330,13 @@ SDK 侧可以发起注册用户，也可由服务器端批量发起注册。
 ##### 1、事件接收类的注册
 	public static void registerEventReceiver(Object receiver);
 	public static void registerEventReceiver(Object receiver, int priority);
-
 参数说明
-
 + Object receiver 消息接收类对象
 + int priority 定义事件接收者接收事件的优先级，默认值为0，优先级越高将越先接收到事件。（优先级只对同一个线程模式中的接收者有效）
 
 ##### 2、事件接收类的解绑
 	public static void unRegisterEventReceiver(Object receiver);
-
 参数说明
-
 + Object receiver 消息接收类对象，对象解绑之后将不再接收到任何event。
 
 ##### 3、事件接收
@@ -221,7 +344,7 @@ SDK 侧可以发起注册用户，也可由服务器端批量发起注册。
 
 可以通过定义不同类型的参数，来接收不同种类的事件。具体事件类型定义见 “事件类型” 一节
 
-**默认线程（子线程）模式**
+###### 默认线程（子线程）模式
 ```
 public void onEvent(EventEntity event){
 	//do your own business
@@ -230,10 +353,9 @@ public void onEvent(EventEntity event){
 方法体将在默认线程（子线程）中被调用， 可以用来处理耗时操作。
 
 参数定义
-
 + EventEntity event 事件对象。（ 定义不同类型参数可以接收不同种类事件，具体用法可以参考“示例代码“。）
 
-**主线程模式**
+###### 主线程模式
 ```
 public void onEventMainThread(EventEntity event){
 	//do your own business
@@ -252,199 +374,148 @@ public void onEventMainThread(EventEntity event){
 <div class="table-d" align="left" >
   <table border="1" width = "100%">
     <tr  bgcolor="#D3D3D3" >
-      <th style="padding: 0 5px; " width="10px">方法</th>
-      <th style="padding: 0 5px; " width="61px">类型</th>
-      <th style="padding: 0 5px; " width="468px">说明</th>
+      <th style="padding: 0 5px; " width="20px">方法</th>
+      <th style="padding: 0 5px; " width="40px">类型</th>
+      <th style="padding: 0 5px; " width="300px">说明</th>
     </tr>
     <tr >
-      <td style="padding: 0 5px; " >getConversationType()</td>
-      <td style="padding: 0 5px; " >String</td>
-      <td style="padding: 0 5px; " >获取消息所属的会话类型</td>
-    </tr>
-    <tr >
-      <td style="padding: 0 5px;">getTargetID()</td>
-      <td style="padding: 0 5px;">String</td>
-      <td style="padding: 0 5px;">获取消息所属的会话targetID</td>
-    </tr>
-    <tr >
-      <td style="padding: 0 5px;">getMsgID()</td>
-      <td style="padding: 0 5px;">int</td>
-      <td style="padding: 0 5px;">获取消息在数据库中的ID</td>
+      <td style="padding: 0 5px; " >getMessage()</td>
+      <td style="padding: 0 5px; " >Message</td>
+      <td style="padding: 0 5px; " >获取消息对象</td>
     </tr>
   </table>
 </div>
 
 </br>
-
-群成员添加事件实体类 GroupMemberAddedEvent
-
-<div class="table-d" align="left" >
-  <table border="1" width = "100%">
-    <tr  bgcolor="#D3D3D3" >
-      <th style="padding: 0 5px;" width="50px">方法</th>
-      <th style="padding: 0 5px;" width="30px">类型</th>
-      <th style="padding: 0 5px;" width="300px">说明</th>
-    </tr>
-    <tr >
-      <td style="padding: 0 5px;">getGroupID()</td>
-      <td style="padding: 0 5px;">long</td>
-      <td style="padding: 0 5px;">获取事件对应的群组ID</td>
-    </tr>
-    <tr >
-      <td style="padding: 0 5px;">getMembers()</td>
-      <td style="padding: 0 5px;">List<String> </td>
-      <td style="padding: 0 5px;">获取本次加群的成员userName列表</td>
-    </tr>
-  </table>
-</div>
-
-</br>
-
-群成员移除事件实体类 GroupMemberRemovedEvent
-
-<div class="table-d" align="left" >
-  <table border="1" width = "100%">
-    <tr  bgcolor="#D3D3D3" >
-      <th style="padding: 0 5px;" width="50px">方法</th>
-      <th style="padding: 0 5px;" width="30px">类型</th>
-      <th style="padding: 0 5px;" width="300px">说明</th>
-    </tr>
-    <tr >
-      <td style="padding: 0 5px;">getGroupID()</td>
-      <td style="padding: 0 5px;">long</td>
-      <td style="padding: 0 5px;">获取事件对应的群组ID</td>
-    </tr>
-    <tr >
-      <td style="padding: 0 5px;">getMembers()</td>
-      <td style="padding: 0 5px;">List<String> </td>
-      <td style="padding: 0 5px;">获取本次被移出的群成员userName列表</td>
-    </tr>
-  </table>
-</div>
-
-</br>
-
-群成员退群实体类 GroupMemberExitEvent
-
-<div class="table-d" align="left" >
-  <table border="1" width = "100%">
-    <tr  bgcolor="#D3D3D3" >
-      <th style="padding: 0 5px;" width="20px">方法</th>
-      <th style="padding: 0 5px;" width="48px">类型</th>
-      <th style="padding: 0 5px;" width="460px">说明</th>
-    </tr>
-    <tr >
-      <td style="padding: 0 5px;">getGroupID()</td>
-      <td style="padding: 0 5px;">long</td>
-      <td style="padding: 0 5px;">获取事件对应的群组ID</td>
-    </tr>
-    <tr >
-      <td style="padding: 0 5px;">getMembers()</td>
-      <td style="padding: 0 5px;">List<String> </td>
-      <td style="padding: 0 5px;">获取本次被移出的群成员userName列表</td>
-    </tr>
-    <tr >
-      <td style="padding: 0 5px;">containsGroupOwner()</td>
-      <td style="padding: 0 5px;">boolean</td>
-      <td style="padding: 0 5px;">本次退群的群成员中是否包含群主</td>
-    </tr>
-  </table>
-</div>
-
-</br>
-
 
 
 会话刷新事件实体类 ConversationRefreshEvent
 
-方法说明
+<div class="table-d" align="left" >
+  <table border="1" width = "100%">
+    <tr  bgcolor="#D3D3D3" >
+      <th style="padding: 0 5px; " width="10px">方法</th>
+      <th style="padding: 0 5px; " width="20px">类型</th>
+      <th style="padding: 0 5px; " width="370px">说明</th>
+    </tr>
+    <tr >
+      <td style="padding: 0 5px; " >getConversation()</td>
+      <td style="padding: 0 5px; " >Conversation</td>
+      <td style="padding: 0 5px; " >获取需要被刷新的会话对象</td>
+    </tr>
+  </table>
+</div>
 
-- 无
+</br>
+
+通知栏点击事件实体类NotificationClickEvent
+
+<div class="table-d" align="left" >
+  <table border="1" width = "100%">
+    <tr  bgcolor="#D3D3D3" >
+      <th style="padding: 0 5px; " width="30px">方法</th>
+      <th style="padding: 0 5px; " width="20px">类型</th>
+      <th style="padding: 0 5px; " width="300px">说明</th>
+    </tr>
+    <tr >
+      <td style="padding: 0 5px; " >getMessage()</td>
+      <td style="padding: 0 5px; " >Message</td>
+      <td style="padding: 0 5px; " >获取点击的通知所对应的消息对象</td>
+    </tr>
+  </table>
+</div>
+
+</br>
+
 
 
 #####5、示例代码
 接收消息事件
 ```Java
 class MessageEventReceiver extends Activity{
-
-  @Override
-  protected void onCreate() {
-    super.onCreate(savedInstanceState);
-    JMessageClient.registerEventReceiver(this);//注册消息接收者
-  }
-
-  @Override
-  protected void onDestroy() {
-    JMessageClient.unRegisterEventReceiver(this);//activity销毁时需要解绑
-    super.onDestroy();
-  }
-
-  public void onEvent(MessageEvent event){
-    ConversationType convType = event.getConversationType();//获取消息的会话类型
-    String targetID = event.getTargetID();//获取消息的会话对象ID
-    int msgID = event.getMsgID();//获取消息在本地数据库中的ID
-
-    //通过target和messageID拿到Message对象。
-    Conversation conv = JMessageClient.getConversation(convType ,targetID);
-    Message msg = conv.getMessage(msgId);
-
-    //do your own business
-    ...
-
-  }
-}
-```
-
-接受群成员变化事件
-```Java
-class GroupMemberChangeEventReceiver extends Activity{
-
+ 
   @Override
   protected void onCreate() {
     super.onCreate(savedInstanceState);
     JMessageClient.registerEventReceiver(this);
   }
-
+ 
   @Override
   protected void onDestroy() {
     JMessageClient.unRegisterEventReceiver(this);
     super.onDestroy();
   }
-
-  public void onEvent(GroupMemberAddedEvent event){
-    //do your own business
-    ...
-
+ 
+  public void onEvent(MessageEvent event){
+    Message msg = event.getMessage();
+ 
+    switch (msg.getContentType()){
+        case text:
+        //处理文字消息
+        break;
+        case image:
+        //处理图片消息
+        break;
+        case voice:
+        //处理语音消息
+        break;
+        case custom:
+        //处理自定义消息
+        break;
+        case eventNotification:
+        //处理事件提醒消息
+        EventNotificationContent eventNotificationContent  = 
+		        (EventNotificationContent)msg.getContent();
+        switch (eventNotificationContent.getEventNotificationType()){
+            case group_member_added:
+            //群成员加群事件
+            break;
+            case group_member_removed:
+            //群成员被踢事件
+            break;
+            case group_member_exit:
+            //群成员退群事件
+            break;
+        }
+        break;
+    }
   }
+ }
+```
 
-  public void onEvent(GroupMemberRemovedEvent event){
-    //do your own business
-    ...
-  }
-
-  public void onEvent(GroupMemberExitEvent event){
-    //do your own business
-    ...
-  }
-
-  public void onEventMainThread(GroupMemberExitEvent event){
-    //do your own business 
-    ...
-  }
+接收通知栏点击事件
+```Java
+class NotificationClickEvent extends Activity{
+    @Override
+    protected void onCreate() {
+        super.onCreate(savedInstanceState);
+        JMessageClient.registerEventReceiver(this);
+    }
+    @Override
+    protected void onDestroy() {
+        JMessageClient.unRegisterEventReceiver(this);
+        super.onDestroy();
+    }
+    public void onEvent(NotificationClickEvent event){
+        Intent notificationIntent = new Intent(mContext, ChatActivity.class);
+        mContext.startActivity(notificationIntent);//自定义跳转到指定页面
+    }
+  
 }
 ```
+
+
 
 #### 群组维护
 
 ##### 创建群组
 
-	public static void createGroup(String groupName, String groupDesc, int groupLevel, CreateGroupCallback callback);
+	public static void createGroup(String groupName, String groupDesc, CreateGroupCallback callback);
 	
 参数说明 
 
 + String groupName 群名称
 + String groupDesc 群描述
-+ int groupLevel 群等级
 + CreateGroupCallback callback 结果回调
 
 回调
@@ -452,6 +523,18 @@ class GroupMemberChangeEventReceiver extends Activity{
 	public abstract void gotResult(int responseCode, String responseMsg, long groupId);
 	
 + long groupId 新创建成功的群组ID（resopnseCode = 0 时）。
+
+##### 获取群组列表
+```
+public static void getGroupIDList(GetGroupListCallback callback)
+```
+回调
+```
+public abstract void gotResult(int responseCode, String responseMessage,
+            List<Long> groupIDList)
+```
++ `List<Long>` groupIDList  当前用户所加入的群组的groupID的list
+
 
 ##### 获取群组详情
 
@@ -468,16 +551,26 @@ class GroupMemberChangeEventReceiver extends Activity{
 
 + Group group 返回的群组详情
 
-##### 更新群组详情
+##### 更新群组名称
 
-	public static void updateGroupInfo(long groupID, String groupName, String groupDesc, int groupLevel, BasicCallback callback);
+	public static void updateGroupName(long groupID, 
+			String groupName,BasicCallback callback);
 
 参数说明
 
 + long groupID 待更新信息的群组ID
 + String groupName 新的名称
-+ String groupDesc 新的描述
-+ int level 新的级别
++ BasicCallback callback 结果回调
+
+##### 更新群组详情
+
+	public static void updateGroupDescription(long groupID, 
+			String groupDesc,BasicCallback callback);
+
+参数说明
+
++ long groupID 待更新信息的群组ID
++ String groupName 新的群组详情描述
 + BasicCallback callback 结果回调
 
 
@@ -512,7 +605,8 @@ class GroupMemberChangeEventReceiver extends Activity{
 	
 ##### 获取群组成员列表
 
-	public static void getGroupMembersFromServer(long groupId, GetGroupMembersCallback callback)
+	public static void getGroupMembers(long groupID, 
+			GetGroupMembersCallback callback)
 
 参数说明
 
@@ -526,12 +620,60 @@ class GroupMemberChangeEventReceiver extends Activity{
 + List members 成员列表(username)。
 
 
+#### 通知栏相关
+##### 设置通知展示类型
+```
+public static void setNotificationMode(int mode);
+```
+参数说明
+
++ int mode  显示通知的模式
+ + JMessageClient.NOTI_MODE_DEFAULT  显示通知，有声音，有震动。 
+ + JMessageClient.NOTI_MODE_NO_SOUND 显示通知，无声音，有震动。
+ + JMessageClient.NOTI_MODE_NO_VIBRATE 显示通知，有声音，无震动。
+ + JMessageClient.NOTI_MODE_SILENCE 显示通知，无声音，无震动。
+ + JMessageClient.NOTI_MODE_NO_NOTIFICATION 不显示通知。
+
+
+##### 进入单聊回话
+进入单聊会话。UI在进入单聊会话页面时需要调用此函数，SDK会根据传入的username来决定是否需要发送通知
+
+```
+public static void enterSingleConversaion(String username)
+```
+参数定义
+
+  + String username 单聊聊天对象的username
+
+##### 进入群聊会话
+
+进入群聊会话。UI在进入群聊会话页面时需要调用此函数，SDK会根据传入的groupID来决定是否需要发送通知
+
+```
+public static void enterGroupConversation(long groupID)
+```
+
+参数定义
+
+  + long groupID 群聊聊天对象的群ID
+
+
+##### 退出会话
+退出会话。UI在退出会话页面时需要调用此函数。
+```
+public static void exitConversaion();
+```
+##### 通知栏点击事件监听
+用户可以通过接受通知栏点击事件NotificationClickEvent，来实现自定义跳转，该事件如果没有接收者，点击通知栏时SDK将默认跳转到程序主界面。
+
+事件接收方法见"事件处理"一节
+
 ### 类定义
 
 #### 会话与消息
 
 ```
-cn.jpush.im.api.Conversation
+cn.jpush.im.android.api.model.Conversation
 
 public File getAvatar();
 public String getDisplayName();
@@ -540,22 +682,37 @@ public List<Message> getAllMessage();
 public List<Message> getNewMessagesFromNewest(int offset, int limit);
 
 public Message createSendMessage(MessageContent content);
+public Message createSendTextMessage(String text);
+public Message createSendImageMessage(File imageFile) 
+		throws FileNotFoundException
+public Message createSendVoiceMessage(File voiceFile, int duration) 
+		throws FileNotFoundException
+public Message createSendCustomMessage(Map<? extends String, ?> valuesMap)
 public boolean resetUnreadCount();
 
 
 ```
 
 ```
-cn.jpush.im.api.Message
+cn.jpush.im.android.api.model.Message
 
+public String getFromID()
+public MessageContent getContent()
+public ContentType getContentType()
+public MessageStatus getStatus()
+public String getTargetID()
+public long getCreateTime()
 
+public void setOnContentUploadProgressCallback(ProgressUpdateCallback callback)
+public void setOnContentDownloadProgressCallback(ProgressUpdateCallback callback)
+public void setOnSendCompleteCallback(BasicCallback sendCompleteCallback)
 
 ```
 
 使用举例
 
 ```
-Conversation conv = JMessageClient.getConversation(ConversationType.single,"tom");
+Conversation conv = JMessageClient.getSingleConversation("tom");
 
 TextContent text = new TextContent("Hi, JMessage!");
 Message message = conv.createSendMessage(text);

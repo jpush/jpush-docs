@@ -290,6 +290,71 @@ DELETE /v3/aliases/{alias_value}?platform=android,ios
 ###### Response
 + N/A
 
+### 获取用户在线状态（VIP专属接口）
+
+#### Example Request
+
+##### Request Header
+
+```
+POST /v3/devices/status/
+  Authorization: Basic (base64 auth string) 
+  Accept: application/json
+```
+##### Request Data
+
+```
+{
+  "registration_ids":["010b81b3582", "0207870f1b8", "0207870f9b8"]
+}
+```
+
+##### Request Params
+
++ registration_ids  需要在线状态的用户registration_id， 最多支持查询1000个registration_id；
++ 需要申请开通了这个业务的 Appkey 才可以调用此 API。
+
+
+#### Example Response
+
+##### Response Header
+
+```
+HTTP/1.1 200 OK 
+  Content-Type: application/json; charset=utf-8
+```
+
+##### Response Data  
+
+```
+[
+     "010b81b3582": {
+         "online": true
+     }, 
+     "0207870f1b8": {
+          "online": false,
+          "last_online_time": "2014-12-16 10:57:07"
+     },
+     "0207870f9b8": {
+          "online": false
+    }
+ ]
+```
+
+##### Response Params
+
++ online 
+    + true: 10分钟之内在线； 
+    + false: 10分钟之内不在线；
+
++ last_online_time
+    + 当online为true时，该字段不返回;
+    + 当online为false，且该字段不返回时，则表示最后一次在线时间是两天之前；
+
++ 对于无效的regid或者不属于该appkey的regid，该registration id返回的结果为空;
+
+
+
 ### 调用返回
 #### HTTP 状态码
 参考文档：[Http-Status-Code](../http_status_code)
