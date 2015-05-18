@@ -330,13 +330,17 @@ public static Message createGroupCustomMessage(long groupID,
 ##### 1、事件接收类的注册
 	public static void registerEventReceiver(Object receiver);
 	public static void registerEventReceiver(Object receiver, int priority);
+
 参数说明
+
 + Object receiver 消息接收类对象
 + int priority 定义事件接收者接收事件的优先级，默认值为0，优先级越高将越先接收到事件。（优先级只对同一个线程模式中的接收者有效）
 
 ##### 2、事件接收类的解绑
 	public static void unRegisterEventReceiver(Object receiver);
+
 参数说明
+
 + Object receiver 消息接收类对象，对象解绑之后将不再接收到任何event。
 
 ##### 3、事件接收
@@ -353,6 +357,7 @@ public void onEvent(EventEntity event){
 方法体将在默认线程（子线程）中被调用， 可以用来处理耗时操作。
 
 参数定义
+
 + EventEntity event 事件对象。（ 定义不同类型参数可以接收不同种类事件，具体用法可以参考“示例代码“。）
 
 ###### 主线程模式
@@ -362,7 +367,6 @@ public void onEventMainThread(EventEntity event){
 }
 ```
 方法体将在主线程中被调用，可以用来刷新UI。
-
 参数定义
 
 + EventEntity event 事件对象。
@@ -785,7 +789,7 @@ public abstract class BasicCallback {
 
 
 
-### 错误码定义
+
 
 
 
