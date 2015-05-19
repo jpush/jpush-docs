@@ -162,7 +162,6 @@ JMessage SDK 是基于 JPush SDK 开发的，完整支持 JPush 推送的全部�
         <intent-filter>
             <action android:name="cn.jpush.im.android.action.IM_RESPONSE" />
             <action android:name="cn.jpush.im.android.action.NOTIFICATION_CLICK_PROXY" />
-
             <category android:name="cn.jpush.im.android.demo" />
         </intent-filter>
 </receiver>
