@@ -155,11 +155,16 @@ JMessage SDK 是基于 JPush SDK 开发的，完整支持 JPush 推送的全部�
 基于 JPush SDK 文档里描述的需要增加的部分，JMessage SDK 需要多加如下的关于广播的配置项。
 
 ```
-<receiver android:name="cn.jpush.im.android.helpers.IMReceiver">
-    <intent-filter>
-        <action android:name="cn.jpush.im.android.action.IM_RESPONSE"/>
-        <category android:name="cn.jpush.im.android.demo"/>
-    </intent-filter>
+<receiver
+        android:name="cn.jpush.im.android.helpers.IMReceiver"
+        android:enabled="true"
+        android:exported="false">
+        <intent-filter>
+            <action android:name="cn.jpush.im.android.action.IM_RESPONSE" />
+            <action android:name="cn.jpush.im.android.action.NOTIFICATION_CLICK_PROXY" />
+
+            <category android:name="cn.jpush.im.android.demo" />
+        </intent-filter>
 </receiver>
 ```
 其中 category 部分的包名，应改为您应用的包名。

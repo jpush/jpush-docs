@@ -330,17 +330,13 @@ public static Message createGroupCustomMessage(long groupID,
 ##### 1、事件接收类的注册
 	public static void registerEventReceiver(Object receiver);
 	public static void registerEventReceiver(Object receiver, int priority);
-
 参数说明
-
 + Object receiver 消息接收类对象
 + int priority 定义事件接收者接收事件的优先级，默认值为0，优先级越高将越先接收到事件。（优先级只对同一个线程模式中的接收者有效）
 
 ##### 2、事件接收类的解绑
 	public static void unRegisterEventReceiver(Object receiver);
-
 参数说明
-
 + Object receiver 消息接收类对象，对象解绑之后将不再接收到任何event。
 
 ##### 3、事件接收
@@ -357,7 +353,6 @@ public void onEvent(EventEntity event){
 方法体将在默认线程（子线程）中被调用， 可以用来处理耗时操作。
 
 参数定义
-
 + EventEntity event 事件对象。（ 定义不同类型参数可以接收不同种类事件，具体用法可以参考“示例代码“。）
 
 ###### 主线程模式
@@ -367,6 +362,7 @@ public void onEventMainThread(EventEntity event){
 }
 ```
 方法体将在主线程中被调用，可以用来刷新UI。
+
 参数定义
 
 + EventEntity event 事件对象。
@@ -631,47 +627,28 @@ public static void setNotificationMode(int mode);
 ```
 参数说明
 
-+ int mode  
-    + 显示通知的模式
-
-+ JMessageClient.NOTI_MODE_DEFAULT  
-    + 显示通知，有声音，有震动。 
-
-+ JMessageClient.NOTI_MODE_NO_SOUND 
-    + 显示通知，无声音，有震动。
-
-+ JMessageClient.NOTI_MODE_NO_VIBRATE 
-    + 显示通知，有声音，无震动。
-
-+ JMessageClient.NOTI_MODE_SILENCE 
-    + 显示通知，无声音，无震动。
-
-+ JMessageClient.NOTI_MODE_NO_NOTIFICATION 
-    + 不显示通知。
-
++ int mode  显示通知的模式
+ + JMessageClient.NOTI_MODE_DEFAULT  显示通知，有声音，有震动。 
+ + JMessageClient.NOTI_MODE_NO_SOUND 显示通知，无声音，有震动。
+ + JMessageClient.NOTI_MODE_NO_VIBRATE 显示通知，有声音，无震动。
+ + JMessageClient.NOTI_MODE_SILENCE 显示通知，无声音，无震动。
+ + JMessageClient.NOTI_MODE_NO_NOTIFICATION 不显示通知。
 
 ##### 进入单聊回话
 进入单聊会话。UI在进入单聊会话页面时需要调用此函数，SDK会根据传入的username来决定是否需要发送通知
-
 ```
 public static void enterSingleConversaion(String username)
 ```
 参数定义
-
-  + String username 单聊聊天对象的username
++ String username 单聊聊天对象的username
 
 ##### 进入群聊会话
-
 进入群聊会话。UI在进入群聊会话页面时需要调用此函数，SDK会根据传入的groupID来决定是否需要发送通知
-
 ```
 public static void enterGroupConversation(long groupID)
 ```
-
 参数定义
-
-  + long groupID 群聊聊天对象的群ID
-
++ long groupID 群聊聊天对象的群ID
 
 ##### 退出会话
 退出会话。UI在退出会话页面时需要调用此函数。
@@ -798,91 +775,9 @@ public abstract class BasicCallback {
 
 ```
 
+
+
 ### 错误码定义
-
-<div class="table-d" align="left" >
-  <table border="1" width = "100%">
-    <tr  bgcolor="#D3D3D3" >
-      <th style="padding: 0 5px; " width="10px">Code</th>
-      <th style="padding: 0 5px; " width="468px">说明</th>
-    </tr>
-    <tr >
-      <td style="padding: 0 5px; " >871101</td>
-      <td style="padding: 0 5px; " >请求参数不合法</td>
-    </tr>
-    <tr >
-      <td style="padding: 0 5px; " >871102</td>
-      <td style="padding: 0 5px; " >请求失败，请检查网络</td>
-    </tr>
-    <tr >
-      <td style="padding: 0 5px; " >871103</td>
-      <td style="padding: 0 5px; " >服务器内部错误</td>
-    </tr>
-    <tr >
-      <td style="padding: 0 5px; " >871104</td>
-      <td style="padding: 0 5px; " >服务器内部错误</td>
-    </tr>
-    <tr >
-      <td style="padding: 0 5px; " >871201</td>
-      <td style="padding: 0 5px; " >响应超时</td>
-    </tr>
-    <tr >
-      <td style="padding: 0 5px; " >871300</td>
-      <td style="padding: 0 5px; " >api调用发起者尚未登录</td>
-    </tr>
-    <tr >
-      <td style="padding: 0 5px; " >871301</td>
-      <td style="padding: 0 5px; " >api调用传入的参数不合法</td>
-    </tr>
-    <tr >
-      <td style="padding: 0 5px; " >871302</td>
-      <td style="padding: 0 5px; " >发送消息的消息体过大，整个消息体大小不能超过4k</td>
-    </tr>
-    <tr >
-      <td style="padding: 0 5px; " >871303</td>
-      <td style="padding: 0 5px; " >用户名不合法</td>
-    </tr>
-    <tr >
-      <td style="padding: 0 5px; " >871304</td>
-      <td style="padding: 0 5px; " >密码不合法</td>
-    </tr>
-    <tr >
-      <td style="padding: 0 5px; " >871305</td>
-      <td style="padding: 0 5px; " >名称不合法（包括nickname groupname notename）  </td>
-    </tr>
-    <tr >
-      <td style="padding: 0 5px; " >871306</td>
-      <td style="padding: 0 5px; " >其他输入不合法</td>
-    </tr>
-    <tr >
-      <td style="padding: 0 5px; " >871307</td>
-      <td style="padding: 0 5px; " >添加或移除群成员时，传入的成员列表中有用户不存在</td>
-    </tr>
-    <tr >
-      <td style="padding: 0 5px; " >871308</td>
-      <td style="padding: 0 5px; " >SDK尚未初始化</td>
-    </tr>
-    <tr >
-      <td style="padding: 0 5px; " >871309</td>
-      <td style="padding: 0 5px; " >消息中包含的文件不存在</td>
-    </tr>
-    <tr >
-      <td style="padding: 0 5px; " >871402</td>
-      <td style="padding: 0 5px; " >文件上传失败</td>
-    </tr>
-    <tr >
-      <td style="padding: 0 5px; " >871403</td>
-      <td style="padding: 0 5px; " >文件上传失败</td>
-    </tr>
-    <tr >
-      <td style="padding: 0 5px; " >871404</td>
-      <td style="padding: 0 5px; " >文件下载失败</td>
-    </tr>
-  </table>
-</div>
-
-
-
 
 
 
