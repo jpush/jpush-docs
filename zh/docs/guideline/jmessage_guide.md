@@ -134,7 +134,7 @@ JMessage SDK 是基于 JPush SDK 开发的，完整支持 JPush 推送的全部�
 
 在上述文档基础上，需要如下几个集成操作：
 
-1. 复制 IM SDK jar 包文件：jmessage-sdk-v2.0.0.jar
+1. 复制 IM SDK jar 包文件：jmessage-sdk-v1.X.X.jar
 2. 修改 AndroidManifest.xml 文件
 3. 代码初始化
 
