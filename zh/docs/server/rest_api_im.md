@@ -126,7 +126,8 @@ JSON Object.
 ```
 {
 	"nickname": "Hello JMessage", 
-	"avatar" = "/avatar/path/new", 
+	"avatar" = "/avatar/path/new"
+}
 ```
 
 ##### Request Params
