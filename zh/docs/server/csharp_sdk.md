@@ -131,9 +131,10 @@ iOS 平台上 APNs 通知。
 	* 内容为空则不展示到通知栏
 	* 支持 emoji 表情。
 	* 这里不指定则上级 notification 必须指定。
-	sound
+	
 
-* 通知提示声音
+* sound  
+	* 通知提示声音
 	* 如果无此字段，则此消息无声音提示
 	* 有此字段，如果找到了指定的声音就播放该声音，否则播放默认声音
 	* 如果此字段为空字符串，iOS 7 为默认声音，iOS 8 为无声音。
@@ -148,7 +149,7 @@ iOS 平台上 APNs 通知。
 
 * content-available
 
-	* 如果为 true 表示要静默推送。
+	* 如果为 true 表示要静默唤醒。反之为false则是普通的推送。
 
 * category
 	* 设置APNs payload中的"category"字段值
