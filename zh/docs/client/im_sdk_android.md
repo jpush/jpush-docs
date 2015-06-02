@@ -1,5 +1,7 @@
 <h1>极光IM SDK - Android</h1>
 
++ [极光IM 客户端 DEMO 下载](../../resources_jmessage/)
+
 ### 概述
 
 极光IM（英文名JMessage） SDK 基于 JPush 推送 SDK 开发，提供了 Push SDK 的完整功能，并提供 IM 即时通讯功能。
