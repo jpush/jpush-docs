@@ -61,6 +61,7 @@ SDK 侧可以发起注册用户，也可由服务器端批量发起注册。
 public static synchronized void init(Context context)
 ```
 参数说明
+
 + Context context 应用程序上下文对象。
 
 #### 注册与登录
