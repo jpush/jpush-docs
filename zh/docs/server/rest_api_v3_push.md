@@ -434,22 +434,39 @@ iOS 平台上 APNs 通知。
  <p>另外，JPush 在推送时使用 utf-8 编码，所以一个汉字占用 3 个字节长度。</p>
 </div>
 
+**服务端发送消息串**
 
 ```
-	{
-	    "notification" : {
-	        "ios" : {
-	             "alert" : "hello, JPush!", 
+{
+	"notification" : {
+	     "ios" : {
+	             "alert" : "hello, JPush!", 
 	             "sound" : "sound.caf", 
 	             "badge" : 1, 
 	             "extras" : {
 	                  "news_id" : 134, 
 	                  "my_key" : "a value"
 	             }
-	        }
-	    }
-	}				 
+	       	}
+	   }
+}				 
 ```
+
+**客户端收到apns**
+```
+{
+    "_j_msgid" = 813843507;
+    aps =     {
+        alert = "hello,JPush!";
+        badge = 1;
+        sound = "sound.caf";
+    };
+    "my_key" = "a value";
+    "news_id" = 134;
+}
+
+```
+
 #### winphone
 
 Windows Phone 平台上的通知。

@@ -316,7 +316,7 @@ iOS 设备收到一条推送（APNs），用户点击推送通知打开应用时
          
         // Required
          [APService handleRemoteNotification:userInfo];
-        completionHandler(UIBackgroundFetchResultNoData);
+        completionHandler(UIBackgroundFetchResultNewData);
     }
     
 

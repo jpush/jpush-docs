@@ -123,14 +123,15 @@
         <receiver
             android:name="cn.jpush.android.service.PushReceiver"
             android:enabled="true" >
-          <intent-filter android:priority="1000"> <!--since 1.3.5 -->
-                <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED_PROXY" /> <!--since 1.3.5 -->
-                <category android:name="Your Package" /> <!--since 1.3.5 -->
-            </intent-filter> <!--since 1.3.5 -->
+          <intent-filter android:priority="1000"> 
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED_PROXY" /> 
+                <category android:name="Your Package"/> 
+            </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.USER_PRESENT" />
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
             </intent-filter>
+            <!-- Optional -->
             <intent-filter>
                 <action android:name="android.intent.action.PACKAGE_ADDED" />
                 <action android:name="android.intent.action.PACKAGE_REMOVED" />
