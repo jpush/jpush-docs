@@ -1,6 +1,6 @@
 <h1>极光IM SDK - JavaScript</h1>
 
-+ [极光IM Web客户端 DEMO 访问](http://web.im.jpush.cn)
+
 
 ### 概述
 
@@ -12,7 +12,7 @@
 
 #### Demo Web IM
 
-我们基于极光 IM JS SDK 提供一个完整的 [Web IM Demo](http://web.im.jpush.cn)，它就是一个 Web IM App。或者说，如果你需要做一个 Web IM 应用，可以只做这样两个变更就是你自己的 Web IM 了：
+我们基于极光 IM JS SDK 提供一个完整的 Web IM Demo，它就是一个 Web IM App。或者说，如果你需要做一个 Web IM 应用，可以只做这样两个变更就是你自己的 Web IM 了：
  
 + 在 JPush Web 控制台上注册应用，获取到的 Appkey 配置到 Web IM 中；
 + 根据我们提供的特定算法，在自己的服务器端生成签名，获取后配置到 Web IM 即可。
