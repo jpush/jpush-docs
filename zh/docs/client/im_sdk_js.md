@@ -1,10 +1,8 @@
 <h1>极光IM SDK - JavaScript</h1>
 
-+ [极光IM Web客户端 DEMO 访问](http://web.im.jpush.cn)
-
 ### 概述
 
-极光IM（英文名JMessage）JS SDK 为用户的 Web 应用提供 IM 即时通讯功能。
+极光IM（英文名JMessage）JS SDK 方便用户开发 Web IM 类应用程序。
 
 要了解极光IM的概述信息，请参考文档：[极光IM指南](../../guideline/jmessage_guide)
 
@@ -12,7 +10,7 @@
 
 #### Demo Web IM
 
-我们基于极光 IM JS SDK 提供一个完整的 [Web IM Demo](http://web.im.jpush.cn)，它就是一个 Web IM App。或者说，如果你需要做一个 Web IM 应用，可以只做这样两个变更就是你自己的 Web IM 了：
+我们基于极光 IM JS SDK 提供一个完整的 Web IM Demo，它就是一个 Web IM App。或者说，如果你需要做一个 Web IM 应用，你可以从 GitHub 上下载该源码，然后做以下两个变更将它变成你自己的 Web IM 应用：
  
 + 在 JPush Web 控制台上注册应用，获取到的 Appkey 配置到 Web IM 中；
 + 根据我们提供的特定算法，在自己的服务器端生成签名，获取后配置到 Web IM 即可。
@@ -73,11 +71,61 @@
 
 
 ### 集成指南
+
+#### 集成概述
 在开发者自己页面中按照以下顺序引入相关脚本文件：
-	```<script type="text/javascript" src="http://7xjfat.dl1.z0.glb.clouddn.com/jquery.min.js"></script>```
-	```<script type="text/javascript" src="http://7xjfat.dl1.z0.glb.clouddn.com/ajaxfileupload.min.js"></script>```
-	```<script type="text/javascript" src="http://7xjfat.dl1.z0.glb.clouddn.com/socket.io.min.js"></script>```
-	```<script type="text/javascript" src="http://7xjfat.dl1.z0.glb.clouddn.com/jmessage-1.0.0.min.js"></script>```
+#  
+```<script type="text/javascript" src="http://7xjfat.dl1.z0.glb.clouddn.com/jquery.min.js"></script>```
+```<script type="text/javascript" src="http://7xjfat.dl1.z0.glb.clouddn.com/ajaxfileupload.min.js"></script>```
+```
+<!-- 该脚本用于上传图片文件 -->
+```
+```<script type="text/javascript" src="http://7xjfat.dl1.z0.glb.clouddn.com/socket.io.min.js"></script>```
+```
+<!-- 该脚本用于维护客户端到服务端的网络连接 -->
+```
+```<script type="text/javascript" src="http://7xjfat.dl1.z0.glb.clouddn.com/jmessage-1.0.0.min.js"></script>```
+```
+<!-- 该脚本为 JMessage JS SDK -->
+```
+#  
+以上脚本文件为集成 JMessage JS SDK 时所必须引入的文件，由于这些脚本存在相互依赖的关系，所以集成时请按照以上顺序引入。
+
+引入成功后，在调用 JMessage JS SDK 的部分 API 前，你需要先完成签名认证，这个过程大致为：在客户端与服务端建立连接后，从你自己的服务端获取签名相关参数，之后调用 API JMessage.config 发起配置验证请求，之后可以在 JMessage.ready 和 JMessage.error 的回调中得到相应的反馈，如果 ready 那么你可以成功调用其它的 API，否则你需要对照我们文档中的签名部分检查下自己的签名逻辑，然后重新发起验证。
+
+#### 集成示例
+```
+JMessage.onConnected(function(){ // 在网络连接成功的回调中完成获取签名的逻辑
+	$.ajax({  // 如果您需要跨域获取，则采用下面方式；否则采用普通ajax方式即可。
+		url: '获取签名的服务端地址',
+		method: 'GET',
+		dataType : 'jsonp',
+		jsonp: 'jsoncallback',
+		jsonpCallback: 'jsonpCallback',
+	});
+});
+
+var jsonpCallback = function(data){  // 在成功返回签名数据后，调用 API 完成验证。
+     	JMessage.config({
+		debug: true,
+		appKey: '开发者注册应用的AppKey',
+		timestamp: data.timeStamp,
+		randomStr: data.randomStr,
+		signature: data.signature
+	});
+};
+
+JMessage.ready(function(){ // 签名验证成功后触发回调，你可以在此完成部分业务逻辑
+
+});
+
+JMessage.error(function(code, message){ // 签名失败时触发回调，会返回异常状态码和相应的异常信息
+
+});
+
+在签名验证成功后，你可以根据自身的业务需求，调用 JMessage JS SDK API 来完成自己的业务逻辑。
+```
+
 
 ### API 列表
 
@@ -115,7 +163,7 @@ JMessage.ready(function() {
 ##### 验证失败
 ```
 JMessage.error(function(code, message) {
-  
+
 });
 ```
 返回
