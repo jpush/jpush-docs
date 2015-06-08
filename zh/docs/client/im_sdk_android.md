@@ -457,35 +457,47 @@ class MessageEventReceiver extends Activity{
     Message msg = event.getMessage();
  
     switch (msg.getContentType()){
-        case text:
-        //处理文字消息
-        break;
-        case image:
-        //处理图片消息
-        break;
-        case voice:
-        //处理语音消息
-        break;
-        case custom:
-        //处理自定义消息
-        break;
-        case eventNotification:
-        //处理事件提醒消息
-        EventNotificationContent eventNotificationContent  = 
-		        (EventNotificationContent)msg.getContent();
-        switch (eventNotificationContent.getEventNotificationType()){
-            case group_member_added:
-            //群成员加群事件
-            break;
-            case group_member_removed:
-            //群成员被踢事件
-            break;
-            case group_member_exit:
-            //群成员退群事件
-            break;
+            case text:
+                //处理文字消息
+                TextContent textContent = (TextContent) msg.getContent();
+                textContent.getText();
+                break;
+            case image:
+                //处理图片消息
+                ImageContent imageContent = (ImageContent) msg.getContent();
+                imageContent.getLocalPath();//图片本地地址
+                imageContent.getLocalThumbnailPath();//图片对应缩略图的本地地址
+                break;
+            case voice:
+                //处理语音消息
+                VoiceContent voiceContent = (VoiceContent) msg.getContent();
+                voiceContent.getLocalPath();//语音文件本地地址
+                voiceContent.getDuration();//语音文件时长
+                break;
+            case custom:
+                //处理自定义消息
+                CustomContent customContent = (CustomContent) msg.getContent();
+                customContent.getValue("attr1");
+                customContent.getValue("attr2");
+                customContent.getAllValues();
+                break;
+            case eventNotification:
+                //处理事件提醒消息
+                EventNotificationContent eventNotificationContent  =
+                        (EventNotificationContent)msg.getContent();
+                switch (eventNotificationContent.getEventNotificationType()){
+                    case group_member_added:
+                        //群成员加群事件
+                        break;
+                    case group_member_removed:
+                        //群成员被踢事件
+                        break;
+                    case group_member_exit:
+                        //群成员退群事件
+                        break;
+                }
+                break;
         }
-        break;
-    }
   }
  }
 ```
