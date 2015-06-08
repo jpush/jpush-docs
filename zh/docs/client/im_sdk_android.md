@@ -10,6 +10,68 @@ App 集成了 IM SDK 就不应再集成 JPush SDK（只提供 Push 功能的 SDK
 
 要了解极光IM的概述信息，请参考文档：[极光IM指南](../../guideline/jmessage_guide)
 
+
+### 集成
+
+JMessage SDK 是基于 JPush SDK 开发的，完整支持 JPush 推送的全部功能。所以 IM SDK 的集成，是在 Push SDK 的集成操作基础上，附加少量的步骤来完成。
+
+如果您之前未集成 JPush SDK（推送SDK），请参考其集成文档：[JPush Android SDK 集成指南](../../guideline/android_guide/)
+
+在上述文档基础上，需要如下几个集成操作：
+
+1. 复制 IM SDK jar 包文件：jmessage-sdk-v1.X.X.jar
+2. 修改 AndroidManifest.xml 文件
+3. 代码初始化
+
+以上步骤以下详述。
+
+#### jar 包文件
+
+把 JMessage SDK 的 jar 包文件，放到您的应用工程里 libs/ 目录下。文件名规格为：
+
+    jmessage-sdk-android-1.0.8.jar
+
+其中 1.0.8 为版本号。随着版本升级，这个版本号会变更。
+
+如果您的应用之前集成过 JPush (推送) SDK，则需要删除原来的 jar 包文件。如果这 2 个文件同时存在，Android 编译器会报错。
+
+#### 修改 AndroidManifest.xml 文件
+
+基于 JPush SDK 文档里描述的需要增加的部分，JMessage SDK 需要多加如下的关于广播的配置项。
+
+```
+<receiver
+        android:name="cn.jpush.im.android.helpers.IMReceiver"
+        android:enabled="true"
+        android:exported="false">
+        <intent-filter>
+            <action android:name="cn.jpush.im.android.action.IM_RESPONSE" />
+            <action android:name="cn.jpush.im.android.action.NOTIFICATION_CLICK_PROXY" />
+            <category android:name="cn.jpush.im.android.demo" />
+        </intent-filter>
+</receiver>
+```
+其中 category 部分的包名，应改为您应用的包名。
+
+#### 代码初始化
+
+在应用的自定义 Application 的 onCreate 方法里，加上如下的代码段，来初始化 JMessage SDK。
+
+```
+@Override
+public void onCreate() {
+    super.onCreate();
+    Log.i("JMessageDemoApplication", "Application onCreate");
+   
+  JMessageClient.init(getApplicationContext());
+    JPushInterface.setDebugMode(true);
+}
+```
+
+上述代码，即在原 JPush SDK 初始化调 JPushInterface.init 位置，替换为 JMessageClient.ini 方法。其他一样。
+
+
+
 ### 功能
 
 #### Demo App
