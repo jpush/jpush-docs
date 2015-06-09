@@ -17,7 +17,7 @@
 
 ```
 [{"username": "dev_fang", "password": "password"}, 
- {"username": "dev_fang", "password": "password"}, 
+ {"username": "dev_fang", "password": "password"}
 ] 
 ```
 
@@ -35,7 +35,7 @@ JSON Array.
 < Content-Type: application/json
 < 
 [{"username": "dev_fang",  }, 
- {"username": "dev_javen",  "error":{"code":8001,"message":"The user  already exists"}}, 
+ {"username": "dev_javen",  "error":{"code":8001,"message":"The user  already exists"}}
 ] 
 ```
 
