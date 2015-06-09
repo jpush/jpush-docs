@@ -75,16 +75,16 @@
 #### 集成概述
 在开发者自己页面中按照以下顺序引入相关脚本文件：
 #  
-```<script type="text/javascript" src="http://7xjfat.dl1.z0.glb.clouddn.com/jquery.min.js"></script>```
-```<script type="text/javascript" src="http://7xjfat.dl1.z0.glb.clouddn.com/ajaxfileupload.min.js"></script>```
+```<script type="text/javascript" src="http://web.file.jpush.cn/jquery.min.js"></script>```
+```<script type="text/javascript" src="http://web.file.jpush.cn/ajaxfileupload.min.js"></script>```
 ```
 <!-- 该脚本用于上传图片文件 -->
 ```
-```<script type="text/javascript" src="http://7xjfat.dl1.z0.glb.clouddn.com/socket.io.min.js"></script>```
+```<script type="text/javascript" src="http://web.file.jpush.cn/socket.io.min.js"></script>```
 ```
 <!-- 该脚本用于维护客户端到服务端的网络连接 -->
 ```
-```<script type="text/javascript" src="http://7xjfat.dl1.z0.glb.clouddn.com/jmessage-1.0.0.min.js"></script>```
+```<script type="text/javascript" src="http://web.file.jpush.cn/jmessage-1.0.0.min.js"></script>```
 ```
 <!-- 该脚本为 JMessage JS SDK -->
 ```
