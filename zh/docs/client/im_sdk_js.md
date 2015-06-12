@@ -76,15 +76,15 @@
 在开发者自己页面中按照以下顺序引入相关脚本文件：
 #  
 ```<script type="text/javascript" src="http://web.file.jpush.cn/jquery.min.js"></script>```
-```<script type="text/javascript" src="http://web.file.jpush.cn/ajaxfileupload.min.js"></script>```
+```<script type="text/javascript" src="http://http://web.file.jpush.cn/ajaxfileupload.min.js"></script>```
 ```
 <!-- 该脚本用于上传图片文件 -->
 ```
-```<script type="text/javascript" src="http://web.file.jpush.cn/socket.io.min.js"></script>```
+```<script type="text/javascript" src="http://http://web.file.jpush.cn/socket.io.min.js"></script>```
 ```
 <!-- 该脚本用于维护客户端到服务端的网络连接 -->
 ```
-```<script type="text/javascript" src="http://web.file.jpush.cn/jmessage-1.0.0.min.js"></script>```
+```<script type="text/javascript" src="http://http://web.file.jpush.cn/jmessage-1.0.0.min.js"></script>```
 ```
 <!-- 该脚本为 JMessage JS SDK -->
 ```
@@ -95,6 +95,8 @@
 
 #### 集成示例
 ```
+JMessage.init();  // 初始化，完成网络连接以及一些相关的配置
+
 JMessage.onConnected(function(){ // 在网络连接成功的回调中完成获取签名的逻辑
 	$.ajax({  // 如果您需要跨域获取，则采用下面方式；否则采用普通ajax方式即可。
 		url: '获取签名的服务端地址',
@@ -128,6 +130,12 @@ JMessage.error(function(code, message){ // 签名失败时触发回调，会返�
 
 
 ### API 列表
+
+#### 初始化
+在使用 SDK 之前，开发者需要先完成初始化的操作，初始化的作用包括建立客户端到服务端的网络连接以及一些其它的配置。
+```
+JMessage.init();
+```
 
 #### 验证类
 
