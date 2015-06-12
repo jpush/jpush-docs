@@ -1,0 +1,73 @@
+site_name: 极光文档
+site_author: JPush Offical
+site_url: http://docs.jpush.io
+site_favicon: favicon.ico
+site_description: JPush, JMessage, 极光推送, 极光IM, Android Push, Android 推送, 安卓推送, iOS Push, APNs, Push Notification
+repo_url: http://docs.jpush.cn
+repo_name: 老版本文档
+copyright: Copyright 2011-2014, jpush.cn, All Rights Reserved. <br />粤ICP备12056275号-5 深圳市和讯华谷信息技术有限公司
+theme: bootstrap 
+
+pages:
+- [index.md, 文档首页]
+
+- [guideline/faq.md, 入门指南, 常见问题]
+- [guideline/android_guide.md, 入门指南, Android 集成指南]
+- [guideline/ios_guide.md, 入门指南, iOS 集成指南]
+- [guideline/winphone_guide.md, 入门指南, WinPhone 集成指南]
+- [guideline/android_3m.md, 入门指南, 3 分钟集成 Android SDK]
+- [guideline/winphone_3m.md, 入门指南, 3 分钟集成 Windows Phone SDK]
+- [guideline/sample_code.md, 入门指南, 示例与代码]
+- [guideline/statistical_report.md, 入门指南, 统计与报表说明]
+- [guideline/jmessage_guide.md, 入门指南, 极光IM 指南]
+
+
+- [client/android_sdk.md, 客户端, Android SDK 概述]
+- [client/android_tutorials.md, 客户端, Android SDK 教程]
+- [client/android_api.md, 客户端, Android SDK API]
+- [client/ios_sdk.md, 客户端, iOS SDK 概述]
+- [client/ios_tutorials.md, 客户端, iOS SDK 教程]
+- [client/ios_api.md, 客户端, iOS SDK API]
+- [client/winphone_sdk.md, 客户端, WinPhone SDK 概述]
+- [client/winphone_api.md, 客户端, WinPhone SDK API]
+- [client/client_plugins.md, 客户端, 客户端集成插件]
+- [client/im_sdk_android.md, 客户端, IM Android SDK 概述]
+- [client/im_sdk_ios.md, 客户端, IM iOS SDK 概述]
+- [client/im_sdk_js.md, 客户端, IM JS SDK 概述]
+- [client/im_errorcode.md, 客户端,IM ErrorCode 定义]
+
+
+- [server/server_overview.md, 服务器端, 服务器端 概述]
+- [server/rest_api_v3_push.md, 服务器端, REST API - Push]
+- [server/rest_api_v3_report.md, 服务器端, REST API - Report]
+- [server/rest_api_v3_device.md, 服务器端, REST API - Device]
+- [server/rest_api_v2_push.md, 服务器端, REST API v2 - Push, Hidden]
+- [server/rest_api_v2_report.md, 服务器端, REST API v2 - Report, Hidden]
+- [server/rest_api_im.md, 服务器端, IM REST API]
+- [server/http_status_code.md, 服务器端, HTTP 状态码]
+- [server/java_sdk.md, 服务器端, Java SDK]
+- [server/python_sdk.md, 服务器端, Python SDK]
+- [server/php_sdk.md, 服务器端, PHP SDK]
+- [server/ruby_sdk.md, 服务器端, Ruby SDK]
+- [server/csharp_sdk.md, 服务器端, C# SDK]
+- [server/nodejs_sdk.md, 服务器端, Node.js SDK]
+
+
+- [advanced/scenes.md, 高级, JPush应用场景]
+- [advanced/topics.md, 高级, JPush高级话题]
+- [advanced/rich_push.md, 高级, Rich Push 入门指南]
+- [advanced/im_message_protocol.md, 高级, IM 消息协议]
+- [advanced/im_objects.md, 高级, IM 对象定义]
+- [advanced/jmessage_topics.md, 高级, JMessage高级话题]
+
+
+
+- [more/use_license.md, 更多, 使用许可协议]
+- [more/contact_us.md, 更多,联系我们]
+
+
+- [updates.md, 最近更新]
+
+- [resources.md, 资源下载,JPush]
+- [resources_jmessage.md, 资源下载,JMessage]
+
