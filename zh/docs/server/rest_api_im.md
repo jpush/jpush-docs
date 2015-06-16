@@ -17,7 +17,7 @@
 
 ```
 [{"username": "dev_fang", "password": "password"}, 
- {"username": "dev_fang", "password": "password"}, 
+ {"username": "dev_fang", "password": "password"}
 ] 
 ```
 
@@ -34,8 +34,8 @@ JSON Array.
 < HTTP/1.1 201 Created
 < Content-Type: application/json
 < 
-[{"username": "dev_fang",  }, 
- {"username": "dev_javen",  "error":{"code":8001,"message":"The user  already exists"}}, 
+[{"username": "dev_fang"  }, 
+ {"username": "dev_javen",  "error":{"code":8001,"message":"The user  already exists"}}
 ] 
 ```
 
@@ -107,7 +107,7 @@ JSON Object.
 	"username" : "test", 
 	"nickname" : "hello", 
 	"star" : 2, 
-	"avatar" = "/avatar/path", 
+	"avatar" : "/avatar/path", 
 	"birthday" : "1990-01-24 00:00:00", 
 	"gender" : 0, 
 	"signature" : "orz", 
@@ -190,10 +190,10 @@ Example Request
 
 ```
 {
-    “owner_username”: "tom", 
-    "group_name": "泡否", 
+    "owner_username": "tom", 
+    "group_name": "群聊天室", 
     "members_username": ["eddie", "annie"], 
-    "group_desc": "你懂的。。。"
+    "group_desc": "运动"
 }
 ```
 
@@ -206,8 +206,8 @@ Example Response
 
 {
     "gid": 13579,
-    "group_name": "泡否", 
-    "group_desc": "你懂的。。。",
+    "group_name": "群聊天室", 
+    "group_desc": "运动",
     "appkey": "dcf71ef5082057832bd44fbd",
     "level": 3,
     "mtime": "2014-07-01 00:00:00",
@@ -231,8 +231,8 @@ Example Response
 
 {
     "gid": 13579,
-    "group_name": "泡否", 
-    "group_desc": "你懂的。。。",
+    "group_name": "群聊天室", 
+    "group_desc": "运动",
     "appkey": "dcf71ef5082057832bd44fbd",
     "level": 3,
     "mtime": "2014-07-01 00:00:00",
@@ -277,10 +277,11 @@ Example Request
 {    
     "add":[
         "test1", "test2"
-    ]
+    ],
     "remove":[
         "test3", "test4"
     ]
+}
 ```
 
 Example Response
