@@ -277,7 +277,7 @@ Example Request
 {    
     "add":[
         "test1", "test2"
-    ]
+    ],
     "remove":[
         "test3", "test4"
     ]
