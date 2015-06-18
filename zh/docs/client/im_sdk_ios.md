@@ -110,16 +110,20 @@ JMSGConversation.h
 ```
 JMSGMessage.h
 
+/// 发送一条消息。
 + (void)sendMessage:(JMSGMessage *)message;
 
+/// 下载消息原图片
 + (void)downloadOriginImage:(JMSGImageMessage *)message
                withProgress:(NSProgress *)progress
           completionHandler:(JMSGCompletionHandler)handler;
 
+/// 下载消息缩略图（消息自动下载失败时需要调用）
 + (void)downloadThumbImage:(JMSGImageMessage *)message
               withProgress:(NSProgress *)progress
          completionHandler:(JMSGCompletionHandler)handler;
 
+/// 下载消息语音文件（消息自动下载失败时需要调用）
 + (void)downloadVoice:(JMSGVoiceMessage *)message
          withProgress:(NSProgress *)progress
     completionHandler:(JMSGCompletionHandler)handler;
@@ -132,12 +136,15 @@ JMSGMessage.h
 /// 我的所有群组列表
 + (void)getGroupListWithCompletionHandler:(JMSGCompletionHandler)handler;
 
+/// 创建一个群组
 + (void)createGroup:(JMSGGroup *)group
   completionHandler:(JMSGCompletionHandler)handler;
-  
+
+/// 更新群组信息
 + (void)updateGroupInfo:(JMSGGroup *)group
       completionHandler:(JMSGCompletionHandler)handler;
-      
+
+/// 获取群组信息
 + (void)getGroupInfo:(NSString *)groupId
    completionHandler:(JMSGCompletionHandler)handler;
 
@@ -145,14 +152,17 @@ JMSGMessage.h
 + (void)exitGoup:(NSString *)groupId
     completionHandler:(JMSGCompletionHandler)handler;
 
+/// 增加群组成员
 + (void)addMembers:(NSString *)groupId
            members:(NSString *)members
  completionHandler:(JMSGCompletionHandler)handler;
  
+/// 删除群组成员
 + (void)deleteGroupMember:(NSString *)groupId
                   members:(NSString *)members
         completionHandler:(JMSGCompletionHandler)handler;
 
+/// 获取群组成员列表
 + (void)getGroupMemberList:(NSString *)groupId
          completionHandler:(JMSGCompletionHandler)handler;
          
@@ -176,11 +186,21 @@ message.contentText = @"Hello";
 
 ### Guideline 集成指南
 
+#### 支持的 iOS 系统版本
+
+iOS 7.0 以上。
+
 #### 包含 JPush SDK
 
-JMessage SDK 包含 JPush SDK 的全部功能，所以其依赖与配置也是包含关系。
+JMessage SDK 包含 JPush SDK 的全部功能。
 
-请参考 JPush SDK 的文档来做相应的依赖与配置：[JPush iOS SDK 集成指南](http://docs.jpush.io/guideline/ios_guide/)
+如果您原来代码里集成过 JPush iOS SDK，则可大部分保持不变。变更部分如下：
+
++ 集成到项目工程里的 JPush SDK 的文件删除掉，包括头文件：APService.h，库文件  libPushSDK.a。JMessage.framework 里已经包含 Push 部分，不删除掉会冲突。
++ 配置文件 PushConfig.plist 文件删除掉。不再使用配置文件，而是用代码调用提供基本参数。
++ 原来调用 APService 里 setupWithOption 做初始化，现在要换成 JMessage 里相应的方法。
+
+未集成使用过 JPush iOS SDK 的，请参考 JPush SDK 的文档来做相应的依赖与配置：[JPush iOS SDK 集成指南](http://docs.jpush.io/guideline/ios_guide/)。但上述变更依然有效。
 
 #### 导入依赖
 
@@ -189,7 +209,6 @@ JMessage SDK 包含 JPush SDK 的全部功能，所以其依赖与配置也是�
 + AudioToolboxFramework
 + CoreAudioFramework
 + libsqlite3.0.dylib
-
 
 #### 导入 JMessage SDK
 
@@ -201,6 +220,19 @@ JMessage SDK 也是以 framework 的方式提供的，所以类似于增加系�
 
     -ObjC
     -all_load
+
+#### 初始化
+
+JMessage 初始化只需要加上下述调用。
+
+```
+  [JMessage setupJMessage:launchOptions
+                   appKey:JMSSAGE_APPKEY
+                  channel:CHANNEL 
+                  apsForProduction:NO
+                 category:nil];
+
+```
 
 
 ### See Also 相关文档
