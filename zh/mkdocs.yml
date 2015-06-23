@@ -41,6 +41,7 @@ pages:
 - [server/rest_api_v3_push.md, 服务器端, REST API - Push]
 - [server/rest_api_v3_report.md, 服务器端, REST API - Report]
 - [server/rest_api_v3_device.md, 服务器端, REST API - Device]
+- [server/rest_api_push_schedule.md,服务器端, REST API - Schedule]
 - [server/rest_api_v2_push.md, 服务器端, REST API v2 - Push]
 - [server/rest_api_v2_report.md, 服务器端, REST API v2 - Report]
 - [server/rest_api_im.md, 服务器端, IM REST API]
