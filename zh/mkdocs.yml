@@ -12,14 +12,15 @@ pages:
 - [index.md, 文档首页]
 
 - [guideline/faq.md, 入门指南, 常见问题]
-- [guideline/android_guide.md, 入门指南, Android 集成指南]
-- [guideline/ios_guide.md, 入门指南, iOS 集成指南]
-- [guideline/winphone_guide.md, 入门指南, WinPhone 集成指南]
-- [guideline/android_3m.md, 入门指南, 3 分钟集成 Android SDK]
-- [guideline/winphone_3m.md, 入门指南, 3 分钟集成 Windows Phone SDK]
+- [guideline/android_guide.md, 入门指南, JPush Android 集成指南]
+- [guideline/ios_guide.md, 入门指南, JPush iOS 集成指南]
+- [guideline/winphone_guide.md, 入门指南, JPush WinPhone 集成指南]
+- [guideline/android_3m.md, 入门指南, 3 分钟集成 JPush Android SDK]
+- [guideline/winphone_3m.md, 入门指南, 3 分钟集成 JPush Windows Phone SDK]
 - [guideline/sample_code.md, 入门指南, 示例与代码]
 - [guideline/statistical_report.md, 入门指南, 统计与报表说明]
-- [guideline/jmessage_guide.md, 入门指南, 极光IM 指南]
+- [guideline/jmessage_ios_guide.md, 入门指南, JMessaage iOS 集成指南]
+- [guideline/jmessage_guide.md, 入门指南, 极光IM 概述]
 
 
 - [client/android_sdk.md, 客户端, Android SDK 概述]
