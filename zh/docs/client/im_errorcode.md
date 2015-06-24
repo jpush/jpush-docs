@@ -237,5 +237,98 @@
 			<td style="padding: 0 5px;">user not in the group</td>
 			<td style="padding: 0 5px;">用户修改讨论组信息时，用户不在该讨论组中，修改讨论组信息失败</td>
 		</tr>
+		
+    <!-- Android SDK 相关 -->		
+    <tr >
+      <td style="padding: 0 5px; " >871101</td>
+      <td style="padding: 0 5px;"></td>
+      <td style="padding: 0 5px; " >请求参数不合法</td>
+    </tr>
+    <tr >
+      <td style="padding: 0 5px; " >871102</td>
+      <td style="padding: 0 5px;"></td>
+      <td style="padding: 0 5px; " >请求失败，请检查网络</td>
+    </tr>
+    <tr >
+      <td style="padding: 0 5px; " >871103</td>
+      <td style="padding: 0 5px;"></td>
+      <td style="padding: 0 5px; " >服务器内部错误</td>
+    </tr>
+    <tr >
+      <td style="padding: 0 5px; " >871104</td>
+      <td style="padding: 0 5px;"></td>
+      <td style="padding: 0 5px; " >服务器内部错误</td>
+    </tr>
+    <tr >
+      <td style="padding: 0 5px; " >871201</td>
+      <td style="padding: 0 5px;"></td>
+      <td style="padding: 0 5px; " >响应超时</td>
+    </tr>
+    <tr >
+      <td style="padding: 0 5px; " >871300</td>
+      <td style="padding: 0 5px;"></td>
+      <td style="padding: 0 5px; " >api调用发起者尚未登录</td>
+    </tr>
+    <tr >
+      <td style="padding: 0 5px; " >871301</td>
+      <td style="padding: 0 5px;"></td>
+      <td style="padding: 0 5px; " >api调用传入的参数不合法</td>
+    </tr>
+    <tr >
+      <td style="padding: 0 5px; " >871302</td>
+      <td style="padding: 0 5px;"></td>
+      <td style="padding: 0 5px; " >发送消息的消息体过大，整个消息体大小不能超过4k</td>
+    </tr>
+    <tr >
+      <td style="padding: 0 5px; " >871303</td>
+      <td style="padding: 0 5px;"></td>
+      <td style="padding: 0 5px; " >用户名不合法</td>
+    </tr>
+    <tr >
+      <td style="padding: 0 5px; " >871304</td>
+      <td style="padding: 0 5px;"></td>
+      <td style="padding: 0 5px; " >密码不合法</td>
+    </tr>
+    <tr >
+      <td style="padding: 0 5px; " >871305</td>
+      <td style="padding: 0 5px;"></td>
+      <td style="padding: 0 5px; " >名称不合法（包括nickname groupname notename）  </td>
+    </tr>
+    <tr >
+      <td style="padding: 0 5px; " >871306</td>
+      <td style="padding: 0 5px;"></td>
+      <td style="padding: 0 5px; " >其他输入不合法</td>
+    </tr>
+    <tr >
+      <td style="padding: 0 5px; " >871307</td>
+      <td style="padding: 0 5px;"></td>
+      <td style="padding: 0 5px; " >添加或移除群成员时，传入的成员列表中有用户不存在</td>
+    </tr>
+    <tr >
+      <td style="padding: 0 5px; " >871308</td>
+      <td style="padding: 0 5px;"></td>
+      <td style="padding: 0 5px; " >SDK尚未初始化</td>
+    </tr>
+    <tr >
+      <td style="padding: 0 5px; " >871309</td>
+      <td style="padding: 0 5px;"></td>
+      <td style="padding: 0 5px; " >消息中包含的文件不存在</td>
+    </tr>
+    <tr >
+      <td style="padding: 0 5px; " >871402</td>
+      <td style="padding: 0 5px;"></td>
+      <td style="padding: 0 5px; " >文件上传失败</td>
+    </tr>
+    <tr >
+      <td style="padding: 0 5px; " >871403</td>
+      <td style="padding: 0 5px;"></td>
+      <td style="padding: 0 5px; " >文件上传失败</td>
+    </tr>
+    <tr >
+      <td style="padding: 0 5px; " >871404</td>
+      <td style="padding: 0 5px;"></td>
+      <td style="padding: 0 5px; " >文件下载失败</td>
+    </tr>
+
 	</table>
 </div>
