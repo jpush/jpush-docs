@@ -83,6 +83,27 @@ public void onCreate() {
 + 换 Logo； 
 + 在 JPush Web 控制台上注册应用，获取到的 Appkey 更新到 Demo App 里。
 
+
+#### IM 混淆
+
++ 请下载4.x版本的[proguard.jar](http://sourceforge.net/projects/proguard/files/proguard/)， 并替换你Android Sdk "tools\proguard\lib\proguard.jar"
+
++ 在你的proguard.cfg加上代码：如果是使用新版本的ADT 将project.properties的中“# proguard.config=${sdk.dir}/tools/proguard/proguard-android.txt:proguard-project.txt”的“#”注释去掉，然后在proguard-android.txt中配置
+
+```
+-dontwarn cn.jpush.**
+-keepattributes  EnclosingMethod,Signature
+-keep class cn.jpush.** { *; }
+-keepclassmembers class ** {
+    public void onEvent*(**);
+}
+
+```
+    
+<br />
+
+
+
 #### 消息
 
 极光IM 最核心的功能是 IM 即时消息的功能。
