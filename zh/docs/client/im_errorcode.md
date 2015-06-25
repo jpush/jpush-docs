@@ -1,4 +1,6 @@
-## IM ErrorCode 定义
+## IM SDK ErrorCode 定义
+
+以下列表里的 ErrorCode 有可能在 SDK 的调用过程中出现。供参考理解其含义。
 
 <div class="table-d" align="center" >
 	<table border="1" width = "100%">
@@ -237,7 +239,74 @@
 			<td style="padding: 0 5px;">user not in the group</td>
 			<td style="padding: 0 5px;">用户修改讨论组信息时，用户不在该讨论组中，修改讨论组信息失败</td>
 		</tr>
-		
+
+
+
+   <!-- iOS SDK -->
+    <tr>
+      <td style="padding: 0 5px;">860010</td>
+      <td style="padding: 0 5px;"></td>
+      <td style="padding: 0 5px;">网络请求验证错误</td>
+    </tr>
+    <tr>
+      <td style="padding: 0 5px;">860011</td>
+      <td style="padding: 0 5px;"></td>
+      <td style="padding: 0 5px;">网络请求超时</td>
+    </tr>
+    <tr>
+      <td style="padding: 0 5px;">860012</td>
+      <td style="padding: 0 5px;"></td>
+      <td style="padding: 0 5px;">网络连接失败</td>
+    </tr>
+    <tr>
+      <td style="padding: 0 5px;">860013</td>
+      <td style="padding: 0 5px;"></td>
+      <td style="padding: 0 5px;">网络服务端失败</td>
+    </tr>
+    <tr>
+      <td style="padding: 0 5px;">860170</td>
+      <td style="padding: 0 5px;"></td>
+      <td style="padding: 0 5px;">用户名验证失败</td>
+    </tr>
+    <tr>
+      <td style="padding: 0 5px;">860172</td>
+      <td style="padding: 0 5px;"></td>
+      <td style="padding: 0 5px;">密码验证失败</td>
+    </tr>
+    <tr>
+      <td style="padding: 0 5px;">860193</td>
+      <td style="padding: 0 5px;"></td>
+      <td style="padding: 0 5px;">发送消息失败</td>
+    </tr>
+    <tr>
+      <td style="padding: 0 5px;">860210</td>
+      <td style="padding: 0 5px;"></td>
+      <td style="padding: 0 5px;">七牛未知错误</td>
+    </tr>
+    <tr>
+      <td style="padding: 0 5px;">860211</td>
+      <td style="padding: 0 5px;"></td>
+      <td style="padding: 0 5px;">七牛网络错误</td>
+    </tr>
+    <tr>
+      <td style="padding: 0 5px;">860212</td>
+      <td style="padding: 0 5px;"></td>
+      <td style="padding: 0 5px;">七牛验证错误</td>
+    </tr>
+    <tr>
+      <td style="padding: 0 5px;">860213</td>
+      <td style="padding: 0 5px;"></td>
+      <td style="padding: 0 5px;">七牛上传文件失败</td>
+    </tr>
+    <tr>
+      <td style="padding: 0 5px;">860214</td>
+      <td style="padding: 0 5px;"></td>
+      <td style="padding: 0 5px;">获取七牛token失败</td>
+    </tr>
+
+
+
+
     <!-- Android SDK 相关 -->		
     <tr >
       <td style="padding: 0 5px; " >871101</td>
@@ -330,5 +399,7 @@
       <td style="padding: 0 5px; " >文件下载失败</td>
     </tr>
 
+
+   
 	</table>
 </div>
