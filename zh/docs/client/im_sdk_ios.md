@@ -1,17 +1,23 @@
 # IM SDK for iOS
-iOS SDK download coming soon. 
+
 ### Summary 概述
 
 极光IM（英文名JMessage） SDK 基于 JPush 推送 SDK 开发，提供了 Push SDK 的完整功能，并提供 IM 即时通讯功能。
 
 App 集成了 IM SDK 就不应再集成 JPush SDK（只提供 Push 功能的 SDK）。
 
-要了解极光IM的概述信息，请参考文档：[极光IM指南](../../guideline/jmessage_guide)
+要了解极光IM的概述信息，请参考文档：[极光IM指南](../../guideline/jmessage_guide)。要集成 iOS SDK 请参考文档：[JMessage iOS 集成指南](../../guideline/jmessage_ios_guide)。
 
 
 ### Functions 功能
 
-与 Android 集类似。
+极光IM 最核心的功能是 IM 即时消息的功能。
+
++ 保证消息及时下发；
++ 单聊，群聊；
++ 消息类型：文本、语音、图片；
++ 用户未在线时保存离线消息；
++ 基于 JPush 原有的大容量稳定的长连接、大容量消息并发能力；
 
 ### API 接口
 
@@ -383,7 +389,7 @@ JMSGCompletionHandler 有 2 个参数：
 
 + NSString* groupId 群组ID。
 + NSString* members 群组成员。成员使用 username，多个用逗号隔开。
-
++ JMSGCompletionHandler handler 结果回调。正常返回时 resultObject 内容也为 nil。
 
 ##### 删除群组成员
 
@@ -392,7 +398,11 @@ JMSGCompletionHandler 有 2 个参数：
                   members:(NSString *)members
         completionHandler:(JMSGCompletionHandler)handler;
 ```
+参数说明
 
++ NSString* groupId 群组ID。
++ NSString* members 需要加入的群组成员(username)。多个成员时使用,(逗号)隔开。
++ JMSGCompletionHandler handler 结果回调。正常返回时 resultObject 内容也为 nil。
 
 
 ##### 获取群组成员列表
@@ -401,7 +411,10 @@ JMSGCompletionHandler 有 2 个参数：
 + (void)getGroupMemberList:(NSString *)groupId
          completionHandler:(JMSGCompletionHandler)handler;
 ```
+参数说明
 
++ NSString* groupId 群组ID。
++ JMSGCompletionHandler handler 结果回调。正常返回时resultObject对象类型为NSArray，成员为JMSGGroup类型。
 
 
 ### Example 代码样例
@@ -417,60 +430,10 @@ message.contentText = @"Hello";
 
 
 
-### Guideline 集成指南
-
-#### 支持的 iOS 系统版本
-
-iOS 7.0 以上。
-
-#### 包含 JPush SDK
-
-JMessage SDK 包含 JPush SDK 的全部功能。
-
-如果您原来代码里集成过 JPush iOS SDK，则可大部分保持不变。变更部分如下：
-
-+ 集成到项目工程里的 JPush SDK 的文件删除掉，包括头文件：APService.h，库文件  libPushSDK.a。JMessage.framework 里已经包含 Push 部分，不删除掉会冲突。
-+ 配置文件 PushConfig.plist 文件删除掉。不再使用配置文件，而是用代码调用提供基本参数。
-+ 原来调用 APService 里 setupWithOption 做初始化，现在要换成 JMessage 里相应的方法。
-
-未集成使用过 JPush iOS SDK 的，请参考 JPush SDK 的文档来做相应的依赖与配置：[JPush iOS SDK 集成指南](http://docs.jpush.io/guideline/ios_guide/)。但上述变更依然有效。
-
-#### 导入依赖
-
-对于库与框架的依赖，除了 JPush SDK 所需要的，JMessage SDK 增加了如下几个的依赖：
-
-+ AudioToolboxFramework
-+ CoreAudioFramework
-+ libsqlite3.0.dylib
-
-#### 导入 JMessage SDK
-
-JMessage SDK 也是以 framework 的方式提供的，所以类似于增加系统的框架依赖，需要增加 JMessage.framework。
-
-#### 项目配置
-
-在项目配置，Build Settings，Other Linker Flags 里增加如下 2 项：
-
-    -ObjC
-    -all_load
-
-#### 初始化
-
-JMessage 初始化只需要加上下述调用。
-
-```
-  [JMessage setupJMessage:launchOptions
-                   appKey:JMSSAGE_APPKEY
-                  channel:CHANNEL 
-                  apsForProduction:NO
-                 category:nil];
-
-```
-
-
 ### See Also 相关文档
 
 + [极光IM 指南](../../guideline/jmessage_guide/)
++ [JMessage iOS 集成指南](../../guideline/jmessage_ios_guide/)
 + [IM 消息协议](../../advanced/im_message_protocol/)
 + [IM SDK for Android](../../client/im_sdk_android/)
 + [IM REST API](../../server/rest_api_im/)
