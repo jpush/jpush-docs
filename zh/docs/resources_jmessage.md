@@ -9,7 +9,7 @@
                               <tr>
                                     <td width="140" style="text-align: center;padding: 30px 0;vertical-align: top;"><img src="../image/resource_android.png" width="71" height="71" /></td>
                                     <td style="padding: 20px 0;">
-                                          <h4 style="font-weight: bold;font-size: 14px;">Android - SDK下载</h4>
+                                          <h4 style="font-weight: bold;font-size: 14px;">Android - Demo下载</h4>
                                           <p>极光IM Android SDK概述：</p>
                                           <ul style="list-style: none;margin: 0;padding: 0;font-size: 12px;">
                                                 <li><a href="../client/im_sdk_android/">- JMessage SDK - Android</a></li>
@@ -24,7 +24,7 @@
                               <tr style="border-top: 1px solid #ddd">
                                     <td width="140" style="text-align: center;padding: 30px 0;vertical-align: top;"><img src="../image/resource_ios.png" width="71" height="71" /></td>
                                     <td style="padding: 20px 0;">
-                                          <h4 style="font-weight: bold;font-size: 14px;">iOS - SDK下载</h4>
+                                          <h4 style="font-weight: bold;font-size: 14px;">iOS - Demo下载</h4>
                                           <p>请参考如下文档来集成SDK：</p>
                                           <ul style="list-style: none;margin: 0;padding: 0;font-size: 12px;">
                                                 <li><a href="..guideline/jmessage_ios_guide/">- JMessage SDK 集成指南</a></li>
