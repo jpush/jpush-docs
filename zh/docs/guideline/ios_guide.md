@@ -40,7 +40,7 @@
 
 #### 1、在JPush Portal上创建应用
 
-* 在JPush的管理Portal上 上传证书并创建应用。如果对APNs证书不太了解 请参考 iOS 证书设置指南 
+* 在JPush的管理Portal上 上传证书并创建应用。如果对APNs证书不太了解 请参考 [iOS 证书设置指南](../../client/ios_tutorials/#ios_1) 
 
 ![][0]
 * 创建成功后自动生成 AppKey 用以标识该应用。 
