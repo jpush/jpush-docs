@@ -16,15 +16,18 @@ API 层面支持定时功能。
         "single":{ 
             "time": "2014-09-17 12:00:00"  //YYYY-MM-DD HH:MM:SS
          }
-   }
+   },
    "push": {
      "platform": "all",
      "audience": "all",
      "notification": {
+          "alert" : "Hello, JPush!"
      },
      "message": {
+          "msg_content":"Message!"
      },
      "options": {
+          "time_to_live":60
      }
   } 
 }
@@ -45,9 +48,9 @@ API 层面支持定时功能。
   "push": { 
         "platform": "all", 
         "audience": "all",
-        "notification": { }, 
-        "message": { }, 
-        "options": { }
+        "notification": {"alert" : "Hello, JPush!" }, 
+        "message": {"msg_content":"Message!" }, 
+        "options": {"time_to_live":60}
    }
 }
 ```
