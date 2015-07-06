@@ -8,7 +8,7 @@ API 层面支持定时功能。
 
 #### 调用地址
 
-POST https://api.jpush.s
+POST https://api.jpush.cn
 
 ### Schedule 对象定义及描述
 
