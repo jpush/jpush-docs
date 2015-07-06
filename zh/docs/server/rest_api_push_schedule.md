@@ -6,6 +6,10 @@ API 层面支持定时功能。
 
 这是一个相对独立的任务执行模块，维护一个 Schedule 对象。
 
+#### 调用地址
+
+POST https://api.jpush.s
+
 ### Schedule 对象定义及描述
 
 ```
