@@ -41,7 +41,7 @@ var client = JPush.buildClient('your appKey', 'your masterSecret');
 //easy push
 client.push().setPlatform(JPush.ALL)
     .setAudience(JPush.ALL)
-    .setNotification('Hi, JPush', JPush.ios('ios alert', 'happy', 5))
+    .setNotification('Hi, JPush', JPush.ios('ios alert', 'happy.caf', 5))
     .send(function(err, res) {
         if (err) {
             console.log(err.message);

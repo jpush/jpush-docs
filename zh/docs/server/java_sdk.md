@@ -167,7 +167,7 @@
                         .addPlatformNotification(IosNotification.newBuilder()
                                 .setAlert(ALERT)
                                 .setBadge(5)
-                                .setSound("happy")
+                                .setSound("happy.caf")
                                 .addExtra("from", "JPush")
                                 .build())
                         .build())
