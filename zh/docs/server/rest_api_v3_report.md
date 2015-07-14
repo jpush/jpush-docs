@@ -84,10 +84,10 @@ curl -v https://report.jpush.cn/v3/messages?msg_ids=269978303 -u "7d431e42dfa6a6
 <
 [
   {"android":
-      {"received":1,"target":4,"online_push":1,"click":null
+      {"received":1,"target":4,"online_push":1,"click":null,"msg_click":null
   },
    "ios":
-      {"apns_sent":2,"apns_target":2,"click":null},
+      {"apns_sent":2,"apns_target":2,"click":null,"ios_target":10,"ios_received":8,"ios_click":5},
    "msg_id":269978303
   }
 ]
@@ -105,11 +105,15 @@ JSON Array
 	   + online_push 在线推送数
 	   + received 推送送达数
 	   + click 用户点击数
+     + msg_click android自定义消息点击数
      
 + ios iOS统计数据
 	   + apns_target APNs通知推送目标数
 	   + apns_sent APNS通知成功推送数
 	   + click 用户点击数
+     + ios_target iOS自定义消息目标数
+     + ios_received iOS自定义消息送达数
+     + ios_click iOS自定义消息点击数
 
 
 
