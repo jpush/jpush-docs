@@ -288,6 +288,51 @@ JPush SDK 提供的 API 接口，都主要集中在 cn.jpush.android.api.JPushIn
 3. 检查 Androidmanifest.xml，如果有 Required 的权限不存在，则启动失败
 4. 连接服务器登录，如果存在网络问题，则登陆失败,或者前面三步有问题，不会启动JPush SDK
 
+## 从Eclipse工程导入到Android Studio
+
+JPush Demo 是极光推送随压缩包提供的用法示例Demo，原本适用于Eclipse工程。本教程将指导JPush用户用最简单的方法将极光推送Demo导入Android Studio。
+
+#### 6.1 快速集成JPush
+参考[3 分钟快速 Demo（Android）](../android_3m)，把JPush跑起来。之后你在Eclipse包浏览器中有可运行的项目。
+
+![](../image/Image.png)
+
+#### 6.2 右键点击demo工程，选择Export
+
+![](../image/Image_1.png)
+
+#### 6.3 选择导出目标位Gradle build文件，并确认
+
+![](../image/Image_2.png)
+![](../image/Image_3.png)
+![](../image/Image_4.png)
+![](../image/Image_5.png)
+
+#### 6.4 从文件浏览器中检查
+
+在Eclipse的workspace中，该Demo工程的文件夹中，生成了Gradle相关配置文件.
+
+![](../image/Image_6.png)
+
+#### 6.5 打开你的Android Studio工程，选择 File->Import Module
+
+在Android Studio中，一次只能打开一个Project，它相当于Eclipse中的一个workspace。而我们从Eclipse中导出的一个Project，则相当于Android Studio中的一个Module。
+
+![](../image/Image_7.png)
+
+#### 6.6 选择Eclipse workspace下的Demo工程，并确认
+
+![](../image/Image_8.png)
+
+![](../image/Image_9.png)
+
+#### 6.7 查看导入的Module，并且gradle会自动生成编译选项
+
+![](../image/Image_10.png)
+
+![](../image/Image_11.png)
+
+现在就可以将极光推送Demo作为Android Studio的Module运行在真机或虚拟机上，并调试了
 
 ## 高级功能
 

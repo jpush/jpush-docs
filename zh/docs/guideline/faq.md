@@ -200,9 +200,12 @@ android {
 
 ####如何在代码时混淆忽略 jpush-sdk-release.jar？
 
-+ 请下载4.x版本的[proguard.jar](http://sourceforge.net/projects/proguard/files/proguard/)， 并替换你Android Sdk "tools\proguard\lib\proguard.jar"
++ 请下载4.x及以上版本的[proguard.jar](http://sourceforge.net/projects/proguard/files/proguard/)， 并替换你Android Sdk "tools\proguard\lib\proguard.jar"
 
-+ 在你的proguard.cfg加上代码：如果是使用新版本的ADT 将project.properties的中“# proguard.config=${sdk.dir}/tools/proguard/proguard-android.txt:proguard-project.txt”的“#”注释去掉，然后在proguard-android.txt中配置
++ 请在project.properties中配置好proguard-android.txt，并且在proguard-android.txt配置：
+
+		-dontoptimize
+		-dontpreverify
 
 		-dontwarn cn.jpush.**
 		-keep class cn.jpush.** { *; }
