@@ -202,7 +202,7 @@ android {
 
 + 请下载4.x及以上版本的[proguard.jar](http://sourceforge.net/projects/proguard/files/proguard/)， 并替换你Android Sdk "tools\proguard\lib\proguard.jar"
 
-+ 请在project.properties中配置好proguard-android.txt，并且在proguard-android.txt配置：
++ 开发工具使用Eclipse或者Android Studio,请在工程的project.properties中配置好proguard-android.txt，并且在proguard-android.txt配置：
 
 		-dontoptimize
 		-dontpreverify
