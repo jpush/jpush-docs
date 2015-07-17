@@ -13,6 +13,73 @@
 
 	POST /v1/users/
 
+<div class="table-d" align="center" >
+	<table border="1" width = "100%">
+		<tr  bgcolor="#D3D3D3" >
+			<th style="padding: 0 5px;" >参数</th>
+			<th style="padding: 0 5px;" >含义</th>
+			<th style="padding: 0 5px;" >字符长度限制</th>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;">username</td>
+			<td style="padding: 0 5px;">用户登陆名</td>
+			<td style="padding: 0 5px;">Byte(4~128)</td>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;">password</td>
+			<td style="padding: 0 5px;">登陆密码</td>
+			<td style="padding: 0 5px;">Byte(4~128)</td>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;">appkey</td>
+			<td style="padding: 0 5px;">用户所属于的应用的appkey</td>
+			<td style="padding: 0 5px;"></td>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;">nickname</td>
+			<td style="padding: 0 5px;">用户昵称</td>
+			<td style="padding: 0 5px;">Byte(0~64)</td>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;t">birthday</td>
+			<td style="padding: 0 5px;">生日</td>
+			<td style="padding: 0 5px;">yyyy-MM-dd HH:mm:ss</td>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;">gender</td>
+			<td style="padding: 0 5px;">性别 0 - 未知， 1 - 男 ，2 - 女 </td>
+			<td style="padding: 0 5px;"></td>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;">signature</td>
+			<td style="padding: 0 5px;">用户签名</td>
+			<td style="padding: 0 5px;">Byte(0~250)</td>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;">region</td>
+			<td style="padding: 0 5px;">用户所属地区</td>
+			<td style="padding: 0 5px;">Byte(0~250)</td>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;">address</td>
+			<td style="padding: 0 5px;">用户详细地址</td>
+			<td style="padding: 0 5px;">Byte(0~250)</td>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;">ctime</td>
+			<td style="padding: 0 5px;">用户创建时间</td>
+			<td style="padding: 0 5px;"></td>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;">ctime</td>
+			<td style="padding: 0 5px;">用户最后修改时间</td>
+			<td style="padding: 0 5px;"></td>
+		</tr>
+	</table>
+</div>
+
+
+
 ##### Example Request
 
 ```
@@ -45,15 +112,140 @@ JSON Array.
 
 + username
 + error 某个用户注册出错时，该对象里会有 error 对象，说明错误原因。
+	+ 899003   参数错误，Request Body参数不符合要求
+	+ 899001   用户已存在
+
+
+#### Admin
+
+##### **Admin Register 管理员注册**
+
+```
+POST /v1/admins/
+```
+##### Example Request
+
+```
+{"username": "dev_fang", "password": "password"}
+```
+
+##### Request Params
+
++ username Byte(4-128) 支持字符
+	 + 开头：字母或者数字
+	 + 字母、数字、下划线
+	 + 英文点、减号, @
+
++ password Byte(4-128) 字符不限
+
+##### Example Response
+
+```
+HTTP/1.1 201 Created
+Content-Type: application/json; charset=utf-8 
+```
+
+##### **GetAdminsListByAppkey  获取应用管理员列表** 
+
+```
+GET /admins?start=:start&count=:count
+```
+##### Example Request
+
+###### Request Header 
+
+```
+GET /admins?start=1&count=30
+Accept: application/json
+```
+###### Request Body
+
+```
+N/A
+```
+
+##### request params
++ start    起始记录位置 从0开始
++ count  查询条数 最多支持500条
+
+##### Example Response
+
+###### Response Header
+
+```
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+```
+###### Response Data 
+
+```
+{
+  "total":1233, 
+  "start":1100,
+  "count":3,
+  "users":
+    [{"username" : "cai", "nickname" : "hello", "mtime" : "2015-01-01 00:00:00", "ctime" : "2015-01-01 00:00:00"},
+      {"username" : "yi", "nickname" : "hello", "mtime" : "2015-01-01 00:00:00", "ctime" : "2015-01-01 00:00:00"},
+      {"username" : "huang", "nickname" : "hello", "mtime" : "2015-01-01 00:00:00", "ctime" : "2015-01-01 00:00:00"} ]
+}
+```
 
 
 ### 消息相关
 
 #### 发送消息
 
-暂未开放。
+```
+POST /v1/messages
+```
 
-	POST /v1/messages
+<div class="table-d" align="center" >
+	<table border="1" width = "100%">
+		<tr  bgcolor="#D3D3D3" >
+			<th style="padding: 0 5px;" >参数</th>
+			<th style="padding: 0 5px;" >含义</th>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;">version</td>
+			<td style="padding: 0 5px;">版本号</td>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;">target_type</td>
+			<td style="padding: 0 5px;">发送目标类型 single - 个人，group - 群组</td>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;">from_type</td>
+			<td style="padding: 0 5px;">发消息着身份 当前只限admin</td>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;">msg_type</td>
+			<td style="padding: 0 5px;">发消息类型 当前只限text</td>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;t">target_id</td>
+			<td style="padding: 0 5px;">目标id single填username group 填gid</td>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;">from_id</td>
+			<td style="padding: 0 5px;">发送者的username</td>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;">msg_body</td>
+			<td style="padding: 0 5px;">消息体</td>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;">msg_body -> text</td>
+			<td style="padding: 0 5px;">消息内容</td>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;">msg_body-> extras</td>
+			<td style="padding: 0 5px;">选填的json对象 开发者可以自定义extras里面的key value	</td>
+		</tr>
+	</table>
+</div>
+
+
+
 
 ##### Example Request
 
@@ -63,10 +255,8 @@ JSON Array.
 	"target_type": "single",
 	"target_id": "javen",
 	"target_name": "Javen Fang",
-	"from_type": "user",
+	"from_type": "admin",
 	"from_id": "fang", 
-	"from_name": "Fang Javen", 
-	"create_time": 135431243278,
 	"msg_type": "text",
 	"msg_body": {
 	    "extras": {},
@@ -77,9 +267,11 @@ JSON Array.
 
 ##### Request Params
 
-JSON Object.
++ JSON Object.
 
-遵循协议文档：[IM 消息协议](../../client/im_message_protocol/)
++ 遵循协议文档：[IM 消息协议](../../advanced/im_message_protocol/)
+
++ 此api只能用admin用户发送
 
 ##### Example Response
 
@@ -89,6 +281,12 @@ JSON Object.
 < 
 {"msg_id": 43143728109  }
 ```
+
+Error Code
+
++ 899003    参数错误，Request Body参数不符合要求
++ 899002   用户不存在，target_name或者from_name不存在
++ 899016   from_name 没有权限发送message
 
 ### 用户维护
 
@@ -104,18 +302,20 @@ JSON Object.
 
 ```
 {
-	"username" : "test", 
-	"nickname" : "hello", 
-	"star" : 2, 
-	"avatar" : "/avatar/path", 
-	"birthday" : "1990-01-24 00:00:00", 
-	"gender" : 0, 
-	"signature" : "orz", 
-	"region" : "shenzhen", 
-	"address" : "shenzhen", 
-	"mtime" : "2015-01-01 00:00:00", 
-	"ctime" : "2015-01-01 00:00:00"}
+	"username" : "javen", 
+ 	"nickname" : "hello", 
+ 	"avatar" = "/avatar", 
+ 	"birthday" : "1990-01-24 00:00:00", 
+ 	"gender" : 0, 
+ 	"signature" : "orz", 
+ 	"region" : "shenzhen", 
+ 	"address" : "shenzhen", 
+ 	"mtime" : "2015-01-01 00:00:00", 
+ 	"ctime" : "2015-01-01 00:00:00"}
 ```
+说明
+
+除了username mtime ctime这三个子段之外，其余字段如果没存json中就有没有相应的key
 
 #### 更新用户信息
 
@@ -139,8 +339,37 @@ JSON Object.
 
 ```
 < HTTP/1.1 204 NO CONTENT
-< Content-Type: application/json
+< Content-Type: application/json; charset=utf-8
 ```
+
+#### 修改密码
+
+```
+PUT /v1/users/:username/password
+```
+
+##### Request Header 
+
+```
+PUT /v1/users/javen/password
+```
+
+##### Example Request
+
+```
+{
+	 "new_password": "654321" 
+}
+```
+
+##### Example Response
+
+```
+HTTP/1.1 204 NO Content
+Content-Type: application/json; charset=utf-8
+```
+##### Response Data
++ N/A
 
 #### 删除用户
 
@@ -154,7 +383,7 @@ Example Response
 
 ```
 < HTTP/1.1 204 NO CONTENT
-< Content-Type: application/json
+< Content-Type: application/json; charset=utf-8   
 ```
 
 
@@ -166,7 +395,9 @@ Request Params
 
 + start 开始的记录数
 + count 要获取的记录个数
+
 Example Response
+
 ```
 < HTTP/1.1 204 NO CONTENT
 < Content-Type: application/json
@@ -175,7 +406,10 @@ Example Response
     "total": 12580,
     "start": 1100,
     "count": 100,
-    "users":["tom", "eddie", "annie"]
+    "users":
+    [{"username" : "cai", "nickname" : "hello", "mtime" : "2015-01-01 00:00:00", "ctime" : "2015-01-01 00:00:00"},
+      {"username" : "yi", "nickname" : "hello", "mtime" : "2015-01-01 00:00:00", "ctime" : "2015-01-01 00:00:00"},
+      {"username" : "huang", "nickname" : "hello", "mtime" : "2015-01-01 00:00:00", "ctime" : "2015-01-01 00:00:00"} ]
 }
 ```
 
@@ -185,6 +419,49 @@ Example Response
 #### 创建群组
 
 	POST /v1/groups/
+
+
+<div class="table-d" align="center" >
+	<table border="1" width = "100%">
+		<tr  bgcolor="#D3D3D3" >
+			<th style="padding: 0 5px;" >参数</th>
+			<th style="padding: 0 5px;" >含义</th>
+			<th style="padding: 0 5px;" >字符长度限制</th>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;">name</td>
+			<td style="padding: 0 5px;">群组名称</td>
+			<td style="padding: 0 5px;">Byte(0~64)</td>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;">desc</td>
+			<td style="padding: 0 5px;">群组描述</td>
+			<td style="padding: 0 5px;">Byte(0~250)</td>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;">owner_username</td>
+			<td style="padding: 0 5px;">群主的username</td>
+			<td style="padding: 0 5px;">Byte(4-128)</td>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;">level</td>
+			<td style="padding: 0 5px;">群组的等级 1 - 最大人数40，2 - 最大人数100，3 - 最大人数 200， 4 最大人数 500</td>
+			<td style="padding: 0 5px;"></td>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;t">ctime</td>
+			<td style="padding: 0 5px;">创建时间</td>
+			<td style="padding: 0 5px;"></td>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;">mtime</td>
+			<td style="padding: 0 5px;">最后修改时间</td>
+			<td style="padding: 0 5px;"></td>
+		</tr>
+	</table>
+</div>
+
+<br>
 
 Example Request
 
@@ -205,17 +482,18 @@ Example Response
 < 
 
 {
-    "gid": 13579,
-    "group_name": "群聊天室", 
-    "group_desc": "运动",
-    "appkey": "dcf71ef5082057832bd44fbd",
-    "level": 3,
-    "mtime": "2014-07-01 00:00:00",
-    "ctime": "2014-07-01 00:00:00"
+    "gid":12345, 
+    "owner_username": 123456, 
+    "name": "display_name", 
+    "members_username": [], 
+    "desc":"doubi",
+    "level" = 3, 
+    "mtime" = "2014-07-01 00:00:00", 
+    "ctime"="2014-06-05 00:00:00"
 }
 ```
 
-#### 获取群组详情
+####  获取群组详情
 
 	GET /v1/groups/:gid
 
@@ -230,15 +508,39 @@ Example Response
 < 
 
 {
-    "gid": 13579,
-    "group_name": "群聊天室", 
-    "group_desc": "运动",
-    "appkey": "dcf71ef5082057832bd44fbd",
-    "level": 3,
-    "mtime": "2014-07-01 00:00:00",
-    "ctime": "2014-07-01 00:00:00"
+      "gid": 12345, 
+      "name" : "jpush", 
+      "desc" : "push", 
+      "appkey" : "dcf71ef5082057832bd44fbd", 
+      "level" : 3,  
+      "mtime" : "2014-07-01 00:00:00", 
+      "ctime" : "2014-06-05 00:00:00"
 }
 ```
+
+####  更新群组信息
+```
+PUT /v1/groups/{gid}
+```
+Request Params
+
++ name 群名称
++ desc 群描述
+
+```
+PUT /v1/groups/{gid}
+```
+Request Body
+
+```
+{ "the key you want to update" : "the value you want to update" }
+```
+Example Response
+
+```
+HTTP/1.1 204 NO Content
+```
+
 
 #### 删除群组
 
@@ -269,8 +571,11 @@ Example Response
 
 Request Params
 
-+ gid 群组ID。
-
++ gid 群组ID
++ add        json数组 表示要添加到群组的用户(可选)
++ remove   json数组 表示要从群组删除的用户（可选）
++ 两者至少要有一个
+   
 Example Request 
 
 ```
@@ -291,9 +596,9 @@ Example Response
 < Content-Type: application/json
 ```
 
-#### 获取群组成员列表
+####  获取群组成员列表
 
-    GET /v1/groups/:gid/members/
+    GET /v1/groups/{gid}/members/
 
 Request Params
 
@@ -301,17 +606,22 @@ Request Params
 
 Example Response
 
++ JsonObject UID数组
+
 ```
 < HTTP/1.1 200 OK
-< Content-Type: application/json
+< Content-Type: application/json; charset=utf-8
 
-[
-    {"username":"tom", "flag":0, "ctime":"2015-03-20 22:00:13"}, 
-    {"username":"annie", "flag":1, "ctime":"2015-03-11 01:12:00"}
+[ 
+	{"username" : "javen", "nickname" : "hello", "avatar" = "/avatar", "birthday" : "1990-01-24 00:00:00", "gender" : 0, "signature" : "orz", "region" : "shenzhen", "address" : "shenzhen", "flag":0} 
 ]
 ```
++ flag
+	+ 0 - 普通群成员
+	+ 1 - 群主
 
-#### 获取某用户的群组列表
+
+####  获取某用户的群组列表
 
     GET /v1/users/:username/groups/
 
@@ -325,8 +635,9 @@ Example Response
 < HTTP/1.1 200 OK
 < Content-Type: application/json
 
-[111, 222, 333]
+[ { "gid": 12345, "name" : "jpush", "desc" : "push", "appkey" : "dcf71ef5082057832bd44fbd", "level" : 3, "mtime" : "2014-07-01 00:00:00", "ctime" : "2014-06-05 00:00:00"}]
 ```
+
 
 #### 获取当前应用的群组列表
 
@@ -343,12 +654,11 @@ Example Response
 < HTTP/1.1 200 OK
 < Content-Type: application/json
 
-{
-    "total": 1322,
-    "start": 1100,
-    "count": 100,
-    "groups":[111, 222, 333]
-}
+{ "total":1233, 
+  "start":1100, 
+  "count":1, 
+  "groups": 
+ [ { "gid": 12345, "name" : "jpush", "desc" : "push", "appkey" : "dcf71ef5082057832bd44fbd", "level" : 3, "mtime" : "2014-07-01 00:00:00", "ctime" : "2014-06-05 00:00:00"}] } 
 
 ```
 
