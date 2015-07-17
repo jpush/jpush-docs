@@ -1,4 +1,24 @@
 # 最近更新
+
+### JPush iOS SDK v1.8.4
+
+#### 更新时间
+2015-07-17
+
+#### Change Log
++ 优化改进：改进域名劫持导致的无法登陆服务器
+
+#### 升级提示
+
++ 可选升级！
+
+#### 升级指南
+
++ 替换 lib 文件夹里的文件 .a 文件为新版本；
++ 替换 lib 文件夹里的文件 .h 文件为新版本；
++ 工程添加libz.dylib、Security.framework两个库；
++ 新版本不再需要 libPushSDK-Simulator.a 。如果你的老版本 SDK 包含此文件，请删除。
+
 ### JPush Android SDK v1.7.5
 
 #### 更新时间
