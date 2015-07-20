@@ -263,7 +263,6 @@ POST /v1/messages
 	"version": 1, 
 	"target_type": "single",
 	"target_id": "javen",
-	"target_name": "Javen Fang",
 	"from_type": "admin",
 	"from_id": "fang", 
 	"msg_type": "text",
@@ -334,8 +333,7 @@ Error Code
 
 ```
 {
-	"nickname": "Hello JMessage", 
-	"avatar" = "/avatar/path/new"
+	"nickname": "Hello JMessage"
 }
 ```
 
@@ -477,9 +475,9 @@ Example Request
 ```
 {
     "owner_username": "tom", 
-    "group_name": "群聊天室", 
+    "name": "群聊天室", 
     "members_username": ["eddie", "annie"], 
-    "group_desc": "运动"
+    "desc": "运动"
 }
 ```
 
@@ -655,7 +653,7 @@ Example Response
 Request Params
 
 + start 开始的记录数。
-+ count 本次读取的记录数量。
++ count 本次读取的记录数量。最大值为500
 
 Example Response
 
