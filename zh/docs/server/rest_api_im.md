@@ -157,7 +157,7 @@ Content-Type: application/json; charset=utf-8
 ##### **GetAdminsListByAppkey  获取应用管理员列表** 
 
 ```
-GET /admins?start=:start&count=:count
+GET /v1/admins?start=:start&count=:count
 ```
 ##### Example Request
 
