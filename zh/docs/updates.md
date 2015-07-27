@@ -1,5 +1,32 @@
 # 最近更新
 
+### JPush Android SDK v1.8.0
+
+#### 更新时间
+
++ 2015-07-27
+
+#### Change Log
++ 新增特性：支持集成了新版本 JPush SDK 的应用间进程拉起
++ 优化改进：优化富媒体模板展示效果准备。（更多功能待web后台更新后可以使用）
+
+#### 升级提示
+
++ 建议升级！
++ 建议参考 SDK下载包最新版本的 example 来更新 AndroidManifest.xml 文件配置
++ 由于富媒体的展示需求，SDK 中增加一个res文件夹存放资源文件。用户需将对应文件夹下的资源文件放入工程的目录中
+
+#### 升级指南
++ 新加入 .jar 包：同时删除原来各老版本的 jar 包。
++ 新加入 .so 包：libs/armeabi/libjpush180.so ，同时删除原来各老版本的 so 包。
++ 由于富媒体的展示需求，SDK 中增加一个res文件夹存放资源文件。用户需将对应文件夹下的资源文件放入工程的目录中。
++ 如果是从更早起的版本升级过来，建议参考 SDK下载包最新版本的 example 来更新 AndroidManifest.xml 文件配置。
++ 如果使用的老版本统计的 API activityStarted/activityStopped, 请使用最新的 API onResume/onPause 替换，参考文档 [统计消息API](../client/android_api/#api_2)
++ 如果要支持 x86 CPU 的机型，请下载单独的 x86 JPush SDK 压缩包，解压缩后复制 libs/x86/libjpush180.so 到你项目的 libs/x86/ 目录下。
++ 如果要支持 mips CPU 的机型，请下载单独的 mips JPush SDK 压缩包，解压缩后复制 libs/mips/libjpush180.so 到你项目的 libs/mips/ 目录下。
+
+
+
 ### JPush iOS SDK v1.8.4
 
 #### 更新时间
