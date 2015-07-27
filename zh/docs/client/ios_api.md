@@ -409,7 +409,7 @@ r1.7.0 开始支持。
 <div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">
 <p>注：
   <br>
-  <p>要使用此功能，客户端 App 一定要集成有 r1.7.0 及以上版本的 JPush IOS SDK
+  <p>要使用此功能，客户端 App 一定要集成有 r1.7.0 及以上版本的 JPush iOS SDK
 </div>
 
 ### 页面的统计
@@ -561,7 +561,7 @@ v1.8.0及后续版本
 #### 功能说明
 
 
-IOS 设备收到一条本地通知，用户点击通知打开应用时，应用程序根据状态不同进行处理需在 AppDelegate 中的以下两个方法中添加代码以获取本地通知内容
+iOS 设备收到一条本地通知，用户点击通知打开应用时，应用程序根据状态不同进行处理需在 AppDelegate 中的以下两个方法中添加代码以获取本地通知内容
 
 + 如果 App 状态为未运行，此函数将被调用，如果launchOptions包含UIApplicationLaunchOptionsLocalNotificationKey表示用户点击本地通知导致app被启动运行；如果不含有对应键值则表示 App 不是因点击本地通知而被启动，可能为直接点击icon被启动或其他。
 
@@ -593,7 +593,7 @@ API 用于注册本地通知
                                      userInfo:(NSDictionary *)userInfo
                                     soundName:(NSString *)soundName;
 ```
-IOS8 新参数使用API。非IOS8版本或者不需要使用IOS8新功能请使用上面的API 
+iOS8 新参数使用API。非iOS8版本或者不需要使用iOS8新功能请使用上面的API 
 
 ```
 
@@ -613,7 +613,7 @@ IOS8 新参数使用API。非IOS8版本或者不需要使用IOS8新功能请使�
 + fireDate 本地推送触发的时间
 + alertBody 本地推送需要显示的内容
 + badge 角标的数字。如果不需要改变角标传-1
-+ alertAction 弹框的按钮显示的内容（IOS 8默认为"打开",其他默认为"启动"）
++ alertAction 弹框的按钮显示的内容（iOS 8默认为"打开",其他默认为"启动"）
 + notificationKey 本地推送标示符
 + userInfo 自定义参数，可以用来标识推送和增加附加信息
 + soundName 本地通知声音名称设置，空为默认声音
