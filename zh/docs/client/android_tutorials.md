@@ -96,13 +96,7 @@ JPush 目前在网络策略方面没有像微信这种聊天工具做得积极�
 #### 为什么需要别名与标签
 
 推送消息时，要指定推送的对象：全部，某一个人，或者某一群人。
-<br>
-<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px;">
-<p style="margin-bottom: 0;">JPush 目前还提供根据 IMEI 推送。但这个建议仅用于测试目的。</p>
-<br>
-<p style="margin-bottom: 0;">原因很简单：很多 Android 设备是取不到 IMEI 的。</p>
-</div>
-<br>
+
 全部很好办，针对某应用“群发”就好了。Portal与API都支持向指定的 appKey 群发消息。
 
 要指定向某一个特定的人，或者某一群特定的人，则相对复杂。因为对于 JPush 来说，某一个人就是一个注册ID，这个注册ID与开发者App没有任何关系，或者说对开发者App是没有意义的。
