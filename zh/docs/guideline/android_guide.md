@@ -3,7 +3,7 @@
 
 本文是 Android SDK 标准的集成指南文档。
 
-匹配的 SDK 版本为：r1.3.x。
+匹配的 SDK 版本为：r1.8.0及以后版本。
 
 本文随SDK压缩包分发。在你看到本文时，可能当前的版本与本文已经不是很适配。所以建议关注在线文档：
 
@@ -37,13 +37,15 @@
 	+ SDK Java 开发包
 + libs/armeabi/libjpush.so 
 	+ SDK native 开发包
++ res
+    +  集成SDK必须添加的资源文件
 + example
-	+是一个完整的 Android 项目，通过这个演示了 JPush SDK 的基本用法，可以用来做参考。
+	  +  是一个完整的 Android 项目，通过这个演示了 JPush SDK 的基本用法，可以用来做参考。
 
 
 ### Android SDK 版本
 
-目前SDK只支持Android 2.1或以上版本的手机系统。
+目前SDK只支持Android 2.1或以上版本的手机系统。富媒体信息流功能则需Android3.0或以上版本的系统。
 
 ## SDK集成步骤
 ### 1、导入 SDK 开发包到你自己的应用程序项目
@@ -57,6 +59,9 @@
 <p style="padding-bottom:0; margin-bottom: 0;">如果您的项目有 libs/armeabi-v7a 这个目录，请把 libjpush.so 也复制一份到这个目录。</p>
 </div>
 
++ 复制 res/drawable-hdpi 中的资源文件到工程的 res/drawable-hdpi/ 目录下
++ 复制 res/layout 中的布局文件到工程的 res/layout/ 目录下
+
 ### 2、配置 AndroidManifest.xml
 
 根据 SDK 压缩包里的 AndroidManifest.xml 样例文件，来配置应用程序项目的 AndroidManifest.xml 。
@@ -68,14 +73,15 @@
 + 将AppKey替换为在Portal上注册该应用的的Key,例如（9fed5bcb7b9b87413678c407）
 
 ```
-权限配置：
+AndroidManifest.xml权限配置：
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="Your Package"
     android:versionCode="100"
     android:versionName="1.0.0"
     >
-  
+    <uses-sdk android:minSdkVersion="11" android:targetSdkVersion="17" />
+
     <!-- Required -->
     <permission android:name="Your Package.permission.JPUSH_MESSAGE" android:protectionLevel="signature" />
    
@@ -90,7 +96,7 @@
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.WRITE_SETTINGS" /> <!--since 1.6.0 -->
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" /> 
      
     <!-- Optional. Required for location feature -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
@@ -119,6 +125,18 @@
             </intent-filter>
         </service>
          
+        <!-- Required SDK 核心功能-->
+         <!-- since 1.8.0 -->
+         <service
+             android:name="cn.jpush.android.service.DaemonService"
+             android:enabled="true"
+             android:exported="true">
+             <intent-filter >
+                 <action android:name="cn.jpush.android.intent.DaemonService" />
+                 <category android:name="Your Package"/>
+             </intent-filter>
+         </service>
+
         <!-- Required -->
         <receiver
             android:name="cn.jpush.android.service.PushReceiver"
@@ -141,8 +159,8 @@
      <!-- Required SDK核心功能-->
         <activity
             android:name="cn.jpush.android.ui.PushActivity"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"
-            android:configChanges="orientation|keyboardHidden" >
+            android:configChanges="orientation|keyboardHidden"
+            android:exported="false" >
             <intent-filter>
                 <action android:name="cn.jpush.android.ui.PushActivity" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -157,6 +175,28 @@
         </service>
         <!-- Required SDK核心功能-->
         <receiver android:name="cn.jpush.android.service.AlarmReceiver" />
+
+        <!-- User defined. 用户自定义的广播接收器-->
+         <receiver
+             android:name="您自己定义的Receiver"
+             android:enabled="true">
+             <intent-filter>
+                 <!--Required 用户注册SDK的intent-->
+                 <action android:name="cn.jpush.android.intent.REGISTRATION" /> 
+                 <action android:name="cn.jpush.android.intent.UNREGISTRATION" />
+                 <!--Required 用户接收SDK消息的intent--> 
+                 <action android:name="cn.jpush.android.intent.MESSAGE_RECEIVED" /> 
+                 <!--Required 用户接收SDK通知栏信息的intent-->
+                 <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED" /> 
+                 <!--Required 用户打开自定义通知栏的intent-->
+                 <action android:name="cn.jpush.android.intent.NOTIFICATION_OPENED" /> 
+                 <!--Optional 用户接受Rich Push Javascript 回调函数的intent-->
+                 <action android:name="cn.jpush.android.intent.ACTION_RICHPUSH_CALLBACK" /> 
+                 <!-- 接收网络变化 连接/断开 since 1.6.3 -->
+                 <action android:name="cn.jpush.android.intent.CONNECTION" />
+                 <category android:name="您应用的包名" />
+             </intent-filter>
+         </receiver>
       
         <!-- Required. For publish channel feature -->
         <!-- JPUSH_CHANNEL 是为了方便开发者统计APK分发渠道。-->
@@ -275,7 +315,7 @@ JPush SDK 提供的 API 接口，都主要集中在 cn.jpush.android.api.JPushIn
 3. 确认在程序启动时候调用了init(context) 接口
 4. 确认测试手机（或者模拟器）已成功连入网络
 	＋ 客户端调用 init 后不久，如果一切正常，应有登录成功的日志信息
-5. 启动应用程序，在 Portal 上向应用程序发送自定义消息或者通知栏提示。详情请参考管理Portal。
+5. 启动应用程序，在 Portal 上向应用程序发送自定义消息或者通知栏提示。详情请参考管理[Portal](www.jpush.cn)。
 	+ 在几秒内，客户端应可收到下发的通知或者正定义消息
 如果 SDK 工作正常，则日志信息会如下图所示：
 
