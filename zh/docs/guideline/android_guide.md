@@ -56,7 +56,7 @@
 + 复制 libs/armeabi-v7a/libjpush.so 到工程 libs/armeabi-v7a 目录下
 
 <div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; ">
-<p style="padding-bottom:0; margin-bottom: 0;">如果您的项目有 libs/armeabi-v7a 这个目录，请把 libjpush.so 也复制一份到这个目录。</p>
+<p style="padding-bottom:0; margin-bottom: 0;">如果您的项目有 libs/armeabi-v7a 这个目录，请把 libs/armeabi-v7a下的so文件 也复制一份到这个目录。</p>
 </div>
 
 + 复制 res/drawable-hdpi 中的资源文件到工程的 res/drawable-hdpi/ 目录下
