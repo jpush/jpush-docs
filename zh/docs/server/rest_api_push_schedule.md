@@ -10,6 +10,16 @@ API 层面支持定时功能。
 
 POST https://api.jpush.cn
 
+#### 调用验证
+
+HTTP Header（头）里加一个字段（Key/Value对）：
+
+  Authorization: Basic base64_auth_string
+
+其中 base64_auth_string 的生成算法为：base64(appKey:masterSecret)
+
+即，对 appKey 加上冒号，加上 masterSecret 拼装起来的字符串，再做 base64 转换。
+
 ### Schedule 对象定义及描述
 
 ```
@@ -119,6 +129,7 @@ Request Header
 
 ```
 POST /v3/schedules
+ Authorization: Basic (base64 auth string)
  Content-Type: application/json
  Accept: application/json
 ```
