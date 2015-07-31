@@ -286,7 +286,7 @@ SDK 对自定义消息，只是传递，不会有任何界面上的展示。
 
 			Bundle bundle = intent.getExtras();
 			String fileStr = bundle.getString(JPushInterface.EXTRA_RICHPUSH_HTML_RES);
-			String[] fileNames = fileStr.spilt(",");
+			String[] fileNames = fileStr.split(",");
 			
 + JPushInterface.EXTRA_MSG_ID
 	+ SDK 1.6.1 以上版本支持。  
