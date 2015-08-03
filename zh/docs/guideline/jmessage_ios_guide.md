@@ -140,7 +140,6 @@ JPUSHService.h     // JPush 接口类
                  category:nil];
  
     // Required - 注册 APNs 通知
-#if __IPHONE_OS_VERSION_MAX_ALLOWED > __IPHONE_7_1
    if ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0) {
     //可以添加自定义categories
     [JPUSHService registerForRemoteNotificationTypes:(UIUserNotificationTypeBadge |
@@ -154,14 +153,7 @@ JPUSHService.h     // JPush 接口类
                                                    UIRemoteNotificationTypeAlert)
                                        categories:nil];
   }
-#else
-    //categories 必须为nil
-  [JPUSHService registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge |
-                                                 UIRemoteNotificationTypeSound |
-                                                 UIRemoteNotificationTypeAlert)
-                                     categories:nil];
-#endif
-    
+
     return YES;
 }
  

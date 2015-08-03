@@ -127,7 +127,6 @@ APIs 主要集中在 APService 接口类里。
     [self.window makeKeyAndVisible];
  
     // Required
-#if __IPHONE_OS_VERSION_MAX_ALLOWED > __IPHONE_7_1
    if ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0) {
     //可以添加自定义categories
     [APService registerForRemoteNotificationTypes:(UIUserNotificationTypeBadge |
@@ -141,13 +140,7 @@ APIs 主要集中在 APService 接口类里。
                                                    UIRemoteNotificationTypeAlert)
                                        categories:nil];
   }
-#else
-    //categories 必须为nil
-  [APService registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge |
-                                                 UIRemoteNotificationTypeSound |
-                                                 UIRemoteNotificationTypeAlert)
-                                     categories:nil];
-#endif
+
     // Required
     [APService setupWithOption:launchOptions];
     
