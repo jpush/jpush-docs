@@ -293,8 +293,8 @@ POST /v1/messages
 Error Code
 
 + 899003    参数错误，Request Body参数不符合要求
-+ 899002   用户不存在，target_name或者from_name不存在
-+ 899016   from_name 没有权限发送message
++ 899002   用户不存在，target_id或者from_id不存在
++ 899016   from_id 没有权限发送message
 
 ### 用户维护
 
