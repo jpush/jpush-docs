@@ -105,7 +105,7 @@ HTTP Header（头）里加一个字段（Key/Value对）：
 		</tr>
 		<tr >
 			<td style="padding: 0 5px;">week</td>
-			<td style="padding: 0 5px;">'MON','TUE','WED','THU','FIR','SAT','SUN'</td>
+			<td style="padding: 0 5px;">'MON','TUE','WED','THU','FRI','SAT','SUN'</td>
 			<td style="padding: 0 5px;">当time_unit为week时，point为对应项的一项或多项，表示星期几进行触发,point中的值大小写不敏感</td>
 		</tr>
 		<tr >

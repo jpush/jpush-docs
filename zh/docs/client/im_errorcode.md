@@ -384,6 +384,16 @@
       <td style="padding: 0 5px; " >消息中包含的文件不存在</td>
     </tr>
     <tr >
+      <td style="padding: 0 5px; " >871310</td>
+      <td style="padding: 0 5px;"></td>
+      <td style="padding: 0 5px; " >网络连接已断开，请检查网络</td>
+    </tr>
+    <tr >
+      <td style="padding: 0 5px; " >871311</td>
+      <td style="padding: 0 5px;"></td>
+      <td style="padding: 0 5px; " >用户未设定头像，下载头像失败</td>
+    </tr>
+    <tr >
       <td style="padding: 0 5px; " >871402</td>
       <td style="padding: 0 5px;"></td>
       <td style="padding: 0 5px; " >文件上传失败</td>
