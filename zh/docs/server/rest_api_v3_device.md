@@ -26,7 +26,8 @@ Device API 用于在服务器端查询、设置、更新、删除设备的 tag,a
 + tag 用于查询/设置/删除设备的标签；
 + alias 用于查询/设置/删除设备的别名。
 
-API URL: https://device.jpush.cn
+
+API URL: [https://device.jpush.cn](https://device.jpush.cn)
 
 
 ### Device
