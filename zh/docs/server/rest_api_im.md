@@ -312,7 +312,7 @@ Error Code
 {
 	"username" : "javen", 
  	"nickname" : "hello", 
- 	"avatar" = "/avatar", 
+ 	"avatar" : "/avatar", 
  	"birthday" : "1990-01-24 00:00:00", 
  	"gender" : 0, 
  	"signature" : "orz", 
