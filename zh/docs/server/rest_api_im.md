@@ -80,7 +80,7 @@ Authorization: Basic base64_auth_string
 			<td style="padding: 0 5px;"></td>
 		</tr>
 		<tr >
-			<td style="padding: 0 5px;">ctime</td>
+			<td style="padding: 0 5px;">mtime</td>
 			<td style="padding: 0 5px;">用户最后修改时间</td>
 			<td style="padding: 0 5px;"></td>
 		</tr>
