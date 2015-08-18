@@ -1,12 +1,151 @@
-# 统计与报表说明
+# Web 推送
 
-### 查看报表
+<style>
+img[alt=jpush_web] { width: 700px; }
+</style>
+
+### 创建应用
+
+#### **创建应用步骤**:
+
+创建应用 : 点击 创建应用 按钮即可;
+
+![](../image/create_application.png)
+
+配置应用信息 : 输入应用名称, 上传一个图标, 然后填写一个包名, JPush 系统会在后台根据你输入的包名生成的推送的 Android 应用 Demo, 该 Demo 包含了该配置的信息;
+
+![jpush_web](../image/application_info.png)
+
+查看应用界面
+
+![jpush_web](../image/application_setting.png)
+
+
+### 应用管理
+
+点击回首页按钮，点击"应用管理"按钮，可以浏览该应用的详细信息，通过链接应用名称、图表、通知、编辑，可以进入更详细的页面进行浏览查看和编辑
+
+![jpush_web](../image/application_g.png)
+
+应用详情如下
+
+![jpush_web](../image/application_moreinfo.png)
+
+应用设置如下
+
+![jpush_web](../image/application_moresetting.png)
+
+### 概览
+
+点击回首页按钮①，点击②"概览"按钮，可以浏览汇总信息和应用列表信息
+
+![jpush_web](../image/application_list.png)
+
+### 分组管理
+
+点击回首页按钮，点击"分组管理"按钮，可以浏览应用的分组管理信息
+
+![jpush_web](../image/application_group.png)
+
+#### 报表下载
+
+点击回首页按钮，点击"报表下载"按钮，可以根据时间对报表进行下载
+
+![jpush_web](../image/application_data.png)
+
+### 发送通知
+
+在应用的 "推送" 模块, 点击"发送通知"按钮; 输入推送内容 , 点击页面最下方的 "立即发送" 按钮
+
+![jpush_web](../image/application_sendntf.png)
+
+在Web 界面会弹出对话框, 提示是否发送, 选 "发送吧" 即可;
+
+![jpush_web](../image/send_.png)
+
+查看推送结果 : 点击之后又弹出对话框, 点击 "去看看" 可以查看推送结果;
+
+![jpush_web](../image/send_done.png)
+
+### 自定义消息
+
+在应用的 "推送" 模块, 点击"自定义消息"按钮; 输入推送内容 , 点击页面最下方的 "立即发送" 按钮
+
+![jpush_web](../image/send_pass.png)
+
+### 富媒体推送
+
+富媒体推送有两种推送方法，一个是从模板推送，一个是推送文件。
+
+#### **从模板推送**
+
+在应用的 "推送" 模块, 点击"富媒体"按钮; 选择"从模板推送" ，点击页面最下方的 "下一步" 按钮
+
+![jpush_web](../image/rich.png)
+
+进入选择模板页面，选择合适的模板，模板下面有相应的案例，点击页面最下方的 "下一步" 按钮
+
+![jpush_web](../image/rich_model.png)
+
+编辑模板，可以在该页面进行内容和文字的编辑，点击页面最下方的 "下一步" 按钮
+
+![jpush_web](../image/edit_model.png)
+
+然后进入发送富媒体消息页面，输入推送内容 , 点击页面最下方的 "立即发送" 按钮
+
+![jpush_web](../image/send_model.png)
+
+#### **推送文件**
+
+在应用的 "推送" 模块, 点击"富媒体"按钮; 选择"推送文件" ，点击页面最下方的 "下一步" 按钮
+
+![jpush_web](../image/rich_file.png)
+
+进入推送文件页面，选择上传本地资源文件或者网络资源地址，输入推送内容，点击页面最下方的 "下一步" 按钮
+
+![jpush_web](../image/send_file.png)
+
+
+### 推送历史
+
+在应用的 "推送" 模块, 点击"推送历史"按钮; 在右边可以浏览推送的历史数据，包含推送时间，内容，类型，IOS 目标|成功，Android目标|成功，Winphone目标|成功，操作
+
+![jpush_web](../image/send_history.png)
+
+**说明**
+
++ 类型包括：广播、tag、alias、Registration ID
++ 操作包括：转发、统计、详情、删除
+
+详情如下：
+
+![](../image/send_number.png)
+
+统计示例
+
+![](../image/total.png)
+
+### 定时推送
+
+在应用的 "推送" 模块, 点击"定时消息"按钮;在最右边的下拉菜单中可以选择“通知”还是“自定义消息”的定时推动
+
+![jpush_web](../image/Schedule_send.png)
+
+### 定速推送
+
+定速推送时长(分钟),在应用的 "推送" 模块,点击定速推送
+
+![jpush_web](../image/speed.png)
+
+### 统计与报表说明
+
+#### 查看报表
 
 JPush 的 Web 上提供了多种应用级别的统计数据。如下图所示，用户在登录JPush 帐号，并选择了具体的应用后，可以在顶部导航条内选择“统计”
 #### 选择报表类型
 JPush 统计包括：推送统计，用户统计，API 统计，活跃分析，在线留存率
 
-![][0]
+![jpush_web][0]
 
 #### 选择统计时间
 
@@ -15,7 +154,7 @@ JPush 统计包括：推送统计，用户统计，API 统计，活跃分析，�
 例：如果选择“昨天”，那么报表呈现的数据是以小时为单位；如果选择”最近7天“，那么报表呈现的数据则是是以天为单位。
 
 ![][1]
-### 统计项说明
+#### 统计项说明
 
 #### 推送统计
 

@@ -8,7 +8,7 @@ API 层面支持定时功能。
 
 #### 调用地址
 
-POST https://api.jpush.cn
+POST [https://api.jpush.cn](https://api.jpush.cn)
 
 #### 调用验证
 
@@ -119,7 +119,7 @@ HTTP Header（头）里加一个字段（Key/Value对）：
 
 ### 定时任务
 
-#### POST /v3/schedules
+#### POST https://api.jpush.cn/v3/schedules
 
 创建一个新的定时任务。
 
@@ -209,7 +209,7 @@ HTTP/1.1 400 BAD REQUEST
 
 ### 获取有效的schedule列表
 
-GET /v3/schedules?page=
+#### GET https://api.jpush.cn/v3/schedules?page=
 
 获取当前有效（endtime未过期）的 schedule 列表
 
@@ -252,7 +252,7 @@ HTTP/1.1 200 OK
 
 ### 获取指定的定时任务
 
-GET /v3/schedules/{schedule_id}
+#### GET https://api.jpush.cn/v3/schedules/{schedule_id}
 
 **Example Request**
 
@@ -293,7 +293,7 @@ Response Data
 
 ### 修改指定的Schedule
 
-PUT /v3/schedules/{schedule_id}
+#### PUT https://api.jpush.cn/v3/schedules/{schedule_id}
 
 **Example Request**
 
@@ -430,7 +430,9 @@ HTTP/1.0 400 BAD REQUEST
 
 ### 删除指定的Schedule任务
 
-DELETE /v3/schedules/{schedule_id},schedule_id为已创建的schedule任务的id，如果schedule_id不合法即不是有效的uuid，则404。
+#### DELETE https://api.jpush.cn/v3/schedules/{schedule_id}
+
+schedule_id为已创建的schedule任务的id，如果schedule_id不合法即不是有效的uuid，则404。
 
 **Example Request**
 

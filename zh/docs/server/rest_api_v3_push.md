@@ -54,6 +54,14 @@ HTTP Header（头）里加一个字段（Key/Value对）：
 即，对 appKey 加上冒号，加上 masterSecret 拼装起来的字符串，再做 base64 转换。
 
 
+### 推送校验 API
+POST [https://api.jpush.cn/v3/push/validate](https://api.jpush.cn/v3/push/validate)
+
+#### 功能说明
+该 API 只用于验证推送调用是否能够成功，与推送 API 的区别在于：不向用户发送任何消息。
+其他字段说明：同推送 API。
+
+
 
 ### 推送对象
 
@@ -729,13 +737,6 @@ Windows Phone 平台上，暂时不支持应用内消息。
 	</table>
 </div>
 
-
-### 推送校验 API
-POST [https://api.jpush.cn/v3/push/validate](https://api.jpush.cn/v3/push/validate)
-
-#### 功能说明
-该 API 只用于验证推送调用是否能够成功，与推送 API 的区别在于：不向用户发送任何消息。
-其他字段说明：同推送 API。
 
 ### 参考
 
