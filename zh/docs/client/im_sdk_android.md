@@ -698,6 +698,26 @@ class NotificationClickEvent extends Activity{
   
 }
 ```
+用户下线通知事件
+```
+class UserLogoutEventReceiver extends Activity{
+    @Override
+    protected void onCreate() {
+        super.onCreate(savedInstanceState);
+        JMessageClient.registerEventReceiver(this);
+    }
+    @Override
+    protected void onDestroy() {
+        JMessageClient.unRegisterEventReceiver(this);
+        super.onDestroy();
+    }
+    public void onEvent(UserLogoutEvent event){
+        UserInfo myInfo = event.getMyInfo();//获取当前被登出账号的信息
+        //...
+     }
+  
+}
+```
 
 
 
