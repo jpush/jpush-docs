@@ -14,13 +14,7 @@ Authorization: Basic base64_auth_string
 
 即，对 appKey 加上冒号，加上 masterSecret 拼装起来的字符串，再做 base64 转换。
 
-###  用户注册与登录
-
-#### 注册用户
-
-批量注册用户到极光IM 服务器，一次批量注册最多支持500个用户。
-
-	POST /v1/users/
+### User对象字段总览
 
 <div class="table-d" align="center" >
 	<table border="1" width = "100%">
@@ -88,12 +82,24 @@ Authorization: Basic base64_auth_string
 </div>
 
 
+###  用户注册与登录
+
+
+
+#### 注册用户
+
+批量注册用户到极光IM 服务器，一次批量注册最多支持500个用户。
+
+	POST /v1/users/
+
+
+
 
 ##### Example Request
 
 ```
 [{"username": "dev_fang", "password": "password"}, 
- {"username": "dev_fang", "password": "password"}
+ {"username": "dev_fang_", "password": "password"}
 ] 
 ```
 
@@ -101,8 +107,11 @@ Authorization: Basic base64_auth_string
 
 JSON Array.
 
-+ username 用户名
-+ password 用户密码。极光IM服务器会MD5加密保存。
++ username（必填）用户名
+	+ 开头：字母或者数字
+	+ 字母、数字、下划线
+	+ 英文点、减号、@
++ password（必填）用户密码。极光IM服务器会MD5加密保存。
 
 ##### Example Response
 
@@ -199,6 +208,143 @@ Content-Type: application/json; charset=utf-8
 }
 ```
 
+### 用户维护
+
+#### 获取用户信息
+
+	GET /v1/users/:username
+		
+##### Request Params
+
++ username 用户名。填充到请求路径上。
+
+##### Example Response
+
+```
+{
+	"username" : "javen", 
+ 	"nickname" : "hello", 
+ 	"avatar" : "/avatar", 
+ 	"birthday" : "1990-01-24 00:00:00", 
+ 	"gender" : 0, 
+ 	"signature" : "orz", 
+ 	"region" : "shenzhen", 
+ 	"address" : "shenzhen", 
+ 	"mtime" : "2015-01-01 00:00:00", 
+ 	"ctime" : "2015-01-01 00:00:00"}
+```
+说明
+
+除了username mtime ctime这三个子段之外，其余字段如果没存json中就有没有相应的key
+
+#### 更新用户信息
+
+	PUT /v1/users/:username
+
+##### Example Request
+
+```
+{
+	"nickname": "Hello JMessage"
+}
+```
+
+##### Request Params
+
++ nickname  （选填）用户昵称
+	+ 不支持的字符：英文字符： \n \r\n 
++ birthday    （选填）生日 example: 1990-01-24
+	+ yyyy-MM-dd 
++ signature  （选填）签名
+	+ 支持的字符：全部，包括 Emoji
++ gender    （选填） 性别
+	+ 0 - 未知， 1 - 男 ，2 - 女 
++ region      （选填）地区
+	+ 支持的字符：全部，包括 Emoji。
++ address   （选填）地址
+	+ 支持的字符：全部，包括 Emoji	
+
+
+##### Example Response
+
+```
+< HTTP/1.1 204 NO CONTENT
+< Content-Type: application/json; charset=utf-8
+```
+
+#### 修改密码
+
+```
+PUT /v1/users/:username/password
+```
+
+##### Request Header 
+
+```
+PUT /v1/users/javen/password
+```
+
+##### Example Request
+
+```
+{
+	 "new_password": "654321" 
+}
+```
+##### Request Params
+
++ new_password （必填）新密码
+
+##### Example Response
+
+```
+HTTP/1.1 204 NO Content
+Content-Type: application/json; charset=utf-8
+```
+##### Response Data
++ N/A
+
+#### 删除用户
+
+	DELETE /v1/users/:username
+	
+Request Params
+
++ username 用户名。
+
+Example Response
+
+```
+< HTTP/1.1 204 NO CONTENT
+< Content-Type: application/json; charset=utf-8   
+```
+
+
+#### 获取用户列表
+
+	GET /v1/users/?start=:start&count=:count
+
+Request Params
+
++ start 开始的记录数
++ count 要获取的记录个数
+
+Example Response
+
+```
+< HTTP/1.1 204 NO CONTENT
+< Content-Type: application/json
+
+{
+    "total": 12580,
+    "start": 1100,
+    "count": 100,
+    "users":
+    [{"username" : "cai", "nickname" : "hello", "mtime" : "2015-01-01 00:00:00", "ctime" : "2015-01-01 00:00:00"},
+      {"username" : "yi", "nickname" : "hello", "mtime" : "2015-01-01 00:00:00", "ctime" : "2015-01-01 00:00:00"},
+      {"username" : "huang", "nickname" : "hello", "mtime" : "2015-01-01 00:00:00", "ctime" : "2015-01-01 00:00:00"} ]
+}
+```
 
 ### 消息相关
 
@@ -296,137 +442,8 @@ Error Code
 + 899002   用户不存在，target_id或者from_id不存在
 + 899016   from_id 没有权限发送message
 
-### 用户维护
 
-#### 获取用户信息
-
-	GET /v1/users/:username
-		
-##### Request Params
-
-+ username 用户名。填充到请求路径上。
-
-##### Example Response
-
-```
-{
-	"username" : "javen", 
- 	"nickname" : "hello", 
- 	"avatar" : "/avatar", 
- 	"birthday" : "1990-01-24 00:00:00", 
- 	"gender" : 0, 
- 	"signature" : "orz", 
- 	"region" : "shenzhen", 
- 	"address" : "shenzhen", 
- 	"mtime" : "2015-01-01 00:00:00", 
- 	"ctime" : "2015-01-01 00:00:00"}
-```
-说明
-
-除了username mtime ctime这三个子段之外，其余字段如果没存json中就有没有相应的key
-
-#### 更新用户信息
-
-	PUT /v1/users/:username
-
-##### Example Request
-
-```
-{
-	"nickname": "Hello JMessage"
-}
-```
-
-##### Request Params
-
-+ username 用户名。
-+ BODY JSON Object。根据相应 KEY 更新用户信息。
-
-##### Example Response
-
-```
-< HTTP/1.1 204 NO CONTENT
-< Content-Type: application/json; charset=utf-8
-```
-
-#### 修改密码
-
-```
-PUT /v1/users/:username/password
-```
-
-##### Request Header 
-
-```
-PUT /v1/users/javen/password
-```
-
-##### Example Request
-
-```
-{
-	 "new_password": "654321" 
-}
-```
-
-##### Example Response
-
-```
-HTTP/1.1 204 NO Content
-Content-Type: application/json; charset=utf-8
-```
-##### Response Data
-+ N/A
-
-#### 删除用户
-
-	DELETE /v1/users/:username
-	
-Request Params
-
-+ username 用户名。
-
-Example Response
-
-```
-< HTTP/1.1 204 NO CONTENT
-< Content-Type: application/json; charset=utf-8   
-```
-
-
-#### 获取用户列表
-
-	GET /v1/users/?start=:start&count=:count
-
-Request Params
-
-+ start 开始的记录数
-+ count 要获取的记录个数
-
-Example Response
-
-```
-< HTTP/1.1 204 NO CONTENT
-< Content-Type: application/json
-
-{
-    "total": 12580,
-    "start": 1100,
-    "count": 100,
-    "users":
-    [{"username" : "cai", "nickname" : "hello", "mtime" : "2015-01-01 00:00:00", "ctime" : "2015-01-01 00:00:00"},
-      {"username" : "yi", "nickname" : "hello", "mtime" : "2015-01-01 00:00:00", "ctime" : "2015-01-01 00:00:00"},
-      {"username" : "huang", "nickname" : "hello", "mtime" : "2015-01-01 00:00:00", "ctime" : "2015-01-01 00:00:00"} ]
-}
-```
-
-
-### 群组维护
-
-#### 创建群组
-
-	POST /v1/groups/
-
+### Group对象字段总览
 
 <div class="table-d" align="center" >
 	<table border="1" width = "100%">
@@ -470,6 +487,18 @@ Example Response
 
 <br>
 
+### 群组维护
+
+#### 创建群组
+
+	POST /v1/groups/
+	
+群组Level（人数限制）定义
+
++ 	Level_1 40人
++ 	Level_2 100人
++  	Level_3 200人
+
 Example Request
 
 ```
@@ -480,6 +509,15 @@ Example Request
     "desc": "运动"
 }
 ```
+
+Request Params
+
++ owner_username     （必填）群主username
++ name               （必填）群组名字
+	+ 支持的字符：全部，包括 Emoji。
++ members_username 成员 username
++ desc               （必填） 群描述 
+	+ 支持的字符：全部，包括 Emoji。
 
 Example Response
 
@@ -574,7 +612,7 @@ Example Response
 
 群组成员将收到增加与删除成员的通知。
 
-	POST /v1/groups/:gid/members
+	POST /v1/groups/{gid}/members
 
 Request Params
 
@@ -637,6 +675,9 @@ Request Params
 + username 用户名。
 
 Example Response
+
++ ctime  群组创建时间
++ mtime 群组最后修改时间 
 
 ```
 < HTTP/1.1 200 OK

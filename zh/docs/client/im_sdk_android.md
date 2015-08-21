@@ -427,6 +427,24 @@ public void onEventMainThread(EventEntity event){
 
 </br>
 
+用户下线事件UserLogoutEvent
+
+<div class="table-d" align="left" >
+  <table border="1" width = "100%">
+    <tr  bgcolor="#D3D3D3" >
+      <th style="padding: 0 5px; " width="100px">方法</th>
+      <th style="padding: 0 5px; " width="20px">类型</th>
+      <th style="padding: 0 5px; " width="300px">说明</th>
+    </tr>
+    <tr >
+      <td style="padding: 0 5px; " >getMyInfo()</td>
+      <td style="padding: 0 5px; " >UserInfo</td>
+      <td style="padding: 0 5px; " >获取当前被登出账号的信息</td>
+    </tr>
+  </table>
+</div>
+
+</br>
 
 
 #####5、示例代码
@@ -450,47 +468,46 @@ class MessageEventReceiver extends Activity{
     Message msg = event.getMessage();
  
     switch (msg.getContentType()){
-            case text:
-                //处理文字消息
-                TextContent textContent = (TextContent) msg.getContent();
-                textContent.getText();
-                break;
-            case image:
-                //处理图片消息
-                ImageContent imageContent = (ImageContent) msg.getContent();
-                imageContent.getLocalPath();//图片本地地址
-                imageContent.getLocalThumbnailPath();//图片对应缩略图的本地地址
-                break;
-            case voice:
-                //处理语音消息
-                VoiceContent voiceContent = (VoiceContent) msg.getContent();
-                voiceContent.getLocalPath();//语音文件本地地址
-                voiceContent.getDuration();//语音文件时长
-                break;
-            case custom:
-                //处理自定义消息
-                CustomContent customContent = (CustomContent) msg.getContent();
-                customContent.getValue("attr1");
-                customContent.getValue("attr2");
-                customContent.getAllValues();
-                break;
-            case eventNotification:
-                //处理事件提醒消息
-                EventNotificationContent eventNotificationContent  =
-                        (EventNotificationContent)msg.getContent();
-                switch (eventNotificationContent.getEventNotificationType()){
-                    case group_member_added:
-                        //群成员加群事件
-                        break;
-                    case group_member_removed:
-                        //群成员被踢事件
-                        break;
-                    case group_member_exit:
-                        //群成员退群事件
-                        break;
-                }
-                break;
+        case text:
+            //处理文字消息
+            TextContent textContent = (TextContent) msg.getContent(); 
+            textContent.getText();
+            break;
+        case image:
+            //处理图片消息
+            ImageContent imageContent = (ImageContent) msg.getContent(); 
+            imageContent.getLocalPath();//图片本地地址 
+            imageContent.getLocalThumbnailPath();//图片对应缩略图的本地地址
+            break;
+        case voice:
+            //处理语音消息
+            VoiceContent voiceContent = (VoiceContent) msg.getContent();
+            voiceContent.getLocalPath();//语音文件本地地址 
+            voiceContent.getDuration();//语音文件时长
+            break;
+        case custom:
+            //处理自定义消息
+            CustomContent customContent = (CustomContent) msg.getContent();
+            customContent.getNumberValue("custom_num"); //获取自定义的值
+            customContent.getBooleanValue("custom_boolean");
+            customContent.getStringValue("custom_string");
+            break;
+        case eventNotification:
+        //处理事件提醒消息
+        EventNotificationContent eventNotificationContent = (EventNotificationContent)msg.getContent();
+        switch (eventNotificationContent.getEventNotificationType()){
+            case group_member_added:
+            //群成员加群事件
+            break;
+            case group_member_removed:
+            //群成员被踢事件（只有被踢的用户能收到此事件）
+            break;
+            case group_member_exit:
+            //群成员退群事件（已弃用）
+            break;
         }
+        break;
+    }
   }
  }
 ```
