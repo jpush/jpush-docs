@@ -182,11 +182,11 @@ JPUSHService.h     // JPush 接口类
 
 ##### JPush 监听通知
 
-JPush 提供了下面 5 种类型的通知，可以注册 NSNotificationCenter 来监听，以做进一步的逻辑处理。这些是可选的。
+JPush 提供了下面 6 种类型的通知，可以注册 NSNotificationCenter 来监听，以做进一步的逻辑处理。这些是可选的。
 
 ```
+extern NSString * const kJPFNetworkIsConnectingNotification;       // 正在连接中
 extern NSString * const kJPFNetworkDidSetupNotification;           // 建立连接
-extern NSString * const kJPFNetworkIsConnectingNotification;       // 关闭连接
 extern NSString * const kJPFNetworkDidCloseNotification;           // 关闭连接
 extern NSString * const kJPFNetworkDidRegisterNotification;        // 注册成功
 extern NSString * const kJPFNetworkDidLoginNotification;           // 登录成功
