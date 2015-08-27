@@ -37,7 +37,7 @@
 		<tr >
 			<td style="padding: 0 5px;text-align:center;">898004</td>
 			<td style="padding: 0 5px;">Password error</a></td>
-			<td style="padding: 0 5px;">密码错误</td>
+			<td style="padding: 0 5px;">登录密码错误</td>
 		</tr>
 		<tr >
 			<td style="padding: 0 5px;text-align:center;">898006</td>
@@ -45,9 +45,9 @@
 			<td style="padding: 0 5px;">gid不存在</td>
 		</tr>
 		<tr >
-			<td style="padding: 0 5px;text-align:center;">898006</td>
-			<td style="padding: 0 5px;">gid invalid</td>
-			<td style="padding: 0 5px;">gid 不存在</td>
+			<td style="padding: 0 5px;text-align:center;">898007</td>
+			<td style="padding: 0 5px;">Missing authen info</td>
+			<td style="padding: 0 5px;">校验信息为空</td>
 		</tr>
 		<tr >
 			<td style="padding: 0 5px;text-align:center;">898008</td>
@@ -122,7 +122,7 @@
 		<tr >
 			<td style="padding: 0 5px;text-align:center;">801004</td>
 			<td style="padding: 0 5px;">user password is wrong</td>
-			<td style="padding: 0 5px;">用户密码错误</td>
+			<td style="padding: 0 5px;">更新密码操作，用户密码错误</td>
 		</tr>
 		<tr >
 			<td style="padding: 0 5px;text-align:center;">803001</td>
