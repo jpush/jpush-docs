@@ -95,7 +95,7 @@
 
 #### Method - setTags
 
-调用此 API 来设置标签，支持回掉函数。
+调用此 API 来设置标签，支持回调函数。
 
 该方法是 setTagsWithAlias (with Callback) 的简化版本，用于只变更标签的情况。
 
