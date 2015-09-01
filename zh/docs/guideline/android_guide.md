@@ -76,14 +76,14 @@
 AndroidManifest.xml权限配置：
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="Your Package"
+    package="您应用的包名"
     android:versionCode="100"
     android:versionName="1.0.0"
     >
     <uses-sdk android:minSdkVersion="11" android:targetSdkVersion="17" />
 
     <!-- Required -->
-    <permission android:name="Your Package.permission.JPUSH_MESSAGE" android:protectionLevel="signature" />
+    <permission android:name="您应用的包名.permission.JPUSH_MESSAGE" android:protectionLevel="signature" />
    
     <!-- Required -->
     <uses-permission android:name="You Package.permission.JPUSH_MESSAGE" />
@@ -133,7 +133,7 @@ AndroidManifest.xml权限配置：
              android:exported="true">
              <intent-filter >
                  <action android:name="cn.jpush.android.intent.DaemonService" />
-                 <category android:name="Your Package"/>
+                 <category android:name="您应用的包名"/>
              </intent-filter>
          </service>
 
@@ -143,7 +143,7 @@ AndroidManifest.xml权限配置：
             android:enabled="true" >
           <intent-filter android:priority="1000"> 
                 <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED_PROXY" /> 
-                <category android:name="Your Package"/> 
+                <category android:name="您应用的包名"/> 
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.USER_PRESENT" />
@@ -164,7 +164,7 @@ AndroidManifest.xml权限配置：
             <intent-filter>
                 <action android:name="cn.jpush.android.ui.PushActivity" />
                 <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="Your Package" />
+                <category android:name="您应用的包名" />
             </intent-filter>
         </activity>
         <!-- Required SDK核心功能-->
