@@ -71,30 +71,45 @@ POST [https://api.jpush.cn/v3/push/validate](https://api.jpush.cn/v3/push/valida
 
 ```
 {
-   "platform": "all",
-   "audience" : {
-      "tag" : ["深圳", "北京"]
-   },
-   "notification" : {
- 
-      "android" : {
-            "alert" : "Hi, JPush!",
-            "title":"Send to Android",
-            "builder_id":1,
-            "extras" : { "newsid" : 321}
- 
-}, 
-      "ios" : {
-            "alert" : "Hi, JPush!",
-            "sound":"default",
-            "badge":"+1",
-            "extras" : { "newsid" : 321}
-      }
-   },
-   "options" : {
-      "time_to_live" : 60,"apns_production":false
-   }
+    "platform": "all",
+    "audience": {
+        "tag": [
+            "深圳",
+            "北京"
+        ]
+    },
+    "notification": {
+        "android": {
+            "alert": "Hi, JPush!",
+            "title": "Send to Android",
+            "builder_id": 1,
+            "extras": {
+                "newsid": 321
+            }
+        },
+        "ios": {
+            "alert": "Hi, JPush!",
+            "sound": "default",
+            "badge": "+1",
+            "extras": {
+                "newsid": 321
+            }
+        }
+    },
+    "message": {
+        "msg_content": "Hi,JPush",
+        "content_type": "text",
+        "title": "msg",
+        "extras": {
+            "key": "value"
+        }
+    },
+    "options": {
+        "time_to_live": 60,
+        "apns_production": false
+    }
 }
+
 ```
 
 <div class="table-d" align="center" >
