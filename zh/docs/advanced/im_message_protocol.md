@@ -70,9 +70,9 @@ msg_type = voice
 + media_id String
 	+ 必须。
 	+ 媒体文件上传到得到的KEY，用于生成下载URL。
-+ media_crc Number
++ media_crc32 Number
 	+ 必须。
-	+ 文件的 CRC 校验码。
+	+ 文件的 CRC32 校验码。
 + duration Number
 	+ 必须。
 	+ 语音时长（单位：秒）
@@ -88,9 +88,9 @@ msg_type = image
 + media_id String
 	+ 必须。
 	+ 媒体文件上传到得到的KEY，用于生成下载URL。
-+ media_crc Number
++ media_crc32 Number
 	+ 必须。
-	+ 文件的 CRC 校验码。
+	+ 文件的 CRC32 校验码。
 + width Number
 	+ 必须。
 	+ 原图片宽度。
