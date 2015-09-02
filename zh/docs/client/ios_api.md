@@ -39,7 +39,7 @@
 
 #### Method - setTagsWithAlias (with Callback)
 
-调用此 API 来同时设置别名与标签，支持回掉函数。
+调用此 API 来同时设置别名与标签，支持回调函数。
 
 需要理解的是，这个接口是覆盖逻辑，而不是增量逻辑。即新的调用会覆盖之前的设置。
 
@@ -75,7 +75,7 @@
 * callbackSelector 
 
     * nil 此次调用不需要 Callback。
-    * 用于回掉返回对应的参数 alias, tags。并返回对应的状态码：0为成功，其他返回码请参考错误码定义。
+    * 用于回调返回对应的参数 alias, tags。并返回对应的状态码：0为成功，其他返回码请参考错误码定义。
     * 回调函数请参考SDK 实现。
 
 * theTarget
@@ -95,7 +95,7 @@
 
 #### Method - setTags
 
-调用此 API 来设置标签，支持回掉函数。
+调用此 API 来设置标签，支持回调函数。
 
 该方法是 setTagsWithAlias (with Callback) 的简化版本，用于只变更标签的情况。
 
@@ -130,7 +130,7 @@
 * callbackSelector
 
     * nil 此次调用不需要 Callback。
-    * 用于回掉返回对应的参数 alias, tags。并返回对应的状态码：0为成功，其他返回码请参考错误码定义。
+    * 用于回调返回对应的参数 alias, tags。并返回对应的状态码：0为成功，其他返回码请参考错误码定义。
     * 回调函数请参考SDK 实现。
 
 * theTarget
@@ -143,7 +143,7 @@
 
 #### Method - setAlias
 
-调用此 API 来设置别名，支持回掉函数。
+调用此 API 来设置别名，支持回调函数。
 
 该方法是 setTagsWithAlias (with Callback) 的简化版本，用于只变更别名的情况。
 
@@ -165,7 +165,7 @@
      * 限制：alias 命名长度限制为 40 字节。（判断长度需采用UTF-8编码）
 * callbackSelector 
      * nil 此次调用不需要 Callback。
-     * 用于回掉返回对应的参数 alias, tags。并返回对应的状态码：0为成功，其他返回码请参考错误码定义。
+     * 用于回调返回对应的参数 alias, tags。并返回对应的状态码：0为成功，其他返回码请参考错误码定义。
      * 回调函数请参考SDK 实现。
 * theTarget
 
