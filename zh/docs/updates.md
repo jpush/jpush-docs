@@ -1,4 +1,54 @@
 # 最近更新
+
+### JPush Android SDK v1.8.1
+
+#### 更新时间
+
++ 2015-09-07
+
+#### Change Log
++ 优化改进：防止由于未添加富媒体页面的布局文件而导致的打开富媒体页面崩溃。
+
+#### 升级提示
+
++ 建议升级！
++ 建议参考 SDK下载包最新版本的 example 来更新 AndroidManifest.xml 文件配置
++ 由于富媒体的展示需求，SDK 中增加一个res文件夹存放资源文件。用户需将对应文件夹下的资源文件放入工程的目录中
+
+#### 升级指南
++ 新加入 .jar 包：同时删除原来各老版本的 jar 包。
++ 新加入 .so 包：libs/armeabi/libjpush181.so ，同时删除原来各老版本的 so 包。
++ 由于富媒体的展示需求，SDK 中增加一个res文件夹存放资源文件。用户需将对应文件夹下的资源文件放入工程的目录中。
++ 如果是从更早起的版本升级过来，建议参考 SDK下载包最新版本的 example 来更新 AndroidManifest.xml 文件配置。
++ 如果使用的老版本统计的 API activityStarted/activityStopped, 请使用最新的 API onResume/onPause 替换，参考文档 [统计消息API](../client/android_api/#api_2)
++ 如果要支持 x86 CPU 的机型，请下载单独的 x86 JPush SDK 压缩包，解压缩后复制 libs/x86/libjpush181.so 到你项目的 libs/x86/ 目录下。
++ 如果要支持 mips CPU 的机型，请下载单独的 mips JPush SDK 压缩包，解压缩后复制 libs/mips/libjpush181.so 到你项目的 libs/mips/ 目录下。
+
+
+### JMessage Android SDK v1.1.3
+
+#### 更新时间
+2015-08-17
+
+#### Change Log
++ 修复断开网络，群聊的会话界面里，进入【聊天详情】的按钮会消失
++ 修复发送自定义类型消息，jchat 接收方通知栏会有展示
++ 修复异步获取用户头像的接口getAvatarFileAsync，获取无头像的用户信息，返回码不合理
++ 修复没有昵称的群主在邀请人进群后，被邀请方显示的通知中没有显示群主的username
++ 修复收到加群事件时，由于网络不稳定导致事件有小概率丢失
++ JChat:修复收到的首张图片不会自动下载
++ JChat:修复从群详情里，选择里面的群成员发送消息，应用崩溃
+
+
+#### 升级提示
+
++ 建议升级！
+
+#### 升级指南
++ jar包更新至jmessage-android-1.1.3.jar，更新时需删除老版本jar
++ so库更新，/libs/armeabi/libjpush205.so.同时删除原来老版本的so
+
+
 ### JPush iOS SDK v1.8.5
 
 #### 更新时间
