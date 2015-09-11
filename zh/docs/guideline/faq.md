@@ -346,6 +346,32 @@ android 的包名和 appkey 需对应。
 ## iOS 常见问题
 
 <br />
+####**iOS 9集成**
+
+iOS 9变动影响SDK部分:
+
++ 增加了bitCode编码格式,当SDK不支持bitCode时，用户集成时无法开启bitCode选项.
+	+ 现象:用户集成SDK后无法编译通过，错误日志里包含了bitCode的相关错误信息
++ 默认使用https连接,如果请求为http,需要手动配置plist来支持http服务，当前我们的服务器请求都走http服务。
+	+ 现象:用户集成SDK后，所有JPush相关的http服务都提示连接错误或者连接超时,可能是此问题。
+
+**bitCode解决方式**
+
+再未发布新版支持bitCode版本前,需要提示用户主动关闭bitCode编译器选项:Build Settings->Enable Bitcode选项选择NO
+
+**Https解决方式**
+
+SDK未提供https地址版本时
+
+1. 需要用户主动在当前项目的Info.plist中添加NSAppTransportSecurity类型Dictionary。
+2. 在NSAppTransportSecurity下添加NSAllowsArbitraryLoads类型Boolean,值设为YES
+
+
+
+
+
+
+<br />
 
 ####**为什么iOS收不到推送消息？**
 
@@ -402,7 +428,9 @@ api上指定badge的参数请看：[Push-API-v3#API-v3-ios](../../client/ios_api
 1. APN 推送内容指定 badge number 为 0；
 2. 在代码中使用如下代码清空 badge number：  [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
 
-> 注意：badge累加只能通过v3 api推送，且只有1.7.4版本以上才能支持。
+**注意**：
+
+badge累加只能通过v3 api推送，且只有1.7.4版本以上才能支持。
 
 <br />
 
