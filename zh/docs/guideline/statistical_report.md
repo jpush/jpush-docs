@@ -75,36 +75,36 @@ img[alt=jpush_web] { width: 700px; }
 
 ### 富媒体推送
 
-富媒体推送有两种推送方法，一个是从模板推送，一个是推送文件。
+可推送不同形式的富媒体通知，现阶段可以使用信息流模板和通过URL发送富媒体通知。极光后续会推出更多的模板形式。
 
-#### **从模板推送**
+#### 通过信息流模板发送
+* Step1：在应用的“推送”模块，单击“富媒体”按钮；选择“信息流”，挑选适合的模板。
 
-在应用的 "推送" 模块, 点击"富媒体"按钮; 选择"从模板推送" ，点击页面最下方的 "下一步" 按钮
+![image](../image/richpush1.png)
 
-![jpush_web](../image/rich.png)
+* Step2：进入模板内容编辑页面，填写所有内容，单击下一步；左侧可预览内容的展示效果。通过左侧的预览区域，可以切换编辑模块和添加子模块。
 
-进入选择模板页面，选择合适的模板，模板下面有相应的案例，点击页面最下方的 "下一步" 按钮
+![image](../image/richpush2.png)
+![image](../image/richpush3.png)
 
-![jpush_web](../image/rich_model.png)
 
-编辑模板，可以在该页面进行内容和文字的编辑，点击页面最下方的 "下一步" 按钮
+* Step3：进行推送设置。单击“预览富媒体页面”，可以预览刚刚编辑完成的信息流模板。单击页面最下方的 "立即发送" 按钮，即可完成该信息流的发送。
 
-![jpush_web](../image/edit_model.png)
+![image](../image/richpush4.png)
 
-然后进入发送富媒体消息页面，输入推送内容 , 点击页面最下方的 "立即发送" 按钮
+#### 通过URL发送通知
 
-![jpush_web](../image/send_model.png)
+* Step1：在应用的“推送”模块，单击“富媒体”按钮，选择“URL”。
 
-#### **推送文件**
+![image](../image/richpush5.png)
 
-在应用的 "推送" 模块, 点击"富媒体"按钮; 选择"推送文件" ，点击页面最下方的 "下一步" 按钮
+* Step2：输入想要推送的页面的URL，单击“下一步”按钮。由于通知的大小有限制，URL不可过长。若URL超过限制长度，请自行转成短地址再输入发送。
 
-![jpush_web](../image/rich_file.png)
+![image](../image/richpush6.png)
 
-进入推送文件页面，选择上传本地资源文件或者网络资源地址，输入推送内容，点击页面最下方的 "下一步" 按钮
+* Step3：进行推送设置。URL不提供页面预览功能，请确保输入正确的URL。单击页面最下方的 "立即发送" 按钮，即可完成发送。
 
-![jpush_web](../image/send_file.png)
-
+![image](../image/richpush7.png)
 
 ### 推送历史
 
@@ -119,11 +119,11 @@ img[alt=jpush_web] { width: 700px; }
 
 详情如下：
 
-![](../image/send_number.png)
+![jpush_web](../image/send_number.png)
 
 统计示例
 
-![](../image/total.png)
+![jpush_web](../image/total.png)
 
 ### 定时推送
 
