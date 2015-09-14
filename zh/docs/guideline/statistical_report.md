@@ -80,23 +80,23 @@ img[alt=jpush_web] { width: 700px; }
 #### 通过信息流模板发送
 * Step1：在应用的“推送”模块，单击“富媒体”按钮；选择“信息流”，挑选适合的模板。
 
-![image](../image/richpush1.png)
+![jpush_web](../image/richpush1.png)
 
 * Step2：进入模板内容编辑页面，填写所有内容，单击下一步；左侧可预览内容的展示效果。通过左侧的预览区域，可以切换编辑模块和添加子模块。
 
-![image](../image/richpush2.png)
+![jpush_web](../image/richpush2.png)
 ![image](../image/richpush3.png)
 
 
 * Step3：进行推送设置。单击“预览富媒体页面”，可以预览刚刚编辑完成的信息流模板。单击页面最下方的 "立即发送" 按钮，即可完成该信息流的发送。
 
-![image](../image/richpush4.png)
+![jpush_web](../image/richpush4.png)
 
 #### 通过URL发送通知
 
 * Step1：在应用的“推送”模块，单击“富媒体”按钮，选择“URL”。
 
-![image](../image/richpush5.png)
+![jpush_web](../image/richpush5.png)
 
 * Step2：输入想要推送的页面的URL，单击“下一步”按钮。由于通知的大小有限制，URL不可过长。若URL超过限制长度，请自行转成短地址再输入发送。
 
@@ -104,7 +104,7 @@ img[alt=jpush_web] { width: 700px; }
 
 * Step3：进行推送设置。URL不提供页面预览功能，请确保输入正确的URL。单击页面最下方的 "立即发送" 按钮，即可完成发送。
 
-![image](../image/richpush7.png)
+![jpush_web](../image/richpush7.png)
 
 ### 推送历史
 
