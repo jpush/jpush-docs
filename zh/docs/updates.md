@@ -11,7 +11,7 @@
 
 #### Change Log
 + 收发消息过多时引起的bug
-+ 解决AFNetworking、FMDB、Qiniu、Youpai 引用冲突
++ 解决引用第三方库冲突
 + 七牛Token失效无法恢复。
 + 发送语音或者图片七牛上传时候崩溃
 + 接收宽图收到为长图
