@@ -11,17 +11,15 @@
 
 #### Change Log
 + 收发消息过多时引起的bug
-+ 测试兼容性包含: AFNetworking、FMDB、Qiniu、Youpai. 防止同时引用的冲突
++ 解决AFNetworking、FMDB、Qiniu、Youpai 引用冲突
 + 七牛Token失效无法恢复。
 + 发送语音或者图片七牛上传时候崩溃
 + 接收宽图收到为长图
 + 下载原图实际为缩略图
 + 解决custom类型消息收发崩溃问题
-+ 测试集成cocoapods出现冲突问题
 + 播放语音和录制语音不能同时进行
 + 修复语音不能正常下载问题
 + 修复了APNS用户不显示昵称而是username问题
-+ 限制了大于5k的消息引起的异常bug.
 + 修复了转换json错误信息
 + 增加了API的登陆校验
 + 解决badge上报bug
