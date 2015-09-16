@@ -232,7 +232,7 @@ SDK 对自定义消息，只是传递，不会有任何界面上的展示。
 
 + JPushInterface.EXTRA_NOTIFICATION_TITLE
 	+ 保存服务器推送下来的通知的标题。
-	+ 对应 API 通知内容的 n_title 字段。
+	+ 对应 API 通知内容的 title 字段。
 	+ 对应 Portal 推送通知界面上的“通知标题”字段。
 
 			Bundle bundle = intent.getExtras();			
@@ -240,7 +240,7 @@ SDK 对自定义消息，只是传递，不会有任何界面上的展示。
 			
 + JPushInterface.EXTRA_ALERT
 	+ 保存服务器推送下来的通知内容。
-	+ 对应 API 通知内容的 n_content 字段。
+	+ 对应 API 通知内容的 alert 字段。
 	+ 对应 Portal 推送通知界面上的“通知内容”字段。
 
 			Bundle bundle = intent.getExtras();
@@ -250,7 +250,7 @@ SDK 对自定义消息，只是传递，不会有任何界面上的展示。
 + JPushInterface.EXTRA_EXTRA
 	+ SDK 1.2.9 以上版本支持。
 	+ 保存服务器推送下来的附加字段。这是个 JSON 字符串。
-	+ 对应 API 通知内容的 n_extras 字段。
+	+ 对应 API 通知内容的 extras 字段。
 	+ 对应 Portal 推送消息界面上的“可选设置”里的附加字段。
 
 			Bundle bundle = intent.getExtras();
@@ -310,7 +310,7 @@ SDK 对自定义消息，只是传递，不会有任何界面上的展示。
 + JPushInterface.EXTRA_NOTIFICATION_TITLE
 
 	+ 保存服务器推送下来的通知的标题。
-	+ 对应 API 通知内容的 n_title 字段。
+	+ 对应 API 通知内容的 title 字段。
 	+ 对应 Portal 推送通知界面上的“通知标题”字段。
 
 			Bundle bundle = intent.getExtras();
@@ -319,7 +319,7 @@ SDK 对自定义消息，只是传递，不会有任何界面上的展示。
 + JPushInterface.EXTRA_ALERT
 
 	+ 保存服务器推送下来的通知内容。
-	+ 对应 API 通知内容的n_content字段。
+	+ 对应 API 通知内容的alert字段。
 	+ 对应 Portal 推送通知界面上的“通知内容”字段。
 
 			Bundle bundle = intent.getExtras();
@@ -329,7 +329,7 @@ SDK 对自定义消息，只是传递，不会有任何界面上的展示。
 
 	+ SDK 1.2.9 以上版本支持。
 	+ 保存服务器推送下来的附加字段。这是个 JSON 字符串。
-	+ 对应 API 消息内容的 n_extras 字段。
+	+ 对应 API 消息内容的 extras 字段。
 	+ 对应 Portal 推送消息界面上的“可选设置”里的附加字段。
 	
 			Bundle bundle = intent.getExtras();
