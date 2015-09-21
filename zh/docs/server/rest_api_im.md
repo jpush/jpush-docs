@@ -319,6 +319,126 @@ Example Response
 < Content-Type: application/json; charset=utf-8   
 ```
 
+#### 添加黑名单
+
+```
+Put /users/:username/blacklist
+```
+
+Example Request
+
+Request Header 
+
+```
+Put /users/:username/blacklist
+Content-Type: application/json; charset=utf-8  
+```
+
+Request Params 
+
++ JsonArray
+	+ username的JsonArray
+
+Request Body
+
+```
+[
+ "test1",
+ "test2"
+ ]
+```
+
+Example Response 
+
+Response Header 
+
+```
+HTTP/1.1 204 NO Content
+Content-Type: application/json; charset=utf-8 
+```
+
+Response Data
+
+N/A
+
+
+#### 移除黑名单
+
+```
+Delete /users/:username/blacklist
+```
+
+Example Request
+
+Request Header 
+
+```
+Delete /users/:username/blacklist
+Content-Type: application/json; charset=utf-8  
+```
+
+Request Params
+
++ JsonArray
+	+ username的JsonArray
+
+Request Body
+
+```
+[
+ "test1",
+ "test2"
+ ]
+```
+
+Example Response
+
+Response Header
+
+```
+HTTP/1.1 204 NO Content
+Content-Type: application/json; charset=utf-8   
+```
+
+Response Data
+
+N/A
+
+#### 黑名单列表
+
+```
+Get /users/:username/blacklist
+```
+
+Example Request
+
+Request Header 
+
+```
+Put /users/:username/blacklist
+Content-Type: application/json; charset=utf-8 
+```
+
+Request Params 
++ username 用户名
+
+Request Body
+
+N/A
+
+Example Response
+
+Response Header 
+
+```
+HTTP/1.1 200 NO Content
+Content-Type: application/json; charset=utf-8   
+```
+
+Response Data
+
+[{"username" : "javen", "nickname" : "hello", "avatar" = "/avatar", "birthday" : "1990-01-24 00:00:00", "gender" : 0, "signature" : "orz", "region" : "shenzhen", "address" : "shenzhen", "mtime" : "2015-01-01 00:00:00", "ctime" : "2015-01-01 00:00:00"}]
+
 
 #### 获取用户列表
 
