@@ -67,6 +67,18 @@ JMessage SDK 是基于 JPush SDK 开发的，完整支持 JPush 推送的全部�
             </intent-filter>
         </service>
 
+<!-- since 1.1.4 option 可选项。用于同一设备中不同应用的JPush服务相互拉起的功能。 -->
+<!-- 若不启用该功能可删除该组件，将不拉起其他应用也不能被其他应用拉起 -->
+         <service
+             android:name="cn.jpush.android.service.DaemonService"
+             android:enabled="true"
+             android:exported="true">
+             <intent-filter >
+                 <action android:name="cn.jpush.android.intent.DaemonService" />
+                 <category android:name="您自己的包名"/>
+             </intent-filter>
+         </service>
+
 <!-- Required Push SDK核心功能-->
         <receiver
             android:name="cn.jpush.android.service.PushReceiver"

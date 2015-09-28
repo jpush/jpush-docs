@@ -155,6 +155,11 @@
 			<td style="padding: 0 5px;">发送消息失败，发起者权限不够或者类别不匹配</td>
 		</tr>
 		<tr >
+			<td style="padding: 0 5px;text-align:center;">803008</td>
+			<td style="padding: 0 5px;"></td>
+			<td style="padding: 0 5px;">发送消息失败，发送者已被接收者拉入黑名单，仅限单聊</td>
+		</tr>
+		<tr >
 			<td style="padding: 0 5px;text-align:center;">808002</td>
 			<td style="padding: 0 5px;">user have not right to create group</td>
 			<td style="padding: 0 5px;">用户无创建讨论组权限，创建讨论组失败</td>
@@ -239,6 +244,27 @@
 			<td style="padding: 0 5px;">user not in the group</td>
 			<td style="padding: 0 5px;">用户修改讨论组信息时，用户不在该讨论组中，修改讨论组信息失败</td>
 		</tr>
+		<tr >
+			<td style="padding: 0 5px;text-align:center;">818001</td>
+			<td style="padding: 0 5px;"></td>
+			<td style="padding: 0 5px;">用户添加黑名单时，成员列表为空，添加失败</td>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;text-align:center;">818002</td>
+			<td style="padding: 0 5px;"></td>
+			<td style="padding: 0 5px;">用户添加黑名单时，成员列表中有成员不存在，添加失败</td>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;text-align:center;">818003</td>
+			<td style="padding: 0 5px;"></td>
+			<td style="padding: 0 5px;">用户添加黑名单时，成员列表中有成员不能被添加，添加失败</td>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;text-align:center;">819001</td>
+			<td style="padding: 0 5px;"></td>
+			<td style="padding: 0 5px;">用户移除好友出黑名单时，成员列表为空，操作失败</td>
+		</tr>
+
 
 
 
@@ -394,6 +420,11 @@
       <td style="padding: 0 5px; " >用户未设定头像，下载头像失败</td>
     </tr>
     <tr >
+      <td style="padding: 0 5px; " >871312</td>
+      <td style="padding: 0 5px;"></td>
+      <td style="padding: 0 5px; " >创建ImageContent失败</td>
+    </tr>
+    <tr >
       <td style="padding: 0 5px; " >871402</td>
       <td style="padding: 0 5px;"></td>
       <td style="padding: 0 5px; " >文件上传失败</td>
@@ -408,8 +439,20 @@
       <td style="padding: 0 5px;"></td>
       <td style="padding: 0 5px; " >文件下载失败</td>
     </tr>
-
-
-   
+    <tr >
+      <td style="padding: 0 5px; " >871501</td>
+      <td style="padding: 0 5px;"></td>
+      <td style="padding: 0 5px; " >appkey与包名不匹配或者token无效</td>
+    </tr>
+    <tr >
+      <td style="padding: 0 5px; " >871502</td>
+      <td style="padding: 0 5px;"></td>
+      <td style="padding: 0 5px; " >appkey无效</td>
+    </tr>
+    <tr >
+      <td style="padding: 0 5px; " >871503</td>
+      <td style="padding: 0 5px;"></td>
+      <td style="padding: 0 5px; " >appkey与platform不匹配</td>
+    </tr>
 	</table>
 </div>
