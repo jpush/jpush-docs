@@ -121,7 +121,7 @@ Portal上不会限制推送消息的数量。
 
 下图是个简单的区分。详情请参考文档：[通知 vs. 自定义消息。](../../client/android_tutorials)
 
-![](../image/jpush_notification_vs_msg.png)
+![](image/jpush_notification_vs_msg.png)
 
 <br />
 
@@ -164,7 +164,7 @@ Portal上不会限制推送消息的数量。
 
 ####**Java.lang.UnsatisfiedLinkError**
 
-![](../image/error.jpg)
+![](image/error.jpg)
 
 
 <br />
@@ -183,13 +183,13 @@ android {
 
 如果您的应用需要支持 x86、mips 架构的CPU 需要下载对应的SDK，[下载地址 ](../../resources/)
 
-![](../image/dictionary_path.png)
+![](image/dictionary_path.png)
 
 <br />
 
 ####**The permission should be defined **
 
-![](../image/permission.jpg)
+![](image/permission.jpg)
 
 此错误是没有正确的定义permision，请添加权限：
 
@@ -305,7 +305,7 @@ try {
 
 ####**用设置的标签或别名推送，出现下面提示：**
 
-![](../image/none_target.png)
+![](image/none_target.png)
 
 这可能有两种情况：
 

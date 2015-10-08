@@ -43,7 +43,7 @@ Portal 上提供上传新的文件，或者指定一个媒体文件的URL 地址
 
 JPush Portal （管理控制台）上，新建一个 Android 应用，或者对已经存在的 Android 应用，进行下图所示操作。
 
-![](../image/rich_text.png)
+![](image/rich_text.png)
 
 之后根据提示信息，可以基于模板或者任意地自己创建 Web页面。
 
@@ -55,7 +55,7 @@ JPush Portal （管理控制台）上，新建一个 Android 应用，或者对�
 
 JPush Portal （管理控制台）上，新建一个 Android 应用，或者对已经存在的 Android 应用，进行下图所示操作。
 
-![](../image/rich_media.png)
+![](image/rich_media.png)
 
 富媒体文件推送到客户端后，JPush SDK 不会自动展现。客户端 App 需要去收取广播消息，以取得该消息内容，包括媒体文件的 SDCard 路径。具体操作请参考 Android 客户端相关文档。
 

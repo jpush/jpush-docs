@@ -14,7 +14,7 @@ JMessage 以 JPush 技术作为基础，共享 JPush 的网络长连接。在保
 
 集成 JMessage 服务的应用，从客户端 SDK，到服务端 REST API，Web 控制台，都具备并且兼容 JPush 的全部功能。
 
-![im_sdk_and_jpush](../image/jmessage_jpush_sdk.png)
+![im_sdk_and_jpush](image/jmessage_jpush_sdk.png)
 
 	对于同一个应用 JMessage 与 JPush 使用同样的 AppKey。
 
@@ -58,7 +58,7 @@ App 使用 JMessage 提供的群组功能创建群组时，得到的群组标识
 
 #### JPush 更新后的架构
 
-![jpush_im_architecture](../image/jmessage_architecture.png)
+![jpush_im_architecture](image/jmessage_architecture.png)
 
 上图是 JPush 新增了 IM 服务后的整体架构图。通过此图可以理解：
 

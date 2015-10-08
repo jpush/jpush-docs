@@ -37,4 +37,4 @@
 	+ 下载打包好可运行的文件：[https://github.com/good-life/PushTalk/tree/master/dist](https://github.com/good-life/PushTalk/tree/master/dist)
 + 首发介绍文章：[http://www.androidpush.cn/post/2012-11-27/40043266501](http://www.androidpush.cn/post/2012-11-27/40043266501)
 + 定制指南文章：[http://www.androidpush.cn/post/2012-12-01/pushtalk_customization_guide](http://www.androidpush.cn/post/2012-12-01/pushtalk_customization_guide)
-![](../image/pushtalk_architecture_2.png)
+![](image/pushtalk_architecture_2.png)

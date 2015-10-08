@@ -2,7 +2,7 @@
 
 + [WinPhone 客户端 SDk 下载](../../resources/#wp-sdk)
 
-![jpush_wp](../image/jpush_wp.png)
+![jpush_wp](image/jpush_wp.png)
 
 JPush WP Push 包括 1个部分，MPNs 推送（代理）。
 

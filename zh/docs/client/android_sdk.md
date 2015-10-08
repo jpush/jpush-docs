@@ -5,7 +5,7 @@
 
 ### JPush Android
 
-![jpush_android](../image/jpush_android.png)
+![jpush_android](image/jpush_android.png)
 
 开发者集成 JPush Android SDK 到其应用里，JPush Android SDK 创建到 JPush Cloud 的长连接，为 App 提供永远在线的能力。  
 当开发者想要及时地推送消息到达 App 时，只需要调用 JPush API 推送，或者使用其他方便的智能推送工具，即可轻松与用户交流。
@@ -56,7 +56,7 @@ AndroidManifest.xml 配置示例可能在版本升级时，会有变更。请留
 
 [客户端集成插件](../client_plugins)
 
-[0]: ../../image/product_android.png
+[0]: ../image/product_android.png
 [1]: https://www.jpush.cn/downloads/sdk/android/
 [2]: https://www.jpush.cn/downloads/sdk/android-with-x86
 [3]: https://www.jpush.cn/downloads/sdk/android-with-mips
