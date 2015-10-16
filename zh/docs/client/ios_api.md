@@ -876,6 +876,7 @@ Build Phases中Link Binary With Libraries添加CoreLocation.framework
     NSLog(@"地理位置服务已开启");
     [_currentLoaction startUpdatingLocation];
   }
+}
  
 #ifdef __IPHONE_6_0
 - (void)locationManager:(CLLocationManager *)manager
@@ -887,7 +888,6 @@ Build Phases中Link Binary With Libraries添加CoreLocation.framework
     [APService setLocation:newLocation];
     //[APService setLatitude:latitude longitude:longtitude];
     [manager stopUpdatingLocation];
-    }
   }
 }
 #endif
