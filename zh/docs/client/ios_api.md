@@ -872,9 +872,12 @@ Build Phases中Link Binary With Libraries添加CoreLocation.framework
     [_currentLoaction requestAlwaysAuthorization];
   }
 #endif
-  if ([CLLocationManager locationServicesEnabled]) {
-    NSLog(@"地理位置服务已开启");
-    [_currentLoaction startUpdatingLocation];
+    if ([CLLocationManager locationServicesEnabled]) {
+        NSLog(@"您的设备的［设置］－［隐私］－［定位］已开启");
+        [_currentLoaction startUpdatingLocation];
+    }
+    else{
+        NSLog(@"您的设备的［设置］－［隐私］－［定位］尚未开启");
   }
 }
  
