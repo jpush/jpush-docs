@@ -82,7 +82,7 @@ Authorization: Basic base64_auth_string
 </div>
 
 
-###  用户注册与登录
+###  用户注册
 
 
 

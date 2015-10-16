@@ -887,6 +887,7 @@ Build Phases中Link Binary With Libraries添加CoreLocation.framework
     [APService setLocation:newLocation];
     //[APService setLatitude:latitude longitude:longtitude];
     [manager stopUpdatingLocation];
+    }
   }
 }
 #endif
