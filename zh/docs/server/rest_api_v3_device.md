@@ -394,6 +394,12 @@ HTTP/1.1 200 OK
       <td style="padding: 0 5px;">必须修正，详情请看：<a href="./#_1">调用验证说明。</a></td>
       <td style="padding: 0 5px;text-align:center;">401</td>
     </tr>
+    <tr >
+      <td style="padding: 0 5px;">7008</td>
+      <td style="padding: 0 5px;">appkey 不存在</td>
+      <td style="padding: 0 5px;">检查工程填写的appkey是否与官网应用一致</td>
+      <td style="padding: 0 5px;text-align:center;">400</td>
+    </tr>
   </table>
 </div>
 
