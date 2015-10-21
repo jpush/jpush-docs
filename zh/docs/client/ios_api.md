@@ -67,6 +67,7 @@
 
     * nil 此次调用不设置此值。
     * 空集合（[NSSet set]）表示取消之前的设置。
+    * 集合成员类型要求为NSString类型
     * 每次调用至少设置一个 tag，覆盖之前的设置，不是新增。
     * 有效的标签组成：字母（区分大小写）、数字、下划线、汉字。
     * 限制：每个 tag 命名长度限制为 40 字节，最多支持设置 100 个 tag，但总长度不得超过1K字节。（判断长度需采用UTF-8编码）
@@ -871,10 +872,14 @@ Build Phases中Link Binary With Libraries添加CoreLocation.framework
     [_currentLoaction requestAlwaysAuthorization];
   }
 #endif
-  if ([CLLocationManager locationServicesEnabled]) {
-    NSLog(@"地理位置服务已开启");
-    [_currentLoaction startUpdatingLocation];
+    if ([CLLocationManager locationServicesEnabled]) {
+        NSLog(@"您的设备的［设置］－［隐私］－［定位］已开启");
+        [_currentLoaction startUpdatingLocation];
+    }
+    else{
+        NSLog(@"您的设备的［设置］－［隐私］－［定位］尚未开启");
   }
+}
  
 #ifdef __IPHONE_6_0
 - (void)locationManager:(CLLocationManager *)manager

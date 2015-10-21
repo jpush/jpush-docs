@@ -82,7 +82,7 @@ Authorization: Basic base64_auth_string
 </div>
 
 
-###  用户注册与登录
+###  用户注册
 
 
 
@@ -317,6 +317,129 @@ Example Response
 ```
 < HTTP/1.1 204 NO CONTENT
 < Content-Type: application/json; charset=utf-8   
+```
+
+#### 添加黑名单
+
+```
+Put /users/:username/blacklist
+```
+
+Example Request
+
+Request Header 
+
+```
+Put /users/:username/blacklist
+Content-Type: application/json; charset=utf-8  
+```
+
+Request Params 
+
++ JsonArray
+	+ username的JsonArray
+
+Request Body
+
+```
+[
+ "test1",
+ "test2"
+ ]
+```
+
+Example Response 
+
+Response Header 
+
+```
+HTTP/1.1 204 NO Content
+Content-Type: application/json; charset=utf-8 
+```
+
+Response Data
+
+N/A
+
+
+#### 移除黑名单
+
+```
+Delete /users/:username/blacklist
+```
+
+Example Request
+
+Request Header 
+
+```
+Delete /users/:username/blacklist
+Content-Type: application/json; charset=utf-8  
+```
+
+Request Params
+
++ JsonArray
+	+ username的JsonArray
+
+Request Body
+
+```
+[
+ "test1",
+ "test2"
+ ]
+```
+
+Example Response
+
+Response Header
+
+```
+HTTP/1.1 204 NO Content
+Content-Type: application/json; charset=utf-8   
+```
+
+Response Data
+
+N/A
+
+#### 黑名单列表
+
+```
+Get /users/:username/blacklist
+```
+
+Example Request
+
+Request Header 
+
+```
+Put /users/:username/blacklist
+Content-Type: application/json; charset=utf-8 
+```
+
+Request Params
+
++ username 用户名
+
+Request Body
+
+N/A
+
+Example Response
+
+Response Header 
+
+```
+HTTP/1.1 200 NO Content
+Content-Type: application/json; charset=utf-8   
+```
+
+Response Data
+
+```
+[{"username" : "javen", "nickname" : "hello", "avatar" = "/avatar", "birthday" : "1990-01-24 00:00:00", "gender" : 0, "signature" : "orz", "region" : "shenzhen", "address" : "shenzhen", "mtime" : "2015-01-01 00:00:00", "ctime" : "2015-01-01 00:00:00"}]
 ```
 
 
@@ -806,13 +929,13 @@ HTTP 返回码参考文档：[HTTP-Status-Code](../http_status_code)
 			<td style="padding: 0 5px;">删除失败</td>
 		</tr>
 		<tr >
-			<td style="padding: 0 5px;text-align:center;">800011</td>
+			<td style="padding: 0 5px;text-align:center;">899011</td>
 			<td style="padding: 0 5px;">400</td>
 			<td style="padding: 0 5px;">Repeat to add the members</td>
 			<td style="padding: 0 5px;">重复添加</td>
 		</tr>
 		<tr >
-			<td style="padding: 0 5px;text-align:center;">800012</td>
+			<td style="padding: 0 5px;text-align:center;">899012</td>
 			<td style="padding: 0 5px;">403</td>
 			<td style="padding: 0 5px;">no enough space for members</td>
 			<td style="padding: 0 5px;">群组剩余位置不够</td>
@@ -822,6 +945,42 @@ HTTP 返回码参考文档：[HTTP-Status-Code](../http_status_code)
 			<td style="padding: 0 5px;">403</td>
 			<td style="padding: 0 5px;">user list is bigger than 500 </td>
 			<td style="padding: 0 5px;">注册列表过长</td>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;text-align:center;">899014</td>
+			<td style="padding: 0 5px;">403</td>
+			<td style="padding: 0 5px;">add success remove fail but there are user not exit in this group</td>
+			<td style="padding: 0 5px;">移除成员失败</td>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;text-align:center;">899015</td>
+			<td style="padding: 0 5px;">403</td>
+			<td style="padding: 0 5px;">user 's group are 100 can not continue</td>
+			<td style="padding: 0 5px;">用户加入讨论组达到上限</td>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;text-align:center;">899016</td>
+			<td style="padding: 0 5px;">403</td>
+			<td style="padding: 0 5px;">No authority to send message</td>
+			<td style="padding: 0 5px;">用户没有权限</td>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;text-align:center;">899017</td>
+			<td style="padding: 0 5px;">403</td>
+			<td style="padding: 0 5px;">there are usernames exist in blacklist</td>
+			<td style="padding: 0 5px;">用户已经被添加进黑名单</td>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;text-align:center;">899018</td>
+			<td style="padding: 0 5px;">403</td>
+			<td style="padding: 0 5px;">admin can not be added into blacklist</td>
+			<td style="padding: 0 5px;">管理员不能被添加进黑名单</td>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;text-align:center;">899019</td>
+			<td style="padding: 0 5px;">403</td>
+			<td style="padding: 0 5px;">here are usernames not exist in blacklist</td>
+			<td style="padding: 0 5px;">用户不存在黑名单中</td>
 		</tr>
 		<tr >
 			<td style="padding: 0 5px;text-align:center;">899030</td>
