@@ -61,8 +61,8 @@ public static synchronized void init(Context context)
 
 ##### 注册
 
-	public static void register(String username, String password, BasicCallback callback);
-	
+  public static void register(String username, String password, BasicCallback callback);
+  
 参数说明
 
 + String username 用户名
@@ -71,8 +71,8 @@ public static synchronized void init(Context context)
 
 ##### 登录
 
-	public static void login(String username, String password, BasicCallback callback);
-	
+  public static void login(String username, String password, BasicCallback callback);
+  
 参数说明
  
 + String username 用户名
@@ -81,8 +81,8 @@ public static synchronized void init(Context context)
 
 ##### 退出登录
 
-	public static void logout();
-	
+  public static void logout();
+  
 参数说明
 
 - 无
@@ -91,8 +91,8 @@ public static synchronized void init(Context context)
 
 ##### 获取用户信息
 
-	public static void getUserInfo(String username, GetUserInfoCallback callback);
-	
+  public static void getUserInfo(String username, GetUserInfoCallback callback);
+  
 参数说明
 
 + String username 用户名
@@ -100,12 +100,12 @@ public static synchronized void init(Context context)
 
 回调
 
-	public abstract void gotResult(int responseCode, String responseMessage, UserInfo userInfo);
+  public abstract void gotResult(int responseCode, String responseMessage, UserInfo userInfo);
 
 + UserInfo userInfo 用户信息
 
 ##### 从本地获取当前登录账号的用户信息
-	public static UserInfo getMyInfo();
+  public static UserInfo getMyInfo();
 参数说明
 
 - 无
@@ -116,33 +116,33 @@ public static synchronized void init(Context context)
 
 ##### 更新用户信息
 
-	public static void updateMyInfo(UserInfo.Field updateField, UserInfo info, BasicCallback callback);
-	
+  public static void updateMyInfo(UserInfo.Field updateField, UserInfo info, BasicCallback callback);
+  
 参数说明
 
 + UserInfo.Field updateField 枚举类型，表示需要更新的用户信息字段。包括：
-	+ nickname
-	+ birthday
-	+ signature
-	+ gender
-	+ region
+  + nickname
+  + birthday
+  + signature
+  + gender
+  + region
 + UserInfo userInfo 待更新的用户信息（对象）。SDK将根据field参数来判断需要将哪个属性更新到服务器上去。
 + BasicCallback callback 结果回调
 
 ##### 更新用户密码
 
-	public static void updateUserPassword(String oldPassword, String newPassword, BasicCallback callback);
-	
+  public static void updateUserPassword(String oldPassword, String newPassword, BasicCallback callback);
+  
 参数说明
 
 + String oldPassword 更新前密码
 + String newPassword 更新后密码
 + BasicCallback callback 结果回调
-	
+  
 ##### 更新用户头像
 
-	public static void updateUserAvatar(File avatar, BasicCallback callback);
-	
+  public static void updateUserAvatar(File avatar, BasicCallback callback);
+  
 参数说明
 
 + File avatar 用户头像文件
@@ -208,8 +208,8 @@ public static Message createGroupImageMessage(long groupID, File imageFile)
   * @throws FileNotFoundException
   */
 public static Message createSingleVoiceMessage(String username, 
-	File voiceFile, int duration) throws FileNotFoundException
-	
+  File voiceFile, int duration) throws FileNotFoundException
+  
  /**
   * 创建一条群聊语音信息
   *
@@ -220,7 +220,7 @@ public static Message createSingleVoiceMessage(String username,
   * @throws FileNotFoundException
   */
 public static Message createGroupVoiceMessage(long groupID, 
-	File voiceFile, int duration) throws FileNotFoundException
+  File voiceFile, int duration) throws FileNotFoundException
 ```
 
 ##### 创建自定义消息
@@ -233,7 +233,7 @@ public static Message createGroupVoiceMessage(long groupID,
   * @return 消息对象
   */
 public static Message createSingleCustomMessage(String username,
-	 Map<? extends String, ?> valuesMap)
+   Map<? extends String, ?> valuesMap)
 
  /**
   * 创建一条群聊自定义消息
@@ -243,15 +243,15 @@ public static Message createSingleCustomMessage(String username,
   * @return  消息对象
   */
 public static Message createGroupCustomMessage(long groupID, 
-	Map<? extends String, ?> valuesMap)
+  Map<? extends String, ?> valuesMap)
 ```
 
 ##### 发送消息
 
 向服务器给发送对象发送消息，并且保存到本地会话。
 
-	public static void sendMessage(Message message);
-	
+  public static void sendMessage(Message message);
+  
 参数说明
 
 + Message message 消息（对象）
@@ -261,8 +261,8 @@ public static Message createGroupCustomMessage(long groupID,
 
 从本地数据库取得。同步返回。
 
-	public List<Conversation> getConversationList();
-	
+  public List<Conversation> getConversationList();
+  
 参数说明
 
 + 无
@@ -273,7 +273,7 @@ public static Message createGroupCustomMessage(long groupID,
 
 ##### 获取单个单聊会话
 
-	public static Conversation getSingleConversation(String username);
+  public static Conversation getSingleConversation(String username);
 
 参数说明
 
@@ -285,7 +285,7 @@ public static Message createGroupCustomMessage(long groupID,
 
 ##### 获取单个群聊会话
 
-	public static Conversation getGroupConversation(long groupID);
+  public static Conversation getGroupConversation(long groupID);
 
 参数说明
 
@@ -296,10 +296,10 @@ public static Message createGroupCustomMessage(long groupID,
 - 根据参数匹配得到的群聊会话对象。
 
 
-	
+  
 ##### 删除单个单聊会话
-	
-	public static boolean deleteSingleConversation(String username);
+  
+  public static boolean deleteSingleConversation(String username);
 
 参数说明
 
@@ -310,8 +310,8 @@ public static Message createGroupCustomMessage(long groupID,
 - 是否删除成功。
 
 ##### 删除单个群聊会话
-	
-	public static boolean deleteGroupConversation(long groupID);
+  
+  public static boolean deleteGroupConversation(long groupID);
 
 参数说明
 
@@ -324,8 +324,8 @@ public static Message createGroupCustomMessage(long groupID,
 
 #### 事件处理
 ##### 1、事件接收类的注册
-	public static void registerEventReceiver(Object receiver);
-	public static void registerEventReceiver(Object receiver, int priority);
+  public static void registerEventReceiver(Object receiver);
+  public static void registerEventReceiver(Object receiver, int priority);
 
 参数说明
 
@@ -333,7 +333,7 @@ public static Message createGroupCustomMessage(long groupID,
 + int priority 定义事件接收者接收事件的优先级，默认值为0，优先级越高将越先接收到事件。（优先级只对同一个线程模式中的接收者有效）
 
 ##### 2、事件接收类的解绑
-	public static void unRegisterEventReceiver(Object receiver);
+  public static void unRegisterEventReceiver(Object receiver);
 
 参数说明
 
@@ -347,7 +347,7 @@ public static Message createGroupCustomMessage(long groupID,
 ###### 默认线程（子线程）模式
 ```
 public void onEvent(EventEntity event){
-	//do your own business
+  //do your own business
 }
 ```
 方法体将在默认线程（子线程）中被调用， 可以用来处理耗时操作。
@@ -359,7 +359,7 @@ public void onEvent(EventEntity event){
 ###### 主线程模式
 ```
 public void onEventMainThread(EventEntity event){
-	//do your own business
+  //do your own business
 }
 ```
 方法体将在主线程中被调用，可以用来刷新UI。
@@ -440,6 +440,25 @@ public void onEventMainThread(EventEntity event){
       <td style="padding: 0 5px; " >getMyInfo()</td>
       <td style="padding: 0 5px; " >UserInfo</td>
       <td style="padding: 0 5px; " >获取当前被登出账号的信息</td>
+    </tr>
+  </table>
+</div>
+
+</br>
+
+用户被删除事件UserDeletedEvent
+
+<div class="table-d" align="left" >
+  <table border="1" width = "100%">
+    <tr  bgcolor="#D3D3D3" >
+      <th style="padding: 0 5px; " width="100px">方法</th>
+      <th style="padding: 0 5px; " width="20px">类型</th>
+      <th style="padding: 0 5px; " width="300px">说明</th>
+    </tr>
+    <tr >
+      <td style="padding: 0 5px; " >getMyInfo()</td>
+      <td style="padding: 0 5px; " >UserInfo</td>
+      <td style="padding: 0 5px; " >获取当前被删除账号的信息</td>
     </tr>
   </table>
 </div>
@@ -559,8 +578,8 @@ class UserLogoutEventReceiver extends Activity{
 
 ##### 创建群组
 
-	public static void createGroup(String groupName, String groupDesc, CreateGroupCallback callback);
-	
+  public static void createGroup(String groupName, String groupDesc, CreateGroupCallback callback);
+  
 参数说明 
 
 + String groupName 群名称
@@ -569,8 +588,8 @@ class UserLogoutEventReceiver extends Activity{
 
 回调
 
-	public abstract void gotResult(int responseCode, String responseMsg, long groupId);
-	
+  public abstract void gotResult(int responseCode, String responseMsg, long groupId);
+  
 + long groupId 新创建成功的群组ID（resopnseCode = 0 时）。
 
 ##### 获取群组列表
@@ -587,7 +606,7 @@ public abstract void gotResult(int responseCode, String responseMessage,
 
 ##### 获取群组详情
 
-	public static void getGroupInfo(long groupId, GetGroupInfoCallback callback)
+  public static void getGroupInfo(long groupId, GetGroupInfoCallback callback)
 
 参数说明
 
@@ -596,14 +615,14 @@ public abstract void gotResult(int responseCode, String responseMessage,
 
 回调
 
-	public void gotResult(int responseCode, String responseMessage, Group group)
+  public void gotResult(int responseCode, String responseMessage, Group group)
 
 + Group group 返回的群组详情
 
 ##### 更新群组名称
 
-	public static void updateGroupName(long groupID, 
-			String groupName,BasicCallback callback);
+  public static void updateGroupName(long groupID, 
+      String groupName,BasicCallback callback);
 
 参数说明
 
@@ -613,8 +632,8 @@ public abstract void gotResult(int responseCode, String responseMessage,
 
 ##### 更新群组详情
 
-	public static void updateGroupDescription(long groupID, 
-			String groupDesc,BasicCallback callback);
+  public static void updateGroupDescription(long groupID, 
+      String groupDesc,BasicCallback callback);
 
 参数说明
 
@@ -625,8 +644,8 @@ public abstract void gotResult(int responseCode, String responseMessage,
 
 ##### 加群组成员
 
-	public static void addGroupMembers(long groupId, List<String> usernameList, BasicCallback callback);
-	
+  public static void addGroupMembers(long groupId, List<String> usernameList, BasicCallback callback);
+  
 参数说明
 
 + long groupId 待加群的群组ID。创建群组时返回的。
@@ -635,7 +654,7 @@ public abstract void gotResult(int responseCode, String responseMessage,
 
 ##### 移除群组成员
 
-	public static void removeGroupMembers(long groupId, List<String> usernameList, BasicCallback callback);
+  public static void removeGroupMembers(long groupId, List<String> usernameList, BasicCallback callback);
 
 参数说明
 
@@ -645,17 +664,17 @@ public abstract void gotResult(int responseCode, String responseMessage,
 
 ##### 退出群组
 
-	public static void exitGroup(long groupId, BasicCallback callback);
+  public static void exitGroup(long groupId, BasicCallback callback);
 
 参数说明
 
 + long groupId 待退出的群ID。
 + BasicCallback callback 结果回调。
-	
+  
 ##### 获取群组成员列表
 
-	public static void getGroupMembers(long groupID, 
-			GetGroupMembersCallback callback)
+  public static void getGroupMembers(long groupID, 
+      GetGroupMembersCallback callback)
 
 参数说明
 
@@ -664,9 +683,44 @@ public abstract void gotResult(int responseCode, String responseMessage,
 
 回调
 
-	public void gotResult(int responseCode, String responseMessage, List<String> members);
-	
+  public void gotResult(int responseCode, String responseMessage, List<String> members);
+  
 + List members 成员列表(username)。
+
+
+#### 黑名单相关
+##### 将用户加入黑名单
+```
+public static void addUsersToBlacklist(List<String> usernames, BasicCallback callback)
+```
+参数说明
+
++ List<String> usernames 被加入黑名单的用户username列表
++ BasicCallback callback 回调接口
+
+##### 将用户移出黑名单
+```
+public static void delUsersFromBlacklist(List<String> usernames, BasicCallback callback)
+```
+参数说明
+
++ List<String> usernames 被移出黑名单的用户username列表
++ BasicCallback callback 回调接口
+
+##### 获取被当前用户加入黑名单的用户列表
+```
+public static void getBlacklist(GetBlacklistCallback callback)
+```
+参数说明
+
++ GetBlacklistCallback 获取黑名单回调接口
+
+回调
+```
+  public abstract void gotResult(int responseCode, 
+    String responseMessage, List<UserInfo> userInfos);
+```
++ `List<UserInfo>` userInfos  被拉入黑名单的用户的UserInfo
 
 
 #### 通知栏相关
@@ -744,9 +798,9 @@ public List<Message> getNewMessagesFromNewest(int offset, int limit);
 public Message createSendMessage(MessageContent content);
 public Message createSendTextMessage(String text);
 public Message createSendImageMessage(File imageFile) 
-		throws FileNotFoundException
+    throws FileNotFoundException
 public Message createSendVoiceMessage(File voiceFile, int duration) 
-		throws FileNotFoundException
+    throws FileNotFoundException
 public Message createSendCustomMessage(Map<? extends String, ?> valuesMap)
 public boolean resetUnreadCount();
 
@@ -773,7 +827,9 @@ public void setOnSendCompleteCallback(BasicCallback sendCompleteCallback)
 
 ```
 Conversation conv = JMessageClient.getSingleConversation("tom");
-
+if (null == conv) {
+  conv = Conversation.createSingleConversation("tom");
+}
 TextContent text = new TextContent("Hi, JMessage!");
 Message message = conv.createSendMessage(text);
 
@@ -823,6 +879,10 @@ public abstract class BasicCallback {
     public BasicCallback() {
     }
 
+    /**
+     * 默认callback会在主线程中回调，如果需要在子线程回调，则在构造方法的参数中传入false
+     * @param isRunInUIThread 是否在主线程中执行回调，默认为true。
+     */
     public BasicCallback(boolean isRunInUIThread) {
         this.isRunInUIThread = isRunInUIThread;
     }

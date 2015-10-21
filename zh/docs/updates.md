@@ -1,4 +1,98 @@
 # 最近更新
+### JPush Android SDK v1.8.2
+
+#### 更新时间
+
++ 2015-09-30
+
+#### Change Log
++ 修复Bug：修复从 171 以下版本升级到高版本后可能出现无法连接 JPush 的问题。
+
+#### 升级提示
+
++ 建议升级！
+
+#### 升级指南
++ 新加入 .jar 包：同时删除原来各老版本的 jar 包。
++ 新加入 .so 包：libs/armeabi/libjpush182.so ，同时删除原来各老版本的 so 包。
++ 由于富媒体的展示需求，SDK 中增加一个res文件夹存放资源文件。用户需将对应文件夹下的资源文件放入工程的目录中。
++ 如果是从更早起的版本升级过来，建议参考 SDK下载包最新版本的 example 来更新 AndroidManifest.xml 文件配置。
++ 如果使用的老版本统计的 API activityStarted/activityStopped, 请使用最新的 API onResume/onPause 替换，参考文档 [统计消息API](../client/android_api/#api_2)
++ 如果要支持 x86 CPU 的机型，请下载单独的 x86 JPush SDK 压缩包，解压缩后复制 libs/x86/libjpush182.so 到你项目的 libs/x86/ 目录下。
++ 如果要支持 mips CPU 的机型，请下载单独的 mips JPush SDK 压缩包，解压缩后复制 libs/mips/libjpush182.so 到你项目的 libs/mips/ 目录下。
+
+
+
+### JMessage Android SDK v1.1.4
+
+#### 更新时间
+
+* 2015-09-28
+
+#### JMessage SDK Change Log
+
+##### New Feature
+
+* 新增黑名单功能
+* 新增用户被删除事件
+* 收到群聊消息时，通知栏的tickerText显示消息发送者的displayName而不是群名
+* 新增接口：createGroupConversation(long)、createSingleConversation(String)、getTargetInfo()、getLatestMessage()
+* 过时接口：createConversation(ConversationType,long)、createConversation(ConversationType,String)、getTargetID()、getLatestMsgDate()
+getLatestType()、getLatestText()
+* 新增接口：getTargetInfo()、getFromUser()
+* 已过时接口：getTargetID()、getTargetName()、getFromID()、getFromName()、getFromType()
+* 新增接口：ImageContent类中新增createImageContentAsync异步创建ImageContent的接口
+
+##### Bug Fix
+
+* 修复dev api 添加删除群用户，群的聊天详情UI没有更新
+* 修复customContent.setContentType方法文档没有说明其作用
+* 修复昵称设置仅仅是表情会出现异常，返回服务端错误
+* 修复调用stopPush后IM无法登录。
+* 修复JMessage配置文件包名和appkey不匹配的，Demo APP依然能注册成功。
+* 修复createSendMessage接口在用户未登录时调用直接崩溃。
+* 修复用户发媒体信息时被踢下线，之前发送的消息状态一直处于"sending"
+* 修复dev api添加/删除群用户时，相应事件未抛给上层
+* 修复收到富媒体推送时，点击通知栏没有跳转的问题
+
+#### JChat Change Log
+
+#### New Feature
+
+* 聊天消息支持分页加载
+* 增加"关于"页面
+* 优化聊天、聊天详情界面加载的性能
+* 被拉黑时，使用自定义消息"消息已发出，但被对方拒收了"提示用户
+
+##### Bug Fix
+
+* 修复发送图片成功，但UI界面显示100%
+* 修复群主点击进入群【聊天详情】，减号有时候加载5/6s才显示
+* 修复如果一个会话窗口的消息过多，点击会话出现加载无响应的情况
+* 修复软键盘弹出后，点击软键盘上的收起按钮，界面不会收回的bug
+* 修复在被踢下线后，点击确定按钮抛出WindowLeak异常的bug
+* 修复在启动APP后可能出现的异常：RuntimeException：Performing stop activity that is not resume
+* 修复某些手机设置录音为询问或禁止时，点击录音崩溃bug
+* 修复聊天标题设置emoji后显示不正常bug
+* 修复在聊天界面预览大图与聊天界面图片消息顺序不一致bug
+* 修复通过接口不填写昵称时，进入聊天界面不显示用户名的bug
+* 修复选择图片后，点击原图后发送图片，APP崩溃bug
+* 修复发送图片时，通过聊天详情再次进入聊天界面时，图片进度不更新bug
+* 图片发送成功后，删除生成的图片
+* 修复接收离线消息时，APP崩溃bug
+
+#### 升级提示
+
++ 建议升级！
+
+#### 升级指南
+* 将jar包更新至 jmessage-sdk-1.1.4.jar更新时需删除老版本jar包。
+* 将so库更新至 libjpush205.so 同时删除原来老版本so。注意不同的cpu型号对应的结构
+* 由于富媒体的展示需求，SDK 中增加一个res文件夹存放资源文件。用户需将对应文件夹下的资源文件放入工程的目录中。
+* 如果是从更早的版本升级过来，建议参考 SDK下载包最新版本的 example 来更新 AndroidManifest.xml 文件配置。
+
+
+
 
 ### JMessage iOS SDK v1.0.6
 

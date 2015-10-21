@@ -125,8 +125,8 @@ AndroidManifest.xml权限配置：
             </intent-filter>
         </service>
          
-        <!-- Required SDK 核心功能-->
-         <!-- since 1.8.0 -->
+        <!-- since 1.8.0 option 可选项。用于同一设备中不同应用的JPush服务相互拉起的功能。 -->
+        <!-- 若不启用该功能可删除该组件，将不拉起其他应用也不能被其他应用拉起 -->
          <service
              android:name="cn.jpush.android.service.DaemonService"
              android:enabled="true"

@@ -6,7 +6,7 @@ site_description: JPush, JMessage, 极光推送, 极光IM, Android Push, Android
 repo_url: http://docs.jpush.cn
 repo_name: 老版本文档
 copyright: Copyright 2011-2015, jpush.cn, All Rights Reserved. <br />粤ICP备12056275号-5 深圳市和讯华谷信息技术有限公司
-theme: mkdocs
+theme: readthedocs
 
 pages:
 - 文档首页: 'index.md'
@@ -69,8 +69,3 @@ pages:
   - JPush: 'resources.md'
   - JMessage: 'resources_jmessage.md'
 
-
-
-
-
-  

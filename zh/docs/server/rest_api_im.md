@@ -419,7 +419,8 @@ Put /users/:username/blacklist
 Content-Type: application/json; charset=utf-8 
 ```
 
-Request Params 
+Request Params
+
 + username 用户名
 
 Request Body
@@ -437,7 +438,9 @@ Content-Type: application/json; charset=utf-8
 
 Response Data
 
+```
 [{"username" : "javen", "nickname" : "hello", "avatar" = "/avatar", "birthday" : "1990-01-24 00:00:00", "gender" : 0, "signature" : "orz", "region" : "shenzhen", "address" : "shenzhen", "mtime" : "2015-01-01 00:00:00", "ctime" : "2015-01-01 00:00:00"}]
+```
 
 
 #### 获取用户列表
