@@ -82,7 +82,7 @@ Authorization: Basic base64_auth_string
 </div>
 
 
-###  用户注册与登录
+###  用户注册
 
 
 
@@ -929,13 +929,13 @@ HTTP 返回码参考文档：[HTTP-Status-Code](../http_status_code)
 			<td style="padding: 0 5px;">删除失败</td>
 		</tr>
 		<tr >
-			<td style="padding: 0 5px;text-align:center;">800011</td>
+			<td style="padding: 0 5px;text-align:center;">899011</td>
 			<td style="padding: 0 5px;">400</td>
 			<td style="padding: 0 5px;">Repeat to add the members</td>
 			<td style="padding: 0 5px;">重复添加</td>
 		</tr>
 		<tr >
-			<td style="padding: 0 5px;text-align:center;">800012</td>
+			<td style="padding: 0 5px;text-align:center;">899012</td>
 			<td style="padding: 0 5px;">403</td>
 			<td style="padding: 0 5px;">no enough space for members</td>
 			<td style="padding: 0 5px;">群组剩余位置不够</td>
@@ -945,6 +945,42 @@ HTTP 返回码参考文档：[HTTP-Status-Code](../http_status_code)
 			<td style="padding: 0 5px;">403</td>
 			<td style="padding: 0 5px;">user list is bigger than 500 </td>
 			<td style="padding: 0 5px;">注册列表过长</td>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;text-align:center;">899014</td>
+			<td style="padding: 0 5px;">403</td>
+			<td style="padding: 0 5px;">add success remove fail but there are user not exit in this group</td>
+			<td style="padding: 0 5px;">移除成员失败</td>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;text-align:center;">899015</td>
+			<td style="padding: 0 5px;">403</td>
+			<td style="padding: 0 5px;">user 's group are 100 can not continue</td>
+			<td style="padding: 0 5px;">用户加入讨论组达到上限</td>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;text-align:center;">899016</td>
+			<td style="padding: 0 5px;">403</td>
+			<td style="padding: 0 5px;">No authority to send message</td>
+			<td style="padding: 0 5px;">用户没有权限</td>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;text-align:center;">899017</td>
+			<td style="padding: 0 5px;">403</td>
+			<td style="padding: 0 5px;">there are usernames exist in blacklist</td>
+			<td style="padding: 0 5px;">用户已经被添加进黑名单</td>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;text-align:center;">899018</td>
+			<td style="padding: 0 5px;">403</td>
+			<td style="padding: 0 5px;">admin can not be added into blacklist</td>
+			<td style="padding: 0 5px;">管理员不能被添加进黑名单</td>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;text-align:center;">899019</td>
+			<td style="padding: 0 5px;">403</td>
+			<td style="padding: 0 5px;">here are usernames not exist in blacklist</td>
+			<td style="padding: 0 5px;">用户不存在黑名单中</td>
 		</tr>
 		<tr >
 			<td style="padding: 0 5px;text-align:center;">899030</td>

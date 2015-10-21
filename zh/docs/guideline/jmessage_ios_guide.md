@@ -14,7 +14,7 @@
 
 极光IM（JMessage）是一个端到端的即时通讯（IM）云服务，使得多个集成 SDK 的客户端之间可以互发即时消息，让开发者可以轻松地在 App 里集成 IM 的功能，为 App 加上社交功能，从而有效地提升 App 活跃度。极光IM 客户端支持 Android, iOS, Web 三个平台。
 
-本 iOS SDK 方便开发者基于 JMessage 来快捷地为 iOS App 增加 IM 功能。支持的版本是iOS7及以上。
+本 iOS SDK 方便开发者基于 JMessage 来快捷地为 iOS App 增加 IM 功能。支持的版本≥iOS7。
 
 #### 主要功能
 

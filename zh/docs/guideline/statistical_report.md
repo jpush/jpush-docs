@@ -108,7 +108,7 @@ img[alt=jpush_web] { width: 700px; }
 
 ### 推送历史
 
-在应用的 "推送" 模块, 点击"推送历史"按钮; 在右边可以浏览推送的历史数据，包含推送时间，内容，类型，IOS 目标|成功，Android目标|成功，Winphone目标|成功，操作
+在应用的 "推送" 模块, 点击"推送历史"按钮; 在右边可以浏览推送的历史数据，包含推送时间，内容，类型，IOS 目标|成功，Android目标|成功，Winphone目标|成功，操作。
 
 ![jpush_web](image/send_history.png)
 
@@ -116,6 +116,10 @@ img[alt=jpush_web] { width: 700px; }
 
 + 类型包括：广播、tag、alias、Registration ID
 + 操作包括：转发、统计、详情、删除
+
+**注意**
+
+推送历史数据只保留一个月的统计信息。
 
 详情如下：
 
