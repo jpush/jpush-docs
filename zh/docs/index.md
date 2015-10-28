@@ -144,7 +144,7 @@
                 </tr>
                 <tr>
                     <td width="25%"><a href="server/rest_api_v2_push">Push API v2</a></td>
-                    <td width="25%"><a href="server/rest_api_v2_report">Report API v2</a></td>
+                    <td width="25%"><a href="server/rest_api_v2_report">Report API v2.</a></td>
                     <td width="25%">&nbsp;</td>
                     <td width="25%">&nbsp;</td>
                 </tr>
