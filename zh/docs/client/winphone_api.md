@@ -291,7 +291,7 @@ API 可以在 App 里任何地方调用。
     </tr>
     <tr >
       <td style="padding: 0 5px;text-align:center;">6008</td>
-      <td style="padding: 0 5px;">tag/alias 超出总长度限制</td>
+      <td style="padding: 0 5px;">tag 超出总长度限制</td>
       <td style="padding: 0 5px;">总长度最多 1K 字节</td>
     </tr>
     <tr >

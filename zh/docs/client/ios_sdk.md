@@ -50,16 +50,16 @@ JPush API v3 支持同时一次调用同时推送 APNs 通知与 JPush 应用内
     <tr >
       <td style="padding: 0 5px;">离线消息</td>
       <td style="padding: 0 5px;">离线消息由APNS服务器缓存按照apple的逻辑处理。</td>
-      <td style="padding: 0 5px;">用户不在线JPush server 会保存离线消息。离线消息保留5条。</td>
+      <td style="padding: 0 5px;">用户不在线JPush server 会保存离线消息,时长默认保留一天。离线消息保留5条。</td>
     </tr>
     <tr >
       <td style="padding: 0 5px;">是否有APNS生产和开发环境区别。</td>
       <td style="padding: 0 5px;">是，只有证书和应用环境匹配才可以收到。</td>
-      <td style="padding: 0 5px;">否，应用内消息与iOS 环境这是状态无关。</td>
+      <td style="padding: 0 5px;">否，应用内消息与iOS 环境证书状态无关。</td>
     </tr>
     <tr >
       <td style="padding: 0 5px;">接收方式</td>
-      <td style="padding: 0 5px;">应用退出，后台或者是打开是都会收到APNS</td>
+      <td style="padding: 0 5px;">应用退出，后台以及打开状态都是会收到APNS</td>
       <td style="padding: 0 5px;">需要应用打并与jpush 建立连接，然后接收离线消息和在线消息。</td>
     </tr>
     <tr >

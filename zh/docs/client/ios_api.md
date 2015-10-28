@@ -221,11 +221,6 @@
       <th style="padding: 0 5px;" >详细解释</th>
     </tr>
     <tr >
-      <td style="padding: 0 5px;text-align:center;">6001</td>
-      <td style="padding: 0 5px;">无效的设置，tag/alias 不应参数都为 null</td>
-      <td style="padding: 0 5px;"></td>
-    </tr>
-    <tr >
       <td style="padding: 0 5px;text-align:center;">6002</td>
       <td style="padding: 0 5px;">设置超时</td>
       <td style="padding: 0 5px;">建议重试</td>
@@ -257,7 +252,7 @@
     </tr>
     <tr >
       <td style="padding: 0 5px;text-align:center;">6008</td>
-      <td style="padding: 0 5px;">tag/alias 超出总长度限制</td>
+      <td style="padding: 0 5px;">tag 超出总长度限制</td>
       <td style="padding: 0 5px;">总长度最多 1K 字节</td>
     </tr>
     <tr >

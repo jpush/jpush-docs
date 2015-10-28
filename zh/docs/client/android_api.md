@@ -610,7 +610,7 @@ SDK 对自定义消息，只是传递，不会有任何界面上的展示。
 		</tr>
 		<tr >
 			<td style="padding: 0 5px;text-align:center;">6008</td>
-			<td style="padding: 0 5px;">tag/alias 超出总长度限制</td>
+			<td style="padding: 0 5px;">tag 超出总长度限制</td>
 			<td style="padding: 0 5px;">总长度最多 1K 字节</td>
 		</tr>
 		<tr >

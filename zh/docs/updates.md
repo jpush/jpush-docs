@@ -1,5 +1,25 @@
 # 最近更新
 
+### JPush iOS SDK v1.8.8
+
+#### 更新时间
++ 2015-10-27
+
+#### Change Log
++ 功能修正：修复了1.8.7在开启bitcode时,archive编译失败的问题
+
+#### 升级提示
+
++ 建议升级！
+
+#### 升级指南
++ 替换 lib 文件夹里的文件
++ 删除项目里旧的 .a 文件，重新导入新的 .a 文件（特别留意）
++ Xcode7 环境下，替换原先导入的 libz.dylib 框架为 libz.tbd （特别留意）
++ 需要删除旧的 libPushSDK-Simulator.a （如果存在）
++ 关于 iOS 7 Background Push，JPush 提供一个教程文档：iOS 7 Background Remote Notification
++ 如果是1.2.7及之前版本升级 请在Build Settings里面，找到Other Linker Flags，去掉-all_load, -ObjC
+
 ### JPush iOS SDK v1.8.7
 
 #### 更新时间
