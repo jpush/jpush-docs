@@ -13,14 +13,16 @@ pages:
 
 - 入门指南:
   - '常见问题': 'guideline/faq.md'
-  - 'Android 集成指南': 'guideline/android_guide.md'
-  - 'iOS 集成指南': 'guideline/ios_guide.md'
-  - 'WinPhone 集成指南': 'guideline/winphone_guide.md'
+  - 'JPush Android 集成指南': 'guideline/android_guide.md'
+  - 'JPush iOS 集成指南': 'guideline/ios_guide.md'
+  - 'JPush WinPhone 集成指南': 'guideline/winphone_guide.md'
   - '3 分钟集成 Android SDK': 'guideline/android_3m.md'
   - '3 分钟集成 Windows Phone SDK': 'guideline/winphone_3m.md'
   - '示例与代码': 'guideline/sample_code.md'
   - '统计与报表说明': 'guideline/statistical_report.md'
   - '极光IM 指南': 'guideline/jmessage_guide.md'
+  - 'JMessage iOS 集成指南': 'guideline/jmessage_ios_guide.md'
+  - 'JMessage Android 集成指南': 'guideline/jmessage_android_guide.md'
 
 - 客户端:
   - 'Android SDK 概述': 'client/android_sdk.md'
@@ -42,6 +44,9 @@ pages:
   - 'REST API - Push': 'server/rest_api_v3_push.md'
   - 'REST API - Report': 'server/rest_api_v3_report.md'
   - 'REST API - Device': 'server/rest_api_v3_device.md'
+  - 'REST API - Schedule': 'server/rest_api_push_schedule.md'
+  - 'REST API v2 - Push': 'server/rest_api_v2_push.md'
+  - 'REST API v2 - Report': 'server/rest_api_v2_report.md'
   - 'IM REST API': 'server/rest_api_im.md'
   - 'HTTP 状态码': 'server/http_status_code.md'
   - 'Java SDK': 'server/java_sdk.md'
