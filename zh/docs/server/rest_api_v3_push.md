@@ -119,7 +119,7 @@ POST [https://api.jpush.cn/v3/push/validate](https://api.jpush.cn/v3/push/valida
 <div class="table-d" align="center" >
 	<table border="1" width = "100%">
 		<tr  bgcolor="#D3D3D3" >
-			<th style="padding: 0 5px;" >关键字</th>
+			<th style="padding: 0 5px;background-color:#D3D3D3" >关键字</th>
 			<th style="padding: 0 5px;text-align:center;" >选项</th>
 			<th style="padding: 0 5px;" >含义</th>
 		</tr>
@@ -183,7 +183,7 @@ JPush 当前支持 Android, iOS, Windows Phone 三个平台的推送。其关键
 
 <div class="table-d" align="center" >
 	<table border="1" width = "100%">
-		<tr  bgcolor="#D3D3D3" >
+		<tr bgcolor="#D3D3D3">
 			<th style="padding: 0 5px;" >关键字</th>
 			<th style="padding: 0 5px;text-align:center;" >含义</th>
 			<th style="padding: 0 5px;text-align:center;" >类型</th>

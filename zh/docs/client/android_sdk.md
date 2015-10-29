@@ -48,13 +48,13 @@ AndroidManifest.xml 配置示例可能在版本升级时，会有变更。请留
 
 + [3分钟快速Demo(Android)](../../guideline/android_3m)
 + [Android 集成指南](../../guideline/android_guide)
-+ [Android 教程](../android_tutorials)
++ [Android 教程](/client/android_tutorials)
 
 
 
 ### 集成到其他平台
 
-[客户端集成插件](../client_plugins)
+[客户端集成插件](/client/client_plugins)
 
 [0]: ../image/product_android.png
 [1]: https://www.jpush.cn/downloads/sdk/android/

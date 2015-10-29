@@ -626,8 +626,8 @@ SDK 对自定义消息，只是传递，不会有任何界面上的展示。
 
 ###  相关文档
 
-+ Android[别名与标签使用教程](../android_api/#api_1)
-+ [标签与别名 API (iOS)](../ios_api/#api-ios)
++ Android[别名与标签使用教程](/client/android_api/#api_1)
++ [标签与别名 API (iOS)](/client/ios_api/#api-ios)
 
 ## 获取 RegistrationID API
 ### 支持的版本
@@ -868,7 +868,7 @@ r1.6.0 版本开始。
 
 ### 教程与代码示例
 
-请参考文档：[自定义通知栏样式教程](../android_tutorials/#_11)
+请参考文档：[自定义通知栏样式教程](/client/android_tutorials/#_11)
 
 ### API - 设置默认通知栏样式构建类
 	public static void setDefaultPushNotificationBuilder(BasicPushNotificationBuilder builder)
