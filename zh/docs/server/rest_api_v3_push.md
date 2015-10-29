@@ -104,6 +104,10 @@ POST [https://api.jpush.cn/v3/push/validate](https://api.jpush.cn/v3/push/valida
             "key": "value"
         }
     },
+    "sms_message":{
+    	"content":"sms msg content",
+    	"delay_time":3600
+	},
     "options": {
         "time_to_live": 60,
         "apns_production": false
@@ -613,6 +617,34 @@ Windows Phone 平台上，暂时不支持应用内消息。
 	<p>iOS 1.7.3及以上的版本才能正确解析v3的message，但是无法解析v2推送通知同时下发的应用内消息。</p>
 </div>
 
+#### sms_message
+
+用于设置短信推送内容以及短信发送的延迟时间。
+
+与原有 JSON 业务协议相匹配，消息有如下字段信息：
+
+<div class="table-d" align="center" >
+	<table border="1" width = "100%">
+		<tr  bgcolor="#D3D3D3" >
+			<th style="padding: 0 5px;" width="10%">关键字</th>
+			<th style="padding: 0 5px;text-align:center;" width="8%">类型</th>
+			<th style="padding: 0 5px;text-align:center;" width="5%">选项</th>
+			<th style="padding: 0 5px;;" >示例</th>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;">content</td>
+			<td style="padding: 0 5px;text-align:center;">string</td>
+			<td style="padding: 0 5px;text-align:center;">必填</td>
+			<td style="padding: 0 5px;">"sms msg content"</td>
+		</tr>
+		<tr >
+			<td style="padding: 0 5px;">delay_time</td>
+			<td style="padding: 0 5px;text-align:center;">int</td>
+			<td style="padding: 0 5px;text-align:center;">必填</td>
+			<td style="padding: 0 5px;">3600，单位为秒</td>
+		</tr>
+	</table>
+</div>
 
 
 #### options
