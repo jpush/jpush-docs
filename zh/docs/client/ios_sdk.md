@@ -53,7 +53,7 @@ JPush API v3 支持同时一次调用同时推送 APNs 通知与 JPush 应用内
       <td style="padding: 0 5px;">用户不在线JPush server 会保存离线消息,时长默认保留一天。离线消息保留5条。</td>
     </tr>
     <tr >
-      <td style="padding: 0 5px;">是否有APNS生产和开发环境区别。</td>
+      <td style="padding: 0 5px;">消息类型是否有APNS生产和开发环境区别。</td>
       <td style="padding: 0 5px;">是，只有证书和应用环境匹配才可以收到。</td>
       <td style="padding: 0 5px;">否，应用内消息与iOS 环境证书状态无关。</td>
     </tr>
