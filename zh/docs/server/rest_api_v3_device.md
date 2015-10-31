@@ -360,7 +360,7 @@ HTTP/1.1 200 OK
 
 ### 调用返回
 #### HTTP 状态码
-参考文档：[Http-Status-Code](../http_status_code)
+参考文档：[Http-Status-Code](../server/http_status_code)
 
 #### 业务返回码
 

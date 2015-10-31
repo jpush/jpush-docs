@@ -18,16 +18,16 @@ JPush 提供遵从 REST 规范的 HTTP API，以供开发者远程调用 JPush �
 
 | 名称 | 	资源 | Base URL	 |描述|
 | ------------ | ------------- | ------------ |----------------|
-| [REST API v3 - Push](../rest_api_v3_push)	 | POST /v3/push  | https://api.jpush.cn | 推送 |
-| [REST API v3 - Report](../rest_api_v3_report) | GET /v3/received  | https://report.jpush.cn | 获取统计数据 - 消息送达 |
-| [REST API v3 - Devices](../rest_api_v3_device) | /v3/devices | https://device.jpush.cn | tag,alias 操作 |
+| [REST API v3 - Push](../server/rest_api_v3_push)	 | POST /v3/push  | https://api.jpush.cn | 推送 |
+| [REST API v3 - Report](../server/rest_api_v3_report) | GET /v3/received  | https://report.jpush.cn | 获取统计数据 - 消息送达 |
+| [REST API v3 - Devices](../server/rest_api_v3_device) | /v3/devices | https://device.jpush.cn | tag,alias 操作 |
 
 以下为老版本 API，仍然可用，但不鼓励使用。
 
 | 名称 | 	资源 | Base URL	 |描述|
 | ------------ | ------------- | ------------ |----------------|
-| [REST API v2 - Push](../rest_api_v2_push)  | POST /v2/push  | http://api.jpush.cn:8800 <br /> https://api.jpush.cn | 推送消息或通知|
-| [REST API v2 - Report](../rest_api_v2_report) | GET /v2/received  | https://report.jpush.cn | 获取统计数据 - 消息送达 |
+| [REST API v2 - Push](../server/rest_api_v2_push)  | POST /v2/push  | http://api.jpush.cn:8800 <br /> https://api.jpush.cn | 推送消息或通知|
+| [REST API v2 - Report](../server/rest_api_v2_report) | GET /v2/received  | https://report.jpush.cn | 获取统计数据 - 消息送达 |
 
 ### Authorization 用户认证
 
@@ -95,9 +95,9 @@ JPush API 对访问次数，具有频率控制。即一定的时间窗口内，A
 
 | API 类型                            | 频率（次/分钟） |
 |-------------------------------------|-----------------|
-| [Push API v3](../rest_api_v3_push)  | 600             |
-| [Report-API](../rest_api_v3_report) | 2400            |
-| [Device-API](../rest_api_v3_device) | 600            |
+| [Push API v3](../server/rest_api_v3_push)  | 600             |
+| [Report-API](../server/rest_api_v3_report) | 2400            |
+| [Device-API](../server/rest_api_v3_device) | 600            |
 
 收费版本根据终端用户规模的不同，具有不同级别的频率。如有需要，请联系商务，了解更多。
 

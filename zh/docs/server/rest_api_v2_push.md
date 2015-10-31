@@ -388,5 +388,5 @@ HTTP 返回码为 200 时，是业务相关的错误。
 了解API 频率限制：[API 频率限制][3]
 
 [1]: http://www.json.org/
-[2]: ../rest_api_v3_report
-[3]: ../api_rate_limiting
+[2]: ../server/rest_api_v3_report
+[3]: ../server/server_overview/#api-rating

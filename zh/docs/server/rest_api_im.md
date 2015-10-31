@@ -836,7 +836,7 @@ Example Response
 
 ### HTTP 返回
 
-HTTP 返回码参考文档：[HTTP-Status-Code](../http_status_code)
+HTTP 返回码参考文档：[HTTP-Status-Code](../server/http_status_code)
 
 #### Example Error Response
 

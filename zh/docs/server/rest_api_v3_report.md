@@ -171,7 +171,7 @@ JSON Object
 
 ###HTTP 返回码
 
-参考文档：[HTTP-Status-Code](../http_status_code)
+参考文档：[HTTP-Status-Code](../server/http_status_code)
 
 #### Example Error Response
 

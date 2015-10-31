@@ -22,7 +22,7 @@
 推送的内容只能是 JSON 表示的一个推送对象。
 
 调用地址：  
-POST [https://api.jpush.cn/v3/push](POST https://api.jpush.cn/v3/push)
+POST [https://api.jpush.cn/v3/push](https://api.jpush.cn/v3/push)
 
 #### 请求示例
 
@@ -706,7 +706,7 @@ Windows Phone 平台上，暂时不支持应用内消息。
 
 ##### HTTP 状态码
 
-参考文档：[HTTP-Status-Code]()
+参考文档：[HTTP-Status-Code](../server/http_status_code/)
 
 ##### 业务返回码
 
@@ -787,8 +787,8 @@ Windows Phone 平台上，暂时不支持应用内消息。
 
 ### 参考
 
-+ 获取推送送达API：[Report-API](../rest_api_v3_report)
-+ 老版本 Push API：[Push API v2](../rest_api_v2_push)
++ 获取推送送达API：[Report-API](../server/rest_api_v3_report)
++ 老版本 Push API：[Push API v2](../server/rest_api_v2_push)
 + HTTP规范参考：[HTTP基本认证](http://zh.wikipedia.org/zh/HTTP基本认证)
 + Apple APNs 规范：[Apple Push Notification Service](https://developer.apple.com/library/ios/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW12)
 + Microsoft MPNs 规范：[Push notifications for Windows Phone 8](http://msdn.microsoft.com/en-us/library/windowsphone/develop/ff402558(v=vs.105).aspx)
