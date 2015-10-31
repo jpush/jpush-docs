@@ -550,7 +550,7 @@ Library 选择
 + md5有问题，需要32位大写
 + 你的编码不是utf-8
 
-具体看[Push API v2](../rest_api_v2_push)中的verification_code参数
+具体看[Push API v2](../server/rest_api_v2_push)中的verification_code参数
 
 
 ###v3 API 调试指南

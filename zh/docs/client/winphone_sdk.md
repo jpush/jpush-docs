@@ -1,6 +1,6 @@
 #Windows Phone SDK
 
-+ [WinPhone 客户端 SDk 下载](../../resources/#wp-sdk)
++ [WinPhone 客户端 SDK 下载](../../resources/#wp-sdk)
 
 ![jpush_wp](image/jpush_wp.png)
 
@@ -26,4 +26,4 @@ Windows Phone 平台上，暂时不支持应用内消息。
 
 + [3分钟快速Demo(Winphone)](../../guideline/winphone_3m)
 + [WinPhone 集成指南](../../guideline/winphone_guide)
-+ [WinPhone API](../winphone_api)
++ [WinPhone API](../client/winphone_api)

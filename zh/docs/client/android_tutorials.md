@@ -120,7 +120,7 @@ JPush 目前在网络策略方面没有像微信这种聊天工具做得积极�
 2. JPush SDK 把该关系设置保存到 JPush Server 上
 3. 在服务器端推送消息时，指定向之前设置过的别名或者标签推送
 
-SDK 支持的 setAliasAndTags 请参考相应的文档：[别名与标签 API](../android_api/#api_1)
+SDK 支持的 setAliasAndTags 请参考相应的文档：[别名与标签 API](../client/android_api/#api_1)
 
 使用过程中有几个点做特别说明：
 
@@ -264,7 +264,7 @@ JPush 通知推送到客户端时，默认使用手机的默认设置来显示�
 
 #### 客户端定义通知栏样式
 
-自定义的通知栏样式，是在客户端进行的。请参考 [通知栏样式定制API](../android_api/#api_6) 来看所支持的功能。
+自定义的通知栏样式，是在客户端进行的。请参考 [通知栏样式定制API](../client/android_api/#api_6) 来看所支持的功能。
 
 #####自定义通知栏样式设计
 
@@ -373,7 +373,7 @@ SDK 不会把自定义消息展示到通知栏。
 
 所以调试时，需要到日志里才可以看到服务器端推送的自定义消息。
 
-自定义消息一定要由开发者写[ 接收推送消息Receiver](../android_api/#receiver) 来处理收到的消息。
+自定义消息一定要由开发者写[ 接收推送消息Receiver](../client/android_api/#receiver) 来处理收到的消息。
 
 <div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">
 <p>注意：

@@ -13,7 +13,7 @@
 
 开发者把这个应用导入 Eclipse 里边，理论上就可以马上编译成功（不需要动一行代码与配置），运行安装到手机（或者模拟器）里去。
 
-这个 Android Example 也就是 [3 分钟快速 Demo](../android_3m) 快速教程提及到的示例项目。
+这个 Android Example 也就是 [3 分钟快速 Demo](../guideline/android_3m) 快速教程提及到的示例项目。
 
 
 

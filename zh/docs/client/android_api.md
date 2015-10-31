@@ -70,7 +70,7 @@ JPush SDK 提供的推送服务是默认开启的。
 
 ####代码示例
 	
-以下代码来自于 [JPush Android Example。]()
+以下代码来自于 JPush Android Example。
 
 	public class MainActivity extends InstrumentedActivity implements OnClickListener {
 	    private Button mStopPush;

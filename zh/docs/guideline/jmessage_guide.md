@@ -146,4 +146,3 @@ App 使用 JMessage 提供的群组功能创建群组时，得到的群组标识
 + [IM 业务对象](../../advanced/im_objects/)
 + [JPush Android SDK 集成指南](../../guideline/android_guide/)
 
-I

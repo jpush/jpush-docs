@@ -21,8 +21,8 @@ pages:
   - '示例与代码': 'guideline/sample_code.md'
   - '控制台使用指南': 'guideline/statistical_report.md'
   - '极光IM 指南': 'guideline/jmessage_guide.md'
-  - 'JMessage iOS 集成指南': 'guideline/jmessage_ios_guide.md'
   - 'JMessage Android 集成指南': 'guideline/jmessage_android_guide.md'
+  - 'JMessage iOS 集成指南': 'guideline/jmessage_ios_guide.md'
 
 - 客户端:
   - 'Android SDK 概述': 'client/android_sdk.md'
@@ -36,7 +36,6 @@ pages:
   - '客户端集成插件': 'client/client_plugins.md'
   - 'IM Android SDK 概述': 'client/im_sdk_android.md'
   - 'IM iOS SDK 概述': 'client/im_sdk_ios.md'
-  - 'IM JS SDK 概述': 'client/im_sdk_js.md'
   - 'IM ErrorCode 定义': 'client/im_errorcode.md'
 
 - 服务器端:

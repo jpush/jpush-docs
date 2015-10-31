@@ -122,7 +122,7 @@ JPush iOS 是对原生官方 APNs 推送的一个补充，是对其的封装，�
 ![jpush_ios](image/appidcer.png)
 
 
-+ 创建App ID、APN证书和p12证书的导出的具体步骤请看 :[iOS 证书 设置指南](./#ios_1)
++ 创建App ID、APN证书和p12证书的导出的具体步骤请看 :[iOS 证书 设置指南](../client/ios_tutorials/#ios_1)
 
 + 点击下图按钮开始创建Provisioning Profile：
 

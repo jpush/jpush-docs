@@ -27,7 +27,7 @@ img[alt=jpush_winphone_3m] { width: 500px; }
 
 ### 第三步：下载应用Example
 
-首先下载[windows phone sdk](../../resouces)
+首先下载[windows phone sdk](../../resources)
 
 ![jpush_winphone_3m](image/down_winphone_demo.png)
 
