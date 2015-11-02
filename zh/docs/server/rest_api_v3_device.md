@@ -36,7 +36,7 @@ API URL: [https://device.jpush.cn](https://device.jpush.cn)
 
 ```
 GET /v3/devices/{registration_id}
-获取当前设备的所有属性，包含tags, alias，手机号码mobile。
+获取当前设备的所有属性，包含tags, alias。
 ```
 
 ##### Example Request
@@ -64,8 +64,7 @@ HTTP/1.1 200 OK
 ```
 {
      "tags": ["tag1", "tag2"],
-     "alias": "alias1",
-     "mobile":"13012345678"
+     "alias": "alias1"
 }
 ```
 
