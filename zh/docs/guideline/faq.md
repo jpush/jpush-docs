@@ -357,11 +357,11 @@ iOS 9变动影响SDK部分:
 
 **bitCode解决方式**
 
-再未发布新版支持bitCode版本前,需要提示用户主动关闭bitCode编译器选项:Build Settings->Enable Bitcode选项选择NO
+JPush iOS SDK v1.8.7 及以上版本的SDK,已经增加对 iOS 9 新特性 bitcode 的支持.
 
-**Http解决方式**
+**Https解决方式**
 
-SDK未提供http地址版本时
+SDK未提供https地址版本时
 
 1. 需要用户主动在当前项目的Info.plist中添加NSAppTransportSecurity类型Dictionary。
 2. 在NSAppTransportSecurity下添加NSAllowsArbitraryLoads类型Boolean,值设为YES
