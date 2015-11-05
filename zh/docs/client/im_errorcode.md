@@ -286,9 +286,57 @@
     </tr>
     <tr>
       <td style="padding: 0 5px;">860013</td>
-      <td style="padding: 0 5px;"></td>
+      <td style="padding: 0 5px;">network server fail</td>
       <td style="padding: 0 5px;">网络服务端失败</td>
     </tr>
+    <tr>
+      <td style="padding: 0 5px;">860014</td>
+      <td style="padding: 0 5px;">network host unkown </td>
+      <td style="padding: 0 5px;">地址错误</td>
+    </tr>
+    <tr>
+      <td style="padding: 0 5px;">860015</td>
+      <td style="padding: 0 5px;">download fial</td>
+      <td style="padding: 0 5px;">下载失败</td>
+    </tr>
+    <tr>
+      <td style="padding: 0 5px;">860016</td>
+      <td style="padding: 0 5px;">network error other</td>
+      <td style="padding: 0 5px;">其他网络原因</td>
+    </tr>
+    <tr>
+      <td style="padding: 0 5px;">860017</td>
+      <td style="padding: 0 5px;"></td>
+      <td style="padding: 0 5px;">服务器获取用户token失败</td>
+    </tr>
+    <tr>
+      <td style="padding: 0 5px;">860018</td>
+      <td style="padding: 0 5px;"></td>
+      <td style="padding: 0 5px;">上传资源文件失败</td>
+    </tr>
+    <tr>
+      <td style="padding: 0 5px;">860019</td>
+      <td style="padding: 0 5px;"></td>
+      <td style="padding: 0 5px;">上传资源文件或token失败</td>
+    </tr>
+    <tr>
+      <td style="padding: 0 5px;">860020</td>
+      <td style="padding: 0 5px;"></td>
+      <td style="padding: 0 5px;">地址错误</td>
+    </tr>
+    <tr>
+      <td style="padding: 0 5px;">860021</td>
+      <td style="padding: 0 5px;"></td>
+      <td style="padding: 0 5px;">服务器返回错误（没有按约定返回）</td>
+    </tr>
+    <tr>
+      <td style="padding: 0 5px;">860030</td>
+      <td style="padding: 0 5px;"></td>
+      <td style="padding: 0 5px;">服务端返回数据格式错误</td>
+    </tr>
+
+
+
     <tr>
       <td style="padding: 0 5px;">860170</td>
       <td style="padding: 0 5px;"></td>
@@ -310,28 +358,39 @@
       <td style="padding: 0 5px;">七牛未知错误</td>
     </tr>
     <tr>
-      <td style="padding: 0 5px;">860211</td>
+
+   <!-- iOS DB -->
+    
+    <tr>
+      <td style="padding: 0 5px;">861000</td>
       <td style="padding: 0 5px;"></td>
-      <td style="padding: 0 5px;">七牛网络错误</td>
+      <td style="padding: 0 5px;">数据库删除失败</td>
     </tr>
     <tr>
-      <td style="padding: 0 5px;">860212</td>
+      <td style="padding: 0 5px;">861001</td>
       <td style="padding: 0 5px;"></td>
-      <td style="padding: 0 5px;">七牛验证错误</td>
+      <td style="padding: 0 5px;">数据库更新失败</td>
     </tr>
     <tr>
-      <td style="padding: 0 5px;">860213</td>
+      <td style="padding: 0 5px;">861002</td>
       <td style="padding: 0 5px;"></td>
-      <td style="padding: 0 5px;">七牛上传文件失败</td>
+      <td style="padding: 0 5px;">数据库查询失败</td>
     </tr>
     <tr>
-      <td style="padding: 0 5px;">860214</td>
+      <td style="padding: 0 5px;">861003</td>
       <td style="padding: 0 5px;"></td>
-      <td style="padding: 0 5px;">获取七牛token失败</td>
+      <td style="padding: 0 5px;">数据库插入失败</td>
     </tr>
-
-
-
+    <tr>
+      <td style="padding: 0 5px;">861100</td>
+      <td style="padding: 0 5px;"></td>
+      <td style="padding: 0 5px;">AppKey 不合法</td>
+    </tr>
+    <tr>
+      <td style="padding: 0 5px;">860040</td>
+      <td style="padding: 0 5px;"></td>
+      <td style="padding: 0 5px;">SDK 内部方法参数检查错误</td>
+    </tr>
 
     <!-- Android SDK 相关 -->		
     <tr >
@@ -456,3 +515,5 @@
     </tr>
 	</table>
 </div>
+
+
