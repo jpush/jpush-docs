@@ -619,7 +619,7 @@ Windows Phone 平台上，暂时不支持应用内消息。
 
 #### sms_message
 
-用于设置短信推送内容以及短信发送的延迟时间。
+用于设置短信推送内容以及短信发送的延迟时间。手机接收号码,开发者需要先把用户的手机号码与设备的registration id匹配。绑定方法：[服务端-Device-更新设备](../server/rest_api_v3_device/#device)
 
 与原有 JSON 业务协议相匹配，消息有如下字段信息：
 
