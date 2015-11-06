@@ -72,6 +72,8 @@ HTTP/1.1 200 OK
 
 #### 更新设备 （设备的别名与标签）
 
+使用短信业务，请结合服务端[SMS_MESSAGE](../server/rest_api_v3_push/#sms_message)字段
+
 ```
 POST /v3/devices/{registration_id}
 更新当前设备的指定属性，当前支持tags, alias，手机号码mobile。
