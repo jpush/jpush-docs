@@ -10,7 +10,7 @@
 + FixBug：解决有些设备的富媒体推送界面actionBar横向不能铺满的问题
 + FIxBug：解决富媒体页面点击返回可能造成的崩溃问题
 + 优化：重构富媒体推送相关代码
-+ 对外的zip包中的demo工程支持AndroidStudio和Eclipse,有各自对应的AndroidManifest配置
++ zip包中的demo工程支持AndroidStudio和Eclipse,有各自对应的AndroidManifest配置
 
 
 #### 升级提示
