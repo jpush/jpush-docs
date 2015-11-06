@@ -37,7 +37,7 @@
 		<tr >
 			<td style="padding: 0 5px;text-align:center;">898004</td>
 			<td style="padding: 0 5px;">Password error</a></td>
-			<td style="padding: 0 5px;">登录密码错误</td>
+			<td style="padding: 0 5px;">更新密码操作，用户密码错误</td>
 		</tr>
 		<tr >
 			<td style="padding: 0 5px;text-align:center;">898006</td>
@@ -122,7 +122,7 @@
 		<tr >
 			<td style="padding: 0 5px;text-align:center;">801004</td>
 			<td style="padding: 0 5px;">user password is wrong</td>
-			<td style="padding: 0 5px;">更新密码操作，用户密码错误</td>
+			<td style="padding: 0 5px;">登录密码错误</td>
 		</tr>
 		<tr >
 			<td style="padding: 0 5px;text-align:center;">803001</td>
