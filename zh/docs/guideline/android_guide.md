@@ -219,7 +219,7 @@ AndroidManifest.xml权限配置：
 ```
 <?xml version="1.0" encoding="utf-8"?
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-     package="${applicationId}" 
+     package="您应用的包名" 
      android:versionCode="205"
      android:versionName="2.0.5"
      >
@@ -358,7 +358,7 @@ AndroidManifest.xml权限配置：
 
 ```
 defaultConfig {
-      applicationId "cn.jpush.example" // <--Your package name
+      applicationId "cn.jpush.example" // <--您应用的包名
 
  }
 
