@@ -159,7 +159,7 @@ JPush API 对访问次数，具有频率控制。即一定的时间窗口内，A
 
 所有的 HTTP API Response Header 里都加了三项频率控制信息：
 
-+ X-Rate-Limit-Limit：当前 AppKey 一个时间窗口内可调用次数
++ X-Rate-Limit-Quota：当前 AppKey 一个时间窗口内可调用次数
 + X-Rate-Limit-Remaining：当前时间窗口剩余的可用次数
 + X-Rate-Limit-Reset：距离时间窗口重置剩余的秒数
 
