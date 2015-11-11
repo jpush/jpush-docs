@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>JPUSHService Class Reference</title>
+
+	<link rel="stylesheet" href="../css/style.css">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
+	<meta name="generator" content="appledoc 2.2.1 (build 1334)">
+</head>
+<body class="appledoc">
+	<header>
+		<div class="container" class="hide-in-xcode">
+			
+			<h1 id="library-title">
+				<a href="../index.html">JMessage-iOS-SDK </a>
+			</h1>
+
+			<p id="developer-home">
+				<a href="../index.html">HXHG</a>
+			</p>
+			
+		</div>
+	</header>
+
+	<aside>
+		<div class="container">
+			<nav>
+				<ul id="header-buttons" role="toolbar">
+					<li><a href="../index.html">Index</a></li>
+<li><a href="../hierarchy.html">Hierarchy</a></li>
+
+					<li id="on-this-page" role="navigation">
+						<label>
+							On This Page
+
+							<div class="chevron">
+								<div class="chevy chevron-left"></div>
+								<div class="chevy chevron-right"></div>
+							</div>
+
+							<select id="jump-to">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+
+	
+	
+
+	
+	<optgroup label="Class Methods">
+		
+		<option value="//api/name/setupWithOption:">+ setupWithOption:</option>
+		
+		<option value="//api/name/setTags:alias:callbackSelector:target:">+ setTags:alias:callbackSelector:target:</option>
+		
+		<option value="//api/name/startLogPageView:">+ startLogPageView:</option>
+		
+		<option value="//api/name/crashLogON">+ crashLogON</option>
+		
+		<option value="//api/name/setLatitude:longitude:">+ setLatitude:longitude:</option>
+		
+		<option value="//api/name/setLocalNotification:alertBody:badge:alertAction:identifierKey:userInfo:soundName:">+ setLocalNotification:alertBody:badge:alertAction:identifierKey:userInfo:soundName:</option>
+		
+		<option value="//api/name/showLocalNotificationAtFront:identifierKey:">+ showLocalNotificationAtFront:identifierKey:</option>
+		
+		<option value="//api/name/deleteLocalNotificationWithIdentifierKey:">+ deleteLocalNotificationWithIdentifierKey:</option>
+		
+		<option value="//api/name/findLocalNotificationWithIdentifier:">+ findLocalNotificationWithIdentifier:</option>
+		
+		<option value="//api/name/clearAllLocalNotifications">+ clearAllLocalNotifications</option>
+		
+		<option value="//api/name/setBadge:">+ setBadge:</option>
+		
+		<option value="//api/name/resetBadge">+ resetBadge</option>
+		
+		<option value="//api/name/registrationID">+ registrationID</option>
+		
+		<option value="//api/name/setDebugMode">+ setDebugMode</option>
+		
+	</optgroup>
+	
+
+	
+	
+</select>
+						</label>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</aside>
+
+	<article>
+		<div id="overview_contents" class="container">
+			<div id="content">
+				<main role="main">
+					<h1 class="title">JPUSHService Class Reference</h1>
+
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<th>Inherits from</th>
+	<td>NSObject</td>
+</tr><tr>
+	<th>Declared in</th>
+	<td>JPUSHService.h</td>
+</tr>
+						</tbody></table></div>
+					
+
+                    
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>JPush 核心头文件</p>
+					</div>
+					
+					
+
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						
+
+						
+						
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/setupWithOption:" title="setupWithOption:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setupWithOption:">+&nbsp;setupWithOption:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>以下四个接口是必须调用的
+setupWithOption:launchingOption是旧版本的注册方法,appKey和channel需要依赖PushConfig.plist文件
+setupWithOption:launchingOption:appKey:channel是新版本方法,appKey和channel以及APS_FOR_PRODUCTION只需通过该函数参数传递,不再需要PushConfig.plist文件</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)setupWithOption:(NSDictionary *)<em>launchingOption</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JPUSHService.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setTags:alias:callbackSelector:target:" title="setTags:alias:callbackSelector:target:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setTags:alias:callbackSelector:target:">+&nbsp;setTags:alias:callbackSelector:target:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>下面的接口是可选的
+设置标签和(或)别名（若参数为nil，则忽略；若是空对象，则清空；详情请参考文档：<a href="http://docs.jpush.cn/pages/viewpage.action?pageId=3309913">http://docs.jpush.cn/pages/viewpage.action?pageId=3309913</a>）
+setTags:alias:fetchCompletionHandle:是新的设置标签别名的方法，不再需要显示声明回调函数，只需要在block里面处理设置结果即可.
+WARN: 使用block时需要注意循环引用问题</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)setTags:(NSSet *)<em>tags</em> alias:(NSString *)<em>alias</em> callbackSelector:(SEL)<em>cbSelector</em> target:(id)<em>theTarget</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JPUSHService.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/startLogPageView:" title="startLogPageView:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/startLogPageView:">+&nbsp;startLogPageView:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>记录页面停留时间功能。
+startLogPageView和stopLogPageView为自动计算停留时间
+beginLogPageView为手动自己输入停留时间</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)startLogPageView:(NSString *)<em>pageName</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>pageName</code></th>
+						<td><p>页面名称</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>seconds</code></th>
+						<td><p>页面停留时间</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JPUSHService.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/crashLogON" title="crashLogON"></a>
+	<h3 class="method-title"><code><a href="#//api/name/crashLogON">+&nbsp;crashLogON</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>开启Crash日志收集, 默认是关闭状态.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)crashLogON</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JPUSHService.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setLatitude:longitude:" title="setLatitude:longitude:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setLatitude:longitude:">+&nbsp;setLatitude:longitude:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>地理位置设置
+为了更精确的统计用户地理位置，可以调用此方法传入经纬度信息
+需要链接 CoreLocation.framework 并且 #import &lt;CoreLocation/CoreLocation.h></p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)setLatitude:(double)<em>latitude</em> longitude:(double)<em>longitude</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>latitude</code></th>
+						<td><p>纬度.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>longitude</code></th>
+						<td><p>经度.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>location</code></th>
+						<td><p>直接传递CLLocation *型的地理信息</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JPUSHService.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setLocalNotification:alertBody:badge:alertAction:identifierKey:userInfo:soundName:" title="setLocalNotification:alertBody:badge:alertAction:identifierKey:userInfo:soundName:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setLocalNotification:alertBody:badge:alertAction:identifierKey:userInfo:soundName:">+&nbsp;setLocalNotification:alertBody:badge:alertAction:identifierKey:userInfo:soundName:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<ul>
+<li>本地推送，最多支持64个</li>
+<li>@param fireDate 本地推送触发的时间</li>
+<li>@param alertBody 本地推送需要显示的内容</li>
+<li>@param badge 角标的数字。如果不需要改变角标传-1</li>
+<li>@param alertAction 弹框的按钮显示的内容（IOS 8默认为"打开",其他默认为"启动"）</li>
+<li>@param notificationKey 本地推送标示符</li>
+<li>@param userInfo 自定义参数，可以用来标识推送和增加附加信息</li>
+<li>@param soundName 自定义通知声音，设置为nil为默认声音</li>
+</ul>
+
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (UILocalNotification *)setLocalNotification:(NSDate *)<em>fireDate</em> alertBody:(NSString *)<em>alertBody</em> badge:(int)<em>badge</em> alertAction:(NSString *)<em>alertAction</em> identifierKey:(NSString *)<em>notificationKey</em> userInfo:(NSDictionary *)<em>userInfo</em> soundName:(NSString *)<em>soundName</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<ul>
+<li>IOS8新参数</li>
+<li>@param region 自定义参数</li>
+<li>@param regionTriggersOnce 自定义参数</li>
+<li>@param category 自定义参数</li>
+</ul>
+
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JPUSHService.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/showLocalNotificationAtFront:identifierKey:" title="showLocalNotificationAtFront:identifierKey:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/showLocalNotificationAtFront:identifierKey:">+&nbsp;showLocalNotificationAtFront:identifierKey:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>本地推送在前台推送。默认App在前台运行时不会进行弹窗，在程序接收通知调用此接口可实现指定的推送弹窗。</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)showLocalNotificationAtFront:(UILocalNotification *)<em>notification</em> identifierKey:(NSString *)<em>notificationKey</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>notification</code></th>
+						<td><p>本地推送对象</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>notificationKey</code></th>
+						<td><p>需要前台显示的本地推送通知的标示符</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JPUSHService.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/deleteLocalNotificationWithIdentifierKey:" title="deleteLocalNotificationWithIdentifierKey:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/deleteLocalNotificationWithIdentifierKey:">+&nbsp;deleteLocalNotificationWithIdentifierKey:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>删除本地推送</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)deleteLocalNotificationWithIdentifierKey:(NSString *)<em>notificationKey</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>notificationKey</code></th>
+						<td><p>本地推送标示符</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>myUILocalNotification</code></th>
+						<td><p>本地推送对象</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JPUSHService.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/findLocalNotificationWithIdentifier:" title="findLocalNotificationWithIdentifier:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/findLocalNotificationWithIdentifier:">+&nbsp;findLocalNotificationWithIdentifier:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>获取指定通知</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (NSArray *)findLocalNotificationWithIdentifier:(NSString *)<em>notificationKey</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>notificationKey</code></th>
+						<td><p>本地推送标示符</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>本地推送对象数组,[array count]为0时表示没找到</p>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JPUSHService.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/clearAllLocalNotifications" title="clearAllLocalNotifications"></a>
+	<h3 class="method-title"><code><a href="#//api/name/clearAllLocalNotifications">+&nbsp;clearAllLocalNotifications</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>清除所有本地推送对象</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)clearAllLocalNotifications</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JPUSHService.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setBadge:" title="setBadge:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setBadge:">+&nbsp;setBadge:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>set setBadge</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (BOOL)setBadge:(NSInteger)<em>value</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>value</code></th>
+						<td><p>设置JPush服务器的badge的值
+本地仍须调用UIApplication:setApplicationIconBadgeNumber函数,来设置脚标</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JPUSHService.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/resetBadge" title="resetBadge"></a>
+	<h3 class="method-title"><code><a href="#//api/name/resetBadge">+&nbsp;resetBadge</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>set setBadge</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)resetBadge</code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>value</code></th>
+						<td><p>清除JPush服务器对badge值的设定.
+本地仍须调用UIApplication:setApplicationIconBadgeNumber函数,来设置脚标</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JPUSHService.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/registrationID" title="registrationID"></a>
+	<h3 class="method-title"><code><a href="#//api/name/registrationID">+&nbsp;registrationID</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>get RegistrationID</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (NSString *)registrationID</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JPUSHService.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setDebugMode" title="setDebugMode"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setDebugMode">+&nbsp;setDebugMode</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>setDebugMode获取更多的Log信息
+开发过程中建议开启DebugMode</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)setDebugMode</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>setLogOFF关闭除了错误信息外的所有Log
+发布时建议开启LogOFF用于节省性能开销</p>
+
+<p>默认为不开启DebugLog,只显示基本的信息</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JPUSHService.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+					</div>
+					
+					
+
+                    
+                    
+          
+				</main>
+
+				<footer>
+					<div class="footer-copyright">
+						
+						<p class="copyright">Copyright &copy; 2015 HXHG. All rights reserved. Updated: 2015-11-11</p>
+						
+						
+						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
+						
+					</div>
+				</footer>
+			</div>
+		</div>
+	</article>
+
+	<script src="../js/script.js"></script>
+</body>
+</html>
