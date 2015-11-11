@@ -143,6 +143,11 @@ POST [https://api.jpush.cn/v3/push/validate](https://api.jpush.cn/v3/push/valida
 			<td style="padding: 0 5px;text-align:center;">可选</td>
 			<td style="padding: 0 5px;">消息内容体。是被推送到客户端的内容。与 notification 一起二者必须有其一，可以二者并存 </td>
 		</tr>
+		<tr>
+			<td style="padding: 0 5px;">sms_message</td>
+			<td style="padding: 0 5px;text-align:center;">可选</td>
+			<td style="padding: 0 5px;">短信业务功能</td>
+		</tr>
 		<tr >
 			<td style="padding: 0 5px;t">options</td>
 			<td style="padding: 0 5px;text-align:center;">可选</td>
@@ -641,7 +646,7 @@ Windows Phone 平台上，暂时不支持应用内消息。
 			<td style="padding: 0 5px;">delay_time</td>
 			<td style="padding: 0 5px;text-align:center;">int</td>
 			<td style="padding: 0 5px;text-align:center;">必填</td>
-			<td style="padding: 0 5px;">3600，单位为秒</td>
+			<td style="padding: 0 5px;">设置为0，表示立即发送短信，单位为秒</td>
 		</tr>
 	</table>
 </div>
