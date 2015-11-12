@@ -20,12 +20,39 @@ JMessage 以 JPush 技术作为基础，共享 JPush 的网络长连接。在保
 
 #### JMessage 与 JPush 的区别
 
-|                  | JPush        | JMessage       |
-| ------------ | ------------- | ------------------ |
-| 使用场景 | 应用推送 | IM聊天、社交 |
-| 面向对象 | 设备          | 用户、帐号     |
-| 消息对象 | App 运营人员或者 App Server 向用户推送 | 用户之间互相交流 |
-| 发送方式 | 支持广播、Tag，或者单设备 | 单聊、群群 |
+<div class="table-d" align="center" >
+  <table border="1" style="width=100%">
+   <thead>
+    <tr  bgcolor="#D3D3D3" >
+      <th style="padding: 0 5px;" > </th>
+      <th style="padding: 0 5px;" >JPush</th>
+      <th style="padding: 0 5px;" >JMessage</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+      <td style="padding: 0 5px;">使用场景</td>
+      <td style="padding: 0 5px;">应用推送</td>
+      <td style="padding: 0 5px;">IM聊天、社交 </td>
+    </tr>
+    <tr >
+      <td style="padding: 0 5px;">面向对象</td>
+      <td style="padding: 0 5px;">设备</td>
+      <td style="padding: 0 5px;">用户、帐号</td>
+    </tr>
+    <tr >
+      <td style="padding: 0 5px;">消息对象</td>
+      <td style="padding: 0 5px;">App 运营人员或者 App Server 向用户推送</td>
+      <td style="padding: 0 5px;">用户之间互相交流</td>
+    </tr>
+    <tr >
+      <td style="padding: 0 5px;">发送方式</td>
+      <td style="padding: 0 5px;">支持广播、Tag，或者单设备 </td>
+      <td style="padding: 0 5px;">单聊、群群 </td>
+    </tr>
+  </table>
+</div>
+
  
 JMessage 以 IM 使用场景出发，面向用户根据登录帐号来收发消息；而 JPush 则满足推送场景，面向移动设备，根据设备的标签以及使用属性进行推送。
 
