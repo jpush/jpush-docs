@@ -1,4 +1,4 @@
-I# IM SDK for iOS
+# IM SDK for iOS
 
 ### Summary 概述
 
