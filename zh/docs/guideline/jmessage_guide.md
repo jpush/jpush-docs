@@ -21,7 +21,7 @@ JMessage 以 JPush 技术作为基础，共享 JPush 的网络长连接。在保
 #### JMessage 与 JPush 的区别
 
 <div class="table-d" align="center" >
-  <table border="1" style="width=100%">
+  <table border="1" "width=100%">
    <thead>
     <tr  bgcolor="#D3D3D3" >
       <th style="padding: 0 5px;" > </th>
