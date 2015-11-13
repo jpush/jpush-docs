@@ -119,7 +119,7 @@ Portal上不会限制推送消息的数量。
 
 ####**通知与自定义消息有什么区别？**
 
-下图是个简单的区分。详情请参考文档：[通知 vs. 自定义消息。](../../client/android_tutorials)
+下图是个简单的区分。详情请参考文档：[通知 vs. 自定义消息。](../../client/android_tutorials/#vs)
 
 ![](image/jpush_notification_vs_msg.png)
 
