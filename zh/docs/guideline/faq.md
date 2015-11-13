@@ -214,6 +214,17 @@ android {
 		
 + 请使用 SDK1.3.X 及以后的版本
 
++ 2.0.5 版本由于引入了protobuf ，在上面基础之上增加排出混淆的配置。
+
+```
+#========================gson================================
+-dontwarn com.google.**
+-keep class com.google.gson.** {*;}
+
+#========================protobuf================================
+#-dontwarn com.google.**
+-keep class com.google.protobuf.** {*;}
+```
 <br />
 
 ####**推送成功了，为什么有部分客户端收不到推送？**

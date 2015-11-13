@@ -189,6 +189,14 @@ public void onCreate() {
     public void onEvent*(**);
 }
 
+#========================gson================================
+-dontwarn com.google.**
+-keep class com.google.gson.** {*;}
+
+#========================protobuf================================
+#-dontwarn com.google.**
+-keep class com.google.protobuf.** {*;}
+
 ```
     
 <br />
