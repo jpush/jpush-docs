@@ -35,9 +35,9 @@
 
 * 使用Xcode 6版本运行IOS8版本SDK，XCode 5运行非IOS 8版本SDK
 
-### SDK集成步骤
+## SDK集成步骤
 
-#### 在JPush Portal上创建应用
+### 在JPush Portal上创建应用
 
 * 在JPush的管理Portal上 上传证书并创建应用。如果对APNs证书不太了解 请参考 [iOS 证书设置指南](../../client/ios_tutorials/#ios_1) 
 
@@ -46,11 +46,11 @@
 
 ![][1]
 
-#### 导入API开发包到应用程序项目
+### 导入API开发包到应用程序项目
 
 * 将SDK包解压，在XCode中选择“Add files to 'Your project name'...”，将解压后的lib子文件夹（包含APService.h、libPushSDK.a）添加到你的工程目录中。
 
-#### 必要的框架
+### 必要的框架
 
 * CFNetwork.framework
 * CoreFoundation.framework
@@ -62,11 +62,11 @@
 * Security.framework
 * libz.dylib
 
-#### Build Settings
+### Build Settings
 
 * 设置 Search Paths 下的 User Header Search Paths 和 Library Search Paths，比如SDK文件夹（默认为lib）与工程文件在同一级目录下，则都设置为"$(SRCROOT)/[文件夹名称]"即可。
 
-#### 创建并配置PushConfig.plist文件
+### 创建并配置PushConfig.plist文件
 
 在你的工程中创建一个新的Property List文件，并将其命名为PushConfig.plist，填入Portal为你的应用提供的APP_KEY等参数。
 
@@ -91,9 +91,9 @@
 
 * 在1.2.2或之前版本的配置文件中，有 TEST_MODE 这个键，新版的SDK不再使用，可以将它删除。
 
-#### 添加代码
+### 添加代码
 
-##### API
+#### API
 
 APIs 主要集中在 APService 接口类里。
 
@@ -112,7 +112,7 @@ APIs 主要集中在 APService 接口类里。
     + (void)handleRemoteNotification:(NSDictionary *)remoteInfo;
     
 
-##### 调用代码
+#### 调用代码
 
 监听系统事件，相应地调用 JPush SDK 提供的 API 来实现功能。
 
@@ -170,7 +170,7 @@ APIs 主要集中在 APService 接口类里。
 ```
 
 
-##### 监听通知
+#### 监听通知
 
 API里面提供了下面 5 种类型的通知：
 
@@ -186,7 +186,7 @@ extern NSString * const kJPFNetworkDidReceiveMessageNotification; // 收到消�
 
 其中，kJPFNetworkDidReceiveMessageNotification通知是有传递数据的，可以通过NSNotification中的userInfo方法获取，包括标题、内容、内容类型、扩展信息等
 
-### 高级功能
+## 高级功能
 
 请参考：
 
@@ -196,7 +196,7 @@ extern NSString * const kJPFNetworkDidReceiveMessageNotification; // 收到消�
 
 [页面的统计](../../../client/ios_api/#_29)
 
-### 技术支持
+## 技术支持
 
 邮件联系：[support@jpush.cn][4]
 
