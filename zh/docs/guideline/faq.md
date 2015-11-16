@@ -216,15 +216,15 @@ android {
 
 + 2.0.5 版本由于引入了protobuf ，在上面基础之上增加排出混淆的配置。
 
-```
-#========================gson================================
--dontwarn com.google.**
--keep class com.google.gson.** {*;}
 
-#========================protobuf================================
-#-dontwarn com.google.**
--keep class com.google.protobuf.** {*;}
-```
+		#==================gson==========================
+		-dontwarn com.google.**
+		-keep class com.google.gson.** {*;}
+
+		#==================protobuf======================
+		-dontwarn com.google.**
+		-keep class com.google.protobuf.** {*;}
+
 <br />
 
 ####**推送成功了，为什么有部分客户端收不到推送？**
@@ -329,10 +329,10 @@ try {
 
 + 提示客户换个浏览器试试
 + 如果还是不行，执行下面的命令反馈结果排查一下问题
-	1. ping docs.jpush.cn
-	2. nslookup docs.jpush.cn
-	3. telnet docs.jpush.cn
-	4. 提供一下自己机器访问外网其他网站是否正常
+	+ ping docs.jpush.cn
+	+ nslookup docs.jpush.cn
+	+ telnet docs.jpush.cn
+	+ 提供一下自己机器访问外网其他网站是否正常
 
 <br />
 
@@ -374,8 +374,8 @@ JPush iOS SDK v1.8.7 及以上版本的SDK,已经增加对 iOS 9 新特性 bitco
 
 SDK未提供https地址版本时
 
-1. 需要用户主动在当前项目的Info.plist中添加NSAppTransportSecurity类型Dictionary。
-2. 在NSAppTransportSecurity下添加NSAllowsArbitraryLoads类型Boolean,值设为YES
++ 需要用户主动在当前项目的Info.plist中添加NSAppTransportSecurity类型Dictionary。
++ 在NSAppTransportSecurity下添加NSAllowsArbitraryLoads类型Boolean,值设为YES
 
 
 
@@ -418,13 +418,13 @@ SDK未提供https地址版本时
 
 关闭推送有以下两种方式关闭：
 
-1. 在iOS系统设置的通知设置中更改对应app的推送设置（推荐）；
-2. 在代码中调用 [[UIApplication sharedApplication] unregisterForRemoteNotifications]；
++ 在iOS系统设置的通知设置中更改对应app的推送设置（推荐）；
++ 在代码中调用 [[UIApplication sharedApplication] unregisterForRemoteNotifications]；
 
 对应以上关闭方式的重新打开推送方法：
 
-1. 在iOS系统设置的通知设置中修改对应app的推送设置；
-2. 在代码中重新调用 [APService registerForRemoteNotificationTypes:]；
++ 在iOS系统设置的通知设置中修改对应app的推送设置；
++ 在代码中重新调用 [APService registerForRemoteNotificationTypes:]；
 
 <br />
 
@@ -436,8 +436,8 @@ api上指定badge的参数请看：[Push-API-v3#API-v3-ios](../../client/ios_api
 
 ####**Icon Badge number 的清空方法：**
 
-1. APN 推送内容指定 badge number 为 0；
-2. 在代码中使用如下代码清空 badge number：  [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
++ APN 推送内容指定 badge number 为 0；
++ 在代码中使用如下代码清空 badge number：  [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
 
 **注意**：
 
@@ -460,13 +460,13 @@ badge累加只能通过v3 api推送，且只有1.7.4版本以上才能支持。
 
 如果出现上述日志，则说明一段时间内都无法获取device token，那么：
 
-1. 确认你的app配置了apns权限，如果未配置apns权限，则应该会出现此错误提示。
-2. 确认你的app运行在ios真机而非模拟器上，且通知中心中对应app的通知权限没有完全关闭（alert/sound/badge至少有一个权限是打开的）。
-3. 确认你的网络状况，与apple的服务器的连接是通过tcp的 5223端口连接，确认你网络的对应端口是否可用，可通过下列命令来确认这点：
++ 确认你的app配置了apns权限，如果未配置apns权限，则应该会出现此错误提示。
++ 确认你的app运行在ios真机而非模拟器上，且通知中心中对应app的通知权限没有完全关闭（alert/sound/badge至少有一个权限是打开的）。
++ 确认你的网络状况，与apple的服务器的连接是通过tcp的 5223端口连接，确认你网络的对应端口是否可用，可通过下列命令来确认这点：
 
 		telnet 1-courier.push.apple.com 5223
 
-4. 在代码中可在以下两个函数中断点以确认device token的获取状态。
++ 在代码中可在以下两个函数中断点以确认device token的获取状态。
 
 		- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken;
 		- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error;
@@ -478,21 +478,21 @@ badge累加只能通过v3 api推送，且只有1.7.4版本以上才能支持。
 
 		[APService registerDeviceToken:deviceToken];
 
-5. 如果以上两个registerRemoteNotification的函数都未进入， 请确认你的代码中有注册申请apns的函数调用：
++ 如果以上两个registerRemoteNotification的函数都未进入， 请确认你的代码中有注册申请apns的函数调用：
 
 		[APService registerForRemoteNotificationTypes:];
 		
-6. 如果上述情况都已确认且未进入第4步的任意回调函数，则可以判断无法获取token的原因在于设备与apple的网络连通性问题（注：一个设备只有在未申请过token的情况下才会需要与apple的网络交互来获取token，已经获取过某一环境token的设备在无网络的情况下也能获取到对应环境的token（环境分为 开发/生产）），这种情况下切换网络能够在大部分情况下解决此问题。
++ 如果上述情况都已确认且未进入第4步的任意回调函数，则可以判断无法获取token的原因在于设备与apple的网络连通性问题（注：一个设备只有在未申请过token的情况下才会需要与apple的网络交互来获取token，已经获取过某一环境token的设备在无网络的情况下也能获取到对应环境的token（环境分为 开发/生产）），这种情况下切换网络能够在大部分情况下解决此问题。
 
-7. 如果仍然有问题，请将上述步骤的结果以邮件附件的形式发送到JPush支持邮箱，我们将协助你解决此问题。
++ 如果仍然有问题，请将上述步骤的结果以邮件附件的形式发送到JPush支持邮箱，我们将协助你解决此问题。
 
 <br />
 
 ####**上传到appStore的版本为什么收不到推送？**
 
-1. 请确认xcode选择的生产证书和上传的证书的bundleid一致；
-2. 如果是在jpush网站上推送，请确认新建通知时推送对象是否选择了生产环境；
-3. 如果是v3 api推送，请确认是否使用了apns_production参数，值是否为：true；如果没有使用apns_production参数请确认jpush网站上该应用的部署环境是否已经切换到生产环境。
++ 请确认xcode选择的生产证书和上传的证书的bundleid一致；
++ 如果是在jpush网站上推送，请确认新建通知时推送对象是否选择了生产环境；
++ 如果是v3 api推送，请确认是否使用了apns_production参数，值是否为：true；如果没有使用apns_production参数请确认jpush网站上该应用的部署环境是否已经切换到生产环境。
 
 <br />
 
@@ -500,9 +500,9 @@ badge累加只能通过v3 api推送，且只有1.7.4版本以上才能支持。
 
 证书上传未通过的原因一般有：
 
-+ 1.密码错误；
-+ 2.上传的apns证书环境不一致；
-+ 3.上传的不是apns证书，可能是开发者证书也可能是apns证书那里导出来的私钥
++ 密码错误；
++ 上传的apns证书环境不一致；
++ 上传的不是apns证书，可能是开发者证书也可能是apns证书那里导出来的私钥
 
 具体请看上传后显示的错误输出内容。
 
@@ -581,14 +581,14 @@ Library 选择
 
 如果还是无法解决，可以通过以下途径寻求帮助
 
-1. 官方的QA问答网站  [https://www.jpush.cn/qa/ ](https://www.jpush.cn/qa/ )
-2. 给我们的support发邮件 (如果有敏感信息，建议使用support邮箱)   <support@jpush.cn>
++ 官方的QA问答网站  [https://www.jpush.cn/qa/ ](https://www.jpush.cn/qa/ )
++ 给我们的support发邮件 (如果有敏感信息，建议使用support邮箱)   <support@jpush.cn>
 
 为了更高效，快速的解决问题，在寻求帮助时，请提供下列信息：
 
-1. API的接口， 比如  [http://api.jpush.cn:8800/v2/push](http://api.jpush.cn:8800/v2/push)
-2. 提供appkey，massageid信息
-3. 提供调用API出现问题时的时间
++ API的接口， 比如  [http://api.jpush.cn:8800/v2/push](http://api.jpush.cn:8800/v2/push)
++ 提供appkey，massageid信息
++ 提供调用API出现问题时的时间
 
 
 
