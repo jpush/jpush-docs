@@ -1,4 +1,5 @@
 # Android SDK 集成指南
+
 ## 使用提示
 
 本文是 Android SDK 标准的集成指南文档。
