@@ -49,7 +49,7 @@
 目前SDK只支持Android 2.1或以上版本的手机系统。富媒体信息流功能则需Android3.0或以上版本的系统。
 
 ## SDK集成步骤
-### 1、导入 SDK 开发包到你自己的应用程序项目
+### 导入 SDK 开发包到你自己的应用程序项目
 
 + 解压缩 jpush-sdk_v1.x.y.zip 集成压缩包
 + 复制 libs/jpush-sdk-release1.x.y.jar 到工程 libs/ 目录下
@@ -63,7 +63,7 @@
 + 复制 res/drawable-hdpi 中的资源文件到工程的 res/drawable-hdpi/ 目录下
 + 复制 res/layout 中的布局文件到工程的 res/layout/ 目录下
 
-### 2、配置 AndroidManifest.xml
+### 配置 AndroidManifest.xml
 
 根据 SDK 压缩包里的 AndroidManifest.xml 样例文件，来配置应用程序项目的 AndroidManifest.xml 。
 
@@ -366,7 +366,7 @@ defaultConfig {
 ```
 
 
-### 3、必须权限说明
+### 必须权限说明
 
 <div class="table-d" align="center" >
   <table border="1" width = "100%">
@@ -428,7 +428,7 @@ defaultConfig {
 
 
 
-### 4、添加代码
+### 添加代码
 
 JPush SDK 提供的 API 接口，都主要集中在 cn.jpush.android.api.JPushInterface 类里。
 
@@ -464,14 +464,14 @@ JPush SDK 提供的 API 接口，都主要集中在 cn.jpush.android.api.JPushIn
 
 		
 		
-### 5、测试确认
+### 测试确认
 
-1. 确认所需的权限都已经添加。如果必须的权限未添加，日志会提示错误。
-2. 确认 AppKey（在Portal上生成的）已经正确的写入 Androidmanifest.xml 。
-3. 确认在程序启动时候调用了init(context) 接口
-4. 确认测试手机（或者模拟器）已成功连入网络
++ 确认所需的权限都已经添加。如果必须的权限未添加，日志会提示错误。
++ 确认 AppKey（在Portal上生成的）已经正确的写入 Androidmanifest.xml 。
++ 确认在程序启动时候调用了init(context) 接口
++ 确认测试手机（或者模拟器）已成功连入网络
 	＋ 客户端调用 init 后不久，如果一切正常，应有登录成功的日志信息
-5. 启动应用程序，在 Portal 上向应用程序发送自定义消息或者通知栏提示。详情请参考管理[Portal](www.jpush.cn)。
++ 启动应用程序，在 Portal 上向应用程序发送自定义消息或者通知栏提示。详情请参考管理[Portal](www.jpush.cn)。
 	+ 在几秒内，客户端应可收到下发的通知或者正定义消息
 如果 SDK 工作正常，则日志信息会如下图所示：
 
@@ -479,50 +479,50 @@ JPush SDK 提供的 API 接口，都主要集中在 cn.jpush.android.api.JPushIn
 
 如图所示，客户端启动分为 4 步：
 
-1. 检查 metadata 的 appKey 和 channel ，如果不存在，则启动失败
-2. 初始化 JPush SDK，检查 JNI 等库文件的有效性，如果库文件无效，则启动失败
-3. 检查 Androidmanifest.xml，如果有 Required 的权限不存在，则启动失败
-4. 连接服务器登录，如果存在网络问题，则登陆失败,或者前面三步有问题，不会启动JPush SDK
++ 检查 metadata 的 appKey 和 channel ，如果不存在，则启动失败
++ 初始化 JPush SDK，检查 JNI 等库文件的有效性，如果库文件无效，则启动失败
++ 检查 Androidmanifest.xml，如果有 Required 的权限不存在，则启动失败
++ 连接服务器登录，如果存在网络问题，则登陆失败,或者前面三步有问题，不会启动JPush SDK
 
 ## 从Eclipse工程导入到Android Studio
 
 JPush Demo 是极光推送随压缩包提供的用法示例Demo，原本适用于Eclipse工程。本教程将指导JPush用户用最简单的方法将极光推送Demo导入Android Studio。
 
-#### 6.1 快速集成JPush
+#### 快速集成JPush
 参考[3 分钟快速 Demo（Android）](/guideline/android_3m)，把JPush跑起来。之后你在Eclipse包浏览器中有可运行的项目。
 
 ![](image/Image.png)
 
-#### 6.2 右键点击demo工程，选择Export
+#### 右键点击demo工程，选择Export
 
 ![](image/Image_1.png)
 
-#### 6.3 选择导出目标位Gradle build文件，并确认
+#### 选择导出目标位Gradle build文件，并确认
 
 ![](image/Image_2.png)
 ![](image/Image_3.png)
 ![](image/Image_4.png)
 ![](image/Image_5.png)
 
-#### 6.4 从文件浏览器中检查
+#### 从文件浏览器中检查
 
 在Eclipse的workspace中，该Demo工程的文件夹中，生成了Gradle相关配置文件.
 
 ![](image/Image_6.png)
 
-#### 6.5 打开你的Android Studio工程，选择 File->Import Module
+#### 打开你的Android Studio工程，选择 File->Import Module
 
 在Android Studio中，一次只能打开一个Project，它相当于Eclipse中的一个workspace。而我们从Eclipse中导出的一个Project，则相当于Android Studio中的一个Module。
 
 ![](image/Image_7.png)
 
-#### 6.6 选择Eclipse workspace下的Demo工程，并确认
+#### 选择Eclipse workspace下的Demo工程，并确认
 
 ![](image/Image_8.png)
 
 ![](image/Image_9.png)
 
-#### 6.7 查看导入的Module，并且gradle会自动生成编译选项
+#### 查看导入的Module，并且gradle会自动生成编译选项
 
 ![](image/Image_10.png)
 

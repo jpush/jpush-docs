@@ -9,7 +9,7 @@ img[alt=jpush_winphone_3m] { width: 500px; }
 + 安装Demo客户端到手机
 + 在Portal上推送通知
 
-### 第一步：创建极光推送开发者账号
+### 创建极光推送开发者账号
 要创建极光推送开发者帐号，请访问[极光推送官方网站（http://jpush.cn）](http://jpush.cn)
 
 首先填写登陆信息后，点击“我同意，现在注册”
@@ -20,12 +20,12 @@ img[alt=jpush_winphone_3m] { width: 500px; }
 
 ![jpush_winphone_3m](image/QQ20140527094954.png)
 
-### 第二步：Portal上创建应用
+### Portal上创建应用
 创建帐号进入极光推送后，首先显示的是创建应用的界面。填上你的应用程序的名称，拉动滚动条到底部以及选中windows phone项的单选按钮
 
 ![jpush_winphone_3m](image/QQ20140526093051.png)
 
-### 第三步：下载应用Example
+### 下载应用Example
 
 首先下载[windows phone sdk](../../resources)
 
@@ -35,7 +35,7 @@ img[alt=jpush_winphone_3m] { width: 500px; }
 
 ![jpush_winphone_3m](image/QQ_20140526095351.jpg)
 
-### 第四步：修改Example（Windows Phone项目）app_key和channel
+### 修改Example（Windows Phone项目）app_key和channel
 打开example项目
 
 ![jpush_winphone_3m](image/QQ20140526101436.png)
@@ -48,7 +48,7 @@ img[alt=jpush_winphone_3m] { width: 500px; }
 
 ![jpush_winphone_3m](image/QQ20140526101933.png)
 
-### 第五步：运行 Example 这个应用
+### 运行 Example 这个应用
 
 上步骤导入这个 Windows phone项目后，你就马上可以按F5, 运行把这个Windows phone 应用跑起来了
 
@@ -58,7 +58,7 @@ img[alt=jpush_winphone_3m] { width: 500px; }
 
 做下一步动作之前，请确保你的手机上的网络是可用的。
 
-### 第六步：Portal上推送通知
+### Portal上推送通知
 ![jpush_winphone_3m](image/QQ20140527095852.jpg)
 
 发送消息时，选中需要的平台（Windows phone）

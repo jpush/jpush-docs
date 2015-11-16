@@ -21,13 +21,13 @@
 http://api.jpush.cn:8800/v2/push
 
 <div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">
-<p>1.  请使用域名访问 JPush API，不要直接使用 IP。
-<p>2.  本接口只支持 HTTP Post 请求。
-<p>3.  若无特殊说明，接口中统一使用 utf-8 编码。
-<p>4.  HTTP Post 的Content-Type 需采用 application/x-www-form-urlencoded
-<p>5.  考虑内容里可能有一些特殊字符，有必要在调用接口前对内容进行 URL Encode。更详细说明请参考：特殊字符问题。
-<p>6.  如果你很重视接口安全，请使用 SSL 接口，默认走443ssl加密协议端口，即接口URL改为: [> https://+ api.jpush.cn/v2/push][0]> 。
-<p>7.  无论你在极光推送Portal上的应用是生产环境还是测试环境，都使用这个 API 地址推送消息。
+<p>  请使用域名访问 JPush API，不要直接使用 IP。
+<p>  本接口只支持 HTTP Post 请求。
+<p>  若无特殊说明，接口中统一使用 utf-8 编码。
+<p>  HTTP Post 的Content-Type 需采用 application/x-www-form-urlencoded
+<p>  考虑内容里可能有一些特殊字符，有必要在调用接口前对内容进行 URL Encode。更详细说明请参考：特殊字符问题。
+<p>  如果你很重视接口安全，请使用 SSL 接口，默认走443ssl加密协议端口，即接口URL改为: [> https://+ api.jpush.cn/v2/push][0]> 。
+<p>  无论你在极光推送Portal上的应用是生产环境还是测试环境，都使用这个 API 地址推送消息。
 </div>
 
 #### 调用参数

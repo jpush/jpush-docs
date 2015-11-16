@@ -33,7 +33,7 @@
 * [gson](https://code.google.com/p/google-gson/) (Google JSON Utils)
 * [guava](https://code.google.com/p/guava-libraries/) (Google Java Utils)
 
-> 其中 slf4j 可以与 logback, log4j, commons-logging 等日志框架一起工作，可根据你的需要配置使用。
+其中 slf4j 可以与 logback, log4j, commons-logging 等日志框架一起工作，可根据你的需要配置使用。
 
 如果使用 Maven 构建项目，则需要在你的项目 pom.xml 里增加：
 
@@ -96,7 +96,7 @@
 
 #### 推送样例
 
-> 以下片断来自项目代码里的文件：cn.jpush.api.examples.PushExample
+以下片断来自项目代码里的文件：cn.jpush.api.examples.PushExample
 
 ```
         JPushClient jpushClient = new JPushClient(masterSecret, appKey, 3);
@@ -199,7 +199,7 @@
 
 #### 统计获取样例
 
-> 以下片断来自项目代码里的文件：cn.jpush.api.examples.ReportsExample
+以下片断来自项目代码里的文件：cn.jpush.api.examples.ReportsExample
 
 ```
         JPushClient jpushClient = new JPushClient(masterSecret, appKey);

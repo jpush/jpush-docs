@@ -73,12 +73,12 @@ JPush 目前在网络策略方面没有像微信这种聊天工具做得积极�
 
 #### SDK启动过程
 
-1. 检查AndroidManifest.xml中是否有配置AppKey，如果没有，则启动失败
-2. 检查 Androidmanifest.xml文件配置的正确性，必须要保证“Android SDK 集成指南”中所有标注“ 
-3. Required”的部分都正确配置，否则启动失败
-4. 检查 JPush SDK库文件的有效性，如果库文件无效，则启动失败
-5. 检查网络是否可用，如果网络可用则连接服务器登录，否则启动失败
-6. 登陆成功后可以从log中看到如下log
++ 检查AndroidManifest.xml中是否有配置AppKey，如果没有，则启动失败
++ 检查 Androidmanifest.xml文件配置的正确性，必须要保证“Android SDK 集成指南”中所有标注“ 
++ Required”的部分都正确配置，否则启动失败
++ 检查 JPush SDK库文件的有效性，如果库文件无效，则启动失败
++ 检查网络是否可用，如果网络可用则连接服务器登录，否则启动失败
++ 登陆成功后可以从log中看到如下log
 
 ![](image/jpush.jpg)
 
@@ -116,19 +116,19 @@ JPush 目前在网络策略方面没有像微信这种聊天工具做得积极�
 
 别名与标签的机制，其工作方式是：
 
-1. 客户端开发者App调用 setAliasAndTags API 来设置关系
-2. JPush SDK 把该关系设置保存到 JPush Server 上
-3. 在服务器端推送消息时，指定向之前设置过的别名或者标签推送
++ 客户端开发者App调用 setAliasAndTags API 来设置关系
++ JPush SDK 把该关系设置保存到 JPush Server 上
++ 在服务器端推送消息时，指定向之前设置过的别名或者标签推送
 
 SDK 支持的 setAliasAndTags 请参考相应的文档：[别名与标签 API](../client/android_api/#api_1)
 
 使用过程中有几个点做特别说明：
 
-1. App 调用 SDK setAliasAndTags API 时，r1.5.0 版本提供了 Callback 来返回设置状态。如果返回 6002 （超时）则建议重试
++ App 调用 SDK setAliasAndTags API 时，r1.5.0 版本提供了 Callback 来返回设置状态。如果返回 6002 （超时）则建议重试
 
 	+ 老版本没有提供 Callback 无设置状态返回，从而没有机制确定一定成功。建议升级到新版本
 	
-2. Portal 上推送或者 API 调用向别名或者标签推送时，可能会报错：不存在推送目标用户。该报错表明，JPush Server 上还没有针对你所推送的别名或者标签的用户绑定关系，所以没有推送目标。这时请开发者检查确认，开发者App是否正确地调用了 setAliasAndTags API，以及调用时是否网络不好，JPush SDK 暂时未能保存成功。
++ Portal 上推送或者 API 调用向别名或者标签推送时，可能会报错：不存在推送目标用户。该报错表明，JPush Server 上还没有针对你所推送的别名或者标签的用户绑定关系，所以没有推送目标。这时请开发者检查确认，开发者App是否正确地调用了 setAliasAndTags API，以及调用时是否网络不好，JPush SDK 暂时未能保存成功。
 
 #### 使用别名
 

@@ -62,7 +62,7 @@ JMessage 新增的依赖、配置、初始化方面，请继续参考下节。
 
 ### SDK集成步骤
 
-#### 1、在极光 Web控制台上创建应用
+#### 在极光 Web控制台上创建应用
 
 * 登录[极光Web控制台](https://www.jpush.cn/common/apps)，创建应用，上传 APNs 证书。如果对 Apple APNs 证书不太了解，请参考[iOS 证书设置指南](../client/ios_tutorials/#ios_1)。
 
@@ -72,11 +72,11 @@ JMessage 新增的依赖、配置、初始化方面，请继续参考下节。
 
 ![][1]
 
-#### 2、导入 SDK 到应用程序项目里
+#### 导入 SDK 到应用程序项目里
 
 * 把 JMessage.framework 文件加入到项目里。
 
-#### 3、必要的框架
+#### 必要的框架
 
 * CFNetwork.framework
 * CoreFoundation.framework
@@ -91,7 +91,7 @@ JMessage 新增的依赖、配置、初始化方面，请继续参考下节。
 * CoreAudioFramework
 * libsqlite3.0.dylib
 
-#### 4、Build Settings
+#### Build Settings
 
 * 在项目配置，Build Settings，Other Linker Flags 里增加如下 2 项：
 
@@ -102,7 +102,7 @@ JMessage 新增的依赖、配置、初始化方面，请继续参考下节。
 
 * 设置 Search Paths 下的 User Header Search Paths 和 Library Search Paths，比如SDK文件夹（默认为lib）与工程文件在同一级目录下，则都设置为"$(SRCROOT)/[文件夹名称]"即可。
 
-#### 6、添加代码
+#### 添加代码
 
 ##### API 与 Model
 

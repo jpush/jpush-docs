@@ -26,16 +26,16 @@
 + example文件夹：开发示例
 
 ## SDK集成步骤
-### 1、在JPush Portal上创建应用
+### 在JPush Portal上创建应用
 
 + [在JPush的管理Portal](https://www.jpush.cn)上创建应用
 + 创建成功后自动生成AppKey用以标识该应用
 
-### 2、导入API开发包到应用程序项目    
+### 导入API开发包到应用程序项目    
 
 将SDK包解压，在vs2012工程目录中的“Reference”上单击右键，在弹出菜单的右下角选择"Browse",在资源管理器的文件夹中选中SDK目录下的JPushSDK-v1.0.0.dll。
 
-### 3、配置WMAppManifest.xml
+### 配置WMAppManifest.xml
 
 在工程目录下，单击Properties右侧三角块，在展开内容处双击WMAppManifest.xml
 
@@ -43,7 +43,7 @@
 
 ![](image/WP.jpg)
 
-### 4、添加代码
+### 添加代码
 
 ####调用接口
 
