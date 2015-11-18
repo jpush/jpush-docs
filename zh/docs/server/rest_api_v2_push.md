@@ -21,13 +21,13 @@
 http://api.jpush.cn:8800/v2/push
 
 <div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">
-<p>1.  请使用域名访问 JPush API，不要直接使用 IP。
-<p>2.  本接口只支持 HTTP Post 请求。
-<p>3.  若无特殊说明，接口中统一使用 utf-8 编码。
-<p>4.  HTTP Post 的Content-Type 需采用 application/x-www-form-urlencoded
-<p>5.  考虑内容里可能有一些特殊字符，有必要在调用接口前对内容进行 URL Encode。更详细说明请参考：特殊字符问题。
-<p>6.  如果你很重视接口安全，请使用 SSL 接口，默认走443ssl加密协议端口，即接口URL改为: [> https://+ api.jpush.cn/v2/push][0]> 。
-<p>7.  无论你在极光推送Portal上的应用是生产环境还是测试环境，都使用这个 API 地址推送消息。
+<p>  请使用域名访问 JPush API，不要直接使用 IP。
+<p>  本接口只支持 HTTP Post 请求。
+<p>  若无特殊说明，接口中统一使用 utf-8 编码。
+<p>  HTTP Post 的Content-Type 需采用 application/x-www-form-urlencoded
+<p>  考虑内容里可能有一些特殊字符，有必要在调用接口前对内容进行 URL Encode。更详细说明请参考：特殊字符问题。
+<p>  如果你很重视接口安全，请使用 SSL 接口，默认走443ssl加密协议端口，即接口URL改为: [> https://+ api.jpush.cn/v2/push][0]> 。
+<p>  无论你在极光推送Portal上的应用是生产环境还是测试环境，都使用这个 API 地址推送消息。
 </div>
 
 #### 调用参数
@@ -231,29 +231,29 @@ JPush API 同时支持 Andorid 与 iOS 平台的通知推送。
 <div class="table-d" align="center" >
   <table border="1" width = "100%">
     <tr  bgcolor="#D3D3D3" >
-      <th style="padding: 0 5px;" >Key名称</th>
-      <th style="padding: 0 5px;" >选项</th>
-      <th style="padding: 0 5px;" >Value内容说明</th>
+      <th >Key名称</th>
+      <th >选项</th>
+      <th >Value内容说明</th>
     </tr>
     <tr >
-      <td style="padding: 0 5px;">message</td>
-      <td style="padding: 0 5px;">必须</td>
-      <td style="padding: 0 5px;">自定义消息的内容。 </td>
+      <td>message</td>
+      <td>必须</td>
+      <td>自定义消息的内容。 </td>
     </tr>
     <tr >
-      <td style="padding: 0 5px;">content_type</td>
-      <td style="padding: 0 5px;">可选 </td>
-      <td style="padding: 0 5px;">message 字段里的内容类型。用于特定的 message 内容解析  </td>
+      <td>content_type</td>
+      <td>可选 </td>
+      <td>message 字段里的内容类型。用于特定的 message 内容解析  </td>
     </tr>
     <tr >
-      <td style="padding: 0 5px;">title</td>
-      <td style="padding: 0 5px;">可选</td>
-      <td style="padding: 0 5px;">消息标题 </td>
+      <td>title</td>
+      <td>可选</td>
+      <td>消息标题 </td>
     </tr>
     <tr >
-      <td style="padding: 0 5px;">extras</td>
-      <td style="padding: 0 5px;">可选</td>
-      <td style="padding: 0 5px;">原样返回，JSON 格式的更多的附属信息</td>
+      <td>extras</td>
+      <td>可选</td>
+      <td>原样返回，JSON 格式的更多的附属信息</td>
     </tr>
 </table>
 </div>
@@ -305,68 +305,68 @@ HTTP 返回码为 200 时，是业务相关的错误。
 <div class="table-d" align="center" >
   <table border="1" width = "100%">
     <tr  bgcolor="#D3D3D3" >
-      <th style="padding: 0 5px;" >错误码</th>
-      <th style="padding: 0 5px;" >错误描述</th>
+      <th >错误码</th>
+      <th >错误描述</th>
     </tr>
     <tr >
-      <td style="padding: 0 5px;">0</td>
-      <td style="padding: 0 5px;">调用成功</td>
+      <td>0</td>
+      <td>调用成功</td>
     </tr>
     <tr >
-      <td style="padding: 0 5px;">10</td>
-      <td style="padding: 0 5px;">系统内部错误 </td>
+      <td>10</td>
+      <td>系统内部错误 </td>
     </tr>
     <tr >
-      <td style="padding: 0 5px;">1001</td>
-      <td style="padding: 0 5px;">只支持 HTTP Post 方法，不支持 Get 方法  </td>
+      <td>1001</td>
+      <td>只支持 HTTP Post 方法，不支持 Get 方法  </td>
     </tr>
     <tr >
-      <td style="padding: 0 5px;">1002</td>
-      <td style="padding: 0 5px;">缺少了必须的参数  </td>
+      <td>1002</td>
+      <td>缺少了必须的参数  </td>
     </tr>
     <tr >
-      <td style="padding: 0 5px;">1003</td>
-      <td style="padding: 0 5px;">参数值不合法  </td>
+      <td>1003</td>
+      <td>参数值不合法  </td>
     </tr>
     <tr >
-      <td style="padding: 0 5px;">1004</td>
-      <td style="padding: 0 5px;">verification_code 验证失败  </td>
+      <td>1004</td>
+      <td>verification_code 验证失败  </td>
     </tr>
     <tr >
-      <td style="padding: 0 5px;">1005</td>
-      <td style="padding: 0 5px;">消息体太大 </td>
+      <td>1005</td>
+      <td>消息体太大 </td>
     </tr>
     <tr >
-      <td style="padding: 0 5px;">1007</td>
-      <td style="padding: 0 5px;">receiver_value 参数 非法  </td>
+      <td>1007</td>
+      <td>receiver_value 参数 非法  </td>
     </tr>
     <tr >
-      <td style="padding: 0 5px;">1008</td>
-      <td style="padding: 0 5px;">appkey参数非法  </td>
+      <td>1008</td>
+      <td>appkey参数非法  </td>
     </tr>
     <tr >
-      <td style="padding: 0 5px;">1010</td>
-      <td style="padding: 0 5px;">msg_content 不合法   </td>
+      <td>1010</td>
+      <td>msg_content 不合法   </td>
     </tr>
     <tr >
-      <td style="padding: 0 5px;">1011</td>
-      <td style="padding: 0 5px;">没有满足条件的推送目标 </td>
+      <td>1011</td>
+      <td>没有满足条件的推送目标 </td>
     </tr>
     <tr >
-      <td style="padding: 0 5px;">1012</td>
-      <td style="padding: 0 5px;">iOS 不支持推送自定义消息。只有 Android 支持推送自定义消息。  </td>
+      <td>1012</td>
+      <td>iOS 不支持推送自定义消息。只有 Android 支持推送自定义消息。  </td>
     </tr>
     <tr >
-      <td style="padding: 0 5px;">1013</td>
-      <td style="padding: 0 5px;">content-type 只支持 application/x-www-form-urlencoded </td>
+      <td>1013</td>
+      <td>content-type 只支持 application/x-www-form-urlencoded </td>
     </tr>
     <tr >
-      <td style="padding: 0 5px;">1014</td>
-      <td style="padding: 0 5px;">消息内容包含敏感词汇。</td>
+      <td>1014</td>
+      <td>消息内容包含敏感词汇。</td>
     </tr>
     <tr >
-      <td style="padding: 0 5px;">1030</td>
-      <td style="padding: 0 5px;">内部服务超时。稍后重试。</td>
+      <td>1030</td>
+      <td>内部服务超时。稍后重试。</td>
     </tr>
   </table>
 </div>
@@ -388,5 +388,5 @@ HTTP 返回码为 200 时，是业务相关的错误。
 了解API 频率限制：[API 频率限制][3]
 
 [1]: http://www.json.org/
-[2]: ../rest_api_v3_report
-[3]: ../api_rate_limiting
+[2]: ../server/rest_api_v3_report
+[3]: ../server/server_overview/#api-rating

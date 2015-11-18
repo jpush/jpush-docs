@@ -19,64 +19,64 @@ Authorization: Basic base64_auth_string
 <div class="table-d" align="center" >
 	<table border="1" width = "100%">
 		<tr  bgcolor="#D3D3D3" >
-			<th style="padding: 0 5px;" >参数</th>
-			<th style="padding: 0 5px;" >含义</th>
-			<th style="padding: 0 5px;" >字符长度限制</th>
+			<th >参数</th>
+			<th >含义</th>
+			<th >字符长度限制</th>
 		</tr>
 		<tr >
-			<td style="padding: 0 5px;">username</td>
-			<td style="padding: 0 5px;">用户登陆名</td>
-			<td style="padding: 0 5px;">Byte(4~128)</td>
+			<td>username</td>
+			<td>用户登陆名</td>
+			<td>Byte(4~128)</td>
 		</tr>
 		<tr >
-			<td style="padding: 0 5px;">password</td>
-			<td style="padding: 0 5px;">登陆密码</td>
-			<td style="padding: 0 5px;">Byte(4~128)</td>
+			<td>password</td>
+			<td>登陆密码</td>
+			<td>Byte(4~128)</td>
 		</tr>
 		<tr >
-			<td style="padding: 0 5px;">appkey</td>
-			<td style="padding: 0 5px;">用户所属于的应用的appkey</td>
-			<td style="padding: 0 5px;"></td>
+			<td>appkey</td>
+			<td>用户所属于的应用的appkey</td>
+			<td></td>
 		</tr>
 		<tr >
-			<td style="padding: 0 5px;">nickname</td>
-			<td style="padding: 0 5px;">用户昵称</td>
-			<td style="padding: 0 5px;">Byte(0~64)</td>
+			<td>nickname</td>
+			<td>用户昵称</td>
+			<td>Byte(0~64)</td>
 		</tr>
 		<tr >
-			<td style="padding: 0 5px;t">birthday</td>
-			<td style="padding: 0 5px;">生日</td>
-			<td style="padding: 0 5px;">yyyy-MM-dd HH:mm:ss</td>
+			<td>birthday</td>
+			<td>生日</td>
+			<td>yyyy-MM-dd HH:mm:ss</td>
 		</tr>
 		<tr >
-			<td style="padding: 0 5px;">gender</td>
-			<td style="padding: 0 5px;">性别 0 - 未知， 1 - 男 ，2 - 女 </td>
-			<td style="padding: 0 5px;"></td>
+			<td>gender</td>
+			<td>性别 0 - 未知， 1 - 男 ，2 - 女 </td>
+			<td></td>
 		</tr>
 		<tr >
-			<td style="padding: 0 5px;">signature</td>
-			<td style="padding: 0 5px;">用户签名</td>
-			<td style="padding: 0 5px;">Byte(0~250)</td>
+			<td>signature</td>
+			<td>用户签名</td>
+			<td>Byte(0~250)</td>
 		</tr>
 		<tr >
-			<td style="padding: 0 5px;">region</td>
-			<td style="padding: 0 5px;">用户所属地区</td>
-			<td style="padding: 0 5px;">Byte(0~250)</td>
+			<td>region</td>
+			<td>用户所属地区</td>
+			<td>Byte(0~250)</td>
 		</tr>
 		<tr >
-			<td style="padding: 0 5px;">address</td>
-			<td style="padding: 0 5px;">用户详细地址</td>
-			<td style="padding: 0 5px;">Byte(0~250)</td>
+			<td>address</td>
+			<td>用户详细地址</td>
+			<td>Byte(0~250)</td>
 		</tr>
 		<tr >
-			<td style="padding: 0 5px;">ctime</td>
-			<td style="padding: 0 5px;">用户创建时间</td>
-			<td style="padding: 0 5px;"></td>
+			<td>ctime</td>
+			<td>用户创建时间</td>
+			<td></td>
 		</tr>
 		<tr >
-			<td style="padding: 0 5px;">mtime</td>
-			<td style="padding: 0 5px;">用户最后修改时间</td>
-			<td style="padding: 0 5px;"></td>
+			<td>mtime</td>
+			<td>用户最后修改时间</td>
+			<td></td>
 		</tr>
 	</table>
 </div>
@@ -480,44 +480,44 @@ POST /v1/messages
 <div class="table-d" align="center" >
 	<table border="1" width = "100%">
 		<tr  bgcolor="#D3D3D3" >
-			<th style="padding: 0 5px;" >参数</th>
-			<th style="padding: 0 5px;" >含义</th>
+			<th >参数</th>
+			<th >含义</th>
 		</tr>
 		<tr >
-			<td style="padding: 0 5px;">version</td>
-			<td style="padding: 0 5px;">版本号</td>
+			<td>version</td>
+			<td>版本号</td>
 		</tr>
 		<tr >
-			<td style="padding: 0 5px;">target_type</td>
-			<td style="padding: 0 5px;">发送目标类型 single - 个人，group - 群组</td>
+			<td>target_type</td>
+			<td>发送目标类型 single - 个人，group - 群组</td>
 		</tr>
 		<tr >
-			<td style="padding: 0 5px;">from_type</td>
-			<td style="padding: 0 5px;">发消息着身份 当前只限admin</td>
+			<td>from_type</td>
+			<td>发消息着身份 当前只限admin</td>
 		</tr>
 		<tr >
-			<td style="padding: 0 5px;">msg_type</td>
-			<td style="padding: 0 5px;">发消息类型 当前只限text</td>
+			<td>msg_type</td>
+			<td>发消息类型 当前只限text</td>
 		</tr>
 		<tr >
-			<td style="padding: 0 5px;t">target_id</td>
-			<td style="padding: 0 5px;">目标id single填username group 填gid</td>
+			<td>target_id</td>
+			<td>目标id single填username group 填gid</td>
 		</tr>
 		<tr >
-			<td style="padding: 0 5px;">from_id</td>
-			<td style="padding: 0 5px;">发送者的username</td>
+			<td>from_id</td>
+			<td>发送者的username</td>
 		</tr>
 		<tr >
-			<td style="padding: 0 5px;">msg_body</td>
-			<td style="padding: 0 5px;">消息体</td>
+			<td>msg_body</td>
+			<td>消息体</td>
 		</tr>
 		<tr >
-			<td style="padding: 0 5px;">msg_body -> text</td>
-			<td style="padding: 0 5px;">消息内容</td>
+			<td>msg_body -> text</td>
+			<td>消息内容</td>
 		</tr>
 		<tr >
-			<td style="padding: 0 5px;">msg_body-> extras</td>
-			<td style="padding: 0 5px;">选填的json对象 开发者可以自定义extras里面的key value	</td>
+			<td>msg_body-> extras</td>
+			<td>选填的json对象 开发者可以自定义extras里面的key value	</td>
 		</tr>
 	</table>
 </div>
@@ -571,39 +571,39 @@ Error Code
 <div class="table-d" align="center" >
 	<table border="1" width = "100%">
 		<tr  bgcolor="#D3D3D3" >
-			<th style="padding: 0 5px;" >参数</th>
-			<th style="padding: 0 5px;" >含义</th>
-			<th style="padding: 0 5px;" >字符长度限制</th>
+			<th >参数</th>
+			<th >含义</th>
+			<th >字符长度限制</th>
 		</tr>
 		<tr >
-			<td style="padding: 0 5px;">name</td>
-			<td style="padding: 0 5px;">群组名称</td>
-			<td style="padding: 0 5px;">Byte(0~64)</td>
+			<td>name</td>
+			<td>群组名称</td>
+			<td>Byte(0~64)</td>
 		</tr>
 		<tr >
-			<td style="padding: 0 5px;">desc</td>
-			<td style="padding: 0 5px;">群组描述</td>
-			<td style="padding: 0 5px;">Byte(0~250)</td>
+			<td>desc</td>
+			<td>群组描述</td>
+			<td>Byte(0~250)</td>
 		</tr>
 		<tr >
-			<td style="padding: 0 5px;">owner_username</td>
-			<td style="padding: 0 5px;">群主的username</td>
-			<td style="padding: 0 5px;">Byte(4-128)</td>
+			<td>owner_username</td>
+			<td>群主的username</td>
+			<td>Byte(4-128)</td>
 		</tr>
 		<tr >
-			<td style="padding: 0 5px;">level</td>
-			<td style="padding: 0 5px;">群组的等级 1 - 最大人数40，2 - 最大人数100，3 - 最大人数 200， 4 最大人数 500</td>
-			<td style="padding: 0 5px;"></td>
+			<td>level</td>
+			<td>群组的等级 1 - 最大人数40，2 - 最大人数100，3 - 最大人数 200， 4 最大人数 500</td>
+			<td></td>
 		</tr>
 		<tr >
-			<td style="padding: 0 5px;t">ctime</td>
-			<td style="padding: 0 5px;">创建时间</td>
-			<td style="padding: 0 5px;"></td>
+			<td>ctime</td>
+			<td>创建时间</td>
+			<td></td>
 		</tr>
 		<tr >
-			<td style="padding: 0 5px;">mtime</td>
-			<td style="padding: 0 5px;">最后修改时间</td>
-			<td style="padding: 0 5px;"></td>
+			<td>mtime</td>
+			<td>最后修改时间</td>
+			<td></td>
 		</tr>
 	</table>
 </div>
@@ -836,7 +836,7 @@ Example Response
 
 ### HTTP 返回
 
-HTTP 返回码参考文档：[HTTP-Status-Code](../http_status_code)
+HTTP 返回码参考文档：[HTTP-Status-Code](../server/http_status_code)
 
 #### Example Error Response
 
@@ -857,136 +857,136 @@ HTTP 返回码参考文档：[HTTP-Status-Code](../http_status_code)
 <div class="table-d" align="center" >
 	<table border="1" width = "100%">
 		<tr  bgcolor="#D3D3D3" >
-			<th style="padding: 0 5px;text-align:center;" >Code</th>
-			<th style="padding: 0 5px;" >HTTP</th>
-			<th style="padding: 0 5px;" >Error Message</th>
-			<th style="padding: 0 5px;" >说明</th>
+			<th >Code</th>
+			<th >HTTP</th>
+			<th >Error Message</th>
+			<th >说明</th>
 		</tr>
 		<tr >
-			<td style="padding: 0 5px;text-align:center;">899000</td>
-			<td style="padding: 0 5px;">500</td>
-			<td style="padding: 0 5px;">Server internal error</td>
-			<td style="padding: 0 5px;">系统内部错误</td>
+			<td>899000</td>
+			<td>500</td>
+			<td>Server internal error</td>
+			<td>系统内部错误</td>
 		</tr>
 		<tr >
-			<td style="padding: 0 5px;text-align:center;">899001</td>
-			<td style="padding: 0 5px;">403</td>
-			<td style="padding: 0 5px;">User exists</td>
-			<td style="padding: 0 5px;">用户已存在</td>
+			<td>899001</td>
+			<td>403</td>
+			<td>User exists</td>
+			<td>用户已存在</td>
 		</tr>
 		<tr >
-			<td style="padding: 0 5px;text-align:center;">899002</td>
-			<td style="padding: 0 5px;">403</td>
-			<td style="padding: 0 5px;">No sush user</td>
-			<td style="padding: 0 5px;">用户不存在</td>
+			<td>899002</td>
+			<td>403</td>
+			<td>No sush user</td>
+			<td>用户不存在</td>
 		</tr>
 		<tr >
-			<td style="padding: 0 5px;text-align:center;">899003</td>
-			<td style="padding: 0 5px;">400</td>
-			<td style="padding: 0 5px;">Parameter invalid!</td>
-			<td style="padding: 0 5px;">请求参数不合法 </td>
+			<td>899003</td>
+			<td>400</td>
+			<td>Parameter invalid!</td>
+			<td>请求参数不合法 </td>
 		</tr>
 		<tr >
-			<td style="padding: 0 5px;text-align:center;">899004</td>
-			<td style="padding: 0 5px;">403</td>
-			<td style="padding: 0 5px;">Password error</a></td>
-			<td style="padding: 0 5px;">密码错误</td>
+			<td>899004</td>
+			<td>403</td>
+			<td>Password error</a></td>
+			<td>密码错误</td>
 		</tr>
 		<tr >
-			<td style="padding: 0 5px;text-align:center;">899005</td>
-			<td style="padding: 0 5px;">403</td>
-			<td style="padding: 0 5px;">Invalid uid </td>
-			<td style="padding: 0 5px;">uid 不存在</td>
+			<td>899005</td>
+			<td>403</td>
+			<td>Invalid uid </td>
+			<td>uid 不存在</td>
 		</tr>
 		<tr >
-			<td style="padding: 0 5px;text-align:center;">899006</td>
-			<td style="padding: 0 5px;">403</td>
-			<td style="padding: 0 5px;">gid invalid</td>
-			<td style="padding: 0 5px;">gid 不存在</td>
+			<td>899006</td>
+			<td>403</td>
+			<td>gid invalid</td>
+			<td>gid 不存在</td>
 		</tr>
 		<tr >
-			<td style="padding: 0 5px;text-align:center;">899007</td>
-			<td style="padding: 0 5px;">401</td>
-			<td style="padding: 0 5px;">Missing authen info.</td>
-			<td style="padding: 0 5px;">校验信息为空</td>
+			<td>899007</td>
+			<td>401</td>
+			<td>Missing authen info.</td>
+			<td>校验信息为空</td>
 		</tr>
 		<tr >
-			<td style="padding: 0 5px;text-align:center;">899008</td>
-			<td style="padding: 0 5px;">401</td>
-			<td style="padding: 0 5px;">Basic authentication failed.</td>
-			<td style="padding: 0 5px;">校验失败</td>
+			<td>899008</td>
+			<td>401</td>
+			<td>Basic authentication failed.</td>
+			<td>校验失败</td>
 		</tr>
 		<tr >
-			<td style="padding: 0 5px;text-align:center;">899009</td>
-			<td style="padding: 0 5px;">400</td>
-			<td style="padding: 0 5px;">appkey not exists</td>
-			<td style="padding: 0 5px;">appkey不存在</td>
+			<td>899009</td>
+			<td>400</td>
+			<td>appkey not exists</td>
+			<td>appkey不存在</td>
 		</tr>
 		<tr >
-			<td style="padding: 0 5px;text-align:center;">899010</td>
-			<td style="padding: 0 5px;">400</td>
-			<td style="padding: 0 5px;">Delete fail</td>
-			<td style="padding: 0 5px;">删除失败</td>
+			<td>899010</td>
+			<td>400</td>
+			<td>Delete fail</td>
+			<td>删除失败</td>
 		</tr>
 		<tr >
-			<td style="padding: 0 5px;text-align:center;">899011</td>
-			<td style="padding: 0 5px;">400</td>
-			<td style="padding: 0 5px;">Repeat to add the members</td>
-			<td style="padding: 0 5px;">重复添加</td>
+			<td>899011</td>
+			<td>400</td>
+			<td>Repeat to add the members</td>
+			<td>重复添加</td>
 		</tr>
 		<tr >
-			<td style="padding: 0 5px;text-align:center;">899012</td>
-			<td style="padding: 0 5px;">403</td>
-			<td style="padding: 0 5px;">no enough space for members</td>
-			<td style="padding: 0 5px;">群组剩余位置不够</td>
+			<td>899012</td>
+			<td>403</td>
+			<td>no enough space for members</td>
+			<td>群组剩余位置不够</td>
 		</tr>
 		<tr >
-			<td style="padding: 0 5px;text-align:center;">899013</td>
-			<td style="padding: 0 5px;">403</td>
-			<td style="padding: 0 5px;">user list is bigger than 500 </td>
-			<td style="padding: 0 5px;">注册列表过长</td>
+			<td>899013</td>
+			<td>403</td>
+			<td>user list is bigger than 500 </td>
+			<td>注册列表过长</td>
 		</tr>
 		<tr >
-			<td style="padding: 0 5px;text-align:center;">899014</td>
-			<td style="padding: 0 5px;">403</td>
-			<td style="padding: 0 5px;">add success remove fail but there are user not exit in this group</td>
-			<td style="padding: 0 5px;">移除成员失败</td>
+			<td>899014</td>
+			<td>403</td>
+			<td>add success remove fail but there are user not exit in this group</td>
+			<td>移除成员失败</td>
 		</tr>
 		<tr >
-			<td style="padding: 0 5px;text-align:center;">899015</td>
-			<td style="padding: 0 5px;">403</td>
-			<td style="padding: 0 5px;">user 's group are 100 can not continue</td>
-			<td style="padding: 0 5px;">用户加入讨论组达到上限</td>
+			<td>899015</td>
+			<td>403</td>
+			<td>user 's group are 100 can not continue</td>
+			<td>用户加入讨论组达到上限</td>
 		</tr>
 		<tr >
-			<td style="padding: 0 5px;text-align:center;">899016</td>
-			<td style="padding: 0 5px;">403</td>
-			<td style="padding: 0 5px;">No authority to send message</td>
-			<td style="padding: 0 5px;">用户没有权限</td>
+			<td>899016</td>
+			<td>403</td>
+			<td>No authority to send message</td>
+			<td>用户没有权限</td>
 		</tr>
 		<tr >
-			<td style="padding: 0 5px;text-align:center;">899017</td>
-			<td style="padding: 0 5px;">403</td>
-			<td style="padding: 0 5px;">there are usernames exist in blacklist</td>
-			<td style="padding: 0 5px;">用户已经被添加进黑名单</td>
+			<td>899017</td>
+			<td>403</td>
+			<td>there are usernames exist in blacklist</td>
+			<td>用户已经被添加进黑名单</td>
 		</tr>
 		<tr >
-			<td style="padding: 0 5px;text-align:center;">899018</td>
-			<td style="padding: 0 5px;">403</td>
-			<td style="padding: 0 5px;">admin can not be added into blacklist</td>
-			<td style="padding: 0 5px;">管理员不能被添加进黑名单</td>
+			<td>899018</td>
+			<td>403</td>
+			<td>admin can not be added into blacklist</td>
+			<td>管理员不能被添加进黑名单</td>
 		</tr>
 		<tr >
-			<td style="padding: 0 5px;text-align:center;">899019</td>
-			<td style="padding: 0 5px;">403</td>
-			<td style="padding: 0 5px;">here are usernames not exist in blacklist</td>
-			<td style="padding: 0 5px;">用户不存在黑名单中</td>
+			<td>899019</td>
+			<td>403</td>
+			<td>here are usernames not exist in blacklist</td>
+			<td>用户不存在黑名单中</td>
 		</tr>
 		<tr >
-			<td style="padding: 0 5px;text-align:center;">899030</td>
-			<td style="padding: 0 5px;">503</td>
-			<td style="padding: 0 5px;">Server response time out, please try again later</td>
-			<td style="padding: 0 5px;">系统繁忙，稍后重试</td>
+			<td>899030</td>
+			<td>503</td>
+			<td>Server response time out, please try again later</td>
+			<td>系统繁忙，稍后重试</td>
 		</tr>
 	</table>
 </div>

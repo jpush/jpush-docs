@@ -28,7 +28,7 @@
                                           <h4 style="font-weight: bold;font-size: 14px;">iOS - Demo下载</h4>
                                           <p>极光IM iOS SDK集成和概述：</p>
                                           <ul style="list-style: none;margin: 0;padding: 0;font-size: 12px;">
-                                                <li><a href="..guideline/jmessage_ios_guide/">- JMessage iOS SDK 集成指南</a></li>
+                                                <li><a href="../guideline/jmessage_ios_guide/">- JMessage iOS SDK 集成指南</a></li>
                                                 <li><a href="../client/im_sdk_ios/">- JMessage SDK - iOS</a></li>
                                           </ul>
                                     </td>

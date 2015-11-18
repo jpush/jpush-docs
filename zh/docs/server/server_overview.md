@@ -15,19 +15,57 @@ JPush 提供遵从 REST 规范的 HTTP API，以供开发者远程调用 JPush �
 [1]: [URL编码 - WikiPedia定义](http://zh.wikipedia.org/wiki/%E7%99%BE%E5%88%86%E5%8F%B7%E7%BC%96%E7%A0%81)
 
 ### REST API 资源列表
-
-| 名称 | 	资源 | Base URL	 |描述|
-| ------------ | ------------- | ------------ |----------------|
-| [REST API v3 - Push](../rest_api_v3_push)	 | POST /v3/push  | https://api.jpush.cn | 推送 |
-| [REST API v3 - Report](../rest_api_v3_report) | GET /v3/received  | https://report.jpush.cn | 获取统计数据 - 消息送达 |
-| [REST API v3 - Devices](../rest_api_v3_device) | /v3/devices | https://device.jpush.cn | tag,alias 操作 |
-
+<div class="table-d" align="center" >
+        <table border="1" width = "100%">
+                <tr  bgcolor="#D3D3D3" >
+                        <th>名称</th>
+                        <th>资源</th>
+                        <th>Base URL</th>
+                        <th>描述</th>
+                </tr>
+                <tr >
+                        <td>[REST API v3 - Push](../server/rest_api_v3_push)</td>
+                        <td>POST /v3/push</td>
+                        <td>https://api.jpush.cn</td>
+                        <td>推送</td>
+                </tr>
+                <tr >
+                        <td>[REST API v3 - Report](../server/rest_api_v3_report)</td>
+                        <td>GET /v3/received</td>
+                        <td>https://report.jpush.cn</td>
+                        <td>获取统计数据 - 消息送达</td>
+                </tr>
+                <tr >
+                        <td>[REST API v3 - Devices](../server/rest_api_v3_device)</td>
+                        <td>/v3/devices</td>
+                        <td>https://device.jpush.cn</td>
+                        <td>tag,alias 操作</td>
+                </tr>
+        </table>
+</div>
 以下为老版本 API，仍然可用，但不鼓励使用。
-
-| 名称 | 	资源 | Base URL	 |描述|
-| ------------ | ------------- | ------------ |----------------|
-| [REST API v2 - Push](../rest_api_v2_push)  | POST /v2/push  | http://api.jpush.cn:8800 <br /> https://api.jpush.cn | 推送消息或通知|
-| [REST API v2 - Report](../rest_api_v2_report) | GET /v2/received  | https://report.jpush.cn | 获取统计数据 - 消息送达 |
+<div class="table-d" align="center" >
+        <table border="1" width = "100%">
+                <tr  bgcolor="#D3D3D3" >
+                        <th>名称</th>
+                        <th>资源</th>
+                        <th>Base URL</th>
+                        <th>描述</th>
+                </tr>
+                <tr >
+                        <td>[REST API v2 - Push](../server/rest_api_v2_push)</td>
+                        <td>POST /v2/push</td>
+                        <td>http://api.jpush.cn:8800 <br /> https://api.jpush.cn</td>
+                        <td>推送消息或通知</td>
+                </tr>
+                <tr >
+                        <td>[REST API v2 - Report](../server/rest_api_v2_report)</td>
+                        <td>GET /v2/received</td>
+                        <td>https://report.jpush.cn</td>
+                        <td>获取统计数据 - 消息送达</td>
+                </tr>
+        </table>
+</div>
 
 ### Authorization 用户认证
 
@@ -92,12 +130,26 @@ JPush API 对访问次数，具有频率控制。即一定的时间窗口内，A
 一个时间窗口，当前定义为：1 分钟。
 
 频率控制基于 AppKey 来定义，每个 AppKey 有一个基础的调用频率限制数量。免费版本如下表：
-
-| API 类型                            | 频率（次/分钟） |
-|-------------------------------------|-----------------|
-| [Push API v3](../rest_api_v3_push)  | 600             |
-| [Report-API](../rest_api_v3_report) | 2400            |
-| [Device-API](../rest_api_v3_device) | 600            |
+<div class="table-d" align="center" >
+        <table border="1" width = "100%">
+                <tr  bgcolor="#D3D3D3" >
+                        <th>API 类型</th>
+                        <th>频率（次/分钟）</th>
+                </tr>
+                <tr >
+                        <td>[Push API v3](../server/rest_api_v3_push)</td>
+                        <td>600</td>
+                </tr>
+                <tr >
+                        <td>[Report-API](../server/rest_api_v3_report)</td>
+                        <td>2400</td>
+                </tr>
+                <tr >
+                        <td>[Device-API](../server/rest_api_v3_device)</td>
+                        <td>600</td>
+                </tr>
+        </table>
+</div>
 
 收费版本根据终端用户规模的不同，具有不同级别的频率。如有需要，请联系商务，了解更多。
 
@@ -107,7 +159,7 @@ JPush API 对访问次数，具有频率控制。即一定的时间窗口内，A
 
 所有的 HTTP API Response Header 里都加了三项频率控制信息：
 
-+ X-Rate-Limit-Limit：当前 AppKey 一个时间窗口内可调用次数
++ X-Rate-Limit-Quota：当前 AppKey 一个时间窗口内可调用次数
 + X-Rate-Limit-Remaining：当前时间窗口剩余的可用次数
 + X-Rate-Limit-Reset：距离时间窗口重置剩余的秒数
 

@@ -15,9 +15,9 @@
 
 对应的 REST API 文档：
 
-+ [REST API - Push](../rest_api_v3_push/)
++ [REST API - Push](../server/rest_api_v3_push/)
 
-+ [REST API - Report](../rest_api_v3_report/)
++ [REST API - Report](../server/rest_api_v3_report/)
 
 版本更新:[Release](../../resources/#sdk_1)页面有详细的版本发布记录与下载。
 

@@ -70,7 +70,7 @@ JPush SDK 提供的推送服务是默认开启的。
 
 ####代码示例
 	
-以下代码来自于 [JPush Android Example。]()
+以下代码来自于 JPush Android Example。
 
 	public class MainActivity extends InstrumentedActivity implements OnClickListener {
 	    private Button mStopPush;
@@ -569,54 +569,54 @@ SDK 对自定义消息，只是传递，不会有任何界面上的展示。
 <div class="table-d" align="center" >
 	<table border="1" width = "100%">
 		<tr  bgcolor="#D3D3D3" >
-			<th style="padding: 0 5px;text-align:center;" >Code</th>
-			<th style="padding: 0 5px;" >描述</th>
-			<th style="padding: 0 5px;" >详细解释</th>
+			<th >Code</th>
+			<th>描述</th>
+			<th>详细解释</th>
 		</tr>
 		<tr >
-			<td style="padding: 0 5px;text-align:center;">6001</td>
-			<td style="padding: 0 5px;">无效的设置，tag/alias 不应参数都为 null</td>
-			<td style="padding: 0 5px;"></td>
+			<td>6001</td>
+			<td>无效的设置，tag/alias 不应参数都为 null</td>
+			<td></td>
 		</tr>
 		<tr >
-			<td style="padding: 0 5px;text-align:center;">6002</td>
-			<td style="padding: 0 5px;">设置超时</td>
-			<td style="padding: 0 5px;">建议重试</td>
+			<td>6002</td>
+			<td>设置超时</td>
+			<td>建议重试</td>
 		</tr>
 		<tr >
-			<td style="padding: 0 5px;text-align:center;">6003</td>
-			<td style="padding: 0 5px;">alias 字符串不合法</td>
-			<td style="padding: 0 5px;">有效的别名、标签组成：字母（区分大小写）、数字、下划线、汉字。</td>
+			<td>6003</td>
+			<td>alias 字符串不合法</td>
+			<td>有效的别名、标签组成：字母（区分大小写）、数字、下划线、汉字。</td>
 		</tr>
 		<tr >
-			<td style="padding: 0 5px;text-align:center;">6004</td>
-			<td style="padding: 0 5px;">alias超长。最多 40个字节</td>
-			<td style="padding: 0 5px;">中文 UTF-8 是 3 个字节</td>
+			<td>6004</td>
+			<td>alias超长。最多 40个字节</td>
+			<td>中文 UTF-8 是 3 个字节</td>
 		</tr>
 		<tr >
-			<td style="padding: 0 5px;text-align:center;">6005</td>
-			<td style="padding: 0 5px;">某一个 tag 字符串不合法</td>
-			<td style="padding: 0 5px;">有效的别名、标签组成：字母（区分大小写）、数字、下划线、汉字。</td>
+			<td>6005</td>
+			<td>某一个 tag 字符串不合法</td>
+			<td>有效的别名、标签组成：字母（区分大小写）、数字、下划线、汉字。</td>
 		</tr>
 		<tr >
-			<td style="padding: 0 5px;text-align:center;">6006</td>
-			<td style="padding: 0 5px;">某一个 tag 超长。一个 tag 最多 40个字节</td>
-			<td style="padding: 0 5px;">中文 UTF-8 是 3 个字节</td>
+			<td>6006</td>
+			<td>某一个 tag 超长。一个 tag 最多 40个字节</td>
+			<td>中文 UTF-8 是 3 个字节</td>
 		</tr>
 		<tr >
-			<td style="padding: 0 5px;text-align:center;">6007</td>
-			<td style="padding: 0 5px;">tags 数量超出限制。最多 100个</td>
-			<td style="padding: 0 5px;">这是一台设备的限制。一个应用全局的标签数量无限制。</td>
+			<td>6007</td>
+			<td>tags 数量超出限制。最多 100个</td>
+			<td>这是一台设备的限制。一个应用全局的标签数量无限制。</td>
 		</tr>
 		<tr >
-			<td style="padding: 0 5px;text-align:center;">6008</td>
-			<td style="padding: 0 5px;">tag 超出总长度限制</td>
-			<td style="padding: 0 5px;">总长度最多 1K 字节</td>
+			<td>6008</td>
+			<td>tag 超出总长度限制</td>
+			<td>总长度最多 1K 字节</td>
 		</tr>
 		<tr >
-			<td style="padding: 0 5px;text-align:center;">6011</td>
-			<td style="padding: 0 5px;">10s内设置tag或alias大于10次</td>
-			<td style="padding: 0 5px;">短时间内操作过于频繁</td>
+			<td>6011</td>
+			<td>10s内设置tag或alias大于10次</td>
+			<td>短时间内操作过于频繁</td>
 		</tr>
 	</table>
 </div>
@@ -626,8 +626,8 @@ SDK 对自定义消息，只是传递，不会有任何界面上的展示。
 
 ###  相关文档
 
-+ Android[别名与标签使用教程](../android_api/#api_1)
-+ [标签与别名 API (iOS)](../ios_api/#api-ios)
++ Android[别名与标签使用教程](/client/android_api/#api_1)
++ [标签与别名 API (iOS)](/client/ios_api/#api-ios)
 
 ## 获取 RegistrationID API
 ### 支持的版本
@@ -868,7 +868,7 @@ r1.6.0 版本开始。
 
 ### 教程与代码示例
 
-请参考文档：[自定义通知栏样式教程](../android_tutorials/#_11)
+请参考文档：[自定义通知栏样式教程](/client/android_tutorials/#_11)
 
 ### API - 设置默认通知栏样式构建类
 	public static void setDefaultPushNotificationBuilder(BasicPushNotificationBuilder builder)
@@ -1028,36 +1028,36 @@ if (JPushInterface.ACTION_RICHPUSH_CALLBACK.equals(intent.getAction())) {
 <div class="table-d" align="center" >
 	<table border="1" width = "100%">
 		<tr  bgcolor="#D3D3D3" >
-			<th style="padding: 0 5px;text-align:center;" >Code</th>
-			<th style="padding: 0 5px;" >描述</th>
+			<th >Code</th>
+			<th >描述</th>
 		</tr>
 		<tr >
-			<td style="padding: 0 5px;text-align:center;">-997</td>
-			<td style="padding: 0 5px;">注册失败（一般是由于没有网络造成的）
+			<td>-997</td>
+			<td>注册失败（一般是由于没有网络造成的）
 如果确保设备网络正常，还是一直遇到此问题，则还有另外一个原因：JPush 服务器端拒绝注册。
 
 而这个的原因一般是：你当前的 App 的 Android 包名，以及 appKey ，与你在 Portal 上注册的应用的 Android 包名与 AppKey 不相同。</td>
 		</tr>
 		<tr >
-			<td style="padding: 0 5px;text-align:center;">1005</td>
-			<td style="padding: 0 5px;">包名和AppKey 不匹配</td>
+			<td>1005</td>
+			<td>包名和AppKey 不匹配</td>
 		</tr>
 		<tr >
-			<td style="padding: 0 5px;text-align:center;">1008</td>
-			<td style="padding: 0 5px;">AppKey非法</td>
+			<td>1008</td>
+			<td>AppKey非法</td>
 		</tr>
 		<tr >
-			<td style="padding: 0 5px;text-align:center;">1009</td>
-			<td style="padding: 0 5px;">当前的appkey下没有创建Android应用。请到官网检查此应用的应用详情</td>
+			<td>1009</td>
+			<td>当前的appkey下没有创建Android应用。请到官网检查此应用的应用详情</td>
 		</tr>
 		<tr >
-			<td style="padding: 0 5px;text-align:center;">-996</td>
-			<td style="padding: 0 5px;">网络连接断开
+			<td>-996</td>
+			<td>网络连接断开
 如果确保设备网络正常，可能是由于包名不正确，服务器强制断开客户端的连接。</td>
 		</tr>
 		<tr >
-			<td style="padding: 0 5px;text-align:center;">-994</td>
-			<td style="padding: 0 5px;">网络连接超时</td>
+			<td>-994</td>
+			<td>网络连接超时</td>
 		</tr>
 	</table>
 </div>

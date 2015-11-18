@@ -14,18 +14,45 @@ JMessage 以 JPush 技术作为基础，共享 JPush 的网络长连接。在保
 
 集成 JMessage 服务的应用，从客户端 SDK，到服务端 REST API，Web 控制台，都具备并且兼容 JPush 的全部功能。
 
-![im_sdk_and_jpush](../image/jmessage_jpush_sdk.png)
+![im_sdk_and_jpush](image/jmessage_jpush_sdk.png)
 
 	对于同一个应用 JMessage 与 JPush 使用同样的 AppKey。
 
 #### JMessage 与 JPush 的区别
 
-|                  | JPush        | JMessage       |
-| ------------ | ------------- | ------------------ |
-| 使用场景 | 应用推送 | IM聊天、社交 |
-| 面向对象 | 设备          | 用户、帐号     |
-| 消息对象 | App 运营人员或者 App Server 向用户推送 | 用户之间互相交流 |
-| 发送方式 | 支持广播、Tag，或者单设备 | 单聊、群群 |
+<div class="table-d" align="center" >
+  <table border="1" width="100%">
+   <thead>
+    <tr  bgcolor="#D3D3D3" >
+      <th > </th>
+      <th >JPush</th>
+      <th >JMessage</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+      <td>使用场景</td>
+      <td>应用推送</td>
+      <td>IM聊天、社交 </td>
+    </tr>
+    <tr >
+      <td>面向对象</td>
+      <td>设备</td>
+      <td>用户、帐号</td>
+    </tr>
+    <tr >
+      <td>消息对象</td>
+      <td>App 运营人员或者 App Server 向用户推送</td>
+      <td>用户之间互相交流</td>
+    </tr>
+    <tr >
+      <td>发送方式</td>
+      <td>支持广播、Tag，或者单设备 </td>
+      <td>单聊、群群 </td>
+    </tr>
+  </table>
+</div>
+
  
 JMessage 以 IM 使用场景出发，面向用户根据登录帐号来收发消息；而 JPush 则满足推送场景，面向移动设备，根据设备的标签以及使用属性进行推送。
 
@@ -58,7 +85,7 @@ App 使用 JMessage 提供的群组功能创建群组时，得到的群组标识
 
 #### JPush 更新后的架构
 
-![jpush_im_architecture](../image/jmessage_architecture.png)
+![jpush_im_architecture](image/jmessage_architecture.png)
 
 上图是 JPush 新增了 IM 服务后的整体架构图。通过此图可以理解：
 
@@ -146,4 +173,3 @@ App 使用 JMessage 提供的群组功能创建群组时，得到的群组标识
 + [IM 业务对象](../../advanced/im_objects/)
 + [JPush Android SDK 集成指南](../../guideline/android_guide/)
 
-I

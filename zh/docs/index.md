@@ -71,7 +71,7 @@
                 <tr>
                 	<td width="25%" ><a href="guideline/android_3m/">3 分钟集成 Android SDK</a></td>
                     <td width="25%">&nbsp;</td>
-                	<td width="25%" ><a href="guideline/winphone_3m">3 分钟集成 WinPhone SDK</a></td>
+                	<td width="50%" ><a href="guideline/winphone_3m">3 分钟集成 WinPhone SDK</a></td>
                     <td width="25%">&nbsp;</td>
                 </tr>
                 </table>

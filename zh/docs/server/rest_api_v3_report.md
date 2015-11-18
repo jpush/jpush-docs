@@ -1,7 +1,7 @@
 # Report API V3
 JPush Report API V3 提供各类统计数据查询功能。
 
-这类 API 地址统一为（注意与 Push API 不同）：https://report.jpush.cn
+这类 API 地址统一为（注意与 Push API 不同）：[https://report.jpush.cn](https://report.jpush.cn)
 
 
 ###  送达统计
@@ -19,9 +19,9 @@ GET /v3/received
 #### Example Request
 
 ```
-curl -v https://report.jpush.cn/v3/received?msg_ids=1613113584,1229760629,1174658841,1174658641 -u "7d431e42dfa6a6d693ac2d04:5e987ac6d2e04d95a9d8f0d1"
+curl -v https://report.jpush.cn/v3/received?msg_ids=1613113584,1229760629 -u "7d431e42dfa6a6d693ac2d04:5e987ac6d2e04d95a9d8f0d1"
 
-< GET /v3/received?msg_ids=1613113584,1229760629,1174658841,1174658641 HTTP/1.1
+< GET /v3/received?msg_ids=1613113584,1229760629 HTTP/1.1
 < Authorization: Basic N2Q0MzFlNDJkZmE2YTZkNjkzYWMyZDA0OjVlOTg3YWM2ZDJlMDRkOTVhOWQ4ZjBkMQ==
 ```
 
@@ -35,18 +35,17 @@ curl -v https://report.jpush.cn/v3/received?msg_ids=1613113584,1229760629,117465
 < HTTP/1.1 200 OK 
 < Content-Type: application/json
 < 
-[  {"android_received":62,
+[  {"msg_id":1613113584,
+    "android_received":62,
     "ios_apns_sent":11,
-    "msg_id":1613113584},
-   {"android_received":56,
-     "ios_apns_sent":33,
-     "msg_id":1229760629},
-   {"android_received":null,
-    "ios_apns_sent":14,
-    "msg_id":1174658841},
-   {"android_received":32,
-    "ios_apns_sent":null,
-    "msg_id":1174658641}
+    "ios_msg_received": 3, 
+    "wp_mpns_sent" : 3},
+
+   {"msg_id":1229760629
+    "android_received":56,
+    "ios_apns_sent":33,
+    "ios_msg_received": 3,  
+    "wp_mpns_sent" : null}
 ]
 ```
 #### Response Params
@@ -55,7 +54,8 @@ JSON Array.
 
 + android_received Android 送达。如果无此项数据则为 null。
 + ios_apns_sent iOS 推送成功。如果无此项数据则为 null。
-
++ ios_msg_receive d  iOS 自定义消息送达数。如果无此项数据则为null。
++ wp_mpns_sent       winphone通知送达。如果无此项数据则为 null。
 
 ### 消息统计（VIP专属接口）
 
@@ -83,11 +83,16 @@ curl -v https://report.jpush.cn/v3/messages?msg_ids=269978303 -u "7d431e42dfa6a6
 < Content-Type: application/json
 <
 [
-  {"android":
-      {"received":1,"target":4,"online_push":1,"click":null,"msg_click":null
-  },
+  {
+   "android":
+      {"received":1,"target":4,"online_push":1,"click":null,"msg_click":null},
+
    "ios":
       {"apns_sent":2,"apns_target":2,"click":null,"target":10,"received":8,"msg_click":5},
+   
+   "winphone":
+      {"mpns_target": 100,"mpns_target": 100,"mpns_target": 100,},
+   
    "msg_id":269978303
   }
 ]
@@ -114,6 +119,11 @@ JSON Array
      + target 自定义消息目标数
      + received 自定义消息送达数
      + msg_click 自定义消息点击数
+
++ winphone Winphone统计数据
+     + mpns_target MPNs通知推送目标数
+     + mpns_sent    MPNS通知成功推送数
+     + click 用户点击数
 
 
 
@@ -171,7 +181,7 @@ JSON Object
 
 ###HTTP 返回码
 
-参考文档：[HTTP-Status-Code](../http_status_code)
+参考文档：[HTTP-Status-Code](../server/http_status_code)
 
 #### Example Error Response
 
@@ -192,34 +202,34 @@ JSON Object
 <div class="table-d" align="center" >
   <table border="1" width = "100%">
     <tr  bgcolor="#D3D3D3" >
-      <th style="padding: 0 5px;text-align:center;" >Code</th>
-      <th style="padding: 0 5px;" >描述</th>
-      <th style="padding: 0 5px;" >详细解释</th>
+      <th >Code</th>
+      <th >描述</th>
+      <th >详细解释</th>
     </tr>
     <tr >
-      <td style="padding: 0 5px;text-align:center;">10</td>
-      <td style="padding: 0 5px;">系统内部错误</td>
-      <td style="padding: 0 5px;">系统内部错误</a></td>
+      <td>10</td>
+      <td>系统内部错误</td>
+      <td>系统内部错误</a></td>
     </tr>
     <tr >
-      <td style="padding: 0 5px;text-align:center;">2003</td>
-      <td style="padding: 0 5px;">无权使用此接口</td>
-      <td style="padding: 0 5px;">必须改正，详情请看：<a href="./#_1">调用验证说明。</a></td>
+      <td>2003</td>
+      <td>无权使用此接口</td>
+      <td>必须改正，详情请看：<a href="./#_1">调用验证说明。</a></td>
     </tr>
     <tr >
-      <td style="padding: 0 5px;text-align:center;">3001</td>
-      <td style="padding: 0 5px;">HTTP Basic authorization 失败。</td>
-      <td style="padding: 0 5px;">请参考 API 文档相关说明</td>
+      <td>3001</td>
+      <td>HTTP Basic authorization 失败。</td>
+      <td>请参考 API 文档相关说明</td>
     </tr>
     <tr >
-      <td style="padding: 0 5px;text-align:center;">3004</td>
-      <td style="padding: 0 5px;">time_unit与start参数值不匹配</td>
-      <td style="padding: 0 5px;">必须修正，详情请看：<a href="./#_1">调用验证说明。</a></td>
+      <td>3004</td>
+      <td>time_unit与start参数值不匹配</td>
+      <td>必须修正，详情请看：<a href="./#_1">调用验证说明。</a></td>
     </tr>
     <tr >
-      <td style="padding: 0 5px;text-align:center;">3005</td>
-      <td style="padding: 0 5px;">只支持查询60天以内的用户信息</td>
-      <td style="padding: 0 5px;"></td>
+      <td>3005</td>
+      <td>只支持查询60天以内的用户信息</td>
+      <td></td>
     </tr>
   </table>
 </div>

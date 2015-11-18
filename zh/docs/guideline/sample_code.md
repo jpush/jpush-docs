@@ -13,7 +13,7 @@
 
 开发者把这个应用导入 Eclipse 里边，理论上就可以马上编译成功（不需要动一行代码与配置），运行安装到手机（或者模拟器）里去。
 
-这个 Android Example 也就是 [3 分钟快速 Demo](../android_3m) 快速教程提及到的示例项目。
+这个 Android Example 也就是 [3 分钟快速 Demo](../guideline/android_3m) 快速教程提及到的示例项目。
 
 
 
@@ -37,4 +37,4 @@
 	+ 下载打包好可运行的文件：[https://github.com/good-life/PushTalk/tree/master/dist](https://github.com/good-life/PushTalk/tree/master/dist)
 + 首发介绍文章：[http://www.androidpush.cn/post/2012-11-27/40043266501](http://www.androidpush.cn/post/2012-11-27/40043266501)
 + 定制指南文章：[http://www.androidpush.cn/post/2012-12-01/pushtalk_customization_guide](http://www.androidpush.cn/post/2012-12-01/pushtalk_customization_guide)
-![](../image/pushtalk_architecture_2.png)
+![](image/pushtalk_architecture_2.png)

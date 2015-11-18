@@ -8,9 +8,9 @@ JMessage SDK 是基于 JPush SDK 开发的，完整支持 JPush 推送的全部�
 
 在上述文档基础上，需要如下几个集成操作：
 
-1. 复制 IM SDK jar 包文件：jmessage-sdk-v1.X.X.jar
-2. 修改 AndroidManifest.xml 文件
-3. 代码初始化
++ 复制 IM SDK jar 包文件：jmessage-sdk-v1.X.X.jar
++ 修改 AndroidManifest.xml 文件
++ 代码初始化
 
 以上步骤以下详述。
 
@@ -53,12 +53,13 @@ JMessage SDK 是基于 JPush SDK 开发的，完整支持 JPush 推送的全部�
 <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 <uses-permission android:name="android.permission.WRITE_SETTINGS" />
 
-<!-- Required Push SDK核心功能-->
+<!-- Required SDK 核心功能-->
+        <!-- option since 2.0.5 可配置PushService，DaemonService,PushReceiver,AlarmReceiver的android:process参数 将JPush相关组件设置为一个独立进程 -->
+        <!-- 如：android:process=":remote" -->
         <service
             android:name="cn.jpush.android.service.PushService"
             android:enabled="true"
-            android:exported="false"
-            android:process=":remote">
+            android:exported="false" >
             <intent-filter>
                 <action android:name="cn.jpush.android.intent.REGISTER" />
                 <action android:name="cn.jpush.android.intent.REPORT" />
@@ -187,6 +188,14 @@ public void onCreate() {
 -keepclassmembers class ** {
     public void onEvent*(**);
 }
+
+#========================gson================================
+-dontwarn com.google.**
+-keep class com.google.gson.** {*;}
+
+#========================protobuf================================
+#-dontwarn com.google.**
+-keep class com.google.protobuf.** {*;}
 
 ```
     

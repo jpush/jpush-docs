@@ -7,7 +7,7 @@
 
 gem : ([https://rubygems.org/gems/jpush](https://rubygems.org/gems/jpush))
 
-对应的 REST API 文档：[REST API - Push](../rest_api_v3_push/), [REST API - Report](../rest_api_v3_report/). 
+对应的 REST API 文档：[REST API - Push](../server/rest_api_v3_push/), [REST API - Report](../server/rest_api_v3_report/). 
 
 本开发包 Rubydoc：[JPush API Ruby Client Doc](http://www.rdoc.info/github/jpush/jpush-api-ruby-client/master/frames)
 

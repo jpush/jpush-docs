@@ -10,68 +10,68 @@ img[alt=jpush_web] { width: 700px; }
 
 创建应用 : 点击 创建应用 按钮即可;
 
-![](../image/create_application.png)
+![](image/create_application.png)
 
 配置应用信息 : 输入应用名称, 上传一个图标, 然后填写一个包名, JPush 系统会在后台根据你输入的包名生成的推送的 Android 应用 Demo, 该 Demo 包含了该配置的信息;
 
-![jpush_web](../image/application_info.png)
+![jpush_web](image/application_info.png)
 
 查看应用界面
 
-![jpush_web](../image/application_setting.png)
+![jpush_web](image/application_setting.png)
 
 
 ### 应用管理
 
 点击回首页按钮，点击"应用管理"按钮，可以浏览该应用的详细信息，通过链接应用名称、图表、通知、编辑，可以进入更详细的页面进行浏览查看和编辑
 
-![jpush_web](../image/application_g.png)
+![jpush_web](image/application_g.png)
 
 应用详情如下
 
-![jpush_web](../image/application_moreinfo.png)
+![jpush_web](image/application_moreinfo.png)
 
 应用设置如下
 
-![jpush_web](../image/application_moresetting.png)
+![jpush_web](image/application_moresetting.png)
 
 ### 概览
 
 点击回首页按钮①，点击②"概览"按钮，可以浏览汇总信息和应用列表信息
 
-![jpush_web](../image/application_list.png)
+![jpush_web](image/application_list.png)
 
 ### 分组管理
 
 点击回首页按钮，点击"分组管理"按钮，可以浏览应用的分组管理信息
 
-![jpush_web](../image/application_group.png)
+![jpush_web](image/application_group.png)
 
 #### 报表下载
 
 点击回首页按钮，点击"报表下载"按钮，可以根据时间对报表进行下载
 
-![jpush_web](../image/application_data.png)
+![jpush_web](image/application_data.png)
 
 ### 发送通知
 
 在应用的 "推送" 模块, 点击"发送通知"按钮; 输入推送内容 , 点击页面最下方的 "立即发送" 按钮
 
-![jpush_web](../image/application_sendntf.png)
+![jpush_web](image/application_sendntf.png)
 
 在Web 界面会弹出对话框, 提示是否发送, 选 "发送吧" 即可;
 
-![jpush_web](../image/send_.png)
+![jpush_web](image/send_.png)
 
 查看推送结果 : 点击之后又弹出对话框, 点击 "去看看" 可以查看推送结果;
 
-![jpush_web](../image/send_done.png)
+![jpush_web](image/send_done.png)
 
 ### 自定义消息
 
 在应用的 "推送" 模块, 点击"自定义消息"按钮; 输入推送内容 , 点击页面最下方的 "立即发送" 按钮
 
-![jpush_web](../image/send_pass.png)
+![jpush_web](image/send_pass.png)
 
 ### 富媒体推送
 
@@ -80,37 +80,37 @@ img[alt=jpush_web] { width: 700px; }
 #### 通过信息流模板发送
 * Step1：在应用的“推送”模块，单击“富媒体”按钮；选择“信息流”，挑选适合的模板。
 
-![jpush_web](../image/richpush1.png)
+![jpush_web](image/richpush1.png)
 
 * Step2：进入模板内容编辑页面，填写所有内容，单击下一步；左侧可预览内容的展示效果。通过左侧的预览区域，可以切换编辑模块和添加子模块。
 
-![jpush_web](../image/richpush2.png)
-![image](../image/richpush3.png)
+![jpush_web](image/richpush2.png)
+![image](image/richpush3.png)
 
 
 * Step3：进行推送设置。单击“预览富媒体页面”，可以预览刚刚编辑完成的信息流模板。单击页面最下方的 "立即发送" 按钮，即可完成该信息流的发送。
 
-![jpush_web](../image/richpush4.png)
+![jpush_web](image/richpush4.png)
 
 #### 通过URL发送通知
 
 * Step1：在应用的“推送”模块，单击“富媒体”按钮，选择“URL”。
 
-![jpush_web](../image/richpush5.png)
+![jpush_web](image/richpush5.png)
 
 * Step2：输入想要推送的页面的URL，单击“下一步”按钮。由于通知的大小有限制，URL不可过长。若URL超过限制长度，请自行转成短地址再输入发送。
 
-![image](../image/richpush6.png)
+![image](image/richpush6.png)
 
 * Step3：进行推送设置。URL不提供页面预览功能，请确保输入正确的URL。单击页面最下方的 "立即发送" 按钮，即可完成发送。
 
-![jpush_web](../image/richpush7.png)
+![jpush_web](image/richpush7.png)
 
 ### 推送历史
 
 在应用的 "推送" 模块, 点击"推送历史"按钮; 在右边可以浏览推送的历史数据，包含推送时间，内容，类型，IOS 目标|成功，Android目标|成功，Winphone目标|成功，操作。
 
-![jpush_web](../image/send_history.png)
+![jpush_web](image/send_history.png)
 
 **说明**
 
@@ -123,23 +123,23 @@ img[alt=jpush_web] { width: 700px; }
 
 详情如下：
 
-![jpush_web](../image/send_number.png)
+![jpush_web](image/send_number.png)
 
 统计示例
 
-![jpush_web](../image/total.png)
+![jpush_web](image/total.png)
 
 ### 定时推送
 
 在应用的 "推送" 模块, 点击"定时消息"按钮;在最右边的下拉菜单中可以选择“通知”还是“自定义消息”的定时推动
 
-![jpush_web](../image/Schedule_send.png)
+![jpush_web](image/Schedule_send.png)
 
 ### 定速推送
 
 定速推送时长(分钟),在应用的 "推送" 模块,点击定速推送
 
-![jpush_web](../image/speed.png)
+![jpush_web](image/speed.png)
 
 ### 统计与报表说明
 
@@ -234,5 +234,5 @@ Android 系统，需要实现推送效果反馈 API才可以统计到活跃用�
 
 例如：日留存。某一天新增的用户数为100，在 3 天后这 100 个用户中依然在线的用户数为 50，那么这天新增用户的 3 天留存率为 50%。
 
-[0]: ../image/report_functions.png
-[1]: ../image/report_functions2.png
+[0]: image/report_functions.png
+[1]: image/report_functions2.png

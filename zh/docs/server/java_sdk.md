@@ -4,7 +4,7 @@
 
 这是 JPush REST API 的 Java 版本封装开发包，是由极光推送官方提供的，一般支持最新的 API 功能。
 
-对应的 REST API 文档：[REST API - Push](../rest_api_v3_push/), [REST API - Report](../rest_api_v3_report/). 
+对应的 REST API 文档：[REST API - Push](../server/rest_api_v3_push/), [REST API - Report](../server/rest_api_v3_report/). 
 
 本开发包 Javadoc：[API Docs](http://jpush.github.io/jpush-api-java-client/apidocs/)
 
@@ -33,7 +33,7 @@
 * [gson](https://code.google.com/p/google-gson/) (Google JSON Utils)
 * [guava](https://code.google.com/p/guava-libraries/) (Google Java Utils)
 
-> 其中 slf4j 可以与 logback, log4j, commons-logging 等日志框架一起工作，可根据你的需要配置使用。
+其中 slf4j 可以与 logback, log4j, commons-logging 等日志框架一起工作，可根据你的需要配置使用。
 
 如果使用 Maven 构建项目，则需要在你的项目 pom.xml 里增加：
 
@@ -96,7 +96,7 @@
 
 #### 推送样例
 
-> 以下片断来自项目代码里的文件：cn.jpush.api.examples.PushExample
+以下片断来自项目代码里的文件：cn.jpush.api.examples.PushExample
 
 ```
         JPushClient jpushClient = new JPushClient(masterSecret, appKey, 3);
@@ -199,7 +199,7 @@
 
 #### 统计获取样例
 
-> 以下片断来自项目代码里的文件：cn.jpush.api.examples.ReportsExample
+以下片断来自项目代码里的文件：cn.jpush.api.examples.ReportsExample
 
 ```
         JPushClient jpushClient = new JPushClient(masterSecret, appKey);

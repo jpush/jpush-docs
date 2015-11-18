@@ -4,7 +4,7 @@
 + [iOS 客户端 SDK 下载](../../resources/#ios-sdk)
 ### JPush iOS
 
-![jpush_ios](../image/jpush_ios.png)
+![jpush_ios](image/jpush_ios.png)
 
 从上图可以看出，JPush iOS Push 包括 2 个部分，APNs 推送（代理），与 JPush 应用内消息。
 
@@ -18,7 +18,7 @@ APNs 通知：是指通过向 Apple APNs 服务器发送通知，到达 iOS 设�
 
 JPush iOS SDK 不负责 APNs 通知的展现，只是向 JPush 服务器端上传 Device Token 信息，JPush 服务器端代理开发者向 Apple APNs 推送通知。
 
-[获取 APNs 推送内容](../ios_api/#apns)
+[获取 APNs 推送内容](../client/ios_api/#apns)
 
 #### 应用内消息
 
@@ -26,7 +26,7 @@ JPush iOS SDK 不负责 APNs 通知的展现，只是向 JPush 服务器端上�
 
 此消息不经过 APNs 服务器，完全由 JPush 提供功能支持。
 
-[获取应用内消息推送内容](../ios_api/#_19)
+[获取应用内消息推送内容](../client/ios_api/#_19)
 
 #### APNs通知与应用内消息对比
 
@@ -38,39 +38,39 @@ JPush API v3 支持同时一次调用同时推送 APNs 通知与 JPush 应用内
 <div class="table-d" align="center" >
   <table border="1" width = "100%">
     <tr  bgcolor="#D3D3D3" >
-      <th style="padding: 0 5px;" ></th>
-      <th style="padding: 0 5px;" >APNS</th>
-      <th style="padding: 0 5px;" >应用内消息</th>
+      <th ></th>
+      <th >APNS</th>
+      <th >应用内消息</th>
     </tr>
     <tr >
-      <td style="padding: 0 5px;">推送原则</td>
-      <td style="padding: 0 5px;">每次推送都会发给APNS 服务器发送经由APNS服务器下发到手机。</td>
-      <td style="padding: 0 5px;">每次推送都会尝试发送，如果用户在线则立即发送。</td>
+      <td>推送原则</td>
+      <td>由JPush服务器发送至APNS服务器，再下发到手机。</td>
+      <td>由JPush直接下发，每次推送都会尝试发送，如果用户在线则立即收到。否则保存为离线。</td>
     </tr>
     <tr >
-      <td style="padding: 0 5px;">离线消息</td>
-      <td style="padding: 0 5px;">离线消息由APNS服务器缓存按照apple的逻辑处理。</td>
-      <td style="padding: 0 5px;">用户不在线JPush server 会保存离线消息,时长默认保留一天。离线消息保留5条。</td>
+      <td>离线消息</td>
+      <td>离线消息由APNS服务器缓存按照Apple的逻辑处理。</td>
+      <td>用户不在线JPush server 会保存离线消息,时长默认保留一天。离线消息保留5条。</td>
     </tr>
     <tr >
-      <td style="padding: 0 5px;">是否有APNS生产和开发环境区别。</td>
-      <td style="padding: 0 5px;">是，只有证书和应用环境匹配才可以收到。</td>
-      <td style="padding: 0 5px;">否，应用内消息与iOS 环境证书状态无关。</td>
+      <td>推送与证书环境</td>
+      <td>应用证书和推送指定的iOS环境匹配才可以收到。</td>
+      <td>自定义消息与APNS证书环境无关。</td>
     </tr>
     <tr >
-      <td style="padding: 0 5px;">接收方式</td>
-      <td style="padding: 0 5px;">应用退出，后台以及打开状态都是会收到APNS</td>
-      <td style="padding: 0 5px;">需要应用打并与jpush 建立连接，然后接收离线消息和在线消息。</td>
+      <td>接收方式</td>
+      <td>应用退出，后台以及打开状态都能收到APNS</td>
+      <td>需要应用打开，与JPush 建立连接才能收到。</td>
     </tr>
     <tr >
-      <td style="padding: 0 5px;">展示效果</td>
-      <td style="padding: 0 5px;">如果应用后台或退出，会以系统通知方式展现。<p>如果应用处于打开状态，不展示。</td>
-      <td style="padding: 0 5px;">默认不展示。</td>
+      <td>展示效果</td>
+      <td>如果应用后台或退出，会有系统的APNS提醒。<p>如果应用处于打开状态，则不展示。</td>
+      <td>非APNS，默认不展示。可通过获取接口自行编码处理。</td>
     </tr>
     <tr >
-      <td style="padding: 0 5px;">处理函数</td>
-      <td style="padding: 0 5px;">didReceiveRemoteNotification</td>
-      <td style="padding: 0 5px;">networkDidReceiveMessage</td>
+      <td>处理函数</td>
+      <td>Apple提供的接口：<a href="../ios_api/#apns">didReceiveRemoteNotification</a></td>
+      <td>JPush提供的接口：<a href="../ios_api/#_19">networkDidReceiveMessage</a></td>
     </tr>
   </table>
 </div>
@@ -83,7 +83,7 @@ JPush API v3 支持同时一次调用同时推送 APNs 通知与 JPush 应用内
 请参考以下文档与教程，来集成 IOS SDK。
 
 + [IOS 集成指南](../../guideline/ios_guide)
-+ [IOS 教程](../ios_tutorials)
++ [IOS 教程](../client/ios_tutorials)
 
 
 

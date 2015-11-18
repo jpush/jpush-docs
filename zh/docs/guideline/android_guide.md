@@ -1,4 +1,5 @@
 # Android SDK 集成指南
+
 ## 使用提示
 
 本文是 Android SDK 标准的集成指南文档。
@@ -7,7 +8,7 @@
 
 本文随SDK压缩包分发。在你看到本文时，可能当前的版本与本文已经不是很适配。所以建议关注在线文档：
 
-+ [3 分钟快速 Demo（Android）](../android_3m)：如果您想要快速地测试、感受下极光推送的效果，请参考本文在几分钟内跑通Demo。
++ [3 分钟快速 Demo（Android）](/guideline/android_3m)：如果您想要快速地测试、感受下极光推送的效果，请参考本文在几分钟内跑通Demo。
 + 极光推送文档网站上，有极光推送相关的所有指南、API、教程等全部的文档。包括本文档的更新版本，都会及时地发布到该网站上。
 + [极光推送问答](https://www.jpush.cn/qa/)网站：大家除了文档之外，还有问题与疑问，会到这里来提问题，以及时地得到解答。
 + 如果您看到本文档，但还未下载Android SDK，请访问[SDK下载页面](../../resources)下载。
@@ -48,7 +49,7 @@
 目前SDK只支持Android 2.1或以上版本的手机系统。富媒体信息流功能则需Android3.0或以上版本的系统。
 
 ## SDK集成步骤
-### 1、导入 SDK 开发包到你自己的应用程序项目
+### 导入 SDK 开发包到你自己的应用程序项目
 
 + 解压缩 jpush-sdk_v1.x.y.zip 集成压缩包
 + 复制 libs/jpush-sdk-release1.x.y.jar 到工程 libs/ 目录下
@@ -62,7 +63,7 @@
 + 复制 res/drawable-hdpi 中的资源文件到工程的 res/drawable-hdpi/ 目录下
 + 复制 res/layout 中的布局文件到工程的 res/layout/ 目录下
 
-### 2、配置 AndroidManifest.xml
+### 配置 AndroidManifest.xml
 
 根据 SDK 压缩包里的 AndroidManifest.xml 样例文件，来配置应用程序项目的 AndroidManifest.xml 。
 
@@ -71,6 +72,8 @@
 + 复制备注为 "Required" 的部分
 + 将备注为替换包名的部分，替换为当前应用程序的包名
 + 将AppKey替换为在Portal上注册该应用的的Key,例如（9fed5bcb7b9b87413678c407）
+
+**Eclipse中AndroidManifest 示例**
 
 ```
 AndroidManifest.xml权限配置：
@@ -112,7 +115,9 @@ AndroidManifest.xml权限配置：
         android:label="@string/app_name"
         android:name="Your Application">
          
-        <!-- Required -->
+        <!-- Required SDK 核心功能-->
+        <!-- option since 2.0.5 可配置PushService，DaemonService,PushReceiver,AlarmReceiver的android:process参数 将JPush相关组件设置为一个独立进程 -->
+        <!-- 如：android:process=":remote" -->
         <service
             android:name="cn.jpush.android.service.PushService"
             android:enabled="true"
@@ -210,61 +215,212 @@ AndroidManifest.xml权限配置：
     </application>
 </manifest>
 ```
-### 3、必须权限说明
+
+**AndroidStudio中AndroidManifest 示例**
+```
+<?xml version="1.0" encoding="utf-8"?
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+     package="您应用的包名" 
+     android:versionCode="205"
+     android:versionName="2.0.5"
+     >
+     <uses-sdk android:minSdkVersion="11" android:targetSdkVersion="17" />
+     <!-- Required 自定义用来收发消息的相关权限 -->
+     <permission
+         android:name="${applicationId}.permission.JPUSH_MESSAGE"
+         android:protectionLevel="signature" />
+  
+     <!-- Required 一些系统要求的权限，如访问网络等-->
+     <uses-permission android:name="${applicationId}.permission.JPUSH_MESSAGE" />
+     <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
+     <uses-permission android:name="android.permission.INTERNET" />
+     <uses-permission android:name="android.permission.WAKE_LOCK" />
+     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+     <uses-permission android:name="android.permission.VIBRATE" />
+     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> 
+     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/> 
+  
+  
+     <!-- Optional for location -->
+     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+     <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+  
+  
+     <application
+         android:icon="@drawable/ic_launcher"
+         android:label="@string/app_name">
+  
+  
+         <!-- Required SDK核心功能-->
+         <activity
+             android:name="cn.jpush.android.ui.PushActivity"
+             android:configChanges="orientation|keyboardHidden" 
+             android:theme="@android:style/Theme.NoTitleBar" 
+             android:exported="false">
+             <intent-filter>
+                 <action android:name="cn.jpush.android.ui.PushActivity" />
+                 <category android:name="android.intent.category.DEFAULT" />
+                 <category android:name="${applicationId}" />
+             </intent-filter>
+         </activity>
+  
+         <!-- Required SDK核心功能-->
+         <service
+             android:name="cn.jpush.android.service.DownloadService"
+             android:enabled="true"
+             android:exported="false" >
+         </service>
+  
+         <!-- Required SDK 核心功能-->
+         <!-- option since 2.0.5 可配置PushService，DaemonService,PushReceiver,AlarmReceiver的android:process参数 将JPush相关组件设置为一个独立进程 -->
+         <!-- 如：android:process=":remote" -->
+         <service
+             android:name="cn.jpush.android.service.PushService"
+             android:enabled="true"
+             android:exported="false">
+             <intent-filter>
+                 <action android:name="cn.jpush.android.intent.REGISTER" />
+                 <action android:name="cn.jpush.android.intent.REPORT" />
+                 <action android:name="cn.jpush.android.intent.PushService" />
+                 <action android:name="cn.jpush.android.intent.PUSH_TIME" />
+  
+             </intent-filter>
+         </service>
+  
+         <!-- Required SDK 核心功能 since 1.8.0 -->
+         <service
+             android:name="cn.jpush.android.service.DaemonService"
+             android:enabled="true"
+             android:exported="true">
+             <intent-filter >
+                 <action android:name="cn.jpush.android.intent.DaemonService" />
+                 <category android:name="${applicationId}"/>
+             </intent-filter>
+         </service>
+  
+         <!-- Required SDK核心功能-->
+         <receiver
+             android:name="cn.jpush.android.service.PushReceiver"
+             android:enabled="true"
+             android:exported="false">
+             <intent-filter android:priority="1000">
+                 <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED_PROXY" /> <!--Required 显示通知栏 -->
+                 <category android:name="${applicationId}" />
+             </intent-filter>
+             <intent-filter>
+                 <action android:name="android.intent.action.USER_PRESENT" />
+                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+             </intent-filter>
+             <!-- Optional -->
+             <intent-filter>
+                 <action android:name="android.intent.action.PACKAGE_ADDED" />
+                 <action android:name="android.intent.action.PACKAGE_REMOVED" />
+                 <data android:scheme="package" />
+             </intent-filter>
+         </receiver>
+  
+         <!-- Required SDK核心功能-->
+         <receiver android:name="cn.jpush.android.service.AlarmReceiver" />
+  
+         <!-- User defined. 用户自定义的广播接收器-->
+         <receiver
+             android:name="您自己定义的Receiver"
+             android:enabled="true">
+             <intent-filter>
+                 <action android:name="cn.jpush.android.intent.REGISTRATION" /> <!--Required 用户注册SDK的intent-->
+                 <action android:name="cn.jpush.android.intent.UNREGISTRATION" /> 
+                 <action android:name="cn.jpush.android.intent.MESSAGE_RECEIVED" /> <!--Required 用户接收SDK消息的intent-->
+                 <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED" /> <!--Required 用户接收SDK通知栏信息的intent-->
+                 <action android:name="cn.jpush.android.intent.NOTIFICATION_OPENED" /> <!--Required 用户打开自定义通知栏的intent-->
+                 <action android:name="cn.jpush.android.intent.ACTION_RICHPUSH_CALLBACK" /> <!--Optional 用户接受Rich Push Javascript 回调函数的intent-->
+                 <action android:name="cn.jpush.android.intent.CONNECTION" /><!-- 接收网络变化 连接/断开 since 1.6.3 -->
+                 <category android:name="${applicationId}" />
+             </intent-filter>
+         </receiver>
+  
+         <!-- Required . Enable it you can get statistics data with channel -->
+         <meta-data android:name="JPUSH_CHANNEL" android:value="developer-default"/>
+         <meta-data android:name="JPUSH_APPKEY" android:value="您应用applicationId对应的appKey" /> <!-- </>值来自开发者平台取得的AppKey-->
+     </application>
+</manifest> 
+
+```
+**温馨提示**
+
+其中applicationId为 build.gradle配置中 defaultConfig节点下配置，如：
+
+```
+defaultConfig {
+      applicationId "cn.jpush.example" // <--您应用的包名
+
+ }
+
+```
+
+
+### 必须权限说明
 
 <div class="table-d" align="center" >
   <table border="1" width = "100%">
     <tr  bgcolor="#D3D3D3" >
-      <th style="padding: 0 5px;" >权限</th>
-      <th style="padding: 0 5px;" >用途</th>
+      <th >权限</th>
+      <th >用途</th>
     </tr>
     <tr >
-      <td style="padding: 0 5px;">You Package.permission.JPUSH_MESSAGE</td>
-      <td style="padding: 0 5px;">官方定义的权限，允许应用接收JPUSH内部代码发送的广播消息。</td>
+      <td>You Package.permission.JPUSH_MESSAGE</td>
+      <td>官方定义的权限，允许应用接收JPUSH内部代码发送的广播消息。</td>
     </tr>
     <tr >
-      <td style="padding: 0 5px;">RECEIVE_USER_PRESENT</td>
-      <td style="padding: 0 5px;">允许应用可以接收点亮屏幕或解锁广播。</td>
+      <td>RECEIVE_USER_PRESENT</td>
+      <td>允许应用可以接收点亮屏幕或解锁广播。</td>
     </tr>
     <tr >
-      <td style="padding: 0 5px;">INTERNET</td>
-      <td style="padding: 0 5px;">允许应用可以访问网络。</td>
+      <td>INTERNET</td>
+      <td>允许应用可以访问网络。</td>
     </tr>
     <tr >
-      <td style="padding: 0 5px;">WAKE_LOCK</td>
-      <td style="padding: 0 5px;">允许应用在手机屏幕关闭后后台进程仍然运行</td>
+      <td>WAKE_LOCK</td>
+      <td>允许应用在手机屏幕关闭后后台进程仍然运行</td>
     </tr>
     <tr >
-      <td style="padding: 0 5px;">READ_PHONE_STATE</td>
-      <td style="padding: 0 5px;">允许应用访问手机状态。</td>
+      <td>READ_PHONE_STATE</td>
+      <td>允许应用访问手机状态。</td>
     </tr>
     <tr >
-      <td style="padding: 0 5px;">WRITE_EXTERNAL_STORAGE</td>
-      <td style="padding: 0 5px;">允许应用写入外部存储。</td>
+      <td>WRITE_EXTERNAL_STORAGE</td>
+      <td>允许应用写入外部存储。</td>
     </tr>
     <tr >
-      <td style="padding: 0 5px;">READ_EXTERNAL_STORAGE</td>
-      <td style="padding: 0 5px;">允许应用读取外部存储。</td>
+      <td>READ_EXTERNAL_STORAGE</td>
+      <td>允许应用读取外部存储。</td>
     </tr>
     <tr >
-      <td style="padding: 0 5px;">WRITE_SETTINGS</td>
-      <td style="padding: 0 5px;">允许应用读写系统设置项。</td>
+      <td>WRITE_SETTINGS</td>
+      <td>允许应用读写系统设置项。</td>
     </tr>
     <tr >
-      <td style="padding: 0 5px;">VIBRATE</td>
-      <td style="padding: 0 5px;">允许应用震动。</td>
+      <td>VIBRATE</td>
+      <td>允许应用震动。</td>
     </tr>
     <tr >
-      <td style="padding: 0 5px;">MOUNT_UNMOUNT_FILESYSTEMS</td>
-      <td style="padding: 0 5px;">允许应用挂载/卸载 外部文件系统。</td>
+      <td>MOUNT_UNMOUNT_FILESYSTEMS</td>
+      <td>允许应用挂载/卸载 外部文件系统。</td>
     </tr>
     <tr >
-      <td style="padding: 0 5px;">ACCESS_NETWORK_STATE</td>
-      <td style="padding: 0 5px;">允许应用获取网络信息状态，如当前的网络连接是否有效。</td>
+      <td>ACCESS_NETWORK_STATE</td>
+      <td>允许应用获取网络信息状态，如当前的网络连接是否有效。</td>
     </tr>
     <tr >
-      <td style="padding: 0 5px;">SYSTEM_ALERT_WINDOW</td>
-      <td style="padding: 0 5px;">允许应用显示系统窗口，位于显示的顶层。</td>
+      <td>SYSTEM_ALERT_WINDOW</td>
+      <td>允许应用显示系统窗口，位于显示的顶层。</td>
     </tr>
   </table>
 </div>
@@ -272,7 +428,7 @@ AndroidManifest.xml权限配置：
 
 
 
-### 4、添加代码
+### 添加代码
 
 JPush SDK 提供的 API 接口，都主要集中在 cn.jpush.android.api.JPushInterface 类里。
 
@@ -308,69 +464,69 @@ JPush SDK 提供的 API 接口，都主要集中在 cn.jpush.android.api.JPushIn
 
 		
 		
-### 5、测试确认
+### 测试确认
 
-1. 确认所需的权限都已经添加。如果必须的权限未添加，日志会提示错误。
-2. 确认 AppKey（在Portal上生成的）已经正确的写入 Androidmanifest.xml 。
-3. 确认在程序启动时候调用了init(context) 接口
-4. 确认测试手机（或者模拟器）已成功连入网络
++ 确认所需的权限都已经添加。如果必须的权限未添加，日志会提示错误。
++ 确认 AppKey（在Portal上生成的）已经正确的写入 Androidmanifest.xml 。
++ 确认在程序启动时候调用了init(context) 接口
++ 确认测试手机（或者模拟器）已成功连入网络
 	＋ 客户端调用 init 后不久，如果一切正常，应有登录成功的日志信息
-5. 启动应用程序，在 Portal 上向应用程序发送自定义消息或者通知栏提示。详情请参考管理[Portal](www.jpush.cn)。
++ 启动应用程序，在 Portal 上向应用程序发送自定义消息或者通知栏提示。详情请参考管理[Portal](www.jpush.cn)。
 	+ 在几秒内，客户端应可收到下发的通知或者正定义消息
 如果 SDK 工作正常，则日志信息会如下图所示：
 
-![](../image/jpush_android_log.jpg) 
+![](image/jpush_android_log.jpg) 
 
 如图所示，客户端启动分为 4 步：
 
-1. 检查 metadata 的 appKey 和 channel ，如果不存在，则启动失败
-2. 初始化 JPush SDK，检查 JNI 等库文件的有效性，如果库文件无效，则启动失败
-3. 检查 Androidmanifest.xml，如果有 Required 的权限不存在，则启动失败
-4. 连接服务器登录，如果存在网络问题，则登陆失败,或者前面三步有问题，不会启动JPush SDK
++ 检查 metadata 的 appKey 和 channel ，如果不存在，则启动失败
++ 初始化 JPush SDK，检查 JNI 等库文件的有效性，如果库文件无效，则启动失败
++ 检查 Androidmanifest.xml，如果有 Required 的权限不存在，则启动失败
++ 连接服务器登录，如果存在网络问题，则登陆失败,或者前面三步有问题，不会启动JPush SDK
 
 ## 从Eclipse工程导入到Android Studio
 
 JPush Demo 是极光推送随压缩包提供的用法示例Demo，原本适用于Eclipse工程。本教程将指导JPush用户用最简单的方法将极光推送Demo导入Android Studio。
 
-#### 6.1 快速集成JPush
-参考[3 分钟快速 Demo（Android）](../android_3m)，把JPush跑起来。之后你在Eclipse包浏览器中有可运行的项目。
+#### 快速集成JPush
+参考[3 分钟快速 Demo（Android）](/guideline/android_3m)，把JPush跑起来。之后你在Eclipse包浏览器中有可运行的项目。
 
-![](../image/Image.png)
+![](image/Image.png)
 
-#### 6.2 右键点击demo工程，选择Export
+#### 右键点击demo工程，选择Export
 
-![](../image/Image_1.png)
+![](image/Image_1.png)
 
-#### 6.3 选择导出目标位Gradle build文件，并确认
+#### 选择导出目标位Gradle build文件，并确认
 
-![](../image/Image_2.png)
-![](../image/Image_3.png)
-![](../image/Image_4.png)
-![](../image/Image_5.png)
+![](image/Image_2.png)
+![](image/Image_3.png)
+![](image/Image_4.png)
+![](image/Image_5.png)
 
-#### 6.4 从文件浏览器中检查
+#### 从文件浏览器中检查
 
 在Eclipse的workspace中，该Demo工程的文件夹中，生成了Gradle相关配置文件.
 
-![](../image/Image_6.png)
+![](image/Image_6.png)
 
-#### 6.5 打开你的Android Studio工程，选择 File->Import Module
+#### 打开你的Android Studio工程，选择 File->Import Module
 
 在Android Studio中，一次只能打开一个Project，它相当于Eclipse中的一个workspace。而我们从Eclipse中导出的一个Project，则相当于Android Studio中的一个Module。
 
-![](../image/Image_7.png)
+![](image/Image_7.png)
 
-#### 6.6 选择Eclipse workspace下的Demo工程，并确认
+#### 选择Eclipse workspace下的Demo工程，并确认
 
-![](../image/Image_8.png)
+![](image/Image_8.png)
 
-![](../image/Image_9.png)
+![](image/Image_9.png)
 
-#### 6.7 查看导入的Module，并且gradle会自动生成编译选项
+#### 查看导入的Module，并且gradle会自动生成编译选项
 
-![](../image/Image_10.png)
+![](image/Image_10.png)
 
-![](../image/Image_11.png)
+![](image/Image_11.png)
 
 现在就可以将极光推送Demo作为Android Studio的Module运行在真机或虚拟机上，并调试了
 

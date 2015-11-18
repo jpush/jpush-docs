@@ -11,7 +11,7 @@
 
 本SDK提供JPush服务端接口的Node封装，与 JPush Rest API 组件通信。使用时引用该模块即可，可参考附带Demo学习使用方法。
 
-[REST API 文档](../rest_api_v3_push/)
+[REST API 文档](../server/rest_api_v3_push/)
 
 
 版本更新：[Release页面](../../resources/#sdk_1)。下载更新请到这里。
@@ -76,7 +76,7 @@ client.push().setPlatform('ios', 'android')
 #### 获取统计信息
 
 本Node lib简易封装获取统计信息的接口，传入推送API返回的 msg_id 列表，多个 msg_id 用逗号隔开，最多支持100个msg_id。
-更多详细要求，请参考 [Report API 文档](../rest_api_v3_report/)
+更多详细要求，请参考 [Report API 文档](../server/rest_api_v3_report/)
 
 ```
 var JPush = require("../lib/JPush/JPush.js");
