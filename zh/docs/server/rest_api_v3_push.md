@@ -342,7 +342,7 @@ Android 平台上的通知。
 		<tr  bgcolor="#D3D3D3" >
 			<th >关键字</th>
 			<th >类型</th>
-			<th width="5%" >选项</th>
+			<th width="6%" >选项</th>
 			<th >含义</th>
 			<th >说明</th>
 		</tr>
@@ -408,8 +408,8 @@ iOS 平台上 APNs 通知。
 		<tr  bgcolor="#D3D3D3" >
 			<th >关键字</th>
 			<th >类型</th>
-			<th width="5%">选项</th>
-			<th width="20%"> </th>
+			<th width="6%">选项</th>
+			<th width="20%">含义</th>
 			<th >说明</th>
 		</tr>
 		<tr >
@@ -512,7 +512,7 @@ Windows Phone 平台上的通知。
 		<tr  bgcolor="#D3D3D3" >
 			<th >关键字</th>
 			<th >类型</th>
-			<th width="5%" >选项</th>
+			<th width="6%" >选项</th>
 			<th >含义</th>
 			<th >说明</th>
 		</tr>
@@ -520,7 +520,7 @@ Windows Phone 平台上的通知。
 			<td>alert</td>
 			<td>string</td>
 			<td>必填</td>
-			<td style=";">通知内容</td>
+			<td>通知内容</td>
 			<td>会填充到 toast 类型 text2 字段上。这里指定了，将会覆盖上级统一指定的 alert 信息；内容为空则不展示到通知栏。</td>
 		</tr>
 		<tr >
@@ -582,8 +582,8 @@ Windows Phone 平台上，暂时不支持应用内消息。
 		<tr  bgcolor="#D3D3D3" >
 			<th width="10%">关键字</th>
 			<th width="8%">类型</th>
-			<th width="5%">选项</th>
-			<th style=";" >含义</th>
+			<th width="6%">选项</th>
+			<th>含义</th>
 		</tr>
 		<tr >
 			<td>msg_content</td>
@@ -633,8 +633,8 @@ Windows Phone 平台上，暂时不支持应用内消息。
 		<tr  bgcolor="#D3D3D3" >
 			<th width="10%">关键字</th>
 			<th width="8%">类型</th>
-			<th width="5%">选项</th>
-			<th style=";" >示例</th>
+			<th width="6%">选项</th>
+			<th>示例</th>
 		</tr>
 		<tr >
 			<td>content</td>
@@ -663,7 +663,7 @@ Windows Phone 平台上，暂时不支持应用内消息。
 		<tr  bgcolor="#D3D3D3" >
 			<th >关键字</th>
 			<th >类型</th>
-			<th width="5%">选项</th>
+			<th width="6%">选项</th>
 			<th >含义</th>
 			<th >说明</th>
 		</tr>
