@@ -119,7 +119,7 @@ POST [https://api.jpush.cn/v3/push/validate](https://api.jpush.cn/v3/push/valida
 <div class="table-d" align="center" >
 	<table border="1" width = "100%">
 		<tr  bgcolor="#D3D3D3" >
-			<th style="background-color:#D3D3D3" >关键字</th>
+			<th>关键字</th>
 			<th >选项</th>
 			<th >含义</th>
 		</tr>
@@ -149,7 +149,7 @@ POST [https://api.jpush.cn/v3/push/validate](https://api.jpush.cn/v3/push/valida
 			<td>短信业务功能</td>
 		</tr>
 		<tr >
-			<td style="t">options</td>
+			<td>options</td>
 			<td>可选</td>
 			<td>推送参数 </td>
 		</tr>
