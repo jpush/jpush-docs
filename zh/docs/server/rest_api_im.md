@@ -857,133 +857,133 @@ HTTP 返回码参考文档：[HTTP-Status-Code](../server/http_status_code)
 <div class="table-d" align="center" >
 	<table border="1" width = "100%">
 		<tr  bgcolor="#D3D3D3" >
-			<th style="text-align:center;" >Code</th>
+			<th >Code</th>
 			<th >HTTP</th>
 			<th >Error Message</th>
 			<th >说明</th>
 		</tr>
 		<tr >
-			<td style="text-align:center;">899000</td>
+			<td>899000</td>
 			<td>500</td>
 			<td>Server internal error</td>
 			<td>系统内部错误</td>
 		</tr>
 		<tr >
-			<td style="text-align:center;">899001</td>
+			<td>899001</td>
 			<td>403</td>
 			<td>User exists</td>
 			<td>用户已存在</td>
 		</tr>
 		<tr >
-			<td style="text-align:center;">899002</td>
+			<td>899002</td>
 			<td>403</td>
 			<td>No sush user</td>
 			<td>用户不存在</td>
 		</tr>
 		<tr >
-			<td style="text-align:center;">899003</td>
+			<td>899003</td>
 			<td>400</td>
 			<td>Parameter invalid!</td>
 			<td>请求参数不合法 </td>
 		</tr>
 		<tr >
-			<td style="text-align:center;">899004</td>
+			<td>899004</td>
 			<td>403</td>
 			<td>Password error</a></td>
 			<td>密码错误</td>
 		</tr>
 		<tr >
-			<td style="text-align:center;">899005</td>
+			<td>899005</td>
 			<td>403</td>
 			<td>Invalid uid </td>
 			<td>uid 不存在</td>
 		</tr>
 		<tr >
-			<td style="text-align:center;">899006</td>
+			<td>899006</td>
 			<td>403</td>
 			<td>gid invalid</td>
 			<td>gid 不存在</td>
 		</tr>
 		<tr >
-			<td style="text-align:center;">899007</td>
+			<td>899007</td>
 			<td>401</td>
 			<td>Missing authen info.</td>
 			<td>校验信息为空</td>
 		</tr>
 		<tr >
-			<td style="text-align:center;">899008</td>
+			<td>899008</td>
 			<td>401</td>
 			<td>Basic authentication failed.</td>
 			<td>校验失败</td>
 		</tr>
 		<tr >
-			<td style="text-align:center;">899009</td>
+			<td>899009</td>
 			<td>400</td>
 			<td>appkey not exists</td>
 			<td>appkey不存在</td>
 		</tr>
 		<tr >
-			<td style="text-align:center;">899010</td>
+			<td>899010</td>
 			<td>400</td>
 			<td>Delete fail</td>
 			<td>删除失败</td>
 		</tr>
 		<tr >
-			<td style="text-align:center;">899011</td>
+			<td>899011</td>
 			<td>400</td>
 			<td>Repeat to add the members</td>
 			<td>重复添加</td>
 		</tr>
 		<tr >
-			<td style="text-align:center;">899012</td>
+			<td>899012</td>
 			<td>403</td>
 			<td>no enough space for members</td>
 			<td>群组剩余位置不够</td>
 		</tr>
 		<tr >
-			<td style="text-align:center;">899013</td>
+			<td>899013</td>
 			<td>403</td>
 			<td>user list is bigger than 500 </td>
 			<td>注册列表过长</td>
 		</tr>
 		<tr >
-			<td style="text-align:center;">899014</td>
+			<td>899014</td>
 			<td>403</td>
 			<td>add success remove fail but there are user not exit in this group</td>
 			<td>移除成员失败</td>
 		</tr>
 		<tr >
-			<td style="text-align:center;">899015</td>
+			<td>899015</td>
 			<td>403</td>
 			<td>user 's group are 100 can not continue</td>
 			<td>用户加入讨论组达到上限</td>
 		</tr>
 		<tr >
-			<td style="text-align:center;">899016</td>
+			<td>899016</td>
 			<td>403</td>
 			<td>No authority to send message</td>
 			<td>用户没有权限</td>
 		</tr>
 		<tr >
-			<td style="text-align:center;">899017</td>
+			<td>899017</td>
 			<td>403</td>
 			<td>there are usernames exist in blacklist</td>
 			<td>用户已经被添加进黑名单</td>
 		</tr>
 		<tr >
-			<td style="text-align:center;">899018</td>
+			<td>899018</td>
 			<td>403</td>
 			<td>admin can not be added into blacklist</td>
 			<td>管理员不能被添加进黑名单</td>
 		</tr>
 		<tr >
-			<td style="text-align:center;">899019</td>
+			<td>899019</td>
 			<td>403</td>
 			<td>here are usernames not exist in blacklist</td>
 			<td>用户不存在黑名单中</td>
 		</tr>
 		<tr >
-			<td style="text-align:center;">899030</td>
+			<td>899030</td>
 			<td>503</td>
 			<td>Server response time out, please try again later</td>
 			<td>系统繁忙，稍后重试</td>

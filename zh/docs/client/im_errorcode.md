@@ -5,262 +5,262 @@
 <div class="table-d" align="center" >
 	<table border="1" width = "100%">
 		<tr  bgcolor="#D3D3D3" >
-			<th style="text-align:center;" >Code</th>
+			<th >Code</th>
 			<th>Error Message</th>
 			<th>说明</th>
 		</tr>
 		<tr >
-			<td style="text-align:center;">0</td>
+			<td>0</td>
 			<td>success</td>
 			<td>成功</td>
 		</tr>
 		<tr >
-			<td style="text-align:center;">898000</td>
+			<td>898000</td>
 			<td>Server internal error</td>
 			<td>内部错误</td>
 		</tr>
 		<tr >
-			<td style="text-align:center;">898001</td>
+			<td>898001</td>
 			<td>User exists</td>
 			<td>用户已存在</td>
 		</tr>
 		<tr >
-			<td style="text-align:center;">898002</td>
+			<td>898002</td>
 			<td>No sush user</td>
 			<td>用户不存在</td>
 		</tr>
 		<tr >
-			<td style="text-align:center;">898003</td>
+			<td>898003</td>
 			<td>Parameter invalid!</td>
 			<td>请求参数不合法 </td>
 		</tr>
 		<tr >
-			<td style="text-align:center;">898004</td>
+			<td>898004</td>
 			<td>Password error</a></td>
 			<td>更新密码操作，用户密码错误</td>
 		</tr>
 		<tr >
-			<td style="text-align:center;">898006</td>
+			<td>898006</td>
 			<td>gid invalid</td>
 			<td>gid不存在</td>
 		</tr>
 		<tr >
-			<td style="text-align:center;">898007</td>
+			<td>898007</td>
 			<td>Missing authen info</td>
 			<td>校验信息为空</td>
 		</tr>
 		<tr >
-			<td style="text-align:center;">898008</td>
+			<td>898008</td>
 			<td>Basic authentication failed.</td>
 			<td>校验失败</td>
 		</tr>
 		<tr >
-			<td style="text-align:center;">898009</td>
+			<td>898009</td>
 			<td>appkey not exists</td>
 			<td>appkey不存在</td>
 		</tr>
 		<tr >
-			<td style="text-align:center;">808030</td>
+			<td>808030</td>
 			<td>Server response time out, please try again later</td>
 			<td>系统繁忙，稍后重试</td>
 		</tr>
 		<tr >
-			<td style="text-align:center;">800002</td>
+			<td>800002</td>
 			<td>appkey info is nil</td>
 			<td>appkey信息为空</td>
 		</tr>
 		<tr >
-			<td style="text-align:center;">800003</td>
+			<td>800003</td>
 			<td>appkey not register</td>
 			<td>appkey未注册</td>
 		</tr>
 		<tr >
-			<td style="text-align:center;">800005</td>
+			<td>800005</td>
 			<td>user id not register</td>
 			<td>用户ID未注册（appkey无该UID）</td>
 		</tr>
 		<tr >
-			<td style="text-align:center;">800006</td>
+			<td>800006</td>
 			<td>user id not exist</a></td>
 			<td>用户ID不存在（数据库中无该UID）</td>
 		</tr>
 		<tr >
-			<td style="text-align:center;">800009</td>
+			<td>800009</td>
 			<td>system error</td>
 			<td>服务器系统错误</td>
 		</tr>
 		<tr >
-			<td style="text-align:center;">800010</td>
+			<td>800010</td>
 			<td>sync couchbase error</td>
 			<td>服务器系统错误</td>
 		</tr>
 		<tr >
-			<td style="text-align:center;">800011</td>
+			<td>800011</td>
 			<td>sync mysql error</td>
 			<td>服务器系统错误</td>
 		</tr>
 		<tr >
-			<td style="text-align:center;">800012</td>
+			<td>800012</td>
 			<td>user never login</td>
 			<td>发起的用户从未登录过</td>
 		</tr>
 		<tr >
-			<td style="text-align:center;">800013</td>
+			<td>800013</td>
 			<td>user logout</td>
 			<td>发起的用户已登出</td>
 		</tr>
 		<tr >
-			<td style="text-align:center;">800014</td>
+			<td>800014</td>
 			<td>appkey not match</td>
 			<td>发起的用户appkey与目标不匹配</td>
 		</tr>
 		<tr >
-			<td style="text-align:center;">801003</td>
+			<td>801003</td>
 			<td>user name not register</td>
 			<td>用户名不存在</td>
 		</tr>
 		<tr >
-			<td style="text-align:center;">801004</td>
+			<td>801004</td>
 			<td>user password is wrong</td>
 			<td>登录密码错误</td>
 		</tr>
 		<tr >
-			<td style="text-align:center;">803001</td>
+			<td>803001</td>
 			<td></td>
 			<td>发送消息失败，系统内部异常</td>
 		</tr>
 		<tr >
-			<td style="text-align:center;">803002</td>
+			<td>803002</td>
 			<td></td>
 			<td>发送消息失败，系统网络异常</td>
 		</tr>
 		<tr >
-			<td style="text-align:center;">803003</td>
+			<td>803003</td>
 			<td></td>
 			<td>发送消息失败，目标用户未注册或从未登录过</td>
 		</tr>
 		<tr >
-			<td style="text-align:center;">803004</td>
+			<td>803004</td>
 			<td></td>
 			<td>发送消息失败，目标讨论组不存在</td>
 		</tr>
 		<tr >
-			<td style="text-align:center;">803005</td>
+			<td>803005</td>
 			<td></td>
 			<td>发送消息失败，发起者不在目标讨论组中</td>
 		</tr>
 		<tr >
-			<td style="text-align:center;">803006</td>
+			<td>803006</td>
 			<td></td>
 			<td>发送消息失败，发起者权限不够或者类别不匹配</td>
 		</tr>
 		<tr >
-			<td style="text-align:center;">803008</td>
+			<td>803008</td>
 			<td></td>
 			<td>发送消息失败，发送者已被接收者拉入黑名单，仅限单聊</td>
 		</tr>
 		<tr >
-			<td style="text-align:center;">808002</td>
+			<td>808002</td>
 			<td>user have not right to create group</td>
 			<td>用户无创建讨论组权限，创建讨论组失败</td>
 		</tr>
 		<tr >
-			<td style="text-align:center;">808003</td>
+			<td>808003</td>
 			<td>the amount of group exceed limit</td>
 			<td>用户拥有的讨论组数量已达上限,无法再创建</td>
 		</tr>
 		<tr >
-			<td style="text-align:center;">809002</td>
+			<td>809002</td>
 			<td>user not in the group</td>
 			<td>用户退出讨论组时，用户不在该讨论组中，退出讨论组失败</td>
 		</tr>
 		<tr >
-			<td style="text-align:center;">810003</td>
+			<td>810003</td>
 			<td>user not in the group</td>
 			<td>用户添加成员到讨论组时，用户不在该讨论组中，添加成员失败</td>
 		</tr>
 		<tr >
-			<td style="text-align:center;">810004</td>
+			<td>810004</td>
 			<td>user not have right of group to add member</td>
 			<td>用户添加成员到讨论组时，用户没有往讨论组中添加成员的权限，添加成员失败</td>
 		</tr>
 		<tr >
-			<td style="text-align:center;">810005</td>
+			<td>810005</td>
 			<td>member not register</td>
 			<td>用户添加成员到讨论组时，添加的成员列表中有成员未注册，添加成员失败</td>
 		</tr>
 		<tr >
-			<td style="text-align:center;">810006</td>
+			<td>810006</td>
 			<td>user have not right to add member in the group</td>
 			<td>用户添加成员到讨论组时，添加的成员列表中有成员该用户没有权限进行添加，添加成员失败</td>
 		</tr>
 		<tr >
-			<td style="text-align:center;">810007</td>
+			<td>810007</td>
 			<td>member repeated add</td>
 			<td>用户添加成员到讨论组时，添加的成员列表中有成员重复添加，添加成员失败</td>
 		</tr>
 		<tr >
-			<td style="text-align:center;">810008</td>
+			<td>810008</td>
 			<td>the amount of member exceed group limit</td>
 			<td>用户添加成员到讨论组时，添加的成员数量超出讨论组拥有的最大成员数上限，添加成员失败</td>
 		</tr>
 		<tr >
-			<td style="text-align:center;">810009</td>
+			<td>810009</td>
 			<td>the amount of group exceed member limit</td>
 			<td>用户添加成员到讨论组时，添加的成员列表中有成员拥有的讨论组数量已达上限，添加成员失败</td>
 		</tr>
 		<tr >
-			<td style="text-align:center;">811003</td>
+			<td>811003</td>
 			<td>user not in the group</td>
 			<td>用户删除讨论组成员时，用户不在该讨论组中，删除成员失败</td>
 		</tr>
 		<tr >
-			<td style="text-align:center;">811004</td>
+			<td>811004</td>
 			<td>user not have right of group to remove member</td>
 			<td>用户删除讨论组成员时，用户没有删除讨论组中成员的权限，删除成员失败</td>
 		</tr>
 		<tr >
-			<td style="text-align:center;">811005</td>
+			<td>811005</td>
 			<td>member not register</td>
 			<td>用户删除讨论组成员时，删除的成员列表中有成员未注册，删除成员失败</td>
 		</tr>
 		<tr >
-			<td style="text-align:center;">811006</td>
+			<td>811006</td>
 			<td>user have not right to remove member from the group</td>
 			<td>用户删除讨论组成员时，删除的成员列表中有成员该用户没有权限进行删除，删除成员失败</td>
 		</tr>
 		<tr >
-			<td style="text-align:center;">811007</td>
+			<td>811007</td>
 			<td>member repeated remove</td>
 			<td>用户删除讨论组成员时，删除的成员列表中有成员重复删除，删除成员失败</td>
 		</tr>
 		<tr >
-			<td style="text-align:center;">811008</td>
+			<td>811008</td>
 			<td>member not in the group</td>
 			<td>用户删除讨论组成员时，删除的成员列表中有成员不在该讨论组中，删除成员失败</td>
 		</tr>
 		<tr >
-			<td style="text-align:center;">812002</td>
+			<td>812002</td>
 			<td>user not in the group</td>
 			<td>用户修改讨论组信息时，用户不在该讨论组中，修改讨论组信息失败</td>
 		</tr>
 		<tr >
-			<td style="text-align:center;">818001</td>
+			<td>818001</td>
 			<td></td>
 			<td>用户添加黑名单时，成员列表为空，添加失败</td>
 		</tr>
 		<tr >
-			<td style="text-align:center;">818002</td>
+			<td>818002</td>
 			<td></td>
 			<td>用户添加黑名单时，成员列表中有成员不存在，添加失败</td>
 		</tr>
 		<tr >
-			<td style="text-align:center;">818003</td>
+			<td>818003</td>
 			<td></td>
 			<td>用户添加黑名单时，成员列表中有成员不能被添加，添加失败</td>
 		</tr>
 		<tr >
-			<td style="text-align:center;">819001</td>
+			<td>819001</td>
 			<td></td>
 			<td>用户移除好友出黑名单时，成员列表为空，操作失败</td>
 		</tr>

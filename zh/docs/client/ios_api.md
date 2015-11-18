@@ -216,47 +216,47 @@
 <div class="table-d" align="center" >
   <table border="1" width = "100%">
     <tr  bgcolor="#D3D3D3" >
-      <th style="text-align:center;" >Code</th>
+      <th >Code</th>
       <th >描述</th>
       <th >详细解释</th>
     </tr>
     <tr >
-      <td style="text-align:center;">6002</td>
+      <td>6002</td>
       <td>设置超时</td>
       <td>建议重试</td>
     </tr>
     <tr >
-      <td style="text-align:center;">6003</td>
+      <td>6003</td>
       <td>alias 字符串不合法</td>
       <td>有效的别名、标签组成：字母（区分大小写）、数字、下划线、汉字。</td>
     </tr>
     <tr >
-      <td style="text-align:center;">6004</td>
+      <td>6004</td>
       <td>alias超长。最多 40个字节</td>
       <td>中文 UTF-8 是 3 个字节</td>
     </tr>
     <tr >
-      <td style="text-align:center;">6005</td>
+      <td>6005</td>
       <td>某一个 tag 字符串不合法</td>
       <td>有效的别名、标签组成：字母（区分大小写）、数字、下划线、汉字。</td>
     </tr>
     <tr >
-      <td style="text-align:center;">6006</td>
+      <td>6006</td>
       <td>某一个 tag 超长。一个 tag 最多 40个字节</td>
       <td>中文 UTF-8 是 3 个字节</td>
     </tr>
     <tr >
-      <td style="text-align:center;">6007</td>
+      <td>6007</td>
       <td>tags 数量超出限制。最多 100个</td>
       <td>这是一台设备的限制。一个应用全局的标签数量无限制。</td>
     </tr>
     <tr >
-      <td style="text-align:center;">6008</td>
+      <td>6008</td>
       <td>tag 超出总长度限制</td>
       <td>总长度最多 1K 字节</td>
     </tr>
     <tr >
-      <td style="text-align:center;">6011</td>
+      <td>6011</td>
       <td>10s内设置tag或alias大于10次</td>
       <td>短时间内操作过于频繁</td>
     </tr>
@@ -938,15 +938,15 @@ API 用于统计用户应用崩溃日志
 <div class="table-d" align="center" >
   <table border="1" width = "100%">
     <tr  bgcolor="#D3D3D3" >
-      <th style="text-align:center;" >Code</th>
+      <th >Code</th>
       <th >描述</th>
     </tr>
     <tr >
-      <td style="text-align:center;">1008</td>
+      <td>1008</td>
       <td>AppKey非法</td>
     </tr>
     <tr >
-      <td style="text-align:center;">1009</td>
+      <td>1009</td>
       <td>当前的appkey下没有创建iOS应用。请到官网检查此应用的应用详情</td>
     </tr>
   </table>

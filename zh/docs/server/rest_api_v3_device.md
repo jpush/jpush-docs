@@ -371,37 +371,37 @@ HTTP/1.1 200 OK
       <th >Code</th>
       <th >描述</th>
       <th style="t;" >详细解释</th>
-      <th style="text-align:center;" >HTTP Status Code</th>
+      <th >HTTP Status Code</th>
     </tr>
     <tr >
       <td>7000</td>
       <td>内部错误</td>
       <td>系统内部错误</a></td>
-      <td style="text-align:center;">500</td>
+      <td>500</td>
     </tr>
     <tr >
       <td>7001</td>
       <td>校验信息为空</td>
       <td>必须改正，详情请看：<a href="./#_1">调用验证说明。</a></td>
-      <td style="text-align:center;">401</td>
+      <td>401</td>
     </tr>
     <tr >
       <td>7002</td>
       <td>请求参数非法</td>
       <td>必须改正</td>
-      <td style="text-align:center;">400</td>
+      <td>400</td>
     </tr>
     <tr >
       <td>7004</td>
       <td>校验失败</td>
       <td>必须修正，详情请看：<a href="./#_1">调用验证说明。</a></td>
-      <td style="text-align:center;">401</td>
+      <td>401</td>
     </tr>
     <tr >
       <td>7008</td>
       <td>appkey 不存在</td>
       <td>检查工程填写的appkey是否与官网应用一致</td>
-      <td style="text-align:center;">400</td>
+      <td>400</td>
     </tr>
   </table>
 </div>
