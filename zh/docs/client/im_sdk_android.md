@@ -374,14 +374,14 @@ public void onEventMainThread(EventEntity event){
 <div class="table-d" align="left" >
   <table border="1" width = "100%">
     <tr  bgcolor="#D3D3D3" >
-      <th style="padding: 0 5px; " width="20px">方法</th>
-      <th style="padding: 0 5px; " width="40px">类型</th>
-      <th style="padding: 0 5px; " width="300px">说明</th>
+      <th width="20px">方法</th>
+      <th width="40px">类型</th>
+      <th width="300px">说明</th>
     </tr>
     <tr >
-      <td style="padding: 0 5px; " >getMessage()</td>
-      <td style="padding: 0 5px; " >Message</td>
-      <td style="padding: 0 5px; " >获取消息对象</td>
+      <td >getMessage()</td>
+      <td >Message</td>
+      <td >获取消息对象</td>
     </tr>
   </table>
 </div>
@@ -394,14 +394,14 @@ public void onEventMainThread(EventEntity event){
 <div class="table-d" align="left" >
   <table border="1" width = "100%">
     <tr  bgcolor="#D3D3D3" >
-      <th style="padding: 0 5px; " width="10px">方法</th>
-      <th style="padding: 0 5px; " width="20px">类型</th>
-      <th style="padding: 0 5px; " width="370px">说明</th>
+      <th width="10px">方法</th>
+      <th width="20px">类型</th>
+      <th width="370px">说明</th>
     </tr>
     <tr >
-      <td style="padding: 0 5px; " >getConversation()</td>
-      <td style="padding: 0 5px; " >Conversation</td>
-      <td style="padding: 0 5px; " >获取需要被刷新的会话对象</td>
+      <td >getConversation()</td>
+      <td >Conversation</td>
+      <td >获取需要被刷新的会话对象</td>
     </tr>
   </table>
 </div>
@@ -413,14 +413,14 @@ public void onEventMainThread(EventEntity event){
 <div class="table-d" align="left" >
   <table border="1" width = "100%">
     <tr  bgcolor="#D3D3D3" >
-      <th style="padding: 0 5px; " width="30px">方法</th>
-      <th style="padding: 0 5px; " width="20px">类型</th>
-      <th style="padding: 0 5px; " width="300px">说明</th>
+      <th width="30px">方法</th>
+      <th width="20px">类型</th>
+      <th width="300px">说明</th>
     </tr>
     <tr >
-      <td style="padding: 0 5px; " >getMessage()</td>
-      <td style="padding: 0 5px; " >Message</td>
-      <td style="padding: 0 5px; " >获取点击的通知所对应的消息对象</td>
+      <td >getMessage()</td>
+      <td >Message</td>
+      <td >获取点击的通知所对应的消息对象</td>
     </tr>
   </table>
 </div>
@@ -432,14 +432,14 @@ public void onEventMainThread(EventEntity event){
 <div class="table-d" align="left" >
   <table border="1" width = "100%">
     <tr  bgcolor="#D3D3D3" >
-      <th style="padding: 0 5px; " width="100px">方法</th>
-      <th style="padding: 0 5px; " width="20px">类型</th>
-      <th style="padding: 0 5px; " width="300px">说明</th>
+      <th width="100px">方法</th>
+      <th width="20px">类型</th>
+      <th width="300px">说明</th>
     </tr>
     <tr >
-      <td style="padding: 0 5px; " >getMyInfo()</td>
-      <td style="padding: 0 5px; " >UserInfo</td>
-      <td style="padding: 0 5px; " >获取当前被登出账号的信息</td>
+      <td >getMyInfo()</td>
+      <td >UserInfo</td>
+      <td >获取当前被登出账号的信息</td>
     </tr>
   </table>
 </div>
@@ -451,14 +451,14 @@ public void onEventMainThread(EventEntity event){
 <div class="table-d" align="left" >
   <table border="1" width = "100%">
     <tr  bgcolor="#D3D3D3" >
-      <th style="padding: 0 5px; " width="100px">方法</th>
-      <th style="padding: 0 5px; " width="20px">类型</th>
-      <th style="padding: 0 5px; " width="300px">说明</th>
+      <th width="100px">方法</th>
+      <th width="20px">类型</th>
+      <th width="300px">说明</th>
     </tr>
     <tr >
-      <td style="padding: 0 5px; " >getMyInfo()</td>
-      <td style="padding: 0 5px; " >UserInfo</td>
-      <td style="padding: 0 5px; " >获取当前被删除账号的信息</td>
+      <td >getMyInfo()</td>
+      <td >UserInfo</td>
+      <td >获取当前被删除账号的信息</td>
     </tr>
   </table>
 </div>

@@ -38,39 +38,39 @@ JPush API v3 支持同时一次调用同时推送 APNs 通知与 JPush 应用内
 <div class="table-d" align="center" >
   <table border="1" width = "100%">
     <tr  bgcolor="#D3D3D3" >
-      <th style="padding: 0 5px;" ></th>
-      <th style="padding: 0 5px;" >APNS</th>
-      <th style="padding: 0 5px;" >应用内消息</th>
+      <th ></th>
+      <th >APNS</th>
+      <th >应用内消息</th>
     </tr>
     <tr >
-      <td style="padding: 0 5px;">推送原则</td>
-      <td style="padding: 0 5px;">由JPush服务器发送至APNS服务器，再下发到手机。</td>
-      <td style="padding: 0 5px;">由JPush直接下发，每次推送都会尝试发送，如果用户在线则立即收到。否则保存为离线。</td>
+      <td>推送原则</td>
+      <td>由JPush服务器发送至APNS服务器，再下发到手机。</td>
+      <td>由JPush直接下发，每次推送都会尝试发送，如果用户在线则立即收到。否则保存为离线。</td>
     </tr>
     <tr >
-      <td style="padding: 0 5px;">离线消息</td>
-      <td style="padding: 0 5px;">离线消息由APNS服务器缓存按照Apple的逻辑处理。</td>
-      <td style="padding: 0 5px;">用户不在线JPush server 会保存离线消息,时长默认保留一天。离线消息保留5条。</td>
+      <td>离线消息</td>
+      <td>离线消息由APNS服务器缓存按照Apple的逻辑处理。</td>
+      <td>用户不在线JPush server 会保存离线消息,时长默认保留一天。离线消息保留5条。</td>
     </tr>
     <tr >
-      <td style="padding: 0 5px;">推送与证书环境</td>
-      <td style="padding: 0 5px;">应用证书和推送指定的iOS环境匹配才可以收到。</td>
-      <td style="padding: 0 5px;">自定义消息与APNS证书环境无关。</td>
+      <td>推送与证书环境</td>
+      <td>应用证书和推送指定的iOS环境匹配才可以收到。</td>
+      <td>自定义消息与APNS证书环境无关。</td>
     </tr>
     <tr >
-      <td style="padding: 0 5px;">接收方式</td>
-      <td style="padding: 0 5px;">应用退出，后台以及打开状态都能收到APNS</td>
-      <td style="padding: 0 5px;">需要应用打开，与JPush 建立连接才能收到。</td>
+      <td>接收方式</td>
+      <td>应用退出，后台以及打开状态都能收到APNS</td>
+      <td>需要应用打开，与JPush 建立连接才能收到。</td>
     </tr>
     <tr >
-      <td style="padding: 0 5px;">展示效果</td>
-      <td style="padding: 0 5px;">如果应用后台或退出，会有系统的APNS提醒。<p>如果应用处于打开状态，则不展示。</td>
-      <td style="padding: 0 5px;">非APNS，默认不展示。可通过获取接口自行编码处理。</td>
+      <td>展示效果</td>
+      <td>如果应用后台或退出，会有系统的APNS提醒。<p>如果应用处于打开状态，则不展示。</td>
+      <td>非APNS，默认不展示。可通过获取接口自行编码处理。</td>
     </tr>
     <tr >
-      <td style="padding: 0 5px;">处理函数</td>
-      <td style="padding: 0 5px;">Apple提供的接口：<a href="../ios_api/#apns">didReceiveRemoteNotification</a></td>
-      <td style="padding: 0 5px;">JPush提供的接口：<a href="../ios_api/#_19">networkDidReceiveMessage</a></td>
+      <td>处理函数</td>
+      <td>Apple提供的接口：<a href="../ios_api/#apns">didReceiveRemoteNotification</a></td>
+      <td>JPush提供的接口：<a href="../ios_api/#_19">networkDidReceiveMessage</a></td>
     </tr>
   </table>
 </div>

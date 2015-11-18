@@ -94,24 +94,24 @@ HTTP Header（头）里加一个字段（Key/Value对）：
 <div class="table-d" align="center" >
 	<table border="1" width = "100%">
 		<tr  bgcolor="#D3D3D3" >
-			<th style="padding: 0 5px;" >time_unit</th>
-			<th style="padding: 0 5px;" >point</th>
-			<th style="padding: 0 5px;" >描述</th>
+			<th >time_unit</th>
+			<th >point</th>
+			<th >描述</th>
 		</tr>
 		<tr >
-			<td style="padding: 0 5px;">day</td>
-			<td style="padding: 0 5px;">NIL</td>
-			<td style="padding: 0 5px;">当time_unit为day时point此项无效</td>
+			<td>day</td>
+			<td>NIL</td>
+			<td>当time_unit为day时point此项无效</td>
 		</tr>
 		<tr >
-			<td style="padding: 0 5px;">week</td>
-			<td style="padding: 0 5px;">'MON','TUE','WED','THU','FRI','SAT','SUN'</td>
-			<td style="padding: 0 5px;">当time_unit为week时，point为对应项的一项或多项，表示星期几进行触发,point中的值大小写不敏感</td>
+			<td>week</td>
+			<td>'MON','TUE','WED','THU','FRI','SAT','SUN'</td>
+			<td>当time_unit为week时，point为对应项的一项或多项，表示星期几进行触发,point中的值大小写不敏感</td>
 		</tr>
 		<tr >
-			<td style="padding: 0 5px;">month</td>
-			<td style="padding: 0 5px;">'01','02','03'....‘31’</td>
-			<td style="padding: 0 5px;">当time_unit为month时，point为当前进行月对应的日期，且必须有效，如month为2月，则31或30日是不会进行触发的</td>
+			<td>month</td>
+			<td>'01','02','03'....‘31’</td>
+			<td>当time_unit为month时，point为当前进行月对应的日期，且必须有效，如month为2月，则31或30日是不会进行触发的</td>
 		</tr>
 	</table>
 </div>
@@ -475,53 +475,53 @@ HTTP/1.0 404 Not Found
 <div class="table-d" align="center" >
 	<table border="1" width = "100%">
 		<tr  bgcolor="#D3D3D3" >
-			<th style="padding: 0 5px;" >Code</th>
-			<th style="padding: 0 5px;" >HTTP</th>
-			<th style="padding: 0 5px;" >描述</th>
-			<th style="padding: 0 5px;">Error Message</th>
-			<th style="padding: 0 5px;">详细解释</th>
+			<th >Code</th>
+			<th >HTTP</th>
+			<th >描述</th>
+			<th>Error Message</th>
+			<th>详细解释</th>
 		</tr>
 		<tr >
-			<td style="padding: 0 5px;">8000</td>
-			<td style="padding: 0 5px;">200</td>
-			<td style="padding: 0 5px;">正确返回</td>
-			<td style="padding: 0 5px;">nil</td>
-			<td style="padding: 0 5px;">成功状态码</td>
+			<td>8000</td>
+			<td>200</td>
+			<td>正确返回</td>
+			<td>nil</td>
+			<td>成功状态码</td>
 		</tr>
 		<tr >
-			<td style="padding: 0 5px;">8104</td>
-			<td style="padding: 0 5px;">404</td>
-			<td style="padding: 0 5px;">请求的schedule任务，不存在</td>
-			<td style="padding: 0 5px;">Request schedule operation doesn't exist</td>
-			<td style="padding: 0 5px;">请求的定时api操作不存在</td>
+			<td>8104</td>
+			<td>404</td>
+			<td>请求的schedule任务，不存在</td>
+			<td>Request schedule operation doesn't exist</td>
+			<td>请求的定时api操作不存在</td>
 		</tr>
 		<tr >
-			<td style="padding: 0 5px;">8101</td>
-			<td style="padding: 0 5px;">401</td>
-			<td style="padding: 0 5px;">鉴权失败</td>
-			<td style="padding: 0 5px;">Basic authentication failed.</td>
-			<td style="padding: 0 5px;">appkey masterscrect 不匹配</td>
+			<td>8101</td>
+			<td>401</td>
+			<td>鉴权失败</td>
+			<td>Basic authentication failed.</td>
+			<td>appkey masterscrect 不匹配</td>
 		</tr>
 		<tr >
-			<td style="padding: 0 5px;">8100</td>
-			<td style="padding: 0 5px;">400</td>
-			<td style="padding: 0 5px;">参数无效</td>
-			<td style="padding: 0 5px;">The schedule-task is invalid：section is invalid;has been at term;expired;request data is not json;update target task;Delete target task;schedule request is not exist</td>
-			<td style="padding: 0 5px;">参数不会法或者无效，没通过校验</td>
+			<td>8100</td>
+			<td>400</td>
+			<td>参数无效</td>
+			<td>The schedule-task is invalid：section is invalid;has been at term;expired;request data is not json;update target task;Delete target task;schedule request is not exist</td>
+			<td>参数不会法或者无效，没通过校验</td>
 		</tr>
 		<tr >
-			<td style="padding: 0 5px;">8203</td>
-			<td style="padding: 0 5px;">503</td>
-			<td style="padding: 0 5px;">系统内部错误，建议稍后重试</td>
-			<td style="padding: 0 5px;">Execute action timeout, please try later again</td>
-			<td style="padding: 0 5px;">与schedule-server 通信错误</td>
+			<td>8203</td>
+			<td>503</td>
+			<td>系统内部错误，建议稍后重试</td>
+			<td>Execute action timeout, please try later again</td>
+			<td>与schedule-server 通信错误</td>
 		</tr>
 		<tr >
-			<td style="padding: 0 5px;">8200</td>
-			<td style="padding: 0 5px;">500</td>
-			<td style="padding: 0 5px;">系统内部错误</td>
-			<td style="padding: 0 5px;">Server internal error.</td>
-			<td style="padding: 0 5px;">发生未预料错误。</td>
+			<td>8200</td>
+			<td>500</td>
+			<td>系统内部错误</td>
+			<td>Server internal error.</td>
+			<td>发生未预料错误。</td>
 		</tr>
 	</table>
 </div>

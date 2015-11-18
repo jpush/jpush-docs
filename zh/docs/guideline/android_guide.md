@@ -371,56 +371,56 @@ defaultConfig {
 <div class="table-d" align="center" >
   <table border="1" width = "100%">
     <tr  bgcolor="#D3D3D3" >
-      <th style="padding: 0 5px;" >权限</th>
-      <th style="padding: 0 5px;" >用途</th>
+      <th >权限</th>
+      <th >用途</th>
     </tr>
     <tr >
-      <td style="padding: 0 5px;">You Package.permission.JPUSH_MESSAGE</td>
-      <td style="padding: 0 5px;">官方定义的权限，允许应用接收JPUSH内部代码发送的广播消息。</td>
+      <td>You Package.permission.JPUSH_MESSAGE</td>
+      <td>官方定义的权限，允许应用接收JPUSH内部代码发送的广播消息。</td>
     </tr>
     <tr >
-      <td style="padding: 0 5px;">RECEIVE_USER_PRESENT</td>
-      <td style="padding: 0 5px;">允许应用可以接收点亮屏幕或解锁广播。</td>
+      <td>RECEIVE_USER_PRESENT</td>
+      <td>允许应用可以接收点亮屏幕或解锁广播。</td>
     </tr>
     <tr >
-      <td style="padding: 0 5px;">INTERNET</td>
-      <td style="padding: 0 5px;">允许应用可以访问网络。</td>
+      <td>INTERNET</td>
+      <td>允许应用可以访问网络。</td>
     </tr>
     <tr >
-      <td style="padding: 0 5px;">WAKE_LOCK</td>
-      <td style="padding: 0 5px;">允许应用在手机屏幕关闭后后台进程仍然运行</td>
+      <td>WAKE_LOCK</td>
+      <td>允许应用在手机屏幕关闭后后台进程仍然运行</td>
     </tr>
     <tr >
-      <td style="padding: 0 5px;">READ_PHONE_STATE</td>
-      <td style="padding: 0 5px;">允许应用访问手机状态。</td>
+      <td>READ_PHONE_STATE</td>
+      <td>允许应用访问手机状态。</td>
     </tr>
     <tr >
-      <td style="padding: 0 5px;">WRITE_EXTERNAL_STORAGE</td>
-      <td style="padding: 0 5px;">允许应用写入外部存储。</td>
+      <td>WRITE_EXTERNAL_STORAGE</td>
+      <td>允许应用写入外部存储。</td>
     </tr>
     <tr >
-      <td style="padding: 0 5px;">READ_EXTERNAL_STORAGE</td>
-      <td style="padding: 0 5px;">允许应用读取外部存储。</td>
+      <td>READ_EXTERNAL_STORAGE</td>
+      <td>允许应用读取外部存储。</td>
     </tr>
     <tr >
-      <td style="padding: 0 5px;">WRITE_SETTINGS</td>
-      <td style="padding: 0 5px;">允许应用读写系统设置项。</td>
+      <td>WRITE_SETTINGS</td>
+      <td>允许应用读写系统设置项。</td>
     </tr>
     <tr >
-      <td style="padding: 0 5px;">VIBRATE</td>
-      <td style="padding: 0 5px;">允许应用震动。</td>
+      <td>VIBRATE</td>
+      <td>允许应用震动。</td>
     </tr>
     <tr >
-      <td style="padding: 0 5px;">MOUNT_UNMOUNT_FILESYSTEMS</td>
-      <td style="padding: 0 5px;">允许应用挂载/卸载 外部文件系统。</td>
+      <td>MOUNT_UNMOUNT_FILESYSTEMS</td>
+      <td>允许应用挂载/卸载 外部文件系统。</td>
     </tr>
     <tr >
-      <td style="padding: 0 5px;">ACCESS_NETWORK_STATE</td>
-      <td style="padding: 0 5px;">允许应用获取网络信息状态，如当前的网络连接是否有效。</td>
+      <td>ACCESS_NETWORK_STATE</td>
+      <td>允许应用获取网络信息状态，如当前的网络连接是否有效。</td>
     </tr>
     <tr >
-      <td style="padding: 0 5px;">SYSTEM_ALERT_WINDOW</td>
-      <td style="padding: 0 5px;">允许应用显示系统窗口，位于显示的顶层。</td>
+      <td>SYSTEM_ALERT_WINDOW</td>
+      <td>允许应用显示系统窗口，位于显示的顶层。</td>
     </tr>
   </table>
 </div>

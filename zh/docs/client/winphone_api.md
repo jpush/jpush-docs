@@ -250,54 +250,54 @@ API 可以在 App 里任何地方调用。
 <div class="table-d" align="center" >
   <table border="1" width = "100%">
     <tr  bgcolor="#D3D3D3" >
-      <th style="padding: 0 5px;text-align:center;" >Code</th>
-      <th style="padding: 0 5px;" >描述</th>
-      <th style="padding: 0 5px;" >详细解释</th>
+      <th style="text-align:center;" >Code</th>
+      <th >描述</th>
+      <th >详细解释</th>
     </tr>
     <tr >
-      <td style="padding: 0 5px;text-align:center;">6001</td>
-      <td style="padding: 0 5px;">无效的设置，tag/alias 不应参数都为 null</td>
-      <td style="padding: 0 5px;"></td>
+      <td style="text-align:center;">6001</td>
+      <td>无效的设置，tag/alias 不应参数都为 null</td>
+      <td></td>
     </tr>
     <tr >
-      <td style="padding: 0 5px;text-align:center;">6002</td>
-      <td style="padding: 0 5px;">设置超时</td>
-      <td style="padding: 0 5px;">建议重试</td>
+      <td style="text-align:center;">6002</td>
+      <td>设置超时</td>
+      <td>建议重试</td>
     </tr>
     <tr >
-      <td style="padding: 0 5px;text-align:center;">6003</td>
-      <td style="padding: 0 5px;">alias 字符串不合法</td>
-      <td style="padding: 0 5px;">有效的别名、标签组成：字母（区分大小写）、数字、下划线、汉字。</td>
+      <td style="text-align:center;">6003</td>
+      <td>alias 字符串不合法</td>
+      <td>有效的别名、标签组成：字母（区分大小写）、数字、下划线、汉字。</td>
     </tr>
     <tr >
-      <td style="padding: 0 5px;text-align:center;">6004</td>
-      <td style="padding: 0 5px;">alias超长。最多 40个字节</td>
-      <td style="padding: 0 5px;">中文 UTF-8 是 3 个字节</td>
+      <td style="text-align:center;">6004</td>
+      <td>alias超长。最多 40个字节</td>
+      <td>中文 UTF-8 是 3 个字节</td>
     </tr>
     <tr >
-      <td style="padding: 0 5px;text-align:center;">6005</td>
-      <td style="padding: 0 5px;">某一个 tag 字符串不合法</td>
-      <td style="padding: 0 5px;">有效的别名、标签组成：字母（区分大小写）、数字、下划线、汉字。</td>
+      <td style="text-align:center;">6005</td>
+      <td>某一个 tag 字符串不合法</td>
+      <td>有效的别名、标签组成：字母（区分大小写）、数字、下划线、汉字。</td>
     </tr>
     <tr >
-      <td style="padding: 0 5px;text-align:center;">6006</td>
-      <td style="padding: 0 5px;">某一个 tag 超长。一个 tag 最多 40个字节</td>
-      <td style="padding: 0 5px;">中文 UTF-8 是 3 个字节</td>
+      <td style="text-align:center;">6006</td>
+      <td>某一个 tag 超长。一个 tag 最多 40个字节</td>
+      <td>中文 UTF-8 是 3 个字节</td>
     </tr>
     <tr >
-      <td style="padding: 0 5px;text-align:center;">6007</td>
-      <td style="padding: 0 5px;">tags 数量超出限制。最多 100个</td>
-      <td style="padding: 0 5px;">这是一台设备的限制。一个应用全局的标签数量无限制。</td>
+      <td style="text-align:center;">6007</td>
+      <td>tags 数量超出限制。最多 100个</td>
+      <td>这是一台设备的限制。一个应用全局的标签数量无限制。</td>
     </tr>
     <tr >
-      <td style="padding: 0 5px;text-align:center;">6008</td>
-      <td style="padding: 0 5px;">tag 超出总长度限制</td>
-      <td style="padding: 0 5px;">总长度最多 1K 字节</td>
+      <td style="text-align:center;">6008</td>
+      <td>tag 超出总长度限制</td>
+      <td>总长度最多 1K 字节</td>
     </tr>
     <tr >
-      <td style="padding: 0 5px;text-align:center;">6011</td>
-      <td style="padding: 0 5px;">10s内设置tag或alias大于10次</td>
-      <td style="padding: 0 5px;">短时间内操作过于频繁</td>
+      <td style="text-align:center;">6011</td>
+      <td>10s内设置tag或alias大于10次</td>
+      <td>短时间内操作过于频繁</td>
     </tr>
   </table>
 </div>
@@ -367,16 +367,16 @@ public static void TrackPageOut(string pageName)
 <div class="table-d" align="center" >
   <table border="1" width = "100%">
     <tr  bgcolor="#D3D3D3" >
-      <th style="padding: 0 5px;text-align:center;" >Code</th>
-      <th style="padding: 0 5px;" >描述</th>
+      <th style="text-align:center;" >Code</th>
+      <th >描述</th>
     </tr>
     <tr >
-      <td style="padding: 0 5px;text-align:center;">1008</td>
-      <td style="padding: 0 5px;">AppKey非法</td>
+      <td style="text-align:center;">1008</td>
+      <td>AppKey非法</td>
     </tr>
     <tr >
-      <td style="padding: 0 5px;text-align:center;">1009</td>
-      <td style="padding: 0 5px;">当前的appkey下没有创建WinPhone应用。请到官网检查此应用的应用详情</td>
+      <td style="text-align:center;">1009</td>
+      <td>当前的appkey下没有创建WinPhone应用。请到官网检查此应用的应用详情</td>
     </tr>
   </table>
 </div>

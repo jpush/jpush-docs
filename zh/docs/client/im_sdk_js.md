@@ -612,44 +612,44 @@ JMessage.getGroupList({
 <div class="table-d" align="left" >
   <table border="1" width = "100%">
     <tr  bgcolor="#D3D3D3" >
-      <th style="padding: 0 5px; " width="10px">Code</th>
-      <th style="padding: 0 5px; " width="468px">说明</th>
+      <th width="10px">Code</th>
+      <th width="468px">说明</th>
     </tr>
     <tr >
-      <td style="padding: 0 5px; " >872000</td>
-      <td style="padding: 0 5px; " >服务端错误</td>
+      <td>872000</td>
+      <td>服务端错误</td>
     </tr>
     <tr >
-      <td style="padding: 0 5px; " >872001</td>
-      <td style="padding: 0 5px; " >用户未登陆</td>
+      <td>872001</td>
+      <td>用户未登陆</td>
     </tr>
     <tr >
-      <td style="padding: 0 5px; " >872002</td>
-      <td style="padding: 0 5px; " >传入参数异常</td>
+      <td>872002</td>
+      <td>传入参数异常</td>
     </tr>
     <tr >
-      <td style="padding: 0 5px; " >872003</td>
-      <td style="padding: 0 5px; " >登陆异常</td>
+      <td>872003</td>
+      <td>登陆异常</td>
     </tr>
     <tr >
-      <td style="padding: 0 5px; " >872004</td>
-      <td style="padding: 0 5px; " >配置校验异常</td>
+      <td>872004</td>
+      <td>配置校验异常</td>
     </tr>
     <tr >
-      <td style="padding: 0 5px; " >872005</td>
-      <td style="padding: 0 5px; " >签名失效</td>
+      <td>872005</td>
+      <td>签名失效</td>
     </tr>
     <tr >
-      <td style="padding: 0 5px; " >872006</td>
-      <td style="padding: 0 5px; " >请求超时</td>
+      <td>872006</td>
+      <td>请求超时</td>
     </tr>
     <tr >
-      <td style="padding: 0 5px; " >872007</td>
-      <td style="padding: 0 5px; " >与服务端断开</td>
+      <td>872007</td>
+      <td>与服务端断开</td>
     </tr>
     <tr >
-      <td style="padding: 0 5px; " >872008</td>
-      <td style="padding: 0 5px; " >在其它地方登陆</td>
+      <td>872008</td>
+      <td>在其它地方登陆</td>
     </tr>
   </table>
 </div>
