@@ -1,6 +1,6 @@
 # MessageList 消息列表
 
-目前只保存最近30天消息，这类 API 地址统一为（注意与 Push API 不同）：[https://report.im.jpush.cn/v1](https://report.im.jpush.cn/v1)
+目前只保存最近30天消息，这类 API 地址统一为（注意与 Push API 不同）：**https://report.im.jpush.cn/v1**
 
 ## GetUserMessage 获取用户消息
 
@@ -22,11 +22,11 @@ N/A
 
 #### Request Params
 
-	+ filter （可选）send ，rev 。send表示查询用户发出的消息，rev表示用户收到的消息，filter不填表示用户的所有消息
-	+ start （必填）查询的起始纪录
-	+ count （必填）查询的总条数  一次最多500
-	+ begin_time (可选) 记录开始时间 格式  yyyy-MM-dd HH:mm:ss
-	+ end_time (可选)   记录结束时间  格式 yyyy-MM-dd HH:mm:ss
++ filter （可选）send ，rev 。send表示查询用户发出的消息，rev表示用户收到的消息，filter不填表示用户的所有消息
++ start （必填）查询的起始纪录
++ count （必填）查询的总条数  一次最多500
++ begin_time (可选) 记录开始时间 格式  yyyy-MM-dd HH:mm:ss
++ end_time (可选)   记录结束时间  格式 yyyy-MM-dd HH:mm:ss
 
 ### Example Response
 
@@ -62,10 +62,10 @@ N/A
 
 #### Request Params
 
-	+ start （必填）查询的起始纪录
-	+ count （必填）查询的总条数 一次最多500
-	+ begin_time (可选) 记录开始时间 格式 yyyy-MM-dd HH:mm:ss
-	+ end_time (可选)   记录结束时间  格式 yyyy-MM-dd HH:mm:ss
++ start （必填）查询的起始纪录
++ count （必填）查询的总条数 一次最多500
++ begin_time (可选) 记录开始时间 格式 yyyy-MM-dd HH:mm:ss
++ end_time (可选)   记录结束时间  格式 yyyy-MM-dd HH:mm:ss
 
 ### Example Response
 
