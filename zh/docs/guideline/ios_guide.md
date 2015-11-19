@@ -60,7 +60,7 @@
 * Foundation.framework
 * UIKit.framework
 * Security.framework
-* libz.dylib
+* Xcode7需要的是libz.tbd；Xcode7以下版本是libz.dylib
 
 ### Build Settings
 

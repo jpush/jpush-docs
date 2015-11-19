@@ -370,7 +370,7 @@ iOS 9变动影响SDK部分:
 
 **bitCode解决方式**
 
-JPush iOS SDK v1.8.7 及以上版本的SDK,已经增加对 iOS 9 新特性 bitcode 的支持.
+JPush iOS SDK v1.8.7 及以上版本的SDK,已经增加对 iOS 9 新特性 bitcode 的支持.JMessage 未发布新版支持bitCode版本前,需要用户主动关闭bitCode编译器选项:Build Settings->Enable Bitcode选项选择NO
 
 **Https解决方式**
 
