@@ -640,13 +640,13 @@ Windows Phone 平台上，暂时不支持应用内消息。
 			<td>content</td>
 			<td>string</td>
 			<td>必填</td>
-			<td>"sms msg content"</td>
+			<td>不能超过480个字符。"sms msg content"</td>
 		</tr>
 		<tr >
 			<td>delay_time</td>
 			<td>int</td>
 			<td>必填</td>
-			<td>设置为0，表示立即发送短信，单位为秒</td>
+			<td>单位为秒，不能超过24小时。设置为0，表示立即发送短信。</td>
 		</tr>
 	</table>
 </div>
