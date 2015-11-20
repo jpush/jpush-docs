@@ -942,6 +942,10 @@ API 用于统计用户应用崩溃日志
       <th >描述</th>
     </tr>
     <tr >
+      <td>1005</td>
+      <td>AppKey不存在</td>
+    </tr>
+    <tr >
       <td>1008</td>
       <td>AppKey非法</td>
     </tr>
