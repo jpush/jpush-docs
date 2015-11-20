@@ -2,6 +2,289 @@
 
 以下列表里的 ErrorCode 有可能在 SDK 的调用过程中出现。供参考理解其含义。
 
+#### JMessage iOS
+
+只会出现在 iOS SDK 里的错误码。
+
+<div class="table-d" align="center" >
+	<table border="1" width = "100%">
+		<tr  bgcolor="#D3D3D3" >
+			<th >Code</th>
+			<th>Error Message</th>
+			<th>说明</th>
+		</tr>
+		
+		
+    <tr>
+      <td>860015</td>
+      <td>Network downloading media failed.</td>
+      <td>媒体文件下载失败</td>
+    </tr>
+    <tr>
+      <td>860018</td>
+      <td>Network uploading media failed</td>
+      <td>媒体文件上传失败</td>
+    </tr>
+    <tr>
+      <td>860020</td>
+      <td>Getting upload token failed</td>
+      <td>获取媒体文件上传 token 失败</td>
+    </tr>
+    <tr>
+      <td>860021</td>
+      <td>Network result is invalid</td>
+      <td>服务器端返回的数据非预期</td>
+    </tr>
+    
+    <tr>
+      <td>861004</td>
+      <td>DB Migrating failed</td>
+      <td>SDK数据库升级失败</td>
+    </tr>
+    <tr>
+      <td>861100</td>
+      <td>Appkey is invalid</td>
+      <td>Appkey 不合法</td>
+    </tr>
+    <tr>
+      <td>861101</td>
+      <td>Internal param check failure</td>
+      <td>内部参数校验出错</td>
+    </tr>
+    <tr>
+      <td>863001</td>
+      <td>Username is invalid</td>
+      <td>无效的用户名</td>
+    </tr>
+    <tr>
+      <td>863002</td>
+      <td>Password is invalid</td>
+      <td>无效的密码</td>
+    </tr>
+    <tr>
+      <td>863004</td>
+      <td>User is not at Login state</td>
+      <td>用户未在登录状态</td>
+    </tr>
+    <tr>
+      <td>864001</td>
+      <td>It is not a media message</td>
+      <td>不是媒体消息</td>
+    </tr>
+    <tr>
+      <td>864002</td>
+      <td>Media resource is missing</td>
+      <td>媒体资源意外丢失</td>
+    </tr>
+    <tr>
+      <td>864003</td>
+      <td>Media crc32 code is invalid</td>
+      <td>媒体CRC码无效</td>
+    </tr>
+    <tr>
+      <td>864004</td>
+      <td>Media crc check failure</td>
+      <td>媒体CRC校验失败</td>
+    </tr>
+    <tr>
+      <td>864005</td>
+      <td>Uploading media file is empty</td>
+      <td>上传的媒体文件意外丢失</td>
+    </tr>
+    <tr>
+      <td>865001</td>
+      <td>Message content is invalid</td>
+      <td>无效的消息内容</td>
+    </tr>
+    <tr>
+      <td>865002</td>
+      <td>Message is nil</td>
+      <td>消息为空</td>
+    </tr>
+    <tr>
+      <td>865003</td>
+      <td>Message is not prepared for sending</td>
+      <td>消息未满足发送的条件</td>
+    </tr>
+    <tr>
+      <td>865004</td>
+      <td>You are not in the group for sending message</td>
+      <td>你不是发送群聊消息的群组成员</td>
+    </tr>
+    <tr>
+      <td>866001</td>
+      <td>Unknown conversation type</td>
+      <td>未知的会话类型</td>
+    </tr>
+    <tr>
+      <td>866002</td>
+      <td>Conversation username is invalid</td>
+      <td>单聊会话用户名无效</td>
+    </tr>
+    <tr>
+      <td>866003</td>
+      <td>Conversation groupId is invalid</td>
+      <td>群聊会话群组ID无效</td>
+    </tr>
+    <tr>
+      <td>867001</td>
+      <td>GroupId is invalid</td>
+      <td>无效的群组ID</td>
+    </tr>
+    <tr>
+      <td>867002</td>
+      <td>Group fields are invalid</td>
+      <td>群组字段无效</td>
+    </tr>
+    <tr>
+      <td>869999</td>
+      <td>Unknown SDK error</td>
+      <td>未知的SDK错误码</td>
+    </tr>
+
+
+    
+</table>
+</div>
+
+#### JMessage Android
+
+只会出现在 Android SDK 里的错误码。
+
+<div class="table-d" align="center" >
+	<table border="1" width = "100%">
+		<tr  bgcolor="#D3D3D3" >
+			<th >Code</th>
+			<th>Error Message</th>
+			<th>说明</th>
+		</tr>
+    <tr >
+      <td>871101</td>
+      <td></td>
+      <td>请求参数不合法</td>
+    </tr>
+    <tr >
+      <td>871102</td>
+      <td></td>
+      <td>请求失败，请检查网络</td>
+    </tr>
+    <tr >
+      <td>871103</td>
+      <td></td>
+      <td>服务器内部错误</td>
+    </tr>
+    <tr >
+      <td>871104</td>
+      <td></td>
+      <td>服务器内部错误</td>
+    </tr>
+    <tr >
+      <td>871201</td>
+      <td></td>
+      <td>响应超时</td>
+    </tr>
+    <tr >
+      <td>871300</td>
+      <td></td>
+      <td>api调用发起者尚未登录</td>
+    </tr>
+    <tr >
+      <td>871301</td>
+      <td></td>
+      <td>api调用传入的参数不合法</td>
+    </tr>
+    <tr >
+      <td>871302</td>
+      <td></td>
+      <td>发送消息的消息体过大，整个消息体大小不能超过4k</td>
+    </tr>
+    <tr >
+      <td>871303</td>
+      <td></td>
+      <td>用户名不合法</td>
+    </tr>
+    <tr >
+      <td>871304</td>
+      <td></td>
+      <td>密码不合法</td>
+    </tr>
+    <tr >
+      <td>871305</td>
+      <td></td>
+      <td>名称不合法（包括nickname groupname notename）  </td>
+    </tr>
+    <tr >
+      <td>871306</td>
+      <td></td>
+      <td>其他输入不合法</td>
+    </tr>
+    <tr >
+      <td>871307</td>
+      <td></td>
+      <td>添加或移除群成员时，传入的成员列表中有用户不存在</td>
+    </tr>
+    <tr >
+      <td>871308</td>
+      <td></td>
+      <td>SDK尚未初始化</td>
+    </tr>
+    <tr >
+      <td>871309</td>
+      <td></td>
+      <td>消息中包含的文件不存在</td>
+    </tr>
+    <tr >
+      <td>871310</td>
+      <td></td>
+      <td>网络连接已断开，请检查网络</td>
+    </tr>
+    <tr >
+      <td>871311</td>
+      <td></td>
+      <td>用户未设定头像，下载头像失败</td>
+    </tr>
+    <tr >
+      <td>871312</td>
+      <td></td>
+      <td>创建ImageContent失败</td>
+    </tr>
+    <tr >
+      <td>871402</td>
+      <td></td>
+      <td>文件上传失败</td>
+    </tr>
+    <tr >
+      <td>871403</td>
+      <td></td>
+      <td>文件上传失败</td>
+    </tr>
+    <tr >
+      <td>871404</td>
+      <td></td>
+      <td>文件下载失败</td>
+    </tr>
+    <tr >
+      <td>871501</td>
+      <td></td>
+      <td>appkey与包名不匹配或者token无效</td>
+    </tr>
+    <tr >
+      <td>871502</td>
+      <td></td>
+      <td>appkey无效</td>
+    </tr>
+    <tr >
+      <td>871503</td>
+      <td></td>
+      <td>appkey与platform不匹配</td>
+    </tr>
+	</table>
+</div>
+
+#### Server Error 
+
+JMessage 服务器端报的错误码。有可能出现在各平台的 SDK 里。
+
 <div class="table-d" align="center" >
 	<table border="1" width = "100%">
 		<tr  bgcolor="#D3D3D3" >
@@ -266,192 +549,8 @@
 		</tr>
 
 
-
-
-   <!-- iOS SDK -->
-    <tr>
-      <td>860010</td>
-      <td></td>
-      <td>网络请求验证错误</td>
-    </tr>
-    <tr>
-      <td>860011</td>
-      <td></td>
-      <td>网络请求超时</td>
-    </tr>
-    <tr>
-      <td>860012</td>
-      <td></td>
-      <td>网络连接失败</td>
-    </tr>
-    <tr>
-      <td>860013</td>
-      <td></td>
-      <td>网络服务端失败</td>
-    </tr>
-    <tr>
-      <td>860170</td>
-      <td></td>
-      <td>用户名验证失败</td>
-    </tr>
-    <tr>
-      <td>860172</td>
-      <td></td>
-      <td>密码验证失败</td>
-    </tr>
-    <tr>
-      <td>860193</td>
-      <td></td>
-      <td>发送消息失败</td>
-    </tr>
-    <tr>
-      <td>860210</td>
-      <td></td>
-      <td>七牛未知错误</td>
-    </tr>
-    <tr>
-      <td>860211</td>
-      <td></td>
-      <td>七牛网络错误</td>
-    </tr>
-    <tr>
-      <td>860212</td>
-      <td></td>
-      <td>七牛验证错误</td>
-    </tr>
-    <tr>
-      <td>860213</td>
-      <td></td>
-      <td>七牛上传文件失败</td>
-    </tr>
-    <tr>
-      <td>860214</td>
-      <td></td>
-      <td>获取七牛token失败</td>
-    </tr>
-
-    <!-- Android SDK 相关 -->		
-    <tr >
-      <td>871101</td>
-      <td></td>
-      <td>请求参数不合法</td>
-    </tr>
-    <tr >
-      <td>871102</td>
-      <td></td>
-      <td>请求失败，请检查网络</td>
-    </tr>
-    <tr >
-      <td>871103</td>
-      <td></td>
-      <td>服务器内部错误</td>
-    </tr>
-    <tr >
-      <td>871104</td>
-      <td></td>
-      <td>服务器内部错误</td>
-    </tr>
-    <tr >
-      <td>871201</td>
-      <td></td>
-      <td>响应超时</td>
-    </tr>
-    <tr >
-      <td>871300</td>
-      <td></td>
-      <td>api调用发起者尚未登录</td>
-    </tr>
-    <tr >
-      <td>871301</td>
-      <td></td>
-      <td>api调用传入的参数不合法</td>
-    </tr>
-    <tr >
-      <td>871302</td>
-      <td></td>
-      <td>发送消息的消息体过大，整个消息体大小不能超过4k</td>
-    </tr>
-    <tr >
-      <td>871303</td>
-      <td></td>
-      <td>用户名不合法</td>
-    </tr>
-    <tr >
-      <td>871304</td>
-      <td></td>
-      <td>密码不合法</td>
-    </tr>
-    <tr >
-      <td>871305</td>
-      <td></td>
-      <td>名称不合法（包括nickname groupname notename）  </td>
-    </tr>
-    <tr >
-      <td>871306</td>
-      <td></td>
-      <td>其他输入不合法</td>
-    </tr>
-    <tr >
-      <td>871307</td>
-      <td></td>
-      <td>添加或移除群成员时，传入的成员列表中有用户不存在</td>
-    </tr>
-    <tr >
-      <td>871308</td>
-      <td></td>
-      <td>SDK尚未初始化</td>
-    </tr>
-    <tr >
-      <td>871309</td>
-      <td></td>
-      <td>消息中包含的文件不存在</td>
-    </tr>
-    <tr >
-      <td>871310</td>
-      <td></td>
-      <td>网络连接已断开，请检查网络</td>
-    </tr>
-    <tr >
-      <td>871311</td>
-      <td></td>
-      <td>用户未设定头像，下载头像失败</td>
-    </tr>
-    <tr >
-      <td>871312</td>
-      <td></td>
-      <td>创建ImageContent失败</td>
-    </tr>
-    <tr >
-      <td>871402</td>
-      <td></td>
-      <td>文件上传失败</td>
-    </tr>
-    <tr >
-      <td>871403</td>
-      <td></td>
-      <td>文件上传失败</td>
-    </tr>
-    <tr >
-      <td>871404</td>
-      <td></td>
-      <td>文件下载失败</td>
-    </tr>
-    <tr >
-      <td>871501</td>
-      <td></td>
-      <td>appkey与包名不匹配或者token无效</td>
-    </tr>
-    <tr >
-      <td>871502</td>
-      <td></td>
-      <td>appkey无效</td>
-    </tr>
-    <tr >
-      <td>871503</td>
-      <td></td>
-      <td>appkey与platform不匹配</td>
-    </tr>
-	</table>
+</table>
 </div>
+
 
 
