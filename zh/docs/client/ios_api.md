@@ -221,6 +221,11 @@
       <th >详细解释</th>
     </tr>
     <tr >
+      <td>6001</td>
+      <td>无效的设置，tag/alias 不应参数都为 null</td>
+      <td></td>
+    </tr>
+    <tr >
       <td>6002</td>
       <td>设置超时</td>
       <td>建议重试</td>
