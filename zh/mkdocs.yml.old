@@ -24,7 +24,6 @@ pages:
 - [guideline/jmessage_ios_guide.md, 入门指南, JMessage iOS 集成指南]
 
 
-
 - [client/android_sdk.md, 客户端, Android SDK 概述]
 - [client/android_tutorials.md, 客户端, Android SDK 教程]
 - [client/android_api.md, 客户端, Android SDK API]
@@ -63,7 +62,6 @@ pages:
 - [advanced/im_message_protocol.md, 高级, IM 消息协议]
 - [advanced/im_objects.md, 高级, IM 对象定义]
 - [advanced/jmessage_topics.md, 高级, JMessage高级话题]
-
 
 
 - [more/use_license.md, 更多, 使用许可协议]
