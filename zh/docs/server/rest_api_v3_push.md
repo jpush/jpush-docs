@@ -614,15 +614,24 @@ Windows Phone 平台上，暂时不支持应用内消息。
 
 
 <br>
-<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px;">
-	<p>Android 1.6.2及以下版本 接收notification 与message并存（即本次api调用同时推送通知和消息）的离线推送， 只能收到通知部分，message 部分没有透传给 App。 </p>
-	<br>
-	<p> Android 1.6.3及以上SDK 版本已做相应调整，能正常接收同时推送通知和消息的离线记录。</p>
-	<br>
-	<p>iOS 1.7.3及以上的版本才能正确解析v3的message，但是无法解析v2推送通知同时下发的应用内消息。</p>
-</div>
+
+```
+Android 1.6.2及以下版本 接收notification 与message并存（即本次api调用同时推送通知和消息）的离线推送， 只能收到通知部分，message 部分没有透传给 App。
+
+Android 1.6.3及以上SDK 版本已做相应调整，能正常接收同时推送通知和消息的离线记录。
+
+iOS 1.7.3及以上的版本才能正确解析v3的message，但是无法解析v2推送通知同时下发的应用内消息。
+
+```
 
 #### sms_message
+
+<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px;">
+<p>温馨提示：</p>
+<p>使用短信业务，会产生额外的运营商费用，具体请咨询商务，联系电话：400-612-5955  商务QQ：800024881</p>
+</div>
+
+<br>
 
 用于设置短信推送内容以及短信发送的延迟时间。手机接收号码,开发者需要先把用户的手机号码与设备的registration id匹配。绑定方法：[服务端-Device-更新设备](../server/rest_api_v3_device/#device)
 
@@ -646,7 +655,7 @@ Windows Phone 平台上，暂时不支持应用内消息。
 			<td>delay_time</td>
 			<td>int</td>
 			<td>必填</td>
-			<td>单位为秒，不能超过24小时。设置为0，表示立即发送短信。</td>
+			<td>单位为秒，不能超过24小时。设置为0，表示立即发送短信。该参数仅对android平台有效，iOS 和 Winphone平台则会立即发送短信</td>
 		</tr>
 	</table>
 </div>

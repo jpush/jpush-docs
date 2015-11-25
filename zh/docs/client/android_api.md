@@ -403,8 +403,6 @@ SDK 对自定义消息，只是传递，不会有任何界面上的展示。
 
 可为每个用户打多个标签。
 
-不同应用程序、不同的用户，可以打同样的标签。
-
 举例： game, old_page,  women
 
 ### Method - setAliasAndTags (with Callback)
