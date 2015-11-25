@@ -175,8 +175,6 @@ API 可以在 App 里任何地方调用。
 
 可为每个用户打多个标签。
 
-不同应用程序、不同的用户，可以打同样的标签。
-
 举例： game, old_page,  women
 
 #### Method - SetTagsWithAlias(with Callback)
