@@ -38,7 +38,6 @@ pages:
 - [client/im_sdk_js.md, 客户端, IM JS SDK 概述,Hidden]
 - [client/im_errorcode.md, 客户端,IM ErrorCode 定义]
 
-
 - [server/server_overview.md, 服务器端, 服务器端 概述]
 - [server/rest_api_v3_push.md, 服务器端, REST API - Push]
 - [server/rest_api_v3_report.md, 服务器端, REST API - Report]
@@ -55,7 +54,6 @@ pages:
 - [server/csharp_sdk.md, 服务器端, C# SDK]
 - [server/nodejs_sdk.md, 服务器端, Node.js SDK]
 
-
 - [advanced/scenes.md, 高级, JPush应用场景]
 - [advanced/topics.md, 高级, JPush高级话题]
 - [advanced/rich_push.md, 高级, Rich Push 入门指南]
@@ -66,7 +64,6 @@ pages:
 
 - [more/use_license.md, 更多, 使用许可协议]
 - [more/contact_us.md, 更多,联系我们]
-
 
 - [updates.md, 最近更新]
 
