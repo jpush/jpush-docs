@@ -10,7 +10,7 @@
 </div>
 
 <br/>
-<br/>
+
 
 ```
 GET /messages?&start=0&count=500&begin_time={begin_time}&end_time={end_time}
