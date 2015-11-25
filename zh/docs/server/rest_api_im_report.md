@@ -8,6 +8,12 @@
 GET /messages?&start=0&count=500&begin_time={begin_time}&end_time={end_time}
 ```
 
+```
+**注意**
+
+使用此接口，传递给JPush的URL需要经过URL Encode处理，例如时间格式中的空格需要被转义为 %20
+```
+
 ### Example Request
 
 #### Request Header 
@@ -26,7 +32,6 @@ N/A
 + count （必填）查询的总条数  一次最多500
 + begin_time (可选) 记录开始时间 格式  yyyy-MM-dd HH:mm:ss
 + end_time (可选)   记录结束时间  格式 yyyy-MM-dd HH:mm:ss
-+ 使用此接口，传递给JPush的URL需要经过URL Encode处理，例如时间格式中的空格需要被转义为 %20
 
 ### Example Response
 
