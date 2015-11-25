@@ -624,6 +624,13 @@ Windows Phone 平台上，暂时不支持应用内消息。
 
 #### sms_message
 
+<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px;">
+<p>温馨提示：</p>
+<p>使用短信业务，会产生额外的运营商费用，具体请咨询商务，联系电话：400-612-5955  商务QQ：800024881</p>
+</div>
+
+<br>
+
 用于设置短信推送内容以及短信发送的延迟时间。手机接收号码,开发者需要先把用户的手机号码与设备的registration id匹配。绑定方法：[服务端-Device-更新设备](../server/rest_api_v3_device/#device)
 
 与原有 JSON 业务协议相匹配，消息有如下字段信息：

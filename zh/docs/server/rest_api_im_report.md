@@ -16,35 +16,35 @@
 GET /messages?&start=0&count=500&begin_time={begin_time}&end_time={end_time}
 ```
 
-<h3> Example Request</h3>>
+<h3> Example Request</h3>
 
-<h4> Request Header </h4>>
+<h4> Request Header </h4>
 
 ```
 GET /messages?start=0&count=500&begin_time=2015-11-02 10:10:10&end_time=2015-11-02 10:10:12
 ```
 
-<h4> Request Body </h4>>
+<h4> Request Body </h4>
 
 N/A
 
-<h4> Request Params </h4>>
+<h4> Request Params </h4>
 
 + start （必填）查询的起始纪录
 + count （必填）查询的总条数  一次最多500
 + begin_time (可选) 记录开始时间 格式  yyyy-MM-dd HH:mm:ss
 + end_time (可选)   记录结束时间  格式 yyyy-MM-dd HH:mm:ss
 
-<h3> Example Response </h3>>
+<h3> Example Response </h3>
 
-<h4> Response Header  </h4>>
+<h4> Response Header  </h4>
 
 ```
 HTTP/1.1 200 
 Content-Type: application/json; charset=utf-8 
 ```
 
-<h4> Response Data </h4>>
+<h4> Response Data </h4>
 
 ```
 { 
