@@ -9,6 +9,9 @@
 <p>使用此接口，传递给JPush的URL需要经过URL Encode处理，例如时间格式中的空格需要被转义为 %20</p>
 </div>
 
+<br/>
+<br/>
+
 ```
 GET /messages?&start=0&count=500&begin_time={begin_time}&end_time={end_time}
 ```
