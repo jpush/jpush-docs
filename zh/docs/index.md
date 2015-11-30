@@ -66,7 +66,7 @@
                 	<td width="25%"><a href="guideline/android_guide/">Android SDK 集成指南</a></td>
                 	<td width="25%"><a href="guideline/ios_guide/">iOS SDK 集成指南</a></td>
                     <td width="25%"><a href="guideline/winphone_guide/">WinPhone SDK 集成指南</a></td>
-                    <td width="25%">&nbsp;</td>
+                    <td width="25%"><a href="guideline/jmessage_guide/">极光 IM 集成指南</a></td>
                 </tr>
                 <tr>
                 	<td width="25%" ><a href="guideline/android_3m/">3 分钟集成 Android SDK</a></td>
