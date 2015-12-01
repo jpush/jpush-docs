@@ -253,6 +253,8 @@ Content-Type: application/json; charset=utf-8
 
 + nickname  （选填）用户昵称
 	+ 不支持的字符：英文字符： \n \r\n 
++ avatar  （选填）头像
+	+ 目前暂不支持服务更新头像	
 + birthday    （选填）生日 example: 1990-01-24
 	+ yyyy-MM-dd 
 + signature  （选填）签名
