@@ -103,6 +103,18 @@
 <p>2.1.0版本后,API类名为JPUSHService，不再使用原先的APService
 </div>
 
+
+####XCode7 
+
+如果用的是Xcode7时，需要在App项目的plist手动加入以下key和值以支持http传输:
+
+
+    <key>NSAppTransportSecurity</key> 
+    <dict> 
+      <key>NSAllowsArbitraryLoads</key> 
+      <true/> 
+    </dict>
+
 #### API
 
 APIs 主要集中在 JPUSHService 接口类里。
