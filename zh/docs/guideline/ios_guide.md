@@ -2,7 +2,7 @@
 
 ## 使用提示
 
-本文匹配的 SDK版本：r1.2.5 以后。
+本文匹配的 SDK版本：r2.1.0 以后。
 
 查看最近更新了解最新的SDK更新情况。
 
@@ -27,7 +27,7 @@
 
 包名为JPush-iOS-SDK-[版本号]
 
-* lib文件夹：包含头文件 APService.h，静态库文件 libPushSDK.a ，支持的iOS版本为 5.0 及以上版本。（请注意：模拟器不能实现APNS）
+* lib文件夹：包含头文件 JPUSHService.h，静态库文件 libPushSDK.a ，支持的iOS版本为 5.0 及以上版本。（请注意：模拟器不能实现APNS）
 * pdf文件：开发指南
 * demo文件夹：示例
 
@@ -64,9 +64,16 @@
 
 ### Build Settings
 
+<div style="font-size:13px;background: #ffa07a;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">
+<p>如果你的工程最低支持6.0以下版本时请注意关闭bitCode选项，否则将无法正常编译通过.
+</div>
+
 * 设置 Search Paths 下的 User Header Search Paths 和 Library Search Paths，比如SDK文件夹（默认为lib）与工程文件在同一级目录下，则都设置为"$(SRCROOT)/[文件夹名称]"即可。
 
 ### 创建并配置PushConfig.plist文件
+<div style="font-size:13px;background: #ffa07a;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">
+<p>该文件用于2.1.0之前的版本配置appkey 等信息，从 2.1.0 开始，参数配置信息可以直接通过setupWithOption初始化方法参数传入.
+</div>
 
 在你的工程中创建一个新的Property List文件，并将其命名为PushConfig.plist，填入Portal为你的应用提供的APP_KEY等参数。
 
@@ -92,24 +99,41 @@
 * 在1.2.2或之前版本的配置文件中，有 TEST_MODE 这个键，新版的SDK不再使用，可以将它删除。
 
 ### 添加代码
+<div style="font-size:13px;background: #ffa07a;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">
+<p>2.1.0版本后,API类名为JPUSHService，不再使用原先的APService
+</div>
 
 #### API
 
-APIs 主要集中在 APService 接口类里。
+APIs 主要集中在 JPUSHService 接口类里。
 
-    @interface APService : NSObject
+- init Push方法分为两个
+  + 2.1.0版本前方法适用于JPush老用户不希望修改代码直接兼容新版本。  
+  + 2.1.0版本后方法适用于新接入JPush的用户，以及希望不适用plist文件而是代码来填写appKey等信息的老用户。
+  
+<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">
+<p>使用建议
+<br>
+<p>init Push方法只能存在一个。同时存在时以第一个设定为准
+</div>
+<br>
+
+	    @interface JPUSHService : NSObject    
+    	// init Push
+    	 // init Push(2.1.0版本前注册方法）
+        + (void)setupWithOption:(NSDictionary *)launchingOption;
+    	// init Push(2.1.0版本后注册方法)
+		+ (void)setupWithOption:(NSDictionary *)launchingOption appKey:(NSString *)appKey channel:(NSString *)channel apsForProduction:(BOOL)isProduction;
     
-    // init Push
-    + (void)setupWithOption:(NSDictionary *)launchingOption;
+    	// register notification type
+    	+ (void)registerForRemoteNotificationTypes:(NSUInteger)types
+                                categories:(NSSet *)categories;  // 注册APNS类型
     
-    // register notification type
-    + (void)registerForRemoteNotificationTypes:(UIRemoteNotificationType)types;
+         // upload device token
+         + (void)registerDeviceToken:(NSData *)deviceToken;
     
-    // upload device token
-    + (void)registerDeviceToken:(NSData *)deviceToken;
-    
-    // handle notification recieved
-    + (void)handleRemoteNotification:(NSDictionary *)remoteInfo;
+        // handle notification recieved
+        + (void)handleRemoteNotification:(NSDictionary *)remoteInfo;
     
 
 #### 调用代码
@@ -129,20 +153,20 @@ APIs 主要集中在 APService 接口类里。
     // Required
    if ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0) {
     //可以添加自定义categories
-    [APService registerForRemoteNotificationTypes:(UIUserNotificationTypeBadge |
+    [JPUSHService registerForRemoteNotificationTypes:(UIUserNotificationTypeBadge |
                                                    UIUserNotificationTypeSound |
                                                    UIUserNotificationTypeAlert)
                                        categories:nil];
   } else {
     //categories 必须为nil
-    [APService registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge |
+    [JPUSHService registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge |
                                                    UIRemoteNotificationTypeSound |
                                                    UIRemoteNotificationTypeAlert)
                                        categories:nil];
   }
 
     // Required
-    [APService setupWithOption:launchOptions];
+    [JPUSHService setupWithOption:launchOptions appKey:appKey channel:channel apsForProduction:isProduction]; ／／如需兼容旧版本的方式，请依旧使用[JPUSHService setupWithOption:launchOptions]方式初始化和同时使用pushConfig.plist文件声明appKey等配置内容。
     
     return YES;
 }
@@ -150,20 +174,20 @@ APIs 主要集中在 APService 接口类里。
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
      
     // Required
-    [APService registerDeviceToken:deviceToken];
+    [JPUSHService registerDeviceToken:deviceToken];
 }
  
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
      
     // Required
-    [APService handleRemoteNotification:userInfo];
+    [JPUSHService handleRemoteNotification:userInfo];
 }
  
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
  
  
   // IOS 7 Support Required
-  [APService handleRemoteNotification:userInfo];
+  [JPUSHService handleRemoteNotification:userInfo];
   completionHandler(UIBackgroundFetchResultNewData);
 }
     
