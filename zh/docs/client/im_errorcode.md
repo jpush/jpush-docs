@@ -354,7 +354,7 @@ JMessage 服务器端报的错误码。有可能出现在各平台的 SDK 里。
 		</tr>
 		<tr >
 			<td>899001</td>
-			<td>User exit</td>
+			<td>User exist</td>
 			<td>用户已存在</td>
 		</tr>
 		<tr >
@@ -384,11 +384,6 @@ JMessage 服务器端报的错误码。有可能出现在各平台的 SDK 里。
 		</tr>
 		<tr >
 			<td>899009</td>
-			<td>Appkey not exit</td>
-			<td>Appkey不存在</td>
-		</tr>
-		<tr >
-			<td>899010</td>
 			<td>Appkey not exit</td>
 			<td>Appkey不存在</td>
 		</tr>
