@@ -1,4 +1,4 @@
-# 最近更新  dev  华仔啊
+# 最近更新  dev  
 
 ### JPush Android SDK v2.0.5
 
