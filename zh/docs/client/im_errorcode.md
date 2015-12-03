@@ -158,6 +158,11 @@
 			<th>Error Message</th>
 			<th>说明</th>
 		</tr>
+	<tr >
+	  <td>0</td>
+	  <td>Success</td>
+	  <td>成功</td>
+	</tr>
     <tr >
       <td>871101</td>
       <td></td>
@@ -293,11 +298,6 @@ JMessage 服务器端报的错误码。有可能出现在各平台的 SDK 里。
 			<th>说明</th>
 		</tr>
 		<tr >
-			<td>0</td>
-			<td>success</td>
-			<td>成功</td>
-		</tr>
-		<tr >
 			<td>898000</td>
 			<td>Server internal error</td>
 			<td>内部错误</td>
@@ -324,8 +324,8 @@ JMessage 服务器端报的错误码。有可能出现在各平台的 SDK 里。
 		</tr>
 		<tr >
 			<td>898006</td>
-			<td>gid invalid</td>
-			<td>gid不存在</td>
+			<td>Gid invalid</td>
+			<td>Gid不存在</td>
 		</tr>
 		<tr >
 			<td>898007</td>
@@ -339,7 +339,7 @@ JMessage 服务器端报的错误码。有可能出现在各平台的 SDK 里。
 		</tr>
 		<tr >
 			<td>898009</td>
-			<td>appkey not exists</td>
+			<td>Appkey not exists</td>
 			<td>appkey不存在</td>
 		</tr>
 		<tr >
@@ -348,63 +348,158 @@ JMessage 服务器端报的错误码。有可能出现在各平台的 SDK 里。
 			<td>系统繁忙，稍后重试</td>
 		</tr>
 		<tr >
+			<td>899000</td>
+			<td>Server internal error</td>
+			<td>系统内部错误</td>
+		</tr>
+		<tr >
+			<td>899001</td>
+			<td>User exit</td>
+			<td>用户已存在</td>
+		</tr>
+		<tr >
+			<td>899002</td>
+			<td>No such user</td>
+			<td>用户不存在</td>
+		</tr>
+		<tr >
+			<td>899003</td>
+			<td>parameter invalid</td>
+			<td>参数错误，Request Body参数不符合要求;resend 值不符合要求;用户名或者密码不合法;群组Gid不合法</td>
+		</tr>
+		<tr >
+			<td>899004</td>
+			<td>Password error</td>
+			<td>密码错误</td>
+		</tr>
+		<tr >
+			<td>899007</td>
+			<td>Missing authen info</td>
+			<td>校验信息为空</td>
+		</tr>
+		<tr >
+			<td>899008</td>
+			<td>Basic authentication failed</td>
+			<td>校验失败</td>
+		</tr>
+		<tr >
+			<td>899009</td>
+			<td>Appkey not exit</td>
+			<td>Appkey不存在</td>
+		</tr>
+		<tr >
+			<td>899010</td>
+			<td>Appkey not exit</td>
+			<td>Appkey不存在</td>
+		</tr>
+		<tr >
+			<td>899011</td>
+			<td>Repeat to add the members</td>
+			<td>重复添加</td>
+		</tr>
+		<tr >
+			<td>899012</td>
+			<td>No enough space for members</td>
+			<td>讨论组剩余位置不够</td>
+		</tr>
+		<tr >
+			<td>899013</td>
+			<td>User list is bigger than 500</td>
+			<td>注册列表大于500，批量注册最大长度为500</td>
+		</tr>
+		<tr >
+			<td>899014</td>
+			<td>User list is bigger than 500</td>
+			<td>添加操作操作成功 remove操作有username不存在讨论组中 remove失败</td>
+		</tr>
+		<tr >
+			<td>899015</td>
+			<td>User 's group are 100 can not continue</td>
+			<td>用户加入讨论组达到上限</td>
+		</tr>
+		<tr >
+			<td>899016</td>
+			<td>No authority to send message</td>
+			<td>用户没有管理员权限发送信息</td>
+		</tr>
+		<tr >
+			<td>899017</td>
+			<td>There are usernames exist in blacklist</td>
+			<td>用户已经被添加进黑名单</td>
+		</tr>
+		<tr >
+			<td>899018</td>
+			<td>Admin can not be added into blacklist</td>
+			<td>管理员不能被添加进黑名单</td>
+		</tr>
+		<tr >
+			<td>899019</td>
+			<td>Here are usernames not exist in blacklist</td>
+			<td>用户不存在黑名单中</td>
+		</tr>
+		<tr >
+			<td>899030</td>
+			<td>Server response time out, please try again later</td>
+			<td>系统繁忙，稍后重试</td>
+		</tr>
+		<tr >
 			<td>800002</td>
-			<td>appkey info is nil</td>
+			<td>Appkey info is nil</td>
 			<td>appkey信息为空</td>
 		</tr>
 		<tr >
 			<td>800003</td>
-			<td>appkey not register</td>
+			<td>Appkey not register</td>
 			<td>appkey未注册</td>
 		</tr>
 		<tr >
 			<td>800005</td>
-			<td>user id not register</td>
+			<td>User id not register</td>
 			<td>用户ID未注册（appkey无该UID）</td>
 		</tr>
 		<tr >
 			<td>800006</td>
-			<td>user id not exist</a></td>
+			<td>User id not exist</a></td>
 			<td>用户ID不存在（数据库中无该UID）</td>
 		</tr>
 		<tr >
 			<td>800009</td>
-			<td>system error</td>
+			<td>System error</td>
 			<td>服务器系统错误</td>
 		</tr>
 		<tr >
 			<td>800010</td>
-			<td>sync couchbase error</td>
+			<td>Sync couchbase error</td>
 			<td>服务器系统错误</td>
 		</tr>
 		<tr >
 			<td>800011</td>
-			<td>sync mysql error</td>
+			<td>Sync mysql error</td>
 			<td>服务器系统错误</td>
 		</tr>
 		<tr >
 			<td>800012</td>
-			<td>user never login</td>
+			<td>User never login</td>
 			<td>发起的用户从未登录过</td>
 		</tr>
 		<tr >
 			<td>800013</td>
-			<td>user logout</td>
+			<td>User logout</td>
 			<td>发起的用户已登出</td>
 		</tr>
 		<tr >
 			<td>800014</td>
-			<td>appkey not match</td>
+			<td>Appkey not match</td>
 			<td>发起的用户appkey与目标不匹配</td>
 		</tr>
 		<tr >
 			<td>801003</td>
-			<td>user name not register</td>
+			<td>User name not register</td>
 			<td>用户名不存在</td>
 		</tr>
 		<tr >
 			<td>801004</td>
-			<td>user password is wrong</td>
+			<td>User password is wrong</td>
 			<td>登录密码错误</td>
 		</tr>
 		<tr >
@@ -444,87 +539,87 @@ JMessage 服务器端报的错误码。有可能出现在各平台的 SDK 里。
 		</tr>
 		<tr >
 			<td>808002</td>
-			<td>user have not right to create group</td>
+			<td>User have not right to create group</td>
 			<td>用户无创建讨论组权限，创建讨论组失败</td>
 		</tr>
 		<tr >
 			<td>808003</td>
-			<td>the amount of group exceed limit</td>
+			<td>The amount of group exceed limit</td>
 			<td>用户拥有的讨论组数量已达上限,无法再创建</td>
 		</tr>
 		<tr >
 			<td>809002</td>
-			<td>user not in the group</td>
+			<td>User not in the group</td>
 			<td>用户退出讨论组时，用户不在该讨论组中，退出讨论组失败</td>
 		</tr>
 		<tr >
 			<td>810003</td>
-			<td>user not in the group</td>
+			<td>User not in the group</td>
 			<td>用户添加成员到讨论组时，用户不在该讨论组中，添加成员失败</td>
 		</tr>
 		<tr >
 			<td>810004</td>
-			<td>user not have right of group to add member</td>
+			<td>User not have right of group to add member</td>
 			<td>用户添加成员到讨论组时，用户没有往讨论组中添加成员的权限，添加成员失败</td>
 		</tr>
 		<tr >
 			<td>810005</td>
-			<td>member not register</td>
+			<td>Member not register</td>
 			<td>用户添加成员到讨论组时，添加的成员列表中有成员未注册，添加成员失败</td>
 		</tr>
 		<tr >
 			<td>810006</td>
-			<td>user have not right to add member in the group</td>
+			<td>User have not right to add member in the group</td>
 			<td>用户添加成员到讨论组时，添加的成员列表中有成员该用户没有权限进行添加，添加成员失败</td>
 		</tr>
 		<tr >
 			<td>810007</td>
-			<td>member repeated add</td>
+			<td>Member repeated add</td>
 			<td>用户添加成员到讨论组时，添加的成员列表中有成员重复添加，添加成员失败</td>
 		</tr>
 		<tr >
 			<td>810008</td>
-			<td>the amount of member exceed group limit</td>
+			<td>The amount of member exceed group limit</td>
 			<td>用户添加成员到讨论组时，添加的成员数量超出讨论组拥有的最大成员数上限，添加成员失败</td>
 		</tr>
 		<tr >
 			<td>810009</td>
-			<td>the amount of group exceed member limit</td>
+			<td>The amount of group exceed member limit</td>
 			<td>用户添加成员到讨论组时，添加的成员列表中有成员拥有的讨论组数量已达上限，添加成员失败</td>
 		</tr>
 		<tr >
 			<td>811003</td>
-			<td>user not in the group</td>
+			<td>User not in the group</td>
 			<td>用户删除讨论组成员时，用户不在该讨论组中，删除成员失败</td>
 		</tr>
 		<tr >
 			<td>811004</td>
-			<td>user not have right of group to remove member</td>
+			<td>User not have right of group to remove member</td>
 			<td>用户删除讨论组成员时，用户没有删除讨论组中成员的权限，删除成员失败</td>
 		</tr>
 		<tr >
 			<td>811005</td>
-			<td>member not register</td>
+			<td>Member not register</td>
 			<td>用户删除讨论组成员时，删除的成员列表中有成员未注册，删除成员失败</td>
 		</tr>
 		<tr >
 			<td>811006</td>
-			<td>user have not right to remove member from the group</td>
+			<td>User have not right to remove member from the group</td>
 			<td>用户删除讨论组成员时，删除的成员列表中有成员该用户没有权限进行删除，删除成员失败</td>
 		</tr>
 		<tr >
 			<td>811007</td>
-			<td>member repeated remove</td>
+			<td>Member repeated remove</td>
 			<td>用户删除讨论组成员时，删除的成员列表中有成员重复删除，删除成员失败</td>
 		</tr>
 		<tr >
 			<td>811008</td>
-			<td>member not in the group</td>
+			<td>Member not in the group</td>
 			<td>用户删除讨论组成员时，删除的成员列表中有成员不在该讨论组中，删除成员失败</td>
 		</tr>
 		<tr >
 			<td>812002</td>
-			<td>user not in the group</td>
+			<td>User not in the group</td>
 			<td>用户修改讨论组信息时，用户不在该讨论组中，修改讨论组信息失败</td>
 		</tr>
 		<tr >
