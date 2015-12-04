@@ -12,9 +12,9 @@
 
 图中红色部分，是 JPush 与 App 开发者的接触点。手机客户端侧，App 需要集成 JPush SDK；服务器端部分，开发者调用 JPush REST API 来进行推送。
 
-### Android SDK 说明
+### Android SDK 服务
 
-JPush Android SDK 是作为 Android Serivice 长期运行在后台的，从而创建并保持长连接，保持永远在线的能力。
+JPush Android SDK 是作为 Android Service 长期运行在后台的，从而创建并保持长连接，保持永远在线的能力。
 
 
 #### 多平台支持

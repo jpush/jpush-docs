@@ -32,7 +32,7 @@
 
 ### jpush-sdk_v1.x.y.zip 集成压缩包内容
 
-+ AndoridManifest.xml
++ AndroidManifest.xml
 	+ 客户端嵌入SDK参考的配置文件
 + libs/jpush-sdk-release1.x.y.jar 
 	+ SDK Java 开发包
