@@ -34,15 +34,40 @@ App 集成了 IM SDK 就不应再集成 JPush SDK（只提供 Push 功能的 SDK
 - 能用同步返回的，尽可能同步返回，不用异步接口；
 - 尽可能减少 App 的工作量。例如：媒体文件的路径维护、下载更新等；
 
-#### 初始化 JMessage.h
+#### 初始化
 
-需要在应用初始化时调用。建议在 AppDelegate 里应用加载完成时调用。
+JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用。建议在 AppDelegate 里应用加载完成时调用。
 
 ```
 + (void)setupJMessage:appKey:channel:apsForProduction:category:
 ```
 
 这个调用是必须的。否则 SDK 将不能正常工作。
+
+#### 通知监听
+
+JMessage SDK 采用 Delegate 的机制给 App 发通知，而不是采用 iOS 平台通用的通知方式。Delegate 的方式更加直接、易用。
+
+可以在 App 的任何类里，调用以下方法来监听事件通知。
+
+	[JMessage addDelegate:self withConversation:nil]
+
+为了上述这行有效，则需要在当前类的头文件里声明实现 JMessageDelegate 协议。以下示例在 AppDelegate 里加监听。
+
+	@interface AppDelegate : UIResponder <UIApplicationDelegate,JMessageDelegate>
+
+监听通知上述 2 个动作外，另外一个动作就是实现你需要监听的事件的方法。比如监听数据库升级：
+
+	- (void)onDBMigrateStart {
+	  NSLog(@"onDBmigrateStart in appdelegate");
+	  _isDBMigrating = YES;
+	}
+
+由于 JMessage SDK 会在 setup 时检测数据库升级，如果有需要就发出通知。所以建议在 AppDelegate 里调用 setupJMessage 之前就添加监听。
+
+另外一个建议在 AppDelegate 里监听的通知是当前用户被踢出登录。
+
+	- (void)onLoginUserKicked;
 
 #### 结果回调
 
@@ -72,26 +97,30 @@ JMSGCompletionHandler 有 2 个参数：
 + (void)loginWithUsername:password:completionHandler:
 
 // 当前用户退出登录
-+ (void)logoutWithCompletionHandler:
++ (void)logout:
 
 // 获取我的信息（当前登录用户）
-+ (JMSGUser *)getMyInfo
++ (JMSGUser *)myInfo
 
 // 获取用户详情（批量接口）
 + (void)userInfoArrayWithUsernameArray:completionHandler:
 
 // 更新我的信息（当前登录用户）
 // 只支持每次更新一个 UserInfo 字符。需要根据 type 去定义要更新的字段类型。
-+ (void)updateMyInfoWithParameter:type:completionHandler:
++ (void)updateMyInfoWithParameter:userFieldType:completionHandler:
 
 // 更新密码（当前登录用户）
 + (void)updateMyPasswordWithNewPassword:oldPassword:completionHandler:
 
 // 获取头像缩略图
-- (void)thumbAvatarData:handler:
+- (void)thumbAvatarData:
 
 // 获取头像大图
-- (void)largeAvatarData:handler:
+- (void)largeAvatarData:
+
+// 展示名
+- (NSString *)displayName
+
 ```
 
 #### 会话 JMSGConversation.h
@@ -122,7 +151,7 @@ JMSGCompletionHandler 有 2 个参数：
 
 // 获取单条消息
 - (JMSGMessage *)messageWithMessageId:
-- 
+ 
 // 获取多条消息（同步接口）
 // 建议使用这个接口时，每次取出的条数（limit）不要太大，否则可能存在性能问题
 
@@ -131,6 +160,9 @@ JMSGCompletionHandler 有 2 个参数：
 // 获取全部消息（异步接口）
 // 一次性取出来一个会话里全部消息。如果预计消息条数不是太多，可以使用此接口。使用上相对简单。
 - (void)allMessages:
+
+// 删除单条消息
+- (BOOL)deleteMessageWithMessageId:(NSString *)msgId
 
 // 删除全部消息
 - (BOOL)deleteAllMessages:
@@ -187,22 +219,22 @@ JMSGCompletionHandler 有 2 个参数：
 
 // 发送单聊文本消息
 // 如果最简单地使用 SDK 的发消息功能，这是最快捷的方式：不必先获取会话，不必先创建 JMSGMessage 对象
-+ (void)sendSingleTextMessage:username:
++ (void)sendSingleTextMessage:toUser:
 
 // 发送单聊图片消息
-+ (void)sendSingleImageMessage:username:
++ (void)sendSingleImageMessage:toUser:
 
 // 发送单聊语音消息
-+ (void)sendSingleVoiceMessage:voiceDuration:username:
++ (void)sendSingleVoiceMessage:voiceDuration:toUser:
 
 // 发送群聊文本消息
-+ (void)sendGroupTextMessage:groupId:
++ (void)sendGroupTextMessage:toGroup:
 
 // 发送群聊图片消息
-+ (void)sendGroupImageMessage:groupId:
++ (void)sendGroupImageMessage:toGroup:
 
 // 发送群聊语音消息
-+ (void)sendGroupVoiceMessage:voiceDuration:groupId:
++ (void)sendGroupVoiceMessage:voiceDuration:toGroup:
 
 // 设置消息的来源用户
 - (void)setFromName:
@@ -212,6 +244,7 @@ JMSGCompletionHandler 有 2 个参数：
 
 // 获取消息的 JSON 字符串
 - (NSString *)toJsonString
+- 
 ```
 
 

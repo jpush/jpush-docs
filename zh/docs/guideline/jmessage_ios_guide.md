@@ -78,17 +78,18 @@ JMessage 新增的依赖、配置、初始化方面，请继续参考下节。
 
 #### 必要的框架
 
-* CFNetwork.framework
 * CoreFoundation.framework
 * CoreTelephony.framework
-* SystemConfiguration.framework
+* CoreAudioFramework
 * CoreGraphics.framework
 * Foundation.framework
+* SystemConfiguration.framework
+* CFNetwork.framework
 * UIKit.framework
 * Security.framework
-* libz.dylib
 * AudioToolboxFramework
-* CoreAudioFramework
+* MobileCoreServices.framework
+* libz.dylib
 * libsqlite3.0.dylib
 
 #### Build Settings
@@ -106,27 +107,32 @@ JMessage 新增的依赖、配置、初始化方面，请继续参考下节。
 
 ##### API 与 Model
 
-JMessage.framework 里的 Headers 目录下，是 SDK 对外可用的所有头文件定义。这里有详细的注释，可以作为文档使用。基于这些 Headers，我们也使用 Appledoc 生成文档，可以下载到。
+JMessage.framework 里的 Headers 目录下，是 SDK 对外可用的所有头文件定义。这里有详细的注释，可以作为文档使用。基于这些 Headers，我们也使用 Appledoc 生成了在线文档与 docet。
 
-```
-JMessage.h               // SDK 核心类，提供启动方法，以及全局的定义与方法；这个类导入了其他所有的必需的头文件，所以 App 的所有使用 JMessage SDK 的地方，只需要导入这一个头文件
-JMSGConstants.h      // 全局常量定义
-JMSGUser.h              // 用户 Model，以及用户相关的接口定义
-JMSGGroup.h            // 群组 Model，以及群组相关的接口定义
-JMSGMessage.h        // 消息 Model，以及消息相关的接口定义
-JMSGConversation.h  // 会话 Model，以及会话相关的接口定义
-JPUSHService.h         // JPush 接口类
-MessageContent/JMSGAbstractContent   // 内容类型的父类
-MessageContent/JMSGTextContent				// 文本内容类型
-MessageContent/JMSGCustomContent		// 自定义内容类型
-MessageContent/JMSGAbstractMediaContent		// 媒体内容类型的父类，也继承自 JMSGAbstractContent
-MessageContent/JMSGVoiceContent 			// 语音内容
-MessageContent/JMSGImageContent			// 图片内容
-Delegate/JMessageDelegate							// 全局的 Delegate，包含其他所有 Delegates
-Delegate/JMSGConversationDelegate			// 会话相关 Delegate
-Delegate/JMSGMessageDelegate					// 消息相关
-Delegate/JMSGGroupDelegate						// 群组相关
-```    
+在 App 里，引用 JMessage SDK 的头文件，只需要引用这一个就够了: JMessage.h
+
+| 头文件 | 说明 |
+| ----- | ---- |
+| JMessage.h | SDK 核心类，提供启动方法，以及全局的定义与方法。这个类导入了其他所有的必需的头文件 |
+| JMSGConstants.h | 全局常量定义 |
+| JMSGUser.h | 用户 Model，以及用户相关的接口定义
+| JMSGGroup.h | 群组 Model，以及群组相关的接口定义
+| JMSGMessage.h | 消息 Model，以及消息相关的接口定义
+| JMSGConversation.h | 会话 Model，以及会话相关的接口定义
+| JPUSHService.h | JPush 接口类
+| MessageContent/JMSGAbstractContent | 内容类型的父类
+| MessageContent/JMSGTextContent | 文本内容 Model
+| MessageContent/JMSGCustomContent | 自定义内容 Model
+| MessageContent/JMSGAbstractMediaContent | 媒体内容类型的父类，也继承自 JMSGAbstractContent
+| MessageContent/JMSGVoiceContent | 语音内容 Model
+| MessageContent/JMSGImageContent | 图片内容 Model
+| Delegate/JMessageDelegate | 全局的 Delegate，包含其他所有 Delegates
+| Delegate/JMSGConversationDelegate | 会话相关 Delegate
+| Delegate/JMSGMessageDelegate | 消息相关 Delegate
+| Delegate/JMSGGroupDelegate | 群组相关 Delegate
+| Delegate/JMSGUserDelegate | 用户相关 Delegate
+| Delegate/JMSGDBMigrateDelegate | 数据迁移相关 Delegate
+
 
 ##### 调用代码
 
@@ -135,44 +141,48 @@ Delegate/JMSGGroupDelegate						// 群组相关
 以下几个事件监听与调用 JPush SDK API 都是必须的。请直接复制如下代码块里，注释为 "Required" 的行，到你的应用程序代理类里相应的监听方法里。
 
 ```
+/// AppDelegate.m 里的启动方法
+- (BOOL)application:(UIApplication *)application
+didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
-    - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
- 
-     // Required - 初始化
-    [JMessage setupJMessage:launchOptions
+  /// Required - 添加 JMessage SDK 监听。这个动作放在启动前
+  [JMessage addDelegate:self withConversation:nil];
+  
+  /// Required - 启动 JMessage SDK
+  [JMessage setupJMessage:launchOptions
                    appKey:JMSSAGE_APPKEY
                   channel:CHANNEL 
          apsForProduction:NO
                  category:nil];
- 
-    // Required - 注册 APNs 通知
-   if ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0) {
-    //可以添加自定义categories
+  
+  /// Required - 注册 APNs 通知
+  if ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0) {
+    /// 可以添加自定义categories
     [JPUSHService registerForRemoteNotificationTypes:(UIUserNotificationTypeBadge |
                                                    UIUserNotificationTypeSound |
                                                    UIUserNotificationTypeAlert)
                                        categories:nil];
   } else {
-    //categories 必须为nil
+    /// categories 必须为nil
     [JPUSHService registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge |
                                                    UIRemoteNotificationTypeSound |
                                                    UIRemoteNotificationTypeAlert)
                                        categories:nil];
   }
-
-    return YES;
+  return YES;
 }
  
-- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+- (void)application:(UIApplication *)application 
+didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
      
-    // Required - 注册 DeviceToken
-    [JPUSHService registerDeviceToken:deviceToken];
+  /// Required - 注册 DeviceToken
+  [JPUSHService registerDeviceToken:deviceToken];
 }
  
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
      
-    // Required - 处理收到的通知
-    [JPUSHService handleRemoteNotification:userInfo];
+  // Required - 处理收到的通知
+  [JPUSHService handleRemoteNotification:userInfo];
 }
  
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
