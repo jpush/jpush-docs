@@ -1,5 +1,9 @@
 <h1>JPush API Java Library</h1>
 
+<style>
+img[alt=jpush_weblogic] { width: 800px; }
+</style>
+
 ### 概述
 
 这是 JPush REST API 的 Java 版本封装开发包，是由极光推送官方提供的，一般支持最新的 API 功能。
@@ -258,7 +262,7 @@ Weblogic在使用jpush-api-java-client时需要注意的一些事项。
 + 执行 keytool -list -keystore mykey.jks  命令列出信任库里的所有公钥，观察对应证书的指纹
 + 检查官网证书，观察对应证书的指纹
 + 比较两个指纹是否一致，如下图所示
-![](image/weblogic.png)
+![jpush_weblogic](image/weblogic.png)
 
 #### 异常记录
 **证书错误异常**
