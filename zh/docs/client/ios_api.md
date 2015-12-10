@@ -301,8 +301,8 @@ iOS 设备收到一条推送（APNs），用户点击推送通知打开应用时
         NSInteger badge = [[aps valueForKey:@"badge"] integerValue]; //badge数量
         NSString *sound = [aps valueForKey:@"sound"]; //播放的声音
          
-        // 取得自定义字段内容
-        NSString *customizeField1 = [userInfo valueForKey:@"customizeField1"]; //自定义参数，key是自己定义的
+        // 取得Extras字段内容
+        NSString *customizeField1 = [userInfo valueForKey:@"customizeExtras"]; //服务端中Extras字段，key是自己定义的
         NSLog(@"content =[%@], badge=[%d], sound=[%@], customize field  =[%@]",content,badge,sound,customizeField1);
          
         // Required
