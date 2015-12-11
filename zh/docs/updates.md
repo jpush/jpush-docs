@@ -1,5 +1,73 @@
 # 最近更新 
 
+### JMessage Android SDK v1.1.5
+
+#### 更新时间
+
+* 2015-12-11
+
+#### JMessage SDK Change Log
+
+##### New Feature
+
+* 群成员变化event全部上抛sdk不过滤
+* 用户小头像sdk内部作缓存
+* 内部并发线程数控制，防止太多线程并发执行导致问题
+* 优化网络任务执行效率
+* 本地媒体文件存储按会话分类，方便之后清理。
+* 新增接口:
+	* ImageContent 新增通过传Bitmap来构造实例的接口
+	* Conversation.CreateMessage 新增自定义FromName的接口，开发者可以自定义message的FromName
+	* UserInfo 新增获取头像bitmap的异步接口getAvatarBitmap、getBigAvatarBitmap，并且sdk会在内部会对小头像的bitmap做缓存。
+* 已过时接口:
+	* EventNotificationContent.containsGroupOwner
+	* UserInfo.getAvatarFileAsync
+
+
+##### Bug Fix
+
+
+* 使用自定义类继承BasicCallback时，请求会报错
+* 一些对外接口没有做登陆检查,未登录时调用接口会有问题
+* 修复发送大语音文件，对方收到后下载失败的bug
+* 修复首次收到群消息展示的群组的ID
+* 修复同时调用拿大头像和小头像时，其中有一个返回Null。
+
+#### JChat Change Log
+* 适配JMessage1.1.5
+
+#### New Feature
+
+
+* 发送多张图片时，逐张发送
+* 相册按照修改时间进行排序
+* 上传头像时进行裁剪
+* 优化：一次发送9张图片，能发送成功，但效率比较低
+* 优化：点击jchat 用户在【我】处查看自己头像，提示正在加载，体验待优化
+
+
+##### Bug Fix
+
+
+* 修复：加载上一页消息时如果不存在上一页消息，会多次刷新的问题
+* 修复：单聊清空聊天记录异常的问题
+* 修复：发送多张图片有时出现NPE异常
+* 修复：发送9张图片，可能会卡在正在发送的提示界面，图片实际没有发送成功
+* 修复：小米4手机更新头像，从文件管理处选择图片无法更新头像
+
+
+#### 升级提示
+
++ 建议升级！
+
+#### 升级指南
+* 将jar包更新至 jmessage-sdk-1.1.5.jar更新时需删除老版本jar包。
+* 将so库更新至 libjpush205.so 同时删除原来老版本so。注意不同的cpu型号对应的结构
+* 由于富媒体的展示需求，SDK 中增加一个res文件夹存放资源文件。用户需将对应文件夹下的资源文件放入工程的目录中。
+* 如果是从更早的版本升级过来，建议参考 SDK下载包最新版本的 example 来更新 AndroidManifest.xml 文件配置。
+
+
+
 ### JPush Android SDK v2.0.5
 
 #### 更新时间
