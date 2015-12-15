@@ -40,7 +40,7 @@ img[alt=jpush_android_3m] { width: 500px; }
 ![jpush_android_3m](image/jpush_app_newprj.png)
 
 ### 运行 Example 这个应用
-在你的 Eclipse 里，新建一个项目，把项目目录位置指向上步骤解压缩开的 Example目录。
+上步骤导入这个 Android 项目后，你就马上可以点击鼠标右键，把这个 Android 应用跑起来了。（如果你的Eclipse设置的是自动编译的话）
 
 ![jpush_android_3m](image/jpush_app_run.png)
 
