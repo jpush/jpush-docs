@@ -94,7 +94,7 @@ JPush iOS 是对原生官方 APNs 推送的一个补充，是对其的封装，�
 
 ![jpush_ios](image/keychain_cert.png)
 
-+ 导出 .p12 证书文件
+#### 导出 .p12 证书文件
 
 > 注意要选“login”和“My Certificates” 导出证书时要选中证书文件，不要展开private key。
 
