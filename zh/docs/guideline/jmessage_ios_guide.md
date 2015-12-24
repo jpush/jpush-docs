@@ -213,7 +213,7 @@ extern NSString * const kJPFNetworkDidReceiveMessageNotification;  // 收到消�
 
 ##### JMessage 接收消息
 
-从 1.1.0 版本开始，JMessage SDK 向 App 发的消息，改变之前类似于 JPush 发 Notification 的方式，调整为实现 Delegate 协议。
+从 2.0.0 版本开始，JMessage SDK 向 App 发的消息，改变之前类似于 JPush 发 Notification 的方式，调整为实现 Delegate 协议。
 
 以下代码片断节选自 JChat 项目。
 
@@ -241,7 +241,7 @@ extern NSString * const kJPFNetworkDidReceiveMessageNotification;  // 收到消�
 
 #### JMessage 代码样例
 
-请参考 JChat 项目源代码。开源放在 Github 上。随着 SDK 下载的压缩包里，也有 JChat 整个的源代码项目。
+请参考 [JChat iOS 项目源代码](http://github.com/jpush/jchat-ios)，开源放在 Github 上。随着 SDK 下载的压缩包里，也有 JChat 整个的源代码项目。
 
 ### 技术支持
 
