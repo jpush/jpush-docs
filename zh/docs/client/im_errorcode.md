@@ -276,14 +276,21 @@
     <tr >
       <td>871502</td>
       <td></td>
-      <td>appkey无效</td>
+      <td>appKey无效。请检查 AndroidManifest.xml 里的 appKey 配置，它必须是从 JPush 控制台创建应用得到的。</td>
     </tr>
     <tr >
       <td>871503</td>
       <td></td>
-      <td>appkey与platform不匹配</td>
+      <td>appKey与平台不匹配。有可能在 JPush 控制台上，未配置此 appKey 支持 Android 平台。</td>
     </tr>
-	</table>
+    <tr>
+      <td>871504</td>
+      <td></td>
+      <td>Push 注册未完成，请稍后重试。如果持续出现这个问题，可能你的 JPush 配置不正确。</td>
+    </tr>
+    
+    
+</table>
 </div>
 
 #### Server Error 
