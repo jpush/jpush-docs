@@ -343,10 +343,16 @@ JMessage 服务器端报的错误码。有可能出现在各平台的 SDK 里。
 			<td>appkey不存在</td>
 		</tr>
 		<tr >
-			<td>808030</td>
+			<td>898010</td>
+			<td>Token expired</td>
+			<td>API请求 token 过期。正常情况下SDK会自动重新获取 token。</td>
+		</tr>
+		<tr >
+			<td>898030</td>
 			<td>Server response time out, please try again later</td>
 			<td>系统繁忙，稍后重试</td>
 		</tr>
+		
 		<tr >
 			<td>899000</td>
 			<td>Server internal error</td>
