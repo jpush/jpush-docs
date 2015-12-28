@@ -87,7 +87,7 @@ AndroidManifest.xml权限配置：
     <permission android:name="您应用的包名.permission.JPUSH_MESSAGE" android:protectionLevel="signature" />
    
     <!-- Required -->
-    <uses-permission android:name="You Package.permission.JPUSH_MESSAGE" />
+    <uses-permission android:name="您应用的包名.permission.JPUSH_MESSAGE" />
     <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
