@@ -2,6 +2,10 @@
 
 目前只保存最近30天消息，这类 API 地址统一为（注意与 Push API 不同）：**https://report.im.jpush.cn/v1**
 
+### HTTP 验证
+
+[Authorization 用户认证](../server/server_overview/#authorization)
+
 ##GetMessage 获取消息
 
 <div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px;">
