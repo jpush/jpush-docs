@@ -10,6 +10,6 @@
 
 ![messages_to_appserver](image/jmessage_messages_to_appserver.png)
 
-我们认为方案A是最优方案。方案B以后也会提供，因为方案A对于开发者来说代价稍大，如果没有需求就不必做。方案C理论上可以基于极光IM提供的API来实现，但不建议做这个流程。
+我们认为方案A是最优方案。方案B请参考[IM report](../server/rest_api_im_report/)文档，因为方案A对于开发者来说代价稍大，如果没有需求就不必做。方案C理论上可以基于极光IM提供的API来实现，但不建议做这个流程。
 
 
