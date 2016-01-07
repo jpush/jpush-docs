@@ -64,7 +64,7 @@
 
 ### Build Settings
 
-<p>如果你的工程最低支持6.0以下版本时请注意关闭bitCode选项，否则将无法正常编译通过.
+如果你的工程最低支持6.0以下版本时请注意关闭bitCode选项，否则将无法正常编译通过.
 
 * 设置 Search Paths 下的 User Header Search Paths 和 Library Search Paths，比如SDK文件夹（默认为lib）与工程文件在同一级目录下，则都设置为"$(SRCROOT)/[文件夹名称]"即可。
 
