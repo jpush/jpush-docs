@@ -64,15 +64,13 @@
 
 ### Build Settings
 
-<div style="font-size:13px;background: #ffa07a;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">
 <p>如果你的工程最低支持6.0以下版本时请注意关闭bitCode选项，否则将无法正常编译通过.
-</div>
 
 * 设置 Search Paths 下的 User Header Search Paths 和 Library Search Paths，比如SDK文件夹（默认为lib）与工程文件在同一级目录下，则都设置为"$(SRCROOT)/[文件夹名称]"即可。
 
 ### 创建并配置PushConfig.plist文件
 <div style="font-size:13px;background: #ffa07a;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">
-<p>该文件用于2.1.0之前的版本配置appkey 等信息，从 2.1.0 开始，参数配置信息可以直接通过setupWithOption初始化方法参数传入.
+<p>对于 SDK 2.1.0 及以后版本无需配置此文件，可以通过setupWithOption初始化方法参数传入。
 </div>
 
 在你的工程中创建一个新的Property List文件，并将其命名为PushConfig.plist，填入Portal为你的应用提供的APP_KEY等参数。
