@@ -510,6 +510,14 @@ POST /v1/messages
 			<td>发送者的username</td>
 		</tr>
 		<tr >
+			<td>from_name</td>
+			<td>发送者展示名（选填）</td>
+		</tr>
+		<tr >
+			<td>target_name</td>
+			<td>接受者展示名（选填）</td>
+		</tr>
+		<tr >
 			<td>msg_body</td>
 			<td>消息体</td>
 		</tr>
