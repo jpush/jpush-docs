@@ -43,11 +43,11 @@
 
 * 在 JPush的管理Portal 上创建应用并上传APNs证书。如果对APNs证书不太了解 请参考： [iOS 证书设置指南](http://docs.jpush.io/client/ios_tutorials/#ios_1) 
 
-![][0]
+<img src=image/create_ios_app.png width = "800"/>
 
 * 创建成功后自动生成 AppKey 用以标识该应用。 
 
-![][1]
+<img src=image/Screenshot_13-4_2_create.png width = "800"/>
 
 ### 导入API开发包到应用程序项目
 
@@ -90,7 +90,7 @@
 
 PushConfig.plist文件示例图:
 
-![][2]
+<img src=image/Screenshot_13-4-15_3_31.png width = "800"/>
 
 ### 添加代码
 <div style="font-size:13px;background: #ffa07a;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">
