@@ -1,5 +1,9 @@
 # iOS SDK 集成指南
 
+<style>
+img[alt=jpush_ios] { width: 800px; }
+</style>
+
 ## 使用提示
 
 本文匹配的 SDK版本：r2.1.0 以后。
@@ -27,7 +31,7 @@
 
 ### 集成压缩包内容
 
-包名为JPush-iOS-SDK-[版本号]
+包名为JPush-iOS-SDK-{版本号}
 
 * lib文件夹：包含头文件 JPUSHService.h，静态库文件jpush-ios-x.x.x.a ，支持的iOS版本为 5.0 及以上版本。（请注意：模拟器不支持APNs）
 * pdf文件：集成指南
@@ -43,11 +47,12 @@
 
 * 在 JPush的管理Portal 上创建应用并上传APNs证书。如果对APNs证书不太了解 请参考： [iOS 证书设置指南](http://docs.jpush.io/client/ios_tutorials/#ios_1) 
 
-<img src=image/create_ios_app.png width = "800"/>
+
+![jpush_ios][0]
 
 * 创建成功后自动生成 AppKey 用以标识该应用。 
 
-<img src=image/Screenshot_13-4_2_create.png width = "800"/>
+![jpush_ios][1]
 
 ### 导入API开发包到应用程序项目
 
@@ -69,7 +74,7 @@
 
 如果你的工程需要支持小于7.0的iOS系统，请到Build Settings 关闭 bitCode 选项，否则将无法正常编译通过。
 
-* 设置 Search Paths 下的 User Header Search Paths 和 Library Search Paths，比如SDK文件夹（默认为lib）与工程文件在同一级目录下，则都设置为"$(SRCROOT)/[静态库所在文件夹名称]"即可。
+* 设置 Search Paths 下的 User Header Search Paths 和 Library Search Paths，比如SDK文件夹（默认为lib）与工程文件在同一级目录下，则都设置为"$(SRCROOT)/{静态库所在文件夹名称}"即可。
 
 ### 创建并配置PushConfig.plist文件
 <div style="font-size:13px;background: #ffa07a;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">
@@ -90,7 +95,7 @@
 
 PushConfig.plist文件示例图:
 
-<img src=image/Screenshot_13-4-15_3_31.png width = "800"/>
+![jpush_ios][2]
 
 ### 添加代码
 <div style="font-size:13px;background: #ffa07a;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">
