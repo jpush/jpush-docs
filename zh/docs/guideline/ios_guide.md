@@ -102,29 +102,32 @@ PushConfig.plist文件示例图:
 
 ####允许XCode7支持Http传输方法
 
-    如果用的是Xcode7时，需要在App项目的plist手动加入以下key和值以支持http传输:
+如果用的是Xcode7时，需要在App项目的plist手动加入以下key和值以支持http传输:
 
+```
+  <key>NSAppTransportSecurity</key> 
+      <dict> 
+  <key>NSAllowsArbitraryLoads</key> 
+     	<true/> 
+    </dict>
+```
 
-        <key>NSAppTransportSecurity</key> 
-         <dict> 
-    	  <key>NSAllowsArbitraryLoads</key> 
-     	 <true/> 
-    	</dict>
 
 #### 集成所需API
 
-    APIs 主要集中在 JPUSHService 接口类里。
+APIs 主要集中在 JPUSHService 接口类里。
 
-    * 初始化JPush方法分为两个：
-        * 1.8.8及以下版本使用的是已过期的初始化方法。升级到2.1.0的老用户仍可继续使用旧的初始化方法。 
-        * 2.1.0版本开始提供带appkey等参数的新初始化方法。使用此方法无需再添加PushConfig.plist配置JPush的AppKey等字段。
+* 初始化JPush方法分为两个：
+   * 1.8.8及以下版本使用的是已过期的初始化方法。升级到2.1.0的老用户仍可继续使用旧的初始化方法。 
+   * 2.1.0版本开始提供带appkey等参数的新初始化方法。使用此方法无需再添加PushConfig.plist配置JPush的AppKey等字段。
   
-	<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">
-	<p>使用建议:
-	<br>
-	<p>两个初始化 JPush的方法同时存在，以第一个被调用的方法为准。
-	</div>
-	<br>
+
+<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">
+<p>使用建议:
+<br>
+<p>两个初始化 JPush的方法同时存在，以第一个被调用的方法为准。
+</div>
+<br>
 
 	    @interface JPUSHService : NSObject    
     	// init Push
