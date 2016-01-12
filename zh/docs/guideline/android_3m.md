@@ -1,7 +1,7 @@
 # 3 分钟快速集成 JPush Android SDK
 
 <style>
-img[alt=jpush_android_3m] { width: 400px; }
+img[alt=jpush_android_3m] { width: 800px; }
 </style>
 
 本文目的在于，指导新接触极光推送的开发者，在短短几分钟时间内把极光推送跑起来：
@@ -63,7 +63,7 @@ img[alt=jpush_android_3m] { width: 400px; }
 
 ### Portal上推送消息
 
-具体详情请查看[控制台使用](../statistical_report/#_7)
+具体详情请查看[控制台使用](../guideline/statistical_report/#_7)
 
 ### 在LogCat中查看收到的自定义消息
 自定义消息可以在LogCat日志中查看，开发者根据自己需要做展现处理，JPush不做干预.
