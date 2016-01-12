@@ -83,13 +83,13 @@ img[alt=jpush_ios] { width: 800px; }
 在你的工程中创建一个新的Property List文件，并将其命名为PushConfig.plist，文件所含字段如下：
 
 * CHANNEL
-   * 指明应用程序包的下载渠道，为方便分渠道统计，具体值由你自行定义，如：App Store。
+    * 指明应用程序包的下载渠道，为方便分渠道统计，具体值由你自行定义，如：App Store。
 * APP_KEY
-   * 填写[管理Portal上创建应用](https://www.jpush.cn/apps/new)后自动生成的AppKey值。请确保应用内配置的 AppKey 与第1步在 Portal 上创建应用后生成的 AppKey 一致。
+    * 填写[管理Portal上创建应用](https://www.jpush.cn/apps/new)后自动生成的AppKey值。请确保应用内配置的 AppKey 与第1步在 Portal 上创建应用后生成的 AppKey 一致。
 * APS_FOR_PRODUCTION
-   * 1.3.1版本新增，用于标识当前应用所使用的APNs证书环境。
-   * 0 (默认值)表示采用的是开发证书，1 表示采用生产证书发布应用。
-   * 注：此字段的值要与Build Settings的Code Signing配置的证书环境一致。
+    * 1.3.1版本新增，用于标识当前应用所使用的APNs证书环境。
+    * 0 (默认值)表示采用的是开发证书，1 表示采用生产证书发布应用。
+    * 注：此字段的值要与Build Settings的Code Signing配置的证书环境一致。
 * 在1.2.2或之前版本的配置文件中，有 TEST_MODE 这个键，新版的SDK不再使用，可以将它删除。
 
 PushConfig.plist文件示例图:
@@ -100,7 +100,7 @@ PushConfig.plist文件示例图:
 <div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">	<p>2.1.0版本开始,API类名为JPUSHService，不再使用原先的APService。	</div>
 
 
-* ####允许XCode7支持Http传输方法
+####允许XCode7支持Http传输方法
 
     如果用的是Xcode7时，需要在App项目的plist手动加入以下key和值以支持http传输:
 
@@ -111,7 +111,7 @@ PushConfig.plist文件示例图:
      	 <true/> 
     	</dict>
 
-* #### 集成所需API
+#### 集成所需API
 
     APIs 主要集中在 JPUSHService 接口类里。
 
@@ -144,7 +144,7 @@ PushConfig.plist文件示例图:
         + (void)handleRemoteNotification:(NSDictionary *)remoteInfo;
     
 
-* #### 调用代码
+#### 调用代码
 
    监听系统事件，相应地调用 JPush SDK 提供的 API 来实现功能。
 
