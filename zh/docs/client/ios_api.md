@@ -92,6 +92,100 @@
 
 ```
 
+#### Method - setTagsWithAlias (background)
+
+调用此 API 在后台同时设置别名与标签，不需要处理设置结果，SDK会自动进行失败重试
+
+需要理解的是，这个接口是覆盖逻辑，而不是增量逻辑。即新的调用会覆盖之前的设置。
+
+在之前调用过后，如果需要再次改变别名与标签，只需要重新调用此 API 即可。
+
+需要注意，该background模式的设置和非background的设置是两种不同的设置，互相不影响，意味着，非background的设置不会终止当前进行的background设置，除非另一个background设置发生。
+
+##### 支持的版本
+
+开始支持的版本：2.1.0
+
+##### 接口定义
+
+```
++ (void)setTags:(NSSet *)tags aliasInbackground:(NSString *)alias;
+```
+
+##### 参数说明
+
+- alias
+    - nil 此次调用不设置此值。
+    - 空字符串 （@""）表示取消之前的设置。
+    - 每次调用设置有效的别名，覆盖之前的设置。
+    - 有效的别名组成：字母（区分大小写）、数字、下划线、汉字。
+    - 限制：alias 命名长度限制为 40 字节。（判断长度需采用UTF-8编码）
+
+* tags
+
+    * nil 此次调用不设置此值。
+    * 空集合（[NSSet set]）表示取消之前的设置。
+    * 集合成员类型要求为NSString类型
+    * 每次调用至少设置一个 tag，覆盖之前的设置，不是新增。
+    * 有效的标签组成：字母（区分大小写）、数字、下划线、汉字。
+    * 限制：每个 tag 命名长度限制为 40 字节，最多支持设置 100 个 tag，但总长度不得超过1K字节。（判断长度需采用UTF-8编码）
+    * 单个设备最多支持设置 100 个 tag。App 全局 tag 数量无限制。
+
+```
+
+[JPUSHService setTags:tags aliasInbackground:alias];
+```
+
+#### Method - setTagsWithAlias (with block)
+
+调用此 API 来同时设置别名与标签，通过block来返回设置别名与标签的结果。
+
+需要理解的是，这个接口是覆盖逻辑，而不是增量逻辑。即新的调用会覆盖之前的设置。
+
+在之前调用过后，如果需要再次改变别名与标签，只需要重新调用此 API 即可。
+
+##### 支持的版本
+
+开始支持的版本：2.1.0
+
+##### 接口定义
+
+```
++ (void)setTags:(NSSet *)tags alias:(NSString *)alias fetchCompletionHandle:(void (^)(int iResCode, NSSet *iTags, NSString *iAlias))completionHandler
+```
+
+##### 参数说明
+
+- alias
+    - nil 此次调用不设置此值。
+    - 空字符串 （@""）表示取消之前的设置。
+    - 每次调用设置有效的别名，覆盖之前的设置。
+    - 有效的别名组成：字母（区分大小写）、数字、下划线、汉字。
+    - 限制：alias 命名长度限制为 40 字节。（判断长度需采用UTF-8编码）
+
+* tags
+
+    * nil 此次调用不设置此值。
+    * 空集合（[NSSet set]）表示取消之前的设置。
+    * 集合成员类型要求为NSString类型
+    * 每次调用至少设置一个 tag，覆盖之前的设置，不是新增。
+    * 有效的标签组成：字母（区分大小写）、数字、下划线、汉字。
+    * 限制：每个 tag 命名长度限制为 40 字节，最多支持设置 100 个 tag，但总长度不得超过1K字节。（判断长度需采用UTF-8编码）
+    * 单个设备最多支持设置 100 个 tag。App 全局 tag 数量无限制。
+
+* (void (^)(int iResCode, NSSet *iTags, NSString *iAlias))completionHandler
+    
+    * completionHandler用于处理设置返回结果
+    * iResCode返回的结果状态码
+    * iTags和iAlias返回设置的tag和alias
+
+```
+[JPUSHService setTags:tags alias:alias fetchCompletionHandle:^(int iResCode, NSSet *iTags, NSString *iAlias){
+ NSLog(@"rescode: %d, \ntags: %@, \nalias: %@\n", iResCode, iTags, iAlias);
+}];
+```
+
+
 #### Method - setTags
 
 调用此 API 来设置标签，支持回调函数。
