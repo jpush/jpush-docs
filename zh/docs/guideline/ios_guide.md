@@ -149,62 +149,59 @@ PushConfig.plist文件示例图:
    监听系统事件，相应地调用 JPush SDK 提供的 API 来实现功能。
 
    以下 ３ 个事件监听与调用 JPush SDK API 都是必须的。请直接复制如下代码块里，注释为 "Required" 的行，到你的应用程序代理类里相应的监听方法里。
-
-
-```			
-
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
-    self.window.backgroundColor = [UIColor whiteColor];
-    [self.window makeKeyAndVisible];
+   
+   
+   	
+		- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+  		  self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
+  		  self.window.backgroundColor = [UIColor whiteColor];
+   		  [self.window makeKeyAndVisible];
  
-    // Required
-   if ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0) {
-    //可以添加自定义categories
-    [JPUSHService registerForRemoteNotificationTypes:(UIUserNotificationTypeBadge |
-                                                   UIUserNotificationTypeSound |
-                                                   UIUserNotificationTypeAlert)
-                                       categories:nil];
-  } else {
-    //categories 必须为nil
-    [JPUSHService registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge |
-                                                   UIRemoteNotificationTypeSound |
-                                                   UIRemoteNotificationTypeAlert)
-                                       categories:nil];
-  }
+    	  // Required
+   		  if ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0) {
+    	     //可以添加自定义categories
+ 	        [JPUSHService registerForRemoteNotificationTypes:(UIUserNotificationTypeBadge |
+           	                                                  UIUserNotificationTypeSound |
+       	                                                      UIUserNotificationTypeAlert)
+    	                                           categories:nil];
+ 		  } else {
+   		    //categories 必须为nil
+    	    [JPUSHService registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge |
+                                                              UIRemoteNotificationTypeSound |
+                                                              UIRemoteNotificationTypeAlert)
+                                                  categories:nil];
+	     }
 
-    // Required
-    //如需兼容旧版本的方式，请依旧使用[JPUSHService setupWithOption:launchOptions]方式初始化和同时使用pushConfig.plist文件声明appKey等配置内容。
-    [JPUSHService setupWithOption:launchOptions appKey:appKey channel:channel apsForProduction:isProduction];     
-    return YES;
-}
+   		 // Required
+   		 //如需兼容旧版本的方式，请依旧使用[JPUSHService setupWithOption:launchOptions]方式初始化和同时使用pushConfig.plist文件声明appKey等配置内容。
+   		 [JPUSHService setupWithOption:launchOptions appKey:appKey channel:channel apsForProduction:isProduction];     
+    		return YES;
+	  }
  
-- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+	  - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
      
-    // Required
-    [JPUSHService registerDeviceToken:deviceToken];
-}
+ 	     // Required
+   		 [JPUSHService registerDeviceToken:deviceToken];
+	  }
  
-- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+	  - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
      
-    // Required,For systems with less than or equal to iOS6
-    [JPUSHService handleRemoteNotification:userInfo];
-}
+	  	  // Required,For systems with less than or equal to iOS6
+ 	  	 [JPUSHService handleRemoteNotification:userInfo];
+	  }
  
-- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+	  - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
  
-  // IOS 7 Support Required
-  [JPUSHService handleRemoteNotification:userInfo];
-  completionHandler(UIBackgroundFetchResultNewData);
-}
+ 		 // IOS 7 Support Required
+		 [JPUSHService handleRemoteNotification:userInfo];
+ 		 completionHandler(UIBackgroundFetchResultNewData);
+	  }
 
-- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+	  - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
  
-    //Optional
-     NSLog(@"did Fail To Register For Remote Notifications With Error: %@", error); 
- }  
-    
-```
+ 		 //Optional
+		 NSLog(@"did Fail To Register For Remote Notifications With Error: %@", error); 
+	  }  
 
 
 #### 7、监听通知
