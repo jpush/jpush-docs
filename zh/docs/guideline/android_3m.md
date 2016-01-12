@@ -64,8 +64,18 @@ img[alt=jpush_android_3m] { width: 500px; }
 
 ![jpush_android_3m](image/Screenshot_13-4-10.png)
 
-### 在LogCat中查看收到的消息
-推送消息可以在LogCat日志中查看，开发者根据自己需要做展现处理，Jpush不做干预。
+### Portal上推送富媒体
+
+**选择模板推送**
+
+![jpush_android_3m](image/jpush_app_sendmsg_rich_1.png)
+
+**选择URL推送**
+
+![jpush_android_3m](image/jpush_app_sendmsg_rich_2.png)
+
+### 在LogCat中查看收到的自定义消息
+自定义消息可以在LogCat日志中查看，开发者根据自己需要做展现处理，JPush不做干预.
 
 
 ![jpush_android_3m](image/Screenshot_13-4-10_log.png)
