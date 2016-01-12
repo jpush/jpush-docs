@@ -77,7 +77,7 @@ img[alt=jpush_ios] { width: 800px; }
 * 设置 Search Paths 下的 User Header Search Paths 和 Library Search Paths，比如SDK文件夹（默认为lib）与工程文件在同一级目录下，则都设置为"$(SRCROOT)/{静态库所在文件夹名称}"即可。
 
 ### 创建并配置PushConfig.plist文件
-<div style="font-size:13px;background: #ffa07a;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">
+<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">
 <p>2.1.0 版本开始，新增了带参数的setupWithOption初始化方法，可通过此方法等参数传入AppKey等信息。1.8.8及之前版本的 JPush SDK只能通过PushConfig.plist配置AppKey等信息。
 </div>
 
@@ -98,7 +98,7 @@ PushConfig.plist文件示例图:
 ![jpush_ios][2]
 
 ### 添加代码
-<div style="font-size:13px;background: #ffa07a;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">
+<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">
 <p>2.1.0版本开始,API类名为JPUSHService，不再使用原先的APService。
 </div>
 
@@ -236,8 +236,8 @@ extern NSString * const kJPFNetworkDidReceiveMessageNotification; // 收到自�
 
 问答社区：[http://www.jpush.cn/qa/][5]
 
-[0]: image/create_ios_app.png
-[1]: image/Screenshot_13-4_2_create.png
+[0]: image/create_ios_app.jpg
+[1]: image/Screenshot_13-4_2_create.jpg
 [2]: image/Screenshot_13-4-15_3_31.png
 [3]: ../../client_sdks/ios_api
 [4]: mailto:support@jpush.cn
