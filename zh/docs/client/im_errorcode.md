@@ -368,11 +368,6 @@ JMessage 服务器端报的错误码。有可能出现在各平台的 SDK 里。
 			<td>参数错误，Request Body参数不符合要求;resend 值不符合要求;用户名或者密码不合法;群组Gid不合法</td>
 		</tr>
 		<tr >
-			<td>899004</td>
-			<td>Password error</td>
-			<td>密码错误</td>
-		</tr>
-		<tr >
 			<td>899007</td>
 			<td>Missing authen info</td>
 			<td>校验信息为空</td>
@@ -430,17 +425,12 @@ JMessage 服务器端报的错误码。有可能出现在各平台的 SDK 里。
 		<tr >
 			<td>899019</td>
 			<td>Here are usernames not exist in blacklist</td>
-			<td>用户不存在黑名单中</td>
+			<td>删除目标黑名单用户不存在黑名单中</td>
 		</tr>
 		<tr >
 			<td>899030</td>
 			<td>Server response time out, please try again later</td>
 			<td>系统繁忙，稍后重试</td>
-		</tr>
-		<tr >
-			<td>800002</td>
-			<td>Appkey info is nil</td>
-			<td>appkey信息为空</td>
 		</tr>
 		<tr >
 			<td>800003</td>
