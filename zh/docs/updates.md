@@ -6,23 +6,16 @@
 + 2016-01-12
 
 #### Change Log
-+ 类名变更：APService变更为JPUSHService
-+ 功能增加：增加appKey和channel通过代码初始化API(+ (void)setupWithOption:(NSDictionary *)launchingOption appKey:(NSString *)appKey channel:(NSString *)channel apsForProduction:(BOOL)isProduction)
-+ 功能增加：增加上报APNS状态
-+ 功能增加: 增加setAlias方法的block回调方式;增加SDK静默重试模式的setAlias方法。
+
+主要对 iOS 9 适配支持。
+
 + 功能增加: 增加bitcode支持
-+ 功能改进: debug模式下获取无法deviceToken日志打印次数从100次改为5次。
-+ 优化改进: debug日志模式下增加打印用户deviceToken日志
-+ 优化改进: 日志打印AppKey
-+ 优化改进: 修复部分情况下程序启动多次打印"appkey or uid missing"bug
-+ 优化改进: 增加读取本地文件安全性检查
-+ 优化改进: Demo增加iphone6和6plus支持
-+ 优化改进: uid支持64位
++ 优化改进: Demo 增加 iPhone 6 和 6plus 支持
++ 优化改进：APService 变更为 JPUSHService
++ 功能增加：增加appKey和channel通过代码初始化API
 + 优化改进: 优化网路差环境DNS解析超时时间过长
-+ 优化改进: messageId支持64位
 + 优化改进: 修复注册时没有获取到RegistrationID的bug
 + 优化改进: 静态库文件名由"libPushSDK-x.x.x.a"变更为"jpush-ios-x.x.x.a"
-+ Bug修复: 修复飞行模式时设置tag、alias，返回6002，恢复网络，向设置的tag或alias推送却成功的问题
 
 #### 升级提示
 
