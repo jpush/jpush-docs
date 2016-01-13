@@ -350,6 +350,7 @@ JMessage 服务器端报的错误码。有可能出现在各平台的 SDK 里。
 			<td>appkey不存在</td>
 		</tr>
 		<tr >
+
 			<td>898010</td>
 			<td>Token expired</td>
 			<td>API请求 token 过期。正常情况下SDK会自动重新获取 token。</td>
@@ -359,13 +360,92 @@ JMessage 服务器端报的错误码。有可能出现在各平台的 SDK 里。
 			<td>Server response time out, please try again later</td>
 			<td>系统繁忙，稍后重试</td>
 		</tr>
-		
-		
-        <tr >
-			<td>800002</td>
-			<td>Appkey info is nil</td>
-			<td>appkey信息为空</td>
+		<tr >
+			<td>899000</td>
+			<td>Server internal error</td>
+			<td>系统内部错误</td>
 		</tr>
+		<tr >
+			<td>899001</td>
+			<td>User exist</td>
+			<td>用户已存在</td>
+		</tr>
+		<tr >
+			<td>899002</td>
+			<td>No such user</td>
+			<td>用户不存在</td>
+		</tr>
+		<tr >
+			<td>899003</td>
+			<td>parameter invalid</td>
+			<td>参数错误，Request Body参数不符合要求;resend 值不符合要求;用户名或者密码不合法;群组Gid不合法</td>
+		</tr>
+		<tr >
+			<td>899007</td>
+			<td>Missing authen info</td>
+			<td>校验信息为空</td>
+		</tr>
+		<tr >
+			<td>899008</td>
+			<td>Basic authentication failed</td>
+			<td>校验失败</td>
+		</tr>
+		<tr >
+			<td>899009</td>
+			<td>Appkey not exit</td>
+			<td>Appkey不存在</td>
+		</tr>
+		<tr >
+			<td>899011</td>
+			<td>Repeat to add the members</td>
+			<td>重复添加群成员</td>
+		</tr>
+		<tr >
+			<td>899012</td>
+			<td>No enough space for members</td>
+			<td>没有足够位置添加此次请求的成员</td>
+		</tr>
+		<tr >
+			<td>899013</td>
+			<td>User list is bigger than 500</td>
+			<td>注册列表大于500，批量注册最大长度为500</td>
+		</tr>
+		<tr >
+			<td>899014</td>
+			<td>User list is bigger than 500</td>
+			<td>添加操作操作成功 remove操作有username不存在讨论组中 remove失败</td>
+		</tr>
+		<tr >
+			<td>899015</td>
+			<td>User 's group are 100 can not continue</td>
+			<td>用户加入讨论组达到上限</td>
+		</tr>
+		<tr >
+			<td>899016</td>
+			<td>No authority to send message</td>
+			<td>用户没有管理员权限发送信息</td>
+		</tr>
+		<tr >
+			<td>899017</td>
+			<td>There are usernames exist in blacklist</td>
+			<td>用户已经被添加进黑名单</td>
+		</tr>
+		<tr >
+			<td>899018</td>
+			<td>Admin can not be added into blacklist</td>
+			<td>管理员不能被添加进黑名单</td>
+		</tr>
+		<tr >
+			<td>899019</td>
+			<td>Here are usernames not exist in blacklist</td>
+			<td>删除目标黑名单用户不存在黑名单中</td>
+		</tr>
+		<tr >
+			<td>899030</td>
+			<td>Server response time out, please try again later</td>
+			<td>系统繁忙，稍后重试</td>
+		</tr>
+>>>>>>> dev
 		<tr >
 			<td>800003</td>
 			<td>Appkey not register</td>
@@ -398,13 +478,13 @@ JMessage 服务器端报的错误码。有可能出现在各平台的 SDK 里。
 		</tr>
 		<tr >
 			<td>800012</td>
-			<td>User never login</td>
-			<td>发起的用户从未登录过</td>
+			<td>user logout</td>
+			<td>发起的用户处于登出状态，账号可能从未登录过，或者被踢下线</td>
 		</tr>
 		<tr >
 			<td>800013</td>
-			<td>User logout</td>
-			<td>发起的用户已登出</td>
+			<td>User offline</td>
+			<td>发起的用户处于离线状态</td>
 		</tr>
 		<tr >
 			<td>800014</td>
@@ -413,18 +493,18 @@ JMessage 服务器端报的错误码。有可能出现在各平台的 SDK 里。
 		</tr>
 		<tr >
 			<td>801003</td>
-			<td>User name not register</td>
-			<td>用户名不存在</td>
+			<td>Invalid user name or password</td>
+			<td>登录的用户名未注册，登录失败</td>
 		</tr>
 		<tr >
 			<td>801004</td>
-			<td>User password is wrong</td>
-			<td>登录密码错误</td>
+			<td>Invalid user name or password</td>
+			<td>登录的用户密码错误，登录失败</td>
 		</tr>
 		<tr >
 			<td>803001</td>
 			<td></td>
-			<td>发送消息失败，系统内部异常</td>
+			<td>发送消息失败，状态存储异常</td>
 		</tr>
 		<tr >
 			<td>803002</td>
@@ -434,7 +514,7 @@ JMessage 服务器端报的错误码。有可能出现在各平台的 SDK 里。
 		<tr >
 			<td>803003</td>
 			<td></td>
-			<td>发送消息失败，目标用户未注册或从未登录过</td>
+			<td>发送消息失败，目标用户未注册或不存在</td>
 		</tr>
 		<tr >
 			<td>803004</td>
@@ -450,6 +530,11 @@ JMessage 服务器端报的错误码。有可能出现在各平台的 SDK 里。
 			<td>803006</td>
 			<td></td>
 			<td>发送消息失败，发起者权限不够或者类别不匹配</td>
+		</tr>
+		<tr >
+			<td>803007</td>
+			<td></td>
+			<td>发送消息失败，消息长度超过限制</td>
 		</tr>
 		<tr >
 			<td>803008</td>
@@ -537,9 +622,24 @@ JMessage 服务器端报的错误码。有可能出现在各平台的 SDK 里。
 			<td>用户删除讨论组成员时，删除的成员列表中有成员不在该讨论组中，删除成员失败</td>
 		</tr>
 		<tr >
+			<td>812001</td>
+			<td>group id not exist</td>
+			<td>用户修改讨论组信息时，讨论组ID不存在，修改讨论组信息失败</td>
+		</tr>
+		<tr >
 			<td>812002</td>
 			<td>User not in the group</td>
 			<td>用户修改讨论组信息时，用户不在该讨论组中，修改讨论组信息失败</td>
+		</tr>
+		<tr >
+			<td>812003</td>
+			<td>length of group name exceed limit</td>
+			<td>用户修改讨论组信息时，讨论组名超出长度上限，修改讨论组信息失败</td>
+		</tr>
+		<tr >
+			<td>812004</td>
+			<td>length of group desc exceed limit</td>
+			<td>用户修改讨论组信息时，讨论组描述超出上限，修改讨论组信息失败</td>
 		</tr>
 		<tr >
 			<td>818001</td>
