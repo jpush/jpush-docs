@@ -1,6 +1,7 @@
 <h1>极光IM SDK - Android</h1>
 
 + [极光IM 客户端 DEMO 下载](../../resources_jmessage/)
++ [极光IM Android API Java docs](../client/im_android_api_docs/)
 
 ### 概述
 

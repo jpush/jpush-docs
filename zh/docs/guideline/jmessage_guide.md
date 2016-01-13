@@ -154,9 +154,6 @@ App 使用 JMessage 提供的群组功能创建群组时，得到的群组标识
 3. 通过 Web 控制台，或者调用 REST API 管理用户，发送消息。
 
 
-#### iOS IM SDK 集成
-
-敬请期待。
 
 #### Web Client 使用
 
