@@ -124,7 +124,7 @@ JPush iOS 是对原生官方 APNs 推送的一个补充，是对其的封装，�
 
 + 创建App ID、APN证书和p12证书的导出的具体步骤请看 :[iOS 证书 设置指南](../client/ios_tutorials/#ios_1)
 
-+ 点击下图按钮开始创建Provisioning Profile：
++ 在[苹果开发者账号的Provisioning Profile](https://developer.apple.com/account/ios/profile/profileList.action)页面点击下图按钮，创建Provisioning Profile
 
 ![jpush_ios](image/provision_profile.png)
 
@@ -148,7 +148,7 @@ JPush iOS 是对原生官方 APNs 推送的一个补充，是对其的封装，�
 
 ![jpush_ios](image/pp_name.png)
 
-点击[DownLoad]下载Provisioning Profile：
++ 填写完Profile Name后点击[generate]完成创建，之后点击[DownLoad]下载Provisioning Profile
 
 ![jpush_ios](image/download_pp.png)
 
@@ -162,7 +162,7 @@ JPush iOS 是对原生官方 APNs 推送的一个补充，是对其的封装，�
 
 ![jpush_ios](image/xcode_bundle.png)
 
-+ 点击项目，进入Build Setting 界面，向下滑动，去到Code Signing 配置证书：
++ 点击项目，选择目标TARGETS后进入Build Setting 界面，搜索“Code signing”，按照下图配置
 
 ![jpush_ios](image/xcode_buildsettings_cs.png)
 
