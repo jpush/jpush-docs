@@ -13,8 +13,7 @@
 			<th>Error Message</th>
 			<th>说明</th>
 		</tr>
-		
-		
+
     <tr>
       <td>860015</td>
       <td>Network downloading media failed.</td>
@@ -445,7 +444,6 @@ JMessage 服务器端报的错误码。有可能出现在各平台的 SDK 里。
 			<td>Server response time out, please try again later</td>
 			<td>系统繁忙，稍后重试</td>
 		</tr>
->>>>>>> dev
 		<tr >
 			<td>800003</td>
 			<td>Appkey not register</td>
@@ -661,8 +659,6 @@ JMessage 服务器端报的错误码。有可能出现在各平台的 SDK 里。
 			<td></td>
 			<td>用户移除好友出黑名单时，成员列表为空，操作失败</td>
 		</tr>
-
-
 </table>
 </div>
 
