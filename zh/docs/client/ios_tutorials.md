@@ -116,7 +116,7 @@ JPush iOS 是对原生官方 APNs 推送的一个补充，是对其的封装，�
 
 #### Provisioning Profile的创建
 
-+ 创建Provisioning Profile的前提，已在Apple Developer网站创建待发布应用所使用的Bundle ID的App ID，且为该App ID创建了APNs证书（如需了解如何创建APNs证书，请看[iOS 证书设置指南](../ios_tutorials/#ios_1)）。如下图:
++ 创建Provisioning Profile的前提，已在Apple Developer网站创建待发布应用所使用的Bundle ID的App ID，且为该App ID创建了APNs证书，如下图:
 
 ![jpush_ios](image/appidcer.png)
 
