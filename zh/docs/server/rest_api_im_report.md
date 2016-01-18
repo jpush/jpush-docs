@@ -39,6 +39,7 @@ N/A
 + begin_time (可选) 记录开始时间 格式  yyyy-MM-dd HH:mm:ss  设置筛选条件大于等于begin time 不设置不生效  
 + end_time (可选)   记录结束时间  格式 yyyy-MM-dd HH:mm:ss  设置筛选条件下于等于end time   不设置不生效
 + end time begin time 都不设置的话 说明两个条件都不生效，则查询服务端保存的所有消息
++ 查询的消息按发送时间升序排序
 
 ### Example Response  
 

@@ -97,7 +97,9 @@ JPush iOS 是对原生官方 APNs 推送的一个补充，是对其的封装，�
 
 #### 导出 .p12 证书文件
 
-> 注意要选“login”和“My Certificates” 导出证书时要选中证书文件，不要展开private key。
+```
+注意要选“login”和“My Certificates” 导出证书时要选中证书文件，不要展开private key。
+```
 
 ![jpush_ios](image/export_p12.png)
 
@@ -114,11 +116,7 @@ JPush iOS 是对原生官方 APNs 推送的一个补充，是对其的封装，�
 
 #### Provisioning Profile的创建
 
-+ 假设创建了一个App ID：cn.jpush.examlpe，并为此App ID配置开发环境的Push Notifications：
-
-![](image/appidpp.png)
-
-+ 创建该App ID的推送证书，如下图:
++ 创建Provisioning Profile的前提，已在Apple Developer网站创建待发布应用所使用的Bundle ID的App ID，且为该App ID创建了APNs证书，如下图:
 
 ![jpush_ios](image/appidcer.png)
 
