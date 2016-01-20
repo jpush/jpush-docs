@@ -1,5 +1,9 @@
 #常见问题
 
+<style>
+img[alt=jpush_ios_v] { width: 500px; }
+</style>
+
 ### Start 从这里开始
 
 ####**JPush有什么优势？**
@@ -381,7 +385,13 @@ SDK未提供https地址版本时
 
 
 
+<br />
+#### **iOS 如何推送自定义声音**
 
+客户端需要将声音文件导入工程里，选中工程Target -> Build Phrases -> Copy Bundle Resources
+![jpush_ios_v](image/ios_voice.png)
+
+服务端推送时，需要指定iOS 平台下的sound参数，具体传入的值是声音文件名＋后缀。
 
 
 <br />
