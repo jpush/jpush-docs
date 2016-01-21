@@ -649,7 +649,7 @@ iOS 1.7.3及以上的版本才能正确解析v3的message，但是无法解析v2
 			<td>content</td>
 			<td>string</td>
 			<td>必填</td>
-			<td>不能超过480个字符。"sms msg content"</td>
+			<td>不能超过480个字符。"你好,JPush"为8个字符。超过67个字符的内容（含签名）会被拆分成多条短信下发。</td>
 		</tr>
 		<tr >
 			<td>delay_time</td>
