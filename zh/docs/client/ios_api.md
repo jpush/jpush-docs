@@ -491,14 +491,14 @@ r1.7.0 开始支持。
 <div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">
 <p>温馨提示：
   <br>
-<p>开发者在自定义的监听kJPFNetworkDidLoginNotification也可以通过"RegistrationID"这个接口来获取对应的 RegistrationID。
+<p>iOS 9系统，应用卸载重装，苹果分配给设备的devicetoken就会发生变化，开发者需要获取设备最新的Registration id，在自定义的监听kJPFNetworkDidLoginNotification通过"RegistrationID"这个接口来获取设备对应的 RegistrationID。
 </div>
 
 #### 附加说明
 
 ##### 通过 RegistrationID 推送消息和通知
 
-可以通过 RegistrationID 来推送消息和通知， 参考文档 Push API v2， 当 receiver_type = 5 并且设置 receiver_value 为 RegistrationID 时候即可根据 RegistrationID 推送。
+可以通过 RegistrationID 来推送消息和通知， 参考文档 [Push API v3](../server/rest_api_v3_push/#audience)， 当audience 参数为 RegistrationID 时候即可根据 RegistrationID 推送。
 
 <div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">
 <p>注：

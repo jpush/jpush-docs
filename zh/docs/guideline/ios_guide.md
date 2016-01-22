@@ -220,6 +220,12 @@ extern NSString * const kJPFNetworkDidRegisterNotification; // 注册成功
 
 extern NSString * const kJPFNetworkDidLoginNotification; // 登录成功
 
+<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">
+<p>温馨提示：
+  <br>
+<p>Registration id 需要在登录成功的状态后才能准确获取
+</div>
+
 extern NSString * const kJPFNetworkDidReceiveMessageNotification; // 收到自定义消息(非APNS)
 
 其中，kJPFNetworkDidReceiveMessageNotification传递的数据可以通过NSNotification中的userInfo方法获取，包括标题、内容、extras信息等

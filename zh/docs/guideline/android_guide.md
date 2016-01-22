@@ -241,7 +241,6 @@ AndroidManifest.xml权限配置：
      <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
      <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
      <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> 
-     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/> 
   
   
      <!-- Optional for location -->

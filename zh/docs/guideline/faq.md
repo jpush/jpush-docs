@@ -442,7 +442,7 @@ SDK未提供https地址版本时
 
 ####**App badge number（角标）如何更改与清空？**
 
-JPush 网站上推送 iOS 通知时，可选设置里面有选项可以指定 badge 的参数的值，如：1或"+1"。
+JPush 网站上推送 iOS 通知时，可选设置里面有选项可以指定 badge 的参数的值，如：1或"+1"。关于badge，博客介绍文章链接[APNs Notification badge](http://blog.jpush.cn/ios_apns_badge_plus/)
 
 api上指定badge的参数请看：[Push-API-v3#API-v3-ios](../../client/ios_api/#badge),客户端上报badge到JPush服务器的接口请看:[设置badge](../../client/ios_api/#badge)
 
