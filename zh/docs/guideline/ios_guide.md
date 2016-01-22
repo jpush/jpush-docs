@@ -223,7 +223,7 @@ extern NSString * const kJPFNetworkDidLoginNotification; // 登录成功
 <div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">
 <p>温馨提示：
   <br>
-<p>Registration id 需要在登录成功的状态后才能准确获取
+<p>Registration id 需要在执行到kJPFNetworkDidLoginNotification的方法里获取
 </div>
 
 extern NSString * const kJPFNetworkDidReceiveMessageNotification; // 收到自定义消息(非APNS)

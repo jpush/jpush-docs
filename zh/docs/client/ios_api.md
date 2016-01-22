@@ -491,7 +491,7 @@ r1.7.0 开始支持。
 <div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">
 <p>温馨提示：
   <br>
-<p>iOS 9系统，应用卸载重装，苹果分配给设备的devicetoken就会发生变化，开发者需要获取设备最新的Registration id，在自定义的监听kJPFNetworkDidLoginNotification通过"RegistrationID"这个接口来获取设备对应的 RegistrationID。
+<p>iOS 9系统，应用卸载重装，APNs返回的devicetoken会发生变化，开发者需要获取设备最新的Registration id。请在kJPFNetworkDidLoginNotification的实现方法里面调用"RegistrationID"这个接口来获取 RegistrationID。
 </div>
 
 #### 附加说明
