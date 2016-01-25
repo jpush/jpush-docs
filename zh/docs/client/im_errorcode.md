@@ -480,11 +480,6 @@ JMessage 服务器端报的错误码。有可能出现在各平台的 SDK 里。
 			<td>发起的用户处于登出状态，账号可能从未登录过，或者被踢下线</td>
 		</tr>
 		<tr >
-			<td>800013</td>
-			<td>User offline</td>
-			<td>发起的用户处于离线状态</td>
-		</tr>
-		<tr >
 			<td>800014</td>
 			<td>Appkey not match</td>
 			<td>发起的用户appkey与目标不匹配</td>
