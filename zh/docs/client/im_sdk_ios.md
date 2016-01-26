@@ -1,5 +1,7 @@
 # IM SDK for iOS
 
++ [极光IM iOS 错误码](../client/im_errorcode/#jmessage-ios)
+
 ### Summary 概述
 
 极光IM（英文名JMessage） SDK 基于 JPush 推送 SDK 开发，提供了 Push SDK 的完整功能，并提供 IM 即时通讯功能。

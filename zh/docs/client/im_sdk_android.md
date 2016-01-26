@@ -2,6 +2,7 @@
 
 + [极光IM 客户端 DEMO 下载](../../resources_jmessage/)
 + [极光IM Android API Java docs](../client/im_android_api_docs/)
++ [极光IM Android 错误码](../client/im_errorcode/#jmessage-android)
 
 ### 概述
 
