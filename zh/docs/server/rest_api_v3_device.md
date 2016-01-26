@@ -332,7 +332,7 @@ HTTP/1.1 200 OK
 ##### Response Data  
 
 ```
-[
+{
      "010b81b3582": {
          "online": true
      }, 
@@ -343,7 +343,7 @@ HTTP/1.1 200 OK
      "0207870f9b8": {
           "online": false
     }
- ]
+}
 ```
 
 ##### Response Params
