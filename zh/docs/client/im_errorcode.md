@@ -465,16 +465,6 @@ JMessage 服务器端报的错误码。有可能出现在各平台的 SDK 里。
 			<td>服务器系统错误</td>
 		</tr>
 		<tr >
-			<td>800010</td>
-			<td>Sync couchbase error</td>
-			<td>服务器系统错误</td>
-		</tr>
-		<tr >
-			<td>800011</td>
-			<td>Sync mysql error</td>
-			<td>服务器系统错误</td>
-		</tr>
-		<tr >
 			<td>800012</td>
 			<td>user logout</td>
 			<td>发起的用户处于登出状态，账号可能从未登录过，或者被踢下线</td>
@@ -550,9 +540,34 @@ JMessage 服务器端报的错误码。有可能出现在各平台的 SDK 里。
 			<td>用户拥有的讨论组数量已达上限,无法再创建</td>
 		</tr>
 		<tr >
+			<td>808004</td>
+			<td>length of group name exceed limit	</td>
+			<td>讨论组名长度超出上限，创建讨论组失败</td>
+		</tr>
+		<tr >
+			<td>808005</td>
+			<td>length of group desc exceed limit</td>
+			<td>讨论组描述长度超出上限，创建讨论组失败</td>
+		</tr>
+		<tr >
+			<td>809001</td>
+			<td>group id not exist</td>
+			<td>用户退出讨论组时，讨论组ID不存在，退出讨论组失败</td>
+		</tr>
+		<tr >
 			<td>809002</td>
 			<td>User not in the group</td>
 			<td>用户退出讨论组时，用户不在该讨论组中，退出讨论组失败</td>
+		</tr>
+		<tr >
+			<td>810001</td>
+			<td>group id not exist</td>
+			<td>用户添加成员到讨论组时，讨论组ID不存在，添加成员失败</td>
+		</tr>
+		<tr >
+			<td>810002</td>
+			<td>zero member</td>
+			<td>用户添加成员到讨论组时，添加的成员列表为空，添加成员失败</td>
 		</tr>
 		<tr >
 			<td>810003</td>
@@ -590,8 +605,18 @@ JMessage 服务器端报的错误码。有可能出现在各平台的 SDK 里。
 			<td>用户添加成员到讨论组时，添加的成员列表中有成员拥有的讨论组数量已达上限，添加成员失败</td>
 		</tr>
 		<tr >
+			<td>811001</td>
+			<td>group id not exist</td>
+			<td>用户删除讨论组成员时，讨论组ID不存在，删除成员失败</td>
+		</tr>
+		<tr >
+			<td>811002</td>
+			<td>group id not exist</td>
+			<td>用户删除讨论组成员时，删除的成员列表为空，删除成员失败</td>
+		</tr>
+		<tr >
 			<td>811003</td>
-			<td>User not in the group</td>
+			<td>zero member</td>
 			<td>用户删除讨论组成员时，用户不在该讨论组中，删除成员失败</td>
 		</tr>
 		<tr >
