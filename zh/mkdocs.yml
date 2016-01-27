@@ -40,10 +40,10 @@ pages:
 
 - 服务器端:
   - '服务器端 概述': 'server/server_overview.md'
-  - 'REST API - Push': 'server/rest_api_v3_push.md'
-  - 'REST API - Report': 'server/rest_api_v3_report.md'
-  - 'REST API - Device': 'server/rest_api_v3_device.md'
-  - 'REST API - Schedule': 'server/rest_api_push_schedule.md'
+  - 'REST API v3 - Push': 'server/rest_api_v3_push.md'
+  - 'REST API v3 - Report': 'server/rest_api_v3_report.md'
+  - 'REST API v3 - Device': 'server/rest_api_v3_device.md'
+  - 'REST API v3 - Schedule': 'server/rest_api_push_schedule.md'
   - 'REST API v2 - Push': 'server/rest_api_v2_push.md'
   - 'REST API v2 - Report': 'server/rest_api_v2_report.md'
   - 'IM REST API': 'server/rest_api_im.md'
