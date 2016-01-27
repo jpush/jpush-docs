@@ -482,7 +482,9 @@ public void onEventMainThread(EventEntity event){
 
 </br>
 
-用户下线事件UserLogoutEvent
+~~用户下线事件UserLogoutEvent~~
+
+已过时，请使用LoginStateChangeEvent代替
 
 **已过时，请使用LoginStateChangeEvent代替**
 
@@ -503,7 +505,9 @@ public void onEventMainThread(EventEntity event){
 
 </br>
 
-用户被删除事件UserDeletedEvent
+~~用户被删除事件UserDeletedEvent~~
+
+已过时，请使用LoginStateChangeEvent代替
 
 **已过时，请使用LoginStateChangeEvent代替**
 
