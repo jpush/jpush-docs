@@ -427,7 +427,9 @@ public void onEventMainThread(EventEntity event){
 
 </br>
 
-用户下线事件UserLogoutEvent
+~~用户下线事件UserLogoutEvent~~
+
+已过时，请使用LoginStateChangeEvent代替
 
 <div class="table-d" align="left" >
   <table border="1" width = "100%">
@@ -446,7 +448,9 @@ public void onEventMainThread(EventEntity event){
 
 </br>
 
-用户被删除事件UserDeletedEvent
+~~用户被删除事件UserDeletedEvent~~
+
+已过时，请使用LoginStateChangeEvent代替
 
 <div class="table-d" align="left" >
   <table border="1" width = "100%">
@@ -464,6 +468,27 @@ public void onEventMainThread(EventEntity event){
 </div>
 
 </br>
+
+用户登陆状态变更事件LoginStateChangeEvent
+<div class="table-d" align="left" >
+  <table border="1" width = "100%">
+    <tr  bgcolor="#D3D3D3" >
+      <th width="100px">方法</th>
+      <th width="20px">类型</th>
+      <th width="300px">说明</th>
+    </tr>
+    <tr >
+      <td >getMyInfo()</td>
+      <td >UserInfo</td>
+      <td >获取当前登陆状态改变的账号的信息</td>
+    </tr>
+    <tr >
+      <td >getReason()</td>
+      <td >Reason</td>
+      <td >获取登陆状态变更原因。</td>
+    </tr>
+  </table>
+</div>
 
 
 #####5、示例代码
@@ -551,7 +576,7 @@ class NotificationClickEvent extends Activity{
   
 }
 ```
-用户下线通知事件
+用户登陆状态变更事件
 ```
 class UserLogoutEventReceiver extends Activity{
     @Override
@@ -564,9 +589,20 @@ class UserLogoutEventReceiver extends Activity{
         JMessageClient.unRegisterEventReceiver(this);
         super.onDestroy();
     }
-    public void onEvent(UserLogoutEvent event){
+    public void onEvent(LoginStateChangeEvent event){
+        LoginStateChangeEvent.Reason reason = event.getReason();//获取变更的原因
         UserInfo myInfo = event.getMyInfo();//获取当前被登出账号的信息
-        //...
+        switch (reason) {
+            case user_password_change:
+            	//用户密码在服务器端被修改
+                break;
+            case user_logout:
+            	//用户换设备登陆
+                break;
+            case user_deleted:
+            	//用户被删除
+                break;
+        }
      }
   
 }
