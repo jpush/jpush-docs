@@ -297,8 +297,7 @@ DELETE /v3/aliases/{alias_value}?platform=android,ios
 
 ### 获取用户在线状态（VIP专属接口）
 
-**商务合作**
-[客服服务中心](https://www.jpush.cn/common/price)
+**商务合作**:[客服服务中心](https://www.jpush.cn/common/price)
 
 #### Example Request
 
