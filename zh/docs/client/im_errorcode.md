@@ -467,12 +467,22 @@ JMessage 服务器端报的错误码。有可能出现在各平台的 SDK 里。
 		<tr >
 			<td>800012</td>
 			<td>user logout</td>
-			<td>发起的用户处于登出状态，账号可能从未登录过，或者被踢下线</td>
+			<td>发起的用户处于登出状态，账号注册以后从未登录过，需要先登录</td>
+		</tr>
+		<tr >
+			<td>800013</td>
+			<td>user logout</td>
+			<td>发起的用户处于登出状态，请求的用户已经登出，需要先登录</td>
 		</tr>
 		<tr >
 			<td>800014</td>
 			<td>Appkey not match</td>
 			<td>发起的用户appkey与目标不匹配</td>
+		</tr>
+		<tr >
+			<td>800016</td>
+			<td>Devices not match</td>
+			<td>发起的用户设备不匹配,当前请求的设备与上次登录的设备不匹配导致，需要先登录</td>
 		</tr>
 		<tr >
 			<td>801003</td>
