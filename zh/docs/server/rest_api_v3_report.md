@@ -59,7 +59,7 @@ JSON Array.
 
 ### 消息统计（VIP专属接口）
 
-**商务合作**:[客服服务中心](https://www.jpush.cn/common/price)
+如需要开通此接口，请联系：[商务客服](https://www.jpush.cn/common/price)
 
 与“送达统计” API 不同的是，该 API 提供更多的针对一个 msgid 的统计数据。
 
@@ -132,7 +132,7 @@ JSON Array
 
 ### 用户统计（VIP专属接口）
 
-**商务合作**:[客服服务中心](https://www.jpush.cn/common/price)
+如需要开通此接口，请联系：[商务客服](https://www.jpush.cn/common/price)
 
 提供近2个月内某时间段的用户相关统计数据：新增用户、在线用户、活跃用户。
 
