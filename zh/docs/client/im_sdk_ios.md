@@ -22,10 +22,9 @@ App 集成了 IM SDK 就不应再集成 JPush SDK（只提供 Push 功能的 SDK
 + 基于 JPush 原有的大容量稳定的长连接、大容量消息并发能力；
 
 ### API 接口
-
 #### 初始化
 
-需要在应用初始化时调用。建议在 AppDelegate 里应用加载完成时调用。
+JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用。建议在 AppDelegate 里应用加载完成时调用。
 
 
 ```
@@ -45,6 +44,32 @@ JMessage.h
 + isProduction 当前App的发布状态。如果是上线 Apple Store，应该为 YES。
 + category APNs推送的启动参数
 
+#### 通知监听
+
+JMessage SDK 采用 Delegate 的机制给 App 发通知，而不是采用 iOS 平台通用的通知方式。Delegate 的方式更加直接、易用。
+
+可以在 App 的任何类里，调用以下方法来监听事件通知。
+
+	[JMessage addDelegate:self withConversation:nil]
+
+为了上述这行有效，则需要在当前类的头文件里声明实现 JMessageDelegate 协议。以下示例在 AppDelegate 里加监听。
+
+	@interface AppDelegate : UIResponder <UIApplicationDelegate,JMessageDelegate>
+
+监听通知上述 2 个动作外，另外一个动作就是实现你需要监听的事件的方法。比如监听数据库升级：
+
+	- (void)onDBMigrateStart {
+	  NSLog(@"onDBmigrateStart in appdelegate");
+	  _isDBMigrating = YES;
+	}
+
+由于 JMessage SDK 会在 setup 时检测数据库升级，如果有需要就发出通知。所以建议在 AppDelegate 里调用 setupJMessage 之前就添加监听。
+
+另外一个建议在 AppDelegate 里监听的通知是当前用户被踢出登录。
+
+	- (void)onLoginUserKicked;
+
+#### 结果回调
 
 #### 结果回调
 
@@ -178,28 +203,31 @@ JMSGCompletionHandler 有 2 个参数：
 
 ##### 获取全部消息
 
-```
-- (void)getAllMessageWithCompletionHandler:(JMSGCompletionHandler)handler;
-```
+// 当前用户退出登录
++ (void)logout:
 
-参数说明
+// 获取我的信息（当前登录用户）
++ (JMSGUser *)myInfo
 
 + JMSGCompletionHandler handler 结果回调。正常返回时 resultObject 对象类型为 NSArray<JMSGMessage>。
 
-##### 删除全部消息
+// 更新我的信息（当前登录用户）
+// 只支持每次更新一个 UserInfo 字符。需要根据 type 去定义要更新的字段类型。
++ (void)updateMyInfoWithParameter:userFieldType:completionHandler:
 
 ```
 - (void)deleteAllMessageWithCompletionHandler:(JMSGCompletionHandler)handler;
 ```
 
-参数说明
+// 获取头像缩略图
+- (void)thumbAvatarData:
 
-+ JMSGCompletionHandler handler 结果回调。正常返回时 resultObject 也为 nil。
+// 获取头像大图
+- (void)largeAvatarData:
 
-##### 重置未读消息数
+// 展示名
+- (NSString *)displayName
 
-```
-- (void)resetUnreadMessageCountWithCompletionHandler:(JMSGCompletionHandler)handle;
 ```
 
 参数说明
@@ -245,7 +273,11 @@ JMSGCompletionHandler 有 2 个参数：
 + JMSGConversationType conversationType 会话类型。可选为：单聊、群聊。
 + JMSGCompletionHandler handler 结果回调。正常返回时 resultObject 对象类型为 JMSGConversation。
 
-##### 获取会话列表
+// 获取单条消息
+- (JMSGMessage *)messageWithMessageId:
+ 
+// 获取多条消息（同步接口）
+// 建议使用这个接口时，每次取出的条数（limit）不要太大，否则可能存在性能问题
 
 ```
 + (void)getConversationListWithCompletionHandler:(JMSGCompletionHandler)handler;
@@ -255,6 +287,11 @@ JMSGCompletionHandler 有 2 个参数：
 
 + JMSGCompletionHandler handler 结果回调。正常返回时 resultObject 对象类型为 NSArray<JMSGConversation>。
 
+// 删除单条消息
+- (BOOL)deleteMessageWithMessageId:(NSString *)msgId
+
+// 删除全部消息
+- (BOOL)deleteAllMessages:
 
 #### 聊天消息
 
@@ -320,19 +357,24 @@ JMSGCompletionHandler 有 2 个参数：
 
 #### 群组维护
 
-相应的头文件： JMSGGroup.h
+// 发送单聊文本消息
+// 如果最简单地使用 SDK 的发消息功能，这是最快捷的方式：不必先获取会话，不必先创建 JMSGMessage 对象
++ (void)sendSingleTextMessage:toUser:
 
-##### 获取我的群组列表
+// 发送单聊图片消息
++ (void)sendSingleImageMessage:toUser:
 
-```
-+ (void)getGroupListWithCompletionHandler:(JMSGCompletionHandler)handler;
-```
+// 发送单聊语音消息
++ (void)sendSingleVoiceMessage:voiceDuration:toUser:
 
-参数说明
+// 发送群聊文本消息
++ (void)sendGroupTextMessage:toGroup:
 
-+ JMSGCompletionHandler handler 结果回调。正常返回时 resultObject 对象类型为 NSArray<JMSGGroup>。
+// 发送群聊图片消息
++ (void)sendGroupImageMessage:toGroup:
 
-##### 创建一个群组
+// 发送群聊语音消息
++ (void)sendGroupVoiceMessage:voiceDuration:toGroup:
 
 ```
 + (void)createGroup:(JMSGGroup *)group
@@ -343,11 +385,9 @@ JMSGCompletionHandler 有 2 个参数：
 + JMSGGroup* group 待创建的群组。
 + JMSGCompletionHandler handler 结果回调。正常返回时 resultOjbect 内容也为 nil。
 
-##### 更新群组信息
-
-```
-+ (void)updateGroupInfo:(JMSGGroup *)group
-      completionHandler:(JMSGCompletionHandler)handler;
+// 获取消息的 JSON 字符串
+- (NSString *)toJsonString
+- 
 ```
 
 参数说明
@@ -393,8 +433,45 @@ JMSGCompletionHandler 有 2 个参数：
 + NSString* members 群组成员。成员使用 username，多个用逗号隔开。
 + JMSGCompletionHandler handler 结果回调。正常返回时 resultObject 内容也为 nil。
 
-##### 删除群组成员
+// 获取展示名称
+- (NSString *)displayName 
+```
 
+### 实现回调 
+#### Conversation 回调
+```
+// optional
+// 收到此通知后, 建议处理: 如果 App 当前在会话列表页，刷新整个列表；如果在聊天界面，刷新聊天标题。
+- (void)onConversationChanged:(JMSGConversation *)conversation;
+
+// optional
+// 未读消息数变更
+- (void)onUnreadChanged:(NSUInteger)newCount;
+```
+
+#### Group 回调
+```
+// optional
+// 群信息详情被改变
+- (void)onGroupInfoChanged:(JMSGGroup *)group;
+```
+
+#### User 回调
+```
+// optional
+// 用户在其他设备上登录，当前设备被踢出登录。
+- (void)onLoginUserKicked;
+```
+
+#### Database Migrate 回调
+```
+// optional
+// 数据库开始升级
+ (void)onDBMigrateStart;
+
+// optional
+// 数据库升级结束，如果 Error 为 nil 代表升级成功，否则为失败
+- (void)onDBMigrateFinishedWithError:(NSError *)error;
 ```
 + (void)deleteGroupMember:(NSString *)groupId
                   members:(NSString *)members
