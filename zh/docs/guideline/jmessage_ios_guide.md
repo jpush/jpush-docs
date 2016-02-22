@@ -126,6 +126,7 @@ JMessage.framework 里的 Headers 目录下，是 SDK 对外可用的所有头�
 | JMSGAbstractMediaContent | 媒体内容类型的父类，也继承自 JMSGAbstractContent
 | JMSGVoiceContent | 语音内容 Model
 | JMSGImageContent | 图片内容 Model
+| JMSGEventContent.h | 事件通知内容 Model
 | Delegate/JMessageDelegate | 全局的 Delegate，包含其他所有 Delegates
 | Delegate/JMSGConversationDelegate | 会话相关 Delegate
 | Delegate/JMSGMessageDelegate | 消息相关 Delegate
