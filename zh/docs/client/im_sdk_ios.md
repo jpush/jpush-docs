@@ -446,8 +446,45 @@ JMSGCompletionHandler 有 2 个参数：
 + NSString* members 群组成员。成员使用 username，多个用逗号隔开。
 + JMSGCompletionHandler handler 结果回调。正常返回时 resultObject 内容也为 nil。
 
-##### 删除群组成员
+// 获取展示名称
+- (NSString *)displayName 
+```
 
+### 实现回调 
+#### Conversation 回调
+```
+// optional
+// 收到此通知后, 建议处理: 如果 App 当前在会话列表页，刷新整个列表；如果在聊天界面，刷新聊天标题。
+- (void)onConversationChanged:(JMSGConversation *)conversation;
+
+// optional
+// 未读消息数变更
+- (void)onUnreadChanged:(NSUInteger)newCount;
+```
+
+#### Group 回调
+```
+// optional
+// 群信息详情被改变
+- (void)onGroupInfoChanged:(JMSGGroup *)group;
+```
+
+#### User 回调
+```
+// optional
+// 用户在其他设备上登录，当前设备被踢出登录。
+- (void)onLoginUserKicked;
+```
+
+#### Database Migrate 回调
+```
+// optional
+// 数据库开始升级
+ (void)onDBMigrateStart;
+
+// optional
+// 数据库升级结束，如果 Error 为 nil 代表升级成功，否则为失败
+- (void)onDBMigrateFinishedWithError:(NSError *)error;
 ```
 + (void)deleteGroupMember:(NSString *)groupId
                   members:(NSString *)members
