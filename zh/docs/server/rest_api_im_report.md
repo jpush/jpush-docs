@@ -2,6 +2,10 @@
 
 目前只保存最近30天消息，这类 API 地址统一为（注意与 Push API 不同）：**https://report.im.jpush.cn/v1**
 
+### HTTP 验证
+
+[Authorization 用户认证](../server/server_overview/#authorization)
+
 ##GetMessage 获取消息
 
 <div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px;">
@@ -32,8 +36,10 @@ N/A
 
 + start （必填）查询的起始纪录
 + count （必填）查询的总条数  一次最多500
-+ begin_time (可选) 记录开始时间 格式  yyyy-MM-dd HH:mm:ss
-+ end_time (可选)   记录结束时间  格式 yyyy-MM-dd HH:mm:ss
++ begin_time (可选) 记录开始时间 格式  yyyy-MM-dd HH:mm:ss  设置筛选条件大于等于begin time 不设置不生效  
++ end_time (可选)   记录结束时间  格式 yyyy-MM-dd HH:mm:ss  设置筛选条件下于等于end time   不设置不生效
++ end time begin time 都不设置的话 说明两个条件都不生效，则查询服务端保存的所有消息
++ 查询的消息按发送时间升序排序
 
 ### Example Response  
 
@@ -63,8 +69,9 @@ Content-Type: application/json; charset=utf-8
                  "extras": { } 
           }, 
           "create_time": 1446016259, 
-          "version": 1
-        },  
+          "version": 1,
+          "msgid": 13242735
+        }
  	] 
 } 
 ```

@@ -2,6 +2,7 @@
 
 <style>
 img[alt=jpush_ios] { width: 800px; }
+img[alt=jpush_ios_5] { width: 500px; }
 </style>
 
 ### iOS SDK 调试指南
@@ -14,7 +15,7 @@ img[alt=jpush_ios] { width: 800px; }
 
 请到“应用详情页面”确认证书可用性：
 
-![  ](image/ios_tut_cert_ok.png)
+![jpush_ios_5](image/ios_tut_cert_ok.png)
 
 #### 开发环境测试
 
@@ -94,9 +95,11 @@ JPush iOS 是对原生官方 APNs 推送的一个补充，是对其的封装，�
 
 ![jpush_ios](image/keychain_cert.png)
 
-+ 导出 .p12 证书文件
+#### 导出 .p12 证书文件
 
-> 注意要选“login”和“My Certificates” 导出证书时要选中证书文件，不要展开private key。
+```
+注意要选“login”和“My Certificates” 导出证书时要选中证书文件，不要展开private key。
+```
 
 ![jpush_ios](image/export_p12.png)
 
@@ -113,18 +116,14 @@ JPush iOS 是对原生官方 APNs 推送的一个补充，是对其的封装，�
 
 #### Provisioning Profile的创建
 
-+ 假设创建了一个App ID：cn.jpush.examlpe，并为此App ID配置开发环境的Push Notifications：
-
-![](image/appidpp.png)
-
-+ 创建该App ID的推送证书，如下图:
++ 创建Provisioning Profile的前提，已在Apple Developer网站创建待发布应用所使用的Bundle ID的App ID，且为该App ID创建了APNs证书，如下图:
 
 ![jpush_ios](image/appidcer.png)
 
 
 + 创建App ID、APN证书和p12证书的导出的具体步骤请看 :[iOS 证书 设置指南](../client/ios_tutorials/#ios_1)
 
-+ 点击下图按钮开始创建Provisioning Profile：
++ 在[苹果开发者账号的Provisioning Profile](https://developer.apple.com/account/ios/profile/profileList.action)页面点击下图按钮，创建Provisioning Profile
 
 ![jpush_ios](image/provision_profile.png)
 
@@ -148,7 +147,7 @@ JPush iOS 是对原生官方 APNs 推送的一个补充，是对其的封装，�
 
 ![jpush_ios](image/pp_name.png)
 
-点击[DownLoad]下载Provisioning Profile：
++ 填写完Profile Name后点击[generate]完成创建，之后点击[DownLoad]下载Provisioning Profile
 
 ![jpush_ios](image/download_pp.png)
 
@@ -162,7 +161,7 @@ JPush iOS 是对原生官方 APNs 推送的一个补充，是对其的封装，�
 
 ![jpush_ios](image/xcode_bundle.png)
 
-+ 点击项目，进入Build Setting 界面，向下滑动，去到Code Signing 配置证书：
++ 点击项目，选择目标TARGETS后进入Build Setting 界面，搜索“Code signing”，按照下图配置
 
 ![jpush_ios](image/xcode_buildsettings_cs.png)
 

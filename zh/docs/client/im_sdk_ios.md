@@ -1,22 +1,24 @@
 # IM SDK for iOS
 
++ [极光IM iOS 错误码](../client/im_errorcode/#jmessage-ios)
+
 ### Summary 概述
 
 极光IM（英文名JMessage） SDK 基于 JPush 推送 SDK 开发，提供了 Push SDK 的完整功能，并提供 IM 即时通讯功能。
 
 App 集成了 IM SDK 就不应再集成 JPush SDK（只提供 Push 功能的 SDK）。
 
-要了解极光IM 整体的信息，请参考文档：[极光IM指南](../../guideline/jmessage_guide)。要集成 iOS SDK 请参考文档：[JMessage iOS 集成指南](../../guideline/jmessage_ios_guide)。
+要了解极光IM的概述信息，请参考文档：[极光IM指南](../../guideline/jmessage_guide)。要集成 iOS SDK 请参考文档：[JMessage iOS 集成指南](../../guideline/jmessage_ios_guide)。
 
 
 ### Functions 功能
 
 极光IM 最核心的功能是 IM 即时消息的功能。
 
++ 保证消息及时下发；
 + 单聊，群聊；
 + 消息类型：文本、语音、图片；
 + 用户未在线时保存离线消息；
-+ 保证消息及时下发；
 + 基于 JPush 原有的大容量稳定的长连接、大容量消息并发能力；
 
 ### API 接口
@@ -38,11 +40,23 @@ App 集成了 IM SDK 就不应再集成 JPush SDK（只提供 Push 功能的 SDK
 
 JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用。建议在 AppDelegate 里应用加载完成时调用。
 
-```
-+ (void)setupJMessage:appKey:channel:apsForProduction:category:
-```
 
-这个调用是必须的。否则 SDK 将不能正常工作。
+```
+JMessage.h
+
++ (void)setupJMessage:(NSDictionary *)launchOptions
+               appKey:(NSString *)appKey
+              channel:(NSString *)channel
+     apsForProduction:(BOOL)isProduction
+             category:(NSSet *)category;
+```
+参数说明
+
++ launchOptions 启动参数。可直接传 AppDelegate 的启动参数
++ appKey 必填。极光 AppKey，用于唯一地标识应用。
++ channel 发行渠道。可不填。
++ isProduction 当前App的发布状态。如果是上线 Apple Store，应该为 YES。
++ category APNs推送的启动参数
 
 #### 通知监听
 
@@ -71,9 +85,9 @@ JMessage SDK 采用 Delegate 的机制给 App 发通知，而不是采用 iOS �
 
 #### 结果回调
 
-JMessage SDK 提供的很多接口都以异步方式返回，其回调都是一个类型为 JMSGCompletionHandler 的 block，其定义为
+#### 结果回调
 
-		typedef void (^JMSGCompletionHandler)(id resultObject, NSError *error);
+JMessage SDK 提供的大部分接口都以异步方式返回，其回调都是一个类型为 JMSGCompletionHandler 的 block。
 
 JMSGCompletionHandler 有 2 个参数：
 
@@ -84,17 +98,124 @@ JMSGCompletionHandler 有 2 个参数：
 
 如果 error 为 nil，则调用成功，resultObject 是返回结果对象。每个接口 resultObject 的实际类型不同，在每个接口的定义文档里会指定。实际使用时，应把该 resultObject 转型为该接口的正常对象。
 
-与 JMSGCompletionHandler 类似的，还有另外一个 block 叫 JMSGAsyncDataHandler，用于返回媒体文件数据。
+#### 注册与登录
 
-#### 注册与登录、用户信息 JMSGUser.h
+相应的头文件： JMSGUser.h
+
+##### 注册
 
 ```
++ (void)registerWithUsername:(NSString *)username
+                    password:(NSString *)password
+           completionHandler:(JMSGCompletionHandler)handler;
+           
+```
+参数说明
 
-// 新用户注册
-+ (void)registerWithUsername:password:completionHandler:
++ NSString* username 用户名，或者说用户帐号。长度 4~128 位，支持的字符：字母、数字、下划线、英文减号、英文点、@符号，首字母只允许是字母或者数字。
++ NSString* password 用户密码。长度 4~128 位，字符不限。
++ JMSGCompletionHandler handler 结果回调。正常返回时 resultObject 也是 nil。
 
-// 用户登录
-+ (void)loginWithUsername:password:completionHandler:
+##### 登录
+
+```
++ (void)loginWithUsername:(NSString *)username
+                 password:(NSString *)password
+        completionHandler:(JMSGCompletionHandler)handler;
+
+```
+参数说明
+
++ NSString* username 用户名。定义参照注册接口。
++ NSString* password 用户密码。定义参照注册接口。
+* JMSGCompletionHandler handler 结果回调。正常返回时 resultObject 也是 nil。
+
+##### 登出
+
+```
++ (void)logoutWithCompletionHandler:(JMSGCompletionHandler)handler;
+```
+
+#### 获取用户信息
+
+```
++ (void)getUserInfoWithUsername:(NSString *)username
+              completionHandler:(JMSGCompletionHandler)handler;
+```
+参数说明
+
++ NSString* username 用户名。
++ JMSGCompletionHandler handler 结果回调。resultObject 对象类型为 JMSGUser。
+
+##### 获取我的信息
+
+```
++ (JMSGUser *)getMyInfo;
+```
+
+参数说明
+
++ 无
+
+结果返回
+
++ 用户对象
+
+##### 获取原始头像
+
+```
++ (void)getOriginAvatarImage:(JMSGUser *)userInfo
+           completionHandler:(JMSGCompletionHandler)handler;
+```
+参数说明
+
++ JMSGUser* userInfo 待获取头像的用户
++ JMSGCompletionHandler handler 结果回调。resultObject 对象类型为 JMSGUser，其中大图的本地路径。
+
+##### 更新我的信息
+
+```
++ (void)updateMyInfoWithParameter:(id)parameter
+                         withType:(JMSGUpdateUserInfoType)type
+                completionHandler:(JMSGCompletionHandler)handler;           
+```
+参数说明
+
++ id parameter 更新的值。除 kJMSGGender 性别类型，需要传入 JMSGUserGender 包装成 NSNumber 的对象，其他类型传 NSString 类型的对象。
++ JMSGUpdateUserInfoType 用户属性类型。这是一个 enum 类型。
++ JMSGCompletionHandler handler 结果回调。正常返回时 resultObject 也是 nil。
+
+##### 更新我的密码
+
+```
++ (void)updatePasswordWithNewPassword:(NSString *)newPassword
+                          oldPassword:(NSString *)oldPassword
+                    completionHandler:(JMSGCompletionHandler)handler;
+```
+参数说明
+
++ NSString* username 新密码
++ NSString* password 旧密码
++ JMSGCompletionHandler handler 结果回调。正常返回时 resultObject 也是 nil。
+
+
+#### 聊天会话
+
+相应的头文件： JMSGConversation.h
+
+##### 获取某条消息
+
+```
+- (void)getMessage:(NSString *)messageId
+ completionHandler:(JMSGCompletionHandler)handler;
+```
+
+参数说明 
+
++ NSString* messageId 消息ID。
++ JMSGCompletionHandler handler 结果回调。正常返回时 resultObject 对象类型为 JMSGMessage。
+
+##### 获取全部消息
 
 // 当前用户退出登录
 + (void)logout:
@@ -102,15 +223,15 @@ JMSGCompletionHandler 有 2 个参数：
 // 获取我的信息（当前登录用户）
 + (JMSGUser *)myInfo
 
-// 获取用户详情（批量接口）
-+ (void)userInfoArrayWithUsernameArray:completionHandler:
++ JMSGCompletionHandler handler 结果回调。正常返回时 resultObject 对象类型为 NSArray<JMSGMessage>。
 
 // 更新我的信息（当前登录用户）
 // 只支持每次更新一个 UserInfo 字符。需要根据 type 去定义要更新的字段类型。
 + (void)updateMyInfoWithParameter:userFieldType:completionHandler:
 
-// 更新密码（当前登录用户）
-+ (void)updateMyPasswordWithNewPassword:oldPassword:completionHandler:
+```
+- (void)deleteAllMessageWithCompletionHandler:(JMSGCompletionHandler)handler;
+```
 
 // 获取头像缩略图
 - (void)thumbAvatarData:
@@ -120,34 +241,50 @@ JMSGCompletionHandler 有 2 个参数：
 
 // 展示名
 - (NSString *)displayName
-
 ```
 
-#### 会话 JMSGConversation.h
+参数说明
+
++ JMSGCompletionHandler handler 结果回调。正常返回时 resultObject 也为 nil。
+
+##### 获取某个会话
 
 ```
++ (void)getConversation:(NSString *)targetId
+               withType:(JMSGConversationType)conversationType
+      completionHandler:(JMSGCompletionHandler)handler;
+```
+参数说明
 
-// 获取单聊会话
-+ (JMSGConversation *)singleConversationWithUsername:
++ NSString* targetId 会话对象ID。单聊为 username，群聊为 gid（群组ID）。
++ JMSGConversationType conversationType 会话类型。可选为：单聊、群聊。
++ JMSGCompletionHandler handler 结果回调。正常返回时 resultObject 对象类型为 JMSGConversation。
 
-// 获取群聊会话
-+ (JMSGConversation *)groupConversationWithGroupId:
+##### 创建会话
 
-// 创建单聊会话
-+ (vodi)createSingleConversationWithUsername:completionHandler:
+```
++ (void)createConversation:(NSString *)targetId
+                  withType:(JMSGConversationType)conversationType
+         completionHandler:(JMSGCompletionHandler)handler;
+```
+参数说明
 
-// 创建群聊会话
-+ (void)createGroupConversationWithGroupId:completionHandler:
++ NSString* targetId 会话对象ID。单聊为 username，群聊为 gid（群组ID）。
++ JMSGConversationType conversationType 会话类型。可选为：单聊、群聊。
++ JMSGCompletionHandler handler 结果回调。正常返回时 resultObject 对象类型为 JMSGConversation。
 
-// 删除单聊会话
-+ (BOOL)deleteSingleConversationWithUsername:
+##### 删除会话
 
-// 删除群聊会话
-+ (BOOL)deleteGroupConversationWithGroupId:
+```
++ (void)deleteConversation:(NSString *)targetId
+                  withType:(JMSGConversationType)conversationType      
+         completionHandler:(JMSGCompletionHandler)handler;
+```
+参数说明
 
-// 获取全部会话列表
-// 暂未提供分页方式。性能上考虑了优化，应该不会有问题
-+ (void)allConversations:
++ NSString* targetId 会话对象ID。单聊为 username，群聊为 gid（群组ID）。
++ JMSGConversationType conversationType 会话类型。可选为：单聊、群聊。
++ JMSGCompletionHandler handler 结果回调。正常返回时 resultObject 对象类型为 JMSGConversation。
 
 // 获取单条消息
 - (JMSGMessage *)messageWithMessageId:
@@ -155,11 +292,13 @@ JMSGCompletionHandler 有 2 个参数：
 // 获取多条消息（同步接口）
 // 建议使用这个接口时，每次取出的条数（limit）不要太大，否则可能存在性能问题
 
-- (NSArray)messageArrayFromNewestWithOffset:limit:
+```
++ (void)getConversationListWithCompletionHandler:(JMSGCompletionHandler)handler;
 
-// 获取全部消息（异步接口）
-// 一次性取出来一个会话里全部消息。如果预计消息条数不是太多，可以使用此接口。使用上相对简单。
-- (void)allMessages:
+```
+参数说明
+
++ JMSGCompletionHandler handler 结果回调。正常返回时 resultObject 对象类型为 NSArray<JMSGConversation>。
 
 // 删除单条消息
 - (BOOL)deleteMessageWithMessageId:(NSString *)msgId
@@ -167,55 +306,69 @@ JMSGCompletionHandler 有 2 个参数：
 // 删除全部消息
 - (BOOL)deleteAllMessages:
 
-// 创建消息对象
-// 需要先创建消息内容（content）。这是同步接口，创建媒体消息尤其是图片时可能会卡。
-- (JMSGMessage *)createMessageWithContent:
+#### 聊天消息
 
-// 创建消息对象
-// 异步接口，专用于创建图片消息，因为创建消息时 SDK 要保存到文件，并且要做缩略图，有一定的性能损耗
-- (void)createMessageAsyncWithImageContent:completionHandler:
+相应的头文件： JMSGMessage.h
 
-// 发送消息。基于创建好的消息对象
-- (void)sendMessage:
-
-// 发送文本消息。不需要预先创建好消息对象。
-- (vodi)sendTextMessage:
-
-// 发送图片消息。不需要预先创建好消息对象。
-- (void)sendImageMessage:
-
-// 发送语音消息。不需要预先创建好消息对象。
-- (void)sendVoiceMessage:duration:
-
-// 获取会话头像
-- (void)avatarData:
-
-// 清除会话未读数
-- (vodi)clearUnreadCount
-
-// 获取最后一条消息的文本描述。一般用于显示在会话列表上
-- (NSString *)latestMessageContentText
-
-// 判断某条消息是否属于当前会话
-- (BOOL)isMessageForThisConversation:
-
-// 刷新会话对象的信息（从服务器）
-- (void)refreshTargetInfoFromServer:
+##### 发送消息
 
 ```
-
-#### 消息 JMSGMessage.h
-
++ (void)sendMessage:(JMSGMessage *)message;
 ```
 
-// 创建单聊消息
-+ (JMSGMessage *)createSingleMessageWithContent:username:
+参数说明
 
-// 创建群聊消息
-+ (JMSGMessage *)createGroupMessageWithContent:groupId:
++ JMSGMessage* message 待发送的消息。JMSGMessage 有多个子类，分别表示不同的消息类型，如：文本、图片、语音。
 
-// 发送消息。发送创建好的消息对象
-+ (void)sendMessage:
+##### 下载图片消息原图
+
+```
++ (void)downloadOriginImage:(JMSGImageMessage *)message
+               withProgress:(NSProgress *)progress
+          completionHandler:(JMSGCompletionHandler)handler;
+```
+参数说明
+
++ JMSGImageMessage* message 图片消息
++ NSProgress* progress 下载进度
++ JMSGCompletionHandler handler 结果回调。正常返回时 resultObject 对象类型为 NSURL，内容为图片文件路径。
+
+##### 下载图片消息缩略图
+
+默认收到图片消息时 SDK 会自动下载缩略图。
+
+如果自动下载失败，则 App 可以发起再次下载。
+
+```
++ (void)downloadThumbImage:(JMSGImageMessage *)message
+              withProgress:(NSProgress *)progress
+         completionHandler:(JMSGCompletionHandler)handler;
+```
+参数说明
+
++ JMSGImageMessage* message 图片消息
++ NSProgress* progress 下载进度
++ JMSGCompletionHandler handler 结果回调。正常返回时 resultObject 对象类型为 NSURL，内容为图片文件路径。
+
+##### 下载语音消息文件
+
+默认收到语音消息时 SDK 会自动下载语音文件。
+
+如果自动下载失败，则 App 可以发起再次下载。
+
+```
++ (void)downloadVoice:(JMSGVoiceMessage *)message
+         withProgress:(NSProgress *)progress
+    completionHandler:(JMSGCompletionHandler)handler;
+```
+
+参数说明
+
++ JMSGVoiceMessage* message 图片消息
++ NSProgress* progress 下载进度
++ JMSGCompletionHandler handler 结果回调。正常返回时 resultObject 对象类型为 NSURL，内容为语音文件路径。
+
+#### 群组维护
 
 // 发送单聊文本消息
 // 如果最简单地使用 SDK 的发消息功能，这是最快捷的方式：不必先获取会话，不必先创建 JMSGMessage 对象
@@ -236,78 +389,100 @@ JMSGCompletionHandler 有 2 个参数：
 // 发送群聊语音消息
 + (void)sendGroupVoiceMessage:voiceDuration:toGroup:
 
-// 设置消息的来源用户
-- (void)setFromName:
+```
++ (void)createGroup:(JMSGGroup *)group
+  completionHandler:(JMSGCompletionHandler)handler;
+```
+参数说明
 
-// 更新消息标志
-- (void)updateFlag:
++ JMSGGroup* group 待创建的群组。
++ JMSGCompletionHandler handler 结果回调。正常返回时 resultOjbect 内容也为 nil。
 
 // 获取消息的 JSON 字符串
 - (NSString *)toJsonString
 - 
 ```
 
+参数说明
 
-#### 群组 JMSGGroup.h
++ JMSGGroup* group 待更新的群组信息
++ JSMGCompletionHandler handler 结果回调。正常返回时 resultObject 内容也为 nil。
 
-```
-
-// 创建群组
-+ (void)createGroupWIthName:desc:memberArray:completionHandler:
-
-// 更新群组信息
-+ (void)updateGroupInfoWIthGroupId:name:desc:completionhandler:
-
-// 获取群组详情（不包含群组成员）
-+ (void)groupInfoWithGroupId:completionHandler:
-
-// 获取我的群组列表
-+ (vodi)myGroupArray:
-
-// 获取当前群组成员列表
-- (NSArray *)memberArray
-
-// 添加群组成员
-- (void)addMembersWithUsernameArray:completionHandler:
-
-// 删除群组成员
-- (void)removeMembersWithUsernameArray:completionHandler:
-
-// 退出群组（当前用户）
-- (void)exit:
-
-// 获取展示名称
-- (NSString *)displayName 
+##### 获取群组信息
 
 ```
++ (void)getGroupInfo:(NSString *)groupId
+   completionHandler:(JMSGCompletionHandler)handler;
+```
+
+参数说明
+
++ NSString* groupId 群组ID。
++ JMSGCompletionHandler handler 结果回调。正常返回时 resultObject 对象类型为 JMSGGroup。
+
+##### 我退出群组
+
+```
++ (void)exitGoup:(NSString *)groupId
+    completionHandler:(JMSGCompletionHandler)handler;
+```
+
+参数说明
+
++ NSString* groupId 待退出的群组。
++ JMSGCompletionHandler handler 结果回调。正常返回时 resultObject 内容也为 nil。
+
+##### 增加群组成员
+
+```
++ (void)addMembers:(NSString *)groupId
+           members:(NSString *)members
+ completionHandler:(JMSGCompletionHandler)handler;
+```
+
+参数说明
+
++ NSString* groupId 群组ID。
++ NSString* members 群组成员。成员使用 username，多个用逗号隔开。
++ JMSGCompletionHandler handler 结果回调。正常返回时 resultObject 内容也为 nil。
+
+##### 删除群组成员
+
+```
++ (void)deleteGroupMember:(NSString *)groupId
+                  members:(NSString *)members
+        completionHandler:(JMSGCompletionHandler)handler;
+```
+参数说明
+
++ NSString* groupId 群组ID。
++ NSString* members 需要加入的群组成员(username)。多个成员时使用,(逗号)隔开。
++ JMSGCompletionHandler handler 结果回调。正常返回时 resultObject 内容也为 nil。
+
+
+##### 获取群组成员列表
+
+```
++ (void)getGroupMemberList:(NSString *)groupId
+         completionHandler:(JMSGCompletionHandler)handler;
+```
+参数说明
+
++ NSString* groupId 群组ID。
++ JMSGCompletionHandler handler 结果回调。正常返回时resultObject对象类型为NSArray，成员为JMSGGroup类型。
+
 
 ### Example 代码样例
 
-更多样例请参考 JChat 开放源代码项目。
-
-#### 单聊发文本消息
+#### 发文本消息
 
 ```
-NSString *text = @"Hello, JMessage";
-NSString *username = @"alice";
-
-// 最简单的方式
-[JMSGMessage sendSingleTextMessage:text];
-
-// 要为消息内容附加字段
-JMSGTextContent *textContent = [[JMSGTextContent alloc] initWIthText:text];
-[textConent addStringExtra:@"extraValue" forKey:@"extraKey"];
-
-// 不关注会话的情况
-JMSGMessage *message = [JMSGMessage createSingleMessageWithContent:textContent username:username];
-[JMSGMessage sendMessage:message];
-
-// 要处理会话的情况
-JMSGConversation *conv = [JMSGConversation createSingleConversationWithUsername:username];
-JMSGMessage *message2 = [conv createMessageWithContent:textContent];
-[conv sendMessage:message2];
-
+JMSGContentMessage *message = [[JMSGContentMessage alloc] init];
+message.target_name = @"javen";
+message.contentText = @"Hello";
+[JMSGMessageManager sendMessage:message];
 ```
+
 
 
 ### See Also 相关文档

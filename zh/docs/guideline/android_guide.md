@@ -6,8 +6,6 @@
 
 匹配的 SDK 版本为：r1.8.0及以后版本。
 
-本文随SDK压缩包分发。在你看到本文时，可能当前的版本与本文已经不是很适配。所以建议关注在线文档：
-
 + [3 分钟快速 Demo（Android）](/guideline/android_3m)：如果您想要快速地测试、感受下极光推送的效果，请参考本文在几分钟内跑通Demo。
 + 极光推送文档网站上，有极光推送相关的所有指南、API、教程等全部的文档。包括本文档的更新版本，都会及时地发布到该网站上。
 + [极光推送问答](https://www.jpush.cn/qa/)网站：大家除了文档之外，还有问题与疑问，会到这里来提问题，以及时地得到解答。
@@ -32,7 +30,7 @@
 
 ### jpush-sdk_v1.x.y.zip 集成压缩包内容
 
-+ AndoridManifest.xml
++ AndroidManifest.xml
 	+ 客户端嵌入SDK参考的配置文件
 + libs/jpush-sdk-release1.x.y.jar 
 	+ SDK Java 开发包
@@ -89,7 +87,7 @@ AndroidManifest.xml权限配置：
     <permission android:name="您应用的包名.permission.JPUSH_MESSAGE" android:protectionLevel="signature" />
    
     <!-- Required -->
-    <uses-permission android:name="You Package.permission.JPUSH_MESSAGE" />
+    <uses-permission android:name="您应用的包名.permission.JPUSH_MESSAGE" />
     <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
@@ -243,7 +241,6 @@ AndroidManifest.xml权限配置：
      <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
      <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
      <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> 
-     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/> 
   
   
      <!-- Optional for location -->

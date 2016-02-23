@@ -59,6 +59,8 @@ JSON Array.
 
 ### 消息统计（VIP专属接口）
 
+如需要开通此接口，请联系：[商务客服](https://www.jpush.cn/common/price)
+
 与“送达统计” API 不同的是，该 API 提供更多的针对一个 msgid 的统计数据。
 
 #### Resource
@@ -74,7 +76,7 @@ curl -v https://report.jpush.cn/v3/messages?msg_ids=269978303 -u "7d431e42dfa6a6
 ```
 
 #### Request Params
-+ msg_ids 逗号隔开的多个消息ID。
++ msg_ids 多个 msg_id 用逗号隔开。
 
 #### Example Response
 
@@ -129,6 +131,8 @@ JSON Array
 
 
 ### 用户统计（VIP专属接口）
+
+如需要开通此接口，请联系：[商务客服](https://www.jpush.cn/common/price)
 
 提供近2个月内某时间段的用户相关统计数据：新增用户、在线用户、活跃用户。
 

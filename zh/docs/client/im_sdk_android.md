@@ -1,6 +1,8 @@
 <h1>极光IM SDK - Android</h1>
 
 + [极光IM 客户端 DEMO 下载](../../resources_jmessage/)
++ [极光IM Android API Java docs](../client/im_android_api_docs/)
++ [极光IM Android 错误码](../client/im_errorcode/#jmessage-android)
 
 ### 概述
 
@@ -28,7 +30,7 @@ SDK 侧可以发起注册用户，也可由服务器端批量发起注册。
 
 用户登录 App，也同时登录到 JMessage。登录后，就可以向其他 username 发聊天消息，也可以收到来自其他 username 的消息，或者群组消息了。
 
-用户 A 是否有权限向用户 B 发消息，由 App 逻辑自己控制。（由 JMessage 提供好友关系时，JMessage 会做控制）
+用户 A 是否有权限向用户 B 发消息，由 App 逻辑自己控制。
 
 可选让用户把头像等用户属性更新到 JMessage。
 

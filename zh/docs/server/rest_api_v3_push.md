@@ -27,7 +27,7 @@ POST [https://api.jpush.cn/v3/push](https://api.jpush.cn/v3/push)
 #### 请求示例
 
 ```
-curl —insecure -X POST -v https://api.jpush.cn/v3/push -H "Content-Type: application/json" -u "7d431e42dfa6a6d693ac2d04:5e987ac6d2e04d95a9d8f0d1" -d '{"platform":"all","audience":"all","notification":{"alert":"Hi,JPush !","android":{"extras":{"android-key1":"android-value1"}},"ios":{"sound":"sound.caf","badge":"+1","extras":{"ios-key1":"ios-value1"}}}}'
+curl --insecure -X POST -v https://api.jpush.cn/v3/push -H "Content-Type: application/json" -u "7d431e42dfa6a6d693ac2d04:5e987ac6d2e04d95a9d8f0d1" -d '{"platform":"all","audience":"all","notification":{"alert":"Hi,JPush !","android":{"extras":{"android-key1":"android-value1"}},"ios":{"sound":"sound.caf","badge":"+1","extras":{"ios-key1":"ios-value1"}}}}'
 
 > POST /v3/push HTTP/1.1
 > Authorization: Basic N2Q0MzFlNDJkZmE2YTZkNjkzYWMyZDA0OjVlOTg3YWM2ZDJlMDRkOTVhOWQ4ZjBkMQ==
@@ -649,7 +649,7 @@ iOS 1.7.3及以上的版本才能正确解析v3的message，但是无法解析v2
 			<td>content</td>
 			<td>string</td>
 			<td>必填</td>
-			<td>不能超过480个字符。"sms msg content"</td>
+			<td>不能超过480个字符。"你好,JPush"为8个字符。超过67个字符的内容（含签名）会被拆分成多条短信下发。</td>
 		</tr>
 		<tr >
 			<td>delay_time</td>

@@ -36,7 +36,7 @@ API URL: [https://device.jpush.cn](https://device.jpush.cn)
 
 ```
 GET /v3/devices/{registration_id}
-获取当前设备的所有属性，包含tags, alias。
+获取当前设备的所有属性，包含tags, alias，手机号码mobile。
 ```
 
 ##### Example Request
@@ -64,7 +64,8 @@ HTTP/1.1 200 OK
 ```
 {
      "tags": ["tag1", "tag2"],
-     "alias": "alias1"
+     "alias": "alias1",
+     "mobile": "13012345678"
 }
 ```
 
@@ -296,6 +297,8 @@ DELETE /v3/aliases/{alias_value}?platform=android,ios
 
 ### 获取用户在线状态（VIP专属接口）
 
+如需要开通此接口，请联系：[商务客服](https://www.jpush.cn/common/price)
+
 #### Example Request
 
 ##### Request Header
@@ -331,7 +334,7 @@ HTTP/1.1 200 OK
 ##### Response Data  
 
 ```
-[
+{
      "010b81b3582": {
          "online": true
      }, 
@@ -342,7 +345,7 @@ HTTP/1.1 200 OK
      "0207870f9b8": {
           "online": false
     }
- ]
+}
 ```
 
 ##### Response Params
