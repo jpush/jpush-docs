@@ -98,6 +98,8 @@
 		
 		<option value="//api/name/allMessages:">- allMessages:</option>
 		
+		<option value="//api/name/deleteMessageWithMessageId:">- deleteMessageWithMessageId:</option>
+		
 		<option value="//api/name/deleteAllMessages">- deleteAllMessages</option>
 		
 		<option value="//api/name/createMessageWithContent:">- createMessageWithContent:</option>
@@ -889,7 +891,7 @@
 				
 					<tr>
 						<th scope="row" class="argument-name"><code>msgId</code></th>
-						<td><p>消息ID</p></td>
+						<td><p>本地消息ID</p></td>
 					</tr>
 				
 				</table>
@@ -903,8 +905,9 @@
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>这个接口在正常场景下不需要单独使用到。
-注意: 这里的 msgId 概念同 <a href="../Classes/JMSGMessage.html#//api/name/msgId">[JMSGMessage msgId]</a>, 而非 <a href="../Classes/JMSGMessage.html#//api/name/serverMessageId">[JMSGMessage serverMessageId]</a></p>
+				<p>这个接口在正常场景下不需要单独使用到. 获取消息一般应使用 [JSMGConversation messageArrayFromNewestWithOffset::]</p>
+
+<p>注意: 这里的 msgId 概念同 <a href="../Classes/JMSGMessage.html#//api/name/msgId">[JMSGMessage msgId]</a>, 是本地生成的消息ID, 而非 <a href="../Classes/JMSGMessage.html#//api/name/serverMessageId">[JMSGMessage serverMessageId]</a></p>
 			</div>
 			
 
@@ -1041,6 +1044,59 @@
 				<h4 class="method-subtitle">Discussion</h4>
 				<p>排序规则：最新</p>
 			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGConversation.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/deleteMessageWithMessageId:" title="deleteMessageWithMessageId:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/deleteMessageWithMessageId:">&ndash;&nbsp;deleteMessageWithMessageId:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>删除一条消息</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (BOOL)deleteMessageWithMessageId:(NSString *)<em>msgId</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>msgId</code></th>
+						<td><p>本地消息ID</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
 			
 
 			
@@ -1217,15 +1273,15 @@ JMSGImageContent *imageContent = [[JMSGImageContent alloc] initWithImageData:ima
 						<td><p>准备好的图片内容</p></td>
 					</tr>
 				
+					<tr>
+						<th scope="row" class="argument-name"><code>handler</code></th>
+						<td><p>结果回调. 正常返回时 resultObject 类型为 <a href="../Classes/JMSGMessage.html">JMSGMessage</a>.</p></td>
+					</tr>
+				
 				</table>
 			</div>
 			
 
-			
-			<div class="method-subsection return">
-				<h4 class="method-subtitle parameter-title">Return Value</h4>
-				<p>JMSGMessage对象。该对象包含了 content。</p>
-			</div>
 			
 
 			
@@ -1505,7 +1561,7 @@ JMSGImageContent *imageContent = [[JMSGImageContent alloc] initWithImageData:ima
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (void)avatarData:(JMSGCompletionHandler)<em>handler</em></code></div>
+			<div class="method-subsection method-declaration"><code>- (void)avatarData:(JMSGAsyncDataHandler)<em>handler</em></code></div>
 
 		    
 			
@@ -1515,8 +1571,17 @@ JMSGImageContent *imageContent = [[JMSGImageContent alloc] initWithImageData:ima
 				
 					<tr>
 						<th scope="row" class="argument-name"><code>handler</code></th>
-						<td><p>结果回调。正常返回时 resultObject 的类型是 NSData，即头像的数据。
-如果 resultObject 为 nil, error 也为 nil(没有出错), 表示该会话没有头像.</p></td>
+						<td><p>结果回调。回调参数:</p>
+
+<ul>
+<li>data 头像数据;</li>
+<li>objectId 为 targetId_<a href="#//api/name/conversationType">conversationType</a> 的组合, 用下划线隔开.
+其中 targetId 单聊时为 username, 群聊时为 groupId</li>
+<li>error 不为nil表示出错;</li>
+</ul>
+
+
+<p>如果 error 为 ni, data 也为 nil, 表示没有数据.</p></td>
 					</tr>
 				
 				</table>
@@ -1669,6 +1734,18 @@ JMSGImageContent *imageContent = [[JMSGImageContent alloc] initWithImageData:ima
 
 		    
 			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>message</code></th>
+						<td><p>待判断的消息对象</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
 
 			
 
@@ -1773,7 +1850,7 @@ JMSGImageContent *imageContent = [[JMSGImageContent alloc] initWithImageData:ima
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2015 HXHG. All rights reserved. Updated: 2015-11-11</p>
+						<p class="copyright">Copyright &copy; 2015 HXHG. All rights reserved. Updated: 2015-12-04</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

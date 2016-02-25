@@ -89,23 +89,11 @@
                         <h4 class="method-subtitle">Definition</h4>
                         <code>typedef NS_ENUM(NSInteger, JMSGSDKErrorCode ) {<br>
                             
-                            &nbsp;&nbsp; <a href="">kJMSGErrorNetworkUserNotRegistered</a> = 801003,<br>
-                            
-                            &nbsp;&nbsp; <a href="">JMSG_ERROR_NETWORK_REQUEST_INVALIDATE</a> = 860010,<br>
-                            
-                            &nbsp;&nbsp; <a href="">JMSG_ERROR_NETWORK_REQUEST_TIMEOUT</a> = 860011,<br>
-                            
-                            &nbsp;&nbsp; <a href="">JMSG_ERROR_NETWORK_REQUEST_FAIL</a> = 860012,<br>
-                            
-                            &nbsp;&nbsp; <a href="">JMSG_ERROR_NETWORK_SERVER_FAIL</a> = 860013,<br>
-                            
-                            &nbsp;&nbsp; <a href="">JMSG_ERROR_NETWORK_HOST_UNKNOWN</a> = 860014,<br>
-                            
                             &nbsp;&nbsp; <a href="">kJMSGErrorSDKNetworkDownloadFailed</a> = 860015,<br>
                             
-                            &nbsp;&nbsp; <a href="">kJMSGNetworkOther</a> = 860016,<br>
+                            &nbsp;&nbsp; <a href="">kJMSGErrorSDKNetworkOtherError</a> = 860016,<br>
                             
-                            &nbsp;&nbsp; <a href="">kJMSGErrorNetworkTokenFailed</a> = 860017,<br>
+                            &nbsp;&nbsp; <a href="">kJMSGErrorSDKNetworkTokenFailed</a> = 860017,<br>
                             
                             &nbsp;&nbsp; <a href="">kJMSGErrorSDKNetworkUploadFailed</a> = 860018,<br>
                             
@@ -113,9 +101,9 @@
                             
                             &nbsp;&nbsp; <a href="">kJMSGErrorSDKNetworkUploadTokenGetFailed</a> = 860020,<br>
                             
-                            &nbsp;&nbsp; <a href="">kJMSGErrorNetworkResultUnexpected</a> = 860021,<br>
+                            &nbsp;&nbsp; <a href="">kJMSGErrorSDKNetworkResultUnexpected</a> = 860021,<br>
                             
-                            &nbsp;&nbsp; <a href="">kJMSGErrorNetworkDataFormatInvalid</a> = 860030,<br>
+                            &nbsp;&nbsp; <a href="">kJMSGErrorSDKNetworkDataFormatInvalid</a> = 860030,<br>
                             
                             &nbsp;&nbsp; <a href="">kJMSGErrorSDKDBDeleteFailed</a> = 861000,<br>
                             
@@ -125,17 +113,19 @@
                             
                             &nbsp;&nbsp; <a href="">kJMSGErrorSDKDBInsertFailed</a> = 861003,<br>
                             
+                            &nbsp;&nbsp; <a href="">kJMSGErrorSDKDBMigrateFailed</a> = 861004,<br>
+                            
                             &nbsp;&nbsp; <a href="">kJMSGErrorSDKParamAppkeyInvalid</a> = 861100,<br>
                             
-                            &nbsp;&nbsp; <a href="">kJMSGErrorSDKParamInternalInvalid</a> = 860040,<br>
+                            &nbsp;&nbsp; <a href="">kJMSGErrorSDKParamInternalInvalid</a> = 861101,<br>
+                            
+                            &nbsp;&nbsp; <a href="">kJMSGQiniuTokenInvalid</a> = 862001,<br>
                             
                             &nbsp;&nbsp; <a href="">kJMSGErrorSDKParamUsernameInvalid</a> = 863001,<br>
                             
                             &nbsp;&nbsp; <a href="">kJMSGErrorSDKParamPasswordInvalid</a> = 863002,<br>
                             
-                            &nbsp;&nbsp; <a href="">kJMSGErrorSDKParamAvatarNil</a> = 86303,<br>
-                            
-                            &nbsp;&nbsp; <a href="">kJMSGErrorSDKUserNotLogin</a> = 86304,<br>
+                            &nbsp;&nbsp; <a href="">kJMSGErrorSDKUserNotLogin</a> = 863004,<br>
                             
                             &nbsp;&nbsp; <a href="">kJMSGErrorSDKNotMediaMessage</a> = 864001,<br>
                             
@@ -155,6 +145,16 @@
                             
                             &nbsp;&nbsp; <a href="">kJMSGErrorSDKMessageNotInGroup</a> = 865004,<br>
                             
+                            &nbsp;&nbsp; <a href="">kJMSGErrorSDKMessageProtocolInvalidJsonFormat</a> = 865005,<br>
+                            
+                            &nbsp;&nbsp; <a href="">kJMSGErrorSDKMessageProtocolLackFields</a> = 865006,<br>
+                            
+                            &nbsp;&nbsp; <a href="">kJMSGErrorSDKMessageProtocolInvalidFieldValue</a> = 865007,<br>
+                            
+                            &nbsp;&nbsp; <a href="">kJMSGErrorSDKMessageProtocolUpgradeNeeded</a> = 865008,<br>
+                            
+                            &nbsp;&nbsp; <a href="">kJMSGErrorSDKMessageProtocolContentTypeNotSupport</a> = 865009,<br>
+                            
                             &nbsp;&nbsp; <a href="">kJMSGErrorSDKParamConversationTypeUnknown</a> = 866001,<br>
                             
                             &nbsp;&nbsp; <a href="">kJMSGErrorSDKParamConversationUsernameInvalid</a> = 866002,<br>
@@ -165,11 +165,7 @@
                             
                             &nbsp;&nbsp; <a href="">kJMSGErrorSDKParamGroupGroupInfoInvalid</a> = 867002,<br>
                             
-                            &nbsp;&nbsp; <a href="">kJMSGErrorMediaCrcInvalid</a> = 868001,<br>
-                            
-                            &nbsp;&nbsp; <a href="">JMSGUnknownError</a> = 869999,<br>
-                            
-                            &nbsp;&nbsp; <a href="">kJMSGQiniuTokenInvalid</a> = 2,<br>
+                            &nbsp;&nbsp; <a href="">kJMSGErrorSDKUnknownError</a> = 869999,<br>
                             
                             };</code>
                     
@@ -178,108 +174,6 @@
                     <div class="section section-methods">
                         <h4 class="method-subtitle">Constants</h4>
                         <dl class="termdef">
-                            
-                            <dt><a name="" title="kJMSGErrorNetworkUserNotRegistered"></a><code>kJMSGErrorNetworkUserNotRegistered</code></dt>
-<dd>
-
-
-<p><a href="../Classes/JMessage.html">JMessage</a> SDK 的错误码汇总</p>
-
-
-
-
-
-    
-	<p>
-		Declared In <code class="declared-in-ref">JMSGConstants.h</code>.
-	</p>
-	
-</dd>
-                            
-                            <dt><a name="" title="JMSG_ERROR_NETWORK_REQUEST_INVALIDATE"></a><code>JMSG_ERROR_NETWORK_REQUEST_INVALIDATE</code></dt>
-<dd>
-
-
-<p><a href="../Classes/JMessage.html">JMessage</a> SDK 的错误码汇总</p>
-
-
-
-
-
-    
-	<p>
-		Declared In <code class="declared-in-ref">JMSGConstants.h</code>.
-	</p>
-	
-</dd>
-                            
-                            <dt><a name="" title="JMSG_ERROR_NETWORK_REQUEST_TIMEOUT"></a><code>JMSG_ERROR_NETWORK_REQUEST_TIMEOUT</code></dt>
-<dd>
-
-
-<p>服务器返回超时</p>
-
-
-
-
-
-    
-	<p>
-		Declared In <code class="declared-in-ref">JMSGConstants.h</code>.
-	</p>
-	
-</dd>
-                            
-                            <dt><a name="" title="JMSG_ERROR_NETWORK_REQUEST_FAIL"></a><code>JMSG_ERROR_NETWORK_REQUEST_FAIL</code></dt>
-<dd>
-
-
-<p>服务器请求失败</p>
-
-
-
-
-
-    
-	<p>
-		Declared In <code class="declared-in-ref">JMSGConstants.h</code>.
-	</p>
-	
-</dd>
-                            
-                            <dt><a name="" title="JMSG_ERROR_NETWORK_SERVER_FAIL"></a><code>JMSG_ERROR_NETWORK_SERVER_FAIL</code></dt>
-<dd>
-
-
-<p>服务端错误</p>
-
-
-
-
-
-    
-	<p>
-		Declared In <code class="declared-in-ref">JMSGConstants.h</code>.
-	</p>
-	
-</dd>
-                            
-                            <dt><a name="" title="JMSG_ERROR_NETWORK_HOST_UNKNOWN"></a><code>JMSG_ERROR_NETWORK_HOST_UNKNOWN</code></dt>
-<dd>
-
-
-<p>地址错误</p>
-
-
-
-
-
-    
-	<p>
-		Declared In <code class="declared-in-ref">JMSGConstants.h</code>.
-	</p>
-	
-</dd>
                             
                             <dt><a name="" title="kJMSGErrorSDKNetworkDownloadFailed"></a><code>kJMSGErrorSDKNetworkDownloadFailed</code></dt>
 <dd>
@@ -298,7 +192,7 @@
 	
 </dd>
                             
-                            <dt><a name="" title="kJMSGNetworkOther"></a><code>kJMSGNetworkOther</code></dt>
+                            <dt><a name="" title="kJMSGErrorSDKNetworkOtherError"></a><code>kJMSGErrorSDKNetworkOtherError</code></dt>
 <dd>
 
 
@@ -315,7 +209,7 @@
 	
 </dd>
                             
-                            <dt><a name="" title="kJMSGErrorNetworkTokenFailed"></a><code>kJMSGErrorNetworkTokenFailed</code></dt>
+                            <dt><a name="" title="kJMSGErrorSDKNetworkTokenFailed"></a><code>kJMSGErrorSDKNetworkTokenFailed</code></dt>
 <dd>
 
 
@@ -383,7 +277,7 @@
 	
 </dd>
                             
-                            <dt><a name="" title="kJMSGErrorNetworkResultUnexpected"></a><code>kJMSGErrorNetworkResultUnexpected</code></dt>
+                            <dt><a name="" title="kJMSGErrorSDKNetworkResultUnexpected"></a><code>kJMSGErrorSDKNetworkResultUnexpected</code></dt>
 <dd>
 
 
@@ -400,7 +294,7 @@
 	
 </dd>
                             
-                            <dt><a name="" title="kJMSGErrorNetworkDataFormatInvalid"></a><code>kJMSGErrorNetworkDataFormatInvalid</code></dt>
+                            <dt><a name="" title="kJMSGErrorSDKNetworkDataFormatInvalid"></a><code>kJMSGErrorSDKNetworkDataFormatInvalid</code></dt>
 <dd>
 
 
@@ -485,6 +379,23 @@
 	
 </dd>
                             
+                            <dt><a name="" title="kJMSGErrorSDKDBMigrateFailed"></a><code>kJMSGErrorSDKDBMigrateFailed</code></dt>
+<dd>
+
+
+<p>数据库迁移失败</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">JMSGConstants.h</code>.
+	</p>
+	
+</dd>
+                            
                             <dt><a name="" title="kJMSGErrorSDKParamAppkeyInvalid"></a><code>kJMSGErrorSDKParamAppkeyInvalid</code></dt>
 <dd>
 
@@ -519,6 +430,23 @@
 	
 </dd>
                             
+                            <dt><a name="" title="kJMSGQiniuTokenInvalid"></a><code>kJMSGQiniuTokenInvalid</code></dt>
+<dd>
+
+
+<p>七牛相关</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">JMSGConstants.h</code>.
+	</p>
+	
+</dd>
+                            
                             <dt><a name="" title="kJMSGErrorSDKParamUsernameInvalid"></a><code>kJMSGErrorSDKParamUsernameInvalid</code></dt>
 <dd>
 
@@ -541,23 +469,6 @@
 
 
 <p>用户密码不合法</p>
-
-
-
-
-
-    
-	<p>
-		Declared In <code class="declared-in-ref">JMSGConstants.h</code>.
-	</p>
-	
-</dd>
-                            
-                            <dt><a name="" title="kJMSGErrorSDKParamAvatarNil"></a><code>kJMSGErrorSDKParamAvatarNil</code></dt>
-<dd>
-
-
-<p>用户头像属性为空</p>
 
 
 
@@ -740,6 +651,91 @@
 	
 </dd>
                             
+                            <dt><a name="" title="kJMSGErrorSDKMessageProtocolInvalidJsonFormat"></a><code>kJMSGErrorSDKMessageProtocolInvalidJsonFormat</code></dt>
+<dd>
+
+
+<p>非法的 JSON 格式, 无法解析 Message JSON Protocol</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">JMSGConstants.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="kJMSGErrorSDKMessageProtocolLackFields"></a><code>kJMSGErrorSDKMessageProtocolLackFields</code></dt>
+<dd>
+
+
+<p>消息协议格式不正确, 可能缺少了字段</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">JMSGConstants.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="kJMSGErrorSDKMessageProtocolInvalidFieldValue"></a><code>kJMSGErrorSDKMessageProtocolInvalidFieldValue</code></dt>
+<dd>
+
+
+<p>消息协议格式不正确, 字段值非法</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">JMSGConstants.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="kJMSGErrorSDKMessageProtocolUpgradeNeeded"></a><code>kJMSGErrorSDKMessageProtocolUpgradeNeeded</code></dt>
+<dd>
+
+
+<p>本地消息协议需要升级(收到新版本)</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">JMSGConstants.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="kJMSGErrorSDKMessageProtocolContentTypeNotSupport"></a><code>kJMSGErrorSDKMessageProtocolContentTypeNotSupport</code></dt>
+<dd>
+
+
+<p>收到不支持消息内容类型(建议升级)</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">JMSGConstants.h</code>.
+	</p>
+	
+</dd>
+                            
                             <dt><a name="" title="kJMSGErrorSDKParamConversationTypeUnknown"></a><code>kJMSGErrorSDKParamConversationTypeUnknown</code></dt>
 <dd>
 
@@ -825,45 +821,11 @@
 	
 </dd>
                             
-                            <dt><a name="" title="kJMSGErrorMediaCrcInvalid"></a><code>kJMSGErrorMediaCrcInvalid</code></dt>
+                            <dt><a name="" title="kJMSGErrorSDKUnknownError"></a><code>kJMSGErrorSDKUnknownError</code></dt>
 <dd>
 
 
-<p>媒体文件 crc 检查失败</p>
-
-
-
-
-
-    
-	<p>
-		Declared In <code class="declared-in-ref">JMSGConstants.h</code>.
-	</p>
-	
-</dd>
-                            
-                            <dt><a name="" title="JMSGUnknownError"></a><code>JMSGUnknownError</code></dt>
-<dd>
-
-
-<p><a href="../Classes/JMessage.html">JMessage</a> SDK 的错误码汇总</p>
-
-
-
-
-
-    
-	<p>
-		Declared In <code class="declared-in-ref">JMSGConstants.h</code>.
-	</p>
-	
-</dd>
-                            
-                            <dt><a name="" title="kJMSGQiniuTokenInvalid"></a><code>kJMSGQiniuTokenInvalid</code></dt>
-<dd>
-
-
-<p>七牛相关</p>
+<p>unknown</p>
 
 
 
@@ -900,7 +862,7 @@
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2015 HXHG. All rights reserved. Updated: 2015-11-11</p>
+						<p class="copyright">Copyright &copy; 2015 HXHG. All rights reserved. Updated: 2015-12-04</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
