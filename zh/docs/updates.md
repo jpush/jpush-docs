@@ -1,4 +1,28 @@
 # 最近更新
+### JMessage iOS SDK v2.0.0
+
+#### 更新时间
+* 2016-02-22
+
+#### 版本号
+* JMessage SDK 2.0.0
+* JChat 1.1.0b1460
+
+#### Change Log
++ 消息结构调整：现在一条消息由一个 JMSGMessage 类加上多个类型的 Content 组成，如 JMSGTextContent;
++ 对象化：会话里有 target 对象（JMSGUser 或者 JMSGGroup），消息里有 target JMSGUser 对象，fromUser 对象；
++ 通知调整：由之前的 NSNotification 换成 Delegate 的方式，使用更简单、直观；
++ 性能优化：对常用的信息，SDK内部做了缓存，以减少文件、网络访问；
++ 对外 API 头文件加了完善的文档注释，包含使用建议。
+
+#### 升级提示
+
++ 建议升级！
++ 由于 API 与 Model 层面很大范围的变更，建议参考 JChat 项目来适配新的 JMessage iOS SDK。
+
+#### 升级指南
++ 使用新版本的JMessage.framework文件替换原工程下的同名旧文件
+
 
 ### JPush Android SDK v2.0.6
 
