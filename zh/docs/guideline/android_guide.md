@@ -61,6 +61,33 @@
 + 复制 res/drawable-hdpi 中的资源文件到工程的 res/drawable-hdpi/ 目录下
 + 复制 res/layout 中的布局文件到工程的 res/layout/ 目录下
 
+### 集成 JPush Android SDK 的混淆
+
++ 请下载4.x及以上版本的[proguard.jar](http://sourceforge.net/projects/proguard/files/proguard/)， 并替换你Android Sdk "tools\proguard\lib\proguard.jar"
+
++ 开发工具使用Eclipse或者Android Studio,请在工程的project.properties中配置好proguard-android.txt，并且在proguard-android.txt配置：
+
+        -dontoptimize
+        -dontpreverify
+
+        -dontwarn cn.jpush.**
+        -keep class cn.jpush.** { *; }
+        
++ 请使用 SDK1.3.X 及以后的版本
+
++ v2.0.5 及以上的版本由于引入了protobuf ，在上面基础之上增加排出混淆的配置。
+
+
+        #==================gson==========================
+        -dontwarn com.google.**
+        -keep class com.google.gson.** {*;}
+
+        #==================protobuf======================
+        -dontwarn com.google.**
+        -keep class com.google.protobuf.** {*;}
+
+
+
 ### 配置 AndroidManifest.xml
 
 根据 SDK 压缩包里的 AndroidManifest.xml 样例文件，来配置应用程序项目的 AndroidManifest.xml 。
