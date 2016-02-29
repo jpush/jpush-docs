@@ -4,6 +4,10 @@
 img[alt=jpush_android_3m] { width: 800px; }
 </style>
 
+<style>
+img[alt=jpush_android_receiver] { width: 500px; }
+</style>
+
 本文目的在于，指导新接触极光推送的开发者，在短短几分钟时间内把极光推送跑起来：
 
 + 安装Demo客户端到手机
@@ -43,7 +47,7 @@ img[alt=jpush_android_3m] { width: 800px; }
 ### 运行 Example 这个应用
 上步骤导入这个 Android 项目后，你就马上可以点击鼠标右键，把这个 Android 应用跑起来了。（如果你的Eclipse设置的是自动编译的话）
 
-![jpush_android_3m](image/jpush_app_run.png)
+![jpush_android_receiver](image/jpush_app_run.png)
 
 如果你的 Android 手机接在电脑上了，则这个 JPush Example 应用就可以安装上，并运行起来了。
 
@@ -58,7 +62,7 @@ img[alt=jpush_android_3m] { width: 800px; }
 ### 手机上收到通知
 在上述步骤安装 JPush Example 的手机上，你就可以收到推送的通知了。
 
-![jpush_android_3m](image/jpush_app_received.png)
+![jpush_android_receiver](image/jpush_app_received.png)
 
 
 ### Portal上推送消息

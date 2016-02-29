@@ -1,5 +1,9 @@
 # JMessage iOS SDK 集成指南
 
+<style>
+img[alt=jmessage_ios] { width: 800px; }
+</style>
+
 ### 文档说明
 
 本文是极光IM iOS SDK 的集成指南文档。
@@ -66,11 +70,11 @@ JMessage 新增的依赖、配置、初始化方面，请继续参考下节。
 
 * 登录[极光Web控制台](https://www.jpush.cn/common/apps)，创建应用，上传 APNs 证书。如果对 Apple APNs 证书不太了解，请参考[iOS 证书设置指南](../client/ios_tutorials/#ios_1)。
 
-![][0]
+![jmessage_ios][0]
 
 * 创建成功后自动生成 AppKey 用以标识该应用。这个后续要用到。
 
-![][1]
+![jmessage_ios][1]
 
 #### 2、导入 SDK 到应用程序项目里
 
