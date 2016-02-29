@@ -235,9 +235,9 @@ extern NSString *const JMSGNotification_GroupChange;             // 群组更新
 
 问答社区：[http://www.jpush.cn/qa/][5]
 
-[0]: ../image/create_ios_app.png
-[1]: ../image/Screenshot_13-4_2_create.png
-[2]: ../image/Screenshot_13-4-15_3_31.png
+[0]: ./image/create_ios_app.png
+[1]: ./image/Screenshot_13-4_2_create.png
+[2]: ./image/Screenshot_13-4-15_3_31.png
 [3]: ../../client_sdks/ios_api
 [4]: mailto:support@jpush.cn
 [5]: http://www.jpush.cn/qa/
