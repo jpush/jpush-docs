@@ -54,7 +54,7 @@ JSON Array.
 
 + android_received Android 送达。如果无此项数据则为 null。
 + ios_apns_sent iOS 推送成功。如果无此项数据则为 null。
-+ ios_msg_receive d  iOS 自定义消息送达数。如果无此项数据则为null。
++ ios_msg_received  iOS 自定义消息送达数。如果无此项数据则为null。
 + wp_mpns_sent       winphone通知送达。如果无此项数据则为 null。
 
 ### 消息统计（VIP专属接口）
