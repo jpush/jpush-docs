@@ -260,6 +260,7 @@ SDK 对自定义消息，只是传递，不会有任何界面上的展示。
 + JPushInterface.EXTRA_NOTIFICATION_ID
 	+ SDK 1.3.5 以上版本支持。
 	+ 通知栏的Notification ID，可以用于清除Notification
+	+ 如果服务端内容（alert）字段为空，则notification id 为0
 
 			Bundle bundle = intent.getExtras();
 			int notificationId = bundle.getInt(JPushInterface.EXTRA_NOTIFICATION_ID);

@@ -210,7 +210,7 @@ APIs 主要集中在 JPUSHService 接口类里。
 
 #### 7、监听通知
 
-API里面提供了下面 5 种类型的通知：
+建议开发者加上API里面提供下面 5 种类型的通知：
 
 extern NSString * const kJPFNetworkDidSetupNotification; // 建立连接
 
