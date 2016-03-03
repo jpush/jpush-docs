@@ -62,8 +62,9 @@ public static synchronized void init(Context context)
 #### 注册与登录
 
 ##### 注册
-
-  public static void register(String username, String password, BasicCallback callback);
+```
+  public static void register(String username, String pas  sword, BasicCallback callback);
+```
   
 参数说明
 
@@ -72,8 +73,9 @@ public static synchronized void init(Context context)
 + BasicCallback callback 结果回调
 
 ##### 登录
-
+```
   public static void login(String username, String password, BasicCallback callback);
+```
   
 参数说明
  
@@ -82,8 +84,9 @@ public static synchronized void init(Context context)
 + BasicCallback callback 结果回调
 
 ##### 退出登录
-
+```
   public static void logout();
+```
   
 参数说明
 
@@ -92,8 +95,9 @@ public static synchronized void init(Context context)
 #### 用户属性维护
 
 ##### 获取用户信息
-
+```
   public static void getUserInfo(String username, GetUserInfoCallback callback);
+```
   
 参数说明
 
@@ -101,13 +105,16 @@ public static synchronized void init(Context context)
 + GetUserInfoCallback callback 结果回调
 
 回调
-
+```
   public abstract void gotResult(int responseCode, String responseMessage, UserInfo userInfo);
+```
 
 + UserInfo userInfo 用户信息
 
 ##### 从本地获取当前登录账号的用户信息
+```
   public static UserInfo getMyInfo();
+```
 参数说明
 
 - 无
@@ -117,8 +124,9 @@ public static synchronized void init(Context context)
 - UserInfo  当前登录用户的用户信息。
 
 ##### 更新用户信息
-
+```
   public static void updateMyInfo(UserInfo.Field updateField, UserInfo info, BasicCallback callback);
+```
   
 参数说明
 
@@ -132,8 +140,9 @@ public static synchronized void init(Context context)
 + BasicCallback callback 结果回调
 
 ##### 更新用户密码
-
+```
   public static void updateUserPassword(String oldPassword, String newPassword, BasicCallback callback);
+```
   
 参数说明
 
@@ -142,8 +151,9 @@ public static synchronized void init(Context context)
 + BasicCallback callback 结果回调
   
 ##### 更新用户头像
-
+```
   public static void updateUserAvatar(File avatar, BasicCallback callback);
+```
   
 参数说明
 
@@ -251,9 +261,9 @@ public static Message createGroupCustomMessage(long groupID,
 ##### 发送消息
 
 向服务器给发送对象发送消息，并且保存到本地会话。
-
+```
   public static void sendMessage(Message message);
-  
+```
 参数说明
 
 + Message message 消息（对象）
@@ -262,9 +272,9 @@ public static Message createGroupCustomMessage(long groupID,
 ##### 获取会话列表
 
 从本地数据库取得。同步返回。
-
+```
   public List<Conversation> getConversationList();
-  
+```
 参数说明
 
 + 无
@@ -274,9 +284,10 @@ public static Message createGroupCustomMessage(long groupID,
 + `List<Conversation>` 会话列表。
 
 ##### 获取单个单聊会话
-
+获取单聊会话信息，默认获取本appkey下username的单聊会话。
+```
   public static Conversation getSingleConversation(String username);
-
+```
 参数说明
 
 + String username 目标的用户用户名。
@@ -285,9 +296,27 @@ public static Message createGroupCustomMessage(long groupID,
 
 - 根据参数匹配得到的单聊会话对象。
 
-##### 获取单个群聊会话
+##### 获取单个单聊会话（跨应用）
+获取与指定appkey下username的单聊回话信息,如果appkey为空则默认取本应用appkey下对应username的会话。
 
+```
+  public static Conversation getSingleConversation(String username,String appkey);
+```
+
+参数说明
+
++ String username 目标的用户用户名。
++ String appkey 目标用户所属的appkey
+
+返回
+
+- 根据参数匹配得到的单聊会话对象。
+
+
+##### 获取单个群聊会话
+```
   public static Conversation getGroupConversation(long groupID);
+```
 
 参数说明
 
@@ -298,10 +327,13 @@ public static Message createGroupCustomMessage(long groupID,
 - 根据参数匹配得到的群聊会话对象。
 
 
+
   
 ##### 删除单个单聊会话
-  
+删除单聊的会话，同时删除掉本地聊天记录。默认删除本appkey下username的会话
+```  
   public static boolean deleteSingleConversation(String username);
+```
 
 参数说明
 
@@ -311,10 +343,27 @@ public static Message createGroupCustomMessage(long groupID,
 
 - 是否删除成功。
 
-##### 删除单个群聊会话
-  
-  public static boolean deleteGroupConversation(long groupID);
 
+
+##### 删除单个单聊会话（跨应用）
+删除与指定appkey下username的单聊的会话，同时删除掉本地聊天记录。,如果appkey为空则默认尝试删除本应用appkey下对应username的会话。
+```  
+  public static boolean deleteSingleConversation(String username,String appkey);
+```
+
+参数说明
+
++ String username 目标的用户用户名。
++ String appkey 目标用户所属的appkey
+
+返回
+
+- 是否删除成功。
+
+##### 删除单个群聊会话
+```  
+  public static boolean deleteGroupConversation(long groupID);
+```
 参数说明
 
 + long groupID 目标群的群ID。
@@ -326,8 +375,10 @@ public static Message createGroupCustomMessage(long groupID,
 
 #### 事件处理
 ##### 1、事件接收类的注册
+```
   public static void registerEventReceiver(Object receiver);
   public static void registerEventReceiver(Object receiver, int priority);
+```
 
 参数说明
 
@@ -335,7 +386,9 @@ public static Message createGroupCustomMessage(long groupID,
 + int priority 定义事件接收者接收事件的优先级，默认值为0，优先级越高将越先接收到事件。（优先级只对同一个线程模式中的接收者有效）
 
 ##### 2、事件接收类的解绑
+```
   public static void unRegisterEventReceiver(Object receiver);
+```
 
 参数说明
 
@@ -615,9 +668,9 @@ class UserLogoutEventReceiver extends Activity{
 #### 群组维护
 
 ##### 创建群组
-
+```
   public static void createGroup(String groupName, String groupDesc, CreateGroupCallback callback);
-  
+```  
 参数说明 
 
 + String groupName 群名称
@@ -625,9 +678,9 @@ class UserLogoutEventReceiver extends Activity{
 + CreateGroupCallback callback 结果回调
 
 回调
-
+```
   public abstract void gotResult(int responseCode, String responseMsg, long groupId);
-  
+```  
 + long groupId 新创建成功的群组ID（resopnseCode = 0 时）。
 
 ##### 获取群组列表
@@ -643,25 +696,25 @@ public abstract void gotResult(int responseCode, String responseMessage,
 
 
 ##### 获取群组详情
-
+```
   public static void getGroupInfo(long groupId, GetGroupInfoCallback callback)
-
+```
 参数说明
 
 + long groupId 群ID
 + GetGroupInfoCallback callback 结果回调
 
 回调
-
+```
   public void gotResult(int responseCode, String responseMessage, Group group)
-
+```
 + Group group 返回的群组详情
 
 ##### 更新群组名称
-
+```
   public static void updateGroupName(long groupID, 
       String groupName,BasicCallback callback);
-
+```
 参数说明
 
 + long groupID 待更新信息的群组ID
@@ -669,10 +722,10 @@ public abstract void gotResult(int responseCode, String responseMessage,
 + BasicCallback callback 结果回调
 
 ##### 更新群组详情
-
+```
   public static void updateGroupDescription(long groupID, 
       String groupDesc,BasicCallback callback);
-
+```
 参数说明
 
 + long groupID 待更新信息的群组ID
@@ -681,9 +734,9 @@ public abstract void gotResult(int responseCode, String responseMessage,
 
 
 ##### 加群组成员
-
+```
   public static void addGroupMembers(long groupId, List<String> usernameList, BasicCallback callback);
-  
+```  
 参数说明
 
 + long groupId 待加群的群组ID。创建群组时返回的。
@@ -691,9 +744,9 @@ public abstract void gotResult(int responseCode, String responseMessage,
 + BasicCallback callback 结果回调
 
 ##### 移除群组成员
-
+```
   public static void removeGroupMembers(long groupId, List<String> usernameList, BasicCallback callback);
-
+```
 参数说明
 
 + long groupId 待删除成员的群ID。
@@ -701,28 +754,28 @@ public abstract void gotResult(int responseCode, String responseMessage,
 + BasicCallback callback 结果回调。
 
 ##### 退出群组
-
+```
   public static void exitGroup(long groupId, BasicCallback callback);
-
+```
 参数说明
 
 + long groupId 待退出的群ID。
 + BasicCallback callback 结果回调。
   
 ##### 获取群组成员列表
-
+```
   public static void getGroupMembers(long groupID, 
       GetGroupMembersCallback callback)
-
+```
 参数说明
 
 + long groupId 群组ID
 + GetGroupMembersCallback callback
 
 回调
-
+```
   public void gotResult(int responseCode, String responseMessage, List<String> members);
-  
+```  
 + List members 成员列表(username)。
 
 
@@ -788,7 +841,8 @@ public static void setNotificationMode(int mode);
 
 
 ##### 进入单聊回话
-进入单聊会话。UI在进入单聊会话页面时需要调用此函数，SDK会根据传入的username来决定是否需要发送通知
+进入单聊会话。默认进入的是本应用appkey下用户的会话。
+	UI在进入单聊会话页面时需要调用此函数，SDK会根据传入的username来决定是否需要发送通知
 
 ```
 public static void enterSingleConversaion(String username)
@@ -796,6 +850,18 @@ public static void enterSingleConversaion(String username)
 参数定义
 
   + String username 单聊聊天对象的username
+  
+##### 进入单聊回话(跨应用)
+在进入聊天会话界面时调用，设置当前正在聊天的对象，sdk用来判断notification是否需要展示。若appkey为空则默认填充本应用的appkey。
+	UI在进入单聊会话页面时需要调用此函数，SDK会根据传入的username来决定是否需要发送通知
+
+```
+public static void enterSingleConversaion(String username,String appkey)
+```
+参数定义
+
+  + String username 单聊聊天对象的username
+  + String appkey 聊天对象所属appkey
 
 ##### 进入群聊会话
 
