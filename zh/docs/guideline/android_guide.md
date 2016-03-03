@@ -6,8 +6,6 @@
 
 匹配的 SDK 版本为：r1.8.0及以后版本。
 
-本文随SDK压缩包分发。在你看到本文时，可能当前的版本与本文已经不是很适配。所以建议关注在线文档：
-
 + [3 分钟快速 Demo（Android）](/guideline/android_3m)：如果您想要快速地测试、感受下极光推送的效果，请参考本文在几分钟内跑通Demo。
 + 极光推送文档网站上，有极光推送相关的所有指南、API、教程等全部的文档。包括本文档的更新版本，都会及时地发布到该网站上。
 + [极光推送问答](https://www.jpush.cn/qa/)网站：大家除了文档之外，还有问题与疑问，会到这里来提问题，以及时地得到解答。
@@ -32,7 +30,7 @@
 
 ### jpush-sdk_v1.x.y.zip 集成压缩包内容
 
-+ AndoridManifest.xml
++ AndroidManifest.xml
 	+ 客户端嵌入SDK参考的配置文件
 + libs/jpush-sdk-release1.x.y.jar 
 	+ SDK Java 开发包
@@ -63,6 +61,33 @@
 + 复制 res/drawable-hdpi 中的资源文件到工程的 res/drawable-hdpi/ 目录下
 + 复制 res/layout 中的布局文件到工程的 res/layout/ 目录下
 
+### 集成 JPush Android SDK 的混淆
+
++ 请下载4.x及以上版本的[proguard.jar](http://sourceforge.net/projects/proguard/files/proguard/)， 并替换你Android Sdk "tools\proguard\lib\proguard.jar"
+
++ 开发工具使用Eclipse或者Android Studio,请在工程的project.properties中配置好proguard-android.txt，并且在proguard-android.txt配置：
+
+        -dontoptimize
+        -dontpreverify
+
+        -dontwarn cn.jpush.**
+        -keep class cn.jpush.** { *; }
+        
++ 请使用 SDK1.3.X 及以后的版本
+
++ v2.0.5 及以上的版本由于引入了protobuf ，在上面基础之上增加排出混淆的配置。
+
+
+        #==================gson==========================
+        -dontwarn com.google.**
+        -keep class com.google.gson.** {*;}
+
+        #==================protobuf======================
+        -dontwarn com.google.**
+        -keep class com.google.protobuf.** {*;}
+
+
+
 ### 配置 AndroidManifest.xml
 
 根据 SDK 压缩包里的 AndroidManifest.xml 样例文件，来配置应用程序项目的 AndroidManifest.xml 。
@@ -89,7 +114,7 @@ AndroidManifest.xml权限配置：
     <permission android:name="您应用的包名.permission.JPUSH_MESSAGE" android:protectionLevel="signature" />
    
     <!-- Required -->
-    <uses-permission android:name="You Package.permission.JPUSH_MESSAGE" />
+    <uses-permission android:name="您应用的包名.permission.JPUSH_MESSAGE" />
     <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
@@ -243,7 +268,6 @@ AndroidManifest.xml权限配置：
      <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
      <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
      <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> 
-     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/> 
   
   
      <!-- Optional for location -->

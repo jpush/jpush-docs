@@ -210,7 +210,7 @@ APIs 主要集中在 JPUSHService 接口类里。
 
 #### 7、监听通知
 
-API里面提供了下面 5 种类型的通知：
+建议开发者加上API里面提供下面 5 种类型的通知：
 
 extern NSString * const kJPFNetworkDidSetupNotification; // 建立连接
 
@@ -219,6 +219,12 @@ extern NSString * const kJPFNetworkDidCloseNotification; // 关闭连接
 extern NSString * const kJPFNetworkDidRegisterNotification; // 注册成功
 
 extern NSString * const kJPFNetworkDidLoginNotification; // 登录成功
+
+<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">
+<p>温馨提示：
+  <br>
+<p>Registration id 需要在执行到kJPFNetworkDidLoginNotification的方法里获取
+</div>
 
 extern NSString * const kJPFNetworkDidReceiveMessageNotification; // 收到自定义消息(非APNS)
 

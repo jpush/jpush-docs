@@ -1,4 +1,160 @@
 # 最近更新
+### JMessage iOS SDK v2.0.0
+
+#### 更新时间
+* 2016-02-22
+
+#### 版本号
+* JMessage SDK 2.0.0
+* JChat 1.1.0b1460
+
+#### Change Log
++ 消息结构调整：现在一条消息由一个 JMSGMessage 类加上多个类型的 Content 组成，如 JMSGTextContent;
++ 对象化：会话里有 target 对象（JMSGUser 或者 JMSGGroup），消息里有 target JMSGUser 对象，fromUser 对象；
++ 通知调整：由之前的 NSNotification 换成 Delegate 的方式，使用更简单、直观；
++ 性能优化：对常用的信息，SDK内部做了缓存，以减少文件、网络访问；
++ 对外 API 头文件加了完善的文档注释，包含使用建议。
+
+#### 升级提示
+
++ 建议升级！
++ 由于 API 与 Model 层面很大范围的变更，建议参考 JChat 项目来适配新的 JMessage iOS SDK。
+
+#### 升级指南
++ 使用新版本的JMessage.framework文件替换原工程下的同名旧文件
+
+
+### JPush Android SDK v2.0.6
+
+#### 更新时间
++ 2016-01-15
+
+#### Change Log
++ 新功能：支持新的富媒体模版。
++ 修复bug：设置别名/标签相关的 bug。
++ 修复bug：在 2.3.x 系统上构建通知的 bug。
++ 优化：优化 init, sis,接入 流程的日志。
++ 优化：处于静默时间,禁止推送时间的提示日志。
+
+
+#### 升级提示
+
++ 建议升级！
+
+#### 升级指南
++ 首先解压您获取到的zip压缩包
++ 更新库文件
+	+ 打开libs文件夹。用 jpush-android-2.0.6.jar 替换项目中原有的极光jar文件，并删除原有极光jar文件。
+用对应CPU文件夹下的 libjpush206.so文件，替换项目中原有的极光so文件，并删除原有的极光so文件。
+官网默认压缩包仅提供了arm架构的.so文件，如要支持x86和mips架构，请到官网“资源下载”页面下载对应版本。
+
++ 更新AndroidManifest.xml
+	+ 压缩包根目录下有针对Eclipse和AndroidStudio 两种开发平台准备的两个AndroidManifest文件。
+请对照示例更新跟JPush相关的组件属性，permission，Action等配置。要使用富媒体推送，请将压缩包res中的资源放到项目的对应文件夹，并按照示例AndroidManifest配置PushActivity组件
+
++ 添加资源文件
+	+ 将res文件夹下的资源文件，添加到您项目res/下对应的文件夹中。
+根据您应用的界面风格，您可以修改layout文件的配色，字体等属性，或者修改drawable文件夹下的图标。
+但注意请不要修改所有的文件名，和布局文件中的组件id。
+
+### JPush iOS SDK v2.1.0
+
+#### 更新时间
++ 2016-01-12
+
+#### Change Log
+
+主要对 iOS 9 适配支持。
+
++ 功能增加: 增加bitcode支持
++ 优化改进: Demo 增加 iPhone 6 和 6plus 支持
++ 优化改进：APService 变更为 JPUSHService
++ 功能增加：增加appKey和channel通过代码初始化API
++ 优化改进: 优化网路差环境DNS解析超时时间过长
++ 优化改进: 修复注册时没有获取到RegistrationID的bug
++ 优化改进: 静态库文件名由"libPushSDK-x.x.x.a"变更为"jpush-ios-x.x.x.a"
+
+#### 升级提示
+
++ 建议升级！
+
+#### 升级指南
++ 替换 lib 文件夹里的文件:先删除项目里旧的.a和.h文件,重新导入新的.a和.h文件（注意新版本替换APService.h为JPUSHService.h）
++ Xcode7 环境下，替换原先导入的 libz.dylib 框架为 libz.tbd （特别留意）
++ 需要删除旧的 libPushSDK-Simulator.a （如果存在）
++ 关于 iOS 7 Background Push，JPush 提供一个教程文档：iOS 7 Background Remote Notification
++ 如果是1.2.7及之前版本升级 请在Build Settings里面，找到Other Linker Flags，去掉-all_load, -ObjC
+
+
+
+
+
+### JMessage Android SDK v1.1.5
+
+#### 更新时间
+
+* 2015-12-11
+
+#### JMessage SDK Change Log
+
+##### New Feature
+
+* 群成员变化event全部上抛sdk不过滤
+* 用户小头像sdk内部作缓存
+* 内部并发线程数控制，防止太多线程并发执行导致问题
+* 优化网络任务执行效率
+* 本地媒体文件存储按会话分类，方便之后清理。
+* 新增接口:
+	* ImageContent 新增通过传Bitmap来构造实例的接口
+	* Conversation.CreateMessage 新增自定义FromName的接口，开发者可以自定义message的FromName
+	* UserInfo 新增获取头像bitmap的异步接口getAvatarBitmap、getBigAvatarBitmap，并且sdk会在内部会对小头像的bitmap做缓存。
+* 已过时接口:
+	* EventNotificationContent.containsGroupOwner
+	* UserInfo.getAvatarFileAsync
+
+
+##### Bug Fix
+
+
+* 使用自定义类继承BasicCallback时，请求会报错
+* 一些对外接口没有做登陆检查,未登录时调用接口会有问题
+* 修复发送大语音文件，对方收到后下载失败的bug
+* 修复首次收到群消息展示的群组的ID
+* 修复同时调用拿大头像和小头像时，其中有一个返回Null。
+
+#### JChat Change Log
+* 适配JMessage1.1.5
+
+#### New Feature
+
+
+* 发送多张图片时，逐张发送
+* 相册按照修改时间进行排序
+* 上传头像时进行裁剪
+* 优化：一次发送9张图片，能发送成功，但效率比较低
+* 优化：点击jchat 用户在【我】处查看自己头像，提示正在加载，体验待优化
+
+
+##### Bug Fix
+
+
+* 修复：加载上一页消息时如果不存在上一页消息，会多次刷新的问题
+* 修复：单聊清空聊天记录异常的问题
+* 修复：发送多张图片有时出现NPE异常
+* 修复：发送9张图片，可能会卡在正在发送的提示界面，图片实际没有发送成功
+* 修复：小米4手机更新头像，从文件管理处选择图片无法更新头像
+
+
+#### 升级提示
+
++ 建议升级！
+
+#### 升级指南
+* 将jar包更新至 jmessage-sdk-1.1.5.jar更新时需删除老版本jar包。
+* 将so库更新至 libjpush205.so 同时删除原来老版本so。注意不同的cpu型号对应的结构
+* 由于富媒体的展示需求，SDK 中增加一个res文件夹存放资源文件。用户需将对应文件夹下的资源文件放入工程的目录中。
+* 如果是从更早的版本升级过来，建议参考 SDK下载包最新版本的 example 来更新 AndroidManifest.xml 文件配置。
+
 
 ### JPush Android SDK v2.0.5
 

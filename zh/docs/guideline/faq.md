@@ -1,5 +1,9 @@
 #常见问题
 
+<style>
+img[alt=jpush_ios_v] { width: 500px; }
+</style>
+
 ### Start 从这里开始
 
 ####**JPush有什么优势？**
@@ -214,7 +218,7 @@ android {
 		
 + 请使用 SDK1.3.X 及以后的版本
 
-+ 2.0.5 版本由于引入了protobuf ，在上面基础之上增加排出混淆的配置。
++ v2.0.5 及以上的版本由于引入了protobuf ，在上面基础之上增加排出混淆的配置。
 
 
 		#==================gson==========================
@@ -381,7 +385,13 @@ SDK未提供https地址版本时
 
 
 
+<br />
+#### **iOS 如何推送自定义声音**
 
+客户端需要将声音文件导入工程里，选中工程Target -> Build Phrases -> Copy Bundle Resources
+![jpush_ios_v](image/ios_voice.png)
+
+服务端推送时，需要指定iOS 平台下的sound参数，具体传入的值是声音文件名＋后缀。
 
 
 <br />
@@ -432,10 +442,15 @@ SDK未提供https地址版本时
 
 ####**App badge number（角标）如何更改与清空？**
 
-JPush 网站上推送 iOS 通知时，可选设置里面有选项可以指定 badge 的参数的值，如：1或"+1"。
+JPush 网站上推送 iOS 通知时，可在［可选设置］里面指定 badge 参数的值，如：1或"+1"。
 
-api上指定badge的参数请看：[Push-API-v3#API-v3-ios](../../client/ios_api/#badge),客户端上报badge到JPush服务器的接口请看:[设置badge](../../client/ios_api/#badge)
+api上指定badge的参数请看：[Push-API-v3#API-v3-ios](../../client/ios_api/#badge)
 
+客户端上报badge到JPush服务器的接口请看:[设置badge](../../client/ios_api/#badge)
+
+关于badge ＋1的介绍，请看[APNs Notification badge](http://blog.jpush.cn/ios_apns_badge_plus/)
+
+<br />
 ####**Icon Badge number 的清空方法：**
 
 + APN 推送内容指定 badge number 为 0；

@@ -185,7 +185,6 @@
 }];
 ```
 
-
 #### Method - setTags
 
 调用此 API 来设置标签，支持回调函数。
@@ -376,12 +375,12 @@ iOS 设备收到一条推送（APNs），用户点击推送通知打开应用时
     - (BOOL)application:(UIApplication \*)application didFinishLaunchingWithOptions:(NSDictionary \*)launchOptions; 
     // apn 内容获取：NSDictionary *remoteNotification = [launchOptions objectForKey: UIApplicationLaunchOptionsRemoteNotificationKey]
 
-* 如果 App状态为正在前台或者后台运行，那么此函数将被调用，并且可通过AppDelegate的applicationState是否为UIApplicationStateActive判断程序是否在前台运行。此种情况在此函数中处理：
+* 基于iOS 6 及以下的系统版本，如果 App状态为正在前台或者点击通知栏的通知消息，那么此函数将被调用，并且可通过AppDelegate的applicationState是否为UIApplicationStateActive判断程序是否在前台运行。此种情况在此函数中处理：
 
     - (void)application:(UIApplication \*)application didReceiveRemoteNotification:(NSDictionary \*)userInfo;
     // apn内容为userInfo
 
-* 如果是使用 iOS 7 的 Remote Notification 特性那么处理函数需要使用
+* 基于iOS 7 及以上的系统版本，如果是使用 iOS 7 的 Remote Notification 特性那么处理函数需要使用
 
     - (void)application:(UIApplication \*)application didReceiveRemoteNotification:(NSDictionary \*)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler;
     // apn内容为userInfo
@@ -395,8 +394,8 @@ iOS 设备收到一条推送（APNs），用户点击推送通知打开应用时
         NSInteger badge = [[aps valueForKey:@"badge"] integerValue]; //badge数量
         NSString *sound = [aps valueForKey:@"sound"]; //播放的声音
          
-        // 取得自定义字段内容
-        NSString *customizeField1 = [userInfo valueForKey:@"customizeField1"]; //自定义参数，key是自己定义的
+        // 取得Extras字段内容
+        NSString *customizeField1 = [userInfo valueForKey:@"customizeExtras"]; //服务端中Extras字段，key是自己定义的
         NSLog(@"content =[%@], badge=[%d], sound=[%@], customize field  =[%@]",content,badge,sound,customizeField1);
          
         // Required
@@ -490,14 +489,14 @@ r1.7.0 开始支持。
 <div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">
 <p>温馨提示：
   <br>
-<p>开发者在自定义的监听kJPFNetworkDidLoginNotification也可以通过"RegistrationID"这个接口来获取对应的 RegistrationID。
+<p>iOS 9系统，应用卸载重装，APNs返回的devicetoken会发生变化，开发者需要获取设备最新的Registration id。请在kJPFNetworkDidLoginNotification的实现方法里面调用"RegistrationID"这个接口来获取 RegistrationID。
 </div>
 
 #### 附加说明
 
 ##### 通过 RegistrationID 推送消息和通知
 
-可以通过 RegistrationID 来推送消息和通知， 参考文档 Push API v2， 当 receiver_type = 5 并且设置 receiver_value 为 RegistrationID 时候即可根据 RegistrationID 推送。
+可以通过 RegistrationID 来推送消息和通知， 参考文档 [Push API v3](../server/rest_api_v3_push/#audience)， 当audience 参数为 RegistrationID 时候即可根据 RegistrationID 推送。
 
 <div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">
 <p>注：
