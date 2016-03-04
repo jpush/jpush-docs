@@ -10,7 +10,6 @@
                                     <td width="140" style="text-align: center;padding: 30px 0;vertical-align: top;"><img src="../image/resource_android.png" width="71" height="71" /></td>
                                     <td style="padding: 20px 0;">
                                           <h4 style="font-weight: bold;font-size: 14px;">Android - SDK下载</h4>
-                                          <p style="font-size: 12px; color:#aaa;">注：默认开发者只需下载标准版本SDK即可，如果需要额外的CPU的支持请单独下载如下的SDK</p>
                                           <p>请参考如下文档来集成SDK：</p>
                                           <ul style="list-style: none;margin: 0;padding: 0;font-size: 12px;">
                                                 <li><a href="../guideline/android_guide">- Android SDK集成指南</a></li>
