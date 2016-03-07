@@ -849,6 +849,31 @@ r1.6.0 版本开始。
 
 此代码表示晚上10：30点到第二天早上8：30点为静音时段。
 
+## 申请权限接口（Android 6.0 及以上）
+###支持的版本
+开始的版本：v2.1.0
+
+### 功能说明
+在 Android 6.0 及以上的系统上，需要去请求一些用到的权限，JPush SDK 用到的一些需要请求如下权限，因为需要这些权限使统计更加精准，功能更加丰富，建议开发者调用。
+
+
+	"android.permission.READ_PHONE_STATE"
+	"android.permission.WRITE_EXTERNAL_STORAGE"
+	"android.permission.READ_EXTERNAL_STORAGE"
+	"android.permission.ACCESS_FINE_LOCATION"
+
+
+
+### API - requestPermission
+
+#### 接口定义
+	public static void requestPermission(Context context);
+#### 参数说明
++ context 当前应用的 Activity 的上下文
+
+
+
+
 ## 通知栏样式定制 API
 ### 支持的版本
 开始的版本：最初。
