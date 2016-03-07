@@ -3,7 +3,7 @@
 #### 更新时间
 + 2016-03-07
 
-### JMessage SDK Change Log
+#### JMessage SDK Change Log
 
 ##### New Feature
 + 实现跨应用聊天
