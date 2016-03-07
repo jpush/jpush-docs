@@ -1,4 +1,110 @@
 # 最近更新
+### JMessage Android SDK v1.2.0
+#### 更新时间
++ 2016-03-07
+
+### JMessage SDK Change Log
+
+##### New Feature
++ 实现跨应用聊天
++ message中新增getServerMessageId接口
++ 新增setDebugMode接口
++ 新增服务器修改用户密码的event处理
++ 新增接口
+	+ Conversation
+		+ conversation.getTargetAppkey 获取会话对象的appkey（仅单聊）
+		+ Conversation.createSingleConversation(username,appkey) 创建指定appkey的跨应用会话。
+		+ JMessageClient.getSingleConversation(username,appkey) 获取与指定appkey下user的会话。
+		+ JMessageClient.enterSingleConversation(username,appkey) 进入与指定appkey下user的会话。
+		+ JMessageClient.deleteSingleConversation(username,appkey) 删除与指定appkey下user的会话
+	+ Message
+		+ message.getTargetAppKey 获取消息对象的appkey.（仅单聊消息）
+		+ message.getFromAppKey 获取消息发送这个的appkey。
+		+ message.getServerMessageId 获取消息对应服务端的messageId。
+	+ UserInfo
+		+ userinfo.getAppKey 获取用户所属的appkey。
+		+ JMessageClient.getUserInfo(username,appkey,callback) 获取指定appkey下的用户信息。
+	+ JMessageClient
+		+ setDebugMode 打开JMessage的debug模式，作用等同于JPush的setDebugMode.
+
+	+ 已过时接口
+		+ JMessageClient.enterSingleConversaion 接口名拼写错误，使用JMessageClient.enterSingleConversation替代。
+		+ JMessageClient.exitConversaion 接口名拼写错误, 使用JMessageClient.exitConversation替代。
+		+ UserDeletedEvent 、 UserLogoutEvent 统一使用LoginStateChangeEvent替代。
+
+
+##### Bug Fix
+
++ 修复通过getGroupList拿到gid之后，直接拿groupMembers返回空的问题
++ 修复删除会话时未删除通知栏消息
++ 修复conversation 接口名拼写错误
++ 修复首次收到消息创建会话的title错误。
++ 修复createConversation接口没有做登陆验证。
++ 修复跨应用某种情况下会出现循环获取userinfo的bug
++ 修复多次调用login而不调logout导致上一个登陆用户的缓存信息未清掉
+
+#### JChat Change Log
++ 适配JMessage SDK 1.2.0
+								
+##### New Feature
+
++ 会话列表提供断网提示
++ 草稿可以在会话列表显示
+
+##### Bug Fix
+
++ 修复：某些机型拍照上传图片失败bug
++ 修复：App启动时抛出WindowWarning的bug
++ 修复：对话框裁剪成圆角后有黑色阴影的bug
++ 修复：删除本地跨应用会话，对应通知栏消息未清掉
++ 修复：群聊天详情里，点击删除成员，进入到聊天成员中，群成员不显示用户名
++ 修复：群聊天详情界面中，点击全部群成员界面添加不存在的用户，界面停留在转圈的状态
++ 修复：用户主动退出群，退出群时会被系统桌面覆盖
+
+
+#### 升级指南
+
++ jar包更新至jmessage-sdk-1.2.0.jar更新时需删除老版本jar包。
++ 将so库更新至 libjpush207.so 同时删除原来老版本so。注意不同的cpu型号对应的结构
++ 由于富媒体的展示需求，SDK 中增加一个res文件夹存放资源文件。用户需将对应文件夹下的资源文件放入工程的目录中。
++ 如果是从更早起的版本升级过来，建议参考 SDK下载包最新版本的 example 来更新 AndroidManifest.xml 文件配置。
+
+### JPush Android SDK v2.1.0
+
+#### 更新时间
++ 2016-03-04
+
+#### Change Log
++ 新增：对 Android 6.0 的支持(注意:如果是compileSdkVersion 23上编译,请在build.gradle的android中加入 useLibrary 'org.apache.http.legacy',用来支持apache的http类);
++ 新增：Android 6.0 请求权限接口:JPushInterface.requestPermission(Activity context),开发者可以在自己的Activity页面调用此接口,请求权限包括{"android.permission.READ_PHONE_STATE","android.permission.WRITE_EXTERNAL_STORAGE","android.permission.READ_EXTERNAL_STORAGE","android.permission.ACCESS_FINE_LOCATION"}.
++ 修复：setPushTime接口的bug。
++ 修复：setLatestNotificationNumber接口的bug。
++ 修复：分离进程导致的部分数据读写异常。
++ 修复：一些测试平台上报的crash。
++ 修复：由.so库导致的异常不使应用崩溃，用Log提示开发者。
++ 优化：设备唯一性判断策略。
++ 优化：网络状态适配。
++ 优化：日志输出。
+
+#### 升级提示
+
++ 强烈建议升级，适配Android 6.0
+
+#### 升级指南
++ 首先解压您获取到的zip压缩包
++ 更新库文件
+	+ 打开libs文件夹。用 jpush-android-2.1.0.jar 替换项目中原有的极光jar文件，并删除原有极光jar文件。
+用对应CPU文件夹下的 libjpush210.so文件，替换项目中原有的极光so文件，并删除原有的极光so文件，每种型号的so文件都可以在SDK下载包中找到。
+
++ 更新AndroidManifest.xml
+	+ 压缩包根目录下有针对Eclipse和AndroidStudio 两种开发平台准备的两个AndroidManifest文件。请对照示例更新跟JPush相关的组件属性，permission，Action等配置。要使用富媒体推送，请将压缩包res中的资源放到项目的对应文件夹，并按照示例AndroidManifest配置PushActivity组件
+
++ 添加资源文件
+	+ 将res文件夹下的资源文件，添加到您项目res/下对应的文件夹中。
+根据您应用的界面风格，您可以修改layout文件的配色，字体等属性，或者修改drawable文件夹下的图标。但注意请不要修改所有的文件名，和布局文件中的组件id。
+
+
+
 ### JMessage iOS SDK v2.0.0
 
 #### 更新时间
