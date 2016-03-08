@@ -76,7 +76,7 @@ curl -v https://report.jpush.cn/v3/messages?msg_ids=269978303 -u "7d431e42dfa6a6
 ```
 
 #### Request Params
-+ msg_ids 多个 msg_id 用逗号隔开。
++ msg_ids 多个 msg_id 用逗号隔开，最多支持100个msg_id。
 
 #### Example Response
 
