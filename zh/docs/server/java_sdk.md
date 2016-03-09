@@ -35,7 +35,7 @@ img[alt=jpush_weblogic] { width: 800px; }
 #### 依赖包
 * [slf4j](http://www.slf4j.org/) / log4j (Logger)
 * [gson](https://code.google.com/p/google-gson/) (Google JSON Utils)
-* [guava](https://code.google.com/p/guava-libraries/) (Google Java Utils)
+
 
 其中 slf4j 可以与 logback, log4j, commons-logging 等日志框架一起工作，可根据你的需要配置使用。
 
