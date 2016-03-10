@@ -21,130 +21,132 @@
 
 版本更新:[Release](../../resources/#sdk_1)页面有详细的版本发布记录与下载。
 
-###依赖
+### JPush API client library for PHP
 
-PHP >= 5.3
+#### 简要概述
+
+* 本API提供简单的接口去调用[JPush Push API](http://docs.jpush.io/server/rest_api_v3_push/)
+* 本API提供简单的接口去调用[JPush Report API](http://docs.jpush.io/server/rest_api_v3_report/)
+* 本API提供简单的接口去调用[JPush Device API](http://docs.jpush.io/server/rest_api_v3_device/)
+* 本API提供简单的接口去调用[JPush Schedule API](http://docs.jpush.io/server/rest_api_push_schedule/)
+
 
 #### 快速安装
 
-JPush PHP Library 使用 Composer管理项目依赖, 鉴于某些原因, 国内的用户使用Composer下载依赖库比较困难,所以我们将Composer依赖打包. 用户可以通过以下方式在您的项目中加入JPush PHP Library.
+1.复制`src/JPush`到项目目录下
 
-
-* 下载依赖包 [vendor.tar.gz](http://7qn8xa.com1.z0.glb.clouddn.com/vendor.zip)
-
-* 解压vendor.tar.gz到您的项目目录下，在需要使用JPush的源文件头部 引入 vendor/autoload.php 既可使用.
+2.在需要使用JPush的源文件头部 引入 `src/JPush/JPush.php`  既可使用(注意确认引入的路径是否正确).
 
 ```
 # 引入代码
-php require_once 'vendor/autoload.php';
+require_once("../JPush/JPush.php");
 ```
+PS: 在下载的中的[example](https://github.com/jpush/jpush-api-php-client/tree/master/examples)文件夹有简单示例代码, 开发者可以参考其中的样例快速了解该库的使用方法.
 
-#### 使用Composer 
 
-如果你的项目使用composer管理依赖, 可以通过以下方式使用JPush PHP Library.
 
-* 在 composer.json 中添加 jpush依赖, 如目前最新版本为 v3.2.1
+#### 使用 Composer
+
+如果你的项目使用composer管理依赖, 亦可以通过以下方式使用JPush PHP Library.
+
+
+1. 在 `composer.json` 中添加 jpush依赖, 目前最新版本为 v3.3.8
 
 ```
 {
     "require":{
-        "jpush/jpush": "v3.2.1"
+        "jpush/jpush": "v3.3.8"
     }
 }
 ```
-
-* 执行 php composer.phar install 或 php composer.phar update
-
-
-### 快速使用
-
-####Example
-
-
-下载的[JPush PHP Library](http://docs.jpush.cn/download/attachments/2228302/jpush-api-php-client-3.2.2.zip?version=1&modificationDate=1422968810000) example文件夹有简单示例代码, 开发者可参考以快速使用该库
-
-
-├── examples
-
-│   ├── composer.json　项目依赖
-
-│   ├── DeviceExample.php 对Tag, Alias, Registeration_id的操作示例
-
-│   ├── PushExample.php　推送示例
-
-│   ├── README.md　说明
-
-│   ├── ReportExample.php　获取统计信息示例
-
-│   └── ValidateExample.php　使用validate接口示例
+2. 执行 `php composer.phar install` 或 `php composer.phar update` 进行安装
 
 
 
 
-####Easy Push
+#### 快速使用
+
+##### 代码示例
+
+[example](https://github.com/jpush/jpush-api-php-client/tree/master/examples)文件夹有简单示例代码, 开发者可参考以快速使用该库
 
 ```
-require_once 'vendor/autoload.php';
+examples/
+├── push_example.php Push API使用示例
+├── device_example.php Device API使用示例
+├── report_example.php Report API使用示例
+└── schedule_example.php Schedule API使用示例
+```
 
-use JPush\Model as M;
-use JPush\JPushClient;
-use JPush\Exception\APIConnectionException;
-use JPush\Exception\APIRequestException;
+##### 初始化
 
-$br = '<br/>';
-$client = new JPushClient($app_key, $master_secret);
+```php
+$client = new JPush($app_key, $master_secret);
+```
 
+##### 简单推送
+
+```php
 $result = $client->push()
-    ->setPlatform(M\all)
-    ->setAudience(M\all)
-    ->setNotification(M\notification('Hi, JPush'))
+    ->setPlatform('all')
+    ->addAllAudience()
+    ->setNotificationAlert('Hi, JPush')
     ->send();
-echo 'Push Success.' . $br;
-echo 'sendno : ' . $result->sendno . $br;
-echo 'msg_id : ' .$result->msg_id . $br;
-echo 'Response JSON : ' . $result->json . $br;
+
+echo 'Result=' . json_encode($result) . $br;
 ```
 
-#### Easy Report
+##### 完整的推送示例
 
-```
-require_once 'vendor/autoload.php';
+包含指定Platform,指定Alias,Tag,指定iOS,Android notification,指定Message等
 
-use JPush\Model as M;
-use JPush\JPushClient;
-use JPush\Exception\APIConnectionException;
-use JPush\Exception\APIRequestException;
+```php
+$result = $client->push()
+    ->setPlatform('ios', 'android')
+    ->addAlias('alias1')
+    ->addTag(array('tag1', 'tag2'))
+    ->setNotificationAlert('Hi, JPush')
+    ->addAndroidNotification('Hi, android notification', 'notification title', 1, array("key1"=>"value1", "key2"=>"value2"))
+    ->addIosNotification("Hi, iOS notification", 'iOS sound', '+1', true, 'iOS category', array("key1"=>"value1", "key2"=>"value2"))
+    ->setMessage("msg content", 'msg title', 'type', array("key1"=>"value1", "key2"=>"value2"))
+    ->setOptions(100000, 3600, null, false)
+    ->send();
 
-$br = '<br/>';
-
-$client = new JPushClient($app_key, $master_secret);
-
-$msg_ids = '1931816610,1466786990,1931499836';
-$result = $client->report($msg_ids);
-foreach($result->received_list as  $received) {
-    echo '---------' . $br;
-    echo 'msg_id : ' . $received->msg_id . $br;
-    echo 'android_received : ' .  $received->android_received . $br;
-    echo 'ios_apns_sent : ' .  $received->ios_apns_sent . $br;
-}
+echo 'Result=' . json_encode($result) . $br;
 ```
 
+##### 发送短信推送示例
 
-### FAQ
-Q: 运行示例提示　require_once(vendor/autoload.php): failed to open stream 怎么解决?
+推送未送达的情况下进行短信送达, 该功能需预付短信费用, 并调用Device API绑定设备与手机号
 
-A: 下载下载依赖包 [vendor.tar.gz](http://7qn8xa.com1.z0.glb.clouddn.com/vendor.zip) 并解压到examples目录即可, 也可以使用composer管理依赖, 在composer.json中加入 "jpush/jpush": "v3.2.1" 并执行 php composer.phar install 即可.
+```php
+$result = $client->push()
+    ->setPlatform('all')
+    ->addTag('tag1')
+    ->setNotificationAlert("Hi, JPush SMS")
+    ->setSmsMessage('Hi, JPush SMS', 60)
+    ->send();
 
-
-Q: 运行示例提示
-
+echo 'Result=' . json_encode($result) . $br;
 ```
-Fatal error: Uncaught exception 'UnexpectedValueException' with message 'The stream or file "jpush.log" could not be opened: failed to open stream: Permission denied
+
+##### 定时推送示例
+
+```php
+$payload = $client->push()
+    ->setPlatform("all")
+    ->addAllAudience()
+    ->setNotificationAlert("Hi, 这是一条定时发送的消息")
+    ->build();
+
+// 创建一个2016-12-22 13:45:00触发的定时任务
+$response = $client->schedule()->createSingleSchedule("每天14点发送的定时任务", $payload, array("time"=>"2016-12-22 13:45:00"));
+echo 'Result=' . json_encode($response) . $br;
 ```
-该如何解决?
 
-A: 此问题是因为工程没有写入权限导致不能生成日志文件. 只需对赋予该项目对本目录的写入权限即可,如 sudo chmod 777 example
 
-Q: 使用示例每次推送都会打印推送的JSON, 如何禁止其打印?
+### 版本更新
 
-A: 在调用示例推送的时候, 注释掉 ->printJSON() 即可, 该函数可以打印当前构建的推送对象.
+[Release页面](https://github.com/jpush/jpush-api-php-client/releases/)有详细的版本发布记录与下载。
+
+
