@@ -74,7 +74,7 @@ JPush 目前在网络策略方面没有像微信这种聊天工具做得积极�
 #### SDK启动过程
 
 + 检查AndroidManifest.xml中是否有配置AppKey，如果没有，则启动失败
-+ 检查 Androidmanifest.xml文件配置的正确性，必须要保证“Android SDK 集成指南”中所有标注“ 
++ 检查 Androidmanifest.xml文件配置的正确性，必须要保证“Android SDK 集成指南”中所有标注“
 + Required”的部分都正确配置，否则启动失败
 + 检查 JPush SDK库文件的有效性，如果库文件无效，则启动失败
 + 检查网络是否可用，如果网络可用则连接服务器登录，否则启动失败
@@ -127,7 +127,7 @@ SDK 支持的 setAliasAndTags 请参考相应的文档：[别名与标签 API](.
 + App 调用 SDK setAliasAndTags API 时，r1.5.0 版本提供了 Callback 来返回设置状态。如果返回 6002 （超时）则建议重试
 
 	+ 老版本没有提供 Callback 无设置状态返回，从而没有机制确定一定成功。建议升级到新版本
-	
+
 + Portal 上推送或者 API 调用向别名或者标签推送时，可能会报错：不存在推送目标用户。该报错表明，JPush Server 上还没有针对你所推送的别名或者标签的用户绑定关系，所以没有推送目标。这时请开发者检查确认，开发者App是否正确地调用了 setAliasAndTags API，以及调用时是否网络不好，JPush SDK 暂时未能保存成功。
 
 #### 使用别名
@@ -157,7 +157,7 @@ JPush 提供的设置标签的 API 是在客户端的。开发者如何做到在
 ###别名与标签设置异常处理
 
 由于网络连接不稳定的原因，有一定的概率 JPush SDK 设置别名与标签会失败。
-		
+
 App 开发者合理地处理设置失败，则偶尔失败对应用的正常使用 JPush 影响是有限的。
 
 以下以 Android SDK 作为示例。
@@ -168,7 +168,7 @@ App 开发者合理地处理设置失败，则偶尔失败对应用的正常使�
 + 遇到 6002 超时，则稍延迟重试。
 
 
-		// 这是来自 JPush Example 的设置别名的 Activity 里的代码。一般 App 的设置的调用入口，在任何方便的地方调用都可以。 
+		// 这是来自 JPush Example 的设置别名的 Activity 里的代码。一般 App 的设置的调用入口，在任何方便的地方调用都可以。
 		private void setAlias() {
 		    EditText aliasEdit = (EditText) findViewById(R.id.et_alias);
 		    String alias = aliasEdit.getText().toString().trim();
@@ -180,7 +180,7 @@ App 开发者合理地处理设置失败，则偶尔失败对应用的正常使�
 		        Toast.makeText(PushSetActivity.this,R.string.error_tag_gs_empty, Toast.LENGTH_SHORT).show();
 		        return;
 		    }
-		
+
 		    // 调用 Handler 来异步设置别名
 		    mHandler.sendMessage(mHandler.obtainMessage(MSG_SET_ALIAS, alias));
 		}
@@ -218,7 +218,7 @@ App 开发者合理地处理设置失败，则偶尔失败对应用的正常使�
 		        		Log.d(TAG, "Set alias in handler.");
 		                // 调用 JPush 接口来设置别名。
 		            	JPushInterface.setAliasAndTags(getApplicationContext(),
-		            							        (String) msg.obj, 
+		            							        (String) msg.obj,
 		            							         null,
 		            							         mAliasCallback);
 		            break;
@@ -227,8 +227,8 @@ App 开发者合理地处理设置失败，则偶尔失败对应用的正常使�
 		        }
 		    }		        				        
 		};
-		
-			
+
+
 
 ### 自定义通知栏样式教程
 
@@ -242,7 +242,7 @@ JPush 通知推送到客户端时，默认使用手机的默认设置来显示�
 	+ 铃声、震动
 	+ 显示图标
 	+ 替换默认的通知栏样式。
- 
+
 #### 推送消息指定通知栏样式编号
 
 通知栏样式在服务器端向下推送时，只体现为一个编号（数字）。
@@ -287,10 +287,13 @@ JPush 通知推送到客户端时，默认使用手机的默认设置来显示�
 
 	BasicPushNotificationBuilder builder = new BasicPushNotificationBuilder(MainActivity.this);
 	builder.statusBarDrawable = R.drawable.jpush_notification_icon;
-	builder.notificationFlags = Notification.FLAG_AUTO_CANCEL;  //设置为自动消失
-	builder.notificationDefaults = Notification.DEFAULT_SOUND ｜ Notification.DEFAULT_VIBRATE | Notification.DEFAULT_LIGHTS;  // 设置为铃声与震动都要
+	builder.notificationFlags = Notification.FLAG_AUTO_CANCEL
+			| Notification.FLAG_SHOW_LIGHTS;  //设置为自动消失和呼吸灯闪烁
+	builder.notificationDefaults = Notification.DEFAULT_SOUND
+			| Notification.DEFAULT_VIBRATE
+			| Notification.DEFAULT_LIGHTS;  // 设置为铃声、震动、呼吸灯闪烁都要
 	JPushInterface.setPushNotificationBuilder(1, builder);
-	
+
 #####Example - 高级自定义的 PushNotificationBuilder
 
 基于基础的 PushNotificationBuilder，可进一步地定制 Notification 的 Layout。
@@ -301,19 +304,19 @@ JPush 通知推送到客户端时，默认使用手机的默认设置来显示�
 <br>
 
 ```
-	CustomPushNotificationBuilder builder = new 
+	CustomPushNotificationBuilder builder = new
 	CustomPushNotificationBuilder(MainActivity.this,
-	                          R.layout.customer_notitfication_layout, 
-	                          R.id.icon, 
-	                          R.id.title, 
+	                          R.layout.customer_notitfication_layout,
+	                          R.id.icon,
+	                          R.id.title,
 	                          R.id.text); 
 	                         // 指定定制的 Notification Layout
-	builder.statusBarDrawable = R.drawable.your_notification_icon;      
+	builder.statusBarDrawable = R.drawable.your_notification_icon;     
 	// 指定最顶层状态栏小图标
-	builder.layoutIconDrawable = R.drawable.your_2_notification_icon;   
+	builder.layoutIconDrawable = R.drawable.your_2_notification_icon;  
 	// 指定下拉状态栏时显示的通知图标
 	JPushInterface.setPushNotificationBuilder(2, builder);
-``` 
+```
 
 ####通知栏样式定义不符合要求？
 
@@ -428,11 +431,11 @@ public class MyReceiver extends BroadcastReceiver {
         Logger.d(TAG, "message : " + message);
         String extras = bundle.getString(JPushInterface.EXTRA_EXTRA);
         Logger.d(TAG, "extras : " + extras);
-    } 
+    }
  
    private void openNotification(Context context, Bundle bundle){
         String extras = bundle.getString(JPushInterface.EXTRA_EXTRA);
-        String myValue = ""; 
+        String myValue = "";
         try {
             JSONObject extrasJson = new JSONObject(extras);
             myValue = extrasJson.optString("myKey");
@@ -528,7 +531,7 @@ public class TalkReceiver extends BroadcastReceiver {
             Logger.w(TAG, "Unexpected: extras is not a valid json", e);
         }
          
-        // Send message to UI (Webview) only when UI is up 
+        // Send message to UI (Webview) only when UI is up
         if (!Config.isBackground) {
             Intent msgIntent = new Intent(MainActivity.MESSAGE_RECEIVED_ACTION);
             msgIntent.putExtra(Constants.KEY_MESSAGE, message);
@@ -594,5 +597,3 @@ public class TalkReceiver extends BroadcastReceiver {
     }
 }
 ```
-
-
