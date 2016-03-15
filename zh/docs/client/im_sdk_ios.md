@@ -345,51 +345,6 @@ JMSGMessage *message2 = [conv createMessageWithContent:textContent];
 
 ```
 
-### 针对跨应用的变更
-
-* Converstaion
-```
-// 获取跨应用单聊会话
-+ (JMSGConversation * JMSG_NULLABLE)singleConversationWithUsername:(NSString *)username
-                                                            appKey:(NSString *)userAppKey;
-
-// 创建跨应用单聊会话
-+ (void)createSingleConversationWithUsername:(NSString *)username
-                                      appKey:(NSString *)userAppKey
-                           completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)handler;
-
-// 删除跨应用单聊会话
-+ (BOOL)deleteSingleConversationWithUsername:(NSString *)username
-                                      appKey:(NSString *)userAppKey;
-
-// 会话目标用户所在的 appKey
-@property(nonatomic, strong, readonly) NSString *targetAppKey;
-
-```
-
-* Message
-```
-// 消息发送目标应用
-@property(nonatomic, strong, readonly) NSString *targetAppKey;
-
-// 消息来源用户 Appkey
-@property(nonatomic, strong, readonly) NSString *fromAppKey;
-
-```
-
-* User
-```
-// 批量获取跨应用的用户信息
-+ (void)userInfoArrayWithUsernameArray:(NSArray JMSG_GENERIC(__kindof NSString *)*)usernameArray
-                                appKey:( NSString *JMSG_NULLABLE)userAppKey
-                     completionHandler:(JMSGCompletionHandler)handler;
-
-
-// 此用户所在的 appKey
-@property(nonatomic, copy, readonly) NSString * JMSG_NULLABLE appKey;
-```
-
-
 
 ### See Also 相关文档
 
