@@ -4,7 +4,7 @@
 img[alt=jpush_ios_v] { width: 500px; }
 </style>
 
-### Start 从这里开始
+### 从这里开始
 
 ####**JPush有什么优势？**
 
@@ -168,7 +168,7 @@ Portal上不会限制推送消息的数量。
 
 ####**Java.lang.UnsatisfiedLinkError**
 
-![](image/error.jpg)
+![jpush_ios_v](image/error.jpg)
 
 
 <br />
@@ -365,7 +365,7 @@ android 的包名和 appkey 需对应。
 <br />
 ####**iOS 9集成**
 
-iOS 9变动影响SDK部分:
+**iOS 9变动影响SDK部分:**
 
 + 增加了bitCode编码格式,当SDK不支持bitCode时，用户集成时无法开启bitCode选项.
 	+ 现象:用户集成SDK后无法编译通过，错误日志里包含了bitCode的相关错误信息
@@ -542,6 +542,16 @@ badge累加只能通过v3 api推送，且只有1.7.4版本以上才能支持。
 ```
 请选用 v3 版本 API。 v1 版本已经停止使用,v2版本会将在2015不再维护。
 ```
+###v3 API 调试指南
+
+##### 不用登录JPush的portal界面，在APP的面板中直接发送通知可以吗？
+
+可以。直接封装JPush的 V3 API就可以了，具体可参考 [Push API v3](../../server/rest_api_v3_push)
+
+##### 1004 Authen failed
+
++ 详情请看：[调用验证](../../server/rest_api_v3_push/#_5)
+
 
 ###v2 API 调试指南
 
@@ -581,31 +591,22 @@ Library 选择
 具体看[Push API v2](../server/rest_api_v2_push)中的verification_code参数
 
 
-###v3 API 调试指南
-
-##### 不用登录Jpush的portal界面，在APP的面板中直接发送通知可以吗？
-
-可以。直接封装Jpush的V3 API就可以了，具体可参考 [Push API v3](../../server/rest_api_v3_push)
-
-##### 1004 Authen failed
-
-+ 详情请看：[调用验证](../../server/rest_api_v3_push/#_5)
 
 
-官方帮助
 
-当出现问题时，建议仔细阅读官方文档，看看有没有什么遗漏信息。如果还是无法解决，建议在[QA问答网站](https://www.jpush.cn/qa/)搜索，有没有碰到类似信息
+###官方帮助
+
+当出现问题时，建议仔细阅读官方文档，看看有没有什么遗漏信息。如果还是无法解决，建议在[极光社区](http://community.jpush.cn/)搜索类似问题
 
 如果还是无法解决，可以通过以下途径寻求帮助
 
-+ 官方的QA问答网站  [https://www.jpush.cn/qa/ ](https://www.jpush.cn/qa/ )
++ 官方社区网站  [http://community.jpush.cn/ ](http://community.jpush.cn/)
 + 给我们的support发邮件 (如果有敏感信息，建议使用support邮箱)   <support@jpush.cn>
 
 为了更高效，快速的解决问题，在寻求帮助时，请提供下列信息：
 
-+ API的接口， 比如  [http://api.jpush.cn:8800/v2/push](http://api.jpush.cn:8800/v2/push)
-+ 提供appkey，massageid信息
-+ 提供调用API出现问题时的时间
-
-
++ 使用的什么 API 的接口， 比如：https://api.jpush.cn/v3/push
++ 提供appkey，message id信息
++ 提供调用 API 出现问题时的时间
++ 如果是 SDK 问题请提供对应的 SDK 版本和完整的日志记录
 
