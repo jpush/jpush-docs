@@ -317,33 +317,6 @@ JMSGCompletionHandler 有 2 个参数：
 - (void)onDBMigrateFinishedWithError:(NSError *)error;
 ```
 
-### Example 代码样例
-
-更多样例请参考 JChat 开放源代码项目。
-
-#### 单聊发文本消息
-
-```
-NSString *text = @"Hello, JMessage";
-NSString *username = @"alice";
-
-// 最简单的方式
-[JMSGMessage sendSingleTextMessage:text];
-
-// 要为消息内容附加字段
-JMSGTextContent *textContent = [[JMSGTextContent alloc] initWIthText:text];
-[textConent addStringExtra:@"extraValue" forKey:@"extraKey"];
-
-// 不关注会话的情况
-JMSGMessage *message = [JMSGMessage createSingleMessageWithContent:textContent username:username];
-[JMSGMessage sendMessage:message];
-
-// 要处理会话的情况
-JMSGConversation *conv = [JMSGConversation createSingleConversationWithUsername:username];
-JMSGMessage *message2 = [conv createMessageWithContent:textContent];
-[conv sendMessage:message2];
-
-```
 
 ### 针对跨应用的变更
 
@@ -387,6 +360,36 @@ JMSGMessage *message2 = [conv createMessageWithContent:textContent];
 
 // 此用户所在的 appKey
 @property(nonatomic, copy, readonly) NSString * JMSG_NULLABLE appKey;
+```
+
+
+
+### Example 代码样例
+
+更多样例请参考 JChat 开放源代码项目。
+
+#### 单聊发文本消息
+
+```
+NSString *text = @"Hello, JMessage";
+NSString *username = @"alice";
+
+// 最简单的方式
+[JMSGMessage sendSingleTextMessage:text];
+
+// 要为消息内容附加字段
+JMSGTextContent *textContent = [[JMSGTextContent alloc] initWIthText:text];
+[textConent addStringExtra:@"extraValue" forKey:@"extraKey"];
+
+// 不关注会话的情况
+JMSGMessage *message = [JMSGMessage createSingleMessageWithContent:textContent username:username];
+[JMSGMessage sendMessage:message];
+
+// 要处理会话的情况
+JMSGConversation *conv = [JMSGConversation createSingleConversationWithUsername:username];
+JMSGMessage *message2 = [conv createMessageWithContent:textContent];
+[conv sendMessage:message2];
+
 ```
 
 
