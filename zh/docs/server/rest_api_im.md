@@ -373,7 +373,7 @@ Example Request
 Request Header 
 
 ```
-Delete /users/:username/blacklist
+Delete /users/{username}/blacklist
 Content-Type: application/json; charset=utf-8  
 ```
 
@@ -671,7 +671,7 @@ Example Response
 
 ####  获取群组详情
 
-	GET /v1/groups/:gid
+	GET /v1/groups/{gid}
 
 Request Params
 
