@@ -65,7 +65,7 @@ public static synchronized void init(Context context)
 ```
   public static void register(String username, String pas  sword, BasicCallback callback);
 ```
-  
+
 参数说明
 
 + String username 用户名
@@ -76,9 +76,9 @@ public static synchronized void init(Context context)
 ```
   public static void login(String username, String password, BasicCallback callback);
 ```
-  
+
 参数说明
- 
+
 + String username 用户名
 + String password 用户密码
 + BasicCallback callback 结果回调
@@ -87,7 +87,7 @@ public static synchronized void init(Context context)
 ```
   public static void logout();
 ```
-  
+
 参数说明
 
 - 无
@@ -98,7 +98,7 @@ public static synchronized void init(Context context)
 ```
   public static void getUserInfo(String username, GetUserInfoCallback callback);
 ```
-  
+
 参数说明
 
 + String username 用户名
@@ -127,7 +127,7 @@ public static synchronized void init(Context context)
 ```
   public static void updateMyInfo(UserInfo.Field updateField, UserInfo info, BasicCallback callback);
 ```
-  
+
 参数说明
 
 + UserInfo.Field updateField 枚举类型，表示需要更新的用户信息字段。包括：
@@ -143,18 +143,18 @@ public static synchronized void init(Context context)
 ```
   public static void updateUserPassword(String oldPassword, String newPassword, BasicCallback callback);
 ```
-  
+
 参数说明
 
 + String oldPassword 更新前密码
 + String newPassword 更新后密码
 + BasicCallback callback 结果回调
-  
+
 ##### 更新用户头像
 ```
   public static void updateUserAvatar(File avatar, BasicCallback callback);
 ```
-  
+
 参数说明
 
 + File avatar 用户头像文件
@@ -219,9 +219,9 @@ public static Message createGroupImageMessage(long groupID, File imageFile)
   * @return  消息对象
   * @throws FileNotFoundException
   */
-public static Message createSingleVoiceMessage(String username, 
+public static Message createSingleVoiceMessage(String username,
   File voiceFile, int duration) throws FileNotFoundException
-  
+
  /**
   * 创建一条群聊语音信息
   *
@@ -231,7 +231,7 @@ public static Message createSingleVoiceMessage(String username,
   * @return  消息对象
   * @throws FileNotFoundException
   */
-public static Message createGroupVoiceMessage(long groupID, 
+public static Message createGroupVoiceMessage(long groupID,
   File voiceFile, int duration) throws FileNotFoundException
 ```
 
@@ -254,7 +254,7 @@ public static Message createSingleCustomMessage(String username,
   * @param valuesMap 包含了自定义键值对的map
   * @return  消息对象
   */
-public static Message createGroupCustomMessage(long groupID, 
+public static Message createGroupCustomMessage(long groupID,
   Map<? extends String, ?> valuesMap)
 ```
 
@@ -328,7 +328,7 @@ public static Message createGroupCustomMessage(long groupID,
 
 
 
-  
+
 ##### 删除单个单聊会话
 删除单聊的会话，同时删除掉本地聊天记录。默认删除本appkey下username的会话
 ```  
@@ -528,7 +528,7 @@ public void onEventMainThread(EventEntity event){
 
 </br>
 
-用户登陆状态变更事件LoginStateChangeEvent
+用户登录状态变更事件LoginStateChangeEvent
 <div class="table-d" align="left" >
   <table border="1" width = "100%">
     <tr  bgcolor="#D3D3D3" >
@@ -539,12 +539,12 @@ public void onEventMainThread(EventEntity event){
     <tr >
       <td >getMyInfo()</td>
       <td >UserInfo</td>
-      <td >获取当前登陆状态改变的账号的信息</td>
+      <td >获取当前登录状态改变的账号的信息</td>
     </tr>
     <tr >
       <td >getReason()</td>
       <td >Reason</td>
-      <td >获取登陆状态变更原因。</td>
+      <td >获取登录状态变更原因。</td>
     </tr>
   </table>
 </div>
@@ -554,38 +554,38 @@ public void onEventMainThread(EventEntity event){
 接收消息事件
 ```Java
 class MessageEventReceiver extends Activity{
- 
+
   @Override
   protected void onCreate() {
     super.onCreate(savedInstanceState);
     JMessageClient.registerEventReceiver(this);
   }
- 
+
   @Override
   protected void onDestroy() {
     JMessageClient.unRegisterEventReceiver(this);
     super.onDestroy();
   }
- 
+
   public void onEvent(MessageEvent event){
     Message msg = event.getMessage();
- 
+
     switch (msg.getContentType()){
         case text:
             //处理文字消息
-            TextContent textContent = (TextContent) msg.getContent(); 
+            TextContent textContent = (TextContent) msg.getContent();
             textContent.getText();
             break;
         case image:
             //处理图片消息
-            ImageContent imageContent = (ImageContent) msg.getContent(); 
-            imageContent.getLocalPath();//图片本地地址 
+            ImageContent imageContent = (ImageContent) msg.getContent();
+            imageContent.getLocalPath();//图片本地地址
             imageContent.getLocalThumbnailPath();//图片对应缩略图的本地地址
             break;
         case voice:
             //处理语音消息
             VoiceContent voiceContent = (VoiceContent) msg.getContent();
-            voiceContent.getLocalPath();//语音文件本地地址 
+            voiceContent.getLocalPath();//语音文件本地地址
             voiceContent.getDuration();//语音文件时长
             break;
         case custom:
@@ -632,10 +632,10 @@ class NotificationClickEvent extends Activity{
         Intent notificationIntent = new Intent(mContext, ChatActivity.class);
         mContext.startActivity(notificationIntent);//自定义跳转到指定页面
     }
-  
+
 }
 ```
-用户登陆状态变更事件
+用户登录状态变更事件
 ```
 class UserLogoutEventReceiver extends Activity{
     @Override
@@ -656,14 +656,14 @@ class UserLogoutEventReceiver extends Activity{
             	//用户密码在服务器端被修改
                 break;
             case user_logout:
-            	//用户换设备登陆
+            	//用户换设备登录
                 break;
             case user_deleted:
             	//用户被删除
                 break;
         }
      }
-  
+
 }
 ```
 
@@ -675,7 +675,7 @@ class UserLogoutEventReceiver extends Activity{
 ```
   public static void createGroup(String groupName, String groupDesc, CreateGroupCallback callback);
 ```  
-参数说明 
+参数说明
 
 + String groupName 群名称
 + String groupDesc 群描述
@@ -716,7 +716,7 @@ public abstract void gotResult(int responseCode, String responseMessage,
 
 ##### 更新群组名称
 ```
-  public static void updateGroupName(long groupID, 
+  public static void updateGroupName(long groupID,
       String groupName,BasicCallback callback);
 ```
 参数说明
@@ -727,7 +727,7 @@ public abstract void gotResult(int responseCode, String responseMessage,
 
 ##### 更新群组详情
 ```
-  public static void updateGroupDescription(long groupID, 
+  public static void updateGroupDescription(long groupID,
       String groupDesc,BasicCallback callback);
 ```
 参数说明
@@ -765,10 +765,10 @@ public abstract void gotResult(int responseCode, String responseMessage,
 
 + long groupId 待退出的群ID。
 + BasicCallback callback 结果回调。
-  
+
 ##### 获取群组成员列表
 ```
-  public static void getGroupMembers(long groupID, 
+  public static void getGroupMembers(long groupID,
       GetGroupMembersCallback callback)
 ```
 参数说明
@@ -812,7 +812,7 @@ public static void getBlacklist(GetBlacklistCallback callback)
 
 回调
 ```
-  public abstract void gotResult(int responseCode, 
+  public abstract void gotResult(int responseCode,
     String responseMessage, List<UserInfo> userInfos);
 ```
 + `List<UserInfo>` userInfos  被拉入黑名单的用户的UserInfo
@@ -829,18 +829,18 @@ public static void setNotificationMode(int mode);
     + 显示通知的模式
 
 + JMessageClient.NOTI_MODE_DEFAULT  
-    + 显示通知，有声音，有震动。 
+    + 显示通知，有声音，有震动。
 
-+ JMessageClient.NOTI_MODE_NO_SOUND 
++ JMessageClient.NOTI_MODE_NO_SOUND
     + 显示通知，无声音，有震动。
 
-+ JMessageClient.NOTI_MODE_NO_VIBRATE 
++ JMessageClient.NOTI_MODE_NO_VIBRATE
     + 显示通知，有声音，无震动。
 
-+ JMessageClient.NOTI_MODE_SILENCE 
++ JMessageClient.NOTI_MODE_SILENCE
     + 显示通知，无声音，无震动。
 
-+ JMessageClient.NOTI_MODE_NO_NOTIFICATION 
++ JMessageClient.NOTI_MODE_NO_NOTIFICATION
     + 不显示通知。
 
 
@@ -854,7 +854,7 @@ public static void enterSingleConversaion(String username)
 参数定义
 
   + String username 单聊聊天对象的username
-  
+
 ##### 进入单聊回话(跨应用)
 在进入聊天会话界面时调用，设置当前正在聊天的对象，sdk用来判断notification是否需要展示。若appkey为空则默认填充本应用的appkey。
 	UI在进入单聊会话页面时需要调用此函数，SDK会根据传入的username来决定是否需要发送通知
@@ -905,9 +905,9 @@ public List<Message> getNewMessagesFromNewest(int offset, int limit);
 
 public Message createSendMessage(MessageContent content);
 public Message createSendTextMessage(String text);
-public Message createSendImageMessage(File imageFile) 
+public Message createSendImageMessage(File imageFile)
     throws FileNotFoundException
-public Message createSendVoiceMessage(File voiceFile, int duration) 
+public Message createSendVoiceMessage(File voiceFile, int duration)
     throws FileNotFoundException
 public Message createSendCustomMessage(Map<? extends String, ?> valuesMap)
 public boolean resetUnreadCount();
@@ -1025,4 +1025,3 @@ public abstract class BasicCallback {
 + [IM 业务对象](../../advanced/im_objects/)
 + [IM SDK for iOS](../../client/im_sdk_ios/)
 + [IM REST API](../../server/rest_api_im/)
-
