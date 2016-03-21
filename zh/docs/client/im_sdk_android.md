@@ -48,7 +48,7 @@ SDK 侧可以发起注册用户，也可由服务器端批量发起注册。
 
 ### API 列表
 
-以下列出主要的 JMessage SDK 提供的 API。完整的 API 与 类信息，请访问：<a href="http://docs.jpush.io/client/im_android_api_docs/" target="_blank">API Java docs</a>
+以下列出主要的 JMessage SDK 提供的 API。完整的 API 与 类信息，请访问：<a href="http://test-docs.jpush.io/client/im_android_api_docs/" target="_blank">API Java docs</a>
 
 #####SDK初始化
 在调用IM其他接口前必须先调此接口初始化SDK，推荐在application类中调用。
@@ -889,6 +889,21 @@ public static void exitConversaion();
 用户可以通过接受通知栏点击事件NotificationClickEvent，来实现自定义跳转，该事件如果没有接收者，点击通知栏时SDK将默认跳转到程序主界面。
 
 事件接收方法见"事件处理"一节
+
+#### 免打扰
+可以将用户/群组添加到“免打扰”列表中，收到免打扰用户/群组发过来的消息时，通知栏不会弹出通知，消息事件照常下发。
+
+##### 获取免打扰列表
+```
+public static void getNoDisturblist(GetNoDisurbListCallback callback)
+```
+参数定义
+
++ GetNoDisurbListCallback callback 回调接口。
+	
+##### 免打扰设置
+见api doc中<a href="http://test-docs.jpush.io/client/im_android_api_docs/cn/jpush/im/android/api/model/UserInfo.html" target="_blank">UserInfo</a>和<a href="http://test-docs.jpush.io/client/im_android_api_docs/cn/jpush/im/android/api/model/GroupInfo.html" target="_blank">GroupInfo</a>相关接口
+
 
 ### 类定义
 
