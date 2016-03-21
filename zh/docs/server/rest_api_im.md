@@ -93,8 +93,6 @@ Authorization: Basic base64_auth_string
 	POST /v1/users/
 
 
-
-
 ##### Example Request
 
 ```
@@ -166,7 +164,7 @@ Content-Type: application/json; charset=utf-8
 ##### **GetAdminsListByAppkey  获取应用管理员列表** 
 
 ```
-GET /v1/admins?start=:start&count=:count
+GET /v1/admins?start={start}&count={count}
 ```
 ##### Example Request
 
@@ -212,7 +210,7 @@ Content-Type: application/json; charset=utf-8
 
 #### 获取用户信息
 
-	GET /v1/users/:username
+	GET /v1/users/{username}
 		
 ##### Request Params
 
@@ -239,7 +237,7 @@ Content-Type: application/json; charset=utf-8
 
 #### 更新用户信息
 
-	PUT /v1/users/:username
+	PUT /v1/users/{username}
 
 ##### Example Request
 
@@ -277,7 +275,7 @@ Content-Type: application/json; charset=utf-8
 #### 修改密码
 
 ```
-PUT /v1/users/:username/password
+PUT /v1/users/{username}/password
 ```
 
 ##### Request Header 
@@ -308,7 +306,7 @@ Content-Type: application/json; charset=utf-8
 
 #### 删除用户
 
-	DELETE /v1/users/:username
+	DELETE /v1/users/{username}
 	
 Request Params
 
@@ -324,7 +322,7 @@ Example Response
 #### 添加黑名单
 
 ```
-Put /users/:username/blacklist
+Put /users/{username}/blacklist
 ```
 
 Example Request
@@ -332,7 +330,7 @@ Example Request
 Request Header 
 
 ```
-Put /users/:username/blacklist
+Put /users/{username}/blacklist
 Content-Type: application/json; charset=utf-8  
 ```
 
@@ -367,7 +365,7 @@ N/A
 #### 移除黑名单
 
 ```
-Delete /users/:username/blacklist
+Delete /users/{username}/blacklist
 ```
 
 Example Request
@@ -375,7 +373,7 @@ Example Request
 Request Header 
 
 ```
-Delete /users/:username/blacklist
+Delete /users/{username}/blacklist
 Content-Type: application/json; charset=utf-8  
 ```
 
@@ -409,7 +407,7 @@ N/A
 #### 黑名单列表
 
 ```
-Get /users/:username/blacklist
+Get /users/{username}/blacklist
 ```
 
 Example Request
@@ -417,7 +415,7 @@ Example Request
 Request Header 
 
 ```
-Put /users/:username/blacklist
+Put /users/{username}/blacklist
 Content-Type: application/json; charset=utf-8 
 ```
 
@@ -447,7 +445,7 @@ Response Data
 
 #### 获取用户列表
 
-	GET /v1/users/?start=:start&count=:count
+	GET /v1/users/?start={start}&count={count}
 
 Request Params
 
@@ -673,7 +671,7 @@ Example Response
 
 ####  获取群组详情
 
-	GET /v1/groups/:gid
+	GET /v1/groups/{gid}
 
 Request Params
 
@@ -726,7 +724,7 @@ HTTP/1.1 204 NO Content
 
 该群组的所有成员都会收到群组被解散通知。
 
-	DELETE /v1/groups/:gid
+	DELETE /v1/groups/{gid}
 
 Request Params
 
@@ -801,7 +799,7 @@ Example Response
 
 ####  获取某用户的群组列表
 
-    GET /v1/users/:username/groups/
+    GET /v1/users/{username}/groups/
 
 Request Params
 
@@ -822,7 +820,7 @@ Example Response
 
 #### 获取当前应用的群组列表
 
-    GET /v1/groups/?start=:start&count=:count
+    GET /v1/groups/?start={start}&count={count}
 
 Request Params
 
