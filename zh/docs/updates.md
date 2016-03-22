@@ -1,5 +1,26 @@
 # 最近更新
 
+### JMessage iOS SDK v2.0.1
+
+#### 更新时间
+* 2016-03-22
+
+#### 版本号
+* JMessage SDK 2.0.1
+* JChat 1.1.0b1611
+
+#### Change Log
++ 修复：由于切换设备变更群成员， 群组信息不同步引起的消息发送失败。
+
+#### 升级提示
+
++ 建议升级！
++ 由于 API 与 Model 层面很大范围的变更，建议参考 JChat 项目来适配新的 JMessage iOS SDK。
+
+#### 升级指南
++ 使用新版本的JMessage.framework文件替换原工程下的同名旧文件
+
+
 ### JMessage Android SDK v1.2.0
 
 #### 更新时间
