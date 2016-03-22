@@ -120,9 +120,9 @@ APIs 主要集中在 JPUSHService 接口类里。
 
 * 初始化JPush方法分为三个：
 
-    * 1.8.8及以下版本使用的是已过期的初始化方法。升级到2.1.0的老用户仍可继续使用旧的初始化方法。 
+    * 1.8.8及以下版本使用的是已过期的初始化方法。升级到2.1.5的老用户仍可继续使用旧的初始化方法。 
     * 2.1.0版本开始提供带appkey等参数的初始化方法。使用此方法无需再添加PushConfig.plist配置JPush的AppKey等字段。
-	* 2.1.5版本开始提供带appkey以及IDFA等参数的初始化方法。使用此方法无需再添加PushConfig.plist配置JPush的AppKey等字段。  
+    * 2.1.5版本开始提供带appkey以及IDFA等参数的初始化方法。使用此方法无需再添加PushConfig.plist配置JPush的AppKey等字段。  
 
 <div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">
 <p>使用建议:
@@ -192,6 +192,7 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
                                           categories:nil];
   }
   //Required
+  //如需兼容旧版本的方式，请依旧使用[JPUSHService setupWithOption:launchOptions]方式初始化和同时使用pushConfig.plist文件声明appKey等配置内容。
   [JPUSHService setupWithOption:launchOptions appKey:appKey
                         channel:channel
                apsForProduction:isProduction
@@ -208,8 +209,8 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 }
  
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-     
-  // Required - 处理收到的通知
+   
+  // Required,For systems with less than or equal to iOS6
   [JPUSHService handleRemoteNotification:userInfo];
 }
  
