@@ -176,18 +176,7 @@ Portal上不会限制推送消息的数量。
 
 JPush SDK 迁移到 Android Studio 需要添加.SO文件打包到APK的lib文件夹中,可以编辑 build.gradle 脚本，自定义 *.so 目录，Demo 的参考：
 
-```
-android {
-    // .. android settings ..
-    sourceSets.main {
-      jniLibs.srcDirs = ['libs']  // <-- Set your folder here!
-    }
- }
-```
-
-如果您的应用需要支持 x86、mips 架构的CPU 需要下载对应的SDK，[下载地址 ](../../resources/)
-
-![](image/dictionary_path.png)
+![jpush_ios_v](image/dictionary_path.png)
 
 <br />
 
