@@ -2,6 +2,8 @@
 
 <style>
 img[alt=jpush_ios_v] { width: 500px; }
+img[alt=jpush_android_so] { width: 800px; }
+
 </style>
 
 ### 从这里开始
@@ -176,7 +178,7 @@ Portal上不会限制推送消息的数量。
 
 JPush SDK 迁移到 Android Studio 需要添加.SO文件打包到APK的lib文件夹中,可以编辑 build.gradle 脚本，自定义 *.so 目录，Demo 的参考：
 
-![jpush_ios_v](image/dictionary_path.png)
+![jpush_android_so](image/dictionary_path.png)
 
 <br />
 
