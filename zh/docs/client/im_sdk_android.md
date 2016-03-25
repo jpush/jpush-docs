@@ -111,6 +111,19 @@ public static synchronized void init(Context context)
 
 + UserInfo userInfo 用户信息
 
+##### 获取用户信息(跨应用)
+获取用户信息，此接口可用来获取不同appkey下用户的信息,如果appkey为空，则默认获取当前appkey下的用户信息。
+
+```
+  public static void getUserInfo(String username, String appkey, GetUserInfoCallback callback);
+```
+  
+参数说明
+
++ String username 用户名
++ String appkey 指定的appkey
++ GetUserInfoCallback callback 结果回调
+
 ##### 从本地获取当前登录账号的用户信息
 ```
   public static UserInfo getMyInfo();
