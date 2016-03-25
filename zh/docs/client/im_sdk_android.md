@@ -112,7 +112,21 @@ public static synchronized void init(Context context)
 
 + UserInfo userInfo 用户信息
 
-#### 从本地获取当前登录账号的信息
+#### 获取用户信息(跨应用)
+获取用户信息，此接口可用来获取不同appkey下用户的信息,如果appkey为空，则默认获取当前appkey下的用户信息。
+
+```
+  public static void getUserInfo(String username, String appkey, GetUserInfoCallback callback);
+```
+  
+参数说明
+
++ String username 用户名
++ String appkey 指定的appkey
++ GetUserInfoCallback callback 结果回调
+
+##### 从本地获取当前登录账号的信息
+
 ```
   public static UserInfo getMyInfo();
 ```
@@ -297,13 +311,8 @@ public static Message createGroupCustomMessage(long groupID,
 
 - 根据参数匹配得到的单聊会话对象。
 
-<<<<<<< HEAD
 #### 获取单个单聊会话（跨应用）
 获取与指定appkey下username的单聊回话信息,如果appkey为空则默认取本应用appkey下对应username的会话。
-=======
-##### 获取单个单聊会话（跨应用）
-获取与指定appkey下username的单聊会话信息,如果appkey为空则默认取本应用appkey下对应username的会话。
->>>>>>> b5d8e622e68c03949d3c16aa6b153d307c530852
 
 ```
   public static Conversation getSingleConversation(String username,String appkey);
