@@ -8,7 +8,7 @@
 ## 联系方式
 
 + 技术支持邮箱：[support@jpush.cn](mailto:support@jpush.cn)
-+ 技术问答： [http://www.jpush.cn/qa/](http://www.jpush.cn/qa/)
++ 极光社区： [http://community.jpush.cn/](http://community.jpush.cn/)
 	+ 建议到这里提问
 + 开发者活动发布：[JPush Blog](http://blog.jpush.cn)
 + 商务合作邮箱：[sales@jpush.cn](mailto:sales@jpush.cn)
