@@ -142,7 +142,7 @@ AndroidManifest.xml权限配置：
         android:name="Your Application">
          
         <!-- Required SDK 核心功能-->
-        <!-- option since 2.0.5 可配置PushService的android:process参数 将JPush相关组件设置为一个独立进程 -->
+        <!-- option since 2.0.5 可配置PushService的android:process参数 将JPush服务配置为一个独立进程 -->
         <!-- 如：android:process=":remote" -->
         <service
             android:name="cn.jpush.android.service.PushService"
@@ -304,7 +304,7 @@ AndroidManifest.xml权限配置：
          </service>
   
          <!-- Required SDK 核心功能-->
-         <!-- option since 2.0.5 可配置PushService的android:process参数 将JPush相关组件设置为一个独立进程 -->
+         <!-- option since 2.0.5 可配置PushService的android:process参数 将JPush服务配置为一个独立进程 -->
          <!-- 如：android:process=":remote" -->
          <service
              android:name="cn.jpush.android.service.PushService"
