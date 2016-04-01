@@ -126,7 +126,6 @@ public static synchronized void init(Context context)
 + GetUserInfoCallback callback 结果回调
 
 ##### 从本地获取当前登录账号的信息
-
 ```
   public static UserInfo getMyInfo();
 ```
