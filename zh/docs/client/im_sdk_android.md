@@ -112,6 +112,19 @@ public static synchronized void init(Context context)
 
 + UserInfo userInfo 用户信息
 
+#### 获取用户信息(跨应用)
+获取用户信息，此接口可用来获取不同appkey下用户的信息,如果appkey为空，则默认获取当前appkey下的用户信息。
+
+```
+  public static void getUserInfo(String username, String appkey, GetUserInfoCallback callback);
+```
+  
+参数说明
+
++ String username 用户名
++ String appkey 指定的appkey
++ GetUserInfoCallback callback 结果回调
+
 #### 从本地获取当前登录账号的信息
 ```
   public static UserInfo getMyInfo();
@@ -297,13 +310,8 @@ public static Message createGroupCustomMessage(long groupID,
 
 - 根据参数匹配得到的单聊会话对象。
 
-<<<<<<< HEAD
 #### 获取单个单聊会话（跨应用）
 获取与指定appkey下username的单聊回话信息,如果appkey为空则默认取本应用appkey下对应username的会话。
-=======
-##### 获取单个单聊会话（跨应用）
-获取与指定appkey下username的单聊会话信息,如果appkey为空则默认取本应用appkey下对应username的会话。
->>>>>>> b5d8e622e68c03949d3c16aa6b153d307c530852
 
 ```
   public static Conversation getSingleConversation(String username,String appkey);
@@ -319,7 +327,7 @@ public static Message createGroupCustomMessage(long groupID,
 - 根据参数匹配得到的单聊会话对象。
 
 
-##### 获取单个群聊会话
+#### 获取单个群聊会话
 ```
   public static Conversation getGroupConversation(long groupID);
 ```
@@ -335,7 +343,7 @@ public static Message createGroupCustomMessage(long groupID,
 
 
   
-##### 删除单个单聊会话
+#### 删除单个单聊会话
 删除单聊的会话，同时删除掉本地聊天记录。默认删除本appkey下username的会话
 ```  
   public static boolean deleteSingleConversation(String username);
@@ -351,7 +359,7 @@ public static Message createGroupCustomMessage(long groupID,
 
 
 
-##### 删除单个单聊会话（跨应用）
+#### 删除单个单聊会话（跨应用）
 删除与指定appkey下username的单聊的会话，同时删除掉本地聊天记录。,如果appkey为空则默认尝试删除本应用appkey下对应username的会话。
 ```  
   public static boolean deleteSingleConversation(String username,String appkey);
@@ -366,7 +374,7 @@ public static Message createGroupCustomMessage(long groupID,
 
 - 是否删除成功。
 
-##### 删除单个群聊会话
+#### 删除单个群聊会话
 ```  
   public static boolean deleteGroupConversation(long groupID);
 ```
@@ -895,6 +903,21 @@ public static void exitConversaion();
 用户可以通过接受通知栏点击事件NotificationClickEvent，来实现自定义跳转，该事件如果没有接收者，点击通知栏时SDK将默认跳转到程序主界面。
 
 事件接收方法见"事件处理"一节
+
+### 免打扰
+可以将用户/群组添加到“免打扰”列表中，收到免打扰用户/群组发过来的消息时，通知栏不会弹出通知，消息事件照常下发。
+
+#### 获取免打扰列表
+```
+public static void getNoDisturblist(GetNoDisurbListCallback callback)
+```
+参数定义
+
++ GetNoDisurbListCallback callback 回调接口。
+	
+#### 免打扰设置
+见api doc中<a href="http://docs.jpush.io/client/im_android_api_docs/cn/jpush/im/android/api/model/UserInfo.html" target="_blank">UserInfo</a>和<a href="http://docs.jpush.io/client/im_android_api_docs/cn/jpush/im/android/api/model/GroupInfo.html" target="_blank">GroupInfo</a>相关接口
+
 
 ### 类定义
 
