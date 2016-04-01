@@ -5,7 +5,7 @@
 #### 更新时间
 + 2016-03-31
 
-### JMessage SDK Change Log
+#### JMessage SDK Change Log
 
 ##### New Feature
 + 新增免打扰功能
