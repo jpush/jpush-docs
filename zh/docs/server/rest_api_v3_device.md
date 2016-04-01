@@ -206,8 +206,8 @@ POST /v3/tags/{tag_value}
                 "registration_id2"
             ],
             "remove": [
-                "registration_id1",
-                "registration_id2"
+                "registration_id3",
+                "registration_id4"
             ]
         }
 }
