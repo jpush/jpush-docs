@@ -77,7 +77,7 @@ img[alt=jpush_ios] { width: 800px; }
 
 ### 5、创建并配置PushConfig.plist文件 
 <div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">
-<p>2.1.0 版本开始，新增了带参数的setupWithOption初始化方法，可通过此方法等参数传入AppKey等信息。1.8.8及之前版本的 JPush SDK只能通过PushConfig.plist配置AppKey等信息。
+<p>2.1.0 版本开始，新增了带参数的setupWithOption初始化方法，可直接通过此方法传入AppKey等信息完成初始化无须配置PushConfig.plist。1.8.8及之前的版本只能通过PushConfig.plist进行配置。
 </div><br/>
 
 在你的工程中创建一个新的Property List文件，并将其命名为PushConfig.plist，文件所含字段如下：
@@ -97,7 +97,7 @@ PushConfig.plist文件示例图:
 ![jpush_ios][2]
 
 ### 6、添加代码
-<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">	<p>2.1.0版本开始,API类名为JPUSHService，不再使用原先的APService。	</div>
+<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">	<p>2.1.0 版本开始,API类名为JPUSHService，不再使用原先的APService。	</div>
 
 
 ####允许XCode7支持Http传输方法
@@ -124,9 +124,7 @@ APIs 主要集中在 JPUSHService 接口类里。
   
 
 <div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">
-<p>使用建议:
-<br>
-<p>两个初始化 JPush的方法同时存在，以第一个被调用的方法为准。
+<p>注解：两个初始化 JPush的方法同时存在，以第一个被调用的方法为准。
 </div>
 <br>
 
