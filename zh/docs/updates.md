@@ -1,5 +1,58 @@
 # 最近更新
 
+### JMessage Android SDK v1.2.1
+
+#### 更新时间
++ 2016-03-31
+
+### JMessage SDK Change Log
+
+##### New Feature
++ 新增免打扰功能
++ 支持VIP用户群组上限突破200
+	+ groupInfo中新增max_member_count属性，表示当前群成员最大人数。
++ 对外接口中需要传List作为参数的，对List size做限制。
++ 新增接口：
+	+ JMessageClient
+		+ JMessageClient.getNoDisturbList(GetNoDisturbListCallback callback) 获取用户的免打扰名单
+	+ UserInfo
+		+ userinfo.setNoDisturb(int noDisturb,Callback callback) 设置用户的免打扰状态
+		+ userinfo.getNoDisturb() 获取用户的免打扰状态
+		
+	+ GroupInfo：
+		+ groupinfo.setNoDisturb（int noDisturb,Callback callback）设置群组的免打扰状态
+		+ groupinfo.getNoDisturb() 获取群组的免打扰状态
+		+ groupinfo.getMaxMemberCount() 获取群成员的最大上限
+ 
+
+
+##### Bug Fix
+
++ 修复：api 调用GetGroupInfo 获取一个已经被销毁的群组，返回码为0
++ 修复：消息正在发送的过程中，调用Login有可能导致数据库报错
+
+
+#### JChat Change Log
++ 适配JMessage SDK 1.2.1
+								
+##### New Feature
+
++ 新增免打扰功能.
+
+##### Bug Fix
+
++ 修复compileSdkVersion 改到23（android 6.0）后，工程报错。
++ 修复添加群组成员，界面无变化
++ 群成员搜索优化
+
+
+#### 升级指南
+
++ jar包更新至jmessage-sdk-1.2.1.jar更新时需删除老版本jar包。
++ 将so库更新至 libjpush211.so 同时删除原来老版本so。注意不同的cpu型号对应的结构
++ 由于富媒体的展示需求，SDK 中增加一个res文件夹存放资源文件。用户需将对应文件夹下的资源文件放入工程的目录中。
++ 如果是从更早起的版本升级过来，建议参考 SDK下载包最新版本的 example 来更新 AndroidManifest.xml 文件配置。
+
 ### JMessage iOS SDK v2.0.1
 
 #### 更新时间
