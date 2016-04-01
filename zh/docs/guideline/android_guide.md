@@ -4,7 +4,7 @@
 
 本文是 Android SDK 标准的集成指南文档。
 
-匹配的 SDK 版本为：v2.1.3及以后版本。
+匹配的 SDK 版本为：v2.1.0及以后版本。
 
 + [3 分钟快速 Demo（Android）](/guideline/android_3m)：如果您想要快速地测试、感受下极光推送的效果，请参考本文在几分钟内跑通Demo。
 + 极光推送文档网站上，有极光推送相关的所有指南、API、教程等全部的文档。包括本文档的更新版本，都会及时地发布到该网站上。
@@ -32,7 +32,7 @@
 
 + AndroidManifest.xml
 	+ 客户端嵌入SDK参考的配置文件
-+ libs/jpush-sdk-release1.x.y.jar 
++ libs/jpush-sdk-release2.x.y.jar 
 	+ SDK Java 开发包
 + libs/armeabi/libjpush.so 
 	+ SDK native 开发包
@@ -49,9 +49,9 @@
 ## SDK集成步骤
 ### 导入 SDK 开发包到你自己的应用程序项目
 
-+ 解压缩 jpush-sdk_v1.x.y.zip 集成压缩包
-+ 复制 libs/jpush-sdk-release1.x.y.jar 到工程 libs/ 目录下
-+ 复制 libs/armeabi/libjpush1xy.so 到工程 libs/armeabi 目录下
++ 解压缩 jpush-sdk_v2.x.y.zip 集成压缩包
++ 复制 libs/jpush-sdk-release2.x.y.jar 到工程 libs/ 目录下
++ 复制 libs/armeabi/libjpush2xy.so 到工程 libs/armeabi 目录下
 + 复制 libs/armeabi-v7a/libjpush.so 到工程 libs/armeabi-v7a 目录下
 
 <div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; ">
