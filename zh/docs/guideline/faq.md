@@ -2,6 +2,8 @@
 
 <style>
 img[alt=jpush_ios_v] { width: 500px; }
+img[alt=jpush_android_so] { width: 800px; }
+
 </style>
 
 ### 从这里开始
@@ -174,20 +176,9 @@ Portal上不会限制推送消息的数量。
 <br />
 此错误是由于没有正确的加载libjpush.so文件，请检查libjpush.so是否在正确的位置(libs–>armeabi–>libjpush.so)
 
-JPush SDK 迁移到 Android Studio 需要添加.SO文件打包到APK的lib文件夹中,可以编辑 build.gradle 脚本，自定义 *.so 目录，Demo 的参考：
+JPush SDK 迁移到 Android Studio 需要添加.SO文件打包到APK的lib文件夹中,可以编辑 build.gradle 脚本，自定义 *.so 目录，参考Demo：
 
-```
-android {
-    // .. android settings ..
-    sourceSets.main {
-      jniLibs.srcDirs = ['libs']  // <-- Set your folder here!
-    }
- }
-```
-
-如果您的应用需要支持 x86、mips 架构的CPU 需要下载对应的SDK，[下载地址 ](../../resources/)
-
-![](image/dictionary_path.png)
+![jpush_android_so](image/dictionary_path.png)
 
 <br />
 

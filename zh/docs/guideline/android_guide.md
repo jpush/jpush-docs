@@ -4,11 +4,11 @@
 
 本文是 Android SDK 标准的集成指南文档。
 
-匹配的 SDK 版本为：r1.8.0及以后版本。
+匹配的 SDK 版本为：v2.1.0及以后版本。
 
 + [3 分钟快速 Demo（Android）](/guideline/android_3m)：如果您想要快速地测试、感受下极光推送的效果，请参考本文在几分钟内跑通Demo。
 + 极光推送文档网站上，有极光推送相关的所有指南、API、教程等全部的文档。包括本文档的更新版本，都会及时地发布到该网站上。
-+ [极光推送问答](https://www.jpush.cn/qa/)网站：大家除了文档之外，还有问题与疑问，会到这里来提问题，以及时地得到解答。
++ [极光社区](http://community.jpush.cn/)网站：大家除了文档之外，还有问题与疑问，会到这里来提问题，以及时地得到解答。
 + 如果您看到本文档，但还未下载Android SDK，请访问[SDK下载页面](../../resources)下载。
 
 ## 产品功能说明
@@ -28,11 +28,11 @@
 + SDK丰富的接口，可定制通知栏提示样式
 + 服务器大容量、稳定
 
-### jpush-sdk_v1.x.y.zip 集成压缩包内容
+### jpush-android-(plartform)-2.x.x.zip 集成压缩包内容
 
 + AndroidManifest.xml
 	+ 客户端嵌入SDK参考的配置文件
-+ libs/jpush-sdk-release1.x.y.jar 
++ libs/jpush-sdk-release2.x.y.jar 
 	+ SDK Java 开发包
 + libs/armeabi/libjpush.so 
 	+ SDK native 开发包
@@ -49,9 +49,9 @@
 ## SDK集成步骤
 ### 导入 SDK 开发包到你自己的应用程序项目
 
-+ 解压缩 jpush-sdk_v1.x.y.zip 集成压缩包
-+ 复制 libs/jpush-sdk-release1.x.y.jar 到工程 libs/ 目录下
-+ 复制 libs/armeabi/libjpush1xy.so 到工程 libs/armeabi 目录下
++ 解压缩 jpush-sdk_v2.x.y.zip 集成压缩包
++ 复制 libs/jpush-sdk-release2.x.y.jar 到工程 libs/ 目录下
++ 复制 libs/armeabi/libjpush2xy.so 到工程 libs/armeabi 目录下
 + 复制 libs/armeabi-v7a/libjpush.so 到工程 libs/armeabi-v7a 目录下
 
 <div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; ">
@@ -60,6 +60,7 @@
 
 + 复制 res/drawable-hdpi 中的资源文件到工程的 res/drawable-hdpi/ 目录下
 + 复制 res/layout 中的布局文件到工程的 res/layout/ 目录下
+
 
 ### 集成 JPush Android SDK 的混淆
 
@@ -213,7 +214,6 @@ AndroidManifest.xml权限配置：
              <intent-filter>
                  <!--Required 用户注册SDK的intent-->
                  <action android:name="cn.jpush.android.intent.REGISTRATION" /> 
-                 <action android:name="cn.jpush.android.intent.UNREGISTRATION" />
                  <!--Required 用户接收SDK消息的intent--> 
                  <action android:name="cn.jpush.android.intent.MESSAGE_RECEIVED" /> 
                  <!--Required 用户接收SDK通知栏信息的intent-->
@@ -360,7 +360,6 @@ AndroidManifest.xml权限配置：
              android:enabled="true">
              <intent-filter>
                  <action android:name="cn.jpush.android.intent.REGISTRATION" /> <!--Required 用户注册SDK的intent-->
-                 <action android:name="cn.jpush.android.intent.UNREGISTRATION" /> 
                  <action android:name="cn.jpush.android.intent.MESSAGE_RECEIVED" /> <!--Required 用户接收SDK消息的intent-->
                  <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED" /> <!--Required 用户接收SDK通知栏信息的intent-->
                  <action android:name="cn.jpush.android.intent.NOTIFICATION_OPENED" /> <!--Required 用户打开自定义通知栏的intent-->
@@ -441,10 +440,6 @@ defaultConfig {
     <tr >
       <td>ACCESS_NETWORK_STATE</td>
       <td>允许应用获取网络信息状态，如当前的网络连接是否有效。</td>
-    </tr>
-    <tr >
-      <td>SYSTEM_ALERT_WINDOW</td>
-      <td>允许应用显示系统窗口，位于显示的顶层。</td>
     </tr>
   </table>
 </div>

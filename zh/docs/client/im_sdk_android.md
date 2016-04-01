@@ -297,8 +297,13 @@ public static Message createGroupCustomMessage(long groupID,
 
 - 根据参数匹配得到的单聊会话对象。
 
+<<<<<<< HEAD
 #### 获取单个单聊会话（跨应用）
 获取与指定appkey下username的单聊回话信息,如果appkey为空则默认取本应用appkey下对应username的会话。
+=======
+##### 获取单个单聊会话（跨应用）
+获取与指定appkey下username的单聊会话信息,如果appkey为空则默认取本应用appkey下对应username的会话。
+>>>>>>> b5d8e622e68c03949d3c16aa6b153d307c530852
 
 ```
   public static Conversation getSingleConversation(String username,String appkey);
