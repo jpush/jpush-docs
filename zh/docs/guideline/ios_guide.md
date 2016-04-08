@@ -69,6 +69,7 @@ img[alt=jpush_ios] { width: 800px; }
 * UIKit.framework
 * Security.framework
 * Xcode7需要的是libz.tbd；Xcode7以下版本是libz.dylib
+* Adsupport.framework (获取IDFA需要；如果不使用IDFA，请不要添加)
 
 ### 4、Build Settings
 如果你的工程需要支持小于7.0的iOS系统，请到Build Settings 关闭 bitCode 选项，否则将无法正常编译通过。
@@ -175,7 +176,8 @@ APIs 主要集中在 JPUSHService 接口类里。
 - (BOOL)application:(UIApplication *)application
 didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
   self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-  self.window.backgroundColor = [UIColor whiteColor];  [self.window makeKeyAndVisible];
+  self.window.backgroundColor = [UIColor whiteColor];
+  [self.window makeKeyAndVisible];
 
   NSString *advertisingId = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
   //Required
