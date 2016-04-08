@@ -164,6 +164,7 @@ APIs 主要集中在 JPUSHService 接口类里。
 
 
 ```
+
 #### 调用代码
 
    监听系统事件，相应地调用 JPush SDK 提供的 API 来实现功能。
@@ -228,7 +229,8 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 
 ```
 
-#### 7、IDFA
+
+### 7、IDFA
 r2.1.5版本增加一个上传IDFA字符串的接口
 
 	 + (void)setupWithOption:(NSDictionary *)launchingOption
@@ -244,7 +246,7 @@ r2.1.5版本增加一个上传IDFA字符串的接口
                      channel:(NSString *)channel
             apsForProduction:(BOOL)isProduction;
             
-#### 8、监听通知
+### 8、监听通知
 
 建议开发者加上API里面提供下面 5 种类型的通知：
 
