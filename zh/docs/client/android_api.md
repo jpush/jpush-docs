@@ -1068,7 +1068,7 @@ if (JPushInterface.ACTION_RICHPUSH_CALLBACK.equals(intent.getAction())) {
 		</tr>
 		<tr >
 			<td>1008</td>
-			<td>AppKey非法</td>
+			<td>AppKey非法，请到官网检查此应用详情中的appkey，确认无误</td>
 		</tr>
 		<tr >
 			<td>1009</td>

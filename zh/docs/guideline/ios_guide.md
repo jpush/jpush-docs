@@ -128,7 +128,7 @@ APIs 主要集中在 JPUSHService 接口类里。
 <div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">
 <p>使用建议:
 <br>
-<p>两个初始化 JPush的方法同时存在，以第一个被调用的方法为准。
+<p>三个初始化 JPush的方法同时存在，以第一个被调用的方法为准。
 <br>
 </div>
 
