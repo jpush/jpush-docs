@@ -1,4 +1,26 @@
 # 最近更新
+### JPush iOS SDK v2.1.6
+
+#### 更新时间
++ 2016-04-13
+
+#### Change Log
+
+
++ 修复: 2.1.5版本在模拟器调试运行报错的问题。
+
+#### 升级提示
+
++ 建议升级！
+
+#### 升级指南
++ 替换 lib 文件夹里的文件:先删除项目里旧的.a和.h文件,重新导入新的.a和.h文件（注意新版本替换APService.h为JPUSHService.h）
++ Xcode7 环境下，替换原先导入的 libz.dylib 框架为 libz.tbd （特别留意）
++ 需要删除旧的 libPushSDK-Simulator.a （如果存在）
++ 关于 iOS 7 Background Push，JPush 提供一个教程文档：[iOS 7 Background Remote Notification](../client/ios_tutorials/#ios-7-background-remote-notification)
++ 如果是1.2.7及之前版本升级 请在Build Settings里面，找到Other Linker Flags，去掉-all_load, -ObjC
+
+
 ### JMessage Android SDK v1.2.3
 
 #### 更新时间
