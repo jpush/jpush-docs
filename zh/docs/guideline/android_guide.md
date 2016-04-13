@@ -4,7 +4,7 @@
 
 本文是 Android SDK 标准的集成指南文档。
 
-匹配的 SDK 版本为：v2.1.0及以后版本。
+匹配的 SDK 版本为：v2.1.3及以后版本。
 
 + [3 分钟快速 Demo（Android）](/guideline/android_3m)：如果您想要快速地测试、感受下极光推送的效果，请参考本文在几分钟内跑通Demo。
 + 极光推送文档网站上，有极光推送相关的所有指南、API、教程等全部的文档。包括本文档的更新版本，都会及时地发布到该网站上。
@@ -31,16 +31,17 @@
 ### jpush-android-(plartform)-2.x.x.zip 集成压缩包内容
 
 + AndroidManifest.xml
-	+ 客户端嵌入SDK参考的配置文件
-+ libs/jpush-sdk-release2.x.y.jar 
-	+ SDK Java 开发包
+    + 客户端嵌入SDK参考的配置文件
++ libs/jpush-sdk-release1.x.y.jar 
+    + SDK Java 开发包
 + libs/armeabi/libjpush.so 
-	+ SDK native 开发包
+    + SDK native 开发包
 + res
     +  集成SDK必须添加的资源文件
 + example
-	  +  是一个完整的 Android 项目，通过这个演示了 JPush SDK 的基本用法，可以用来做参考。
+      +  是一个完整的 Android 项目，通过这个演示了 JPush SDK 的基本用法，可以用来做参考。
 
+**说明**：若没有drawable-hdpi/jpush_notification_icon这个资源默认使用应用图标作为通知icon，在5.0以上系统将应用图标作为statusbar icon可能显示不正常，用户可定义纯色icon替换这个文件，文件名不要变。
 
 ### Android SDK 版本
 
@@ -49,9 +50,9 @@
 ## SDK集成步骤
 ### 导入 SDK 开发包到你自己的应用程序项目
 
-+ 解压缩 jpush-sdk_v2.x.y.zip 集成压缩包
-+ 复制 libs/jpush-sdk-release2.x.y.jar 到工程 libs/ 目录下
-+ 复制 libs/armeabi/libjpush2xy.so 到工程 libs/armeabi 目录下
++ 解压缩 jpush-sdk_v1.x.y.zip 集成压缩包
++ 复制 libs/jpush-sdk-release1.x.y.jar 到工程 libs/ 目录下
++ 复制 libs/armeabi/libjpush1xy.so 到工程 libs/armeabi 目录下
 + 复制 libs/armeabi-v7a/libjpush.so 到工程 libs/armeabi-v7a 目录下
 
 <div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; ">
@@ -61,6 +62,7 @@
 + 复制 res/drawable-hdpi 中的资源文件到工程的 res/drawable-hdpi/ 目录下
 + 复制 res/layout 中的布局文件到工程的 res/layout/ 目录下
 
+**说明**：若没有drawable-hdpi/jpush_notification_icon这个资源默认使用应用图标作为通知icon，在5.0以上系统将应用图标作为statusbar icon可能显示不正常，用户可定义纯色icon替换这个文件，文件名不要变。
 
 ### 集成 JPush Android SDK 的混淆
 
@@ -142,7 +144,7 @@ AndroidManifest.xml权限配置：
         android:name="Your Application">
          
         <!-- Required SDK 核心功能-->
-        <!-- option since 2.0.5 可配置PushService的android:process参数 将JPush服务配置为一个独立进程 -->
+        <!-- option since 2.0.5 可配置PushService，DaemonService,PushReceiver,AlarmReceiver的android:process参数 将JPush相关组件设置为一个独立进程 -->
         <!-- 如：android:process=":remote" -->
         <service
             android:name="cn.jpush.android.service.PushService"
@@ -304,7 +306,7 @@ AndroidManifest.xml权限配置：
          </service>
   
          <!-- Required SDK 核心功能-->
-         <!-- option since 2.0.5 可配置PushService的android:process参数 将JPush服务配置为一个独立进程 -->
+         <!-- option since 2.0.5 可配置PushService，DaemonService,PushReceiver,AlarmReceiver的android:process参数 将JPush相关组件设置为一个独立进程 -->
          <!-- 如：android:process=":remote" -->
          <service
              android:name="cn.jpush.android.service.PushService"
@@ -453,13 +455,13 @@ JPush SDK 提供的 API 接口，都主要集中在 cn.jpush.android.api.JPushIn
 
 #### 基础API
 + init 初始化SDK
-		
-		public static void init(Context context)
-		
+        
+        public static void init(Context context)
+        
 + setDebugMode 设置调试模式
 
-		// You can enable debug mode in developing state. You should close debug mode when release.
-		public static void setDebugMode(boolean debugEnalbed)
+        // You can enable debug mode in developing state. You should close debug mode when release.
+        public static void setDebugMode(boolean debugEnalbed)
 
 #### 添加统计代码
 
@@ -471,27 +473,27 @@ JPush SDK 提供的 API 接口，都主要集中在 cn.jpush.android.api.JPushIn
 
 + 以下代码定制一个本应用程序 Application 类。需要在 AndoridManifest.xml 里配置。请参考上面 AndroidManifest.xml 片断，或者 example 项目。
 
-	
-		public class ExampleApplication extends Application {
-		@Override
-		     	public void onCreate() {
-		      		super.onCreate();
-			JPushInterface.setDebugMode(true);
-			JPushInterface.init(this);
-			}
-		}
+    
+        public class ExampleApplication extends Application {
+        @Override
+                public void onCreate() {
+                    super.onCreate();
+            JPushInterface.setDebugMode(true);
+            JPushInterface.init(this);
+            }
+        }
 
-		
-		
+        
+        
 ### 测试确认
 
 + 确认所需的权限都已经添加。如果必须的权限未添加，日志会提示错误。
 + 确认 AppKey（在Portal上生成的）已经正确的写入 Androidmanifest.xml 。
 + 确认在程序启动时候调用了init(context) 接口
 + 确认测试手机（或者模拟器）已成功连入网络
-	＋ 客户端调用 init 后不久，如果一切正常，应有登录成功的日志信息
+    ＋ 客户端调用 init 后不久，如果一切正常，应有登录成功的日志信息
 + 启动应用程序，在 Portal 上向应用程序发送自定义消息或者通知栏提示。详情请参考管理[Portal](www.jpush.cn)。
-	+ 在几秒内，客户端应可收到下发的通知或者正定义消息
+    + 在几秒内，客户端应可收到下发的通知或者正定义消息
 如果 SDK 工作正常，则日志信息会如下图所示：
 
 ![](image/jpush_android_log.jpg) 
