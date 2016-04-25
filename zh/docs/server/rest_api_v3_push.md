@@ -766,9 +766,9 @@ iOS 1.7.3及以上的版本才能正确解析v3的message，但是无法解析v2
 			<td>1005</td>
 			<td>消息体太大</td>
 			<td>必须改正。
-				Android平台Notification+Message长度限制为1000字节；
-				iOS Notification 中 “iOS”:{ } 及大括号内的总体长度不超过：2000个字节（包括自定义参数和符号），iOS 的 Message部分长度不超过 1000 字节；
-				WinPhone平台Notification长度限制为1000字节</td>
+				Android平台Notification+Message长度限制为4000字节；
+				iOS Notification 中 “iOS”:{ } 及大括号内的总体长度不超过：2000个字节（包括自定义参数和符号），iOS 的 Message部分长度不超过 4000 字节；
+				WinPhone平台Notification长度限制为4000字节</td>
 			<td>400</td>
 		</tr>
 		<tr >

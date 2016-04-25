@@ -69,7 +69,7 @@ img[alt=jpush_ios] { width: 800px; }
 * UIKit.framework
 * Security.framework
 * Xcode7需要的是libz.tbd；Xcode7以下版本是libz.dylib
-* Adsupport.framework (获取IDFA需要; 如果不使用IDFA 不要添加)
+* Adsupport.framework (获取IDFA需要；如果不使用IDFA，请不要添加)
 
 ### 4、Build Settings
 如果你的工程需要支持小于7.0的iOS系统，请到Build Settings 关闭 bitCode 选项，否则将无法正常编译通过。
@@ -128,7 +128,7 @@ APIs 主要集中在 JPUSHService 接口类里。
 <div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">
 <p>使用建议:
 <br>
-<p>两个初始化 JPush的方法同时存在，以第一个被调用的方法为准。
+<p>三个初始化 JPush的方法同时存在，以第一个被调用的方法为准。
 <br>
 </div>
 
@@ -159,6 +159,12 @@ APIs 主要集中在 JPUSHService 接口类里。
 
 // upload device token
 + (void)registerDeviceToken:(NSData *)deviceToken;
+
+// handle notification recieved
++ (void)handleRemoteNotification:(NSDictionary *)remoteInfo;
+
+
+```
 
 // handle notification recieved
 + (void)handleRemoteNotification:(NSDictionary *)remoteInfo;
@@ -230,7 +236,9 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 
 ```
 
-#### 7、IDFA
+```
+
+### 7、IDFA
 r2.1.5版本增加一个上传IDFA字符串的接口
 
 	 + (void)setupWithOption:(NSDictionary *)launchingOption
@@ -246,7 +254,7 @@ r2.1.5版本增加一个上传IDFA字符串的接口
                      channel:(NSString *)channel
             apsForProduction:(BOOL)isProduction;
             
-#### 8、监听通知
+### 8、监听通知
 
 建议开发者加上API里面提供下面 5 种类型的通知：
 

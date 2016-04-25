@@ -4,11 +4,11 @@
 
 本文是 Android SDK 标准的集成指南文档。
 
-匹配的 SDK 版本为：r1.8.0及以后版本。
+匹配的 SDK 版本为：v2.1.3及以后版本。
 
 + [3 分钟快速 Demo（Android）](/guideline/android_3m)：如果您想要快速地测试、感受下极光推送的效果，请参考本文在几分钟内跑通Demo。
 + 极光推送文档网站上，有极光推送相关的所有指南、API、教程等全部的文档。包括本文档的更新版本，都会及时地发布到该网站上。
-+ [极光推送问答](https://www.jpush.cn/qa/)网站：大家除了文档之外，还有问题与疑问，会到这里来提问题，以及时地得到解答。
++ [极光社区](http://community.jpush.cn/)网站：大家除了文档之外，还有问题与疑问，会到这里来提问题，以及时地得到解答。
 + 如果您看到本文档，但还未下载Android SDK，请访问[SDK下载页面](../../resources)下载。
 
 ## 产品功能说明
@@ -28,23 +28,24 @@
 + SDK丰富的接口，可定制通知栏提示样式
 + 服务器大容量、稳定
 
-### jpush-sdk_v1.x.y.zip 集成压缩包内容
+### jpush-android-(plartform)-2.x.x.zip 集成压缩包内容
 
 + AndroidManifest.xml
-	+ 客户端嵌入SDK参考的配置文件
+    + 客户端嵌入SDK参考的配置文件
 + libs/jpush-sdk-release1.x.y.jar 
-	+ SDK Java 开发包
+    + SDK Java 开发包
 + libs/armeabi/libjpush.so 
-	+ SDK native 开发包
+    + SDK native 开发包
 + res
     +  集成SDK必须添加的资源文件
 + example
-	  +  是一个完整的 Android 项目，通过这个演示了 JPush SDK 的基本用法，可以用来做参考。
+      +  是一个完整的 Android 项目，通过这个演示了 JPush SDK 的基本用法，可以用来做参考。
 
+**说明**：若没有drawable-hdpi/jpush_notification_icon这个资源默认使用应用图标作为通知icon，在5.0以上系统将应用图标作为statusbar icon可能显示不正常，用户可定义纯色icon替换这个文件，文件名不要变。
 
 ### Android SDK 版本
 
-目前SDK只支持Android 2.1或以上版本的手机系统。富媒体信息流功能则需Android3.0或以上版本的系统。
+目前SDK只支持Android 2.3或以上版本的手机系统。富媒体信息流功能则需Android3.0或以上版本的系统。
 
 ## SDK集成步骤
 ### 导入 SDK 开发包到你自己的应用程序项目
@@ -60,6 +61,8 @@
 
 + 复制 res/drawable-hdpi 中的资源文件到工程的 res/drawable-hdpi/ 目录下
 + 复制 res/layout 中的布局文件到工程的 res/layout/ 目录下
+
+**说明**：若没有drawable-hdpi/jpush_notification_icon这个资源默认使用应用图标作为通知icon，在5.0以上系统将应用图标作为statusbar icon可能显示不正常，用户可定义纯色icon替换这个文件，文件名不要变。
 
 ### 集成 JPush Android SDK 的混淆
 
@@ -213,7 +216,6 @@ AndroidManifest.xml权限配置：
              <intent-filter>
                  <!--Required 用户注册SDK的intent-->
                  <action android:name="cn.jpush.android.intent.REGISTRATION" /> 
-                 <action android:name="cn.jpush.android.intent.UNREGISTRATION" />
                  <!--Required 用户接收SDK消息的intent--> 
                  <action android:name="cn.jpush.android.intent.MESSAGE_RECEIVED" /> 
                  <!--Required 用户接收SDK通知栏信息的intent-->
@@ -360,7 +362,6 @@ AndroidManifest.xml权限配置：
              android:enabled="true">
              <intent-filter>
                  <action android:name="cn.jpush.android.intent.REGISTRATION" /> <!--Required 用户注册SDK的intent-->
-                 <action android:name="cn.jpush.android.intent.UNREGISTRATION" /> 
                  <action android:name="cn.jpush.android.intent.MESSAGE_RECEIVED" /> <!--Required 用户接收SDK消息的intent-->
                  <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED" /> <!--Required 用户接收SDK通知栏信息的intent-->
                  <action android:name="cn.jpush.android.intent.NOTIFICATION_OPENED" /> <!--Required 用户打开自定义通知栏的intent-->
@@ -442,10 +443,6 @@ defaultConfig {
       <td>ACCESS_NETWORK_STATE</td>
       <td>允许应用获取网络信息状态，如当前的网络连接是否有效。</td>
     </tr>
-    <tr >
-      <td>SYSTEM_ALERT_WINDOW</td>
-      <td>允许应用显示系统窗口，位于显示的顶层。</td>
-    </tr>
   </table>
 </div>
 
@@ -458,13 +455,13 @@ JPush SDK 提供的 API 接口，都主要集中在 cn.jpush.android.api.JPushIn
 
 #### 基础API
 + init 初始化SDK
-		
-		public static void init(Context context)
-		
+        
+        public static void init(Context context)
+        
 + setDebugMode 设置调试模式
 
-		// You can enable debug mode in developing state. You should close debug mode when release.
-		public static void setDebugMode(boolean debugEnalbed)
+        // You can enable debug mode in developing state. You should close debug mode when release.
+        public static void setDebugMode(boolean debugEnalbed)
 
 #### 添加统计代码
 
@@ -476,27 +473,27 @@ JPush SDK 提供的 API 接口，都主要集中在 cn.jpush.android.api.JPushIn
 
 + 以下代码定制一个本应用程序 Application 类。需要在 AndoridManifest.xml 里配置。请参考上面 AndroidManifest.xml 片断，或者 example 项目。
 
-	
-		public class ExampleApplication extends Application {
-		@Override
-		     	public void onCreate() {
-		      		super.onCreate();
-			JPushInterface.setDebugMode(true);
-			JPushInterface.init(this);
-			}
-		}
+    
+        public class ExampleApplication extends Application {
+        @Override
+                public void onCreate() {
+                    super.onCreate();
+            JPushInterface.setDebugMode(true);
+            JPushInterface.init(this);
+            }
+        }
 
-		
-		
+        
+        
 ### 测试确认
 
 + 确认所需的权限都已经添加。如果必须的权限未添加，日志会提示错误。
 + 确认 AppKey（在Portal上生成的）已经正确的写入 Androidmanifest.xml 。
 + 确认在程序启动时候调用了init(context) 接口
 + 确认测试手机（或者模拟器）已成功连入网络
-	＋ 客户端调用 init 后不久，如果一切正常，应有登录成功的日志信息
+    ＋ 客户端调用 init 后不久，如果一切正常，应有登录成功的日志信息
 + 启动应用程序，在 Portal 上向应用程序发送自定义消息或者通知栏提示。详情请参考管理[Portal](www.jpush.cn)。
-	+ 在几秒内，客户端应可收到下发的通知或者正定义消息
+    + 在几秒内，客户端应可收到下发的通知或者正定义消息
 如果 SDK 工作正常，则日志信息会如下图所示：
 
 ![](image/jpush_android_log.jpg) 

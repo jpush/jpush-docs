@@ -2,7 +2,8 @@
 
 + [iOS 常见问题](../../guideline/faq/#ios)
 + [iOS 客户端 SDK 下载](../../resources/#ios-sdk)
-### JPush iOS
+
+## JPush iOS
 
 ![jpush_ios](image/jpush_ios.png)
 
@@ -12,7 +13,7 @@
 
 蓝色部分是 JPush 应用内推送部分，即 App 启动时，内嵌的 JPush SDK 会开启长连接到 JPush Server，从而 JPush Server 可以推送消息到 App 里。
 
-#### APNs 通知
+### APNs 通知
 
 APNs 通知：是指通过向 Apple APNs 服务器发送通知，到达 iOS 设备，由 iOS 系统提供展现的推送。用户可以通过 IOS 系统的 “设置” >> “通知” 进行设置，开启或者关闭某一个 App 的推送能力。
 
@@ -20,7 +21,7 @@ JPush iOS SDK 不负责 APNs 通知的展现，只是向 JPush 服务器端上�
 
 [获取 APNs 推送内容](../client/ios_api/#apns)
 
-#### 应用内消息
+### 应用内消息
 
 应用内消息：JPush iOS SDK 提供的应用内消息功能，在 App 在前台时能够收到推送下来的消息。App 可使用此功能来做消息下发动作。
 
@@ -28,7 +29,7 @@ JPush iOS SDK 不负责 APNs 通知的展现，只是向 JPush 服务器端上�
 
 [获取应用内消息推送内容](../client/ios_api/#_19)
 
-#### APNs通知与应用内消息对比
+### APNs通知与应用内消息对比
 
 如果只需要发送通知，则可以忽略应用内消息的处理。对于两种消息的代码处理可以参考API 部分的描述。
 
@@ -78,7 +79,7 @@ JPush API v3 支持同时一次调用同时推送 APNs 通知与 JPush 应用内
 
 
 
-### iOS SDK 集成
+## iOS SDK 集成
 
 请参考以下文档与教程，来集成 IOS SDK。
 
@@ -87,25 +88,25 @@ JPush API v3 支持同时一次调用同时推送 APNs 通知与 JPush 应用内
 
 
 
-### iOS SDK 说明
+## iOS SDK 说明
 
-#### iOS 版本支持
+### iOS 版本支持
 
-支持的iOS版本为5.0及以上版本.
++ 支持的iOS版本为5.0及以上版本.
 
-#### 组成
+### 组成
 
 + 头文件 APService.h
 + 静态库文件 libPushSDK.a
 
-#### 注意事项
-[请参考iOS常见问题](../../guideline/faq/#ios)
+### 注意事项
++ [请参考iOS常见问题](../../guideline/faq/#ios)
 
-### JPush APNs 通知的意义
+## JPush APNs 通知的意义
 
-iOS 平台上，只有 APNs 这个官方的推送通道，是可以随时送达的。一般开发者都是自己部署应用服务器向 APNs Server 推送。
+iOS 平台上推送通知，只有 APNs 这个官方的通道，是可以随时送达的。一般开发者都是自己部署应用服务器向 APNs Server 推送。
 
-JPush APNs 做推送代理，其意义又在哪里呢？JPush APNs 相比直接向 APNs 推送有什么好处呢？
+JPush iOS 推送相比直接向 APNs 推送有什么好处呢？
 
 + 减少开发及维护成本：
 	+ 应用开发者不需要去开发维护自己的推送服务器与 APNs 对接。
@@ -117,7 +118,7 @@ JPush APNs 做推送代理，其意义又在哪里呢？JPush APNs 相比直接�
 + 提供应用内推送：
 	+ 除了使得 APNs 推送更简单，也另外提供应用内消息推送。这在类似于聊天的场景里很有必要。
 
-### JPush APNs 实现
+## JPush APNs 实现
 
 JPush APNs 的实现可以参考极光博客的一篇文章：[http://blog.jpush.cn/apns/](http://blog.jpush.cn/apns/)
 
