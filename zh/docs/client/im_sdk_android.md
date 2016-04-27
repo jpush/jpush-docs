@@ -64,7 +64,7 @@ public static synchronized void init(Context context)
 
 #### 注册
 ```
-  public static void register(String username, String pas  sword, BasicCallback callback);
+  public static void register(String username, String password, BasicCallback callback);
 ```
   
 参数说明
