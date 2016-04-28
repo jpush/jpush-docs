@@ -41,7 +41,6 @@
 + example
       +  是一个完整的 Android 项目，通过这个演示了 JPush SDK 的基本用法，可以用来做参考。
 
-**说明**：若没有drawable-hdpi/jpush_notification_icon这个资源默认使用应用图标作为通知icon，在5.0以上系统将应用图标作为statusbar icon可能显示不正常，用户可定义纯色icon替换这个文件，文件名不要变。
 
 ### Android SDK 版本
 
@@ -62,7 +61,9 @@
 + 复制 res/drawable-hdpi 中的资源文件到工程的 res/drawable-hdpi/ 目录下
 + 复制 res/layout 中的布局文件到工程的 res/layout/ 目录下
 
-**说明**：若没有drawable-hdpi/jpush_notification_icon这个资源默认使用应用图标作为通知icon，在5.0以上系统将应用图标作为statusbar icon可能显示不正常，用户可定义纯色icon替换这个文件，文件名不要变。
+***说明 1***：若没有drawable-hdpi/jpush_notification_icon这个资源默认使用应用图标作为通知icon，在5.0以上系统将应用图标作为statusbar icon可能显示不正常，用户可定义纯色icon替换这个文件，文件名不要变。
+
+***说明 2***：如果要在gradle中配置 shrinkResources true 用来清理多余资源，请在res/raw/ 中添加一个keep.xml来描述保留JPushSDK中的必要资源。示例请参考版本包中的 res/raw/keep.xml文件。
 
 ### 集成 JPush Android SDK 的混淆
 
