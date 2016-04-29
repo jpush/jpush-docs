@@ -427,7 +427,7 @@ SDK未提供https地址版本时
 对应以上关闭方式的重新打开推送方法：
 
 + 在iOS系统设置的通知设置中修改对应app的推送设置；
-+ 在代码中重新调用 [APService registerForRemoteNotificationTypes:]；
++ 在代码中重新调用 [JPUSHService registerForRemoteNotificationTypes:]；
 
 <br />
 
@@ -484,11 +484,11 @@ badge累加只能通过v3 api推送，且只有1.7.4版本以上才能支持。
 
 	如果app运行进入didRegisterForRemoteNotificationsWithDeviceToken 则说明运行正常，请确认你在此函数中的代码中有将token传递给jpush的调用：
 
-		[APService registerDeviceToken:deviceToken];
+		[JPUSHService registerDeviceToken:deviceToken];
 
 + 如果以上两个registerRemoteNotification的函数都未进入， 请确认你的代码中有注册申请apns的函数调用：
 
-		[APService registerForRemoteNotificationTypes:];
+		[JPUSHService registerForRemoteNotificationTypes:];
 		
 + 如果上述情况都已确认且未进入第4步的任意回调函数，则可以判断无法获取token的原因在于设备与apple的网络连通性问题（注：一个设备只有在未申请过token的情况下才会需要与apple的网络交互来获取token，已经获取过某一环境token的设备在无网络的情况下也能获取到对应环境的token（环境分为 开发/生产）），这种情况下切换网络能够在大部分情况下解决此问题。
 
