@@ -1,7 +1,6 @@
-#SMS JSMS iOS SDK集成指南
+# JSMS iOS SDK集成指南
 ##SDK 说明
-### 主要功能
-### 支持版本
+
 + 目前SDK支持iOS7.0及以上版本.
 
 ### SDK 压缩包内包括

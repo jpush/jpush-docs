@@ -1,7 +1,7 @@
-#SMS JSMS Android SDK集成指南
+#JSMS Android SDK集成指南
+
 ##SDK 说明
-### 主要功能
-### 主要特点
+
 ### 支持版本
 + 目前SDK只支持Android 2.3或以上版本的手机系统。
 
