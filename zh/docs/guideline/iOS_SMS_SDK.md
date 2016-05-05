@@ -54,10 +54,11 @@
  }
 ```
 
-
-** + (void)getVerificationCodeWithPhoneNumber:(NSString * __nullable)number **
-                          **andTemplateID:(NSString * __nullable)templateID**
-                          **completionHandler:(JSMSCompletionHandler __nullable)handler;**
+```
++ (void)getVerificationCodeWithPhoneNumber:(NSString * __nullable)number 
+                          andTemplateID:(NSString * __nullable)templateID
+                          completionHandler:(JSMSCompletionHandler __nullable)handler;
+```
 
 
 
@@ -79,7 +80,7 @@
  - (IBAction)sendAuthCode:(id)sender {
   
      [self.view endEditing: YES];
-     [JSMSSDK getVerificationCodeWithPhoneNumber:self.phoneNumberTF.text andTemplateID:@"1" completionHandler:^(id resultObject, NSError *error) {
+     [JSMSSDK getVerificationCodeWithPhoneNumber:@"15220000000" andTemplateID:@"1" completionHandler:^(id resultObject, NSError *error) {
      if (!error) {
          NSLog(@"Get Verification Code success!");
      }else{
@@ -87,7 +88,7 @@
      }];
  }
 ```
-####  commitWithPhoneNumber
+
 ```
 + (void)commitWithPhoneNumber:(NSString * __nullable)number
                      verificationCode:(NSString * __nullable)vCode
@@ -108,7 +109,7 @@
 
 ```
 //验证验证码 
- [JSMSSDK commitWithPhoneNumber:self.phoneNumberTF.text verificationCode:Self.codeTF.text completionHandler:^(id resultObject, NSError *error) {
+ [JSMSSDK commitWithPhoneNumber:@"15220000000" verificationCode:@"123456" completionHandler:^(id resultObject, NSError *error) {
       if (!error) {
            NSLog(@"Commit Verification Code success!");
       }else{

@@ -18,7 +18,7 @@
 
 
 ##充值和开通
-目前没有自动充值的方式，需要咨询极光销售使用。
+目前没有自动充值的方式，如需要开通此接口，请联系：[商务客服](https://www.jpush.cn/common/price)
 
 ##集成指南
 * [JSMS Android SDK 集成指南](/guideline/Android_SMS_SDK.md)
