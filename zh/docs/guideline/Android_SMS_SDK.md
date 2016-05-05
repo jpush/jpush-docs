@@ -44,6 +44,9 @@
 
 `
 <uses-permission android:name="android.permission.INTERNET" />
+<uses-permission android:name="android.permission.READ_PHONE_STATE" />
+<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 `
 
 + 配置appkey：
@@ -141,13 +144,13 @@ public void checkCodeFail(int errCode,final String errmsg){
 | 4007 | body格式不正确 |  |
 | 4008 | 无效时间戳 |  |
 | 4009 | 没有短信验证权限 |  |
-| 4010 | 重复发送 |  |
 | 4011 | 发送超频 |  |
 | 4013 | 模板不存在 |  |
 | 4014 | extra为空 |  |
 | 4015 | 验证码不正确 |  |
 | 4016 | 没有余额 |  |
 | 4017 | 验证码超时 |  |
+| 4018 | 重复验证 |  |
 | 2993 | 验证码校验失败 | 短信已下发但获取uuid异常 |
 | 2994 | 本地数据有误 |  |
 | 2995 | 数据解析错误 |  |

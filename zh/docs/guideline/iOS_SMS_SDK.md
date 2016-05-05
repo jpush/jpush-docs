@@ -17,7 +17,7 @@
 
 ### 导入开发包
 
-将SDK包解压，将解压后的JSMS-SDK子文件夹（包含头文件 include，静态库文件libSms.a 。头文件包含JSMSSDK.h、JSMSContant.h两个对外接口文件）添加到工程目录中
+将SDK包解压，将解压后的JsmsSDK文件夹（包含头文件 include，静态库文件libsms-lib.a 。头文件目录包含JSMSSDK.h、JSMSContant.h两个对外接口文件）添加到工程目录中。 
 
 ### Build Settings
 
@@ -33,18 +33,8 @@
 `
 
 ### 添加代码
-#### typedef void (^JSMSCompletionHandler)(id resultObject, NSError *error)
 
-**接口说明**
-
-请求结果回调的block
-
-**参数说明：**
-
-如果调用出错，则 error 不为空，resultObject为nil，可根据 error.code 来获取错误码。该错误码 在最后的错误描述里有详细的定义，如果返回正常，则 error 为空， resultObject为@"success"。
-
-
-#### (void)registerWithAppKey:(NSString * __nullable)appkey; 
+#### + (void)registerWithAppKey:(NSString * __nullable)appkey; 
 
 **接口说明**
 
@@ -65,7 +55,9 @@
 ```
 
 
-#### (void)getVerificationCodWithPhoneNumber:(NSString * __nullable)number                                                                          andTemplateID:(NSString * __nullable)templateID            completionHandler:(JSMSCompletionHandler __nullable)handler;
+#### + (void)getVerificationCodWithPhoneNumber:(NSString * __nullable)number
+                                   andTemplateID:(NSString * __nullable)templateID
+                                   completionHandler:(JSMSCompletionHandler __nullable)handler;
 
 
 **接口说明**
@@ -94,7 +86,9 @@
      }];
  }
 ```
-####  (void)commitWithPhoneNumber:(NSString * __nullable)number,verificationCode:(NSString * __nullable)vCode,completionHandler:(JSMSCompletionHandler __nullable)handler;
+####  + (void)commitWithPhoneNumber:(NSString * __nullable)number
+                     verificationCode:(NSString * __nullable)vCode
+                  completionHandler:(JSMSCompletionHandler __nullable)handler;
 
 **接口说明**
 
