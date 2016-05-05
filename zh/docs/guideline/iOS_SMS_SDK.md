@@ -55,9 +55,13 @@
 ```
 
 
-#### + (void)getVerificationCodWithPhoneNumber:(NSString * __nullable)number
+#### getVerificationCodeWithPhoneNumber
+
+```
++ (void)getVerificationCodeWithPhoneNumber:(NSString * __nullable)number
                                    andTemplateID:(NSString * __nullable)templateID
                                    completionHandler:(JSMSCompletionHandler __nullable)handler;
+```
 
 
 **接口说明**
@@ -86,9 +90,12 @@
      }];
  }
 ```
-####  + (void)commitWithPhoneNumber:(NSString * __nullable)number
+####  commitWithPhoneNumber
+```
++ (void)commitWithPhoneNumber:(NSString * __nullable)number
                      verificationCode:(NSString * __nullable)vCode
                   completionHandler:(JSMSCompletionHandler __nullable)handler;
+```
 
 **接口说明**
 
