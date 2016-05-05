@@ -42,12 +42,12 @@
 ### 配置 AndroidManifest.xml
 + 配置权限：
 
-`
+```
 <uses-permission android:name="android.permission.INTERNET" />
 <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-`
+```
 
 + 配置appkey：
 

@@ -55,13 +55,10 @@
 ```
 
 
-#### getVerificationCodeWithPhoneNumber
+** + (void)getVerificationCodeWithPhoneNumber:(NSString * __nullable)number **
+                          **andTemplateID:(NSString * __nullable)templateID**
+                          **completionHandler:(JSMSCompletionHandler __nullable)handler;**
 
-```
-+ (void)getVerificationCodeWithPhoneNumber:(NSString * __nullable)number
-                                   andTemplateID:(NSString * __nullable)templateID
-                                   completionHandler:(JSMSCompletionHandler __nullable)handler;
-```
 
 
 **接口说明**
