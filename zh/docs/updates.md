@@ -1,7 +1,7 @@
 # 最近更新
 
 
-### JPush Andrdoi SDK v2.1.5
+### JPush Android SDK v2.1.5
 
 #### 更新时间
 
