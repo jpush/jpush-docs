@@ -41,7 +41,6 @@
 + example
       +  是一个完整的 Android 项目，通过这个演示了 JPush SDK 的基本用法，可以用来做参考。
 
-**说明**：若没有drawable-hdpi/jpush_notification_icon这个资源默认使用应用图标作为通知icon，在5.0以上系统将应用图标作为statusbar icon可能显示不正常，用户可定义纯色icon替换这个文件，文件名不要变。
 
 ### Android SDK 版本
 
@@ -62,7 +61,9 @@
 + 复制 res/drawable-hdpi 中的资源文件到工程的 res/drawable-hdpi/ 目录下
 + 复制 res/layout 中的布局文件到工程的 res/layout/ 目录下
 
-**说明**：若没有drawable-hdpi/jpush_notification_icon这个资源默认使用应用图标作为通知icon，在5.0以上系统将应用图标作为statusbar icon可能显示不正常，用户可定义纯色icon替换这个文件，文件名不要变。
+***说明 1***：若没有drawable-xxxx/jpush_notification_icon这个资源默认使用应用图标作为通知icon，在5.0以上系统将应用图标作为statusbar icon可能显示不正常，用户可定义纯色icon替换这个文件，文件名不要变。
+
+***说明 2***：如果要在gradle中配置 shrinkResources true 用来清理多余资源，请在res/raw/ 中添加一个keep.xml来描述保留JPushSDK中的必要资源。示例请参考版本包中的 res/raw/keep.xml文件。(2.1.5版本以上)
 
 ### 集成 JPush Android SDK 的混淆
 
@@ -76,8 +77,6 @@
         -dontwarn cn.jpush.**
         -keep class cn.jpush.** { *; }
         
-+ 请使用 SDK1.3.X 及以后的版本
-
 + v2.0.5 及以上的版本由于引入了protobuf ，在上面基础之上增加排出混淆的配置。
 
 
@@ -89,6 +88,18 @@
         -dontwarn com.google.**
         -keep class com.google.protobuf.** {*;}
 
++ 如果您启用了分包配置，请在相应模块下的gradle中指定配置文件，如：
+
+        defaultConfig {
+            ...
+            multiDexEnabled true
+            multiDexKeepProguard file('multiDexKeep.pro')         
+            ...
+        }
+ 并在multiDexKeep.pro文件中添加如下配置，从而使JPushSDK在主dex中：
+
+        -dontwarn cn.jpush.**
+        -keep class cn.jpush.** { *; }
 
 
 ### 配置 AndroidManifest.xml
@@ -562,4 +573,3 @@ JPush Demo 是极光推送随压缩包提供的用法示例Demo，原本适用�
 邮件联系：<support@jpush.cn>
 
 问答社区：[http://www.jpush.cn/qa/](http://www.jpush.cn/qa/)
-
