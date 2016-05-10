@@ -4,7 +4,7 @@
 + [极光IM Android API Java docs](../client/im_android_api_docs/)
 + [极光IM Android 错误码](../client/im_errorcode/#jmessage-android)
 
-### 概述
+### 概述如下
 
 极光IM（英文名JMessage） SDK 基于 JPush 推送 SDK 开发，提供了 Push SDK 的完整功能，并提供 IM 即时通讯功能。
 
