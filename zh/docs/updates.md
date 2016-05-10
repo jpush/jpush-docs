@@ -1,4 +1,24 @@
 # 最近更新
+### JMessage iOS SDK v2.1.0
+
+#### 更新时间
+* 2016-05-10
+
+#### 版本号
+* JMessage SDK 2.1.0
+* JChat 1.1.0b1870
+
+#### Change Log
++ 实现跨应用单聊
++ 支持VIP用户群组上限突破200
+
+#### 升级提示
+
++ 建议升级！
+
+#### 升级指南
++ 使用新版本的JMessage.framework文件替换原工程下的同名旧文件
+
 
 
 ### JPush Android SDK v2.1.5
