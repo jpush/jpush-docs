@@ -145,7 +145,7 @@ APIs 主要集中在 JPUSHService 接口类里。
                 channel:(NSString *)channel
        apsForProduction:(BOOL)isProduction;
 
-// init Push(2.1.5版本的SDK新增的注册方法，带IDFA  )
+// init Push(2.1.5版本的SDK新增的注册方法，改成可上报IDFA，如果没有使用IDFA直接传nil  )
 + (void)setupWithOption:(NSDictionary *)launchingOption
                  appKey:(NSString *)appKey
                 channel:(NSString *)channel
