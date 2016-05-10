@@ -83,7 +83,7 @@
                                                             <p style="margin: 2px 0;">更新内容：<a href="https://github.com/jpush/jpush-api-java-client/releases">Change Log</a></p>
                                                             <p style="margin: 2px 0;">GitHub：<a href="https://github.com/jpush/jpush-api-java-client">源码</a></p>
                                                             <p style="margin: 2px 0 10px;">支持：Push API v3, Report API, Device API, Schedule API</p>
-                                                            <p><a href="http://docs.jpush.cn/download/attachments/2228302/jpush-client-3.2.9.zip" style="display: inline-block; height: 30px; line-height: 30px; width: 100px; border: 1px solid #ccc;border-radius: 3px;color: #999;text-align: center;">
+                                                            <p><a href="https://www.jpush.cn/common/downloads/resource/1459130284033" style="display: inline-block; height: 30px; line-height: 30px; width: 100px; border: 1px solid #ccc;border-radius: 3px;color: #999;text-align: center;">
                                                                   <i style="vertical-align: middle; display: inline-block; width: 11px; height: 11px; background: url(../image/resource_sdk_download.png) 0 0;"></i>&nbsp;&nbsp;下载
                                                             </a></p>
                                                       </td>
@@ -103,7 +103,7 @@
                                                             <p style="margin: 2px 0;">更新内容：<a href="https://github.com/jpush/jpush-api-python-client/releases">Change Log</a></p>
                                                             <p style="margin: 2px 0;">GitHub：<a href="https://github.com/jpush/jpush-api-python-client">源码</a></p>
                                                             <p style="margin: 2px 0 10px;">支持：Push API v3</p>
-                                                            <p><a href="http://docs.jpush.cn/download/attachments/2228302/jpush-api-python-client-3.0.2.zip?version=1&modificationDate=1439357991859" style="display: inline-block; height: 30px; line-height: 30px; width: 100px; border: 1px solid #ccc;border-radius: 3px;color: #999;text-align: center;">
+                                                            <p><a href="https://www.jpush.cn/common/downloads/resource/1459130233272" style="display: inline-block; height: 30px; line-height: 30px; width: 100px; border: 1px solid #ccc;border-radius: 3px;color: #999;text-align: center;">
                                                                   <i style="vertical-align: middle; display: inline-block; width: 11px; height: 11px; background: url(../image/resource_sdk_download.png) 0 0;"></i>&nbsp;&nbsp;下载
                                                             </a></p>
                                                       </td>
@@ -120,12 +120,12 @@
                                                       </td>
                                                       <td style="padding: 20px 0;">
                                                             <h4 style="font-weight: bold;font-size: 14px;">PHP - SDK下载</h4>
-                                                            <p style="margin: 2px 0;">版本号：v3.3.8</p>
-                                                            <p style="margin: 2px 0;">更新时间：2016-03-09</p>
+                                                            <p style="margin: 2px 0;">版本号：v3.3.9</p>
+                                                            <p style="margin: 2px 0;">更新时间：2016-04-18</p>
                                                             <p style="margin: 2px 0;">更新内容：<a href="https://github.com/jpush/jpush-api-php-client/releases">Change Log</a></p>
                                                             <p style="margin: 2px 0;">GitHub：<a href="https://github.com/jpush/jpush-api-php-client">源码</a></p>
                                                             <p style="margin: 2px 0 10px;">支持：Push API v3, Report API, Device API, Schedule API</p>
-                                                            <p><a href="http://docs.jpush.cn/download/attachments/2228302/jpush-api-php-client-3.3.8.zip?version=1&modificationDate=1457527249513" style="display: inline-block; height: 30px; line-height: 30px; width: 100px; border: 1px solid #ccc;border-radius: 3px;color: #999;text-align: center;">
+                                                            <p><a href="https://www.jpush.cn/common/downloads/resource/1460966988359" style="display: inline-block; height: 30px; line-height: 30px; width: 100px; border: 1px solid #ccc;border-radius: 3px;color: #999;text-align: center;">
                                                                   <i style="vertical-align: middle; display: inline-block; width: 11px; height: 11px; background: url(../image/resource_sdk_download.png) 0 0;"></i>&nbsp;&nbsp;下载
                                                             </a></p>
                                                       </td>
@@ -140,12 +140,12 @@
                                                       </td>
                                                       <td style="padding: 20px 0;">
                                                             <h4 style="font-weight:   bold;font-size: 14px;">C# - SDK下载</h4>
-                                                            <p style="margin: 2px 0;">版本号：v3.0.5</p>
-                                                            <p style="margin: 2px 0;">更新时间：2015-06-23</p>
+                                                            <p style="margin: 2px 0;">版本号：v3.1.0</p>
+                                                            <p style="margin: 2px 0;">更新时间：2016-04-05</p>
                                                             <p style="margin: 2px 0;">更新内容：<a href="https://github.com/jpush/jpush-api-csharp-client/releases">Change Log</a></p>
                                                             <p style="margin: 2px 0;">GitHub：<a href="https://github.com/jpush/jpush-api-csharp-client">源码</a></p>
                                                             <p style="margin: 2px 0 10px;">支持：Push API v3, Report API, Device API</p>
-                                                            <p><a href="http://docs.jpush.cn/download/attachments/2228302/jpush-api-csharp-client-3.0.5.zip?version=1&modificationDate=1435056007172" style="display: inline-block; height: 30px; line-height: 30px; width: 100px; border: 1px solid #ccc;border-radius: 3px;color: #999;text-align: center;">
+                                                            <p><a href="https://www.jpush.cn/common/downloads/resource/1459854935213" style="display: inline-block; height: 30px; line-height: 30px; width: 100px; border: 1px solid #ccc;border-radius: 3px;color: #999;text-align: center;">
                                                                   <i style="vertical-align: middle; display: inline-block; width: 11px; height: 11px; background: url(../image/resource_sdk_download.png) 0 0;"></i>&nbsp;&nbsp;下载
                                                             </a></p>
                                                       </td>
@@ -167,7 +167,7 @@
                                                             <p style="margin: 2px 0;">更新内容：<a href="https://github.com/jpush/jpush-api-nodejs-client/releases">Change Log</a></p>
                                                             <p style="margin: 2px 0;">GitHub：<a href="https://github.com/jpush/jpush-api-nodejs-client">源码</a></p>
                                                             <p style="margin: 2px 0 10px;">支持：Push API v3, Report API</p>
-                                                            <p><a href="http://docs.jpush.cn/download/attachments/2228302/jpush-api-nodejs-client-3.2.1.zip?version=1&modificationDate=1430203561724" style="display: inline-block; height: 30px; line-height: 30px; width: 100px; border: 1px solid #ccc;border-radius: 3px;color: #999;text-align: center;">
+                                                            <p><a href="https://www.jpush.cn/common/downloads/resource/1459130200447" style="display: inline-block; height: 30px; line-height: 30px; width: 100px; border: 1px solid #ccc;border-radius: 3px;color: #999;text-align: center;">
                                                                   <i style="vertical-align: middle; display: inline-block; width: 11px; height: 11px; background: url(../image/resource_sdk_download.png) 0 0;"></i>&nbsp;&nbsp;下载
                                                             </a></p>
                                                       </td>
@@ -182,12 +182,12 @@
                                                       </td>
                                                       <td style="padding: 20px 0;">
                                                             <h4 style="font-weight: bold;font-size: 14px;">Ruby - SDK下载</h4>
-                                                            <p style="margin: 2px 0;">版本号：v3.2.2</p>
-                                                            <p style="margin: 2px 0;">更新时间：2015-08-24</p>
+                                                            <p style="margin: 2px 0;">版本号：v4.0.1</p>
+                                                            <p style="margin: 2px 0;">更新时间：2016-04-28</p>
                                                             <p style="margin: 2px 0;">更新内容：<a href="https://github.com/jpush/jpush-api-ruby-client/releases">Change Log</a></p>
                                                             <p style="margin: 2px 0;">GitHub：<a href="https://github.com/jpush/jpush-api-ruby-client">源码</a></p>
-                                                            <p style="margin: 2px 0 10px;">支持：Push API v3, Report API</p>
-                                                            <p><a href="http://docs.jpush.cn/download/attachments/2228302/jpush-api-ruby-client-3.2.2.zip?version=1&modificationDate=1440398862324" style="display: inline-block; height: 30px; line-height: 30px; width: 100px; border: 1px solid #ccc;border-radius: 3px;color: #999;text-align: center;">
+                                                            <p style="margin: 2px 0 10px;">支持：Push API v3, Report API, Device API, Schedule API</p>
+                                                            <p><a href="https://www.jpush.cn/common/downloads/resource/1461742750944" style="display: inline-block; height: 30px; line-height: 30px; width: 100px; border: 1px solid #ccc;border-radius: 3px;color: #999;text-align: center;">
                                                                   <i style="vertical-align: middle; display: inline-block; width: 11px; height: 11px; background: url(../image/resource_sdk_download.png) 0 0;"></i>&nbsp;&nbsp;下载
                                                             </a></p>
                                                       </td>
