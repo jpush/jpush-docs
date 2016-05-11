@@ -66,6 +66,8 @@
 		
 		<option value="//api/name/target">target</option>
 		
+		<option value="//api/name/targetAppKey">targetAppKey</option>
+		
 	</optgroup>
 	
 
@@ -74,13 +76,19 @@
 		
 		<option value="//api/name/singleConversationWithUsername:">+ singleConversationWithUsername:</option>
 		
+		<option value="//api/name/singleConversationWithUsername:appKey:">+ singleConversationWithUsername:appKey:</option>
+		
 		<option value="//api/name/groupConversationWithGroupId:">+ groupConversationWithGroupId:</option>
 		
 		<option value="//api/name/createSingleConversationWithUsername:completionHandler:">+ createSingleConversationWithUsername:completionHandler:</option>
 		
+		<option value="//api/name/createSingleConversationWithUsername:appKey:completionHandler:">+ createSingleConversationWithUsername:appKey:completionHandler:</option>
+		
 		<option value="//api/name/createGroupConversationWithGroupId:completionHandler:">+ createGroupConversationWithGroupId:completionHandler:</option>
 		
 		<option value="//api/name/deleteSingleConversationWithUsername:">+ deleteSingleConversationWithUsername:</option>
+		
+		<option value="//api/name/deleteSingleConversationWithUsername:appKey:">+ deleteSingleConversationWithUsername:appKey:</option>
 		
 		<option value="//api/name/deleteGroupConversationWithGroupId:">+ deleteGroupConversationWithGroupId:</option>
 		
@@ -247,6 +255,47 @@
 		</div>
 	</div>
 </div><div class="section-method">
+	<a name="//api/name/singleConversationWithUsername:appKey:" title="singleConversationWithUsername:appKey:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/singleConversationWithUsername:appKey:">+&nbsp;singleConversationWithUsername:appKey:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>获取跨应用单聊会话</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (JMSGConversation *JMSG_NULLABLE)singleConversationWithUsername:(NSString *)<em>username</em> appKey:(NSString *)<em>userAppKey</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGConversation.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
 	<a name="//api/name/groupConversationWithGroupId:" title="groupConversationWithGroupId:"></a>
 	<h3 class="method-title"><code><a href="#//api/name/groupConversationWithGroupId:">+&nbsp;groupConversationWithGroupId:</a></code>
 </h3>
@@ -370,6 +419,47 @@
 		</div>
 	</div>
 </div><div class="section-method">
+	<a name="//api/name/createSingleConversationWithUsername:appKey:completionHandler:" title="createSingleConversationWithUsername:appKey:completionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/createSingleConversationWithUsername:appKey:completionHandler:">+&nbsp;createSingleConversationWithUsername:appKey:completionHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>创建跨应用单聊会话</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)createSingleConversationWithUsername:(NSString *)<em>username</em> appKey:(NSString *)<em>userAppKey</em> completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)<em>handler</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGConversation.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
 	<a name="//api/name/createGroupConversationWithGroupId:completionHandler:" title="createGroupConversationWithGroupId:completionHandler:"></a>
 	<h3 class="method-title"><code><a href="#//api/name/createGroupConversationWithGroupId:completionHandler:">+&nbsp;createGroupConversationWithGroupId:completionHandler:</a></code>
 </h3>
@@ -477,6 +567,47 @@
 				<h4 class="method-subtitle">Discussion</h4>
 				<p>除了删除会话本身，还会删除该会话下所有的聊天消息。</p>
 			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGConversation.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/deleteSingleConversationWithUsername:appKey:" title="deleteSingleConversationWithUsername:appKey:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/deleteSingleConversationWithUsername:appKey:">+&nbsp;deleteSingleConversationWithUsername:appKey:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>删除跨应用单聊会话</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (BOOL)deleteSingleConversationWithUsername:(NSString *)<em>username</em> appKey:(NSString *)<em>userAppKey</em></code></div>
+
+		    
+			
+
+			
+
+			
+
 			
 
 			
@@ -856,6 +987,55 @@
 			
 		</div>
 	</div>
+</div><div class="section-method">
+	<a name="//api/name/targetAppKey" title="targetAppKey"></a>
+	<h3 class="method-title"><code><a href="#//api/name/targetAppKey">&nbsp;&nbsp;targetAppKey</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>会话目标用户所在的 appKey</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) NSString *targetAppKey</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>这是为了跨应用聊天而新增的一个字段.
+如果此字段为空, 则表示为默认的主应用.</p>
+
+<p>单聊会话时, 如果单聊对象用户不属于主应用, 则此字段会有值.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGConversation.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
 </div>
 						</div>
 						
@@ -1028,7 +1208,7 @@
 				
 					<tr>
 						<th scope="row" class="argument-name"><code>handler</code></th>
-						<td><p>结果回调。正常返回时 resultObject 类型为 NSArray，数据成员类型为 JMSGConversation 。</p></td>
+						<td><p>结果回调。正常返回时 resultObject 类型为 NSArray，数据成员类型为 JMSGMessage。</p></td>
 					</tr>
 				
 				</table>
@@ -1575,8 +1755,9 @@ JMSGImageContent *imageContent = [[JMSGImageContent alloc] initWithImageData:ima
 
 <ul>
 <li>data 头像数据;</li>
-<li>objectId 为 targetId_<a href="#//api/name/conversationType">conversationType</a> 的组合, 用下划线隔开.
-其中 targetId 单聊时为 username, 群聊时为 groupId</li>
+<li>objectId 为 targetId<em><a href="#//api/name/conversationType">conversationType</a> 的组合, 用下划线隔开.
+其中 targetId 单聊时为 username</em><a href="#//api/name/targetAppKey">targetAppKey</a>,
+群聊时为 groupId</li>
 <li>error 不为nil表示出错;</li>
 </ul>
 
@@ -1850,7 +2031,7 @@ JMSGImageContent *imageContent = [[JMSGImageContent alloc] initWithImageData:ima
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2015 HXHG. All rights reserved. Updated: 2015-12-04</p>
+						<p class="copyright">Copyright &copy; 2016 HXHG. All rights reserved. Updated: 2016-05-06</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
