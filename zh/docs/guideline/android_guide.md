@@ -28,13 +28,13 @@
 + SDK丰富的接口，可定制通知栏提示样式
 + 服务器大容量、稳定
 
-### jpush-android-(plartform)-2.x.x.zip 集成压缩包内容
+### jpush-android-(cpu-type)-2.x.x.zip 集成压缩包内容
 
-+ AndroidManifest.xml
++ AndroidManifest_androidstudio_example.xml / AndroidManifest_eclipse_example.xml
     + 客户端嵌入SDK参考的配置文件
-+ libs/jpush-sdk-release1.x.y.jar 
++ libs/jpush-android-2.x.y.jar 
     + SDK Java 开发包
-+ libs/armeabi/libjpush.so 
++ libs/(cpu-type)/libjpush2xy.so 
     + SDK native 开发包
 + res
     +  集成SDK必须添加的资源文件
