@@ -195,7 +195,7 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
                                           categories:nil];
   }
   //Required
-  //如需兼容旧版本的方式，请依旧使用[JPUSHService setupWithOption:launchOptions]方式初始化和同时使用pushConfig.plist文件声明appKey等配置内容。
+  // 如需继续使用pushConfig.plist文件声明appKey等配置内容，请依旧使用[JPUSHService setupWithOption:launchOptions]方式初始化。
   [JPUSHService setupWithOption:launchOptions appKey:appKey
                         channel:channel
                apsForProduction:isProduction
