@@ -1,34 +1,13 @@
-<h1>JPush API client library for PHP</h1>
+[![Build Status](https://travis-ci.org/jpush/jpush-api-php-client.svg?branch=master)](https://travis-ci.org/jpush/jpush-api-php-client)
 
-###概述
+# JPush API client library for PHP
 
-<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px;">
-<p>温馨提示：</p>
-<p>详细API介绍文档地址   <a href="https://github.com/jpush/jpush-api-php-client/blob/master/doc/api.md">JPush Api PHP client doc</a></p>
-</div>
+### 简要概述
 
-<br>
-
-这是 JPush REST API 的 PHP 版本封装开发包，是由极光推送官方提供的，一般支持最新的 API 功能。
-
-
-
-对应的 REST API 文档：
-
-+ [REST API - Push](../server/rest_api_v3_push/)
-
-+ [REST API - Report](../server/rest_api_v3_report/)
-
-版本更新:[Release](../../resources/#sdk_1)页面有详细的版本发布记录与下载。
-
-### JPush API client library for PHP
-
-#### 简要概述
-
-* 本API提供简单的接口去调用[JPush Push API](http://docs.jpush.io/server/rest_api_v3_push/)
-* 本API提供简单的接口去调用[JPush Report API](http://docs.jpush.io/server/rest_api_v3_report/)
-* 本API提供简单的接口去调用[JPush Device API](http://docs.jpush.io/server/rest_api_v3_device/)
-* 本API提供简单的接口去调用[JPush Schedule API](http://docs.jpush.io/server/rest_api_push_schedule/)
+* 本API提供简单的接口去调用[JPush Push API](examples/push_example.php)
+* 本API提供简单的接口去调用[JPush Report API](examples/report_example.php)
+* 本API提供简单的接口去调用[JPush Device API](examples/device_example.php)
+* 本API提供简单的接口去调用[JPush Schedule API](examples/schedule_example.php)
 
 
 #### 快速安装
@@ -64,9 +43,9 @@ PS: 在下载的中的[example](https://github.com/jpush/jpush-api-php-client/tr
 
 
 
-#### 快速使用
+### 快速使用
 
-##### 代码示例
+#### 代码示例
 
 [example](https://github.com/jpush/jpush-api-php-client/tree/master/examples)文件夹有简单示例代码, 开发者可参考以快速使用该库
 
@@ -78,13 +57,13 @@ examples/
 └── schedule_example.php Schedule API使用示例
 ```
 
-##### 初始化
+#### 初始化
 
 ```php
 $client = new JPush($app_key, $master_secret);
 ```
 
-##### 简单推送
+#### 简单推送
 
 ```php
 $result = $client->push()
@@ -96,7 +75,7 @@ $result = $client->push()
 echo 'Result=' . json_encode($result) . $br;
 ```
 
-##### 完整的推送示例
+#### 完整的推送示例
 
 包含指定Platform,指定Alias,Tag,指定iOS,Android notification,指定Message等
 
@@ -115,7 +94,7 @@ $result = $client->push()
 echo 'Result=' . json_encode($result) . $br;
 ```
 
-##### 发送短信推送示例
+#### 发送短信推送示例
 
 推送未送达的情况下进行短信送达, 该功能需预付短信费用, 并调用Device API绑定设备与手机号
 
@@ -130,7 +109,7 @@ $result = $client->push()
 echo 'Result=' . json_encode($result) . $br;
 ```
 
-##### 定时推送示例
+#### 定时推送示例
 
 ```php
 $payload = $client->push()
@@ -148,5 +127,3 @@ echo 'Result=' . json_encode($response) . $br;
 ### 版本更新
 
 [Release页面](https://github.com/jpush/jpush-api-php-client/releases/)有详细的版本发布记录与下载。
-
-
