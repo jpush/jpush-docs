@@ -4,7 +4,7 @@
 
 本文是 Android SDK 标准的集成指南文档。
 
-匹配的 SDK 版本为：v2.1.3及以后版本。
+匹配的 SDK 版本为：v2.1.6及以后版本。
 
 + [3 分钟快速 Demo（Android）](/guideline/android_3m)：如果您想要快速地测试、感受下极光推送的效果，请参考本文在几分钟内跑通Demo。
 + 极光推送文档网站上，有极光推送相关的所有指南、API、教程等全部的文档。包括本文档的更新版本，都会及时地发布到该网站上。
@@ -28,16 +28,16 @@
 + SDK丰富的接口，可定制通知栏提示样式
 + 服务器大容量、稳定
 
-### jpush-android-(cpu-type)-2.x.x.zip 集成压缩包内容
+### jpush-android-release-2.x.y.zip 集成压缩包内容
 
 + AndroidManifest_androidstudio_example.xml / AndroidManifest_eclipse_example.xml
     + 客户端嵌入SDK参考的配置文件
 + libs/jpush-android-2.x.y.jar 
     + SDK Java 开发包
 + libs/(cpu-type)/libjpush2xy.so 
-    + SDK native 开发包
+    + 各种CPU类型的native开发包
 + res
-    +  集成SDK必须添加的资源文件
+    + 集成SDK必须添加的资源文件
 + example
       +  是一个完整的 Android 项目，通过这个演示了 JPush SDK 的基本用法，可以用来做参考。
 
