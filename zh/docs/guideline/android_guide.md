@@ -39,7 +39,7 @@
 + res
     + 集成SDK必须添加的资源文件
 + example
-      +  是一个完整的 Android 项目，通过这个演示了 JPush SDK 的基本用法，可以用来做参考。
+    + 是一个完整的 Android 项目，通过这个演示了 JPush SDK 的基本用法，可以用来做参考。
 
 
 ### Android SDK 版本
@@ -49,19 +49,12 @@
 ## SDK集成步骤
 ### 导入 SDK 开发包到你自己的应用程序项目
 
-+ 解压缩 jpush-sdk_v1.x.y.zip 集成压缩包
-+ 复制 libs/jpush-sdk-release1.x.y.jar 到工程 libs/ 目录下
-+ 复制 libs/armeabi/libjpush1xy.so 到工程 libs/armeabi 目录下
-+ 复制 libs/armeabi-v7a/libjpush.so 到工程 libs/armeabi-v7a 目录下
++ 解压缩 jpush-android-release-2.x.y.zip 集成压缩包
++ 复制 libs/jpush-sdk-2.x.y.jar 到工程 libs/ 目录下
++ 复制 libs/(cpu-type)/libjpush2xy.so 到你的工程中存放对应cpu类型的目录下
++ 复制 res/ 中的资源文件到你的工程中 res/ 对应的目录下
 
-<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; ">
-<p style="padding-bottom:0; margin-bottom: 0;">如果您的项目有 libs/armeabi-v7a 这个目录，请把 libs/armeabi-v7a下的so文件 也复制一份到这个目录。</p>
-</div>
-
-+ 复制 res/drawable-hdpi 中的资源文件到工程的 res/drawable-hdpi/ 目录下
-+ 复制 res/layout 中的布局文件到工程的 res/layout/ 目录下
-
-***说明 1***：若没有drawable-xxxx/jpush_notification_icon这个资源默认使用应用图标作为通知icon，在5.0以上系统将应用图标作为statusbar icon可能显示不正常，用户可定义纯色icon替换这个文件，文件名不要变。
+***说明 1***：若没有res/drawable-xxxx/jpush_notification_icon这个资源默认使用应用图标作为通知icon，在5.0以上系统将应用图标作为statusbar icon可能显示不正常，用户可定义没有阴影和渐变色的icon替换这个文件，文件名不要变。
 
 ***说明 2***：如果要在gradle中配置 shrinkResources true 用来清理多余资源，请在res/raw/ 中添加一个keep.xml来描述保留JPushSDK中的必要资源。示例请参考版本包中的 res/raw/keep.xml文件。(2.1.5版本以上)
 
@@ -77,7 +70,7 @@
         -dontwarn cn.jpush.**
         -keep class cn.jpush.** { *; }
         
-+ v2.0.5 及以上的版本由于引入了protobuf ，在上面基础之上增加排出混淆的配置。
++ v2.0.5 及以上的版本由于引入了protobuf 和 gson ，在上面基础之上增加排除混淆的配置。
 
 
         #==================gson==========================
@@ -112,17 +105,30 @@
 + 将备注为替换包名的部分，替换为当前应用程序的包名
 + 将AppKey替换为在Portal上注册该应用的的Key,例如（9fed5bcb7b9b87413678c407）
 
-**Eclipse中AndroidManifest 示例**
+**温馨提示**
+
+如果使用android studio, 可在AndroidManifest中引用applicationId的值，在build.gradle配置中 defaultConfig节点下配置，如：
 
 ```
-AndroidManifest.xml权限配置：
+defaultConfig {
+      applicationId "cn.jpush.example" // <--您应用的包名
+      ……
+ }
+
+```
+在AndroidManifest中使用 ${applicationId} 引用gradle中定义的包名
+
+**AndroidManifest 示例**
+
+```
+
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="您应用的包名"
-    android:versionCode="100"
-    android:versionName="1.0.0"
+    android:versionCode="216"
+    android:versionName="2.1.6"
     >
-    <uses-sdk android:minSdkVersion="11" android:targetSdkVersion="17" />
+    <uses-sdk android:minSdkVersion="9" android:targetSdkVersion="23" />
 
     <!-- Required -->
     <permission android:name="您应用的包名.permission.JPUSH_MESSAGE" android:protectionLevel="signature" />
@@ -147,8 +153,7 @@ AndroidManifest.xml权限配置：
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
-     
-应用包名及appkey替换：    
+         
     <application
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
@@ -254,153 +259,6 @@ AndroidManifest.xml权限配置：
 </manifest>
 ```
 
-**AndroidStudio中AndroidManifest 示例**
-```
-<?xml version="1.0" encoding="utf-8"?
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-     package="您应用的包名" 
-     android:versionCode="205"
-     android:versionName="2.0.5"
-     >
-     <uses-sdk android:minSdkVersion="11" android:targetSdkVersion="17" />
-     <!-- Required 自定义用来收发消息的相关权限 -->
-     <permission
-         android:name="${applicationId}.permission.JPUSH_MESSAGE"
-         android:protectionLevel="signature" />
-  
-     <!-- Required 一些系统要求的权限，如访问网络等-->
-     <uses-permission android:name="${applicationId}.permission.JPUSH_MESSAGE" />
-     <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
-     <uses-permission android:name="android.permission.INTERNET" />
-     <uses-permission android:name="android.permission.WAKE_LOCK" />
-     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
-     <uses-permission android:name="android.permission.VIBRATE" />
-     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
-     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> 
-  
-  
-     <!-- Optional for location -->
-     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
-     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-     <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
-     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
-  
-  
-     <application
-         android:icon="@drawable/ic_launcher"
-         android:label="@string/app_name">
-  
-  
-         <!-- Required SDK核心功能-->
-         <activity
-             android:name="cn.jpush.android.ui.PushActivity"
-             android:configChanges="orientation|keyboardHidden" 
-             android:theme="@android:style/Theme.NoTitleBar" 
-             android:exported="false">
-             <intent-filter>
-                 <action android:name="cn.jpush.android.ui.PushActivity" />
-                 <category android:name="android.intent.category.DEFAULT" />
-                 <category android:name="${applicationId}" />
-             </intent-filter>
-         </activity>
-  
-         <!-- Required SDK核心功能-->
-         <service
-             android:name="cn.jpush.android.service.DownloadService"
-             android:enabled="true"
-             android:exported="false" >
-         </service>
-  
-         <!-- Required SDK 核心功能-->
-         <!-- option since 2.0.5 可配置PushService，DaemonService,PushReceiver,AlarmReceiver的android:process参数 将JPush相关组件设置为一个独立进程 -->
-         <!-- 如：android:process=":remote" -->
-         <service
-             android:name="cn.jpush.android.service.PushService"
-             android:enabled="true"
-             android:exported="false">
-             <intent-filter>
-                 <action android:name="cn.jpush.android.intent.REGISTER" />
-                 <action android:name="cn.jpush.android.intent.REPORT" />
-                 <action android:name="cn.jpush.android.intent.PushService" />
-                 <action android:name="cn.jpush.android.intent.PUSH_TIME" />
-  
-             </intent-filter>
-         </service>
-  
-         <!-- Required SDK 核心功能 since 1.8.0 -->
-         <service
-             android:name="cn.jpush.android.service.DaemonService"
-             android:enabled="true"
-             android:exported="true">
-             <intent-filter >
-                 <action android:name="cn.jpush.android.intent.DaemonService" />
-                 <category android:name="${applicationId}"/>
-             </intent-filter>
-         </service>
-  
-         <!-- Required SDK核心功能-->
-         <receiver
-             android:name="cn.jpush.android.service.PushReceiver"
-             android:enabled="true"
-             android:exported="false">
-             <intent-filter android:priority="1000">
-                 <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED_PROXY" /> <!--Required 显示通知栏 -->
-                 <category android:name="${applicationId}" />
-             </intent-filter>
-             <intent-filter>
-                 <action android:name="android.intent.action.USER_PRESENT" />
-                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
-             </intent-filter>
-             <!-- Optional -->
-             <intent-filter>
-                 <action android:name="android.intent.action.PACKAGE_ADDED" />
-                 <action android:name="android.intent.action.PACKAGE_REMOVED" />
-                 <data android:scheme="package" />
-             </intent-filter>
-         </receiver>
-  
-         <!-- Required SDK核心功能-->
-         <receiver android:name="cn.jpush.android.service.AlarmReceiver" />
-  
-         <!-- User defined. 用户自定义的广播接收器-->
-         <receiver
-             android:name="您自己定义的Receiver"
-             android:enabled="true">
-             <intent-filter>
-                 <action android:name="cn.jpush.android.intent.REGISTRATION" /> <!--Required 用户注册SDK的intent-->
-                 <action android:name="cn.jpush.android.intent.MESSAGE_RECEIVED" /> <!--Required 用户接收SDK消息的intent-->
-                 <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED" /> <!--Required 用户接收SDK通知栏信息的intent-->
-                 <action android:name="cn.jpush.android.intent.NOTIFICATION_OPENED" /> <!--Required 用户打开自定义通知栏的intent-->
-                 <action android:name="cn.jpush.android.intent.ACTION_RICHPUSH_CALLBACK" /> <!--Optional 用户接受Rich Push Javascript 回调函数的intent-->
-                 <action android:name="cn.jpush.android.intent.CONNECTION" /><!-- 接收网络变化 连接/断开 since 1.6.3 -->
-                 <category android:name="${applicationId}" />
-             </intent-filter>
-         </receiver>
-  
-         <!-- Required . Enable it you can get statistics data with channel -->
-         <meta-data android:name="JPUSH_CHANNEL" android:value="developer-default"/>
-         <meta-data android:name="JPUSH_APPKEY" android:value="您应用applicationId对应的appKey" /> <!-- </>值来自开发者平台取得的AppKey-->
-     </application>
-</manifest> 
-
-```
-**温馨提示**
-
-其中applicationId为 build.gradle配置中 defaultConfig节点下配置，如：
-
-```
-defaultConfig {
-      applicationId "cn.jpush.example" // <--您应用的包名
-
- }
-
-```
-
 
 ### 必须权限说明
 
@@ -476,7 +334,7 @@ JPush SDK 提供的 API 接口，都主要集中在 cn.jpush.android.api.JPushIn
 
 #### 添加统计代码
 
-+ 参考文档： 统计分析 API
++ 参考文档： [统计分析 API](../../client/android_api/#api_2)
 
 #### 调用示例代码（参考 example 项目）
 
@@ -487,10 +345,10 @@ JPush SDK 提供的 API 接口，都主要集中在 cn.jpush.android.api.JPushIn
     
         public class ExampleApplication extends Application {
         @Override
-                public void onCreate() {
-                    super.onCreate();
-            JPushInterface.setDebugMode(true);
-            JPushInterface.init(this);
+            public void onCreate() {
+                super.onCreate();
+                JPushInterface.setDebugMode(true);
+                JPushInterface.init(this);
             }
         }
 
@@ -572,4 +430,4 @@ JPush Demo 是极光推送随压缩包提供的用法示例Demo，原本适用�
 
 邮件联系：<support@jpush.cn>
 
-问答社区：[http://www.jpush.cn/qa/](http://www.jpush.cn/qa/)
+问答社区：[极光社区](http://community.jpush.cn/)
