@@ -4,10 +4,10 @@
 
 ### 简要概述
 
-* 本API提供简单的接口去调用[JPush Push API](examples/push_example.php)
-* 本API提供简单的接口去调用[JPush Report API](examples/report_example.php)
-* 本API提供简单的接口去调用[JPush Device API](examples/device_example.php)
-* 本API提供简单的接口去调用[JPush Schedule API](examples/schedule_example.php)
+* 本API提供简单的接口去调用[JPush Push API](https://github.com/jpush/jpush-api-php-client/blob/master/examples/push_example.php)
+* 本API提供简单的接口去调用[JPush Report API](https://github.com/jpush/jpush-api-php-client/blob/master/examples/report_example.php)
+* 本API提供简单的接口去调用[JPush Device API](https://github.com/jpush/jpush-api-php-client/blob/master/examples/device_example.php)
+* 本API提供简单的接口去调用[JPush Schedule API](https://github.com/jpush/jpush-api-php-client/blob/master/examples/schedule_example.php)
 
 
 #### 快速安装
