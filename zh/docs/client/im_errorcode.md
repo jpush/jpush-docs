@@ -66,6 +66,11 @@
       <td>用户未在登录状态</td>
     </tr>
     <tr>
+      <td>863006</td>
+      <td>User repeat Login fault</td>
+      <td>重复登录的错误</td>
+    </tr>
+    <tr>
       <td>864001</td>
       <td>It is not a media message</td>
       <td>不是媒体消息</td>
