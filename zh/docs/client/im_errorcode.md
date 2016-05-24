@@ -399,6 +399,11 @@ JMessage 服务器端报的错误码。有可能出现在各平台的 SDK 里。
 			<td>参数错误，Request Body参数不符合要求;resend 值不符合要求;用户名或者密码不合法;群组Gid不合法</td>
 		</tr>
 		<tr >
+			<td>899006</td>
+			<td>gid invalid</td>
+			<td>Gid 不存在</td>
+		</tr>
+		<tr >
 			<td>899007</td>
 			<td>Missing authen info</td>
 			<td>校验信息为空</td>

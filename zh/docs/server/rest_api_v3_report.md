@@ -93,7 +93,7 @@ curl -v https://report.jpush.cn/v3/messages?msg_ids=269978303 -u "7d431e42dfa6a6
       {"apns_sent":2,"apns_target":2,"click":null,"target":10,"received":8,"msg_click":5},
    
    "winphone":
-      {"mpns_target": 100,"mpns_target": 100,"mpns_target": 100,},
+      {"mpns_target": 100,"mpns_sent": 100,"click": 100,},
    
    "msg_id":269978303
   }
