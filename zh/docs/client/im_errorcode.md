@@ -723,6 +723,46 @@ JMessage 服务器端报的错误码。有可能出现在各平台的 SDK 里。
 			<td></td>
 			<td>用户移除好友出黑名单时，成员列表为空，操作失败</td>
 		</tr>
+		<tr >
+			<td>831001</td>
+			<td>member already setted</td>
+			<td>用户添加成员消息免打扰时，该成员已处于免打扰状态</td>
+		</tr>
+		<tr >
+			<td>832001</td>
+			<td>member never setted</td>
+			<td>用户删除成员消息免打扰时，该成员不处于免打扰状态</td>
+		</tr>
+		<tr >
+			<td>833001</td>
+			<td>group not exist</td>
+			<td>用户添加群组消息免打扰时，该群组不存在</td>
+		</tr>
+		<tr >
+			<td>833002</td>
+			<td>user not in group</td>
+			<td>用户添加群组消息免打扰时，用户不存在该群组中</td>
+		</tr>
+		<tr >
+			<td>833003</td>
+			<td>group already setted</td>
+			<td>用户添加群组消息免打扰时，该群组已处于免打扰状态</td>
+		</tr>
+		<tr >
+			<td>834001</td>
+			<td>group never setted</td>
+			<td>用户删除群组消息免打扰时，该群组不处于免打扰状态</td>
+		</tr>
+		<tr >
+			<td>835001</td>
+			<td>already setted</td>
+			<td>用户添加全局消息免打扰时，该用户已处于全局免打扰状态</td>
+		</tr>
+		<tr >
+			<td>836001</td>
+			<td>never setted</td>
+			<td>用户删除全局消息免打扰时，该用户不处于全局免打扰状态</td>
+		</tr>
 </table>
 </div>
 
