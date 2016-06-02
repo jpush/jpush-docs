@@ -49,6 +49,7 @@ pages:
   - 'REST API v2 - Report': 'server/rest_api_v2_report.md'
   - 'IM REST API': 'server/rest_api_im.md'
   - 'IM REST Report': 'server/rest_api_im_report.md'
+  - '短信 REST API': 'server/rest_api_jsms.md'
   - 'HTTP 状态码': 'server/http_status_code.md'
   - 'Java SDK': 'server/java_sdk.md'
   - 'Python SDK': 'server/python_sdk.md'

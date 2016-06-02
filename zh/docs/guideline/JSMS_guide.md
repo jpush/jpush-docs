@@ -3,7 +3,7 @@
 极光面向开发者提供短信验证码服务，主要包括：
 
 + SDK 短信验证功能，满足 App 短信验证需求
-+ REST API 短信验证，主要满足网站和其他终端访问需求。（coming soon）
++ REST API 短信验证，主要满足网站和其他终端访问需求。
 
 ##主要场景
 + 用户注册
@@ -23,3 +23,4 @@
 ##集成指南
 * [JSMS Android SDK 集成指南](/guideline/Android_SMS_SDK.md)
 * [JSMS iOS SDK 集成指南](/guideline/iOS_SMS_SDK.md)
+* [JSMS Rest API ](/server/rest_api_jsms.md)
