@@ -7,9 +7,7 @@
 
 >  验证短信验证码
 
-
 >  基于HTTPS请求
-
 
 >  使用 HTTP Basic Authentication 的方式做访问授权
 
@@ -30,12 +28,8 @@
 
 ##### 请求示例
 
-```plain
-
+```
 curl --insecure -X POST -v https://api.sms.jpush.cn/v1/codes -H "Content-Type: application/json" -u "7d431e42dfa6a6d693ac2d04:5e987ac6d2e04d95a9d8f0d1" -d '{"mobile":"18611111111","temp_id":1}'
-
-> POST /v1/codes HTTP/2.0
-> Authorization: Basic N2Q0MzFlNDJkZmE2YTZkNjkzYWMyZDA0OjVlOTg3YWM2ZDJlMDRkOTVhOWQ4ZjBkMQ==
 
 ```
 
@@ -48,8 +42,7 @@ curl --insecure -X POST -v https://api.sms.jpush.cn/v1/codes -H "Content-Type: a
 
 ##### 返回示例
 
-```plain
-
+```
 < HTTP/1.1 200 OK
 < Content-Type: application/json
 {"msg_id":"06890980-6789-4054-bba9-90fb66ab2fce"}
@@ -60,7 +53,7 @@ curl --insecure -X POST -v https://api.sms.jpush.cn/v1/codes -H "Content-Type: a
 
 HTTP Header（头）里加一个字段（Key/Value对）：
 
-```plain
+```
 Authorization: Basic base64_auth_string
 ```
 
@@ -82,10 +75,9 @@ Authorization: Basic base64_auth_string
 
 ##### 请求示例
 
-```plain
+```
 curl --insecure -X POST -v https://api.sms.jpush.cn/v1/codes/06890980-6789-4054-bba9-90fb66ab2fce/valid -d '{"code":"123456"}'
 
-> POST /v1/codes/06890980-6789-4054-bba9-90fb66ab2fce/valid HTTP/2.0
 ```
 
 ##### 参数
@@ -103,10 +95,10 @@ curl --insecure -X POST -v https://api.sms.jpush.cn/v1/codes/06890980-6789-4054-
         "is_valid":true
     }
     ```
+    
 - 验证不通过
 
     ```json
-
     {
         "is_valid":false
         "error":{
@@ -114,7 +106,6 @@ curl --insecure -X POST -v https://api.sms.jpush.cn/v1/codes/06890980-6789-4054-
             "message":"***"
         }
     }
-
     ```
 
 ### 返回码
