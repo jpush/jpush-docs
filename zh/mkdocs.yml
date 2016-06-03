@@ -3,7 +3,7 @@ site_author: JPush Offical
 site_url: http://docs.jpush.io
 site_favicon: favicon.ico
 site_description: JPush, JMessage, 极光推送, 极光IM, Android Push, Android 推送, 安卓推送, iOS Push, APNs, Push Notification
-copyright: Copyright 2011-2016, jiguang.cn, All Rights Reserved. <br />粤ICP备12056275号-5 深圳市和讯华谷信息技术有限公司
+copyright: Copyright 2011-2016, jpush.cn, All Rights Reserved. <br />粤ICP备12056275号-5 深圳市和讯华谷信息技术有限公司
 theme: bootstrap
 
 pages:
