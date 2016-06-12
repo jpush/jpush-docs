@@ -110,6 +110,7 @@ POST /v3/devices/{registration_id}
 ###### Request Params
 + tags:  支持add, remove 或者空字符串。当tags参数为空字符串的时候，表示清空所有的 tags；add/remove 下是增加或删除指定的 tag；
 + alias:  更新设备的别名属性；当别名为空串时，删除指定设备的别名；
++ mobile: 设备关联的手机号码
 
 ##### Example Response
 ###### Response Header
