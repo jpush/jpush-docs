@@ -1,4 +1,47 @@
 # 最近更新
+
+### JMessage Android SDK v1.2.5
+
+#### 更新时间
++ 2016-06-12
+
+#### JMessage SDK Change Log
+
+##### New Feature
++ Conversation对象新增设置本地未读消息数的接口
++ 新增接口：
+	+ conversation.setUnReadMessageCnt
+	
+##### Bug Fix
+
++ 修复：群成员退群时，其他成员处显示的提示文字不正确
++ 修复：群主退群后，本地群主信息没有更新。
++ 修复：用户首次收到消息，打印收到的message 中targetName为空
++ 修复：概率出发送群聊消息，应用崩溃
++ 修复：登录一个帐号A，快速再登录帐号B概率出现数据库操作异常
++ 修复：dev api移除群聊免打扰后，sdk没有更新状态
++ 修复：SDK接收到group event后messageid字段值为0
++ 优化：有大量群成员的群组中，数据的处理效率
+
+
+#### JChat Change Log
++ 适配 JMessage SDK 1.2.5
+								
+##### Bug Fix
+
++ 修复：1.2.9下拉刷新bug
++ 修复：1.2.9收到消息后可能出现会话丢失的bug
++ 优化：收到大量离线消息后UI卡顿现象
+
+#### 升级指南
+
++ jar包更新至jmessage-sdk-1.2.5.jar更新时需删除老版本jar包。
++ 将so库更新至 libjpush211.so 同时删除原来老版本so。注意不同的cpu型号对应的结构
++ 由于富媒体的展示需求，SDK 中增加一个res文件夹存放资源文件。用户需将对应文件夹下的资源文件放入工程的目录中。
++ 如果是从更早起的版本升级过来，建议参考 SDK下载包最新版本的 example 来更新 AndroidManifest.xml 文件配置。
+
+
+
 ### JPush iOS SDK v2.1.7
 
 #### 更新时间
