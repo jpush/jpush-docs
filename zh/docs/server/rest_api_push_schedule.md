@@ -47,8 +47,8 @@ HTTP Header（头）里加一个字段（Key/Value对）：
 }
   
 { 
-  "name": "&#23450;&#26102;&#25512;&#36865;",
-  "enabled": true&#65292;
+  "name": "Schedule_Name",
+  "enabled": true,
   "trigger": {
      "periodical": {
           "start":"2014-09-17 12:00:00",
