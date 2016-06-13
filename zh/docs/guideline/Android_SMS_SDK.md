@@ -29,13 +29,15 @@
 -keep class cn.jpush.sms.listener.** {*;}
 -keep class cn.jpush.sms.utils.DeviceInfo {*;}
 
+
 #========================gson & protobuf================================
 -dontwarn com.google.**
--keep class com.google.gson.jpush.annotations.Until {*;}
+-keep class com.google.gson.jsms.annotations.Until {*;}
 
 #Gson specific classes
 -keep class sun.misc.Unsafe { *; }
--keep public abstract class com.google.gson.jpush.internal.UnsafeAllocator { *; }
+-keep public abstract class com.google.gson.jsms.internal.UnsafeAllocator { *; }
+
 
 ```
 

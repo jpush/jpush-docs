@@ -25,7 +25,7 @@ img[alt=jpush_weblogic] { width: 800px; }
 <dependency>
     <groupId>cn.jpush.api</groupId>
     <artifactId>jpush-client</artifactId>
-    <version>3.1.3</version>
+    <version>3.2.9</version>
 </dependency>
 ```
 #### jar 包方式

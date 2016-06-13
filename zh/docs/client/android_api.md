@@ -613,6 +613,11 @@ SDK 对自定义消息，只是传递，不会有任何界面上的展示。
 			<td>总长度最多 1K 字节</td>
 		</tr>
 		<tr >
+			<td>6009</td>
+			<td>未知错误</td>
+			<td>由于权限问题，导致的PushService启动异常。</td>
+		</tr>
+		<tr >
 			<td>6011</td>
 			<td>10s内设置tag或alias大于10次</td>
 			<td>短时间内操作过于频繁</td>
@@ -960,91 +965,6 @@ public static void setPushNotificationBuilder(Integer notificationBuilderId, Bas
 JPushInterface.init(context);
 JPushInterface.setLatestNotificationNumber(context, 3);
 ```	
-
-
-## 富文本页面 Javascript 回调API
-### 支持的版本
-
-开始的版本：1.4.0。
-
-### 功能说明
-富媒体推送通知时，用户可以用自定义的Javascript 函数来控制页面，如关闭当前页面，点击按钮跳转到指定的 Activity，通知应用程序做一些指定的动作等。
-
-此 API 提供的回调函数包括：关闭当前页面，打开应用的主 Activity, 根据 Activity 名字打开对应的 Activity，以广播的形式传递页面参数到应用程序等功能。
-
-
-### API - 关闭当前页面
-	JPushWeb.close();
-在HTML中调用此函数后,当前页面将会被关闭。
-
-### API - 打开主Activity
-
-	JPushWeb.startMainActivity(String params)
-	
-在HTML中调用此函数后,会打开程序的主Activity， 并在对应的 Intent 传入参数 ”params“ ，Key 为 JPushInterface.EXTRA_EXTRA。
-
-对应 Activity 获取 params 示例代码：
-
-```
-Intent intent = getIntent();
-if (null != intent ) {
-    String params = intent.getStringExtra(JPushInterface.EXTRA_EXTRA);
-}
- 
-```
-
-### API - 触发App里执行动作
-
-	JPushWeb.triggerNativeAction(String params)
-在HTML中调用此函数后,会以广播的形式传递 ”params“ 到应用程序并触发客户端动作。
-
-客户端 AndroidManifest.xml 配置：
-
-```
-<receiver  android:name="MyReceiver">
-     ................
-     <intent-filter>
-    <action android:name="cn.jpush.android.intent.ACTION_RICHPUSH_CALLBACK" /> 
-    <category android:name="com.example.jpushdemo" />
-     </intent-filter>
-</receiver>
-```	
- 在 MyReceiver 中获取 ”params“  代码示例：
-
-```
-if (JPushInterface.ACTION_RICHPUSH_CALLBACK.equals(intent.getAction())) {
-        Log.d(TAG, "用户收到到RICH PUSH CALLBACK: " + bundle.getString(JPushInterface.EXTRA_EXTRA));
-        //在这里根据 JPushInterface.EXTRA_EXTRA 的内容触发客户端动作，比如打开新的Activity 、打开一个网页等.     
-   }
-```
-
-### HTML 代码示例 
-```
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
- <head>
-  <title>JPush Webview Test</title>
-  <script>
-       function clickButton() {
-         JPushWeb.close();
-       }
- 
-      function openUrl() {
-         var json = "{'action':'open', 'url':'www.jpush.cn'}";
-         JPushWeb.triggerNativeAction(json);
-         JPushWeb.close(); //客服端在广播中收到json 后，可以打开对应的URL。
-      }
- </script>
- </head>
- <body>
-     <button onclick="javascript:clickButton(this);return false;">Close</button>
-     <button onclick="javascript:JPushWeb.startMainActivity('test - startMainActivity');return false;">StartMainActivity</button>
-     <button onclick="javascript:JPushWeb.triggerNativeAction('test - triggerNativeAction');Javascript:JPushWeb.close();">triggerNativeAction and Close current webwiew</button>
-     <button onclick="javascript:JPushWeb.startActivityByName('com.example.jpushdemo.TestActivity','test - startActivityByName');">startActivityByName</button>
-     <button onclick="javascript:openUrl();">open a url</button>
- </body>
-</html>
-```
 
 
 ## 客户端错误码定义

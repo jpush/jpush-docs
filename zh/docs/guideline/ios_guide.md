@@ -99,20 +99,38 @@ PushConfig.plist文件示例图:
 
 ### 6、添加代码
 
-<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">	<p>2.1.0版本开始,API类名为JPUSHService，不再使用原先的APService。	</div>
+<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">	<p>2.1.0版本开始,API类名为JPUSHService，不再使用原先的APService。
+</div>
+
 
 
 ####允许XCode7支持Http传输方法
 
-如果用的是Xcode7时，需要在App项目的plist手动加入以下key和值以支持http传输:
+如果用的是Xcode7时，需要在App项目的plist手动配置下key和值以支持http传输:
+
+**选择1：根据域名配置**
+
+* 在项目的info.plist中添加一个Key：NSAppTransportSecurity，类型为字典类型。
+* 然后给它添加一个NSExceptionDomains，类型为字典类型；
+* 把需要的支持的域添加給NSExceptionDomains。其中jpush.cn作为Key，类型为字典类型。
+* 每个域下面需要设置2个属性：NSIncludesSubdomains、NSExceptionAllowsInsecureHTTPLoads。
+两个属性均为Boolean类型，值分别为YES、YES。
+
+如图：
+
+![jpush_ios][6]
+
+
+**选择2：全局配置**
 
 ```
   <key>NSAppTransportSecurity</key> 
-      <dict> 
-  <key>NSAllowsArbitraryLoads</key> 
-     	<true/> 
-    </dict>
+  <dict> 
+  	<key>NSAllowsArbitraryLoads</key> 
+  	<true/> 
+  </dict>            
 ```
+
 
 
 #### 集成所需API
@@ -200,7 +218,7 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
                                           categories:nil];
   }
   //Required
-  //如需兼容旧版本的方式，请依旧使用[JPUSHService setupWithOption:launchOptions]方式初始化和同时使用pushConfig.plist文件声明appKey等配置内容。
+  // 如需继续使用pushConfig.plist文件声明appKey等配置内容，请依旧使用[JPUSHService setupWithOption:launchOptions]方式初始化。
   [JPUSHService setupWithOption:launchOptions appKey:appKey
                         channel:channel
                apsForProduction:isProduction
@@ -293,3 +311,4 @@ extern NSString * const kJPFNetworkDidReceiveMessageNotification; // 收到自�
 [3]: ../../client_sdks/ios_api
 [4]: mailto:support@jpush.cn
 [5]: http://www.jpush.cn/qa/
+[6]: image/ios_http.png
