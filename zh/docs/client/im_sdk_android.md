@@ -49,7 +49,7 @@ SDK 侧可以发起注册用户，也可由服务器端批量发起注册。
 
 ### API 列表
 
-以下列出主要的 JMessage SDK 提供的 API。完整的 API 与 类信息，请访问：<a href="http:/docs.jpush.io/client/im_android_api_docs/" target="_blank">API Java docs</a>
+以下列出主要的 JMessage SDK 提供的 API。完整的 API 与 类信息，请访问：<a href="http:/docs.jpush.io/client/im_android_api_docs/index.html" target="_blank">API Java docs</a>
 
 ####SDK初始化
 在调用IM其他接口前必须先调此接口初始化SDK，推荐在application类中调用。
@@ -498,11 +498,7 @@ public void onEventMainThread(EventEntity event){
 
 </br>
 
-用户下线事件UserLogoutEvent
-
-**已过时，请使用LoginStateChangeEvent代替**
-
-**已过时，请使用LoginStateChangeEvent代替**
+用户下线事件UserLogoutEvent **(已过时，请使用LoginStateChangeEvent代替)**
 
 <div class="table-d" align="left" >
   <table border="1" width = "100%">
@@ -521,11 +517,7 @@ public void onEventMainThread(EventEntity event){
 
 </br>
 
-用户被删除事件UserDeletedEvent
-
-**已过时，请使用LoginStateChangeEvent代替**
-
-**已过时，请使用LoginStateChangeEvent代替**
+用户被删除事件UserDeletedEvent **(已过时，请使用LoginStateChangeEvent代替)**
 
 <div class="table-d" align="left" >
   <table border="1" width = "100%">
