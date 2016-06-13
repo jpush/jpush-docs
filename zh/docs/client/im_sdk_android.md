@@ -498,11 +498,7 @@ public void onEventMainThread(EventEntity event){
 
 </br>
 
-用户下线事件UserLogoutEvent
-
-**已过时，请使用LoginStateChangeEvent代替**
-
-**已过时，请使用LoginStateChangeEvent代替**
+用户下线事件UserLogoutEvent **(已过时，请使用LoginStateChangeEvent代替)**
 
 <div class="table-d" align="left" >
   <table border="1" width = "100%">
@@ -521,11 +517,7 @@ public void onEventMainThread(EventEntity event){
 
 </br>
 
-用户被删除事件UserDeletedEvent
-
-**已过时，请使用LoginStateChangeEvent代替**
-
-**已过时，请使用LoginStateChangeEvent代替**
+用户被删除事件UserDeletedEvent **(已过时，请使用LoginStateChangeEvent代替)**
 
 <div class="table-d" align="left" >
   <table border="1" width = "100%">
