@@ -17,7 +17,7 @@
                                           </ul>
                                     </td>
                                     <td width="180" style="text-align: center;vertical-align: middle">
-                                          <a href="https://www.jpush.cn/common/downloads/sdk/im_android/" style="display: inline-block; height: 30px; line-height: 30px; width: 100px; border: 1px solid #ccc;border-radius: 3px;color: #999;font-size: 12px;">
+                                          <a href="https://www.jpush.io/common/downloads/sdk/im_android" style="display: inline-block; height: 30px; line-height: 30px; width: 100px; border: 1px solid #ccc;border-radius: 3px;color: #999;font-size: 12px;">
                                                 <i style="display: inline-block; width: 11px; height: 11px; background: url(../image/resource_sdk_download.png) 0 0;vertical-align: middle;"></i>&nbsp;&nbsp;下载
                                           </a>
                                     </td>
@@ -33,7 +33,7 @@
                                           </ul>
                                     </td>
                                     <td width="180" style="text-align: center;vertical-align: middle">
-                                          <a href="https://www.jpush.cn/common/downloads/sdk/im_ios/" style="display: inline-block; height: 30px; line-height: 30px; width: 100px; border: 1px solid #ccc;border-radius: 3px;color: #999;font-size: 12px;">
+                                          <a href="https://www.jpush.io/common/downloads/sdk/im_ios" style="display: inline-block; height: 30px; line-height: 30px; width: 100px; border: 1px solid #ccc;border-radius: 3px;color: #999;font-size: 12px;">
                                                 <i style="display: inline-block; width: 11px; height: 11px; background: url(../image/resource_sdk_download.png) 0 0;vertical-align: middle;"></i>&nbsp;&nbsp;下载
                                           </a>
                                     </td>
