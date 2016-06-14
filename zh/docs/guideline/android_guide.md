@@ -49,14 +49,14 @@
 ## SDK集成步骤
 ### 导入 SDK 开发包到你自己的应用程序项目
 
-+ 解压缩 jpush-android-release-2.x.y.zip 集成压缩包
-+ 复制 libs/jpush-sdk-2.x.y.jar 到工程 libs/ 目录下
-+ 复制 libs/(cpu-type)/libjpush2xy.so 到你的工程中存放对应cpu类型的目录下
-+ 复制 res/ 中的资源文件到你的工程中 res/ 对应的目录下
++ 解压缩 jpush-android-release-2.x.y.zip 集成压缩包。
++ 复制 libs/jpush-sdk-2.x.y.jar 到工程 libs/ 目录下。
++ 复制 libs/(cpu-type)/libjpush2xy.so 到你的工程中存放对应cpu类型的目录下。
++ 复制 res/ 中drawable-hdpi, raw, layout, values文件夹中的资源文件到你的工程中 res/ 对应的目录下。
 
 ***说明 1***：若没有res/drawable-xxxx/jpush_notification_icon这个资源默认使用应用图标作为通知icon，在5.0以上系统将应用图标作为statusbar icon可能显示不正常，用户可定义没有阴影和渐变色的icon替换这个文件，文件名不要变。
 
-***说明 2***：如果要在gradle中配置 shrinkResources true 用来清理多余资源，请在res/raw/ 中添加一个keep.xml来描述保留JPushSDK中的必要资源。示例请参考版本包中的 res/raw/keep.xml文件。(2.1.5版本以上)
+***说明 2***：如果要在gradle中配置 shrinkResources true 用来清理多余资源，请在res/raw/ 中添加一个keep.xml来描述保留JPushSDK中的必要资源。示例请参考版本包中的 res/raw/keep.xml文件。(2.1.5版本及以上)
 
 ### 集成 JPush Android SDK 的混淆
 
