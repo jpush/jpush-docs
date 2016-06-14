@@ -1,10 +1,10 @@
-# 极光IM SDK - Android
+<h1>极光IM SDK - Android</h1>
 
 + [极光IM 客户端 DEMO 下载](../../resources_jmessage/)
 + [极光IM Android API Java docs](../client/im_android_api_docs/)
 + [极光IM Android 错误码](../client/im_errorcode/#jmessage-android)
 
-## 概述
+### 概述
 
 极光IM（英文名JMessage） SDK 基于 JPush 推送 SDK 开发，提供了 Push SDK 的完整功能，并提供 IM 即时通讯功能。
 
@@ -12,7 +12,7 @@ App 集成了 IM SDK 就不应再集成 JPush SDK（只提供 Push 功能的 SDK
 
 要了解极光IM的概述信息，请参考文档：[极光IM指南](../../guideline/jmessage_guide)
 
-### 消息
+#### 消息
 
 极光IM 最核心的功能是 IM 即时消息的功能。
 
@@ -22,7 +22,7 @@ App 集成了 IM SDK 就不应再集成 JPush SDK（只提供 Push 功能的 SDK
 - 用户未在线时保存离线消息；
 - 基于 JPush 原有的大容量稳定的长连接、大容量消息并发能力；
 
-### 用户
+#### 用户
 
 开发者的用户，基于 username / password 注册到 JMessage。
 
@@ -34,7 +34,7 @@ SDK 侧可以发起注册用户，也可由服务器端批量发起注册。
 
 可选让用户把头像等用户属性更新到 JMessage。
 
-### 群组
+#### 群组
 
 可以把多个 username 加入到一个群组里，向群组发群聊消息。
 
@@ -42,16 +42,16 @@ SDK 侧可以发起注册用户，也可由服务器端批量发起注册。
 - 加群组成员、移除群组成员；
 
 
-### 好友
+#### 好友
 + 开发中，暂未发布
 
 
 
-## API 列表
+### API 列表
 
-以下列出主要的 JMessage SDK 提供的 API。完整的 API 与 类信息，请访问：<a href="http://docs.jpush.io/client/im_android_api_docs/" target="_blank">API Java docs</a>
- 
-### SDK初始化
+以下列出主要的 JMessage SDK 提供的 API。完整的 API 与 类信息，请访问：<a href="http:/docs.jpush.io/client/im_android_api_docs/" target="_blank">API Java docs</a>
+
+####SDK初始化
 在调用IM其他接口前必须先调此接口初始化SDK，推荐在application类中调用。
 ```
 public static synchronized void init(Context context)
@@ -60,9 +60,9 @@ public static synchronized void init(Context context)
 
 + Context context 应用程序上下文对象。
 
-### 注册与登录
+#### 注册与登录
 
-#### 注册
+##### 注册
 ```
   public static void register(String username, String password, BasicCallback callback);
 ```
@@ -73,7 +73,7 @@ public static synchronized void init(Context context)
 + String password 用户密码
 + BasicCallback callback 结果回调
 
-#### 登录
+##### 登录
 ```
   public static void login(String username, String password, BasicCallback callback);
 ```
@@ -84,7 +84,7 @@ public static synchronized void init(Context context)
 + String password 用户密码
 + BasicCallback callback 结果回调
 
-#### 退出登录
+##### 退出登录
 ```
   public static void logout();
 ```
@@ -93,9 +93,9 @@ public static synchronized void init(Context context)
 
 - 无
 
-### 用户属性维护
+#### 用户属性维护
 
-#### 获取用户信息
+##### 获取用户信息
 ```
   public static void getUserInfo(String username, GetUserInfoCallback callback);
 ```
@@ -137,7 +137,7 @@ public static synchronized void init(Context context)
 
 + UserInfo  当前登录用户的用户信息。
 
-#### 更新用户信息
+##### 更新用户信息
 ```
   public static void updateMyInfo(UserInfo.Field updateField, UserInfo info, BasicCallback callback);
 ```
@@ -153,7 +153,7 @@ public static synchronized void init(Context context)
 + UserInfo userInfo 待更新的用户信息（对象）。SDK将根据field参数来判断需要将哪个属性更新到服务器上去。
 + BasicCallback callback 结果回调
 
-#### 更新用户密码
+##### 更新用户密码
 ```
   public static void updateUserPassword(String oldPassword, String newPassword, BasicCallback callback);
 ```
@@ -164,7 +164,7 @@ public static synchronized void init(Context context)
 + String newPassword 更新后密码
 + BasicCallback callback 结果回调
   
-#### 更新用户头像
+##### 更新用户头像
 ```
   public static void updateUserAvatar(File avatar, BasicCallback callback);
 ```
@@ -175,9 +175,9 @@ public static synchronized void init(Context context)
 + BasicCallback callback 结果回调
 
 
-### 会话与发送消息
+#### 创建消息
 
-#### 创建文字消息
+##### 创建文字消息
 ```
  /**
   * 创建一条单聊文本消息
@@ -198,7 +198,7 @@ public static Message createSingleTextMessage(String username, String text)
 public static Message createGroupTextMessage(long groupID, String text)
 ```
 
-####创建图片消息
+##### 创建图片消息
 ```
  /**
   * 创建一条单聊图片信息
@@ -249,7 +249,7 @@ public static Message createGroupVoiceMessage(long groupID,
   File voiceFile, int duration) throws FileNotFoundException
 ```
 
-#### 创建自定义消息
+##### 创建自定义消息
 ```
  /**
   * 创建一条单聊自定义消息
@@ -283,7 +283,9 @@ public static Message createGroupCustomMessage(long groupID,
 + Message message 消息（对象）
 
 
-#### 获取会话列表
+#### 本地会话管理
+
+##### 获取会话列表
 
 从本地数据库取得。同步返回。
 ```
@@ -297,7 +299,7 @@ public static Message createGroupCustomMessage(long groupID,
 
 + `List<Conversation>` 会话列表。
 
-#### 获取单个单聊会话
+##### 获取单个单聊会话
 获取单聊会话信息，默认获取本appkey下username的单聊会话。
 ```
   public static Conversation getSingleConversation(String username);
@@ -310,7 +312,7 @@ public static Message createGroupCustomMessage(long groupID,
 
 - 根据参数匹配得到的单聊会话对象。
 
-#### 获取单个单聊会话（跨应用）
+##### 获取单个单聊会话（跨应用）
 获取与指定appkey下username的单聊回话信息,如果appkey为空则默认取本应用appkey下对应username的会话。
 
 ```
@@ -327,7 +329,7 @@ public static Message createGroupCustomMessage(long groupID,
 - 根据参数匹配得到的单聊会话对象。
 
 
-#### 获取单个群聊会话
+##### 获取单个群聊会话
 ```
   public static Conversation getGroupConversation(long groupID);
 ```
@@ -343,7 +345,7 @@ public static Message createGroupCustomMessage(long groupID,
 
 
   
-#### 删除单个单聊会话
+##### 删除单个单聊会话
 删除单聊的会话，同时删除掉本地聊天记录。默认删除本appkey下username的会话
 ```  
   public static boolean deleteSingleConversation(String username);
@@ -359,7 +361,7 @@ public static Message createGroupCustomMessage(long groupID,
 
 
 
-#### 删除单个单聊会话（跨应用）
+##### 删除单个单聊会话（跨应用）
 删除与指定appkey下username的单聊的会话，同时删除掉本地聊天记录。,如果appkey为空则默认尝试删除本应用appkey下对应username的会话。
 ```  
   public static boolean deleteSingleConversation(String username,String appkey);
@@ -374,7 +376,7 @@ public static Message createGroupCustomMessage(long groupID,
 
 - 是否删除成功。
 
-#### 删除单个群聊会话
+##### 删除单个群聊会话
 ```  
   public static boolean deleteGroupConversation(long groupID);
 ```
@@ -496,11 +498,7 @@ public void onEventMainThread(EventEntity event){
 
 </br>
 
-用户下线事件UserLogoutEvent
-
-**已过时，请使用LoginStateChangeEvent代替**
-
-**已过时，请使用LoginStateChangeEvent代替**
+用户下线事件UserLogoutEvent **(已过时，请使用LoginStateChangeEvent代替)**
 
 <div class="table-d" align="left" >
   <table border="1" width = "100%">
@@ -519,11 +517,7 @@ public void onEventMainThread(EventEntity event){
 
 </br>
 
-用户被删除事件UserDeletedEvent
-
-**已过时，请使用LoginStateChangeEvent代替**
-
-**已过时，请使用LoginStateChangeEvent代替**
+用户被删除事件UserDeletedEvent **(已过时，请使用LoginStateChangeEvent代替)**
 
 <div class="table-d" align="left" >
   <table border="1" width = "100%">
@@ -617,10 +611,10 @@ class MessageEventReceiver extends Activity{
             //群成员加群事件
             break;
             case group_member_removed:
-            //群成员被踢事件（只有被踢的用户能收到此事件）
+            //群成员被踢事件
             break;
             case group_member_exit:
-            //群成员退群事件（已弃用）
+            //群成员退群事件
             break;
         }
         break;
@@ -683,7 +677,7 @@ class UserLogoutEventReceiver extends Activity{
 
 
 
-#### 群组维护
+#### 群组信息维护
 
 ##### 创建群组
 ```
@@ -797,7 +791,7 @@ public abstract void gotResult(int responseCode, String responseMessage,
 + List members 成员列表(username)。
 
 
-#### 黑名单相关
+#### 黑名单管理
 ##### 将用户加入黑名单
 ```
 public static void addUsersToBlacklist(List<String> usernames, BasicCallback callback)
@@ -832,7 +826,7 @@ public static void getBlacklist(GetBlacklistCallback callback)
 + `List<UserInfo>` userInfos  被拉入黑名单的用户的UserInfo
 
 
-#### 通知栏相关
+#### 通知栏管理
 ##### 设置通知展示类型
 ```
 public static void setNotificationMode(int mode);
