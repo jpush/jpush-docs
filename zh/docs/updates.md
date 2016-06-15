@@ -1,4 +1,26 @@
 # 最近更新
+### JMessage iOS SDK v2.1.1
+
+#### 更新时间
+* 2016-06-15
+
+#### 版本号
+* JMessage SDK 2.1.1
+* JChat 1.1.0b1893
+
+#### Change Log
+
++ 新增：对IPv6网络的支持。
+
+#### 升级提示
+
++ 建议升级！
+
+#### 升级指南
++ 使用新版本的JMessage.framework文件替换原工程下的同名旧文件
+
+
+
 
 ### JMessage Android SDK v1.2.5
 
