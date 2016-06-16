@@ -363,6 +363,37 @@ JMSGCompletionHandler 有 2 个参数：
 ```
 
 
+#### 免打扰设置
+
+* JMessage
+```
+//免打扰列表
++ (void)noDisturbList:(JMSGCompletionHandler)handler;
+
+//判断是否设置全局免打扰
++ (BOOL)isSetGlobalNoDisturb;
+
+//设置是否全局免打扰
++ (void)setIsNoDisturb:(BOOL)isNoDisturb handler:(JMSGCompletionHandler)handler;
+```
+
+* JMSGUser
+```
+//该用户是否被设置为免打扰
+@property(nonatomic, assign, readonly) BOOL isNoDisturb;
+
+//设置用户消息免打扰
+- (void)setIsNoDisturb:(BOOL)isNoDisturb handler:(JMSGCompletionHandler)handler;
+```
+
+* JMSGGroup
+```
+//该群组是否被设置为免打扰
+@property(nonatomic, assign, readonly) BOOL isNoDisturb;
+
+//设置群组消息免打扰
+- (void)setIsNoDisturb:(BOOL)isNoDisturb handler:(JMSGCompletionHandler)handler;
+```
 
 ### Example 代码样例
 
