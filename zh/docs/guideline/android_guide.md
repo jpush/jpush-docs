@@ -58,6 +58,21 @@
 
 ***说明 2***：如果要在gradle中配置 shrinkResources true 用来清理多余资源，请在res/raw/ 中添加一个keep.xml来描述保留JPushSDK中的必要资源。示例请参考版本包中的 res/raw/keep.xml文件。(2.1.5版本及以上)
 
+***说明 3***：使用android studio的开发者，如果使用jniLibs文件夹导入so文件，则仅需将所有cpu类型的文件夹拷进去；如果将so文件添加在module的libs文件夹下，注意在module的gradle配置中添加一下配置：
+
+       
+        android {
+            ......
+            sourceSets {
+                main {
+                    jniLibs.srcDirs = ['libs']
+                    ......
+                }
+                ......
+            }
+            ......
+        }
+
 ### 集成 JPush Android SDK 的混淆
 
 + 请下载4.x及以上版本的[proguard.jar](http://sourceforge.net/projects/proguard/files/proguard/)， 并替换你Android Sdk "tools\proguard\lib\proguard.jar"
