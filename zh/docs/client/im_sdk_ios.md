@@ -318,9 +318,9 @@ JMSGCompletionHandler 有 2 个参数：
 ```
 
 
-### 针对跨应用的变更
+### 针对跨应用
 
-* Converstaion
+#### JMSGConverstaion
 ```
 // 获取跨应用单聊会话
 + (JMSGConversation * JMSG_NULLABLE)singleConversationWithUsername:(NSString *)username
@@ -340,7 +340,7 @@ JMSGCompletionHandler 有 2 个参数：
 
 ```
 
-* Message
+#### JMSGMessage
 ```
 // 消息发送目标应用
 @property(nonatomic, strong, readonly) NSString *targetAppKey;
@@ -350,7 +350,7 @@ JMSGCompletionHandler 有 2 个参数：
 
 ```
 
-* User
+#### JMSGUser
 ```
 // 批量获取跨应用的用户信息
 + (void)userInfoArrayWithUsernameArray:(NSArray JMSG_GENERIC(__kindof NSString *)*)usernameArray
@@ -362,139 +362,172 @@ JMSGCompletionHandler 有 2 个参数：
 @property(nonatomic, copy, readonly) NSString * JMSG_NULLABLE appKey;
 ```
 
+#### JMSGGroup
 
+##### 添加群组跨应用成员
+	/*!
+	 * @abstract 添加群组跨应用成员
+	 *
+	 * @param usernameArray 用户名数组。数组里的成员类型是 NSString
+	 * @param handler 结果回调。正常返回时 resultObject 为 nil.
+	 */
+	- (void)addMembersWithUsernameArray:(NSArray JMSG_GENERIC(__kindof NSString *) *)usernameArray
+	                             appKey:userAppKey
+	                  completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)handler;
+###### 例子
+	[group addMembersWithUsernameArray:[NSArray arrayWithObjects:@"username1",@"username2", nil] appKey:@"被添加用户所在应用的appkey" completionHandler:^(id resultObject, NSError *error) {
+        if (!error) {
+            NSLog(@"\n 添加群组跨应用成员 成功");
+        }
+    }];
+
+##### 删除群组跨应用成员
+	/*!
+	 * @abstract 删除群组跨应用成员
+	 *
+	 * @param usernameArray 用户名数据. 数组里的成员类型是 NSString
+	 * @param handler 结果回调。正常返回时 resultObject 为 nil.
+	 */
+	- (void)removeMembersWithUsernameArray:(NSArray JMSG_GENERIC(__kindof NSString *) *)usernameArray
+	                                appKey:userAppKey
+	                     completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)handler;
+###### 例子
+	[group removeMembersWithUsernameArray:[NSArray arrayWithObjects:@"username1",@"username2", nil] appKey:@"被删除用户所在应用的appkey" completionHandler:^(id resultObject, NSError *error) {
+	    if (!error) {
+	        NSLog(@"\n 添删除组跨应用成员 成功");
+	    }
+	}];
+	
 ### 免打扰
 
 #### 全局免打扰JMessage
-```
-/*!
- * @abstract 用户免打扰列表
- *
- * @param handler 结果回调。回调参数：
- *
- * - resultObject 类型为 NSArray，数组里成员的类型为 JMSGUser、JMSGGroup
- * - error 错误信息
- *
- * 如果 error 为 nil, 表示设置成功
- * 如果 error 不为 nil,表示设置失败
- *
- * @discussion 从服务器获取，返回用户的免打扰列表。
- */
-+ (void)noDisturbList:(JMSGCompletionHandler)handler;
 
-/*!
- * @abstract 判断是否设置全局免打扰
- *
- * @return YES/NO
- */
-+ (BOOL)isSetGlobalNoDisturb;
+##### 免打扰列表
+	/*!
+	 * @abstract 用户免打扰列表
+	 *
+	 * @param handler 结果回调。回调参数：
+	 *
+	 * - resultObject 类型为 NSArray，数组里成员的类型为 JMSGUser、JMSGGroup
+	 * - error 错误信息
+	 *
+	 * 如果 error 为 nil, 表示设置成功
+	 * 如果 error 不为 nil,表示设置失败
+	 *
+	 * @discussion 从服务器获取，返回用户的免打扰列表。
+	 */
+	+ (void)noDisturbList:(JMSGCompletionHandler)handler;
+###### 例子
+	//获取当前用户免打扰列
+	[JMessage noDisturbList:^(id resultObject, NSError *error) {
+	     if (!error) {
+	         NSLog(@"\n 免打扰列表: \n %@",resultObject);
+	     }
+	 }];
+##### 是否设置全局免打扰
+	/*!
+	 * @abstract 判断是否设置全局免打扰
+	 *
+	 * @return YES/NO
+	 */
+	+ (BOOL)isSetGlobalNoDisturb;
+###### 例子
+	 //获取是否设置全局免打扰
+	 BOOL isAlreadSet = [JMessage isSetGlobalNoDisturb];
+##### 设置全局免打扰
+	/*!
+	 * @abstract 设置是否全局免打扰
+	 *
+	 * @param isNoDisturb 是否全局免打扰 YES:是 NO: 否
+	 * @param handler 结果回调。回调参数：
+	 *
+	 * - resultObject 相应返回对象
+	 * - error 错误信息
+	 *
+	 * 如果 error 为 nil, 表示设置成功
+	 * 如果 error 不为 nil,表示设置失败
+	 *
+	 * @discussion 此函数为设置全局的消息免打扰
+	 */
+	+ (void)setIsNoDisturb:(BOOL)isNoDisturb handler:(JMSGCompletionHandler)handler;
 
-/*!
- * @abstract 设置是否全局免打扰
- *
- * @param isNoDisturb 是否全局免打扰 YES:是 NO: 否
- * @param handler 结果回调。回调参数：
- *
- * - resultObject 相应返回对象
- * - error 错误信息
- *
- * 如果 error 为 nil, 表示设置成功
- * 如果 error 不为 nil,表示设置失败
- *
- * @discussion 此函数为设置全局的消息免打扰
- */
-+ (void)setIsNoDisturb:(BOOL)isNoDisturb handler:(JMSGCompletionHandler)handler;
-```
-##### 例子
-```
-//获取当前用户免打扰列
-[JMessage noDisturbList:^(id resultObject, NSError *error) {
-     if (!error) {
-         NSLog(@"\n 免打扰列表: \n %@",resultObject);
-     }
- }];
- //获取是否设置全局免打扰
- BOOL isAlreadSet = [JMessage isSetGlobalNoDisturb];
- 
- //设置全局免打扰
- [JMessage setIsNoDisturb:!isAlreadSet handler:^(id resultObject, NSError *error) { 
-     if (!error) {
-         NSLog(@"\n 全局免打扰设置成功:\n%@",resultObject);
-     }
- }];
-    
-```
-
+###### 例子
+	 //设置全局免打扰
+	 BOOL isNoDisturb = YES;//开启：YES,关闭:NO
+	 [JMessage setIsNoDisturb:isNoDisturb handler:^(id resultObject, NSError *error) { 
+	     if (!error) {
+	         NSLog(@"\n 全局免打扰设置成功:\n%@",resultObject);
+	     }
+	 }];
 #### 用户免打扰JMSGUser
-```
-/*!
- * @abstract 该用户是否已被设置为免打扰
- *
- * @discussion YES:是 , NO: 否
- */
-@property(nonatomic, assign, readonly) BOOL isNoDisturb;
 
-/*!
- * @abstract 设置用户免打扰
- *
- * @param isNoDisturb 是否全局免打扰 YES:是 NO: 否
- * @param handler 结果回调。回调参数：
- *
- * - resultObject 相应对象
- * - error 错误信息
- *
- * 如果 error 为 nil, 表示设置成功
- * 如果 error 不为 nil,表示设置失败
- *
- * @discussion 针对单个用户设置免打扰
- */
-- (void)setIsNoDisturb:(BOOL)isNoDisturb handler:(JMSGCompletionHandler)handler;
-```
-##### 例子
-```
-//获取 user 对象是否设置了免打扰
-BOOL isAlreadSet = user.isNoDisturb;
+##### 用户是否已被设置为免打扰
+	/*!
+	 * @abstract 该用户是否已被设置为免打扰
+	 *
+	 * @discussion YES:是 , NO: 否
+	 */
+	@property(nonatomic, assign, readonly) BOOL isNoDisturb;
+##### 设置用户免打扰	
+	/*!
+	 * @abstract 设置用户免打扰
+	 *
+	 * @param isNoDisturb 是否全局免打扰 YES:是 NO: 否
+	 * @param handler 结果回调。回调参数：
+	 *
+	 * - resultObject 相应对象
+	 * - error 错误信息
+	 *
+	 * 如果 error 为 nil, 表示设置成功
+	 * 如果 error 不为 nil,表示设置失败
+	 *
+	 * @discussion 针对单个用户设置免打扰
+	 */
+	- (void)setIsNoDisturb:(BOOL)isNoDisturb handler:(JMSGCompletionHandler)handler;
 
-//开启或关闭 user 免打扰设置
-[user setIsNoDisturb:!isAlreadSet handler:^(id resultObject, NSError *error) {
-    if (!error) {
-        NSLog(@"\n消息免打扰设置成功:\n%@\n",resultObject);
-    }
-}];
-注：如果user对象已经开启(关闭)免打扰，再对user设置开启(关闭)免打扰，会返回失败，所以在设置设置免打扰时，先获取user对象的isNoDisturb值，再进行设置
-```
+###### 例子
+	//获取 user 对象是否设置了免打扰
+	BOOL isAlreadSet = user.isNoDisturb;
+	
+	//开启或关闭 user 免打扰设置
+	[user setIsNoDisturb:!isAlreadSet handler:^(id resultObject, NSError *error) {
+	    if (!error) {
+	        NSLog(@"\n消息免打扰设置成功:\n%@\n",resultObject);
+	    }
+	}];
+	注：如果user对象已经开启(关闭)免打扰，再对user设置开启(关闭)免打扰，会返回失败，所以在设置设置免打扰时，先获取user对象的isNoDisturb值，再进行设置
+
 
 #### 群组免打扰JMSGGroup
-```
-/*!
- * @abstract 该群是否已被设置为免打扰
- *
- * @discussion YES:是 , NO: 否
- */
-@property(nonatomic, assign, readonly) BOOL isNoDisturb;
 
-/*!
- * @abstract 设置群组消息免打扰
- *
- * @param isNoDisturb 是否免打扰 YES:是 NO: 否
- * @param handler 结果回调。回调参数：
- *
- * - resultObject 相应对象
- * - error 错误信息
- *
- * 如果 error 为 nil, 表示设置成功
- * 如果 error 不为 nil,表示设置失败
- *
- * @discussion 针对单个群组设置免打扰
- */
-- (void)setIsNoDisturb:(BOOL)isNoDisturb handler:(JMSGCompletionHandler)handler;
-```
-##### 例子
-```
-使用方法参考“用户免打扰”例子
-```
+##### 群是否已被设置为免打扰
+	/*!
+	 * @abstract 该群是否已被设置为免打扰
+	 *
+	 * @discussion YES:是 , NO: 否
+	 */
+	@property(nonatomic, assign, readonly) BOOL isNoDisturb;
+##### 设置群组消息免打扰	
+	/*!
+	 * @abstract 设置群组消息免打扰
+	 *
+	 * @param isNoDisturb 是否免打扰 YES:是 NO: 否
+	 * @param handler 结果回调。回调参数：
+	 *
+	 * - resultObject 相应对象
+	 * - error 错误信息
+	 *
+	 * 如果 error 为 nil, 表示设置成功
+	 * 如果 error 不为 nil,表示设置失败
+	 *
+	 * @discussion 针对单个群组设置免打扰
+	 */
+	- (void)setIsNoDisturb:(BOOL)isNoDisturb handler:(JMSGCompletionHandler)handler;
 
-### 黑名单管理
+###### 例子
+	使用方法参考“用户免打扰”例子
+
+### 黑名单
 
 #### 获取黑名单列表JMessage
 	/*!
@@ -512,7 +545,7 @@ BOOL isAlreadSet = user.isNoDisturb;
 	 */
 	+ (void)balckList:(JMSGCompletionHandler)handler;
 
-##### 例子
+###### 例子
 	//获取黑名单列表
 	[JMessage balckList:^(id resultObject, NSError *error) {
 	    if (!error) {
@@ -522,13 +555,7 @@ BOOL isAlreadSet = user.isNoDisturb;
 
 #### 黑名单设置JMSGUser
 
-	/*!
-	 * @abstract 该用户是否已被加入黑名单
-	 *
-	 * @discussion YES:是 , NO: 否
-	 */
-	@property(nonatomic, assign, readonly) BOOL isInBlacklist;
-		
+##### 添加黑名单		
 	/*!
 	 * @abstract 添加黑名单
 	 * @param usernameArray 作用对象的username数组
@@ -544,7 +571,15 @@ BOOL isAlreadSet = user.isNoDisturb;
 	 */
 	- (void)addUsersToBlacklist:(NSArray JMSG_GENERIC(__kindof NSString *)*)usernameArray
 	          completionHandler:(JMSGCompletionHandler)handler;
+###### 例子
+	//添加黑名单
+	[user addUsersToBlacklist:[NSArray arrayWithObjects:@"username1",@"username2", nil] completionHandler:^(id resultObject, NSError *error) {
+	    if (!error) {
+	        NSLog(@"\n 添加黑名单成功:%@ \n ",resultObject);
+	    }
+	}];
 	
+##### 删除黑名单	
 	/*!
 	 * @abstract 删除黑名单
 	 * @param usernameArray 作用对象的username数组
@@ -561,13 +596,7 @@ BOOL isAlreadSet = user.isNoDisturb;
 	- (void)delUsersFromBlacklist:(NSArray JMSG_GENERIC(__kindof NSString *)*)usernameArray
 	            completionHandler:(JMSGCompletionHandler)handler;
 	            
-##### 例子
-	//添加黑名单
-	[user addUsersToBlacklist:[NSArray arrayWithObjects:@"username1",@"username2", nil] completionHandler:^(id resultObject, NSError *error) {
-	    if (!error) {
-	        NSLog(@"\n 添加黑名单成功:%@ \n ",resultObject);
-	    }
-	}];
+###### 例子
 	//删除黑名单
 	[user delUsersFromBlacklist:[NSArray arrayWithObjects:@"username1",@"username2", nil] completionHandler:^(id resultObject, NSError *error) {
          if (!error) {
@@ -575,7 +604,7 @@ BOOL isAlreadSet = user.isNoDisturb;
          }
      }];
 	            
-##### 跨应用设置黑名单	
+##### 跨应用添加黑名单	
 	/*!
 	 * @abstract 跨应用添加黑名单
 	 * @param usernameArray 作用对象的username数组
@@ -593,7 +622,15 @@ BOOL isAlreadSet = user.isNoDisturb;
 	- (void)addUsersToBlacklist:(NSArray JMSG_GENERIC(__kindof NSString *)*)usernameArray
 	                     appKey:(NSString *)userAppKey
 	          completionHandler:(JMSGCompletionHandler)handler;
-	
+###### 例子
+	//添加黑名单
+	[user addUsersToBlacklist:[NSArray arrayWithObjects:@"username1",@"username2", nil] appKey:@"被添加用户所在应用的appkey" completionHandler:^(id resultObject, NSError *error) {
+	       if (!error) {
+	           NSLog(@"\n 跨应用添加黑名单成功:%@ \n ",resultObject);
+	       }
+	   }];
+	   
+##### 跨应用删除黑名单	
 	/*!
 	 * @abstract 跨应用删除黑名单
 	 * @param usernameArray 作用对象的username数组
@@ -612,14 +649,7 @@ BOOL isAlreadSet = user.isNoDisturb;
 	                       appKey:(NSString *)userAppKey
 	            completionHandler:(JMSGCompletionHandler)handler;
 	            
-##### 例子
-	//添加黑名单
-	[user addUsersToBlacklist:[NSArray arrayWithObjects:@"username1",@"username2", nil] appKey:@"被添加用户所在应用的appkey" completionHandler:^(id resultObject, NSError *error) {
-	       if (!error) {
-	           NSLog(@"\n 跨应用添加黑名单成功:%@ \n ",resultObject);
-	       }
-	   }];
-                    
+###### 例子         
     //删除黑名单
     [user delUsersFromBlacklist:[NSArray arrayWithObjects:@"username1",@"username2", nil] appKey:@"被删除用户所在应用的appkey" completionHandler:^(id resultObject, NSError *error) {
         if (!error) {
