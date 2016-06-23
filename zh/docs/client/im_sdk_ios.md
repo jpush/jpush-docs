@@ -363,7 +363,6 @@ JMSGCompletionHandler 有 2 个参数：
 ```
 
 #### JMSGGroup
-
 ##### 添加群组跨应用成员
 	/*!
 	 * @abstract 添加群组跨应用成员
@@ -400,8 +399,7 @@ JMSGCompletionHandler 有 2 个参数：
 	
 ### 免打扰
 
-#### 全局免打扰JMessage
-
+#### JMessage
 ##### 免打扰列表
 	/*!
 	 * @abstract 用户免打扰列表
@@ -424,17 +422,14 @@ JMSGCompletionHandler 有 2 个参数：
 	         NSLog(@"\n 免打扰列表: \n %@",resultObject);
 	     }
 	 }];
-##### 是否设置全局免打扰
+##### 全局免打扰设置
 	/*!
 	 * @abstract 判断是否设置全局免打扰
 	 *
 	 * @return YES/NO
 	 */
 	+ (BOOL)isSetGlobalNoDisturb;
-###### 例子
-	 //获取是否设置全局免打扰
-	 BOOL isAlreadSet = [JMessage isSetGlobalNoDisturb];
-##### 设置全局免打扰
+
 	/*!
 	 * @abstract 设置是否全局免打扰
 	 *
@@ -452,23 +447,24 @@ JMSGCompletionHandler 有 2 个参数：
 	+ (void)setIsNoDisturb:(BOOL)isNoDisturb handler:(JMSGCompletionHandler)handler;
 
 ###### 例子
-	 //设置全局免打扰
-	 BOOL isNoDisturb = YES;//开启：YES,关闭:NO
-	 [JMessage setIsNoDisturb:isNoDisturb handler:^(id resultObject, NSError *error) { 
+	 //获取是否设置全局免打扰
+	 BOOL isNoDisturb = [JMessage isSetGlobalNoDisturb];
+	 //设置全局免打扰（开启：YES,关闭:NO）
+	 [JMessage setIsNoDisturb:!isNoDisturb handler:^(id resultObject, NSError *error) { 
 	     if (!error) {
 	         NSLog(@"\n 全局免打扰设置成功:\n%@",resultObject);
 	     }
 	 }];
-#### 用户免打扰JMSGUser
-
-##### 用户是否已被设置为免打扰
+	 
+#### JMSGUser
+##### 用户免打扰设置
 	/*!
 	 * @abstract 该用户是否已被设置为免打扰
 	 *
 	 * @discussion YES:是 , NO: 否
 	 */
 	@property(nonatomic, assign, readonly) BOOL isNoDisturb;
-##### 设置用户免打扰	
+	
 	/*!
 	 * @abstract 设置用户免打扰
 	 *
@@ -498,16 +494,15 @@ JMSGCompletionHandler 有 2 个参数：
 	注：如果user对象已经开启(关闭)免打扰，再对user设置开启(关闭)免打扰，会返回失败，所以在设置设置免打扰时，先获取user对象的isNoDisturb值，再进行设置
 
 
-#### 群组免打扰JMSGGroup
-
-##### 群是否已被设置为免打扰
+#### JMSGGroup
+##### 群组免打扰设置
 	/*!
 	 * @abstract 该群是否已被设置为免打扰
 	 *
 	 * @discussion YES:是 , NO: 否
 	 */
 	@property(nonatomic, assign, readonly) BOOL isNoDisturb;
-##### 设置群组消息免打扰	
+	
 	/*!
 	 * @abstract 设置群组消息免打扰
 	 *
@@ -529,7 +524,8 @@ JMSGCompletionHandler 有 2 个参数：
 
 ### 黑名单
 
-#### 获取黑名单列表JMessage
+#### JMessage
+##### 获取黑名单列表
 	/*!
 	 * @abstract 黑名单列表
 	 *
@@ -553,8 +549,7 @@ JMSGCompletionHandler 有 2 个参数：
 	    }
 	}];
 
-#### 黑名单设置JMSGUser
-
+#### JMSGUser
 ##### 添加黑名单		
 	/*!
 	 * @abstract 添加黑名单
@@ -656,6 +651,75 @@ JMSGCompletionHandler 有 2 个参数：
             NSLog(@"\n 跨应用删除黑名单成功:%@ \n ",resultObject);
         }
     }];
+    
+###  事件处理
+
+__事件类型的消息内容__
+
+* 服务器端下发的事件通知, 比如用户被踢下线,群组里加了人, SDK 作为一个特殊的消息类型处理
+* SDK 以消息的形式通知到 App. 详情参见 JMessageDelegate
+
+#### JMSGEventContent
+	/*!
+	 * @abstract 事件类型
+	 * @discussion 参考事件类型的定义 JMSGEventNotificationType
+	 */
+	@property(nonatomic, assign, readonly) JMSGEventNotificationType eventType;
+	
+	//通知事件类型
+	typedef NS_ENUM(NSInteger, JMSGEventNotificationType) {
+	  /// 事件类型: 登录被踢
+	  kJMSGEventNotificationLoginKicked = 1,
+	  /// 事件类型: 群组被创建
+	  kJMSGEventNotificationCreateGroup = 8,
+	  /// 事件类型: 退出群组
+	  kJMSGEventNotificationExitGroup = 9,
+	  /// 事件类型: 添加新成员
+	  kJMSGEventNotificationAddGroupMembers = 10,
+	  /// 事件类型: 成员被踢出
+	  kJMSGEventNotificationRemoveGroupMembers = 11,
+	  /// 事件类型: 群信息更新
+	  kJMSGEventNotificationUpdateGroupInfo = 12,
+	};
+##### 事件的文本描述 
+	/*!
+	 @abstract 展示此事件的文本描述
+	
+	 @discussion SDK 根据事件类型，拼接成完整的事件描述信息。
+	 */
+	- (NSString * JMSG_NONNULL)showEventNotification;  
+###### 例子
+	
+	if (message.contentType == kJMSGContentTypeEventNotification) {
+         NSString *showText = [((JMSGEventContent *)message.content) showEventNotification];
+    }
+    //比如，在群group中，用户A邀请用户B加入了群,showText 如下：
+    //showText = "A邀请B加入了群组"
+##### 自定义事件的文本描述
+	/*!
+	 @abstract 获取事件发起者的Username
+	 @return 正常返回事件发起者的Username，如果是系统事件则返回“系统消息”
+	 @discussion 可以用于定制 event message，拼接成完整的事件描述信息。
+	 */
+	- (NSString *JMSG_NULLABLE)getEventFromUsername;
+	
+	/*!
+	 @abstract 获取事件作用对象列表
+	 @return 返回类型为 NSArray，数组成员为事件作用对象的username
+	 @discussion 可以用于定制 event message，拼接成完整的事件描述信息。
+	 */
+	- (NSArray *JMSG_NULLABLE)getEventToUsernameList;
+###### 例子
+	JMSGEventContent *eventContent = (JMSGEventContent)message.content;
+	//获取发起事件的用户名
+	NSString *fromUsername = [eventContent getEventFromUsername];
+	//获取事件作用对象列表
+	NSArray *toUsernameList = [eventContent getEventToUsernameList];
+	//根据事件类型，定制相应描述（以事件类型: 添加新成员为例子）
+	if(eventContent.eventType == kJMSGEventNotificationAddGroupMembers) {
+		NSString *showText = [NSString stringWithFormat:@"%@邀请了%@加入了群聊",fromUsername,[toUsernameList componentsJoinedByString:@","]];
+	}
+	
 		            
 
 ### Example 代码样例
