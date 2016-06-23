@@ -2,7 +2,7 @@
 ### 客户端 SDK 下载
 
 <div class="row">
-      <div class="col-md-8" style="width:850px">
+      <div class="col-md-8" >
             <div class="panel panel-default">
                   <div class = "panel-content home_section">
                         <table width="100%"   cellspacing="100" >
@@ -22,7 +22,7 @@
                                                 <i style="display: inline-block; width: 11px; height: 11px; background: url(../image/resource_sdk_download.png) 0 0;vertical-align: middle;"></i>&nbsp;&nbsp;下载
                                           </a>
                                     </td>
-                              </tr> 
+                              </tr>
                               <tr style="border-top: 1px solid #ddd">
                                     <td width="140" style="text-align: center;padding: 30px 0;vertical-align: top;"><img src="../image/resource_ios.png" width="71" height="71" /></td>
                                     <td style="padding: 20px 0;">
@@ -64,7 +64,7 @@
 
 ### 服务器端 SDK 下载
 <div class="row">
-      <div class="col-md-8" style="width:850px">
+      <div class="col-md-8" >
             <div class="panel panel-default">
                   <div class = "panel-content home_section">
                         <table width="100%"   cellspacing="0" style="font-size: 12px;">
@@ -206,8 +206,8 @@
 
 #### <p>C\#</p>
 
-+ 开发者：Rynn Wang 
-+ 支持 Push v3,v2 
++ 开发者：Rynn Wang
++ 支持 Push v3,v2
 + [项目地址](https://jpush.codeplex.com/)
 
 #### Go
