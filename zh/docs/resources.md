@@ -18,7 +18,7 @@
                                           </ul>
                                     </td>
                                     <td width="180" style="text-align: center;vertical-align: middle">
-                                          <a href="https://www.jpush.cn/downloads/sdk/android/" style="display: inline-block; height: 30px; line-height: 30px; width: 100px; border: 1px solid #ccc;border-radius: 3px;color: #999;font-size: 12px;">
+                                          <a href="https://www.jiguang.cn/downloads/sdk/android/" style="display: inline-block; height: 30px; line-height: 30px; width: 100px; border: 1px solid #ccc;border-radius: 3px;color: #999;font-size: 12px;">
                                                 <i style="display: inline-block; width: 11px; height: 11px; background: url(../image/resource_sdk_download.png) 0 0;vertical-align: middle;"></i>&nbsp;&nbsp;下载
                                           </a>
                                     </td>
@@ -27,7 +27,6 @@
                                     <td width="140" style="text-align: center;padding: 30px 0;vertical-align: top;"><img src="../image/resource_ios.png" width="71" height="71" /></td>
                                     <td style="padding: 20px 0;">
                                           <h4 style="font-weight: bold;font-size: 14px;">iOS - SDK下载</h4>
-                                          <p style="font-size: 12px; color:#aaa;">注：对于旧版本 XCode 用户或者暂不想支持到 IOS 8 的，可以继续使用<a href="http://docs.jpush.cn/download/attachments/7864408/JPush-iOS-SDK-1.7.4.zip?version=1&modificationDate=1411121271000">旧版本</a>。</p>
                                           <p>请参考如下文档来集成SDK：</p>
                                           <ul style="list-style: none;margin: 0;padding: 0;font-size: 12px;">
                                                 <li><a href="../guideline/ios_guide">- iOS 集成指南</a></li>
@@ -35,7 +34,7 @@
                                           </ul>
                                     </td>
                                     <td width="180" style="text-align: center;vertical-align: middle">
-                                          <a href="https://www.jpush.cn/downloads/sdk/ios8/" style="display: inline-block; height: 30px; line-height: 30px; width: 100px; border: 1px solid #ccc;border-radius: 3px;color: #999;font-size: 12px;">
+                                          <a href="https://www.jiguang.cn/downloads/sdk/ios8/" style="display: inline-block; height: 30px; line-height: 30px; width: 100px; border: 1px solid #ccc;border-radius: 3px;color: #999;font-size: 12px;">
                                                 <i style="display: inline-block; width: 11px; height: 11px; background: url(../image/resource_sdk_download.png) 0 0;vertical-align: middle;"></i>&nbsp;&nbsp;下载
                                           </a>
                                     </td>
@@ -51,7 +50,7 @@
                                           </ul>
                                     </td>
                                     <td width="180" style="text-align: center;vertical-align: middle">
-                                          <a href="https://www.jpush.cn/downloads/sdk/winphone/" style="display: inline-block; height: 30px; line-height: 30px; width: 100px; border: 1px solid #ccc;border-radius: 3px;color: #999;font-size: 12px;">
+                                          <a href="https://www.jiguang.cn/downloads/sdk/winphone/" style="display: inline-block; height: 30px; line-height: 30px; width: 100px; border: 1px solid #ccc;border-radius: 3px;color: #999;font-size: 12px;">
                                                 <i style="display: inline-block; width: 11px; height: 11px; background: url(../image/resource_sdk_download.png) 0 0;vertical-align: middle;"></i>&nbsp;&nbsp;下载
                                           </a>
                                     </td>
@@ -234,15 +233,14 @@
 
 [了解最近更新][11]
 
-[0]: https://www.jpush.cn/downloads/sdk/android/
+[0]: https://www.jiguang.cn/downloads/sdk/android/
 [1]: ../guideline/android_guide
 [2]: ../guideline/android_3m
 [3]: ../client/android_tutorials
-[4]: http://www.jpush.cn/downloads/sdk/ios8
-[5]: http://docs.jpush.cn/download/attachments/7864408/JPush-iOS-SDK-1.7.4.zip?version=1&modificationDate=1411121271000
+[4]: http://www.jiguang.cn/downloads/sdk/ios8
 [6]: ../guideline/ios_guide
 [7]: ../client/ios_tutorials
-[8]: https://www.jpush.cn/downloads/sdk/winphone/
+[8]: https://www.jiguang.cn/downloads/sdk/winphone/
 [9]: ../guideline/winphone_guide
 [10]: ../guideline/winphone_3m
 [11]: ../updates
