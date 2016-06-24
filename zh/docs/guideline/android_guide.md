@@ -6,10 +6,10 @@
 
 匹配的 SDK 版本为：v2.1.6及以后版本。
 
-+ [3 分钟快速 Demo（Android）](/guideline/android_3m)：如果您想要快速地测试、感受下极光推送的效果，请参考本文在几分钟内跑通Demo。
++ [3 分钟快速 Demo（Android）](http://docs.jiguang.cn/guideline/android_3m/)：如果您想要快速地测试、感受下极光推送的效果，请参考本文在几分钟内跑通Demo。
 + 极光推送文档网站上，有极光推送相关的所有指南、API、教程等全部的文档。包括本文档的更新版本，都会及时地发布到该网站上。
 + [极光社区](http://community.jpush.cn/)网站：大家除了文档之外，还有问题与疑问，会到这里来提问题，以及时地得到解答。
-+ 如果您看到本文档，但还未下载Android SDK，请访问[SDK下载页面](../../resources)下载。
++ 如果您看到本文档，但还未下载Android SDK，请访问[SDK下载页面](http://docs.jiguang.cn/resources/)下载。
 
 ## 产品功能说明
 
@@ -95,19 +95,6 @@
         #==================protobuf======================
         -dontwarn com.google.**
         -keep class com.google.protobuf.** {*;}
-
-+ 如果您启用了分包配置，请在相应模块下的gradle中指定配置文件，如：
-
-        defaultConfig {
-            ...
-            multiDexEnabled true
-            multiDexKeepProguard file('multiDexKeep.pro')         
-            ...
-        }
- 并在multiDexKeep.pro文件中添加如下配置，从而使JPushSDK在主dex中：
-
-        -dontwarn cn.jpush.**
-        -keep class cn.jpush.** { *; }
 
 
 ### 配置 AndroidManifest.xml
@@ -349,7 +336,7 @@ JPush SDK 提供的 API 接口，都主要集中在 cn.jpush.android.api.JPushIn
 
 #### 添加统计代码
 
-+ 参考文档： [统计分析 API](../../client/android_api/#api_2)
++ 参考文档： [统计分析 API](http://docs.jiguang.cn/client/android_api/#api_2)
 
 #### 调用示例代码（参考 example 项目）
 
@@ -376,7 +363,7 @@ JPush SDK 提供的 API 接口，都主要集中在 cn.jpush.android.api.JPushIn
 + 确认在程序启动时候调用了init(context) 接口
 + 确认测试手机（或者模拟器）已成功连入网络
     ＋ 客户端调用 init 后不久，如果一切正常，应有登录成功的日志信息
-+ 启动应用程序，在 Portal 上向应用程序发送自定义消息或者通知栏提示。详情请参考管理[Portal](www.jpush.cn)。
++ 启动应用程序，在 Portal 上向应用程序发送自定义消息或者通知栏提示。详情请参考管理[Portal](https://www.jiguang.cn)。
     + 在几秒内，客户端应可收到下发的通知或者正定义消息
 如果 SDK 工作正常，则日志信息会如下图所示：
 
@@ -394,7 +381,7 @@ JPush SDK 提供的 API 接口，都主要集中在 cn.jpush.android.api.JPushIn
 JPush Demo 是极光推送随压缩包提供的用法示例Demo，原本适用于Eclipse工程。本教程将指导JPush用户用最简单的方法将极光推送Demo导入Android Studio。
 
 #### 快速集成JPush
-参考[3 分钟快速 Demo（Android）](/guideline/android_3m)，把JPush跑起来。之后你在Eclipse包浏览器中有可运行的项目。
+参考[3 分钟快速 Demo（Android）](http://docs.jiguang.cn/guideline/android_3m/)，把JPush跑起来。之后你在Eclipse包浏览器中有可运行的项目。
 
 ![](image/Image.png)
 
@@ -439,7 +426,7 @@ JPush Demo 是极光推送随压缩包提供的用法示例Demo，原本适用�
 
 请参考：
 
-[API: Android](../../client/android_api)
+[API: Android](http://docs.jiguang.cn/client/android_api/)
 
 ## 技术支持
 
