@@ -96,18 +96,6 @@
         -dontwarn com.google.**
         -keep class com.google.protobuf.** {*;}
 
-+ 如果您启用了分包配置，请在相应模块下的gradle中指定配置文件，如：
-
-        defaultConfig {
-            ...
-            multiDexEnabled true
-            multiDexKeepProguard file('multiDexKeep.pro')         
-            ...
-        }
- 并在multiDexKeep.pro文件中添加如下配置，从而使JPushSDK在主dex中：
-
-        -dontwarn cn.jpush.**
-        -keep class cn.jpush.** { *; }
 
 
 ### 配置 AndroidManifest.xml
