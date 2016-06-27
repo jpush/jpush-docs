@@ -541,11 +541,11 @@ JMSGCompletionHandler 有 2 个参数：
 	 *
 	 * @discussion 从服务器获取，返回用户的黑名单列表。
 	 */
-	+ (void)balckList:(JMSGCompletionHandler)handler;
+	+ (void)blackList:(JMSGCompletionHandler)handler;
 
 ###### 例子
 	//获取黑名单列表
-	[JMessage balckList:^(id resultObject, NSError *error) {
+	[JMessage blackList:^(id resultObject, NSError *error) {
 	    if (!error) {
 	        NSLog(@"\n 黑名单列表: %@ \n",resultObject);
 	    }
