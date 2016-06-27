@@ -466,7 +466,7 @@ JMSGCompletionHandler 有 2 个参数：
 	@property(nonatomic, assign, readonly) BOOL isNoDisturb;
 	
 	/*!
-	 * @abstract 设置用户免打扰
+	 * @abstract 设置用户免打扰（支持跨应用设置）
 	 *
 	 * @param isNoDisturb 是否全局免打扰 YES:是 NO: 否
 	 * @param handler 结果回调。回调参数：
@@ -478,6 +478,7 @@ JMSGCompletionHandler 有 2 个参数：
 	 * 如果 error 不为 nil,表示设置失败
 	 *
 	 * @discussion 针对单个用户设置免打扰
+	 * 这个接口支持跨应用设置免打扰
 	 */
 	- (void)setIsNoDisturb:(BOOL)isNoDisturb handler:(JMSGCompletionHandler)handler;
 
@@ -504,7 +505,7 @@ JMSGCompletionHandler 有 2 个参数：
 	@property(nonatomic, assign, readonly) BOOL isNoDisturb;
 	
 	/*!
-	 * @abstract 设置群组消息免打扰
+	 * @abstract 设置群组消息免打扰（支持跨应用设置）
 	 *
 	 * @param isNoDisturb 是否免打扰 YES:是 NO: 否
 	 * @param handler 结果回调。回调参数：
@@ -516,6 +517,7 @@ JMSGCompletionHandler 有 2 个参数：
 	 * 如果 error 不为 nil,表示设置失败
 	 *
 	 * @discussion 针对单个群组设置免打扰
+	 * 这个接口支持跨应用设置免打扰
 	 */
 	- (void)setIsNoDisturb:(BOOL)isNoDisturb handler:(JMSGCompletionHandler)handler;
 
@@ -697,23 +699,27 @@ __事件类型的消息内容__
     //showText = "A邀请B加入了群组"
 ##### 自定义事件的文本描述
 	/*!
-	 @abstract 获取事件发起者的Username
-	 @return 正常返回事件发起者的Username，如果是系统事件则返回“系统消息”
-	 @discussion 可以用于定制 event message，拼接成完整的事件描述信息。
+	 * @abstract 获取事件发起者的用户名
+	 * @return 正常返回事件发起者的用户名，如果是系统事件则返回“系统消息”
+	 *
+	 * @discussion 如果设置了nickname，则返回nickname，否则返回username
+	 * 可以用于定制 event message，拼接成完整的事件描述信息。
 	 */
 	- (NSString *JMSG_NULLABLE)getEventFromUsername;
 	
 	/*!
-	 @abstract 获取事件作用对象列表
-	 @return 返回类型为 NSArray，数组成员为事件作用对象的username
-	 @discussion 可以用于定制 event message，拼接成完整的事件描述信息。
+	 * @abstract 获取事件作用对象用户名列表
+	 * @return 返回类型为 NSArray，数组成员为事件作用对象的用户名
+	 *
+	 * @discussion 如果设置了nickname，则返回nickname，否则返回username
+	 * 可以用于定制 event message，拼接成完整的事件描述信息。
 	 */
 	- (NSArray *JMSG_NULLABLE)getEventToUsernameList;
 ###### 例子
 	JMSGEventContent *eventContent = (JMSGEventContent)message.content;
 	//获取发起事件的用户名
 	NSString *fromUsername = [eventContent getEventFromUsername];
-	//获取事件作用对象列表
+	//获取事件作用对象用户名列表
 	NSArray *toUsernameList = [eventContent getEventToUsernameList];
 	//根据事件类型，定制相应描述（以事件类型: 添加新成员为例子）
 	if(eventContent.eventType == kJMSGEventNotificationAddGroupMembers) {
