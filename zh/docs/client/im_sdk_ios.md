@@ -444,13 +444,13 @@ JMSGCompletionHandler 有 2 个参数：
 	 *
 	 * @discussion 此函数为设置全局的消息免打扰
 	 */
-	+ (void)setIsNoDisturb:(BOOL)isNoDisturb handler:(JMSGCompletionHandler)handler;
+	+ (void)setIsGlobalNoDisturb:(BOOL)isNoDisturb handler:(JMSGCompletionHandler)handler;
 
 ###### 例子
 	 //获取是否设置全局免打扰
 	 BOOL isNoDisturb = [JMessage isSetGlobalNoDisturb];
 	 //设置全局免打扰（开启：YES,关闭:NO）
-	 [JMessage setIsNoDisturb:!isNoDisturb handler:^(id resultObject, NSError *error) { 
+	 [JMessage setIsGlobalNoDisturb:!isNoDisturb handler:^(id resultObject, NSError *error) { 
 	     if (!error) {
 	         NSLog(@"\n 全局免打扰设置成功:\n%@",resultObject);
 	     }
@@ -566,11 +566,11 @@ JMSGCompletionHandler 有 2 个参数：
 	 *
 	 * @discussion 可以一次添加多个用户
 	 */
-	- (void)addUsersToBlacklist:(NSArray JMSG_GENERIC(__kindof NSString *)*)usernameArray
+	+ (void)addUsersToBlacklist:(NSArray JMSG_GENERIC(__kindof NSString *)*)usernameArray
 	          completionHandler:(JMSGCompletionHandler)handler;
 ###### 例子
 	//添加黑名单
-	[user addUsersToBlacklist:[NSArray arrayWithObjects:@"username1",@"username2", nil] completionHandler:^(id resultObject, NSError *error) {
+	[JMSGUser addUsersToBlacklist:[NSArray arrayWithObjects:@"username1",@"username2", nil] completionHandler:^(id resultObject, NSError *error) {
 	    if (!error) {
 	        NSLog(@"\n 添加黑名单成功:%@ \n ",resultObject);
 	    }
@@ -590,12 +590,12 @@ JMSGCompletionHandler 有 2 个参数：
 	 *
 	 * @discussion 可以一次删除多个黑名单用户
 	 */
-	- (void)delUsersFromBlacklist:(NSArray JMSG_GENERIC(__kindof NSString *)*)usernameArray
+	+ (void)delUsersFromBlacklist:(NSArray JMSG_GENERIC(__kindof NSString *)*)usernameArray
 	            completionHandler:(JMSGCompletionHandler)handler;
 	            
 ###### 例子
 	//删除黑名单
-	[user delUsersFromBlacklist:[NSArray arrayWithObjects:@"username1",@"username2", nil] completionHandler:^(id resultObject, NSError *error) {
+	[JMSGUser delUsersFromBlacklist:[NSArray arrayWithObjects:@"username1",@"username2", nil] completionHandler:^(id resultObject, NSError *error) {
          if (!error) {
              NSLog(@"\n 添加黑名单成功:%@ \n ",resultObject);
          }
@@ -616,12 +616,12 @@ JMSGCompletionHandler 有 2 个参数：
 	 *
 	 * @discussion 可以一次添加多个用户
 	 */
-	- (void)addUsersToBlacklist:(NSArray JMSG_GENERIC(__kindof NSString *)*)usernameArray
+	+ (void)addUsersToBlacklist:(NSArray JMSG_GENERIC(__kindof NSString *)*)usernameArray
 	                     appKey:(NSString *)userAppKey
 	          completionHandler:(JMSGCompletionHandler)handler;
 ###### 例子
 	//添加黑名单
-	[user addUsersToBlacklist:[NSArray arrayWithObjects:@"username1",@"username2", nil] appKey:@"被添加用户所在应用的appkey" completionHandler:^(id resultObject, NSError *error) {
+	[JMSGUser addUsersToBlacklist:[NSArray arrayWithObjects:@"username1",@"username2", nil] appKey:@"被添加用户所在应用的appkey" completionHandler:^(id resultObject, NSError *error) {
 	       if (!error) {
 	           NSLog(@"\n 跨应用添加黑名单成功:%@ \n ",resultObject);
 	       }
@@ -642,13 +642,13 @@ JMSGCompletionHandler 有 2 个参数：
 	 *
 	 * @discussion 可以一次删除多个黑名单用户
 	 */
-	- (void)delUsersFromBlacklist:(NSArray JMSG_GENERIC(__kindof NSString *)*)usernameArray
+	+ (void)delUsersFromBlacklist:(NSArray JMSG_GENERIC(__kindof NSString *)*)usernameArray
 	                       appKey:(NSString *)userAppKey
 	            completionHandler:(JMSGCompletionHandler)handler;
 	            
 ###### 例子         
     //删除黑名单
-    [user delUsersFromBlacklist:[NSArray arrayWithObjects:@"username1",@"username2", nil] appKey:@"被删除用户所在应用的appkey" completionHandler:^(id resultObject, NSError *error) {
+    [JMSGUser delUsersFromBlacklist:[NSArray arrayWithObjects:@"username1",@"username2", nil] appKey:@"被删除用户所在应用的appkey" completionHandler:^(id resultObject, NSError *error) {
         if (!error) {
             NSLog(@"\n 跨应用删除黑名单成功:%@ \n ",resultObject);
         }
