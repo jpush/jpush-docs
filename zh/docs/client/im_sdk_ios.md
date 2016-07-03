@@ -716,7 +716,7 @@ __事件类型的消息内容__
 	 */
 	- (NSArray *JMSG_NULLABLE)getEventToUsernameList;
 ###### 例子
-	JMSGEventContent *eventContent = (JMSGEventContent)message.content;
+	JMSGEventContent *eventContent = (JMSGEventContent*)message.content;
 	//获取发起事件的用户名
 	NSString *fromUsername = [eventContent getEventFromUsername];
 	//获取事件作用对象用户名列表
