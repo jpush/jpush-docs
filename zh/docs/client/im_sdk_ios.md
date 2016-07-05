@@ -347,18 +347,6 @@ JMSGCompletionHandler 有 2 个参数：
 
 // 消息来源用户 Appkey
 @property(nonatomic, strong, readonly) NSString *fromAppKey;
-
-/*!
- * @abstract 创建跨应用单聊消息（快捷接口）
- *
- * @param content 消息内容对象
- * @param username 单聊用户 username
- *
- * @discussion 不关心会话时的直接创建聊天消息的接口。一般建议使用 JMSGConversation -> createMessageWithContent:
- */
-+ (JMSGMessage *)createSingleMessageWithContent:(JMSGAbstractContent *)content
-                                       username:(NSString *)username
-                                         appKey:(NSString *)userAppKey;
                                        
 /*!
  * @abstract 发送跨应用单聊文本消息
