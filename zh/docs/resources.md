@@ -97,12 +97,12 @@
                                                       </td>
                                                       <td style="padding: 20px 0;">
                                                             <h4 style="font-weight: bold;font-size: 14px;">Python - SDK下载</h4>
-                                                            <p style="margin: 2px 0;">版本号：v3.2.1</p>
-                                                            <p style="margin: 2px 0;">更新时间：2016-05-20</p>
+                                                            <p style="margin: 2px 0;">版本号：v3.2.2</p>
+                                                            <p style="margin: 2px 0;">更新时间：2016-07-05</p>
                                                             <p style="margin: 2px 0;">更新内容：<a href="https://github.com/jpush/jpush-api-python-client/releases">Change Log</a></p>
                                                             <p style="margin: 2px 0;">GitHub：<a href="https://github.com/jpush/jpush-api-python-client">源码</a></p>
                                                             <p style="margin: 2px 0 10px;">支持：Push API v3, Report API, Device API, Schedule API</p>
-                                                            <p><a href="https://www.jiguang.cn/downloads/resource/1463721337648" style="display: inline-block; height: 30px; line-height: 30px; width: 100px; border: 1px solid #ccc;border-radius: 3px;color: #999;text-align: center;">
+                                                            <p><a href="https://www.jpush.cn/common/downloads/resource/1467706953218" style="display: inline-block; height: 30px; line-height: 30px; width: 100px; border: 1px solid #ccc;border-radius: 3px;color: #999;text-align: center;">
                                                                   <i style="vertical-align: middle; display: inline-block; width: 11px; height: 11px; background: url(../image/resource_sdk_download.png) 0 0;"></i>&nbsp;&nbsp;下载
                                                             </a></p>
                                                       </td>
@@ -139,12 +139,12 @@
                                                       </td>
                                                       <td style="padding: 20px 0;">
                                                             <h4 style="font-weight:   bold;font-size: 14px;">C# - SDK下载</h4>
-                                                            <p style="margin: 2px 0;">版本号：v3.1.0</p>
-                                                            <p style="margin: 2px 0;">更新时间：2016-04-05</p>
+                                                            <p style="margin: 2px 0;">版本号：v3.2.1</p>
+                                                            <p style="margin: 2px 0;">更新时间：2016-07-05</p>
                                                             <p style="margin: 2px 0;">更新内容：<a href="https://github.com/jpush/jpush-api-csharp-client/releases">Change Log</a></p>
                                                             <p style="margin: 2px 0;">GitHub：<a href="https://github.com/jpush/jpush-api-csharp-client">源码</a></p>
                                                             <p style="margin: 2px 0 10px;">支持：Push API v3, Report API, Device API</p>
-                                                            <p><a href="https://www.jiguang.cn/downloads/resource/1459854935213" style="display: inline-block; height: 30px; line-height: 30px; width: 100px; border: 1px solid #ccc;border-radius: 3px;color: #999;text-align: center;">
+                                                            <p><a href="https://www.jiguang.cn/downloads/resource/1467707440043" style="display: inline-block; height: 30px; line-height: 30px; width: 100px; border: 1px solid #ccc;border-radius: 3px;color: #999;text-align: center;">
                                                                   <i style="vertical-align: middle; display: inline-block; width: 11px; height: 11px; background: url(../image/resource_sdk_download.png) 0 0;"></i>&nbsp;&nbsp;下载
                                                             </a></p>
                                                       </td>
