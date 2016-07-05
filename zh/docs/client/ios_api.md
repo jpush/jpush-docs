@@ -132,7 +132,6 @@
     * 单个设备最多支持设置 1000 个 tag。App 全局 tag 数量无限制。
 
 ```
-
 [JPUSHService setTags:tags aliasInbackground:alias];
 ```
 
@@ -230,8 +229,10 @@
    * 参数值为实现了callbackSelector的实例对象。
    * nil 此次调用不需要 Callback。
 
+```
     - (void)tagsAliasCallback:(int)iResCode tags:(NSSet*)tags alias:(NSString*)alias {
                 NSLog(@"rescode: %d, \ntags: %@, \nalias: %@\n", iResCode, tags , alias);}
+```
 
 #### Method - setAlias
 
@@ -265,8 +266,10 @@
      * 参数值为实现了callbackSelector的实例对象。
      * nil 此次调用不需要 Callback。
 
+```
     - (void)tagsAliasCallback:(int)iResCode tags:(NSSet*)tags alias:(NSString*)alias {
             NSLog(@"rescode: %d, \ntags: %@, \nalias: %@\n", iResCode, tags , alias)        }
+```
 
 #### Method - filterValidTags
 
