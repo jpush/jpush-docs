@@ -200,7 +200,7 @@ JPush 当前支持 Android, iOS, Windows Phone 三个平台的推送。其关键
 			<td>JSON Array</td>
 			<td>标签</td>
 			<td>数组。多个标签之间是 OR 的关系，即取并集。 </td>
-			<td>用标签来进行大规模的设备属性、用户属性分群。 一次推送最多 20 个。<ul style="margin-bottom: 0;"><li>有效的 tag 组成：字母（区分大小写）、数字、下划线、汉字。</li><li>限制：每一个 tag 的长度限制为 40 字节。（判断长度需采用UTF-8编码）</li></td>
+			<td>用标签来进行大规模的设备属性、用户属性分群。 一次推送最多 20 个。<ul style="margin-bottom: 0;"><li>有效的 tag 组成：字母（区分大小写）、数字、下划线、汉字、特殊字符@!#$&*+=.|￥。</li><li>限制：每一个 tag 的长度限制为 40 字节。（判断长度需采用UTF-8编码）</li></td>
 		</tr>
 		<tr >
 			<td>tag_and</td>
@@ -214,7 +214,7 @@ JPush 当前支持 Android, iOS, Windows Phone 三个平台的推送。其关键
 			<td>JSON Array</td>
 			<td>别名</td>
 			<td>数组。多个别名之间是 OR 关系，即取并集。</td>
-			<td>用别名来标识一个用户。一个设备只能绑定一个别名，但多个设备可以绑定同一个别名。一次推送最多 1000 个。<ul style="margin-bottom: 0;"><li>有效的 alias 组成：字母（区分大小写）、数字、下划线、汉字。</li><li>限制：每一个 alias 的长度限制为 40 字节。（判断长度需采用UTF-8编码）</li></td>
+			<td>用别名来标识一个用户。一个设备只能绑定一个别名，但多个设备可以绑定同一个别名。一次推送最多 1000 个。<ul style="margin-bottom: 0;"><li>有效的 alias 组成：字母（区分大小写）、数字、下划线、汉字、特殊字符@!#$&*+=.|￥。</li><li>限制：每一个 alias 的长度限制为 40 字节。（判断长度需采用UTF-8编码）</li></td>
 		</tr>
 		<tr >
 			<td>registration_id</td>
