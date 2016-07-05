@@ -102,7 +102,7 @@
                                                             <p style="margin: 2px 0;">更新内容：<a href="https://github.com/jpush/jpush-api-python-client/releases">Change Log</a></p>
                                                             <p style="margin: 2px 0;">GitHub：<a href="https://github.com/jpush/jpush-api-python-client">源码</a></p>
                                                             <p style="margin: 2px 0 10px;">支持：Push API v3, Report API, Device API, Schedule API</p>
-                                                            <p><a href="https://www.jpush.cn/common/downloads/resource/1467706953218" style="display: inline-block; height: 30px; line-height: 30px; width: 100px; border: 1px solid #ccc;border-radius: 3px;color: #999;text-align: center;">
+                                                            <p><a href="https://www.jpush.cn/downloads/resource/1467706953218" style="display: inline-block; height: 30px; line-height: 30px; width: 100px; border: 1px solid #ccc;border-radius: 3px;color: #999;text-align: center;">
                                                                   <i style="vertical-align: middle; display: inline-block; width: 11px; height: 11px; background: url(../image/resource_sdk_download.png) 0 0;"></i>&nbsp;&nbsp;下载
                                                             </a></p>
                                                       </td>
