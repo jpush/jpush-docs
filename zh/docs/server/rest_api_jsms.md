@@ -82,18 +82,18 @@ curl --insecure -X POST -v https://api.sms.jpush.cn/v1/codes/06890980-6789-4054-
 
 - 验证通过
 
-    ```
+```
     json
 
     {
         "is_valid":true
     }
 
-    ```
+```
     
 - 验证不通过
 
-    ```
+```
     json
 
     {
@@ -103,8 +103,7 @@ curl --insecure -X POST -v https://api.sms.jpush.cn/v1/codes/06890980-6789-4054-
             "message":"***"
         }
     }
-    
-    ```
+```
 
 ### 返回码
 
