@@ -42,15 +42,16 @@ SDK 侧可以发起注册用户，也可由服务器端批量发起注册。
 - 加群组成员、移除群组成员；
 
 
-#### 好友（还未提供）
+#### 好友
++ 开发中，暂未发布
 
 
 
 ### API 列表
 
-以下列出主要的 JMessage SDK 提供的 API。完整的 API 与 类信息，请访问：<a href="http://docs.jpush.io/client/im_android_api_docs/" target="_blank">API Java docs</a>
+以下列出主要的 JMessage SDK 提供的 API。完整的 API 与 类信息，请访问：<a href="http:/docs.jpush.io/client/im_android_api_docs/" target="_blank">API Java docs</a>
 
-#####SDK初始化
+####SDK初始化
 在调用IM其他接口前必须先调此接口初始化SDK，推荐在application类中调用。
 ```
 public static synchronized void init(Context context)
@@ -63,7 +64,7 @@ public static synchronized void init(Context context)
 
 ##### 注册
 ```
-  public static void register(String username, String pas  sword, BasicCallback callback);
+  public static void register(String username, String password, BasicCallback callback);
 ```
 
 参数说明
@@ -111,17 +112,30 @@ public static synchronized void init(Context context)
 
 + UserInfo userInfo 用户信息
 
-##### 从本地获取当前登录账号的用户信息
+#### 获取用户信息(跨应用)
+获取用户信息，此接口可用来获取不同appkey下用户的信息,如果appkey为空，则默认获取当前appkey下的用户信息。
+
+```
+  public static void getUserInfo(String username, String appkey, GetUserInfoCallback callback);
+```
+  
+参数说明
+
++ String username 用户名
++ String appkey 指定的appkey
++ GetUserInfoCallback callback 结果回调
+
+#### 从本地获取当前登录账号的信息
 ```
   public static UserInfo getMyInfo();
 ```
 参数说明
 
-- 无
++ 无
 
 返回
 
-- UserInfo  当前登录用户的用户信息。
++ UserInfo  当前登录用户的用户信息。
 
 ##### 更新用户信息
 ```
@@ -161,7 +175,7 @@ public static synchronized void init(Context context)
 + BasicCallback callback 结果回调
 
 
-#### 会话与发送消息
+#### 创建消息
 
 ##### 创建文字消息
 ```
@@ -184,7 +198,7 @@ public static Message createSingleTextMessage(String username, String text)
 public static Message createGroupTextMessage(long groupID, String text)
 ```
 
-#####创建图片消息
+##### 创建图片消息
 ```
  /**
   * 创建一条单聊图片信息
@@ -258,7 +272,7 @@ public static Message createGroupCustomMessage(long groupID,
   Map<? extends String, ?> valuesMap)
 ```
 
-##### 发送消息
+#### 发送消息
 
 向服务器给发送对象发送消息，并且保存到本地会话。
 ```
@@ -268,6 +282,8 @@ public static Message createGroupCustomMessage(long groupID,
 
 + Message message 消息（对象）
 
+
+#### 本地会话管理
 
 ##### 获取会话列表
 
@@ -482,11 +498,7 @@ public void onEventMainThread(EventEntity event){
 
 </br>
 
-用户下线事件UserLogoutEvent
-
-**已过时，请使用LoginStateChangeEvent代替**
-
-**已过时，请使用LoginStateChangeEvent代替**
+用户下线事件UserLogoutEvent **(已过时，请使用LoginStateChangeEvent代替)**
 
 <div class="table-d" align="left" >
   <table border="1" width = "100%">
@@ -505,11 +517,7 @@ public void onEventMainThread(EventEntity event){
 
 </br>
 
-用户被删除事件UserDeletedEvent
-
-**已过时，请使用LoginStateChangeEvent代替**
-
-**已过时，请使用LoginStateChangeEvent代替**
+用户被删除事件UserDeletedEvent **(已过时，请使用LoginStateChangeEvent代替)**
 
 <div class="table-d" align="left" >
   <table border="1" width = "100%">
@@ -603,10 +611,10 @@ class MessageEventReceiver extends Activity{
             //群成员加群事件
             break;
             case group_member_removed:
-            //群成员被踢事件（只有被踢的用户能收到此事件）
+            //群成员被踢事件
             break;
             case group_member_exit:
-            //群成员退群事件（已弃用）
+            //群成员退群事件
             break;
         }
         break;
@@ -669,7 +677,7 @@ class UserLogoutEventReceiver extends Activity{
 
 
 
-#### 群组维护
+#### 群组信息维护
 
 ##### 创建群组
 ```
@@ -783,7 +791,7 @@ public abstract void gotResult(int responseCode, String responseMessage,
 + List members 成员列表(username)。
 
 
-#### 黑名单相关
+#### 黑名单管理
 ##### 将用户加入黑名单
 ```
 public static void addUsersToBlacklist(List<String> usernames, BasicCallback callback)
@@ -818,7 +826,7 @@ public static void getBlacklist(GetBlacklistCallback callback)
 + `List<UserInfo>` userInfos  被拉入黑名单的用户的UserInfo
 
 
-#### 通知栏相关
+#### 通知栏管理
 ##### 设置通知展示类型
 ```
 public static void setNotificationMode(int mode);
@@ -889,6 +897,21 @@ public static void exitConversaion();
 用户可以通过接受通知栏点击事件NotificationClickEvent，来实现自定义跳转，该事件如果没有接收者，点击通知栏时SDK将默认跳转到程序主界面。
 
 事件接收方法见"事件处理"一节
+
+### 免打扰
+可以将用户/群组添加到“免打扰”列表中，收到免打扰用户/群组发过来的消息时，通知栏不会弹出通知，消息事件照常下发。
+
+#### 获取免打扰列表
+```
+public static void getNoDisturblist(GetNoDisurbListCallback callback)
+```
+参数定义
+
++ GetNoDisurbListCallback callback 回调接口。
+	
+#### 免打扰设置
+见api doc中<a href="http://docs.jpush.io/client/im_android_api_docs/cn/jpush/im/android/api/model/UserInfo.html" target="_blank">UserInfo</a>和<a href="http://docs.jpush.io/client/im_android_api_docs/cn/jpush/im/android/api/model/GroupInfo.html" target="_blank">GroupInfo</a>相关接口
+
 
 ### 类定义
 

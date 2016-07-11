@@ -68,8 +68,8 @@
     * 集合成员类型要求为NSString类型
     * 每次调用至少设置一个 tag，覆盖之前的设置，不是新增。
     * 有效的标签组成：字母（区分大小写）、数字、下划线、汉字。
-    * 限制：每个 tag 命名长度限制为 40 字节，最多支持设置 100 个 tag，但总长度不得超过1K字节。（判断长度需采用UTF-8编码）
-    * 单个设备最多支持设置 100 个 tag。App 全局 tag 数量无限制。
+    * 限制：每个 tag 命名长度限制为 40 字节，最多支持设置 1000 个 tag，但总长度不得超过7K字节。（判断长度需采用UTF-8编码）
+    * 单个设备最多支持设置 1000 个 tag。App 全局 tag 数量无限制。
 
 * callbackSelector 
 
@@ -128,11 +128,10 @@
     * 集合成员类型要求为NSString类型
     * 每次调用至少设置一个 tag，覆盖之前的设置，不是新增。
     * 有效的标签组成：字母（区分大小写）、数字、下划线、汉字。
-    * 限制：每个 tag 命名长度限制为 40 字节，最多支持设置 100 个 tag，但总长度不得超过1K字节。（判断长度需采用UTF-8编码）
-    * 单个设备最多支持设置 100 个 tag。App 全局 tag 数量无限制。
+    * 限制：每个 tag 命名长度限制为 40 字节，最多支持设置 1000 个 tag，但总长度不得超过7K字节。（判断长度需采用UTF-8编码）
+    * 单个设备最多支持设置 1000 个 tag。App 全局 tag 数量无限制。
 
 ```
-
 [JPUSHService setTags:tags aliasInbackground:alias];
 ```
 
@@ -160,7 +159,7 @@
     - nil 此次调用不设置此值。
     - 空字符串 （@""）表示取消之前的设置。
     - 每次调用设置有效的别名，覆盖之前的设置。
-    - 有效的别名组成：字母（区分大小写）、数字、下划线、汉字。
+    - 有效的别名组成：字母（区分大小写）、数字、下划线、汉字、。
     - 限制：alias 命名长度限制为 40 字节。（判断长度需采用UTF-8编码）
 
 * tags
@@ -170,8 +169,8 @@
     * 集合成员类型要求为NSString类型
     * 每次调用至少设置一个 tag，覆盖之前的设置，不是新增。
     * 有效的标签组成：字母（区分大小写）、数字、下划线、汉字。
-    * 限制：每个 tag 命名长度限制为 40 字节，最多支持设置 100 个 tag，但总长度不得超过1K字节。（判断长度需采用UTF-8编码）
-    * 单个设备最多支持设置 100 个 tag。App 全局 tag 数量无限制。
+    * 限制：每个 tag 命名长度限制为 40 字节，最多支持设置 1000 个 tag，但总长度不得超过7K字节。（判断长度需采用UTF-8编码）
+    * 单个设备最多支持设置 1000 个 tag。App 全局 tag 数量无限制。
 
 * (void (^)(int iResCode, NSSet *iTags, NSString *iAlias))completionHandler
     
@@ -216,8 +215,8 @@
     * 空集合（[NSSet set]）表示取消之前的设置。
     * 每次调用至少设置一个 tag，覆盖之前的设置，不是新增。
     * 有效的标签组成：字母（区分大小写）、数字、下划线、汉字。
-    * 限制：每个 tag 命名长度限制为 40 字节，最多支持设置 100 个tag，但总长度不得超过1K字节。（判断长度需采用UTF-8编码）
-    * 单个设备最多支持设置 100 个 tag。App 全局 tag 数量无限制。
+    * 限制：每个 tag 命名长度限制为 40 字节，最多支持设置 1000 个tag，但总长度不得超过7K字节。（判断长度需采用UTF-8编码）
+    * 单个设备最多支持设置 1000 个 tag。App 全局 tag 数量无限制。
 
 * callbackSelector
 
@@ -230,8 +229,10 @@
    * 参数值为实现了callbackSelector的实例对象。
    * nil 此次调用不需要 Callback。
 
+```
     - (void)tagsAliasCallback:(int)iResCode tags:(NSSet*)tags alias:(NSString*)alias {
                 NSLog(@"rescode: %d, \ntags: %@, \nalias: %@\n", iResCode, tags , alias);}
+```
 
 #### Method - setAlias
 
@@ -265,8 +266,10 @@
      * 参数值为实现了callbackSelector的实例对象。
      * nil 此次调用不需要 Callback。
 
+```
     - (void)tagsAliasCallback:(int)iResCode tags:(NSSet*)tags alias:(NSString*)alias {
             NSLog(@"rescode: %d, \ntags: %@, \nalias: %@\n", iResCode, tags , alias)        }
+```
 
 #### Method - filterValidTags
 
@@ -324,7 +327,7 @@
     <tr >
       <td>6003</td>
       <td>alias 字符串不合法</td>
-      <td>有效的别名、标签组成：字母（区分大小写）、数字、下划线、汉字。</td>
+      <td>有效的别名、标签组成：字母（区分大小写）、数字、下划线、汉字</td>
     </tr>
     <tr >
       <td>6004</td>
@@ -334,7 +337,7 @@
     <tr >
       <td>6005</td>
       <td>某一个 tag 字符串不合法</td>
-      <td>有效的别名、标签组成：字母（区分大小写）、数字、下划线、汉字。</td>
+      <td>有效的别名、标签组成：字母（区分大小写）、数字、下划线、汉字</td>
     </tr>
     <tr >
       <td>6006</td>
@@ -343,13 +346,13 @@
     </tr>
     <tr >
       <td>6007</td>
-      <td>tags 数量超出限制。最多 100个</td>
+      <td>tags 数量超出限制。最多 1000个</td>
       <td>这是一台设备的限制。一个应用全局的标签数量无限制。</td>
     </tr>
     <tr >
       <td>6008</td>
       <td>tag 超出总长度限制</td>
-      <td>总长度最多 1K 字节</td>
+      <td>总长度最多 7K 字节</td>
     </tr>
     <tr >
       <td>6011</td>
@@ -399,7 +402,7 @@ iOS 设备收到一条推送（APNs），用户点击推送通知打开应用时
         NSLog(@"content =[%@], badge=[%d], sound=[%@], customize field  =[%@]",content,badge,sound,customizeField1);
          
         // Required
-        [APService handleRemoteNotification:userInfo];
+        [JPUSHService handleRemoteNotification:userInfo];
     }
     //iOS 7 Remote Notification
     - (void)application:(UIApplication *)application didReceiveRemoteNotification:  (NSDictionary *)userInfo fetchCompletionHandler:(void (^)   (UIBackgroundFetchResult))completionHandler {
@@ -407,7 +410,7 @@ iOS 设备收到一条推送（APNs），用户点击推送通知打开应用时
         NSLog(@"this is iOS7 Remote Notification");
          
         // Required
-         [APService handleRemoteNotification:userInfo];
+         [JPUSHService handleRemoteNotification:userInfo];
         completionHandler(UIBackgroundFetchResultNewData);
     }
     
@@ -445,7 +448,7 @@ r1.2.5 以后。
         NSDictionary * userInfo = [notification userInfo];
         NSString *content = [userInfo valueForKey:@"content"];
         NSDictionary *extras = [userInfo valueForKey:@"extras"]; 
-        NSString *customizeField1 = [extras valueForKey:@"customizeField1"]; //自定义参数，key是自己定义的
+        NSString *customizeField1 = [extras valueForKey:@"customizeField1"]; //服务端传递的Extras附加字段，key是自己定义的
      
     }
 ```
@@ -541,16 +544,16 @@ r1.7.0 版本开始。
     - (void)viewWillAppear:(BOOL)animated
         {
             [super viewWillAppear:animated];
-            [APService startLogPageView:@"PageOne"];
+            [JPUSHService startLogPageView:@"PageOne"];
         }
     - (void)viewWillDisappear:(BOOL)animated 
         {
             [super viewWillDisappear:animated];
-            [APService stopLogPageView:@"PageOne"];
+            [JPUSHService stopLogPageView:@"PageOne"];
         }   
     －(void)trackView
        {
-           [APService beginLogPageView:@"PageTwo" duration:10];
+           [JPUSHService beginLogPageView:@"PageTwo" duration:10];
        }
     
 
@@ -720,7 +723,7 @@ fireDate必须大于当前时间，同时不能为空。注册通知数目必须
 ##### 代码示例
 
 ```
-[APService setLocalNotification:[NSDate dateWithTimeIntervalSinceNow:100]
+[JPUSHService setLocalNotification:[NSDate dateWithTimeIntervalSinceNow:100]
                       alertBody:@"alert content"
                           badge:1
                     alertAction:@"buttonText"
@@ -752,7 +755,7 @@ API必须放在 - (void)application:(UIApplication \*)application didReceiveLoca
 ##### 代码示例
 
 ```
-- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification { [APService showLocalNotificationAtFront:notification identifierKey:@"identifierKey"]; }
+- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification { [JPUSHService showLocalNotificationAtFront:notification identifierKey:@"identifierKey"]; }
 ```
 
 #### Delegate Method  findLocalNotificationWithIdentifier
@@ -777,7 +780,7 @@ API返回数组，包含所有和identifierKey匹配的LocalNotification对象�
 
 ```
 
-NSArray *LocalNotifications = [APService findLocalNotificationWithIdentifier:@"identifierKey"];
+NSArray *LocalNotifications = [JPUSHService findLocalNotificationWithIdentifier:@"identifierKey"];
 ```
 
 #### Delegate Method  deleteLocalNotification
@@ -799,7 +802,7 @@ API参数localNotification不能为nil.
 ##### 代码示例
 
 ```
-[APService deleteLocalNotification:localNotification];
+[JPUSHService deleteLocalNotification:localNotification];
 ```
 
 #### Delegate Method  deleteLocalNotificationWithIdentifierKey
@@ -822,7 +825,7 @@ API参数notificationKey不能为nil.
 
 ##### 代码示例
 ```
-[APService deleteLocalNotificationWithIdentifierKey:@"identifierKey"]; 
+[JPUSHService deleteLocalNotificationWithIdentifierKey:@"identifierKey"]; 
 ```
 
 #### Delegate Method  clearAllLocalNotification
@@ -838,7 +841,7 @@ API 用于清除所有注册的通知
 
 ##### 代码示例
 ```
-[APService clearAllLocalNotifications];
+[JPUSHService clearAllLocalNotifications];
 ```
 
 ### 日志等级设置
@@ -864,7 +867,7 @@ API 用于开启Debug模式，显示更多的日志信息
 ##### 代码示例
 
 ```
-[APService setDebugMode];
+[JPUSHService setDebugMode];
 ```
 #### Method  setLogOFF
 
@@ -884,7 +887,7 @@ API用来关闭日志信息（除了必要的错误信息）
 ##### 代码示例
 
 ```
-[APService setLogOFF];
+[JPUSHService setLogOFF];
 ```
 
 ### 地理位置统计
@@ -919,7 +922,7 @@ API 用于统计用户地理信息
 ##### 代码示例
 ```
 
-[APService setLatitude:100.0 longitude:100.0];
+[JPUSHService setLatitude:100.0 longitude:100.0];
 ```
 
 #### Method  setLocation
@@ -979,8 +982,8 @@ Build Phases中Link Binary With Libraries添加CoreLocation.framework
     CLLocation *newLocation = [locations lastObject];
     float longtitude = newLocation.coordinate.longitude;
     float latitude = newLocation.coordinate.latitude;
-    [APService setLocation:newLocation];
-    //[APService setLatitude:latitude longitude:longtitude];
+    [JPUSHService setLocation:newLocation];
+    //[JPUSHService setLatitude:latitude longitude:longtitude];
     [manager stopUpdatingLocation];
   }
 }
@@ -992,8 +995,8 @@ Build Phases中Link Binary With Libraries添加CoreLocation.framework
   if ([[UIDevice currentDevice].systemVersion floatValue] < 6.0) {
     float longtitude = newLocation.coordinate.longitude;
     float latitude = newLocation.coordinate.latitude;
-    [APService setLocation:newLocation];
-    //[APService setLatitude:latitude longitude:longtitude];
+    [JPUSHService setLocation:newLocation];
+    //[JPUSHService setLatitude:latitude longitude:longtitude];
     [manager stopUpdatingLocation];
   }
 }
@@ -1026,7 +1029,7 @@ API 用于统计用户应用崩溃日志
 ##### 代码示例
 
 ```
-[APService crashLogON];
+[JPUSHService crashLogON];
 ```
 
 ### 客户端错误码定义
@@ -1043,7 +1046,7 @@ API 用于统计用户应用崩溃日志
     </tr>
     <tr >
       <td>1008</td>
-      <td>AppKey非法</td>
+      <td>AppKey非法，请到官网检查此应用详情中的appkey，确认无误</td>
     </tr>
     <tr >
       <td>1009</td>

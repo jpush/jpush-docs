@@ -66,6 +66,11 @@
       <td>用户未在登录状态</td>
     </tr>
     <tr>
+      <td>863006</td>
+      <td>User repeat Login fault</td>
+      <td>重复登录的错误</td>
+    </tr>
+    <tr>
       <td>864001</td>
       <td>It is not a media message</td>
       <td>不是媒体消息</td>
@@ -394,6 +399,11 @@ JMessage 服务器端报的错误码。有可能出现在各平台的 SDK 里。
 			<td>参数错误，Request Body参数不符合要求;resend 值不符合要求;用户名或者密码不合法;群组Gid不合法</td>
 		</tr>
 		<tr >
+			<td>899006</td>
+			<td>gid invalid</td>
+			<td>Gid 不存在</td>
+		</tr>
+		<tr >
 			<td>899007</td>
 			<td>Missing authen info</td>
 			<td>校验信息为空</td>
@@ -507,6 +517,11 @@ JMessage 服务器端报的错误码。有可能出现在各平台的 SDK 里。
 			<td>801004</td>
 			<td>Invalid user name or password</td>
 			<td>登录的用户密码错误，登录失败</td>
+		</tr>
+		<tr >
+			<td>801005</td>
+			<td>invalid device</td>
+			<td>登录的用户设备有误，登录失败</td>
 		</tr>
 		<tr >
 			<td>803001</td>
@@ -707,6 +722,46 @@ JMessage 服务器端报的错误码。有可能出现在各平台的 SDK 里。
 			<td>819001</td>
 			<td></td>
 			<td>用户移除好友出黑名单时，成员列表为空，操作失败</td>
+		</tr>
+		<tr >
+			<td>831001</td>
+			<td>member already setted</td>
+			<td>用户添加成员消息免打扰时，该成员已处于免打扰状态</td>
+		</tr>
+		<tr >
+			<td>832001</td>
+			<td>member never setted</td>
+			<td>用户删除成员消息免打扰时，该成员不处于免打扰状态</td>
+		</tr>
+		<tr >
+			<td>833001</td>
+			<td>group not exist</td>
+			<td>用户添加群组消息免打扰时，该群组不存在</td>
+		</tr>
+		<tr >
+			<td>833002</td>
+			<td>user not in group</td>
+			<td>用户添加群组消息免打扰时，用户不存在该群组中</td>
+		</tr>
+		<tr >
+			<td>833003</td>
+			<td>group already setted</td>
+			<td>用户添加群组消息免打扰时，该群组已处于免打扰状态</td>
+		</tr>
+		<tr >
+			<td>834001</td>
+			<td>group never setted</td>
+			<td>用户删除群组消息免打扰时，该群组不处于免打扰状态</td>
+		</tr>
+		<tr >
+			<td>835001</td>
+			<td>already setted</td>
+			<td>用户添加全局消息免打扰时，该用户已处于全局免打扰状态</td>
+		</tr>
+		<tr >
+			<td>836001</td>
+			<td>never setted</td>
+			<td>用户删除全局消息免打扰时，该用户不处于全局免打扰状态</td>
 		</tr>
 </table>
 </div>

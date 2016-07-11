@@ -1,5 +1,421 @@
 # 最近更新
 
+
+
+### JPush Android SDK v2.1.7
+
+#### 更新时间
+
++ 2016-06-28
+
+#### Change Log
+
++ 优化：修复一处空指针问题。
+
+#### 升级提示
+
++ 建议升级！
+
+#### 升级指南
+
++ 首先解压您获取到的zip压缩包
+
++ 更新库文件
+	+ 打开libs文件夹。用 jpush-android-2.1.7.jar 替换项目中原有的极光jar文件，并删除原有极光jar文件。
+用对应CPU文件夹下的 libjpush217.so文件，替换项目中原有的极光so文件，并删除原有的极光so文件，每种型号的so文件都可以在SDK下载包中找到。
+
++ 更新AndroidManifest.xml
+	+ 压缩包根目录下有针对Eclipse和AndroidStudio 两种开发平台准备的两个AndroidManifest文件。请对照示例更新跟JPush相关的组件属性，permission，Action等配置。要使用富媒体推送，请将压缩包res中的资源放到项目的对应文件夹，并按照示例AndroidManifest配置PushActivity组件
+
++ 添加资源文件
+	+ 将res文件夹下的资源文件，添加到您项目res/下对应的文件夹中。
+根据您应用的界面风格，您可以修改layout文件的配色，字体等属性，或者修改drawable文件夹下的图标。但注意请不要修改所有的文件名，和布局文件中的组件id。
+
+
+(注意：要使用富媒体推送，请将压缩包res中的资源放到项目的对应文件夹，并按照示例AndroidManifest配置组件)
+
+
+### JPush Android SDK v2.1.6
+
+#### 更新时间
+
++ 2016-06-22
+
+#### Change Log
++ 新增：为tag, alias设置增加特殊字符，包括：@!#$&*+=.|￥
++ 修复：设置静音时间的问题。
++ 优化：debug模式下SDK内部提示的通知图标。
++ 优化：处理一些可能出现的崩溃现象。
+
+#### 升级提示
+
++ 建议升级！
+
+#### 升级指南
+
++ 首先解压您获取到的zip压缩包
+
++ 更新库文件
+	+ 打开libs文件夹。用 jpush-android-2.1.6.jar 替换项目中原有的极光jar文件，并删除原有极光jar文件。
+用对应CPU文件夹下的 libjpush216.so文件，替换项目中原有的极光so文件，并删除原有的极光so文件，每种型号的so文件都可以在SDK下载包中找到。
+
++ 更新AndroidManifest.xml
+	+ 压缩包根目录下有针对Eclipse和AndroidStudio 两种开发平台准备的两个AndroidManifest文件。请对照示例更新跟JPush相关的组件属性，permission，Action等配置。要使用富媒体推送，请将压缩包res中的资源放到项目的对应文件夹，并按照示例AndroidManifest配置PushActivity组件
+
++ 添加资源文件
+	+ 将res文件夹下的资源文件，添加到您项目res/下对应的文件夹中。
+根据您应用的界面风格，您可以修改layout文件的配色，字体等属性，或者修改drawable文件夹下的图标。但注意请不要修改所有的文件名，和布局文件中的组件id。
+
+
+(注意：要使用富媒体推送，请将压缩包res中的资源放到项目的对应文件夹，并按照示例AndroidManifest配置组件)
+
+
+
+### JPush iOS SDK v2.1.8
+
+#### 更新时间
++ 2016-06-21
+
+#### Change Log
+
++ 优化IPv6网络下的通信机制。
++ 支持Tag的数量到1000个，但总长度不能超过7000字节。
++ 统计上报升级为https上报。
++ 优化增加SDK稳定性。
+
+#### 升级提示
+
++ 建议升级！
+
+#### 升级指南
++ 替换 lib 文件夹里的文件:先删除项目里旧的.a和.h文件,重新导入新的.a和.h文件（注意新版本替换APService.h为JPUSHService.h）
++ Xcode7 环境下，替换原先导入的 libz.dylib 框架为 libz.tbd （特别留意）
++ 需要删除旧的 libPushSDK-Simulator.a （如果存在）
++ 关于 iOS 7 Background Push，JPush 提供一个教程文档：[iOS 7 Background Remote Notification](../client/ios_tutorials/#ios-7-background-remote-notification)
++ 如果是1.2.7及之前版本升级 请在Build Settings里面，找到Other Linker Flags，去掉-all_load, -ObjC
+
+
+### JMessage iOS SDK v2.1.1
+
+#### 更新时间
+* 2016-06-15
+
+#### 版本号
+* JMessage SDK 2.1.1
+* JChat 1.1.0b1893
+
+#### Change Log
+
++ 新增：对IPv6网络的支持。
+
+#### 升级提示
+
++ 建议升级！
+
+#### 升级指南
++ 使用新版本的JMessage.framework文件替换原工程下的同名旧文件
+
+
+
+
+### JMessage Android SDK v1.2.5
+
+#### 更新时间
++ 2016-06-12
+
+#### JMessage SDK Change Log
+
+##### New Feature
++ Conversation对象新增设置本地未读消息数的接口
++ 新增接口：
+	+ conversation.setUnReadMessageCnt
+	
+##### Bug Fix
+
++ 修复：群成员退群时，其他成员处显示的提示文字不正确
++ 修复：群主退群后，本地群主信息没有更新。
++ 修复：用户首次收到消息，打印收到的message 中targetName为空
++ 修复：概率出发送群聊消息，应用崩溃
++ 修复：登录一个帐号A，快速再登录帐号B概率出现数据库操作异常
++ 修复：dev api移除群聊免打扰后，sdk没有更新状态
++ 修复：SDK接收到group event后messageid字段值为0
++ 优化：有大量群成员的群组中，数据的处理效率
+
+
+#### JChat Change Log
++ 适配 JMessage SDK 1.2.5
+								
+##### Bug Fix
+
++ 修复：1.2.9下拉刷新bug
++ 修复：1.2.9收到消息后可能出现会话丢失的bug
++ 优化：收到大量离线消息后UI卡顿现象
+
+#### 升级指南
+
++ jar包更新至jmessage-sdk-1.2.5.jar更新时需删除老版本jar包。
++ 将so库更新至 libjpush211.so 同时删除原来老版本so。注意不同的cpu型号对应的结构
++ 由于富媒体的展示需求，SDK 中增加一个res文件夹存放资源文件。用户需将对应文件夹下的资源文件放入工程的目录中。
++ 如果是从更早起的版本升级过来，建议参考 SDK下载包最新版本的 example 来更新 AndroidManifest.xml 文件配置。
+
+
+
+### JPush iOS SDK v2.1.7
+
+#### 更新时间
++ 2016-05-26
+
+#### Change Log
+
++ 新增：对IPv6网络的支持。
++ 优化改进：改善用户备份 app，还原到新设备 RegistrationID 不变的问题。
++ 修复：SDK 存在的偶然崩溃问题。
++ 优化改进：使用页面时长统计信息。
+
+#### 升级提示
+
++ 建议升级！
+
+#### 升级指南
++ 替换 lib 文件夹里的文件:先删除项目里旧的.a和.h文件,重新导入新的.a和.h文件（注意新版本替换APService.h为JPUSHService.h）
++ Xcode7 环境下，替换原先导入的 libz.dylib 框架为 libz.tbd （特别留意）
++ 需要删除旧的 libPushSDK-Simulator.a （如果存在）
++ 关于 iOS 7 Background Push，JPush 提供一个教程文档：[iOS 7 Background Remote Notification](../client/ios_tutorials/#ios-7-background-remote-notification)
++ 如果是1.2.7及之前版本升级 请在Build Settings里面，找到Other Linker Flags，去掉-all_load, -ObjC
+
+
+
+### JMessage iOS SDK v2.1.0
+
+#### 更新时间
+* 2016-05-10
+
+#### 版本号
+* JMessage SDK 2.1.0
+* JChat 1.1.0b1870
+
+#### Change Log
++ 实现跨应用单聊
++ 支持VIP用户群组上限突破200
+
+#### 升级提示
+
++ 建议升级！
+
+#### 升级指南
++ 使用新版本的JMessage.framework文件替换原工程下的同名旧文件
+
+
+
+### JPush Android SDK v2.1.5
+
+#### 更新时间
+
++ 2016-05-06
+
+#### Change Log
++ 修复: 用API推送 通知＋自定义消息一起的消息在2.1.3版本上仅收到通知的问题。
++ 修复: 在极端情况下 Tag/alias 清理后设置不成功的问题。
+
+#### 升级提示
+
++ 建议升级！
+
+#### 升级指南
+
++ 首先解压您获取到的zip压缩包
+
++ 更新库文件
+	+ 打开libs文件夹。用 jpush-android-2.1.5.jar 替换项目中原有的极光jar文件，并删除原有极光jar文件。
+用对应CPU文件夹下的 libjpush215.so文件，替换项目中原有的极光so文件，并删除原有的极光so文件，每种型号的so文件都可以在SDK下载包中找到。
+
++ 更新AndroidManifest.xml
+	+ 压缩包根目录下有针对Eclipse和AndroidStudio 两种开发平台准备的两个AndroidManifest文件。请对照示例更新跟JPush相关的组件属性，permission，Action等配置。要使用富媒体推送，请将压缩包res中的资源放到项目的对应文件夹，并按照示例AndroidManifest配置PushActivity组件
+
++ 添加资源文件
+	+ 将res文件夹下的资源文件，添加到您项目res/下对应的文件夹中。
+根据您应用的界面风格，您可以修改layout文件的配色，字体等属性，或者修改drawable文件夹下的图标。但注意请不要修改所有的文件名，和布局文件中的组件id。
+
+
+(注意：要使用富媒体推送，请将压缩包res中的资源放到项目的对应文件夹，并按照示例AndroidManifest配置组件)
+
+
+### JPush iOS SDK v2.1.6
+
+#### 更新时间
++ 2016-04-13
+
+#### Change Log
+
+
++ 修复: 2.1.5版本在模拟器调试运行报错的问题。
+
+#### 升级提示
+
++ 建议升级！
+
+#### 升级指南
++ 替换 lib 文件夹里的文件:先删除项目里旧的.a和.h文件,重新导入新的.a和.h文件（注意新版本替换APService.h为JPUSHService.h）
++ Xcode7 环境下，替换原先导入的 libz.dylib 框架为 libz.tbd （特别留意）
++ 需要删除旧的 libPushSDK-Simulator.a （如果存在）
++ 关于 iOS 7 Background Push，JPush 提供一个教程文档：[iOS 7 Background Remote Notification](../client/ios_tutorials/#ios-7-background-remote-notification)
++ 如果是1.2.7及之前版本升级 请在Build Settings里面，找到Other Linker Flags，去掉-all_load, -ObjC
+
+
+### JMessage Android SDK v1.2.3
+
+#### 更新时间
++ 2016-04-07
+
+#### JMessage SDK Change Log
+
+##### Bug Fix
+
++ 修复：从旧版本升级到1.2.1导致的崩溃问题
+
+
+#### JChat Change Log
++ 更新JMessage jar到1.2.3
+								
+
+
+#### 升级指南
+
++ jar包更新至jmessage-sdk-1.2.3.jar更新时需删除老版本jar包。
++ 将so库更新至 libjpush213.so 同时删除原来老版本so。注意不同的cpu型号对应的结构
++ 由于富媒体的展示需求，SDK 中增加一个res文件夹存放资源文件。用户需将对应文件夹下的资源文件放入工程的目录中。
++ 如果是从更早起的版本升级过来，建议参考 SDK下载包最新版本的 example 来更新 AndroidManifest.xml 文件配置。
+
+
+### JPush iOS SDK v2.1.5
+
+#### 更新时间
++ 2016-04-07
+
+#### Change Log
+
++ 功能增加: 增加 IDFA（广告标识符）设置接口。开发者可通过上传IDFA值增加统计准确性。极光SDK不包含主动调用获取IDFA的代码。
++ 优化改进: 修复 SDK 偶然崩溃的问题，增强健壮性。
+
+#### 升级提示
+
++ 建议升级！
+
+#### 升级指南
++ 替换 lib 文件夹里的文件:先删除项目里旧的.a和.h文件,重新导入新的.a和.h文件（注意新版本替换APService.h为JPUSHService.h）
++ Xcode7 环境下，替换原先导入的 libz.dylib 框架为 libz.tbd （特别留意）
++ 需要删除旧的 libPushSDK-Simulator.a （如果存在）
++ 关于 iOS 7 Background Push，JPush 提供一个教程文档：[iOS 7 Background Remote Notification](../client/ios_tutorials/#ios-7-background-remote-notification)
++ 如果是1.2.7及之前版本升级 请在Build Settings里面，找到Other Linker Flags，去掉-all_load, -ObjC
+
+
+
+
+### JPush Android SDK v2.1.3
+
+#### 更新时间
++ 2016-04-07
+
+#### Change Log
++ 新增:富媒体popwin和landingPage模版。
++ 优化:在android 6.0中已弃掉aorg.apache.http 的引入，现在将http相关代码修改为httpUrlconnection 的google推荐模式。
++ 优化:crash log 上报。
++ 修复:在Android 5.0 以上系统通知栏图标显示不出来的问题，定制图标需替换文件drawable-hdpi/jpush_notification_icon，或使用定制通知栏的接口。
++ 修复:小红伞扫描报错的问题。
++ 修复:一些可能导致崩溃的异常。
+
+#### 升级提示
+
++ 建议升级
+
+#### 升级指南
++ 首先解压您获取到的zip压缩包
++ 更新库文件
+	+ 打开libs文件夹。用 jpush-android-2.1.3.jar 替换项目中原有的极光jar文件，并删除原有极光jar文件。
+用对应CPU文件夹下的 libjpush213.so文件，替换项目中原有的极光so文件，并删除原有的极光so文件，每种型号的so文件都可以在SDK下载包中找到。
+
++ 更新AndroidManifest.xml
+	+ 压缩包根目录下有针对Eclipse和AndroidStudio 两种开发平台准备的两个AndroidManifest文件。请对照示例更新跟JPush相关的组件属性，permission，Action等配置。要使用富媒体推送，请将压缩包res中的资源放到项目的对应文件夹，并按照示例AndroidManifest配置PushActivity组件
+
++ 添加资源文件
+	+ 将res文件夹下的资源文件，添加到您项目res/下对应的文件夹中。
+根据您应用的界面风格，您可以修改layout文件的配色，字体等属性，或者修改drawable文件夹下的图标。但注意请不要修改所有的文件名，和布局文件中的组件id。
+
+
+### JMessage Android SDK v1.2.1
+
+#### 更新时间
++ 2016-03-31
+
+#### JMessage SDK Change Log
+
+##### New Feature
++ 新增免打扰功能
++ 支持VIP用户群组上限突破200
+	+ groupInfo中新增max_member_count属性，表示当前群成员最大人数。
++ 对外接口中需要传List作为参数的，对List size做限制。
++ 新增接口：
+	+ JMessageClient
+		+ JMessageClient.getNoDisturbList(GetNoDisturbListCallback callback) 获取用户的免打扰名单
+	+ UserInfo
+		+ userinfo.setNoDisturb(int noDisturb,Callback callback) 设置用户的免打扰状态
+		+ userinfo.getNoDisturb() 获取用户的免打扰状态
+		
+	+ GroupInfo：
+		+ groupinfo.setNoDisturb（int noDisturb,Callback callback）设置群组的免打扰状态
+		+ groupinfo.getNoDisturb() 获取群组的免打扰状态
+		+ groupinfo.getMaxMemberCount() 获取群成员的最大上限
+ 
+
+
+##### Bug Fix
+
++ 修复：api 调用GetGroupInfo 获取一个已经被销毁的群组，返回码为0
++ 修复：消息正在发送的过程中，调用Login有可能导致数据库报错
+
+
+#### JChat Change Log
++ 适配JMessage SDK 1.2.1
+								
+##### New Feature
+
++ 新增免打扰功能.
+
+##### Bug Fix
+
++ 修复compileSdkVersion 改到23（android 6.0）后，工程报错。
++ 修复添加群组成员，界面无变化
++ 群成员搜索优化
+
+
+#### 升级指南
+
++ jar包更新至jmessage-sdk-1.2.1.jar更新时需删除老版本jar包。
++ 将so库更新至 libjpush211.so 同时删除原来老版本so。注意不同的cpu型号对应的结构
++ 由于富媒体的展示需求，SDK 中增加一个res文件夹存放资源文件。用户需将对应文件夹下的资源文件放入工程的目录中。
++ 如果是从更早起的版本升级过来，建议参考 SDK下载包最新版本的 example 来更新 AndroidManifest.xml 文件配置。
+
+### JMessage iOS SDK v2.0.1
+
+#### 更新时间
+* 2016-03-22
+
+#### 版本号
+* JMessage SDK 2.0.1
+* JChat 1.1.0b1611
+
+#### Change Log
++ 修复：由于切换设备变更群成员， 群组信息不同步引起的消息发送失败。
+
+#### 升级提示
+
++ 建议升级！
++ 由于 API 与 Model 层面很大范围的变更，建议参考 JChat 项目来适配新的 JMessage iOS SDK。
+
+#### 升级指南
++ 使用新版本的JMessage.framework文件替换原工程下的同名旧文件
+
+
 ### JMessage Android SDK v1.2.0
 
 #### 更新时间

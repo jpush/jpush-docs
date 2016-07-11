@@ -3,9 +3,7 @@ site_author: JPush Offical
 site_url: http://docs.jpush.io
 site_favicon: favicon.ico
 site_description: JPush, JMessage, 极光推送, 极光IM, Android Push, Android 推送, 安卓推送, iOS Push, APNs, Push Notification
-repo_url: http://docs.jpush.cn
-repo_name: 老版本文档
-copyright: Copyright 2011-2015, jpush.cn, All Rights Reserved. <br />粤ICP备12056275号-5 深圳市和讯华谷信息技术有限公司
+copyright: Copyright 2011-2016, jiguang.cn, All Rights Reserved. <br />粤ICP备12056275号-13 深圳市和讯华谷信息技术有限公司
 theme: bootstrap
 
 pages:
@@ -23,6 +21,9 @@ pages:
   - '极光IM 指南': 'guideline/jmessage_guide.md'
   - 'JMessage Android 集成指南': 'guideline/jmessage_android_guide.md'
   - 'JMessage iOS 集成指南': 'guideline/jmessage_ios_guide.md'
+  - '短信验证': 'guideline/JSMS_guide.md'
+  - 'Android 短信验证集成指南': 'guideline/Android_SMS_SDK.md'
+  - 'iOS 短信验证集成指南': 'guideline/iOS_SMS_SDK.md'
 
 - 客户端:
   - 'Android SDK 概述': 'client/android_sdk.md'
@@ -48,6 +49,7 @@ pages:
   - 'REST API v2 - Report': 'server/rest_api_v2_report.md'
   - 'IM REST API': 'server/rest_api_im.md'
   - 'IM REST Report': 'server/rest_api_im_report.md'
+  - '短信 REST API': 'server/rest_api_jsms.md'
   - 'HTTP 状态码': 'server/http_status_code.md'
   - 'Java SDK': 'server/java_sdk.md'
   - 'Python SDK': 'server/python_sdk.md'

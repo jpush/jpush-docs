@@ -110,6 +110,7 @@ POST /v3/devices/{registration_id}
 ###### Request Params
 + tags:  支持add, remove 或者空字符串。当tags参数为空字符串的时候，表示清空所有的 tags；add/remove 下是增加或删除指定的 tag；
 + alias:  更新设备的别名属性；当别名为空串时，删除指定设备的别名；
++ mobile: 设备关联的手机号码
 
 ##### Example Response
 ###### Response Header
@@ -206,8 +207,8 @@ POST /v3/tags/{tag_value}
                 "registration_id2"
             ],
             "remove": [
-                "registration_id1",
-                "registration_id2"
+                "registration_id3",
+                "registration_id4"
             ]
         }
 }
@@ -297,7 +298,7 @@ DELETE /v3/aliases/{alias_value}?platform=android,ios
 
 ### 获取用户在线状态（VIP专属接口）
 
-如需要开通此接口，请联系：[商务客服](https://www.jpush.cn/common/price)
+如需要开通此接口，请联系：[商务客服](https://www.jiguang.cn/accounts/business/form)
 
 #### Example Request
 

@@ -59,7 +59,7 @@ JSON Array.
 
 ### 消息统计（VIP专属接口）
 
-如需要开通此接口，请联系：[商务客服](https://www.jpush.cn/common/price)
+如需要开通此接口，请联系：[商务客服](https://www.jiguang.cn/accounts/business/form)
 
 与“送达统计” API 不同的是，该 API 提供更多的针对一个 msgid 的统计数据。
 
@@ -93,7 +93,7 @@ curl -v https://report.jpush.cn/v3/messages?msg_ids=269978303 -u "7d431e42dfa6a6
       {"apns_sent":2,"apns_target":2,"click":null,"target":10,"received":8,"msg_click":5},
    
    "winphone":
-      {"mpns_target": 100,"mpns_target": 100,"mpns_target": 100,},
+      {"mpns_target": 100,"mpns_sent": 100,"click": 100,},
    
    "msg_id":269978303
   }
@@ -132,7 +132,7 @@ JSON Array
 
 ### 用户统计（VIP专属接口）
 
-如需要开通此接口，请联系：[商务客服](https://www.jpush.cn/common/price)
+如需要开通此接口，请联系：[商务客服](https://www.jiguang.cn/accounts/business/form)
 
 提供近2个月内某时间段的用户相关统计数据：新增用户、在线用户、活跃用户。
 

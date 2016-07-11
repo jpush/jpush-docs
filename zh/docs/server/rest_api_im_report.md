@@ -75,3 +75,67 @@ Content-Type: application/json; charset=utf-8
  	] 
 } 
 ```
+
+##  GetUserMessage 获取用户消息
+
+```
+GET /users/{username}/messages?start=0&count=500&begin_time={begin_time}&end_time={end_time}
+```
+### Example Request 
+
+####  Request Header  
+
+```
+GET /users/caiyh/messages?start=0&count=500&begin_time=2015-11-02 10:10:10&end_time=2015-11-02 10:10:12
+```
+
+#### Request Body  
+
+N/A
+
+####  Request Params  
++ start （必填）查询的起始纪录
++ count （必填）查询的总条数  一次最多500
++ begin_time (可选) 记录开始时间 格式  yyyy-MM-dd HH:mm:ss 设置筛选条件大于end time 不设置不生效  
++ end_time (可选)   记录结束时间  格式 yyyy-MM-dd HH:mm:ss  设置筛选条件下于begin time   不设置不生效
++ end time begin time 都不设置的话 说明两个条件都不生效，则查询服务端保存的所有消息
++ 使用此接口，传递给JPush的URL需要经过URL Encode处理，例如时间格式中的空格需要被转义为 %20
++ 查询的消息按发送时间升序排序
+
+### Example Response  
+
+#### Response Header   
+
+```
+HTTP/1.1 200 
+Content-Type: application/json; charset=utf-8 
+```
+
+#### Response Data  
+
+```
+{ 
+  "total": 3000, "start": 0, "count": 1, 
+  "messages": [ 
+        { "target_type": "single", 
+          "msg_type": "text", 
+          "target_name": "", 
+          "target_id": "10010648", 
+          "from_id": "868802000386631", 
+          "from_name": "868802000386631", 
+          "from_type": "user", 
+          "from_platform": "a", 
+          "from_appkey": "4f7aef34fb361292c566a1cd", 
+          "target_appkey": "4f7aef34fb361292c566a1cd", 
+          "msg_body": {
+                 "text": "text", 
+                 "extras": { } 
+          }, 
+          "create_time": 1446016259, 
+          "version": 1 , 
+          "msgid": 13242735,
+          "msg_level" : 0 // 0代表应用内消息 1代表跨应用消息
+        },  
+ ] 
+}
+```

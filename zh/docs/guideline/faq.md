@@ -2,6 +2,8 @@
 
 <style>
 img[alt=jpush_ios_v] { width: 500px; }
+img[alt=jpush_android_so] { width: 800px; }
+
 </style>
 
 ### 从这里开始
@@ -174,20 +176,9 @@ Portal上不会限制推送消息的数量。
 <br />
 此错误是由于没有正确的加载libjpush.so文件，请检查libjpush.so是否在正确的位置(libs–>armeabi–>libjpush.so)
 
-JPush SDK 迁移到 Android Studio 需要添加.SO文件打包到APK的lib文件夹中,可以编辑 build.gradle 脚本，自定义 *.so 目录，Demo 的参考：
+JPush SDK 迁移到 Android Studio 需要添加.SO文件打包到APK的lib文件夹中,可以编辑 build.gradle 脚本，自定义 *.so 目录，参考Demo：
 
-```
-android {
-    // .. android settings ..
-    sourceSets.main {
-      jniLibs.srcDirs = ['libs']  // <-- Set your folder here!
-    }
- }
-```
-
-如果您的应用需要支持 x86、mips 架构的CPU 需要下载对应的SDK，[下载地址 ](../../resources/)
-
-![](image/dictionary_path.png)
+![jpush_android_so](image/dictionary_path.png)
 
 <br />
 
@@ -374,7 +365,7 @@ android 的包名和 appkey 需对应。
 
 **bitCode解决方式**
 
-JPush iOS SDK v1.8.7 及以上版本的SDK,已经增加对 iOS 9 新特性 bitcode 的支持.JMessage 未发布新版支持bitCode版本前,需要用户主动关闭bitCode编译器选项:Build Settings->Enable Bitcode选项选择NO
+JPush iOS SDK v1.8.7 及以上版本的SDK,已经增加对 iOS 9 新特性 bitCode 的支持.JMessage iOS SDK v2.0.0 及以上版本支持bitCode。
 
 **Https解决方式**
 
@@ -436,7 +427,7 @@ SDK未提供https地址版本时
 对应以上关闭方式的重新打开推送方法：
 
 + 在iOS系统设置的通知设置中修改对应app的推送设置；
-+ 在代码中重新调用 [APService registerForRemoteNotificationTypes:]；
++ 在代码中重新调用 [JPUSHService registerForRemoteNotificationTypes:]；
 
 <br />
 
@@ -493,11 +484,11 @@ badge累加只能通过v3 api推送，且只有1.7.4版本以上才能支持。
 
 	如果app运行进入didRegisterForRemoteNotificationsWithDeviceToken 则说明运行正常，请确认你在此函数中的代码中有将token传递给jpush的调用：
 
-		[APService registerDeviceToken:deviceToken];
+		[JPUSHService registerDeviceToken:deviceToken];
 
 + 如果以上两个registerRemoteNotification的函数都未进入， 请确认你的代码中有注册申请apns的函数调用：
 
-		[APService registerForRemoteNotificationTypes:];
+		[JPUSHService registerForRemoteNotificationTypes:];
 		
 + 如果上述情况都已确认且未进入第4步的任意回调函数，则可以判断无法获取token的原因在于设备与apple的网络连通性问题（注：一个设备只有在未申请过token的情况下才会需要与apple的网络交互来获取token，已经获取过某一环境token的设备在无网络的情况下也能获取到对应环境的token（环境分为 开发/生产）），这种情况下切换网络能够在大部分情况下解决此问题。
 

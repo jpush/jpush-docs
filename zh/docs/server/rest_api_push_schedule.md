@@ -47,8 +47,8 @@ HTTP Header（头）里加一个字段（Key/Value对）：
 }
   
 { 
-  "name": "&#23450;&#26102;&#25512;&#36865;",
-  "enabled": true&#65292;
+  "name": "Schedule_Name",
+  "enabled": true,
   "trigger": {
      "periodical": {
           "start":"2014-09-17 12:00:00",
@@ -507,7 +507,7 @@ HTTP/1.0 404 Not Found
 			<td>400</td>
 			<td>参数无效</td>
 			<td>The schedule-task is invalid：section is invalid;has been at term;expired;request data is not json;update target task;Delete target task;schedule request is not exist</td>
-			<td>参数不会法或者无效，没通过校验</td>
+			<td>参数不合法或者无效，没通过校验</td>
 		</tr>
 		<tr >
 			<td>8203</td>
