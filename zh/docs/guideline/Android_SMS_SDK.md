@@ -5,7 +5,7 @@
 ### 支持版本
 + 目前 SDK 只支持 Android 2.3 及以上版本的手机系统。
 
-### SDK 压缩包内包括
+### SDK 压缩包包含
 
 + AndroidManifest.xml：客户端嵌入 SDK 参考的配置文件；
 + libs/jpush-sdk-sms-v1.x.x.jar：SDK Java 开发包；
@@ -16,7 +16,7 @@
 ### 创建应用
 注册成为极光开发者，在极光的 Web Portal 上创建应用得到 AppKey。如果您已经是是极光其他产品的用户并且创建过应用，那么无需重复创建。
 
-### 导入 SDK 开发包到你自己的应用程序项目
+### 导入 SDK 开发包
 解压压缩包，将 libs/jpush-sdk-sms-v1.x.x.jar 复制到工程的 libs 目录下面。
 
 ### 集成 JPush Android SDK 的混淆
