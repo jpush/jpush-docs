@@ -7,8 +7,8 @@
 
 ### SDK 压缩包内包括
 
-+ AndroidManifest.xml：客户端嵌入 SDK 参考的配置文件。
-+ libs/jpush-sdk-sms-v1.x.x.jar：SDK Java 开发包。
++ AndroidManifest.xml：客户端嵌入 SDK 参考的配置文件；
++ libs/jpush-sdk-sms-v1.x.x.jar：SDK Java 开发包；
 + example：一个完整的 Android 项目，演示了 SMS SDK 的基本用法，可以用来做参考。
 
 ## 集成步骤
@@ -76,9 +76,9 @@
 > 注：该接口是在非 UI 线程回调，需要在 UI 线程回调可调用 SMSSDK.getSmsCodeAsyn() 接口。
 
 #### 参数说明
-+ phone：手机号码
-+ temp_id：短信模板
-+ listener：回调接口
++ phone：手机号码；
++ temp_id：短信模板；
++ listener：回调接口。
 
 #### 调用示例
 
@@ -100,10 +100,9 @@
 >注：该接口是在非 UI 线程回调，需要在 UI 线程回调可调用 SMSSDK.checkSmsCodeAsyn() 接口。
 
 #### 参数说明
-
-+ phone：手机号码
-+ code：短信验证码
-+ listener：回调接口
++ phone：手机号码；
++ code：短信验证码；
++ listener：回调接口。
 
 #### 调用示例
 
