@@ -1,4 +1,58 @@
-# 最近更新
+﻿# 最近更新
+
+
+
+### JMessage Android SDK v1.3.0
+
+#### 更新时间
++ 2016-07-12
+
+### JMessage SDK Change Log
+
+##### New Feature
++ 增加群组、黑名单、免打扰功能的跨应用能力
++ 新增全局免打扰接口
++ 新增接口：
+	+ JMessageClient
+		+ setNoDisturbGlobal
+		设置全局免打扰标识。
+		+ getNoDisturbGlobal
+		获取全局免打扰标识
+		+ addGroupMembers
+		添加群成员（跨应用)
+		+ removeGroupMembers
+		移出群成员（跨应用）
+		+ addUsersToBlacklist
+		将用户加入黑名单（跨应用）
+		+ delUsersFromBlacklist 
+		将用户移出黑名单（跨应用）
+	+ GroupInfo
+		+ getGroupMemberInfo
+		获取群成员信息（跨应用）
+
+
+##### Bug Fix
+
++ 修复：小概率出现的无法收到消息的问题
++ 修复：偶现的native层崩溃
+
+
+#### JChat Change Log
++ 适配JMessage SDK 1.3.0
+
+##### New Feature
+
++ 适配：群聊、黑名单、免打扰的跨应用功能
++ 新增：全局免打扰功能
+
+
+#### 升级指南
+
++ jar包更新至jmessage-sdk-1.3.0.jar更新时需删除老版本jar包。
++ 将so库更新至 libjpush216.so 同时删除原来老版本so。注意不同的cpu型号对应的结构
++ 由于富媒体的展示需求，SDK 中增加一个res文件夹存放资源文件。用户需将对应文件夹下的资源文件放入工程的目录中。
++ 如果是从更早起的版本升级过来，建议参考 SDK下载包最新版本的 demo 来更新 AndroidManifest.xml 文件配置。
+
 
 
 
