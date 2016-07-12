@@ -898,7 +898,7 @@ public static void exitConversaion();
 事件接收方法见"事件处理"一节
 
 #### 免打扰
-可以将用户/群组添加到“免打扰”列表中，收到免打扰用户/群组发过来的消息时，通知栏不会弹出通知，消息事件照常下发。
+可以将用户/群组添加到“免打扰”列表中，收到免打扰用户/群组发过来的消息时，sdk不会弹出默认的通知提示，但消息事件照常下发。
 
 ##### 获取免打扰列表
 ```
@@ -911,6 +911,25 @@ public static void getNoDisturblist(GetNoDisurbListCallback callback)
 ##### 免打扰设置
 见api doc中<a href="http://test-docs.jpush.io/client/im_android_api_docs/cn/jpush/im/android/api/model/UserInfo.html" target="_blank">UserInfo</a>和<a href="http://test-docs.jpush.io/client/im_android_api_docs/cn/jpush/im/android/api/model/GroupInfo.html" target="_blank">GroupInfo</a>相关接口
 
+##### 全局免打扰设置
+设置全局免打扰之后，收到所有消息都将不会有通知栏通知，效果类似`setNotificationMode(JMessageClient.NOTI_MODE_NO_NOTIFICATION)`，但是此设置在用户换设备之后也会生效。
+
+```
+public static void setNoDisturbGlobal(int noDisturbGlobal, BasicCallback callback)
+```
+参数定义
+
++ int noDisturbGlobal 全局免打扰标志，1表示设置，其他表示取消设置。
++ BasicCallback callback 回调接口
+
+##### 获取全局免打扰标识
+
+```
+public static void getNoDisturbGlobal(IntegerCallback callback)
+```
+参数定义
+
++ IntegerCallback callback 回调接口。
 
 ### 类定义
 
