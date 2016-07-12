@@ -68,8 +68,8 @@
     * 集合成员类型要求为NSString类型
     * 每次调用至少设置一个 tag，覆盖之前的设置，不是新增。
     * 有效的标签组成：字母（区分大小写）、数字、下划线、汉字。
-    * 限制：每个 tag 命名长度限制为 40 字节，最多支持设置 100 个 tag，但总长度不得超过1K字节。（判断长度需采用UTF-8编码）
-    * 单个设备最多支持设置 100 个 tag。App 全局 tag 数量无限制。
+    * 限制：每个 tag 命名长度限制为 40 字节，最多支持设置 1000 个 tag，但总长度不得超过7K字节。（判断长度需采用UTF-8编码）
+    * 单个设备最多支持设置 1000 个 tag。App 全局 tag 数量无限制。
 
 * callbackSelector 
 
@@ -128,11 +128,10 @@
     * 集合成员类型要求为NSString类型
     * 每次调用至少设置一个 tag，覆盖之前的设置，不是新增。
     * 有效的标签组成：字母（区分大小写）、数字、下划线、汉字。
-    * 限制：每个 tag 命名长度限制为 40 字节，最多支持设置 100 个 tag，但总长度不得超过1K字节。（判断长度需采用UTF-8编码）
-    * 单个设备最多支持设置 100 个 tag。App 全局 tag 数量无限制。
+    * 限制：每个 tag 命名长度限制为 40 字节，最多支持设置 1000 个 tag，但总长度不得超过7K字节。（判断长度需采用UTF-8编码）
+    * 单个设备最多支持设置 1000 个 tag。App 全局 tag 数量无限制。
 
 ```
-
 [JPUSHService setTags:tags aliasInbackground:alias];
 ```
 
@@ -160,7 +159,7 @@
     - nil 此次调用不设置此值。
     - 空字符串 （@""）表示取消之前的设置。
     - 每次调用设置有效的别名，覆盖之前的设置。
-    - 有效的别名组成：字母（区分大小写）、数字、下划线、汉字。
+    - 有效的别名组成：字母（区分大小写）、数字、下划线、汉字、。
     - 限制：alias 命名长度限制为 40 字节。（判断长度需采用UTF-8编码）
 
 * tags
@@ -170,8 +169,8 @@
     * 集合成员类型要求为NSString类型
     * 每次调用至少设置一个 tag，覆盖之前的设置，不是新增。
     * 有效的标签组成：字母（区分大小写）、数字、下划线、汉字。
-    * 限制：每个 tag 命名长度限制为 40 字节，最多支持设置 100 个 tag，但总长度不得超过1K字节。（判断长度需采用UTF-8编码）
-    * 单个设备最多支持设置 100 个 tag。App 全局 tag 数量无限制。
+    * 限制：每个 tag 命名长度限制为 40 字节，最多支持设置 1000 个 tag，但总长度不得超过7K字节。（判断长度需采用UTF-8编码）
+    * 单个设备最多支持设置 1000 个 tag。App 全局 tag 数量无限制。
 
 * (void (^)(int iResCode, NSSet *iTags, NSString *iAlias))completionHandler
     
@@ -216,8 +215,8 @@
     * 空集合（[NSSet set]）表示取消之前的设置。
     * 每次调用至少设置一个 tag，覆盖之前的设置，不是新增。
     * 有效的标签组成：字母（区分大小写）、数字、下划线、汉字。
-    * 限制：每个 tag 命名长度限制为 40 字节，最多支持设置 100 个tag，但总长度不得超过1K字节。（判断长度需采用UTF-8编码）
-    * 单个设备最多支持设置 100 个 tag。App 全局 tag 数量无限制。
+    * 限制：每个 tag 命名长度限制为 40 字节，最多支持设置 1000 个tag，但总长度不得超过7K字节。（判断长度需采用UTF-8编码）
+    * 单个设备最多支持设置 1000 个 tag。App 全局 tag 数量无限制。
 
 * callbackSelector
 
@@ -230,8 +229,10 @@
    * 参数值为实现了callbackSelector的实例对象。
    * nil 此次调用不需要 Callback。
 
+```
     - (void)tagsAliasCallback:(int)iResCode tags:(NSSet*)tags alias:(NSString*)alias {
                 NSLog(@"rescode: %d, \ntags: %@, \nalias: %@\n", iResCode, tags , alias);}
+```
 
 #### Method - setAlias
 
@@ -265,8 +266,10 @@
      * 参数值为实现了callbackSelector的实例对象。
      * nil 此次调用不需要 Callback。
 
+```
     - (void)tagsAliasCallback:(int)iResCode tags:(NSSet*)tags alias:(NSString*)alias {
             NSLog(@"rescode: %d, \ntags: %@, \nalias: %@\n", iResCode, tags , alias)        }
+```
 
 #### Method - filterValidTags
 
@@ -324,7 +327,7 @@
     <tr >
       <td>6003</td>
       <td>alias 字符串不合法</td>
-      <td>有效的别名、标签组成：字母（区分大小写）、数字、下划线、汉字。</td>
+      <td>有效的别名、标签组成：字母（区分大小写）、数字、下划线、汉字</td>
     </tr>
     <tr >
       <td>6004</td>
@@ -334,7 +337,7 @@
     <tr >
       <td>6005</td>
       <td>某一个 tag 字符串不合法</td>
-      <td>有效的别名、标签组成：字母（区分大小写）、数字、下划线、汉字。</td>
+      <td>有效的别名、标签组成：字母（区分大小写）、数字、下划线、汉字</td>
     </tr>
     <tr >
       <td>6006</td>
@@ -343,13 +346,13 @@
     </tr>
     <tr >
       <td>6007</td>
-      <td>tags 数量超出限制。最多 100个</td>
+      <td>tags 数量超出限制。最多 1000个</td>
       <td>这是一台设备的限制。一个应用全局的标签数量无限制。</td>
     </tr>
     <tr >
       <td>6008</td>
       <td>tag 超出总长度限制</td>
-      <td>总长度最多 1K 字节</td>
+      <td>总长度最多 7K 字节</td>
     </tr>
     <tr >
       <td>6011</td>

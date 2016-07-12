@@ -1,20 +1,12 @@
 ### SMS Code API v1
->  SMS Code API
-
-
->  发送短信验证码
-
-
->  验证短信验证码
-
->  基于HTTPS请求
-
->  使用 HTTP Basic Authentication 的方式做访问授权
-
-
->  请求和返回的body都传递JSON格式
-
-
+<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px;">
+<ul style="margin-bottom: 0;">
+<li>发送短信验证码</li>
+<li>验证短信验证码</li>
+<li>使用 HTTP Basic Authentication 的方式做访问授权。这样整个 API 请求可以使用常见的 HTTP 工具来完成，比如：curl，浏览器插件等；</li>
+<li>内容完全使用 JSON 的格式；</li>
+</ul>
+</div>
 #### 发送验证码API
 
 
@@ -90,23 +82,24 @@ curl --insecure -X POST -v https://api.sms.jpush.cn/v1/codes/06890980-6789-4054-
 
 - 验证通过
 
-    ```json
+```
     {
         "is_valid":true
     }
-    ```
+
+```
     
 - 验证不通过
 
-    ```json
+```
     {
-        "is_valid":false
+        "is_valid":false,
         "error":{
             "code":***,//具体对照返回码表
             "message":"***"
         }
     }
-    ```
+```
 
 ### 返回码
 

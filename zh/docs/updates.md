@@ -1,5 +1,123 @@
 # 最近更新
 
+
+
+### JPush Android SDK v2.1.7
+
+#### 更新时间
+
++ 2016-06-28
+
+#### Change Log
+
++ 优化：修复一处空指针问题。
+
+#### 升级提示
+
++ 建议升级！
+
+#### 升级指南
+
++ 首先解压您获取到的zip压缩包
+
++ 更新库文件
+	+ 打开libs文件夹。用 jpush-android-2.1.7.jar 替换项目中原有的极光jar文件，并删除原有极光jar文件。
+用对应CPU文件夹下的 libjpush217.so文件，替换项目中原有的极光so文件，并删除原有的极光so文件，每种型号的so文件都可以在SDK下载包中找到。
+
++ 更新AndroidManifest.xml
+	+ 压缩包根目录下有针对Eclipse和AndroidStudio 两种开发平台准备的两个AndroidManifest文件。请对照示例更新跟JPush相关的组件属性，permission，Action等配置。要使用富媒体推送，请将压缩包res中的资源放到项目的对应文件夹，并按照示例AndroidManifest配置PushActivity组件
+
++ 添加资源文件
+	+ 将res文件夹下的资源文件，添加到您项目res/下对应的文件夹中。
+根据您应用的界面风格，您可以修改layout文件的配色，字体等属性，或者修改drawable文件夹下的图标。但注意请不要修改所有的文件名，和布局文件中的组件id。
+
+
+(注意：要使用富媒体推送，请将压缩包res中的资源放到项目的对应文件夹，并按照示例AndroidManifest配置组件)
+
+
+### JPush Android SDK v2.1.6
+
+#### 更新时间
+
++ 2016-06-22
+
+#### Change Log
++ 新增：为tag, alias设置增加特殊字符，包括：@!#$&*+=.|￥
++ 修复：设置静音时间的问题。
++ 优化：debug模式下SDK内部提示的通知图标。
++ 优化：处理一些可能出现的崩溃现象。
+
+#### 升级提示
+
++ 建议升级！
+
+#### 升级指南
+
++ 首先解压您获取到的zip压缩包
+
++ 更新库文件
+	+ 打开libs文件夹。用 jpush-android-2.1.6.jar 替换项目中原有的极光jar文件，并删除原有极光jar文件。
+用对应CPU文件夹下的 libjpush216.so文件，替换项目中原有的极光so文件，并删除原有的极光so文件，每种型号的so文件都可以在SDK下载包中找到。
+
++ 更新AndroidManifest.xml
+	+ 压缩包根目录下有针对Eclipse和AndroidStudio 两种开发平台准备的两个AndroidManifest文件。请对照示例更新跟JPush相关的组件属性，permission，Action等配置。要使用富媒体推送，请将压缩包res中的资源放到项目的对应文件夹，并按照示例AndroidManifest配置PushActivity组件
+
++ 添加资源文件
+	+ 将res文件夹下的资源文件，添加到您项目res/下对应的文件夹中。
+根据您应用的界面风格，您可以修改layout文件的配色，字体等属性，或者修改drawable文件夹下的图标。但注意请不要修改所有的文件名，和布局文件中的组件id。
+
+
+(注意：要使用富媒体推送，请将压缩包res中的资源放到项目的对应文件夹，并按照示例AndroidManifest配置组件)
+
+
+
+### JPush iOS SDK v2.1.8
+
+#### 更新时间
++ 2016-06-21
+
+#### Change Log
+
++ 优化IPv6网络下的通信机制。
++ 支持Tag的数量到1000个，但总长度不能超过7000字节。
++ 统计上报升级为https上报。
++ 优化增加SDK稳定性。
+
+#### 升级提示
+
++ 建议升级！
+
+#### 升级指南
++ 替换 lib 文件夹里的文件:先删除项目里旧的.a和.h文件,重新导入新的.a和.h文件（注意新版本替换APService.h为JPUSHService.h）
++ Xcode7 环境下，替换原先导入的 libz.dylib 框架为 libz.tbd （特别留意）
++ 需要删除旧的 libPushSDK-Simulator.a （如果存在）
++ 关于 iOS 7 Background Push，JPush 提供一个教程文档：[iOS 7 Background Remote Notification](../client/ios_tutorials/#ios-7-background-remote-notification)
++ 如果是1.2.7及之前版本升级 请在Build Settings里面，找到Other Linker Flags，去掉-all_load, -ObjC
+
+
+### JMessage iOS SDK v2.1.1
+
+#### 更新时间
+* 2016-06-15
+
+#### 版本号
+* JMessage SDK 2.1.1
+* JChat 1.1.0b1893
+
+#### Change Log
+
++ 新增：对IPv6网络的支持。
+
+#### 升级提示
+
++ 建议升级！
+
+#### 升级指南
++ 使用新版本的JMessage.framework文件替换原工程下的同名旧文件
+
+
+
+
 ### JMessage Android SDK v1.2.5
 
 #### 更新时间

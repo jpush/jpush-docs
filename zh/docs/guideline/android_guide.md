@@ -336,7 +336,7 @@ JPush SDK 提供的 API 接口，都主要集中在 cn.jpush.android.api.JPushIn
 
 #### 添加统计代码
 
-+ 参考文档： [统计分析 API](http://docs.jiguang.cn/client/android_api/#api_2)
++ 参考文档： [统计分析 API](../../client/android_api/#api_2)
 
 #### 调用示例代码（参考 example 项目）
 
