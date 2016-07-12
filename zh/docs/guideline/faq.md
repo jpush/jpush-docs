@@ -365,7 +365,7 @@ android 的包名和 appkey 需对应。
 
 **bitCode解决方式**
 
-JPush iOS SDK v1.8.7 及以上版本的SDK,已经增加对 iOS 9 新特性 bitcode 的支持.JMessage 未发布新版支持bitCode版本前,需要用户主动关闭bitCode编译器选项:Build Settings->Enable Bitcode选项选择NO
+JPush iOS SDK v1.8.7 及以上版本的SDK,已经增加对 iOS 9 新特性 bitCode 的支持.JMessage iOS SDK v2.0.0 及以上版本支持bitCode。
 
 **Https解决方式**
 

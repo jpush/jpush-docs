@@ -22,7 +22,7 @@ img[alt=jpush_android_receiver] { width: 500px; }
 ![jpush_android_3m](image/jpush_app_register.png)
  
 ### Portal上创建应用
-使用注册账号登陆，进入极光控制台后，点击“创建应用”按钮。创建帐号进入极光推送后，首先显示的是创建应用的界面。填上你的应用程序的名称，以及 Android包名这二顶就可以了。
+使用注册账号登陆，进入极光控制台后，点击“创建应用”按钮。创建帐号进入极光推送后，首先显示的是创建应用的界面。填上你的应用程序的名称，以及 Android包名这二项就可以了。
 
 ![jpush_android_3m](image/jpush_app_create.png)
 
