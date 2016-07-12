@@ -1,4 +1,4 @@
-﻿# 最近更新
+# 最近更新
 
 
 
@@ -7,7 +7,7 @@
 #### 更新时间
 + 2016-07-12
 
-### JMessage SDK Change Log
+#### JMessage SDK Change Log
 
 ##### New Feature
 + 增加群组、黑名单、免打扰功能的跨应用能力
