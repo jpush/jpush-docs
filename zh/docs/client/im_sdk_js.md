@@ -1,666 +1,472 @@
-<h1>极光IM SDK - JavaScript</h1>
+## JMessage WEB SDK 开发文档
+
+### SDK概述
+
+极光WebIM SDK 为 Web 应用提供一个 IM 系统开发框架, 屏蔽掉 IM 系统的复杂的细节, 对外提供较为简洁的 API 接口, 方便第三方应用快速集成 IM 功能。
 
 
+### 签名算法
 
-### 概述
-
-极光IM（英文名JMessage）JS SDK 为用户的 Web 应用提供 IM 即时通讯功能。
-
-要了解极光IM的概述信息，请参考文档：[极光IM指南](../../guideline/jmessage_guide)
-
-### 功能
-
-#### Demo Web IM
-
-我们基于极光 IM JS SDK 提供一个完整的 Web IM Demo，它就是一个 Web IM App。或者说，如果你需要做一个 Web IM 应用，可以只做这样两个变更就是你自己的 Web IM 了：
- 
-+ 在 JPush Web 控制台上注册应用，获取到的 Appkey 配置到 Web IM 中；
-+ 根据我们提供的特定算法，在自己的服务器端生成签名，获取后配置到 Web IM 即可。
-
-#### 消息
-
-极光IM 最核心的功能是 IM 即时消息的功能。
-
-- 保证消息及时下发；
-- 单聊，群聊；
-- 消息类型：文本、语音、图片；
-- 用户未在线时保存离线消息；
-- 基于 JPush 原有的大容量稳定的长连接、大容量消息并发能力；
-
-#### 用户
-
-开发者的用户，基于 username / password 注册到 JMessage。
-目前 JS SDK 侧不提供注册用户功能，你可以通过 Android 端、 IOS 端或者服务器端批量发起注册。
-用户登录 Web IM 后，就可以向其它 username 发聊天消息，也可以收到来自其它 username 的消息，或者群组消息了。
-用户 A 是否有权限向用户 B 发消息，由 App 逻辑自己控制。（由 JMessage 提供好友关系时，JMessage 会做控制）
-
-#### 群组
-
-可以把多个 username 加入到同一个群组里，之后各成员可以在群组中发群聊消息。
-
-- 创建群组、退出群组；
-- 添加群组成员、移除群组成员；
-
-
-#### 好友（还未提供）
-
-
-
-### SDK 权限签名
-
-为保证开发者应用的安全性，在使用JMessage JS SDK 之前需要在开发者自己的服务器端实现签名的逻辑，然后将相关信息返回，调用 JS SDK 相关接口填入相关信息来完成开发者有效性认证。
-#### 签名算法
-签名生成规则如下：参与签名的字段包括 appKey, masterSecrect, timestamp（时间戳）, randomStr（随机字符串）。对所有待签名参数按照 appKey、timestamp、randomStr、masterSecrect的顺序，使用URL键值对的格式（即key1=value1&key2=value2…）拼接成字符串string1。对 string1 作 MD5 加密，字段名和字段值都采用原始值，不进行 URL 转义，然后将 MD5 串转成大写，完成签名。
-#### 算法示例（Java）
-	// 生成时间戳
-	public String getTimestamp() {
-        	return Long.toString(System.currentTimeMillis() / 1000);
-	}
-	
-	// 生成随即字符串
-	public String getRandomStr() {
-        	return UUID.randomUUID().toString();
-   	}
-	
-	// 生成签名
-	public String getSignature(String appKey, String timestamp, String randomStr, String masterSecrect){
-    		String str = "appKey=" + appKey + "&timestamp=" + timestamp +
-             	"&randomStr=" + randomStr + "&masterSecrect=" + masterSecrect;
-    		MessageDigest md = MessageDigest.getInstance("MD5");
-    		String result = byteArrayToHexString(md.digest(str.getBytes()));
-    		return result.toUpperCase();
-	}
-
-
-### 集成指南
-在开发者自己页面中按照以下顺序引入相关脚本文件：
-	```<script type="text/javascript" src="http://7xjfat.dl1.z0.glb.clouddn.com/jquery.min.js"></script>```
-	```<script type="text/javascript" src="http://7xjfat.dl1.z0.glb.clouddn.com/ajaxfileupload.min.js"></script>```
-	```<script type="text/javascript" src="http://7xjfat.dl1.z0.glb.clouddn.com/socket.io.min.js"></script>```
-	```<script type="text/javascript" src="http://7xjfat.dl1.z0.glb.clouddn.com/jmessage-1.0.0.min.js"></script>```
-
-### API 列表
-
-#### 验证类
-
-##### 配置与验证
-在使用 JMessage JS SDK 的其它 API 之前，必须从开发者自己的服务端获取 appKey、timestamp、randomStr、signature 参数，然后调用API config 来完成验证。
-```
-JMessage.config({
-	appKey: "",
-	timestamp: "",
-	randomStr: "",
-	signature: ""
-});
-```
-参数说明
-
-+ String appKey 开发者创建应用时的appKey
-+ String timestamp 开发者 Server 端返回的时间戳
-+ String randomStr 开发者 Server 端返回的随即字符串
-+ String signature 开发者 Server 端返回的签名
-
-
-##### 验证成功
-```
-JMessage.ready(function() {
-
-});
-```
-参数说明
-
-+ 无
-
-
-##### 验证失败
-```
-JMessage.error(function(code, message) {
+开发者在执行登录的时候，需要传入auth_payload。 该数据结构由开发者服务端生成并传回浏览器，用于开发者授权此浏览器运行的JMessage登录。开发者需确保能调用获取到此数据的皆为合法用户。
   
-});
-```
-返回
-
-+ Number code 验证错误相应的错误码
-+ String message 错误码对应的错误信息
-
-#### 网络连接类
-
-##### 网络连接成功
-```
-JMessage.onConnected(function() {
-
-});
-```
-
-参数说明
-
-+ 无
-
-##### 网络连接中断
-```
-JMessage.onDisconnected(function() {
-
-});
-```
-参数说明
-
-+ 无
-
-
-#### 用户类
-
-##### 用户登陆
-```
-JMessage.login({
-	username: "",
-  	password: "", 
-  	success: function() {
-           
-  	},
-	fail: function(code, message){
-
-	}
-});
-```
-参数说明
-
-+ String username 用户名
-+ String password 用户密码
-+ Function success 登陆成功的回调函数
-+ Function fail 登陆失败的回调函数
-
-	+ 参数说明
-		+ Number code 错误码
-		+ String message 错误码对应的错误信息
-
-##### 用户退出
-```
-JMessage.logout();
-```
-参数说明
-
-+ 无
-
-##### 获取用户信息
-```
-JMessage.getUserInfo({
-  	username: "",
-  	success: function(response) {
-               
-  	},
-	fail: function(code, message){
-
-	}
-});
-```
-参数说明
-
-+ String username 用户名
-+ Function success 获取用户信息成功后的回调函数 
-
-	+ 参数说明
-		+ String response 对应用户的信息
-
+auth_payload的数据结构如下:  
+  
 ```
 {
-	"username": "chicken",
-	"nickname": "Tom Chick",
-	"star": 2,
-	"avatar": "qiniu/image/uipreqfdsakl",     // 用户头像。存储的路径
-	"gender": 0,                              // 用户性别
-	"signature": "I am a ...",                // 签名
-	"region": "深圳",                         // 区域
-	"address": "南山区",                      // 详细地址
-	"mtime": "2015-03-03 11:00:00",          // 修改时间
-	"ctime": "2015-03-03 11:00:00",          // 创建时间
+    "appkey": "7e42e869baa2fbca8ccb823c",
+    "random_str": "022cd9fd995849b58b3ef0e943421ed9",
+    "signature": "E422A978DE37196588531CD0C42010B5",
+    "timestamp": "1467967210887"
 }
 ```
 
-+ Function fail 获取用户信息失败后的回调函数 
-	
-	+ 参数说明
-		+ Number code 错误码
-		+ String message 错误码对应的错误信息
+参数说明:
+  
+* appkey : 开发者在极光平台注册的IM应用appkey
+* random_str : 20-36长度的随机字符串, 作为签名加salt使用
+* timestamp : 当初时间戳，用于防止重放攻击
+* signature : 签名
 
-
-#### 消息类
-
-##### 发送文本消息
+签名生成算法如下:  
+  
 ```
-JMessage.sendTextMessage({
-	targetId: "",
-	targetType: "",
-	text: "",
-	idGenerated: function(rid){
-	
-	},
-	success: function(rid) {
+signature = md5(appkey=appkey&timestamp=timestamp&random_str=random_str&key=secret)
+```  
 
-	},
-	fail: function(code, message, rid) {	
+其中secret为开发者在极光平台注册的IM应用masterSecret。
 
-	}
+
+### 开发准备
+
+#### 1  引入sockit.io.js
+JiGuang WebIM是基于[sockit.io](http://socket.io/)开发，开发者在使用之前需引入`sockit.io.js`。
+
+CDN源:
+
+```
+// 官网CDN源
+<script src="//cdn.socket.io/socket.io-1.4.5.js"></script>
+
+// bootcdn源
+<script src="//cdn.bootcss.com/socket.io/1.4.5/socket.io.min.js"></script>
+```
+
+以上CDN源引入任一一个即可，开发者也可以将socket.io.js下载到自己的项目目录并手动引入，建议引入最新版本的socket.io。
+
+#### 2  引入jmessage-web-sdk.min.js
+
+```
+<script src='./jmessage-sdk-web-1.0.0.min.js'></script>
+```
+引入该js后便可使用window上的全局变量`JIM`。
+
+#### 3  调用JIM.init()进行初始化。
+```
+JIM.init({debug:true});
+```
+
+### API
+
+#### 初始化 JIM.init()
+
+PS: 此API是进行`JIM.login()`的前置动作，需要调用此接口才能进行登录操作。
+
+**Params:**  
+  
+|KEY|REQUIRE|DESCIPTION|
+|----|----|----|
+|debug|FALSE|是否开启DEBUG模式，DEBUG模式会有更多日志打印，默认不开窍|
+|address|FALSE|JMessage服务器地址，一般不需要指定，默认即可|
+|timeout|FALSE|请求超时时间，默认为30秒|
+
+**Example:**  
+  
+```javascript
+Jim.init({
+  debug: true //是否开启debug模式
+})
+```
+
+#### 登陆 JIM.login()
+
+PS: 此API是IM业务方法的前置动作，需要登录后，才能进行后续的接口调用
+
+**Params:**
+  
+|KEY|REQUIRE|DESCIPTION|
+|----|----|----|
+|username|TRUE|用户名|
+|password_md5|TRUE|进行MD5处理后的用户密码|
+|auth_payload|TRUE|签名，具体创建方法见签名算法|
+|resp_callback|FALSE|返回数据处理回调函数，不处理则忽略或传入null|
+|ack_callback|FALSE|请求送达回调函数，不处理则忽略或传入null|
+|timeout_callback|FALSE|请求超时回调函数，不处理则忽略或传入null|  
+  
+**Example:**  
+  
+```javascript
+JIM.login(username, password, auth_payload, function(data) {
+    // 登录结果返回处理
+}, function(ack) {
+    // 请求送达JMessage服务器事件处理
+}, function(timeout) {
+    // 请求发送超时事件处理
 });
 ```
-参数说明
 
-+ String targetId 单聊时为 username，群聊时为 groupId
-+ String targetType 单聊时为"single"，群聊时为"group"
-+ String text 发送消息的文本内容
-+ Function idGenerated 发送消息后的回调
-	+ 参数说明
-		+ Number rid 此消息对应的 rid
+#### 获取用户信息 JIM.getUserInfo()
 
-+ Function success 消息发送成功的回调函数
-	+ 参数说明
-		+ Number rid 此消息对应的 rid
+**Params:**
+  
+|KEY|REQUIRE|DESCIPTION|
+|----|----|----|
+|username|TRUE|用户名|
+|resp_callback|FALSE|返回数据处理回调函数，不处理则忽略或传入null|
+|ack_callback|FALSE|请求送达回调函数，不处理则忽略或传入null|
+|timeout_callback|FALSE|请求超时回调函数，不处理则忽略或传入null|  
+  
+**Example:**
 
-+ Function fail 消息发送失败的回调函数
-	+ 参数说明
-		+ Number code 错误码
-		+ String message 错误码对应的错误信息
-		+ Number rid 此消息对应的 rid
-
-
-##### 发送图片消息
 ```
-JMessage.sendImageMessage({
-	targetId: "",
-	targetType: "",
-	fileId: "",
-	idGenerated: function(rid){
-	
-	},
-	success: function(rid) {
-
-	},
-	fail: function(code, message, rid) {	
-
-	}
+JIM.getUserInfo('xiezefan', 'username', function(data) {
+    // 返回处理
+}, function(ack) {
+    // 请求送达JMessage服务器事件处理
+}, function(timeout) {
+    // 请求发送超时事件处理
 });
 ```
-参数说明
 
-+ String targetId 单聊时为 username，群聊时为 groupId
-+ String targetType 单聊时为"single"，群聊时为"group"
-+ String fileId 上传文件域（```<input type='file' id='' name='' />```）的 id，此项开发者需注意id 和 name 保持一致
-+ Function idGenerated 发送消息后的回调
-	+ 参数说明
-		+ Number rid 此消息对应的 rid
+#### 发送单聊消息 JIM.sendSingleMsg()
 
-+ Function success 消息发送成功的回调函数
-	+ 参数说明
-		+ Number rid 此消息对应的 rid
+**Params:**
+  
+|KEY|REQUIRE|DESCIPTION|
+|----|----|----|
+|target_username|TRUE|消息接受者username|
+|content|TRUE|消息文本|
+|resp_callback|FALSE|返回数据处理回调函数，不处理则忽略或传入null|
+|ack_callback|FALSE|请求送达回调函数，不处理则忽略或传入null|
+|timeout_callback|FALSE|请求超时回调函数，不处理则忽略或传入null|  
+  
+**Example:**
 
-+ Function fail 消息发送失败的回调函数
-	+ 参数说明
-		+ Number code 错误码
-		+ String message 错误码对应的错误信息
-		+ Number rid 此消息对应的 rid
-
-##### 重发消息
 ```
-JMessage.resendMessage({
-	rid: 12345,
-	success: function(rid) {
-
-	},
-	fail: function(code, message, rid) {
-
-	}
+JIM.sendSingleMsg(friend_id, 'Hi, JPush', function(data) {
+    // 返回处理
+}, function(ack) {
+    // 请求送达JMessage服务器事件处理
+}, function(timeout) {
+    // 请求发送超时事件处理
 });
 ```
-参数说明
-
-+ Number rid 发送失败的消息对应的 rid
-+ Function success 消息发送成功的回调函数
-	+ 参数说明
-		+ Number rid 此消息对应的 rid
-
-+ Function fail 消息发送失败的回调函数
-	+ 参数说明
-		+ Number code 错误码
-		+ String message 错误码对应的错误信息
-		+ Number rid 此消息对应的 rid
 
 
-##### 收到下发消息
+#### 发送群组消息 JIM.sendGroupMsg()
+
+**Params:**
+  
+|KEY|REQUIRE|DESCIPTION|
+|----|----|----|
+|target_gid|TRUE|消息接受群组gid|
+|content|TRUE|消息文本|
+|resp_callback|FALSE|返回数据处理回调函数，不处理则忽略或传入null|
+|ack_callback|FALSE|请求送达回调函数，不处理则忽略或传入null|
+|timeout_callback|FALSE|请求超时回调函数，不处理则忽略或传入null|  
+  
+**Example:**
+
 ```
-JMessage.onMessageReceived(function(jMessage) {
-	
+JIM.sendGroupMsg(group_id, 'Hi, JPush', function(data) {
+    // 返回处理
+}, function(ack) {
+    // 请求送达JMessage服务器事件处理
+}, function(timeout) {
+    // 请求发送超时事件处理
 });
 ```
-参数说明
 
-+ String jMessage 消息内容，详情参照 [消息协议](http://docs.jpush.io/advanced/im_message_protocol/#im)
+
+#### 创建群组 JIM.createGroup()
+
+**Params:**
+  
+|KEY|REQUIRE|DESCIPTION|
+|----|----|----|
+|group_name|TRUE|群组名称|
+|group_description|TRUE|群组描述|
+|resp_callback|FALSE|返回数据处理回调函数，不处理则忽略或传入null|
+|ack_callback|FALSE|请求送达回调函数，不处理则忽略或传入null|
+|timeout_callback|FALSE|请求超时回调函数，不处理则忽略或传入null|  
+  
+**Example:**
+
+```
+JIM.createGroup('Group Name', 'Group Description', function(data) {
+    // 返回处理
+}, function(ack) {
+    // 请求送达JMessage服务器事件处理
+}, function(timeout) {
+    // 请求发送超时事件处理
+});
+```
+
+
+#### 获取群组列表 JIM.getGroupList()
+
+**Params:**
+  
+|KEY|REQUIRE|DESCIPTION|
+|----|----|----|
+|resp_callback|FALSE|返回数据处理回调函数，不处理则忽略或传入null|
+|ack_callback|FALSE|请求送达回调函数，不处理则忽略或传入null|
+|timeout_callback|FALSE|请求超时回调函数，不处理则忽略或传入null|  
+  
+**Example:**
+
+```
+JIM.getGroupList(function(data) {
+    // 返回处理
+}, function(ack) {
+    // 请求送达JMessage服务器事件处理
+}, function(timeout) {
+    // 请求发送超时事件处理
+});
+```
+
+
+#### 获取群组信息 JIM.getGroupInfo()
+
+**Params:**
+  
+|KEY|REQUIRE|DESCIPTION|
+|----|----|----|
+|gid|TRUE|群组gid|
+|resp_callback|FALSE|返回数据处理回调函数，不处理则忽略或传入null|
+|ack_callback|FALSE|请求送达回调函数，不处理则忽略或传入null|
+|timeout_callback|FALSE|请求超时回调函数，不处理则忽略或传入null|  
+  
+**Example:**
+
+```
+JIM.getGroupInfo(group_id, function(data) {
+    // 返回处理
+}, function(ack) {
+    // 请求送达JMessage服务器事件处理
+}, function(timeout) {
+    // 请求发送超时事件处理
+});
+```
+
+
+#### 增加群组成员 JIM.addGroupMember()
+
+**Params:**
+  
+|KEY|REQUIRE|DESCIPTION|
+|----|----|----|
+|gid|TRUE|群组gid|
+|username_list|TRUE|增加进群组的用户名列表|
+|resp_callback|FALSE|返回数据处理回调函数，不处理则忽略或传入null|
+|ack_callback|FALSE|请求送达回调函数，不处理则忽略或传入null|
+|timeout_callback|FALSE|请求超时回调函数，不处理则忽略或传入null|  
+  
+**Example:**
+
+```
+JIM.addGroupMember(group_id, ['xiezefan01', 'xiezefan02', 'xiezefan03'], function(data) {
+    // 返回处理
+}, function(ack) {
+    // 请求送达JMessage服务器事件处理
+}, function(timeout) {
+    // 请求发送超时事件处理
+});
+```
+
+
+#### 删除群组成员 JIM.delGroupMember()
+
+**Params:**
+  
+|KEY|REQUIRE|DESCIPTION|
+|----|----|----|
+|gid|TRUE|群组gid|
+|username_list|TRUE|增加进群组的用户名列表|
+|resp_callback|FALSE|返回数据处理回调函数，不处理则忽略或传入null|
+|ack_callback|FALSE|请求送达回调函数，不处理则忽略或传入null|
+|timeout_callback|FALSE|请求超时回调函数，不处理则忽略或传入null|  
+  
+**Example:**
+
+```
+JIM.delGroupMember(group_id, ['xiezefan01', 'xiezefan02', 'xiezefan03'], function(data) {
+    // 返回处理
+}, function(ack) {
+    // 请求送达JMessage服务器事件处理
+}, function(timeout) {
+    // 请求发送超时事件处理
+});
+```
+
+
+#### 获取群组成员列表 JIM.getGroupMembers()
+
+**Params:**
+  
+|KEY|REQUIRE|DESCIPTION|
+|----|----|----|
+|gid|TRUE|群组gid|
+|resp_callback|FALSE|返回数据处理回调函数，不处理则忽略或传入null|
+|ack_callback|FALSE|请求送达回调函数，不处理则忽略或传入null|
+|timeout_callback|FALSE|请求超时回调函数，不处理则忽略或传入null|  
+  
+**Example:**
+
+```
+JIM.getGroupMembers(group_id, function(data) {
+    // 返回处理
+}, function(ack) {
+    // 请求送达JMessage服务器事件处理
+}, function(timeout) {
+    // 请求发送超时事件处理
+});
+```
+
+
+#### 更新群组信息 JIM.updateGroupInfo()
+
+**Params:**
+  
+|KEY|REQUIRE|DESCIPTION|
+|----|----|----|
+|gid|TRUE|群组gid|
+|group_name|TRUE|群组名称|
+|group_description|TRUE|群组描述|
+|resp_callback|FALSE|返回数据处理回调函数，不处理则忽略或传入null|
+|ack_callback|FALSE|请求送达回调函数，不处理则忽略或传入null|
+|timeout_callback|FALSE|请求超时回调函数，不处理则忽略或传入null|  
+  
+**Example:**
+
+```
+JIM.updateGroupInfo(group_id, 'New Group Name', 'New Group Description', function(data) {
+    // 返回处理
+}, function(ack) {
+    // 请求送达JMessage服务器事件处理
+}, function(timeout) {
+    // 请求发送超时事件处理
+});
+```
+
+#### 退出群组 JIM.exitGroup()
+
+**Params:**
+  
+|KEY|REQUIRE|DESCIPTION|
+|----|----|----|
+|gid|TRUE|群组gid|
+|resp_callback|FALSE|返回数据处理回调函数，不处理则忽略或传入null|
+|ack_callback|FALSE|请求送达回调函数，不处理则忽略或传入null|
+|timeout_callback|FALSE|请求超时回调函数，不处理则忽略或传入null|  
+  
+**Example:**
+
+```
+JIM.exitGroup(group_id, function(data) {
+    // 返回处理
+}, function(ack) {
+    // 请求送达JMessage服务器事件处理
+}, function(timeout) {
+    // 请求发送超时事件处理
+});
+```
+
+
+#### 获取会话列表 JIM.getConversations()
+
+**Params:**
+  
+|KEY|REQUIRE|DESCIPTION|
+|----|----|----|
+|resp_callback|FALSE|返回数据处理回调函数，不处理则忽略或传入null|
+|ack_callback|FALSE|请求送达回调函数，不处理则忽略或传入null|
+|timeout_callback|FALSE|请求超时回调函数，不处理则忽略或传入null|  
+  
+**Example:**
+
+```
+JIM.getConversations(function(data) {
+    // 返回处理
+}, function(ack) {
+    // 请求送达JMessage服务器事件处理
+}, function(timeout) {
+    // 请求发送超时事件处理
+});
+```
+
+#### 登出 JIM.loginOut()
+
+#### 聊天消息监听
+
+**Example:**
+
+```
+JIM.onMsgReceive(function(data) {
+    // 聊天消息处理
+});
+```  
+
+**Event Payload Example**
+
 ```
 {
-    "version": 1,
-    "target_type": "single",
-    "target_id": "javen",
-    "target_name": "Javen Fang",
-    "from_type": "user",
-    "from_id": "fang", 
-    "from_name": "Fang Javen", 
-    "create_time": 135432432187,
-    "msg_type": "text",
-    "msg_body": {
-        "text": "Hello, JPush IM!"  
+  "uid": 16836751, // 消息接受者ID
+  "messages": [
+    {
+      "from_gid": 0, // 消息发送群组ID 
+      "msg_type": 3, // 消息类型，3单聊， 4群聊
+      "ctime": 1468152712, // msgid 生成时间，单位秒
+      "msg_id": 79206290, // 消息ID
+      "msg_level": 0, //0-普通消息 1-跨应用消息 2-系统提示 ...
+      "from_uid": 16887920, // 消息发送者ID
+      "content": "Hi, JPush" // 消息正文
     }
+  ],
+  "rid": 79206290, // 流水ID
+  "event": "msg_sync" // 业务事件名，忽略
 }
-
 ```
-	
+#### 业务事件监听
 
-##### 收到下发事件
+**Example:**  
+  
 ```
-JMessage.onEventReceived(function(jEvent) {
-	
+JIM.onEvent(function(data) {
+    // 业务事件处理
 });
 ```
-参数说明
 
-+ String jEvent 事件内容，详情参照 [事件通知](http://docs.jpush.io/advanced/im_objects/#eventnotification)
+
+**Event Payload Example**
+
 ```
 {
-    "event_type: "create_group",
-    "from_username": "",
-    "gid": 13579,
-    "to_username_list": ["eddie", "annie"],
-    "description": "the event is due to...",
-    "ctime": "2014-07-01 00:00:00"
+  "uid": 16836751, 
+  "event_id": 59826578, // 事件ID
+  "event_type": 12, // 事件类型
+  "gid": 10210335,
+  "to_uidlist": [], // 事件当事人
+  "extra": 0, // 用于好友邀请事件：1-来自邀请方的事件，2－来自被邀请方，即好友邀请的应答事件
+  "description": {
+    "validUtf8": true,
+    "empty": true
+  },
+  "ctime": 1468152292, // event_id 生成时间，单位秒
+  "rid": 59826578, // 流水ID
+  "event": "event_notification",
+  "return_code": 0, // 用于好友邀请应答事件：0－添加好友成功，其他为添加好友被拒绝的返回码
+  "from_uid": 16836751 // 事件发起者
 }
 ```
 
-#### 群组类
-
-##### 创建群组
-```
-JMessage.createGroup({
-	groupName: "",
-	groupDescription: "",
-	success: function(response) {
-        
-	},
-	fail: function(code, message){
-	
-	}
-});
-```
-参数说明
-
-+ String groupName 群组名称
-+ String groupDescription 群组描述
-+ Function success 创建群组成功后的回调函数
-	+ 参数说明
-	 	+ String resposne 新建群组的信息
-```
-{
-	"groupName": "tGroup",
-	"groupDescription": "测试建群",
-	"groupLevel": 200,	
-	"flag": 0,
-	"gid": 10005307
-}
-```
-
-+ Function fail 创建群组失败后的回调函数 
-	
-	+ 参数说明
-		+ Number code 错误码
-		+ String message 错误码对应的错误信息
-
-
-##### 获取群组信息
-```
-JMessage.getGroupInfo({
-	groupId: 12345
-	success: function(response) {
-	
-	},
-	fail: function(code, message) {
-
-	}
-});
-```
-参数说明
-
-+ Number groupId 群组ID
-+ Function success 获取群组信息成功后的回调函数
-	+ 参数说明
-	 	+ String resposne 群组的详细信息
-```
-{
-	"gid":10003195,
-	"ownerUsername":"群组名称",
-	"groupName":"群名称",
-	"groupDesc":"群描述",
-	"members":[
-			{	
-				"username":"p001",
-				"nickname":"nick",
-				"star":0,
-				"avatar":"qiniu/image/DDAF7129753ADDB3",
-				"gender":0,
-				"signature":"个性签名位在这里那哦",
-				"region":"深圳",
-				"address": "南山区"
-				"mtime":"2015-05-22 14:00:51",
-				"ctime":"2015-03-30 15:50:13"
-			  },{}...
-			]
-}
-```
-
-+ Function fail 获取群组信息失败后的回调函数 
-	
-	+ 参数说明
-		+ Number code 错误码
-		+ String message 错误码对应的错误信息
-
-##### 更新群组信息
-```
-JMessage.updateGroupInfo({
-	groupId: "",
-	groupName: "",
-	groupDescription: "",
-	success: function(response){
-	
-	},
-	fail: function(code, message){
-
-	}
-});
-```
-参数说明
-
-+ String groupName 群组名称
-+ String groupDescription 群组描述
-+ Function success 修改群组信息成功后的回调函数
-	+ 参数说明
-	 	+ String resposne 新建群组的信息
-```
-{
-	"groupName": "tGroup",
-	"groupDescription": "测试建群",
-	"groupLevel": 200,	
-	"flag": 0,
-	"gid": 10005307
-}
-```
-
-+ Function fail 修改群组信息失败后的回调函数 
-	
-	+ 参数说明
-		+ Number code 错误码
-		+ String message 错误码对应的错误信息
-
-##### 添加群组成员
-```
-JMessage.addGroupMembers({
-	groupId: 12345,
-	memberUsernames:['u001', 'u002'],
-	success: function(){
-		
-	},
-	fail: function(code, message){
-	
-	}
-});
-```
-参数说明
-
-+ String groupID 群组ID
-+ Array memberUsernames 添加群成员的用户名的列表
-+ Function success 添加群成员成功后的回调函数
-+ Function fail 添加群成员失败后的回调函数 
-	
-	+ 参数说明
-		+ Number code 错误码
-		+ String message 错误码对应的错误信息
-
-##### 删除群组成员
-```
-JMessage.removeGroupMembers({
-	groupId: 12345,
-	memberUsernames:['u001', 'u002'],
-	success: function(){
-		
-	},
-	fail: function(code, message){
-	
-	}
-});
-```
-参数说明
-
-+ String groupID 群组ID
-+ Array memberUsernames 移除群成员的用户名的列表
-+ Function success 移除群成员成功后的回调函数
-+ Function fail 移除群成员失败后的回调函数 
-	
-	+ 参数说明
-		+ Number code 错误码
-		+ String message 错误码对应的错误信息
-
-
-##### 退出群组
-```
-JMessage.exitGroup({
-	groupId: 12345,
-	success: function(){
-	
-	},
-	fail: function(code, message){
-
-	}
-});
-```
-参数说明
-
-+ String groupID 群组ID
-+ Function success 退出群组成功后的回调函数
-+ Function fail 退出群组失败后的回调函数 
-	
-	+ 参数说明
-		+ Number code 错误码
-		+ String message 错误码对应的错误信息
-
-##### 获取我的群组列表
-```
-JMessage.getGroupList({
-	success: function(response) {
-	
-	}, 
-	fail: function(code, message){
-
-	}
-});
-```
-参数说明
-
-+ Function success 获取我的群组列表成功后的回调函数
-	+ 参数说明
-	 	+ String resposne 我的群组的信息
-```
-[
-	{
-		"gid":10003195,
-		"ownerUsername":"p001",
-		"groupName":"m_name",
-		"groupDesc":"m_g_desc",
-		"membersUsername":["p001","p002","p003","p005","p004"]
-	},{
-		"gid":10003055,
-		"ownerUsername":"p001",
-		"groupName":"test15",
-		"groupDesc":"",
-		"membersUsername":["p001","p002","p003","p004"]
-	},{}...
-]
-```
-+ Function fail 获取我的群组列表失败后的回调函数 
-	
-	+ 参数说明
-		+ Number code 错误码
-		+ String message 错误码对应的错误信息
-
-
-
-### 错误码定义
-
-<div class="table-d" align="left" >
-  <table border="1" width = "100%">
-    <tr  bgcolor="#D3D3D3" >
-      <th width="10px">Code</th>
-      <th width="468px">说明</th>
-    </tr>
-    <tr >
-      <td>872000</td>
-      <td>服务端错误</td>
-    </tr>
-    <tr >
-      <td>872001</td>
-      <td>用户未登陆</td>
-    </tr>
-    <tr >
-      <td>872002</td>
-      <td>传入参数异常</td>
-    </tr>
-    <tr >
-      <td>872003</td>
-      <td>登陆异常</td>
-    </tr>
-    <tr >
-      <td>872004</td>
-      <td>配置校验异常</td>
-    </tr>
-    <tr >
-      <td>872005</td>
-      <td>签名失效</td>
-    </tr>
-    <tr >
-      <td>872006</td>
-      <td>请求超时</td>
-    </tr>
-    <tr >
-      <td>872007</td>
-      <td>与服务端断开</td>
-    </tr>
-    <tr >
-      <td>872008</td>
-      <td>在其它地方登陆</td>
-    </tr>
-  </table>
-</div>
-
-
-### 相关文档
-+ [极光IM指南](../../guideline/jmessage_guide/)
-+ [IM 消息协议](../../advanced/im_message_protocol/)
-+ [IM 业务对象](../../advanced/im_objects/)
-+ [JPush Android SDK 集成指南](../../guideline/android_guide/)
-+ [JPush Android SDK 概述](../../client/android_sdk/)
-+ [IM SDK for iOS](../../client/im_sdk_ios/)
-+ [IM REST API](../../server/rest_api_im/)
 
