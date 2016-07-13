@@ -44,7 +44,7 @@
                                           <h4 style="font-weight: bold;font-size: 14px;">JS - Demo下载</h4>
                                           <p>极光IM JS SDK集成和概述：</p>
                                           <ul style="list-style: none;margin: 0;padding: 0;font-size: 12px;">
-                                                <li><a href="../client/im_sdk_js/">- JMessage SDK - iOS</a></li>
+                                                <li><a href="../client/im_sdk_js/">- JMessage SDK - JS</a></li>
                                           </ul>
                                     </td>
                                     <td width="180" style="text-align: center;vertical-align: middle">
