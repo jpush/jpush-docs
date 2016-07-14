@@ -7,7 +7,7 @@
 #### 更新时间
 + 2016-07-13
 
-### Change Log
+#### Change Log
 + JMessage JS SDK 首次发布
 + 聊天支持：单聊，群聊
 + 聊天内容：文本
@@ -22,7 +22,7 @@
 #### 更新时间
 + 2016-07-12
 
-### JMessage SDK Change Log
+#### JMessage SDK Change Log
 
 ##### New Feature
 + 增加群组、黑名单、免打扰功能的跨应用能力
