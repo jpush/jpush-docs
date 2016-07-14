@@ -312,22 +312,6 @@ public static Message createGroupCustomMessage(long groupID,
 
 - 根据参数匹配得到的单聊会话对象。
 
-##### 获取单个单聊会话（跨应用）
-获取与指定appkey下username的单聊回话信息,如果appkey为空则默认取本应用appkey下对应username的会话。
-
-```
-  public static Conversation getSingleConversation(String username,String appkey);
-```
-
-参数说明
-
-+ String username 目标的用户用户名。
-+ String appkey 目标用户所属的appkey
-
-返回
-
-- 根据参数匹配得到的单聊会话对象。
-
 
 ##### 获取单个群聊会话
 ```
@@ -863,7 +847,7 @@ public static void enterSingleConversaion(String username)
 
   + String username 单聊聊天对象的username
 
-##### 进入单聊回话(跨应用)
+##### 进入单聊会话(跨应用)
 在进入聊天会话界面时调用，设置当前正在聊天的对象，sdk用来判断notification是否需要展示。若appkey为空则默认填充本应用的appkey。
 	UI在进入单聊会话页面时需要调用此函数，SDK会根据传入的username来决定是否需要发送通知
 
@@ -897,6 +881,229 @@ public static void exitConversaion();
 用户可以通过接受通知栏点击事件NotificationClickEvent，来实现自定义跳转，该事件如果没有接收者，点击通知栏时SDK将默认跳转到程序主界面。
 
 事件接收方法见"事件处理"一节
+
+### 跨应用通信
+通过跨应用接口能使同一开发者账号下的不同应用能够互相通信。
+JMessage Android SDK在v1.2.0版本中实现了单聊跨应用，v1.3.0版本中实现了群聊以及其他一些功能的跨应用，具体对应关系见下表：
+
+<table>
+	<tr>
+		<th>Since</th>
+		<th>实现功能</th>
+		<th>效果</th>
+	</tr>
+	<tr>
+		<td>v1.2.0</td>
+		<td>跨应用单聊</td>
+		<td>实现跨应用给用户发送单聊消息</td>
+	</tr>
+	<tr>
+		<td>v1.3.0</td>
+		<td>1.跨应用群聊<br>2.跨应用黑名单设置<br>3.跨应用免打扰设置</td>
+		<td>1.群组中允许加入来自不同应用下的用户，使跨应用群聊成为可能*<br>2.允许跨应用加用户至黑名单，以屏蔽来自不同应用下用户的消息<br>3. 实现跨应用添加和移除免打扰</td>
+	</tr>	
+</table>
+
+
+**：实现跨应用群聊的关键在于群组中加入跨应用的群成员，而创建会话和发送消息的流程和普通的群聊实现方式一致。*
+
+#### 接口摘要
+
+详细接口说明请前往极光IM [Android API Java docs]( http://docs.jiguang.cn/client/im_android_api_docs/)
+
+###### Conversation
+
+* createSingleConversation(String userName, String appKey)  
+    创建单聊跨应用会话
+
+###### JMessageClient
+
+* getUserInfo(java.lang.String username,java.lang.String appkey,GetUserInfoCallback callback)  
+    跨应用获取用户信息
+
+* addGroupMembers(final long groupID, final String appKey, final List<String> userNameList, final BasicCallback callback)            
+    跨应用添加群成员
+
+* removeGroupMembers(final long groupID, final String appKey, final List<String> userNameList, final BasicCallback callback)   
+    跨应用踢出群成员
+
+* addUsersToBlacklist(final List<String> usernames,final String appKey, final BasicCallback callback)  
+    跨应用添加user进黑名单
+
+* delUsersFromBlacklist(final List<String> usernames,final String appKey, final BasicCallback callback)  
+    跨应用将user移出黑名单
+
+###### GroupInfo
+
+* getGroupMemberInfo(String username, String appKey)  
+    获取群成员信息
+
+
+#### 具体实现
+
+##### 跨应用获取用户信息
+
+通过指定appkey可以实现获取跨应用用户信息。
+
+JMessageClient.getUserInfo(java.lang.String username,java.lang.String appkey,GetUserInfoCallback callback)
+
+参数:
+
+* username - 开发者注册的用户名
+* appkey - 指定的appKey,如果为空则在本应用appKey下查找用户
+* callback - 获取用户信息的回调接口
+
+代码示例：
+
+
+```
+JMessageClient.getUserInfo("username", "userAppkey", new GetUserInfoCallback() {
+     @Override
+     public void gotResult(int responseCode, String responseMessage, UserInfo info) {
+         // 获取到跨应用的用户信息
+         ...
+    }
+});
+```
+
+##### 跨应用单聊实现
+
+以创建一条单聊文本消息为例，通过调用指定appkey的创建会话的接口，创建跨应用会话后， 创建消息发送即可。
+
+代码示例：
+
+```
+//创建跨应用会话
+Conversation con = Conversation.createSingleConversation("username", "appkey");
+MessageContent content = new TextContent("hello");
+//创建一条消息 
+Message message = con.createSendMessage(content);
+//发送消息 
+JMessageClient.sendMessage(message);
+```
+
+##### 跨应用群聊实现
+
+实现跨应用群聊的关键在于群组中加入跨应用的群成员，而创建会话和发送消息的流程和普通的群聊实现方式一致。
+
+下面列出了和跨应用操作群成员相关的接口
+
+1.添加群成员  
+
+   JMessageClient.addGroupMembers(final long groupID, final String appKey, final List<String> userNameList, final BasicCallback callback);
+
+参数:
+
+* groupID - 群组的groupID
+* appKey - 指定的appKey,如果为空则在本应用appKey下查找用户
+* userNameList - 添加进群组的成员username集合
+* callback - 回调接口
+ 
+2.踢出群成员
+
+   JMessageClient.removeGroupMembers(final long groupID, final String appKey, final List<String> userNameList, final BasicCallback callback);
+
+参数:
+
+* groupID - 群组的groupID
+* appKey - 指定的appKey,如果appKey为空则在本应用appKey下查找用户
+* userNameList - 踢出群组成员的username集合
+* callback - 回调接口
+
+3.获取群成员信息 
+
+   UserInfo userinfo=groupInfo.getGroupMemberInfo(String username, String appKey)
+
+参数:
+
+* username - 指定群成员的username 
+* appKey - 群成员所属的appKey
+
+代码示例： 
+
+```
+//添加跨应用用户到群组
+JMessageClient.addGroupMembers(testGid, "appkey", userNameList, new BasicCallback() {
+     @Override
+     public void gotResult(int responseCode, String responseMessage) {
+         //添加跨应用群成员成功之后，创建会话，发送消息。 
+         if(0 == responseCode){
+             Conversation conversation = Conversation.createGroupConversation(testGid);
+             Message msg = conversation.createSendTextMessage("hello");
+             JMessageClient.sendMessage(msg);
+         }
+     }
+});
+```
+
+##### 跨应用添加黑名单实现
+
+通过下面的接口在操作黑名单列表时指定appkey，即可实现将跨应用的用户加入黑名单的功能。
+
+1.添加user进黑名单
+
+   JMessageClient.addUsersToBlacklist(final List<String> usernames,final String appKey, final BasicCallback callback);
+
+参数:
+
+* usernames -添加进黑名单的username集合
+* appKey - 指定的appKey,如果appKey为空则在本应用appKey下查找用户
+* callback - 回调接口
+
+2.将user移出黑名单
+
+   JMessageClient.delUsersFromBlacklist(final List<String> usernames,final String appKey, final BasicCallback callback)
+
+参数:
+
+* usernames - 移出黑名单的username集合
+* appKey - 指定的appKey,如果appKey为空则在本应用appKey下查找用户
+* callback - 回调接口
+
+代码示例：
+
+
+```
+//跨应用添加用户至黑名单
+JMessageClient.addUsersToBlacklist(usernames, "appkey",new BasicCallback() {
+     @Override
+     public void gotResult(int responseCode, String responseMessage) {
+         if (0 == responseCode）{
+             //成功跨应用添加用户至黑名单
+             ... 
+         } 
+     }
+}); 
+```
+
+
+##### 跨应用免打扰实现
+
+原有接口无需变动。免打扰相关接口是在userinfo对象上的实例接口，也就是说只要获取到的userinfo是跨应用的用户，直接调用该userinfo对象的免打扰接口就可实现跨应用
+
+userinfo.setNoDisturb(int noDisturb,cn.jpush.im.api.BasicCallback callback)
+
+参数:
+
+  * noDisturb - 1 -- 免打扰，其他 -- 非免打扰（设置免打扰时将参数设置为1，取消免打扰时将参数设置为0）
+  * callback - 回调接口
+
+代码示例：
+
+
+```
+//跨应用获取用户信息
+JMessageClient.getUserInfo("username", "appkey", new GetUserInfoCallback() {
+    @Override
+    public void gotResult(int responseCode, String responseMessage, UserInfo info) {
+        //跨应用获取用户信息成功，设置用户的免打扰属性 
+        if(0 == responseCode){
+            info.setNoDisturb(1,null);
+        }
+    }
+});
+```
+
 
 ### 免打扰
 可以将用户/群组添加到“免打扰”列表中，收到免打扰用户/群组发过来的消息时，sdk不会弹出默认的通知提示，但消息事件照常下发。
