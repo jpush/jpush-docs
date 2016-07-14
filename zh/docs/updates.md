@@ -1,5 +1,20 @@
-# 最近更新
+﻿# 最近更新
 
+
+
+### JMessage JS SDK v1.0.0
+
+#### 更新时间
++ 2016-07-13
+
+### Change Log
++ JMessage JS SDK 首次发布
++ 聊天支持：单聊，群聊
++ 聊天内容：文本
++ 提供用户管理 ，群组管理，会话列表获取功能
+
+#### 升级提示
++ 可选升级！
 
 
 ### JMessage Android SDK v1.3.0
@@ -7,7 +22,7 @@
 #### 更新时间
 + 2016-07-12
 
-#### JMessage SDK Change Log
+### JMessage SDK Change Log
 
 ##### New Feature
 + 增加群组、黑名单、免打扰功能的跨应用能力
@@ -52,8 +67,6 @@
 + 将so库更新至 libjpush216.so 同时删除原来老版本so。注意不同的cpu型号对应的结构
 + 由于富媒体的展示需求，SDK 中增加一个res文件夹存放资源文件。用户需将对应文件夹下的资源文件放入工程的目录中。
 + 如果是从更早起的版本升级过来，建议参考 SDK下载包最新版本的 demo 来更新 AndroidManifest.xml 文件配置。
-
-
 
 
 ### JPush Android SDK v2.1.7
