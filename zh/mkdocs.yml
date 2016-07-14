@@ -37,6 +37,7 @@ pages:
   - '客户端集成插件': 'client/client_plugins.md'
   - 'IM Android SDK 概述': 'client/im_sdk_android.md'
   - 'IM iOS SDK 概述': 'client/im_sdk_ios.md'
+  - 'IM JS SDK 概述': 'client/im_sdk_js.md'
   - 'IM ErrorCode 定义': 'client/im_errorcode.md'
 
 - 服务器端:
