@@ -128,7 +128,7 @@ JIM.login(username, password, auth_payload, function(data) {
 **Example:**
 
 ```
-JIM.getUserInfo('xiezefan', 'username', function(data) {
+JIM.getUserInfo('xiezefan', function(data) {
     // 返回处理
 }, function(ack) {
     // 请求送达JMessage服务器事件处理
@@ -152,7 +152,7 @@ JIM.getUserInfo('xiezefan', 'username', function(data) {
 **Example:**
 
 ```
-JIM.sendSingleMsg(friend_id, 'Hi, JPush', function(data) {
+JIM.sendSingleMsg(target_username, 'Hi, JPush', function(data) {
     // 返回处理
 }, function(ack) {
     // 请求送达JMessage服务器事件处理
