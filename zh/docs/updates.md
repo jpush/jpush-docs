@@ -1,6 +1,58 @@
-# 最近更新
+﻿# 最近更新
 
 
+
+### JMessage IOS SDK v2.1.3
+
+#### 更新时间
++ 2016-07-15
+
+#### JMessage SDK Change Log
+
+##### New Feature
++ 新增：本应用和跨应用的免打扰功能；
++ 新增：跨应用群聊功能；
++ 新增：本应用和跨应用的黑名单功能；
++ 新增：暴露event msg作用对象的username(s),用户开发者定制event msg；
++ 新增：JMGGroup 增加一个属性 max_member_count，表示当前群成员最大人数；
++ 新增：JMGGroup 增加一个属性 ownerAppKey，表示当前群群主的appKey。
++ 新增接口：
+	+ JMessage
+		+ +(void)noDisturbList:(JMSGCompletionHandler)handler;//用户免打扰列表
+		设置全局免打扰标识。
+        + +(BOOL)isSetGlobalNoDisturb;//获取全局免打扰状态
+        + +(void)setIsGlobalNoDisturb:(BOOL)isNoDisturb handler:(JMSGCompletionHandler)handler;//设置是否全局免打扰
+        + +(void)balckList:(JMSGCompletionHandler)handler;//获取黑名单列表
+    + JMSGUser
+        + @property(nonatomic, assign, readonly) BOOL isNoDisturb;//获取免打扰状态
+        + -(void)setIsNoDisturb:(BOOL)isNoDisturb handler:(JMSGCompletionHandler)handler;//设置用户免打扰（支持跨应用设置）
+        + @property(nonatomic, assign, readonly) BOOL isInBlacklist;//获取黑名单状态
+        + +(void)addUsersToBlacklist:(NSArray JMSG_GENERIC(__kindof NSString *) *)usernameArray completionHandler:(JMSGCompletionHandler)handler;//添加黑名单
+        + +(void)delUsersFromBlacklist:(NSArray JMSG_GENERIC(__kindof NSString *) *)usernameArray completionHandler:(JMSGCompletionHandler)handler;//删除黑名单
+        + +(void)addUsersToBlacklist:(NSArray JMSG_GENERIC(__kindof NSString *) *)usernameArray appKey:(NSString *)userAppKey completionHandler:(JMSGCompletionHandler)handler;//跨应用添加黑名单
+        + +(void)delUsersFromBlacklist:(NSArray JMSG_GENERIC(__kindof NSString *) *)usernameArray appKey:(NSString *)userAppKey completionHandler:(JMSGCompletionHandler)handler;//跨应用删除黑名单
+    + JMSGGroup
+        + @property(nonatomic, copy, readonly) NSString *ownerAppKey;//群主的appKey
+        + @property(nonatomic, strong, readonly) NSString     *maxMemberCount;//获取群组人数上限
+        + @property(nonatomic, assign, readonly) BOOL isNoDisturb;//获取免打扰状态
+        + -(void)setIsNoDisturb:(BOOL)isNoDisturb handler:(JMSGCompletionHandler)handler;//设置群组消息免打扰（支持跨应用设置）
+    + JMSGEventContent
+        + -(NSString *JMSG_NULLABLE)getEventFromUsername;//获取事件发起者的用户名
+        + -(NSArray *JMSG_NULLABLE)getEventToUsernameList;//获取事件作用对象用户名列表
+    + JMSGMessage
+        + +(void)sendSingleTextMessage:(NSString *)text toUser:(NSString *)username appKey:(NSString *)userAppKey; //发送跨应用单聊文本消息
+        + (void)sendSingleImageMessage:(NSData *)imageData toUser:(NSString *)username appKey:(NSString *)userAppKey; //发送跨应用单聊图片消息
+        + (void)sendSingleVoiceMessage:(NSData *)voiceData voiceDuration:(NSNumber *)duration toUser:(NSString *)username appKey:(NSString *)userAppKey; //发送跨应用单聊语音消息
+    + 跨应用群聊
+        + -(void)addMembersWithUsernameArray:(NSArray JMSG_GENERIC(__kindof NSString *) *)usernameArray appKey:(NSString *)userAppKey completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)handler;//添加群组跨应用成员
+        + -(void)removeMembersWithUsernameArray:(NSArray JMSG_GENERIC(__kindof NSString *) *)usernameArray appKey:(NSString *)userAppKey completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)handler;//删除群组跨应用成员
+
+##### Bug Fix
+
++ 修复：群event msg 事件不能定制问题；
+
+#### 升级指南
++ 使用新版本的JMessage.framework文件替换原工程下的同名旧文件！
 
 ### JMessage JS SDK v1.0.0
 
