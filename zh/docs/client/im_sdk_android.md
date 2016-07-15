@@ -897,7 +897,7 @@ public static void getNoDisturblist(GetNoDisurbListCallback callback)
 + GetNoDisurbListCallback callback 回调接口。
 	
 #### 免打扰设置
-见api doc中<a href="http://test-docs.jpush.io/client/im_android_api_docs/cn/jpush/im/android/api/model/UserInfo.html" target="_blank">UserInfo</a>和<a href="http://test-docs.jpush.io/client/im_android_api_docs/cn/jpush/im/android/api/model/GroupInfo.html" target="_blank">GroupInfo</a>相关接口
+见api doc中<a href="http://docs.jpush.io/client/im_android_api_docs/cn/jpush/im/android/api/model/UserInfo.html" target="_blank">UserInfo</a>和<a href="http://docs.jpush.io/client/im_android_api_docs/cn/jpush/im/android/api/model/GroupInfo.html" target="_blank">GroupInfo</a>相关接口
 
 
 #### 全局免打扰设置
