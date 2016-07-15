@@ -56,6 +56,7 @@ SDK 侧可以发起注册用户，也可由服务器端批量发起注册。
 ```
 public static synchronized void init(Context context)
 ```
+
 参数说明
 
 + Context context 应用程序上下文对象。
@@ -106,23 +107,24 @@ public static synchronized void init(Context context)
 + GetUserInfoCallback callback 结果回调
 
 回调
+
 ```
   public abstract void gotResult(int responseCode, String responseMessage, UserInfo userInfo);
 ```
 
 + UserInfo userInfo 用户信息
 
-#### 获取用户信息(跨应用)
-获取用户信息，此接口可用来获取不同appkey下用户的信息,如果appkey为空，则默认获取当前appkey下的用户信息。
+##### 获取用户信息(跨应用)
+获取用户信息，此接口可用来获取不同appKey下用户的信息,如果appKey为空，则默认获取当前appKey下的用户信息。
 
 ```
-  public static void getUserInfo(String username, String appkey, GetUserInfoCallback callback);
+  public static void getUserInfo(String username, String appKey, GetUserInfoCallback callback);
 ```
   
 参数说明
 
 + String username 用户名
-+ String appkey 指定的appkey
++ String appKey 指定的appKey
 + GetUserInfoCallback callback 结果回调
 
 #### 从本地获取当前登录账号的信息
@@ -300,29 +302,13 @@ public static Message createGroupCustomMessage(long groupID,
 + `List<Conversation>` 会话列表。
 
 ##### 获取单个单聊会话
-获取单聊会话信息，默认获取本appkey下username的单聊会话。
+获取单聊会话信息，默认获取本appKey下username的单聊会话。
 ```
   public static Conversation getSingleConversation(String username);
 ```
 参数说明
 
 + String username 目标的用户用户名。
-
-返回
-
-- 根据参数匹配得到的单聊会话对象。
-
-##### 获取单个单聊会话（跨应用）
-获取与指定appkey下username的单聊回话信息,如果appkey为空则默认取本应用appkey下对应username的会话。
-
-```
-  public static Conversation getSingleConversation(String username,String appkey);
-```
-
-参数说明
-
-+ String username 目标的用户用户名。
-+ String appkey 目标用户所属的appkey
 
 返回
 
@@ -346,7 +332,7 @@ public static Message createGroupCustomMessage(long groupID,
 
 
 ##### 删除单个单聊会话
-删除单聊的会话，同时删除掉本地聊天记录。默认删除本appkey下username的会话
+删除单聊的会话，同时删除掉本地聊天记录。默认删除本appKey下username的会话
 ```  
   public static boolean deleteSingleConversation(String username);
 ```
@@ -362,15 +348,15 @@ public static Message createGroupCustomMessage(long groupID,
 
 
 ##### 删除单个单聊会话（跨应用）
-删除与指定appkey下username的单聊的会话，同时删除掉本地聊天记录。,如果appkey为空则默认尝试删除本应用appkey下对应username的会话。
+删除与指定appKey下username的单聊的会话，同时删除掉本地聊天记录。,如果appKey为空则默认尝试删除本应用appKey下对应username的会话。
 ```  
-  public static boolean deleteSingleConversation(String username,String appkey);
+  public static boolean deleteSingleConversation(String username,String appKey);
 ```
 
 参数说明
 
 + String username 目标的用户用户名。
-+ String appkey 目标用户所属的appkey
++ String appKey 目标用户所属的appKey
 
 返回
 
@@ -853,7 +839,7 @@ public static void setNotificationMode(int mode);
 
 
 ##### 进入单聊回话
-进入单聊会话。默认进入的是本应用appkey下用户的会话。
+进入单聊会话。默认进入的是本应用appKey下用户的会话。
 	UI在进入单聊会话页面时需要调用此函数，SDK会根据传入的username来决定是否需要发送通知
 
 ```
@@ -863,17 +849,17 @@ public static void enterSingleConversaion(String username)
 
   + String username 单聊聊天对象的username
 
-##### 进入单聊回话(跨应用)
-在进入聊天会话界面时调用，设置当前正在聊天的对象，sdk用来判断notification是否需要展示。若appkey为空则默认填充本应用的appkey。
+##### 进入单聊会话(跨应用)
+在进入聊天会话界面时调用，设置当前正在聊天的对象，sdk用来判断notification是否需要展示。若appKey为空则默认填充本应用的appKey。
 	UI在进入单聊会话页面时需要调用此函数，SDK会根据传入的username来决定是否需要发送通知
 
 ```
-public static void enterSingleConversaion(String username,String appkey)
+public static void enterSingleConversaion(String username,String appKey)
 ```
 参数定义
 
   + String username 单聊聊天对象的username
-  + String appkey 聊天对象所属appkey
+  + String appKey 聊天对象所属appKey
 
 ##### 进入群聊会话
 
@@ -898,6 +884,7 @@ public static void exitConversaion();
 
 事件接收方法见"事件处理"一节
 
+
 ### 免打扰
 可以将用户/群组添加到“免打扰”列表中，收到免打扰用户/群组发过来的消息时，sdk不会弹出默认的通知提示，但消息事件照常下发。
 
@@ -911,6 +898,7 @@ public static void getNoDisturblist(GetNoDisurbListCallback callback)
 	
 #### 免打扰设置
 见api doc中<a href="http://docs.jpush.io/client/im_android_api_docs/cn/jpush/im/android/api/model/UserInfo.html" target="_blank">UserInfo</a>和<a href="http://docs.jpush.io/client/im_android_api_docs/cn/jpush/im/android/api/model/GroupInfo.html" target="_blank">GroupInfo</a>相关接口
+
 
 #### 全局免打扰设置
 设置全局免打扰之后，收到所有消息都将不会有通知栏通知，效果类似`setNotificationMode(JMessageClient.NOTI_MODE_NO_NOTIFICATION)`，但是此设置在用户换设备之后也会生效。
@@ -931,6 +919,272 @@ public static void getNoDisturbGlobal(IntegerCallback callback)
 参数定义
 
 + IntegerCallback callback 回调接口。
+
+### 跨应用通信
+跨应用通信是指允许同一开发者账号下的不同应用能互相通信，以满足开发者对于不同appKey下应用通信的需求。</br>
+JMessage Android SDK在v1.2.0版本中实现了单聊跨应用，v1.3.0版本中实现了群聊以及其他一些功能的跨应用，
+具体对应关系见下表：
+
+<table>
+	<tr>
+		<th>Since</th>
+		<th>实现功能</th>
+		<th>说明</th>
+	</tr>
+	<tr>
+		<td>v1.2.0</td>
+		<td>1.跨应用获取用户信息<br>2.跨应用单聊</td>
+		<td>1.实现跨应用获取用户信息<br>2.实现跨应用给用户发送单聊消息</td>
+	</tr>
+	<tr>
+		<td>v1.3.0</td>
+		<td>1.跨应用群聊<br>2.跨应用黑名单设置<br>3.跨应用免打扰设置</td>
+		<td>1.群组中允许加入来自不同应用下的用户，使跨应用群聊成为可能*<br>2.允许跨应用加用户至黑名单，以屏蔽来自不同应用下用户的消息<br>3. 实现跨应用添加和移除免打扰</td>
+	</tr>	
+</table>
+
+
+**：实现跨应用群聊的关键在于群组中加入跨应用的群成员，而创建会话和发送消息的流程和普通的群聊实现方式一致。*
+
+#### 接口摘要
+
+详细接口说明请前往极光IM [Android API Java docs]( http://docs.jiguang.cn/client/im_android_api_docs/)
+
+###### Conversation
+
+创建单聊跨应用会话
+
+```
+createSingleConversation(String userName, String appKey)
+```  
+
+###### JMessageClient
+
+跨应用获取用户信息
+
+```
+getUserInfo(String username,String appKey,GetUserInfoCallback callback)  
+```
+    
+跨应用添加群成员
+
+```
+addGroupMembers(long groupID,String appKey,List<String> userNameList,BasicCallback callback)            
+``` 
+
+跨应用踢出群成员
+
+```
+removeGroupMembers(long groupID,String appKey,List<String> userNameList,BasicCallback callback)
+```
+    
+跨应用添加user进黑名单
+
+```
+addUsersToBlacklist(List<String> usernames,String appKey,BasicCallback callback)  
+```    
+
+
+跨应用将user移出黑名单
+
+```
+delUsersFromBlacklist(List<String> usernames,String appKey,BasicCallback callback)  
+```    
+
+###### GroupInfo
+
+获取群成员信息
+
+```
+getGroupMemberInfo(String username, String appKey)  
+```    
+
+
+#### 具体实现
+
+##### 跨应用获取用户信息
+
+通过指定appKey可以实现获取跨应用用户信息。
+
+```
+JMessageClient.getUserInfo(java.lang.String username,java.lang.String appKey,GetUserInfoCallback callback)
+```
+
+参数定义:
+
+* username - 开发者注册的用户名
+* appKey - 指定的appKey,如果为空则在本应用appKey下查找用户
+* callback - 获取用户信息的回调接口
+
+代码示例：
+
+```
+JMessageClient.getUserInfo("username", "appKey", new GetUserInfoCallback() {
+     @Override
+     public void gotResult(int responseCode, String responseMessage, UserInfo info) {
+         // 获取到跨应用的用户信息
+         ...
+    }
+});
+```
+
+##### 跨应用单聊实现
+
+创建单聊会话时指定对方用户所属appKey，即可建立起一个和跨应用用户的单聊回话。
+
+```
+Conversation.createSingleConversation(String targetUsername, String appKey)
+```
+
+参数定义：
+
+* targetUsername - 用户的username
+* appKey - 指定的appKey,如果为空则默认填本应用appKey
+
+创建跨应用会话后，创建消息发送即可。下面以创建一条单聊文本消息为例
+
+代码示例：
+
+```
+//创建跨应用会话
+Conversation con = Conversation.createSingleConversation("username", "appKey");
+MessageContent content = new TextContent("hello");
+//创建一条消息 
+Message message = con.createSendMessage(content);
+//发送消息 
+JMessageClient.sendMessage(message);
+```
+
+##### 跨应用群聊实现
+
+实现跨应用群聊的关键在于群组中加入跨应用的群成员，而创建会话和发送消息的流程和普通的群聊实现方式一致。
+
+下面列出了和跨应用操作群成员相关的接口
+
+1.跨应用添加群成员  
+
+```
+JMessageClient.addGroupMembers(long groupID,String appKey,List<String> userNameList,BasicCallback callback);
+```
+参数:
+
+* groupID - 群组的groupID
+* appKey - usernameList中user所属的appKey,如果为空则在本应用appKey下查找用户
+* userNameList - 添加进群组的成员username集合
+* callback - 回调接口
+ 
+2.跨应用踢出群成员
+
+```
+JMessageClient.removeGroupMembers(long groupID,String appKey,List<String> userNameList,BasicCallback callback);
+```
+参数:
+
+* groupID - 群组的groupID
+* appKey - usernameList中user所属的appKey,如果appKey为空则在本应用appKey下查找用户
+* userNameList - 踢出群组成员的username集合
+* callback - 回调接口
+
+3.获取群成员信息 
+
+```
+//此接口是实例对象上的接口
+groupInfo.getGroupMemberInfo(String username, String appKey)
+```
+参数:
+
+* username - 指定群成员的username 
+* appKey - 群成员所属的appKey
+
+
+下面以向已有群组中添加跨应用群成员，然后创建会话发送消息为例:
+
+代码示例：
+
+```
+//添加跨应用用户到群组
+JMessageClient.addGroupMembers(testGid, "appKey", userNameList, new BasicCallback() {
+     @Override
+     public void gotResult(int responseCode, String responseMessage) {
+         //添加跨应用群成员成功之后，创建会话，发送消息。 
+         if(0 == responseCode){
+             Conversation conversation = Conversation.createGroupConversation(testGid);
+             Message msg = conversation.createSendTextMessage("hello");
+             JMessageClient.sendMessage(msg);
+         }
+     }
+});
+```
+
+##### 跨应用添加黑名单实现
+
+通过以下接口在操作黑名单列表时指定appKey，即可实现将跨应用的用户加入黑名单。
+
+1.添加user进黑名单
+
+```
+JMessageClient.addUsersToBlacklist(List<String> usernames,String appKey,BasicCallback callback);
+```
+参数:
+
+* usernames -添加进黑名单的username集合
+* appKey - usernameList中user所属的appKey,如果appKey为空则在本应用appKey下查找用户
+* callback - 回调接口
+
+2.将user移出黑名单
+
+```
+JMessageClient.delUsersFromBlacklist(List<String> usernames,String appKey,BasicCallback callback)
+```
+参数:
+
+* usernames - 移出黑名单的username集合
+* appKey - usernameList中user所属的appKey,如果appKey为空则在本应用appKey下查找用户
+* callback - 回调接口
+
+
+代码示例：
+
+```
+//跨应用添加用户至黑名单
+JMessageClient.addUsersToBlacklist(usernames, "appKey",new BasicCallback() {
+     @Override
+     public void gotResult(int responseCode, String responseMessage) {
+         if (0 == responseCode）{
+             //成功跨应用添加用户至黑名单
+             ... 
+         } 
+     }
+}); 
+```
+
+
+##### 跨应用免打扰实现
+
+原有接口无需变动。免打扰相关接口是在userinfo对象上的实例接口，也就是说只要获取到的user是跨应用的用户，直接调用该userinfo对象的免打扰接口就可实现跨应用
+
+```
+userinfo.setNoDisturb(int noDisturb,BasicCallback callback)
+```
+参数:
+
+  * noDisturb - 1 -- 免打扰，其他 -- 非免打扰（设置免打扰时将参数设置为1，取消免打扰时将参数设置为0）
+  * callback - 回调接口
+
+代码示例：
+
+```
+//跨应用获取用户信息
+JMessageClient.getUserInfo("username", "appKey", new GetUserInfoCallback() {
+    @Override
+    public void gotResult(int responseCode, String responseMessage, UserInfo info) {
+        //跨应用获取用户信息成功，设置用户的免打扰属性 
+        if(0 == responseCode){
+            info.setNoDisturb(1,null);
+        }
+    }
+});
+```
 
 ### 类定义
 
