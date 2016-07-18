@@ -320,7 +320,7 @@ JMSGCompletionHandler 有 2 个参数：
 
 ### 针对跨应用的变更
 
-* Converstaion
+#### JMSGConverstaion
 ```
 // 获取跨应用单聊会话
 + (JMSGConversation * JMSG_NULLABLE)singleConversationWithUsername:(NSString *)username
@@ -340,7 +340,7 @@ JMSGCompletionHandler 有 2 个参数：
 
 ```
 
-* Message
+#### JMSGMessage
 ```
 // 消息发送目标应用
 @property(nonatomic, strong, readonly) NSString *targetAppKey;
@@ -348,9 +348,47 @@ JMSGCompletionHandler 有 2 个参数：
 // 消息来源用户 Appkey
 @property(nonatomic, strong, readonly) NSString *fromAppKey;
 
+/*!
+ * @abstract 发送跨应用单聊文本消息
+ *
+ * @param text 文本内容
+ * @param username 单聊对象 username
+ *
+ * @discussion 快捷方法，不需要先创建消息而直接发送。
+ */
++ (void)sendSingleTextMessage:(NSString *)text
+                       toUser:(NSString *)username
+                       appKey:(NSString *)userAppKey;
+                       
+/*!
+ * @abstract 发送跨应用单聊图片消息
+ *
+ * @param imageData 图片数据
+ * @param username 单聊对象 username
+ *
+ * @discussion 快捷方法，不需要先创建消息而直接发送。
+ */
++ (void)sendSingleImageMessage:(NSData *)imageData
+                        toUser:(NSString *)username
+                        appKey:(NSString *)userAppKey;
+           
+/*!
+ * @abstract 发送跨应用单聊语音消息
+ *
+ * @param voiceData 语音数据
+ * @param duration 语音时长
+ * @param username 单聊对象 username
+ *
+ * @discussion 快捷方法，不需要先创建消息而直接发送。
+ */
++ (void)sendSingleVoiceMessage:(NSData *)voiceData
+                 voiceDuration:(NSNumber *)duration
+                        toUser:(NSString *)username
+                        appKey:(NSString *)userAppKey;
+
 ```
 
-* User
+#### JMSGUser
 ```
 // 批量获取跨应用的用户信息
 + (void)userInfoArrayWithUsernameArray:(NSArray JMSG_GENERIC(__kindof NSString *)*)usernameArray
@@ -361,6 +399,478 @@ JMSGCompletionHandler 有 2 个参数：
 // 此用户所在的 appKey
 @property(nonatomic, copy, readonly) NSString * JMSG_NULLABLE appKey;
 ```
+
+#### JMSGGroup
+##### 添加群组跨应用成员
+
+```
+/*!
+ * @abstract 添加群组跨应用成员
+ *
+ * @param usernameArray 用户名数组。数组里的成员类型是 NSString
+ * @param handler 结果回调。正常返回时 resultObject 为 nil.
+ */
+- (void)addMembersWithUsernameArray:(NSArray JMSG_GENERIC(__kindof NSString *) *)usernameArray
+                             appKey:userAppKey
+                  completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)handler;
+                  
+```
+###### 例子
+
+```
+[group addMembersWithUsernameArray:[NSArray arrayWithObjects:@"username1",@"username2", nil] appKey:@"被添加用户所在应用的appkey" completionHandler:^(id resultObject, NSError *error) {
+    if (!error) {
+        NSLog(@"\n 添加群组跨应用成员 成功");
+    }
+}];
+
+```
+##### 删除群组跨应用成员
+
+```
+/*!
+ * @abstract 删除群组跨应用成员
+ *
+ * @param usernameArray 用户名数据. 数组里的成员类型是 NSString
+ * @param handler 结果回调。正常返回时 resultObject 为 nil.
+ */
+- (void)removeMembersWithUsernameArray:(NSArray JMSG_GENERIC(__kindof NSString *) *)usernameArray
+                                appKey:userAppKey
+                     completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)handler;
+
+```
+###### 例子
+
+```
+[group removeMembersWithUsernameArray:[NSArray arrayWithObjects:@"username1",@"username2", nil] appKey:@"被删除用户所在应用的appkey" completionHandler:^(id resultObject, NSError *error) {
+    if (!error) {
+        NSLog(@"\n 添删除组跨应用成员 成功");
+    }
+}];
+
+```
+	
+### 免打扰
+
+#### JMessage
+##### 免打扰列表
+
+```
+/*!
+ * @abstract 用户免打扰列表
+ *
+ * @param handler 结果回调。回调参数：
+ *
+ * - resultObject 类型为 NSArray，数组里成员的类型为 JMSGUser、JMSGGroup
+ * - error 错误信息
+ *
+ * 如果 error 为 nil, 表示设置成功
+ * 如果 error 不为 nil,表示设置失败
+ *
+ * @discussion 从服务器获取，返回用户的免打扰列表。
+ */
++ (void)noDisturbList:(JMSGCompletionHandler)handler;
+```
+	
+###### 例子
+
+```
+//获取当前用户免打扰列
+[JMessage noDisturbList:^(id resultObject, NSError *error) {
+     if (!error) {
+         NSLog(@"\n 免打扰列表: \n %@",resultObject);
+     }
+ }];
+ 
+```  
+##### 全局免打扰设置
+
+```
+/*!
+ * @abstract 判断是否设置全局免打扰
+ *
+ * @return YES/NO
+ */
++ (BOOL)isSetGlobalNoDisturb;
+
+/*!
+ * @abstract 设置是否全局免打扰
+ *
+ * @param isNoDisturb 是否全局免打扰 YES:是 NO: 否
+ * @param handler 结果回调。回调参数：
+ *
+ * - resultObject 相应返回对象
+ * - error 错误信息
+ *
+ * 如果 error 为 nil, 表示设置成功
+ * 如果 error 不为 nil,表示设置失败
+ *
+ * @discussion 此函数为设置全局的消息免打扰
+ */
++ (void)setIsGlobalNoDisturb:(BOOL)isNoDisturb handler:(JMSGCompletionHandler)handler;
+
+```
+
+###### 例子
+ 
+```
+ //获取是否设置全局免打扰
+ BOOL isNoDisturb = [JMessage isSetGlobalNoDisturb];
+ //设置全局免打扰（开启：YES,关闭:NO）
+ [JMessage setIsGlobalNoDisturb:!isNoDisturb handler:^(id resultObject, NSError *error) { 
+     if (!error) {
+         NSLog(@"\n 全局免打扰设置成功:\n%@",resultObject);
+     }
+ }];
+ 
+```
+	 
+#### JMSGUser
+##### 用户免打扰设置
+
+```
+/*!
+ * @abstract 该用户是否已被设置为免打扰
+ *
+ * @discussion YES:是 , NO: 否
+ */
+@property(nonatomic, assign, readonly) BOOL isNoDisturb;
+
+/*!
+ * @abstract 设置用户免打扰（支持跨应用设置）
+ *
+ * @param isNoDisturb 是否全局免打扰 YES:是 NO: 否
+ * @param handler 结果回调。回调参数：
+ *
+ * - resultObject 相应对象
+ * - error 错误信息
+ *
+ * 如果 error 为 nil, 表示设置成功
+ * 如果 error 不为 nil,表示设置失败
+ *
+ * @discussion 针对单个用户设置免打扰
+ * 这个接口支持跨应用设置免打扰
+ */
+- (void)setIsNoDisturb:(BOOL)isNoDisturb handler:(JMSGCompletionHandler)handler;
+
+```
+
+###### 例子
+
+```
+//获取 user 对象是否设置了免打扰
+BOOL isAlreadSet = user.isNoDisturb;
+
+//开启或关闭 user 免打扰设置
+[user setIsNoDisturb:!isAlreadSet handler:^(id resultObject, NSError *error) {
+    if (!error) {
+        NSLog(@"\n消息免打扰设置成功:\n%@\n",resultObject);
+    }
+}];
+注：如果user对象已经开启(关闭)免打扰，再对user设置开启(关闭)免打扰，会返回失败，所以在设置设置免打扰时，先获取user对象的isNoDisturb值，再进行设置
+
+```
+
+#### JMSGGroup
+##### 群组免打扰设置
+
+```
+/*!
+ * @abstract 该群是否已被设置为免打扰
+ *
+ * @discussion YES:是 , NO: 否
+ */
+@property(nonatomic, assign, readonly) BOOL isNoDisturb;
+
+/*!
+ * @abstract 设置群组消息免打扰（支持跨应用设置）
+ *
+ * @param isNoDisturb 是否免打扰 YES:是 NO: 否
+ * @param handler 结果回调。回调参数：
+ *
+ * - resultObject 相应对象
+ * - error 错误信息
+ *
+ * 如果 error 为 nil, 表示设置成功
+ * 如果 error 不为 nil,表示设置失败
+ *
+ * @discussion 针对单个群组设置免打扰
+ * 这个接口支持跨应用设置免打扰
+ */
+- (void)setIsNoDisturb:(BOOL)isNoDisturb handler:(JMSGCompletionHandler)handler;
+
+```
+
+###### 例子
+
+```
+使用方法参考“用户免打扰”例子
+
+```
+
+### 黑名单
+
+#### JMessage
+##### 获取黑名单列表
+
+```
+/*!
+ * @abstract 黑名单列表
+ *
+ * @param handler 结果回调。回调参数：
+ *
+ * - resultObject 类型为 NSArray，数组里成员的类型为 JMSGUser
+ * - error 错误信息
+ *
+ * 如果 error 为 nil, 表示设置成功
+ * 如果 error 不为 nil,表示设置失败
+ *
+ * @discussion 从服务器获取，返回用户的黑名单列表。
+ */
++ (void)blackList:(JMSGCompletionHandler)handler;
+
+```
+###### 例子
+
+```
+//获取黑名单列表
+[JMessage blackList:^(id resultObject, NSError *error) {
+    if (!error) {
+        NSLog(@"\n 黑名单列表: %@ \n",resultObject);
+    }
+}];
+
+```
+
+#### JMSGUser
+##### 添加黑名单		
+
+```
+/*!
+ * @abstract 添加黑名单
+ * @param usernameArray 作用对象的username数组
+ * @param handler 结果回调。回调参数：
+ *
+ * - resultObject 相应对象
+ * - error 错误信息
+ *
+ * 如果 error 为 nil, 表示设置成功
+ * 如果 error 不为 nil,表示设置失败
+ *
+ * @discussion 可以一次添加多个用户
+ */
++ (void)addUsersToBlacklist:(NSArray JMSG_GENERIC(__kindof NSString *)*)usernameArray
+          completionHandler:(JMSGCompletionHandler)handler;
+
+```
+###### 例子
+
+```
+//添加黑名单
+[JMSGUser addUsersToBlacklist:[NSArray arrayWithObjects:@"username1",@"username2", nil] completionHandler:^(id resultObject, NSError *error) {
+    if (!error) {
+        NSLog(@"\n 添加黑名单成功:%@ \n ",resultObject);
+    }
+}];
+
+```
+	
+##### 删除黑名单	
+
+```
+/*!
+ * @abstract 删除黑名单
+ * @param usernameArray 作用对象的username数组
+ * @param handler 结果回调。回调参数：
+ *
+ * - resultObject 相应对象
+ * - error 错误信息
+ *
+ * 如果 error 为 nil, 表示设置成功
+ * 如果 error 不为 nil,表示设置失败
+ *
+ * @discussion 可以一次删除多个黑名单用户
+ */
++ (void)delUsersFromBlacklist:(NSArray JMSG_GENERIC(__kindof NSString *)*)usernameArray
+            completionHandler:(JMSGCompletionHandler)handler;
+
+```	            
+###### 例子
+
+```
+//删除黑名单
+[JMSGUser delUsersFromBlacklist:[NSArray arrayWithObjects:@"username1",@"username2", nil] completionHandler:^(id resultObject, NSError *error) {
+        if (!error) {
+            NSLog(@"\n 添加黑名单成功:%@ \n ",resultObject);
+        }
+    }];
+
+```
+	            
+##### 跨应用添加黑名单	
+
+```
+/*!
+ * @abstract 跨应用添加黑名单
+ * @param usernameArray 作用对象的username数组
+ * @param appKey 应用的appKey
+ * @param handler 结果回调。回调参数：
+ *
+ * - resultObject 相应对象
+ * - error 错误信息
+ *
+ * 如果 error 为 nil, 表示设置成功
+ * 如果 error 不为 nil,表示设置失败
+ *
+ * @discussion 可以一次添加多个用户
+ */
++ (void)addUsersToBlacklist:(NSArray JMSG_GENERIC(__kindof NSString *)*)usernameArray
+                     appKey:(NSString *)userAppKey
+          completionHandler:(JMSGCompletionHandler)handler;
+
+```
+###### 例子
+
+```
+//添加黑名单
+[JMSGUser addUsersToBlacklist:[NSArray arrayWithObjects:@"username1",@"username2", nil] appKey:@"被添加用户所在应用的appkey" completionHandler:^(id resultObject, NSError *error) {
+       if (!error) {
+           NSLog(@"\n 跨应用添加黑名单成功:%@ \n ",resultObject);
+       }
+   }];
+
+```	   
+##### 跨应用删除黑名单	
+
+```
+/*!
+ * @abstract 跨应用删除黑名单
+ * @param usernameArray 作用对象的username数组
+ * @param appKey 应用的appKey
+ * @param handler 结果回调。回调参数：
+ *
+ * - resultObject 相应对象
+ * - error 错误信息
+ *
+ * 如果 error 为 nil, 表示设置成功
+ * 如果 error 不为 nil,表示设置失败
+ *
+ * @discussion 可以一次删除多个黑名单用户
+ */
++ (void)delUsersFromBlacklist:(NSArray JMSG_GENERIC(__kindof NSString *)*)usernameArray
+                       appKey:(NSString *)userAppKey
+            completionHandler:(JMSGCompletionHandler)handler;
+
+```
+	            
+###### 例子         
+
+```
+//删除黑名单
+[JMSGUser delUsersFromBlacklist:[NSArray arrayWithObjects:@"username1",@"username2", nil] appKey:@"被删除用户所在应用的appkey" completionHandler:^(id resultObject, NSError *error) {
+    if (!error) {
+        NSLog(@"\n 跨应用删除黑名单成功:%@ \n ",resultObject);
+    }
+}];
+ 
+```   
+###  事件处理
+
+__事件类型的消息内容__
+
+* 服务器端下发的事件通知, 比如用户被踢下线,群组里加了人, SDK 作为一个特殊的消息类型处理
+* SDK 以消息的形式通知到 App. 详情参见 JMessageDelegate
+
+#### JMSGEventContent
+
+```
+/*!
+ * @abstract 事件类型
+ * @discussion 参考事件类型的定义 JMSGEventNotificationType
+ */
+@property(nonatomic, assign, readonly) JMSGEventNotificationType eventType;
+
+//通知事件类型
+typedef NS_ENUM(NSInteger, JMSGEventNotificationType) {
+  /// 事件类型: 登录被踢
+  kJMSGEventNotificationLoginKicked = 1,
+  /// 事件类型: 群组被创建
+  kJMSGEventNotificationCreateGroup = 8,
+  /// 事件类型: 退出群组
+  kJMSGEventNotificationExitGroup = 9,
+  /// 事件类型: 添加新成员
+  kJMSGEventNotificationAddGroupMembers = 10,
+  /// 事件类型: 成员被踢出
+  kJMSGEventNotificationRemoveGroupMembers = 11,
+  /// 事件类型: 群信息更新
+  kJMSGEventNotificationUpdateGroupInfo = 12,
+};
+
+```
+
+##### 事件的文本描述 
+
+```
+/*!
+ @abstract 展示此事件的文本描述
+
+ @discussion SDK 根据事件类型，拼接成完整的事件描述信息。
+ */
+- (NSString * JMSG_NONNULL)showEventNotification;  
+
+```
+
+###### 例子
+
+```	
+if (message.contentType == kJMSGContentTypeEventNotification) {
+     NSString *showText = [((JMSGEventContent *)message.content) showEventNotification];
+}
+//比如，在群group中，用户A邀请用户B加入了群,showText 如下：
+//showText = "A邀请B加入了群组"
+
+```
+
+##### 自定义事件的文本描述
+
+```
+/*!
+ * @abstract 获取事件发起者的用户名
+ * @return 正常返回事件发起者的用户名，如果是系统事件则返回“系统消息”
+ *
+ * @discussion 如果设置了nickname，则返回nickname，否则返回username
+ * 可以用于定制 event message，拼接成完整的事件描述信息。
+ */
+- (NSString *JMSG_NULLABLE)getEventFromUsername;
+
+/*!
+ * @abstract 获取事件作用对象用户名列表
+ * @return 返回类型为 NSArray，数组成员为事件作用对象的用户名
+ *
+ * @discussion 如果设置了nickname，则返回nickname，否则返回username
+ * 可以用于定制 event message，拼接成完整的事件描述信息。
+ */
+- (NSArray *JMSG_NULLABLE)getEventToUsernameList;
+
+```
+
+###### 例子
+
+```
+JMSGEventContent *eventContent = (JMSGEventContent*)message.content;
+//获取发起事件的用户名
+NSString *fromUsername = [eventContent getEventFromUsername];
+//获取事件作用对象用户名列表
+NSArray *toUsernameList = [eventContent getEventToUsernameList];
+//根据事件类型，定制相应描述（以事件类型: 添加新成员为例子）
+if(eventContent.eventType == kJMSGEventNotificationAddGroupMembers) {
+	NSString *showText = [NSString stringWithFormat:@"%@邀请了%@加入了群聊",fromUsername,[toUsernameList componentsJoinedByString:@","]];
+}
+
+```
+	
+		
+
 
 
 
