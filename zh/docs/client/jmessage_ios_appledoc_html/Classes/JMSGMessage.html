@@ -98,9 +98,15 @@
 		
 		<option value="//api/name/sendSingleTextMessage:toUser:">+ sendSingleTextMessage:toUser:</option>
 		
+		<option value="//api/name/sendSingleTextMessage:toUser:appKey:">+ sendSingleTextMessage:toUser:appKey:</option>
+		
 		<option value="//api/name/sendSingleImageMessage:toUser:">+ sendSingleImageMessage:toUser:</option>
 		
+		<option value="//api/name/sendSingleImageMessage:toUser:appKey:">+ sendSingleImageMessage:toUser:appKey:</option>
+		
 		<option value="//api/name/sendSingleVoiceMessage:voiceDuration:toUser:">+ sendSingleVoiceMessage:voiceDuration:toUser:</option>
+		
+		<option value="//api/name/sendSingleVoiceMessage:voiceDuration:toUser:appKey:">+ sendSingleVoiceMessage:voiceDuration:toUser:appKey:</option>
 		
 		<option value="//api/name/sendGroupTextMessage:toGroup:">+ sendGroupTextMessage:toGroup:</option>
 		
@@ -450,6 +456,69 @@ NSString *msgText = textContent.text;
 		</div>
 	</div>
 </div><div class="section-method">
+	<a name="//api/name/sendSingleTextMessage:toUser:appKey:" title="sendSingleTextMessage:toUser:appKey:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/sendSingleTextMessage:toUser:appKey:">+&nbsp;sendSingleTextMessage:toUser:appKey:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>发送跨应用单聊文本消息</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)sendSingleTextMessage:(NSString *)<em>text</em> toUser:(NSString *)<em>username</em> appKey:(NSString *)<em>userAppKey</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>text</code></th>
+						<td><p>文本内容</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>username</code></th>
+						<td><p>单聊对象 username</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>快捷方法，不需要先创建消息而直接发送。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGMessage.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
 	<a name="//api/name/sendSingleImageMessage:toUser:" title="sendSingleImageMessage:toUser:"></a>
 	<h3 class="method-title"><code><a href="#//api/name/sendSingleImageMessage:toUser:">+&nbsp;sendSingleImageMessage:toUser:</a></code>
 </h3>
@@ -513,6 +582,69 @@ NSString *msgText = textContent.text;
 		</div>
 	</div>
 </div><div class="section-method">
+	<a name="//api/name/sendSingleImageMessage:toUser:appKey:" title="sendSingleImageMessage:toUser:appKey:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/sendSingleImageMessage:toUser:appKey:">+&nbsp;sendSingleImageMessage:toUser:appKey:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>发送跨应用单聊图片消息</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)sendSingleImageMessage:(NSData *)<em>imageData</em> toUser:(NSString *)<em>username</em> appKey:(NSString *)<em>userAppKey</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>imageData</code></th>
+						<td><p>图片数据</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>username</code></th>
+						<td><p>单聊对象 username</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>快捷方法，不需要先创建消息而直接发送。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGMessage.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
 	<a name="//api/name/sendSingleVoiceMessage:voiceDuration:toUser:" title="sendSingleVoiceMessage:voiceDuration:toUser:"></a>
 	<h3 class="method-title"><code><a href="#//api/name/sendSingleVoiceMessage:voiceDuration:toUser:">+&nbsp;sendSingleVoiceMessage:voiceDuration:toUser:</a></code>
 </h3>
@@ -530,6 +662,74 @@ NSString *msgText = textContent.text;
 		    
 
 			<div class="method-subsection method-declaration"><code>+ (void)sendSingleVoiceMessage:(NSData *)<em>voiceData</em> voiceDuration:(NSNumber *)<em>duration</em> toUser:(NSString *)<em>username</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>voiceData</code></th>
+						<td><p>语音数据</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>duration</code></th>
+						<td><p>语音时长</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>username</code></th>
+						<td><p>单聊对象 username</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>快捷方法，不需要先创建消息而直接发送。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGMessage.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/sendSingleVoiceMessage:voiceDuration:toUser:appKey:" title="sendSingleVoiceMessage:voiceDuration:toUser:appKey:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/sendSingleVoiceMessage:voiceDuration:toUser:appKey:">+&nbsp;sendSingleVoiceMessage:voiceDuration:toUser:appKey:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>发送跨应用单聊语音消息</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)sendSingleVoiceMessage:(NSData *)<em>voiceData</em> voiceDuration:(NSNumber *)<em>duration</em> toUser:(NSString *)<em>username</em> appKey:(NSString *)<em>userAppKey</em></code></div>
 
 		    
 			
@@ -1772,7 +1972,7 @@ NSString *msgText = textContent.text;
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2016 HXHG. All rights reserved. Updated: 2016-05-06</p>
+						<p class="copyright">Copyright &copy; 2016 HXHG. All rights reserved. Updated: 2016-07-15</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

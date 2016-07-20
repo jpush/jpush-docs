@@ -68,6 +68,10 @@
 		
 		<option value="//api/name/appKey">appKey</option>
 		
+		<option value="//api/name/isNoDisturb">isNoDisturb</option>
+		
+		<option value="//api/name/isInBlacklist">isInBlacklist</option>
+		
 	</optgroup>
 	
 
@@ -90,11 +94,21 @@
 		
 		<option value="//api/name/updateMyPasswordWithNewPassword:oldPassword:completionHandler:">+ updateMyPasswordWithNewPassword:oldPassword:completionHandler:</option>
 		
+		<option value="//api/name/addUsersToBlacklist:completionHandler:">+ addUsersToBlacklist:completionHandler:</option>
+		
+		<option value="//api/name/delUsersFromBlacklist:completionHandler:">+ delUsersFromBlacklist:completionHandler:</option>
+		
+		<option value="//api/name/addUsersToBlacklist:appKey:completionHandler:">+ addUsersToBlacklist:appKey:completionHandler:</option>
+		
+		<option value="//api/name/delUsersFromBlacklist:appKey:completionHandler:">+ delUsersFromBlacklist:appKey:completionHandler:</option>
+		
 	</optgroup>
 	
 
 	
 	<optgroup label="Instance Methods">
+		
+		<option value="//api/name/setIsNoDisturb:handler:">- setIsNoDisturb:handler:</option>
 		
 		<option value="//api/name/thumbAvatarData:">- thumbAvatarData:</option>
 		
@@ -617,6 +631,304 @@ Birthday&amp;&amp;Gender 是NSNumber类型, Avatar NSData类型 其他 NSString<
 			
 		</div>
 	</div>
+</div><div class="section-method">
+	<a name="//api/name/addUsersToBlacklist:completionHandler:" title="addUsersToBlacklist:completionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/addUsersToBlacklist:completionHandler:">+&nbsp;addUsersToBlacklist:completionHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>添加黑名单</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)addUsersToBlacklist:(NSArray JMSG_GENERIC ( __kindof NSString *) *)<em>usernameArray</em> completionHandler:(JMSGCompletionHandler)<em>handler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>usernameArray</code></th>
+						<td><p>作用对象的username数组</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>handler</code></th>
+						<td><p>结果回调。回调参数：</p>
+
+<ul>
+<li>resultObject 相应对象</li>
+<li>error 错误信息</li>
+</ul>
+
+
+<p>如果 error 为 nil, 表示设置成功
+如果 error 不为 nil,表示设置失败</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>可以一次添加多个用户</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGUser.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/delUsersFromBlacklist:completionHandler:" title="delUsersFromBlacklist:completionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/delUsersFromBlacklist:completionHandler:">+&nbsp;delUsersFromBlacklist:completionHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>删除黑名单</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)delUsersFromBlacklist:(NSArray JMSG_GENERIC ( __kindof NSString *) *)<em>usernameArray</em> completionHandler:(JMSGCompletionHandler)<em>handler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>usernameArray</code></th>
+						<td><p>作用对象的username数组</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>handler</code></th>
+						<td><p>结果回调。回调参数：</p>
+
+<ul>
+<li>resultObject 相应对象</li>
+<li>error 错误信息</li>
+</ul>
+
+
+<p>如果 error 为 nil, 表示设置成功
+如果 error 不为 nil,表示设置失败</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>可以一次删除多个黑名单用户</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGUser.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/addUsersToBlacklist:appKey:completionHandler:" title="addUsersToBlacklist:appKey:completionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/addUsersToBlacklist:appKey:completionHandler:">+&nbsp;addUsersToBlacklist:appKey:completionHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>跨应用添加黑名单</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)addUsersToBlacklist:(NSArray JMSG_GENERIC ( __kindof NSString *) *)<em>usernameArray</em> appKey:(NSString *)<em>userAppKey</em> completionHandler:(JMSGCompletionHandler)<em>handler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>usernameArray</code></th>
+						<td><p>作用对象的username数组</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>handler</code></th>
+						<td><p>结果回调。回调参数：</p>
+
+<ul>
+<li>resultObject 相应对象</li>
+<li>error 错误信息</li>
+</ul>
+
+
+<p>如果 error 为 nil, 表示设置成功
+如果 error 不为 nil,表示设置失败</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>appKey</code></th>
+						<td><p>应用的<a href="#//api/name/appKey">appKey</a></p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>可以一次添加多个用户</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGUser.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/delUsersFromBlacklist:appKey:completionHandler:" title="delUsersFromBlacklist:appKey:completionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/delUsersFromBlacklist:appKey:completionHandler:">+&nbsp;delUsersFromBlacklist:appKey:completionHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>跨应用删除黑名单</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)delUsersFromBlacklist:(NSArray JMSG_GENERIC ( __kindof NSString *) *)<em>usernameArray</em> appKey:(NSString *)<em>userAppKey</em> completionHandler:(JMSGCompletionHandler)<em>handler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>usernameArray</code></th>
+						<td><p>作用对象的username数组</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>handler</code></th>
+						<td><p>结果回调。回调参数：</p>
+
+<ul>
+<li>resultObject 相应对象</li>
+<li>error 错误信息</li>
+</ul>
+
+
+<p>如果 error 为 nil, 表示设置成功
+如果 error 不为 nil,表示设置失败</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>appKey</code></th>
+						<td><p>应用的<a href="#//api/name/appKey">appKey</a></p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>可以一次删除多个黑名单用户</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGUser.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
 </div>
 						</div>
 						
@@ -897,6 +1209,171 @@ Birthday&amp;&amp;Gender 是NSNumber类型, Avatar NSData类型 其他 NSString<
 		</div>
 	</div>
 </div><div class="section-method">
+	<a name="//api/name/isNoDisturb" title="isNoDisturb"></a>
+	<h3 class="method-title"><code><a href="#//api/name/isNoDisturb">&nbsp;&nbsp;isNoDisturb</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>该用户是否已被设置为免打扰</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign, readonly) BOOL isNoDisturb</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>YES:是 , NO: 否</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGUser.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/isInBlacklist" title="isInBlacklist"></a>
+	<h3 class="method-title"><code><a href="#//api/name/isInBlacklist">&nbsp;&nbsp;isInBlacklist</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>该用户是否已被加入黑名单</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign, readonly) BOOL isInBlacklist</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>YES:是 , NO: 否</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGUser.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setIsNoDisturb:handler:" title="setIsNoDisturb:handler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setIsNoDisturb:handler:">&ndash;&nbsp;setIsNoDisturb:handler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>设置用户免打扰（支持跨应用设置）</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)setIsNoDisturb:(BOOL)<em>isNoDisturb</em> handler:(JMSGCompletionHandler)<em>handler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>isNoDisturb</code></th>
+						<td><p>是否全局免打扰 YES:是 NO: 否</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>handler</code></th>
+						<td><p>结果回调。回调参数：</p>
+
+<ul>
+<li>resultObject 相应对象</li>
+<li>error 错误信息</li>
+</ul>
+
+
+<p>如果 error 为 nil, 表示设置成功
+如果 error 不为 nil,表示设置失败</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>针对单个用户设置免打扰
+这个接口支持跨应用设置免打扰</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGUser.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
 	<a name="//api/name/thumbAvatarData:" title="thumbAvatarData:"></a>
 	<h3 class="method-title"><code><a href="#//api/name/thumbAvatarData:">&ndash;&nbsp;thumbAvatarData:</a></code>
 </h3>
@@ -1093,7 +1570,7 @@ Birthday&amp;&amp;Gender 是NSNumber类型, Avatar NSData类型 其他 NSString<
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2016 HXHG. All rights reserved. Updated: 2016-05-06</p>
+						<p class="copyright">Copyright &copy; 2016 HXHG. All rights reserved. Updated: 2016-07-15</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
