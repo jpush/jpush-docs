@@ -349,8 +349,8 @@ JMessage 服务器端报的错误码。有可能出现在各平台的 SDK 里。
 		</tr>
 		<tr >
 			<td>898006</td>
-			<td>Gid invalid</td>
-			<td>Gid不存在</td>
+			<td>Group id invalid</td>
+			<td>Group id不存在</td>
 		</tr>
 		<tr >
 			<td>898007</td>
@@ -396,12 +396,12 @@ JMessage 服务器端报的错误码。有可能出现在各平台的 SDK 里。
 		<tr >
 			<td>899003</td>
 			<td>parameter invalid</td>
-			<td>参数错误，Request Body参数不符合要求;resend 值不符合要求;用户名或者密码不合法;群组Gid不合法</td>
+			<td>参数错误，Request Body参数不符合要求;resend 值不符合要求;用户名或者密码不合法;群组Group id不合法</td>
 		</tr>
 		<tr >
 			<td>899006</td>
-			<td>gid invalid</td>
-			<td>Gid 不存在</td>
+			<td>Group id invalid</td>
+			<td>Group id 不存在</td>
 		</tr>
 		<tr >
 			<td>899007</td>
@@ -590,7 +590,7 @@ JMessage 服务器端报的错误码。有可能出现在各平台的 SDK 里。
 		</tr>
 		<tr >
 			<td>809001</td>
-			<td>group id not exist</td>
+			<td>Group id not exist</td>
 			<td>用户退出讨论组时，讨论组ID不存在，退出讨论组失败</td>
 		</tr>
 		<tr >
@@ -600,7 +600,7 @@ JMessage 服务器端报的错误码。有可能出现在各平台的 SDK 里。
 		</tr>
 		<tr >
 			<td>810001</td>
-			<td>group id not exist</td>
+			<td>Group id not exist</td>
 			<td>用户添加成员到讨论组时，讨论组ID不存在，添加成员失败</td>
 		</tr>
 		<tr >
@@ -645,12 +645,12 @@ JMessage 服务器端报的错误码。有可能出现在各平台的 SDK 里。
 		</tr>
 		<tr >
 			<td>811001</td>
-			<td>group id not exist</td>
+			<td>Group id not exist</td>
 			<td>用户删除讨论组成员时，讨论组ID不存在，删除成员失败</td>
 		</tr>
 		<tr >
 			<td>811002</td>
-			<td>group id not exist</td>
+			<td>Group id not exist</td>
 			<td>用户删除讨论组成员时，删除的成员列表为空，删除成员失败</td>
 		</tr>
 		<tr >
@@ -685,7 +685,7 @@ JMessage 服务器端报的错误码。有可能出现在各平台的 SDK 里。
 		</tr>
 		<tr >
 			<td>812001</td>
-			<td>group id not exist</td>
+			<td>Group id not exist</td>
 			<td>用户修改讨论组信息时，讨论组ID不存在，修改讨论组信息失败</td>
 		</tr>
 		<tr >

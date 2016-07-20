@@ -501,7 +501,7 @@ POST /v1/messages
 		</tr>
 		<tr >
 			<td>target_id</td>
-			<td>目标id single填username group 填gid</td>
+			<td>目标id single填username group 填Group id</td>
 		</tr>
 		<tr >
 			<td>from_id</td>
@@ -671,11 +671,11 @@ Example Response
 
 ####  获取群组详情
 
-	GET /v1/groups/{gid}
+	GET /v1/groups/{Group id}
 
 Request Params
 
-+ gid 群组ID。由创建群组时分配。
++ Group id 群组ID。由创建群组时分配。
 
 Example Response
 ```
@@ -696,7 +696,7 @@ Example Response
 
 ####  更新群组信息
 ```
-PUT /v1/groups/{gid}
+PUT /v1/groups/{Group id}
 ```
 Request Params
 
@@ -704,7 +704,7 @@ Request Params
 + desc 群描述
 
 ```
-PUT /v1/groups/{gid}
+PUT /v1/groups/{Group id}
 ```
 Request Body
 
@@ -720,15 +720,15 @@ HTTP/1.1 204 NO Content
 
 #### 删除群组
 
-删除某 gid 的群组。
+删除某  的群组。
 
 该群组的所有成员都会收到群组被解散通知。
 
-	DELETE /v1/groups/{gid}
+	DELETE /v1/groups/{Group id}
 
 Request Params
 
-+ gid 群组ID。
++ Group id 群组ID。
 
 Example Response
 
@@ -743,7 +743,7 @@ Example Response
 
 群组成员将收到增加与删除成员的通知。
 
-	POST /v1/groups/{gid}/members
+	POST /v1/groups/{Group id}/members
 
 Request Params
 
@@ -774,11 +774,11 @@ Example Response
 
 ####  获取群组成员列表
 
-    GET /v1/groups/{gid}/members/
+    GET /v1/groups/{Group id}/members/
 
 Request Params
 
-+ gid 群组ID。
++ Group id 群组ID。
 
 Example Response
 
