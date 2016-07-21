@@ -68,6 +68,12 @@
 		
 		<option value="//api/name/owner">owner</option>
 		
+		<option value="//api/name/ownerAppKey">ownerAppKey</option>
+		
+		<option value="//api/name/maxMemberCount">maxMemberCount</option>
+		
+		<option value="//api/name/isNoDisturb">isNoDisturb</option>
+		
 	</optgroup>
 	
 
@@ -88,11 +94,17 @@
 	
 	<optgroup label="Instance Methods">
 		
+		<option value="//api/name/setIsNoDisturb:handler:">- setIsNoDisturb:handler:</option>
+		
 		<option value="//api/name/memberArray">- memberArray</option>
 		
 		<option value="//api/name/addMembersWithUsernameArray:completionHandler:">- addMembersWithUsernameArray:completionHandler:</option>
 		
+		<option value="//api/name/addMembersWithUsernameArray:appKey:completionHandler:">- addMembersWithUsernameArray:appKey:completionHandler:</option>
+		
 		<option value="//api/name/removeMembersWithUsernameArray:completionHandler:">- removeMembersWithUsernameArray:completionHandler:</option>
+		
+		<option value="//api/name/removeMembersWithUsernameArray:appKey:completionHandler:">- removeMembersWithUsernameArray:appKey:completionHandler:</option>
 		
 		<option value="//api/name/exit:">- exit:</option>
 		
@@ -384,7 +396,7 @@
 				
 					<tr>
 						<th scope="row" class="argument-name"><code>handler</code></th>
-						<td><p>结果回调。正常返回时 resultObject 的类型是 NSArray，数组里的成员类型是 JMSGGroup</p></td>
+						<td><p>结果回调。正常返回时 resultObject 的类型是 NSArray，数组里的成员类型是JMSGGroup的<a href="#//api/name/gid">gid</a></p></td>
 					</tr>
 				
 				</table>
@@ -694,6 +706,217 @@
 			
 		</div>
 	</div>
+</div><div class="section-method">
+	<a name="//api/name/ownerAppKey" title="ownerAppKey"></a>
+	<h3 class="method-title"><code><a href="#//api/name/ownerAppKey">&nbsp;&nbsp;ownerAppKey</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>群主的appKey</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, copy, readonly) NSString *ownerAppKey</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>当有跨应用群成员与群主同名(username相同)时，可结合用这个ownerAppKey来判断群主。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGGroup.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/maxMemberCount" title="maxMemberCount"></a>
+	<h3 class="method-title"><code><a href="#//api/name/maxMemberCount">&nbsp;&nbsp;maxMemberCount</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>群组人数上限，</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) NSString *maxMemberCount</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>表示当前群组人数上限，客户端不可更改。。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGGroup.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/isNoDisturb" title="isNoDisturb"></a>
+	<h3 class="method-title"><code><a href="#//api/name/isNoDisturb">&nbsp;&nbsp;isNoDisturb</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>该群是否已被设置为免打扰</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign, readonly) BOOL isNoDisturb</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>YES:是 , NO: 否</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGGroup.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setIsNoDisturb:handler:" title="setIsNoDisturb:handler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setIsNoDisturb:handler:">&ndash;&nbsp;setIsNoDisturb:handler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>设置群组消息免打扰（支持跨应用设置）</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)setIsNoDisturb:(BOOL)<em>isNoDisturb</em> handler:(JMSGCompletionHandler)<em>handler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>isNoDisturb</code></th>
+						<td><p>是否免打扰 YES:是 NO: 否</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>handler</code></th>
+						<td><p>结果回调。回调参数：</p>
+
+<ul>
+<li>resultObject 相应对象</li>
+<li>error 错误信息</li>
+</ul>
+
+
+<p>如果 error 为 nil, 表示设置成功
+如果 error 不为 nil,表示设置失败</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>针对单个群组设置免打扰
+这个接口支持跨应用设置免打扰</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGGroup.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
 </div>
 						</div>
 						
@@ -813,6 +1036,64 @@
 		</div>
 	</div>
 </div><div class="section-method">
+	<a name="//api/name/addMembersWithUsernameArray:appKey:completionHandler:" title="addMembersWithUsernameArray:appKey:completionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/addMembersWithUsernameArray:appKey:completionHandler:">&ndash;&nbsp;addMembersWithUsernameArray:appKey:completionHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>添加群组跨应用成员</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)addMembersWithUsernameArray:(NSArray JMSG_GENERIC ( __kindof NSString *) *)<em>usernameArray</em> appKey:(NSString *)<em>userAppKey</em> completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)<em>handler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>usernameArray</code></th>
+						<td><p>用户名数组。数组里的成员类型是 NSString</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>handler</code></th>
+						<td><p>结果回调。正常返回时 resultObject 为 nil.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGGroup.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
 	<a name="//api/name/removeMembersWithUsernameArray:completionHandler:" title="removeMembersWithUsernameArray:completionHandler:"></a>
 	<h3 class="method-title"><code><a href="#//api/name/removeMembersWithUsernameArray:completionHandler:">&ndash;&nbsp;removeMembersWithUsernameArray:completionHandler:</a></code>
 </h3>
@@ -830,6 +1111,64 @@
 		    
 
 			<div class="method-subsection method-declaration"><code>- (void)removeMembersWithUsernameArray:(NSArray JMSG_GENERIC ( __kindof NSString *) *)<em>usernameArray</em> completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)<em>handler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>usernameArray</code></th>
+						<td><p>用户名数据. 数组里的成员类型是 NSString</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>handler</code></th>
+						<td><p>结果回调。正常返回时 resultObject 为 nil.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGGroup.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/removeMembersWithUsernameArray:appKey:completionHandler:" title="removeMembersWithUsernameArray:appKey:completionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/removeMembersWithUsernameArray:appKey:completionHandler:">&ndash;&nbsp;removeMembersWithUsernameArray:appKey:completionHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>删除群组跨应用成员</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)removeMembersWithUsernameArray:(NSArray JMSG_GENERIC ( __kindof NSString *) *)<em>usernameArray</em> appKey:(NSString *)<em>userAppKey</em> completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)<em>handler</em></code></div>
 
 		    
 			
@@ -984,7 +1323,7 @@
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2016 HXHG. All rights reserved. Updated: 2016-05-06</p>
+						<p class="copyright">Copyright &copy; 2016 HXHG. All rights reserved. Updated: 2016-07-15</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
