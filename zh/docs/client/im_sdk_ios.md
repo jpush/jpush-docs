@@ -1465,8 +1465,8 @@ JMSGCompletionHandler 有 2 个参数：
 与 JMSGCompletionHandler 类似的，还有另外一个 block 叫 JMSGAsyncDataHandler，用于返回媒体文件数据。
 
 
-### 实现回调 
-#### Conversation 回调
+#### 实现回调 
+##### Conversation 回调
 
 	// optional
 	// 收到此通知后, 建议处理: 如果 App 当前在会话列表页，刷新整个列表；如果在聊天界面，刷新聊天标题。
@@ -1477,20 +1477,20 @@ JMSGCompletionHandler 有 2 个参数：
 	- (void)onUnreadChanged:(NSUInteger)newCount;
 
 
-#### Group 回调
+##### Group 回调
 
 	// optional
 	// 群信息详情被改变
 	- (void)onGroupInfoChanged:(JMSGGroup *)group;
 
 
-#### User 回调
+##### User 回调
 
 	// optional
 	// 用户在其他设备上登录，当前设备被踢出登录。
 	- (void)onLoginUserKicked;
 
-#### Database Migrate 回调
+##### Database Migrate 回调
 
 	// optional
 	// 数据库开始升级
