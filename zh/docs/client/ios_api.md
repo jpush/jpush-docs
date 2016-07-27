@@ -476,7 +476,7 @@ r1.7.0 开始支持。
 
 #### API - getRegistrationID
 
-调用此 API 来取得应用程序对应的 RegistrationID。 只有当应用程序成功注册到 JPush 的服务器时才返回对应的值，否则返回空字符串。
+调用此 API 来取得应用程序对应的 RegistrationID。 只有当应用程序成功注册到 JPush 的服务器时才返回对应的值，否则返回空字符串。其中"registrationIDCompletionHandler:"是2.1.9版本新增的获取registrationID的接口，需要在block中获取registrationID,resCode为返回码,模拟器调用此接口resCode返回1011,registrationID返回nil.
 
 ##### 支持的版本
 
@@ -485,11 +485,13 @@ r1.7.0 开始支持。
 ##### 接口定义
 
 +(NSString *)registrationID
+
++(void)registrationIDCompletionHandler:(void(^)(int resCode,NSString *registrationID))completionHandler;
     
 <div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">
 <p>温馨提示：
   <br>
-<p>iOS 9系统，应用卸载重装，APNs返回的devicetoken会发生变化，开发者需要获取设备最新的Registration id。请在kJPFNetworkDidLoginNotification的实现方法里面调用"RegistrationID"这个接口来获取 RegistrationID。
+<p>iOS 9系统，应用卸载重装，APNs返回的devicetoken会发生变化，开发者需要获取设备最新的Registration id。请在kJPFNetworkDidLoginNotification的实现方法里面调用"RegistrationID"这个接口来获取 RegistrationID。在SDK2.1.9版本上可以调用"registrationIDCompletionHandler:"这个接口来获取最新的Registration id。
 </div>
 
 #### 附加说明
