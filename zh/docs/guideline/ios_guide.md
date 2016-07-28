@@ -70,6 +70,7 @@ img[alt=jpush_ios] { width: 800px; }
 * Security.framework
 * Xcode7需要的是libz.tbd；Xcode7以下版本是libz.dylib
 * Adsupport.framework (获取IDFA需要；如果不使用IDFA，请不要添加)
+* UserNotifications.framework(Xcode8以上)
 
 ### 4、Build Settings
 如果你的工程需要支持小于7.0的iOS系统，请到Build Settings 关闭 bitCode 选项，否则将无法正常编译通过。
@@ -175,6 +176,9 @@ APIs 主要集中在 JPUSHService 接口类里。
 + (void)registerForRemoteNotificationTypes:(NSUInteger)types
                                 categories:(NSSet *)categories;
 
+// 新版本的注册APNS方法（2.1.9版新增方法，兼容iOS10及以下版本）
++ (void)registerForRemoteNotificationConfig:(JPUSHRegisterEntity *)config delegate:(id<JPUSHRegisterDelegate>)delegate;
+
 // upload device token
 + (void)registerDeviceToken:(NSData *)deviceToken;
 
@@ -184,11 +188,6 @@ APIs 主要集中在 JPUSHService 接口类里。
 
 ```
 
-// handle notification recieved
-+ (void)handleRemoteNotification:(NSDictionary *)remoteInfo;
-
-
-```
 #### 调用代码
 
    监听系统事件，相应地调用 JPush SDK 提供的 API 来实现功能。
@@ -204,13 +203,19 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
   NSString *advertisingId = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
   //Required
-  if ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0) {
+  if ([[UIDevice currentDevice].systemVersion floatValue] >= 10.0) {
+    JPUSHRegisterEntity * entity = [[JPUSHRegisterEntity alloc] init];
+    entity.types = UNAuthorizationOptionAlert|UNAuthorizationOptionBadge|UNAuthorizationOptionSound;
+    [JPUSHService registerForRemoteNotificationConfig:entity delegate:self];
+  } 
+  else if ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0) {
     //可以添加自定义categories
     [JPUSHService registerForRemoteNotificationTypes:(UIUserNotificationTypeBadge |
                                                       UIUserNotificationTypeSound |
                                                       UIUserNotificationTypeAlert)
                                           categories:nil];
-  } else {
+  } 
+  else {
     //categories 必须为nil
     [JPUSHService registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge |
                                                       UIRemoteNotificationTypeSound |
@@ -252,9 +257,28 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
   NSLog(@"did Fail To Register For Remote Notifications With Error: %@", error);
 }
 
-```
+#pragma mark- JPUSHRegisterDelegate
+// iOS 10 Support Required
+- (void)jpushNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(NSInteger))completionHandler {
+  NSDictionary * userInfo = notification.request.content.userInfo;
+  if([notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
+    [JPUSHService handleRemoteNotification:userInfo];
+  }
+  
+  completionHandler(UNNotificationPresentationOptionBadge|UNNotificationPresentationOptionSound|UNNotificationPresentationOptionAlert);
+}
+// iOS 10 Support Required
+- (void)jpushNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)())completionHandler {
+  NSDictionary * userInfo = response.notification.request.content.userInfo;
+  if([response.notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
+    [JPUSHService handleRemoteNotification:userInfo];
+  }
+
+  completionHandler();
+}
 
 ```
+
 
 ### 7、IDFA
 r2.1.5版本增加一个上传IDFA字符串的接口
