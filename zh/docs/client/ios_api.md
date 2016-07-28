@@ -477,7 +477,39 @@ r1.7.0 开始支持。
 
 应用程序可以把此 RegistrationID 保存以自己的应用服务器上，然后就可以根据 RegistrationID 来向设备推送消息或者通知。
 
-#### API - getRegistrationID
+#### Method - registrationIDCompletionHandler:（with block）
+调用此 API 来取得应用程序对应的 RegistrationID。
+
+#####支持的版本
+开始支持的版本：2.1.9。
+
+##### 接口定义
+
+```
++ (void)registrationIDCompletionHandler:(void(^)(int resCode,NSString *registrationID))completionHandler;
+```
+##### 参数说明
+
+* (void(^)(int resCode,NSString *registrationID))completionHandler
+    
+    * completionHandler用于处理设置返回结果
+    * resCode返回的结果状态码
+    * registrationID返回registrationID
+
+```
+[JPUSHService registrationIDCompletionHandler:^(int resCode, NSString *registrationID) {
+    NSLog(@"resCode : %d,registrationID: %@",resCode,registrationID);
+}];
+```
+
+<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">
+<p>温馨提示：
+  <br>
+<p>建议使用此接口获取registrationID，模拟器中调用此接口resCode返回1011,registrationID返回nil.
+</div>
+
+
+#### Method - registrationID
 
 调用此 API 来取得应用程序对应的 RegistrationID。 只有当应用程序成功注册到 JPush 的服务器时才返回对应的值，否则返回空字符串。
 
