@@ -92,12 +92,12 @@ JPush API v3 支持同时一次调用同时推送 APNs 通知与 JPush 应用内
 
 ### iOS 版本支持
 
-+ 支持的iOS版本为5.0及以上版本.
++ 支持的iOS版本为6.0及以上版本.
 
 ### 组成
 
-+ 头文件 APService.h
-+ 静态库文件 libPushSDK.a
++ 头文件 JPUSHService.h
++ 静态库文件 jpush-ios-x.x.x.a
 
 ### 注意事项
 + [请参考iOS常见问题](../../guideline/faq/#ios)

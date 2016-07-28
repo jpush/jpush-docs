@@ -33,7 +33,7 @@ img[alt=jpush_ios] { width: 800px; }
 
 包名为JPush-iOS-SDK-{版本号}
 
-* lib文件夹：包含头文件 JPUSHService.h，静态库文件jpush-ios-x.x.x.a ，支持的iOS版本为 5.0 及以上版本。（请注意：模拟器不支持APNs）
+* lib文件夹：包含头文件 JPUSHService.h，静态库文件jpush-ios-x.x.x.a ，支持的iOS版本为 6.0 及以上版本。（请注意：模拟器不支持APNs）
 * pdf文件：集成指南
 * demo文件夹：示例
 
@@ -247,8 +247,10 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
  
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
  
-  // IOS 7 Support Required
-  [JPUSHService handleRemoteNotification:userInfo];
+  if ([[UIDevice currentDevice].systemVersion floatValue] < 10.0) {
+     // IOS 7 Support Required
+    [JPUSHService handleRemoteNotification:userInfo];
+  }
   completionHandler(UIBackgroundFetchResultNewData);
 }
 
@@ -257,7 +259,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
   NSLog(@"did Fail To Register For Remote Notifications With Error: %@", error);
 }
 
-#pragma mark- JPUSHRegisterDelegate
+#pragma mark- JPUSHRegisterDelegate (2.1.9版新增JPUSHRegisterDelegate,需实现以下两个方法)
 // iOS 10 Support Required
 - (void)jpushNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(NSInteger))completionHandler {
   NSDictionary * userInfo = notification.request.content.userInfo;
