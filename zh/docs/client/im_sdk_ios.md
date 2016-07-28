@@ -134,7 +134,7 @@ JMSGCompletionHandler 有 2 个参数：
 + (JMSGConversation *)groupConversationWithGroupId:
 
 // 创建单聊会话
-+ (vodi)createSingleConversationWithUsername:completionHandler:
++ (void)createSingleConversationWithUsername:completionHandler:
 
 // 创建群聊会话
 + (void)createGroupConversationWithGroupId:completionHandler:
