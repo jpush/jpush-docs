@@ -33,7 +33,7 @@ img[alt=jpush_ios] { width: 800px; }
 
 包名为JPush-iOS-SDK-{版本号}
 
-* lib文件夹：包含头文件 JPUSHService.h，静态库文件jpush-ios-x.x.x.a ，支持的iOS版本为 5.0 及以上版本。（请注意：模拟器不支持APNs）
+* lib文件夹：包含头文件 JPUSHService.h，静态库文件jpush-ios-x.x.x.a ，支持的iOS版本为 6.0 及以上版本。（请注意：模拟器不支持APNs）
 * pdf文件：集成指南
 * demo文件夹：示例
 
