@@ -63,6 +63,7 @@
                 jcenter()
             }
         }
+              
 + 在 module 的 gradle 中添加 jpush sdk编译依赖。（以2.1.8版本为例）
 
         dependencis {
