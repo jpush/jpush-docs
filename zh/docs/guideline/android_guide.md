@@ -46,10 +46,14 @@
 
 目前SDK只支持Android 2.3或以上版本的手机系统。富媒体信息流功能则需Android3.0或以上版本的系统。
 
-## SDK集成步骤
 
-### 使用 jcenter 自动导入 JPush SDK 开发包
-+ 确认android studio的 Project 的主 gradle 中配置了jcenter支持。（新建project默认配置就支持）
+
+## jcenter 自动集成步骤
+
+
+***说明*** ： 使用jcenter自动集成的开发者，不需要在项目中添加jar和so，jcenter会自动完成依赖；在AndroidManifest.xml中不需要添加任何JPush SDK 相关的配置，jcenter会自动导入, 如果手动添加则是以开发者添加的为准覆盖掉默认配置。
+
++ 确认android studio的 Project 根目录的主 gradle 中配置了jcenter支持。（新建project默认配置就支持）
         
         buildscript {
             repositories {
@@ -64,21 +68,24 @@
             }
         }
               
-+ 在 module 的 gradle 中添加 jpush sdk编译依赖。（以2.1.8版本为例）
-
-        dependencis {
-            ......
-            compile 'cn.jiguang:jpush:2.1.8' 
-            ......
-        }
         
-+ 在 module 的 gradle 中添加AndroidManifest的替换变量。
+        
++ 在 module 的 gradle 中添加依赖和AndroidManifest的替换变量。
 
+
+        
         android {
             ......
             defaultConfig {
                 applicationId "com.xxx.xxx" //JPush上注册的包名.
                 ......
+                
+                ndk {
+                    //选择要添加的对应cpu类型的.so库。 
+                    abiFilters 'armeabi', 'armeabi-v7a', 'armeabi-v8a' 
+                    // 还可以添加 'x86', 'x86_64', 'mips', 'mips64'
+                }
+                
                 manifestPlaceholders = [
                     JPUSH_PKGNAME : applicationId,
                     JPUSH_APPKEY : "你的appkey", //JPush上注册的包名对应的appkey.
@@ -89,10 +96,27 @@
             ......
         }
         
-***注*** : 使用jcenter自动集成的开发者，不需要在项目中添加jar和so，jcenter会自动完成依赖；在AndroidManifest.xml中不需要添加任何JPush SDK 相关的配置，jcenter会自动导入, 如果手动添加则是以开发者添加的为准覆盖掉默认配置。
+        
+       
+        dependencis {
+            ......
+            
+            compile 'cn.jiguang:jpush:2.1.8'  // 此处以SDK 2.1.8版本为例
+            
+            ......
+        }
+        
+        
+***注*** : 如果在添加以上 abiFilter 配置之后android Studio出现以下提示：
+
+        NDK integration is deprecated in the current plugin. Consider trying the new experimental plugin.
+则在 Project 根目录的gradle.properties文件中添加：
+
+        android.useDeprecatedNdk=true。
 
 
-### 手动导入 JPush SDK 开发包
+
+## 手动集成步骤
 
 + 解压缩 jpush-android-release-2.x.y.zip 集成压缩包。
 + 复制 libs/jpush-sdk-2.x.y.jar 到工程 libs/ 目录下。
@@ -288,6 +312,8 @@ defaultConfig {
 ```
 
 
+##配置和代码说明
+
 
 ### 必须权限说明
 
@@ -356,6 +382,18 @@ defaultConfig {
         -dontwarn cn.jpush.**
         -keep class cn.jpush.** { *; }
         
+
++ v2.0.5 ~ v2.1.7 版本有引入 gson 和 protobuf ，增加排除混淆的配置。(2.1.8版本不需配置)
+  
+        #==================gson==========================
+        -dontwarn com.google.**
+        -keep class com.google.gson.** {*;}
+
+        #==================protobuf======================
+        -dontwarn com.google.**
+        -keep class com.google.protobuf.** {*;}
+
+
 
 
 ### 添加代码
