@@ -379,7 +379,7 @@ payload example:
                                         radius:CLLocationDistanceMax
                                     identifier:@"test"];
  
-  [APService setLocalNotification:[NSDate dateWithTimeIntervalSinceNow:120]
+  [JPUSHService setLocalNotification:[NSDate dateWithTimeIntervalSinceNow:120]
                         alertBody:@"test ios8 notification"
                             badge:0
                       alertAction:@"取消"
@@ -389,4 +389,264 @@ payload example:
                            region:currentRegion
                regionTriggersOnce:YES
                          category:@"test"];
+```
+
+### iOS 10 UserNotifications framework
+
+本次iOS10引入新的UserNotifications framework支持本地及远程推送的注册及回调。为了支持iOS10新的变化，客户端新增以下内容：
+#### 新增Model实体类
+##### 支持版本
+v2.1.9版开始
+##### 1.JPUSHRegisterEntity
+
+```
+/*!
+ * 通知注册实体类
+ */
+@interface JPUSHRegisterEntity : NSObject
+
+/*!
+ * 支持的类型
+ * badge,sound,alert
+ */
+@property (nonatomic, assign) NSInteger types;
+/*!
+ * 注入的类别
+ * iOS10 UNNotificationCategory
+ * iOS8-iOS9 UIUserNotificationCategory
+ */
+@property (nonatomic, strong) NSSet * categories;
+@end
+```
+
+**说明**:
+
+新注册APNS时用到的实体，包含NSInteger types、NSSet *categories两个属性，可通过types设置badge、sound、alert等类型；categories设置推送类型（iOS10支持UNNoticationCategory类型元素，iOS8-9支持UIUserNotificationCategory类型元素）
+	
+**参考代码**:
+
+```
+- (BOOL)application:(UIApplication *)application
+didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+	// your code
+	
+  	 NSString *advertisingId = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
+   	//Required
+   	if ([[UIDevice currentDevice].systemVersion floatValue] >= 10.0) {
+     	JPUSHRegisterEntity * entity = [[JPUSHRegisterEntity alloc] init];
+     	entity.types = UNAuthorizationOptionAlert|UNAuthorizationOptionBadge|UNAuthorizationOptionSound;
+     	[JPUSHService registerForRemoteNotificationConfig:entity delegate:self];
+   	} 
+   	else if([[UIDevice currentDevice].systemVersion floatValue] >= 8.0) {
+     	//可以添加自定义categories
+     	[JPUSHService registerForRemoteNotificationTypes:(UIUserNotificationTypeBadge | UIUserNotificationTypeSound |
+     UIUserNotificationTypeAlert) categories:nil];
+   	}else {
+     	//categories 必须为nil
+     	[JPUSHService registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert) categories:nil];
+   	}
+   	//Required
+   	// 如需继续使用pushConfig.plist文件声明appKey等配置内容，请依旧使用[JPUSHService setupWithOption:launchOptions]方式初始化。
+   	[JPUSHService setupWithOption:launchOptions appKey:appKey channel:channel apsForProduction:isProduction advertisingIdentifier:advertisingId];
+  
+   	return YES;
+}
+```
+	
+##### 2.JPushNotificationIdentifier
+	
+```
+/*!
+ * 进行删除、查找推送实体类
+ */
+@interface JPushNotificationIdentifier : NSObject<NSCopying, NSCoding>
+
+@property (nonatomic, copy) NSArray<NSString *> *identifiers; // 推送的标识数组
+@property (nonatomic, copy) UILocalNotification *notificationObj NS_DEPRECATED_IOS(4_0, 10_0);  // iOS10以下传UILocalNotification类型数据，iOS10以上不用传数据
+@property (nonatomic, copy) id delivered NS_AVAILABLE_IOS(10_0); // @(BOOL)
+@property (nonatomic, copy) void (^findCompletionHandler)(NSArray *oResults NS_DEPRECATED_IOS(4_0, 10_0), NSArray *nResults NS_AVAILABLE_IOS(10_0)); // 用于查询回调 oResults iOS10以下返回UILocalNotification类型元素，iOS10以上为nil；nResults iOS10以上返回UNNotificationRequest类型元素，iOS10以下为nil
+
+@end
+```
+
+**说明**:
+
+查找、删除推送时用到的实体，包含NSArray<NSString *> *identifiers、UILocalNotification *notificationObj NS_DEPRECATED_IOS(4\_0, 10\_0)、id delivered NS_AVAILABLE_IOS(10\_0)、void (^findCompletionHandler)(NSArray *oResults NS_DEPRECATED_IOS(4\_0, 10\_0), NSArray *nResults NS_AVAILABLE_IOS(10\_0))等属性，在进行删除或查找推送时，需要通过identifiers传入推送的标识，或通过notificationObj传入推送对象来执行（此方式只对iOS10以下有效），identifiers传入空或空数组即代表删除或查找所有推送；iOS10以上需要传入待推送或已在通知中心显示的delivered标志，传入值为@(BOOL)类型，@(YES)即为已在通知中心显示的，@(NO)即为待推送的；在进行查找推送方法时还须要通过findCompletionHandler传入回调才可以得到查找结果，iOS10以下为同步查找返回结果oResults数组（包含UILocalNotification类型元素），此时nResults为空，iOS10以上为异步查找返回结果nResults数组（包含UNNotificationRequest类型元素），此时oResults为空。
+	
+**参考代码**:
+	
+```
+- (void)testRemoveNotification {
+  	JPushNotificationIdentifier *identifier = [[JPushNotificationIdentifier alloc] init];
+  	identifier.identifiers = @[@"sampleRequest"];
+  	identifier.delivered = @(YES);  // iOS 10 以上支持
+  	[JPUSHService removeNotification:identifier];
+}
+	
+```
+
+##### 3.JPushNotificationContent
+	
+```
+/*!
+ * 推送内容实体类
+ */
+@interface JPushNotificationContent : NSObject<NSCopying, NSCoding>
+
+@property (nonatomic, copy) NSString *title;                // 推送标题
+@property (nonatomic, copy) NSString *subtitle;             // 推送副标题
+@property (nonatomic, copy) NSString *body;                 // 推送内容
+@property (nonatomic, copy) NSNumber *badge;                // 角标的数字。如果不需要改变角标传-1
+@property (nonatomic, copy) NSString *action NS_DEPRECATED_IOS(8_0, 10_0); // 弹框的按钮显示的内容（IOS 8默认为"打开", 其他默认为"启动",iOS10以上被废弃）
+@property (nonatomic, copy) NSString *categoryIdentifier;   // 行为类型标识
+@property (nonatomic, copy) NSDictionary *userInfo;         // 自定义数据，可以用来标识推送和增加附加信息
+@property (nonatomic, copy) NSString *sound;                // 声音名称，设置为nil为默认声音
+@property (nonatomic, copy) id attachments NS_AVAILABLE_IOS(10_0);                 // 附件，iOS10以上有效，需要传入UNNotificationAttachment对象
+
+@end
+```
+
+**说明**:
+
+定义推送内容用到的实体，包含NSString *title、NSString *subtitle、NSString *body、NSNumber *badge、NSString *action NS_DEPRECATED_IOS(8\_0, 10\_0)、NSString *categoryIdentifier、NSDictionary *userInfo、NSString *sound、id attachments等属性，如有自定义推送类型需要通过categoryIdentifier传入类型标识才生效；iOS10以上可添加多媒体等附件内容，通过attachments传入UNNotificationAttachment对象类型数据。
+	
+**参考代码**:
+	
+```
+JPushNotificationContent *content = [[JPushNotificationContent alloc] init];
+content.title = @"Test Notifications";
+content.subtitle = @"2016";
+content.body = @"This is a test code";
+content.badge = @1;
+content.categoryIdentifier = @"Custom Category Name";
+	
+```
+
+##### 4.JPushNotificationTrigger
+	
+```
+/*!
+* 推送触发方式实体类
+*/
+@interface JPushNotificationTrigger : NSObject<NSCopying, NSCoding>
+
+@property (nonatomic, assign) BOOL repeat;                  // 是否重复，default为NO
+//注：dateComponents、timeInterval、region在iOS10以上可选择其中一个参数传入有效值，如果同时传入值会根据优先级I、II、III使其中一个触发方式生效，fireDate为iOS10以下根据时间触发时须传入的参数
+@property (nonatomic, copy) NSDateComponents *dateComponents NS_AVAILABLE_IOS(10_0); // 推送触发方式参数，优先级II
+@property (nonatomic, copy) NSDate *fireDate NS_DEPRECATED_IOS(2_0, 10_0);           // 推送触发方式参数
+@property (nonatomic, assign) NSTimeInterval timeInterval NS_AVAILABLE_IOS(10_0);    // 推送触发方式参数，优先级III
+@property (nonatomic, copy) CLRegion *region NS_AVAILABLE_IOS(8_0);                  // 推送触发方式参数，优先级I
+
+@end
+```
+
+**说明**:
+
+定义推送触发方式用到的实体，包含BOOL repeat、NSDateComponents *dateComponents NS_AVAILABLE_IOS(10\_0)、NSDate *fireDate NS_DEPRECATED_IOS(2\_0, 10\_0)、NSTimeInterval timeInterval NS_AVAILABLE_IOS(10\_0)、CLRegion *region NS_AVAILABLE_IOS(8\_0)等属性，iOS10以下可通过fireDate传入触发时间，iOS8以上可通过region传入触发位置，iOS10以上可通过region、dateComponents、timeInterval三个参数传入触发位置、触发日期、触发间隔时间，可选择其中一个参数传入有效值，如果同时传入值会根据优先级I、II、III使其中一种触发方式生效。
+	
+**参考代码**:
+
+```
+// iOS 10 以上支持
+//5s后提醒
+JPushNotificationTrigger *trigger1 = [[JPushNotificationTrigger alloc] init];
+trigger1.timeInterval = 5;
+//每小时重复 1 次
+JPushNotificationTrigger *trigger2 = [[JPushNotificationTrigger alloc] init];
+trigger2.timeInterval = 3600;
+trigger2.repeat = YES;
+  
+//每周一早上8：00提醒
+NSDateComponents *components = [[NSDateComponents alloc] init];
+components.weekday = 2;
+components.hour = 8;
+JPushNotificationTrigger *trigger3 = [[JPushNotificationTrigger alloc] init];
+trigger3.dateComponents = components;
+trigger3.repeat = YES;
+  
+//#import <CoreLocation/CoreLocation.h>
+//一到某地点提醒
+CLRegion *region = [[CLRegion alloc] initCircularRegionWithCenter:CLLocationCoordinate2DMake(0, 0) radius:0 identifier:@"test"];
+JPushNotificationTrigger *trigger4 = [[JPushNotificationTrigger alloc] init];
+trigger4.region = region;
+  
+// iOS 10 以下支持
+//5s后提醒
+JPushNotificationTrigger *trigger5 = [[JPushNotificationTrigger alloc] init];
+trigger5.fireDate = [NSDate dateWithTimeIntervalSinceNow:5];
+	
+```
+	
+##### 5.JPushNotificationRequest
+	
+```
+/*!
+* 注册或更新推送实体类
+*/
+@interface JPushNotificationRequest : NSObject<NSCopying, NSCoding>
+
+@property (nonatomic, copy) NSString *requestIdentifier;    // 推送标识
+@property (nonatomic, copy) JPushNotificationContent *content; // 推送内容Model
+@property (nonatomic, copy) JPushNotificationTrigger *trigger; // 推送方式Model
+@property (nonatomic, copy) void (^completionHandler)(NSError * error) NS_AVAILABLE_IOS(10_0); // 注册或更新推送成功回调，iOS10以上有效
+
+@end
+```
+	
+**说明**:
+
+注册本地推送时用到的实体，包含NSString *requestIdentifier、JPushNotificationContent *content、JPushNotificationTrigger *trigger、void (^completionHandler)(NSError * error) NS_AVAILABLE_IOS(10\_0)等属性，需要进行后续删除、更新、查找管理推送时须通过requestIdentifier传入推送标识，通过content传入推送内容实体，通过trigger传入触发推送方式实体，iOS10以上可以通过completionHandler获取注册成功回调。
+	
+**参考代码**:
+
+```
+JPushNotificationRequest *request = [[JPushNotificationRequest alloc] init];
+request.requestIdentifier = @"sampleRequest";
+request.content = content;
+request.trigger = trigger1;//trigger2;//trigger3;//trigger4;//trigger5;
+[JPUSHService addNotification:request];
+	
+```
+	
+#### 新增Protocol协议
+
+#####支持版本
+v2.1.9版开始
+
+##### JPUSHRegisterDelegate
+	
+```
+// 前台运行时收到推送会回调
+- (void)jpushNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(NSInteger))completionHandler;
+	
+// 后台运行时收到推送会回调，后台运行下点击处理推送后也会回调
+- (void)jpushNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)())completionHandler;
+
+```
+
+**说明**:
+
+为了处理iOS10新推送回调而封装的协议，设置delegate对象以后，实现以下两个方法，即可在前台或后台运行接收到推送消息时，系统会回调相应协议方法。
+	
+**参考代码**:
+	
+```
+- (void)jpushNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(NSInteger))completionHandler {
+  	NSDictionary * userInfo = notification.request.content.userInfo;
+  	if([notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
+    	[JPUSHService handleRemoteNotification:userInfo];
+  	}
+  
+  	completionHandler(UNNotificationPresentationOptionBadge|UNNotificationPresentationOptionSound|UNNotificationPresentationOptionAlert);
+ }
+  
+ - (void)jpushNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)())completionHandler {
+  	NSDictionary * userInfo = response.notification.request.content.userInfo;
+  	if([response.notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
+    	[JPUSHService handleRemoteNotification:userInfo];
+  	}
+
+  	completionHandler();
+ }
+ 
 ```
