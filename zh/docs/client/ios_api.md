@@ -786,7 +786,7 @@ API 用于注册或更新推送（支持iOS10，并兼容iOS10以下版本）
 + (void)addNotification:(JPushNotificationRequest *)request;
 ```
 ##### 参数说明
-+ request [JPushNotificationRequest](../client/ios_tutorials/#_JPushNotificationRequest)实体类型，可传入推送的属性
++ request [JPushNotificationRequest](../client/ios_tutorials/#_20)实体类型，可传入推送的属性
 
 ##### 调用说明
 request中传入已有推送的request.requestIdentifier即更新已有的推送，否则为注册新推送。
@@ -852,7 +852,7 @@ API 用于移除待推送或已在通知中心显示的推送（支持iOS10，�
 + (void)removeNotification:(JPushNotificationIdentifier *)identifier;
 ```
 ##### 参数说明
-+ identifier [JPushNotificationIdentifier](../client/ios_tutorials/#_ JPushNotificationIdentifier)实体类型
++ identifier [JPushNotificationIdentifier](../client/ios_tutorials/#_20)实体类型
 
 ##### 调用说明
 - 通过identifier来传入需要移除的推送，其中通过identifier.identifiers传入需要移除的推送标识，传入nil或空数组即移除所有待推送或已在通知中心显示的推送，通过identifier.delivered传入待推送或已在通知中心显示的标志，@(YES)为已在通知中心显示的，@(NO)为待推送的。
@@ -883,7 +883,7 @@ API 用于查找推送（支持iOS10，并兼容iOS10以下版本）
 + (void)findNotification:(JPushNotificationIdentifier *)identifier;
 ```
 ##### 参数说明
-+ identifier [JPushNotificationIdentifier](../client/ios_tutorials/#_ JPushNotificationIdentifier)实体类型
++ identifier [JPushNotificationIdentifier](../client/ios_tutorials/#_20)实体类型
 
 ##### 调用说明
 - 通过identifier来传入需要查找的推送，其中通过identifier.identifiers传入需要查找的推送标识，传入nil或空数组即查找所有待推送或已在通知中心显示的推送，通过identifier.delivered传入待推送或已在通知中心显示的标志，@(YES)为已在通知中心显示的，@(NO)为待推送的。

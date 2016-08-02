@@ -393,8 +393,9 @@ payload example:
 
 ### iOS 10 UserNotifications framework
 
+#### 客户端设置
 本次iOS10引入新的UserNotifications framework支持本地及远程推送的注册及回调。为了支持iOS10新的变化，客户端新增以下内容：
-#### 新增Model实体类
+##### 新增Model实体类
 ##### 支持版本
 v2.1.9版开始
 ##### 1.JPUSHRegisterEntity
@@ -421,7 +422,7 @@ v2.1.9版开始
 
 **说明**:
 
-新注册APNS时用到的实体，包含NSInteger types、NSSet *categories两个属性，可通过types设置badge、sound、alert等类型；categories设置推送类型（iOS10支持UNNoticationCategory类型元素，iOS8-9支持UIUserNotificationCategory类型元素）
+新注册APNS时用到的实体，包含types、categories两个属性，可通过types设置badge、sound、alert等类型；categories设置推送类型（iOS10支持UNNoticationCategory类型元素，iOS8-9支持UIUserNotificationCategory类型元素）
 	
 **参考代码**:
 
@@ -471,7 +472,7 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
 **说明**:
 
-查找、删除推送时用到的实体，包含NSArray<NSString *> *identifiers、UILocalNotification *notificationObj NS_DEPRECATED_IOS(4\_0, 10\_0)、id delivered NS_AVAILABLE_IOS(10\_0)、void (^findCompletionHandler)(NSArray *oResults NS_DEPRECATED_IOS(4\_0, 10\_0), NSArray *nResults NS_AVAILABLE_IOS(10\_0))等属性，在进行删除或查找推送时，需要通过identifiers传入推送的标识，或通过notificationObj传入推送对象来执行（此方式只对iOS10以下有效），identifiers传入空或空数组即代表删除或查找所有推送；iOS10以上需要传入待推送或已在通知中心显示的delivered标志，传入值为@(BOOL)类型，@(YES)即为已在通知中心显示的，@(NO)即为待推送的；在进行查找推送方法时还须要通过findCompletionHandler传入回调才可以得到查找结果，iOS10以下为同步查找返回结果oResults数组（包含UILocalNotification类型元素），此时nResults为空，iOS10以上为异步查找返回结果nResults数组（包含UNNotificationRequest类型元素），此时oResults为空。
+查找、删除推送时用到的实体，包含identifiers、notificationObj、delivered、findCompletionHandler等属性，在进行删除或查找推送时，需要通过identifiers传入推送的标识，或通过notificationObj传入推送对象来执行（此方式只对iOS10以下有效），identifiers传入空或空数组即代表删除或查找所有推送；iOS10以上需要传入待推送或已在通知中心显示的delivered标志，传入值为@(BOOL)类型，@(YES)即为已在通知中心显示的，@(NO)即为待推送的；在进行查找推送方法时还须要通过findCompletionHandler传入回调才可以得到查找结果，iOS10以下为同步查找返回结果oResults数组（包含UILocalNotification类型元素），此时nResults为空，iOS10以上为异步查找返回结果nResults数组（包含UNNotificationRequest类型元素），此时oResults为空。
 	
 **参考代码**:
 	
@@ -508,7 +509,7 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
 **说明**:
 
-定义推送内容用到的实体，包含NSString *title、NSString *subtitle、NSString *body、NSNumber *badge、NSString *action NS_DEPRECATED_IOS(8\_0, 10\_0)、NSString *categoryIdentifier、NSDictionary *userInfo、NSString *sound、NSArray *attachments等属性，如有自定义推送类型需要通过categoryIdentifier传入类型标识才生效；iOS10以上可添加多媒体等附件内容，通过attachments传入UNNotificationAttachment对象数组类型数据。
+定义推送内容用到的实体，包含title、subtitle、body、badge、action、categoryIdentifier、userInfo、sound、attachments等属性，如有自定义推送类型需要通过categoryIdentifier传入类型标识才生效；iOS10以上可添加多媒体等附件内容，通过attachments传入UNNotificationAttachment对象数组类型数据。
 	
 **参考代码**:
 	
@@ -542,7 +543,7 @@ content.categoryIdentifier = @"Custom Category Name";
 
 **说明**:
 
-定义推送触发方式用到的实体，包含BOOL repeat、NSDateComponents *dateComponents NS_AVAILABLE_IOS(10\_0)、NSDate *fireDate NS_DEPRECATED_IOS(2\_0, 10\_0)、NSTimeInterval timeInterval NS_AVAILABLE_IOS(10\_0)、CLRegion *region NS_AVAILABLE_IOS(8\_0)等属性，iOS10以下可通过fireDate传入触发时间，iOS8以上可通过region传入触发位置，iOS10以上可通过region、dateComponents、timeInterval三个参数传入触发位置、触发日期、触发间隔时间，可选择其中一个参数传入有效值，如果同时传入值会根据优先级I、II、III使其中一种触发方式生效。
+定义推送触发方式用到的实体，包含repeat、dateComponents、fireDate、timeInterval、region等属性，iOS10以下可通过fireDate传入触发时间，iOS8以上可通过region传入触发位置，iOS10以上可通过region、dateComponents、timeInterval三个参数传入触发位置、触发日期、触发间隔时间，可选择其中一个参数传入有效值，如果同时传入值会根据优先级I、II、III使其中一种触发方式生效。
 	
 **参考代码**:
 
@@ -595,7 +596,7 @@ trigger5.fireDate = [NSDate dateWithTimeIntervalSinceNow:5];
 	
 **说明**:
 
-注册本地推送时用到的实体，包含NSString *requestIdentifier、JPushNotificationContent *content、JPushNotificationTrigger *trigger、void (^completionHandler)(NSError * error) NS_AVAILABLE_IOS(10\_0)等属性，需要进行后续删除、更新、查找管理推送时须通过requestIdentifier传入推送标识，通过content传入推送内容实体，通过trigger传入触发推送方式实体，iOS10以上可以通过completionHandler获取注册成功回调。
+注册本地推送时用到的实体，包含requestIdentifier、content、trigger、completionHandler等属性，需要进行后续删除、更新、查找管理推送时须通过requestIdentifier传入推送标识，通过content传入推送内容实体，通过trigger传入触发推送方式实体，iOS10以上可以通过completionHandler获取注册成功回调。
 	
 **参考代码**:
 
@@ -608,9 +609,9 @@ request.trigger = trigger1;//trigger2;//trigger3;//trigger4;//trigger5;
 	
 ```
 	
-#### 新增Protocol协议
+##### 新增Protocol协议
 
-#####支持版本
+##### 支持版本
 v2.1.9版开始
 
 ##### JPUSHRegisterDelegate
