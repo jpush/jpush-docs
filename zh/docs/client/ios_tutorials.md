@@ -501,14 +501,14 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 @property (nonatomic, copy) NSString *categoryIdentifier;   // 行为类型标识
 @property (nonatomic, copy) NSDictionary *userInfo;         // 自定义数据，可以用来标识推送和增加附加信息
 @property (nonatomic, copy) NSString *sound;                // 声音名称，设置为nil为默认声音
-@property (nonatomic, copy) id attachments NS_AVAILABLE_IOS(10_0);                 // 附件，iOS10以上有效，需要传入UNNotificationAttachment对象
+@property (nonatomic, copy) NSArray *attachments NS_AVAILABLE_IOS(10_0);                 // 附件，iOS10以上有效，需要传入UNNotificationAttachment对象数组类型
 
 @end
 ```
 
 **说明**:
 
-定义推送内容用到的实体，包含NSString *title、NSString *subtitle、NSString *body、NSNumber *badge、NSString *action NS_DEPRECATED_IOS(8\_0, 10\_0)、NSString *categoryIdentifier、NSDictionary *userInfo、NSString *sound、id attachments等属性，如有自定义推送类型需要通过categoryIdentifier传入类型标识才生效；iOS10以上可添加多媒体等附件内容，通过attachments传入UNNotificationAttachment对象类型数据。
+定义推送内容用到的实体，包含NSString *title、NSString *subtitle、NSString *body、NSNumber *badge、NSString *action NS_DEPRECATED_IOS(8\_0, 10\_0)、NSString *categoryIdentifier、NSDictionary *userInfo、NSString *sound、NSArray *attachments等属性，如有自定义推送类型需要通过categoryIdentifier传入类型标识才生效；iOS10以上可添加多媒体等附件内容，通过attachments传入UNNotificationAttachment对象数组类型数据。
 	
 **参考代码**:
 	
