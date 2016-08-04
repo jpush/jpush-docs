@@ -267,7 +267,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
   if([notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
     [JPUSHService handleRemoteNotification:userInfo];
   }
-  completionHandler(UNNotificationPresentationOptionBadge|UNNotificationPresentationOptionSound|UNNotificationPresentationOptionAlert); //括号内为可选项，分别代表角标、声音、显示提醒
+  completionHandler(UNNotificationPresentationOptionBadge|UNNotificationPresentationOptionSound|UNNotificationPresentationOptionAlert); // 需要执行这个方法，选择是否提醒用户，有Badge、Sound、Alert三种类型可以选择设置
 }
 
 // iOS 10 Support Required
@@ -276,7 +276,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
   if([response.notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
     [JPUSHService handleRemoteNotification:userInfo];
   }
-  completionHandler();
+  completionHandler();	// 系统要求执行这个方法
 }
 
 ```
