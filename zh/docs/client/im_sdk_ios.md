@@ -60,6 +60,28 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 这个调用是必须的。否则 SDK 将不能正常工作。
 
 ####登录、注册
+#####用户注册
+	/*!
+	 * @abstract 新用户注册
+	 *
+	 * @param username 用户名. 长度 4~128 位.
+	 *                 支持的字符: 字母,数字,下划线,英文减号,英文点,@邮件符号. 首字母只允许是字母或者数字.
+	 * @param password 用户密码. 长度 4~128 位.
+	 * @param handler 结果回调. 返回正常时 resultObject 为 nil.
+	 */
+	+ (void)registerWithUsername:(NSString *)username
+	                    password:(NSString *)password
+	           completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)handler;
+#####例子
+	[JMSGUser registerWithUsername:@"用户名"
+	                      password:@"密码"
+	                     completionHandler:^(id resultObject, NSError *error) {
+	                         if (!error) {
+	                             //注册成功
+	                         } else {
+	                            //注册失败
+	                         }
+	                     }];
 #####用户登录
 	/*!
 	 * @abstract 用户登录
@@ -103,29 +125,7 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 	            }
 	        }];
 	        
-#####用户注册
-	/*!
-	 * @abstract 新用户注册
-	 *
-	 * @param username 用户名. 长度 4~128 位.
-	 *                 支持的字符: 字母,数字,下划线,英文减号,英文点,@邮件符号. 首字母只允许是字母或者数字.
-	 * @param password 用户密码. 长度 4~128 位.
-	 * @param handler 结果回调. 返回正常时 resultObject 为 nil.
-	 */
-	+ (void)registerWithUsername:(NSString *)username
-	                    password:(NSString *)password
-	           completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)handler;
-#####例子
-	[JMSGUser registerWithUsername:@"用户名"
-	                      password:@"密码"
-	                     completionHandler:^(id resultObject, NSError *error) {
-	                         if (!error) {
-	                             //注册成功
-	                         } else {
-	                            //注册失败
-	                         }
-	                     }];
-####用户信息管理
+####用户管理
 #####批量获取用户信息
 	/*!
 	 * @abstract 批量获取用户信息
@@ -977,74 +977,7 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
     }];
 
 ```
-	            
-##### 跨应用添加黑名单	
-
-```
-/*!
- * @abstract 跨应用添加黑名单
- * @param usernameArray 作用对象的username数组
- * @param appKey 应用的appKey
- * @param handler 结果回调。回调参数：
- *
- * - resultObject 相应对象
- * - error 错误信息
- *
- * 如果 error 为 nil, 表示设置成功
- * 如果 error 不为 nil,表示设置失败
- *
- * @discussion 可以一次添加多个用户
- */
-+ (void)addUsersToBlacklist:(NSArray JMSG_GENERIC(__kindof NSString *)*)usernameArray
-                     appKey:(NSString *)userAppKey
-          completionHandler:(JMSGCompletionHandler)handler;
-
-```
-##### 例子
-
-```
-//添加黑名单
-[JMSGUser addUsersToBlacklist:[NSArray arrayWithObjects:@"username1",@"username2", nil] appKey:@"被添加用户所在应用的appkey" completionHandler:^(id resultObject, NSError *error) {
-       if (!error) {
-           NSLog(@"\n 跨应用添加黑名单成功:%@ \n ",resultObject);
-       }
-   }];
-
-```	   
-##### 跨应用删除黑名单	
-
-```
-/*!
- * @abstract 跨应用删除黑名单
- * @param usernameArray 作用对象的username数组
- * @param appKey 应用的appKey
- * @param handler 结果回调。回调参数：
- *
- * - resultObject 相应对象
- * - error 错误信息
- *
- * 如果 error 为 nil, 表示设置成功
- * 如果 error 不为 nil,表示设置失败
- *
- * @discussion 可以一次删除多个黑名单用户
- */
-+ (void)delUsersFromBlacklist:(NSArray JMSG_GENERIC(__kindof NSString *)*)usernameArray
-                       appKey:(NSString *)userAppKey
-            completionHandler:(JMSGCompletionHandler)handler;
-
-```
-	            
-##### 例子         
-
-```
-//删除黑名单
-[JMSGUser delUsersFromBlacklist:[NSArray arrayWithObjects:@"username1",@"username2", nil] appKey:@"被删除用户所在应用的appkey" completionHandler:^(id resultObject, NSError *error) {
-    if (!error) {
-        NSLog(@"\n 跨应用删除黑名单成功:%@ \n ",resultObject);
-    }
-}];
- 
-```  
+	             
 ####免打扰
 ##### 免打扰列表
 
@@ -1198,156 +1131,6 @@ BOOL isAlreadSet = user.isNoDisturb;
 使用方法参考“用户免打扰”例子
 
 ```
-####跨应用
-##### JMSGConversation
-	/*!
-	 * @abstract 会话目标用户所在的 appKey
-	 *
-	 * @discussion 这是为了跨应用聊天而新增的一个字段.
-	 * 如果此字段为空, 则表示为默认的主应用.
-	 *
-	 * 单聊会话时, 如果单聊对象用户不属于主应用, 则此字段会有值.
-	 */
-	@property(nonatomic, strong, readonly) NSString *targetAppKey;
-	
-	/*!
-	 * @abstract 获取跨应用单聊会话
-	 *
-	 * @param username 单聊对象的username
-	 * @param userAppKey 单聊对象的appkey
-	 *
-	 * @discussion 如果会话还不存在，则返回 nil
-	 *
-	 */
-	+ (JMSGConversation * JMSG_NULLABLE)singleConversationWithUsername:(NSString *)username
-	                                                            appKey:(NSString *)userAppKey;
-	/*!
-	 * @abstract 创建跨应用单聊会话
-	 *
-	 * @param username 单聊对象的username
-	 * @param userAppKey 单聊对象的appkey
-	 * @param handler 结果回调。正常返回时 resultObject 类型为 JMSGConversation。
-	 *
-	 * @discussion 如果会话已经存在，则直接返回。如果不存在则创建。
-	 */
-	+ (void)createSingleConversationWithUsername:(NSString *)username
-	                                      appKey:(NSString *)userAppKey
-	                           completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)handler;
-	
-	/*!
-	 * @abstract 删除跨应用单聊会话
-	 *
-	 * @param username 单聊用户名
-	 * @param userAppKey 单聊用户的appkey
-	 *
-	 * @discussion 除了删除会话本身，还会删除该会话下所有的聊天消息。
-	 */
-	+ (BOOL)deleteSingleConversationWithUsername:(NSString *)username
-	                                      appKey:(NSString *)userAppKey;                          
-##### 例子
-	// 创建跨应用会话
-	[JMSGConversation createSingleConversationWithUsername:@"username" appKey:@"appkey"  completionHandler:^(id resultObject, NSError *error) {
-        if (!error) {
-	        NSLog(@"创建跨应用会话成功");
-        } else {
-            NSLog(@"创建跨应用会话失败");
-        }
-	}];
-
-##### JMSGMessage
-	
-	/*!
-	 * @abstract 发送跨应用单聊文本消息
-	 *
-	 * @param text 文本内容
-	 * @param username 单聊对象 username
-	 *
-	 * @discussion 快捷方法，不需要先创建消息而直接发送。
-	 */
-	+ (void)sendSingleTextMessage:(NSString *)text
-	                       toUser:(NSString *)username
-	                       appKey:(NSString *)userAppKey;
-	
-	/*!
-	 * @abstract 发送跨应用单聊图片消息
-	 *
-	 * @param imageData 图片数据
-	 * @param username 单聊对象 username
-	 *
-	 * @discussion 快捷方法，不需要先创建消息而直接发送。
-	 */
-	+ (void)sendSingleImageMessage:(NSData *)imageData
-	                        toUser:(NSString *)username
-	                        appKey:(NSString *)userAppKey;
-	
-	/*!
-	 * @abstract 发送跨应用单聊语音消息
-	 *
-	 * @param voiceData 语音数据
-	 * @param duration 语音时长
-	 * @param username 单聊对象 username
-	 *
-	 * @discussion 快捷方法，不需要先创建消息而直接发送。
-	 */
-	+ (void)sendSingleVoiceMessage:(NSData *)voiceData
-	                 voiceDuration:(NSNumber *)duration
-	                        toUser:(NSString *)username
-	                        appKey:(NSString *)userAppKey;
-
-		
-##### JMSGUser
-	/*!
-	 * @abstract 批量获取跨应用的用户信息
-	 *
-	 * @param usernameArray 用户名列表。NSArray 里的数据类型为 NSString
-	 * @param handler 结果回调。正常返回时 resultObject 的类型为 NSArray，数组里的数据类型为 JMSGUser
-	 *
-	 * @discussion 这是一个批量接口。
-	 */
-	+ (void)userInfoArrayWithUsernameArray:(NSArray JMSG_GENERIC(__kindof NSString *)*)usernameArray
-	                                appKey:( NSString *JMSG_NULLABLE)userAppKey
-	                     completionHandler:(JMSGCompletionHandler)handler;
-##### 例子	                     
-	// 批量获取跨应用的用户信息
-	// 注：usernameArray 里的username都应该是在你所填userAppKey应用的user
-	[JMSGUser userInfoArrayWithUsernameArray:[NSArray arrayWithObjects:@"username1",@"username2", nil] appKey:@"appkey" completionHandler:^(id resultObject, NSError *error) {
-	    if (!error) {
-	        NSArray *userList =(NSArray *)resultObject;
-	        NSLog(@"userList:%@",userList);
-	    }
-	}];
-##### JMSGGroup	
-	/*!
-	 * @abstract 添加群组跨应用成员
-	 *
-	 * @param usernameArray 用户名数组。数组里的成员类型是 NSString
-	 * @param handler 结果回调。正常返回时 resultObject 为 nil.
-	 */
-	- (void)addMembersWithUsernameArray:(NSArray JMSG_GENERIC(__kindof NSString *) *)usernameArray
-	                             appKey:userAppKey
-	                  completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)handler;
-	                  
-	/*!
-	 * @abstract 删除群组跨应用成员
-	 *
-	 * @param usernameArray 用户名数据. 数组里的成员类型是 NSString
-	 * @param handler 结果回调。正常返回时 resultObject 为 nil.
-	 */
-	- (void)removeMembersWithUsernameArray:(NSArray JMSG_GENERIC(__kindof NSString *) *)usernameArray
-	                                appKey:userAppKey
-	                     completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)handler;
-##### 例子
-	[group addMembersWithUsernameArray:[NSArray arrayWithObjects:@"username1",@"username2", nil] appKey:@"被添加用户所在应用的appkey" completionHandler:^(id resultObject, NSError *error) {
-	    if (!error) {
-	        NSLog(@"\n 添加群组跨应用成员 成功");
-	    }
-	}];
-	
-	[group removeMembersWithUsernameArray:[NSArray arrayWithObjects:@"username1",@"username2", nil] appKey:@"被删除用户所在应用的appkey" completionHandler:^(id resultObject, NSError *error) {
-	    if (!error) {
-	        NSLog(@"\n 添删除组跨应用成员 成功");
-	    }
-	}];
 
 ####事件处理
 __事件类型的消息内容__
@@ -1499,7 +1282,244 @@ JMSGCompletionHandler 有 2 个参数：
 	// optional
 	// 数据库升级结束，如果 Error 为 nil 代表升级成功，否则为失败
 	- (void)onDBMigrateFinishedWithError:(NSError *)error;
+	
+### 跨应用API接口
 
+#### 跨应用用户管理
+##### 批量获取跨应用的用户信息
+	/*!
+	 * @abstract 批量获取跨应用的用户信息
+	 *
+	 * @param usernameArray 用户名列表。NSArray 里的数据类型为 NSString
+	 * @param handler 结果回调。正常返回时 resultObject 的类型为 NSArray，数组里的数据类型为 JMSGUser
+	 *
+	 * @discussion 这是一个批量接口。
+	 */
+	+ (void)userInfoArrayWithUsernameArray:(NSArray JMSG_GENERIC(__kindof NSString *)*)usernameArray
+	                                appKey:( NSString *JMSG_NULLABLE)userAppKey
+	                     completionHandler:(JMSGCompletionHandler)handler;
+##### 例子	                     
+	// 批量获取跨应用的用户信息
+	// 注：usernameArray 里的username都应该是在你所填userAppKey应用的user
+	[JMSGUser userInfoArrayWithUsernameArray:[NSArray arrayWithObjects:@"username1",@"username2", nil] appKey:@"appkey" completionHandler:^(id resultObject, NSError *error) {
+	    if (!error) {
+	        NSArray *userList =(NSArray *)resultObject;
+	        NSLog(@"userList:%@",userList);
+	    }
+	}];
+#### 跨应用消息管理
+##### 发送跨应用单聊文本消息
+	
+	/*!
+	 * @abstract 发送跨应用单聊文本消息
+	 *
+	 * @param text 文本内容
+	 * @param username 单聊对象 username
+	 *
+	 * @discussion 快捷方法，不需要先创建消息而直接发送。
+	 */
+	+ (void)sendSingleTextMessage:(NSString *)text
+	                       toUser:(NSString *)username
+	                       appKey:(NSString *)userAppKey;
+	
+##### 发送跨应用单聊图片消息
+	/*!
+	 * @abstract 发送跨应用单聊图片消息
+	 *
+	 * @param imageData 图片数据
+	 * @param username 单聊对象 username
+	 *
+	 * @discussion 快捷方法，不需要先创建消息而直接发送。
+	 */
+	+ (void)sendSingleImageMessage:(NSData *)imageData
+	                        toUser:(NSString *)username
+	                        appKey:(NSString *)userAppKey;
+	
+##### 发送跨应用单聊语音消息
+	/*!
+	 * @abstract 发送跨应用单聊语音消息
+	 *
+	 * @param voiceData 语音数据
+	 * @param duration 语音时长
+	 * @param username 单聊对象 username
+	 *
+	 * @discussion 快捷方法，不需要先创建消息而直接发送。
+	 */
+	+ (void)sendSingleVoiceMessage:(NSData *)voiceData
+	                 voiceDuration:(NSNumber *)duration
+	                        toUser:(NSString *)username
+	                        appKey:(NSString *)userAppKey;
+#### 跨应用会话管理
+##### 获取跨应用单聊会话
+	/*!
+	 * @abstract 会话目标用户所在的 appKey
+	 *
+	 * @discussion 这是为了跨应用聊天而新增的一个字段.
+	 * 如果此字段为空, 则表示为默认的主应用.
+	 *
+	 * 单聊会话时, 如果单聊对象用户不属于主应用, 则此字段会有值.
+	 */
+	@property(nonatomic, strong, readonly) NSString *targetAppKey;
+	
+	/*!
+	 * @abstract 获取跨应用单聊会话
+	 *
+	 * @param username 单聊对象的username
+	 * @param userAppKey 单聊对象的appkey
+	 *
+	 * @discussion 如果会话还不存在，则返回 nil
+	 *
+	 */
+	+ (JMSGConversation * JMSG_NULLABLE)singleConversationWithUsername:(NSString *)username
+	  
+                                                          appKey:(NSString *)userAppKey;
+##### 创建跨应用单聊会话                                                        
+	/*!
+	 * @abstract 创建跨应用单聊会话
+	 *
+	 * @param username 单聊对象的username
+	 * @param userAppKey 单聊对象的appkey
+	 * @param handler 结果回调。正常返回时 resultObject 类型为 JMSGConversation。
+	 *
+	 * @discussion 如果会话已经存在，则直接返回。如果不存在则创建。
+	 */
+	+ (void)createSingleConversationWithUsername:(NSString *)username
+	                                      appKey:(NSString *)userAppKey
+	                           completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)handler;
+	                           
+##### 例子
+	// 创建跨应用会话
+	[JMSGConversation createSingleConversationWithUsername:@"username" appKey:@"appkey"  completionHandler:^(id resultObject, NSError *error) {
+        if (!error) {
+	        NSLog(@"创建跨应用会话成功");
+        } else {
+            NSLog(@"创建跨应用会话失败");
+        }
+	}];
+		            
+##### 删除跨应用单聊会话	
+	/*!
+	 * @abstract 删除跨应用单聊会话
+	 *
+	 * @param username 单聊用户名
+	 * @param userAppKey 单聊用户的appkey
+	 *
+	 * @discussion 除了删除会话本身，还会删除该会话下所有的聊天消息。
+	 */
+	+ (BOOL)deleteSingleConversationWithUsername:(NSString *)username
+	                                      appKey:(NSString *)userAppKey;                          
+
+#### 跨应用群组管理
+##### 添加群组跨应用成员	
+	/*!
+	 * @abstract 添加群组跨应用成员
+	 *
+	 * @param usernameArray 用户名数组。数组里的成员类型是 NSString
+	 * @param handler 结果回调。正常返回时 resultObject 为 nil.
+	 */
+	- (void)addMembersWithUsernameArray:(NSArray JMSG_GENERIC(__kindof NSString *) *)usernameArray
+	                             appKey:userAppKey
+	                  completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)handler;
+##### 例子
+	[group addMembersWithUsernameArray:[NSArray arrayWithObjects:@"username1",@"username2", nil] appKey:@"被添加用户所在应用的appkey" completionHandler:^(id resultObject, NSError *error) {
+	    if (!error) {
+	        NSLog(@"\n 添加群组跨应用成员 成功");
+	    }
+	}];
+
+##### 删除群组跨应用成员                 
+	/*!
+	 * @abstract 删除群组跨应用成员
+	 *
+	 * @param usernameArray 用户名数据. 数组里的成员类型是 NSString
+	 * @param handler 结果回调。正常返回时 resultObject 为 nil.
+	 */
+	- (void)removeMembersWithUsernameArray:(NSArray JMSG_GENERIC(__kindof NSString *) *)usernameArray
+	                                appKey:userAppKey
+	                     completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)handler;
+	
+##### 例子
+	[group removeMembersWithUsernameArray:[NSArray arrayWithObjects:@"username1",@"username2", nil] appKey:@"被删除用户所在应用的appkey" completionHandler:^(id resultObject, NSError *error) {
+	    if (!error) {
+	        NSLog(@"\n 添删除组跨应用成员 成功");
+	    }
+	}];
+#### 跨应用黑名单管理
+##### 跨应用添加黑名单	
+
+```
+/*!
+ * @abstract 跨应用添加黑名单
+ * @param usernameArray 作用对象的username数组
+ * @param appKey 应用的appKey
+ * @param handler 结果回调。回调参数：
+ *
+ * - resultObject 相应对象
+ * - error 错误信息
+ *
+ * 如果 error 为 nil, 表示设置成功
+ * 如果 error 不为 nil,表示设置失败
+ *
+ * @discussion 可以一次添加多个用户
+ */
++ (void)addUsersToBlacklist:(NSArray JMSG_GENERIC(__kindof NSString *)*)usernameArray
+                     appKey:(NSString *)userAppKey
+          completionHandler:(JMSGCompletionHandler)handler;
+
+```
+##### 例子
+
+```
+//添加黑名单
+[JMSGUser addUsersToBlacklist:[NSArray arrayWithObjects:@"username1",@"username2", nil] appKey:@"被添加用户所在应用的appkey" completionHandler:^(id resultObject, NSError *error) {
+       if (!error) {
+           NSLog(@"\n 跨应用添加黑名单成功:%@ \n ",resultObject);
+       }
+   }];
+
+```	   
+##### 跨应用删除黑名单	
+
+```
+/*!
+ * @abstract 跨应用删除黑名单
+ * @param usernameArray 作用对象的username数组
+ * @param appKey 应用的appKey
+ * @param handler 结果回调。回调参数：
+ *
+ * - resultObject 相应对象
+ * - error 错误信息
+ *
+ * 如果 error 为 nil, 表示设置成功
+ * 如果 error 不为 nil,表示设置失败
+ *
+ * @discussion 可以一次删除多个黑名单用户
+ */
++ (void)delUsersFromBlacklist:(NSArray JMSG_GENERIC(__kindof NSString *)*)usernameArray
+                       appKey:(NSString *)userAppKey
+            completionHandler:(JMSGCompletionHandler)handler;
+
+```
+	            
+##### 例子         
+
+```
+//删除黑名单
+[JMSGUser delUsersFromBlacklist:[NSArray arrayWithObjects:@"username1",@"username2", nil] appKey:@"被删除用户所在应用的appkey" completionHandler:^(id resultObject, NSError *error) {
+    if (!error) {
+        NSLog(@"\n 跨应用删除黑名单成功:%@ \n ",resultObject);
+    }
+}];
+ 
+``` 
+#### 跨应用免打扰管理
+##### 跨应用用户免打扰设置
+
+本应用用户免打扰设置中支持跨应用功能，详细使用请查看本应用用户免打扰设置。
+
+### 错误码定义
+
+参考文档：[IM 错误码列表](../client/im_errorcode)
 
 ### 相关文档
 
