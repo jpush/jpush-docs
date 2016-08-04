@@ -72,10 +72,14 @@ img[alt=jpush_ios] { width: 800px; }
 * Adsupport.framework (获取IDFA需要；如果不使用IDFA，请不要添加)
 * UserNotifications.framework(Xcode8以上)
 
-### 4、Build Settings
+### 4、Xcode工程配置
+#### Build Settings
 如果你的工程需要支持小于7.0的iOS系统，请到Build Settings 关闭 bitCode 选项，否则将无法正常编译通过。
 
 * 设置 Search Paths 下的 User Header Search Paths 和 Library Search Paths，比如SDK文件夹（默认为lib）与工程文件在同一级目录下，则都设置为"$(SRCROOT)/{静态库所在文件夹名称}"即可。
+
+#### Capabilities
+如果你采用的Xcode8以上开发，请到Capabilities使Push Notifications配置设置为ON，同时确保steps：Add the Push Notifications feature to your App ID.以及Add the Push Notifications entitlement to your entitlements file都是OK的。也即是需要配置APS Environment，否则无法正常拿到device token。
 
 ### 5、创建并配置PushConfig.plist文件 
 <div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">
@@ -88,7 +92,7 @@ img[alt=jpush_ios] { width: 800px; }
     * 指明应用程序包的下载渠道，为方便分渠道统计，具体值由你自行定义，如：App Store。
 * APP_KEY
     * 填写[管理Portal上创建应用](https://www.jpush.cn/apps/new)后自动生成的AppKey值。请确保应用内配置的 AppKey 与第1步在 Portal 上创建应用后生成的 AppKey 一致。
-* APS_FOR_PRODUCTION
+* APS\_FOR\_PRODUCTION
     * 1.3.1版本新增，用于标识当前应用所使用的APNs证书环境。
     * 0 (默认值)表示采用的是开发证书，1 表示采用生产证书发布应用。
     * 注：此字段的值要与Build Settings的Code Signing配置的证书环境一致。
@@ -185,6 +189,11 @@ APIs 主要集中在 JPUSHService 接口类里。
 // handle notification recieved
 + (void)handleRemoteNotification:(NSDictionary *)remoteInfo;
 
+// iOS 10 Support Required（2.1.9版需要在AppDelegate类声明处添加支持JPUSHRegisterDelegate协议，并实现以下方法）
+- (void)jpushNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(NSInteger))completionHandler;
+
+// iOS 10 Support Required（2.1.9版需要在AppDelegate类声明处添加支持JPUSHRegisterDelegate协议，并实现以下方法）
+- (void)jpushNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)())completionHandler;
 
 ```
 
@@ -302,18 +311,23 @@ r2.1.5版本增加一个上传IDFA字符串的接口
 
 建议开发者加上API里面提供下面 5 种类型的通知：
 
+extern NSString *const kJPFNetworkIsConnectingNotification; // 正在连接中
+
 extern NSString * const kJPFNetworkDidSetupNotification; // 建立连接
 
 extern NSString * const kJPFNetworkDidCloseNotification; // 关闭连接
 
 extern NSString * const kJPFNetworkDidRegisterNotification; // 注册成功
 
+extern NSString *const kJPFNetworkFailedRegisterNotification; //注册失败
+
 extern NSString * const kJPFNetworkDidLoginNotification; // 登录成功
 
 <div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">
 <p>温馨提示：
   <br>
-<p>Registration id 需要在执行到kJPFNetworkDidLoginNotification的方法里获取
+<p>Registration id 需要添加注册kJPFNetworkDidLoginNotification通知的方法里获取
+<p>也可以通过+ (void)registrationIDCompletionHandler:(void(^)(int resCode,NSString *registrationID))completionHandler方法的completionHandler里获取
 </div>
 
 extern NSString * const kJPFNetworkDidReceiveMessageNotification; // 收到自定义消息(非APNS)
