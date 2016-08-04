@@ -66,7 +66,7 @@ pages:
   - 'IM 消息协议': 'advanced/im_message_protocol.md'
   - 'IM 对象定义': 'advanced/im_objects.md'
   - 'JMessage高级话题': 'advanced/jmessage_topics.md'
-  - 'JMessage消息回调': 'advanced/jmesaage_callback.md'
+  - 'JMessage消息回调': 'advanced/jmessage_callback.md'
 
 - 更多:
   - '使用许可协议': 'more/use_license.md'
