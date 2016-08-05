@@ -388,7 +388,7 @@ iOS 设备收到一条推送（APNs），用户点击推送通知打开应用时
     \- (void)application:(UIApplication \*)application didReceiveRemoteNotification:(NSDictionary \*)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler;
     // apn内容为userInfo
 
-* 基于iOS 10及以上的系统版本，原[application: didReceiveRemoteNotification:]将会被系统废弃，由新增UserNotifications Framework中的-[UNUserNotificationCenterDelegate willPresentNotification:withCompletionHandler:] 或者 -[UNUserNotificationCenterDelegate didReceiveNotificationResponse:withCompletionHandler:]方法替代。在r2.1.9版本以后可实现SDK封装的JPUSHRegisterDelegate协议方法兼容系统新增的delegate的方法，实现新的回调方式。即为以下两个方法：
+* 基于iOS 10及以上的系统版本，原[application: didReceiveRemoteNotification:]将会被系统废弃，由新增UserNotifications Framework中的-[UNUserNotificationCenterDelegate willPresentNotification:withCompletionHandler:] 或者 -[UNUserNotificationCenterDelegate didReceiveNotificationResponse:withCompletionHandler:]方法替代。在2.1.9版本以后可实现SDK封装的JPUSHRegisterDelegate协议方法兼容系统新增的delegate的方法，实现新的回调方式。即为以下两个方法：
 
 	```
 	- (void)jpushNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(NSInteger))completionHandler;
@@ -430,10 +430,11 @@ iOS 设备收到一条推送（APNs），用户点击推送通知打开应用时
   completionHandler(UIBackgroundFetchResultNewData);
 }
     
-#pragma mark- JPUSHRegisterDelegate (2.1.9版新增JPUSHRegisterDelegate,需实现以下两个方法)
+#pragma mark- JPUSHRegisterDelegate // 2.1.9版新增JPUSHRegisterDelegate,需实现以下两个方法
 
-// iOS 10 Support Required
+// iOS 10 Support
 - (void)jpushNotificationCenter:(UNUserNotificationCenter *)center 	willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)	(NSInteger))completionHandler {
+  // Required
   NSDictionary * userInfo = notification.request.content.userInfo;
   if([notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
     [JPUSHService handleRemoteNotification:userInfo];
@@ -441,8 +442,9 @@ iOS 设备收到一条推送（APNs），用户点击推送通知打开应用时
   completionHandler(UNNotificationPresentationOptionBadge|UNNotificationPresentationOptionSound|UNNotificationPresentationOptionAlert); // 需要执行这个方法，选择是否提醒用户，有Badge、Sound、Alert三种类型可以选择设置
 }
 
-// iOS 10 Support Required
+// iOS 10 Support
 - (void)jpushNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:	(void (^)())completionHandler {
+  // Required
   NSDictionary * userInfo = response.notification.request.content.userInfo;
   if([response.notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
     [JPUSHService handleRemoteNotification:userInfo];
@@ -609,20 +611,19 @@ r1.7.0 版本开始。
 
 #### 代码示例
 
-    - (void)viewWillAppear:(BOOL)animated
-        {
-            [super viewWillAppear:animated];
-            [JPUSHService startLogPageView:@"PageOne"];
-        }
-    - (void)viewWillDisappear:(BOOL)animated 
-        {
-            [super viewWillDisappear:animated];
-            [JPUSHService stopLogPageView:@"PageOne"];
-        }   
-    －(void)trackView
-       {
-           [JPUSHService beginLogPageView:@"PageTwo" duration:10];
-       }
+    - (void)viewWillAppear:(BOOL)animated {
+      [super viewWillAppear:animated];
+      [JPUSHService startLogPageView:@"PageOne"];
+    }
+    
+    - (void)viewWillDisappear:(BOOL)animated {
+      [super viewWillDisappear:animated];
+      [JPUSHService stopLogPageView:@"PageOne"];
+    }
+       
+    －(void)trackView {
+      [JPUSHService beginLogPageView:@"PageTwo" duration:10];
+    }
     
 
 ### 获取 OpenUDID
@@ -743,10 +744,11 @@ iOS 设备收到一条本地通知，用户点击通知打开应用时，应用�
 + 在iOS 10以上上述方法将被系统废弃，由新增UserNotifications Framework中的-[UNUserNotificationCenterDelegate willPresentNotification:withCompletionHandler:] 或者 -[UNUserNotificationCenterDelegate didReceiveNotificationResponse:withCompletionHandler:]方法替代。为此，SDK封装了JPUSHRegisterDelegate协议，只需实现相应的协议方法即可兼容系统新的delegate方法，实现新的回调方式。与上述远程推送新回调方法一致，如下实现代码：
 
 	```
-	#pragma mark- JPUSHRegisterDelegate (2.1.9版新增JPUSHRegisterDelegate,需实现以下两个方法)
+	#pragma mark- JPUSHRegisterDelegate // 2.1.9版新增JPUSHRegisterDelegate,需实现以下两个方法
 
-	// iOS 10 Support Required
+	// iOS 10 Support
 	- (void)jpushNotificationCenter:(UNUserNotificationCenter *)center 	willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)	(NSInteger))completionHandler {
+  	  // Required
   	  NSDictionary * userInfo = notification.request.content.userInfo;
   	  if([notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) { // 判断是本地通知还是远程通知
        [JPUSHService handleRemoteNotification:userInfo];
@@ -757,8 +759,9 @@ iOS 设备收到一条本地通知，用户点击通知打开应用时，应用�
   	  completionHandler(UNNotificationPresentationOptionBadge|UNNotificationPresentationOptionSound|UNNotificationPresentationOptionAlert); // 需要执行这个方法，选择是否提醒用户，有Badge、Sound、Alert三种类型可以设置
 	}
 
-	// iOS 10 Support Required
+	// iOS 10 Support
 	- (void)jpushNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:	(void (^)())completionHandler {
+  	  // Required
   	  NSDictionary * userInfo = response.notification.request.content.userInfo;
   	  if([response.notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) { // 判断是本地通知还是远程通知
        [JPUSHService handleRemoteNotification:userInfo];

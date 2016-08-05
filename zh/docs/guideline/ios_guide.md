@@ -79,7 +79,7 @@ img[alt=jpush_ios] { width: 800px; }
 * 设置 Search Paths 下的 User Header Search Paths 和 Library Search Paths，比如SDK文件夹（默认为lib）与工程文件在同一级目录下，则都设置为"$(SRCROOT)/{静态库所在文件夹名称}"即可。
 
 #### Capabilities
-如果你采用的Xcode8以上开发，请到Capabilities使Push Notifications配置设置为ON，同时确保steps：Add the Push Notifications feature to your App ID.以及Add the Push Notifications entitlement to your entitlements file都是OK的。也即是需要配置APS Environment，否则无法正常拿到device token。
+如果你采用的Xcode8以上开发，请到Capabilities使Push Notifications选项配置设置为ON，同时确保steps：Add the Push Notifications feature to your App ID.以及Add the Push Notifications entitlement to your entitlements file都是OK的。也即是需要配置APS Environment，否则无法正常拿到device token。
 
 ### 5、创建并配置PushConfig.plist文件 
 <div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">
@@ -148,12 +148,16 @@ APIs 主要集中在 JPUSHService 接口类里。
     * 2.1.0版本开始提供带appkey等参数的初始化方法。使用此方法无需再添加PushConfig.plist配置JPush的AppKey等字段。
     * 2.1.5版本开始提供带appkey以及IDFA等参数的初始化方法。使用此方法无需再添加PushConfig.plist配置JPush的AppKey等字段。  
 
-<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">
+	<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">
 <p>使用建议:
 <br>
 <p>三个初始化 JPush的方法同时存在，以第一个被调用的方法为准。
 <br>
-</div>
+	</div>
+
+* JPUSHRegisterDelegate
+
+	为了支持iOS10新特性，2.1.9版本开始需要在类声明中支持JPUSHRegisterDelegate，同时实现其方法，具体实现可参考下面代码，同时需要调用[registerForRemoteNotificationConfig:delegate:]方法时传入delegate对象。也可以直接使用UserNotifications新框架，支持UNUserNotificationCenterDelegate，实现其方法，具体实现可参考JPUSHRegisterDelegate方法实现。
 
 
 ```
@@ -175,7 +179,6 @@ APIs 主要集中在 JPUSHService 接口类里。
        apsForProduction:(BOOL)isProduction
   advertisingIdentifier:(NSString *)advertisingId;
 
-
 // 注册APNS类型
 + (void)registerForRemoteNotificationTypes:(NSUInteger)types
                                 categories:(NSSet *)categories;
@@ -189,11 +192,18 @@ APIs 主要集中在 JPUSHService 接口类里。
 // handle notification recieved
 + (void)handleRemoteNotification:(NSDictionary *)remoteInfo;
 
-// iOS 10 Support Required（2.1.9版需要在AppDelegate类声明处添加支持JPUSHRegisterDelegate协议，并实现以下方法）
-- (void)jpushNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(NSInteger))completionHandler;
+@end
 
-// iOS 10 Support Required（2.1.9版需要在AppDelegate类声明处添加支持JPUSHRegisterDelegate协议，并实现以下方法）
+// iOS 10 Support（2.1.9版新增协议）
+@protocol JPUSHRegisterDelegate <NSObject>
+
+// 实现后，前台运行时收到推送会回调此方法
+- (void)jpushNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(NSInteger))completionHandler;
+	
+// 实现后，后台运行时收到推送会回调此方法，后台运行下点击处理推送后也会回调
 - (void)jpushNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)())completionHandler;
+
+@end
 
 ```
 
@@ -201,7 +211,7 @@ APIs 主要集中在 JPUSHService 接口类里。
 
    监听系统事件，相应地调用 JPush SDK 提供的 API 来实现功能。
 
-   以下 ３ 个事件监听与调用 JPush SDK API 都是必须的。请直接复制如下代码块里，注释为 "Required" 的行，到你的应用程序代理类里相应的监听方法里。
+   以下几个事件监听与调用 JPush SDK API 都是必须的。请直接复制如下代码块里，注释为 "Required" 的行，到你的应用程序代理类里相应的监听方法里。
    
 ```   	
 - (BOOL)application:(UIApplication *)application
@@ -256,8 +266,9 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
  
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
  
+  // Required
   if ([[UIDevice currentDevice].systemVersion floatValue] < 10.0) {
-     // IOS 7 Support Required
+     // Required, iOS 7 Support
     [JPUSHService handleRemoteNotification:userInfo];
   }
   completionHandler(UIBackgroundFetchResultNewData);
@@ -268,10 +279,11 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
   NSLog(@"did Fail To Register For Remote Notifications With Error: %@", error);
 }
 
-#pragma mark- JPUSHRegisterDelegate (2.1.9版新增JPUSHRegisterDelegate,需实现以下两个方法)
+#pragma mark- JPUSHRegisterDelegate
 
-// iOS 10 Support Required
+// iOS 10 Support
 - (void)jpushNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(NSInteger))completionHandler {
+  // Required
   NSDictionary * userInfo = notification.request.content.userInfo;
   if([notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
     [JPUSHService handleRemoteNotification:userInfo];
@@ -279,8 +291,9 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
   completionHandler(UNNotificationPresentationOptionBadge|UNNotificationPresentationOptionSound|UNNotificationPresentationOptionAlert); // 需要执行这个方法，选择是否提醒用户，有Badge、Sound、Alert三种类型可以选择设置
 }
 
-// iOS 10 Support Required
+// iOS 10 Support
 - (void)jpushNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)())completionHandler {
+  // Required
   NSDictionary * userInfo = response.notification.request.content.userInfo;
   if([response.notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
     [JPUSHService handleRemoteNotification:userInfo];
@@ -326,8 +339,7 @@ extern NSString * const kJPFNetworkDidLoginNotification; // 登录成功
 <div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">
 <p>温馨提示：
   <br>
-<p>Registration id 需要添加注册kJPFNetworkDidLoginNotification通知的方法里获取
-<p>也可以通过+ (void)registrationIDCompletionHandler:(void(^)(int resCode,NSString *registrationID))completionHandler方法的completionHandler里获取
+<p>Registration id 需要添加注册kJPFNetworkDidLoginNotification通知的方法里获取，也可以调用[registrationIDCompletionHandler:]方法，通过completionHandler获取
 </div>
 
 extern NSString * const kJPFNetworkDidReceiveMessageNotification; // 收到自定义消息(非APNS)

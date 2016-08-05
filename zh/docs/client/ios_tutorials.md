@@ -629,11 +629,25 @@ v2.1.9版开始
 ##### JPUSHRegisterDelegate
 	
 ```
-// 前台运行时收到推送会回调
-- (void)jpushNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(NSInteger))completionHandler;
-	
-// 后台运行时收到推送会回调，后台运行下点击处理推送后也会回调
-- (void)jpushNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)())completionHandler;
+@protocol JPUSHRegisterDelegate <NSObject>
+
+/*
+ * @brief handle UserNotifications.framework [willPresentNotification:withCompletionHandler:]
+ * @param center [UNUserNotificationCenter currentNotificationCenter] 新特性用户通知中心
+ * @param notification 前台得到的的通知对象
+ * @param completionHandler 该callback中的options 请使用UNNotificationPresentationOptions
+ */
+- (void)jpushNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(NSInteger options))completionHandler;
+
+/*
+ * @brief handle UserNotifications.framework [didReceiveNotificationResponse:withCompletionHandler:]
+ * @param center [UNUserNotificationCenter currentNotificationCenter] 新特性用户通知中心
+ * @param response 通知响应对象
+ * @param completionHandler
+ */
+- (void)jpushNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void(^)())completionHandler;
+
+@end
 
 ```
 
