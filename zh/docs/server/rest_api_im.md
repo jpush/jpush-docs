@@ -493,7 +493,7 @@ POST /v1/messages
 		</tr>
 		<tr >
 			<td>from_type</td>
-			<td>发消息着身份 当前只限admin</td>
+			<td>发送消息者身份 当前只限admin用户，必须先注册admin用户</td>
 		</tr>
 		<tr >
 			<td>msg_type</td>
@@ -599,8 +599,8 @@ Error Code
 			<td>Byte(4-128)</td>
 		</tr>
 		<tr >
-			<td>level</td>
-			<td>群组的等级 1 - 最大人数40，2 - 最大人数100，3 - 最大人数 200， 4 最大人数 500</td>
+			<td>MaxMemberCount</td>
+			<td>群组默认500人</td>
 			<td></td>
 		</tr>
 		<tr >
@@ -624,11 +624,8 @@ Error Code
 
 	POST /v1/groups/
 	
-群组Level（人数限制）定义
+群组MaxMemberCount（人数限制）定义
 
-+ 	Level_1 40人
-+ 	Level_2 100人
-+  	Level_3 200人
 
 Example Request
 
@@ -663,7 +660,7 @@ Example Response
     "name": "display_name", 
     "members_username": [], 
     "desc":"doubi",
-    "level" = 3, 
+    "MaxMemberCount" = 500, 
     "mtime" = "2014-07-01 00:00:00", 
     "ctime"="2014-06-05 00:00:00"
 }
@@ -688,7 +685,7 @@ Example Response
       "name" : "jpush", 
       "desc" : "push", 
       "appkey" : "dcf71ef5082057832bd44fbd", 
-      "level" : 3,  
+      "MaxMemberCount" : 500,  
       "mtime" : "2014-07-01 00:00:00", 
       "ctime" : "2014-06-05 00:00:00"
 }
@@ -814,7 +811,7 @@ Example Response
 < HTTP/1.1 200 OK
 < Content-Type: application/json
 
-[ { "gid": 12345, "name" : "jpush", "desc" : "push", "appkey" : "dcf71ef5082057832bd44fbd", "level" : 3, "mtime" : "2014-07-01 00:00:00", "ctime" : "2014-06-05 00:00:00"}]
+[ { "gid": 12345, "name" : "jpush", "desc" : "push", "appkey" : "dcf71ef5082057832bd44fbd", "MaxMemberCount" : 500, "mtime" : "2014-07-01 00:00:00", "ctime" : "2014-06-05 00:00:00"}]
 ```
 
 
@@ -837,7 +834,7 @@ Example Response
   "start":1100, 
   "count":1, 
   "groups": 
- [ { "gid": 12345, "name" : "jpush", "desc" : "push", "appkey" : "dcf71ef5082057832bd44fbd", "level" : 3, "mtime" : "2014-07-01 00:00:00", "ctime" : "2014-06-05 00:00:00"}] } 
+ [ { "gid": 12345, "name" : "jpush", "desc" : "push", "appkey" : "dcf71ef5082057832bd44fbd", "MaxMemberCount" : 500, "mtime" : "2014-07-01 00:00:00", "ctime" : "2014-06-05 00:00:00"}] } 
 
 ```
 
