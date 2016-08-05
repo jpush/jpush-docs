@@ -22,18 +22,18 @@ img[alt=jpush_web] { width: 700px; }
 
 配置WinPhone平台信息：选择是否开启即可；
 
-![jpush_web](image/application_info.png)
+![jpush_web](image/setting_application.png)
 
 信息配置完成后，查看应用信息如下：
 
-![jpush_web](image/application_setting.png)
+![jpush_web](image/info_application.png)
 
 
 ## 应用管理
 
 点击［home］回到首页，可浏览所有应用的信息，点击应用名称或设置可查看应用详情，点击推送可去到发送通知页，编辑并推送通知，点击统计，可查看该应用的所有统计数据；
 
-![jpush_web](image/application_g.png)
+![jpush_web](image/manage_application.png)
 
 应用详情如下
 
@@ -47,13 +47,13 @@ img[alt=jpush_web] { width: 700px; }
 
 点击［home］回到首页后，在左侧导航中点击［分组管理］，可浏览应用的分组管理信息并创建新分组；
 
-![jpush_web](image/application_group.png)
+![jpush_web](image/group_application.png)
 
 ## 报表下载
 
 点击［home］回到首页后，在左侧导航中点［报表下载］，可以根据时间对报表进行下载；
 
-![jpush_web](image/application_data.png)
+![jpush_web](image/data_application.png)
 
 ## 发送通知
 
@@ -61,7 +61,7 @@ img[alt=jpush_web] { width: 700px; }
 
 填写推送内容后点击页面最下方的［立即发送］按钮即可；
 
-![jpush_web](image/application_sendntf.png)
+![jpush_web](image/send_notification.png)
 
 Web界面会弹出对话框, 提示是否发送, 选［发送吧］即可;
 
@@ -69,7 +69,7 @@ Web界面会弹出对话框, 提示是否发送, 选［发送吧］即可;
 
 推送成果后，弹出对话框，点击［去看看］即可查看推送结果;
 
-![jpush_web](image/send_done.png)
+![jpush_web](image/send_success.png)
 
 ## 自定义消息
 
@@ -77,7 +77,7 @@ Web界面会弹出对话框, 提示是否发送, 选［发送吧］即可;
 
 填写推送内容后点击页面最下方的［立即发送］按钮即可；
 
-![jpush_web](image/send_pass.png)
+![jpush_web](image/send_message.png)
 
 ## 富媒体消息
 
@@ -89,25 +89,25 @@ Web界面会弹出对话框, 提示是否发送, 选［发送吧］即可;
 
 * Step1：路径：选择应用－>推送－>富媒体消息－>模版－>landing page，目前landing page只提供一种通用模板；
 
-![jpush_web](image/landingpage-1.png)
+![jpush_web](image/landingpage_1.png)
 
 * Step2：进入模板内容编辑页面，填写所有内容，左侧可预览内容的展示效果，单击［下一步］；
 
-![jpush_web](image/landingpage-2.png)
+![jpush_web](image/landingpage_2.png)
 
 * Step3：单击［预览富媒体页面］，可预览刚刚编辑完成的landing page模板；单击页面最下方的［立即发送］按钮，即可完成该landing page的推送；
 
-![jpush_web](image/landingpage-3.png)
+![jpush_web](image/landingpage_3.png)
 
 ### 通过弹窗模板发送
 
 * Step1：选择应用－>推送－>富媒体消息－>模版－>弹窗，挑选适合的模板；
 
-![jpush_web](image/popup-1.png)
+![jpush_web](image/popup_1.png)
 
 * Step2：进入模板内容编辑页面，填写所有内容，左侧可预览内容的展示效果，单击下一步；
 
-![jpush_web](image/popup-2.png)
+![jpush_web](image/popup_2.png)
 
 * Step3：单击［预览富媒体页面］，可以预览刚刚编辑完成的弹窗模板，单击页面最下方的［立即发送］按钮，即可完成该弹窗的推送；
 
