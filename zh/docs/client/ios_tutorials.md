@@ -598,7 +598,7 @@ trigger5.fireDate = [NSDate dateWithTimeIntervalSinceNow:5];
 @property (nonatomic, copy) NSString *requestIdentifier;    // 推送请求标识
 @property (nonatomic, copy) JPushNotificationContent *content; // 设置推送的具体内容
 @property (nonatomic, copy) JPushNotificationTrigger *trigger; // 设置推送的触发方式
-@property (nonatomic, copy) void (^completionHandler)(id result); // 注册或更新推送成功回调，iOS10以上成功则result为nil，失败则result为NSError对象;iOS10以下成功result为UILocalNotification对象，失败则result为nil
+@property (nonatomic, copy) void (^completionHandler)(id result); // 注册或更新推送成功回调，iOS10以上成功则result为UNNotificationRequest对象，失败则result为nil;iOS10以下成功result为UILocalNotification对象，失败则result为nil
 
 @end
 ```
