@@ -376,8 +376,9 @@ iOS 设备收到一条推送（APNs），用户点击推送通知打开应用时
 * 如果 App 状态为未运行，此函数将被调用，如果launchOptions包含UIApplicationLaunchOptionsRemoteNotificationKey表示用户点击APNs 通知导致app被启动运行；如果不含有对应键值则表示 App 不是因点击APNs而被启动，可能为直接点击icon被启动或其他。
 
 	```
-    - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions; 
-    // APNs 内容获取：NSDictionary *remoteNotification = [launchOptions objectForKey: UIApplicationLaunchOptionsRemoteNotificationKey]
+    - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions;
+    // APNs 内容获取：NSDictionary *remoteNotification = [launchOptions objectForKey: UIApplicationLaunchOptionsRemoteNotificationKey];
+    
     ```
 
 * 基于iOS 6 及以下的系统版本，如果 App状态为正在前台或者点击通知栏的通知消息，那么此函数将被调用，并且可通过AppDelegate的applicationState是否为UIApplicationStateActive判断程序是否在前台运行。此种情况在此函数中处理：
@@ -385,6 +386,7 @@ iOS 设备收到一条推送（APNs），用户点击推送通知打开应用时
 	```
     - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo;
     // APNs内容为userInfo
+    
     ```
 
 * 基于iOS 7 及以上的系统版本，如果是使用 iOS 7 的 Remote Notification 特性那么处理函数需要使用
@@ -392,6 +394,7 @@ iOS 设备收到一条推送（APNs），用户点击推送通知打开应用时
 	```
     - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler;
     // APNs内容为userInfo
+    
     ```
 
 * 基于iOS 10及以上的系统版本，原[application: didReceiveRemoteNotification:]将会被系统废弃，由新增UserNotifications Framework中的-[UNUserNotificationCenterDelegate willPresentNotification:withCompletionHandler:] 或者 -[UNUserNotificationCenterDelegate didReceiveNotificationResponse:withCompletionHandler:]方法替代。在2.1.9版本以后可实现SDK封装的JPUSHRegisterDelegate协议方法兼容系统新增的delegate的方法，实现新的回调方式。即为以下两个方法：
@@ -404,6 +407,7 @@ iOS 设备收到一条推送（APNs），用户点击推送通知打开应用时
 	- (void)jpushNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)())completionHandler;
   	// NSDictionary * userInfo = response.notification.request.content.userInfo;
   	// APNs内容为userInfo
+	
 	```
 
 #### 示例代码
@@ -737,7 +741,8 @@ iOS 设备收到一条本地通知，用户点击通知打开应用时，应用�
 
 	```
 	- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions; 
-	// 本地通知内容获取：NSDictionary *localNotification = [launchOptions objectForKey: 	UIApplicationLaunchOptionsLocalNotificationKey]
+	// 本地通知内容获取：NSDictionary *localNotification = [launchOptions objectForKey: 	UIApplicationLaunchOptionsLocalNotificationKey];
+	
 	```
 
 + 如果 App状态为正在前台或者后台运行，那么此函数将被调用，并且可通过AppDelegate的applicationState是否为UIApplicationStateActive判断程序是否在前台运行。此种情况在此函数中处理：
@@ -746,7 +751,9 @@ iOS 设备收到一条本地通知，用户点击通知打开应用时，应用�
 	// NS_DEPRECATED_IOS(4_0, 10_0, "Use UserNotifications Framework's -[UNUserNotificationCenterDelegate willPresentNotification:withCompletionHandler:] or -[UNUserNotificationCenterDelegate didReceiveNotificationResponse:withCompletionHandler:]")
 	- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification;
 	// 本地通知为notification
+	
 	```
+
 + 在iOS 10以上上述方法将被系统废弃，由新增UserNotifications Framework中的-[UNUserNotificationCenterDelegate willPresentNotification:withCompletionHandler:] 或者 -[UNUserNotificationCenterDelegate didReceiveNotificationResponse:withCompletionHandler:]方法替代。为此，SDK封装了JPUSHRegisterDelegate协议，只需实现相应的协议方法即可兼容系统新的delegate方法，实现新的回调方式。与上述远程推送新回调方法一致，如下实现代码：
 
 	```
@@ -777,7 +784,7 @@ iOS 设备收到一条本地通知，用户点击通知打开应用时，应用�
   	  }
   	  completionHandler();// 系统要求执行这个方法
 	}
-	
+
 	```
 
 #### Method  AddNotification
