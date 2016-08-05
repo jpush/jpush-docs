@@ -877,23 +877,6 @@ r1.6.0 版本开始。
 + context 当前应用的 Activity 的上下文
 
 
-## CrashLog收集并上报
-###支持的版本
-开始的版本：最初。
-
-### 功能说明
-SDK通过Thread.UncaughtExceptionHandler  捕获程序崩溃日志，并在程序奔溃时实时上报如果实时上报失败则会在程序下次启动时发送到服务器。 如需要程序崩溃日志功能可调用此方法。
-
-
-
-### API - initCrashHandler
-
-#### 接口定义
-	public static void initCrashHandler(Context context);
-#### 参数说明
-+ Context 应用的 Applicationcontext
-
-
 ## 通知栏样式定制 API
 ### 支持的版本
 开始的版本：最初。
@@ -1020,6 +1003,23 @@ JPushInterface.setLatestNotificationNumber(context, 3);
 		</tr>
 	</table>
 </div>
+
+
+## CrashLog收集并上报
+###支持的版本
+开始的版本：最初。
+
+### 功能说明
+SDK通过Thread.UncaughtExceptionHandler  捕获程序崩溃日志，并在程序奔溃时实时上报如果实时上报失败则会在程序下次启动时发送到服务器。 如需要程序崩溃日志功能可调用此方法。
+
+
+
+### API - initCrashHandler
+
+#### 接口定义
+	public static void initCrashHandler(Context context);
+#### 参数说明
++ Context 应用的 Applicationcontext
 
 
 
