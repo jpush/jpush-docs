@@ -373,42 +373,38 @@
 
 iOS 设备收到一条推送（APNs），用户点击推送通知打开应用时，应用程序根据状态不同进行处理需在 AppDelegate 中的以下两个方法中添加代码以获取APNs内容
 
-* 如果 App 状态为未运行，此函数将被调用，如果launchOptions包含UIApplicationLaunchOptionsRemoteNotificationKey表示用户点击APNs 通知导致app被启动运行；如果不含有对应键值则表示 App 不是因点击APNs而被启动，可能为直接点击icon被启动或其他。
+- 如果 App 状态为未运行，此函数将被调用，如果launchOptions包含UIApplicationLaunchOptionsRemoteNotificationKey表示用户点击APNs 通知导致app被启动运行；如果不含有对应键值则表示 App 不是因点击APNs而被启动，可能为直接点击icon被启动或其他。
 
-	```
-    - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions;
-    // APNs 内容获取：NSDictionary *remoteNotification = [launchOptions objectForKey: UIApplicationLaunchOptionsRemoteNotificationKey];
-    
-    ```
+ ```
+ - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions;
+ // APNs 内容获取：NSDictionary *remoteNotification = [launchOptions objectForKey: UIApplicationLaunchOptionsRemoteNotificationKey];
+ ```
 
-* 基于iOS 6 及以下的系统版本，如果 App状态为正在前台或者点击通知栏的通知消息，那么此函数将被调用，并且可通过AppDelegate的applicationState是否为UIApplicationStateActive判断程序是否在前台运行。此种情况在此函数中处理：
+- 基于iOS 6 及以下的系统版本，如果 App状态为正在前台或者点击通知栏的通知消息，那么此函数将被调用，并且可通过AppDelegate的applicationState是否为UIApplicationStateActive判断程序是否在前台运行。此种情况在此函数中处理：
 
-	```
-    - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo;
-    // APNs内容为userInfo
-    
-    ```
+ ```
+ - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo;
+ // APNs内容为userInfo
+ ```
 
-* 基于iOS 7 及以上的系统版本，如果是使用 iOS 7 的 Remote Notification 特性那么处理函数需要使用
+- 基于iOS 7 及以上的系统版本，如果是使用 iOS 7 的 Remote Notification 特性那么处理函数需要使用
 
-	```
-    - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler;
-    // APNs内容为userInfo
-    
-    ```
+ ```
+ - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler;
+ // APNs内容为userInfo
+ ```
 
-* 基于iOS 10及以上的系统版本，原[application: didReceiveRemoteNotification:]将会被系统废弃，由新增UserNotifications Framework中的-[UNUserNotificationCenterDelegate willPresentNotification:withCompletionHandler:] 或者 -[UNUserNotificationCenterDelegate didReceiveNotificationResponse:withCompletionHandler:]方法替代。在2.1.9版本以后可实现SDK封装的JPUSHRegisterDelegate协议方法兼容系统新增的delegate的方法，实现新的回调方式。即为以下两个方法：
+- 基于iOS 10及以上的系统版本，原[application: didReceiveRemoteNotification:]将会被系统废弃，由新增UserNotifications Framework中的-[UNUserNotificationCenterDelegate willPresentNotification:withCompletionHandler:] 或者 -[UNUserNotificationCenterDelegate didReceiveNotificationResponse:withCompletionHandler:]方法替代。在2.1.9版本以后可实现SDK封装的JPUSHRegisterDelegate协议方法兼容系统新增的delegate的方法，实现新的回调方式。即为以下两个方法：
 
-	```
-	- (void)jpushNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(NSInteger))completionHandler;
-  	// NSDictionary * userInfo = notification.request.content.userInfo;
-  	// APNs内容为userInfo
+ ```
+ - (void)jpushNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(NSInteger))completionHandler;
+ // NSDictionary * userInfo = notification.request.content.userInfo;
+ // APNs内容为userInfo
   
-	- (void)jpushNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)())completionHandler;
-  	// NSDictionary * userInfo = response.notification.request.content.userInfo;
-  	// APNs内容为userInfo
-	
-	```
+ - (void)jpushNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)())completionHandler;
+ // NSDictionary * userInfo = response.notification.request.content.userInfo;
+ // APNs内容为userInfo
+ ```
 
 #### 示例代码
 ```
@@ -449,7 +445,7 @@ iOS 设备收到一条推送（APNs），用户点击推送通知打开应用时
   if([notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
     [JPUSHService handleRemoteNotification:userInfo];
   }
-  completionHandler(UNNotificationPresentationOptionBadge|UNNotificationPresentationOptionSound|UNNotificationPresentationOptionAlert); // 需要执行这个方法，选择是否提醒用户，有Badge、Sound、Alert三种类型可以选择设置
+  completionHandler(UNNotificationPresentationOptionAlert); // 需要执行这个方法，选择是否提醒用户，有Badge、Sound、Alert三种类型可以选择设置
 }
 
 // iOS 10 Support
@@ -737,55 +733,52 @@ v1.8.0及后续版本，v2.1.9版本有更新
 
 iOS 设备收到一条本地通知，用户点击通知打开应用时，应用程序根据状态不同进行处理需在 AppDelegate 中的以下两个方法中添加代码以获取本地通知内容
 
-+ 如果 App 状态为未运行，此函数将被调用，如果launchOptions包含UIApplicationLaunchOptionsLocalNotificationKey表示用户点击本地通知导致app被启动运行；如果不含有对应键值则表示 App 不是因点击本地通知而被启动，可能为直接点击icon被启动或其他。
+- 如果 App 状态为未运行，此函数将被调用，如果launchOptions包含UIApplicationLaunchOptionsLocalNotificationKey表示用户点击本地通知导致app被启动运行；如果不含有对应键值则表示 App 不是因点击本地通知而被启动，可能为直接点击icon被启动或其他。
 
-	```
-	- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions; 
-	// 本地通知内容获取：NSDictionary *localNotification = [launchOptions objectForKey: 	UIApplicationLaunchOptionsLocalNotificationKey];
-	
-	```
+ ```
+ - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions; 
+ // 本地通知内容获取：NSDictionary *localNotification = [launchOptions objectForKey: UIApplicationLaunchOptionsLocalNotificationKey];
+ ```
 
-+ 如果 App状态为正在前台或者后台运行，那么此函数将被调用，并且可通过AppDelegate的applicationState是否为UIApplicationStateActive判断程序是否在前台运行。此种情况在此函数中处理：
+- 如果 App状态为正在前台或者后台运行，那么此函数将被调用，并且可通过AppDelegate的applicationState是否为UIApplicationStateActive判断程序是否在前台运行。此种情况在此函数中处理：
 
-	```
-	// NS_DEPRECATED_IOS(4_0, 10_0, "Use UserNotifications Framework's -[UNUserNotificationCenterDelegate willPresentNotification:withCompletionHandler:] or -[UNUserNotificationCenterDelegate didReceiveNotificationResponse:withCompletionHandler:]")
-	- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification;
-	// 本地通知为notification
-	
-	```
+ ```
+ // NS_DEPRECATED_IOS(4_0, 10_0, "Use UserNotifications Framework's -[UNUserNotificationCenterDelegate willPresentNotification:withCompletionHandler:] or -[UNUserNotificationCenterDelegate didReceiveNotificationResponse:withCompletionHandler:]")
+ - (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification;
+ // 本地通知为notification
+ ```
 
-+ 在iOS 10以上上述方法将被系统废弃，由新增UserNotifications Framework中的-[UNUserNotificationCenterDelegate willPresentNotification:withCompletionHandler:] 或者 -[UNUserNotificationCenterDelegate didReceiveNotificationResponse:withCompletionHandler:]方法替代。为此，SDK封装了JPUSHRegisterDelegate协议，只需实现相应的协议方法即可兼容系统新的delegate方法，实现新的回调方式。与上述远程推送新回调方法一致，如下实现代码：
+- 在iOS 10以上上述方法将被系统废弃，由新增UserNotifications Framework中的-[UNUserNotificationCenterDelegate willPresentNotification:withCompletionHandler:] 或者 -[UNUserNotificationCenterDelegate didReceiveNotificationResponse:withCompletionHandler:]方法替代。为此，SDK封装了JPUSHRegisterDelegate协议，只需实现相应的协议方法即可兼容系统新的delegate方法，实现新的回调方式。与上述远程推送新回调方法一致，如下实现代码：
 
-	```
-	#pragma mark- JPUSHRegisterDelegate // 2.1.9版新增JPUSHRegisterDelegate,需实现以下两个方法
+ ```
+ #pragma mark- JPUSHRegisterDelegate // 2.1.9版新增JPUSHRegisterDelegate,需实现以下两个方法
 
-	// iOS 10 Support
-	- (void)jpushNotificationCenter:(UNUserNotificationCenter *)center 	willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)	(NSInteger))completionHandler {
-  	  // Required
-  	  NSDictionary * userInfo = notification.request.content.userInfo;
-  	  if([notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) { // 判断是本地通知还是远程通知
-       [JPUSHService handleRemoteNotification:userInfo];
-  	  }
-  	  else {
-  	    // 本地通知
-  	  }
-  	  completionHandler(UNNotificationPresentationOptionBadge|UNNotificationPresentationOptionSound|UNNotificationPresentationOptionAlert); // 需要执行这个方法，选择是否提醒用户，有Badge、Sound、Alert三种类型可以设置
-	}
+ // iOS 10 Support
+ - (void)jpushNotificationCenter:(UNUserNotificationCenter *)center 	willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)	(NSInteger))completionHandler {
+  // Required
+  NSDictionary * userInfo = notification.request.content.userInfo;
+  if([notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) { // 判断是本地通知还是远程通知
+    [JPUSHService handleRemoteNotification:userInfo];
+  }
+  else {
+    // 本地通知
+  }
+  completionHandler(UNNotificationPresentationOptionAlert); // 需要执行这个方法，选择是否提醒用户，有Badge、Sound、Alert三种类型可以设置
+ }
 
-	// iOS 10 Support
-	- (void)jpushNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:	(void (^)())completionHandler {
-  	  // Required
-  	  NSDictionary * userInfo = response.notification.request.content.userInfo;
-  	  if([response.notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) { // 判断是本地通知还是远程通知
-       [JPUSHService handleRemoteNotification:userInfo];
-  	  }
-  	  else {
-  	    // 本地通知
-  	  }
-  	  completionHandler();// 系统要求执行这个方法
-	}
-
-	```
+ // iOS 10 Support
+ - (void)jpushNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:	(void (^)())completionHandler {
+  // Required
+  NSDictionary * userInfo = response.notification.request.content.userInfo;
+  if([response.notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) { // 判断是本地通知还是远程通知
+    [JPUSHService handleRemoteNotification:userInfo];
+  }
+  else {
+    // 本地通知
+  }
+  completionHandler();// 系统要求执行这个方法
+ }
+ ```
 
 #### Method  AddNotification
 
@@ -1006,7 +999,7 @@ fireDate必须大于当前时间，同时不能为空。注册通知数目必须
 ##### 功能说明
 API用来在APP前台运行时，仍然将通知显示出来。(样式为UIAlertView)
 <div style="font-size:13px;background: #ffa07a;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 10;margin-bottom: 0;">
-iOS10以下还可继续使用，iOS10以上在[JPUSHRegisterDelegate jpushNotificationCenter:willPresentNotification:withCompletionHandler:]方法中调用completionHandler(UNNotificationPresentationOptionSound | UNNotificationPresentationOptionAlert);即可，故v2.1.9版后将会被废弃，建议及早放弃使用。
+iOS10以下还可继续使用，iOS10以上在[JPUSHRegisterDelegate jpushNotificationCenter:willPresentNotification:withCompletionHandler:]方法中调用completionHandler(UNNotificationPresentationOptionAlert);即可，故v2.1.9版后将会被废弃，建议及早放弃使用。
 </div>
 
 ##### 接口定义

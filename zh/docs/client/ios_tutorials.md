@@ -681,7 +681,7 @@ v2.1.9版开始
   NSString *subtitle = content.subtitle;  // 推送消息的副标题
   NSString *threadIdentifier = content.threadIdentifier;  // 推送消息的线程标识
   NSString *title = content.title;  // 推送消息的标题
-  completionHandler(UNNotificationPresentationOptionBadge|UNNotificationPresentationOptionSound|UNNotificationPresentationOptionAlert); // 需要执行这个方法，选择是否提醒用户，有Badge、Sound、Alert三种类型可以设置
+  completionHandler(UNNotificationPresentationOptionAlert); // 需要执行这个方法，选择是否提醒用户，有Badge、Sound、Alert三种类型可以设置
 }
 
 - (void)jpushNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:	(void (^)())completionHandler {
