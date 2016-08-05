@@ -179,11 +179,11 @@ APIs 主要集中在 JPUSHService 接口类里。
        apsForProduction:(BOOL)isProduction
   advertisingIdentifier:(NSString *)advertisingId;
 
-// 注册APNS类型
+// 注册APNs方法，2.1.9版后可用[registerForRemoteNotificationConfig:delegate:]取代
 + (void)registerForRemoteNotificationTypes:(NSUInteger)types
                                 categories:(NSSet *)categories;
 
-// 新版本的注册APNS方法（2.1.9版新增方法，兼容iOS10及以下版本）
+// 新版本的注册APNs方法（2.1.9版新增方法，兼容iOS10及以下版本）
 + (void)registerForRemoteNotificationConfig:(JPUSHRegisterEntity *)config delegate:(id<JPUSHRegisterDelegate>)delegate;
 
 // upload device token
@@ -342,7 +342,7 @@ extern NSString * const kJPFNetworkDidLoginNotification; // 登录成功
 <p>Registration id 需要添加注册kJPFNetworkDidLoginNotification通知的方法里获取，也可以调用[registrationIDCompletionHandler:]方法，通过completionHandler获取
 </div>
 
-extern NSString * const kJPFNetworkDidReceiveMessageNotification; // 收到自定义消息(非APNS)
+extern NSString * const kJPFNetworkDidReceiveMessageNotification; // 收到自定义消息(非APNs)
 
 其中，kJPFNetworkDidReceiveMessageNotification传递的数据可以通过NSNotification中的userInfo方法获取，包括标题、内容、extras信息等
 

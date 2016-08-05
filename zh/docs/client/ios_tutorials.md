@@ -121,7 +121,7 @@ JPush iOS 是对原生官方 APNs 推送的一个补充，是对其的封装，�
 ![jpush_ios](image/appidcer.png)
 
 
-+ 创建App ID、APN证书和p12证书的导出的具体步骤请看 :[iOS 证书 设置指南](../client/ios_tutorials/#ios_1)
++ 创建App ID、APNs证书和p12证书的导出的具体步骤请看 :[iOS 证书 设置指南](../client/ios_tutorials/#ios_1)
 
 + 在[苹果开发者账号的Provisioning Profile](https://developer.apple.com/account/ios/profile/profileList.action)页面点击下图按钮，创建Provisioning Profile
 
@@ -422,7 +422,7 @@ v2.1.9版开始
 
 **说明**:
 
-新注册APNS时用到的实体，包含types、categories两个属性，可通过types设置badge、sound、alert等类型；categories设置推送类型（iOS10支持UNNoticationCategory类型元素，iOS8-9支持UIUserNotificationCategory类型元素）
+新注册APNs时用到的实体，包含types、categories两个属性，可通过types设置badge、sound、alert等类型；categories设置推送类型（iOS10支持UNNoticationCategory类型元素，iOS8-9支持UIUserNotificationCategory类型元素）
 	
 **参考代码**:
 
@@ -598,7 +598,7 @@ trigger5.fireDate = [NSDate dateWithTimeIntervalSinceNow:5];
 @property (nonatomic, copy) NSString *requestIdentifier;    // 推送请求标识
 @property (nonatomic, copy) JPushNotificationContent *content; // 设置推送的具体内容
 @property (nonatomic, copy) JPushNotificationTrigger *trigger; // 设置推送的触发方式
-@property (nonatomic, copy) void (^completionHandler)(id result); // 注册或更新推送成功回调，iOS10以上成功则result为nil，失败则result为NSError对象;iOS10以下成功result为UILocalNotification对象，失败则result为nil
+@property (nonatomic, copy) void (^completionHandler)(id result); // 注册或更新推送成功回调，iOS10以上成功则result为UNNotificationRequest对象，失败则result为nil;iOS10以下成功result为UILocalNotification对象，失败则result为nil
 
 @end
 ```
