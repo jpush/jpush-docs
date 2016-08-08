@@ -1,0 +1,1586 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>JMSGUser Class Reference</title>
+
+	<link rel="stylesheet" href="../css/style.css">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
+	<meta name="generator" content="appledoc 2.2.1 (build 1334)">
+</head>
+<body class="appledoc">
+	<header>
+		<div class="container" class="hide-in-xcode">
+			
+			<h1 id="library-title">
+				<a href="../index.html">JMessage-iOS-SDK </a>
+			</h1>
+
+			<p id="developer-home">
+				<a href="../index.html">HXHG</a>
+			</p>
+			
+		</div>
+	</header>
+
+	<aside>
+		<div class="container">
+			<nav>
+				<ul id="header-buttons" role="toolbar">
+					<li><a href="../index.html">Index</a></li>
+<li><a href="../hierarchy.html">Hierarchy</a></li>
+
+					<li id="on-this-page" role="navigation">
+						<label>
+							On This Page
+
+							<div class="chevron">
+								<div class="chevy chevron-left"></div>
+								<div class="chevy chevron-right"></div>
+							</div>
+
+							<select id="jump-to">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+
+	
+	
+	<optgroup label="Properties">
+		
+		<option value="//api/name/username">username</option>
+		
+		<option value="//api/name/nickname">nickname</option>
+		
+		<option value="//api/name/avatar">avatar</option>
+		
+		<option value="//api/name/gender">gender</option>
+		
+		<option value="//api/name/birthday">birthday</option>
+		
+		<option value="//api/name/appKey">appKey</option>
+		
+		<option value="//api/name/isNoDisturb">isNoDisturb</option>
+		
+		<option value="//api/name/isInBlacklist">isInBlacklist</option>
+		
+	</optgroup>
+	
+
+	
+	<optgroup label="Class Methods">
+		
+		<option value="//api/name/registerWithUsername:password:completionHandler:">+ registerWithUsername:password:completionHandler:</option>
+		
+		<option value="//api/name/loginWithUsername:password:completionHandler:">+ loginWithUsername:password:completionHandler:</option>
+		
+		<option value="//api/name/logout:">+ logout:</option>
+		
+		<option value="//api/name/userInfoArrayWithUsernameArray:completionHandler:">+ userInfoArrayWithUsernameArray:completionHandler:</option>
+		
+		<option value="//api/name/userInfoArrayWithUsernameArray:appKey:completionHandler:">+ userInfoArrayWithUsernameArray:appKey:completionHandler:</option>
+		
+		<option value="//api/name/myInfo">+ myInfo</option>
+		
+		<option value="//api/name/updateMyInfoWithParameter:userFieldType:completionHandler:">+ updateMyInfoWithParameter:userFieldType:completionHandler:</option>
+		
+		<option value="//api/name/updateMyPasswordWithNewPassword:oldPassword:completionHandler:">+ updateMyPasswordWithNewPassword:oldPassword:completionHandler:</option>
+		
+		<option value="//api/name/addUsersToBlacklist:completionHandler:">+ addUsersToBlacklist:completionHandler:</option>
+		
+		<option value="//api/name/delUsersFromBlacklist:completionHandler:">+ delUsersFromBlacklist:completionHandler:</option>
+		
+		<option value="//api/name/addUsersToBlacklist:appKey:completionHandler:">+ addUsersToBlacklist:appKey:completionHandler:</option>
+		
+		<option value="//api/name/delUsersFromBlacklist:appKey:completionHandler:">+ delUsersFromBlacklist:appKey:completionHandler:</option>
+		
+	</optgroup>
+	
+
+	
+	<optgroup label="Instance Methods">
+		
+		<option value="//api/name/setIsNoDisturb:handler:">- setIsNoDisturb:handler:</option>
+		
+		<option value="//api/name/thumbAvatarData:">- thumbAvatarData:</option>
+		
+		<option value="//api/name/largeAvatarData:">- largeAvatarData:</option>
+		
+		<option value="//api/name/displayName">- displayName</option>
+		
+	</optgroup>
+	
+	
+</select>
+						</label>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</aside>
+
+	<article>
+		<div id="overview_contents" class="container">
+			<div id="content">
+				<main role="main">
+					<h1 class="title">JMSGUser Class Reference</h1>
+
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<th>Inherits from</th>
+	<td>NSObject</td>
+</tr><tr>
+	<th>Conforms to</th>
+	<td>NSCopying</td>
+</tr><tr>
+	<th>Declared in</th>
+	<td>JMSGUser.h</td>
+</tr>
+						</tbody></table></div>
+					
+
+                    
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>用户</p>
+					</div>
+					
+					
+
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						
+
+						<a title="Class Methods 类方法" name="task_Class Methods 类方法"></a>
+						<h2 class="task-title">Class Methods 类方法</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/registerWithUsername:password:completionHandler:" title="registerWithUsername:password:completionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/registerWithUsername:password:completionHandler:">+&nbsp;registerWithUsername:password:completionHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>新用户注册</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)registerWithUsername:(NSString *)<em>username</em> password:(NSString *)<em>password</em> completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)<em>handler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>username</code></th>
+						<td><p>用户名. 长度 4~128 位.
+支持的字符: 字母,数字,下划线,英文减号,英文点,@邮件符号. 首字母只允许是字母或者数字.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>password</code></th>
+						<td><p>用户密码. 长度 4~128 位.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>handler</code></th>
+						<td><p>结果回调. 返回正常时 resultObject 为 nil.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGUser.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/loginWithUsername:password:completionHandler:" title="loginWithUsername:password:completionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/loginWithUsername:password:completionHandler:">+&nbsp;loginWithUsername:password:completionHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>用户登录</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)loginWithUsername:(NSString *)<em>username</em> password:(NSString *)<em>password</em> completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)<em>handler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>username</code></th>
+						<td><p>登录用户名. 规则与注册接口相同.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>password</code></th>
+						<td><p>登录密码. 规则与注册接口相同.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>handler</code></th>
+						<td><p>结果回调. 正常返回时 resultOjbect 为 nil.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGUser.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/logout:" title="logout:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/logout:">+&nbsp;logout:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>当前用户退出登录</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)logout:(JMSGCompletionHandler JMSG_NULLABLE)<em>handler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>handler</code></th>
+						<td><p>结果回调。正常返回时 resultObject 也是 nil。</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>这个接口一般总是返回成功，即使背后与服务器端通讯失败，SDK 也总是会退出登录的。
+建议 App 也不必确认 SDK 返回, 就实际退出登录状态.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGUser.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/userInfoArrayWithUsernameArray:completionHandler:" title="userInfoArrayWithUsernameArray:completionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/userInfoArrayWithUsernameArray:completionHandler:">+&nbsp;userInfoArrayWithUsernameArray:completionHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>批量获取用户信息</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)userInfoArrayWithUsernameArray:(NSArray JMSG_GENERIC ( __kindof NSString *) *)<em>usernameArray</em> completionHandler:(JMSGCompletionHandler)<em>handler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>usernameArray</code></th>
+						<td><p>用户名列表。NSArray 里的数据类型为 NSString</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>handler</code></th>
+						<td><p>结果回调。正常返回时 resultObject 的类型为 NSArray，数组里的数据类型为 JMSGUser</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>这是一个批量接口。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGUser.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/userInfoArrayWithUsernameArray:appKey:completionHandler:" title="userInfoArrayWithUsernameArray:appKey:completionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/userInfoArrayWithUsernameArray:appKey:completionHandler:">+&nbsp;userInfoArrayWithUsernameArray:appKey:completionHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>批量获取跨应用的用户信息</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)userInfoArrayWithUsernameArray:(NSArray JMSG_GENERIC ( __kindof NSString *) *)<em>usernameArray</em> appKey:(NSString *JMSG_NULLABLE)<em>userAppKey</em> completionHandler:(JMSGCompletionHandler)<em>handler</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGUser.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/myInfo" title="myInfo"></a>
+	<h3 class="method-title"><code><a href="#//api/name/myInfo">+&nbsp;myInfo</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>获取用户本身个人信息接口</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (JMSGUser *)myInfo</code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>当前登陆账号个人信息</p>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGUser.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/updateMyInfoWithParameter:userFieldType:completionHandler:" title="updateMyInfoWithParameter:userFieldType:completionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/updateMyInfoWithParameter:userFieldType:completionHandler:">+&nbsp;updateMyInfoWithParameter:userFieldType:completionHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>更新用户信息接口</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)updateMyInfoWithParameter:(id)<em>parameter</em> userFieldType:(JMSGUserField)<em>type</em> completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)<em>handler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>parameter</code></th>
+						<td><p>新的属性值
+Birthday&amp;&amp;Gender 是NSNumber类型, Avatar NSData类型 其他 NSString</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>type</code></th>
+						<td><p>更新属性类型</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>handler</code></th>
+						<td><p>用户注册回调接口函数</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGUser.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/updateMyPasswordWithNewPassword:oldPassword:completionHandler:" title="updateMyPasswordWithNewPassword:oldPassword:completionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/updateMyPasswordWithNewPassword:oldPassword:completionHandler:">+&nbsp;updateMyPasswordWithNewPassword:oldPassword:completionHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>更新密码接口</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)updateMyPasswordWithNewPassword:(NSString *)<em>newPassword</em> oldPassword:(NSString *)<em>oldPassword</em> completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)<em>handler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>newPassword</code></th>
+						<td><p>用户新的密码</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>oldPassword</code></th>
+						<td><p>用户旧的密码</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>handler</code></th>
+						<td><p>用户注册回调接口函数</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGUser.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/addUsersToBlacklist:completionHandler:" title="addUsersToBlacklist:completionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/addUsersToBlacklist:completionHandler:">+&nbsp;addUsersToBlacklist:completionHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>添加黑名单</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)addUsersToBlacklist:(NSArray JMSG_GENERIC ( __kindof NSString *) *)<em>usernameArray</em> completionHandler:(JMSGCompletionHandler)<em>handler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>usernameArray</code></th>
+						<td><p>作用对象的username数组</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>handler</code></th>
+						<td><p>结果回调。回调参数：</p>
+
+<ul>
+<li>resultObject 相应对象</li>
+<li>error 错误信息</li>
+</ul>
+
+
+<p>如果 error 为 nil, 表示设置成功
+如果 error 不为 nil,表示设置失败</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>可以一次添加多个用户</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGUser.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/delUsersFromBlacklist:completionHandler:" title="delUsersFromBlacklist:completionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/delUsersFromBlacklist:completionHandler:">+&nbsp;delUsersFromBlacklist:completionHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>删除黑名单</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)delUsersFromBlacklist:(NSArray JMSG_GENERIC ( __kindof NSString *) *)<em>usernameArray</em> completionHandler:(JMSGCompletionHandler)<em>handler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>usernameArray</code></th>
+						<td><p>作用对象的username数组</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>handler</code></th>
+						<td><p>结果回调。回调参数：</p>
+
+<ul>
+<li>resultObject 相应对象</li>
+<li>error 错误信息</li>
+</ul>
+
+
+<p>如果 error 为 nil, 表示设置成功
+如果 error 不为 nil,表示设置失败</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>可以一次删除多个黑名单用户</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGUser.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/addUsersToBlacklist:appKey:completionHandler:" title="addUsersToBlacklist:appKey:completionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/addUsersToBlacklist:appKey:completionHandler:">+&nbsp;addUsersToBlacklist:appKey:completionHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>跨应用添加黑名单</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)addUsersToBlacklist:(NSArray JMSG_GENERIC ( __kindof NSString *) *)<em>usernameArray</em> appKey:(NSString *)<em>userAppKey</em> completionHandler:(JMSGCompletionHandler)<em>handler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>usernameArray</code></th>
+						<td><p>作用对象的username数组</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>handler</code></th>
+						<td><p>结果回调。回调参数：</p>
+
+<ul>
+<li>resultObject 相应对象</li>
+<li>error 错误信息</li>
+</ul>
+
+
+<p>如果 error 为 nil, 表示设置成功
+如果 error 不为 nil,表示设置失败</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>appKey</code></th>
+						<td><p>应用的<a href="#//api/name/appKey">appKey</a></p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>可以一次添加多个用户</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGUser.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/delUsersFromBlacklist:appKey:completionHandler:" title="delUsersFromBlacklist:appKey:completionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/delUsersFromBlacklist:appKey:completionHandler:">+&nbsp;delUsersFromBlacklist:appKey:completionHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>跨应用删除黑名单</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)delUsersFromBlacklist:(NSArray JMSG_GENERIC ( __kindof NSString *) *)<em>usernameArray</em> appKey:(NSString *)<em>userAppKey</em> completionHandler:(JMSGCompletionHandler)<em>handler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>usernameArray</code></th>
+						<td><p>作用对象的username数组</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>handler</code></th>
+						<td><p>结果回调。回调参数：</p>
+
+<ul>
+<li>resultObject 相应对象</li>
+<li>error 错误信息</li>
+</ul>
+
+
+<p>如果 error 为 nil, 表示设置成功
+如果 error 不为 nil,表示设置失败</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>appKey</code></th>
+						<td><p>应用的<a href="#//api/name/appKey">appKey</a></p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>可以一次删除多个黑名单用户</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGUser.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+
+						<a title="Basic Fields 基本属性" name="task_Basic Fields 基本属性"></a>
+						<h2 class="task-title">Basic Fields 基本属性</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/username" title="username"></a>
+	<h3 class="method-title"><code><a href="#//api/name/username">&nbsp;&nbsp;username</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>用户名</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, copy, readonly) NSString *username</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>这是用户帐号，注册后不可变更。App 级别唯一。这是所有用户相关 API 的用户标识。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGUser.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/nickname" title="nickname"></a>
+	<h3 class="method-title"><code><a href="#//api/name/nickname">&nbsp;&nbsp;nickname</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>用户昵称</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, copy, readonly) NSString *nickname</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>用户自定义的昵称，可任意定义。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGUser.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/avatar" title="avatar"></a>
+	<h3 class="method-title"><code><a href="#//api/name/avatar">&nbsp;&nbsp;avatar</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>用户头像（媒体文件ID）</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, copy, readonly) NSString *avatar</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>此文件ID仅用于内部更新，不支持外部URL。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGUser.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/gender" title="gender"></a>
+	<h3 class="method-title"><code><a href="#//api/name/gender">&nbsp;&nbsp;gender</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>性别</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign, readonly) JMSGUserGender gender</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>这是一个 enum 类型，支持 3 个选项：未知，男，女</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGUser.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/birthday" title="birthday"></a>
+	<h3 class="method-title"><code><a href="#//api/name/birthday">&nbsp;&nbsp;birthday</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>生日</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, copy, readonly) NSString *birthday</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGUser.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/appKey" title="appKey"></a>
+	<h3 class="method-title"><code><a href="#//api/name/appKey">&nbsp;&nbsp;appKey</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>此用户所在的 appKey</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, copy, readonly) NSString *appKey</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>为主应用时, 此字段为空</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGUser.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/isNoDisturb" title="isNoDisturb"></a>
+	<h3 class="method-title"><code><a href="#//api/name/isNoDisturb">&nbsp;&nbsp;isNoDisturb</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>该用户是否已被设置为免打扰</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign, readonly) BOOL isNoDisturb</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>YES:是 , NO: 否</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGUser.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/isInBlacklist" title="isInBlacklist"></a>
+	<h3 class="method-title"><code><a href="#//api/name/isInBlacklist">&nbsp;&nbsp;isInBlacklist</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>该用户是否已被加入黑名单</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign, readonly) BOOL isInBlacklist</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>YES:是 , NO: 否</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGUser.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setIsNoDisturb:handler:" title="setIsNoDisturb:handler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setIsNoDisturb:handler:">&ndash;&nbsp;setIsNoDisturb:handler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>设置用户免打扰（支持跨应用设置）</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)setIsNoDisturb:(BOOL)<em>isNoDisturb</em> handler:(JMSGCompletionHandler)<em>handler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>isNoDisturb</code></th>
+						<td><p>是否全局免打扰 YES:是 NO: 否</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>handler</code></th>
+						<td><p>结果回调。回调参数：</p>
+
+<ul>
+<li>resultObject 相应对象</li>
+<li>error 错误信息</li>
+</ul>
+
+
+<p>如果 error 为 nil, 表示设置成功
+如果 error 不为 nil,表示设置失败</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>针对单个用户设置免打扰
+这个接口支持跨应用设置免打扰</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGUser.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/thumbAvatarData:" title="thumbAvatarData:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/thumbAvatarData:">&ndash;&nbsp;thumbAvatarData:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>获取头像缩略图文件数据</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)thumbAvatarData:(JMSGAsyncDataHandler)<em>handler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>handler</code></th>
+						<td><p>结果回调。回调参数:</p>
+
+<ul>
+<li>data 头像数据;</li>
+<li>objectId 用户<a href="#//api/name/username">username</a>;</li>
+<li>error 不为nil表示出错;</li>
+</ul>
+
+
+<p>如果 error 为 ni, data 也为 nil, 表示没有头像数据.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>需要展示缩略图时使用。
+如果本地已经有文件，则会返回本地，否则会从服务器上下载。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGUser.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/largeAvatarData:" title="largeAvatarData:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/largeAvatarData:">&ndash;&nbsp;largeAvatarData:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>获取头像大图文件数据</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)largeAvatarData:(JMSGAsyncDataHandler)<em>handler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>handler</code></th>
+						<td><p>结果回调。回调参数:</p>
+
+<ul>
+<li>data 头像数据;</li>
+<li>objectId 用户<a href="#//api/name/username">username</a>;</li>
+<li>error 不为nil表示出错;</li>
+</ul>
+
+
+<p>如果 error 为 ni, data 也为 nil, 表示没有头像数据.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>需要展示大图图时使用
+如果本地已经有文件，则会返回本地，否则会从服务器上下载。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGUser.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/displayName" title="displayName"></a>
+	<h3 class="method-title"><code><a href="#//api/name/displayName">&ndash;&nbsp;displayName</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>用户展示名</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (NSString *)displayName</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>如果 <a href="#//api/name/nickname">nickname</a> 存在则返回 nickname，否则返回 <a href="#//api/name/username">username</a></p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGUser.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+					</div>
+					
+					
+
+                    
+                    
+          
+				</main>
+
+				<footer>
+					<div class="footer-copyright">
+						
+						<p class="copyright">Copyright &copy; 2016 HXHG. All rights reserved. Updated: 2016-07-15</p>
+						
+						
+						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
+						
+					</div>
+				</footer>
+			</div>
+		</div>
+	</article>
+
+	<script src="../js/script.js"></script>
+</body>
+</html>
