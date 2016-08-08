@@ -33,10 +33,11 @@ pages:
 
 - REST API:
   - 'REST API 概述': 'server/push/server_overview.md'
-  - 'Push API v3 - ': 'server/push/rest_api_v3_push.md'
-  - 'Report API v3 - ': 'server/rest_api_v3_report.md'
-  - 'Device API v3 - ': 'server/rest_api_v3_device.md'
-  - 'Schedule API v3 - ': 'server/rest_api_push_schedule.md'
+  - 'Push API v3': 'server/push/rest_api_v3_push.md'
+  - 'Report API v3': 'server/push/rest_api_v3_report.md'
+  - 'Device API v3': 'server/push/rest_api_v3_device.md'
+  - 'Schedule API v3': 'server/push/rest_api_push_schedule.md'
+  - 'HTTP 状态码': 'server/push/http_status_code.md'
 
 - 控制台使用指南: 'console/Instructions.md'
 
