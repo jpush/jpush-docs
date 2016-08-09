@@ -1478,7 +1478,7 @@ JMSGCompletionHandler 有 2 个参数：
 	@optional
 	- (void)onLoginUserKicked;
 	
-#### JMSGFriendDelegate 回调
+##### JMSGFriendDelegate 回调
 	/*!
 	 * @abstract 好友变更通知
 	 *
