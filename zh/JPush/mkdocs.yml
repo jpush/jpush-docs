@@ -23,7 +23,7 @@ pages:
   - 'iOS SDK 概述': 'client/iOS/ios_sdk.md'
   - 'iOS SDK 集成指南': 'client/iOS/ios_guide.md'
   - 'iOS API': 'client/iOS/ios_api.md'
-  - 'iOS SDK 教程': 'client/iOS/ios_tutorials.md'
+  - 'iOS SDK FAQ': 'client/iOS/ios_faq.md'
 
 - WindowsPhone:
   - 'Windows Phone SDK 概述': 'client/Windows Phone/winphone_sdk.md'
