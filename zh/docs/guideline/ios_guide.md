@@ -86,7 +86,7 @@ img[alt=jpush_ios] { width: 800px; }
 * CHANNEL
     * 指明应用程序包的下载渠道，为方便分渠道统计，具体值由你自行定义，如：App Store。
 * APP_KEY
-    * 填写[管理Portal上创建应用](https://www.jpush.cn/apps/new)后自动生成的AppKey值。请确保应用内配置的 AppKey 与第1步在 Portal 上创建应用后生成的 AppKey 一致。
+    * 填写[管理Portal上创建应用](https://www.jiguang.cn/app/form)后自动生成的AppKey值。请确保应用内配置的 AppKey 与第1步在 Portal 上创建应用后生成的 AppKey 一致。
 * APS_FOR_PRODUCTION
     * 1.3.1版本新增，用于标识当前应用所使用的APNs证书环境。
     * 0 (默认值)表示采用的是开发证书，1 表示采用生产证书发布应用。

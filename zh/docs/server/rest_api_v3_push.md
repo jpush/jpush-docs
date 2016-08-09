@@ -752,7 +752,7 @@ iOS 1.7.3及以上的版本才能正确解析v3的message，但是无法解析v2
 		</tr>
 		<tr >
 			<td>1003</td>
-			<td>参数值不合法</td>
+			<td>参数值不合法，如Audience参数中tag，alias，registration_id有空值，错误提示Empty tag/alias/registration_id is not allowed!</td>
 			<td>必须改正</td>
 			<td>400</td>
 		</tr>
