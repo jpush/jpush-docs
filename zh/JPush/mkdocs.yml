@@ -14,7 +14,7 @@ pages:
 
 - Android:
   - 'Android SDK 概述': 'client/Android/android_sdk.md'
-  - '3 分钟快速使用 JPush Android Demo': 'client/Android/android_3m.md'
+  - '3 分钟 Demo': 'client/Android/android_3m.md'
   - 'Android SDK 集成指南': 'client/Android/android_guide.md'
   - 'Android API': 'client/Android/android_api.md'
   - 'Android SDK FAQ': 'client/Android/android_faq.md'
@@ -27,7 +27,7 @@ pages:
 
 - WindowsPhone:
   - 'Windows Phone SDK 概述': 'client/Windows Phone/winphone_sdk.md'
-  - 'Windows phone 3分钟快速demo': 'client/Windows Phone/winphone_3m.md'
+  - 'Windows phone 3分钟 Demo': 'client/Windows Phone/winphone_3m.md'
   - 'Windows Phone SDK 集成指南': 'client/Windows Phone/winphone_guide.md'
   - 'Windows Phone API': 'client/Windows Phone/winphone_api.md'
 

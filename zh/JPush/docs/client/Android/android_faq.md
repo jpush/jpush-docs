@@ -1,12 +1,12 @@
 # Android SDK FAQ
 
-### Android SDK 网络问题解析
+## Android SDK 网络问题解析
 
 Android 客户端网络不稳定，会导致App 有时候无法及时收到 Push 消息。
 很多开发者认为这是因为 JPush 推送不稳定、延迟，甚至有时候认为 JPush 后台推送系统出问题了。
 本文目的是从各个方面来分析 Android 网络导致的 JPush 不能正常工作的问题。
 
-### JPush 正常工作的必要条件
+## JPush 正常工作的必要条件
 
 首先，我们需要知道，JPush SDK  并不是集成到App 后就必然一直工作的。
 
@@ -21,19 +21,19 @@ Android 客户端网络不稳定，会导致App 有时候无法及时收到 Push
 + JPush 收到消息一定是及时的。其延迟是秒级的，一般在 1 秒之内。如果超过 10 秒，则一定是客  户端网络出了问题。
 + 手机休眠时，也能够及时地收到推送消息。
 
-### 部分系统的特殊处理导致问题
+## 部分系统的特殊处理导致问题
 
-#### MIUI V5 系统
+### MIUI V5 系统
 
 + 自启动管理：默认情况下，手机开机后，只有系统默认的服务可以启动起来。除非在自启动管理界面，设置允许第三方程序自启动。
 + 网络助手：可以手动禁止已安装的第三方程序访问2G/3G和WIFI的网络和设置以后新安装程序是否允许访问2G/3G和WIFI的网络。
 
 
-#### 4.0以上的android系统
+### 4.0以上的android系统
 
 + 在设置－>应用，强行停止 应用程序后该程序无法再自启动，就算重新开机也一样，一定要手动开启才能运行起来。
 
-#### 让我们从目前得到的反馈来整理调试的思路
+### 让我们从目前得到的反馈来整理调试的思路
 
 **手机休眠时收不到 JPush 消息，解锁或屏幕灯亮则可以成功接收**
 
@@ -77,7 +77,7 @@ JPush 目前在网络策略方面没有像微信这种聊天工具做得积极�
 + 检查网络是否可用，如果网络可用则连接服务器登录，否则启动失败
 + 登陆成功后可以从log中看到如下log
 
-![](image/jpush.jpg)
+![](../image/jpush.jpg)
 
 ### 测试确认
 
@@ -117,7 +117,7 @@ JPush 目前在网络策略方面没有像微信这种聊天工具做得积极�
 + JPush SDK 把该关系设置保存到 JPush Server 上
 + 在服务器端推送消息时，指定向之前设置过的别名或者标签推送
 
-SDK 支持的 setAliasAndTags 请参考相应的文档：[别名与标签 API](../client/android_api/#api_1)
+SDK 支持的 setAliasAndTags 请参考相应的文档：[别名与标签 API](android_api/#api_1)
 
 使用过程中有几个点做特别说明：
 
@@ -252,11 +252,11 @@ JPush 通知推送到客户端时，默认使用手机的默认设置来显示�
 
 在 Portal 上发送通知时，最下边的“可选”部分展开，开发者可指定当前要推送的通知的样式编号。如下图所示：
 
-![](image/image2012-11-6_9_16_45.png)
+![](../image/image2012-11-6_9_16_45.png)
 
 ### 客户端设置通知栏样式
 
-自定义的通知栏样式，是在客户端进行设置的。请参考 [通知栏样式定制API](../client/android_api/#api_6) 来看所支持的功能。
+自定义的通知栏样式，是在客户端进行设置的。请参考 [通知栏样式定制API](android_api/#api_6) 来看所支持的功能。
 
 ####自定义通知栏样式设计
 
@@ -359,7 +359,7 @@ JPush Android SDK 提供了 API 让开发者来定制通知栏的效果，请参
 
 SDK 不会把自定义消息展示到通知栏。所以调试时，需要到日志里才可以看到服务器端推送的自定义消息。
 
-自定义消息一定要由开发者写[ 接收推送消息Receiver](../client/android_api/#receiver) 来处理收到的消息。
+自定义消息一定要由开发者写[ 接收推送消息Receiver](android_api/#receiver) 来处理收到的消息。
 
 <div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">
 <p>注意：
@@ -584,17 +584,17 @@ public class TalkReceiver extends BroadcastReceiver {
 
 ## Android SDK 其他常见问题
 
-####**为什么应用程序无法收到 Push 消息（Android）？**
+###为什么应用程序无法收到 Push 消息（Android）？
 
 + 确认 appKey（在Portal上生成的）已经正确的写入 Androidmanifest.xml
 + 确认测试手机（或者模拟器）已成功连入网络
 + 确认有客户端 "Login succeed" 日志
 
-详情请参考教程：[Android SDK 调试指南](../../client/android_tutorials)
 
-####**Java.lang.UnsatisfiedLinkError**
 
-![jpush_ios_v](image/error.jpg)
+### Java.lang.UnsatisfiedLinkError
+
+![jpush_ios_v](../image/error.jpg)
 
 
 <br />
@@ -602,13 +602,13 @@ public class TalkReceiver extends BroadcastReceiver {
 
 JPush SDK 迁移到 Android Studio 需要添加.SO文件打包到APK的lib文件夹中,可以编辑 build.gradle 脚本，自定义 *.so 目录，参考Demo：
 
-![jpush_android_so](image/dictionary_path.png)
+![jpush_android_so](../image/dictionary_path.png)
 
 <br />
 
-####**The permission should be defined **
+###The permission should be defined
 
-![](image/permission.jpg)
+![](../image/permission.jpg)
 
 此错误是没有正确的定义permision，请添加权限：
 
@@ -619,7 +619,7 @@ JPush SDK 迁移到 Android Studio 需要添加.SO文件打包到APK的lib文件
 
 <br />
 
-####**如何在代码时混淆忽略 jpush-sdk-release.jar？**
+###如何在代码时混淆忽略 jpush-sdk-release.jar
 
 + 请下载4.x及以上版本的[proguard.jar](http://sourceforge.net/projects/proguard/files/proguard/)， 并替换你Android Sdk "tools\proguard\lib\proguard.jar"
 
@@ -646,7 +646,7 @@ JPush SDK 迁移到 Android Studio 需要添加.SO文件打包到APK的lib文件
 
 <br />
 
-####**推送成功了，为什么有部分客户端收不到推送？**
+###推送成功了，为什么有部分客户端收不到推送？
 
 请检查收不到通知的手机：
 
@@ -657,7 +657,7 @@ JPush SDK 迁移到 Android Studio 需要添加.SO文件打包到APK的lib文件
 
 <br />
 
-####**第三方系统收不到推送的消息**
+###第三方系统收不到推送的消息
 
 由于第三方 ROM 的管理软件需要用户手动操作
 
@@ -688,7 +688,7 @@ JPush SDK 迁移到 Android Studio 需要添加.SO文件打包到APK的lib文件
 
 <br />
 
-####**Android 5.0 系统报错:INSTALL_FAILED_DUPLICATE_PERMISSION**
+###Android 5.0 系统报错:INSTALL_FAILED_DUPLICATE_PERMISSION
 
 与 5.0的多账户系统有关，其中一个账号安装一个应用，其他账号也会自动安装了这个应用；如果其中一个账号卸载了这个应用，那其他账号是不受影响的（其他账号仍有这个应用），所以如果在某个账号下卸载了应用，安装一个同包名但是签名不一致的包，就会安装失败了。
 
@@ -696,7 +696,7 @@ JPush SDK 迁移到 Android Studio 需要添加.SO文件打包到APK的lib文件
 
 <br />
 
-####**AsyncTask就没办法执行到onPostExecute()方法**
+###AsyncTask就没办法执行到onPostExecute()方法
 
 这是Android 旧系统带有的问题，解决办法如下：
 
@@ -715,21 +715,21 @@ try {
 
 <br />
 
-####**Tag、Alias、Registrationid需要每次初始化时都重新设置吗，会变化吗？**
+###Tag、Alias、Registrationid需要每次初始化时都重新设置吗，会变化吗？
 
-+ tag、alias可以参考[别名与标签 API](../../client/android_api)进行设置，每次设置是覆盖设置，而不是增量设置。Tag和alias一经设置成功，除非取消或覆盖，是不会变化的。设置好的tag、alias与客户端的对应关系保存在JPush服务器，目前没有从JPush服务器查询这个对应关系的接口，所以需要客户将对应关系保存在APP应用服务器。
++ tag、alias可以参考[别名与标签 API](android_api)进行设置，每次设置是覆盖设置，而不是增量设置。Tag和alias一经设置成功，除非取消或覆盖，是不会变化的。设置好的tag、alias与客户端的对应关系保存在JPush服务器，目前没有从JPush服务器查询这个对应关系的接口，所以需要客户将对应关系保存在APP应用服务器。
 
-+ Registrationid是客户端SDK第一次成功连接到Jpush服务器时，Jpush服务器给分配的。可以通过[获取 RegistrationID](../../client/android_api) API来获取Registrationid进行推送。Registrationid对应一个应用的一个客户端。
++ Registrationid是客户端SDK第一次成功连接到Jpush服务器时，Jpush服务器给分配的。可以通过[获取 RegistrationID](android_api) API来获取Registrationid进行推送。Registrationid对应一个应用的一个客户端。
 
 <br />
 
-####**没有沙箱API怎么测试？**
+###没有沙箱API怎么测试？
 
  直接用 JPush 的 API 测试就行。
  
 <br />
 
-####**其他国家能否使用极光推送（局域网能否使用极光推送）？**
+###其他国家能否使用极光推送（局域网能否使用极光推送）？
 
 只要能连网到Jpush服务器都可以。判断能否联网到Jpush服务器的方法：ping通 api.jpush.cn 8800
 
@@ -737,16 +737,16 @@ try {
 
 ####**用设置的标签或别名推送，出现下面提示：**
 
-![](image/none_target.png)
+![](../image/none_target.png)
 
 这可能有两种情况：
 
 + SDK没有集成成功，客户端有 "Login succeed" 日志才表示SDK集成成功。
-+ 设置别名或标签失败，请调用带返回值的函数[Method - setAliasAndTags (with Callback)](../../client/android_api)来设置标签或别名，同时参考[错误码定义](../../client/android_api)来修改直到设置成功返回0.
++ 设置别名或标签失败，请调用带返回值的函数[Method - setAliasAndTags (with Callback)](android_api)来设置标签或别名，同时参考[错误码定义](android_api)来修改直到设置成功返回0.
 
 <br />
 
-####**可以打开 www.jpush.cn，但打不开docs，提示无法找到docs.jpush.cn**
+###可以打开 www.jpush.cn，但打不开docs，提示无法找到docs.jpush.cn
 
 + 提示客户换个浏览器试试
 + 如果还是不行，执行下面的命令反馈结果排查一下问题
@@ -757,13 +757,13 @@ try {
 
 <br />
 
-####**appkey是怎么对应的？**
+###appkey是怎么对应的？
 
 android 的包名和 appkey 需对应。
 
 <br />
 
-####**内网使用极光推送应该怎么设置？**
+###内网使用极光推送应该怎么设置？
 
 内网使用极光推送需要服务器开放下列端口限制，用于JPush的登录注册及保持推送长链接：   
 

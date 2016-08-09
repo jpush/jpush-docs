@@ -1,11 +1,11 @@
 # Android SDK 概述
 
-+ [Android 常见问题](../../guideline/faq/#android)
++ [Android 常见问题](android_faq)
 + [Android 客户端 SDK 下载](../../resources/#android-sdk)
 
 ### JPush Android
 
-![jpush_android](image/jpush_android.png)
+![jpush_android](../image/jpush_android.png)
 
 开发者集成 JPush Android SDK 到其应用里，JPush Android SDK 创建到 JPush Cloud 的长连接，为 App 提供永远在线的能力。  
 当开发者想要及时地推送消息到达 App 时，只需要调用 JPush API 推送，或者使用其他方便的智能推送工具，即可轻松与用户交流。
@@ -46,9 +46,8 @@ AndroidManifest.xml 配置示例可能在版本升级时，会有变更。请留
 
 请参考以下文档与教程，来集成 Android SDK。
 
-+ [3分钟快速Demo(Android)](../../guideline/android_3m)
-+ [Android 集成指南](../../guideline/android_guide)
-+ [Android 教程](/client/android_tutorials)
++ [3分钟快速Demo(Android)](android_3m)
++ [Android 集成指南](android_guide)
 
 
 
