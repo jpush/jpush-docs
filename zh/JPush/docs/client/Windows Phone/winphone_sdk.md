@@ -2,7 +2,7 @@
 
 + [WinPhone 客户端 SDK 下载](../../resources/#wp-sdk)
 
-![jpush_wp](image/jpush_wp.png)
+![jpush_wp](../image/jpush_wp.png)
 
 JPush WP Push 包括 1个部分，MPNs 推送（代理）。
 
@@ -24,6 +24,6 @@ Windows Phone 平台上，暂时不支持应用内消息。
 
 请参考以下文档与教程，来集成 WinPhone SDK。
 
-+ [3分钟快速Demo(Winphone)](../../guideline/winphone_3m)
-+ [WinPhone 集成指南](../../guideline/winphone_guide)
-+ [WinPhone API](../client/winphone_api)
++ [3分钟快速Demo(Winphone)](winphone_3m)
++ [WinPhone 集成指南](winphone_guide)
++ [WinPhone API](winphone_api)

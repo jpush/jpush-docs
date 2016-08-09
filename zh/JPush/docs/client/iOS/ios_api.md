@@ -499,7 +499,7 @@ r1.7.0 开始支持。
 
 ##### 通过 RegistrationID 推送消息和通知
 
-可以通过 RegistrationID 来推送消息和通知， 参考文档 [Push API v3](../server/rest_api_v3_push/#audience)， 当audience 参数为 RegistrationID 时候即可根据 RegistrationID 推送。
+可以通过 RegistrationID 来推送消息和通知， 参考文档 [Push API v3](../../server/push/rest_api_v3_push/#audience)， 当audience 参数为 RegistrationID 时候即可根据 RegistrationID 推送。
 
 <div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">
 <p>注：

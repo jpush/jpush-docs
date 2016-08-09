@@ -111,7 +111,7 @@ JPush iOS 是对原生官方 APNs 推送的一个补充，是对其的封装，�
 
 #### 上传证书
 
-在 [JPush 管理 Portal 上](https://www.jpush.cn/apps/)，针对某应用程序，上传上面步骤得到 .p12 证书文件。这是 iOS SDK 能够接收到 JPush 推送消息的必要步骤。
+在 [JPush 管理 Portal 上](https://www.jiguang.cn/apps/)，针对某应用程序，上传上面步骤得到 .p12 证书文件。这是 iOS SDK 能够接收到 JPush 推送消息的必要步骤。
 
 
 #### Provisioning Profile的创建
@@ -121,7 +121,7 @@ JPush iOS 是对原生官方 APNs 推送的一个补充，是对其的封装，�
 ![jpush_ios](../image/appidcer.png)
 
 
-+ 创建App ID、APN证书和p12证书的导出的具体步骤请看 :[iOS 证书 设置指南](../client/ios_tutorials/#ios_1)
++ 创建App ID、APN证书和p12证书的导出的具体步骤请看 :[iOS 证书 设置指南](ios_faq/#ios_1)
 
 + 在[苹果开发者账号的Provisioning Profile](https://developer.apple.com/account/ios/profile/profileList.action)页面点击下图按钮，创建Provisioning Profile
 
@@ -155,7 +155,7 @@ JPush iOS 是对原生官方 APNs 推送的一个补充，是对其的封装，�
 
 #### XCode的证书配置教程
 
-参照[iOS SDK 集成指南](../../guideline/ios_guide/)集成JPush SDK 和上传了推送用到的p12证书后在编译运行前需要先配置一下证书，步骤如下：
+参照[iOS SDK 集成指南](ios_guide/)集成JPush SDK 和上传了推送用到的p12证书后在编译运行前需要先配置一下证书，步骤如下：
 
 + 打开xxx-info.plist的Bundle identifier项把上传到JPush 控制台的bundle id填写进去：
 
@@ -208,7 +208,7 @@ Remote Notifications 与之前版本的对比可以参考下面两张 Apple 官�
 
 ##### 使用 API 推送
 
-只需在[Push API v3](../../server/rest_api_v3_push/#notification) 的 ios 内附加content-available":true 字段即可
+只需在[Push API v3](../../server/push/rest_api_v3_push/#notification) 的 ios 内附加content-available":true 字段即可
 
 #### 限制与注意
 
@@ -426,7 +426,7 @@ SDK未提供https地址版本时
 
 如果你确认 appKey 在 SDK 客户端与 Portal 上设置是一致，其他环节也按照文档正确地操作。但还是收不到推送消息。那么，有一定的可能性，是你在 Portal 上上传的证书，不是 APNs (Push) 证书。推送时指定的iOS推送环境和应用证书是同一个环境。
 
-请参考[iOS 证书设置指南](../../client/ios_tutorials)再次检查证书选择是否正确。
+请参考[iOS 证书设置指南](ios_faq)再次检查证书选择是否正确。
 
 请注意：iOS能接受消息的必要条件是：应用程序的证书要和你上传到jpush portal上的证书对应，如果你的程序是直接在xcode上运行的，你的应用部署环境必须是开发状态才能收到APNS消息。
 
@@ -448,7 +448,7 @@ SDK未提供https地址版本时
 
 ####如何在接收到 APN 的时候获取 APN 消息内容并进行跳转或做出响应处理？
 
-[获取 APNs 推送内容](../../client/ios_api)
+[获取 APNs 推送内容](ios_api)
 
 <br />
 
@@ -470,11 +470,11 @@ SDK未提供https地址版本时
 
 JPush 网站上推送 iOS 通知时，可在［可选设置］里面指定 badge 参数的值，如：1或"+1"。
 
-api上指定badge的参数请看：[Push-API-v3#API-v3-ios](../../client/ios_api/#badge)
+api上指定badge的参数请看：[Push-API-v3#API-v3-ios](/ios_api/#badge)
 
-客户端上报badge到JPush服务器的接口请看:[设置badge](../../client/ios_api/#badge)
+客户端上报badge到JPush服务器的接口请看:[设置badge](ios_api/#badge)
 
-关于badge ＋1的介绍，请看[APNs Notification badge](http://blog.jpush.cn/ios_apns_badge_plus/)
+关于badge ＋1的介绍，请看[APNs Notification badge](http://blog.jiguang.cn/ios_apns_badge_plus/)
 
 <br />
 ####Icon Badge number 的清空方法：
@@ -553,7 +553,7 @@ badge累加只能通过v3 api推送，且只有1.7.4版本以上才能支持。
 
 ####为什么日志里面会打印：You've implemented -[ <UIApplicationDelegate\> application:didReceiveRemoteNotification:fetchCompletionHandler:], but you still need to add "remote-notification" to the list of your supported UIBackgroundModes in your Info.plist.
 
-这个主要是提示开发者如果要支持UIBackgroundModes，需要开启Remote notifications，具体操作可以看：[iOS 7 Background Remote Notification](../../client/ios_tutorials/#ios-7-background-remote-notification)
+这个主要是提示开发者如果要支持UIBackgroundModes，需要开启Remote notifications，具体操作可以看：[iOS 7 Background Remote Notification](ios_faq/#ios-7-background-remote-notification)
 
 
 <br />

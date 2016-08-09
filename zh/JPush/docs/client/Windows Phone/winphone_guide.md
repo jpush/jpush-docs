@@ -28,7 +28,7 @@
 ## SDK集成步骤
 ### 在JPush Portal上创建应用
 
-+ [在JPush的管理Portal](https://www.jpush.cn)上创建应用
++ [在JPush的管理Portal](https://www.jiguang.cn)上创建应用
 + 创建成功后自动生成AppKey用以标识该应用
 
 ### 导入API开发包到应用程序项目    
@@ -41,7 +41,7 @@
 
 选择下图红色矩形内的两项
 
-![](image/WP.jpg)
+![](../image/WP.jpg)
 
 ### 添加代码
 
@@ -108,12 +108,12 @@ toast 通知点击提示
 ##高级功能
 请参考：
 
-[winphone API](../../client/winphone_api)
+[winphone API](winphone_api)
 
 ##技术支持
 
 邮件联系：<support@jpush.cn>
 
-问答社区：[http://www.jpush.cn/qa/](http://www.jpush.cn/qa/)
+问答社区：[http://community.jiguang.cn/](http://community.jiguang.cn/)
 
 	
