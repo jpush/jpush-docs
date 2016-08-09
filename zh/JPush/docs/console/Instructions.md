@@ -111,34 +111,34 @@ Web界面会弹出对话框, 提示是否发送, 选［发送吧］即可;
 
 * Step3：单击［预览富媒体页面］，可以预览刚刚编辑完成的弹窗模板，单击页面最下方的［立即发送］按钮，即可完成该弹窗的推送；
 
-![jpush_web](image/popup-3.png)
+![jpush_web](image/popup_3.png)
 
 ### 通过信息流模板发送
 * Step1：路径：选择应用－>推送－>富媒体消息－>模版－>信息流，挑选适合的模板；
 
-![jpush_web](image/richpush1.png)
+![jpush_web](image/Informationflow_1.png)
 
 * Step2：进入模板内容编辑页面，填写所有内容，左侧可预览内容的展示效果，单击下一步；
 
-![jpush_web](image/richpush2.png)
+![jpush_web](image/Informationflow_2.png)
 
 * Step3：单击［预览富媒体页面］，可以预览刚刚编辑完成的弹窗模板，单击页面最下方的［立即发送］按钮，即可完成该信息流的推送；
 
-![jpush_web](image/richpush3.png)
+![jpush_web](image/informationflow_3.png)
 
 ### 通过URL发送通知
 
 * Step1：路径：选择应用－>推送－>富媒体消息－>URL；
 
-![jpush_web](image/richpush5.png)
+![jpush_web](image/url_1.png)
 
 * Step2：输入需要推送的页面的URL，单击［下一步］按钮，由于通知的大小有限制，URL不可过长，若URL超过限制长度，请自行转成短地址再输入；
 
-![image](image/richpush6.png)
+![image](image/url_2.png)
 
 * Step3：URL不提供页面预览功能，请确保输入正确的URL，单击页面最下方的［立即发送］按钮，即可完成URL推送；
 
-![jpush_web](image/richpush7.png)
+![jpush_web](image/url_3.png)
 
 ## 推送历史
 
@@ -189,19 +189,18 @@ Web界面会弹出对话框, 提示是否发送, 选［发送吧］即可;
 
 用户分群的ID是在创建之后生成的，调用API时可指定该ID；
 
-示意图：
+![jpush_web](image/segment_1.png)
+![jpush_web](image/segment_2.png)
 
-见QQ
-
-## 统计与报表说明
+## 统计与报表说明s
 
 ### 查看报表
 
 JPush 的 Web 上提供了多种应用级别的统计数据。如下图所示，用户在登录JPush 帐号，并选择了具体的应用后，可以在顶部导航条内选择“统计”
 #### 选择报表类型
-JPush 统计包括：推送统计，用户统计，API 统计，活跃分析，在线留存率
+JPush 统计包括：推送统计、用户统计、API统计、活跃分析、在线留存率、用户分群统计、设备信息统计、排行统计、地区分布、错误列表、流失分析、回访分析
 
-![jpush_web][0]
+![jpush_web](image/statistics_1.png)
 
 ### 选择统计时间
 
@@ -209,7 +208,7 @@ JPush 统计包括：推送统计，用户统计，API 统计，活跃分析，�
 
 例：如果选择“昨天”，那么报表呈现的数据是以小时为单位；如果选择”最近7天“，那么报表呈现的数据则是是以天为单位。
 
-![][1]
+![jpush_web](image/statistics_time.png)
 ### 统计项说明
 
 ### 推送统计

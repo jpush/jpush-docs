@@ -4,7 +4,7 @@ site_url: http://docs.jpush.io
 site_favicon: favicon.ico
 site_description: JPush, JMessage, 极光推送, 极光IM, Android Push, Android 推送, 安卓推送, iOS Push, APNs, Push Notification
 copyright: Copyright 2011-2016, jiguang.cn, All Rights Reserved. <br />粤ICP备12056275号-13 深圳市和讯华谷信息技术有限公司
-theme: bootstrap
+theme: readthedocs
 
 pages:
 
@@ -12,10 +12,10 @@ pages:
   - '短信验证码概述': 'guideline/JSMS_guide.md'
 
 - Android:
-  - 'Android SDK 概述': 'client/Android/Android_SMS_SDK.md'
+  - 'Android SDK 概述': 'client/Android_SMS_SDK.md'
 
 - iOS:
-  - 'iOS SDK 概述': 'client/iOS/iOS_SMS_SDK.md'
+  - 'iOS SDK 概述': 'client/iOS_SMS_SDK.md'
 
 
 - REST API:
