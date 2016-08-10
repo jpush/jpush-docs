@@ -94,9 +94,9 @@ JPush API v3 支持同时一次调用同时推送 APNs 通知与 JPush 应用内
 
 + 支持的iOS版本为6.0及以上版本.
 + 支持iOS版本为10.0以上的版本时需知.
-    + Notification Service证书配置时需要注意BundleID不能与Main Target一致，证书需要单独额外配置
-    + 请将Notification Service中的Deployment Target设置为10.0
-    + 在XCode7或者更低的版本中删除Notification Service所对应的Target
+    + Notification Service Extension证书配置时需要注意BundleID不能与Main Target一致，证书需要单独额外配置
+    + 请将Notification Service Extension中的Deployment Target设置为10.0
+    + 在XCode7或者更低的版本中删除Notification Service Extension所对应的Target
     + 在XCode7或者更低的版本中请将引入的'UserNotifications.framework'删除
 
 ### 组成
