@@ -2,7 +2,7 @@
 ### 客户端 SDK 下载
 
 <div class="row">
-      <div class="col-md-8" style="width:850px">
+      <div class="col-md-8" style="width:720px">
             <div class="panel panel-default">
                   <div class = "panel-content home_section">
                         <table width="100%"   cellspacing="100" >
@@ -64,7 +64,7 @@
 
 ### 服务器端 SDK 下载
 <div class="row">
-      <div class="col-md-8" style="width:850px">
+      <div class="col-md-8" style="width:720px">
             <div class="panel panel-default">
                   <div class = "panel-content home_section">
                         <table width="100%"   cellspacing="0" style="font-size: 12px;">
