@@ -1007,7 +1007,9 @@ JPushInterface.setLatestNotificationNumber(context, 3);
 
 ## CrashLog收集并上报
 ###支持的版本
-开始的版本：最初。
+
++ 从最初版本上就支持 initCrashHandler 接口，默认为关闭状态。
++ v2.1.8版本及以后版本，默认为开启状态，并增加 stopCrashHandler接口。
 
 ### 功能说明
 SDK通过Thread.UncaughtExceptionHandler  捕获程序崩溃日志，并在程序奔溃时实时上报如果实时上报失败则会在程序下次启动时发送到服务器。 如需要程序崩溃日志功能可调用此方法。
@@ -1021,7 +1023,14 @@ SDK通过Thread.UncaughtExceptionHandler  捕获程序崩溃日志，并在程�
 #### 参数说明
 + Context 应用的 Applicationcontext
 
+### API - stopCrashHandler
 
+
+#### 接口定义
+    public static void stopCrashHandler(Context context)
+
+#### 参数说明
++ Context 应用的 Applicationcontext
 
 ## 获取推送连接状态
 ### 支持的版本
