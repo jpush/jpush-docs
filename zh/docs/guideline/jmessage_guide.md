@@ -123,7 +123,7 @@ App 使用 JMessage 提供的群组功能创建群组时，得到的群组标识
 	+ IM SDK（含 JPush SDK）
 	+ Demo （IM 功能完备的 App）
 + Web
-	+ 暂未发布。在线 Web IM 登录使用，可进行单聊、群聊。
+	+ 在线 Web IM 登录使用，可进行单聊、群聊。
 
 #### REST API
 

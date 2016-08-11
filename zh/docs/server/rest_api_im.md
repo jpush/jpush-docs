@@ -25,7 +25,7 @@ Authorization: Basic base64_auth_string
 		</tr>
 		<tr >
 			<td>username</td>
-			<td>用户登陆名</td>
+			<td>用户登录名</td>
 			<td>Byte(4~128)</td>
 		</tr>
 		<tr >
