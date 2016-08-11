@@ -56,7 +56,7 @@ img[alt=jpush_ios] { width: 800px; }
 
 ### 2、导入API开发包到应用程序项目
 
-* 将SDK包解压，在XCode中选择“Add files to 'Your project name'...”，将解压后的lib子文件夹（包含JPUSHService.h、jpush-ios-x.x.x.a）添加到你的工程目录中。
+* 将SDK包解压，在Xcode中选择“Add files to 'Your project name'...”，将解压后的lib子文件夹（包含JPUSHService.h、jpush-ios-x.x.x.a）添加到你的工程目录中。
 
 ### 3、必要的框架
 
@@ -70,7 +70,7 @@ img[alt=jpush_ios] { width: 800px; }
 * Security.framework
 * Xcode7需要的是libz.tbd；Xcode7以下版本是libz.dylib
 * Adsupport.framework (获取IDFA需要；如果不使用IDFA，请不要添加)
-* UserNotifications.framework(Xcode8以上)
+* UserNotifications.framework(Xcode8及以上)
 
 ### 4、Xcode工程配置
 #### Build Settings
@@ -79,7 +79,9 @@ img[alt=jpush_ios] { width: 800px; }
 * 设置 Search Paths 下的 User Header Search Paths 和 Library Search Paths，比如SDK文件夹（默认为lib）与工程文件在同一级目录下，则都设置为"$(SRCROOT)/{静态库所在文件夹名称}"即可。
 
 #### Capabilities
-如果你采用的Xcode8以上开发，请到Capabilities使Push Notifications选项配置设置为ON，同时确保steps：Add the Push Notifications feature to your App ID.以及Add the Push Notifications entitlement to your entitlements file都是OK的。也即是需要配置APS Environment，否则无法正常拿到device token。
+如使用Xcode8及以上环境开发，请开启Application Target的Capabilities->Push Notifications选项，如图：
+
+![jpush_ios][7]
 
 ### 5、创建并配置PushConfig.plist文件 
 <div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">
@@ -157,7 +159,7 @@ APIs 主要集中在 JPUSHService 接口类里。
 
 * JPUSHRegisterDelegate
 
-	为了支持iOS10新特性，2.1.9版本开始需要在类声明中支持JPUSHRegisterDelegate，同时实现其方法，具体实现可参考下面代码，同时需要调用[registerForRemoteNotificationConfig:delegate:]方法时传入delegate对象。也可以直接使用UserNotifications新框架，支持UNUserNotificationCenterDelegate，实现其方法，具体实现可参考JPUSHRegisterDelegate方法实现。
+	为了支持iOS10新特性，在Xcode8及以上开发环境下，2.1.9版本开始需要在类声明中遵守JPUSHRegisterDelegate协议，需要实现其代理方法（具体实现可参考下面代码），并在注册APNs时调用[registerForRemoteNotificationConfig:delegate:]方法设置delegate对象。
 
 
 ```
@@ -288,7 +290,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
   if([notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
     [JPUSHService handleRemoteNotification:userInfo];
   }
-  completionHandler(UNNotificationPresentationOptionBadge|UNNotificationPresentationOptionSound|UNNotificationPresentationOptionAlert); // 需要执行这个方法，选择是否提醒用户，有Badge、Sound、Alert三种类型可以选择设置
+  completionHandler(UNNotificationPresentationOptionAlert); // 需要执行这个方法，选择是否提醒用户，有Badge、Sound、Alert三种类型可以选择设置
 }
 
 // iOS 10 Support
@@ -364,3 +366,4 @@ extern NSString * const kJPFNetworkDidReceiveMessageNotification; // 收到自�
 [4]: mailto:support@jpush.cn
 [5]: http://www.jpush.cn/qa/
 [6]: image/ios_http.png
+[7]: image/capabilities_intro.jpg
