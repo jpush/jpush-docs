@@ -12,11 +12,11 @@
 
 * 需要了解tag,alias的详细信息，请参考对应客户端平台的API说明。
 
-    * [Android - tag,alias](../../client/android_api/#api_1)
-    * [iOS - tag,alias](../../client/ios_api/#api-ios)
-    * [WinPhone - tag,alias](../../client/winphone_api/#api_1)
+    * [Android - tag,alias](../../client/Android/android_api/#api_1)
+    * [iOS - tag,alias](../../client/iOS/ios_api/#api-ios)
+    * [WinPhone - tag,alias](../../client/Windows Phone/winphone_api/#api_1)
 
-### API 概述
+## API 概述
 
 Device API 用于在服务器端查询、设置、更新、删除设备的 tag,alias 信息。
 
@@ -30,18 +30,16 @@ Device API 用于在服务器端查询、设置、更新、删除设备的 tag,a
 API URL: [https://device.jpush.cn](https://device.jpush.cn)
 
 
-### Device
-
-#### 查询设备(设备的别名与标签)
+## 查询设备的别名与标签
 
 ```
 GET /v3/devices/{registration_id}
 获取当前设备的所有属性，包含tags, alias，手机号码mobile。
 ```
 
-##### Example Request
+### Example Request
 
-###### Request Header
+**Request Header**
 
 ```
 GET /v3/devices/{registration_id}
@@ -49,18 +47,18 @@ GET /v3/devices/{registration_id}
   Accept: application/json
 ```
 
-###### Request Params
+**Request Params**
 + N/A
 
-##### Example Response
+### Example Response
 
-###### Response Header
+**Response Header**
 ```
 HTTP/1.1 200 OK 
   Content-Type: application/json; charset=utf-8
 ```
 
-###### Response Data
+**Response Data**
 ```
 {
      "tags": ["tag1", "tag2"],
@@ -71,17 +69,17 @@ HTTP/1.1 200 OK
 
 + 找不到统计项就是null,否则为统计项的值
 
-#### 更新设备 （设备的别名与标签）
+## 设置设备的别名与标签
 
-使用短信业务，请结合服务端[SMS_MESSAGE](../server/rest_api_v3_push/#sms_message)字段
+使用短信业务，请结合服务端[SMS_MESSAGE](rest_api_v3_push/#sms_message)字段
 
 ```
 POST /v3/devices/{registration_id}
 更新当前设备的指定属性，当前支持tags, alias，手机号码mobile。
 ```
 
-##### Example Request
-###### Request Header
+### Example Request
+**Request Header**
 
 ```
 POST /v3/devices/{registration_id}
@@ -89,7 +87,8 @@ POST /v3/devices/{registration_id}
   Accept: application/json
 ```
 
-###### Request Body
+**Request Body**
+
 ```
 {  
         "tags":{
@@ -107,47 +106,100 @@ POST /v3/devices/{registration_id}
     } 
 
 ``` 
-###### Request Params
+**Request Params**
+
 + tags:  支持add, remove 或者空字符串。当tags参数为空字符串的时候，表示清空所有的 tags；add/remove 下是增加或删除指定的 tag；
 + alias:  更新设备的别名属性；当别名为空串时，删除指定设备的别名；
 + mobile: 设备关联的手机号码
 
-##### Example Response
-###### Response Header
+###Example Response
+**Response Header**
 ```
 HTTP/1.1 200 OK 
   Content-Type: application/json; charset=utf-8
 ```
 
-###### Response Data
+**Response Data**
 + N/A
 
-### Tag
-#### 查询标签列表
+## 查询别名
+获取指定alias下的设备，最多输出10个；
+
+```
+GET /v3/aliases/{alias_value}
+```
+
+### Example Request
+**Request Header**
+```
+GET /v3/aliases/{alias_value}?platform=android,ios
+  Authorization: Basic (base64 auth string) 
+  Accept: application/json
+```
+**Request Params**
++ platform 可选参数，不填则默认为所有平台。
+
+### Example Response
+**Response Header**
+```
+HTTP/1.1 200 OK 
+  Content-Type: application/json; charset=utf-8
+```
+**Response Data**
+```
+{
+     "registration_ids": ["registration_id1", "registration_id2"]
+}
+```
++ 找不到统计项就是 null，否则为统计项的值。
+
+## 删除别名
+删除一个别名，以及该别名与设备的绑定关系。
+
+```
+DELETE /v3/aliases/{alias_value}
+```
+### Example Request
+**Request Header**
+```
+DELETE /v3/aliases/{alias_value}?platform=android,ios
+  Authorization: Basic (base64 auth string) 
+  Accept: application/json
+```
+**Request Params**
++ platform 可选参数，不填则默认为所有平台。
+
+### Example Response
+**Response**
++ N/A
+
+## 查询标签列表
 ```
 GET /v3/tags/
 获取当前应用的所有标签列表。
 ```
 
-##### Example Request
-###### Request Header
+### Example Request
+**Request Header**
+
 ```
 GET /v3/tags/
   Authorization: Basic (base64 auth string) 
   Accept: application/json
 ```
 
-###### Request Params
+**Request Params**
 + None
 
-##### Example Request
-###### Response Header
+### Example Response
+**Response Header**
 ```
 HTTP/1.1 200 OK 
   Content-Type: application/json; charset=utf-8
 ```
 
-###### Response Data
+**Response Data**
+
 ```
 {
      "tags": ["tag1", "tag2"]
@@ -155,50 +207,58 @@ HTTP/1.1 200 OK
 ```
 + 找不到统计项就是 null，否则为统计项的值。
 
-#### 判断设备与标签的绑定
+## 判断设备与标签绑定关系
 ```
 GET /v3/tags/{tag_value}/registration_ids/{registration_id}
 查询某个设备是否在 tag 下。
 ```
 
-##### Example Request
-###### Request Header
+### Example Request
+**Request Header**
+
 ```
 GET /v3/tags/{tag_value}/registration_ids/090c1f59f89
   Authorization: Basic (base64 auth string) 
   Accept: application/json
 ```
 
-###### Request Params
+**Request Params**
 + registration_id  必须，设备的registration_id
 
-##### Example Response
-###### Response Header
+### Example Response
+
+**Response Header**
+
 ```
 HTTP/1.1 200 OK 
   Content-Type: application/json; charset=utf-8
 ```
 
-###### Response Data
+**Response Data**
+
 ```
 {
      "result": true/false
 }
 ```
 
-#### 更新标签 （与设备的绑定的关系）
+## 更新标签
+
+为一个标签添加或者删除设备。
+
+
 ```
 POST /v3/tags/{tag_value}
-为一个标签添加或者删除设备。
 ```
-##### Example Request
-###### Request Header
+### Example Request
+**Request Header**
+
 ```
 POST /v3/tags/{tag_value}
   Authorization: Basic (base64 auth string) 
   Accept: application/json 
 ```
-###### Request Body
+**Request Body**
 ```
 {  
         "registration_ids":{
@@ -213,103 +273,55 @@ POST /v3/tags/{tag_value}
         }
 }
 ```
-###### Request Params
+**Request Params**
 + action操作类型，有两个可选："add"，"remove"，标识本次请求是"添加"还是"删除"。
 + registration_ids  需要添加/删除的设备registration_id。
 + add/remove最多各支持1000个；
 
-##### Example Response
-###### Response Header
+### Example Response
+**Response Header**
 ```
 HTTP/1.1 200 OK 
  Content-Type: application/json; charset=utf-8
 ```
-###### Response Data
+**Response Data**
 + N/A
 
-#### 删除标签 (与设备的绑定关系)
+## 删除标签
+删除一个标签，以及标签与设备之间的关联关系。
+
 ```
 DELETE /v3/tags/{tag_value}
-删除一个标签，以及标签与设备之间的关联关系。
 ```
-##### Example Request
-###### Request Header
+### Example Request
+**Request Header**
 ```
 DELETE /v3/tags/{tag_value}?platform=android,ios
   Authorization: Basic (base64 auth string) 
   Accept: application/json 
 ```
 
-###### Request Params
+**Request Params**
 + platform 可选参数，不填则默认为所有平台。
 
-##### Example Response
+### Example Response
 + N/A
 
 
-### Alias
-#### 查询别名 （与设备的绑定关系）
-```
-GET /v3/aliases/{alias_value}
-获取指定alias下的设备，最多输出10个；
-```
-##### Example Request
-###### Request Header
-```
-GET /v3/aliases/{alias_value}?platform=android,ios
-  Authorization: Basic (base64 auth string) 
-  Accept: application/json
-```
-###### Request Params
-+ platform 可选参数，不填则默认为所有平台。
 
-##### Example Response
-###### Response Header
-```
-HTTP/1.1 200 OK 
-  Content-Type: application/json; charset=utf-8
-```
-###### Response Data
-```
-{
-     "registration_ids": ["registration_id1", "registration_id2"]
-}
-```
-+ 找不到统计项就是 null，否则为统计项的值。
-
-#### 删除别名 （与设备的绑定关系）
-```
-DELETE /v3/aliases/{alias_value}
-删除一个别名，以及该别名与设备的绑定关系。
-```
-##### Example Request
-###### Request Header
-```
-DELETE /v3/aliases/{alias_value}?platform=android,ios
-  Authorization: Basic (base64 auth string) 
-  Accept: application/json
-```
-###### Request Params
-+ platform 可选参数，不填则默认为所有平台。
-
-##### Example Response
-###### Response
-+ N/A
-
-### 获取用户在线状态（VIP专属接口）
+## 获取用户在线状态（VIP专属接口）
 
 如需要开通此接口，请联系：[商务客服](https://www.jiguang.cn/accounts/business/form)
 
-#### Example Request
+### Example Request
 
-##### Request Header
-
+**Request Header**
 ```
 POST /v3/devices/status/
   Authorization: Basic (base64 auth string) 
   Accept: application/json
 ```
-##### Request Data
+**Request Data**
 
 ```
 {
@@ -317,22 +329,22 @@ POST /v3/devices/status/
 }
 ```
 
-##### Request Params
+**Request Params**
 
 + registration_ids  需要在线状态的用户registration_id， 最多支持查询1000个registration_id；
 + 需要申请开通了这个业务的 Appkey 才可以调用此 API。
 
 
-#### Example Response
+### Example Response
 
-##### Response Header
+**Response Header**
 
 ```
 HTTP/1.1 200 OK 
   Content-Type: application/json; charset=utf-8
 ```
 
-##### Response Data  
+**Response Data**
 
 ```
 {
@@ -349,7 +361,7 @@ HTTP/1.1 200 OK
 }
 ```
 
-##### Response Params
+**Response Params**
 
 + online 
     + true: 10分钟之内在线； 
@@ -363,11 +375,10 @@ HTTP/1.1 200 OK
 
 
 
-### 调用返回
-#### HTTP 状态码
-参考文档：[Http-Status-Code](../server/http_status_code)
+## 调用返回
 
-#### 业务返回码
+
+### 业务返回码
 
 <div class="table-d" align="center" >
   <table border="1" width = "100%">
@@ -386,7 +397,7 @@ HTTP/1.1 200 OK
     <tr >
       <td>7001</td>
       <td>校验信息为空</td>
-      <td>必须改正，详情请看：<a href="./#_1">调用验证说明。</a></td>
+      <td>必须改正</td>
       <td>401</td>
     </tr>
     <tr >
@@ -398,7 +409,7 @@ HTTP/1.1 200 OK
     <tr >
       <td>7004</td>
       <td>校验失败</td>
-      <td>必须修正，详情请看：<a href="./#_1">调用验证说明。</a></td>
+      <td>必须修正</td>
       <td>401</td>
     </tr>
     <tr >
@@ -410,4 +421,6 @@ HTTP/1.1 200 OK
   </table>
 </div>
 
+### 参考
+参考文档：[Http-Status-Code](../server/http_status_code)
 

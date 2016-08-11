@@ -1,8 +1,7 @@
 # Report API V3
 JPush Report API V3 提供各类统计数据查询功能。
 
-这类 API 地址统一为（注意与 Push API 不同）：[https://report.jpush.cn](https://report.jpush.cn)
-
+这类 API 地址统一为（注意与 Push API 不同）：https://report.jpush.cn
 
 ###  送达统计
 
@@ -202,7 +201,7 @@ JSON Object
     <tr >
       <td>2003</td>
       <td>无权使用此接口</td>
-      <td>必须改正，详情请看：<a href="./#_1">调用验证说明。</a></td>
+      <td>必须改正</td>
     </tr>
     <tr >
       <td>3001</td>
@@ -212,7 +211,7 @@ JSON Object
     <tr >
       <td>3004</td>
       <td>time_unit与start参数值不匹配</td>
-      <td>必须修正，详情请看：<a href="./#_1">调用验证说明。</a></td>
+      <td>必须修正</td>
     </tr>
     <tr >
       <td>3005</td>
@@ -236,5 +235,5 @@ JSON Object
 }
 ```
 
-参考文档：[HTTP-Status-Code](../server/http_status_code)
+参考文档：[HTTP-Status-Code](http_status_code)
 

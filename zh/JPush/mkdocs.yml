@@ -47,12 +47,8 @@ pages:
   - 'JPush应用场景': 'advanced/scenes.md'
   - 'JPush高级话题': 'advanced/topics.md'
 
-- 旧文档:
-  - 'REST API v2 - Push': 'server/old/rest_api_v2_push.md'
-  - 'REST API v2 - Report': 'server/old/rest_api_v2_report.md'
-
-- 最近更新: 'updates.md'
 - 客户端集成插件: 'client/client_plugins.md'
+
 - 服务端SDK:
   - 'Java SDK': 'server/3rd/java_sdk.md'
   - 'Python SDK': 'server/3rd/python_sdk.md'
@@ -60,5 +56,9 @@ pages:
   - 'Ruby SDK': 'server/3rd/ruby_sdk.md'
   - 'C# SDK': 'server/3rd/csharp_sdk.md'
   - 'Node.js SDK': 'server/3rd/nodejs_sdk.md'
+- 旧文档:
+  - 'REST API v2 - Push': 'server/old/rest_api_v2_push.md'
+  - 'REST API v2 - Report': 'server/old/rest_api_v2_report.md'
+- 最近更新: 'updates.md'
 - 资源下载: 'resources.md'
 

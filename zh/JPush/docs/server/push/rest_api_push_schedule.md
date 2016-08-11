@@ -1,16 +1,16 @@
 #API Push Schedule
 
-### 概述
+## 概述
 
 API 层面支持定时功能。
 
 这是一个相对独立的任务执行模块，维护一个 Schedule 对象。
 
-#### 调用地址
+### 调用地址
 
 POST [https://api.jpush.cn](https://api.jpush.cn)
 
-#### 调用验证
+### 调用验证
 
 HTTP Header（头）里加一个字段（Key/Value对）：
 
@@ -20,7 +20,7 @@ HTTP Header（头）里加一个字段（Key/Value对）：
 
 即，对 appKey 加上冒号，加上 masterSecret 拼装起来的字符串，再做 base64 转换。
 
-### Schedule 对象定义及描述
+## Schedule 对象定义
 
 ```
 {
@@ -69,7 +69,7 @@ HTTP Header（头）里加一个字段（Key/Value对）：
 }
 ```
 
-**说明** 
+### 说明
 
 每一个schedule任务，都由name、enabled、trigger、push这四个小节组成。
 
@@ -117,15 +117,17 @@ HTTP Header（头）里加一个字段（Key/Value对）：
 </div>
 
 
-### 定时任务
 
-#### POST https://api.jpush.cn/v3/schedules
+## 创建定时任务
 
-创建一个新的定时任务。
+```
+POST https://api.jpush.cn/v3/schedules
+```
 
-##### Example Request
 
-Request Header
+#### Example Request
+
+**Request Header**
 
 ```
 POST /v3/schedules
@@ -134,7 +136,7 @@ POST /v3/schedules
  Accept: application/json
 ```
 
-Request Data
+**Request Data**
 
 ```
 {
@@ -166,7 +168,7 @@ Request Data
 }
 ```
 
-Request Data illustration
+**Request Data illustration**
 
 + 由于定时任务相对简单，我们例中只对定期任务进行说明
 + 以上表示创建一个定期任务，起始生效时间必须'2014-09-17 12:00:00之后'第一个time时间点，过期时间为'2014-10-18 12:00:00'，在有效期内每两周的周三、周五中午12点分别执行一次
@@ -176,7 +178,7 @@ Request Data illustration
 
 #### Example Response
 
-Success Response
+**Success Response**
 
 ```
 HTTP/1.1 200 CREATED 
@@ -190,7 +192,7 @@ HTTP/1.1 200 CREATED
 }
 ```
 
-Failed Response
+**Failed Response**
 
 ```
 HTTP/1.1 400 BAD REQUEST
@@ -207,7 +209,7 @@ HTTP/1.1 400 BAD REQUEST
 }
 ```
 
-### 获取有效的schedule列表
+## 获取有效的schedule列表
 
 #### GET https://api.jpush.cn/v3/schedules?page=
 
@@ -250,7 +252,7 @@ HTTP/1.1 200 OK
 + 以上表示总共1000个schedule-task, 总共5页，当前为第4页，包含50个schedule-task的信息。
 + 返回的schedules为schedule-task的详细信息列表。
 
-### 获取指定的定时任务
+## 获取指定的定时任务
 
 #### GET https://api.jpush.cn/v3/schedules/{schedule_id}
 
@@ -291,7 +293,7 @@ Response Data
 
 + 如schedule_id不存在，则返回404，否则返回实际schedule-task的详情。
 
-### 修改指定的Schedule
+## 修改指定的Schedule
 
 #### PUT https://api.jpush.cn/v3/schedules/{schedule_id}
 
@@ -343,7 +345,6 @@ PUT /v3/schedules/{scheduled_id}
 + 则以下为错误的更新及与之对应的正确的更新示例：
 
 ```
-
 ## WRONG: 更新push中的平台为安卓：
     { 
       "push":{"platform":"android"}
@@ -383,6 +384,7 @@ PUT /v3/schedules/{scheduled_id}
    ## 定时任务(single)与定期任务(periodical)之间不能进行相互更新，即，原先为single类任务，则不能更新为periodical任务，反之亦然。
    ## 不能更新已过期的schedule任务
 ```
+
 
 ** Example Response**
 Success Response
@@ -428,7 +430,7 @@ HTTP/1.0 400 BAD REQUEST
  Content-Type: application/json
 ```
 
-### 删除指定的Schedule任务
+## 删除指定的Schedule任务
 
 #### DELETE https://api.jpush.cn/v3/schedules/{schedule_id}
 
@@ -470,7 +472,7 @@ HTTP/1.0 404 Not Found
 }
 ```
 
-### 错误码描述
+## 错误码描述
 
 <div class="table-d" align="center" >
 	<table border="1" width = "100%">
@@ -532,7 +534,7 @@ HTTP/1.0 404 Not Found
 {"error":{"code":errcode, "message":"error message"}}
 ```
 
-### 限制
+## 调用限制
 + 定时最多有效数（当前未过期数）与周期最多有效数（当前未过期数）总数 100个。超过后失败。
 + 最大频率当前为100/分。
 + periodical任务的最大跨度为12个月。

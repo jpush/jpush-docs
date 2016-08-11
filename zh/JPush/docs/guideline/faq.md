@@ -80,7 +80,14 @@ img[alt=jpush_android_so] { width: 800px; }
 ### 怎么样向特定的某个用户推送消息？
 在客户端使用 setAliasAndTags API 来为该用户指定别名。以便服务器端对该别名推送消息。
 
-进一步了解请参考文档：[标签与别名API](http://www.baidu.com) 
+客户端如何设置别名和标签：[Android 标签和别名](../client/Android/android_api/#api_1)
+[iOS 标签和别名](../client/iOS/ios_api/#api-ios)
+
+使用别名和标签推送请参考文档：[标签与别名API](../server/push/rest_api_v3_push/#audience) 
+
+
+
+
 
 
 <br/>
@@ -89,7 +96,10 @@ img[alt=jpush_android_so] { width: 800px; }
 
 另外还可以在控制台设置用户分群（根据标签，地理位置等条件筛选用户），在控制台推送时指定该分群的名称或使用API调用该分群的id发送，也可以向一群用户推送消息。
 
-进一步了解请参考文档：[标签与别名API](http://www.baidu.com) 
+客户端如何设置别名和标签：[Android 标签和别名](../client/Android/android_api/#api_1)
+[iOS 标签和别名](../client/iOS/ios_api/#api-ios)
+
+使用别名和标签推送请参考文档：[标签与别名API](../server/push/rest_api_v3_push/#audience) 
 
 
 <br/>

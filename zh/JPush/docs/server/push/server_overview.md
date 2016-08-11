@@ -5,16 +5,16 @@ JPush 提供遵从 REST 规范的 HTTP API，以供开发者远程调用 JPush �
 与此同时，为方便开发者使用 JPush API，还提供[多种常用编程语言的开发包（SDK）](../../resources/#sdk_1)。
 
 
-### REST API 基本约束
+## REST API 基本约束
 
 * API 被设计为符合 HTTP, REST 规范。例如：查询请求使用 Get 方法，提交请求使用 Post 方法。如果一个请求不是相应的 HTTP 方法，将返回错误。
 * 如无特殊说明，调用参数值应转码为：UTF-8, URL编码 [^1]。
-* API 请求有[频率限制](#api-rating)。
+* API 请求有[频率限制](#api_1)。
 * API 请求有[黑名单机制](#blacklist)。
 
 [1]: [URL编码 - WikiPedia定义](http://zh.wikipedia.org/wiki/%E7%99%BE%E5%88%86%E5%8F%B7%E7%BC%96%E7%A0%81)
 
-### API 资源列表
+## API 资源列表
 <div class="table-d" align="center" >
         <table border="1" width = "100%">
                 <tr  bgcolor="#D3D3D3" >
@@ -24,19 +24,19 @@ JPush 提供遵从 REST 规范的 HTTP API，以供开发者远程调用 JPush �
                         <th>描述</th>
                 </tr>
                 <tr >
-                        <td>[REST API v3 - Push](../server/rest_api_v3_push)</td>
+                        <td>[REST API v3 - Push](rest_api_v3_push)</td>
                         <td>POST /v3/push</td>
                         <td>https://api.jpush.cn</td>
                         <td>推送消息 API</td>
                 </tr>
                 <tr >
-                        <td>[REST API v3 - Report](../server/rest_api_v3_report)</td>
+                        <td>[REST API v3 - Report](rest_api_v3_report)</td>
                         <td>GET /v3/received</td>
                         <td>https://report.jpush.cn</td>
                         <td>获取统计数据</td>
                 </tr>
                 <tr >
-                        <td>[REST API v3 - Devices](../server/rest_api_v3_device)</td>
+                        <td>[REST API v3 - Devices](rest_api_v3_device)</td>
                         <td>/v3/devices</td>
                         <td>https://device.jpush.cn</td>
                         <td>操作 tag,alias </td>
@@ -45,7 +45,7 @@ JPush 提供遵从 REST 规范的 HTTP API，以供开发者远程调用 JPush �
 </div>
 
 
-### 鉴权方式
+## 鉴权方式
 
 极光 REST API 采用 HTTP基本认证[^2] 的验证方式。
 
@@ -59,7 +59,7 @@ Header 名称是 "Authorization"，值是 base64 转换过的 "username:password
 
 即，上述 base64_auth_string 的生成算法为：base64(appKey:masterSecret)
 
-#### 鉴权举例
+### 鉴权举例
 
 你的 appKey 是 "7d431e42dfa6a6d693ac2d04", masterSecret 是 "5e987ac6d2e04d95a9d8f0d1"，则调用 Push API v3 时，使用 curl 命令的话，是这样写：
 
@@ -78,7 +78,7 @@ HTTP 请求发出的请求是：
 
 
 
-### API 频率控制
+## API 频率控制
 
 JPush API 对访问次数，具有频率控制。即一定的时间窗口内，API 允许调用的次数是有限制的。
 
@@ -89,7 +89,7 @@ JPush API 对访问次数，具有频率控制。即一定的时间窗口内，A
 </div>
 
 
-#### 频率定义
+### 频率定义
 
 一个时间窗口内，当前定义为：1 分钟。每个 AppKey 的 API 调用数量。
 
@@ -101,15 +101,15 @@ JPush API 对访问次数，具有频率控制。即一定的时间窗口内，A
                         <th>频率（次/分钟）</th>
                 </tr>
                 <tr >
-                        <td>[Push API v3](../server/rest_api_v3_push)</td>
+                        <td>[Push API v3](rest_api_v3_push)</td>
                         <td>600</td>
                 </tr>
                 <tr >
-                        <td>[Report-API](../server/rest_api_v3_report)</td>
+                        <td>[Report-API](rest_api_v3_report)</td>
                         <td>2400</td>
                 </tr>
                 <tr >
-                        <td>[Device-API](../server/rest_api_v3_device)</td>
+                        <td>[Device-API](rest_api_v3_device)</td>
                         <td>600</td>
                 </tr>
         </table>
@@ -117,7 +117,7 @@ JPush API 对访问次数，具有频率控制。即一定的时间窗口内，A
 
 收费版本根据终端用户规模的不同，具有不同级别的频率。如有需要，请[联系商务](https://www.jiguang.cn/accounts/business/form)。
 
-#### 获取频率信息
+### 获取频率信息
 
 所有的 HTTP API Response Header 里都加了三项频率控制信息：
 
@@ -125,7 +125,7 @@ JPush API 对访问次数，具有频率控制。即一定的时间窗口内，A
 + X-Rate-Limit-Remaining：当前时间窗口剩余的可用次数
 + X-Rate-Limit-Reset：距离时间窗口重置剩余的秒数
 
-#### 超出频率限制
+### 超出频率限制
 
 当一个请求遇到频率限制时，JPush API 返回的 HTTP 返回码为 429，其含义是：太多的请求。
 
@@ -138,7 +138,7 @@ JPush API 对访问次数，具有频率控制。即一定的时间窗口内，A
 	   }
 	}
 	
-#### 频率优化建议
+### 频率优化建议
 
 + 均匀地分布请求到各时间窗口
 + 根据 alias 大量请求时，避免无效的 alias。
@@ -147,7 +147,7 @@ JPush API 对访问次数，具有频率控制。即一定的时间窗口内，A
 
 
 
-### BlackList 黑名单
+## BlackList 黑名单
 
 如果某应用被认为是恶意推送，或者其 API 调用非法，其 AppKey 会被加入黑名单。
 
@@ -162,7 +162,7 @@ JPush API 对访问次数，具有频率控制。即一定的时间窗口内，A
  
 如果您的应用被加入黑名单，请发邮件到 <support@jpush.cn> 以进一步沟通协调。
 
-##### 外部参考
+## 参考
 
 + [HTTP 错误码 429  - WikiPedia定义](http://en.wikipedia.org/wiki/List_of_HTTP_status_codes#4xx_Client_Error)
 + [Twitter API 频率控制定义](https://dev.twitter.com/docs/rate-limiting/1.1)

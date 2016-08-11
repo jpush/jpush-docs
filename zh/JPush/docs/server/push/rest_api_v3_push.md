@@ -1,4 +1,4 @@
-<h1>Push API <small>v3</small></h1>
+#Push API <small>v3</small>
 
 
 <div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px;">
@@ -43,7 +43,7 @@ curl --insecure -X POST -v https://api.jpush.cn/v3/push -H "Content-Type: applic
 
 
 
-### 调用验证
+## 调用验证
 
 HTTP Header（头）里加一个字段（Key/Value对）：
 
@@ -151,7 +151,7 @@ HTTP Header（头）里加一个字段（Key/Value对）：
 
 ```
 
-### platform：推送平台
+## platform：推送平台
 
 JPush 当前支持 Android, iOS, Windows Phone 三个平台的推送。其关键字分别为："android", "ios", "winphone"。
 
@@ -168,15 +168,15 @@ JPush 当前支持 Android, iOS, Windows Phone 三个平台的推送。其关键
 
 	{ "platform" : ["android", "ios"] }
 
-### audience：推送目标
+## audience：推送目标
 
 推送设备对象，表示一条推送可以被推送到哪些设备列表。确认推送设备对象，JPush 提供了多种方式，比如：别名、标签、注册ID、分群、广播等。
 
-#### all
+### all
 
 如果要发广播（全部设备），则直接填写 “all”。
 
-#### 推送目标
+### 推送目标
 
 广播外的设备选择方式，有如下几种：
 
@@ -230,7 +230,7 @@ JPush 当前支持 Android, iOS, Windows Phone 三个平台的推送。其关键
 <br>
 
 
-#### 示例
+### 示例
 
 + 推送给全部（广播）：
 
@@ -300,13 +300,13 @@ JPush 当前支持 Android, iOS, Windows Phone 三个平台的推送。其关键
 ```
 
 
-### notification：通知
+## notification：通知
 
 “通知”对象，是一条推送的实体内容对象之一（另一个是“消息”），是会作为“通知”推送到客户端的。
 
 其下属属性包含 4 种，3 个平台属性，以及一个 "alert" 属性。
 
-#### alert
+### alert
 
 通知的内容在各个平台上，都可能只有这一个最基本的属性 "alert"。
 
@@ -322,7 +322,7 @@ JPush 当前支持 Android, iOS, Windows Phone 三个平台的推送。其关键
 
 上面定义的 notification 对象，将被推送到 "platform" 指定的多个平台，并且其通知 alert 信息都一样。
 
-#### android
+### android
 
 Android 平台上的通知。
 
@@ -389,7 +389,7 @@ Android 平台上的通知。
 }
 ```
 
-#### iOS
+### iOS
 
 iOS 平台上 APNs 通知结构。
 
@@ -494,7 +494,7 @@ iOS 平台上 APNs 通知结构。
 }
 ```
 
-#### winphone
+### winphone
 
 Windows Phone 平台上的通知。
 
@@ -561,7 +561,7 @@ Windows Phone 平台上的通知。
 ```
 
 
-### message：自定义消息
+## message：自定义消息
 
 应用内消息。或者称作：自定义消息，透传消息。
 
@@ -618,7 +618,7 @@ iOS 1.7.3及以上的版本才能正确解析v3的message，但是无法解析v2
 
 ```
 
-#### sms_message：短信补充
+## sms_message：短信补充
 
 <div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px;">
 <p>温馨提示：</p>
@@ -627,7 +627,7 @@ iOS 1.7.3及以上的版本才能正确解析v3的message，但是无法解析v2
 
 <br>
 
-用于设置短信推送内容以及短信发送的延迟时间。手机接收号码,开发者需要先把用户的手机号码与设备的registration id匹配。绑定方法：[服务端-Device-更新设备](../server/rest_api_v3_device/#device)
+用于设置短信推送内容以及短信发送的延迟时间。手机接收号码,开发者需要先把用户的手机号码与设备的registration id匹配。绑定方法：[服务端-Device-更新设备](rest_api_v3_device/#device)
 
 与原有 JSON 业务协议相匹配，消息有如下字段信息：
 
@@ -655,7 +655,7 @@ iOS 1.7.3及以上的版本才能正确解析v3的message，但是无法解析v2
 </div>
 
 
-#### options：可选参数
+### options：可选参数
 
 推送可选项。
 
@@ -793,10 +793,10 @@ POST https://api.jpush.cn/v3/push/validate
 </div>
 
 
-### 参考
-+ HTTP 返回码：[HTTP-Status-Code](../server/http_status_code/)
-+ 获取推送送达API：[Report-API](../server/rest_api_v3_report)
-+ 老版本 Push API：[Push API v2](../server/rest_api_v2_push)
+## 参考
++ HTTP 返回码：[HTTP-Status-Code](http_status_code/)
++ 获取推送送达API：[Report-API](rest_api_v3_report)
++ 老版本 Push API：[Push API v2](../old/rest_api_v2_push)
 + HTTP 规范参考：[HTTP基本认证](http://zh.wikipedia.org/zh/HTTP基本认证)
 + Apple APNs 规范：[Apple Push Notification Service](https://developer.apple.com/library/ios/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW12)
 + Microsoft MPNs 规范：[Push notifications for Windows Phone 8](http://msdn.microsoft.com/en-us/library/windowsphone/develop/ff402558(v=vs.105).aspx)
