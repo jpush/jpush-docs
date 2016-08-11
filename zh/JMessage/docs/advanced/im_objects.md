@@ -62,9 +62,9 @@ IM 在各类对外暴露的接口里，有一些公共的业务对象。本文�
 
 ### See Also 相关文档
 
-+ [IM 消息协议](../advanced/im_message_protocol/)
-+ [极光IM 指南](../../guideline/jmessage_guide/)
-+ [IM SDK for Android](../../client/im_sdk_android/)
-+ [IM SDK for iOS](../../client/im_sdk_ios/)
-+ [IM REST API](../../server/rest_api_im/)
++ [IM 消息协议](im_message_protocol/)
++ [极光IM 指南](../guideline/jmessage_guide/)
++ [IM SDK for Android](../client/im_sdk_android/)
++ [IM SDK for iOS](../client/im_sdk_ios/)
++ [IM REST API](../server/rest_api_im/)
 

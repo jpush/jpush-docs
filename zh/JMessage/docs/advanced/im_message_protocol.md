@@ -133,10 +133,10 @@ msg_type = custom
 
 ### See Also 相关文档
 
-+ [极光IM 指南](../../guideline/jmessage_guide/)
-+ [IM SDK for Android](../../client/im_sdk_android/)
-+ [IM SDK for iOS](../../client/im_sdk_ios/)
-+ [IM REST API](../../server/rest_api_im/)
-+ [IM 业务对象](../adanvced/im_objects/)
++ [极光IM 指南](../guideline/jmessage_guide/)
++ [IM SDK for Android](../client/im_sdk_android/)
++ [IM SDK for iOS](../client/im_sdk_ios/)
++ [IM REST API](../server/rest_api_im/)
++ [IM 业务对象](im_objects/)
 
 

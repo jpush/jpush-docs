@@ -1,8 +1,8 @@
 <h1>极光IM SDK - Android</h1>
 
-+ [极光IM 客户端 DEMO 下载](../../resources_jmessage/)
-+ [极光IM Android API Java docs](../client/im_android_api_docs/)
-+ [极光IM Android 错误码](../client/im_errorcode/#jmessage-android)
++ [极光IM 客户端 DEMO 下载](../resources/)
++ [极光IM Android API Java docs](im_android_api_docs/)
++ [极光IM Android 错误码](im_errorcode/#jmessage-android)
 
 ### 概述
 
@@ -1314,10 +1314,10 @@ public abstract class BasicCallback {
 
 
 ### 相关文档
-+ [JPush Android SDK 集成指南](../../guideline/android_guide/)
-+ [JPush Android SDK 概述](../../client/android_sdk/)
-+ [极光IM指南](../../guideline/jmessage_guide/)
-+ [IM 消息协议](../../advanced/im_message_protocol/)
-+ [IM 业务对象](../../advanced/im_objects/)
-+ [IM SDK for iOS](../../client/im_sdk_ios/)
-+ [IM REST API](../../server/rest_api_im/)
++ [JPush Android SDK 集成指南](../client/jmessage_android_guide/)
++ [JPush Android SDK 概述](../client/android_sdk/)
++ [极光IM指南](../guideline/jmessage_guide/)
++ [IM 消息协议](../advanced/im_message_protocol/)
++ [IM 业务对象](../advanced/im_objects/)
++ [IM SDK for iOS](../client/im_sdk_ios/)
++ [IM REST API](../server/rest_api_im/)
