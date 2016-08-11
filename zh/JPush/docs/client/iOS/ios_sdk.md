@@ -1,11 +1,11 @@
 # iOS SDK 概述
 
-+ [iOS 常见问题](../../guideline/faq/#ios)
++ [iOS 常见问题](ios_faq)
 + [iOS 客户端 SDK 下载](../../resources/#ios-sdk)
 
 ## JPush iOS
 
-![jpush_ios](image/jpush_ios.png)
+![jpush_ios](../image/jpush_ios.png)
 
 从上图可以看出，JPush iOS Push 包括 2 个部分，APNs 推送（代理），与 JPush 应用内消息。
 

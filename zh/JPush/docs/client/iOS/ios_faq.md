@@ -1,23 +1,23 @@
-<h1>iOS SDK 常见问题</h1>
+# iOS SDK 常见问题
 
 <style>
 img[alt=jpush_ios] { width: 800px; }
-img[alt=jpush_ios_5] { width: 500px; }
+img[alt=jpush_ios_5] { width: 500px; }## 
 </style>
 
-### iOS SDK 调试指南
+## iOS SDK 调试指南
 
-#### iOS 调试思维导图
+### iOS 调试思维导图
 
 ![jpush_ios](../image/JPushiOS.png)
 
-#### 确认证书
+### 确认证书
 
 请到“应用详情页面”确认证书可用性：
 
 ![jpush_ios_5](../image/ios_tut_cert_ok.png)
 
-#### 开发环境测试
+### 开发环境测试
 
 在对  JPush iOS 开发环境进行测试前，请确保 3 个统一：
 
@@ -25,7 +25,7 @@ img[alt=jpush_ios_5] { width: 500px; }
 + 上传了开发证书并验证通过
 + Portal 上的应用设置为开发环境
 
-#### 发布环境测试
+### 发布环境测试
 
 在对  JPush iOS 生产环境进行测试前，请确保 3 个统一：
 
@@ -33,9 +33,9 @@ img[alt=jpush_ios_5] { width: 500px; }
 + 上传了发布证书并验证通过
 + Portal 上的应用设置为生产环境
 
-#### 可能存在的其他问题
+### 可能存在的其他问题
 
-##### 收到消息不够稳定
+#### 收到消息不够稳定
 
 JPush iOS 是对原生官方 APNs 推送的一个补充，是对其的封装，以帮助开发人员更轻松地使用 APNs 。
 
@@ -43,130 +43,7 @@ JPush iOS 是对原生官方 APNs 推送的一个补充，是对其的封装，�
 
 
 
-### iOS 证书 设置指南
-
-#### 创建应用程序ID
-
-+ 登陆 [iOS Dev Center](https://developer.apple.com/devcenter/ios/index.action) 选择进入iOS Provisioning Portal。
-
-![jpush_ios](../image/login.png)
-
-+ 在 [iOS Provisioning Portal](https://daw.apple.com/cgi-bin/WebObjects/DSAuthWeb.woa/wa/login?&appIdKey=891bd3417a7776362562d2197f89480a8547b108fd934911bcbea0110d07f757&path=%2F%2Faccount%2Findex.action)中，点击App IDs进入App ID列表。
-
-![](../image/appid.png)
-
-+ 创建 App ID，如果 ID 已经存在可以直接跳过此步骤
-
-![jpush_ios](../image/appid2.png)
-
-+ 为 App 开启 Push Notification 功能。如果是已经创建的 App ID 也可以通过设置开启 Push Notification 功能。
-
-![jpush_ios](../image/appservice.png)
-
-根据实际情况完善 App ID 信息并提交,注意此处需要指定具体的 Bundle ID 不要使用通配符。
-
-![jpush_ios](../image/appid3.png)
-
-#### 配置和下载证书
-
-+ 如果你之前没有创建过 Push 证书或者是要重新创建一个新的，请在证书列表下面新建。
-
-![](../image/cer0.png)
-
-+ 新建证书需要注意选择证书种类（开发证书用于开发和调试使用，生产证书用于 App Store 发布）
-
-![](../image/cer1.png)
-
-+ 点击 Continue 后选择证书对应的应用ID，然后继续会出现“About Creating a Certificate Signing Request (CSR)”。
-
-![](../image/cer2.png)
-
-+ 根据它的说明创建打开KeychainAccess 创建 Certificate Signing Request。
-
-![](../image/Screenshot_13-4-1_5_22.png)
-
-+ 填写“User Email Address”和“Common Name” 后选择 Saved to disk 进行保存 。
-
-![](../image/Snip20140122_7.png)
-
-+ 继续返回Apple developer 网站点击 Continue ，上传刚刚生成的 .certSigningRequest 文件生成 APNs Push  Certificate。
-+ 下载并双击打开证书，证书打开时会启动“钥匙串访问”工具。
-+ 在“钥匙串访问”中你的证书会显示在“我的证书”中，注意选择“My Certificates” 和"login"
-
-![jpush_ios](../image/keychain_cert.png)
-
-#### 导出 .p12 证书文件
-
-```
-注意要选“login”和“My Certificates” 导出证书时要选中证书文件，不要展开private key。
-```
-
-![jpush_ios](../image/export_p12.png)
-
-+ 将文件保存为Personal Information Exchange (.p12)格式。
-
-![](../image/export_filename.png)
-
-+ 将文件保存为Personal Information Exchange (.p12)格式。
-
-#### 上传证书
-
-在 [JPush 管理 Portal 上](https://www.jiguang.cn/apps/)，针对某应用程序，上传上面步骤得到 .p12 证书文件。这是 iOS SDK 能够接收到 JPush 推送消息的必要步骤。
-
-
-#### Provisioning Profile的创建
-
-+ 创建Provisioning Profile的前提，已在Apple Developer网站创建待发布应用所使用的Bundle ID的App ID，且为该App ID创建了APNs证书，如下图:
-
-![jpush_ios](../image/appidcer.png)
-
-
-+ 创建App ID、APN证书和p12证书的导出的具体步骤请看 :[iOS 证书 设置指南](ios_faq/#ios_1)
-
-+ 在[苹果开发者账号的Provisioning Profile](https://developer.apple.com/account/ios/profile/profileList.action)页面点击下图按钮，创建Provisioning Profile
-
-![jpush_ios](../image/provision_profile.png)
-
-+ 选择此Provisioning Profile的环境后点击[Continue]：
-
-![jpush_ios](../image/create_pp_type.png)
-
-+ 选择要创建Provisioning Profile的App ID后点击[Continue]：
-
-![jpush_ios](../image/pp_appid_new.png)
-
-+ 选择所属的开发者证书，（这里创建了多个开发者证书，建议只创建一个，方便管理）为了方便，选择了[Select All]，再点击[Continue]进入下一步：
-
-![jpush_ios](../image/select_cer.png)
-
-+ 为该Provisioning Profile选择将要安装的设备（一般选择[Select All]），点击[Continue]:
-
-![jpush_ios](../image/select_devices.png)
-
-+ 给该Provisioning Profile填写Profile Name，点击[generate]完成创建。
-
-![jpush_ios](../image/pp_name.png)
-
-+ 填写完Profile Name后点击[generate]完成创建，之后点击[DownLoad]下载Provisioning Profile
-
-![jpush_ios](../image/download_pp.png)
-
-+ 双击下载下来的Provisioning Profile，添加到xcode。
-
-#### XCode的证书配置教程
-
-参照[iOS SDK 集成指南](ios_guide/)集成JPush SDK 和上传了推送用到的p12证书后在编译运行前需要先配置一下证书，步骤如下：
-
-+ 打开xxx-info.plist的Bundle identifier项把上传到JPush 控制台的bundle id填写进去：
-
-![jpush_ios](../image/xcode_bundle.png)
-
-+ 点击项目，选择目标TARGETS后进入Build Setting 界面，搜索“Code signing”，按照下图配置
-
-![jpush_ios](../image/xcode_buildsettings_cs.png)
-
-
-### iOS 7 Background Remote Notification
+## iOS 7 Background Remote Notification
 
 
 本次iOS 7在推送方面最大的变化就是允许，应用收到通知后在后台（background）状态下运行一段代码，可用于从服务器获取内容更新。功能使用场景：（多媒体）聊天，Email更新，基于通知的订阅内容同步等功能，提升了终端用户的体验。
@@ -182,35 +59,35 @@ Remote Notifications 与之前版本的对比可以参考下面两张 Apple 官�
 ![jpush_ios](../image/silent.png)
 
 
-#### 客户端设置
+### 客户端设置
 
-##### 开启Remote notifications
+#### 开启Remote notifications
 
 需要在Xcode 中修改应用的 Capabilities 开启Remote notifications，请参考下图：
 
 ![](../image/Snip20131119_1.png)
 
-##### 修改通知处理函数
+#### 修改通知处理函数
 
 当注册了Backgroud Modes -> Remote notifications 后，notification 处理函数一律切换到下面函数，后台推送代码也在此函数中调用。
 
 	- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler；
 
-#### 服务端推送设置
+### 服务端推送设置
 
 推送消息携带 content-available: 1 是Background 运行的必须参数，如果不携带此字段则与iOS7 之前版本的普通推送一样。
 
-##### 使用Web Portal 推送
+#### 使用Web Portal 推送
 
 在“可选设置内”选择对应的参数。
 
 ![](../image/push.png)
 
-##### 使用 API 推送
+#### 使用 API 推送
 
 只需在[Push API v3](../../server/push/rest_api_v3_push/#notification) 的 ios 内附加content-available":true 字段即可
 
-#### 限制与注意
+### 限制与注意
 
 + “Silent Remote Notifications”是在 Apple 的限制下有一定的频率控制，但具体频率不详。所以并不是所有的 “Silent Remote Notifications” 都能按照预期到达客户端触发函数。
 + “Background”下提供给应用的运行时间窗是有限制的，如果需要下载较大的文件请参考 Apple 的 NSURLSession 的介绍。
@@ -219,17 +96,17 @@ Remote Notifications 与之前版本的对比可以参考下面两张 Apple 官�
 更详细的说明资料请查阅 Apple 官方的 iOS 开发文档。
 
 
-###iOS 8 UIUserNotificationSettings
+## iOS 8 UIUserNotificationSettings
 
-#### 支持版本
+### 支持版本
 v1.8.0 版本开始。
 
 + 本次iOS 8在推送方面最大的变化就是修改了推送的注册接口，在原本的推送type的基础上，增加了一个categories参数，这个参数的目的是用来注册一组和通知关联起来的button的事件。
 + 这个categories由一系列的 UIUserNotificationCategory组成。每个UIUserNotificationCategory对象包含你的app用来响应本地或者远程通知的信息。每一个对象的title作为通知上每一个button的title展示给用户。当用户点击了某一个button，系统将会调用应用内的回调函数[application:handleActionWithIdentifier:forRemoteNotification:completionHandler:](https://developer.apple.com/library/prerelease/ios/documentation/UIKit/Reference/UIApplicationDelegate_Protocol/index.html#//apple_ref/occ/intfm/UIApplicationDelegate/application:handleActionWithIdentifier:forRemoteNotification:completionHandler:)或者[application:handleActionWithIdentifier:forLocalNotification:completionHandler:](https://developer.apple.com/library/prerelease/ios/documentation/UIKit/Reference/UIApplicationDelegate_Protocol/index.html#//apple_ref/occ/intfm/UIApplicationDelegate/application:handleActionWithIdentifier:forLocalNotification:completionHandler:)。
 
-#### 客户端设置
+### 客户端设置
 
-##### 使用UIUserNotificationCategory
+#### 使用UIUserNotificationCategory
 
 ```
 if ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0) {
@@ -261,7 +138,7 @@ if ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0) {
 }
 ```
 
-##### 使用UIUserNotificationType
+#### 使用UIUserNotificationType
 
 ```
 if ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0) {
@@ -271,7 +148,7 @@ if ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0) {
 }
 ```
 
-##### 使用回调函数
+#### 使用回调函数
 
 ```
 // Called when your app has been activated by the user selecting an action from
@@ -284,7 +161,7 @@ if ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0) {
 }
 ```
 
-#### 服务端设置
+### 服务端设置
 
 服务端payload格式:aps增加category字段，当该字段与客户端UIMutableUserNotificationCategory的identifier匹配时，触发设定的action和button显示。
 
@@ -295,9 +172,9 @@ payload example:
 ```
 
 
-###iOS 9 UIUserNotificationActionBehaviorTextInput
+## iOS 9 UIUserNotificationActionBehaviorTextInput
 
-#### 支持版本
+### 支持版本
 v1.8.0 版本开始
 
 1. 本次iOS 9在推送方面最大的变化就是修改了推送Category的类型，在原本的推送categories的基础上，增加了一个text Action类型，这个参数的目的是用来注册通过通知快捷文字输入的事项。
@@ -317,7 +194,7 @@ v1.8.0 版本开始
 
 + 当Action为UIUserNotificationActionBehaviorDefault时,responseInfo为nil,通过identifier来区分点击按钮分别是什么来做处理. 
 
-#### 客户端设置
+### 客户端设置
 
 **设置带有快速回复内容的通知**
 
@@ -347,7 +224,7 @@ v1.8.0 版本开始
  }
 ```
 
-#### 服务端设置
+### 服务端设置
 
 服务端payload格式:aps增加category字段，当该字段与客户端UIMutableUserNotificationCategory的identifier匹配时，触发设定的action和button显示。
 
@@ -356,7 +233,7 @@ payload example:
 {"aps":{"alert":"example", "sound":"default", "badge": 1, "category":"reply"}}
 ```
 
-### iOS 8 UILocalNotification
+## iOS 8 UILocalNotification
 
 
 本次iOS 8 UILocalNotification增加了三个参数: region、regionTriggersOnce、category。
@@ -365,9 +242,9 @@ payload example:
 + regionTriggersOnce(BOOL)：当为YES时，通知只会触发一次，当为NO时，通知将会在每一次进入或者离开时都触发。
 + category:如果localNotification通过+[UIUserNotificationSettings settingsForUserNotificationTypes:userNotificationActionSettings:]注册了，通过该category可以获取该通知的注册category.
 
-#### 客户端设置
+### 客户端设置
 
-##### 使用UILocalNotification
+#### 使用UILocalNotification
 
 ```
 // set localNotification
@@ -391,20 +268,20 @@ payload example:
                          category:@"test"];
 ```
 </br>
-###iOS 9集成
+## iOS 9集成
 
-####iOS 9变动影响SDK部分:
+### iOS 9变动影响SDK部分:
 
 + 增加了bitCode编码格式,当SDK不支持bitCode时，用户集成时无法开启bitCode选项.
 	+ 现象:用户集成SDK后无法编译通过，错误日志里包含了bitCode的相关错误信息
 + 默认使用https连接,如果请求为http,需要手动配置plist来支持http服务，当前我们的服务器请求都走http服务。
 	+ 现象:用户集成SDK后，所有JPush相关的http服务都提示连接错误或者连接超时,可能是此问题。
 
-####bitCode解决方式
+### bitCode解决方式
 
 JPush iOS SDK v1.8.7 及以上版本的SDK,已经增加对 iOS 9 新特性 bitCode 的支持.JMessage iOS SDK v2.0.0 及以上版本支持bitCode。
 
-####Https解决方式
+### Https解决方式
 
 SDK未提供https地址版本时
 
@@ -412,7 +289,7 @@ SDK未提供https地址版本时
 + 在NSAppTransportSecurity下添加NSAllowsArbitraryLoads类型Boolean,值设为YES
 
 <br />
-####iOS 如何推送自定义声音
+### iOS 如何推送自定义声音
 
 客户端需要将声音文件导入工程里，选中工程Target -> Build Phrases -> Copy Bundle Resources
 ![jpush_ios_v](../image/ios_voice.png)
@@ -422,7 +299,7 @@ SDK未提供https地址版本时
 
 <br />
 
-####为什么iOS收不到推送消息？
+### 为什么iOS收不到推送消息？
 
 如果你确认 appKey 在 SDK 客户端与 Portal 上设置是一致，其他环节也按照文档正确地操作。但还是收不到推送消息。那么，有一定的可能性，是你在 Portal 上上传的证书，不是 APNs (Push) 证书。推送时指定的iOS推送环境和应用证书是同一个环境。
 
@@ -434,7 +311,7 @@ SDK未提供https地址版本时
 
 <br />
 
-####为什么启动的时候出现 Did Fail To Register For Remote Notifications With Error的错误
+### 为什么启动的时候出现 Did Fail To Register For Remote Notifications With Error的错误
 
 程序运行的时候出现下面的错误信息：
 
@@ -446,13 +323,13 @@ SDK未提供https地址版本时
 
 <br />
 
-####如何在接收到 APN 的时候获取 APN 消息内容并进行跳转或做出响应处理？
+### 如何在接收到 APN 的时候获取 APN 消息内容并进行跳转或做出响应处理？
 
 [获取 APNs 推送内容](ios_api)
 
 <br />
 
-####如何关闭 APN  推送？
+### 如何关闭 APN  推送？
 
 关闭推送有以下两种方式关闭：
 
@@ -466,7 +343,7 @@ SDK未提供https地址版本时
 
 <br />
 
-####App badge number（角标）如何更改与清空？
+### App badge number（角标）如何更改与清空？
 
 JPush 网站上推送 iOS 通知时，可在［可选设置］里面指定 badge 参数的值，如：1或"+1"。
 
@@ -477,7 +354,7 @@ api上指定badge的参数请看：[Push-API-v3#API-v3-ios](/ios_api/#badge)
 关于badge ＋1的介绍，请看[APNs Notification badge](http://blog.jiguang.cn/ios_apns_badge_plus/)
 
 <br />
-####Icon Badge number 的清空方法：
+### Icon Badge number 的清空方法：
 
 + APN 推送内容指定 badge number 为 0；
 + 在代码中使用如下代码清空 badge number：  [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
@@ -488,7 +365,7 @@ badge累加只能通过v3 api推送，且只有1.7.4版本以上才能支持。
 
 <br />
 
-####为何推送一条 APN 后，点击通知中心的 APN 通知打开 App，可是 APN 通知在通知中心依然存在而未被删除？
+### 为何推送一条 APN 后，点击通知中心的 APN 通知打开 App，可是 APN 通知在通知中心依然存在而未被删除？
 
 如果推送 APN 时，Badge number 被指定为0 ，则可能出现 APN 消息在通知中心被点击后，尽管调用了   [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0]; 但 APN 消息在通知中心不会被删除的情况。 这种情况可以按如下代码调用以清除通知中心的 APN 通知。
 
@@ -499,7 +376,7 @@ badge累加只能通过v3 api推送，且只有1.7.4版本以上才能支持。
 
 <br />
 
-####出现Not get deviceToken yet. Maybe: your certificate not configured APNs?...错误日志时如何排除问题?
+### 出现Not get deviceToken yet. Maybe: your certificate not configured APNs?...错误日志时如何排除问题?
 
 如果出现上述日志，则说明一段时间内都无法获取device token，那么：
 
@@ -531,7 +408,7 @@ badge累加只能通过v3 api推送，且只有1.7.4版本以上才能支持。
 
 <br />
 
-####上传到appStore的版本为什么收不到推送？
+### 上传到appStore的版本为什么收不到推送？
 
 + 请确认xcode选择的生产证书和上传的证书的bundleid一致；
 + 如果是在jpush网站上推送，请确认新建通知时推送对象是否选择了生产环境；
@@ -539,7 +416,7 @@ badge累加只能通过v3 api推送，且只有1.7.4版本以上才能支持。
 
 <br />
 
-####iOS 平台上传证书一直为未通过状态
+### iOS 平台上传证书一直为未通过状态
 
 证书上传未通过的原因一般有：
 
@@ -551,7 +428,7 @@ badge累加只能通过v3 api推送，且只有1.7.4版本以上才能支持。
 
 <br />
 
-####为什么日志里面会打印：You've implemented -[ <UIApplicationDelegate\> application:didReceiveRemoteNotification:fetchCompletionHandler:], but you still need to add "remote-notification" to the list of your supported UIBackgroundModes in your Info.plist.
+#### 为什么日志里面会打印：You've implemented -[ <UIApplicationDelegate\> application:didReceiveRemoteNotification:fetchCompletionHandler:], but you still need to add "remote-notification" to the list of your supported UIBackgroundModes in your Info.plist.
 
 这个主要是提示开发者如果要支持UIBackgroundModes，需要开启Remote notifications，具体操作可以看：[iOS 7 Background Remote Notification](ios_faq/#ios-7-background-remote-notification)
 
