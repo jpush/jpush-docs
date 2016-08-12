@@ -22,7 +22,9 @@ pages:
 - iOS:
   - 'iOS SDK 概述': 'client/iOS/ios_sdk.md'
   - 'iOS SDK 集成指南': 'client/iOS/ios_guide.md'
+  - 'iOS SDK 调试指南': 'client/iOS/ios_debug_guide.md'
   - 'iOS 证书设置指南': 'client/iOS/ios_cer_guide.md'
+  - 'iOS 新特性汇总': 'client/iOS/ios_new_fetures.md'
   - 'iOS API': 'client/iOS/ios_api.md'
   - 'iOS SDK FAQ': 'client/iOS/ios_faq.md'
 
