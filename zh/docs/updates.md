@@ -1,10 +1,10 @@
-# 最近更新
+﻿# 最近更新
 
 
 
 ### JMessage IOS SDK v2.1.5
 #### 更新时间
-+ 2016-08-15
++ 2016-08-13
 
 #### JMessage SDK Change Log
 
