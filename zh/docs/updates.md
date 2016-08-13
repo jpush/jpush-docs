@@ -3,6 +3,42 @@
 
 
 ### JMessage IOS SDK v2.1.3
+#### 更新时间
++ 2016-08-13
+
+#### JMessage SDK Change Log
+
+##### BugFix:
++ 修复本地时间和服务器时间不一致时，消息顺序错乱的问题
++ 
+#### 升级指南
++ 使用新版本的JMessage.framework文件替换原工程下的同名旧文件
+
+
+### JMessage Android SDK v1.3.1
+#### 更新时间
++ 2016-08-13
+
+#### JMessage SDK Change Log
+
+##### Bug Fix
+
++ 修复：本地时间与后台时间不一致导致的消息顺序错乱
+
+
+#### JChat Change Log
++ 适配JMessage SDK 1.3.1
+
+
+#### 升级指南
+
++ jar包更新至jmessage-sdk-1.3.1.jar更新时需删除老版本jar包。
++ 将so库更新至 libjpush216.so 同时删除原来老版本so。注意不同的cpu型号对应的结构
++ 由于富媒体的展示需求，SDK 中增加一个res文件夹存放资源文件。用户需将对应文件夹下的资源文件放入工程的目录中。
++ 如果是从更早起的版本升级过来，建议参考 SDK下载包最新版本的 demo 来更新 AndroidManifest.xml 文件配置。
+
+
+### JMessage IOS SDK v2.1.3
 
 #### 更新时间
 + 2016-07-15
