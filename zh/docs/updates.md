@@ -2,15 +2,15 @@
 
 
 
-### JMessage IOS SDK v2.1.3
+### JMessage IOS SDK v2.1.5
 #### 更新时间
-+ 2016-08-13
++ 2016-08-15
 
 #### JMessage SDK Change Log
 
 ##### BugFix:
 + 修复本地时间和服务器时间不一致时，消息顺序错乱的问题
-+ 
+
 #### 升级指南
 + 使用新版本的JMessage.framework文件替换原工程下的同名旧文件
 
