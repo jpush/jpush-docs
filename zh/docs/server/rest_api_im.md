@@ -294,7 +294,7 @@ Request Body
 
 N/A
 
-#### Example Response
+##### Example Response
 Response Header
 
 ```
@@ -308,7 +308,7 @@ Response Data
 {"login":true, "online": false}
 ```
 
-#### Error Code
+##### Error Code
 
 错误码
 
@@ -624,7 +624,7 @@ File Download
 ```
 GET /resource?mediaId={mediaId}
 ```
-#### Example Request
+##### Example Request
 
 Request Header 
 
@@ -643,7 +643,7 @@ Request Params
 | mediaId   | 资源的mediaId，包括用户的avatar字段 |      |
 
 
-#### Example Response 
+##### Example Response 
 Response Header
 
 ```
