@@ -39,7 +39,7 @@ img[alt=jpush_ios] { width: 800px; }
 
 ### 开发环境
 
-* 使用Xcode 6及以上版本可以使用新版Push SDK，XCode 5环境下需要运行旧版本SDK(1.7.4)
+* 使用Xcode 6及以上版本可以使用新版Push SDK，Xcode 5环境下需要运行旧版本SDK(1.7.4)
 
 ## SDK集成步骤
 
@@ -111,7 +111,7 @@ PushConfig.plist文件示例图:
 
 
 
-####允许XCode7支持Http传输方法
+####允许Xcode7支持Http传输方法
 
 如果用的是Xcode7时，需要在App项目的plist手动配置下key和值以支持http传输:
 
@@ -199,10 +199,10 @@ APIs 主要集中在 JPUSHService 接口类里。
 // iOS 10 Support（2.1.9版新增协议）
 @protocol JPUSHRegisterDelegate <NSObject>
 
-// 实现后，前台运行时收到推送会回调此方法
+// 应用前台运行时，收到本地或远程推送会回调此方法
 - (void)jpushNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(NSInteger))completionHandler;
 	
-// 实现后，后台运行时收到推送会回调此方法，后台运行下点击处理推送后也会回调
+// 应用后台运行时，操作通知会回调此方法
 - (void)jpushNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)())completionHandler;
 
 @end
@@ -268,11 +268,8 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
  
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
  
-  // Required
-  if ([[UIDevice currentDevice].systemVersion floatValue] < 10.0) {
-     // Required, iOS 7 Support
-    [JPUSHService handleRemoteNotification:userInfo];
-  }
+  // Required, iOS 7 Support
+  [JPUSHService handleRemoteNotification:userInfo];
   completionHandler(UIBackgroundFetchResultNewData);
 }
 
