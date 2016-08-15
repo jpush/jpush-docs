@@ -16,7 +16,7 @@ pages:
   - 'Android SDK 概述': 'client/Android/android_sdk.md'
   - '3 分钟 Demo': 'client/Android/android_3m.md'
   - 'Android SDK 集成指南': 'client/Android/android_guide.md'
-  - 'Android SDK 调试指南': 'client/Android/android__debug_guide.md'
+  - 'Android SDK 调试指南': 'client/Android/android_debug_guide.md'
   - 'Android SDK 进阶教程': 'client/Android/android_senior.md'
   - 'Android SDK API': 'client/Android/android_api.md'
   - 'Android SDK FAQ': 'client/Android/android_faq.md'
