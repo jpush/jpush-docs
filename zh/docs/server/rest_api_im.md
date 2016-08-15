@@ -268,7 +268,7 @@ Content-Type: application/json; charset=utf-8
 ##### Example Response
 
 ```
-< HTTP/1.1 204 NO CONTENT
+< HTTP/1.1 204 
 < Content-Type: application/json; charset=utf-8
 
 ```
@@ -283,7 +283,7 @@ Get /users/{username}/userstat
 Request Header 
 
 ```
-Put /users/caiyh/userstat
+Get /users/caiyh/userstat
 Content-Type: application/json; charset=utf-8 
 ```
 Request Params
