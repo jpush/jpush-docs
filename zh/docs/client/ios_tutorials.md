@@ -658,56 +658,56 @@ v2.1.9版开始
 **参考代码**:
 	
 ```
-- (void)jpushNotificationCenter:(UNUserNotificationCenter *)center 	willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)	(NSInteger))completionHandler {
+- (void)jpushNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(NSInteger))completionHandler {
   NSDictionary * userInfo = notification.request.content.userInfo;
-  NSLog(@"收到通知的userInfo:%@", [self logDic:userInfo]);
+  
+  UNNotificationRequest *request = notification.request; // 收到推送的请求
+  UNNotificationContent *content = request.content; // 收到推送的消息内容
+  
+  NSNumber *badge = content.badge;  // 推送消息的角标
+  NSString *body = content.body;    // 推送消息体
+  UNNotificationSound *sound = content.sound;  // 推送消息的声音
+  NSString *subtitle = content.subtitle;  // 推送消息的副标题
+  NSString *title = content.title;  // 推送消息的标题
+  
   if([notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
     [JPUSHService handleRemoteNotification:userInfo];
+    NSLog(@"iOS10 前台收到远程通知:%@", [self logDic:userInfo]);
+
+    [rootViewController addNotificationCount];
+
   }
   else {
     // 判断为本地通知
+    NSLog(@"iOS10 前台收到本地通知:{\nbody:%@，\ntitle:%@,\nsubtitle:%@,\nbadge：%@，\nsound：%@，\nuserInfo：%@\n}",body,title,subtitle,badge,sound,userInfo);
   }
-  NSDate *date = notification.date; // 收到推送的时间
-  UNNotificationRequest *request = notification.request; // 收到推送的请求
-  NSString *requestIdentifier = request.identifier; // 收到推送的请求标识
-  UNNotificationContent *content = request.content; // 收到推送的消息内容
-  UNNotificationTrigger *trigger = request.trigger; // 收到推送的触发方式,UNPushNotificationTrigger\UNTimeIntervalNotificationTrigger\UNCalendarNotificationTrigger\UNLocationNotificationTrigger中的一种
-  NSArray <UNNotificationAttachment *> *attachments = content.attachments;  // 推送消息的附件
-  NSNumber *badge = content.badge;  // 推送消息的角标
-  NSString *body = content.body;    // 推送消息体
-  NSString *categoryIdentifier = content.categoryIdentifier;  // 推送消息的行为分类标识
-  NSString *launchImageName = content.launchImageName;  // 推送消息的启动页面
-  UNNotificationSound *sound = content.sound;  // 推送消息的声音
-  NSString *subtitle = content.subtitle;  // 推送消息的副标题
-  NSString *threadIdentifier = content.threadIdentifier;  // 推送消息的线程标识
-  NSString *title = content.title;  // 推送消息的标题
   completionHandler(UNNotificationPresentationOptionAlert); // 需要执行这个方法，选择是否提醒用户，有Badge、Sound、Alert三种类型可以设置
 }
 
-- (void)jpushNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:	(void (^)())completionHandler {
+- (void)jpushNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)())completionHandler {
+  
   NSDictionary * userInfo = response.notification.request.content.userInfo;
-  NSLog(@"收到通知的userInfo:%@", [self logDic:userInfo]);
+  UNNotificationRequest *request = response.notification.request; // 收到推送的请求
+  UNNotificationContent *content = request.content; // 收到推送的消息内容
+  
+  NSNumber *badge = content.badge;  // 推送消息的角标
+  NSString *body = content.body;    // 推送消息体
+  UNNotificationSound *sound = content.sound;  // 推送消息的声音
+  NSString *subtitle = content.subtitle;  // 推送消息的副标题
+  NSString *title = content.title;  // 推送消息的标题
+  
   if([response.notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
     [JPUSHService handleRemoteNotification:userInfo];
+    NSLog(@"iOS10 收到远程通知:%@", [self logDic:userInfo]);
+    [rootViewController addNotificationCount];
+
   }
   else {
     // 判断为本地通知
+    NSLog(@"iOS10 收到本地通知:{\nbody:%@，\ntitle:%@,\nsubtitle:%@,\nbadge：%@，\nsound：%@，\nuserInfo：%@\n}",body,title,subtitle,badge,sound,userInfo);
   }
-  NSDate *date = response.notification.date; // 收到推送的时间
-  UNNotificationRequest *request = response.notification.request; // 收到推送的请求
-  NSString *requestIdentifier = request.identifier; // 收到推送的请求标识
-  UNNotificationContent *content = request.content; // 收到推送的消息内容
-  UNNotificationTrigger *trigger = request.trigger; // 收到推送的触发方式,UNPushNotificationTrigger\UNTimeIntervalNotificationTrigger\UNCalendarNotificationTrigger\UNLocationNotificationTrigger中的一种
-  NSArray <UNNotificationAttachment *> *attachments = content.attachments;  // 推送消息的附件
-  NSNumber *badge = content.badge;  // 推送消息的角标
-  NSString *body = content.body;    // 推送消息体
-  NSString *categoryIdentifier = content.categoryIdentifier;  // 推送消息的行为分类标识
-  NSString *launchImageName = content.launchImageName;  // 推送消息的启动页面
-  UNNotificationSound *sound = content.sound;  // 推送消息的声音
-  NSString *subtitle = content.subtitle;  // 推送消息的副标题
-  NSString *threadIdentifier = content.threadIdentifier;  // 推送消息的线程标识
-  NSString *title = content.title;  // 推送消息的标题
-  completionHandler();	// 系统要求执行这个方法
+  
+  completionHandler();  // 系统要求执行这个方法
 }
  
 ```

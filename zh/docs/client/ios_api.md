@@ -394,7 +394,7 @@ iOS 设备收到一条推送（APNs），用户点击推送通知打开应用时
 <br>// APNs内容为userInfo
  	</div>
 
-* 基于iOS 10及以上的系统版本，原[application: didReceiveRemoteNotification:]将会被系统废弃，由新增UserNotifications Framework中的-[UNUserNotificationCenterDelegate willPresentNotification:withCompletionHandler:] 或者 -[UNUserNotificationCenterDelegate didReceiveNotificationResponse:withCompletionHandler:]方法替代。在2.1.9版本以后可实现SDK封装的JPUSHRegisterDelegate协议方法兼容系统新增的delegate的方法，实现新的回调方式。即为以下两个方法：
+* 基于iOS 10及以上的系统版本，原[application: didReceiveRemoteNotification:]将会被系统废弃，由新增UserNotifications Framework中的[UNUserNotificationCenterDelegate willPresentNotification:withCompletionHandler:]或者[UNUserNotificationCenterDelegate didReceiveNotificationResponse:withCompletionHandler:]方法替代。在2.1.9版本以后可实现SDK封装的JPUSHRegisterDelegate协议方法，适配iOS10新增的delegate协议方法。即为以下两个方法：
 
  	<div style="font-size:13px;background: #F5F5F5;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">
 <p>- (void)jpushNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(NSInteger))completionHandler;
@@ -429,9 +429,7 @@ iOS 设备收到一条推送（APNs），用户点击推送通知打开应用时
   NSLog(@"this is iOS7 Remote Notification");
          
   // iOS 10 以下 Required
-  if ([[UIDevice currentDevice].systemVersion floatValue] < 10.0) {
-    [JPUSHService handleRemoteNotification:userInfo];
-  }
+  [JPUSHService handleRemoteNotification:userInfo];
   completionHandler(UIBackgroundFetchResultNewData);
 }
     
@@ -753,15 +751,15 @@ iOS 设备收到一条本地通知，用户点击通知打开应用时，应用�
 <br>// 本地通知为notification
 	</div>
 
-* 在iOS 10以上上述方法将被系统废弃，由新增UserNotifications Framework中的-[UNUserNotificationCenterDelegate willPresentNotification:withCompletionHandler:] 或者 -[UNUserNotificationCenterDelegate didReceiveNotificationResponse:withCompletionHandler:]方法替代。为此，SDK封装了JPUSHRegisterDelegate协议，只需实现相应的协议方法即可兼容系统新的delegate方法，实现新的回调方式。与上述远程推送新回调方法一致，如下实现代码：
+* 在iOS 10以上上述方法将被系统废弃，由新增UserNotifications Framework中的[UNUserNotificationCenterDelegate willPresentNotification:withCompletionHandler:]或者[UNUserNotificationCenterDelegate didReceiveNotificationResponse:withCompletionHandler:]方法替代。为此，SDK封装了JPUSHRegisterDelegate协议，只需实现相应的协议方法即可适配iOS10新增的delegate方法，与上述远程推送新回调方法一致，也即是如下方法：
 
 	<div style="font-size:13px;background: #F5F5F5;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">
 <p>- (void)jpushNotificationCenter:(UNUserNotificationCenter *)center 	willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)	(NSInteger))completionHandler;
-<br>// if(![notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {	// 不是远程推送触发方式
+<br>// if (![notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
 <br>// 本地通知为notification
 <br>// }
 <p>- (void)jpushNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:	(void (^)())completionHandler;
-<br>// if(![response.notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {	// 不是远程推送触发方式
+<br>// if (![response.notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
 <br>// 本地通知为response.notification
 <br>// }
 	</div>
@@ -1289,7 +1287,7 @@ API 用于统计用户应用崩溃日志
 
 ##### 调用说明
 
-如果需要统计崩溃错误Log信息，调用该接口。当你需要自己自定义收集错误信息时，切记不要调用该接口。
+调用此API开启收集应用崩溃信息功能。如果你想通过其他渠道收集，切记不要调用此API。
 
 ##### 代码示例
 
