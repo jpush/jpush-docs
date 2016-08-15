@@ -8,7 +8,7 @@ img[alt=jpush_ios] { width: 800px; }
 
 本文匹配的 SDK版本：r2.1.5 以后。
 
-[查看最近更新](http://docs.jpush.io/updates/)了解最新的SDK更新情况。
+[查看最近更新](http://docs.jiguang.cn/updates/)了解最新的SDK更新情况。
 
 ## 产品功能说明
 
@@ -45,7 +45,7 @@ img[alt=jpush_ios] { width: 800px; }
 
 ### 1、在JPush Portal上创建应用
 
-* 在 JPush的管理Portal 上创建应用并上传APNs证书。如果对APNs证书不太了解 请参考： [iOS 证书设置指南](http://docs.jpush.io/client/ios_tutorials/#ios_1) 
+* 在 JPush的管理Portal 上创建应用并上传APNs证书。如果对APNs证书不太了解 请参考： [iOS 证书设置指南](ios_cer_guide) 
 
 
 ![jpush_ios][0]
@@ -86,7 +86,7 @@ img[alt=jpush_ios] { width: 800px; }
 * CHANNEL
     * 指明应用程序包的下载渠道，为方便分渠道统计，具体值由你自行定义，如：App Store。
 * APP_KEY
-    * 填写[管理Portal上创建应用](https://www.jpush.cn/apps/new)后自动生成的AppKey值。请确保应用内配置的 AppKey 与第1步在 Portal 上创建应用后生成的 AppKey 一致。
+    * 填写[管理Portal上创建应用](https://www.jiguang.cn/app/form)后自动生成的AppKey值。请确保应用内配置的 AppKey 与第1步在 Portal 上创建应用后生成的 AppKey 一致。
 * APS_FOR_PRODUCTION
     * 1.3.1版本新增，用于标识当前应用所使用的APNs证书环境。
     * 0 (默认值)表示采用的是开发证书，1 表示采用生产证书发布应用。
@@ -297,12 +297,12 @@ extern NSString * const kJPFNetworkDidReceiveMessageNotification; // 收到自�
 
 邮件联系：[support@jpush.cn][4]
 
-问答社区：[http://www.jpush.cn/qa/][5]
+问答社区：[http://community.jiguang.cn][5]
 
-[0]: image/create_ios_app.jpg
-[1]: image/Screenshot_13-4_2_create.jpg
-[2]: image/Screenshot_13-4-15_3_31.png
-[3]: ../../client_sdks/ios_api
+[0]: ../image/create_ios_app.jpg
+[1]: ../image/Screenshot_13-4_2_create.jpg
+[2]: ../image/Screenshot_13-4-15_3_31.png
+[3]: ios_api
 [4]: mailto:support@jpush.cn
-[5]: http://www.jpush.cn/qa/
-[6]: image/ios_http.png
+[5]: http://community.jiguang.cn
+[6]: ../image/ios_http.png
