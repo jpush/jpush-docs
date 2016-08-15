@@ -270,7 +270,51 @@ Content-Type: application/json; charset=utf-8
 ```
 < HTTP/1.1 204 NO CONTENT
 < Content-Type: application/json; charset=utf-8
+
 ```
+
+#### 用户在线状态查询
+
+```
+Get /users/{username}/userstat
+```
+##### Example Request
+
+Request Header 
+
+```
+Put /users/caiyh/userstat
+Content-Type: application/json; charset=utf-8 
+```
+Request Params
+
++ username 用户名 
+
+Request Body
+
+N/A
+
+#### Example Response
+Response Header
+
+```
+HTTP/1.1 200 NO Content
+Content-Type: application/json; charset=utf-8
+```
+
+Response Data
+
+```
+{"login":true, "online": false}
+```
+
+#### Error Code
+
+错误码
+
++ 899003 username不合法
++ 899002 用户不存在
+
 
 #### 修改密码
 
@@ -573,6 +617,45 @@ Error Code
 + 899002   用户不存在，target_id或者from_id不存在
 + 899016   from_id 没有权限发送message
 
+### 媒体文件下载
+
+File Download
+
+```
+GET /resource?mediaId={mediaId}
+```
+#### Example Request
+
+Request Header 
+
+```
+GET /resource?mediaId={mediaId}
+```
+Request Body
+
+N/A
+
+Request Params
+
+
+| 参数 | 含义               | 备注 |
+|--------|--------------------------|------|
+| mediaId   | 资源的mediaId，包括用户的avatar字段 |      |
+
+
+#### Example Response 
+Response Header
+
+```
+HTTP/1.1 200 no content
+Content-Type: application/json; charset=utf-8 
+```
+
+Response Data
+
+```
+{"url":"http://........."}
+```
 
 ### Group对象字段总览
 
