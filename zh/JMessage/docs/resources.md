@@ -24,7 +24,7 @@
                     </ul>
                     </div>
                     <div class="download-icon">
-                        <a href="https://www.jpush.cn/downloads/sdk/android/">下载</a>
+                        <a href="https://www.jiguang.cn/downloads/sdk/im_android/">下载</a>
                     </div>
                 </div>
         </li>

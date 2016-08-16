@@ -17,14 +17,14 @@
                 <div class="download-info">
                     <p>请参考如下文档来集成SDK：</p>
                     <ul class="download-info-ul">
-                        <li><a href="../guideline/android_guide">Android SDK集成指南</a></li>
-                        <li><a href="../guideline/android_3m">3分钟快速 Demo(Android)</a></li>
-                        <li><a href="../client/android_tutorials">Android SDK 教程</a></li>
+                        <li><a href="../client/Android/android_guide">Android SDK集成指南</a></li>
+                        <li><a href="../client/Android/android_3m">3分钟快速 Demo(Android)</a></li>
+                        <li><a href="../client/Android/android_debug_guide">Android SDK 调试指南</a></li>
                         <div style=" clear:both; visibility:hidden;">
                     </ul>
                     </div>
                     <div class="download-icon">
-                        <a href="https://www.jpush.cn/downloads/sdk/android/">下载</a>
+                        <a href="https://www.jiguang.cn/downloads/sdk/android/">下载</a>
                     </div>
                 </div>
         </li>
@@ -41,13 +41,13 @@
                 <div class="download-info">
                     <p>请参考如下文档来集成SDK：</p>
                     <ul class="download-info-ul">
-                        <li><a href="../guideline/ios_guide">iOS 集成指南</a></li>
-                        <li><a href="../client/ios_tutorials">iOS SDK 教程</a></li>
+                        <li><a href="../client/iOS/ios_guide">iOS 集成指南</a></li>
+                        <li><a href="../client/iOS/ios_debug_guide/">iOS SDK 调试指南</a></li>
                         <div style=" clear:both; visibility:hidden;">
                     </ul>
                     </div>
                     <div class="download-icon">
-                        <a href="https://www.jpush.cn/downloads/sdk/ios8/">下载</a>
+                        <a href="https://www.jiguang.cn/downloads/sdk/ios">下载</a>
                     </div>
                 </div>
         </li>
@@ -64,13 +64,13 @@
                 <div class="download-info">
                     <p>请参考如下文档来集成SDK：</p>
                     <ul class="download-info-ul">
-                        <li><a href="../guideline/winphone_guide">WinPhone SDK 集成指南</a></li>
-                        <li><a href="../guideline/winphone_3m">3分钟快速 Demo(WinPhone)</a></li>
+                        <li><a href="../client/Windows Phone/winphone_guide">WinPhone SDK 集成指南</a></li>
+                        <li><a href="../client/Windows Phone/winphone_3m">3分钟快速 Demo(WinPhone)</a></li>
                         <div style=" clear:both; visibility:hidden;">
                     </ul>
                     </div>
                     <div class="download-icon">
-                        <a href="https://www.jpush.cn/downloads/sdk/android/">下载</a>
+                        <a href="https://www.jiguang.cn/downloads/sdk/winphone/">下载</a>
                     </div>
                 </div>
         </li>
