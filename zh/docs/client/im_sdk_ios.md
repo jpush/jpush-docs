@@ -59,7 +59,7 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 
 这个调用是必须的。否则 SDK 将不能正常工作。
 
-####登录、注册
+####注册与登录
 #####用户注册
 	/*!
 	 * @abstract 新用户注册
@@ -348,6 +348,36 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 	+ (void)sendSingleVoiceMessage:(NSData *)voiceData
 	                 voiceDuration:(NSNumber *)duration
 	                        toUser:(NSString *)username;
+	                       
+#####发送单聊文件消息
+	/*!
+	 * @abstract 发送单聊文件消息
+	 *
+	 * @param fileData 文件数据数据
+	 * @param fileName 文件名
+	 * @param username 单聊对象 username
+	 *
+	 * @discussion 快捷方法，不需要先创建消息而直接发送。
+	 */
+	+ (void)sendSingleFileMessage:(NSData *)fileData
+	                     fileName:(NSString *)fileName
+	                       toUser:(NSString *)username;
+
+#####发送单聊位置消息
+	/*!
+	 * @abstract 发送单聊地理位置消息
+	 * @param latitude 纬度
+	 * @param longitude 经度
+	 * @param scale 缩放比例
+	 * @param address 详细地址
+	 * @param username 单聊对象
+	 * @discussion 快捷方法，不需要先创建消息而直接发送。
+	 */
+	+ (void)sendSingleLocationMessage:(NSNumber *)latitude
+	                        longitude:(NSNumber *)longitude
+	                            scale:(NSNumber *)scale
+	                          address:(NSString *)address
+	                           toUser:(NSString *)username;
 
 #####发送群聊文本消息
 	/*!
@@ -386,6 +416,36 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 	+ (void)sendGroupVoiceMessage:(NSData *)voiceData
 	                voiceDuration:(NSNumber *)duration
 	                      toGroup:(NSString *)groupId;
+	                      
+#####发送群聊文件消息
+	/*!
+	 * @abstract 发送群聊文件消息
+	 *
+	 * @param fileData 文件数据
+	 * @param fileName 文件名
+	 * @param groupId 群聊目标群组ID
+	 *
+	 * @discussion 快捷方法，不需要先创建消息而直接发送。
+	 */
+	+ (void)sendGroupFileMessage:(NSData *)fileData
+	                    fileName:(NSString *)fileName
+	                     toGroup:(NSString *)groupId;
+
+#####发送群聊位置消息
+	/*!
+	 * @abstract 发送群聊地理位置消息
+	 * @param latitude 纬度
+	 * @param longitude 经度
+	 * @param scale 缩放比例
+	 * @param address 详细地址
+	 * @param groupId 群聊目标群组ID
+	 */
+	+ (void)sendGroupLocationMessage:(NSNumber *)latitude
+	                       longitude:(NSNumber *)longitude
+	                           scale:(NSNumber *)scale
+	                         address:(NSString *)address
+	                         toGroup:(NSString *)groupId;
+
 ####会话管理
 会话相关的操作：
 #####获取单聊会话
@@ -649,6 +709,30 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 	 */
 	- (void)sendVoiceMessage:(NSData *)voiceData
 	                duration:(NSNumber *)duration;
+	                
+#####发送文件消息
+	/*!
+	 * @abstract 发送文件消息
+	 * @param voiceData 文件消息数据
+	 * @param fileName 文件名
+	 * @discussion 快捷发送消息接口。如果发送文件消息不需要附加 extra，则使用此接口更方便。
+	 */
+	- (void)sendFileMessage:(NSData *)fileData
+	               fileName:(NSString *)fileName;
+
+#####发送位置消息
+	/*!
+	 * @abstract 发送地理位置消息
+	 * @param latitude 纬度
+	 * @param longitude 经度
+	 * @param scale 缩放比例
+	 * @param address 详细地址
+	 * @discussion 快捷发送消息接口。如果发送文件消息不需要附加 extra，则使用此接口更方便。
+	 */
+	- (void)sendLocationMessage:(NSNumber *)latitude
+	                  longitude:(NSNumber *)longitude
+	                      scale:(NSNumber *)scale
+	                    address:(NSString *)address;
 
 #####获取会话头像
 	/*!
@@ -1573,6 +1657,40 @@ JMSGCompletionHandler 有 2 个参数：
 	                 voiceDuration:(NSNumber *)duration
 	                        toUser:(NSString *)username
 	                        appKey:(NSString *)userAppKey;
+	                        
+##### 发送跨应用单聊文件消息
+	/*!
+	 * @abstract 发送跨应用单聊文件消息
+	 *
+	 * @param fileData 文件数据数据
+	 * @param fileName 文件名
+	 * @param username 单聊对象 username
+	 *
+	 * @discussion 快捷方法，不需要先创建消息而直接发送。
+	 */
+	+ (void)sendSingleFileMessage:(NSData *)fileData
+	                     fileName:(NSString *)fileName
+	                       toUser:(NSString *)username
+	                       appKey:(NSString *)userAppKey;
+
+##### 发送跨应用单聊位置消息
+	/*!
+	 * @abstract 发送跨应用单聊地理位置消息
+	 * @param latitude 纬度
+	 * @param longitude 经度
+	 * @param scale 缩放比例
+	 * @param address 详细地址
+	 * @param username 单聊对象
+	 * @param userAppKey 单聊对象的appKey
+	 * @discussion 快捷方法，不需要先创建消息而直接发送。
+	 */
+	+ (void)sendSingleLocationMessage:(NSNumber *)latitude
+	                        longitude:(NSNumber *)longitude
+	                            scale:(NSNumber *)scale
+	                          address:(NSString *)address
+	                           toUser:(NSString *)username
+	                           appKey:(NSString *)userAppKey;
+
 #### 跨应用会话管理
 ##### 获取跨应用单聊会话
 	/*!
