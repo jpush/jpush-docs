@@ -276,14 +276,14 @@ Content-Type: application/json; charset=utf-8
 #### 用户在线状态查询
 
 ```
-Get /users/{username}/userstat
+Get /v1/users/{username}/userstat
 ```
 ##### Example Request
 
 Request Header 
 
 ```
-Get /users/caiyh/userstat
+Get /v1/users/caiyh/userstat
 Content-Type: application/json; charset=utf-8 
 ```
 Request Params
@@ -622,14 +622,14 @@ Error Code
 File Download
 
 ```
-GET /resource?mediaId={mediaId}
+GET /v1/resource?mediaId={mediaId}
 ```
 ##### Example Request
 
 Request Header 
 
 ```
-GET /resource?mediaId={mediaId}
+GET /v1/resource?mediaId={mediaId}
 ```
 Request Body
 
