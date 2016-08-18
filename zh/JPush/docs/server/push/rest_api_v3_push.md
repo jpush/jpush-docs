@@ -17,8 +17,7 @@
 
 ### 功能说明
 
-向某单个设备或者某设备列表推送一条通知、或者消息。
-
+向某单个设备或者某设备列表推送一条通知、或者消息。  
 推送的内容只能是 JSON 表示的一个推送对象。
 
 ### 调用地址 
@@ -49,8 +48,7 @@ HTTP Header（头）里加一个字段（Key/Value对）：
 
 	Authorization: Basic base64_auth_string
 
-其中 base64_auth_string 的生成算法为：base64(appKey:masterSecret)
-
+其中 base64_auth_string 的生成算法为：base64(appKey:masterSecret)  
 即，对 appKey 加上冒号，加上 masterSecret 拼装起来的字符串，再做 base64 转换。
 
 
@@ -61,7 +59,6 @@ HTTP Header（头）里加一个字段（Key/Value对）：
 ## 推送对象
 
 一个推送对象，以 JSON 格式表达，表示一条推送相关的所有信息。
-
 
 <div class="table-d" align="center" >
 	<table border="1" width = "100%">
@@ -102,6 +99,7 @@ HTTP Header（头）里加一个字段（Key/Value对）：
 		</tr>
 	</table>
 </div>
+
 ### 示例与说明
 
 ```
@@ -302,14 +300,12 @@ JPush 当前支持 Android, iOS, Windows Phone 三个平台的推送。其关键
 
 ## notification：通知
 
-“通知”对象，是一条推送的实体内容对象之一（另一个是“消息”），是会作为“通知”推送到客户端的。
-
+“通知”对象，是一条推送的实体内容对象之一（另一个是“消息”），是会作为“通知”推送到客户端的。  
 其下属属性包含 4 种，3 个平台属性，以及一个 "alert" 属性。
 
 ### alert
 
-通知的内容在各个平台上，都可能只有这一个最基本的属性 "alert"。
-
+通知的内容在各个平台上，都可能只有这一个最基本的属性 "alert"。  
 这个位置的 "alert" 属性（直接在 notification 对象下），是一个快捷定义，各平台的 alert 信息如果都一样，则可不定义。如果各平台有定义，则覆盖这里的定义。
 
 ```
@@ -324,9 +320,7 @@ JPush 当前支持 Android, iOS, Windows Phone 三个平台的推送。其关键
 
 ### android
 
-Android 平台上的通知。
-
-被 JPush SDK 按照一定的通知栏样式展示。
+Android 平台上的通知，JPush SDK 按照一定的通知栏样式展示。
 
 支持的字段有：
 
@@ -391,10 +385,8 @@ Android 平台上的通知。
 
 ### iOS
 
-iOS 平台上 APNs 通知结构。
-
-该通知内容会由 JPush 代理发往 Apple APNs 服务器，并在 iOS 设备上在系统通知的方式呈现。
-
+iOS 平台上 APNs 通知结构。  
+该通知内容会由 JPush 代理发往 Apple APNs 服务器，并在 iOS 设备上在系统通知的方式呈现。  
 该通知内容满足 APNs 的规范，支持的字段如下：
 
 <div class="table-d" align="center" >
@@ -496,10 +488,8 @@ iOS 平台上 APNs 通知结构。
 
 ### winphone
 
-Windows Phone 平台上的通知。
-
-该通知由 JPush 服务器代理向微软的 MPNs 服务器发送，并在 Windows Phone 客户端的系统通知栏上展示。
-
+Windows Phone 平台上的通知。  
+该通知由 JPush 服务器代理向微软的 MPNs 服务器发送，并在 Windows Phone 客户端的系统通知栏上展示。  
 该通知满足 MPNs 的相关规范。当前 JPush 仅支持 toast 类型：
 
 <div class="table-d" align="center" >
@@ -563,10 +553,8 @@ Windows Phone 平台上的通知。
 
 ## message：自定义消息
 
-应用内消息。或者称作：自定义消息，透传消息。
-
-此部分内容不会展示到通知栏上，JPush SDK 收到消息内容后透传给 App。需要 App 自行处理。
-
+应用内消息。或者称作：自定义消息，透传消息。  
+此部分内容不会展示到通知栏上，JPush SDK 收到消息内容后透传给 App。需要 App 自行处理。  
 iOS 平台上，此部分内容在推送应用内消息通道（非APNS）获取。Windows Phone 暂时不支持应用内消息。
 
 消息包含如下字段：

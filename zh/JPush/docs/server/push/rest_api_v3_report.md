@@ -1,13 +1,12 @@
 # Report API V3
-JPush Report API V3 提供各类统计数据查询功能。
-
+JPush Report API V3 提供各类统计数据查询功能。  
 这类 API 地址统一为（注意与 Push API 不同）：https://report.jpush.cn
 
 ###  送达统计
 
-Received API 以 msg_id 作为参数，去获取该 msg_id 的送达统计数据。
-
+Received API 以 msg_id 作为参数，去获取该 msg_id 的送达统计数据。  
 如果一次 API 调用推送有很多对象（比如广播推送），则此 API 返回的统计数据会因为持续有客户端送达而持续增加。
+
 
 每条推送消息的送达统计数据最多保留一个月。即发起推送请求后从最后一个推送送达记录时间点开始保留一个月，如果保留期间有新的送达，将在这个新送达的时间点起再往后保留一个月。
 
@@ -58,9 +57,10 @@ JSON Array.
 
 ### 消息统计（VIP专属接口）
 
-如需要开通此接口，请联系：[商务客服](https://www.jiguang.cn/accounts/business/form)
-
 与“送达统计” API 不同的是，该 API 提供更多的针对一个 msgid 的统计数据。
+
+
+如需要开通此接口，请联系：[商务客服](https://www.jiguang.cn/accounts/business/form)
 
 #### Resource
 GET /v3/messages
@@ -131,12 +131,11 @@ JSON Array
 
 ### 用户统计（VIP专属接口）
 
-如需要开通此接口，请联系：[商务客服](https://www.jiguang.cn/accounts/business/form)
-
-提供近2个月内某时间段的用户相关统计数据：新增用户、在线用户、活跃用户。
-
+提供近2个月内某时间段的用户相关统计数据：新增用户、在线用户、活跃用户。  
 时间单位支持：HOUR（小时）、DAY（天）、MONTH（月）。
 
+
+如需要开通此接口，请联系：[商务客服](https://www.jiguang.cn/accounts/business/form) 
 #### Resource
 GET /v3/users
 

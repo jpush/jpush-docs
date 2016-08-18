@@ -1,7 +1,7 @@
 # HTTP 状态码
-
-本文档定义 JPush REST API 的 HTTP 返回码规范。
-
+</br>
+</br>
+本文档定义 JPush REST API 的 HTTP 返回码规范。  
 JPush Push API v3 新版本 API 满足此规范。JPush Report API 也满足此规范。
 
 ## 状态码定义

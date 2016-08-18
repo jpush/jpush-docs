@@ -1,5 +1,6 @@
 # 服务端 REST API 概述
-
+</br>
+</br>
 JPush 提供遵从 REST 规范的 HTTP API，以供开发者远程调用 JPush 提供的服务。
 
 与此同时，为方便开发者使用 JPush API，还提供[多种常用编程语言的开发包（SDK）](../../resources/#sdk_1)。
@@ -55,8 +56,7 @@ JPush 提供遵从 REST 规范的 HTTP API，以供开发者远程调用 JPush �
 
     Authorization: Basic ${base64_auth_string}
 
-Header 名称是 "Authorization"，值是 base64 转换过的 "username:password" 对（中间有个冒号）。在JPush API 的场景里，username 是 appKey，密码是 masterSecret。这二者可以在 JPush Web 控制台应用设置中查看。
-
+Header 名称是 "Authorization"，值是 base64 转换过的 "username:password" 对（中间有个冒号）。在JPush API 的场景里，username 是 appKey，密码是 masterSecret。这二者可以在 JPush Web 控制台应用设置中查看。  
 即，上述 base64_auth_string 的生成算法为：base64(appKey:masterSecret)
 
 ### 鉴权举例
@@ -127,8 +127,7 @@ JPush API 对访问次数，具有频率控制。即一定的时间窗口内，A
 
 ### 超出频率限制
 
-当一个请求遇到频率限制时，JPush API 返回的 HTTP 返回码为 429，其含义是：太多的请求。
-
+当一个请求遇到频率限制时，JPush API 返回的 HTTP 返回码为 429，其含义是：太多的请求。  
 此时返回内容里，是如下的信息：
 
 	{
@@ -149,8 +148,7 @@ JPush API 对访问次数，具有频率控制。即一定的时间窗口内，A
 
 ## BlackList 黑名单
 
-如果某应用被认为是恶意推送，或者其 API 调用非法，其 AppKey 会被加入黑名单。
-
+如果某应用被认为是恶意推送，或者其 API 调用非法，其 AppKey 会被加入黑名单。  
 加入黑名单的 AppKey 的 API 调用，都会被直接拒绝，其返回码为 403（请求被拒绝）。返回内容格式为：
 
 	{
