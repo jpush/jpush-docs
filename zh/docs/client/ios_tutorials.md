@@ -23,7 +23,7 @@ img[alt=jpush_ios_5] { width: 500px; }
 
 + App 是开发环境打包（开发证书 Development）
 + 上传了开发证书并验证通过
-+ Portal 上的应用设置为开发环境
+
 
 #### 发布环境测试
 
@@ -31,7 +31,7 @@ img[alt=jpush_ios_5] { width: 500px; }
 
 + App 是 ad-hoc 打包或者App Store 版本（发布证书 Production）
 + 上传了发布证书并验证通过
-+ Portal 上的应用设置为生产环境
+
 
 #### 可能存在的其他问题
 
