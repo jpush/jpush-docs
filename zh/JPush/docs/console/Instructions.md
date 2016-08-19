@@ -1,9 +1,5 @@
 # Web 推送
 
-<style>
-img[alt=jpush_web] { width: 700px; }
-</style>
-
 ## 创建应用
 
 ### **创建应用步骤**:
