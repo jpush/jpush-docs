@@ -35,17 +35,17 @@ img[alt=jpush_ios] { width: 800px; }
 
 * 将SDK包解压，在Xcode中选择“Add files to 'Your project name'...”，将解压后的lib子文件夹（包含JPUSHService.h、jpush-ios-x.x.x.a）添加到你的工程目录中。  
 * 添加FrameWork
-  * CFNetwork.framework
-  * CoreFoundation.framework
-  * CoreTelephony.framework
-  * SystemConfiguration.framework
-  * CoreGraphics.framework
-  * Foundation.framework
-  * UIKit.framework
-  * Security.framework
-  * Xcode7需要的是libz.tbd；Xcode7以下版本是libz.dylib
-  * Adsupport.framework (获取IDFA需要；如果不使用IDFA，请不要添加)
-  * UserNotifications.framework(Xcode8及以上)
+	* CFNetwork.framework
+	* CoreFoundation.framework
+	* CoreTelephony.framework
+	* SystemConfiguration.framework
+	* CoreGraphics.framework
+	* Foundation.framework
+	* UIKit.framework
+	* Security.framework
+	* Xcode7需要的是libz.tbd；Xcode7以下版本是libz.dylib
+	* Adsupport.framework (获取IDFA需要；如果不使用IDFA，请不要添加)
+	* UserNotifications.framework(Xcode8及以上)
 
 ### Build Settings
 如果你的工程需要支持小于7.0的iOS系统，请到Build Settings 关闭 bitCode 选项，否则将无法正常编译通过。
