@@ -17,8 +17,7 @@
 
 ##### 别名 alias
 
-为安装了应用程序的用户，取个别名来标识。以后给该用户 Push 消息时，就可以用此别名来指定。
-
+为安装了应用程序的用户，取个别名来标识。以后给该用户 Push 消息时，就可以用此别名来指定。  
 每个用户只能指定一个别名。
 
 同一个应用程序内，对不同的用户，建议取不同的别名。这样，尽可能根据别名来唯一确定用户。
@@ -453,72 +452,6 @@ r1.7.0 开始支持。
   <p>要使用此功能，客户端 App 一定要集成有 r1.7.0 及以上版本的 JPush iOS SDK
 </div>
 
-### 页面的统计
-
-#### 支持的版本
-
-r1.7.0 版本开始。
-
-#### 功能说明
-
-本 API 用于“用户指定页面使用时长”的统计，并上报到服务器，在 Portal 上展示给开发者。页面统计集成正确，才能够获取正确的页面访问路径、访问深度（PV）的数据。
-
-#### API
-
-##### 接口定义
-
-    + (void)startLogPageView:(NSString*)pageName;
-    + (void)stopLogPageView:(NSString*)pageName;
-    + (void)beginLogPageView:(NSString*)pageName duration:(int)seconds;
-    
-
-##### 参数说明
-
-* pageName 需要统计页面自定义名称
-* duration 自定义的页面时间
-
-##### 调用说明
-
-应在所有的需要统计得页面得 viewWillAppear 和 viewWillDisappear 加入 startLogPageView 和 stopLogPageView 来统计当前页面的停留时间。
-
-<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">
-<p>或者直接使用 beginLogPageView 来自定义加入页面和时间信息。
-</div>
-
-#### 代码示例
-
-    - (void)viewWillAppear:(BOOL)animated
-        {
-            [super viewWillAppear:animated];
-            [JPUSHService startLogPageView:@"PageOne"];
-        }
-    - (void)viewWillDisappear:(BOOL)animated 
-        {
-            [super viewWillDisappear:animated];
-            [JPUSHService stopLogPageView:@"PageOne"];
-        }   
-    －(void)trackView
-       {
-           [JPUSHService beginLogPageView:@"PageTwo" duration:10];
-       }
-    
-
-### 获取 OpenUDID
-
-使用
-
-<div style="font-size:13px;background: #ffa07a;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">
-<p>Open UDID 已经过期，将不能用于唯一标识 iOS 用户，建议及早放弃使用。
-</div>
-
-<br>
-
-Apple 现在对 Device UDID 限制使用，我们使用 [OpenUDID][1] 的方案来定义 UDID。
-
-注：我们根据需要，对具体生成出来的内容有适当的调整。
-
-    + (NSString *)openUDID;
-    
 ### 设置Badge
 
 #### 支持的版本
@@ -564,34 +497,6 @@ JPush封装badge功能，允许应用上传badge值至JPush服务器，由JPush�
 + (void)resetBadge
 ```
 
-### NSURLErrorDomain codes
-部分常见错误码
-
-```
-enum
-{
-   NSURLErrorUnknown = -1,
-   NSURLErrorTimedOut = -1001,
-   NSURLErrorUnsupportedURL = -1002,
-   NSURLErrorCannotFindHost = -1003,
-   NSURLErrorCannotConnectToHost = -1004,
-   NSURLErrorDataLengthExceedsMaximum = -1103,
-   NSURLErrorNetworkConnectionLost = -1005,
-   NSURLErrorDNSLookupFailed = -1006,
-   NSURLErrorHTTPTooManyRedirects = -1007,
-   NSURLErrorResourceUnavailable = -1008,
-   NSURLErrorNotConnectedToInternet = -1009,
-   NSURLErrorRedirectToNonExistentLocation = -1010,
-   NSURLErrorBadServerResponse = -1011,
-   NSURLErrorUserCancelledAuthentication = -1012,
-   NSURLErrorUserAuthenticationRequired = -1013,
-   NSURLErrorZeroByteResource = -1014,
-   NSURLErrorCannotDecodeRawData = -1015,
-   NSURLErrorCannotDecodeContentData = -1016,
-   NSURLErrorCannotParseResponse = -1017,
-   NSURLErrorRequestBodyStreamExhausted = -1021,
-}
-```
 
 ### 本地通知
 
@@ -835,6 +740,56 @@ API用来关闭日志信息（除了必要的错误信息）
 ```
 [JPUSHService setLogOFF];
 ```
+### 页面的统计
+
+#### 支持的版本
+
+r1.7.0 版本开始。
+
+#### 功能说明
+
+本 API 用于“用户指定页面使用时长”的统计，并上报到服务器，在 Portal 上展示给开发者。页面统计集成正确，才能够获取正确的页面访问路径、访问深度（PV）的数据。
+
+#### API
+
+##### 接口定义
+
+    + (void)startLogPageView:(NSString*)pageName;
+    + (void)stopLogPageView:(NSString*)pageName;
+    + (void)beginLogPageView:(NSString*)pageName duration:(int)seconds;
+    
+
+##### 参数说明
+
+* pageName 需要统计页面自定义名称
+* duration 自定义的页面时间
+
+##### 调用说明
+
+应在所有的需要统计得页面得 viewWillAppear 和 viewWillDisappear 加入 startLogPageView 和 stopLogPageView 来统计当前页面的停留时间。
+
+<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">
+<p>或者直接使用 beginLogPageView 来自定义加入页面和时间信息。
+</div>
+
+#### 代码示例
+
+    - (void)viewWillAppear:(BOOL)animated
+        {
+            [super viewWillAppear:animated];
+            [JPUSHService startLogPageView:@"PageOne"];
+        }
+    - (void)viewWillDisappear:(BOOL)animated 
+        {
+            [super viewWillDisappear:animated];
+            [JPUSHService stopLogPageView:@"PageOne"];
+        }   
+    －(void)trackView
+       {
+           [JPUSHService beginLogPageView:@"PageTwo" duration:10];
+       }
+    
+
 
 ### 地理位置统计
 
