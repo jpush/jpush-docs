@@ -152,7 +152,7 @@ JIM.getUserInfo('xiezefan', function(data) {
 **Example:**
 
 ```
-JIM.getUserInfo('xiezefan', appkey, function(data) {
+JIM.getAcrossUserInfo('xiezefan', appkey, function(data) {
     // 返回处理
 }, function(ack) {
     // 请求送达JMessage服务器事件处理
@@ -201,7 +201,7 @@ JIM.sendSingleMsg(target_username, content, function(data) {
 **Example:**
 
 ```
-JIM.sendSingleMsg(target_username, appkey, content, function(data) {
+JIM.senaAcrossSingleMsg(target_username, appkey, content, function(data) {
     // 返回处理
 }, function(ack) {
     // 请求送达JMessage服务器事件处理
