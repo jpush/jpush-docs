@@ -363,6 +363,7 @@ iOS 设备收到一条推送（APNs），用户点击推送通知打开应用时
 参考文档：[Handling Local and Remote Notifications][0]
 
 ### 获取自定义消息推送内容
+<a name="message"></a>
 
 #### 支持的版本
 
