@@ -9,7 +9,7 @@ img[alt=jpush_ios] { width: 800px; }
 ### 适用版本
 
 本文匹配的 SDK版本：r2.1.5 以后。  
-[查看最近更新](http://docs.jiguang.io/updates/)了解最新的SDK更新情况。  
+[查看最近更新](http://docs.jiguang.cn/updates/)了解最新的SDK更新情况。  
 使用Xcode 6及以上版本可以使用新版Push SDK，Xcode 5环境下需要运行旧版本SDK(1.7.4)
 
 
@@ -258,7 +258,7 @@ extern NSString * const kJPFNetworkDidReceiveMessageNotification; // 收到自�
 
 其中，kJPFNetworkDidReceiveMessageNotification传递的数据可以通过NSNotification中的userInfo方法获取，包括标题、内容、extras信息等
 
-请参考文档：[iOS SDK API](http://docs.jiguang.io/client/ios_api/)
+请参考文档：[iOS SDK API](ios_api)
 
 
 ## 技术支持
