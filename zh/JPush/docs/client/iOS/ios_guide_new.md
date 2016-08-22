@@ -213,128 +213,10 @@ registrationID:171976fa8a8620a14a4
 
 如果调试运行中遇到问题请参考：[iOS SDK 调试指南](ios_debug_guide)
 
+
 ## 高级功能
 
-
-
-
-
-
-## Waitting for delete
-
-### 5、创建并配置PushConfig.plist文件 
-<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">
-<p>2.1.0 版本开始，新增了带参数的setupWithOption初始化方法，可通过此方法等参数传入AppKey等信息。1.8.8及之前版本的 JPush SDK只能通过PushConfig.plist配置AppKey等信息。
-<br/></div>
-
-在你的工程中创建一个新的Property List文件，并将其命名为PushConfig.plist，文件所含字段如下：
-
-* CHANNEL
-    * 指明应用程序包的下载渠道，为方便分渠道统计，具体值由你自行定义，如：App Store。
-* APP_KEY
-    * 填写[管理Portal上创建应用](https://www.jiguang.cn/app/form)后自动生成的AppKey值。请确保应用内配置的 AppKey 与第1步在 Portal 上创建应用后生成的 AppKey 一致。
-* APS\_FOR\_PRODUCTION
-    * 1.3.1版本新增，用于标识当前应用所使用的APNs证书环境。
-    * 0 (默认值)表示采用的是开发证书，1 表示采用生产证书发布应用。
-    * 注：此字段的值要与Build Settings的Code Signing配置的证书环境一致。
-* 在1.2.2或之前版本的配置文件中，有 TEST_MODE 这个键，新版的SDK不再使用，可以将它删除。
-
-PushConfig.plist文件示例图:
-
-![jpush_ios][2]
-
-
-
-
-#### 集成所需API
-
-APIs 主要集中在 JPUSHService 接口类里。
-
-* 初始化JPush方法分为三个：
-
-    * 1.8.8及以下版本使用的是已过期的初始化方法。升级到2.1.5的老用户仍可继续使用旧的初始化方法。 
-    * 2.1.0版本开始提供带appkey等参数的初始化方法。使用此方法无需再添加PushConfig.plist配置JPush的AppKey等字段。
-    * 2.1.5版本开始提供带appkey以及IDFA等参数的初始化方法。使用此方法无需再添加PushConfig.plist配置JPush的AppKey等字段。  
-
-	<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">
-<p>使用建议:
-<br>
-<p>三个初始化 JPush的方法同时存在，以第一个被调用的方法为准。
-<br>
-	</div>
-
-* JPUSHRegisterDelegate
-
-	为了支持iOS10新特性，在Xcode8及以上开发环境下，2.1.9版本开始需要在类声明中遵守JPUSHRegisterDelegate协议，需要实现其代理方法（具体实现可参考下面代码），并在注册APNs时调用[registerForRemoteNotificationConfig:delegate:]方法设置delegate对象。
-
-
-```
-@interface JPUSHService : NSObject
-// init Push
-// init Push(<= 1.8.8版本的SDK的注册方法）
-+ (void)setupWithOption:(NSDictionary *)launchingOption;
-
-// init Push(2.1.0版本的SDK新增的注册方法)
-+ (void)setupWithOption:(NSDictionary *)launchingOption
-                 appKey:(NSString *)appKey
-                channel:(NSString *)channel
-       apsForProduction:(BOOL)isProduction;
-
-// init Push(2.1.5版本的SDK新增的注册方法，改成可上报IDFA，如果没有使用IDFA直接传nil  )
-+ (void)setupWithOption:(NSDictionary *)launchingOption
-                 appKey:(NSString *)appKey
-                channel:(NSString *)channel
-       apsForProduction:(BOOL)isProduction
-  advertisingIdentifier:(NSString *)advertisingId;
-
-// 注册APNs方法，2.1.9版后可用[registerForRemoteNotificationConfig:delegate:]取代
-+ (void)registerForRemoteNotificationTypes:(NSUInteger)types
-                                categories:(NSSet *)categories;
-
-// 新版本的注册APNs方法（2.1.9版新增方法，兼容iOS10及以下版本）
-+ (void)registerForRemoteNotificationConfig:(JPUSHRegisterEntity *)config delegate:(id<JPUSHRegisterDelegate>)delegate;
-
-// upload device token
-+ (void)registerDeviceToken:(NSData *)deviceToken;
-
-// handle notification recieved
-+ (void)handleRemoteNotification:(NSDictionary *)remoteInfo;
-
-@end
-
-// iOS 10 Support（2.1.9版新增协议）
-@protocol JPUSHRegisterDelegate <NSObject>
-
-// 应用前台运行时，收到本地或远程推送会回调此方法
-- (void)jpushNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(NSInteger))completionHandler;
-	
-// 应用后台运行时，操作通知会回调此方法
-- (void)jpushNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)())completionHandler;
-
-@end
-
-```
-
-#### 调用代码
-
-   监听系统事件，相应地调用 JPush SDK 提供的 API 来实现功能。
-
-   以下几个事件监听与调用 JPush SDK API 都是必须的。请直接复制如下代码块里，注释为 "Required" 的行，到你的应用程序代理类里相应的监听方法里。
-   
-```
-  
-  return YES;
-}
- 
-
- 
-
-
-
-```
-
-
-### 7、IDFA
+### 关于IDFA
 r2.1.5版本增加一个上传IDFA字符串的接口
 
 	 + (void)setupWithOption:(NSDictionary *)launchingOption
@@ -350,7 +232,7 @@ r2.1.5版本增加一个上传IDFA字符串的接口
                      channel:(NSString *)channel
             apsForProduction:(BOOL)isProduction;
             
-### 8、监听通知
+### JPush SDK 相关事件监听
 
 建议开发者加上API里面提供下面 5 种类型的通知：
 
@@ -376,16 +258,14 @@ extern NSString * const kJPFNetworkDidReceiveMessageNotification; // 收到自�
 
 其中，kJPFNetworkDidReceiveMessageNotification传递的数据可以通过NSNotification中的userInfo方法获取，包括标题、内容、extras信息等
 
-### 高级功能
-
-请参考文档：[iOS SDK API](http://docs.jpush.io/client/ios_api/)
+请参考文档：[iOS SDK API](http://docs.jiguang.io/client/ios_api/)
 
 
-### 技术支持
+## 技术支持
 
 邮件联系：[support@jpush.cn][4]
 
-问答社区：[http://www.jpush.cn/qa/][5]
+问答社区：[http://community.jiguang.cn][5]
 
 [0]: ../image/create_ios_app.jpg
 [1]: ../image/Screenshot_13-4_2_create.jpg
