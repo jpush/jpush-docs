@@ -34,7 +34,7 @@ img[alt=jpush_ios] { width: 800px; }
 ### 导入SDK
 
 * 将SDK包解压，在Xcode中选择“Add files to 'Your project name'...”，将解压后的lib子文件夹（包含JPUSHService.h、jpush-ios-x.x.x.a）添加到你的工程目录中。  
-* 添加FrameWork
+* 添加Framework
 	* CFNetwork.framework
 	* CoreFoundation.framework
 	* CoreTelephony.framework
@@ -57,8 +57,8 @@ img[alt=jpush_ios] { width: 800px; }
 ![jpush_ios][7]
 
 ### 允许Xcode7支持Http传输方法
-
-如果用的是Xcode7时，需要在App项目的plist手动配置下key和值以支持http传输:
+如果您使用的是2.1.9以后的版本则不需要配置此步骤  
+如果用的是Xcode7或更新版本，需要在App项目的plist手动配置下key和值以支持http传输:
 
 **选择1：根据域名配置**
 
@@ -127,7 +127,7 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 ```
 
 
-### 上报DeviceToken
+### 注册APNs成功并上报DeviceToken
 
 请在AppDelegate.m实现该回调方法并添加回调方法中的代码
 
@@ -141,7 +141,18 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 
 ```
 
-### 添加处理APNs通知回调方法（iOS10）
+### 实现注册APNs失败接口（可选）
+
+```
+
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+  //Optional
+  NSLog(@"did Fail To Register For Remote Notifications With Error: %@", error);
+}
+```
+
+
+### 添加处理APNs通知回调方法
 
 请在AppDelegate.m实现该回调方法并添加回调方法中的代码
 
@@ -168,19 +179,6 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
   completionHandler();	// 系统要求执行这个方法
 }
 
-```
-
-### 添加处理APNs通知回调方法（iOS10以前）
-
-请在AppDelegate.m实现该回调方法并添加回调方法中的代码
-
-```
-- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-   
-  // Required,For systems with less than or equal to iOS6
-  [JPUSHService handleRemoteNotification:userInfo];
-}
- 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
  
   // Required, iOS 7 Support
@@ -188,16 +186,19 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
   completionHandler(UIBackgroundFetchResultNewData);
 }
 
-- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
-  //Optional
-  NSLog(@"did Fail To Register For Remote Notifications With Error: %@", error);
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+   
+  // Required,For systems with less than or equal to iOS6
+  [JPUSHService handleRemoteNotification:userInfo];
 }
+
+
 
 ```
 
 ### 添加处理JPush自定义消息回调方法
 
-如需使用JPush的自定义消息功能，请参考[文档](ios_api/message)来实现自定义消息的处理回调方法。
+如需使用JPush的自定义消息功能，请参考[文档](ios_api/#message)来实现自定义消息的处理回调方法。
 
 
 ## 成功运行
@@ -234,7 +235,7 @@ r2.1.5版本增加一个上传IDFA字符串的接口
             
 ### JPush SDK 相关事件监听
 
-建议开发者加上API里面提供下面 5 种类型的通知：
+建议开发者加上API里面提供下面 6 种类型的通知：
 
 extern NSString *const kJPFNetworkIsConnectingNotification; // 正在连接中
 
