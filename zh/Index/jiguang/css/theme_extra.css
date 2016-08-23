@@ -12,9 +12,10 @@ body {
     font-family: "Helvetica Neue",Helvetica,"PingFang SC","Microsoft Yahei",Arial,Verdana,sans-serif;
 }
 
-h3, h4, h5, h6 {
+h1,h2,h3, h4, h5, h6 {
     color: #2980b9;
-    font-weight: 300
+    font-weight: 300;
+    font-family: "Helvetica Neue",Helvetica,"PingFang SC","Microsoft Yahei",Arial,Verdana,sans-serif;
 }
 
 .container-fluid{
