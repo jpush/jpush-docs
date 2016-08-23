@@ -27,7 +27,11 @@
                         <a href="https://www.jiguang.cn/downloads/sdk/android/">下载</a>
                     </div>
                 </div>
+                <div class="hr">
+                <hr />
+                </div>
         </li>
+
         <li>
             <div class="download-left">
                 <div class="download-image">
@@ -50,7 +54,11 @@
                         <a href="https://www.jiguang.cn/downloads/sdk/ios">下载</a>
                     </div>
                 </div>
+                <div class="hr">
+                <hr />
+                </div>
         </li>
+
         <li>
             <div class="download-left">
                 <div class="download-image">
@@ -107,6 +115,9 @@
                             <a href="https://www.jpush.cn/common/downloads/resource/1459130284033">下载</a>
                         </div>
                         </div>
+                        <div class="hr">
+                <hr />
+                </div>
             </li>
             <li>
                 <div class="download-left">
@@ -135,6 +146,9 @@
                             <a href="https://www.jpush.cn/common/downloads/resource/1463721337648">下载</a>
                         </div>
                         </div>
+                        <div class="hr">
+                <hr />
+                </div>
             </li>
             <li>
                 <div class="download-left">
@@ -163,6 +177,9 @@
                             <a href="https://www.jpush.cn/common/downloads/resource/1464661245341">下载</a>
                         </div>
                         </div>
+                        <div class="hr">
+                <hr />
+                </div>
             </li>
             <li>
                 <div class="download-left">
@@ -191,6 +208,9 @@
                             <a href="https://www.jpush.cn/common/downloads/resource/1459854935213">下载</a>
                         </div>
                         </div>
+                        <div class="hr">
+                <hr />
+                </div>
             </li>
             <li>
                 <div class="download-left">
@@ -219,6 +239,9 @@
                             <a href="https://www.jpush.cn/common/downloads/resource/1459130200447">下载</a>
                         </div>
                         </div>
+                        <div class="hr">
+                <hr />
+                </div>
             </li>
             <li>
                 <div class="download-left">
@@ -271,6 +294,9 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="hr">
+                <hr />
+                </div>
                 </li>
                 <li>
                     <div class="developer">
@@ -289,6 +315,9 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="hr">
+                <hr />
+                </div>
                 </li>
                 <li>
                     <div class="developer">
@@ -307,6 +336,9 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="hr">
+                <hr />
+                </div>
                 </li>
                 <li>
                     <div class="developer">

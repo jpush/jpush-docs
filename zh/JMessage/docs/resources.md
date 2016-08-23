@@ -27,6 +27,9 @@
                         <a href="https://www.jiguang.cn/downloads/sdk/im_android/">下载</a>
                     </div>
                 </div>
+                <div class="hr">
+                <hr />
+                </div>
         </li>
         <li>
             <div class="download-left">
@@ -49,6 +52,9 @@
                     <div class="download-icon">
                         <a href="https://www.jiguang.cn/downloads/sdk/im_ios/">下载</a>
                     </div>
+                </div>
+                <div class="hr">
+                <hr />
                 </div>
         </li>
         <li>
