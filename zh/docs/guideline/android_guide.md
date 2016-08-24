@@ -2,13 +2,13 @@
 
 ## 使用提示
 
-本文是 Android SDK 标准的集成指南文档。
+本文是 JPush Android SDK 标准的集成指南文档。用以指导 SDK 的使用方法，默认读者已经熟悉IDE（Eclipse 或者 Android Studio）的基本使用方法，以及具有一定的 Android 编程知识基础。
 
-匹配的 SDK 版本为：v2.1.6及以后版本。
+匹配的 SDK 版本为：v2.1.8及以后版本。
 
 + [3 分钟快速 Demo（Android）](http://docs.jiguang.cn/guideline/android_3m/)：如果您想要快速地测试、感受下极光推送的效果，请参考本文在几分钟内跑通Demo。
-+ 极光推送文档网站上，有极光推送相关的所有指南、API、教程等全部的文档。包括本文档的更新版本，都会及时地发布到该网站上。
-+ [极光社区](http://community.jpush.cn/)网站：大家除了文档之外，还有问题与疑问，会到这里来提问题，以及时地得到解答。
++ 极光推送[文档网站](http://docs.jiguang.cn/)上，有极光推送相关的所有指南、API、教程等全部的文档。包括本文档的更新版本，都会及时地发布到该网站上。
++ [极光社区](http://community.jiguang.cn/)网站：大家除了文档之外，还有问题与疑问，会到这里来提问题，以及时地得到解答。
 + 如果您看到本文档，但还未下载Android SDK，请访问[SDK下载页面](http://docs.jiguang.cn/resources/)下载。
 
 ## 产品功能说明
@@ -46,19 +46,86 @@
 
 目前SDK只支持Android 2.3或以上版本的手机系统。富媒体信息流功能则需Android3.0或以上版本的系统。
 
-## SDK集成步骤
-### 导入 SDK 开发包到你自己的应用程序项目
+
+
+## jcenter 自动集成步骤
+
+
+***说明*** ： 使用jcenter自动集成的开发者，不需要在项目中添加jar和so，jcenter会自动完成依赖；在AndroidManifest.xml中不需要添加任何JPush SDK 相关的配置，jcenter会自动导入, 如果手动添加则是以开发者添加的为准覆盖掉默认配置。
+
++ 确认android studio的 Project 根目录的主 gradle 中配置了jcenter支持。（新建project默认配置就支持）
+        
+        buildscript {
+            repositories {
+                jcenter()
+            }
+            ......
+        }
+        
+        allprojets {
+            repositories {
+                jcenter()
+            }
+        }
+              
+        
+        
++ 在 module 的 gradle 中添加依赖和AndroidManifest的替换变量。
+
+
+        
+        android {
+            ......
+            defaultConfig {
+                applicationId "com.xxx.xxx" //JPush上注册的包名.
+                ......
+                
+                ndk {
+                    //选择要添加的对应cpu类型的.so库。 
+                    abiFilters 'armeabi', 'armeabi-v7a', 'armeabi-v8a' 
+                    // 还可以添加 'x86', 'x86_64', 'mips', 'mips64'
+                }
+                
+                manifestPlaceholders = [
+                    JPUSH_PKGNAME : applicationId,
+                    JPUSH_APPKEY : "你的appkey", //JPush上注册的包名对应的appkey.
+                    JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
+                ]
+                ......
+            }
+            ......
+        }
+        
+        
+       
+        dependencis {
+            ......
+            
+            compile 'cn.jiguang:jpush:2.1.8'  // 此处以SDK 2.1.8版本为例
+            
+            ......
+        }
+        
+        
+***注*** : 如果在添加以上 abiFilter 配置之后android Studio出现以下提示：
+
+        NDK integration is deprecated in the current plugin. Consider trying the new experimental plugin.
+则在 Project 根目录的gradle.properties文件中添加：
+
+        android.useDeprecatedNdk=true。
+
+
+
+## 手动集成步骤
 
 + 解压缩 jpush-android-release-2.x.y.zip 集成压缩包。
 + 复制 libs/jpush-sdk-2.x.y.jar 到工程 libs/ 目录下。
 + 复制 libs/(cpu-type)/libjpush2xy.so 到你的工程中存放对应cpu类型的目录下。
-+ 复制 res/ 中drawable-hdpi, raw, layout, values文件夹中的资源文件到你的工程中 res/ 对应的目录下。
++ 复制 res/ 中drawable-hdpi, layout, values文件夹中的资源文件到你的工程中 res/ 对应的目录下。
 
 ***说明 1***：若没有res/drawable-xxxx/jpush_notification_icon这个资源默认使用应用图标作为通知icon，在5.0以上系统将应用图标作为statusbar icon可能显示不正常，用户可定义没有阴影和渐变色的icon替换这个文件，文件名不要变。
 
-***说明 2***：如果要在gradle中配置 shrinkResources true 用来清理多余资源，请在res/raw/ 中添加一个keep.xml来描述保留JPushSDK中的必要资源。示例请参考版本包中的 res/raw/keep.xml文件。(2.1.5版本及以上)
-
-***说明 3***：使用android studio的开发者，如果使用jniLibs文件夹导入so文件，则仅需将所有cpu类型的文件夹拷进去；如果将so文件添加在module的libs文件夹下，注意在module的gradle配置中添加一下配置：
+***说明 2***：使用android studio的开发者，如果使用jniLibs文件夹导入so文件，则仅需将所有cpu类型的文件夹拷进去；如果将so文件添加在module的libs文件夹下，注意在module的gradle配置中添加一下配置：
 
        
         android {
@@ -72,29 +139,6 @@
             }
             ......
         }
-
-### 集成 JPush Android SDK 的混淆
-
-+ 请下载4.x及以上版本的[proguard.jar](http://sourceforge.net/projects/proguard/files/proguard/)， 并替换你Android Sdk "tools\proguard\lib\proguard.jar"
-
-+ 开发工具使用Eclipse或者Android Studio,在您工程的混淆文件中添加以下配置：
-
-        -dontoptimize
-        -dontpreverify
-
-        -dontwarn cn.jpush.**
-        -keep class cn.jpush.** { *; }
-        
-+ v2.0.5 及以上的版本由于引入了protobuf 和 gson ，在上面基础之上增加排除混淆的配置。
-
-
-        #==================gson==========================
-        -dontwarn com.google.**
-        -keep class com.google.gson.** {*;}
-
-        #==================protobuf======================
-        -dontwarn com.google.**
-        -keep class com.google.protobuf.** {*;}
 
 
 
@@ -125,142 +169,150 @@ defaultConfig {
 
 ```
 
-<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="您应用的包名"
-    android:versionCode="216"
-    android:versionName="2.1.6"
+    <?xml version="1.0" encoding="utf-8"?>
+    <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+        package="您应用的包名"
+        android:versionCode="216"
+        android:versionName="2.1.6"
     >
-    <uses-sdk android:minSdkVersion="9" android:targetSdkVersion="23" />
-
-    <!-- Required -->
-    <permission android:name="您应用的包名.permission.JPUSH_MESSAGE" android:protectionLevel="signature" />
-   
-    <!-- Required -->
-    <uses-permission android:name="您应用的包名.permission.JPUSH_MESSAGE" />
-    <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.WRITE_SETTINGS" /> 
-     
-    <!-- Optional. Required for location feature -->
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
-    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
-         
-    <application
-        android:icon="@drawable/ic_launcher"
-        android:label="@string/app_name"
-        android:name="Your Application">
-         
-        <!-- Required SDK 核心功能-->
-        <!-- option since 2.0.5 可配置PushService，DaemonService,PushReceiver,AlarmReceiver的android:process参数 将JPush相关组件设置为一个独立进程 -->
-        <!-- 如：android:process=":remote" -->
-        <service
-            android:name="cn.jpush.android.service.PushService"
-            android:enabled="true"
-            android:exported="false" >
-            <intent-filter>
-                <action android:name="cn.jpush.android.intent.REGISTER" />
-                <action android:name="cn.jpush.android.intent.REPORT" />
-                <action android:name="cn.jpush.android.intent.PushService" />
-                <action android:name="cn.jpush.android.intent.PUSH_TIME" />
-            </intent-filter>
-        </service>
-         
-        <!-- since 1.8.0 option 可选项。用于同一设备中不同应用的JPush服务相互拉起的功能。 -->
-        <!-- 若不启用该功能可删除该组件，将不拉起其他应用也不能被其他应用拉起 -->
-         <service
-             android:name="cn.jpush.android.service.DaemonService"
-             android:enabled="true"
-             android:exported="true">
-             <intent-filter >
-                 <action android:name="cn.jpush.android.intent.DaemonService" />
-                 <category android:name="您应用的包名"/>
-             </intent-filter>
-         </service>
+        <uses-sdk android:minSdkVersion="9" android:targetSdkVersion="23" />
 
         <!-- Required -->
-        <receiver
-            android:name="cn.jpush.android.service.PushReceiver"
-            android:enabled="true" >
-          <intent-filter android:priority="1000"> 
-                <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED_PROXY" /> 
-                <category android:name="您应用的包名"/> 
-            </intent-filter>
-            <intent-filter>
-                <action android:name="android.intent.action.USER_PRESENT" />
-                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
-            </intent-filter>
-            <!-- Optional -->
-            <intent-filter>
-                <action android:name="android.intent.action.PACKAGE_ADDED" />
-                <action android:name="android.intent.action.PACKAGE_REMOVED" />
-                <data android:scheme="package" />
-            </intent-filter>
-        </receiver>
-     <!-- Required SDK核心功能-->
-        <activity
-            android:name="cn.jpush.android.ui.PushActivity"
-            android:configChanges="orientation|keyboardHidden"
-            android:exported="false" >
-            <intent-filter>
-                <action android:name="cn.jpush.android.ui.PushActivity" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="您应用的包名" />
-            </intent-filter>
-        </activity>
-        <!-- Required SDK核心功能-->
-        <service
-            android:name="cn.jpush.android.service.DownloadService"
-            android:enabled="true"
-            android:exported="false" >
-        </service>
-        <!-- Required SDK核心功能-->
-        <receiver android:name="cn.jpush.android.service.AlarmReceiver" />
+        <permission 
+            android:name="您应用的包名.permission.JPUSH_MESSAGE"  
+            android:protectionLevel="signature" />
+   
+        <!-- Required -->
+        <uses-permission android:name="您应用的包名.permission.JPUSH_MESSAGE" />
+        <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
+        <uses-permission android:name="android.permission.INTERNET" />
+        <uses-permission android:name="android.permission.WAKE_LOCK" />
+        <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+        <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+        <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+        <uses-permission android:name="android.permission.VIBRATE" />
+        <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+        <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+        <uses-permission android:name="android.permission.WRITE_SETTINGS" /> 
+     
+        <!-- Optional. Required for location feature -->
+        <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+        <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+        <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+        <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+        <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+        <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+         
+        <application
+            android:icon="@drawable/ic_launcher"
+            android:label="@string/app_name"
+            android:name="Your Application">
+         
+            <!-- Required SDK 核心功能-->
+            <!-- option since 2.0.5 可配置PushService，DaemonService,PushReceiver,AlarmReceiver的android:process参数 将JPush相关组件设置为一个独立进程 -->
+            <!-- 如：android:process=":remote" -->
+            <service
+                android:name="cn.jpush.android.service.PushService"
+                android:enabled="true"
+                android:exported="false" >
+                <intent-filter>
+                    <action android:name="cn.jpush.android.intent.REGISTER" />
+                    <action android:name="cn.jpush.android.intent.REPORT" />
+                    <action android:name="cn.jpush.android.intent.PushService" />
+                    <action android:name="cn.jpush.android.intent.PUSH_TIME" />
+                </intent-filter>
+            </service>
+         
+            <!-- since 1.8.0 option 可选项。用于同一设备中不同应用的JPush服务相互拉起的功能。 -->
+            <!-- 若不启用该功能可删除该组件，将不拉起其他应用也不能被其他应用拉起 -->
+             <service
+                 android:name="cn.jpush.android.service.DaemonService"
+                 android:enabled="true"
+                 android:exported="true">
+                 <intent-filter >
+                     <action android:name="cn.jpush.android.intent.DaemonService" />
+                     <category android:name="您应用的包名"/>
+                 </intent-filter>
+             </service>
 
-        <!-- User defined. 用户自定义的广播接收器-->
-         <receiver
-             android:name="您自己定义的Receiver"
-             android:enabled="true">
-             <intent-filter>
-                 <!--Required 用户注册SDK的intent-->
-                 <action android:name="cn.jpush.android.intent.REGISTRATION" /> 
-                 <!--Required 用户接收SDK消息的intent--> 
-                 <action android:name="cn.jpush.android.intent.MESSAGE_RECEIVED" /> 
-                 <!--Required 用户接收SDK通知栏信息的intent-->
-                 <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED" /> 
-                 <!--Required 用户打开自定义通知栏的intent-->
-                 <action android:name="cn.jpush.android.intent.NOTIFICATION_OPENED" /> 
-                 <!--Optional 用户接受Rich Push Javascript 回调函数的intent-->
-                 <action android:name="cn.jpush.android.intent.ACTION_RICHPUSH_CALLBACK" /> 
-                 <!-- 接收网络变化 连接/断开 since 1.6.3 -->
-                 <action android:name="cn.jpush.android.intent.CONNECTION" />
-                 <category android:name="您应用的包名" />
-             </intent-filter>
-         </receiver>
+            <!-- Required -->
+            <receiver
+                android:name="cn.jpush.android.service.PushReceiver"
+                android:enabled="true" >
+                <intent-filter android:priority="1000"> 
+                    <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED_PROXY" /> 
+                    <category android:name="您应用的包名"/> 
+                </intent-filter>
+                <intent-filter>
+                    <action android:name="android.intent.action.USER_PRESENT" />
+                    <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+                </intent-filter>
+                <!-- Optional -->
+                <intent-filter>
+                    <action android:name="android.intent.action.PACKAGE_ADDED" />
+                    <action android:name="android.intent.action.PACKAGE_REMOVED" />
+                    <data android:scheme="package" />
+                </intent-filter>
+            </receiver>
+            
+             <!-- Required SDK核心功能-->
+            <activity
+                android:name="cn.jpush.android.ui.PushActivity"
+                android:configChanges="orientation|keyboardHidden"
+                android:exported="false" >
+                <intent-filter>
+                    <action android:name="cn.jpush.android.ui.PushActivity" />
+                    <category android:name="android.intent.category.DEFAULT" />
+                    <category android:name="您应用的包名" />
+                </intent-filter>
+            </activity>
+            
+            <!-- Required SDK核心功能-->
+            <service
+                android:name="cn.jpush.android.service.DownloadService"
+                android:enabled="true"
+                android:exported="false" >
+            </service>
+            <!-- Required SDK核心功能-->
+            <receiver android:name="cn.jpush.android.service.AlarmReceiver" />
+
+            <!-- User defined. 用户自定义的广播接收器-->
+            <receiver
+                android:name="您自己定义的Receiver"
+                android:enabled="true">
+                <intent-filter>
+                     <!--Required 用户注册SDK的intent-->
+                     <action android:name="cn.jpush.android.intent.REGISTRATION" /> 
+                     <!--Required 用户接收SDK消息的intent--> 
+                     <action android:name="cn.jpush.android.intent.MESSAGE_RECEIVED" /> 
+                     <!--Required 用户接收SDK通知栏信息的intent-->
+                     <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED" /> 
+                     <!--Required 用户打开自定义通知栏的intent-->
+                     <action android:name="cn.jpush.android.intent.NOTIFICATION_OPENED" /> 
+                     <!--Optional 用户接受Rich Push Javascript 回调函数的intent-->
+                     <action android:name="cn.jpush.android.intent.ACTION_RICHPUSH_CALLBACK" /> 
+                     <!-- 接收网络变化 连接/断开 since 1.6.3 -->
+                     <action android:name="cn.jpush.android.intent.CONNECTION" />
+                     <category android:name="您应用的包名" />
+                 </intent-filter>
+             </receiver>
       
-        <!-- Required. For publish channel feature -->
-        <!-- JPUSH_CHANNEL 是为了方便开发者统计APK分发渠道。-->
-        <!-- 例如: -->
-        <!-- 发到 Google Play 的APK可以设置为 google-play; -->
-        <!-- 发到其他市场的 APK 可以设置为 xxx-market。 -->
-        <!-- 目前这个渠道统计功能的报表还未开放。-->
-        <meta-data android:name="JPUSH_CHANNEL" android:value="developer-default"/>
-        <!-- Required. AppKey copied from Portal -->
-        <meta-data android:name="JPUSH_APPKEY" android:value="Your AppKey"/> 
-    </application>
-</manifest>
+            <!-- Required. For publish channel feature -->
+            <!-- JPUSH_CHANNEL 是为了方便开发者统计APK分发渠道。-->
+            <!-- 例如: -->
+            <!-- 发到 Google Play 的APK可以设置为 google-play; -->
+            <!-- 发到其他市场的 APK 可以设置为 xxx-market。 -->
+            <!-- 目前这个渠道统计功能的报表还未开放。-->
+            <meta-data android:name="JPUSH_CHANNEL" android:value="developer-default"/>
+            <!-- Required. AppKey copied from Portal -->
+            <meta-data android:name="JPUSH_APPKEY" android:value="Your AppKey"/> 
+        </application>
+    </manifest>
+
 ```
+
+
+##配置和代码说明
 
 
 ### 必须权限说明
@@ -318,6 +370,25 @@ defaultConfig {
   </table>
 </div>
 
+### 集成 JPush Android SDK 的混淆
+
++ 请下载4.x及以上版本的[proguard.jar](http://sourceforge.net/projects/proguard/files/proguard/)， 并替换你Android Sdk "tools\proguard\lib\proguard.jar"
+
++ 请在工程的混淆文件中添加以下配置：
+
+        -dontoptimize
+        -dontpreverify
+
+        -dontwarn cn.jpush.**
+        -keep class cn.jpush.** { *; }
+        
+
++ v2.0.5 ~ v2.1.7 版本有引入 gson 和 protobuf ，增加排除混淆的配置。(2.1.8版本不需配置)
+  
+        #==================gson && protobuf==========================
+        -dontwarn com.google.**
+        -keep class com.google.gson.** {*;}
+        -keep class com.google.protobuf.** {*;}
 
 
 
@@ -337,7 +408,7 @@ JPush SDK 提供的 API 接口，都主要集中在 cn.jpush.android.api.JPushIn
 
 #### 添加统计代码
 
-+ 参考文档： [统计分析 API](../../client/android_api/#api_2)
++ 参考文档： [统计分析 API](http://docs.jiguang.cn/client/android_api/#api_2)
 
 #### 调用示例代码（参考 example 项目）
 
@@ -364,7 +435,7 @@ JPush SDK 提供的 API 接口，都主要集中在 cn.jpush.android.api.JPushIn
 + 确认在程序启动时候调用了init(context) 接口
 + 确认测试手机（或者模拟器）已成功连入网络
     ＋ 客户端调用 init 后不久，如果一切正常，应有登录成功的日志信息
-+ 启动应用程序，在 Portal 上向应用程序发送自定义消息或者通知栏提示。详情请参考管理[Portal](www.jpush.cn)。
++ 启动应用程序，在 Portal 上向应用程序发送自定义消息或者通知栏提示。详情请参考管理[Portal](http://www.jiguang.cn)。
     + 在几秒内，客户端应可收到下发的通知或者正定义消息
 如果 SDK 工作正常，则日志信息会如下图所示：
 
@@ -382,7 +453,7 @@ JPush SDK 提供的 API 接口，都主要集中在 cn.jpush.android.api.JPushIn
 JPush Demo 是极光推送随压缩包提供的用法示例Demo，原本适用于Eclipse工程。本教程将指导JPush用户用最简单的方法将极光推送Demo导入Android Studio。
 
 #### 快速集成JPush
-参考[3 分钟快速 Demo（Android）](/guideline/android_3m)，把JPush跑起来。之后你在Eclipse包浏览器中有可运行的项目。
+参考[3 分钟快速 Demo（Android）](http://docs.jiguang.cn/guideline/android_3m)，把JPush跑起来。
 
 ![](image/Image.png)
 
@@ -427,10 +498,10 @@ JPush Demo 是极光推送随压缩包提供的用法示例Demo，原本适用�
 
 请参考：
 
-[API: Android](../../client/android_api)
+[API: Android](http://docs.jiguang.cn/client/android_api)
 
 ## 技术支持
 
 邮件联系：<support@jpush.cn>
 
-问答社区：[极光社区](http://community.jpush.cn/)
+问答社区：[极光社区](http://community.jiguang.cn/)
