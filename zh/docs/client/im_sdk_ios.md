@@ -536,14 +536,14 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 
 #####conversation列表
 	/*!
-	 * @abstract 返回 conversation 列表（异步）
+	 * @abstract 返回 conversation 列表（异步,已经排序）
 	 *
 	 * @param handler 结果回调。正常返回时 resultObject 的类型为 NSArray，数组里成员的类型为 JMSGConversation
 	 *
-	 * @discussion 当前是返回所有的 conversation 列表。
+	 * @discussion 当前是返回所有的 conversation 列表，默认是已经排序。
 	 * 
 	 */
-	+ (void)allConversations:(JMSGCompletionHandler)handler;
+	 + (void)allConversations:(JMSGCompletionHandler)handler;
 #####例子
 	[JMSGConversation allConversations:^(id resultObject, NSError *error) {
             if (!error) {
@@ -1058,10 +1058,12 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 	        }
 	    });
 	}];	
-#####JMSGUser
 #####删除好友
 	/*!
 	 * @abstract 删除好友
+	 *
+	 * @param username 好友username
+	 * @param userAppKey 好友所在应用appkey,不传则默认是本应用
 	 *
 	 * @param handler 结果回调。回调参数：
 	 *
@@ -1071,19 +1073,21 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 	 * 如果 error 为 nil, 表示设置成功
 	 * 如果 error 不为 nil,表示设置失败
 	 *
-	 * @discussion 将用户从你的好友列表中移出
+	 * @discussion
 	 */
-	- (void)removeFriendFromFriendListCompletionHandler:(JMSGCompletionHandler)handler;
+	+ (void)removeFriendWithUsername:(NSString *)username
+	                          appKey:(NSString *)userAppKey
+	               completionHandler:(JMSGCompletionHandler)handler;
 #####例子
-	// 比如将你好友列表里的 user1 移除
-	[user1 removeFriendFromFriendListCompletionHandler:^(id resultObject, NSError *error) {
-	    if (!error) {
+	// 比如将你好友列表里的 user 移除
+	[JMSGFriendManager removeFriendWithUsername:user.username appKey:user.appkey completionHandler:^(id resultObject, NSError *error) {
+        if (!error) {
 	       NSLog(@"删除好友成功");
 	    }
 	    else{
 	       NSLog(@"删除好友失败");
 	    }
-    }];	
+    }];
 		                        
 ####黑名单
 ##### 获取黑名单列表
