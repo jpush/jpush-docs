@@ -25,7 +25,7 @@ Authorization: Basic base64_auth_string
 		</tr>
 		<tr >
 			<td>username</td>
-			<td>用户登陆名</td>
+			<td>用户登录名</td>
 			<td>Byte(4~128)</td>
 		</tr>
 		<tr >
@@ -268,9 +268,53 @@ Content-Type: application/json; charset=utf-8
 ##### Example Response
 
 ```
-< HTTP/1.1 204 NO CONTENT
+< HTTP/1.1 204 
 < Content-Type: application/json; charset=utf-8
+
 ```
+
+#### 用户在线状态查询
+
+```
+Get /v1/users/{username}/userstat
+```
+##### Example Request
+
+Request Header 
+
+```
+Get /v1/users/caiyh/userstat
+Content-Type: application/json; charset=utf-8 
+```
+Request Params
+
++ username 用户名 
+
+Request Body
+
+N/A
+
+##### Example Response
+Response Header
+
+```
+HTTP/1.1 200 NO Content
+Content-Type: application/json; charset=utf-8
+```
+
+Response Data
+
+```
+{"login":true, "online": false}
+```
+
+##### Error Code
+
+错误码
+
++ 899003 username不合法
++ 899002 用户不存在
+
 
 #### 修改密码
 
@@ -493,7 +537,7 @@ POST /v1/messages
 		</tr>
 		<tr >
 			<td>from_type</td>
-			<td>发消息着身份 当前只限admin</td>
+			<td>发送消息者身份 当前只限admin用户，必须先注册admin用户</td>
 		</tr>
 		<tr >
 			<td>msg_type</td>
@@ -501,7 +545,7 @@ POST /v1/messages
 		</tr>
 		<tr >
 			<td>target_id</td>
-			<td>目标id single填username group 填gid</td>
+			<td>目标id single填username group 填Group id</td>
 		</tr>
 		<tr >
 			<td>from_id</td>
@@ -573,6 +617,45 @@ Error Code
 + 899002   用户不存在，target_id或者from_id不存在
 + 899016   from_id 没有权限发送message
 
+### 媒体文件下载
+
+File Download
+
+```
+GET /v1/resource?mediaId={mediaId}
+```
+##### Example Request
+
+Request Header 
+
+```
+GET /v1/resource?mediaId={mediaId}
+```
+Request Body
+
+N/A
+
+Request Params
+
+
+| 参数 | 含义               | 备注 |
+|--------|--------------------------|------|
+| mediaId   | 资源的mediaId，包括用户的avatar字段 |      |
+
+
+##### Example Response 
+Response Header
+
+```
+HTTP/1.1 200 no content
+Content-Type: application/json; charset=utf-8 
+```
+
+Response Data
+
+```
+{"url":"http://........."}
+```
 
 ### Group对象字段总览
 
@@ -599,8 +682,8 @@ Error Code
 			<td>Byte(4-128)</td>
 		</tr>
 		<tr >
-			<td>level</td>
-			<td>群组的等级 1 - 最大人数40，2 - 最大人数100，3 - 最大人数 200， 4 最大人数 500</td>
+			<td>MaxMemberCount</td>
+			<td>群组默认500人</td>
 			<td></td>
 		</tr>
 		<tr >
@@ -624,11 +707,8 @@ Error Code
 
 	POST /v1/groups/
 	
-群组Level（人数限制）定义
+群组MaxMemberCount（人数限制）定义
 
-+ 	Level_1 40人
-+ 	Level_2 100人
-+  	Level_3 200人
 
 Example Request
 
@@ -663,7 +743,7 @@ Example Response
     "name": "display_name", 
     "members_username": [], 
     "desc":"doubi",
-    "level" = 3, 
+    "MaxMemberCount" = 500, 
     "mtime" = "2014-07-01 00:00:00", 
     "ctime"="2014-06-05 00:00:00"
 }
@@ -671,11 +751,11 @@ Example Response
 
 ####  获取群组详情
 
-	GET /v1/groups/{gid}
+	GET /v1/groups/{Group id}
 
 Request Params
 
-+ gid 群组ID。由创建群组时分配。
++ Group id 群组ID。由创建群组时分配。
 
 Example Response
 ```
@@ -688,7 +768,7 @@ Example Response
       "name" : "jpush", 
       "desc" : "push", 
       "appkey" : "dcf71ef5082057832bd44fbd", 
-      "level" : 3,  
+      "MaxMemberCount" : 500,  
       "mtime" : "2014-07-01 00:00:00", 
       "ctime" : "2014-06-05 00:00:00"
 }
@@ -696,7 +776,7 @@ Example Response
 
 ####  更新群组信息
 ```
-PUT /v1/groups/{gid}
+PUT /v1/groups/{Group id}
 ```
 Request Params
 
@@ -704,7 +784,7 @@ Request Params
 + desc 群描述
 
 ```
-PUT /v1/groups/{gid}
+PUT /v1/groups/{Group id}
 ```
 Request Body
 
@@ -720,15 +800,15 @@ HTTP/1.1 204 NO Content
 
 #### 删除群组
 
-删除某 gid 的群组。
+删除某  的群组。
 
 该群组的所有成员都会收到群组被解散通知。
 
-	DELETE /v1/groups/{gid}
+	DELETE /v1/groups/{Group id}
 
 Request Params
 
-+ gid 群组ID。
++ Group id 群组ID。
 
 Example Response
 
@@ -743,7 +823,7 @@ Example Response
 
 群组成员将收到增加与删除成员的通知。
 
-	POST /v1/groups/{gid}/members
+	POST /v1/groups/{Group id}/members
 
 Request Params
 
@@ -774,11 +854,11 @@ Example Response
 
 ####  获取群组成员列表
 
-    GET /v1/groups/{gid}/members/
+    GET /v1/groups/{Group id}/members/
 
 Request Params
 
-+ gid 群组ID。
++ Group id 群组ID。
 
 Example Response
 
@@ -814,7 +894,7 @@ Example Response
 < HTTP/1.1 200 OK
 < Content-Type: application/json
 
-[ { "gid": 12345, "name" : "jpush", "desc" : "push", "appkey" : "dcf71ef5082057832bd44fbd", "level" : 3, "mtime" : "2014-07-01 00:00:00", "ctime" : "2014-06-05 00:00:00"}]
+[ { "gid": 12345, "name" : "jpush", "desc" : "push", "appkey" : "dcf71ef5082057832bd44fbd", "MaxMemberCount" : 500, "mtime" : "2014-07-01 00:00:00", "ctime" : "2014-06-05 00:00:00"}]
 ```
 
 
@@ -837,7 +917,7 @@ Example Response
   "start":1100, 
   "count":1, 
   "groups": 
- [ { "gid": 12345, "name" : "jpush", "desc" : "push", "appkey" : "dcf71ef5082057832bd44fbd", "level" : 3, "mtime" : "2014-07-01 00:00:00", "ctime" : "2014-06-05 00:00:00"}] } 
+ [ { "gid": 12345, "name" : "jpush", "desc" : "push", "appkey" : "dcf71ef5082057832bd44fbd", "MaxMemberCount" : 500, "mtime" : "2014-07-01 00:00:00", "ctime" : "2014-06-05 00:00:00"}] } 
 
 ```
 
