@@ -1,0 +1,10 @@
+<ul class="nav" >
+    {% for toc_item in toc %}
+        {% for toc_item in toc_item.children %}
+            <li><a href="{{ toc_item.url }}">{{ toc_item.title }}</a></li>
+        {% endfor %}
+    {% endfor %}
+    </ul>
+    
+
+
