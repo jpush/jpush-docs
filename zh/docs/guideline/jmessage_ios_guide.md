@@ -38,17 +38,12 @@ img[alt=jmessage_ios] { width: 800px; }
 
 JMessage iOS SDK 支持 iOS 7 以上系统版本。
 
-使用 Xcode 6 版本运行 iOS 8，Xcode 5 运行 iOS 7。
-
 #### jmessage-sdk-ios.zip 集成压缩包
 
 * lib文件夹：包含一个文件，JMessage.framework；
 * Guideline.md：本开发指南；
 * demo文件夹：示例。
 
-#### 开发环境
-
-* 使用Xcode 6版本运行IOS8版本SDK，XCode 5运行非IOS 8版本SDK
 
 #### 包括 JPush SDK
 
