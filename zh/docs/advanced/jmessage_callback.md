@@ -51,7 +51,9 @@ Request Body
   },
  "create_time":1446016259,
  "version":1,
- "msgid":12345678
+ "msgid":12345678,
+ "msg_level": 0,
+ "msg_ctime" : 1466866468352 // 服务器接收到消息的时间，单位毫秒  
  }
  ]
 }
