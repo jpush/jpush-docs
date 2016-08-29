@@ -10,6 +10,9 @@ pages:
 
 - 入门指南:
   - 'JPush产品简介': 'guideline/intro.md'
+  - '控制台使用指南': 'console/Instructions.md'
+  - 'JPush短信补充': 'guideline/push-SMS-intro.md'
+  - 'Rich Push 开发指南': 'advanced/rich_push.md'
   - '常见问题': 'guideline/faq.md'
 
 - Android:
@@ -44,9 +47,7 @@ pages:
   - 'Schedule API v3': 'server/push/rest_api_push_schedule.md'
   - 'HTTP 状态码': 'server/push/http_status_code.md'
 
-- 控制台使用指南: 'console/Instructions.md'
 
-- Rich Push 开发指南: 'advanced/rich_push.md'
 
 - 高级:
   - 'JPush应用场景': 'advanced/scenes.md'
