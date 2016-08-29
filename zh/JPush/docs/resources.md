@@ -117,7 +117,7 @@
 </ul>
 </div>
 <div class="download-icon">
-<a href="https://www.jpush.cn/common/downloads/resource/1459130284033">下载</a>
+<a href="https://www.jiguang.cn/common/downloads/resource/1459130284033">下载</a>
 </div>
 </div>
 <div class="hr">
@@ -148,7 +148,7 @@
 </ul>
 </div>
 <div class="download-icon">
-<a href="https://www.jpush.cn/common/downloads/resource/1463721337648">下载</a>
+<a href="https://www.jiguang.cn/common/downloads/resource/1463721337648">下载</a>
 </div>
 </div>
 <div class="hr">
@@ -167,8 +167,8 @@
 </div>
 <div class="download-info">
 <ul class="download-info-ul">
-<li>版本号：v3.4.1</li>
-<li>更新时间：2016-05-30</li>
+<li>版本号：v3.5.1</li>
+<li>更新时间：2016-08-28</li>
 <li>更新内容：<a href="https://github.com/jpush/jpush-api-php-client/releases">Change Log</a></li>
 <div style=" clear:both; visibility:hidden;">
 </ul>
@@ -179,7 +179,7 @@
 </ul>
 </div>
 <div class="download-icon">
-<a href="https://www.jpush.cn/common/downloads/resource/1464661245341">下载</a>
+<a href="https://sdkfiledl.jiguang.cn/jpush-api-php-client-3.5.1.zip">下载</a>
 </div>
 </div>
 <div class="hr">
@@ -210,7 +210,7 @@
 </ul>
 </div>
 <div class="download-icon">
-<a href="https://www.jpush.cn/common/downloads/resource/1459854935213">下载</a>
+<a href="https://www.jiguang.cn/common/downloads/resource/1459854935213">下载</a>
 </div>
 </div>
 <div class="hr">
@@ -241,7 +241,7 @@
 </ul>
 </div>
 <div class="download-icon">
-<a href="https://www.jpush.cn/common/downloads/resource/1459130200447">下载</a>
+<a href="https://www.jiguang.cn/common/downloads/resource/1459130200447">下载</a>
 </div>
 </div>
 <div class="hr">
@@ -272,7 +272,7 @@
 </ul>
 </div>
 <div class="download-icon">
-<a href="https://www.jpush.cn/common/downloads/resource/1461742750944">下载</a>
+<a href="https://www.jiguang.cn/common/downloads/resource/1461742750944">下载</a>
 </div>
 </div>
 </li>
