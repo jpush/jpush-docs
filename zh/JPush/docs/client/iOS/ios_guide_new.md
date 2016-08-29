@@ -235,7 +235,7 @@ r2.1.5版本增加一个上传IDFA字符串的接口
             
 ### JPush SDK 相关事件监听
 
-建议开发者加上API里面提供下面 6 种类型的通知：
+建议开发者加上API里面提供的以下类型的通知：
 
 extern NSString *const kJPFNetworkIsConnectingNotification; // 正在连接中
 
