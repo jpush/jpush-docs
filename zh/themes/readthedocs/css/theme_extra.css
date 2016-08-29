@@ -3,7 +3,7 @@
  */
 html {
     font-size: 90%;
-    min-width:800px;
+    min-width:1000px;
 }
 
 body {
@@ -548,6 +548,7 @@ code.cs, code.c {
   margin-right: 5px;
   float: left;
   min-width: 160px;
+  margin-left: 15px;
 }
 
 .download .download-info-ul li a{
