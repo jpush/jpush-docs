@@ -327,11 +327,19 @@ section ul li ul li{
   line-height: 1.8;
 }
 
+section  table  {
+    max-width:720px;
+}
+
+td:first-child {
+    word-break: keep-all;
+}
 
 
-section  table tr th {
-    min-width:60px;
+section table tr th {
+    line-height: 1.8;
     word-break:keep-all;
+    min-width:60px;
     background-color: #f3f4f6;
     border: 1px solid #dddddd;
     height: 46px;
@@ -342,7 +350,7 @@ section  table tr th {
 
 
 section  table tr td {
-    word-break: keep-all;
+    line-height: 1.8;
     min-width:60px;
     height: 40px;
     padding-left: 10px;
