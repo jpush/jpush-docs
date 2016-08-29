@@ -11,7 +11,7 @@ img[alt=jmessage_ios] { width: 800px; }
 在你看到本文档时，可能最新的 SDK版本与本文已经不是很适配，建议关注在线文档：
 
 + [极光文档](http://docs.jpush.io/)网站上，有极光推送相关的所有指南、API、教程等全部的文档。包括本文档的更新版本，都会及时地发布到该网站上。
-+ [极光问答](https://www.jpush.cn/qa/)网站：大家除了文档之外，还有问题与疑问，会到这里来提问题，以及时地得到解答。
++ [极光问答](https://community.jiguang.cn/latest)网站：大家除了文档之外，还有问题与疑问，会到这里来提问题，以及时地得到解答。
 + 如果您看到本文档时，但还未下载 JMessage SDK，请访问[SDK下载页面](../../resources_jmessage)下载。
 
 ### 功能说明
@@ -238,7 +238,7 @@ extern NSString *const JMSGNotification_GroupChange;             // 群组更新
 
 邮件联系：[support@jpush.cn][4]
 
-问答社区：[http://www.jpush.cn/qa/][5]
+问答社区：[https://community.jiguang.cn/latest][5]
 
 [0]: ./image/create_ios_app.png
 [1]: ./image/Screenshot_13-4_2_create.png
