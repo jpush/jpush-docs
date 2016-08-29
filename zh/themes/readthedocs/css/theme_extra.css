@@ -330,6 +330,7 @@ section ul li ul li{
 
 
 section  table tr th {
+    line-height: 1.8;
     min-width:60px;
     word-break:keep-all;
     background-color: #f3f4f6;
@@ -342,6 +343,7 @@ section  table tr th {
 
 
 section  table tr td {
+    line-height: 1.8;
     word-break: keep-all;
     min-width:60px;
     height: 40px;
