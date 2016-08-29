@@ -328,6 +328,28 @@ section ul li ul li{
 }
 
 
+
+section  table tr th {
+    min-width:60px;
+    word-break:keep-all;
+    background-color: #f3f4f6;
+    border: 1px solid #dddddd;
+    height: 46px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-family: "Helvetica Neue",Helvetica,"PingFang SC","Microsoft Yahei",Arial,Verdana,sans-serif;
+}
+
+
+section  table tr td {
+    min-width:60px;
+    height: 32px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border: 1px solid #dddddd;
+    font-family: "Helvetica Neue",Helvetica,"PingFang SC","Microsoft Yahei",Arial,Verdana,sans-serif;
+}
+
 #tocright{
   position:fixed;
   margin-top: 82px;
