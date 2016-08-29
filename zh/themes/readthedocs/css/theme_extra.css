@@ -344,7 +344,7 @@ section  table tr th {
 section  table tr td {
     word-break: keep-all;
     min-width:60px;
-    height: 32px;
+    height: 40px;
     padding-left: 10px;
     padding-right: 10px;
     border: 1px solid #dddddd;
