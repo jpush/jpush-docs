@@ -3,13 +3,13 @@
 img[alt=jpush_ios_v] { width: 500px; }
 img[alt=jpush_android_so] { width: 800px; }
 </style>
+<br/>
 
 JPush是经过考验的大规模APP推送平台，每天推送消息数超过5亿条。
 开发者集成SDK后，可以通过调用API推送消息。同时，JPush提供可视化的web端控制台发送通知，统计分析推送效果。
 JPush全面支持 Android, iOS, Winphone 三大手机平台。
 
 
-<br />
 ##消息形式
 JPush提供四种消息形式：通知，自定义消息，富媒体和本地通知。
 
@@ -87,7 +87,6 @@ Android 开发者参考文档：[统计分析API](../client/Android/android_api/
 3. [下载SDK](../resources/) 集成到 App 里。
 
 
-<br/>
 ##技术支持
 当出现问题时：
 
