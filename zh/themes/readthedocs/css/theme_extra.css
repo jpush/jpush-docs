@@ -331,10 +331,6 @@ section  table  {
     max-width:720px;
 }
 
-th:first-child {
-    word-break:keep-all;
-}
-
 td:first-child {
     word-break: keep-all;
 }
@@ -342,6 +338,7 @@ td:first-child {
 
 section table tr th {
     line-height: 1.8;
+    word-break:keep-all;
     min-width:60px;
     background-color: #f3f4f6;
     border: 1px solid #dddddd;
