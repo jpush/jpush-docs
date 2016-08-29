@@ -1,129 +1,126 @@
+# JPush API PHP Client
+
 [![Build Status](https://travis-ci.org/jpush/jpush-api-php-client.svg?branch=master)](https://travis-ci.org/jpush/jpush-api-php-client)
 
-# JPush API client library for PHP
+这是 JPush REST API 的 PHP 版本封装开发包，是由极光推送官方提供的，一般支持最新的 API 功能。
 
-### 简要概述
+对应的 REST API 文档: http://docs.jiguang.cn/server/server_overview/
 
-* 本API提供简单的接口去调用[JPush Push API](https://github.com/jpush/jpush-api-php-client/blob/master/examples/push_example.php)
-* 本API提供简单的接口去调用[JPush Report API](https://github.com/jpush/jpush-api-php-client/blob/master/examples/report_example.php)
-* 本API提供简单的接口去调用[JPush Device API](https://github.com/jpush/jpush-api-php-client/blob/master/examples/device_example.php)
-* 本API提供简单的接口去调用[JPush Schedule API](https://github.com/jpush/jpush-api-php-client/blob/master/examples/schedule_example.php)
+> 支持的 PHP 版本: 5.3.3 ～ 5.6.x, 7.0.x
 
+> 若需要兼容 PHP 5.3.3 以下版本，可以使用 [v3 分支的代码](https://github.com/jpush/jpush-api-php-client/tree/v3)。
+因为运行 Composer 需要 PHP 5.3.2+ 以上版本，所以其不提供 Composer 支持，
+也可以[点击链接](https://github.com/jpush/jpush-api-php-client/releases)下载 v3.4.x 版本源码。
 
-#### 快速安装
+## Installation
 
-1.复制`src/JPush`到项目目录下
+#### 使用 Composer 安装
 
-2.在需要使用JPush的源文件头部 引入 `src/JPush/JPush.php`  既可使用(注意确认引入的路径是否正确).
+- 在项目中的 `composer.json` 文件中添加 jpush 依赖：
 
-```
-# 引入代码
-require_once("../JPush/JPush.php");
-```
-PS: 在下载的中的[example](https://github.com/jpush/jpush-api-php-client/tree/master/examples)文件夹有简单示例代码, 开发者可以参考其中的样例快速了解该库的使用方法.
-
-
-
-#### 使用 Composer
-
-如果你的项目使用composer管理依赖, 亦可以通过以下方式使用JPush PHP Library.
-
-
-1. 在 `composer.json` 中添加 jpush依赖, 目前最新版本为 v3.3.9
-
-```
-{
-    "require":{
-        "jpush/jpush": "v3.3.9"
-    }
+```json
+"require": {
+    "jpush/jpush": "v3.5.*"
 }
 ```
-2. 执行 `php composer.phar install` 或 `php composer.phar update` 进行安装
 
+- 执行 `$ php composer.phar install` 或 `$ composer install` 进行安装。
 
+#### 直接下载源码安装
 
+> 直接下载源代码也是一种安装 SDK 的方法，不过因为有版本更新的维护问题，所以这种安装方式**十分不推荐**，但由于种种原因导致无法使用 Composer，所以我们也提供了这种情况下的备选方案。
 
-### 快速使用
+- 下载源代码包，解压到项目中
+- 在项目中引入 autoload：
 
-#### 代码示例
-
-[example](https://github.com/jpush/jpush-api-php-client/tree/master/examples)文件夹有简单示例代码, 开发者可参考以快速使用该库
-
+```php
+require 'path_to_sdk/autoload.php';
 ```
-examples/
-├── push_example.php Push API使用示例
-├── device_example.php Device API使用示例
-├── report_example.php Report API使用示例
-└── schedule_example.php Schedule API使用示例
-```
+
+## Usage
+
+- [Init API](https://github.com/jpush/jpush-api-php-client/blob/master/doc/api.md#init-api)
+- [Push API](https://github.com/jpush/jpush-api-php-client/blob/master/doc/api.md#push-api)
+- [Report API](https://github.com/jpush/jpush-api-php-client/blob/master/doc/api.md#report-api)
+- [Device API](https://github.com/jpush/jpush-api-php-client/blob/master/doc/api.md#device-api)
+- [Schedule API](https://github.com/jpush/jpush-api-php-client/blob/master/doc/api.md#schedule-api)
+- [Exception Handle](https://github.com/jpush/jpush-api-php-client/blob/master/doc/api.md#schedule-api)
 
 #### 初始化
 
 ```php
-$client = new JPush($app_key, $master_secret);
+use JPush\Client as JPush;
+...
+...
+
+    $client = new JPush($app_key, $master_secret);
+
+...
+```
+
+OR
+
+```php
+$client = new \JPush\Client($app_key, $master_secret);
 ```
 
 #### 简单推送
 
 ```php
-$result = $client->push()
+$client->push()
     ->setPlatform('all')
     ->addAllAudience()
-    ->setNotificationAlert('Hi, JPush')
+    ->setNotificationAlert('Hello, JPush')
     ->send();
-
-echo 'Result=' . json_encode($result) . $br;
 ```
 
-#### 完整的推送示例
-
-包含指定Platform,指定Alias,Tag,指定iOS,Android notification,指定Message等
+#### 异常处理
 
 ```php
-$result = $client->push()
-    ->setPlatform('ios', 'android')
-    ->addAlias('alias1')
-    ->addTag(array('tag1', 'tag2'))
-    ->setNotificationAlert('Hi, JPush')
-    ->addAndroidNotification('Hi, android notification', 'notification title', 1, array("key1"=>"value1", "key2"=>"value2"))
-    ->addIosNotification("Hi, iOS notification", 'iOS sound', '+1', true, 'iOS category', array("key1"=>"value1", "key2"=>"value2"))
-    ->setMessage("msg content", 'msg title', 'type', array("key1"=>"value1", "key2"=>"value2"))
-    ->setOptions(100000, 3600, null, false)
-    ->send();
-
-echo 'Result=' . json_encode($result) . $br;
+$pusher = $client->push();
+$pusher->setPlatform('all');
+$pusher->addAllAudience();
+$pusher->setNotificationAlert('Hello, JPush');
+try {
+    $pusher->send();
+} catch (\JPush\Exceptions\JPushException $e) {
+    // try something else here
+    print $e;
+}
 ```
 
-#### 发送短信推送示例
+## Examples
 
-推送未送达的情况下进行短信送达, 该功能需预付短信费用, 并调用Device API绑定设备与手机号
+在下载的中的 [examples](https://github.com/jpush/jpush-api-php-client/tree/master/examples) 文件夹有简单示例代码, 开发者可以参考其中的样例快速了解该库的使用方法。
+> **注：所下载的样例代码不可马上使用，需要在 `examples/conf.php` 文件中填入相关的必要参数，或者设置相关环境变量，不进行这个操作则示例运行会失败**
 
-```php
-$result = $client->push()
-    ->setPlatform('all')
-    ->addTag('tag1')
-    ->setNotificationAlert("Hi, JPush SMS")
-    ->setSmsMessage('Hi, JPush SMS', 60)
-    ->send();
+**简单使用方法**
 
-echo 'Result=' . json_encode($result) . $br;
+若要运行 push_example.php 中的示例代码：
+
+``` bash
+# 假定当前目录为 JPush 源码所在的根目录
+$ php examples/push_example.php
+```
+> 同时也可编辑相关的示例文件，更改参数查看执行效果
+
+## Testing
+
+```bash
+# 编辑 tests/bootstrap.php 文件，填入必须的变量值
+# OR 设置相应的环境变量
+
+# 运行全部测试用例
+$ ./vendor/bin/phpunit tests
+
+# 运行某一具体测试用例
+$ ./vendor/bin/phpunit tests/JPush/xxTest.php
 ```
 
-#### 定时推送示例
+## Contributing
 
-```php
-$payload = $client->push()
-    ->setPlatform("all")
-    ->addAllAudience()
-    ->setNotificationAlert("Hi, 这是一条定时发送的消息")
-    ->build();
+Bug reports and pull requests are welcome on GitHub at https://github.com/jpush/jpush-api-php-client.
 
-// 创建一个2016-12-22 13:45:00触发的定时任务
-$response = $client->schedule()->createSingleSchedule("每天14点发送的定时任务", $payload, array("time"=>"2016-12-22 13:45:00"));
-echo 'Result=' . json_encode($response) . $br;
-```
+## License
 
-
-### 版本更新
-
-[Release页面](https://github.com/jpush/jpush-api-php-client/releases/)有详细的版本发布记录与下载。
+The library is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
