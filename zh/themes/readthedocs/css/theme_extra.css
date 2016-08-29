@@ -342,6 +342,7 @@ section  table tr th {
 
 
 section  table tr td {
+    word-break: keep-all;
     min-width:60px;
     height: 32px;
     padding-left: 10px;
