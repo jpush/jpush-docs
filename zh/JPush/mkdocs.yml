@@ -35,7 +35,7 @@ pages:
 
 - WindowsPhone:
   - 'Windows Phone SDK 概述': 'client/Windows Phone/winphone_sdk.md'
-  - 'Windows phone 3分钟 Demo': 'client/Windows Phone/winphone_3m.md'
+  - 'Windows Phone 3分钟 Demo': 'client/Windows Phone/winphone_3m.md'
   - 'Windows Phone SDK 集成指南': 'client/Windows Phone/winphone_guide.md'
   - 'Windows Phone API': 'client/Windows Phone/winphone_api.md'
 

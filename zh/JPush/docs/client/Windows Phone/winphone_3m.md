@@ -1,4 +1,4 @@
-#Windows phone 3分钟快速demo
+#Windows Phone 3分钟快速demo
 
 <style>
 img[alt=jpush_winphone_3m] { width: 500px; }

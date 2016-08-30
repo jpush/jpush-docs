@@ -83,7 +83,7 @@ JPush API v3 支持同时一次调用同时推送 APNs 通知与 JPush 应用内
 
 请参考以下文档与教程，来集成 IOS SDK。
 
-+ [IOS 集成指南](../ios_guide_new)
++ [IOS 集成指南](ios_guide_new)
 
 
 
@@ -100,7 +100,7 @@ JPush API v3 支持同时一次调用同时推送 APNs 通知与 JPush 应用内
 + 静态库文件 libPushSDK.a
 
 ### 注意事项
-+ [请参考iOS常见问题](../../guideline/faq/#ios)
++ [请参考iOS常见问题](ios_faq)
 
 ## JPush APNs 通知的意义
 
