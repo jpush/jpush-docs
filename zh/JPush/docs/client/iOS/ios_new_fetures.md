@@ -1,56 +1,86 @@
 # iOS 新特性更新汇总
-## iOS 7 Background Remote Notification
+
+## iOS 9集成
+
+### iOS 9变动影响SDK部分:
+
++ 增加了bitCode编码格式,当SDK不支持bitCode时，用户集成时无法开启bitCode选项.
+	+ 现象:用户集成SDK后无法编译通过，错误日志里包含了bitCode的相关错误信息
++ 默认使用https连接,如果请求为http,需要手动配置plist来支持http服务，当前我们的服务器请求都走http服务。
+	+ 现象:用户集成SDK后，所有JPush相关的http服务都提示连接错误或者连接超时,可能是此问题。
+
+### bitCode解决方式
+
++ JPush iOS SDK v1.8.7 及以上版本的SDK,已经增加对 iOS 9 新特性 bitCode 的支持.JMessage iOS SDK v2.0.0 及以上版本支持bitCode。
+
+### Https解决方式
+
+JPush 2.1.9以后的版本则不需要配置此步骤 
+
++ 需要用户主动在当前项目的Info.plist中添加NSAppTransportSecurity类型Dictionary。
++ 在NSAppTransportSecurity下添加NSAllowsArbitraryLoads类型Boolean,值设为YES
 
 
-本次iOS 7在推送方面最大的变化就是允许，应用收到通知后在后台（background）状态下运行一段代码，可用于从服务器获取内容更新。功能使用场景：（多媒体）聊天，Email更新，基于通知的订阅内容同步等功能，提升了终端用户的体验。
+## iOS 9 UIUserNotificationActionBehaviorTextInput
 
-Remote Notifications 与之前版本的对比可以参考下面两张 Apple 官方的图片便可一目了然。
+### 支持版本
+v1.8.0 版本开始
 
-![jpush_ios](../image/iOS6_push.jpg)
+1. 本次iOS 9在推送方面最大的变化就是修改了推送Category的类型，在原本的推送categories的基础上，增加了一个text Action类型，这个参数的目的是用来注册通过通知快捷文字输入的事项。
+2. 这个categories由一系列的 UIUserNotificationCategory组成。每个UIUserNotificationCategory对象允许添加一组UIMutableUserNotificationAction类型的参数来增加通知栏上的项目。如今iOS9在原有的UIMutableUserNotificationAction类型增加了Text输入类型(UIUserNotificationActionBehaviorTextInput),通过behavior来设置(只有iOS9才拥有的属性)。
+3. 回调的方法iOS9使用了两个新的回调方法来处理点击按钮的事件:
 
-![jpush_ios](../image/iOS7.png)
+```
+- (void)application:(UIApplication *)application handleActionWithIdentifier:(nullableNSString *)identifier forLocalNotification:(UILocalNotification *)notification withResponseInfo:(NSDictionary *)responseInfo completionHandler:(void(^)())completionHandler NS_AVAILABLE_IOS(9_0)
 
-如果只携带content-available: 1 不携带任何badge，sound 和消息内容等参数，则可以不打扰用户的情况下进行内容更新等操作即为“Silent Remote Notifications”。
+- (void)application:(UIApplication *)application handleActionWithIdentifier:(nullableNSString *)identifier forRemoteNotification:(NSDictionary *)userInfo withResponseInfo:(NSDictionary *)responseInfo completionHandler:(void(^)())completionHandler NS_AVAILABLE_IOS(9_0)
 
-![jpush_ios](../image/silent.png)
+```
 
+**说明**:
+
++ 当Action为UIUserNotificationActionBehaviorTextInput时,需要通过responseInfo的UIUserNotificationActionResponseTypedTextKey来获取输入的文字内容,UIUserNotificationTextInputActionButtonTitleKey获取点击的按钮类型.
+
++ 当Action为UIUserNotificationActionBehaviorDefault时,responseInfo为nil,通过identifier来区分点击按钮分别是什么来做处理. 
 
 ### 客户端设置
 
-#### 开启Remote notifications
+**设置带有快速回复内容的通知**
 
-需要在Xcode 中修改应用的 Capabilities 开启Remote notifications，请参考下图：
+```
+#ifdef __IPHONE_9_0 
+ UIMutableUserNotificationAction *replyAction = [[UIMutableUserNotificationAction alloc]init];
+ replyAction.title = @"Reply";
+ replyAction.identifier = @"comment-reply";
+ replyAction.activationMode = UIUserNotificationActivationModeBackground;
+ replyAction.behavior = UIUserNotificationActionBehaviorTextInput;
+  
+ UIMutableUserNotificationCategory *category = [[UIMutableUserNotificationCategory alloc]init];
+ category.identifier = @"reply";
+ [category setActions:@[replyAction] forContext:UIUserNotificationActionContextDefault];
+#endif
+```
 
-![](../image/Snip20131119_1.png)
+**使用回调函数**
 
-#### 修改通知处理函数
+```
+- (void)application:(UIApplication *)application handleActionWithIdentifier:(nullable NSString *)identifier forRemoteNotification:(NSDictionary *)userInfo withResponseInfo:(NSDictionary *)responseInfo completionHandler:(void(^)())completionHandler NS_AVAILABLE_IOS(9_0) {
+ if ([identifier isEqualToString:@"comment-reply"]) {
+ NSString *response = responseInfo[UIUserNotificationActionResponseTypedTextKey];
+ //对输入的文字作处理
+ }
+ completionHandler();
+ }
+```
 
-当注册了Backgroud Modes -> Remote notifications 后，notification 处理函数一律切换到下面函数，后台推送代码也在此函数中调用。
+### 服务端设置
 
-	- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler；
+服务端payload格式:aps增加category字段，当该字段与客户端UIMutableUserNotificationCategory的identifier匹配时，触发设定的action和button显示。
 
-### 服务端推送设置
-
-推送消息携带 content-available: 1 是Background 运行的必须参数，如果不携带此字段则与iOS7 之前版本的普通推送一样。
-
-#### 使用Web Portal 推送
-
-在“可选设置内”选择对应的参数。
-
-![](../image/push.png)
-
-#### 使用 API 推送
-
-只需在[Push API v3](../../server/push/rest_api_v3_push/#notification) 的 ios 内附加content-available":true 字段即可
-
-### 限制与注意
-
-+ “Silent Remote Notifications”是在 Apple 的限制下有一定的频率控制，但具体频率不详。所以并不是所有的 “Silent Remote Notifications” 都能按照预期到达客户端触发函数。
-+ “Background”下提供给应用的运行时间窗是有限制的，如果需要下载较大的文件请参考 Apple 的 NSURLSession 的介绍。
-+ “Background  Remote Notification”  的前提是要求客户端处于Background 或 Suspended 状态，如果用户通过 App Switcher 将应用从后台 Kill 掉应用将不会唤醒应用处理 background 代码。
-
-更详细的说明资料请查阅 Apple 官方的 iOS 开发文档。
-
+```
+payload example:
+{"aps":{"alert":"example", "sound":"default", "badge": 1, "category":"reply"}}
+```
 
 ## iOS 8 UILocalNotification
 
@@ -165,83 +195,60 @@ payload example:
 ```
 
 
-## iOS 9 UIUserNotificationActionBehaviorTextInput
 
-### 支持版本
-v1.8.0 版本开始
 
-1. 本次iOS 9在推送方面最大的变化就是修改了推送Category的类型，在原本的推送categories的基础上，增加了一个text Action类型，这个参数的目的是用来注册通过通知快捷文字输入的事项。
-2. 这个categories由一系列的 UIUserNotificationCategory组成。每个UIUserNotificationCategory对象允许添加一组UIMutableUserNotificationAction类型的参数来增加通知栏上的项目。如今iOS9在原有的UIMutableUserNotificationAction类型增加了Text输入类型(UIUserNotificationActionBehaviorTextInput),通过behavior来设置(只有iOS9才拥有的属性)。
-3. 回调的方法iOS9使用了两个新的回调方法来处理点击按钮的事件:
 
-```
-- (void)application:(UIApplication *)application handleActionWithIdentifier:(nullableNSString *)identifier forLocalNotification:(UILocalNotification *)notification withResponseInfo:(NSDictionary *)responseInfo completionHandler:(void(^)())completionHandler NS_AVAILABLE_IOS(9_0)
 
-- (void)application:(UIApplication *)application handleActionWithIdentifier:(nullableNSString *)identifier forRemoteNotification:(NSDictionary *)userInfo withResponseInfo:(NSDictionary *)responseInfo completionHandler:(void(^)())completionHandler NS_AVAILABLE_IOS(9_0)
+## iOS 7 Background Remote Notification
 
-```
 
-**说明**:
+本次iOS 7在推送方面最大的变化就是允许，应用收到通知后在后台（background）状态下运行一段代码，可用于从服务器获取内容更新。功能使用场景：（多媒体）聊天，Email更新，基于通知的订阅内容同步等功能，提升了终端用户的体验。
 
-+ 当Action为UIUserNotificationActionBehaviorTextInput时,需要通过responseInfo的UIUserNotificationActionResponseTypedTextKey来获取输入的文字内容,UIUserNotificationTextInputActionButtonTitleKey获取点击的按钮类型.
+Remote Notifications 与之前版本的对比可以参考下面两张 Apple 官方的图片便可一目了然。
 
-+ 当Action为UIUserNotificationActionBehaviorDefault时,responseInfo为nil,通过identifier来区分点击按钮分别是什么来做处理. 
+![jpush_ios](../image/iOS6_push.jpg)
+
+![jpush_ios](../image/iOS7.png)
+
+如果只携带content-available: 1 不携带任何badge，sound 和消息内容等参数，则可以不打扰用户的情况下进行内容更新等操作即为“Silent Remote Notifications”。
+
+![jpush_ios](../image/silent.png)
+
 
 ### 客户端设置
 
-**设置带有快速回复内容的通知**
+#### 开启Remote notifications
 
-```
-#ifdef __IPHONE_9_0 
- UIMutableUserNotificationAction *replyAction = [[UIMutableUserNotificationAction alloc]init];
- replyAction.title = @"Reply";
- replyAction.identifier = @"comment-reply";
- replyAction.activationMode = UIUserNotificationActivationModeBackground;
- replyAction.behavior = UIUserNotificationActionBehaviorTextInput;
-  
- UIMutableUserNotificationCategory *category = [[UIMutableUserNotificationCategory alloc]init];
- category.identifier = @"reply";
- [category setActions:@[replyAction] forContext:UIUserNotificationActionContextDefault];
-#endif
-```
+需要在Xcode 中修改应用的 Capabilities 开启Remote notifications，请参考下图：
 
-**使用回调函数**
+![](../image/Snip20131119_1.png)
 
-```
-- (void)application:(UIApplication *)application handleActionWithIdentifier:(nullable NSString *)identifier forRemoteNotification:(NSDictionary *)userInfo withResponseInfo:(NSDictionary *)responseInfo completionHandler:(void(^)())completionHandler NS_AVAILABLE_IOS(9_0) {
- if ([identifier isEqualToString:@"comment-reply"]) {
- NSString *response = responseInfo[UIUserNotificationActionResponseTypedTextKey];
- //对输入的文字作处理
- }
- completionHandler();
- }
-```
+#### 修改通知处理函数
 
-### 服务端设置
+当注册了Backgroud Modes -> Remote notifications 后，notification 处理函数一律切换到下面函数，后台推送代码也在此函数中调用。
 
-服务端payload格式:aps增加category字段，当该字段与客户端UIMutableUserNotificationCategory的identifier匹配时，触发设定的action和button显示。
+	- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler；
 
-```
-payload example:
-{"aps":{"alert":"example", "sound":"default", "badge": 1, "category":"reply"}}
-```
+### 服务端推送设置
 
-## iOS 9集成
+推送消息携带 content-available: 1 是Background 运行的必须参数，如果不携带此字段则与iOS7 之前版本的普通推送一样。
 
-### iOS 9变动影响SDK部分:
+#### 使用Web Portal 推送
 
-+ 增加了bitCode编码格式,当SDK不支持bitCode时，用户集成时无法开启bitCode选项.
-	+ 现象:用户集成SDK后无法编译通过，错误日志里包含了bitCode的相关错误信息
-+ 默认使用https连接,如果请求为http,需要手动配置plist来支持http服务，当前我们的服务器请求都走http服务。
-	+ 现象:用户集成SDK后，所有JPush相关的http服务都提示连接错误或者连接超时,可能是此问题。
+在“可选设置内”选择对应的参数。
 
-### bitCode解决方式
+![](../image/push.png)
 
-JPush iOS SDK v1.8.7 及以上版本的SDK,已经增加对 iOS 9 新特性 bitCode 的支持.JMessage iOS SDK v2.0.0 及以上版本支持bitCode。
+#### 使用 API 推送
 
-### Https解决方式
+只需在[Push API v3](../../server/push/rest_api_v3_push/#notification) 的 ios 内附加content-available":true 字段即可
 
-SDK未提供https地址版本时
+### 限制与注意
 
-+ 需要用户主动在当前项目的Info.plist中添加NSAppTransportSecurity类型Dictionary。
-+ 在NSAppTransportSecurity下添加NSAllowsArbitraryLoads类型Boolean,值设为YES
++ “Silent Remote Notifications”是在 Apple 的限制下有一定的频率控制，但具体频率不详。所以并不是所有的 “Silent Remote Notifications” 都能按照预期到达客户端触发函数。
++ “Background”下提供给应用的运行时间窗是有限制的，如果需要下载较大的文件请参考 Apple 的 NSURLSession 的介绍。
++ “Background  Remote Notification”  的前提是要求客户端处于Background 或 Suspended 状态，如果用户通过 App Switcher 将应用从后台 Kill 掉应用将不会唤醒应用处理 background 代码。
+
+更详细的说明资料请查阅 Apple 官方的 iOS 开发文档。
+
+

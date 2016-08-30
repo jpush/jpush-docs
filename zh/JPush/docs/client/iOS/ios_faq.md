@@ -14,7 +14,7 @@ img[alt=jpush_ios_5] { width: 500px; }##
 服务端推送时，需要指定iOS 平台下的sound参数，具体传入的值是声音文件名＋后缀。
 
 
-<br />
+
 
 ## 为什么iOS收不到推送消息？
 
@@ -26,7 +26,6 @@ img[alt=jpush_ios_5] { width: 500px; }##
 
 温馨提示：目前api推送的时候可以通过参数apns_production可以指定推送环境，false为开发环境，true为生产环境。V3 api不带此参数则默认为生产环境，V3 api封装的sdk 默认为开发环境。如果api有传apns_production则以此值为准，否则以应用详情的部署环境为准。
 
-<br />
 
 ## 为什么启动的时候出现 Did Fail To Register For Remote Notifications With Error的错误
 
@@ -38,13 +37,13 @@ img[alt=jpush_ios_5] { width: 500px; }##
 
 或参考：[http://blog.csdn.net/stefzeus/article/details/7418552](http://blog.csdn.net/stefzeus/article/details/7418552)
 
-<br />
+
 
 ## 如何在接收到 APN 的时候获取 APN 消息内容并进行跳转或做出响应处理？
 
 [获取 APNs 推送内容](ios_api)
 
-<br />
+
 
 ## 如何关闭 APN  推送？
 
@@ -58,19 +57,16 @@ img[alt=jpush_ios_5] { width: 500px; }##
 + 在iOS系统设置的通知设置中修改对应app的推送设置；
 + 在代码中重新调用 [JPUSHService registerForRemoteNotificationTypes:]；
 
-<br />
 
 ## App badge number（角标）如何更改与清空？
 
-JPush 网站上推送 iOS 通知时，可在［可选设置］里面指定 badge 参数的值，如：1或"+1"。
-
-api上指定badge的参数请看：[Push-API-v3#API-v3-ios](/ios_api/#badge)
-
+JPush 网站上推送 iOS 通知时，可在［可选设置］里面指定 badge 参数的值，如：1或"+1"。  
+api上指定badge的参数请看：[Push API](../../server/push/rest_api_v3_push/#notification)  
 客户端上报badge到JPush服务器的接口请看:[设置badge](ios_api/#badge)
 
 关于badge ＋1的介绍，请看[APNs Notification badge](http://blog.jiguang.cn/ios_apns_badge_plus/)
 
-<br />
+
 ## Icon Badge number 的清空方法：
 
 + APN 推送内容指定 badge number 为 0；
@@ -91,7 +87,6 @@ badge累加只能通过v3 api推送，且只有1.7.4版本以上才能支持。
 
 如果仍有其他消息，则考虑清除 local notification 通知。（ [[UIApplication sharedApplication] cancelAllLocalNotifications] ）
 
-<br />
 
 ## 出现Not get deviceToken yet. Maybe: your certificate not configured APNs?...错误日志时如何排除问题?
 
@@ -123,7 +118,6 @@ badge累加只能通过v3 api推送，且只有1.7.4版本以上才能支持。
 
 + 如果仍然有问题，请将上述步骤的结果以邮件附件的形式发送到JPush支持邮箱，我们将协助你解决此问题。
 
-<br />
 
 ## 上传到appStore的版本为什么收不到推送？
 
@@ -131,7 +125,6 @@ badge累加只能通过v3 api推送，且只有1.7.4版本以上才能支持。
 + 如果是在jpush网站上推送，请确认新建通知时推送对象是否选择了生产环境；
 + 如果是v3 api推送，请确认是否使用了apns_production参数，值是否为：true；如果没有使用apns_production参数请确认jpush网站上该应用的部署环境是否已经切换到生产环境。
 
-<br />
 
 ## iOS 平台上传证书一直为未通过状态
 
@@ -143,11 +136,10 @@ badge累加只能通过v3 api推送，且只有1.7.4版本以上才能支持。
 
 具体请看上传后显示的错误输出内容。
 
-<br />
+
 
 ## 为什么日志里面会打印：You've implemented -[ <UIApplicationDelegate\> application:didReceiveRemoteNotification:fetchCompletionHandler:], but you still need to add "remote-notification" to the list of your supported UIBackgroundModes in your Info.plist.
 
 这个主要是提示开发者如果要支持UIBackgroundModes，需要开启Remote notifications，具体操作可以看：[iOS 7 Background Remote Notification](ios_faq/#ios-7-background-remote-notification)
 
 
-<br />

@@ -9,7 +9,7 @@ img[alt=jpush_ios] { width: 800px; }
 ### 适用版本
 
 本文匹配的 SDK版本：r2.1.5 以后。  
-[查看最近更新](http://docs.jiguang.cn/updates/)了解最新的SDK更新情况。  
+[查看最近更新](../../updates)了解最新的SDK更新情况。  
 使用Xcode 6及以上版本可以使用新版Push SDK，Xcode 5环境下需要运行旧版本SDK(1.7.4)
 
 

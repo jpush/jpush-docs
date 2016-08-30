@@ -19,7 +19,7 @@ APNs 通知：是指通过向 Apple APNs 服务器发送通知，到达 iOS 设�
 
 JPush iOS SDK 不负责 APNs 通知的展现，只是向 JPush 服务器端上传 Device Token 信息，JPush 服务器端代理开发者向 Apple APNs 推送通知。
 
-[获取 APNs 推送内容](../client/ios_api/#apns)
+[获取 APNs 推送内容](ios_api/#apns)
 
 ### 应用内消息
 
@@ -27,7 +27,7 @@ JPush iOS SDK 不负责 APNs 通知的展现，只是向 JPush 服务器端上�
 
 此消息不经过 APNs 服务器，完全由 JPush 提供功能支持。
 
-[获取应用内消息推送内容](../client/ios_api/#_19)
+[获取应用内消息推送内容](ios_api/#_24)
 
 ### APNs通知与应用内消息对比
 
@@ -83,8 +83,8 @@ JPush API v3 支持同时一次调用同时推送 APNs 通知与 JPush 应用内
 
 请参考以下文档与教程，来集成 IOS SDK。
 
-+ [IOS 集成指南](../../guideline/ios_guide)
-+ [IOS 教程](../client/ios_tutorials)
++ [IOS 集成指南](../ios_guide_new)
+
 
 
 
@@ -120,6 +120,6 @@ JPush iOS 推送相比直接向 APNs 推送有什么好处呢？
 
 ## JPush APNs 实现
 
-JPush APNs 的实现可以参考极光博客的一篇文章：[http://blog.jpush.cn/apns/](http://blog.jpush.cn/apns/)
+JPush APNs 的实现可以参考极光博客的一篇文章：[http://blog.jiguang.cn/apns/](http://blog.jiguang.cn/apns/)
 
 
