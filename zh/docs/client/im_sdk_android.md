@@ -49,7 +49,7 @@ SDK 侧可以发起注册用户，也可由服务器端批量发起注册。
 
 ### API 列表
 
-以下列出主要的 JMessage SDK 提供的 API。完整的 API 与 类信息，请访问：[API Java docs](./im_android_api_docs/index)
+以下列出主要的 JMessage SDK 提供的 API。完整的 API 与 类信息，请访问：[API Java docs](./im_android_api_docs/)
 ####SDK初始化
 在调用IM其他接口前必须先调此接口初始化SDK，推荐在application类中调用。
 ```
@@ -1136,7 +1136,7 @@ userinfo.updateNoteName("new_note_name", new BasicCallback() {
     <tr >
       <td >getType()</td>
       <td >ContactNotifyEvent.Type</td>
-      <td >获取联系人通知事件的具体类型，具体类型见[Type](./im_android_api_docs/cn/jpush/im/android/api/event/ContactNotifyEvent)定义</td>
+      <td >获取联系人通知事件的具体类型，具体类型见[Type](./im_android_api_docs/cn/jpush/im/android/api/event/ContactNotifyEvent.html)定义</td>
     </tr>
     <tr >
       <td >getReason()</td>
@@ -1213,7 +1213,7 @@ public static void getNoDisturblist(GetNoDisurbListCallback callback)
 + GetNoDisurbListCallback callback 回调接口。
 	
 #### 免打扰设置
-见api doc中[UserInfo](./im_android_api_docs/cn/jpush/im/android/api/model/UserInfo)和[UserInfo](./im_android_api_docs/cn/jpush/im/android/api/model/GroupInfo)相关接口
+见api doc中[UserInfo](./im_android_api_docs/cn/jpush/im/android/api/model/UserInfo.html)和[UserInfo](./im_android_api_docs/cn/jpush/im/android/api/model/GroupInfo.html)相关接口
 
 
 #### 全局免打扰设置
@@ -1264,7 +1264,7 @@ JMessage Android SDK在v1.2.0版本中实现了单聊跨应用，v1.3.0版本中
 
 #### 接口摘要
 
-详细接口说明请前往极光IM [Android API Java docs](./im_android_api_docs/index)
+详细接口说明请前往极光IM [Android API Java docs](./im_android_api_docs/)
 
 ###### Conversation
 
@@ -1590,7 +1590,7 @@ ImageContent image = new ImageContent(new File("/sdcard/image.png"));
 FileContent fileContent = new FileContent(new File("/sdcard/file.xxx"));
 
 // 参数：经度，纬度，缩放比例，地址详情
-LocationContent locationContent = new LocationContent(111.11,222.22,500,"xx省xx市xx区xx街xx号");
+LocationContent locationContent = new LocationContent(111.1,222.2,500,"xx省xx市xx区xx街xx号");
 ```
 
 #### 回调定义
