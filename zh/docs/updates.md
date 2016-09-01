@@ -1,5 +1,18 @@
 # 最近更新
 
+### JMessage IOS SDK v2.1.6
+
+#### 更新时间
++ 2016-09-01
+
+#### Change Log
+##### Bug Fix
++ 修复网络或者后台出现问题导致的下发重复消息问题
+
+#### 升级指南
++ 使用新版本的JMessage.framework文件替换原工程下的同名旧文件
+
+
 ### JMessage JS SDK v1.1.2
 
 #### 更新时间
