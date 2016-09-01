@@ -1,6 +1,6 @@
 # 最近更新
 
-### JMessage IOS SDK v2.1.6
+### JMessage iOS SDK v2.1.6
 
 #### 更新时间
 + 2016-09-01
@@ -137,7 +137,7 @@
 + 可选升级！
 
 
-### JMessage IOS SDK v2.1.5
+### JMessage iOS SDK v2.1.5
 #### 更新时间
 + 2016-08-13
 
@@ -173,7 +173,7 @@
 + 如果是从更早起的版本升级过来，建议参考 SDK下载包最新版本的 demo 来更新 AndroidManifest.xml 文件配置。
 
 
-### JMessage IOS SDK v2.1.3
+### JMessage iOS SDK v2.1.3
 
 #### 更新时间
 + 2016-07-15
