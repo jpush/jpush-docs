@@ -22,7 +22,7 @@ def build():
 
 set_venv()
 
-for i in range(1,10000000):
+for i in range(1,1000000000):
     git_pull()
     build()
     time.sleep(300)
