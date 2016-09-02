@@ -3583,9 +3583,7 @@ footer p {
 .rst-versions.shift {
 	display:block
 }
-img {
-	height:auto
-}
+
 }.rst-content img {
 	max-width:100%;
 	height:auto !important
