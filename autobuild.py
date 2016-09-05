@@ -13,18 +13,23 @@ def set_venv():
 def build():
     print (os.chdir("/opt/push/jpush-docs/jpush-docs/zh/JPush/"))
     print (commands.getstatusoutput("mkdocs build --clean"))
+    time.sleep(100)
     print (os.chdir("/opt/push/jpush-docs/jpush-docs/zh/JMessage/"))
     print (commands.getstatusoutput("mkdocs build --clean"))
+    time.sleep(100)
     print (os.chdir("/opt/push/jpush-docs/jpush-docs/zh/JSMS/"))
     print (commands.getstatusoutput("mkdocs build --clean"))
+    time.sleep(100)
     print (os.chdir("/opt/push/jpush-docs/jpush-docs/zh/Index/"))
     print (commands.getstatusoutput("mkdocs build --clean"))
+    time.sleep(100)
 
 set_venv()
 
 for i in range(1,1000000000):
     git_pull()
     build()
+    print time.asctime(time.localtime(time.time()))
     time.sleep(300)
 
 
