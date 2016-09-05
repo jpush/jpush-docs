@@ -564,69 +564,7 @@ SDK 对自定义消息，只是传递，不会有任何界面上的展示。
 	+ 原设置的标签
 
 ### 错误码定义
-
-<div class="table-d" align="center" >
-	<table border="1" width = "100%">
-		<tr  bgcolor="#D3D3D3" >
-			<th >Code</th>
-			<th>描述</th>
-			<th>详细解释</th>
-		</tr>
-		<tr >
-			<td>6001</td>
-			<td>无效的设置，tag/alias 不应参数都为 null</td>
-			<td></td>
-		</tr>
-		<tr >
-			<td>6002</td>
-			<td>设置超时</td>
-			<td>建议重试</td>
-		</tr>
-		<tr >
-			<td>6003</td>
-			<td>alias 字符串不合法</td>
-			<td>有效的别名、标签组成：字母（区分大小写）、数字、下划线、汉字、特殊字符(v2.1.6支持)@!#$&*+=.|￥</td>
-		</tr>
-		<tr >
-			<td>6004</td>
-			<td>alias超长。最多 40个字节</td>
-			<td>中文 UTF-8 是 3 个字节</td>
-		</tr>
-		<tr >
-			<td>6005</td>
-			<td>某一个 tag 字符串不合法</td>
-			<td>有效的别名、标签组成：字母（区分大小写）、数字、下划线、汉字、特殊字符(v2.1.6支持)@!#$&*+=.|￥</td>
-		</tr>
-		<tr >
-			<td>6006</td>
-			<td>某一个 tag 超长。一个 tag 最多 40个字节</td>
-			<td>中文 UTF-8 是 3 个字节</td>
-		</tr>
-		<tr >
-			<td>6007</td>
-			<td>tags 数量超出限制。最多 1000个</td>
-			<td>这是一台设备的限制。一个应用全局的标签数量无限制。</td>
-		</tr>
-		<tr >
-			<td>6008</td>
-			<td>tag 超出总长度限制</td>
-			<td>总长度最多 7K 字节</td>
-		</tr>
-		<tr >
-			<td>6009</td>
-			<td>未知错误</td>
-			<td>由于权限问题，导致的PushService启动异常。</td>
-		</tr>
-		<tr >
-			<td>6011</td>
-			<td>10s内设置tag或alias大于10次</td>
-			<td>短时间内操作过于频繁</td>
-		</tr>
-	</table>
-</div>
-
-
-
+请跳转至[错误码定义列表](#client_error_code)
 
 ###  相关文档
 
@@ -964,42 +902,96 @@ JPushInterface.init(context);
 JPushInterface.setLatestNotificationNumber(context, 3);
 ```	
 
-
+<a name="client_error_code"></a>
 ## 客户端错误码定义
+
 
 <div class="table-d" align="center" >
 	<table border="1" width = "100%">
 		<tr  bgcolor="#D3D3D3" >
 			<th >Code</th>
 			<th >描述</th>
+			<th>详细解释</th>
+		</tr>
+		<tr >
+			<td>6001</td>
+			<td>无效的设置，tag/alias 不应参数都为 null</td>
+			<td></td>
+		</tr>
+		<tr >
+			<td>6002</td>
+			<td>设置超时</td>
+			<td>建议重试</td>
+		</tr>
+		<tr >
+			<td>6003</td>
+			<td>alias 字符串不合法</td>
+			<td>有效的别名、标签组成：字母（区分大小写）、数字、下划线、汉字、特殊字符(v2.1.6支持)@!#$&*+=.|￥</td>
+		</tr>
+		<tr >
+			<td>6004</td>
+			<td>alias超长。最多 40个字节</td>
+			<td>中文 UTF-8 是 3 个字节</td>
+		</tr>
+		<tr >
+			<td>6005</td>
+			<td>某一个 tag 字符串不合法</td>
+			<td>有效的别名、标签组成：字母（区分大小写）、数字、下划线、汉字、特殊字符(v2.1.6支持)@!#$&*+=.|￥</td>
+		</tr>
+		<tr >
+			<td>6006</td>
+			<td>某一个 tag 超长。一个 tag 最多 40个字节</td>
+			<td>中文 UTF-8 是 3 个字节</td>
+		</tr>
+		<tr >
+			<td>6007</td>
+			<td>tags 数量超出限制。最多 1000个</td>
+			<td>这是一台设备的限制。一个应用全局的标签数量无限制。</td>
+		</tr>
+		<tr >
+			<td>6008</td>
+			<td>tag 超出总长度限制</td>
+			<td>总长度最多 7K 字节</td>
+		</tr>
+		<tr >
+			<td>6009</td>
+			<td>未知错误</td>
+			<td>由于权限问题，导致的PushService启动异常。</td>
+		</tr>
+		<tr >
+			<td>6011</td>
+			<td>10s内设置tag或alias大于10次</td>
+			<td>短时间内操作过于频繁</td>
 		</tr>
 		<tr >
 			<td>-997</td>
-			<td>注册失败（一般是由于没有网络造成的）
-如果确保设备网络正常，还是一直遇到此问题，则还有另外一个原因：JPush 服务器端拒绝注册。
-
-而这个的原因一般是：你当前的 App 的 Android 包名，以及 appKey ，与你在 Portal 上注册的应用的 Android 包名与 AppKey 不相同。</td>
+			<td>注册失败</td>
+			<td>（一般是由于没有网络造成的）如果确保设备网络正常，还是一直遇到此问题，则还有另外一个原因：JPush 服务器端拒绝注册。而这个的原因一般是：你当前的 App 的 Android 包名，以及 appKey ，与你在 Portal 上注册的应用的 Android 包名与 AppKey 不相同。</td>
 		</tr>
 		<tr >
 			<td>1005</td>
 			<td>包名和AppKey 不匹配</td>
+			<td></td>
 		</tr>
 		<tr >
 			<td>1008</td>
-			<td>AppKey非法，请到官网检查此应用详情中的appkey，确认无误</td>
+			<td>AppKey非法</td>
+			<td>请到官网检查此应用详情中的appkey，确认无误</td>
 		</tr>
 		<tr >
 			<td>1009</td>
-			<td>当前的appkey下没有创建Android应用。请到官网检查此应用的应用详情</td>
+			<td>当前的appkey下没有创建Android应用。</td>
+			<td>请到官网检查此应用的应用详情</td>
 		</tr>
 		<tr >
 			<td>-996</td>
-			<td>网络连接断开
-如果确保设备网络正常，可能是由于包名不正确，服务器强制断开客户端的连接。</td>
+			<td>网络连接断开</td>
+			<td>如果确保设备网络正常，可能是由于包名不正确，服务器强制断开客户端的连接。</td>
 		</tr>
 		<tr >
 			<td>-994</td>
 			<td>网络连接超时</td>
+			<td></td>
 		</tr>
 	</table>
 </div>
