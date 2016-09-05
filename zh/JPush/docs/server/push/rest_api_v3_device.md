@@ -48,17 +48,20 @@ GET /v3/devices/{registration_id}
 ```
 
 **Request Params**
+
 + N/A
 
 ### Example Response
 
 **Response Header**
+
 ```
 HTTP/1.1 200 OK 
   Content-Type: application/json; charset=utf-8
 ```
 
 **Response Data**
+
 ```
 {
      "tags": ["tag1", "tag2"],
@@ -114,12 +117,14 @@ POST /v3/devices/{registration_id}
 
 ###Example Response
 **Response Header**
+
 ```
 HTTP/1.1 200 OK 
   Content-Type: application/json; charset=utf-8
 ```
 
 **Response Data**
+
 + N/A
 
 ## 查询别名
@@ -131,26 +136,31 @@ GET /v3/aliases/{alias_value}
 
 ### Example Request
 **Request Header**
+
 ```
 GET /v3/aliases/{alias_value}?platform=android,ios
   Authorization: Basic (base64 auth string) 
   Accept: application/json
 ```
 **Request Params**
+
 + platform 可选参数，不填则默认为所有平台。
 
 ### Example Response
 **Response Header**
+
 ```
 HTTP/1.1 200 OK 
   Content-Type: application/json; charset=utf-8
 ```
 **Response Data**
+
 ```
 {
      "registration_ids": ["registration_id1", "registration_id2"]
 }
 ```
+
 + 找不到统计项就是 null，否则为统计项的值。
 
 ## 删除别名
@@ -161,16 +171,19 @@ DELETE /v3/aliases/{alias_value}
 ```
 ### Example Request
 **Request Header**
+
 ```
 DELETE /v3/aliases/{alias_value}?platform=android,ios
   Authorization: Basic (base64 auth string) 
   Accept: application/json
 ```
 **Request Params**
+
 + platform 可选参数，不填则默认为所有平台。
 
 ### Example Response
 **Response**
+
 + N/A
 
 ## 查询标签列表
@@ -192,10 +205,12 @@ GET /v3/tags/
 ```
 
 **Request Params**
+
 + None
 
 ### Example Response
 **Response Header**
+
 ```
 HTTP/1.1 200 OK 
   Content-Type: application/json; charset=utf-8
@@ -208,9 +223,11 @@ HTTP/1.1 200 OK
      "tags": ["tag1", "tag2"]
 }
 ```
+
 + 找不到统计项就是 null，否则为统计项的值。
 
 ## 判断设备与标签绑定关系
+
 ```
 GET /v3/tags/{tag_value}/registration_ids/{registration_id}
 查询某个设备是否在 tag 下。
@@ -226,6 +243,7 @@ GET /v3/tags/{tag_value}/registration_ids/090c1f59f89
 ```
 
 **Request Params**
+
 + registration_id  必须，设备的registration_id
 
 ### Example Response
@@ -262,6 +280,7 @@ POST /v3/tags/{tag_value}
   Accept: application/json 
 ```
 **Request Body**
+
 ```
 {  
         "registration_ids":{
@@ -277,17 +296,20 @@ POST /v3/tags/{tag_value}
 }
 ```
 **Request Params**
+
 + action操作类型，有两个可选："add"，"remove"，标识本次请求是"添加"还是"删除"。
-+ registration_ids  需要添加/删除的设备registration_id。
++ registration_ids 需要添加/删除的设备registration_id。
 + add/remove最多各支持1000个；
 
 ### Example Response
 **Response Header**
+
 ```
 HTTP/1.1 200 OK 
  Content-Type: application/json; charset=utf-8
 ```
 **Response Data**
+
 + N/A
 
 ## 删除标签
@@ -298,6 +320,7 @@ DELETE /v3/tags/{tag_value}
 ```
 ### Example Request
 **Request Header**
+
 ```
 DELETE /v3/tags/{tag_value}?platform=android,ios
   Authorization: Basic (base64 auth string) 
@@ -305,6 +328,7 @@ DELETE /v3/tags/{tag_value}?platform=android,ios
 ```
 
 **Request Params**
+
 + platform 可选参数，不填则默认为所有平台。
 
 ### Example Response
@@ -319,6 +343,7 @@ DELETE /v3/tags/{tag_value}?platform=android,ios
 ### Example Request
 
 **Request Header**
+
 ```
 POST /v3/devices/status/
   Authorization: Basic (base64 auth string) 
