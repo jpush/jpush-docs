@@ -1,12 +1,12 @@
 #!/usr/bin/env python
-
+import logging
 import commands
 import os
 import time
 
 def git_pull():
     print (os.chdir("/opt/push/jpush-docs/jpush-docs/"))
-    print (commands.getstatusoutput("git pull origin renew"))
+    logging.info(commands.getstatusoutput("git pull origin renew"))
     print ("git pull origin renew")
 
 def set_venv():
@@ -35,6 +35,12 @@ def build():
     time.sleep(1)
     print time.asctime(time.localtime(time.time()))
 
+
+logging.basicConfig(level=logging.DEBUG,
+                    format='%(asctime)s %(filename)s[line:%(lineno)d] %(levelname)s %(message)s',
+                    datefmt='%a, %d %b %Y %H:%M:%S',
+                    filename='/opt/push/jpush-docs/autobuild.log',
+                    filemode='w')
 set_venv()
 git_pull()
 build()
