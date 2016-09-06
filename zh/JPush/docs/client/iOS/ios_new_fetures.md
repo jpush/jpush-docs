@@ -1,8 +1,9 @@
 # iOS 新特性更新汇总
 
+
 ## iOS 10 Service Extension
 
-### 介绍
+### 说明
 iOS 10新增了Service Extension  
 官方给出的说明图如下  
 ![jpush_ios](../image/ios10_service_extension.png)  
