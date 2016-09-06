@@ -1,10 +1,12 @@
+#!/usr/bin/env python
+import logging
 import commands
 import os
 import time
 
 def git_pull():
     print (os.chdir("/opt/push/jpush-docs/jpush-docs/"))
-    print (commands.getstatusoutput("sudo git pull origin renew"))
+    logging.info(commands.getstatusoutput("git pull origin renew"))
     print ("git pull origin renew")
 
 def set_venv():
@@ -15,27 +17,36 @@ def set_venv():
 def build():
     print (os.chdir("/opt/push/jpush-docs/jpush-docs/zh/JPush/"))
     print ("JPush/")
-    print (commands.getstatusoutput("mkdocs build --clean"))
-    time.sleep(10)
+    print (commands.getstatusoutput("mkdocs build"))
+    time.sleep(1)
+    print time.asctime(time.localtime(time.time()))
     print (os.chdir("/opt/push/jpush-docs/jpush-docs/zh/JMessage/"))
     print ("JMessage/")
-    print (commands.getstatusoutput("mkdocs build --clean"))
-    time.sleep(10)
+    print (commands.getstatusoutput("mkdocs build"))
+    time.sleep(1)
+    print time.asctime(time.localtime(time.time()))
     print (os.chdir("/opt/push/jpush-docs/jpush-docs/zh/JSMS/"))
     print ("JSMS/")
-    print (commands.getstatusoutput("mkdocs build --clean"))
-    time.sleep(10)
-    print (os.chdir("/opt/push/jpush-docs/jpush-docs/zh/Index/"))
-    print (commands.getstatusoutput("mkdocs build --clean"))
-    time.sleep(10)
-
-set_venv()
-
-for i in range(1,100000):
-    git_pull()
-    build()
+    print (commands.getstatusoutput("mkdocs build"))
+    time.sleep(1)
     print time.asctime(time.localtime(time.time()))
-    time.sleep(300)
+    print (os.chdir("/opt/push/jpush-docs/jpush-docs/zh/Index/"))
+    print (commands.getstatusoutput("mkdocs build"))
+    time.sleep(1)
+    print time.asctime(time.localtime(time.time()))
+
+
+logging.basicConfig(level=logging.DEBUG,
+                    format='%(asctime)s %(filename)s[line:%(lineno)d] %(levelname)s %(message)s',
+                    datefmt='%a, %d %b %Y %H:%M:%S',
+                    filename='/opt/push/jpush-docs/autobuild.log',
+                    filemode='w')
+set_venv()
+git_pull()
+build()
+print time.asctime(time.localtime(time.time()))
+
+
 
 
 
