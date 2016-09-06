@@ -1023,14 +1023,12 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 	    }
 	}];
 
-#####好友请求应答(接受和拒绝)
+#####接受好友邀请
 	/*!
-	 * @abstract 好友请求应答(接受和拒绝)
+	 * @abstract 接受好友邀请
 	 *
 	 * @param username 对方用户名
 	 * @param userAppKey 对方所在应用appkey,不传则默认是本应用
-	 * @param reason 拒绝理由
-	 * @param isAccept 是否接受好友邀请，接受：YES,拒绝：NO
 	 *
 	 * @param handler 结果回调。回调参数：
 	 *
@@ -1041,23 +1039,55 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 	 * 如果 error 不为 nil,表示设置失败
 	 *
 	 */
-	+ (void)friendInvitationResponseWithUsername:(NSString *)username
+	+ (void)acceptInvitationResponseWithUsername:(NSString *)username
 	                                      appKey:(NSString *)userAppKey
-	                                      reason:(NSString *)reason
-	                                    isAccept:(BOOL)isAccept
 	                           completionHandler:(JMSGCompletionHandler)handler;
 #####例子
-	// 接受好友请求isAccept = YES，拒绝isAccept = NO,可填写拒绝理由reason
-	[JMSGFriendManager friendInvitationResponseWithUsername:username appKey:appkey reason:nil isAccept:YES completionHandler:^(id resultObject, NSError *error) {
-	    dispatch_async(dispatch_get_main_queue(), ^{
+	// 接受好友邀请
+	[JMSGFriendManager acceptInvitationWithUsername:username appKey:appKey completionHandler:^(id resultObject, NSError *error) {
+		dispatch_async(dispatch_get_main_queue(), ^{
 	        if (!error) {
-	            NSLog(@"接受加为好友");
+	            NSLog(@"接受成功");
 	        }
 	        else{
-	            NSLog(@"操作失败");
+	            NSLog(@"接受失败");
 	        }
 	    });
-	}];	
+	}];
+
+#####拒绝好友邀请
+	/*!
+	 * @abstract 拒绝好友邀请
+	 *
+	 * @param username 对方用户名
+	 * @param userAppKey 对方所在应用appkey,不传则默认是本应用
+	 * @param reason 拒绝理由，可不传
+	 *
+	 * @param handler 结果回调。回调参数：
+	 *
+	 * - resultObject 相应的返回对象
+	 * - error 错误信息
+	 *
+	 * 如果 error 为 nil, 表示设置成功
+	 * 如果 error 不为 nil,表示设置失败
+	 *
+	 */
+	+ (void)rejectInvitationWithUsername:(NSString *)username
+	                              appKey:(NSString *)userAppKey
+	                              reason:(NSString *)reason
+	                   completionHandler:(JMSGCompletionHandler)handler;
+#####例子
+	// 拒绝好友邀请
+	[JMSGFriendManager rejectInvitationWithUsername:username appKey:appKey reason:nil completionHandler:^(id resultObject, NSError *error) {
+	    dispatch_async(dispatch_get_main_queue(), ^{
+	        if (!error) {
+	            NSLog(@"拒绝成功");
+	        }
+	        else{
+	            NSLog(@"拒绝失败");
+	        }
+	    });
+    }];
 #####删除好友
 	/*!
 	 * @abstract 删除好友
