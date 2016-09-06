@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import commands
 import os
 import time
@@ -15,21 +17,21 @@ def set_venv():
 def build():
     print (os.chdir("/opt/push/jpush-docs/jpush-docs/zh/JPush/"))
     print ("JPush/")
-    print (commands.getstatusoutput("mkdocs build --clean"))
+    print (commands.getstatusoutput("mkdocs build"))
     time.sleep(1)
     print time.asctime(time.localtime(time.time()))
     print (os.chdir("/opt/push/jpush-docs/jpush-docs/zh/JMessage/"))
     print ("JMessage/")
-    print (commands.getstatusoutput("mkdocs build --clean"))
+    print (commands.getstatusoutput("mkdocs build"))
     time.sleep(1)
     print time.asctime(time.localtime(time.time()))
     print (os.chdir("/opt/push/jpush-docs/jpush-docs/zh/JSMS/"))
     print ("JSMS/")
-    print (commands.getstatusoutput("mkdocs build --clean"))
+    print (commands.getstatusoutput("mkdocs build"))
     time.sleep(1)
     print time.asctime(time.localtime(time.time()))
     print (os.chdir("/opt/push/jpush-docs/jpush-docs/zh/Index/"))
-    print (commands.getstatusoutput("mkdocs build --clean"))
+    print (commands.getstatusoutput("mkdocs build"))
     time.sleep(1)
     print time.asctime(time.localtime(time.time()))
 
