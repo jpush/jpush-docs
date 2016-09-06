@@ -260,9 +260,11 @@ Content-Type: application/json; charset=utf-8
 + gender    （选填） 性别
 	+ 0 - 未知， 1 - 男 ，2 - 女 
 + region      （选填）地区
-	+ 支持的字符：全部，包括 Emoji。
+	+ 支持的字符：全部，包括 Emoji
 + address   （选填）地址
-	+ 支持的字符：全部，包括 Emoji	
+	+ 支持的字符：全部，包括 Emoji
++ avatar	（选填）头像
+	+ 文件上传后得到的mediaId	
 
 
 ##### Example Response
@@ -617,9 +619,9 @@ Error Code
 + 899002   用户不存在，target_id或者from_id不存在
 + 899016   from_id 没有权限发送message
 
-### 媒体文件下载
+### 媒体文件下载与上传
 
-File Download
+#### File Download
 
 ```
 GET /v1/resource?mediaId={mediaId}
@@ -656,6 +658,36 @@ Response Data
 ```
 {"url":"http://........."}
 ```
+
+#### File Upload
+
+```
+POST /resource
+```
+##### Example Request
+
+curl   -F "filename=@/home/test.jpg" https://api.im.jpush.cn/v1/resource -u "appkey:secret"
+
+注：文件大小限制8m，暂时只支持图片格式 jpg bmp gif png等
+
+
+| 参数 | 含义               | 备注 |
+|--------|--------------------------|------|
+| mediaId   | 磁盘本地文件路径 |      |
+
+
+Response Header  
+
+##### Example Response 
+
+```
+HTTP/1.1 200
+Content-Type: application/json; charset=utf-8 
+```
+Response Data
+
+{"mediaId":"mediaId"}
+
 
 ### Group对象字段总览
 
