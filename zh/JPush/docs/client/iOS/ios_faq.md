@@ -137,6 +137,6 @@ badge累加只能通过v3 api推送，且只有1.7.4版本以上才能支持。
 
 ## 为什么日志里面会打印：You've implemented -[ <UIApplicationDelegate\> application:didReceiveRemoteNotification:fetchCompletionHandler:], but you still need to add "remote-notification" to the list of your supported UIBackgroundModes in your Info.plist.
 
-这个主要是提示开发者如果要支持UIBackgroundModes，需要开启Remote notifications，具体操作可以看：[iOS 7 Background Remote Notification](ios_faq/#ios-7-background-remote-notification)
+这个主要是提示开发者如果要支持UIBackgroundModes，需要开启Remote notifications，具体操作可以看：[iOS 7 Background Remote Notification](ios_new_features/#ios-7-background-remote-notification)
 
 
