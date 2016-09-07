@@ -8,7 +8,7 @@
 + 新增：全面支持 iOS 10 新特性。
 + 修复bug：增加SDK的稳定性。
 + 优化改进：新增获取registrationID的接口，TagAlias支持设置特殊字符。
-+ 优化改进SDK全部使用HTTPS链接。
++ 优化改进：SDK全部使用HTTPS链接。
 
 
 #### 升级提示
