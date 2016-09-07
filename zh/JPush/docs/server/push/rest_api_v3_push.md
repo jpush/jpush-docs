@@ -424,7 +424,7 @@ iOS 平台上 APNs 通知结构。
 			<td>boolean</td>
 			<td>可选</td>
 			<td width="20%">推送唤醒</td>
-			<td>推送的时候携带"content-available":true 说明是 Background Remote Notification，如果不携带此字段则是普通的Remote Notification。详情参考：<a href="../../client/ios_tutorials/#ios-7-background-remote-notification">Background Remote Notification</a></td>
+			<td>推送的时候携带"content-available":true 说明是 Background Remote Notification，如果不携带此字段则是普通的Remote Notification。详情参考：<a href="../../client/iOS/ios_new_features/#ios-7-background-remote-notification">Background Remote Notification</a></td>
 		</tr>
 		<tr >
 			<td>category</td>
