@@ -45,7 +45,7 @@
 <div class="download-info">
 <p>请参考如下文档来集成SDK：</p>
 <ul class="download-info-ul">
-<li><a href="../client/iOS/ios_guide">iOS 集成指南</a></li>
+<li><a href="../client/iOS/ios_guide_new">iOS 集成指南</a></li>
 <li><a href="../client/iOS/ios_debug_guide/">iOS SDK 调试指南</a></li>
 <div style=" clear:both; visibility:hidden;">
 </ul>
@@ -148,7 +148,7 @@
 </ul>
 </div>
 <div class="download-icon">
-<a href="https://www.jiguang.cn/downloads/resource/1463721337648">下载</a>
+<a href="https://www.jiguang.cn/downloads/resource/1467706953218">下载</a>
 </div>
 </div>
 <div class="hr">
@@ -210,7 +210,7 @@
 </ul>
 </div>
 <div class="download-icon">
-<a href="https://www.jiguang.cn/downloads/resource/1459854935213">下载</a>
+<a href="https://www.jiguang.cn/downloads/resource/1467707440043">下载</a>
 </div>
 </div>
 <div class="hr">
