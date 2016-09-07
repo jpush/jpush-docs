@@ -47,15 +47,12 @@ img[alt=jpush_ios_5] { width: 500px; }##
 
 ## 如何关闭 APN  推送？
 
-关闭推送有以下两种方式关闭：
+可通过调用代码 
 
-+ 在iOS系统设置的通知设置中更改对应app的推送设置（推荐）；
-+ 在代码中调用 [[UIApplication sharedApplication] unregisterForRemoteNotifications]；
-
-对应以上关闭方式的重新打开推送方法：
-
-+ 在iOS系统设置的通知设置中修改对应app的推送设置；
-+ 在代码中重新调用 [JPUSHService registerForRemoteNotificationTypes:]；
+```
+[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"prefs:root=NOTIFICATIONS_ID&&path=当前应用的bundleid"]] 
+```
+进入您的应用的通知设置页面，引导用户手动变更“允许通知”的状态。
 
 
 ## App badge number（角标）如何更改与清空？
