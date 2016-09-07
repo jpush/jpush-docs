@@ -662,18 +662,19 @@ Response Data
 #### File Upload
 
 ```
-POST /resource
+POST /resource?type=image
 ```
 ##### Example Request
 
-curl   -F "filename=@/home/test.jpg" https://api.im.jpush.cn/v1/resource -u "appkey:secret"
+curl   -F "filename=@/home/test.jpg" https://api.im.jpush.cn/v1/resource?type=image -u "appkey:secret"
 
 注：文件大小限制8m，暂时只支持图片格式 jpg bmp gif png等
 
 
 | 参数 | 含义               | 备注 |
 |--------|--------------------------|------|
-| mediaId   | 磁盘本地文件路径 |      |
+| filename   | 磁盘本地文件路径 |      |
+| type       | 文件类型 暂时只能是"image"      |      |
 
 
 Response Header  
@@ -686,7 +687,14 @@ Content-Type: application/json; charset=utf-8
 ```
 Response Data
 
-{"mediaId":"mediaId"}
+{"media_id":"qiniu/image/F39AA12204DAB6A2","media_crc32":1338734977,"width":720,"height":1280,"format":"jpg","fsize":52468}
+
++ media_id String  文件上传之后服务器端所返回的key
++ media_crc32 long 文件的crc32校验码
++ width int  图片原始宽度
++ height  int  图片原始高度
++ format String 图片格式
++ fsize int 文件大小（字节数
 
 
 ### Group对象字段总览
