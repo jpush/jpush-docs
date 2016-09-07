@@ -1,5 +1,10 @@
 # iOS 新特性更新汇总
 
+## iOS 10 New Features
+
+### 说明
+iOS 10 新增了大量关于通知的新特性，详情参照极光官方的Blog。  
+请跳转至：[iOS 10 新特性](http://blog.jiguang.cn/newfeture_notification_ios10/)
 
 ## iOS 10 Service Extension
 
