@@ -22,7 +22,7 @@
 ### 请求示例
 
 ```
-curl --insecure -X POST -v https://api.sms.jpush.cn/v1/codes -H "Content-Type: application/json" -u "7d431e42dfa6a6d693ac2d04:5e987ac6d2e04d95a9d8f0d1" -d '{"mobile":"18611111111","temp_id":1}'
+curl --insecure -X POST -v https://api.sms.jpush.cn/v1/codes -H "Content-Type: application/json" -u "7d431e42dfa6a6d693ac2d04:5e987ac6d2e04d95a9d8f0d1" -d '{"mobile":"xxxxxxxxxxx","temp_id":1}'
 
 ```
 
