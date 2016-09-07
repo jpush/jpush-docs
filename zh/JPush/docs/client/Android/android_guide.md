@@ -121,7 +121,7 @@
 + 解压缩 jpush-android-release-2.x.y.zip 集成压缩包。
 + 复制 libs/jpush-sdk-2.x.y.jar 到工程 libs/ 目录下。
 + 复制 libs/(cpu-type)/libjpush2xy.so 到你的工程中存放对应cpu类型的目录下。
-+ 复制 res/ 中drawable-hdpi, raw, layout, values文件夹中的资源文件到你的工程中 res/ 对应的目录下。
++ 复制 res/ 中drawable-hdpi, layout, values文件夹中的资源文件到你的工程中 res/ 对应的目录下。
 
 ***说明 1***：若没有res/drawable-xxxx/jpush_notification_icon这个资源默认使用应用图标作为通知icon，在5.0以上系统将应用图标作为statusbar icon可能显示不正常，用户可定义没有阴影和渐变色的icon替换这个文件，文件名不要变。
 
