@@ -117,7 +117,7 @@
 </ul>
 </div>
 <div class="download-icon">
-<a href="https://www.jiguang.cn/common/downloads/resource/1459130284033">下载</a>
+<a href="https://www.jiguang.cn/downloads/resource/1459130284033">下载</a>
 </div>
 </div>
 <div class="hr">
@@ -148,7 +148,7 @@
 </ul>
 </div>
 <div class="download-icon">
-<a href="https://www.jiguang.cn/common/downloads/resource/1463721337648">下载</a>
+<a href="https://www.jiguang.cn/downloads/resource/1463721337648">下载</a>
 </div>
 </div>
 <div class="hr">
@@ -210,7 +210,7 @@
 </ul>
 </div>
 <div class="download-icon">
-<a href="https://www.jiguang.cn/common/downloads/resource/1459854935213">下载</a>
+<a href="https://www.jiguang.cn/downloads/resource/1459854935213">下载</a>
 </div>
 </div>
 <div class="hr">
@@ -241,7 +241,7 @@
 </ul>
 </div>
 <div class="download-icon">
-<a href="https://www.jiguang.cn/common/downloads/resource/1459130200447">下载</a>
+<a href="https://www.jiguang.cn/downloads/resource/1459130200447">下载</a>
 </div>
 </div>
 <div class="hr">
@@ -272,7 +272,7 @@
 </ul>
 </div>
 <div class="download-icon">
-<a href="https://www.jiguang.cn/common/downloads/resource/1461742750944">下载</a>
+<a href="https://www.jiguang.cn/downloads/resource/1461742750944">下载</a>
 </div>
 </div>
 </li>
