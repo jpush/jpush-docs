@@ -110,7 +110,7 @@
 
 ## XCode的证书配置教程
 
-参照[iOS SDK 集成指南](ios_guide/)集成JPush SDK 和上传了推送用到的p12证书后在编译运行前需要先配置一下证书，步骤如下：
+参照[iOS SDK 集成指南](ios_guide_new/)集成JPush SDK 和上传了推送用到的p12证书后在编译运行前需要先配置一下证书，步骤如下：
 
 + 打开xxx-info.plist的Bundle identifier项把上传到JPush 控制台的bundle id填写进去：
 
