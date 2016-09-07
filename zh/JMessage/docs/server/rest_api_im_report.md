@@ -74,7 +74,9 @@ Content-Type: application/json; charset=utf-8
           }, 
           "create_time": 1446016259, 
           "version": 1,
-          "msgid": 13242735
+          "msgid": 13242735,
+          "msg_level" : 0, // 0代表应用内消息 1代表跨应用消息
+          "msg_ctime" : 1466866468352 // 服务器接收到消息的时间，单位毫秒 
         }
  	] 
 } 
@@ -139,7 +141,8 @@ Content-Type: application/json; charset=utf-8
           "version": 1 , 
           "msgid": 13242735,
           "msg_level" : 0 // 0代表应用内消息 1代表跨应用消息
-        },  
+          "msg_ctime" : 1466866468352 // 服务器接收到消息的时间，单位毫秒 
+        }
  ] 
 }
 ```

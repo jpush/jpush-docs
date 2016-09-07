@@ -9,7 +9,7 @@
     </ul>
     <ul>    
         <li><a href="/jpush/client/iOS/ios_sdk/">iOS SDK 概述</a></li>
-        <li><a href="/jpush/client/iOS/ios_guide/">iOS SDK 集成指南</a></li>
+        <li><a href="/jpush/client/iOS/ios_guide_new/">iOS SDK 集成指南</a></li>
         <li><a href="/jpush/client/iOS/ios_api/">iOS API</a></li>
         <div style="clear:both;"></div>
     </ul>
