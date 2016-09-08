@@ -11,7 +11,7 @@ JPush从终端用户使用体验的角度出发，充分考虑到国内的网络
 
 ### 功能说明
 
-功能上分为信息流模板推送和URL富媒体链接推送二个部分。详细使用，请参考文档[富媒体推送](../guideline/statistical_report/#_9)
+功能上分为信息流模板推送和URL富媒体链接推送二个部分。详细使用，请参考文档[富媒体推送](../guideline/intro/#rich_push)
 
 
 #### 信息流模板推送
@@ -38,10 +38,7 @@ JPush从终端用户使用体验的角度出发，充分考虑到国内的网络
 
 Rich Push 需要响应 SDK 版本配合支持
 
-+ JPush Android SDK 1.4.0 及以上
-+ JPush iOS SDK（后续支持）
++ JPush Android SDK 1.8.0 及以上
++ JPush iOS SDK（暂不支持）
 
 
-### 参考
-
-[富文本页面 Javascript 回调API](../../client/android_api)

@@ -29,7 +29,7 @@ JPush提供四种消息形式：通知，自定义消息，富媒体和本地通
 开发者参考文档：[Push API v3 message](../server/push/rest_api_v3_push/#message)
 
 
-
+<a name="rich_push"></a>
 ###富媒体
 JPush支持开发者发送图文并茂的通知，从而更好的传达信息，带来更丰富的用户互动。  
 JPush提供了5种模板，开发者可以通过填充模板的内容，发送landing page、弹窗、信息流形式的富媒体通知。  
