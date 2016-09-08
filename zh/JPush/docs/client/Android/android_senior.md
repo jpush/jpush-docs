@@ -275,9 +275,7 @@ SDK 不会把自定义消息展示到通知栏。所以调试时，需要到日�
 
 <div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">
 <p>注意：
-	<p>当自定义消息内容msg_content为空时，SDK不会对消息进行广播，使得app无法接收到推送的消息，因此建议在使用自定义消息推送时添
-		<br>
-		<p>加内容
+	<p>当自定义消息内容msg_content为空时，SDK不会对消息进行广播，使得app无法接收到推送的消息，因此建议在使用自定义消息推送时添加内容。
 </div>
 ### 使用通知  
 
