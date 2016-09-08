@@ -18,7 +18,7 @@
 
 
 ## 充值和开通
-目前没有自动充值的方式，如需要开通此接口，请联系：[商务客服](https://www.jiguang.cn/sms)。
+目前没有自动充值的方式，如需要开通此接口，请联系：[商务客服](https://www.jiguang.cn/accounts/business/form)。
 
 ## FAQ
 
