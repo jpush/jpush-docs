@@ -2,7 +2,7 @@
 
 + [极光IM 客户端 DEMO 下载](../resources/)
 + [极光IM Android API Java docs](im_android_api_docs/)
-+ [极光IM Android 错误码](im_errorcode/#jmessage-android)
++ [极光IM Android 错误码](im_errorcode_android/#jmessage-android)
 
 ### 概述
 
@@ -10,7 +10,7 @@
 
 App 集成了 IM SDK 就不应再集成 JPush SDK（只提供 Push 功能的 SDK）。
 
-要了解极光IM的概述信息，请参考文档：[极光IM指南](../../guideline/jmessage_guide)
+要了解极光IM的概述信息，请参考文档：[极光IM指南](../guideline/jmessage_guide)
 
 #### 消息
 
@@ -49,8 +49,7 @@ SDK 侧可以发起注册用户，也可由服务器端批量发起注册。
 
 ### API 列表
 
-以下列出主要的 JMessage SDK 提供的 API。完整的 API 与 类信息，请访问：<a href="http://docs.jiguang.cn/client/im_android_api_docs/" target="_blank">API Java docs</a>
-
+以下列出主要的 JMessage SDK 提供的 API。完整的 API 与 类信息，请访问：[API Java docs](./im_android_api_docs/)
 ####SDK初始化
 在调用IM其他接口前必须先调此接口初始化SDK，推荐在application类中调用。
 ```
@@ -819,26 +818,16 @@ public static void setNotificationMode(int mode);
 ```
 参数说明
 
-+ int mode  
-    + 显示通知的模式
++ int mode  显示通知的模式
 
-+ JMessageClient.NOTI_MODE_DEFAULT  
-    + 显示通知，有声音，有震动。
-
-+ JMessageClient.NOTI_MODE_NO_SOUND
-    + 显示通知，无声音，有震动。
-
-+ JMessageClient.NOTI_MODE_NO_VIBRATE
-    + 显示通知，有声音，无震动。
-
-+ JMessageClient.NOTI_MODE_SILENCE
-    + 显示通知，无声音，无震动。
-
-+ JMessageClient.NOTI_MODE_NO_NOTIFICATION
-    + 不显示通知。
+	+ JMessageClient.NOTI_MODE_DEFAULT 显示通知，有声音，有震动。
+	+ JMessageClient.NOTI_MODE_NO_SOUND 显示通知，无声音，有震动。
+	+ JMessageClient.NOTI_MODE_NO_VIBRATE 显示通知，有声音，无震动。
+	+ JMessageClient.NOTI_MODE_SILENCE 显示通知，无声音，无震动。
+	+ JMessageClient.NOTI_MODE_NO_NOTIFICATION 不显示通知。
 
 
-##### 进入单聊回话
+##### 进入单聊会话
 进入单聊会话。默认进入的是本应用appKey下用户的会话。
 	UI在进入单聊会话页面时需要调用此函数，SDK会根据传入的username来决定是否需要发送通知
 
@@ -897,7 +886,7 @@ public static void getNoDisturblist(GetNoDisurbListCallback callback)
 + GetNoDisurbListCallback callback 回调接口。
 	
 #### 免打扰设置
-见api doc中<a href="http://docs.jpush.io/client/im_android_api_docs/cn/jpush/im/android/api/model/UserInfo.html" target="_blank">UserInfo</a>和<a href="http://docs.jpush.io/client/im_android_api_docs/cn/jpush/im/android/api/model/GroupInfo.html" target="_blank">GroupInfo</a>相关接口
+见api doc中[UserInfo](./im_android_api_docs/cn/jpush/im/android/api/model/UserInfo.html)和[UserInfo](./im_android_api_docs/cn/jpush/im/android/api/model/GroupInfo.html)相关接口
 
 
 #### 全局免打扰设置
@@ -948,7 +937,7 @@ JMessage Android SDK在v1.2.0版本中实现了单聊跨应用，v1.3.0版本中
 
 #### 接口摘要
 
-详细接口说明请前往极光IM [Android API Java docs]( http://docs.jiguang.cn/client/im_android_api_docs/)
+详细接口说明请前往极光IM [Android API Java docs](./im_android_api_docs/)
 
 ###### Conversation
 
@@ -1030,7 +1019,7 @@ JMessageClient.getUserInfo("username", "appKey", new GetUserInfoCallback() {
 
 ##### 跨应用单聊实现
 
-创建单聊会话时指定对方用户所属appKey，即可建立起一个和跨应用用户的单聊回话。
+创建单聊会话时指定对方用户所属appKey，即可建立起一个和跨应用用户的单聊会话。
 
 ```
 Conversation.createSingleConversation(String targetUsername, String appKey)
@@ -1309,13 +1298,13 @@ public abstract class BasicCallback {
 
 ### 错误码定义
 
-参考文档：[IM 错误码列表](../client/im_errorcode)
+参考文档：[IM 错误码列表](./im_errorcode_android)
 
 
 
 ### 相关文档
-+ [JPush Android SDK 集成指南](../client/jmessage_android_guide/)
-+ [JPush Android SDK 概述](../client/android_sdk/)
++ [JPush Android SDK 集成指南](../../../JPush/docs/client/Android/android_guide/)
++ [JPush Android SDK 概述](../../../JPush/docs/client/Android/android_sdk/)
 + [极光IM指南](../guideline/jmessage_guide/)
 + [IM 消息协议](../advanced/im_message_protocol/)
 + [IM 业务对象](../advanced/im_objects/)
