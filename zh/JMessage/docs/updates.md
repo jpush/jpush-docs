@@ -1,4 +1,64 @@
 # 最近更新
+### JMessage iOS SDK v2.1.7#### 更新时间+ 2016-09-09#### Change Log##### Bug Fix+ 修复：在32位系统下，message的时间戳不正确的问题#### 升级指南+ 使用新版本的JMessage.framework文件替换原工程下的同名旧文件
+
+
+### JMessage Android SDK v1.4.0
+#### 更新时间
++ 2016-09-09
+
+#### JMessage SDK Change Log
+
+##### Bug Fix
+
++ 修复跨应用添加用户进黑名单时可添加自己进黑名单
++ 修复跨应用免打扰中自己可以给自己设置免打扰
++ 修复上层应用进程崩溃重启后，导致im请求发送超时。
++ 修复点击通知栏时，有一定几率message对象为空
++ 修复特殊用户名下，相关内部逻辑错误
++ 修复本地会话过多时，数据库访问的问题。
+
+##### New Feature
+
++ 新增好友模块
++ 新增用户备注名和备注信息设置
++ 新增文件信息发送接口
++ 新增位置信息发送接口
++ GroupInfo中增加获取群主用户所属应用appkey的实例接口
++ getConversationList默认按时间降序排序。
++ 优化接口执行效率
+
+##### 新增接口
+
++ ContactManager 好友管理接口入口类。
+   + 具体定义见api doc: [ContactManager](http://docs.jiguang.cn/jmessage/client/im_android_api_docs/cn/jpush/im/android/api/ContactManager.html)
++ UserInfo类中新增实例接口：
+   + 设置备注名：[updateNotename](http://docs.jiguang.cn/jmessage/client/im_android_api_docs/cn/jpush/im/android/api/model/UserInfo.html#updateNoteName(java.lang.String,%20cn.jpush.im.api.BasicCallback))
+   + 设置备注信息：[updateNoteText](http://docs.jiguang.cn/jmessage/client/im_android_api_docs/cn/jpush/im/android/api/model/UserInfo.html#updateNoteText(java.lang.String,%20cn.jpush.im.api.BasicCallback))
+   + 将用户从好友列表中移除：[removeFromFriendList](http://docs.jiguang.cn/jmessage/client/im_android_api_docs/cn/jpush/im/android/api/model/UserInfo.html#removeFromFriendList(cn.jpush.im.api.BasicCallback))
+   
++ ContactNotifyEvent 好友相关通知事件类
+   + 具体定义见api doc: [ContactNotifyEvent](http://docs.jiguang.cn/jmessage/client/im_android_api_docs/cn/jpush/im/android/api/event/ContactNotifyEvent.html)
+   
++ 增加两种message content类型：
+	+ 文件消息：[FileContent](http://docs.jiguang.cn/jmessage/client/im_android_api_docs/cn/jpush/im/android/api/content/FileContent.html)
+	+ 位置消息：[LocationContent](http://docs.jiguang.cn/jmessage/client/im_android_api_docs/cn/jpush/im/android/api/content/LocationContent.html)
+
++ GroupInfo类中新增实例接口：[getOwnerAppkey](http://docs.jiguang.cn/jmessage/client/im_android_api_docs/cn/jpush/im/android/api/model/GroupInfo.html#getOwnerAppkey())
+
+##### 注意
+从此版本开始，JChat源码将不再作为sdk zip的一部分随sdk发布，取而代之的是一个界面简化的仅仅用来展示接口用法的JMessage Demo。
+
+之前JChat的源码见[GitHub](https://github.com/jpush/jchat-android)
+
+
+#### 升级指南
+
++ jar包更新至jmessage-sdk-1.4.0.jar更新时需删除老版本jar包。
++ 将so库更新至 libjpush219.so 同时删除原来老版本so。注意不同的cpu型号对应的结构
++ 由于富媒体的展示需求，SDK 中增加一个res文件夹存放资源文件。用户需将对应文件夹下的资源文件放入工程的目录中。
++ 如果是从更早起的版本升级过来，建议参考 SDK下载包最新版本的 demo 来更新 AndroidManifest.xml 文件配置。
+
+
 ### JMessage iOS SDK v2.1.6
 
 #### 更新时间
