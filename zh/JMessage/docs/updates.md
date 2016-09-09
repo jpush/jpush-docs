@@ -30,14 +30,14 @@
 ##### 新增接口
 
 + ContactManager 好友管理接口入口类。
-   + 具体定义见api doc: [ContactManager](http://docs.jiguang.cn/jmessage/client/im_android_api_docs/cn/jpush/im/android/api/ContactManager.html)
+	+ 具体定义见api doc: [ContactManager](http://docs.jiguang.cn/jmessage/client/im_android_api_docs/cn/jpush/im/android/api/ContactManager.html)
 + UserInfo类中新增实例接口：
-   + 设置备注名：[updateNotename](http://docs.jiguang.cn/jmessage/client/im_android_api_docs/cn/jpush/im/android/api/model/UserInfo.html#updateNoteName(java.lang.String,%20cn.jpush.im.api.BasicCallback))
-   + 设置备注信息：[updateNoteText](http://docs.jiguang.cn/jmessage/client/im_android_api_docs/cn/jpush/im/android/api/model/UserInfo.html#updateNoteText(java.lang.String,%20cn.jpush.im.api.BasicCallback))
-   + 将用户从好友列表中移除：[removeFromFriendList](http://docs.jiguang.cn/jmessage/client/im_android_api_docs/cn/jpush/im/android/api/model/UserInfo.html#removeFromFriendList(cn.jpush.im.api.BasicCallback))
+	+ 设置备注名：[updateNotename](http://docs.jiguang.cn/jmessage/client/im_android_api_docs/cn/jpush/im/android/api/model/UserInfo.html#updateNoteName(java.lang.String,%20cn.jpush.im.api.BasicCallback))
+	+ 设置备注信息：[updateNoteText](http://docs.jiguang.cn/jmessage/client/im_android_api_docs/cn/jpush/im/android/api/model/UserInfo.html#updateNoteText(java.lang.String,%20cn.jpush.im.api.BasicCallback))
+	+ 将用户从好友列表中移除：[removeFromFriendList](http://docs.jiguang.cn/jmessage/client/im_android_api_docs/cn/jpush/im/android/api/model/UserInfo.html#removeFromFriendList(cn.jpush.im.api.BasicCallback))
    
 + ContactNotifyEvent 好友相关通知事件类
-   + 具体定义见api doc: [ContactNotifyEvent](http://docs.jiguang.cn/jmessage/client/im_android_api_docs/cn/jpush/im/android/api/event/ContactNotifyEvent.html)
+	+ 具体定义见api doc: [ContactNotifyEvent](http://docs.jiguang.cn/jmessage/client/im_android_api_docs/cn/jpush/im/android/api/event/ContactNotifyEvent.html)
    
 + 增加两种message content类型：
 	+ 文件消息：[FileContent](http://docs.jiguang.cn/jmessage/client/im_android_api_docs/cn/jpush/im/android/api/content/FileContent.html)
