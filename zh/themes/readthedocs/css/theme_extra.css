@@ -227,6 +227,10 @@ li .current a{
     padding-left:0px;
 }
 
+.wy-breadcrumbs  li:nth-child(3){
+    width:250px;
+}
+
 .rst-content {
   margin-left: 15px;
   margin-right: 15px;
