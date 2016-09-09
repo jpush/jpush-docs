@@ -4,7 +4,7 @@
 [![Gem Version](https://badge.fury.io/rb/jpush.svg)](https://badge.fury.io/rb/jpush)
 
 这是 JPush REST API 的 Ruby 版本封装开发包，是由极光推送官方提供的，一般支持最新的 API 功能。
-对应的 REST API 文档: [Push Rest API](http://docs.jpush.io/server/server_overview/),
+对应的 REST API 文档: [Push Rest API](../push/rest_api_v3_push),
 支持 Ruby 版本 >= 2.2.0
 
 ## Installation
