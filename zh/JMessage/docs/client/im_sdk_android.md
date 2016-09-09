@@ -1263,7 +1263,7 @@ JMessage Android SDK在v1.2.0版本中实现了单聊跨应用，v1.3.0版本中
 
 **：实现跨应用群聊的关键在于群组中加入跨应用的群成员，而创建会话和发送消息的流程和普通的群聊实现方式一致。*
 
-#### 接口摘要
+#### 跨应用相关接口摘要
 
 详细接口说明请前往极光IM [Android API Java docs](./im_android_api_docs/)
 
@@ -1317,7 +1317,7 @@ getGroupMemberInfo(String username, String appKey)
 ```    
 
 
-#### 具体实现
+#### 跨应用相关具体实现
 
 ##### 跨应用获取用户信息
 
