@@ -49,7 +49,7 @@ img[alt=jpush_android_so] { width: 800px; }
 
 + 如果推送方式是群发，则表示：该应用还没有一个客户端成功地集成了 JPush SDK 并连接到 JPush 服务器。如果您确实做了客户端App集成 JPush SDK的工作，请检查客户端日志，看是不是注册失败。
 
-+ 如果推送方式是别名或者标签，则表示：该别名或者标签，在客户端还未被成功地调用 setAliasAndTags 设置成功。请参考：别名与标签使用教程。
++ 如果推送方式是别名或者标签，则表示：该别名或者标签，在客户端还未被成功地调用 setAliasAndTags 设置成功。请参考：别名与标签使用教程[Android 文档](../client/Android/android_senior/#_1) [iOS 文档](../client/iOS/ios_api/#api-ios)。
 
 
 
