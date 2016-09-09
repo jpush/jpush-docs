@@ -43,7 +43,8 @@ SDK 侧可以发起注册用户，也可由服务器端批量发起注册。
 
 
 #### 好友
-+ 开发中，暂未发布
++ jmessage android sdk 从1.4.0版本开始提供接口实现对用户好友关系的托管，以及相关好友请求的发送和接收。
+除此之外的任何建立在好友关系之上的功能（如仅限于好友之间才能进行的聊天等），需要开发者的应用层自己实现。
 
 
 
@@ -126,7 +127,7 @@ public static synchronized void init(Context context)
 + String appKey 指定的appKey
 + GetUserInfoCallback callback 结果回调
 
-#### 从本地获取当前登录账号的信息
+##### 从本地获取当前登录账号的用户信息
 ```
   public static UserInfo getMyInfo();
 ```
@@ -180,74 +181,150 @@ public static synchronized void init(Context context)
 
 ##### 创建文字消息
 ```
- /**
-  * 创建一条单聊文本消息
-  *
-  * @param username  聊天对象用户名
-  * @param text  文本内容
-  * @return 消息对象
-  */
-public static Message createSingleTextMessage(String username, String text)
+ 	/**
+     * 创建一条单聊文本消息，此方法是创建message的快捷接口，对于不需要关注会话实例的开发者可以使用此方法
+     * 快捷的创建一条消息。其他的情况下推荐使用{@link Conversation#createSendMessage(MessageContent)}
+     * 接口来创建消息
+     *
+     * @param username 聊天对象用户名
+     * @param appKey   聊天对象所属应用的appKey
+     * @param text     文本内容
+     * @return 消息对象
+     */
+    public static Message createSingleTextMessage(String username, String appKey, String text)
 
- /**
-  * 创建一条群聊文本信息
-  *
-  * @param groupID  群组的groupID
-  * @param text  文本内容
-  * @return  消息对象
-  */
-public static Message createGroupTextMessage(long groupID, String text)
+    /**
+     * 创建一条群聊文本信息，此方法是创建message的快捷接口，对于不需要关注会话实例的开发者可以使用此方法
+     * 快捷的创建一条消息。其他的情况下推荐使用{@link Conversation#createSendMessage(MessageContent)}
+     * 接口来创建消息
+     *
+     * @param groupID 群组的groupID
+     * @param text    文本内容
+     * @return 消息对象
+     */
+    public static Message createGroupTextMessage(long groupID, String text)
 ```
 
 ##### 创建图片消息
 ```
- /**
-  * 创建一条单聊图片信息
-  *
-  * @param username  聊天对象的用户名
-  * @param imageFile 图片文件
-  * @return  消息对象
-  * @throws FileNotFoundException
-  */
-public static Message createSingleImageMessage(String username, File imageFile)
+    /**
+     * 创建一条单聊图片信息，此方法是创建message的快捷接口，对于不需要关注会话实例的开发者可以使用此方法
+     * 快捷的创建一条消息。其他的情况下推荐使用{@link Conversation#createSendMessage(MessageContent)}
+     * 接口来创建消息
+     *
+     * @param username  聊天对象的用户名
+     * @param appKey    聊天对象所属应用的appKey
+     * @param imageFile 图片文件
+     * @return 消息对象
+     * @throws FileNotFoundException
+     */
+    public static Message createSingleImageMessage(String username, String appKey, File imageFile) throws FileNotFoundException
 
-
- /**
-  * 创建一条群聊图片信息
-  *
-  * @param groupID  群组的groupID
-  * @param imageFile 图片文件
-  * @return  消息对象
-  * @throws FileNotFoundException
-  */
-public static Message createGroupImageMessage(long groupID, File imageFile)
+    /**
+     * 创建一条群聊图片信息，此方法是创建message的快捷接口，对于不需要关注会话实例的开发者可以使用此方法
+     * 快捷的创建一条消息。其他的情况下推荐使用{@link Conversation#createSendMessage(MessageContent)}
+     * 接口来创建消息
+     *
+     * @param groupID   群组的groupID
+     * @param imageFile 图片文件
+     * @return 消息对象
+     * @throws FileNotFoundException
+     */
+    public static Message createGroupImageMessage(long groupID, File imageFile) throws FileNotFoundException
 ```
 
 ##### 创建语音消息
 ```
- /**
-  * 创建一条单聊语音信息
-  *
-  * @param username  聊天对象的用户名
-  * @param voiceFile 语音文件
-  * @param duration  语音文件时长
-  * @return  消息对象
-  * @throws FileNotFoundException
-  */
-public static Message createSingleVoiceMessage(String username,
-  File voiceFile, int duration) throws FileNotFoundException
+    /**
+     * 创建一条单聊语音信息，此方法是创建message的快捷接口，对于不需要关注会话实例的开发者可以使用此方法
+     * 快捷的创建一条消息。其他的情况下推荐使用{@link Conversation#createSendMessage(MessageContent)}
+     * 接口来创建消息
+     *
+     * @param username  聊天对象的用户名
+     * @param appKey    聊天对象所属应用的appKey
+     * @param voiceFile 语音文件
+     * @param duration  语音文件时长
+     * @return 消息对象
+     * @throws FileNotFoundException
+     */
+    public static Message createSingleVoiceMessage(String username, String appKey, File voiceFile, int duration) throws FileNotFoundException
 
- /**
-  * 创建一条群聊语音信息
-  *
-  * @param groupID   群组groupID
-  * @param voiceFile 语音文件
-  * @param duration  语音文件时长
-  * @return  消息对象
-  * @throws FileNotFoundException
-  */
-public static Message createGroupVoiceMessage(long groupID,
-  File voiceFile, int duration) throws FileNotFoundException
+    /**
+     * 创建一条群聊语音信息，此方法是创建message的快捷接口，对于不需要关注会话实例的开发者可以使用此方法
+     * 快捷的创建一条消息。其他的情况下推荐使用{@link Conversation#createSendMessage(MessageContent)}
+     * 接口来创建消息
+     *
+     * @param groupID   群组groupID
+     * @param voiceFile 语音文件
+     * @param duration  语音文件时长
+     * @return 消息对象
+     * @throws FileNotFoundException
+     */
+    public static Message createGroupVoiceMessage(long groupID, File voiceFile, int duration) throws FileNotFoundException
+```
+
+##### 创建位置消息
+
+```
+    /**
+     * 创建一条单聊地理位置消息，此方法是创建message的快捷接口，对于不需要关注会话实例的开发者可以使用此方法
+     * 快捷的创建一条消息。其他的情况下推荐使用{@link Conversation#createSendMessage(MessageContent)}
+     * 接口来创建消息
+     *
+     * @param username  聊天对象的用户名
+     * @param appKey    聊天对象所属应用的appKey
+     * @param latitude  纬度信息
+     * @param longitude 经度信息
+     * @param scale     地图缩放比例
+     * @param address   详细地址信息
+     * @return 消息对象
+     */
+    public static Message createSingleLocationMessage(String username, String appKey, double latitude, double longitude, int scale, String address)
+
+    /**
+     * 创建一条群聊地理位置消息，此方法是创建message的快捷接口，对于不需要关注会话实例的开发者可以使用此方法
+     * 快捷的创建一条消息。其他的情况下推荐使用{@link Conversation#createSendMessage(MessageContent)}
+     * 接口来创建消息
+     *
+     * @param groupId   群组groupID
+     * @param latitude  纬度信息
+     * @param longitude 经度信息
+     * @param scale     地图缩放比例
+     * @param address   详细地址信息
+     * @return 消息对象
+     */
+    public static Message createGroupLocationMessage(long groupId, double latitude, double longitude, int scale, String address)
+```
+
+##### 创建文件消息
+
+```
+	/**
+     * 创建一条单聊file消息，此方法是创建message的快捷接口，对于不需要关注会话实例的开发者可以使用此方法
+     * 快捷的创建一条消息。其他的情况下推荐使用{@link Conversation#createSendMessage(MessageContent)}
+     * 接口来创建消息
+     *
+     * @param userName 聊天对象的用户名
+     * @param appKey   聊天对象所属应用的appKey
+     * @param file     发送的文件
+     * @param fileName 指定发送的文件名称,如果不填或为空，则默认使用文件原名。
+     * @return 消息对象
+     * @throws FileNotFoundException
+     */
+    public static Message createSingleFileMessage(String userName, String appKey, File file, String fileName) throws FileNotFoundException, JMFileSizeExceedException
+
+    /**
+     * 创建一条群聊file消息，此方法是创建message的快捷接口，对于不需要关注会话实例的开发者可以使用此方法
+     * 快捷的创建一条消息。其他的情况下推荐使用{@link Conversation#createSendMessage(MessageContent)}
+     * 接口来创建消息
+     *
+     * @param groupID  群组groupID
+     * @param file     发送的文件
+     * @param fileName 指定发送的文件名称,如果不填或为空，则默认使用文件原名。
+     * @return 消息对象
+     * @throws FileNotFoundException
+     */
+    public static Message createGroupFileMessage(long groupID, File file, String fileName) throws FileNotFoundException, JMFileSizeExceedException
 ```
 
 ##### 创建自定义消息
@@ -373,8 +450,7 @@ public static Message createGroupCustomMessage(long groupID,
 
 - 是否删除成功。
 
-
-#### 事件处理
+####<span id="Event">事件处理</span>
 ##### 1、事件接收类的注册
 ```
   public static void registerEventReceiver(Object receiver);
@@ -422,6 +498,7 @@ public void onEventMainThread(EventEntity event){
 参数定义
 
 + EventEntity event 事件对象。
+
 
 ##### 4、事件类型
 
@@ -871,8 +948,259 @@ public static void exitConversaion();
 ##### 通知栏点击事件监听
 用户可以通过接受通知栏点击事件NotificationClickEvent，来实现自定义跳转，该事件如果没有接收者，点击通知栏时SDK将默认跳转到程序主界面。
 
-事件接收方法见"事件处理"一节
+事件接收方法见[事件处理](#Event)一节
 
+
+#### 好友列表管理
+jmessage sdk 好友模块仅实现对用户好友关系的托管，以及相关好友请求的发送和接收。除此之外的任何建立在好友关系之上的功能（如仅限于好友之间才能进行的聊天等），需要开发者的应用层自己实现。
+
+##### 发送好友添加请求
+发送添加好友请求。在对方未做回应的前提下，允许重复发送添加好友的请求。请求发送后对方会收到一条好友请求的事件。
+
+```
+public static void sendInvitationRequest(final String targetUsername,String appKey, final String reason, final BasicCallback callback)
+```
+
+参数定义
+
++ String targetUsername 被邀请方用户名
++ String appKey 被邀请方用户的appKey,如果为空则默认从本应用appKey下查找用户。
++ String reason 申请理由
++ BasicCallback callback 结果回调
+
+代码示例：
+
+```
+ContactManager.sendInvitationRequest("test_user", "test_appkey", "hello", new BasicCallback() {
+            @Override
+            public void gotResult(int responseCode, String responseMessage) {
+                if (0 == responseCode) {
+                    //好友请求请求发送成功
+                } else {
+                    //好友请求发送失败
+                }
+            }
+        });
+```
+
+
+##### 接受好友请求
+接受对方的好友请求，操作成功后，对方会出现在自己的好友列表中，双方建立起好友关系。请求发送后对方会收到一条好友请求被接受的事件。
+
+```
+public static void acceptInvitation(final String targetUsername, String appKey, final BasicCallback callback)
+```
+
+参数定义
+
++ String targetUsername 邀请方的用户名
++ String appKey 邀请方用户的appKey,如果为空则默认从本应用appKey下查找用户。
++ BasicCallback callback 结果回调
+
+代码示例：
+
+```
+ContactManager.acceptInvitation("test_user", "test_appkey", new BasicCallback() {
+            @Override
+            public void gotResult(int responseCode, String responseMessage) {
+                if (0 == responseCode) {
+                    //接收好友请求成功
+                } else {
+                    //接收好友请求失败
+                }
+            }
+        });
+```
+
+
+##### 拒绝好友请求
+拒绝对方的好友请求。请求发送后对方会收到一条好友请求被拒绝的事件。
+
+```
+public static void declineInvitation(final String targetUsername, String appKey, String reason, final BasicCallback callback)
+```
+
+参数定义
+
++ String targetUsername 邀请方用户名
++ String appKey 邀请方用户的appKey,如果为空则默认从本应用appKey下查找用户。
++ String reason 拒绝理由
++ BasicCallback callback 结果回调
+
+代码示例：
+
+```
+ContactManager.declineInvitation("test_user", "test_appkey", "sorry~", new BasicCallback() {
+            @Override
+            public void gotResult(int responseCode, String responseMessage) {
+                if (0 == responseCode) {
+                    //拒绝好友请求成功
+                } else {
+                    //拒绝好友请求失败
+                }
+            }
+        });
+```
+
+##### 获取好友列表
+获取当前登陆用户的好友列表，异步返回结果。
+
+```
+public static void getFriendList(final GetUserInfoListCallback callback)
+```
+
+参数定义
+
++ GetUserInfoListCallback callback 结果回调。
+
+代码示例：
+
+```
+ContactManager.getFriendList(new GetUserInfoListCallback() {
+            @Override
+            public void gotResult(int responseCode, String responseMessage, List<UserInfo> userInfoList) {
+                if (0 == responseCode) {
+                    //获取好友列表成功
+                } else {
+                    //获取好友列表失败
+                }
+            }
+        });
+```
+
+##### 删除好友
+将用户从你的好友列表中移除，移除成功后，对方会收到一条好友被移除的事件。
+
+```
+public void removeFromFriendList(BasicCallback callback)
+```
+
+参数定义
+
++ BasicCallback callback 结果回调
+
+代码示例：
+
+```
+userinfo.removeFromFriendList(new BasicCallback() {
+            @Override
+            public void gotResult(int responseCode, String responseMessage) {
+                if (0 == responseCode) {
+                    //移出好友列表成功
+                } else {
+                    //移出好友列表失败
+                }
+            }
+        });
+```
+
+##### 更新用户备注名/备注信息
+仅当用户存在于你的好友列表中时，才能更新其用户备注名和备注信息。
+
+```
+public abstract void updateNoteName(String noteName, BasicCallback callback)
+
+public abstract void updateNoteText(String noteText, BasicCallback callback)
+```
+
+参数定义：
+
++ String noteName 新的备注名
++ String noteText 新的备注信息
++ BasicCallback callback 结果回调
+
+代码示例：
+
+```
+userinfo.updateNoteName("new_note_name", new BasicCallback() {
+            @Override
+            public void gotResult(int responseCode, String responseMessage) {
+                if (0 == responseCode) {
+                    //更新备注名成功
+                } else {
+                    //更新备注名失败
+                }
+            }
+        });
+```
+
+##### 联系人相关通知事件
+
+新增联系人相关通知事件`ContactNotifyEvent`,具体事件处理方法见：[事件处理](#Event)一节
+<div class="table-d" align="left" >
+  <table border="1" width = "100%">
+    <tr  bgcolor="#D3D3D3" >
+      <th width="100px">方法</th>
+      <th width="20px">类型</th>
+      <th width="300px">说明</th>
+    </tr>
+    <tr >
+      <td >getType()</td>
+      <td >ContactNotifyEvent.Type</td>
+      <td >获取联系人通知事件的具体类型，具体类型见[Type](./im_android_api_docs/cn/jpush/im/android/api/event/ContactNotifyEvent.html)定义</td>
+    </tr>
+    <tr >
+      <td >getReason()</td>
+      <td >String</td>
+      <td >获取事件发生的理由，该字段由对方发起请求时所填，对方如果未填则将返回默认字符串</td>
+    </tr>
+    <tr >
+      <td >getFromUsername()</td>
+      <td >String</td>
+      <td >获取事件发送者的username</td>
+    </tr>
+    <tr >
+      <td >getFromUserAppKey()</td>
+      <td >String</td>
+      <td >获取事件发送者用户所属应用的appKey</td>
+    </tr>
+  </table>
+</div>
+
+
+示例代码：
+
+```
+class ContactNotifyEventReceiver extends Activity{
+
+  @Override
+  protected void onCreate() {
+    super.onCreate(savedInstanceState);
+    JMessageClient.registerEventReceiver(this);
+  }
+
+  @Override
+  protected void onDestroy() {
+    JMessageClient.unRegisterEventReceiver(this);
+    super.onDestroy();
+  }
+  
+  public void onEvent(ContactNotifyEvent event) {
+        String reason = event.getReason();
+        String fromUsername = event.getFromUsername();
+        String appkey = event.getfromUserAppKey();
+
+        switch (event.getType()) {
+            case invite_received://收到好友邀请
+                //...
+                break;
+            case invite_accepted://对方接收了你的好友邀请
+                //...
+                break;
+            case invite_declined://对方拒绝了你的好友邀请
+                //...
+                break;
+            case contact_deleted://对方将你从好友中删除
+                //...
+                break;
+            default:
+                break;
+        }
+    }
+
+}
+
+```
 
 ### 免打扰
 可以将用户/群组添加到“免打扰”列表中，收到免打扰用户/群组发过来的消息时，sdk不会弹出默认的通知提示，但消息事件照常下发。
@@ -1241,6 +1569,8 @@ JMessageClient.sendMessage(message);
 cn.jpush.im.api.content.TextContent
 cn.jpush.im.api.content.VoiceContent
 cn.jpush.im.api.content.ImageContent
+cn.jpush.im.api.content.LocationContent
+cn.jpush.im.api.content.FileContent
 cn.jpush.im.api.content.CustomContent
 ```
 
@@ -1250,11 +1580,17 @@ cn.jpush.im.api.content.CustomContent
 // 参数：文本内容
 TextContent text = new TextContent("Hi, JMessage");
 
-// 参数：语音文件的路径，语音文件时长
-VoiceContent voice = new VoiceContent("/sdcard/voice.amr", 21);
+// 参数：语音文件对象，语音文件时长
+VoiceContent voice = new VoiceContent(new File("/sdcard/voice.amr"), 21);
 
-// 参数：图片文件路径
-ImageContent image = new ImageContent("/sdcard/image.amr");
+// 参数：图片文件对象
+ImageContent image = new ImageContent(new File("/sdcard/image.png"));
+
+// 参数：任意文件对象
+FileContent fileContent = new FileContent(new File("/sdcard/file.xxx"));
+
+// 参数：经度，纬度，缩放比例，地址详情
+LocationContent locationContent = new LocationContent(111.1,222.2,500,"xx省xx市xx区xx街xx号");
 ```
 
 #### 回调定义
