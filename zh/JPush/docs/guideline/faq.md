@@ -73,10 +73,6 @@ img[alt=jpush_android_so] { width: 800px; }
 使用别名和标签推送请参考文档：[标签与别名API](../server/push/rest_api_v3_push/#audience) 
 
 
-
-
-
-
 <br/>
 ## 怎么样向指定的一群用户推送消息？
 在客户端使用 setAliasAndTags API 来为该用户设置标签。这样服务器可以向所有具有该标签的用户群发消息。  
@@ -88,7 +84,9 @@ img[alt=jpush_android_so] { width: 800px; }
 
 <br/>
 ## 其他国家能否使用极光推送（局域网能否使用极光推送）？
-只要能连网到Jpush服务器都可以。判断能否联网到Jpush服务器的方法：ping通 api.jpush.cn 8800
+JPush 对于访问国家没有任何限制。理论上国外使用是没有问题的，但具体区域还需要开发者自己评估。  
+服务器端判断能否访问JPush服务器的方法是ping通 api.jpush.cn,也可以执行 curl 测试。  
+客户端判断是否正常可以通过观察日志，看是否可以注册和连接成功。
 
 <br/>
 ## JPush免费用户和VIP用户有哪些区别？
