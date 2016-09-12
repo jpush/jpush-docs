@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<!--[if IE 8]>
+  <html class="no-js lt-ie9" lang="en">
+  <![endif]-->
+<!--[if gt IE 8]>
+    <!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">{% if page_description %}
+    <meta name="description" content="{{ page_description }}">{% endif %} {% if site_author %}
+    <meta name="author" content="{{ site_author }}">{% endif %} {% block htmltitle %}
+    <title>{% if page_title %}{{ page_title }} - {% endif %}{{ site_name }}</title>{% endblock %} {% if favicon %}
+    <link rel="shortcut icon" href="{{ favicon }}">{% else %}
+    <link rel="shortcut icon" href="{{ base_url }}/favicon.ico">{% endif %}
+    <script src="{{ base_url }}/js/jquery-2.1.4.js"></script>
+    <script src="{{ base_url }}/js/bootstrap/js/bootstrap.js"></script>
+
+    <link href="{{ base_url }}/js/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ base_url }}/css/theme.css" type="text/css" />
+    <link href="{{ base_url }}/css/base.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ base_url }}/css/theme_extra.css" type="text/css" />{% if current_page %}
+    <script>
+    // Current page data
+    var mkdocs_page_name = "{{ page_title }}";
+    var mkdocs_page_input_path = "{{ current_page.input_path }}";
+    var mkdocs_page_url = "{{ current_page.abs_url }}";
+    </script>
+    {% endif %}
+    <script src="{{ base_url }}/js/jpush.js"></script>
+    {%- block extrahead %} {% endblock %}
+</head>
+
+<body data-spy="scroll" data-target="#navbar-right">
+    <div class="container-fluid">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3  col-md-3  col-sm-3">
+                    <div id="doc-icon">
+                        <a href="/"><img src="/img/icon/logo.png"></a>
+                    </div>
+                </div>
+                <div class="col-lg-7 col-md-8  col-sm-8">
+                    <div class="header">
+                        <ul class="nav nav-tabs">
+                            <li role="presentation" >
+                                <a href="/jpush/guideline/intro/" id="jpush" >JPush</a></li>
+                            <li role="presentation" >
+                                <a href="/jmessage/guideline/jmessage_guide/" id="jmessage" >JMessage</a></li>
+                            <li role="presentation" >
+                                <a href="/jsms/guideline/JSMS_guide/" id="jsms" >短信验证码</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-2  col-md-1 col-sm-1">
+                    <div>
+                        {% include "searchbox.html" %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4  col-md-4">
+            </div>
+            <div class="col-lg-4  col-md-4">
+                <div id="top-title">极光官方文档</div>
+            </div>
+            <div class="col-lg-4  col-md-4 ">
+            </div>
+        </div>
+        <div class="row">
+            <div id="top-image-nav">
+                <div class="col-lg-4  col-md-4 col-sm-12">
+                    <div class="top-image-nav-div">
+                        <div class="top-image">
+                            <a href="http://community.jiguang.cn/" target="_blank"><img src="/img/top_image/1.png"></a>
+                        </div>
+                        <div class="top-image-nav-text">
+                            <a href="http://community.jiguang.cn/"  target="_blank">极光社区</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4  col-md-4 col-sm-12">
+                    <div class="top-image-nav-div">
+                        <div class="top-image">
+                            <a href="http://blog.jiguang.cn/"  target="_blank"><img src="/img/top_image/3.png"></a>
+                        </div>
+                        <div class="top-image-nav-text">
+                            <a href="http://blog.jiguang.cn/"  target="_blank">极光博客</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4  col-md-4 col-sm-12">
+                    <div class="top-image-nav-div">
+                        <div class="top-image">
+                            <a href="http://community.jiguang.cn/t/topic/6568"  target="_blank"><img src="/img/top_image/5.png"></a>
+                        </div>
+                        <div class="top-image-nav-text">
+                            <a href="http://community.jiguang.cn/t/topic/6568"  target="_blank">视频教程</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+        <div id="content">
+            {% block content %} {{ content }} {% endblock %}
+        </div>
+        </div>
+        <div class="row">
+        {%- block footer %} {% include "footer.html" %} {% endblock %}
+        </div>
+</body>
+
+</html>

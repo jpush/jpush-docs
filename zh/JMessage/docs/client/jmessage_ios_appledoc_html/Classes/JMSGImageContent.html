@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>JMSGImageContent Class Reference</title>
+
+	<link rel="stylesheet" href="../css/style.css">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
+	<meta name="generator" content="appledoc 2.2.1 (build 1334)">
+</head>
+<body class="appledoc">
+	<header>
+		<div class="container" class="hide-in-xcode">
+			
+			<h1 id="library-title">
+				<a href="../index.html">JMessage-iOS-SDK </a>
+			</h1>
+
+			<p id="developer-home">
+				<a href="../index.html">HXHG</a>
+			</p>
+			
+		</div>
+	</header>
+
+	<aside>
+		<div class="container">
+			<nav>
+				<ul id="header-buttons" role="toolbar">
+					<li><a href="../index.html">Index</a></li>
+<li><a href="../hierarchy.html">Hierarchy</a></li>
+
+					<li id="on-this-page" role="navigation">
+						<label>
+							On This Page
+
+							<div class="chevron">
+								<div class="chevy chevron-left"></div>
+								<div class="chevy chevron-right"></div>
+							</div>
+
+							<select id="jump-to">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+
+	
+	
+	<optgroup label="Properties">
+		
+		<option value="//api/name/imageLink">imageLink</option>
+		
+	</optgroup>
+	
+
+	
+
+	
+	<optgroup label="Instance Methods">
+		
+		<option value="//api/name/initWithImageData:">- initWithImageData:</option>
+		
+		<option value="//api/name/thumbImageData:">- thumbImageData:</option>
+		
+		<option value="//api/name/largeImageDataWithProgress:completionHandler:">- largeImageDataWithProgress:completionHandler:</option>
+		
+	</optgroup>
+	
+	
+</select>
+						</label>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</aside>
+
+	<article>
+		<div id="overview_contents" class="container">
+			<div id="content">
+				<main role="main">
+					<h1 class="title">JMSGImageContent Class Reference</h1>
+
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<th>Inherits from</th>
+	<td><a href="../Classes/JMSGMediaAbstractContent.html">JMSGMediaAbstractContent</a> : <a href="../Classes/JMSGAbstractContent.html">JMSGAbstractContent</a> : NSObject</td>
+</tr><tr>
+	<th>Conforms to</th>
+	<td>NSCopying</td>
+</tr><tr>
+	<th>Declared in</th>
+	<td>JMSGImageContent.h</td>
+</tr>
+						</tbody></table></div>
+					
+
+                    
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>图片内容</p>
+
+<p>图片区分缩略图与大图.</p>
+
+<p>大图指的创建对象时图片. 这个大图一般来说, 也是 App 对拍照或者相册里的 &ldquo;原图&rdquo; 经过压缩处理的.
+因为消息应用一般不会发送相册或者拍照的 &ldquo;原图&rdquo;, 这太大了.</p>
+
+<p>暂不支持可选 &ldquo;原图&rdquo; 发送功能. 有计划支持.</p>
+
+<p>缩略图则是 SDK 根据一定的算法 (主要基于屏幕, 长宽比等), 裁减出来的一个相对小的图片,
+用于默认显示在聊天窗口.
+第一次访问缩略图后, SDK 会缓存把该数据缓存在该对象上, 所以访问多次访问会非常快,
+有利于聊天窗口滚动的性能表现.</p>
+
+<p>收到消息时, SDK 会默认预下载缩略图, 这样查看消息就可以即时展示出来.
+而大图, 则一般是 App 预览图片调用接口时, SDK 再去发起下载.</p>
+
+<p>针对每种资源(缩略图或者大图), 只提供一个异步接口获取数据. SDK 去做缓存,文件,下载的适配工作.</p>
+					</div>
+					
+					
+
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						
+
+						
+						
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/imageLink" title="imageLink"></a>
+	<h3 class="method-title"><code><a href="#//api/name/imageLink">&nbsp;&nbsp;imageLink</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>图片链接</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) NSString *imageLink</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGImageContent.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/initWithImageData:" title="initWithImageData:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/initWithImageData:">&ndash;&nbsp;initWithImageData:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>初始化消息图片内容</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (nullable instancetype)initWithImageData:(NSData *JMSG_NONNULL)<em>data</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>data</code></th>
+						<td><p>图片数据</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>这是预设的初始化方法. 创建一个图片内容对象, 必须要传入图片数据.</p>
+
+<p>对于图片消息, 一般来说创建此图片内容的数据, 是对拍照原图经过裁减处理的, 否则发图片消息太大.
+这里传入的图片数据, SDK视为大图. 方法 largeImageDataWithProgress:completionHandler 下载到的,
+就是这个概念上的图片数据.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGImageContent.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/thumbImageData:" title="thumbImageData:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/thumbImageData:">&ndash;&nbsp;thumbImageData:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>获取图片消息的缩略图数据</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)thumbImageData:(JMSGAsyncDataHandler JMSG_NULLABLE)<em>handler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>handler</code></th>
+						<td><p>结果回调。回调参数:</p>
+
+<ul>
+<li>data 图片数据;</li>
+<li>objectId 消息msgId;</li>
+<li>error 不为nil表示出错;</li>
+</ul>
+
+
+<p>如果 error 为 ni, data 也为 nil, 表示没有数据.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>展示缩略时调用此接口，获取缩略图数据。
+如果本地数据文件已经存在, 则直接返回;
+如果本地还没有图片，会发起网络请求下载。下载完后再回调。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGImageContent.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/largeImageDataWithProgress:completionHandler:" title="largeImageDataWithProgress:completionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/largeImageDataWithProgress:completionHandler:">&ndash;&nbsp;largeImageDataWithProgress:completionHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>获取图片消息的大图数据</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)largeImageDataWithProgress:(JMSGMediaProgressHandler JMSG_NULLABLE)<em>progressHandler</em> completionHandler:(JMSGAsyncDataHandler JMSG_NULLABLE)<em>handler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>progressHandler</code></th>
+						<td><p>下载进度。会持续回调更新进度, 直接下载完成。如果为 nil 则表示不关心进度。</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>handler</code></th>
+						<td><p>结果回调。回调参数:</p>
+
+<ul>
+<li>data 图片数据;</li>
+<li>objectId 消息msgId;</li>
+<li>error 不为nil表示出错;</li>
+</ul>
+
+
+<p>如果 error 为 ni, data 也为 nil, 表示没有数据.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>一般在预览图片大图时，要用此接口。
+如果本地数据文件已经存在, 则直接返回;
+如果本地还没有图片，会发起网络请求下载。下载完后再回调。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGImageContent.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+					</div>
+					
+					
+
+                    
+                    
+          
+				</main>
+
+				<footer>
+					<div class="footer-copyright">
+						
+						<p class="copyright">Copyright &copy; 2016 HXHG. All rights reserved. Updated: 2016-07-15</p>
+						
+						
+						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
+						
+					</div>
+				</footer>
+			</div>
+		</div>
+	</article>
+
+	<script src="../js/script.js"></script>
+</body>
+</html>

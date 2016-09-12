@@ -1,0 +1,42 @@
+site_name: 极光文档
+site_author: JPush Offical
+site_url: http://docs.jpush.io
+site_favicon: favicon.ico
+site_description: JPush, JMessage, 极光推送, 极光IM, Android Push, Android 推送, 安卓推送, iOS Push, APNs, Push Notification
+copyright: Copyright 2011-2016, jiguang.cn, All Rights Reserved. <br />粤ICP备12056275号-13 深圳市和讯华谷信息技术有限公司
+theme_dir: '../themes/readthedocs'
+
+pages:
+
+- 入门指南:
+  - 'JMessage 产品简介': 'guideline/jmessage_guide.md'
+
+
+- Android:
+  - 'Android SDK 概述': 'client/im_sdk_android.md'
+  - 'JMessage Android SDK 集成指南': 'client/jmessage_android_guide.md'
+  - 'IM SDK ErrorCode 定义': 'client/im_errorcode_android.md'
+
+
+- iOS:
+  - 'iOS SDK 概述': 'client/im_sdk_ios.md'
+  - 'JMessage iOS SDK 集成指南': 'client/jmessage_ios_guide.md'
+  - 'IM SDK ErrorCode 定义': 'client/im_errorcode_ios.md'
+
+- JS:
+  - 'JMessage WEB SDK 开发文档': 'client/im_sdk_js.md'
+
+- REST API:
+  - 'IM REST API': 'server/rest_api_im.md'
+  - 'IM REST Report': 'server/rest_api_im_report.md'
+  - 'Server ErrorCode 定义': 'client/im_errorcode_server.md'
+- 高级:
+  - 'IM 消息协议': 'advanced/im_message_protocol.md'
+  - 'IM 业务对象': 'advanced/im_objects.md'
+  - '实时消息回调': 'advanced/jmessage_callback.md'
+  - '极光IM高级话题': 'advanced/jmessage_topics.md'
+
+- 最近更新: 'updates.md'
+
+- 资源下载: 'resources.md'
+

@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>JMessage Class Reference</title>
+
+	<link rel="stylesheet" href="../css/style.css">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
+	<meta name="generator" content="appledoc 2.2.1 (build 1334)">
+</head>
+<body class="appledoc">
+	<header>
+		<div class="container" class="hide-in-xcode">
+			
+			<h1 id="library-title">
+				<a href="../index.html">JMessage-iOS-SDK </a>
+			</h1>
+
+			<p id="developer-home">
+				<a href="../index.html">HXHG</a>
+			</p>
+			
+		</div>
+	</header>
+
+	<aside>
+		<div class="container">
+			<nav>
+				<ul id="header-buttons" role="toolbar">
+					<li><a href="../index.html">Index</a></li>
+<li><a href="../hierarchy.html">Hierarchy</a></li>
+
+					<li id="on-this-page" role="navigation">
+						<label>
+							On This Page
+
+							<div class="chevron">
+								<div class="chevy chevron-left"></div>
+								<div class="chevy chevron-right"></div>
+							</div>
+
+							<select id="jump-to">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+
+	
+	
+
+	
+	<optgroup label="Class Methods">
+		
+		<option value="//api/name/setupJMessage:appKey:channel:apsForProduction:category:">+ setupJMessage:appKey:channel:apsForProduction:category:</option>
+		
+		<option value="//api/name/addDelegate:withConversation:">+ addDelegate:withConversation:</option>
+		
+		<option value="//api/name/removeDelegate:withConversation:">+ removeDelegate:withConversation:</option>
+		
+		<option value="//api/name/removeAllDelegates">+ removeAllDelegates</option>
+		
+		<option value="//api/name/setDebugMode">+ setDebugMode</option>
+		
+		<option value="//api/name/setLogOFF">+ setLogOFF</option>
+		
+		<option value="//api/name/currentServerTime">+ currentServerTime</option>
+		
+		<option value="//api/name/testDBMigrating">+ testDBMigrating</option>
+		
+		<option value="//api/name/isMainAppKey:">+ isMainAppKey:</option>
+		
+		<option value="//api/name/noDisturbList:">+ noDisturbList:</option>
+		
+		<option value="//api/name/setIsGlobalNoDisturb:handler:">+ setIsGlobalNoDisturb:handler:</option>
+		
+		<option value="//api/name/isSetGlobalNoDisturb">+ isSetGlobalNoDisturb</option>
+		
+		<option value="//api/name/blackList:">+ blackList:</option>
+		
+	</optgroup>
+	
+
+	
+	
+</select>
+						</label>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</aside>
+
+	<article>
+		<div id="overview_contents" class="container">
+			<div id="content">
+				<main role="main">
+					<h1 class="title">JMessage Class Reference</h1>
+
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<th>Inherits from</th>
+	<td>NSObject</td>
+</tr><tr>
+	<th>Declared in</th>
+	<td>JMessage.h</td>
+</tr>
+						</tbody></table></div>
+					
+
+                    
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>JMessage核心头文件</p>
+
+<p>这是唯一需要导入到你的项目里的头文件，它引用了内部需要用到的头文件。</p>
+					</div>
+					
+					
+
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						
+
+						
+						
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/setupJMessage:appKey:channel:apsForProduction:category:" title="setupJMessage:appKey:channel:apsForProduction:category:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setupJMessage:appKey:channel:apsForProduction:category:">+&nbsp;setupJMessage:appKey:channel:apsForProduction:category:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>初始化 JMessage SDK</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)setupJMessage:(NSDictionary *)<em>launchOptions</em> appKey:(NSString *)<em>appKey</em> channel:(NSString *)<em>channel</em> apsForProduction:(BOOL)<em>isProduction</em> category:(NSSet *)<em>category</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>launchOptions</code></th>
+						<td><p>AppDelegate启动函数的参数launchingOption(用于推送服务)</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>appKey</code></th>
+						<td><p>appKey(应用Key值,通过JPush官网可以获取)</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>channel</code></th>
+						<td><p>应用的渠道名称</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>isProduction</code></th>
+						<td><p>是否为生产模式</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>category</code></th>
+						<td><p>iOS8新增通知快捷按钮参数</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>此方法必须被调用, 以初始化 JMessage SDK</p>
+
+<p>如果未调用此方法, 本 SDK 的所有功能将不可用.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMessage.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/addDelegate:withConversation:" title="addDelegate:withConversation:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/addDelegate:withConversation:">+&nbsp;addDelegate:withConversation:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>增加回调(delegate protocol)监听</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)addDelegate:(id&lt;JMessageDelegate&gt;)<em>delegate</em> withConversation:(JMSGConversation *)<em>conversation</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>delegate</code></th>
+						<td><p>需要监听的 Delegate Protocol</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>conversation</code></th>
+						<td><p>允许为nil.</p>
+
+<ul>
+<li>为 nil, 表示接收所有的通知, 不区分会话.</li>
+<li>不为 nil，表示只接收指定的 conversation 相关的通知.</li>
+</ul>
+</td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>默认监听全局 <a href="../Protocols/JMessageDelegate.html">JMessageDelegate</a> 即可.</p>
+
+<p>这个调用可以在任何地方, 任何时候调用, 可以在未进行 SDK
+启动 <a href="#//api/name/setupJMessage:appKey:channel:apsForProduction:category:">setupJMessage:appKey:channel:apsForProduction:category:</a> 时就被调用.</p>
+
+<p>并且, 如果你有必要接收数据库升级通知 <a href="%E5%BB%BA%E8%AE%AE%E8%A6%81%E5%81%9A%E8%BF%99%E4%B8%80%E6%AD%A5">JMSGDBMigrateDelegate</a>,
+就应该在 SDK 启动前就调用此方法, 来注册通知接收.
+这样, SDK启动过程中发现需要进行数据库升级, 给 App 发送数据库升级通知时,
+App 才可以收到并进行处理.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMessage.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/removeDelegate:withConversation:" title="removeDelegate:withConversation:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/removeDelegate:withConversation:">+&nbsp;removeDelegate:withConversation:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>删除Delegate监听</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)removeDelegate:(id&lt;JMessageDelegate&gt;)<em>delegate</em> withConversation:(JMSGConversation *)<em>conversation</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>delegate</code></th>
+						<td><p>监听的 Delegate Protocol</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>conversation</code></th>
+						<td><p>基于某个会话的监听. 允许为 nil.</p>
+
+<ul>
+<li>为 nil, 表示全局的监听, 即所有会话相关.</li>
+<li>不为 nil, 表示特定的会话.</li>
+</ul>
+</td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMessage.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/removeAllDelegates" title="removeAllDelegates"></a>
+	<h3 class="method-title"><code><a href="#//api/name/removeAllDelegates">+&nbsp;removeAllDelegates</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>删除全部监听</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)removeAllDelegates</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMessage.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setDebugMode" title="setDebugMode"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setDebugMode">+&nbsp;setDebugMode</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>打开日志级别到 Debug</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)setDebugMode</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>JMessage iOS 的日志系统参考 Android 设计了级别.
+从低到高是: Verbose, Debug, Info, Warning, Error.
+对日志级别的进一步理解, 请参考 Android 相关的说明.</p>
+
+<p>SDK 默认开启的日志级别为: Info. 只显示必要的信息, 不打印调试日志.</p>
+
+<p>调用本接口可打开日志级别为: Debug, 打印调试日志.</p>
+
+<p>本接口与 <a href="../Classes/JPUSHService.html#//api/name/setDebugMode">[JPUSHService setDebugMode]</a> 效果是相同的, 只需要调用一个即可.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMessage.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setLogOFF" title="setLogOFF"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setLogOFF">+&nbsp;setLogOFF</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>关闭日志</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)setLogOFF</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>关于日志级别的说明, 参考 <a href="#//api/name/setDebugMode">[JMessage setDebugMode]</a></p>
+
+<p>虽说是关闭日志, 但还是会打印 Warning, Error 日志. 这二种日志级别, 在程序运行正常时, 不应有打印输出.</p>
+
+<p>建议在发布的版本里, 调用此接口, 关闭掉日志打印.</p>
+
+<p>本接口与 <a href="../Classes/JPUSHService.html#//api/name/setLogOFF">[JPUSHService setLogOFF]</a> 效果是相同的, 只需要调用一个即可.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMessage.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/currentServerTime" title="currentServerTime"></a>
+	<h3 class="method-title"><code><a href="#//api/name/currentServerTime">+&nbsp;currentServerTime</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>获取当前服务器端时间</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (NSTimeInterval)currentServerTime</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>可用于纠正本地时间。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMessage.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/testDBMigrating" title="testDBMigrating"></a>
+	<h3 class="method-title"><code><a href="#//api/name/testDBMigrating">+&nbsp;testDBMigrating</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>发起数据库升级测试</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)testDBMigrating</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>这是一个专用于测试时使用到的接口.</p>
+
+<p>关于数据库升级相关, 参考这个 [JMSGDBMigrateDelegate] 类里的说明.</p>
+
+<p>调用此接口后, App 会收到一个升级开始通知, 30s 后再收到一个升级结束通知.</p>
+
+<p>本接口内部并不会真实地发起数据库升级操作, 而仅用于发出开始与完成的通知, 以方便 App 来测试处理流程.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMessage.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/isMainAppKey:" title="isMainAppKey:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/isMainAppKey:">+&nbsp;isMainAppKey:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>验证此 appKey 是否为当前应用 appKey</p>
+
+<p>@param appKey</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (BOOL)isMainAppKey:(NSString *)<em>appKey</em></code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>是否为当前应用 appKey</p>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMessage.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/noDisturbList:" title="noDisturbList:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/noDisturbList:">+&nbsp;noDisturbList:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>用户免打扰列表</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)noDisturbList:(JMSGCompletionHandler)<em>handler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>handler</code></th>
+						<td><p>结果回调。回调参数：</p>
+
+<ul>
+<li>resultObject 类型为 NSArray，数组里成员的类型为 JMSGUser、<a href="../Classes/JMSGGroup.html">JMSGGroup</a></li>
+<li>error 错误信息</li>
+</ul>
+
+
+<p>如果 error 为 nil, 表示设置成功
+如果 error 不为 nil,表示设置失败</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>从服务器获取，返回用户的免打扰列表。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMessage.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setIsGlobalNoDisturb:handler:" title="setIsGlobalNoDisturb:handler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setIsGlobalNoDisturb:handler:">+&nbsp;setIsGlobalNoDisturb:handler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>设置是否全局免打扰</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)setIsGlobalNoDisturb:(BOOL)<em>isNoDisturb</em> handler:(JMSGCompletionHandler)<em>handler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>isNoDisturb</code></th>
+						<td><p>是否全局免打扰 YES:是 NO: 否</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>handler</code></th>
+						<td><p>结果回调。回调参数：</p>
+
+<ul>
+<li>resultObject 相应返回对象</li>
+<li>error 错误信息</li>
+</ul>
+
+
+<p>如果 error 为 nil, 表示设置成功
+如果 error 不为 nil,表示设置失败</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>此函数为设置全局的消息免打扰</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMessage.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/isSetGlobalNoDisturb" title="isSetGlobalNoDisturb"></a>
+	<h3 class="method-title"><code><a href="#//api/name/isSetGlobalNoDisturb">+&nbsp;isSetGlobalNoDisturb</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>判断是否设置全局免打扰</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (BOOL)isSetGlobalNoDisturb</code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>YES/NO</p>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMessage.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/blackList:" title="blackList:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/blackList:">+&nbsp;blackList:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>黑名单列表</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)blackList:(JMSGCompletionHandler)<em>handler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>handler</code></th>
+						<td><p>结果回调。回调参数：</p>
+
+<ul>
+<li>resultObject 类型为 NSArray，数组里成员的类型为 <a href="../Classes/JMSGUser.html">JMSGUser</a></li>
+<li>error 错误信息</li>
+</ul>
+
+
+<p>如果 error 为 nil, 表示设置成功
+如果 error 不为 nil,表示设置失败</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>从服务器获取，返回用户的黑名单列表。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMessage.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+					</div>
+					
+					
+
+                    
+                    
+          
+				</main>
+
+				<footer>
+					<div class="footer-copyright">
+						
+						<p class="copyright">Copyright &copy; 2016 HXHG. All rights reserved. Updated: 2016-07-15</p>
+						
+						
+						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
+						
+					</div>
+				</footer>
+			</div>
+		</div>
+	</article>
+
+	<script src="../js/script.js"></script>
+</body>
+</html>
