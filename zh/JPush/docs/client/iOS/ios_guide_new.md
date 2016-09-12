@@ -118,7 +118,9 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
                                                       UIRemoteNotificationTypeAlert)
                                           categories:nil];
   }
+  
   //Required
+  // init Push(2.1.5版本的SDK新增的注册方法，改成可上报IDFA，如果没有使用IDFA直接传nil  )
   // 如需继续使用pushConfig.plist文件声明appKey等配置内容，请依旧使用[JPUSHService setupWithOption:launchOptions]方式初始化。
   [JPUSHService setupWithOption:launchOptions appKey:appKey
                         channel:channel
