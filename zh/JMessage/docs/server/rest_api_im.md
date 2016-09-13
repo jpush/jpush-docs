@@ -1017,7 +1017,7 @@ Example Response
 
 ### 跨应用API
 
-####跨应用管理群组成
+####跨应用管理群组成员
 	POST  /v1/cross/groups/{gid}/members
 Request Params
 
@@ -1086,7 +1086,7 @@ Example Response
 	+ 0 - 普通群成员
 	+ 1 - 群主
 
-#### 添加黑名单
+#### 跨应用添加黑名单
 
 ```
 Put /v1/cross/users/{username}/blacklist
@@ -1129,7 +1129,7 @@ Response Data
 
 N/A
 
-#### 移除黑名单
+#### 跨应用移除黑名单
 
 ```
 Delete /v1/cross/users/{username}/blacklist
