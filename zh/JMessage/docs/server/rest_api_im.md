@@ -543,7 +543,7 @@ POST /v1/messages
 		</tr>
 		<tr >
 			<td>msg_type</td>
-			<td>发消息类型 当前只限text</td>
+			<td>发消息类型 text - 文本，image - 图片, custom - 自定义消息（msg_body为json对象即可，服务端不做校验）</td>
 		</tr>
 		<tr >
 			<td>target_id</td>
@@ -563,16 +563,48 @@ POST /v1/messages
 		</tr>
 		<tr >
 			<td>msg_body</td>
-			<td>消息体</td>
-		</tr>
-		<tr >
-			<td>msg_body -> text</td>
-			<td>消息内容</td>
+			<td>Json对象的消息体</td>
 		</tr>
 		<tr >
 			<td>msg_body-> extras</td>
 			<td>选填的json对象 开发者可以自定义extras里面的key value	</td>
 		</tr>
+		<tr>
+		<td colspan="2" ><font  color="red">msg_type为text时，msg_body的格式如下 </font></td>
+		</tr>
+		<tr >
+			<td>msg_body -> text</td>
+			<td>消息内容</td>
+		</tr>
+		
+		<tr>
+		<td colspan="2" ><font  color="red">msg_type为image时,msg_body为File Upload api返回的json，格式如下 </td>
+		</tr>
+		<tr>
+		<td>msg_body->media_id</td>
+		<td>String 文件上传之后服务器端所返回的key，用于之后生成下载的url（必填）</td>
+		</tr>
+		<tr>
+		<td>msg_body->media_crc32</td>
+		<td>long 文件的crc32校验码，用于下载大图的校验 （必填）</td>
+		</tr>
+		<tr>
+		<td>msg_body->width</td>
+		<td>int 图片原始宽度（必填）</td>
+		</tr>
+		<tr>
+		<td>msg_body->height</td>
+		<td>int 图片原始高度（必填）</td>
+		</tr>
+		<tr>
+		<td>msg_body->format </td>
+		<td>String 图片格式（必填）</td>
+		</tr>
+		<tr>
+		<td>msg_body->fsize</td>
+		<td>int 文件大小（字节数）（必填）</td>
+		</tr>
+
 	</table>
 </div>
 
@@ -582,6 +614,7 @@ POST /v1/messages
 ##### Example Request
 
 ```
+msg_type:text
 {
 	"version": 1, 
 	"target_type": "single",
@@ -592,6 +625,25 @@ POST /v1/messages
 	"msg_body": {
 	    "extras": {},
 		"text": "Hello, JMessage!"	
+	}
+}
+
+msg_type:image
+{
+	"version": 1, 
+	"target_type": "single",
+	"target_id": "javen",
+	"from_type": "admin",
+	"from_id": "fang", 
+	"msg_type": "text",
+	"msg_body": {
+	"media_id": "qiniu/image/CE0ACD035CBF71F8",
+	"media_crc32":2778919613,
+	"width":3840,
+	"height":2160,
+	"fsize":3328738,
+	"format":"jpg",
+	"extras": {}
 	}
 }
 ```
