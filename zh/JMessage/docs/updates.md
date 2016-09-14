@@ -1,5 +1,33 @@
 # 最近更新
-### JMessage iOS SDK v2.1.7#### 更新时间+ 2016-09-09#### Change Log##### Bug Fix+ 修复：在32位系统下，message的时间戳不正确的问题#### 升级指南+ 使用新版本的JMessage.framework文件替换原工程下的同名旧文件
+### JMessage Android SDK v1.4.1
+#### 更新时间
++ 2016-09-14
+
+#### JMessage SDK Change Log
+
+##### Bug Fix
+
++ 修复某些型号的手机应用启动时会弹出位置权限授权框的问题
+
+#### 升级指南
+
++ jar包更新至jmessage-sdk-1.4.1.jar更新时需删除老版本jar包
++ 将so库更新至 libjpush220.so 同时删除原来老版本so。注意不同的cpu型号对应的结构
++ 由于富媒体的展示需求，SDK 中增加一个res文件夹存放资源文件。用户需将对应文件夹下的资源文件放入工程的目录中
++ 如果是从更早起的版本升级过来，建议参考 SDK下载包最新版本的 demo 来更新 AndroidManifest.xml 文件配置
+
+
+### JMessage iOS SDK v2.1.7
+
+#### 更新时间
++ 2016-09-09
+
+#### Change Log
+##### Bug Fix
++ 修复：在32位系统下，message的时间戳不正确的问题
+
+#### 升级指南
++ 使用新版本的JMessage.framework文件替换原工程下的同名旧文件
 
 
 ### JMessage Android SDK v1.4.0
