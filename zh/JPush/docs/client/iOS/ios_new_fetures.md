@@ -21,7 +21,7 @@ Service Extension使用起来很容易上手，首先我们需要创建一个Ser
 然后这里需要注意几个点
 
 + Service Extension的Bundle Identifier不能和Main Target（也就是你自己的App Target）的Bundle Identifier相同，否则会报BundeID重复的错误。
-+ Service Extension的Bundle Identifier需要在Main Target的命名空间下，比如说Main Target的BundleID为com.jpush.xxx，那么Service Extension的BundleID应该类似与io.jpush.xxx.yyy这样的格式。如果不这么做，你可能会遇到一个错误。
++ Service Extension的Bundle Identifier需要在Main Target的命名空间下，比如说Main Target的BundleID为io.jpush.xxx，那么Service Extension的BundleID应该类似与io.jpush.xxx.yyy这样的格式。如果不这么做，你可能会遇到一个错误。
 
 那么现在你的Service Extension服务已经创建成功了，此时你已经成功的使用了Service Extension，但是好像我们还没有对它做什么操作，看看你的项目，你得到了一个类，这个类中包含两个方法。
 
