@@ -321,7 +321,7 @@ iOS 设备收到一条推送（APNs），用户点击推送通知打开应用时
 * 如果 App 状态为未运行，此函数将被调用，如果launchOptions包含UIApplicationLaunchOptionsRemoteNotificationKey表示用户点击apn 通知导致app被启动运行；如果不含有对应键值则表示 App 不是因点击apn而被启动，可能为直接点击icon被启动或其他。
 
 ```
-- (BOOL)application:(UIApplication \*)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions; 
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions; 
 // apn 内容获取：
 NSDictionary *remoteNotification = [launchOptions objectForKey: UIApplicationLaunchOptionsRemoteNotificationKey]
 ```
@@ -372,7 +372,7 @@ NSDictionary *remoteNotification = [launchOptions objectForKey: UIApplicationLau
 }
 
 //iOS 7 Remote Notification
-- (void)application:(UIApplication *)application didReceiveRemoteNotification:  (NSDictionary *)userInfo fetchCompletionHandler:(void (^)   (UIBackgroundFetchResult))completionHandler {
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:  (NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
      
   NSLog(@"this is iOS7 Remote Notification");
          
@@ -384,7 +384,7 @@ NSDictionary *remoteNotification = [launchOptions objectForKey: UIApplicationLau
 #pragma mark- JPUSHRegisterDelegate // 2.1.9版新增JPUSHRegisterDelegate,需实现以下两个方法
 
 // iOS 10 Support
-- (void)jpushNotificationCenter:(UNUserNotificationCenter *)center  willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)  (NSInteger))completionHandler {
+- (void)jpushNotificationCenter:(UNUserNotificationCenter *)center  willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(NSInteger))completionHandler {
   // Required
   NSDictionary * userInfo = notification.request.content.userInfo;
   if([notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
@@ -605,7 +605,7 @@ iOS 设备收到一条本地通知，用户点击通知打开应用时，应用�
 #pragma mark- JPUSHRegisterDelegate (2.1.9版新增JPUSHRegisterDelegate,需实现以下两个方法)
 
 	// iOS 10 Support Required
-	- (void)jpushNotificationCenter:(UNUserNotificationCenter *)center 	willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)	(NSInteger))completionHandler {
+	- (void)jpushNotificationCenter:(UNUserNotificationCenter *)center 	willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(NSInteger))completionHandler {
   		NSDictionary * userInfo = notification.request.content.userInfo;
   		if([notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) { // 可以此判断是本地通知还是远程通知
     		[JPUSHService handleRemoteNotification:userInfo];
