@@ -65,7 +65,7 @@ JPush API v3 支持同时一次调用同时推送 APNs 通知与 JPush 应用内
     </tr>
     <tr >
       <td>展示效果</td>
-      <td>如果应用后台或退出，会有系统的APNS提醒。<p>如果应用处于打开状态，则不展示。</td>
+      <td>如果应用后台或退出，会有系统的APNS提醒。<p>如果应用处于打开状态，则不展示。<br>Xcode8以上可自定义显示界面。</td>
       <td>非APNS，默认不展示。可通过获取接口自行编码处理。</td>
     </tr>
     <tr >
@@ -92,12 +92,17 @@ JPush API v3 支持同时一次调用同时推送 APNs 通知与 JPush 应用内
 
 ### iOS 版本支持
 
-+ 支持的iOS版本为5.0及以上版本.
++ 支持的iOS版本为6.0及以上版本.
++ 支持iOS版本为10.0以上的版本时需知.
+    + Notification Service Extension证书配置时需要注意BundleID不能与Main Target一致，证书需要单独额外配置
+    + 请将Notification Service Extension中的Deployment Target设置为10.0
+    + 在XCode7或者更低的版本中删除Notification Service Extension所对应的Target
+    + 在XCode7或者更低的版本中请将引入的'UserNotifications.framework'删除
 
 ### 组成
 
-+ 头文件 APService.h
-+ 静态库文件 libPushSDK.a
++ 头文件 JPUSHService.h
++ 静态库文件 jpush-ios-x.x.x.a
 
 ### 注意事项
 + [请参考iOS常见问题](../../guideline/faq/#ios)
