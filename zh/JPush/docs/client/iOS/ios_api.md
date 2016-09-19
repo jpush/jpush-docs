@@ -599,34 +599,18 @@ iOS 设备收到一条本地通知，用户点击通知打开应用时，应用�
 - (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification;
 // 本地通知为notification
 ```
-+ 在iOS 10以上上述方法将被系统废弃，由新增UserNotifications Framework中的-[UNUserNotificationCenterDelegate willPresentNotification:withCompletionHandler:] 或者 -[UNUserNotificationCenterDelegate didReceiveNotificationResponse:withCompletionHandler:]方法替代。为此，SDK封装了JPUSHRegisterDelegate协议，只需实现相应的协议方法即可兼容系统新的delegate方法，实现新的回调方式。与上述远程推送新回调方法一致，如下实现代码：
++ 在iOS 10以上上述方法将被系统废弃，由新增UserNotifications Framework中的-[UNUserNotificationCenterDelegate willPresentNotification:withCompletionHandler:] 或者 -[UNUserNotificationCenterDelegate didReceiveNotificationResponse:withCompletionHandler:]方法替代。为此，SDK封装了JPUSHRegisterDelegate协议，只需实现相应的协议方法即可适配iOS10新增的delegate方法，与上述远程推送新回调方法一致，也即是如下方法：
 
 ```
-#pragma mark- JPUSHRegisterDelegate (2.1.9版新增JPUSHRegisterDelegate,需实现以下两个方法)
+- (void)jpushNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^) (NSInteger))completionHandler; 
+   // if (![notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) { 
+   // 本地通知为notification 
+   // }
 
-	// iOS 10 Support Required
-	- (void)jpushNotificationCenter:(UNUserNotificationCenter *)center 	willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(NSInteger))completionHandler {
-  		NSDictionary * userInfo = notification.request.content.userInfo;
-  		if([notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) { // 可以此判断是本地通知还是远程通知
-    		[JPUSHService handleRemoteNotification:userInfo];
-  		}
-  		else {
-  			// 本地通知
-  		}
-  		completionHandler(UNNotificationPresentationOptionBadge|UNNotificationPresentationOptionSound|UNNotificationPresentationOptionAlert); //括号内为可选项，分别代表角标、声音、显示提醒
-	}
-
-	// iOS 10 Support Required
-	- (void)jpushNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:	(void (^)())completionHandler {
-  		NSDictionary * userInfo = response.notification.request.content.userInfo;
-  		if([response.notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) { // 可以此判断是本地通知还是远程通知
-    		[JPUSHService handleRemoteNotification:userInfo];
-  		}
-  		else {
-  			// 本地通知
-  		}
-  		completionHandler();
-	}
+- (void)jpushNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler: (void (^)())completionHandler; 
+  // if (![response.notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) { 
+  // 本地通知为response.notification 
+  // }
 	
 ```
 
@@ -717,12 +701,15 @@ API 用于移除待推送或已在通知中心显示的推送（支持iOS10，�
 + iOS10以上identifier设置为nil，则移除所有在通知中心显示推送和待推送请求，也可以通过设置identifier.delivered和identifier.identifiers来移除相应在通知中心显示推送或待推送请求，identifier.identifiers如果设置为nil或空数组则移除相应标志下所有在通知中心显示推送或待推送请求；iOS10以下identifier设置为nil，则移除所有推送，identifier.delivered属性无效，另外可以通过identifier.notificationObj传入特定推送对象来移除此推送。
 
 #### 代码示例
+
+```
 - (void)testRemoveNotification {
   JPushNotificationIdentifier *identifier = [[JPushNotificationIdentifier alloc] init];
   identifier.identifiers = @[@"sampleRequest"];
   identifier.delivered = YES;  //iOS10以上有效，等于YES则在通知中心显示的里面移除，等于NO则为在待推送的里面移除；iOS10以下无效
   [JPUSHService removeNotification:identifier];
 }
+
 
 - (void)testRemoveAllNotification {
   [JPUSHService removeNotification:nil];  // iOS10以下移除所有推送；iOS10以上移除所有在通知中心显示推送和待推送请求
@@ -733,6 +720,7 @@ API 用于移除待推送或已在通知中心显示的推送（支持iOS10，�
 //  identifier.delivered = YES;  //等于YES则移除所有在通知中心显示的，等于NO则为移除所有待推送的
 //  [JPUSHService removeNotification:identifier];
 }
+```
 
 ### Method  FindNotification
 
@@ -1127,12 +1115,9 @@ CLLocation对象需要开发者自己调用苹果的地理位置信息API获取�
 Build Phases中Link Binary With Libraries添加CoreLocation.framework
 应用的plist增加NSLocationAlwaysUsageDescription或NSLocationWhenInUseUsageDescription字段，内容为是否允许alert的内容
  
-.h
 #import <CoreLocation/CoreLocation.h>
 @interface xxx : UIViewController<CLLocationManagerDelegate>
 @property(nonatomic, strong) CLLocationManager *currentLoaction;
- 
-.m
  
 - (void)viewDidLoad {
   //注册LocationManager
