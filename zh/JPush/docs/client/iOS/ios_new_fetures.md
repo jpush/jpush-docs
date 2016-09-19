@@ -17,6 +17,7 @@ iOS 10新增了Service Extension
 ### 使用方法
 Service Extension使用起来很容易上手，首先我们需要创建一个Service Extension服务,如下图  
 ![jpush_ios](../image/create_service_extension.png)  
+
 然后这里需要注意几个点
 
 + Service Extension的Bundle Identifier不能和Main Target（也就是你自己的App Target）的Bundle Identifier相同，否则会报BundeID重复的错误。
@@ -24,7 +25,7 @@ Service Extension使用起来很容易上手，首先我们需要创建一个Ser
 
 那么现在你的Service Extension服务已经创建成功了，此时你已经成功的使用了Service Extension，但是好像我们还没有对它做什么操作，看看你的项目，你得到了一个类，这个类中包含两个方法。
 
-+ didReceiveNotificationRequest:(UNNotificationRequest *)request withContentHandler:(void (\^)(UNNotificationContent *contentToDeliver))contentHandler
++ didReceiveNotificationRequest:(UNNotificationRequest \*)request withContentHandler:(void (^)(UNNotificationContent *contentToDeliver))contentHandler
 + serviceExtensionTimeWillExpire
 
 我们来看一下第一个方法的官方解释：Call contentHandler with the modified notification content to deliver. If the handler is not called before the service's time expires then the unmodified notification will be delivered。
