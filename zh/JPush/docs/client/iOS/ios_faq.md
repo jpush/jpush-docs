@@ -71,17 +71,11 @@ SDK未提供https地址版本时
 可通过调用代码 
 
 ```
-<<<<<<< HEAD
 // iOS 8 以上可用此方法
 [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]] 
 ```
 
 进入您的应用的设置页面，点击“通知设置”，用户手可以动变更“允许通知”的状态。
-=======
-[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"prefs:root=NOTIFICATIONS_ID&&path=当前应用的bundleid"]] 
-```
-进入您的应用的通知设置页面，引导用户手动变更“允许通知”的状态。
->>>>>>> origin/renew
 
 
 ## App badge number（角标）如何更改与清空？
