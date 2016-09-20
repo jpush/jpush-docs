@@ -46,7 +46,30 @@ SDK 侧可以发起注册用户，也可由服务器端批量发起注册。
 + jmessage android sdk 从1.4.0版本开始提供接口实现对用户好友关系的托管，以及相关好友请求的发送和接收。
 除此之外的任何建立在好友关系之上的功能（如仅限于好友之间才能进行的聊天等），需要开发者的应用层自己实现。
 
+### 字符串规范
+此处定义JMessage产品里字段属性与规范，用于校验与规范化。  
 
+**app_key**  
+由 JPush Web Portal 生成的 24位字符串。字母或者数字。不区分大小写。
+
+**username**  
+长度：4 - 128byte  
+支持字符：
++ 开头：字母或者数字。
++ 字母、数字、下划线、英文点、减号、 @。
+
+**password**  
+长度：4 - 128byte  
+支持字符：不限。
+
+**group_name / nickname / note_name**  
+长度：0 - 64byte  
+不支持的字符：“\n” “\r”
+
+**other**  
+长度 ： 0 - 250byte  
+以及其他未明确指定的 String 类型字段，都按照这个处理。  
+支持字符：全部
 
 ### API 列表
 
@@ -1218,8 +1241,7 @@ public static void getNoDisturblist(GetNoDisurbListCallback callback)
 
 
 #### 全局免打扰设置
-设置全局免打扰之后，收到所有消息都将不会有通知栏通知，效果类似
-`setNotificationMode(JMessageClient.NOTI_MODE_NO_NOTIFICATION)`，但是此设置在用户换设备之后也会生效。
+设置全局免打扰之后，收到所有消息都将不会有通知栏通知，效果类似  `setNotificationMode(JMessageClient.NOTI_MODE_NO_NOTIFICATION)`，但是此设置在用户换设备之后也会生效。
 
 ```
 public static void setNoDisturbGlobal(int noDisturbGlobal, BasicCallback callback)
