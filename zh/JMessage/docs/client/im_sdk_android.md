@@ -1214,11 +1214,12 @@ public static void getNoDisturblist(GetNoDisurbListCallback callback)
 + GetNoDisurbListCallback callback 回调接口。
 	
 #### 免打扰设置
-见api doc中[UserInfo](./im_android_api_docs/cn/jpush/im/android/api/model/UserInfo.html)和[UserInfo](./im_android_api_docs/cn/jpush/im/android/api/model/GroupInfo.html)相关接口
+见api doc中[UserInfo](./im_android_api_docs/cn/jpush/im/android/api/model/UserInfo.html)和[GroupInfo](./im_android_api_docs/cn/jpush/im/android/api/model/GroupInfo.html)相关接口
 
 
 #### 全局免打扰设置
-设置全局免打扰之后，收到所有消息都将不会有通知栏通知，效果类似`setNotificationMode(JMessageClient.NOTI_MODE_NO_NOTIFICATION)`，但是此设置在用户换设备之后也会生效。
+设置全局免打扰之后，收到所有消息都将不会有通知栏通知，效果类似
+`setNotificationMode(JMessageClient.NOTI_MODE_NO_NOTIFICATION)`，但是此设置在用户换设备之后也会生效。
 
 ```
 public static void setNoDisturbGlobal(int noDisturbGlobal, BasicCallback callback)
@@ -1639,8 +1640,8 @@ public abstract class BasicCallback {
 
 
 ### 相关文档
-+ [JPush Android SDK 集成指南](../../../JPush/docs/client/Android/android_guide/)
-+ [JPush Android SDK 概述](../../../JPush/docs/client/Android/android_sdk/)
++ [JPush Android SDK 集成指南](../../../jpush/client/Android/android_guide/)
++ [JPush Android SDK 概述](../../../jpush/client/Android/android_sdk/)
 + [极光IM指南](../guideline/jmessage_guide/)
 + [IM 消息协议](../advanced/im_message_protocol/)
 + [IM 业务对象](../advanced/im_objects/)
