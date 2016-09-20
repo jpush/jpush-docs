@@ -1,0 +1,70 @@
+site_name: 极光文档
+site_author: JPush Offical
+site_url: http://docs.jpush.io
+site_favicon: favicon.ico
+site_description: JPush, JMessage, 极光推送, 极光IM, Android Push, Android 推送, 安卓推送, iOS Push, APNs, Push Notification
+copyright: Copyright 2011-2016, jiguang.cn, All Rights Reserved. <br />粤ICP备12056275号-13 深圳市和讯华谷信息技术有限公司
+theme_dir: '../themes/readthedocs'
+
+pages:
+
+- 入门指南:
+  - 'JPush产品简介': 'guideline/intro.md'
+  - '控制台使用指南': 'console/Instructions.md'
+  - 'JPush短信补充': 'guideline/push-SMS-intro.md'
+  - 'Rich Push 开发指南': 'advanced/rich_push.md'
+  - '常见问题': 'guideline/faq.md'
+
+- Android:
+  - 'Android SDK 概述': 'client/Android/android_sdk.md'
+  - '3 分钟 Demo': 'client/Android/android_3m.md'
+  - 'Android SDK 集成指南': 'client/Android/android_guide.md'
+  - 'Android SDK 调试指南': 'client/Android/android_debug_guide.md'
+  - 'Android SDK 进阶教程': 'client/Android/android_senior.md'
+  - 'Android SDK API': 'client/Android/android_api.md'
+  - 'Android SDK FAQ': 'client/Android/android_faq.md'
+
+- iOS:
+  - 'iOS SDK 概述': 'client/iOS/ios_sdk.md'
+  - 'iOS SDK 集成指南': 'client/iOS/ios_guide_new.md'
+  - 'iOS SDK 调试指南': 'client/iOS/ios_debug_guide.md'
+  - 'iOS 证书设置指南': 'client/iOS/ios_cer_guide.md'
+  - 'iOS 新特性汇总': 'client/iOS/ios_new_fetures.md'
+  - 'iOS SDK API': 'client/iOS/ios_api.md'
+  - 'iOS SDK FAQ': 'client/iOS/ios_faq.md'
+
+- WindowsPhone:
+  - 'Windows Phone SDK 概述': 'client/Windows Phone/winphone_sdk.md'
+  - 'Windows Phone 3分钟 Demo': 'client/Windows Phone/winphone_3m.md'
+  - 'Windows Phone SDK 集成指南': 'client/Windows Phone/winphone_guide.md'
+  - 'Windows Phone API': 'client/Windows Phone/winphone_api.md'
+
+- REST API:
+  - 'REST API 概述': 'server/push/server_overview.md'
+  - 'Push API v3': 'server/push/rest_api_v3_push.md'
+  - 'Report API v3': 'server/push/rest_api_v3_report.md'
+  - 'Device API v3': 'server/push/rest_api_v3_device.md'
+  - 'Schedule API v3': 'server/push/rest_api_push_schedule.md'
+  - 'HTTP 状态码': 'server/push/http_status_code.md'
+
+
+
+- 高级:
+  - 'JPush应用场景': 'advanced/scenes.md'
+  - 'JPush高级话题': 'advanced/topics.md'
+
+- 客户端集成插件: 'client/client_plugins.md'
+
+- 服务端SDK:
+  - 'Java SDK': 'server/3rd/java_sdk.md'
+  - 'Python SDK': 'server/3rd/python_sdk.md'
+  - 'PHP SDK': 'server/3rd/php_sdk.md'
+  - 'Ruby SDK': 'server/3rd/ruby_sdk.md'
+  - 'C# SDK': 'server/3rd/csharp_sdk.md'
+  - 'Node.js SDK': 'server/3rd/nodejs_sdk.md'
+- 旧文档:
+  - 'REST API v2 - Push': 'server/old/rest_api_v2_push.md'
+  - 'REST API v2 - Report': 'server/old/rest_api_v2_report.md'
+- 最近更新: 'updates.md'
+- 资源下载: 'resources.md'
+

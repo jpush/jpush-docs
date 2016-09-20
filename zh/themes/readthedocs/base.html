@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<!--[if IE 8]>
+  <html class="no-js lt-ie9" lang="en">
+  <![endif]-->
+<!--[if gt IE 8]>
+    <!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">{% if page_description %}
+    <meta name="description" content="{{ page_description }}">{% endif %} {% if site_author %}
+    <meta name="author" content="{{ site_author }}">{% endif %} {% block htmltitle %}
+    <title>{% if page_title %}{{ page_title }} - {% endif %}{{ site_name }}</title>{% endblock %} {% if favicon %}
+    <link rel="shortcut icon" href="{{ favicon }}">{% else %}
+    <link rel="shortcut icon" href="{{ base_url }}/img/favicon.ico">{% endif %}
+    <script src="{{ base_url }}/js/jquery-2.1.4.js"></script>
+
+    <link rel="stylesheet" href="{{ base_url }}/css/theme.css" type="text/css" />
+    <script src="{{ base_url }}/js/bootstrap/js/bootstrap.js"></script>
+
+    <link href="{{ base_url }}/js/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="{{ base_url }}/css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ base_url }}/css/theme_extra.css" type="text/css" />
+    {% if current_page %}
+    <script>
+    // Current page data
+    var mkdocs_page_name = "{{ page_title }}";
+    var mkdocs_page_input_path = "{{ current_page.input_path }}";
+    var mkdocs_page_url = "{{ current_page.abs_url }}";
+    </script>
+    {% endif %}
+    <script src="{{ base_url }}/js/jpush.js"></script>
+    {%- block extrahead %} {% endblock %}
+</head>
+
+<body data-spy="scroll" data-target="#navbar-right">
+    <div class="container-fluid">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3  col-md-3  col-sm-3 ">
+                    <div id="doc-icon">
+                        <a href="/"><img src="/img/icon/logo.png"></a>
+                    </div>
+                </div>
+                <div class="col-lg-7 col-md-8  col-sm-8">
+                    <div class="header">
+                        <ul class="nav nav-tabs">
+                            <li role="presentation" >
+                                <a href="/jpush/guideline/intro/" id="jpush-top">JPush</a></li>
+                            <li role="presentation" >
+                                <a href="/jmessage/guideline/jmessage_guide/" id="jmessage-top">JMessage</a></li>
+                            <li role="presentation" >
+                                <a href="/jsms/guideline/JSMS_guide/" id="jsms-top">短信验证码</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-2  col-md-1 col-sm-1">
+                    <div>
+                        {% include "searchbox.html" %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3  col-md-3 col-sm-4">
+                <div id="navbar-left">
+                    <ul class="wy-menu">
+                        {% for nav_item in nav %}
+                        <li class="subnav">
+                            {% if nav_item.children %}
+                            <ul class="subnavul">
+                                <li class="subnavli">
+                                    <span>
+                                <a href="#">
+                                    {{ nav_item.title }} 
+                                <div class="nav-icon">
+                                    <img src="/img/icon/right.png">
+                                </div>                 
+                                </a>
+                                </span>
+                                </li>
+                                {% for nav_item in nav_item.children %}
+                                {% include 'toc.html' %}
+                                {% endfor %}
+                                {% else %}
+                                <ul class="subnavul">
+                                    <li class="subnavli_single {% if nav_item.active%}current{%endif%}" >
+                                        <span>
+                          <a href="{{ nav_item.url }}" class="{% if nav_item.active%}current{%endif%}">{{ nav_item.title }}</a></span>
+                                    </li>{% endif %}
+                                </ul>
+                                <li>{% endfor %}</ul>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-8  col-md-9  col-sm-8">
+                <div id="content-top"></div>
+                <section >
+                    <div class="rst-content">{% include "breadcrumbs.html" %}
+                        <div role="main">
+                            <div class="section">{% block content %} {{ content }} {% endblock %}</div>
+                        </div>{%- block footer %} {% include "footer.html" %} {% endblock %}</div>
+                </section>
+            </div>
+            <div class="col-lg-1">
+                <div class="visible-lg">
+                    <div id="tocright">
+                        <div id="navbar-right">
+                            <div>
+                            <p>目录</p>
+                            </div>
+                            {% include "tocright.html" %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+
+</html>

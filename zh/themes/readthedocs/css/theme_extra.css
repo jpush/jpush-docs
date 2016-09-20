@@ -1,0 +1,634 @@
+/*
+ * Tweak the overal size to better match RTD.
+ */
+html {
+    font-size: 90%;
+    min-width:1000px;
+}
+
+body {
+    min-width:800px;
+    letter-spacing:0.5px;
+    font-size: 100%;
+    background: #FFFFFF;
+    min-height: 100%;
+    font-family: "Helvetica Neue",Helvetica,"PingFang SC","Microsoft Yahei",Arial,Verdana,sans-serif;
+}
+
+h1,h2,h3, h4, h5, h6 {
+    font-family: "Helvetica Neue",Helvetica,"PingFang SC","Microsoft Yahei",Arial,Verdana,sans-serif;
+    color: #2980b9;
+    font-weight: 300
+}
+
+.container-fluid{
+  top:0;
+  height: 60px;
+  width: 100%;
+  background-color: #f8f8f8;
+  border-bottom-width:2px;
+  border-bottom-style: solid;
+  border-bottom-color:#e5e5e5;
+  margin-bottom: 32px;
+  z-index:99;
+  position: fixed;
+}
+
+.container{
+  max-width:1200px;
+}
+
+.header, .footer {
+    clear: both;
+    margin: 0 20px;
+    padding: 5px 0 0 0;
+}
+
+#doc-icon{
+  float: left;
+
+  margin: 10px 10px 10px 10px;
+}
+
+#doc-icon a img{
+  height: 36px;
+  width: 130px;
+}
+
+#rtd-search-form{
+  width: 160px;
+  height: 30px;
+  border: 1px;
+  border-color: #c9c9c9;
+  margin: 20px;
+}
+
+#rtd-search-form  input{
+  width: 160px;
+  height: 30px;
+}
+
+.nav-tabs li {
+  min-width: 25%;
+  text-align: left;
+  margin:0px;
+}
+
+.header .nav-tabs li a{
+  font-size: 1.2em;
+  color: #3a3a3a;
+  padding:15px;
+  border-style: none;
+  width: auto;
+  display: inline;
+}
+
+.nav-tabs li a:hover{
+  background-color: #f8f8f8;
+  border-bottom-style: solid;
+  border-bottom-width: 3px;
+  border-bottom-color: #1b75bb;
+}
+
+.header ul{
+    padding: 0px;
+    margin-top: 15px;
+    margin-bottom: 0px;
+}
+
+.nav-tabs{
+    border-bottom:0px;
+}
+
+#navbar-left{
+    margin-top: 82px;
+    width: 250px;
+    height: 90%;
+    padding-bottom: 30px;
+    position:fixed;
+}
+
+.wy-menu {
+    overflow-x: hidden;
+    overflow-y: auto;
+    max-height: 90%;
+    width: 250px;
+    background: #f8f8f8;
+    padding-bottom: 30px;
+}
+
+.wy-menu::-webkit-scrollbar{
+    height: 4px;
+    width: 4px;
+}
+
+.wy-menu::-webkit-scrollbar-thumb {
+    background: rgba(0,0,0,.26);
+}
+
+.subnav{
+    min-height: 30px;
+}
+
+.subnav a{
+    list-style-type:none;
+    min-height: 30px;
+    font-size: 14px;
+    color:#666666;
+}
+
+
+.wy-menu li:first-child ul {
+    padding-top: 24px;
+    padding-bottom: 12px;
+}
+
+.wy-menu li:first-child ul li span a{
+    color: #1d75bb;
+    font-size: 16px;
+}
+
+.wy-menu  ul .subnavli_single{
+  width:250px;
+  padding-left: 10px;
+  padding-right: 10px;
+  height: 34px;
+}
+
+.subnavli_single a{
+  padding-left: 16px;
+  display: block;
+  padding-top: 7px;
+  padding-bottom: 7px;
+}
+
+.wy-menu  ul .subnavli a{
+  padding-left: 16px;
+  display: block;
+  padding-top: 7px;
+  padding-bottom: 7px;
+}
+
+.wy-menu ul li{
+  width: 240px;
+}
+
+.subnavul .toctree-l1{
+    display: none;
+    min-height: 34px;
+    width: 100%;
+}
+
+.subnavul .toctree-l1 a{
+  margin-left: 40px;
+  display: block;
+  padding-top: 7px;
+  padding-bottom: 7px;
+}
+
+li .current{
+  background: #1d75bb;
+}
+
+li .current a{
+  color: #FFFFFF;
+}
+
+
+.wy-menu .subnav .subnavul .subnavli{
+  min-height: 30px;
+  width: 250px;
+  padding-left: 10px;
+  padding-right: 20px;
+}
+
+.nav-icon{
+  margin-right: 20px;
+  min-height: 30px;
+  width: 30px;
+  float: right;
+  text-align: center;
+}
+
+.nav-icon  img{
+  max-width: 14px;
+  max-height: 14px;
+}
+
+#breadcrumbs{
+  border-style:none;
+}
+
+#breadcrumbs ul{
+  padding-left:0px;
+}
+
+.wy-breadcrumbs{
+    padding-left:0px;
+}
+
+.wy-breadcrumbs  li:nth-child(3){
+    width:250px;
+}
+
+.rst-content {
+  margin-left: 15px;
+  margin-right: 15px;
+  word-break:break-all;
+}
+
+section{
+  font-size: 14px;
+  font-weight: 300;
+  font-family: "Helvetica Neue",Helvetica,"PingFang SC","Microsoft Yahei",Arial,Verdana,sans-serif;
+}
+
+section p{
+  line-height: 1.8;
+  font-size:15px;
+  margin-bottom:0px;
+}
+
+.section div p{
+  line-height: 1.8;
+  font-size:13px;
+  margin-bottom:0px;
+}
+.section div ul li{
+  line-height: 1.8;
+  font-size:13px;
+  margin-bottom:0px;
+}
+
+.section h1{
+  font-size: 28px;
+  color: #1b75bb;
+  font-weight: bold;
+  margin-top: 6px;
+}
+
+
+.section h2{
+  font-size: 24px;
+  color: #666666;
+  font-weight: bold;
+  padding-bottom: 4px;
+  margin-bottom: 24px;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color:#e5e5e5;
+  padding-top: 80px;
+  margin-top: -40px;
+}
+
+.section h3{
+  font-size: 18px;
+  color: #1b75bb;
+  font-weight: bold;
+  font-size: 18px;
+  padding-top: 80px;
+  margin-top: -40px;
+
+}
+
+.section h4{
+  font-size: 15px;
+  color: #3a3a3a;
+  font-weight: bold;
+  margin-top: 26px;
+}
+
+.section h5{
+  font-size: 15px;
+  color: #1b75bb;
+  margin-top: 26px;
+  margin-bottom:10px;
+}
+
+section ul{
+  padding-left:40px;
+}
+
+section ul li{
+  display: list-item;
+  list-style-type: disc;
+  font-size: 15px;
+  font-weight: 300;
+  min-height: 26px;
+  line-height: 1.8;
+}
+
+section ul li ul{
+  padding-left:40px;
+}
+
+section ul li ul li{
+  display: list-item;
+  list-style-type: circle;
+  font-size: 15px;
+  font-weight: 300;
+  min-height: 26px;
+  line-height: 1.8;
+}
+
+section  table  {
+    max-width:720px;
+}
+
+td:first-child {
+    word-break: keep-all;
+}
+
+
+section table tr th {
+    line-height: 1.8;
+    word-break:keep-all;
+    min-width:60px;
+    background-color: #f3f4f6;
+    border: 1px solid #dddddd;
+    height: 46px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-family: "Helvetica Neue",Helvetica,"PingFang SC","Microsoft Yahei",Arial,Verdana,sans-serif;
+}
+
+
+section  table tr td {
+    line-height: 1.8;
+    min-width:60px;
+    height: 40px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border: 1px solid #dddddd;
+    font-family: "Helvetica Neue",Helvetica,"PingFang SC","Microsoft Yahei",Arial,Verdana,sans-serif;
+}
+
+#tocright{
+  position:fixed;
+  margin-top: 82px;
+  width: 160px;
+  height: 80%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding-left: 10px;
+  
+}
+
+
+#tocright a{
+  font-size: 13px;
+  color: #666666;
+  margin: 2px;
+}
+
+#navbar-right{
+  border-left-width:2px;
+  border-left-style:solid;
+  border-left-color:#1d75bb;
+}
+
+#tocright::-webkit-scrollbar{
+    height: 4px;
+    width: 4px;
+}
+
+#tocright::-webkit-scrollbar-thumb {
+    background: rgba(0,0,0,.26);
+}
+
+#tocright p{
+  padding: 5px;
+  font-size:15px;
+}
+
+.nav li a{
+  padding: 5px 5px;
+}
+
+#navbar-right  .nav .active a{
+  font-size: 14px;
+  color: #1d75bb;
+}
+
+#tocright a:hover{
+  color: #1d75bb;
+  font-weight: bold;
+}
+
+code {
+    white-space: pre;
+}
+
+pre>code:before, .method-declaration code:before{
+  content: "";
+}
+
+pre{
+  background-color: #fafafa;
+  margin-top:10px;
+}
+
+pre code{
+  color: #111111;
+}
+pre>code{
+  border-left: 0px;
+}
+
+
+p code {
+    word-wrap: break-word;
+}
+
+/*
+ * The CSS classes from highlight.js seem to clash with the
+ * ReadTheDocs theme causing some code to be incorrectly made
+ * bold and italic.
+ *
+ * https://github.com/mkdocs/mkdocs/issues/411
+ */
+code.cs, code.c {
+    font-weight: inherit;
+    font-style: inherit;
+}
+
+/*
+ * Fix some issues with the theme and non-highlighted code
+ * samples. Without and highlighting styles attached the
+ * formatting is broken.
+ *
+ * https://github.com/mkdocs/mkdocs/issues/319
+ */
+.no-highlight {
+  display: block;
+  padding: 0.5em;
+  color: #333;
+}
+
+
+/*
+ * Additions specific to the search functionality provided by MkDocs
+ */
+
+#mkdocs-search-results article h3
+{
+    margin-top: 23px;
+    border-top: 1px solid #E1E4E5;
+    padding-top: 24px;
+}
+
+#mkdocs-search-results article:first-child h3 {
+    border-top: none;
+}
+
+#mkdocs-search-query{
+    width: 100%;
+    border-radius: 50px;
+    padding: 6px 12px;
+    border-color: #D1D4D5;
+}
+
+.wy-menu li ul {
+    display: inherit;
+}
+
+
+ div.admonition code {
+  color: #404040;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.subnavul li{
+  list-style-type: none;
+}
+
+.subnavul{
+  list-style-type: none;
+}
+
+.toctree-l1 {
+    display: none;
+}
+
+
+.download{
+  margin-top: 20px;
+  width: 720px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #e5e5e5;
+}
+
+.download ul li{
+  list-style-type: none;
+}
+
+.download ul li .hr{
+  clear:both;
+  width:680px;
+  text-align:center;
+  margin-left:20px;
+}
+
+.download ul{
+  padding-left:0px;
+}
+
+.download-left{
+  float: left;
+}
+
+.download-right{
+  width: 500px;
+  float: left;
+  clear:right;
+  margin-bottom:40px;
+}
+
+.download-left .download-image{
+  margin-left: 24px;
+  margin-right: 24px;
+  margin-top: 24px;
+  max-width: 103px;
+  max-height: 80px;
+}
+.download-title p{
+  font-size: 16px;
+  color: #1b75bb;
+  margin-top: 16px;
+}
+
+.download-info p{
+  font-size: 14px;
+  color: #666666;
+  margin-top: 6px;
+}
+
+
+.download-right .download-info-ul {
+  padding-top:0px;
+  padding-left: 0px;
+  color: #666666;
+  margin-left: 20px;
+  margin-bottom: 0px;
+  width: 540px;
+  clear: both;
+}
+
+.download .download-info-ul li{
+  list-style-type: disc;
+  color: #666666;
+  font-size: 12px;
+  margin-right: 5px;
+  float: left;
+  min-width: 160px;
+  margin-left: 15px;
+}
+
+.download .download-info-ul li a{
+  color: #666666;
+
+}
+
+.download-right .download-icon{
+  width: 98px;
+  height: 30px;
+  border-style: solid;
+  border-color: #b5b5b5;
+  border-width: 1px;
+  text-align: center;
+  cursor:pointer;
+}
+
+.download-icon a{
+  font-size: 14px;
+  color: #666666;
+
+
+}
+
+.developer{
+  width:100%;
+  height:67px;
+  margin:20px;
+  clear:both;
+}
+
+.developer-right{
+  width:90%;
+  float:left;
+}
+
+.download  .developer-info-ul{
+  list-style-type: disc;
+  margin-left:20px;
+}
+
+.download  .developer-info-ul li{
+  float:left;
+  list-style-type: disc;
+  min-width: 160px;
+}
+
+
