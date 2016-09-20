@@ -368,7 +368,7 @@ Example Response
 #### 添加黑名单
 
 ```
-Put /users/{username}/blacklist
+Put /v1/users/{username}/blacklist
 ```
 
 Example Request
@@ -376,7 +376,7 @@ Example Request
 Request Header 
 
 ```
-Put /users/{username}/blacklist
+Put /v1/users/{username}/blacklist
 Content-Type: application/json; charset=utf-8  
 ```
 
@@ -411,7 +411,7 @@ N/A
 #### 移除黑名单
 
 ```
-Delete /users/{username}/blacklist
+Delete /v1/users/{username}/blacklist
 ```
 
 Example Request
@@ -419,7 +419,7 @@ Example Request
 Request Header 
 
 ```
-Delete /users/{username}/blacklist
+Delete /v1/users/{username}/blacklist
 Content-Type: application/json; charset=utf-8  
 ```
 
@@ -453,7 +453,7 @@ N/A
 #### 黑名单列表
 
 ```
-Get /users/{username}/blacklist
+Get /v1/users/{username}/blacklist
 ```
 
 Example Request
@@ -461,7 +461,7 @@ Example Request
 Request Header 
 
 ```
-Put /users/{username}/blacklist
+Put /v1/users/{username}/blacklist
 Content-Type: application/json; charset=utf-8 
 ```
 
@@ -543,7 +543,7 @@ POST /v1/messages
 		</tr>
 		<tr >
 			<td>msg_type</td>
-			<td>发消息类型 当前只限text</td>
+			<td>发消息类型 text - 文本，image - 图片, custom - 自定义消息（msg_body为json对象即可，服务端不做校验）</td>
 		</tr>
 		<tr >
 			<td>target_id</td>
@@ -563,16 +563,48 @@ POST /v1/messages
 		</tr>
 		<tr >
 			<td>msg_body</td>
-			<td>消息体</td>
-		</tr>
-		<tr >
-			<td>msg_body -> text</td>
-			<td>消息内容</td>
+			<td>Json对象的消息体</td>
 		</tr>
 		<tr >
 			<td>msg_body-> extras</td>
 			<td>选填的json对象 开发者可以自定义extras里面的key value	</td>
 		</tr>
+		<tr>
+		<td colspan="2" ><font  color="red">msg_type为text时，msg_body的格式如下 </font></td>
+		</tr>
+		<tr >
+			<td>msg_body -> text</td>
+			<td>消息内容</td>
+		</tr>
+		
+		<tr>
+		<td colspan="2" ><font  color="red">msg_type为image时,msg_body为File Upload api返回的json，格式如下 </td>
+		</tr>
+		<tr>
+		<td>msg_body->media_id</td>
+		<td>String 文件上传之后服务器端所返回的key，用于之后生成下载的url（必填）</td>
+		</tr>
+		<tr>
+		<td>msg_body->media_crc32</td>
+		<td>long 文件的crc32校验码，用于下载大图的校验 （必填）</td>
+		</tr>
+		<tr>
+		<td>msg_body->width</td>
+		<td>int 图片原始宽度（必填）</td>
+		</tr>
+		<tr>
+		<td>msg_body->height</td>
+		<td>int 图片原始高度（必填）</td>
+		</tr>
+		<tr>
+		<td>msg_body->format </td>
+		<td>String 图片格式（必填）</td>
+		</tr>
+		<tr>
+		<td>msg_body->fsize</td>
+		<td>int 文件大小（字节数）（必填）</td>
+		</tr>
+
 	</table>
 </div>
 
@@ -582,6 +614,7 @@ POST /v1/messages
 ##### Example Request
 
 ```
+msg_type:text
 {
 	"version": 1, 
 	"target_type": "single",
@@ -592,6 +625,25 @@ POST /v1/messages
 	"msg_body": {
 	    "extras": {},
 		"text": "Hello, JMessage!"	
+	}
+}
+
+msg_type:image
+{
+	"version": 1, 
+	"target_type": "single",
+	"target_id": "javen",
+	"from_type": "admin",
+	"from_id": "fang", 
+	"msg_type": "text",
+	"msg_body": {
+	"media_id": "qiniu/image/CE0ACD035CBF71F8",
+	"media_crc32":2778919613,
+	"width":3840,
+	"height":2160,
+	"fsize":3328738,
+	"format":"jpg",
+	"extras": {}
 	}
 }
 ```
@@ -960,6 +1012,206 @@ Example Response
  [ { "gid": 12345, "name" : "jpush", "desc" : "push", "appkey" : "dcf71ef5082057832bd44fbd", "MaxMemberCount" : 500, "mtime" : "2014-07-01 00:00:00", "ctime" : "2014-06-05 00:00:00"}] } 
 
 ```
+
+
+
+### 跨应用API
+
+####跨应用管理群组成员
+	POST  /v1/cross/groups/{gid}/members
+Request Params
+
++ add  json数组 表示要添加到群组的用户(可选)
++ remove  json数组 表示要从群组删除的用户（可选）
++ appkey 管理用户所属的appkey 必填
+
+add remove两者至少要有一个
+
+Example Request 
+
+```
+[{ 
+ "appkey":" 4f7aef34fb361292c566a1cd",
+ "add": [
+ "test1",
+ "test2"
+ ],
+ "remove": [
+ "name3",
+ "name4"
+ ]
+}]
+```
+Example Response
+
+```
+< HTTP/1.1 204 NO Content
+< Content-Type: application/json; charset=utf-8 
+```
+
+Response Data
+N/A
+
+备注：当群组没有成员的时候 群会被删除 
+Error Code
+
++ 899003  Request Body json格式不符合要求，json参数不符合要求；
++ 899002  用户不存在；
++ 899012  没有足够的位置添加群成员；
++ 899014  用户不存在于群组；
++ 899011  用户已经存在于群组；
+
+####  跨应用获取群组成员列表
+
+    GET /v1/cross/groups/{Group id}/members/
+
+Request Params
+
++ Group id 群组ID。
+
+Example Response
+
++ JsonObject UID数组
+
+```
+< HTTP/1.1 200 OK
+< Content-Type: application/json; charset=utf-8
+
+[ 
+	{"username" : "javen", "nickname" : "hello", "avatar" = "/avatar", "birthday" : "1990-01-24 00:00:00", "gender" : 0, "signature" : "orz", "region" : "shenzhen", "address" : "shenzhen", "flag":0, "appkey":"appkey"} 
+]
+```
+
++ flag
+	+ 0 - 普通群成员
+	+ 1 - 群主
+
+#### 跨应用添加黑名单
+
+```
+Put /v1/cross/users/{username}/blacklist
+```
+
+Example Request
+
+Request Header 
+
+```
+Put /v1/cross/users/{username}/blacklist
+Content-Type: application/json; charset=utf-8  
+```
+
+Request Params 
+
++ username 添加的用户的数组
++ appkey   用户所属的appkey
+
+Request Body
+
+```
+ [{
+ "appkey":"appkey",
+ "usernames":[ "test1", "test2"]
+ 
+ } ] 
+```
+
+Example Response 
+
+Response Header 
+
+```
+HTTP/1.1 204 NO Content
+Content-Type: application/json; charset=utf-8 
+```
+
+Response Data
+
+N/A
+
+#### 跨应用移除黑名单
+
+```
+Delete /v1/cross/users/{username}/blacklist
+```
+
+Example Request
+
+Request Header 
+
+```
+Delete /v1/cross/users/{username}/blacklist
+Content-Type: application/json; charset=utf-8  
+```
+
+Request Params 
+
++ username 移除的用户的数组
++ appkey   用户所属的appkey
+
+Request Body
+
+```
+ [{
+ "appkey":"appkey",
+ "usernames":[ "test1", "test2"]
+ 
+ } ] 
+```
+
+Example Response
+
+Response Header
+
+```
+HTTP/1.1 204 NO Content
+Content-Type: application/json; charset=utf-8   
+```
+
+Response Data
+
+N/A
+
+
+
+#### 跨应用黑名单列表
+
+```
+Get /v1/cross/users/{username}/blacklist
+```
+
+Example Request
+
+Request Header 
+
+```
+Put /v1/cross/users/{username}/blacklist
+Content-Type: application/json; charset=utf-8 
+```
+
+Request Params
+
++ username 用户名
+
+Request Body
+
+N/A
+
+Example Response
+
+Response Header 
+
+```
+HTTP/1.1 200 
+Content-Type: application/json; charset=utf-8   
+```
+
+Response Data
+
+```
+[{"username" : "javen", "nickname" : "hello", "avatar" = "/avatar", "birthday" : "1990-01-24 00:00:00", "gender" : 0, "signature" : "orz", "region" : "shenzhen", "address" : "shenzhen", "mtime" : "2015-01-01 00:00:00", "ctime" : "2015-01-01 00:00:00", "appkey":"appkey"}]
+```
+
 
 
 ### HTTP 返回

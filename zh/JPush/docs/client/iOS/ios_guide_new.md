@@ -92,8 +92,8 @@ img[alt=jpush_ios] { width: 800px; }
 ### 初始化代码
 
 请将以下代码添加到  
--(BOOL)application:(UIApplication *)application
-didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+-(BOOL)application:(UIApplication \*)application
+didFinishLaunchingWithOptions:(NSDictionary \*)launchOptions
 
 ```   	
 
