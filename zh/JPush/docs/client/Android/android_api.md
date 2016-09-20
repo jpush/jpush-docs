@@ -1021,10 +1021,6 @@ SDK通过Thread.UncaughtExceptionHandler  捕获程序崩溃日志，并在程�
 + Context 应用的 Applicationcontext
 
 
-<<<<<<< HEAD:zh/docs/client/android_api.md
-
-=======
->>>>>>> renew:zh/JPush/docs/client/Android/android_api.md
 ## 获取推送连接状态
 ### 支持的版本
 

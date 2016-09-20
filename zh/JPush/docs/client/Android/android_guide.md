@@ -182,29 +182,6 @@ defaultConfig {
             android:name="您应用的包名.permission.JPUSH_MESSAGE"  
             android:protectionLevel="signature" />
    
-<<<<<<< HEAD:zh/docs/guideline/android_guide.md
-        <!-- Required -->
-        <uses-permission android:name="您应用的包名.permission.JPUSH_MESSAGE" />
-        <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
-        <uses-permission android:name="android.permission.INTERNET" />
-        <uses-permission android:name="android.permission.WAKE_LOCK" />
-        <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-        <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-        <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-        <uses-permission android:name="android.permission.VIBRATE" />
-        <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
-        <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-        <uses-permission android:name="android.permission.WRITE_SETTINGS" /> 
-        <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-     
-        <!-- Optional. Required for location feature -->
-        <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-        <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
-        <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-        <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
-        <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
-        <uses-permission android:name="android.permission.GET_TASKS" />
-=======
     <!-- Required -->
     <uses-permission android:name="您应用的包名.permission.JPUSH_MESSAGE" />
     <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
@@ -226,7 +203,6 @@ defaultConfig {
     <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
     <uses-permission android:name="android.permission.GET_TASKS" />
->>>>>>> renew:zh/JPush/docs/client/Android/android_guide.md
          
     <application
         android:icon="@drawable/ic_launcher"

@@ -714,31 +714,19 @@ Response Data
 #### File Upload
 
 ```
-<<<<<<< HEAD:zh/docs/server/rest_api_im.md
-POST /resource
-```
-##### Example Request
-
-curl   -F "filename=@/home/test.jpg" https://api.im.jpush.cn/v1/resource -u "appkey:secret"
-=======
 POST /resource?type=image
 ```
 ##### Example Request
 
 curl   -F "filename=@/home/test.jpg" https://api.im.jpush.cn/v1/resource?type=image -u "appkey:secret"
->>>>>>> renew:zh/JMessage/docs/server/rest_api_im.md
 
 注：文件大小限制8m，暂时只支持图片格式 jpg bmp gif png等
 
 
 | 参数 | 含义               | 备注 |
 |--------|--------------------------|------|
-<<<<<<< HEAD:zh/docs/server/rest_api_im.md
-| mediaId   | 磁盘本地文件路径 |      |
-=======
 | filename   | 磁盘本地文件路径 |      |
 | type       | 文件类型 暂时只能是"image"      |      |
->>>>>>> renew:zh/JMessage/docs/server/rest_api_im.md
 
 
 Response Header  
@@ -751,9 +739,6 @@ Content-Type: application/json; charset=utf-8
 ```
 Response Data
 
-<<<<<<< HEAD:zh/docs/server/rest_api_im.md
-{"mediaId":"mediaId"}
-=======
 {"media_id":"qiniu/image/F39AA12204DAB6A2","media_crc32":1338734977,"width":720,"height":1280,"format":"jpg","fsize":52468}
 
 + media_id String  文件上传之后服务器端所返回的key
@@ -762,7 +747,6 @@ Response Data
 + height  int  图片原始高度
 + format String 图片格式
 + fsize int 文件大小（字节数
->>>>>>> renew:zh/JMessage/docs/server/rest_api_im.md
 
 
 ### Group对象字段总览

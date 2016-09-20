@@ -1,94 +1,5 @@
 # 最近更新
-<<<<<<< HEAD:zh/docs/updates.md
-
-### JMessage iOS SDK v2.1.6
-
-#### 更新时间
-+ 2016-09-01
-
-#### Change Log
-##### Bug Fix
-+ 修复：网络或者后台出现问题导致的下发重复消息问题
-
-#### 升级指南
-+ 使用新版本的JMessage.framework文件替换原工程下的同名旧文件
-
-
-### JMessage JS SDK v1.1.2
-
-#### 更新时间
-+ 2016-08-31
-
-#### Change Log
-+ 添加类型转换，iOS端接收消息问题
-
-#### 升级提示
-+ 建议升级！
-
-
-### JMessage JS SDK v1.1.1
-
-#### 更新时间
-+ 2016-08-30
-
-#### Change Log
-+ 修复发送群组消息问题
-
-#### 升级提示
-+ 建议升级！
-
-### JMessage JS SDK v1.1.0
-
-#### 更新时间
-+ 2016-08-26
-
-#### Change Log
-##### New Feature
-+ 增加免打扰功能
-+ 支持图片，音频消息的接收功能
-
-#### 升级提示
-+ 建议升级！
-
-### JPush Android SDK v2.1.9
-
-#### 更新时间
-
-+ 2016-08-26
-
-#### Change Log
-
-+ 提升接入服务的稳定性。
-
-#### 升级提示
-
-+ 建议升级！
-
-#### 升级指南
-
-+ 首先解压您获取到的zip压缩包
-
-+ 更新库文件
-	+ 打开libs文件夹。用 jpush-android-2.1.9.jar 替换项目中原有的极光jar文件，并删除原有极光jar文件。
-用对应CPU文件夹下的 libjpush219.so文件，替换项目中原有的极光so文件，并删除原有的极光so文件，每种型号的so文件都可以在SDK下载包中找到。
-
-+ 更新AndroidManifest.xml
-	+ 压缩包根目录下有针对Eclipse和AndroidStudio 两种开发平台准备的两个AndroidManifest文件。请对照示例更新跟JPush相关的组件属性，permission，Action等配置。要使用富媒体推送，请将压缩包res中的资源放到项目的对应文件夹，并按照示例AndroidManifest配置PushActivity组件
-
-+ 添加资源文件
-	+ 将res文件夹下的资源文件，添加到您项目res/下对应的文件夹中。
-根据您应用的界面风格，您可以修改layout文件的配色，字体等属性，或者修改drawable文件夹下的图标。但注意请不要修改所有的文件名，和布局文件中的组件id。
-
-
-(注意：要使用富媒体推送，请将压缩包res中的资源放到项目的对应文件夹，并按照示例AndroidManifest配置组件)
-
-
-
-
-### JPush Android SDK v2.1.8
-=======
 ### JPush iOS SDK v2.1.9
->>>>>>> renew:zh/JPush/docs/updates.md
 
 #### 更新时间
 + 2016-09-07
@@ -122,13 +33,7 @@
 
 #### Change Log
 
-<<<<<<< HEAD:zh/docs/updates.md
-### JMessage iOS SDK v2.1.5
-#### 更新时间
-+ 2016-08-13
-=======
 + 提升接入服务的稳定性。
->>>>>>> renew:zh/JPush/docs/updates.md
 
 #### 升级提示
 
@@ -155,11 +60,7 @@
 
 
 
-<<<<<<< HEAD:zh/docs/updates.md
-### JMessage iOS SDK v2.1.3
-=======
 ### JPush Android SDK v2.1.8
->>>>>>> renew:zh/JPush/docs/updates.md
 
 #### 更新时间
 
