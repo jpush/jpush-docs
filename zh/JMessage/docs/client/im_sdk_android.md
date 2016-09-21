@@ -55,6 +55,7 @@ SDK 侧可以发起注册用户，也可由服务器端批量发起注册。
 **username**  
 长度：4 - 128byte  
 支持字符：
+
 + 开头：字母或者数字。
 + 字母、数字、下划线、英文点、减号、 @。
 
@@ -1241,7 +1242,7 @@ public static void getNoDisturblist(GetNoDisurbListCallback callback)
 
 
 #### 全局免打扰设置
-设置全局免打扰之后，收到所有消息都将不会有通知栏通知，效果类似  `setNotificationMode(JMessageClient.NOTI_MODE_NO_NOTIFICATION)`，但是此设置在用户换设备之后也会生效。
+设置全局免打扰之后，收到所有消息都将不会有通知栏通知，效果类似<br> `setNotificationMode(JMessageClient.NOTI_MODE_NO_NOTIFICATION)`，但是此设置在用户换设备之后也会生效。
 
 ```
 public static void setNoDisturbGlobal(int noDisturbGlobal, BasicCallback callback)
