@@ -9,13 +9,6 @@ def git_pull():
     logging.info(commands.getstatusoutput("git pull origin renew"))
     print ("git pull origin renew")
 
-'''
-def set_venv():
-    print (os.chdir("/opt/push/jpush-docs/"))
-    logging.info (commands.getstatusoutput(". venv/bin/activate"))
-    print (". venv/bin/activate")
-'''
-
 
 def build():
     print (os.chdir("/opt/push/jpush-docs/jpush-docs/zh/JPush/"))
@@ -45,9 +38,6 @@ logging.basicConfig(level=logging.DEBUG,
                     datefmt='%a, %d %b %Y %H:%M:%S',
                     filename='/opt/push/jpush-docs/autobuild.log',
                     filemode='a+')
-'''
-set_venv()
-'''
 
 git_pull()
 build()
