@@ -673,7 +673,7 @@ Error Code
 
 ### 媒体文件下载与上传
 
-#### File Download
+#### 文件下载
 
 ```
 GET /v1/resource?mediaId={mediaId}
@@ -711,7 +711,7 @@ Response Data
 {"url":"http://........."}
 ```
 
-#### File Upload
+#### 文件上传
 
 ```
 POST /resource?type=image
