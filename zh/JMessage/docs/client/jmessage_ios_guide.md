@@ -63,7 +63,7 @@ JMessage 新增的依赖、配置、初始化方面，请继续参考下节。
 
 #### 1、在极光 Web控制台上创建应用
 
-* 登录[极光Web控制台](https://www.jpush.cn/common/apps)，创建应用，上传 APNs 证书。如果对 Apple APNs 证书不太了解，请参考[iOS 证书设置指南](../client/ios_tutorials/#ios_1)。
+* 登录[极光Web控制台](https://www.jpush.cn/common/apps)，创建应用，上传 APNs 证书。如果对 Apple APNs 证书不太了解，请参考[iOS 证书设置指南](https://docs.jiguang.cn/jpush/client/iOS/ios_cer_guide/)。
 
 ![jmessage_ios][0]
 
