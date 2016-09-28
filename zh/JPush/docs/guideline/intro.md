@@ -1,8 +1,5 @@
 #JPush产品简介
-<style>
-img[alt=jpush_ios_v] { width: 500px; }
-img[alt=jpush_android_so] { width: 800px; }
-</style>
+
 <br/>
 
 JPush是经过考验的大规模APP推送平台，每天推送消息数超过5亿条。
@@ -64,6 +61,8 @@ Android 开发者参考文档：[Android 标签和别名](../client/Android/andr
 iOS 开发者参考文档：[iOS 标签和别名](../client/iOS/ios_api/#api-ios)  
 使用别名和标签推送请参考文档：[Push API v3 Audience](../server/push/rest_api_v3_push/#audience)
 
+###Registration ID
+客户端初始化 JPush 成功后，JPush 服务端会分配一个 Registration ID，作为此设备的标识（同一个手机不同 APP 的 Registration ID 是不同的）。开发者可以通过指定具体的 Registration ID 来进行对单一设备的推送。
 
 ###用户分群
 用户分群的筛选条件有：标签、地理位置、系统版本、注册时间、活跃用户和在线用户。  
