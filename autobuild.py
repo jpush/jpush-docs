@@ -6,8 +6,8 @@ import time
 
 def git_pull():
     print (os.chdir("/opt/push/jpush-docs/jpush-docs/"))
-    logging.info(commands.getstatusoutput("git pull origin master"))
-    print ("git pull origin master")
+    logging.info(commands.getstatusoutput("git pull origin renew"))
+    print ("git pull origin renew")
 
 
 def build():
