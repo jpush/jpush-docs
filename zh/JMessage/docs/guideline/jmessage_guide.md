@@ -3,7 +3,7 @@
 ## 认识极光 IM
 
 
-极光 IM（英文名 JMessage）致力于帮助 App 解决应用内聊天和跨应用聊天问题，开发者可集成SDK，快速实现稳定可靠的聊天功能。目前提供 iOS/Android/web 的 SDK，以及 Rest API 和后台管理系统，满足开发者不同场景下的需求，大大减少开发成本，提高效率。
+极光 IM（英文名 JMessage）致力于帮助 App 解决应用内聊天和跨应用聊天问题，开发者可集成SDK，快速实现稳定可靠的聊天功能。目前提供 iOS / Android / web 的 SDK，以及 Rest API 和后台管理系统，满足开发者不同场景下的需求，大大减少开发成本，提高效率。
 
 
 ### JMessage 与 JPush 的关系
@@ -63,17 +63,17 @@ JMessage 以 IM 使用场景出发，面向用户根据登录帐号来收发消�
 
 ## JMessage 基本概念
 
-#### username（用户名）
+### username（用户名）
 
 这是 App 的用户名，App 里用来唯一地标识其用户，必须唯一。
 
 App 调用 IM SDK 时实际使用的，可以是其用户的 ID，用户帐号名，或者 Email，总之任何一个能唯一地标识其用户的都可以。
 
-#### groupId（群组ID）
+### groupId（群组ID）
 
 App 使用 JMessage 提供的群组功能创建群组时得到的群组标识。发群组消息、加人、踢人等操作，都需要这个群组ID。
 
-#### AppKey（应用Key）
+### AppKey（应用Key）
 
 用来唯一标识一个 App，需要在管理控制台创建。SDK 集成时，需要配置此 Key，以便系统识别当前用户属于某个应用。
 
@@ -140,16 +140,16 @@ App 使用 JMessage 提供的群组功能创建群组时得到的群组标识。
 
 1. 在 Web 控制台上创建应用，得到 AppKey。如果之前已经使用了 JPush，可以直接延用老的 AppKey。
 2. 集成客户端 SDK。
-	+ 集成 IM SDK 到 App 里。
-	  Android 开发者请参考文档：[JMessage Android SDK 集成指南](https://docs.jiguang.cn/jmessage/client/jmessage_android_guide/)
-      iOS 开发者请参考文档：[JMessage iOS SDK 集成指南](https://docs.jiguang.cn/jmessage/client/jmessage_ios_guide/)
+	+ 集成 IM SDK 到 App 里。      
+	  Android 开发者请参考文档：[JMessage Android SDK 集成指南](https://docs.jiguang.cn/jmessage/client/jmessage_android_guide/)  
+	  iOS 开发者请参考文档：[JMessage iOS SDK 集成指南](https://docs.jiguang.cn/jmessage/client/jmessage_ios_guide/)
       
 	+ 如果 App 里之前已经集成过 JPush SDK，则可直接升级换成 IM SDK。
 3. 通过管理控制台，或调用 REST API 管理用户，发送消息。
 
 
 
-#### 相关文档
+### 相关文档
 
 + [JMessage Android SDK 开发指南](../client/im_sdk_android/)
 + [JMessage iOS SDK 开发指南](../client/im_sdk_ios/)
