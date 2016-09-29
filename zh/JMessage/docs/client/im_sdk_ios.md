@@ -1652,10 +1652,10 @@ JMSGCompletionHandler 有 2 个参数：
 	@optional
 	- (void)onDBMigrateFinishedWithError:(NSError *)error;
 	
-### 跨应用API接口
+#### 跨应用API接口
 
-#### 跨应用用户管理
-##### 批量获取跨应用的用户信息
+##### 跨应用用户管理
+###### 批量获取跨应用的用户信息
 	/*!
 	 * @abstract 批量获取跨应用的用户信息
 	 *
@@ -1667,7 +1667,7 @@ JMSGCompletionHandler 有 2 个参数：
 	+ (void)userInfoArrayWithUsernameArray:(NSArray JMSG_GENERIC(__kindof NSString *)*)usernameArray
 	                                appKey:( NSString *JMSG_NULLABLE)userAppKey
 	                     completionHandler:(JMSGCompletionHandler)handler;
-##### 例子	                     
+###### 例子	                     
 	// 批量获取跨应用的用户信息
 	// 注：usernameArray 里的username都应该是在你所填userAppKey应用的user
 	[JMSGUser userInfoArrayWithUsernameArray:[NSArray arrayWithObjects:@"username1",@"username2", nil] appKey:@"appkey" completionHandler:^(id resultObject, NSError *error) {
@@ -1676,8 +1676,8 @@ JMSGCompletionHandler 有 2 个参数：
 	        NSLog(@"userList:%@",userList);
 	    }
 	}];
-#### 跨应用消息管理
-##### 发送跨应用单聊文本消息
+##### 跨应用消息管理
+###### 发送跨应用单聊文本消息
 	
 	/*!
 	 * @abstract 发送跨应用单聊文本消息
@@ -1691,7 +1691,7 @@ JMSGCompletionHandler 有 2 个参数：
 	                       toUser:(NSString *)username
 	                       appKey:(NSString *)userAppKey;
 	
-##### 发送跨应用单聊图片消息
+###### 发送跨应用单聊图片消息
 	/*!
 	 * @abstract 发送跨应用单聊图片消息
 	 *
@@ -1704,7 +1704,7 @@ JMSGCompletionHandler 有 2 个参数：
 	                        toUser:(NSString *)username
 	                        appKey:(NSString *)userAppKey;
 	
-##### 发送跨应用单聊语音消息
+###### 发送跨应用单聊语音消息
 	/*!
 	 * @abstract 发送跨应用单聊语音消息
 	 *
@@ -1719,7 +1719,7 @@ JMSGCompletionHandler 有 2 个参数：
 	                        toUser:(NSString *)username
 	                        appKey:(NSString *)userAppKey;
 	                        
-##### 发送跨应用单聊文件消息
+###### 发送跨应用单聊文件消息
 	/*!
 	 * @abstract 发送跨应用单聊文件消息
 	 *
@@ -1734,7 +1734,7 @@ JMSGCompletionHandler 有 2 个参数：
 	                       toUser:(NSString *)username
 	                       appKey:(NSString *)userAppKey;
 
-##### 发送跨应用单聊位置消息
+###### 发送跨应用单聊位置消息
 	/*!
 	 * @abstract 发送跨应用单聊地理位置消息
 	 * @param latitude 纬度
@@ -1752,8 +1752,8 @@ JMSGCompletionHandler 有 2 个参数：
 	                           toUser:(NSString *)username
 	                           appKey:(NSString *)userAppKey;
 
-#### 跨应用会话管理
-##### 获取跨应用单聊会话
+##### 跨应用会话管理
+###### 获取跨应用单聊会话
 	/*!
 	 * @abstract 会话目标用户所在的 appKey
 	 *
@@ -1776,7 +1776,7 @@ JMSGCompletionHandler 有 2 个参数：
 	+ (JMSGConversation * JMSG_NULLABLE)singleConversationWithUsername:(NSString *)username
 	  
                                                           appKey:(NSString *)userAppKey;
-##### 创建跨应用单聊会话                                                        
+###### 创建跨应用单聊会话                                                        
 	/*!
 	 * @abstract 创建跨应用单聊会话
 	 *
@@ -1790,7 +1790,7 @@ JMSGCompletionHandler 有 2 个参数：
 	                                      appKey:(NSString *)userAppKey
 	                           completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)handler;
 	                           
-##### 例子
+###### 例子
 	// 创建跨应用会话
 	[JMSGConversation createSingleConversationWithUsername:@"username" appKey:@"appkey"  completionHandler:^(id resultObject, NSError *error) {
         if (!error) {
@@ -1800,7 +1800,7 @@ JMSGCompletionHandler 有 2 个参数：
         }
 	}];
 		            
-##### 删除跨应用单聊会话	
+###### 删除跨应用单聊会话	
 	/*!
 	 * @abstract 删除跨应用单聊会话
 	 *
@@ -1812,8 +1812,8 @@ JMSGCompletionHandler 有 2 个参数：
 	+ (BOOL)deleteSingleConversationWithUsername:(NSString *)username
 	                                      appKey:(NSString *)userAppKey;                          
 
-#### 跨应用群组管理
-##### 添加群组跨应用成员	
+##### 跨应用群组管理
+###### 添加群组跨应用成员	
 	/*!
 	 * @abstract 添加群组跨应用成员
 	 *
@@ -1823,14 +1823,14 @@ JMSGCompletionHandler 有 2 个参数：
 	- (void)addMembersWithUsernameArray:(NSArray JMSG_GENERIC(__kindof NSString *) *)usernameArray
 	                             appKey:userAppKey
 	                  completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)handler;
-##### 例子
+###### 例子
 	[group addMembersWithUsernameArray:[NSArray arrayWithObjects:@"username1",@"username2", nil] appKey:@"被添加用户所在应用的appkey" completionHandler:^(id resultObject, NSError *error) {
 	    if (!error) {
 	        NSLog(@"\n 添加群组跨应用成员 成功");
 	    }
 	}];
 
-##### 删除群组跨应用成员                 
+###### 删除群组跨应用成员                 
 	/*!
 	 * @abstract 删除群组跨应用成员
 	 *
@@ -1841,14 +1841,14 @@ JMSGCompletionHandler 有 2 个参数：
 	                                appKey:userAppKey
 	                     completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)handler;
 	
-##### 例子
+###### 例子
 	[group removeMembersWithUsernameArray:[NSArray arrayWithObjects:@"username1",@"username2", nil] appKey:@"被删除用户所在应用的appkey" completionHandler:^(id resultObject, NSError *error) {
 	    if (!error) {
 	        NSLog(@"\n 添删除组跨应用成员 成功");
 	    }
 	}];
-#### 跨应用黑名单管理
-##### 跨应用添加黑名单	
+##### 跨应用黑名单管理
+###### 跨应用添加黑名单	
 
 ```
 /*!
@@ -1870,7 +1870,7 @@ JMSGCompletionHandler 有 2 个参数：
           completionHandler:(JMSGCompletionHandler)handler;
 
 ```
-##### 例子
+###### 例子
 
 ```
 //添加黑名单
@@ -1881,7 +1881,7 @@ JMSGCompletionHandler 有 2 个参数：
    }];
 
 ```	   
-##### 跨应用删除黑名单	
+###### 跨应用删除黑名单	
 
 ```
 /*!
@@ -1904,7 +1904,7 @@ JMSGCompletionHandler 有 2 个参数：
 
 ```
 	            
-##### 例子         
+###### 例子         
 
 ```
 //删除黑名单
@@ -1915,11 +1915,11 @@ JMSGCompletionHandler 有 2 个参数：
 }];
  
 ``` 
-#### 跨应用免打扰管理
-##### 跨应用用户免打扰设置
+##### 跨应用免打扰管理
+###### 跨应用用户免打扰设置
 
 本应用用户免打扰设置中支持跨应用功能，详细使用请查看["用户免打扰设置"](#用户免打扰设置)。
-#### 跨应用好友管理
+##### 跨应用好友管理
 本应用的好友管理接口支持跨应用，详细请查看[“好友管理”](#JMSGFriendManager)
 
 ### 错误码定义
