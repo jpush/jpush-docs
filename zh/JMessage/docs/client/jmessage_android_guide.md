@@ -1,6 +1,6 @@
-# JMessage Android SDK 集成指南
+# Android SDK 集成指南
 
-### 文档说明
+### 集成步骤
 
 JMessage SDK 是基于 JPush SDK 开发的，完整支持 JPush 推送的全部功能。所以 IM SDK 的集成，是在 Push SDK 的集成操作基础上，附加少量的步骤来完成。
 
