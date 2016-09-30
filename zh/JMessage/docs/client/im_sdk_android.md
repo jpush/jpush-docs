@@ -1,40 +1,33 @@
-<h1>极光IM SDK - Android</h1>
+<h1>Android SDK 开发文档</h1>
 
-+ [极光IM 客户端 DEMO 下载](../resources/)
-+ [极光IM Android API Java docs](im_android_api_docs/)
-+ [极光IM Android 错误码](im_errorcode_android/#jmessage-android)
 
-### 概述
+## 概述
 
-极光IM（英文名JMessage） SDK 基于 JPush 推送 SDK 开发，提供了 Push SDK 的完整功能，并提供 IM 即时通讯功能。
+极光 IM（英文名JMessage） SDK 基于 JPush 推送 SDK 开发，提供了 Push SDK 的完整功能，并提供 IM 即时通讯功能。
 
 App 集成了 IM SDK 就不应再集成 JPush SDK（只提供 Push 功能的 SDK）。
 
-要了解极光IM的概述信息，请参考文档：[极光IM指南](../guideline/jmessage_guide)
+要了解极光IM的详细信息，请参考文档：[JMessage 产品简介](../guideline/jmessage_guide)
 
-#### 消息
+### 消息
 
-极光IM 最核心的功能是 IM 即时消息的功能。
+极光 IM 最核心的功能是即时通讯功能。
 
 - 保证消息及时下发；
 - 单聊，群聊；
-- 消息类型：文本、语音、图片；
+- 消息类型：文本、语音、图片、文件、位置等；
 - 用户未在线时保存离线消息；
 - 基于 JPush 原有的大容量稳定的长连接、大容量消息并发能力；
 
-#### 用户
+### 用户
 
-开发者的用户，基于 username / password 注册到 JMessage。
+- 开发者的用户，基于 username / password 注册到 JMessage，SDK 侧可以发起注册用户，也可由服务器端批量发起注册。
 
-SDK 侧可以发起注册用户，也可由服务器端批量发起注册。
+- 用户登录 App，也同时登录到 JMessage，登录后，就可以向其他 username 发聊天消息，也可以收到来自其他 username 的消息，或者群组消息了。用户 A 是否有权限向用户 B 发消息，由 App 逻辑自己控制。
 
-用户登录 App，也同时登录到 JMessage。登录后，就可以向其他 username 发聊天消息，也可以收到来自其他 username 的消息，或者群组消息了。
+- 可选让用户把头像等用户属性更新到 JMessage。
 
-用户 A 是否有权限向用户 B 发消息，由 App 逻辑自己控制。
-
-可选让用户把头像等用户属性更新到 JMessage。
-
-#### 群组
+### 群组
 
 可以把多个 username 加入到一个群组里，向群组发群聊消息。
 
@@ -42,35 +35,59 @@ SDK 侧可以发起注册用户，也可由服务器端批量发起注册。
 - 加群组成员、移除群组成员；
 
 
-#### 好友
+### 好友
 + jmessage android sdk 从1.4.0版本开始提供接口实现对用户好友关系的托管，以及相关好友请求的发送和接收。
-除此之外的任何建立在好友关系之上的功能（如仅限于好友之间才能进行的聊天等），需要开发者的应用层自己实现。
+
+##### 说明：除此之外的任何建立在好友关系之上的功能（如仅限于好友之间才能进行的聊天等），需要开发者的应用层自己实现。
 
 #### 字符串规范
 此处定义JMessage产品里字段属性与规范，用于校验与规范化。  
 
-**app_key**  
-由 JPush Web Portal 生成的 24位字符串。字母或者数字。不区分大小写。
-
-**username**  
-长度：4 - 128byte  
-支持字符：
-
-+ 开头：字母或者数字。
-+ 字母、数字、下划线、英文点、减号、 @。
-
-**password**  
-长度：4 - 128byte  
-支持字符：不限。
-
-**group_name / nickname / note_name**  
-长度：0 - 64byte  
-不支持的字符：“\n” “\r”
-
-**other**  
-长度 ： 0 - 250byte  
-以及其他未明确指定的 String 类型字段，都按照这个处理。  
-支持字符：全部
+<div class="table-d" align="center" >
+	<table border="1" width = "100%">
+		<tr  bgcolor="#D3D3D3" >
+			<th >参数</th>
+			<th >字符说明</th>
+			<th >长度限制</th>
+		</tr>
+		<tr >
+			<td>app_key</td>
+			<td>由 JPush Web Portal 生成的 24位字符串。字母或者数字，不区分大小写</td>
+			<td></td>
+		</tr>
+		<tr >
+			<td>username</td>
+			<td>以字母或者数字开头。支持字母、数字、下划线、英文点、减号、 @。</td>
+			<td>Byte(4~128)</td>
+		</tr>
+		<tr >
+			<td>password</td>
+			<td>不限</td>
+			<td>Byte(4~128)</td>
+		</tr>
+		<tr >
+			<td>group_name</td>
+			<td>不支持的字符：“\n” “\r”</td>
+			<td>Byte(0~64)</td>
+		</tr>
+		<tr >
+			<td>nickname</td>
+			<td>不支持的字符：“\n” “\r”</td>
+			<td>Byte(0~64)</td>
+		</tr>
+		<tr >
+			<td>note_name</td>
+			<td>不支持的字符：“\n” “\r”</td>
+			<td>Byte(0~64)</td>
+		</tr>
+		<tr >
+			<td>other</td>
+			<td>其他未明确指定的 String 类型字段，都按照这个处理。  
+支持字符：全部</td>
+			<td>Byte(0~250)</td>
+		</tr>
+	</table>
+</div>
 
 ### API 列表
 
@@ -1660,13 +1677,3 @@ public abstract class BasicCallback {
 
 参考文档：[IM 错误码列表](./im_errorcode_android)
 
-
-
-### 相关文档
-+ [JPush Android SDK 集成指南](../../../jpush/client/Android/android_guide/)
-+ [JPush Android SDK 概述](../../../jpush/client/Android/android_sdk/)
-+ [极光IM指南](../guideline/jmessage_guide/)
-+ [IM 消息协议](../advanced/im_message_protocol/)
-+ [IM 业务对象](../advanced/im_objects/)
-+ [IM SDK for iOS](../client/im_sdk_ios/)
-+ [IM REST API](../server/rest_api_im/)
