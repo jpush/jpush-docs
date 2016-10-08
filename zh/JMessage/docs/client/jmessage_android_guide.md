@@ -167,9 +167,9 @@ public void onCreate() {
 
 ### 功能
 
-#### Demo App
+#### Demo App - JChat
 
-极光 IM SDK 提供一个完整的 Demo App，它就是一个 IM App。或者说，如果你的 App 需求只是 IM 功能，可以只做这样两个变更就是你自己的 IM App 了：
+极光 IM 提供了一个完整的 Demo 应用 JChat，它就是一个 IM App。或者说，如果你的 App 需求只是 IM 功能，做以下两个变更就可以把它变成你自己的 IM App 了：
 
 + 换 Logo； 
 + 在 JPush Web 控制台上注册应用，获取到的 Appkey 更新到 Demo App 里。

@@ -1,10 +1,12 @@
-### 概述
+<h1>iOS SDK 开发指南</h1>
+
+## 概述
 
 极光IM（英文名JMessage） SDK 基于 JPush 推送 SDK 开发，提供了 Push SDK 的完整功能，并提供 IM 即时通讯功能。
 
 App 集成了 IM SDK 就不应再集成 JPush SDK（只提供 Push 功能的 SDK）。
 
-要了解极光IM 整体的信息，请参考文档：[极光IM指南](../../guideline/jmessage_guide)。要集成 iOS SDK 请参考文档：[JMessage iOS 集成指南](../../guideline/jmessage_ios_guide)。
+要了解极光IM 整体的信息，请参考文档：[JMessage 产品简介](https://docs.jiguang.cn/jmessage/guideline/jmessage_guide/)
 
 
 ### 功能
@@ -17,7 +19,7 @@ App 集成了 IM SDK 就不应再集成 JPush SDK（只提供 Push 功能的 SDK
 + 保证消息及时下发；
 + 基于 JPush 原有的大容量稳定的长连接、大容量消息并发能力；
 
-### API 接口
+## API 接口
 
 需要了解完整的 SDK API，有三种方式：
 
@@ -27,11 +29,11 @@ App 集成了 IM SDK 就不应再集成 JPush SDK（只提供 Push 功能的 SDK
 
 以下简要地列举 SDK API 提供的功能，同时提供部分简单的例子。
 
-#### SDK初始化
+### SDK初始化
 
 JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用。建议在 AppDelegate 里应用加载完成时调用。
 
-#####初始化 JMessage SDK
+#### 初始化 JMessage SDK
 	/*!
 	 * @abstract 初始化 JMessage SDK
 	 *
@@ -50,7 +52,7 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 	              channel:(NSString *)channel
 	     apsForProduction:(BOOL)isProduction
 	             category:(NSSet *)category;
-#####例子	  
+##### 例子	  
 	[JMessage setupJMessage:launchOptions
 	                 appKey:@"用户的AppKey"
 	                channel:@"应用的渠道名称"
@@ -59,8 +61,8 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 
 这个调用是必须的。否则 SDK 将不能正常工作。
 
-####注册与登录
-#####用户注册
+### 注册与登录
+#### 用户注册
 	/*!
 	 * @abstract 新用户注册
 	 *
@@ -72,7 +74,7 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 	+ (void)registerWithUsername:(NSString *)username
 	                    password:(NSString *)password
 	           completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)handler;
-#####例子
+##### 例子
 	[JMSGUser registerWithUsername:@"用户名"
 	                      password:@"密码"
 	                     completionHandler:^(id resultObject, NSError *error) {
@@ -82,7 +84,7 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 	                            //注册失败
 	                         }
 	                     }];
-#####用户登录
+##### 用户登录
 	/*!
 	 * @abstract 用户登录
 	 *
@@ -94,7 +96,7 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 	+ (void)loginWithUsername:(NSString *)username
 	                 password:(NSString *)password
 	        completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)handler;
-#####例子
+##### 例子
 	[JMSGUser loginWithUsername:@"用户名"
 	                           password:@"密码"
 	                  completionHandler:^(id resultObject, NSError *error) {
@@ -105,7 +107,7 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 	                      }
 	                  }];
 	                  
-#####退出登录
+##### 退出登录
 	/*!
 	 * @abstract 当前用户退出登录
 	 *
@@ -115,7 +117,7 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 	 * 建议 App 也不必确认 SDK 返回, 就实际退出登录状态.
 	 */
 	+ (void)logout:(JMSGCompletionHandler JMSG_NULLABLE)handler;
-#####例子
+##### 例子
 	//退出当前登录的用户
 	        [JMSGUser logout:^(id resultObject, NSError *error) {
 	            if (!error) {
@@ -125,8 +127,8 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 	            }
 	        }];
 	        
-####用户管理
-#####批量获取用户信息
+### 用户管理
+#### 批量获取用户信息
 	/*!
 	 * @abstract 批量获取用户信息
 	 *
@@ -137,7 +139,7 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 	 */
 	+ (void)userInfoArrayWithUsernameArray:(NSArray JMSG_GENERIC(__kindof NSString *)*)usernameArray
 	                     completionHandler:(JMSGCompletionHandler)handler;
-#####例子
+##### 例子
 	[JMSGUser userInfoArrayWithUsernameArray:@[@"username1", @"username2"] completionHandler:^(id resultObject, NSError *error) {
 	        if (!error) {
 	            //成功获取用户信息，resultObject为JMSGUser类型的数组
@@ -146,17 +148,17 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 	        }
 	    }];
 	  
-#####获取用户个人信息
+#### 获取用户个人信息
 	/*!
 	 * @abstract 获取用户本身个人信息
 	 *
 	 * @return 当前登陆账号个人信息
 	 */
 	+ (JMSGUser *)myInfo;
-#####例子
+##### 例子
 	JMSGUser *user = [JMSGUser myInfo];
 
-#####更新用户信息
+#### 更新用户信息
 	/*!
 	 * @abstract 更新用户信息接口
 	 *
@@ -168,7 +170,7 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 	+ (void)updateMyInfoWithParameter:(id)parameter
 	                    userFieldType:(JMSGUserField)type
 	                completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)handler;
-#####例子
+##### 例子
 	/*
             userFieldType:
             kJMSGUserFieldsNickname: 用户名
@@ -186,7 +188,7 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 	            }
 	        }];
 
-#####更新密码
+#### 更新密码
 	/*!
 	 * @abstract 更新密码接口
 	 *
@@ -197,7 +199,7 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 	+ (void)updateMyPasswordWithNewPassword:(NSString *)newPassword
 	                            oldPassword:(NSString *)oldPassword
 	                      completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)handler;
-#####例子
+##### 例子
 	[JMSGUser updateMyPasswordWithNewPassword:self.passwordField.text
 	                                      oldPassword:self.oldpassword.text
 	                                completionHandler:^(id resultObject, NSError *error) {
@@ -208,7 +210,7 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 	                                    }
 	                                }];
 
-#####获取头像缩略图
+#### 获取头像缩略图
 	/*!
 	 * @abstract 获取头像缩略图文件数据
 	 *
@@ -224,7 +226,7 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 	 * 如果本地已经有文件，则会返回本地，否则会从服务器上下载。
 	 */
 	- (void)thumbAvatarData:(JMSGAsyncDataHandler)handler;
-#####例子
+##### 例子
 	JMSGUser *user = [JMSGUser myInfo];
     [user thumbAvatarData:^(NSData *data, NSString *objectId, NSError *error) {
         if (!error) {
@@ -234,7 +236,7 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
         }
     }];
 
-#####获取头像大图
+#### 获取头像大图
 	/*!
 	 * @abstract 获取头像大图文件数据
 	 *
@@ -250,7 +252,7 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 	 * 如果本地已经有文件，则会返回本地，否则会从服务器上下载。
 	 */
 	- (void)largeAvatarData:(JMSGAsyncDataHandler)handler;
-#####例子
+##### 例子
 	JMSGUser *user = [JMSGUser myInfo];
 	[user largeAvatarData:^(NSData *data, NSString *objectId, NSError *error) {
 	                            if (!error) {
@@ -260,18 +262,18 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 	        					 }
 	                        }];
 
-#####获取用户展示名
+#### 获取用户展示名
 	/*!
 	 * @abstract 用户展示名
 	 *
 	 * @discussion 如果 nickname 存在则返回 nickname，否则返回 username
 	 */
 	- (NSString *)displayName;
-#####例子
+##### 例子
 	JMSGUser *user = [JMSGUser myInfo];
 	NSString myName = [user displayName];
-####消息管理
-#####创建单聊消息
+### 消息管理
+#### 创建单聊消息
 	/*!
 	 * @abstract 创建单聊消息
 	 *
@@ -282,11 +284,11 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 	 */
 	+ (JMSGMessage *)createSingleMessageWithContent:(JMSGAbstractContent *)content
 	                                       username:(NSString *)username;
-#####例子
+##### 例子
 	JMSGTextContent *textContent = [[JMSGTextContent alloc] initWithText:@"textContent"];
 	JMSGMessage *message = [JMSGMessage createSingleMessageWithContent:textContent username:@"username"];
 
-#####创建群聊消息
+#### 创建群聊消息
 	/*!
 	 * @abstract 创建群聊消息
 	 *
@@ -297,11 +299,11 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 	 */
 	+ (JMSGMessage *)createGroupMessageWithContent:(JMSGAbstractContent *)content
 	                                       groupId:(NSString *)groupId;
-#####例子
+##### 例子
 	JMSGTextContent *textContent = [[JMSGTextContent alloc] initWithText:@"textContent"];
 	JMSGMessage *message = [JMSGMessage createGroupMessageWithContent:textContent groupId:@"groupId"];
 
-#####发送消息
+#### 发送消息
 	/*!
 	 * @abstract 发送消息（已经创建好的）
 	 *
@@ -311,7 +313,7 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 	 */
 	+ (void)sendMessage:(JMSGMessage *)message;
 
-#####发送单聊文本消息
+#### 发送单聊文本消息
 	/*!
 	 * @abstract 发送单聊文本消息
 	 *
@@ -323,7 +325,7 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 	+ (void)sendSingleTextMessage:(NSString *)text
 	                       toUser:(NSString *)username;
 
-#####发送单聊图片消息
+#### 发送单聊图片消息
 	/*!
 	 * @abstract 发送单聊图片消息
 	 *
@@ -335,7 +337,7 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 	+ (void)sendSingleImageMessage:(NSData *)imageData
 	                        toUser:(NSString *)username;
 
-#####发送单聊语音消息
+#### 发送单聊语音消息
 	/*!
 	 * @abstract 发送单聊语音消息
 	 *
@@ -349,7 +351,7 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 	                 voiceDuration:(NSNumber *)duration
 	                        toUser:(NSString *)username;
 	                       
-#####发送单聊文件消息
+#### 发送单聊文件消息
 	/*!
 	 * @abstract 发送单聊文件消息
 	 *
@@ -363,7 +365,7 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 	                     fileName:(NSString *)fileName
 	                       toUser:(NSString *)username;
 
-#####发送单聊位置消息
+#### 发送单聊位置消息
 	/*!
 	 * @abstract 发送单聊地理位置消息
 	 * @param latitude 纬度
@@ -379,7 +381,7 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 	                          address:(NSString *)address
 	                           toUser:(NSString *)username;
 
-#####发送群聊文本消息
+#### 发送群聊文本消息
 	/*!
 	 * @abstract 发送群聊文本消息
 	 *
@@ -391,7 +393,7 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 	+ (void)sendGroupTextMessage:(NSString *)text
 	                     toGroup:(NSString *)groupId;
 
-#####发送群聊图片消息
+#### 发送群聊图片消息
 	/*!
 	 * @abstract 发送群聊图片消息
 	 *
@@ -403,7 +405,7 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 	+ (void)sendGroupImageMessage:(NSData *)imageData
 	                      toGroup:(NSString *)groupId;
 
-#####发送群聊语音消息
+#### 发送群聊语音消息
 	/*!
 	 * @abstract 发送群聊语音消息
 	 *
@@ -417,7 +419,7 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 	                voiceDuration:(NSNumber *)duration
 	                      toGroup:(NSString *)groupId;
 	                      
-#####发送群聊文件消息
+#### 发送群聊文件消息
 	/*!
 	 * @abstract 发送群聊文件消息
 	 *
@@ -431,7 +433,7 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 	                    fileName:(NSString *)fileName
 	                     toGroup:(NSString *)groupId;
 
-#####发送群聊位置消息
+#### 发送群聊位置消息
 	/*!
 	 * @abstract 发送群聊地理位置消息
 	 * @param latitude 纬度
@@ -446,9 +448,9 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 	                         address:(NSString *)address
 	                         toGroup:(NSString *)groupId;
 
-####会话管理
+### 会话管理
 会话相关的操作：
-#####获取单聊会话
+#### 获取单聊会话
 	/*!
 	 * @abstract 获取单聊会话
 	 *
@@ -459,7 +461,7 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 	+ (JMSGConversation * JMSG_NULLABLE)singleConversationWithUsername:(NSString *)username;
 	
 
-#####获取群聊会话
+#### 获取群聊会话
 	/*!
 	 * @abstract 获取群聊会话
 	 *
@@ -469,7 +471,7 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 	 */
 	+ (JMSGConversation * JMSG_NULLABLE)groupConversationWithGroupId:(NSString *)groupId;
 
-#####创建单聊会话
+#### 创建单聊会话
 	/*!
 	 * @abstract 创建单聊会话
 	 *
@@ -482,7 +484,7 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 	 */
 	+ (void)createSingleConversationWithUsername:(NSString *)username
 	                           completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)handler;
-#####例子
+##### 例子
 	[JMSGConversation createSingleConversationWithUsername:@"username" completionHandler:^(id resultObject, NSError *error) {
 		                if (!error) {
 		                   //创建单聊会话成功， resultObject为创建的会话
@@ -491,7 +493,7 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 		                }
 		            }];
 		            
-#####创建群聊会话
+#### 创建群聊会话
 	/*!
 	 * @abstract 创建群聊会话
 	 *
@@ -504,7 +506,7 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 	 */
 	+ (void)createGroupConversationWithGroupId:(NSString *)groupId
 	                         completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)handler;
-#####例子
+##### 例子
 	[JMSGConversation createGroupConversationWithGroupId:@"groupId" completionHandler:^(id resultObject, NSError *error) {
 			                if (!error) {
 			                   //创建群聊用会话成功， resultObject为创建的会话
@@ -513,7 +515,7 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 			                }
 			            }];
 
-#####删除单聊会话
+#### 删除单聊会话
 	/*!
 	 * @abstract 删除单聊会话
 	 *
@@ -524,7 +526,7 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 	+ (BOOL)deleteSingleConversationWithUsername:(NSString *)username;
 	
 
-#####删除群聊会话
+#### 删除群聊会话
 	/*!
 	 * @abstract 删除群聊会话
 	 *
@@ -534,7 +536,7 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 	 */
 	+ (BOOL)deleteGroupConversationWithGroupId:(NSString *)groupId;
 
-#####conversation列表
+#### conversation列表
 	/*!
 	 * @abstract 返回 conversation 列表（异步,已经排序）
 	 *
@@ -544,7 +546,7 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 	 * 
 	 */
 	 + (void)allConversations:(JMSGCompletionHandler)handler;
-#####例子
+##### 例子
 	[JMSGConversation allConversations:^(id resultObject, NSError *error) {
             if (!error) {
                //获取成功，resultObject为会话对的数组
@@ -554,7 +556,7 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 	    }];
 	    
 消息相关操作：
-#####获取某条消息
+#### 获取某条消息
 	/*!
 	 * @abstract 获取某条消息
 	 *
@@ -566,7 +568,7 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 	 */
 	- (JMSGMessage * JMSG_NULLABLE)messageWithMessageId:(NSString *)msgId;
 
-#####分页获取消息
+#### 分页获取消息
 	/*!
 	 * @abstract 同步分页获取最新的消息
 	 *
@@ -585,7 +587,7 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 	 */
 	- (NSArray JMSG_GENERIC(__kindof JMSGMessage *) *)messageArrayFromNewestWithOffset:(NSNumber *JMSG_NULLABLE)offset
 	                                                                             limit:(NSNumber *JMSG_NULLABLE)limit;
-#####获取所有消息记录
+#### 获取所有消息记录
 	/*!
 	 * @abstract 异步获取所有消息记录
 	 *
@@ -594,14 +596,14 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 	 * @discussion 排序规则：最新
 	 */
 	- (void)allMessages:(JMSGCompletionHandler)handler;
-#####例子
+##### 例子
 	//_conversation 为Conversation的实例对象 
 	[conversation allMessages:^(id resultObject, NSError *error) {
 	        NSArray *array = (NSArray *)resultObject;
 	        LogInfo(@"消息数：%ld", (long)array.count);
 	    }];
 
-#####删除消息
+#### 删除消息
 	/*!
 	 * @abstract 删除一条消息
 	 *
@@ -609,7 +611,7 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 	 */
 	- (BOOL)deleteMessageWithMessageId:(NSString *)msgId;
 
-#####删除全部消息
+#### 删除全部消息
 	/*!
 	 * @abstract 删除全部消息
 	 *
@@ -617,7 +619,7 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 	 */
 	- (BOOL)deleteAllMessages;
 
-#####创建消息对象
+#### 创建消息对象
 	/*!
 	 * @abstract 创建消息对象
 	 *
@@ -653,7 +655,7 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 	 */
 	- (JMSGMessage * JMSG_NULLABLE)createMessageWithContent:(JMSGAbstractContent *)content;
 
-#####创建图片消息对象
+#### 创建图片消息对象
 	/*!
 	 * @abstract 创建消息对象（图片，异步）
 	 *
@@ -665,7 +667,7 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 	 */
 	- (void)createMessageAsyncWithImageContent:(JMSGImageContent *)content
 	                         completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)handler;
-#####例子
+##### 例子
 	//_conversation 为Conversation的实例对象 
 	[_conversation createMessageAsyncWithImageContent:imageContent completionHandler:^(id resultObject, NSError *error) {
 	            if (!error) {
@@ -674,7 +676,7 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 	            }
 	        }];
 
-#####发送消息
+#### 发送消息
 	/*!
 	 * @abstract 发送消息（已经创建好对象的）
 	 *
@@ -684,7 +686,7 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 	 */
 	- (void)sendMessage:(JMSGMessage *)message;
 
-#####发送文本消息
+#### 发送文本消息
 	/*!
 	 * @abstract 发送文本消息
 	 * @param text 文本消息内容
@@ -692,7 +694,7 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 	 */
 	- (void)sendTextMessage:(NSString *)text;
 
-#####发送图片消息
+#### 发送图片消息
 	/*!
 	 * @abstract 发送图片消息
 	 * @param imageData 图片消息数据
@@ -700,7 +702,7 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 	 */
 	- (void)sendImageMessage:(NSData *)imageData;
 
-#####发送语音消息
+#### 发送语音消息
 	/*!
 	 * @abstract 发送语音消息
 	 * @param voiceData 语音消息数据
@@ -710,7 +712,7 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 	- (void)sendVoiceMessage:(NSData *)voiceData
 	                duration:(NSNumber *)duration;
 	                
-#####发送文件消息
+#### 发送文件消息
 	/*!
 	 * @abstract 发送文件消息
 	 * @param voiceData 文件消息数据
@@ -720,7 +722,7 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 	- (void)sendFileMessage:(NSData *)fileData
 	               fileName:(NSString *)fileName;
 
-#####发送位置消息
+#### 发送位置消息
 	/*!
 	 * @abstract 发送地理位置消息
 	 * @param latitude 纬度
@@ -734,7 +736,7 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 	                      scale:(NSNumber *)scale
 	                    address:(NSString *)address;
 
-#####获取会话头像
+#### 获取会话头像
 	/*!
 	 * @abstract 异步获取会话头像
 	 *
@@ -752,7 +754,7 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 	 * 建议在会话列表时, 使用此接口来显示会话的头像, 而不要使用 target 属性里的用户头像.
 	 */
 	- (void)avatarData:(JMSGAsyncDataHandler)handler;
-#####例子
+##### 例子
 	//_conversation 为Conversation的实例对象 
 	[_conversation avatarData:^(NSData *data, NSString *objectId, NSError *error) {
 	        if (!error) {
@@ -761,7 +763,7 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 	        	//获取失败   
 	        }];
 
-#####清除会话未读数
+#### 清除会话未读数
 	/*!
 	 * @abstract 清除会话未读数
 	 *
@@ -769,18 +771,18 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 	 */
 	- (void)clearUnreadCount;
 
-#####获取最后一条消息的内容文本
+#### 获取最后一条消息的内容文本
 	/*!
 	 * @abstract 获取最后一条消息的内容文本
 	 *
 	 * @discussion 通常用来展示在会话列表的第 2 行. 如果是图片消息,通常是文本 [图片] 之类. CustomContent 可以定制这个文本.
 	 */
 	- (NSString *)latestMessageContentText;
-#####例子
+##### 例子
 	//_conversation 为Conversation的实例对象 
 	NSString *latestMessageText = [_conversation latestMessageContentText];
 
-#####判断消息是否属于这个Conversation
+#### 判断消息是否属于这个Conversation
 	/*!
 	 * @abstract 判断消息是否属于这个 Conversation
 	 *
@@ -792,7 +794,7 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 	 */
 	- (BOOL)isMessageForThisConversation:(JMSGMessage *)message;
 
-#####从服务器端刷新会话信息
+#### 从服务器端刷新会话信息
 	/*!
 	 * @abstract 从服务器端刷新会话信息
 	 *
@@ -805,7 +807,7 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 	 * 此接口供暂时使用。JMessage 整体的 Sync 机制生效后，将不需要客户端主动去刷新信息。
 	 */
 	- (void)refreshTargetInfoFromServer:(JMSGCompletionHandler)handler;
-#####例子
+##### 例子
 	//_conversation 为Conversation的实例对象 
 	[_conversation refreshTargetInfoFromServer:^(id resultObject, NSError *error) {
 	    if (!error) {
@@ -815,8 +817,8 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 	    }
 	  }];
 
-####群组管理
-##### 创建群组
+### 群组管理
+#### 创建群组
 	/*!
 	 * @abstract 创建群组
 	 *
@@ -841,7 +843,7 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
         }
     }];
 
-##### 更新群组信息	
+#### 更新群组信息	
 	/*!
 	 * @abstract 更新群组信息
 	 *
@@ -862,7 +864,7 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
                 }
     }];
     
-##### 获取群组信息		
+#### 获取群组信息		
 	/*!
 	 * @abstract 获取群组信息
 	 *
@@ -882,7 +884,7 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
             NSLog(@"获取群组信息成功");
         }
     }];
-##### 获取我的群组列表	
+#### 获取我的群组列表	
 	/*!
 	 * @abstract 获取我的群组列表
 	 *
@@ -900,7 +902,7 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
             NSLog(@"返回值是gid数组，开发者需要获取每个群完整信息的话，需要通过返回的gid再调用获取群信息接口");
         }
     }];
-##### 获取群组成员列表	
+#### 获取群组成员列表	
 	/*!
 	 * @abstract 获取群组成员列表
 	 *
@@ -911,7 +913,7 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 	 */
 	- (NSArray JMSG_GENERIC(__kindof JMSGUser *)*)memberArray;
 
-##### 添加群组成员	
+#### 添加群组成员	
 	/*!
 	 * @abstract 添加群组成员
 	 *
@@ -928,7 +930,7 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
             NSLog(@"添加群成员成功！");
         }
     }];
-##### 删除群组成员
+#### 删除群组成员
 	/*!
 	 * @abstract 删除群组成员
 	 *
@@ -944,7 +946,7 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
             NSLog(@"删除群成员成功!");
         }
     }];
-##### 退出当前群组	
+#### 退出当前群组	
 	/*!
 	 * @abstract 退出当前群组(当前用户)
 	 *
@@ -958,7 +960,7 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
             NSLog(@"退出群组成功!");
         }
     }];
-##### 获取群组的展示名	
+#### 获取群组的展示名	
 	/*!
 	 * @abstract 获取群组的展示名
 	 *
@@ -966,9 +968,9 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 	 */
 	- (NSString *)displayName;
 
-####<span id="JMSGFriendManager">好友管理</span>
-#####JMSGFriendManager
-#####获取好友列表
+###<span id="JMSGFriendManager">好友管理</span>
+#### JMSGFriendManager
+#### 获取好友列表
 	/*!
 	 * @abstract 获取好友列表
 	 *
@@ -984,7 +986,7 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 	 * 建议开发者在 SDK 完全启动之后，再调用此接口获取数据
 	 */
 	+ (void)getFriendList:(JMSGCompletionHandler)handler;
-#####例子
+##### 例子
 	// get friend list
 	[JMSGFriendManager getFriendList:^(id resultObject, NSError *error) {
 		if(!error){
@@ -992,7 +994,7 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 			NSLog(@"获取好友列表：%@",friendList)
 		}
 	}];		
-#####发送添加好友请求
+#### 发送添加好友请求
 	/*!
 	 * @abstract 发送添加好友请求
 	 *
@@ -1014,7 +1016,7 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 	                                   appKey:(NSString *)userAppKey
 	                                   reason:(NSString *)reason
 	                        completionHandler:(JMSGCompletionHandler)handler;
-#####例子
+##### 例子
 	[JMSGFriendManager sendInvitationRequestWithUsername:username appKey:appkey reason:nil completionHandler:^(id resultObject, NSError *error) {
 	    if (!error) {
 	        NSLog(@"发送邀请成功");
@@ -1023,7 +1025,7 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 	    }
 	}];
 
-#####接受好友邀请
+#### 接受好友邀请
 	/*!
 	 * @abstract 接受好友邀请
 	 *
@@ -1042,7 +1044,7 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 	+ (void)acceptInvitationResponseWithUsername:(NSString *)username
 	                                      appKey:(NSString *)userAppKey
 	                           completionHandler:(JMSGCompletionHandler)handler;
-#####例子
+##### 例子
 	// 接受好友邀请
 	[JMSGFriendManager acceptInvitationWithUsername:username appKey:appKey completionHandler:^(id resultObject, NSError *error) {
 		dispatch_async(dispatch_get_main_queue(), ^{
@@ -1055,7 +1057,7 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 	    });
 	}];
 
-#####拒绝好友邀请
+#### 拒绝好友邀请
 	/*!
 	 * @abstract 拒绝好友邀请
 	 *
@@ -1076,7 +1078,7 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 	                              appKey:(NSString *)userAppKey
 	                              reason:(NSString *)reason
 	                   completionHandler:(JMSGCompletionHandler)handler;
-#####例子
+##### 例子
 	// 拒绝好友邀请
 	[JMSGFriendManager rejectInvitationWithUsername:username appKey:appKey reason:nil completionHandler:^(id resultObject, NSError *error) {
 	    dispatch_async(dispatch_get_main_queue(), ^{
@@ -1088,7 +1090,7 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 	        }
 	    });
     }];
-#####删除好友
+#### 删除好友
 	/*!
 	 * @abstract 删除好友
 	 *
@@ -1108,7 +1110,7 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 	+ (void)removeFriendWithUsername:(NSString *)username
 	                          appKey:(NSString *)userAppKey
 	               completionHandler:(JMSGCompletionHandler)handler;
-#####例子
+##### 例子
 	// 比如将你好友列表里的 user 移除
 	[JMSGFriendManager removeFriendWithUsername:user.username appKey:user.appkey completionHandler:^(id resultObject, NSError *error) {
         if (!error) {
@@ -1119,8 +1121,8 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 	    }
     }];
 		                        
-####黑名单
-##### 获取黑名单列表
+### 黑名单
+#### 获取黑名单列表
 
 ```
 /*!
@@ -1151,7 +1153,7 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 
 ```
 
-##### 添加黑名单		
+#### 添加黑名单		
 
 ```
 /*!
@@ -1183,7 +1185,7 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 
 ```
 	
-##### 删除黑名单	
+#### 删除黑名单	
 
 ```
 /*!
@@ -1215,8 +1217,8 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 
 ```
 	             
-####免打扰
-##### 免打扰列表
+### 免打扰
+#### 免打扰列表
 
 ```
 /*!
@@ -1246,7 +1248,7 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
  }];
  
 ```  
-##### 全局免打扰设置
+#### 全局免打扰设置
 
 ```
 /*!
@@ -1288,7 +1290,7 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
  
 ```
 	 
-##### <span id="用户免打扰设置">用户免打扰设置</span>
+#### <span id="用户免打扰设置">用户免打扰设置</span>
 
 ```
 /*!
@@ -1333,7 +1335,7 @@ BOOL isAlreadSet = user.isNoDisturb;
 
 ```
 
-##### 群组免打扰设置
+#### 群组免打扰设置
 
 ```
 /*!
@@ -1369,13 +1371,13 @@ BOOL isAlreadSet = user.isNoDisturb;
 
 ```
 
-####事件处理
+### 事件处理
 __事件类型的消息内容__
 
 * 服务器端下发的事件通知, 比如用户被踢下线,群组里加了人, SDK 作为一个特殊的消息类型处理
 * SDK 以消息的形式通知到 App. 详情参见 JMessageDelegate
 
-##### JMSGEventContent
+#### JMSGEventContent
 	//通知事件类型
 	typedef NS_ENUM(NSInteger, JMSGEventNotificationType) {
 	  /// 事件类型: 登录被踢
@@ -1409,8 +1411,8 @@ __事件类型的消息内容__
 	 */
 	
 	
-##### 事件的文本描述 
-######JMSGEventContent
+#### 事件的文本描述 
+#### JMSGEventContent
 	/*!
 	 @abstract 展示此事件的文本描述
 	
@@ -1424,7 +1426,7 @@ __事件类型的消息内容__
     }
     //比如，在群group中，用户A邀请用户B加入了群,showText 如下：
     //showText = "A邀请B加入了群组"
-##### 自定义事件的文本描述
+#### 自定义事件的文本描述
 	/*!
 	 * @abstract 获取事件发起者的用户名
 	 * @return 正常返回事件发起者的用户名，如果是系统事件则返回“系统消息”
@@ -1452,8 +1454,8 @@ __事件类型的消息内容__
 	if(eventContent.eventType == kJMSGEventNotificationAddGroupMembers) {
 		NSString *showText = [NSString stringWithFormat:@"%@邀请了%@加入了群聊",fromUsername,[toUsernameList componentsJoinedByString:@","]];
 	}
-#####好友管理事件
-######JMSGFriendEventContent
+#### 好友管理事件
+#### JMSGFriendEventContent
 	/*!
 	 * @abstract 好友通知事件类型
 	 * @discussion 参考事件类型的定义 JMSGEventNotificationType
@@ -1466,12 +1468,12 @@ __事件类型的消息内容__
 	 * @discussion 该字段由对方发起请求时所填，对方如果未填则将返回默认字符串
 	 */
 	- (NSString *JMSG_NULLABLE)getReason;
-#####例子
+##### 例子
 ```
 // 对方拒绝你的好友邀请，会有事件下发，可通过这个接口获取对方所填拒绝理由
 NSString *reason = [friendEvent getReason];
 ```	
-#####获取好友事件的发送者信息
+#### 获取好友事件的发送者信息
 	/*!
 	 * @abstract 事件发送者的username
 	 *
@@ -1484,12 +1486,12 @@ NSString *reason = [friendEvent getReason];
 	 * @abstract 获取事件发送者user
 	 */
 	- (JMSGUser *JMSG_NULLABLE)getFromUser;
-#####例子
+##### 例子
 	// 获取事件发送者称呼，注意：返回优先级 备注名 -> 昵称 -> username
 	NSString *name = [friendEvent getFromUsername];
 	// 获取事件发送对象user
 	JMSGUser *user = [friendEvent getFromUser];
-#### 通知监听
+### 通知监听
 
 JMessage SDK 采用 Delegate 的机制给 App 发通知，而不是采用 iOS 平台通用的通知方式。Delegate 的方式更加直接、易用。
 
@@ -1514,7 +1516,7 @@ JMessage SDK 采用 Delegate 的机制给 App 发通知，而不是采用 iOS �
 
 	- (void)onLoginUserKicked;
 
-#### 结果回调
+### 结果回调
 
 JMessage SDK 提供的很多接口都以异步方式返回，其回调都是一个类型为 JMSGCompletionHandler 的 block，其定义为
 
@@ -1532,8 +1534,8 @@ JMSGCompletionHandler 有 2 个参数：
 与 JMSGCompletionHandler 类似的，还有另外一个 block 叫 JMSGAsyncDataHandler，用于返回媒体文件数据。
 
 
-#### 实现回调 
-##### JMSGConversationDelegate 回调
+### 实现回调 
+#### JMSGConversationDelegate 回调
 	/*!
 	 * @abstract 会话信息变更通知
 	 *
@@ -1553,7 +1555,7 @@ JMSGCompletionHandler 有 2 个参数：
 	 */
 	@optional
 	- (void)onUnreadChanged:(NSUInteger)newCount;
-##### JMSGMessageDelegate 回调
+#### JMSGMessageDelegate 回调
 ```
 /*!
  * @abstract 发送消息结果返回回调
@@ -1600,7 +1602,7 @@ JMSGCompletionHandler 有 2 个参数：
 @optional
 - (void)onReceiveMessageDownloadFailed:(JMSGMessage *)message;
 ``` 
-##### JMSGGroupDelegate 回调
+#### JMSGGroupDelegate 回调
 	/*!
 	 * @abstract 群组信息 (GroupInfo) 信息通知
 	 *
@@ -1611,7 +1613,7 @@ JMSGCompletionHandler 有 2 个参数：
 	@optional
 	- (void)onGroupInfoChanged:(JMSGGroup *)group;
 
-##### JMSGUserDelegate 回调
+#### JMSGUserDelegate 回调
 	/*!
 	 * @abstract 当前登录用户被踢下线通知
 	 *
@@ -1623,7 +1625,7 @@ JMSGCompletionHandler 有 2 个参数：
 	@optional
 	- (void)onLoginUserKicked;
 	
-##### JMSGFriendDelegate 回调
+#### JMSGFriendDelegate 回调
 	/*!
 	 * @abstract 好友变更通知
 	 *
@@ -1635,7 +1637,7 @@ JMSGCompletionHandler 有 2 个参数：
 	@optional
 	- (void)onFriendChanged:(JMSGFriendEventContent *)event;
 	
-##### JMSGDBMigrateDelegate 回调
+#### JMSGDBMigrateDelegate 回调
 	/*!
 	 * @abstract 数据库升级开始
 	 */
@@ -1652,10 +1654,10 @@ JMSGCompletionHandler 有 2 个参数：
 	@optional
 	- (void)onDBMigrateFinishedWithError:(NSError *)error;
 	
-#### 跨应用API接口
+### 跨应用API接口
 
-##### 跨应用用户管理
-###### 批量获取跨应用的用户信息
+#### 跨应用用户管理
+#### 批量获取跨应用的用户信息
 	/*!
 	 * @abstract 批量获取跨应用的用户信息
 	 *
@@ -1667,7 +1669,7 @@ JMSGCompletionHandler 有 2 个参数：
 	+ (void)userInfoArrayWithUsernameArray:(NSArray JMSG_GENERIC(__kindof NSString *)*)usernameArray
 	                                appKey:( NSString *JMSG_NULLABLE)userAppKey
 	                     completionHandler:(JMSGCompletionHandler)handler;
-###### 例子	                     
+##### 例子	                     
 	// 批量获取跨应用的用户信息
 	// 注：usernameArray 里的username都应该是在你所填userAppKey应用的user
 	[JMSGUser userInfoArrayWithUsernameArray:[NSArray arrayWithObjects:@"username1",@"username2", nil] appKey:@"appkey" completionHandler:^(id resultObject, NSError *error) {
@@ -1676,8 +1678,8 @@ JMSGCompletionHandler 有 2 个参数：
 	        NSLog(@"userList:%@",userList);
 	    }
 	}];
-##### 跨应用消息管理
-###### 发送跨应用单聊文本消息
+#### 跨应用消息管理
+#### 发送跨应用单聊文本消息
 	
 	/*!
 	 * @abstract 发送跨应用单聊文本消息
@@ -1691,7 +1693,7 @@ JMSGCompletionHandler 有 2 个参数：
 	                       toUser:(NSString *)username
 	                       appKey:(NSString *)userAppKey;
 	
-###### 发送跨应用单聊图片消息
+#### 发送跨应用单聊图片消息
 	/*!
 	 * @abstract 发送跨应用单聊图片消息
 	 *
@@ -1704,7 +1706,7 @@ JMSGCompletionHandler 有 2 个参数：
 	                        toUser:(NSString *)username
 	                        appKey:(NSString *)userAppKey;
 	
-###### 发送跨应用单聊语音消息
+#### 发送跨应用单聊语音消息
 	/*!
 	 * @abstract 发送跨应用单聊语音消息
 	 *
@@ -1719,7 +1721,7 @@ JMSGCompletionHandler 有 2 个参数：
 	                        toUser:(NSString *)username
 	                        appKey:(NSString *)userAppKey;
 	                        
-###### 发送跨应用单聊文件消息
+#### 发送跨应用单聊文件消息
 	/*!
 	 * @abstract 发送跨应用单聊文件消息
 	 *
@@ -1734,7 +1736,7 @@ JMSGCompletionHandler 有 2 个参数：
 	                       toUser:(NSString *)username
 	                       appKey:(NSString *)userAppKey;
 
-###### 发送跨应用单聊位置消息
+#### 发送跨应用单聊位置消息
 	/*!
 	 * @abstract 发送跨应用单聊地理位置消息
 	 * @param latitude 纬度
@@ -1752,8 +1754,8 @@ JMSGCompletionHandler 有 2 个参数：
 	                           toUser:(NSString *)username
 	                           appKey:(NSString *)userAppKey;
 
-##### 跨应用会话管理
-###### 获取跨应用单聊会话
+#### 跨应用会话管理
+#### 获取跨应用单聊会话
 	/*!
 	 * @abstract 会话目标用户所在的 appKey
 	 *
@@ -1776,7 +1778,7 @@ JMSGCompletionHandler 有 2 个参数：
 	+ (JMSGConversation * JMSG_NULLABLE)singleConversationWithUsername:(NSString *)username
 	  
                                                           appKey:(NSString *)userAppKey;
-###### 创建跨应用单聊会话                                                        
+#### 创建跨应用单聊会话                                                        
 	/*!
 	 * @abstract 创建跨应用单聊会话
 	 *
@@ -1790,7 +1792,7 @@ JMSGCompletionHandler 有 2 个参数：
 	                                      appKey:(NSString *)userAppKey
 	                           completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)handler;
 	                           
-###### 例子
+##### 例子
 	// 创建跨应用会话
 	[JMSGConversation createSingleConversationWithUsername:@"username" appKey:@"appkey"  completionHandler:^(id resultObject, NSError *error) {
         if (!error) {
@@ -1800,7 +1802,7 @@ JMSGCompletionHandler 有 2 个参数：
         }
 	}];
 		            
-###### 删除跨应用单聊会话	
+#### 删除跨应用单聊会话	
 	/*!
 	 * @abstract 删除跨应用单聊会话
 	 *
@@ -1812,8 +1814,8 @@ JMSGCompletionHandler 有 2 个参数：
 	+ (BOOL)deleteSingleConversationWithUsername:(NSString *)username
 	                                      appKey:(NSString *)userAppKey;                          
 
-##### 跨应用群组管理
-###### 添加群组跨应用成员	
+#### 跨应用群组管理
+#### 添加群组跨应用成员	
 	/*!
 	 * @abstract 添加群组跨应用成员
 	 *
@@ -1823,14 +1825,14 @@ JMSGCompletionHandler 有 2 个参数：
 	- (void)addMembersWithUsernameArray:(NSArray JMSG_GENERIC(__kindof NSString *) *)usernameArray
 	                             appKey:userAppKey
 	                  completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)handler;
-###### 例子
+##### 例子
 	[group addMembersWithUsernameArray:[NSArray arrayWithObjects:@"username1",@"username2", nil] appKey:@"被添加用户所在应用的appkey" completionHandler:^(id resultObject, NSError *error) {
 	    if (!error) {
 	        NSLog(@"\n 添加群组跨应用成员 成功");
 	    }
 	}];
 
-###### 删除群组跨应用成员                 
+#### 删除群组跨应用成员                 
 	/*!
 	 * @abstract 删除群组跨应用成员
 	 *
@@ -1841,14 +1843,14 @@ JMSGCompletionHandler 有 2 个参数：
 	                                appKey:userAppKey
 	                     completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)handler;
 	
-###### 例子
+##### 例子
 	[group removeMembersWithUsernameArray:[NSArray arrayWithObjects:@"username1",@"username2", nil] appKey:@"被删除用户所在应用的appkey" completionHandler:^(id resultObject, NSError *error) {
 	    if (!error) {
 	        NSLog(@"\n 添删除组跨应用成员 成功");
 	    }
 	}];
-##### 跨应用黑名单管理
-###### 跨应用添加黑名单	
+#### 跨应用黑名单管理
+#### 跨应用添加黑名单	
 
 ```
 /*!
@@ -1870,7 +1872,7 @@ JMSGCompletionHandler 有 2 个参数：
           completionHandler:(JMSGCompletionHandler)handler;
 
 ```
-###### 例子
+##### 例子
 
 ```
 //添加黑名单
@@ -1881,7 +1883,7 @@ JMSGCompletionHandler 有 2 个参数：
    }];
 
 ```	   
-###### 跨应用删除黑名单	
+#### 跨应用删除黑名单	
 
 ```
 /*!
@@ -1904,7 +1906,7 @@ JMSGCompletionHandler 有 2 个参数：
 
 ```
 	            
-###### 例子         
+##### 例子         
 
 ```
 //删除黑名单
@@ -1915,22 +1917,14 @@ JMSGCompletionHandler 有 2 个参数：
 }];
  
 ``` 
-##### 跨应用免打扰管理
-###### 跨应用用户免打扰设置
+#### 跨应用免打扰管理
+#### 跨应用用户免打扰设置
 
 本应用用户免打扰设置中支持跨应用功能，详细使用请查看["用户免打扰设置"](#用户免打扰设置)。
-##### 跨应用好友管理
+#### 跨应用好友管理
 本应用的好友管理接口支持跨应用，详细请查看[“好友管理”](#JMSGFriendManager)
 
-### 错误码定义
+## 错误码定义
 
-参考文档：[IM 错误码列表](../client/im_errorcode)
-
-### 相关文档
-
-+ [极光IM 指南](../../guideline/jmessage_guide/)
-+ [JMessage iOS 集成指南](../../guideline/jmessage_ios_guide/)
-+ [IM 消息协议](../../advanced/im_message_protocol/)
-+ [IM SDK for Android](../../client/im_sdk_android/)
-+ [IM REST API](../../server/rest_api_im/)
+参考文档：[IM iOS SDK 错误码列表](https://docs.jiguang.cn/jmessage/client/im_errorcode_ios/)
 
