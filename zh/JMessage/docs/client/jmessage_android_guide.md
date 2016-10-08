@@ -4,7 +4,7 @@
 
 JMessage SDK 是基于 JPush SDK 开发的，完整支持 JPush 推送的全部功能。所以 IM SDK 的集成，是在 Push SDK 的集成操作基础上，附加少量的步骤来完成。
 
-如果您之前未集成 JPush SDK（推送SDK），请参考其集成文档：[JPush Android SDK 集成指南](../../guideline/android_guide/)
+如果您之前未集成 JPush SDK（推送SDK），请参考其集成文档：[JPush Android SDK 集成指南](https://docs.jiguang.cn/jpush/client/Android/android_guide/)
 
 在上述文档基础上，需要如下几个集成操作：
 
@@ -167,9 +167,9 @@ public void onCreate() {
 
 ### 功能
 
-#### Demo App
+#### Demo App - JChat
 
-极光 IM SDK 提供一个完整的 Demo App，它就是一个 IM App。或者说，如果你的 App 需求只是 IM 功能，可以只做这样两个变更就是你自己的 IM App 了：
+极光 IM 提供了一个完整的 Demo 应用 JChat，它就是一个 IM App。或者说，如果你的 App 需求只是 IM 功能，做以下两个变更就可以把它变成你自己的 IM App 了：
 
 + 换 Logo； 
 + 在 JPush Web 控制台上注册应用，获取到的 Appkey 更新到 Demo App 里。

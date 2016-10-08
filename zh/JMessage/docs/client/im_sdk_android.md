@@ -1109,7 +1109,7 @@ ContactManager.getFriendList(new GetUserInfoListCallback() {
         });
 ```
 
-##### 删除好友
+#### 删除好友
 将用户从你的好友列表中移除，移除成功后，对方会收到一条好友被移除的事件。
 
 ```
