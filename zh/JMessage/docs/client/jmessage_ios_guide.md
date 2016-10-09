@@ -1,32 +1,15 @@
-# JMessage iOS SDK 集成指南
+# iOS SDK 集成指南
 
 <style>
 img[alt=jmessage_ios] { width: 800px; }
 </style>
 
-### 文档说明
+### 集成说明
 
-本文是极光IM iOS SDK 的集成指南文档。
+极光 IM 是一个端到端的即时通讯云服务，使得多个集成 SDK 的客户端之间可以互发即时消息，让开发者可以轻松地在 App 里集成 IM 的功能，为 App 加上社交功能，从而有效地提升 App 活跃度。
 
-在你看到本文档时，可能最新的 SDK版本与本文已经不是很适配，建议关注在线文档：
+JMessage SDK 包含 JPush SDK 的全部功能，App 集成了 IM SDK 就不应再集成 JPush SDK（只提供 Push 功能的 SDK）。
 
-+ [极光文档](http://docs.jpush.io/)网站上，有极光推送相关的所有指南、API、教程等全部的文档。包括本文档的更新版本，都会及时地发布到该网站上。
-+ [极光问答](https://community.jiguang.cn/latest)网站：大家除了文档之外，还有问题与疑问，会到这里来提问题，以及时地得到解答。
-+ 如果您看到本文档时，但还未下载 JMessage SDK，请访问[SDK下载页面](../../resources_jmessage)下载。
-
-### 功能说明
-
-极光IM（JMessage）是一个端到端的即时通讯（IM）云服务，使得多个集成 SDK 的客户端之间可以互发即时消息，让开发者可以轻松地在 App 里集成 IM 的功能，为 App 加上社交功能，从而有效地提升 App 活跃度。极光IM 客户端支持 Android, iOS, Web 三个平台。
-
-本 iOS SDK 方便开发者基于 JMessage 来快捷地为 iOS App 增加 IM 功能。支持的版本≥iOS7。
-
-#### 主要功能
-
-+ 保证消息及时下发，并且不丢失消息；
-+ 单聊，群聊；
-+ 消息类型：文本、语音、图片；
-+ 用户未在线时保存离线消息；
-+ 基于 JPush 原有的大容量稳定的长连接、大容量消息并发能力；
 
 #### 主要特点
 
@@ -36,7 +19,7 @@ img[alt=jmessage_ios] { width: 800px; }
 
 #### 系统要求与开发环境
 
-JMessage iOS SDK 支持 iOS 7 以上系统版本。
++ JMessage iOS SDK 支持 iOS 7 以上系统版本。
 
 #### jmessage-sdk-ios.zip 集成压缩包
 
@@ -45,25 +28,23 @@ JMessage iOS SDK 支持 iOS 7 以上系统版本。
 * demo文件夹：示例。
 
 
-#### 包括 JPush SDK
+### SDK集成步骤
 
-如果你的 App 之前未集成过 JPush，请忽略本节，参考下节的 “SDK集成步骤”。
+如果你的 App 之前未集成过 JPush，请忽略此段，直接参考下节的集成步骤。
 
-JMessage SDK 包含 JPush SDK 的全部功能。
+如果您原来集成过 JPush iOS SDK，则可大部分保持不变。变更以下部分：
 
-如果您原来代码里集成过 JPush iOS SDK，则可大部分保持不变。变更部分如下：
++ 把之前项目工程里的 JPush SDK 文件删掉，包括头文件：APService.h，库文件  libPushSDK.a 。JMessage.framework 里已经包含 Push 部分，不删除掉会冲突。
 
-+ 集成到项目工程里的 JPush SDK 的文件删除掉，包括头文件：APService.h，库文件 libPushSDK.a。JMessage.framework 里已经包含 Push 部分，不删除掉会冲突。
 + 配置文件 PushConfig.plist 文件删除掉。不再使用配置文件，而是用代码调用提供基本参数。
 + 原来调用 APService 里 setupWithOption 做初始化，现在要换成 JMessage 里相应的方法。
 
 JMessage 新增的依赖、配置、初始化方面，请继续参考下节。
 
-### SDK集成步骤
-
 #### 1、在极光 Web控制台上创建应用
 
-* 登录[极光Web控制台](https://www.jpush.cn/common/apps)，创建应用，上传 APNs 证书。如果对 Apple APNs 证书不太了解，请参考[iOS 证书设置指南](https://docs.jiguang.cn/jpush/client/iOS/ios_cer_guide/)。
+* 登录[极光Web控制台](https://www.jiguang.cn/accounts/login/form)，创建应用，上传 APNs 证书。
+如果对 Apple APNs 证书不太了解，请参考[iOS 证书设置指南](https://docs.jiguang.cn/jpush/client/iOS/ios_cer_guide/)。
 
 ![jmessage_ios][0]
 
@@ -245,4 +226,4 @@ extern NSString *const JMSGNotification_GroupChange;             // 群组更新
 [2]: ./image/Screenshot_13-4-15_3_31.png
 [3]: ../../client_sdks/ios_api
 [4]: mailto:support@jpush.cn
-[5]: http://www.jpush.cn/qa/
+[5]: https://community.jiguang.cn/

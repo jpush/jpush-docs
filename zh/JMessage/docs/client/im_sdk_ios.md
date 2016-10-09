@@ -2,11 +2,11 @@
 
 ## 概述
 
-极光IM（英文名JMessage） SDK 基于 JPush 推送 SDK 开发，提供了 Push SDK 的完整功能，并提供 IM 即时通讯功能。
+极光 IM（英文名JMessage） SDK 基于 JPush 推送 SDK 开发，提供了 Push SDK 的完整功能，并提供 IM 即时通讯功能。
 
 App 集成了 IM SDK 就不应再集成 JPush SDK（只提供 Push 功能的 SDK）。
 
-要了解极光IM 整体的信息，请参考文档：[JMessage 产品简介](https://docs.jiguang.cn/jmessage/guideline/jmessage_guide/)
+要了解极光 IM 的详细信息，请参考文档：[JMessage 产品简介](https://docs.jiguang.cn/jmessage/guideline/jmessage_guide/)
 
 
 ### 功能
@@ -14,7 +14,7 @@ App 集成了 IM SDK 就不应再集成 JPush SDK（只提供 Push 功能的 SDK
 极光IM 最核心的功能是 IM 即时消息的功能。
 
 + 单聊，群聊；
-+ 消息类型：文本、语音、图片；
++ 消息类型：文本、语音、图片、文件、位置等；
 + 用户未在线时保存离线消息；
 + 保证消息及时下发；
 + 基于 JPush 原有的大容量稳定的长连接、大容量消息并发能力；
@@ -84,7 +84,7 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 	                            //注册失败
 	                         }
 	                     }];
-##### 用户登录
+#### 用户登录
 	/*!
 	 * @abstract 用户登录
 	 *
@@ -107,7 +107,7 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 	                      }
 	                  }];
 	                  
-##### 退出登录
+#### 退出登录
 	/*!
 	 * @abstract 当前用户退出登录
 	 *
@@ -1657,7 +1657,8 @@ JMSGCompletionHandler 有 2 个参数：
 ### 跨应用API接口
 
 #### 跨应用用户管理
-#### 批量获取跨应用的用户信息
+批量获取跨应用的用户信息
+
 	/*!
 	 * @abstract 批量获取跨应用的用户信息
 	 *
@@ -1679,7 +1680,7 @@ JMSGCompletionHandler 有 2 个参数：
 	    }
 	}];
 #### 跨应用消息管理
-#### 发送跨应用单聊文本消息
+1、发送跨应用单聊文本消息
 	
 	/*!
 	 * @abstract 发送跨应用单聊文本消息
@@ -1693,7 +1694,8 @@ JMSGCompletionHandler 有 2 个参数：
 	                       toUser:(NSString *)username
 	                       appKey:(NSString *)userAppKey;
 	
-#### 发送跨应用单聊图片消息
+2、发送跨应用单聊图片消息
+
 	/*!
 	 * @abstract 发送跨应用单聊图片消息
 	 *
@@ -1706,7 +1708,8 @@ JMSGCompletionHandler 有 2 个参数：
 	                        toUser:(NSString *)username
 	                        appKey:(NSString *)userAppKey;
 	
-#### 发送跨应用单聊语音消息
+3、发送跨应用单聊语音消息
+
 	/*!
 	 * @abstract 发送跨应用单聊语音消息
 	 *
@@ -1721,7 +1724,8 @@ JMSGCompletionHandler 有 2 个参数：
 	                        toUser:(NSString *)username
 	                        appKey:(NSString *)userAppKey;
 	                        
-#### 发送跨应用单聊文件消息
+4、发送跨应用单聊文件消息
+
 	/*!
 	 * @abstract 发送跨应用单聊文件消息
 	 *
@@ -1736,7 +1740,8 @@ JMSGCompletionHandler 有 2 个参数：
 	                       toUser:(NSString *)username
 	                       appKey:(NSString *)userAppKey;
 
-#### 发送跨应用单聊位置消息
+5、发送跨应用单聊位置消息
+
 	/*!
 	 * @abstract 发送跨应用单聊地理位置消息
 	 * @param latitude 纬度
@@ -1755,7 +1760,8 @@ JMSGCompletionHandler 有 2 个参数：
 	                           appKey:(NSString *)userAppKey;
 
 #### 跨应用会话管理
-#### 获取跨应用单聊会话
+1、获取跨应用单聊会话
+
 	/*!
 	 * @abstract 会话目标用户所在的 appKey
 	 *
@@ -1778,7 +1784,8 @@ JMSGCompletionHandler 有 2 个参数：
 	+ (JMSGConversation * JMSG_NULLABLE)singleConversationWithUsername:(NSString *)username
 	  
                                                           appKey:(NSString *)userAppKey;
-#### 创建跨应用单聊会话                                                        
+2、创建跨应用单聊会话
+
 	/*!
 	 * @abstract 创建跨应用单聊会话
 	 *
@@ -1802,7 +1809,8 @@ JMSGCompletionHandler 有 2 个参数：
         }
 	}];
 		            
-#### 删除跨应用单聊会话	
+3、删除跨应用单聊会话
+
 	/*!
 	 * @abstract 删除跨应用单聊会话
 	 *
@@ -1815,7 +1823,8 @@ JMSGCompletionHandler 有 2 个参数：
 	                                      appKey:(NSString *)userAppKey;                          
 
 #### 跨应用群组管理
-#### 添加群组跨应用成员	
+1、添加群组跨应用成员
+
 	/*!
 	 * @abstract 添加群组跨应用成员
 	 *
@@ -1832,7 +1841,8 @@ JMSGCompletionHandler 有 2 个参数：
 	    }
 	}];
 
-#### 删除群组跨应用成员                 
+2、删除群组跨应用成员
+
 	/*!
 	 * @abstract 删除群组跨应用成员
 	 *
@@ -1850,7 +1860,7 @@ JMSGCompletionHandler 有 2 个参数：
 	    }
 	}];
 #### 跨应用黑名单管理
-#### 跨应用添加黑名单	
+1、跨应用添加黑名单	
 
 ```
 /*!
@@ -1883,7 +1893,7 @@ JMSGCompletionHandler 有 2 个参数：
    }];
 
 ```	   
-#### 跨应用删除黑名单	
+2、跨应用删除黑名单	
 
 ```
 /*!
@@ -1918,7 +1928,7 @@ JMSGCompletionHandler 有 2 个参数：
  
 ``` 
 #### 跨应用免打扰管理
-#### 跨应用用户免打扰设置
+跨应用用户免打扰设置
 
 本应用用户免打扰设置中支持跨应用功能，详细使用请查看["用户免打扰设置"](#用户免打扰设置)。
 #### 跨应用好友管理

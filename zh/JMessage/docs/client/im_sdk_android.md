@@ -492,7 +492,7 @@ public static Message createGroupCustomMessage(long groupID,
 - 是否删除成功。
 
 ###<span id="Event">事件处理</span>
-#### 1、事件接收类的注册
+#### 事件接收类的注册
 ```
   public static void registerEventReceiver(Object receiver);
   public static void registerEventReceiver(Object receiver, int priority);
@@ -503,7 +503,7 @@ public static Message createGroupCustomMessage(long groupID,
 + Object receiver 消息接收类对象
 + int priority 定义事件接收者接收事件的优先级，默认值为0，优先级越高将越先接收到事件。（优先级只对同一个线程模式中的接收者有效）
 
-#### 2、事件接收类的解绑
+#### 事件接收类的解绑
 ```
   public static void unRegisterEventReceiver(Object receiver);
 ```
@@ -512,7 +512,7 @@ public static Message createGroupCustomMessage(long groupID,
 
 + Object receiver 消息接收类对象，对象解绑之后将不再接收到任何event。
 
-#### 3、事件接收
+#### 事件接收
 注册事件接收类之后，需要在消息接收类中实现如下方法来接收对应消息。sdk将根据实现方法的方法名来区分不同的线程模式，常用的线程模式有onEvent(默认线程模式)和onEventMainThread(主线程模式)两种。
 
 可以通过定义不同类型的参数，来接收不同种类的事件。具体事件类型定义见 “事件类型” 一节
@@ -541,7 +541,7 @@ public void onEventMainThread(EventEntity event){
 + EventEntity event 事件对象。
 
 
-#### 4、事件类型
+#### 事件类型
 
 消息事件实体类 MessageEvent
 
@@ -661,7 +661,7 @@ public void onEventMainThread(EventEntity event){
 </div>
 
 
-####5、示例代码
+#### 示例代码
 接收消息事件
 ```Java
 class MessageEventReceiver extends Activity{
