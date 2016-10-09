@@ -1,8 +1,8 @@
-<h1>IM REST API</h1>
+# IM REST API
 
-极光IM API 为开发者提供 IM 相关功能的 HTTP API。
+极光 IM API 为开发者提供 IM 相关功能的 HTTP API。
 
-这类 API 地址统一为（注意与 Push API 不同）：https://api.im.jpush.cn
+这类 API 地址统一为（注意与 Push API 不同）：https://api.im.jpush.cn  
 
 **HTTP 验证**
 
@@ -85,7 +85,6 @@ Authorization: Basic base64_auth_string
 ###  用户注册
 
 
-
 #### 注册用户
 
 批量注册用户到极光IM 服务器，一次批量注册最多支持500个用户。
@@ -132,9 +131,9 @@ JSON Array.
 	+ 899001   用户已存在
 
 
-#### Admin
+### Admin
 
-##### **Admin Register 管理员注册**
+#### Admin Register 管理员注册
 
 ```
 POST /v1/admins/
@@ -161,20 +160,20 @@ HTTP/1.1 201 Created
 Content-Type: application/json; charset=utf-8 
 ```
 
-##### **GetAdminsListByAppkey  获取应用管理员列表** 
+#### GetAdminsListByAppkey  获取应用管理员列表
 
 ```
 GET /v1/admins?start={start}&count={count}
 ```
 ##### Example Request
 
-###### Request Header 
+##### Request Header 
 
 ```
 GET /admins?start=1&count=30
 Accept: application/json
 ```
-###### Request Body
+##### Request Body
 
 ```
 N/A
@@ -186,13 +185,13 @@ N/A
 
 ##### Example Response
 
-###### Response Header
+##### Response Header
 
 ```
 HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8
 ```
-###### Response Data 
+##### Response Data 
 
 ```
 {
@@ -1017,7 +1016,7 @@ Example Response
 
 ### 跨应用API
 
-####跨应用管理群组成员
+#### 跨应用管理群组成员
 	POST  /v1/cross/groups/{gid}/members
 Request Params
 
@@ -1061,7 +1060,7 @@ Error Code
 + 899014  用户不存在于群组；
 + 899011  用户已经存在于群组；
 
-####  跨应用获取群组成员列表
+#### 跨应用获取群组成员列表
 
     GET /v1/cross/groups/{Group id}/members/
 
@@ -1232,15 +1231,8 @@ HTTP 返回码参考文档：[HTTP-Status-Code](../server/http_status_code)
 }
 ```
 
-#### 业务错误码定义
+### 业务错误码定义
 
 [IM Server ErrorCode](../../client/im_errorcode/#server-error)
 
-
-### 相关文档
-
-+ [极光IM 指南](../guideline/jmessage_guide/)
-+ [IM 消息协议](../advanced/im_message_protocol/)
-+ [IM SDK for Android](../client/im_sdk_android/)
-+ [IM SDK for iOS](../client/im_sdk_ios/)
 

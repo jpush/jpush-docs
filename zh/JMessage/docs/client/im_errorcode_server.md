@@ -1,6 +1,6 @@
-## IM SDK ErrorCode 定义
+# IM SDK ErrorCode 定义
 
-#### Server Error 
+### Server Error 
 
 JMessage 服务器端报的错误码。有可能出现在各平台的 SDK 里。
 
