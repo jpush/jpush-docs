@@ -27,7 +27,7 @@
 
 ### Capabilities
 由于SDK内部加密协议涉及KeyChain，如使用Xcode8及以上环境开发，在模拟器运行调试时请开启Application Target的Capabilities->KeyChain Sharing选项，如图：  
-![jsms_ios](/Users/jpush/Develop/jpush-docs/zh/JSMS/docs/client/image/Jsms-ios-1.png)
+![jsms_ios][1]
 
 ### 添加代码
 ```
@@ -205,3 +205,5 @@
 | 4018   | 验证码已经验证过              |      |
 | 5000   | 服务端错误               |      |
 
+
+[1]: ./image/Jsms-ios-1.png
