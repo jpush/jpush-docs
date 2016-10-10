@@ -1,6 +1,25 @@
 # 最近更新
 
-### JMessage iOS SDK v2.1.8
+
+### JS SDK v1.2.0
+
+#### 更新时间
++ 2016-10-10
+
+#### Change Log
+##### New Feature
+
++ 增加发送图片接口
++ 增加用户注册接口
++ 增加黑名单的跨应用接口
++ 增加群组跨应用支持
++ 优化Demo
+
+#### 升级提示
++ 建议升级！
+
+
+### iOS SDK v2.1.8
 
 #### 更新时间
 + 2016-09-22
@@ -16,11 +35,11 @@
 
 
 
-### JMessage Android SDK v1.4.2
+### Android SDK v1.4.2
 #### 更新时间
 + 2016-09-21
 
-#### JMessage SDK Change Log
+#### SDK Change Log
 
 ##### Bug Fix
 
@@ -34,11 +53,11 @@
 + 如果是从更早起的版本升级过来，建议参考 SDK下载包最新版本的 demo 来更新 AndroidManifest.xml 文件配置
 
 
-### JMessage Android SDK v1.4.1
+### Android SDK v1.4.1
 #### 更新时间
 + 2016-09-14
 
-#### JMessage SDK Change Log
+#### SDK Change Log
 
 ##### Bug Fix
 
@@ -52,7 +71,7 @@
 + 如果是从更早起的版本升级过来，建议参考 SDK下载包最新版本的 demo 来更新 AndroidManifest.xml 文件配置
 
 
-### JMessage iOS SDK v2.1.7
+### iOS SDK v2.1.7
 
 #### 更新时间
 + 2016-09-09
@@ -65,11 +84,11 @@
 + 使用新版本的JMessage.framework文件替换原工程下的同名旧文件
 
 
-### JMessage Android SDK v1.4.0
+### Android SDK v1.4.0
 #### 更新时间
 + 2016-09-09
 
-#### JMessage SDK Change Log
+#### SDK Change Log
 
 ##### Bug Fix
 
@@ -122,7 +141,7 @@
 + 如果是从更早起的版本升级过来，建议参考 SDK下载包最新版本的 demo 来更新 AndroidManifest.xml 文件配置。
 
 
-### JMessage iOS SDK v2.1.6
+### iOS SDK v2.1.6
 
 #### 更新时间
 + 2016-09-01
@@ -135,7 +154,7 @@
 + 使用新版本的JMessage.framework文件替换原工程下的同名旧文件
 
 
-### JMessage JS SDK v1.1.2
+### JS SDK v1.1.2
 
 #### 更新时间
 + 2016-08-31
@@ -147,7 +166,7 @@
 + 建议升级！
 
 
-### JMessage JS SDK v1.1.1
+### JS SDK v1.1.1
 
 #### 更新时间
 + 2016-08-30
@@ -158,7 +177,7 @@
 #### 升级提示
 + 建议升级！
 
-### JMessage JS SDK v1.1.0
+### JS SDK v1.1.0
 
 #### 更新时间
 + 2016-08-26
@@ -171,7 +190,7 @@
 #### 升级提示
 + 建议升级！
 
-### JMessage JS SDK v1.0.1
+### JS SDK v1.0.1
 
 #### 更新时间
 + 2016-08-19
@@ -185,11 +204,11 @@
 + 可选升级！
 
 
-### JMessage IOS SDK v2.1.5
+### iOS SDK v2.1.5
 #### 更新时间
 + 2016-08-13
 
-#### JMessage SDK Change Log
+#### SDK Change Log
 
 ##### BugFix:
 + 修复本地时间和服务器时间不一致时，消息顺序错乱的问题
@@ -198,11 +217,11 @@
 + 使用新版本的JMessage.framework文件替换原工程下的同名旧文件
 
 
-### JMessage Android SDK v1.3.1
+### Android SDK v1.3.1
 #### 更新时间
 + 2016-08-13
 
-#### JMessage SDK Change Log
+#### SDK Change Log
 
 ##### Bug Fix
 
@@ -221,12 +240,12 @@
 + 如果是从更早起的版本升级过来，建议参考 SDK下载包最新版本的 demo 来更新 AndroidManifest.xml 文件配置。
 
 
-### JMessage IOS SDK v2.1.3
+### iOS SDK v2.1.3
 
 #### 更新时间
 + 2016-07-15
 
-#### JMessage SDK Change Log
+#### SDK Change Log
 
 ##### New Feature
 + 新增：本应用和跨应用的免打扰功能；
@@ -273,7 +292,7 @@
 #### 升级指南
 + 使用新版本的JMessage.framework文件替换原工程下的同名旧文件！
 
-### JMessage JS SDK v1.0.0
+### JS SDK v1.0.0
 
 #### 更新时间
 + 2016-07-13
@@ -288,12 +307,12 @@
 + 可选升级！
 
 
-### JMessage Android SDK v1.3.0
+### Android SDK v1.3.0
 
 #### 更新时间
 + 2016-07-12
 
-#### JMessage SDK Change Log
+#### SDK Change Log
 
 ##### New Feature
 + 增加群组、黑名单、免打扰功能的跨应用能力
@@ -340,7 +359,7 @@
 + 如果是从更早起的版本升级过来，建议参考 SDK下载包最新版本的 demo 来更新 AndroidManifest.xml 文件配置。
 
 
-### JMessage iOS SDK v2.1.1
+### iOS SDK v2.1.1
 
 #### 更新时间
 * 2016-06-15
@@ -363,12 +382,12 @@
 
 
 
-### JMessage Android SDK v1.2.5
+### Android SDK v1.2.5
 
 #### 更新时间
 + 2016-06-12
 
-#### JMessage SDK Change Log
+#### SDK Change Log
 
 ##### New Feature
 + Conversation对象新增设置本地未读消息数的接口
@@ -404,7 +423,7 @@
 + 如果是从更早起的版本升级过来，建议参考 SDK下载包最新版本的 example 来更新 AndroidManifest.xml 文件配置。
 
 
-### JMessage iOS SDK v2.1.0
+### iOS SDK v2.1.0
 
 #### 更新时间
 * 2016-05-10
@@ -423,12 +442,14 @@
 
 #### 升级指南
 + 使用新版本的JMessage.framework文件替换原工程下的同名旧文件
-### JMessage Android SDK v1.2.3
+
+
+### Android SDK v1.2.3
 
 #### 更新时间
 + 2016-04-07
 
-#### JMessage SDK Change Log
+#### SDK Change Log
 
 ##### Bug Fix
 
@@ -446,12 +467,14 @@
 + 将so库更新至 libjpush213.so 同时删除原来老版本so。注意不同的cpu型号对应的结构
 + 由于富媒体的展示需求，SDK 中增加一个res文件夹存放资源文件。用户需将对应文件夹下的资源文件放入工程的目录中。
 + 如果是从更早起的版本升级过来，建议参考 SDK下载包最新版本的 example 来更新 AndroidManifest.xml 文件配置。
-### JMessage Android SDK v1.2.1
+
+
+### Android SDK v1.2.1
 
 #### 更新时间
 + 2016-03-31
 
-#### JMessage SDK Change Log
+#### SDK Change Log
 
 ##### New Feature
 + 新增免打扰功能
@@ -499,7 +522,7 @@
 + 由于富媒体的展示需求，SDK 中增加一个res文件夹存放资源文件。用户需将对应文件夹下的资源文件放入工程的目录中。
 + 如果是从更早起的版本升级过来，建议参考 SDK下载包最新版本的 example 来更新 AndroidManifest.xml 文件配置。
 
-### JMessage iOS SDK v2.0.1
+### iOS SDK v2.0.1
 
 #### 更新时间
 * 2016-03-22
@@ -520,13 +543,13 @@
 + 使用新版本的JMessage.framework文件替换原工程下的同名旧文件
 
 
-### JMessage Android SDK v1.2.0
+### Android SDK v1.2.0
 
 #### 更新时间
 
 + 2016-03-07
 
-#### JMessage SDK Change Log
+#### SDK Change Log
 
 ##### New Feature
 + 实现跨应用聊天
@@ -592,7 +615,7 @@
 + 由于富媒体的展示需求，SDK 中增加一个res文件夹存放资源文件。用户需将对应文件夹下的资源文件放入工程的目录中。
 + 如果是从更早起的版本升级过来，建议参考 SDK下载包最新版本的 example 来更新 AndroidManifest.xml 文件配置。
 
-### JMessage iOS SDK v2.0.0
+### iOS SDK v2.0.0
 
 #### 更新时间
 * 2016-02-22
@@ -616,13 +639,13 @@
 #### 升级指南
 + 使用新版本的JMessage.framework文件替换原工程下的同名旧文件
 
-### JMessage Android SDK v1.1.5
+### Android SDK v1.1.5
 
 #### 更新时间
 
 * 2015-12-11
 
-#### JMessage SDK Change Log
+#### SDK Change Log
 
 ##### New Feature
 
@@ -681,12 +704,14 @@
 * 将so库更新至 libjpush205.so 同时删除原来老版本so。注意不同的cpu型号对应的结构
 * 由于富媒体的展示需求，SDK 中增加一个res文件夹存放资源文件。用户需将对应文件夹下的资源文件放入工程的目录中。
 * 如果是从更早的版本升级过来，建议参考 SDK下载包最新版本的 example 来更新 AndroidManifest.xml 文件配置。
-### JMessage Android SDK v1.1.4
+
+
+### Android SDK v1.1.4
 #### 更新时间
 
 * 2015-09-28
 
-#### JMessage SDK Change Log
+#### SDK Change Log
 
 ##### New Feature
 
@@ -751,7 +776,7 @@ getLatestType()、getLatestText()
 
 
 
-### JMessage iOS SDK v1.0.6
+### iOS SDK v1.0.6
 
 #### 更新时间
 * 2015-09-14
@@ -783,7 +808,7 @@ getLatestType()、getLatestText()
 #### 升级指南
 + 使用新版本的JMessage.framework文件替换原工程下的同名旧文件
 
-### JMessage Android SDK v1.1.3
+### Android SDK v1.1.3
 
 #### 更新时间
 2015-08-17
@@ -805,7 +830,9 @@ getLatestType()、getLatestText()
 #### 升级指南
 + jar包更新至jmessage-android-1.1.3.jar，更新时需删除老版本jar
 + so库更新，/libs/armeabi/libjpush205.so.同时删除原来老版本的so
-### JMessage Android SDK v1.0.18
+
+
+### Android SDK v1.0.18
 #### 更新时间
 2015-04-01
 
