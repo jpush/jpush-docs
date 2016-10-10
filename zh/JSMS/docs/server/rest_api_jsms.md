@@ -26,7 +26,7 @@ Authorization: Basic base64_auth_string
 
 ### 功能说明
 
-- 向手机号下发短信验证码。
+- 下发短信验证码。
 
 ### 调用地址
 
@@ -68,7 +68,7 @@ curl --insecure -X POST -v https://api.sms.jpush.cn/v1/codes -H "Content-Type: a
 
 ### 功能说明
 
-- 向手机号下发语音短信验证码。
+- 下发语音验证码。
 
 ### 调用地址
 
