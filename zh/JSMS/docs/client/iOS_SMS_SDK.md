@@ -22,20 +22,17 @@
 ### Build Settings
 
 + 在项目配置，Build Settings，Other Linker Flags 里增加  -ObjC ;
-+ 如果使用的是Xcode7编译时，需要在App项目的plist手动加入以下Source Code 以支持iOS 9 的 http传输:
+<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">	<p>1.2.0版本之后，sdk完全支持https传输，不需要再进行AppTransportSecurity相关设置。
+</div>
 
-`
-<key>NSAppTransportSecurity</key>
-    <dict>
-   <key>NSAllowsArbitraryLoads</key>
-   <true/> 
- </dict>
-`
+### Capabilities
+由于SDK内部加密协议涉及KeyChain，如使用Xcode8及以上环境开发，在模拟器运行调试时请开启Application Target的Capabilities->KeyChain Sharing选项，如图：  
+![jsms_ios](/Users/jpush/Develop/jpush-docs/zh/JSMS/docs/client/image/Jsms-ios-1.png)
 
 ### 添加代码
-
-#### + (void)registerWithAppKey:(NSString * __nullable)appkey; 
-
+```
+ + (void)registerWithAppKey:(NSString * _Nonnull)appkey; 
+```
 **接口说明**
 
 注册SDK接口：在官网创建应用,创建成功后自动生成 AppKey 用以标识该应用
@@ -49,50 +46,85 @@
       //从官网注册获取
       //注册短信验证的appKey
       [JSMSSDK registerWithAppKey:kAppKey];
-  
+
       return YES;
  }
 ```
 
 ```
-+ (void)getVerificationCodeWithPhoneNumber:(NSString * __nullable)number 
-                          andTemplateID:(NSString * __nullable)templateID
-                          completionHandler:(JSMSCompletionHandler __nullable)handler;
++ (void)getVerificationCodeWithPhoneNumber:(NSString * _Nonnull)number 
+                             andTemplateID:(NSString * _Nonnull)templateID
+                         completionHandler:(JSMSCompletionHandler _Nonnull)handler;
 ```
 
 
 
 **接口说明**
 
-获取验证码接口：创建获取验证码的按钮，或者是在自己已有的界面的按钮事件里调用获取验证码的方法
+获取短信验证码接口：创建获取短信验证码的按钮，或者是在自己已有的界面的按钮事件里调用获取短信验证码的方法
 
 **参数说明：**
 
 + number :手机号码
-+ tempID：短信模板ID，目前服务器只提供+ tempID：@“1”
-+ handler：请求成功或者失败的回调
++ templateID:短信模板ID
++ handler:请求成功或者失败的回调
 
 **调用示例：**
 
 ```
 
-//点击获取验证码
- - (IBAction)sendAuthCode:(id)sender {
+//点击获取短信验证码
+ - (IBAction)sendSmsAuthCode:(id)sender {
   
-     [self.view endEditing: YES];
-     [JSMSSDK getVerificationCodeWithPhoneNumber:@"15220000000" andTemplateID:@"1" completionHandler:^(id resultObject, NSError *error) {
-     if (!error) {
-         NSLog(@"Get Verification Code success!");
-     }else{
-         NSLog(@"Get Verification Code failure!");
+     [JSMSSDK getVerificationCodeWithPhoneNumber:@"152xxxxxxxx" andTemplateID:@"1" completionHandler:^(id resultObject, NSError *error) {
+     	if (!error) {
+         	NSLog(@"Get verification code success!");
+     	}else{
+         	NSLog(@"Get verification code failure!");
+         	NSLog(@"%@",error);
+     	}
+     }];
+ }
+```
+<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">	<p>1.2.0版本新增--获取语音验证码接口。
+</div>
+
+```
++ (void)getVoiceVerificationCodeWithPhoneNumber:(NSString * _Nonnull)number
+                              completionHandler:(JSMSCompletionHandler _Nonnull)handler;
+```
+
+**接口说明**
+
+获取语音验证码接口：创建获取语音验证码的按钮，或者是在自己已有的界面的按钮事件里调用获取语音验证码的方法
+
+**参数说明：**
+
++ number :手机号码
++ handler:请求成功或者失败的回调
+
+**调用示例：**
+
+```
+
+//点击获取语音验证码
+ - (IBAction)sendVoiceAuthCode:(id)sender {
+  
+     [JSMSSDK getVoiceVerificationCodeWithPhoneNumber:@"152xxxxxxxx" completionHandler:^(id resultObject, NSError *error) {
+     	if (!error) {
+         	NSLog(@"Get voice verification code success!");
+     	}else{
+         	NSLog(@"Get voice verification code failure!");
+         	NSLog(@"%@",error);
+     	}
      }];
  }
 ```
 
 ```
-+ (void)commitWithPhoneNumber:(NSString * __nullable)number
-                     verificationCode:(NSString * __nullable)vCode
-                  completionHandler:(JSMSCompletionHandler __nullable)handler;
++ (void)commitWithPhoneNumber:(NSString * _Nonnull)number
+             verificationCode:(NSString * _Nonnull)vCode
+            completionHandler:(JSMSCompletionHandler _Nonnull)handler;
 ```
 
 **接口说明**
@@ -101,7 +133,7 @@
 
 **参数说明：**
 
-+ number  手机号码
++ number:手机号码
 + vCode:短信验证码
 + handler:请求成功或者失败的回调
 
@@ -109,27 +141,51 @@
 
 ```
 //验证验证码 
- [JSMSSDK commitWithPhoneNumber:@"15220000000" verificationCode:@"123456" completionHandler:^(id resultObject, NSError *error) {
+ [JSMSSDK commitWithPhoneNumber:@"152xxxxxxxx" verificationCode:@"123456" completionHandler:^(id resultObject, NSError *error) {
       if (!error) {
-           NSLog(@"Commit Verification Code success!");
+           NSLog(@"Commit verification vode success!");
       }else{
            NSLog(@"%@",error);
-           NSLog(@"Commit Verification Code failure!");
+           NSLog(@"Commit verification code failure!");
       }
  }];
 ```
 
+<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">	<p>1.2.0版本新增--设置获取验证码请求时间间隔的接口。
+</div>
+
+```
++ (void)setMinimumTimeInterval:(NSTimeInterval)seconds;
+```
+**接口说明**
+
+设置获取验证码请求时间间隔的接口：在设置时间间隔内只能发送一次获取验证码的请求。如果不调用此接口，sdk默认间隔是30s
+
+**参数说明：**
+
++ seconds:时间间隔
+
+**调用示例：**
+
+```
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+  
+      [JSMSSDK setMinimumTimeInterval:60];
+      return YES;
+ }
+```
 ## 错误码描述
 
 | 错误码 | 错误码描述               | 备注 |
 |--------|--------------------------|------|
 | 2993   | uuid错误，验证码验证失败 |      |
-| 2996   | 两次请求在一分钟内       |      |
-| 2997   | 请首先获取验证码         |      |
+| 2994   | 参数错误               |      |
+| 2996   | 两次请求在最小时间间隔内  |      |
+| 2997   | 号码改变，请首先获取验证码 |      |
 | 2998   | 网络错误                 |      |
 | 2999   | 其他错误                 |      |
 | 3001   | 请求超时                 |      |
-| 3002   | 无效的手机号码           |      |
+| 4204   | 无效的手机号码           |      |
 | 4001   | body为空                 |      |
 | 4002   | 无效的appkey             |      |
 | 4003   | 无效的来源               |      |
@@ -146,5 +202,6 @@
 | 4015   | 验证码不正确             |      |
 | 4016   | 没有余额                 |      |
 | 4017   | 验证码超时               |      |
+| 4018   | 验证码已经验证过              |      |
 | 5000   | 服务端错误               |      |
 
