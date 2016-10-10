@@ -131,7 +131,7 @@ JSON Array.
 	+ 899001   用户已存在
 
 
-### Admin
+### Admin 注册
 
 #### Admin Register 管理员注册
 
