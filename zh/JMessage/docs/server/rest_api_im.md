@@ -713,7 +713,7 @@ Response Data
 #### 文件上传
 
 ```
-POST /resource?type=image
+POST /v1/resource?type=image
 ```
 ##### Example Request
 
