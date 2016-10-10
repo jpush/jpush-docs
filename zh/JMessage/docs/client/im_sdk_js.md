@@ -1,4 +1,4 @@
-## JMessage WEB SDK 开发文档
+<h1>WEB SDK 开发指南</h1>
 
 ### SDK概述
 
