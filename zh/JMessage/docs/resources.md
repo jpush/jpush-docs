@@ -15,7 +15,7 @@
                 <div class="download-title">
                     <span id="release-title">Android - SDK</span>
                     <span id="release-version">v1.4.2</span>
-                    <span id="release-time">2016-09-21</span>
+                    <span id="release-time">2016.09.21</span>
                 </div>
                 <div class="download-info">
                     <ul class="download-info-ul">
@@ -43,7 +43,7 @@
                 <div class="download-title">
                     <p id="release-title">iOS - SDK</p>
                     <span id="release-version">v2.18</span>
-                    <span id="release-time">2016-09-22</span>
+                    <span id="release-time">2016.09.22</span>
                 </div>
                 <div class="download-info">
                     <ul class="download-info-ul">
@@ -71,7 +71,7 @@
                 <div class="download-title">
                     <p id="release-title">JS - SDK</p>
                     <span id="release-version">v1.2.0</span>
-                    <span id="release-time">2016-10-10</span>
+                    <span id="release-time">2016.10.10</span>
                 </div>
                 <div class="download-info">
                     <ul class="download-info-ul">
