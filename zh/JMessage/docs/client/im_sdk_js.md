@@ -230,7 +230,7 @@ JIM.sendGroupMsg(group_id, 'Hi, JPush', function(data) {
 
 ##### MsgBuilder
 
-MsgBuilder提供链式调用风格的API帮助开发者构建符合[JMessage消息协议](http://docs.jiguang.cn/advanced/im_message_protocol/)的聊天消息对象。
+MsgBuilder提供链式调用风格的API帮助开发者构建符合[JMessage消息协议](https://docs.jiguang.cn/jmessage/advanced/im_message_protocol/)的聊天消息对象。
 
 主要提供一下方法:  
 
