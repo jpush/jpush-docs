@@ -136,9 +136,9 @@ try {
 
 ## Tag、Alias、Registrationid需要每次初始化时都重新设置吗，会变化吗？
 
-+ tag、alias可以参考[别名与标签 API](android_api)进行设置，每次设置是覆盖设置，而不是增量设置。Tag和alias一经设置成功，除非取消或覆盖，是不会变化的。设置好的tag、alias与客户端的对应关系保存在JPush服务器，目前没有从JPush服务器查询这个对应关系的接口，所以需要客户将对应关系保存在APP应用服务器。
++ tag、alias可以参考[别名与标签 API](../android_api/#api_1)进行设置，每次设置是覆盖设置，而不是增量设置。Tag和alias一经设置成功，除非取消或覆盖，是不会变化的。设置好的tag、alias与客户端的对应关系保存在JPush服务器，目前没有从JPush服务器查询这个对应关系的接口，所以需要客户将对应关系保存在APP应用服务器。
 
-+ Registrationid是客户端SDK第一次成功连接到Jpush服务器时，Jpush服务器给分配的。可以通过[获取 RegistrationID](android_api) API来获取Registrationid进行推送。Registrationid对应一个应用的一个客户端。
++ Registrationid是客户端SDK第一次成功连接到Jpush服务器时，Jpush服务器给分配的。可以通过[获取 RegistrationID](../android_api/#registrationid-api) API来获取Registrationid进行推送。Registrationid对应一个应用的一个客户端。
 
 <br />
 

@@ -568,8 +568,8 @@ SDK 对自定义消息，只是传递，不会有任何界面上的展示。
 
 ###  相关文档
 
-+ Android[别名与标签使用教程](/client/android_api/#api_1)
-+ [标签与别名 API (iOS)](/client/ios_api/#api-ios)
++ Android[别名与标签使用教程](/client/Android/android_api/#api_1)
++ [标签与别名 API (iOS)](/client/iOS/ios_api/#api-ios)
 
 ## 获取 RegistrationID API
 ### 支持的版本
