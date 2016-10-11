@@ -13,7 +13,7 @@
             </div>
             <div class="download-right">
                 <div class="download-title">
-                    <p id="release-title">Android - SDK</p>
+                    <span id="release-title">Android - SDK</span>
                     <span id="release-version">release-version</span>
                     <span id="release-time">release-time</span>
                 </div>

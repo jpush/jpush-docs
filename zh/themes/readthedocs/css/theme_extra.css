@@ -554,12 +554,15 @@ code.cs, code.c {
   max-height: 80px;
 }
 #release-title{
+  float:left;
   font-size: 16px;
   color: #1b75bb;
   margin-top: 16px;
 }
 
 #release-version,#release-time{
+  margin-left: 20px;
+  margin-top: 20px;
   font-size: 12px;
   color: #666666;
   float:left;
