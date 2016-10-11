@@ -651,7 +651,7 @@ msg_type:image
 
 + JSON Object.
 
-+ 遵循协议文档：[IM 消息协议](../../advanced/im_message_protocol/)
++ 遵循协议文档：[IM 消息协议](https://docs.jiguang.cn/jmessage/advanced/im_message_protocol/)
 
 + 此api只能用admin用户发送
 
@@ -1215,7 +1215,7 @@ Response Data
 
 ### HTTP 返回
 
-HTTP 返回码参考文档：[HTTP-Status-Code](../server/http_status_code)
+HTTP 返回码参考文档：[HTTP-Status-Code](https://docs.jiguang.cn/jpush/server/push/http_status_code/)
 
 #### Example Error Response
 
@@ -1233,6 +1233,6 @@ HTTP 返回码参考文档：[HTTP-Status-Code](../server/http_status_code)
 
 ### 业务错误码定义
 
-[IM Server ErrorCode](../../client/im_errorcode/#server-error)
+[IM Server ErrorCode](https://docs.jiguang.cn/jmessage/client/im_errorcode_server/)
 
 
