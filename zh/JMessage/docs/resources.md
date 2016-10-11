@@ -13,7 +13,9 @@
             </div>
             <div class="download-right">
                 <div class="download-title">
-                    <p>Android - SDK</p>
+                    <p id="release-title">Android - SDK</p>
+                    <span id="release-version">release-version</span>
+                    <span id="release-time">release-time</span>
                 </div>
                 <div class="download-info">
                     <ul class="download-info-ul">
@@ -39,7 +41,9 @@
             </div>
             <div class="download-right">
                 <div class="download-title">
-                    <p>iOS - SDK</p>
+                    <p id="release-title">iOS - SDK</p>
+                    <span id="release-version">release-version</span>
+                    <span id="release-time">release-time</span>
                 </div>
                 <div class="download-info">
                     <ul class="download-info-ul">
@@ -65,7 +69,9 @@
             </div>
             <div class="download-right">
                 <div class="download-title">
-                    <p>JS - SDK</p>
+                    <p id="release-title">JS - SDK</p>
+                    <span id="release-version">release-version</span>
+                    <span id="release-time">release-time</span>
                 </div>
                 <div class="download-info">
                     <ul class="download-info-ul">
