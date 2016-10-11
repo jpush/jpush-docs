@@ -427,6 +427,13 @@ iOS 平台上 APNs 通知结构。
 			<td>推送的时候携带"content-available":true 说明是 Background Remote Notification，如果不携带此字段则是普通的Remote Notification。详情参考：<a href="../../client/iOS/ios_new_features/#ios-7-background-remote-notification">Background Remote Notification</a></td>
 		</tr>
 		<tr >
+			<td>mutable-available</td>
+			<td>boolean</td>
+			<td>可选</td>
+			<td width="20%">通知扩展</td>
+			<td>推送的时候携带”mutable-available":true 说明是支持iOS10的UNNotificationServiceExtension，如果不携带此字段则是普通的Remote Notification。详情参考：<a href="../../client/iOS/ios_new_fetures/#ios-10-service-extension">[UNNotificationServiceExtension]</a></td>
+		</tr>
+		<tr >
 			<td>category</td>
 			<td>string</td>
 			<td>可选</td>
@@ -437,7 +444,7 @@ iOS 平台上 APNs 通知结构。
 			<td>extras</td>
 			<td>JSON Object</td>
 			<td>可选</td>
-			<td width="20%">扩展字段</td>
+			<td width="20%">附加字段</td>
 			<td>这里自定义 Key/value 信息，以供业务使用。</td>
 		</tr>
 	</table>
