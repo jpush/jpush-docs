@@ -590,10 +590,9 @@ code.cs, code.c {
   list-style-type: disc;
   color: #666666;
   font-size: 12px;
-  margin-right: 5px;
+  margin-right: 50px;
   float: left;
-  min-width: 160px;
-  margin-left: 15px;
+
 }
 
 .download .download-info-ul li a{
