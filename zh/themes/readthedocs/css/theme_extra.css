@@ -553,11 +553,18 @@ code.cs, code.c {
   max-width: 103px;
   max-height: 80px;
 }
-.download-title p{
+#release-title{
   font-size: 16px;
   color: #1b75bb;
   margin-top: 16px;
 }
+
+#release-version,#release-time{
+  font-size: 12px;
+  color: #666666;
+  float:left;
+}
+
 
 .download-info p{
   font-size: 14px;
