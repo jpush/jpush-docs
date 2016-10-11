@@ -1,48 +1,15 @@
 # SMS Code API <small>v1</small>
 <div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px;">
 <ul style="margin-bottom: 0;">
-<li>发送短信验证码</li>
+<li>发送短信、语音验证码</li>
 <li>验证短信验证码</li>
 <li>使用 HTTP Basic Authentication 的方式做访问授权。这样整个 API 请求可以使用常见的 HTTP 工具来完成，比如：curl，浏览器插件等；</li>
 <li>内容完全使用 JSON 的格式；</li>
 </ul>
 </div>
 </br>
-## 发送验证码API
 
-
-### 功能说明
-
-- 向手机号下发短信验证码。
-
-### 调用地址
-
-- POST https://api.sms.jpush.cn/v1/codes
-
-### 请求示例
-
-```
-curl --insecure -X POST -v https://api.sms.jpush.cn/v1/codes -H "Content-Type: application/json" -u "7d431e42dfa6a6d693ac2d04:5e987ac6d2e04d95a9d8f0d1" -d '{"mobile":"xxxxxxxxxxx","temp_id":1}'
-
-```
-
-#### 参数
-
-|KEY|REQUIRE|DESCRIPTION|
-|----|----|----|
-|mobile|TRUE|手机号码|
-|temp_id|TRUE|模板ID|
-
-### 返回示例
-
-```
-< HTTP/1.1 200 OK
-< Content-Type: application/json
-{"msg_id":"06890980-6789-4054-bba9-90fb66ab2fce"}
-
-```
-
-### 调用验证
+## HTTP 验证
 
 HTTP Header（头）里加一个字段（Key/Value对）：
 
@@ -55,7 +22,91 @@ Authorization: Basic base64_auth_string
 
 即:对 appKey 加上冒号，加上 masterSecret 拼装起来的字符串，再做 base64 转换。
 
-## 验证API
+## 短信验证码 API
+
+### 功能说明
+
+- 下发短信验证码。
+
+### 调用地址
+
+- POST https://api.sms.jpush.cn/v1/codes
+
+### 请求示例
+
+```
+curl --insecure -X POST -v https://api.sms.jpush.cn/v1/codes -H "Content-Type: application/json" -u "7d431e42dfa6a6d693ac2d04:5e987ac6d2e04d95a9d8f0d1" -d '{"mobile":"xxxxxxxxxxx","temp_id":*}'
+```
+
+#### 参数
+
+|KEY|REQUIRE|DESCRIPTION|
+|----|----|----|
+|mobile|TRUE|手机号码|
+|temp_id|TRUE|模板ID|
+
+### 返回示例
+
+#### 发送成功
+
+```
+{"msg_id":"06890980-6789-4054-bba9-90fb66ab2fce"}
+```
+
+#### 发送失败
+
+```
+{
+    "error": {
+        "code": "***",
+        "message": "***"
+    }
+}
+```
+
+## 语音短信验证码 API
+
+### 功能说明
+
+- 下发语音验证码。
+
+### 调用地址
+
+- POST https://api.sms.jpush.cn/v1/voice_codes
+
+### 请求示例
+
+```
+curl --insecure -X POST -v https://api.sms.jpush.cn/v1/voice_codes -H "Content-Type: application/json" -u "7d431e42dfa6a6d693ac2d04:5e987ac6d2e04d95a9d8f0d1" -d '{"mobile":"xxxxxxxxxxxxxx", "ttl":60}'
+```
+
+### 参数
+
+|KEY|REQUIRE|DESCRIPTION|
+|----|----|----|
+|mobile|TRUE|手机号码|
+|ttl|FALSE|超时时间，默认为60秒|
+
+### 返回示例
+
+#### 发送成功
+
+```
+{"msg_id":"06890980-6789-4054-bba9-90fb66ab2fce"}
+```
+
+#### 发送失败
+
+```
+{
+    "error": {
+        "code": "***",
+        "message": "***"
+    }
+}
+```
+
+## 验证 API
 
 ### 功能说明
 
@@ -70,7 +121,6 @@ Authorization: Basic base64_auth_string
 
 ```
 curl --insecure -X POST -v https://api.sms.jpush.cn/v1/codes/06890980-6789-4054-bba9-90fb66ab2fce/valid -d '{"code":"123456"}'
-
 ```
 
 #### 参数
@@ -84,22 +134,21 @@ curl --insecure -X POST -v https://api.sms.jpush.cn/v1/codes/06890980-6789-4054-
 - 验证通过
 
 ```
-    {
-        "is_valid":true
-    }
-
+{
+    "is_valid": true
+}
 ```
     
 - 验证不通过
 
 ```
-    {
-        "is_valid":false,
-        "error":{
-            "code":***,//具体对照返回码表
-            "message":"***"
-        }
+{
+    "is_valid": false,
+    "error": {
+        "code": "***",
+        "message": "***"
     }
+}
 ```
 
 ## 返回码
