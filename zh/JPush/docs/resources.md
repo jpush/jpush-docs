@@ -6,13 +6,13 @@
 <ul>
 <li>
 <div class="download-left">
-<div class="download-image">
+<div class="download-image  download-image-first">
 <img src="../image/resource_android.png">
 </div>
 </div>
-<div class="download-right">
+<div class="download-right"  id="download-right-first">
 <div class="download-title">
-<p>Android SDK下载</p>
+<p id="release-title">Android SDK下载</p>
 </div>
 <div class="download-info">
 <p>请参考如下文档来集成SDK：</p>
@@ -40,7 +40,7 @@
 </div>
 <div class="download-right">
 <div class="download-title">
-<p>iOS SDK下载</p>
+<p  id="release-title">iOS SDK下载</p>
 </div>
 <div class="download-info">
 <p>请参考如下文档来集成SDK：</p>
@@ -67,7 +67,7 @@
 </div>
 <div class="download-right">
 <div class="download-title">
-<p>Windows Phone SDK下载</p>
+<p id="release-title">Windows Phone SDK下载</p>
 </div>
 <div class="download-info">
 <p>请参考如下文档来集成SDK：</p>

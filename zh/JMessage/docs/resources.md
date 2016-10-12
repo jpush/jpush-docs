@@ -7,11 +7,11 @@
     <ul>
         <li>
             <div class="download-left">
-                <div class="download-image">
+                <div class="download-image download-image-first">
                     <img src="../image/resource_android.png">
                 </div>
             </div>
-            <div class="download-right">
+            <div class="download-right" id="download-right-first">
                 <div class="download-title">
                     <span id="release-title">Android - SDK</span>
                     <span id="release-version">版本：v1.4.2</span>
