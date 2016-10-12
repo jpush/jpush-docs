@@ -1,4 +1,36 @@
 # 最近更新
+### JPush Android SDK v2.2.0
+
+#### 更新时间
+
++ 2016-10-12
+
+#### Change Log
+
++ 优化改进：sdk 内部 https 访问增加证书认证。
++ 优化改进：富文本页面支持双指缩放。
+
+#### 升级提示
+
++ 建议升级！
+
+#### 升级指南
+
++ 首先解压您获取到的 zip 压缩包
+
++ 更新库文件
+	+ 打开libs文件夹。用 jpush-android-2.2.0.jar 替换项目中原有的极光jar文件，并删除原有极光jar文件。用对应CPU文件夹下的 libjpush220.so文件，替换项目中原有的极光so文件，并删除原有的极光so文件，每种型号的so文件都可以在SDK下载包中找到。
+
++ 更新AndroidManifest.xml
+	+ 压缩包根目录下有针对Eclipse和AndroidStudio 两种开发平台准备的两个AndroidManifest文件。请对照示例更新跟JPush相关的组件属性，permission，Action等配置。要使用富媒体推送，请将压缩包res中的资源放到项目的对应文件夹，并按照示例AndroidManifest配置PushActivity组件
+
++ 添加资源文件
+	+ 将res文件夹下的资源文件，添加到您项目res/下对应的文件夹中。
+根据您应用的界面风格，您可以修改layout文件的配色，字体等属性，或者修改drawable文件夹下的图标。但注意请不要修改所有的文件名，和布局文件中的组件id。
+
+
+(注意：要使用富媒体推送，请将压缩包res中的资源放到项目的对应文件夹，并按照示例AndroidManifest配置组件)
+
 ### JPush iOS SDK v2.1.9
 
 #### 更新时间
