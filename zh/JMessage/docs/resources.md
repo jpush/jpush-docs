@@ -21,7 +21,7 @@
                     <ul class="download-info-ul">
                         <li><a href="../client/jmessage_android_guide">集成步骤</a></li>
                         <li><a href="../client/im_sdk_android/">开发指南</a></li>
-                        <li>完整Demo：<a href="https://github.com/jpush/jchat-android/">JChat源码</a></li>
+                        <li>完整Demo：<a href="https://github.com/jpush/jchat-android/" target="_blank">JChat源码</a></li>
                         <div style=" clear:both; visibility:hidden;">
                     </ul>
                     </div>
@@ -42,14 +42,14 @@
             <div class="download-right">
                 <div class="download-title">
                     <p id="release-title">iOS - SDK</p>
-                    <span id="release-version">版本：v2.18</span>
+                    <span id="release-version">版本：v2.1.8</span>
                     <span id="release-time">2016.09.22</span>
                 </div>
                 <div class="download-info">
                     <ul class="download-info-ul">
                         <li><a href="../client/jmessage_ios_guide/">集成步骤</a></li>
                         <li><a href="../client/im_sdk_ios/">开发指南</a></li>
-                        <li>完整Demo：<a href="https://github.com/jpush/jchat-ios">JChat源码</a></li>
+                        <li>完整Demo：<a href="https://github.com/jpush/jchat-ios" target="_blank">JChat源码</a></li>
                         <div style=" clear:both; visibility:hidden;">
                     </ul>
                     </div>
