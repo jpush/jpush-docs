@@ -42,7 +42,7 @@
             <div class="download-right">
                 <div class="download-title">
                     <p id="release-title">iOS - SDK</p>
-                    <span id="release-version">版本：v2.18</span>
+                    <span id="release-version">版本：v2.1.8</span>
                     <span id="release-time">2016.09.22</span>
                 </div>
                 <div class="download-info">
