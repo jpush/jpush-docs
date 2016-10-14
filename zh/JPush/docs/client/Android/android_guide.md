@@ -98,7 +98,7 @@
         
         
        
-        dependencis {
+        dependencies {
             ......
             
             compile 'cn.jiguang:jpush:2.1.8'  // 此处以SDK 2.1.8版本为例
