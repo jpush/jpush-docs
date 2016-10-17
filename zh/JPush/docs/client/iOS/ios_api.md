@@ -339,7 +339,7 @@ NSDictionary *remoteNotification = [launchOptions objectForKey: UIApplicationLau
 * 基于iOS 10及以上的系统版本，原[application: didReceiveRemoteNotification:]将会被系统废弃，  
 由新增UserNotifications Framework中的[UNUserNotificationCenterDelegate willPresentNotification:withCompletionHandler:]  
 或者[UNUserNotificationCenterDelegate didReceiveNotificationResponse:withCompletionHandler:]方法替代。  
-在2.1.9版本以后可实现SDK封装的JPUSHRegisterDelegate协议方法，适配iOS10新增的delegate协议方法。  
+在2.1.9版本及以上可实现SDK封装的JPUSHRegisterDelegate协议方法，适配iOS10新增的delegate协议方法。  
 即以下两个方法：
 
 ```

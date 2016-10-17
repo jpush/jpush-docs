@@ -48,7 +48,7 @@ Service Extension使用起来很容易上手，首先我们需要创建一个Ser
 
 ### Https解决方式
 
-JPush 2.1.9以后的版本则不需要配置此步骤 
+JPush 2.1.9及以上的版本则不需要配置此步骤 
 
 + 需要用户主动在当前项目的Info.plist中添加NSAppTransportSecurity类型Dictionary。
 + 在NSAppTransportSecurity下添加NSAllowsArbitraryLoads类型Boolean,值设为YES
