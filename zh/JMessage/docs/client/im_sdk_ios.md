@@ -165,7 +165,7 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 	 * @param parameter     新的属性值
 	 *        Birthday&&Gender 是NSNumber类型, Avatar NSData类型 其他 NSString
 	 * @param type          更新属性类型
-	 * @param handler       用户注册回调接口函数
+	 * @param handler       更新用户信息回调接口函数
 	 */
 	+ (void)updateMyInfoWithParameter:(id)parameter
 	                    userFieldType:(JMSGUserField)type
@@ -194,7 +194,7 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 	 *
 	 * @param newPassword   用户新的密码
 	 * @param oldPassword   用户旧的密码
-	 * @param handler       用户注册回调接口函数
+	 * @param handler       更新密码回调接口函数
 	 */
 	+ (void)updateMyPasswordWithNewPassword:(NSString *)newPassword
 	                            oldPassword:(NSString *)oldPassword
@@ -447,6 +447,17 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 	                           scale:(NSNumber *)scale
 	                         address:(NSString *)address
 	                         toGroup:(NSString *)groupId;
+	                         
+#### 设置消息的FromName
+	/*!
+	 * @abstract 设置该消息的 fromName
+	 *
+	 * @param displayName 设置本条消息的发送方展示名称
+	 *
+	 * @discussion 该信息填充在发出的消息里，对方收到这种消息的 Notification 时，提示的消息发送人是该字段的值.
+	 *
+	 */
+	- (void)setFromName:(NSString * JMSG_NULLABLE)displayName;
 
 ### 会话管理
 会话相关的操作：
