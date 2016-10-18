@@ -21,7 +21,6 @@ Authorization: Basic base64_auth_string
 即:对 appKey 加上冒号，加上 masterSecret 拼装起来的字符串，再做 base64 转换。
 
 ## 短信验证码 API
----
 ### 功能说明
 
 - 下发短信验证码。
@@ -62,7 +61,6 @@ curl --insecure -X POST -v https://api.sms.jpush.cn/v1/codes -H "Content-Type: a
 ```
 
 ## 语音短信验证码 API
----
 ### 功能说明
 
 - 下发语音验证码。
@@ -77,7 +75,7 @@ curl --insecure -X POST -v https://api.sms.jpush.cn/v1/codes -H "Content-Type: a
 curl --insecure -X POST -v https://api.sms.jpush.cn/v1/voice_codes -H "Content-Type: application/json" -u "7d431e42dfa6a6d693ac2d04:5e987ac6d2e04d95a9d8f0d1" -d '{"mobile":"xxxxxxxxxxxxxx", "ttl":60}'
 ```
 
-### 参数
+#### 参数
 
 |KEY|REQUIRE|DESCRIPTION|
 |----|----|----|
@@ -104,7 +102,6 @@ curl --insecure -X POST -v https://api.sms.jpush.cn/v1/voice_codes -H "Content-T
 ```
 
 ## 验证 API
----
 ### 功能说明
 
 - 验证短信验证码是否有效。
@@ -149,7 +146,6 @@ curl --insecure -X POST -v https://api.sms.jpush.cn/v1/codes/06890980-6789-4054-
 ```
 
 ## 模板短信API
----
 ### 功能说明
 
 - 向手机号下发模板短信。
@@ -172,15 +168,15 @@ curl --insecure -X POST -v https://api.sms.jpush.cn/v1/messages -H "Content-Type
 |temp_id|TRUE|模板ID|
 |temp_para|TRUE|模板参数,json|
 
-#### 返回示例
+### 返回示例
 
-##### 发送成功
+#### 发送成功
 
 ```json
 {"msg_id": 124680}
 ```
 
-##### 发送失败
+#### 发送失败
 
 ```json
 {
@@ -191,7 +187,6 @@ curl --insecure -X POST -v https://api.sms.jpush.cn/v1/messages -H "Content-Type
 }
 ```
 ## 返回码
----
 |HTTP CODE| CODE| CONTENT  | DESC|
 |:--- |:--- |:--- |:----
 |200|50000|success|请求成功
@@ -218,3 +213,5 @@ curl --insecure -X POST -v https://api.sms.jpush.cn/v1/messages -H "Content-Type
 |403|50021|template not pass|模板审核不通过
 |403|50022|parameters not all replaced|模板参数未全部替换|
 |403|50023|parameters is empty|参数为空|
+
+
