@@ -4,30 +4,31 @@
 ### iOS SDK v2.2.0
 
 #### 更新时间
-
 + 2016-10-18
 
 #### Change Log
-
 ##### New Feature
+新增：好友功能；
++ 新增：好友备注名和备注信息设置
 
-+ 新增：好友功能
++ 新增：发送文件消息
 
-+ 新增：好友备注名和备注信息设置     
++ 新增：发送位置消息
 
-+ 新增：发送文件消息      
-
-+ 新增：发送位置消息       
-
-+ 新增：适配 iOS 10       
++ 新增：适配 iOS 10
 
 + 新增事件：
-    kJMSGEventNotificationServerAlterPassword       = 2,  // 事件类型: 非客户端修改密码强制登出事件
-    kJMSGEventNotificationUserLoginStatusUnexpected   = 70,// 事件类型：用户登录状态异常事件（需要重新登录）
-    kJMSGEventNotificationReceiveFriendInvitation    = 51,// 事件类型: 收到好友邀请
-    kJMSGEventNotificationAcceptedFriendInvitation  = 52,// 事件类型: 对方接受了你的好友邀请
-    kJMSGEventNotificationDeclinedFriendInvitation   = 53,// 事件类型: 对方拒绝了你的好友邀请
-    kJMSGEventNotificationDeletedFriend                   = 6, // 事件类型: 对方将你从好友中删除
+    + kJMSGEventNotificationServerAlterPassword       = 2,  // 事件类型: 非客户端修改密码强制登出事件
+    
+    + kJMSGEventNotificationUserLoginStatusUnexpected   = 70,// 事件类型：用户登录状态异常事件（需要重新登录）
+    
+    + kJMSGEventNotificationReceiveFriendInvitation    = 51,// 事件类型: 收到好友邀请
+    
+    + kJMSGEventNotificationAcceptedFriendInvitation  = 52,// 事件类型: 对方接受了你的好友邀请
+    
+    + kJMSGEventNotificationDeclinedFriendInvitation   = 53,// 事件类型: 对方拒绝了你的好友邀请
+    
+    + kJMSGEventNotificationDeletedFriend                   = 6, // 事件类型: 对方将你从好友中删除
 
 ##### 新增接口：
 + JMSGEventDelegate
@@ -40,10 +41,10 @@
 	+ +(void)removeFriendWithUsername: appKey: completionHandler: ;//删除好友
 + JMSGUser
 	+ @property(nonatomic, assign, readonly) BOOL isFriend;//好友关系状态
-	+ @property(nonatomic, copy, readonly) NSString *noteName;//好友备注名
-	+ @property(nonatomic, copy, readonly) NSString *noteText;//好友备注信息
-	+ -(void)updateNoteName: completionHandler: ;//修改好友备注名
-	+ -(void)updateNoteText: completionHandler: ;//修改好友备注信息
+	+ @property(nonatomic, copy, readonly) NSString *noteName;//备注名
+	+ @property(nonatomic, copy, readonly) NSString *noteText;//备注信息
+	+ -(void)updateNoteName: completionHandler: ;//修改用户备注名
+	+ -(void)updateNoteText: completionHandler: ;//修改用户备注信息
 + JMSGFriendNotificationEvent
 	+ @property(nonatomic, assign, readonly) JMSGEventNotificationType eventType;//好友通知事件类型
 	+ -(NSString *JMSG_NULLABLE)getReason;//获取事件发生的理由
