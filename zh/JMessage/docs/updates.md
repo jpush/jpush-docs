@@ -1,6 +1,92 @@
 # 最近更新
 
 
+### iOS SDK v2.2.0
+
+#### 更新时间
++ 2016-10-18
+
+#### Change Log
+##### New Feature
++ 新增：好友功能
+
++ 新增：好友备注名和备注信息设置
+
++ 新增：发送文件消息
+
++ 新增：发送位置消息
+
++ 新增：适配 iOS 10
+
++ 新增事件：
+    + kJMSGEventNotificationServerAlterPassword       = 2,  // 事件类型: 非客户端修改密码强制登出事件
+    
+    + kJMSGEventNotificationUserLoginStatusUnexpected   = 70,// 事件类型：用户登录状态异常事件（需要重新登录）
+    
+    + kJMSGEventNotificationReceiveFriendInvitation    = 51,// 事件类型: 收到好友邀请
+    
+    + kJMSGEventNotificationAcceptedFriendInvitation  = 52,// 事件类型: 对方接受了你的好友邀请
+    
+    + kJMSGEventNotificationDeclinedFriendInvitation   = 53,// 事件类型: 对方拒绝了你的好友邀请
+    
+    + kJMSGEventNotificationDeletedFriend                   = 6, // 事件类型: 对方将你从好友中删除
+
+##### 新增接口：
++ JMSGEventDelegate
+	+ -(void)onReceiveNotificationEvent:(JMSGNotificationEvent *)event;//监听事件通知，如：好友事件、被踢事件等都可以用此函数监听
++ JMSGFriendManager
+	+ +(void)getFriendList:;//获取好友列表
+	+ +(void)sendInvitationRequestWithUsername: appKey: reason: completionHandler: ;//发送添加好友请求
+	+ +(void)acceptInvitationWithUsername: appKey: completionHandler: ;//接受好友邀请
+	+ +(void)rejectInvitationWithUsername: appKey: reason: completionHandler: ;//拒绝好友邀请
+	+ +(void)removeFriendWithUsername: appKey: completionHandler: ;//删除好友
++ JMSGUser
+	+ @property(nonatomic, assign, readonly) BOOL isFriend;//好友关系状态
+	+ @property(nonatomic, copy, readonly) NSString *noteName;//备注名
+	+ @property(nonatomic, copy, readonly) NSString *noteText;//备注信息
+	+ -(void)updateNoteName: completionHandler: ;//修改用户备注名
+	+ -(void)updateNoteText: completionHandler: ;//修改用户备注信息
++ JMSGFriendNotificationEvent
+	+ @property(nonatomic, assign, readonly) JMSGEventNotificationType eventType;//好友通知事件类型
+	+ -(NSString *JMSG_NULLABLE)getReason;//获取事件发生的理由
+	+ -(NSString *JMSG_NULLABLE)getFromUsername;//事件发送者的username
+	+ -(JMSGUser *JMSG_NULLABLE)getFromUser;//获取事件发送者user
++ JMSGConversation
+	+ -(void)sendFileMessage: fileName: ;//发送文件消息
+	+ -(void)sendLocationMessage: longitude: scale: address: ;发送地理位置消息
++ JMSGMessage
+	+ +(void)sendSingleFileMessage: fileName: toUser: ;//发送单聊文件消息
+	+ +(void)sendSingleFileMessage: fileName: toUser: appKey: ;//发送跨应用单聊文件消息
+	+ +(void)sendGroupFileMessage: fileName:toGroup: ;//发送群聊文件消息
+	+ +(void)sendSingleLocationMessage: longitude: scale: address: toUser: ;//发送单聊地理位置消息
+	+ +(void)sendSingleLocationMessage: longitude: scale: address: toUser: appKey: ;//发送跨应用单聊地理位置消息
+	+ +(void)sendGroupLocationMessage: longitude: scale: address: toGroup: ;发送群聊地理位置消息
++ JMSGFileContent
+	+ @property(nonatomic, copy, readonly) NSString *fileName;//文件名
+	+ -(instancetype)initWithFileData: fileName: ;//初始化文件内容
+	+ -(void)fileData:(JMSGAsyncDataHandler)handler;获取文件内容的数据
++ JMSGLocationContent
+	+ @property(nonatomic, strong, readonly) NSNumber *latitude;//纬度
+	+ @property(nonatomic, strong, readonly) NSNumber *longitude;//经度
+	+ @property(nonatomic, strong, readonly) NSNumber *scale;//缩放
+	+ @property(nonatomic, copy, readonly) NSString *address;//详细地址信息
+	+ -(instancetype)initWithLatitude: longitude: scale: address: ;//初始化文件内容
+
+##### 已过时接口：
++ JMSGUserDelegate
+	+ -(void)onLoginUserKicked;// 改用JMSGEventDelegate类中的 onReceiveNotificationEvent 方法统一监听被踢、用户信息过期、好友等通知事件
+
+##### Bug Fix
++ 修复：版本升级后会聊头像无法获取问题；
++ 修复：创建群聊会话时，如果创建群成功并且初始化成员失败时，会同时返回群信息和错误信息
+
+#### 升级指南
++ 使用新版本的JMessage.framework文件替换原工程下的同名旧文件
+
+ 
+
+
+
 ### JS SDK v1.2.0
 
 #### 更新时间
