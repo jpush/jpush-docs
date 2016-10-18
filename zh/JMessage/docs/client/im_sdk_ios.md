@@ -90,9 +90,14 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 	 *
 	 * @param username 登录用户名. 规则与注册接口相同.
 	 * @param password 登录密码. 规则与注册接口相同.
-	 * @param handler 结果回调. 正常返回时 resultOjbect 为 nil.
+	 * @param handler 结果回调
+	 *
+	 * - resultObject 简单封装的user对象
+	 * - error 错误信息
+	 *
+	 * 注意：上层不要直接使用 resultObject 对象做操作, 因为 resultOjbect 只是一个简单封装的user对象.
 	 */
-	
+
 	+ (void)loginWithUsername:(NSString *)username
 	                 password:(NSString *)password
 	        completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)handler;
@@ -450,14 +455,14 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 	                         
 #### 设置消息的FromName
 	/*!
-	 * @abstract 设置该消息的 fromName
+	 * @abstract 设置消息的 fromName(即:通知栏的展示名称)
 	 *
-	 * @param displayName 设置本条消息的发送方展示名称
+	 * @param fromName 本条消息在接收方通知栏的展示名称
 	 *
-	 * @discussion 该信息填充在发出的消息里，对方收到这种消息的 Notification 时，提示的消息发送人是该字段的值.
+	 * @discussion fromName填充在发出的消息体里，对方收到该消息通知时,在通知栏显示的消息发送人名称就是该字段的值.
 	 *
 	 */
-	- (void)setFromName:(NSString * JMSG_NULLABLE)displayName;
+	- (void)setFromName:(NSString * JMSG_NULLABLE)fromName;
 
 ### 会话管理
 会话相关的操作：
