@@ -277,6 +277,35 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 ##### 例子
 	JMSGUser *user = [JMSGUser myInfo];
 	NSString myName = [user displayName];
+
+#### 修改好友的备注名、备注信息	
+	/*!
+	 * @abstract 修改好友备注名
+	 *
+	 * @param noteName 备注名
+	 *
+	 * @discussion 注意：这是建立在是好友关系的前提下，修改好友的备注名
+	 */
+	- (void)updateNoteName:(NSString *)noteName completionHandler:(JMSGCompletionHandler)handler;
+	
+	/*!
+	 * @abstract 修改好友备注信息
+	 *
+	 * @param noteText 备注信息
+	 *
+	 * @discussion 注意：这是建立在是好友关系的前提下，修改好友的备注信息
+	 */
+	- (void)updateNoteText:(NSString *)noteText completionHandler:(JMSGCompletionHandler)handler;
+##### 例子
+	// 修改备注名
+	[friendUser updateNoteName:@"备注名" completionHandler:^(id resultObject, NSError *error) {
+	    if (!error) {
+	        [MBProgressHUD showMessage:@"修改备注成功" view:self.view];
+	    }else{
+	        [MBProgressHUD showMessage:@"修改备注失败" view:self.view];
+	    }
+	 }]; 
+
 ### 消息管理
 #### 创建单聊消息
 	/*!
