@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 
-	<title>JMSGTextContent Class Reference</title>
+	<title>JMSGLocationContent Class Reference</title>
 
 	<link rel="stylesheet" href="../css/style.css">
 	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
@@ -54,19 +54,13 @@
 
 	
 	
-	<optgroup label="Properties">
-		
-		<option value="//api/name/text">text</option>
-		
-	</optgroup>
-	
 
 	
 
 	
 	<optgroup label="Instance Methods">
 		
-		<option value="//api/name/initWithText:">- initWithText:</option>
+		<option value="//api/name/initWithLatitude:longitude:scale:address:">- initWithLatitude:longitude:scale:address:</option>
 		
 	</optgroup>
 	
@@ -83,7 +77,7 @@
 		<div id="overview_contents" class="container">
 			<div id="content">
 				<main role="main">
-					<h1 class="title">JMSGTextContent Class Reference</h1>
+					<h1 class="title">JMSGLocationContent Class Reference</h1>
 
 					
 					<div class="section section-specification"><table cellspacing="0"><tbody>
@@ -95,7 +89,7 @@
 	<td>NSCopying</td>
 </tr><tr>
 	<th>Declared in</th>
-	<td>JMSGTextContent.h</td>
+	<td>JMSGLocationContent.h</td>
 </tr>
 						</tbody></table></div>
 					
@@ -105,7 +99,7 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>纯文本内容类型</p>
+						<p>地理位置内容类型</p>
 					</div>
 					
 					
@@ -121,8 +115,8 @@
 
 						<div class="task-list">
 							<div class="section-method">
-	<a name="//api/name/text" title="text"></a>
-	<h3 class="method-title"><code><a href="#//api/name/text">&nbsp;&nbsp;text</a></code>
+	<a name="//api/name/initWithLatitude:longitude:scale:address:" title="initWithLatitude:longitude:scale:address:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/initWithLatitude:longitude:scale:address:">&ndash;&nbsp;initWithLatitude:longitude:scale:address:</a></code>
 </h3>
 
 	<div class="method-info">
@@ -132,53 +126,12 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>内容文本</p>
+				<p>初始化地理位置消息内容</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly, copy) NSString *text</code></div>
-
-		    
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">JMSGTextContent.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/initWithText:" title="initWithText:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/initWithText:">&ndash;&nbsp;initWithText:</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>基于文本初始化内容对象</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>- (instancetype)initWithText:(NSString *)<em>text</em></code></div>
+			<div class="method-subsection method-declaration"><code>- (instancetype)initWithLatitude:(NSNumber *)<em>latitude</em> longitude:(NSNumber *)<em>longitude</em> scale:(NSNumber *)<em>scale</em> address:(NSString *)<em>address</em></code></div>
 
 		    
 			
@@ -187,8 +140,23 @@
 				<table class="argument-def parameter-def">
 				
 					<tr>
-						<th scope="row" class="argument-name"><code>text</code></th>
-						<td><p>纯文本内容</p></td>
+						<th scope="row" class="argument-name"><code>latitude</code></th>
+						<td><p>纬度</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>longitude</code></th>
+						<td><p>经度</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>scale</code></th>
+						<td><p>缩放比例</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>address</code></th>
+						<td><p>详细地址信息</p></td>
 					</tr>
 				
 				</table>
@@ -196,14 +164,14 @@
 			
 
 			
-
-			
-
-			
-			<div class="method-subsection discussion-section">
-				<h4 class="method-subtitle">Discussion</h4>
-				<p>这是预设的创建文本类型内容的方法</p>
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>地理位置消息内容</p>
 			</div>
+			
+
+			
+
 			
 
 			
@@ -213,7 +181,7 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">JMSGTextContent.h</code></p>
+				<p><code class="declared-in-ref">JMSGLocationContent.h</code></p>
 			</div>
 			
 			

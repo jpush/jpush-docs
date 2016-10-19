@@ -64,6 +64,8 @@
 		
 		<option value="//api/name/registerForRemoteNotificationTypes:categories:">+ registerForRemoteNotificationTypes:categories:</option>
 		
+		<option value="//api/name/registerForRemoteNotificationConfig:delegate:">+ registerForRemoteNotificationConfig:delegate:</option>
+		
 		<option value="//api/name/handleRemoteNotification:">+ handleRemoteNotification:</option>
 		
 		<option value="//api/name/setTags:alias:callbackSelector:target:">+ setTags:alias:callbackSelector:target:</option>
@@ -81,6 +83,12 @@
 		<option value="//api/name/setLatitude:longitude:">+ setLatitude:longitude:</option>
 		
 		<option value="//api/name/setLocation:">+ setLocation:</option>
+		
+		<option value="//api/name/addNotification:">+ addNotification:</option>
+		
+		<option value="//api/name/removeNotification:">+ removeNotification:</option>
+		
+		<option value="//api/name/findNotification:">+ findNotification:</option>
 		
 		<option value="//api/name/setLocalNotification:alertBody:badge:alertAction:identifierKey:userInfo:soundName:">+ setLocalNotification:alertBody:badge:alertAction:identifierKey:userInfo:soundName:</option>
 		
@@ -317,10 +325,70 @@
 				
 					<tr>
 						<th scope="row" class="argument-name"><code>types</code></th>
-						<td><p>通知类型
-@param categories</p>
+						<td><p>通知类型</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>categories</code></th>
+						<td><p>类别组</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
 
-<p>@discussion</p></td>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JPUSHService.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/registerForRemoteNotificationConfig:delegate:" title="registerForRemoteNotificationConfig:delegate:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/registerForRemoteNotificationConfig:delegate:">+&nbsp;registerForRemoteNotificationConfig:delegate:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>新版本的注册方法（兼容iOS10）</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)registerForRemoteNotificationConfig:(JPUSHRegisterEntity *)<em>config</em> delegate:(id&lt;JPUSHRegisterDelegate&gt;)<em>delegate</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>config</code></th>
+						<td><p>注册通知配置</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>delegate</code></th>
+						<td><p>代理</p></td>
 					</tr>
 				
 				</table>
@@ -408,7 +476,7 @@
 			
 			<div class="method-subsection brief-description">
 				<p>下面的接口是可选的
-设置标签和(或)别名（若参数为nil，则忽略；若是空对象，则清空；详情请参考文档：<a href="http://docs.jpush.io/client/ios_api/">http://docs.jpush.io/client/ios_api/</a>#api-ios）
+设置标签和(或)别名（若参数为nil，则忽略；若是空对象，则清空；详情请参考文档：<a href="http://docs.jiguang.cn/client/ios_api/">http://docs.jiguang.cn/client/ios_api/</a>#api-ios）
 setTags:alias:fetchCompletionHandle:是新的设置标签别名的方法，不再需要显示声明回调函数，只需要在block里面处理设置结果即可.
 WARN: 使用block时需要注意循环引用问题</p>
 			</div>
@@ -829,6 +897,186 @@ WARN: 使用block时需要注意循环引用问题</p>
 
 						<div class="task-list">
 							<div class="section-method">
+	<a name="//api/name/addNotification:" title="addNotification:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/addNotification:">+&nbsp;addNotification:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>注册或更新推送 (支持iOS10，并兼容iOS10以下版本)</p>
+
+<p>JPush 2.1.9新接口</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)addNotification:(JPushNotificationRequest *)<em>request</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>request</code></th>
+						<td><p>JPushNotificationRequest类型，设置推送的属性，设置已有推送的request.requestIdentifier即更新已有的推送，否则为注册新推送，更新推送仅仅在iOS10以上有效，结果通过request.completionHandler返回</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>旧的注册本地推送接口被废弃，使用此接口可以替换</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JPUSHService.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/removeNotification:" title="removeNotification:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/removeNotification:">+&nbsp;removeNotification:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>移除推送 (支持iOS10，并兼容iOS10以下版本)</p>
+
+<p>JPush 2.1.9新接口</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)removeNotification:(JPushNotificationIdentifier *)<em>identifier</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>identifier</code></th>
+						<td><p>JPushNotificationIdentifier类型，iOS10以上identifier设置为nil，则移除所有在通知中心显示推送和待推送请求，也可以通过设置identifier.delivered和identifier.identifiers来移除相应在通知中心显示推送或待推送请求，identifier.identifiers如果设置为nil或空数组则移除相应标志下所有在通知中心显示推送或待推送请求；iOS10以下identifier设置为nil，则移除所有推送，identifier.delivered属性无效，另外可以通过identifier.notificationObj传入特定推送对象来移除此推送。</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>旧的所有删除推送接口被废弃，使用此接口可以替换</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JPUSHService.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/findNotification:" title="findNotification:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/findNotification:">+&nbsp;findNotification:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>查找推送 (支持iOS10，并兼容iOS10以下版本)</p>
+
+<p>JPush 2.1.9新接口</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)findNotification:(JPushNotificationIdentifier *)<em>identifier</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>identifier</code></th>
+						<td><p>JPushNotificationIdentifier类型，iOS10以上可以通过设置identifier.delivered和identifier.identifiers来查找相应在通知中心显示推送或待推送请求，identifier.identifiers如果设置为nil或空数组则返回相应标志下所有在通知中心显示推送或待推送请求；iOS10以下identifier.delivered属性无效，identifier.identifiers如果设置nil或空数组则返回所有推送。须要设置identifier.findCompletionHandler回调才能得到查找结果，通过(NSArray *results)返回相应对象数组。</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>旧的查找推送接口被废弃，使用此接口可以替换</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JPUSHService.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
 	<a name="//api/name/setLocalNotification:alertBody:badge:alertAction:identifierKey:userInfo:soundName:" title="setLocalNotification:alertBody:badge:alertAction:identifierKey:userInfo:soundName:"></a>
 	<h3 class="method-title"><code><a href="#//api/name/setLocalNotification:alertBody:badge:alertAction:identifierKey:userInfo:soundName:">+&nbsp;setLocalNotification:alertBody:badge:alertAction:identifierKey:userInfo:soundName:</a></code>
 </h3>
@@ -899,7 +1147,7 @@ WARN: 使用block时需要注意循环引用问题</p>
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>最多支持 64 个定义</p>
+				<p>最多支持 64 个定义，此方法被[addNotification:]方法取代</p>
 			</div>
 			
 
@@ -967,6 +1215,11 @@ WARN: 使用block时需要注意循环引用问题</p>
 			
 
 			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>此方法被[addNotification:]方法取代</p>
+			</div>
+			
 
 			
 
@@ -1027,7 +1280,7 @@ WARN: 使用block时需要注意循环引用问题</p>
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>默认App在前台运行时不会进行弹窗，在程序接收通知调用此接口可实现指定的推送弹窗。</p>
+				<p>默认App在前台运行时不会进行弹窗，在程序接收通知调用此接口可实现指定的推送弹窗。&ndash;iOS10以下还可继续使用，iOS10以上在[UNUserNotificationCenterDelegate willPresentNotification:withCompletionHandler:]方法中调用completionHandler(UNNotificationPresentationOptionSound | UNNotificationPresentationOptionAlert);即可</p>
 			</div>
 			
 
@@ -1088,6 +1341,11 @@ WARN: 使用block时需要注意循环引用问题</p>
 			
 
 			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>此方法被[removeNotification:]方法取代</p>
+			</div>
+			
 
 			
 
@@ -1128,6 +1386,11 @@ WARN: 使用block时需要注意循环引用问题</p>
 
 			
 
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>此方法被[removeNotification:]方法取代</p>
+			</div>
 			
 
 			
@@ -1187,6 +1450,11 @@ WARN: 使用block时需要注意循环引用问题</p>
 			
 
 			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>此方法被[findNotification:]方法取代</p>
+			</div>
+			
 
 			
 
@@ -1227,6 +1495,11 @@ WARN: 使用block时需要注意循环引用问题</p>
 
 			
 
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>此方法被[removeNotification:]方法取代</p>
+			</div>
 			
 
 			
@@ -1408,9 +1681,9 @@ WARN: 使用block时需要注意循环引用问题</p>
 				<p>SDK注册成功后, 调用此接口获取到 registrationID 才能够获取到.</p>
 
 <p>JPush 支持根据 registrationID 来进行推送.
-如果你需要此功能, 应该通过此接口获取到 registrationID 后, 上报到你自己的服务器端, 并保存下来.</p>
-
-<p>更多的理解请参考 JPush 的文档网站.</p>
+如果你需要此功能, 应该通过此接口获取到 registrationID 后, 上报到你自己的服务器端, 并保存下来.
+registrationIDCompletionHandler:是新增的获取registrationID的方法，需要在block中获取registrationID,resCode为返回码,模拟器调用此接口resCode返回1011,registrationID返回nil.
+更多的理解请参考 JPush 的文档网站.</p>
 			</div>
 			
 
@@ -1544,7 +1817,7 @@ WARN: 使用block时需要注意循环引用问题</p>
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2016 HXHG. All rights reserved. Updated: 2016-07-15</p>
+						<p class="copyright">Copyright &copy; 2016 HXHG. All rights reserved. Updated: 2016-10-18</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

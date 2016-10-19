@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 
-	<title>JMSGTextContent Class Reference</title>
+	<title>JMSGFileContent Class Reference</title>
 
 	<link rel="stylesheet" href="../css/style.css">
 	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
@@ -54,19 +54,13 @@
 
 	
 	
-	<optgroup label="Properties">
-		
-		<option value="//api/name/text">text</option>
-		
-	</optgroup>
-	
 
 	
 
 	
 	<optgroup label="Instance Methods">
 		
-		<option value="//api/name/initWithText:">- initWithText:</option>
+		<option value="//api/name/initWithFileData:fileName:">- initWithFileData:fileName:</option>
 		
 	</optgroup>
 	
@@ -83,19 +77,19 @@
 		<div id="overview_contents" class="container">
 			<div id="content">
 				<main role="main">
-					<h1 class="title">JMSGTextContent Class Reference</h1>
+					<h1 class="title">JMSGFileContent Class Reference</h1>
 
 					
 					<div class="section section-specification"><table cellspacing="0"><tbody>
 						<tr>
 	<th>Inherits from</th>
-	<td><a href="../Classes/JMSGAbstractContent.html">JMSGAbstractContent</a> : NSObject</td>
+	<td><a href="../Classes/JMSGMediaAbstractContent.html">JMSGMediaAbstractContent</a> : <a href="../Classes/JMSGAbstractContent.html">JMSGAbstractContent</a> : NSObject</td>
 </tr><tr>
 	<th>Conforms to</th>
 	<td>NSCopying</td>
 </tr><tr>
 	<th>Declared in</th>
-	<td>JMSGTextContent.h</td>
+	<td>JMSGFileContent.h</td>
 </tr>
 						</tbody></table></div>
 					
@@ -105,7 +99,7 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>纯文本内容类型</p>
+						<p>文件内容类型</p>
 					</div>
 					
 					
@@ -121,8 +115,8 @@
 
 						<div class="task-list">
 							<div class="section-method">
-	<a name="//api/name/text" title="text"></a>
-	<h3 class="method-title"><code><a href="#//api/name/text">&nbsp;&nbsp;text</a></code>
+	<a name="//api/name/initWithFileData:fileName:" title="initWithFileData:fileName:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/initWithFileData:fileName:">&ndash;&nbsp;initWithFileData:fileName:</a></code>
 </h3>
 
 	<div class="method-info">
@@ -132,53 +126,12 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>内容文本</p>
+				<p>初始化文件内容</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly, copy) NSString *text</code></div>
-
-		    
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">JMSGTextContent.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/initWithText:" title="initWithText:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/initWithText:">&ndash;&nbsp;initWithText:</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>基于文本初始化内容对象</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>- (instancetype)initWithText:(NSString *)<em>text</em></code></div>
+			<div class="method-subsection method-declaration"><code>- (instancetype)initWithFileData:(NSData *)<em>data</em> fileName:(NSString *)<em>fileName</em></code></div>
 
 		    
 			
@@ -187,8 +140,13 @@
 				<table class="argument-def parameter-def">
 				
 					<tr>
-						<th scope="row" class="argument-name"><code>text</code></th>
-						<td><p>纯文本内容</p></td>
+						<th scope="row" class="argument-name"><code>data</code></th>
+						<td><p>文件数据</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>fileName</code></th>
+						<td><p>文件名</p></td>
 					</tr>
 				
 				</table>
@@ -200,11 +158,6 @@
 			
 
 			
-			<div class="method-subsection discussion-section">
-				<h4 class="method-subtitle">Discussion</h4>
-				<p>这是预设的创建文本类型内容的方法</p>
-			</div>
-			
 
 			
 
@@ -213,7 +166,7 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">JMSGTextContent.h</code></p>
+				<p><code class="declared-in-ref">JMSGFileContent.h</code></p>
 			</div>
 			
 			
