@@ -66,11 +66,17 @@
 		
 		<option value="//api/name/birthday">birthday</option>
 		
+		<option value="//api/name/noteName">noteName</option>
+		
+		<option value="//api/name/noteText">noteText</option>
+		
 		<option value="//api/name/appKey">appKey</option>
 		
 		<option value="//api/name/isNoDisturb">isNoDisturb</option>
 		
 		<option value="//api/name/isInBlacklist">isInBlacklist</option>
+		
+		<option value="//api/name/isFriend">isFriend</option>
 		
 	</optgroup>
 	
@@ -109,6 +115,10 @@
 	<optgroup label="Instance Methods">
 		
 		<option value="//api/name/setIsNoDisturb:handler:">- setIsNoDisturb:handler:</option>
+		
+		<option value="//api/name/updateNoteName:completionHandler:">- updateNoteName:completionHandler:</option>
+		
+		<option value="//api/name/updateNoteText:completionHandler:">- updateNoteText:completionHandler:</option>
 		
 		<option value="//api/name/thumbAvatarData:">- thumbAvatarData:</option>
 		
@@ -269,7 +279,15 @@
 				
 					<tr>
 						<th scope="row" class="argument-name"><code>handler</code></th>
-						<td><p>结果回调. 正常返回时 resultOjbect 为 nil.</p></td>
+						<td><p>结果回调</p>
+
+<ul>
+<li>resultObject 简单封装的user对象</li>
+<li>error 错误信息</li>
+</ul>
+
+
+<p>注意：上层不要直接使用 resultObject 对象做操作, 因为 resultOjbect 只是一个简单封装的user对象.</p></td>
 					</tr>
 				
 				</table>
@@ -333,12 +351,6 @@
 
 			
 
-			
-			<div class="method-subsection discussion-section">
-				<h4 class="method-subtitle">Discussion</h4>
-				<p>这个接口一般总是返回成功，即使背后与服务器端通讯失败，SDK 也总是会退出登录的。
-建议 App 也不必确认 SDK 返回, 就实际退出登录状态.</p>
-			</div>
 			
 
 			
@@ -542,7 +554,7 @@ Birthday&amp;&amp;Gender 是NSNumber类型, Avatar NSData类型 其他 NSString<
 				
 					<tr>
 						<th scope="row" class="argument-name"><code>handler</code></th>
-						<td><p>用户注册回调接口函数</p></td>
+						<td><p>更新用户信息回调接口函数</p></td>
 					</tr>
 				
 				</table>
@@ -605,7 +617,7 @@ Birthday&amp;&amp;Gender 是NSNumber类型, Avatar NSData类型 其他 NSString<
 				
 					<tr>
 						<th scope="row" class="argument-name"><code>handler</code></th>
-						<td><p>用户注册回调接口函数</p></td>
+						<td><p>更新密码回调接口函数</p></td>
 					</tr>
 				
 				</table>
@@ -1163,6 +1175,88 @@ Birthday&amp;&amp;Gender 是NSNumber类型, Avatar NSData类型 其他 NSString<
 		</div>
 	</div>
 </div><div class="section-method">
+	<a name="//api/name/noteName" title="noteName"></a>
+	<h3 class="method-title"><code><a href="#//api/name/noteName">&nbsp;&nbsp;noteName</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>备注名</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, copy, readonly) NSString *noteName</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGUser.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/noteText" title="noteText"></a>
+	<h3 class="method-title"><code><a href="#//api/name/noteText">&nbsp;&nbsp;noteText</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>备注信息</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, copy, readonly) NSString *noteText</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGUser.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
 	<a name="//api/name/appKey" title="appKey"></a>
 	<h3 class="method-title"><code><a href="#//api/name/appKey">&nbsp;&nbsp;appKey</a></code>
 </h3>
@@ -1301,6 +1395,52 @@ Birthday&amp;&amp;Gender 是NSNumber类型, Avatar NSData类型 其他 NSString<
 		</div>
 	</div>
 </div><div class="section-method">
+	<a name="//api/name/isFriend" title="isFriend"></a>
+	<h3 class="method-title"><code><a href="#//api/name/isFriend">&nbsp;&nbsp;isFriend</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>是否是好友关系</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign, readonly) BOOL isFriend</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>如果已经添加了好友，isFriend = YES ，否则为NO;</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGUser.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
 	<a name="//api/name/setIsNoDisturb:handler:" title="setIsNoDisturb:handler:"></a>
 	<h3 class="method-title"><code><a href="#//api/name/setIsNoDisturb:handler:">&ndash;&nbsp;setIsNoDisturb:handler:</a></code>
 </h3>
@@ -1357,6 +1497,122 @@ Birthday&amp;&amp;Gender 是NSNumber类型, Avatar NSData类型 其他 NSString<
 				<h4 class="method-subtitle">Discussion</h4>
 				<p>针对单个用户设置免打扰
 这个接口支持跨应用设置免打扰</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGUser.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/updateNoteName:completionHandler:" title="updateNoteName:completionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/updateNoteName:completionHandler:">&ndash;&nbsp;updateNoteName:completionHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>修改好友备注名</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)updateNoteName:(NSString *)<em>noteName</em> completionHandler:(JMSGCompletionHandler)<em>handler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>noteName</code></th>
+						<td><p>备注名</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>注意：这是建立在是好友关系的前提下，修改好友的备注名</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGUser.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/updateNoteText:completionHandler:" title="updateNoteText:completionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/updateNoteText:completionHandler:">&ndash;&nbsp;updateNoteText:completionHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>修改好友备注信息</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)updateNoteText:(NSString *)<em>noteText</em> completionHandler:(JMSGCompletionHandler)<em>handler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>noteText</code></th>
+						<td><p>备注信息</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>注意：这是建立在是好友关系的前提下，修改好友的备注信息</p>
 			</div>
 			
 
@@ -1538,7 +1794,7 @@ Birthday&amp;&amp;Gender 是NSNumber类型, Avatar NSData类型 其他 NSString<
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>如果 <a href="#//api/name/nickname">nickname</a> 存在则返回 nickname，否则返回 <a href="#//api/name/username">username</a></p>
+				<p>展示优先级：备注名(<a href="#//api/name/noteName">noteName</a>) -> 昵称(<a href="#//api/name/nickname">nickname</a>) -> 用户名(<a href="#//api/name/username">username</a>)</p>
 			</div>
 			
 
@@ -1570,7 +1826,7 @@ Birthday&amp;&amp;Gender 是NSNumber类型, Avatar NSData类型 其他 NSString<
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2016 HXHG. All rights reserved. Updated: 2016-07-15</p>
+						<p class="copyright">Copyright &copy; 2016 HXHG. All rights reserved. Updated: 2016-10-18</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

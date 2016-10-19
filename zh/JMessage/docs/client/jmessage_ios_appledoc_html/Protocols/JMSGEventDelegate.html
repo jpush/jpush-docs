@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 
-	<title>JMSGTextContent Class Reference</title>
+	<title>JMSGEventDelegate Protocol Reference</title>
 
 	<link rel="stylesheet" href="../css/style.css">
 	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
@@ -54,19 +54,13 @@
 
 	
 	
-	<optgroup label="Properties">
-		
-		<option value="//api/name/text">text</option>
-		
-	</optgroup>
-	
 
 	
 
 	
 	<optgroup label="Instance Methods">
 		
-		<option value="//api/name/initWithText:">- initWithText:</option>
+		<option value="//api/name/onReceiveNotificationEvent:">- onReceiveNotificationEvent:</option>
 		
 	</optgroup>
 	
@@ -83,19 +77,16 @@
 		<div id="overview_contents" class="container">
 			<div id="content">
 				<main role="main">
-					<h1 class="title">JMSGTextContent Class Reference</h1>
+					<h1 class="title">JMSGEventDelegate Protocol Reference</h1>
 
 					
 					<div class="section section-specification"><table cellspacing="0"><tbody>
 						<tr>
-	<th>Inherits from</th>
-	<td><a href="../Classes/JMSGAbstractContent.html">JMSGAbstractContent</a> : NSObject</td>
-</tr><tr>
 	<th>Conforms to</th>
-	<td>NSCopying</td>
+	<td>NSObject</td>
 </tr><tr>
 	<th>Declared in</th>
-	<td>JMSGTextContent.h</td>
+	<td>JMSGEventDelegate.h</td>
 </tr>
 						</tbody></table></div>
 					
@@ -105,7 +96,7 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>纯文本内容类型</p>
+						<p>监听通知事件</p>
 					</div>
 					
 					
@@ -121,8 +112,8 @@
 
 						<div class="task-list">
 							<div class="section-method">
-	<a name="//api/name/text" title="text"></a>
-	<h3 class="method-title"><code><a href="#//api/name/text">&nbsp;&nbsp;text</a></code>
+	<a name="//api/name/onReceiveNotificationEvent:" title="onReceiveNotificationEvent:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/onReceiveNotificationEvent:">&ndash;&nbsp;onReceiveNotificationEvent:</a></code>
 </h3>
 
 	<div class="method-info">
@@ -132,53 +123,12 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>内容文本</p>
+				<p>监听通知事件</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly, copy) NSString *text</code></div>
-
-		    
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">JMSGTextContent.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/initWithText:" title="initWithText:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/initWithText:">&ndash;&nbsp;initWithText:</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>基于文本初始化内容对象</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>- (instancetype)initWithText:(NSString *)<em>text</em></code></div>
+			<div class="method-subsection method-declaration"><code>- (void)onReceiveNotificationEvent:(JMSGNotificationEvent *)<em>event</em></code></div>
 
 		    
 			
@@ -187,8 +137,8 @@
 				<table class="argument-def parameter-def">
 				
 					<tr>
-						<th scope="row" class="argument-name"><code>text</code></th>
-						<td><p>纯文本内容</p></td>
+						<th scope="row" class="argument-name"><code>event</code></th>
+						<td><p>下发的通知事件</p></td>
 					</tr>
 				
 				</table>
@@ -202,7 +152,12 @@
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>这是预设的创建文本类型内容的方法</p>
+				<p>SDK 收到服务器端下发事件后，会以通知代理的方式给到上层,通过event.eventType判断事件类型.</p>
+
+<p>注意：
+消息事件，如：群事件，SDK会作为一个特殊的消息类型下发，上层依旧通过 <a href="../Protocols/JMSGMessageDelegate.html">JMSGMessageDelegate</a> 监听消息事件.</p>
+
+<p>非消息事件，如：被踢下线、加好友，SDK会作为通知事件下发,上层通过本类 JMSGEventDelegate 的方法可监听此类事件.</p>
 			</div>
 			
 
@@ -213,7 +168,7 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">JMSGTextContent.h</code></p>
+				<p><code class="declared-in-ref">JMSGEventDelegate.h</code></p>
 			</div>
 			
 			
