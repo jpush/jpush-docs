@@ -1,8 +1,8 @@
-## JMessage WEB SDK 开发文档
+<h1>WEB SDK 开发指南</h1>
 
-### SDK概述
+## 概述
 
-极光WebIM SDK 为 Web 应用提供一个 IM 系统开发框架, 屏蔽掉 IM 系统的复杂的细节, 对外提供较为简洁的 API 接口, 方便第三方应用快速集成 IM 功能。
+极光 Web IM SDK 为 Web 应用提供一个 IM 系统开发框架, 屏蔽掉 IM 系统的复杂的细节, 对外提供较为简洁的 API 接口, 方便第三方应用快速集成 IM 功能。
 
 
 ### 签名算法
@@ -38,7 +38,7 @@ signature = md5(appkey=appkey&timestamp=timestamp&random_str=random_str&key=secr
 
 ### 开发准备
 
-#### 1  引入sockit.io.js
+#### 1、引入sockit.io.js
 JiGuang WebIM是基于[sockit.io](http://socket.io/)开发，开发者在使用之前需引入`sockit.io.js`。
 
 CDN源:
@@ -53,33 +53,35 @@ CDN源:
 
 以上CDN源引入任一一个即可，开发者也可以将socket.io.js下载到自己的项目目录并手动引入，建议引入最新版本的socket.io。
 
-#### 2  引入jmessage-web-sdk.min.js
+#### 2、引入jmessage-web-sdk.min.js
 
 ```
 <script src='./jmessage-sdk-web-1.0.0.min.js'></script>
 ```
 引入该js后便可使用window上的全局变量`JIM`。
 
-#### 3  调用JIM.init()进行初始化。
+#### 3、调用JIM.init()进行初始化。
 ```
 JIM.init({debug:true});
 ```
 
-### API
 
-#### 初始化 JIM.init()
+## API 接口
+
+### 初始化 
+#### JIM.init()
 
 PS: 此API是进行`JIM.login()`的前置动作，需要调用此接口才能进行登录操作。
 
-**Params:**  
+##### Params:  
 
 | KEY     | TYPE | REQUIRE | DESCIPTION                                               |      |
 | ------- | ---- | ------- | ---------------------------------                        | ---- |
-| debug   | boolean | FALSE   | 是否开启DEBUG模式，DEBUG模式会有更多日志打印，默认不开窍 |      |
+| debug   | boolean | FALSE   | 是否开启DEBUG模式，DEBUG模式会有更多日志打印，默认不开通 |      |
 | address | string | FALSE   | JMessage服务器地址，一般不需要指定，默认即可             |      |
 | timeout | string | FALSE   | 请求超时时间，默认为30秒                                 |      |
 
-**Example:**  
+##### Example:
 
 ```javascript
 JIM.init({
@@ -87,12 +89,12 @@ JIM.init({
 })
 ```
 
-#### 登陆 JIM.login()
+### 注册与登录 
+#### 注册 JIM.register()
 
-PS: 此API是IM业务方法的前置动作，需要登录后，才能进行后续的接口调用
 PS: sdk中集成了MD5处理，用户可以自由选择传入的密码是否做过MD5处理。
 
-**Params:**
+##### Params:
 
 | KEY              | TYPE | REQUIRE | DESCIPTION                                                                                                                     |
 | ---------------- | ---- | ------- | ----------------------------------------                                                                                       |
@@ -104,7 +106,36 @@ PS: sdk中集成了MD5处理，用户可以自由选择传入的密码是否做�
 | timeout_callback | function | FALSE   | 请求超时回调函数，不处理则忽略或传入null                                                                                       |
 | is_md5           | boolean | FALSE   | 传入的密码是否已经做了MD5处理：不传或者值为false，则sdk会对传入的密码做md5处理；传入的值为true，则sdk不会对传入的密码做md5处理 |
 
-**Example:**  
+##### Example:
+
+```javascript
+JIM.register(username, password, auth_payload, function(data) {
+    // 注册结果返回处理
+}, function(ack) {
+    // 请求送达JMessage服务器事件处理
+}, function(timeout) {
+    // 请求发送超时事件处理
+}, is_md5);
+```
+
+#### 登陆 JIM.login()
+
+PS: 此API是IM业务方法的前置动作，需要登录后，才能进行后续的接口调用
+PS: sdk中集成了MD5处理，用户可以自由选择传入的密码是否做过MD5处理。
+
+##### Params:
+
+| KEY              | TYPE | REQUIRE | DESCIPTION                                                                                                                     |
+| ---------------- | ---- | ------- | ----------------------------------------                                                                                       |
+| username         | string | TRUE    | 用户名                                                                                                                         |
+| password         | string | TRUE    | 明文密码或进行MD5处理后的用户密码                                                                                              |
+| auth_payload     | json | TRUE    | 签名，具体创建方法见签名算法                                                                                                   |
+| resp_callback    | function | FALSE   | 返回数据处理回调函数，不处理则忽略或传入null                                                                                   |
+| ack_callback     | function | FALSE   | 请求送达回调函数，不处理则忽略或传入null                                                                                       |
+| timeout_callback | function | FALSE   | 请求超时回调函数，不处理则忽略或传入null                                                                                       |
+| is_md5           | boolean | FALSE   | 传入的密码是否已经做了MD5处理：不传或者值为false，则sdk会对传入的密码做md5处理；传入的值为true，则sdk不会对传入的密码做md5处理 |
+
+##### Example:
 
 ```javascript
 JIM.login(username, password, auth_payload, function(data) {
@@ -116,9 +147,14 @@ JIM.login(username, password, auth_payload, function(data) {
 }, is_md5);
 ```
 
-#### 获取用户信息 JIM.getUserInfo()
+#### 退出登录 JIM.loginOut()
 
-**Params:**
+
+### 获取用户信息
+#### JIM.getUserInfo()
+
+##### Params:
+
 | KEY              | TYPE | REQUIRE | DESCIPTION                                   |
 | ---------------- | ---- | ------- | ------------------------                     |
 | username         | string | TRUE    | 用户名                                       |
@@ -126,7 +162,7 @@ JIM.login(username, password, auth_payload, function(data) {
 | ack_callback     | function | FALSE   | 请求送达回调函数，不处理则忽略或传入null     |
 | timeout_callback | function | FALSE   | 请求超时回调函数，不处理则忽略或传入null     |
 
-**Example:**
+##### Example:
 
 ```
 JIM.getUserInfo('xiezefan', 'username', function(data) {
@@ -138,9 +174,10 @@ JIM.getUserInfo('xiezefan', 'username', function(data) {
 });
 ```
 
+### 消息管理
 #### 发送单聊消息 JIM.sendSingleMsg()
 
-**Params:**
+##### Params:
 
 | KEY              | TYPE  | REQUIRE | DESCIPTION                                   |
 | ---------------- | ----- | ------- | ------------------------                     |
@@ -151,7 +188,7 @@ JIM.getUserInfo('xiezefan', 'username', function(data) {
 | ack_callback     | function | FALSE   | 请求送达回调函数，不处理则忽略或传入null     |
 | timeout_callback | function | FALSE   | 请求超时回调函数，不处理则忽略或传入null     |
 
-**Example:**
+##### Example:
 
 ```
 JIM.sendSingleMsg(friend_id, 'Hi, JPush', function(data) {
@@ -166,7 +203,7 @@ JIM.sendSingleMsg(friend_id, 'Hi, JPush', function(data) {
 
 #### 发送群组消息 JIM.sendGroupMsg()
 
-**Params:**
+##### Params:
 
 | KEY              | TYPE | REQUIRE | DESCIPTION                                   |
 | ---------------- | ---- | ------- | ------------------------                     |
@@ -177,7 +214,7 @@ JIM.sendSingleMsg(friend_id, 'Hi, JPush', function(data) {
 | ack_callback     | function | FALSE   | 请求送达回调函数，不处理则忽略或传入null     |
 | timeout_callback | function | FALSE   | 请求超时回调函数，不处理则忽略或传入null     |
 
-**Example:**
+##### Example:
 
 ```
 JIM.sendGroupMsg(group_id, 'Hi, JPush', function(data) {
@@ -189,11 +226,11 @@ JIM.sendGroupMsg(group_id, 'Hi, JPush', function(data) {
 });
 ```
 
-#### 获取消息构建器MsgBuilder JIM.createMsgBuilder()
+#### 获取消息构建器 MsgBuilder JIM.createMsgBuilder()
 
-**MsgBuilder**
+##### MsgBuilder
 
-MsgBuilder提供链式调用风格的API帮助开发者构建符合[JMessage消息协议](http://docs.jiguang.cn/advanced/im_message_protocol/)的聊天消息对象。
+MsgBuilder提供链式调用风格的API帮助开发者构建符合[JMessage消息协议](https://docs.jiguang.cn/jmessage/advanced/im_message_protocol/)的聊天消息对象。
 
 主要提供一下方法:  
 
@@ -214,7 +251,7 @@ MsgBuilder提供链式调用风格的API帮助开发者构建符合[JMessage消�
     * $ack : 请求送达回调函数，不处理则忽略或传入null
     * $timeout : 请求超时回调函数，不处理则忽略或传入null
 
-**Example:**
+##### Example:
 
 ```javascript
 JIM.createMsgBuilder()
@@ -232,10 +269,10 @@ JIM.createMsgBuilder()
         
 ```
 
-
+### 群组管理
 #### 创建群组 JIM.createGroup()
 
-**Params:**
+##### Params:
 
 | KEY               | TYPE | REQUIRE | DESCIPTION                                   |
 | ----------------- | ---- | ------- | ------------------------                     |
@@ -245,7 +282,7 @@ JIM.createMsgBuilder()
 | ack_callback      | function | FALSE   | 请求送达回调函数，不处理则忽略或传入null     |
 | timeout_callback  | function | FALSE   | 请求超时回调函数，不处理则忽略或传入null     |
 
-**Example:**
+##### Example:
 
 ```javascript
 JIM.createGroup('Group Name', 'Group Description', function(data) {
@@ -260,7 +297,7 @@ JIM.createGroup('Group Name', 'Group Description', function(data) {
 
 #### 获取群组列表 JIM.getGroupList()
 
-**Params:**
+##### Params:
 
 | KEY              | TYPE | REQUIRE | DESCIPTION                                   |
 | ---------------- | ---- | ------- | ------------------------                     |
@@ -268,7 +305,7 @@ JIM.createGroup('Group Name', 'Group Description', function(data) {
 | ack_callback     | function | FALSE   | 请求送达回调函数，不处理则忽略或传入null     |
 | timeout_callback | function | FALSE   | 请求超时回调函数，不处理则忽略或传入null     |
 
-**Example:**
+##### Example:
 
 ```
 JIM.getGroupList(function(data) {
@@ -283,7 +320,7 @@ JIM.getGroupList(function(data) {
 
 #### 获取群组信息 JIM.getGroupInfo()
 
-**Params:**
+##### Params:
 
 | KEY              | TYPE | REQUIRE | DESCIPTION                                   |
 | ---------------- | ---- | ------- | ------------------------                     |
@@ -292,7 +329,7 @@ JIM.getGroupList(function(data) {
 | ack_callback     | function | FALSE   | 请求送达回调函数，不处理则忽略或传入null     |
 | timeout_callback | function | FALSE   | 请求超时回调函数，不处理则忽略或传入null     |
 
-**Example:**
+##### Example:
 
 ```javascript
 JIM.getGroupInfo(group_id, function(data) {
@@ -307,7 +344,7 @@ JIM.getGroupInfo(group_id, function(data) {
 
 #### 增加群组成员 JIM.addGroupMember()
 
-**Params:**
+##### Params:
 
 | KEY              | TYPE | REQUIRE | DESCIPTION                                   |
 | ---------------- | ---- | ------- | ------------------------                     |
@@ -317,7 +354,7 @@ JIM.getGroupInfo(group_id, function(data) {
 | ack_callback     | function | FALSE   | 请求送达回调函数，不处理则忽略或传入null     |
 | timeout_callback | function | FALSE   | 请求超时回调函数，不处理则忽略或传入null     |
 
-**Example:**
+##### Example:
 
 ```
 JIM.addGroupMember(group_id, ['xiezefan01', 'xiezefan02', 'xiezefan03'], function(data) {
@@ -329,10 +366,34 @@ JIM.addGroupMember(group_id, ['xiezefan01', 'xiezefan02', 'xiezefan03'], functio
 });
 ```
 
+#### 增加群组成员(支持跨应用) JIM.addAcrossGroupMember()
+
+##### Params:
+
+| KEY              | TYPE | REQUIRE | DESCIPTION                                   |
+| ---------------- | ---- | ------- | ------------------------                     |
+| gid              | string | TRUE    | 群组gid                                      |
+| username_list    | array | TRUE    | 增加群组的用户名列表,示例：[{'username': 'name1', 'appkey': 'appkey1'}]                       |
+| resp_callback    | function | FALSE   | 返回数据处理回调函数，不处理则忽略或传入null |
+| ack_callback     | function | FALSE   | 请求送达回调函数，不处理则忽略或传入null     |
+| timeout_callback | function | FALSE   | 请求超时回调函数，不处理则忽略或传入null     |
+
+##### Example:
+
+```
+JIM.addGroupMember(group_id, [{'username': 'xiezefan01', 'appkey': 'appkey1'}, {'username': 'xiezefan02', 'appkey': 'appkey2'}] , function(data) {
+    // 返回处理
+}, function(ack) {
+    // 请求送达JMessage服务器事件处理
+}, function(timeout) {
+    // 请求发送超时事件处理
+});
+```
+
 
 #### 删除群组成员 JIM.delGroupMember()
 
-**Params:**
+##### Params:
 
 | KEY              | TYPE | REQUIRE | DESCIPTION                                   |
 | ---------------- | ---- | ------- | ------------------------                     |
@@ -342,7 +403,7 @@ JIM.addGroupMember(group_id, ['xiezefan01', 'xiezefan02', 'xiezefan03'], functio
 | ack_callback     | function | FALSE   | 请求送达回调函数，不处理则忽略或传入null     |
 | timeout_callback | function | FALSE   | 请求超时回调函数，不处理则忽略或传入null     |
 
-**Example:**
+##### Example:
 
 ```
 JIM.delGroupMember(group_id, ['xiezefan01', 'xiezefan02', 'xiezefan03'], function(data) {
@@ -354,10 +415,34 @@ JIM.delGroupMember(group_id, ['xiezefan01', 'xiezefan02', 'xiezefan03'], functio
 });
 ```
 
+#### 删除群组成员(支持跨应用) JIM.delAcrossGroupMember()
+
+##### Params:
+
+| KEY              | TYPE | REQUIRE | DESCIPTION                                   |
+| ---------------- | ---- | ------- | ------------------------                     |
+| gid              | string | TRUE    | 群组gid                                      |
+| username_list    | array | TRUE    | 删除群组的用户名列表,示例：[{'username': 'name1', 'appkey': 'appkey1'}]                       |
+| resp_callback    | function | FALSE   | 返回数据处理回调函数，不处理则忽略或传入null |
+| ack_callback     | function | FALSE   | 请求送达回调函数，不处理则忽略或传入null     |
+| timeout_callback | function | FALSE   | 请求超时回调函数，不处理则忽略或传入null     |
+
+##### Example:
+
+```
+JIM.delAcrossGroupMember(group_id, [{'username': 'xiezefan01', 'appkey': 'appkey1'}, {'username': 'xiezefan02', 'appkey': 'appkey2'}], function(data) {
+    // 返回处理
+}, function(ack) {
+    // 请求送达JMessage服务器事件处理
+}, function(timeout) {
+    // 请求发送超时事件处理
+});
+```
+
 
 #### 获取群组成员列表 JIM.getGroupMembers()
 
-**Params:**
+##### Params:
 
 | KEY              | TYPE | REQUIRE | DESCIPTION                                   |
 | ---------------- | ---- | ------- | ------------------------                     |
@@ -366,7 +451,7 @@ JIM.delGroupMember(group_id, ['xiezefan01', 'xiezefan02', 'xiezefan03'], functio
 | ack_callback     | function | FALSE   | 请求送达回调函数，不处理则忽略或传入null     |
 | timeout_callback | function | FALSE   | 请求超时回调函数，不处理则忽略或传入null     |
 
-**Example:**
+##### Example:
 
 ```
 JIM.getGroupMembers(group_id, function(data) {
@@ -381,7 +466,7 @@ JIM.getGroupMembers(group_id, function(data) {
 
 #### 更新群组信息 JIM.updateGroupInfo()
 
-**Params:**
+##### Params:
 
 | KEY               | TYPE | REQUIRE | DESCIPTION                                   |
 | ----------------- | ---- | ------- | ------------------------                     |
@@ -392,7 +477,7 @@ JIM.getGroupMembers(group_id, function(data) {
 | ack_callback      | function | FALSE   | 请求送达回调函数，不处理则忽略或传入null     |
 | timeout_callback  | function | FALSE   | 请求超时回调函数，不处理则忽略或传入null     |
 
-**Example:**
+##### Example:
 
 ```
 JIM.updateGroupInfo(group_id, 'New Group Name', 'New Group Description', function(data) {
@@ -406,7 +491,7 @@ JIM.updateGroupInfo(group_id, 'New Group Name', 'New Group Description', functio
 
 #### 退出群组 JIM.exitGroup()
 
-**Params:**
+##### Params:
 
 | KEY              | TYPE | REQUIRE | DESCIPTION                                   |
 | ---------------- | ---- | ------- | ------------------------                     |
@@ -415,7 +500,7 @@ JIM.updateGroupInfo(group_id, 'New Group Name', 'New Group Description', functio
 | ack_callback     | function | FALSE   | 请求送达回调函数，不处理则忽略或传入null     |
 | timeout_callback | function | FALSE   | 请求超时回调函数，不处理则忽略或传入null     |
 
-**Example:**
+##### Example:
 
 ```
 JIM.exitGroup(group_id, function(data) {
@@ -427,10 +512,10 @@ JIM.exitGroup(group_id, function(data) {
 });
 ```
 
-
+### 会话管理
 #### 获取会话列表 JIM.getConversations()
 
-**Params:**
+##### Params:
 
 | KEY              | TYPE | REQUIRE | DESCIPTION                                   |
 | ---------------- | ---- | ------- | ------------------------                     |
@@ -438,7 +523,7 @@ JIM.exitGroup(group_id, function(data) {
 | ack_callback     | function | FALSE   | 请求送达回调函数，不处理则忽略或传入null     |
 | timeout_callback | function | FALSE   | 请求超时回调函数，不处理则忽略或传入null     |
 
-**Example:**
+##### Example:
 
 ```
 JIM.getConversations(function(data) {
@@ -450,9 +535,10 @@ JIM.getConversations(function(data) {
 });
 ```
 
+### 免打扰
 #### 获取免打扰 JIM.getNoDisturb()
 
-**Params:**
+##### Params:
 
 | KEY              | TYPE | REQUIRE | DESCIPTION                                   |
 | ---------------- | ---- | ------- | ------------------------                     |
@@ -460,7 +546,7 @@ JIM.getConversations(function(data) {
 | ack_callback     | function | FALSE   | 请求送达回调函数，不处理则忽略或传入null     |
 | timeout_callback | function | FALSE   | 请求超时回调函数，不处理则忽略或传入null     |
 
-**Example:**
+##### Example:
 
 ```
 JIM.getNoDisturb(function(data) {
@@ -474,7 +560,7 @@ JIM.getNoDisturb(function(data) {
 
 #### 添加单聊免打扰 JIM.addSingleNoDisturb()
 
-**Params:**
+##### Params:
 
 | KEY              | TYPE | REQUIRE | DESCIPTION                                   |
 | ---------------- | ---- | ------- | ------------------------                     |
@@ -483,7 +569,7 @@ JIM.getNoDisturb(function(data) {
 | ack_callback     | function | FALSE   | 请求送达回调函数，不处理则忽略或传入null     |
 | timeout_callback | function | FALSE   | 请求超时回调函数，不处理则忽略或传入null     |
 
-**Example:**
+##### Example:
 
 ```
 JIM.addSingleNoDisturb(target_name, function(data) {
@@ -497,7 +583,7 @@ JIM.addSingleNoDisturb(target_name, function(data) {
 
 #### 删除单聊免打扰 JIM.deleteSingleNoDisturb()
 
-**Params:**
+##### Params:
 
 | KEY              | TYPE | REQUIRE | DESCIPTION                                   |
 | ---------------- | ---- | ------- | ------------------------                     |
@@ -506,7 +592,7 @@ JIM.addSingleNoDisturb(target_name, function(data) {
 | ack_callback     | function | FALSE   | 请求送达回调函数，不处理则忽略或传入null     |
 | timeout_callback | function | FALSE   | 请求超时回调函数，不处理则忽略或传入null     |
 
-**Example:**
+##### Example:
 
 ```
 JIM.deleteSingleNoDisturb(target_name, function(data) {
@@ -520,7 +606,7 @@ JIM.deleteSingleNoDisturb(target_name, function(data) {
 
 #### 添加群聊免打扰 JIM.addGroupNoDisturb()
 
-**Params:**
+##### Params:
 
 | KEY              | TYPE | REQUIRE | DESCIPTION                                   |
 | ---------------- | ---- | ------- | ------------------------                     |
@@ -529,7 +615,7 @@ JIM.deleteSingleNoDisturb(target_name, function(data) {
 | ack_callback     | function | FALSE   | 请求送达回调函数，不处理则忽略或传入null     |
 | timeout_callback | function | FALSE   | 请求超时回调函数，不处理则忽略或传入null     |
 
-**Example:**
+##### Example:
 
 ```
 JIM.addGroupNoDisturb(gid, function(data) {
@@ -543,7 +629,7 @@ JIM.addGroupNoDisturb(gid, function(data) {
 
 #### 删除群聊免打扰 JIM.deleteGroupNoDisturb()
 
-**Params:**
+##### Params:
 
 | KEY              | TYPE | REQUIRE | DESCIPTION                                   |
 | ---------------- | ---- | ------- | ------------------------                     |
@@ -552,7 +638,7 @@ JIM.addGroupNoDisturb(gid, function(data) {
 | ack_callback     | function | FALSE   | 请求送达回调函数，不处理则忽略或传入null     |
 | timeout_callback | function | FALSE   | 请求超时回调函数，不处理则忽略或传入null     |
 
-**Example:**
+##### Example:
 
 ```
 JIM.deleteGroupNoDisturb(gid, function(data) {
@@ -566,7 +652,7 @@ JIM.deleteGroupNoDisturb(gid, function(data) {
 
 #### 添加全局免打扰 JIM.addGlobalNoDisturb()
 
-**Params:**
+##### Params:
 
 | KEY              | TYPE | REQUIRE | DESCIPTION                                   |
 | ---------------- | ---- | ------- | ------------------------                     |
@@ -574,7 +660,7 @@ JIM.deleteGroupNoDisturb(gid, function(data) {
 | ack_callback     | function | FALSE   | 请求送达回调函数，不处理则忽略或传入null     |
 | timeout_callback | function | FALSE   | 请求超时回调函数，不处理则忽略或传入null     |
 
-**Example:**
+##### Example:
 
 ```
 JIM.addGlobalNoDisturb(function(data) {
@@ -588,7 +674,7 @@ JIM.addGlobalNoDisturb(function(data) {
 
 #### 删除全局免打扰 JIM.deleteGlobalNoDisturb()
 
-**Params:**
+##### Params:
 
 | KEY              | TYPE | REQUIRE | DESCIPTION                                   |
 | ---------------- | ---- | ------- | ------------------------                     |
@@ -596,7 +682,7 @@ JIM.addGlobalNoDisturb(function(data) {
 | ack_callback     | function | FALSE   | 请求送达回调函数，不处理则忽略或传入null     |
 | timeout_callback | function | FALSE   | 请求超时回调函数，不处理则忽略或传入null     |
 
-**Example:**
+##### Example:
 
 ```
 JIM.deleteGlobalNoDisturb(function(data) {
@@ -608,11 +694,109 @@ JIM.deleteGlobalNoDisturb(function(data) {
 });
 ```
 
-#### 登出 JIM.loginOut()
+### 黑名单管理
+#### 获取黑名单列表 JIM.getBlackList()
 
-#### 聊天消息监听
+##### Params:
 
-**Example:**
+| KEY              | TYPE | REQUIRE | DESCIPTION                                   |
+| ---------------- | ---- | ------- | ------------------------                     |
+| resp_callback    | function | FALSE   | 返回数据处理回调函数，不处理则忽略或传入null |
+| ack_callback     | function | FALSE   | 请求送达回调函数，不处理则忽略或传入null     |
+| timeout_callback | function | FALSE   | 请求超时回调函数，不处理则忽略或传入null     |
+
+##### Example:
+
+```
+JIM.getBlackList(function(data) {
+    // 返回处理
+}, function(ack) {
+    // 请求送达JMessage服务器事件处理
+}, function(timeout) {
+    // 请求发送超时事件处理
+});
+```
+
+#### 添加黑名单(支持跨应用) JIM.addBlackList()
+
+##### Params:
+
+| KEY              | TYPE | REQUIRE | DESCIPTION                                   |
+| ---------------- | ---- | ------- | ------------------------                     |
+| member_list    | array | true   | 添加入黑名单的列表, 示例：[{'username': 'name1', 'appkey': 'appkey1'}] |
+| resp_callback    | function | FALSE   | 返回数据处理回调函数，不处理则忽略或传入null |
+| ack_callback     | function | FALSE   | 请求送达回调函数，不处理则忽略或传入null     |
+| timeout_callback | function | FALSE   | 请求超时回调函数，不处理则忽略或传入null     |
+
+##### Example:
+
+```
+JIM.addBlackList([{'username': 'xiezefan01', 'appkey': 'appkey1'}, {'username': 'xiezefan02', 'appkey': 'appkey2'}], function(data) {
+    // 返回处理
+}, function(ack) {
+    // 请求送达JMessage服务器事件处理
+}, function(timeout) {
+    // 请求发送超时事件处理
+});
+```
+
+#### 删除黑名单(支持跨应用) JIM.delBlackList()
+
+##### Params:
+
+| KEY              | TYPE | REQUIRE | DESCIPTION                                   |
+| ---------------- | ---- | ------- | ------------------------                     |
+| member_list    | array | true   | 添加入黑名单的列表, 示例：[{'username': 'name1', 'appkey': 'appkey1'}] |
+| resp_callback    | function | FALSE   | 返回数据处理回调函数，不处理则忽略或传入null |
+| ack_callback     | function | FALSE   | 请求送达回调函数，不处理则忽略或传入null     |
+| timeout_callback | function | FALSE   | 请求超时回调函数，不处理则忽略或传入null     |
+
+##### Example:
+
+```
+JIM.delBlackList([{'username': 'xiezefan01', 'appkey': 'appkey1'}, {'username': 'xiezefan02', 'appkey': 'appkey2'}], function(data) {
+    // 返回处理
+}, function(ack) {
+    // 请求送达JMessage服务器事件处理
+}, function(timeout) {
+    // 请求发送超时事件处理
+});
+```
+
+#### 发送图片消息(支持跨应用, 支持单聊，支持群聊) JIM.uploadImg(), 接收对象类型参数
+
+##### Params:
+
+| KEY              | TYPE | REQUIRE | DESCIPTION                                   |
+| ---------------- | ---- | ------- | ------------------------                     |
+| target_username    | string | true   | 接收者用户名，当发送图片为单聊时，必填，群聊时，不填 |
+| appkey    | string | true   | 接收者用户的appkey，当发送图片为单聊时，必填，群聊时，不填 |
+| target_gid    | string | true   | 接收群组id，当发送图片为群聊时，必填，单聊时，不填 |
+| fd    | object | true   | 上传图片的FormData格式 |
+| type    | string | true   | 发送消息的类型，单聊-'single', 群聊-'group' |
+| resp    | function | FALSE   | 返回数据处理回调函数，不处理则忽略或传入null |
+| ack     | function | FALSE   | 请求送达回调函数，不处理则忽略或传入null     |
+| timeout | function | FALSE   | 请求超时回调函数，不处理则忽略或传入null     |
+
+##### Example:
+
+```
+JIM.uploadImg({
+ target_username: 'xiezefan01',
+ appkey: 'appkey1',
+ target_gid: 'groupid1',
+ fd: FormData,
+ type: 'single',
+ resp: resp_callback,
+ ack: ack_callback,
+ timeout: timeout_callback
+    })
+```
+
+
+### 聊天消息监听
+
+##### Example:
 
 ```
 JIM.onMsgReceive(function(data) {
@@ -620,7 +804,7 @@ JIM.onMsgReceive(function(data) {
 });
 ```
 
-**Msg Payload Example**
+##### Msg Payload Example
 
 ```
 {
@@ -644,9 +828,10 @@ JIM.onMsgReceive(function(data) {
   "msg_level": "normal" //"normal"-普通，"across"-跨应用
 }
 ```
-#### 业务事件监听
 
-**Example:**  
+### 业务事件监听
+
+##### Example:
 
 ```
 JIM.onEvent(function(data) {
@@ -655,7 +840,7 @@ JIM.onEvent(function(data) {
 ```
 
 
-**Event Payload Example**
+##### Event Payload Example
 
 ```
 {
@@ -676,3 +861,5 @@ JIM.onEvent(function(data) {
   "from_uid": 16836751 // 事件发起者
 }
 ```
+
+
