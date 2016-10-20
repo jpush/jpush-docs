@@ -90,9 +90,14 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 	 *
 	 * @param username 登录用户名. 规则与注册接口相同.
 	 * @param password 登录密码. 规则与注册接口相同.
-	 * @param handler 结果回调. 正常返回时 resultOjbect 为 nil.
+	 * @param handler 结果回调
+	 *
+	 * - resultObject 简单封装的user对象
+	 * - error 错误信息
+	 *
+	 * 注意：上层不要直接使用 resultObject 对象做操作, 因为 resultOjbect 只是一个简单封装的user对象.
 	 */
-	
+
 	+ (void)loginWithUsername:(NSString *)username
 	                 password:(NSString *)password
 	        completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)handler;
@@ -165,7 +170,7 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 	 * @param parameter     新的属性值
 	 *        Birthday&&Gender 是NSNumber类型, Avatar NSData类型 其他 NSString
 	 * @param type          更新属性类型
-	 * @param handler       用户注册回调接口函数
+	 * @param handler       更新用户信息回调接口函数
 	 */
 	+ (void)updateMyInfoWithParameter:(id)parameter
 	                    userFieldType:(JMSGUserField)type
@@ -194,7 +199,7 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 	 *
 	 * @param newPassword   用户新的密码
 	 * @param oldPassword   用户旧的密码
-	 * @param handler       用户注册回调接口函数
+	 * @param handler       更新密码回调接口函数
 	 */
 	+ (void)updateMyPasswordWithNewPassword:(NSString *)newPassword
 	                            oldPassword:(NSString *)oldPassword
@@ -272,6 +277,35 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 ##### 例子
 	JMSGUser *user = [JMSGUser myInfo];
 	NSString myName = [user displayName];
+
+#### 修改好友的备注名、备注信息	
+	/*!
+	 * @abstract 修改好友备注名
+	 *
+	 * @param noteName 备注名
+	 *
+	 * @discussion 注意：这是建立在是好友关系的前提下，修改好友的备注名
+	 */
+	- (void)updateNoteName:(NSString *)noteName completionHandler:(JMSGCompletionHandler)handler;
+	
+	/*!
+	 * @abstract 修改好友备注信息
+	 *
+	 * @param noteText 备注信息
+	 *
+	 * @discussion 注意：这是建立在是好友关系的前提下，修改好友的备注信息
+	 */
+	- (void)updateNoteText:(NSString *)noteText completionHandler:(JMSGCompletionHandler)handler;
+##### 例子
+	// 修改备注名
+	[friendUser updateNoteName:@"备注名" completionHandler:^(id resultObject, NSError *error) {
+	    if (!error) {
+	        [MBProgressHUD showMessage:@"修改备注成功" view:self.view];
+	    }else{
+	        [MBProgressHUD showMessage:@"修改备注失败" view:self.view];
+	    }
+	 }]; 
+
 ### 消息管理
 #### 创建单聊消息
 	/*!
@@ -447,6 +481,17 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 	                           scale:(NSNumber *)scale
 	                         address:(NSString *)address
 	                         toGroup:(NSString *)groupId;
+	                         
+#### 设置消息的FromName
+	/*!
+	 * @abstract 设置消息的 fromName(即:通知栏的展示名称)
+	 *
+	 * @param fromName 本条消息在接收方通知栏的展示名称
+	 *
+	 * @discussion fromName填充在发出的消息体里，对方收到该消息通知时,在通知栏显示的消息发送人名称就是该字段的值.
+	 *
+	 */
+	- (void)setFromName:(NSString * JMSG_NULLABLE)fromName;
 
 ### 会话管理
 会话相关的操作：
@@ -1372,46 +1417,89 @@ BOOL isAlreadSet = user.isNoDisturb;
 ```
 
 ### 事件处理
-__事件类型的消息内容__
+#### 通知事件类型
 
-* 服务器端下发的事件通知, 比如用户被踢下线,群组里加了人, SDK 作为一个特殊的消息类型处理
-* SDK 以消息的形式通知到 App. 详情参见 JMessageDelegate
-
-#### JMSGEventContent
-	//通知事件类型
 	typedef NS_ENUM(NSInteger, JMSGEventNotificationType) {
-	  /// 事件类型: 登录被踢
-	  kJMSGEventNotificationLoginKicked = 1,
-	  /// 事件类型: 群组被创建
-	  kJMSGEventNotificationCreateGroup = 8,
-	  /// 事件类型: 退出群组
-	  kJMSGEventNotificationExitGroup = 9,
-	  /// 事件类型: 添加新成员
-	  kJMSGEventNotificationAddGroupMembers = 10,
-	  /// 事件类型: 成员被踢出
-	  kJMSGEventNotificationRemoveGroupMembers = 11,
-	  /// 事件类型: 群信息更新
-	  kJMSGEventNotificationUpdateGroupInfo = 12,
-	  
-	  /// 事件类型: 好友邀请相关
-	  kJMSGEventNotificationFriendInvitation          = 5,
-	  /// 事件类型: 收到好友邀请
-	  kJMSGEventNotificationReceiveFriendInvitation   = 51,
-	  /// 事件类型: 对方接受了你的好友邀请
-	  kJMSGEventNotificationAcceptedFriendInvitation  = 52,
-	  /// 事件类型: 对方拒绝了你的好友邀请
-	  kJMSGEventNotificationDeclinedFriendInvitation  = 53,
-	  /// 事件类型: 对方将你从好友中删除
-	  kJMSGEventNotificationDeletedFriend             = 6,
+    
+	    /// 用户登录状态变更事件
+	    /// 事件类型: 登录被踢
+	    kJMSGEventNotificationLoginKicked = 1,
+	    /// 事件类型: 非客户端修改密码强制登出事件
+	    kJMSGEventNotificationServerAlterPassword = 2,
+	    /// 事件类型：用户登录状态异常事件（需要重新登录）
+	    kJMSGEventNotificationUserLoginStatusUnexpected = 70,
+	    
+	    /// 好友相关事件
+	    /// 事件类型: 收到好友邀请
+	    kJMSGEventNotificationReceiveFriendInvitation   = 51,
+	    /// 事件类型: 对方接受了你的好友邀请
+	    kJMSGEventNotificationAcceptedFriendInvitation  = 52,
+	    /// 事件类型: 对方拒绝了你的好友邀请
+	    kJMSGEventNotificationDeclinedFriendInvitation  = 53,
+	    /// 事件类型: 对方将你从好友中删除
+	    kJMSGEventNotificationDeletedFriend             = 6,
+	    
+	    /// 消息事件
+	    /// 事件类型: 群组被创建
+	    kJMSGEventNotificationCreateGroup = 8,
+	    /// 事件类型: 退出群组
+	    kJMSGEventNotificationExitGroup = 9,
+	    /// 事件类型: 群组添加新成员
+	    kJMSGEventNotificationAddGroupMembers = 10,
+	    /// 事件类型: 群组成员被踢出
+	    kJMSGEventNotificationRemoveGroupMembers = 11,
+	    /// 事件类型: 群信息更新
+	    kJMSGEventNotificationUpdateGroupInfo = 12,
 	};
 	
+
+* 消息事件，如：群事件，SDK会作为一个特殊的消息类型处理，上层通过[JMSGMessageDelegate](#onReceiveMessage:error:)可监听到此事件。
+* 非消息事件，如：被踢、加好友等,SDK会作为通知事件下发,上层通过 [JMSGEventDelegate](#JMSGEventDelegate) 类中的方法监听此类事件. [使用示例](#监听下发事件实例)
+
+#### 用户登录状态变更事件
+#### JMSGNotificationEvent
 	/*!
 	 * @abstract 事件类型
 	 * @discussion 参考事件类型的定义 JMSGEventNotificationType
 	 */
+	@property(nonatomic, assign, readonly) JMSGEventNotificationType eventType;
 	
+	/*!
+	 * @abstract 事件的描述信息
+	 * @discussion 下发事件的文字描述，可能为空
+	 */
+	@property(nonatomic, strong, readonly) NSString *eventDescription;
+
+#### 好友管理事件
+#### JMSGFriendNotificationEvent 
+	/*!
+	 * @abstract 获取事件发生的理由
+	 *
+	 * @discussion 该字段由对方发起请求时所填，对方如果未填则将返回默认字符串
+	 */
+	- (NSString *JMSG_NULLABLE)getReason;
+	 /*!
+	  * @abstract 事件发送者的username
+	  *
+	  * @discussion 该字段由对方发起请求时所填，对方如果未填则将返回默认字符串
+	  * 如果设置了noteName、nickname，返回优先级为noteName、nickname；否则返回username
+	  */
+	- (NSString *JMSG_NULLABLE)getFromUsername;
 	
-#### 事件的文本描述 
+	/*!
+	 * @abstract 获取事件发送者user
+	 */
+	- (JMSGUser *JMSG_NULLABLE)getFromUser;
+
+##### 例子
+	// 对方拒绝你的好友邀请，会有事件下发，可通过这个接口获取对方所填拒绝理由
+	NSString *reason = [friendEvent getReason];
+	// 获取事件发送者称呼，注意：返回优先级 备注名 -> 昵称 -> username
+	NSString *name = [friendEvent getFromUsername];
+	// 获取事件发送对象user
+	JMSGUser *user = [friendEvent getFromUser];
+		
+#### 消息事件 
 #### JMSGEventContent
 	/*!
 	 @abstract 展示此事件的文本描述
@@ -1419,14 +1507,6 @@ __事件类型的消息内容__
 	 @discussion SDK 根据事件类型，拼接成完整的事件描述信息。
 	 */
 	- (NSString * JMSG_NONNULL)showEventNotification;  
-##### 例子
-	
-	if (message.contentType == kJMSGContentTypeEventNotification) {
-         NSString *showText = [((JMSGEventContent *)message.content) showEventNotification];
-    }
-    //比如，在群group中，用户A邀请用户B加入了群,showText 如下：
-    //showText = "A邀请B加入了群组"
-#### 自定义事件的文本描述
 	/*!
 	 * @abstract 获取事件发起者的用户名
 	 * @return 正常返回事件发起者的用户名，如果是系统事件则返回“系统消息”
@@ -1445,52 +1525,22 @@ __事件类型的消息内容__
 	 */
 	- (NSArray *JMSG_NULLABLE)getEventToUsernameList;
 ##### 例子
-	JMSGEventContent *eventContent = (JMSGEventContent*)message.content;
-	//获取发起事件的用户名
-	NSString *fromUsername = [eventContent getEventFromUsername];
-	//获取事件作用对象用户名列表
-	NSArray *toUsernameList = [eventContent getEventToUsernameList];
+	// 事件的文本描述
+	if (message.contentType == kJMSGContentTypeEventNotification) {
+		NSString *showText = [((JMSGEventContent *)message.content) showEventNotification];
+	    //比如，在群group中，用户A邀请用户B加入了群,showText 如下：
+	    //showText = "A邀请B加入了群组"
+    }
+	
 	//根据事件类型，定制相应描述（以事件类型: 添加新成员为例子）
+	JMSGEventContent *eventContent = (JMSGEventContent*)message.content;
+	NSString *fromUsername = [eventContent getEventFromUsername];
+	NSArray *toUsernameList = [eventContent getEventToUsernameList];
 	if(eventContent.eventType == kJMSGEventNotificationAddGroupMembers) {
 		NSString *showText = [NSString stringWithFormat:@"%@邀请了%@加入了群聊",fromUsername,[toUsernameList componentsJoinedByString:@","]];
 	}
-#### 好友管理事件
-#### JMSGFriendEventContent
-	/*!
-	 * @abstract 好友通知事件类型
-	 * @discussion 参考事件类型的定义 JMSGEventNotificationType
-	 */
-	@property(nonatomic, assign, readonly) JMSGEventNotificationType eventType;
-	
-	/*!
-	 * @abstract 获取事件发生的理由
-	 *
-	 * @discussion 该字段由对方发起请求时所填，对方如果未填则将返回默认字符串
-	 */
-	- (NSString *JMSG_NULLABLE)getReason;
-##### 例子
-```
-// 对方拒绝你的好友邀请，会有事件下发，可通过这个接口获取对方所填拒绝理由
-NSString *reason = [friendEvent getReason];
-```	
-#### 获取好友事件的发送者信息
-	/*!
-	 * @abstract 事件发送者的username
-	 *
-	 * @discussion 该字段由对方发起请求时所填，对方如果未填则将返回默认字符串
-	 * 如果设置了noteName、nickname，返回优先级为noteName、nickname；否则返回username
-	 */
-	- (NSString *JMSG_NULLABLE)getFromUsername;
-	
-	/*!
-	 * @abstract 获取事件发送者user
-	 */
-	- (JMSGUser *JMSG_NULLABLE)getFromUser;
-##### 例子
-	// 获取事件发送者称呼，注意：返回优先级 备注名 -> 昵称 -> username
-	NSString *name = [friendEvent getFromUsername];
-	// 获取事件发送对象user
-	JMSGUser *user = [friendEvent getFromUser];
+
+
 ### 通知监听
 
 JMessage SDK 采用 Delegate 的机制给 App 发通知，而不是采用 iOS 平台通用的通知方式。Delegate 的方式更加直接、易用。
@@ -1514,7 +1564,36 @@ JMessage SDK 采用 Delegate 的机制给 App 发通知，而不是采用 iOS �
 
 另外一个建议在 AppDelegate 里监听的通知是当前用户被踢出登录。
 
-	- (void)onLoginUserKicked;
+	- (void)onLoginUserKicked;（此方法已过期，建议使用下面的新方法）
+	
+	// 通过event.eventType 判断事件类型,如：被踢事件、好友相关事件等
+	- (void)onReceiveNotificationEvent:(JMSGNotificationEvent *)event;
+
+<span id="监听下发事件实例"></span>
+##### 示例代码
+	// 通知事件监听
+	- (void)onReceiveNotificationEvent:(JMSGNotificationEvent *)event{
+	    switch (event.eventType) {
+	        case kJMSGEventNotificationReceiveFriendInvitation:
+	        case kJMSGEventNotificationAcceptedFriendInvitation:
+	        case kJMSGEventNotificationDeclinedFriendInvitation:
+	        case kJMSGEventNotificationDeletedFriend:
+	            NSLog(@"Friend Notification Event ");
+	            break;
+	        case kJMSGEventNotificationLoginKicked:
+	            NSLog(@"LoginKicked Notification Event ");
+	            break;
+	        case kJMSGEventNotificationServerAlterPassword:
+	            NSLog(@"Server Alter Password Notification Event ");
+	            break;
+	        case kJMSGEventNotificationUserLoginStatusUnexpected:
+	            NSLog(@"User login status unexpected Notification Event ");
+	            break;
+	        default:
+		        NSLog(@"Other Notification Event ");
+	            break;
+	    }
+	}	
 
 ### 结果回调
 
@@ -1535,7 +1614,7 @@ JMSGCompletionHandler 有 2 个参数：
 
 
 ### 实现回调 
-#### JMSGConversationDelegate 回调
+#### JMSGConversationDelegate
 	/*!
 	 * @abstract 会话信息变更通知
 	 *
@@ -1555,7 +1634,7 @@ JMSGCompletionHandler 有 2 个参数：
 	 */
 	@optional
 	- (void)onUnreadChanged:(NSUInteger)newCount;
-#### JMSGMessageDelegate 回调
+#### JMSGMessageDelegate
 ```
 /*!
  * @abstract 发送消息结果返回回调
@@ -1569,6 +1648,8 @@ JMSGCompletionHandler 有 2 个参数：
 - (void)onSendMessageResponse:(JMSGMessage *)message
                         error:(NSError *)error;
 ```
+<span id="onReceiveMessage:error:"></span>
+
 ```
 /*!
  * @abstract 接收消息(服务器端下发的)回调
@@ -1602,7 +1683,7 @@ JMSGCompletionHandler 有 2 个参数：
 @optional
 - (void)onReceiveMessageDownloadFailed:(JMSGMessage *)message;
 ``` 
-#### JMSGGroupDelegate 回调
+#### JMSGGroupDelegate
 	/*!
 	 * @abstract 群组信息 (GroupInfo) 信息通知
 	 *
@@ -1613,31 +1694,41 @@ JMSGCompletionHandler 有 2 个参数：
 	@optional
 	- (void)onGroupInfoChanged:(JMSGGroup *)group;
 
-#### JMSGUserDelegate 回调
+#### JMSGUserDelegate（方法已过期，建议使用JMSGEventDelegate）
 	/*!
-	 * @abstract 当前登录用户被踢下线通知
+	 * @abstract 当前登录用户被踢下线通知(方法已过期，建议使用新方法)
 	 *
 	 * @discussion 一般可能是, 该用户在其他设备上登录, 把当前设备的登录踢出登录.
 	 *
 	 * SDK 收到服务器端下发事件后, 会内部退出登录.
 	 * App 也应该退出登录. 否则所有的 SDK API 调用将失败, 因为 SDK 已经退出登录了.
+	 *
+	 * 注意: 这是旧版本的监听方法，建议不要使用,已经过期,
+	 * 使用 JMSGEventDelegate 类中的 onReceiveNotificationEvent 新的监听方法.
 	 */
 	@optional
 	- (void)onLoginUserKicked;
-	
-#### JMSGFriendDelegate 回调
+
+<span id="JMSGEventDelegate"></span>
+
+#### JMSGEventDelegate 
 	/*!
-	 * @abstract 好友变更通知
+	 * @abstract 监听通知事件
 	 *
-	 * @param event 通知事件对象
+	 * @param event 下发的通知事件
 	 *
-	 * @discussion 收到此通知后，SDK 会更新好友关系的标识
+	 * @discussion SDK 收到服务器端下发事件后，会以通知代理的方式给到上层,通过event.eventType判断事件类型.
 	 *
+	 * 注意：
+	 * 消息事件，如：群事件，SDK会作为一个特殊的消息类型下发，上层依旧通过 JMSGMessageDelegate 监听消息事件.
+	 *
+	 * 非消息事件，如：被踢下线、加好友，SDK会作为通知事件下发,上层通过本类 JMSGEventDelegate 的方法可监听此类事件.
 	 */
 	@optional
-	- (void)onFriendChanged:(JMSGFriendEventContent *)event;
+	- (void)onReceiveNotificationEvent:(JMSGNotificationEvent *)event;
+
 	
-#### JMSGDBMigrateDelegate 回调
+#### JMSGDBMigrateDelegate 
 	/*!
 	 * @abstract 数据库升级开始
 	 */
