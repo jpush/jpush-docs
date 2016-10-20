@@ -3,6 +3,7 @@
 ## MessageList 消息历史
 
 目前只保存最近60天消息，这类 API 地址统一为（注意与 Push API 不同）：**https://report.im.jpush.cn/v2**
+相比于V1 V2改进了整体查询的稳定性以及速度，提高查询一页的数量上限
 
 ### HTTP 验证
 

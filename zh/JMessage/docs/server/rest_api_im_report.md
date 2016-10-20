@@ -1,6 +1,6 @@
 # IM REST Report
 
-## MessageList 消息列表
+## MessageList 消息历史
 
 目前只保存最近60天消息，这类 API 地址统一为（注意与 Push API 不同）：**https://report.im.jpush.cn/v1**
 
@@ -148,3 +148,5 @@ Content-Type: application/json; charset=utf-8
  ] 
 }
 ```
+
+
