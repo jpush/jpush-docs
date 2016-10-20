@@ -28,7 +28,7 @@ pages:
 
 - REST API:
   - 'REST API': 'server/rest_api_im.md'
-  - 'REST Report': 'server/rest_api_im_report_v2.md'
+  - 'REST Report V2': 'server/rest_api_im_report_v2.md'
   - 'REST Report': 'server/rest_api_im_report.md'
   - 'Server ErrorCode 定义': 'client/im_errorcode_server.md'
 - 高级:
