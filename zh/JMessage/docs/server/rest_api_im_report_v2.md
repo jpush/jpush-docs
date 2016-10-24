@@ -2,7 +2,8 @@
 
 ## MessageList 消息历史
 
-目前只保存最近60天消息，这类 API 地址统一为（注意与 Push API 不同）：**https://report.im.jpush.cn/v1**
+目前只保存最近60天消息，这类 API 地址统一为（注意与 Push API 不同）：**https://report.im.jpush.cn/v2**
+相比于V1 V2改进了整体查询的稳定性以及速度，提高查询一页的数量上限
 
 ### HTTP 验证
 
@@ -23,7 +24,8 @@ Authorization: Basic base64_auth_string
 
 
 ```
-GET /messages?&start=0&count=500&begin_time={begin_time}&end_time={end_time}
+GET  /messages?count=1000&begin_time={begin_time}&end_time={end_time}&cursor=${cursor}
+
 ```
 
 ### Example Request 
@@ -31,7 +33,11 @@ GET /messages?&start=0&count=500&begin_time={begin_time}&end_time={end_time}
 ####  Request Header  
 
 ```
-GET /messages?start=0&count=500&begin_time=2015-11-02 10:10:10&end_time=2015-11-02 10:10:12
+GET /messages?count=500&begin_time=2015-11-02 10:10:10&end_time=2015-11-02 10:10:12 (第一次请求)
+```
+
+```
+GET /v2/messages?cursor=KSDKF34UISOCGAASD （第n次获取 n>1）
 ```
 
 #### Request Body  
@@ -40,11 +46,11 @@ N/A
 
 ####  Request Params  
 
-+ start （必填）查询的起始纪录
-+ count （必填）查询的总条数  一次最多500
-+ begin_time (可选) 记录开始时间 格式  yyyy-MM-dd HH:mm:ss  设置筛选条件大于等于begin time 不设置不生效  
-+ end_time (可选)   记录结束时间  格式 yyyy-MM-dd HH:mm:ss  设置筛选条件下于等于end time   不设置不生效
-+ end time begin time 都不设置的话 说明两个条件都不生效，则查询服务端保存的所有消息
++ count （必填）每次查询的总条数  一次最多100
++ begin_time (必填) 记录开始时间 格式  yyyy-MM-dd HH:mm:ss  设置筛选条件大于等于begin time   
++ end_time (必填)   记录结束时间  格式 yyyy-MM-dd HH:mm:ss  设置筛选条件下于等于end time   
++ begin_time end_time 之间最大范围不得超过7天
++ 	cursor  当第一次请求后如果后面有数据，会返回一个cursor回来用这个获取接下来的消息 (cursor 有效时间是120s，过期后需要重第一个请求获取，重新遍历)
 + 查询的消息按发送时间升序排序
 
 ### Example Response  
@@ -60,7 +66,7 @@ Content-Type: application/json; charset=utf-8
 
 ```
 { 
-	"total": 3000, "start": 0, "count": 1, 
+	"total": 3000, "cursor":"APSK234ASDKQWE", "count": 1, 
  	"messages": [ 
         { "target_type": "single", 
           "msg_type": "text", 
@@ -87,14 +93,18 @@ Content-Type: application/json; charset=utf-8
 ##  GetUserMessage 获取用户消息
 
 ```
-GET /users/{username}/messages?start=0&count=500&begin_time={begin_time}&end_time={end_time}
+GET /users/{username}/messages?count=1000&begin_time={begin_time}&end_time={end_time}
 ```
 ### Example Request 
 
 ####  Request Header  
 
 ```
-GET /users/caiyh/messages?start=0&count=500&begin_time=2015-11-02 10:10:10&end_time=2015-11-02 10:10:12
+GET /users/caiyh/messages?count=500&begin_time=2015-11-02 10:10:10&end_time=2015-11-02 10:10:12 （ 第一次请求）
+```
+
+```
+GET /v2/users/{username}/messages?cursor=KSDKF34UISOCGAASD （第n次获取 n>1）
 ```
 
 #### Request Body  
@@ -104,10 +114,11 @@ N/A
 ####  Request Params  
 + start （必填）查询的起始纪录
 + count （必填）查询的总条数  一次最多500
-+ begin_time (可选) 记录开始时间 格式  yyyy-MM-dd HH:mm:ss 设置筛选条件大于end time 不设置不生效  
-+ end_time (可选)   记录结束时间  格式 yyyy-MM-dd HH:mm:ss  设置筛选条件下于begin time   不设置不生效
++ begin_time (可选) 记录开始时间 格式  yyyy-MM-dd HH:mm:ss 设置筛选条件大于end time   
++ end_time (可选)   记录结束时间  格式 yyyy-MM-dd HH:mm:ss  设置筛选条件下于begin time   
 + end time begin time 都不设置的话 说明两个条件都不生效，则查询服务端保存的所有消息
-+ 使用此接口，传递给JPush的URL需要经过URL Encode处理，例如时间格式中的空格需要被转义为 %20
++ begin_time end_time 之间最大范围不得超过7天
++ cursor  当第一次请求后如果后面有数据，会返回一个cursor回来用这个获取接下来的消息 (cursor 有效时间是120s，过期后需要重第一个请求获取，重新遍历)
 + 查询的消息按发送时间升序排序
 
 ### Example Response  
@@ -123,7 +134,7 @@ Content-Type: application/json; charset=utf-8
 
 ```
 { 
-  "total": 3000, "start": 0, "count": 1, 
+  "total": 3000, "cursor":"APSK234ASDKQWE", "count": 1, 
   "messages": [ 
         { "target_type": "single", 
           "msg_type": "text", 
