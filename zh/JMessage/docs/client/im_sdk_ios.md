@@ -1746,6 +1746,7 @@ JMSGCompletionHandler 有 2 个参数：
 	- (void)onDBMigrateFinishedWithError:(NSError *)error;
 	
 ### 跨应用API接口
+##### 跨应用通信是指允许同一开发者账号下的不同应用能互相通信，以满足开发者对于不同appKey下应用通信的需求。
 
 #### 跨应用用户管理
 批量获取跨应用的用户信息
