@@ -71,6 +71,7 @@ JMessage 新增的依赖、配置、初始化方面，请继续参考下节。
 * MobileCoreServices.framework
 * libz.dylib
 * libsqlite3.0.dylib
+* libresolv.tbd (JMessage 2.2.1及以上版本需要)
 
 #### 4、Build Settings
 
