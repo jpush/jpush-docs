@@ -25,7 +25,7 @@ App 集成了 IM SDK 就不应再集成 JPush SDK（只提供 Push 功能的 SDK
 
 + 直接查看 JMessage.framework 里的 Headers 文件。这些头文件定义了 SDK 提供的对外接口，带有完善的注释与说明，甚至样例代码。
 + 下载 docset 文档。我们使用 Appledoc 工具基于上述 Headers 文件生成了 docset。可以使用 Xcode 直接打开查看，或者使用 Dash 查看。我们建议使用 Dash 效果更好。
-+ 使用 Appledoc 生成的文档的在线版本：[JMessage iOS SDK APIs](jmessage_ios_appledoc_html/)
++ 使用 Appledoc 生成的文档的在线版本：<a href="http://docs-test.jiguang.cn/jmessage/client/jmessage_ios_appledoc_html/" target="_blank">iOS SDK APIs</a>
 
 以下简要地列举 SDK API 提供的功能，同时提供部分简单的例子。
 
