@@ -91,8 +91,10 @@ App 集成了 IM SDK 就不应再集成 JPush SDK（只提供 Push 功能的 SDK
 
 ## API 列表
 
-以下列出主要的 JMessage SDK 提供的 API。完整的 API 与 类信息，请访问：[API Java docs](./im_android_api_docs/)
+以下列出主要的 JMessage SDK 提供的 API。完整的 API 与 类信息，请访问：<a href="https://docs.jiguang.cn/jmessage/client/im_android_api_docs/" target="_blank">API Java docs</a>
+
 ###SDK初始化
+
 在调用IM其他接口前必须先调此接口初始化SDK，推荐在application类中调用。
 ```
 public static synchronized void init(Context context)
