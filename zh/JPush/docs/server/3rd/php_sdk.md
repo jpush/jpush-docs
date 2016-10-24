@@ -45,6 +45,7 @@ require 'path_to_sdk/autoload.php';
 - [Device API](https://github.com/jpush/jpush-api-php-client/blob/master/doc/api.md#device-api)
 - [Schedule API](https://github.com/jpush/jpush-api-php-client/blob/master/doc/api.md#schedule-api)
 - [Exception Handle](https://github.com/jpush/jpush-api-php-client/blob/master/doc/api.md#schedule-api)
+- [HTTP/2 Support](https://github.com/jpush/jpush-api-php-client/blob/master/doc/http2.md)
 
 #### 初始化
 
@@ -90,6 +91,8 @@ try {
 ```
 
 ## Examples
+
+**注意: 这只是使用样例, 不应该直接用于实际环境中!!**
 
 在下载的中的 [examples](https://github.com/jpush/jpush-api-php-client/tree/master/examples) 文件夹有简单示例代码, 开发者可以参考其中的样例快速了解该库的使用方法。
 > **注：所下载的样例代码不可马上使用，需要在 `examples/conf.php` 文件中填入相关的必要参数，或者设置相关环境变量，不进行这个操作则示例运行会失败**

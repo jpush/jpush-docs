@@ -253,6 +253,9 @@ footer{
   .header ul{
     margin-top: 20px;
   }
+  .navbar-collapse.collapse{
+    display: none !important;
+  }
 }
 @media (max-width: 532px){
   .selft_nav_warp .self_break_input{
