@@ -226,6 +226,39 @@ JIM.sendGroupMsg(group_id, 'Hi, JPush', function(data) {
 });
 ```
 
+#### 发送图片消息 JIM.uploadImg()
+
+接收对象类型参数（支持跨应用, 支持单聊，支持群聊）
+
+##### Params:
+
+| KEY              | TYPE | REQUIRE | DESCIPTION                                   |
+| ---------------- | ---- | ------- | ------------------------                     |
+| target_username    | string | true   | 接收者用户名，当发送图片为单聊时，必填，群聊时，不填 |
+| appkey    | string | true   | 接收者用户的appkey，当发送图片为单聊时，必填，群聊时，不填 |
+| target_gid    | string | true   | 接收群组id，当发送图片为群聊时，必填，单聊时，不填 |
+| fd    | object | true   | 上传图片的FormData格式 |
+| type    | string | true   | 发送消息的类型，单聊-'single', 群聊-'group' |
+| resp    | function | FALSE   | 返回数据处理回调函数，不处理则忽略或传入null |
+| ack     | function | FALSE   | 请求送达回调函数，不处理则忽略或传入null     |
+| timeout | function | FALSE   | 请求超时回调函数，不处理则忽略或传入null     |
+
+##### Example:
+
+```
+JIM.uploadImg({
+ target_username: 'xiezefan01',
+ appkey: 'appkey1',
+ target_gid: 'groupid1',
+ fd: FormData,
+ type: 'single',
+ resp: resp_callback,
+ ack: ack_callback,
+ timeout: timeout_callback
+    })
+```
+
+
 #### 获取消息构建器 MsgBuilder JIM.createMsgBuilder()
 
 ##### MsgBuilder
@@ -761,36 +794,6 @@ JIM.delBlackList([{'username': 'xiezefan01', 'appkey': 'appkey1'}, {'username': 
 }, function(timeout) {
     // 请求发送超时事件处理
 });
-```
-
-#### 发送图片消息(支持跨应用, 支持单聊，支持群聊) JIM.uploadImg(), 接收对象类型参数
-
-##### Params:
-
-| KEY              | TYPE | REQUIRE | DESCIPTION                                   |
-| ---------------- | ---- | ------- | ------------------------                     |
-| target_username    | string | true   | 接收者用户名，当发送图片为单聊时，必填，群聊时，不填 |
-| appkey    | string | true   | 接收者用户的appkey，当发送图片为单聊时，必填，群聊时，不填 |
-| target_gid    | string | true   | 接收群组id，当发送图片为群聊时，必填，单聊时，不填 |
-| fd    | object | true   | 上传图片的FormData格式 |
-| type    | string | true   | 发送消息的类型，单聊-'single', 群聊-'group' |
-| resp    | function | FALSE   | 返回数据处理回调函数，不处理则忽略或传入null |
-| ack     | function | FALSE   | 请求送达回调函数，不处理则忽略或传入null     |
-| timeout | function | FALSE   | 请求超时回调函数，不处理则忽略或传入null     |
-
-##### Example:
-
-```
-JIM.uploadImg({
- target_username: 'xiezefan01',
- appkey: 'appkey1',
- target_gid: 'groupid1',
- fd: FormData,
- type: 'single',
- resp: resp_callback,
- ack: ack_callback,
- timeout: timeout_callback
-    })
 ```
 
 
