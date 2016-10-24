@@ -288,8 +288,6 @@ defaultConfig {
                  <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED" /> 
                  <!--Required 用户打开自定义通知栏的intent-->
                  <action android:name="cn.jpush.android.intent.NOTIFICATION_OPENED" /> 
-                 <!--Optional 用户接受Rich Push Javascript 回调函数的intent-->
-                 <action android:name="cn.jpush.android.intent.ACTION_RICHPUSH_CALLBACK" /> 
                  <!-- 接收网络变化 连接/断开 since 1.6.3 -->
                  <action android:name="cn.jpush.android.intent.CONNECTION" />
                  <category android:name="您应用的包名" />
