@@ -41,7 +41,7 @@ SDK未提供https地址版本时
 
 如果你确认 appKey 在 SDK 客户端与 Portal 上设置是一致，其他环节也按照文档正确地操作。但还是收不到推送消息。那么，有一定的可能性，是你在 Portal 上上传的证书，不是 APNs (Push) 证书。推送时指定的iOS推送环境和应用证书是同一个环境。
 
-请参考[iOS 证书设置指南](ios_faq)再次检查证书选择是否正确。
+请参考[iOS 证书设置指南](ios_cer_guide)再次检查证书选择是否正确。
 
 请注意：iOS能接受消息的必要条件是：应用程序的证书要和你上传到jpush portal上的证书对应，如果你的程序是直接在xcode上运行的，你的应用部署环境必须是开发状态才能收到APNS消息。
 
@@ -62,7 +62,7 @@ SDK未提供https地址版本时
 
 ## 如何在接收到 APN 的时候获取 APN 消息内容并进行跳转或做出响应处理？
 
-[获取 APNs 推送内容](ios_api)
+[获取 APNs 推送内容](ios_api/#apns)
 
 
 
@@ -160,6 +160,6 @@ badge累加只能通过v3 api推送，且只有1.7.4版本以上才能支持。
 
 ## 为什么日志里面会打印：You've implemented -[ <UIApplicationDelegate\> application:didReceiveRemoteNotification:fetchCompletionHandler:], but you still need to add "remote-notification" to the list of your supported UIBackgroundModes in your Info.plist.
 
-这个主要是提示开发者如果要支持UIBackgroundModes，需要开启Remote notifications，具体操作可以看：[iOS 7 Background Remote Notification](ios_new_features/#ios-7-background-remote-notification)
+这个主要是提示开发者如果要支持UIBackgroundModes，需要开启Remote notifications，具体操作可以看：[iOS 7 Background Remote Notification](ios_new_fetures/#ios-7-background-remote-notification)
 
 
