@@ -91,8 +91,10 @@ App 集成了 IM SDK 就不应再集成 JPush SDK（只提供 Push 功能的 SDK
 
 ## API 列表
 
-以下列出主要的 JMessage SDK 提供的 API。完整的 API 与 类信息，请访问：[API Java docs](./im_android_api_docs/)
+以下列出主要的 JMessage SDK 提供的 API。完整的 API 与 类信息，请访问：<a href="https://docs.jiguang.cn/jmessage/client/im_android_api_docs/" target="_blank">API Java docs</a>
+
 ###SDK初始化
+
 在调用IM其他接口前必须先调此接口初始化SDK，推荐在application类中调用。
 ```
 public static synchronized void init(Context context)
@@ -401,6 +403,30 @@ public static Message createGroupCustomMessage(long groupID,
 
 + Message message 消息（对象）
 
+#### 消息发送结果监听
+消息发送完成后，会回调这里的接口通知上层。
+```
+public void setOnSendCompleteCallback(BasicCallback sendCompleteCallback)
+```
+参数说明
+
++ BasicCallback sendCompleteCallback 回调接口
+
+#### 代码示例
+```
+Message message = mConversation.createSendMessage(new TextContent(“Hello jmessage.”));
+message.setOnSendCompleteCallback(new BasicCallback() {
+    @Override
+    public void gotResult(int responseCode, String responseDesc) {
+        if (responseCode == 0) {
+            //消息发送成功
+        } else {
+            //消息发送失败
+        }
+    }
+});
+JMessageClient.sendMessage(message);
+```
 
 ### 本地会话管理
 
@@ -996,7 +1022,7 @@ public static void exitConversaion();
 jmessage sdk 好友模块仅实现对用户好友关系的托管，以及相关好友请求的发送和接收。除此之外的任何建立在好友关系之上的功能（如仅限于好友之间才能进行的聊天等），需要开发者的应用层自己实现。
 
 #### 发送好友添加请求
-发送添加好友请求。在对方未做回应的前提下，允许重复发送添加好友的请求。请求发送后对方会收到一条好友请求的事件。
+发送添加好友请求。在对方未做回应的前提下，允许重复发送添加好友的请求。请求发送后对方会收到一条好友请求的[ContactNotifyEvent](#ContactEvent)事件。
 
 ```
 public static void sendInvitationRequest(final String targetUsername,String appKey, final String reason, final BasicCallback callback)
@@ -1026,7 +1052,7 @@ ContactManager.sendInvitationRequest("test_user", "test_appkey", "hello", new Ba
 
 
 #### 接受好友请求
-接受对方的好友请求，操作成功后，对方会出现在自己的好友列表中，双方建立起好友关系。请求发送后对方会收到一条好友请求被接受的事件。
+接受对方的好友请求，操作成功后，对方会出现在自己的好友列表中，双方建立起好友关系。请求发送后对方会收到一条好友请求被接受的[ContactNotifyEvent](#ContactEvent)事件。
 
 ```
 public static void acceptInvitation(final String targetUsername, String appKey, final BasicCallback callback)
@@ -1055,7 +1081,7 @@ ContactManager.acceptInvitation("test_user", "test_appkey", new BasicCallback() 
 
 
 #### 拒绝好友请求
-拒绝对方的好友请求。请求发送后对方会收到一条好友请求被拒绝的事件。
+拒绝对方的好友请求。请求发送后对方会收到一条好友请求被拒绝的[ContactNotifyEvent](#ContactEvent)事件。
 
 ```
 public static void declineInvitation(final String targetUsername, String appKey, String reason, final BasicCallback callback)
@@ -1110,7 +1136,7 @@ ContactManager.getFriendList(new GetUserInfoListCallback() {
 ```
 
 #### 删除好友
-将用户从你的好友列表中移除，移除成功后，对方会收到一条好友被移除的事件。
+将用户从你的好友列表中移除，移除成功后，对方会收到一条好友被移除的[ContactNotifyEvent](#ContactEvent)事件。
 
 ```
 public void removeFromFriendList(BasicCallback callback)
@@ -1165,7 +1191,7 @@ userinfo.updateNoteName("new_note_name", new BasicCallback() {
         });
 ```
 
-#### 联系人相关通知事件
+#### <span id="ContactEvent">联系人相关通知事件</span>
 
 新增联系人相关通知事件`ContactNotifyEvent`,具体事件处理方法见：[事件处理](#Event)一节
 <div class="table-d" align="left" >
@@ -1254,7 +1280,7 @@ public static void getNoDisturblist(GetNoDisurbListCallback callback)
 
 + GetNoDisurbListCallback callback 回调接口。
 	
-#### 免打扰设置
+### 免打扰设置
 见api doc中[UserInfo](./im_android_api_docs/cn/jpush/im/android/api/model/UserInfo.html)和[GroupInfo](./im_android_api_docs/cn/jpush/im/android/api/model/GroupInfo.html)相关接口
 
 
@@ -1279,8 +1305,8 @@ public static void getNoDisturbGlobal(IntegerCallback callback)
 + IntegerCallback callback 回调接口。
 
 ## 跨应用通信
-跨应用通信是指允许同一开发者账号下的不同应用能互相通信，以满足开发者对于不同appKey下应用通信的需求。</br>
-JMessage Android SDK在v1.2.0版本中实现了单聊跨应用，v1.3.0版本中实现了群聊以及其他一些功能的跨应用，
+<font color= SteelBlue>说明：跨应用通信是指允许同一开发者账号下的不同应用能互相通信，以满足开发者对于不同appKey下应用通信的需求。</font>
+</br>JMessage Android SDK在v1.2.0版本中实现了单聊跨应用，v1.3.0版本中实现了群聊以及其他一些功能的跨应用，
 具体对应关系见下表：
 
 <table>
