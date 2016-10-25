@@ -37,34 +37,41 @@
 </head>
 
 <body data-spy="scroll" data-target="#navbar-right">
-    <div class="container-fluid">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3  col-md-3  col-sm-3">
-                    <div id="doc-icon">
-                        <a href="/"><img src="/img/icon/logo.png"></a>
+    <nav class="navbar navbar-default container" role="navigation">
+        <div class="selft_nav_warp"> 
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse"
+                        data-target="#example-navbar-collapse">
+                    <span class="sr-only">切换导航</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                 <a href="/"><img src="/img/icon/logo.png"></a>
+            </div>
+            <div class="collapse navbar-collapse" id="example-navbar-collapse">
+                <div class="row">
+                    <div class="kr_special col-lg-10 col-md-10  col-sm-9 col-xs-8 self_break_ul">
+                        <div class="header">
+                            <ul class="nav nav-tabs">
+                                <li role="presentation" >
+                                    <a href="/jpush/guideline/intro/" id="jpush" >JPush</a></li>
+                                <li role="presentation" >
+                                    <a href="/jmessage/guideline/jmessage_guide/" id="jmessage" >JMessage</a></li>
+                                <li role="presentation" >
+                                    <a href="/jsms/guideline/JSMS_guide/" id="jsms" >短信验证码</a></li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
-                <div class="col-lg-7 col-md-8  col-sm-8">
-                    <div class="header">
-                        <ul class="nav nav-tabs">
-                            <li role="presentation" >
-                                <a href="/jpush/guideline/intro/" id="jpush" >JPush</a></li>
-                            <li role="presentation" >
-                                <a href="/jmessage/guideline/jmessage_guide/" id="jmessage" >JMessage</a></li>
-                            <li role="presentation" >
-                                <a href="/jsms/guideline/JSMS_guide/" id="jsms" >短信验证码</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-2  col-md-1 col-sm-1">
-                    <div>
-                        {% include "searchbox.html" %}
+                    <div class="col-lg-2  col-md-2 col-sm-2 col-xs-4 self_break_input">
+                        <div>
+                            {% include "searchbox.html" %}
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </nav>
     <div class="container">
         <div class="row">
             <div class="col-lg-4  col-md-4">

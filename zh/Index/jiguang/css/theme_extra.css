@@ -50,6 +50,7 @@ h1,h2,h3, h4, h5, h6 {
 #doc-icon a img{
   height: 36px;
   width: 130px;
+  max-width: inherit;
 }
 
 #rtd-search-form{
@@ -184,8 +185,103 @@ a:hover{
 footer{
   text-align: center;
 }
-
-
+/*自定义修复bug*/
+.navbar-header a img{
+  width: 130px;
+  margin-top: 12px;
+}
+.navbar{
+  min-height: 60px;
+}
+#rtd-search-form  input{
+  width: 100%;
+}
+.navbar-collapse{
+  margin-left: 130px;
+}
+#rtd-search-form{
+  margin-left: -15px;
+}
+.navbar{
+  padding-left: 0px;
+  padding-right: 0px;
+  max-width: 1140px;
+}
+.selft_nav_warp{
+  margin-left: 15px;
+  margin-right: 15px;
+}
+@media (max-width: 1200px){
+  .navbar {
+      width: 940px;
+  }
+  .nav-tabs li {
+    width: 33%;
+    text-align: center;
+    margin: 0px;
+  }
+  #rtd-search-form {
+    margin-left: -45px;
+  }
+}
+@media (max-width: 992px){
+  .navbar {
+      width: 100%;
+  }
+  .nav-tabs li {
+    width: 33%;
+    text-align: center;
+    margin: 0px;
+  }
+  #rtd-search-form {
+    margin-left:0px;
+  }
+}
+@media (max-width: 835px){
+  #rtd-search-form {
+    margin-left:-30px;
+  }
+}
+@media (max-width: 768px){
+  .navbar-collapse{
+    margin-left: 0px;
+  }
+  .header .nav-tabs li a{
+    font-size: 1em;
+    padding: 5px;
+  }
+  .header ul{
+    margin-top: 20px;
+  }
+}
+@media (max-width: 532px){
+  .selft_nav_warp .self_break_input{
+    width: 100%;
+  }
+  .selft_nav_warp .self_break_ul{
+    width: 100%;
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+  #rtd-search-form {
+    margin-left: -15px;
+    width: 100%;
+  }
+  .header .nav-tabs li{
+    text-align: left;
+  }
+  .self_break_ul .header{
+    margin: 0px;
+  }
+  #content ul{
+    min-height: 90px;
+  }
+}
+@media (min-width: 768px) and (max-width: 768px){
+  .kr_special {
+      width: 60% !important;
+  }
+}
 
 
 
