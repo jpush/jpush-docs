@@ -39,7 +39,7 @@ GET /messages?count=500&begin_time=2015-11-02 10:10:10&end_time=2015-11-02 10:10
 ```
 
 ```
-GET /v2/messages?cursor=KSDKF34UISOCGAASD （第n次获取 n>1）
+GET /messages?cursor=KSDKF34UISOCGAASD （第n次获取 n>1）
 ```
 
 #### Request Body  
