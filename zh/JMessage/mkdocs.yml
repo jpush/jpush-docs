@@ -1,4 +1,4 @@
-site_name: 极光文档
+﻿site_name: 极光文档
 site_author: JPush Offical
 site_url: http://docs.jpush.io
 site_favicon: favicon.ico
@@ -16,12 +16,14 @@ pages:
   - 'SDK 开发指南': 'client/im_sdk_android.md'
   - 'SDK 集成指南': 'client/jmessage_android_guide.md'
   - 'SDK ErrorCode 定义': 'client/im_errorcode_android.md'
+  - 'SDK API Doc': 'client/javadoc.md'
 
 
 - iOS:
   - 'SDK 开发指南': 'client/im_sdk_ios.md'
   - 'SDK 集成指南': 'client/jmessage_ios_guide.md'
   - 'SDK ErrorCode 定义': 'client/im_errorcode_ios.md'
+  - 'SDK API Doc': 'client/iOSdoc.md'
 
 - JS:
   - 'WEB SDK 开发指南': 'client/im_sdk_js.md'
