@@ -364,6 +364,7 @@ Example Response
 < Content-Type: application/json; charset=utf-8   
 ```
 
+
 #### 添加黑名单
 
 ```
@@ -513,6 +514,74 @@ Example Response
       {"username" : "huang", "nickname" : "hello", "mtime" : "2015-01-01 00:00:00", "ctime" : "2015-01-01 00:00:00"} ]
 }
 ```
+
+###免打扰
+#### 免打扰设置
+
+```
+POST  /v1/users/{username}/nodisturb
+```
+
+Example Request
+
+Request Header 
+
+```
+POST  /v1/users/{username}/nodisturb
+Content-Type: application/json; charset=utf-8  
+```
+
+Request Params
+
++ single  单聊免打扰，支持add remove数组 （可选）
++ group   群聊免打扰，支持add remove数组（可选）
++ global  全局免打扰，0或1 0表示关闭，1表示打开 （可选）
+
+
+Request Body
+
+```
+{   
+   "single":{   
+      "add":[   
+         "username1",
+         "username2"
+      ]
+   },
+   "group":{   
+      "add":[   
+         110000101
+      ],
+      "remove":[   
+         1000001111
+      ]
+   },
+   "global":0
+}
+```
+
+Example Response
+
+Response Header
+
+```
+HTTP/1.1 204 NO Content
+Content-Type: application/json; charset=utf-8   
+```
+
+Response Data
+
+N/A
+
+Error Code
+
++ 899003 username不合法；
++ 899002 用户不存在；
++ 899051  群组不存在；
++ 899052 设置群组消息屏蔽，设置的群组屏蔽已经打开
++ 99053 设置群组消息屏蔽，设置的群组屏蔽已经关闭
+
+
 
 ### 消息相关
 
@@ -1211,6 +1280,57 @@ Response Data
 [{"username" : "javen", "nickname" : "hello", "avatar" = "/avatar", "birthday" : "1990-01-24 00:00:00", "gender" : 0, "signature" : "orz", "region" : "shenzhen", "address" : "shenzhen", "mtime" : "2015-01-01 00:00:00", "ctime" : "2015-01-01 00:00:00", "appkey":"appkey"}]
 ```
 
+#### 跨应用免打扰设置
+
+```
+POST  /v1/cross/users/{username}/nodisturb
+```
+
+Example Request
+
+Request Header 
+
+```
+POST  /v1/cross/users/{username}/nodisturb
+Content-Type: application/json; charset=utf-8  
+```
+
+Request Params
+
++ single  单聊免打扰，支持add remove数组 （可选）
++ group   群聊免打扰，支持add remove数组（可选）
++ appkey  目标的appkey
+
+
+Request Body
+
+```
+[ {
+   "appkey":"appkey1",    "single":{          "add":[             "username1",          "username2"       ]    },    "group":{          "add":[             110000101       ],       "remove":[             1000001111       ]    } }
+]
+
+```
+
+Example Response
+
+Response Header
+
+```
+HTTP/1.1 204 NO Content
+Content-Type: application/json; charset=utf-8   
+```
+
+Response Data
+
+N/A
+
+Error Code
+
++ 899003 username不合法；
++ 899002 用户不存在；
++ 899051  群组不存在；
++ 899052 设置群组消息屏蔽，设置的群组屏蔽已经打开
++ 99053 设置群组消息屏蔽，设置的群组屏蔽已经关闭
 
 
 ### HTTP 返回
