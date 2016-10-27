@@ -157,7 +157,7 @@ curl --insecure -X POST -v https://api.sms.jpush.cn/v1/codes/06890980-6789-4054-
 ### 请求示例
 
 ```
-curl --insecure -X POST -v https://api.sms.jpush.cn/v1/messages -H "Content-Type: application/json" -u "7d431e42dfa6a6d693ac2d04:5e987ac6d2e04d95a9d8f0d1" -d '{"mobile":"xxxxxxxxxxxxxx","temp_id":1,temp_para:{"name":"xxxx"}}'
+curl --insecure -X POST -v https://api.sms.jpush.cn/v1/messages -H "Content-Type: application/json" -u "7d431e42dfa6a6d693ac2d04:5e987ac6d2e04d95a9d8f0d1" -d '{"mobile":"xxxxxxxxxxxxxx","temp_id":1,"temp_para":{"xxxx":"xxxx"}}'
 ```
 
 #### 参数
@@ -166,7 +166,7 @@ curl --insecure -X POST -v https://api.sms.jpush.cn/v1/messages -H "Content-Type
 |----|----|----|
 |mobile|TRUE|手机号码|
 |temp_id|TRUE|模板ID|
-|temp_para|TRUE|模板参数,json|
+|temp_para|TRUE|模板参数,需要替换的参数名和value的键值对|
 
 ### 返回示例
 
