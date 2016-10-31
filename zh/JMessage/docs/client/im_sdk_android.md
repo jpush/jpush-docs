@@ -38,7 +38,7 @@ App 集成了 IM SDK 就不应再集成 JPush SDK（只提供 Push 功能的 SDK
 ### 好友
 + jmessage android sdk 从1.4.0版本开始提供接口实现对用户好友关系的托管，以及相关好友请求的发送和接收。
 
-##### 说明：除此之外的任何建立在好友关系之上的功能（如仅限于好友之间才能进行的聊天等），需要开发者的应用层自己实现。
+<font color= SteelBlue>说明：除此之外的任何建立在好友关系之上的功能（如仅限于好友之间才能进行的聊天等），需要开发者的应用层自己实现。</font>
 
 ### 字符串规范
 此处定义JMessage产品里字段属性与规范，用于校验与规范化。  
@@ -91,7 +91,7 @@ App 集成了 IM SDK 就不应再集成 JPush SDK（只提供 Push 功能的 SDK
 
 ## API 列表
 
-以下列出主要的 JMessage SDK 提供的 API。完整的 API 与 类信息，请访问：<a href="https://docs.jiguang.cn/jmessage/client/im_android_api_docs/" target="_blank">API Java docs</a>
+以下列出主要的 JMessage SDK 提供的 API。完整的 API 与 类信息，请访问：<a href="./im_android_api_docs/" target="_blank">API Java docs</a>
 
 ###SDK初始化
 
@@ -427,6 +427,107 @@ message.setOnSendCompleteCallback(new BasicCallback() {
 });
 JMessageClient.sendMessage(message);
 ```
+
+### 接收消息
+sdk收到消息时，会上抛消息事件，开发者可以通过这个事件来拿到具体的Message对象，进而执行UI刷新或者其他相关逻辑。具体事件处理方法见[事件处理](#Event)一节
+
+
+### 1.5.0版本以后接收消息的变化
+1.5.0版本之后，sdk将消息下发分为在线下发和离线下发两种类型。 先明确两个概念：
+
++ 在线消息：im用户在线期间，所有收到的消息称为在线消息。
++ 离线消息：im用户离线期间（包括登出或者网络断开）所收到的消息，当用户再次上线，收到的这部分消息称为离线消息。
+
+有了这两个概念的区分之后，sdk对于这两种消息的处理方式也有了不同：  
+
+**1.消息事件变化**
+
+版本 | 在线消息 | 离线消息 
+--- | ------- | ------
+1.5.0之前 | 每条消息上抛一个`MessageEvent` | 和在线消息一样，有多少条离线消息就上抛多少个`MessageEvent`|
+1.5.0之后 | 每条消息上抛一个`MessageEvent` | 以会话为单位，该会话如果有离线消息，sdk就会上抛一个`OfflineMessageEvent`。就算同会话中有多条离线消息，sdk也只会对应上抛一个`OfflineMessageEvent`,这个事件中就包含了所有离线消息的相关信息。
+相关Api Doc：[MessageEvent](./im_android_api_docs/cn/jpush/im/android/api/event/MessageEvent.html?_blank) , [OfflineMessageEvent](./im_android_api_docs/cn/jpush/im/android/api/event/OfflineMessageEvent.html)
+
+**2.接口变化**
+
+之前诸如`conversation.getMessage(int messageId)`、`conversation.getAllMessage()`此类的同步获取消息对象的接口，在1.5.0版本之后均已不推荐使用。  
+取而代之的是`conversation.getMessage(int messageId, GetMessageCallback callback)`和`conversation.getAllMessage(GetMessageCallback callback)`之类的带回调参数的异步接口。  
+具体描述见相关Api Doc：[Conversation](./im_android_api_docs/cn/jpush/im/android/api/model/Conversation.html#getMessage(int))
+
+**总结**  
+
+sdk升级到1.5.0版本（或以上）后，上层需要针对消息接收的处理做以下变动：
+
++ 新增一个事件类型`OfflineMessageEvent`的接收,用来处理离线消息事件。
++ 所有使用到诸如`conversation.getMessage(int messageId)`、`conversation.getAllMessage()`此类同步接口的地方，改为使用`conversation.getMessage(int messageId, GetMessageCallback callback)`和`conversation.getAllMessage(GetMessageCallback callback)`之类的带回调参数的异步接口，确保拿到的是完整的消息。
+
+### 群组@功能
+***Since 1.5.0***
+#### 创建@群成员的消息
+```
+conversation.createSendMessage(MessageContent content, List<UserInfo> atList, String customFromName)
+```
+参数说明
+
++ MessageContent content 消息内容对象
++ List<UserInfo> atList 被@人的userInfo list,必须是群内成员 
++ String customFromName 自定义fromName
+
+返回
+
++ Message 消息对象。 注意当atList中包含了非群组成员，或者群成员信息尚未完整获取到时，此接口将会返回null。
+
+#### 判断消息是否@了自己
+```
+message.isAtMe()
+```
+返回
+
++ boolean true - atList中包含了自己， false - atList中不包含自己
+
+#### 获取消息中@的群成员列表
+```
+message.getAtUserList(GetUserInfoListCallback callback)
+```
+参数说明
+
++ GetUserInfoListCallback callback 获取用户列表的回调接口。
+
+#### 代码示例
+
+``` java
+	//消息发送方
+    Conversation conv = Conversation.createGroupConversation(gid);
+    GroupInfo groupInfo = (GroupInfo) conv.getTargetInfo();
+    List<UserInfo> atList = new ArrayList<UserInfo>();
+    atList.add(groupInfo.getGroupMemberInfo("user1", appkey));//获取到被@的群成员的userinfo，并填充到atList中去。
+    atList.add(groupInfo.getGroupMemberInfo("user2", appkey));
+    
+    //创建一条带有atList的消息。
+    Message msg = conv.createSendMessage(new TextContent("a message with atList!"), atList, null);
+    JMessageClient.sendMessage(msg);//发送消息
+
+
+
+	//消息接收方
+	public void onEvent(MessageEvent event){
+		Message msg = event.getMessage();//收到消息事件，从消息事件中拿到消息对象
+		msg.isAtMe(); //判断这条消息是否@了我
+		
+		//获取消息中包含的完整的atList
+		msg.getAtUserList(new GetUserInfoListCallback() {
+		    @Override
+		    public void gotResult(int responseCode, String responseMessage, List<UserInfo> userInfoList) {
+		        if(responseCode == 0){
+		        	//获取atList成功
+		        }else{
+		        	//获取atList失败
+		        }
+		    }
+      });
+	}
+```
+
 
 ### 本地会话管理
 
@@ -919,6 +1020,32 @@ public abstract void gotResult(int responseCode, String responseMessage,
 ```  
 + List members 成员列表(username)。
 
+### 屏蔽群消息
+***Since 1.5.0***
+#### 设置群消息屏蔽
+```
+groupinfo.setBlockGroupMessage(int blocked, BasicCallback callback)
+```
+参数说明
+
++ int blocked 是否屏蔽群消息。 1 - 屏蔽，0 - 取消屏蔽
++ BasicCallback callback 结果回调。
+
+#### 判断群组是否被屏蔽
+```
+groupinfo.isGroupBlocked();
+```
+返回
+
++ int 1 - 已被屏蔽，0 - 未被屏蔽
+
+#### 获取当前用户的群屏蔽列表
+```
+JMessageClient.getBlockedGroupsList(GetGroupInfoListCallback callback)
+```
+参数说明
+
++ GetGroupInfoListCallback callback 结果回调。
 
 ### 黑名单管理
 #### 将用户加入黑名单
