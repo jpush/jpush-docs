@@ -91,7 +91,7 @@ App 集成了 IM SDK 就不应再集成 JPush SDK（只提供 Push 功能的 SDK
 
 ## API 列表
 
-以下列出主要的 JMessage SDK 提供的 API。完整的 API 与 类信息，请访问：<a href="./im_android_api_docs/" target="_blank">API Java docs</a>
+以下列出主要的 JMessage SDK 提供的 API。完整的 API 与 类信息，请访问：<a href="../im_android_api_docs/" target="_blank">API Java docs</a>
 
 ###SDK初始化
 
@@ -446,6 +446,7 @@ sdk收到消息时，会上抛消息事件，开发者可以通过这个事件�
 --- | ------- | ------
 1.5.0之前 | 每条消息上抛一个`MessageEvent` | 和在线消息一样，有多少条离线消息就上抛多少个`MessageEvent`|
 1.5.0之后 | 每条消息上抛一个`MessageEvent` | 以会话为单位，该会话如果有离线消息，sdk就会上抛一个`OfflineMessageEvent`。就算同会话中有多条离线消息，sdk也只会对应上抛一个`OfflineMessageEvent`,这个事件中就包含了所有离线消息的相关信息。
+
 相关Api Doc：[MessageEvent](./im_android_api_docs/cn/jpush/im/android/api/event/MessageEvent.html?_blank) , [OfflineMessageEvent](./im_android_api_docs/cn/jpush/im/android/api/event/OfflineMessageEvent.html)
 
 **2.接口变化**
@@ -453,6 +454,7 @@ sdk收到消息时，会上抛消息事件，开发者可以通过这个事件�
 之前诸如`conversation.getMessage(int messageId)`、`conversation.getAllMessage()`此类的同步获取消息对象的接口，在1.5.0版本之后均已不推荐使用。  
 取而代之的是`conversation.getMessage(int messageId, GetMessageCallback callback)`和`conversation.getAllMessage(GetMessageCallback callback)`之类的带回调参数的异步接口。  
 具体描述见相关Api Doc：[Conversation](./im_android_api_docs/cn/jpush/im/android/api/model/Conversation.html#getMessage(int))
+
 
 **总结**  
 
