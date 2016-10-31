@@ -3,7 +3,7 @@
 以下列表里的 ErrorCode 有可能在 SDK 的调用过程中出现。供参考理解其含义。
 
 
-### JMessage Android
+## JMessage Android
 
 只会出现在 Android SDK 里的错误码。
 
