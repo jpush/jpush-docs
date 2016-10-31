@@ -429,14 +429,14 @@ JMessageClient.sendMessage(message);
 ```
 
 ### 接收消息
-sdk收到消息时，会上抛消息事件，开发者可以通过这个事件来拿到具体的Message对象，进而执行UI刷新或者其他相关逻辑。具体事件处理方法见[事件处理](#Event)一节
+sdk收到消息时，会上抛消息事件[MessageEvent](./im_android_api_docs/cn/jpush/im/android/api/event/MessageEvent.html?_blank) 或 [OfflineMessageEvent](./im_android_api_docs/cn/jpush/im/android/api/event/OfflineMessageEvent.html)，开发者可以通过这个事件来拿到具体的Message对象，进而执行UI刷新或者其他相关逻辑。具体事件处理方法见[事件处理](#Event)一节
 
 
-### 1.5.0版本以后接收消息的变化
-1.5.0版本之后，sdk将消息下发分为在线下发和离线下发两种类型。 先明确两个概念：
+### 从1.5.0版本开始接收消息的变化
+1.5.0版本开始，sdk将消息下发分为在线下发和离线下发两种类型。 先明确两个概念：
 
 + 在线消息：im用户在线期间，所有收到的消息称为在线消息。
-+ 离线消息：im用户离线期间（包括登出或者网络断开）所收到的消息，当用户再次上线，收到的这部分消息称为离线消息。
++ 离线消息：im用户离线期间（包括登出或者网络断开）收到的消息，会暂存在极光服务器上。当用户再次上线，sdk会将这部分消息拉取下来，这部分消息就称为离线消息。
 
 有了这两个概念的区分之后，sdk对于这两种消息的处理方式也有了不同：  
 
@@ -444,10 +444,9 @@ sdk收到消息时，会上抛消息事件，开发者可以通过这个事件�
 
 版本 | 在线消息 | 离线消息 
 --- | ------- | ------
-1.5.0之前 | 每条消息上抛一个`MessageEvent` | 和在线消息一样，有多少条离线消息就上抛多少个`MessageEvent`|
-1.5.0之后 | 每条消息上抛一个`MessageEvent` | 以会话为单位，该会话如果有离线消息，sdk就会上抛一个`OfflineMessageEvent`。就算同会话中有多条离线消息，sdk也只会对应上抛一个`OfflineMessageEvent`,这个事件中就包含了所有离线消息的相关信息。
+1.5.0之前 | 每收到一条消息上抛一个[MessageEvent](./im_android_api_docs/cn/jpush/im/android/api/event/MessageEvent.html?_blank) | 和在线消息一样，有多少条离线消息就上抛多少个[MessageEvent](./im_android_api_docs/cn/jpush/im/android/api/event/MessageEvent.html?_blank)|
+1.5.0开始 | 每收到一条消息上抛一个[MessageEvent](./im_android_api_docs/cn/jpush/im/android/api/event/MessageEvent.html?_blank) | 以会话为单位，该会话如果有离线消息，sdk就会上抛一个[OfflineMessageEvent](./im_android_api_docs/cn/jpush/im/android/api/event/OfflineMessageEvent.html)。就算同会话中有多条离线消息，sdk也只会上抛一个[OfflineMessageEvent](./im_android_api_docs/cn/jpush/im/android/api/event/OfflineMessageEvent.html),这个Event中就包含了所有离线消息的相关信息。这样会大大减轻上层处理事件的压力。
 
-相关Api Doc：[MessageEvent](./im_android_api_docs/cn/jpush/im/android/api/event/MessageEvent.html?_blank) , [OfflineMessageEvent](./im_android_api_docs/cn/jpush/im/android/api/event/OfflineMessageEvent.html)
 
 **2.接口变化**
 
@@ -691,6 +690,35 @@ public void onEventMainThread(EventEntity event){
 
 </br>
 
+离线消息事件实体类 OfflineMessageEvent
+***Since 1.5.0***
+
+<div class="table-d" align="left" >
+  <table border="1" width = "100%">
+    <tr  bgcolor="#D3D3D3" >
+      <th width="20px">方法</th>
+      <th width="40px">类型</th>
+      <th width="300px">说明</th>
+    </tr>
+    <tr >
+      <td >getConversation()</td>
+      <td >Conversation</td>
+      <td >获取收到离线消息的会话对象</td>
+    </tr>
+    <tr >
+      <td >getNewMessageList()</td>
+      <td >List<Message></td>
+      <td >获取收到的离线消息列表,一次离线消息事件最多只会加载当前会话最新20条离线消息的内容，也就是说此接口返回的List.size最大为20。</td>
+    </tr>
+    <tr >
+      <td >getOfflineMsgCnt()</td>
+      <td >int</td>
+      <td >获取此次事件中该会话的离线消息总数。</td>
+    </tr>
+  </table>
+</div>
+
+</br>
 
 会话刷新事件实体类 ConversationRefreshEvent
 
