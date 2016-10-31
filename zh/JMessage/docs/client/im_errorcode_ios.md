@@ -1,8 +1,8 @@
-## IM SDK ErrorCode 定义
+# IM SDK ErrorCode 定义
 
 以下列表里的 ErrorCode 有可能在 SDK 的调用过程中出现。供参考理解其含义。
 
-#### JMessage iOS
+## JMessage iOS
 
 只会出现在 iOS SDK 里的错误码。
 
