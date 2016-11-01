@@ -95,7 +95,7 @@ App 集成了 IM SDK 就不应再集成 JPush SDK（只提供 Push 功能的 SDK
 
 ###SDK初始化
 
-在调用IM其他接口前必须先调此接口初始化SDK，推荐在application类中调用。
+在调用IM其他接口前必须先调此接口初始化SDK，推荐在application类中调用。默认关闭消息漫游。
 ```
 public static synchronized void init(Context context)
 ```
@@ -103,6 +103,19 @@ public static synchronized void init(Context context)
 参数说明
 
 + Context context 应用程序上下文对象。
+
+### SDK初始化(设置消息记录漫游)
+***Since 1.5.0***  
+SDK初始化,同时指定是否启用消息记录漫游。打开消息漫游之后，用户多个设备之间登陆时，sdk会自动将历史消息同步到本地，上层可以通过`conversation.getMessage(int messageId, GetMessageCallback callback)`等异步获取消息的接口拿到消息。
+
+```
+JMessageClient.init(Context context, boolean msgRoaming)
+```
+参数说明
+
++ Context context 应用程序上下文对象。
++ boolean msgRoaming 是否启用消息漫游，true - 启用，false - 关闭。 默认关闭
+
 
 ### 注册与登录
 
@@ -459,11 +472,15 @@ sdk收到消息时，会上抛消息事件[MessageEvent](./im_android_api_docs/c
 
 sdk升级到1.5.0版本（或以上）后，上层需要针对消息接收的处理做以下变动：
 
-+ 新增一个事件类型`OfflineMessageEvent`的接收,用来处理离线消息事件。
++ 除了`MessageEvent`之外，新增一个事件类型`OfflineMessageEvent`的接收,用来处理离线消息事件。
 + 所有使用到诸如`conversation.getMessage(int messageId)`、`conversation.getAllMessage()`此类同步接口的地方，改为使用`conversation.getMessage(int messageId, GetMessageCallback callback)`和`conversation.getAllMessage(GetMessageCallback callback)`之类的带回调参数的异步接口，确保拿到的是完整的消息。
 
+
+
 ### 群组@功能
-***Since 1.5.0***
+***Since 1.5.0***  
+消息发送方可以发一条带有@list的消息。  
+接收方收到带有@list的消息之后，如果@list中包含了自己，则在sdk默认弹出的通知栏提示中会有相应的提示，如"xxx在群中@了你"。  
 #### 创建@群成员的消息
 ```
 conversation.createSendMessage(MessageContent content, List<UserInfo> atList, String customFromName)
@@ -471,12 +488,12 @@ conversation.createSendMessage(MessageContent content, List<UserInfo> atList, St
 参数说明
 
 + MessageContent content 消息内容对象
-+ List<UserInfo> atList 被@人的userInfo list,必须是群内成员 
++ List<UserInfo> atList 被@用户的userInfo list
 + String customFromName 自定义fromName
 
 返回
 
-+ Message 消息对象。 注意当atList中包含了非群组成员，或者群成员信息尚未完整获取到时，此接口将会返回null。
++ Message 消息对象。
 
 #### 判断消息是否@了自己
 ```
@@ -1050,7 +1067,8 @@ public abstract void gotResult(int responseCode, String responseMessage,
 ```  
 + List members 成员列表(username)。
 
-### 屏蔽群消息
+### 群消息屏蔽
+群组被设置为屏蔽之后，将收不到该群的消息。但是群成员变化事件还是能正常收到  
 ***Since 1.5.0***
 #### 设置群消息屏蔽
 ```
