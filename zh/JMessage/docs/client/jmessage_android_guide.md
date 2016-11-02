@@ -163,18 +163,6 @@ public void onCreate() {
 
 上述代码，即在原 JPush SDK 初始化调 JPushInterface.init 位置，替换为 JMessageClient.ini 方法，其他一样。
 
-
-
-### 功能
-
-#### Demo App - JChat
-
-极光 IM 提供了一个完整的 Demo 应用 JChat，它就是一个 IM App。或者说，如果你的 App 需求只是 IM 功能，做以下两个变更就可以把它变成你自己的 IM App 了：
-
-+ 换 Logo； 
-+ 在 JPush Web 控制台上注册应用，获取到的 Appkey 更新到 Demo App 里。
-
-
 #### IM 混淆
 
 + 请下载4.x版本的[proguard.jar](http://sourceforge.net/projects/proguard/files/proguard/)， 并替换你Android Sdk "tools\proguard\lib\proguard.jar"
@@ -200,3 +188,29 @@ public void onCreate() {
 ```
     
 <br />
+
+
+#### 代码样例
+
+极光 IM 提供了一个完整的 Demo 应用 JChat，它就是一个 IM App。如果你的 App 需求只是 IM 功能，做以下两个变更就可以把它变成你自己的 IM App 了：
+
++ 换 Logo 
++ 在 JPush Web 控制台上注册应用，获取到的 Appkey 更新到 JChat 里
+
+说明：从 Android SDK v1.4.0版本开始，JChat源码不再作为 sdk zip 的一部分随sdk发布，取而代之的是一个界面简化的仅仅用来展示接口用法的JMessage Demo。之前的 [JChat Android 项目源代码](https://github.com/jpush/jchat-android/)，开源放在 Github 上，供大家下载参考。
+
+
+### 技术支持
+
+邮件联系：[support@jpush.cn][4]
+
+问答社区：[https://community.jiguang.cn/latest][5]
+
+
+[4]: mailto:support@jpush.cn
+[5]: https://community.jiguang.cn/
+
+
+
+
+
