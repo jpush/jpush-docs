@@ -24,7 +24,6 @@
 ```
 -keep class cn.jpush.sms.SMSSDK {*;}
 -keep class cn.jpush.sms.listener.** {*;}
-
 ```
 
 ### 配置 AndroidManifest.xml
@@ -63,7 +62,7 @@
 #### 接口说明
 获取验证码。
 
-> 注：该接口是在非 UI 线程回调，需要在 UI 线程回调可调用 SMSSDK.getSmsCodeAsyn() 接口。
+>该接口是在非 UI 线程回调，需要在 UI 线程回调可调用 SMSSDK.getSmsCodeAsyn()。
 
 #### 参数说明
 + phone：手机号码
@@ -87,7 +86,7 @@
 ### SMSSDK.checkSmsCode(String phone, String code, SmscheckListener listener)
 #### 接口说明
 验证码验证接口。
->注：该接口是在非 UI 线程回调，需要在 UI 线程回调可调用 SMSSDK.checkSmsCodeAsyn() 接口。
+>该接口是在非 UI 线程回调，需要在 UI 线程回调可调用 SMSSDK.checkSmsCodeAsyn()。
 
 #### 参数说明
 + phone：手机号码
@@ -104,7 +103,7 @@
 
 		@Override
 		public void checkCodeFail(int errCode, final String errMsg) {
-			// 验证码验证失败, errCode 为错误码，详情请见文档后面的错误码表；errmsg 为错误描述。
+			// 验证码验证失败, errCode 为错误码，详情请见文档后面的错误码表；errMsg 为错误描述。
 		}
 	});
 
@@ -112,7 +111,7 @@
 #### 接口说明
 获取语音验证码。
 
->注：该接口是在非 UI 线程回调，需要在 UI 线程回调可调用 SMSSDK.getVoiceCodeAsyn()。
+>该接口是在非 UI 线程回调，需要在 UI 线程回调可调用 SMSSDK.getVoiceCodeAsyn()。
 
 #### 参数说明
 + phone：手机号码
@@ -140,13 +139,13 @@
 
 #### 调用示例
 
-    SMSSDK.getInstance().setIntervalTime(60000);
+    SMSSDK.getInstance().setIntervalTime(60000);    // 设置间隔时间为 60 秒
 
 ### SMSSDK.getIntervalTime()
 #### 接口说明
 获取当前设置的时间间隔。
 #### 返回值
-+ long：单位为毫秒(ms)的时间。
++ long：单位为毫秒(ms)。
 
 #### 调用示例
 
