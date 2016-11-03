@@ -159,9 +159,9 @@ public void onCreate() {
 }
 ```
 
-**JPushInterface.init 方法不可缺少**
+**JMessageClient.init 方法不可缺少**
 
-上述代码，即在原 JPush SDK 初始化调 JPushInterface.init 位置，替换为 JMessageClient.ini 方法，其他一样。
+上述代码，即在原 JPush SDK 初始化调 JPushInterface.init 位置，替换为 JMessageClient.init 方法，其他一样。
 
 #### IM 混淆
 
