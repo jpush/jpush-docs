@@ -757,7 +757,7 @@ POST https://api.jpush.cn/v3/push/validate
 			<td>必须改正。
 				Android平台Notification+Message长度限制为4000字节；
 				iOS Notification 中 “iOS”:{ } 及大括号内的总体长度不超过：2000个字节（包括自定义参数和符号），iOS 的 Message部分长度不超过 4000 字节；
-				WinPhone平台Notification长度限制为4000字节</td>
+				WinPhone平台Notification长度限制为1000字节</td>
 			<td>400</td>
 		</tr>
 		<tr >
