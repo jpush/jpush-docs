@@ -129,7 +129,18 @@ didFinishLaunchingWithOptions:(NSDictionary \*)launchOptions
           advertisingIdentifier:advertisingId];  
 ```
 
+#####部分参数说明：
+* appKey
+    * 填写[管理Portal上创建应用](https://www.jiguang.cn/app/form)后自动生成的AppKey值。请确保应用内配置的 AppKey 与 Portal 上创建应用后生成的 AppKey 一致。
+    * 指明应用程序包的下载渠道，为方便分渠道统计，具体值由你自行定义，如：App Store。
+* apsForProduction
+    * 1.3.1版本新增，用于标识当前应用所使用的APNs证书环境。
+    * 0 (默认值)表示采用的是开发证书，1 表示采用生产证书发布应用。
+    * 注：此字段的值要与Build Settings的Code Signing配置的证书环境一致。
+* advertisingIdentifier
+    * 详见[关于IDFA](#_8)。 
 
+    
 ### 注册APNs成功并上报DeviceToken
 
 请在AppDelegate.m实现该回调方法并添加回调方法中的代码
