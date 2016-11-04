@@ -71,6 +71,7 @@ JMessage 新增的依赖、配置、初始化方面，请继续参考下节。
 * MobileCoreServices.framework
 * libz.dylib
 * libsqlite3.0.dylib
+* libresolv.tbd (JMessage 2.2.1及以上版本需要)
 
 #### 4、Build Settings
 
@@ -102,16 +103,22 @@ JMessage.framework 里的 Headers 目录下，是 SDK 对外可用的所有头�
 | JPUSHService.h | JPush 接口类
 | JMSGAbstractContent | 内容类型的父类
 | JMSGTextContent | 文本内容 Model
+| JMSGLocationContent | 地理位置 Model
 | JMSGCustomContent | 自定义内容 Model
 | JMSGAbstractMediaContent | 媒体内容类型的父类，也继承自 JMSGAbstractContent
 | JMSGVoiceContent | 语音内容 Model
 | JMSGImageContent | 图片内容 Model
+| JMSGFileContent | 文件内容 Model
 | JMSGEventContent.h | 事件通知内容 Model
+| JMSGNotificationEvent	 | 通知事件
+| JMSGFriendNotificationEvent	| 好友通知事件，继承自 JMSGNotificationEvent
 | Delegate/JMessageDelegate | 全局的 Delegate，包含其他所有 Delegates
 | Delegate/JMSGConversationDelegate | 会话相关 Delegate
 | Delegate/JMSGMessageDelegate | 消息相关 Delegate
 | Delegate/JMSGGroupDelegate | 群组相关 Delegate
 | Delegate/JMSGUserDelegate | 用户相关 Delegate
+| Delegate/JMSGUserDelegate | 用户相关 Delegate（JMessage 2.2.0 过期）
+| Delegate/JMSGEventDelegate | 通知事件相关 Delegate (JMessage 2.2.0 开始新增)
 | Delegate/JMSGDBMigrateDelegate | 数据迁移相关 Delegate
 
 ##### 调用代码
@@ -136,48 +143,67 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
                  category:nil];
   
   /// Required - 注册 APNs 通知
-  if ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0) {
-    /// 可以添加自定义categories
-    [JPUSHService registerForRemoteNotificationTypes:(UIUserNotificationTypeBadge |
-                                                   UIUserNotificationTypeSound |
-                                                   UIUserNotificationTypeAlert)
-                                       categories:nil];
-  } else {
-    /// categories 必须为nil
-    [JPUSHService registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge |
-                                                   UIRemoteNotificationTypeSound |
-                                                   UIRemoteNotificationTypeAlert)
-                                       categories:nil];
-  }
+  if ([[UIDevice currentDevice].systemVersion floatValue] >= 10.0) {
+#ifdef NSFoundationVersionNumber_iOS_9_x_Max
+        JPUSHRegisterEntity * entity = [[JPUSHRegisterEntity alloc] init];
+        entity.types = UNAuthorizationOptionAlert|UNAuthorizationOptionBadge|UNAuthorizationOptionSound;
+        [JPUSHService registerForRemoteNotificationConfig:entity delegate:self];
+#endif
+    }else if ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0) {
+        //可以添加自定义categories
+        [JPUSHService registerForRemoteNotificationTypes:(UIUserNotificationTypeBadge |
+                                                          UIUserNotificationTypeSound |
+                                                          UIUserNotificationTypeAlert)
+                                              categories:nil];
+    } else {
+        //categories 必须为nil
+        [JPUSHService registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge |
+                                                          UIRemoteNotificationTypeSound |
+                                                          UIRemoteNotificationTypeAlert)
+                                              categories:nil];
+    }
   return YES;
 }
- 
-- (void)application:(UIApplication *)application 
-didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
-     
-  /// Required - 注册 DeviceToken
-  [JPUSHService registerDeviceToken:deviceToken];
+```
+##### 添加处理APNS通知回调方法
+
+请在AppDelegate.m实现该回调方法并添加回调方法中的代码
+
+```
+#pragma mark- JPUSHRegisterDelegate
+
+// iOS 10 Support
+- (void)jpushNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(NSInteger))completionHandler {
+  // Required
+  NSDictionary * userInfo = notification.request.content.userInfo;
+  if([notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
+    [JPUSHService handleRemoteNotification:userInfo];
+  }
+  completionHandler(UNNotificationPresentationOptionAlert); // 需要执行这个方法，选择是否提醒用户，有Badge、Sound、Alert三种类型可以选择设置
 }
- 
-- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-     
-  // Required - 处理收到的通知
-  [JPUSHService handleRemoteNotification:userInfo];
+
+// iOS 10 Support
+- (void)jpushNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)())completionHandler {
+  // Required
+  NSDictionary * userInfo = response.notification.request.content.userInfo;
+  if([response.notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
+    [JPUSHService handleRemoteNotification:userInfo];
+  }
+  completionHandler();  // 系统要求执行这个方法
 }
- 
+
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
- 
- 
-  // IOS 7 Support Required
+
+  // Required, iOS 7 Support
   [JPUSHService handleRemoteNotification:userInfo];
   completionHandler(UIBackgroundFetchResultNewData);
 }
 
-- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
 
-  //Optional
-  NSLog(@"did Fail To Register For Remote Notifications With Error: %@", error);
-}
+  // Required,For systems with less than or equal to iOS6
+  [JPUSHService handleRemoteNotification:userInfo];
+}  
   
 ```
 
