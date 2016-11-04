@@ -28,7 +28,7 @@ JMessage SDK 包含 JPush SDK 的全部功能，App 集成了 IM SDK 就不应�
 * demo文件夹：示例。
 
 
-### SDK集成步骤
+### 集成步骤
 
 如果你的 App 之前未集成过 JPush，请忽略此段，直接参考下节的集成步骤。
 
@@ -117,7 +117,7 @@ JMessage.framework 里的 Headers 目录下，是 SDK 对外可用的所有头�
 | Delegate/JMSGMessageDelegate | 消息相关 Delegate
 | Delegate/JMSGGroupDelegate | 群组相关 Delegate
 | Delegate/JMSGUserDelegate | 用户相关 Delegate（JMessage 2.2.0 过期）
-| JMSGEventDelegate | 通知事件相关 Delegate (JMessage 2.2.0 开始新增)
+| Delegate/JMSGEventDelegate | 通知事件相关 Delegate (JMessage 2.2.0 开始新增)
 | Delegate/JMSGDBMigrateDelegate | 数据迁移相关 Delegate
 
 ##### 调用代码
