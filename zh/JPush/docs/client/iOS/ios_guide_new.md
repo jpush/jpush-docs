@@ -84,21 +84,43 @@ img[alt=jpush_ios] { width: 800px; }
   </dict>            
 ```
 
+## 添加头文件
+请将以下代码添加到 AppDelegate.m 引用头文件的位置。
 
-## 添加代码
+```
+// 引入JPush功能所需头文件
+#import "JPUSHService.h"
+// iOS10注册APNs所需头文件
+#ifdef NSFoundationVersionNumber_iOS_9_x_Max
+#import <UserNotifications/UserNotifications.h>
+#endif
+// 如果需要使用idfa功能所需要引入的头文件（可选）
+#import <AdSupport/AdSupport.h>
+```
+
+## 添加Delegate
+为AppDelegate添加Delegate。  
+
+参考代码：
+
+```
+@interface AppDelegate ()<JPUSHRegisterDelegate>
+
+@end
+```
+
+## 添加初始化代码
 
 <div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">	<p>2.1.0版本开始,API类名为JPUSHService，不再使用原先的APService。
 </div>
 
-### 初始化代码
+### 添加初始化APNs代码
 
 请将以下代码添加到  
 -(BOOL)application:(UIApplication \*)application
 didFinishLaunchingWithOptions:(NSDictionary \*)launchOptions
 
 ```   	
-
-  NSString *advertisingId = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
   //Required
   if ([[UIDevice currentDevice].systemVersion floatValue] >= 10.0) {
     JPUSHRegisterEntity * entity = [[JPUSHRegisterEntity alloc] init];
@@ -120,15 +142,28 @@ didFinishLaunchingWithOptions:(NSDictionary \*)launchOptions
                                           categories:nil];
   }
   
-  //Required
-  // init Push(2.1.5版本的SDK新增的注册方法，改成可上报IDFA，如果没有使用IDFA直接传nil  )
+```
+### 添加初始化JPush代码
+
+请将以下代码添加到  
+-(BOOL)application:(UIApplication \*)application
+didFinishLaunchingWithOptions:(NSDictionary \*)launchOptions
+
+```
+  // Optional
+  // 获取IDFA
+  // 如需使用IDFA功能请添加此代码并在初始化方法的advertisingIdentifier参数中填写对应值
+  NSString *advertisingId = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
+
+  // Required
+  // init Push
+  // notice: 2.1.5版本的SDK新增的注册方法，改成可上报IDFA，如果没有使用IDFA直接传nil
   // 如需继续使用pushConfig.plist文件声明appKey等配置内容，请依旧使用[JPUSHService setupWithOption:launchOptions]方式初始化。
   [JPUSHService setupWithOption:launchOptions appKey:appKey
                         channel:channel
                apsForProduction:isProduction
           advertisingIdentifier:advertisingId];  
 ```
-
 #####部分参数说明：
 * appKey
     * 填写[管理Portal上创建应用](https://www.jiguang.cn/app/form)后自动生成的AppKey值。请确保应用内配置的 AppKey 与 Portal 上创建应用后生成的 AppKey 一致。
