@@ -28,7 +28,7 @@ JMessage SDK 包含 JPush SDK 的全部功能，App 集成了 IM SDK 就不应�
 * demo文件夹：示例。
 
 
-### SDK集成步骤
+### 集成步骤
 
 如果你的 App 之前未集成过 JPush，请忽略此段，直接参考下节的集成步骤。
 
