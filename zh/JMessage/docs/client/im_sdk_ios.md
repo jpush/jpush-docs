@@ -1438,6 +1438,8 @@ BOOL isAlreadSet = user.isNoDisturb;
 	    kJMSGEventNotificationDeclinedFriendInvitation  = 53,
 	    /// 事件类型: 对方将你从好友中删除
 	    kJMSGEventNotificationDeletedFriend             = 6,
+		 /// 事件类型：非客户端修改好友关系收到好友更新事件
+		 kJMSGEventNotificationReceiveServerFriendUpdate = 7,
 	    
 	    /// 消息事件
 	    /// 事件类型: 群组被创建
@@ -1575,19 +1577,28 @@ JMessage SDK 采用 Delegate 的机制给 App 发通知，而不是采用 iOS �
 	- (void)onReceiveNotificationEvent:(JMSGNotificationEvent *)event{
 	    switch (event.eventType) {
 	        case kJMSGEventNotificationReceiveFriendInvitation:
+	            NSLog(@"Receive Friend Invitation Event ");
+	            break;
 	        case kJMSGEventNotificationAcceptedFriendInvitation:
+	            NSLog(@"Accepted Friend Invitation Event ");
+	            break;
 	        case kJMSGEventNotificationDeclinedFriendInvitation:
+	            NSLog(@"Declined Friend Invitation Event ");
+	            break;
 	        case kJMSGEventNotificationDeletedFriend:
-	            NSLog(@"Friend Notification Event ");
+	            NSLog(@"Deleted Friend Event ");
+	            break;
+            case kJMSGEventNotificationReceiveServerFriendUpdate:
+	            NSLog(@"Receive Server Friend Update Event ");
 	            break;
 	        case kJMSGEventNotificationLoginKicked:
-	            NSLog(@"LoginKicked Notification Event ");
+	            NSLog(@"Login Kicked Event ");
 	            break;
 	        case kJMSGEventNotificationServerAlterPassword:
-	            NSLog(@"Server Alter Password Notification Event ");
+	            NSLog(@"Server Alter Password Event ");
 	            break;
 	        case kJMSGEventNotificationUserLoginStatusUnexpected:
-	            NSLog(@"User login status unexpected Notification Event ");
+	            NSLog(@"User login status unexpected Event ");
 	            break;
 	        default:
 		        NSLog(@"Other Notification Event ");
