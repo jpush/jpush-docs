@@ -1,5 +1,26 @@
 # 最近更新
 
+### JMessage iOS SDK v2.2.1
+#### 更新时间
++ 2016-11-04
+
+#### Change Log
+
++ 优化改进：适配JPush SDK 2.2.0，增加SDK稳定性
+
++ 新增事件：
+	+ kJMSGEventNotificationReceiveServerFriendUpdate; //事件类型：非客户端修改好友关系收到好友更新事件
+
+
+#### 升级指南
+
++ 使用新版本的JMessage.framework文件替换原工程下的同名旧文件
+
+#### 升级提示
+
++ 注意：项目中添加libresolv.tbd库，否则编译运行会报错（2.2.1及以上版本要求）
+
+
 
 ### iOS SDK v2.2.0
 
