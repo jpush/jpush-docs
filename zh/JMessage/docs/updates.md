@@ -7,7 +7,7 @@
 #### Change Log
 
 + 优化改进：适配JPush SDK 2.2.0，增加SDK稳定性
-+ 修复消息展示名获取不正确的问题
++ 修复：消息展示名获取不正确的问题
 
 + 新增事件：
 	+ kJMSGEventNotificationReceiveServerFriendUpdate; //事件类型：非客户端修改好友关系收到好友更新事件
