@@ -117,7 +117,7 @@ JMessage.framework 里的 Headers 目录下，是 SDK 对外可用的所有头�
 | Delegate/JMSGMessageDelegate | 消息相关 Delegate
 | Delegate/JMSGGroupDelegate | 群组相关 Delegate
 | Delegate/JMSGUserDelegate | 用户相关 Delegate（JMessage 2.2.0 过期）
-| JMSGEventDelegate | 通知事件相关 Delegate (JMessage 2.2.0 开始新增)
+| Delegate/JMSGEventDelegate | 通知事件相关 Delegate (JMessage 2.2.0 开始新增)
 | Delegate/JMSGDBMigrateDelegate | 数据迁移相关 Delegate
 
 ##### 调用代码
