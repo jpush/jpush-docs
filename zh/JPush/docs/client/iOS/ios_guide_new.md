@@ -17,7 +17,7 @@ img[alt=jpush_ios] { width: 800px; }
 
 包名为JPush-iOS-SDK-{版本号}
 
-* lib文件夹：包含头文件 JPUSHService.h，静态库文件jpush-ios-x.x.x.a ，支持的iOS版本为 6.0 及以上版本。（请注意：模拟器不支持APNs）
+* lib文件夹：包含头文件 JPUSHService.h，静态库文件jpush-ios-x.x.x.a，jcore-ios-x.x.x.a，支持的iOS版本为 6.0 及以上版本。（请注意：模拟器不支持APNs）
 * pdf文件：集成指南
 * demo文件夹：示例
 
@@ -33,7 +33,7 @@ img[alt=jpush_ios] { width: 800px; }
 ## 配置工程
 ### 导入SDK
 
-* 将SDK包解压，在Xcode中选择“Add files to 'Your project name'...”，将解压后的lib子文件夹（包含JPUSHService.h、jpush-ios-x.x.x.a）添加到你的工程目录中。  
+* 将SDK包解压，在Xcode中选择“Add files to 'Your project name'...”，将解压后的lib子文件夹（包含JPUSHService.h、jpush-ios-x.x.x.a、jcore-ios-x.x.x.a）添加到你的工程目录中。  
 * 添加Framework
 	* CFNetwork.framework
 	* CoreFoundation.framework
@@ -43,10 +43,10 @@ img[alt=jpush_ios] { width: 800px; }
 	* Foundation.framework
 	* UIKit.framework
 	* Security.framework
-	* Xcode7需要的是libz.tbd；Xcode7以下版本是libz.dylib
-	* Adsupport.framework (获取IDFA需要；如果不使用IDFA，请不要添加)
-	* UserNotifications.framework(Xcode8及以上)
-	* libresolv.tbd (JPush 2.2.0及以上版本需要)
+	* libz.tbd (Xcode7以下版本是libz.dylib)
+	* AdSupport.framework (获取IDFA需要；如果不使用IDFA，请不要添加)
+	* UserNotifications.framework (Xcode8及以上)
+	* libresolv.tbd (JPush 2.2.0及以上版本需要，Xcode7以下版本是libresolv.dylib)
 
 ### Build Settings
 如果你的工程需要支持小于7.0的iOS系统，请到Build Settings 关闭 bitCode 选项，否则将无法正常编译通过。
@@ -100,25 +100,20 @@ didFinishLaunchingWithOptions:(NSDictionary \*)launchOptions
 
   NSString *advertisingId = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
   //Required
-  if ([[UIDevice currentDevice].systemVersion floatValue] >= 10.0) {
-    JPUSHRegisterEntity * entity = [[JPUSHRegisterEntity alloc] init];
-    entity.types = UNAuthorizationOptionAlert|UNAuthorizationOptionBadge|UNAuthorizationOptionSound;
-    [JPUSHService registerForRemoteNotificationConfig:entity delegate:self];
-  } 
-  else if ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0) {
+  JPUSHRegisterEntity * entity = [[JPUSHRegisterEntity alloc] init];
+  entity.types = JPAuthorizationOptionAlert|JPAuthorizationOptionBadge|JPAuthorizationOptionSound;
+  if ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0) {
     //可以添加自定义categories
-    [JPUSHService registerForRemoteNotificationTypes:(UIUserNotificationTypeBadge |
-                                                      UIUserNotificationTypeSound |
-                                                      UIUserNotificationTypeAlert)
-                                          categories:nil];
-  } 
-  else {
-    //categories 必须为nil
-    [JPUSHService registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge |
-                                                      UIRemoteNotificationTypeSound |
-                                                      UIRemoteNotificationTypeAlert)
-                                          categories:nil];
+//    if ([[UIDevice currentDevice].systemVersion floatValue] >= 10.0) {
+//      NSSet<UNNotificationCategory *> *categories;
+//      entity.categories = categories;
+//    }
+//    else {
+//      NSSet<UIUserNotificationCategory *> *categories;
+//      entity.categories = categories;
+//    }
   }
+  [JPUSHService registerForRemoteNotificationConfig:entity delegate:self];
   
   //Required
   // init Push(2.1.5版本的SDK新增的注册方法，改成可上报IDFA，如果没有使用IDFA直接传nil  )
