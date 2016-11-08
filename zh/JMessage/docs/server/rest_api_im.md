@@ -1145,7 +1145,7 @@ Error Code
 + 899002  用户不存在；
 
 #### 更新好友备注
-PUT  /v1/users/{username}/friends
+      PUT  /v1/users/{username}/friends
 
 Request Params
 
@@ -1180,7 +1180,7 @@ Error Code
 + 899002  用户不存在；
 
 #### 获取好友列表
-GET  /v1/users/{username}/friends
+     GET  /v1/users/{username}/friends
 
 Request Params
 
