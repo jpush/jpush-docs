@@ -9,7 +9,7 @@ theme_dir: '../themes/readthedocs'
 pages:
 
 - 入门指南:
-  - '短信验证码概述': 'guideline/JSMS_guide.md'
+  - '短信验证码概述': 'guideline/intro.md'
 
 - Android:
   - 'Android SDK 概述': 'client/Android_SMS_SDK.md'
