@@ -1082,6 +1082,131 @@ Example Response
 ```
 
 
+### 好友API
+
+#### 添加好友
+	POST  /v1/users/{username}/friends
+
+Request Params
+
++ json数组 表示要添加的用户名列表 最大限制500个
+
+
+
+Example Request 
+
+```
+["user01","user02"] 
+
+```
+Example Response
+
+```
+< HTTP/1.1 204 NO Content
+< Content-Type: application/json; charset=utf-8 
+```
+
+Response Data
+N/A
+
+Error Code
+
++ 899003  Request Body json格式不符合要求，json参数不符合要求；
++ 899002  用户不存在；
++ 899070  已经添加了好友；
+
+
+#### 删除好友
+	DELETE  /v1/users/{username}/friends
+
+Request Params
+
++ json数组 表示要删除的用户名列表 最大限制500个
+
+Example Request 
+
+```
+["user01","user02"] 
+
+```
+Example Response
+
+```
+< HTTP/1.1 204 NO Content
+< Content-Type: application/json; charset=utf-8 
+```
+
+Response Data
+N/A
+
+Error Code
+
++ 899003  Request Body json格式不符合要求，json参数不符合要求；
++ 899002  用户不存在；
+
+#### 更新好友备注
+PUT  /v1/users/{username}/friends
+
+Request Params
+
++ note_name 表示要添加的好友列表， 格式：Byte(250)
+支持的字符：不包括 "\n" "\r"。
++ others 其他备注信息，格式：Byte(250)
+支持的字符：全部，包括 Emoji。
++ username 用户username；
++ 支持批量修改 最大限制500个
+ 
+
+
+Example Request 
+
+```
+[{ "note_name": "new note name", "others": “好友备注文档" ,"username":"user01"}]
+
+```
+Example Response
+
+```
+< HTTP/1.1 204 NO Content
+< Content-Type: application/json; charset=utf-8 
+```
+
+Response Data
+N/A
+
+Error Code
+
++ 899003  Request Body json格式不符合要求，json参数不符合要求；
++ 899002  用户不存在；
+
+#### 获取好友列表
+GET  /v1/users/{username}/friends
+
+Request Params
+
+N/A 
+
+
+Example Request 
+
+
+Example Response
+
+```
+< HTTP/1.1 200 NO Content
+< Content-Type: application/json; charset=utf-8 
+```
+
+Response Data
+
+```
+[{"username" : "javen", "nickname" : "hello", "avatar" = "/avatar", "birthday" : "1990-01-24 00:00:00", "gender" : 0, "signature" : "orz", "region" : "shenzhen", "address" : "shenzhen", "mtime" : "2015-01-01 00:00:00", "ctime" : "2015-01-01 00:00:00","note_name":"= =","others":"test"}]
+```
+
+Error Code
+
++ 899003  Request Body json格式不符合要求，json参数不符合要求；
++ 899002  用户不存在；
 
 ### 跨应用API
 
