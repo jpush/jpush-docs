@@ -262,8 +262,7 @@ Content-Type: application/json; charset=utf-8
 	+ 支持的字符：全部，包括 Emoji
 + address   （选填）地址
 	+ 支持的字符：全部，包括 Emoji
-+ avatar	（选填）头像
-	+ 文件上传后得到的mediaId	
+
 
 
 ##### Example Response
@@ -1149,7 +1148,7 @@ Error Code
 
 Request Params
 
-+ note_name 表示要添加的好友列表， 格式：Byte(250)
++ note_name 表示要添加的好友列表， 格式：Byte(64)
 支持的字符：不包括 "\n" "\r"。
 + others 其他备注信息，格式：Byte(250)
 支持的字符：全部，包括 Emoji。
