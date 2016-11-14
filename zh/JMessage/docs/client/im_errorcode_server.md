@@ -153,6 +153,78 @@ JMessage 服务器端报的错误码。有可能出现在各平台的 SDK 里。
 			<td>删除目标黑名单用户不存在黑名单中</td>
 		</tr>
 		<tr >
+			<td>899020</td>
+			<td>no auth to operating other appkey</td>
+			<td>跨应用失败</td>
+		</tr>
+		
+		<tr >
+			<td>899021</td>
+			<td>should use cross app api</td>
+			<td>查询失败 应该使用跨应用api</td>
+		</tr>
+		
+		<tr >
+			<td>899043</td>
+			<td>duplicate add user</td>
+			<td>已经设置此用户为消息免打扰，重复设置错误</td>
+		</tr>
+		
+		<tr >
+			<td>899044</td>
+			<td>user is not exist in setting</td>
+			<td>取消消息免打扰用户时，该用户不存在当前设置中</td>
+		</tr>
+		
+		<tr >
+			<td>899045</td>
+			<td>group is not exist</td>
+			<td>设置群组消息免打扰时，群组不存在该系统中</td>
+		</tr>
+		
+		<tr>
+			<td>899046</td>
+			<td>user is not in group</td>
+			<td>设置群组消息免打扰时，设置的群组，用户不在该群组中</td>
+		</tr>
+		
+		<tr>
+			<td>899047</td>
+			<td>duplicate add group</td>
+			<td>已经设置此群组为消息免打扰，重复设置错误</td>
+		</tr>
+		
+		<tr >
+			<td>899048</td>
+			<td>already open global</td>
+			<td>已经设置全局为消息免打扰，重复设置错误</td>
+		</tr>
+		
+		<tr>
+			<td>899049</td>
+			<td>group is not exist in setting</td>
+			<td>取消消息免打扰群组时，该群组不存在当前设置中</td>
+		</tr>
+		
+		<tr>
+			<td>899050</td>
+			<td>already close global</td>
+			<td>已经设置全局为消息免打扰，重复设置错误</td>
+		</tr>
+		
+		<tr>
+			<td>899070</td>
+			<td></td>
+			<td>添加的好友已经存在好友列表中</td>
+		</tr>
+		
+		<tr>
+			<td>899071</td>
+			<td></td>
+			<td>更新的好友不存在好友列表中</td>
+		</tr>
+		
+		<tr >
 			<td>899030</td>
 			<td>Server response time out, please try again later</td>
 			<td>系统繁忙，稍后重试</td>
