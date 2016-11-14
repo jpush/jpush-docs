@@ -103,8 +103,8 @@
         dependencies {
             ......
             
-            compile 'cn.jiguang:jpush:2.1.8'  // 此处以SDK 2.1.8版本为例
-            
+            compile 'cn.jiguang.sdk:jpush:3.0.0'  // 此处以JPush 3.0.0 版本为例。
+            compile 'cn.jiguang.sdk:jcore:1.0.0'  // 此处以JCore 1.0.0 版本为例。
             ......
         }
         
