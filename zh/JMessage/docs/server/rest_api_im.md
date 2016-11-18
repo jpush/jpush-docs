@@ -1456,6 +1456,137 @@ Error Code
 + 899052 设置群组消息屏蔽，设置的群组屏蔽已经打开
 + 99053 设置群组消息屏蔽，设置的群组屏蔽已经关闭
 
+#### 跨应用添加好友 
+
+```
+POST  /v1/cross/users/{username}/friends
+```
+
+Example Request
+
+Request Header 
+
+```
+POST  /v1/cross/users/{username}/friends
+Content-Type: application/json; charset=utf-8  
+```
+
+Request Params
+
++ appkey  用户所属的appkey （必填）
++ users   username的json数组 最多500个（必填）
+
+
+Request Body
+
+```
+ {
+   "appkey":"appkey1",    "users":         [            "username1",         "username2"       ]     }
+
+
+```
+
+Example Response
+
+Response Header
+
+```
+HTTP/1.1 201 Created
+Content-Type: application/json; charset=utf-8   
+```
+
+Response Data
+
+N/A
+
+#### 跨应用删除好友 
+
+```
+DELETE  /v1/cross/users/{username}/friends
+```
+
+Example Request
+
+Request Header 
+
+```
+DELETE  /v1/cross/users/{username}/friends
+Content-Type: application/json; charset=utf-8  
+```
+
+Request Params
+
++ appkey  用户所属的appkey （必填）
++ users   username的json数组 最多500个（必填）
+
+
+Request Body
+
+```
+ {
+   "appkey":"appkey1",    "users":         [            "username1",         "username2"       ]     }
+
+
+```
+
+Example Response
+
+Response Header
+
+```
+HTTP/1.1 204 NO Content
+Content-Type: application/json; charset=utf-8   
+```
+
+Response Data
+
+N/A
+
+#### 跨应用更新好友备注 
+
+```
+PUT  /v1/cross/users/{username}/friends
+```
+
+Example Request
+
+Request Header 
+
+```
+PUT  /v1/cross/users/{username}/friends
+Content-Type: application/json; charset=utf-8  
+```
+
+Request Params
+
++ appkey  用户所属的appkey （必填）
++ note_name 表示要添加的好友列表， 格式：Byte(64)
+支持的字符：不包括 "\n" "\r"。
++ others 其他备注信息，格式：Byte(250)
+支持的字符：全部，包括 Emoji。  
+
+
+Request Body
+
+```
+[{ "note_name": "new note name", "others": “好友备注文档" ,"username":"user01", "appkey":"appkey"}]
+
+
+```
+
+Example Response
+
+Response Header
+
+```
+HTTP/1.1 204 NO Content
+Content-Type: application/json; charset=utf-8   
+```
+
+Response Data
+
+N/A
+
 
 ### HTTP 返回
 
