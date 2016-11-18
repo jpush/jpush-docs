@@ -18,7 +18,7 @@
 	2.统计自定义计数事件
 	3.统计自定义计算事件
 	
-###集成压缩包内容
+###janalytics-android-release-1.x.y\_bxxx\_timenumber.zip 集成压缩包内容
 
 + AndroidManifest.xml
 	+ 客户端嵌入SDK参考的配置文件
