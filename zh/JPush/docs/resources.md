@@ -26,6 +26,7 @@
 <div class="download-icon">
 <a href="https://www.jiguang.cn/downloads/sdk/android/">下载</a>
 </div>
+<a href="https://sdkfiledl.jiguang.cn/jpush-android-release-2.2.0-gp.zip">Google Play 版本下载</a>
 </div>
 <div class="hr">
 <hr />
