@@ -9,17 +9,20 @@ theme_dir: '../themes/readthedocs'
 pages:
 
 - 入门指南:
-  - '短信验证码概述': 'guideline/intro.md'
+  - 'JAnalytics产品简介': 'guideline/intro.md'
+  - '常见问题': 'guideline/faq.md'
 
 - Android:
-  - 'Android SDK 概述': 'client/Android_SMS_SDK.md'
+  - 'Android SDK 概述': 'client/android_sdk.md'
+  - 'Android SDK 集成指南': 'client/android_guide.md'
+  - 'Android SDK API': 'client/android_api.md'
+
 
 - iOS:
-  - 'iOS SDK 概述': 'client/iOS_SMS_SDK.md'
+  - 'iOS SDK 概述': 'client/ios_sdk.md'
+  - 'iOS SDK 集成指南': 'client/ios_guide.md'
+  - 'iOS SDK API': 'client/ios_api.md'
 
-
-- REST API:
-  - 'REST API 概述': 'server/rest_api_jsms.md'
 
 - 最近更新: 'updates.md'
 
