@@ -28,7 +28,7 @@
 + SDK丰富的接口，可定制通知栏提示样式
 + 服务器大容量、稳定
 
-### jpush-android-release-3.x.y\_bxxx\_timenumber.zip 集成压缩包内容
+### jpush-android-release-3.x.y.zip 集成压缩包内容
 
 + AndroidManifest.xml
     + 客户端嵌入SDK参考的配置文件
@@ -120,7 +120,7 @@
 
 ## 手动集成步骤
 
-+ 解压缩 jpush-android-release-3.x.y\_bxxx\_timenumber.zip 集成压缩包。
++ 解压缩 jpush-android-release-3.x.y.zip 集成压缩包。
 + 复制 libs/jcore-android_v1.x.y.jar 到工程 libs/ 目录下。
 + 复制 libs/jpush-android_v3.x.y.jar 到工程 libs/ 目录下。
 + 复制 libs/(cpu-type)/libjcore1xy.so 到你的工程中存放对应cpu类型的目录下。
