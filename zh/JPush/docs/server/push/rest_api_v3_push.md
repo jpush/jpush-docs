@@ -403,7 +403,7 @@ iOS 平台上 APNs 通知结构。
 			<td>string或JSON Object</td>
 			<td>必填</td>
 			<td width="20%">通知内容</td>
-			<td>这里指定内容将会覆盖上级统一指定的 alert 信息；内容为空则不展示到通知栏。支持字符串形式也支持官方定义的<a href="https://developer.apple.com/library/mac/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/TheNotificationPayload.html#//apple_ref/doc/uid/TP40008194-CH107-SW1">alert payload</a> 结构</td>
+			<td>这里指定内容将会覆盖上级统一指定的 alert 信息；内容为空则不展示到通知栏。支持字符串形式也支持官方定义的<a href="https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/PayloadKeyReference.html">alert payload</a> 结构</td>
 		</tr>
 		<tr >
 			<td>sound</td>
