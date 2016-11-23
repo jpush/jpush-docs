@@ -1,4 +1,4 @@
-# Web SDK 开发指南 V2 
+<h1>WEB SDK 开发指南 V2</h1>
 
 
 ## 概述
@@ -95,9 +95,8 @@ JIM.sendSingleMsg({
 });
 ```
 
-### 1 基础管理API
 
-#### 1.1 初始化
+### 初始化
 
 JMessage#init()
 
@@ -107,31 +106,12 @@ JMessage#init()
 - random_str : 20-36长度的随机字符串, 作为签名加salt使用
 - timestamp : 当初时间戳，用于防止重放攻击
 - signature : 签名
-  -
-#### 1.2 登录
 
-JMessage#login()
 
-**请求参数:**
 
-| KEY      | REQUIRE | DESCRIPTION    |
-| -------- | ------- | -------------- |
-| username | TRUE    | 用户名            |
-| password | TRUE    | 密码             |
-| is_md5   | FALSE   | 密码是否是MD5密码，默认否 |
+### 注册与登录
 
-**请求示例**
-
-```
-JIM.login({
-    'username' : '<login username>',
-    'password' : '<login password>'
-}).onSuccess(function(data) {
-    // do something
-});
-```
-
-#### 1.3 注册
+#### 注册
 
 JMessage#register()
 
@@ -157,7 +137,32 @@ JMessage#register()
         });
 ```
 
-#### 1.4 获取用户信息
+#### 登录
+
+JMessage#login()
+
+**请求参数:**
+
+| KEY      | REQUIRE | DESCRIPTION    |
+| -------- | ------- | -------------- |
+| username | TRUE    | 用户名            |
+| password | TRUE    | 密码             |
+| is_md5   | FALSE   | 密码是否是MD5密码，默认否 |
+
+**请求示例**
+
+```
+JIM.login({
+    'username' : '<login username>',
+    'password' : '<login password>'
+}).onSuccess(function(data) {
+    // do something
+});
+```
+
+### 用户管理
+
+#### 获取用户信息
 
 JMessage#getUserInfo()
 
@@ -181,7 +186,7 @@ JMessage#getUserInfo()
         });
 ```
 
-#### 1.5 更新个人信息
+#### 更新个人信息
 
 JMessage#updateSelfInfo()
 
@@ -213,7 +218,7 @@ JMessage#updateSelfInfo()
                });
 ```
 
-#### 1.6 更新个人头像
+#### 更新个人头像
 
 JMessage#updateSelfAvatar()
 
@@ -235,7 +240,7 @@ JMessage#updateSelfAvatar()
                });
 ```
 
-#### 1.7 更新个人密码
+#### 更新个人密码
 
 JMessage#updateSelfPwd()
 
@@ -261,7 +266,10 @@ JMessage#updateSelfPwd()
                });
 ```
 
-#### 1.8 获取会话列表
+
+### 消息管理
+
+#### 获取会话列表
 
 JMessage#getConversation()
 
@@ -279,9 +287,7 @@ JMessage#getConversation()
                });
 ```
 
-### 2 消息发送API
-
-#### 2.1 发送单聊文本
+#### 发送单聊文本
 
 JMessage#sendSingleMsg()
 
@@ -311,7 +317,7 @@ JMessage#sendSingleMsg()
                });
 ```
 
-#### 2.2 发送单聊图片
+#### 发送单聊图片
 
 JMessage#sendSinglePic()
 
@@ -341,7 +347,7 @@ JMessage#sendSinglePic()
                });
 ```
 
-#### 2.3 发送单聊文件
+#### 发送单聊文件
 
 JMessage#sendSingleFile()
 
@@ -371,7 +377,7 @@ JMessage#sendSingleFile()
                });
 ```
 
-#### 2.4 发送单聊位置
+#### 发送单聊位置
 
 JMessage#sendSingleLocation()
 
@@ -407,7 +413,7 @@ JMessage#sendSingleLocation()
                });
 ```
 
-#### 2.5 发送单聊自定义消息
+#### 发送单聊自定义消息
 
 JMessage#sendSingleCustom()
 
@@ -435,7 +441,7 @@ JMessage#sendSingleCustom()
                });
 ```
 
-#### 2.6 发送群聊文本
+#### 发送群聊文本
 
 JMessage#sendGroupMsg()
 
@@ -463,7 +469,7 @@ JMessage#sendGroupMsg()
                });
 ```
 
-#### 2.7 发送群聊图片
+#### 发送群聊图片
 
 JMessage#sendGroupPic()
 
@@ -491,7 +497,7 @@ JMessage#sendGroupPic()
                });
 ```
 
-#### 2.8 发送群聊文件
+#### 发送群聊文件
 
 JMessage#sendGroupFile()
 
@@ -519,7 +525,7 @@ JMessage#sendGroupFile()
                });
 ```
 
-#### 2.9 发送群聊位置
+#### 发送群聊位置
 
 JMessage#sendGroupLocation()
 
@@ -553,7 +559,7 @@ JMessage#sendGroupLocation()
                });
 ```
 
-#### 2.10 发送群聊自定义消息
+#### 发送群聊自定义消息
 
 JMessage#sendGroupMsg()
 
@@ -579,9 +585,9 @@ JMessage#sendGroupMsg()
                });
 ```
 
-### 3 群组管理API
+### 群组管理
 
-#### 3.1 创建群组
+#### 创建群组
 
 JMessage#createGroup()
 
@@ -605,7 +611,7 @@ JMessage#createGroup()
                });
 ```
 
-#### 3.2 退出群组
+#### 退出群组
 
 JMessage#exitGroup()
 
@@ -627,7 +633,7 @@ JMessage#exitGroup()
                });
 ```
 
-#### 3.3 增加群组成员
+#### 增加群组成员
 
 JMessage#addGroupMembers()
 
@@ -651,7 +657,7 @@ JMessage#addGroupMembers()
                });
 ```
 
-#### 3.4 删除群组成员
+#### 删除群组成员
 
 JMessage#delGroupMembers()
 
@@ -675,7 +681,7 @@ JMessage#delGroupMembers()
                });
 ```
 
-#### 3.5 获取群组列表
+#### 获取群组列表
 
 JMessage#getGroups()
 
@@ -694,7 +700,7 @@ JMessage#getGroups()
                });
 ```
 
-#### 3.6 获取群信息
+#### 获取群信息
 
 JMessage#getGroupInfo()
 
@@ -716,7 +722,7 @@ JMessage#getGroupInfo()
                });
 ```
 
-#### 3.7 更新群信息
+#### 更新群信息
 
 JMessage#updateGroupInfo()
 
@@ -742,7 +748,7 @@ JMessage#updateGroupInfo()
                });
 ```
 
-#### 3.8 获取群成员
+#### 获取群成员
 
 JMessage#getGroupMembers()
 
@@ -764,9 +770,9 @@ JMessage#getGroupMembers()
                });
 ```
 
-### 4 免打扰管理API
+### 免打扰管理
 
-#### 4.1 获取免打扰
+#### 获取免打扰
 
 JMessage#getNoDisturb()
 
@@ -784,7 +790,7 @@ JMessage#getNoDisturb()
                });
 ```
 
-#### 4.2 添加用户免打扰
+#### 添加用户免打扰
 
 JMessage#addSingleNoDisturb()
 
@@ -808,7 +814,7 @@ JMessage#addSingleNoDisturb()
                });
 ```
 
-#### 4.3 关闭用户免打扰
+#### 关闭用户免打扰
 
 JMessage#delSingleNoDisturb()
 
@@ -832,7 +838,7 @@ JMessage#delSingleNoDisturb()
                });
 ```
 
-#### 4.4 添加群组免打扰
+#### 添加群组免打扰
 
 JMessage#addGroupNoDisturb()
 
@@ -854,7 +860,7 @@ JMessage#addGroupNoDisturb()
                });
 ```
 
-#### 4.5 关闭群组免打扰
+#### 关闭群组免打扰
 
 JMessage#delGroupNoDisturb()
 
@@ -876,7 +882,7 @@ JMessage#delGroupNoDisturb()
                });
 ```
 
-#### 4.6 添加全局免打扰
+#### 添加全局免打扰
 
 JMessage#openGlobalNoDisturb()
 
@@ -894,7 +900,7 @@ JMessage#openGlobalNoDisturb()
                });
 ```
 
-#### 4.7 关闭全局免打扰
+#### 关闭全局免打扰
 
 JMessage#closeGlobalNoDisturb()
 
@@ -912,7 +918,7 @@ JMessage#closeGlobalNoDisturb()
                });
 ```
 
-#### 4.8 获取黑名单
+#### 获取黑名单
 
 JMessage#getBlacks()
 
@@ -930,7 +936,7 @@ JMessage#getBlacks()
                });
 ```
 
-#### 4.9 添加黑名单
+#### 添加黑名单
 
 JMessage#addSingleBlacks()
 
@@ -952,7 +958,7 @@ JMessage#addSingleBlacks()
                });
 ```
 
-#### 4.10 删除黑名单
+#### 删除黑名单
 
 JMessage#delSingleBlacks()
 
@@ -975,9 +981,9 @@ JMessage#delSingleBlacks()
 ```
 
 
-### 5 被动消息接收API
+### 被动消息接收
 
-#### 5.1 接收聊天消息
+#### 接收聊天消息
 
 JMessage#onMsgReceive(fn)
 
@@ -1006,7 +1012,7 @@ JIM.onMsgReceive(function(data) {
 });
 ```
 
-#### 5.2 接收事件消息
+#### 接收事件消息
 
 JMessage#onEventNotification(fn)
 
@@ -1070,7 +1076,7 @@ JMessage#sendSingleMsg()
 | appkey          | FALSE   | 跨应用查询时必填，目标应用的appkey |
 其中appkey为目标appkey，其他接口类似
 
-### 如何发送图片，文件
+### 如何发送图片或文件
 
 SDK支持单图片,单文件发送。发送文件和图片接口需要接收一个类型为FormData参数值，该参数值包含了用户需要发送的文件信息。
 
