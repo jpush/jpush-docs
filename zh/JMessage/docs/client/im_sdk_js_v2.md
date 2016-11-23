@@ -918,6 +918,8 @@ JMessage#closeGlobalNoDisturb()
                });
 ```
 
+### 黑名单管理
+
 #### 获取黑名单
 
 JMessage#getBlacks()
@@ -981,9 +983,8 @@ JMessage#delSingleBlacks()
 ```
 
 
-### 被动消息接收
 
-#### 接收聊天消息
+### 聊天消息监听
 
 JMessage#onMsgReceive(fn)
 
@@ -1012,7 +1013,7 @@ JIM.onMsgReceive(function(data) {
 });
 ```
 
-#### 接收事件消息
+### 业务事件监听
 
 JMessage#onEventNotification(fn)
 
