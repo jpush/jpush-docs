@@ -26,6 +26,7 @@ pages:
   - 'SDK API Doc': 'client/iOSdoc.md'
 
 - JS:
+  - 'WEB SDK 开发指南 V2': 'client/im_sdk_js_v2.md'
   - 'WEB SDK 开发指南': 'client/im_sdk_js.md'
 
 - REST API:
