@@ -1058,7 +1058,7 @@ JIM.onMsgReceive(function(data) {
 
 ## 高级应用
 
-### 如何进行发送跨应用消息
+### 发送跨应用消息
 
 跨应用是指相同账号下不同appkey之间的用户进行操作，默认在没指定目标appkey的情况下目标appkey就是当前登录用户所使用的appkey，如果需要跨应用操作则在接口参数上指定具体的目标appkey。
 
@@ -1077,7 +1077,7 @@ JMessage#sendSingleMsg()
 | appkey          | FALSE   | 跨应用查询时必填，目标应用的appkey |
 其中appkey为目标appkey，其他接口类似
 
-### 如何发送图片或文件
+### 发送图片或文件
 
 SDK支持单图片,单文件发送。发送文件和图片接口需要接收一个类型为FormData参数值，该参数值包含了用户需要发送的文件信息。
 
@@ -1105,7 +1105,7 @@ sendSinglePic({
 
 其他发送文件,图片接口类似
 
-### 如何发送和接收Emoij表情
+### 发送和接收Emoij表情
 
 Emoji表情就是一种在Unicode位于`\u1F601`-`\u1F64F`区段的字符。 JMessage的消息内容都是使用[utf8mb4](https://dev.mysql.com/doc/refman/5.5/en/charset-unicode-utf8mb4.html)编码，向下兼容UTF8。
 只要正确输入Emoij字符都可以使用JMessage文本消息API进行发送。如果用户需要转存聊天消息，请先确保数据库支持utf8mb4编码。
