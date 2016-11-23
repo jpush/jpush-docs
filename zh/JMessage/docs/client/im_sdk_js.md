@@ -38,8 +38,9 @@ signature = md5(appkey=appkey&timestamp=timestamp&random_str=random_str&key=secr
 
 ### 开发准备
 
-#### 1、引入sockit.io.js
-JiGuang WebIM是基于[sockit.io](http://socket.io/)开发，开发者在使用之前需引入`sockit.io.js`。
+#### 1、引入socket.io.js
+JiGuang WebIM是基于[socket.io](http://socket.io/)开发，开发者在使用之前需引入`socket.io.js`。
+
 
 CDN源:
 
