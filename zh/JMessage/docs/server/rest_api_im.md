@@ -232,7 +232,7 @@ Content-Type: application/json; charset=utf-8
 ```
 说明
 
-除了username mtime ctime这三个子段之外，其余字段如果没存json中就有没有相应的key
+除了username mtime ctime这三个子段之外，其余字段如果没存json中就没有相应的key
 
 #### 更新用户信息
 
@@ -785,7 +785,9 @@ POST /v1/resource?type=image
 ```
 ##### Example Request
 
-curl   -F "filename=@/home/test.jpg" https://api.im.jpush.cn/v1/resource?type=image -u "appkey:secret"
+图片上传 curl   -F "filename=@/home/test.jpg" https://api.im.jpush.cn/v1/resource?type=image -u "appkey:secret"
+
+文件上传 curl   -F "filename=@/home/test.mp3" https://api.im.jpush.cn/v1/resource?type=file -u "appkey:secret"
 
 注：文件大小限制8m，暂时只支持图片格式 jpg bmp gif png等
 
@@ -793,7 +795,7 @@ curl   -F "filename=@/home/test.jpg" https://api.im.jpush.cn/v1/resource?type=im
 | 参数 | 含义               | 备注 |
 |--------|--------------------------|------|
 | filename   | 磁盘本地文件路径 |      |
-| type       | 文件类型 暂时只能是"image"      |      |
+| type       | 文件类型 支持是"image"，"file"      |      |
 
 
 Response Header  
@@ -805,7 +807,7 @@ HTTP/1.1 200
 Content-Type: application/json; charset=utf-8 
 ```
 Response Data
-
+图片 Response
 {"media_id":"qiniu/image/F39AA12204DAB6A2","media_crc32":1338734977,"width":720,"height":1280,"format":"jpg","fsize":52468}
 
 + media_id String  文件上传之后服务器端所返回的key
@@ -813,7 +815,17 @@ Response Data
 + width int  图片原始宽度
 + height  int  图片原始高度
 + format String 图片格式
-+ fsize int 文件大小（字节数
++ fsize int 文件大小 （字节数）
++ hash String 可选，用于crc校验码不存在时的替代的验证
+
+文件 Response 
+{"media_id":"qiniu/file/j/1BB3B833AEABFF62E883C5CE421867A9","media_crc32":1415584260,"fname":"0839d1c0-48e9-4032-9333-f3691a7d9e48.dmp","fsize":176512,"hash":"FtH0kPT0YI89HAw1K9wv_vVKiNab"}
+
++  media_id String 文件上传之后服务器端所返回的key，用于之后生成下载的url
++ media_crc32 long 文件的crc32校验码
++ hash String 可选，用于crc校验码不存在时的替代的验证
++ fsize int 文件大小（字节数）
++ fname String 发送与接收到的文件名
 
 
 ### Group对象字段总览
