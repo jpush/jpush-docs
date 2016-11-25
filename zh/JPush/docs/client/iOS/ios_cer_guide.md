@@ -76,7 +76,7 @@
 ![jpush_ios](../image/appidcer.png)
 
 
-+ 创建App ID、APN证书和p12证书的导出的具体步骤请看 :[iOS 证书 设置指南](#_1)
++ 创建App ID、APN证书和p12证书的导出的具体步骤请看 :[iOS 证书 设置指南](#id)
 
 + 在[苹果开发者账号的Provisioning Profile](https://developer.apple.com/account/ios/profile/profileList.action)页面点击下图按钮，创建Provisioning Profile
 

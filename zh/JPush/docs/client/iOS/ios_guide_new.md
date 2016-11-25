@@ -44,7 +44,7 @@ img[alt=jpush_ios] { width: 800px; }
 	* UIKit.framework
 	* Security.framework
 	* libz.tbd (Xcode7以下版本是libz.dylib)
-	* Adsupport.framework (获取IDFA需要；如果不使用IDFA，请不要添加)
+	* AdSupport.framework (获取IDFA需要；如果不使用IDFA，请不要添加)
 	* UserNotifications.framework (Xcode8及以上)
 	* libresolv.tbd (JPush 2.2.0及以上版本需要, Xcode7以下版本是libresolv.dylib)
 
