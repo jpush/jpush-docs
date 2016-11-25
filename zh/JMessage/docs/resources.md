@@ -70,12 +70,12 @@
             <div class="download-right">
                 <div class="download-title">
                     <p id="release-title">JS - SDK</p>
-                    <span id="release-version">版本：v1.2.0</span>
-                    <span id="release-time">2016.10.10</span>
+                    <span id="release-version">版本：v2.0.0</span>
+                    <span id="release-time">2016.11.23</span>
                 </div>
                 <div class="download-info">
                     <ul class="download-info-ul">
-                        <li><a href="../client/im_sdk_js/">开发指南</a></li>
+                        <li><a href="../client/im_sdk_js_v2/">开发指南</a></li>
                         <div style=" clear:both; visibility:hidden;">
                     </ul>
                     </div>
