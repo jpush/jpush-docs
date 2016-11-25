@@ -43,10 +43,10 @@ img[alt=jpush_ios] { width: 800px; }
 	* Foundation.framework
 	* UIKit.framework
 	* Security.framework
-	* Xcode7需要的是libz.tbd；Xcode7以下版本是libz.dylib
+	* libz.tbd (Xcode7以下版本是libz.dylib)
 	* Adsupport.framework (获取IDFA需要；如果不使用IDFA，请不要添加)
-	* UserNotifications.framework(Xcode8及以上)
-	* libresolv.tbd (JPush 2.2.0及以上版本需要)
+	* UserNotifications.framework (Xcode8及以上)
+	* libresolv.tbd (JPush 2.2.0及以上版本需要, Xcode7以下版本是libresolv.dylib)
 
 ### Build Settings
 如果你的工程需要支持小于7.0的iOS系统，请到Build Settings 关闭 bitCode 选项，否则将无法正常编译通过。
