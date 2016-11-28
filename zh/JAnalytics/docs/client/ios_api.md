@@ -314,7 +314,7 @@
 		event_id
 		此类 key 已被模型使用，如果使用则会导致统计到的数据不准确.
 
-+ ***CalculateEvent***
++ ***JANALYTICSCalculateEvent***
 
 该模型是自定义计算事件模型，计算事件会通过相同的事件不同的值进行累加，可以设置参数进行数据上报。
 
