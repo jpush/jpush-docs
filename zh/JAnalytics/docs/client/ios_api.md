@@ -129,7 +129,7 @@
 |参数名称|参数类型|参数说明|
 |:-----:|:-----:|:----:|
 |extra|	NSDictionary<NSString *, NSString *>|自定义属性|
-
+##登录事件模型
 + ***JANALYTICSLoginEvent***
 
 该模型是登录事件模型，可以设置参数进行数据上报。
@@ -161,7 +161,7 @@
      login_method
      login_success
      此类 key 已被模型使用，如果使用则会导致统计到的数据不准确.
-
+##注册事件模型
 + ***JANALYTICSRegisterEvent***
 
 该模型是注册事件模型，可以设置参数进行数据上报。
@@ -193,7 +193,7 @@
 	register_method
 	register_success
 	此类 key 已被模型使用，如果使用则会导致统计到的数据不准确.
-
+##购买事件模型
 + ***JANALYTICSPurchaseEvent***
 
 该模型是购买事件模型，可以设置参数进行数据上报。
@@ -245,7 +245,7 @@
     purchase_quantity
     purchase_success
     此类 key 已被模型使用，如果使用则会导致统计到的数据不准确.
-    
+##浏览事件模型    
 + ***JANALYTICSBrowseEvent***
  
 该模型是浏览事件模型，可以设置参数进行数据上报。
@@ -285,7 +285,7 @@
     browse_type
     browse_duration
     此类 key 已被模型使用，如果使用则会导致统计到的数据不准确.
-
+##计数事件模型
 + ***JANALYTICSCountEvent***
 
 该模型是自定义计数事件模型，可以设置参数进行数据上报。
@@ -313,7 +313,7 @@
 		自定义计数事件模型中扩展参数中不能使用以下 key 值：
 		event_id
 		此类 key 已被模型使用，如果使用则会导致统计到的数据不准确.
-
+##计算事件模型
 + ***JANALYTICSCalculateEvent***
 
 该模型是自定义计算事件模型，计算事件会通过相同的事件不同的值进行累加，可以设置参数进行数据上报。
