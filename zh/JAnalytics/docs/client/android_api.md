@@ -1,7 +1,6 @@
 # Android SDK API
 
-##初始化 API
-JAnalyticsInterface类:对外的类，包含统计sdk的所有接口
+##SDK 初始化 API
 
 + ***JAnalyticsInterface.init(Context context)***
 	+ 接口说明：
@@ -13,6 +12,19 @@ JAnalyticsInterface类:对外的类，包含统计sdk的所有接口
 ~~~			
 	JAnalyticsInterface.init(this);
 ~~~
+
++ ***JAnalyticsInterface.setDebugModel(boolean enable)***
+	+ 接口说明：
+		+ 设置是否开启debug模式。true则会打印更多的日志信息
+	+ 参数说明：
+		+ enable：debug开关 
+	+ 调用示例：
+
+~~~
+	JAnalyticsInterface.setDebugModel(true);
+~~~
+
+##页面流统计 API
 
 + ***JAnalyticsInterface.onPageStart(Context context,String pageName)***
 	+ 接口说明：
@@ -47,16 +59,7 @@ JAnalyticsInterface类:对外的类，包含统计sdk的所有接口
 	+ viewpage中包号多个fragment进行切换：这种模式切换需在fragment中监听 setUserVisibleHint接口，通过其返回的参数进行onPageStart和onPageEnd的调用
 	+ show/hide模式:这种模式下切换fragment需要监听onHiddenChanged接口来确认fragment是否显示。并需要在onResume中也需要调用onPageStart(onPause不需要调用onPageEnd)
 
-+ ***JAnalyticsInterface.setDebugModel(boolean enable)***
-	+ 接口说明：
-		+ 设置是否开启debug模式。true则会打印更多的日志信息
-	+ 参数说明：
-		+ enable：debug开关 
-	+ 调用示例：
-
-~~~
-	JAnalyticsInterface.setDebugModel(true);
-~~~
+##自定义事件统计 API
 
 + ***JAnalyticsInterface.onEvent(Context context,Event event)***
 	+ 接口说明：
@@ -77,7 +80,7 @@ JAnalyticsInterface类:对外的类，包含统计sdk的所有接口
 	JAnalyticsInterface.onEvent(cEvent);
 ~~~
 
-##事件模型介绍
+##计数事件模型
 + ***CountEvent***
 
 该模型是自定义计数事件模型，可以设置参数进行数据上报。
@@ -102,6 +105,7 @@ JAnalyticsInterface类:对外的类，包含统计sdk的所有接口
 		event_id
 		此类 key 已被模型使用，如果使用则会导致统计到的数据不准确.
 
+##计算事件模型
 + ***CalculateEvent***
 
 该模型是自定义计算事件模型，计算事件会通过相同的事件不同的值进行累加，可以设置参数进行数据上报。
@@ -128,6 +132,7 @@ JAnalyticsInterface类:对外的类，包含统计sdk的所有接口
      event_value
      此类 key 已被模型使用，如果使用则会导致统计到的数据不准确.
 
+##登陆事件模型
 + ***LoginEvent***
 
 该模型是登录事件模型，可以设置参数进行数据上报。
@@ -154,6 +159,7 @@ JAnalyticsInterface类:对外的类，包含统计sdk的所有接口
      login_success
      此类 key 已被模型使用，如果使用则会导致统计到的数据不准确.
 
+##注册事件模型
 + ***RegisterEvent***
 
 该模型是注册事件模型，可以设置参数进行数据上报。
@@ -180,6 +186,7 @@ JAnalyticsInterface类:对外的类，包含统计sdk的所有接口
 	register_success
 	此类 key 已被模型使用，如果使用则会导致统计到的数据不准确.
 
+##浏览事件模型
 + ***BrowseEvent***
  
 该模型是浏览事件模型，可以设置参数进行数据上报。
@@ -210,6 +217,7 @@ JAnalyticsInterface类:对外的类，包含统计sdk的所有接口
     browse_duration
     此类 key 已被模型使用，如果使用则会导致统计到的数据不准确.
 
+##购买事件模型
 + ***PurchaseEvent***
 
 该模型是购买事件模型，可以设置参数进行数据上报。
