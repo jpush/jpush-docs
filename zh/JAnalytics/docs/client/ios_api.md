@@ -6,6 +6,8 @@
 3. JANALYTICSEventObject类，统计事件模型
 
 ---
+
+##SDK SDK初始化
 + ***\+ (void)setupWithConfig:(JANALYTICSLaunchConfig \*)config***
 	+ 接口说明：
 		+ 初始化接口,建议在application:didFinishLaunchingWithOptions:中调用
@@ -24,7 +26,7 @@
 	 
 	[JANALYTICSService setupWithConfig:config];
 ~~~
-
+##SDK 页面流统计
 + ***\+ (void)startLogPageView:(NSString \*)pageName***
 	+ 接口说明：
 		+ 页面流统计开始接口，建议在ViewControler的viewDidAppear:方法中调用
@@ -55,20 +57,7 @@
 	}
 ~~~
 
-+ ***\+ (void)beginLogPageView:(NSString \*)pageName duration:(int)seconds***
-	+ 接口说明：
-		+ 直接上报某页面的停流的时间
-		
-	+ 参数说明：
-		+ pageName：要统计的页面名
-		+ seconds：停留的秒数
-		
-	+ 调用示例：
-
-~~~
-	[JANALYTICSService beginLogPageView:@"first_page_flow" duration:3];
-~~~
-
+##SDK 地理位置统计
 + ***\+ (void)setLatitude:(double)latitude longitude:(double)longitude***
 	+ 接口说明：
 		+ 上报LBS信息
@@ -95,6 +84,7 @@
 	CLLocation * location = [[CLLocation alloc] initWithCoordinate:CLLocationCoordinate2DMake(116.46, 39.92) altitude:50 horizontalAccuracy:50 verticalAccuracy:50 timestamp:[NSDate date]];
 	[JANALYTICSService setLocation:location];
 ~~~
+##SDK 崩溃日志统计
 + ***\+ (void)crashLogON***
 	+ 接口说明：
 		+ 开启crash日志收集，默认是关闭状态
@@ -104,6 +94,7 @@
 ~~~
 	[JANALYTICSService crashLogON];
 ~~~
+##SDK 日志等级设置
 + ***\+ (void)setDebug:(BOOL)enable***
 	+ 接口说明：
 		+ 设置是否打印sdk产生的Debug级log信息, 默认为NO(不打印log)
@@ -116,7 +107,7 @@
 ~~~
 	[JANALYTICSService setDebug:YES];
 ~~~
-
+##事件统计
 + ***\+ (void)eventRecord:(JANALYTICSEventObject \*)event***
 	+ 接口说明：
 		+ 自定义事件。通过传入不同的事件模型来进行各种事件的统计，具体的事件模型请查看事件模型介绍
@@ -130,7 +121,6 @@
 2. 字符串属性以及自定义属性（extra中的key与value）限制大小不超过256字节，当存在越界时该事件将会被丢弃.
 3. 自定义键值对数目不能超过10个，超过10个限制该事件将会被丢弃.
 
-##事件模型介绍
 + ***JANALYTICSEventObject***
 
 该模型是通用的父模型，不能单独使用
