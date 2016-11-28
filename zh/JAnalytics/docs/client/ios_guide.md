@@ -29,13 +29,11 @@
 目前SDK只支持iOS 7以上版本的手机系统。
 
 ## 创建应用
-* 在 JPush的管理Portal 上创建应用并上传APNs证书。如果对APNs证书不太了解 请参考： [iOS 证书设置指南](../../../JPush/docs/client/iOS/ios_cer_guide) 
-
-![jpush_ios_guide](../image/create_ios_app.jpg)
 
 * 创建成功后自动生成 AppKey 用以标识该应用。 
 
-![jpush_ios_guide](../image/create_ios_app2.jpg)
+![jpush_ios_guide](../image/create_ios_app.png)
+![jpush_ios_guide](../image/create_ios_app2.png)
 ##SDK集成步骤
 + 	解压压缩包，将Lib下的所有文件复制到工程中
 + 增加相关的framework依赖
