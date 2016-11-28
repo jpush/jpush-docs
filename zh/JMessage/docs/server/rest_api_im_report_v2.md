@@ -1,4 +1,4 @@
-# IM REST Report
+# IM REST Report V2
 
 ## MessageList 消息历史
 
