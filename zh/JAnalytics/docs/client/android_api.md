@@ -1,6 +1,6 @@
 # Android SDK API
 
-##SDK 接口说明
+##初始化 API
 JAnalyticsInterface类:对外的类，包含统计sdk的所有接口
 
 + ***JAnalyticsInterface.init(Context context)***

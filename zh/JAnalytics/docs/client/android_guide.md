@@ -81,6 +81,7 @@
 			<uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
 			<uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
 			<uses-permission android:name="android.permission.GET_TASKS" />
+			<uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
  
 	+ 配置appkey：从 portal 上应用信息中获取 AppKey，并填写你的 Channel。
 
