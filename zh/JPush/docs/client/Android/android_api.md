@@ -966,7 +966,7 @@ JPushInterface.setLatestNotificationNumber(context, 3);
 		<tr >
 			<td>6012</td>
 			<td>在JPush服务stop状态下设置了tag或alias</td>
-			<td>3.0.0版本新增的错误码。开发者可根据这个错误吗的信息做相关处理或者提示。</td>
+			<td>3.0.0版本新增的错误码。开发者可根据这个错误码的信息做相关处理或者提示。</td>
 		</tr>
 		<tr >
 			<td>-997</td>
