@@ -3,17 +3,17 @@
 
 ## 概述
 
-极光Web IM SDK 为 Web 应用提供一个 IM 系统开发框架, 屏蔽掉 IM 系统的复杂的细节, 对外提供较为简洁的 API 接口, 方便第三方应用快速集成 IM 功能。
+极光 IM Web SDK 为 Web 应用提供一个 IM 系统开发框架, 屏蔽掉 IM 系统的复杂的细节, 对外提供较为简洁的 API 接口, 方便第三方应用快速集成 IM 功能。
 
 ## 版本说明
 
-JMessage JS SDK V2版本对SDK通讯协议进行重新封装与优化:
+JMessage Web SDK V2版本对SDK通讯协议进行重新封装与优化:
 
 * 提供更方便的API调用方式: 使用Promise风格的API，简化了接口调用方式，开发者可以更简单方便的集成SDK。
 * 更可靠的消息重试方案: 新的SDK优化了消息重试技术方案，当弱网络环境下，出现消息发送失败，SDK会自动重试5次，并保证每次API调用都是幂等的，开发者无需担心因为消息重试导致重复发送的情况。
 * 支持单页面多聊天实例: 新的SDK修改了实例化方式，开发者可以不需要在页面初始化的时候就初始化JMessage。在需要聊天功能的时候再进行初始化即可，并且一个页面可以初始化多个通道，实现多账号登录。
 
-因为V2 API全面改造了API，为了提供更好的用户体验，V2 API不向下兼容，开发者需要根据JMessage JS SDK文档重新接入SDK。
+因为V2 API全面改造了API，为了提供更好的用户体验，V2 API不向下兼容，开发者需要根据JMessage Web SDK文档重新接入SDK。
 
 ## 鉴权
 
@@ -47,7 +47,7 @@ signature = md5(appkey=appkey&timestamp=timestamp&random_str=random_str&key=secr
 
 ## 快速开始
 
-访问极光官网获取最新的WebIM JS SDK。 然后在页面中引入：
+访问极光官网获取最新的 Web SDK。 然后在页面中引入：
 
 ```
 <script src='./jmessage-sdk-web.min.js'></script>
