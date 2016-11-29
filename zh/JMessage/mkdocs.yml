@@ -25,9 +25,10 @@ pages:
   - 'SDK ErrorCode 定义': 'client/im_errorcode_ios.md'
   - 'SDK API Doc': 'client/iOSdoc.md'
 
-- JS:
-  - 'WEB SDK 开发指南 V2': 'client/im_sdk_js_v2.md'
-  - 'WEB SDK 开发指南': 'client/im_sdk_js.md'
+- Web:
+  - 'Web SDK 开发指南 V2': 'client/im_sdk_js_v2.md'
+  - 'Web SDK 开发指南': 'client/im_sdk_js.md'
+  - 'SDK ErrorCode 定义': 'client/im_errorcode_js.md'
 
 - REST API:
   - 'REST API': 'server/rest_api_im.md'

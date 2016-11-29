@@ -1,4 +1,4 @@
-<h1>WEB SDK 开发指南</h1>
+<h1>Web SDK 开发指南</h1>
 
 ## 概述
 
@@ -865,5 +865,10 @@ JIM.onEvent(function(data) {
   "from_uid": 16836751 // 事件发起者
 }
 ```
+
+
+## 错误码定义
+
+参考文档：[IM Web SDK 错误码列表](./im_errorcode_js)
 
 
