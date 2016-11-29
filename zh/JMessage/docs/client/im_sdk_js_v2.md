@@ -1114,5 +1114,5 @@ Emoji表情就是一种在Unicode位于`\u1F601`-`\u1F64F`区段的字符。 JMe
 
 ## 错误码定义
 
-参考文档：[IM WEB SDK 错误码列表](./im_errorcode_js)
+参考文档：[IM Web SDK 错误码列表](./im_errorcode_js)
 
