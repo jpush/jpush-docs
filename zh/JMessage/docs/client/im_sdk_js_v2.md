@@ -1111,3 +1111,8 @@ Emoji表情就是一种在Unicode位于`\u1F601`-`\u1F64F`区段的字符。 JMe
 只要正确输入Emoij字符都可以使用JMessage文本消息API进行发送。如果用户需要转存聊天消息，请先确保数据库支持utf8mb4编码。
 开发者可以使用第三方开源的Web Emoij解决方案，如[coocy/emoji](https://github.com/coocy/emoji),[iamcal/js-emoji](https://github.com/iamcal/js-emoji)来在网页上显示Emoij表情。
 
+
+## 错误码定义
+
+参考文档：[IM WEB SDK 错误码列表](./im_errorcode_js)
+
