@@ -1,8 +1,8 @@
-<h1>WEB SDK 开发指南</h1>
+<h1>Web SDK 开发指南</h1>
 
 ## 概述
 
-极光 Web IM SDK 为 Web 应用提供一个 IM 系统开发框架, 屏蔽掉 IM 系统的复杂的细节, 对外提供较为简洁的 API 接口, 方便第三方应用快速集成 IM 功能。
+极光 IM Web SDK 为 Web 应用提供一个 IM 系统开发框架, 屏蔽掉 IM 系统的复杂的细节, 对外提供较为简洁的 API 接口, 方便第三方应用快速集成 IM 功能。
 
 
 ### 签名算法
@@ -864,5 +864,10 @@ JIM.onEvent(function(data) {
   "from_uid": 16836751 // 事件发起者
 }
 ```
+
+
+## 错误码定义
+
+参考文档：[IM Web SDK 错误码列表](./im_errorcode_js)
 
 

@@ -28,6 +28,12 @@
 ###iOS SDK 版本
 目前SDK只支持iOS 7以上版本的手机系统。
 
+## 创建应用
+
+* 创建成功后自动生成 AppKey 用以标识该应用。 
+
+![jpush_ios_guide](../image/create_ios_app.png)
+![jpush_ios_guide](../image/create_ios_app2.png)
 ##SDK集成步骤
 + 	解压压缩包，将Lib下的所有文件复制到工程中
 + 增加相关的framework依赖
@@ -53,24 +59,12 @@
 	// 如果需要使用idfa功能所需要引入的头文件（可选）
 	#import <AdSupport/AdSupport.h>
 ~~~
+## 添加初始化代码
 
-##SDK 接口说明
+请将以下代码添加到  
+-(BOOL)application:(UIApplication \*)application didFinishLaunchingWithOptions:(NSDictionary \*)launchOptions
 
-1. JANALYTICSService类，包含统计SDK的所有接口 
-2. JANALYTICSLaunchConfig类，统计SDK启动配置模型  
-3. JANALYTICSEventObject类，统计事件模型
-
----
-+ ***\+ (void)setupWithConfig:(JANALYTICSLaunchConfig \*)config***
-	+ 接口说明：
-		+ 初始化接口,建议在application:didFinishLaunchingWithOptions:中调用
-		
-	+ 参数说明：
-		+ config：JANALYTICSLaunchConfig类
-		
-	+ 调用示例：
-	
-~~~			
+~~~		
 	JANALYTICSLaunchConfig * config = [[JANALYTICSLaunchConfig alloc] init];
  
 	config.appKey = @"your appkey";
@@ -78,338 +72,16 @@
 	config.channel = @"channel";
 	 
 	[JANALYTICSService setupWithConfig:config];
-~~~
+~~~			
 
-+ ***\+ (void)startLogPageView:(NSString \*)pageName***
-	+ 接口说明：
-		+ 页面流统计开始接口，建议在ViewControler的viewDidAppear:方法中调用
-		
-	+ 参数说明：
-		+ pageName：要开始统计的页面名 
-		
-	+ 调用示例：
-	
-~~~
-	- (void)viewDidAppear:(BOOL)animated {
-	    [JANALYTICSService startLogPageView:@"first_page_flow"];
-	}
-~~~
 
-+ ***\+ (void)stopLogPageView:(NSString \*)pageName***
-	+ 接口说明：
-		+ 页面流统计结束接口，建议在ViewControler的viewDidDisappear:方法中调用
-		
-	+ 参数说明：
-		+ pageName：要结束统计的页面名
-		
-	+ 调用示例：
-	
-~~~	
-	- (void)viewDidDisappear:(BOOL)animated {
-	    [JANALYTICSService stopLogPageView:@"first_page_flow"];
-	}
-~~~
+### 更多 API
 
-+ ***\+ (void)beginLogPageView:(NSString \*)pageName duration:(int)seconds***
-	+ 接口说明：
-		+ 直接上报某页面的停流的时间
-		
-	+ 参数说明：
-		+ pageName：要统计的页面名
-		+ seconds：停留的秒数
-		
-	+ 调用示例：
-
-~~~
-	[JANALYTICSService beginLogPageView:@"first_page_flow" duration:3];
-~~~
-
-+ ***\+ (void)setLatitude:(double)latitude longitude:(double)longitude***
-	+ 接口说明：
-		+ 上报LBS信息
-		
-	+ 参数说明：
-		+ latitude：纬度
-		+ longitude： 经度
-
-调用示例：
-
-~~~
-	[JANALYTICSService setLatitude:116.46 longitude:39.92];
-~~~
-+ ***\+ (void)setLocation:(CLLocation \*)location***
-	+ 接口说明：
-		+ 上报LBS信息
-		
-	+ 参数说明：
-		+ 	location: CoreLocation.framework框架中的LBS类
-
-调用示例：
-
-~~~
-	CLLocation * location = [[CLLocation alloc] initWithCoordinate:CLLocationCoordinate2DMake(116.46, 39.92) altitude:50 horizontalAccuracy:50 verticalAccuracy:50 timestamp:[NSDate date]];
-	[JANALYTICSService setLocation:location];
-~~~
-+ ***\+ (void)crashLogON***
-	+ 接口说明：
-		+ 开启crash日志收集，默认是关闭状态
-
-调用示例：
-
-~~~
-	[JANALYTICSService crashLogON];
-~~~
-+ ***\+ (void)setDebug:(BOOL)enable***
-	+ 接口说明：
-		+ 设置是否打印sdk产生的Debug级log信息, 默认为NO(不打印log)
-		
-	+ 参数说明：
-		+ enable：设置为YES开启，设置为NO关闭
-
-调用示例：
-
-~~~
-	[JANALYTICSService setDebug:YES];
-~~~
-
-+ ***\+ (void)eventRecord:(JANALYTICSEventObject \*)event***
-	+ 接口说明：
-		+ 自定义事件。通过传入不同的事件模型来进行各种事件的统计，具体的事件模型请查看事件模型介绍
-		
-	+ 参数说明：
-		+ event：事件统计对象
-		
-**关于事件统计的说明：**
-
-1. 模板属性值分为非空和可选，参考下面介绍
-2. 字符串属性以及自定义属性（extra中的key与value）限制大小不超过256字节，当存在越界时该事件将会被丢弃.
-3. 自定义键值对数目不能超过10个，超过10个限制该事件将会被丢弃.
-
-##事件模型介绍
-+ ***JANALYTICSEventObject***
-
-该模型是通用的父模型，不能单独使用
-参数说明：
-
-|参数名称|参数类型|参数说明|
-|:-----:|:-----:|:----:|
-|extra|	NSDictionary<NSString *, NSString *>|自定义属性|
-
-+ ***JANALYTICSLoginEvent***
-
-该模型是登录事件模型，可以设置参数进行数据上报。
-
-参数说明：
-
-|参数名称|参数类型|参数说明|
-|:-----:|:-----:|:----:|
-|method|	NSString|登录方式(非空)|
-|success|BOOL|登录是否成功(非空)|
- 
-调用示例:
-
-~~~
-	JANALYTICSLoginEvent * event = [[JANALYTICSLoginEvent alloc] init];
-	 
-	event.success = YES;
-	 
-	event.method = @"login type";
-	 
-	event.extra = @{@"custom key1":@"custom value"};
-	 
-	[JANALYTICSService eventRecord:event];
-~~~
-
-**注意：**
-
-     登录事件模型中扩展参数中不能使用以下 key 值：
-     login_method
-     login_success
-     此类 key 已被模型使用，如果使用则会导致统计到的数据不准确.
-
-+ ***JANALYTICSRegisterEvent***
-
-该模型是注册事件模型，可以设置参数进行数据上报。
-
-参数说明：
-
-|参数名称|参数类型|参数说明|
-|:-----:|:----:|:-----:|
-|method|	NSString	|注册方式(非空)|
-|success|BOOL|注册是否成功(非空)|
- 
-调用示例:
-
-~~~
-    JANALYTICSRegisterEvent * event = [[JANALYTICSRegisterEvent alloc] init];
- 
-    event.success = YES;
- 
-    event.method = @"register type";
- 
-    event.extra = @{@"custom key1":@"custom value"};
- 
-    [JANALYTICSService eventRecord:event];
-~~~
-
-**注意：**
-
-	注册事件模型中扩展参数中不能使用以下 key 值:
-	register_method
-	register_success
-	此类 key 已被模型使用，如果使用则会导致统计到的数据不准确.
-
-+ ***JANALYTICSPurchaseEvent***
-
-该模型是购买事件模型，可以设置参数进行数据上报。
-
-参数说明：
-
-|参数名称|参数类型|参数说明|
-|:-----:|:----:|:-----:|
-|goodsID|NSString	|商品id|
-|goodsName|NSString|	商品名称|
-|price|CGFloat|购买价格(非空)|
-|success|BOOL|购买是否成功(非空)|
-|currency|JANALYTICSPurchaseCurrency|货币类型，目前只支持CNY/USD,具体请参考JANALYTICSPurchaseEvent头文件|
-|goodsType|NSString|商品类型|
-|quantity|NSInteger|商品数量|
- 
-调用示例:
-
-~~~
-    JANALYTICSPurchaseEvent * event = [[JANALYTICSPurchaseEvent alloc] init];
- 
-    event.success = NO;
- 
-    event.price = 5388.0;
- 
-    event.goodsName = @"iphone7";
- 
-    event.goodsType = @"phone";
- 
-    event.quantity = 1000.1;
- 
-    event.goodsID = @"123456";
- 
-    event.currency = JANALYTICSCurrencyCNY;
- 
-    event.extra = @{@"custom key1":@"custom value"};
- 
-    [JANALYTICSService eventRecord:event];
-~~~
-
-**注意：**
-
-    购买事件模型中扩展参数中不能使用以下 key 值：
-    purchase_goods_id
-    purchase_goods_name
-    purchase_price
-    purchase_currency
-    purchase_goods_type
-    purchase_quantity
-    purchase_success
-    此类 key 已被模型使用，如果使用则会导致统计到的数据不准确.
+其他 API 的使用方法请参考接口文档：[iOS SDK API](ios_api)
     
-+ ***JANALYTICSBrowseEvent***
- 
-该模型是浏览事件模型，可以设置参数进行数据上报。
+### 运行 demo
 
-参数说明：
-
-|参数名称|参数类型|参数说明|
-|:-----:|:----:|:-----:|
-|contentID|NSString|浏览内容id|
-|name|NSString|内容名称(非空)|
-|type|NSString|内容类型|
-|duration|CGFloat|浏览时长|
-
-调用示例:
-
-~~~
-  JANALYTICSBrowseEvent * event = [[JANALYTICSBrowseEvent alloc] init];
- 
-  event.name = @"browse name";
- 
-  event.type = @"browse type";
- 
-  event.contentID = @"browse id";
- 
-  event.duration = 1.2;
- 
-  event.extra = @{@"custom key1":@"custom value"};
- 
-  [JANALYTICSService eventRecord:event];
-~~~
-
-**注意：**
-
-    浏览事件模型中扩展参数中不能使用以下 key 值：
-    browse_content_id
-    browse_name
-    browse_type
-    browse_duration
-    此类 key 已被模型使用，如果使用则会导致统计到的数据不准确.
-
-+ ***JANALYTICSCountEvent***
-
-该模型是自定义计数事件模型，可以设置参数进行数据上报。
-
-参数说明：
-
-| 参数名称 | 参数类型 | 参数说明 |
-|:-------:|:------:|:-------:|
-| eventID | NSString |事件ID(非空)|
- 
-调用示例:
-
-~~~
-  JANALYTICSCountEvent * event = [[JANALYTICSCountEvent alloc] init];
- 
-  event.eventID = @"event id";
- 
-  event.extra = @{@"custom key1":@"custom value"};
- 
-  [JANALYTICSService eventRecord:event];
-~~~
-
-**注意：**
-
-		自定义计数事件模型中扩展参数中不能使用以下 key 值：
-		event_id
-		此类 key 已被模型使用，如果使用则会导致统计到的数据不准确.
-
-+ ***CalculateEvent***
-
-该模型是自定义计算事件模型，计算事件会通过相同的事件不同的值进行累加，可以设置参数进行数据上报。
-
-参数说明：
-
-|参数名称|参数类型|参数说明|
-|:------:|:----:|:-----:|
-|eventId|String|事件Id(非空)|
-|value|CGFloat|事件的值(非空)|
-
-调用示例:
-
-~~~
-  JANALYTICSCalculateEvent * event = [[JANALYTICSCalculateEvent alloc] init];
- 
-  event.eventID = @"event id";
- 
-  event.value = 10.2;
- 
-  event.extra = @{@"custom key1":@"custom value"};
- 
-  [JANALYTICSService eventRecord:event];
-~~~
-
-**注意：**
-     
-     自定义计算事件模型中扩展参数中不能使用以下 key 值：
-     event_id
-     event_value
-     此类 key 已被模型使用，如果使用则会导致统计到的数据不准确.
+压缩包附带的 demo 是一个 API 演示例子。你可以将它导入到你的工程，并将你的 AppKey 填入到 demo 的 AppDelegate 中，设置上BundleID然后直接运行起来测试。
 
     
 ## 技术支持
@@ -417,6 +89,4 @@
 邮件联系：<support@jpush.cn>
 
 问答社区：[极光社区](http://community.jiguang.cn/)
-
-
 
