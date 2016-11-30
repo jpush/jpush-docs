@@ -26,6 +26,7 @@
 	 
 	[JANALYTICSService setupWithConfig:config];
 ~~~
+
 ##SDK 页面流统计
 + ***\+ (void)startLogPageView:(NSString \*)pageName***
 	+ 接口说明：
@@ -84,6 +85,7 @@
 	CLLocation * location = [[CLLocation alloc] initWithCoordinate:CLLocationCoordinate2DMake(116.46, 39.92) altitude:50 horizontalAccuracy:50 verticalAccuracy:50 timestamp:[NSDate date]];
 	[JANALYTICSService setLocation:location];
 ~~~
+
 ##SDK 崩溃日志统计
 + ***\+ (void)crashLogON***
 	+ 接口说明：
@@ -94,6 +96,7 @@
 ~~~
 	[JANALYTICSService crashLogON];
 ~~~
+
 ##SDK 日志等级设置
 + ***\+ (void)setDebug:(BOOL)enable***
 	+ 接口说明：
@@ -107,6 +110,7 @@
 ~~~
 	[JANALYTICSService setDebug:YES];
 ~~~
+
 ##事件统计
 + ***\+ (void)eventRecord:(JANALYTICSEventObject \*)event***
 	+ 接口说明：
@@ -129,6 +133,7 @@
 |参数名称|参数类型|参数说明|
 |:-----:|:-----:|:----:|
 |extra|	NSDictionary<NSString *, NSString *>|自定义属性|
+
 ##登录事件模型
 + ***JANALYTICSLoginEvent***
 
@@ -161,6 +166,7 @@
      login_method
      login_success
      此类 key 已被模型使用，如果使用则会导致统计到的数据不准确.
+
 ##注册事件模型
 + ***JANALYTICSRegisterEvent***
 
@@ -193,6 +199,7 @@
 	register_method
 	register_success
 	此类 key 已被模型使用，如果使用则会导致统计到的数据不准确.
+
 ##购买事件模型
 + ***JANALYTICSPurchaseEvent***
 
@@ -245,6 +252,7 @@
     purchase_quantity
     purchase_success
     此类 key 已被模型使用，如果使用则会导致统计到的数据不准确.
+
 ##浏览事件模型    
 + ***JANALYTICSBrowseEvent***
  
@@ -285,6 +293,7 @@
     browse_type
     browse_duration
     此类 key 已被模型使用，如果使用则会导致统计到的数据不准确.
+
 ##计数事件模型
 + ***JANALYTICSCountEvent***
 
@@ -313,6 +322,7 @@
 		自定义计数事件模型中扩展参数中不能使用以下 key 值：
 		event_id
 		此类 key 已被模型使用，如果使用则会导致统计到的数据不准确.
+
 ##计算事件模型
 + ***JANALYTICSCalculateEvent***
 
