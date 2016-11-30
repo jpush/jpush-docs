@@ -55,9 +55,57 @@
 
 ![jpush_android_guide](../image/jpush_app_info.png)
 
+## JCenter 自动集成方式
+
+***说明*** ： 使用jcenter自动集成的开发者，不需要在项目中添加jar，jcenter会自动完成依赖；jcenter 也会自动导入 JAnalytics 所需的权限和 meta-data 节点进你项目的 AndroidManifest 中。
+
++ 确认android studio的 Project 根目录的主 gradle 中配置了jcenter支持。（新建project默认配置就支持）
+        
+        buildscript {
+            repositories {
+                jcenter()
+            }
+            ......
+        }
+        
+        allprojets {
+            repositories {
+                jcenter()
+            }
+        }
+              
+     
++ 在 module 的 gradle 中添加依赖和AndroidManifest的替换变量。
 
 
-##工程配置
+        
+        android {
+            ......
+            defaultConfig {
+                applicationId "com.xxx.xxx" // 你应用的包名.
+                ......
+      
+                manifestPlaceholders = [
+                    JPUSH_APPKEY : "你的appkey", //JPush上注册的包名对应的appkey.
+                    JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
+                ]
+                ......
+            }
+            ......
+        }
+        
+        
+       
+        dependencies {
+            ......
+            
+            compile 'cn.jiguang.sdk:janalytics:1.0.0' // 此处以JAnalytics 1.0.0 版本为例。
+            compile 'cn.jiguang.sdk:jcore:1.0.0' // 此处以JCore 1.0.0 版本为例。
+            ......
+        }
+
+
+##本地工程配置
 
 + 解压压缩包，将libs下的所有文件复制到工程的libs下面.
 	+ jcore 和 janalytics 两个 jar 文件。
