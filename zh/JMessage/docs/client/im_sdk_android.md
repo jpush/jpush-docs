@@ -97,7 +97,7 @@ App 集成了 IM SDK 就不应再集成 JPush SDK（只提供 Push 功能的 SDK
 
 在调用IM其他接口前必须先调此接口初始化SDK，推荐在application类中调用。默认关闭消息漫游。
 ```
-public static synchronized void init(Context context)
+JMessageClient.init(Context context)
 ```
 
 参数说明
@@ -106,7 +106,9 @@ public static synchronized void init(Context context)
 
 ### SDK初始化(设置消息记录漫游)
 ***Since 1.5.0***  
-SDK初始化,同时指定是否启用消息记录漫游。打开消息漫游之后，用户多个设备之间登陆时，sdk会自动将历史消息同步到本地，上层可以通过`conversation.getMessage(int messageId, GetMessageCallback callback)`等异步获取消息的接口拿到消息。
+SDK初始化,同时指定是否启用消息记录漫游。  
+打开消息漫游之后，用户多个设备之间登陆时，sdk会自动将历史消息同步到本地，同步完成之后sdk会发送一个`ConversationRefreshEvent`事件通知上层刷新，具体事件处理方法见[事件处理](#Event)一节。  
+同步完成后上层可以通过`conversation.getMessage(int messageId)`等接口拿到同步下来的消息。
 
 ```
 JMessageClient.init(Context context, boolean msgRoaming)
@@ -114,14 +116,14 @@ JMessageClient.init(Context context, boolean msgRoaming)
 参数说明
 
 + Context context 应用程序上下文对象。
-+ boolean msgRoaming 是否启用消息漫游，true - 启用，false - 关闭。 默认关闭
++ boolean msgRoaming 是否启用消息漫游，true - 启用，false - 关闭。 
 
 
 ### 注册与登录
 
 #### 注册
 ```
-  public static void register(String username, String password, BasicCallback callback);
+JMessageClient.register(String username, String password, BasicCallback callback);
 ```
 
 参数说明
@@ -132,7 +134,7 @@ JMessageClient.init(Context context, boolean msgRoaming)
 
 #### 登录
 ```
-  public static void login(String username, String password, BasicCallback callback);
+JMessageClient.login(String username, String password, BasicCallback callback);
 ```
 
 参数说明
@@ -143,7 +145,7 @@ JMessageClient.init(Context context, boolean msgRoaming)
 
 #### 退出登录
 ```
-  public static void logout();
+JMessageClient.logout();
 ```
 
 参数说明
@@ -154,7 +156,7 @@ JMessageClient.init(Context context, boolean msgRoaming)
 
 #### 获取用户信息
 ```
-  public static void getUserInfo(String username, GetUserInfoCallback callback);
+JMessageClient.getUserInfo(String username, GetUserInfoCallback callback);
 ```
 
 参数说明
@@ -165,7 +167,7 @@ JMessageClient.init(Context context, boolean msgRoaming)
 回调
 
 ```
-  public abstract void gotResult(int responseCode, String responseMessage, UserInfo userInfo);
+JMessageClient.gotResult(int responseCode, String responseMessage, UserInfo userInfo);
 ```
 
 + UserInfo userInfo 用户信息
@@ -174,7 +176,7 @@ JMessageClient.init(Context context, boolean msgRoaming)
 获取用户信息，此接口可用来获取不同appKey下用户的信息,如果appKey为空，则默认获取当前appKey下的用户信息。
 
 ```
-  public static void getUserInfo(String username, String appKey, GetUserInfoCallback callback);
+JMessageClient.getUserInfo(String username, String appKey, GetUserInfoCallback callback);
 ```
   
 参数说明
@@ -185,7 +187,7 @@ JMessageClient.init(Context context, boolean msgRoaming)
 
 #### 从本地获取当前登录账号的用户信息
 ```
-  public static UserInfo getMyInfo();
+JMessageClient.getMyInfo();
 ```
 参数说明
 
@@ -197,23 +199,24 @@ JMessageClient.init(Context context, boolean msgRoaming)
 
 #### 更新用户信息
 ```
-  public static void updateMyInfo(UserInfo.Field updateField, UserInfo info, BasicCallback callback);
+JMessageClient.updateMyInfo(UserInfo.Field updateField, UserInfo info, BasicCallback callback);
 ```
 
 参数说明
 
 + UserInfo.Field updateField 枚举类型，表示需要更新的用户信息字段。包括：
-  + nickname
-  + birthday
-  + signature
-  + gender
-  + region
+
+  - nickname
+  - birthday
+  - signature
+  - gender
+  - region
 + UserInfo userInfo 待更新的用户信息（对象）。SDK将根据field参数来判断需要将哪个属性更新到服务器上去。
 + BasicCallback callback 结果回调
 
 #### 更新用户密码
 ```
-  public static void updateUserPassword(String oldPassword, String newPassword, BasicCallback callback);
+JMessageClient.updateUserPassword(String oldPassword, String newPassword, BasicCallback callback);
 ```
 
 参数说明
@@ -224,7 +227,7 @@ JMessageClient.init(Context context, boolean msgRoaming)
 
 #### 更新用户头像
 ```
-  public static void updateUserAvatar(File avatar, BasicCallback callback);
+JMessageClient.updateUserAvatar(File avatar, BasicCallback callback);
 ```
 
 参数说明
@@ -232,6 +235,115 @@ JMessageClient.init(Context context, boolean msgRoaming)
 + File avatar 用户头像文件
 + BasicCallback callback 结果回调
 
+
+### 本地会话管理
+
+#### 创建单聊会话
+创建单聊会话，如果本地已存在对应会话对象，则不会重新创建，直接返回本地会话对象。创建的会话默认是当前appkey下的用户，如果需要给其他appkey下的用户发消息，请参照[跨应用通信](#CrossApp)一节
+
+```
+	Conversation.createSingleConversation(String username)
+```
+参数说明
+
++ String username 会话对象的username.
+
+#### 创建群聊会话
+创建群聊会话，如果本地已存在对应会话对象，则不会重新创建，直接返回本地会话对象。
+
+```
+	Conversation.createGroupConversation(long groupID)
+```
+参数说明
+
++ long groupID 会话对象群组的groupID
+
+#### 获取会话列表
+
+从本地数据库中获取会话列表，默认按照会话的最后一条消息的时间，降序排列
+```
+JMessageClient.getConversationList();
+```
+参数说明
+
++ 无
+
+返回
+
++ `List<Conversation>` 会话列表。
+
+#### 获取单个单聊会话
+获取单聊会话信息，默认获取本appKey下username的单聊会话。
+```
+JMessageClient.getSingleConversation(String username);
+```
+参数说明
+
++ String username 目标的用户用户名。
+
+返回
+
++ Conversation 根据参数匹配得到的单聊会话对象。
+
+
+#### 获取单个群聊会话
+```
+JMessageClient.getGroupConversation(long groupID);
+```
+
+参数说明
+
++ long groupID 目标的群的群ID。
+
+返回
+
++ Conversation 根据参数匹配得到的群聊会话对象。
+
+
+
+
+#### 删除单个单聊会话
+删除单聊的会话，同时删除掉本地聊天记录。默认删除本appKey下username的会话
+```  
+JMessageClient.deleteSingleConversation(String username);
+```
+
+参数说明
+
++ String username 目标的用户用户名。
+
+返回
+
++ boolean 是否删除成功。
+
+
+
+#### 删除单个单聊会话（跨应用）
+删除与指定appKey下username的单聊的会话，同时删除掉本地聊天记录。,如果appKey为空则默认尝试删除本应用appKey下对应username的会话。
+```  
+JMessageClient.deleteSingleConversation(String username,String appKey);
+```
+
+参数说明
+
++ String username 目标的用户用户名。
++ String appKey 目标用户所属的appKey
+
+返回
+
++ boolean 是否删除成功。
+
+#### 删除单个群聊会话
+```  
+JMessageClient.deleteGroupConversation(long groupID);
+```
+参数说明
+
++ long groupID 目标群的群ID。
+
+返回
+
++ boolean 是否删除成功。
 
 ### 创建消息
 
@@ -247,7 +359,7 @@ JMessageClient.init(Context context, boolean msgRoaming)
      * @param text     文本内容
      * @return 消息对象
      */
-    public static Message createSingleTextMessage(String username, String appKey, String text)
+	JMessageClient.createSingleTextMessage(String username, String appKey, String text)
 
     /**
      * 创建一条群聊文本信息，此方法是创建message的快捷接口，对于不需要关注会话实例的开发者可以使用此方法
@@ -258,7 +370,7 @@ JMessageClient.init(Context context, boolean msgRoaming)
      * @param text    文本内容
      * @return 消息对象
      */
-    public static Message createGroupTextMessage(long groupID, String text)
+    JMessageClient.createGroupTextMessage(long groupID, String text)
 ```
 
 #### 创建图片消息
@@ -274,7 +386,7 @@ JMessageClient.init(Context context, boolean msgRoaming)
      * @return 消息对象
      * @throws FileNotFoundException
      */
-    public static Message createSingleImageMessage(String username, String appKey, File imageFile) throws FileNotFoundException
+    JMessageClient.createSingleImageMessage(String username, String appKey, File imageFile) throws FileNotFoundException
 
     /**
      * 创建一条群聊图片信息，此方法是创建message的快捷接口，对于不需要关注会话实例的开发者可以使用此方法
@@ -286,7 +398,7 @@ JMessageClient.init(Context context, boolean msgRoaming)
      * @return 消息对象
      * @throws FileNotFoundException
      */
-    public static Message createGroupImageMessage(long groupID, File imageFile) throws FileNotFoundException
+    JMessageClient.createGroupImageMessage(long groupID, File imageFile) throws FileNotFoundException
 ```
 
 #### 创建语音消息
@@ -303,7 +415,7 @@ JMessageClient.init(Context context, boolean msgRoaming)
      * @return 消息对象
      * @throws FileNotFoundException
      */
-    public static Message createSingleVoiceMessage(String username, String appKey, File voiceFile, int duration) throws FileNotFoundException
+    JMessageClient.createSingleVoiceMessage(String username, String appKey, File voiceFile, int duration) throws FileNotFoundException
 
     /**
      * 创建一条群聊语音信息，此方法是创建message的快捷接口，对于不需要关注会话实例的开发者可以使用此方法
@@ -316,7 +428,7 @@ JMessageClient.init(Context context, boolean msgRoaming)
      * @return 消息对象
      * @throws FileNotFoundException
      */
-    public static Message createGroupVoiceMessage(long groupID, File voiceFile, int duration) throws FileNotFoundException
+    JMessageClient.createGroupVoiceMessage(long groupID, File voiceFile, int duration) throws FileNotFoundException
 ```
 
 #### 创建位置消息
@@ -335,7 +447,7 @@ JMessageClient.init(Context context, boolean msgRoaming)
      * @param address   详细地址信息
      * @return 消息对象
      */
-    public static Message createSingleLocationMessage(String username, String appKey, double latitude, double longitude, int scale, String address)
+    JMessageClient.createSingleLocationMessage(String username, String appKey, double latitude, double longitude, int scale, String address)
 
     /**
      * 创建一条群聊地理位置消息，此方法是创建message的快捷接口，对于不需要关注会话实例的开发者可以使用此方法
@@ -349,7 +461,7 @@ JMessageClient.init(Context context, boolean msgRoaming)
      * @param address   详细地址信息
      * @return 消息对象
      */
-    public static Message createGroupLocationMessage(long groupId, double latitude, double longitude, int scale, String address)
+    JMessageClient.createGroupLocationMessage(long groupId, double latitude, double longitude, int scale, String address)
 ```
 
 #### 创建文件消息
@@ -367,7 +479,7 @@ JMessageClient.init(Context context, boolean msgRoaming)
      * @return 消息对象
      * @throws FileNotFoundException
      */
-    public static Message createSingleFileMessage(String userName, String appKey, File file, String fileName) throws FileNotFoundException, JMFileSizeExceedException
+    JMessageClient.createSingleFileMessage(String userName, String appKey, File file, String fileName) throws FileNotFoundException, JMFileSizeExceedException
 
     /**
      * 创建一条群聊file消息，此方法是创建message的快捷接口，对于不需要关注会话实例的开发者可以使用此方法
@@ -380,7 +492,7 @@ JMessageClient.init(Context context, boolean msgRoaming)
      * @return 消息对象
      * @throws FileNotFoundException
      */
-    public static Message createGroupFileMessage(long groupID, File file, String fileName) throws FileNotFoundException, JMFileSizeExceedException
+    JMessageClient.createGroupFileMessage(long groupID, File file, String fileName) throws FileNotFoundException, JMFileSizeExceedException
 ```
 
 #### 创建自定义消息
@@ -392,7 +504,7 @@ JMessageClient.init(Context context, boolean msgRoaming)
   * @param valuesMap 包含自定义键值对的map.
   * @return 消息对象
   */
-public static Message createSingleCustomMessage(String username,
+JMessageClient.createSingleCustomMessage(String username,
    Map<? extends String, ?> valuesMap)
 
  /**
@@ -402,7 +514,7 @@ public static Message createSingleCustomMessage(String username,
   * @param valuesMap 包含了自定义键值对的map
   * @return  消息对象
   */
-public static Message createGroupCustomMessage(long groupID,
+JMessageClient.createGroupCustomMessage(long groupID,
   Map<? extends String, ?> valuesMap)
 ```
 
@@ -410,7 +522,7 @@ public static Message createGroupCustomMessage(long groupID,
 
 向服务器给发送对象发送消息，并且保存到本地会话。
 ```
-  public static void sendMessage(Message message);
+JMessageClient.sendMessage(Message message);
 ```
 参数说明
 
@@ -419,7 +531,7 @@ public static Message createGroupCustomMessage(long groupID,
 #### 消息发送结果监听
 消息发送完成后，会回调这里的接口通知上层。
 ```
-public void setOnSendCompleteCallback(BasicCallback sendCompleteCallback)
+message.setOnSendCompleteCallback(BasicCallback sendCompleteCallback)
 ```
 参数说明
 
@@ -453,7 +565,6 @@ sdk收到消息时，会上抛消息事件[MessageEvent](./im_android_api_docs/c
 
 有了这两个概念的区分之后，sdk对于这两种消息的处理方式也有了不同：  
 
-**1.消息事件变化**
 
 版本 | 在线消息 | 离线消息 
 --- | ------- | ------
@@ -461,19 +572,13 @@ sdk收到消息时，会上抛消息事件[MessageEvent](./im_android_api_docs/c
 1.5.0开始 | 每收到一条消息上抛一个[MessageEvent](./im_android_api_docs/cn/jpush/im/android/api/event/MessageEvent.html?_blank) | 以会话为单位，该会话如果有离线消息，sdk就会上抛一个[OfflineMessageEvent](./im_android_api_docs/cn/jpush/im/android/api/event/OfflineMessageEvent.html)。就算同会话中有多条离线消息，sdk也只会上抛一个[OfflineMessageEvent](./im_android_api_docs/cn/jpush/im/android/api/event/OfflineMessageEvent.html),这个Event中就包含了所有离线消息的相关信息。这样会大大减轻上层处理事件的压力。
 
 
-**2.接口变化**
-
-之前诸如`conversation.getMessage(int messageId)`、`conversation.getAllMessage()`此类的同步获取消息对象的接口，在1.5.0版本之后均已不推荐使用。  
-取而代之的是`conversation.getMessage(int messageId, GetMessageCallback callback)`和`conversation.getAllMessage(GetMessageCallback callback)`之类的带回调参数的异步接口。  
-具体描述见相关Api Doc：[Conversation](./im_android_api_docs/cn/jpush/im/android/api/model/Conversation.html#getMessage(int))
-
 
 **总结**  
 
 sdk升级到1.5.0版本（或以上）后，上层需要针对消息接收的处理做以下变动：
 
-+ 除了`MessageEvent`之外，新增一个事件类型`OfflineMessageEvent`的接收,用来处理离线消息事件。
-+ 所有使用到诸如`conversation.getMessage(int messageId)`、`conversation.getAllMessage()`此类同步接口的地方，改为使用`conversation.getMessage(int messageId, GetMessageCallback callback)`和`conversation.getAllMessage(GetMessageCallback callback)`之类的带回调参数的异步接口，确保拿到的是完整的消息。
++ 除了`MessageEvent`之外，新增一个事件类型`OfflineMessageEvent`的接收,用来接收离线消息事件。
++ 对于需要消息漫游的开发者，还需增加`ConversationRefreshEvent`事件的接收，当会话中的漫游消息同步完成后，sdk会触发此事件通知上层刷新会话。
 
 
 
@@ -547,100 +652,11 @@ message.getAtUserList(GetUserInfoListCallback callback)
 ```
 
 
-### 本地会话管理
-
-#### 获取会话列表
-
-从本地数据库取得。同步返回。
-```
-  public List<Conversation> getConversationList();
-```
-参数说明
-
-+ 无
-
-返回
-
-+ `List<Conversation>` 会话列表。
-
-#### 获取单个单聊会话
-获取单聊会话信息，默认获取本appKey下username的单聊会话。
-```
-  public static Conversation getSingleConversation(String username);
-```
-参数说明
-
-+ String username 目标的用户用户名。
-
-返回
-
-- 根据参数匹配得到的单聊会话对象。
-
-
-#### 获取单个群聊会话
-```
-  public static Conversation getGroupConversation(long groupID);
-```
-
-参数说明
-
-+ long groupID 目标的群的群ID。
-
-返回
-
-- 根据参数匹配得到的群聊会话对象。
-
-
-
-
-#### 删除单个单聊会话
-删除单聊的会话，同时删除掉本地聊天记录。默认删除本appKey下username的会话
-```  
-  public static boolean deleteSingleConversation(String username);
-```
-
-参数说明
-
-+ String username 目标的用户用户名。
-
-返回
-
-- 是否删除成功。
-
-
-
-#### 删除单个单聊会话（跨应用）
-删除与指定appKey下username的单聊的会话，同时删除掉本地聊天记录。,如果appKey为空则默认尝试删除本应用appKey下对应username的会话。
-```  
-  public static boolean deleteSingleConversation(String username,String appKey);
-```
-
-参数说明
-
-+ String username 目标的用户用户名。
-+ String appKey 目标用户所属的appKey
-
-返回
-
-- 是否删除成功。
-
-#### 删除单个群聊会话
-```  
-  public static boolean deleteGroupConversation(long groupID);
-```
-参数说明
-
-+ long groupID 目标群的群ID。
-
-返回
-
-- 是否删除成功。
-
 ###<span id="Event">事件处理</span>
 #### 事件接收类的注册
 ```
-  public static void registerEventReceiver(Object receiver);
-  public static void registerEventReceiver(Object receiver, int priority);
+JMessageClient.registerEventReceiver(Object receiver);
+JMessageClient.registerEventReceiver(Object receiver, int priority);
 ```
 
 参数说明
@@ -650,7 +666,7 @@ message.getAtUserList(GetUserInfoListCallback callback)
 
 #### 事件接收类的解绑
 ```
-  public static void unRegisterEventReceiver(Object receiver);
+JMessageClient.unRegisterEventReceiver(Object receiver);
 ```
 
 参数说明
@@ -751,6 +767,11 @@ public void onEventMainThread(EventEntity event){
       <td >Conversation</td>
       <td >获取需要被刷新的会话对象</td>
     </tr>
+    <tr >
+      <td >getReason()</td>
+      <td >Reason</td>
+      <td >获取事件发生的原因</td>
+    </tr>
   </table>
 </div>
 
@@ -843,6 +864,8 @@ class MessageEventReceiver extends Activity{
   @Override
   protected void onCreate() {
     super.onCreate(savedInstanceState);
+    //这里只是为了展示注册事件接受者接口的用法，实际上开发者可以在任意类中注册事件接收者
+    //，而不仅仅在Activity中。 下同
     JMessageClient.registerEventReceiver(this);
   }
 
@@ -958,7 +981,7 @@ class UserLogoutEventReceiver extends Activity{
 
 #### 创建群组
 ```
-  public static void createGroup(String groupName, String groupDesc, CreateGroupCallback callback);
+JMessageClient.createGroup(String groupName, String groupDesc, CreateGroupCallback callback);
 ```  
 参数说明
 
@@ -974,7 +997,7 @@ class UserLogoutEventReceiver extends Activity{
 
 #### 获取群组列表
 ```
-public static void getGroupIDList(GetGroupListCallback callback)
+JMessageClient.getGroupIDList(GetGroupListCallback callback)
 ```
 回调
 ```
@@ -986,7 +1009,7 @@ public abstract void gotResult(int responseCode, String responseMessage,
 
 #### 获取群组详情
 ```
-  public static void getGroupInfo(long groupId, GetGroupInfoCallback callback)
+JMessageClient.getGroupInfo(long groupId, GetGroupInfoCallback callback)
 ```
 参数说明
 
@@ -1001,7 +1024,7 @@ public abstract void gotResult(int responseCode, String responseMessage,
 
 #### 更新群组名称
 ```
-  public static void updateGroupName(long groupID,
+JMessageClient.updateGroupName(long groupID,
       String groupName,BasicCallback callback);
 ```
 参数说明
@@ -1012,7 +1035,7 @@ public abstract void gotResult(int responseCode, String responseMessage,
 
 #### 更新群组详情
 ```
-  public static void updateGroupDescription(long groupID,
+JMessageClient.updateGroupDescription(long groupID,
       String groupDesc,BasicCallback callback);
 ```
 参数说明
@@ -1024,7 +1047,7 @@ public abstract void gotResult(int responseCode, String responseMessage,
 
 #### 加群组成员
 ```
-  public static void addGroupMembers(long groupId, List<String> usernameList, BasicCallback callback);
+JMessageClient.addGroupMembers(long groupId, List<String> usernameList, BasicCallback callback);
 ```  
 参数说明
 
@@ -1034,7 +1057,7 @@ public abstract void gotResult(int responseCode, String responseMessage,
 
 #### 移除群组成员
 ```
-  public static void removeGroupMembers(long groupId, List<String> usernameList, BasicCallback callback);
+JMessageClient.removeGroupMembers(long groupId, List<String> usernameList, BasicCallback callback);
 ```
 参数说明
 
@@ -1044,7 +1067,7 @@ public abstract void gotResult(int responseCode, String responseMessage,
 
 #### 退出群组
 ```
-  public static void exitGroup(long groupId, BasicCallback callback);
+JMessageClient.exitGroup(long groupId, BasicCallback callback);
 ```
 参数说明
 
@@ -1053,7 +1076,7 @@ public abstract void gotResult(int responseCode, String responseMessage,
 
 #### 获取群组成员列表
 ```
-  public static void getGroupMembers(long groupID,
+JMessageClient.getGroupMembers(long groupID,
       GetGroupMembersCallback callback)
 ```
 参数说明
@@ -1098,7 +1121,7 @@ JMessageClient.getBlockedGroupsList(GetGroupInfoListCallback callback)
 ### 黑名单管理
 #### 将用户加入黑名单
 ```
-public static void addUsersToBlacklist(List<String> usernames, BasicCallback callback)
+JMessageClient.addUsersToBlacklist(List<String> usernames, BasicCallback callback)
 ```
 参数说明
 
@@ -1107,7 +1130,7 @@ public static void addUsersToBlacklist(List<String> usernames, BasicCallback cal
 
 #### 将用户移出黑名单
 ```
-public static void delUsersFromBlacklist(List<String> usernames, BasicCallback callback)
+JMessageClient.delUsersFromBlacklist(List<String> usernames, BasicCallback callback)
 ```
 参数说明
 
@@ -1116,7 +1139,7 @@ public static void delUsersFromBlacklist(List<String> usernames, BasicCallback c
 
 #### 获取被当前用户加入黑名单的用户列表
 ```
-public static void getBlacklist(GetBlacklistCallback callback)
+JMessageClient.getBlacklist(GetBlacklistCallback callback)
 ```
 参数说明
 
@@ -1133,7 +1156,7 @@ public static void getBlacklist(GetBlacklistCallback callback)
 ### 通知栏管理
 #### 设置通知展示类型
 ```
-public static void setNotificationMode(int mode);
+JMessageClient.setNotificationMode(int mode);
 ```
 参数说明
 
@@ -1151,7 +1174,7 @@ public static void setNotificationMode(int mode);
 	UI在进入单聊会话页面时需要调用此函数，SDK会根据传入的username来决定是否需要发送通知
 
 ```
-public static void enterSingleConversaion(String username)
+JMessageClient.enterSingleConversaion(String username)
 ```
 参数定义
 
@@ -1162,7 +1185,7 @@ public static void enterSingleConversaion(String username)
 	UI在进入单聊会话页面时需要调用此函数，SDK会根据传入的username来决定是否需要发送通知
 
 ```
-public static void enterSingleConversaion(String username,String appKey)
+JMessageClient.enterSingleConversaion(String username,String appKey)
 ```
 参数定义
 
@@ -1174,7 +1197,7 @@ public static void enterSingleConversaion(String username,String appKey)
 进入群聊会话。UI在进入群聊会话页面时需要调用此函数，SDK会根据传入的groupID来决定是否需要发送通知
 
 ```
-public static void enterGroupConversation(long groupID)
+JMessageClient.enterGroupConversation(long groupID)
 ```
 
 参数定义
@@ -1185,7 +1208,7 @@ public static void enterGroupConversation(long groupID)
 #### 退出会话
 退出会话。UI在退出会话页面时需要调用此函数。
 ```
-public static void exitConversaion();
+JMessageClient.exitConversaion();
 ```
 #### 通知栏点击事件监听
 用户可以通过接受通知栏点击事件NotificationClickEvent，来实现自定义跳转，该事件如果没有接收者，点击通知栏时SDK将默认跳转到程序主界面。
@@ -1230,7 +1253,7 @@ ContactManager.sendInvitationRequest("test_user", "test_appkey", "hello", new Ba
 接受对方的好友请求，操作成功后，对方会出现在自己的好友列表中，双方建立起好友关系。请求发送后对方会收到一条好友请求被接受的[ContactNotifyEvent](#ContactEvent)事件。
 
 ```
-public static void acceptInvitation(final String targetUsername, String appKey, final BasicCallback callback)
+ContactManager.acceptInvitation(final String targetUsername, String appKey, final BasicCallback callback)
 ```
 
 参数定义
@@ -1259,7 +1282,7 @@ ContactManager.acceptInvitation("test_user", "test_appkey", new BasicCallback() 
 拒绝对方的好友请求。请求发送后对方会收到一条好友请求被拒绝的[ContactNotifyEvent](#ContactEvent)事件。
 
 ```
-public static void declineInvitation(final String targetUsername, String appKey, String reason, final BasicCallback callback)
+ContactManager.declineInvitation(final String targetUsername, String appKey, String reason, final BasicCallback callback)
 ```
 
 参数定义
@@ -1288,7 +1311,7 @@ ContactManager.declineInvitation("test_user", "test_appkey", "sorry~", new Basic
 获取当前登陆用户的好友列表，异步返回结果。
 
 ```
-public static void getFriendList(final GetUserInfoListCallback callback)
+ContactManager.getFriendList(final GetUserInfoListCallback callback)
 ```
 
 参数定义
@@ -1314,7 +1337,7 @@ ContactManager.getFriendList(new GetUserInfoListCallback() {
 将用户从你的好友列表中移除，移除成功后，对方会收到一条好友被移除的[ContactNotifyEvent](#ContactEvent)事件。
 
 ```
-public void removeFromFriendList(BasicCallback callback)
+userinfo.removeFromFriendList(BasicCallback callback)
 ```
 
 参数定义
@@ -1340,9 +1363,9 @@ userinfo.removeFromFriendList(new BasicCallback() {
 仅当用户存在于你的好友列表中时，才能更新其用户备注名和备注信息。
 
 ```
-public abstract void updateNoteName(String noteName, BasicCallback callback)
+userinfo.updateNoteName(String noteName, BasicCallback callback)
 
-public abstract void updateNoteText(String noteText, BasicCallback callback)
+userinfo.updateNoteText(String noteText, BasicCallback callback)
 ```
 
 参数定义：
@@ -1449,7 +1472,7 @@ class ContactNotifyEventReceiver extends Activity{
 
 ### 获取免打扰列表
 ```
-public static void getNoDisturblist(GetNoDisurbListCallback callback)
+JMessageClient.getNoDisturblist(GetNoDisurbListCallback callback)
 ```
 参数定义
 
@@ -1463,7 +1486,7 @@ public static void getNoDisturblist(GetNoDisurbListCallback callback)
 设置全局免打扰之后，收到所有消息都将不会有通知栏通知，效果类似<br> `setNotificationMode(JMessageClient.NOTI_MODE_NO_NOTIFICATION)`，但是此设置在用户换设备之后也会生效。
 
 ```
-public static void setNoDisturbGlobal(int noDisturbGlobal, BasicCallback callback)
+JMessageClient.setNoDisturbGlobal(int noDisturbGlobal, BasicCallback callback)
 ```
 参数定义
 
@@ -1473,13 +1496,13 @@ public static void setNoDisturbGlobal(int noDisturbGlobal, BasicCallback callbac
 ### 获取全局免打扰标识
 
 ```
-public static void getNoDisturbGlobal(IntegerCallback callback)
+JMessageClient.getNoDisturbGlobal(IntegerCallback callback)
 ```
 参数定义
 
 + IntegerCallback callback 回调接口。
 
-## 跨应用通信
+## <span id="CrossApp">跨应用通信</span>
 <font color= SteelBlue>说明：跨应用通信是指允许同一开发者账号下的不同应用能互相通信，以满足开发者对于不同appKey下应用通信的需求。</font>
 </br>JMessage Android SDK在v1.2.0版本中实现了单聊跨应用，v1.3.0版本中实现了群聊以及其他一些功能的跨应用，
 具体对应关系见下表：
