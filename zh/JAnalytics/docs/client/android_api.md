@@ -77,7 +77,7 @@
 
 ~~~
 	CountEvent cEvent = new CountEvent("eventId","eventName");
-	JAnalyticsInterface.onEvent(cEvent);
+	JAnalyticsInterface.onEvent(context, cEvent);
 ~~~
 
 ##计数事件模型
