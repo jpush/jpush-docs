@@ -239,7 +239,7 @@
 调用示例:
 
 ~~~
-	PurchaseEvent pEvent = new PurchaseEvent("goodsId","篮球",300,true,Currency.CNY,"sport,System.currentTimeMillis(),1);
+	PurchaseEvent pEvent = new PurchaseEvent("goodsId","篮球",300,true,Currency.CNY,"sport",System.currentTimeMillis(),1);
 	pEvent.addKeyValue("key1","value1").addKeyVaule("key2","value2");
 ~~~
 
