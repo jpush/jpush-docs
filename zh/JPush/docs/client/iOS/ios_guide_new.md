@@ -17,7 +17,7 @@ img[alt=jpush_ios] { width: 800px; }
 
 包名为JPush-iOS-SDK-{版本号}
 
-* lib文件夹：包含头文件 JPUSHService.h，静态库文件jpush-ios-x.x.x.a ，支持的iOS版本为 6.0 及以上版本。（请注意：模拟器不支持APNs）
+* lib文件夹：包含头文件 JPUSHService.h，静态库文件jpush-ios-x.x.x.a，jcore-ios-x.x.x.a，支持的iOS版本为 6.0 及以上版本。（请注意：模拟器不支持APNs）
 * pdf文件：集成指南
 * demo文件夹：示例
 
@@ -33,7 +33,7 @@ img[alt=jpush_ios] { width: 800px; }
 ## 配置工程
 ### 导入SDK
 
-* 将SDK包解压，在Xcode中选择“Add files to 'Your project name'...”，将解压后的lib子文件夹（包含JPUSHService.h、jpush-ios-x.x.x.a）添加到你的工程目录中。  
+* 将SDK包解压，在Xcode中选择“Add files to 'Your project name'...”，将解压后的lib子文件夹（包含JPUSHService.h、jpush-ios-x.x.x.a，jcore-ios-x.x.x.a）添加到你的工程目录中。  
 * 添加Framework
 	* CFNetwork.framework
 	* CoreFoundation.framework
@@ -122,25 +122,15 @@ didFinishLaunchingWithOptions:(NSDictionary \*)launchOptions
 
 ```   	
   //Required
-  if ([[UIDevice currentDevice].systemVersion floatValue] >= 10.0) {
-    JPUSHRegisterEntity * entity = [[JPUSHRegisterEntity alloc] init];
-    entity.types = UNAuthorizationOptionAlert|UNAuthorizationOptionBadge|UNAuthorizationOptionSound;
-    [JPUSHService registerForRemoteNotificationConfig:entity delegate:self];
-  } 
-  else if ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0) {
-    //可以添加自定义categories
-    [JPUSHService registerForRemoteNotificationTypes:(UIUserNotificationTypeBadge |
-                                                      UIUserNotificationTypeSound |
-                                                      UIUserNotificationTypeAlert)
-                                          categories:nil];
-  } 
-  else {
-    //categories 必须为nil
-    [JPUSHService registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge |
-                                                      UIRemoteNotificationTypeSound |
-                                                      UIRemoteNotificationTypeAlert)
-                                          categories:nil];
+  //notice: 3.0.0及以后版本注册可以这样写，也可以继续用之前的注册方式
+  JPUSHRegisterEntity * entity = [[JPUSHRegisterEntity alloc] init];
+  entity.types = JPAuthorizationOptionAlert|JPAuthorizationOptionBadge|JPAuthorizationOptionSound;
+  if ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0) {
+    // 可以添加自定义categories
+    // NSSet<UNNotificationCategory *> *categories for iOS10 or later
+    // NSSet<UIUserNotificationCategory *> *categories for iOS8 and iOS9
   }
+  [JPUSHService registerForRemoteNotificationConfig:entity delegate:self];
   
 ```
 ### 添加初始化JPush代码

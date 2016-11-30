@@ -103,7 +103,7 @@ JPush API v3 支持同时一次调用同时推送 APNs 通知与 JPush 应用内
 ### 组成
 
 + 头文件 JPUSHService.h
-+ 静态库文件 jpush-ios-x.x.x.a
++ 静态库文件 jpush-ios-x.x.x.a，jcore-ios-x.x.x.a
 
 ### 注意事项
 + [请参考iOS常见问题](ios_faq)
