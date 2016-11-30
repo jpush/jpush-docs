@@ -232,14 +232,13 @@
 |purchaseSuccess|boolean|购买是否成功(非空)|
 |purchaseCurrency|Currency|货币类型，一个枚举类|
 |purchaseGoodsType|String|商品类型|
-|purchaseGoodsTime|long|购买时间，单位毫秒|
 |purchaseGoodsCount|int	|商品数量|
 |extMap|Map|扩展参数|
  
 调用示例:
 
 ~~~
-	PurchaseEvent pEvent = new PurchaseEvent("goodsId","篮球",300,true,Currency.CNY,"sport",System.currentTimeMillis(),1);
+	PurchaseEvent pEvent = new PurchaseEvent("goodsId","篮球",300,true,Currency.CNY,"sport",1);
 	pEvent.addKeyValue("key1","value1").addKeyVaule("key2","value2");
 ~~~
 
