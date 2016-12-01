@@ -344,9 +344,9 @@ JMessage SDK 2.3.0 版本开始，SDK将消息下发分为__在线下发__和__�
 --- | ------- | ------
 2.3.0之前 | 每收到一条消息就触发一次代理方法[onReceiveMessage:error:](#onReceiveMessage:error:) | 有多少条离线消息就触发多少次代理方法[onReceiveMessage:error:](#onReceiveMessage:error:)|
 2.3.0开始 | 每收到一条消息就触发一次代理方法[onReceiveMessage:error:](#onReceiveMessage:error:) | 以会话为单位,不管会话有多少离线消息,SDK只触发一次同步代理方法[onSyncConversation:offlineMessages:roamingMessages:](#onSyncConversation:)|
-以会话为单位，不管会话有多少离线消息，SDK只触发一次消息同步的代理方法，这个代理方法返回值中就包含了离线消息的相关信息，上层通过监听这个方法可刷新UI，这样会大大减轻上层处理事件的压力。
 
 **总结**  
+对于消息同步，以会话为单位，不管会话有多少离线消息，SDK只触发一次消息同步的代理方法，这个代理方法返回值中就包含了离线消息的相关信息，上层通过监听这个方法可刷新UI，这样会大大减轻上层处理事件的压力。
 
 SDK 升级到 2.3.0 版本（或以上）后，上层只需要做以下变动：
 
