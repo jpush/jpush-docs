@@ -50,8 +50,8 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 
 <span id="setupJMessage:"></span>
 ***Since v2.3.0***  
-SDK初始化，可设置是否启用消息记录漫游。  
-打开消息漫游之后，用户多个设备之间登陆时，SDK会自动将历史消息同步到本地，同步完成之后SDK会以conversation为单位触发代理方法`onSyncConversation:offlineMessages:roamingMessages:`通知上层刷新,具体方法见[监听代理](#JMSGConversationDelegate)
+SDK 初始化时，可设置是否启用消息记录漫游。  
+打开消息漫游之后，用户多个设备之间登陆时，SDK会自动将历史消息同步到本地，同步完成之后SDK会以 Conversation 为单位触发代理方法`onSyncConversation:offlineMessages:roamingMessages:`通知上层刷新,具体方法见[监听代理](#JMSGConversationDelegate)
 
 ```
 /*!
@@ -351,7 +351,7 @@ JMessage SDK 2.3.0 版本开始，SDK将消息下发分为在线下发和离线�
 SDK 升级到 2.3.0 版本（或以上）后，上层只需要做以下变动：
 
 + 需要设置消息漫游的开发者,调用新的[SDK 初始化方法](#setupJMessage:)设置
-+ 添加消息同步的监听方法[onSyncConversation:offlineMessages:roamingMessages:](#onSyncConversation:)通过此方法可以获取到离线消息和漫游消息
++ 添加消息同步的监听方法[onSyncConversation:offlineMessages:roamingMessages:](#onSyncConversation:)通过此方法可以获取到离线消息和漫游消息，从而刷新UI
 
 
 ### 消息管理
@@ -1673,7 +1673,7 @@ JMSGCompletionHandler 有 2 个参数：
 
 
 
-### 实现回调 
+### 代理方法 
 
 #### JMSGConversationDelegate
 <span id="JMSGConversationDelegate"></span>
