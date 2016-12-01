@@ -29,7 +29,7 @@ App 集成了 IM SDK 就不应再集成 JPush SDK（只提供 Push 功能的 SDK
 
 以下简要地列举 SDK API 提供的功能，同时提供部分简单的例子。
 
-### SDK初始化
+### SDK初始化(设置漫游)
 
 JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用。建议在 AppDelegate 里应用加载完成时调用。
 
@@ -50,7 +50,7 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 
 <span id="setupJMessage:"></span>
 ***Since v2.3.0***  
-SDK初始化，同时指定是否启用消息记录漫游。  
+SDK初始化，可设置是否启用消息记录漫游。  
 打开消息漫游之后，用户多个设备之间登陆时，SDK会自动将历史消息同步到本地，同步完成之后SDK会以conversation为单位触发代理方法`onSyncConversation:offlineMessages:roamingMessages:`通知上层刷新,具体方法见[监听代理](#JMSGConversationDelegate)
 
 ```
@@ -332,8 +332,8 @@ SDK初始化，同时指定是否启用消息记录漫游。
 	    }
 	 }]; 
 
-### 消息同步 Since v2.3.0
-JMessage SDK 2.3.0 版本开始，SDK将消息下发分为__在线下发__和__离线下发__两种类型。 先明确两个概念：
+### 消息同步Since v2.3.0
+JMessage SDK 2.3.0 版本开始，SDK将消息下发分为在线下发和离线下发两种类型。 先明确两个概念：
 
 + 在线消息：IM 用户在线期间，所有收到的消息称为在线消息。
 + 离线消息：IM 用户离线期间（包括登出或者网络断开）收到的消息，会暂存在极光服务器上，当用户再次上线，SDK 会将这部分消息拉取下来，这部分消息就称为离线消息。
@@ -342,8 +342,8 @@ JMessage SDK 2.3.0 版本开始，SDK将消息下发分为__在线下发__和__�
 
 版本 | 在线消息 | 离线消息 
 --- | ------- | ------
-2.3.0之前 | 每收到一条消息就触发一次代理方法[onReceiveMessage:error:](#onReceiveMessage:error:) | 有多少条离线消息就触发多少次代理方法[onReceiveMessage:error:](#onReceiveMessage:error:)|
-2.3.0开始 | 每收到一条消息就触发一次代理方法[onReceiveMessage:error:](#onReceiveMessage:error:) | 以会话为单位,不管会话有多少离线消息,SDK只触发一次同步代理方法[onSyncConversation:offlineMessages:roamingMessages:](#onSyncConversation:)|
+2.3.0之前 | 每收到一条消息就触发一次接受消息的代理方法[onReceiveMessage:error:](#onReceiveMessage:error:) | 有多少条离线消息就触发多少次接受消息的代理方法[onReceiveMessage:error:](#onReceiveMessage:error:)|
+2.3.0开始 | 每收到一条消息就触发一次接受消息的代理方法[onReceiveMessage:error:](#onReceiveMessage:error:) | 以会话为单位，不管会话有多少离线消息，SDK只触发一次消息同步代理方法[onSyncConversation:offlineMessages:roamingMessages:](#onSyncConversation:)|
 
 **总结**  
 对于消息同步，以会话为单位，不管会话有多少离线消息，SDK只触发一次消息同步的代理方法，这个代理方法返回值中就包含了离线消息的相关信息，上层通过监听这个方法可刷新UI，这样会大大减轻上层处理事件的压力。
