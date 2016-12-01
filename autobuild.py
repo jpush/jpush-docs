@@ -11,21 +11,30 @@ def git_pull():
 
 
 def build():
-    print (os.chdir("/opt/push/jpush-docs/jpush-docs/zh/JPush/"))
+    logging.info(os.chdir("/opt/push/jpush-docs/jpush-docs/zh/JPush/"))
     print ("JPush/")
     logging.info (commands.getstatusoutput("/opt/push/jpush-docs/venv/bin/mkdocs build"))
     time.sleep(1)
     print time.asctime(time.localtime(time.time()))
-    logging.info (os.chdir("/opt/push/jpush-docs/jpush-docs/zh/JMessage/"))
+
+    logging.info (os.chdir("/opt/push/jpush-docs/jpush-docs/zh/JAnalytics/"))
+    print ("JAnalytics/")
+    logging.info(commands.getstatusoutput("/opt/push/jpush-docs/venv/bin/mkdocs build"))
+    time.sleep(1)
+    print time.asctime(time.localtime(time.time()))
+
+    logging.info(os.chdir("/opt/push/jpush-docs/jpush-docs/zh/JMessage/"))
     print ("JMessage/")
     logging.info (commands.getstatusoutput("/opt/push/jpush-docs/venv/bin/mkdocs build"))
     time.sleep(1)
     print time.asctime(time.localtime(time.time()))
+
     logging.info (os.chdir("/opt/push/jpush-docs/jpush-docs/zh/JSMS/"))
     print ("JSMS/")
     logging.info (commands.getstatusoutput("/opt/push/jpush-docs/venv/bin/mkdocs build"))
     time.sleep(1)
     print time.asctime(time.localtime(time.time()))
+
     logging.info (os.chdir("/opt/push/jpush-docs/jpush-docs/zh/Index/"))
     print ("Index/")
     logging.info (commands.getstatusoutput("/opt/push/jpush-docs/venv/bin/mkdocs build"))
