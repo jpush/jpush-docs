@@ -17,6 +17,12 @@ $(document).ready(function() {
     }
     //console.log(url.indexOf("jmessage"));
 
+            url = window.location.href;
+    if(url.indexOf("janalytics")>0){
+        $("#janalytics-top").css("border-bottom", "solid 3px #1b75bb");
+    }
+    //console.log(url.indexOf("jmessage"));
+
 
     $("li .current").parent().css("display", "block");
     $("li .current").parent().siblings().css("display", "block");
