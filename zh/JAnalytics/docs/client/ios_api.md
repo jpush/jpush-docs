@@ -133,6 +133,8 @@
 |参数名称|参数类型|参数说明|
 |:-----:|:-----:|:----:|
 |extra|	NSDictionary<NSString *, NSString *>|自定义属性|
+
+
 <a name="login"></a>
 ##登录事件模型
 + ***JANALYTICSLoginEvent***
