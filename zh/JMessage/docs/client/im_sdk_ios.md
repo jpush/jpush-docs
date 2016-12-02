@@ -29,7 +29,7 @@ App 集成了 IM SDK 就不应再集成 JPush SDK（只提供 Push 功能的 SDK
 
 以下简要地列举 SDK API 提供的功能，同时提供部分简单的例子。
 
-### SDK初始化(设置漫游)
+### SDK初始化
 
 JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用。建议在 AppDelegate 里应用加载完成时调用。
 
@@ -49,9 +49,12 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 ```
 
 <span id="setupJMessage:"></span>
+
+###SDK初始化(设置漫游)
+
 ***Since v2.3.0***  
 SDK 初始化时，可设置是否启用消息记录漫游。  
-打开消息漫游之后，用户多个设备之间登陆时，SDK会自动将历史消息同步到本地，同步完成之后SDK会以 Conversation 为单位触发代理方法`onSyncConversation:offlineMessages:roamingMessages:`通知上层刷新,具体方法见[监听代理](#JMSGConversationDelegate)
+打开消息漫游之后，用户多个设备之间登陆时，SDK会自动将历史消息同步到本地，同步完成之后SDK会以 Conversation 为单位触发代理方法`onSyncConversation:offlineMessages:roamingMessages:`通知上层刷新,具体方法见[消息同步监听代理](#JMSGConversationDelegate)
 
 ```
 /*!
@@ -342,8 +345,8 @@ JMessage SDK 2.3.0 版本开始，SDK将消息下发分为在线下发和离线�
 
 版本 | 在线消息 | 离线消息 
 --- | ------- | ------
-2.3.0之前 | 每收到一条消息就触发一次接受消息的代理方法[onReceiveMessage:error:](#onReceiveMessage:error:) | 有多少条离线消息就触发多少次接受消息的代理方法[onReceiveMessage:error:](#onReceiveMessage:error:)|
-2.3.0开始 | 每收到一条消息就触发一次接受消息的代理方法[onReceiveMessage:error:](#onReceiveMessage:error:) | 以会话为单位，不管会话有多少离线消息，SDK只触发一次消息同步代理方法[onSyncConversation:offlineMessages:roamingMessages:](#onSyncConversation:)|
+2.3.0之前 | 每收到一条消息就触发一次接受消息的代理方法[onReceiveMessage:error:](./jmessage_ios_appledoc_html/Protocols/JMSGMessageDelegate.html#//api/name/onReceiveMessage:error:) | 有多少条离线消息就触发多少次接受消息的代理方法[onReceiveMessage:error:](./jmessage_ios_appledoc_html/Protocols/JMSGMessageDelegate.html#//api/name/onReceiveMessage:error:)|
+2.3.0开始 | 每收到一条消息就触发一次接受消息的代理方法[onReceiveMessage:error:](./jmessage_ios_appledoc_html/Protocols/JMSGMessageDelegate.html#//api/name/onReceiveMessage:error:) | 以会话为单位，不管会话有多少离线消息，SDK只触发一次消息同步代理方法[onSyncConversation:offlineMessages:roamingMessages:](#onSyncConversation:)|
 
 **总结**  
 对于消息同步，以会话为单位，不管会话有多少离线消息，SDK只触发一次消息同步的代理方法，这个代理方法返回值中就包含了离线消息的相关信息，上层通过监听这个方法可刷新UI，这样会大大减轻上层处理事件的压力。
@@ -1060,6 +1063,115 @@ SDK 升级到 2.3.0 版本（或以上）后，上层只需要做以下变动：
 	 * @discussion 如果 group.name 为空, 则此接口会拼接群组前 5 个成员的展示名返回.
 	 */
 	- (NSString *)displayName;
+
+### 群组@功能
+消息发送方可以发一条带有@list的消息。  
+接收方收到带有@list的消息之后，如果@list中包含了自己，则在sdk默认弹出的通知栏提示中会有相应的提示，如"xxx在群中@了你"。  
+#### JMSGMessage
+#### 创建@群成员的消息
+	/*!
+	 * @abstract 创建@人的群聊消息
+	 *
+	 * @param content 消息内容对象
+	 * @param groupId 群聊ID
+	 * @param at_list @对象的数组
+	 *
+	 * @discussion 不关心会话时的直接创建聊天消息的接口。一般建议使用 JMSGConversation -> createMessageWithContent:
+	 */
+	+ (JMSGMessage *)createGroupMessageWithContent:(JMSGAbstractContent *)content
+	                                       groupId:(NSString *)groupId
+	                                       at_list:(NSArray<__kindof JMSGUser *> *)at_list;
+
+#### 判断消息是否@了自己
+	/*!
+	 * @abstract 是否是@自己的消息（只针对群消息，单聊消息无@功能）
+	 */
+	- (BOOL)isAtMe;
+#### 获取消息中@的群成员列表
+	/*!
+	 * @abstract 获取消息体中所有@对象（只针对群消息，单聊消息无@功能）
+	 *
+	 * @param handler 结果回调。回调参数：
+	 *
+	 * - resultObject 类型为 NSArray，数组里成员的类型为 JMSGUser
+	 * - error 错误信息
+	 *
+	 * 如果 error 为 nil, 表示设置成功
+	 * 如果 error 不为 nil,表示设置失败
+	 *
+	 * @discussion 从服务器获取，返回消息的所有@对象。
+	 */
+	- (void)getAt_List:(JMSGCompletionHandler)handler;
+#### JMSGConversation
+#### 发送@人的消息
+	/*!
+	 * @abstract 发送@人消息（已经创建好对象的）
+	 *
+	 * @param message 通过消息创建类接口，创建好的消息对象
+	 * @param at_list @对象的数组
+	 *
+	 * @discussion 发送消息的多个接口，都未在方法上直接提供回调。你应通过 JMSGMessageDelegate中的onReceiveMessage: error:方法来注册消息发送结果。
+	 */
+	- (void)sendMessage:(JMSGMessage *)message at_list:(NSArray<__kindof JMSGUser *> *)userList;
+##### 例子
+```
+// 创建@群成员的消息
+JMSGTextContent *textContent1 = [[JMSGTextContent alloc] initWithText:@"at他人的消息"];
+JMSGMessage *atMessage = [JMSGMessage createGroupMessageWithContent:textContent1 groupId:@"gid" at_list:[NSArray arrayWithObjects:user1,user2, nil]];
+
+// 消息中@的群成员列表
+[atMessage getAt_List:^(id resultObject, NSError *error) {
+     NSArray *atList = (NSArray *)resultObject;
+ }];
+
+// 发送@人的消息
+JMSGTextContent *textContent2 = [[JMSGTextContent alloc] initWithText:@"创建好的消息"];
+JMSGMessage *message = [JMSGMessage createGroupMessageWithContent:textContent2 groupId:@"gid"];
+[conversation sendMessage: message atMessage at_list:[NSArray arrayWithObjects:user1,user2, nil]]    
+```
+
+### 群消息屏蔽
+群组被设置为屏蔽之后，将收不到该群的消息，但是群成员变化事件还是能正常收到。
+#### JMSGGroup
+#### 判断群组是否被屏蔽
+	/*!
+	 * @abstract 该群是否已被设置为消息屏蔽
+	 *
+	 * @discussion YES:是 , NO: 否
+	 */
+	@property(nonatomic, assign, readonly) BOOL isShieldMessage
+#### 设置群消息屏蔽
+	/*!
+	 * @abstract 设置群组消息屏蔽
+	 *
+	 * @param isShield 是否群消息屏蔽 YES:是 NO: 否
+	 * @param handler 结果回调。回调参数：
+	 *
+	 * - resultObject 相应对象
+	 * - error 错误信息
+	 *
+	 * 如果 error 为 nil, 表示设置成功
+	 * 如果 error 不为 nil,表示设置失败
+	 *
+	 * @discussion 针对单个群组设置群消息屏蔽
+	 */
+	- (void)setIsShield:(BOOL)isShield handler:(JMSGCompletionHandler)handler;
+
+#### 获取当前用户的群屏蔽列表
+	/*!
+	 * @abstract 获取所有设置群消息屏蔽的群组
+	 *
+	 * @param handler 结果回调。回调参数：
+	 *
+	 * - resultObject 类型为 NSArray，数组里成员的类型为 JMSGGroup
+	 * - error 错误信息
+	 *
+	 * 如果 error 为 nil, 表示设置成功
+	 * 如果 error 不为 nil,表示设置失败
+	 *
+	 * @discussion 从服务器获取，返回所有设置群消息屏蔽的群组。
+	 */
+	+ (void)shieldList:(JMSGCompletionHandler)handler;
 
 ###<span id="JMSGFriendManager">好友管理</span>
 #### JMSGFriendManager
