@@ -1,5 +1,5 @@
 # 最近更新
-### JPush iOS SDK v1.0.0
+### JAnalytics iOS SDK v1.0.0
 
 #### 更新时间
 + 2016-12-02
@@ -20,7 +20,7 @@
 + 首先解压您获取到的zip压缩包
 + 更新库文件
 
-### JPush Android SDK v1.0.0
+### JAnalytics Android SDK v1.0.0
 
 #### 更新时间
 
