@@ -96,6 +96,8 @@
 		
 		<option value="//api/name/createGroupMessageWithContent:groupId:">+ createGroupMessageWithContent:groupId:</option>
 		
+		<option value="//api/name/createGroupMessageWithContent:groupId:at_list:">+ createGroupMessageWithContent:groupId:at_list:</option>
+		
 		<option value="//api/name/sendMessage:">+ sendMessage:</option>
 		
 		<option value="//api/name/sendSingleTextMessage:toUser:">+ sendSingleTextMessage:toUser:</option>
@@ -133,6 +135,10 @@
 
 	
 	<optgroup label="Instance Methods">
+		
+		<option value="//api/name/isAtMe">- isAtMe</option>
+		
+		<option value="//api/name/getAt_List:">- getAt_List:</option>
 		
 		<option value="//api/name/init">- init</option>
 		
@@ -318,6 +324,74 @@ NSString *msgText = textContent.text;
 					<tr>
 						<th scope="row" class="argument-name"><code>groupId</code></th>
 						<td><p>群聊ID</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>不关心会话时的直接创建聊天消息的接口。一般建议使用 <a href="../Classes/JMSGConversation.html">JMSGConversation</a> -> createMessageWithContent:</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGMessage.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/createGroupMessageWithContent:groupId:at_list:" title="createGroupMessageWithContent:groupId:at_list:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/createGroupMessageWithContent:groupId:at_list:">+&nbsp;createGroupMessageWithContent:groupId:at_list:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>创建@人群聊消息</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (JMSGMessage *)createGroupMessageWithContent:(JMSGAbstractContent *)<em>content</em> groupId:(NSString *)<em>groupId</em> at_list:(NSArray&lt;__kindofJMSGUser*&gt; *)<em>at_list</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>content</code></th>
+						<td><p>消息内容对象</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>groupId</code></th>
+						<td><p>群聊ID</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>at_list</code></th>
+						<td><p>@对象的数组</p></td>
 					</tr>
 				
 				</table>
@@ -1426,6 +1500,114 @@ NSString *msgText = textContent.text;
 			
 		</div>
 	</div>
+</div><div class="section-method">
+	<a name="//api/name/isAtMe" title="isAtMe"></a>
+	<h3 class="method-title"><code><a href="#//api/name/isAtMe">&ndash;&nbsp;isAtMe</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>是否是@自己的消息（只针对群消息，单聊消息无@功能）</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (BOOL)isAtMe</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGMessage.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/getAt_List:" title="getAt_List:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/getAt_List:">&ndash;&nbsp;getAt_List:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>获取消息体中所有@对象（只针对群消息，单聊消息无@功能）</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)getAt_List:(JMSGCompletionHandler)<em>handler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>handler</code></th>
+						<td><p>结果回调。回调参数：</p>
+
+<ul>
+<li>resultObject 类型为 NSArray，数组里成员的类型为 <a href="../Classes/JMSGUser.html">JMSGUser</a></li>
+<li>error 错误信息</li>
+</ul>
+
+
+<p>如果 error 为 nil, 表示设置成功
+如果 error 不为 nil,表示设置失败</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>从服务器获取，返回消息的所有@对象。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGMessage.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
 </div>
 						</div>
 						
@@ -2464,7 +2646,7 @@ NSString *msgText = textContent.text;
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2016 HXHG. All rights reserved. Updated: 2016-10-18</p>
+						<p class="copyright">Copyright &copy; 2016 HXHG. All rights reserved. Updated: 2016-12-02</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
