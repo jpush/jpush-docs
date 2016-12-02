@@ -23,7 +23,7 @@
 ~~~
 	JAnalyticsInterface.setDebugModel(true);
 ~~~
-
+<a name="pageflow"></a>
 ##页面流统计 API
 
 + ***JAnalyticsInterface.onPageStart(Context context,String pageName)***
@@ -79,7 +79,7 @@
 	CountEvent cEvent = new CountEvent("eventId","eventName");
 	JAnalyticsInterface.onEvent(context, cEvent);
 ~~~
-
+<a name="times"></a>
 ##计数事件模型
 + ***CountEvent***
 
@@ -104,7 +104,7 @@
 		自定义计数事件模型中扩展参数中不能使用以下 key 值：
 		event_id
 		此类 key 已被模型使用，如果使用则会导致统计到的数据不准确.
-
+<a name="count"></a>
 ##计算事件模型
 + ***CalculateEvent***
 
@@ -131,7 +131,7 @@
      event_id
      event_value
      此类 key 已被模型使用，如果使用则会导致统计到的数据不准确.
-
+<a name="login"></a>
 ##登陆事件模型
 + ***LoginEvent***
 
@@ -158,7 +158,7 @@
      login_method
      login_success
      此类 key 已被模型使用，如果使用则会导致统计到的数据不准确.
-
+<a name="register"></a>
 ##注册事件模型
 + ***RegisterEvent***
 
@@ -185,7 +185,7 @@
 	register_method
 	register_success
 	此类 key 已被模型使用，如果使用则会导致统计到的数据不准确.
-
+<a name="content"></a>
 ##浏览事件模型
 + ***BrowseEvent***
  
@@ -216,7 +216,7 @@
     browse_type
     browse_duration
     此类 key 已被模型使用，如果使用则会导致统计到的数据不准确.
-
+<a name="purchase"></a>
 ##购买事件模型
 + ***PurchaseEvent***
 

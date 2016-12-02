@@ -8,7 +8,7 @@ img[alt= jiguang] { width: 800px; }
 ![jiguang](./image/sdk_model.png)
 
 ## 上报策略
-JAnalytics Android SDK采用了数据记录与数据上报分离的策略，数据实时记录，按照上报策略上报数据。
+JAnalytics iOS SDK采用了数据记录与数据上报分离的策略，数据实时记录，按照上报策略上报数据。
 
 + 打开应用上报
 + 关闭应用上报
