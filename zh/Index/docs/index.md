@@ -45,7 +45,7 @@
 </div>
 <div class="content-box">
     <div class="h2-tile">
-        <h2>短信验证码 文档</h2>
+        <h2>短信服务 文档</h2>
     </div>
     <ul>
         <li><a href="/jsms/guideline/JSMS_guide/">短信验证码概述</a></li>
