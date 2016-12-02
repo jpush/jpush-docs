@@ -95,7 +95,7 @@
 调用示例:
 
 ~~~
-	CountEvent cEvent = new Event("test1_event_id","test1_event_name");
+	CountEvent cEvent = new Event("test1_event_id");
 	cEvent.addKeyValue("key1","value1").addKeyVaule("key2","value2");
 ~~~
 
@@ -121,7 +121,7 @@
 调用示例:
 
 ~~~
-	CalculateEvent cEvent = new CalculateEvent("test2_event_id","test2_event_name");
+	CalculateEvent cEvent = new CalculateEvent("test2_event_id","test2_event_value");
 	cEvent.setEventValue(1.1).addKeyValue("key1","value1").addKeyVaule("key2","value2");
 ~~~
 
