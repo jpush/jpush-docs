@@ -34,7 +34,7 @@ JMessage SDK 包含 JPush SDK 的全部功能，App 集成了 IM SDK 就不应�
 
 如果您原来集成过 JPush iOS SDK，则可大部分保持不变。变更以下部分：
 
-+ 把之前项目工程里的 JPush SDK 文件删掉，包含头文件 JPUSHService.h，静态库文件jpush-ios-x.x.x.a，jcore-ios-x.x.x.a(JPush 3.0.0及以上版本包含)。JMessage.framework 里已经包含 Push 部分，不删除掉会冲突。
++ 把之前项目工程里的 JPush SDK 文件删掉，包含头文件JPUSHService.h，静态库文件jpush-ios-x.x.x.a，jcore-ios-x.x.x.a(JPush 3.0.0及以上版本包含)。JMessage.framework 里已经包含 Push 部分，不删除掉会冲突。
 
 + 配置文件 PushConfig.plist 文件删除掉。不再使用配置文件，而是用代码调用提供基本参数。
 + 原来调用 APService 里 setupWithOption 做初始化，现在要换成 JMessage 里相应的方法。
@@ -60,14 +60,14 @@ JMessage 新增的依赖、配置、初始化方面，请继续参考下节。
 
 * CoreFoundation.framework
 * CoreTelephony.framework
-* CoreAudioFramework
+* CoreAudio.framework
 * CoreGraphics.framework
 * Foundation.framework
 * SystemConfiguration.framework
 * CFNetwork.framework
 * UIKit.framework
 * Security.framework
-* AudioToolboxFramework
+* AudioToolbox.framework
 * MobileCoreServices.framework
 * libz.dylib
 * libsqlite3.0.dylib
