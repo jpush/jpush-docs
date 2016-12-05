@@ -1,6 +1,6 @@
 <h1>Web SDK 开发指南</h1>
 
-<div style="font-size:13px;background: #F0E68C;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">
+<div style="font-size:13px;background: #F0E68C;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 10px; padding-bottom: 0;margin-bottom: 0;">
 <p>特别提示：v1.x版本将不再提供新功能，仅维护因bug导致的问题，请正在使用此版本的开发者尽快升级到v2.0版本。
 <p>此版本将在 2017 年停止维护。
 </div>
