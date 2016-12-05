@@ -1,5 +1,11 @@
 <h1>Web SDK 开发指南</h1>
 
+<div style="font-size:13px;background: #F0E68C;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 10px; padding-bottom: 0;margin-bottom: 0;">
+<p>特别提示：v1.x版本将不再提供新功能，仅维护因bug导致的问题，请正在使用此版本的开发者尽快升级到v2.0版本。
+<p>此版本将在 2017 年停止维护。
+</div>
+
+
 ## 概述
 
 极光 IM Web SDK 为 Web 应用提供一个 IM 系统开发框架, 屏蔽掉 IM 系统的复杂的细节, 对外提供较为简洁的 API 接口, 方便第三方应用快速集成 IM 功能。
