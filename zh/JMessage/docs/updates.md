@@ -1,6 +1,25 @@
 # 最近更新
 
 
+### Web SDK v1.2.1
+#### 更新时间
++ 2016-12-05
+
+#### Change Log
+
++ 修复：Web SDK v1.2.0上传图片问题
+
+#### 下载地址
+
++ [点击下载 Web SDK v1.2.1](https://sdkfiledl.jiguang.cn/jmessage-web-sdk.1.2.1.zip)
+
+
+#### 特别说明
+
++ v1.x版本将不再提供新功能，仅维护因bug导致的问题，建议尽快切换到2.x版本
+
+
+
 ### iOS SDK v2.2.3
 #### 更新时间
 + 2016-11-30

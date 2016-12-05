@@ -10,6 +10,10 @@
 
 极光 IM Web SDK 为 Web 应用提供一个 IM 系统开发框架, 屏蔽掉 IM 系统的复杂的细节, 对外提供较为简洁的 API 接口, 方便第三方应用快速集成 IM 功能。
 
+### 最新版本
+Web SDK v1.2.1
+修复 Web SDK v1.2.0上传图片问题，[点击下载 Web SDK v1.2.1](https://sdkfiledl.jiguang.cn/jmessage-web-sdk.1.2.1.zip)
+
 
 ### 签名算法
 
