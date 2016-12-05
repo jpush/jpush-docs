@@ -333,7 +333,7 @@ SDK 初始化时，可设置是否启用消息记录漫游。
 	    }
 	 }]; 
 
-### 消息同步****
+### 消息同步
 JMessage SDK 2.3.0 版本开始，SDK将消息下发分为在线下发和离线下发两种类型。 先明确两个概念：
 
 + 在线消息：IM 用户在线期间，所有收到的消息称为在线消息。
@@ -347,12 +347,12 @@ JMessage SDK 2.3.0 版本开始，SDK将消息下发分为在线下发和离线�
 2.3.0开始 | 每收到一条消息就触发一次接受消息的代理方法[onReceiveMessage:error:](./jmessage_ios_appledoc_html/Protocols/JMSGMessageDelegate.html#//api/name/onReceiveMessage:error:) | 以会话为单位，不管会话有多少离线消息，SDK只触发一次消息同步代理方法[onSyncConversation:offlineMessages:roamingMessages:](./jmessage_ios_appledoc_html/Protocols/JMSGConversationDelegate.html#//api/name/onSyncConversation:offlineMessages:roamingMessages:)|
 
 **总结**  
-对于消息同步，以会话为单位，不管会话有多少离线消息，SDK只触发一次消息同步的代理方法，这个代理方法返回值中就包含了离线消息的相关信息，上层通过监听这个方法可刷新UI，这样会大大减轻上层处理事件的压力。
+对于消息同步，以会话为单位，不管会话有多少离线消息，SDK只触发一次消息同步的代理方法，这个代理方法返回值中包含了具体某个会话、离线消息、漫游消息这些相关数据信息，上层通过这个方法可监听到每个会话完成消息同步的情况，从而去刷新UI，这样会大大减轻上层处理事件的压力。
 
 SDK 升级到 2.3.0 版本（或以上）后，上层只需要做以下变动：
 
 + 需要设置消息漫游的开发者,调用新的[SDK 初始化方法](./jmessage_ios_appledoc_html/Classes/JMessage.html#//api/name/setupJMessage:appKey:channel:apsForProduction:category:messageRoaming:)设置
-+ 添加消息同步的监听方法[onSyncConversation:offlineMessages:roamingMessages:](./jmessage_ios_appledoc_html/Protocols/JMSGConversationDelegate.html#//api/name/onSyncConversation:offlineMessages:roamingMessages:)通过此方法可以获取到离线消息和漫游消息，从而刷新UI
++ 添加消息同步的监听方法[onSyncConversation:offlineMessages:roamingMessages:](./jmessage_ios_appledoc_html/Protocols/JMSGConversationDelegate.html#//api/name/onSyncConversation:offlineMessages:roamingMessages:)通过此方法可以监听到消息同步情况，从而刷新UI。
 
 
 ### 消息管理
@@ -857,6 +857,15 @@ SDK 升级到 2.3.0 版本（或以上）后，上层只需要做以下变动：
 	        	//获取失败   
 	        }];
 
+#### 获取所有会话的未读消息的总数	
+
+	/*!
+	 * @abstract 获取当前所有会话的未读消息的总数
+	 *
+	 * @discussion 获取所有会话未读消息总数
+	 */
+	+ (NSNumber *)getAllUnreadCount;
+	
 #### 清除会话未读数
 	/*!
 	 * @abstract 清除会话未读数
