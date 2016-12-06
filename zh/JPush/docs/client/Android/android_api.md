@@ -568,8 +568,8 @@ SDK 对自定义消息，只是传递，不会有任何界面上的展示。
 
 ###  相关文档
 
-+ Android[别名与标签使用教程](/client/Android/android_api/#api_1)
-+ [标签与别名 API (iOS)](/client/iOS/ios_api/#api-ios)
++ Android[别名与标签使用教程](/client/android_api/#api_1)
++ [标签与别名 API (iOS)](/client/ios_api/#api-ios)
 
 ## 获取 RegistrationID API
 ### 支持的版本
@@ -962,6 +962,11 @@ JPushInterface.setLatestNotificationNumber(context, 3);
 			<td>6011</td>
 			<td>10s内设置tag或alias大于10次</td>
 			<td>短时间内操作过于频繁</td>
+		</tr>
+		<tr >
+			<td>6012</td>
+			<td>在JPush服务stop状态下设置了tag或alias</td>
+			<td>3.0.0版本新增的错误码。开发者可根据这个错误码的信息做相关处理或者提示。</td>
 		</tr>
 		<tr >
 			<td>-997</td>

@@ -4,12 +4,12 @@
 
 本文是 JPush Android SDK 标准的集成指南文档。用以指导 SDK 的使用方法，默认读者已经熟悉IDE（Eclipse 或者 Android Studio）的基本使用方法，以及具有一定的 Android 编程知识基础。
 
-匹配的 SDK 版本为：v2.1.8及以后版本。
+本篇指南匹配的 JPush Android SDK 版本为：v3.0.0 及以后版本。
 
 + [3 分钟快速 Demo（Android）](android_3m/)：如果您想要快速地测试、感受下极光推送的效果，请参考本文在几分钟内跑通Demo。
 + 极光推送[文档网站](http://docs.jiguang.cn/)上，有极光推送相关的所有指南、API、教程等全部的文档。包括本文档的更新版本，都会及时地发布到该网站上。
 + [极光社区](http://community.jiguang.cn/)网站：大家除了文档之外，还有问题与疑问，会到这里来提问题，以及时地得到解答。
-+ 如果您看到本文档，但还未下载Android SDK，请访问[SDK下载页面](/resources/)下载。
++ 如果您看到本文档，但还未下载Android SDK，请访问[SDK下载页面](http://docs.jiguang.cn/jpush/resources/)下载。
 
 ## 产品功能说明
 
@@ -28,14 +28,16 @@
 + SDK丰富的接口，可定制通知栏提示样式
 + 服务器大容量、稳定
 
-### jpush-android-release-2.x.y.zip 集成压缩包内容
+### jpush-android-release-3.x.y.zip 集成压缩包内容
 
-+ AndroidManifest_androidstudio_example.xml / AndroidManifest_eclipse_example.xml
++ AndroidManifest.xml
     + 客户端嵌入SDK参考的配置文件
-+ libs/jpush-android-2.x.y.jar 
-    + SDK Java 开发包
-+ libs/(cpu-type)/libjpush2xy.so 
-    + 各种CPU类型的native开发包
++ libs/jcore-android.v1.x.y.jar
+    + 极光开发者服务的核心包。
++ libs/jpush-android_v3.x.y.jar
+    + JPush SDK 开发包。
++ libs/(cpu-type)/libjcore1xy.so 
+    + 各种CPU类型的native开发包。
 + res
     + 集成SDK必须添加的资源文件
 + example
@@ -51,7 +53,33 @@
 ## jcenter 自动集成步骤
 
 
-***说明*** ： 使用jcenter自动集成的开发者，不需要在项目中添加jar和so，jcenter会自动完成依赖；在AndroidManifest.xml中不需要添加任何JPush SDK 相关的配置，jcenter会自动导入, 如果手动添加则是以开发者添加的为准覆盖掉默认配置。
+***说明*** ： 使用jcenter自动集成的开发者，不需要在项目中添加jar和so，jcenter会自动完成依赖；在AndroidManifest.xml中不需要添加任何JPush SDK 相关的配置，jcenter会自动导入。
+
++ 如果开发者需要修改组件属性，可以在本地的 AndroidManifest 中定义同名的组件并配置想要的属性，然后用 xmlns:tools 来控制本地组件覆盖 jcenter 上的组件。示例：
+
+		<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+			package="com.android.tests.flavorlib.app"
+			xmlns:tools="http://schemas.android.com/tools">
+			
+			<application
+				android:icon="@drawable/icon"
+				android:name="com.example.jpushdemo.ExampleApplication"
+				android:label="@string/app_name" >
+				
+				<service
+            		android:name="cn.jpush.android.service.PushService"
+            		android:process=":multiprocess"
+            		tools:node="replace" >
+            		
+            		……
+            	</service>
+            
+            ……
+          </application>  
+          
+          ……
+		</manifest>
+
 
 + 确认android studio的 Project 根目录的主 gradle 中配置了jcenter支持。（新建project默认配置就支持）
         
@@ -101,8 +129,8 @@
         dependencies {
             ......
             
-            compile 'cn.jiguang:jpush:2.1.8'  // 此处以SDK 2.1.8版本为例
-            
+            compile 'cn.jiguang.sdk:jpush:3.0.0'  // 此处以JPush 3.0.0 版本为例。
+            compile 'cn.jiguang.sdk:jcore:1.0.0'  // 此处以JCore 1.0.0 版本为例。
             ......
         }
         
@@ -118,10 +146,11 @@
 
 ## 手动集成步骤
 
-+ 解压缩 jpush-android-release-2.x.y.zip 集成压缩包。
-+ 复制 libs/jpush-sdk-2.x.y.jar 到工程 libs/ 目录下。
-+ 复制 libs/(cpu-type)/libjpush2xy.so 到你的工程中存放对应cpu类型的目录下。
-+ 复制 res/ 中drawable-hdpi, layout, values文件夹中的资源文件到你的工程中 res/ 对应的目录下。
++ 解压缩 jpush-android-release-3.x.y.zip 集成压缩包。
++ 复制 libs/jcore-android_v1.x.y.jar 到工程 libs/ 目录下。
++ 复制 libs/jpush-android_v3.x.y.jar 到工程 libs/ 目录下。
++ 复制 libs/(cpu-type)/libjcore1xy.so 到你的工程中存放对应cpu类型的目录下。
++ 复制 res/ 中drawable-hdpi, layout, values文件夹中的资源文件到你的工程中 res/ 对应同名的目录下。
 
 ***说明 1***：若没有res/drawable-xxxx/jpush_notification_icon这个资源默认使用应用图标作为通知icon，在5.0以上系统将应用图标作为statusbar icon可能显示不正常，用户可定义没有阴影和渐变色的icon替换这个文件，文件名不要变。
 
@@ -149,10 +178,10 @@
 主要步骤为：
 
 + 复制备注为 "Required" 的部分
-+ 将备注为替换包名的部分，替换为当前应用程序的包名
-+ 将AppKey替换为在Portal上注册该应用的的Key,例如（9fed5bcb7b9b87413678c407）
++ 将标注为“您应用的包名”的部分，替换为当前应用程序的包名
++ 将标注为“您应用的Appkey”的部分，替换为在Portal上注册该应用的的Key,例如：9fed5bcb7b9b87413678c407
 
-**温馨提示**
+**小帖士**
 
 如果使用android studio, 可在AndroidManifest中引用applicationId的值，在build.gradle配置中 defaultConfig节点下配置，如：
 
@@ -172,15 +201,15 @@ defaultConfig {
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="您应用的包名"
-    android:versionCode="216"
-    android:versionName="2.1.6"
+    android:versionCode="300"
+    android:versionName="3.0.0"
     >
     <uses-sdk android:minSdkVersion="9" android:targetSdkVersion="23" />
 
-        <!-- Required -->
-        <permission 
-            android:name="您应用的包名.permission.JPUSH_MESSAGE"  
-            android:protectionLevel="signature" />
+    <!-- Required -->
+    <permission 
+        android:name="您应用的包名.permission.JPUSH_MESSAGE"  
+        android:protectionLevel="signature" />
    
     <!-- Required -->
     <uses-permission android:name="您应用的包名.permission.JPUSH_MESSAGE" />
@@ -197,6 +226,7 @@ defaultConfig {
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
      
     <!-- Optional. Required for location feature -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" /> <!-- 用于开启 debug 版本的应用在6.0 系统上 层叠窗口权限 -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -207,11 +237,10 @@ defaultConfig {
     <application
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:name="Your Application">
+        android:name="Your Application Name">
          
         <!-- Required SDK 核心功能-->
-        <!-- option since 2.0.5 可配置PushService，DaemonService,PushReceiver,AlarmReceiver的android:process参数 将JPush相关组件设置为一个独立进程 -->
-        <!-- 如：android:process=":remote" -->
+        <!-- 可配置android:process参数将PushService放在其他进程中 -->
         <service
             android:name="cn.jpush.android.service.PushService"
             android:enabled="true"
@@ -236,7 +265,7 @@ defaultConfig {
              </intent-filter>
          </service>
 
-        <!-- Required -->
+        <!-- Required SDK核心功能-->
         <receiver
             android:name="cn.jpush.android.service.PushReceiver"
             android:enabled="true" >
@@ -255,10 +284,12 @@ defaultConfig {
                 <data android:scheme="package" />
             </intent-filter>
         </receiver>
-     <!-- Required SDK核心功能-->
+        
+        <!-- Required SDK核心功能-->
         <activity
             android:name="cn.jpush.android.ui.PushActivity"
             android:configChanges="orientation|keyboardHidden"
+            android:theme="@android:style/Theme.NoTitleBar"
             android:exported="false" >
             <intent-filter>
                 <action android:name="cn.jpush.android.ui.PushActivity" />
@@ -266,12 +297,14 @@ defaultConfig {
                 <category android:name="您应用的包名" />
             </intent-filter>
         </activity>
+        
         <!-- Required SDK核心功能-->
         <service
             android:name="cn.jpush.android.service.DownloadService"
             android:enabled="true"
             android:exported="false" >
         </service>
+        
         <!-- Required SDK核心功能-->
         <receiver android:name="cn.jpush.android.service.AlarmReceiver" />
 
@@ -302,7 +335,7 @@ defaultConfig {
         <!-- 目前这个渠道统计功能的报表还未开放。-->
         <meta-data android:name="JPUSH_CHANNEL" android:value="developer-default"/>
         <!-- Required. AppKey copied from Portal -->
-        <meta-data android:name="JPUSH_APPKEY" android:value="Your AppKey"/> 
+        <meta-data android:name="JPUSH_APPKEY" android:value="您应用的Appkey"/> 
     </application>
 </manifest>
 ```
@@ -404,7 +437,7 @@ JPush SDK 提供的 API 接口，都主要集中在 cn.jpush.android.api.JPushIn
 
 #### 添加统计代码
 
-+ 参考文档： [统计分析 API](android_api/#api_2)
++ 参考文档： [统计分析 API](http://docs.jiguang.cn/jpush/client/Android/android_api/#api_2)
 
 #### 调用示例代码（参考 example 项目）
 
@@ -432,10 +465,15 @@ JPush SDK 提供的 API 接口，都主要集中在 cn.jpush.android.api.JPushIn
 + 确认测试手机（或者模拟器）已成功连入网络
     ＋ 客户端调用 init 后不久，如果一切正常，应有登录成功的日志信息
 + 启动应用程序，在 Portal 上向应用程序发送自定义消息或者通知栏提示。详情请参考管理[Portal](../../console/Instructions)。
-    + 在几秒内，客户端应可收到下发的通知或者正定义消息
-如果 SDK 工作正常，则日志信息会如下图所示：
+    + 在几秒内，客户端应可收到下发的通知或者正定义消息，如果 SDK 工作正常，则日志信息会如下：
 
-![](../image/jpush_android_log.jpg) 
+```
+[JPushInterface] action:init
+
+.......
+
+[PushService] Login succeed!
+```
 
 如图所示，客户端启动分为 4 步：
 
@@ -444,51 +482,6 @@ JPush SDK 提供的 API 接口，都主要集中在 cn.jpush.android.api.JPushIn
 + 检查 Androidmanifest.xml，如果有 Required 的权限不存在，则启动失败
 + 连接服务器登录，如果存在网络问题，则登陆失败,或者前面三步有问题，不会启动JPush SDK
 
-## 从Eclipse工程导入到Android Studio
-
-JPush Demo 是极光推送随压缩包提供的用法示例Demo，原本适用于Eclipse工程。本教程将指导JPush用户用最简单的方法将极光推送Demo导入Android Studio。
-
-#### 快速集成JPush
-参考[3 分钟快速 Demo（Android）](android_3m)，把JPush跑起来。之后你在Eclipse包浏览器中有可运行的项目。
-
-![](../image/Image.png)
-
-#### 右键点击demo工程，选择Export
-
-![](../image/Image_1.png)
-
-#### 选择导出目标位Gradle build文件，并确认
-
-![](../image/Image_2.png)
-![](../image/Image_3.png)
-![](../image/Image_4.png)
-![](../image/Image_5.png)
-
-#### 从文件浏览器中检查
-
-在Eclipse的workspace中，该Demo工程的文件夹中，生成了Gradle相关配置文件.
-
-![](../image/Image_6.png)
-
-#### 打开你的Android Studio工程，选择 File->Import Module
-
-在Android Studio中，一次只能打开一个Project，它相当于Eclipse中的一个workspace。而我们从Eclipse中导出的一个Project，则相当于Android Studio中的一个Module。
-
-![](../image/Image_7.png)
-
-#### 选择Eclipse workspace下的Demo工程，并确认
-
-![](../image/Image_8.png)
-
-![](../image/Image_9.png)
-
-#### 查看导入的Module，并且gradle会自动生成编译选项
-
-![](../image/Image_10.png)
-
-![](../image/Image_11.png)
-
-现在就可以将极光推送Demo作为Android Studio的Module运行在真机或虚拟机上，并调试了
 
 ## 高级功能
 
