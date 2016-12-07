@@ -572,5 +572,12 @@ JMessage 服务器端报的错误码。有可能出现在各平台的 SDK 里。
 </table>
 </div>
 
+## 相关文档
+
++ [iOS SDK 错误码](../client/im_errorcode_ios/)
++ [Android SDK 错误码](../client/im_errorcode_android/)
+
+
+
 
 
