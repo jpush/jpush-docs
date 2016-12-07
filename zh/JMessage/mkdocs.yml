@@ -39,7 +39,6 @@ pages:
   - '消息协议': 'advanced/im_message_protocol.md'
   - '业务对象': 'advanced/im_objects.md'
   - '实时消息路由': 'advanced/jmessage_callback.md'
-  - '高级话题': 'advanced/jmessage_topics.md'
 
 - 最近更新: 'updates.md'
 
