@@ -66,9 +66,29 @@
       <td>用户未在登录状态</td>
     </tr>
     <tr>
+      <td>863005</td>
+      <td>Request number over flow</td>
+      <td>请求用户数量超出限制（目前单次最大请求500个）</td>
+    </tr>
+    <tr>
       <td>863006</td>
       <td>User repeat Login fault</td>
       <td>重复登录的错误</td>
+    </tr>
+    <tr>
+      <td>863007</td>
+      <td>User is logouting</td>
+      <td>用户正在退出的过程中</td>
+    </tr>
+    <tr>
+      <td>863008</td>
+      <td>Add friend fault</td>
+      <td>添加好友失败</td>
+    </tr>
+    <tr>
+      <td>863009</td>
+      <td>Delete friend fault</td>
+      <td>删除好友失败</td>
     </tr>
     <tr>
       <td>864001</td>
@@ -94,6 +114,11 @@
       <td>864005</td>
       <td>Uploading media file is empty</td>
       <td>上传的媒体文件意外丢失</td>
+    </tr>
+    <tr>
+      <td>864007</td>
+      <td>Media Hash value verify failure</td>
+      <td>媒体文件Hash检验失败</td>
     </tr>
     <tr>
       <td>865001</td>
@@ -150,4 +175,6 @@
     
 </table>
 </div>
+
+<br>若以上列表中没有找到对应的错误码，可查看[服务端错误码](https://docs.jiguang.cn/jmessage/client/im_errorcode_server/)## 相关文档+ [Android SDK 错误码](../client/im_errorcode_android/)+ [服务端错误码](https://docs.jiguang.cn/jmessage/client/im_errorcode_server/)
 
