@@ -1,4 +1,38 @@
+
+// 兼容手机页面
+function setPageSize() {
+    var w = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+    if (w < 800) {
+        $("#navbar-left").hide();
+        $(".header").hide();
+        $("#rtd-search-form").hide();
+        $(".rst-content").closest(".col-lg-8").width(w-30);
+        $("html").css({"overflow-x":"hidden", "width":w+"px"});
+        // $("#nav_more").show();
+        //
+        // var mask = '<div id="my_mask" style="z-index: 99; pointer-events: none; position: fixed; top: 0; left: 0; bottom: 0; right: 0; background: rgba(0,0,0,.8);"></div>'
+        // $("#nav_more").on("click", function(){
+        //     $("body").append(mask);
+        //     $("#navbar-left").css({"z-index":100}).show();
+        // });
+    } else {
+        $("#navbar-left").show();
+        $(".header").show();
+        $("#rtd-search-form").show();
+        $(".rst-content").closest(".col-lg-8").removeAttr("style");
+        $("html").removeAttr("style");
+        // $("#nav_more").hide();
+    }
+}
+
 $(document).ready(function() {
+
+    // 兼容手机页面
+    setPageSize();
+    $(window).resize(function(){
+        setPageSize();
+    });
+    
     url = window.location.href;
     if(url.indexOf("jpush")>0){
         $("#jpush-top").css("border-bottom", "solid 3px #1b75bb");
