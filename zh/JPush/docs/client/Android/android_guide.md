@@ -411,6 +411,9 @@ defaultConfig {
         -dontwarn cn.jpush.**
         -keep class cn.jpush.** { *; }
         
+        -dontwarn cn.jiguang.**
+        -keep class cn.jiguang.** { *; }
+        
 
 + v2.0.5 ~ v2.1.7 版本有引入 gson 和 protobuf ，增加排除混淆的配置。(2.1.8版本不需配置)
   
