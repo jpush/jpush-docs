@@ -964,6 +964,11 @@ JPushInterface.setLatestNotificationNumber(context, 3);
 			<td>短时间内操作过于频繁</td>
 		</tr>
 		<tr >
+			<td>6012</td>
+			<td>在JPush服务stop状态下设置了tag或alias</td>
+			<td>3.0.0版本新增的错误码。开发者可根据这个错误码的信息做相关处理或者提示。</td>
+		</tr>
+		<tr >
 			<td>-997</td>
 			<td>注册失败</td>
 			<td>（一般是由于没有网络造成的）如果确保设备网络正常，还是一直遇到此问题，则还有另外一个原因：JPush 服务器端拒绝注册。而这个的原因一般是：你当前的 App 的 Android 包名，以及 appKey ，与你在 Portal 上注册的应用的 Android 包名与 AppKey 不相同。</td>

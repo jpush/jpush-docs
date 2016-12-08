@@ -1,6 +1,6 @@
-# 消息协议
+<h1>消息协议</h1>
 
-### 概述
+## 概述
 
 JMessage 对于不同的消息类型，有一个 JSON 格式的消息协议。这个业务级别的协议，由发送者编码，由接收者解码，并处理接收到的消息。
 
@@ -131,7 +131,7 @@ msg_type = custom
 }
 ```
 
-### 相关文档
+## 相关文档
 
 + [JMessage 产品简介](../guideline/jmessage_guide/)
 + [IM REST API](https://docs.jiguang.cn/jmessage/server/rest_api_im/)
