@@ -25,8 +25,7 @@
                     </div>
                 </div>
                 <div class="hr">
-					<hr />
-
+                    <hr />
             </div>
         </li>
         <li>
@@ -50,7 +49,6 @@
                         <a href="https://www.jiguang.cn/downloads/sdk/sms_ios/">下载</a>
                     </div>
                 </div>
-
         </li>
     </ul>
 </div>
