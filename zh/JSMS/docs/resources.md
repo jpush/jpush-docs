@@ -19,10 +19,9 @@
                         <li><a href="../client/Android_SMS_SDK">Android SDK集成指南</a></li>
                         <div style=" clear:both; visibility:hidden;"/>
                     </ul>
-                    </div>
-                    <div class="download-icon">
-                        <a href="https://www.jiguang.cn/downloads/sdk/sms_android/">下载</a>
-                    </div>
+                </div>
+                <div class="download-icon">
+                    <a href="https://www.jiguang.cn/downloads/sdk/sms_android/">下载</a>
                 </div>
                 <div class="hr">
                     <hr />
@@ -45,10 +44,9 @@
                         <li><a href="../client/iOS_SMS_SDK">iOS SDK 集成指南</a></li>
                         <div style=" clear:both; visibility:hidden;"/>
                     </ul>
-                    </div>
-                    <div class="download-icon">
-                        <a href="https://www.jiguang.cn/downloads/sdk/sms_ios/">下载</a>
-                    </div>
+                </div>
+                <div class="download-icon">
+                    <a href="https://www.jiguang.cn/downloads/sdk/sms_ios/">下载</a>
                 </div>
             </div>
         </li>
@@ -117,11 +115,8 @@
                     <a href="https://sdkfiledl.jiguang.cn/jpush-api-php-client-3.5.1.zip">下载</a>
                 </div>
             </div>
-            <div class="hr">
-                <hr />
-            </div>
         </li>
         <div style=" clear:both; visibility:hidden;"/>
     </ul>
 </div>
-    
+
