@@ -17,6 +17,7 @@
                     <p>请参考如下文档来集成SDK：</p>
                     <ul class="download-info-ul">
                         <li><a href="../client/Android_SMS_SDK">Android SDK集成指南</a></li>
+                        <div style=" clear:both; visibility:hidden;">
                     </ul>
                     </div>
                     <div class="download-icon">
@@ -25,7 +26,7 @@
                 </div>
                 <div class="hr">
 					<hr />
-                </div>
+
             </div>
         </li>
         <li>
@@ -49,7 +50,7 @@
                         <a href="https://www.jiguang.cn/downloads/sdk/sms_ios/">下载</a>
                     </div>
                 </div>
-            </div>
+
         </li>
     </ul>
 </div>
