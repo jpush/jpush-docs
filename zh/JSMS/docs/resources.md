@@ -23,9 +23,9 @@
                 <div class="download-icon">
                     <a href="https://www.jiguang.cn/downloads/sdk/sms_android/">下载</a>
                 </div>
-                <div class="hr">
-                    <hr />
-                </div>
+            </div>
+            <div class="hr">
+                <hr />
             </div>
         </li>
         <li>
