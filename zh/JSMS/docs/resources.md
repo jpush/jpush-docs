@@ -1,6 +1,6 @@
 # 资源下载
 ## 客户端 SDK 下载
-
+<table>
 <div class="download">
     <ul>
         <li>
@@ -50,11 +50,14 @@
                 </div>
             </div>
         </li>
+        <div style=" clear:both; visibility:hidden;"></div>
     </ul>
 </div>
+</table>
 
 ## 服务器端 SDK 下载
 
+<table>
 <div class="download">
     <ul>
         <li>
@@ -119,4 +122,4 @@
         <div style=" clear:both; visibility:hidden;"></div>
     </ul>
 </div>
-
+</table>
