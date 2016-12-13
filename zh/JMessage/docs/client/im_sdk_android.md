@@ -345,7 +345,7 @@ JMessageClient.deleteGroupConversation(long groupID);
 
 + boolean 是否删除成功。
 
-### 创建消息
+### 消息管理
 
 #### 创建文字消息
 ```
@@ -518,7 +518,7 @@ JMessageClient.createGroupCustomMessage(long groupID,
   Map<? extends String, ?> valuesMap)
 ```
 
-### 发送消息
+#### 发送消息
 
 向服务器给发送对象发送消息，并且保存到本地会话。
 ```
@@ -537,7 +537,7 @@ message.setOnSendCompleteCallback(BasicCallback sendCompleteCallback)
 
 + BasicCallback sendCompleteCallback 回调接口
 
-#### 代码示例
+##### 代码示例
 ```
 Message message = mConversation.createSendMessage(new TextContent(“Hello jmessage.”));
 message.setOnSendCompleteCallback(new BasicCallback() {
@@ -553,7 +553,7 @@ message.setOnSendCompleteCallback(new BasicCallback() {
 JMessageClient.sendMessage(message);
 ```
 
-### 接收消息
+#### 接收消息
 sdk收到消息时，会上抛消息事件[MessageEvent](./im_android_api_docs/cn/jpush/im/android/api/event/MessageEvent.html?_blank) 或 [OfflineMessageEvent](./im_android_api_docs/cn/jpush/im/android/api/event/OfflineMessageEvent.html)，开发者可以通过这个事件来拿到具体的Message对象，进而执行UI刷新或者其他相关逻辑。具体事件处理方法见[事件处理](#Event)一节
 
 
@@ -580,76 +580,6 @@ sdk升级到1.5.0版本（或以上）后，上层需要针对消息接收的处
 + 除了`MessageEvent`之外，新增一个事件类型`OfflineMessageEvent`的接收,用来接收离线消息事件。
 + 对于需要消息漫游的开发者，还需增加`ConversationRefreshEvent`事件的接收，当会话中的漫游消息同步完成后，sdk会触发此事件通知上层刷新会话。
 
-
-
-### 群组@功能
-***Since 1.5.0***  
-消息发送方可以发一条带有@list的消息。  
-接收方收到带有@list的消息之后，如果@list中包含了自己，则在sdk默认弹出的通知栏提示中会有相应的提示，如"xxx在群中@了你"。  
-#### 创建@群成员的消息
-```
-conversation.createSendMessage(MessageContent content, List<UserInfo> atList, String customFromName)
-```
-参数说明
-
-+ MessageContent content 消息内容对象
-+ List<UserInfo> atList 被@用户的userInfo list
-+ String customFromName 自定义fromName
-
-返回
-
-+ Message 消息对象。
-
-#### 判断消息是否@了自己
-```
-message.isAtMe()
-```
-返回
-
-+ boolean true - atList中包含了自己， false - atList中不包含自己
-
-#### 获取消息中@的群成员列表
-```
-message.getAtUserList(GetUserInfoListCallback callback)
-```
-参数说明
-
-+ GetUserInfoListCallback callback 获取用户列表的回调接口。
-
-#### 代码示例
-
-``` java
-	//消息发送方
-    Conversation conv = Conversation.createGroupConversation(gid);
-    GroupInfo groupInfo = (GroupInfo) conv.getTargetInfo();
-    List<UserInfo> atList = new ArrayList<UserInfo>();
-    atList.add(groupInfo.getGroupMemberInfo("user1", appkey));//获取到被@的群成员的userinfo，并填充到atList中去。
-    atList.add(groupInfo.getGroupMemberInfo("user2", appkey));
-    
-    //创建一条带有atList的消息。
-    Message msg = conv.createSendMessage(new TextContent("a message with atList!"), atList, null);
-    JMessageClient.sendMessage(msg);//发送消息
-
-
-
-	//消息接收方
-	public void onEvent(MessageEvent event){
-		Message msg = event.getMessage();//收到消息事件，从消息事件中拿到消息对象
-		msg.isAtMe(); //判断这条消息是否@了我
-		
-		//获取消息中包含的完整的atList
-		msg.getAtUserList(new GetUserInfoListCallback() {
-		    @Override
-		    public void gotResult(int responseCode, String responseMessage, List<UserInfo> userInfoList) {
-		        if(responseCode == 0){
-		        	//获取atList成功
-		        }else{
-		        	//获取atList失败
-		        }
-		    }
-      });
-	}
-```
 
 
 ###<span id="Event">事件处理</span>
@@ -1118,7 +1048,78 @@ JMessageClient.getBlockedGroupsList(GetGroupInfoListCallback callback)
 
 + GetGroupInfoListCallback callback 结果回调。
 
+### 群组@功能
+***Since 1.5.0***  
+消息发送方可以发一条带有@list的消息。  
+接收方收到带有@list的消息之后，如果@list中包含了自己，则在sdk默认弹出的通知栏提示中会有相应的提示，如"xxx在群中@了你"。  
+#### 创建@群成员的消息
+```
+conversation.createSendMessage(MessageContent content, List<UserInfo> atList, String customFromName)
+```
+参数说明
+
++ MessageContent content 消息内容对象
++ List<UserInfo> atList 被@用户的userInfo list
++ String customFromName 自定义fromName
+
+返回
+
++ Message 消息对象。
+
+#### 判断消息是否@了自己
+```
+message.isAtMe()
+```
+返回
+
++ boolean true - atList中包含了自己， false - atList中不包含自己
+
+#### 获取消息中@的群成员列表
+```
+message.getAtUserList(GetUserInfoListCallback callback)
+```
+参数说明
+
++ GetUserInfoListCallback callback 获取用户列表的回调接口。
+
+#### 代码示例
+
+``` java
+	//消息发送方
+    Conversation conv = Conversation.createGroupConversation(gid);
+    GroupInfo groupInfo = (GroupInfo) conv.getTargetInfo();
+    List<UserInfo> atList = new ArrayList<UserInfo>();
+    atList.add(groupInfo.getGroupMemberInfo("user1", appkey));//获取到被@的群成员的userinfo，并填充到atList中去。
+    atList.add(groupInfo.getGroupMemberInfo("user2", appkey));
+    
+    //创建一条带有atList的消息。
+    Message msg = conv.createSendMessage(new TextContent("a message with atList!"), atList, null);
+    JMessageClient.sendMessage(msg);//发送消息
+
+
+
+	//消息接收方
+	public void onEvent(MessageEvent event){
+		Message msg = event.getMessage();//收到消息事件，从消息事件中拿到消息对象
+		msg.isAtMe(); //判断这条消息是否@了我
+		
+		//获取消息中包含的完整的atList
+		msg.getAtUserList(new GetUserInfoListCallback() {
+		    @Override
+		    public void gotResult(int responseCode, String responseMessage, List<UserInfo> userInfoList) {
+		        if(responseCode == 0){
+		        	//获取atList成功
+		        }else{
+		        	//获取atList失败
+		        }
+		    }
+      });
+	}
+```
+
+
 ### 黑名单管理
+可以将对方用户加入到“黑名单”列表中，加入之后，我方依然能给对方发消息，但是对方给我发消息时会返回指定错误码，发送消息失败。
 #### 将用户加入黑名单
 ```
 JMessageClient.addUsersToBlacklist(List<String> usernames, BasicCallback callback)
@@ -1467,10 +1468,10 @@ class ContactNotifyEventReceiver extends Activity{
 
 ```
 
-## 免打扰
+### 免打扰相关
 可以将用户/群组添加到“免打扰”列表中，收到免打扰用户/群组发过来的消息时，sdk不会弹出默认的通知提示，但消息事件照常下发。
 
-### 获取免打扰列表
+#### 获取免打扰列表
 ```
 JMessageClient.getNoDisturblist(GetNoDisurbListCallback callback)
 ```
@@ -1478,11 +1479,11 @@ JMessageClient.getNoDisturblist(GetNoDisurbListCallback callback)
 
 + GetNoDisurbListCallback callback 回调接口。
 	
-### 免打扰设置
+#### 设置普通免打扰
 见api doc中[UserInfo](./im_android_api_docs/cn/jpush/im/android/api/model/UserInfo.html)和[GroupInfo](./im_android_api_docs/cn/jpush/im/android/api/model/GroupInfo.html)相关接口
 
 
-### 全局免打扰设置
+#### 设置全局免打扰
 设置全局免打扰之后，收到所有消息都将不会有通知栏通知，效果类似<br> `setNotificationMode(JMessageClient.NOTI_MODE_NO_NOTIFICATION)`，但是此设置在用户换设备之后也会生效。
 
 ```
@@ -1493,7 +1494,7 @@ JMessageClient.setNoDisturbGlobal(int noDisturbGlobal, BasicCallback callback)
 + int noDisturbGlobal 全局免打扰标志，1表示设置，其他表示取消设置。
 + BasicCallback callback 回调接口
 
-### 获取全局免打扰标识
+#### 获取全局免打扰标识
 
 ```
 JMessageClient.getNoDisturbGlobal(IntegerCallback callback)
@@ -1502,7 +1503,7 @@ JMessageClient.getNoDisturbGlobal(IntegerCallback callback)
 
 + IntegerCallback callback 回调接口。
 
-## <span id="CrossApp">跨应用通信</span>
+### <span id="CrossApp">跨应用通信</span>
 <font color= SteelBlue>说明：跨应用通信是指允许同一开发者账号下的不同应用能互相通信，以满足开发者对于不同appKey下应用通信的需求。</font>
 </br>JMessage Android SDK在v1.2.0版本中实现了单聊跨应用，v1.3.0版本中实现了群聊以及其他一些功能的跨应用，
 具体对应关系见下表：
@@ -1528,7 +1529,7 @@ JMessageClient.getNoDisturbGlobal(IntegerCallback callback)
 
 **：实现跨应用群聊的关键在于群组中加入跨应用的群成员，而创建会话和发送消息的流程和普通的群聊实现方式一致。*
 
-### 跨应用相关接口摘要
+#### 跨应用相关接口摘要
 
 详细接口说明请前往极光IM [Android API Java docs](./im_android_api_docs/)
 
@@ -1582,9 +1583,9 @@ getGroupMemberInfo(String username, String appKey)
 ```    
 
 
-### 跨应用相关具体实现
+#### 跨应用相关具体实现
 
-#### 跨应用获取用户信息
+##### 跨应用获取用户信息
 
 通过指定appKey可以实现获取跨应用用户信息。
 
@@ -1610,7 +1611,7 @@ JMessageClient.getUserInfo("username", "appKey", new GetUserInfoCallback() {
 });
 ```
 
-#### 跨应用单聊实现
+##### 跨应用单聊实现
 
 创建单聊会话时指定对方用户所属appKey，即可建立起一个和跨应用用户的单聊会话。
 
@@ -1637,7 +1638,7 @@ Message message = con.createSendMessage(content);
 JMessageClient.sendMessage(message);
 ```
 
-#### 跨应用群聊实现
+##### 跨应用群聊实现
 
 实现跨应用群聊的关键在于群组中加入跨应用的群成员，而创建会话和发送消息的流程和普通的群聊实现方式一致。
 
@@ -1698,7 +1699,7 @@ JMessageClient.addGroupMembers(testGid, "appKey", userNameList, new BasicCallbac
 });
 ```
 
-#### 跨应用添加黑名单实现
+##### 跨应用添加黑名单实现
 
 通过以下接口在操作黑名单列表时指定appKey，即可实现将跨应用的用户加入黑名单。
 
@@ -1741,7 +1742,7 @@ JMessageClient.addUsersToBlacklist(usernames, "appKey",new BasicCallback() {
 ```
 
 
-#### 跨应用免打扰实现
+##### 跨应用免打扰实现
 
 原有接口无需变动。免打扰相关接口是在userinfo对象上的实例接口，也就是说只要获取到的user是跨应用的用户，直接调用该userinfo对象的免打扰接口就可实现跨应用
 
@@ -1768,9 +1769,9 @@ JMessageClient.getUserInfo("username", "appKey", new GetUserInfoCallback() {
 });
 ```
 
-## 类定义
+### 类定义
 
-### 会话与消息
+#### 会话与消息
 
 ```
 cn.jpush.im.android.api.model.Conversation
@@ -1822,7 +1823,7 @@ Message message = conv.createSendMessage(text);
 JMessageClient.sendMessage(message);
 ```
 
-### 聊天内容
+#### 聊天内容
 
 聊天内容父类
 
@@ -1858,9 +1859,9 @@ FileContent fileContent = new FileContent(new File("/sdcard/file.xxx"));
 LocationContent locationContent = new LocationContent(111.1,222.2,500,"xx省xx市xx区xx街xx号");
 ```
 
-### 回调定义
+#### 回调定义
 
-#### BasicCallback
+##### BasicCallback
 
 ```
 public abstract class BasicCallback {
@@ -1897,7 +1898,7 @@ public abstract class BasicCallback {
 
 ```
 
-## 错误码定义
+### 错误码定义
 
 参考文档：[IM Android SDK 错误码列表](./im_errorcode_android)
 
