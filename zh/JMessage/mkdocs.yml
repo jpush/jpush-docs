@@ -35,10 +35,16 @@ pages:
   - 'REST Report V2': 'server/rest_api_im_report_v2.md'
   - 'REST Report': 'server/rest_api_im_report.md'
   - 'Server ErrorCode 定义': 'client/im_errorcode_server.md'
+
 - 高级:
   - '消息协议': 'advanced/im_message_protocol.md'
   - '业务对象': 'advanced/im_objects.md'
   - '实时消息路由': 'advanced/jmessage_callback.md'
+
+- 服务端SDK:
+  - 'Java SDK': 'server/sdk/java_sdk.md'
+  - 'Python SDK': 'server/sdk/python_sdk.md'
+  - 'PHP SDK': 'server/sdk/php_sdk.md'
 
 - 最近更新: 'updates.md'
 
