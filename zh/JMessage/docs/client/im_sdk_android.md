@@ -582,76 +582,6 @@ sdk升级到1.5.0版本（或以上）后，上层需要针对消息接收的处
 
 
 
-### 群组@功能
-***Since 1.5.0***  
-消息发送方可以发一条带有@list的消息。  
-接收方收到带有@list的消息之后，如果@list中包含了自己，则在sdk默认弹出的通知栏提示中会有相应的提示，如"xxx在群中@了你"。  
-#### 创建@群成员的消息
-```
-conversation.createSendMessage(MessageContent content, List<UserInfo> atList, String customFromName)
-```
-参数说明
-
-+ MessageContent content 消息内容对象
-+ List<UserInfo> atList 被@用户的userInfo list
-+ String customFromName 自定义fromName
-
-返回
-
-+ Message 消息对象。
-
-#### 判断消息是否@了自己
-```
-message.isAtMe()
-```
-返回
-
-+ boolean true - atList中包含了自己， false - atList中不包含自己
-
-#### 获取消息中@的群成员列表
-```
-message.getAtUserList(GetUserInfoListCallback callback)
-```
-参数说明
-
-+ GetUserInfoListCallback callback 获取用户列表的回调接口。
-
-#### 代码示例
-
-``` java
-	//消息发送方
-    Conversation conv = Conversation.createGroupConversation(gid);
-    GroupInfo groupInfo = (GroupInfo) conv.getTargetInfo();
-    List<UserInfo> atList = new ArrayList<UserInfo>();
-    atList.add(groupInfo.getGroupMemberInfo("user1", appkey));//获取到被@的群成员的userinfo，并填充到atList中去。
-    atList.add(groupInfo.getGroupMemberInfo("user2", appkey));
-    
-    //创建一条带有atList的消息。
-    Message msg = conv.createSendMessage(new TextContent("a message with atList!"), atList, null);
-    JMessageClient.sendMessage(msg);//发送消息
-
-
-
-	//消息接收方
-	public void onEvent(MessageEvent event){
-		Message msg = event.getMessage();//收到消息事件，从消息事件中拿到消息对象
-		msg.isAtMe(); //判断这条消息是否@了我
-		
-		//获取消息中包含的完整的atList
-		msg.getAtUserList(new GetUserInfoListCallback() {
-		    @Override
-		    public void gotResult(int responseCode, String responseMessage, List<UserInfo> userInfoList) {
-		        if(responseCode == 0){
-		        	//获取atList成功
-		        }else{
-		        	//获取atList失败
-		        }
-		    }
-      });
-	}
-```
-
-
 ###<span id="Event">事件处理</span>
 #### 事件接收类的注册
 ```
@@ -1118,8 +1048,78 @@ JMessageClient.getBlockedGroupsList(GetGroupInfoListCallback callback)
 
 + GetGroupInfoListCallback callback 结果回调。
 
+### 群组@功能
+***Since 1.5.0***  
+消息发送方可以发一条带有@list的消息。  
+接收方收到带有@list的消息之后，如果@list中包含了自己，则在sdk默认弹出的通知栏提示中会有相应的提示，如"xxx在群中@了你"。  
+#### 创建@群成员的消息
+```
+conversation.createSendMessage(MessageContent content, List<UserInfo> atList, String customFromName)
+```
+参数说明
+
++ MessageContent content 消息内容对象
++ List<UserInfo> atList 被@用户的userInfo list
++ String customFromName 自定义fromName
+
+返回
+
++ Message 消息对象。
+
+#### 判断消息是否@了自己
+```
+message.isAtMe()
+```
+返回
+
++ boolean true - atList中包含了自己， false - atList中不包含自己
+
+#### 获取消息中@的群成员列表
+```
+message.getAtUserList(GetUserInfoListCallback callback)
+```
+参数说明
+
++ GetUserInfoListCallback callback 获取用户列表的回调接口。
+
+#### 代码示例
+
+``` java
+	//消息发送方
+    Conversation conv = Conversation.createGroupConversation(gid);
+    GroupInfo groupInfo = (GroupInfo) conv.getTargetInfo();
+    List<UserInfo> atList = new ArrayList<UserInfo>();
+    atList.add(groupInfo.getGroupMemberInfo("user1", appkey));//获取到被@的群成员的userinfo，并填充到atList中去。
+    atList.add(groupInfo.getGroupMemberInfo("user2", appkey));
+    
+    //创建一条带有atList的消息。
+    Message msg = conv.createSendMessage(new TextContent("a message with atList!"), atList, null);
+    JMessageClient.sendMessage(msg);//发送消息
+
+
+
+	//消息接收方
+	public void onEvent(MessageEvent event){
+		Message msg = event.getMessage();//收到消息事件，从消息事件中拿到消息对象
+		msg.isAtMe(); //判断这条消息是否@了我
+		
+		//获取消息中包含的完整的atList
+		msg.getAtUserList(new GetUserInfoListCallback() {
+		    @Override
+		    public void gotResult(int responseCode, String responseMessage, List<UserInfo> userInfoList) {
+		        if(responseCode == 0){
+		        	//获取atList成功
+		        }else{
+		        	//获取atList失败
+		        }
+		    }
+      });
+	}
+```
+
+
 ### 黑名单管理
-可以将对方用户加入到“黑名单”列表中，加入之后，我方依然能给对方发消息，但是对方
+可以将对方用户加入到“黑名单”列表中，加入之后，我方依然能给对方发消息，但是对方给我发消息时会返回指定错误码，发送消息失败。
 #### 将用户加入黑名单
 ```
 JMessageClient.addUsersToBlacklist(List<String> usernames, BasicCallback callback)
