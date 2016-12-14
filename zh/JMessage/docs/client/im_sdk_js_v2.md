@@ -3,17 +3,17 @@
 
 ## 概述
 
-极光 IM Web SDK 为 Web 应用提供一个 IM 系统开发框架, 屏蔽掉 IM 系统的复杂的细节, 对外提供较为简洁的 API 接口, 方便第三方应用快速集成 IM 功能。
+极光Web IM SDK 为 Web 应用提供一个 IM 系统开发框架, 屏蔽掉 IM 系统的复杂的细节, 对外提供较为简洁的 API 接口, 方便第三方应用快速集成 IM 功能。
 
 ## 版本说明
 
-JMessage Web SDK V2版本对SDK通讯协议进行重新封装与优化:
+JMessage JS SDK V2版本对SDK通讯协议进行重新封装与优化:
 
 * 提供更方便的API调用方式: 使用Promise风格的API，简化了接口调用方式，开发者可以更简单方便的集成SDK。
 * 更可靠的消息重试方案: 新的SDK优化了消息重试技术方案，当弱网络环境下，出现消息发送失败，SDK会自动重试5次，并保证每次API调用都是幂等的，开发者无需担心因为消息重试导致重复发送的情况。
 * 支持单页面多聊天实例: 新的SDK修改了实例化方式，开发者可以不需要在页面初始化的时候就初始化JMessage。在需要聊天功能的时候再进行初始化即可，并且一个页面可以初始化多个通道，实现多账号登录。
 
-因为V2 API全面改造了API，为了提供更好的用户体验，V2 API不向下兼容，开发者需要根据JMessage Web SDK文档重新接入SDK。
+因为V2 API全面改造了API，为了提供更好的用户体验，V2 API不向下兼容，开发者需要根据JMessage JS SDK文档重新接入SDK。
 
 ## 鉴权
 
@@ -47,7 +47,7 @@ signature = md5(appkey=appkey&timestamp=timestamp&random_str=random_str&key=secr
 
 ## 快速开始
 
-访问极光官网获取最新的 Web SDK。 然后在页面中引入：
+访问极光官网获取最新的WebIM JS SDK。 然后在页面中引入：
 
 ```
 <script src='./jmessage-sdk-web.min.js'></script>
@@ -100,14 +100,29 @@ JIM.sendSingleMsg({
 
 JMessage#init()
 
-**Params:**
+**请求参数:**
 
-- appkey : 开发者在极光平台注册的IM应用appkey
-- random_str : 20-36长度的随机字符串, 作为签名加salt使用
-- timestamp : 当初时间戳，用于防止重放攻击
-- signature : 签名
+| KEY        | REQUIRE | DESCRIPTION           |
+| ---------- | ------- | --------------------- |
+| appkey     | TRUE    | 开发者在极光平台注册的IM应用appkey |
+| random_str | TRUE    | 随机字符串                 |
+| timestamp  | TRUE    | 当初时间戳                 |
+| signature  | TRUE    | 签名                    |
 
+**请求示例**
 
+```
+  JIM.init({
+               "appkey" : "<appkey>",
+           "random_str" : "<random_str>",
+            "signature" : "<signature>",
+            "timestamp" : "<timestamp>"
+        }).onSuccess(function(data) {
+           //do something
+          }).onFail(function(data) {
+            // do something
+        });
+```
 
 ### 注册与登录
 
@@ -158,6 +173,20 @@ JIM.login({
 }).onSuccess(function(data) {
     // do something
 });
+```
+
+#### 登出
+
+JMessage#loginOut()
+
+**请求参数:**
+
+无
+
+**请求示例**
+
+```
+JIM.loginOut();//无回调函数，调用则成功
 ```
 
 ### 用户管理
@@ -310,7 +339,7 @@ JMessage#sendSingleMsg()
                  'content' : '<textContent>',
                  'appkey' : '<targetAppkey>',
                   'extras' : 'json object'
-               }).onSuccess(function(data) {
+               }).onSuccess(function(data , msg) {
                   // do something
                }).onFail(function(data) {
                   // do something
@@ -340,7 +369,7 @@ JMessage#sendSinglePic()
                  'image' : '<formData with image>',
                  'appkey' : '<targetAppkey>',
                  'extras' : 'json object'
-               }).onSuccess(function(data) {
+               }).onSuccess(function(data , msg) {
                   // do something
                }).onFail(function(data) {
                   // do something
@@ -370,7 +399,7 @@ JMessage#sendSingleFile()
                  'file' : '<formData with file>',
                  'appkey' : '<targetAppkey>',
                  'extras' : 'json object'
-               }).onSuccess(function(data) {
+               }).onSuccess(function(data , msg) {
                   // do something
                }).onFail(function(data) {
                   // do something
@@ -406,7 +435,7 @@ JMessage#sendSingleLocation()
                  'label' : '<address label>'
                  'appkey' : '<targetAppkey>',
                  'extras' : 'json object'
-               }).onSuccess(function(data) {
+               }).onSuccess(function(data , msg) {
                   // do something
                }).onFail(function(data) {
                   // do something
@@ -434,7 +463,7 @@ JMessage#sendSingleCustom()
 			     'target_nickname' : '<targetNickname>',
                  'custome' : '<json object>'
                  'appkey' : '<targetAppkey>'
-               }).onSuccess(function(data) {
+               }).onSuccess(function(data , msg) {
                   // do something
                }).onFail(function(data) {
                   // do something
@@ -462,7 +491,7 @@ JMessage#sendGroupMsg()
 			     'target_gname' : '<targetGName>',
                  'content' : '<textContent>',
                  'extras' : '<json object>'
-               }).onSuccess(function(data) {
+               }).onSuccess(function(data , msg) {
                   // do something
                }).onFail(function(data) {
                   // do something
@@ -490,7 +519,7 @@ JMessage#sendGroupPic()
 			     'target_gname' : '<targetGName>',
                  'image' : '<formData with image>',
                  'extras' : 'json object'
-               }).onSuccess(function(data) {
+               }).onSuccess(function(data , msg) {
                   // do something
                }).onFail(function(data) {
                   // do something
@@ -518,7 +547,7 @@ JMessage#sendGroupFile()
 			     'target_gname' : '<targetGName>',
                  'file' : '<formData with file>',
                  'extras' : 'json object'
-               }).onSuccess(function(data) {
+               }).onSuccess(function(data , msg) {
                   // do something
                }).onFail(function(data) {
                   // do something
@@ -552,7 +581,7 @@ JMessage#sendGroupLocation()
                  'scale' : '<scale>',
                  'label' : '<address label>',
                  'extras' : 'json object'
-               }).onSuccess(function(data) {
+               }).onSuccess(function(data , msg) {
                   // do something
                }).onFail(function(data) {
                   // do something
@@ -578,7 +607,7 @@ JMessage#sendGroupMsg()
                   'target_gid' : '<targetGid>',
 			     'target_gname' : '<targetGName>',
 			     'custom' : '<json object>'
-               }).onSuccess(function(data) {
+               }).onSuccess(function(data , msg) {
                   // do something
                }).onFail(function(data) {
                   // do something
@@ -982,7 +1011,120 @@ JMessage#delSingleBlacks()
                });
 ```
 
+### 好友相关
 
+#### 好友列表
+
+JMessage#getFriendList()
+
+**请求参数：**
+
+无
+
+**请求示例**
+
+```
+   JIM.getFriendList().onSuccess(function(data) {
+                  // do something
+               }).onFail(function(data) {
+                  // do something
+               });
+```
+
+#### 添加好友&好友请求应答
+
+JMessage#addFriend()
+
+**请求参数：**
+
+| KEY         | REQUIRE | DESCRIPTION               |
+| ----------- | ------- | ------------------------- |
+| target_name | TRUE    | 目标username                |
+| from_type   | TRUE    | 1-邀请方，2-被邀请方（应答）          |
+| why         | TRUE    | 1:邀请说明;2:空，同意添加好友，非空，拒绝原因 |
+| appkey      | FALSE   | 跨应用查询时必填，目标应用的appkey      |
+
+**添加好友请求示例**
+
+```
+   JIM.addFriend({
+             'target_name' : '< username >' ,
+               'from_type' : '1',
+                     'why' : '< why >',
+                  'appkey' : '<appkey>'
+               }).onSuccess(function(data) {
+                  // do something
+               }).onFail(function(data) {
+                  // do something
+               });
+```
+
+**应答示例**
+
+```
+   JIM.addFriend({
+             'target_name' : '< username >' ,
+               'from_type' : '2',
+                     'why' : '< 空表示同意，非空表示拒绝 >',
+                  'appkey' : '<appkey>'
+               }).onSuccess(function(data) {
+                  // do something
+               }).onFail(function(data) {
+                  // do something
+               });
+```
+
+#### 删除好友
+
+JMessage#delFriend()
+
+**请求参数：**
+
+| KEY         | REQUIRE | DESCRIPTION          |
+| ----------- | ------- | -------------------- |
+| target_name | TRUE    | 目标username           |
+| appkey      | FALSE   | 跨应用查询时必填，目标应用的appkey |
+
+**请求示例**
+
+```
+   JIM.delFriend({
+              'target_name' : '< username >' ,
+              'appkey' : '< appkey >'
+               }).onSuccess(function(data) {
+                  // do something
+               }).onFail(function(data) {
+                  // do something
+               });
+```
+
+#### 更新好友备注
+
+JMessage#updateFriendMemo()
+
+**请求参数：**
+
+| KEY         | REQUIRE | DESCRIPTION          |
+| ----------- | ------- | -------------------- |
+| target_name | TRUE    | 目标username           |
+| memo_name   | TRUE    | 名称备注                 |
+| memo_others | FALSE   | 其他备注                 |
+| appkey      | FALSE   | 跨应用查询时必填，目标应用的appkey |
+
+**请求示例**
+
+```
+   JIM.updateFriendMemo({
+          'target_name' : '< username >' ,
+            'memo_name' : '< memo_name >',
+          'memo_others' : '< memo_others >',
+               'appkey' : '< appkey >'
+               }).onSuccess(function(data) {
+                  // do something
+               }).onFail(function(data) {
+                  // do something
+               });
+```
 
 ### 聊天消息监听
 
@@ -1043,17 +1185,21 @@ JIM.onMsgReceive(function(data) {
 ```
 **事件类型对照表**
 
-|                    | 事件接收者                                   | event_type | from_username         | gid（关系类型） | to_usernames |
-| ------------------ | --------------------------------------- | ---------- | --------------------- | --------- | ------------ |
-| 账号在其他地方登录，强制踢人事件通知 | 被踢者                                     | 1          |                       |           | none         |
-| 修改密码强制登出事件         | 当前login在线的被踢者                           | 2          |                       | 0         |              |
-| 创建群组业务事件通知         | 群里所有人接收，即创建者接收                          | 8          | 创建者                   | 实际群组ID    | 创建者          |
-| 退出群组业务事件通知         | 群里所有人接收，即除退群者外的其他人，群主退群则群主和群里其他成员均会收到事件 | 9          | 退群者，0表示dev_api删除群组    | 实际群组ID    | 退群者          |
-| 添加群组成员业务事件通知       | 群里所有人接收，包括被添加的成员和原来的成员                  | 10         | 添加者，0表示dev_api管理员方式添加 | 实际群组ID    | 被添加的成员       |
-| 删除群组成员业务事件通知       | 群里所有人接收，包括被删除的成员和剩下的成员                  | 11         | 删除者                   | 实际群组ID    | 被删除的成员       |
-| 修改群组信息业务事件通知       | 群里所有人接收，包括群里所有成员                        | 12         | 修改者                   | 实际群组ID    | 修改者          |
-| 免打扰变更事件通知          | 变更方                                     | 37         | none                  | 2         | none         |
-| 黑名单变更事件通知          | 变更方                                     | 38         | none                  | 3         | none         |
+|                  | 事件接收者                                   | event_type | from_username         | gid（关系类型） | to_usernames       | return_code                     | extra    | description        |
+| ---------------- | --------------------------------------- | ---------- | --------------------- | --------- | ------------------ | ------------------------------- | -------- | ------------------ |
+| 账号在其他地方登录，强制踢人事件 | 被踢者                                     | 1          |                       |           | none               |                                 |          |                    |
+| 修改密码强制登出事件       | 当前login在线的被踢者                           | 2          |                       | 0         |                    |                                 |          |                    |
+| 创建群组业务事件通知       | 群里所有人接收，即创建者接收                          | 8          | 创建者                   | 实际群组ID    | 创建者                |                                 |          |                    |
+| 退出群组业务事件通知       | 群里所有人接收，即除退群者外的其他人，群主退群则群主和群里其他成员均会收到事件 | 9          | 退群者，0表示dev_api删除群组    | 实际群组ID    | 退群者                |                                 |          |                    |
+| 添加群组成员业务事件通知     | 群里所有人接收，包括被添加的成员和原来的成员                  | 10         | 添加者，0表示dev_api管理员方式添加 | 实际群组ID    | 被添加的成员             |                                 |          |                    |
+| 删除群组成员业务事件通知     | 群里所有人接收，包括被删除的成员和剩下的成员                  | 11         | 删除者                   | 实际群组ID    | 被删除的成员             |                                 |          |                    |
+| 修改群组信息业务事件通知     | 群里所有人接收，包括群里所有成员                        | 12         | 修改者                   | 实际群组ID    | 修改者                |                                 |          |                    |
+| 免打扰变更事件通知        | 变更方                                     | 37         | none                  | 2         | none               |                                 |          |                    |
+| 黑名单变更事件通知        | 变更方                                     | 38         | none                  | 3         | none               |                                 |          |                    |
+| 好友邀请事件           | 被邀请方收到                                  | 5          | 邀请方                   | 1         |                    |                                 | 1，来自邀请方  |                    |
+| 好友邀请应答事件         | 邀请方收到                                   | 5          | 被邀请方                  | 1         | 同意则为空,拒绝则非空，表示拒绝原因 | 好友邀请返回码:0，添加好友成功,其他为添加好友备拒绝的返回码 | 2，来自被邀请方 | 同意则为空；拒绝则非空，表示拒绝原因 |
+| 删除好友事件           | 被删除好友                                   | 6          | 删除方                   | 1         |                    |                                 |          |                    |
+| 好友更新事件           | 好友双方都会收到                                | 7          | "",api管理员操作           | 1         |                    |                                 |          | API好友管理            |
 
 
 ## 高级应用
