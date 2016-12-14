@@ -1334,6 +1334,8 @@ JMSGMessage *message = [JMSGMessage createGroupMessageWithContent:textContent2 g
     }];
 		                        
 ### 黑名单
+
+将用户加入黑名单后，将不在收到对方发来的任何消息。例如：A 用户将 B 用户加入黑名单，B 用户发送的消息，A 用户将收不到，A 用户发送的消息,B 用户依然可以看到。
 #### 获取黑名单列表
 
 ```
@@ -1430,6 +1432,10 @@ JMSGMessage *message = [JMSGMessage createGroupMessageWithContent:textContent2 g
 ```
 	             
 ### 免打扰
+
+可以将用户/群组添加到“免打扰”列表中，收到免打扰用户/群组发过来的消息时，将不会有通知栏通知，但消息事件照常下发。
+设置全局免打扰之后，收到所有消息都将不会有通知栏通知，效果类似。
+
 #### 免打扰列表
 
 ```
