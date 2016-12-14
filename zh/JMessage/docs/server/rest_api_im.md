@@ -103,9 +103,9 @@ Authorization: Basic base64_auth_string
 JSON Array.
 
 + username（必填）用户名
-	+ 开头：字母或者数字
-	+ 字母、数字、下划线
-	+ 英文点、减号、@
+  + 开头：字母或者数字
+  + 字母、数字、下划线
+  + 英文点、减号、@
 + password（必填）用户密码。极光IM服务器会MD5加密保存。
 
 ##### Example Response
@@ -123,8 +123,8 @@ JSON Array.
 
 + username
 + error 某个用户注册出错时，该对象里会有 error 对象，说明错误原因。
-	+ 899003   参数错误，Request Body参数不符合要求
-	+ 899001   用户已存在
+  + 899003   参数错误，Request Body参数不符合要求
+  + 899001   用户已存在
 
 
 ### Admin 注册
@@ -143,9 +143,9 @@ POST /v1/admins/
 ##### Request Params
 
 + username Byte(4-128) 支持字符
-	 + 开头：字母或者数字
-	 + 字母、数字、下划线
-	 + 英文点、减号, @
+   + 开头：字母或者数字
+   + 字母、数字、下划线
+   + 英文点、减号, @
 
 + password Byte(4-128) 字符不限
 
@@ -206,7 +206,7 @@ Content-Type: application/json; charset=utf-8
 #### 获取用户信息
 
 	GET /v1/users/{username}
-		
+
 ##### Request Params
 
 + username 用户名。填充到请求路径上。
@@ -245,19 +245,19 @@ Content-Type: application/json; charset=utf-8
 ##### Request Params
 
 + nickname  （选填）用户昵称
-	+ 不支持的字符：英文字符： \n \r\n 
+  + 不支持的字符：英文字符： \n \r\n 
 + avatar  （选填）头像
-	+ 需要填上从文件上传接口获得的media_id	
+  + 需要填上从文件上传接口获得的media_id	
 + birthday    （选填）生日 example: 1990-01-24
-	+ yyyy-MM-dd 
+  + yyyy-MM-dd 
 + signature  （选填）签名
-	+ 支持的字符：全部，包括 Emoji
+  + 支持的字符：全部，包括 Emoji
 + gender    （选填） 性别
-	+ 0 - 未知， 1 - 男 ，2 - 女 
+  + 0 - 未知， 1 - 男 ，2 - 女 
 + region      （选填）地区
-	+ 支持的字符：全部，包括 Emoji
+  + 支持的字符：全部，包括 Emoji
 + address   （选填）地址
-	+ 支持的字符：全部，包括 Emoji
+  + 支持的字符：全部，包括 Emoji
 
 
 
@@ -347,7 +347,7 @@ Content-Type: application/json; charset=utf-8
 #### 删除用户
 
 	DELETE /v1/users/{username}
-	
+
 Request Params
 
 + username 用户名。
@@ -378,7 +378,7 @@ Content-Type: application/json; charset=utf-8
 Request Params 
 
 + JsonArray
-	+ username的JsonArray
+  + username的JsonArray
 
 Request Body
 
@@ -421,7 +421,7 @@ Content-Type: application/json; charset=utf-8
 Request Params
 
 + JsonArray
-	+ username的JsonArray
+  + username的JsonArray
 
 Request Body
 
@@ -667,7 +667,7 @@ POST /v1/messages
 		<td>msg_body->fsize</td>
 		<td>int 文件大小（字节数）（必填）</td>
 		</tr>
-
+	
 	</table>
 </div>
 
@@ -755,9 +755,9 @@ N/A
 Request Params
 
 
-| 参数 | 含义               | 备注 |
-|--------|--------------------------|------|
-| mediaId   | 资源的mediaId，包括用户的avatar字段 |      |
+| 参数      | 含义                       | 备注   |
+| ------- | ------------------------ | ---- |
+| mediaId | 资源的mediaId，包括用户的avatar字段 |      |
 
 
 ##### Example Response 
@@ -788,10 +788,10 @@ POST /v1/resource?type=image
 注：文件大小限制8m，暂时只支持图片格式 jpg bmp gif png等
 
 
-| 参数 | 含义               | 备注 |
-|--------|--------------------------|------|
-| filename   | 磁盘本地文件路径 |      |
-| type       | 文件类型 支持是"image"，"file"      |      |
+| 参数       | 含义                     | 备注   |
+| -------- | ---------------------- | ---- |
+| filename | 磁盘本地文件路径               |      |
+| type     | 文件类型 支持是"image"，"file" |      |
 
 
 Response Header  
@@ -818,10 +818,10 @@ Response Data
 {"media_id":"qiniu/file/j/1BB3B833AEABFF62E883C5CE421867A9","media_crc32":1415584260,"fname":"0839d1c0-48e9-4032-9333-f3691a7d9e48.dmp","fsize":176512,"hash":"FtH0kPT0YI89HAw1K9wv_vVKiNab"}
 
 +  media_id String 文件上传之后服务器端所返回的key，用于之后生成下载的url
-+ media_crc32 long 文件的crc32校验码
-+ hash String 可选，用于crc校验码不存在时的替代的验证
-+ fsize int 文件大小（字节数）
-+ fname String 发送与接收到的文件名
++  media_crc32 long 文件的crc32校验码
++  hash String 可选，用于crc校验码不存在时的替代的验证
++  fsize int 文件大小（字节数）
++  fname String 发送与接收到的文件名
 
 
 ### Group对象字段总览
@@ -873,7 +873,7 @@ Response Data
 #### 创建群组
 
 	POST /v1/groups/
-	
+
 群组MaxMemberCount（人数限制）定义
 
 
@@ -892,10 +892,10 @@ Request Params
 
 + owner_username     （必填）群主username
 + name               （必填）群组名字
-	+ 支持的字符：全部，包括 Emoji。
+  + 支持的字符：全部，包括 Emoji。
 + members_username 成员 username
 + desc               （必填） 群描述 
-	+ 支持的字符：全部，包括 Emoji。
+  + 支持的字符：全部，包括 Emoji。
 
 Example Response
 
@@ -998,7 +998,7 @@ Request Params
 + add        json数组 表示要添加到群组的用户(可选)
 + remove   json数组 表示要从群组删除的用户（可选）
 + 两者至少要有一个
-   
+
 Example Request 
 
 ```
@@ -1040,8 +1040,8 @@ Example Response
 ]
 ```
 + flag
-	+ 0 - 普通群成员
-	+ 1 - 群主
+  + 0 - 普通群成员
+  + 1 - 群主
 
 
 ####  获取某用户的群组列表
@@ -1157,12 +1157,12 @@ Error Code
 Request Params
 
 + note_name 表示要添加的好友列表， 格式：Byte(64)
-支持的字符：不包括 "\n" "\r"。
+  支持的字符：不包括 "\n" "\r"。
 + others 其他备注信息，格式：Byte(250)
-支持的字符：全部，包括 Emoji。
+  支持的字符：全部，包括 Emoji。
 + username 用户username；
 + 支持批量修改 最大限制500个
- 
+
 
 
 Example Request 
@@ -1283,8 +1283,8 @@ Example Response
 ```
 
 + flag
-	+ 0 - 普通群成员
-	+ 1 - 群主
+  + 0 - 普通群成员
+  + 1 - 群主
 
 #### 跨应用添加黑名单
 
@@ -1385,7 +1385,7 @@ Example Request
 Request Header 
 
 ```
-Put /v1/cross/users/{username}/blacklist
+Get /v1/cross/users/{username}/blacklist
 Content-Type: application/json; charset=utf-8 
 ```
 
@@ -1569,9 +1569,9 @@ Request Params
 
 + appkey  用户所属的appkey （必填）
 + note_name 表示要添加的好友列表， 格式：Byte(64)
-支持的字符：不包括 "\n" "\r"。
+  支持的字符：不包括 "\n" "\r"。
 + others 其他备注信息，格式：Byte(250)
-支持的字符：全部，包括 Emoji。  
+  支持的字符：全部，包括 Emoji。  
 
 
 Request Body
