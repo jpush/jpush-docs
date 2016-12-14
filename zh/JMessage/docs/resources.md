@@ -104,7 +104,7 @@
             <div class="download-right" id="download-right-first">
                 <div class="download-title">
                     <span id="release-title">Java - SDK</span>
-                    <span id="release-version">版本：v3.2.11</span>
+                    <span id="release-version">版本：v1.0.0</span>
                     <span id="release-time">2016.10.26</span>
                 </div>
                 <div class="download-info">
