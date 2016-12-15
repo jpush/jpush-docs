@@ -874,6 +874,15 @@ SDK 升级到 2.3.0 版本（或以上）后，上层只需要做以下变动：
 	 */
 	- (void)clearUnreadCount;
 
+#### 所有会话的未读消息的总数
+
+	/*!
+	 * @abstract 获取当前所有会话的未读消息的总数
+	 *
+	 * @discussion 获取所有会话未读消息总数
+	 */
+	+ (NSNumber *)getAllUnreadCount;
+
 #### 获取最后一条消息的内容文本
 	/*!
 	 * @abstract 获取最后一条消息的内容文本
@@ -919,6 +928,21 @@ SDK 升级到 2.3.0 版本（或以上）后，上层只需要做以下变动：
 	      //刷新失败
 	    }
 	  }];
+	  
+	  /*!
+
+#### 更新 message 中的 extra	  
+
+	 * @abstract 更新 message 中的extra
+	 *
+	 * @param message 被更新的message对象
+	 * @param value   待更新的value,不能为null,类型只能为 NSNumber 和 NSString
+	 * @param key     待更新的key,不能为null
+	 *
+	 */
+	- (BOOL)updateMessageExtra:(JMSGMessage *)message
+	                extraValue:(id)value
+	                  extraKey:(NSString *)key;
 
 ### 群组管理
 #### 创建群组
@@ -1602,6 +1626,9 @@ BOOL isAlreadSet = user.isNoDisturb;
 	    /// 事件类型：用户登录状态异常事件（需要重新登录）
 	    kJMSGEventNotificationUserLoginStatusUnexpected = 70,
 	    
+	    /// 事件类型：当前登录用户信息变更通知事件(非客户端修改)
+		 kJMSGEventNotificationCurrentUserInfoChange = 40,
+	    
 	    /// 好友相关事件
 	    /// 事件类型: 收到好友邀请
 	    kJMSGEventNotificationReceiveFriendInvitation   = 51,
@@ -1749,6 +1776,9 @@ JMessage SDK 采用 Delegate 的机制给 App 发通知，而不是采用 iOS �
 	// 通知事件监听
 	- (void)onReceiveNotificationEvent:(JMSGNotificationEvent *)event{
 	    switch (event.eventType) {
+		     case kJMSGEventNotificationCurrentUserInfoChange:
+		     	  NSLog(@"Current user info change Event ");
+		     	  break;
 	        case kJMSGEventNotificationReceiveFriendInvitation:
 	            NSLog(@"Receive Friend Invitation Event ");
 	            break;
