@@ -4,7 +4,7 @@
 
 对应的 REST API 文档: https://docs.jiguang.cn/jmessage/server/rest_api_im/
 
-> 支持的 PHP 版本: 5.3.3 ～ 5.6.x, 7
+> 支持的 PHP 版本: 5.4 ～ 5.6.x, 7
 
 ## Installation
 
@@ -33,14 +33,15 @@ require 'path_to_sdk/autoload.php';
 
 ## Usage
 
-* [JMessage Client](https://github.com/jpush/jmessage-api-php-client/blob/master/GUIDE.md#jmessage-client)
-* [User 用户](https://github.com/jpush/jmessage-api-php-client/blob/master/GUIDE.md#user-用户)
-* [Admin 管理员](https://github.com/jpush/jmessage-api-php-client/blob/master/GUIDE.md#admin-管理员)
-* [Blacklist 黑名单](https://github.com/jpush/jmessage-api-php-client/blob/master/GUIDE.md#blacklist-黑名单)
-* [Group 群组](https://github.com/jpush/jmessage-api-php-client/blob/master/GUIDE.md#group-群组)
-* [Friend 好友](https://github.com/jpush/jmessage-api-php-client/blob/master/GUIDE.md#friend-好友)
-* [Resource 媒体资源](https://github.com/jpush/jmessage-api-php-client/blob/master/GUIDE.md#resource-媒体资源)
-* [发送消息](https://github.com/jpush/jmessage-api-php-client/blob/master/GUIDE.md#发送消息)
+* [JMessage Client](https://github.com/jpush/jmessage-api-php-client/blob/master/docs/GUIDE.md#jmessage-client)
+* [User 用户](https://github.com/jpush/jmessage-api-php-client/blob/master/docs/GUIDE.md#user-用户)
+* [Admin 管理员](https://github.com/jpush/jmessage-api-php-client/blob/master/docs/GUIDE.md#admin-管理员)
+* [Blacklist 黑名单](https://github.com/jpush/jmessage-api-php-client/blob/master/docs/GUIDE.md#blacklist-黑名单)
+* [Group 群组](https://github.com/jpush/jmessage-api-php-client/blob/master/docs/GUIDE.md#group-群组)
+* [Friend 好友](https://github.com/jpush/jmessage-api-php-client/blob/master/docs/GUIDE.md#friend-好友)
+* [Resource 媒体资源](https://github.com/jpush/jmessage-api-php-client/blob/master/docs/GUIDE.md#resource-媒体资源)
+* [发送消息](https://github.com/jpush/jmessage-api-php-client/blob/master/docs/GUIDE.md#发送消息)
+* [跨应用](https://github.com/jpush/jmessage-api-php-client/blob/master/docs/CROSS.md#cross-跨应用)
 
 ## Examples
 
