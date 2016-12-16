@@ -6,7 +6,7 @@
 
 [REST API 文档](http://docs.jiguang.cn/server/rest_api_v3_push/)
 
-[NodeJS API 文档][https://github.com/jpush/jpush-api-nodejs-client/blob/master/doc/api.md]
+[NodeJS API 文档](https://github.com/jpush/jpush-api-nodejs-client/blob/master/doc/api.md)
 
 
 ## Install
