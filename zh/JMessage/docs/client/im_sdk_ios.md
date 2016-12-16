@@ -541,6 +541,16 @@ SDK 升级到 2.3.0 版本（或以上）后，上层只需要做以下变动：
 	 *
 	 */
 	- (void)setFromName:(NSString * JMSG_NULLABLE)fromName;
+	
+#### 更新 message 中的extra
+	/*!
+	 * @abstract 更新 message 中的 extra
+	 *
+	 * @param value   待更新的value,不能为null,类型只能为 NSNumber 和 NSString
+	 * @param key     待更新value对应的key,不能为null
+	 *
+	 */
+	- (BOOL)updateMessageExtraValue:(id)value forKey:(NSString *)key;
 
 ### 会话管理
 会话相关的操作：
@@ -931,18 +941,6 @@ SDK 升级到 2.3.0 版本（或以上）后，上层只需要做以下变动：
 	  
 	  /*!
 
-#### 更新 message 中的 extra	  
-
-	 * @abstract 更新 message 中的extra
-	 *
-	 * @param message 被更新的message对象
-	 * @param value   待更新的value,不能为null,类型只能为 NSNumber 和 NSString
-	 * @param key     待更新的key,不能为null
-	 *
-	 */
-	- (BOOL)updateMessageExtra:(JMSGMessage *)message
-	                extraValue:(id)value
-	                  extraKey:(NSString *)key;
 
 ### 群组管理
 #### 创建群组
