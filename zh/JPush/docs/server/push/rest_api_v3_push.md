@@ -381,21 +381,21 @@ Android 平台上的通知，JPush SDK 按照一定的通知栏样式展示。
 			<td>string</td>
 			<td>可选</td>
 			<td>大文本通知栏样式</td>
-			<td>当 style = 1 时可用，内容会被通知栏以大文本的形式展示出来。</td>
+			<td>当 style = 1 时可用，内容会被通知栏以大文本的形式展示出来。支持 api 16以上的rom。</td>
 		</tr>
 		<tr >
 			<td>inbox</td>
 			<td>JSONObject</td>
 			<td>可选</td>
 			<td>文本条目通知栏样式</td>
-			<td>当 style = 2 时可用，内容会被通知栏以大文本的形式展示出来。</td>
+			<td>当 style = 2 时可用， json 的每个 key 对应的 value 会被当作文本条目逐条展示。支持 api 16以上的rom。</td>
 		</tr>
 		<tr >
 			<td>big_pic_path</td>
 			<td>JSONObject</td>
 			<td>可选</td>
 			<td>大图片通知栏样式</td>
-			<td>当 style = 3 时可用，可以是网络图片 url，或本地图片的 path，目前支持.jpg和.png后缀的图片。图片内容会被通知栏以大图片的形式展示出来。如果是 http／https 的url，会自动下载；如果要指定开发者准备的本地图片就填sdcard 的相对路径。</td>
+			<td>当 style = 3 时可用，可以是网络图片 url，或本地图片的 path，目前支持.jpg和.png后缀的图片。图片内容会被通知栏以大图片的形式展示出来。如果是 http／https 的url，会自动下载；如果要指定开发者准备的本地图片就填sdcard 的相对路径。支持 api 16以上的rom。</td>
 		</tr>
 		<tr >
 			<td>extras</td>
