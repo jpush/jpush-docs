@@ -377,7 +377,7 @@ Android 平台上的通知，JPush SDK 按照一定的通知栏样式展示。
 			<td>默认为0，还有1，2，3可选，用来指定选择哪种通知栏样式，其他值无效。有三种可选分别为bigText=1，Inbox=2，bigPicture=3。</td>
 		</tr>
 		<tr >
-			<td>bigTextStyle</td>
+			<td>big_text</td>
 			<td>string</td>
 			<td>可选</td>
 			<td>大文本通知栏样式</td>
