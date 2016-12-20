@@ -356,6 +356,48 @@ Android 平台上的通知，JPush SDK 按照一定的通知栏样式展示。
 			<td>Android SDK 可设置通知栏样式，这里根据样式 ID 来指定该使用哪套样式。</td>
 		</tr>
 		<tr >
+			<td>priority</td>
+			<td>int</td>
+			<td>可选</td>
+			<td>通知栏展示优先级</td>
+			<td>默认为0，范围为 -2～2 ，其他值将会被忽略而采用默认。</td>
+		</tr>
+		<tr >
+			<td>category</td>
+			<td>string</td>
+			<td>可选</td>
+			<td>通知栏条目过滤或排序</td>
+			<td>完全依赖 rom 厂商对 category 的处理策略</td>
+		</tr>
+		<tr >
+			<td>style</td>
+			<td>int</td>
+			<td>可选</td>
+			<td>通知栏样式类型</td>
+			<td>默认为0，还有1，2，3可选，用来指定选择哪种通知栏样式，其他值无效。有三种可选分别为bigText=1，Inbox=2，bigPicture=3。</td>
+		</tr>
+		<tr >
+			<td>bigTextStyle</td>
+			<td>string</td>
+			<td>可选</td>
+			<td>大文本通知栏样式</td>
+			<td>当 style = 1 时可用，内容会被通知栏以大文本的形式展示出来。</td>
+		</tr>
+		<tr >
+			<td>inbox</td>
+			<td>JSONObject</td>
+			<td>可选</td>
+			<td>文本条目通知栏样式</td>
+			<td>当 style = 2 时可用，内容会被通知栏以大文本的形式展示出来。</td>
+		</tr>
+		<tr >
+			<td>big_pic_path</td>
+			<td>JSONObject</td>
+			<td>可选</td>
+			<td>大图片通知栏样式</td>
+			<td>当 style = 3 时可用，可以是网络图片 url，或本地图片的 path，目前支持.jpg和.png后缀的图片。图片内容会被通知栏以大图片的形式展示出来。如果是 http／https 的url，会自动下载；如果要指定开发者准备的本地图片就填sdcard 的相对路径。</td>
+		</tr>
+		<tr >
 			<td>extras</td>
 			<td>JSON Object</td>
 			<td>可选</td>
@@ -374,6 +416,12 @@ Android 平台上的通知，JPush SDK 按照一定的通知栏样式展示。
 			 "alert" : "hello, JPush!", 
 			 "title" : "JPush test", 
 			 "builder_id" : 3, 
+			 "style":1  // 1,2,3
+			 "big_text":"big text content",
+			 "inbox":JSONObject,
+			 "big_pic_path":"picture url",
+			 "priority":0, // -2~2
+			 "category":"category str",
 			 "extras" : {
 				  "news_id" : 134, 
 				  "my_key" : "a value"
