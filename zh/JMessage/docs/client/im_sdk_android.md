@@ -707,6 +707,25 @@ public void onEventMainThread(EventEntity event){
 
 </br>
 
+当前登陆用户信息被更新事件实体类 MyInfoUpdatedEvent
+
+<div class="table-d" align="left" >
+  <table border="1" width = "100%">
+    <tr  bgcolor="#D3D3D3" >
+      <th width="10px">方法</th>
+      <th width="20px">类型</th>
+      <th width="370px">说明</th>
+    </tr>
+    <tr >
+      <td >getMyInfo()</td>
+      <td >UserInfo</td>
+      <td >获取更新之后的我的userinfo</td>
+    </tr>
+    </table>
+</div>
+
+</br>
+
 通知栏点击事件实体类NotificationClickEvent
 
 <div class="table-d" align="left" >
