@@ -296,7 +296,7 @@ Response Data
 **Example Request**
 
 ```
-PUT /v3/schedules/{scheduled_id}
+PUT /v3/schedules/{schedule_id}
  Authorization: Basic (base64 auth string) 
  Content-Type: application/x-www-form-urlencoded
  Accept: application/json
