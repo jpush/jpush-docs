@@ -1,4 +1,22 @@
+// 修改兼容手机 start
+function setPageSize() {
+    var w = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+    if (w < 800) {
+        $("#top-title").css({"margin-top":30+"px"});
+    } else {
+        $("#top-title").css({"margin-top":30+"px"});
+    }
+}
+
 $(document).ready(function() {
+
+    // 监听窗口大小是否变化
+    setPageSize();
+    $(window).resize(function(){
+        setPageSize();
+    });
+    // 修改兼容手机 end
+
     $(".top-image-nav-div").mouseover(function() {
         $(this).css("border-color", "#1b75bb");
         var src=$(this).children().children().children().attr("src");
