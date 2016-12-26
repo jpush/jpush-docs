@@ -63,6 +63,11 @@ JMessage 服务器端报的错误码。有可能出现在各平台的 SDK 里。
 			<td>API请求 token 过期。正常情况下SDK会自动重新获取 token。</td>
 		</tr>
 		<tr >
+			<td>898011</td>
+			<td>no auth to query other appkey's user or appkey no exist</td>
+			<td>查询的appkey不具备跨应用权限 或者appkey不存在</td>
+		</tr>
+		<tr >
 			<td>898030</td>
 			<td>Server response time out, please try again later</td>
 			<td>系统繁忙，稍后重试</td>
