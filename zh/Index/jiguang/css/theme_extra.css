@@ -185,7 +185,7 @@ a:hover{
 footer{
   text-align: center;
 }
-/* 修改兼容手机 copy renew branch start */
+
 /*自定义修复bug*/
 .navbar-header a img{
   width: 130px;
@@ -283,4 +283,3 @@ footer{
       width: 60% !important;
   }
 }
-/* 修改兼容手机 copy renew branch end */
