@@ -24,7 +24,7 @@ function setPageSize() {
         });
         if ($("#phone-head-menu").length <= 0) {
             var menu = '\
-            <select id="phone-head-menu" onchange=mbar(this) style="position: absolute; top: 14px; left: 250px;font-weight: 600; -webkit-box-shadow: 0 3px 0 #ccc,0 -1px #fff inset; -moz-box-shadow: 0 3px 0 #ccc,0 -1px #fff inset; box-shadow: 0 3px 0 #ccc,0 -1px #fff inset; background: #1b75bb; color: #fff; font-size: 14px; border: none; outline: none;display: inline;-webkit-appearance: none;-moz-appearance: none;cursor: pointer;-webkit-border-radius: 0px;-moz-border-radius: 0px;border-radius: 0px;width: 62px;">\
+            <select id="phone-head-menu" onchange=mbar(this) style="position: absolute; top: 14px; font-weight: 600; -webkit-box-shadow: 0 3px 0 #ccc,0 -1px #fff inset; -moz-box-shadow: 0 3px 0 #ccc,0 -1px #fff inset; box-shadow: 0 3px 0 #ccc,0 -1px #fff inset; background: #1b75bb; color: #fff; font-size: 14px; border: none; outline: none;display: inline;-webkit-appearance: none;-moz-appearance: none;cursor: pointer;-webkit-border-radius: 0px;-moz-border-radius: 0px;border-radius: 0px;width: 62px;">\
                 <option>菜单 +</option>\
                 <option value="/jpush/guideline/intro/">JPush</option>\
                 <option value="/janalytics/guideline/intro/">JAnalytics</option>\
@@ -32,6 +32,7 @@ function setPageSize() {
                 <option value="/jsms/guideline/JSMS_guide/">JSMS</option>\
             </select>';
             $(".container-fluid").append(menu);
+            $("#phone-head-menu").css({"left": (w-100)+"px"});
         }
     } else {
         $("#navbar-left").show();
