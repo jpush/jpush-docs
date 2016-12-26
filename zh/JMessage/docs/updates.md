@@ -1,5 +1,30 @@
 # 最近更新
 
+### iOS SDK v2.2.4
+
+#### 更新时间
+
++ 2016-12-19
+
+#### Change Log
+
+##### BugFix
++ 修复：下载缩略图大小固定的问题
++ 修改：部分地区发送图片、语音失败的问题
+
+##### NewFeature 
++ 新增：当前登录用户信息变更通知事件 [kJMSGEventNotificationCurrentUserInfoChange](./client/jmessage_ios_appledoc_html/Constants/JMSGEventNotificationType.html)
++ 新增：修改消息 extra 字段接口[- (void)updateMessageExtra: extraValue:extraKey:](./client/jmessage_ios_appledoc_html/Classes/JMSGMessage.html#//api/name/updateMessageExtraValue:forKey:)
++ 新增：获取当前所有会话的未读消息的总数接口 [+ (NSNumber *)getAllUnreadCount](./client/jmessage_ios_appledoc_html/Classes/JMSGConversation.html#//api/name/getAllUnreadCount)
+
+ 
+
+#### 升级指南
+
++ 使用新版本的JMessage.framework文件替换原工程下的同名旧文件
+
+
+
 ### Web SDK v2.1.0
 
 #### 更新时间
