@@ -90,7 +90,7 @@
             ......
         }
         
-        allprojets {
+        allprojects {
             repositories {
                 jcenter()
             }

@@ -49,8 +49,13 @@
 | 881104 | user not in group                        | 用户不存在该群组中           |
 | 881105 | group already set                        | 该群组已处于免打扰状态         |
 | 881106 | group never set                          | 该群组不处于免打扰状态         |
-| 881107 | already set                              | 已经这只免打扰             |
+| 881107 | already set                              | 已经设置免打扰             |
 | 881108 | never set                                | 没有设置免打扰             |
+| 881301 | target user not exist                    | 目标用户不存在             |
+| 881302 | already is friend                        | 已经是好友               |
+| 881303 | user not friend                          | 非好友关系               |
+| 881304 | invalid friend memo                      | 非法备注                |
+| 881305 | Invitation event is not valid            | 添加好友失败：邀请事件无效       |
 | 882001 | server internal error                    | 系统内部错误              |
 | 882002 | user exit，no such user，password error，uid invalid，gid invalid | 视操作而定               |
 | 882003 | invalid parameter                        | 参数不合法               |

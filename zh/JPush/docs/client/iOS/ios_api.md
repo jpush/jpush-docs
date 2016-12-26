@@ -393,7 +393,7 @@ NSDictionary *remoteNotification = [launchOptions objectForKey: UIApplicationLau
   else {
      // 本地通知
   }
-  completionHandler(UNNotificationPresentationOptionAlert); // 需要执行这个方法，选择是否提醒用户，有Badge、Sound、Alert三种类型可以选择设置
+  completionHandler(UNNotificationPresentationOptionBadge|UNNotificationPresentationOptionSound|UNNotificationPresentationOptionAlert); // 需要执行这个方法，选择是否提醒用户，有Badge、Sound、Alert三种类型可以设置
 }
 
 // iOS 10 Support
@@ -1232,7 +1232,7 @@ API 用于统计用户应用崩溃日志
     <tr >
       <td>6003</td>
       <td>alias 字符串不合法</td>
-      <td>有效的别名、标签组成：字母（区分大小写）、数字、下划线、汉字</td>
+      <td>有效的别名组成：字母（区分大小写）、数字、下划线、汉字，特殊字符(v2.1.9支持)@!#$&*+=.|</td>
     </tr>
     <tr >
       <td>6004</td>
@@ -1242,7 +1242,7 @@ API 用于统计用户应用崩溃日志
     <tr >
       <td>6005</td>
       <td>某一个 tag 字符串不合法</td>
-      <td>有效的别名、标签组成：字母（区分大小写）、数字、下划线、汉字</td>
+      <td>有效的标签组成：字母（区分大小写）、数字、下划线、汉字，特殊字符(v2.1.9支持)@!#$&*+=.|</td>
     </tr>
     <tr >
       <td>6006</td>
