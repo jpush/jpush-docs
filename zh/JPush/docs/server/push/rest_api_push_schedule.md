@@ -81,7 +81,7 @@ Authorization: Basic base64_auth_string
 		+ periodical
 			+ 表示定期任务
 				+ start 表示定期任务有效起始时间，格式与必须严格为：'YYYY-mm-dd HH:MM:SS‘，且时间为24小时制。
-				+ end  表示定期任务的过期时间，格式同上。
+				+ end  表示定期任务的过期时间，格式同上。定时任务不超过一年。
 				+ time 表示触发定期任务的定期执行时间,，格式严格为：'HH:MM:SS’，且为24小时制。
 				+ time_unit 表示定期任务的执行的最小时间单位有：day、week及month3种。大小写不敏感，如day, Day,DAy均为合法的time_unit。
 				+ frequency 此项与time_unit的乘积共同表示的定期任务的执行周期，如time_unit为day，frequency为2，则表示每两天触发一次推送，目前支持的最大值为100。

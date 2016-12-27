@@ -8,7 +8,7 @@
 
 这是 JPush REST API 的 Java 版本封装开发包，是由极光推送官方提供的，一般支持最新的 API 功能。
 
-对应的 REST API 文档：[REST API - Push]（../push/rest_api_v3_push), [REST API - Report](../push/rest_api_v3_report/).
+对应的 REST API 文档：[REST API - Push](https://docs.jiguang.cn/jpush/server/push/rest_api_v3_push/), [REST API - Report](https://docs.jiguang.cn/jpush/server/push/rest_api_v3_report/).
 
 本开发包 Javadoc：[API Docs](http://jpush.github.io/jpush-api-java-client/apidocs/)
 
@@ -26,7 +26,7 @@
 <dependency>
     <groupId>cn.jpush.api</groupId>
     <artifactId>jpush-client</artifactId>
-    <version>3.2.11</version>
+    <version>3.2.15</version>
 </dependency>
 ```
 ### jar 包方式
@@ -46,17 +46,13 @@
     <dependency>
         <groupId>cn.jpush.api</groupId>
         <artifactId>jiguang-common</artifactId>
-        <version>0.1.6</version>
-        <exclusions>
-            <exclusion>
-                <groupId>org.slf4j</groupId>
-                <artifactId>slf4j-jdk14</artifactId>
-            </exclusion>
-            <exclusion>
-                <groupId>org.slf4j</groupId>
-                <artifactId>slf4j-nop</artifactId>
-            </exclusion>
-        </exclusions>
+        <version>1.0.1</version>
+    </dependency>
+    <dependency>
+        <groupId>io.netty</groupId>
+        <artifactId>netty-all</artifactId>
+        <version>4.1.6.Final</version>
+        <scope>compile</scope>
     </dependency>
     <dependency>
         <groupId>com.google.code.gson</groupId>
@@ -118,7 +114,7 @@
 > 以下片断来自项目代码里的文件：example / cn.jpush.api.examples.PushExample
 
 ```Java
-    JPushClient jpushClient = new JPushClient(masterSecret, appKey, 3);
+    JPushClient jpushClient = new JPushClient(MASTER_SECRET, APP_KEY, null, ClientConfig.getInstance());
 
     // For push, all you need do is to build PushPayload object.
     PushPayload payload = buildPushObject_all_all_alert();
@@ -383,7 +379,7 @@ Weblogic在使用jpush-api-java-client时需要注意的一些事项。
 + 执行 keytool -list -keystore mykey.jks  命令列出信任库里的所有公钥，观察对应证书的指纹
 + 检查官网证书，观察对应证书的指纹
 + 比较两个指纹是否一致，如下图所示
-![jpush_weblogic](../image/weblogic.png)
+![jpush_weblogic](https://github.com/jpush/jpush-docs/blob/renew/zh/JPush/docs/server/3rd/image/weblogic.png)
 
 #### 异常记录
 **证书错误异常**
