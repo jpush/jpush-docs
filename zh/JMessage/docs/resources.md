@@ -160,8 +160,8 @@
             <div class="download-right">
                 <div class="download-title">
                     <p id="release-title">PHP - SDK</p>
-                    <span id="release-version">版本：v1.0.0</span>
-                    <span id="release-time">2016.12.12</span>
+                    <span id="release-version">版本：v1.0.2</span>
+                    <span id="release-time">2016.12.16</span>
                 </div>
                 <div class="download-info">
                     <ul class="download-info-ul">
@@ -172,7 +172,7 @@
                     </ul>
                     </div>
                     <div class="download-icon">
-                        <a href="https://sdkfiledl.jiguang.cn/jmessage-api-php-client-1.0.0.zip">下载</a>
+                        <a href="https://sdkfiledl.jiguang.cn/jmessage-api-php-client-1.0.2.zip">下载</a>
                     </div>
                 </div>
         </li>
