@@ -34,8 +34,8 @@ auth_payload的数据结构如下:
 
 * appkey : 开发者在极光平台注册的IM应用appkey
 * random_str : 20-36长度的随机字符串, 作为签名加salt使用
-* timestamp : 当初时间戳，用于防止重放攻击
-* signature : 签名
+* timestamp : 当前时间戳，用于防止重放攻击，精确到毫秒
+* signature : 签名，10分钟后失效
 
 签名生成算法如下:
 
