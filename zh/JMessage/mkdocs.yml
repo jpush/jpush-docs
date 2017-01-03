@@ -43,6 +43,8 @@ pages:
   - '业务对象': 'advanced/im_objects.md'
   - '实时消息路由': 'advanced/jmessage_callback.md'
 
+- 客户端集成插件: 'client/client_plugins.md'
+
 - 服务端SDK:
   - 'Java SDK': 'server/sdk/java_sdk.md'
   - 'Python SDK': 'server/sdk/python_sdk.md'
