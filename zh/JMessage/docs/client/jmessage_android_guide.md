@@ -308,16 +308,18 @@ JMessage 2.0.0以前的版本是包含了Push的完整功能的，所以之前�
 
 **基于JMessage集成JPush时有几点需要注意：**
 
-+ 对应的JPush必须要3.0.0或以上版本。
++ 对应的JCore需要1.1.0或以上版本，JPush需要3.0.0或以上版本。
 + 下载下来的JPush SDK zip包中同样包含了名为jcore-android_v1.X.Y的jar包,集成时需要注意项目中只保留一个jcore的jar就好，如果出现JPush和JMessage中所包含的jcore jar包版本不一致的情况，则保留版本号更新的那一个。so文件同理。
 + 关于manifest中必要组件的配置，因为JMessage和JPush的manifest示例中包含了一部分相同的组件配置，对于已经集成JMessage 2.0.0（及以上）的开发者，仅需要将其中JPush部分的组件配置复制过来就好，包括（但不仅限以下组件，可能根据JPush之后版本变化而有不同，具体请参考[JPush3.0.0的集成文档][3]）：
 
 	+ cn.jpush.android.service.DaemonService
 	+ cn.jpush.android.ui.PushActivity
 	+ cn.jpush.android.service.DownloadService
+	+ cn.jpush.android.ui.PopWinActivity
 	+ JPush用户的自定义广播接收器
 
-+ 别忘了加上JPush的初始化代码：JPushInterface.init(context)
++ 别忘了添加JPush SDK中的res资源
++ 加上JPush的初始化代码：JPushInterface.init(context)
 
 ## JMessage混淆
 
@@ -349,9 +351,9 @@ JMessage 2.0.0以前的版本是包含了Push的完整功能的，所以之前�
 
     
 
-### 完整im应用代码样例
+## IM场景代码样例
 
-极光 IM 提供了一个完整的 im 应用 JChat，它就是一个 IM App。如果你的 App 需求只是 IM 功能，做以下两个变更就可以把它变成你自己的 IM App 了：
+极光 JMessage 提供了一个完整的IM场景下的应用JChat，它就是一个 IM App。如果你的 App 需求只是 IM 功能，做以下两个变更就可以把它变成你自己的 IM App 了：
 
 + 换 Logo 
 + 在 JPush Web 控制台上注册应用，获取到的 Appkey 更新到 JChat 里
