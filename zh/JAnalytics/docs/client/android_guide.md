@@ -112,8 +112,8 @@
 	+ 所有 CPU 平台的 so 文件。
 + 配置 AndroidManifest:
 	+ 配置权限：添加 SDK 正常运行所必需的权限。
-
-           <!-- Required  一些系统要求的权限，如访问网络等-->
+			
+			<!-- Required  一些系统要求的权限，如访问网络等 -->
             <uses-permission android:name="android.permission.INTERNET" />
             <uses-permission android:name="android.permission.WAKE_LOCK" />
             <uses-permission android:name="android.permission.READ_PHONE_STATE" />
@@ -121,8 +121,8 @@
             <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
             <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
             <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-
-           <!-- Optional for location -->
+			
+			<!-- Optional for location -->
             <uses-permission android:name="android.permission.VIBRATE" />
             <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
             <uses-permission android:name="android.permission.WRITE_SETTINGS" />
