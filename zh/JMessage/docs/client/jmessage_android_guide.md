@@ -351,9 +351,9 @@ JMessage 2.0.0以前的版本是包含了Push的完整功能的，所以之前�
 
     
 
-### 完整im应用代码样例
+## IM场景代码样例
 
-极光 IM 提供了一个完整的 im 应用 JChat，它就是一个 IM App。如果你的 App 需求只是 IM 功能，做以下两个变更就可以把它变成你自己的 IM App 了：
+极光 JMessage 提供了一个完整的IM场景下的应用JChat，它就是一个 IM App。如果你的 App 需求只是 IM 功能，做以下两个变更就可以把它变成你自己的 IM App 了：
 
 + 换 Logo 
 + 在 JPush Web 控制台上注册应用，获取到的 Appkey 更新到 JChat 里
