@@ -74,6 +74,8 @@
 		
 		<option value="//api/name/isNoDisturb">isNoDisturb</option>
 		
+		<option value="//api/name/isShieldMessage">isShieldMessage</option>
+		
 	</optgroup>
 	
 
@@ -88,6 +90,8 @@
 		
 		<option value="//api/name/myGroupArray:">+ myGroupArray:</option>
 		
+		<option value="//api/name/shieldList:">+ shieldList:</option>
+		
 	</optgroup>
 	
 
@@ -95,6 +99,8 @@
 	<optgroup label="Instance Methods">
 		
 		<option value="//api/name/setIsNoDisturb:handler:">- setIsNoDisturb:handler:</option>
+		
+		<option value="//api/name/setIsShield:handler:">- setIsShield:handler:</option>
 		
 		<option value="//api/name/memberArray">- memberArray</option>
 		
@@ -845,6 +851,52 @@
 		</div>
 	</div>
 </div><div class="section-method">
+	<a name="//api/name/isShieldMessage" title="isShieldMessage"></a>
+	<h3 class="method-title"><code><a href="#//api/name/isShieldMessage">&nbsp;&nbsp;isShieldMessage</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>该群是否已被设置为消息屏蔽</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign, readonly) BOOL isShieldMessage</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>YES:是 , NO: 否</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGGroup.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
 	<a name="//api/name/setIsNoDisturb:handler:" title="setIsNoDisturb:handler:"></a>
 	<h3 class="method-title"><code><a href="#//api/name/setIsNoDisturb:handler:">&ndash;&nbsp;setIsNoDisturb:handler:</a></code>
 </h3>
@@ -901,6 +953,145 @@
 				<h4 class="method-subtitle">Discussion</h4>
 				<p>针对单个群组设置免打扰
 这个接口支持跨应用设置免打扰</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGGroup.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setIsShield:handler:" title="setIsShield:handler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setIsShield:handler:">&ndash;&nbsp;setIsShield:handler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>设置群组消息屏蔽</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)setIsShield:(BOOL)<em>isShield</em> handler:(JMSGCompletionHandler)<em>handler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>isShield</code></th>
+						<td><p>是否群消息屏蔽 YES:是 NO: 否</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>handler</code></th>
+						<td><p>结果回调。回调参数：</p>
+
+<ul>
+<li>resultObject 相应对象</li>
+<li>error 错误信息</li>
+</ul>
+
+
+<p>如果 error 为 nil, 表示设置成功
+如果 error 不为 nil,表示设置失败</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>针对单个群组设置群消息屏蔽</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGGroup.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/shieldList:" title="shieldList:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/shieldList:">+&nbsp;shieldList:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>获取所有设置群消息屏蔽的群组</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)shieldList:(JMSGCompletionHandler)<em>handler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>handler</code></th>
+						<td><p>结果回调。回调参数：</p>
+
+<ul>
+<li>resultObject 类型为 NSArray，数组里成员的类型为 JMSGGroup</li>
+<li>error 错误信息</li>
+</ul>
+
+
+<p>如果 error 为 nil, 表示设置成功
+如果 error 不为 nil,表示设置失败</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>从服务器获取，返回所有设置群消息屏蔽的群组。</p>
 			</div>
 			
 
@@ -1323,7 +1514,7 @@
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2016 HXHG. All rights reserved. Updated: 2016-10-18</p>
+						<p class="copyright">Copyright &copy; 2016 HXHG. All rights reserved. Updated: 2016-12-05</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

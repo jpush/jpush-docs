@@ -1,8 +1,18 @@
 <h1>Web SDK 开发指南</h1>
 
+<div style="font-size:13px;background: #F0E68C;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 10px; padding-bottom: 0;margin-bottom: 0;">
+<p>特别提示：v1.x版本将不再提供新功能，仅维护因bug导致的问题，请正在使用此版本的开发者尽快升级到v2.0版本。
+<p>此版本将在 2017 年停止维护。
+</div>
+
+
 ## 概述
 
 极光 IM Web SDK 为 Web 应用提供一个 IM 系统开发框架, 屏蔽掉 IM 系统的复杂的细节, 对外提供较为简洁的 API 接口, 方便第三方应用快速集成 IM 功能。
+
+### 最新版本
+Web SDK v1.2.1
+修复 Web SDK v1.2.0上传图片问题，[点击下载 Web SDK v1.2.1](https://sdkfiledl.jiguang.cn/jmessage-web-sdk.1.2.1.zip)
 
 
 ### 签名算法
@@ -24,8 +34,8 @@ auth_payload的数据结构如下:
 
 * appkey : 开发者在极光平台注册的IM应用appkey
 * random_str : 20-36长度的随机字符串, 作为签名加salt使用
-* timestamp : 当初时间戳，用于防止重放攻击
-* signature : 签名
+* timestamp : 当前时间戳，用于防止重放攻击，精确到毫秒
+* signature : 签名，10分钟后失效
 
 签名生成算法如下:  
 

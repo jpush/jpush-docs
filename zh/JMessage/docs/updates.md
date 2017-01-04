@@ -1,5 +1,67 @@
 # 最近更新
 
+### iOS SDK v2.2.4
+
+#### 更新时间
+
++ 2016-12-19
+
+#### Change Log
+
+##### BugFix
++ 修复：下载缩略图大小固定的问题
++ 修改：部分地区发送图片、语音失败的问题
+
+##### NewFeature 
++ 新增：当前登录用户信息变更通知事件 [kJMSGEventNotificationCurrentUserInfoChange](./client/jmessage_ios_appledoc_html/Constants/JMSGEventNotificationType.html)
++ 新增：修改消息 extra 字段接口[- (void)updateMessageExtra: extraValue:extraKey:](./client/jmessage_ios_appledoc_html/Classes/JMSGMessage.html#//api/name/updateMessageExtraValue:forKey:)
++ 新增：获取当前所有会话的未读消息的总数接口 [+ (NSNumber *)getAllUnreadCount](./client/jmessage_ios_appledoc_html/Classes/JMSGConversation.html#//api/name/getAllUnreadCount)
+
+ 
+
+#### 升级指南
+
++ 使用新版本的JMessage.framework文件替换原工程下的同名旧文件
+
+
+
+### Web SDK v2.1.0
+
+#### 更新时间
+
++ 2016-12-14
+
+#### Change Log
+
++ 新增：好友模块（添加好友，删除好友，修改好友备注，好友列表）
++ 新增：新增登出接口
++ 优化：发送消息成功回调函数新增一个参数，用于获取发送内容
++ 优化：被迫下线（sdk层面自动下线）
+
+
+#### 升级指南
+
++ 使用新版本的 jmessage-sdk-web.js 文件替换原工程下的同名旧文件
+
+
+### Web SDK v1.2.1
+#### 更新时间
++ 2016-12-05
+
+#### Change Log
+
++ 修复：Web SDK v1.2.0上传图片问题
+
+#### 下载地址
+
++ [点击下载 Web SDK v1.2.1](https://sdkfiledl.jiguang.cn/jmessage-web-sdk.1.2.1.zip)
+
+
+#### 特别说明
+
++ v1.x版本将不再提供新功能，仅维护因bug导致的问题，建议尽快切换到2.x版本
+
+
 
 ### iOS SDK v2.2.3
 #### 更新时间

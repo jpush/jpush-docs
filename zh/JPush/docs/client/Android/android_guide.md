@@ -53,7 +53,33 @@
 ## jcenter 自动集成步骤
 
 
-***说明*** ： 使用jcenter自动集成的开发者，不需要在项目中添加jar和so，jcenter会自动完成依赖；在AndroidManifest.xml中不需要添加任何JPush SDK 相关的配置，jcenter会自动导入, 如果开发者手动添加组件，组件属性则以开发者写的为准覆盖掉 jcenter 上的默认配置。
+***说明*** ： 使用jcenter自动集成的开发者，不需要在项目中添加jar和so，jcenter会自动完成依赖；在AndroidManifest.xml中不需要添加任何JPush SDK 相关的配置，jcenter会自动导入。
+
++ 如果开发者需要修改组件属性，可以在本地的 AndroidManifest 中定义同名的组件并配置想要的属性，然后用 xmlns:tools 来控制本地组件覆盖 jcenter 上的组件。示例：
+
+		<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+			package="com.android.tests.flavorlib.app"
+			xmlns:tools="http://schemas.android.com/tools">
+			
+			<application
+				android:icon="@drawable/icon"
+				android:name="com.example.jpushdemo.ExampleApplication"
+				android:label="@string/app_name" >
+				
+				<service
+            		android:name="cn.jpush.android.service.PushService"
+            		android:process=":multiprocess"
+            		tools:node="replace" >
+            		
+            		……
+            	</service>
+            
+            ……
+          </application>  
+          
+          ……
+		</manifest>
+
 
 + 确认android studio的 Project 根目录的主 gradle 中配置了jcenter支持。（新建project默认配置就支持）
         
@@ -384,6 +410,9 @@ defaultConfig {
 
         -dontwarn cn.jpush.**
         -keep class cn.jpush.** { *; }
+        
+        -dontwarn cn.jiguang.**
+        -keep class cn.jiguang.** { *; }
         
 
 + v2.0.5 ~ v2.1.7 版本有引入 gson 和 protobuf ，增加排除混淆的配置。(2.1.8版本不需配置)

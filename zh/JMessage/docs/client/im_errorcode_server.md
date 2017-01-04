@@ -213,49 +213,89 @@ JMessage 服务器端报的错误码。有可能出现在各平台的 SDK 里。
 			<td>登录的用户设备有误，登录失败</td>
 		</tr>
 		<tr >
+			<td>802002</td>
+			<td>username not match</td>
+            <td>登出用户名和登录用户名不匹配，登出失败</td>
+		</tr>
+		<tr >
 			<td>803001</td>
-			<td></td>
+			<td>system error</td>
 			<td>发送消息失败，状态存储异常</td>
 		</tr>
 		<tr >
 			<td>803002</td>
-			<td></td>
+			<td>system error</td>
 			<td>发送消息失败，系统网络异常</td>
 		</tr>
 		<tr >
 			<td>803003</td>
-			<td></td>
+			<td>target user not exist</td>
 			<td>发送消息失败，目标用户未注册或不存在</td>
 		</tr>
 		<tr >
 			<td>803004</td>
-			<td></td>
+			<td>target group not exist</td>
 			<td>发送消息失败，目标讨论组不存在</td>
 		</tr>
 		<tr >
 			<td>803005</td>
-			<td></td>
+			<td>user not in group</td>
 			<td>发送消息失败，发起者不在目标讨论组中</td>
 		</tr>
 		<tr >
 			<td>803006</td>
-			<td></td>
+			<td>user not permitted</td>
 			<td>发送消息失败，发起者权限不够或者类别不匹配</td>
 		</tr>
 		<tr >
 			<td>803007</td>
-			<td></td>
+			<td>length of message exceed limit</td>
 			<td>发送消息失败，消息长度超过限制</td>
 		</tr>
 		<tr >
 			<td>803008</td>
-			<td></td>
+			<td>user in blacklist</td>
 			<td>发送消息失败，发送者已被接收者拉入黑名单，仅限单聊</td>
 		</tr>
 		<tr >
 			<td>803010</td>
-			<td></td>
+			<td>beyond the frequency limit</td>
 			<td>发送消息失败，发送频率超过系统限制，无法发送，客户端限制每分钟60条</td>
+		</tr>
+		<tr >
+		    <td>803011</td>
+			<td>msg content json error</td>
+			<td>发送消息失败，消息格式配置错误</td>
+		</tr>
+		<tr >
+		    <td>805001</td>
+			<td>target user not exist</td>
+			<td>目标用户不存在</td>
+		</tr>
+		<tr >
+        	<td>805002</td>
+	        <td>already is friend</td>
+            <td>添加好友失败：双方已经是好友</td>
+		</tr>
+		<tr >
+		    <td>805003</td>
+			<td>user not friend</td>
+			<td>删除好友失败：目标用户并不是自己的好友</td>
+		</tr>
+		<tr>
+		    <td>805004</td>
+			<td>invalid friend memo</td>
+			<td>修改好友备注失败：备注内容无效，无法修改</td>
+		</tr>
+		<tr >
+		    <td>805006</td>
+			<td>Invitation event is not valid</td>
+			<td>添加好友失败：邀请事件无效</td>
+		</tr>
+		<tr >
+		    <td>808001</td>
+			<td>group name invalid</td>
+			<td>创建讨论组时组名为空，创建讨论组失败</td>
 		</tr>
 		<tr >
 			<td>808002</td>
@@ -394,23 +434,28 @@ JMessage 服务器端报的错误码。有可能出现在各平台的 SDK 里。
 		</tr>
 		<tr >
 			<td>818001</td>
-			<td></td>
+			<td>zero member</td>
 			<td>用户添加黑名单时，成员列表为空，添加失败</td>
 		</tr>
 		<tr >
 			<td>818002</td>
-			<td></td>
+			<td>member not exist</td>
 			<td>用户添加黑名单时，成员列表中有成员不存在，添加失败</td>
 		</tr>
 		<tr >
 			<td>818003</td>
-			<td></td>
+			<td>member not permitted added</td>
 			<td>用户添加黑名单时，成员列表中有成员不能被添加，添加失败</td>
 		</tr>
 		<tr >
 			<td>819001</td>
-			<td></td>
+			<td>zero member</td>
 			<td>用户移除好友出黑名单时，成员列表为空，操作失败</td>
+		</tr>
+		<tr >
+		    <td>819002</td>
+			<td>member not exist</td>
+			<td>用户删除黑名单时，成员列表中有成员不存在，删除失败</td>
 		</tr>
 		<tr >
 			<td>831001</td>
@@ -454,6 +499,13 @@ JMessage 服务器端报的错误码。有可能出现在各平台的 SDK 里。
 		</tr>
 </table>
 </div>
+
+## 相关文档
+
++ [iOS SDK 错误码](../client/im_errorcode_ios/)
++ [Android SDK 错误码](../client/im_errorcode_android/)
+
+
 
 
 
