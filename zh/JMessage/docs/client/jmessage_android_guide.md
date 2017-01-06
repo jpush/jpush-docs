@@ -6,7 +6,7 @@
 
 本篇指南匹配的 JMessage Android SDK 版本为：2.0.0 及以后版本。
 
-+ 极光推送[文档网站](https://docs.jiguang.cn/jmessage/guideline/jmessage_guide/)上，有JMessage相关的所有指南、API、教程等全部的文档。包括本文档的更新版本，都会及时地发布到该网站上。
++ 极光[文档网站](https://docs.jiguang.cn/jmessage/guideline/jmessage_guide/)上有JMessage相关的所有指南、API、教程等全部的文档。包括本文档的更新版本，都会及时地发布到该网站上。
 + [极光社区](http://community.jiguang.cn/)网站：大家除了文档之外，还有问题与疑问，会到这里来提问题，以及时地得到解答。
 + 如果您看到本文档，但还未下载Android SDK，请访问[SDK下载页面](https://docs.jiguang.cn/jmessage/resources/)下载。
 
@@ -30,7 +30,7 @@
 
 ## 手动集成步骤
 
-+ 解压缩 jpush-sdk-android-2.X.Y.zip 集成压缩包。
++ 解压缩 jmessage-sdk-android-2.X.Y.zip 集成压缩包。
 + 复制 libs/jcore-android_v1.X.Y.jar 到工程 libs/ 目录下。
 + 复制 libs/jmessage-android_2.X.Y.jar 到工程 libs/ 目录下。
 + 复制 libs/(cpu-type)/libjcore1xy.so 到你的工程中存放对应cpu类型的目录下。
@@ -299,13 +299,16 @@ defaultConfig {
 + 检查 metadata 的 appKey 和 channel ，如果不存在，则启动失败
 + 初始化 JMessage SDK，检查 JNI 等库文件的有效性，如果库文件无效，则启动失败
 + 检查 Androidmanifest.xml，如果有 Required 的权限不存在，则启动失败
-+ 连接服务器登录，如果存在网络问题，则长连接登陆失败,或者前面三步有问题，不会启动JMessage SDK
++ 连接服务器登录，如果存在网络问题，则长连接登陆失败,或者前面三步有问题，不会启动  
+JMessage SDK
 
 ## 升级时注意
 
 JMessage 2.0.0以前的版本是包含了Push的完整功能的，所以之前对于开发者来说仅需要集成JMessage就能同时拥有JMessage和JPush的完整功能。  
+
 而新的JMessage 2.0.0将**不再包含JPush的功能**。JMessage和JPush今后将会作为两个相对独立的模块需要分别集成。所以对于之前已经集成过JMessage（2.0.0版本以前）的开发者，将JMessage升级到2.0.0之后，如果还需要使用JPush相关功能，请参照[JPush3.0.0的集成文档][3]手动将JPush集成进项目。  
 
+</br>
 **基于JMessage集成JPush时有几点需要注意：**
 
 + 对应的JCore需要1.1.0或以上版本，JPush需要3.0.0或以上版本。
