@@ -302,27 +302,46 @@ defaultConfig {
 + 连接服务器登录，如果存在网络问题，则长连接登陆失败,或者前面三步有问题，不会启动  
 JMessage SDK
 
-## 升级时注意
+## 集成时注意
 
-JMessage 2.0.0以前的版本是包含了Push的完整功能的，所以之前对于开发者来说仅需要集成JMessage就能同时拥有JMessage和JPush的完整功能。  
+因为从JMessage 2.0.0版本开始jar包的结构和之前发生了一些变化， 集成时有一些注意事项开发者需要注意
+### 如果之前集成过JMessage
+对于之前集成过JMessage 2.0.0或以前版本的开发者,是包含了Push的完整功能的，所以之前对于开发者来说仅需要集成JMessage一个依赖就能同时拥有JMessage和JPush的完整功能。  
 
 而新的JMessage 2.0.0将**不再包含JPush的功能**。JMessage和JPush今后将会作为两个相对独立的模块需要分别集成。所以对于之前已经集成过JMessage（2.0.0版本以前）的开发者，将JMessage升级到2.0.0之后，如果还需要使用JPush相关功能，请参照[JPush3.0.0的集成文档][3]手动将JPush集成进项目。  
 
 </br>
-**基于JMessage集成JPush时有几点需要注意：**
+**基于JMessage集成JPush时注意事项：**
 
-+ 对应的JCore需要1.1.0或以上版本，JPush需要3.0.0或以上版本。
-+ 下载下来的JPush SDK zip包中同样包含了名为jcore-android_v1.X.Y的jar包,集成时需要注意项目中只保留一个jcore的jar就好，如果出现JPush和JMessage中所包含的jcore jar包版本不一致的情况，则保留版本号更新的那一个。so文件同理。
-+ 关于manifest中必要组件的配置，因为JMessage和JPush的manifest示例中包含了一部分相同的组件配置，对于已经集成JMessage 2.0.0（及以上）的开发者，仅需要将其中JPush部分的组件配置复制过来就好，包括（但不仅限以下组件，可能根据JPush之后版本变化而有不同，具体请参考[JPush3.0.0的集成文档][3]）：
++ 版本要求：对应的JCore需要1.1.0或以上版本，JPush需要3.0.0或以上版本。
++ jcore的替换：下载下来的JPush SDK zip包中同样包含了名为jcore-android_v1.X.Y的jar包,集成时需要注意项目中只保留一个jcore的jar就好，如果出现JPush和JMessage中所包含的jcore jar包版本不一致的情况，则保留版本号更新的那一个。so文件同理。
++ Manifest的配置：关于manifest中必要组件的配置，因为JMessage和JPush的manifest示例中包含了一部分公共的组件配置，对于已经集成JMessage 2.0.0（及以上）的开发者，仅需要将其中JPush部分的组件配置复制过来就好，包括（但不仅限以下组件，可能根据JPush之后版本变化而有不同，具体请参考[JPush3.0.0的集成文档][3]）：
 
 	+ cn.jpush.android.service.DaemonService
 	+ cn.jpush.android.ui.PushActivity
 	+ cn.jpush.android.service.DownloadService
 	+ cn.jpush.android.ui.PopWinActivity
-	+ JPush用户的自定义广播接收器
+	+ JPush用户的自定义广播接收器（需要的话）
 
 + 别忘了添加JPush SDK中的res资源
 + 加上JPush的初始化代码：JPushInterface.init(context)
+
+
+### 如果之前集成过JPush
+对于已经集成了JPush 3.0.0或以上版本的开发者，如果需要IM功能，直接参照上面“手动集成步骤”一节配置JMessage就好，其中有以下几项需要注意：
+
+</br>
+**基于JPush集成JMessage时注意事项：**
+
++ 版本要求：JCore需要1.1.0或以上版本，对应的JMessage需要2.0.0或以上版本。
++ jcore的替换：下载下来的JMessage SDK zip包中同样包含了名为jcore-android_v1.X.Y的jar包,集成时需要注意项目中只保留一个jcore的jar就好，如果出现JPush和JMessage中所包含的jcore jar包版本不一致的情况，则保留版本号更新的那一个。so文件同理
++ Manifest的配置：因为JMessage和JPush的manifest示例中包含了一部分公共的组件配置，对于已经集成JPush 3.0.0（及以上）的开发者，仅需要将其中JMessage部分的组件配置复制过来就好，包括（但不仅限以下组件，可能根据JMessage之后版本变化而有改动，具体参照上文中的“AndroidManifest 示例”)
+
+	+  cn.jpush.im.android.helpers.IMReceiver
+
++ 加上JMessage的初始化代码：JMessageClient.init(context)
+
+
 
 ## JMessage混淆
 
