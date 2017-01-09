@@ -306,7 +306,7 @@ JMessage SDK
 
 因为从JMessage 2.0.0版本开始jar包的结构和之前发生了一些变化， 集成时有一些注意事项开发者需要注意
 ### 如果之前集成过JMessage
-对于之前集成过JMessage 2.0.0或以前版本的开发者,是包含了Push的完整功能的，所以之前对于开发者来说仅需要集成JMessage一个依赖就能同时拥有JMessage和JPush的完整功能。  
+对于集成过JMessage 2.0.0以前版本的开发者,之前的JMessage是包含了Push的完整功能的，所以仅需要集成JMessage一个包就能同时拥有JMessage和JPush的完整功能。  
 
 而新的JMessage 2.0.0将**不再包含JPush的功能**。JMessage和JPush今后将会作为两个相对独立的模块需要分别集成。所以对于之前已经集成过JMessage（2.0.0版本以前）的开发者，将JMessage升级到2.0.0之后，如果还需要使用JPush相关功能，请参照[JPush3.0.0的集成文档][3]手动将JPush集成进项目。  
 
