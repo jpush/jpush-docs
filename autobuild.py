@@ -6,7 +6,7 @@ import time
 
 def kill_git():
     logging.info(commands.getstatusoutput("kill -s 9 `pgrep git-remote-http`"))
-    logging.info(commands.getstatusoutput("pkill -u wangfei"))
+    #logging.info(commands.getstatusoutput("pkill -u wangfei"))
 
 def git_pull():
     print (os.chdir("/opt/push/jpush-docs/jpush-docs/"))
