@@ -14,8 +14,8 @@
             <div class="download-right" id="download-right-first">
                 <div class="download-title">
                     <span id="release-title">Android - SDK</span>
-                    <span id="release-version">版本：v1.4.2</span>
-                    <span id="release-time">2016.09.21</span>
+                    <span id="release-version">版本：v2.0.0</span>
+                    <span id="release-time">2017.01.09</span>
                 </div>
                 <div class="download-info">
                     <ul class="download-info-ul">
