@@ -1,4 +1,30 @@
 # 最近更新
+### JPush iOS SDK v3.0.1
+
+#### 更新时间
++ 2016-01-09
+
+#### Change Log
++ 修复：已知bug。
++ 优化：运行性能。 
+
+#### 升级提示
+
++ 建议升级！
++ 注意：不支持 Xcode 8.0 以下版本 开启 bitcode。
++ 极光开发者服务 SDK 采用了模块化的使用模式，即一个核心（JCore）+N种服务（JPush，JAnalytics，...）的使用方式，方便开发者使用某一项服务或多项服务，极大的优化了多模块同时使用时功能模块重复的问题。
+
+#### 升级指南
++ 注意 3.0.0及以上版本将不再支持处理器为i386的模拟器。
++ 添加libresolv.tbd库，否则编译运行会报错（2.2.0及以上版本要求）
++ 替换 lib 文件夹里的文件:先删除项目里旧的.a和.h文件,重新导入新的.a和.h文件（注意新版本替换APService.h为JPUSHService.h）
++ Xcode7 环境下，替换原先导入的 libz.dylib 框架为 libz.tbd （特别留意）
++ 需要删除旧的 libPushSDK-Simulator.a （如果存在）
++ 关于 iOS 7 Background Push，JPush 提供一个教程文档：[iOS 7 Background Remote Notification](client/iOS/ios_new_fetures/#ios-7-background-remote-notification)
++ 如果是1.2.7及之前版本升级 请在Build Settings里面，找到Other Linker Flags，去掉-all_load, -ObjC
+
+
+
 ### JPush Android SDK v3.0.1
 
 #### 更新时间
