@@ -46,7 +46,7 @@
                     </ul>
                     </div>
                     <div class="download-icon">
-                        <a href="https://sdkfiledl.jiguang.cn/JAnalytics-iOS-SDK-1.0.0.zip">下载</a>
+                        <a href="https://sdkfiledl.jiguang.cn/JAnalytics-iOS-SDK-1.1.0.zip">下载</a>
                     </div>
                 </div>
         </li>
@@ -54,3 +54,5 @@
         <div style=" clear:both; visibility:hidden;">
     </ul>
     </div>
+
+

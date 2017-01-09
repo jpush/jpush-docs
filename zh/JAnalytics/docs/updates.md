@@ -1,4 +1,27 @@
 # 最近更新
+
+### JAnalytics iOS SDK v1.1.0
+
+#### 更新时间
++ 2017-01-09
+
+#### Change Log
++ 修复：JANALYTICSLaunchConfig 对象中 isProduction 属性的错误
++ 修复：部分内部bug
++ 优化：运行性能
+
+#### 升级提示
+
++ 建议升级！
++ 注意：不支持 Xcode 8.0 以下版本 开启 bitcode。
+
+
+#### 升级指南
+
++ 首先解压您获取到的zip压缩包
++ 更新库文件
+
+
 ### JAnalytics iOS SDK v1.0.0
 
 #### 更新时间
