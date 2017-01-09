@@ -14,7 +14,6 @@ pages:
 
 - Android:
   - 'SDK 开发指南': 'client/im_sdk_android.md'
-  - 'SDK 集成指南 V2': 'client/jmessage_android_guide_v2.md'
   - 'SDK 集成指南': 'client/jmessage_android_guide.md'
   - 'SDK ErrorCode 定义': 'client/im_errorcode_android.md'
   - 'SDK API Doc': 'client/javadoc.md'
@@ -22,7 +21,6 @@ pages:
 
 - iOS:
   - 'SDK 开发指南': 'client/im_sdk_ios.md'
-  - 'SDK 集成指南 V3': 'client/jmessage_ios_guide_v3.md'
   - 'SDK 集成指南': 'client/jmessage_ios_guide.md'
   - 'SDK ErrorCode 定义': 'client/im_errorcode_ios.md'
   - 'SDK API Doc': 'client/iOSdoc.md'
