@@ -1,6 +1,27 @@
 # 最近更新
 
 
+### iOS SDK v3.0.0
+
+#### 更新时间
+
+2017-01-10
+
+#### ChangeLog
+
++ 模块化分离为 JCore、JMessage 两部分集成，并且脱离和JPush的依赖关系
+
++ 新增接口：
+
+	+ 注册远程推送： + (void)registerForRemoteNotificationTypes:(NSUInteger)types categories:(NSSet *)categories;
+	+ 注册DeviceToken：+ (void)registerDeviceToken:(NSData *)deviceToken;
+
+#### 升级指南
++ 使用新版本的JMessage.framework文件替换原工程下的同名旧文件
++ 将新版本的JMessage.framework里的JCore link到工程中，详细参见官网集成文档
+
+
+
 ### Android SDK v2.0.0
 
 #### 更新时间
