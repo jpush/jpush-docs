@@ -48,6 +48,31 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
              category:(NSSet *)category;
 ```
 
+#### 注册远程推送
+```
+/*!
+ * @abstract 注册远程推送
+ * @param types 通知类型
+ * @param categories 类别组
+ * @discussion 此方法必须被调用，如果有集成JPush或其他远程推送注册方法，请不要再调用此方法
+ *
+ */
++ (void)registerForRemoteNotificationTypes:(NSUInteger)types
+                                categories:(NSSet *)categories;
+                                                            
+```
+
+#### 注册DeviceToken
+```
+/*!
+ * @abstract 注册DeviceToken
+ * @param deviceToken 从注册推送回调中拿到的DeviceToken
+ * @discussion 此方法必须被调用
+ *
+ */
++ (void)registerDeviceToken:(NSData *)deviceToken;
+```
+
 ###SDK初始化(设置漫游)
 
 ***Since v2.3.0***  
