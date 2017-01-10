@@ -6,13 +6,11 @@
 极光 IM（英文名 JMessage）致力于帮助 App 解决应用内聊天和跨应用聊天问题，开发者可集成SDK，快速实现稳定可靠的聊天功能。目前提供 iOS / Android / web 的 SDK，以及 Rest API 和后台管理系统，满足开发者不同场景下的需求，大大减少开发成本，提高效率。
 
 
-### JMessage 与 JPush 的关系
+### 模块化的极光开发者SDK
 
-JMessage 以 JPush 技术为基础，共享 JPush 的网络长连接，在保留了 JPush 全部功能的基础上增加了 IM 功能。集成 JMessage 服务的应用，从客户端 SDK，到服务端 REST API，Web 控制台，都具备并且兼容 JPush 的全部功能。JPush 用户可以直接集成 JMessage SDK，平滑升级到极光IM，让应用具备聊天功能。
+极光开发者服务SDK采用了模块化的使用模式，即一个核心模块 （JCore）+N种服务（IM，JPush，JAnalytics）的使用方式，方便开发者同时集成多项极光开发者服务，极大的优化了多模块同时使用时功能模块重复的问题。如下图：
+![jiguang](../image/sdk_model.png)
 
-![im_sdk_and_jpush](../image/jmessage_jpush_sdk.png)
-
-	对于同一个应用 JMessage 与 JPush 使用同样的 AppKey。
 
 ### JMessage 与 JPush 的区别
 
@@ -46,7 +44,7 @@ JMessage 以 IM 使用场景出发，面向用户根据登录帐号来收发消�
     <tr >
       <td>发送方式</td>
       <td>支持广播、Tag，或者单设备 </td>
-      <td>单聊、群群 </td>
+      <td>单聊、群聊 </td>
     </tr>
   </table>
 </div>
@@ -81,11 +79,11 @@ App 使用 JMessage 提供的群组功能创建群组时得到的群组标识。
 
 
 
-### JPush 更新后的架构
+### IM 与 JPush 的架构
 
 ![jpush_im_architecture](../image/jmessage_architecture.png)
 
-上图是 JPush 新增了 IM 服务后的整体架构图。通过此图可以理解：
+上图是 JPush 与 IM 服务的整体架构图。通过此图可以理解：
 
 + IM SDK 中支持的推送，与 JPush 使用同一个网络长连接。
 + 服务器端接入服务器在两个服务之间是共享的。
@@ -94,8 +92,8 @@ App 使用 JMessage 提供的群组功能创建群组时得到的群组标识。
 ### JMessage 的优势
 
 + 以极光推送的大规模、高并发、稳定的推送服务为技术基础，并继承这些特性。
-+ IM SDK 与 JPush SDK 合并，一个网络连接同时支持 IM 与 Push 业务。
-+ IM 完美兼容 Push ，已使用 Push 服务的用户可平滑升级。
++ IM SDK 与 JPush SDK 共用一个网络连接，同时支持 IM 与 Push 业务。
++ IM 完美兼容 Push ，已使用 Push 服务的用户可同时集成 IM，平滑升级。
 + JPush 团队之前就是开发 IM App 的，对 IM 业务具有更深刻的理解，能够持续地改进与革新 IM 服务。
 
 
@@ -110,7 +108,7 @@ App 使用 JMessage 提供的群组功能创建群组时得到的群组标识。
 + 群组维护：创建群组、加群、退群。
 + 离线消息：可选择是否需要保存离线消息
 + 关系模式：有好友模式和无好友模式
-+ 跨应用聊天：不同应用下的用户相互通信
++ 跨应用聊天：不同应用下的用户可相互通信
 
 
 
@@ -134,6 +132,7 @@ App 使用 JMessage 提供的群组功能创建群组时得到的群组标识。
 + 注册用户
 + 管理用户
 + 维护群组
++ 发送消息
 
 
 ## 集成流程
@@ -144,7 +143,6 @@ App 使用 JMessage 提供的群组功能创建群组时得到的群组标识。
 	  Android 开发者请参考文档：[JMessage Android SDK 集成指南](https://docs.jiguang.cn/jmessage/client/jmessage_android_guide/)  
 	  iOS 开发者请参考文档：[JMessage iOS SDK 集成指南](https://docs.jiguang.cn/jmessage/client/jmessage_ios_guide/)
       
-	+ 如果 App 里之前已经集成过 JPush SDK，则可直接升级换成 IM SDK。
 3. 通过管理控制台，或调用 REST API 管理用户，发送消息。
 
 
