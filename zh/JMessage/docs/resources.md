@@ -42,8 +42,8 @@
             <div class="download-right">
                 <div class="download-title">
                     <p id="release-title">iOS - SDK</p>
-                    <span id="release-version">版本：v2.2.4</span>
-                    <span id="release-time">2016.12.19</span>
+                    <span id="release-version">版本：v3.0.0</span>
+                    <span id="release-time">2017.01.10</span>
                 </div>
                 <div class="download-info">
                     <ul class="download-info-ul">
