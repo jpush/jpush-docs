@@ -8,7 +8,7 @@
 
 这是 JMessage REST API 的 Java 版本封装开发包，是由极光推送官方提供的，一般支持最新的 API 功能。
 
-对应的 REST API 文档：<http://docs.jpush.io/server/rest_api_im/>
+对应的 REST API 文档：<https://docs.jiguang.cn/jmessage/server/rest_api_im/>
 
 本开发包 Javadoc：[API Docs](http://jpush.github.io/jmessage-api-java-client/apidocs/)
 
