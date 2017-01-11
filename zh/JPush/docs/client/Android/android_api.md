@@ -138,14 +138,19 @@ JPush SDK 收到推送，通过广播的方式，转发给开发者App，这样�
 	        <action android:name="cn.jpush.android.intent.MESSAGE_RECEIVED" />
 	        <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED" />
 	        <action android:name="cn.jpush.android.intent.NOTIFICATION_OPENED" />
+	        <action android:name="cn.jpush.android.intent.NOTIFICATION_CLICK_ACTION" />
+	        <action android:name="cn.jpush.android.intent.CONNECTION" />
 	        <category android:name="You package Name" />
 	    </intent-filter>
 	</receiver>
 	
 每个 Receiver action 详细解释如下。
 
-#### Action - cn.jpush.android.intent.REGISTRATION
+#### Action - JPushInterface.ACTION\_REGISTRATION\_ID
+#####字符串值
+	"cn.jpush.android.intent.REGISTRATION"
 
+#####功能描述
 SDK 向 JPush Server 注册所得到的注册 ID 。
 
 一般来说，可不处理此广播信息。
@@ -156,16 +161,17 @@ SDK 向 JPush Server 注册所得到的注册 ID 。
 
 ##### Intent 参数
 
-+ JPushInterface.EXTRA_REGISTRATION_ID
++ JPushInterface.EXTRA\_REGISTRATION\_ID
 	+ SDK 向 JPush Server 注册所得到的注册 全局唯一的 ID ，可以通过此 ID 向对应的客户端发送消息和通知。
 	
-
-
 			Bundle bundle = intent.getExtras();
 			String title = bundle.getString(JPushInterface.EXTRA_REGISTRATION_ID);
 
-#### Action - cn.jpush.android.intent.MESSAGE_RECEIVED
-	
+#### Action - JPushInterface.ACTION\_MESSAGE\_RECEIVED
+#####字符串值
+	"cn.jpush.android.intent.MESSAGE_RECEIVED"
+
+#####功能描述	
 收到了自定义消息 Push 。
 
 SDK 对自定义消息，只是传递，不会有任何界面上的展示。
@@ -199,38 +205,27 @@ SDK 对自定义消息，只是传递，不会有任何界面上的展示。
 			String extras = bundle.getString(JPushInterface.EXTRA_EXTRA);
 			
 			
-+ JPushInterface.EXTRA_CONTENT_TYPE
-	+ 保存服务器推送下来的内容类型。
-	+ 对应 API 消息内容的 content_type 字段。	
-
-			Bundle bundle = intent.getExtras();
-			String type = bundle.getString(JPushInterface.EXTRA_CONTENT_TYPE);
-
-+ JPushInterface.EXTRA_RICHPUSH_FILE_PATH
-	+ SDK 1.4.0 以上版本支持。
-	+ 富媒体通消息推送下载后的文件路径和文件名。
-	
-			Bundle bundle = intent.getExtras();
-			String file = bundle.getString(JPushInterface.EXTRA_RICHPUSH_FILE_PATH);
-			
-+ JPushInterface.EXTRA_MSG_ID
++ JPushInterface.EXTRA\_MSG\_ID
 	+ SDK 1.6.1 以上版本支持。
 	+ 唯一标识消息的 ID, 可用于上报统计等。
 
 			Bundle bundle = intent.getExtras();
 			String file = bundle.getString(JPushInterface.EXTRA_MSG_ID);
 			
-#### Action - cn.jpush.android.intent.NOTIFICATION_RECEIVED
+#### Action - JPushInterface.ACTION\_NOTIFICATION\_RECEIVED.
+#####字符串值
+	"cn.jpush.android.intent.NOTIFICATION_RECEIVED"
 
+#####功能描述
 收到了通知 Push。
 
-```
- 如果通知的内容为空，则在通知栏上不会展示通知。
- 但是，这个广播 Intent 还是会有。开发者可以取到通知内容外的其他信息。
-```
+如果通知的内容为空，则在通知栏上不会展示通知。
+
+但是，这个广播 Intent 还是会有。开发者可以取到通知内容外的其他信息。
+
 ##### Intent 参数
 
-+ JPushInterface.EXTRA_NOTIFICATION_TITLE
++ JPushInterface.EXTRA\_NOTIFICATION\_TITLE
 	+ 保存服务器推送下来的通知的标题。
 	+ 对应 API 通知内容的 title 字段。
 	+ 对应 Portal 推送通知界面上的“通知标题”字段。
@@ -257,7 +252,7 @@ SDK 对自定义消息，只是传递，不会有任何界面上的展示。
 			String extras = bundle.getString(JPushInterface.EXTRA_EXTRA);
 			
 
-+ JPushInterface.EXTRA_NOTIFICATION_ID
++ JPushInterface.EXTRA\_NOTIFICATION\_ID
 	+ SDK 1.3.5 以上版本支持。
 	+ 通知栏的Notification ID，可以用于清除Notification
 	+ 如果服务端内容（alert）字段为空，则notification id 为0
@@ -265,41 +260,35 @@ SDK 对自定义消息，只是传递，不会有任何界面上的展示。
 			Bundle bundle = intent.getExtras();
 			int notificationId = bundle.getInt(JPushInterface.EXTRA_NOTIFICATION_ID);
 			
-+ JPushInterface.EXTRA_CONTENT_TYPE
-	+ 保存服务器推送下来的内容类型。
-	+ 对应 API 消息内容的 content_type 字段。 
-	+ Portal 上暂时未提供输入字段。
-
-			Bundle bundle = intent.getExtras();
-			String type = bundle.getString(JPushInterface.EXTRA_CONTENT_TYPE);
-			
-						
-+ JPushInterface.EXTRA_RICHPUSH_HTML_PATH
+									
++ JPushInterface.EXTRA\_RICHPUSH\_HTML\_PATH
 	+ SDK 1.4.0 以上版本支持。
 	+ 富媒体通知推送下载的HTML的文件路径,用于展现WebView。
 
 			Bundle bundle = intent.getExtras();
 			String fileHtml = bundle.getString(JPushInterface.EXTRA_RICHPUSH_HTML_PATH);
 			
-+ JPushInterface.EXTRA_RICHPUSH_HTML_RES
++ JPushInterface.EXTRA\_RICHPUSH\_HTML\_RES
 	+ SDK 1.4.0 以上版本支持。
-	+ 富媒体通知推送下载的图片资源的文件名,多个文件名用 “，” 分开。 与 “JPushInterface.EXTRA_RICHPUSH_HTML_PATH” 位于同一个路径。
+	+ 富媒体通知推送下载的图片资源的文件名,多个文件名用 “，” 分开。 与 “JPushInterface.EXTRA\_RICHPUSH\_HTML\_PATH” 位于同一个路径。
 
 			Bundle bundle = intent.getExtras();
 			String fileStr = bundle.getString(JPushInterface.EXTRA_RICHPUSH_HTML_RES);
 			String[] fileNames = fileStr.split(",");
 			
-+ JPushInterface.EXTRA_MSG_ID
++ JPushInterface.EXTRA\_MSG\_ID
 	+ SDK 1.6.1 以上版本支持。  
 	+ 唯一标识通知消息的 ID, 可用于上报统计等。
 
 			Bundle bundle = intent.getExtras();
 			String file = bundle.getString(JPushInterface.EXTRA_MSG_ID);
 			
-#### Action - cn.jpush.android.intent.NOTIFICATION_OPENED
-			
-用户点击了通知。
+#### Action - JPushInterface.ACTION\_NOTIFICATION\_OPENED
+#####字符串值
+	"cn.jpush.android.intent.NOTIFICATION_OPENED"
 
+#####功能描述			
+用户点击了通知。
 一般情况下，用户不需要配置此 receiver action。
 
 如果开发者在 AndroidManifest.xml 里未配置此 receiver action，那么，SDK 会默认打开应用程序的主 Activity，相当于用户点击桌面图标的效果。
@@ -308,7 +297,7 @@ SDK 对自定义消息，只是传递，不会有任何界面上的展示。
 
 ##### Intent 参数
 
-+ JPushInterface.EXTRA_NOTIFICATION_TITLE
++ JPushInterface.EXTRA\_NOTIFICATION\_TITLE
 
 	+ 保存服务器推送下来的通知的标题。
 	+ 对应 API 通知内容的 title 字段。
@@ -337,7 +326,7 @@ SDK 对自定义消息，只是传递，不会有任何界面上的展示。
 			String type = bundle.getString(JPushInterface.EXTRA_EXTRA);
 			
 							
-+ JPushInterface.EXTRA_NOTIFICATION_ID
++ JPushInterface.EXTRA\_NOTIFICATION\_ID
 	
 	+ SDK 1.3.5 以上版本支持。
 	+ 通知栏的Notification ID，可以用于清除Notification
@@ -345,15 +334,81 @@ SDK 对自定义消息，只是传递，不会有任何界面上的展示。
 			Bundle bundle = intent.getExtras();
 			int notificationId = bundle.getInt(JPushInterface.EXTRA_NOTIFICATION_ID
 			  
-+ JPushInterface.EXTRA_MSG_ID
++ JPushInterface.EXTRA\_MSG\_ID
 	+ SDK 1.6.1 以上版本支持。
 	+ 唯一标识调整消息的 ID, 可用于上报统计等。
 
 			Bundle bundle = intent.getExtras();
 			String file = bundle.getString(JPushInterface.EXTRA_MSG_ID);
+
+#### Action - JPushInterface.ACTION\_NOTIFICATION\_CLICK\_ACTION
+#####字符串值
+	"cn.jpush.android.intent.NOTIFICATION_CLICK_ACTION"
+
+#####功能描述
+用户点击了通知栏中自定义的按钮。(SDK 3.0.0 以上版本支持)
+
+使用普通通知的开发者不需要配置此 receiver action。只有开发者使用了 MultiActionsNotificationBuilder 构建携带按钮的通知栏的通知时，可通过该 action 捕获到用户点击通知栏按钮的操作，并自行处理。
+
+##### Intent 参数
+
++ JPushInterface.EXTRA\_NOTIFICATION\_ACTION\_EXTRA
+
+	+ SDK 3.0.0 以上版本支持。
+	+ 获取通知栏按钮点击事件携带的附加信息。
+	+ 对应使用 MultiActionsNotificationBuilder.addJPushAction 添加的按钮信息。
+	
+			private void setAddActionsStyle() {
+				MultiActionsNotificationBuilder builder = new MultiActionsNotificationBuilder(PushSetActivity.this);
+        		builder.addJPushAction(R.drawable.jpush_ic_richpush_actionbar_back, "first", "my_extra1");
+        		builder.addJPushAction(R.drawable.jpush_ic_richpush_actionbar_back, "second", "my_extra2");
+        		builder.addJPushAction(R.drawable.jpush_ic_richpush_actionbar_back, "third", "my_extra3");
+        		JPushInterface.setPushNotificationBuilder(10, builder);
+
+        		Toast.makeText(PushSetActivity.this, "AddActions Builder - 10", Toast.LENGTH_SHORT).show();
+    		}
 			
+	+ 获取到对应的附加信息，确定是哪个按钮后自行处理。
+
+			else if (JPushInterface.ACTION_NOTIFICATION_CLICK_ACTION.equals(intent.getAction())){
+				Log.d(TAG, "[MyReceiver] 用户点击了通知栏按钮");
+				String nActionExtra = intent.getExtras().getString(JPushInterface.EXTRA_NOTIFICATION_ACTION_EXTRA);
+
+				//开发者根据不同 Action 携带的 extra 字段来分配不同的动作。
+				if(nActionExtra==null){
+					Log.d(TAG,"ACTION_NOTIFICATION_CLICK_ACTION nActionExtra is null");
+					return;
+				}
+				if (nActionExtra.equals("my_extra1")) {
+					Log.d(TAG, "[MyReceiver] 用户点击通知栏按钮一");
+				} else if (nActionExtra.equals("my_extra2")) {
+					Log.d(TAG, "[MyReceiver] 用户点击通知栏按钮二");
+				} else if (nActionExtra.equals("my_extra3")) {
+					Log.d(TAG, "[MyReceiver] 用户点击通知栏按钮三");
+				} else {
+					Log.d(TAG, "[MyReceiver] 用户点击通知栏按钮未定义");
+				}
+			}		
+
+#### Action - JPushInterface.ACTION\_CONNECTION\_CHANGE
+#####字符串值	
+	"cn.jpush.android.intent.CONNECTION"
+	
+#####功能描述
+JPush 服务的连接状态发生变化。（注：不是指 Android 系统的网络连接状态。）
+
+##### Intent 参数
+
++ JPushInterface.EXTRA_CONNECTION_CHANGE
+
+	+ SDK 1.6.3 以上版本支持。
+	+ 获取当前 JPush 服务的连接状态。
+
+			Bundle bundle = intent.getExtras();
+			boolean connected = bundle.getBooleanExtra(JPushInterface.EXTRA_CONNECTION_CHANGE, false);
+
 			
-### 代码示例
+### 开发者自定义 Receiver 代码示例
 
 	public void onReceive(Context context, Intent intent) {
 	        Bundle bundle = intent.getExtras();
@@ -376,6 +431,8 @@ SDK 对自定义消息，只是传递，不会有任何界面上的展示。
 	            Log.d(TAG, "Unhandled intent - " + intent.getAction());
 	  }
 	}
+	
+更多示例代码请参考 Android SDK 压缩包中的 example 工程。
 
 ## 别名与标签 API	
 
