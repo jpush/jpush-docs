@@ -283,6 +283,46 @@ SDK 对自定义消息，只是传递，不会有任何界面上的展示。
 			Bundle bundle = intent.getExtras();
 			String file = bundle.getString(JPushInterface.EXTRA_MSG_ID);
 			
++ JPushInterface.EXTRA\_BIG\_TEXT
+	+ SDK 3.0.0 以上版本支持，支持 api 16以上的rom。
+	+ 大文本通知样式中大文本的内容。
+	
+			Bundle bundle = intent.getExtras();
+			String bigText = bundle.getString(JPushInterface.EXTRA_BIG_TEXT);
+						
+
++ JPushInterface.EXTRA\_BIG\_PIC\_PATH
+    + SDK 3.0.0 以上版本支持，支持 api 16以上的rom。
+    + 可支持本地图片的路径，或者填网络图片地址。
+    + 大图片通知样式中大图片的路径/地址。
+    
+			Bundle bundle = intent.getExtras();
+			String bigPicPath = bundle.getString(JPushInterface.EXTRA_BIG_PIC_PATH);    
+ 
++ JPushInterface.EXTRA_INBOX
+    + SDK 3.0.0 以上版本支持，支持 api 16以上的rom。
+    + 获取的是一个 JSONObject，json 的每个 key 对应的 value 会被当作文本条目逐条展示。
+    + 收件箱通知样式中收件箱的内容。
+
+			Bundle bundle = intent.getExtras();
+			String inboxJson = bundle.getString(JPushInterface.EXTRA_INBOX);
+
++ JPushInterface.EXTRA\_NOTI\_PRIORITY
+    + SDK 3.0.0 以上版本支持。
+    + 默认为0，范围为 -2～2 ，其他值将会被忽略而采用默认。
+    + 通知的优先级。
+
+			Bundle bundle = intent.getExtras();
+			String prio = bundle.getString(JPushInterface.EXTRA_NOTI_PRIORITY);    
+
++ JPushInterface.EXTRA\_NOTI\_CATEGORY	
+	+ SDK 3.0.0 以上版本支持。
+	+ 完全依赖 rom 厂商对每个 category 的处理策略，比如通知栏的排序。
+	+ 通知分类。
+
+			Bundle bundle = intent.getExtras();
+			String prio = bundle.getString(JPushInterface.EXTRA_NOTI_CATEGORY); 	
+			
 #### Action - JPushInterface.ACTION\_NOTIFICATION\_OPENED
 #####字符串值
 	"cn.jpush.android.intent.NOTIFICATION_OPENED"
@@ -418,13 +458,13 @@ JPush 服务的连接状态发生变化。（注：不是指 Android 系统的�
 	        String regId = bundle.getString(JPushInterface.EXTRA_REGISTRATION_ID);
 	        Log.d(TAG, "[MyReceiver] 接收Registration Id : " + regId);
 	    }else if (JPushInterface.ACTION_MESSAGE_RECEIVED.equals(intent.getAction())) {
-	        System.out.println("收到了自定义消息。消息内容是：" + bundle.getString(JPushInterface.EXTRA_MESSAGE));
+	        Log.d(TAG, "收到了自定义消息。消息内容是：" + bundle.getString(JPushInterface.EXTRA_MESSAGE));
 	        // 自定义消息不会展示在通知栏，完全要开发者写代码去处理
 	    } else if (JPushInterface.ACTION_NOTIFICATION_RECEIVED.equals(intent.getAction())) {
-	        System.out.println("收到了通知");
+	        Log.d(TAG, "收到了通知");
 	        // 在这里可以做些统计，或者做些其他工作
 	    } else if (JPushInterface.ACTION_NOTIFICATION_OPENED.equals(intent.getAction())) {
-	        System.out.println("用户点击打开了通知");
+	        Log.d(TAG, "用户点击打开了通知");
 	        // 在这里可以自己写代码去定义用户点击后的行为
 	        Intent i = new Intent(context, TestActivity.class);  //自定义打开的界面
 	        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
