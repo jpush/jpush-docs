@@ -91,7 +91,7 @@ defaultConfig {
 
     <!-- Required -->
     <uses-permission android:name="您自己的包名.permission.JPUSH_MESSAGE" />
-    <uses-permission android:name="android.permission.RECEIVER_USER_PRESENT" />
+    <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
@@ -252,14 +252,15 @@ defaultConfig {
 ### 添加代码
 
 #### 基础API
-+ init 初始化SDK
-        
-        JMessageClient.init(Context context)
-        
 + setDebugMode 设置调试模式
 
         // You can enable debug mode in developing state. You should close debug mode when release.
         JMessageClient.setDebugMode(boolean debugEnalbed)
+
++ init 初始化SDK
+        
+        JMessageClient.init(Context context)
+        
 
 #### 调用示例代码（参考 example 项目）
 
@@ -291,7 +292,7 @@ defaultConfig {
 
 .......
 
-[PushService] Login succeed!
+[ConnectingHelper] Login succeed!
 ```
 
 如图所示，客户端启动分为 4 步：
@@ -385,12 +386,12 @@ JMessage SDK
 
 ## 技术支持
 
-邮件联系：[support@jpush.cn][4]
+邮件联系：[support@jiguang.cn][4]
 
 问答社区：[https://community.jiguang.cn/latest][5]
 
 [3]: https://docs.jiguang.cn/jpush/client/Android/android_guide/
-[4]: mailto:support@jpush.cn
+[4]: mailto:support@jiguang.cn
 [5]: https://community.jiguang.cn/
 
 
