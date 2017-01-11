@@ -284,7 +284,7 @@ SDK 对自定义消息，只是传递，不会有任何界面上的展示。
 			String file = bundle.getString(JPushInterface.EXTRA_MSG_ID);
 			
 + JPushInterface.EXTRA\_BIG\_TEXT
-	+ SDK 3.0.0 以上版本支持，支持 api 16以上的rom。
+	+ SDK 3.0.0 以上版本支持，支持 api 16 以上的rom。
 	+ 大文本通知样式中大文本的内容。
 	
 			Bundle bundle = intent.getExtras();
@@ -292,7 +292,7 @@ SDK 对自定义消息，只是传递，不会有任何界面上的展示。
 						
 
 + JPushInterface.EXTRA\_BIG\_PIC\_PATH
-    + SDK 3.0.0 以上版本支持，支持 api 16以上的rom。
+    + SDK 3.0.0 以上版本支持，支持 api 16 以上的rom。
     + 可支持本地图片的路径，或者填网络图片地址。
     + 大图片通知样式中大图片的路径/地址。
     
@@ -300,7 +300,7 @@ SDK 对自定义消息，只是传递，不会有任何界面上的展示。
 			String bigPicPath = bundle.getString(JPushInterface.EXTRA_BIG_PIC_PATH);    
  
 + JPushInterface.EXTRA_INBOX
-    + SDK 3.0.0 以上版本支持，支持 api 16以上的rom。
+    + SDK 3.0.0 以上版本支持，支持 api 16 以上的rom。
     + 获取的是一个 JSONObject，json 的每个 key 对应的 value 会被当作文本条目逐条展示。
     + 收件箱通知样式中收件箱的内容。
 
@@ -308,7 +308,7 @@ SDK 对自定义消息，只是传递，不会有任何界面上的展示。
 			String inboxJson = bundle.getString(JPushInterface.EXTRA_INBOX);
 
 + JPushInterface.EXTRA\_NOTI\_PRIORITY
-    + SDK 3.0.0 以上版本支持。
+    + SDK 3.0.0 以上版本支持, 支持 api 16 以上的rom。
     + 默认为0，范围为 -2～2 ，其他值将会被忽略而采用默认。
     + 通知的优先级。
 
@@ -316,7 +316,7 @@ SDK 对自定义消息，只是传递，不会有任何界面上的展示。
 			String prio = bundle.getString(JPushInterface.EXTRA_NOTI_PRIORITY);    
 
 + JPushInterface.EXTRA\_NOTI\_CATEGORY	
-	+ SDK 3.0.0 以上版本支持。
+	+ SDK 3.0.0 以上版本支持, 支持 api 21 以上的rom。
 	+ 完全依赖 rom 厂商对每个 category 的处理策略，比如通知栏的排序。
 	+ 通知分类。
 
