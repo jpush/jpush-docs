@@ -19,7 +19,7 @@ img[alt=jmessage_ios] { width: 800px; }
 
 #### 1、在极光 Web控制台上创建应用
 
-* 登录[极光Web控制台](https://www.jiguang.cn/accounts/login/form)，创建应用，上传 APNs 证书。
+* 登录<a href="https://www.jiguang.cn/accounts/login/form" target="_blank">极光Web控制台</a>，创建应用，上传 APNs 证书。
 如果对 Apple APNs 证书不太了解，请参考[iOS 证书设置指南](https://docs.jiguang.cn/jpush/client/iOS/ios_cer_guide/)。
 
 ![jmessage_ios][0]
@@ -28,7 +28,19 @@ img[alt=jmessage_ios] { width: 800px; }
 
 ![jmessage_ios][1]
 
-#### 2、下载 SDK 并导入到应用程序项目里
+#### 2、SDK 导入
+##### Cocoapods 导入
+通过 Cocoapods 下载地址：
+
+	pod 'JMessage'
+
+如果需要安装指定版本则使用：
+
+	pod 'JMessage', :head
+	
+使用用Cocoapods导入SDK则可以跳过步骤3.
+
+##### 手动导入
 在极光IM官网下载[最新SDK](https://docs.jiguang.cn/jmessage/resources/)
 
 1. 把 JMessage.framework 文件加入到项目里。
@@ -147,13 +159,13 @@ JMessage iOS SDK V3.0.0 及以后版本不再包含 JPush 的功能，需要使�
 <span id="demo"></span>
 ### JMessage Demo
 极光 IM 提供了一个完整的 IM 场景下的应用 JChat，它就是一个 IM App，供大家下载参考。
-[JChat iOS 项目源代码](http://github.com/jpush/jchat-ios)，开源放在 Github 上。下载的 SDK 压缩包里，也有 JChat 的源代码。
+<a href="http://github.com/jpush/jchat-ios" target="_blank">JChat iOS 项目源代码</a>，开源放在 Github 上。下载的 SDK 压缩包里，也有 JChat 的源代码。
 
 ### 技术支持
 
-邮件联系：[support@jiguang.cn][4]
+邮件联系：<a href="mailto:support@jpush.cn" target="_blank">https://community.jiguang.cn</a>
 
-问答社区：[https://community.jiguang.cn/latest][5]
+问答社区：<a href="https://community.jiguang.cn/latest" target="_blank">support@jpush.cn</a>
 
 [0]: ./image/create_ios_app.png
 [1]: ./image/Screenshot_13-4_2_create.png
