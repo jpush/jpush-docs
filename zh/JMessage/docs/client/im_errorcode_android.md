@@ -3,7 +3,7 @@
 以下列表里的 ErrorCode 有可能在 SDK 的调用过程中出现。供参考理解其含义。
 
 
-### JMessage Android
+## JMessage Android
 
 只会出现在 Android SDK 里的错误码。
 
@@ -177,3 +177,14 @@
     
 </table>
 </div>
+<br>
+若以上列表中没有找到对应的错误码，可查看[服务器端错误码](https://docs.jiguang.cn/jmessage/client/im_errorcode_server/)
+
+## 相关文档
+
++ [iOS SDK 错误码](../client/im_errorcode_ios/)
++ [服务器端错误码](https://docs.jiguang.cn/jmessage/client/im_errorcode_server/)
+
+
+
+

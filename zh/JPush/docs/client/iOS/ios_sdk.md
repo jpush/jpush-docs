@@ -92,7 +92,7 @@ JPush API v3 支持同时一次调用同时推送 APNs 通知与 JPush 应用内
 
 ### iOS 版本支持
 
-+ 支持的iOS版本为5.0及以上版本。
++ 支持的iOS版本为6.0及以上版本。
 + 支持iOS版本为10.0以上的版本时需知。
 	+ Notification Service Extension证书配置时需要注意BundleID不能与Main Target一致，证书需要单独额外配置。
 	+ 请将Notification Service Extension中的Deployment Target设置为10.0。
@@ -103,7 +103,7 @@ JPush API v3 支持同时一次调用同时推送 APNs 通知与 JPush 应用内
 ### 组成
 
 + 头文件 JPUSHService.h
-+ 静态库文件 jpush-ios-x.x.x.a
++ 静态库文件 jpush-ios-x.x.x.a，jcore-ios-x.x.x.a
 
 ### 注意事项
 + [请参考iOS常见问题](ios_faq)

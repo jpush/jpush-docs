@@ -36,13 +36,16 @@
         <li><a href="/jmessage/client/jmessage_ios_guide/">iOS SDK 集成指南</a></li>
         <li><a href="/jmessage/client/im_sdk_js/">WEB SDK 开发文档</a></li>
         <li><a href="/jmessage/server/rest_api_im/">IM REST API</a></li>
+        <li><a href="https://docs.jiguang.cn/jmessage/client/im_android_api_docs/">Android SDK API</a></li>
+        <li><a href="https://docs.jiguang.cn/jmessage/client/jmessage_ios_appledoc_html/">iOS SDK API</a></li>
         <li><a href="https://docs.jiguang.cn/jmessage/resources/">IM SDK 下载</a></li>
+        
         <div style="clear:both;"></div>
     </ul>
 </div>
 <div class="content-box">
     <div class="h2-tile">
-        <h2>短信验证码 文档</h2>
+        <h2>短信服务 文档</h2>
     </div>
     <ul>
         <li><a href="/jsms/guideline/JSMS_guide/">短信验证码概述</a></li>

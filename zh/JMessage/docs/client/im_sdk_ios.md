@@ -61,6 +61,31 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 
 这个调用是必须的。否则 SDK 将不能正常工作。
 
+#### 注册远程推送
+```
+/*!
+ * @abstract 注册远程推送
+ * @param types 通知类型
+ * @param categories 类别组
+ * @discussion 此方法必须被调用，如果有集成JPush或其他远程推送注册方法，请不要再调用此方法
+ *
+ */
++ (void)registerForRemoteNotificationTypes:(NSUInteger)types
+                                categories:(NSSet *)categories;
+                                                            
+```
+
+#### 注册DeviceToken
+```
+/*!
+ * @abstract 注册DeviceToken
+ * @param deviceToken 从注册推送回调中拿到的DeviceToken
+ * @discussion 此方法必须被调用
+ *
+ */
++ (void)registerDeviceToken:(NSData *)deviceToken;
+```
+
 ### 注册与登录
 #### 用户注册
 	/*!
@@ -493,6 +518,17 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 	 */
 	- (void)setFromName:(NSString * JMSG_NULLABLE)fromName;
 
+#### 更新 message 中的extra
+	/*!
+	 * @abstract 更新 message 中的 extra
+	 *
+	 * @param value   待更新的value,不能为null,类型只能为 NSNumber 和 NSString
+	 * @param key     待更新value对应的key,不能为null
+	 *
+	 */
+	- (BOOL)updateMessageExtraValue:(id)value forKey:(NSString *)key;
+
+
 ### 会话管理
 会话相关的操作：
 #### 获取单聊会话
@@ -815,6 +851,16 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 	 * @discussion 把未读数设置为 0
 	 */
 	- (void)clearUnreadCount;
+
+#### 所有会话的未读消息的总数
+
+	/*!
+	 * @abstract 获取当前所有会话的未读消息的总数
+	 *
+	 * @discussion 获取所有会话未读消息总数
+	 */
+	+ (NSNumber *)getAllUnreadCount;
+
 
 #### 获取最后一条消息的内容文本
 	/*!
@@ -1167,6 +1213,9 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
     }];
 		                        
 ### 黑名单
+
+将用户加入黑名单后，将不在收到对方发来的任何消息。例如：A 用户将 B 用户加入黑名单，B 用户发送的消息，A 用户将收不到，A 用户发送的消息,B 用户依然可以看到。
+
 #### 获取黑名单列表
 
 ```
@@ -1263,6 +1312,10 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 ```
 	             
 ### 免打扰
+
+可以将用户/群组添加到“免打扰”列表中，收到免打扰用户/群组发过来的消息时，将不会有通知栏通知，但消息事件照常下发。
+设置全局免打扰之后，收到所有消息都将不会有通知栏通知，效果类似。
+
 #### 免打扰列表
 
 ```
@@ -1429,6 +1482,9 @@ BOOL isAlreadSet = user.isNoDisturb;
 	    /// 事件类型：用户登录状态异常事件（需要重新登录）
 	    kJMSGEventNotificationUserLoginStatusUnexpected = 70,
 	    
+	    /// 事件类型：当前登录用户信息变更通知事件(非客户端修改)
+		 kJMSGEventNotificationCurrentUserInfoChange = 40,
+	    
 	    /// 好友相关事件
 	    /// 事件类型: 收到好友邀请
 	    kJMSGEventNotificationReceiveFriendInvitation   = 51,
@@ -1438,6 +1494,8 @@ BOOL isAlreadSet = user.isNoDisturb;
 	    kJMSGEventNotificationDeclinedFriendInvitation  = 53,
 	    /// 事件类型: 对方将你从好友中删除
 	    kJMSGEventNotificationDeletedFriend             = 6,
+		 /// 事件类型：非客户端修改好友关系收到好友更新事件
+		 kJMSGEventNotificationReceiveServerFriendUpdate = 7,
 	    
 	    /// 消息事件
 	    /// 事件类型: 群组被创建
@@ -1574,20 +1632,32 @@ JMessage SDK 采用 Delegate 的机制给 App 发通知，而不是采用 iOS �
 	// 通知事件监听
 	- (void)onReceiveNotificationEvent:(JMSGNotificationEvent *)event{
 	    switch (event.eventType) {
+		     case kJMSGEventNotificationCurrentUserInfoChange:
+		     	  NSLog(@"Current user info change Event ");
+		     	  break;
 	        case kJMSGEventNotificationReceiveFriendInvitation:
+	            NSLog(@"Receive Friend Invitation Event ");
+	            break;
 	        case kJMSGEventNotificationAcceptedFriendInvitation:
+	            NSLog(@"Accepted Friend Invitation Event ");
+	            break;
 	        case kJMSGEventNotificationDeclinedFriendInvitation:
+	            NSLog(@"Declined Friend Invitation Event ");
+	            break;
 	        case kJMSGEventNotificationDeletedFriend:
-	            NSLog(@"Friend Notification Event ");
+	            NSLog(@"Deleted Friend Event ");
+	            break;
+            case kJMSGEventNotificationReceiveServerFriendUpdate:
+	            NSLog(@"Receive Server Friend Update Event ");
 	            break;
 	        case kJMSGEventNotificationLoginKicked:
-	            NSLog(@"LoginKicked Notification Event ");
+	            NSLog(@"Login Kicked Event ");
 	            break;
 	        case kJMSGEventNotificationServerAlterPassword:
-	            NSLog(@"Server Alter Password Notification Event ");
+	            NSLog(@"Server Alter Password Event ");
 	            break;
 	        case kJMSGEventNotificationUserLoginStatusUnexpected:
-	            NSLog(@"User login status unexpected Notification Event ");
+	            NSLog(@"User login status unexpected Event ");
 	            break;
 	        default:
 		        NSLog(@"Other Notification Event ");

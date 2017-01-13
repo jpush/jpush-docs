@@ -95,9 +95,7 @@ Authorization: Basic base64_auth_string
 ##### Example Request
 
 ```
-[{"username": "dev_fang", "password": "password"}, 
- {"username": "dev_fang_", "password": "password"}
-] 
+[{"username": "dev_fang", "password": "password"}] 
 ```
 
 ##### Request Params
@@ -105,9 +103,9 @@ Authorization: Basic base64_auth_string
 JSON Array.
 
 + username（必填）用户名
-	+ 开头：字母或者数字
-	+ 字母、数字、下划线
-	+ 英文点、减号、@
+  + 开头：字母或者数字
+  + 字母、数字、下划线
+  + 英文点、减号、@
 + password（必填）用户密码。极光IM服务器会MD5加密保存。
 
 ##### Example Response
@@ -116,9 +114,7 @@ JSON Array.
 < HTTP/1.1 201 Created
 < Content-Type: application/json
 < 
-[{"username": "dev_fang"  }, 
- {"username": "dev_javen",  "error":{"code":899001,"message":"The user  already exists"}}
-] 
+[{"username": "dev_fang"  }] 
 ```
 
 ##### Response Params
@@ -127,8 +123,8 @@ JSON Array.
 
 + username
 + error 某个用户注册出错时，该对象里会有 error 对象，说明错误原因。
-	+ 899003   参数错误，Request Body参数不符合要求
-	+ 899001   用户已存在
+  + 899003   参数错误，Request Body参数不符合要求
+  + 899001   用户已存在
 
 
 ### Admin 注册
@@ -147,9 +143,9 @@ POST /v1/admins/
 ##### Request Params
 
 + username Byte(4-128) 支持字符
-	 + 开头：字母或者数字
-	 + 字母、数字、下划线
-	 + 英文点、减号, @
+   + 开头：字母或者数字
+   + 字母、数字、下划线
+   + 英文点、减号, @
 
 + password Byte(4-128) 字符不限
 
@@ -210,7 +206,7 @@ Content-Type: application/json; charset=utf-8
 #### 获取用户信息
 
 	GET /v1/users/{username}
-		
+
 ##### Request Params
 
 + username 用户名。填充到请求路径上。
@@ -232,7 +228,7 @@ Content-Type: application/json; charset=utf-8
 ```
 说明
 
-除了username mtime ctime这三个子段之外，其余字段如果没存json中就有没有相应的key
+除了username mtime ctime这三个子段之外，其余字段如果没存json中就没有相应的key
 
 #### 更新用户信息
 
@@ -249,21 +245,20 @@ Content-Type: application/json; charset=utf-8
 ##### Request Params
 
 + nickname  （选填）用户昵称
-	+ 不支持的字符：英文字符： \n \r\n 
+  + 不支持的字符：英文字符： \n \r\n 
 + avatar  （选填）头像
-	+ 需要填上从文件上传接口获得的media_id	
+  + 需要填上从文件上传接口获得的media_id	
 + birthday    （选填）生日 example: 1990-01-24
-	+ yyyy-MM-dd 
+  + yyyy-MM-dd 
 + signature  （选填）签名
-	+ 支持的字符：全部，包括 Emoji
+  + 支持的字符：全部，包括 Emoji
 + gender    （选填） 性别
-	+ 0 - 未知， 1 - 男 ，2 - 女 
+  + 0 - 未知， 1 - 男 ，2 - 女 
 + region      （选填）地区
-	+ 支持的字符：全部，包括 Emoji
+  + 支持的字符：全部，包括 Emoji
 + address   （选填）地址
-	+ 支持的字符：全部，包括 Emoji
-+ avatar	（选填）头像
-	+ 文件上传后得到的mediaId	
+  + 支持的字符：全部，包括 Emoji
+
 
 
 ##### Example Response
@@ -352,7 +347,7 @@ Content-Type: application/json; charset=utf-8
 #### 删除用户
 
 	DELETE /v1/users/{username}
-	
+
 Request Params
 
 + username 用户名。
@@ -363,6 +358,7 @@ Example Response
 < HTTP/1.1 204 NO CONTENT
 < Content-Type: application/json; charset=utf-8   
 ```
+
 
 #### 添加黑名单
 
@@ -382,7 +378,7 @@ Content-Type: application/json; charset=utf-8
 Request Params 
 
 + JsonArray
-	+ username的JsonArray
+  + username的JsonArray
 
 Request Body
 
@@ -425,7 +421,7 @@ Content-Type: application/json; charset=utf-8
 Request Params
 
 + JsonArray
-	+ username的JsonArray
+  + username的JsonArray
 
 Request Body
 
@@ -513,6 +509,74 @@ Example Response
       {"username" : "huang", "nickname" : "hello", "mtime" : "2015-01-01 00:00:00", "ctime" : "2015-01-01 00:00:00"} ]
 }
 ```
+
+###免打扰
+#### 免打扰设置
+
+```
+POST  /v1/users/{username}/nodisturb
+```
+
+Example Request
+
+Request Header 
+
+```
+POST  /v1/users/{username}/nodisturb
+Content-Type: application/json; charset=utf-8  
+```
+
+Request Params
+
++ single  单聊免打扰，支持add remove数组 （可选）
++ group   群聊免打扰，支持add remove数组（可选）
++ global  全局免打扰，0或1 0表示关闭，1表示打开 （可选）
+
+
+Request Body
+
+```
+{   
+   "single":{   
+      "add":[   
+         "username1",
+         "username2"
+      ]
+   },
+   "group":{   
+      "add":[   
+         110000101
+      ],
+      "remove":[   
+         1000001111
+      ]
+   },
+   "global":0
+}
+```
+
+Example Response
+
+Response Header
+
+```
+HTTP/1.1 204 NO Content
+Content-Type: application/json; charset=utf-8   
+```
+
+Response Data
+
+N/A
+
+Error Code
+
++ 899003 username不合法；
++ 899002 用户不存在；
++ 899051  群组不存在；
++ 899052 设置群组消息屏蔽，设置的群组屏蔽已经打开
++ 99053 设置群组消息屏蔽，设置的群组屏蔽已经关闭
+
+
 
 ### 消息相关
 
@@ -603,7 +667,7 @@ POST /v1/messages
 		<td>msg_body->fsize</td>
 		<td>int 文件大小（字节数）（必填）</td>
 		</tr>
-
+	
 	</table>
 </div>
 
@@ -691,9 +755,9 @@ N/A
 Request Params
 
 
-| 参数 | 含义               | 备注 |
-|--------|--------------------------|------|
-| mediaId   | 资源的mediaId，包括用户的avatar字段 |      |
+| 参数      | 含义                       | 备注   |
+| ------- | ------------------------ | ---- |
+| mediaId | 资源的mediaId，包括用户的avatar字段 |      |
 
 
 ##### Example Response 
@@ -717,15 +781,17 @@ POST /v1/resource?type=image
 ```
 ##### Example Request
 
-curl   -F "filename=@/home/test.jpg" https://api.im.jpush.cn/v1/resource?type=image -u "appkey:secret"
+图片上传 curl   -F "filename=@/home/test.jpg" https://api.im.jpush.cn/v1/resource?type=image -u "appkey:secret"
+
+文件上传 curl   -F "filename=@/home/test.mp3" https://api.im.jpush.cn/v1/resource?type=file -u "appkey:secret"
 
 注：文件大小限制8m，暂时只支持图片格式 jpg bmp gif png等
 
 
-| 参数 | 含义               | 备注 |
-|--------|--------------------------|------|
-| filename   | 磁盘本地文件路径 |      |
-| type       | 文件类型 暂时只能是"image"      |      |
+| 参数       | 含义                     | 备注   |
+| -------- | ---------------------- | ---- |
+| filename | 磁盘本地文件路径               |      |
+| type     | 文件类型 支持是"image"，"file" |      |
 
 
 Response Header  
@@ -737,7 +803,7 @@ HTTP/1.1 200
 Content-Type: application/json; charset=utf-8 
 ```
 Response Data
-
+图片 Response
 {"media_id":"qiniu/image/F39AA12204DAB6A2","media_crc32":1338734977,"width":720,"height":1280,"format":"jpg","fsize":52468}
 
 + media_id String  文件上传之后服务器端所返回的key
@@ -745,7 +811,17 @@ Response Data
 + width int  图片原始宽度
 + height  int  图片原始高度
 + format String 图片格式
-+ fsize int 文件大小（字节数
++ fsize int 文件大小 （字节数）
++ hash String 可选，用于crc校验码不存在时的替代的验证
+
+文件 Response 
+{"media_id":"qiniu/file/j/1BB3B833AEABFF62E883C5CE421867A9","media_crc32":1415584260,"fname":"0839d1c0-48e9-4032-9333-f3691a7d9e48.dmp","fsize":176512,"hash":"FtH0kPT0YI89HAw1K9wv_vVKiNab"}
+
++  media_id String 文件上传之后服务器端所返回的key，用于之后生成下载的url
++  media_crc32 long 文件的crc32校验码
++  hash String 可选，用于crc校验码不存在时的替代的验证
++  fsize int 文件大小（字节数）
++  fname String 发送与接收到的文件名
 
 
 ### Group对象字段总览
@@ -797,7 +873,7 @@ Response Data
 #### 创建群组
 
 	POST /v1/groups/
-	
+
 群组MaxMemberCount（人数限制）定义
 
 
@@ -816,10 +892,10 @@ Request Params
 
 + owner_username     （必填）群主username
 + name               （必填）群组名字
-	+ 支持的字符：全部，包括 Emoji。
+  + 支持的字符：全部，包括 Emoji。
 + members_username 成员 username
 + desc               （必填） 群描述 
-	+ 支持的字符：全部，包括 Emoji。
+  + 支持的字符：全部，包括 Emoji。
 
 Example Response
 
@@ -922,7 +998,7 @@ Request Params
 + add        json数组 表示要添加到群组的用户(可选)
 + remove   json数组 表示要从群组删除的用户（可选）
 + 两者至少要有一个
-   
+
 Example Request 
 
 ```
@@ -964,8 +1040,8 @@ Example Response
 ]
 ```
 + flag
-	+ 0 - 普通群成员
-	+ 1 - 群主
+  + 0 - 普通群成员
+  + 1 - 群主
 
 
 ####  获取某用户的群组列表
@@ -1013,6 +1089,131 @@ Example Response
 ```
 
 
+### 好友API
+
+#### 添加好友
+	POST  /v1/users/{username}/friends
+
+Request Params
+
++ json数组 表示要添加的用户名列表 最大限制500个
+
+
+
+Example Request 
+
+```
+["user01","user02"] 
+
+```
+Example Response
+
+```
+< HTTP/1.1 204 NO Content
+< Content-Type: application/json; charset=utf-8 
+```
+
+Response Data
+N/A
+
+Error Code
+
++ 899003  Request Body json格式不符合要求，json参数不符合要求；
++ 899002  用户不存在；
++ 899070  已经添加了好友；
+
+
+#### 删除好友
+	DELETE  /v1/users/{username}/friends
+
+Request Params
+
++ json数组 表示要删除的用户名列表 最大限制500个
+
+Example Request 
+
+```
+["user01","user02"] 
+
+```
+Example Response
+
+```
+< HTTP/1.1 204 NO Content
+< Content-Type: application/json; charset=utf-8 
+```
+
+Response Data
+N/A
+
+Error Code
+
++ 899003  Request Body json格式不符合要求，json参数不符合要求；
++ 899002  用户不存在；
+
+#### 更新好友备注
+      PUT  /v1/users/{username}/friends
+
+Request Params
+
++ note_name 表示要添加的好友列表， 格式：Byte(64)
+  支持的字符：不包括 "\n" "\r"。
++ others 其他备注信息，格式：Byte(250)
+  支持的字符：全部，包括 Emoji。
++ username 用户username；
++ 支持批量修改 最大限制500个
+
+
+
+Example Request 
+
+```
+[{ "note_name": "new note name", "others": “好友备注文档" ,"username":"user01"}]
+
+```
+Example Response
+
+```
+< HTTP/1.1 204 NO Content
+< Content-Type: application/json; charset=utf-8 
+```
+
+Response Data
+N/A
+
+Error Code
+
++ 899003  Request Body json格式不符合要求，json参数不符合要求；
++ 899002  用户不存在；
+
+#### 获取好友列表
+     GET  /v1/users/{username}/friends
+
+Request Params
+
+N/A 
+
+
+Example Request 
+
+
+Example Response
+
+```
+< HTTP/1.1 200 NO Content
+< Content-Type: application/json; charset=utf-8 
+```
+
+Response Data
+
+```
+[{"username" : "javen", "nickname" : "hello", "avatar" = "/avatar", "birthday" : "1990-01-24 00:00:00", "gender" : 0, "signature" : "orz", "region" : "shenzhen", "address" : "shenzhen", "mtime" : "2015-01-01 00:00:00", "ctime" : "2015-01-01 00:00:00","note_name":"= =","others":"test", "appkey":"pojkasouduioadk"}]
+```
+
+Error Code
+
++ 899003  Request Body json格式不符合要求，json参数不符合要求；
++ 899002  用户不存在；
 
 ### 跨应用API
 
@@ -1082,8 +1283,8 @@ Example Response
 ```
 
 + flag
-	+ 0 - 普通群成员
-	+ 1 - 群主
+  + 0 - 普通群成员
+  + 1 - 群主
 
 #### 跨应用添加黑名单
 
@@ -1184,7 +1385,7 @@ Example Request
 Request Header 
 
 ```
-Put /v1/cross/users/{username}/blacklist
+Get /v1/cross/users/{username}/blacklist
 Content-Type: application/json; charset=utf-8 
 ```
 
@@ -1211,6 +1412,188 @@ Response Data
 [{"username" : "javen", "nickname" : "hello", "avatar" = "/avatar", "birthday" : "1990-01-24 00:00:00", "gender" : 0, "signature" : "orz", "region" : "shenzhen", "address" : "shenzhen", "mtime" : "2015-01-01 00:00:00", "ctime" : "2015-01-01 00:00:00", "appkey":"appkey"}]
 ```
 
+#### 跨应用免打扰设置
+
+```
+POST  /v1/cross/users/{username}/nodisturb
+```
+
+Example Request
+
+Request Header 
+
+```
+POST  /v1/cross/users/{username}/nodisturb
+Content-Type: application/json; charset=utf-8  
+```
+
+Request Params
+
++ single  单聊免打扰，支持add remove数组 （可选）
++ group   群聊免打扰，支持add remove数组（可选）
++ appkey  目标的appkey
+
+
+Request Body
+
+```
+[ {
+   "appkey":"appkey1",    "single":{          "add":[             "username1",          "username2"       ]    },    "group":{          "add":[             110000101       ],       "remove":[             1000001111       ]    } }
+]
+
+```
+
+Example Response
+
+Response Header
+
+```
+HTTP/1.1 204 NO Content
+Content-Type: application/json; charset=utf-8   
+```
+
+Response Data
+
+N/A
+
+Error Code
+
++ 899003 username不合法；
++ 899002 用户不存在；
++ 899051  群组不存在；
++ 899052 设置群组消息屏蔽，设置的群组屏蔽已经打开
++ 99053 设置群组消息屏蔽，设置的群组屏蔽已经关闭
+
+#### 跨应用添加好友 
+
+```
+POST  /v1/cross/users/{username}/friends
+```
+
+Example Request
+
+Request Header 
+
+```
+POST  /v1/cross/users/{username}/friends
+Content-Type: application/json; charset=utf-8  
+```
+
+Request Params
+
++ appkey  用户所属的appkey （必填）
++ users   username的json数组 最多500个（必填）
+
+
+Request Body
+
+```
+ {
+   "appkey":"appkey1",    "users":         [            "username1",         "username2"       ]     }
+
+
+```
+
+Example Response
+
+Response Header
+
+```
+HTTP/1.1 201 Created
+Content-Type: application/json; charset=utf-8   
+```
+
+Response Data
+
+N/A
+
+#### 跨应用删除好友 
+
+```
+DELETE  /v1/cross/users/{username}/friends
+```
+
+Example Request
+
+Request Header 
+
+```
+DELETE  /v1/cross/users/{username}/friends
+Content-Type: application/json; charset=utf-8  
+```
+
+Request Params
+
++ appkey  用户所属的appkey （必填）
++ users   username的json数组 最多500个（必填）
+
+
+Request Body
+
+```
+ {
+   "appkey":"appkey1",    "users":         [            "username1",         "username2"       ]     }
+
+
+```
+
+Example Response
+
+Response Header
+
+```
+HTTP/1.1 204 NO Content
+Content-Type: application/json; charset=utf-8   
+```
+
+Response Data
+
+N/A
+
+#### 跨应用更新好友备注 
+
+```
+PUT  /v1/cross/users/{username}/friends
+```
+
+Example Request
+
+Request Header 
+
+```
+PUT  /v1/cross/users/{username}/friends
+Content-Type: application/json; charset=utf-8  
+```
+
+Request Params
+
++ appkey  用户所属的appkey （必填）
++ note_name 表示要添加的好友列表， 格式：Byte(64)
+  支持的字符：不包括 "\n" "\r"。
++ others 其他备注信息，格式：Byte(250)
+  支持的字符：全部，包括 Emoji。  
+
+
+Request Body
+
+```
+[{ "note_name": "new note name", "others": “好友备注文档" ,"username":"user01", "appkey":"appkey"}]
+
+
+```
+
+Example Response
+
+Response Header
+
+```
+HTTP/1.1 204 NO Content
+Content-Type: application/json; charset=utf-8   
+```
+
+Response Data
+
+N/A
 
 
 ### HTTP 返回

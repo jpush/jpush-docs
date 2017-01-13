@@ -1,69 +1,26 @@
-# JMessage iOS SDK 集成指南
+# iOS SDK 集成指南
 
 <style>
 img[alt=jmessage_ios] { width: 800px; }
 </style>
 
-### 文档说明
+### 集成说明
 
-本文是极光IM iOS SDK 的集成指南文档。
-
-在你看到本文档时，可能最新的 SDK版本与本文已经不是很适配，建议关注在线文档：
-
-+ [极光文档](http://docs.jpush.io/)网站上，有极光推送相关的所有指南、API、教程等全部的文档。包括本文档的更新版本，都会及时地发布到该网站上。
-+ [极光问答](https://community.jiguang.cn/latest)网站：大家除了文档之外，还有问题与疑问，会到这里来提问题，以及时地得到解答。
-+ 如果您看到本文档时，但还未下载 JMessage SDK，请访问[SDK下载页面](../../resources_jmessage)下载。
-
-### 功能说明
-
-极光IM（JMessage）是一个端到端的即时通讯（IM）云服务，使得多个集成 SDK 的客户端之间可以互发即时消息，让开发者可以轻松地在 App 里集成 IM 的功能，为 App 加上社交功能，从而有效地提升 App 活跃度。极光IM 客户端支持 Android, iOS, Web 三个平台。
-
-本 iOS SDK 方便开发者基于 JMessage 来快捷地为 iOS App 增加 IM 功能。支持的版本≥iOS7。
-
-#### 主要功能
-
-+ 保证消息及时下发，并且不丢失消息；
-+ 单聊，群聊；
-+ 消息类型：文本、语音、图片；
-+ 用户未在线时保存离线消息；
-+ 基于 JPush 原有的大容量稳定的长连接、大容量消息并发能力；
-
-#### 主要特点
-
-+ 服务器大容量、稳定；
-+ SDK 提供丰富的接口；
-+ 同时支持 APNs 通知；
+#### 适用SDK版本
+本文档适配 JMessage iOS SDK V3.0.0 及以后版本。     
+已集成之前版本的用户升级或已集成 JPush 的用户想同时集成IM，请参见下文的[注意事项](#注意事项)。
 
 #### 系统要求与开发环境
 
-JMessage iOS SDK 支持 iOS 7 以上系统版本。
-
-#### jmessage-sdk-ios.zip 集成压缩包
-
-* lib文件夹：包含一个文件，JMessage.framework；
-* Guideline.md：本开发指南；
-* demo文件夹：示例。
++ JMessage iOS SDK 支持 iOS 7 以上系统版本。
 
 
-#### 包括 JPush SDK
-
-如果你的 App 之前未集成过 JPush，请忽略本节，参考下节的 “SDK集成步骤”。
-
-JMessage SDK 包含 JPush SDK 的全部功能。
-
-如果您原来代码里集成过 JPush iOS SDK，则可大部分保持不变。变更部分如下：
-
-+ 集成到项目工程里的 JPush SDK 的文件删除掉，包括头文件：APService.h，库文件 libPushSDK.a。JMessage.framework 里已经包含 Push 部分，不删除掉会冲突。
-+ 配置文件 PushConfig.plist 文件删除掉。不再使用配置文件，而是用代码调用提供基本参数。
-+ 原来调用 APService 里 setupWithOption 做初始化，现在要换成 JMessage 里相应的方法。
-
-JMessage 新增的依赖、配置、初始化方面，请继续参考下节。
-
-### SDK集成步骤
+### 集成步骤
 
 #### 1、在极光 Web控制台上创建应用
 
-* 登录[极光Web控制台](https://www.jpush.cn/common/apps)，创建应用，上传 APNs 证书。如果对 Apple APNs 证书不太了解，请参考[iOS 证书设置指南](https://docs.jiguang.cn/jpush/client/iOS/ios_cer_guide/)。
+* 登录[极光Web控制台](https://www.jiguang.cn/accounts/login/form)，创建应用，上传 APNs 证书。
+如果对 Apple APNs 证书不太了解，请参考[iOS 证书设置指南](https://docs.jiguang.cn/jpush/client/iOS/ios_cer_guide/)。
 
 ![jmessage_ios][0]
 
@@ -71,172 +28,130 @@ JMessage 新增的依赖、配置、初始化方面，请继续参考下节。
 
 ![jmessage_ios][1]
 
-#### 2、导入 SDK 到应用程序项目里
+#### 2、下载 SDK 并导入到应用程序项目里
+在极光IM官网下载[最新SDK](https://docs.jiguang.cn/jmessage/resources/)
 
-* 把 JMessage.framework 文件加入到项目里。
+1. 把 JMessage.framework 文件加入到项目里。
+2. 把 JMessafe.framework 目录下的 jcore-ios-x.x.x.a（x.x.x 为jcore 版本号） link 到工程中。
 
-#### 3、必要的框架
+#### 3、添加必要的框架
 
-* CoreFoundation.framework
 * CoreTelephony.framework
-* CoreAudioFramework
+* CoreAudio.framework
 * CoreGraphics.framework
-* Foundation.framework
 * SystemConfiguration.framework
 * CFNetwork.framework
-* UIKit.framework
 * Security.framework
-* AudioToolboxFramework
+* AudioToolbox.framework
 * MobileCoreServices.framework
 * libz.dylib
 * libsqlite3.0.dylib
+* libresolv.tbd
 
-#### 4、Build Settings
+#### 4、Build Settings 配置
 
-* 在项目配置，Build Settings，Other Linker Flags 里增加如下 2 项：
+* 在项目配置，Build Settings，Other Linker Flags 里增加如下 1 项：
 
 ```
     -ObjC
-    -all_load
 ```
 
-* 设置 Search Paths 下的 User Header Search Paths 和 Library Search Paths，比如SDK文件夹（默认为lib）与工程文件在同一级目录下，则都设置为"$(SRCROOT)/[文件夹名称]"即可。
+#### 5、初始化极光 IM SDK 
 
-#### 6、添加代码
-
-##### API 与 Model
-
-JMessage.framework 里的 Headers 目录下，是 SDK 对外可用的所有头文件定义。这里有详细的注释，可以作为文档使用。基于这些 Headers，我们也使用 Appledoc 生成了在线文档与 docet。
-
-在 App 里，引用 JMessage SDK 的头文件，只需要引用这一个就够了: JMessage.h
-
-| 头文件 | 说明 |
-| ----- | ---- |
-| JMessage.h | SDK 核心类，提供启动方法，以及全局的定义与方法。这个类导入了其他所有的必需的头文件 |
-| JMSGConstants.h | 全局常量定义 |
-| JMSGUser.h | 用户 Model，以及用户相关的接口定义
-| JMSGGroup.h | 群组 Model，以及群组相关的接口定义
-| JMSGMessage.h | 消息 Model，以及消息相关的接口定义
-| JMSGConversation.h | 会话 Model，以及会话相关的接口定义
-| JPUSHService.h | JPush 接口类
-| JMSGAbstractContent | 内容类型的父类
-| JMSGTextContent | 文本内容 Model
-| JMSGCustomContent | 自定义内容 Model
-| JMSGAbstractMediaContent | 媒体内容类型的父类，也继承自 JMSGAbstractContent
-| JMSGVoiceContent | 语音内容 Model
-| JMSGImageContent | 图片内容 Model
-| JMSGEventContent.h | 事件通知内容 Model
-| Delegate/JMessageDelegate | 全局的 Delegate，包含其他所有 Delegates
-| Delegate/JMSGConversationDelegate | 会话相关 Delegate
-| Delegate/JMSGMessageDelegate | 消息相关 Delegate
-| Delegate/JMSGGroupDelegate | 群组相关 Delegate
-| Delegate/JMSGUserDelegate | 用户相关 Delegate
-| Delegate/JMSGDBMigrateDelegate | 数据迁移相关 Delegate
-
-##### 调用代码
-
-监听系统事件，相应地调用 JPush SDK 提供的 API 来实现功能。
-
-以下 ３ 个事件监听与调用 JPush SDK API 都是必须的。请直接复制如下代码块里，注释为 "Required" 的行，到你的应用程序代理类里相应的监听方法里。
+在工程的 AppDelegate 中的以下方法中，调用 SDK 对应方法 ：
 
 ```
-/// AppDelegate.m 里的启动方法
-- (BOOL)application:(UIApplication *)application
-didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+#import "AppDelegate.h"
+#import <JMessage/JMessage.h>
 
-  /// Required - 添加 JMessage SDK 监听。这个动作放在启动前
-  [JMessage addDelegate:self withConversation:nil];
-  
-  /// Required - 启动 JMessage SDK
-  [JMessage setupJMessage:launchOptions
-                   appKey:JMSSAGE_APPKEY
-                  channel:CHANNEL 
-         apsForProduction:NO
-                 category:nil];
-  
-  /// Required - 注册 APNs 通知
-  if ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0) {
-    /// 可以添加自定义categories
-    [JPUSHService registerForRemoteNotificationTypes:(UIUserNotificationTypeBadge |
-                                                   UIUserNotificationTypeSound |
-                                                   UIUserNotificationTypeAlert)
-                                       categories:nil];
-  } else {
-    /// categories 必须为nil
-    [JPUSHService registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge |
-                                                   UIRemoteNotificationTypeSound |
-                                                   UIRemoteNotificationTypeAlert)
-                                       categories:nil];
-  }
-  return YES;
+@implementation AppDelegate
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    // Required - 启动 JMessage SDK
+    [JMessage setupJMessage:launchOptions appKey:JMSSAGE_APPKEY channel:nil apsForProduction:NO category:nil];
+    // Required - 注册 APNs 通知
+    if ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0) {
+        //可以添加自定义categories
+        [JMessage registerForRemoteNotificationTypes:(UIUserNotificationTypeBadge |
+                                                          UIUserNotificationTypeSound |
+                                                          UIUserNotificationTypeAlert)
+                                              categories:nil];
+    } else {
+        //categories 必须为nil
+        [JMessage registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge |
+                                                          UIRemoteNotificationTypeSound |
+                                                          UIRemoteNotificationTypeAlert)
+                                              categories:nil];
+    }
+    return YES;
 }
- 
-- (void)application:(UIApplication *)application 
-didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
-     
-  /// Required - 注册 DeviceToken
-  [JPUSHService registerDeviceToken:deviceToken];
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    // Required - 注册token
+    [JMessage registerDeviceToken:deviceToken];
 }
- 
-- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-     
-  // Required - 处理收到的通知
-  [JPUSHService handleRemoteNotification:userInfo];
-}
- 
-- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
- 
- 
-  // IOS 7 Support Required
-  [JPUSHService handleRemoteNotification:userInfo];
-  completionHandler(UIBackgroundFetchResultNewData);
-}
-
-- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
-
-  //Optional
-  NSLog(@"did Fail To Register For Remote Notifications With Error: %@", error);
-}
-  
+@end
 ```
 
+####详细使用方法
+详细使用可以参见[SDK 开发指南](./im_sdk_ios.md)或者查看下面提供的[Demo](#demo)。
 
-##### JPush 监听通知
+<span id="注意事项"></span>
+### 注意事项
+#### V3.0.0 之前版本用户升级
+升级步骤如下：
 
-JPush 提供了下面 6 种类型的通知，可以注册 NSNotificationCenter 来监听，以做进一步的逻辑处理。这些是可选的。
-
-```
-extern NSString * const kJPFNetworkIsConnectingNotification;       // 正在连接中
-extern NSString * const kJPFNetworkDidSetupNotification;           // 建立连接
-extern NSString * const kJPFNetworkDidCloseNotification;           // 关闭连接
-extern NSString * const kJPFNetworkDidRegisterNotification;        // 注册成功
-extern NSString * const kJPFNetworkDidLoginNotification;           // 登录成功
-extern NSString * const kJPFNetworkDidReceiveMessageNotification;  // 收到消息(自定义消息，非 APNs)
-```
-
-其中，kJPFNetworkDidReceiveMessageNotification 通知是有传递数据的，可以通过NSNotification中 的 userInfo方法获取，包括标题、内容、内容类型、扩展信息等。
-
-##### JMessage 监听通知
-
-从 2.0.0 版本开始，JMessage SDK 向 App 发的消息，改变之前类似于 JPush 发 Notification 的方式，调整为实现 Delegate 协议。
-
-以下代码片断节选自 JChat 项目。
+1. 使用新版本的 JMessage.framework 文件替换原工程下的同名旧文件。
+2. 将 JMessage.framework 里的 JCore.a link到工程里。
+3. 把原Apns注册和token上传的方法通过JMessage类的方法来实现，实现如下：
 
 ```
-extern NSString *const JMSGNotification_ReceiveMessage;          // 收到聊天消息
-extern NSString *const JMSGNotification_EventMessage;            // 收到事件
-extern NSString *const JMSGNotification_SendMessageResult;       // 发送消息结果返回
-extern NSString *const JMSGNotification_ConversationInfoChanged; // 会话更新
-extern NSString *const JMSGNotification_GroupChange;             // 群组更新
+[JMessage registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge|UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert) categories:nil];
+
+[JMessage registerDeviceToken:deviceToken];
 ```
 
-#### JMessage 代码样例
+#### 监听连接状态通知名修改
+JMessage iOS SDK V3.0.0 以下版本通过 Push 的通知来监听 SDK 的连接状态，现在已经更新为由JMessage 里提供，原通知名为：
 
-请参考 [JChat iOS 项目源代码](http://github.com/jpush/jchat-ios)，开源放在 Github 上。随着 SDK 下载的压缩包里，也有 JChat 整个的源代码项目。
+```
+extern NSString *const kJPFNetworkIsConnectingNotification; // 正在连接中
+extern NSString *const kJPFNetworkDidSetupNotification;     // 建立连接
+extern NSString *const kJPFNetworkDidCloseNotification;     // 关闭连接
+extern NSString *const kJPFNetworkDidRegisterNotification;  // 注册成功
+extern NSString *const kJPFNetworkFailedRegisterNotification; //注册失败
+extern NSString *const kJPFNetworkDidLoginNotification;     // 登录成功
+extern NSString *const kJPFNetworkDidReceiveMessageNotification;    // 收到消息
+extern NSString *const kJPFServiceErrorNotification;  // 错误提示
+```
+
+现在修改为：
+
+```
+extern NSString *const kJMSGNetworkIsConnectingNotification;          // 正在连接中
+extern NSString *const kJMSGNetworkDidSetupNotification;              // 建立连接
+extern NSString *const kJMSGNetworkDidCloseNotification;              // 关闭连接
+extern NSString *const kJMSGNetworkDidRegisterNotification;           // 注册成功
+extern NSString *const kJMSGNetworkFailedRegisterNotification;        // 注册失败
+extern NSString *const kJMSGNetworkDidLoginNotification;              // 连接成功
+extern NSString *const kJMSGNetworkDidReceiveMessageNotification;     // 收到消息
+extern NSString *const kJMSGServiceErrorNotification;                 // 错误提示
+```
+
+#### 基于 JPush 集成 JMessage
+JMessage iOS SDK V3.0.0 及以后版本不再包含 JPush 的功能，需要使用 JPush 的用户需要单独集成 JPush SDK，集成步骤参见[JPush 集成指南](https://docs.jiguang.cn/jpush/client/iOS/ios_guide_new/)
+
+注意以下几点：
+
+1. 版本要求：支持 JPush V3.0.1 或以上版本，JCore 需 V1.1.0 或以上版本。
+2. JCore的替换：下载下来的JPush SDK zip包中同样包含了名为jcore-ios-x.x.x.a Lib，集成时需要注意项目中只保留一个 jcore，如果出现JPush和JMessage中所包含的 jcore 版本不一致的情况，则保留最新版本的jcore。
+
+<span id="demo"></span>
+### JMessage Demo
+极光 IM 提供了一个完整的 IM 场景下的应用 JChat，它就是一个 IM App，供大家下载参考。
+[JChat iOS 项目源代码](http://github.com/jpush/jchat-ios)，开源放在 Github 上。下载的 SDK 压缩包里，也有 JChat 的源代码。
 
 ### 技术支持
 
-邮件联系：[support@jpush.cn][4]
+邮件联系：[support@jiguang.cn][4]
 
 问答社区：[https://community.jiguang.cn/latest][5]
 
@@ -245,4 +160,4 @@ extern NSString *const JMSGNotification_GroupChange;             // 群组更新
 [2]: ./image/Screenshot_13-4-15_3_31.png
 [3]: ../../client_sdks/ios_api
 [4]: mailto:support@jpush.cn
-[5]: http://www.jpush.cn/qa/
+[5]: https://community.jiguang.cn/

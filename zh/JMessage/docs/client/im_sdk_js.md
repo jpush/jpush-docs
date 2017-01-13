@@ -1,8 +1,18 @@
-<h1>WEB SDK 开发指南</h1>
+<h1>Web SDK 开发指南</h1>
+
+<div style="font-size:13px;background: #F0E68C;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 10px; padding-bottom: 0;margin-bottom: 0;">
+<p>特别提示：v1.x版本将不再提供新功能，仅维护因bug导致的问题，请正在使用此版本的开发者尽快升级到v2.0版本。
+<p>此版本将在 2017 年停止维护。
+</div>
+
 
 ## 概述
 
-极光 Web IM SDK 为 Web 应用提供一个 IM 系统开发框架, 屏蔽掉 IM 系统的复杂的细节, 对外提供较为简洁的 API 接口, 方便第三方应用快速集成 IM 功能。
+极光 IM Web SDK 为 Web 应用提供一个 IM 系统开发框架, 屏蔽掉 IM 系统的复杂的细节, 对外提供较为简洁的 API 接口, 方便第三方应用快速集成 IM 功能。
+
+### 最新版本
+Web SDK v1.2.1
+修复 Web SDK v1.2.0上传图片问题，[点击下载 Web SDK v1.2.1](https://sdkfiledl.jiguang.cn/jmessage-web-sdk.1.2.1.zip)
 
 
 ### 签名算法
@@ -24,8 +34,8 @@ auth_payload的数据结构如下:
 
 * appkey : 开发者在极光平台注册的IM应用appkey
 * random_str : 20-36长度的随机字符串, 作为签名加salt使用
-* timestamp : 当初时间戳，用于防止重放攻击
-* signature : 签名
+* timestamp : 当前时间戳，用于防止重放攻击，精确到毫秒
+* signature : 签名，10分钟后失效
 
 签名生成算法如下:  
 
@@ -38,8 +48,9 @@ signature = md5(appkey=appkey&timestamp=timestamp&random_str=random_str&key=secr
 
 ### 开发准备
 
-#### 1、引入sockit.io.js
-JiGuang WebIM是基于[sockit.io](http://socket.io/)开发，开发者在使用之前需引入`sockit.io.js`。
+#### 1、引入socket.io.js
+JiGuang WebIM是基于[socket.io](http://socket.io/)开发，开发者在使用之前需引入`socket.io.js`。
+
 
 CDN源:
 
@@ -864,5 +875,10 @@ JIM.onEvent(function(data) {
   "from_uid": 16836751 // 事件发起者
 }
 ```
+
+
+## 错误码定义
+
+参考文档：[IM Web SDK 错误码列表](./im_errorcode_js)
 
 

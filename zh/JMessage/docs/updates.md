@@ -1,6 +1,190 @@
 # 最近更新
 
 
+### iOS SDK v3.0.0
+
+#### 更新时间
+
+2017-01-10
+
+#### ChangeLog
+
++ 模块化分离为 JCore、JMessage 两部分集成，并且脱离和JPush的依赖关系
+
++ 新增接口：
+
+	+ 注册远程推送： + (void)registerForRemoteNotificationTypes:(NSUInteger)types categories:(NSSet *)categories;
+	+ 注册DeviceToken：+ (void)registerDeviceToken:(NSData *)deviceToken;
+
+#### 升级指南
++ 使用新版本的JMessage.framework文件替换原工程下的同名旧文件
++ 将新版本的JMessage.framework里的JCore link到工程中，详细参见官网集成文档
+
+
+
+### Android SDK v2.0.0
+
+#### 更新时间
+
++ 2017-01-09
+
+#### Change Log
+
++ 新增：模块化分离为 JCore，JMessage 两部分集成，原有使用的一个 jar 包，分为了 jcore 和 jmessage 两个jar 包。并且脱离和JPush的依赖关系
+
++ 修复一些用户反馈的bug 。
+
+#### 升级提示
+
++ 建议升级！
+
+#### 升级指南
+
++ 首先解压您获取到的 zip 压缩包
+
++ 更新库文件
+	+ 打开libs文件夹。添加jcore-android_v1.1.0.jar。用 jmessage-android_2.0.0.jar 替换项目中原有的极光jar文件，并删除原有极光jar文件。用对应CPU文件夹下的 libjcore110.so 文件，替换项目中原有的libjpushXXX.so文件，并删除原有的极光so文件，每种型号的so文件都可以在SDK下载包中找到。
+
++ 更新AndroidManifest.xml
+	+ 请参考 SDK下载包最新版本的 demo 来更新AndroidManifest.xml 文件配置。
+
++ 详细集成说明请参考官方[集成指南](https://docs.jiguang.cn/jmessage/client/jmessage_android_guide/)
+
+
+### iOS SDK v2.2.4
+
+#### 更新时间
+
++ 2016-12-19
+
+#### Change Log
+
+##### BugFix
++ 修复：下载缩略图大小固定的问题
++ 修改：部分地区发送图片、语音失败的问题
+
+##### NewFeature 
++ 新增：当前登录用户信息变更通知事件 [kJMSGEventNotificationCurrentUserInfoChange](./client/jmessage_ios_appledoc_html/Constants/JMSGEventNotificationType.html)
++ 新增：修改消息 extra 字段接口[- (void)updateMessageExtra:extraValue:extraKey:](./client/jmessage_ios_appledoc_html/Classes/JMSGMessage.html#//api/name/updateMessageExtraValue:forKey:)
++ 新增：获取当前所有会话的未读消息的总数接口 [+ (NSNumber *)getAllUnreadCount](./client/jmessage_ios_appledoc_html/Classes/JMSGConversation.html#//api/name/getAllUnreadCount)
+
+ 
+
+#### 升级指南
+
++ 使用新版本的JMessage.framework文件替换原工程下的同名旧文件
+
+
+
+### Web SDK v2.1.0
+
+#### 更新时间
+
++ 2016-12-14
+
+#### Change Log
+
++ 新增：好友模块（添加好友，删除好友，修改好友备注，好友列表）
++ 新增：新增登出接口
++ 优化：发送消息成功回调函数新增一个参数，用于获取发送内容
++ 优化：被迫下线（sdk层面自动下线）
+
+
+#### 升级指南
+
++ 使用新版本的 jmessage-sdk-web.js 文件替换原工程下的同名旧文件
+
+
+### Web SDK v1.2.1
+#### 更新时间
++ 2016-12-05
+
+#### Change Log
+
++ 修复：Web SDK v1.2.0上传图片问题
+
+#### 下载地址
+
++ [点击下载 Web SDK v1.2.1](https://sdkfiledl.jiguang.cn/jmessage-web-sdk.1.2.1.zip)
+
+
+#### 特别说明
+
++ v1.x版本将不再提供新功能，仅维护因bug导致的问题，建议尽快切换到2.x版本
+
+
+
+### iOS SDK v2.2.3
+#### 更新时间
++ 2016-11-30
+
+#### Change Log
+
++ 优化改进：SDK内HTTP全面更换HTTPS
++ 修复：群组事件无法创建会话的问题
++ 修复：循环发送消息导致崩溃问题
+
+
+#### 升级指南
+
++ 使用新版本的JMessage.framework文件替换原工程下的同名旧文件
+
+
+
+### Web SDK v2.0.0
+
+#### 更新时间
+
++ 2016-11-23
+
+#### Change Log
+
++ 全面升级API，支持Promise风格API
++ 新增修改用户信息功能
++ 新增更新头像功能
++ 新增更新用户密码功能
++ 新增接收位置功能
++ 新增文件上传下载功能
++ 新增支持发送和接收emoij表情功能
++ 新增跨应用消息免打扰功能
++ 新增消息自动重试逻辑功能
+
+#### 升级指南
+
++ 在页面引入最新的`jmessage-sdk-web.min.js`。
+
+#### 升级提示
+
++ 因为API调用方式都改变了，需要修改所有接入代码才能进行升级。
+
+#### 特别说明
+
++ v1.x版本将不再提供新功能，仅维护因bug导致的问题，建议更新到v2.0版本
+
+
+### iOS SDK v2.2.1
+#### 更新时间
++ 2016-11-04
+
+#### Change Log
+
++ 优化改进：适配JPush SDK 2.2.0，增加SDK稳定性
++ 修复：消息展示名获取不正确的问题
+
++ 新增事件：
+	+ kJMSGEventNotificationReceiveServerFriendUpdate; //事件类型：非客户端修改好友关系收到好友更新事件
+
+
+#### 升级指南
+
++ 使用新版本的JMessage.framework文件替换原工程下的同名旧文件
+
+#### 升级提示
+
++ 注意：项目中添加libresolv.tbd库，否则编译运行会报错（2.2.1及以上版本要求）
+
+
+
 ### iOS SDK v2.2.0
 
 #### 更新时间
@@ -86,8 +270,7 @@
  
 
 
-
-### JS SDK v1.2.0
+### Web SDK v1.2.0
 
 #### 更新时间
 + 2016-10-10
@@ -240,7 +423,7 @@
 + 使用新版本的JMessage.framework文件替换原工程下的同名旧文件
 
 
-### JS SDK v1.1.2
+### Web SDK v1.1.2
 
 #### 更新时间
 + 2016-08-31
@@ -252,7 +435,7 @@
 + 建议升级！
 
 
-### JS SDK v1.1.1
+### Web SDK v1.1.1
 
 #### 更新时间
 + 2016-08-30
@@ -263,7 +446,7 @@
 #### 升级提示
 + 建议升级！
 
-### JS SDK v1.1.0
+### Web SDK v1.1.0
 
 #### 更新时间
 + 2016-08-26
@@ -276,7 +459,7 @@
 #### 升级提示
 + 建议升级！
 
-### JS SDK v1.0.1
+### Web SDK v1.0.1
 
 #### 更新时间
 + 2016-08-19
@@ -378,13 +561,13 @@
 #### 升级指南
 + 使用新版本的JMessage.framework文件替换原工程下的同名旧文件！
 
-### JS SDK v1.0.0
+### Web SDK v1.0.0
 
 #### 更新时间
 + 2016-07-13
 
 #### Change Log
-+ JMessage JS SDK 首次发布
++ JMessage Web SDK 首次发布
 + 聊天支持：单聊，群聊
 + 聊天内容：文本
 + 提供用户管理 ，群组管理，会话列表获取功能

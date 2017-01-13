@@ -356,6 +356,48 @@ Android 平台上的通知，JPush SDK 按照一定的通知栏样式展示。
 			<td>Android SDK 可设置通知栏样式，这里根据样式 ID 来指定该使用哪套样式。</td>
 		</tr>
 		<tr >
+			<td>priority</td>
+			<td>int</td>
+			<td>可选</td>
+			<td>通知栏展示优先级</td>
+			<td>默认为0，范围为 -2～2 ，其他值将会被忽略而采用默认。</td>
+		</tr>
+		<tr >
+			<td>category</td>
+			<td>string</td>
+			<td>可选</td>
+			<td>通知栏条目过滤或排序</td>
+			<td>完全依赖 rom 厂商对 category 的处理策略</td>
+		</tr>
+		<tr >
+			<td>style</td>
+			<td>int</td>
+			<td>可选</td>
+			<td>通知栏样式类型</td>
+			<td>默认为0，还有1，2，3可选，用来指定选择哪种通知栏样式，其他值无效。有三种可选分别为bigText=1，Inbox=2，bigPicture=3。</td>
+		</tr>
+		<tr >
+			<td>big_text</td>
+			<td>string</td>
+			<td>可选</td>
+			<td>大文本通知栏样式</td>
+			<td>当 style = 1 时可用，内容会被通知栏以大文本的形式展示出来。支持 api 16以上的rom。</td>
+		</tr>
+		<tr >
+			<td>inbox</td>
+			<td>JSONObject</td>
+			<td>可选</td>
+			<td>文本条目通知栏样式</td>
+			<td>当 style = 2 时可用， json 的每个 key 对应的 value 会被当作文本条目逐条展示。支持 api 16以上的rom。</td>
+		</tr>
+		<tr >
+			<td>big_pic_path</td>
+			<td>string</td>
+			<td>可选</td>
+			<td>大图片通知栏样式</td>
+			<td>当 style = 3 时可用，可以是网络图片 url，或本地图片的 path，目前支持.jpg和.png后缀的图片。图片内容会被通知栏以大图片的形式展示出来。如果是 http／https 的url，会自动下载；如果要指定开发者准备的本地图片就填sdcard 的相对路径。支持 api 16以上的rom。</td>
+		</tr>
+		<tr >
 			<td>extras</td>
 			<td>JSON Object</td>
 			<td>可选</td>
@@ -374,6 +416,12 @@ Android 平台上的通知，JPush SDK 按照一定的通知栏样式展示。
 			 "alert" : "hello, JPush!", 
 			 "title" : "JPush test", 
 			 "builder_id" : 3, 
+			 "style":1  // 1,2,3
+			 "big_text":"big text content",
+			 "inbox":JSONObject,
+			 "big_pic_path":"picture url",
+			 "priority":0, // -2~2
+			 "category":"category str",
 			 "extras" : {
 				  "news_id" : 134, 
 				  "my_key" : "a value"
@@ -403,14 +451,14 @@ iOS 平台上 APNs 通知结构。
 			<td>string或JSON Object</td>
 			<td>必填</td>
 			<td width="20%">通知内容</td>
-			<td>这里指定内容将会覆盖上级统一指定的 alert 信息；内容为空则不展示到通知栏。支持字符串形式也支持官方定义的<a href="https://developer.apple.com/library/mac/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/TheNotificationPayload.html#//apple_ref/doc/uid/TP40008194-CH107-SW1">alert payload</a> 结构</td>
+			<td>这里指定内容将会覆盖上级统一指定的 alert 信息；内容为空则不展示到通知栏。支持字符串形式也支持官方定义的<a href="https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/PayloadKeyReference.html">alert payload</a> 结构</td>
 		</tr>
 		<tr >
 			<td>sound</td>
 			<td>string</td>
 			<td>可选</td>
 			<td width="20%">通知提示声音</td>
-			<td>如果无此字段，则此消息无声音提示；有此字段，如果找到了指定的声音就播放该声音，否则播放默认声音,如果此字段为空字符串，iOS 7 为默认声音，iOS 8 为无声音。(消息) 说明：JPush 官方 API Library (SDK) 会默认填充声音字段。提供另外的方法关闭声音。</td>
+			<td>如果无此字段，则此消息无声音提示；有此字段，如果找到了指定的声音就播放该声音，否则播放默认声音,如果此字段为空字符串，iOS 7 为默认声音，iOS 8及以上系统为无声音。(消息) 说明：JPush 官方 API Library (SDK) 会默认填充声音字段。提供另外的方法关闭声音。</td>
 		</tr>
 		<tr >
 			<td>badge</td>
@@ -427,11 +475,11 @@ iOS 平台上 APNs 通知结构。
 			<td>推送的时候携带"content-available":true 说明是 Background Remote Notification，如果不携带此字段则是普通的Remote Notification。详情参考：<a href="../../../client/iOS/ios_new_fetures/#ios-7-background-remote-notification">Background Remote Notification</a></td>
 		</tr>
 		<tr >
-			<td>mutable-available</td>
+			<td>mutable-content</td>
 			<td>boolean</td>
 			<td>可选</td>
 			<td width="20%">通知扩展</td>
-			<td>推送的时候携带”mutable-available":true 说明是支持iOS10的UNNotificationServiceExtension，如果不携带此字段则是普通的Remote Notification。详情参考：<a href="../../../client/iOS/ios_new_fetures/#ios-10-service-extension">UNNotificationServiceExtension</a></td>
+			<td>推送的时候携带”mutable-content":true 说明是支持iOS10的UNNotificationServiceExtension，如果不携带此字段则是普通的Remote Notification。详情参考：<a href="../../../client/iOS/ios_new_fetures/#ios-10-service-extension">UNNotificationServiceExtension</a></td>
 		</tr>
 		<tr >
 			<td>category</td>
@@ -757,7 +805,7 @@ POST https://api.jpush.cn/v3/push/validate
 			<td>必须改正。
 				Android平台Notification+Message长度限制为4000字节；
 				iOS Notification 中 “iOS”:{ } 及大括号内的总体长度不超过：2000个字节（包括自定义参数和符号），iOS 的 Message部分长度不超过 4000 字节；
-				WinPhone平台Notification长度限制为4000字节</td>
+				WinPhone平台Notification长度限制为1000字节</td>
 			<td>400</td>
 		</tr>
 		<tr >

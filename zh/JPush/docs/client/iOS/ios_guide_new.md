@@ -17,7 +17,7 @@ img[alt=jpush_ios] { width: 800px; }
 
 包名为JPush-iOS-SDK-{版本号}
 
-* lib文件夹：包含头文件 JPUSHService.h，静态库文件jpush-ios-x.x.x.a ，支持的iOS版本为 6.0 及以上版本。（请注意：模拟器不支持APNs）
+* lib文件夹：包含头文件 JPUSHService.h，静态库文件jpush-ios-x.x.x.a，jcore-ios-x.x.x.a，支持的iOS版本为 6.0 及以上版本。（请注意：模拟器不支持APNs）
 * pdf文件：集成指南
 * demo文件夹：示例
 
@@ -33,7 +33,7 @@ img[alt=jpush_ios] { width: 800px; }
 ## 配置工程
 ### 导入SDK
 
-* 将SDK包解压，在Xcode中选择“Add files to 'Your project name'...”，将解压后的lib子文件夹（包含JPUSHService.h、jpush-ios-x.x.x.a）添加到你的工程目录中。  
+* 将SDK包解压，在Xcode中选择“Add files to 'Your project name'...”，将解压后的lib子文件夹（包含JPUSHService.h、jpush-ios-x.x.x.a，jcore-ios-x.x.x.a）添加到你的工程目录中。  
 * 添加Framework
 	* CFNetwork.framework
 	* CoreFoundation.framework
@@ -43,10 +43,10 @@ img[alt=jpush_ios] { width: 800px; }
 	* Foundation.framework
 	* UIKit.framework
 	* Security.framework
-	* Xcode7需要的是libz.tbd；Xcode7以下版本是libz.dylib
-	* Adsupport.framework (获取IDFA需要；如果不使用IDFA，请不要添加)
-	* UserNotifications.framework(Xcode8及以上)
-	* libresolv.tbd (JPush 2.2.0及以上版本需要)
+	* libz.tbd (Xcode7以下版本是libz.dylib)
+	* AdSupport.framework (获取IDFA需要；如果不使用IDFA，请不要添加)
+	* UserNotifications.framework (Xcode8及以上)
+	* libresolv.tbd (JPush 2.2.0及以上版本需要, Xcode7以下版本是libresolv.dylib)
 
 ### Build Settings
 如果你的工程需要支持小于7.0的iOS系统，请到Build Settings 关闭 bitCode 选项，否则将无法正常编译通过。
@@ -84,52 +84,89 @@ img[alt=jpush_ios] { width: 800px; }
   </dict>            
 ```
 
+## 添加头文件
+请将以下代码添加到 AppDelegate.m 引用头文件的位置。
 
-## 添加代码
+```
+// 引入JPush功能所需头文件
+#import "JPUSHService.h"
+// iOS10注册APNs所需头文件
+#ifdef NSFoundationVersionNumber_iOS_9_x_Max
+#import <UserNotifications/UserNotifications.h>
+#endif
+// 如果需要使用idfa功能所需要引入的头文件（可选）
+#import <AdSupport/AdSupport.h>
+```
+
+## 添加Delegate
+为AppDelegate添加Delegate。  
+
+参考代码：
+
+```
+@interface AppDelegate ()<JPUSHRegisterDelegate>
+
+@end
+```
+
+## 添加初始化代码
 
 <div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">	<p>2.1.0版本开始,API类名为JPUSHService，不再使用原先的APService。
 </div>
 
-### 初始化代码
+### 添加初始化APNs代码
 
 请将以下代码添加到  
 -(BOOL)application:(UIApplication \*)application
 didFinishLaunchingWithOptions:(NSDictionary \*)launchOptions
 
 ```   	
-
-  NSString *advertisingId = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
   //Required
-  if ([[UIDevice currentDevice].systemVersion floatValue] >= 10.0) {
-    JPUSHRegisterEntity * entity = [[JPUSHRegisterEntity alloc] init];
-    entity.types = UNAuthorizationOptionAlert|UNAuthorizationOptionBadge|UNAuthorizationOptionSound;
-    [JPUSHService registerForRemoteNotificationConfig:entity delegate:self];
-  } 
-  else if ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0) {
-    //可以添加自定义categories
-    [JPUSHService registerForRemoteNotificationTypes:(UIUserNotificationTypeBadge |
-                                                      UIUserNotificationTypeSound |
-                                                      UIUserNotificationTypeAlert)
-                                          categories:nil];
-  } 
-  else {
-    //categories 必须为nil
-    [JPUSHService registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge |
-                                                      UIRemoteNotificationTypeSound |
-                                                      UIRemoteNotificationTypeAlert)
-                                          categories:nil];
+  //notice: 3.0.0及以后版本注册可以这样写，也可以继续用之前的注册方式
+  JPUSHRegisterEntity * entity = [[JPUSHRegisterEntity alloc] init];
+  entity.types = JPAuthorizationOptionAlert|JPAuthorizationOptionBadge|JPAuthorizationOptionSound;
+  if ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0) {
+    // 可以添加自定义categories
+    // NSSet<UNNotificationCategory *> *categories for iOS10 or later
+    // NSSet<UIUserNotificationCategory *> *categories for iOS8 and iOS9
   }
+  [JPUSHService registerForRemoteNotificationConfig:entity delegate:self];
   
-  //Required
-  // init Push(2.1.5版本的SDK新增的注册方法，改成可上报IDFA，如果没有使用IDFA直接传nil  )
+```
+### 添加初始化JPush代码
+
+请将以下代码添加到  
+-(BOOL)application:(UIApplication \*)application
+didFinishLaunchingWithOptions:(NSDictionary \*)launchOptions
+
+```
+  // Optional
+  // 获取IDFA
+  // 如需使用IDFA功能请添加此代码并在初始化方法的advertisingIdentifier参数中填写对应值
+  NSString *advertisingId = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
+
+  // Required
+  // init Push
+  // notice: 2.1.5版本的SDK新增的注册方法，改成可上报IDFA，如果没有使用IDFA直接传nil
   // 如需继续使用pushConfig.plist文件声明appKey等配置内容，请依旧使用[JPUSHService setupWithOption:launchOptions]方式初始化。
   [JPUSHService setupWithOption:launchOptions appKey:appKey
                         channel:channel
                apsForProduction:isProduction
           advertisingIdentifier:advertisingId];  
 ```
+#####部分参数说明：
+* appKey
+    * 填写[管理Portal上创建应用](https://www.jiguang.cn/app/form)后自动生成的AppKey值。请确保应用内配置的 AppKey 与 Portal 上创建应用后生成的 AppKey 一致。
+* channel
+    * 指明应用程序包的下载渠道，为方便分渠道统计，具体值由你自行定义，如：App Store。
+* apsForProduction
+    * 1.3.1版本新增，用于标识当前应用所使用的APNs证书环境。
+    * 0 (默认值)表示采用的是开发证书，1 表示采用生产证书发布应用。
+    * 注：此字段的值要与Build Settings的Code Signing配置的证书环境一致。
+* advertisingIdentifier
+    * 详见[关于IDFA](#_8)。 
 
-
+    
 ### 注册APNs成功并上报DeviceToken
 
 请在AppDelegate.m实现该回调方法并添加回调方法中的代码
