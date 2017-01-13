@@ -19,7 +19,7 @@ img[alt=jmessage_ios] { width: 800px; }
 
 #### 1、在极光 Web控制台上创建应用
 
-* 登录[极光Web控制台](https://www.jiguang.cn/accounts/login/form)，创建应用，上传 APNs 证书。
+* 登录<a href="https://www.jiguang.cn/accounts/login/form" target="_blank">极光Web控制台</a>，创建应用，上传 APNs 证书。
 如果对 Apple APNs 证书不太了解，请参考[iOS 证书设置指南](https://docs.jiguang.cn/jpush/client/iOS/ios_cer_guide/)。
 
 ![jmessage_ios][0]
@@ -38,7 +38,7 @@ img[alt=jmessage_ios] { width: 800px; }
 
 	pod 'JMessage', :head
 	
-使用用Cocoapods导入SDK则可以[跳过步骤3](#跳过添加必要的框架).
+使用用Cocoapods导入SDK则可以跳过步骤3.
 
 ##### 手动导入
 在极光IM官网下载[最新SDK](https://docs.jiguang.cn/jmessage/resources/)
@@ -60,7 +60,6 @@ img[alt=jmessage_ios] { width: 800px; }
 * libsqlite3.0.dylib
 * libresolv.tbd
 
-<span id="跳过添加必要的框架" />
 #### 4、Build Settings 配置
 
 * 在项目配置，Build Settings，Other Linker Flags 里增加如下 1 项：
