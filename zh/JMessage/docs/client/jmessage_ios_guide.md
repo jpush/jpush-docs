@@ -36,7 +36,7 @@ img[alt=jmessage_ios] { width: 800px; }
 
 如果需要安装指定版本则使用：
 
-	pod 'YHPopupView', :head
+	pod 'JMessage', :head
 	
 使用用Cocoapods导入SDK则可以[跳过步骤3](#跳过添加必要的框架).
 
