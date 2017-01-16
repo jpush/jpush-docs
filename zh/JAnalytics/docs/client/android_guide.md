@@ -99,8 +99,8 @@
         dependencies {
             ......
             
-            compile 'cn.jiguang.sdk:janalytics:1.0.0' // 此处以JAnalytics 1.0.0 版本为例。
-            compile 'cn.jiguang.sdk:jcore:1.0.0' // 此处以JCore 1.0.0 版本为例。
+            compile 'cn.jiguang.sdk:janalytics:1.1.0' // 此处以JAnalytics 1.1.0 版本为例。
+            compile 'cn.jiguang.sdk:jcore:1.1.0' // 此处以JCore 1.1.0 版本为例。
             ......
         }
 
@@ -112,24 +112,28 @@
 	+ 所有 CPU 平台的 so 文件。
 + 配置 AndroidManifest:
 	+ 配置权限：添加 SDK 正常运行所必需的权限。
-
-			<uses-permission android:name="android.permission.RECEIVER_USER_PRESENT" />
-			<uses-permission android:name="android.permission.INTERNET" />
-			<uses-permission android:name="android.permission.READ_PHONE_STATE" />
-			<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-			<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-			<uses-permission android:name="android.permission.WRITE_SETTINGS" />
-			<uses-permission android:name="android.permission.VIBRATE" />
-			<uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
-			<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-			<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-			<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-			<uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
-			<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-			<uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
-			<uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
-			<uses-permission android:name="android.permission.GET_TASKS" />
-			<uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+			
+			<!-- Required  一些系统要求的权限，如访问网络等 -->
+            <uses-permission android:name="android.permission.INTERNET" />
+            <uses-permission android:name="android.permission.WAKE_LOCK" />
+            <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+            <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+            <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+            <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+            <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+			
+			<!-- Optional for location -->
+            <uses-permission android:name="android.permission.VIBRATE" />
+            <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+            <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+            <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
+            <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+            <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+            <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+            <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+            <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+            <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+            <uses-permission android:name="android.permission.GET_TASKS" />
  
 	+ 配置appkey：从 portal 上应用信息中获取 AppKey，并填写你的 Channel。
 
