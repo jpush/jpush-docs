@@ -9,7 +9,8 @@
 
 #### ChangeLog
 
-+ 模块化分离为 JCore、JMessage 两部分集成，并且脱离和JPush的依赖关系
++ 模块化分离为 JCore、JMessage 两部分集成，并且脱离和JPush的依赖关系。
+极光开发者服务 SDK 采用了模块化的使用模式，即一个核心（JCore）+N种服务（JMessage，JPush...）的使用方式，方便开发者使用某一项服务或多项服务，极大的优化了多模块同时使用时功能模块重复的问题。
 
 + 新增接口：
 
@@ -17,6 +18,7 @@
 	+ 注册DeviceToken：+ (void)registerDeviceToken:(NSData *)deviceToken;
 
 #### 升级指南
++ 注意 3.0.0及以上版本将不再支持处理器为i386的模拟器
 + 使用新版本的JMessage.framework文件替换原工程下的同名旧文件
 + 将新版本的JMessage.framework里的JCore link到工程中，详细参见官网集成文档
 
