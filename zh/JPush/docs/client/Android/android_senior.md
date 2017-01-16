@@ -198,7 +198,7 @@ JPush 通知推送到客户端时，默认使用手机的默认设置来显示�
 			| Notification.DEFAULT_LIGHTS;  // 设置为铃声、震动、呼吸灯闪烁都要
 	JPushInterface.setPushNotificationBuilder(1, builder);
 
-定制带按钮的Notification样式(该样式在某些机型上无法正常显示)。
+定制带按钮的Notification样式(3.0.0及以上版本sdk才支持该样式，且该样式在某些机型上无法正常显示)。
 
 	MultiActionsNotificationBuilder builder = new MultiActionsNotificationBuilder(PushSetActivity.this);
 	//添加按钮，参数(按钮图片、按钮文字、扩展数据)
