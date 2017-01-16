@@ -958,6 +958,8 @@ public static void setPushNotificationBuilder(Integer notificationBuilderId, Bas
 
 当开发者需要为不同的通知，指定不同的通知栏样式（行为）时，则需要调用此方法设置多个通知栏构建类。
 
+该方法支持设置MultiActionsNotificationBuilder，即带按钮的通知栏样式。
+
 设置时，开发者自己维护 notificationBuilderId 这个编号，下发通知时使用 n_builder_id 指定该编号，从而 Push SDK 会调用开发者应用程序里设置过的指定编号的通知栏构建类，来定制通知栏样式。
 
 
