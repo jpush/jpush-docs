@@ -3,12 +3,6 @@
 
 ## 概述
 
-极光 IM（英文名JMessage） SDK 基于 JPush 推送 SDK 开发，提供了 Push SDK 的完整功能，并提供 IM 即时通讯功能。
-
-App 集成了 IM SDK 就不应再集成 JPush SDK（只提供 Push 功能的 SDK）。
-
-要了解极光IM的详细信息，请参考文档：[JMessage 产品简介](../guideline/jmessage_guide)
-
 ### 消息
 
 极光 IM 最核心的功能是即时通讯功能。
@@ -105,10 +99,9 @@ JMessageClient.init(Context context)
 + Context context 应用程序上下文对象。
 
 ### SDK初始化(设置消息记录漫游)
-***Since 1.5.0***  
+***Since 2.1.0***  
 SDK初始化,同时指定是否启用消息记录漫游。  
-打开消息漫游之后，用户多个设备之间登陆时，sdk会自动将历史消息同步到本地，同步完成之后sdk会发送一个`ConversationRefreshEvent`事件通知上层刷新，具体事件处理方法见[事件处理](#Event)一节。  
-同步完成后上层可以通过`conversation.getMessage(int messageId)`等接口拿到同步下来的消息。
+打开消息漫游之后，用户多个设备之间登陆时，sdk会自动将当前登陆用户的历史消息同步到本地，同步完成之后sdk会发送一个`ConversationRefreshEvent`事件通知上层刷新，具体事件处理方法见[事件处理](#Event)一节。
 
 ```
 JMessageClient.init(Context context, boolean msgRoaming)
@@ -239,14 +232,15 @@ JMessageClient.updateUserAvatar(File avatar, BasicCallback callback);
 ### 本地会话管理
 
 #### 创建单聊会话
-创建单聊会话，如果本地已存在对应会话对象，则不会重新创建，直接返回本地会话对象。创建的会话默认是当前appkey下的用户，如果需要给其他appkey下的用户发消息，请参照[跨应用通信](#CrossApp)一节
+创建单聊会话，如果本地已存在对应会话，则不会重新创建，直接返回本地会话对象。通过指定appkey，可以实现给其他appkey下的用户发消息。
 
 ```
-	Conversation.createSingleConversation(String username)
+	Conversation.createSingleConversation(String username, String appkey)
 ```
 参数说明
 
 + String username 会话对象的username.
++ String appkey 用户所属应用的appkey,如果填空则默认为本应用的appkey
 
 #### 创建群聊会话
 创建群聊会话，如果本地已存在对应会话对象，则不会重新创建，直接返回本地会话对象。
@@ -273,13 +267,14 @@ JMessageClient.getConversationList();
 + `List<Conversation>` 会话列表。
 
 #### 获取单个单聊会话
-获取单聊会话信息，默认获取本appKey下username的单聊会话。
+获取与指定appkey下username的单聊会话信息,如果appkey为空则默认取本应用appkey下对应username用户的会话。
 ```
-JMessageClient.getSingleConversation(String username);
+JMessageClient.getSingleConversation(String username, String appkey);
 ```
 参数说明
 
 + String username 目标的用户用户名。
++ String appkey 用户所属应用的appkey
 
 返回
 
@@ -303,35 +298,20 @@ JMessageClient.getGroupConversation(long groupID);
 
 
 #### 删除单个单聊会话
-删除单聊的会话，同时删除掉本地聊天记录。默认删除本appKey下username的会话
+删除与指定appkey下username的单聊的会话，同时删除掉本地聊天记录。,如果appkey为空则默认尝试删除本应用appkey下对应username的会话。
 ```  
-JMessageClient.deleteSingleConversation(String username);
+JMessageClient.deleteSingleConversation(String username, String appkey);
 ```
 
 参数说明
 
 + String username 目标的用户用户名。
++ String appkey 用户所属应用的appkey
 
 返回
 
 + boolean 是否删除成功。
 
-
-
-#### 删除单个单聊会话（跨应用）
-删除与指定appKey下username的单聊的会话，同时删除掉本地聊天记录。,如果appKey为空则默认尝试删除本应用appKey下对应username的会话。
-```  
-JMessageClient.deleteSingleConversation(String username,String appKey);
-```
-
-参数说明
-
-+ String username 目标的用户用户名。
-+ String appKey 目标用户所属的appKey
-
-返回
-
-+ boolean 是否删除成功。
 
 #### 删除单个群聊会话
 ```  
@@ -557,29 +537,59 @@ JMessageClient.sendMessage(message);
 sdk收到消息时，会上抛消息事件[MessageEvent](./im_android_api_docs/cn/jpush/im/android/api/event/MessageEvent.html?_blank) 或 [OfflineMessageEvent](./im_android_api_docs/cn/jpush/im/android/api/event/OfflineMessageEvent.html)，开发者可以通过这个事件来拿到具体的Message对象，进而执行UI刷新或者其他相关逻辑。具体事件处理方法见[事件处理](#Event)一节
 
 
-### 从1.5.0版本开始接收消息的变化
-1.5.0版本开始，sdk将消息下发分为在线下发和离线下发两种类型。 先明确两个概念：
+### 从2.1.0版本开始接收消息的变化
+2.1.0版本开始，sdk将消息下发分为在线下发和离线下发两种类型。 先明确两个概念：
 
 + 在线消息：im用户在线期间，所有收到的消息称为在线消息。
-+ 离线消息：im用户离线期间（包括登出或者网络断开）收到的消息，会暂存在极光服务器上。当用户再次上线，sdk会将这部分消息拉取下来，这部分消息就称为离线消息。
++ 离线消息：im用户离线期间（包括登出或者网络断开）所产生的消息，会暂存在极光服务器上。当用户再次上线，sdk会将这部分消息拉取下来，这部分消息就称为离线消息。
 
 有了这两个概念的区分之后，sdk对于这两种消息的处理方式也有了不同：  
 
 
 版本 | 在线消息 | 离线消息 
 --- | ------- | ------
-1.5.0之前 | 每收到一条消息上抛一个[MessageEvent](./im_android_api_docs/cn/jpush/im/android/api/event/MessageEvent.html?_blank) | 和在线消息一样，有多少条离线消息就上抛多少个[MessageEvent](./im_android_api_docs/cn/jpush/im/android/api/event/MessageEvent.html?_blank)|
-1.5.0开始 | 每收到一条消息上抛一个[MessageEvent](./im_android_api_docs/cn/jpush/im/android/api/event/MessageEvent.html?_blank) | 以会话为单位，该会话如果有离线消息，sdk就会上抛一个[OfflineMessageEvent](./im_android_api_docs/cn/jpush/im/android/api/event/OfflineMessageEvent.html)。就算同会话中有多条离线消息，sdk也只会上抛一个[OfflineMessageEvent](./im_android_api_docs/cn/jpush/im/android/api/event/OfflineMessageEvent.html),这个Event中就包含了所有离线消息的相关信息。这样会大大减轻上层处理事件的压力。
+2.1.0之前 | 每收到一条消息上抛一个[MessageEvent](./im_android_api_docs/cn/jpush/im/android/api/event/MessageEvent.html?_blank) | 和在线消息一样，有多少条离线消息就上抛多少个[MessageEvent](./im_android_api_docs/cn/jpush/im/android/api/event/MessageEvent.html?_blank)|
+2.1.0开始 | 每收到一条消息上抛一个[MessageEvent](./im_android_api_docs/cn/jpush/im/android/api/event/MessageEvent.html?_blank) | 以会话为单位，该会话如果有离线消息，sdk就会上抛一个[OfflineMessageEvent](./im_android_api_docs/cn/jpush/im/android/api/event/OfflineMessageEvent.html)。就算同会话中有多条离线消息，sdk也只会上抛一个[OfflineMessageEvent](./im_android_api_docs/cn/jpush/im/android/api/event/OfflineMessageEvent.html),这个Event中就包含了所有离线消息的相关信息。这样会大大减轻上层处理事件的压力。
 
 
 
 **总结**  
 
-sdk升级到1.5.0版本（或以上）后，上层需要针对消息接收的处理做以下变动：
+sdk升级到2.1.0版本（或以上）后，上层需要针对消息接收的处理做以下变动：
 
 + 除了`MessageEvent`之外，新增一个事件类型`OfflineMessageEvent`的接收,用来接收离线消息事件。
 + 对于需要消息漫游的开发者，还需增加`ConversationRefreshEvent`事件的接收，当会话中的漫游消息同步完成后，sdk会触发此事件通知上层刷新会话。
 
+
+**代码示例：**
+
+```
+    /**
+      类似MessageEvent事件的接收，上层在需要的地方增加OfflineMessageEvent事件的接收
+      即可实现离线消息的接收。
+    **/
+    public void onEvent(OfflineMessageEvent event) {
+        //获取事件发生的会话对象
+        Conversation conversation = event.getConversation();
+        List<Message> newMessageList = event.getOfflineMessageList();//获取此次离线期间会话收到的新消息列表
+        System.out.println(String.format(Locale.SIMPLIFIED_CHINESE, "收到%d条来自%s的离线消息。\n", newMessageList.size(), conversation.getTargetId()));
+    }
+
+
+    /**
+      如果在JMessageClient.init时启用了消息漫游功能，则每当一个会话的漫游消息同步完成时
+      sdk会发送此事件通知上层。
+    **/
+    public void onEvent(ConversationRefreshEvent event) {
+        //获取事件发生的会话对象
+        Conversation conversation = event.getConversation();
+        //获取事件发生的原因，对于漫游完成触发的事件，此处的reason应该是
+        //MSG_ROAMING_COMPLETE
+        ConversationRefreshEvent.Reason reason = event.getReason();
+        System.out.println(String.format(Locale.SIMPLIFIED_CHINESE, "收到ConversationRefreshEvent事件,待刷新的会话是%s.\n", conversation.getTargetId()));
+        System.out.println("事件发生的原因 : " + reason);
+    }
+```
 
 
 ###<span id="Event">事件处理</span>
@@ -654,7 +664,7 @@ public void onEventMainThread(EventEntity event){
 </br>
 
 离线消息事件实体类 OfflineMessageEvent
-***Since 1.5.0***
+***Since 2.1.0***
 
 <div class="table-d" align="left" >
   <table border="1" width = "100%">
@@ -671,7 +681,7 @@ public void onEventMainThread(EventEntity event){
     <tr >
       <td >getNewMessageList()</td>
       <td >List<Message></td>
-      <td >获取收到的离线消息列表,一次离线消息事件最多只会加载当前会话最新20条离线消息的内容，也就是说此接口返回的List.size最大为20。</td>
+      <td >获取收到的离线消息列表,包含了该会话此次离线收到的所有离线消息列表。其中也有可能包含自己发出去的消息。</td>
     </tr>
     <tr >
       <td >getOfflineMsgCnt()</td>
@@ -996,21 +1006,23 @@ JMessageClient.updateGroupDescription(long groupID,
 
 #### 加群组成员
 ```
-JMessageClient.addGroupMembers(long groupId, List<String> usernameList, BasicCallback callback);
+JMessageClient.addGroupMembers(long groupID, String appKey, List<String> userNameList, BasicCallback callback)
 ```  
 参数说明
 
 + long groupId 待加群的群组ID。创建群组时返回的。
++ String appkey 被添加的群成员所属的appkey，不填则默认为本应用appkey
 + List usernameList 群组成员列表，使用成员 username。
 + BasicCallback callback 结果回调
 
 #### 移除群组成员
 ```
-JMessageClient.removeGroupMembers(long groupId, List<String> usernameList, BasicCallback callback);
+JMessageClient.removeGroupMembers(long groupId, String appKey, List<String> usernameList, BasicCallback callback);
 ```
 参数说明
 
 + long groupId 待删除成员的群ID。
++ String appkey 被移除的群成员所属的appkey，不填则默认为本应用appkey
 + List usernameList 待删除的成员列表。
 + BasicCallback callback 结果回调。
 
@@ -1041,7 +1053,7 @@ JMessageClient.getGroupMembers(long groupID,
 
 ### 群消息屏蔽
 群组被设置为屏蔽之后，将收不到该群的消息。但是群成员变化事件还是能正常收到  
-***Since 1.5.0***
+***Since 2.1.0***
 #### 设置群消息屏蔽
 ```
 groupinfo.setBlockGroupMessage(int blocked, BasicCallback callback)
@@ -1068,7 +1080,7 @@ JMessageClient.getBlockedGroupsList(GetGroupInfoListCallback callback)
 + GetGroupInfoListCallback callback 结果回调。
 
 ### 群组@功能
-***Since 1.5.0***  
+***Since 2.1.0***  
 消息发送方可以发一条带有@list的消息。  
 接收方收到带有@list的消息之后，如果@list中包含了自己，则在sdk默认弹出的通知栏提示中会有相应的提示，如"xxx在群中@了你"。  
 #### 创建@群成员的消息
@@ -1550,6 +1562,7 @@ JMessageClient.getNoDisturbGlobal(IntegerCallback callback)
 
 #### 跨应用相关接口摘要
 
+跨应用接口与非跨应用接口区别主要在于：跨应用接口增加了appkey作为参数。
 详细接口说明请前往极光IM [Android API Java docs](./im_android_api_docs/)
 
 ##### Conversation
