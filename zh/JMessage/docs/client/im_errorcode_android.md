@@ -3,7 +3,7 @@
 以下列表里的 ErrorCode 有可能在 SDK 的调用过程中出现。供参考理解其含义。
 
 
-#### JMessage Android
+## JMessage Android
 
 只会出现在 Android SDK 里的错误码。
 
@@ -125,6 +125,11 @@
       <td>消息解析出错</td>
     </tr>
     <tr >
+      <td>871317</td>
+      <td>Target user cannot be yourself.</td>
+      <td>操作目标用户不能是自己</td>
+    </tr>
+    <tr >
       <td>871402</td>
       <td>Upload file failed.auth error.</td>
       <td>文件上传失败</td>
@@ -159,6 +164,27 @@
       <td>Push register not finished.</td>
       <td>Push 注册未完成，请稍后重试。如果持续出现这个问题，可能你的 JPush 配置不正确。</td>
     </tr>
+    <tr>
+      <td>871505</td>
+      <td>Push register error,package not exists.</td>
+      <td>Push 注册失败,对应包名在控制台上不存在。</td>
+    </tr>
+    <tr>
+      <td>871506</td>
+      <td>Push register error,invalid IMEI.</td>
+      <td>Push 注册失败，设备IMEI不合法</td>
+    </tr>
     
 </table>
 </div>
+<br>
+若以上列表中没有找到对应的错误码，可查看[服务器端错误码](https://docs.jiguang.cn/jmessage/client/im_errorcode_server/)
+
+## 相关文档
+
++ [iOS SDK 错误码](../client/im_errorcode_ios/)
++ [服务器端错误码](https://docs.jiguang.cn/jmessage/client/im_errorcode_server/)
+
+
+
+

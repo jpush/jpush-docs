@@ -84,6 +84,10 @@
 		
 		<option value="//api/name/blackList:">+ blackList:</option>
 		
+		<option value="//api/name/registerForRemoteNotificationTypes:categories:">+ registerForRemoteNotificationTypes:categories:</option>
+		
+		<option value="//api/name/registerDeviceToken:">+ registerDeviceToken:</option>
+		
 	</optgroup>
 	
 
@@ -198,9 +202,7 @@
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>此方法必须被调用, 以初始化 JMessage SDK</p>
-
-<p>如果未调用此方法, 本 SDK 的所有功能将不可用.</p>
+				<p>此方法被[setupJMessage:appKey:channel:apsForProduction:category:messageRoaming:]方法取代</p>
 			</div>
 			
 
@@ -436,7 +438,7 @@ App 才可以收到并进行处理.</p>
 
 <p>调用本接口可打开日志级别为: Debug, 打印调试日志.</p>
 
-<p>本接口与 <a href="../Classes/JPUSHService.html#//api/name/setDebugMode">[JPUSHService setDebugMode]</a> 效果是相同的, 只需要调用一个即可.</p>
+<p>本接口与 [JPUSHService setDebugMode] 效果是相同的, 只需要调用一个即可.</p>
 			</div>
 			
 
@@ -488,7 +490,7 @@ App 才可以收到并进行处理.</p>
 
 <p>建议在发布的版本里, 调用此接口, 关闭掉日志打印.</p>
 
-<p>本接口与 <a href="../Classes/JPUSHService.html#//api/name/setLogOFF">[JPUSHService setLogOFF]</a> 效果是相同的, 只需要调用一个即可.</p>
+<p>本接口与 [JPUSHService setLogOFF] 效果是相同的, 只需要调用一个即可.</p>
 			</div>
 			
 
@@ -701,7 +703,8 @@ App 才可以收到并进行处理.</p>
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>从服务器获取，返回用户的免打扰列表。</p>
+				<p>从服务器获取，返回用户的免打扰列表。
+建议开发者在 SDK 完全启动之后，再调用此接口获取数据</p>
 			</div>
 			
 
@@ -886,7 +889,129 @@ App 才可以收到并进行处理.</p>
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>从服务器获取，返回用户的黑名单列表。</p>
+				<p>从服务器获取，返回用户的黑名单列表。
+建议开发者在 SDK 完全启动之后，再调用此接口获取数据</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMessage.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/registerForRemoteNotificationTypes:categories:" title="registerForRemoteNotificationTypes:categories:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/registerForRemoteNotificationTypes:categories:">+&nbsp;registerForRemoteNotificationTypes:categories:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>注册远程推送</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)registerForRemoteNotificationTypes:(NSUInteger)<em>types</em> categories:(NSSet *)<em>categories</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>types</code></th>
+						<td><p>通知类型</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>categories</code></th>
+						<td><p>类别组</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>此方法必须被调用，如果有集成JPush或其他远程推送注册方法，请不要再调用此方法</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMessage.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/registerDeviceToken:" title="registerDeviceToken:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/registerDeviceToken:">+&nbsp;registerDeviceToken:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>注册DeviceToken</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)registerDeviceToken:(NSData *)<em>deviceToken</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>deviceToken</code></th>
+						<td><p>从注册推送回调中拿到的DeviceToken</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>此方法必须被调用</p>
 			</div>
 			
 
@@ -918,7 +1043,7 @@ App 才可以收到并进行处理.</p>
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2016 HXHG. All rights reserved. Updated: 2016-07-15</p>
+						<p class="copyright">Copyright &copy; 2017 HXHG. All rights reserved. Updated: 2017-01-10</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

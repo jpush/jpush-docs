@@ -7,11 +7,7 @@
 
 ## 兼容版本
 +  Python 2.7
-+  Python 3 还没有兼容，以后会兼容。
-
-建议 Python3 的开发者继续使用 jpush 3.1.2，pip 地址：
-
->   https://pypi.python.org/pypi?:action=display&name=jpush&version=3.1.2
++  Python 3
 
 ## 环境配置
 

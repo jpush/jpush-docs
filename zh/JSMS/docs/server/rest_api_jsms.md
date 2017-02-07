@@ -1,19 +1,29 @@
 # SMS Code API <small>v1</small>
 <div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px;">
 <ul style="margin-bottom: 0;">
-<li>发送短信验证码</li>
+<li>发送短信、语音验证码</li>
 <li>验证短信验证码</li>
 <li>使用 HTTP Basic Authentication 的方式做访问授权。这样整个 API 请求可以使用常见的 HTTP 工具来完成，比如：curl，浏览器插件等；</li>
 <li>内容完全使用 JSON 的格式；</li>
 </ul>
 </div>
 </br>
-## 发送验证码API
 
+## HTTP 验证
 
+HTTP Header（头）里加一个字段（Key/Value对）：
+
+```
+Authorization: Basic base64_auth_string
+```
+
+其中 base64_auth_string 的生成算法为：base64(appKey:masterSecret)
+即:对 appKey 加上冒号，加上 masterSecret 拼装起来的字符串，再做 base64 转换。
+
+## 短信验证码 API
 ### 功能说明
 
-- 向手机号下发短信验证码。
+- 下发短信验证码。
 
 ### 调用地址
 
@@ -22,8 +32,7 @@
 ### 请求示例
 
 ```
-curl --insecure -X POST -v https://api.sms.jpush.cn/v1/codes -H "Content-Type: application/json" -u "7d431e42dfa6a6d693ac2d04:5e987ac6d2e04d95a9d8f0d1" -d '{"mobile":"xxxxxxxxxxx","temp_id":1}'
-
+curl --insecure -X POST -v https://api.sms.jpush.cn/v1/codes -H "Content-Type: application/json" -u "7d431e42dfa6a6d693ac2d04:5e987ac6d2e04d95a9d8f0d1" -d '{"mobile":"xxxxxxxxxxx","temp_id":*}'
 ```
 
 #### 参数
@@ -35,28 +44,64 @@ curl --insecure -X POST -v https://api.sms.jpush.cn/v1/codes -H "Content-Type: a
 
 ### 返回示例
 
+#### 发送成功
+
 ```
-< HTTP/1.1 200 OK
-< Content-Type: application/json
 {"msg_id":"06890980-6789-4054-bba9-90fb66ab2fce"}
+```
+#### 发送失败
 
 ```
+{
+    "error": {
+        "code": "***",
+        "message": "***"
+    }
+}
+```
 
-### 调用验证
+## 语音短信验证码 API
+### 功能说明
 
-HTTP Header（头）里加一个字段（Key/Value对）：
+- 下发语音验证码。
+
+### 调用地址
+
+- POST https://api.sms.jpush.cn/v1/voice_codes
+
+### 请求示例
 
 ```
-Authorization: Basic base64_auth_string
+curl --insecure -X POST -v https://api.sms.jpush.cn/v1/voice_codes -H "Content-Type: application/json" -u "7d431e42dfa6a6d693ac2d04:5e987ac6d2e04d95a9d8f0d1" -d '{"mobile":"xxxxxxxxxxxxxx", "ttl":60}'
 ```
 
-其中 base64_auth_string 的生成算法为：base64(appKey:masterSecret)
+#### 参数
 
+|KEY|REQUIRE|DESCRIPTION|
+|----|----|----|
+|mobile|TRUE|手机号码|
+|ttl|FALSE|超时时间，默认为60秒|
 
-即:对 appKey 加上冒号，加上 masterSecret 拼装起来的字符串，再做 base64 转换。
+### 返回示例
 
-## 验证API
+#### 发送成功
 
+```
+{"msg_id":"06890980-6789-4054-bba9-90fb66ab2fce"}
+```
+
+#### 发送失败
+
+```
+{
+    "error": {
+        "code": "***",
+        "message": "***"
+    }
+}
+```
+
+## 验证 API
 ### 功能说明
 
 - 验证短信验证码是否有效。
@@ -70,7 +115,6 @@ Authorization: Basic base64_auth_string
 
 ```
 curl --insecure -X POST -v https://api.sms.jpush.cn/v1/codes/06890980-6789-4054-bba9-90fb66ab2fce/valid -d '{"code":"123456"}'
-
 ```
 
 #### 参数
@@ -84,26 +128,65 @@ curl --insecure -X POST -v https://api.sms.jpush.cn/v1/codes/06890980-6789-4054-
 - 验证通过
 
 ```
-    {
-        "is_valid":true
-    }
-
+{
+    "is_valid": true
+}
 ```
     
 - 验证不通过
 
 ```
-    {
-        "is_valid":false,
-        "error":{
-            "code":***,//具体对照返回码表
-            "message":"***"
-        }
+{
+    "is_valid": false,
+    "error": {
+        "code": "***",
+        "message": "***"
     }
+}
 ```
 
-## 返回码
+## 模板短信API
+### 功能说明
 
+- 向手机号下发模板短信。
+
+### 调用地址
+
+- POST https://api.sms.jpush.cn/v1/messages
+
+### 请求示例
+
+```
+curl --insecure -X POST -v https://api.sms.jpush.cn/v1/messages -H "Content-Type: application/json" -u "7d431e42dfa6a6d693ac2d04:5e987ac6d2e04d95a9d8f0d1" -d '{"mobile":"xxxxxxxxxxxxxx","temp_id":1,"temp_para":{"xxxx":"xxxx"}}'
+```
+
+#### 参数
+
+|KEY|REQUIRE|DESCRIPTION|
+|----|----|----|
+|mobile|TRUE|手机号码|
+|temp_id|TRUE|模板ID|
+|temp_para|TRUE|模板参数,需要替换的参数名和value的键值对|
+
+### 返回示例
+
+#### 发送成功
+
+```json
+{"msg_id": 124680}
+```
+
+#### 发送失败
+
+```json
+{
+  "error": {
+    "code": *****,
+    "message": "*****"
+  }
+}
+```
+## 返回码
 |HTTP CODE| CODE| CONTENT  | DESC|
 |:--- |:--- |:--- |:----
 |200|50000|success|请求成功
@@ -126,4 +209,9 @@ curl --insecure -X POST -v https://api.sms.jpush.cn/v1/codes/06890980-6789-4054-
 |415|50017|media not supported|媒体类型不支持
 |405|50018|request method not support|请求方法不支持
 |500|50019|server error|服务端异常|
+|403|50020|template audited|模板审核中
+|403|50021|template not pass|模板审核不通过
+|403|50022|parameters not all replaced|模板参数未全部替换|
+|403|50023|parameters is empty|参数为空|
+
 

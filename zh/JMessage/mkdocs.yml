@@ -1,4 +1,4 @@
-site_name: 极光文档
+﻿site_name: 极光文档
 site_author: JPush Offical
 site_url: http://docs.jpush.io
 site_favicon: favicon.ico
@@ -13,28 +13,40 @@ pages:
 
 
 - Android:
-  - 'Android SDK 概述': 'client/im_sdk_android.md'
-  - 'JMessage Android SDK 集成指南': 'client/jmessage_android_guide.md'
-  - 'IM SDK ErrorCode 定义': 'client/im_errorcode_android.md'
+  - 'SDK 开发指南': 'client/im_sdk_android.md'
+  - 'SDK 集成指南': 'client/jmessage_android_guide.md'
+  - 'SDK ErrorCode 定义': 'client/im_errorcode_android.md'
+  - 'SDK API Doc': 'client/javadoc.md'
 
 
 - iOS:
-  - 'iOS SDK 概述': 'client/im_sdk_ios.md'
-  - 'JMessage iOS SDK 集成指南': 'client/jmessage_ios_guide.md'
-  - 'IM SDK ErrorCode 定义': 'client/im_errorcode_ios.md'
+  - 'SDK 开发指南': 'client/im_sdk_ios.md'
+  - 'SDK 集成指南': 'client/jmessage_ios_guide.md'
+  - 'SDK ErrorCode 定义': 'client/im_errorcode_ios.md'
+  - 'SDK API Doc': 'client/iOSdoc.md'
 
-- JS:
-  - 'JMessage WEB SDK 开发文档': 'client/im_sdk_js.md'
+- Web:
+  - 'Web SDK 开发指南 V2': 'client/im_sdk_js_v2.md'
+  - 'Web SDK 开发指南': 'client/im_sdk_js.md'
+  - 'SDK ErrorCode 定义': 'client/im_errorcode_js.md'
 
 - REST API:
-  - 'IM REST API': 'server/rest_api_im.md'
-  - 'IM REST Report': 'server/rest_api_im_report.md'
+  - 'REST API': 'server/rest_api_im.md'
+  - 'REST Report V2': 'server/rest_api_im_report_v2.md'
+  - 'REST Report': 'server/rest_api_im_report.md'
   - 'Server ErrorCode 定义': 'client/im_errorcode_server.md'
+
 - 高级:
-  - 'IM 消息协议': 'advanced/im_message_protocol.md'
-  - 'IM 业务对象': 'advanced/im_objects.md'
-  - '实时消息回调': 'advanced/jmessage_callback.md'
-  - '极光IM高级话题': 'advanced/jmessage_topics.md'
+  - '消息协议': 'advanced/im_message_protocol.md'
+  - '业务对象': 'advanced/im_objects.md'
+  - '实时消息路由': 'advanced/jmessage_callback.md'
+
+- 客户端集成插件: 'client/client_plugins.md'
+
+- 服务端SDK:
+  - 'Java SDK': 'server/sdk/java_sdk.md'
+  - 'Python SDK': 'server/sdk/python_sdk.md'
+  - 'PHP SDK': 'server/sdk/php_sdk.md'
 
 - 最近更新: 'updates.md'
 

@@ -76,6 +76,8 @@
 		
 		<option value="//api/name/timestamp">timestamp</option>
 		
+		<option value="//api/name/fromName">fromName</option>
+		
 		<option value="//api/name/targetType">targetType</option>
 		
 		<option value="//api/name/status">status</option>
@@ -108,11 +110,23 @@
 		
 		<option value="//api/name/sendSingleVoiceMessage:voiceDuration:toUser:appKey:">+ sendSingleVoiceMessage:voiceDuration:toUser:appKey:</option>
 		
+		<option value="//api/name/sendSingleFileMessage:fileName:toUser:">+ sendSingleFileMessage:fileName:toUser:</option>
+		
+		<option value="//api/name/sendSingleFileMessage:fileName:toUser:appKey:">+ sendSingleFileMessage:fileName:toUser:appKey:</option>
+		
+		<option value="//api/name/sendSingleLocationMessage:longitude:scale:address:toUser:">+ sendSingleLocationMessage:longitude:scale:address:toUser:</option>
+		
+		<option value="//api/name/sendSingleLocationMessage:longitude:scale:address:toUser:appKey:">+ sendSingleLocationMessage:longitude:scale:address:toUser:appKey:</option>
+		
 		<option value="//api/name/sendGroupTextMessage:toGroup:">+ sendGroupTextMessage:toGroup:</option>
 		
 		<option value="//api/name/sendGroupImageMessage:toGroup:">+ sendGroupImageMessage:toGroup:</option>
 		
 		<option value="//api/name/sendGroupVoiceMessage:voiceDuration:toGroup:">+ sendGroupVoiceMessage:voiceDuration:toGroup:</option>
+		
+		<option value="//api/name/sendGroupFileMessage:fileName:toGroup:">+ sendGroupFileMessage:fileName:toGroup:</option>
+		
+		<option value="//api/name/sendGroupLocationMessage:longitude:scale:address:toGroup:">+ sendGroupLocationMessage:longitude:scale:address:toGroup:</option>
 		
 	</optgroup>
 	
@@ -123,6 +137,8 @@
 		<option value="//api/name/init">- init</option>
 		
 		<option value="//api/name/setFromName:">- setFromName:</option>
+		
+		<option value="//api/name/updateMessageExtraValue:forKey:">- updateMessageExtraValue:forKey:</option>
 		
 		<option value="//api/name/updateFlag:">- updateFlag:</option>
 		
@@ -781,6 +797,303 @@ NSString *msgText = textContent.text;
 		</div>
 	</div>
 </div><div class="section-method">
+	<a name="//api/name/sendSingleFileMessage:fileName:toUser:" title="sendSingleFileMessage:fileName:toUser:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/sendSingleFileMessage:fileName:toUser:">+&nbsp;sendSingleFileMessage:fileName:toUser:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>发送单聊文件消息</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)sendSingleFileMessage:(NSData *)<em>fileData</em> fileName:(NSString *)<em>fileName</em> toUser:(NSString *)<em>username</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>fileData</code></th>
+						<td><p>文件数据数据</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>fileName</code></th>
+						<td><p>文件名</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>username</code></th>
+						<td><p>单聊对象 username</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>快捷方法，不需要先创建消息而直接发送。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGMessage.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/sendSingleFileMessage:fileName:toUser:appKey:" title="sendSingleFileMessage:fileName:toUser:appKey:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/sendSingleFileMessage:fileName:toUser:appKey:">+&nbsp;sendSingleFileMessage:fileName:toUser:appKey:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>发送跨应用单聊文件消息</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)sendSingleFileMessage:(NSData *)<em>fileData</em> fileName:(NSString *)<em>fileName</em> toUser:(NSString *)<em>username</em> appKey:(NSString *)<em>userAppKey</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>fileData</code></th>
+						<td><p>文件数据数据</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>fileName</code></th>
+						<td><p>文件名</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>username</code></th>
+						<td><p>单聊对象 username</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>快捷方法，不需要先创建消息而直接发送。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGMessage.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/sendSingleLocationMessage:longitude:scale:address:toUser:" title="sendSingleLocationMessage:longitude:scale:address:toUser:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/sendSingleLocationMessage:longitude:scale:address:toUser:">+&nbsp;sendSingleLocationMessage:longitude:scale:address:toUser:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>发送单聊地理位置消息</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)sendSingleLocationMessage:(NSNumber *)<em>latitude</em> longitude:(NSNumber *)<em>longitude</em> scale:(NSNumber *)<em>scale</em> address:(NSString *)<em>address</em> toUser:(NSString *)<em>username</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>latitude</code></th>
+						<td><p>纬度</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>longitude</code></th>
+						<td><p>经度</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>scale</code></th>
+						<td><p>缩放比例</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>address</code></th>
+						<td><p>详细地址</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>username</code></th>
+						<td><p>单聊对象</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>快捷方法，不需要先创建消息而直接发送。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGMessage.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/sendSingleLocationMessage:longitude:scale:address:toUser:appKey:" title="sendSingleLocationMessage:longitude:scale:address:toUser:appKey:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/sendSingleLocationMessage:longitude:scale:address:toUser:appKey:">+&nbsp;sendSingleLocationMessage:longitude:scale:address:toUser:appKey:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>发送跨应用单聊地理位置消息</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)sendSingleLocationMessage:(NSNumber *)<em>latitude</em> longitude:(NSNumber *)<em>longitude</em> scale:(NSNumber *)<em>scale</em> address:(NSString *)<em>address</em> toUser:(NSString *)<em>username</em> appKey:(NSString *)<em>userAppKey</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>latitude</code></th>
+						<td><p>纬度</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>longitude</code></th>
+						<td><p>经度</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>scale</code></th>
+						<td><p>缩放比例</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>address</code></th>
+						<td><p>详细地址</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>username</code></th>
+						<td><p>单聊对象</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>userAppKey</code></th>
+						<td><p>单聊对象的appKey</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>快捷方法，不需要先创建消息而直接发送。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGMessage.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
 	<a name="//api/name/sendGroupTextMessage:toGroup:" title="sendGroupTextMessage:toGroup:"></a>
 	<h3 class="method-title"><code><a href="#//api/name/sendGroupTextMessage:toGroup:">+&nbsp;sendGroupTextMessage:toGroup:</a></code>
 </h3>
@@ -959,6 +1272,147 @@ NSString *msgText = textContent.text;
 				<h4 class="method-subtitle">Discussion</h4>
 				<p>快捷方法，不需要先创建消息而直接发送。</p>
 			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGMessage.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/sendGroupFileMessage:fileName:toGroup:" title="sendGroupFileMessage:fileName:toGroup:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/sendGroupFileMessage:fileName:toGroup:">+&nbsp;sendGroupFileMessage:fileName:toGroup:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>发送群聊文件消息</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)sendGroupFileMessage:(NSData *)<em>fileData</em> fileName:(NSString *)<em>fileName</em> toGroup:(NSString *)<em>groupId</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>fileData</code></th>
+						<td><p>文件数据</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>fileName</code></th>
+						<td><p>文件名</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>groupId</code></th>
+						<td><p>群聊目标群组ID</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>快捷方法，不需要先创建消息而直接发送。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGMessage.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/sendGroupLocationMessage:longitude:scale:address:toGroup:" title="sendGroupLocationMessage:longitude:scale:address:toGroup:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/sendGroupLocationMessage:longitude:scale:address:toGroup:">+&nbsp;sendGroupLocationMessage:longitude:scale:address:toGroup:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>发送群聊地理位置消息</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)sendGroupLocationMessage:(NSNumber *)<em>latitude</em> longitude:(NSNumber *)<em>longitude</em> scale:(NSNumber *)<em>scale</em> address:(NSString *)<em>address</em> toGroup:(NSString *)<em>groupId</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>latitude</code></th>
+						<td><p>纬度</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>longitude</code></th>
+						<td><p>经度</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>scale</code></th>
+						<td><p>缩放比例</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>address</code></th>
+						<td><p>详细地址</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>groupId</code></th>
+						<td><p>群聊目标群组ID</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
 			
 
 			
@@ -1446,7 +1900,53 @@ NSString *msgText = textContent.text;
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>这是服务器端下发消息时的真实时间戳</p>
+				<p>这是服务器端下发消息时的真实时间戳，单位为毫秒</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGMessage.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/fromName" title="fromName"></a>
+	<h3 class="method-title"><code><a href="#//api/name/fromName">&nbsp;&nbsp;fromName</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>消息中的fromName</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) NSString *fromName</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>消息的发送方展示名称</p>
 			</div>
 			
 
@@ -1748,12 +2248,12 @@ NSString *msgText = textContent.text;
 			
 			
 			<div class="method-subsection brief-description">
-				<p>设置该消息的 fromName</p>
+				<p>设置消息的 <a href="#//api/name/fromName">fromName</a>(即:通知栏的展示名称)</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (void)setFromName:(NSString *JMSG_NULLABLE)<em>displayName</em></code></div>
+			<div class="method-subsection method-declaration"><code>- (void)setFromName:(NSString *JMSG_NULLABLE)<em>fromName</em></code></div>
 
 		    
 			
@@ -1762,8 +2262,8 @@ NSString *msgText = textContent.text;
 				<table class="argument-def parameter-def">
 				
 					<tr>
-						<th scope="row" class="argument-name"><code>displayName</code></th>
-						<td><p>设置本条消息的发送方展示名称</p></td>
+						<th scope="row" class="argument-name"><code>fromName</code></th>
+						<td><p>本条消息在接收方通知栏的展示名称</p></td>
 					</tr>
 				
 				</table>
@@ -1777,14 +2277,66 @@ NSString *msgText = textContent.text;
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>该信息填充在发出的消息里. 对方收到 Notification 时的提示的消息发送人, 也用此字段.</p>
-
-<p>JMessage SDK 内部默认从 <a href="../Classes/JMSGUser.html#//api/name/displayName">[JMSGUser displayName]</a> 去获取到 fromName 信息, 不存在时使用 username.
-如果集成此 SDK 没有设置用户信息的 nickname, 则对方收到通知时显示的消息发送人就显示的是 username.
-这时可以创建 JMSGMessage 对象后, 调用此方法来设置 fromName.</p>
-
-<p>本设置会覆盖默认的 <a href="../Classes/JMSGUser.html#//api/name/displayName">[JMSGUser displayName]</a> 规则.</p>
+				<p>fromName填充在发出的消息体里，对方收到该消息通知时,在通知栏显示的消息发送人名称就是该字段的值.</p>
 			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGMessage.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/updateMessageExtraValue:forKey:" title="updateMessageExtraValue:forKey:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/updateMessageExtraValue:forKey:">&ndash;&nbsp;updateMessageExtraValue:forKey:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>更新 message 中的extra</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (BOOL)updateMessageExtraValue:(id)<em>value</em> forKey:(NSString *)<em>key</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>value</code></th>
+						<td><p>待更新的value,不能为null,类型只能为 NSNumber 和 NSString</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>key</code></th>
+						<td><p>待更新value对应的key,不能为null</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
 			
 
 			
@@ -1972,7 +2524,7 @@ NSString *msgText = textContent.text;
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2016 HXHG. All rights reserved. Updated: 2016-07-15</p>
+						<p class="copyright">Copyright &copy; 2017 HXHG. All rights reserved. Updated: 2017-01-10</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

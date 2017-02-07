@@ -94,6 +94,10 @@
 		
 		<option value="//api/name/allConversations:">+ allConversations:</option>
 		
+		<option value="//api/name/allConversationsByDefault:">+ allConversationsByDefault:</option>
+		
+		<option value="//api/name/getAllUnreadCount">+ getAllUnreadCount</option>
+		
 	</optgroup>
 	
 
@@ -121,6 +125,10 @@
 		<option value="//api/name/sendImageMessage:">- sendImageMessage:</option>
 		
 		<option value="//api/name/sendVoiceMessage:duration:">- sendVoiceMessage:duration:</option>
+		
+		<option value="//api/name/sendFileMessage:fileName:">- sendFileMessage:fileName:</option>
+		
+		<option value="//api/name/sendLocationMessage:longitude:scale:address:">- sendLocationMessage:longitude:scale:address:</option>
 		
 		<option value="//api/name/avatarData:">- avatarData:</option>
 		
@@ -693,7 +701,7 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>返回 conversation 列表（异步）</p>
+				<p>返回 conversation 列表（异步,已排序）</p>
 			</div>
 			
 		    
@@ -722,9 +730,67 @@
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>当前是返回所有的 conversation 列表。
+				<p>当前是返回所有的 conversation 列表，默认是已经排序。
 我们设计上充分考虑到性能问题，数据库无关联表查询，性能应该不会差。
 但考虑到潜在的性能问题可能，此接口还是异步返回</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGConversation.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/allConversationsByDefault:" title="allConversationsByDefault:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/allConversationsByDefault:">+&nbsp;allConversationsByDefault:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>返回 conversation 列表（异步,没有排序）</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)allConversationsByDefault:(JMSGCompletionHandler)<em>handler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>handler</code></th>
+						<td><p>结果回调。正常返回时 resultObject 的类型为 NSArray，数组里成员的类型为 JMSGConversation</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>返回所有的 conversation 列表，返回是没有排序的列表。</p>
 			</div>
 			
 
@@ -775,11 +841,6 @@
 
 			
 
-			
-			<div class="method-subsection discussion-section">
-				<h4 class="method-subtitle">Discussion</h4>
-				<p>会话头像没有属性字段, 应通过 <a href="#//api/name/avatarData:">avatarData:</a> 方法异步去获取。</p>
-			</div>
 			
 
 			
@@ -1528,7 +1589,7 @@ JMSGImageContent *imageContent = [[JMSGImageContent alloc] initWithImageData:ima
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>发送消息的多个接口，都未在方法上直接提供回调。你应通过 xxx 方法来注册消息发送结果。</p>
+				<p>发送消息的多个接口，都未在方法上直接提供回调。你应通过 JMSGMessageDelegate中的onReceiveMessage: error:方法来注册消息发送结果</p>
 			</div>
 			
 
@@ -1725,6 +1786,142 @@ JMSGImageContent *imageContent = [[JMSGImageContent alloc] initWithImageData:ima
 		</div>
 	</div>
 </div><div class="section-method">
+	<a name="//api/name/sendFileMessage:fileName:" title="sendFileMessage:fileName:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/sendFileMessage:fileName:">&ndash;&nbsp;sendFileMessage:fileName:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>发送文件消息</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)sendFileMessage:(NSData *)<em>fileData</em> fileName:(NSString *)<em>fileName</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>fileName</code></th>
+						<td><p>文件名</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>voiceData</code></th>
+						<td><p>文件消息数据</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>快捷发送消息接口。如果发送文件消息不需要附加 extra，则使用此接口更方便。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGConversation.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/sendLocationMessage:longitude:scale:address:" title="sendLocationMessage:longitude:scale:address:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/sendLocationMessage:longitude:scale:address:">&ndash;&nbsp;sendLocationMessage:longitude:scale:address:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>发送地理位置消息</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)sendLocationMessage:(NSNumber *)<em>latitude</em> longitude:(NSNumber *)<em>longitude</em> scale:(NSNumber *)<em>scale</em> address:(NSString *)<em>address</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>latitude</code></th>
+						<td><p>纬度</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>longitude</code></th>
+						<td><p>经度</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>scale</code></th>
+						<td><p>缩放比例</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>address</code></th>
+						<td><p>详细地址</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>快捷发送消息接口。如果发送文件消息不需要附加 extra，则使用此接口更方便。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGConversation.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
 	<a name="//api/name/avatarData:" title="avatarData:"></a>
 	<h3 class="method-title"><code><a href="#//api/name/avatarData:">&ndash;&nbsp;avatarData:</a></code>
 </h3>
@@ -1832,6 +2029,52 @@ JMSGImageContent *imageContent = [[JMSGImageContent alloc] initWithImageData:ima
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
 				<p>把未读数设置为 0</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGConversation.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/getAllUnreadCount" title="getAllUnreadCount"></a>
+	<h3 class="method-title"><code><a href="#//api/name/getAllUnreadCount">+&nbsp;getAllUnreadCount</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>获取当前所有会话的未读消息的总数</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (NSNumber *)getAllUnreadCount</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>获取所有会话未读消息总数</p>
 			</div>
 			
 
@@ -2031,7 +2274,7 @@ JMSGImageContent *imageContent = [[JMSGImageContent alloc] initWithImageData:ima
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2016 HXHG. All rights reserved. Updated: 2016-07-15</p>
+						<p class="copyright">Copyright &copy; 2017 HXHG. All rights reserved. Updated: 2017-01-10</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

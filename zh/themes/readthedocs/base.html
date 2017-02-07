@@ -16,10 +16,12 @@
     <title>{% if page_title %}{{ page_title }} - {% endif %}{{ site_name }}</title>{% endblock %} {% if favicon %}
     <link rel="shortcut icon" href="{{ favicon }}">{% else %}
     <link rel="shortcut icon" href="{{ base_url }}/img/favicon.ico">{% endif %}
-    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>{# CSS #}
+    <script src="{{ base_url }}/js/jquery-2.1.4.js"></script>
+
     <link rel="stylesheet" href="{{ base_url }}/css/theme.css" type="text/css" />
-    <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.js"></script>
-    <link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.css" rel="stylesheet">
+    <script src="{{ base_url }}/js/bootstrap/js/bootstrap.js"></script>
+
+    <link href="{{ base_url }}/js/bootstrap/css/bootstrap.css" rel="stylesheet">
     <link href="{{ base_url }}/css/base.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ base_url }}/css/theme_extra.css" type="text/css" />
     {% if current_page %}
@@ -49,9 +51,11 @@
                             <li role="presentation" >
                                 <a href="/jpush/guideline/intro/" id="jpush-top">JPush</a></li>
                             <li role="presentation" >
+                                    <a href="/janalytics/guideline/intro/" id="janalytics-top" >JAnalytics</a></li>
+                            <li role="presentation" >
                                 <a href="/jmessage/guideline/jmessage_guide/" id="jmessage-top">JMessage</a></li>
                             <li role="presentation" >
-                                <a href="/jsms/guideline/JSMS_guide/" id="jsms-top">短信验证码</a></li>
+                                <a href="/jsms/guideline/JSMS_guide/" id="jsms-top">JSMS</a></li>
                         </ul>
                     </div>
                 </div>

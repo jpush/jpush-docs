@@ -192,7 +192,7 @@ DELETE /v3/aliases/{alias_value}?platform=android,ios
 GET /v3/tags/
 ```
 
-获取当前应用的所有标签列表，最多返回100个。
+获取当前应用的所有标签列表，每个平台最多返回100个。
 
 
 ### Example Request

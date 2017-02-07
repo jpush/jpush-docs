@@ -1,5 +1,418 @@
 # 最近更新
-### JMessage iOS SDK v2.1.6
+
+
+### iOS SDK v3.0.0
+
+#### 更新时间
+
+2017-01-10
+
+#### ChangeLog
+
++ 模块化分离为 JCore、JMessage 两部分集成，并且脱离和JPush的依赖关系。      
+极光开发者服务 SDK 采用了模块化的使用模式，即一个核心（JCore）+N种服务（JMessage，JPush...）的使用方式，方便开发者使用某一项服务或多项服务，极大的优化了多模块同时使用时功能模块重复的问题。
+
++ 新增接口：
+
+	+ 注册远程推送： + (void)registerForRemoteNotificationTypes:(NSUInteger)types categories:(NSSet *)categories;
+	+ 注册DeviceToken：+ (void)registerDeviceToken:(NSData *)deviceToken;
+
+#### 升级指南
++ 注意 3.0.0及以上版本将不再支持处理器为i386的模拟器
++ 使用新版本的JMessage.framework文件替换原工程下的同名旧文件
++ 将新版本的JMessage.framework里的JCore link到工程中，详细参见官网集成文档
+
+
+
+### Android SDK v2.0.0
+
+#### 更新时间
+
++ 2017-01-09
+
+#### Change Log
+
++ 新增：模块化分离为 JCore，JMessage 两部分集成，原有使用的一个 jar 包，分为了 jcore 和 jmessage 两个jar 包。并且脱离和JPush的依赖关系
+
++ 修复一些用户反馈的bug 。
+
+#### 升级提示
+
++ 建议升级！
+
+#### 升级指南
+
++ 首先解压您获取到的 zip 压缩包
+
++ 更新库文件
+	+ 打开libs文件夹。添加jcore-android_v1.1.0.jar。用 jmessage-android_2.0.0.jar 替换项目中原有的极光jar文件，并删除原有极光jar文件。用对应CPU文件夹下的 libjcore110.so 文件，替换项目中原有的libjpushXXX.so文件，并删除原有的极光so文件，每种型号的so文件都可以在SDK下载包中找到。
+
++ 更新AndroidManifest.xml
+	+ 请参考 SDK下载包最新版本的 demo 来更新AndroidManifest.xml 文件配置。
+
++ 详细集成说明请参考官方[集成指南](https://docs.jiguang.cn/jmessage/client/jmessage_android_guide/)
+
+
+### iOS SDK v2.2.4
+
+#### 更新时间
+
++ 2016-12-19
+
+#### Change Log
+
+##### BugFix
++ 修复：下载缩略图大小固定的问题
++ 修改：部分地区发送图片、语音失败的问题
+
+##### NewFeature 
++ 新增：当前登录用户信息变更通知事件 [kJMSGEventNotificationCurrentUserInfoChange](./client/jmessage_ios_appledoc_html/Constants/JMSGEventNotificationType.html)
++ 新增：修改消息 extra 字段接口[- (void)updateMessageExtra:extraValue:extraKey:](./client/jmessage_ios_appledoc_html/Classes/JMSGMessage.html#//api/name/updateMessageExtraValue:forKey:)
++ 新增：获取当前所有会话的未读消息的总数接口 [+ (NSNumber *)getAllUnreadCount](./client/jmessage_ios_appledoc_html/Classes/JMSGConversation.html#//api/name/getAllUnreadCount)
+
+ 
+
+#### 升级指南
+
++ 使用新版本的JMessage.framework文件替换原工程下的同名旧文件
+
+
+
+### Web SDK v2.1.0
+
+#### 更新时间
+
++ 2016-12-14
+
+#### Change Log
+
++ 新增：好友模块（添加好友，删除好友，修改好友备注，好友列表）
++ 新增：新增登出接口
++ 优化：发送消息成功回调函数新增一个参数，用于获取发送内容
++ 优化：被迫下线（sdk层面自动下线）
+
+
+#### 升级指南
+
++ 使用新版本的 jmessage-sdk-web.js 文件替换原工程下的同名旧文件
+
+
+### Web SDK v1.2.1
+#### 更新时间
++ 2016-12-05
+
+#### Change Log
+
++ 修复：Web SDK v1.2.0上传图片问题
+
+#### 下载地址
+
++ [点击下载 Web SDK v1.2.1](https://sdkfiledl.jiguang.cn/jmessage-web-sdk.1.2.1.zip)
+
+
+#### 特别说明
+
++ v1.x版本将不再提供新功能，仅维护因bug导致的问题，建议尽快切换到2.x版本
+
+
+
+### iOS SDK v2.2.3
+#### 更新时间
++ 2016-11-30
+
+#### Change Log
+
++ 优化改进：SDK内HTTP全面更换HTTPS
++ 修复：群组事件无法创建会话的问题
++ 修复：循环发送消息导致崩溃问题
+
+
+#### 升级指南
+
++ 使用新版本的JMessage.framework文件替换原工程下的同名旧文件
+
+
+
+### Web SDK v2.0.0
+
+#### 更新时间
+
++ 2016-11-23
+
+#### Change Log
+
++ 全面升级API，支持Promise风格API
++ 新增修改用户信息功能
++ 新增更新头像功能
++ 新增更新用户密码功能
++ 新增接收位置功能
++ 新增文件上传下载功能
++ 新增支持发送和接收emoij表情功能
++ 新增跨应用消息免打扰功能
++ 新增消息自动重试逻辑功能
+
+#### 升级指南
+
++ 在页面引入最新的`jmessage-sdk-web.min.js`。
+
+#### 升级提示
+
++ 因为API调用方式都改变了，需要修改所有接入代码才能进行升级。
+
+#### 特别说明
+
++ v1.x版本将不再提供新功能，仅维护因bug导致的问题，建议更新到v2.0版本
+
+
+### iOS SDK v2.2.1
+#### 更新时间
++ 2016-11-04
+
+#### Change Log
+
++ 优化改进：适配JPush SDK 2.2.0，增加SDK稳定性
++ 修复：消息展示名获取不正确的问题
+
++ 新增事件：
+	+ kJMSGEventNotificationReceiveServerFriendUpdate; //事件类型：非客户端修改好友关系收到好友更新事件
+
+
+#### 升级指南
+
++ 使用新版本的JMessage.framework文件替换原工程下的同名旧文件
+
+#### 升级提示
+
++ 注意：项目中添加libresolv.tbd库，否则编译运行会报错（2.2.1及以上版本要求）
+
+
+
+### iOS SDK v2.2.0
+
+#### 更新时间
++ 2016-10-18
+
+#### Change Log
+##### New Feature
++ 新增：好友功能
+
++ 新增：好友备注名和备注信息设置
+
++ 新增：发送文件消息
+
++ 新增：发送位置消息
+
++ 新增：适配 iOS 10
+
++ 新增事件：
+    + kJMSGEventNotificationServerAlterPassword       = 2,  // 事件类型: 非客户端修改密码强制登出事件
+    
+    + kJMSGEventNotificationUserLoginStatusUnexpected   = 70,// 事件类型：用户登录状态异常事件（需要重新登录）
+    
+    + kJMSGEventNotificationReceiveFriendInvitation    = 51,// 事件类型: 收到好友邀请
+    
+    + kJMSGEventNotificationAcceptedFriendInvitation  = 52,// 事件类型: 对方接受了你的好友邀请
+    
+    + kJMSGEventNotificationDeclinedFriendInvitation   = 53,// 事件类型: 对方拒绝了你的好友邀请
+    
+    + kJMSGEventNotificationDeletedFriend                   = 6, // 事件类型: 对方将你从好友中删除
+
+##### 新增接口：
++ JMSGEventDelegate
+	+ -(void)onReceiveNotificationEvent:(JMSGNotificationEvent *)event;//监听事件通知，如：好友事件、被踢事件等都可以用此函数监听
++ JMSGFriendManager
+	+ +(void)getFriendList:;//获取好友列表
+	+ +(void)sendInvitationRequestWithUsername: appKey: reason: completionHandler: ;//发送添加好友请求
+	+ +(void)acceptInvitationWithUsername: appKey: completionHandler: ;//接受好友邀请
+	+ +(void)rejectInvitationWithUsername: appKey: reason: completionHandler: ;//拒绝好友邀请
+	+ +(void)removeFriendWithUsername: appKey: completionHandler: ;//删除好友
++ JMSGUser
+	+ @property(nonatomic, assign, readonly) BOOL isFriend;//好友关系状态
+	+ @property(nonatomic, copy, readonly) NSString *noteName;//备注名
+	+ @property(nonatomic, copy, readonly) NSString *noteText;//备注信息
+	+ -(void)updateNoteName: completionHandler: ;//修改用户备注名
+	+ -(void)updateNoteText: completionHandler: ;//修改用户备注信息
++ JMSGFriendNotificationEvent
+	+ @property(nonatomic, assign, readonly) JMSGEventNotificationType eventType;//好友通知事件类型
+	+ -(NSString *JMSG_NULLABLE)getReason;//获取事件发生的理由
+	+ -(NSString *JMSG_NULLABLE)getFromUsername;//事件发送者的username
+	+ -(JMSGUser *JMSG_NULLABLE)getFromUser;//获取事件发送者user
++ JMSGConversation
+	+ -(void)sendFileMessage: fileName: ;//发送文件消息
+	+ -(void)sendLocationMessage: longitude: scale: address: ;发送地理位置消息
++ JMSGMessage
+	+ +(void)sendSingleFileMessage: fileName: toUser: ;//发送单聊文件消息
+	+ +(void)sendSingleFileMessage: fileName: toUser: appKey: ;//发送跨应用单聊文件消息
+	+ +(void)sendGroupFileMessage: fileName:toGroup: ;//发送群聊文件消息
+	+ +(void)sendSingleLocationMessage: longitude: scale: address: toUser: ;//发送单聊地理位置消息
+	+ +(void)sendSingleLocationMessage: longitude: scale: address: toUser: appKey: ;//发送跨应用单聊地理位置消息
+	+ +(void)sendGroupLocationMessage: longitude: scale: address: toGroup: ;发送群聊地理位置消息
++ JMSGFileContent
+	+ @property(nonatomic, copy, readonly) NSString *fileName;//文件名
+	+ -(instancetype)initWithFileData: fileName: ;//初始化文件内容
+	+ -(void)fileData:(JMSGAsyncDataHandler)handler;获取文件内容的数据
++ JMSGLocationContent
+	+ @property(nonatomic, strong, readonly) NSNumber *latitude;//纬度
+	+ @property(nonatomic, strong, readonly) NSNumber *longitude;//经度
+	+ @property(nonatomic, strong, readonly) NSNumber *scale;//缩放
+	+ @property(nonatomic, copy, readonly) NSString *address;//详细地址信息
+	+ -(instancetype)initWithLatitude: longitude: scale: address: ;//初始化文件内容
+
+##### 已过时接口：
++ JMSGUserDelegate
+	+ -(void)onLoginUserKicked;// 改用JMSGEventDelegate类中的 onReceiveNotificationEvent 方法统一监听被踢、用户信息过期、好友等通知事件
+
+##### Bug Fix
++ 修复：版本升级后会聊头像无法获取问题；
++ 修复：创建群聊会话时，如果创建群成功并且初始化成员失败时，会同时返回群信息和错误信息
+
+#### 升级指南
++ 使用新版本的JMessage.framework文件替换原工程下的同名旧文件
+
+ 
+
+
+### Web SDK v1.2.0
+
+#### 更新时间
++ 2016-10-10
+
+#### Change Log
+##### New Feature
+
++ 增加发送图片接口
++ 增加用户注册接口
++ 增加黑名单的跨应用接口
++ 增加群组跨应用支持
++ 优化Demo
+
+#### 升级提示
++ 建议升级！
+
+
+### iOS SDK v2.1.8
+
+#### 更新时间
++ 2016-09-22
+
+#### Change Log
+##### Bug Fix
++ 修复：在收到大量消息的同时进行前后切换，会导致应用crash的问题；
++ 修复：在登录时偶现crash的问题
++ 修复：网络或者后台出现问题导致的下发重复事件问题
+
+#### 升级指南
++ 使用新版本的JMessage.framework文件替换原工程下的同名旧文件
+
+
+
+### Android SDK v1.4.2
+#### 更新时间
++ 2016-09-21
+
+#### SDK Change Log
+
+##### Bug Fix
+
++ 修复媒体消息发送问题
+
+#### 升级指南
+
++ jar包更新至jmessage-sdk-1.4.2.jar更新时需删除老版本jar包
++ 将so库更新至 libjpush220.so 同时删除原来老版本so。注意不同的cpu型号对应的结构
++ 由于富媒体的展示需求，SDK 中增加一个res文件夹存放资源文件。用户需将对应文件夹下的资源文件放入工程的目录中
++ 如果是从更早起的版本升级过来，建议参考 SDK下载包最新版本的 demo 来更新 AndroidManifest.xml 文件配置
+
+
+### Android SDK v1.4.1
+#### 更新时间
++ 2016-09-14
+
+#### SDK Change Log
+
+##### Bug Fix
+
++ 修复某些型号的手机应用启动时会弹出位置权限授权框的问题
+
+#### 升级指南
+
++ jar包更新至jmessage-sdk-1.4.1.jar更新时需删除老版本jar包
++ 将so库更新至 libjpush220.so 同时删除原来老版本so。注意不同的cpu型号对应的结构
++ 由于富媒体的展示需求，SDK 中增加一个res文件夹存放资源文件。用户需将对应文件夹下的资源文件放入工程的目录中
++ 如果是从更早起的版本升级过来，建议参考 SDK下载包最新版本的 demo 来更新 AndroidManifest.xml 文件配置
+
+
+### iOS SDK v2.1.7
+
+#### 更新时间
++ 2016-09-09
+
+#### Change Log
+##### Bug Fix
++ 修复：在32位系统下，message的时间戳不正确的问题
+
+#### 升级指南
++ 使用新版本的JMessage.framework文件替换原工程下的同名旧文件
+
+
+### Android SDK v1.4.0
+#### 更新时间
++ 2016-09-09
+
+#### SDK Change Log
+
+##### Bug Fix
+
++ 修复跨应用添加用户进黑名单时可添加自己进黑名单
++ 修复跨应用免打扰中自己可以给自己设置免打扰
++ 修复上层应用进程崩溃重启后，导致im请求发送超时。
++ 修复点击通知栏时，有一定几率message对象为空
++ 修复特殊用户名下，相关内部逻辑错误
++ 修复本地会话过多时，数据库访问的问题。
+
+##### New Feature
+
++ 新增好友模块
++ 新增用户备注名和备注信息设置
++ 新增文件信息发送接口
++ 新增位置信息发送接口
++ GroupInfo中增加获取群主用户所属应用appkey的实例接口
++ getConversationList默认按时间降序排序。
++ 优化接口执行效率
+
+##### 新增接口
+
++ ContactManager 好友管理接口入口类。
+	+ 具体定义见api doc: [ContactManager](http://docs.jiguang.cn/jmessage/client/im_android_api_docs/cn/jpush/im/android/api/ContactManager.html)
++ UserInfo类中新增实例接口：
+	+ 设置备注名：[updateNotename](http://docs.jiguang.cn/jmessage/client/im_android_api_docs/cn/jpush/im/android/api/model/UserInfo.html#updateNoteName(java.lang.String,%20cn.jpush.im.api.BasicCallback))
+	+ 设置备注信息：[updateNoteText](http://docs.jiguang.cn/jmessage/client/im_android_api_docs/cn/jpush/im/android/api/model/UserInfo.html#updateNoteText(java.lang.String,%20cn.jpush.im.api.BasicCallback))
+	+ 将用户从好友列表中移除：[removeFromFriendList](http://docs.jiguang.cn/jmessage/client/im_android_api_docs/cn/jpush/im/android/api/model/UserInfo.html#removeFromFriendList(cn.jpush.im.api.BasicCallback))
+   
++ ContactNotifyEvent 好友相关通知事件类
+	+ 具体定义见api doc: [ContactNotifyEvent](http://docs.jiguang.cn/jmessage/client/im_android_api_docs/cn/jpush/im/android/api/event/ContactNotifyEvent.html)
+   
++ 增加两种message content类型：
+	+ 文件消息：[FileContent](http://docs.jiguang.cn/jmessage/client/im_android_api_docs/cn/jpush/im/android/api/content/FileContent.html)
+	+ 位置消息：[LocationContent](http://docs.jiguang.cn/jmessage/client/im_android_api_docs/cn/jpush/im/android/api/content/LocationContent.html)
+
++ GroupInfo类中新增实例接口：[getOwnerAppkey](http://docs.jiguang.cn/jmessage/client/im_android_api_docs/cn/jpush/im/android/api/model/GroupInfo.html#getOwnerAppkey())
+
+##### 注意
+从此版本开始，JChat源码将不再作为sdk zip的一部分随sdk发布，取而代之的是一个界面简化的仅仅用来展示接口用法的JMessage Demo。
+
+之前JChat的源码见[GitHub](https://github.com/jpush/jchat-android)
+
+
+#### 升级指南
+
++ jar包更新至jmessage-sdk-1.4.0.jar更新时需删除老版本jar包。
++ 将so库更新至 libjpush219.so 同时删除原来老版本so。注意不同的cpu型号对应的结构
++ 由于富媒体的展示需求，SDK 中增加一个res文件夹存放资源文件。用户需将对应文件夹下的资源文件放入工程的目录中。
++ 如果是从更早起的版本升级过来，建议参考 SDK下载包最新版本的 demo 来更新 AndroidManifest.xml 文件配置。
+
+
+### iOS SDK v2.1.6
 
 #### 更新时间
 + 2016-09-01
@@ -12,7 +425,7 @@
 + 使用新版本的JMessage.framework文件替换原工程下的同名旧文件
 
 
-### JMessage JS SDK v1.1.2
+### Web SDK v1.1.2
 
 #### 更新时间
 + 2016-08-31
@@ -24,7 +437,7 @@
 + 建议升级！
 
 
-### JMessage JS SDK v1.1.1
+### Web SDK v1.1.1
 
 #### 更新时间
 + 2016-08-30
@@ -35,7 +448,7 @@
 #### 升级提示
 + 建议升级！
 
-### JMessage JS SDK v1.1.0
+### Web SDK v1.1.0
 
 #### 更新时间
 + 2016-08-26
@@ -48,7 +461,7 @@
 #### 升级提示
 + 建议升级！
 
-### JMessage JS SDK v1.0.1
+### Web SDK v1.0.1
 
 #### 更新时间
 + 2016-08-19
@@ -62,11 +475,11 @@
 + 可选升级！
 
 
-### JMessage IOS SDK v2.1.5
+### iOS SDK v2.1.5
 #### 更新时间
 + 2016-08-13
 
-#### JMessage SDK Change Log
+#### SDK Change Log
 
 ##### BugFix:
 + 修复本地时间和服务器时间不一致时，消息顺序错乱的问题
@@ -75,11 +488,11 @@
 + 使用新版本的JMessage.framework文件替换原工程下的同名旧文件
 
 
-### JMessage Android SDK v1.3.1
+### Android SDK v1.3.1
 #### 更新时间
 + 2016-08-13
 
-#### JMessage SDK Change Log
+#### SDK Change Log
 
 ##### Bug Fix
 
@@ -98,12 +511,12 @@
 + 如果是从更早起的版本升级过来，建议参考 SDK下载包最新版本的 demo 来更新 AndroidManifest.xml 文件配置。
 
 
-### JMessage IOS SDK v2.1.3
+### iOS SDK v2.1.3
 
 #### 更新时间
 + 2016-07-15
 
-#### JMessage SDK Change Log
+#### SDK Change Log
 
 ##### New Feature
 + 新增：本应用和跨应用的免打扰功能；
@@ -150,13 +563,13 @@
 #### 升级指南
 + 使用新版本的JMessage.framework文件替换原工程下的同名旧文件！
 
-### JMessage JS SDK v1.0.0
+### Web SDK v1.0.0
 
 #### 更新时间
 + 2016-07-13
 
 #### Change Log
-+ JMessage JS SDK 首次发布
++ JMessage Web SDK 首次发布
 + 聊天支持：单聊，群聊
 + 聊天内容：文本
 + 提供用户管理 ，群组管理，会话列表获取功能
@@ -165,12 +578,12 @@
 + 可选升级！
 
 
-### JMessage Android SDK v1.3.0
+### Android SDK v1.3.0
 
 #### 更新时间
 + 2016-07-12
 
-#### JMessage SDK Change Log
+#### SDK Change Log
 
 ##### New Feature
 + 增加群组、黑名单、免打扰功能的跨应用能力
@@ -217,7 +630,7 @@
 + 如果是从更早起的版本升级过来，建议参考 SDK下载包最新版本的 demo 来更新 AndroidManifest.xml 文件配置。
 
 
-### JMessage iOS SDK v2.1.1
+### iOS SDK v2.1.1
 
 #### 更新时间
 * 2016-06-15
@@ -240,12 +653,12 @@
 
 
 
-### JMessage Android SDK v1.2.5
+### Android SDK v1.2.5
 
 #### 更新时间
 + 2016-06-12
 
-#### JMessage SDK Change Log
+#### SDK Change Log
 
 ##### New Feature
 + Conversation对象新增设置本地未读消息数的接口
@@ -281,7 +694,7 @@
 + 如果是从更早起的版本升级过来，建议参考 SDK下载包最新版本的 example 来更新 AndroidManifest.xml 文件配置。
 
 
-### JMessage iOS SDK v2.1.0
+### iOS SDK v2.1.0
 
 #### 更新时间
 * 2016-05-10
@@ -300,12 +713,14 @@
 
 #### 升级指南
 + 使用新版本的JMessage.framework文件替换原工程下的同名旧文件
-### JMessage Android SDK v1.2.3
+
+
+### Android SDK v1.2.3
 
 #### 更新时间
 + 2016-04-07
 
-#### JMessage SDK Change Log
+#### SDK Change Log
 
 ##### Bug Fix
 
@@ -323,12 +738,14 @@
 + 将so库更新至 libjpush213.so 同时删除原来老版本so。注意不同的cpu型号对应的结构
 + 由于富媒体的展示需求，SDK 中增加一个res文件夹存放资源文件。用户需将对应文件夹下的资源文件放入工程的目录中。
 + 如果是从更早起的版本升级过来，建议参考 SDK下载包最新版本的 example 来更新 AndroidManifest.xml 文件配置。
-### JMessage Android SDK v1.2.1
+
+
+### Android SDK v1.2.1
 
 #### 更新时间
 + 2016-03-31
 
-#### JMessage SDK Change Log
+#### SDK Change Log
 
 ##### New Feature
 + 新增免打扰功能
@@ -376,7 +793,7 @@
 + 由于富媒体的展示需求，SDK 中增加一个res文件夹存放资源文件。用户需将对应文件夹下的资源文件放入工程的目录中。
 + 如果是从更早起的版本升级过来，建议参考 SDK下载包最新版本的 example 来更新 AndroidManifest.xml 文件配置。
 
-### JMessage iOS SDK v2.0.1
+### iOS SDK v2.0.1
 
 #### 更新时间
 * 2016-03-22
@@ -397,13 +814,13 @@
 + 使用新版本的JMessage.framework文件替换原工程下的同名旧文件
 
 
-### JMessage Android SDK v1.2.0
+### Android SDK v1.2.0
 
 #### 更新时间
 
 + 2016-03-07
 
-#### JMessage SDK Change Log
+#### SDK Change Log
 
 ##### New Feature
 + 实现跨应用聊天
@@ -469,7 +886,7 @@
 + 由于富媒体的展示需求，SDK 中增加一个res文件夹存放资源文件。用户需将对应文件夹下的资源文件放入工程的目录中。
 + 如果是从更早起的版本升级过来，建议参考 SDK下载包最新版本的 example 来更新 AndroidManifest.xml 文件配置。
 
-### JMessage iOS SDK v2.0.0
+### iOS SDK v2.0.0
 
 #### 更新时间
 * 2016-02-22
@@ -493,13 +910,13 @@
 #### 升级指南
 + 使用新版本的JMessage.framework文件替换原工程下的同名旧文件
 
-### JMessage Android SDK v1.1.5
+### Android SDK v1.1.5
 
 #### 更新时间
 
 * 2015-12-11
 
-#### JMessage SDK Change Log
+#### SDK Change Log
 
 ##### New Feature
 
@@ -558,12 +975,14 @@
 * 将so库更新至 libjpush205.so 同时删除原来老版本so。注意不同的cpu型号对应的结构
 * 由于富媒体的展示需求，SDK 中增加一个res文件夹存放资源文件。用户需将对应文件夹下的资源文件放入工程的目录中。
 * 如果是从更早的版本升级过来，建议参考 SDK下载包最新版本的 example 来更新 AndroidManifest.xml 文件配置。
-### JMessage Android SDK v1.1.4
+
+
+### Android SDK v1.1.4
 #### 更新时间
 
 * 2015-09-28
 
-#### JMessage SDK Change Log
+#### SDK Change Log
 
 ##### New Feature
 
@@ -628,7 +1047,7 @@ getLatestType()、getLatestText()
 
 
 
-### JMessage iOS SDK v1.0.6
+### iOS SDK v1.0.6
 
 #### 更新时间
 * 2015-09-14
@@ -660,7 +1079,7 @@ getLatestType()、getLatestText()
 #### 升级指南
 + 使用新版本的JMessage.framework文件替换原工程下的同名旧文件
 
-### JMessage Android SDK v1.1.3
+### Android SDK v1.1.3
 
 #### 更新时间
 2015-08-17
@@ -682,7 +1101,9 @@ getLatestType()、getLatestText()
 #### 升级指南
 + jar包更新至jmessage-android-1.1.3.jar，更新时需删除老版本jar
 + so库更新，/libs/armeabi/libjpush205.so.同时删除原来老版本的so
-### JMessage Android SDK v1.0.18
+
+
+### Android SDK v1.0.18
 #### 更新时间
 2015-04-01
 

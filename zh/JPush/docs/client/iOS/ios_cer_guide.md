@@ -66,7 +66,7 @@
 
 ## 上传证书
 
-在 [JPush 管理 Portal 上](https://www.jiguang.cn/apps/)，针对某应用程序，上传上面步骤得到 .p12 证书文件。这是 iOS SDK 能够接收到 JPush 推送消息的必要步骤。
+在 [JPush 管理 Portal 上](https://www.jiguang.cn/app/list)，针对某应用程序，上传上面步骤得到 .p12 证书文件。这是 iOS SDK 能够接收到 JPush 推送消息的必要步骤。
 
 
 ## Provisioning Profile的创建
@@ -76,7 +76,7 @@
 ![jpush_ios](../image/appidcer.png)
 
 
-+ 创建App ID、APN证书和p12证书的导出的具体步骤请看 :[iOS 证书 设置指南](ios_faq/#ios_1)
++ 创建App ID、APN证书和p12证书的导出的具体步骤请看 :[iOS 证书 设置指南](#id)
 
 + 在[苹果开发者账号的Provisioning Profile](https://developer.apple.com/account/ios/profile/profileList.action)页面点击下图按钮，创建Provisioning Profile
 

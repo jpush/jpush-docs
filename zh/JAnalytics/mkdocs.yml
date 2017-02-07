@@ -1,0 +1,30 @@
+site_name: 极光文档
+site_author: JPush Offical
+site_url: http://docs.jpush.io
+site_favicon: favicon.ico
+site_description: JPush, JMessage, 极光推送, 极光IM, Android Push, Android 推送, 安卓推送, iOS Push, APNs, Push Notification
+copyright: Copyright 2011-2016, jiguang.cn, All Rights Reserved. <br />粤ICP备12056275号-13 深圳市和讯华谷信息技术有限公司
+theme_dir: '../themes/readthedocs'
+
+pages:
+
+- 入门指南:
+  - 'JAnalytics产品简介': 'guideline/intro.md'
+  - '常见问题': 'guideline/faq.md'
+
+- Android:
+  - 'Android SDK 概述': 'client/android_sdk.md'
+  - 'Android SDK 集成指南': 'client/android_guide.md'
+  - 'Android SDK API': 'client/android_api.md'
+
+
+- iOS:
+  - 'iOS SDK 概述': 'client/ios_sdk.md'
+  - 'iOS SDK 集成指南': 'client/ios_guide.md'
+  - 'iOS SDK API': 'client/ios_api.md'
+
+
+- 最近更新: 'updates.md'
+
+- 资源下载: 'resources.md'
+

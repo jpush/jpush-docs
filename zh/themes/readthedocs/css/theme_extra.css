@@ -543,7 +543,11 @@ code.cs, code.c {
   width: 500px;
   float: left;
   clear:right;
-  margin-bottom:40px;
+  margin-top:20px;
+}
+
+#download-right-first{
+  margin-top:40px;
 }
 
 .download-left .download-image{
@@ -553,16 +557,39 @@ code.cs, code.c {
   max-width: 103px;
   max-height: 80px;
 }
-.download-title p{
+
+.download-left .download-image-first{
+  margin-left: 24px;
+  margin-right: 24px;
+  margin-top: 44px;
+  max-width: 103px;
+  max-height: 80px;
+}
+
+#release-title{
+  float:left;
   font-size: 16px;
   color: #1b75bb;
-  margin-top: 16px;
+  margin-bottom: 18px;
+}
+
+#release-version,#release-time{
+  margin-left: 20px;
+  margin-top: 4px;
+  font-size: 12px;
+  color: #666666;
+  float:left;
+}
+
+.download-info{
+  margin-bottom: 22px;
 }
 
 .download-info p{
   font-size: 14px;
   color: #666666;
   margin-top: 6px;
+  clear: both;
 }
 
 
@@ -580,32 +607,33 @@ code.cs, code.c {
   list-style-type: disc;
   color: #666666;
   font-size: 12px;
-  margin-right: 5px;
+  margin-right: 50px;
   float: left;
-  min-width: 160px;
-  margin-left: 15px;
+
 }
 
 .download .download-info-ul li a{
   color: #666666;
-
+  white-space: nowrap;
 }
 
 .download-right .download-icon{
   width: 98px;
   height: 30px;
+  margin-top: 5px;
   border-style: solid;
   border-color: #b5b5b5;
   border-width: 1px;
   text-align: center;
+  vertical-align: middle;
   cursor:pointer;
+  margin-bottom: 40px;
 }
 
 .download-icon a{
   font-size: 14px;
   color: #666666;
-
-
+  vertical-align: middle;
 }
 
 .developer{

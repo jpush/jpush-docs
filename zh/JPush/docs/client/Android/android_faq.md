@@ -103,6 +103,8 @@ JPush SDK 迁移到 Android Studio 需要添加.SO文件打包到APK的lib文件
 + OPPO【ColorOS】
 	+ 冻结应用管理：需要将应用加入纯净后台，否则锁屏状态下无法及时收到消息
 	+ 自启动管理：将应用加入【自启动管理】列表的同时，还需要到设置-应用程序-正在运行里锁定应用进程，否则杀进程或者开机后进程不会开启，只能手动开启应用
++ 三星
+	+ 内存一键优化：需要将应用加入【白名单】列表，否则系统内存优化后，会杀掉应用进程
 
 
 <br />
@@ -136,9 +138,9 @@ try {
 
 ## Tag、Alias、Registrationid需要每次初始化时都重新设置吗，会变化吗？
 
-+ tag、alias可以参考[别名与标签 API](android_api)进行设置，每次设置是覆盖设置，而不是增量设置。Tag和alias一经设置成功，除非取消或覆盖，是不会变化的。设置好的tag、alias与客户端的对应关系保存在JPush服务器，目前没有从JPush服务器查询这个对应关系的接口，所以需要客户将对应关系保存在APP应用服务器。
++ tag、alias可以参考[别名与标签 API](../android_api/#api_1)进行设置，每次设置是覆盖设置，而不是增量设置。Tag和alias一经设置成功，除非取消或覆盖，是不会变化的。设置好的tag、alias与客户端的对应关系保存在JPush服务器，目前没有从JPush服务器查询这个对应关系的接口，所以需要客户将对应关系保存在APP应用服务器。
 
-+ Registrationid是客户端SDK第一次成功连接到Jpush服务器时，Jpush服务器给分配的。可以通过[获取 RegistrationID](android_api) API来获取Registrationid进行推送。Registrationid对应一个应用的一个客户端。
++ Registrationid是客户端SDK第一次成功连接到Jpush服务器时，Jpush服务器给分配的。可以通过[获取 RegistrationID](../android_api/#registrationid-api) API来获取Registrationid进行推送。Registrationid对应一个应用的一个客户端。
 
 <br />
 

@@ -1,4 +1,6 @@
-# MessageList 消息列表
+# IM REST Report
+
+## MessageList 消息历史
 
 目前只保存最近60天消息，这类 API 地址统一为（注意与 Push API 不同）：**https://report.im.jpush.cn/v1**
 
@@ -9,15 +11,16 @@ Authorization: Basic base64_auth_string
 其中 base64_auth_string 的生成算法为：base64(appKey:masterSecret)
 即，对 appKey 加上冒号，加上 masterSecret 拼装起来的字符串，再做 base64 转换。
 
-
-##GetMessage 获取消息
-
 <div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px;">
 <p>温馨提示：</p>
-<p>使用此接口，传递给JPush的URL需要经过URL Encode处理，例如时间格式中的空格需要被转义为 %20</p>
+<p>使用此接口，传递给JMessage的URL需要经过URL Encode处理，例如时间格式中的空格需要被转义为 %20</p>
 </div>
 
 <br/>
+
+
+## GetMessage 获取消息
+
 
 
 ```
@@ -39,9 +42,9 @@ N/A
 ####  Request Params  
 
 + start （必填）查询的起始纪录
-+ count （必填）查询的总条数  一次最多500
++ count （必填）查询的总条数  一次最多1000
 + begin_time (可选) 记录开始时间 格式  yyyy-MM-dd HH:mm:ss  设置筛选条件大于等于begin time 不设置不生效  
-+ end_time (可选)   记录结束时间  格式 yyyy-MM-dd HH:mm:ss  设置筛选条件下于等于end time   不设置不生效
++ end_time (可选)   记录结束时间  格式 yyyy-MM-dd HH:mm:ss  设置筛选条件小于等于end time   不设置不生效
 + end time begin time 都不设置的话 说明两个条件都不生效，则查询服务端保存的所有消息
 + 查询的消息按发送时间升序排序
 
@@ -101,9 +104,9 @@ N/A
 
 ####  Request Params  
 + start （必填）查询的起始纪录
-+ count （必填）查询的总条数  一次最多500
++ count （必填）查询的总条数  一次最多1000
 + begin_time (可选) 记录开始时间 格式  yyyy-MM-dd HH:mm:ss 设置筛选条件大于end time 不设置不生效  
-+ end_time (可选)   记录结束时间  格式 yyyy-MM-dd HH:mm:ss  设置筛选条件下于begin time   不设置不生效
++ end_time (可选)   记录结束时间  格式 yyyy-MM-dd HH:mm:ss  设置筛选条件小于begin time   不设置不生效
 + end time begin time 都不设置的话 说明两个条件都不生效，则查询服务端保存的所有消息
 + 使用此接口，传递给JPush的URL需要经过URL Encode处理，例如时间格式中的空格需要被转义为 %20
 + 查询的消息按发送时间升序排序
@@ -146,3 +149,5 @@ Content-Type: application/json; charset=utf-8
  ] 
 }
 ```
+
+
