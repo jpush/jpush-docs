@@ -50,8 +50,8 @@ logging.basicConfig(level=logging.DEBUG,
 
 git_pull()
 build()
+#print time.asctime(time.localtime(time.time()))
 exit()
-
 
 
 

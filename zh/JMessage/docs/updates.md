@@ -1,5 +1,58 @@
 # 最近更新
 
+
+### iOS SDK v3.0.0
+
+#### 更新时间
+
+2017-01-10
+
+#### ChangeLog
+
++ 模块化分离为 JCore、JMessage 两部分集成，并且脱离和JPush的依赖关系。      
+极光开发者服务 SDK 采用了模块化的使用模式，即一个核心（JCore）+N种服务（JMessage，JPush...）的使用方式，方便开发者使用某一项服务或多项服务，极大的优化了多模块同时使用时功能模块重复的问题。
+
++ 新增接口：
+
+	+ 注册远程推送： + (void)registerForRemoteNotificationTypes:(NSUInteger)types categories:(NSSet *)categories;
+	+ 注册DeviceToken：+ (void)registerDeviceToken:(NSData *)deviceToken;
+
+#### 升级指南
++ 注意 3.0.0及以上版本将不再支持处理器为i386的模拟器
++ 使用新版本的JMessage.framework文件替换原工程下的同名旧文件
++ 将新版本的JMessage.framework里的JCore link到工程中，详细参见官网集成文档
+
+
+
+### Android SDK v2.0.0
+
+#### 更新时间
+
++ 2017-01-09
+
+#### Change Log
+
++ 新增：模块化分离为 JCore，JMessage 两部分集成，原有使用的一个 jar 包，分为了 jcore 和 jmessage 两个jar 包。并且脱离和JPush的依赖关系
+
++ 修复一些用户反馈的bug 。
+
+#### 升级提示
+
++ 建议升级！
+
+#### 升级指南
+
++ 首先解压您获取到的 zip 压缩包
+
++ 更新库文件
+	+ 打开libs文件夹。添加jcore-android_v1.1.0.jar。用 jmessage-android_2.0.0.jar 替换项目中原有的极光jar文件，并删除原有极光jar文件。用对应CPU文件夹下的 libjcore110.so 文件，替换项目中原有的libjpushXXX.so文件，并删除原有的极光so文件，每种型号的so文件都可以在SDK下载包中找到。
+
++ 更新AndroidManifest.xml
+	+ 请参考 SDK下载包最新版本的 demo 来更新AndroidManifest.xml 文件配置。
+
++ 详细集成说明请参考官方[集成指南](https://docs.jiguang.cn/jmessage/client/jmessage_android_guide/)
+
+
 ### iOS SDK v2.2.4
 
 #### 更新时间
@@ -14,7 +67,7 @@
 
 ##### NewFeature 
 + 新增：当前登录用户信息变更通知事件 [kJMSGEventNotificationCurrentUserInfoChange](./client/jmessage_ios_appledoc_html/Constants/JMSGEventNotificationType.html)
-+ 新增：修改消息 extra 字段接口[- (void)updateMessageExtra: extraValue:extraKey:](./client/jmessage_ios_appledoc_html/Classes/JMSGMessage.html#//api/name/updateMessageExtraValue:forKey:)
++ 新增：修改消息 extra 字段接口[- (void)updateMessageExtra:extraValue:extraKey:](./client/jmessage_ios_appledoc_html/Classes/JMSGMessage.html#//api/name/updateMessageExtraValue:forKey:)
 + 新增：获取当前所有会话的未读消息的总数接口 [+ (NSNumber *)getAllUnreadCount](./client/jmessage_ios_appledoc_html/Classes/JMSGConversation.html#//api/name/getAllUnreadCount)
 
  
