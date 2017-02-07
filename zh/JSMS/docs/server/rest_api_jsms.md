@@ -114,7 +114,7 @@ curl --insecure -X POST -v https://api.sms.jpush.cn/v1/voice_codes -H "Content-T
 ### 请求示例
 
 ```
-curl --insecure -X POST -v https://api.sms.jpush.cn/v1/codes/06890980-6789-4054-bba9-90fb66ab2fce/valid -d '{"code":"123456"}'
+curl --insecure -X POST -v https://api.sms.jpush.cn/v1/codes/06890980-6789-4054-bba9-90fb66ab2fce/valid -H "Content-Type: application/json" -u "7d431e42dfa6a6d693ac2d04:5e987ac6d2e04d95a9d8f0d1" -d '{"code":"123456"}'
 ```
 
 #### 参数
@@ -213,5 +213,6 @@ curl --insecure -X POST -v https://api.sms.jpush.cn/v1/messages -H "Content-Type
 |403|50021|template not pass|模板审核不通过
 |403|50022|parameters not all replaced|模板参数未全部替换|
 |403|50023|parameters is empty|参数为空|
+|403|50024|unsubscribed mobile|手机号已退订|
 
 
