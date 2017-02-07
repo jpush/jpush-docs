@@ -4,6 +4,10 @@ import commands
 import os
 import time
 
+def kill_git():
+    logging.info(commands.getstatusoutput("kill -s 9 `pgrep git-remote-http`"))
+    #logging.info(commands.getstatusoutput("sudo ps -ef |grep downloader.py  |awk '{print $2}'|xargs sudo  kill -9"))
+
 def git_pull():
     print (os.chdir("/opt/push/jpush-docs/jpush-docs/"))
     logging.info(commands.getstatusoutput("git pull origin renew"))
@@ -48,8 +52,9 @@ logging.basicConfig(level=logging.DEBUG,
                     filename='/opt/push/jpush-docs/autobuild.log',
                     filemode='a+')
 
-git_pull()
+kill_git()
 build()
+git_pull()
 exit()
 
 

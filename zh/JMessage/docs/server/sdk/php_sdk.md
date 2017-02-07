@@ -2,7 +2,7 @@
 
 这是 JMessage REST API 的 PHP 版本封装开发包，是由极光推送官方提供的，一般支持最新的 API 功能。
 
-对应的 REST API 文档: https://docs.jiguang.cn/jmessage/server/rest_api_im/
+对应的 REST API 文档: <https://docs.jiguang.cn/jmessage/server/rest_api_im/>
 
 > 支持的 PHP 版本: 5.4 ～ 5.6.x, 7
 
