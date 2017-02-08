@@ -21,7 +21,7 @@
                     </ul>
                     </div>
                     <div class="download-icon">
-                        <a href="https://sdkfiledl.jiguang.cn/janalytics-android-release-1.0.0.zip">下载</a>
+                        <a href="https://www.jiguang.cn/downloads/sdk/analytics_android">下载</a>
                     </div>
                 </div>
                 <div class="hr">
@@ -46,7 +46,7 @@
                     </ul>
                     </div>
                     <div class="download-icon">
-                        <a href="https://sdkfiledl.jiguang.cn/JAnalytics-iOS-SDK-1.1.0.zip">下载</a>
+                        <a href="https://www.jiguang.cn/downloads/sdk/analytics_ios">下载</a>
                     </div>
                 </div>
         </li>
