@@ -1,4 +1,23 @@
 # 最近更新
+### JAnalytics iOS SDK v1.1.1
+
+#### 更新时间
++ 2017-02-13
+
+#### Change Log
++ 修复：JCore DNS解析失败带来的崩溃问题。
+
+#### 升级提示
+
++ 建议升级！
++ 注意：不支持 Xcode 8.0 以下版本 开启 bitcode。
+
+
+#### 升级指南
+
++ 首先解压您获取到的zip压缩包
++ 更新库文件
+
 ### JAnalytics Android SDK v1.1.0
 
 #### 更新时间
