@@ -73,6 +73,38 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 + (void)registerDeviceToken:(NSData *)deviceToken;
 ```
 
+####设置角标(到服务器)
+```
+/*!
+ * @abstract 设置角标(到服务器)
+ *
+ * @param value 新的值. 会覆盖服务器上保存的值(这个用户)
+ *
+ * @discussion 本接口不会改变应用本地的角标值.
+ * 本地仍须调用 UIApplication:setApplicationIconBadgeNumber 函数来设置脚标.
+ *
+ * 该功能解决的问题是, 服务器端推送 APNs 时, 并不知道客户端原来已经存在的角标是多少, 指定一个固定的数字不太合理.
+ *
+ * APNS 服务器端脚标功能提供:
+ *
+ * - 通过本 API 把当前客户端(当前这个用户的) 的实际 badge 设置到服务器端保存起来;
+ * - 调用服务器端 API 发 APNs 时(通常这个调用是批量针对大量用户),
+ *   使用 "+1" 的语义, 来表达需要基于目标用户实际的 badge 值(保存的) +1 来下发通知时带上新的 badge 值;
+ */
++ (BOOL)setBadge:(NSInteger)value;
+```
+
+####重置角标(到服务器)
+```
+/*!
+ * @abstract 重置角标(为0)
+ *
+ * @discussion 相当于 [setBadge:0] 的效果.
+ * 参考 [JMessage setBadge:] 说明来理解其作用.
+ */
++ (void)resetBadge;
+```
+
 ###SDK初始化(设置漫游)
 
 ***Since v3.1.0***  
