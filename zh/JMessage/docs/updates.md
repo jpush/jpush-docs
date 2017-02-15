@@ -1,5 +1,35 @@
 # 最近更新
 
+### iOS SDK v3.0.1
+
+#### 更新时间
+
+2017-02-15
+
+#### ChangeLog
+
+##### BugFix:
+
++ 修复：SDK启动时小概率出现crash。
++ 修复：从分离前版本升级到分离后版本，如果集成JPush时，需要重新登录才能收到消息的问题。
++ 修复：偶现调用登录接口没有回调的问题。
+
+##### NewFeature
+
++ 在JMessage提供设计角标的方法（原来通过JPush中提供的方法进行设置）
+
++ 新增接口：
+   + 设置角标：+ (BOOL)setBadge:(NSInteger)value;
+   + 重置角标：+ (void)resetBadge;
+
+
+#### 升级指南
++ 使用新版本的JMessage.framework文件替换原工程下的同名旧文件
++ 将新版本的JMessage.framework里的JCore link到工程中，详细参见官网集成文档
+
+#### 升级提示
++ 升级版本后，因为JCore更新为v1.1.1版本,需要重要手动引入到工程中
+
 
 ### iOS SDK v3.0.0
 
