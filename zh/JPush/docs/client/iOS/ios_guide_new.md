@@ -32,6 +32,20 @@ img[alt=jpush_ios] { width: 800px; }
 
 ## 配置工程
 ### 导入SDK
+**选择1：Cocoapods导入**
+
+* 通过Cocoapods下载地址：
+
+```
+pod 'JPush'
+```
+* 如果需要安装指定版本则使用以下方式（以3.0.2版本为例）：
+
+```
+pod 'JPush', '3.0.2'
+```
+
+**选择2：手动导入**
 
 * 将SDK包解压，在Xcode中选择“Add files to 'Your project name'...”，将解压后的lib子文件夹（包含JPUSHService.h、jpush-ios-x.x.x.a、jcore-ios-x.x.x.a）添加到你的工程目录中。  
 * 添加Framework
