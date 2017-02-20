@@ -129,8 +129,8 @@
         dependencies {
             ......
             
-            compile 'cn.jiguang.sdk:jpush:3.0.0'  // 此处以JPush 3.0.0 版本为例。
-            compile 'cn.jiguang.sdk:jcore:1.0.0'  // 此处以JCore 1.0.0 版本为例。
+            compile 'cn.jiguang.sdk:jpush:3.0.2'  // 此处以JPush 3.0.2 版本为例。
+            compile 'cn.jiguang.sdk:jcore:1.1.1'  // 此处以JCore 1.1.1 版本为例。
             ......
         }
         
@@ -141,7 +141,7 @@
 则在 Project 根目录的gradle.properties文件中添加：
 
         android.useDeprecatedNdk=true。
-
+***说明***：若没有res/drawable-xxxx/jpush_notification_icon这个资源默认使用应用图标作为通知icon，在5.0以上系统将应用图标作为statusbar icon可能显示不正常，用户可定义没有阴影和渐变色的icon替换这个文件，文件名不要变。
 
 
 ## 手动集成步骤
@@ -201,8 +201,8 @@ defaultConfig {
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="您应用的包名"
-    android:versionCode="300"
-    android:versionName="3.0.0"
+    android:versionCode="302"
+    android:versionName="3.0.2"
     >
     <uses-sdk android:minSdkVersion="9" android:targetSdkVersion="23" />
 
@@ -265,6 +265,13 @@ defaultConfig {
              </intent-filter>
          </service>
 
+		<!-- since 3.0.2 option 可选项，针对Android从7.0起取消了网络变化的隐式广播-->
+        <!-- 如果希望在Android7.0+的手机同样可以监听网络变化，配置此项 -->
+        <service
+            android:name="cn.jpush.android.service.PushJobService"
+            android:exported="true"
+            android:permission="android.permission.BIND_JOB_SERVICE"/><!--需要同时配置该权限-->
+
         <!-- Required SDK核心功能-->
         <receiver
             android:name="cn.jpush.android.service.PushReceiver"
@@ -293,6 +300,17 @@ defaultConfig {
             android:exported="false" >
             <intent-filter>
                 <action android:name="cn.jpush.android.ui.PushActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="您应用的包名" />
+            </intent-filter>
+        </activity>
+        <!-- SDK核心功能-->
+        <activity
+            android:name="cn.jpush.android.ui.PopWinActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:exported="false"
+            android:theme="@style/MyDialogStyle">
+            <intent-filter>
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="您应用的包名" />
             </intent-filter>
@@ -434,6 +452,8 @@ JPush SDK 提供的 API 接口，都主要集中在 cn.jpush.android.api.JPushIn
         public static void init(Context context)
         
 + setDebugMode 设置调试模式
+
+ 注：该接口需在init接口之前调用，避免出现部分日志没打印的情况。多进程情况下建议在自定义的Application中onCreate中调用。
 
         // You can enable debug mode in developing state. You should close debug mode when release.
         public static void setDebugMode(boolean debugEnalbed)

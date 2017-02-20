@@ -476,6 +476,33 @@ JPush 服务的连接状态发生变化。（注：不是指 Android 系统的�
 	
 更多示例代码请参考 Android SDK 压缩包中的 example 工程。
 
+### Method - setCustomReceiver 
+
+调用此 API 来设置自定义广播。
+
+说明:在Android7.0.0某些设备上无法发送隐士(即不指定类名只指定action)的广播，如果不通过该接口设置会导致收不到消息。
+
+注:调用过此方法之后，以上7种广播只会传到指定Receiver，即使写了另一个Receiver配置了相同的Action，这个Receiver也不会响应
+
+
+#### 支持的版本
+
+开始支持的版本：3.0.2
+
+#### 接口定义
+
+	
+	public static void setCustomReceiver(Context context, String receiverName)
+
+#### 参数定义
+
++ context
+	+ 应用上下文
++ receiverName
+
+	+ 自定义Receiver类名，要带上包名(即全路径) 
+	
+
 ## 别名与标签 API	
 
 ### 功能说明
@@ -935,16 +962,18 @@ r1.6.0 版本开始。
 请参考文档：[自定义通知栏样式教程](android_senior/#_8)
 
 ### API - 设置默认通知栏样式构建类
-	public static void setDefaultPushNotificationBuilder(BasicPushNotificationBuilder builder)
+	public static void setDefaultPushNotificationBuilder(DefaultPushNotificationBuilder builder)
 
 当用户需要定制默认的通知栏样式时，则可调用此方法。
 
-极光 Push SDK 提供了 2 个用于定制通知栏样式的构建类：
+极光 Push SDK 提供了 3 个用于定制通知栏样式的构建类：
 
 + BasicPushNotificationBuilder
 	+ Basic 用于定制 Android Notification 里的 defaults / flags / icon 等基础样式（行为）
 + CustomPushNotificationBuilder
 	+ 继承 Basic 进一步让开发者定制 Notification Layout
++ MultiActionsNotificationBuilder
+	+ 继承 DefaultPushNotificationBuilder 进一步让开发者定制 Notification Layout
 	
 	
 如果不调用此方法定制，则极光Push SDK 默认的通知栏样式是：Android标准的通知栏提示。
