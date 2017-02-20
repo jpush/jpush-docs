@@ -10,6 +10,7 @@ pages:
 
 - 入门指南:
   - 'JMessage 产品简介': 'guideline/jmessage_guide.md'
+  - '常见问题': 'guideline/faq.md'
 
 
 - Android:
