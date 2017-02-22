@@ -86,8 +86,8 @@ JPush Push API v3 新版本 API 满足此规范。JPush Report API 也满足此�
 
 ## 文档参考
 
-+ [Twitter Status Codes](http://docs.jpush.cn/display/dev/HTTP-Status-Code)
-+ [Wikipedia HTTP Status Codes](http://wiki.jpushoa.com/display/KKPush/2013/04/16/Wikipedia+HTTP+Status+Codes)
++ [Twitter Status Codes](https://dev.twitter.com/overview/api/response-codes)
++ [Wikipedia HTTP Status Codes](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes)
 
 
 
