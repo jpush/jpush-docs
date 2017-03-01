@@ -47,6 +47,7 @@ pod 'JPush', '3.0.2'
 
 **选择2：手动导入**
 
+* 在极光官网下载[最新SDK](http://docs.jiguang.cn/jpush/resources/)
 * 将SDK包解压，在Xcode中选择“Add files to 'Your project name'...”，将解压后的lib子文件夹（包含JPUSHService.h、jpush-ios-x.x.x.a、jcore-ios-x.x.x.a）添加到你的工程目录中。  
 * 添加Framework
 	* CFNetwork.framework
