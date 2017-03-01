@@ -273,8 +273,8 @@ defaultConfig {
         @Override
             public void onCreate() {
                 super.onCreate();
-                JPushInterface.setDebugMode(true);
-                JPushInterface.init(this);
+                JMessageClient.setDebugMode(true);
+                JMessageClient.init(this);
             }
         }
 
