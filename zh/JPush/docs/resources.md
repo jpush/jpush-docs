@@ -148,7 +148,7 @@
 </ul>
 </div>
 <div class="download-icon">
-<a href="https://github.com/jpush/jpush-api-python-client/archive/v3.2.4.zip">下载</a>
+<a href="https://sdkfiledl.jiguang.cn/jpush-api-python-client-3.2.4.zip">下载</a>
 </div>
 </div>
 <div class="hr">
@@ -210,7 +210,7 @@
 </ul>
 </div>
 <div class="download-icon">
-<a href="https://github.com/jpush/jpush-api-csharp-client/archive/v3.2.7.1.zip ">下载</a>
+<a href="https://sdkfiledl.jiguang.cn/jpush-api-csharp-client-3.2.7.1.zip">下载</a>
 </div>
 </div>
 <div class="hr">
