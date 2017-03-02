@@ -44,6 +44,8 @@ pod 'JPush'
 ```
 pod 'JPush', '3.0.2'
 ```
+<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">	<p>注意： 如果集成JPush 3.0.1及以上版本， 且同时集成极光其他SDK（如：JMessage 3.0.0及以上版本），建议都更新为线上最新版本，来避免Jcore版本不一致导致的冲突。
+</div>
 
 **选择2：手动导入**
 
