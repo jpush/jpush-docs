@@ -171,8 +171,8 @@
 </div>
 <div class="download-info">
 <ul class="download-info-ul">
-<li>版本号：v3.5.7</li>
-<li>更新时间：2016-12-21</li>
+<li>版本号：v3.5.12</li>
+<li>更新时间：2017-02-27</li>
 <li>更新内容：<a href="https://github.com/jpush/jpush-api-php-client/releases">Change Log</a></li>
 <div style=" clear:both; visibility:hidden;">
 </ul>
@@ -183,7 +183,7 @@
 </ul>
 </div>
 <div class="download-icon">
-<a href="https://github.com/jpush/jpush-api-php-client/archive/v3.5.7.zip">下载</a>
+<a href="https://github.com/jpush/jpush-api-php-client/archive/v3.5.12.zip">下载</a>
 </div>
 </div>
 <div class="hr">
@@ -264,8 +264,8 @@
 </div>
 <div class="download-info">
 <ul class="download-info-ul">
-<li>版本号：v4.0.1</li>
-<li>更新时间：2016-04-28</li>
+<li>版本号：v4.0.6</li>
+<li>更新时间：2017-01-17</li>
 <li>更新内容：<a href="https://github.com/jpush/jpush-api-ruby-client/releases">Change Log</a></li>
 <div style=" clear:both; visibility:hidden;">
 </ul>
@@ -276,7 +276,7 @@
 </ul>
 </div>
 <div class="download-icon">
-<a href="https://www.jiguang.cn/downloads/resource/1461742750944">下载</a>
+<a href="https://github.com/jpush/jpush-api-ruby-client/archive/v4.0.6.zip">下载</a>
 </div>
 </div>
 </li>
