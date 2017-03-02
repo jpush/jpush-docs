@@ -128,6 +128,17 @@ Android 客户端网络不稳定，会导致App 有时候无法及时收到 Push
 
 + 在设置－>应用，强行停止 应用程序后该程序无法再自启动，就算重新开机也一样，一定要手动开启才能运行起来。
 
+### 7.0以上的android系统
+
++ 7.0以上移除了CONNECTIVITY_ACTION的隐式广播，需要额外配置PushJobService来监听网络变化。具体操作方式是在AndroidManifest.xml 中配置
+  参见Android SDK 集成指南 的 配置 AndroidManifest.xml
+
+    	<!-- since 3.0.2 option 可选项，针对Android从7.0起取消了网络变化的隐式广播-->
+        <!-- 如果希望在Android7.0+的手机同样可以监听网络变化，配置此项 -->
+        <service
+        android:name="cn.jpush.android.service.PushJobService"
+        android:exported="true"
+        android:permission="android.permission.BIND_JOB_SERVICE"/><!--需要同时配置该权限-->
 ### 让我们从目前得到的反馈来整理调试的思路
 
 **手机休眠时收不到 JPush 消息，解锁或屏幕灯亮则可以成功接收**
