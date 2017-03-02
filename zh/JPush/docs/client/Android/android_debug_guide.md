@@ -133,7 +133,7 @@ Android 客户端网络不稳定，会导致App 有时候无法及时收到 Push
 + 7.0以上移除了CONNECTIVITY_ACTION的隐式广播，需要额外配置PushJobService来监听网络变化。具体操作方式是在AndroidManifest.xml 中配置
   参见Android SDK 集成指南 的 配置 AndroidManifest.xml
 
-    	<!-- since 3.0.2 option 可选项，针对Android从7.0起取消了网络变化的隐式广播-->
+    	<!-- since 3.0.3 option 可选项，针对Android从7.0起取消了网络变化的隐式广播-->
         <!-- 如果希望在Android7.0+的手机同样可以监听网络变化，配置此项 -->
         <service
         android:name="cn.jpush.android.service.PushJobService"
