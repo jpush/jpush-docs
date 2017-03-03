@@ -1,4 +1,4 @@
-# iOS 证书 设置指南
+# iOS 证书设置指南
 
 ## 创建应用程序ID
 
@@ -24,19 +24,21 @@
 
 + 填写好以上属性后，点击 “Continue”，确认 AppId 属性的正确性，点击 “Register”，注册 AppId 成功。
 
-## 配置和下载证书
+## 两种鉴权方式的配置
 
-### 通过 .p12 证书鉴权
+### 方式一：通过 .p12 证书鉴权
 
 + 如果你之前没有创建过 Push 证书或者是要重新创建一个新的，请在证书列表下面新建。
 
 ![go_to_add_cert](../image/10_toAddCert.png)
 
-+ 新建证书需要注意选择证书种类（开发证书用于开发和调试使用，生产证书既能开发调试使用，也可用于 App Store 发布）
++ 新建证书需要注意选择 APNs 证书种类。如图 APNs 证书有开发（Development）和生产（Production）两种。
 
+	注：开发证书用于开发调试使用；生产证书既能用于开发调试，也可用于产品发布。此处我们选择生产证书为例。
+	
 ![cert_type](../image/11_certType.png)
 
-+ 点击 "Continue", 之后选择该证书准备绑定的 App ID。
++ 点击 "Continue", 之后选择该证书准备绑定的 AppID。
 
 ![cert_to_app](../image/12_certToApp.png)
 
@@ -48,7 +50,7 @@
 
 ![update_CSR](../image/14_uploadCSR.png)
 
-+ 根据它的说明创建打开KeychainAccess 创建 Certificate Signing Request。
++ 打开系统自带的 KeychainAccess 创建 Certificate Signing Request。如下图操作：
 
 ![](../image/Screenshot_13-4-1_5_22.png)
 
@@ -56,27 +58,25 @@
 
 ![](../image/Snip20140122_7.png)
 
-+ 继续返回Apple developer 网站点击 Continue ，上传刚刚生成的 .certSigningRequest 文件生成 APNs Push  Certificate。
-+ 生成证书成功后，点击 “Download” 按钮把证书下载下来。
++ 回到浏览器中 CSR 上传页面，上传刚刚生成的后缀为 .certSigningRequest 的文件。
++ 生成证书成功后，点击 “Download” 按钮把证书下载下来，是后缀为 .cer 的文件。
 
 ![cert_ready](../image/15_CertReady.png)
 
-+ 双击证书后，会在“KeychainAccess”中打开，左侧“钥匙串”列表选择“登录”，“种类”列表选择“我的证书”，找到刚才下载的证书，并导出为 .p12 文件。
++ 双击证书后，会在“KeychainAccess”中打开，选择左侧“钥匙串”列表中“登录”，以及“种类”列表中“我的证书”，找到刚才下载的证书，并导出为 .p12 文件。如下图：
 
 ![output_p12](../image/16_toP12.png)
 ![save_p12](../image/17_saveP12.png)
 
-+ 在极光控制台上传证书
++ 在极光控制台上，进入你应用的应用设置中 iOS 的鉴权方式选择 “证书”，上传刚才导出的 .p12 证书。极光会在后台为你的应用进行鉴权。
 
-在 [JPush 管理 Portal 上](https://www.jiguang.cn/app/list)，针对某应用程序，上传上面步骤得到 .p12 证书文件。这是 iOS SDK 能够接收到 JPush 推送消息的必要步骤。
+### 通过 APNs Auth Key 鉴权
 
-### 通过 Auth Key 鉴权
-
-+ 首先进入 “APNs Auth Key” 页面看账户中是否已经有 auth key，没有则点击 “+” 新建。
++ 首先回到 “Certificates, IDs & Profiles” 页面。点击 “APNs Auth Key” 看账户中是否已有 auth key，没有则点击 “+” 新建。
 
 ![go_to_add_auth_key](../image/3_goToAddAuthKey.png)
 
-+ 选择 Authentication Key 的类型 （注意：在开发和生产环境均可使用，且不会过期）
++ 证书类型选择为 Authentication Key。 （注：在开发和生产环境均可使用，且不会过期。）
 
 ![create_auth_key](../image/4_createAuthKey.png)
 
@@ -88,7 +88,7 @@
 
 ![team_id](../image/6_getTeamId.png)
 
-+ 在极光控制台上传 auth key 文件，并填写你的 KEY ID，TeamID，和指定应用的 BundleID。
++ 在极光控制台上，进入你应用的应用设置中 iOS 的鉴权方式选择 “Authentication Key”，上传 auth key 文件，并填写你的 KEY ID，TeamID，和指定应用的 BundleID。极光会在后台为你的应用进行鉴权。
 
 ## Provisioning Profile的创建
 
