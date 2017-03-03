@@ -140,8 +140,8 @@
 </div>
 <div class="download-info">
 <ul class="download-info-ul">
-<li>版本号：v3.2.1</li>
-<li>更新时间：2016-05-20</li>
+<li>版本号：v3.2.4</li>
+<li>更新时间：2017-01-03</li>
 <li>更新内容：<a href="https://github.com/jpush/jpush-api-python-client/releases">Change Log</a></li>
 <div style=" clear:both; visibility:hidden;">
 </ul>
@@ -152,7 +152,7 @@
 </ul>
 </div>
 <div class="download-icon">
-<a href="https://www.jiguang.cn/downloads/resource/1467706953218">下载</a>
+<a href="https://sdkfiledl.jiguang.cn/jpush-api-python-client-3.2.4.zip">下载</a>
 </div>
 </div>
 <div class="hr">
@@ -202,8 +202,8 @@
 </div>
 <div class="download-info">
 <ul class="download-info-ul">
-<li>版本号：v3.2.4</li>
-<li>更新时间：2016-12-01</li>
+<li>版本号：v3.2.7</li>
+<li>更新时间：2017-02-14</li>
 <li>更新内容：<a href="https://github.com/jpush/jpush-api-csharp-client/releases">Change Log</a></li>
 <div style=" clear:both; visibility:hidden;">
 </ul>
@@ -214,7 +214,7 @@
 </ul>
 </div>
 <div class="download-icon">
-<a href="https://github.com/jpush/jpush-api-csharp-client/archive/v3.2.4.zip">下载</a>
+<a href="https://sdkfiledl.jiguang.cn/jpush-api-csharp-client-3.2.7.1.zip">下载</a>
 </div>
 </div>
 <div class="hr">
