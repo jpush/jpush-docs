@@ -70,23 +70,27 @@
 
 + 在极光控制台上，进入你应用的应用设置中 iOS 的鉴权方式选择 “证书”，上传刚才导出的 .p12 证书。极光会在后台为你的应用进行鉴权。
 
-### 通过 APNs Auth Key 鉴权
+### 方式二：通过 APNs Auth Key 鉴权
 
-+ 首先回到 “Certificates, IDs & Profiles” 页面。点击 “APNs Auth Key” 看账户中是否已有 auth key，没有则点击 “+” 新建。
++ 从开发者账户进入 “Certificates, IDs & Profiles” 页面。点击 “APNs Auth Key” 看账户中是否已有 auth key，没有则点击 “+” 新建。
 
 ![go_to_add_auth_key](../image/3_goToAddAuthKey.png)
 
-+ 证书类型选择为 Authentication Key。 （注：在开发和生产环境均可使用，且不会过期。）
++ 证书类型选择为 APNs Authentication Key，如下图。 （注：在开发和生产环境均可使用，且不会过期。）
 
 ![create_auth_key](../image/4_createAuthKey.png)
 
-+ 点击 “Continue” 进入 Auth Key 详情页将证书下载下来，并获取 Key ID（注意：只可以下载一次，下载后妥善保存）
++ 点击 “Continue” 进入 APNs Auth Key 详情页将证书下载下来，并获取 KeyID（注意：只可以下载一次，下载后妥善保存）
 
 ![auth_key_ready](../image/5_authKeyReady.png)
 
-+ 在账户的 “Membership” 页面获取 Team ID
++ 获取你之前创建过的应用的 Bundle ID
 
-![team_id](../image/6_getTeamId.png)
+![get_bundle_id](../image/5.5_getBundleId.png)
+
++ 在开发者账户的 “Membership” 页面获取 Team ID
+
+![get_team_id](../image/6_getTeamId.png)
 
 + 在极光控制台上，进入你应用的应用设置中 iOS 的鉴权方式选择 “Authentication Key”，上传 auth key 文件，并填写你的 KEY ID，TeamID，和指定应用的 BundleID。极光会在后台为你的应用进行鉴权。
 
