@@ -96,9 +96,7 @@
 
 ## Provisioning Profile的创建
 
-+ 创建Provisioning Profile的前提，已在Apple Developer网站创建待发布应用所使用的Bundle ID的App ID，且为该App ID创建了APNs证书，如下图:
-
-![jpush_ios](../image/appidcer.png)
++ 创建Provisioning Profile的前提，已在Apple Developer网站创建待发布应用所使用的Bundle ID的App ID，且为该App ID创建了 iOS Development 证书。
 
 + 在[苹果开发者账号的Provisioning Profile](https://developer.apple.com/account/ios/profile/)页面点击下图按钮，创建Provisioning Profile
 
