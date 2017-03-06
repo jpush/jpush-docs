@@ -129,7 +129,7 @@
         dependencies {
             ......
             
-            compile 'cn.jiguang.sdk:jpush:3.0.2'  // 此处以JPush 3.0.2 版本为例。
+            compile 'cn.jiguang.sdk:jpush:3.0.3'  // 此处以JPush 3.0.3 版本为例。
             compile 'cn.jiguang.sdk:jcore:1.1.1'  // 此处以JCore 1.1.1 版本为例。
             ......
         }
@@ -201,8 +201,8 @@ defaultConfig {
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="您应用的包名"
-    android:versionCode="302"
-    android:versionName="3.0.2"
+    android:versionCode="303"
+    android:versionName="3.0.3"
     >
     <uses-sdk android:minSdkVersion="9" android:targetSdkVersion="23" />
 
@@ -265,7 +265,7 @@ defaultConfig {
              </intent-filter>
          </service>
 
-		<!-- since 3.0.2 option 可选项，针对Android从7.0起取消了网络变化的隐式广播-->
+		<!-- since 3.0.3 option 可选项，针对Android从7.0起取消了网络变化的隐式广播-->
         <!-- 如果希望在Android7.0+的手机同样可以监听网络变化，配置此项 -->
         <service
             android:name="cn.jpush.android.service.PushJobService"

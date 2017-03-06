@@ -1,5 +1,34 @@
 # Android API
 
+## 初始化推送服务 API
+
+### API - init
+
+停止推送服务。
+
+调用了本 API 后，JPush 推送服务进行初始化。建议在自定义的Application中的onCreate中调用。
+#### 接口定义
+
+	public static void init(Context context);
+	
+#### 参数说明
+
++ context 应用的 ApplicationContext
+
+### API - setDebugMode
+
+设置调试模式。
+
+ 注：该接口需在init接口之前调用，避免出现部分日志没打印的情况。多进程情况下建议在自定义的Application中onCreate中调用。
+
+#### 接口定义
+
+	public static void setDebugMode(boolean debug);
+	
+#### 参数说明
+
++ debug 为true则会打印debug级别的日志，false则只会打印warning级别以上的日志
+
 ## 停止与恢复推送服务 API
 
 ### 支持的版本
