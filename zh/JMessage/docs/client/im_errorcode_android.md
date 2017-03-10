@@ -130,6 +130,11 @@
       <td>操作目标用户不能是自己</td>
     </tr>
     <tr >
+      <td>871318</td>
+      <td>Illegal message content.</td>
+      <td>不合法的消息体，出现这个问题可能是由于上层没有参照集成文档进行混淆配置导致的，关于jmessage的混淆配置见<a href="./jmessage_android_guide/" target="_blank">集成指南</a></td>
+    </tr>
+    <tr >
       <td>871402</td>
       <td>Upload file failed.auth error.</td>
       <td>文件上传失败</td>
