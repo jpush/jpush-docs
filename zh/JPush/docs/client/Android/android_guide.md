@@ -66,8 +66,7 @@
 				android:name="com.example.jpushdemo.ExampleApplication"
 				android:label="@string/app_name" >
 				
-				<service
-            		android:name="cn.jpush.android.service.PushService"
+				<service android:name="cn.jpush.android.service.PushService"
             		android:process=":multiprocess"
             		tools:node="replace" >
             		
@@ -264,13 +263,6 @@ defaultConfig {
                  <category android:name="您应用的包名"/>
              </intent-filter>
          </service>
-
-		<!-- since 3.0.3 option 可选项，针对Android从7.0起取消了网络变化的隐式广播-->
-        <!-- 如果希望在Android7.0+的手机同样可以监听网络变化，配置此项 -->
-        <service
-            android:name="cn.jpush.android.service.PushJobService"
-            android:exported="true"
-            android:permission="android.permission.BIND_JOB_SERVICE"/><!--需要同时配置该权限-->
 
         <!-- Required SDK核心功能-->
         <receiver
