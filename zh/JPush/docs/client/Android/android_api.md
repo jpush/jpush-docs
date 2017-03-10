@@ -21,7 +21,7 @@
 
 ### API - init
 
-停止推送服务。
+初始化推送服务。
 
 调用了本 API 后，JPush 推送服务进行初始化。建议在自定义的Application中的onCreate中调用。
 #### 接口定义
