@@ -66,8 +66,7 @@
 				android:name="com.example.jpushdemo.ExampleApplication"
 				android:label="@string/app_name" >
 				
-				<service
-            		android:name="cn.jpush.android.service.PushService"
+				<service android:name="cn.jpush.android.service.PushService"
             		android:process=":multiprocess"
             		tools:node="replace" >
             		
@@ -90,7 +89,7 @@
             ......
         }
         
-        allprojects {
+        allprojets {
             repositories {
                 jcenter()
             }
@@ -129,8 +128,8 @@
         dependencies {
             ......
             
-            compile 'cn.jiguang.sdk:jpush:3.0.0'  // 此处以JPush 3.0.0 版本为例。
-            compile 'cn.jiguang.sdk:jcore:1.0.0'  // 此处以JCore 1.0.0 版本为例。
+            compile 'cn.jiguang.sdk:jpush:3.0.3'  // 此处以JPush 3.0.3 版本为例。
+            compile 'cn.jiguang.sdk:jcore:1.1.1'  // 此处以JCore 1.1.1 版本为例。
             ......
         }
         
@@ -140,8 +139,8 @@
         NDK integration is deprecated in the current plugin. Consider trying the new experimental plugin.
 则在 Project 根目录的gradle.properties文件中添加：
 
-        android.useDeprecatedNdk=true
-
+        android.useDeprecatedNdk=true。
+***说明***：若没有res/drawable-xxxx/jpush_notification_icon这个资源默认使用应用图标作为通知icon，在5.0以上系统将应用图标作为statusbar icon可能显示不正常，用户可定义没有阴影和渐变色的icon替换这个文件，文件名不要变。
 
 
 ## 手动集成步骤
@@ -201,8 +200,8 @@ defaultConfig {
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="您应用的包名"
-    android:versionCode="300"
-    android:versionName="3.0.0"
+    android:versionCode="303"
+    android:versionName="3.0.3"
     >
     <uses-sdk android:minSdkVersion="9" android:targetSdkVersion="23" />
 
@@ -293,6 +292,17 @@ defaultConfig {
             android:exported="false" >
             <intent-filter>
                 <action android:name="cn.jpush.android.ui.PushActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="您应用的包名" />
+            </intent-filter>
+        </activity>
+        <!-- SDK核心功能-->
+        <activity
+            android:name="cn.jpush.android.ui.PopWinActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:exported="false"
+            android:theme="@style/MyDialogStyle">
+            <intent-filter>
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="您应用的包名" />
             </intent-filter>
@@ -434,6 +444,8 @@ JPush SDK 提供的 API 接口，都主要集中在 cn.jpush.android.api.JPushIn
         public static void init(Context context)
         
 + setDebugMode 设置调试模式
+
+ 注：该接口需在init接口之前调用，避免出现部分日志没打印的情况。多进程情况下建议在自定义的Application中onCreate中调用。
 
         // You can enable debug mode in developing state. You should close debug mode when release.
         public static void setDebugMode(boolean debugEnalbed)
