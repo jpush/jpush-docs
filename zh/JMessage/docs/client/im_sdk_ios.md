@@ -105,7 +105,7 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 
 ***Since v3.1.0***  
 SDK 初始化时，可设置是否启用消息记录漫游。  
-打开消息漫游之后，用户多个设备之间登陆时，SDK会自动将历史消息同步到本地，同步完成之后SDK会以 Conversation 为单位触发代理方法`onSyncConversation:offlineMessages:roamingMessages:`通知上层刷新,具体方法见[消息同步监听代理](./jmessage_ios_appledoc_html/Protocols/JMSGConversationDelegate.html#//api/name/onSyncConversation:offlineMessages:roamingMessages:)
+打开消息漫游之后，用户多个设备之间登陆时，SDK会自动将历史消息同步到本地，同步完成之后SDK会以 Conversation 为单位触发代理方法`onSyncRoamingMessageConversation:`通知上层刷新,具体方法见[消息同步监听代理](./jmessage_ios_appledoc_html/Protocols/JMSGConversationDelegate.html#//api/name/onSyncConversation:offlineMessages:roamingMessages:)
 
 ```
 /*!
@@ -386,26 +386,29 @@ SDK 初始化时，可设置是否启用消息记录漫游。
 	    }
 	 }]; 
 
-### 消息同步
-JMessage SDK 3.1.0 版本开始，SDK将消息下发分为在线下发和离线下发两种类型。 先明确两个概念：
+### 从3.1.0版本开始接收消息的变化
+JMessage SDK 3.1.0 版本开始，SDK 将消息下发分为在线下发和离线下发两种类型，离线下发包含了离线消息和漫游消息。 先明确这几个概念：
 
 + 在线消息：IM 用户在线期间，所有收到的消息称为在线消息。
 + 离线消息：IM 用户离线期间（包括登出或者网络断开）收到的消息，会暂存在极光服务器上，当用户再次上线，SDK 会将这部分消息拉取下来，这部分消息就称为离线消息。
++ 漫游消息：IM 用户在多个设备之间登陆时，SDK 会将其他设备已接收的消息视为漫游。
 
-有了这两个概念的区分之后，SDK 对于这两种消息的处理方式也有了不同：
+有了这几个概念的区分之后，SDK 对于这两种消息的处理方式也有了不同：
 
-版本 | 在线消息 | 离线消息 
---- | ------- | ------
-3.1.0之前 | 每收到一条消息就触发一次接受消息的代理方法[onReceiveMessage:error:](./jmessage_ios_appledoc_html/Protocols/JMSGMessageDelegate.html#//api/name/onReceiveMessage:error:) | 有多少条离线消息就触发多少次接受消息的代理方法[onReceiveMessage:error:](./jmessage_ios_appledoc_html/Protocols/JMSGMessageDelegate.html#//api/name/onReceiveMessage:error:)|
-3.1.0开始 | 每收到一条消息就触发一次接受消息的代理方法[onReceiveMessage:error:](./jmessage_ios_appledoc_html/Protocols/JMSGMessageDelegate.html#//api/name/onReceiveMessage:error:) | 以会话为单位，不管会话有多少离线消息，SDK只触发一次消息同步代理方法[onSyncConversation:offlineMessages:roamingMessages:](./jmessage_ios_appledoc_html/Protocols/JMSGConversationDelegate.html#//api/name/onSyncConversation:offlineMessages:roamingMessages:)|
+SDK版本 | 在线消息  | 离线消息 | 漫游消息
+------- | ------- | ------- |--------- |
+Version < 3.1.0 | 逐条下发，每次都触发[onReceiveMessage:]()|逐条下发，每次都触发[onReceiveMessage:]()|无|
+Version >= 3.1.0 | 逐条下发，每次都触发[onReceiveMessage:]()|以会话为单位，触发一次下发[onSyncOfflineMessageConversation:]()|以会话为单位，触发一次下发[onSyncRoamingMessageConversation:]()|
+
 
 **总结**  
-对于消息同步，以会话为单位，不管会话有多少离线消息，SDK只触发一次消息同步的代理方法，这个代理方法返回值中包含了具体某个会话、离线消息、漫游消息这些相关数据信息，上层通过这个方法可监听到每个会话完成消息同步的情况，从而去刷新UI，这样会大大减轻上层处理事件的压力。
+对于消息同步，以会话为单位，不管会话有多少离线消息，SDK只触发一次消息同步的代理方法，这个代理方法返回值中包含了具体某个会话、离线消息这些相关数据信息，上层通过这个方法可监听到每个会话完成消息同步的情况，从而去刷新UI，这样会大大减轻上层处理事件的压力。
 
-SDK 升级到 3.1.0 版本（或以上）后，上层只需要做以下变动：
+SDK 升级到 3.1.0 版本后（或之后的版本），上层只需要做以下变动：
 
-+ 需要设置消息漫游的开发者,调用新的[SDK 初始化方法](./jmessage_ios_appledoc_html/Classes/JMessage.html#//api/name/setupJMessage:appKey:channel:apsForProduction:category:messageRoaming:)设置
-+ 添加消息同步的监听方法[onSyncConversation:offlineMessages:roamingMessages:](./jmessage_ios_appledoc_html/Protocols/JMSGConversationDelegate.html#//api/name/onSyncConversation:offlineMessages:roamingMessages:)通过此方法可以监听到消息同步情况，从而刷新UI。
++ 需要设置消息漫游的开发者，调用 [新的 SDK 初始化](./jmessage_ios_appledoc_html/Classes/JMessage.html#//api/name/setupJMessage:appKey:channel:apsForProduction:category:messageRoaming:) 设置消息漫游（<font color= BurlyWood>不需要漫游消息的开发者可忽略此操作</font>）。
++ 添加漫游消息的代理方法 [onSyncRoamingMessageConversation:]() 通过此方法可以监听到漫游消息同步情况，从而刷新UI（<font color= BurlyWood>不需要漫游消息的开发者可忽略此操作</font>）。
++ 添加离线消息的代理方法 [onSyncOfflineMessageConversation:](./jmessage_ios_appledoc_html/Protocols/JMSGConversationDelegate.html#//api/name/onSyncConversation:offlineMessages:roamingMessages:) 通过此方法可以监听到离线消息同步情况，从而刷新UI。
 
 
 ### 消息管理
@@ -1256,6 +1259,9 @@ JMSGMessage *message = [JMSGMessage createGroupMessageWithContent:textContent2 g
 	+ (void)shieldList:(JMSGCompletionHandler)handler;
 
 ###<span id="JMSGFriendManager">好友管理</span>
+
+添加、删除、接受、拒绝好友等操作 SDK 会作为通知事件下发,上层通过 [onReceiveNotificationEvent:](./jmessage_ios_appledoc_html/Protocols/JMSGEventDelegate.html#//api/name/onReceiveNotificationEvent:) 类中的方法监听此类事件. [使用示例](#监听下发事件实例)然后做出相应的处理，
+
 #### JMSGFriendManager
 #### 获取好友列表
 	/*!
@@ -1909,31 +1915,48 @@ JMSGCompletionHandler 有 2 个参数：
 
 ```
 /*!
- * @abstract 消息同步
+ * @abstract 同步离线消息通知
  *
  * @param conversation    同步离线消息的会话
  * @param offlineMessages 离线消息数组
- * @param roamingMessages 漫游消息数组
  *
- * 注意：
+ * @discussion 注意：
+ *
  * SDK 会将消息下发分为在线下发和离线下发两种情况,
  * 其中用户在离线状态(包括用户登出或者网络断开)期间所收到的消息我们称之为离线消息.
- * 
+ *
  * 当用户上线收到这部分离线消息后,这里的处理与之前版本不同的是:
  *
  * 3.1.0 版本之前: SDK 会和在线时收到的消息一样,每收到一条消息都会上抛一个在线消息 JMSGMessage 来通知上层.
  *
- * 3.1.0 版本之后: SDK 会以会话为单位,以 JMSGConversation 离线消息的会话的形式上抛.
+ * 3.1.0 版本之后: SDK 会以会话为单位，不管该会话有多少离线消息，SDK同步完成后每个会话只上抛一次.
+ *
  * 注意一个会话只会上抛一个会话,这样会大大减轻上层在收到消息事件需要刷新 UI 的应用场景下,UI 刷新的压力.
- * 
+ *
  * 上层通过此代理方法监听离线消息同步的会话,详见官方文档.
  *
  * @since 3.1.0
  */
 @optional
-- (void)onSyncConversation:(JMSGConversation *)conversation
-           offlineMessages:(NSArray JMSG_GENERIC(__kindof JMSGMessage *)*)offlineMessages
-           roamingMessages:(NSArray JMSG_GENERIC(__kindof JMSGMessage *)*)roamingMessages;
+- (void)onSyncOfflineMessageConversation:(JMSGConversation *)conversation
+                         offlineMessages:(NSArray JMSG_GENERIC(__kindof JMSGMessage *)*)offlineMessages;
+```
+```
+                         
+/*!
+ * @abstract 同步漫游消息通知
+ *
+ * @param conversation 同步漫游消息的会话
+ *
+ * @discussion 注意：
+ *
+ * 当 SDK 触发此函数时，说明该会话有同步下漫游消息，并且已经存储到本地数据库中，
+ * 上层可通过 JMSGConversation 类中的获取message的方法刷新UI.
+ *
+ * @since 3.1.0
+ */
+@optional
+- (void)onSyncRoamingMessageConversation:(JMSGConversation *)conversation;
 ```
 
 	
