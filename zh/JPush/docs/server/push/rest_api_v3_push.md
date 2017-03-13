@@ -377,6 +377,13 @@ Android 平台上的通知，JPush SDK 按照一定的通知栏样式展示。
 			<td>默认为0，还有1，2，3可选，用来指定选择哪种通知栏样式，其他值无效。有三种可选分别为bigText=1，Inbox=2，bigPicture=3。</td>
 		</tr>
 		<tr >
+			<td>alert_type</td>
+			<td>int</td>
+			<td>可选</td>
+			<td>通知提醒方式</td>
+			<td>可选范围为 -1 ～ 7 ，对应 Notification.DEFAULT_ALL = -1 或者 Notification.DEFAULT_SOUND = 1, Notification.DEFAULT_VIBRATE = 2, Notification.DEFAULT_LIGHTS = 4 的任意 “or” 组合。默认按照 -1 处理。  </td>
+		</tr>
+		<tr >
 			<td>big_text</td>
 			<td>string</td>
 			<td>可选</td>
@@ -417,6 +424,7 @@ Android 平台上的通知，JPush SDK 按照一定的通知栏样式展示。
 			 "title" : "JPush test", 
 			 "builder_id" : 3, 
 			 "style":1  // 1,2,3
+			 "alert_type":1 // -1 ~ 7
 			 "big_text":"big text content",
 			 "inbox":JSONObject,
 			 "big_pic_path":"picture url",
