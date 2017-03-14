@@ -139,7 +139,7 @@
         NDK integration is deprecated in the current plugin. Consider trying the new experimental plugin.
 则在 Project 根目录的gradle.properties文件中添加：
 
-        android.useDeprecatedNdk=true。
+        android.useDeprecatedNdk=true
 ***说明***：若没有res/drawable-xxxx/jpush_notification_icon这个资源默认使用应用图标作为通知icon，在5.0以上系统将应用图标作为statusbar icon可能显示不正常，用户可定义没有阴影和渐变色的icon替换这个文件，文件名不要变。
 
 
