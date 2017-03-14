@@ -32,7 +32,22 @@ img[alt=jpush_ios] { width: 800px; }
 
 ## 配置工程
 ### 导入SDK
+**选择1：Cocoapods导入**
 
+* 通过Cocoapods下载地址：
+
+```
+pod 'JPush'
+```
+* 如果需要安装指定版本则使用以下方式（以3.0.2版本为例）：
+
+```
+pod 'JPush', '3.0.2'
+```
+
+**选择2：手动导入**
+
+* 在极光官网下载[最新SDK](http://docs.jiguang.cn/jpush/resources/)
 * 将SDK包解压，在Xcode中选择“Add files to 'Your project name'...”，将解压后的lib子文件夹（包含JPUSHService.h、jpush-ios-x.x.x.a、jcore-ios-x.x.x.a）添加到你的工程目录中。  
 * 添加Framework
 	* CFNetwork.framework
@@ -47,6 +62,14 @@ img[alt=jpush_ios] { width: 800px; }
 	* AdSupport.framework (获取IDFA需要；如果不使用IDFA，请不要添加)
 	* UserNotifications.framework (Xcode8及以上)
 	* libresolv.tbd (JPush 2.2.0及以上版本需要，Xcode7以下版本是libresolv.dylib)
+
+<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">	<p>注意：
+如果集成JPush 3.0.1及以上版本， 且同时集成极光其他SDK（如：JMessage 3.0.0及以上版本）
+<br>
+1. Cocoapods导入，建议都更新为线上最新版本，来避免Jcore版本不一致导致的冲突。
+<br>
+2. 手动导入，在工程中只需保留一个最新版本的jcore-ios-x.x.x.a静态库文件。
+</div>
 
 ### Build Settings
 如果你的工程需要支持小于7.0的iOS系统，请到Build Settings 关闭 bitCode 选项，否则将无法正常编译通过。
