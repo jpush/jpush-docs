@@ -135,7 +135,10 @@ JPush SDK 为了尽可能提高开发者在各类 rom 上的推送送达率，�
 
 #### <h3 id="4.5">4.5. 增加小米推送sdk的jar</h3>
 
-从小米官网将小米sdk的jar文件(MiPush_SDK_Client_x_x_x.jar)导入到工程 libs/ 目录下
+从小米官网将小米sdk的jar文件(MiPush_SDK_Client_x_x_x.jar)导入到工程 libs/ 目录下。
+
+
+**注：极光集成小米通道在 JPush Android SDK 3.0.3 添加，对应测试的小米 SDK 版本为：3.2.2**
 
 ### MiPush SDK的编译混淆问题
 
