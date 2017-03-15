@@ -26,7 +26,7 @@
 <dependency>
     <groupId>cn.jpush.api</groupId>
     <artifactId>jpush-client</artifactId>
-    <version>3.2.15</version>
+    <version>3.2.17</version>
 </dependency>
 ```
 ### jar 包方式
@@ -46,7 +46,7 @@
     <dependency>
         <groupId>cn.jpush.api</groupId>
         <artifactId>jiguang-common</artifactId>
-        <version>1.0.1</version>
+        <version>1.0.3</version>
     </dependency>
     <dependency>
         <groupId>io.netty</groupId>
@@ -580,6 +580,10 @@ javax.net.ssl.SSLKeyException: Hostname verification failed: HostnameVerifier=we
  at cn.liucy.hello.HelloPush.doPost(HelloPush.java:40)
  at cn.liucy.hello.HelloPush.doGet(HelloPush.java:29)
  at javax.servlet.http.HttpServlet.service(HttpServlet.java:707)
+ at javax.servlet.http.HttpServlet.service(HttpServlet.java:820)
+ at weblogic.servlet.internal.StubSecurityHelper$ServletServiceAction.run(StubSecurityHelper.java:227)
+ at weblogic.servlet.internal.StubSecurityHelper.invokeServlet(StubSecurityHelper.java:125)
+ at weblogic.servlet.internal.ServletStubImpl.execute(ServletStubImpl.java:301)
  at javax.servlet.http.HttpServlet.service(HttpServlet.java:820)
  at weblogic.servlet.internal.StubSecurityHelper$ServletServiceAction.run(StubSecurityHelper.java:227)
  at weblogic.servlet.internal.StubSecurityHelper.invokeServlet(StubSecurityHelper.java:125)
