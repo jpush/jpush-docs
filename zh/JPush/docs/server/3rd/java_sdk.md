@@ -26,7 +26,7 @@
 <dependency>
     <groupId>cn.jpush.api</groupId>
     <artifactId>jpush-client</artifactId>
-    <version>3.2.16</version>
+    <version>3.2.17</version>
 </dependency>
 ```
 ### jar 包方式
@@ -46,7 +46,7 @@
     <dependency>
         <groupId>cn.jpush.api</groupId>
         <artifactId>jiguang-common</artifactId>
-        <version>1.0.2</version>
+        <version>1.0.3</version>
     </dependency>
     <dependency>
         <groupId>io.netty</groupId>
@@ -392,7 +392,7 @@ Weblogic在使用jpush-api-java-client时需要注意的一些事项。
 + 执行 keytool -list -keystore mykey.jks  命令列出信任库里的所有公钥，观察对应证书的指纹
 + 检查官网证书，观察对应证书的指纹
 + 比较两个指纹是否一致，如下图所示
-![jpush_weblogic](https://github.com/jpush/jpush-docs/blob/renew/zh/JPush/docs/server/3rd/image/weblogic.png)
+![jpush_weblogic](/image/weblogic.png)
 
 #### 异常记录
 **证书错误异常**
