@@ -48,6 +48,7 @@ pages:
   - 'Java SDK': 'server/sdk/java_sdk.md'
   - 'Python SDK': 'server/sdk/python_sdk.md'
   - 'PHP SDK': 'server/sdk/php_sdk.md'
+  - 'C# SDK': 'server/sdk/csharp_sdk.md'
 
 - 最近更新: 'updates.md'
 

@@ -70,8 +70,8 @@
             <div class="download-right">
                 <div class="download-title">
                     <p id="release-title">Web - SDK</p>
-                    <span id="release-version">版本：v2.1.0</span>
-                    <span id="release-time">2016.12.14</span>
+                    <span id="release-version">版本：v2.2.0</span>
+                    <span id="release-time">2017.03.17</span>
                 </div>
                 <div class="download-info">
                     <ul class="download-info-ul">
@@ -173,6 +173,33 @@
                     </div>
                     <div class="download-icon">
                         <a href="https://sdkfiledl.jiguang.cn/jmessage-api-php-client-1.0.2.zip">下载</a>
+                    </div>
+                <div class="hr">
+                <hr />
+                </div>
+        </li>
+        <li>
+            <div class="download-left">
+                <div class="download-image">
+                    <img src="../image/resource_sdk_csharp.png">
+                </div>
+            </div>
+            <div class="download-right">
+                <div class="download-title">
+                    <p id="release-title">C# - SDK</p>
+                    <span id="release-version">版本：v1.0.0</span>
+                    <span id="release-time">2017.02.27</span>
+                </div>
+                <div class="download-info">
+                    <ul class="download-info-ul">
+                        <li><a href="https://github.com/jpush/jmessage-api-csharp-client"
+                        target="_blank">GitHub 源码</a></li>
+                        <li>更新日志：<a href="https://github.com/jpush/jmessage-api-csharp-client/releases" target="_blank">Change Log</a></li>
+                        <div style=" clear:both; visibility:hidden;">
+                    </ul>
+                    </div>
+                    <div class="download-icon">
+                        <a href="https://sdkfiledl.jiguang.cn/jmessage-api-csharp-client-1.0.0.zip">下载</a>
                     </div>
                 </div>
         </li>
