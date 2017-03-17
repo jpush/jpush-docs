@@ -3,6 +3,8 @@
 
 ## 概述
 
+极光 IM（英文名JMessage）为开发者提供易用可靠的 IM 开发框架，开发者可集成SDK，快速实现即时通讯功能。SDK 支持Android 2.3或以上版本的手机系统。要了解极光 IM 的详细信息，请参考文档：[JMessage 产品简介](https://docs.jiguang.cn/jmessage/guideline/jmessage_guide/)
+
 ### 消息
 
 极光 IM 最核心的功能是即时通讯功能。

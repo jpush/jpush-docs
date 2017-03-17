@@ -252,3 +252,21 @@
     purchase_goods_type
     purchase_quantity
     此类 key 已被模型使用，如果使用则会导致统计到的数据不准确.
+   
+   
+##其它 API
++ ***JAnalyticsInterface.requestPermission(Activity activity)***
+	+ 接口说明：
+		+ 动态情况sdk所需权限，Android SDK API23及以上某些权限需要在Activity中调用代码动态获取
+	+ 参数说明：
+		+ activity：Activity实例
++ ***JAnalyticsInterface.initCrashHandler(Context context)***
+	+ 接口说明：
+		+ 开始crash日志上报
+	+ 参数说明：
+		+ context:应用上下文
++ ***JAnalyticsInterface.stopCrashHandler(Context context)***
+	+ 接口说明：
+		+ 关闭crash日志上报
+	+ 参数说明：
+		+ context:应用上下文

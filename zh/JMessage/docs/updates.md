@@ -1,5 +1,99 @@
 # 最近更新
 
+### Android SDK v2.1.0
+
+#### 更新时间
+
++ 2017-03-10
+
+#### Change Log
+##### BugFix:
++ 修复获取群组信息成功后，会概率出现getgroupowner()为空的情况
++ 修复发送多张图片，概率出现发送图片失败
++ 修复会话不存在时，不会上抛相关群成员变化事件
++ 修复小概率出现的由于mediaID重复导致的消息发送失败问题
++ 修复其他一些用户反馈的bug
+
+##### NewFeature
+
++ 新的消息同步机制
++ 支持消息漫游
++ 群组@功能
++ 群消息屏蔽
++ 支持Dev-api好友更新事件
++ 新增一个用户离线原因：登陆状态异常
++ 支持Dev-api用户信息更新事件
+
+##### 新增接口：
++ 群组@功能相关接口
+	+ 创建包含atList的群消息 ：[conversation.createSendMessage(content,atlist,string)](https://docs.jiguang.cn/jmessage/client/im_android_api_docs/cn/jpush/im/android/api/model/Conversation.html#createSendMessage(cn.jpush.im.android.api.content.MessageContent,%20java.util.List,%20java.lang.String))、[JMessageClient. createAtGroupMembersMessage(long,atlist,content)](https://docs.jiguang.cn/jmessage/client/im_android_api_docs/cn/jpush/im/android/api/JMessageClient.html#createAtGroupMembersMessage(long,%20java.util.List,%20cn.jpush.im.android.api.content.MessageContent))
+
+	+ 判断消息是否@了自己：[message.isAtMe()](https://docs.jiguang.cn/jmessage/client/im_android_api_docs/cn/jpush/im/android/api/model/Message.html#isAtMe())
+
+	+ 获取消息中@的群成员列表：[message.getAtUserList(callback)](https://docs.jiguang.cn/jmessage/client/im_android_api_docs/cn/jpush/im/android/api/model/Message.html#getAtUserList(cn.jpush.im.android.api.callback.GetUserInfoListCallback))
+
++ 群屏蔽功能相关接口
+	+ 设置群消息屏蔽：[groupInfo.setBlockGroupMessage(int,callback)](https://docs.jiguang.cn/jmessage/client/im_android_api_docs/cn/jpush/im/android/api/model/GroupInfo.html#setBlockGroupMessage(int,%20BasicCallback))
+	+ 判断群组是否被屏蔽：[groupInfo.isGroupBlocked()](https://docs.jiguang.cn/jmessage/client/im_android_api_docs/cn/jpush/im/android/api/model/GroupInfo.html#isGroupBlocked())
+	+ 获取当前用户的群屏蔽列表：[JMessageClient.getBlockedGroupsList(callback)](https://docs.jiguang.cn/jmessage/client/im_android_api_docs/cn/jpush/im/android/api/JMessageClient.html#getBlockedGroupsList(cn.jpush.im.android.api.callback.GetGroupInfoListCallback))
+
++ 设置是否需要消息漫游：[JMessageClient.init(context,boolean)](https://docs.jiguang.cn/jmessage/client/im_android_api_docs/cn/jpush/im/android/api/JMessageClient.html#init(android.content.Context,%20boolean))
+
++ 新增离线消息事件：[OfflineMessageEvent](https://docs.jiguang.cn/jmessage/client/im_android_api_docs/cn/jpush/im/android/api/event/OfflineMessageEvent.html)
+
++ 新增漫游消息同步完成事件：[ConversationRefreshEvent](https://docs.jiguang.cn/jmessage/client/im_android_api_docs/cn/jpush/im/android/api/event/ConversationRefreshEvent.html)
+
++ 新增用户信息被更新事件： [MyInfoUpdatedEvent](https://docs.jiguang.cn/jmessage/client/im_android_api_docs/cn/jpush/im/android/api/event/MyInfoUpdatedEvent.html)
+
+
+#### 升级提示
+
++ 建议升级！
+
+#### 升级指南
+
++ 首先解压您获取到的 zip 压缩包
+
++ 更新库文件
+	+ 打开libs文件夹。添加jcore-android_v1.1.0.jar。用 jmessage-android_v2.1.0.jar 替换项目中原有的极光jar文件，并删除原有极光jar文件。用对应CPU文件夹下的 libjcore110.so 文件，替换项目中原有的libjpushXXX.so文件，并删除原有的极光so文件，每种型号的so文件都可以在SDK下载包中找到。
+
++ 更新AndroidManifest.xml
+	+ 请参考 SDK下载包最新版本的 demo 来更新AndroidManifest.xml 文件配置。
+
++ 详细集成说明请参考官方[集成指南](https://docs.jiguang.cn/jmessage/client/jmessage_android_guide/)
+
+
+
+### iOS SDK v3.0.1
+
+#### 更新时间
+
+2017-02-15
+
+#### ChangeLog
+
+##### BugFix:
+
++ 修复：SDK启动时小概率出现crash。
++ 修复：从分离前版本升级到分离后版本，如果集成JPush时，需要重新登录才能收到消息的问题。
++ 修复：偶现调用登录接口没有回调的问题。
+
+##### NewFeature
+
++ 在JMessage提供设计角标的方法（原来通过JPush中提供的方法进行设置）
+
++ 新增接口：
+   + 设置角标：+ (BOOL)setBadge:(NSInteger)value;
+   + 重置角标：+ (void)resetBadge;
+
+
+#### 升级指南
++ 使用新版本的JMessage.framework文件替换原工程下的同名旧文件
++ 将新版本的JMessage.framework里的JCore link到工程中，详细参见官网集成文档
+
+#### 升级提示
++ 升级版本后，因为JCore更新为v1.1.1版本,需要重要手动引入到工程中
+
 
 ### iOS SDK v3.0.0
 

@@ -1,5 +1,37 @@
 # Android API
 
+## 设置调试模式 API
+
+### API - setDebugMode
+
+设置调试模式。
+
+ 注：该接口需在init接口之前调用，避免出现部分日志没打印的情况。多进程情况下建议在自定义的Application中onCreate中调用。
+
+#### 接口定义
+
+	public static void setDebugMode(boolean debug);
+
+#### 参数说明
+
++ debug 为true则会打印debug级别的日志，false则只会打印warning级别以上的日志
+
+
+## 初始化推送服务 API
+
+### API - init
+
+初始化推送服务。
+
+调用了本 API 后，JPush 推送服务进行初始化。建议在自定义的Application中的onCreate中调用。
+#### 接口定义
+
+	public static void init(Context context);
+	
+#### 参数说明
+
++ context 应用的 ApplicationContext
+
 ## 停止与恢复推送服务 API
 
 ### 支持的版本
@@ -27,7 +59,6 @@ JPush SDK 提供的推送服务是默认开启的。
 
 调用了本 API 后，JPush 推送服务完全被停止。具体表现为：
 
-+ JPush Service 不在后台运行
 + 收不到推送消息
 + 极光推送所有的其他 API 调用都无效,不能通过 JPushInterface.init 恢复，需要调用resumePush恢复。
 
@@ -475,7 +506,7 @@ JPush 服务的连接状态发生变化。（注：不是指 Android 系统的�
 	}
 	
 更多示例代码请参考 Android SDK 压缩包中的 example 工程。
-
+	
 ## 别名与标签 API	
 
 ### 功能说明
@@ -935,16 +966,18 @@ r1.6.0 版本开始。
 请参考文档：[自定义通知栏样式教程](android_senior/#_8)
 
 ### API - 设置默认通知栏样式构建类
-	public static void setDefaultPushNotificationBuilder(BasicPushNotificationBuilder builder)
+	public static void setDefaultPushNotificationBuilder(DefaultPushNotificationBuilder builder)
 
 当用户需要定制默认的通知栏样式时，则可调用此方法。
 
-极光 Push SDK 提供了 2 个用于定制通知栏样式的构建类：
+极光 Push SDK 提供了 3 个用于定制通知栏样式的构建类：
 
 + BasicPushNotificationBuilder
 	+ Basic 用于定制 Android Notification 里的 defaults / flags / icon 等基础样式（行为）
 + CustomPushNotificationBuilder
 	+ 继承 Basic 进一步让开发者定制 Notification Layout
++ MultiActionsNotificationBuilder
+	+ 继承 DefaultPushNotificationBuilder 进一步让开发者定制 Notification Layout
 	
 	
 如果不调用此方法定制，则极光Push SDK 默认的通知栏样式是：Android标准的通知栏提示。
