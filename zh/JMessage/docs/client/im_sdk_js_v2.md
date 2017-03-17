@@ -1,6 +1,5 @@
 <h1>Web SDK 开发指南 V2</h1>
 
-
 ## 概述
 
 极光 IM Web SDK 为 Web 应用提供一个 IM 系统开发框架, 屏蔽掉 IM 系统的复杂的细节, 对外提供较为简洁的 API 接口, 方便第三方应用快速集成 IM 功能。
@@ -67,7 +66,7 @@ var JIM = new JMessage({debug:true});
 
 ## API
 
-API使用Promise风格，所有的API请求都是异步的，并支持以下4种回调处理。
+API使用Promise风格，无特殊说明所有的API请求都是异步的，并支持以下4种回调处理。
 
 - 请求成功回调 onSuccess()
 - 请求失败回调 onFail()
@@ -100,6 +99,11 @@ JIM.sendSingleMsg({
 
 JMessage#init()
 
+**漫游参数**
+
+Since SDK v2.2.0  新增漫游参数，初始化时，可设置是否启用消息记录漫游。
+打开消息漫游之后，用户多个设备之间登陆时，sdk会自动同步当前登陆用户的历史消息。
+
 **请求参数:**
 
 | KEY        | REQUIRE | DESCRIPTION           |
@@ -108,6 +112,7 @@ JMessage#init()
 | random_str | TRUE    | 随机字符串                 |
 | timestamp  | TRUE    | 当初时间戳                 |
 | signature  | TRUE    | 签名                    |
+| flag       | FALSE   | 是否启用消息记录漫游，默认0否，1是    |
 
 **请求示例**
 
@@ -116,12 +121,31 @@ JMessage#init()
                "appkey" : "<appkey>",
            "random_str" : "<random_str>",
             "signature" : "<signature>",
-            "timestamp" : "<timestamp>"
+            "timestamp" : "<timestamp>",
+            "flag" : "0"
         }).onSuccess(function(data) {
-           //do something
+           //data.code 返回码
+           //data.message 描述
           }).onFail(function(data) {
-            // do something
+            // 同上
         });
+```
+
+### 断线监听
+
+JMessage#onDisconnect(fn)
+
+**请求参数:**
+
+| KEY  | REQUIRE | DESCRIPTION |
+| ---- | ------- | ----------- |
+| fn   | TRUE    | 断线处理函数      |
+
+**请求示例**
+
+```
+  JIM.onDisconnect(function(){
+  });
 ```
 
 ### 注册与登录
@@ -146,9 +170,10 @@ JMessage#register()
 			'password' : '<register password>',
 			'is_md5' : '<is_md5>'
         }).onSuccess(function(data) {
-           //do somethins
+            //data.code 返回码
+            //data.message 描述
           }).onFail(function(data) {
-            // do something
+            // 同上
         });
 ```
 
@@ -171,7 +196,10 @@ JIM.login({
     'username' : '<login username>',
     'password' : '<login password>'
 }).onSuccess(function(data) {
-    // do something
+     //data.code 返回码
+     //data.message 描述
+}.onFail(function(data){
+  //同上
 });
 ```
 
@@ -209,9 +237,21 @@ JMessage#getUserInfo()
             'username' : '<search username>',
 			'appkey' : '<search appkey>'
         }).onSuccess(function(data) {
-           //do somethins
+            //data.code 返回码
+            //data.message 描述
+            //data.user_info.username
+            //data.user_info.appkey
+            //data.user_info.nickname
+            //data.user_info.avatar 头像
+            //data.user_info.birthday 生日，默认空
+            //data.user_info.gender 性别 0 - 未知， 1 - 男 ，2 - 女
+            //data.user_info.signature 用户签名
+            //data.user_info.region 用户所属地区
+            //data.user_info.address 用户地址
+            //data.user_info.mtime 用户信息最后修改时间
           }).onFail(function(data) {
-            // do something
+            //data.code 返回码
+            //data.message 描述
         });
 ```
 
@@ -226,7 +266,7 @@ JMessage#updateSelfInfo()
 | nick_name | FALSE   | 昵称            |
 | birthday  | FALSE   | 生日            |
 | signature | FALSE   | 签名            |
-| gender    | FALSE   | 性别，0位置, 1男，2女 |
+| gender    | FALSE   | 性别，0未知, 1男，2女 |
 | region    | FALSE   | 地区            |
 | address   | FALSE   | 地址            |
 
@@ -241,9 +281,10 @@ JMessage#updateSelfInfo()
                 'region' : '<your_address>',
                 'address' : '<your_address>'
                }).onSuccess(function(data) {
-                  // do something
+                   //data.code 返回码
+                   //data.message 描述
                }).onFail(function(data) {
-                  // do something
+                   //同上
                });
 ```
 
@@ -263,9 +304,10 @@ JMessage#updateSelfAvatar()
    JIM.updateSelfAvatar({
                 'avatar' : '<formData with image>'
                }).onSuccess(function(data) {
-                  // do something
+                   //data.code 返回码
+                   //data.message 描述
                }).onFail(function(data) {
-                  // do something
+                   //同上
                });
 ```
 
@@ -289,9 +331,10 @@ JMessage#updateSelfPwd()
                  'new_pwd' : '<newPwd>',
                   'is_md5' : '<idMd5>'
                }).onSuccess(function(data) {
-                  // do something
+                   //data.code 返回码
+                   //data.message 描述
                }).onFail(function(data) {
-                  // do something
+                  //同上
                });
 ```
 
@@ -310,9 +353,15 @@ JMessage#getConversation()
 
 ```
    JIM.getConversation().onSuccess(function(data) {
-                  // do something
+                   //data.code 返回码
+                   //data.message 描述
+                   //data.conversations[] 会话列表，属性如下示例
+                   //data.conversations[0].name  会话名称
+                   //data.conversations[0].type  会话类型(3代表单聊会话类型，4代表群聊会话类型)
+                   //data.conversations[0].key会话对象唯一标识(单聊用户唯一标识，群聊群组gid)
                }).onFail(function(data) {
-                  // do something
+                   //data.code 返回码
+                   //data.message 描述
                });
 ```
 
@@ -338,13 +387,20 @@ JMessage#sendSingleMsg()
 			     'target_nickname' : '<targetNickname>',
                  'content' : '<textContent>',
                  'appkey' : '<targetAppkey>',
-                  'extras' : 'json object'
-               }).onSuccess(function(data , msg) {
-                  // do something
+                 'extras' : 'json object'
+               }).onSuccess(function(data , msg<可选>) {
+                  //data.code 返回码
+                  //data.message 描述
+                  //data.msg_id 发送成功后的消息id
+                  //msg.content 发送成功消息体,见下面消息体详情
                }).onFail(function(data) {
-                  // do something
+                  //data.code 返回码
+                  //data.message 描述
                });
 ```
+**消息体**
+
+[消息体详情](https://docs.jiguang.cn/jmessage/advanced/im_message_protocol/): 
 
 #### 发送单聊图片
 
@@ -369,10 +425,10 @@ JMessage#sendSinglePic()
                  'image' : '<formData with image>',
                  'appkey' : '<targetAppkey>',
                  'extras' : 'json object'
-               }).onSuccess(function(data , msg) {
-                  // do something
+               }).onSuccess(function(data , msg<可选>) {
+                  //同发送单聊文本
                }).onFail(function(data) {
-                  // do something
+                  //同发送单聊文本
                });
 ```
 
@@ -400,9 +456,9 @@ JMessage#sendSingleFile()
                  'appkey' : '<targetAppkey>',
                  'extras' : 'json object'
                }).onSuccess(function(data , msg) {
-                  // do something
+                   //同发送单聊文本
                }).onFail(function(data) {
-                  // do something
+                   //同发送单聊文本
                });
 ```
 
@@ -436,9 +492,9 @@ JMessage#sendSingleLocation()
                  'appkey' : '<targetAppkey>',
                  'extras' : 'json object'
                }).onSuccess(function(data , msg) {
-                  // do something
+                   //同发送单聊文本
                }).onFail(function(data) {
-                  // do something
+                   //同发送单聊文本
                });
 ```
 
@@ -464,9 +520,9 @@ JMessage#sendSingleCustom()
                  'custome' : '<json object>'
                  'appkey' : '<targetAppkey>'
                }).onSuccess(function(data , msg) {
-                  // do something
+                  //同发送单聊文本
                }).onFail(function(data) {
-                  // do something
+                  //同发送单聊文本
                });
 ```
 
@@ -476,12 +532,13 @@ JMessage#sendGroupMsg()
 
 **请求参数：**
 
-| KEY          | REQUIRE | DESCRIPTION |
-| ------------ | ------- | ----------- |
-| target_gid   | TRUE    | 群组id        |
-| target_gname | TRUE    | 群组消息name    |
-| content      | TRUE    | 消息文本        |
-| extras       | FALSE   | 附加字段,字典类型   |
+| KEY          | REQUIRE | DESCRIPTION                              |
+| ------------ | ------- | ---------------------------------------- |
+| target_gid   | TRUE    | 群组id                                     |
+| target_gname | TRUE    | 群组消息name                                 |
+| content      | TRUE    | 消息文本                                     |
+| extras       | FALSE   | 附加字段,字典类型                                |
+| at_list      | FALSE   | @用户列表：[{'username': 'name1', 'appkey': '跨应用必填，默认不填表示本应用'}],@ALL 直接空数组：[] |
 
 **请求示例**
 
@@ -490,11 +547,37 @@ JMessage#sendGroupMsg()
                  'target_gid' : '<targetGid>',
 			     'target_gname' : '<targetGName>',
                  'content' : '<textContent>',
-                 'extras' : '<json object>'
+                 'extras' : '<json object>',
+                 'at_list' : [] //at all
                }).onSuccess(function(data , msg) {
-                  // do something
+                  //同发送单聊文本
                }).onFail(function(data) {
-                  // do something
+                  //同发送单聊文本
+               });
+```
+
+#### 获取资源访问路径
+
+JMessage#getResource ()
+
+**请求参数：**
+
+| KEY      | REQUIRE | DESCRIPTION   |
+| -------- | ------- | ------------- |
+| media_id | TRUE    | media_id 资源id |
+
+**请求示例**
+
+```
+   JIM.getResource({
+                 'media_id ' : '<media_id >',
+               }).onSuccess(function(data , msg) {
+                   //data.code 返回码
+                   //data.message 描述
+                   //data.url 资源临时访问路径
+               }).onFail(function(data) {
+                   //data.code 返回码
+                   //data.message 描述
                });
 ```
 
@@ -520,9 +603,9 @@ JMessage#sendGroupPic()
                  'image' : '<formData with image>',
                  'extras' : 'json object'
                }).onSuccess(function(data , msg) {
-                  // do something
+                   //同发送单聊文本
                }).onFail(function(data) {
-                  // do something
+                  //同发送单聊文本
                });
 ```
 
@@ -548,9 +631,9 @@ JMessage#sendGroupFile()
                  'file' : '<formData with file>',
                  'extras' : 'json object'
                }).onSuccess(function(data , msg) {
-                  // do something
+                   //同发送单聊文本
                }).onFail(function(data) {
-                  // do something
+                   //同发送单聊文本
                });
 ```
 
@@ -582,9 +665,9 @@ JMessage#sendGroupLocation()
                  'label' : '<address label>',
                  'extras' : 'json object'
                }).onSuccess(function(data , msg) {
-                  // do something
+                   //同发送单聊文本
                }).onFail(function(data) {
-                  // do something
+                   //同发送单聊文本
                });
 ```
 
@@ -608,9 +691,9 @@ JMessage#sendGroupMsg()
 			     'target_gname' : '<targetGName>',
 			     'custom' : '<json object>'
                }).onSuccess(function(data , msg) {
-                  // do something
+                   //同发送单聊文本
                }).onFail(function(data) {
-                  // do something
+                   //同发送单聊文本
                });
 ```
 
@@ -631,12 +714,17 @@ JMessage#createGroup()
 
 ```
    JIM.createGroup({
-                  'group_name' : '<groupName>',
+                 'group_name' : '<groupName>',
 			     'group_description' : '<groupDescription>'
                }).onSuccess(function(data) {
-                  // do something
+                  //data.code 返回码
+                  //data.message 描述
+                  //data.gid 群组id
+                  //data.group_name 群名
+                  //data.group_descriptin 群描述
                }).onFail(function(data) {
-                  // do something
+                    //data.code 返回码
+                    //data.message 描述
                });
 ```
 
@@ -656,9 +744,13 @@ JMessage#exitGroup()
    JIM.exitGroup({
                   'gid' : '<exit gid>'
                }).onSuccess(function(data) {
-                  // do something
+                    //data.code 返回码
+                    //data.message 描述
+                    //data.gid 群组id
+                    //data.group_name 群名
                }).onFail(function(data) {
-                  // do something
+                    //data.code 返回码
+                    //data.message 描述
                });
 ```
 
@@ -680,9 +772,10 @@ JMessage#addGroupMembers()
                   'gid' : '<gid>',
           'member_usernames' : [{'username':'name1'},{'username':'name2','appkey':'appkey2'}...]
                }).onSuccess(function(data) {
-                  // do something
+                  //data.code 返回码
+                  //data.message 描述
                }).onFail(function(data) {
-                  // do something
+                  //同上
                });
 ```
 
@@ -704,9 +797,10 @@ JMessage#delGroupMembers()
                   'gid' : '<gid>',
           'member_usernames' : [{'username':'name1'},{'username':'name2','appkey':'appkey2'}...]
                }).onSuccess(function(data) {
-                  // do something
+                  //data.code 返回码
+                  //data.message 描述
                }).onFail(function(data) {
-                  // do something
+                  // 同上
                });
 ```
 
@@ -723,9 +817,18 @@ JMessage#getGroups()
 
 ```
    JIM.getGroups().onSuccess(function(data) {
-                  // do something
+                  //data.code 返回码
+                  //data.message 描述
+                  //data.group_list[] 群组列表，如下示例
+                  //data.group_list[0].gid 群id
+                  //data.group_list[0].name 群名
+                  //data.group_list[0].desc 群描述
+                  //data.group_list[0].appkey 群所属appkey
+                  //data.group_list[0].ctime 群创建时间
+                  //data.group_list[0].mtime 最近一次群信息修改时间
                }).onFail(function(data) {
-                  // do something
+                  //data.code 返回码
+                  //data.message 描述
                });
 ```
 
@@ -745,9 +848,17 @@ JMessage#getGroupInfo()
    JIM.getGroupInfo({
                   'gid' : '<gid>'
                }).onSuccess(function(data) {
-                  // do something
+                  //data.code 返回码
+                  //data.message 描述
+                  //data.group_info.gid 群id
+                  //data.group_info.name 群名
+                  //data.group_info.desc 群描述
+                  //data.group_info.appkey 群所属appkey
+                  //data.group_info.ctime 群创建时间
+                  //data.group_info.mtime 最近一次群信息修改时间
                }).onFail(function(data) {
-                  // do something
+                   //data.code 返回码
+                   //data.message 描述
                });
 ```
 
@@ -771,9 +882,10 @@ JMessage#updateGroupInfo()
                   'group_name' : '<new group name>',
                   'group_description' : '<new group description>' 
                }).onSuccess(function(data) {
-                  // do something
+                   //data.code 返回码
+                   //data.message 描述
                }).onFail(function(data) {
-                  // do something
+                   // 同上
                });
 ```
 
@@ -793,9 +905,14 @@ JMessage#getGroupMembers()
    JIM.getGroupMembers({
                   'gid' : '<gid>'
                }).onSuccess(function(data) {
-                  // do something
+                  //data.code 返回码
+                  //data.message 描述
+                  //data.member_list[] 成员列表，如下示例
+                  //data.member_list[0].username 用户名
+                  //data.member_list[0].appkey 用户所属appkey
                }).onFail(function(data) {
-                  // do something
+                   //data.code 返回码
+                   //data.message 描述
                });
 ```
 
@@ -813,9 +930,21 @@ JMessage#getNoDisturb()
 
 ```
    JIM.getNoDisturb().onSuccess(function(data) {
-                  // do something
+                   //data.code 返回码
+                   //data.message 描述
+                   //data.no_disturb.global 全局免打扰设置：0 关闭 1打开
+                   //data.no_disturb.users[] 免打扰用户列表，比如示例
+                   //data.no_disturb.users[0].username 用户名
+                   //data.no_disturb.users[0].nickname 用户昵称
+                   //data.no_disturb.users[0].appkey 用户所属appkey
+                   //data.no_disturb.groups[] 免打扰群组列表，比如示例
+                   //data.no_disturb.groups[0].gid 群组id
+                   //data.no_disturb.groups[0].name 群名字
+                   //data.no_disturb.groups[0].appkey 群所属appkey
+                   //data.no_disturb.groups[0].desc 群描述
                }).onFail(function(data) {
-                  // do something
+                   //data.code 返回码
+                   //data.message 描述
                });
 ```
 
@@ -837,9 +966,10 @@ JMessage#addSingleNoDisturb()
           'target_name' : '<targetUserName>',
           'appkey' : '<targetAppkey>'
                }).onSuccess(function(data) {
-                  // do something
+                   //data.code 返回码
+                   //data.message 描述
                }).onFail(function(data) {
-                  // do something
+                   // 同上
                });
 ```
 
@@ -861,9 +991,10 @@ JMessage#delSingleNoDisturb()
           'target_name' : '<targetUserName>',
           'appkey' : '<targetAppkey>'
                }).onSuccess(function(data) {
-                  // do something
+                   //data.code 返回码
+                   //data.message 描述
                }).onFail(function(data) {
-                  // do something
+                   // 同上
                });
 ```
 
@@ -883,9 +1014,10 @@ JMessage#addGroupNoDisturb()
    JIM.addGroupNoDisturb({
                      'gid' : '<targetGid>'
                }).onSuccess(function(data) {
-                  // do something
+                   //data.code 返回码
+                   //data.message 描述
                }).onFail(function(data) {
-                  // do something
+                   // 同上
                });
 ```
 
@@ -905,15 +1037,62 @@ JMessage#delGroupNoDisturb()
    JIM.delGroupNoDisturb({
                      'gid' : '<targetGid>'
                }).onSuccess(function(data) {
-                  // do something
+                   //data.code 返回码
+                   //data.message 描述
                }).onFail(function(data) {
-                  // do something
+                   // 同上
+               });
+```
+
+#### 添加群屏蔽
+
+JMessage#addGroupShield()
+
+**请求参数：**
+
+| KEY  | REQUIRE | DESCRIPTION |
+| ---- | ------- | ----------- |
+| gid  | TRUE    | 群组id        |
+
+**请求示例**
+
+```
+   JIM.addGroupShield({
+                     'gid' : '<targetGid>'
+               }).onSuccess(function(data) {
+                   //data.code 返回码
+                   //data.message 描述
+               }).onFail(function(data) {
+                   // 同上
+               });
+```
+
+#### 关闭群屏蔽
+
+JMessage#delGroupShield()
+
+**请求参数：**
+
+| KEY  | REQUIRE | DESCRIPTION |
+| ---- | ------- | ----------- |
+| gid  | TRUE    | 群组id        |
+
+**请求示例**
+
+```
+   JIM.delGroupShield({
+                     'gid' : '<targetGid>'
+               }).onSuccess(function(data) {
+                   //data.code 返回码
+                   //data.message 描述
+               }).onFail(function(data) {
+                   //同上
                });
 ```
 
 #### 添加全局免打扰
 
-JMessage#openGlobalNoDisturb()
+JMessage#addGlobalNoDisturb()
 
 **请求参数：**
 
@@ -922,16 +1101,17 @@ JMessage#openGlobalNoDisturb()
 **请求示例**
 
 ```
-   JIM.openGlobalNoDisturb().onSuccess(function(data) {
-                  // do something
+   JIM.addGlobalNoDisturb().onSuccess(function(data) {
+                   //data.code 返回码
+                   //data.message 描述
                }).onFail(function(data) {
-                  // do something
+                   // 同上
                });
 ```
 
 #### 关闭全局免打扰
 
-JMessage#closeGlobalNoDisturb()
+JMessage#delGlobalNoDisturb()
 
 **请求参数：**
 
@@ -940,10 +1120,11 @@ JMessage#closeGlobalNoDisturb()
 **请求示例**
 
 ```
-   JIM.closeGlobalNoDisturb().onSuccess(function(data) {
-                  // do something
+   JIM.delGlobalNoDisturb().onSuccess(function(data) {
+                   //data.code 返回码
+                   //data.message 描述
                }).onFail(function(data) {
-                  // do something
+                   // 同上
                });
 ```
 
@@ -961,9 +1142,22 @@ JMessage#getBlacks()
 
 ```
    JIM.getBlacks().onSuccess(function(data) {
-                  // do something
+                   //data.code 返回码
+                   //data.message 描述
+                   //data.black_list[] 黑名单列表，比如示例
+                   //data.black_list[0].username
+                   //data.black_list[0].appkey
+                   //data.black_list[0].nickname
+                   //data.black_list[0].avatar 头像
+                   //data.black_list[0].birthday 生日，默认空
+                   //data.black_list[0].gender 性别 0 未知， 1 男 ，2 女
+                   //data.black_list[0].signature 用户签名
+                   //data.black_list[0].region 用户所属地区
+                   //data.black_list[0].address 用户地址
+                   //data.black_list[0].mtime 用户信息最后修改时间
                }).onFail(function(data) {
-                  // do something
+                   //data.code 返回码
+                   //data.message 描述
                });
 ```
 
@@ -983,9 +1177,11 @@ JMessage#addSingleBlacks()
    JIM.addSingleBlacks({
           'member_usernames' : [{'username':'name1'},{'username':'name2','appkey':'appkey2'}...]
                }).onSuccess(function(data) {
-                  // do something
+                   //data.code 返回码
+                   //data.message 描述
                }).onFail(function(data) {
-                  // do something
+                   //data.code 返回码
+                   //data.message 描述
                });
 ```
 
@@ -1005,9 +1201,11 @@ JMessage#delSingleBlacks()
    JIM.delSingleBlacks({
           'member_usernames' : [{'username':'name1'},{'username':'name2','appkey':'appkey2'}...]
                }).onSuccess(function(data) {
-                  // do something
+                   //data.code 返回码
+                   //data.message 描述
                }).onFail(function(data) {
-                  // do something
+                   //data.code 返回码
+                   //data.message 描述
                });
 ```
 
@@ -1025,9 +1223,24 @@ JMessage#getFriendList()
 
 ```
    JIM.getFriendList().onSuccess(function(data) {
-                  // do something
+                   //data.code 返回码
+                   //data.message 描述
+                   //data.friend_list[] 好友列表，示例如下
+                   //data.friend_list[0].username
+                   //data.friend_list[0].appkey
+                   //data.friend_list[0].nickname
+                   //data.friend_list[0].avatar 头像
+                   //data.friend_list[0].memo_nam 好友备注
+                   //data.friend_list[0].memo_others 其他备注
+                   //data.friend_list[0].birthday 生日，默认空
+                   //data.friend_list[0].gender 性别 0 未知， 1 男 ，2 女
+                   //data.friend_list[0].signature 用户签名
+                   //data.friend_list[0].region 用户所属地区
+                   //data.friend_list[0].address 用户地址
+                   //data.friend_list[0].mtime 用户信息最后修改时间
                }).onFail(function(data) {
-                  // do something
+                   //data.code 返回码
+                   //data.message 描述
                });
 ```
 
@@ -1053,9 +1266,10 @@ JMessage#addFriend()
                      'why' : '< why >',
                   'appkey' : '<appkey>'
                }).onSuccess(function(data) {
-                  // do something
+                   //data.code 返回码
+                   //data.message 描述
                }).onFail(function(data) {
-                  // do something
+                   // 同上
                });
 ```
 
@@ -1068,9 +1282,10 @@ JMessage#addFriend()
                      'why' : '< 空表示同意，非空表示拒绝 >',
                   'appkey' : '<appkey>'
                }).onSuccess(function(data) {
-                  // do something
+                   //data.code 返回码
+                   //data.message 描述
                }).onFail(function(data) {
-                  // do something
+                   // 同上
                });
 ```
 
@@ -1092,9 +1307,10 @@ JMessage#delFriend()
               'target_name' : '< username >' ,
               'appkey' : '< appkey >'
                }).onSuccess(function(data) {
-                  // do something
+                   //data.code 返回码
+                   //data.message 描述
                }).onFail(function(data) {
-                  // do something
+                   // 同上
                });
 ```
 
@@ -1120,13 +1336,14 @@ JMessage#updateFriendMemo()
           'memo_others' : '< memo_others >',
                'appkey' : '< appkey >'
                }).onSuccess(function(data) {
-                  // do something
+                   //data.code 返回码
+                   //data.message 描述
                }).onFail(function(data) {
-                  // do something
+                   // 同上
                });
 ```
 
-### 聊天消息监听
+### 聊天消息实时监听
 
 JMessage#onMsgReceive(fn)
 
@@ -1151,6 +1368,32 @@ JMessage#onMsgReceive(fn)
 
 ```
 JIM.onMsgReceive(function(data) {
+    console.log('receive msg: ' + JSON.stringify(data));
+});
+```
+
+### 离线消息同步监听
+
+JMessage#onSyncConversation(fn)
+
+**请求参数:**
+
+| KEY  | REQUIRE | DESCRIPTION |
+| ---- | ------- | ----------- |
+| fn   | TRUE    | 消息接收处理函数    |
+
+**返回参数**
+
+| KEY      | DESCRIPTION                              |
+| -------- | ---------------------------------------- |
+| messages | [{'key':'会话标识','msgs':[{'msg_id':'消息id','content':[消息体](https://docs.jiguang.cn/jmessage/advanced/im_message_protocol/)}]},...] |
+
+
+
+**使用示例**
+
+```
+JIM.onSyncConversation(function(data) {
     console.log('receive msg: ' + JSON.stringify(data));
 });
 ```
