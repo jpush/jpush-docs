@@ -174,12 +174,14 @@
                     <div class="download-icon">
                         <a href="https://sdkfiledl.jiguang.cn/jmessage-api-php-client-1.0.2.zip">下载</a>
                     </div>
+                <div class="hr">
+                <hr />
                 </div>
         </li>
         <li>
             <div class="download-left">
                 <div class="download-image">
-                    <img src="../image/resource_sdk_php.png">
+                    <img src="../image/resource_sdk_csharp.png">
                 </div>
             </div>
             <div class="download-right">
