@@ -1,3 +1,4 @@
+# iOS API
 ##SDK 主要接口说明
 JSHARELaunchConfig类，JSHARE SDK 启动配置模型。
 JSHARESdk类，包含 JSHARE SDK 的所有接口。
