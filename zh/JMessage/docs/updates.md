@@ -1,6 +1,35 @@
 # 最近更新
 
 
+### Android SDK v2.1.1
+
+#### 更新时间
+
++ 2017-03-22
+
+#### Change Log
+##### BugFix:
++ 修复某些情况下，获取不到用户头像的问题
++ 修复其他一些用户反馈的bug
+
+#### 升级提示
+
++ 建议升级！
+
+#### 升级指南
+
++ 首先解压您获取到的 zip 压缩包
+
++ 更新库文件
+	+ 打开libs文件夹。添加jcore-android_v1.1.0.jar。用 jmessage-android_v2.1.1.jar 替换项目中原有的极光jar文件，并删除原有极光jar文件。用对应CPU文件夹下的 libjcore110.so 文件，替换项目中原有的libjpushXXX.so文件，并删除原有的极光so文件，每种型号的so文件都可以在SDK下载包中找到。
+
++ 更新AndroidManifest.xml
+	+ 请参考 SDK下载包最新版本的 demo 来更新AndroidManifest.xml 文件配置。
+
++ 详细集成说明请参考官方[集成指南](https://docs.jiguang.cn/jmessage/client/jmessage_android_guide/)
+
+
+
 ### Web SDK v2.2.0
 
 #### 更新时间
