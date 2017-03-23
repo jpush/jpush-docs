@@ -594,7 +594,7 @@ POST /v1/messages
 		</tr>
 		<tr >
 			<td>version</td>
-			<td>版本号</td>
+			<td>版本号 目前是1</td>
 		</tr>
 		<tr >
 			<td>target_type</td>
