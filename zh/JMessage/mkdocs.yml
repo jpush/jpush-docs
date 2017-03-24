@@ -29,6 +29,7 @@ pages:
 - Web:
   - 'Web SDK 开发指南 V2': 'client/im_sdk_js_v2.md'
   - 'Web SDK 开发指南': 'client/im_sdk_js.md'
+  - '微信小程序 SDK': 'client/im_sdk_wxapplet.md'
   - 'SDK ErrorCode 定义': 'client/im_errorcode_js.md'
 
 - REST API:
