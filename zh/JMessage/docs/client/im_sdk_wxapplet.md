@@ -1,4 +1,4 @@
-# jmessage-wxapplet-sdk 集成指南
+# JMessage-wxapplet-sdk 集成指南
 
 本文说明如何在小程序中集成 JMessage。jmessage-wxapplet-sdk 是 JMessage 专门为适配小程序应用而开发的，其功能基本涵盖所有[ WEB SDK ](https://docs.jiguang.cn/jmessage/client/im_sdk_js_v2/)所提供的功能
 
