@@ -11,7 +11,7 @@ pages:
 - 入门指南:
   - 'JShare产品简介': 'guideline/intro.md'
   - '常见问题': 'guideline/faq.md'
-  - ‘ErrorCode 定义’: 'guideline/jshare_errorcode.md'
+  - 'ErrorCode 定义': 'guideline/jshare_errorcode.md'
 
 
 - Android:
