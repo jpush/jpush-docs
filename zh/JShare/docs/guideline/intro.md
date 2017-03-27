@@ -5,11 +5,11 @@
 ##JShare技术原理
 目前市面上的依赖平台原生sdk的分享sdk皆为这种形式
 <div>
-<img src="./image/yilaiban.png">
+<img src="../image/yilaiban.png">
 </div>
 但是，极光Share技术上不依赖原生SDK的方式，分享的原理实际上就是两个app之间的相互跳转及通信，使用极光Share代替平台SDK实现分享，其原理如下图：
 <div>
-<img src="./image/feiyilaiban.png">
+<img src="../image/feiyilaiban.png">
 </div>
 个别平台比如新浪微博在不存在目标app的情况下则会进入网页分享。JShare的三个平台原生sdk分享都遵循以下步骤
 
