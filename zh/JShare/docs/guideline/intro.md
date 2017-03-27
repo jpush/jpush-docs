@@ -13,10 +13,10 @@
 </div>
 个别平台比如新浪微博在不存在目标app的情况下则会进入网页分享。JShare的三个平台原生sdk分享都遵循以下步骤
 
-1. 注册AppKey<br>
-2. 配置分享参数<br>
-3. 发起分享<br>
-4. 等待回调<br>
+<li>1. 注册AppKey</li>
+<li>2. 配置分享参数</li>
+<li>3. 发起分享</li>
+<li>4. 等待回调</li>
 
 ##功能与特性
 1. 集成简单<br>
@@ -36,7 +36,7 @@
 Android 开发者请参考文档：<a href="../client/android_sdk.md">JShare Android SDK 集成指南</a><br>
 iOS 开发者请参考文档：<a href="../client/ios_sdk.md">JShare iOS SDK 集成指南</a><br>
 
-##相关文档
+###相关文档
 <a href="../client/android_api.md">JShare Android SDK 接口文档</a><br>
 <a href="../client/ios_api.md">JShare iOS SDK 接口文档</a>
 
