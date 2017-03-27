@@ -117,7 +117,7 @@ JPush SDK 为了尽可能提高开发者在各类 rom 上的推送送达率，�
 ```
 
 
-#### <h3 id="4.4">4.4. 将APP_KEY与APP_ID替换为在小米后台注册对应该应用的AppKey/AppID</h3>
+#### <h3 id="4.4">4.4. 将小米应用的 appkey 和 appid 加上前缀“MI-”，填入meta-data 标签中</h3>
 
 
 ```
