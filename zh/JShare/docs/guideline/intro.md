@@ -36,7 +36,7 @@
 Android 开发者请参考文档：<a href="../client/android_sdk.md">JShare Android SDK 集成指南</a><br>
 iOS 开发者请参考文档：<a href="../client/ios_sdk.md">JShare iOS SDK 集成指南</a><br>
 
-##<font color=blue >相关文档</font>
+##相关文档
 <a href="../client/android_api.md">JShare Android SDK 接口文档</a><br>
 <a href="../client/ios_api.md">JShare iOS SDK 接口文档</a>
 
