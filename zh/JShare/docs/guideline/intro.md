@@ -4,10 +4,14 @@
 
 ##JShare技术原理
 目前市面上的依赖平台原生sdk的分享sdk皆为这种形式
-
-![Mou icon](http://wiki.jpushoa.com/download/attachments/12689800/QQ图片20170313111307.png?version=1&modificationDate=1489374815000&api=v2)
-
-但是，极光Share技术上不依赖原生SDK的方式，分享的原理实际上就是两个app之间的相互跳转及通信，使用极光Share代替平台SDK实现分享，个别平台比如新浪微博在不存在目标app的情况下则会进入网页分享。JShare的三个平台原生sdk分享都遵循以下步骤
+<div>
+<img src="../image/yilaiban.png">
+</div>
+但是，极光Share技术上不依赖原生SDK的方式，分享的原理实际上就是两个app之间的相互跳转及通信，使用极光Share代替平台SDK实现分享，其原理如下图：
+<div>
+<img src="../image/feiyilaiban.png">
+</div>
+个别平台比如新浪微博在不存在目标app的情况下则会进入网页分享。JShare的三个平台原生sdk分享都遵循以下步骤
 
 1. 注册AppKey
 2. 配置分享参数
@@ -15,6 +19,7 @@
 4. 等待回调
 
 ##功能与特性
+***
 1. 集成简单<br>
 	只需几分钟即可集成JShare组件，让您的应用轻松拥有强大的社会化功能
 2. 稳定，安装包小<br>
@@ -25,16 +30,17 @@
 	通过组件对新浪微博、QQ、微信等社会化平台一键分享；分享内容包括文字、图片、链接、音视频、文件表情等。
 	
 ##集成流程
+***	
 在 Web 控制台上创建应用，得到 AppKey。如果之前已经使用了 JPush，可以直接延用老的 AppKey。
 
 集成客户端 SDK。<br>
 集成 JShare SDK 到 App 里.<br>
-Android 开发者请参考文档：[JShare Android SDK 集成指南](/zh/JShare/docs/client/android_sdk.md) <br>
-iOS 开发者请参考文档：[JShare iOS SDK 集成指南](/zh/JShare/docs/client/android_sdk.md)<br>
+Android 开发者请参考文档：<a href="../client/android_sdk.md">JShare Android SDK 集成指南</a><br>
+iOS 开发者请参考文档：<a href="../client/ios_sdk.md">JShare iOS SDK 集成指南</a><br>
 
 ##<font color=blue >相关文档</font>
-[JShare Android SDK 接口文档](http://baidu.com)  <br>
-[JShare iOS SDK 接口文档](http://baidu.com)
+<a href="../client/android_api.md">JShare Android SDK 接口文档</a><br>
+<a href="../client/ios_api.md">JShare iOS SDK 接口文档</a>
 
 
 
