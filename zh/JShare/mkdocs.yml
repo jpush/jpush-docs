@@ -9,7 +9,7 @@ theme_dir: '../themes/readthedocs'
 pages:
 
 - 入门指南:
-  - 'JAnalytics产品简介': 'guideline/intro.md'
+  - 'JShare产品简介': 'guideline/intro.md'
   - '常见问题': 'guideline/faq.md'
   - ‘ErrorCode 定义’: 'guideline/jshare_errorcode.md'
 
