@@ -4,7 +4,7 @@
 
 ## SDK下载
 
-GitHub 地址：https://github.com/jpush/jmessage-wxapplet-sdk
+点击下载：[ jmessage-wxapplet-sdk ](https://sdkfiledl.jiguang.cn/jmessage-wxapplet-sdk-1.0.0.min.zip)
 
 
 ## 项目配置
