@@ -193,10 +193,16 @@ JSHAREMessage *message = [JSHAREMessage message];
 
 ###添加 URL Types
 参考 JSHARE 的对外 demo 工程设置：
-![Screen Shot 2017-01-18 at 5.35.45 P](media/14847103344822/Screen%20Shot%202017-01-18%20at%205.35.45%20PM.png)
+<img src="../image/url_types.jpeg">
 
 下图是各个平台的URL Schemes 格式：
-![Screen Shot 2017-01-18 at 5.37.00 P](media/14847103344822/Screen%20Shot%202017-01-18%20at%205.37.00%20PM.png)
+
+| 平台 | 格式 | 举例 |
+| ------| ------ | ------ |
+| QQ | "tencent"+appID | tencent1105864531 |
+| 微信 | 微信的AppID | wx8c923fa84d6a555d |
+| 新浪 | "wb"+sina的appkey | wb568898243 |
+
 
 ##各个平台的分享规则
 ###新浪微博分享规则
