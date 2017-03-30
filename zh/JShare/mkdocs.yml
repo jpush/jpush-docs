@@ -15,13 +15,13 @@ pages:
   - 'ErrorCode 定义': 'guideline/jshare_errorcode.md'
 
 - Android:
-  - 'Android SDK 集成指南': 'client/android_sdk.md'
-  - 'Android SDK API': 'client/android_api.md'
+  - 'Android SDK 集成指南': 'client/Android/android_sdk.md'
+  - 'Android SDK API': 'client/Android/android_api.md'
 
 
 - iOS:
-  - 'iOS SDK 集成指南': 'client/ios_sdk.md'
-  - 'iOS SDK API': 'client/ios_api.md'
+  - 'iOS SDK 集成指南': 'client/iOS/ios_sdk.md'
+  - 'iOS SDK API': 'client/iOS/ios_api.md'
 
 
 - 最近更新: 'updates.md'
