@@ -69,7 +69,7 @@ h1,h2,h3, h4, h5, h6 {
 }
 
 .nav-tabs li {
-  min-width: 25%;
+  min-width: 20%;
   text-align: left;
   margin:0px;
 }
