@@ -235,7 +235,7 @@ JSHAREMessage *message = [JSHAREMessage message];
 
 ###添加 URL Types
 参考 JSHARE 的对外 demo 工程设置：
-<img src="../image/url_types.jpeg">
+![](../image/url_types.jpeg)
 
 下图是各个平台的URL Schemes 格式：
 

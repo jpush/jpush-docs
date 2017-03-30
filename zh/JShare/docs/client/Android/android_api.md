@@ -1,254 +1,306 @@
-# Android SDK API
+# Android JShare API
+### API - init
+初始化接口，建议在项目的Appliction的OnCreate中使用。  
+#### 接口定义
+```
+public static void init(Context context)
+```
+#### 参数说明
+* context 应用的 ApplicationContext
 
-##SDK 初始化 API
+### API - setDebugModel
+设置是否开启debug模式。true则会打印更多的日志信息。  
+#### 接口定义
+```
+public static void setDebugModel(boolean enable)
+```
+#### 参数说明
+* enable debug开关
 
-+ ***JAnalyticsInterface.init(Context context)***
-	+ 接口说明：
-		+ 初始化接口。建议在Application的onCreate中调用
-	+ 参数说明：
-		+ context：android的上下文
-	+ 调用示例：
-	
-~~~			
-	JAnalyticsInterface.init(this);
-~~~
+### API - getPlatformList
+获取SDK所有能用的平台名称，如要使用某个平台，必须在JGShareSDK.xml中配置。  
+#### 接口定义
+```
+public static List<String> getPlatformList()
+```
 
-+ ***JAnalyticsInterface.setDebugModel(boolean enable)***
-	+ 接口说明：
-		+ 设置是否开启debug模式。true则会打印更多的日志信息
-	+ 参数说明：
-		+ enable：debug开关 
-	+ 调用示例：
+### API - isClientValid
+判断该平台的分享是否有效。
+#### 接口定义
+```
+public static boolean isClientValid(String name)
+```
+#### 参数说明
+* name 平台名称，值可选Wechat.Name、WechatMoments.Name、WechatFavorite.Name、SinaWeibo.Name、QQ.Name、QZone.Name。  
 
-~~~
-	JAnalyticsInterface.setDebugModel(true);
-~~~
-<a name="pageflow"></a>
-##页面流统计 API
+### API - share
+分享接口
+#### 接口定义
+```
+public static void share(String name, ShareParams shareParams, PlatActionListener shareActionListener))
+```
+#### 参数说明
+* name 平台名称，值可选Wechat.Name、WechatMoments.Name、WechatFavorite.Name、SinaWeibo.Name、QQ.Name、QZone.Name。  
+* shareParams 分享的配置参数，具体设置请参考各个平台的分享参数说明。
+* shareActionListener 回调接口，可为null，为null时则没有回调
 
-+ ***JAnalyticsInterface.onPageStart(Context context,String pageName)***
-	+ 接口说明：
-		+ 页面启动接口。在页面(activity和fragment)的相关生命周期内调用，和onPageEnd需要成对调用，关于activity和fragment的不同情况下会对生命周期造成影响，详细请见说明
-	+ 参数说明：
-		+ context：activity的上下文
-		+ pageName：页面名称 
-	+ 调用示例：
-	
-~~~
-	JAnalyticsInterface.onPageStart(this,this.getClass().getCanonicalName());
-~~~
+# 各个平台的分享参数说明
+## 微信(包括微信朋友圈、微信收藏)
+### 1）分享文本
 
-+ ***JAnalyticsInterface.onPageEnd(Context context,String pageName)***
-	+ 接口说明：
-		+ 页面结束接口。在页面(activity和fragment)的相关生命周期内调用，和onPageStart需要成对调用，关于activity和fragment的不同情况下会对生命周期造成影响，详细请见说明
-	+ 参数说明：
-		+ context：activity的上下文
-		+ pageName：页面名称 
-	+ 调用示例：
-	
-~~~	
-	JAnalyticsInterface.onPageEnd(this,this.getClass().getCanonicalName());
-~~~
- 
-**关于页面流做如下说明：**
+参数 |是否必须|参数类型|参数说明|备注
+---- |-----|----|----|----
+ShareType | 是| int| 分享类型| Platform.SHARE_TEXT
+Text | 是 | String|分享标题|不超过10KB
 
-1. 开发者自己决定activity和fragment是否是一个页面。在相应的方法调用onPageStart和onPageEnd方法，并且需要是成对调用
-	
-2. 当activity中包含多个fragment，每个fragment都需当做页面统计时，基于fragment的切换模式，提供以下建议
-	+ replace模式:这种模式切换fragment，则是正常进行onResume和onPause的生命周期。
-	+ viewpage中包号多个fragment进行切换：这种模式切换需在fragment中监听 setUserVisibleHint接口，通过其返回的参数进行onPageStart和onPageEnd的调用
-	+ show/hide模式:这种模式下切换fragment需要监听onHiddenChanged接口来确认fragment是否显示。并需要在onResume中也需要调用onPageStart(onPause不需要调用onPageEnd)
-
-##自定义事件统计 API
-
-+ ***JAnalyticsInterface.onEvent(Context context,Event event)***
-	+ 接口说明：
-		+ 自定义事件。通过传入不同的事件模型来进行各种事件的统计，具体的事件模型请查看事件模型介绍
-	+ 参数说明：
-		+ context：上下文
-		+ event:事件模型，支持CountEvent(计数事件)、CalculateEvent(计算事件)、RegisterEvent(注册事件)、LoginEvent(登录事件)、BrowseEvent(浏览事件)、PurchaseEvent(购买事件)
-
-**关于自定义事件做如下说明：**
-
-1. 字符串字段（key与 value）限制大小不超过256字节，超过限制的key或value该事件将会被丢弃.
-2. 自定义键值对数目不能超过10个，超过10个限制该事件将会被丢弃.
-
-调用示例：
-
-~~~
-	CountEvent cEvent = new CountEvent("eventId","eventName");
-	JAnalyticsInterface.onEvent(context, cEvent);
-~~~
-<a name="times"></a>
-##计数事件模型
-+ ***CountEvent***
-
-该模型是自定义计数事件模型，可以设置参数进行数据上报。
-
-参数说明：
-
-| 参数名称 | 参数类型 | 参数说明 |
-|:-------:|:------:|:-------:|
-| eventId | String |事件Id(非空)|
-| extMap | Map | 扩展参数 |
- 
-调用示例:
-
-~~~
-	CountEvent cEvent = new Event("test1_event_id");
-	cEvent.addKeyValue("key1","value1").addKeyVaule("key2","value2");
-~~~
-
-**注意：**
-
-		自定义计数事件模型中扩展参数中不能使用以下 key 值：
-		event_id
-		此类 key 已被模型使用，如果使用则会导致统计到的数据不准确.
-<a name="count"></a>
-##计算事件模型
-+ ***CalculateEvent***
-
-该模型是自定义计算事件模型，计算事件会通过相同的事件不同的值进行累加，可以设置参数进行数据上报。
-
-参数说明：
-
-|参数名称|参数类型|参数说明|
-|:------:|:----:|:-----:|
-|eventId|String|事件Id(非空)|
-|eventValue| double |事件的值(非空)|
-|extMap|Map|扩展参数|
-
-调用示例:
-
-~~~
-	CalculateEvent cEvent = new CalculateEvent("test2_event_id","test2_event_value");
-	cEvent.setEventValue(1.1).addKeyValue("key1","value1").addKeyVaule("key2","value2");
-~~~
-
-**注意：**
-     
-     自定义计算事件模型中扩展参数中不能使用以下 key 值：
-     event_id
-     event_value
-     此类 key 已被模型使用，如果使用则会导致统计到的数据不准确.
-<a name="login"></a>
-##登陆事件模型
-+ ***LoginEvent***
-
-该模型是登录事件模型，可以设置参数进行数据上报。
-
-参数说明：
-
-|参数名称|参数类型|参数说明|
-|:-----:|:-----:|:----:|
-|loginMethod|	String|登录方式(非空)|
-|loginSuccess|boolean|登录是否成功(非空)|
-|extMap|Map|扩展参数|
- 
-调用示例:
-
-~~~
-	LoginEvent lEvent = new LoginEvent("qq",true);
-	lEvent.addKeyValue("key1","value1").addKeyVaule("key2","value2");
-~~~
-
-**注意：**
-
-     登录事件模型中扩展参数中不能使用以下 key 值：
-     login_method
-     login_success
-     此类 key 已被模型使用，如果使用则会导致统计到的数据不准确.
-<a name="register"></a>
-##注册事件模型
-+ ***RegisterEvent***
-
-该模型是注册事件模型，可以设置参数进行数据上报。
-
-参数说明：
-
-|参数名称|参数类型|参数说明|
-|:-----:|:----:|:-----:|
-|registerMethod|	String	|注册方式(非空)|
-|registerSuccess|boolean|注册是否成功(非空)|
-|extMap|Map|扩展参数|
- 
-调用示例:
-
-~~~
-	RegisterEvent rEvent = new RegisterEvent("sina",true);
-	rEvent.addKeyValue("key1","value1").addKeyVaule("key2","value2");
-~~~
-
-**注意：**
-
-	注册事件模型中扩展参数中不能使用以下 key 值:
-	register_method
-	register_success
-	此类 key 已被模型使用，如果使用则会导致统计到的数据不准确.
-<a name="content"></a>
-##浏览事件模型
-+ ***BrowseEvent***
- 
-该模型是浏览事件模型，可以设置参数进行数据上报。
-
-参数说明：
-
-|参数名称|参数类型|参数说明|
-|:-----:|:----:|:-----:|
-|browseId|String	|浏览内容id|
-|browseName|String|内容名称(非空)|
-|browseType|String|内容类型|
-|browseDuration|long|浏览时长，单位秒|
-|extMap|Map|扩展参数|
- 
-调用示例:
-
-~~~
-	BrowseEvent bEvent = new BrowseEvent("browse_id","深圳热点新闻","news",30);
-	bEvent.addKeyValue("key1","value1").addKeyVaule("key2","value2");
-~~~
-
-**注意：**
-
-    浏览事件模型中扩展参数中不能使用以下 key 值：
-    browse_content_id
-    browse_name
-    browse_type
-    browse_duration
-    此类 key 已被模型使用，如果使用则会导致统计到的数据不准确.
-<a name="purchase"></a>
-##购买事件模型
-+ ***PurchaseEvent***
-
-该模型是购买事件模型，可以设置参数进行数据上报。
-
-参数说明：
-
-|参数名称|参数类型|参数说明|
-|:-----:|:----:|:-----:|
-|purchaseGoodsid|String	|商品id|
-|purchaseGoodsName|String|	商品名称|
-|purchasePrice|double|购买价格(非空)|
-|purchaseSuccess|boolean|购买是否成功(非空)|
-|purchaseCurrency|Currency|货币类型，一个枚举类|
-|purchaseGoodsType|String|商品类型|
-|purchaseGoodsCount|int	|商品数量|
-|extMap|Map|扩展参数|
- 
-调用示例:
-
-~~~
-	PurchaseEvent pEvent = new PurchaseEvent("goodsId","篮球",300,true,Currency.CNY,"sport",1);
-	pEvent.addKeyValue("key1","value1").addKeyVaule("key2","value2");
-~~~
-
-**注意：**
-
-    购买事件模型中扩展参数中不能使用以下 key 值：
-    purchase_goods_id
-    purchase_goods_name
-    purchase_price
-    purchase_currency
-    purchase_goods_type
-    purchase_quantity
-    此类 key 已被模型使用，如果使用则会导致统计到的数据不准确.
+```
+ShareParams shareParams = new ShareParams();
+shareParams.setShareType(Platform.SHARE_TEXT);
+shareParams.setText("Text");//必须
+```
+### 2）分享图片
+参数 |是否必须|参数类型|参数说明|备注
+---- |-----|----|----|----
+ShareType | 是| int| 分享类型| Platform.SHARE_IMAGE
+ImagePath| 否 | String|本地图片路径|长度不能超过10KB,大小不能超过10M，ImagePath与ImageData必须二选一
+ImageData| 否 | Bitmap|图片Bitmap|大小不能超过10M，ImagePath与ImageData必须二选一
+```
+ShareParams shareParams = new ShareParams();
+shareParams.setShareType(Platform.SHARE_IMAGE);
+shareParams.setImagePath(file.getAbsolutePath());
+//shareParams.setImageData(bitmap);
+```
+### 3）分享音乐
+参数 |是否必须|参数类型|参数说明|备注
+---- |-----|----|----|----
+ShareType | 是| int| 分享类型| Platform.SHARE_MUSIC
+Title| 否 | String|音乐标题|长度不能超过512
+Text| 否 | String|音乐描述|长度不能超过1K
+MusicUrl| 是 | String|音乐资源Url|点击播放按钮可直接播放url,长度不能超过10K
+Url| 否 | String|跳转Url|点击跳转页面url,长度不能超过10K
+ImagePath| 否 | String|缩略图，本地图片路径|长度不能超过10KB,大小不能超过32K,与ImageData二选一
+ImageData| 否 | Bitmap|缩略图，图片Bitmap|大小不能超过32K,与ImagePath二选一
+```
+ShareParams shareParams = new ShareParams();
+shareParams.setTitle(share_title);
+shareParams.setText(share_text);
+shareParams.setShareType(Platform.SHARE_MUSIC);
+shareParams.setUrl(url);
+shareParams.setMusicUrl(music_url);
+shareParams.setImagePath(file.getAbsolutePath());
+```
+### 4）分享视频
+参数 |是否必须|参数类型|参数说明|备注
+---- |-----|----|----|----
+ShareType | 是| int| 分享类型| Platform.SHARE_VIDEO
+Title| 否 | String|视频标题|长度不能超过512
+Text| 否 | String|视频描述|长度不能超过1K，朋友圈不显示该字段内容
+Url| 是 | String|视频Url|长度不能超过10K
+ImagePath| 否 | String|缩略图，本地图片路径|长度不能超过10KB,大小不能超过32K,与ImageData二选一
+ImageData| 否 | Bitmap|缩略图，图片Bitmap|大小不能超过32K,与ImagePath二选一
+```
+ShareParams shareParams = new ShareParams();
+shareParams.setTitle(share_title);
+shareParams.setText(share_text);
+shareParams.setShareType(Platform.SHARE_VIDEO);
+shareParams.setUrl(share_videourl);
+shareParams.setImagePath(file.getAbsolutePath());
+```
+### 5）分享网页
+参数 |是否必须|参数类型|参数说明|备注
+---- |-----|----|----|----
+ShareType | 是| int| 分享类型| Platform.SHARE_WEBPAGE
+Title| 否 | String|网页标题|长度不能超过512
+Text| 否 | String|网页描述|长度不能超过1K，朋友圈不显示该字段内容
+Url| 是 | String|网页Url|长度不能超过10K
+ImagePath| 否 | String|缩略图，本地图片路径|长度不能超过10KB,大小不能超过32K,与ImageData二选一
+ImageData| 否 | Bitmap|缩略图，图片Bitmap|大小不能超过32K,与ImagePath二选一
+```
+ShareParams shareParams = new ShareParams();
+shareParams.setTitle(share_title);
+shareParams.setText(share_text);
+shareParams.setShareType(Platform.SHARE_WEBPAGE);
+shareParams.setUrl(share_url);//必须
+shareParams.setImagePath(file.getAbsolutePath());
+```
+### 6）分享Emoji表情（朋友圈、微信收藏不支持）
+参数 |是否必须|参数类型|参数说明|备注
+---- |-----|----|----|----
+ShareType | 是| int| 分享类型| Platform.SHARE_EMOJI
+ImagePath| 否 | String|本地图片路径|长度不能超过10KB,大小不能超过10M，ImagePath与ImageData必须二选一
+ImageData| 否 | Bitmap|图片Bitmap|大小不能超过10M，ImagePath与ImageData必须二选一
+```
+ShareParams shareParams = new ShareParams();
+shareParams.setShareType(Platform.SHARE_EMOJI);
+shareParams.setImagePath(file.getAbsolutePath());
+```
+### 7）分享文件（朋友圈、微信收藏不支持）
+参数 |是否必须|参数类型|参数说明|备注
+---- |-----|----|----|----
+ShareType | 是| int| 分享类型| Platform.SHARE_FILE
+FilePath| 是 | String|本地文件路径|长度不能超过10KB,大小不能超过10M
+```
+ShareParams shareParams = new ShareParams();
+shareParams.setShareType(Platform.SHARE_FILE);
+shareParams.setFilePath(file.getAbsolutePath());
+```
+## QQ
+### 1）分享图片
+参数 |是否必须|参数类型|参数说明|备注
+---- |-----|----|----|----
+ShareType | 是| int| 分享类型| Platform.SHARE_IMAGE
+ImagePath| 否 | String|本地图片路径|ImagePath与ImageUrl必须二选一
+ImageUrl| 否 | String|网络图片地址|必须以http或https开头,ImagePath与ImageUrl必须二选一
+```
+ShareParams shareParams = new ShareParams();
+shareParams.setShareType(Platform.SHARE_IMAGE);
+shareParams.setImagePath(file.getAbsolutePath());
+```
+### 2）分享链接
+参数 |是否必须|参数类型|参数说明|备注
+---- |-----|----|----|----
+ShareType | 是| int| 分享类型| Platform.SHARE_WEBPAGE
+Title| 否 | String|标题|不超过30字符
+Text| 否 | String|描述|不超过40字符
+ImagePath| 否 | String|缩略图，本地图片路径|与ImageUrl二选一
+ImageUrl| 否 | String|缩略图，网络图片地址|必须以http或https开头,与ImagePath二选一
+Url| 是 | String|跳转链接|必须以http或https开头
+```
+ShareParams shareParams = new ShareParams();
+shareParams.setShareType(Platform.SHARE_WEBPAGE);
+shareParams.setTitle(share_title);
+shareParams.setText(share_text);
+shareParams.setUrl(share_url);
+shareParams.setImagePath(file.getAbsolutePath());
+```
+### 3）分享音乐
+参数 |是否必须|参数类型|参数说明|备注
+---- |-----|----|----|----
+ShareType | 是| int| 分享类型| Platform.SHARE_MUSIC
+Title| 否 | String|标题|不超过30字符
+Text| 否 | String|描述|不超过40字符
+MusicUrl| 是 | String|音乐链接|音乐文件的远程链接 ,点击播放按钮可直接播放， 以 URL 的形式传入 , 不支持本地音乐，必须以http或https开头
+Url| 是 | String|跳转链接|跳转页面url,必须以http或https开头
+ImagePath| 否 | String|缩略图，本地图片路径|与ImageUrl二选一
+ImageUrl| 否 | String|缩略图，网络图片地址|必须以http或https开头,与ImagePath二选一
+```
+ShareParams shareParams = new ShareParams();
+shareParams.setShareType(Platform.SHARE_MUSIC);
+shareParams.setTitle(share_title);
+shareParams.setText(share_text);
+shareParams.setUrl(share_url);
+shareParams.setMusicUrl(music_url);
+shareParams.setImagePath(file.getAbsolutePath());
+//shareParams.setImageUrl("http://inews.gtimg.com/newsapp_bt/0/876781763/1000");
+```
+## QQ空间
+### 1)分享文本
+参数 |是否必须|参数类型|参数说明|备注
+---- |-----|----|----|----
+ShareType | 是| int| 分享类型| Platform.SHARE_TEXT
+Text| 否 | String|描述|不超过10000字符
+```
+ShareParams shareParams = new ShareParams();
+shareParams.setShareType(Platform.SHARE_TEXT);
+shareParams.setText(share_text);
+```
+### 2)分享图片
+参数 |是否必须|参数类型|参数说明|备注
+---- |-----|----|----|----
+ShareType | 是| int| 分享类型| Platform.SHARE_IMAGE
+ImagePath| 否 | String|本地图片路径|ImagePath与ImageUrl、ImageArray必须三选一
+ImageUrl| 否 | String|网络图片地址|必须以http或https开头,ImagePath与ImageUrl、ImageArray必须三选一
+ImageArray| 否 | Array|图片地址数组|支持多个图片，最多9张,ImagePath与ImageUrl、ImageArray必须三选一
+```
+ShareParams shareParams = new ShareParams();
+shareParams.setShareType(Platform.SHARE_IMAGE);
+shareParams.setImagePath(MyApplication.ImagePath);
+//shareParams.setImageUrl(share_imageurl);
+//String[] array = new String[]{ share_imageurl, share_imageurl_1};
+//shareParams.setImageArray(array);
+```
+### 3)分享链接
+参数 |是否必须|参数类型|参数说明|备注
+---- |-----|----|----|----
+ShareType | 是| int| 分享类型| Platform.SHARE_WEBPAGE
+Title| 是 | String|标题|最长 200 个字符
+Text| 否 | String|描述|最长 600 个字符
+Url| 是 | String|跳转链接|必须以http或https开头
+ImagePath| 否 | String|缩略图，本地图片路径|与ImageUrl二选一
+ImageUrl| 否 | String|缩略图，网络图片地址|必须以http或https开头,与ImagePath二选一
+```
+ShareParams shareParams = new ShareParams();
+shareParams.setShareType(Platform.SHARE_WEBPAGE);
+shareParams.setTitle(share_title);
+shareParams.setUrl(share_url);
+shareParams.setImagePath(file.getAbsolutePath());
+//shareParams.setImageUrl("http://inews.gtimg.com/newsapp_bt/0/876781763/1000");
+```
+### 4)分享音乐
+参数 |是否必须|参数类型|参数说明|备注
+---- |-----|----|----|----
+ShareType | 是| int| 分享类型| Platform.SHARE_MUSIC
+Title| 是 | String|标题|最长 200 个字符
+Text| 否 | String|描述|最长 600 个字符
+MusicUrl| 否 | String|音乐链接|音乐文件的远程链接 ,点击播放按钮可直接播放， 以 URL 的形式传入 , 不支持本地音乐,必须以http或https开头
+Url| 是 | String|跳转链接|跳转页面url,必须以http或https开头
+ImagePath| 否 | String|缩略图，本地图片路径|与ImageUrl二选一
+ImageUrl| 否 | String|缩略图，网络图片地址|必须以http或https开头,与ImagePath二选一
+```
+ShareParams shareParams = new ShareParams();
+shareParams.setShareType(Platform.SHARE_MUSIC);
+shareParams.setTitle(share_title);
+shareParams.setMusicUrl(share_musicurl);
+shareParams.setUrl(music_shareUrl);
+shareParams.setImagePath(file.getAbsolutePath());
+//shareParams.setImageUrl("http://inews.gtimg.com/newsapp_bt/0/876781763/1000");
+```
+### 5)分享本地视频
+参数 |是否必须|参数类型|参数说明|备注
+---- |-----|----|----|----
+ShareType | 是| int| 分享类型| Platform.SHARE_VIDEO
+VideoPath| 是 | String|本地视频地址|不支持网络视频
+```
+ShareParams shareParams = new ShareParams();
+shareParams.setShareType(Platform.SHARE_VIDEO);
+shareParams.setVideoPath(MyApplication.VideoPath);
+```
+## 新浪微博
+### 1)分享文本
+参数 |是否必须|参数类型|参数说明|备注
+---- |-----|----|----|----
+ShareType | 是| int| 分享类型| Platform.SHARE_TEXT
+Text| 是 | String|文本|不超过1999
+ImagePath| 否 | String|本地图片地址|不支持网络图片
+```
+ShareParams shareParams = new ShareParams();
+shareParams.setShareType(Platform.SHARE_IMAGE);
+shareParams.setText(share_text);
+shareParams.setImagePath(file.getAbsolutePath());
+```
+### 2)分享图片
+参数 |是否必须|参数类型|参数说明|备注
+---- |-----|----|----|----
+ShareType | 是| int| 分享类型| Platform.SHARE_IMAGE
+Text| 否 | String|文本|
+ImagePath| 是 | String|本地图片地址|不支持网络图片
+```
+ShareParams shareParams = new ShareParams();
+shareParams.setShareType(Platform.SHARE_IMAGE);
+shareParams.setText(share_text);
+shareParams.setImagePath(file.getAbsolutePath());
+```
+### 3)分享链接
+参数 |是否必须|参数类型|参数说明|备注
+---- |-----|----|----|----
+ShareType | 是| int| 分享类型| Platform.SHARE_WEBPAGE
+Text| 否 | String|文本|
+ImagePath| 否 | String|本地图片地址|不支持网络图片
+Url| 是 | String|跳转链接|长度不超过512
+```
+ShareParams shareParams = new ShareParams();
+shareParams.setShareType(Platform.SHARE_WEBPAGE);
+shareParams.setText(share_text);
+shareParams.setImagePath(file.getAbsolutePath());
+shareParams.setUrl(share_url);
+```

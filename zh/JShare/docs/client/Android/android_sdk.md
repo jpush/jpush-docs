@@ -5,23 +5,23 @@ JShare SDK 可以让用户不用额外集成第三方平台的 SDK 实现平台�
 * 快速集成多个平台分享。
 
 ### 主要特点
-* 支持多个平台，目前支持微信、微信朋友圈、QQ、QQ空间、新浪微博。
+* 支持多个平台，目前支持微信、微信朋友圈、微信收藏、QQ、QQ空间、新浪微博。
 * 一套接口接入多个平台，无需单独熟悉每个平台接入方法，接入成本低。
 
-### jshare-android-release-1.x.y.zip 集成压缩包内容
+### jshare-android-_release-v1.x.y.zip 集成压缩包内容
 * JGShareSDK.xml
 	* 客户端嵌入SDK，各个平台配置的参考文件
 * AndroidManifest.xml
 	* 客户端嵌入SDK参考的配置文件
 * libs/jcore-android.v1.x.y.jar
 	* 极光开发者服务的核.心包。
-* jshare-core.jar
+* jshare-android_v1.x.y.jar
 	* JShare SDK核心包
-* jshre-wechat.jar
+* jshare-wechat-android_v1.x.y.jar
 	* JShare微信平台包
-* jshare-qq.jar
+* jshare-qq-android_v1.x.y.jar
 	* JShareQQ平台包
-* jshare-sina.jar
+* jshare-sina-android_v1.x.y.jar
 	* JShare新浪微博包
 * libs/(cpu-type)/libjcore1xy.so
 	* 各种CPU类型的native开发包。
@@ -30,7 +30,61 @@ JShare SDK 可以让用户不用额外集成第三方平台的 SDK 实现平台�
 ### Android SDK 版本
 目前SDK只支持Android 2.3或以上版本的手机系统。
 
-## 集成步骤
+## jcenter 自动集成步骤
+**说明 ：** 使用jcenter自动集成的开发者，不需要在项目中添加jar和so，jcenter会自动完成依赖；在AndroidManifest.xml中不需要添加任何JShare SDK 相关的配置，jcenter会自动导入。
+
+* 确认android studio的 Project 根目录的主 gradle 中配置了jcenter支持。（新建project默认配置就支持）
+
+```
+buildscript {
+    repositories {
+        jcenter()
+    }
+    ......
+}
+
+allprojects {
+    repositories {
+        jcenter()
+    }
+}
+```
+* 在 module 的 gradle 中添加依赖和AndroidManifest的替换变量。
+
+```
+android {
+    ......
+    defaultConfig {
+        applicationId "com.xxx.xxx" //JShare上注册的包名.
+        ......
+
+        ndk {
+            //选择要添加的对应cpu类型的.so库。
+            abiFilters 'armeabi', 'armeabi-v7a', 'armeabi-v8a'
+            // 还可以添加 'x86', 'x86_64', 'mips', 'mips64'
+        }
+
+        manifestPlaceholders = [
+            JPUSH_PKGNAME : applicationId,
+            JPUSH_APPKEY : "你的appkey", //JShare上注册的包名对应的appkey.
+            JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
+        ]
+        ......
+    }
+    ......
+}
+dependencies {
+    ......
+    compile 'cn.jiguang.sdk:jshare:1.0.0'  // 此处以JShare 1.0.0 版本为例。
+    compile 'cn.jiguang.sdk:jshare-qqmodel:1.0.0'  // 此处以jshare-qqmodel 1.0.0 版本为例。
+    compile 'cn.jiguang.sdk:jshare-wechatmodel:1.0.0'  // 此处以jshare-wechatmodel 1.0.0 版本为例。
+    compile 'cn.jiguang.sdk:jshare-sinamodel:1.0.0'  // 此处以jshare-sinamodel 1.0.0 版本为例。
+    compile 'cn.jiguang.sdk:jcore:1.1.1'  // 此处以JCore 1.1.1 版本为例。
+    ......
+}
+```
+
+## 手动集成步骤
 * 解压缩 jshare-android-release-1.x.y.zip 集成压缩包。
 * 复制libs/jcore-android_v1.x.y.jar到工程libs目录下。
 * 复制libs/jshare-android_v1.x.y.jar到工程libs目录下。
@@ -40,231 +94,273 @@ JShare SDK 可以让用户不用额外集成第三方平台的 SDK 实现平台�
 * 按以下说明配置JGShareSDK.xml文件。
 * 参考example工程或者接口文档使用JShare SDK。
 
+**说明 ：** 使用android studio的开发者，如果使用jniLibs文件夹导入so文件，则仅需将所有cpu类型的文件夹拷进去；
+如果将so文件添加在module的libs文件夹下，注意在module的gradle配置中添加一下配置：
+```
+android {
+    ......
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+            ......
+        }
+        ......
+    }
+    ......
+}
+```
+
 ### 配置 AndroidManifest.xml
 根据 SDK 压缩包里的 AndroidManifest.xml 样例文件，来配置应用程序项目的 AndroidManifest.xml 。
 
 * 复制备注为 "Required" 的部分
 * 将标注为“您应用的包名”的部分，替换为当前应用程序的包
-* 将标注为“您应用的Appkey”的部分，替换为在Portal上注册该应用的的Key,例如：  
+* 将标注为“您应用的Appkey”的部分，替换为在Portal上注册该应用的的Key,例如：
 9fed5bcb7b9b87413678c407
-#### AndroidManifest 示例
-	<?xml version="1.0" encoding="utf-8"?>
-	<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-	    package="cn.jiguang.share.demo">
-	 
-	    <permission
-	        android:name="${applicationId}.permission.JPUSH_MESSAGE"
-	        android:protectionLevel="signature"/>
-	 
-	 
-	    <uses-permission android:name="${applicationId}.permission.JPUSH_MESSAGE"/>
-	    <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT"/>
-	    <uses-permission android:name="android.permission.INTERNET"/>
-	    <uses-permission android:name="android.permission.WAKE_LOCK"/>
-	    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
-	    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-	    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-	    <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
-	    <uses-permission android:name="android.permission.VIBRATE"/>
-	    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
-	    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-	    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
-	 
-	    <!-- Optional for location -->
-	    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-	    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
-	    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-	    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS"/>
-	    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"/>
-	    <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES"/>
-	 
-	    <uses-permission android:name="android.permission.GET_TASKS" />
-	    <uses-permission android:name="android.permission.INTERNET" />
-	    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-	    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-	    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
-	    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-	    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-	    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS"/>
-	    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
-	    <application
-	        android:allowBackup="true"
-	        android:icon="@mipmap/ic_launcher"
-	        android:label="@string/app_name"
-	        android:supportsRtl="true"
-	        android:name=".MyApplication"
-	        android:theme="@style/AppTheme">
-	        <activity android:name=".MainActivity">
-	            <intent-filter>
-	                <action android:name="android.intent.action.MAIN" />
-	 
-	                <category android:name="android.intent.category.LAUNCHER" />
-	            </intent-filter>
-	        </activity>
-	        <activity android:name=".SelectPlatActivity"></activity>
-	        <activity android:name=".ShareTypeActivity"></activity>
-	 
-	        <activity
-	            android:name="cn.jiguang.share.core.ui.JiguangShellActivity"
-	            android:theme="@android:style/Theme.Translucent.NoTitleBar"
-	            android:configChanges="keyboardHidden|orientation|screenSize"
-	            android:screenOrientation="portrait"
-	            android:exported="true"
-	            android:windowSoftInputMode="stateHidden|adjustResize" >
-	 
-	            <intent-filter>
-	                <data android:scheme="tencent1105301453" />
-	                <action android:name="android.intent.action.VIEW" />
-	                <category android:name="android.intent.category.BROWSABLE" />
-	                <category android:name="android.intent.category.DEFAULT" />
-	            </intent-filter>
-	 
-	            <!-- 调用新浪原生SDK，需要注册的回调activity -->
-	            <intent-filter>
-	                <action android:name="com.sina.weibo.sdk.action.ACTION_SDK_REQ_ACTIVITY" />
-	                <category android:name="android.intent.category.DEFAULT" />
-	            </intent-filter>
-	        </activity>
-	        <!--<activity android:name="com.jshare.shareexample.wxapi.WXEntryActivity"-->
-	            <!--android:exported="true"-->
-	            <!--&gt;</activity>-->
-	        <activity android:name=".wxapi.WXEntryActivity"
-	            android:exported="true"
-	            ></activity>
-	        <meta-data
-	            android:name="JPUSH_CHANNEL"
-	            android:value="developer-default"/>
-	        <meta-data
-	            android:name="JPUSH_APPKEY"
-	            android:value="426251cac0146ce0a08ca38f" />
-	    </application>
-	 
-	</manifest>
 
+#### AndroidManifest 示例
+```
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+	package="您应用的包名">
+
+	<!-- Required -->
+	<uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
+	<uses-permission android:name="android.permission.INTERNET" />
+	<uses-permission android:name="android.permission.WAKE_LOCK" />
+	<uses-permission android:name="android.permission.READ_PHONE_STATE" />
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+	<uses-permission android:name="android.permission.VIBRATE" />
+	<uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+	<uses-permission android:name="android.permission.WRITE_SETTINGS" />
+	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
+	<!-- Optional. Required for location feature -->
+	<uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+	<uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+	<uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+	<uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+	<uses-permission android:name="android.permission.GET_TASKS" />
+
+	<application
+		android:name=".MyApplication"
+		android:allowBackup="true"
+		android:icon="@mipmap/ic_launcher"
+		android:label="@string/app_name"
+		android:supportsRtl="true"
+		android:theme="@style/AppTheme">
+		<activity android:name=".MainActivity">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+				<category android:name="android.intent.category.LAUNCHER" />
+			</intent-filter>
+		</activity>
+		<activity android:name=".ShareTypeActivity"/>
+
+		<!-- Required SDK核心功能-->
+		<activity
+			android:name="cn.jiguang.share.android.ui.JiguangShellActivity"
+			android:configChanges="keyboardHidden|orientation|screenSize"
+			android:exported="true"
+			android:screenOrientation="portrait"
+			android:theme="@android:style/Theme.Translucent.NoTitleBar"
+			android:windowSoftInputMode="stateHidden|adjustResize">
+
+			<!-- Optional QQ分享回调-->
+			<!-- 把下面的key替换成在腾讯注册的key，格式为tencent+appId，不是极光的key-->
+			<!-- 例如tencent123456-->
+			<intent-filter>
+				<data android:scheme="您注册的key" />
+				<action android:name="android.intent.action.VIEW" />
+
+				<category android:name="android.intent.category.BROWSABLE" />
+				<category android:name="android.intent.category.DEFAULT" />
+			</intent-filter>
+
+			<!-- Optional 新浪微博分享回调 -->
+			<intent-filter>
+				<action android:name="com.sina.weibo.sdk.action.ACTION_SDK_REQ_ACTIVITY" />
+				<category android:name="android.intent.category.DEFAULT" />
+			</intent-filter>
+		</activity>
+
+		<!-- Optional 微信分享回调,wxapi必须在包名路径下，否则回调不成功-->
+		<activity
+			android:name=".wxapi.WXEntryActivity"
+			android:exported="true" />
+
+		<!-- Required. For publish channel feature -->
+		<!-- JPUSH_CHANNEL 是为了方便开发者统计APK分发渠道。-->
+		<!-- 例如: -->
+		<!-- 发到 Google Play 的APK可以设置为 google-play; -->
+		<!-- 发到其他市场的 APK 可以设置为 xxx-market。 -->
+		<!-- 目前这个渠道统计功能的报表还未开放。-->
+		<meta-data
+			android:name="JPUSH_CHANNEL"
+			android:value="developer-default" />
+		<!-- Required. AppKey copied from Portal -->
+		<meta-data
+			android:name="JPUSH_APPKEY"
+			android:value="您应用的Appkey" />
+
+	</application>
+
+</manifest>
+```
 ### 配置 JGShareSDK.xml
-主要步骤为：  
+主要步骤为：
 
 * 复制或者新建JGShareSDK.xml到工程目录的asset目录下。
 * 把JGShareSDK.xml中相关的AppKey、AppSecret替换成自己的注册的。
-* 根据需要配置各个平台，不需要的平台可以删除或者Enable设置为false。
+* 根据需要配置各个平台，不需要的平台可以删除。
 
 #### JGShareSDK.xml示例
-	<?xml version="1.0" encoding="utf-8"?>
-	<DevInfor>
-		<!--
-		   说明：
-			
-		   1、表格中的第一项
-			  <ShareSDK
-				  AppKey="api20" />
-		   是必须的，其中的AppKey是您在ShareSDK上注册的开发者帐号的AppKey
-			
-		   2、所有集成到您项目的平台都应该为其在表格中填写相对应的开发者信息，以新浪微博为例：
-			   <SinaWeibo
-					Id="1"
-					SortId="1"
-					AppKey="568898243"
-					AppSecret="38a4f8204cc784f81f9f0daaf31e02e3"
-					RedirectUrl="http://www.mob.com"
-					Enable="true" />
-		   其中的SortId是此平台在分享列表中的位置，由开发者自行定义，可以是任何整型数字，数值越大
-		   越靠后AppKey、AppSecret和RedirectUrl是您在新浪微博上注册开发者信息和应用后得到的信息
-		   Id是一个保留的识别符，整型，ShareSDK不使用此字段，供您在自己的项目中当作平台的识别符。
-		   Enable字段表示此平台是否有效，布尔值，默认为true，如果Enable为false，即便平台的jar包
-		   已经添加到应用中，平台实例依然不可获取。
-			
-		   各个平台注册应用信息的地址如下：
-			 新浪微博        http://open.weibo.com
-			 微信好友        http://open.weixin.qq.com
-		-->
-		 
-		<ShareSDK
-			AppKey = "1969173bdaabb"/> <!-- 修改成你在sharesdk后台注册的应用的appkey"-->
-		 
-		<!-- ShareByAppClient标识是否使用微博客户端分享，默认是false -->
-		<!--<SinaWeibo-->
-			<!--Id="1"-->
-			<!--Seq="1"-->
-			<!--AppKey="3746081663"-->
-			<!--AppSecret="10c67a2a1ae07e6e7ad562012e94d9c3"-->
-			<!--RedirectUrl="https://www.jiguang.cn"-->
-			<!--ShareByAppClient="true"-->
-			<!--Enable="true" />-->
-		<SinaWeibo
-			Id="1"
-			Seq="1"
-			AppKey="727232518"
-			AppSecret="9b63b2c95a200e4fc671ca97a6b01ba9"
-			RedirectUrl="https://www.jiguang.cn/"
-			ShareByAppClient="true"
-			Enable="true" />
-	 
-		<!-- ShareByAppClient标识是否使用微博客户端分享，默认是false -->
-		<QQ
-		Id="6"
-		Seq="6"
-		AppId="1105301453"
-		AppKey="YIbPvONmBQBZUGaN"
-		ShareByAppClient="true"
-		Enable="true" />
-	 
-		<QZone
-			Id="2"
-			Seq="2"
-			AppId="1105301453"
-			AppKey="YIbPvONmBQBZUGaN"
-			Enable="true" />
-		 
-		<!--
-		   Wechat微信和WechatMoments微信朋友圈的appid是一样的；
-		 
-						   注意：开发者不能用我们这两个平台的appid,否则分享不了
-		 
-				 微信测试的时候，微信测试需要先签名打包出apk,
-		  sample测试微信，要先签名打包，keystore在sample项目中，密码123456
-		   
-		  BypassApproval是绕过审核的标记，设置为true后AppId将被忽略，故不经过
-		  审核的应用也可以执行分享，但是仅限于分享文字和图片，不能分享其他类型，
-		  默认值为false。此外，微信收藏不支持此字段。
-	   -->
-		<!--<Wechat-->
-			<!--Id="3"-->
-			<!--Seq="3"-->
-			<!--AppId="wx71ae0d5e5cc12994"-->
-			<!--AppSecret="84a3027bb993a83ad5f16c384846b7ee"-->
-			<!--BypassApproval="false"-->
-			<!--Enable="true" />-->
-	 
-		<!--<WechatMoments-->
-			<!--Id="4"-->
-			<!--Seq="4"-->
-			<!--AppId="wx71ae0d5e5cc12994"-->
-			<!--AppSecret="84a3027bb993a83ad5f16c384846b7ee"-->
-			<!--BypassApproval="false"-->
-			<!--Enable="true" />-->
-	 
-		<Wechat
-			AppId="wxa2ea563906227379"
-			BypassApproval="false"
-			AppSecret="338a22af3fb9440f66bff94dfcfff1de"
-			Enable="true"
-			Id="4"
-			SortId="4" />
-	 
-		<WechatMoments
-			AppId="wxa2ea563906227379"
-			AppSecret="338a22af3fb9440f66bff94dfcfff1de"
-			BypassApproval="false"
-			Enable="true"
-			Id="5"
-			SortId="5" />
-	   <WechatFavorite
-			Id="5"
-			Seq="5"
-			AppId="wxa2ea563906227379"
-			AppSecret="338a22af3fb9440f66bff94dfcfff1de"
-			Enable="true" />
-	 
-	</DevInfor>
+```
+<?xml version="1.0" encoding="utf-8"?>
+<DevInfor>
 
+    <!-- 如果不需要支持某平台，可缺省该平台的配置-->
+
+    <SinaWeibo
+        AppKey="新浪微博的AppKey"
+        AppSecret="新浪微博ppSecret"/>
+
+    <QQ
+        AppId="QQ的AppId"
+        AppKey="QQ的AppKey"/>
+
+    <Wechat
+        AppId="微信的AppId"
+        AppSecret="微信的AppSectet"/>
+
+</DevInfor>
+```
+### 配置微信平台回调
+* 在你的包名相应目录下新建一个wxapi目录，并在该wxapi目录下新增一个WXEntryActivity类，该类继承自WeChatHandleActivity（例如应用程序的包名为cn.jiguang.share.demo，则新添加的类如下图所示）
+![](http://i.imgur.com/2URxXFr.png)
+
+**注意：** 如果复写了onCreate方法、onNewIntent方法，那么必须调用父类方法，否者无法获取分享结果，例如：
+
+```
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+}
+```
+
+```
+@Override
+protected void onNewIntent(Intent intent) {
+    super.onNewIntent(intent);
+}
+```
+* 并在manifest文件里面加上exported属性，设置为true，例如：
+
+```
+<activity
+    android:name=".wxapi.WXEntryActivity"
+    android:exported="true" />
+```
+
+### 第三方平台账号注册
+#### 微信
+微信好友与微信朋友圈用同一个AppID及Appkey，点击登录[微信开放平台][1]，填写相关应用信息，审核通过后获取到微信AppId及AppSecret。
+
+#### QQ及Qzone
+QQ及Qzone使用同一个AppId及Appkey，点击登录[腾讯开放平台][2] ，选择Android或iOS应用，填写相关应用信息并提交审核，未审核前通过只能使用测试账号。
+
+#### 新浪微博
+点击登录[新浪微博开放平台][3]，填写相关应用信息并上传icon图片，审核通过后获取到微信AppKey及AppSecret。
+
+### 添加代码
+JShare SDK 提供的 API 接口，都主要集中在 cn.jiguang.share.android.api.JShareInterface 类，使用方法请参考example或者API接口文档。
+
+### 配置项目签名
+Android  Studio环境下
+* 在项目的build.gradle的android内部新增签名配置，例如：
+```
+signingConfigs {
+        debug {
+              storeFile file("jshare.jks") //签名文件路径
+              storePassword "sdkteam"
+              keyAlias "jshare"
+              keyPassword "sdkteam" //签名密码
+        }
+        release {
+             storeFile file("jshare.jks") //签名文件路径
+             storePassword "sdkteam"
+             keyAlias "jshare"
+             keyPassword "sdkteam" //签名密码
+        }
+    }
+```
+
+* 然后在项目的build.gradle的buildTypes使用签名配置，例如：
+```
+buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-project.txt'
+            signingConfig signingConfigs.debug
+        }
+        debug {
+            signingConfig signingConfigs.debug
+        }
+    }
+```
+* 如果是使用Android Studio图形界面添加的签名配置，则要注意在buildTypes选择添加的配置，例如下图：
+![](http://i.imgur.com/ahk1DoN.png)
+![](http://i.imgur.com/2oh4IKp.png)
+
+Eclipse环境下
+* 选择Eclipse顶部菜单Window->Preferences，在弹出的对话框中，选择Android目录下的Build，如下图：
+![](http://i.imgur.com/mKPb3De.png)
+* 指定Custom debug keystore选项的路径为sdk demo工程目录中的debug.keystore文件，并应用该配置，如下图：
+![](http://i.imgur.com/TgxykaK.png)
+
+### **注意**
+* 应用的包名、应用的签名、第三方平台注册的AppID及Appkey三者要一一对应，否则会无法分享。
+* 应用的签名要与在第三方平台填写的签名对应，否则会无法分享。
+
+### API基础API
+* init 初始化SDK
+
+```
+public static void init(Context context)
+```
+* setDebugMode 设置调试模式
+
+```
+public static void setDebugModel(boolean enable)
+```
+注：该接口需在init接口之前调用，避免出现部分日志没打印的情况。多进程情况下建议在自定义的Application中onCreate中调用。
+### 测试确认
+* 确认所需要的文件已经添加进工程
+* 确认Androidmanifest.xml已经正确配置
+* 确认JGShareSDK.xml已经正确配置
+* 如果已经集成成功，SDK会打印以下日记，示例是配置了全部平台
+
+```
+[PlatformManager] platform Wechat has configured
+[PlatformManager] platform SinaWeibo has configured
+[PlatformManager] platform QQ has configured
+```
+**说明:** 假如某个平台配置失败，会有log信息，例如：
+```
+[PlatformManager] QQ configure fail, please check project config:
+make sure jshare-qq-android-v.x.y.jar has build in your project.
+```
+
+## 混淆配置
+```
+-dontwarn cn.jiguang.**
+-keep class cn.jiguang.** { *; }
+```
+[1]:https://open.weixin.qq.com
+[2]:http://open.qq.com
+[3]:http://open.weibo.com
 

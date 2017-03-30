@@ -5,7 +5,7 @@
     <ul>
         <li>
             <div class="download-left">
-                <div class="download-image"iv>
+                <div class="download-image" down-image-first>
                     <img src="./image/resource_android.png">
                 </div>
             </div>
@@ -16,7 +16,7 @@
                 <div class="download-info">
                     <p>请参考如下文档来集成SDK：</p>
                     <ul class="download-info-ul">
-                        <li><a href="../client/Android/android_sdk.md">Android SDK集成指南</a></li>
+                        <li><a href="../client/Android/android_sdk">Android SDK集成指南</a></li>
                         <div style=" clear:both; visibility:hidden;"></div>
                     </ul>
                 </div>
@@ -41,7 +41,7 @@
                 <div class="download-info">
                     <p>请参考如下文档来集成SDK：</p>
                     <ul class="download-info-ul">
-                        <li><a href="../client/iOS/ios_sdk.md">iOS SDK 集成指南</a></li>
+                        <li><a href="../client/iOS/ios_sdk">iOS SDK 集成指南</a></li>
                         <div style=" clear:both; visibility:hidden;"></div>
                     </ul>
                 </div>
