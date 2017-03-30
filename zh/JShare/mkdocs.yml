@@ -10,19 +10,19 @@ pages:
 
 - 入门指南:
   - 'JShare产品简介': 'guideline/intro.md'
-  - '第三方平台申请': 'guideline/social_platform_apply.md'
+  - '第三方平台申请': 'guideline/social_paltform_apply.md'
   - '常见问题': 'guideline/faq.md'
   - 'ErrorCode 定义': 'guideline/jshare_errorcode.md'
 
 - Android:
-  - 'Android SDK 集成指南': 'client/Android/android_sdk.md'
-  - 'Android SDK API': 'client/Android/android_api.md'  
-  - 'Android SDK FAQ’: 'client/Android/android_sdk_faq.md'
-
+  - 'Android SDK 集成指南': 'client/android_sdk.md'
+  - 'Android SDK API': 'client/android_api.md'
+  - 'Android SDK FAQ': 'client/android_sdk_faq.md'
+  
 
 - iOS:
-  - 'iOS SDK 集成指南': 'client/iOS/ios_sdk.md'
-  - 'iOS SDK API': 'client/iOS/ios_api.md'
+  - 'iOS SDK 集成指南': 'client/ios_sdk.md'
+  - 'iOS SDK API': 'client/ios_api.md'
 
 
 - 最近更新: 'updates.md'

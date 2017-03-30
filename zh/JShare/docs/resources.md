@@ -6,7 +6,7 @@
         <li>
             <div class="download-left">
                 <div class="download-image" down-image-first>
-                    <img src="./image/resource_android.png">
+                    <img src="image/resource_android.png">
                 </div>
             </div>
             <div class="download-right">
@@ -31,7 +31,7 @@
         <li>
             <div class="download-left">
                 <div class="download-image">
-                    <img src="./image/resource_ios.png">
+                    <img src="image/resource_ios.png">
                 </div>
             </div>
             <div class="download-right">
