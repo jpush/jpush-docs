@@ -17,6 +17,7 @@ pages:
 - Android:
   - 'Android SDK 集成指南': 'client/Android/android_sdk.md'
   - 'Android SDK API': 'client/Android/android_api.md'
+  - 'Android SDK FAQ': 'client/Android/android_sdk_faq.md'
 
 
 - iOS:
