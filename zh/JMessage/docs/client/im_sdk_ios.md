@@ -2,7 +2,8 @@
 
 ## 概述
 
-极光 IM（英文名JMessage）为开发者提供易用可靠的 IM 开发框架，开发者可集成SDK，快速实现即时通讯功能。JMessage iOS SDK 支持 iOS 7 以上系统。要了解极光 IM 的详细信息，请参考文档：[JMessage 产品简介](https://docs.jiguang.cn/jmessage/guideline/jmessage_guide/)
+极光 IM（英文名JMessage）为开发者提供易用可靠的 IM 开发框架，开发者可集成SDK，快速实现即时通讯功能。JMessage iOS SDK 支持 iOS 7 以上系统。   
+要了解极光 IM 的详细信息，请参考文档：[JMessage 产品简介](https://docs.jiguang.cn/jmessage/guideline/jmessage_guide/)
 
 
 ### 功能
@@ -21,7 +22,7 @@
 
 + 直接查看 JMessage.framework 里的 Headers 文件。这些头文件定义了 SDK 提供的对外接口，带有完善的注释与说明，甚至样例代码。
 + 下载 docset 文档。我们使用 Appledoc 工具基于上述 Headers 文件生成了 docset。可以使用 Xcode 直接打开查看，或者使用 Dash 查看。我们建议使用 Dash 效果更好。
-+ 使用 Appledoc 生成的文档的在线版本：<a href="http://docs-test.jiguang.cn/jmessage/client/jmessage_ios_appledoc_html/" target="_blank">iOS SDK APIs</a>
++ 使用 Appledoc 生成的文档的在线版本：<a href="https://docs.jiguang.cn/jmessage/client/jmessage_ios_appledoc_html/" target="_blank">iOS SDK APIs</a>
 
 以下简要地列举 SDK API 提供的功能，同时提供部分简单的例子。
 
@@ -43,6 +44,47 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
      apsForProduction:(BOOL)isProduction
              category:(NSSet *)category;
 ```
+
+###SDK初始化(设置漫游)
+
+***Since v3.1.0***  
+SDK 初始化时，可设置是否启用消息记录漫游。   
+打开消息漫游之后，用户多个设备之间登陆时，SDK会自动将历史消息同步到本地，同步完成之后SDK会以 Conversation 为单位触发代理方法`onSyncRoamingMessageConversation:`通知上层刷新,具体方法见[消息同步监听代理](./jmessage_ios_appledoc_html/Protocols/JMSGConversationDelegate.html#//api/name/onSyncConversation:offlineMessages:roamingMessages:)
+
+```
+/*!
+ * @abstract 初始化 JMessage SDK
+ *
+ * @param launchOptions    AppDelegate启动函数的参数launchingOption(用于推送服务)
+ * @param appKey           appKey(应用Key值,通过JPush官网可以获取)
+ * @param channel          应用的渠道名称
+ * @param isProduction     是否为生产模式
+ * @param category         iOS8新增通知快捷按钮参数
+ * @param isRoaming        是否启用消息漫游,默认关闭
+ *
+ * @discussion 此方法必须被调用, 以初始化 JMessage SDK
+ *
+ * 如果未调用此方法, 本 SDK 的所有功能将不可用.
+ */
++ (void)setupJMessage:(NSDictionary *)launchOptions
+               appKey:(NSString *)appKey
+              channel:(NSString *)channel
+     apsForProduction:(BOOL)isProduction
+             category:(NSSet *)category
+       messageRoaming:(BOOL)isRoaming;
+
+```
+	 
+##### 例子	  
+	[JMessage setupJMessage:launchOptions
+	                 appKey:@"用户的AppKey"
+	                channel:@"应用的渠道名称"
+	       apsForProduction:NO
+	               category:nil 
+	         messageRoaming:NO];  
+
+这个调用是必须的。否则 SDK 将不能正常工作。
+
 
 #### 注册远程推送
 ```
@@ -100,46 +142,6 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
  */
 + (void)resetBadge;
 ```
-
-###SDK初始化(设置漫游)
-
-***Since v3.1.0***  
-SDK 初始化时，可设置是否启用消息记录漫游。  
-打开消息漫游之后，用户多个设备之间登陆时，SDK会自动将历史消息同步到本地，同步完成之后SDK会以 Conversation 为单位触发代理方法`onSyncRoamingMessageConversation:`通知上层刷新,具体方法见[消息同步监听代理](./jmessage_ios_appledoc_html/Protocols/JMSGConversationDelegate.html#//api/name/onSyncConversation:offlineMessages:roamingMessages:)
-
-```
-/*!
- * @abstract 初始化 JMessage SDK
- *
- * @param launchOptions    AppDelegate启动函数的参数launchingOption(用于推送服务)
- * @param appKey           appKey(应用Key值,通过JPush官网可以获取)
- * @param channel          应用的渠道名称
- * @param isProduction     是否为生产模式
- * @param category         iOS8新增通知快捷按钮参数
- * @param isRoaming        是否启用消息漫游,默认关闭
- *
- * @discussion 此方法必须被调用, 以初始化 JMessage SDK
- *
- * 如果未调用此方法, 本 SDK 的所有功能将不可用.
- */
-+ (void)setupJMessage:(NSDictionary *)launchOptions
-               appKey:(NSString *)appKey
-              channel:(NSString *)channel
-     apsForProduction:(BOOL)isProduction
-             category:(NSSet *)category
-       messageRoaming:(BOOL)isRoaming;
-
-```
-	 
-##### 例子	  
-	[JMessage setupJMessage:launchOptions
-	                 appKey:@"用户的AppKey"
-	                channel:@"应用的渠道名称"
-	       apsForProduction:NO
-	               category:nil 
-	         messageRoaming:NO];  
-
-这个调用是必须的。否则 SDK 将不能正常工作。
 
 ### 注册与登录
 #### 用户注册
@@ -598,7 +600,7 @@ SDK 升级到 3.1.0 版本后（或之后的版本），上层只需要做以下
 	 *
 	 */
 	- (void)setFromName:(NSString * JMSG_NULLABLE)fromName;
-	
+
 #### 更新 message 中的extra
 	/*!
 	 * @abstract 更新 message 中的 extra
@@ -608,6 +610,7 @@ SDK 升级到 3.1.0 版本后（或之后的版本），上层只需要做以下
 	 *
 	 */
 	- (BOOL)updateMessageExtraValue:(id)value forKey:(NSString *)key;
+
 
 ### 会话管理
 会话相关的操作：
@@ -949,6 +952,7 @@ SDK 升级到 3.1.0 版本后（或之后的版本），上层只需要做以下
 	 * @discussion 获取所有会话未读消息总数
 	 */
 	+ (NSNumber *)getAllUnreadCount;
+
 
 #### 获取最后一条消息的内容文本
 	/*!
@@ -1418,6 +1422,7 @@ JMSGMessage *message = [JMSGMessage createGroupMessageWithContent:textContent2 g
 ### 黑名单
 
 将用户加入黑名单后，将不在收到对方发来的任何消息。例如：A 用户将 B 用户加入黑名单，B 用户发送的消息，A 用户将收不到，A 用户发送的消息,B 用户依然可以看到。
+
 #### 获取黑名单列表
 
 ```
