@@ -399,19 +399,18 @@ JMessage SDK 3.1.0 版本开始，SDK 将消息下发分为在线下发和离线
 
 SDK版本 | 在线消息  | 离线消息 | 漫游消息
 ------- | ------- | ------- |---------
-Version < 3.1.0 | 逐条下发，每次都触发[onReceiveMessage:]()|逐条下发，每次都触发[onReceiveMessage:]()|无
-Version >= 3.1.0 | 逐条下发，每次都触发[onReceiveMessage:]()|以会话为单位，触发一次下发[onSyncOfflineMessageConversation:]()|以会话为单位，触发一次下发[onSyncRoamingMessageConversation:]()  
+Version < 3.1.0 | 逐条下发，每次都触发[onReceiveMessage:](./jmessage_ios_appledoc_html/Protocols/JMSGMessageDelegate.html#//api/name/onReceiveMessage:error:)|逐条下发，每次都触发[onReceiveMessage:](./jmessage_ios_appledoc_html/Protocols/JMSGMessageDelegate.html#//api/name/onReceiveMessage:error:)|无
+Version >= 3.1.0 | 逐条下发，每次都触发[onReceiveMessage:](./jmessage_ios_appledoc_html/Protocols/JMSGMessageDelegate.html#//api/name/onReceiveMessage:error:)|以会话为单位，触发一次下发[onSyncOfflineMessageConversation:](./jmessage_ios_appledoc_html/Protocols/JMSGConversationDelegate.html#//api/name/onSyncOfflineMessageConversation:offlineMessages:)|以会话为单位，触发一次下发[onSyncRoamingMessageConversation:](.//jmessage_ios_appledoc_html/Protocols/JMSGConversationDelegate.html#//api/name/onSyncRoamingMessageConversation:)  
 
+**总结**     
 
-**总结**  
-对于消息同步，以会话为单位，不管会话有多少离线消息，SDK只触发一次消息同步的代理方法，这个代理方法返回值中包含了具体某个会话、离线消息这些相关数据信息，上层通过这个方法可监听到每个会话完成消息同步的情况，从而去刷新UI，这样会大大减轻上层处理事件的压力。  
+对于消息同步，以会话为单位，不管会话有多少离线消息，SDK只触发一次消息同步的代理方法，这个代理方法返回值中包含了具体某个会话、离线消息这些相关数据信息，上层通过这个方法可监听到每个会话完成消息同步的情况，从而去刷新UI，这样会大大减轻上层处理事件的压力。       
 
-
-SDK 升级到 3.1.0 版本后（或之后的版本），上层只需要做以下变动：  
+SDK 升级到 3.1.0 版本后（或之后的版本），上层只需要做以下变动：     
 
 + 设置消息漫游，调用 [新的 SDK 初始化](./jmessage_ios_appledoc_html/Classes/JMessage.html#//api/name/setupJMessage:appKey:channel:apsForProduction:category:messageRoaming:) 设置消息漫游。
-+ 添加漫游消息的代理方法 [onSyncRoamingMessageConversation:]() 通过此方法可以监听到漫游消息同步情况，从而刷新UI（<font color= BurlyWood>不需要漫游消息的开发者可忽略此操作</font>）。
-+ 添加离线消息的代理方法 [onSyncOfflineMessageConversation:](./jmessage_ios_appledoc_html/Protocols/JMSGConversationDelegate.html#//api/name/onSyncConversation:offlineMessages:roamingMessages:) 通过此方法可以监听到离线消息同步情况，从而刷新UI。
++ 添加漫游消息的代理方法 [onSyncRoamingMessageConversation:](./jmessage_ios_appledoc_html/Protocols/JMSGConversationDelegate.html#//api/name/onSyncRoamingMessageConversation:) 通过此方法可以监听到漫游消息同步情况，从而刷新UI（<font color= BurlyWood>不需要漫游消息的开发者可忽略此操作</font>）。
++ 添加离线消息的代理方法 [onSyncOfflineMessageConversation:](./jmessage_ios_appledoc_html/Protocols/JMSGConversationDelegate.html#//api/name/onSyncOfflineMessageConversation:offlineMessages:) 通过此方法可以监听到离线消息同步情况，从而刷新UI。
 
 
 ### 消息管理
