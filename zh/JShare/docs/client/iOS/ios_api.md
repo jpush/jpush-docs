@@ -16,7 +16,7 @@ JSHAREMessage类，分享参数模型。
     
     * 调用示例：
     
- ```
+    ```
     JSHARELaunchConfig *config = [[JSHARELaunchConfig alloc] init];    
     config.appKey = @"AppKey copied from JiGuang Portal application";
     config.SinaWeiboAppKey = @"374535501";
@@ -26,8 +26,9 @@ JSHAREMessage类，分享参数模型。
     config.QQAppKey = @"glFYjkHQGSOCJHMC";
     config.WeChatAppId = @"wxa2ea563906227379";
     config.WeChatAppSecret = @"bb63c0a06bf0ee7f633a5bc44304d110";
+    
     [JSHARESdk setupWithConfig:config];
-```
+    ```
     
     
 ##处理平台回调
@@ -45,7 +46,7 @@ JSHAREMessage类，分享参数模型。
         - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url{
     [JSHARESdk handleOpenUrl:url];
     return YES;
-}
+    }
     ```
     
 ##分享参数模型
@@ -142,7 +143,7 @@ JSHAREMessage类，分享参数模型。
     * 调用示例：
     
     ```
-JSHAREMessage *message = [JSHAREMessage message];
+    JSHAREMessage *message = [JSHAREMessage message];
     message.text = @"欢迎使用极光社会化组件JShare，SDK包体积小，集成简单，支持主流社交平台、帮助开发者轻松实现社会化功能！";
     message.platform = platform;
     message.mediaType = JSHAREText;
@@ -177,7 +178,7 @@ JSHAREMessage *message = [JSHAREMessage message];
     * 调用实例：
         
       ```
-        [JSHARESdk setDebug:YES];
+      [JSHARESdk setDebug:YES];
       ```
 
 
