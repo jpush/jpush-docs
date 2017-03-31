@@ -1614,7 +1614,7 @@ Content-Type: application/json; charset=utf-8
 
 Request Params
 
-+ 敏感词数组 一个词长度最多为10， vip 支持2000个敏感词 非vip支持100个
++ 敏感词数组 一个词长度最多为10，默认支持100个敏感词，[有更高需求可联系商务](https://www.jiguang.cn/accounts/business/form?from=im)
 
 Request Body
 

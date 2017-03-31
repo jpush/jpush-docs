@@ -160,6 +160,83 @@ Content-Type: application/json; charset=utf-8
 }
 ```
 
+
+##  GetGrouprMessage 获取群组消息 
+
+```
+GET /groups/{gid}/messages?count=1000&begin_time={begin_time}&end_time={end_time}
+```
+### Example Request 
+
+####  Request Header  
+
+```
+GET /groups/10055201/messages?count=500&begin_time=2015-11-02 10:10:10&end_time=2015-11-02 10:10:12 （ 第一次请求）
+```
+
+```
+GET /groups/10055201/messages?cursor=KSDKF34UISOCGAASD （第n次获取 n>1）
+```
+
+#### Request Body  
+
+N/A
+
+####  Request Params  
++ count （必填）查询的总条数  一次最多1000
++ begin_time (必填) 记录开始时间 格式  yyyy-MM-dd HH:mm:ss 设置筛选条件大于end time   
++ end_time (必填)   记录结束时间  格式 yyyy-MM-dd HH:mm:ss  设置筛选条件下于begin time   
++ begin_time end_time 之间最大范围不得超过7天
++ cursor  当第一次请求后如果后面有数据，会返回一个cursor回来用这个获取接下来的消息 (cursor 有效时间是120s，过期后需要重第一个请求获取，重新遍历)
++ 查询的消息按发送时间升序排序
+
+### Example Response  
+
+#### Response Header   
+
+```
+HTTP/1.1 200 
+Content-Type: application/json; charset=utf-8 
+```
+
+#### Response Data  
+
+```
+{
+    "total": 1,
+    "cursor": "02838264C47BA022DE545AF2D013B59A",
+    "count": 1,
+    "messages": [
+        {
+            "set_from_name": 1,
+            "from_platform": "a",
+            "target_name": "",
+            "msg_type": "text",
+            "version": 1,
+            "target_id": "10055201",
+            "from_appkey": "4f7aef34fb361292c566a1cd",
+            "from_name": "custom name nnn",
+            "from_id": "ppppp",
+            "msg_body": {
+                "text": "hehe",
+                "extras": {}
+            },
+            "create_time": 1490930940,
+            "from_type": "user",
+            "target_appkey": "",
+            "target_type": "group",
+            "msgid": 287090485,
+            "msg_ctime": 1490930941708,
+            "msg_level": 0
+        }
+    ]
+}
+
+```
+
+
+
+
 ## 统计接口 （vip专属接口）
 
 ##  GetUserStatistic  用户统计 
@@ -376,3 +453,4 @@ Content-Type: application/json; charset=utf-8
 + total_groups ：总群组数
 + send_msg_users ：发送了消息的用户数
 + new_groups ：新增群组数
+
