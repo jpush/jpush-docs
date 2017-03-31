@@ -1089,7 +1089,7 @@ Example Response
 ```
 
 
-### 好友API
+### 好友
 
 #### 添加好友
 	POST  /v1/users/{username}/friends
@@ -1215,7 +1215,7 @@ Error Code
 + 899003  Request Body json格式不符合要求，json参数不符合要求；
 + 899002  用户不存在；
 
-### 跨应用API
+### 跨应用
 
 #### 跨应用管理群组成员
 	POST  /v1/cross/groups/{gid}/members
@@ -1595,7 +1595,7 @@ Response Data
 
 N/A
 
-### 敏感词API
+### 敏感词
 
 #### 添加敏感词
 
