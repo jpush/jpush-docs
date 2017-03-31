@@ -30,7 +30,6 @@ JSHAREMessage类，分享参数模型。
     [JSHARESdk setupWithConfig:config];
     ```
     
-    
 ##处理平台回调
     
    * +(BOOL)handleOpenUrl:(NSURL *)url; 
@@ -40,7 +39,6 @@ JSHAREMessage类，分享参数模型。
     * 参数说明：
     url：在 Appdelegate 的 application:handleOpenURL: 中调用。不调用此接口 JSHARE 将无法提供分享回调。
     * 调用示例：
-    
     
     ```
         - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url{
