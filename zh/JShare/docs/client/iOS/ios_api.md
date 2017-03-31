@@ -26,7 +26,6 @@ JSHAREMessage类，分享参数模型。
     config.QQAppKey = @"glFYjkHQGSOCJHMC";
     config.WeChatAppId = @"wxa2ea563906227379";
     config.WeChatAppSecret = @"bb63c0a06bf0ee7f633a5bc44304d110";
-
     [JSHARESdk setupWithConfig:config];
 ```
     
@@ -47,7 +46,6 @@ JSHAREMessage类，分享参数模型。
     [JSHARESdk handleOpenUrl:url];
     return YES;
 }
-
     ```
     
 ##分享参数模型
@@ -153,7 +151,6 @@ JSHAREMessage *message = [JSHAREMessage message];
           NSLog(@"分享回调");
  
     }];
-    
     ```
     
     
@@ -181,7 +178,6 @@ JSHAREMessage *message = [JSHAREMessage message];
         
       ```
         [JSHARESdk setDebug:YES];
-        
       ```
 
 
