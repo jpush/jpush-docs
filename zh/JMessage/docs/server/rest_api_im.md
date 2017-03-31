@@ -1595,6 +1595,254 @@ Response Data
 
 N/A
 
+### 敏感词API
+
+#### 添加敏感词
+
+```
+POST  /v1/sensitiveword
+```
+
+Example Request
+
+Request Header 
+
+```
+POST  /v1/sensitiveword
+Content-Type: application/json; charset=utf-8  
+```
+
+Request Params
+
++ 敏感词数组 一个词长度最多为10， vip 支持2000个敏感词 非vip支持100个
+
+Request Body
+
+```
+["FUCK"] 
+
+
+```
+
+Example Response
+
+Response Header
+
+```
+HTTP/1.1 204 NO Content
+Content-Type: application/json; charset=utf-8   
+```
+
+Response Data
+
+N/A
+
+
+#### 修改敏感词
+
+```
+PUT  /v1/sensitiveword
+```
+
+Example Request
+
+Request Header 
+
+```
+PUT  /v1/sensitiveword
+Content-Type: application/json; charset=utf-8  
+```
+
+Request Params
+
++ old_word  旧敏感词
++ new_word  新敏感词
+
+Request Body
+
+```
+{"new_word":"fuck", "old_word":"FUCK"}
+
+
+```
+
+Example Response
+
+Response Header
+
+```
+HTTP/1.1 204 NO Content
+Content-Type: application/json; charset=utf-8   
+```
+
+Response Data
+
+N/A
+
+
+#### 删除敏感词
+
+```
+DELETE /v1/sensitiveword
+```
+
+Example Request
+
+Request Header 
+
+```
+DELETE  /v1/sensitiveword
+Content-Type: application/json; charset=utf-8  
+```
+
+Request Params
+
++ word  被删除的敏感词
+
+Request Body
+
+```
+{"word":"fuck"}
+
+
+```
+
+Example Response
+
+Response Header
+
+```
+HTTP/1.1 204 NO Content
+Content-Type: application/json; charset=utf-8   
+```
+
+Response Data
+
+N/A
+
+
+#### 获取敏感词列表
+
+```
+GET /v1/sensitiveword
+```
+
+Example Request
+
+Request Header 
+
+```
+GET  /v1/sensitiveword
+Content-Type: application/json; charset=utf-8  
+```
+
+Request Params
+
++ start：起始序号 从0开始
++ count: 查询条数，最多2000
+
+Request Body
+
+N/A
+
+Example Response
+
+Response Header
+
+```
+HTTP/1.1 200
+Content-Type: application/json; charset=utf-8   
+```
+
+Response Data
+
+```
+{
+"start": 2,
+"count": 1,
+"words": [
+{
+"name": "fuck",
+"itime": "itime": "1970-01-17 16:49:11"
+}
+],
+"total": 3
+}
+```
+
+#### 更新敏感词功能状态
+
+```
+PUT /v1/sensitiveword/status
+```
+
+Example Request
+
+Request Header 
+
+```
+PUT  /v1/sensitiveword/status?status=0
+Content-Type: application/json; charset=utf-8  
+```
+
+Request Params
+
++ status : 敏感词开关状态， 1表示开启过滤， 0表示关闭敏感词过滤
+
+Request Body
+
+N/A
+
+Example Response
+
+Response Header
+
+```
+HTTP/1.1 204
+Content-Type: application/json; charset=utf-8   
+```
+
+Response Data
+
+N/A
+
+#### 获取敏感词功能状态
+
+```
+GET /v1/sensitiveword/status
+```
+
+Example Request
+
+Request Header 
+
+```
+GET  /v1/sensitiveword/status
+Content-Type: application/json; charset=utf-8  
+```
+
+Request Params
+
+N/A
+
+Request Body
+
+N/A
+
+Example Response
+
+Response Header
+
+```
+HTTP/1.1 200
+Content-Type: application/json; charset=utf-8   
+```
+
+Response Data
+
+```
+ {"status": 1} 
+```
 
 ### HTTP 返回
 
