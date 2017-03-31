@@ -23,6 +23,10 @@ class GithubDownload():
         release_title=release_title.a.text
         return release_title
 
+    def get_body(self,html_content):
+        release_body=html_content.find_all(class_="markdown-body")[0]
+        return release_body
+
     def get_code(self,html_content):
         label_latest=html_content.find_all(class_="label-latest")[0]
         release_downloads=label_latest.find_all(class_="release-downloads")[0]

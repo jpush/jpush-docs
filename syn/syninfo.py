@@ -6,10 +6,11 @@ class info(object):
     release_version = None
     release_time = None
     release_title = None
-    release_log = None
+    release_body = None
 
-    def __init__(self,release_version,release_time,release_title,release_log):
+    def __init__(self,release_version,release_time,release_title,release_body):
         release_version = release_version
         release_time = release_time
         release_title = release_title
-        release_log = release_log
+        release_body = release_body
+

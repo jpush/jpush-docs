@@ -17,14 +17,19 @@ env = Environment(loader=PackageLoader('syn', 'templates'))
 template = env.get_template('index.md')
 #print template.render(the='variables', go='here')
 
-infos={}
+infoarray={}
+
 
 downloader = GithubDownload()
 for project in repositories:
     html_content = downloader.get_html(repositories[project]["url"] + "/releases")
     print repositories[project]["url"]
+    language= repositories[project]["languages"]
     try:
         release_title = downloader.get_title(html_content)
+        print release_title
+        release_body=downloader.get_body(html_content)
+        print release_body
         logging.info("get title success")
     except:
         logging.info("get title fail")
@@ -33,5 +38,8 @@ for project in repositories:
     release_time = downloader.get_time(html_content)
     print release_time
     release_version = downloader.get_version(html_content)
+    infoarray[language]=info(release_version,release_title,release_title,release_body)
     print release_version
 
+
+print (infoarray)
