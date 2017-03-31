@@ -16,8 +16,7 @@ JSHAREMessage类，分享参数模型。
     
     * 调用示例：
     
-    
-    ```
+ ```
     JSHARELaunchConfig *config = [[JSHARELaunchConfig alloc] init];    
     config.appKey = @"AppKey copied from JiGuang Portal application";
     config.SinaWeiboAppKey = @"374535501";
@@ -29,8 +28,7 @@ JSHAREMessage类，分享参数模型。
     config.WeChatAppSecret = @"bb63c0a06bf0ee7f633a5bc44304d110";
 
     [JSHARESdk setupWithConfig:config];
-
-    ```
+```
     
     
 ##处理平台回调
