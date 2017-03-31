@@ -258,7 +258,7 @@ JMessage 服务器端报的错误码。有可能出现在各平台的 SDK 里。
 			<td>发送消息失败，发送者已被接收者拉入黑名单，仅限单聊</td>
 		</tr>
 		<tr>
-		    <td>803009</td>
+			<td>803009</td>
 			<td>the message contains sensitive word: the word</td>
 			<td>发送消息失败，消息内容包含敏感词汇：具体敏感词</td>
 		</tr>
@@ -503,22 +503,22 @@ JMessage 服务器端报的错误码。有可能出现在各平台的 SDK 里。
 			<td>用户删除全局消息免打扰时，该用户不处于全局免打扰状态</td>
 		</tr>
 		<tr>
-		    <td>842001</td>
+			<td>842001</td>
 			<td>group not exist</td>
 			<td>用户添加群组消息屏蔽时，该群组不存在</td>
 		</tr>
 		<tr>
-		    <td>842002</td>
+			<td>842002</td>
 			<td>user not in group</td>
 			<td>用户添加群组消息屏蔽时，用户不在该群组中</td>
 		</tr>
 		<tr>
-		    <td>842003</td>
+			<td>842003</td>
 			<td>group already set</td>
 			<td>用户添加群组消息屏蔽时，该群组已处于消息屏蔽状态</td>
 		</tr>
 		<tr>
-		    <td>843001</td>
+			<td>843001</td>
 			<td>group never set</td>
 			<td>用户删除群组消息屏蔽时，该群组不处于消息屏蔽状态</td>
 		</tr>
