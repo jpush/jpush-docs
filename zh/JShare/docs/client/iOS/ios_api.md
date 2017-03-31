@@ -42,89 +42,89 @@ JSHAREMessage类，分享参数模型。
     url：在 Appdelegate 的 application:handleOpenURL: 中调用。不调用此接口 JSHARE 将无法提供分享回调。
     * 调用示例：
     
-        ```
+    ```
         - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url{
     [JSHARESdk handleOpenUrl:url];
     return YES;
 }
 
-        ```
+    ```
 ##分享参数模型
 
 * JSHAREMessage
-    * title：
-        标题：长度每个平台的限制而不同。
-        微信好友：最大 512 字符。
-        微信朋友圈：最大 512 字符。
-        微信收藏：最大 512 字符。
-        QQ：最大 128 字符。
-        QQ空间：最大 128 字符。
-        新浪微博：分享链接类型，最大 1 K字符。
+    * title：<br>
+        标题：长度每个平台的限制而不同。<br>
+        微信好友：最大 512 字符。<br>
+        微信朋友圈：最大 512 字符。<br>
+        微信收藏：最大 512 字符。<br>
+        QQ：最大 128 字符。<br>
+        QQ空间：最大 128 字符。<br>
+        新浪微博：分享链接类型，最大 1 K字符。<br>
     
-    * text：
-        文本：文本内容，长度每个平台的限制而不同。
-        微信好友：分享文本类型时，最大 10 K字符。分享非文本类型，最大 1 K字符。
-        微信朋友圈：分享文本类型时，最大 10 K字符。分享非文本类型，最大 1 K字符。
-        微信收藏：分享文本类型时，最大 10 K字符。分享非文本类型，最大 1 K字符。
-        QQ：分享文本类型时，最大 1536 字符。分享非文本类型，最大 512 字符。
-        QQ空间：分享文本类型时，最大 128 字符。分享非文本类型，最大 512 字符。
-        新浪微博：最大 140 汉字。
+    * text：<br>
+        文本：文本内容，长度每个平台的限制而不同。<br>
+        微信好友：分享文本类型时，最大 10 K字符。分享非文本类型，最大 1 K字符。<br>
+        微信朋友圈：分享文本类型时，最大 10 K字符。分享非文本类型，最大 1 K字符。<br>
+        微信收藏：分享文本类型时，最大 10 K字符。分享非文本类型，最大 1 K字符。<br>
+        QQ：分享文本类型时，最大 1536 字符。分享非文本类型，最大 512 字符。<br>
+        QQ空间：分享文本类型时，最大 128 字符。分享非文本类型，最大 512 字符。<br>
+        新浪微博：最大 140 汉字。<br>
         
-    * url：
-        链接：根据媒体类型填入链接，长度每个平台的限制不同。分享非文本及非图片类型时，必要！
-        微信好友：最大 10 K字符。
-        微信朋友圈：最大 10 K字符。
-        微信收藏：最大 10 K字符。
-        QQ：最大 512 字符。
-        QQ空间：最大 512 字符。
-        新浪微博：最大 512 字符。
+    * url：<br>
+        链接：根据媒体类型填入链接，长度每个平台的限制不同。分享非文本及非图片类型时，必要！<br>
+        微信好友：最大 10 K字符。<br>
+        微信朋友圈：最大 10 K字符。<br>
+        微信收藏：最大 10 K字符。<br>
+        QQ：最大 512 字符。<br>
+        QQ空间：最大 512 字符。<br>
+        新浪微博：最大 512 字符。<br>
     
-    * videoAssetURL：
-        本地视频AssetURL:分享本地视频到 QQ 空间的必填参数，可传ALAsset的ALAssetPropertyAssetURL，或者PHAsset的localIdentifier。
-    * thumbnail：
-        缩略图：大小限制根据平台不同而不同。
-        微信好友：最大 32 K。
-        微信朋友圈：最大 32 K。
-        微信收藏：最大 32 K。
-        QQ：最大 1 M。
-        QQ空间：最大 1 M。
-        新浪微博：最大 32 K。
-    * image:
-        图片：分享JSHAREImage类型，大小限制根据平台不同而不同，当分享JSHARELink类型时没有提供缩略图时，若此参数不为空，JSHARE将会裁剪此参数提供的图片去适配缩略图。
-        微信好友：最大 10 M。
-        微信朋友圈：最大 10 M。
-        微信收藏：最大 10 M。
-        QQ：最大 5 M。
-        QQ空间：最大 5 M。
-        新浪微博：最大 10 M。
-    * images:
-        图片数组：分享到 QQ 空间支持多张图片，图片数组的元素需要为 NSData 类型，图片数量限制为20张。若只分享单张图片至 QQ 空间使用 image 字段即可。
+    * videoAssetURL：<br>
+        本地视频AssetURL:分享本地视频到 QQ 空间的必填参数，可传ALAsset的ALAssetPropertyAssetURL，或者PHAsset的localIdentifier。<br>
+    * thumbnail：<br>
+        缩略图：大小限制根据平台不同而不同。<br>
+        微信好友：最大 32 K。<br>
+        微信朋友圈：最大 32 K。<br>
+        微信收藏：最大 32 K。<br>
+        QQ：最大 1 M。<br>
+        QQ空间：最大 1 M。<br>
+        新浪微博：最大 32 K。<br>
+    * image:<br>
+        图片：分享JSHAREImage类型，大小限制根据平台不同而不同，当分享JSHARELink类型时没有提供缩略图时，若此参数不为空，JSHARE将会裁剪此参数提供的图片去适配缩略图。<br>
+        微信好友：最大 10 M。<br>
+        微信朋友圈：最大 10 M。<br>
+        微信收藏：最大 10 M。<br>
+        QQ：最大 5 M。<br>
+        QQ空间：最大 5 M。<br>
+        新浪微博：最大 10 M。<br>
+    * images:<br>
+        图片数组：分享到 QQ 空间支持多张图片，图片数组的元素需要为 NSData 类型，图片数量限制为20张。若只分享单张图片至 QQ 空间使用 image 字段即可。<br>
         
-    * mediaType:
-        分享的媒体类型。必要！
+    * mediaType:<br>
+        分享的媒体类型。必要！<br>
     
-    * platform:
-         分享的目标平台。必要！
+    * platform:<br>
+         分享的目标平台。必要！<br>
     
-    * mediaDataUrl:
-        分享JSHAREAudio类型至微信平台或QQ平台时，音乐数据url地址。
-        微信好友：最大 10 K字符。
-        微信朋友圈：最大 10 K字符。
-        微信收藏：最大 10 K字符。
-        QQ：最大 512 字符。
-        QQ空间：最大 512 字符。
-        新浪微博：最大 512 字符。
+    * mediaDataUrl:<br>
+        分享JSHAREAudio类型至微信平台或QQ平台时，音乐数据url地址。<br>
+        微信好友：最大 10 K字符。<br>
+        微信朋友圈：最大 10 K字符。<br>
+        微信收藏：最大 10 K字符。<br>
+        QQ：最大 512 字符。<br>
+        QQ空间：最大 512 字符。<br>
+        新浪微博：最大 512 字符。<br>
 
-    * extInfo:
-         分享JSHAREApp类型至微信平台时，第三方程序自定义的简单数据。
-    * fileData:
-         分享JSHAREFile类型或者JSHAREApp类型至微信平台时，对应的File数据以及App数据，最大 10 Mb。
-    * fileExt:
-         分享JSHAREFile类型至微信平台时，对应的文件后缀名，分享文件必填，否则会导致分享到微信平台出现不一致的文件类型,最大 64 字符。
-    * emoticonData:
-         分享JSHAREEmoticon类型至微信平台时，对应的表情数据，最大 10 M。
-    * sinaObjectID:
-          分享至新浪微博平台时，分享参数的一个标识符，默认为 “objectId”。最大 255 字符。
+    * extInfo:<br>
+         分享JSHAREApp类型至微信平台时，第三方程序自定义的简单数据。<br>
+    * fileData:<br>
+         分享JSHAREFile类型或者JSHAREApp类型至微信平台时，对应的File数据以及App数据，最大 10 Mb。<br>
+    * fileExt:<br>
+         分享JSHAREFile类型至微信平台时，对应的文件后缀名，分享文件必填，否则会导致分享到微信平台出现不一致的文件类型,最大 64 字符。<br>
+    * emoticonData:<br>
+         分享JSHAREEmoticon类型至微信平台时，对应的表情数据，最大 10 M。<br>
+    * sinaObjectID:<br>
+          分享至新浪微博平台时，分享参数的一个标识符，默认为 “objectId”。最大 255 字符。<br>
     
 ##发起分享
 
@@ -178,8 +178,9 @@ JSHAREMessage *message = [JSHAREMessage message];
 
     * 调用实例：
         
-        ```
+      ```
         [JSHARESdk setDebug:YES];
         
-        ```
+      ```
+
 
