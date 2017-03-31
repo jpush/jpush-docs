@@ -88,7 +88,7 @@ JPush SDK 为了尽可能提高开发者在各类 rom 上的推送送达率，�
 
  		<provider
             android:name="com.huawei.hms.update.provider.UpdateProvider"
-            android:authorities="com.push.cloud.hms.update.provider"
+            android:authorities="您应用的包名.hms.update.provider"
             android:exported="false"
             android:grantUriPermissions="true"></provider>
 
