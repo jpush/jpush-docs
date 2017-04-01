@@ -823,6 +823,12 @@ POST https://api.jpush.cn/v3/push/validate
 			<td>400</td>
 		</tr>
 		<tr >
+			<td>1009</td>
+			<td>推送对象中有不支持的key</td>
+			<td>必须改正</td>
+			<td>400</td>
+		</tr>
+		<tr >
 			<td>1011</td>
 			<td>没有满足条件的推送目标</td>
 			<td>请检查audience</td>
