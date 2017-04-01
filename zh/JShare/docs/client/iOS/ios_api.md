@@ -15,10 +15,11 @@ JSHAREMessage类，分享参数模型。
       config：JSHARELaunchConfig类。
     
     * 调用示例：
-    
-    
-	```
-    JSHARELaunchConfig *config = [[JSHARELaunchConfig alloc] init];    
+
+   
+   
+   	```
+    JSHARELaunchConfig *config = [[JSHARELaunchConfig alloc] init];
     config.appKey = @"AppKey copied from JiGuang Portal application";
     config.SinaWeiboAppKey = @"374535501";
     config.SinaWeiboAppSecret = @"baccd12c166f1df96736b51ffbf600a2";
@@ -165,7 +166,7 @@ JSHAREMessage类，分享参数模型。
     
 * +(BOOL)isWeChatInstalled
     
- ##检查是否存在 QQ 客户端
+##检查是否存在 QQ 客户端
     
 * +(BOOL)isQQInstalled;
 
