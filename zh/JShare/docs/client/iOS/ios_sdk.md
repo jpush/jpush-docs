@@ -58,12 +58,12 @@ JSHARE SDK 同时支持 微信、QQ、微博等社交平台的分享功能，集
 
 <font color="#4590a3" size = "4px">在 AppDelegate.m 引用头文件</font> 
 
-  ```
+```
   //引用JSHARE SDK 头文件
   #import "JSHARESdk.h"
   //如需要使用idfa，请添加 AdSupport.framework 框架，并引用其头文件
   #import <AdSupport/AdSupport.h>
-  ```
+```
 
 
 <font color="#4590a3" size = "4px">初始化JSHARE SDK</font> 
