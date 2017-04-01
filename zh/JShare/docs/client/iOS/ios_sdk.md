@@ -61,7 +61,7 @@ JSHARE SDK 同时支持 微信、QQ、微博等社交平台的分享功能，集
   ```
   //引用JSHARE SDK 头文件
   #import "JSHARESdk.h"
-//如需要使用idfa，请添加 AdSupport.framework 框架，并引用其头文件
+  //如需要使用idfa，请添加 AdSupport.framework 框架，并引用其头文件
   #import <AdSupport/AdSupport.h>
   ```
 

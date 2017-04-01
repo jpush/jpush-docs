@@ -16,7 +16,8 @@ JSHAREMessage类，分享参数模型。
     
     * 调用示例：
     
-    <pre>
+    
+	```
     JSHARELaunchConfig *config = [[JSHARELaunchConfig alloc] init];    
     config.appKey = @"AppKey copied from JiGuang Portal application";
     config.SinaWeiboAppKey = @"374535501";
@@ -28,7 +29,10 @@ JSHAREMessage类，分享参数模型。
     config.WeChatAppSecret = @"bb63c0a06bf0ee7f633a5bc44304d110";
     
     [JSHARESdk setupWithConfig:config];
-    </pre>    
+	```
+	
+	
+	
 ##处理平台回调
     
    * +(BOOL)handleOpenUrl:(NSURL *)url; 
@@ -39,12 +43,16 @@ JSHAREMessage类，分享参数模型。
     url：在 Appdelegate 的 application:handleOpenURL: 中调用。不调用此接口 JSHARE 将无法提供分享回调。
     * 调用示例：
     
-    <pre>
+    
+    ```
         - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url{
     [JSHARESdk handleOpenUrl:url];
     return YES;
     }
-    </pre>
+    ```
+    
+    
+    
     
 ##分享参数模型
 
@@ -139,7 +147,9 @@ JSHAREMessage类，分享参数模型。
         
     * 调用示例：
     
-    <pre>
+    
+    
+    ```
     JSHAREMessage *message = [JSHAREMessage message];
     message.text = @"欢迎使用极光社会化组件JShare，SDK包体积小，集成简单，支持主流社交平台、帮助开发者轻松实现社会化功能！";
     message.platform = platform;
@@ -147,8 +157,9 @@ JSHAREMessage类，分享参数模型。
     [JSHARESdk share:message handler:^(JSHAREState state, NSError *error) {
           NSLog(@"分享回调");
     }];
-    </pre>
+    ```
     
+        
     
 ##检查是否存在微信客户端
     
@@ -172,8 +183,14 @@ JSHAREMessage类，分享参数模型。
 
     * 调用实例：
         
-      <pre>
+        
+        
+        
+      ```
       [JSHARESdk setDebug:YES];
-      </pre>
+      ```
+      
+      
+      
 
 
