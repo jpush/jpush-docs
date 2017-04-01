@@ -62,6 +62,11 @@
       <td>shareParams missing</td>
       <td>缺少shareParams</td>
     </tr>
+        <tr>
+      <td>40012</td>
+      <td>platform haven't  configuration</td>
+      <td>platform 没配置</td>
+    </tr>
     <tr>
       <td>41001</td>
       <td>text size out of limit</td>
