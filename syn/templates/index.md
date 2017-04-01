@@ -15,16 +15,15 @@
                               </div>
                               <div class="download-info">
                                     <ul class="download-info-ul">
-                                          <li>版本号：{{the}}</li>
-                                          <li>更新时间：{{go}}</li>
-                                          <li>更新内容：<a href="https://github.com/jpush/jpush-api-java-client/releases">Change Log</a></li>
+                                          <li>版本号：{{info_array["java"].release_version}}</li>
+                                          <li>更新时间：{{info_array["java"].release_time}}</li>
+                                          <li>GitHub：<a href="https://github.com/jpush/jpush-api-java-client">源码</a></li>                                      
                                           <div style=" clear:both; visibility:hidden;">
                                           </ul>
                                           <ul class="download-info-ul">
-                                                <li>GitHub：<a href="https://github.com/jpush/jpush-api-java-client">源码</a></li>
-                                                <li>支持：Push API v3, Report API, Device API, Schedule API</li>
-                                                <div style=" clear:both; visibility:hidden;">
-                                                </ul>
+                                             
+                                            <div style=" clear:both; visibility:hidden;">
+                                            </ul>
                                           </div>
                                           <div class="download-icon">
                                                 <a href="https://www.jiguang.cn/downloads/resource/1459130284033">下载</a>
@@ -32,7 +31,13 @@
                                     </div>
                                     <div class="hr">
                                           <hr />
-                                    </div>
+                              </div>
+                              <div>
+                              <ul>
+                              <li>{{info_array["java"].release_title}}</li>
+                              <li>{{info_array["java"].release_body}}</li>
+                              </ul>
+                              </div>
                               </li>
                               <li>
                                     <div class="download-left">

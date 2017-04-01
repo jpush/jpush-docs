@@ -9,8 +9,8 @@ class info(object):
     release_body = None
 
     def __init__(self,release_version,release_time,release_title,release_body):
-        release_version = release_version
-        release_time = release_time
-        release_title = release_title
-        release_body = release_body
+        self.release_version = release_version
+        self.release_time = release_time
+        self.release_title = release_title
+        self.release_body = release_body
 

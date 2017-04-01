@@ -6,7 +6,6 @@ import time
 import dirconfig
 import logging
 import commands
-import os
 from jinja2 import Environment, PackageLoader
 
 from githubdownload import GithubDownload
@@ -15,9 +14,9 @@ from ziptool import ZipTool
 from syninfo import info
 env = Environment(loader=PackageLoader('syn', 'templates'))
 template = env.get_template('index.md')
-#print template.render(the='variables', go='here')
 
-infoarray={}
+
+info_array={}
 
 
 downloader = GithubDownload()
@@ -38,8 +37,10 @@ for project in repositories:
     release_time = downloader.get_time(html_content)
     print release_time
     release_version = downloader.get_version(html_content)
-    infoarray[language]=info(release_version,release_title,release_title,release_body)
+    info_array[language]=info(release_version,release_title,release_title,release_body)
     print release_version
 
+print (info_array['java'].release_body)
+print template.render(info_array=info_array)
 
-print (infoarray)
+
