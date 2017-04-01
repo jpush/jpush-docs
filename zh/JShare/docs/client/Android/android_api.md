@@ -9,13 +9,14 @@ public static void init(Context context)
 * context 应用的 ApplicationContext
 
 ### API - setDebugModel
-设置是否开启debug模式。true则会打印更多的日志信息。  
+设置调试模式。  
+注：该接口需在init接口之前调用，避免出现部分日志没打印的情况。多进程情况下建议在自定义的Application中onCreate中调用。
 #### 接口定义
 ```
 public static void setDebugModel(boolean enable)
 ```
 #### 参数说明
-* enable debug开关
+* enable enable 为true则会打印debug级别的日志，false则只会打印warning级别以上的日志
 
 ### API - getPlatformList
 获取SDK所有能用的平台名称，如要使用某个平台，必须在JGShareSDK.xml中配置。  
@@ -271,7 +272,8 @@ shareParams.setVideoPath(MyApplication.VideoPath);
 ---- |-----|----|----|----
 ShareType | 是| int| 分享类型| Platform.SHARE_TEXT
 Text| 是 | String|文本|不超过1999
-ImagePath| 否 | String|本地图片地址|不支持网络图片
+ImagePath| 否 | String|本地图片地址|不支持网络图片,文件不超过10M，与ImageData二选一
+ImageData| 否 | Bitmap|本地图片bitmap|不支持网络图片,不超过2M，与ImagePath二选一
 ```
 ShareParams shareParams = new ShareParams();
 shareParams.setShareType(Platform.SHARE_IMAGE);
@@ -282,8 +284,9 @@ shareParams.setImagePath(file.getAbsolutePath());
 参数 |是否必须|参数类型|参数说明|备注
 ---- |-----|----|----|----
 ShareType | 是| int| 分享类型| Platform.SHARE_IMAGE
-Text| 否 | String|文本|
-ImagePath| 是 | String|本地图片地址|不支持网络图片
+Text| 否 | String|文本|不超过1999
+ImagePath| 是 | String|本地图片地址|不支持网络图片,文件不超过10M，与ImageData二选一
+ImageData| 是 | Bitmap|本地图片bitmap|不支持网络图片,不超过2M，与ImagePath二选一
 ```
 ShareParams shareParams = new ShareParams();
 shareParams.setShareType(Platform.SHARE_IMAGE);
@@ -294,8 +297,9 @@ shareParams.setImagePath(file.getAbsolutePath());
 参数 |是否必须|参数类型|参数说明|备注
 ---- |-----|----|----|----
 ShareType | 是| int| 分享类型| Platform.SHARE_WEBPAGE
-Text| 否 | String|文本|
-ImagePath| 否 | String|本地图片地址|不支持网络图片
+Text| 否 | String|文本|不超过1999
+ImagePath| 否 | String|本地图片地址|不支持网络图片,文件不超过10M，与ImageData二选一
+ImageData| 否 | Bitmap|本地图片bitmap|不支持网络图片,不超过2M，与ImagePath二选一
 Url| 是 | String|跳转链接|长度不超过512
 ```
 ShareParams shareParams = new ShareParams();

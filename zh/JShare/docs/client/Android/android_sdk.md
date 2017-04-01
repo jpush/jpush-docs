@@ -171,10 +171,9 @@ android {
 			android:windowSoftInputMode="stateHidden|adjustResize">
 
 			<!-- Optional QQ分享回调-->
-			<!-- 把下面的key替换成在腾讯注册的key，格式为tencent+appId，不是极光的key-->
-			<!-- 例如tencent123456-->
+            <!-- scheme为“tencent”前缀再加上QQ开发者应用的appID；例如appID为123456，则scheme＝“tencent123456” -->
 			<intent-filter>
-				<data android:scheme="您注册的key" />
+				<data android:scheme="tencent+appID" />
 				<action android:name="android.intent.action.VIEW" />
 
 				<category android:name="android.intent.category.BROWSABLE" />

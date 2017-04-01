@@ -15,11 +15,11 @@
 
 
 ##微信分享后没有回调？
-例如：官方的demo的package是cn.jiguang.share.demo，在manifest.xml文件里配置的package如果为：aaa.bbb.ccc；如果微信回调的name字段
+检查AndroidMmanifest.xml文件里配置的package包名和微信回调配置；
 <pre>
 <!-- Optional 微信分享回调-->
         < activity
             android:name=".wxapi.WXEntryActivity"
             android:exported="true" />
 </pre>
-所在的路径不在manifest里面配置的包名（package）目录下，则没有回调。
+微信回调的name字段所指的wxapi必须在包名（package）目录下；如果wxapi所在的路径不在包名（package）目录下，则没有回调。
