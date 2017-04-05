@@ -115,12 +115,14 @@ try {
     PushResult result = jpushClient.sendPush(payload);
     LOG.info("Got result - " + result);
     Thread.sleep(5000);
-    // 定义一个 close 方法，最终调用 NettyHttpClient 中的 close 方法即可。
+    // 请求结束后，调用 NettyHttpClient 中的 close 方法，否则进程不会退出。
     jpushClient.close();
 } catch(InterruptedException e) {
     e.printStackTrace();
 }
 ```
+
+3.2.17 版本后，在 PushClient 中添加了 setHttpClient(IHttpClient client) 方法，用户可以自由切换 NettyHttpClient 或是 NativeHttpClient。
 
 ### 推送样例
 
@@ -392,7 +394,7 @@ Weblogic在使用jpush-api-java-client时需要注意的一些事项。
 + 执行 keytool -list -keystore mykey.jks  命令列出信任库里的所有公钥，观察对应证书的指纹
 + 检查官网证书，观察对应证书的指纹
 + 比较两个指纹是否一致，如下图所示
-![jpush_weblogic](/image/weblogic.png)
+![jpush_weblogic](https://github.com/jpush/jpush-docs/blob/renew/zh/JPush/docs/server/3rd/image/weblogic.png)
 
 #### 异常记录
 **证书错误异常**
