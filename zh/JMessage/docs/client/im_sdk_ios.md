@@ -411,7 +411,7 @@ Version >= 3.1.0 | 逐条下发，每次都触发[onReceiveMessage:](./jmessage_
 SDK 升级到 3.1.0 版本后（或之后的版本），上层只需要做以下变动：     
 
 + 设置消息漫游，调用 [新的 SDK 初始化](./jmessage_ios_appledoc_html/Classes/JMessage.html#//api/name/setupJMessage:appKey:channel:apsForProduction:category:messageRoaming:) 设置消息漫游。
-+ 添加漫游消息的代理方法 [onSyncRoamingMessageConversation:](./jmessage_ios_appledoc_html/Protocols/JMSGConversationDelegate.html#//api/name/onSyncRoamingMessageConversation:) 通过此方法可以监听到漫游消息同步情况，从而刷新UI（<font color= CornflowerBlue>不需要漫游消息的开发者可忽略此操作</font>）。
++ 添加漫游消息的代理方法 [onSyncRoamingMessageConversation:](./jmessage_ios_appledoc_html/Protocols/JMSGConversationDelegate.html#//api/name/onSyncRoamingMessageConversation:) 通过此方法可以监听到漫游消息同步情况，从而刷新UI（不需要漫游消息的开发者可忽略此操作）。
 + 添加离线消息的代理方法 [onSyncOfflineMessageConversation:](./jmessage_ios_appledoc_html/Protocols/JMSGConversationDelegate.html#//api/name/onSyncOfflineMessageConversation:offlineMessages:) 通过此方法可以监听到离线消息同步情况，从而刷新UI。
 
 
