@@ -94,7 +94,7 @@
 		
 		<option value="//api/name/allConversations:">+ allConversations:</option>
 		
-		<option value="//api/name/allConversationsByDefault:">+ allConversationsByDefault:</option>
+		<option value="//api/name/allUnsortedConversations:">+ allUnsortedConversations:</option>
 		
 		<option value="//api/name/getAllUnreadCount">+ getAllUnreadCount</option>
 		
@@ -119,6 +119,10 @@
 		<option value="//api/name/createMessageAsyncWithImageContent:completionHandler:">- createMessageAsyncWithImageContent:completionHandler:</option>
 		
 		<option value="//api/name/sendMessage:">- sendMessage:</option>
+		
+		<option value="//api/name/sendMessage:at_list:">- sendMessage:at_list:</option>
+		
+		<option value="//api/name/sendAtAllMessage:">- sendAtAllMessage:</option>
 		
 		<option value="//api/name/sendTextMessage:">- sendTextMessage:</option>
 		
@@ -750,8 +754,8 @@
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/allConversationsByDefault:" title="allConversationsByDefault:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/allConversationsByDefault:">+&nbsp;allConversationsByDefault:</a></code>
+	<a name="//api/name/allUnsortedConversations:" title="allUnsortedConversations:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/allUnsortedConversations:">+&nbsp;allUnsortedConversations:</a></code>
 </h3>
 
 	<div class="method-info">
@@ -766,7 +770,7 @@
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>+ (void)allConversationsByDefault:(JMSGCompletionHandler)<em>handler</em></code></div>
+			<div class="method-subsection method-declaration"><code>+ (void)allUnsortedConversations:(JMSGCompletionHandler)<em>handler</em></code></div>
 
 		    
 			
@@ -1607,6 +1611,127 @@ JMSGImageContent *imageContent = [[JMSGImageContent alloc] initWithImageData:ima
 		</div>
 	</div>
 </div><div class="section-method">
+	<a name="//api/name/sendMessage:at_list:" title="sendMessage:at_list:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/sendMessage:at_list:">&ndash;&nbsp;sendMessage:at_list:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>发送@人消息（已经创建好对象的）</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)sendMessage:(JMSGMessage *)<em>message</em> at_list:(NSArray&lt;__kindofJMSGUser*&gt; *)<em>userList</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>message</code></th>
+						<td><p>通过消息创建类接口，创建好的消息对象</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>at_list</code></th>
+						<td><p>@对象的数组</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>发送消息的多个接口，都未在方法上直接提供回调。你应通过 JMSGMessageDelegate中的onReceiveMessage: error:方法来注册消息发送结果</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGConversation.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/sendAtAllMessage:" title="sendAtAllMessage:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/sendAtAllMessage:">&ndash;&nbsp;sendAtAllMessage:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>发送@所有人消息（已经创建好对象的）</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)sendAtAllMessage:(JMSGMessage *)<em>message</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>message</code></th>
+						<td><p>通过消息创建类接口，创建好的消息对象</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>发送消息的多个接口，都未在方法上直接提供回调。你应通过 JMSGMessageDelegate中的onReceiveMessage: error:方法来注册消息发送结果</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGConversation.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
 	<a name="//api/name/sendTextMessage:" title="sendTextMessage:"></a>
 	<h3 class="method-title"><code><a href="#//api/name/sendTextMessage:">&ndash;&nbsp;sendTextMessage:</a></code>
 </h3>
@@ -2274,7 +2399,7 @@ JMSGImageContent *imageContent = [[JMSGImageContent alloc] initWithImageData:ima
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2017 HXHG. All rights reserved. Updated: 2017-01-10</p>
+						<p class="copyright">Copyright &copy; 2017 HXHG. All rights reserved. Updated: 2017-04-05</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

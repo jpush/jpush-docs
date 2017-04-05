@@ -60,6 +60,8 @@
 		
 		<option value="//api/name/setupJMessage:appKey:channel:apsForProduction:category:">+ setupJMessage:appKey:channel:apsForProduction:category:</option>
 		
+		<option value="//api/name/setupJMessage:appKey:channel:apsForProduction:category:messageRoaming:">+ setupJMessage:appKey:channel:apsForProduction:category:messageRoaming:</option>
+		
 		<option value="//api/name/addDelegate:withConversation:">+ addDelegate:withConversation:</option>
 		
 		<option value="//api/name/removeDelegate:withConversation:">+ removeDelegate:withConversation:</option>
@@ -87,6 +89,10 @@
 		<option value="//api/name/registerForRemoteNotificationTypes:categories:">+ registerForRemoteNotificationTypes:categories:</option>
 		
 		<option value="//api/name/registerDeviceToken:">+ registerDeviceToken:</option>
+		
+		<option value="//api/name/setBadge:">+ setBadge:</option>
+		
+		<option value="//api/name/resetBadge">+ resetBadge</option>
 		
 	</optgroup>
 	
@@ -220,6 +226,91 @@
 		</div>
 	</div>
 </div><div class="section-method">
+	<a name="//api/name/setupJMessage:appKey:channel:apsForProduction:category:messageRoaming:" title="setupJMessage:appKey:channel:apsForProduction:category:messageRoaming:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setupJMessage:appKey:channel:apsForProduction:category:messageRoaming:">+&nbsp;setupJMessage:appKey:channel:apsForProduction:category:messageRoaming:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>初始化 JMessage SDK</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)setupJMessage:(NSDictionary *)<em>launchOptions</em> appKey:(NSString *)<em>appKey</em> channel:(NSString *)<em>channel</em> apsForProduction:(BOOL)<em>isProduction</em> category:(NSSet *)<em>category</em> messageRoaming:(BOOL)<em>isRoaming</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>launchOptions</code></th>
+						<td><p>AppDelegate启动函数的参数launchingOption(用于推送服务)</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>appKey</code></th>
+						<td><p>appKey(应用Key值,通过JPush官网可以获取)</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>channel</code></th>
+						<td><p>应用的渠道名称</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>isProduction</code></th>
+						<td><p>是否为生产模式</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>category</code></th>
+						<td><p>iOS8新增通知快捷按钮参数</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>isRoaming</code></th>
+						<td><p>是否启用消息漫游,默认关闭</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>此方法必须被调用, 以初始化 JMessage SDK</p>
+
+<p>如果未调用此方法, 本 SDK 的所有功能将不可用.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMessage.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
 	<a name="//api/name/addDelegate:withConversation:" title="addDelegate:withConversation:"></a>
 	<h3 class="method-title"><code><a href="#//api/name/addDelegate:withConversation:">+&nbsp;addDelegate:withConversation:</a></code>
 </h3>
@@ -251,11 +342,12 @@
 				
 					<tr>
 						<th scope="row" class="argument-name"><code>conversation</code></th>
-						<td><p>允许为nil.</p>
+						<td><p>允许为nil</p>
 
 <ul>
 <li>为 nil, 表示接收所有的通知, 不区分会话.</li>
 <li>不为 nil，表示只接收指定的 conversation 相关的通知.</li>
+<li>注意：如果是监听非消息事件，直接传nil,如：加好友、被踢、登录状态异常等事件.</li>
 </ul>
 </td>
 					</tr>
@@ -1028,6 +1120,123 @@ App 才可以收到并进行处理.</p>
 			
 		</div>
 	</div>
+</div><div class="section-method">
+	<a name="//api/name/setBadge:" title="setBadge:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setBadge:">+&nbsp;setBadge:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>设置角标(到服务器)</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (BOOL)setBadge:(NSInteger)<em>value</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>value</code></th>
+						<td><p>新的值. 会覆盖服务器上保存的值(这个用户)</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>本接口不会改变应用本地的角标值.
+本地仍须调用 UIApplication:setApplicationIconBadgeNumber 函数来设置脚标.</p>
+
+<p>该功能解决的问题是, 服务器端推送 APNs 时, 并不知道客户端原来已经存在的角标是多少, 指定一个固定的数字不太合理.</p>
+
+<p>APNS 服务器端脚标功能提供:</p>
+
+<ul>
+<li>通过本 API 把当前客户端(当前这个用户的) 的实际 badge 设置到服务器端保存起来;</li>
+<li>调用服务器端 API 发 APNs 时(通常这个调用是批量针对大量用户),
+使用 &ldquo;+1&rdquo; 的语义, 来表达需要基于目标用户实际的 badge 值(保存的) +1 来下发通知时带上新的 badge 值;</li>
+</ul>
+
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMessage.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/resetBadge" title="resetBadge"></a>
+	<h3 class="method-title"><code><a href="#//api/name/resetBadge">+&nbsp;resetBadge</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>重置角标(为0)</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)resetBadge</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>相当于 [setBadge:0] 的效果.
+参考 <a href="#//api/name/setBadge:">[JMessage setBadge:]</a> 说明来理解其作用.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMessage.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
 </div>
 						</div>
 						
@@ -1043,7 +1252,7 @@ App 才可以收到并进行处理.</p>
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2017 HXHG. All rights reserved. Updated: 2017-01-10</p>
+						<p class="copyright">Copyright &copy; 2017 HXHG. All rights reserved. Updated: 2017-04-05</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
