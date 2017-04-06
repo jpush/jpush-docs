@@ -14,7 +14,7 @@ import commands
 import os
 
 from githubdownload import GithubDownload
-from repositories import repositories
+from repository import repositories
 from ziptool import ZipTool
 
 logging.basicConfig(level=logging.DEBUG,
@@ -46,6 +46,7 @@ def git_pull():
     print ("git pull origin renew")
 
 downloader=GithubDownload()
+
 for file_dic in repositories:
      html_content = downloader.get_html(repositories[file_dic]["url"]+"/releases")
      try:

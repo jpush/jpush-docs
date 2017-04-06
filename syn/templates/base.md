@@ -89,8 +89,12 @@
 
 ##  服务器端 SDK 下载
 <table>
-    {% block serversdk %}
-    {% endblock %}
+      <div class="download">
+           <ul>     
+              {% for info in info_array %}
+                {% block serversdk scoped%}
+                {% endblock %}
+              {% endfor %}
 </table>
 
 ## 服务器端第三方代码</h2>

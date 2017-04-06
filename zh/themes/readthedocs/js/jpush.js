@@ -92,6 +92,21 @@ $(document).ready(function() {
         window.location.href = url;
     });
 
+    $(".auto-download-icon").mouseover(function() {
+        $(this).css("background-color", "#666666");
+        $(this).children().css("color", "#FFFFFF");
+    });
+
+    $(".auto-download-icon").mouseout(function() {
+        $(this).css("background-color", "#f8f8f8");
+        $(this).children().css("color", "#1d75bb");
+    });
+
+    $(".auto-download-icon").click(function() {
+        var url = $(this).children().attr("href");
+        window.location.href = url;
+    });
+
     $(".subnavli").click(function() {
         if ($(this).siblings().css("display") == "block") {
             //alert("yes");

@@ -659,4 +659,69 @@ code.cs, code.c {
   min-width: 160px;
 }
 
+.auto-download-image img{
+    margin-top:60px !important;
+}
+
+.auto-download-title p{
+    font-size:16px !important;
+    color:#1b75bb;
+    margin-bottom:8px;
+}
+
+.auto-download-left{
+    width:20%;
+    float: left;
+}
+
+.auto-download-title
+{
+    margin-top:20px;
+}
+.auto-download-icon{
+    clear: both;
+    width: 98px;
+    height: 30px;
+    padding-top: 2px;
+    border-style: solid;
+    border-color: #b5b5b5;
+    border-width: 1px;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.markdown-body
+{
+
+    padding:2px 2px 2px 2px ;
+    margin:2px 2px 2px 2px ;
+}
+
+
+.markdown-body h1,h2,h3
+{
+    font-size: 16px !important;
+    padding:2px 2px 2px 0px !important;
+    margin:2px 2px 2px 0px !important;
+    border-bottom-style: none !important;
+}
+
+.auto-download-info-ul li
+{
+    float:left;
+    margin-right:46px;
+    margin-top:10px;
+    margin-bottom:24px !important;
+}
+.auto-download-right
+{
+    width: 80%;
+    float: left;
+}
+.auto-download-changelog ul li{
+    clear: both;
+}
+
+
+
 
