@@ -8,7 +8,7 @@ JShare SDK 可以让用户不用额外集成第三方平台的 SDK 实现平台�
 * 支持多个平台，目前支持微信、微信朋友圈、微信收藏、QQ、QQ空间、新浪微博。
 * 一套接口接入多个平台，无需单独熟悉每个平台接入方法，接入成本低。
 
-### jshare-android-_release-v1.x.y.zip 集成压缩包内容
+### jshare-android-release-v1.x.y.zip 集成压缩包内容
 * JGShareSDK.xml
 	* 客户端嵌入SDK，各个平台配置的参考文件
 * AndroidManifest.xml
@@ -27,6 +27,8 @@ JShare SDK 可以让用户不用额外集成第三方平台的 SDK 实现平台�
 	* 各种CPU类型的native开发包。
 * example
 	* 是一个完整的Android项目，通过这个演示了JShare SDK的基本用法，可以用来做参考。
+
+	
 ### Android SDK 版本
 目前SDK只支持Android 2.3或以上版本的手机系统。
 
@@ -65,9 +67,10 @@ android {
         }
 
         manifestPlaceholders = [
-            JPUSH_PKGNAME : applicationId,
+            JSHARE_PKGNAME : applicationId,
             JPUSH_APPKEY : "你的appkey", //JShare上注册的包名对应的appkey.
             JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
+            TENCENT_APPID: "QQ开发者应用的appID",//腾讯开放平台注册的appId
         ]
         ......
     }
@@ -83,7 +86,15 @@ dependencies {
     ......
 }
 ```
+**注 :** 如果在添加以上 abiFilter 配置之后android Studio出现以下提示：
+```
+NDK integration is deprecated in the current plugin. Consider trying the new experimental plugin.
+```
 
+则在 Project 根目录的gradle.properties文件中添加：
+```
+android.useDeprecatedNdk=true
+```
 ## 手动集成步骤
 * 解压缩 jshare-android-release-1.x.y.zip 集成压缩包。
 * 复制libs/jcore-android_v1.x.y.jar到工程libs目录下。
