@@ -211,7 +211,7 @@ shareParams.setText(share_text);
 ShareType | 是| int| 分享类型| Platform.SHARE_IMAGE
 ImagePath| 否 | String|本地图片路径|ImagePath与ImageUrl、ImageArray必须三选一
 ImageUrl| 否 | String|网络图片地址|必须以http或https开头,ImagePath与ImageUrl、ImageArray必须三选一
-ImageArray| 否 | Array|图片地址数组|支持多个图片，最多9张,ImagePath与ImageUrl、ImageArray必须三选一
+ImageArray| 否 | Array|图片地址数组|支持多个图片，超出9张后，会变成上传相册，上传相册时只支持本地图片,ImagePath与ImageUrl、ImageArray必须三选一
 ```
 ShareParams shareParams = new ShareParams();
 shareParams.setShareType(Platform.SHARE_IMAGE);
