@@ -109,8 +109,8 @@
 </div>
 <div class="download-info">
 <ul class="download-info-ul">
-<li>版本号：v3.2.15</li>
-<li>更新时间：2016-10-27</li>
+<li>版本号：v3.2.18</li>
+<li>更新时间：2017-4-5</li>
 <li>更新内容：<a href="https://github.com/jpush/jpush-api-java-client/releases">Change Log</a></li>
 <div style=" clear:both; visibility:hidden;">
 </ul>
@@ -121,7 +121,7 @@
 </ul>
 </div>
 <div class="download-icon">
-<a href="https://github.com/jpush/jpush-api-java-client/releases/download/v3.2.15/jpush-client-3.2.15.zip">下载</a>
+<a href="https://sdkfiledl.jiguang.cn/jpush-client-3.2.18.zip">下载</a>
 </div>
 </div>
 <div class="hr">
