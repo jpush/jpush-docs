@@ -24,22 +24,22 @@ JPush SDK 为了尽可能提高开发者在各类 rom 上的推送送达率，�
 ### 配置 AndroidManifest.xml
 主要步骤为：
 
-* [4.1. 增加华为HMS SDK的aar](#4.1)
+* [1. 增加华为HMS SDK的aar](#1)
 
-* [4.2. 增加support v4包](#4.2)
+* [2. 增加support v4包](#2)
 
-* [4.3. 修改 minSdkVersion 的值](#4.3)
+* [3. 修改 minSdkVersion 的值](#3)
 
-* [4.4. 配置HMS SDK Push必须的组件](#4.4)
+* [4. 配置HMS SDK Push必须的组件](#4)
 
-* [4.5. 配置接收 HMS 消息的广播接收器](#4.5)
+* [5. 配置接收 HMS 消息的广播接收器](#5)
 
-* [4.6. 替换 HMS 的 appid](#4.6)
+* [6. 替换 HMS 的 appid](#6)
 
-* [4.7. 在build.gradle中配置在华为后台添加的指纹证书对应的签名](#4.7)
+* [7. 在build.gradle中配置在华为后台添加的指纹证书对应的签名](#7)
 
 
-#### <h3 id="4.1">4.1. 增加华为HMS SDK的aar</h3>
+#### <h3 id="1">1. 增加华为HMS SDK的aar</h3>
 
 将华为HMS sdk的aar文件(HMS-SDK-x.x.x.xxx.aar)添加到工程/libs目录下。
 然后在build.gradle中增加编译该 aar 的代码:
@@ -61,10 +61,10 @@ JPush SDK 为了尽可能提高开发者在各类 rom 上的推送送达率，�
 
 ***注2***：极光集成华为通道在 JPush Android SDK 3.0.5 添加，对应测试的华为HMS SDK 版本为：HMS-SDK-2.4.0.300.aar
 
-#### <h3 id="4.2">4.2. 增加support v4包</h3>
+#### <h3 id="2">2. 增加support v4包</h3>
 将android-support-v4.jar添加到工程/libs目录下,如果app已经添加了support v4包可忽略这一步.
 
-#### <h3 id="4.3">4.3. 修改 minSdkVersion 的值</h3>
+#### <h3 id="3">3. 修改 minSdkVersion 的值</h3>
 
 ***注***： HMS arr 会强制将 minSdkVersion 修改为 14。如果当前 app 使用 minSdkVersion 的值小于 14，则需要使用 tools 避免被强制覆盖。
 
@@ -82,7 +82,7 @@ JPush SDK 为了尽可能提高开发者在各类 rom 上的推送送达率，�
 ```
 
 
-#### <h3 id="4.4">4.4. 配置HMS SDK Push必须的组件</h3>
+#### <h3 id="4">4. 配置HMS SDK Push必须的组件</h3>
 
 ```
 
@@ -101,7 +101,7 @@ JPush SDK 为了尽可能提高开发者在各类 rom 上的推送送达率，�
         
 ```
 
-#### <h3 id="4.5">4.5. 配置接收 HMS 消息的广播接收器</h3>
+#### <h3 id="5">5. 配置接收 HMS 消息的广播接收器</h3>
 
 
 ```
@@ -123,7 +123,7 @@ JPush SDK 为了尽可能提高开发者在各类 rom 上的推送送达率，�
 ```
 
 
-#### <h3 id="4.6">4.6. 替换 HMS 的 appid </h3>
+#### <h3 id="6">6. 替换 HMS 的 appid </h3>
 在华为控制台上获取注册应用的 appid，并填充在 manifest 如下所示的位置。
 
 ```
@@ -134,7 +134,7 @@ JPush SDK 为了尽可能提高开发者在各类 rom 上的推送送达率，�
 
 ```
 
-#### <h3 id="4.7">4.7. 在build.gradle中配置在华为后台添加的指纹证书对应的签名</h3>
+#### <h3 id="7">7. 在build.gradle中配置在华为后台添加的指纹证书对应的签名</h3>
 ***注***：HMS 服务必须要求 app 签名才能注册成功。指纹证书是在终端采用keytool -list -v -keystore keystorefileName 获取偶对应的指纹证书.
 
 jira - EMUI 版本说明  
