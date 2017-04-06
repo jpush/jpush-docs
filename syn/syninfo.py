@@ -11,7 +11,8 @@ class info(object):
     languages=None
     project_url = None
 
-    def __init__(self,languages=None,name=None,project_url=None,release_version=None,release_time=None,release_title=None,release_body=None):
+    def __init__(self,languages=None,name=None,project_url=None,release_version=None,release_time=None,
+                 release_title=None,release_body=None):
         self.release_version = release_version
         self.release_time = release_time
         self.release_title = release_title

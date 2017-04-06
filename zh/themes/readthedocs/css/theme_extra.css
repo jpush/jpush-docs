@@ -677,6 +677,7 @@ code.cs, code.c {
 .auto-download-title
 {
     margin-top:20px;
+    color:#666666;
 }
 .auto-download-icon{
     clear: both;
@@ -690,9 +691,15 @@ code.cs, code.c {
     margin-bottom: 5px;
 }
 
+.auto-changelog-title h3
+{
+    font-size:14px !important;
+}
+
 .markdown-body
 {
-
+    font-size: 12px !important;
+    color:#666666 !important;
     padding:2px 2px 2px 2px ;
     margin:2px 2px 2px 2px ;
 }
@@ -700,7 +707,8 @@ code.cs, code.c {
 
 .markdown-body h1,h2,h3
 {
-    font-size: 16px !important;
+    color:#666666 !important;
+    font-size: 12px !important;
     padding:2px 2px 2px 0px !important;
     margin:2px 2px 2px 0px !important;
     border-bottom-style: none !important;

@@ -24,7 +24,7 @@ logging.basicConfig(level=logging.DEBUG,
                     filename='/opt/push/jpush-docs/syn.log',
                     filemode='a+')
 
-env = Environment(loader=PackageLoader('syn', 'templates'))
+env = Environment(loader=PackageLoader('synpage', 'templates'))
 template = env.get_template('index.md')
 
 info_array={}

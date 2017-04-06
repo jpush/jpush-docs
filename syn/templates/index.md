@@ -19,7 +19,7 @@
         </div>
         <div class="auto-download-changelog">
             <ul>
-                <li>
+                <li class="auto-changelog-title">
                     <h3>更新内容:{{info_array[info].release_title}}</h3></li>
                     <li><div>{{info_array[info].release_body}}</div></li>
             </ul>
