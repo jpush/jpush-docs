@@ -626,7 +626,7 @@ POST /v1/messages
 		</tr>
 		<tr >
 			<td>msg_body</td>
-			<td>Json对象的消息体</td>
+			<td>Json对象的消息体 限制为4096byte</td>
 		</tr>
 		<tr >
 			<td>msg_body-> extras</td>
