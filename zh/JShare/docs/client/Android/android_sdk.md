@@ -26,8 +26,7 @@ JShare SDK 可以让用户不用额外集成第三方平台的 SDK 实现平台�
 * libs/(cpu-type)/libjcore1xy.so
 	* 各种CPU类型的native开发包。
 * example
-	* 是一个完整的Android项目，通过这个演示了JShare SDK的基本用法，可以用来做参考。
-
+	* 是一个完整的Android项目，通过这个演示了JShare SDK的基本用法，可以用来做参考。  
 	
 ### Android SDK 版本
 目前SDK只支持Android 2.3或以上版本的手机系统。
@@ -90,11 +89,12 @@ dependencies {
 ```
 NDK integration is deprecated in the current plugin. Consider trying the new experimental plugin.
 ```
-
 则在 Project 根目录的gradle.properties文件中添加：
 ```
 android.useDeprecatedNdk=true
 ```
+* 按以下说明配置JGShareSDK.xml文件。
+
 ## 手动集成步骤
 * 解压缩 jshare-android-release-1.x.y.zip 集成压缩包。
 * 复制libs/jcore-android_v1.x.y.jar到工程libs目录下。
@@ -221,7 +221,10 @@ android {
 
 </manifest>
 ```
+
+## 配置和代码说明
 ### 配置 JGShareSDK.xml
+无论是使用自动集成还是手动集成方式，都需要配置JGShareSDK.xml。
 主要步骤为：
 
 * 复制或者新建JGShareSDK.xml到工程目录的asset目录下。
