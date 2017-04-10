@@ -694,6 +694,10 @@ code.cs, code.c {
 .auto-changelog-title h3
 {
     font-size:14px !important;
+    font-weight:inherit !important;
+    padding:2px 2px 2px 0px !important;
+    margin:2px 2px 2px 0px !important;
+    color:#666666 !important;
 }
 
 .markdown-body
@@ -702,16 +706,18 @@ code.cs, code.c {
     color:#666666 !important;
     padding:2px 2px 2px 2px ;
     margin:2px 2px 2px 2px ;
+    font-weight:inherit !important;
 }
 
 
-.markdown-body h1,h2,h3
+.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body li,.markdown-body p
 {
     color:#666666 !important;
     font-size: 12px !important;
     padding:2px 2px 2px 0px !important;
     margin:2px 2px 2px 0px !important;
     border-bottom-style: none !important;
+    font-weight:inherit !important;
 }
 
 .auto-download-info-ul li
