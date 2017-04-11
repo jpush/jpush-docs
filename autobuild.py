@@ -61,6 +61,7 @@ logging.basicConfig(level=logging.DEBUG,
 kill_git()
 build()
 git_pull()
+
 exit()
 
 
