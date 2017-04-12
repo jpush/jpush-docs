@@ -60,7 +60,99 @@ JSHAREMessage类，分享参数模型。
     
     
     
-##分享参数说明
+##分享参数模型
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+.tg .tg-yw4l{vertical-align:top}
+</style>
+<table class="tg">
+  <tr>
+    <th class="tg-yw4l">参数</th>
+    <th class="tg-yw4l">类型</th>
+    <th class="tg-yw4l">参数说明</th>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">title</td>
+    <td class="tg-yw4l">NSString</td>
+    <td class="tg-yw4l">标题：长度每个平台的限制而不同。<br>微信好友：最大 512 字符。<br>微信朋友圈：最大 512 字符。<br>微信收藏：最大 512 字符。<br>QQ：最大 128 字符。<br>QQ空间：最大 128 字符。<br>新浪微博：分享链接类型，最大 1 K字符。</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">text</td>
+    <td class="tg-yw4l">NSString</td>
+    <td class="tg-yw4l">文本：文本内容，长度每个平台的限制而不同。<br>微信好友：分享文本类型时，最大 10 K字符。分享非文本类型，最大 1 K字符。<br>微信朋友圈：分享文本类型时，最大 10 K字符。分享非文本类型，最大 1 K字符。<br>微信收藏：分享文本类型时，最大 10 K字符。分享非文本类型，最大 1 K字符。<br>QQ：分享文本类型时，最大 1536 字符。分享非文本类型，最大 512 字符。<br>QQ空间：分享文本类型时，最大 128 字符。分享非文本类型，最大 512 字符。<br>新浪微博：最大 140 汉字。</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">url</td>
+    <td class="tg-yw4l">NSString</td>
+    <td class="tg-yw4l">链接：根据媒体类型填入链接，长度每个平台的限制不同。分享非文本及非图片类型时，必要；<br>微信好友：最大 10 K字符。<br>微信朋友圈：最大 10 K字符。<br>微信收藏：最大 10 K字符。<br>QQ：最大 512 字符。<br>QQ空间：最大 512 字符。<br>新浪微博：最大 512 字符。</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">videoAssetURL</td>
+    <td class="tg-yw4l">NSString</td>
+    <td class="tg-yw4l">本地视频AssetURL:分享本地视频到 QQ 空间的必填参数，可传ALAsset的ALAssetPropertyAssetURL，或者PHAsset的localIdentifier。</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">thumbnail</td>
+    <td class="tg-yw4l">NSData</td>
+    <td class="tg-yw4l">缩略图：大小限制根据平台不同而不同。<br>微信好友：最大 32 K。<br>微信朋友圈：最大 32 K。<br>微信收藏：最大 32 K。<br>QQ：最大 1 M。<br>QQ空间：最大 1 M。<br>新浪微博：最大 32 K。</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">image</td>
+    <td class="tg-yw4l">NSData</td>
+    <td class="tg-yw4l">图片：分享JSHAREImage类型，大小限制根据平台不同而不同，当分享JSHARELink类型时没有提供缩略图时，若此参数不为空，JSHARE将会裁剪此参数提供的图片去适配缩略图。<br>微信好友：最大 10 M。<br>微信朋友圈：最大 10 M。<br>微信收藏：最大 10 M。<br>QQ：最大 5 M。<br>QQ空间：最大 5 M。<br>新浪微博：最大 10 M。</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">images</td>
+    <td class="tg-yw4l">NSArray</td>
+    <td class="tg-yw4l">图片数组：分享到 QQ 空间支持多张图片，图片数组的元素需要为 NSData 类型，图片数量限制为20张。若只分享单张图片至 QQ 空间使用 image 字段即可。</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">mediaType</td>
+    <td class="tg-yw4l">JSHAREMediaType</td>
+    <td class="tg-yw4l">分享的媒体类型。必要参数</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">platform</td>
+    <td class="tg-yw4l">JSHAREPlatform</td>
+    <td class="tg-yw4l">分享的目标平台。必要参数</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">mediaDataUrl</td>
+    <td class="tg-yw4l">NSString</td>
+    <td class="tg-yw4l">分享JSHAREAudio类型至微信平台或QQ平台时，音乐数据url地址。<br>微信好友：最大 10 K字符。<br>微信朋友圈：最大 10 K字符。<br>微信收藏：最大 10 K字符。<br>QQ：最大 512 字符。<br>QQ空间：最大 512 字符。<br>新浪微博：最大 512 字符。</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">extInfo</td>
+    <td class="tg-yw4l">NSString</td>
+    <td class="tg-yw4l">分享JSHAREApp类型至微信平台时，第三方程序自定义的简单数据。</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">fileData</td>
+    <td class="tg-yw4l">NSData</td>
+    <td class="tg-yw4l">分享JSHAREFile类型或者JSHAREApp类型至微信平台时，对应的File数据以及App数据，最大 10 M</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">fileExt</td>
+    <td class="tg-yw4l">NSString</td>
+    <td class="tg-yw4l">分享JSHAREFile类型至微信平台时，对应的文件后缀名，分享文件必填，否则会导致分享到微信平台出现不一致的文件类型,最大 64 字符</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">emoticonData</td>
+    <td class="tg-yw4l">NSData</td>
+    <td class="tg-yw4l">分享JSHAREEmoticon类型至微信平台时，对应的表情数据，最大 10 M</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">sinaObjectID</td>
+    <td class="tg-yw4l">NSString</td>
+    <td class="tg-yw4l">分享至新浪微博平台时，分享参数的一个标识符，默认为 “objectId”。最大 255 字符</td>
+  </tr>
+</table>
+    
+##分享参数模型
+JSHAREMessage
+
 - title：<br>
        - 标题：长度每个平台的限制而不同。<br>
        - 微信好友：最大 512 字符。<br>
