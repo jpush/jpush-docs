@@ -1,5 +1,9 @@
 # IM REST Report
 
+<div style="font-size:13px;background: #F0E68C;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 10px; padding-bottom: 0;margin-bottom: 0;">
+<p>特别提示：v1 版本获取数据有数量限制，此版本将不再提供新功能，仅维护因 bug 导致的问题，请正在使用此版本的开发者尽快升级到 v2 版本。
+</div>
+
 ## MessageList 消息历史
 
 目前只保存最近60天消息，这类 API 地址统一为（注意与 Push API 不同）：**https://report.im.jpush.cn/v1**
