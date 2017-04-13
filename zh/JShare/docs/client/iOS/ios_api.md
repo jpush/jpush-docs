@@ -49,7 +49,7 @@ config：JSHARELaunchConfig类。
 +(BOOL)handleOpenUrl:(NSURL *)url;
 ```
 ####参数说明
-    url：在 Appdelegate 的 application:handleOpenURL: 中调用。不调用此接口 JSHARE 将无法提供分享回调。
+url：在 Appdelegate 的 application:handleOpenURL: 中调用。不调用此接口 JSHARE 将无法提供分享回调。
 ####调用示例
 
 ```
