@@ -25,7 +25,7 @@
             android:name=".wxapi.WXEntryActivity"
             android:exported="true" />
             
-4.Webportal上数据每隔一个小时刷新一次<br>
+4.Webportal上数据每隔一个小时刷新一次。<br>
 
 
 ## 没有安装客户端能否进行分享

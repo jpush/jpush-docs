@@ -196,7 +196,7 @@ handler：分享结果的回调。
 ##日志等级设置
 ###Method - setDebug
 ####接口说明
-API 用于开启Debug模式，显示更多的日志信息;当需要了解更多的调试信息时候，调用API开启Debug模式
+用于开启Debug模式，显示更多的日志信息;当需要了解更多的调试信息时候，调用API开启Debug模式
 ####接口定义
 ```    
 +(void)setDebug:(BOOL)enable
