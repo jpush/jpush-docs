@@ -1,11 +1,11 @@
 # iOS SDK API
 
-###SDK 接口说明
+##SDK 接口说明
 JSHAREService类，包含分享 SDK 的所有接口。
 JSHARELaunchConfig类，分享 SDK 启动配置模型。
 JSHAREMessage类，分享参数模型。
 
-###SDK 初始化
+##SDK 初始化
 
 * +(void)setupWithConfig:(JSHARELaunchConfig *)config
     * 接口说明：
@@ -35,7 +35,7 @@ JSHAREMessage类，分享参数模型。
 
 	
 	
-###处理平台回调
+##处理平台回调
     
    * +(BOOL)handleOpenUrl:(NSURL *)url; 
     * 接口说明：
@@ -60,7 +60,7 @@ JSHAREMessage类，分享参数模型。
     
     
     
-###分享参数模型
+##分享参数模型
 <style type="text/css">
 .tg  {border-collapse:collapse;border-spacing:0;}
 .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
@@ -151,7 +151,7 @@ JSHAREMessage类，分享参数模型。
 </table>
 
 
-###发起分享
+##发起分享
 
 * +(void)share:(JSHAREMessage *)message
       handler:(JSHAREStateHandler)handler
@@ -181,19 +181,19 @@ JSHAREMessage类，分享参数模型。
     
         
     
-###检查是否存在微信客户端
+##检查是否存在微信客户端
     
 * +(BOOL)isWeChatInstalled
     
-###检查是否存在 QQ 客户端
+##检查是否存在 QQ 客户端
     
 * +(BOOL)isQQInstalled;
 
-###检查是否存在新浪微博客户端
+##检查是否存在新浪微博客户端
     
 * +(BOOL)isSinaWeiBoInstalled;
 
-###日志等级设置
+##日志等级设置
     
 * +(void)setDebug:(BOOL)enable
     * 接口说明：
