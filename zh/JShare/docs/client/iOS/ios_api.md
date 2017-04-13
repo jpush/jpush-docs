@@ -6,17 +6,18 @@ JSHARELaunchConfig类，分享 SDK 启动配置模型。
 JSHAREMessage类，分享参数模型。
 
 ##SDK 初始化
-###Method setupWithConfig
+
+### Method setupWithConfig
 
 ####接口说明
-      初始化接口,建议在application:didFinishLaunchingWithOptions:中调用。
+初始化接口,建议在application:didFinishLaunchingWithOptions:中调用。
 ####接口定义
 ```
 +(void)setupWithConfig:(JSHARELaunchConfig *)config
 ```
 
 ####参数说明：
-      config：JSHARELaunchConfig类。
+config：JSHARELaunchConfig类。
     
 ####调用示例
 
