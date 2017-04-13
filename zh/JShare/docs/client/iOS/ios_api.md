@@ -1,16 +1,16 @@
 # iOS SDK API
 
 ##SDK 接口说明
-JSHAREService类，包含分享 SDK 的所有接口。
-JSHARELaunchConfig类，分享 SDK 启动配置模型。
-JSHAREMessage类，分享参数模型。
+JSHAREService类，包含分享 SDK 的所有接口。<br>
+JSHARELaunchConfig类，分享 SDK 启动配置模型。<br>
+JSHAREMessage类，分享参数模型。<br>
 
 ##SDK 初始化
 
 ### Method setupWithConfig
 
 ####接口说明
-初始化接口,建议在application:didFinishLaunchingWithOptions:中调用。
+初始化接口,建议在application:didFinishLaunchingWithOptions中调用。
 ####接口定义
 ```
 +(void)setupWithConfig:(JSHARELaunchConfig *)config
@@ -41,17 +41,16 @@ config：JSHARELaunchConfig类。
 	
 	
 ##处理平台回调
-    
-   * +(BOOL)handleOpenUrl:(NSURL *)url; 
-    * 接口说明：
-    处理平台回调,必要！
-    
-    * 参数说明：
+### Method handleOpenUrl
+####接口说明
+处理平台回调，必要；
+####接口定义
+```
++(BOOL)handleOpenUrl:(NSURL *)url;
+```
+####参数说明
     url：在 Appdelegate 的 application:handleOpenURL: 中调用。不调用此接口 JSHARE 将无法提供分享回调。
-    * 调用示例：
-    
-    
-
+####调用示例
 
 ```
     - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url{
@@ -62,9 +61,6 @@ config：JSHARELaunchConfig类。
 
 	
 	
-    
-    
-    
 ##分享参数模型
 <style type="text/css">
 .tg  {border-collapse:collapse;border-spacing:0;}
@@ -157,21 +153,19 @@ config：JSHARELaunchConfig类。
 
 
 ##发起分享
-
-* +(void)share:(JSHAREMessage *)message
+### Method share
+####接口说明
+调用此接口发起分享
+####接口定义
+```
+ +(void)share:(JSHAREMessage *)message
       handler:(JSHAREStateHandler)handler
-    
-    * 接口说明：
+```
+####参数说明
+message：JSHAREMessage类<br>
+handler：分享结果的回调。
         
-        调用此接口发起分享。
-        
-    * 参数说明：
-     
-        message：JSHAREMessage类<br>
-        handler：分享结果的回调。
-        
-    * 调用示例：
-    
+####调用示例：
     
     
 ```
@@ -188,28 +182,28 @@ config：JSHARELaunchConfig类。
     
 ##检查是否存在微信客户端
     
-* +(BOOL)isWeChatInstalled
+ +(BOOL)isWeChatInstalled
     
 ##检查是否存在 QQ 客户端
     
-* +(BOOL)isQQInstalled;
+ +(BOOL)isQQInstalled;
 
 ##检查是否存在新浪微博客户端
     
-* +(BOOL)isSinaWeiBoInstalled;
+ +(BOOL)isSinaWeiBoInstalled;
 
 ##日志等级设置
-    
-* +(void)setDebug:(BOOL)enable
-    * 接口说明：
-            设置是否打印sdk产生的Debug级log信息, 默认为NO(不打印log)
-    * 参数说明：
-            enable：设置为YES开启，设置为NO关闭
+###Method setDebug
+####接口说明
+设置是否打印sdk产生的Debug级log信息, 默认为NO(不打印log)
+####接口定义
+```    
++(void)setDebug:(BOOL)enable
+```
+####参数说明：
+enable：设置为YES开启，设置为NO关闭
 
-    * 调用实例：
-        
-        
-        
+####调用示例 
         
 ```
       [JSHARESdk setDebug:YES];
