@@ -7,7 +7,7 @@ JSHAREMessage类，分享参数模型。<br>
 
 ##SDK 初始化
 
-### Method setupWithConfig
+### Method - setupWithConfig
 
 ####接口说明
 初始化接口,建议在application:didFinishLaunchingWithOptions中调用。
@@ -41,7 +41,7 @@ config：JSHARELaunchConfig类。
 	
 	
 ##处理平台回调
-### Method handleOpenUrl
+### Method - handleOpenUrl
 ####接口说明
 处理平台回调，必要；
 ####接口定义
@@ -82,7 +82,8 @@ url：在 Appdelegate 的 application:handleOpenURL: 中调用。不调用此接
   <tr>
     <td class="tg-yw4l">text</td>
     <td class="tg-yw4l">NSString</td>
-    <td class="tg-yw4l">文本：文本内容，长度每个平台的限制而不同。<br>微信好友：分享文本类型时，最大 10 K字符。分享非文本类型，最大 1 K字符。<br>微信朋友圈：分享文本类型时，最大 10 K字符。分享非文本类型，最大 1 K字符。<br>微信收藏：分享文本类型时，最大 10 K字符。分享非文本类型，最大 1 K字符。<br>QQ：分享文本类型时，最大 1536 字符。分享非文本类型，最大 512 字符。<br>QQ空间：分享文本类型时，最大 128 字符。分享非文本类型，最大 512 字符。<br>新浪微博：最大 140 汉字。</td>
+    <td class="tg-yw4l">文本：文本内容，长度每个平台的限制而不同。<br>在分享非文本类型时，此字段作为分享内容的描述使用。<br>
+微信好友：分享文本类型时，最大 10 K字符。分享非文本类型，最大 1 K字符。<br>微信朋友圈：分享文本类型时，最大 10 K字符。分享非文本类型，最大 1 K字符。<br>微信收藏：分享文本类型时，最大 10 K字符。分享非文本类型，最大 1 K字符。<br>QQ：分享文本类型时，最大 1536 字符。分享非文本类型，最大 512 字符。<br>QQ空间：分享文本类型时，最大 128 字符。分享非文本类型，最大 512 字符。<br>新浪微博：最大 140 汉字。</td>
   </tr>
   <tr>
     <td class="tg-yw4l">url</td>
@@ -153,7 +154,7 @@ url：在 Appdelegate 的 application:handleOpenURL: 中调用。不调用此接
 
 
 ##发起分享
-### Method share
+### Method - share
 ####接口说明
 调用此接口发起分享
 ####接口定义
@@ -171,7 +172,7 @@ handler：分享结果的回调。
 ```
     JSHAREMessage *message = [JSHAREMessage message];
     message.text = @"欢迎使用极光社会化组件JShare，SDK包体积小，集成简单，支持主流社交平台、帮助开发者轻松实现社会化功能！";
-    message.platform = platform;
+    message.platform = JSHAREPlatformWechatSession;
     message.mediaType = JSHAREText;
     [JSHARESdk share:message handler:^(JSHAREState state, NSError *error) {
           NSLog(@"分享回调");
@@ -193,9 +194,9 @@ handler：分享结果的回调。
  +(BOOL)isSinaWeiBoInstalled;
 
 ##日志等级设置
-###Method setDebug
+###Method - setDebug
 ####接口说明
-设置是否打印sdk产生的Debug级log信息, 默认为NO(不打印log)
+API 用于开启Debug模式，显示更多的日志信息;当需要了解更多的调试信息时候，调用API开启Debug模式
 ####接口定义
 ```    
 +(void)setDebug:(BOOL)enable
@@ -206,7 +207,7 @@ enable：设置为YES开启，设置为NO关闭
 ####调用示例 
         
 ```
-      [JSHARESdk setDebug:YES];
+[JSHAREService setDebug:YES];
 ```
       
       

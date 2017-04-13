@@ -10,12 +10,12 @@ JSHARE SDK 同时支持 微信、QQ、微博等社交平台的分享功能，集
 
 * JSHARE-ios-1.0.0.a静态库
 * jcore-ios-x.x.x.a静态库
-* JSHARE SDK 入口：JSHARESdk.h 头文件
+* JSHARE SDK 入口：JSHAREService.h 头文件
 * 一个完整的 iOS Demo 项目工程，这个工程演示了 JSHARE SDK 的基本用法，配置 SDK 时建议参考这个 Demo。
 
 <font color="#4590a3" size = "4px">文档</font> 
 
-正式编码前，请先去看JSHARE iOS SDK 相关文档或JSHARESdk.h文件。
+正式编码前，请先去看JSHARE iOS SDK 相关文档或JSHAREService.h文件。
 
 
 [在线文档](https://docs.jiguang.cn)（本文档如有更新，会同时发布到此网站）
@@ -60,7 +60,7 @@ JSHARE SDK 同时支持 微信、QQ、微博等社交平台的分享功能，集
 
 ```
   //引用JSHARE SDK 头文件
-  #import "JSHARESdk.h"
+  #import "JSHAREService.h"
   //如需要使用idfa，请添加 AdSupport.framework 框架，并引用其头文件
   #import <AdSupport/AdSupport.h>
 ```
@@ -73,16 +73,16 @@ JSHARE SDK 同时支持 微信、QQ、微博等社交平台的分享功能，集
 ```
 //请根据自己的需求配置分享平台信息
  JSHARELaunchConfig *config = [[JSHARELaunchConfig alloc] init];
-    config.appKey = @"Your JiGuang AppKey";
+    config.appKey = @"AppKey copied from JiGuang Portal application";
     config.SinaWeiboAppKey = @"Your SinaWeibo Appkey";
     config.SinaWeiboAppSecret = @"Your SinaWeiboAppSecret";
     config.SinaRedirectUri = @"Your SinaRedirectUri";
     config.QQAppId = @"1105919571";
     config.WeChatAppId = @"Your config.WeChatAppId "; //wxa2ea563906227379
- [JSHARESdk setupWithConfig:config];
+ [JSHAREService setupWithConfig:config];
     
 //如需更详细的JSHARE日志，请在这里调用以下接口：
- [JSHARESdk setDebug:YES];
+ [JSHAREService setDebug:YES];
     
     
 ```
@@ -98,7 +98,7 @@ JSHARE SDK 同时支持 微信、QQ、微博等社交平台的分享功能，集
 
 ```
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url{
-    [JSHARESdk handleOpenUrl:url];
+    [JSHAREService handleOpenUrl:url];
     return YES;
 }
 
