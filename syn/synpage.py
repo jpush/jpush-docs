@@ -7,7 +7,6 @@ import dirconfig
 import logging
 import commands
 import sys
-import var_dump
 
 from jinja2 import Environment, PackageLoader
 
