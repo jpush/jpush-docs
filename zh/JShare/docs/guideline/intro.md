@@ -1,3 +1,4 @@
+
 #JShare产品介绍
 极光Share致力于帮助应用快速具备国内主流社交平台分享功能，提供了接入新浪微博，QQ，微信等第三方社会化分享服务；SDK包体积最小，集成成本低，提供iOS和android的SDK，并且还提供了统计功能，方便开发者了解应用的分享效果，提高产品推广效率，助力产品获得更多用户。
 
@@ -35,16 +36,3 @@ iOS 开发者请参考文档：[JShare iOS SDK 集成指南](../client/iOS/ios_s
 ###相关文档
 [JShare Android SDK 接口文档](../client/Android/android_api.md)<br>
 [JShare iOS SDK 接口文档](../client/iOS/ios_api.md)
-
-
-
-
-
-
-
-
-
-
-
-
-	
