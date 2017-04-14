@@ -5,11 +5,9 @@
 ##JShare技术原理
 目前市面上的依赖平台原生sdk的分享sdk皆为这种形式
 <div>
-![](image/yilaiban.png)
-但是，极光Share技术上不依赖原生SDK的方式，分享的原理实际上就是两个app之间的相互跳转及通信，使用极光Share代替平台SDK实现分享，其原理如下图：
+![](image/yilaiban.png)但是，极光Share技术上不依赖原生SDK的方式，分享的原理实际上就是两个app之间的相互跳转及通信，使用极光Share代替平台SDK实现分享，其原理如下图：
 <div>
-![](image/feiyilaiban.png)
-JShare SDK分享遵循以下步骤。
+![](image/feiyilaiban.png)JShare SDK分享遵循以下步骤。
 
 1.注册AppKey。<br>
 2.配置分享参数。<br>
