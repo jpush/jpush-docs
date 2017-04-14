@@ -81,7 +81,7 @@ dependencies {
     compile 'cn.jiguang.sdk:jshare-qqmodel:1.0.0'  // 此处以jshare-qqmodel 1.0.0 版本为例。
     compile 'cn.jiguang.sdk:jshare-wechatmodel:1.0.0'  // 此处以jshare-wechatmodel 1.0.0 版本为例。
     compile 'cn.jiguang.sdk:jshare-sinamodel:1.0.0'  // 此处以jshare-sinamodel 1.0.0 版本为例。
-    compile 'cn.jiguang.sdk:jcore:1.1.1'  // 此处以JCore 1.1.1 版本为例。
+    compile 'cn.jiguang.sdk:jcore:1.1.1'  // 此处以JCore 1.1.2 版本为例。
     ......
 }
 ```
