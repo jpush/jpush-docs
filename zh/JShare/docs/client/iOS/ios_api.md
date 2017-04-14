@@ -187,11 +187,11 @@ handler：分享结果的回调。
     
 ##检查是否存在 QQ 客户端
     
- +(BOOL)isQQInstalled;
+ +(BOOL)isQQInstalled
 
 ##检查是否存在新浪微博客户端
     
- +(BOOL)isSinaWeiBoInstalled;
+ +(BOOL)isSinaWeiBoInstalled
 
 ##日志等级设置
 ###Method - setDebug
