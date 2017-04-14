@@ -23,7 +23,7 @@
 <div style=" clear:both; visibility:hidden;">
 </ul>
 <ul class="download-info-ul">
-<li>Google Play 版本：<a href="https://sdkfiledl.jiguang.cn/jpush-android-release-2.2.0-gp.zip">下载</a></li>
+<li>Google Play 版本：<a href="https://sdkfiledl.jiguang.cn/jpush-android-google-play-3.0.3.zip">下载</a></li>
 <div style=" clear:both; visibility:hidden;">
 </ul>
 </div>
