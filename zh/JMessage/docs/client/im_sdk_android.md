@@ -104,7 +104,7 @@ JMessageClient.init(Context context)
 ### SDK初始化(设置消息记录漫游)
 ***Since 2.1.0***  
 SDK初始化,同时指定是否启用消息记录漫游。  
-打开消息漫游之后，用户多个设备之间登陆时，sdk会自动将当前登陆用户的历史消息同步到本地，同步完成之后sdk会发送一个`ConversationRefreshEvent`事件通知上层刷新，具体事件处理方法见[事件处理](#Event)一节。
+打开消息漫游之后，用户多个设备之间登录时，sdk会自动将当前登录用户的历史消息同步到本地，同步完成之后sdk会发送一个`ConversationRefreshEvent`事件通知上层刷新，具体事件处理方法见[事件处理](#Event)一节。
 
 ```
 JMessageClient.init(Context context, boolean msgRoaming)
@@ -481,14 +481,16 @@ JMessageClient.deleteGroupConversation(long groupID);
 #### 创建自定义消息
 ```
  /**
-  * 创建一条单聊自定义消息
-  *
-  * @param username  聊天对象username
-  * @param valuesMap 包含自定义键值对的map.
-  * @return 消息对象
-  */
-JMessageClient.createSingleCustomMessage(String username,
-   Map<? extends String, ?> valuesMap)
+     * 创建一条单聊自定义消息，此方法是创建message的快捷接口，对于不需要关注会话实例的开发者可以使用此方法
+     * 快捷的创建一条消息。其他的情况下推荐使用{@link Conversation#createSendMessage(MessageContent)}
+     * 接口来创建消息
+     *
+     * @param username  聊天对象username
+     * @param appKey    聊天对象所属应用的appKey
+     * @param valuesMap 包含自定义键值对的map.
+     * @return 消息对象
+     */
+JMessageClient.createSingleCustomMessage(String username, String appKey, Map<? extends String, ? extends String> valuesMap)
 
  /**
   * 创建一条群聊自定义消息
@@ -720,7 +722,7 @@ public void onEventMainThread(EventEntity event){
 
 </br>
 
-当前登陆用户信息被更新事件实体类 MyInfoUpdatedEvent
+当前登录用户信息被更新事件实体类 MyInfoUpdatedEvent
 
 <div class="table-d" align="left" >
   <table border="1" width = "100%">
@@ -1343,7 +1345,7 @@ ContactManager.declineInvitation("test_user", "test_appkey", "sorry~", new Basic
 ```
 
 #### 获取好友列表
-获取当前登陆用户的好友列表，异步返回结果。
+获取当前登录用户的好友列表，异步返回结果。
 
 ```
 ContactManager.getFriendList(final GetUserInfoListCallback callback)
