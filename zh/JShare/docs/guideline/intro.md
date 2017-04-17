@@ -27,7 +27,7 @@
 
 ##集成流程
 
-在Web控制台上创建应用，得到appkey。如果之前已经使用了JPush，可以直接延用老的Appkey。
+在Web控制台上创建应用，得到Appkey。如果之前已经使用了JPush，可以直接延用老的Appkey。
 
 集成客户端SDK。<br>
 Android开发者请参考文档:[JShare Android SDK 集成指南](../client/Android/android_sdk.md)<br>
