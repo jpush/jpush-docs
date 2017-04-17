@@ -63,12 +63,12 @@ $(document).ready(function() {
 
         url = window.location.href;
     if(url.indexOf("janalytics")>0){
-        $("#jpush-top").css("border-bottom", "solid 3px #1b75bb");
+        $("#janalytics-top").css("border-bottom", "solid 3px #1b75bb");
     }
     //console.log(url.indexOf("jpush"));
         url = window.location.href;
     if(url.indexOf("jshare")>0){
-        $("#jpush-top").css("border-bottom", "solid 3px #1b75bb");
+        $("#jshare-top").css("border-bottom", "solid 3px #1b75bb");
     }
     //console.log(url.indexOf("jpush"));
 
