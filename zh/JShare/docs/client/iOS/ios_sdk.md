@@ -18,7 +18,7 @@ JSHARE SDK 可以让用户不用额外集成第三方平台的 SDK 实现平台�
 
 * jshare-ios-1.0.0.a静态库
 * jcore-ios-x.x.x.a静态库
-* JSHARE SDK 入口 JSHARESdk.h 头文件
+* JSHARE SDK 入口 JSHAREService.h 头文件
 * 一个完整的 iOS Demo 项目工程，这个工程演示了 JSHARE SDK 的基本用法，配置 SDK 时建议参考这个 Demo。
 
 ###iOS SDK 支持版本
@@ -34,22 +34,21 @@ JSHARE SDK 可以让用户不用额外集成第三方平台的 SDK 实现平台�
 ##JSHARE SDK 集成步骤
 
 * 解压压缩包，将 Lib 下的所有文件复制到工程中，即可开始使用 SDK。
-* 增加相关的 framework 依赖：
-UIKit,SystemConfiguration,CoreTelephony,CoreGraphics,Security,Foundation,CoreLocation,CoreFoundation,CFNetwork,libz.tbd,libresolv.tbd
+* 增加相关的 framework 依赖：UIKit,SystemConfiguration,CoreTelephony,CoreGraphics,Security,Foundation,CoreLocation,CoreFoundation,CFNetwork,libz.tbd,libresolv.tbd
 
 * 添加以下代码到 AppDelegate.m 引用头文件的位置
 
 
 ```
 // 引入JSHARE功能所需头文件
-#import "JSHARESdk.h"
+#import "JSHAREService.h"
 // 如果需要使用idfa功能所需要引入的头文件（可选）
 #import <AdSupport/AdSupport.h>
 ```
 
 ##SDK 主要接口说明
 JSHARELaunchConfig类，JSHARE SDK 启动配置模型。
-JSHARESdk类，包含 JSHARE SDK 的所有接口。
+JSHAREService类，包含 JSHARE SDK 的所有接口。
 
  
 **1.+ (void)setupWithConfig:(JSHARELaunchConfig *)config**
@@ -71,7 +70,7 @@ JSHARESdk类，包含 JSHARE SDK 的所有接口。
     config.WeChatAppId = @"wxa2ea563906227379";
     config.WeChatAppSecret = @"bb63c0a06bf0ee7f633a5bc44304d110";
 
-    [JSHARESdk setupWithConfig:config];
+    [JSHAREService setupWithConfig:config];
 
 
 ```
@@ -90,7 +89,7 @@ JSHAREMessage *message = [JSHAREMessage message];
     message.text = @"http://jira.jpushoa.com/browse/JPUSH-14881";
     message.platform = JSHAREPlatformQQ;
     message.mediaType = JSHAREText;
-    [JSHARESdk share:message handler:^(JSHAREState state, NSError *error) {
+    [JSHAREService share:message handler:^(JSHAREState state, NSError *error) {
           NSLog(@"分享回调");
         }
     }];
@@ -106,12 +105,12 @@ JSHAREMessage *message = [JSHAREMessage message];
 
 ```
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url{
-    [JSHARESdk handleOpenUrl:url];
+    [JSHAREService handleOpenUrl:url];
     return YES;
 }
 
 ```
-其他接口作用详见 JSHARESdk.h 文件中的接口注释。
+其他接口作用详见 JSHAREService.h 文件中的接口注释。
 
 
 ##Xcode 中的设置
@@ -165,11 +164,11 @@ JSHAREMessage *message = [JSHAREMessage message];
 ###添加 URL Types
 下面是各个平台的URL Schemes 格式：
 
-|平台 | 格式 | 举例 | 备注 | 
-|------------ | ------------- | ------------- | ------------- |
-|微信 | 微信appKey | wxa2ea563906227379| |
-|QQ | 需添加：“tencent” + 腾讯 QQ 互联应用appID | appID：1105864531: <br> tencent1105864531| |
-|新浪微博 | “wb”+新浪appKey | wb727232518 | |
+|平台 | 格式 | 举例 |
+|------------ | ------------- | ------------- |
+|微信 | 微信appKey | wxa2ea563906227379|
+|QQ | 需添加：“tencent” + 腾讯 QQ 互联应用appID | appID：1105864531: <br> tencent1105864531|
+|新浪微博 | “wb”+新浪appKey | wb727232518 |
 
 在 Xcode 工程目录中的Info中设置：<br>
 ![](../image/urlType.png)
