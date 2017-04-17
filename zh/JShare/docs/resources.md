@@ -25,7 +25,7 @@
 </ul>
 </div>
 <div class="download-icon">
-<a href="https://sdkfiledl.jiguang.cn/jshare-android-release-v1.0.0.zip">下载</a>
+<a href="https://www.jiguang.cn/downloads/sdk/share_andorid">下载</a>
 </div>
 </div>
 <div class="hr">
@@ -51,7 +51,7 @@
 </ul>
 </div>
 <div class="download-icon">
-<a href="https://www.jiguang.cn/downloads/sdk/ios">下载</a>
+<a href="https://www.jiguang.cn/downloads/sdk/share_ios">下载</a>
 </div>
 </div>
 </li>
