@@ -16,7 +16,7 @@ JSHARE SDK 可以让用户不用额外集成第三方平台的 SDK 实现平台�
 
 ###集成压缩包内容
 
-* jshare-ios-1.0.0.a静态库
+* jshare-ios-x.x.x.a静态库
 * jcore-ios-x.x.x.a静态库
 * JSHARE SDK 入口 JSHAREService.h 头文件
 * 一个完整的 iOS Demo 项目工程，这个工程演示了 JSHARE SDK 的基本用法，配置 SDK 时建议参考这个 Demo。
@@ -31,10 +31,16 @@ JSHARE SDK 可以让用户不用额外集成第三方平台的 SDK 实现平台�
 * 配置【General】页面 的【Siging】；
 * 运行安装Demo到真机，即可。
 
+
 ##JSHARE SDK 集成步骤
 
 * 解压压缩包，将 Lib 下的所有文件复制到工程中，即可开始使用 SDK。
-* 增加相关的 framework 依赖：UIKit,SystemConfiguration,CoreTelephony,CoreGraphics,Security,Foundation,CoreLocation,CoreFoundation,CFNetwork,libz.tbd,libresolv.tbd
+
+* 增加相关的 framework 依赖：
+    
+```
+UIKit,SystemConfiguration,CoreTelephony,CoreGraphics,Security,Foundation,CoreLocation,CoreFoundation,CFNetwork,libz.tbd,libresolv.tbd  
+```
 
 * 添加以下代码到 AppDelegate.m 引用头文件的位置
 
@@ -69,9 +75,8 @@ JSHAREService类，包含 JSHARE SDK 的所有接口。
     config.QQAppKey = @"glFYjkHQGSOCJHMC";
     config.WeChatAppId = @"wxa2ea563906227379";
     config.WeChatAppSecret = @"bb63c0a06bf0ee7f633a5bc44304d110";
-
     [JSHAREService setupWithConfig:config];
-
+    [JSHAREService setDebug:YES];
 
 ```
 
@@ -172,7 +177,6 @@ JSHAREMessage *message = [JSHAREMessage message];
 
 在 Xcode 工程目录中的Info中设置：<br>
 ![](../image/urlType.png)
-
 
 
 
