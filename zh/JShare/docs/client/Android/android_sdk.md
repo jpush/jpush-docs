@@ -1,12 +1,20 @@
 # Android JShare集成指南
-## 产品功能说明
-JShare SDK 可以让用户不用额外集成第三方平台的 SDK 实现平台间的分享功能，可以有效的降低包体积。
-### 主要功能
-* 快速集成多个平台分享。
 
-### 主要特点
-* 支持多个平台，目前支持微信、微信朋友圈、微信收藏、QQ、QQ空间、新浪微博。
-* 一套接口接入多个平台，无需单独熟悉每个平台接入方法，接入成本低。
+##使用提示
+本文是 JSHARE Android SDK 的标准集成指南文档。
+匹配的 SDK 版本为：V1.0.0及以后版本。
+
+* 如果你想要快速测试、请参考本文在几分钟内跑通 Demo。
+* 极光文档官网上有相关的所有指南、API、教程等全部的文档。包括本文档的更新版本，都会及时地发布到该网站上。
+* [极光社区](https://community.jiguang.cn/)网站：大家对文档有疑惑，以及产品出现问题，可以到极光社区来提问题，可以及时得到回应。
+
+## 产品功能说明
+JSHARE SDK 可以让你的应用支持多平台分享，无需花耗时间了解、集成每个社会化分享平台的 SDK，可以有效的降低包体积。
+
+###主要场景：
+
+* 将分享内容分享到 QQ、微信、新浪微博三个主要的社交平台。
+
 
 ### jshare-android-release-v1.x.y.zip 集成压缩包内容
 * JGShareSDK.xml
@@ -29,10 +37,20 @@ JShare SDK 可以让用户不用额外集成第三方平台的 SDK 实现平台�
 	* 是一个完整的Android项目，通过这个演示了JShare SDK的基本用法，可以用来做参考。  
 	
 ### Android SDK 版本
-目前SDK只支持Android 2.3或以上版本的手机系统。
+JShare SDK支持Android 2.3及以上版本的Android系统。
 
-## jcenter 自动集成步骤
-**说明 ：** 使用jcenter自动集成的开发者，不需要在项目中添加jar和so，jcenter会自动完成依赖；在AndroidManifest.xml中不需要添加任何JShare SDK 相关的配置，jcenter会自动导入。
+
+
+##jcenter自动集成
+**说明 ：** 使用jcenter自动集成的开发者，不需要在项目中添加jar和so，jcenter会自动完成依赖。
+
+* 在gradle 配置jcenter。
+* 配置JGShareSDK.xml文件。
+* 配置微信回调（如不需要分享到微信，可跳过）
+* 配置签名
+* 参考example工程或者接口文档使用JShare SDK。
+
+###gradle 配置
 
 * 确认android studio的 Project 根目录的主 gradle 中配置了jcenter支持。（新建project默认配置就支持）
 
@@ -56,7 +74,7 @@ allprojects {
 android {
     ......
     defaultConfig {
-        applicationId "com.xxx.xxx" //JShare上注册的包名.
+        applicationId "com.xxx.xxx" //极光控制台创建应用时填写的应用包名.
         ......
 
         ndk {
@@ -67,9 +85,9 @@ android {
 
         manifestPlaceholders = [
             JSHARE_PKGNAME : applicationId,
-            JPUSH_APPKEY : "你的appkey", //JShare上注册的包名对应的appkey.
+            JPUSH_APPKEY : "你的appkey", //极光控制台创建应用得到的AppKey.
             JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
-            TENCENT_APPID: "QQ开发者应用的appID",//腾讯开放平台注册的appId
+            TENCENT_APPID: "QQ开发者应用的appID",//腾讯开放平台注册应用得到的appId
         ]
         ......
     }
@@ -81,21 +99,22 @@ dependencies {
     compile 'cn.jiguang.sdk:jshare-qqmodel:1.0.0'  // 此处以jshare-qqmodel 1.0.0 版本为例。
     compile 'cn.jiguang.sdk:jshare-wechatmodel:1.0.0'  // 此处以jshare-wechatmodel 1.0.0 版本为例。
     compile 'cn.jiguang.sdk:jshare-sinamodel:1.0.0'  // 此处以jshare-sinamodel 1.0.0 版本为例。
-    compile 'cn.jiguang.sdk:jcore:1.1.1'  // 此处以JCore 1.1.2 版本为例。
+    compile 'cn.jiguang.sdk:jcore:1.1.2'  // 此处以JCore 1.1.2版本为例。
     ......
 }
 ```
 **注 :** 如果在添加以上 abiFilter 配置之后android Studio出现以下提示：
+
 ```
 NDK integration is deprecated in the current plugin. Consider trying the new experimental plugin.
 ```
 则在 Project 根目录的gradle.properties文件中添加：
+
 ```
 android.useDeprecatedNdk=true
 ```
-* 按以下说明配置JGShareSDK.xml文件。
 
-## 手动集成步骤
+##手动集成步骤
 * 解压缩 jshare-android-release-1.x.y.zip 集成压缩包。
 * 复制libs/jcore-android_v1.x.y.jar到工程libs目录下。
 * 复制libs/jshare-android_v1.x.y.jar到工程libs目录下。
@@ -103,10 +122,13 @@ android.useDeprecatedNdk=true
 * 根据需要复制libs/jshare-xx.jar平台jar包到工程libs目录下。
 * 按下面说明配置AndroidManifest.xml。
 * 按以下说明配置JGShareSDK.xml文件。
+* 配置微信回调（如不需要分享到微信，可跳过）
+* 配置签名
 * 参考example工程或者接口文档使用JShare SDK。
 
 **说明 ：** 使用android studio的开发者，如果使用jniLibs文件夹导入so文件，则仅需将所有cpu类型的文件夹拷进去；
 如果将so文件添加在module的libs文件夹下，注意在module的gradle配置中添加一下配置：
+
 ```
 android {
     ......
@@ -129,7 +151,7 @@ android {
 * 将标注为“您应用的Appkey”的部分，替换为在Portal上注册该应用的的Key,例如：
 9fed5bcb7b9b87413678c407
 
-#### AndroidManifest 示例
+####AndroidManifest 示例
 ```
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
@@ -222,13 +244,12 @@ android {
 </manifest>
 ```
 
-## 配置和代码说明
-### 配置 JGShareSDK.xml
+## 配置 JGShareSDK.xml
 无论是使用自动集成还是手动集成方式，都需要配置JGShareSDK.xml。
 主要步骤为：
 
 * 复制或者新建JGShareSDK.xml到工程目录的asset目录下。
-* 把JGShareSDK.xml中相关的AppKey、AppSecret替换成自己的注册的。
+* 把JGShareSDK.xml中相关的AppKey、AppSecret替换成自己在第三方平台创建的应用得到的信息。
 * 根据需要配置各个平台，不需要的平台可以删除。
 
 #### JGShareSDK.xml示例
@@ -252,8 +273,9 @@ android {
 
 </DevInfor>
 ```
-### 配置微信平台回调
+## 配置微信平台回调
 * 在你的包名相应目录下新建一个wxapi目录，并在该wxapi目录下新增一个WXEntryActivity类，该类继承自WeChatHandleActivity（例如应用程序的包名为cn.jiguang.share.demo，则新添加的类如下图所示）
+
 ![](http://i.imgur.com/2URxXFr.png)
 
 **注意：** 如果复写了onCreate方法、onNewIntent方法，那么必须调用父类方法，否者无法获取分享结果，例如：
@@ -279,22 +301,19 @@ protected void onNewIntent(Intent intent) {
     android:exported="true" />
 ```
 
-### 第三方平台账号注册
-#### 微信
-微信好友与微信朋友圈用同一个AppID及Appkey，点击登录[微信开放平台][1]，填写相关应用信息，审核通过后获取到微信AppId及AppSecret。
 
-#### QQ及Qzone
-QQ及Qzone使用同一个AppId及Appkey，点击登录[腾讯开放平台][2] ，选择Android或iOS应用，填写相关应用信息并提交审核，未审核前通过只能使用测试账号。
 
-#### 新浪微博
-点击登录[新浪微博开放平台][3]，填写相关应用信息并上传icon图片，审核通过后获取到微信AppKey及AppSecret。
+## 配置项目签名
 
-### 添加代码
-JShare SDK 提供的 API 接口，都主要集中在 cn.jiguang.share.android.api.JShareInterface 类，使用方法请参考example或者API接口文档。
+### Android Studio图形界面签名配置
+进入Project Structure，选择您集成JShare的项目，具体配置如图：
 
-### 配置项目签名
-Android  Studio环境下
+![](http://i.imgur.com/ahk1DoN.png)
+![](http://i.imgur.com/2oh4IKp.png)
+
+### Android Studio手动配置
 * 在项目的build.gradle的android内部新增签名配置，例如：
+
 ```
 signingConfigs {
         debug {
@@ -312,7 +331,9 @@ signingConfigs {
     }
 ```
 
+
 * 然后在项目的build.gradle的buildTypes使用签名配置，例如：
+
 ```
 buildTypes {
         release {
@@ -325,19 +346,22 @@ buildTypes {
         }
     }
 ```
-* 如果是使用Android Studio图形界面添加的签名配置，则要注意在buildTypes选择添加的配置，例如下图：
-![](http://i.imgur.com/ahk1DoN.png)
-![](http://i.imgur.com/2oh4IKp.png)
 
-Eclipse环境下
-* 选择Eclipse顶部菜单Window->Preferences，在弹出的对话框中，选择Android目录下的Build，如下图：
+
+###Eclipse环境配置
+
+* 在Eclipse的Preferences，选择Android -> Build，如下图：
+
 ![](http://i.imgur.com/mKPb3De.png)
+
 * 指定Custom debug keystore选项的路径为sdk demo工程目录中的debug.keystore文件，并应用该配置，如下图：
 ![](http://i.imgur.com/TgxykaK.png)
 
-### **注意**
+### 注意
 * 应用的包名、应用的签名、第三方平台注册的AppID及Appkey三者要一一对应，否则会无法分享。
 * 应用的签名要与在第三方平台填写的签名对应，否则会无法分享。
+## 添加代码
+JShare SDK 提供的 API 接口，都主要集中在 cn.jiguang.share.android.api.JShareInterface 类，使用方法请参考example或者API接口文档。
 
 ### API基础API
 * init 初始化SDK
@@ -355,7 +379,7 @@ public static void setDebugModel(boolean enable)
 * 确认所需要的文件已经添加进工程
 * 确认Androidmanifest.xml已经正确配置
 * 确认JGShareSDK.xml已经正确配置
-* 如果已经集成成功，SDK会打印以下日记，示例是配置了全部平台
+* 根据如下日志确定配置了什么平台
 
 ```
 [PlatformManager] platform Wechat has configured
@@ -363,6 +387,7 @@ public static void setDebugModel(boolean enable)
 [PlatformManager] platform QQ has configured
 ```
 **说明:** 假如某个平台配置失败，会有log信息，例如：
+
 ```
 [PlatformManager] QQ configure fail, please check project config:
 make sure jshare-qq-android-v.x.y.jar has build in your project.
@@ -373,7 +398,4 @@ make sure jshare-qq-android-v.x.y.jar has build in your project.
 -dontwarn cn.jiguang.**
 -keep class cn.jiguang.** { *; }
 ```
-[1]:https://open.weixin.qq.com
-[2]:http://open.qq.com
-[3]:http://open.weibo.com
 

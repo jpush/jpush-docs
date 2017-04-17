@@ -1,14 +1,14 @@
-# JSHARE 对外集成文档
+# iOS JShare 对外集成文档
 ##使用提示
 本文是 JSHARE iOS SDK 的标准集成指南文档。
 匹配的 SDK 版本为：V1.0.0及以后版本。
 
 * 如果你想要快速测试、请参考本文在几分钟内跑通 Demo。
 * 极光文档官网上有相关的所有指南、API、教程等全部的文档。包括本文档的更新版本，都会及时地发布到该网站上。
-* [极光社区](https://community.jiguang.cn/)网站：大家对文档有疑惑，以及产品出现问题，可以到极光社区来提问题，可以即时得到回应。
+* [极光社区](https://community.jiguang.cn/)网站：大家对文档有疑惑，以及产品出现问题，可以到极光社区来提问题，可以及时得到回应。
 
 ##产品功能说明
-JSHARE SDK 可以让用户不用额外集成第三方平台的 SDK 实现平台间的分享功能，可以有效的降低包体积。
+JSHARE SDK 可以让你的应用支持多平台分享，无需花耗时间了解、集成每个社会化分享平台的 SDK，可以有效的降低包体积。
 
 ###主要场景：
 
@@ -29,7 +29,7 @@ JSHARE SDK 可以让用户不用额外集成第三方平台的 SDK 实现平台�
 * 修改 AppDelegate.m 里面的appKey的值;
 * 在项目的【General】页面 -> 【Identity】->【Bundle Identifier】 选项填写你在极光创建应用所上传的证书的Bundle id;
 * 配置【General】页面 的【Signing】；
-* 运行安装Demo到真机，即可。
+* 运行安装Demo到真机。
 
 
 ##JSHARE SDK 集成步骤
@@ -50,7 +50,7 @@ JSHARE SDK 可以让用户不用额外集成第三方平台的 SDK 实现平台�
 	* libz.tbd
 	* libresolv.tbd
 
-* 添加以下代码到 AppDelegate.m 引用头文件的位置
+* 在 AppDelegate.m 引用头文件的位置
 
 
 ```
@@ -61,19 +61,22 @@ JSHARE SDK 可以让用户不用额外集成第三方平台的 SDK 实现平台�
 ```
 
 ##SDK 主要接口说明
-JSHARELaunchConfig类，JSHARE SDK 启动配置模型。
-JSHAREService类，包含 JSHARE SDK 的所有接口。
+JSHARELaunchConfig类：JSHARE SDK 启动配置模型。
+
+JSHAREService类，包含分享 SDK 的所有接口。
 
  
-**1.+ (void)setupWithConfig:(JSHARELaunchConfig *)config**
-接口说明：初始化接口。建议在 application:didFinishLaunchingWithOptions: 中调用。
-参数说明：
-
+### method - setupWithConfig
+####接口定义：
++(void)setupWithConfig:(JSHARELaunchConfig *)config**<br>
+####接口说明：
+初始化接口。建议在 application:didFinishLaunchingWithOptions: 中调用。
+####参数说明：
 * config：JSHARELaunchConfig类的实例。
-调用示例：
+
+####调用示例：
 
 ```
-    
     JSHARELaunchConfig *config = [[JSHARELaunchConfig alloc] init];
     config.appKey = @"AppKey copied from JiGuang Portal application";
     config.SinaWeiboAppKey = @"374535501";
@@ -88,14 +91,17 @@ JSHAREService类，包含 JSHARE SDK 的所有接口。
 
 ```
 
-**2.+ (void)share:(JSHAREMessage *)message
-      handler:(JSHAREStateHandler)handler**
-参数说明：
+###method - share
+####接口定义：
++(void)share:(JSHAREMessage *)message
+      handler:(JSHAREStateHandler)handler
+
+####参数说明：
 
 * message：JSHAREMessage 类的实例
 * handler：JSHAREStateHandler 分享后的回调      
 
-调用示例：
+####调用示例：
 
 ```
 JSHAREMessage *message = [JSHAREMessage message];
@@ -108,13 +114,18 @@ JSHAREMessage *message = [JSHAREMessage message];
     }];
 ```
 
-**3.+ (BOOL)handleOpenUrl:(NSURL *)url**
-接口说明：回调接口，必要！在 Appdelegate 的 application:handleOpenURL: 中调用。
-参数说明：
+###method - handleOpenUrl
+####接口定义：
++(BOOL)handleOpenUrl:(NSURL *)url
+####接口说明：
+分享的回调接口，必要！
+
+在 Appdelegate 的 application:handleOpenURL: 中调用。
+####参数说明：
 
 * url：回调的 url
 
-调用示例：
+####调用示例：
 
 ```
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url{
@@ -123,13 +134,19 @@ JSHAREMessage *message = [JSHAREMessage message];
 }
 
 ```
-其他接口作用详见 JSHAREService.h 文件中的接口注释。
+其他接口详见 JSHAREService.h 。
 
 
 ##Xcode 中的设置
 
 ### 配置ApplicationQueriesSchemes
-在iOS9/10下就需要增加一个应用可跳转的白名单，即LSApplicationQueriesSchemes，否则将在SDK判断是否跳转时用到的canOpenURL时返回NO，进而只进行webview分享/分享失败。 在项目中的info.plist中加入应用白名单，右键info.plist选择source code打开(具体设置在Build Setting -> Packaging -> Info.plist File可获取plist路径)
+在iOS9/10下就需要增加一个应用可跳转的白名单，即LSApplicationQueriesSchemes，否则将在SDK判断是否跳转时用到的canOpenURL时返回NO，进而只进行webview分享/分享失败。
+
+在项目中的info.plist中加入应用白名单：
+
+* 右键info.plist
+* 选择source code
+* 添加如下内容：
 
 ```
 <key>LSApplicationQueriesSchemes</key>
@@ -175,7 +192,7 @@ JSHAREMessage *message = [JSHAREMessage message];
 ```
 
 ###添加 URL Types
-下面是各个平台的URL Schemes 格式：
+####各个平台的URL Schemes 格式说明：
 
 |平台 | 格式 | 举例 |
 |------------ | ------------- | ------------- |
@@ -183,7 +200,8 @@ JSHAREMessage *message = [JSHAREMessage message];
 |QQ | 需添加：“tencent” + 腾讯 QQ 互联应用appID | 如appID为:1105864531<br> URL Schemes值为:tencent1105864531|
 |新浪微博 | “wb”+新浪appKey | 如appKey为:727232518<br>URL Schemes值为:wb727232518 |
 
-在 Xcode 工程目录中的Info中设置：<br>
+#### URL Types设置<br>
+Xcode 工程目录中的 [TARGETS] -> [Info] 中设置：
 ![](../image/urlType.png)
 
 
