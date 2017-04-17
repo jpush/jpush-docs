@@ -37,10 +37,18 @@ JSHARE SDK 可以让用户不用额外集成第三方平台的 SDK 实现平台�
 * 解压压缩包，将 Lib 下的所有文件复制到工程中，即可开始使用 SDK。
 
 * 增加相关的 framework 依赖：
-    
-```
-UIKit,SystemConfiguration,CoreTelephony,CoreGraphics,Security,Foundation,CoreLocation,CoreFoundation,CFNetwork,libz.tbd,libresolv.tbd  
-```
+ 
+	* UIKit
+	* SystemConfiguration
+	* CoreTelephony
+	* CoreGraphics
+	* Security
+	* Foundation
+	* CoreLocation
+	* CoreFoundation
+	* CFNetwork
+	* libz.tbd
+	* libresolv.tbd
 
 * 添加以下代码到 AppDelegate.m 引用头文件的位置
 
@@ -172,8 +180,8 @@ JSHAREMessage *message = [JSHAREMessage message];
 |平台 | 格式 | 举例 |
 |------------ | ------------- | ------------- |
 |微信 | 微信appKey | wxa2ea563906227379|
-|QQ | 需添加：“tencent” + 腾讯 QQ 互联应用appID | appID：1105864531<br> tencent1105864531|
-|新浪微博 | “wb”+新浪appKey | wb727232518 |
+|QQ | 需添加：“tencent” + 腾讯 QQ 互联应用appID | 如appID为:1105864531<br> URL Schemes值为:tencent1105864531|
+|新浪微博 | “wb”+新浪appKey | 如appKey为:727232518<br>URL Schemes值为:wb727232518 |
 
 在 Xcode 工程目录中的Info中设置：<br>
 ![](../image/urlType.png)
