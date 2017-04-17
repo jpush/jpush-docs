@@ -28,7 +28,7 @@ JSHARE SDK 可以让用户不用额外集成第三方平台的 SDK 实现平台�
 * 双击压缩包里面的JShareDemo.xcodeproj 打开 Demo；
 * 修改 AppDelegate.m 里面的appKey的值;
 * 在项目的【General】页面 -> 【Identity】->【Bundle Identifier】 选项填写你在极光创建应用所上传的证书的Bundle id;
-* 配置【General】页面 的【Siging】；
+* 配置【General】页面 的【Signing】；
 * 运行安装Demo到真机，即可。
 
 
@@ -91,7 +91,7 @@ JSHAREService类，包含 JSHARE SDK 的所有接口。
 
 ```
 JSHAREMessage *message = [JSHAREMessage message];
-    message.text = @"http://jira.jpushoa.com/browse/JPUSH-14881";
+    message.text = @"JShare SDK支持主流社交平台、帮助开发者轻松实现社会化功能！";
     message.platform = JSHAREPlatformQQ;
     message.mediaType = JSHAREText;
     [JSHAREService share:message handler:^(JSHAREState state, NSError *error) {
@@ -172,7 +172,7 @@ JSHAREMessage *message = [JSHAREMessage message];
 |平台 | 格式 | 举例 |
 |------------ | ------------- | ------------- |
 |微信 | 微信appKey | wxa2ea563906227379|
-|QQ | 需添加：“tencent” + 腾讯 QQ 互联应用appID | appID：1105864531: <br> tencent1105864531|
+|QQ | 需添加：“tencent” + 腾讯 QQ 互联应用appID | appID：1105864531<br> tencent1105864531|
 |新浪微博 | “wb”+新浪appKey | wb727232518 |
 
 在 Xcode 工程目录中的Info中设置：<br>
