@@ -35,6 +35,12 @@ def build():
     time.sleep(1)
     print time.asctime(time.localtime(time.time()))
 
+    logging.info (os.chdir("/opt/push/jpush-docs/jpush-docs/zh/JShare/"))
+    print ("JShare/")
+    logging.info (commands.getstatusoutput("/opt/push/jpush-docs/venv/bin/mkdocs build"))
+    time.sleep(1)
+    print time.asctime(time.localtime(time.time()))
+
     logging.info (os.chdir("/opt/push/jpush-docs/jpush-docs/zh/Index/"))
     print ("Index/")
     logging.info (commands.getstatusoutput("/opt/push/jpush-docs/venv/bin/mkdocs build"))
@@ -50,7 +56,7 @@ logging.basicConfig(level=logging.DEBUG,
 
 git_pull()
 build()
-#print time.asctime(time.localtime(time.time()))
+print time.asctime(time.localtime(time.time()))
 exit()
 
 
