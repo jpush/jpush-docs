@@ -798,7 +798,7 @@ POST https://api.jpush.cn/v3/push/validate
 		<tr >
 			<td>1003</td>
 			<td>参数值不合法</td>
-			<td>必须改正，如Audience参数中tag，alias，registration_id有空值，错误提示Empty tag/alias/registration_id is not allowed!</td>
+			<td>必须改正。参数不合法的情况如：Audience参数中tag，alias，registration_id有空值；单发指定的 registration_id 非法或者格式错误。 </td>
 			<td>400</td>
 		</tr>
 		<tr >
