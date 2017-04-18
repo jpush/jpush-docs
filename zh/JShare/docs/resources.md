@@ -25,7 +25,7 @@
 </ul>
 </div>
 <div class="download-icon">
-<a href="https://www.jiguang.cn/downloads/sdk/share_andorid">下载</a>
+<a href="https://www.jiguang.cn/downloads/sdk/share_android">下载</a>
 </div>
 </div>
 <div class="hr">
