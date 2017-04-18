@@ -68,7 +68,7 @@ JSHAREService类，包含分享 SDK 的所有接口。
  
 ### method - setupWithConfig
 ####接口定义：
-+(void)setupWithConfig:(JSHARELaunchConfig *)config**<br>
++(void)setupWithConfig:(JSHARELaunchConfig *)config*<br>
 ####接口说明：
 初始化接口。建议在 application:didFinishLaunchingWithOptions: 中调用。
 ####参数说明：
