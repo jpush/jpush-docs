@@ -74,24 +74,28 @@ $(document).ready(function() {
     }
     //console.log(url.indexOf("jpush"));
 
-        url = window.location.href;
+    url = window.location.href;
     if(url.indexOf("jmessage")>0){
         $("#jmessage-top").css("border-bottom", "solid 3px #1b75bb");
     }
     //console.log(url.indexOf("jmessage"));
 
-        url = window.location.href;
+    url = window.location.href;
     if(url.indexOf("jsms")>0){
         $("#jsms-top").css("border-bottom", "solid 3px #1b75bb");
     }
     //console.log(url.indexOf("jmessage"));
 
-            url = window.location.href;
+    url = window.location.href;
     if(url.indexOf("janalytics")>0){
         $("#janalytics-top").css("border-bottom", "solid 3px #1b75bb");
     }
     //console.log(url.indexOf("jmessage"));
 
+    url = window.location.href;
+    if(url.indexOf("jshare")>0){
+        $("#jshare-top").css("border-bottom", "solid 3px #1b75bb");
+    }
 
     $("li .current").parent().css("display", "block");
     $("li .current").parent().siblings().css("display", "block");
