@@ -45,9 +45,9 @@ JShare SDK支持Android 2.3及以上版本的Android系统。
 **说明 ：** 使用jcenter自动集成的开发者，不需要在项目中添加jar和so，jcenter会自动完成依赖。
 
 * 在gradle 配置jcenter。
-* 配置JGShareSDK.xml文件。
+* 配置JGShareSDK.xml。
 * 配置微信回调（如不需要分享到微信，可跳过）。
-* 配置签名。
+* 配置项目签名。
 * 参考example工程或者接口文档使用JShare SDK。
 
 ###gradle 配置
@@ -121,9 +121,9 @@ android.useDeprecatedNdk=true
 * 复制libs/(cpu-type)/libjcore1xy.so到你工程中存放对应cpu类型的目录下。
 * 根据需要复制libs/jshare-xx.jar平台jar包到工程libs目录下。
 * 按下面说明配置AndroidManifest.xml。
-* 按以下说明配置JGShareSDK.xml文件。
+* 配置JGShareSDK.xml。
 * 配置微信回调（如不需要分享到微信，可跳过）。
-* 配置签名。
+* 配置项目签名。
 * 参考example工程或者接口文档使用JShare SDK。
 
 **说明 ：** 使用android studio的开发者，如果使用jniLibs文件夹导入so文件，则仅需将所有cpu类型的文件夹拷进去；
