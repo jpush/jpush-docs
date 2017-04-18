@@ -18,19 +18,19 @@ JSHARE SDK 可以让你的应用支持多平台分享，无需花耗时间了解
 
 ### jshare-android-release-v1.x.y.zip 集成压缩包内容
 * JGShareSDK.xml
-	* 客户端嵌入SDK，各个平台配置的参考文件
+	* 客户端嵌入SDK，各个平台配置的参考文件。
 * AndroidManifest.xml
-	* 客户端嵌入SDK参考的配置文件
+	* 客户端嵌入SDK参考的配置文件。
 * libs/jcore-android.v1.x.y.jar
 	* 极光开发者服务的核.心包。
 * jshare-android_v1.x.y.jar
-	* JShare SDK核心包
+	* JShare SDK核心包。
 * jshare-wechat-android_v1.x.y.jar
-	* JShare微信平台包
+	* JShare微信平台包。
 * jshare-qq-android_v1.x.y.jar
-	* JShareQQ平台包
+	* JShareQQ平台包。
 * jshare-sina-android_v1.x.y.jar
-	* JShare新浪微博包
+	* JShare新浪微博包。
 * libs/(cpu-type)/libjcore1xy.so
 	* 各种CPU类型的native开发包。
 * example
@@ -46,8 +46,8 @@ JShare SDK支持Android 2.3及以上版本的Android系统。
 
 * 在gradle 配置jcenter。
 * 配置JGShareSDK.xml文件。
-* 配置微信回调（如不需要分享到微信，可跳过）
-* 配置签名
+* 配置微信回调（如不需要分享到微信，可跳过）。
+* 配置签名。
 * 参考example工程或者接口文档使用JShare SDK。
 
 ###gradle 配置
@@ -122,8 +122,8 @@ android.useDeprecatedNdk=true
 * 根据需要复制libs/jshare-xx.jar平台jar包到工程libs目录下。
 * 按下面说明配置AndroidManifest.xml。
 * 按以下说明配置JGShareSDK.xml文件。
-* 配置微信回调（如不需要分享到微信，可跳过）
-* 配置签名
+* 配置微信回调（如不需要分享到微信，可跳过）。
+* 配置签名。
 * 参考example工程或者接口文档使用JShare SDK。
 
 **说明 ：** 使用android studio的开发者，如果使用jniLibs文件夹导入so文件，则仅需将所有cpu类型的文件夹拷进去；
