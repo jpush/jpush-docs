@@ -109,7 +109,7 @@
                 
                 ndk {
                     //选择要添加的对应cpu类型的.so库。 
-                    abiFilters 'armeabi', 'armeabi-v7a', 'armeabi-v8a' 
+                    abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a' 
                     // 还可以添加 'x86', 'x86_64', 'mips', 'mips64'
                 }
                 
@@ -128,8 +128,8 @@
         dependencies {
             ......
             
-            compile 'cn.jiguang.sdk:jpush:3.0.3'  // 此处以JPush 3.0.3 版本为例。
-            compile 'cn.jiguang.sdk:jcore:1.1.1'  // 此处以JCore 1.1.1 版本为例。
+            compile 'cn.jiguang.sdk:jpush:3.0.5'  // 此处以JPush 3.0.5 版本为例。
+            compile 'cn.jiguang.sdk:jcore:1.1.2'  // 此处以JCore 1.1.2 版本为例。
             ......
         }
         
