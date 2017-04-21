@@ -113,7 +113,7 @@
 + 配置 AndroidManifest:
 	+ 配置权限：添加 SDK 正常运行所必需的权限。
 
-		   <!-- Required  一些系统要求的权限，如访问网络等-->
+			 <!-- Required  一些系统要求的权限，如访问网络等-->
             <uses-permission android:name="android.permission.INTERNET" />
             <uses-permission android:name="android.permission.READ_PHONE_STATE" />
             <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -121,7 +121,7 @@
             <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
             <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
-           <!-- Optional for location -->
+         	<!-- Optional for location -->
             <uses-permission android:name="android.permission.VIBRATE" />
             <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
             <uses-permission android:name="android.permission.WRITE_SETTINGS" />
@@ -133,7 +133,7 @@
             <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
             <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
             <uses-permission android:name="android.permission.GET_TASKS" />
- 
+            
 	+ 配置appkey：从 portal 上应用信息中获取 AppKey，并填写你的 Channel。
 
 			<meta-data android:name="JPUSH_APPKEY" android:value="Your AppKey"/>
