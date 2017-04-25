@@ -10,6 +10,7 @@ pages:
 
 - 入门指南:
   - '短信验证码概述': 'guideline/JSMS_guide.md'
+  - '控制台操作指南': 'guideline/JSMS_consoleguide.md'
 
 - Android:
   - 'Android SDK 概述': 'client/Android_SMS_SDK.md'
