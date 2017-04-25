@@ -126,13 +126,16 @@ Step4：点击选择需要使用的回调接口
 * 开发者把接收到的signature和自己本地代码按照同样规则生成的签名作对比，如果一致，则可以认定此回调来自极光。
 
 ####下行消息送达状态回调参数
+
 |CODE| TYPE| DESCRIPTION|
 |----|----|----|
 |msgId|	String| api 调用的时候返回的 msg_id|
 |status| Integer| 发送状态返回码|
 |receiveTime| Date| 短信送达时间|
 |phone|	String| 短信送达手机号|
+
 ####发送状态返回码
+
 |CODE|DESCRIPTION|
 |----|----|
 |4001|发送成功|
@@ -140,13 +143,17 @@ Step4：点击选择需要使用的回调接口
 |4003|手机终端问题，手机关机、停机等，请确认手机状态是否正常|
 |4004|被叫手机号为空号，请核实手机号是否合规|
 |4100|其他错误|
+
 ####上行消息内容回调参数 
+
 |CODE| TYPE| DESCRIPTION|
 |---| ----| ----|
 |phon| String| 主叫号码（用户手机号）|
 |replyTim| Date| 消息送达到极光业务的时间|
 |conten| String| 用户回复的消息内容|
+
 ###回调测试
+
 ####控制台回调设置页面测试
 开发者点击回调设置页面中的测试按钮，极光将发起一次回调，将固定的测试数据回调到开发者提供的回调地址上。开发者可以通过检查是否收到回调请求，且接收到的数据是否与下面表格中一致以判断回调请求是否成功。  
 ![](./consoleguide_image/dev_response_test.jpg)
@@ -165,17 +172,24 @@ Step4：点击选择需要使用的回调接口
 |phone|	13000000000|
 |receiveTime|	1492150740292|
 |status|	4001|
+
 ####curl模拟POST回调请求
 在linux上可以很方便的使用curl命令发起HTTP POST请求，在windows下需要安装curl工具软件。以下是curl模拟回调的示例
+
 #####上行消息内容回调
+
  ```
 curl -d "nonce=7659972084945889195&timestamp=1492150740274&signature=007eff6a105503211b472802eecc42465582ba70&type=SMS_REPLY&data＝{\"content\":\"TD\",\"phone\":\"13720481024\",\"replyTime\":1492150740292}" "http://localhost:8088/callback"
 ```
+
 #####下行消息发送状态回调
+
 ``` 
 curl -d "nonce=7659972084945889195&timestamp=1492150740274&signature=007eff6a105503211b472802eecc42465582ba70&type=SMS_REPORT&data={\"msgId\":\"1652496\",\"phone\":\"15822889320\",\"receiveTime\":1492150741392,\"status\":4001}" "http://localhost:8088/callback"
 ```
+
 ####HttpClient模拟POST回调请求
+
 以下是Java语言使用apache HttpClient组件模拟回调的示例： 
  
 CallbackTest.java  
