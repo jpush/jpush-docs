@@ -30,7 +30,7 @@ Authorization: Basic base64_auth_string
 		</tr>
 		<tr >
 			<td>password</td>
-			<td>登陆密码</td>
+			<td>登录密码</td>
 			<td>Byte(4~128)</td>
 		</tr>
 		<tr >

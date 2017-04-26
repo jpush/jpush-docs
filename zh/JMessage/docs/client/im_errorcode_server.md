@@ -18,12 +18,12 @@ JMessage 服务器端报的错误码。有可能出现在各平台的 SDK 里。
 		</tr>
 		<tr >
 			<td>898001</td>
-			<td>User exists</td>
+			<td>User exist</td>
 			<td>用户已存在</td>
 		</tr>
 		<tr >
 			<td>898002</td>
-			<td>No sush user</td>
+			<td>No such user</td>
 			<td>用户不存在</td>
 		</tr>
 		<tr >
