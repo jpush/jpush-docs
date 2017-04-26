@@ -846,6 +846,24 @@ POST https://api.jpush.cn/v3/push/validate
 			<td>稍后重试</td>
 			<td>503</td>
 		</tr>
+		<tr>
+			<td>2002</td>
+			<td>API调用频率超出该应用的限制</td>
+			<td>联系极光商务或技术支持开通更高的 API 调用频率</td>
+			<td>429</td>
+		</tr>
+		<tr>
+			<td>2003</td>
+			<td>该应用appkey已被限制调用 API</td>
+			<td>联系技术支持查明限制原因和寻求帮助</td>
+			<td>403</td>
+		</tr>
+		<tr>
+			<td>2004</td>
+			<td>无权限执行当前操作</td>
+			<td>必须改正。当前调用 API 的源 ip 地址不在该应用的 ip 白名单中。</td>
+			<td>403</td>
+		</tr>
 	</table>
 </div>
 
