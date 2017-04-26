@@ -148,9 +148,9 @@ Step4：点击选择需要使用的回调接口
 
 |CODE| TYPE| DESCRIPTION|
 |---| ----| ----|
-|phon| String| 主叫号码（用户手机号）|
-|replyTim| Date| 消息送达到极光业务的时间|
-|conten| String| 用户回复的消息内容|
+|phone| String| 主叫号码（用户手机号）|
+|replyTime| Date| 消息送达到极光业务的时间|
+|content| String| 用户回复的消息内容|
 
 <a name="回调测试"></a>
 ###回调测试
@@ -193,7 +193,22 @@ Step4：点击选择需要使用的回调接口
 
 ####HttpClient模拟POST回调请求
 
-以下是Java语言使用apache HttpClient组件模拟回调的示例： 
+以下是Java语言使用apache HttpClient组件模拟回调的示例，使用前需引入以下 jar 包： 
+
+***pom.xml***
+
+```
+     <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.5.2</version>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.31</version>
+        </dependency>   
+ ```
  
 ***CallbackTest.java***
 
@@ -201,20 +216,18 @@ Step4：点击选择需要使用的回调接口
 
 package cn.jiguang.sms.dev.sample;  
  
-import cn.jiguang.sms.dev.sample.model.SendStateMessage;  
-import cn.jiguang.sms.dev.sample.util.SHA1Utils;  
-import com.alibaba.fastjson.JSON;  
-import org.apache.http.HttpResponse;  
-import org.apache.http.NameValuePair;  
-import org.apache.http.client.HttpClient;  
-import org.apache.http.client.entity.UrlEncodedFormEntity;  
-import org.apache.http.client.methods.HttpPost;  
-import org.apache.http.impl.client.HttpClients;  
-import org.apache.http.message.BasicNameValuePair;  
- 
-import java.io.IOException;  
-import java.security.MessageDigest;  
-import java.security.NoSuchAlgorithmException;  
+import com.alibaba.fastjson.JSON;
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.message.BasicNameValuePair;
+
+import java.io.IOException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.*;  
  
 /**  
