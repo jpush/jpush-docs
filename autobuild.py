@@ -4,12 +4,14 @@ import commands
 import os
 import time
 
+
+# git pull from remote
 def git_pull():
     print (os.chdir("/opt/push/jpush-docs/jpush-docs/"))
     logging.info(commands.getstatusoutput("git pull origin master"))
     print ("git pull origin master")
 
-
+# build docs
 def build():
     logging.info(os.chdir("/opt/push/jpush-docs/jpush-docs/zh/JPush/"))
     print ("JPush/")
@@ -47,7 +49,7 @@ def build():
     time.sleep(1)
     print time.asctime(time.localtime(time.time()))
 
-
+# logging
 logging.basicConfig(level=logging.DEBUG,
                     format='%(asctime)s %(filename)s[line:%(lineno)d] %(levelname)s %(message)s',
                     datefmt='%a, %d %b %Y %H:%M:%S',

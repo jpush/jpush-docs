@@ -15,7 +15,7 @@
 
 + ***JAnalyticsInterface.setDebugModel(boolean enable)***
 	+ 接口说明：
-		+ 设置是否开启debug模式。true则会打印更多的日志信息
+		+ 设置是否开启debug模式。true则会打印更多的日志信息。建议在init接口之前调用。
 	+ 参数说明：
 		+ enable：debug开关 
 	+ 调用示例：
@@ -23,6 +23,29 @@
 ~~~
 	JAnalyticsInterface.setDebugModel(true);
 ~~~
+
++ ***JAnalyticsInterface.initCrashHandler(Context context)***
+	+ 接口说明：
+		+ 开启crashlog日志上报
+	+ 参数说明：
+		+ context:android的上下文 
+	+ 调用示例：
+
+~~~
+	JAnalyticsInterface.initCrashHandler(this);
+~~~
+
++ ***JAnalyticsInterface.stopCrashHandler(Context context)***
+	+ 接口说明：
+		+ 关闭crashlog日志上报
+	+ 参数说明：
+		+ context:android的上下文 
+	+ 调用示例：
+
+~~~
+	JAnalyticsInterface.stopCrashHandler(this);
+~~~
+
 <a name="pageflow"></a>
 ##页面流统计 API
 
