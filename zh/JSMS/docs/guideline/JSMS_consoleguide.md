@@ -159,14 +159,14 @@ Step4：点击选择需要使用的回调接口
 开发者点击回调设置页面中的测试按钮，极光将发起一次回调，将固定的测试数据回调到开发者提供的回调地址上。开发者可以通过检查是否收到回调请求，且接收到的数据是否与下面表格中一致以判断回调请求是否成功。  
 ![](./consoleguide_image/dev_response_test.jpg)
 
-#####上行短信发送内容回调测试数据
+####上行短信发送内容回调测试数据
 |KEY| VALUE|
 |----|----|
 |content|	TD|
 |phone|	13000000000|
 |replyTime|	1492150740292|
 
-#####下行短信发送状态回调测试数据
+####下行短信发送状态回调测试数据
 |KEY| VALUE|
 |----|----|
 |msgId|	1857496|
@@ -177,18 +177,18 @@ Step4：点击选择需要使用的回调接口
 ####curl模拟POST回调请求
 在linux上可以很方便的使用curl命令发起HTTP POST请求，在windows下需要安装curl工具软件。以下是curl模拟回调的示例
 
-#####上行消息内容回调
+####上行消息内容回调
 
+```
+curl -d "nonce=7659972084945889195&timestamp=1492150740274&signature=007eff6a105503211b472802eecc42465582ba70&type=SMS_REPLY&data＝{\"content\":\"TD\",\"phone\":\"13720481024\",\"replyTime\":1492150740292}" "http://localhost:8088/callback"
 
- 
-	curl -d "nonce=7659972084945889195&timestamp=1492150740274&signature=007eff6a105503211b472802eecc42465582ba70&type=SMS_REPLY&data＝{\"content\":\"TD\",\"phone\":\"13720481024\",\"replyTime\":1492150740292}" "http://localhost:8088/callback"
+```
 
+####下行消息发送状态回调
 
-#####下行消息发送状态回调
-
-
-	curl -d "nonce=7659972084945889195&timestamp=1492150740274&signature=007eff6a105503211b472802eecc42465582ba70&type=SMS_REPORT&data={\"msgId\":\"1652496\",\"phone\":\"15822889320\",\"receiveTime\":1492150741392,\"status\":4001}" "http://localhost:8088/callback"
-
+```
+curl -d "nonce=7659972084945889195&timestamp=1492150740274&signature=007eff6a105503211b472802eecc42465582ba70&type=SMS_REPORT&data={\"msgId\":\"1652496\",\"phone\":\"15822889320\",\"receiveTime\":1492150741392,\"status\":4001}" "http://localhost:8088/callback"
+```
 
 
 ####HttpClient模拟POST回调请求
@@ -208,7 +208,7 @@ Step4：点击选择需要使用的回调接口
             <artifactId>fastjson</artifactId>
             <version>1.2.31</version>
         </dependency>   
- ```
+```
  
 ***CallbackTest.java***
 
