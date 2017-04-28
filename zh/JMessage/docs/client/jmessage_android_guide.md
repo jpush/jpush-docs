@@ -28,6 +28,98 @@
 
 目前SDK只支持Android 2.3或以上版本的手机系统。
 
+## jcenter 自动集成步骤
+
+
+***说明*** ： JMessage从2.1.2版本开始支持jcenter自动集成，使用jcenter自动集成的开发者，不需要在项目中添加jar和so，jcenter会自动完成依赖；在AndroidManifest.xml中不需要添加任何JPush SDK 相关的配置，jcenter会自动导入。
+
++ 如果开发者需要修改组件属性，可以在本地的 AndroidManifest 中定义同名的组件并配置想要的属性，然后用 xmlns:tools 来控制本地组件覆盖 jcenter 上的组件。示例：
+
+		<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+			package="com.android.tests.flavorlib.app"
+			xmlns:tools="http://schemas.android.com/tools">
+			
+			<application
+				android:icon="@drawable/icon"
+				android:name="com.example.jpushdemo.ExampleApplication"
+				android:label="@string/app_name" >
+				
+				<service android:name="cn.jpush.android.service.PushService"
+            		android:process=":multiprocess"
+            		tools:node="replace" >
+            		
+            		……
+            	</service>
+            
+            ……
+          </application>  
+          
+          ……
+		</manifest>
+
+
++ 确认android studio的 Project 根目录的主 gradle 中配置了jcenter支持。（新建project默认配置就支持）
+        
+        buildscript {
+            repositories {
+                jcenter()
+            }
+            ......
+        }
+        
+        allprojets {
+            repositories {
+                jcenter()
+            }
+        }
+              
+        
+        
++ 在 module 的 gradle 中添加依赖和AndroidManifest的替换变量。
+
+
+        
+        android {
+            ......
+            defaultConfig {
+                applicationId "com.xxx.xxx" //JPush上注册的包名.
+                ......
+                
+                ndk {
+                    //选择要添加的对应cpu类型的.so库。 
+                    abiFilters 'armeabi', 'armeabi-v7a', 'armeabi-v8a' 
+                    // 还可以添加 'x86', 'x86_64', 'mips', 'mips64'
+                }
+                
+                manifestPlaceholders = [
+                    JPUSH_PKGNAME : applicationId,
+                    JPUSH_APPKEY : "你的appkey", //JPush上注册的包名对应的appkey.
+                    JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
+                ]
+                ......
+            }
+            ......
+        }
+        
+        
+       
+        dependencies {
+            ......
+            
+            compile 'cn.jiguang.sdk:jmessage:2.1.2'  // 此处以JMessage 2.1.2 版本为例。
+            compile 'cn.jiguang.sdk:jcore:1.1.2'  // 此处以JCore 1.1.2 版本为例。
+            ......
+        }
+        
+        
+***注*** : 如果在添加以上 abiFilter 配置之后android Studio出现以下提示：
+
+        NDK integration is deprecated in the current plugin. Consider trying the new experimental plugin.
+则在 Project 根目录的gradle.properties文件中添加：
+
+        android.useDeprecatedNdk=true
+
+
 ## 手动集成步骤
 
 + 解压缩 jmessage-sdk-android-2.X.Y.zip 集成压缩包。
@@ -309,10 +401,10 @@ JMessage SDK
 ### 如果之前集成过JMessage
 对于集成过JMessage 2.0.0以前版本的开发者,之前的JMessage是包含了Push的完整功能的，所以仅需要集成JMessage一个包就能同时拥有JMessage和JPush的完整功能。  
 
-而新的JMessage 2.0.0将**不再包含JPush的功能**。JMessage和JPush今后将会作为两个相对独立的模块需要分别集成。所以对于之前已经集成过JMessage（2.0.0版本以前）的开发者，将JMessage升级到2.0.0之后，如果还需要使用JPush相关功能，请参照[JPush3.0.0的集成文档][3]手动将JPush集成进项目。  
+而新的JMessage 2.0.0将**不再包含JPush的功能**。JMessage和JPush今后将会作为两个相对独立的模块需要分别集成。所以对于之前已经集成过JMessage（2.0.0版本以前）的开发者，将JMessage升级到2.0.0之后，如果还需要使用JPush相关功能，请参照[JPush3.0.0的集成文档][3]将JPush集成进项目。  
 
 </br>
-**基于JMessage集成JPush时注意事项：**
+**基于JMessage手动集成JPush时注意事项：**
 
 + 版本要求：对应的JCore需要1.1.0或以上版本，JPush需要3.0.0或以上版本。
 + jcore的替换：下载下来的JPush SDK zip包中同样包含了名为jcore-android_v1.X.Y的jar包,集成时需要注意项目中只保留一个jcore的jar就好，如果出现JPush和JMessage中所包含的jcore jar包版本不一致的情况，则保留版本号更新的那一个。so文件同理。
@@ -329,10 +421,10 @@ JMessage SDK
 
 
 ### 如果之前集成过JPush
-对于已经集成了JPush 3.0.0或以上版本的开发者，如果需要IM功能，直接参照上面“手动集成步骤”一节配置JMessage就好，其中有以下几项需要注意：
+对于已经集成了JPush 3.0.0或以上版本的开发者，如果需要IM功能，直接参照上面"jcenter自动集成步骤"或“手动集成步骤”一节配置JMessage就好，其中有以下几项需要注意：
 
 </br>
-**基于JPush集成JMessage时注意事项：**
+**基于JPush手动集成JMessage时注意事项：**
 
 + 版本要求：JCore需要1.1.0或以上版本，对应的JMessage需要2.0.0或以上版本。
 + jcore的替换：下载下来的JMessage SDK zip包中同样包含了名为jcore-android_v1.X.Y的jar包,集成时需要注意项目中只保留一个jcore的jar就好，如果出现JPush和JMessage中所包含的jcore jar包版本不一致的情况，则保留版本号更新的那一个。so文件同理
