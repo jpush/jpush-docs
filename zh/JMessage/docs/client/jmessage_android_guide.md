@@ -117,7 +117,7 @@
         NDK integration is deprecated in the current plugin. Consider trying the new experimental plugin.
 则在 Project 根目录的gradle.properties文件中添加：
 
-        android.useDeprecatedNdk=true。
+        android.useDeprecatedNdk=true
 
 
 ## 手动集成步骤
