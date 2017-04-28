@@ -299,7 +299,6 @@ JMessageClient.getGroupConversation(long groupID);
 
 
 
-
 #### 删除单个单聊会话
 删除与指定appkey下username的单聊的会话，同时删除掉本地聊天记录。,如果appkey为空则默认尝试删除本应用appkey下对应username的会话。
 ```  
@@ -327,6 +326,43 @@ JMessageClient.deleteGroupConversation(long groupID);
 返回
 
 + boolean 是否删除成功。
+
+#### 获取单个会话未读消息数
+```
+conversation.getUnReadMsgCnt();
+```
+返回
+
++ int 当前会话的未读消息数
+
+#### 重置单个会话未读消息数
+```
+conversation.resetUnreadCount();
+```
+返回
+
++ boolean true表示重置成功，其他情况下返回false.
+
+#### 手动设置会话未读消息数
+```
+conversation.setUnReadMessageCnt(int count);
+```
+参数说明
+
++ int count 指定的未读消息数
+
+返回
+
++ boolean true表示设置成功，其他情况下返回false.
+
+#### 获取所有会话未读消息总数
+```
+JMessageClient.getAllUnReadMsgCount();
+```
+返回
+
++ int 当前用户所有会话的未读消息总数
+
 
 ### 消息管理
 
