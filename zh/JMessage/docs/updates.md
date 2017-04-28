@@ -1,6 +1,38 @@
 # 最近更新
 
 
+### Android SDK v2.1.2
+
+#### 更新时间
+
++ 2017-4-28
+
+#### Change Log
+##### BugFix:
++ 提升sdk稳定性
+
+##### NewFeature:
++ 新增获取全局未读数接口JMessageClient.getAllUnReadMsgCount()
++ 支持 jcenter 自动集成
+
+#### 升级提示
+
++ 建议升级！
+
+#### 升级指南
+
++ 首先解压您获取到的 zip 压缩包
+
++ 更新库文件
+	+ 打开 libs 文件夹。添加 jcore-android_v1.1.2.jar。用 jmessage-android_v2.1.2.jar 替换项目中原有的极光 jar 文件，并删除原有极光 jar 文件。用对应 CPU 文件夹下的 libjcore112.so 文件，替换项目中原有的 libjcoreXXX.so 文件，并删除原有的极光 so 文件，每种型号的 so 文件都可以在 SDK 下载包中找到。
+
++ 更新 AndroidManifest.xml
+	+ 请参考 SDK 下载包最新版本的 demo 来更新 AndroidManifest.xml 文件配置。
+
++ 如果使用 jcenter 的方式集成 JMessage，不需要添加相关组件和资源，详细集成说明请参考官方[集成指南](https://docs.jiguang.cn/jmessage/client/jmessage_android_guide/)
+
+
+
 ### iOS SDK v3.1.0
 
 #### 更新时间
