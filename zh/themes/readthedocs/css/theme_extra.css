@@ -70,8 +70,9 @@ h1,h2,h3, h4, h5, h6 {
 
 .nav-tabs li {
   min-width: 20%;
-  text-align: left;
+  text-align: center;
   margin:0px;
+  display: inline-block;
 }
 
 .header .nav-tabs li a{
@@ -80,7 +81,7 @@ h1,h2,h3, h4, h5, h6 {
   padding:15px;
   border-style: none;
   width: auto;
-  display: inline;
+  /*display: inline;*/
 }
 
 .nav-tabs li a:hover{
@@ -92,13 +93,23 @@ h1,h2,h3, h4, h5, h6 {
 
 .header ul{
     padding: 0px;
-    margin-top: 15px;
+    /*margin-top: 15px;*/
     margin-bottom: 0px;
 }
 
 .nav-tabs{
     border-bottom:0px;
 }
+
+@media (min-width: 800px) and (max-width: 992px) {
+  .header .nav-tabs li {
+    min-width: 10%;
+  }
+  .header .nav-tabs li a {
+    padding: 15px 10px;
+  }
+}
+
 
 #navbar-left{
     margin-top: 82px;
@@ -371,7 +382,7 @@ section  table tr td {
   overflow-x: hidden;
   overflow-y: auto;
   padding-left: 10px;
-  
+
 }
 
 
