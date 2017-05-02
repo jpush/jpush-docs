@@ -3,7 +3,7 @@
 # low couple
 # syn module only synchronize the docs.################
 # if it went wrong, the auto build module will run all the same.
-import requests
+import sys
 import os
 import zipfile
 import urllib
@@ -13,49 +13,45 @@ import logging
 import commands
 import os
 
+from jinja2 import Environment, PackageLoader
+
+from githubtool import *
 from githubdownload import GithubDownload
-from repositories import repositories
+from repository import repositories
 from ziptool import ZipTool
+from syninfo import info
+reload(sys)
+sys.setdefaultencoding( "utf-8" )
 
 logging.basicConfig(level=logging.DEBUG,
                     format='%(asctime)s %(filename)s[line:%(lineno)d] %(levelname)s %(message)s',
                     datefmt='%a, %d %b %Y %H:%M:%S',
-                    filename='/opt/push/jpush-docs/syndocs/autosyn.log',
+                    filename='/opt/push/jpush-docs/syn.log',
                     filemode='a+')
 
-def git_push():
-    print (os.chdir("/opt/push/jpush-docs/syndocs/jpush-docs/"))
-    add_result= (commands.getstatusoutput("git add ."))
-    commit_result=(commands.getstatusoutput('git commit -m "new jpush doc from the github"'))
-    push_result= (commands.getstatusoutput("git push origin renew"))
-    logging.info(add_result)
-    logging.info(commit_result)
-    logging.info(push_result)
-    if(push_result[0]):
-        print ("fail")
-        reset_result=commands.getstatusoutput("git reset --hard HEAD^")
-        logging.info(reset_result)
-    else:
-        print ("success")
-        logging.info("git push origin renew")
 
-def git_pull():
-    print time.asctime(time.localtime(time.time()))
-    print (os.chdir("/opt/push/jpush-docs/syndocs/jpush-docs/"))
-    logging.info(commands.getstatusoutput("git pull origin renew"))
-    print ("git pull origin renew")
-
+env = Environment(loader=PackageLoader('synpage', 'templates'))
+template = env.get_template('index.md')
 downloader=GithubDownload()
+info_array={}
 for file_dic in repositories:
      html_content = downloader.get_html(repositories[file_dic]["url"]+"/releases")
+     url = repositories[file_dic]["url"]
+     language = repositories[file_dic]["languages"]
+     name = repositories[file_dic]["name"]
      try:
-          title = downloader.get_title(html_content)
-          logging.info("get title success")
+         release_title = downloader.get_title(html_content)
+         print release_title
+         release_body = downloader.get_body(html_content)
+         logging.info(release_body)
+         logging.info("get title success")
      except:
-          logging.info("get title fail")
+         logging.info("get title fail")
      zip_url = downloader.get_code(html_content)
      release_time = downloader.get_time(html_content)
      release_version = downloader.get_version(html_content)
+     info_array[language] = info(language, name, url, release_version, release_time, release_title, release_body)
+
      if(not os.path.exists(dirconfig.conf["zip"])):
           os.mkdir(dirconfig.conf["zip"])
      zip_folder=os.path.join(dirconfig.conf["zip"],repositories[file_dic]["name"])
@@ -73,9 +69,13 @@ for file_dic in repositories:
          zip_tool.zip_download(zip_dir,release_version,repositories[file_dic]["url"])
          zip_tool.unzip_file(repositories[file_dic]["name"],release_version)
          zip_tool.replace_readme(repositories[file_dic]["name"],release_version)
-         git_push()
+         #git_push()
          logging.info("git push,update the remote file")
 
 
-
-
+download_page=template.render(info_array=info_array)
+page_file=open("../zh/JPush/docs/resources.md",'w')
+page_file.write(download_page.decode('utf-8'))
+page_file.close()
+git_pull()
+#git_push()

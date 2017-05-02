@@ -1,5 +1,145 @@
 # 最近更新
 
+
+### Android SDK v2.1.2
+
+#### 更新时间
+
++ 2017-4-28
+
+#### Change Log
+##### BugFix:
++ 提升sdk稳定性
+
+##### NewFeature:
++ 新增获取全局未读数接口JMessageClient.getAllUnReadMsgCount()
++ 支持 jcenter 自动集成
+
+#### 升级提示
+
++ 建议升级！
+
+#### 升级指南
+
++ 首先解压您获取到的 zip 压缩包
+
++ 更新库文件
+	+ 打开 libs 文件夹。添加 jcore-android_v1.1.2.jar。用 jmessage-android_v2.1.2.jar 替换项目中原有的极光 jar 文件，并删除原有极光 jar 文件。用对应 CPU 文件夹下的 libjcore112.so 文件，替换项目中原有的 libjcoreXXX.so 文件，并删除原有的极光 so 文件，每种型号的 so 文件都可以在 SDK 下载包中找到。
+
++ 更新 AndroidManifest.xml
+	+ 请参考 SDK 下载包最新版本的 demo 来更新 AndroidManifest.xml 文件配置。
+
++ 如果使用 jcenter 的方式集成 JMessage，不需要添加相关组件和资源，详细集成说明请参考官方[集成指南](https://docs.jiguang.cn/jmessage/client/jmessage_android_guide/)
+
+
+
+### iOS SDK v3.1.0
+
+#### 更新时间
+
+2017-04-05
+
+#### ChangeLog
+
+##### BugFix:
+
++ 修复:小概率出现的由于mediaID重复导致的消息发送失败问题。
++ 修复:获取群成员列表未按入群时间排序返回问题。
+
+##### NewFeature
+
++ 新的消息同步机制
++ 支持消息漫游
++ 群组@功能
++ 群消息屏蔽
++ 支持用户信息自动更新
++ 媒体消息新增一种校验方式：hash校验。用来兼容web sdk发送的媒体消息
+
++ 新增接口：  
+	+ 消息同步代理 
+		+ 离线消息[- (void)onSyncOfflineMessageConversation:offlineMessages:](https://docs.jiguang.cn/jmessage/client/jmessage_ios_appledoc_html/Protocols/JMSGConversationDelegate.html#//api/name/onSyncOfflineMessageConversation:offlineMessages:)
+		+ 漫游消息[- (void)onSyncRoamingMessageConversation:](https://docs.jiguang.cn/jmessage/client/jmessage_ios_appledoc_html/Protocols/JMSGConversationDelegate.html#//api/name/onSyncRoamingMessageConversation:)
+		+ 设置消息漫游 [+ (void)setupJMessage:appKey:channel:apsForProduction:category:messageRoaming:](https://docs.jiguang.cn/jmessage/client/jmessage_ios_appledoc_html/Classes/JMessage.html#//api/name/setupJMessage:appKey:channel:apsForProduction:category:messageRoaming:)
+	+ 群组@功能相关
+		+ 创建包含 atList 的群消息 ：[+ (JMSGMessage *)createGroupMessageWithContent:groupId:at_list:](https://docs.jiguang.cn/jmessage/client/jmessage_ios_appledoc_html/Classes/JMSGMessage.html#//api/name/createGroupMessageWithContent:groupId:at_list:)
+		+ 发送 atList 的消息：[- (void)sendMessage: at_list:](https://docs.jiguang.cn/jmessage/client/jmessage_ios_appledoc_html/Classes/JMSGConversation.html#//api/name/sendMessage:at_list:)
+		+ 创建 @ 所有人的群消息 ：[+ (JMSGMessage *)createGroupAtAllMessageWithContent:groupId:](https://docs.jiguang.cn/jmessage/client/jmessage_ios_appledoc_html/Classes/JMSGMessage.html#//api/name/createGroupAtAllMessageWithContent:groupId:)
+		+ 发送 @ 所有人的消息：[- (void)sendAtAllMessage:](https://docs.jiguang.cn/jmessage/client/jmessage_ios_appledoc_html/Classes/JMSGConversation.html#//api/name/sendAtAllMessage:)
+		+ 判断消息中是否 @ 了自己：[- (BOOL)isAtMe](https://docs.jiguang.cn/jmessage/client/jmessage_ios_appledoc_html/Classes/JMSGMessage.html#//api/name/isAtMe)
+		+ 判断消息中是否 @ 了所有人：[- (BOOL)isAtAll](https://docs.jiguang.cn/jmessage/client/jmessage_ios_appledoc_html/Classes/JMSGMessage.html#//api/name/isAtAll)
+		+ 获取消息 @ 的群成员列表：[- (void)getAt_List:](https://docs.jiguang.cn/jmessage/client/jmessage_ios_appledoc_html/Classes/JMSGMessage.html#//api/name/getAt_List:)
+	+ 群消息屏蔽相关
+		+ 设置群消息屏蔽：[- (void)setIsShield:handler:](https://docs.jiguang.cn/jmessage/client/jmessage_ios_appledoc_html/Classes/JMSGGroup.html#//api/name/setIsShield:handler:)
+		+ 判断群组是否被屏蔽：[group.isShieldMessage](https://docs.jiguang.cn/jmessage/client/jmessage_ios_appledoc_html/Classes/JMSGGroup.html#//api/name/isShieldMessage)
+		+ 获取当前用户的群屏蔽列表：[+ (void)shieldList:](https://docs.jiguang.cn/jmessage/client/jmessage_ios_appledoc_html/Classes/JMSGGroup.html#//api/name/shieldList:)
+
++ 接口变动：
+	+ 为适配Swift的使用，allConversationsByDefault接口名改为allUnsortedConversations，只修改接口名，接口的功能保持不变。
+
+#### 升级指南
++ 使用新版本的JMessage.framework文件替换原工程下的同名旧文件
+
+#### 升级提示
++ 升级版本后，上层需要添加消息同步的监听代理方法，不然上层无法感知
++ 需要设置消息记录漫游的开发者，调用新的初始化方法设置是否启用消息漫游
+
+
+
+### Android SDK v2.1.1
+
+#### 更新时间
+
++ 2017-03-22
+
+#### Change Log
+##### BugFix:
++ 修复某些情况下，获取不到用户头像的问题
++ 修复其他一些用户反馈的bug
+
+#### 升级提示
+
++ 建议升级！
+
+#### 升级指南
+
++ 首先解压您获取到的 zip 压缩包
+
++ 更新库文件
+	+ 打开libs文件夹。添加jcore-android_v1.1.0.jar。用 jmessage-android_v2.1.1.jar 替换项目中原有的极光jar文件，并删除原有极光jar文件。用对应CPU文件夹下的 libjcore110.so 文件，替换项目中原有的libjpushXXX.so文件，并删除原有的极光so文件，每种型号的so文件都可以在SDK下载包中找到。
+
++ 更新AndroidManifest.xml
+	+ 请参考 SDK下载包最新版本的 demo 来更新AndroidManifest.xml 文件配置。
+
++ 详细集成说明请参考官方[集成指南](https://docs.jiguang.cn/jmessage/client/jmessage_android_guide/)
+
+
+
+### Web SDK v2.2.0
+
+#### 更新时间
+
++ 2017-03-17
+
+#### Change Log
+
++ 新增：群聊@功能
++ 新增：群屏蔽功能
++ 新增：获取资源访问路径接口
++ 新增：离线消息同步监听接口（优化性能）
++ 新增：异常断线监听
+
+
+#### 升级提示
+
++ 建议升级！
+
+#### 升级指南
+
++ 用最新的jmessage-sdk-web.2.2.0.min.js替换掉老版本的sdk
+
+
+
+
 ### Android SDK v2.1.0
 
 #### 更新时间

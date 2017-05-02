@@ -11,10 +11,11 @@ class GithubDownload():
     def get_html(self,url):
         try:
             result=requests.get(url)
+            if (result.status_code == 200):
+                html_content = BeautifulSoup(result.content, "html.parser")
         except:
             logging.info("get the github page failed")
-        if(result.status_code==200):
-            html_content = BeautifulSoup(result.content, "html.parser")
+            return None
         return html_content
 
     def get_title(self,html_content):
@@ -22,6 +23,10 @@ class GithubDownload():
         release_title=label_latest.find_all(class_="release-title")[0]
         release_title=release_title.a.text
         return release_title
+
+    def get_body(self,html_content):
+        release_body=html_content.find_all(class_="markdown-body")[0]
+        return release_body
 
     def get_code(self,html_content):
         label_latest=html_content.find_all(class_="label-latest")[0]
