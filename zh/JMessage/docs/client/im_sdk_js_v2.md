@@ -263,7 +263,7 @@ JMessage#updateSelfInfo()
 
 | KEY       | REQUIRE | DESCRIPTION   |
 | --------- | ------- | ------------- |
-| nick_name | FALSE   | 昵称            |
+| nickname | FALSE   | 昵称            |
 | birthday  | FALSE   | 生日            |
 | signature | FALSE   | 签名            |
 | gender    | FALSE   | 性别，0未知, 1男，2女 |
@@ -274,7 +274,7 @@ JMessage#updateSelfInfo()
 
 ```
    JIM.updateSelfInfo({
-                'nick_name' : '<your_nickname>',
+                'nickname' : '<your_nickname>',
                  'birthday' : '<your_address>',
                 'signature' : '<your_address>',
                 'gender' : '<your_address>',
