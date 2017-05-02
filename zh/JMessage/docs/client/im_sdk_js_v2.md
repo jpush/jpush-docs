@@ -102,7 +102,7 @@ JMessage#init()
 **漫游参数**
 
 Since SDK v2.2.0  新增漫游参数，初始化时，可设置是否启用消息记录漫游。
-打开消息漫游之后，用户多个设备之间登陆时，sdk会自动同步当前登陆用户的历史消息。
+打开消息漫游之后，用户多个设备之间登录时，sdk会自动同步当前登录用户的历史消息。
 
 **请求参数:**
 
@@ -263,7 +263,7 @@ JMessage#updateSelfInfo()
 
 | KEY       | REQUIRE | DESCRIPTION   |
 | --------- | ------- | ------------- |
-| nick_name | FALSE   | 昵称            |
+| nickname | FALSE   | 昵称            |
 | birthday  | FALSE   | 生日            |
 | signature | FALSE   | 签名            |
 | gender    | FALSE   | 性别，0未知, 1男，2女 |
@@ -274,7 +274,7 @@ JMessage#updateSelfInfo()
 
 ```
    JIM.updateSelfInfo({
-                'nick_name' : '<your_nickname>',
+                'nickname' : '<your_nickname>',
                  'birthday' : '<your_address>',
                 'signature' : '<your_address>',
                 'gender' : '<your_address>',
