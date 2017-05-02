@@ -67,9 +67,10 @@ h1,h2,h3, h4, h5, h6 {
 }
 
 .nav-tabs li {
-  width: 25%;
+  width: 20%;
   text-align: left;
   margin:0px;
+  display: inline-block;
 }
 
 .header .nav-tabs li a{
@@ -78,7 +79,7 @@ h1,h2,h3, h4, h5, h6 {
   padding:15px;
   border-style: none;
   width: auto;
-  display: inline;
+  /*display: inline;*/
 }
 
 .nav-tabs li a:hover{
@@ -98,7 +99,7 @@ a:hover{
 
 .header ul{
     padding: 0px;
-    margin-top: 15px;
+    /*margin-top: 15px;*/
     margin-bottom: 0px;
 }
 
@@ -185,6 +186,7 @@ a:hover{
 footer{
   text-align: center;
 }
+
 /*自定义修复bug*/
 .navbar-header a img{
   width: 130px;
@@ -216,7 +218,7 @@ footer{
       width: 940px;
   }
   .nav-tabs li {
-    width: 33%;
+    width: 20%;
     text-align: center;
     margin: 0px;
   }
@@ -229,7 +231,7 @@ footer{
       width: 100%;
   }
   .nav-tabs li {
-    width: 33%;
+    width: 20%;
     text-align: center;
     margin: 0px;
   }
@@ -240,6 +242,9 @@ footer{
 @media (max-width: 835px){
   #rtd-search-form {
     margin-left:-30px;
+  }
+  .header .nav-tabs li a {
+    padding: 15px 10px;
   }
 }
 @media (max-width: 768px){
@@ -282,9 +287,3 @@ footer{
       width: 60% !important;
   }
 }
-
-
-
-
-
-
