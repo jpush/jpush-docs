@@ -116,7 +116,7 @@
                 manifestPlaceholders = [
                     JPUSH_PKGNAME : applicationId,
                     JPUSH_APPKEY : "你的appkey", //JPush上注册的包名对应的appkey.
-                    JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
+                    JPUSH_CHANNEL : "自定义渠道名称", //用户渠道统计的渠道名称
                 ]
                 ......
             }
@@ -342,7 +342,7 @@ defaultConfig {
         <!-- 例如: -->
         <!-- 发到 Google Play 的APK可以设置为 google-play; -->
         <!-- 发到其他市场的 APK 可以设置为 xxx-market。 -->
-        <!-- 目前这个渠道统计功能的报表还未开放。-->
+        <!-- 渠道统计报表位于控制台页面的 “统计”-“用户统计”-“渠道分布” 中-->
         <meta-data android:name="JPUSH_CHANNEL" android:value="developer-default"/>
         <!-- Required. AppKey copied from Portal -->
         <meta-data android:name="JPUSH_APPKEY" android:value="您应用的Appkey"/> 
