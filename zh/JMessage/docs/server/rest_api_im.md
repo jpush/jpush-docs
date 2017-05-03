@@ -107,6 +107,20 @@ JSON Array.
   + 字母、数字、下划线
   + 英文点、减号、@
 + password（必填）用户密码。极光IM服务器会MD5加密保存。
++ nickname  （选填）用户昵称
+  + 不支持的字符：英文字符： \n \r\n 
++ avatar  （选填）头像
+  + 需要填上从文件上传接口获得的media_id	
++ birthday    （选填）生日 example: 1990-01-24
+  + yyyy-MM-dd 
++ signature  （选填）签名
+  + 支持的字符：全部，包括 Emoji
++ gender    （选填） 性别
+  + 0 - 未知， 1 - 男 ，2 - 女 
++ region      （选填）地区
+  + 支持的字符：全部，包括 Emoji
++ address   （选填）地址
+  + 支持的字符：全部，包括 Emoji
 
 ##### Example Response
 
@@ -725,8 +739,9 @@ msg_type:image
 < HTTP/1.1 200 OK
 < Content-Type: application/json
 < 
-{"msg_id": 43143728109  }
+{"msg_id": 43143728109, "msg_ctime":1493794522950}
 ```
+msg_ctime:  消息创建的时间戳
 
 Error Code
 
