@@ -7,22 +7,22 @@
         <li><a href="/jpush/client/Android/android_guide/">Android SDK 集成指南</a></li>
         <li><a href="/jpush/client/Android/android_api/">Android API</a></li>
     </ul>
-    <ul>    
+    <ul>
         <li><a href="/jpush/client/iOS/ios_sdk/">iOS SDK 概述</a></li>
         <li><a href="/jpush/client/iOS/ios_guide_new/">iOS SDK 集成指南</a></li>
         <li><a href="/jpush/client/iOS/ios_api/">iOS API</a></li>
         <div style="clear:both;"></div>
     </ul>
 	<ul>
-	   <li><a href="/jpush/client/Windows%20Phone/winphone_sdk/">Windows Phone SDK 概述</a></li>
-	   <li><a href="/jpush/client/Windows%20Phone/winphone_guide/">Windows Phone SDK 集成指南</a></li>
+	   <li><a href="/jpush/client/WindowsPhone/winphone_sdk/">Windows Phone SDK 概述</a></li>
+	   <li><a href="/jpush/client/WindowsPhone/winphone_guide/">Windows Phone SDK 集成指南</a></li>
 		<li><a href="/jpush/client/client_plugins/">客户端集成插件</a></li>
 	</ul>
 	<ul>
 	   <li><a href="/jpush/server/push/server_overview/">REST API 概述</a></li>
 	   <li><a href="/jpush/server/push/rest_api_v3_push/">REST API Push</a></li>
 		<li><a href="/jpush/server/push/rest_api_v3_report/">REST API Report</a></li>
-	</ul>	
+	</ul>
 </div>
 <div class="content-box">
     <div class="h2-tile">
@@ -39,7 +39,7 @@
         <li><a href="https://docs.jiguang.cn/jmessage/client/im_android_api_docs/">Android SDK API</a></li>
         <li><a href="https://docs.jiguang.cn/jmessage/client/jmessage_ios_appledoc_html/">iOS SDK API</a></li>
         <li><a href="https://docs.jiguang.cn/jmessage/resources/">IM SDK 下载</a></li>
-        
+
         <div style="clear:both;"></div>
     </ul>
 </div>
