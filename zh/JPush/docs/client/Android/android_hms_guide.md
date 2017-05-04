@@ -55,6 +55,7 @@ JPush SDK 为了尽可能提高开发者在各类 rom 上的推送送达率，�
             dirs 'libs'  //this way we can find the .aar file in libs folder
         }
     }
+    
 ```
 
 ***注1***：旧版的华为推送也有 jar 包集成的方式，但当前主推是 HMS arr 形式的业务群集成，所以极光目前采用 HMS arr 形式来集成华为通道。
@@ -69,35 +70,34 @@ JPush SDK 为了尽可能提高开发者在各类 rom 上的推送送达率，�
 ***注***： HMS arr 会强制将 minSdkVersion 修改为 14。如果当前 app 使用 minSdkVersion 的值小于 14，则需要使用 tools 避免被强制覆盖。
 
 ```
-        <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:tools="http://schemas.android.com/tools"
-         ...
-            >
+	<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+		xmlns:tools="http://schemas.android.com/tools"
+		...
+	>
 		<uses-sdk
-            android:minSdkVersion="9"
-            android:targetSdkVersion="21"
-            tools:overrideLibrary="com.huawei.hms.sdk"
-         />
-
+			android:minSdkVersion="9"
+			android:targetSdkVersion="21"
+			tools:overrideLibrary="com.huawei.hms.sdk" />
+			
 ```
 
 
 #### <h3 id="4">4. 配置HMS SDK Push必须的组件</h3>
 
 ```
+	<provider
+		android:name="com.huawei.hms.update.provider.UpdateProvider"
+		android:authorities="您应用的包名.hms.update.provider"
+		android:exported="false"
+		android:grantUriPermissions="true">
+	</provider>
 
- 		<provider
-            android:name="com.huawei.hms.update.provider.UpdateProvider"
-            android:authorities="您应用的包名.hms.update.provider"
-            android:exported="false"
-            android:grantUriPermissions="true"></provider>
-
-        <receiver android:name="com.huawei.hms.support.api.push.PushEventReceiver">
-            <intent-filter>
-                <!-- 接收通道发来的通知栏消息,兼容老版本Push -->
-                <action android:name="com.huawei.intent.action.PUSH" />
-            </intent-filter>
-        </receiver>
+	<receiver android:name="com.huawei.hms.support.api.push.PushEventReceiver">
+		<intent-filter>
+			<!-- 接收通道发来的通知栏消息,兼容老版本Push -->
+			<action android:name="com.huawei.intent.action.PUSH" />
+		</intent-filter>
+	</receiver>
         
 ```
 
@@ -105,20 +105,22 @@ JPush SDK 为了尽可能提高开发者在各类 rom 上的推送送达率，�
 
 
 ```
-       <receiver android:name="cn.jpush.android.service.PluginHuaweiPlatformsReceiver">
-            <intent-filter>
-                <!-- 必须,用于接收token -->
-                <action android:name="com.huawei.android.push.intent.REGISTRATION" /> <!-- 必须,用于接收消息 -->
-                <action android:name="com.huawei.android.push.intent.RECEIVE" />
-                <!-- 可选,用于点击通知栏或通知栏上的按钮后触发onEvent回调 -->
-                <action android:name="com.huawei.android.push.intent.CLICK" />
-                <!-- 可选,查看push通道是否连接,不查看则不需要 -->
-                <action android:name="com.huawei.intent.action.PUSH_STATE" />
-            </intent-filter>
-            <meta-data
-                android:name="CS_cloud_ablitity"
-                android:value="successRateAnalytics" />
-        </receiver>
+	<receiver android:name="cn.jpush.android.service.PluginHuaweiPlatformsReceiver">
+		<intent-filter>
+			<!-- 必须,用于接收token -->
+			<action android:name="com.huawei.android.push.intent.REGISTRATION" /> 			<!-- 必须,用于接收消息 -->
+			<action android:name="com.huawei.android.push.intent.RECEIVE" />
+			<!-- 可选,用于点击通知栏或通知栏上的按钮后触发onEvent回调 -->
+			<action android:name="com.huawei.android.push.intent.CLICK" />
+			<!-- 可选,查看push通道是否连接,不查看则不需要 -->
+			<action android:name="com.huawei.intent.action.PUSH_STATE" />
+		</intent-filter>
+            
+		<meta-data
+			android:name="CS_cloud_ablitity"
+			android:value="successRateAnalytics" />
+        
+	</receiver>
         
 ```
 
@@ -127,11 +129,11 @@ JPush SDK 为了尽可能提高开发者在各类 rom 上的推送送达率，�
 在华为控制台上获取注册应用的 appid，并填充在 manifest 如下所示的位置。
 
 ```
-        <meta-data
-            android:name="com.huawei.hms.client.appid"
-            android:value="您的应用对应华为的appID"></meta-data>
-
-
+	<meta-data
+		android:name="com.huawei.hms.client.appid"
+		android:value="您的应用对应华为的appID">
+	</meta-data>
+	
 ```
 
 #### <h3 id="7">7. 在build.gradle中配置在华为后台添加的指纹证书对应的签名</h3>
@@ -167,19 +169,22 @@ jira - EMUI 版本说明
 ## 使用 JCenter 自动化集成步骤
 
 + 确认android studio的 Project 根目录的主 gradle 中配置了jcenter支持。（新建project默认配置就支持）
-        
-        buildscript {
-            repositories {
-                jcenter()
-            }
+
+```        
+	buildscript {
+		repositories {
+			jcenter()
+		}
             ......
-        }
+	}
         
-        allprojets {
-            repositories {
-                jcenter()
-            }
-        }
+	allprojets {
+		repositories {
+			jcenter()
+		}
+	}
+        
+```
 
 + 在应用 module 的 gradle 中 dependencies 节点添加如下代码:
 
@@ -188,14 +193,13 @@ jira - EMUI 版本说明
     dependencies {
          compile 'cn.jiguang.sdk.plugin:huawei:3.0.5'
     }
-
+    
 ```
 
 + 在应用 module 的 gradle 中 defaultConfig 节点添加如下代码:
 
 ```
-
-manifestPlaceholders = [
+	manifestPlaceholders = [
 
         // 设置manifest.xml中的变量
         HUAWEI_APPID : "您的应用对应华为的appID", // 华为平台注册的appid
@@ -206,8 +210,7 @@ manifestPlaceholders = [
 
 + 因为华为需要依赖v4包,所以需要引入v4包,如果您的工程本来就已经引入v4包,可以忽略此步骤
 
-```
-    
+```    
     dependencies {
          compile 'com.android.support:appcompat-v7:25.2.0'
     }
