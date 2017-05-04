@@ -231,5 +231,6 @@ JPush SDK 为了尽可能提高开发者在各类 rom 上的推送送达率，�
 
 如果使用了 proguard，需要在配置文件中加入,可以防止一个误报的 warning 导致无法成功编译，
 
-+ -dontwarn com.xiaomi.push.**
+	-dontwarn com.xiaomi.push.**
+	-keep class com.xiaomi.push.** { *; }
 

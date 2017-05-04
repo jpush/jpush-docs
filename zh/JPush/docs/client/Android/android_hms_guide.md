@@ -212,7 +212,7 @@ jira - EMUI 版本说明
 
 ```    
     dependencies {
-         compile 'com.android.support:appcompat-v7:25.2.0'
+         compile 'com.android.support:support-v4:+'
     }
     
 
