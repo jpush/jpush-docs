@@ -1006,54 +1006,10 @@ API用来关闭日志信息（除了必要的错误信息）
 ```
 ## 页面的统计
 
-### 支持的版本
+### API 说明
 
-r1.7.0 版本开始。
-
-### 功能说明
-
-本 API 用于“用户指定页面使用时长”的统计，并上报到服务器，在 Portal 上展示给开发者。页面统计集成正确，才能够获取正确的页面访问路径、访问深度（PV）的数据。
-
-### API
-
-#### 接口定义
-
-    + (void)startLogPageView:(NSString*)pageName;
-    + (void)stopLogPageView:(NSString*)pageName;
-    + (void)beginLogPageView:(NSString*)pageName duration:(int)seconds;
-    
-
-#### 参数说明
-
-* pageName 需要统计页面自定义名称
-* duration 自定义的页面时间
-
-#### 调用说明
-
-应在所有的需要统计得页面得 viewWillAppear 和 viewWillDisappear 加入 startLogPageView 和 stopLogPageView 来统计当前页面的停留时间。
-
-<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">
-<p>或者直接使用 beginLogPageView 来自定义加入页面和时间信息。
-</div>
-
-### 代码示例
-
-    - (void)viewWillAppear:(BOOL)animated
-        {
-            [super viewWillAppear:animated];
-            [JPUSHService startLogPageView:@"PageOne"];
-        }
-    - (void)viewWillDisappear:(BOOL)animated 
-        {
-            [super viewWillDisappear:animated];
-            [JPUSHService stopLogPageView:@"PageOne"];
-        }   
-    －(void)trackView
-       {
-           [JPUSHService beginLogPageView:@"PageTwo" duration:10];
-       }
-    
-
+页面流统计的展示数据来源已切换为 JAnalytics 的数据。
+该功能请使用 iOS JAnalytics API： [页面流统计](https://docs.jiguang.cn/janalytics/client/ios_api/#sdk_1)
 
 ## 地理位置统计
 
