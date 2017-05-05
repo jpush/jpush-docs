@@ -33,8 +33,7 @@ JPush SDK 为了尽可能提高开发者在各类 rom 上的推送送达率，�
 * [4.5. 将MEIZUAPPKEY与MEIZUAPPID替换为在魅族后台注册对应该应用 的AppKey/AppID ](#4.5)
 
 ####<h3 id="4.1"> 4.1. 增加魅族推送sdk的aar </h3>
-将魅族推送sdk的aar 件(push-internal-x.x.xxxxxx-xxxx.aar)添加到 程/libs 录下。 然后在build.gradle中增加编译
-该 aar 的代码:
+将魅族推送 sdk 的 aar 文件(push-internal-x.x.xxxxxx-xxxx.aar)添加到工程/libs目录下。然后在build.gradle中增加编译该 aar 的代码:
 
 ```
 	dependencies {
@@ -113,17 +112,25 @@ JPush SDK 为了尽可能提高开发者在各类 rom 上的推送送达率，�
 
 ```
 	buildscript { 
-		repositories {		jcenter()
-		}		...... 	}
-		allprojets { 
-		repositories {		jcenter() 
-		}  	}
+		repositories {
+		jcenter()
+		}
+		...... 
+	}
+
+	
+	allprojets { 
+		repositories {
+		jcenter() 
+		}  
+	}
  
 ```
 + 在应用 module 的 gradle 中 dependencies 节点添加如下代码:
 
 ```
-	dependencies {		compile 'cn.jiguang.sdk.plugin:meizu:3.0.6'
+	dependencies {
+		compile 'cn.jiguang.sdk.plugin:meizu:3.0.6'
 	}
 	
 ```
@@ -139,12 +146,13 @@ JPush SDK 为了尽可能提高开发者在各类 rom 上的推送送达率，�
 ```
 
 ## 配置魅族通知栏小图标
+通过 MzPush SDK 接收的通知，可设置其通知栏 icon，方法如下：
 
-魅族通知栏中心需要按照名称来获取通知栏Icon,你需要在相应的drawable不同分辨率文件夹下放置一个名称为 mz_push_notification_small_icon 的通知栏图标文件,请确保名称正确，否则将无法正确显示你应用的状态栏图标。
+在应用的工程目录 res/drawable-xxxx/ 几个文件夹中添加对应不同分辨率的通知栏 icon 图标，文件名为 mz\_push\_notification\_small\_icon。如果文件名错误，将无法正确显示该应用的状态栏图标。
 
 魅族手机状态栏 icon 规范请参考 [魅族 PushSDK Demo](https://github.com/MEIZUPUSH/PushDemo/tree/master/PushdemoInternal/src/main/res) 中的图片文件。
 
-**注：**如果没有放入魅族要求的 mz_push_notification_small_icon 图标文件，会默认使用应用Icon图标，由于应用Icon图标一般不是按照魅族的通知栏图标来设计，会导致通知栏图标无法正确显示。
+**注：**如果没有放入符合规范的 icon 文件，会默认使用应用图标作为通知 icon。而应用图标不符合魅族的通知栏 icon 设计规范的话，则会导致通知栏图标无法正确显示。
 
 ##集成错误码
 
