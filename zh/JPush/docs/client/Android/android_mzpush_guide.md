@@ -150,7 +150,9 @@ JPush SDK 为了尽可能提高开发者在各类 rom 上的推送送达率，�
 
 在应用的工程目录 res/drawable-xxxx/ 几个文件夹中添加对应不同分辨率的通知栏 icon 图标，文件名为 mz\_push\_notification\_small\_icon。如果文件名错误，将无法正确显示该应用的状态栏图标。
 
+
 魅族手机状态栏 icon 规范请参考 [魅族 PushSDK Demo](https://github.com/MEIZUPUSH/PushDemo/tree/master/PushdemoInternal/src/main/res) 中的图片文件。
+
 
 **注：**如果没有放入符合规范的 icon 文件，会默认使用应用图标作为通知 icon。而应用图标不符合魅族的通知栏 icon 设计规范的话，则会导致通知栏图标无法正确显示。
 
