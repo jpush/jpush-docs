@@ -1,5 +1,28 @@
 # 最近更新
 
+### iOS SDK v3.1.1
+
+#### 更新时间
+
+2017-05-05
+
+#### ChangeLog
+
+##### BugFix:
+
+* 修复：allConverstions 接口排序逻辑问题
+* 修复：下载多媒体文件时下载进度回调错误的问题
+
+##### NewFeature
+
+* Conversation 新增 latestMsgTime 属性，用于会话排序
+	* @property(nonatomic, strong, readonly) NSNumber *latestMsgTime;
+
+
+#### 升级指南
+* 使用新版本的JMessage.framework文件替换原工程下的同名旧文件
+* 将新版本的JMessage.framework里的JCore link到工程中，详细参见官网集成文档
+
 
 ### Android SDK v2.1.2
 
