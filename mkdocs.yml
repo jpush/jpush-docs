@@ -2,7 +2,7 @@ site_name: 极光文档
 site_author: JiGuang Offical
 site_url: https://docs.jiguang.cn/
 repo_url: https://github.com/jpush/jpush-docs/
-site_favicon: favicon.ico
+site_favicon: img/favicon.ico
 site_description: JPush, JMessage, 极光推送, 极光IM, Android Push, Android 推送, 安卓推送, iOS Push, APNs, Push Notification
 copyright: Copyright 2011-2017, jiguang.cn, All Rights Reserved. <br />粤ICP备12056275号-13 深圳市和讯华谷信息技术有限公司
 theme: 'mkdocs'
