@@ -4,7 +4,7 @@
 <p>特别提示：v1 版本获取数据有数量限制，此版本将不再提供新功能，仅维护因 bug 导致的问题，请正在使用此版本的开发者尽快升级到 v2 版本。
 </div>
 
-## MessageList 消息历史
+## 消息历史
 
 目前只保存最近60天消息，这类 API 地址统一为（注意与 Push API 不同）：**https://report.im.jpush.cn/v1**
 
@@ -23,7 +23,7 @@ Authorization: Basic base64_auth_string
 <br/>
 
 
-## GetMessage 获取消息
+## 获取消息
 
 
 
@@ -89,7 +89,7 @@ Content-Type: application/json; charset=utf-8
 } 
 ```
 
-##  GetUserMessage 获取用户消息
+## 获取用户消息
 
 ```
 GET /users/{username}/messages?start=0&count=500&begin_time={begin_time}&end_time={end_time}

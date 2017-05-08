@@ -1,6 +1,6 @@
 # IM REST Report V2
 
-## MessageList 消息历史
+## 消息历史
 
 目前只保存最近60天消息，这类 API 地址统一为（注意与 Push API 不同）：**https://report.im.jpush.cn/v2**
 相比于V1 V2改进了整体查询的稳定性以及速度，提高查询一页的数量上限
@@ -20,7 +20,7 @@ Authorization: Basic base64_auth_string
 <br/>
 
 
-## GetMessage 获取消息
+## 获取消息
 
 
 
@@ -92,7 +92,7 @@ Content-Type: application/json; charset=utf-8
 } 
 ```
 
-##  GetUserMessage 获取用户消息
+## 获取用户消息
 
 ```
 GET /users/{username}/messages?count=1000&begin_time={begin_time}&end_time={end_time}
@@ -161,7 +161,7 @@ Content-Type: application/json; charset=utf-8
 ```
 
 
-##  GetGrouprMessage 获取群组消息 
+## 获取群组消息 
 
 ```
 GET /groups/{gid}/messages?count=1000&begin_time={begin_time}&end_time={end_time}
@@ -239,7 +239,7 @@ Content-Type: application/json; charset=utf-8
 
 # 统计接口 （vip专属接口）
 
-##  GetUserStatistic  用户统计 
+## 用户统计 
 
 ```
 GET GET /statistic/users?time_unit={time_unit}&start={start}&duration={duration}
@@ -307,7 +307,7 @@ Content-Type: application/json; charset=utf-8
 
 
 
-##  GetMsgStatistic  消息统计 
+## 消息统计 
 
 ```
 GET GET /statistic/messages?time_unit={time_unit}&start={start}&duration={duration}
@@ -391,7 +391,7 @@ Content-Type: application/json; charset=utf-8
 + single_msg_stat->other_msg : 单聊其他类型消息条数
 
 
-##  GetGroupStatistic  群组统计 
+## 群组统计 
 
 ```
 GET GET /statistic/groups?time_unit={time_unit}&start={start}&duration={duration}
