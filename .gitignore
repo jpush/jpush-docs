@@ -64,4 +64,5 @@ zh/.DS_Store
 en/.DS_Store
 
 
-
+pyvenv.cfg
+lib64
