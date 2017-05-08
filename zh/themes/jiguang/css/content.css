@@ -1,0 +1,188 @@
+div#content {
+  font-size: 14px;
+  font-weight: 300;
+  font-family: "Helvetica Neue",Helvetica,"PingFang SC","Microsoft Yahei",Arial,Verdana,sans-serif;
+}
+
+div#content p{
+  line-height: 1.8;
+  font-size:15px;
+  margin-bottom:0px;
+}
+
+div#content div p{
+  line-height: 1.8;
+  font-size:13px;
+  margin-bottom:0px;
+}
+div#content div ul li{
+  line-height: 1.8;
+  font-size:13px;
+  margin-bottom:0px;
+}
+
+div#content h1{
+  font-size: 28px;
+  color: #1b75bb;
+  font-weight: bold;
+  margin-top: 6px;
+}
+
+
+div#content h2{
+  font-size: 24px;
+  color: #666666;
+  font-weight: bold;
+  padding-bottom: 4px;
+  margin-bottom: 24px;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color:#e5e5e5;
+  padding-top: 80px;
+  margin-top: -40px;
+}
+
+div#content h3{
+  font-size: 18px;
+  color: #1b75bb;
+  font-weight: bold;
+  font-size: 18px;
+  padding-top: 80px;
+  margin-top: -40px;
+
+}
+
+div#content h4{
+  font-size: 15px;
+  color: #3a3a3a;
+  font-weight: bold;
+  margin-top: 26px;
+}
+
+div#content h5{
+  font-size: 15px;
+  color: #1b75bb;
+  margin-top: 26px;
+  margin-bottom:10px;
+}
+
+div#content ul{
+  padding-left:40px;
+}
+
+div#content ul li{
+  display: list-item;
+  list-style-type: disc;
+  font-size: 15px;
+  font-weight: 300;
+  min-height: 26px;
+  line-height: 1.8;
+}
+
+div#content ul li ul{
+  padding-left:40px;
+}
+
+div#content ul li ul li{
+  display: list-item;
+  list-style-type: circle;
+  font-size: 15px;
+  font-weight: 300;
+  min-height: 26px;
+  line-height: 1.8;
+}
+
+div#content table  {
+    max-width:720px;
+}
+
+td:first-child {
+    word-break: keep-all;
+}
+
+
+div#content table tr th {
+    line-height: 1.8;
+    word-break:keep-all;
+    min-width:60px;
+    background-color: #f3f4f6;
+    border: 1px solid #dddddd;
+    height: 46px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-family: "Helvetica Neue",Helvetica,"PingFang SC","Microsoft Yahei",Arial,Verdana,sans-serif;
+}
+
+
+div#content  table tr td {
+    line-height: 1.8;
+    min-width:60px;
+    height: 40px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border: 1px solid #dddddd;
+    font-family: "Helvetica Neue",Helvetica,"PingFang SC","Microsoft Yahei",Arial,Verdana,sans-serif;
+}
+
+
+code {
+    white-space: pre;
+}
+
+pre>code:before, .method-declaration code:before{
+  content: "";
+}
+
+pre{
+  background-color: #fafafa;
+  margin-top:10px;
+}
+
+pre code{
+  color: #111111;
+}
+pre>code{
+  border-left: 0px;
+}
+
+
+p code {
+    word-wrap: break-word;
+}
+
+/*
+ * The CSS classes from highlight.js seem to clash with the
+ * ReadTheDocs theme causing some code to be incorrectly made
+ * bold and italic.
+ *
+ * https://github.com/mkdocs/mkdocs/issues/411
+ */
+code.cs, code.c {
+    font-weight: inherit;
+    font-style: inherit;
+}
+
+/*
+ * Fix some issues with the theme and non-highlighted code
+ * samples. Without and highlighting styles attached the
+ * formatting is broken.
+ *
+ * https://github.com/mkdocs/mkdocs/issues/319
+ */
+.no-highlight {
+  display: block;
+  padding: 0.5em;
+  color: #333;
+}
+
+
+/*
+ * Additions specific to the search functionality provided by MkDocs
+ */
+
+
+ div.admonition code {
+  color: #404040;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.7);
+}
