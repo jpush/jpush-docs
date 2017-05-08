@@ -66,7 +66,7 @@ var JIM = new JMessage({debug:true});
 
 ## API
 
-API使用Promise风格，所有的API请求都是异步的，并支持以下4种回调处理。
+API使用Promise风格，无特殊说明所有的API请求都是异步的，并支持以下4种回调处理。
 
 - 请求成功回调 onSuccess()
 - 请求失败回调 onFail()
@@ -99,6 +99,11 @@ JIM.sendSingleMsg({
 
 JMessage#init()
 
+**漫游参数**
+
+Since SDK v2.2.0  新增漫游参数，初始化时，可设置是否启用消息记录漫游。
+打开消息漫游之后，用户多个设备之间登录时，sdk会自动同步当前登录用户的历史消息。
+
 **请求参数:**
 
 | KEY        | REQUIRE | DESCRIPTION           |
@@ -107,7 +112,7 @@ JMessage#init()
 | random_str | TRUE    | 随机字符串                 |
 | timestamp  | TRUE    | 当初时间戳                 |
 | signature  | TRUE    | 签名                    |
-| flag       | FALSE   | 离线数据是否漫游默认0否，1是       |
+| flag       | FALSE   | 是否启用消息记录漫游，默认0否，1是    |
 
 **请求示例**
 
@@ -258,7 +263,7 @@ JMessage#updateSelfInfo()
 
 | KEY       | REQUIRE | DESCRIPTION   |
 | --------- | ------- | ------------- |
-| nick_name | FALSE   | 昵称            |
+| nickname  | FALSE   | 昵称            |
 | birthday  | FALSE   | 生日            |
 | signature | FALSE   | 签名            |
 | gender    | FALSE   | 性别，0未知, 1男，2女 |
@@ -269,7 +274,7 @@ JMessage#updateSelfInfo()
 
 ```
    JIM.updateSelfInfo({
-                'nick_name' : '<your_nickname>',
+                'nickname' : '<your_nickname>',
                  'birthday' : '<your_address>',
                 'signature' : '<your_address>',
                 'gender' : '<your_address>',
@@ -387,12 +392,15 @@ JMessage#sendSingleMsg()
                   //data.code 返回码
                   //data.message 描述
                   //data.msg_id 发送成功后的消息id
-                  //msg.content 发送成功[消息体](https://docs.jiguang.cn/jmessage/advanced/im_message_protocol/)
+                  //msg.content 发送成功消息体,见下面消息体详情
                }).onFail(function(data) {
                   //data.code 返回码
                   //data.message 描述
                });
 ```
+**消息体**
+
+[消息体详情](https://docs.jiguang.cn/jmessage/advanced/im_message_protocol/): 
 
 #### 发送单聊图片
 
@@ -540,7 +548,7 @@ JMessage#sendGroupMsg()
 			     'target_gname' : '<targetGName>',
                  'content' : '<textContent>',
                  'extras' : '<json object>',
-                 'at_list' : '[]' 
+                 'at_list' : [] //at all
                }).onSuccess(function(data , msg) {
                   //同发送单聊文本
                }).onFail(function(data) {
@@ -766,7 +774,6 @@ JMessage#addGroupMembers()
                }).onSuccess(function(data) {
                   //data.code 返回码
                   //data.message 描述
-                  //data.member_usernames[] 用户名列表
                }).onFail(function(data) {
                   //同上
                });
@@ -792,7 +799,6 @@ JMessage#delGroupMembers()
                }).onSuccess(function(data) {
                   //data.code 返回码
                   //data.message 描述
-                  //data.member_usernames[] 用户名列表
                }).onFail(function(data) {
                   // 同上
                });
@@ -1366,7 +1372,11 @@ JIM.onMsgReceive(function(data) {
 });
 ```
 
+<<<<<<< HEAD
 ### 离线消息同步
+=======
+### 离线消息同步监听
+>>>>>>> renew
 
 JMessage#onSyncConversation(fn)
 

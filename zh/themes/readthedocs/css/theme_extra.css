@@ -69,9 +69,10 @@ h1,h2,h3, h4, h5, h6 {
 }
 
 .nav-tabs li {
-  min-width: 25%;
-  text-align: left;
+  min-width: 20%;
+  text-align: center;
   margin:0px;
+  display: inline-block;
 }
 
 .header .nav-tabs li a{
@@ -80,7 +81,7 @@ h1,h2,h3, h4, h5, h6 {
   padding:15px;
   border-style: none;
   width: auto;
-  display: inline;
+  /*display: inline;*/
 }
 
 .nav-tabs li a:hover{
@@ -92,13 +93,23 @@ h1,h2,h3, h4, h5, h6 {
 
 .header ul{
     padding: 0px;
-    margin-top: 15px;
+    /*margin-top: 15px;*/
     margin-bottom: 0px;
 }
 
 .nav-tabs{
     border-bottom:0px;
 }
+
+@media (min-width: 800px) and (max-width: 992px) {
+  .header .nav-tabs li {
+    min-width: 10%;
+  }
+  .header .nav-tabs li a {
+    padding: 15px 10px;
+  }
+}
+
 
 #navbar-left{
     margin-top: 82px;
@@ -371,7 +382,7 @@ section  table tr td {
   overflow-x: hidden;
   overflow-y: auto;
   padding-left: 10px;
-  
+
 }
 
 
@@ -614,7 +625,7 @@ code.cs, code.c {
 
 .download .download-info-ul li a{
   color: #666666;
-
+  white-space: nowrap;
 }
 
 .download-right .download-icon{
@@ -659,4 +670,79 @@ code.cs, code.c {
   min-width: 160px;
 }
 
+.auto-download-image img{
+  margin-top:60px !important;
+}
 
+.auto-download-title p{
+    font-size:16px !important;
+    color:#1b75bb;
+    margin-bottom:8px;
+}
+
+.auto-download-left{
+    width:20%;
+    float: left;
+}
+
+.auto-download-title
+{
+    margin-top:20px;
+    color:#666666;
+}
+.auto-download-icon{
+    clear: both;
+    width: 98px;
+    height: 30px;
+    padding-top: 2px;
+    border-style: solid;
+    border-color: #b5b5b5;
+    border-width: 1px;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.auto-changelog-title h3
+{
+    font-size:14px !important;
+    font-weight:inherit !important;
+    padding:2px 2px 2px 0px !important;
+    margin:2px 2px 2px 0px !important;
+    color:#666666 !important;
+}
+
+.markdown-body
+{
+    font-size: 12px !important;
+    color:#666666 !important;
+    padding:2px 2px 2px 2px ;
+    margin:2px 2px 2px 2px ;
+    font-weight:inherit !important;
+}
+
+
+.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body li,.markdown-body p
+{
+    color:#666666 !important;
+    font-size: 12px !important;
+    padding:2px 2px 2px 0px !important;
+    margin:2px 2px 2px 0px !important;
+    border-bottom-style: none !important;
+    font-weight:inherit !important;
+}
+
+.auto-download-info-ul li
+{
+    float:left;
+    margin-right:46px;
+    margin-top:10px;
+    margin-bottom:24px !important;
+}
+.auto-download-right
+{
+    width: 80%;
+    float: left;
+}
+.auto-download-changelog ul li{
+    clear: both;
+}

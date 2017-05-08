@@ -45,6 +45,12 @@ def build():
     time.sleep(1)
     print time.asctime(time.localtime(time.time()))
 
+    logging.info (os.chdir("/opt/push/jpush-docs/jpush-docs/zh/JShare/"))
+    print ("JShare/")
+    logging.info (commands.getstatusoutput("/opt/push/jpush-docs/venv/bin/mkdocs build"))
+    time.sleep(1)
+    print time.asctime(time.localtime(time.time()))
+
 
 logging.basicConfig(level=logging.DEBUG,
                     format='%(asctime)s %(filename)s[line:%(lineno)d] %(levelname)s %(message)s',
@@ -55,6 +61,7 @@ logging.basicConfig(level=logging.DEBUG,
 kill_git()
 build()
 git_pull()
+
 exit()
 
 

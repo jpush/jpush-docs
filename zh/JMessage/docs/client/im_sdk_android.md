@@ -3,6 +3,8 @@
 
 ## 概述
 
+极光 IM（英文名JMessage）为开发者提供易用可靠的 IM 开发框架，开发者可集成SDK，快速实现即时通讯功能。SDK 支持Android 2.3或以上版本的手机系统。要了解极光 IM 的详细信息，请参考文档：[JMessage 产品简介](https://docs.jiguang.cn/jmessage/guideline/jmessage_guide/)
+
 ### 消息
 
 极光 IM 最核心的功能是即时通讯功能。
@@ -101,7 +103,7 @@ JMessageClient.init(Context context)
 ### SDK初始化(设置消息记录漫游)
 ***Since 2.1.0***  
 SDK初始化,同时指定是否启用消息记录漫游。  
-打开消息漫游之后，用户多个设备之间登陆时，sdk会自动将当前登陆用户的历史消息同步到本地，同步完成之后sdk会发送一个`ConversationRefreshEvent`事件通知上层刷新，具体事件处理方法见[事件处理](#Event)一节。
+打开消息漫游之后，用户多个设备之间登录时，sdk会自动将当前登录用户的历史消息同步到本地，同步完成之后sdk会发送一个`ConversationRefreshEvent`事件通知上层刷新，具体事件处理方法见[事件处理](#Event)一节。
 
 ```
 JMessageClient.init(Context context, boolean msgRoaming)
@@ -296,7 +298,6 @@ JMessageClient.getGroupConversation(long groupID);
 
 
 
-
 #### 删除单个单聊会话
 删除与指定appkey下username的单聊的会话，同时删除掉本地聊天记录。,如果appkey为空则默认尝试删除本应用appkey下对应username的会话。
 ```  
@@ -324,6 +325,43 @@ JMessageClient.deleteGroupConversation(long groupID);
 返回
 
 + boolean 是否删除成功。
+
+#### 获取单个会话未读消息数
+```
+conversation.getUnReadMsgCnt();
+```
+返回
+
++ int 当前会话的未读消息数
+
+#### 重置单个会话未读消息数
+```
+conversation.resetUnreadCount();
+```
+返回
+
++ boolean true表示重置成功，其他情况下返回false.
+
+#### 手动设置会话未读消息数
+```
+conversation.setUnReadMessageCnt(int count);
+```
+参数说明
+
++ int count 指定的未读消息数
+
+返回
+
++ boolean true表示设置成功，其他情况下返回false.
+
+#### 获取所有会话未读消息总数
+```
+JMessageClient.getAllUnReadMsgCount();
+```
+返回
+
++ int 当前用户所有会话的未读消息总数
+
 
 ### 消息管理
 
@@ -478,14 +516,16 @@ JMessageClient.deleteGroupConversation(long groupID);
 #### 创建自定义消息
 ```
  /**
-  * 创建一条单聊自定义消息
-  *
-  * @param username  聊天对象username
-  * @param valuesMap 包含自定义键值对的map.
-  * @return 消息对象
-  */
-JMessageClient.createSingleCustomMessage(String username,
-   Map<? extends String, ?> valuesMap)
+     * 创建一条单聊自定义消息，此方法是创建message的快捷接口，对于不需要关注会话实例的开发者可以使用此方法
+     * 快捷的创建一条消息。其他的情况下推荐使用{@link Conversation#createSendMessage(MessageContent)}
+     * 接口来创建消息
+     *
+     * @param username  聊天对象username
+     * @param appKey    聊天对象所属应用的appKey
+     * @param valuesMap 包含自定义键值对的map.
+     * @return 消息对象
+     */
+JMessageClient.createSingleCustomMessage(String username, String appKey, Map<? extends String, ? extends String> valuesMap)
 
  /**
   * 创建一条群聊自定义消息
@@ -717,7 +757,7 @@ public void onEventMainThread(EventEntity event){
 
 </br>
 
-当前登陆用户信息被更新事件实体类 MyInfoUpdatedEvent
+当前登录用户信息被更新事件实体类 MyInfoUpdatedEvent
 
 <div class="table-d" align="left" >
   <table border="1" width = "100%">
@@ -1340,7 +1380,7 @@ ContactManager.declineInvitation("test_user", "test_appkey", "sorry~", new Basic
 ```
 
 #### 获取好友列表
-获取当前登陆用户的好友列表，异步返回结果。
+获取当前登录用户的好友列表，异步返回结果。
 
 ```
 ContactManager.getFriendList(final GetUserInfoListCallback callback)

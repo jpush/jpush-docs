@@ -98,6 +98,8 @@
 		
 		<option value="//api/name/createGroupMessageWithContent:groupId:at_list:">+ createGroupMessageWithContent:groupId:at_list:</option>
 		
+		<option value="//api/name/createGroupAtAllMessageWithContent:groupId:">+ createGroupAtAllMessageWithContent:groupId:</option>
+		
 		<option value="//api/name/sendMessage:">+ sendMessage:</option>
 		
 		<option value="//api/name/sendSingleTextMessage:toUser:">+ sendSingleTextMessage:toUser:</option>
@@ -138,11 +140,15 @@
 		
 		<option value="//api/name/isAtMe">- isAtMe</option>
 		
+		<option value="//api/name/isAtAll">- isAtAll</option>
+		
 		<option value="//api/name/getAt_List:">- getAt_List:</option>
 		
 		<option value="//api/name/init">- init</option>
 		
 		<option value="//api/name/setFromName:">- setFromName:</option>
+		
+		<option value="//api/name/updateMessageExtraValue:forKey:">- updateMessageExtraValue:forKey:</option>
 		
 		<option value="//api/name/updateFlag:">- updateFlag:</option>
 		
@@ -392,6 +398,69 @@ NSString *msgText = textContent.text;
 					<tr>
 						<th scope="row" class="argument-name"><code>at_list</code></th>
 						<td><p>@对象的数组</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>不关心会话时的直接创建聊天消息的接口。一般建议使用 <a href="../Classes/JMSGConversation.html">JMSGConversation</a> -> createMessageWithContent:</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGMessage.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/createGroupAtAllMessageWithContent:groupId:" title="createGroupAtAllMessageWithContent:groupId:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/createGroupAtAllMessageWithContent:groupId:">+&nbsp;createGroupAtAllMessageWithContent:groupId:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>创建@所有人的群聊消息</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (JMSGMessage *)createGroupAtAllMessageWithContent:(JMSGAbstractContent *)<em>content</em> groupId:(NSString *)<em>groupId</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>content</code></th>
+						<td><p>消息内容对象</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>groupId</code></th>
+						<td><p>群聊ID</p></td>
 					</tr>
 				
 				</table>
@@ -1542,6 +1611,47 @@ NSString *msgText = textContent.text;
 		</div>
 	</div>
 </div><div class="section-method">
+	<a name="//api/name/isAtAll" title="isAtAll"></a>
+	<h3 class="method-title"><code><a href="#//api/name/isAtAll">&ndash;&nbsp;isAtAll</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>是否是@所有人的消息（只针对群消息，单聊消息无@功能）</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (BOOL)isAtAll</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGMessage.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
 	<a name="//api/name/getAt_List:" title="getAt_List:"></a>
 	<h3 class="method-title"><code><a href="#//api/name/getAt_List:">&ndash;&nbsp;getAt_List:</a></code>
 </h3>
@@ -1571,13 +1681,14 @@ NSString *msgText = textContent.text;
 						<td><p>结果回调。回调参数：</p>
 
 <ul>
-<li>resultObject 类型为 NSArray，数组里成员的类型为 <a href="../Classes/JMSGUser.html">JMSGUser</a></li>
+<li>resultObject 类型为 NSArray，数组里成员的类型为 <a href="../Classes/JMSGUser.html">JMSGUser</a>
+注意：如果该消息为@所有人消息时，resultObject 返回nil，可以通过 <a href="#//api/name/isAtAll">isAtAll</a> 接口来判断是否是@所有人的消息</li>
 <li>error 错误信息</li>
 </ul>
 
 
-<p>如果 error 为 nil, 表示设置成功
-如果 error 不为 nil,表示设置失败</p></td>
+<p>如果 error 为 nil, 表示获取成功
+如果 error 不为 nil,表示获取失败</p></td>
 					</tr>
 				
 				</table>
@@ -2475,6 +2586,64 @@ NSString *msgText = textContent.text;
 		</div>
 	</div>
 </div><div class="section-method">
+	<a name="//api/name/updateMessageExtraValue:forKey:" title="updateMessageExtraValue:forKey:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/updateMessageExtraValue:forKey:">&ndash;&nbsp;updateMessageExtraValue:forKey:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>更新 message 中的extra</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (BOOL)updateMessageExtraValue:(id)<em>value</em> forKey:(NSString *)<em>key</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>value</code></th>
+						<td><p>待更新的value,不能为null,类型只能为 NSNumber 和 NSString</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>key</code></th>
+						<td><p>待更新value对应的key,不能为null</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGMessage.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
 	<a name="//api/name/updateFlag:" title="updateFlag:"></a>
 	<h3 class="method-title"><code><a href="#//api/name/updateFlag:">&ndash;&nbsp;updateFlag:</a></code>
 </h3>
@@ -2646,7 +2815,7 @@ NSString *msgText = textContent.text;
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2016 HXHG. All rights reserved. Updated: 2016-12-05</p>
+						<p class="copyright">Copyright &copy; 2017 HXHG. All rights reserved. Updated: 2017-03-31</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

@@ -159,27 +159,32 @@ JMessage 服务器端报的错误码。有可能出现在各平台的 SDK 里。
 		</tr>
 		<tr >
 			<td>800003</td>
-			<td>Appkey not register</td>
+			<td>appkey not exist</td>
 			<td>appkey未注册</td>
 		</tr>
 		<tr >
 			<td>800005</td>
-			<td>User id not register</td>
+			<td>user not exist</td>
 			<td>用户ID未注册（appkey无该UID）</td>
 		</tr>
 		<tr >
 			<td>800006</td>
-			<td>User id not exist</a></td>
+			<td>user not exist</a></td>
 			<td>用户ID不存在（数据库中无该UID）</td>
 		</tr>
 		<tr >
+		    <td>800008</td>
+			<td>invalid request</td>
+			<td>请求类型无法识别</td>
+		</tr>
+		<tr >
 			<td>800009</td>
-			<td>System error</td>
+			<td>system error</td>
 			<td>服务器系统错误</td>
 		</tr>
 		<tr >
 			<td>800012</td>
-			<td>user logout</td>
+			<td>user never login</td>
 			<td>发起的用户处于登出状态，账号注册以后从未登录过，需要先登录</td>
 		</tr>
 		<tr >
@@ -189,22 +194,22 @@ JMessage 服务器端报的错误码。有可能出现在各平台的 SDK 里。
 		</tr>
 		<tr >
 			<td>800014</td>
-			<td>Appkey not match</td>
+			<td>appkey not match</td>
 			<td>发起的用户appkey与目标不匹配</td>
 		</tr>
 		<tr >
 			<td>800016</td>
-			<td>Devices not match</td>
+			<td>device not match</td>
 			<td>发起的用户设备不匹配,当前请求的设备与上次登录的设备不匹配导致，需要先登录</td>
 		</tr>
 		<tr >
 			<td>801003</td>
-			<td>Invalid user name or password</td>
+			<td>user not exist</td>
 			<td>登录的用户名未注册，登录失败</td>
 		</tr>
 		<tr >
 			<td>801004</td>
-			<td>Invalid user name or password</td>
+			<td>invalid password</td>
 			<td>登录的用户密码错误，登录失败</td>
 		</tr>
 		<tr >
@@ -257,6 +262,11 @@ JMessage 服务器端报的错误码。有可能出现在各平台的 SDK 里。
 			<td>user in blacklist</td>
 			<td>发送消息失败，发送者已被接收者拉入黑名单，仅限单聊</td>
 		</tr>
+		<tr>
+			<td>803009</td>
+			<td>the message contains sensitive word: the word</td>
+			<td>发送消息失败，消息内容包含敏感词汇：具体敏感词</td>
+		</tr>
 		<tr >
 			<td>803010</td>
 			<td>beyond the frequency limit</td>
@@ -289,7 +299,7 @@ JMessage 服务器端报的错误码。有可能出现在各平台的 SDK 里。
 		</tr>
 		<tr >
 		    <td>805006</td>
-			<td>Invitation event is not valid</td>
+			<td>invitation event is not valid</td>
 			<td>添加好友失败：邀请事件无效</td>
 		</tr>
 		<tr >
@@ -299,17 +309,17 @@ JMessage 服务器端报的错误码。有可能出现在各平台的 SDK 里。
 		</tr>
 		<tr >
 			<td>808002</td>
-			<td>User have not right to create group</td>
+			<td>user not permitted to create group</td>
 			<td>用户无创建讨论组权限，创建讨论组失败</td>
 		</tr>
 		<tr >
 			<td>808003</td>
-			<td>The amount of group exceed limit</td>
+			<td>amount of group exceed limit</td>
 			<td>用户拥有的讨论组数量已达上限,无法再创建</td>
 		</tr>
 		<tr >
 			<td>808004</td>
-			<td>length of group name exceed limit	</td>
+			<td>length of group name exceed limit</td>
 			<td>讨论组名长度超出上限，创建讨论组失败</td>
 		</tr>
 		<tr >
@@ -319,17 +329,17 @@ JMessage 服务器端报的错误码。有可能出现在各平台的 SDK 里。
 		</tr>
 		<tr >
 			<td>809001</td>
-			<td>Group id not exist</td>
+			<td>group id not exist</td>
 			<td>用户退出讨论组时，讨论组ID不存在，退出讨论组失败</td>
 		</tr>
 		<tr >
 			<td>809002</td>
-			<td>User not in the group</td>
+			<td>user not in group</td>
 			<td>用户退出讨论组时，用户不在该讨论组中，退出讨论组失败</td>
 		</tr>
 		<tr >
 			<td>810001</td>
-			<td>Group id not exist</td>
+			<td>group id not exist</td>
 			<td>用户添加成员到讨论组时，讨论组ID不存在，添加成员失败</td>
 		</tr>
 		<tr >
@@ -339,87 +349,87 @@ JMessage 服务器端报的错误码。有可能出现在各平台的 SDK 里。
 		</tr>
 		<tr >
 			<td>810003</td>
-			<td>User not in the group</td>
+			<td>user not in group</td>
 			<td>用户添加成员到讨论组时，用户不在该讨论组中，添加成员失败</td>
 		</tr>
 		<tr >
 			<td>810004</td>
-			<td>User not have right of group to add member</td>
+			<td>user not permitted add member to group</td>
 			<td>用户添加成员到讨论组时，用户没有往讨论组中添加成员的权限，添加成员失败</td>
 		</tr>
 		<tr >
 			<td>810005</td>
-			<td>Member not register</td>
+			<td>member not exist</td>
 			<td>用户添加成员到讨论组时，添加的成员列表中有成员未注册，添加成员失败</td>
 		</tr>
 		<tr >
 			<td>810006</td>
-			<td>User have not right to add member in the group</td>
+			<td>member not permitted added to group</td>
 			<td>用户添加成员到讨论组时，添加的成员列表中有成员该用户没有权限进行添加，添加成员失败</td>
 		</tr>
 		<tr >
 			<td>810007</td>
-			<td>Member repeated add</td>
+			<td>repeated added member</td>
 			<td>用户添加成员到讨论组时，添加的成员列表中有成员重复添加，添加成员失败</td>
 		</tr>
 		<tr >
 			<td>810008</td>
-			<td>The amount of member exceed group limit</td>
+			<td>amount of member exceed group limit</td>
 			<td>用户添加成员到讨论组时，添加的成员数量超出讨论组拥有的最大成员数上限，添加成员失败</td>
 		</tr>
 		<tr >
 			<td>810009</td>
-			<td>The amount of group exceed member limit</td>
+			<td>amount of group exceed member limit</td>
 			<td>用户添加成员到讨论组时，添加的成员列表中有成员拥有的讨论组数量已达上限，添加成员失败</td>
 		</tr>
 		<tr >
 			<td>811001</td>
-			<td>Group id not exist</td>
+			<td>group id not exist</td>
 			<td>用户删除讨论组成员时，讨论组ID不存在，删除成员失败</td>
 		</tr>
 		<tr >
 			<td>811002</td>
-			<td>Group id not exist</td>
+			<td>zero member</td>
 			<td>用户删除讨论组成员时，删除的成员列表为空，删除成员失败</td>
 		</tr>
 		<tr >
 			<td>811003</td>
-			<td>zero member</td>
+			<td>user not in group</td>
 			<td>用户删除讨论组成员时，用户不在该讨论组中，删除成员失败</td>
 		</tr>
 		<tr >
 			<td>811004</td>
-			<td>User not have right of group to remove member</td>
+			<td>user not permitted delete member of group</td>
 			<td>用户删除讨论组成员时，用户没有删除讨论组中成员的权限，删除成员失败</td>
 		</tr>
 		<tr >
 			<td>811005</td>
-			<td>Member not register</td>
+			<td>member not exist</td>
 			<td>用户删除讨论组成员时，删除的成员列表中有成员未注册，删除成员失败</td>
 		</tr>
 		<tr >
 			<td>811006</td>
-			<td>User have not right to remove member from the group</td>
+			<td>member of group not permitted deleted</td>
 			<td>用户删除讨论组成员时，删除的成员列表中有成员该用户没有权限进行删除，删除成员失败</td>
 		</tr>
 		<tr >
 			<td>811007</td>
-			<td>Member repeated remove</td>
+			<td>repeated deleted member</td>
 			<td>用户删除讨论组成员时，删除的成员列表中有成员重复删除，删除成员失败</td>
 		</tr>
 		<tr >
 			<td>811008</td>
-			<td>Member not in the group</td>
+			<td>member not in group</td>
 			<td>用户删除讨论组成员时，删除的成员列表中有成员不在该讨论组中，删除成员失败</td>
 		</tr>
 		<tr >
 			<td>812001</td>
-			<td>Group id not exist</td>
+			<td>group id not exist</td>
 			<td>用户修改讨论组信息时，讨论组ID不存在，修改讨论组信息失败</td>
 		</tr>
 		<tr >
 			<td>812002</td>
-			<td>User not in the group</td>
+			<td>user not in group</td>
 			<td>用户修改讨论组信息时，用户不在该讨论组中，修改讨论组信息失败</td>
 		</tr>
 		<tr >
@@ -459,12 +469,12 @@ JMessage 服务器端报的错误码。有可能出现在各平台的 SDK 里。
 		</tr>
 		<tr >
 			<td>831001</td>
-			<td>member already setted</td>
+			<td>member already set</td>
 			<td>用户添加成员消息免打扰时，该成员已处于免打扰状态</td>
 		</tr>
 		<tr >
 			<td>832001</td>
-			<td>member never setted</td>
+			<td>member never set</td>
 			<td>用户删除成员消息免打扰时，该成员不处于免打扰状态</td>
 		</tr>
 		<tr >
@@ -479,23 +489,43 @@ JMessage 服务器端报的错误码。有可能出现在各平台的 SDK 里。
 		</tr>
 		<tr >
 			<td>833003</td>
-			<td>group already setted</td>
+			<td>group already set</td>
 			<td>用户添加群组消息免打扰时，该群组已处于免打扰状态</td>
 		</tr>
 		<tr >
 			<td>834001</td>
-			<td>group never setted</td>
+			<td>group never set</td>
 			<td>用户删除群组消息免打扰时，该群组不处于免打扰状态</td>
 		</tr>
 		<tr >
 			<td>835001</td>
-			<td>already setted</td>
+			<td>already set</td>
 			<td>用户添加全局消息免打扰时，该用户已处于全局免打扰状态</td>
 		</tr>
 		<tr >
 			<td>836001</td>
-			<td>never setted</td>
+			<td>never set</td>
 			<td>用户删除全局消息免打扰时，该用户不处于全局免打扰状态</td>
+		</tr>
+		<tr>
+			<td>842001</td>
+			<td>group not exist</td>
+			<td>用户添加群组消息屏蔽时，该群组不存在</td>
+		</tr>
+		<tr>
+			<td>842002</td>
+			<td>user not in group</td>
+			<td>用户添加群组消息屏蔽时，用户不在该群组中</td>
+		</tr>
+		<tr>
+			<td>842003</td>
+			<td>group already set</td>
+			<td>用户添加群组消息屏蔽时，该群组已处于消息屏蔽状态</td>
+		</tr>
+		<tr>
+			<td>843001</td>
+			<td>group never set</td>
+			<td>用户删除群组消息屏蔽时，该群组不处于消息屏蔽状态</td>
 		</tr>
 </table>
 </div>
