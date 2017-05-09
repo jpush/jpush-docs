@@ -44,6 +44,8 @@
                 <p>更新时间：2017.05.09</p>
                 <ul>
                     <li><a href="../client/im_sdk_js_v2/">开发指南</a></li>
+                    <li class="li-clear"></li>
+                    <li class="li-clear"></li>
                 </ul>
                 <p><a href="https://www.jiguang.cn/downloads/sdk/im_js/" class="btn btn-default" role="button">下载</a></p>
             </div>
