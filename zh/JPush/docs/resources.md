@@ -159,36 +159,18 @@
 ## 服务器端第三方代码
 
 <div class="row 3rd downloads">
-    <div class="col-md-3 col-sm-6">
-        <h4>C#</h4>
-        <ul>
-            <li>开发者：Rynn Wang </li>
-            <li>支持 Push v3,v2 </li>
-            <li><a href="https://jpush.codeplex.com/">项目地址</a></li>
-        </ul>
-    </div>
-    <div class="col-md-3 col-sm-6">
+    <div class="col-md-6">
         <h4>Go</h4>
         <ul>
-            <li>开发者： ylywyn</li>
-            <li>支持 Push v3</li>
-            <li><a href="https://github.com/ylywyn/jpush-api-go-client">项目地址</a></li>
+            <li>开发者： <a href="https://github.com/ylywyn">ylywyn</a></li>
+            <li><a href="https://github.com/ylywyn/jpush-api-go-client" target="_blank">项目地址</a></li>
         </ul>
     </div>
-    <div class="col-md-3 col-sm-6">
-        <h4>PHP</h4>
-        <ul>
-            <li><a href="http://www.yelanxiaoyu.com">夜澜小雨</a></li>
-            <li>支持 Push v2</li>
-            <li><a href="http://www.yelanxiaoyu.com/code/phonegap%E5%BC%80%E5%8F%91/jpush_push_php_server.html">项目地址</a></li>
-        </ul>
-    </div>
-    <div class="col-md-3 col-sm-6">
+    <div class="col-md-6">
         <h4>C</h4>
         <ul>
-            <li><a href="http://www.weibo.com/issacsonjj">火星上的骑士</a></li>
-            <li>支持 Push v2</li>
-            <li><a href="https://github.com/issacsonjj/JPushDemo">项目地址</a></li>
+            <li>开发者：<a href="https://github.com/coldwind">coldwind</a></li>
+            <li><a href="https://github.com/coldwind/jpush" target="_blank">项目地址</a></li>
         </ul>
     </div>
 </div>
