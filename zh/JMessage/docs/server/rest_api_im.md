@@ -840,7 +840,7 @@ POST /v1/resource?type=image
 
 文件上传 curl   -F "filename=@/home/test.mp3" https://api.im.jpush.cn/v1/resource?type=file -u "appkey:secret"
 
-文件上传 curl   -F "filename=@/home/test.mp3" https://api.im.jpush.cn/v1/resource?type=voice -u "appkey:secret"
+语音上传 curl   -F "filename=@/home/test.mp3" https://api.im.jpush.cn/v1/resource?type=voice -u "appkey:secret"
 
 注：文件大小限制8m，暂时只支持图片格式 jpg bmp gif png等
 
