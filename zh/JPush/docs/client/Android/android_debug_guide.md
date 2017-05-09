@@ -157,5 +157,11 @@ JPush 目前在网络策略方面没有像微信这种聊天工具做得积极�
 
 **完全收不到 JPush 消息**
 
-如果集成之后就完全收不到Push消息，则很有可能是某个地方配置错误。请根据文档仔细检查：Android SDK 集成指南，iOS SDK 集成指南，或者根据参考教程：Android SDK 调试指南，iOS SDK 调试指南。
+如果集成之后就完全收不到Push消息，则很有可能是某个地方配置错误。请根据文档仔细检查：
+[Android SDK 集成指南](https://docs.jiguang.cn/jpush/client/Android/android_guide/)，
+[iOS SDK 集成指南](https://docs.jiguang.cn/jpush/client/iOS/ios_guide_new/)，
+或者参考教程：
+[Android SDK 调试指南](https://docs.jiguang.cn/jpush/client/Android/android_debug_guide/),
+[iOS SDK 调试指南](https://docs.jiguang.cn/jpush/client/iOS/ios_debug_guide/)。
+
 
