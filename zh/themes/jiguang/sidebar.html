@@ -1,4 +1,3 @@
-{%- if nav|length>1 %}
 <aside class="bs-sidebar hidden-print affix well scrollbar" role="complementary" id="sidebar">
 <ul class="nav bs-sidenav">
     {%- for nav_item in nav if nav_item.children and nav_item.active %}
@@ -29,4 +28,3 @@
     {%- endfor %}
 </ul>
 </aside>
-{%- endif %}

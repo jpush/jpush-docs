@@ -274,5 +274,6 @@ div#content pre {
 
 div#content pre code {
   letter-spacing: 0;
+  color: #111111;
 }
 /* content */
