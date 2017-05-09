@@ -620,7 +620,7 @@ POST /v1/messages
 		</tr>
 		<tr >
 			<td>msg_type</td>
-			<td>发消息类型 text - 文本，image - 图片, custom - 自定义消息（msg_body为json对象即可，服务端不做校验）</td>
+			<td>发消息类型 text - 文本，image - 图片, custom - 自定义消息（msg_body为json对象即可，服务端不做校验）voice - 语音</td>
 		</tr>
 		<tr >
 			<td>target_id</td>
@@ -682,6 +682,29 @@ POST /v1/messages
 		<td>int 文件大小（字节数）（必填）</td>
 		</tr>
 	
+	<td colspan="2" ><font  color="red">msg_type为voice时,msg_body为File Upload api返回的json，格式如下 </td>
+		</tr>
+		<tr>
+		<td>msg_body->media_id</td>
+		<td>String 文件上传之后服务器端所返回的key，用于之后生成下载的url（必填）</td>
+		</tr>
+		<tr>
+		<td>msg_body->media_crc32</td>
+		<td>long 文件的crc32校验码，用于下载大图的校验 （必填）</td>
+		</tr>
+		<tr>
+		<td>msg_body->duration</td>
+		<td>int 音频时长（必填）</td>
+		</tr>
+		
+		<tr>
+		<td>msg_body->hash </td>
+		<td>String 音频hash值（必填）</td>
+		</tr>
+		<tr>
+		<td>msg_body->fsize</td>
+		<td>int 文件大小（字节数）（必填）</td>
+		</tr>
 	</table>
 </div>
 
@@ -712,16 +735,33 @@ msg_type:image
 	"target_id": "javen",
 	"from_type": "admin",
 	"from_id": "fang", 
-	"msg_type": "text",
+	"msg_type": "image",
 	"msg_body": {
 	"media_id": "qiniu/image/CE0ACD035CBF71F8",
 	"media_crc32":2778919613,
 	"width":3840,
 	"height":2160,
 	"fsize":3328738,
-	"format":"jpg",
-	"extras": {}
+	"format":"jpg"
 	}
+}
+
+msg_type:voice
+
+{
+    "version": 1, 
+    "target_type": "single",
+    "target_id": "ppppp",
+    "from_type": "admin",
+      "from_id": "admin_caiyh", 
+    "msg_type": "voice",
+    "msg_body": {
+    "media_id": "qiniu/voice/j/A96B61EB3AF0E5CDE66D377DEA4F76B8",
+    "media_crc32":1882116055,
+    "hash":"FoYn15bAGRUM9gZCAkvf9dolVH7h",
+		"fsize" :12344;
+	 "duration": 6
+    }
 }
 ```
 
@@ -800,6 +840,8 @@ POST /v1/resource?type=image
 
 文件上传 curl   -F "filename=@/home/test.mp3" https://api.im.jpush.cn/v1/resource?type=file -u "appkey:secret"
 
+文件上传 curl   -F "filename=@/home/test.mp3" https://api.im.jpush.cn/v1/resource?type=voice -u "appkey:secret"
+
 注：文件大小限制8m，暂时只支持图片格式 jpg bmp gif png等
 
 
@@ -837,6 +879,16 @@ Response Data
 +  hash String 可选，用于crc校验码不存在时的替代的验证
 +  fsize int 文件大小（字节数）
 +  fname String 发送与接收到的文件名
+
+语音 Response
+
+{"media_id":"qiniu/voice/j/9C4312B1EA0FB28337566D1A29A244B5","media_crc32":1882116055,"hash":"FoYn15bAGRUM9gZCAkvf9dolVH7h","format":"m4a","fsize":238105}
+
++  media_id String 文件上传之后服务器端所返回的key，用于之后生成下载的url
++  media_crc32 long 文件的crc32校验码
++  hash String 可选，用于crc校验码不存在时的替代的验证
++  fsize int 文件大小（字节数）
++  format String 源文件格式
 
 
 ### Group对象字段总览
