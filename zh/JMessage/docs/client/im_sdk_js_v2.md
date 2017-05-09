@@ -1428,7 +1428,7 @@ JMessage#onEventNotification(fn)
 | return_code   | 用于好友邀请应答事件                   |
 | description   | 描述                           |
 
-**同时登陆，被迫下线示例：event_type = 1**
+**同时登录，被迫下线示例：event_type = 1**
 
 ```
 //被踢者收到该事件
