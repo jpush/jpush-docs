@@ -60,3 +60,10 @@
     <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
 </div> -->
 {%- endblock %}
+
+{%- block scripts %}
+    <script src="{{ base_url }}/js/base.js"></script>
+    {%- for path in extra_javascript %}
+        <script src="{{ path }}"></script>
+    {%- endfor %}
+{%- endblock %}
