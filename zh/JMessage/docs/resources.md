@@ -13,7 +13,7 @@
                 <ul>
                     <li><a href="../client/jmessage_android_guide">集成步骤</a></li>
                     <li><a href="../client/im_sdk_android/">开发指南</a></li>
-                    <li>完整 Demo：<a href="https://github.com/jpush/jchat-android/" target="_blank">JChat 源码</a></li>
+                    <li><a href="https://github.com/jpush/jchat-android/" target="_blank">JChat 源码</a></li>
                 </ul>
                 <p><a href="https://www.jiguang.cn/downloads/sdk/im_android/" class="btn btn-default" role="button">下载</a></p>
             </div>
@@ -29,7 +29,7 @@
                 <ul>
                     <li><a href="../client/jmessage_ios_guide/">集成步骤</a></li>
                     <li><a href="../client/im_sdk_ios/">开发指南</a></li>
-                    <li>完整 Demo：<a href="https://github.com/jpush/jchat-ios" target="_blank">JChat 源码</a></li>
+                    <li><a href="https://github.com/jpush/jchat-ios" target="_blank">JChat 源码</a></li>
                 </ul>
                 <p><a href="https://www.jiguang.cn/downloads/sdk/im_ios/" class="btn btn-default" role="button">下载</a></p>
             </div>
