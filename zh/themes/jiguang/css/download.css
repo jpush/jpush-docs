@@ -9,9 +9,16 @@ div.row.downloads  .thumbnail > .caption {
     display: inline-block;
 }
 
+div#content div.row.downloads  .thumbnail > .caption .li-clear {
+    display: none;
+}
 @media (min-width: 992px) {
     div.row.downloads  .thumbnail > img {
         display: block;
         text-align: center;
+    }
+    div#content div.row.downloads  .thumbnail > .caption .li-clear {
+        list-style-type: none;
+        display: list-item;
     }
 }

@@ -26,6 +26,8 @@
                 <ul>
                     <li><a href="../client/iOS/ios_guide_new">集成指南</a></li>
                     <li><a href="../client/iOS/ios_debug_guide/">调试指南</a></li>
+                    <li class="li-clear"></li>
+                    <li class="li-clear"></li>
                 </ul>
                 <p><a href="https://www.jiguang.cn/downloads/sdk/ios" class="btn btn-default" role="button">下载</a></p>
             </div>
@@ -39,6 +41,8 @@
                 <ul>
                     <li><a href="../client/WindowsPhone/winphone_guide">集成指南</a></li>
                     <li><a href="../client/WindowsPhone/winphone_3m">3 分钟快速 Demo</a></li>
+                    <li class="li-clear"></li>
+                    <li class="li-clear"></li>
                 </ul>
                 <p><a href="https://www.jiguang.cn/downloads/sdk/winphone/" class="btn btn-default" role="button">下载</a></p>
             </div>
