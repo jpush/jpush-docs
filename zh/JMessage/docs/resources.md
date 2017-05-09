@@ -70,8 +70,8 @@
             <div class="download-right">
                 <div class="download-title">
                     <p id="release-title">Web - SDK</p>
-                    <span id="release-version">版本：v2.2.0</span>
-                    <span id="release-time">2017.03.17</span>
+                    <span id="release-version">版本：v2.2.1</span>
+                    <span id="release-time">2017.05.09</span>
                 </div>
                 <div class="download-info">
                     <ul class="download-info-ul">
