@@ -1,148 +1,17 @@
-
-
-.download{
-  margin-top: 20px;
-  width: 720px;
-  border-style: solid;
-  border-width: 1px;
-  border-color: #e5e5e5;
+div.row.downloads  .thumbnail > img {
+    border: none;
+    vertical-align: top;
+    padding-left: 40px;
+    padding-right: 50px;
 }
 
-.download ul li{
-  list-style-type: none;
+div.row.downloads  .thumbnail > .caption {
+    display: inline-block;
 }
 
-.download ul li .hr{
-  clear:both;
-  width:680px;
-  text-align:center;
-  margin-left:20px;
-}
-
-.download ul{
-  padding-left:0px;
-}
-
-.download-left{
-  float: left;
-}
-
-.download-right{
-  width: 500px;
-  float: left;
-  clear:right;
-  margin-top:20px;
-}
-
-#download-right-first{
-  margin-top:40px;
-}
-
-.download-left .download-image{
-  margin-left: 24px;
-  margin-right: 24px;
-  margin-top: 24px;
-  max-width: 103px;
-  max-height: 80px;
-}
-
-.download-left .download-image-first{
-  margin-left: 24px;
-  margin-right: 24px;
-  margin-top: 44px;
-  max-width: 103px;
-  max-height: 80px;
-}
-
-#release-title{
-  float:left;
-  font-size: 16px;
-  color: #1b75bb;
-  margin-bottom: 18px;
-}
-
-#release-version,#release-time{
-  margin-left: 20px;
-  margin-top: 4px;
-  font-size: 12px;
-  color: #666666;
-  float:left;
-}
-
-.download-info{
-  margin-bottom: 22px;
-}
-
-.download-info p{
-  font-size: 14px;
-  color: #666666;
-  margin-top: 6px;
-  clear: both;
-}
-
-
-.download-right .download-info-ul {
-  padding-top:0px;
-  padding-left: 0px;
-  color: #666666;
-  margin-left: 20px;
-  margin-bottom: 0px;
-  width: 540px;
-  clear: both;
-}
-
-.download .download-info-ul li{
-  list-style-type: disc;
-  color: #666666;
-  font-size: 12px;
-  margin-right: 50px;
-  float: left;
-
-}
-
-.download .download-info-ul li a{
-  color: #666666;
-  white-space: nowrap;
-}
-
-.download-right .download-icon{
-  width: 98px;
-  height: 30px;
-  margin-top: 5px;
-  border-style: solid;
-  border-color: #b5b5b5;
-  border-width: 1px;
-  text-align: center;
-  vertical-align: middle;
-  cursor:pointer;
-  margin-bottom: 40px;
-}
-
-.download-icon a{
-  font-size: 14px;
-  color: #666666;
-  vertical-align: middle;
-}
-
-.developer{
-  width:100%;
-  height:67px;
-  margin:20px;
-  clear:both;
-}
-
-.developer-right{
-  width:90%;
-  float:left;
-}
-
-.download  .developer-info-ul{
-  list-style-type: disc;
-  margin-left:20px;
-}
-
-.download  .developer-info-ul li{
-  float:left;
-  list-style-type: disc;
-  min-width: 160px;
+@media (min-width: 992px) {
+    div.row.downloads  .thumbnail > img {
+        display: block;
+        text-align: center;
+    }
 }
