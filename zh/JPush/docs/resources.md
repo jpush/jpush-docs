@@ -37,7 +37,7 @@
         <div class="thumbnail">
             <img src="../image/resource_wp.png" alt="WinPhone">
             <div class="caption">
-                <h4>Windows Phone SDK</h4>
+                <h4>WinPhone SDK</h4>
                 <ul>
                     <li><a href="../client/WindowsPhone/winphone_guide">集成指南</a></li>
                     <li><a href="../client/WindowsPhone/winphone_3m">3 分钟快速 Demo</a></li>
