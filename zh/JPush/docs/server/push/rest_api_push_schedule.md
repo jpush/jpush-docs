@@ -65,7 +65,7 @@ Authorization: Basic base64_auth_string
 }
 ```
 
-### 说明
+***字段说明：***
 
 每一个schedule任务，都由name、enabled、trigger、push这四个小节组成。
 
@@ -80,10 +80,10 @@ Authorization: Basic base64_auth_string
 				+ time为必选项且格式为"YYYY-mm-dd HH:MM:SS“，如"2014-02-15 13:16:59"，不能为"2014-2-15 13:16:59"或"2014-12-15 13:16"，即日期时间格式必须完整。
 		+ periodical
 			+ 表示定期任务
-				+ start 表示定期任务有效起始时间，格式与必须严格为：'YYYY-mm-dd HH:MM:SS‘，且时间为24小时制。
+				+ start 表示定期任务有效起始时间，格式与必须严格为: "YYYY-mm-dd HH:MM:SS"，且时间必须为24小时制。
 				+ end  表示定期任务的过期时间，格式同上。定时任务不超过一年。
-				+ time 表示触发定期任务的定期执行时间,，格式严格为：'HH:MM:SS’，且为24小时制。
-				+ time_unit 表示定期任务的执行的最小时间单位有：day、week及month3种。大小写不敏感，如day, Day,DAy均为合法的time_unit。
+				+ time 表示触发定期任务的定期执行时间，格式严格为: "HH:MM:SS"，且为24小时制。
+				+ time_unit 表示定期任务的执行的最小时间单位有："day"、"week" 及"month" 三种。大小写不敏感，如"day", "Day", "DAy" 均为合法的time_unit。
 				+ frequency 此项与time_unit的乘积共同表示的定期任务的执行周期，如time_unit为day，frequency为2，则表示每两天触发一次推送，目前支持的最大值为100。
 				+ point 一个列表，此项与time_unit相对应：
 
@@ -101,12 +101,12 @@ Authorization: Basic base64_auth_string
 		</tr>
 		<tr >
 			<td>week</td>
-			<td>'MON','TUE','WED','THU','FRI','SAT','SUN'</td>
+			<td>"MON","TUE","WED","THU","FRI","SAT","SUN"</td>
 			<td>当time_unit为week时，point为对应项的一项或多项，表示星期几进行触发,point中的值大小写不敏感</td>
 		</tr>
 		<tr >
 			<td>month</td>
-			<td>'01','02','03'....‘31’</td>
+			<td>"01","02","03" .... "31"</td>
 			<td>当time_unit为month时，point为当前进行月对应的日期，且必须有效，如month为2月，则31或30日是不会进行触发的</td>
 		</tr>
 	</table>
@@ -121,9 +121,9 @@ POST https://api.jpush.cn/v3/schedules
 ```
 
 
-#### Example Request
+### Example Request
 
-**Request Header**
+***Request Header***
 
 ```
 POST /v3/schedules
@@ -132,7 +132,7 @@ POST /v3/schedules
  Accept: application/json
 ```
 
-**Request Data**
+***Request Data***
 
 ```
 {
@@ -164,7 +164,7 @@ POST /v3/schedules
 }
 ```
 
-**Request Data illustration**
+***Request Data 说明***
 
 + 由于定时任务相对简单，我们例中只对定期任务进行说明
 + 以上表示创建一个定期任务，起始生效时间必须'2014-09-17 12:00:00之后'第一个time时间点，过期时间为'2014-10-18 12:00:00'，在有效期内每两周的周三、周五中午12点分别执行一次
@@ -172,9 +172,9 @@ POST /v3/schedules
 + 定期任务（包括定时任务）首次创建时其enabled项必须为true。不能创建enabled:false的任务，否则创建失败
 + push 必须为有效合法的push动作，否则创建失败。
 
-#### Example Response
+### Example Response
 
-**Success Response**
+***Success Response***
 
 ```
 HTTP/1.1 200 CREATED 
@@ -188,7 +188,7 @@ HTTP/1.1 200 CREATED
 }
 ```
 
-**Failed Response**
+***Failed Response***
 
 ```
 HTTP/1.1 400 BAD REQUEST
@@ -207,13 +207,15 @@ HTTP/1.1 400 BAD REQUEST
 
 ## 获取有效的schedule列表
 
-#### GET https://api.jpush.cn/v3/schedules?page=
+```
+GET https://api.jpush.cn/v3/schedules?page=
+```
 
 获取当前有效（endtime未过期）的 schedule 列表
 
-**Example Request**
+###Example Request
 
-Request Header
+***Request Header***
 
 ```
 GET /v3/schedules?page=
@@ -227,9 +229,9 @@ GET /v3/schedules?page=
 + 如果请求页数大于总页数，则 page为请求值，schedules为空。
 + 每页最多返回50个task，如请求页实际的task的个数小于50，则返回实际数量的task。
 
-**Example Response**
+###Example Response
 
-Success Response
+***Success Response***
 
 ```
 HTTP/1.1 200 OK 
@@ -250,11 +252,13 @@ HTTP/1.1 200 OK
 
 ## 获取指定的定时任务
 
-#### GET https://api.jpush.cn/v3/schedules/{schedule_id}
+```
+ GET https://api.jpush.cn/v3/schedules/{schedule_id}
+```
 
-**Example Request**
+###Example Request
 
-Request Header
+***Request Header***
 
 ```
 GET /v3/schedules/{schedule_id}
@@ -264,16 +268,16 @@ GET /v3/schedules/{schedule_id}
 ```
 + 获取当前用户的schedule任务id为{schedule_id}的定时任务的详情。
 
-**Example Response**
+###Example Response
 
-Success Reponse
+***Success Reponse***
 
 ```
 HTTP/1.1 200 OK 
  Content-Type: application/json; charset=utf-8
 ```
 
-Response Data
+***Response Data***
 
 ```
 { 
@@ -291,9 +295,11 @@ Response Data
 
 ## 修改指定的Schedule
 
-#### PUT https://api.jpush.cn/v3/schedules/{schedule_id}
+```
+PUT https://api.jpush.cn/v3/schedules/{schedule_id}
+```
 
-**Example Request**
+###Example Request
 
 ```
 PUT /v3/schedules/{schedule_id}
@@ -382,8 +388,9 @@ PUT /v3/schedules/{schedule_id}
 ```
 
 
-** Example Response**
-Success Response
+###Example Response
+
+***Success Response***
 
 ```
 HTTP/1.0 200 CREATED
@@ -412,13 +419,15 @@ HTTP/1.0 200 CREATED
 }
 ```
 
-** Fail Response**
+***Fail Response***
+
 + schedule_id无效，不是有效的uuid。
 
 ```
 HTTP/1.0 404 Not Found
  Content-Type: application/json
 ```
+
 + 更新操作不合法
 
 ```
@@ -426,13 +435,15 @@ HTTP/1.0 400 BAD REQUEST
  Content-Type: application/json
 ```
 
-## 删除指定的Schedule任务
+##删除指定的Schedule任务
 
-#### DELETE https://api.jpush.cn/v3/schedules/{schedule_id}
+```
+DELETE https://api.jpush.cn/v3/schedules/{schedule_id}
+```
 
-schedule_id为已创建的schedule任务的id，如果schedule_id不合法即不是有效的uuid，则404。
+schedule\_id为已创建的schedule任务的id，如果schedule_id不合法即不是有效的uuid，则404。
 
-**Example Request**
+###Example Request
 
 ```
 DELETE /v3/schedules/{schedule_id}
@@ -441,9 +452,9 @@ DELETE /v3/schedules/{schedule_id}
  Accept: application/json
 ```
 
-**Example Response**
+###Example Response
 
-Success Response
+***Success Response***
 
 ```
 HTTP/1.0 200 
@@ -451,7 +462,7 @@ HTTP/1.0 200
   Content-Length: 0
 ```
 
-Failed Response
+***Failed Response***
 
 ```
 HTTP/1.0 404 Not Found 
@@ -524,7 +535,7 @@ HTTP/1.0 404 Not Found
 	</table>
 </div>
 
-**错误返回格式**
+***错误返回格式***
 
 ```
 {"error":{"code":errcode, "message":"error message"}}
