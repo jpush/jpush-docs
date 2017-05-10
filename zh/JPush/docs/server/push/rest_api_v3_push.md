@@ -190,7 +190,7 @@ JPush 当前支持 Android, iOS, Windows Phone 三个平台的推送。其关键
 		<tr >
 			<td>tag</td>
 			<td>JSON Array</td>
-			<td>标签</td>
+			<td>标签OR</td>
 			<td>数组。多个标签之间是 OR 的关系，即取并集。 </td>
 			<td>用标签来进行大规模的设备属性、用户属性分群。 一次推送最多 20 个。<ul style="margin-bottom: 0;"><li>有效的 tag 组成：字母（区分大小写）、数字、下划线、汉字、特殊字符@!#$&*+=.|￥。</li><li>限制：每一个 tag 的长度限制为 40 字节。（判断长度需采用UTF-8编码）</li></td>
 		</tr>
@@ -199,7 +199,14 @@ JPush 当前支持 Android, iOS, Windows Phone 三个平台的推送。其关键
 			<td>JSON Array</td>
 			<td>标签AND</td>
 			<td>数组。多个标签之间是 AND 关系，即取交集。</td>
-			<td>注册与 tag 区分。一次推送最多 20 个。</td>
+			<td>注意与 tag 区分。一次推送最多 20 个。</td>
+		</tr>
+		<tr >
+			<td>tag_not</td>
+			<td>JSON Array</td>
+			<td>标签NOT</td>
+			<td>数组。多个标签之间，先取多标签的并集，再对该结果取补集。</td>
+			<td>一次推送最多 20 个。</td>
 		</tr>
 		<tr >
 			<td>alias</td>
