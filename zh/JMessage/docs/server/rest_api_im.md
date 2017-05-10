@@ -638,22 +638,22 @@ POST /v1/messages
 			<td>target_name</td>
 			<td>接受者展示名（选填）</td>
 		</tr>
-		<tr >
+		<tr bgcolor="#D3D3D3">
 			<td>msg_body</td>
 			<td>Json对象的消息体 限制为4096byte</td>
 		</tr>
-		<tr >
-			<td>msg_body-> extras</td>
-			<td>选填的json对象 开发者可以自定义extras里面的key value	</td>
-		</tr>
-		<tr>
+				<tr>
 		<td colspan="2" ><font  color="red">msg_type为text时，msg_body的格式如下 </font></td>
 		</tr>
 		<tr >
 			<td>msg_body -> text</td>
 			<td>消息内容</td>
 		</tr>
-		
+		<tr >
+			<td>msg_body-> extras</td>
+			<td>选填的json对象 开发者可以自定义extras里面的key value	</td>
+		</tr>
+
 		<tr>
 		<td colspan="2" ><font  color="red">msg_type为image时,msg_body为File Upload api返回的json，格式如下 </td>
 		</tr>
@@ -753,13 +753,13 @@ msg_type:voice
     "target_type": "single",
     "target_id": "ppppp",
     "from_type": "admin",
-      "from_id": "admin_caiyh", 
+     "from_id": "admin_caiyh", 
     "msg_type": "voice",
     "msg_body": {
     "media_id": "qiniu/voice/j/A96B61EB3AF0E5CDE66D377DEA4F76B8",
     "media_crc32":1882116055,
     "hash":"FoYn15bAGRUM9gZCAkvf9dolVH7h",
-		"fsize" :12344;
+	"fsize" :12344;
 	 "duration": 6
     }
 }
