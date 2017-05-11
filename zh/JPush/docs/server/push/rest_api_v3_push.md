@@ -228,9 +228,9 @@ JPush 当前支持 Android, iOS, Windows Phone 三个平台的推送。其关键
 
 <br>
 <div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px;">
-<p>每种类型的值都是数组（Array），数组内多个值之间隐含的关系是是 OR，即取并集。但 tag_and 不同，其数组里多个值之间是 AND 关系，即取交集。</p>
-<p>4 种类型至少需要有其一。如果值数组长度为 0，表示该类型不存在。</p>
-<p>这几种类型可以并存时，多项的隐含关系是 AND，即取几种类型结果的交集。</p>
+<p>以上几种类型至少需要有其一。如果值数组长度为 0，表示该类型不存在。</p>
+<p>这几种类型可以并存，多项的隐含关系是 AND，即取几种类型结果的交集。</p>
+<p>每种类型的值都是数组。其中 tag\_and 字段(即portal中填写的“交集”)多个值组合是交集(AND)的结果；tag_not 字段（即portal中填写的“补集”）多个值组合是先取组合的并集(OR)再对结果取补集(NOT)；其余字段中多个值组合均是并集（OR）结果。 </p>
 </div>
 <br>
 
