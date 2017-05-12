@@ -70,6 +70,22 @@ pages:
   - 最近更新: 'JPush/docs/updates.md'
   - 资源下载: 'JPush/docs/resources.md'
 
+- JAnalytics:
+
+  - 入门指南:
+    - 'JAnalytics 产品简介': 'JAnalytics/docs/guideline/intro.md'
+    - '常见问题': 'JAnalytics/docs/guideline/faq.md'
+  - Android:
+    - 'Android SDK 概述': 'JAnalytics/docs/client/android_sdk.md'
+    - 'Android SDK 集成指南': 'JAnalytics/docs/client/android_guide.md'
+    - 'Android SDK API': 'JAnalytics/docs/client/android_api.md'
+  - iOS:
+    - 'iOS SDK 概述': 'JAnalytics/docs/client/ios_sdk.md'
+    - 'iOS SDK 集成指南': 'JAnalytics/docs/client/ios_guide.md'
+    - 'iOS SDK API': 'JAnalytics/docs/client/ios_api.md'
+  - 最近更新: 'JAnalytics/docs/updates.md'
+  - 资源下载: 'JAnalytics/docs/resources.md'
+
 - JMessage:
 
   - 入门指南:
@@ -121,21 +137,6 @@ pages:
     - 'REST API 概述': 'JSMS/docs/server/rest_api_jsms.md'
   - 最近更新: 'JSMS/docs/updates.md'
   - 资源下载: 'JSMS/docs/resources.md'
-
-- JAnalytics:
-  - 入门指南:
-    - 'JAnalytics 产品简介': 'JAnalytics/docs/guideline/intro.md'
-    - '常见问题': 'JAnalytics/docs/guideline/faq.md'
-  - Android:
-    - 'Android SDK 概述': 'JAnalytics/docs/client/android_sdk.md'
-    - 'Android SDK 集成指南': 'JAnalytics/docs/client/android_guide.md'
-    - 'Android SDK API': 'JAnalytics/docs/client/android_api.md'
-  - iOS:
-    - 'iOS SDK 概述': 'JAnalytics/docs/client/ios_sdk.md'
-    - 'iOS SDK 集成指南': 'JAnalytics/docs/client/ios_guide.md'
-    - 'iOS SDK API': 'JAnalytics/docs/client/ios_api.md'
-  - 最近更新: 'JAnalytics/docs/updates.md'
-  - 资源下载: 'JAnalytics/docs/resources.md'
 
 - JShare:
 
