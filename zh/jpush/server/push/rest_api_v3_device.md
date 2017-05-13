@@ -14,7 +14,7 @@
 
     * [Android - tag,alias](../../client/Android/android_api/#api_1)
     * [iOS - tag,alias](../../client/iOS/ios_api/#api-ios)
-    * [WinPhone - tag,alias](../../client/Windows Phone/winphone_api/#api_1)
+    * [WinPhone - tag,alias](../../client/WindowsPhone/winphone_api/#api_1)
 
 ## API 概述
 
@@ -43,7 +43,7 @@ GET /v3/devices/{registration_id}
 
 ```
 GET /v3/devices/{registration_id}
-  Authorization: Basic (base64 auth string) 
+  Authorization: Basic (base64 auth string)
   Accept: application/json
 ```
 
@@ -56,7 +56,7 @@ GET /v3/devices/{registration_id}
 **Response Header**
 
 ```
-HTTP/1.1 200 OK 
+HTTP/1.1 200 OK
   Content-Type: application/json; charset=utf-8
 ```
 
@@ -86,14 +86,14 @@ POST /v3/devices/{registration_id}
 
 ```
 POST /v3/devices/{registration_id}
-  Authorization: Basic (base64 auth string) 
+  Authorization: Basic (base64 auth string)
   Accept: application/json
 ```
 
 **Request Body**
 
 ```
-{  
+{
         "tags":{
             "add": [
                 "tag1",
@@ -106,9 +106,9 @@ POST /v3/devices/{registration_id}
         },
         "alias": "alias1",
         "mobile":"13012345678"
-    } 
+    }
 
-``` 
+```
 **Request Params**
 
 + tags:  支持add, remove 或者空字符串。当tags参数为空字符串的时候，表示清空所有的 tags；add/remove 下是增加或删除指定的 tag；
@@ -119,7 +119,7 @@ POST /v3/devices/{registration_id}
 **Response Header**
 
 ```
-HTTP/1.1 200 OK 
+HTTP/1.1 200 OK
   Content-Type: application/json; charset=utf-8
 ```
 
@@ -139,7 +139,7 @@ GET /v3/aliases/{alias_value}
 
 ```
 GET /v3/aliases/{alias_value}?platform=android,ios
-  Authorization: Basic (base64 auth string) 
+  Authorization: Basic (base64 auth string)
   Accept: application/json
 ```
 **Request Params**
@@ -150,7 +150,7 @@ GET /v3/aliases/{alias_value}?platform=android,ios
 **Response Header**
 
 ```
-HTTP/1.1 200 OK 
+HTTP/1.1 200 OK
   Content-Type: application/json; charset=utf-8
 ```
 **Response Data**
@@ -174,7 +174,7 @@ DELETE /v3/aliases/{alias_value}
 
 ```
 DELETE /v3/aliases/{alias_value}?platform=android,ios
-  Authorization: Basic (base64 auth string) 
+  Authorization: Basic (base64 auth string)
   Accept: application/json
 ```
 **Request Params**
@@ -200,7 +200,7 @@ GET /v3/tags/
 
 ```
 GET /v3/tags/
-  Authorization: Basic (base64 auth string) 
+  Authorization: Basic (base64 auth string)
   Accept: application/json
 ```
 
@@ -212,7 +212,7 @@ GET /v3/tags/
 **Response Header**
 
 ```
-HTTP/1.1 200 OK 
+HTTP/1.1 200 OK
   Content-Type: application/json; charset=utf-8
 ```
 
@@ -238,7 +238,7 @@ GET /v3/tags/{tag_value}/registration_ids/{registration_id}
 
 ```
 GET /v3/tags/{tag_value}/registration_ids/090c1f59f89
-  Authorization: Basic (base64 auth string) 
+  Authorization: Basic (base64 auth string)
   Accept: application/json
 ```
 
@@ -251,7 +251,7 @@ GET /v3/tags/{tag_value}/registration_ids/090c1f59f89
 **Response Header**
 
 ```
-HTTP/1.1 200 OK 
+HTTP/1.1 200 OK
   Content-Type: application/json; charset=utf-8
 ```
 
@@ -276,13 +276,13 @@ POST /v3/tags/{tag_value}
 
 ```
 POST /v3/tags/{tag_value}
-  Authorization: Basic (base64 auth string) 
-  Accept: application/json 
+  Authorization: Basic (base64 auth string)
+  Accept: application/json
 ```
 **Request Body**
 
 ```
-{  
+{
         "registration_ids":{
             "add": [
                 "registration_id1",
@@ -305,7 +305,7 @@ POST /v3/tags/{tag_value}
 **Response Header**
 
 ```
-HTTP/1.1 200 OK 
+HTTP/1.1 200 OK
  Content-Type: application/json; charset=utf-8
 ```
 **Response Data**
@@ -323,8 +323,8 @@ DELETE /v3/tags/{tag_value}
 
 ```
 DELETE /v3/tags/{tag_value}?platform=android,ios
-  Authorization: Basic (base64 auth string) 
-  Accept: application/json 
+  Authorization: Basic (base64 auth string)
+  Accept: application/json
 ```
 
 **Request Params**
@@ -346,7 +346,7 @@ DELETE /v3/tags/{tag_value}?platform=android,ios
 
 ```
 POST /v3/devices/status/
-  Authorization: Basic (base64 auth string) 
+  Authorization: Basic (base64 auth string)
   Accept: application/json
 ```
 **Request Data**
@@ -368,7 +368,7 @@ POST /v3/devices/status/
 **Response Header**
 
 ```
-HTTP/1.1 200 OK 
+HTTP/1.1 200 OK
   Content-Type: application/json; charset=utf-8
 ```
 
@@ -378,7 +378,7 @@ HTTP/1.1 200 OK
 {
      "010b81b3582": {
          "online": true
-     }, 
+     },
      "0207870f1b8": {
           "online": false,
           "last_online_time": "2014-12-16 10:57:07"
@@ -391,8 +391,8 @@ HTTP/1.1 200 OK
 
 **Response Params**
 
-+ online 
-    + true: 10分钟之内在线； 
++ online
+    + true: 10分钟之内在线；
     + false: 10分钟之内不在线；
 
 + last_online_time
