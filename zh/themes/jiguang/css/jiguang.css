@@ -3,6 +3,7 @@ body {
     letter-spacing: 0.5px;
     min-height: 100%;
     font-family: "Helvetica Neue",Helvetica,"PingFang SC","Microsoft Yahei",Arial,Verdana,sans-serif;
+    padding-top: 70px;
 }
 hr {
     border-top: 1px solid #eeeeee;
@@ -212,6 +213,7 @@ div.row.downloads .thumbnail > .caption .li-clear {
 /* Download */
 
 /* content */
+
 div#content p {
     line-height: 1.8;
     font-size:15px;
@@ -241,11 +243,6 @@ div#content h3 {
     color: #1b75bb;
     font-weight: bold;
     font-size: 18px;
-}
-
-div#content h2, div#content h3 {
-    padding-top: 80px;
-    margin-top: -40px;
 }
 
 div#content ul li{
