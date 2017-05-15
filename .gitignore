@@ -54,10 +54,6 @@ docs/_build/
 
 # docs
 site/
-zh/JPush/site/
-en/JMessage/site/
-zh/JSMS/site/
-en/Index/site/
 
 .idea/
 
@@ -68,4 +64,6 @@ zh/.DS_Store
 en/.DS_Store
 
 
-
+pyvenv.cfg
+lib64
+depoly.sh

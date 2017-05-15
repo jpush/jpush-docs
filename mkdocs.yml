@@ -1,0 +1,158 @@
+site_name: 极光文档
+site_author: JiGuang Offical
+site_url: https://docs.jiguang.cn/
+repo_url: https://github.com/jpush/jpush-docs/
+site_favicon: img/favicon.ico
+site_description: JPush, JMessage, 极光推送, 极光IM, Android Push, Android 推送, 安卓推送, iOS Push, APNs, Push Notification
+copyright: Copyright 2011-2017, jiguang.cn, All Rights Reserved. <br />粤ICP备12056275号-13 深圳市和讯华谷信息技术有限公司
+theme: 'mkdocs'
+theme_dir: 'zh/themes/jiguang'
+docs_dir: zh
+extra_css: []
+extra_javascript: []
+extra_templates: []
+
+
+pages:
+
+- home: 'index.md'
+
+- JPush:
+
+  - 入门指南:
+    - 'JPush 产品简介': 'jpush/guideline/intro.md'
+    - '控制台使用指南': 'jpush/console/Instructions.md'
+    - 'JPush 短信补充': 'jpush/guideline/push-SMS-intro.md'
+    - 'Rich Push 开发指南': 'jpush/advanced/rich_push.md'
+    - '常见问题': 'jpush/guideline/faq.md'
+  - Android:
+    - 'Android SDK 概述': 'jpush/client/Android/android_sdk.md'
+    - '3 分钟 Demo': 'jpush/client/Android/android_3m.md'
+    - 'Android SDK 集成指南': 'jpush/client/Android/android_guide.md'
+    - 'Android SDK 调试指南': 'jpush/client/Android/android_debug_guide.md'
+    - 'Android SDK 进阶教程': 'jpush/client/Android/android_senior.md'
+    - 'Android SDK API': 'jpush/client/Android/android_api.md'
+    - 'Android SDK FAQ': 'jpush/client/Android/android_faq.md'
+  - iOS:
+    - 'iOS SDK 概述': 'jpush/client/iOS/ios_sdk.md'
+    - 'iOS SDK 集成指南': 'jpush/client/iOS/ios_guide_new.md'
+    - 'iOS SDK 调试指南': 'jpush/client/iOS/ios_debug_guide.md'
+    - 'iOS 证书设置指南': 'jpush/client/iOS/ios_cer_guide.md'
+    - 'iOS 新特性汇总': 'jpush/client/iOS/ios_new_fetures.md'
+    - 'iOS SDK API': 'jpush/client/iOS/ios_api.md'
+    - 'iOS SDK FAQ': 'jpush/client/iOS/ios_faq.md'
+  - WindowsPhone:
+    - 'Windows Phone SDK 概述': 'jpush/client/WindowsPhone/winphone_sdk.md'
+    - 'Windows Phone 3 分钟 Demo': 'jpush/client/WindowsPhone/winphone_3m.md'
+    - 'Windows Phone SDK 集成指南': 'jpush/client/WindowsPhone/winphone_guide.md'
+    - 'Windows Phone API': 'jpush/client/WindowsPhone/winphone_api.md'
+  - REST API:
+    - 'REST API 概述': 'jpush/server/push/server_overview.md'
+    - 'Push API v3': 'jpush/server/push/rest_api_v3_push.md'
+    - 'Report API v3': 'jpush/server/push/rest_api_v3_report.md'
+    - 'Device API v3': 'jpush/server/push/rest_api_v3_device.md'
+    - 'Schedule API v3': 'jpush/server/push/rest_api_push_schedule.md'
+    - 'HTTP 状态码': 'jpush/server/push/http_status_code.md'
+  - 高级:
+    - 'JPush 应用场景': 'jpush/advanced/scenes.md'
+    - 'JPush 高级话题': 'jpush/advanced/topics.md'
+  - 客户端集成插件: 'jpush/client/client_plugins.md'
+  - 服务端 SDK:
+    - 'Java SDK': 'jpush/server/3rd/java_sdk.md'
+    - 'Python SDK': 'jpush/server/3rd/python_sdk.md'
+    - 'PHP SDK': 'jpush/server/3rd/php_sdk.md'
+    - 'Ruby SDK': 'jpush/server/3rd/ruby_sdk.md'
+    - 'C# SDK': 'jpush/server/3rd/csharp_sdk.md'
+    - 'Node.js SDK': 'jpush/server/3rd/nodejs_sdk.md'
+  - 旧文档:
+    - 'REST API v2 - Push': 'jpush/server/old/rest_api_v2_push.md'
+    - 'REST API v2 - Report': 'jpush/server/old/rest_api_v2_report.md'
+  - 最近更新: 'jpush/updates.md'
+  - 资源下载: 'jpush/resources.md'
+
+- JAnalytics:
+
+  - 入门指南:
+    - 'JAnalytics 产品简介': 'janalytics/guideline/intro.md'
+    - '常见问题': 'janalytics/guideline/faq.md'
+  - Android:
+    - 'Android SDK 概述': 'janalytics/client/android_sdk.md'
+    - 'Android SDK 集成指南': 'janalytics/client/android_guide.md'
+    - 'Android SDK API': 'janalytics/client/android_api.md'
+  - iOS:
+    - 'iOS SDK 概述': 'janalytics/client/ios_sdk.md'
+    - 'iOS SDK 集成指南': 'janalytics/client/ios_guide.md'
+    - 'iOS SDK API': 'janalytics/client/ios_api.md'
+  - 最近更新: 'janalytics/updates.md'
+  - 资源下载: 'janalytics/resources.md'
+
+- JMessage:
+
+  - 入门指南:
+    - 'JMessage 产品简介': 'jmessage/guideline/jmessage_guide.md'
+    - '常见问题': 'jmessage/guideline/faq.md'
+  - Android:
+    - 'SDK 开发指南': 'jmessage/client/im_sdk_android.md'
+    - 'SDK 集成指南': 'jmessage/client/jmessage_android_guide.md'
+    - 'SDK ErrorCode 定义': 'jmessage/client/im_errorcode_android.md'
+    - 'SDK API Doc': 'jmessage/client/javadoc.md'
+  - iOS:
+    - 'SDK 开发指南': 'jmessage/client/im_sdk_ios.md'
+    - 'SDK 集成指南': 'jmessage/client/jmessage_ios_guide.md'
+    - 'SDK ErrorCode 定义': 'jmessage/client/im_errorcode_ios.md'
+    - 'SDK API Doc': 'jmessage/client/iOSdoc.md'
+  - Web:
+    - 'Web SDK 开发指南 V2': 'jmessage/client/im_sdk_js_v2.md'
+    - 'Web SDK 开发指南': 'jmessage/client/im_sdk_js.md'
+    - '微信小程序 SDK': 'jmessage/client/im_sdk_wxapplet.md'
+    - 'SDK ErrorCode 定义': 'jmessage/client/im_errorcode_js.md'
+  - REST API:
+    - 'REST API': 'jmessage/server/rest_api_im.md'
+    - 'REST Report V2': 'jmessage/server/rest_api_im_report_v2.md'
+    - 'REST Report': 'jmessage/server/rest_api_im_report.md'
+    - 'Server ErrorCode 定义': 'jmessage/client/im_errorcode_server.md'
+  - 高级:
+    - '消息协议': 'jmessage/advanced/im_message_protocol.md'
+    - '业务对象': 'jmessage/advanced/im_objects.md'
+    - '实时消息路由': 'jmessage/advanced/jmessage_callback.md'
+  - 客户端集成插件: 'jmessage/client/client_plugins.md'
+  - 服务端 SDK:
+    - 'Java SDK': 'jmessage/server/sdk/java_sdk.md'
+    - 'Python SDK': 'jmessage/server/sdk/python_sdk.md'
+    - 'PHP SDK': 'jmessage/server/sdk/php_sdk.md'
+    - 'C# SDK': 'jmessage/server/sdk/csharp_sdk.md'
+  - 最近更新: 'jmessage/updates.md'
+  - 资源下载: 'jmessage/resources.md'
+
+- JSMS:
+
+  - 入门指南:
+    - '短信验证码概述': 'jsms/guideline/JSMS_guide.md'
+    - '控制台操作指南': 'jsms/guideline/JSMS_consoleguide.md'
+  - Android:
+    - 'Android SDK 概述': 'jsms/client/Android_SMS_SDK.md'
+  - iOS:
+    - 'iOS SDK 概述': 'jsms/client/iOS_SMS_SDK.md'
+  - REST API:
+    - 'REST API 概述': 'jsms/server/rest_api_jsms.md'
+  - 最近更新: 'jsms/updates.md'
+  - 资源下载: 'jsms/resources.md'
+
+- JShare:
+
+  - 入门指南:
+    - 'JShare 产品简介': 'jshare/guideline/intro.md'
+    - '第三方平台申请': 'jshare/guideline/social_platform_apply.md'
+    - '常见问题': 'jshare/guideline/faq.md'
+  - Android:
+    - 'Android SDK 集成指南': 'jshare/client/Android/android_sdk.md'
+    - 'Android SDK API': 'jshare/client/Android/android_api.md'
+    - 'Android SDK FAQ': 'jshare/client/Android/android_sdk_faq.md'
+    - 'ErrorCode 定义': 'jshare/client/Android/jshare_errorcode.md'
+  - iOS:
+    - 'iOS SDK 集成指南': 'jshare/client/iOS/ios_sdk.md'
+    - 'iOS SDK API': 'jshare/client/iOS/ios_api.md'
+    - 'iOS SDK FAQ': 'jshare/client/iOS/ios_sdk_faq.md'
+    - 'ErrorCode 定义': 'jshare/client/iOS/jshare_errorcode.md'
+  - 最近更新: 'jshare/updates.md'
+  - 资源下载: 'jshare/resources.md'
