@@ -21,7 +21,7 @@ if [ -n "$diff" ]; then
 
     # activate venv
     source $VENV_PATH/bin/activate
-    echo $VENV_PATH/bin/activate
+
     # build doc
     mkdocs build
 
