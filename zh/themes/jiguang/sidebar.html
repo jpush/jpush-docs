@@ -1,0 +1,30 @@
+<aside class="bs-sidebar hidden-print affix well scrollbar" role="complementary" id="sidebar">
+<ul class="nav bs-sidenav">
+    {%- for nav_item in nav if nav_item.children and nav_item.active %}
+    {%- for nav_item in nav_item.children %}
+
+    {%- if nav_item.children %}
+        <li class="main-nav {%- if nav_item.active %} actived {%- endif %}">
+        <a href="{{ nav_item.children[0].url }}">
+            {{ nav_item.title }}
+            <span class="glyphicon glyphicon-menu-{%- if nav_item.active %}down {%- else %}right {%- endif %} pull-right" aria-hidden="true"></span>
+        </a>
+        </li>
+        {%- if nav_item.active %}
+        {%- for nav_item in nav_item.children %}
+            <li class="sub-nav {%- if nav_item.active %} current {%- endif %}">
+                <a href="{{ nav_item.url }}">{{ nav_item.title }}</a>
+            </li>
+        {%- endfor %}
+        {%- endif %}
+
+    {%- else %}
+        <li class="main-nav {%- if nav_item.active %} current {%- endif %}">
+            <a href="{{ nav_item.url }}">{{ nav_item.title }}</a>
+        </li>
+    {%- endif %}
+
+    {%- endfor %}
+    {%- endfor %}
+</ul>
+</aside>
