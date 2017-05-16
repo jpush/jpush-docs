@@ -190,29 +190,31 @@ curl --insecure -X POST -v https://api.sms.jpush.cn/v1/messages -H "Content-Type
 |HTTP CODE| CODE| CONTENT  | DESC|
 |:--- |:--- |:--- |:----
 |200|50000|success|请求成功
-|400|50001|missing auth|auth为空
-|401|50002|auth failed|auth鉴权失败
-|400|50003|missing body|body为空
-|400|50004|missing mobile|mobile为空
-|400|50005|missing  temp_id|temp_id为空
-|403|50006|invalid mobile|mobile无效
-|403|50007|invalid body|body无效
-|403|50008|no sms code auth|没有短信验证权限
+|400|50001|missing auth|auth 为空
+|401|50002|auth failed|auth 鉴权失败
+|400|50003|missing body|body 为空
+|400|50004|missing mobile|手机号为空
+|400|50005|missing  temp_id|模版ID 为空
+|403|50006|invalid mobile|手机号无效
+|403|50007|invalid body|body 无效
+|403|50008|no sms code auth|没有短信业务权限
 |403|50009|out of freq|发送超频
 |403|50010|invalid code|验证码无效
 |403|50011|expired code|验证码过期
 |403|50012|verified code|验证码已验证过
-|403|50013|invalid temp_id|无效temp_id
+|403|50013|invalid temp_id|模版ID 无效
 |403|50014|no money|余额不足
 |400|50015|missing code|验证码为空
-|404|50016|api not found|api不存在
+|404|50016|api not found|API 不存在
 |415|50017|media not supported|媒体类型不支持
 |405|50018|request method not support|请求方法不支持
 |500|50019|server error|服务端异常|
 |403|50020|template audited|模板审核中
 |403|50021|template not pass|模板审核不通过
-|403|50022|parameters not all replaced|模板参数未全部替换|
+|403|50022|parameters not all replaced|模板中参数未全部替换|
 |403|50023|parameters is empty|参数为空|
 |403|50024|unsubscribed mobile|手机号已退订|
+|403|50025|wrong template type|该API不支持此模版类型|
+|403|50026|wrong msg_id|msg_id 无效|
 
 
