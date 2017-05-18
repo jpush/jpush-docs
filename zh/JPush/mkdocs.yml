@@ -26,6 +26,7 @@ pages:
   - 'Android SDK 进阶教程': 'client/Android/android_senior.md'
   - 'Android SDK API': 'client/Android/android_api.md'
   - 'Android SDK FAQ': 'client/Android/android_faq.md'
+  - 'Android JCore 定制: 'client/Android/android_jcore.md'
 
 - iOS:
   - 'iOS SDK 概述': 'client/iOS/ios_sdk.md'
