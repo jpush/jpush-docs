@@ -861,7 +861,10 @@ Content-Type: application/json; charset=utf-8
 ```
 Response Data
 图片 Response
+
+```
 {"media_id":"qiniu/image/F39AA12204DAB6A2","media_crc32":1338734977,"width":720,"height":1280,"format":"jpg","fsize":52468}
+```
 
 + media_id String  文件上传之后服务器端所返回的key
 + media_crc32 long 文件的crc32校验码
@@ -872,7 +875,10 @@ Response Data
 + hash String 可选，用于crc校验码不存在时的替代的验证
 
 文件 Response 
+
+```
 {"media_id":"qiniu/file/j/1BB3B833AEABFF62E883C5CE421867A9","media_crc32":1415584260,"fname":"0839d1c0-48e9-4032-9333-f3691a7d9e48.dmp","fsize":176512,"hash":"FtH0kPT0YI89HAw1K9wv_vVKiNab"}
+```
 
 +  media_id String 文件上传之后服务器端所返回的key，用于之后生成下载的url
 +  media_crc32 long 文件的crc32校验码
@@ -882,7 +888,9 @@ Response Data
 
 语音 Response
 
+```
 {"media_id":"qiniu/voice/j/9C4312B1EA0FB28337566D1A29A244B5","media_crc32":1882116055,"hash":"FoYn15bAGRUM9gZCAkvf9dolVH7h","format":"m4a","fsize":238105}
+```
 
 +  media_id String 文件上传之后服务器端所返回的key，用于之后生成下载的url
 +  media_crc32 long 文件的crc32校验码
@@ -1034,7 +1042,7 @@ HTTP/1.1 204 NO Content
 
 #### 删除群组
 
-删除某  的群组。
+删除某个群组。
 
 该群组的所有成员都会收到群组被解散通知。
 
