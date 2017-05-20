@@ -5,7 +5,7 @@
 
 ### SDK 压缩包内包括
 
-+ lib文件夹：包含头文件 JSMSSDK.h、JSMSContant.h，静态库文件libsms-lib.a ，支持的iOS版本为 7.0 及以上版本。
++ lib文件夹：包含头文件 JSMSSDK.h、JSMSConstant.h，静态库文件libsms-lib.a ，支持的iOS版本为 7.0 及以上版本。
 + pdf文件：集成指南
 + demo文件夹：示例
 
