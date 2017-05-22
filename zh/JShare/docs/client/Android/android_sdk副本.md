@@ -95,11 +95,11 @@ android {
 }
 dependencies {
     ......
-    compile 'cn.jiguang.sdk:jshare:1.1.0'  // 此处以JShare 1.1.0 版本为例。
-    compile 'cn.jiguang.sdk:jshare-qqmodel:1.1.0'  // 此处以jshare-qqmodel 1.1.0 版本为例。
-    compile 'cn.jiguang.sdk:jshare-wechatmodel:1.1.0'  // 此处以jshare-wechatmodel 1.1.0 版本为例。
-    compile 'cn.jiguang.sdk:jshare-sinamodel:1.1.0'  // 此处以jshare-sinamodel 1.1.0 版本为例。
-    compile 'cn.jiguang.sdk:jcore:1.1.3'  // 此处以JCore 1.1.3版本为例。
+    compile 'cn.jiguang.sdk:jshare:1.0.0'  // 此处以JShare 1.0.0 版本为例。
+    compile 'cn.jiguang.sdk:jshare-qqmodel:1.0.0'  // 此处以jshare-qqmodel 1.0.0 版本为例。
+    compile 'cn.jiguang.sdk:jshare-wechatmodel:1.0.0'  // 此处以jshare-wechatmodel 1.0.0 版本为例。
+    compile 'cn.jiguang.sdk:jshare-sinamodel:1.0.0'  // 此处以jshare-sinamodel 1.0.0 版本为例。
+    compile 'cn.jiguang.sdk:jcore:1.1.2'  // 此处以JCore 1.1.2版本为例。
     ......
 }
 ```
@@ -199,7 +199,6 @@ android {
 			android:name="cn.jiguang.share.android.ui.JiguangShellActivity"
 			android:configChanges="keyboardHidden|orientation|screenSize"
 			android:exported="true"
-			android:launchMode="singleTask"
 			android:screenOrientation="portrait"
 			android:theme="@android:style/Theme.Translucent.NoTitleBar"
 			android:windowSoftInputMode="stateHidden|adjustResize">
@@ -219,14 +218,6 @@ android {
 				<action android:name="com.sina.weibo.sdk.action.ACTION_SDK_REQ_ACTIVITY" />
 				<category android:name="android.intent.category.DEFAULT" />
 			</intent-filter>
-			
-			<!-- Optional 新浪微博私信回调-->
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="jsharesdk" android:host="sinaweibo"/>
-            </intent-filter>
 		</activity>
 
 		<!-- Optional 微信分享回调,wxapi必须在包名路径下，否则回调不成功-->
@@ -270,8 +261,7 @@ android {
 
     <SinaWeibo
         AppKey="新浪微博的AppKey"
-        AppSecret="新浪微博ppSecret"
-        RedirectUrl="微博开放平台填写的授权回调页"/>
+        AppSecret="新浪微博ppSecret"/>
 
     <QQ
         AppId="QQ的AppId"
@@ -358,7 +348,7 @@ buildTypes {
 ```
 
 
-### Eclipse环境配置
+###Eclipse环境配置
 
 * 在Eclipse的Preferences，选择Android -> Build，如下图：
 
@@ -370,7 +360,6 @@ buildTypes {
 ### 注意
 * 应用的包名、应用的签名、第三方平台注册的AppID及Appkey三者要一一对应，否则会无法分享。
 * 应用的签名要与在第三方平台填写的签名对应，否则会无法分享。
-* 新浪微博支持未安装客户端分享，需要注意JGShareSDK.xml中的RedirectUrl要与微博开放平台填写的需要一致，否则会发生错误。
 ## 添加代码
 JShare SDK 提供的 API 接口，都主要集中在 cn.jiguang.share.android.api.JShareInterface 类，使用方法请参考example或者API接口文档。
 

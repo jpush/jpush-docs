@@ -1,7 +1,7 @@
 # iOS JShare 对外集成文档
 ##使用提示
 本文是 JSHARE iOS SDK 的标准集成指南文档。
-匹配的 SDK 版本为：V1.0.0及以后版本。
+匹配的 SDK 版本为：V1.1.0及以后版本。
 
 * 如果你想要快速测试、请参考本文在几分钟内跑通 Demo。
 * 极光文档官网上有相关的所有指南、API、教程等全部的文档。包括本文档的更新版本，都会及时地发布到该网站上。
@@ -68,7 +68,7 @@ JSHAREService类，包含分享 SDK 的所有接口。
  
 ### method - setupWithConfig
 ####接口定义：
-+(void)setupWithConfig:(JSHARELaunchConfig *)config*<br>
++(void)setupWithConfig:(JSHARELaunchConfig *)config<br>
 ####接口说明：
 初始化接口。建议在 application:didFinishLaunchingWithOptions: 中调用。
 ####参数说明：
@@ -204,7 +204,85 @@ JSHAREMessage *message = [JSHAREMessage message];
 Xcode 工程目录中的 [TARGETS] -> [Info] 中设置：
 ![](../image/urlType.png)
 
+###HTTPS 设置
+ > Apple将从2017年开始执行ATS(App Transport Security)，所有进行审核的应用中网络请求全部支持HTTPS，届时以下配置将会失效，请提前做好准备。
+ 
+ 目前 JSHARE 支持不存在新浪微博客户端情况下的网页分享，但是由于新浪微博的 api 尚未针对 https 做优化所以需要针对新浪的做对应的 https 设置。在 JSHARE 中是默认关闭新浪微博的网页端分享的，如需使用这个功能则需要在JSHARELaunchConfig类的实例中将 **isSupportWebSina** 属性设置为 YES。
+ 
+ 以iOS10 SDK编译的工程会默认以SSL安全协议进行网络传输，即HTTPS，如果依然使用HTTP协议请求网络会报系统异常并中断请求。目前可用如下这种方式保持用HTTP进行网络连接：   
+ 
+在info.plist中加入安全域名白名单(右键info.plist用source code打开)
 
+```
+<key>NSAppTransportSecurity</key>
+<dict>
+    <!-- 配置允许 http的任意网络End-->
+   <key>NSExceptionDomains</key>
+   <dict>
+       <!-- 集成新浪微博对应的HTTP白名单-->
+       <key>sina.com.cn</key>
+       <dict>
+           <key>NSIncludesSubdomains</key>
+           <true/>
+           <key>NSThirdPartyExceptionAllowsInsecureHTTPLoads</key>
+           <true/>
+           <key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
+           <false/>
+       </dict>
+       <key>sinaimg.cn</key>
+       <dict>
+           <key>NSIncludesSubdomains</key>
+           <true/>
+           <key>NSThirdPartyExceptionAllowsInsecureHTTPLoads</key>
+           <true/>
+           <key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
+           <false/>
+       </dict>
+       <key>sinajs.cn</key>
+       <dict>
+           <key>NSIncludesSubdomains</key>
+           <true/>
+           <key>NSThirdPartyExceptionAllowsInsecureHTTPLoads</key>
+           <true/>
+           <key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
+           <false/>
+       </dict>
+       <key>sina.cn</key>
+       <dict>
+           <!-- 适配iOS10 -->
+           <key>NSExceptionMinimumTLSVersion</key>
+           <string>TLSv1.0</string>
+           <key>NSIncludesSubdomains</key>
+           <true/>
+           <key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
+           <false/>
+       </dict>
+       <key>weibo.cn</key>
+       <dict>
+           <!-- 适配iOS10 -->
+           <key>NSExceptionMinimumTLSVersion</key>
+           <string>TLSv1.0</string>
+           <key>NSIncludesSubdomains</key>
+           <true/>
+           <key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
+           <false/>
+       </dict>
+       <key>weibo.com</key>
+       <dict>
+           <!-- 适配iOS10 -->
+           <key>NSExceptionMinimumTLSVersion</key>
+           <string>TLSv1.0</string>
+           <key>NSIncludesSubdomains</key>
+           <true/>
+           <key>NSThirdPartyExceptionAllowsInsecureHTTPLoads</key>
+           <true/>
+           <key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
+           <false/>
+       </dict>
+       <!-- 新浪微博-->  
+   </dict>
+</dict>
+```
 
 #end
 

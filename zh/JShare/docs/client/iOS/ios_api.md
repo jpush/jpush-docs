@@ -180,7 +180,14 @@ handler：分享结果的回调。
 ```
     
         
-    
+##检查不存在新浪客户端情况下的网页端是否登陆
+
+ +(BOOL)isSinaWeiboWebLogined;
+
+## 登出新浪网页端最新帐号
+
+ +(BOOL)sinaWeiboWebLogOut;   
+ 
 ##检查是否存在微信客户端
     
  +(BOOL)isWeChatInstalled
@@ -196,7 +203,7 @@ handler：分享结果的回调。
 ##日志等级设置
 ###Method - setDebug
 ####接口说明
-用于开启Debug模式，显示更多的日志信息;当需要了解更多的调试信息时候，调用API开启Debug模式
+设置是否打印sdk产生的Debug级log信息, 默认为NO(不打印Debug级log)
 ####接口定义
 ```    
 +(void)setDebug:(BOOL)enable
