@@ -17,7 +17,7 @@
 
 ### 导入开发包
 
-将SDK包解压，将解压后的JsmsSDK文件夹（包含头文件 include，静态库文件libsms-lib.a 。头文件目录包含JSMSSDK.h、JSMSContant.h两个对外接口文件）添加到工程目录中。 
+将SDK包解压，将解压后的JsmsSDK文件夹（包含头文件 include，静态库文件libsms-lib.a 。头文件目录包含JSMSSDK.h、JSMSConstant.h两个对外接口文件）添加到工程目录中。 
 
 ### Build Settings
 
