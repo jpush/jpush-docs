@@ -143,7 +143,7 @@ JSON Array.
 
 ### Admin 注册
 
-#### Admin Register 管理员注册
+#### Admin Register 管理员注册 (管理员api发送消息接口的权限)
 
 ```
 POST /v1/admins/
