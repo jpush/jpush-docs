@@ -2,7 +2,7 @@
 
 ## 概述
 
-极光 IM（英文名JMessage）为开发者提供易用可靠的 IM 开发框架，开发者可集成SDK，快速实现即时通讯功能。JMessage iOS SDK 支持 iOS 7 以上系统。   
+极光 IM（英文名JMessage）为开发者提供易用可靠的 IM 开发框架，开发者可集成SDK，快速实现即时通讯功能。JMessage iOS SDK 支持 iOS 7 以上系统。
 要了解极光 IM 的详细信息，请参考文档：[JMessage 产品简介](https://docs.jiguang.cn/jmessage/guideline/jmessage_guide/)
 
 
@@ -46,8 +46,8 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 
 ###SDK初始化(设置漫游)
 
-***Since v3.1.0***  
-SDK 初始化时，可设置是否启用消息记录漫游。   
+***Since v3.1.0***
+SDK 初始化时，可设置是否启用消息记录漫游。
 打开消息漫游之后，用户多个设备之间登录时，SDK会自动将历史消息同步到本地，同步完成之后SDK会以 Conversation 为单位触发代理方法`onSyncRoamingMessageConversation:`通知上层刷新,具体方法见[消息同步监听代理](#消息同步版本说明)
 
 ```
@@ -73,14 +73,14 @@ SDK 初始化时，可设置是否启用消息记录漫游。
        messageRoaming:(BOOL)isRoaming;
 
 ```
-	 
-##### 例子	  
+
+##### 例子
 	[JMessage setupJMessage:launchOptions
 	                 appKey:@"用户的AppKey"
 	                channel:@"应用的渠道名称"
 	       apsForProduction:NO
-	               category:nil 
-	         messageRoaming:NO];  
+	               category:nil
+	         messageRoaming:NO];
 
 这个调用是必须的。否则 SDK 将不能正常工作。
 
@@ -96,7 +96,7 @@ SDK 初始化时，可设置是否启用消息记录漫游。
  */
 + (void)registerForRemoteNotificationTypes:(NSUInteger)types
                                 categories:(NSSet *)categories;
-                                                            
+
 ```
 
 #### 注册DeviceToken
@@ -192,7 +192,7 @@ SDK 初始化时，可设置是否启用消息记录漫游。
 	                         //登录失败
 	                      }
 	                  }];
-	                  
+
 #### 退出登录
 	/*!
 	 * @abstract 当前用户退出登录
@@ -212,7 +212,7 @@ SDK 初始化时，可设置是否启用消息记录漫游。
 	                //退出登录失败
 	            }
 	        }];
-	        
+
 ### 用户管理
 #### 批量获取用户信息
 	/*!
@@ -230,10 +230,10 @@ SDK 初始化时，可设置是否启用消息记录漫游。
 	        if (!error) {
 	            //成功获取用户信息，resultObject为JMSGUser类型的数组
 	        } else {
-	            //获取用户信息失败   
+	            //获取用户信息失败
 	        }
 	    }];
-	  
+
 #### 获取用户个人信息
 	/*!
 	 * @abstract 获取用户本身个人信息
@@ -359,7 +359,7 @@ SDK 初始化时，可设置是否启用消息记录漫游。
 	JMSGUser *user = [JMSGUser myInfo];
 	NSString myName = [user displayName];
 
-#### 修改好友的备注名、备注信息	
+#### 修改好友的备注名、备注信息
 	/*!
 	 * @abstract 修改好友备注名
 	 *
@@ -368,7 +368,7 @@ SDK 初始化时，可设置是否启用消息记录漫游。
 	 * @discussion 注意：这是建立在是好友关系的前提下，修改好友的备注名
 	 */
 	- (void)updateNoteName:(NSString *)noteName completionHandler:(JMSGCompletionHandler)handler;
-	
+
 	/*!
 	 * @abstract 修改好友备注信息
 	 *
@@ -385,8 +385,8 @@ SDK 初始化时，可设置是否启用消息记录漫游。
 	    }else{
 	        [MBProgressHUD showMessage:@"修改备注失败" view:self.view];
 	    }
-	 }]; 
-	 
+	 }];
+
 <span id="消息同步版本说明"></span>
 ### 从3.1.0版本开始接收消息的变化
 JMessage SDK 3.1.0 版本开始，SDK 将消息下发分为在线下发和离线下发两种类型，离线下发包含了离线消息和漫游消息。 先明确这几个概念：
@@ -397,17 +397,58 @@ JMessage SDK 3.1.0 版本开始，SDK 将消息下发分为在线下发和离线
 
 有了这几个概念的区分之后，SDK 对于这两种消息的处理方式也有了不同：
 
-SDK版本 | 在线消息  | 离线消息 | 漫游消息
-------- | ------- | ------- |---------
-Version < 3.1.0 | 逐条下发，每次都触发[onReceiveMessage:](./jmessage_ios_appledoc_html/Protocols/JMSGMessageDelegate.html#//api/name/onReceiveMessage:error:)|逐条下发，每次都触发[onReceiveMessage:](./jmessage_ios_appledoc_html/Protocols/JMSGMessageDelegate.html#//api/name/onReceiveMessage:error:)|无
-Version >= 3.1.0 | 逐条下发，每次都触发[onReceiveMessage:](./jmessage_ios_appledoc_html/Protocols/JMSGMessageDelegate.html#//api/name/onReceiveMessage:error:)|以会话为单位，触发一次下发[onSyncOfflineMessageConversation:](./jmessage_ios_appledoc_html/Protocols/JMSGConversationDelegate.html#//api/name/onSyncOfflineMessageConversation:offlineMessages:)|以会话为单位，触发一次下发[onSyncRoamingMessageConversation:](.//jmessage_ios_appledoc_html/Protocols/JMSGConversationDelegate.html#//api/name/onSyncRoamingMessageConversation:)  
+<table class="table">
+  <thead>
+    <tr>
+      <th>SDK版本</th>
+      <th>在线消息</th>
+      <th>离线消息</th>
+      <th>漫游消息</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Version < 3.1.0</td>
+      <td>
+        逐条下发，每次都触发
+        <a href="../jmessage_ios_appledoc_html/Protocols/JMSGMessageDelegate.html#//api/name/onReceiveMessage:error:">
+          onReceiveMessage:
+        </a>
+      </td>
+      <td>
+        逐条下发，每次都触发
+        <a href="../jmessage_ios_appledoc_html/Protocols/JMSGMessageDelegate.html#//api/name/onReceiveMessage:error:">
+          onReceiveMessage:</a>
+      </td>
+      <td>无</td>
+    </tr>
+    <tr>
+      <td>Version >= 3.1.0</td>
+      <td>
+        逐条下发，每次都触发
+        <a href="../jmessage_ios_appledoc_html/Protocols/JMSGMessageDelegate.html#//api/name/onReceiveMessage:error:">
+          onReceiveMessage:</a>
+      </td>
+      <td>
+        以会话为单位，触发一次下发
+        <a href="../jmessage_ios_appledoc_html/Protocols/JMSGConversationDelegate.html#//api/name/onSyncOfflineMessageConversation:offlineMessages:">
+          onSyncOfflineMessageConversation:</a>
+      </td>
+      <td style="word-break: break-all;">
+        以会话为单位，触发一次下发
+        <a href="../jmessage_ios_appledoc_html/Protocols/JMSGConversationDelegate.html#//api/name/onSyncRoamingMessageConversation:">
+          onSyncRoamingMessageConversation:</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 
-**总结**   
+**总结**
 
-对于消息同步，以会话为单位，不管会话有多少离线消息，SDK只触发一次消息同步的代理方法，这个代理方法返回值中包含了具体某个会话、离线消息这些相关数据信息，上层通过这个方法可监听到每个会话完成消息同步的情况，从而去刷新UI，这样会大大减轻上层处理事件的压力。       
+对于消息同步，以会话为单位，不管会话有多少离线消息，SDK只触发一次消息同步的代理方法，这个代理方法返回值中包含了具体某个会话、离线消息这些相关数据信息，上层通过这个方法可监听到每个会话完成消息同步的情况，从而去刷新UI，这样会大大减轻上层处理事件的压力。
 <br />
-SDK 升级到 3.1.0 版本后（或之后的版本），上层只需要做以下变动：     
+SDK 升级到 3.1.0 版本后（或之后的版本），上层只需要做以下变动：
 
 + 设置消息漫游，调用 [新的 SDK 初始化](./jmessage_ios_appledoc_html/Classes/JMessage.html#//api/name/setupJMessage:appKey:channel:apsForProduction:category:messageRoaming:) 设置消息漫游。
 + 添加漫游消息的代理方法 [onSyncRoamingMessageConversation:](./jmessage_ios_appledoc_html/Protocols/JMSGConversationDelegate.html#//api/name/onSyncRoamingMessageConversation:) 通过此方法可以监听到漫游消息同步情况，从而刷新UI（不需要漫游消息的开发者可忽略此操作）。
@@ -492,7 +533,7 @@ SDK 升级到 3.1.0 版本后（或之后的版本），上层只需要做以下
 	+ (void)sendSingleVoiceMessage:(NSData *)voiceData
 	                 voiceDuration:(NSNumber *)duration
 	                        toUser:(NSString *)username;
-	                       
+
 #### 发送单聊文件消息
 	/*!
 	 * @abstract 发送单聊文件消息
@@ -560,7 +601,7 @@ SDK 升级到 3.1.0 版本后（或之后的版本），上层只需要做以下
 	+ (void)sendGroupVoiceMessage:(NSData *)voiceData
 	                voiceDuration:(NSNumber *)duration
 	                      toGroup:(NSString *)groupId;
-	                      
+
 #### 发送群聊文件消息
 	/*!
 	 * @abstract 发送群聊文件消息
@@ -589,7 +630,7 @@ SDK 升级到 3.1.0 版本后（或之后的版本），上层只需要做以下
 	                           scale:(NSNumber *)scale
 	                         address:(NSString *)address
 	                         toGroup:(NSString *)groupId;
-	                         
+
 #### 设置消息的FromName
 	/*!
 	 * @abstract 设置消息的 fromName(即:通知栏的展示名称)
@@ -623,7 +664,7 @@ SDK 升级到 3.1.0 版本后（或之后的版本），上层只需要做以下
 	 * @discussion 如果会话还不存在，则返回 nil
 	 */
 	+ (JMSGConversation * JMSG_NULLABLE)singleConversationWithUsername:(NSString *)username;
-	
+
 
 #### 获取群聊会话
 	/*!
@@ -656,7 +697,7 @@ SDK 升级到 3.1.0 版本后（或之后的版本），上层只需要做以下
 		                    //创建单聊会话失败
 		                }
 		            }];
-		            
+
 #### 创建群聊会话
 	/*!
 	 * @abstract 创建群聊会话
@@ -688,7 +729,7 @@ SDK 升级到 3.1.0 版本后（或之后的版本），上层只需要做以下
 	 * @discussion 除了删除会话本身，还会删除该会话下所有的聊天消息。
 	 */
 	+ (BOOL)deleteSingleConversationWithUsername:(NSString *)username;
-	
+
 
 #### 删除群聊会话
 	/*!
@@ -707,7 +748,7 @@ SDK 升级到 3.1.0 版本后（或之后的版本），上层只需要做以下
 	 * @param handler 结果回调。正常返回时 resultObject 的类型为 NSArray，数组里成员的类型为 JMSGConversation
 	 *
 	 * @discussion 当前是返回所有的 conversation 列表，默认是已经排序。
-	 * 
+	 *
 	 */
 	 + (void)allConversations:(JMSGCompletionHandler)handler;
 ##### 例子
@@ -718,7 +759,7 @@ SDK 升级到 3.1.0 版本后（或之后的版本），上层只需要做以下
 				//获取失败
             }
 	    }];
-	    
+
 消息相关操作：
 #### 获取某条消息
 	/*!
@@ -761,7 +802,7 @@ SDK 升级到 3.1.0 版本后（或之后的版本），上层只需要做以下
 	 */
 	- (void)allMessages:(JMSGCompletionHandler)handler;
 ##### 例子
-	//_conversation 为Conversation的实例对象 
+	//_conversation 为Conversation的实例对象
 	[conversation allMessages:^(id resultObject, NSError *error) {
 	        NSArray *array = (NSArray *)resultObject;
 	        LogInfo(@"消息数：%ld", (long)array.count);
@@ -832,7 +873,7 @@ SDK 升级到 3.1.0 版本后（或之后的版本），上层只需要做以下
 	- (void)createMessageAsyncWithImageContent:(JMSGImageContent *)content
 	                         completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)handler;
 ##### 例子
-	//_conversation 为Conversation的实例对象 
+	//_conversation 为Conversation的实例对象
 	[_conversation createMessageAsyncWithImageContent:imageContent completionHandler:^(id resultObject, NSError *error) {
 	            if (!error) {
 	            	//创建成功
@@ -875,7 +916,7 @@ SDK 升级到 3.1.0 版本后（或之后的版本），上层只需要做以下
 	 */
 	- (void)sendVoiceMessage:(NSData *)voiceData
 	                duration:(NSNumber *)duration;
-	                
+
 #### 发送文件消息
 	/*!
 	 * @abstract 发送文件消息
@@ -919,15 +960,15 @@ SDK 升级到 3.1.0 版本后（或之后的版本），上层只需要做以下
 	 */
 	- (void)avatarData:(JMSGAsyncDataHandler)handler;
 ##### 例子
-	//_conversation 为Conversation的实例对象 
+	//_conversation 为Conversation的实例对象
 	[_conversation avatarData:^(NSData *data, NSString *objectId, NSError *error) {
 	        if (!error) {
 	        	//获取成功
 	        } else {
-	        	//获取失败   
+	        	//获取失败
 	        }];
 
-#### 获取所有会话的未读消息的总数	
+#### 获取所有会话的未读消息的总数
 
 	/*!
 	 * @abstract 获取当前所有会话的未读消息的总数
@@ -935,7 +976,7 @@ SDK 升级到 3.1.0 版本后（或之后的版本），上层只需要做以下
 	 * @discussion 获取所有会话未读消息总数
 	 */
 	+ (NSNumber *)getAllUnreadCount;
-	
+
 #### 清除会话未读数
 	/*!
 	 * @abstract 清除会话未读数
@@ -962,7 +1003,7 @@ SDK 升级到 3.1.0 版本后（或之后的版本），上层只需要做以下
 	 */
 	- (NSString *)latestMessageContentText;
 ##### 例子
-	//_conversation 为Conversation的实例对象 
+	//_conversation 为Conversation的实例对象
 	NSString *latestMessageText = [_conversation latestMessageContentText];
 
 #### 判断消息是否属于这个Conversation
@@ -991,7 +1032,7 @@ SDK 升级到 3.1.0 版本后（或之后的版本），上层只需要做以下
 	 */
 	- (void)refreshTargetInfoFromServer:(JMSGCompletionHandler)handler;
 ##### 例子
-	//_conversation 为Conversation的实例对象 
+	//_conversation 为Conversation的实例对象
 	[_conversation refreshTargetInfoFromServer:^(id resultObject, NSError *error) {
 	    if (!error) {
 	      //success
@@ -999,7 +1040,7 @@ SDK 升级到 3.1.0 版本后（或之后的版本），上层只需要做以下
 	      //刷新失败
 	    }
 	  }];
-	  
+
 	  /*!
 
 
@@ -1029,7 +1070,7 @@ SDK 升级到 3.1.0 版本后（或之后的版本），上层只需要做以下
         }
     }];
 
-#### 更新群组信息	
+#### 更新群组信息
 	/*!
 	 * @abstract 更新群组信息
 	 *
@@ -1049,8 +1090,8 @@ SDK 升级到 3.1.0 版本后（或之后的版本），上层只需要做以下
                     NSLog(@"更新群组信息成功!");
                 }
     }];
-    
-#### 获取群组信息		
+
+#### 获取群组信息
 	/*!
 	 * @abstract 获取群组信息
 	 *
@@ -1070,7 +1111,7 @@ SDK 升级到 3.1.0 版本后（或之后的版本），上层只需要做以下
             NSLog(@"获取群组信息成功");
         }
     }];
-#### 获取我的群组列表	
+#### 获取我的群组列表
 	/*!
 	 * @abstract 获取我的群组列表
 	 *
@@ -1078,7 +1119,7 @@ SDK 升级到 3.1.0 版本后（或之后的版本），上层只需要做以下
 	 *
 	 * @discussion 该接口总是向服务器端发起请求。
 	 */
-	+ (void)myGroupArray:(JMSGCompletionHandler)handler;          
+	+ (void)myGroupArray:(JMSGCompletionHandler)handler;
 ##### 例子
 	// 获取我的群组列表（实际返回的群组的gid列表）
 	[JMSGGroup myGroupArray:^(id resultObject, NSError *error) {
@@ -1088,7 +1129,7 @@ SDK 升级到 3.1.0 版本后（或之后的版本），上层只需要做以下
             NSLog(@"返回值是gid数组，开发者需要获取每个群完整信息的话，需要通过返回的gid再调用获取群信息接口");
         }
     }];
-#### 获取群组成员列表	
+#### 获取群组成员列表
 	/*!
 	 * @abstract 获取群组成员列表
 	 *
@@ -1099,7 +1140,7 @@ SDK 升级到 3.1.0 版本后（或之后的版本），上层只需要做以下
 	 */
 	- (NSArray JMSG_GENERIC(__kindof JMSGUser *)*)memberArray;
 
-#### 添加群组成员	
+#### 添加群组成员
 	/*!
 	 * @abstract 添加群组成员
 	 *
@@ -1108,7 +1149,7 @@ SDK 升级到 3.1.0 版本后（或之后的版本），上层只需要做以下
 	 */
 	- (void)addMembersWithUsernameArray:(NSArray JMSG_GENERIC(__kindof NSString *) *)usernameArray
 	                  completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)handler;
-	
+
 ##### 例子
 	// 添加群组成员
 	[group addMembersWithUsernameArray:[NSArray arrayWithObjects:@"username1",@"username2", nil] completionHandler:^(id resultObject, NSError *error) {
@@ -1132,7 +1173,7 @@ SDK 升级到 3.1.0 版本后（或之后的版本），上层只需要做以下
             NSLog(@"删除群成员成功!");
         }
     }];
-#### 退出当前群组	
+#### 退出当前群组
 	/*!
 	 * @abstract 退出当前群组(当前用户)
 	 *
@@ -1146,7 +1187,7 @@ SDK 升级到 3.1.0 版本后（或之后的版本），上层只需要做以下
             NSLog(@"退出群组成功!");
         }
     }];
-#### 获取群组的展示名	
+#### 获取群组的展示名
 	/*!
 	 * @abstract 获取群组的展示名
 	 *
@@ -1155,8 +1196,8 @@ SDK 升级到 3.1.0 版本后（或之后的版本），上层只需要做以下
 	- (NSString *)displayName;
 
 ### 群组@功能
-消息发送方可以发一条带有@list的消息。  
-接收方收到带有@list的消息之后，如果@list中包含了自己，则在sdk默认弹出的通知栏提示中会有相应的提示，如"xxx在群中@了你"。  
+消息发送方可以发一条带有@list的消息。
+接收方收到带有@list的消息之后，如果@list中包含了自己，则在sdk默认弹出的通知栏提示中会有相应的提示，如"xxx在群中@了你"。
 #### JMSGMessage
 #### 创建@群成员的消息
 	/*!
@@ -1217,7 +1258,7 @@ JMSGMessage *atMessage = [JMSGMessage createGroupMessageWithContent:textContent1
 // 发送@人的消息
 JMSGTextContent *textContent2 = [[JMSGTextContent alloc] initWithText:@"创建好的消息"];
 JMSGMessage *message = [JMSGMessage createGroupMessageWithContent:textContent2 groupId:@"gid"];
-[conversation sendMessage: message atMessage at_list:[NSArray arrayWithObjects:user1,user2, nil]]    
+[conversation sendMessage: message atMessage at_list:[NSArray arrayWithObjects:user1,user2, nil]]
 ```
 
 ### 群消息屏蔽
@@ -1291,7 +1332,7 @@ JMSGMessage *message = [JMSGMessage createGroupMessageWithContent:textContent2 g
 			NSArray *friendList = (NSArray *)resultObject;
 			NSLog(@"获取好友列表：%@",friendList)
 		}
-	}];		
+	}];
 #### 发送添加好友请求
 	/*!
 	 * @abstract 发送添加好友请求
@@ -1418,7 +1459,7 @@ JMSGMessage *message = [JMSGMessage createGroupMessageWithContent:textContent2 g
 	       NSLog(@"删除好友失败");
 	    }
     }];
-		                        
+
 ### 黑名单
 
 将用户加入黑名单后，将不在收到对方发来的任何消息。例如：A 用户将 B 用户加入黑名单，B 用户发送的消息，A 用户将收不到，A 用户发送的消息,B 用户依然可以看到。
@@ -1454,7 +1495,7 @@ JMSGMessage *message = [JMSGMessage createGroupMessageWithContent:textContent2 g
 
 ```
 
-#### 添加黑名单		
+#### 添加黑名单
 
 ```
 /*!
@@ -1485,8 +1526,8 @@ JMSGMessage *message = [JMSGMessage createGroupMessageWithContent:textContent2 g
 }];
 
 ```
-	
-#### 删除黑名单	
+
+#### 删除黑名单
 
 ```
 /*!
@@ -1505,7 +1546,7 @@ JMSGMessage *message = [JMSGMessage createGroupMessageWithContent:textContent2 g
 + (void)delUsersFromBlacklist:(NSArray JMSG_GENERIC(__kindof NSString *)*)usernameArray
             completionHandler:(JMSGCompletionHandler)handler;
 
-```	            
+```
 ##### 例子
 
 ```
@@ -1517,7 +1558,7 @@ JMSGMessage *message = [JMSGMessage createGroupMessageWithContent:textContent2 g
     }];
 
 ```
-	             
+
 ### 免打扰
 
 可以将用户/群组添加到“免打扰”列表中，收到免打扰用户/群组发过来的消息时，将不会有通知栏通知，但消息事件照常下发。
@@ -1541,7 +1582,7 @@ JMSGMessage *message = [JMSGMessage createGroupMessageWithContent:textContent2 g
  */
 + (void)noDisturbList:(JMSGCompletionHandler)handler;
 ```
-	
+
 ##### 例子
 
 ```
@@ -1551,8 +1592,8 @@ JMSGMessage *message = [JMSGMessage createGroupMessageWithContent:textContent2 g
          NSLog(@"\n 免打扰列表: \n %@",resultObject);
      }
  }];
- 
-```  
+
+```
 #### 全局免打扰设置
 
 ```
@@ -1582,19 +1623,19 @@ JMSGMessage *message = [JMSGMessage createGroupMessageWithContent:textContent2 g
 ```
 
 ##### 例子
- 
+
 ```
  //获取是否设置全局免打扰
  BOOL isNoDisturb = [JMessage isSetGlobalNoDisturb];
  //设置全局免打扰（开启：YES,关闭:NO）
- [JMessage setIsGlobalNoDisturb:!isNoDisturb handler:^(id resultObject, NSError *error) { 
+ [JMessage setIsGlobalNoDisturb:!isNoDisturb handler:^(id resultObject, NSError *error) {
      if (!error) {
          NSLog(@"\n 全局免打扰设置成功:\n%@",resultObject);
      }
  }];
- 
+
 ```
-	 
+
 #### <span id="用户免打扰设置">用户免打扰设置</span>
 
 ```
@@ -1680,7 +1721,7 @@ BOOL isAlreadSet = user.isNoDisturb;
 #### 通知事件类型
 
 	typedef NS_ENUM(NSInteger, JMSGEventNotificationType) {
-    
+
 	    /// 用户登录状态变更事件
 	    /// 事件类型: 登录被踢
 	    kJMSGEventNotificationLoginKicked = 1,
@@ -1688,10 +1729,10 @@ BOOL isAlreadSet = user.isNoDisturb;
 	    kJMSGEventNotificationServerAlterPassword = 2,
 	    /// 事件类型：用户登录状态异常事件（需要重新登录）
 	    kJMSGEventNotificationUserLoginStatusUnexpected = 70,
-	    
+
 	    /// 事件类型：当前登录用户信息变更通知事件(非客户端修改)
 		 kJMSGEventNotificationCurrentUserInfoChange = 40,
-	    
+
 	    /// 好友相关事件
 	    /// 事件类型: 收到好友邀请
 	    kJMSGEventNotificationReceiveFriendInvitation   = 51,
@@ -1703,7 +1744,7 @@ BOOL isAlreadSet = user.isNoDisturb;
 	    kJMSGEventNotificationDeletedFriend             = 6,
 		 /// 事件类型：非客户端修改好友关系收到好友更新事件
 		 kJMSGEventNotificationReceiveServerFriendUpdate = 7,
-	    
+
 	    /// 消息事件
 	    /// 事件类型: 群组被创建
 	    kJMSGEventNotificationCreateGroup = 8,
@@ -1716,7 +1757,7 @@ BOOL isAlreadSet = user.isNoDisturb;
 	    /// 事件类型: 群信息更新
 	    kJMSGEventNotificationUpdateGroupInfo = 12,
 	};
-	
+
 
 * 消息事件，如：群事件，SDK会作为一个特殊的消息类型处理，上层通过[onReceiveMessage:error:](./jmessage_ios_appledoc_html/Protocols/JMSGMessageDelegate.html#//api/name/onReceiveMessage:error:)可监听到此事件。
 * 非消息事件，如：被踢、加好友等,SDK会作为通知事件下发,上层通过 [onReceiveNotificationEvent:](./jmessage_ios_appledoc_html/Protocols/JMSGEventDelegate.html#//api/name/onReceiveNotificationEvent:) 类中的方法监听此类事件. [使用示例](#监听下发事件实例)
@@ -1728,7 +1769,7 @@ BOOL isAlreadSet = user.isNoDisturb;
 	 * @discussion 参考事件类型的定义 JMSGEventNotificationType
 	 */
 	@property(nonatomic, assign, readonly) JMSGEventNotificationType eventType;
-	
+
 	/*!
 	 * @abstract 事件的描述信息
 	 * @discussion 下发事件的文字描述，可能为空
@@ -1736,7 +1777,7 @@ BOOL isAlreadSet = user.isNoDisturb;
 	@property(nonatomic, strong, readonly) NSString *eventDescription;
 
 #### 好友管理事件
-#### JMSGFriendNotificationEvent 
+#### JMSGFriendNotificationEvent
 	/*!
 	 * @abstract 获取事件发生的理由
 	 *
@@ -1750,7 +1791,7 @@ BOOL isAlreadSet = user.isNoDisturb;
 	  * 如果设置了noteName、nickname，返回优先级为noteName、nickname；否则返回username
 	  */
 	- (NSString *JMSG_NULLABLE)getFromUsername;
-	
+
 	/*!
 	 * @abstract 获取事件发送者user
 	 */
@@ -1763,15 +1804,15 @@ BOOL isAlreadSet = user.isNoDisturb;
 	NSString *name = [friendEvent getFromUsername];
 	// 获取事件发送对象user
 	JMSGUser *user = [friendEvent getFromUser];
-		
-#### 消息事件 
+
+#### 消息事件
 #### JMSGEventContent
 	/*!
 	 @abstract 展示此事件的文本描述
-	
+
 	 @discussion SDK 根据事件类型，拼接成完整的事件描述信息。
 	 */
-	- (NSString * JMSG_NONNULL)showEventNotification;  
+	- (NSString * JMSG_NONNULL)showEventNotification;
 	/*!
 	 * @abstract 获取事件发起者的用户名
 	 * @return 正常返回事件发起者的用户名，如果是系统事件则返回“系统消息”
@@ -1780,7 +1821,7 @@ BOOL isAlreadSet = user.isNoDisturb;
 	 * 可以用于定制 event message，拼接成完整的事件描述信息。
 	 */
 	- (NSString *JMSG_NULLABLE)getEventFromUsername;
-	
+
 	/*!
 	 * @abstract 获取事件作用对象用户名列表
 	 * @return 返回类型为 NSArray，数组成员为事件作用对象的用户名
@@ -1796,7 +1837,7 @@ BOOL isAlreadSet = user.isNoDisturb;
 	    //比如，在群group中，用户A邀请用户B加入了群,showText 如下：
 	    //showText = "A邀请B加入了群组"
     }
-	
+
 	//根据事件类型，定制相应描述（以事件类型: 添加新成员为例子）
 	JMSGEventContent *eventContent = (JMSGEventContent*)message.content;
 	NSString *fromUsername = [eventContent getEventFromUsername];
@@ -1830,7 +1871,7 @@ JMessage SDK 采用 Delegate 的机制给 App 发通知，而不是采用 iOS �
 另外一个建议在 AppDelegate 里监听的通知是当前用户被踢出登录。
 
 	- (void)onLoginUserKicked;（此方法已过期，建议使用下面的新方法）
-	
+
 	// 通过event.eventType 判断事件类型,如：被踢事件、好友相关事件等
 	- (void)onReceiveNotificationEvent:(JMSGNotificationEvent *)event;
 
@@ -1870,7 +1911,7 @@ JMessage SDK 采用 Delegate 的机制给 App 发通知，而不是采用 iOS �
 		        NSLog(@"Other Notification Event ");
 	            break;
 	    }
-	}	
+	}
 
 ### 结果回调
 
@@ -1891,7 +1932,7 @@ JMSGCompletionHandler 有 2 个参数：
 
 
 
-### 代理方法 
+### 代理方法
 
 #### JMSGConversationDelegate
 <span id="JMSGConversationDelegate"></span>
@@ -1907,7 +1948,7 @@ JMSGCompletionHandler 有 2 个参数：
 	 */
 	@optional
 	- (void)onConversationChanged:(JMSGConversation *)conversation;
-	
+
 	/*!
 	 * @abstract 当前剩余的全局未读数
 	 *
@@ -1916,7 +1957,7 @@ JMSGCompletionHandler 有 2 个参数：
 	@optional
 	- (void)onUnreadChanged:(NSUInteger)newCount;
 
-***消息同步代理方法 Since v3.1.0***  
+***消息同步代理方法 Since v3.1.0***
 <span id="onSyncConversation:"></span>
 
 ```
@@ -1948,7 +1989,7 @@ JMSGCompletionHandler 有 2 个参数：
                          offlineMessages:(NSArray JMSG_GENERIC(__kindof JMSGMessage *)*)offlineMessages;
 ```
 ```
-                         
+
 /*!
  * @abstract 同步漫游消息通知
  *
@@ -1965,7 +2006,7 @@ JMSGCompletionHandler 有 2 个参数：
 - (void)onSyncRoamingMessageConversation:(JMSGConversation *)conversation;
 ```
 
-	
+
 #### JMSGMessageDelegate
 ```
 /*!
@@ -2014,7 +2055,7 @@ JMSGCompletionHandler 有 2 个参数：
  */
 @optional
 - (void)onReceiveMessageDownloadFailed:(JMSGMessage *)message;
-``` 
+```
 #### JMSGGroupDelegate
 	/*!
 	 * @abstract 群组信息 (GroupInfo) 信息通知
@@ -2043,7 +2084,7 @@ JMSGCompletionHandler 有 2 个参数：
 
 <span id="JMSGEventDelegate"></span>
 
-#### JMSGEventDelegate 
+#### JMSGEventDelegate
 	/*!
 	 * @abstract 监听通知事件
 	 *
@@ -2059,14 +2100,14 @@ JMSGCompletionHandler 有 2 个参数：
 	@optional
 	- (void)onReceiveNotificationEvent:(JMSGNotificationEvent *)event;
 
-	
-#### JMSGDBMigrateDelegate 
+
+#### JMSGDBMigrateDelegate
 	/*!
 	 * @abstract 数据库升级开始
 	 */
 	@optional
 	- (void)onDBMigrateStart;
-	
+
 	/*!
 	 * @abstract 数据库升级完成
 	 *
@@ -2076,7 +2117,7 @@ JMSGCompletionHandler 有 2 个参数：
 	 */
 	@optional
 	- (void)onDBMigrateFinishedWithError:(NSError *)error;
-	
+
 ### 跨应用API接口
 ##### 跨应用通信是指允许同一开发者账号下的不同应用能互相通信，以满足开发者对于不同appKey下应用通信的需求。
 
@@ -2094,7 +2135,7 @@ JMSGCompletionHandler 有 2 个参数：
 	+ (void)userInfoArrayWithUsernameArray:(NSArray JMSG_GENERIC(__kindof NSString *)*)usernameArray
 	                                appKey:( NSString *JMSG_NULLABLE)userAppKey
 	                     completionHandler:(JMSGCompletionHandler)handler;
-##### 例子	                     
+##### 例子
 	// 批量获取跨应用的用户信息
 	// 注：usernameArray 里的username都应该是在你所填userAppKey应用的user
 	[JMSGUser userInfoArrayWithUsernameArray:[NSArray arrayWithObjects:@"username1",@"username2", nil] appKey:@"appkey" completionHandler:^(id resultObject, NSError *error) {
@@ -2105,7 +2146,7 @@ JMSGCompletionHandler 有 2 个参数：
 	}];
 #### 跨应用消息管理
 1、发送跨应用单聊文本消息
-	
+
 	/*!
 	 * @abstract 发送跨应用单聊文本消息
 	 *
@@ -2117,7 +2158,7 @@ JMSGCompletionHandler 有 2 个参数：
 	+ (void)sendSingleTextMessage:(NSString *)text
 	                       toUser:(NSString *)username
 	                       appKey:(NSString *)userAppKey;
-	
+
 2、发送跨应用单聊图片消息
 
 	/*!
@@ -2131,7 +2172,7 @@ JMSGCompletionHandler 有 2 个参数：
 	+ (void)sendSingleImageMessage:(NSData *)imageData
 	                        toUser:(NSString *)username
 	                        appKey:(NSString *)userAppKey;
-	
+
 3、发送跨应用单聊语音消息
 
 	/*!
@@ -2147,7 +2188,7 @@ JMSGCompletionHandler 有 2 个参数：
 	                 voiceDuration:(NSNumber *)duration
 	                        toUser:(NSString *)username
 	                        appKey:(NSString *)userAppKey;
-	                        
+
 4、发送跨应用单聊文件消息
 
 	/*!
@@ -2195,7 +2236,7 @@ JMSGCompletionHandler 有 2 个参数：
 	 * 单聊会话时, 如果单聊对象用户不属于主应用, 则此字段会有值.
 	 */
 	@property(nonatomic, strong, readonly) NSString *targetAppKey;
-	
+
 	/*!
 	 * @abstract 获取跨应用单聊会话
 	 *
@@ -2206,7 +2247,7 @@ JMSGCompletionHandler 有 2 个参数：
 	 *
 	 */
 	+ (JMSGConversation * JMSG_NULLABLE)singleConversationWithUsername:(NSString *)username
-	  
+
                                                           appKey:(NSString *)userAppKey;
 2、创建跨应用单聊会话
 
@@ -2222,7 +2263,7 @@ JMSGCompletionHandler 有 2 个参数：
 	+ (void)createSingleConversationWithUsername:(NSString *)username
 	                                      appKey:(NSString *)userAppKey
 	                           completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)handler;
-	                           
+
 ##### 例子
 	// 创建跨应用会话
 	[JMSGConversation createSingleConversationWithUsername:@"username" appKey:@"appkey"  completionHandler:^(id resultObject, NSError *error) {
@@ -2232,7 +2273,7 @@ JMSGCompletionHandler 有 2 个参数：
             NSLog(@"创建跨应用会话失败");
         }
 	}];
-		            
+
 3、删除跨应用单聊会话
 
 	/*!
@@ -2244,7 +2285,7 @@ JMSGCompletionHandler 有 2 个参数：
 	 * @discussion 除了删除会话本身，还会删除该会话下所有的聊天消息。
 	 */
 	+ (BOOL)deleteSingleConversationWithUsername:(NSString *)username
-	                                      appKey:(NSString *)userAppKey;                          
+	                                      appKey:(NSString *)userAppKey;
 
 #### 跨应用群组管理
 1、添加群组跨应用成员
@@ -2276,7 +2317,7 @@ JMSGCompletionHandler 有 2 个参数：
 	- (void)removeMembersWithUsernameArray:(NSArray JMSG_GENERIC(__kindof NSString *) *)usernameArray
 	                                appKey:userAppKey
 	                     completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)handler;
-	
+
 ##### 例子
 	[group removeMembersWithUsernameArray:[NSArray arrayWithObjects:@"username1",@"username2", nil] appKey:@"被删除用户所在应用的appkey" completionHandler:^(id resultObject, NSError *error) {
 	    if (!error) {
@@ -2284,7 +2325,7 @@ JMSGCompletionHandler 有 2 个参数：
 	    }
 	}];
 #### 跨应用黑名单管理
-1、跨应用添加黑名单	
+1、跨应用添加黑名单
 
 ```
 /*!
@@ -2316,8 +2357,8 @@ JMSGCompletionHandler 有 2 个参数：
        }
    }];
 
-```	   
-2、跨应用删除黑名单	
+```
+2、跨应用删除黑名单
 
 ```
 /*!
@@ -2339,8 +2380,8 @@ JMSGCompletionHandler 有 2 个参数：
             completionHandler:(JMSGCompletionHandler)handler;
 
 ```
-	            
-##### 例子         
+
+##### 例子
 
 ```
 //删除黑名单
@@ -2349,8 +2390,8 @@ JMSGCompletionHandler 有 2 个参数：
         NSLog(@"\n 跨应用删除黑名单成功:%@ \n ",resultObject);
     }
 }];
- 
-``` 
+
+```
 #### 跨应用免打扰管理
 跨应用用户免打扰设置
 
