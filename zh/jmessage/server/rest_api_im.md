@@ -764,6 +764,21 @@ msg_type:voice
     }
 }
 ```
+```
+msg_type:custom
+
+{
+    "version": 1, 
+    "target_type": "single",
+    "target_id": "ppppp",
+    "from_type": "admin",
+     "from_id": "admin_caiyh", 
+    "msg_type": "voice",
+    "msg_body": {
+   		json define yourself
+       }
+}
+```
 
 ##### Request Params
 
