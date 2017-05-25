@@ -143,7 +143,7 @@ JSON Array.
 
 ### Admin 注册
 
-#### Admin Register 管理员注册
+#### Admin Register 管理员注册 (管理员api发送消息接口的权限)
 
 ```
 POST /v1/admins/
@@ -762,6 +762,21 @@ msg_type:voice
 	"fsize" :12344;
 	 "duration": 6
     }
+}
+```
+```
+msg_type:custom
+
+{
+    "version": 1, 
+    "target_type": "single",
+    "target_id": "ppppp",
+    "from_type": "admin",
+     "from_id": "admin_caiyh", 
+    "msg_type": "voice",
+    "msg_body": {
+   		json define yourself
+       }
 }
 ```
 
