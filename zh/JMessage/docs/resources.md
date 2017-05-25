@@ -104,8 +104,8 @@
             <div class="download-right" id="download-right-first">
                 <div class="download-title">
                     <span id="release-title">Java - SDK</span>
-                    <span id="release-version">版本：v1.0.0</span>
-                    <span id="release-time">2016.10.26</span>
+                    <span id="release-version">版本：v1.0.2</span>
+                    <span id="release-time">2017.5.16</span>
                 </div>
                 <div class="download-info">
                     <ul class="download-info-ul">
@@ -116,7 +116,7 @@
                     </ul>
                     </div>
                     <div class="download-icon">
-                        <a href="https://sdkfiledl.jiguang.cn/jpush-api-java-client-3.2.11.zip">下载</a>
+                        <a href="https://sdkfiledl.jiguang.cn/jmessage-api-java-client-1.0.2.zip">下载</a>
                     </div>
                 </div>
                 <div class="hr">

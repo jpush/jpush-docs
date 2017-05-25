@@ -72,8 +72,8 @@
                 </div>
                 <div class="download-info">
                     <ul class="download-info-ul">
-                        <li>版本号：v1.2.0</li>
-                        <li>更新时间：2017-04-01</li>
+                        <li>版本号：v1.2.1</li>
+                        <li>更新时间：2017-05-16</li>
                         <li>更新内容：<a href="https://github.com/jpush/jsms-api-java-client/releases">Change Log</a></li>
                         <div style=" clear:both; visibility:hidden;"></div>
                     </ul>
@@ -84,7 +84,7 @@
                     </ul>
                 </div>
                 <div class="download-icon">
-                    <a href="https://sdkfiledl.jiguang.cn/jsms-api-java-client-1.2.0.zip">下载</a>
+                    <a href="https://sdkfiledl.jiguang.cn/jsms-api-java-client-1.2.1.zip">下载</a>
                 </div>
             </div>
             <div class="hr">
