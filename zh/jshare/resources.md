@@ -9,7 +9,7 @@
             <div class="caption">
                 <h4>Android SDK</h4>
                 <ul>
-                    <li><a href="../client/Android/android_sdk">Android SDK集成指南</a></li>
+                    <li><a href="../client/Android/android_sdk">Android SDK 集成指南</a></li>
                 </ul>
                 <p><a href="https://www.jiguang.cn/downloads/sdk/share_android" class="btn btn-default" role="button">下载</a></p>
             </div>
