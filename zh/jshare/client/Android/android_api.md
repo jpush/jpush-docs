@@ -80,7 +80,7 @@ Text| 否 | String|音乐描述|长度不能超过1K
 MusicUrl| 是 | String|音乐资源 Url|点击播放按钮可直接播放 url,长度不能超过10K
 Url| 否 | String|跳转Url|点击跳转页面 url,长度不能超过10K
 ImagePath| 否 | String|缩略图，本地图片路径|长度不能超过10KB,大小不能超过32K,与 ImageData 二选一
-ImageData| 否 | Bitmap|缩略图，图片 Bitmap|大小不能超过32K,与ImagePath二选一
+ImageData| 否 | Bitmap|缩略图，图片 Bitmap|大小不能超过32K,与 ImagePath 二选一
 ```
 ShareParams shareParams = new ShareParams();
 shareParams.setTitle(share_title);
@@ -180,7 +180,7 @@ shareParams.setImagePath(file.getAbsolutePath());
 ShareType | 是| int| 分享类型| Platform.SHARE_MUSIC
 Title| 否 | String|标题|不超过30字符
 Text| 否 | String|描述|不超过40字符
-MusicUrl| 是 | String|音乐链接|音乐文件的远程链接 ,点击播放按钮可直接播放， 以 URL 的形式传入 , 不支持本地音乐，必须以http或https开头
+MusicUrl| 是 | String|音乐链接|音乐文件的远程链接 ,点击播放按钮可直接播放， 以 URL 的形式传入 , 不支持本地音乐，必须以 http 或 https 开头
 Url| 是 | String|跳转链接|跳转页面url,必须以 http 或 https 开头
 ImagePath| 否 | String|缩略图，本地图片路径|与ImageUrl二选一
 ImageUrl| 否 | String|缩略图，网络图片地址|必须以 http 或 https 开头,与 ImagePath 二选一
@@ -211,7 +211,7 @@ shareParams.setText(share_text);
 ShareType | 是| int| 分享类型| Platform.SHARE_IMAGE
 ImagePath| 否 | String|本地图片路径|ImagePath 与 ImageUrl、ImageArray 必须三选一
 ImageUrl| 否 | String|网络图片地址|必须以 http 或 https 开头,ImagePath 与 ImageUrl、ImageArray 必须三选一
-ImageArray| 否 | Array|图片地址数组|支持多个图片，超出9张后，会变成上传相册，上传相册时只支持本地图片,ImagePath 与ImageUrl、ImageArray 必须三选一
+ImageArray| 否 | Array|图片地址数组|支持多个图片，超出9张后，会变成上传相册，上传相册时只支持本地图片,ImagePath 与 ImageUrl、ImageArray 必须三选一
 ```
 ShareParams shareParams = new ShareParams();
 shareParams.setShareType(Platform.SHARE_IMAGE);

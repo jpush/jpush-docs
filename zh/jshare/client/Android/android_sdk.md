@@ -52,7 +52,7 @@ JShare SDK 支持 Android 2.3及以上版本的 Android 系统。
 
 ###gradle 配置
 
-* 确认android studio 的 Project 根目录的主 gradle 中配置了 jcenter 支持。（新建 project 默认配置就支持）
+* 确认 android studio 的 Project 根目录的主 gradle 中配置了 jcenter 支持。（新建 project 默认配置就支持）
 
 ```
 buildscript {
@@ -99,7 +99,7 @@ dependencies {
     compile 'cn.jiguang.sdk:jshare-qqmodel:1.1.0'  // 此处以 jshare-qqmodel 1.1.0 版本为例。
     compile 'cn.jiguang.sdk:jshare-wechatmodel:1.1.0'  // 此处以 jshare-wechatmodel 1.1.0 版本为例。
     compile 'cn.jiguang.sdk:jshare-sinamodel:1.1.0'  // 此处以 jshare-sinamodel 1.1.0 版本为例。
-    compile 'cn.jiguang.sdk:jcore:1.1.3'  // 此处以 JCore 1.1.3版本为例。
+    compile 'cn.jiguang.sdk:jcore:1.1.5'  // 此处以 JCore 1.1.5版本为例。
     ......
 }
 ```

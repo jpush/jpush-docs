@@ -192,11 +192,11 @@ JSHAREMessage *message = [JSHAREMessage message];
 ```
 
 ###添加 URL Types
-####各个平台的URL Schemes 格式说明：
+####各个平台的 URL Schemes 格式说明：
 
 |平台 | 格式 | 举例 |
 |------------ | ------------- | ------------- |
-|微信 | 微信appKey | wxa2ea563906227379|
+|微信 | 微信 appKey | wxa2ea563906227379|
 |QQ | 需添加：“tencent” + 腾讯 QQ 互联应用 appID | 如 appID 为:1105864531<br> URL Schemes 值为:tencent1105864531|
 |新浪微博 | “wb”+新浪 appKey | 如 appKey 为:727232518<br>URL Schemes 值为: wb727232518 |
 

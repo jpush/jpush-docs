@@ -77,18 +77,18 @@ url：在 Appdelegate 的 application:handleOpenURL: 中调用。不调用此接
   <tr>
     <td class="tg-yw4l">title</td>
     <td class="tg-yw4l">NSString</td>
-    <td class="tg-yw4l">标题：长度每个平台的限制而不同。<br>微信好友：最大 512 字符。<br>微信朋友圈：最大 512 字符。<br>微信收藏：最大 512 字符。<br>QQ：最大 128 字符。<br>QQ空间：最大 128 字符。<br>新浪微博：分享链接类型，最大 1 K字符。</td>
+    <td class="tg-yw4l">标题：长度每个平台的限制而不同。<br>微信好友：最大 512 字符。<br>微信朋友圈：最大 512 字符。<br>微信收藏：最大 512 字符。<br>QQ：最大 128 字符。<br>QQ空间：最大 128 字符。<br>新浪微博：分享链接类型，最大 1 K 字符。</td>
   </tr>
   <tr>
     <td class="tg-yw4l">text</td>
     <td class="tg-yw4l">NSString</td>
     <td class="tg-yw4l">文本：文本内容，长度每个平台的限制而不同。<br>在分享非文本类型时，此字段作为分享内容的描述使用。<br>
-微信好友：分享文本类型时，最大 10 K字符。分享非文本类型，最大 1 K字符。<br>微信朋友圈：分享文本类型时，最大 10 K字符。分享非文本类型，最大 1 K字符。<br>微信收藏：分享文本类型时，最大 10 K字符。分享非文本类型，最大 1 K字符。<br>QQ：分享文本类型时，最大 1536 字符。分享非文本类型，最大 512 字符。<br>QQ空间：分享文本类型时，最大 128 字符。分享非文本类型，最大 512 字符。<br>新浪微博：最大 140 汉字。</td>
+微信好友：分享文本类型时，最大 10 K 字符。分享非文本类型，最大 1 K 字符。<br>微信朋友圈：分享文本类型时，最大 10 K 字符。分享非文本类型，最大 1 K 字符。<br>微信收藏：分享文本类型时，最大 10 K字符。分享非文本类型，最大 1 K 字符。<br>QQ：分享文本类型时，最大 1536 字符。分享非文本类型，最大 512 字符。<br>QQ空间：分享文本类型时，最大 128 字符。分享非文本类型，最大 512 字符。<br>新浪微博：最大 140 汉字。</td>
   </tr>
   <tr>
     <td class="tg-yw4l">url</td>
     <td class="tg-yw4l">NSString</td>
-    <td class="tg-yw4l">链接：根据媒体类型填入链接，长度每个平台的限制不同。分享非文本及非图片类型时，必要；<br>微信好友：最大 10 K字符。<br>微信朋友圈：最大 10 K字符。<br>微信收藏：最大 10 K字符。<br>QQ：最大 512 字符。<br>QQ空间：最大 512 字符。<br>新浪微博：最大 512 字符。</td>
+    <td class="tg-yw4l">链接：根据媒体类型填入链接，长度每个平台的限制不同。分享非文本及非图片类型时，必要；<br>微信好友：最大 10 K 字符。<br>微信朋友圈：最大 10 K 字符。<br>微信收藏：最大 10 K 字符。<br>QQ：最大 512 字符。<br>QQ空间：最大 512 字符。<br>新浪微博：最大 512 字符。</td>
   </tr>
   <tr>
     <td class="tg-yw4l">videoAssetURL</td>
@@ -123,7 +123,7 @@ url：在 Appdelegate 的 application:handleOpenURL: 中调用。不调用此接
   <tr>
     <td class="tg-yw4l">mediaDataUrl</td>
     <td class="tg-yw4l">NSString</td>
-    <td class="tg-yw4l">分享 JSHAREAudio 类型至微信平台或 QQ 平台时，音乐数据 url 地址。<br>微信好友：最大 10 K字符。<br>微信朋友圈：最大 10 K字符。<br>微信收藏：最大 10 K字符。<br>QQ：最大 512 字符。<br>QQ空间：最大 512 字符。<br>新浪微博：最大 512 字符。</td>
+    <td class="tg-yw4l">分享 JSHAREAudio 类型至微信平台或 QQ 平台时，音乐数据 url 地址。<br>微信好友：最大 10 K 字符。<br>微信朋友圈：最大 10 K 字符。<br>微信收藏：最大 10 K 字符。<br>QQ：最大 512 字符。<br>QQ空间：最大 512 字符。<br>新浪微博：最大 512 字符。</td>
   </tr>
   <tr>
     <td class="tg-yw4l">extInfo</td>
@@ -204,7 +204,7 @@ handler：分享结果的回调。
 ##日志等级设置
 ###Method - setDebug
 ####接口说明
-用于开启Debug模式，显示更多的日志信息;当需要了解更多的调试信息时候，调用 API 开启 Debug 模式
+设置是否打印 sdk 产生的 Debug 级 log 信息, 默认为 NO (不打印 Debug 级 log)
 ####接口定义
 ```    
 +(void)setDebug:(BOOL)enable
