@@ -38,13 +38,13 @@
             <div class="caption">
                 <h4>Java SDK</h4>
                 <ul>
-                    <li>版本号：v1.2.0</li>
-                    <li>更新时间：2017-04-01</li>
+                    <li>版本号：v1.2.1</li>
+                    <li>更新时间：2017-05-16</li>
                     <li>更新内容：<a href="https://github.com/jpush/jsms-api-java-client/releases" target="_blank">Change Log</a></li>
                     <li>GitHub：<a href="https://github.com/jpush/jsms-api-java-client" target="_blank">源码</a></li>
                     <li>支持：JSMS REST API v1</li>
                 </ul>
-                <p><a href="https://sdkfiledl.jiguang.cn/jsms-api-java-client-1.2.0.zip" class="btn btn-default" role="button">下载</a></p>
+                <p><a href="https://sdkfiledl.jiguang.cn/jsms-api-java-client-1.2.1.zip" class="btn btn-default" role="button">下载</a></p>
             </div>
         </div>
     </div>
