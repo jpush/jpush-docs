@@ -99,7 +99,7 @@ dependencies {
     compile 'cn.jiguang.sdk:jshare-qqmodel:1.1.0'  // 此处以 jshare-qqmodel 1.1.0 版本为例。
     compile 'cn.jiguang.sdk:jshare-wechatmodel:1.1.0'  // 此处以 jshare-wechatmodel 1.1.0 版本为例。
     compile 'cn.jiguang.sdk:jshare-sinamodel:1.1.0'  // 此处以 jshare-sinamodel 1.1.0 版本为例。
-    compile 'cn.jiguang.sdk:jcore:1.1.5'  // 此处以 JCore 1.1.5版本为例。
+    compile 'cn.jiguang.sdk:jcore:1.1.3'  // 此处以 JCore 1.1.3版本为例。
     ......
 }
 ```
