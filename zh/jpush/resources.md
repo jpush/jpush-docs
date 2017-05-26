@@ -66,7 +66,7 @@
                     <li>GitHub：<a href="https://github.com/jpush/jpush-api-java-client" target="_blank">源码</a></li>
                     <li>支持：Push API v3</li>
                 </ul>
-                <p><a href="https://sdkfiledl.jiguang.cn/jpush-client-3.2.20.zip" class="btn btn-default" role="button">下载</a></p>
+                <p><a href="https://sdkfiledl.jiguang.cn/jpush-api-java-client-3.2.20.zip" class="btn btn-default" role="button">下载</a></p>
             </div>
         </div>
     </div>
