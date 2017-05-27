@@ -11,7 +11,7 @@
 
 <br>
 
-提供几个相关 API 用来设置别名（alias）与标签（tags）。
+提供几个相关 API 用来操作别名（alias）与标签（tags）。
 
 这几个 API 可以在 App 里任何地方调用。
 
@@ -33,6 +33,269 @@
 可为每个用户打多个标签。
 
 举例： game, old_page, women
+
+
+### Method - addTags:completion:seq:
+
+调用此 API 来增加标签，在block中返回结果
+
+Note:这个接口是增加逻辑，而不是覆盖逻辑
+
+#### 支持的版本
+
+开始支持的版本：3.0.6
+
+#### 接口定义
+
+    + (void)addTags:(NSSet<NSString *> *)tags
+     completion:(JPUSHTagsOperationCompletion)completion
+            seq:(NSInteger)seq;
+    
+#### 参数说明
+
+* tags
+
+    * 不能设置nil或者空集合（[NSSet set]）
+    * 集合成员类型要求为NSString类型
+    * 每次调用至少设置一个 tag
+    * 有效的标签组成：字母（区分大小写）、数字、下划线、汉字。
+    * 限制：每个 tag 命名长度限制为 40 字节，最多支持设置 1000 个 tag，但总长度不得超过5K字节。（判断长度需采用UTF-8编码）
+    * 单个设备最多支持设置 1000 个 tag。App 全局 tag 数量无限制
+
+* completion 
+
+    * 用于回调返回对应的参数tags。并返回对应的状态码：0为成功，其他返回码请参考错误码定义。seq为调用时传入的会话序列号
+
+* seq
+
+    * 请求时传入的序列号，会在回调时原样返回
+
+### Method - setTags:completion:seq:
+
+调用此 API 来设置标签，在block中返回结果
+
+Note:这个接口是覆盖逻辑，而不是增加逻辑，调用此接口会覆盖之前设置的全部标签
+
+#### 支持的版本
+
+开始支持的版本：3.0.6
+
+#### 接口定义
+
+    + (void)setTags:(NSSet<NSString *> *)tags
+     completion:(JPUSHTagsOperationCompletion)completion
+            seq:(NSInteger)seq;
+    
+#### 参数说明
+
+* tags
+
+    * 不能设置nil或者空集合（[NSSet set]）
+    * 集合成员类型要求为NSString类型
+    * 每次调用至少设置一个 tag
+    * 有效的标签组成：字母（区分大小写）、数字、下划线、汉字。
+    * 限制：每个 tag 命名长度限制为 40 字节，最多支持设置 1000 个 tag，但总长度不得超过5K字节。（判断长度需采用UTF-8编码）
+    * 单个设备最多支持设置 1000 个 tag。App 全局 tag 数量无限制
+
+* completion 
+
+    * 用于回调返回对应的参数tags。并返回对应的状态码：0为成功，其他返回码请参考错误码定义。seq为调用时传入的会话序列号
+
+* seq
+
+    * 请求时传入的序列号，会在回调时原样返回
+    
+### Method - deleteTags:completion:seq:
+
+调用此 API 来删除标签，在block中返回结果
+
+#### 支持的版本
+
+开始支持的版本：3.0.6
+
+#### 接口定义
+
+    + (void)deleteTags:(NSSet<NSString *> *)tags
+     completion:(JPUSHTagsOperationCompletion)completion
+            seq:(NSInteger)seq;
+    
+#### 参数说明
+
+* tags
+
+    * 不能设置nil或者空集合（[NSSet set]）
+    * 集合成员类型要求为NSString类型
+    * 每次调用至少删除一个 tag
+    * 有效的标签组成：字母（区分大小写）、数字、下划线、汉字
+    * 限制：每个 tag 命名长度限制为 40 字节，最多支持删除 1000 个 tag，但总长度不得超过5K字节。（判断长度需采用UTF-8编码）
+
+* completion 
+
+    * 回调返回对应的参数tags。并返回对应的状态码：0为成功，其他返回码请参考错误码定义。seq为调用时传入的会话序列号
+
+* seq
+
+    * 请求时传入的序列号，会在回调时原样返回
+    
+### Method - clearTags:completion:seq:
+
+调用此 API 来清除所有标签，在block中返回结果
+
+#### 支持的版本
+
+开始支持的版本：3.0.6
+
+#### 接口定义
+
+    + (void)clearTags:(JPUSHTagsOperationCompletion)completion
+            seq:(NSInteger)seq;
+    
+#### 参数说明
+
+* completion 
+
+    * 回调返回的tags为nil。返回对应的状态码：0为成功，其他返回码请参考错误码定义。seq为调用时传入的会话序列号
+
+* seq
+
+    * 请求时传入的序列号，会在回调时原样返回
+    
+### Method - getAllTags:completion:seq:
+
+调用此 API 来获取所有标签，在block中返回结果
+
+#### 支持的版本
+
+开始支持的版本：3.0.6
+
+#### 接口定义
+
+    + (void)getAllTags:(JPUSHTagsOperationCompletion)completion
+            seq:(NSInteger)seq;
+    
+#### 参数说明
+
+* completion 
+
+    * 回调返回的tags为查询结果。返回对应的状态码：0为成功，其他返回码请参考错误码定义。seq为调用时传入的会话序列号
+
+* seq
+
+    * 请求时传入的序列号，会在回调时原样返回
+    
+### Method - validTag:completion:seq:
+
+调用此 API 来验证目标tag是否已经设置
+
+#### 支持的版本
+
+开始支持的版本：3.0.6
+
+#### 接口定义
+
+    + (void)validTag:(NSString *)tag
+     completion:(JPUSHTagValidOperationCompletion)completion
+            seq:(NSInteger)seq;
+    
+#### 参数说明
+
+* tag
+
+    * 不能设置nil或者空字符串
+    * 有效的标签组成：字母（区分大小写）、数字、下划线、汉字。
+    * 限制：每个 tag 命名长度限制为 40 字节（判断长度需采用UTF-8编码）
+
+* completion 
+
+    * 回调返回对应的参数tag。并返回对应的状态码：0为成功，其他返回码请参考错误码定义。seq为调用时传入的会话序列号
+    * 在回调中查看isBind属性查看是否已经设置，YES为已经设置
+
+* seq
+
+    * 请求时传入的序列号，会在回调时原样返回
+    
+### Tags Block 
+	typedef void (^JPUSHTagsOperationCompletion)(NSInteger iResCode, NSSet *iTags, NSInteger seq);
+	typedef void (^JPUSHTagValidOperationCompletion)(NSInteger iResCode, NSSet *iTags, NSInteger seq, BOOL isBind);
+        
+### Method - setAlias:completion:seq:
+
+调用此 API 来设置别名
+
+#### 支持的版本
+
+开始支持的版本：3.0.6
+
+#### 接口定义
+
+    + (void)setAlias:(NSString *)alias
+      completion:(JPUSHAliasOperationCompletion)completion
+             seq:(NSInteger)seq;
+    
+#### 参数说明
+
+- alias
+    - 不能设置nil或者空字符串@""
+    - 每次调用设置有效的别名，覆盖之前的设置。
+    - 有效的别名组成：字母（区分大小写）、数字、下划线、汉字。
+    - 限制：alias 命名长度限制为 40 字节。（判断长度需采用UTF-8编码）
+    
+* completion 
+	
+    * 回调返回对应的参数alias。并返回对应的状态码：0为成功，其他返回码请参考错误码定义。seq为调用时传入的会话序列号
+
+* seq
+
+    * 请求时传入的序列号，会在回调时原样返回
+    
+### Method - deleteAlias:completion:seq:
+
+调用此 API 来删除别名，在block中返回结果
+
+#### 支持的版本
+
+开始支持的版本：3.0.6
+
+#### 接口定义
+
+    + (void)deleteAlias:(JPUSHAliasOperationCompletion)completion
+                seq:(NSInteger)seq;
+    
+#### 参数说明
+
+* completion 
+
+    * 回调返回的tags为nil。返回对应的状态码：0为成功，其他返回码请参考错误码定义。seq为调用时传入的会话序列号
+
+* seq
+
+    * 请求时传入的序列号，会在回调时原样返回
+    
+### Method - getAlias:completion:seq:
+
+调用此 API 来查询当前别名，在block中返回结果
+
+#### 支持的版本
+
+开始支持的版本：3.0.6
+
+#### 接口定义
+
+    + (void)getAlias:(JPUSHAliasOperationCompletion)completion
+             seq:(NSInteger)seq;
+    
+#### 参数说明
+
+* completion 
+
+    * 回调返回的tags为查询结果。返回对应的状态码：0为成功，其他返回码请参考错误码定义。seq为调用时传入的会话序列号
+
+* seq
+
+    * 请求时传入的序列号，会在回调时原样返回
+    
+### Alias Block 
+	typedef void (^JPUSHAliasOperationCompletion)(NSInteger iResCode, NSString *iAlias, NSInteger seq);
 
 ### Method - setTagsWithAlias (with Callback)
 
@@ -1279,3 +1542,5 @@ API 用于统计用户应用崩溃日志
 
 [0]: https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/index.html#//apple_ref/doc/uid/TP40008194-CH3-SW1
 [1]: https://github.com/ylechelle/OpenUDID
+
+
