@@ -627,6 +627,10 @@ POST /v1/messages
 			<td>目标id single填username group 填Group id</td>
 		</tr>
 		<tr >
+			<td>target_appkey</td>
+			<td>跨应用目标appkey（选填）</td>
+		</tr>
+		<tr >
 			<td>from_id</td>
 			<td>发送者的username</td>
 		</tr>
