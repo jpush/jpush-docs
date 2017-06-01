@@ -60,13 +60,13 @@
             <div class="caption">
                 <h4>Java SDK</h4>
                 <ul>
-                    <li>版本号：v3.2.18</li>
-                    <li>更新时间：2017-4-5</li>
+                    <li>版本号：v3.2.20</li>
+                    <li>更新时间：2017-5-25</li>
                     <li>更新内容：<a href="https://github.com/jpush/jpush-api-java-client/releases" target="_blank">Change Log</a></li>
                     <li>GitHub：<a href="https://github.com/jpush/jpush-api-java-client" target="_blank">源码</a></li>
                     <li>支持：Push API v3</li>
                 </ul>
-                <p><a href="https://sdkfiledl.jiguang.cn/jpush-client-3.2.18.zip" class="btn btn-default" role="button">下载</a></p>
+                <p><a href="https://sdkfiledl.jiguang.cn/jpush-api-java-client-3.2.20.zip" class="btn btn-default" role="button">下载</a></p>
             </div>
         </div>
     </div>

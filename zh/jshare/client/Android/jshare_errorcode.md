@@ -14,38 +14,38 @@
     <tr>
       <td>40001</td>
       <td>appid missing</td>
-      <td>缺失appid参数</td>
+      <td>缺失 appid 参数</td>
     </tr>
     <tr>
       <td>40002</td>
       <td>appkey missing</td>
-      <td>缺失appkey参数</td>
+      <td>缺失 appkey 参数</td>
     </tr>
     <tr>
       <td>40003</td>
       <td>secret missing</td>
-      <td>缺失secret参数</td>
+      <td>缺失 secret 参数</td>
     </tr>
     <tr>
       <td>40004</td>
       <td>mediaType missing</td>
-      <td>缺失mediaType参数</td>
+      <td>缺失 mediaType 参数</td>
     </tr>
     
     <tr>
       <td>40005</td>
       <td>invalid mediaType</td>
-      <td>不合法的mediaType</td>
+      <td>不合法的 mediaType</td>
     </tr>
     <tr>
       <td>40006</td>
       <td>platform missing</td>
-      <td>缺失platform参数</td>
+      <td>缺失 platform 参数</td>
     </tr>
     <tr>
       <td>40007</td>
       <td>invalid platform</td>
-      <td>不合法的platform</td>
+      <td>不合法的 platform</td>
     </tr>
     <tr>
       <td>40009</td>
@@ -60,7 +60,7 @@
     <tr>
       <td>40011</td>
       <td>shareParams missing</td>
-      <td>缺少shareParams</td>
+      <td>缺少 shareParams</td>
     </tr>
         <tr>
       <td>40012</td>
@@ -85,17 +85,17 @@
     <tr>
       <td>41004</td>
       <td>url size out of limit	</td>
-      <td>url长度超过限制</td>
+      <td>url 长度超过限制</td>
     </tr>
     <tr>
       <td>41005</td>
       <td>audio url size out of limit</td>
-      <td>音频url长度超过限制</td>
+      <td>音频 url 长度超过限制</td>
     </tr>
     <tr>
       <td>41006</td>
       <td>video url size out of limit</td>
-      <td>视频url长度超过限制</td>
+      <td>视频 url 长度超过限制</td>
     </tr>
     <tr>
       <td>41009</td>
@@ -105,17 +105,17 @@
     <tr>
       <td>41010</td>
       <td>emotion size out of limit</td>
-      <td>emotion大小超过限制</td>
+      <td>emotion 大小超过限制</td>
     </tr>
     <tr>
       <td>41011</td>
       <td>title size out of limit</td>
-      <td>title参数超过限制</td>
+      <td>title 参数超过限制</td>
     </tr>
     <tr>
       <td>41012</td>
       <td>description size out of limit</td>
-      <td>description参数超过限制</td>
+      <td>description 参数超过限制</td>
     </tr>
     <tr>
       <td>41013</td>
@@ -130,17 +130,17 @@
     <tr>
       <td>41015</td>
       <td>audio url is empty</td>
-      <td>音频url参数为空</td>
+      <td>音频 url 参数为空</td>
     </tr>
     <tr>
       <td>41016</td>
       <td>video url is empty</td>
-      <td>视频url参数为空</td>
+      <td>视频 url 参数为空</td>
     </tr>
     <tr>
       <td>41018</td>
       <td>emotion is empty</td>
-      <td>emotion参数为空</td>
+      <td>emotion 参数为空</td>
     </tr>
     <tr>
       <td>41019</td>
@@ -150,7 +150,7 @@
     <tr>
       <td>41021</td>
       <td>url is empty</td>
-      <td>url参数为空</td>
+      <td>url 参数为空</td>
     </tr>
         <tr>
       <td>41022</td>
@@ -160,12 +160,12 @@
         <tr>
       <td>41025</td>
       <td>title is empty</td>
-      <td>title为空</td>
+      <td>title 为空</td>
     </tr>
         <tr>
       <td>41026</td>
       <td>invalid url</td>
-      <td>非法url</td>
+      <td>非法 url</td>
     </tr>
         <tr>
       <td>41027</td>
