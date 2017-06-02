@@ -39,7 +39,7 @@
 
 ##### BugFix:
 
-* 修复：allConverstions 接口排序逻辑问题
+* 修复：allConversations 接口排序逻辑问题
 * 修复：下载多媒体文件时下载进度回调错误的问题
 
 ##### NewFeature
