@@ -482,7 +482,6 @@ JMessage SDK
 
 [3]: https://docs.jiguang.cn/jpush/client/Android/android_guide/
 [4]: mailto:support@jiguang.cn
-[5]: https://community.jiguang.cn/
 
 
 
