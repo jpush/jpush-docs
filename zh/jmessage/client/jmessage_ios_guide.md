@@ -165,7 +165,6 @@ JMessage iOS SDK V3.0.0 及以后版本不再包含 JPush 的功能，需要使�
 
 邮件联系：<a href="mailto:support@jpush.cn" target="_blank">https://community.jiguang.cn</a>
 
-问答社区：<a href="https://community.jiguang.cn/latest" target="_blank">support@jpush.cn</a>
 
 [0]: ./image/create_ios_app.png
 [1]: ./image/Screenshot_13-4_2_create.png

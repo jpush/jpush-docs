@@ -329,13 +329,10 @@ extern NSString * const kJPFNetworkDidReceiveMessageNotification; // 收到自�
 
 邮件联系：[support@jpush.cn][4]
 
-问答社区：[http://community.jiguang.cn][5]
-
 [0]: ../image/create_ios_app.jpg
 [1]: ../image/Screenshot_13-4_2_create.jpg
 [2]: ../image/Screenshot_13-4-15_3_31.png
 [3]: ios_api
 [4]: mailto:support@jpush.cn
-[5]: http://community.jiguang.cn
 [6]: ../image/ios_http.png
 [7]: ../image/capabilities_intro.jpg

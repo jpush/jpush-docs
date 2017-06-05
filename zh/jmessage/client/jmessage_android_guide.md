@@ -7,7 +7,6 @@
 本篇指南匹配的 JMessage Android SDK 版本为：2.0.0 及以后版本。
 
 + [极光文档](https://docs.jiguang.cn/jmessage/guideline/jmessage_guide/)网站上有JMessage相关的所有指南、API、教程等全部的文档。包括本文档的更新版本，都会及时地发布到该网站上。
-+ [极光社区](http://community.jiguang.cn/)网站：大家除了文档之外，还有问题与疑问，会到这里来提问题，以及时地得到解答。
 + 如果您看到本文档，但还未下载Android SDK，请访问[SDK下载页面](https://docs.jiguang.cn/jmessage/resources/)下载。
 
 
@@ -480,7 +479,6 @@ JMessage SDK
 
 邮件联系：[support@jiguang.cn][4]
 
-问答社区：[https://community.jiguang.cn/latest][5]
 
 [3]: https://docs.jiguang.cn/jpush/client/Android/android_guide/
 [4]: mailto:support@jiguang.cn
