@@ -367,6 +367,33 @@ JMessage#getConversation()
                });
 ```
 
+
+#### 获取资源访问路径
+
+JMessage#getResource ()
+
+**请求参数：**
+
+| KEY      | REQUIRE | DESCRIPTION    |
+| -------- | ------- | -------------- |
+| media_id | TRUE    | media_id 资源 id |
+
+**请求示例**
+
+```
+   JIM.getResource({
+                 'media_id ' : '<media_id >',
+               }).onSuccess(function(data , msg) {
+                   //data.code 返回码
+                   //data.message 描述
+                   //data.url 资源临时访问路径
+               }).onFail(function(data) {
+                   //data.code 返回码
+                   //data.message 描述
+               });
+```
+
+
 #### 发送单聊文本
 
 JMessage#sendSingleMsg()
@@ -376,8 +403,8 @@ JMessage#sendSingleMsg()
 | KEY             | REQUIRE | DESCRIPTION           |
 | --------------- | ------- | --------------------- |
 | target_username | TRUE    | 接收消息者 username        |
-| target_nickname | TRUE    | 接收消息者 nickname        |
 | content         | TRUE    | 消息文本                  |
+| target_nickname | FALSE   | 接收者的展示名               |
 | extras          | FALSE   | 附加字段,字典类型             |
 | appkey          | FALSE   | 跨应用查询时必填，目标应用的 appkey |
 
@@ -413,8 +440,8 @@ JMessage#sendSinglePic()
 | KEY             | REQUIRE | DESCRIPTION           |
 | --------------- | ------- | --------------------- |
 | target_username | TRUE    | 接收消息者 username        |
-| target_nickname | TRUE    | 接收消息者 nickname        |
 | image           | TRUE    | 图片的 DataForm 对象       |
+| target_nickname | FALSE   | 接收者的展示名               |
 | extras          | FALSE   | 附加字段,字典类型             |
 | appkey          | FALSE   | 跨应用查询时必填，目标应用的 appkey |
 
@@ -443,8 +470,8 @@ JMessage#sendSingleFile()
 | KEY             | REQUIRE | DESCRIPTION           |
 | --------------- | ------- | --------------------- |
 | target_username | TRUE    | 接收消息者 username        |
-| target_nickname | TRUE    | 接收消息者 nickname        |
 | file            | TRUE    | 文件的 DataForm 对象       |
+| target_nickname | FALSE   | 接收者的展示名               |
 | extras          | FALSE   | 附加字段,字典类型             |
 | appkey          | FALSE   | 跨应用查询时必填，目标应用的 appkey |
 
@@ -473,11 +500,11 @@ JMessage#sendSingleLocation()
 | KEY             | REQUIRE | DESCRIPTION           |
 | --------------- | ------- | --------------------- |
 | target_username | TRUE    | 接收消息者 username        |
-| target_nickname | TRUE    | 接收消息者 nickname        |
 | latitude        | TRUE    | 维度                    |
 | longitude       | TRUE    | 精度                    |
 | scale           | TRUE    | 地图缩放级别                |
 | label           | TRUE    | 地址                    |
+| target_nickname | FALSE   | 接收者的展示名               |
 | extras          | FALSE   | 附加字段,字典类型             |
 | appkey          | FALSE   | 跨应用查询时必填，目标应用的 appkey |
 
@@ -509,8 +536,8 @@ JMessage#sendSingleCustom()
 | KEY             | REQUIRE | DESCRIPTION           |
 | --------------- | ------- | --------------------- |
 | target_username | TRUE    | 接收消息者 username        |
-| target_nickname | TRUE    | 接收消息者 nickname        |
 | custom          | TRUE    | 自定义 json object 消息    |
+| target_nickname | FALSE   | 接收者的展示名               |
 | appkey          | FALSE   | 跨应用查询时必填，目标应用的 appkey |
 
 **请求示例**
@@ -537,8 +564,8 @@ JMessage#sendGroupMsg()
 | KEY          | REQUIRE | DESCRIPTION                              |
 | ------------ | ------- | ---------------------------------------- |
 | target_gid   | TRUE    | 群组 id                                    |
-| target_gname | TRUE    | 群组消息 name                                |
 | content      | TRUE    | 消息文本                                     |
+| target_gname | FALSE   | 接收者的展示名                                  |
 | extras       | FALSE   | 附加字段,字典类型                                |
 | at_list      | FALSE   | @用户列表：[{'username': 'name1', 'appkey': '跨应用必填，默认不填表示本应用'}],@ALL  直接空数组：[] |
 
@@ -558,30 +585,6 @@ JMessage#sendGroupMsg()
                });
 ```
 
-#### 获取资源访问路径
-
-JMessage#getResource ()
-
-**请求参数：**
-
-| KEY      | REQUIRE | DESCRIPTION    |
-| -------- | ------- | -------------- |
-| media_id | TRUE    | media_id 资源 id |
-
-**请求示例**
-
-```
-   JIM.getResource({
-                 'media_id ' : '<media_id >',
-               }).onSuccess(function(data , msg) {
-                   //data.code 返回码
-                   //data.message 描述
-                   //data.url 资源临时访问路径
-               }).onFail(function(data) {
-                   //data.code 返回码
-                   //data.message 描述
-               });
-```
 
 #### 发送群聊图片
 
@@ -592,8 +595,8 @@ JMessage#sendGroupPic()
 | KEY          | REQUIRE | DESCRIPTION     |
 | ------------ | ------- | --------------- |
 | target_gid   | TRUE    | 群组 id           |
-| target_gname | TRUE    | 群组消息 name       |
 | image        | TRUE    | 图片的 DataForm 对象 |
+| target_gname | FALSE   | 接收者的展示名         |
 | extras       | FALSE   | 附加字段,字典类型       |
 
 **请求示例**
@@ -620,8 +623,8 @@ JMessage#sendGroupFile()
 | KEY          | REQUIRE | DESCRIPTION     |
 | ------------ | ------- | --------------- |
 | target_gid   | TRUE    | 群组 id           |
-| target_gname | TRUE    | 群组消息 name       |
 | file         | TRUE    | 文件的 DataForm 对象 |
+| target_gname | FALSE   | 接收者的展示名         |
 | extras       | FALSE   | 附加字段,字典类型       |
 
 **请求示例**
@@ -648,11 +651,11 @@ JMessage#sendGroupLocation()
 | KEY          | REQUIRE | DESCRIPTION |
 | ------------ | ------- | ----------- |
 | target_gid   | TRUE    | 群组 id       |
-| target_gname | TRUE    | 群组消息 name   |
 | latitude     | TRUE    | 维度          |
 | longitude    | TRUE    | 精度          |
 | scale        | TRUE    | 地图缩放级别      |
 | label        | TRUE    | 地址          |
+| target_gname | FALSE   | 接收者的展示名     |
 | extras       | FALSE   | 附加字段,字典类型   |
 
 **请求示例**
@@ -682,8 +685,8 @@ JMessage#sendGroupMsg()
 | KEY          | REQUIRE | DESCRIPTION        |
 | ------------ | ------- | ------------------ |
 | target_gid   | TRUE    | 群组 id              |
-| target_gname | TRUE    | 群组消息 name          |
 | custom       | TRUE    | 自定义 json object 消息 |
+| target_gname | FALSE   | 接收者的展示名            |
 
 **请求示例**
 
@@ -1665,4 +1668,6 @@ Emoji 表情就是一种在 Unicode 位于`\u1F601`-`\u1F64F`区段的字符。 
 ## 错误码定义
 
 参考文档：[IM Web SDK 错误码列表](./im_errorcode_js)
+
+
 
