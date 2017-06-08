@@ -854,7 +854,8 @@ Response Data
 POST /v1/resource?type=image
 ```
 ##### Example Request
-
+文件上传采用form表单上传
+curl示例:
 图片上传 curl   -F "filename=@/home/test.jpg" https://api.im.jpush.cn/v1/resource?type=image -u "appkey:secret"
 
 文件上传 curl   -F "filename=@/home/test.mp3" https://api.im.jpush.cn/v1/resource?type=file -u "appkey:secret"
