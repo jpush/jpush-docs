@@ -1,4 +1,4 @@
-# jsms-api-csharp-client
+# JSMS API CSharp Client
 
 这是 [JSMS](https://docs.jiguang.cn/jsms/guideline/JSMS_guide/) Rest API 的 CSharp 版本封装开发包，由极光推送官方提供，支持最新的 API 功能。
 
