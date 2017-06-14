@@ -551,7 +551,7 @@ JMessageClient.sendMessage(Message message);
 
 + Message message 消息对象
 
-#### 附带的控制参数的消息发送
+#### 附带控制参数的消息发送
 ***Since 2.2.0***  
 针对此次消息发送操作，支持一些可选参数的配置，具体参数见[MessageSendingOptions](./im_android_api_docs/cn/jpush/im/android/api/options/MessageSendingOptions.html)
 
