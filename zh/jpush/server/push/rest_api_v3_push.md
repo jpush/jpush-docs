@@ -887,6 +887,13 @@ POST https://api.jpush.cn/v3/push/validate
 			<td>必须改正。当前调用 API 的源 ip 地址不在该应用的 ip 白名单中。</td>
 			<td>403</td>
 		</tr>
+		<tr>
+			<td>2005</td>
+			<td>信息发送量超出合理范围。</td>
+			<td>检测到目标用户累计发送消息量过大，超过合理的使用范围，需要检查业务逻辑或者联系技术支持。</td>
+			<td>403</td>
+		</tr>
+
 	</table>
 </div>
 
