@@ -135,6 +135,10 @@ pages:
     - 'iOS SDK 概述': 'jsms/client/iOS_SMS_SDK.md'
   - REST API:
     - 'REST API 概述': 'jsms/server/rest_api_jsms.md'
+  - 服务端 SDK:
+    - 'Java SDK': 'jsms/server/sdk/java_sdk.md'
+    - 'PHP SDK': 'jsms/server/sdk/php_sdk.md'
+    - 'C# SDK': 'jsms/server/sdk/csharp_sdk.md'
   - 最近更新: 'jsms/updates.md'
   - 资源下载: 'jsms/resources.md'
 
