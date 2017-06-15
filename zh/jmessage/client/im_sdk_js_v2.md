@@ -49,7 +49,7 @@ signature = md5(appkey=appkey&timestamp=timestamp&random_str=random_str&key=secr
 访问极光官网获取最新的 Web SDK。 然后在页面中引入：
 
 ```
-<script src='./jmessage-sdk-web.min.js'></script>
+<script src='./jmessage-sdk-web.<version>.min.js'></script>
 ```
 引入该 JS 后，就可以使用 Window 上的全局对象 JMessage。你可以通过以下方式创建 JMessage 示例:
 
@@ -148,7 +148,7 @@ JMessage#onDisconnect(fn)
   });
 ```
 
-### 注册与登录
+### 注册登录相关
 
 #### 注册
 
@@ -175,6 +175,48 @@ JMessage#register()
           }).onFail(function(data) {
             // 同上
         });
+```
+
+#### 连接状态
+
+JMessage#isConnect()
+
+**请求参数:**
+
+无
+
+**请求示例**
+
+```
+JIM.isConnect();// 无回调函数，调用则成功
+```
+
+#### 初始化状态
+
+JMessage#isInit()
+
+**请求参数:**
+
+无
+
+**请求示例**
+
+```
+JIM.isInit();// 无回调函数，调用则成功
+```
+
+#### 登录状态
+
+JMessage#isLogin()
+
+**请求参数:**
+
+无
+
+**请求示例**
+
+```
+JIM.isLogin();// 无回调函数，调用则成功
 ```
 
 #### 登录
@@ -394,19 +436,46 @@ JMessage#getResource ()
 ```
 
 
+#### 消息撤回
+
+JMessage#msgRetract  ()
+
+**请求参数：**
+
+| KEY    | REQUIRE | DESCRIPTION |
+| ------ | ------- | ----------- |
+| msg_id | TRUE    | 消息id        |
+
+**请求示例**
+
+```
+   JIM.msgRetract({
+                 'msg_id ' : '<msg_id >',
+               }).onSuccess(function(data , msg) {
+                   //data.code 返回码
+                   //data.message 描述
+               }).onFail(function(data) {
+                   //data.code 返回码
+                   //data.message 描述
+               });
+```
+
+
 #### 发送单聊文本
 
 JMessage#sendSingleMsg()
 
 **请求参数：**
 
-| KEY             | REQUIRE | DESCRIPTION           |
-| --------------- | ------- | --------------------- |
-| target_username | TRUE    | 接收消息者 username        |
-| content         | TRUE    | 消息文本                  |
-| target_nickname | FALSE   | 接收者的展示名               |
-| extras          | FALSE   | 附加字段,字典类型             |
-| appkey          | FALSE   | 跨应用查询时必填，目标应用的 appkey |
+| KEY             | REQUIRE | DESCRIPTION                              |
+| --------------- | ------- | ---------------------------------------- |
+| target_username | TRUE    | 接收消息者 username                           |
+| content         | TRUE    | 消息文本                                     |
+| target_nickname | FALSE   | 接收者的展示名                                  |
+| extras          | FALSE   | 附加字段,字典类型                                |
+| appkey          | FALSE   | 跨应用查询时必填，目标应用的 appkey                    |
+| no_offline      | FALSE   | 消息离线控制标志，false，默认值，保存离线消息；true，不保存离线消息   |
+| no_notification | FALSE   | 状态栏显示消息标志，false，默认值，状态栏显示消息；true，状态栏不显示消息 |
 
 **请求示例**
 
@@ -437,13 +506,15 @@ JMessage#sendSinglePic()
 
 **请求参数：**
 
-| KEY             | REQUIRE | DESCRIPTION           |
-| --------------- | ------- | --------------------- |
-| target_username | TRUE    | 接收消息者 username        |
-| image           | TRUE    | 图片的 DataForm 对象       |
-| target_nickname | FALSE   | 接收者的展示名               |
-| extras          | FALSE   | 附加字段,字典类型             |
-| appkey          | FALSE   | 跨应用查询时必填，目标应用的 appkey |
+| KEY             | REQUIRE | DESCRIPTION                              |
+| --------------- | ------- | ---------------------------------------- |
+| target_username | TRUE    | 接收消息者 username                           |
+| image           | TRUE    | 图片的 DataForm 对象                          |
+| target_nickname | FALSE   | 接收者的展示名                                  |
+| extras          | FALSE   | 附加字段,字典类型                                |
+| appkey          | FALSE   | 跨应用查询时必填，目标应用的 appkey                    |
+| no_offline      | FALSE   | 消息离线控制标志，false，默认值，保存离线消息；true，不保存离线消息   |
+| no_notification | FALSE   | 状态栏显示消息标志，false，默认值，状态栏显示消息；true，状态栏不显示消息 |
 
 **请求示例**
 
@@ -467,13 +538,15 @@ JMessage#sendSingleFile()
 
 **请求参数：**
 
-| KEY             | REQUIRE | DESCRIPTION           |
-| --------------- | ------- | --------------------- |
-| target_username | TRUE    | 接收消息者 username        |
-| file            | TRUE    | 文件的 DataForm 对象       |
-| target_nickname | FALSE   | 接收者的展示名               |
-| extras          | FALSE   | 附加字段,字典类型             |
-| appkey          | FALSE   | 跨应用查询时必填，目标应用的 appkey |
+| KEY             | REQUIRE | DESCRIPTION                              |
+| --------------- | ------- | ---------------------------------------- |
+| target_username | TRUE    | 接收消息者 username                           |
+| file            | TRUE    | 文件的 DataForm 对象                          |
+| target_nickname | FALSE   | 接收者的展示名                                  |
+| extras          | FALSE   | 附加字段,字典类型                                |
+| appkey          | FALSE   | 跨应用查询时必填，目标应用的 appkey                    |
+| no_offline      | FALSE   | 消息离线控制标志，false，默认值，保存离线消息；true，不保存离线消息   |
+| no_notification | FALSE   | 状态栏显示消息标志，false，默认值，状态栏显示消息；true，状态栏不显示消息 |
 
 **请求示例**
 
@@ -497,16 +570,18 @@ JMessage#sendSingleLocation()
 
 **请求参数：**
 
-| KEY             | REQUIRE | DESCRIPTION           |
-| --------------- | ------- | --------------------- |
-| target_username | TRUE    | 接收消息者 username        |
-| latitude        | TRUE    | 维度                    |
-| longitude       | TRUE    | 精度                    |
-| scale           | TRUE    | 地图缩放级别                |
-| label           | TRUE    | 地址                    |
-| target_nickname | FALSE   | 接收者的展示名               |
-| extras          | FALSE   | 附加字段,字典类型             |
-| appkey          | FALSE   | 跨应用查询时必填，目标应用的 appkey |
+| KEY             | REQUIRE | DESCRIPTION                              |
+| --------------- | ------- | ---------------------------------------- |
+| target_username | TRUE    | 接收消息者 username                           |
+| latitude        | TRUE    | 维度                                       |
+| longitude       | TRUE    | 精度                                       |
+| scale           | TRUE    | 地图缩放级别                                   |
+| label           | TRUE    | 地址                                       |
+| target_nickname | FALSE   | 接收者的展示名                                  |
+| extras          | FALSE   | 附加字段,字典类型                                |
+| appkey          | FALSE   | 跨应用查询时必填，目标应用的 appkey                    |
+| no_offline      | FALSE   | 消息离线控制标志，false，默认值，保存离线消息；true，不保存离线消息   |
+| no_notification | FALSE   | 状态栏显示消息标志，false，默认值，状态栏显示消息；true，状态栏不显示消息 |
 
 **请求示例**
 
@@ -533,12 +608,14 @@ JMessage#sendSingleCustom()
 
 **请求参数：**
 
-| KEY             | REQUIRE | DESCRIPTION           |
-| --------------- | ------- | --------------------- |
-| target_username | TRUE    | 接收消息者 username        |
-| custom          | TRUE    | 自定义 json object 消息    |
-| target_nickname | FALSE   | 接收者的展示名               |
-| appkey          | FALSE   | 跨应用查询时必填，目标应用的 appkey |
+| KEY             | REQUIRE | DESCRIPTION                              |
+| --------------- | ------- | ---------------------------------------- |
+| target_username | TRUE    | 接收消息者 username                           |
+| custom          | TRUE    | 自定义 json object 消息                       |
+| target_nickname | FALSE   | 接收者的展示名                                  |
+| appkey          | FALSE   | 跨应用查询时必填，目标应用的 appkey                    |
+| no_offline      | FALSE   | 消息离线控制标志，false，默认值，保存离线消息；true，不保存离线消息   |
+| no_notification | FALSE   | 状态栏显示消息标志，false，默认值，状态栏显示消息；true，状态栏不显示消息 |
 
 **请求示例**
 
@@ -561,13 +638,15 @@ JMessage#sendGroupMsg()
 
 **请求参数：**
 
-| KEY          | REQUIRE | DESCRIPTION                              |
-| ------------ | ------- | ---------------------------------------- |
-| target_gid   | TRUE    | 群组 id                                    |
-| content      | TRUE    | 消息文本                                     |
-| target_gname | FALSE   | 接收者的展示名                                  |
-| extras       | FALSE   | 附加字段,字典类型                                |
-| at_list      | FALSE   | @用户列表：[{'username': 'name1', 'appkey': '跨应用必填，默认不填表示本应用'}],@ALL  直接空数组：[] |
+| KEY             | REQUIRE | DESCRIPTION                              |
+| --------------- | ------- | ---------------------------------------- |
+| target_gid      | TRUE    | 群组 id                                    |
+| content         | TRUE    | 消息文本                                     |
+| target_gname    | FALSE   | 接收者的展示名                                  |
+| extras          | FALSE   | 附加字段,字典类型                                |
+| at_list         | FALSE   | @用户列表：[{'username': 'name1', 'appkey': '跨应用必填，默认不填表示本应用'}],@ALL  直接空数组：[] |
+| no_offline      | FALSE   | 消息离线控制标志，false，默认值，保存离线消息；true，不保存离线消息   |
+| no_notification | FALSE   | 状态栏显示消息标志，false，默认值，状态栏显示消息；true，状态栏不显示消息 |
 
 **请求示例**
 
@@ -592,12 +671,14 @@ JMessage#sendGroupPic()
 
 **请求参数：**
 
-| KEY          | REQUIRE | DESCRIPTION     |
-| ------------ | ------- | --------------- |
-| target_gid   | TRUE    | 群组 id           |
-| image        | TRUE    | 图片的 DataForm 对象 |
-| target_gname | FALSE   | 接收者的展示名         |
-| extras       | FALSE   | 附加字段,字典类型       |
+| KEY             | REQUIRE | DESCRIPTION                              |
+| --------------- | ------- | ---------------------------------------- |
+| target_gid      | TRUE    | 群组 id                                    |
+| image           | TRUE    | 图片的 DataForm 对象                          |
+| target_gname    | FALSE   | 接收者的展示名                                  |
+| extras          | FALSE   | 附加字段,字典类型                                |
+| no_offline      | FALSE   | 消息离线控制标志，false，默认值，保存离线消息；true，不保存离线消息   |
+| no_notification | FALSE   | 状态栏显示消息标志，false，默认值，状态栏显示消息；true，状态栏不显示消息 |
 
 **请求示例**
 
@@ -620,12 +701,14 @@ JMessage#sendGroupFile()
 
 **请求参数：**
 
-| KEY          | REQUIRE | DESCRIPTION     |
-| ------------ | ------- | --------------- |
-| target_gid   | TRUE    | 群组 id           |
-| file         | TRUE    | 文件的 DataForm 对象 |
-| target_gname | FALSE   | 接收者的展示名         |
-| extras       | FALSE   | 附加字段,字典类型       |
+| KEY             | REQUIRE | DESCRIPTION                              |
+| --------------- | ------- | ---------------------------------------- |
+| target_gid      | TRUE    | 群组 id                                    |
+| file            | TRUE    | 文件的 DataForm 对象                          |
+| target_gname    | FALSE   | 接收者的展示名                                  |
+| extras          | FALSE   | 附加字段,字典类型                                |
+| no_offline      | FALSE   | 消息离线控制标志，false，默认值，保存离线消息；true，不保存离线消息   |
+| no_notification | FALSE   | 状态栏显示消息标志，false，默认值，状态栏显示消息；true，状态栏不显示消息 |
 
 **请求示例**
 
@@ -648,15 +731,17 @@ JMessage#sendGroupLocation()
 
 **请求参数：**
 
-| KEY          | REQUIRE | DESCRIPTION |
-| ------------ | ------- | ----------- |
-| target_gid   | TRUE    | 群组 id       |
-| latitude     | TRUE    | 维度          |
-| longitude    | TRUE    | 精度          |
-| scale        | TRUE    | 地图缩放级别      |
-| label        | TRUE    | 地址          |
-| target_gname | FALSE   | 接收者的展示名     |
-| extras       | FALSE   | 附加字段,字典类型   |
+| KEY             | REQUIRE | DESCRIPTION                              |
+| --------------- | ------- | ---------------------------------------- |
+| target_gid      | TRUE    | 群组 id                                    |
+| latitude        | TRUE    | 维度                                       |
+| longitude       | TRUE    | 精度                                       |
+| scale           | TRUE    | 地图缩放级别                                   |
+| label           | TRUE    | 地址                                       |
+| target_gname    | FALSE   | 接收者的展示名                                  |
+| extras          | FALSE   | 附加字段,字典类型                                |
+| no_offline      | FALSE   | 消息离线控制标志，false，默认值，保存离线消息；true，不保存离线消息   |
+| no_notification | FALSE   | 状态栏显示消息标志，false，默认值，状态栏显示消息；true，状态栏不显示消息 |
 
 **请求示例**
 
@@ -682,11 +767,13 @@ JMessage#sendGroupMsg()
 
 **请求参数：**
 
-| KEY          | REQUIRE | DESCRIPTION        |
-| ------------ | ------- | ------------------ |
-| target_gid   | TRUE    | 群组 id              |
-| custom       | TRUE    | 自定义 json object 消息 |
-| target_gname | FALSE   | 接收者的展示名            |
+| KEY             | REQUIRE | DESCRIPTION                              |
+| --------------- | ------- | ---------------------------------------- |
+| target_gid      | TRUE    | 群组 id                                    |
+| custom          | TRUE    | 自定义 json object 消息                       |
+| target_gname    | FALSE   | 接收者的展示名                                  |
+| no_offline      | FALSE   | 消息离线控制标志，false，默认值，保存离线消息；true，不保存离线消息   |
+| no_notification | FALSE   | 状态栏显示消息标志，false，默认值，状态栏显示消息；true，状态栏不显示消息 |
 
 **请求示例**
 
@@ -1396,13 +1483,41 @@ JMessage#onSyncConversation(fn)
 | -------- | ---------------------------------------- |
 | messages | [{'key':'会话标识','msgs':[{'msg_id':'消息id','content':[消息体](https://docs.jiguang.cn/jmessage/advanced/im_message_protocol/)}]},...] |
 
-
-
 **使用示例**
 
 ```
 JIM.onSyncConversation(function(data) {
     console.log('receive msg: ' + JSON.stringify(data));
+});
+```
+
+### 用户信息变更监听
+
+JMessage#onUserInfUpdate(fn)
+
+**监听对象**
+
+监听对象包括好友、群组成员、会话列表中的单聊
+
+**请求参数:**
+
+| KEY  | REQUIRE | DESCRIPTION |
+| ---- | ------- | ----------- |
+| fn   | TRUE    | 处理函数        |
+
+**返回参数**
+
+| KEY      | DESCRIPTION |
+| -------- | ----------- |
+| appkey   | 变更方的appkey  |
+| username | 变更方username |
+| mtime    | 变更时间（秒）     |
+
+**使用示例**
+
+```
+JIM.onUserInfUpdate(function(data) {
+    console.log('user info update event: ' + JSON.stringify(data));
 });
 ```
 
@@ -1418,18 +1533,21 @@ JMessage#onEventNotification(fn)
 
 **返回参数**
 
-| KEY           | DESCRIPTION                  |
-| ------------- | ---------------------------- |
-| event_id      | 事件id                         |
-| event_type    | 事件类型，开发者根据对应的事件类型取相关字段，见下面示例 |
-| gid           | 关系类型                         |
-| from_username | 事件发起者 username               |
-| from_appkey   | 事件发起者 appkey                 |
-| to_usernames  | 事件当事人                        |
-| ctime         | 事件生成时间                       |
-| extra         | 用于好友邀请事件                     |
-| return_code   | 用于好友邀请应答事件                   |
-| description   | 描述                           |
+| KEY           | DESCRIPTION                              |
+| ------------- | ---------------------------------------- |
+| event_id      | 事件 id                                    |
+| event_type    | 事件类型，开发者根据对应的事件类型取相关字段，见下面示例             |
+| gid           | 关系类型                                     |
+| from_username | 事件发起者 username                           |
+| from_appkey   | 事件发起者 appkey                             |
+| to_usernames  | 事件当事人 [{"username":"","appkey":"","nickname":""},...] |
+| ctime         | 事件生成时间                                   |
+| extra         | 用于好友邀请事件                                 |
+| return_code   | 用于好友邀请应答事件                               |
+| description   | 描述                                       |
+| msg_ids       | 消息 id 列表                                 |
+| from_gid      | 群 gid                                    |
+
 
 **同时登录，被迫下线示例：event_type = 1**
 
@@ -1603,6 +1721,21 @@ JIM.onEventNotification(function(data) {
     //data.event_id 事件 id
     //data.event_type 事件类型
     //data.ctime 事件生成时间
+});
+```
+
+**消息被撤回事件示例：event_type = 55**
+
+```
+//变更方接收该事件
+JIM.onEventNotification(function(data) {
+    //data.event_id 事件 id
+    //data.event_type 事件类型
+    //data.ctime 事件生成时间
+    //data.from_username 消息发送方 username
+    //data.from_appkey 消息发送方 appkey
+    //msgid_list 被撤回的消息列表
+    //from_gid 单聊消息 = 0，群聊 = gid
 });
 ```
 
