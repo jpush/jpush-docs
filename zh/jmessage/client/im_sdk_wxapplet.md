@@ -4,7 +4,7 @@
 
 ## SDK下载
 SDK 版本：v1.0.0    
-点击下载：[ jmessage-wxapplet-sdk-1.0.0 ](https://sdkfiledl.jiguang.cn/jmessage-wxapplet-sdk-1.0.0.min.zip)
+点击下载：[ jmessage-wxapplet-sdk-1.0.0 ](https://sdkfiledl.jiguang.cn/jmessage-wxapplet-sdk-1.1.0.min.zip)
 
 
 ## 项目配置
