@@ -1204,7 +1204,7 @@ Example Request
 Example Response
 
 ```
-< HTTP/1.1 204 NO Content
+< HTTP/1.1 201 
 < Content-Type: application/json; charset=utf-8 
 ```
 
