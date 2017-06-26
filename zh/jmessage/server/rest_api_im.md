@@ -795,7 +795,7 @@ msg_type:custom
 ##### Example Response
 
 ```
-< HTTP/1.1 200 OK
+< HTTP/1.1 201 Created
 < Content-Type: application/json
 < 
 {"msg_id": 43143728109, "msg_ctime":1493794522950}
@@ -1204,7 +1204,7 @@ Example Request
 Example Response
 
 ```
-< HTTP/1.1 204 NO Content
+< HTTP/1.1 201 
 < Content-Type: application/json; charset=utf-8 
 ```
 
