@@ -209,7 +209,7 @@ curl --insecure -X POST -v https://api.sms.jpush.cn/v1/messages -H "Content-Type
 |415|50017|media not supported|媒体类型不支持
 |405|50018|request method not support|请求方法不支持
 |500|50019|server error|服务端异常|
-|403|50020|template audited|模板审核中
+|403|50020|template auditing|模板审核中
 |403|50021|template not pass|模板审核不通过
 |403|50022|parameters not all replaced|模板中参数未全部替换|
 |403|50023|parameters is empty|参数为空|
