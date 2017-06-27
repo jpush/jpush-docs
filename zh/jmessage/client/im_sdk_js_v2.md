@@ -490,6 +490,7 @@ JMessage#sendSingleMsg()
                   //data.code 返回码
                   //data.message 描述
                   //data.msg_id 发送成功后的消息id
+                  //data.ctime_ms 消息生成时间,毫秒
                   //msg.content 发送成功消息体,见下面消息体详情
                }).onFail(function(data) {
                   //data.code 返回码
@@ -526,7 +527,11 @@ JMessage#sendSinglePic()
                  'appkey' : '<targetAppkey>',
                  'extras' : 'json object'
                }).onSuccess(function(data , msg<可选>) {
-                  //同发送单聊文本
+                  //data.code 返回码
+                  //data.message 描述
+                  //data.msg_id 发送成功后的消息id
+                  //data.ctime_ms 消息生成时间,毫秒
+                  //msg.content 发送成功消息体,见下面消息体详情
                }).onFail(function(data) {
                   //同发送单聊文本
                });
@@ -558,7 +563,11 @@ JMessage#sendSingleFile()
                  'appkey' : '<targetAppkey>',
                  'extras' : 'json object'
                }).onSuccess(function(data , msg) {
-                   //同发送单聊文本
+                  //data.code 返回码
+                  //data.message 描述
+                  //data.msg_id 发送成功后的消息id
+                  //data.ctime_ms 消息生成时间,毫秒
+                  //msg.content 发送成功消息体,见下面消息体详情
                }).onFail(function(data) {
                    //同发送单聊文本
                });
@@ -596,7 +605,11 @@ JMessage#sendSingleLocation()
                  'appkey' : '<targetAppkey>',
                  'extras' : 'json object'
                }).onSuccess(function(data , msg) {
-                   //同发送单聊文本
+                  //data.code 返回码
+                  //data.message 描述
+                  //data.msg_id 发送成功后的消息id
+                  //data.ctime_ms 消息生成时间,毫秒
+                  //msg.content 发送成功消息体,见下面消息体详情
                }).onFail(function(data) {
                    //同发送单聊文本
                });
@@ -626,7 +639,11 @@ JMessage#sendSingleCustom()
                  'custome' : '<json object>'
                  'appkey' : '<targetAppkey>'
                }).onSuccess(function(data , msg) {
-                  //同发送单聊文本
+                  //data.code 返回码
+                  //data.message 描述
+                  //data.msg_id 发送成功后的消息id
+                  //data.ctime_ms 消息生成时间,毫秒
+                  //msg.content 发送成功消息体,见下面消息体详情
                }).onFail(function(data) {
                   //同发送单聊文本
                });
@@ -658,7 +675,11 @@ JMessage#sendGroupMsg()
                  'extras' : '<json object>',
                  'at_list' : [] //at all
                }).onSuccess(function(data , msg) {
-                  //同发送单聊文本
+                  //data.code 返回码
+                  //data.message 描述
+                  //data.msg_id 发送成功后的消息id
+                  //data.ctime_ms 消息生成时间,毫秒
+                  //msg.content 发送成功消息体,见下面消息体详情
                }).onFail(function(data) {
                   //同发送单聊文本
                });
@@ -689,7 +710,11 @@ JMessage#sendGroupPic()
                  'image' : '<formData with image>',
                  'extras' : 'json object'
                }).onSuccess(function(data , msg) {
-                   //同发送单聊文本
+                  //data.code 返回码
+                  //data.message 描述
+                  //data.msg_id 发送成功后的消息id
+                  //data.ctime_ms 消息生成时间,毫秒
+                  //msg.content 发送成功消息体,见下面消息体详情
                }).onFail(function(data) {
                   //同发送单聊文本
                });
@@ -719,7 +744,11 @@ JMessage#sendGroupFile()
                  'file' : '<formData with file>',
                  'extras' : 'json object'
                }).onSuccess(function(data , msg) {
-                   //同发送单聊文本
+                  //data.code 返回码
+                  //data.message 描述
+                  //data.msg_id 发送成功后的消息id
+                  //data.ctime_ms 消息生成时间,毫秒
+                  //msg.content 发送成功消息体,见下面消息体详情
                }).onFail(function(data) {
                    //同发送单聊文本
                });
@@ -755,7 +784,11 @@ JMessage#sendGroupLocation()
                  'label' : '<address label>',
                  'extras' : 'json object'
                }).onSuccess(function(data , msg) {
-                   //同发送单聊文本
+                  //data.code 返回码
+                  //data.message 描述
+                  //data.msg_id 发送成功后的消息id
+                  //data.ctime_ms 消息生成时间,毫秒
+                  //msg.content 发送成功消息体,见下面消息体详情
                }).onFail(function(data) {
                    //同发送单聊文本
                });
@@ -783,7 +816,11 @@ JMessage#sendGroupMsg()
 			     'target_gname' : '<targetGName>',
 			     'custom' : '<json object>'
                }).onSuccess(function(data , msg) {
-                   //同发送单聊文本
+                  //data.code 返回码
+                  //data.message 描述
+                  //data.msg_id 发送成功后的消息id
+                  //data.ctime_ms 消息生成时间,毫秒
+                  //msg.content 发送成功消息体,见下面消息体详情
                }).onFail(function(data) {
                    //同发送单聊文本
                });
@@ -1452,7 +1489,7 @@ JMessage#onMsgReceive(fn)
 
 | KEY       | DESCRIPTION                              |
 | --------- | ---------------------------------------- |
-| ctime_ms  | 消息发送时间                                   |
+| ctime_ms  | 消息生成时间,毫秒                                |
 | from_gid  | 群组 GID，群聊下有效                             |
 | msg_type  | 消息类型   3-single, 4-group                 |
 | msg_id    | 消息 ID                                    |
@@ -1481,7 +1518,7 @@ JMessage#onSyncConversation(fn)
 
 | KEY      | DESCRIPTION                              |
 | -------- | ---------------------------------------- |
-| messages | [{'key':'会话标识','msgs':[{'msg_id':'消息id','content':[消息体](https://docs.jiguang.cn/jmessage/advanced/im_message_protocol/)}]},...] |
+| messages | [{'key':'会话标识','msgs':[{'msg_id':'消息id','ctime_ms':'消息生成时间,毫秒','content':[消息体](https://docs.jiguang.cn/jmessage/advanced/im_message_protocol/)}]},...] |
 
 **使用示例**
 
