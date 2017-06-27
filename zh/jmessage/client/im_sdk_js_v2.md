@@ -482,7 +482,7 @@ JMessage#sendSingleMsg()
 ```
    JIM.sendSingleMsg({
                  'target_username' : '<targetName>',
-			     'target_nickname' : '<targetNickname>',
+	         'target_nickname' : '<targetNickname>',
                  'content' : '<textContent>',
                  'appkey' : '<targetAppkey>',
                  'extras' : 'json object'
@@ -490,6 +490,7 @@ JMessage#sendSingleMsg()
                   //data.code 返回码
                   //data.message 描述
                   //data.msg_id 发送成功后的消息id
+                  //data.ctime_ms 消息生成时间,毫秒
                   //msg.content 发送成功消息体,见下面消息体详情
                }).onFail(function(data) {
                   //data.code 返回码
@@ -521,12 +522,16 @@ JMessage#sendSinglePic()
 ```
    JIM.sendSinglePic({
                  'target_username' : '<targetName>',
-			     'target_nickname' : '<targetNickname>',
+	         'target_nickname' : '<targetNickname>',
                  'image' : '<formData with image>',
                  'appkey' : '<targetAppkey>',
                  'extras' : 'json object'
                }).onSuccess(function(data , msg<可选>) {
-                  //同发送单聊文本
+                  //data.code 返回码
+                  //data.message 描述
+                  //data.msg_id 发送成功后的消息id
+                  //data.ctime_ms 消息生成时间,毫秒
+                  //msg.content 发送成功消息体,见下面消息体详情
                }).onFail(function(data) {
                   //同发送单聊文本
                });
@@ -553,12 +558,16 @@ JMessage#sendSingleFile()
 ```
    JIM.sendSingleFile({
                  'target_username' : '<targetName>',
-			     'target_nickname' : '<targetNickname>',
+		 'target_nickname' : '<targetNickname>',
                  'file' : '<formData with file>',
                  'appkey' : '<targetAppkey>',
                  'extras' : 'json object'
                }).onSuccess(function(data , msg) {
-                   //同发送单聊文本
+                  //data.code 返回码
+                  //data.message 描述
+                  //data.msg_id 发送成功后的消息id
+                  //data.ctime_ms 消息生成时间,毫秒
+                  //msg.content 发送成功消息体,见下面消息体详情
                }).onFail(function(data) {
                    //同发送单聊文本
                });
@@ -588,15 +597,19 @@ JMessage#sendSingleLocation()
 ```
    JIM.sendSingleLocation({
                  'target_username' : '<targetName>',
-			     'target_nickname' : '<targetNickname>',
-			     'latitude' : '<latitude>',
+		 'target_nickname' : '<targetNickname>',
+		 'latitude' : '<latitude>',
                  'longitude' : '<longitude>',
                  'scale' : '<scale>',
                  'label' : '<address label>'
                  'appkey' : '<targetAppkey>',
                  'extras' : 'json object'
                }).onSuccess(function(data , msg) {
-                   //同发送单聊文本
+                  //data.code 返回码
+                  //data.message 描述
+                  //data.msg_id 发送成功后的消息id
+                  //data.ctime_ms 消息生成时间,毫秒
+                  //msg.content 发送成功消息体,见下面消息体详情
                }).onFail(function(data) {
                    //同发送单聊文本
                });
@@ -622,11 +635,15 @@ JMessage#sendSingleCustom()
 ```
    JIM.sendSingleCustom({
                  'target_username' : '<targetName>',
-			     'target_nickname' : '<targetNickname>',
+		 'target_nickname' : '<targetNickname>',
                  'custome' : '<json object>'
                  'appkey' : '<targetAppkey>'
                }).onSuccess(function(data , msg) {
-                  //同发送单聊文本
+                  //data.code 返回码
+                  //data.message 描述
+                  //data.msg_id 发送成功后的消息id
+                  //data.ctime_ms 消息生成时间,毫秒
+                  //msg.content 发送成功消息体,见下面消息体详情
                }).onFail(function(data) {
                   //同发送单聊文本
                });
@@ -653,12 +670,16 @@ JMessage#sendGroupMsg()
 ```
    JIM.sendGroupMsg({
                  'target_gid' : '<targetGid>',
-			     'target_gname' : '<targetGName>',
+		 'target_gname' : '<targetGName>',
                  'content' : '<textContent>',
                  'extras' : '<json object>',
                  'at_list' : [] //at all
                }).onSuccess(function(data , msg) {
-                  //同发送单聊文本
+                  //data.code 返回码
+                  //data.message 描述
+                  //data.msg_id 发送成功后的消息id
+                  //data.ctime_ms 消息生成时间,毫秒
+                  //msg.content 发送成功消息体,见下面消息体详情
                }).onFail(function(data) {
                   //同发送单聊文本
                });
@@ -685,11 +706,15 @@ JMessage#sendGroupPic()
 ```
    JIM.sendGroupPic({
                  'target_gid' : '<targetGid>',
-			     'target_gname' : '<targetGName>',
+		  'target_gname' : '<targetGName>',
                  'image' : '<formData with image>',
                  'extras' : 'json object'
                }).onSuccess(function(data , msg) {
-                   //同发送单聊文本
+                  //data.code 返回码
+                  //data.message 描述
+                  //data.msg_id 发送成功后的消息id
+                  //data.ctime_ms 消息生成时间,毫秒
+                  //msg.content 发送成功消息体,见下面消息体详情
                }).onFail(function(data) {
                   //同发送单聊文本
                });
@@ -715,11 +740,15 @@ JMessage#sendGroupFile()
 ```
    JIM.sendGroupFile({
                  'target_gid' : '<targetGid>',
-			     'target_gname' : '<targetGName>',
+		  'target_gname' : '<targetGName>',
                  'file' : '<formData with file>',
                  'extras' : 'json object'
                }).onSuccess(function(data , msg) {
-                   //同发送单聊文本
+                  //data.code 返回码
+                  //data.message 描述
+                  //data.msg_id 发送成功后的消息id
+                  //data.ctime_ms 消息生成时间,毫秒
+                  //msg.content 发送成功消息体,见下面消息体详情
                }).onFail(function(data) {
                    //同发送单聊文本
                });
@@ -748,14 +777,18 @@ JMessage#sendGroupLocation()
 ```
    JIM.sendGroupLocation({
                   'target_gid' : '<targetGid>',
-			     'target_gname' : '<targetGName>',
-			     'latitude' : '<latitude>',
+		 'target_gname' : '<targetGName>',
+		 'latitude' : '<latitude>',
                  'longitude' : '<longitude>',
                  'scale' : '<scale>',
                  'label' : '<address label>',
                  'extras' : 'json object'
                }).onSuccess(function(data , msg) {
-                   //同发送单聊文本
+                  //data.code 返回码
+                  //data.message 描述
+                  //data.msg_id 发送成功后的消息id
+                  //data.ctime_ms 消息生成时间,毫秒
+                  //msg.content 发送成功消息体,见下面消息体详情
                }).onFail(function(data) {
                    //同发送单聊文本
                });
@@ -780,10 +813,14 @@ JMessage#sendGroupMsg()
 ```
    JIM.sendGroupMsg({
                   'target_gid' : '<targetGid>',
-			     'target_gname' : '<targetGName>',
-			     'custom' : '<json object>'
+		  'target_gname' : '<targetGName>',
+		  'custom' : '<json object>'
                }).onSuccess(function(data , msg) {
-                   //同发送单聊文本
+                  //data.code 返回码
+                  //data.message 描述
+                  //data.msg_id 发送成功后的消息id
+                  //data.ctime_ms 消息生成时间,毫秒
+                  //msg.content 发送成功消息体,见下面消息体详情
                }).onFail(function(data) {
                    //同发送单聊文本
                });
@@ -1452,7 +1489,7 @@ JMessage#onMsgReceive(fn)
 
 | KEY       | DESCRIPTION                              |
 | --------- | ---------------------------------------- |
-| ctime_ms  | 消息发送时间                                   |
+| ctime_ms  | 消息生成时间,毫秒                                |
 | from_gid  | 群组 GID，群聊下有效                             |
 | msg_type  | 消息类型   3-single, 4-group                 |
 | msg_id    | 消息 ID                                    |
@@ -1481,7 +1518,7 @@ JMessage#onSyncConversation(fn)
 
 | KEY      | DESCRIPTION                              |
 | -------- | ---------------------------------------- |
-| messages | [{'key':'会话标识','msgs':[{'msg_id':'消息id','content':[消息体](https://docs.jiguang.cn/jmessage/advanced/im_message_protocol/)}]},...] |
+| messages | [{'key':'会话标识','msgs':[{'msg_id':'消息id','ctime_ms':'消息生成时间,毫秒','content':[消息体](https://docs.jiguang.cn/jmessage/advanced/im_message_protocol/)}]},...] |
 
 **使用示例**
 
