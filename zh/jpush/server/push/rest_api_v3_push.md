@@ -798,7 +798,26 @@ iOS 1.7.3及以上的版本才能正确解析v3的message，但是无法解析v2
 	</table>
 </div>
 
+## Group Push API: 应用分组推送 
+
+### 调用地址
+POST  https://api.jpush.cn/v3/grouppush
+
+### 功能说明
+该 API 用于为开发者在 portal 端创建的应用分组创建推送。
+groupkey 可以在创建的分组信息中获取，使用起来同 appkey 类似，但在使用的时候前面要加上 “group-” 前缀。
+
+***注***：暂不支持 option 中 override\_msg\_id 的属性。
+
+### 调用示例
+
+```
+curl --insecure -X POST -v https://api.jpush.cn/v3/grouppush -H "Content-Type: application/json" -u "group-e4c938578ee598be517a2243:71d1dc4dae126674ed386b7b" -d '{"platform":["android"],"audience":"all","notification":{"android":{"alert":"notification content","title":"notification title"}},"message":{"msg_content":"message content"}}'
+```
+
 ## 推送校验 API
+
+### 调用地址
 POST https://api.jpush.cn/v3/push/validate
 
 ### 功能说明
