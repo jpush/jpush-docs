@@ -223,6 +223,22 @@ JPush 当前支持 Android, iOS, Windows Phone 三个平台的推送。其关键
 			<td>数组。多个注册ID之间是 OR 关系，即取并集。</td>
 			<td>设备标识。一次推送最多 1000 个。</td>
 		</tr>
+		
+		<tr >
+			<td>segment</td>
+			<td>JSON Array</td>
+			<td>用户分群ID</td>
+			<td>在页面创建的用户分群的 ID。定义为数组，但目前限制一次只能推送一个。</td>
+			<td>目前限制是一次只能推送一个。</td>
+		</tr>
+		
+		<tr>
+			<td>abtest</td>
+			<td>JSON Array</td>
+			<td>A/B Test ID</td>
+			<td>在页面创建的 A/B 测试的 ID。定义为数组，但目前限制是一次只能推送一个。</td>
+			<td>目前限制一次只能推送一个。</td>
+		</tr>
 	</table>
 </div>
 
