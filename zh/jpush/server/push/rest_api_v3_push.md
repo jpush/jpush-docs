@@ -97,6 +97,11 @@ HTTP Header（头）里加一个字段（Key/Value对）：
 			<td>可选</td>
 			<td>推送参数 </td>
 		</tr>
+		<tr >
+			<td>cid</td>
+			<td>可选</td>
+			<td>用于防止客户端重试造成服务端的重复推送而定义的一个标识符。</td>
+		</tr>
 	</table>
 </div>
 
@@ -104,6 +109,7 @@ HTTP Header（头）里加一个字段（Key/Value对）：
 
 ```
 {
+    "cid": "8103a4c628a0b98974ec1949-711261d4-5f17-4d2f-a855-5e5a8909b26e",
     "platform": "all",
     "audience": {
         "tag": [
@@ -797,6 +803,69 @@ iOS 1.7.3及以上的版本才能正确解析v3的message，但是无法解析v2
 		</tr>
 	</table>
 </div>
+
+## cid: 推送唯一标识符
+
+### 调用地址
+GET https://api.jpush.cn/v3/push/cid[?count=n[&type=xx]]
+
+### 功能说明
+cid 是用于防止客户端重试造成服务端的重复推送而定义的一个推送参数。
+
+用户使用一个 cid 推送后，再次使用相同的 cid 进行推送，则会直接返回第一次成功推送的结果，不会再次进行推送。
+
+CID的有效期为1天。CID的格式为：{appkey}-{uuid}
+
+在使用cid之前，必须通过接口获取你的 cid 池。获取时type=push或者不传递type值。
+
+### 调用示例
+
+#### Request Header  
+ 
+```
+curl --insecure -X GET -v https://api.jpush.cn/v3/push/cid?count=3 -H "Content-Type: application/json" -u "2743204aad6fe2572aa2d8de:e674a3d0fd42a53b9a58121c"
+```
+
+```
+GET /v3/push/cid?count=3
+Authorization: Basic (base64 auth string)
+Content-Type: text/plain
+Accept: application/json
+```
+
+#### Request Params 
+
+```
+count
+	可选参数。数值类型，不传则默认为1。范围为[1, 1000]
+type
+	可选参数。CID类型。取值：push(默认), schedule
+```
+
+#### Response Header  
+ 
+```
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+ 
+ Response Data  
+ 
+{
+ "cidlist":[
+ "8103a4c628a0b98994ec1949-128eeb45-471c-49f3-b442-a05c20c9ed56",
+ "8103a4c628a0b98994ec1949-6e44d7f1-89f5-48a8-bec4-e359c15b13e5",
+ "8103a4c628a0b98994ec1949-47e0a960-ce67-4e71-94ce-b4b9e8813af0"
+ ]
+}
+```
+
+#### Response Params
+```
+cidlist
+	cid列表
+```
+
+
 
 ## Group Push API: 应用分组推送 
 
