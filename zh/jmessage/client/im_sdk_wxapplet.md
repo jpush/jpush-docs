@@ -4,11 +4,29 @@
 
 ## SDK下载
 
-SDK 版本：v1.1.0     
+#### jmessage-wxapplet-sdk v1.1.1
 
-更新时间：2017-06-21      
+更新时间
 
-点击下载：[ jmessage-wxapplet-sdk-1.1.0 ](https://sdkfiledl.jiguang.cn/jmessage-wxapplet-sdk-1.1.0.min.zip)
++ 2017-6-29
+
+Change Log
+
+##### BugFix:
+
++ 真机上报Blob对象undefined错误
++ 性能优化
+
+升级提示
+
++ 升级！
+
+升级指南
+
++ 用最新的 jmessage-wxapplet-sdk-1.1.1.min.js 替换掉老版本的 sdk
+
+点击下载：[ jmessage-wxapplet-sdk-1.1.1 ](https://sdkfiledl.jiguang.cn/jmessage-wxapplet-sdk-1.1.1.zip)
+
 
 
 ## 项目配置
