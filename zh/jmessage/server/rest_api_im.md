@@ -642,6 +642,27 @@ POST /v1/messages
 			<td>target_name</td>
 			<td>接受者展示名（选填）</td>
 		</tr>
+		<tr >
+			<td>no_offline</td>
+			<td>消息是否离线存储 true或者false，默认为false，表示需要离线存储（选填）</td>
+		</tr>
+		<tr >
+			<td>no_notification</td>
+			<td>消息是否在通知栏展示 true或者false，默认为false，表示在通知栏展示（选填）
+</td>
+		</tr>
+		<tr >
+			<td>notification</td>
+			<td>自定义通知栏展示（选填）</td>
+		</tr>
+		<tr >
+			<td>notification->title</td>
+			<td>通知的标题</td>
+		</tr>
+		<tr >
+			<td>notification->alert</td>
+			<td> 通知的内容</td>
+		</tr>
 		<tr bgcolor="#D3D3D3">
 			<td>msg_body</td>
 			<td>Json对象的消息体 限制为4096byte</td>
@@ -807,6 +828,46 @@ Error Code
 + 899003    参数错误，Request Body参数不符合要求
 + 899002   用户不存在，target_id或者from_id不存在
 + 899016   from_id 没有权限发送message
+
+
+
+#### 消息撤回
+
+```
+GET /v1//messages/{username}/{msgid}/retract
+```
+##### Example Request
+
+Request Header 
+
+```
+GET /v1//messages/{username}/{msgid}/retract
+```
+Request Body
+
+N/A
+
+Request Params
+
+
+| 参数      | 含义                       | 备注   |
+| ------- | ------------------------ | ---- |
+| msgid | 消息msgid |      |
+| username | 发送此msg的用户名 |      |
+
+
+##### Example Response 
+Response Header
+
+```
+HTTP/1.1 204 No Content
+Content-Type: application/json; charset=utf-8 
+```
+
+Error Code 
+	•	855001 超出撤回消息时间 有效撤回时间为消息发出后3分钟之内
+	•	855003 撤回消息不存在
+	•	855004 消息已经撤回
 
 ### 媒体文件下载与上传
 
@@ -1557,7 +1618,7 @@ Error Code
 + 899002 用户不存在；
 + 899051  群组不存在；
 + 899052 设置群组消息屏蔽，设置的群组屏蔽已经打开
-+ 99053 设置群组消息屏蔽，设置的群组屏蔽已经关闭
++ 899053 设置群组消息屏蔽，设置的群组屏蔽已经关闭
 
 #### 跨应用添加好友 
 
