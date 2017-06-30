@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 
-	<title>JMSGLocationContent Class Reference</title>
+	<title>JMSGUserInfo Class Reference</title>
 
 	<link rel="stylesheet" href="../css/style.css">
 	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
@@ -56,25 +56,25 @@
 	
 	<optgroup label="Properties">
 		
-		<option value="//api/name/latitude">latitude</option>
+		<option value="//api/name/nickname">nickname</option>
 		
-		<option value="//api/name/longitude">longitude</option>
+		<option value="//api/name/birthday">birthday</option>
 		
-		<option value="//api/name/scale">scale</option>
+		<option value="//api/name/signature">signature</option>
+		
+		<option value="//api/name/gender">gender</option>
+		
+		<option value="//api/name/region">region</option>
 		
 		<option value="//api/name/address">address</option>
 		
+		<option value="//api/name/avatarData">avatarData</option>
+		
 	</optgroup>
 	
 
 	
 
-	
-	<optgroup label="Instance Methods">
-		
-		<option value="//api/name/initWithLatitude:longitude:scale:address:">- initWithLatitude:longitude:scale:address:</option>
-		
-	</optgroup>
 	
 	
 </select>
@@ -89,19 +89,16 @@
 		<div id="overview_contents" class="container">
 			<div id="content">
 				<main role="main">
-					<h1 class="title">JMSGLocationContent Class Reference</h1>
+					<h1 class="title">JMSGUserInfo Class Reference</h1>
 
 					
 					<div class="section section-specification"><table cellspacing="0"><tbody>
 						<tr>
 	<th>Inherits from</th>
-	<td><a href="../Classes/JMSGAbstractContent.html">JMSGAbstractContent</a> : NSObject</td>
-</tr><tr>
-	<th>Conforms to</th>
-	<td>NSCopying</td>
+	<td>NSObject</td>
 </tr><tr>
 	<th>Declared in</th>
-	<td>JMSGLocationContent.h</td>
+	<td>JMSGUser.h</td>
 </tr>
 						</tbody></table></div>
 					
@@ -111,7 +108,7 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>地理位置内容类型</p>
+						<p>用户信息类（仅可用于修改用户信息）</p>
 					</div>
 					
 					
@@ -127,8 +124,8 @@
 
 						<div class="task-list">
 							<div class="section-method">
-	<a name="//api/name/latitude" title="latitude"></a>
-	<h3 class="method-title"><code><a href="#//api/name/latitude">&nbsp;&nbsp;latitude</a></code>
+	<a name="//api/name/nickname" title="nickname"></a>
+	<h3 class="method-title"><code><a href="#//api/name/nickname">&nbsp;&nbsp;nickname</a></code>
 </h3>
 
 	<div class="method-info">
@@ -138,12 +135,12 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>纬度</p>
+				<p>昵称</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) NSNumber *latitude</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *nickname</code></div>
 
 		    
 			
@@ -161,15 +158,15 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">JMSGLocationContent.h</code></p>
+				<p><code class="declared-in-ref">JMSGUser.h</code></p>
 			</div>
 			
 			
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/longitude" title="longitude"></a>
-	<h3 class="method-title"><code><a href="#//api/name/longitude">&nbsp;&nbsp;longitude</a></code>
+	<a name="//api/name/birthday" title="birthday"></a>
+	<h3 class="method-title"><code><a href="#//api/name/birthday">&nbsp;&nbsp;birthday</a></code>
 </h3>
 
 	<div class="method-info">
@@ -179,12 +176,12 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>经度</p>
+				<p>生日，格式：时间戳</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) NSNumber *longitude</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSNumber *birthday</code></div>
 
 		    
 			
@@ -202,15 +199,15 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">JMSGLocationContent.h</code></p>
+				<p><code class="declared-in-ref">JMSGUser.h</code></p>
 			</div>
 			
 			
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/scale" title="scale"></a>
-	<h3 class="method-title"><code><a href="#//api/name/scale">&nbsp;&nbsp;scale</a></code>
+	<a name="//api/name/signature" title="signature"></a>
+	<h3 class="method-title"><code><a href="#//api/name/signature">&nbsp;&nbsp;signature</a></code>
 </h3>
 
 	<div class="method-info">
@@ -220,12 +217,12 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>缩放</p>
+				<p>签名</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) NSNumber *scale</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *signature</code></div>
 
 		    
 			
@@ -243,7 +240,89 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">JMSGLocationContent.h</code></p>
+				<p><code class="declared-in-ref">JMSGUser.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/gender" title="gender"></a>
+	<h3 class="method-title"><code><a href="#//api/name/gender">&nbsp;&nbsp;gender</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>性别</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) JMSGUserGender gender</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGUser.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/region" title="region"></a>
+	<h3 class="method-title"><code><a href="#//api/name/region">&nbsp;&nbsp;region</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>区域</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *region</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGUser.h</code></p>
 			</div>
 			
 			
@@ -261,12 +340,12 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>详细地址信息</p>
+				<p>地址</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, copy, readonly) NSString *address</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *address</code></div>
 
 		    
 			
@@ -284,15 +363,15 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">JMSGLocationContent.h</code></p>
+				<p><code class="declared-in-ref">JMSGUser.h</code></p>
 			</div>
 			
 			
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/initWithLatitude:longitude:scale:address:" title="initWithLatitude:longitude:scale:address:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/initWithLatitude:longitude:scale:address:">&ndash;&nbsp;initWithLatitude:longitude:scale:address:</a></code>
+	<a name="//api/name/avatarData" title="avatarData"></a>
+	<h3 class="method-title"><code><a href="#//api/name/avatarData">&nbsp;&nbsp;avatarData</a></code>
 </h3>
 
 	<div class="method-info">
@@ -302,48 +381,16 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>初始化地理位置消息内容</p>
+				<p>头像数据</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (instancetype)initWithLatitude:(NSNumber *)<em>latitude</em> longitude:(NSNumber *)<em>longitude</em> scale:(NSNumber *)<em>scale</em> address:(NSString *)<em>address</em></code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSData *avatarData</code></div>
 
 		    
 			
-			<div class="method-subsection arguments-section parameters">
-				<h4 class="method-subtitle parameter-title">Parameters</h4>
-				<table class="argument-def parameter-def">
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>latitude</code></th>
-						<td><p>纬度</p></td>
-					</tr>
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>longitude</code></th>
-						<td><p>经度</p></td>
-					</tr>
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>scale</code></th>
-						<td><p>缩放比例</p></td>
-					</tr>
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>address</code></th>
-						<td><p>详细地址信息</p></td>
-					</tr>
-				
-				</table>
-			</div>
-			
 
-			
-			<div class="method-subsection return">
-				<h4 class="method-subtitle parameter-title">Return Value</h4>
-				<p>地理位置消息内容</p>
-			</div>
 			
 
 			
@@ -357,7 +404,7 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">JMSGLocationContent.h</code></p>
+				<p><code class="declared-in-ref">JMSGUser.h</code></p>
 			</div>
 			
 			

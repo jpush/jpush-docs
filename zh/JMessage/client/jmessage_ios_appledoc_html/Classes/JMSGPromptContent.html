@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 
-	<title>JMSGGroupDelegate Protocol Reference</title>
+	<title>JMSGPromptContent Class Reference</title>
 
 	<link rel="stylesheet" href="../css/style.css">
 	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
@@ -54,15 +54,15 @@
 
 	
 	
-
-	
-
-	
-	<optgroup label="Instance Methods">
+	<optgroup label="Properties">
 		
-		<option value="//api/name/onGroupInfoChanged:">- onGroupInfoChanged:</option>
+		<option value="//api/name/promptText">promptText</option>
 		
 	</optgroup>
+	
+
+	
+
 	
 	
 </select>
@@ -77,16 +77,19 @@
 		<div id="overview_contents" class="container">
 			<div id="content">
 				<main role="main">
-					<h1 class="title">JMSGGroupDelegate Protocol Reference</h1>
+					<h1 class="title">JMSGPromptContent Class Reference</h1>
 
 					
 					<div class="section section-specification"><table cellspacing="0"><tbody>
 						<tr>
+	<th>Inherits from</th>
+	<td><a href="../Classes/JMSGAbstractContent.html">JMSGAbstractContent</a> : NSObject</td>
+</tr><tr>
 	<th>Conforms to</th>
-	<td>NSObject</td>
+	<td>NSCopying</td>
 </tr><tr>
 	<th>Declared in</th>
-	<td>JMSGGroupDelegate.h</td>
+	<td>JMSGPromptContent.h</td>
 </tr>
 						</tbody></table></div>
 					
@@ -96,7 +99,8 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>Group 相关变更通知</p>
+						<p>提示性消息内容。
+此 MessageContent 类型仅由 SDK 主动创建，上层做展示用，不能当做发送的消息体。</p>
 					</div>
 					
 					
@@ -112,8 +116,8 @@
 
 						<div class="task-list">
 							<div class="section-method">
-	<a name="//api/name/onGroupInfoChanged:" title="onGroupInfoChanged:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/onGroupInfoChanged:">&ndash;&nbsp;onGroupInfoChanged:</a></code>
+	<a name="//api/name/promptText" title="promptText"></a>
+	<h3 class="method-title"><code><a href="#//api/name/promptText">&nbsp;&nbsp;promptText</a></code>
 </h3>
 
 	<div class="method-info">
@@ -123,26 +127,14 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>群组信息 (GroupInfo) 信息通知</p>
+				<p>获取提示信息</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (void)onGroupInfoChanged:(JMSGGroup *)<em>group</em></code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly, copy) NSString *promptText</code></div>
 
 		    
-			
-			<div class="method-subsection arguments-section parameters">
-				<h4 class="method-subtitle parameter-title">Parameters</h4>
-				<table class="argument-def parameter-def">
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>group</code></th>
-						<td><p>变更后的群组对象</p></td>
-					</tr>
-				
-				</table>
-			</div>
 			
 
 			
@@ -152,7 +144,7 @@
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>如果想要获取通知, 需要先注册回调. 具体请参考 <a href="../Protocols/JMessageDelegate.html">JMessageDelegate</a> 里的说明.</p>
+				<p>消息提示文字</p>
 			</div>
 			
 
@@ -163,7 +155,7 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">JMSGGroupDelegate.h</code></p>
+				<p><code class="declared-in-ref">JMSGPromptContent.h</code></p>
 			</div>
 			
 			
