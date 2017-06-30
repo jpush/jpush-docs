@@ -60,6 +60,8 @@
 		
 		<option value="//api/name/latestMessage">latestMessage</option>
 		
+		<option value="//api/name/latestMsgTime">latestMsgTime</option>
+		
 		<option value="//api/name/unreadCount">unreadCount</option>
 		
 		<option value="//api/name/conversationType">conversationType</option>
@@ -120,6 +122,8 @@
 		
 		<option value="//api/name/sendMessage:">- sendMessage:</option>
 		
+		<option value="//api/name/sendMessage:optionalContent:">- sendMessage:optionalContent:</option>
+		
 		<option value="//api/name/sendMessage:at_list:">- sendMessage:at_list:</option>
 		
 		<option value="//api/name/sendAtAllMessage:">- sendAtAllMessage:</option>
@@ -134,7 +138,11 @@
 		
 		<option value="//api/name/sendLocationMessage:longitude:scale:address:">- sendLocationMessage:longitude:scale:address:</option>
 		
+		<option value="//api/name/retractMessage:completionHandler:">- retractMessage:completionHandler:</option>
+		
 		<option value="//api/name/avatarData:">- avatarData:</option>
+		
+		<option value="//api/name/avatarLocalPath">- avatarLocalPath</option>
 		
 		<option value="//api/name/clearUnreadCount">- clearUnreadCount</option>
 		
@@ -811,6 +819,52 @@
 			
 		</div>
 	</div>
+</div><div class="section-method">
+	<a name="//api/name/getAllUnreadCount" title="getAllUnreadCount"></a>
+	<h3 class="method-title"><code><a href="#//api/name/getAllUnreadCount">+&nbsp;getAllUnreadCount</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>获取当前所有会话的未读消息的总数</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (NSNumber *)getAllUnreadCount</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>获取所有会话未读消息总数</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGConversation.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
 </div>
 						</div>
 						
@@ -886,6 +940,52 @@
 
 			
 
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGConversation.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/latestMsgTime" title="latestMsgTime"></a>
+	<h3 class="method-title"><code><a href="#//api/name/latestMsgTime">&nbsp;&nbsp;latestMsgTime</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>会话最近一条消息的创建时间</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) NSNumber *latestMsgTime</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>可用于会话排序，单位为毫秒</p>
+			</div>
 			
 
 			
@@ -1343,6 +1443,11 @@
 			
 
 			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>注意：如果被删除消息是多媒体消息，也会将本地缓存的多媒体文件删除</p>
+			</div>
+			
 
 			
 
@@ -1386,7 +1491,7 @@
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>清空当前会话的所有消息。</p>
+				<p>清空当前会话的所有消息，并清空当前会话的所有本地文件缓存。</p>
 			</div>
 			
 
@@ -1594,6 +1699,69 @@ JMSGImageContent *imageContent = [[JMSGImageContent alloc] initWithImageData:ima
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
 				<p>发送消息的多个接口，都未在方法上直接提供回调。你应通过 JMSGMessageDelegate中的onReceiveMessage: error:方法来注册消息发送结果</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGConversation.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/sendMessage:optionalContent:" title="sendMessage:optionalContent:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/sendMessage:optionalContent:">&ndash;&nbsp;sendMessage:optionalContent:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>发送消息（附带可选功能，如：控制离线消息存储、自定义通知栏内容等）</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)sendMessage:(JMSGMessage *)<em>message</em> optionalContent:(JMSGOptionalContent *)<em>optionalContent</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>message</code></th>
+						<td><p>通过消息创建类接口，创建好的消息对象</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>optionalContent</code></th>
+						<td><p>可选功能，具体请查看 <a href="../Classes/JMSGOptionalContent.html">JMSGOptionalContent</a> 类</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>可选功能里可以设置离线消息存储、自定义通知栏内容等，具体请查看 <a href="../Classes/JMSGOptionalContent.html">JMSGOptionalContent</a> 类。</p>
 			</div>
 			
 
@@ -2047,6 +2215,75 @@ JMSGImageContent *imageContent = [[JMSGImageContent alloc] initWithImageData:ima
 		</div>
 	</div>
 </div><div class="section-method">
+	<a name="//api/name/retractMessage:completionHandler:" title="retractMessage:completionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/retractMessage:completionHandler:">&ndash;&nbsp;retractMessage:completionHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>消息撤回</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)retractMessage:(JMSGMessage *)<em>message</em> completionHandler:(JMSGCompletionHandler)<em>handler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>message</code></th>
+						<td><p>需要撤回的消息</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>handler</code></th>
+						<td><p>结果回调</p>
+
+<ul>
+<li>resultObject 撤回后的消息</li>
+<li>error        错误信息</li>
+</ul>
+</td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>注意：SDK可撤回3分钟内的消息</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGConversation.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
 	<a name="//api/name/avatarData:" title="avatarData:"></a>
 	<h3 class="method-title"><code><a href="#//api/name/avatarData:">&ndash;&nbsp;avatarData:</a></code>
 </h3>
@@ -2058,7 +2295,7 @@ JMSGImageContent *imageContent = [[JMSGImageContent alloc] initWithImageData:ima
 			
 			
 			<div class="method-subsection brief-description">
-				<p>异步获取会话头像</p>
+				<p>异步获取会话头像(仅限单聊)</p>
 			</div>
 			
 		    
@@ -2098,9 +2335,55 @@ JMSGImageContent *imageContent = [[JMSGImageContent alloc] initWithImageData:ima
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>会话的头像来自于聊天对象, 单聊就是用户的头像, 群聊是群组头像.
+				<p>会话的头像来自于聊天对象, 单聊就是用户的头像.
 建议在会话列表时, 使用此接口来显示会话的头像, 而不要使用 <a href="#//api/name/target">target</a> 属性里的用户头像.</p>
 			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGConversation.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/avatarLocalPath" title="avatarLocalPath"></a>
+	<h3 class="method-title"><code><a href="#//api/name/avatarLocalPath">&ndash;&nbsp;avatarLocalPath</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>获取会话头像的本地路径(仅限单聊)</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (NSString *)avatarLocalPath</code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>返回本地路，返回值只有在下载完成之后才有意义</p>
+			</div>
+			
+
+			
+
 			
 
 			
@@ -2154,52 +2437,6 @@ JMSGImageContent *imageContent = [[JMSGImageContent alloc] initWithImageData:ima
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
 				<p>把未读数设置为 0</p>
-			</div>
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">JMSGConversation.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/getAllUnreadCount" title="getAllUnreadCount"></a>
-	<h3 class="method-title"><code><a href="#//api/name/getAllUnreadCount">+&nbsp;getAllUnreadCount</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>获取当前所有会话的未读消息的总数</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>+ (NSNumber *)getAllUnreadCount</code></div>
-
-		    
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection discussion-section">
-				<h4 class="method-subtitle">Discussion</h4>
-				<p>获取所有会话未读消息总数</p>
 			</div>
 			
 
@@ -2399,7 +2636,7 @@ JMSGImageContent *imageContent = [[JMSGImageContent alloc] initWithImageData:ima
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2017 HXHG. All rights reserved. Updated: 2017-04-05</p>
+						<p class="copyright">Copyright &copy; 2017 HXHG. All rights reserved. Updated: 2017-06-28</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

@@ -98,6 +98,8 @@
 		
 		<option value="//api/name/updateMyInfoWithParameter:userFieldType:completionHandler:">+ updateMyInfoWithParameter:userFieldType:completionHandler:</option>
 		
+		<option value="//api/name/updateMyInfoWithUserInfo:completionHandler:">+ updateMyInfoWithUserInfo:completionHandler:</option>
+		
 		<option value="//api/name/updateMyPasswordWithNewPassword:oldPassword:completionHandler:">+ updateMyPasswordWithNewPassword:oldPassword:completionHandler:</option>
 		
 		<option value="//api/name/addUsersToBlacklist:completionHandler:">+ addUsersToBlacklist:completionHandler:</option>
@@ -122,7 +124,11 @@
 		
 		<option value="//api/name/thumbAvatarData:">- thumbAvatarData:</option>
 		
+		<option value="//api/name/thumbAvatarLocalPath">- thumbAvatarLocalPath</option>
+		
 		<option value="//api/name/largeAvatarData:">- largeAvatarData:</option>
+		
+		<option value="//api/name/largeAvatarLocalPath">- largeAvatarLocalPath</option>
 		
 		<option value="//api/name/displayName">- displayName</option>
 		
@@ -565,6 +571,69 @@ Birthday&amp;&amp;Gender 是NSNumber类型, Avatar NSData类型 其他 NSString<
 
 			
 
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGUser.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/updateMyInfoWithUserInfo:completionHandler:" title="updateMyInfoWithUserInfo:completionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/updateMyInfoWithUserInfo:completionHandler:">+&nbsp;updateMyInfoWithUserInfo:completionHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>更新用户信息（支持将字段统一上传）</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)updateMyInfoWithUserInfo:(JMSGUserInfo *)<em>userInfo</em> completionHandler:(JMSGCompletionHandler)<em>handler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>userInfo</code></th>
+						<td><p>用户信息对象，类型是 <a href="../Classes/JMSGUserInfo.html">JMSGUserInfo</a></p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>handler</code></th>
+						<td><p>更新用户信息回调接口函数</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>参数 userInfo 是 <a href="../Classes/JMSGUserInfo.html">JMSGUserInfo</a> 类，<a href="../Classes/JMSGUserInfo.html">JMSGUserInfo</a> 仅可用于修改用户信息</p>
+			</div>
 			
 
 			
@@ -1698,6 +1767,52 @@ Birthday&amp;&amp;Gender 是NSNumber类型, Avatar NSData类型 其他 NSString<
 		</div>
 	</div>
 </div><div class="section-method">
+	<a name="//api/name/thumbAvatarLocalPath" title="thumbAvatarLocalPath"></a>
+	<h3 class="method-title"><code><a href="#//api/name/thumbAvatarLocalPath">&ndash;&nbsp;thumbAvatarLocalPath</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>获取头像缩略文件的本地路径</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (NSString *)thumbAvatarLocalPath</code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>返回本地路，返回值只有在下载完成之后才有意义</p>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGUser.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
 	<a name="//api/name/largeAvatarData:" title="largeAvatarData:"></a>
 	<h3 class="method-title"><code><a href="#//api/name/largeAvatarData:">&ndash;&nbsp;largeAvatarData:</a></code>
 </h3>
@@ -1750,6 +1865,52 @@ Birthday&amp;&amp;Gender 是NSNumber类型, Avatar NSData类型 其他 NSString<
 				<p>需要展示大图图时使用
 如果本地已经有文件，则会返回本地，否则会从服务器上下载。</p>
 			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGUser.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/largeAvatarLocalPath" title="largeAvatarLocalPath"></a>
+	<h3 class="method-title"><code><a href="#//api/name/largeAvatarLocalPath">&ndash;&nbsp;largeAvatarLocalPath</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>获取头像大图文件的本地路径</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (NSString *)largeAvatarLocalPath</code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>返回本地路，返回值只有在下载完成之后才有意义</p>
+			</div>
+			
+
+			
+
 			
 
 			
@@ -1826,7 +1987,7 @@ Birthday&amp;&amp;Gender 是NSNumber类型, Avatar NSData类型 其他 NSString<
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2017 HXHG. All rights reserved. Updated: 2017-04-05</p>
+						<p class="copyright">Copyright &copy; 2017 HXHG. All rights reserved. Updated: 2017-06-28</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
