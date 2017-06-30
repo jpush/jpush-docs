@@ -104,6 +104,8 @@
 		
 		<option value="//api/name/memberArray">- memberArray</option>
 		
+		<option value="//api/name/memberArrayWithCompletionHandler:">- memberArrayWithCompletionHandler:</option>
+		
 		<option value="//api/name/addMembersWithUsernameArray:completionHandler:">- addMembersWithUsernameArray:completionHandler:</option>
 		
 		<option value="//api/name/addMembersWithUsernameArray:appKey:completionHandler:">- addMembersWithUsernameArray:appKey:completionHandler:</option>
@@ -417,6 +419,73 @@
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
 				<p>该接口总是向服务器端发起请求。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGGroup.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/shieldList:" title="shieldList:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/shieldList:">+&nbsp;shieldList:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>获取所有设置群消息屏蔽的群组</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)shieldList:(JMSGCompletionHandler)<em>handler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>handler</code></th>
+						<td><p>结果回调。回调参数：</p>
+
+<ul>
+<li>resultObject 类型为 NSArray，数组里成员的类型为 JMSGGroup</li>
+<li>error 错误信息</li>
+</ul>
+
+
+<p>如果 error 为 nil, 表示设置成功
+如果 error 不为 nil,表示设置失败</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>从服务器获取，返回所有设置群消息屏蔽的群组。</p>
 			</div>
 			
 
@@ -1041,73 +1110,6 @@
 			
 		</div>
 	</div>
-</div><div class="section-method">
-	<a name="//api/name/shieldList:" title="shieldList:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/shieldList:">+&nbsp;shieldList:</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>获取所有设置群消息屏蔽的群组</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>+ (void)shieldList:(JMSGCompletionHandler)<em>handler</em></code></div>
-
-		    
-			
-			<div class="method-subsection arguments-section parameters">
-				<h4 class="method-subtitle parameter-title">Parameters</h4>
-				<table class="argument-def parameter-def">
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>handler</code></th>
-						<td><p>结果回调。回调参数：</p>
-
-<ul>
-<li>resultObject 类型为 NSArray，数组里成员的类型为 JMSGGroup</li>
-<li>error 错误信息</li>
-</ul>
-
-
-<p>如果 error 为 nil, 表示设置成功
-如果 error 不为 nil,表示设置失败</p></td>
-					</tr>
-				
-				</table>
-			</div>
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection discussion-section">
-				<h4 class="method-subtitle">Discussion</h4>
-				<p>从服务器获取，返回所有设置群消息屏蔽的群组。</p>
-			</div>
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">JMSGGroup.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
 </div>
 						</div>
 						
@@ -1128,7 +1130,7 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>获取群组成员列表</p>
+				<p>获取群组成员列表（同步接口，建议使用异步接口）</p>
 			</div>
 			
 		    
@@ -1143,6 +1145,55 @@
 				<h4 class="method-subtitle parameter-title">Return Value</h4>
 				<p>成员列表. NSArray 里成员类型是 <a href="../Classes/JMSGUser.html">JMSGUser</a>.</p>
 			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>一般在群组详情界面调用此接口，展示群组的所有成员列表。
+本接口只是在本地请求成员列表，不会发起服务器端请求。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGGroup.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/memberArrayWithCompletionHandler:" title="memberArrayWithCompletionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/memberArrayWithCompletionHandler:">&ndash;&nbsp;memberArrayWithCompletionHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>获取群组成员列表（异步接口）</p>
+
+<p>@handler 成员列表. NSArray 里成员类型是 <a href="../Classes/JMSGUser.html">JMSGUser</a>.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)memberArrayWithCompletionHandler:(JMSGCompletionHandler JMSG_NULLABLE)<em>handler</em></code></div>
+
+		    
+			
+
 			
 
 			
@@ -1514,7 +1565,7 @@
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2017 HXHG. All rights reserved. Updated: 2017-04-05</p>
+						<p class="copyright">Copyright &copy; 2017 HXHG. All rights reserved. Updated: 2017-06-28</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

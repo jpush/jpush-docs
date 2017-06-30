@@ -102,6 +102,8 @@
 		
 		<option value="//api/name/sendMessage:">+ sendMessage:</option>
 		
+		<option value="//api/name/sendMessage:optionalContent:">+ sendMessage:optionalContent:</option>
+		
 		<option value="//api/name/sendSingleTextMessage:toUser:">+ sendSingleTextMessage:toUser:</option>
 		
 		<option value="//api/name/sendSingleTextMessage:toUser:appKey:">+ sendSingleTextMessage:toUser:appKey:</option>
@@ -131,6 +133,8 @@
 		<option value="//api/name/sendGroupFileMessage:fileName:toGroup:">+ sendGroupFileMessage:fileName:toGroup:</option>
 		
 		<option value="//api/name/sendGroupLocationMessage:longitude:scale:address:toGroup:">+ sendGroupLocationMessage:longitude:scale:address:toGroup:</option>
+		
+		<option value="//api/name/retractMessage:completionHandler:">+ retractMessage:completionHandler:</option>
 		
 	</optgroup>
 	
@@ -533,6 +537,69 @@ NSString *msgText = textContent.text;
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
 				<p>此接口与 createMessage:: 相关接口配合使用，创建好后使用此接口发送。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGMessage.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/sendMessage:optionalContent:" title="sendMessage:optionalContent:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/sendMessage:optionalContent:">+&nbsp;sendMessage:optionalContent:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>发送消息（附带可选功能，如：控制离线消息存储、自定义通知栏内容等）</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)sendMessage:(JMSGMessage *)<em>message</em> optionalContent:(JMSGOptionalContent *)<em>optionalContent</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>message</code></th>
+						<td><p>通过消息创建类接口，创建好的消息对象</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>optionalContent</code></th>
+						<td><p>可选功能，具体请查看 <a href="../Classes/JMSGOptionalContent.html">JMSGOptionalContent</a> 类</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>可选功能里可以设置离线消息存储、自定义通知栏内容等，具体请查看 <a href="../Classes/JMSGOptionalContent.html">JMSGOptionalContent</a> 类。</p>
 			</div>
 			
 
@@ -1570,6 +1637,75 @@ NSString *msgText = textContent.text;
 		</div>
 	</div>
 </div><div class="section-method">
+	<a name="//api/name/retractMessage:completionHandler:" title="retractMessage:completionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/retractMessage:completionHandler:">+&nbsp;retractMessage:completionHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>消息撤回</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)retractMessage:(JMSGMessage *)<em>message</em> completionHandler:(JMSGCompletionHandler)<em>handler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>message</code></th>
+						<td><p>需要撤回的消息</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>handler</code></th>
+						<td><p>结果回调</p>
+
+<ul>
+<li>resultObject 撤回后的消息</li>
+<li>error        错误信息</li>
+</ul>
+</td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>注意：SDK可撤回3分钟内的消息</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGMessage.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
 	<a name="//api/name/isAtMe" title="isAtMe"></a>
 	<h3 class="method-title"><code><a href="#//api/name/isAtMe">&ndash;&nbsp;isAtMe</a></code>
 </h3>
@@ -1831,7 +1967,7 @@ NSString *msgText = textContent.text;
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) id&lt;JMSGTargetProtocol&gt; target</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) id target</code></div>
 
 		    
 			
@@ -2815,7 +2951,7 @@ NSString *msgText = textContent.text;
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2017 HXHG. All rights reserved. Updated: 2017-04-05</p>
+						<p class="copyright">Copyright &copy; 2017 HXHG. All rights reserved. Updated: 2017-06-28</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
