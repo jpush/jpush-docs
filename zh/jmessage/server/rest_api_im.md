@@ -852,7 +852,7 @@ Request Params
 
 | 参数      | 含义                       | 备注   |
 | ------- | ------------------------ | ---- |
-| msgid | 消息msgid |      |
+| msgid | 消息msgid  |      |
 | username | 发送此msg的用户名 |      |
 
 
