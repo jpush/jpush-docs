@@ -54,8 +54,8 @@ docs/_build/
 
 # docs
 site/
-zh/site/
-en/site/
+
+.idea/
 
 *.pdf
 _book/
@@ -64,4 +64,6 @@ zh/.DS_Store
 en/.DS_Store
 
 
-
+pyvenv.cfg
+lib64
+depoly.sh
