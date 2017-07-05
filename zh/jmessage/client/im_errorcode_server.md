@@ -134,7 +134,7 @@ JMessage 服务器端报的错误码。有可能出现在各平台的 SDK 里。
 		</tr>
 		<tr >
 			<td>899015</td>
-			<td>User 's group are 100 can not continue</td>
+			<td>User 's group are full can not continue</td>
 			<td>用户加入讨论组达到上限</td>
 		</tr>
 		<tr >
