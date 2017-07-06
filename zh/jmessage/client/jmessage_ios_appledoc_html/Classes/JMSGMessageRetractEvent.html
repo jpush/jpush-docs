@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 
-	<title>JMSGCustomNotification Class Reference</title>
+	<title>JMSGMessageRetractEvent Class Reference</title>
 
 	<link rel="stylesheet" href="../css/style.css">
 	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
@@ -56,13 +56,9 @@
 	
 	<optgroup label="Properties">
 		
-		<option value="//api/name/enabled">enabled</option>
+		<option value="//api/name/conversation">conversation</option>
 		
-		<option value="//api/name/title">title</option>
-		
-		<option value="//api/name/alert">alert</option>
-		
-		<option value="//api/name/atPrefix">atPrefix</option>
+		<option value="//api/name/retractMessage">retractMessage</option>
 		
 	</optgroup>
 	
@@ -83,16 +79,16 @@
 		<div id="overview_contents" class="container">
 			<div id="content">
 				<main role="main">
-					<h1 class="title">JMSGCustomNotification Class Reference</h1>
+					<h1 class="title">JMSGMessageRetractEvent Class Reference</h1>
 
 					
 					<div class="section section-specification"><table cellspacing="0"><tbody>
 						<tr>
 	<th>Inherits from</th>
-	<td>NSObject</td>
+	<td><a href="../Classes/JMSGNotificationEvent.html">JMSGNotificationEvent</a> : NSObject</td>
 </tr><tr>
 	<th>Declared in</th>
-	<td>JMSGOptionalContent.h</td>
+	<td>JMSGNotificationEvent.h</td>
 </tr>
 						</tbody></table></div>
 					
@@ -102,7 +98,7 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>自定义通知栏消息的内容</p>
+						<p>上层通过 <a href="../Protocols/JMSGEventDelegate.html">JMSGEventDelegate</a> 类中的 -(void)onReceiveNotificationEvent: 代理方法监听此事件,详见官方文档.</p>
 					</div>
 					
 					
@@ -118,8 +114,8 @@
 
 						<div class="task-list">
 							<div class="section-method">
-	<a name="//api/name/enabled" title="enabled"></a>
-	<h3 class="method-title"><code><a href="#//api/name/enabled">&nbsp;&nbsp;enabled</a></code>
+	<a name="//api/name/conversation" title="conversation"></a>
+	<h3 class="method-title"><code><a href="#//api/name/conversation">&nbsp;&nbsp;conversation</a></code>
 </h3>
 
 	<div class="method-info">
@@ -129,12 +125,12 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>是否启用自定义通知栏，默认:NO</p>
+				<p>消息撤回所属会话</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) BOOL enabled</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) JMSGConversation *conversation</code></div>
 
 		    
 			
@@ -152,15 +148,15 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">JMSGOptionalContent.h</code></p>
+				<p><code class="declared-in-ref">JMSGNotificationEvent.h</code></p>
 			</div>
 			
 			
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/title" title="title"></a>
-	<h3 class="method-title"><code><a href="#//api/name/title">&nbsp;&nbsp;title</a></code>
+	<a name="//api/name/retractMessage" title="retractMessage"></a>
+	<h3 class="method-title"><code><a href="#//api/name/retractMessage">&nbsp;&nbsp;retractMessage</a></code>
 </h3>
 
 	<div class="method-info">
@@ -170,12 +166,12 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>自定义消息通知栏的标题</p>
+				<p>撤回之后的消息</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *title</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) JMSGMessage *retractMessage</code></div>
 
 		    
 			
@@ -193,94 +189,7 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">JMSGOptionalContent.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/alert" title="alert"></a>
-	<h3 class="method-title"><code><a href="#//api/name/alert">&nbsp;&nbsp;alert</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>自定义消息通知栏的内容</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *alert</code></div>
-
-		    
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">JMSGOptionalContent.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/atPrefix" title="atPrefix"></a>
-	<h3 class="method-title"><code><a href="#//api/name/atPrefix">&nbsp;&nbsp;atPrefix</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>被@目标的通知内容前缀</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *atPrefix</code></div>
-
-		    
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection discussion-section">
-				<h4 class="method-subtitle">Discussion</h4>
-				<p>此字段仅对@消息设置有效</p>
-			</div>
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">JMSGOptionalContent.h</code></p>
+				<p><code class="declared-in-ref">JMSGNotificationEvent.h</code></p>
 			</div>
 			
 			
@@ -301,7 +210,7 @@
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2017 HXHG. All rights reserved. Updated: 2017-06-28</p>
+						<p class="copyright">Copyright &copy; 2017 HXHG. All rights reserved. Updated: 2017-07-03</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
