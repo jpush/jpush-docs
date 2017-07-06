@@ -1384,7 +1384,7 @@ JMSGMessage *message = [JMSGMessage createGroupMessageWithContent:textContent2 g
 	+ (void)shieldList:(JMSGCompletionHandler)handler;
 ### 通知栏管理
 #### JMSGConversation
-发送消息时，SDK 可以控制离线消息的存储、自定义通知栏内容等，具体的功能可以想象查看 [JMSGOptionalContent](./jmessage_ios_appledoc_html/Protocols/JMSGOptionalContent.html#) 类里面的说明。
+发送消息时，SDK 可以控制离线消息的存储、自定义通知栏内容等，具体的功能可以想象查看 [JMSGOptionalContent](./jmessage_ios_appledoc_html/Classes/JMSGOptionalContent.html#) 类里面的说明。
 
 ```
 /*!
