@@ -1,5 +1,36 @@
 # 最近更新
 
+### JPush Android SDK v3.0.7
+
+#### 更新时间
+
++ 2017-07-10
+
+#### Change Log
++ 新增：一套 tag/alias 操作接口
++ 优化：tag/alias 设置超时的问题
++ 修复：若干开发者反馈的 bug
+
+#### 升级提示
+
++ 建议升级！
+
+#### 升级指南
+
++ 首先解压您获取到的 zip 压缩包
+
++ 更新库文件
+	+ 打开libs文件夹。添加jcore-android_v1.1.5.jar。用 jpush-android_v3.0.7.jar 替换项目中原有的极光jar文件，并删除原有极光jar文件。用对应CPU文件夹下的 libjcore115.so 文件，替换项目中原有的libjpushXXX.so文件，并删除原有的极光so文件，每种型号的so文件都可以在SDK下载包中找到。
+
++ 更新AndroidManifest.xml
+	+ 请对照示例 AndroidManifest 更新跟 JPush 相关的组件属性，permission，Action等配置。要使用富媒体推送，请将压缩包res中的资源放到项目的对应文件夹，并按照示例 AndroidManifest 配置 PushActivity 组件。
+
++ 添加资源文件
+    + 将res文件夹下的资源文件，添加到您项目res/下对应的文件夹中。根据您应用的界面风格，您可以修改layout文件的配色，字体等属性，或者修改drawable文件夹下的图标。但注意请不要修改所有的文件名，和布局文件中的组件id。
+
++ 如果使用jcenter的方式集成JPush，不需要添加相关组件和资源，详细说明请参考官方集成指南。
+
+
 ### JPush iOS SDK v3.0.6
 
 #### 更新时间
