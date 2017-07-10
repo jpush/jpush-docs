@@ -76,8 +76,8 @@
             <div class="caption">
                 <h4>Python SDK</h4>
                 <ul>
-                    <li>版本：v1.0.1</li>
-                    <li>更新时间：2016.10.31</li>
+                    <li>版本：v1.0.3</li>
+                    <li>更新时间：2017.01.10</li>
                     <li><a href="https://github.com/jpush/jmessage-api-python-client" target="_blank">GitHub 源码</a></li>
                     <li>更新日志：<a href="https://github.com/jpush/jmessage-api-python-client/releases" target="_blank">Change Log</a></li>
                 </ul>
@@ -93,8 +93,8 @@
             <div class="caption">
                 <h4>PHP SDK</h4>
                 <ul>
-                    <li>版本：v1.0.2</li>
-                    <li>更新时间：2016.12.16</li>
+                    <li>版本：v1.0.4</li>
+                    <li>更新时间：2017.06.26</li>
                     <li><a href="https://github.com/jpush/jmessage-api-php-client" target="_blank">GitHub 源码</a></li>
                     <li>更新日志：<a href="https://github.com/jpush/jmessage-api-php-client/releases" target="_blank">Change Log</a></li>
                 </ul>
@@ -108,8 +108,8 @@
             <div class="caption">
                 <h4>C# SDK</h4>
                 <ul>
-                    <li>版本：v1.0.0</li>
-                    <li>更新时间：2017.02.27</li>
+                    <li>版本：v1.1.0</li>
+                    <li>更新时间：2017.07.03</li>
                     <li><a href="https://github.com/jpush/jmessage-api-csharp-client" target="_blank">GitHub 源码</a></li>
                     <li>更新日志：<a href="https://github.com/jpush/jmessage-api-csharp-client/releases" target="_blank">Change Log</a></li>
                 </ul>
