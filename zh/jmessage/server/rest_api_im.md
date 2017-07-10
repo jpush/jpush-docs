@@ -834,14 +834,14 @@ Error Code
 #### 消息撤回
 
 ```
-GET /v1/messages/{username}/{msgid}/retract
+POST /v1/messages/{username}/{msgid}/retract
 ```
 ##### Example Request
 
 Request Header 
 
 ```
-GET /v1/messages/{username}/{msgid}/retract
+POST /v1/messages/{username}/{msgid}/retract
 ```
 Request Body
 
