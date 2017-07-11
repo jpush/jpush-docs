@@ -608,23 +608,23 @@ POST /v1/messages
 		</tr>
 		<tr >
 			<td>version</td>
-			<td>版本号 目前是1</td>
+			<td>版本号 目前是1 （必填）</td>
 		</tr>
 		<tr >
 			<td>target_type</td>
-			<td>发送目标类型 single - 个人，group - 群组</td>
+			<td>发送目标类型 single - 个人，group - 群组 （必填）</td>
 		</tr>
 		<tr >
 			<td>from_type</td>
-			<td>发送消息者身份 当前只限admin用户，必须先注册admin用户</td>
+			<td>发送消息者身份 当前只限admin用户，必须先注册admin用户 （必填）</td>
 		</tr>
 		<tr >
 			<td>msg_type</td>
-			<td>发消息类型 text - 文本，image - 图片, custom - 自定义消息（msg_body为json对象即可，服务端不做校验）voice - 语音</td>
+			<td>发消息类型 text - 文本，image - 图片, custom - 自定义消息（msg_body为json对象即可，服务端不做校验）voice - 语音 （必填）</td>
 		</tr>
 		<tr >
 			<td>target_id</td>
-			<td>目标id single填username group 填Group id</td>
+			<td>目标id single填username group 填Group id （必填）</td>
 		</tr>
 		<tr >
 			<td>target_appkey</td>
@@ -632,7 +632,7 @@ POST /v1/messages
 		</tr>
 		<tr >
 			<td>from_id</td>
-			<td>发送者的username</td>
+			<td>发送者的username （必填</td>
 		</tr>
 		<tr >
 			<td>from_name</td>
@@ -657,11 +657,11 @@ POST /v1/messages
 		</tr>
 		<tr >
 			<td>notification->title</td>
-			<td>通知的标题</td>
+			<td>通知的标题（选填）</td>
 		</tr>
 		<tr >
 			<td>notification->alert</td>
-			<td> 通知的内容</td>
+			<td> 通知的内容（选填）</td>
 		</tr>
 		<tr bgcolor="#D3D3D3">
 			<td>msg_body</td>
@@ -672,11 +672,11 @@ POST /v1/messages
 		</tr>
 		<tr >
 			<td>msg_body -> text</td>
-			<td>消息内容</td>
+			<td>消息内容 （必填）</td>
 		</tr>
 		<tr >
 			<td>msg_body-> extras</td>
-			<td>选填的json对象 开发者可以自定义extras里面的key value	</td>
+			<td>选填的json对象 开发者可以自定义extras里面的key value（选填）	</td>
 		</tr>
 
 		<tr>
