@@ -60,8 +60,8 @@
             <div class="caption">
                 <h4>Java SDK</h4>
                 <ul>
-                    <li>版本号：v3.2.20</li>
-                    <li>更新时间：2017-5-25</li>
+                    <li>版本号：v3.3.0</li>
+                    <li>更新时间：2017-7-06</li>
                     <li>更新内容：<a href="https://github.com/jpush/jpush-api-java-client/releases" target="_blank">Change Log</a></li>
                     <li>GitHub：<a href="https://github.com/jpush/jpush-api-java-client" target="_blank">源码</a></li>
                     <li>支持：Push API v3</li>
