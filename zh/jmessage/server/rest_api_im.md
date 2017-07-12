@@ -1769,10 +1769,10 @@ Content-Type: application/json; charset=utf-8
 ```
 
 Request Params
-
-+ 敏感词数组 一个词长度最多为10，默认支持100个敏感词，[有更高需求可联系商务](https://www.jiguang.cn/accounts/business/form?from=im)
+  N/A
 
 Request Body
++ 敏感词数组 一个词长度最多为10，默认支持100个敏感词，[有更高需求可联系商务](https://www.jiguang.cn/accounts/business/form?from=im)
 
 ```
 ["FUCK"] 
@@ -1811,10 +1811,11 @@ Content-Type: application/json; charset=utf-8
 
 Request Params
 
-+ old_word  旧敏感词
-+ new_word  新敏感词
+  N/A
 
 Request Body
++ old_word  旧敏感词
++ new_word  新敏感词
 
 ```
 {"new_word":"fuck", "old_word":"FUCK"}
@@ -1853,9 +1854,10 @@ Content-Type: application/json; charset=utf-8
 
 Request Params
 
-+ word  被删除的敏感词
+   N/A
 
 Request Body
++ word  被删除的敏感词
 
 ```
 {"word":"fuck"}
@@ -1888,7 +1890,7 @@ Example Request
 Request Header 
 
 ```
-GET  /v1/sensitiveword
+GET  /v1/sensitiveword?stat={start}&count={count}
 Content-Type: application/json; charset=utf-8  
 ```
 
