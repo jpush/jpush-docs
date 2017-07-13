@@ -948,7 +948,7 @@ curl示例:
 | 参数       | 含义                     | 备注   |
 | -------- | ---------------------- | ---- |
 | filename | 磁盘本地文件路径               |      |
-| type     | 文件类型 支持是"image"，"file" |      |
+| type     | 文件类型 支持是"image", "file", "voice" |      |
 
 
 Response Header  
