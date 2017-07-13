@@ -1,6 +1,6 @@
 #回调接口
-<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding-top: 8px;padding-bottom: 7px">
-<ul style=>
+<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding:8px 16px;">
+<ul style=margin-button:0px;>
 <li>下行消息发送状态和上行消息内容支持以回调的形式传给开发者</li>
 </ul>
 </div>
