@@ -510,7 +510,7 @@ Request Params
 Example Response
 
 ```
-< HTTP/1.1 204 NO CONTENT
+< HTTP/1.1 200 
 < Content-Type: application/json
 
 {
@@ -590,6 +590,21 @@ Error Code
 + 899052 设置群组消息屏蔽，设置的群组屏蔽已经打开
 + 99053 设置群组消息屏蔽，设置的群组屏蔽已经关闭
 
+
+#### 禁用用户
+
+	GET /v1//users/{username}/forbidden
+
+Request Params
+
++ disable  boolean,true代表禁用用户，false代表激活用户
+
+Example Response
+
+```
+< HTTP/1.1 204 NO CONTENT
+< Content-Type: application/json
+```
 
 
 ### 消息相关
@@ -680,7 +695,7 @@ POST /v1/messages
 		</tr>
 
 		<tr>
-		<td colspan="2" ><font  color="red">msg_type为image时,msg_body为File Upload api返回的json，格式如下 </td>
+		<td colspan="2" ><font  color="red">msg_type为image时,msg_body为上传图片返回的json，格式如下 </td>
 		</tr>
 		<tr>
 		<td>msg_body->media_id</td>
@@ -703,11 +718,15 @@ POST /v1/messages
 		<td>String 图片格式（必填）</td>
 		</tr>
 		<tr>
+		<td>msg_body->hash </td>
+		<td>String 图片hash值（可选）</td>
+		</tr>
+		<tr>
 		<td>msg_body->fsize</td>
 		<td>int 文件大小（字节数）（必填）</td>
 		</tr>
 	
-	<td colspan="2" ><font  color="red">msg_type为voice时,msg_body为File Upload api返回的json，格式如下 </td>
+	<td colspan="2" ><font  color="red">msg_type为voice时,msg_body为上传语音返回的json，格式如下 </td>
 		</tr>
 		<tr>
 		<td>msg_body->media_id</td>
@@ -724,7 +743,7 @@ POST /v1/messages
 		
 		<tr>
 		<td>msg_body->hash </td>
-		<td>String 音频hash值（必填）</td>
+		<td>String 音频hash值（可选）</td>
 		</tr>
 		<tr>
 		<td>msg_body->fsize</td>
@@ -1050,7 +1069,7 @@ Request Params
 + name               （必填）群组名字
   + 支持的字符：全部，包括 Emoji。
 + members_username 成员 username
-+ desc               （必填） 群描述 
++ desc               （选填） 群描述 
   + 支持的字符：全部，包括 Emoji。
 
 Example Response
