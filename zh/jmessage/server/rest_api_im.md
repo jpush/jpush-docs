@@ -593,7 +593,7 @@ Error Code
 
 #### 禁用用户
 
-	GET /v1//users/{username}/forbidden
+	GET /v1//users/{username}/forbidden?disable={disable}
 
 Request Params
 
