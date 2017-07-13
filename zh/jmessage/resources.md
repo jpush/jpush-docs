@@ -53,6 +53,35 @@
     </div>
 </div>
 
+##  DEMO 下载体验
+<div class="row server downloads">
+    <div class="form-group">
+        <div class="col-md-4">
+            <img src="../image/jchat.png" alt="JChat">
+            <h4 class="col-sm-offset-5">扫码下载</h4>
+        </div>
+        <div class="col-md-8">
+            <div class="caption">
+                <h4>即时通讯场景应用 JChat</h4>
+                <p>JChat集成极光 IM SDK, 演示即时通讯场景。</p>
+                <ul>
+                    <li>支持单聊、群聊</li>
+                    <li class="li-clear">可发送文字、图片、语音、表情、文件、地理位置等消息</li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <p><a href="https://sdkfiledl.jiguang.cn/jchat_v2.0.0.apk" class="btn btn-default" role="button">Android下载</a></p>
+                <p><a href="https://github.com/jpush/jchat-android" target="_blank">JChat 源码</font></p>
+            </div>
+            <div class="col-md-4">
+                <p><a href="https://sdkfiledl.jiguang.cn/JChat_v3.0.0.ipa" class="btn btn-default" role="button">IOS下载</a></p>
+                <p><a  href="https://github.com/jpush/jchat-swift" target="_blank">JChat 源码</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 ##  服务器端 SDK 下载
 <div class="row server downloads">
     <div class="col-md-6">
