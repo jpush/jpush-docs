@@ -1,6 +1,6 @@
 #JShare 产品介绍
 
-极光 Share 致力于帮助应用快速具备国内主流社交平台分享功能，提供接入新浪微博，QQ，微信等第三方社会化分享服务；SDK 包体积小，集成成本低，提供 iOS 和 Android 的 SDK ，并且还提供了统计功能，方便开发者了解应用的分享效果，提高产品推广效率，助力产品获得更多用户。
+极光 Share 致力于帮助应用快速具备国内主流社交平台分享和第三方登录功能，提供新浪微博、QQ、微信等第三方社会化服务；SDK 包体积小，集成成本低，提供 iOS 和 Android 的 SDK ，并且还提供了统计功能，方便开发者了解应用的分享效果，提高产品推广效率，助力产品获得更多用户。
 
 
 ##JShare 技术原理
@@ -23,7 +23,8 @@
 &emsp;&emsp;完整的统计和分析后台，帮助开发者了解各项统计指标。<br>
 4.一键分享<br>
 &emsp;&emsp;通过组件对新浪微博，QQ，微信等社会化平台一键分享；分享内容包括文字、图片、链接、音视频、文件、表情等。<br>
-
+5.第三方登录<br>
+&emsp;&emsp;使用QQ,新浪微博，微信等社交平台账号登录APP更快捷。<br>
 
 ##集成流程
 
@@ -36,3 +37,20 @@ IOS 开发者请参考文档：[JShare iOS SDK 集成指南](../client/iOS/ios_s
 ###相关文档
 [JShare Android SDK 接口文档](../client/Android/android_api.md)<br>
 [JShare iOS SDK 接口文档](../client/iOS/ios_api.md)
+
+
+
+##技术支持
+当出现问题时：
+
++ 请仔细阅读文档，查看是否有遗漏。 [Android FAQ](../client/Android/android_sdk_faq/)  [iOS FAQ](../client/iOS/ios_sdk_faq/)
++ 你可以到[极光社区](http://community.jiguang.cn/)搜索类似问题。
++ 给我们的support发邮件：<support@jpush.cn>
+
+
+为了更快速的解决问题，在寻求帮助时，请提供下列信息：
+
++ 使用的什么 API 的接口
++ 如果是 SDK 问题请提供对应的 SDK 版本和完整的日志记录
+
+
