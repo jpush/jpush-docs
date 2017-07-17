@@ -77,7 +77,7 @@ public static void authorize(String name, AuthListener authListener)
 ```
 JShareInterface.authorize(platform, new AuthListener() {
     @Override
-    public void onComplete(Platform platform, int i, BaseResponseInfo baseResponseInfo) {
+    public void onComplete(Platform platform, int i, BaseResponseInfo data) {
         Logger.dd(TAG, "onComplete:" + platform + ",action:" + action + ",data:" + data);
         String toastMsg = null;
         switch (action) {
@@ -151,7 +151,7 @@ public static void removeAuthorize(String name, AuthListener actionListener)
 ```
 JShareInterface.removeAuthorize(platform, new AuthListener() {
     @Override
-    public void onComplete(Platform platform, int i, BaseResponseInfo baseResponseInfo) {
+    public void onComplete(Platform platform, int i, BaseResponseInfo data) {
        Logger.dd(TAG, "onComplete:" + platform + ",action:" + action + ",data:" + data);
        String toastMsg = null;
        switch (action) {
@@ -196,7 +196,7 @@ public static void getUserInfo(String platName, AuthListener authListener)
 ```
 JShareInterface.getUserInfo(platform, new AuthListener() {
     @Override
-    public void onComplete(Platform platform, int i, BaseResponseInfo baseResponseInfo) {
+    public void onComplete(Platform platform, int i, BaseResponseInfo data) {
         Logger.dd(TAG, "onComplete:" + platform + ",action:" + action + ",data:" + data);
         String toastMsg = null;
         switch (action) {
