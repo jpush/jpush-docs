@@ -1,7 +1,7 @@
 # iOS JShare 对外集成文档
 ##使用提示
 本文是 JSHARE iOS SDK 的标准集成指南文档。
-匹配的 SDK 版本为：V1.1.0及以后版本。
+匹配的 SDK 版本为：V1.2.0及以后版本。
 
 * 如果你想要快速测试、请参考本文在几分钟内跑通 Demo。
 * 极光文档官网上有相关的所有指南、API、教程等全部的文档。包括本文档的更新版本，都会及时地发布到该网站上。
@@ -13,6 +13,7 @@ JSHARE SDK 可以让你的应用支持多平台分享，无需花耗时间了解
 ###主要场景：
 
 * 将分享内容分享到 QQ、微信、新浪微博三个主要的社交平台。
+* 获取QQ、微信、新浪微博三个主要平台的个人信息，用于第三方登录。
 
 ###集成压缩包内容
 
@@ -134,7 +135,45 @@ JSHAREMessage *message = [JSHAREMessage message];
 }
 
 ```
+###method - getSoicalUserInfo
+####接口定义：
++(void)getSoicalUserInfo:(JSHAREPlatform)platform
+                  handler:(JSHARESocialHandler)handler
+                  
+####接口说明：
+通过调用获取用户信息接口，获取用户在第三方平台的用户ID、头像等资料完成账号体系的构建。
+
+####参数说明：
+
+* platform : JSHAREPlatform 枚举类型
+* handler : JSHARESocialHandler 获取用户信息的回调
+
+####调用实例：
+
+```
+[JSHAREService getSoicalUserInfo:platfrom handler:^(JSHARESocialUserInfo *userInfo, NSError *error) {
+        NSString *alertMessage;
+        NSString *title;
+        if (error) {
+            title = @"失败";
+            alertMessage = @"无法获取到用户信息";
+        }else{
+            title = userInfo.name;
+            alertMessage = [NSString stringWithFormat:@"昵称: %@\n 头像链接: %@\n 性别: %@\n",userInfo.name,userInfo.iconurl,userInfo.gender == 1? @"男" : @"女"];
+        }
+        UIAlertView *Alert = [[UIAlertView alloc] initWithTitle:title message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [Alert show];
+        });
+        
+        
+    }];
+```
+
 其他接口详见 JSHAREService.h 。
+
+
+
 
 
 ##Xcode 中的设置
@@ -283,7 +322,6 @@ Xcode 工程目录中的 [TARGETS] -> [Info] 中设置：
    </dict>
 </dict>
 ```
-
 
 #end
 
