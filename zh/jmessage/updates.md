@@ -1,5 +1,129 @@
 # 最近更新
 
+
+### iOS SDK v3.2.0
+
+#### 更新时间
+
+2017-06-30
+
+#### ChangeLog
+
+##### BugFix:
+
++ 修复：用户信息自动更新问题
+
+##### NewFeature
+
++ 新增：消息撤回功能
++ 新增：离线消息存储控制功能
++ 新增：通知栏消息显示控制功能
++ 新增：自定义通知栏功能
++ 新增：统一上传用户信息接口
+
++ 新增类：
+	+ 提示性消息内容类 JMSGPromptContent
+		+ @property(nonatomic, readonly, copy) NSString *promptText；//提示信息
+	+ 发送消息可选功能类 JMSGOptionalContent
+		+ @property(nonatomic, assign) BOOL noSaveOffline;//不保存离线消息
+		+ @property(nonatomic, assign) BOOL noSaveNotification;//不保存通知消息
+		+ @property(nonatomic, strong) JMSGCustomNotification * customNotification; //自定义通知栏
+	+ 用户信息类 JMSGUserInfo
+		+ 此类仅用于修改用户信息
++ 新增接口：
+	+ JMSGEventDelegate
+		+ -(void)onReceiveMessageRetractEvent:;//监听消息撤回事件
+	+ JMSGConversation
+		+ -(void)retractMessage: completionHandler: ;//消息撤回
+		+ -(void)sendMessage: optionalContent:;//自定义通知栏内容、控制离线消息存储
+		+ -(NSString *)avatarLocalPath;//获取会话头像的本地路径
+	+ JMSGMessage
+		+ +(void)retractMessage: completionHandler: ;//消息撤回
+		+ +(void)sendMessage: optionalContent:;//自定义通知栏内容、控制离线消息存储
+	+ JMSGUser
+		+ +(void)updateMyInfoWithUserInfo: completionHandler:;//更新用户信息（支持将字段统一上传）
+		+ -(NSString *)thumbAvatarLocalPath;//获取用户头像缩略图文件的本地路径
+		+ -(NSString *)largeAvatarLocalPath;//获取用户头像大图文件的本地路径
+	+ JMSGMediaAbstractContent
+		+ @property(nonatomic, strong, readonly) NSString * originMediaLocalPath; //获取原文件的本地路径
+	+ JMSGImageContent
+		+ @property(nonatomic, strong, readonly) NSString *thumbImageLocalPath;//获取缩略图的本地路径
+
+
+#### 升级指南
++ 使用新版本的 JMessage.framework 文件替换原工程下的同名旧文件
++ 将新版本的 JMessage.framework 里的 JCore link 到工程中，详细参见官网集成文档
+
+
+
+
+### Android SDK v2.2.0
+
+#### 更新时间
+
++ 2017-6-15
+
+#### Change Log
+##### BugFix:
++ 提升sdk稳定性
+
+##### NewFeature:
++ 支持[消息撤回](https://docs.jiguang.cn/jmessage/client/im_sdk_android/#_42)
++ 支持消息发送时的各种控制,包括：
+	+ 离线消息存储控制
+	+ 消息通知栏显示控制
+	+ 自定义消息通知栏文字  
+具体见开发指南[消息管理](https://docs.jiguang.cn/jmessage/client/im_sdk_android/#_30)一节
+
++ 新增统一更新用户所有信息的接口
++ 支持群聊@所有人
++ 支持用户信息自动更新
++ 支持通知栏通知点亮呼吸灯
+
+#### 升级提示
+
++ 建议升级！
+
+#### 升级指南
+
++ 首先解压您获取到的 zip 压缩包
+
++ 更新库文件
+	+ 打开libs文件夹。添加jcore-android_v1.1.3.jar。用 jmessage-android_v2.2.0.jar 替换项目中原有的极光jar文件，并删除原有极光jar文件。用对应CPU文件夹下的 libjcore113.so 文件，替换项目中原有的libjcoreXXX.so文件，并删除原有的极光so文件，每种型号的so文件都可以在SDK下载包中找到。
+
++ 更新AndroidManifest.xml
+	+ 请参考 SDK下载包最新版本的 demo 来更新AndroidManifest.xml 文件配置。
+
++ 如果使用jcenter的方式集成JMessage，不需要添加相关组件和资源，详细集成说明请参考官方[集成指南](https://docs.jiguang.cn/jmessage/client/jmessage_android_guide/)
+
+
+
+
+### WEB SDK v2.3.0
+
+#### 更新时间
+
++ 2017-6-15
+
+#### Change Log
+
+##### NewFeature:
++ 离线消息存储控制及消息通知栏显示控制
++ 消息撤回
++ 用户信息更新监听
++ 可获取 SDK 连接、初始化以及登录状态
++ 事件监听字段优化
+
+#### 升级提示
+
++ 建议升级！
+
+#### 升级指南
+
++ 用最新的 jmessage-sdk-web.2.3.0.min.js 替换掉老版本的 sdk
+
+
+
 ### WEB SDK v2.2.1
 
 #### 更新时间
@@ -39,7 +163,7 @@
 
 ##### BugFix:
 
-* 修复：allConverstions 接口排序逻辑问题
+* 修复：allConversations 接口排序逻辑问题
 * 修复：下载多媒体文件时下载进度回调错误的问题
 
 ##### NewFeature

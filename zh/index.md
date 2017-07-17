@@ -3,47 +3,38 @@
 <div class="row"><h2>极光官方文档</h2></div>
 
 <div class="row">
-
-<!--     <div class="col-sm-6 col-md-3">
-        <a href="http://community.jiguang.cn/"  target="_blank">
-            <div class="thumbnail">
-                <i class="fa fa-users fa-4x" aria-hidden="true"></i>
-                <div class="caption">
-                    <p>极光社区</p>
-                </div>
-            </div>
-        </a>
+<div class="col-sm-6 col-md-3">
+<a href="http://community.jiguang.cn/" target="_blank">
+    <div class="thumbnail">
+        <i class="fa fa-users fa-4x" aria-hidden="true"></i>
+        <div class="caption"><p>极光社区</p></div>
     </div>
-    <div class="col-sm-6 col-md-3">
-        <a href="http://blog.jiguang.cn/"  target="_blank">
-            <div class="thumbnail">
-            <i class="fa fa-comments fa-4x" aria-hidden="true"></i>
-                <div class="caption">
-                    <p>极光博客</p>
-                </div>
-            </div>
-        </a>
-    </div> -->
-    <div class="col-sm-6">
-        <a href="http://community.jiguang.cn/t/topic/6568"  target="_blank">
-            <div class="thumbnail">
-            <i class="fa fa-video-camera fa-4x" aria-hidden="true"></i>
-                <div class="caption">
-                    <p>视频教程</p>
-                </div>
-            </div>
-        </a>
+</a>
+</div>
+<div class="col-sm-6 col-md-3">
+<a href="http://blog.jiguang.cn/" target="_blank">
+    <div class="thumbnail">
+    <i class="fa fa-comments fa-4x" aria-hidden="true"></i>
+        <div class="caption"><p>极光博客</p></div>
     </div>
-    <div class="col-sm-6">
-        <a href="https://github.com/jpush"  target="_blank">
-            <div class="thumbnail">
-            <i class="fa fa-github fa-4x" aria-hidden="true"></i>
-                <div class="caption">
-                    <p>极光开源</p>
-                </div>
-            </div>
-        </a>
+</a>
+</div>
+<div class="col-sm-6 col-md-3">
+<a href="http://community.jiguang.cn/t/topic/6568" target="_blank">
+    <div class="thumbnail">
+    <i class="fa fa-video-camera fa-4x" aria-hidden="true"></i>
+        <div class="caption"><p>视频教程</p></div>
     </div>
+</a>
+</div>
+<div class="col-sm-6 col-md-3">
+<a href="https://github.com/jpush" target="_blank">
+    <div class="thumbnail">
+    <i class="fa fa-github fa-4x" aria-hidden="true"></i>
+        <div class="caption"><p>极光开源</p></div>
+    </div>
+</a>
+</div>
 </div>
 
 <div class="row">

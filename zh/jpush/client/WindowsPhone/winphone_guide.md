@@ -113,7 +113,4 @@ toast 通知点击提示
 ##技术支持
 
 邮件联系：<support@jpush.cn>
-
-问答社区：[http://community.jiguang.cn/](http://community.jiguang.cn/)
-
 	

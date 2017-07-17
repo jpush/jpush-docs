@@ -51,11 +51,19 @@
 | 881106 | group never set                          | 该群组不处于免打扰状态         |
 | 881107 | already set                              | 已经设置免打扰             |
 | 881108 | never set                                | 没有设置免打扰             |
+| 881201 | group not exist                          | 群不存在，不能设置屏蔽         |
+| 881202 | user not in group                        | 用户不在群里面，不能设置屏蔽      |
+| 881203 | group already set                        | 已经设置了屏蔽             |
+| 881204 | group never set                          | 群未设置屏蔽              |
 | 881301 | target user not exist                    | 目标用户不存在             |
 | 881302 | already is friend                        | 已经是好友               |
 | 881303 | user not friend                          | 非好友关系               |
 | 881304 | invalid friend memo                      | 非法备注                |
 | 881305 | Invitation event is not valid            | 添加好友失败：邀请事件无效       |
+| 881401 | out of time                              | 超出撤回时间              |
+| 881402 | request user is not message sender       | 请求撤回方不是消息发送方        |
+| 881403 | request message not exist                | 消息不存在               |
+| 881404 | message already retract                  | 已经撤回                |
 | 882001 | server internal error                    | 系统内部错误              |
 | 882002 | user exit，no such user，password error，uid invalid，gid invalid | 视操作而定               |
 | 882003 | invalid parameter                        | 参数不合法               |

@@ -19,25 +19,25 @@
 
 前者，就是这里要说到的：别名与标签的功能。这个机制简单易用，适用于大多数开发者。
 
-后者，则是 JPush 提供的另外一套 RegistrationID 机制。这套机制开发者需要有应用服务器来维护绑定关系，不适用于普通开发者。Android SDK r1.6.0 版本开始支持。
+后者，则是 JPush 提供的另外一套 RegistrationID 机制。这套机制开发者需要有应用服务器来维护绑定关系，不适用于普通开发者。Android SDK 1.6.0 版本开始支持。
 
 ### 使用方式
 
 别名与标签的机制，其工作方式是：
 
-+ 客户端开发者App调用 setAliasAndTags API 来设置关系
++ 客户端开发者App调用 setAlias或者setTags API 来设置关系
 + JPush SDK 把该关系设置保存到 JPush Server 上
 + 在服务器端推送消息时，指定向之前设置过的别名或者标签推送
 
-SDK 支持的 setAliasAndTags 请参考相应的文档：[别名与标签 API](android_api/#api_1)
+SDK 支持的Alias与Tags接口请参考相应的文档：[别名与标签 API](android_api/#api_1)
 
 使用过程中有几个点做特别说明：
 
-+ App 调用 SDK setAliasAndTags API 时，r1.5.0 版本提供了 Callback 来返回设置状态。如果返回 6002 （超时）则建议重试
++ 1.5.0版本开始提供的旧版tag、alias设置接口已不再维护，建议开发者使用3.0.7版本开始提供的新的tag、alias接口。
 
-	+ 老版本没有提供 Callback 无设置状态返回，从而没有机制确定一定成功。建议升级到新版本
+	+ 在callback返回结果中如果返回 6002 （超时）或 6014(服务繁忙) 则建议重试,具体错误码定义请参考错误码定义.
 
-+ Portal 上推送或者 API 调用向别名或者标签推送时，可能会报错：不存在推送目标用户。该报错表明，JPush Server 上还没有针对你所推送的别名或者标签的用户绑定关系，所以没有推送目标。这时请开发者检查确认，开发者App是否正确地调用了 setAliasAndTags API，以及调用时是否网络不好，JPush SDK 暂时未能保存成功。
++ Portal 上推送或者 API 调用向别名或者标签推送时，可能会报错：不存在推送目标用户。该报错表明，JPush Server 上还没有针对你所推送的别名或者标签的用户绑定关系，所以没有推送目标。这时请开发者检查确认，开发者App是否正确地调用了 alias和tags API，以及调用时是否网络不好，JPush SDK 暂时未能保存成功。
 
 ### 使用别名
 
@@ -66,7 +66,7 @@ JPush 提供的设置标签的 API 是在客户端的。开发者如何做到在
 由于网络连接不稳定的原因，有一定的概率 JPush SDK 设置别名与标签会失败。
 App 开发者合理地处理设置失败，则偶尔失败对应用的正常使用 JPush 影响是有限的。
 
-以下以 Android SDK 作为示例。
+以下以 Android SDK 作为示例,更为详细的请参考example。
 
 基本思路：
 
@@ -74,65 +74,31 @@ App 开发者合理地处理设置失败，则偶尔失败对应用的正常使�
 + 遇到 6002 超时，则稍延迟重试。
 
 
-		// 这是来自 JPush Example 的设置别名的 Activity 里的代码。一般 App 的设置的调用入口，在任何方便的地方调用都可以。
-		private void setAlias() {
-		    EditText aliasEdit = (EditText) findViewById(R.id.et_alias);
-		    String alias = aliasEdit.getText().toString().trim();
-		    if (TextUtils.isEmpty(alias)) {
-		        Toast.makeText(PushSetActivity.this,R.string.error_alias_empty, Toast.LENGTH_SHORT).show();
-		        return;
-		    }
-		    if (!ExampleUtil.isValidTagAndAlias(alias)) {
-		        Toast.makeText(PushSetActivity.this,R.string.error_tag_gs_empty, Toast.LENGTH_SHORT).show();
-		        return;
-		    }
-
-		    // 调用 Handler 来异步设置别名
-		    mHandler.sendMessage(mHandler.obtainMessage(MSG_SET_ALIAS, alias));
+		// 这是来自 JPush Example 的设置别名的 Activity 里的代码,更详细的示例请参考JPush Example。一般 App 的设置的调用入口，在任何方便的地方调用都可以。
+		private void handleAction(int sequence,TagAliasBean tagAliasBean) {
+		    if(tagAliasBean == null){
+                Log.w(TAG,"tagAliasBean was null");
+                return;
+            }
+            if(tagAliasBean.isAliasAction){
+                switch (tagAliasBean.action){
+                    case ACTION_GET:
+                        JPushInterface.getAlias(getApplicationContext(),sequence);
+                        break;
+                    case ACTION_DELETE:
+                        JPushInterface.deleteAlias(getApplicationContext(),sequence);
+                        break;
+                    case ACTION_SET:
+                        JPushInterface.setAlias(getApplicationContext(),sequence,tagAliasBean.alias);
+                        break;
+                    default:
+                        Log.w(TAG,"unsupport alias action type");
+                        return;
+                }
+            }else {
+            //tag operation
+            }
 		}
-
-		private final TagAliasCallback mAliasCallback = new TagAliasCallback() {
-		    @Override
-		    public void gotResult(int code, String alias, Set<String> tags) {
-		        String logs ;
-		        switch (code) {
-		        case 0:
-		            logs = "Set tag and alias success";
-		            Log.i(TAG, logs);
-		            // 建议这里往 SharePreference 里写一个成功设置的状态。成功设置一次后，以后不必再次设置了。
-		            break;
-		        case 6002:
-		            logs = "Failed to set alias and tags due to timeout. Try again after 60s.";
-		            Log.i(TAG, logs);
-		            // 延迟 60 秒来调用 Handler 设置别名
-		            mHandler.sendMessageDelayed(mHandler.obtainMessage(MSG_SET_ALIAS, alias), 1000 * 60);
-		            break;
-		        default:
-		            logs = "Failed with errorCode = " + code;
-		            Log.e(TAG, logs);
-		        }
-		        ExampleUtil.showToast(logs, getApplicationContext());
-		    }
-		};
-		private static final int MSG_SET_ALIAS = 1001;
-		private final Handler mHandler = new Handler() {
-		@Override
-		    public void handleMessage(android.os.Message msg) {
-		        super.handleMessage(msg);
-		        switch (msg.what) {
-		        	case MSG_SET_ALIAS:
-		        		Log.d(TAG, "Set alias in handler.");
-		                // 调用 JPush 接口来设置别名。
-		            	JPushInterface.setAliasAndTags(getApplicationContext(),
-		            							        (String) msg.obj,
-		            							         null,
-		            							         mAliasCallback);
-		            break;
-		        default:
-		            Log.i(TAG, "Unhandled msg - " + msg.what);
-		        }
-		    }		        				        
-		};
 
 
 

@@ -33,13 +33,13 @@ curl -v https://report.jpush.cn/v3/received?msg_ids=1613113584,1229760629 -u "7d
 < HTTP/1.1 200 OK 
 < Content-Type: application/json
 < 
-[  {"msg_id":1613113584,
+[  {"msg_id":"1613113584",
     "android_received":62,
     "ios_apns_sent":11,
     "ios_msg_received": 3, 
     "wp_mpns_sent" : 3},
 
-   {"msg_id":1229760629
+   {"msg_id":"1229760629",
     "android_received":56,
     "ios_apns_sent":33,
     "ios_msg_received": 3,  
@@ -89,12 +89,12 @@ curl -v https://report.jpush.cn/v3/messages?msg_ids=269978303 -u "7d431e42dfa6a6
       {"received":1,"target":4,"online_push":1,"click":null,"msg_click":null},
 
    "ios":
-      {"apns_sent":2,"apns_target":2,"click":null,"target":10,"received":8,"msg_click":5},
+      {"apns_sent":2,"apns_target":2,"click":null,"target":10,"received":8},
    
    "winphone":
       {"mpns_target": 100,"mpns_sent": 100,"click": 100,},
    
-   "msg_id":269978303
+   "msg_id":"269978303"
   }
 ]
 
@@ -119,7 +119,6 @@ JSON Array
 	   + click 用户点击数
      + target 自定义消息目标数
      + received 自定义消息送达数
-     + msg_click 自定义消息点击数
 
 + winphone Winphone统计数据
      + mpns_target MPNs通知推送目标数

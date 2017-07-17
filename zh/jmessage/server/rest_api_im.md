@@ -510,7 +510,7 @@ Request Params
 Example Response
 
 ```
-< HTTP/1.1 204 NO CONTENT
+< HTTP/1.1 200 
 < Content-Type: application/json
 
 {
@@ -591,6 +591,21 @@ Error Code
 + 99053 设置群组消息屏蔽，设置的群组屏蔽已经关闭
 
 
+#### 禁用用户
+
+	GET /v1//users/{username}/forbidden?disable={disable}
+
+Request Params
+
++ disable  boolean,true代表禁用用户，false代表激活用户
+
+Example Response
+
+```
+< HTTP/1.1 204 NO CONTENT
+< Content-Type: application/json
+```
+
 
 ### 消息相关
 
@@ -608,27 +623,31 @@ POST /v1/messages
 		</tr>
 		<tr >
 			<td>version</td>
-			<td>版本号 目前是1</td>
+			<td>版本号 目前是1 （必填）</td>
 		</tr>
 		<tr >
 			<td>target_type</td>
-			<td>发送目标类型 single - 个人，group - 群组</td>
+			<td>发送目标类型 single - 个人，group - 群组 （必填）</td>
 		</tr>
 		<tr >
 			<td>from_type</td>
-			<td>发送消息者身份 当前只限admin用户，必须先注册admin用户</td>
+			<td>发送消息者身份 当前只限admin用户，必须先注册admin用户 （必填）</td>
 		</tr>
 		<tr >
 			<td>msg_type</td>
-			<td>发消息类型 text - 文本，image - 图片, custom - 自定义消息（msg_body为json对象即可，服务端不做校验）voice - 语音</td>
+			<td>发消息类型 text - 文本，image - 图片, custom - 自定义消息（msg_body为json对象即可，服务端不做校验）voice - 语音 （必填）</td>
 		</tr>
 		<tr >
 			<td>target_id</td>
-			<td>目标id single填username group 填Group id</td>
+			<td>目标id single填username group 填Group id （必填）</td>
+		</tr>
+		<tr >
+			<td>target_appkey</td>
+			<td>跨应用目标appkey（选填）</td>
 		</tr>
 		<tr >
 			<td>from_id</td>
-			<td>发送者的username</td>
+			<td>发送者的username （必填</td>
 		</tr>
 		<tr >
 			<td>from_name</td>
@@ -637,6 +656,27 @@ POST /v1/messages
 		<tr >
 			<td>target_name</td>
 			<td>接受者展示名（选填）</td>
+		</tr>
+		<tr >
+			<td>no_offline</td>
+			<td>消息是否离线存储 true或者false，默认为false，表示需要离线存储（选填）</td>
+		</tr>
+		<tr >
+			<td>no_notification</td>
+			<td>消息是否在通知栏展示 true或者false，默认为false，表示在通知栏展示（选填）
+</td>
+		</tr>
+		<tr >
+			<td>notification</td>
+			<td>自定义通知栏展示（选填）</td>
+		</tr>
+		<tr >
+			<td>notification->title</td>
+			<td>通知的标题（选填）</td>
+		</tr>
+		<tr >
+			<td>notification->alert</td>
+			<td> 通知的内容（选填）</td>
 		</tr>
 		<tr bgcolor="#D3D3D3">
 			<td>msg_body</td>
@@ -647,15 +687,15 @@ POST /v1/messages
 		</tr>
 		<tr >
 			<td>msg_body -> text</td>
-			<td>消息内容</td>
+			<td>消息内容 （必填）</td>
 		</tr>
 		<tr >
 			<td>msg_body-> extras</td>
-			<td>选填的json对象 开发者可以自定义extras里面的key value	</td>
+			<td>选填的json对象 开发者可以自定义extras里面的key value（选填）	</td>
 		</tr>
 
 		<tr>
-		<td colspan="2" ><font  color="red">msg_type为image时,msg_body为File Upload api返回的json，格式如下 </td>
+		<td colspan="2" ><font  color="red">msg_type为image时,msg_body为上传图片返回的json，格式如下 </td>
 		</tr>
 		<tr>
 		<td>msg_body->media_id</td>
@@ -678,11 +718,15 @@ POST /v1/messages
 		<td>String 图片格式（必填）</td>
 		</tr>
 		<tr>
+		<td>msg_body->hash </td>
+		<td>String 图片hash值（可选）</td>
+		</tr>
+		<tr>
 		<td>msg_body->fsize</td>
 		<td>int 文件大小（字节数）（必填）</td>
 		</tr>
 	
-	<td colspan="2" ><font  color="red">msg_type为voice时,msg_body为File Upload api返回的json，格式如下 </td>
+	<td colspan="2" ><font  color="red">msg_type为voice时,msg_body为上传语音返回的json，格式如下 </td>
 		</tr>
 		<tr>
 		<td>msg_body->media_id</td>
@@ -699,7 +743,7 @@ POST /v1/messages
 		
 		<tr>
 		<td>msg_body->hash </td>
-		<td>String 音频hash值（必填）</td>
+		<td>String 音频hash值（可选）</td>
 		</tr>
 		<tr>
 		<td>msg_body->fsize</td>
@@ -791,7 +835,7 @@ msg_type:custom
 ##### Example Response
 
 ```
-< HTTP/1.1 200 OK
+< HTTP/1.1 201 Created
 < Content-Type: application/json
 < 
 {"msg_id": 43143728109, "msg_ctime":1493794522950}
@@ -803,6 +847,46 @@ Error Code
 + 899003    参数错误，Request Body参数不符合要求
 + 899002   用户不存在，target_id或者from_id不存在
 + 899016   from_id 没有权限发送message
+
+
+
+#### 消息撤回
+
+```
+POST /v1/messages/{username}/{msgid}/retract
+```
+##### Example Request
+
+Request Header 
+
+```
+POST /v1/messages/{username}/{msgid}/retract
+```
+Request Body
+
+N/A
+
+Request Params
+
+
+| 参数      | 含义                       | 备注   |
+| ------- | ------------------------ | ---- |
+| msgid | 消息msgid  |      |
+| username | 发送此msg的用户名 |      |
+
+
+##### Example Response 
+Response Header
+
+```
+HTTP/1.1 204 No Content
+Content-Type: application/json; charset=utf-8 
+```
+
+Error Code 
+	•	855001 超出撤回消息时间 有效撤回时间为消息发出后3分钟之内
+	•	855003 撤回消息不存在
+	•	855004 消息已经撤回
 
 ### 媒体文件下载与上传
 
@@ -850,7 +934,8 @@ Response Data
 POST /v1/resource?type=image
 ```
 ##### Example Request
-
+文件上传采用form表单上传
+curl示例:
 图片上传 curl   -F "filename=@/home/test.jpg" https://api.im.jpush.cn/v1/resource?type=image -u "appkey:secret"
 
 文件上传 curl   -F "filename=@/home/test.mp3" https://api.im.jpush.cn/v1/resource?type=file -u "appkey:secret"
@@ -863,7 +948,7 @@ POST /v1/resource?type=image
 | 参数       | 含义                     | 备注   |
 | -------- | ---------------------- | ---- |
 | filename | 磁盘本地文件路径               |      |
-| type     | 文件类型 支持是"image"，"file" |      |
+| type     | 文件类型 支持是"image", "file", "voice" |      |
 
 
 Response Header  
@@ -984,7 +1069,7 @@ Request Params
 + name               （必填）群组名字
   + 支持的字符：全部，包括 Emoji。
 + members_username 成员 username
-+ desc               （必填） 群描述 
++ desc               （选填） 群描述 
   + 支持的字符：全部，包括 Emoji。
 
 Example Response
@@ -1199,7 +1284,7 @@ Example Request
 Example Response
 
 ```
-< HTTP/1.1 204 NO Content
+< HTTP/1.1 201 
 < Content-Type: application/json; charset=utf-8 
 ```
 
@@ -1552,7 +1637,7 @@ Error Code
 + 899002 用户不存在；
 + 899051  群组不存在；
 + 899052 设置群组消息屏蔽，设置的群组屏蔽已经打开
-+ 99053 设置群组消息屏蔽，设置的群组屏蔽已经关闭
++ 899053 设置群组消息屏蔽，设置的群组屏蔽已经关闭
 
 #### 跨应用添加好友 
 
@@ -1703,10 +1788,10 @@ Content-Type: application/json; charset=utf-8
 ```
 
 Request Params
-
-+ 敏感词数组 一个词长度最多为10，默认支持100个敏感词，[有更高需求可联系商务](https://www.jiguang.cn/accounts/business/form?from=im)
+  N/A
 
 Request Body
++ 敏感词数组 一个词长度最多为10，默认支持100个敏感词，[有更高需求可联系商务](https://www.jiguang.cn/accounts/business/form?from=im)
 
 ```
 ["FUCK"] 
@@ -1745,10 +1830,11 @@ Content-Type: application/json; charset=utf-8
 
 Request Params
 
-+ old_word  旧敏感词
-+ new_word  新敏感词
+  N/A
 
 Request Body
++ old_word  旧敏感词
++ new_word  新敏感词
 
 ```
 {"new_word":"fuck", "old_word":"FUCK"}
@@ -1787,9 +1873,10 @@ Content-Type: application/json; charset=utf-8
 
 Request Params
 
-+ word  被删除的敏感词
+   N/A
 
 Request Body
++ word  被删除的敏感词
 
 ```
 {"word":"fuck"}
@@ -1822,7 +1909,7 @@ Example Request
 Request Header 
 
 ```
-GET  /v1/sensitiveword
+GET  /v1/sensitiveword?stat={start}&count={count}
 Content-Type: application/json; charset=utf-8  
 ```
 

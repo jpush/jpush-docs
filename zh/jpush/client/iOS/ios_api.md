@@ -11,7 +11,7 @@
 
 <br>
 
-提供几个相关 API 用来设置别名（alias）与标签（tags）。
+提供几个相关 API 用来操作别名（alias）与标签（tags）。
 
 这几个 API 可以在 App 里任何地方调用。
 
@@ -33,6 +33,269 @@
 可为每个用户打多个标签。
 
 举例： game, old_page, women
+
+
+### Method - addTags:completion:seq:
+
+调用此 API 来增加标签，在block中返回结果
+
+Note:这个接口是增加逻辑，而不是覆盖逻辑
+
+#### 支持的版本
+
+开始支持的版本：3.0.6
+
+#### 接口定义
+
+    + (void)addTags:(NSSet<NSString *> *)tags
+     completion:(JPUSHTagsOperationCompletion)completion
+            seq:(NSInteger)seq;
+    
+#### 参数说明
+
+* tags
+
+    * 不能设置nil或者空集合（[NSSet set]）
+    * 集合成员类型要求为NSString类型
+    * 每次调用至少设置一个 tag
+    * 有效的标签组成：字母（区分大小写）、数字、下划线、汉字。
+    * 限制：每个 tag 命名长度限制为 40 字节，最多支持设置 1000 个 tag，但总长度不得超过5K字节。（判断长度需采用UTF-8编码）
+    * 单个设备最多支持设置 1000 个 tag。App 全局 tag 数量无限制
+
+* completion 
+
+    * 用于回调返回对应的参数tags。并返回对应的状态码：0为成功，其他返回码请参考错误码定义。seq为调用时传入的会话序列号
+
+* seq
+
+    * 请求时传入的序列号，会在回调时原样返回
+
+### Method - setTags:completion:seq:
+
+调用此 API 来设置标签，在block中返回结果
+
+Note:这个接口是覆盖逻辑，而不是增加逻辑，调用此接口会覆盖之前设置的全部标签
+
+#### 支持的版本
+
+开始支持的版本：3.0.6
+
+#### 接口定义
+
+    + (void)setTags:(NSSet<NSString *> *)tags
+     completion:(JPUSHTagsOperationCompletion)completion
+            seq:(NSInteger)seq;
+    
+#### 参数说明
+
+* tags
+
+    * 不能设置nil或者空集合（[NSSet set]）
+    * 集合成员类型要求为NSString类型
+    * 每次调用至少设置一个 tag
+    * 有效的标签组成：字母（区分大小写）、数字、下划线、汉字。
+    * 限制：每个 tag 命名长度限制为 40 字节，最多支持设置 1000 个 tag，但总长度不得超过5K字节。（判断长度需采用UTF-8编码）
+    * 单个设备最多支持设置 1000 个 tag。App 全局 tag 数量无限制
+
+* completion 
+
+    * 用于回调返回对应的参数tags。并返回对应的状态码：0为成功，其他返回码请参考错误码定义。seq为调用时传入的会话序列号
+
+* seq
+
+    * 请求时传入的序列号，会在回调时原样返回
+    
+### Method - deleteTags:completion:seq:
+
+调用此 API 来删除标签，在block中返回结果
+
+#### 支持的版本
+
+开始支持的版本：3.0.6
+
+#### 接口定义
+
+    + (void)deleteTags:(NSSet<NSString *> *)tags
+     completion:(JPUSHTagsOperationCompletion)completion
+            seq:(NSInteger)seq;
+    
+#### 参数说明
+
+* tags
+
+    * 不能设置nil或者空集合（[NSSet set]）
+    * 集合成员类型要求为NSString类型
+    * 每次调用至少删除一个 tag
+    * 有效的标签组成：字母（区分大小写）、数字、下划线、汉字
+    * 限制：每个 tag 命名长度限制为 40 字节，最多支持删除 1000 个 tag，但总长度不得超过5K字节。（判断长度需采用UTF-8编码）
+
+* completion 
+
+    * 回调返回对应的参数tags。并返回对应的状态码：0为成功，其他返回码请参考错误码定义。seq为调用时传入的会话序列号
+
+* seq
+
+    * 请求时传入的序列号，会在回调时原样返回
+    
+### Method - clearTags:completion:seq:
+
+调用此 API 来清除所有标签，在block中返回结果
+
+#### 支持的版本
+
+开始支持的版本：3.0.6
+
+#### 接口定义
+
+    + (void)clearTags:(JPUSHTagsOperationCompletion)completion
+            seq:(NSInteger)seq;
+    
+#### 参数说明
+
+* completion 
+
+    * 回调返回的tags为nil。返回对应的状态码：0为成功，其他返回码请参考错误码定义。seq为调用时传入的会话序列号
+
+* seq
+
+    * 请求时传入的序列号，会在回调时原样返回
+    
+### Method - getAllTags:completion:seq:
+
+调用此 API 来获取所有标签，在block中返回结果
+
+#### 支持的版本
+
+开始支持的版本：3.0.6
+
+#### 接口定义
+
+    + (void)getAllTags:(JPUSHTagsOperationCompletion)completion
+            seq:(NSInteger)seq;
+    
+#### 参数说明
+
+* completion 
+
+    * 回调返回的tags为查询结果。返回对应的状态码：0为成功，其他返回码请参考错误码定义。seq为调用时传入的会话序列号
+
+* seq
+
+    * 请求时传入的序列号，会在回调时原样返回
+    
+### Method - validTag:completion:seq:
+
+调用此 API 来验证目标tag是否已经设置
+
+#### 支持的版本
+
+开始支持的版本：3.0.6
+
+#### 接口定义
+
+    + (void)validTag:(NSString *)tag
+     completion:(JPUSHTagValidOperationCompletion)completion
+            seq:(NSInteger)seq;
+    
+#### 参数说明
+
+* tag
+
+    * 不能设置nil或者空字符串
+    * 有效的标签组成：字母（区分大小写）、数字、下划线、汉字。
+    * 限制：每个 tag 命名长度限制为 40 字节（判断长度需采用UTF-8编码）
+
+* completion 
+
+    * 回调返回对应的参数tag。并返回对应的状态码：0为成功，其他返回码请参考错误码定义。seq为调用时传入的会话序列号
+    * 在回调中查看isBind属性查看是否已经设置，YES为已经设置
+
+* seq
+
+    * 请求时传入的序列号，会在回调时原样返回
+    
+### Tags Block 
+	typedef void (^JPUSHTagsOperationCompletion)(NSInteger iResCode, NSSet *iTags, NSInteger seq);
+	typedef void (^JPUSHTagValidOperationCompletion)(NSInteger iResCode, NSSet *iTags, NSInteger seq, BOOL isBind);
+        
+### Method - setAlias:completion:seq:
+
+调用此 API 来设置别名
+
+#### 支持的版本
+
+开始支持的版本：3.0.6
+
+#### 接口定义
+
+    + (void)setAlias:(NSString *)alias
+      completion:(JPUSHAliasOperationCompletion)completion
+             seq:(NSInteger)seq;
+    
+#### 参数说明
+
+- alias
+    - 不能设置nil或者空字符串@""
+    - 每次调用设置有效的别名，覆盖之前的设置。
+    - 有效的别名组成：字母（区分大小写）、数字、下划线、汉字。
+    - 限制：alias 命名长度限制为 40 字节。（判断长度需采用UTF-8编码）
+    
+* completion 
+	
+    * 回调返回对应的参数alias。并返回对应的状态码：0为成功，其他返回码请参考错误码定义。seq为调用时传入的会话序列号
+
+* seq
+
+    * 请求时传入的序列号，会在回调时原样返回
+    
+### Method - deleteAlias:completion:seq:
+
+调用此 API 来删除别名，在block中返回结果
+
+#### 支持的版本
+
+开始支持的版本：3.0.6
+
+#### 接口定义
+
+    + (void)deleteAlias:(JPUSHAliasOperationCompletion)completion
+                seq:(NSInteger)seq;
+    
+#### 参数说明
+
+* completion 
+
+    * 回调返回的tags为nil。返回对应的状态码：0为成功，其他返回码请参考错误码定义。seq为调用时传入的会话序列号
+
+* seq
+
+    * 请求时传入的序列号，会在回调时原样返回
+    
+### Method - getAlias:completion:seq:
+
+调用此 API 来查询当前别名，在block中返回结果
+
+#### 支持的版本
+
+开始支持的版本：3.0.6
+
+#### 接口定义
+
+    + (void)getAlias:(JPUSHAliasOperationCompletion)completion
+             seq:(NSInteger)seq;
+    
+#### 参数说明
+
+* completion 
+
+    * 回调返回的tags为查询结果。返回对应的状态码：0为成功，其他返回码请参考错误码定义。seq为调用时传入的会话序列号
+
+* seq
+
+    * 请求时传入的序列号，会在回调时原样返回
+    
+### Alias Block 
+	typedef void (^JPUSHAliasOperationCompletion)(NSInteger iResCode, NSString *iAlias, NSInteger seq);
 
 ### Method - setTagsWithAlias (with Callback)
 
@@ -57,7 +320,7 @@
     - nil 此次调用不设置此值。
     - 空字符串 （@""）表示取消之前的设置。
     - 每次调用设置有效的别名，覆盖之前的设置。
-    - 有效的别名组成：字母（区分大小写）、数字、下划线、汉字，特殊字符(v2.1.9支持)@!#$&*+=.|。
+    - 有效的别名组成：字母（区分大小写）、数字、下划线、汉字。
     - 限制：alias 命名长度限制为 40 字节。（判断长度需采用UTF-8编码）
 
 * tags
@@ -66,7 +329,7 @@
     * 空集合（[NSSet set]）表示取消之前的设置。
     * 集合成员类型要求为NSString类型
     * 每次调用至少设置一个 tag，覆盖之前的设置，不是新增。
-    * 有效的标签组成：字母（区分大小写）、数字、下划线、汉字，特殊字符(v2.1.9支持)@!#$&*+=.|。
+    * 有效的标签组成：字母（区分大小写）、数字、下划线、汉字。
     * 限制：每个 tag 命名长度限制为 40 字节，最多支持设置 1000 个 tag，但总长度不得超过7K字节。（判断长度需采用UTF-8编码）
     * 单个设备最多支持设置 1000 个 tag。App 全局 tag 数量无限制。
 
@@ -117,7 +380,7 @@
     - nil 此次调用不设置此值。
     - 空字符串 （@""）表示取消之前的设置。
     - 每次调用设置有效的别名，覆盖之前的设置。
-    - 有效的别名组成：字母（区分大小写）、数字、下划线、汉字，特殊字符(v2.1.9支持)@!#$&*+=.|。
+    - 有效的别名组成：字母（区分大小写）、数字、下划线、汉字。
     - 限制：alias 命名长度限制为 40 字节。（判断长度需采用UTF-8编码）
 
 * tags
@@ -126,7 +389,7 @@
     * 空集合（[NSSet set]）表示取消之前的设置。
     * 集合成员类型要求为NSString类型
     * 每次调用至少设置一个 tag，覆盖之前的设置，不是新增。
-    * 有效的标签组成：字母（区分大小写）、数字、下划线、汉字，特殊字符(v2.1.9支持)@!#$&*+=.|。
+    * 有效的标签组成：字母（区分大小写）、数字、下划线、汉字。
     * 限制：每个 tag 命名长度限制为 40 字节，最多支持设置 1000 个 tag，但总长度不得超过7K字节。（判断长度需采用UTF-8编码）
     * 单个设备最多支持设置 1000 个 tag。App 全局 tag 数量无限制。
 
@@ -158,7 +421,7 @@
     - nil 此次调用不设置此值。
     - 空字符串 （@""）表示取消之前的设置。
     - 每次调用设置有效的别名，覆盖之前的设置。
-    - 有效的别名组成：字母（区分大小写）、数字、下划线、汉字，特殊字符(v2.1.9支持)@!#$&*+=.|。
+    - 有效的别名组成：字母（区分大小写）、数字、下划线、汉字、。
     - 限制：alias 命名长度限制为 40 字节。（判断长度需采用UTF-8编码）
 
 * tags
@@ -167,7 +430,7 @@
     * 空集合（[NSSet set]）表示取消之前的设置。
     * 集合成员类型要求为NSString类型
     * 每次调用至少设置一个 tag，覆盖之前的设置，不是新增。
-    * 有效的标签组成：字母（区分大小写）、数字、下划线、汉字，特殊字符(v2.1.9支持)@!#$&*+=.|。
+    * 有效的标签组成：字母（区分大小写）、数字、下划线、汉字。
     * 限制：每个 tag 命名长度限制为 40 字节，最多支持设置 1000 个 tag，但总长度不得超过7K字节。（判断长度需采用UTF-8编码）
     * 单个设备最多支持设置 1000 个 tag。App 全局 tag 数量无限制。
 
@@ -213,7 +476,7 @@
     * nil 此次调用不设置此值。
     * 空集合（[NSSet set]）表示取消之前的设置。
     * 每次调用至少设置一个 tag，覆盖之前的设置，不是新增。
-    * 有效的标签组成：字母（区分大小写）、数字、下划线、汉字，特殊字符(v2.1.9支持)@!#$&*+=.|。
+    * 有效的标签组成：字母（区分大小写）、数字、下划线、汉字。
     * 限制：每个 tag 命名长度限制为 40 字节，最多支持设置 1000 个tag，但总长度不得超过7K字节。（判断长度需采用UTF-8编码）
     * 单个设备最多支持设置 1000 个 tag。App 全局 tag 数量无限制。
 
@@ -253,7 +516,7 @@
 * alias 
      * 空字符串 （@""）表示取消之前的设置。
      * 每次调用设置有效的别名，覆盖之前的设置。
-     * 有效的别名组成：字母（区分大小写）、数字、下划线、汉字，特殊字符(v2.1.9支持)@!#$&*+=.|。
+     * 有效的别名组成：字母（区分大小写）、数字、下划线、汉字。
      * 限制：alias 命名长度限制为 40 字节。（判断长度需采用UTF-8编码）
 * callbackSelector 
      * nil 此次调用不需要 Callback。
@@ -393,7 +656,7 @@ NSDictionary *remoteNotification = [launchOptions objectForKey: UIApplicationLau
   else {
      // 本地通知
   }
-  completionHandler(UNNotificationPresentationOptionBadge|UNNotificationPresentationOptionSound|UNNotificationPresentationOptionAlert); // 需要执行这个方法，选择是否提醒用户，有Badge、Sound、Alert三种类型可以设置
+  completionHandler(UNNotificationPresentationOptionAlert); // 需要执行这个方法，选择是否提醒用户，有Badge、Sound、Alert三种类型可以选择设置
 }
 
 // iOS 10 Support
@@ -1006,10 +1269,54 @@ API用来关闭日志信息（除了必要的错误信息）
 ```
 ## 页面的统计
 
-### API 说明
+### 支持的版本
 
-页面流统计的展示数据来源已切换为 JAnalytics 的数据。
-该功能请使用 iOS JAnalytics API： [页面流统计](https://docs.jiguang.cn/janalytics/client/ios_api/#sdk_1)
+r1.7.0 版本开始。
+
+### 功能说明
+
+本 API 用于“用户指定页面使用时长”的统计，并上报到服务器，在 Portal 上展示给开发者。页面统计集成正确，才能够获取正确的页面访问路径、访问深度（PV）的数据。
+
+### API
+
+#### 接口定义
+
+    + (void)startLogPageView:(NSString*)pageName;
+    + (void)stopLogPageView:(NSString*)pageName;
+    + (void)beginLogPageView:(NSString*)pageName duration:(int)seconds;
+    
+
+#### 参数说明
+
+* pageName 需要统计页面自定义名称
+* duration 自定义的页面时间
+
+#### 调用说明
+
+应在所有的需要统计得页面得 viewWillAppear 和 viewWillDisappear 加入 startLogPageView 和 stopLogPageView 来统计当前页面的停留时间。
+
+<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">
+<p>或者直接使用 beginLogPageView 来自定义加入页面和时间信息。
+</div>
+
+### 代码示例
+
+    - (void)viewWillAppear:(BOOL)animated
+        {
+            [super viewWillAppear:animated];
+            [JPUSHService startLogPageView:@"PageOne"];
+        }
+    - (void)viewWillDisappear:(BOOL)animated 
+        {
+            [super viewWillDisappear:animated];
+            [JPUSHService stopLogPageView:@"PageOne"];
+        }   
+    －(void)trackView
+       {
+           [JPUSHService beginLogPageView:@"PageTwo" duration:10];
+       }
+    
+
 
 ## 地理位置统计
 
@@ -1188,7 +1495,7 @@ API 用于统计用户应用崩溃日志
     <tr >
       <td>6003</td>
       <td>alias 字符串不合法</td>
-      <td>有效的别名组成：字母（区分大小写）、数字、下划线、汉字，特殊字符(v2.1.9支持)@!#$&*+=.|</td>
+      <td>有效的别名、标签组成：字母（区分大小写）、数字、下划线、汉字</td>
     </tr>
     <tr >
       <td>6004</td>
@@ -1198,7 +1505,7 @@ API 用于统计用户应用崩溃日志
     <tr >
       <td>6005</td>
       <td>某一个 tag 字符串不合法</td>
-      <td>有效的标签组成：字母（区分大小写）、数字、下划线、汉字，特殊字符(v2.1.9支持)@!#$&*+=.|</td>
+      <td>有效的别名、标签组成：字母（区分大小写）、数字、下划线、汉字</td>
     </tr>
     <tr >
       <td>6006</td>
@@ -1216,10 +1523,60 @@ API 用于统计用户应用崩溃日志
       <td>总长度最多 7K 字节</td>
     </tr>
     <tr >
+      <td>6009</td>
+      <td>未知错误</td>
+      <td>SDK发生了意料之外的异常</td>
+    </tr>
+    <tr >
       <td>6011</td>
       <td>10s内设置tag或alias大于10次</td>
       <td>短时间内操作过于频繁</td>
     </tr>
+    <tr >
+      <td>6014</td>
+      <td>请求繁忙</td>
+      <td>请求频率太高，本次请求失败,请重新发起请求</td>
+    </tr>
+    <tr >
+      <td>6015</td>
+      <td>黑名单</td>
+      <td>用户被拉入黑名单</td>
+    </tr>
+    <tr >
+      <td>6016</td>
+      <td>该用户无效</td>
+      <td>失效用户请求失败</td>
+    </tr>
+    <tr >
+      <td>6017</td>
+      <td>该请求无效</td>
+      <td>本次请求出现异常参数，请求无效</td>
+    </tr>
+	 <tr >
+      <td>6018</td>
+      <td>Tags过多</td>
+      <td>该用户tags已设置超过1000个，不能在设置</td>
+    </tr>
+    <tr >
+      <td>6019</td>
+      <td>获取Tags失败</td>
+      <td>在获取全部tags时发生异常</td>
+    </tr>
+	  <tr >
+      <td>6020</td>
+      <td>请求失败</td>
+      <td>发生了特殊问题导致请求失败</td>
+    </tr>
+    <tr >
+      <td>6021</td>
+      <td>tags操作正在进行中</td>
+      <td>上一次的tags请求还在等待响应，暂时不能执行下一次请求</td>
+    </tr>
+	 <tr >
+      <td>6022</td>
+      <td>alias操作正在进行中</td>
+      <td>上一次的alias请求还在等待响应，暂时不能执行下一次请求</td>
+    </tr>    
   </table>
 </div>
 
@@ -1233,5 +1590,7 @@ API 用于统计用户应用崩溃日志
 
 
 
-[0]: https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/#//apple_ref/doc/uid/TP40008194-CH3-SW1
+[0]: https://developer.apple.com/library/ios/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/IPhoneOSClientImp.html#//apple_ref/doc/uid/TP40008194-CH103-SW4
 [1]: https://github.com/ylechelle/OpenUDID
+
+
