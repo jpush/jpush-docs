@@ -1,6 +1,6 @@
 # JSMS Schedule API <small>v1</small>
-<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 16px 16px;">
-<ul style="margin-bottom: 0;margin-top: 8px;">
+<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px;">
+<ul style="margin-bottom:0px;">
 <li>API 层面支持定时功能</li>
 </ul>
 </div>

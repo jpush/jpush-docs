@@ -1,13 +1,17 @@
 #回调接口
-<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding:8px 16px;">
-<ul style=margin-button:0px;>
-<li>下行消息发送状态和上行消息内容支持以回调的形式传给开发者</li>
+<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px;">
+<ul style="margin-bottom: 0;">
+<li>设置并校验回调地址；</li>
+<li>回调消息格式说明；</li>
+<li>测试回调功能的方法；</li>
 </ul>
 </div>
 </br>
 
-##设置回调地址
-若需要使用回调接口，需先在控制台填写回调地址并通过校验。
+## 设置回调地址
+### 功能说明
+- 设置并校验回调地址
+
 ###操作路径
 Step1：登入控制台  
 Step2：进入应用模版  
@@ -20,26 +24,26 @@ Step4：点击选择需要使用的回调接口
 
 ##回调消息格式
 ###回调方式说明
-当有回调消息时，将采用HTTP POST的方式向开发者填写的回调URL提交通知消息。需要注意的是，如果回调失败，那么极光将会在一定的时间间隔后重试，最多重试三次。重试回调的时间间隔分别是3分钟、1小时、12小时。
+当有回调消息时，将采用 HTTP POST 的方式向开发者填写的回调 URL 提交通知消息。需要注意的是，如果回调失败，那么极光将会在一定的时间间隔后重试，最多重试三次。重试回调的时间间隔分别是 3 分钟、1 小时、12 小时。
 ###回调的基础参数如下
 |KEY|REQUIRE|DESCRIPTION|
 |----|----|----|
-|nonce|Long|随机长整数|    
-|signature|  String|签名，结合appKey、appMasterSecret、nonce、timestamp生成|
+|nonce|Long|  随机长整数|    
+|signature|  String|  签名，结合 appKey、appMasterSecret、nonce、timestamp 生成|
 |timestamp|  Long|  当前时间戳，毫秒值|
 |type|  String|  通知类型（SMS_REPORT/SMS_REPLY）|
-|data|  String|  通知内容，json字符串，开发者可以根据type反序列化data|
+|data|  String|  通知内容，json 字符串，开发者可以根据 type 反序列化 data|
 
 ###signature生成校验规则
-* 将appKey、appMasterSecret、nonce、timestamp的值代入生成字符串appKey={appKey}&appMasterSecret={appMasterSecret}&nonce={nonce}&timestamp={timestamp}；
-* 对生成的字符串进行sha1加密；
-* 开发者把接收到的signature和自己本地代码按照同样规则生成的签名作对比，如果一致，则可以认定此回调来自极光。
+* 将 appKey、appMasterSecret、nonce、timestamp 的值代入生成字符串 appKey={appKey}&appMasterSecret={appMasterSecret}&nonce={nonce}&timestamp={timestamp}；
+* 对生成的字符串进行 sha1 加密；
+* 开发者把接收到的 signature 和自己本地代码按照同样规则生成的签名作对比，如果一致，则可以认定此回调来自极光。
 
 ###下行消息送达状态回调参数
 
 |CODE| TYPE| DESCRIPTION|
 |----|----|----|
-|msgId|	String| api 调用的时候返回的 msg_id|
+|msgId|	String| API 调用的时候返回的 msg_id|
 |status| Integer| 发送状态返回码|
 |receiveTime| Date| 短信送达时间|
 |phone|	String| 短信送达手机号|
@@ -49,10 +53,10 @@ Step4：点击选择需要使用的回调接口
 |CODE|DESCRIPTION|
 |----|----|
 |4001|发送成功|
-|4002|被叫手机号为运营商黑名单，需联系运营商处理|
+|4002|被叫手机号码为运营商黑名单，需联系运营商处理|
 |4003|手机终端问题，手机关机、停机等，请确认手机状态是否正常|
-|4004|被叫手机号为空号，请核实手机号是否合规|
-|4005|余额不足|
+|4004|被叫手机号码为空号，请核实手机号码是否合规|
+|4005|可发送短信余量不足|
 |4006|发送超频|
 |4100|其他错误|
 
@@ -60,12 +64,16 @@ Step4：点击选择需要使用的回调接口
 
 |CODE| TYPE| DESCRIPTION|
 |---| ----| ----|
-|phone| String| 主叫号码（用户手机号）|
-|replyTime| Date| 消息送达到极光业务的时间|
+|phone| String| 主叫号码（用户手机号码）|
+|replyTime| Date| 消息送达到极光平台的时间|
 |content| String| 用户回复的消息内容|
 
 <a name="回调测试"></a>
 ##回调测试
+### 功能说明
+- 提供两种测试回调功能的方法：
+ 1. 控制台回调设置页面测试；
+ 2. curl 模拟 POST 回调请求；
 
 ###控制台回调设置页面测试
 开发者点击回调设置页面中的测试按钮，极光将发起一次回调，将固定的测试数据回调到开发者提供的回调地址上。开发者可以通过检查是否收到回调请求，且接收到的数据是否与下面表格中一致以判断回调请求是否成功。  
@@ -86,8 +94,8 @@ Step4：点击选择需要使用的回调接口
 |receiveTime|	1492150740292|
 |status|	4001|
 
-###curl模拟POST回调请求
-在linux上可以很方便的使用curl命令发起HTTP POST请求，在windows下需要安装curl工具软件。以下是curl模拟回调的示例
+###curl 模拟 POST 回调请求
+在 linux 上可以很方便的使用 curl 命令发起 HTTP POST 请求，在 windows 下需要安装 curl 工具软件。以下是 curl 模拟回调的示例
 
 ###上行消息内容回调
 
@@ -103,9 +111,9 @@ curl -d "nonce=7659972084945889195&timestamp=1492150740274&signature=007eff6a105
 ```
 
 
-###HttpClient模拟POST回调请求
+###HttpClient 模拟 POST 回调请求
 
-以下是Java语言使用apache HttpClient组件模拟回调的示例，使用前需引入以下 jar 包： 
+以下是 Java 语言使用 apache HttpClient 组件模拟回调的示例，使用前需引入以下 jar 包： 
 
 ***pom.xml***
 
