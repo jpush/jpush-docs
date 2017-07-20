@@ -134,10 +134,10 @@ pages:
   - iOS:
     - 'iOS SDK 概述': 'jsms/client/iOS_SMS_SDK.md'
   - REST API:
-    - 'REST API 概述': 'jsms/server/rest_api_jsms_summary v1.0.md'
-    - '短信发送 API': 'jsms/server/rest_api_jsms_send v1.1.md'
-    - '短信定时发送 API': 'jsms/server/rest_api_jsms_schedule v1.1.md'
-    - '回调接口': 'jsms/server/rest_api_jsms_callback v1.0.md'
+    - 'REST API 概述': 'jsms/server/rest_api_summary.md'
+    - '短信发送 API': 'jsms/server/rest_api_jsms.md'
+    - '短信定时发送 API': 'jsms/server/rest_api_jsms_schedule.md'
+    - '回调接口': 'jsms/server/callback.md'
   - 服务端 SDK:
     - 'Java SDK': 'jsms/server/sdk/java_sdk.md'
     - 'PHP SDK': 'jsms/server/sdk/php_sdk.md'
