@@ -205,7 +205,7 @@ handler：分享结果的回调。
 ##获取社交平台用户信息
 ###method - getSoicalUserInfo
 ####接口定义：
-+(void)getSoicalUserInfo:(JSHAREPlatform)platform
++(void)getSocialUserInfo:(JSHAREPlatform)platform
                   handler:(JSHARESocialHandler)handler
                   
 ####接口说明：
@@ -219,7 +219,7 @@ handler：分享结果的回调。
 ####调用实例：
 
 ```
-[JSHAREService getSoicalUserInfo:platfrom handler:^(JSHARESocialUserInfo *userInfo, NSError *error) {
+[JSHAREService getSocialUserInfo:platfrom handler:^(JSHARESocialUserInfo *userInfo, NSError *error) {
         NSString *alertMessage;
         NSString *title;
         if (error) {
