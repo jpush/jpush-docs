@@ -77,7 +77,7 @@ public static void authorize(String name, AuthListener authListener)
 ```
 JShareInterface.authorize(platform, new AuthListener() {
     @Override
-    public void onComplete(Platform platform, int i, BaseResponseInfo data) {
+    public void onComplete(Platform platform, int action, BaseResponseInfo data) {
         Logger.dd(TAG, "onComplete:" + platform + ",action:" + action + ",data:" + data);
         String toastMsg = null;
         switch (action) {
@@ -98,7 +98,7 @@ JShareInterface.authorize(platform, new AuthListener() {
     }
 
     @Override
-    public void onError(Platform platform, int i, int i1, Throwable throwable) {
+    public void onError(Platform platform, int action, int errorcode, Throwable throwable) {
         String toastMsg = null;
         switch (action) {
             case Platform.ACTION_AUTHORIZING:
@@ -108,7 +108,7 @@ JShareInterface.authorize(platform, new AuthListener() {
     }
 
     @Override
-    public void onCancel(Platform platform, int i) {
+    public void onCancel(Platform platform, int action) {
         Logger.dd(TAG, "onCancel:" + platform + ",action:" + action);
         String toastMsg = null;
         switch (action) {
@@ -151,7 +151,7 @@ public static void removeAuthorize(String name, AuthListener actionListener)
 ```
 JShareInterface.removeAuthorize(platform, new AuthListener() {
     @Override
-    public void onComplete(Platform platform, int i, BaseResponseInfo data) {
+    public void onComplete(Platform platform, int action, BaseResponseInfo data) {
        Logger.dd(TAG, "onComplete:" + platform + ",action:" + action + ",data:" + data);
        String toastMsg = null;
        switch (action) {
@@ -162,7 +162,7 @@ JShareInterface.removeAuthorize(platform, new AuthListener() {
     }
 
     @Override
-    public void onError(Platform platform, int i, int i1, Throwable throwable) {
+    public void onError(Platform platform, int action, int errorcode, Throwable throwable) {
         Logger.dd(TAG, "onError:" + platform + ",action:" + action + ",error:" + error);
         String toastMsg = null;
         switch (action) {
@@ -173,7 +173,7 @@ JShareInterface.removeAuthorize(platform, new AuthListener() {
     }
 
     @Override
-    public void onCancel(Platform platform, int i) {
+    public void onCancel(Platform platform, int action) {
     
     }
 });
@@ -196,7 +196,7 @@ public static void getUserInfo(String platName, AuthListener authListener)
 ```
 JShareInterface.getUserInfo(platform, new AuthListener() {
     @Override
-    public void onComplete(Platform platform, int i, BaseResponseInfo data) {
+    public void onComplete(Platform platform, int action, BaseResponseInfo data) {
         Logger.dd(TAG, "onComplete:" + platform + ",action:" + action + ",data:" + data);
         String toastMsg = null;
         switch (action) {
@@ -217,7 +217,7 @@ JShareInterface.getUserInfo(platform, new AuthListener() {
     }
 
     @Override
-    public void onError(Platform platform, int i, int i1, Throwable throwable) {
+    public void onError(Platform platform, int action, int errorcode, Throwable throwable) {
         Logger.dd(TAG, "onError:" + platform + ",action:" + action + ",error:" + error);
         String toastMsg = null;
         switch (action) {
@@ -228,7 +228,7 @@ JShareInterface.getUserInfo(platform, new AuthListener() {
     }
 
     @Override
-    public void onCancel(Platform platform, int i) {
+    public void onCancel(Platform platform, int action) {
         Logger.dd(TAG, "onCancel:" + platform + ",action:" + action);
         String toastMsg = null;
         switch (action) {
