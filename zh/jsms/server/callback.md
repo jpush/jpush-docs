@@ -1,9 +1,9 @@
 #回调接口
-<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px;">
-<ul style="margin-bottom: 0;">
-<li>设置并校验回调地址；</li>
-<li>回调消息格式说明；</li>
-<li>测试回调功能的方法；</li>
+<div>
+<ul>
+    <li>设置并校验回调地址；</li>
+    <li>回调消息格式说明；</li>
+    <li>测试回调功能的方法；</li>
 </ul>
 </div>
 </br>
@@ -298,4 +298,6 @@ public class CallbackTest {
     }
 }
 
-```  
+```
+
+
