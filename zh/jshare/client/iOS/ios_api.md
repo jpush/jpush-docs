@@ -1,17 +1,18 @@
 # iOS SDK API
 
-##SDK 接口说明
+##SDK 接口说明：
 JSHAREService 类，包含分享 SDK 的所有接口。<br>
 JSHARELaunchConfig 类，分享 SDK 启动配置模型。<br>
 JSHAREMessage 类，分享参数模型。<br>
-
-##SDK 初始化
+JSHARESocial 类，社交平台授权信息模型。<br>
+JSHARESocialUserInfo 类，社交平台用户信息模型，继承于 JSHARESocial。<br>
+##SDK 初始化：
 
 ### Method - setupWithConfig
 
-####接口说明
+####接口说明：
 初始化接口,建议在 application:didFinishLaunchingWithOptions 中调用。
-####接口定义
+####接口定义：
 ```
 +(void)setupWithConfig:(JSHARELaunchConfig *)config
 ```
@@ -19,7 +20,7 @@ JSHAREMessage 类，分享参数模型。<br>
 ####参数说明：
 config：JSHARELaunchConfig 类。
     
-####调用示例
+####调用示例：
 
    
    
@@ -201,18 +202,84 @@ handler：分享结果的回调。
     
  +(BOOL)isSinaWeiBoInstalled
 
+##获取社交平台用户信息
+###method - getSoicalUserInfo
+####接口定义：
++(void)getSocialUserInfo:(JSHAREPlatform)platform
+                  handler:(JSHARESocialHandler)handler
+                  
+####接口说明：
+通过调用获取用户信息接口，获取用户在第三方平台的用户ID、头像等资料完成账号体系的构建。
+
+####参数说明：
+
+* platform : JSHAREPlatform 枚举类型
+* handler : JSHARESocialHandler 获取用户信息的回调
+
+####调用实例：
+
+```
+[JSHAREService getSocialUserInfo:platfrom handler:^(JSHARESocialUserInfo *userInfo, NSError *error) {
+        NSString *alertMessage;
+        NSString *title;
+        if (error) {
+            title = @"失败";
+            alertMessage = @"无法获取到用户信息";
+        }else{
+            title = userInfo.name;
+            alertMessage = [NSString stringWithFormat:@"昵称: %@\n 头像链接: %@\n 性别: %@\n",userInfo.name,userInfo.iconurl,userInfo.gender == 1? @"男" : @"女"];
+        }
+        UIAlertView *Alert = [[UIAlertView alloc] initWithTitle:title message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [Alert show];
+        });
+        
+        
+    }];
+```
+
+###method - isPlatformAuth
+####接口定义：
++(BOOL)isPlatformAuth:(JSHAREPlatform)platform
+####接口说明：
+检查用户授权之后信息是否过期。注意：仅仅检验本地 token 是否在有效期内，假如对应的社交平台用户在社交平台手动取消了授权，即使本地 token 还在有效期内，但是还是失效的。
+
+####参数说明：
+* platform: 社交平台枚举 
+
+####调用实例：
+```
+BOOL isOauth = [JSHAREService isPlatformAuth:JSHAREPlatformQQ];
+```
+###method - cancelAuthWithPlatform
+####接口定义：
++(BOOL)cancelAuthWithPlatform:(JSHAREPlatform)platfrom
+
+####接口说明：
+删除用户授权之后的储存在本地的授权信息。
+
+####参数说明：
+* platform: 社交平台枚举 
+
+####调用实例：
+```
+BOOL cancelOauth =     [JSHAREService cancelAuthWithPlatform:JSHAREPlatformQQ];
+;
+```
+
+
 ##日志等级设置
 ###Method - setDebug
-####接口说明
+####接口说明：
 设置是否打印 sdk 产生的 Debug 级 log 信息, 默认为 NO (不打印 Debug 级 log)
-####接口定义
+####接口定义：
 ```    
 +(void)setDebug:(BOOL)enable
 ```
 ####参数说明：
 enable：设置为 YES 开启，设置为 NO 关闭
 
-####调用示例 
+####调用示例： 
         
 ```
 [JSHAREService setDebug:YES];

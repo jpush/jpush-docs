@@ -896,6 +896,29 @@ public void onEventMainThread(EventEntity event){
   </table>
 </div>
 
+消息被对方撤回通知事件
+***Since 2.2.0***
+<div class="table-d" align="left" >
+  <table border="1" width = "100%">
+    <tr  bgcolor="#D3D3D3" >
+      <th width="100px">方法</th>
+      <th width="20px">类型</th>
+      <th width="300px">说明</th>
+    </tr>
+    <tr >
+      <td >getConversation()</td>
+      <td >Conversation</td>
+      <td >获取被撤回消息所属的会话对象</td>
+    </tr>
+    <tr >
+      <td >getRetractedMessage()</td>
+      <td >Message</td>
+      <td >获取被撤回的message对象.  
+      (注意!此时获取到的Message的MessageContent对象已经从撤回前的真正的消息内容变为了PromptContent类型的提示文字)</td>
+    </tr>
+  </table>
+</div>
+
 
 #### 示例代码
 接收消息事件
@@ -1182,17 +1205,16 @@ conversation.createSendMessage(MessageContent content, List<UserInfo> atList, St
 #### 创建@全体群成员的消息
 ***Since 2.2.0***  
 ```
-conversation.createSendMessage(MessageContent content, boolean isAtAll, String customFromName)
+conversation.createSendMessageAtAllMember(MessageContent content, String customFromName)
 ```
 参数说明
 
 + MessageContent content 消息内容对象
-+ boolean isAtAll 是否需要@全体群成员 true - 是，false - 否
 + String customFromName 自定义fromName
 
 返回
 
-+ Message 消息对象。
++ Message 一条包含@全体成员信息的消息对象。
 
 #### 判断消息是否@了自己
 ***Since 2.1.0***  

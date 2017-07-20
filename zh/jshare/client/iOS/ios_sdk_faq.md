@@ -17,6 +17,12 @@ URL Types 没有配置或者 URL Schemes 格式不对；查看：<a href="https:
 
 
 ##分享成功，但是统计不到数据
-必须在 Appdelegate 的 application 中调用 handleOpenUrl:(NSURL *)url 回调接口。 如果不调用 handleOpenUrl 接口，则获取不到分享成功后的数据。
+需要在AppDelegate类的 - (BOOL)application:(UIApplication \*)application handleOpenURL:(NSURL \*)url 函数中，调用此函数 +(BOOL)handleOpenUrl:(NSURL *)url;否则获取不到分享成功后的数据。
 
 
+##新浪微博登录授权时报错，error：sso package or sign error
+在[新浪微博开放平台](http://open.weibo.com/)的基本信息中查看 Bundle ID；
+
+![](../image/bundle_id.png)
+
+将项目的 Bundle ID 设置为开放平台的 Bundle ID 即可。
