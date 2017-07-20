@@ -135,9 +135,9 @@ JSHAREMessage *message = [JSHAREMessage message];
 }
 
 ```
-###method - getSoicalUserInfo
+###method - getSocialUserInfo
 ####接口定义：
-+(void)getSoicalUserInfo:(JSHAREPlatform)platform
++(void)getSocialUserInfo:(JSHAREPlatform)platform
                   handler:(JSHARESocialHandler)handler
                   
 ####接口说明：
@@ -151,7 +151,7 @@ JSHAREMessage *message = [JSHAREMessage message];
 ####调用实例：
 
 ```
-[JSHAREService getSoicalUserInfo:platfrom handler:^(JSHARESocialUserInfo *userInfo, NSError *error) {
+[JSHAREService getSocialUserInfo:platfrom handler:^(JSHARESocialUserInfo *userInfo, NSError *error) {
         NSString *alertMessage;
         NSString *title;
         if (error) {
