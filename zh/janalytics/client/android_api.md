@@ -13,7 +13,7 @@
 	JAnalyticsInterface.init(this);
 ~~~
 
-+ ***JAnalyticsInterface.setDebugModel(boolean enable)***
++ ***JAnalyticsInterface.setDebugMode(boolean enable)***
 	+ 接口说明：
 		+ 设置是否开启debug模式。true则会打印更多的日志信息。建议在init接口之前调用。
 	+ 参数说明：
@@ -21,7 +21,7 @@
 	+ 调用示例：
 
 ~~~
-	JAnalyticsInterface.setDebugModel(true);
+	JAnalyticsInterface.setDebugMode(true);
 ~~~
 
 + ***JAnalyticsInterface.initCrashHandler(Context context)***
@@ -155,7 +155,7 @@
      event_value
      此类 key 已被模型使用，如果使用则会导致统计到的数据不准确.
 <a name="login"></a>
-##登陆事件模型
+##登录事件模型
 + ***LoginEvent***
 
 该模型是登录事件模型，可以设置参数进行数据上报。
