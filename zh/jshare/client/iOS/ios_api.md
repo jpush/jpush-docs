@@ -203,7 +203,7 @@ handler：分享结果的回调。
  +(BOOL)isSinaWeiBoInstalled
 
 ##获取社交平台用户信息
-###method - getSoicalUserInfo
+###method - getSocialUserInfo
 ####接口定义：
 +(void)getSocialUserInfo:(JSHAREPlatform)platform
                   handler:(JSHARESocialHandler)handler
