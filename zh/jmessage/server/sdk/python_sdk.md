@@ -3,7 +3,10 @@
 ## 简介
 这是 JMessage REST API 的 Python 封装开发包，是由极光推送官方提供的，一般支持最新的 API 功能。
 
-对应的 REST API 文档：<https://docs.jiguang.cn/jmessage/server/rest_api_im/>
+对应的 REST API 文档：[https://docs.jiguang.cn/jmessage/server/rest_api_im/](https://docs.jiguang.cn/jmessage/server/rest_api_im/)    
+
+
+版本更新：[Release页面](https://github.com/jpush/jmessage-api-python-client/releases)。下载更新请到这里。
 
 ## 支持
 
@@ -11,12 +14,15 @@ Python 2.7
 
 ## 安装
 
+pip 安装
+```
+pip install jmessage
+```
+
 下载之后运行
 ```
 python setup.py install 
 ```
-
-(稍后支持 pip 安装)
 
 ## 样例
 >以下代码截取自项目目录下的 example/users/regist_user.py

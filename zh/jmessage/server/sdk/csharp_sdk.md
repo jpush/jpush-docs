@@ -1,7 +1,9 @@
 # JMessage API client library for CSharp
 
 ## 概述
-JMessage's officially supported CSharp client library for accessing JMessage APIs. 极光IM官方支持的 CSharp 版本服务器端 SDK。
+JMessage's officially supported CSharp client library for accessing JMessage APIs. 极光IM官方支持的 CSharp 版本服务器端 SDK。     
+
+版本更新：[Release页面](https://github.com/jpush/jmessage-api-csharp-client/releases)。下载更新请到这里。
 
 ## 安装
 ###  本地安装
