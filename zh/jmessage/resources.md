@@ -53,36 +53,51 @@
     </div>
 </div>
 
-##  DEMO 下载体验
-<div class="row server downloads">
-    <div class="form-group">
-        <div class="col-md-4">
-            <img src="../image/jchat.png" alt="JChat">
-            <h4 class="col-sm-offset-5">扫码下载</h4>
+
+## DEMO 下载体验
+
+<div class="row server downloads j-chat-demo" style="margin: 0">
+    <div class="box">
+        <div class="col-md-4 item">
+            <img src="../image/jchat.png" alt="JChat" style="margin-bottom: 0; border:none;margin-top: -1px;">
+            <p style="margin-left: 60px; margin-top: -5px;">扫码下载</p>
         </div>
-        <div class="col-md-8">
-            <div class="caption">
-                <h4>即时通讯场景应用 JChat</h4>
-                <p>JChat集成极光 IM SDK, 演示即时通讯场景。</p>
-                <ul>
-                    <li>支持单聊、群聊</li>
-                    <li class="li-clear">可发送文字、图片、语音、表情、文件、地理位置等消息</li>
-                </ul>
+    </div>
+    <div class="col-md-8">
+        <h4>即时通讯场景应用 JChat</h4>
+        <p>JChat集成极光 IM SDK, 演示即时通讯场景。</p>
+        <ul style="margin-left:-21px; margin-bottom: 20px;">
+            <li>支持单聊、群聊</li>
+            <li>可发送文字、图片、语音、表情、文件、地理位置等消息</li>
+        </ul>
+        <div class="row box">
+            <div class="col-xs-5">
+                <div class="row item">
+                    <div class="col-md-12">
+                        <a href="https://sdkfiledl.jiguang.cn/jchat_v2.0.0.apk" class="btn btn-default" role="button">Android 下载</a>
+                    </div>
+                    <div class="col-md-12 download-text">
+                        <a href="https://github.com/jpush/jchat-android" target="_blank" style="margin-left:25px;">JChat 源码</a>
+                    </div>
+                </div>
             </div>
-            <div class="col-md-4">
-                <p><a href="https://sdkfiledl.jiguang.cn/jchat_v2.0.0.apk" class="btn btn-default" role="button">Android下载</a></p>
-                <p><a href="https://github.com/jpush/jchat-android" target="_blank">JChat 源码</font></p>
-            </div>
-            <div class="col-md-4">
-                <p><a href="https://sdkfiledl.jiguang.cn/JChat_v3.0.0.ipa" class="btn btn-default" role="button">IOS下载</a></p>
-                <p><a  href="https://github.com/jpush/jchat-swift" target="_blank">JChat 源码</a></p>
+            <div class="col-xs-5">
+                <div class="row item">
+                    <div class="col-md-12" >
+                        <a href="https://sdkfiledl.jiguang.cn/JChat_v3.0.0.ipa" class="btn btn-default" role="button">iOS 下载</a>
+                    </div>
+                    <div class="col-md-12 download-text">
+                        <a href="https://github.com/jpush/jchat-swift" target="_blank" style="margin-left: 10px;">JChat 源码</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
 
-##  服务器端 SDK 下载
+## 服务器端 SDK 下载
+
 <div class="row server downloads">
     <div class="col-md-6">
         <div class="thumbnail">
