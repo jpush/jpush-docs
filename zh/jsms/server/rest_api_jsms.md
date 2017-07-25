@@ -8,6 +8,18 @@
 </div>
 </br>
 
+## HTTP 验证
+> 使用 HTTP Basic Authentication 的方式做访问授权。这样整个 API 请求可以使用常见的 HTTP 工具来完成，比如：curl，浏览器插件等；
+
+HTTP Header（头）里加一个字段（Key/Value对）：
+
+```
+Authorization: Basic base64_auth_string
+```
+
+其中 base64_auth_string 的生成算法为：base64(appKey:masterSecret)，即:对 appKey 加上冒号，加上 masterSecret 拼装起来的字符串，再做 base64 转换。appKey、masterSecret 可以在控制台应用设置中查看。
+
+
 ## 发送文本验证码短信 API
 ### 功能说明
 
