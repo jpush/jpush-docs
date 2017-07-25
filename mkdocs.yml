@@ -137,6 +137,7 @@ pages:
     - 'REST API 概述': 'jsms/server/rest_api_summary.md'
     - '短信发送 API': 'jsms/server/rest_api_jsms.md'
     - '短信定时发送 API': 'jsms/server/rest_api_jsms_schedule.md'
+    - '短信余量查询 API': 'jsms/server/rest_jsms_api_account.md'
     - '回调接口': 'jsms/server/callback.md'
   - 服务端 SDK:
     - 'Java SDK': 'jsms/server/sdk/java_sdk.md'
