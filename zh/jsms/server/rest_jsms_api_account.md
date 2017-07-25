@@ -26,7 +26,7 @@ HTTP Header（头）里加一个字段（Key/Value对）：
 Authorization: Basic base64_auth_string
 ```
 
-其中 base64_auth_string 的生成算法为：base64(devKey:apiDevSecret)，即:对 devKey 加上冒号，加上 API DevSecret 拼装起来的字符串，再做 base64 转换。devKey、apiDevSecret 可以在控制台应用设置中查看。
+其中 base64_auth_string 的生成算法为：base64(devKey:apiDevSecret)，即:对 devKey 加上冒号，加上 API DevSecret 拼装起来的字符串，再做 base64 转换。devKey、apiDevSecret 可以在控制台个人信息中查看。
 
 
 ### 请求示例
