@@ -200,6 +200,22 @@ div.row.downloads .thumbnail > .caption .li-clear {
     display: none;
 }
 
+div.row.downloads .box .item {
+    text-align: left;
+}
+div.row.downloads .box .item .download-text {
+    margin-top: 7px;
+}
+div.row.downloads .box .item .download-text a {
+	font-size: 12px;
+    text-align: center;
+}
+div.row.downloads.j-chat-demo {
+    border: 1px solid #ddd;
+    margin-bottom: 40px;
+    padding: 10px;
+}
+
 @media (min-width: 992px) {
     div.row.downloads  .thumbnail > img {
         display: block;
