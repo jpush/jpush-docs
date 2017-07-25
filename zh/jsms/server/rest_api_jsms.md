@@ -19,7 +19,7 @@ Authorization: Basic base64_auth_string
 
 其中 base64_auth_string 的生成算法为：base64(appKey:masterSecret)，即:对 appKey 加上冒号，加上 masterSecret 拼装起来的字符串，再做 base64 转换。appKey、masterSecret 可以在控制台应用设置中查看。
 
-
+</br>
 ## 发送文本验证码短信 API
 ### 功能说明
 
