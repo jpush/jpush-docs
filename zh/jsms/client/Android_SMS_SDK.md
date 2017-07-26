@@ -49,14 +49,14 @@
 
 + SmscheckListener：检查验证码的回调接口，在调用 SMSSDK 的 checkSmsCode 时需要传入接口实例。
 
-### SMSSDK.init(Context context)
+### SMSSDK.initSdk(Context context)
 #### 接口说明
 
 该接口为初始化接口，主要是检测一些配置信息，如果配置错误将会初始化失败，将会打印错误日志。调用其它接口前必须先调用该接口，仅且仅需调用一次，建议在 Application 或初始 Activity 中调用。
 
 #### 调用示例
 
-	SMSSDK.getInstance().init(this);
+	SMSSDK.getInstance().initSdk(this);
 
 ### SMSSDK.getSmsCode(String phone, String tempId, SmscodeListener listener)
 #### 接口说明
