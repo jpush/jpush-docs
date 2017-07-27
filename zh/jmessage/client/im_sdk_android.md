@@ -541,6 +541,15 @@ JMessageClient.createGroupCustomMessage(long groupID,
   Map<? extends String, ?> valuesMap)
 ```
 
+#### 消息发送结果监听
+消息发送完成后，会回调这里的接口通知上层。
+```
+message.setOnSendCompleteCallback(BasicCallback sendCompleteCallback)
+```
+参数说明
+
++ BasicCallback sendCompleteCallback 回调接口
+
 #### 消息发送
 
 向服务器给发送对象发送消息，并且保存到本地会话。使用默认的配置参数发送
@@ -556,21 +565,12 @@ JMessageClient.sendMessage(Message message);
 针对此次消息发送操作，支持一些可选参数的配置，具体参数见[MessageSendingOptions](./im_android_api_docs/cn/jpush/im/android/api/options/MessageSendingOptions.html)
 
 ```
-JMessageClient.(Message message, MessageSendingOptions options);
+JMessageClient.sendMessage(Message message, MessageSendingOptions options);
 ```
 参数说明
 
 + Message message 消息对象
 + MessageSendingOptions options 消息发送时的控制选项。
-
-#### 消息发送结果监听
-消息发送完成后，会回调这里的接口通知上层。
-```
-message.setOnSendCompleteCallback(BasicCallback sendCompleteCallback)
-```
-参数说明
-
-+ BasicCallback sendCompleteCallback 回调接口
 
 ##### 代码示例
 ```
@@ -592,6 +592,44 @@ options.setRetainOffline(false);
 JMessageClient.sendMessage(message);//使用默认控制参数发送消息
 //JMessageClient.sendMessage(message,options);//使用自定义的控制参数发送消息
 ```
+
+#### 本地消息记录获取
+任何的消息都从属某一会话，所以要获取本地消息记录，首先需要获取到会话对象`conversation`,进而获取该会话下的消息记录。
+
+**获取会话中所有消息**
+
+```
+	/**
+     * 获取会话中所有消息，消息按照时间升序排列.<br/>
+     *
+     * @return 包含会话中所有消息的List
+     */
+	conversation.getAllMessage();
+```
+
+
+**按条件获取消息列表**
+
+```
+	/**
+     * 会话中消息按时间降序排列，从其中的offset位置，获取limit条数的消息.
+     *
+     * @param offset 获取消息的起始位置
+     * @param limit  获取消息的条数
+     * @return 符合查询条件的消息List, 如果查询失败则返回空的List。
+     */
+	conversation.getMessagesFromNewest(int offset, int limit)
+	
+	/**
+     * 会话中消息按时间升序排列，从其中的offset位置，获取limit条数的消息.<br/>
+     *
+     * @param offset 获取消息的起始位置
+     * @param limit  获取消息的条数
+     * @return 符合查询条件的消息List, 如果查询失败则返回空的List。
+     */
+    conversation.getMessagesFromOldest(int offset, int limit);
+```
+
 
 #### 接收消息
 sdk收到消息时，会上抛消息事件[MessageEvent](./im_android_api_docs/cn/jpush/im/android/api/event/MessageEvent.html?_blank) 或 [OfflineMessageEvent](./im_android_api_docs/cn/jpush/im/android/api/event/OfflineMessageEvent.html)，开发者可以通过这个事件来拿到具体的Message对象，进而执行UI刷新或者其他相关逻辑。具体事件处理方法见[事件处理](#Event)一节
@@ -650,6 +688,7 @@ sdk升级到2.1.0版本（或以上）后，上层需要针对消息接收的处
         System.out.println("事件发生的原因 : " + reason);
     }
 ```
+
 
 ### 消息撤回
 
