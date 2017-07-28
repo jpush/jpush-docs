@@ -1272,8 +1272,7 @@ Request Params
 
 N/A
 
-Example Response
-Request Body
+Example Request Body
 ```
 {   
       "add":[   
@@ -1292,7 +1291,7 @@ Request Body
 
 
 
-
+Example Response
 ```
 < HTTP/1.1 204 OK
 < Content-Type: application/json
