@@ -1263,6 +1263,43 @@ Example Response
 
 ```
 
+#### 群消息屏蔽
+
+    GET /v1/users/{username}/groupsShield
+
+
+Request Params
+
+N/A
+
+Example Response
+Request Body
+```
+{   
+      "add":[   
+         110000101
+      ],
+      "remove":[   
+         1000001111
+      ]
+
+}
+```
+| 参数 | 含义 | 
+| -------- | -----: | 
+| add |添加群消息屏蔽的gid数组  （可选）| 
+|remove | 移除群消息屏蔽的gid数组 （可选）| 
+
+
+
+
+```
+< HTTP/1.1 204 OK
+< Content-Type: application/json
+```
+
+
+
 
 ### 好友
 
