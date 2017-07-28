@@ -207,6 +207,7 @@ JMessageClient.updateMyInfo(UserInfo.Field updateField, UserInfo info, BasicCall
 	  - signature 签名
 	  - gender 性别
 	  - region 地区
+	  - address 地址
 	  - all 以上全部
 
 + UserInfo userInfo 待更新的用户信息（对象）。SDK将根据field参数来判断需要将哪个属性更新到服务器上去。
