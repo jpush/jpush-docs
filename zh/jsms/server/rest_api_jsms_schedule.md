@@ -391,3 +391,4 @@ HTTP/1.0 200
 |403|50029|wrong schedule status|定时短信已发送或已删除，无法再修改|
 |403|50030|recipients is empty|recipients 为空|
 |403|50031|too much recipients|recipients 短信接收者数量超过1000|
+|403|50034|repeat send|重复发送|
