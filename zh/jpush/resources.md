@@ -12,7 +12,7 @@
                     <li><a href="../client/Android/android_guide">集成指南</a></li>
                     <li><a href="../client/Android/android_3m">3 分钟快速 Demo</a></li>
                     <li><a href="../client/Android/android_debug_guide">调试指南</a></li>
-                    <li><a href="https://sdkfiledl.jiguang.cn/jpush-android-google-play-3.0.8.zip">Google Play 版本</a></li>
+                    <li><a href="https://sdkfiledl.jiguang.cn/jpush-android-google-play-3.0.8.zip?123">Google Play 版本</a></li>
                 </ul>
                 <p><a href="https://www.jiguang.cn/downloads/sdk/android/" class="btn btn-default" role="button">下载</a></p>
             </div>
