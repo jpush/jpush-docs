@@ -3,7 +3,7 @@
 
 JSMS 提供遵从 REST 规范的 HTTP API，以供开发者远程调用 JSMS 提供的服务。
 
-与此同时，为方便开发者使用 JSMS API，还提供[多种常用编程语言的开发包（SDK）](../../resources/#sdk_1)。
+与此同时，为方便开发者使用 JSMS API，还提供[多种常用编程语言的开发包（SDK）](../resources/#sdk_1)。
 
 </br>
 ## REST API 基本约束
@@ -11,7 +11,7 @@ JSMS 提供遵从 REST 规范的 HTTP API，以供开发者远程调用 JSMS 提
 * API 被设计为符合 HTTP, REST 规范。例如：查询请求使用 Get 方法，提交请求使用 Post 方法。如果一个请求不是相应的 HTTP 方法，将返回错误。
 * 如无特殊说明，调用参数值应转码为：UTF-8, URL编码 [^1]。
 
-[1]: [URL编码 - WikiPedia定义](http://zh.wikipedia.org/wiki/%E7%99%BE%E5%88%86%E5%8F%B7%E7%BC%96%E7%A0%81)
+ [1]: [URL编码 - WikiPedia定义](http://zh.wikipedia.org/wiki/%E7%99%BE%E5%88%86%E5%8F%B7%E7%BC%96%E7%A0%81)
 
 </br>
 ## API 资源列表
