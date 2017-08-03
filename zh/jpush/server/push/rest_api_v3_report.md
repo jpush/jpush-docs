@@ -2,7 +2,7 @@
 JPush Report API V3 提供各类统计数据查询功能。  
 这类 API 地址统一为（注意与 Push API 不同）：https://report.jpush.cn
 
-###  送达统计
+##  送达统计
 
 Received API 以 msg_id 作为参数，去获取该 msg_id 的送达统计数据。  
 如果一次 API 调用推送有很多对象（比如广播推送），则此 API 返回的统计数据会因为持续有客户端送达而持续增加。
@@ -10,11 +10,11 @@ Received API 以 msg_id 作为参数，去获取该 msg_id 的送达统计数据
 
 每条推送消息的送达统计数据最多保留一个月。即发起推送请求后从最后一个推送送达记录时间点开始保留一个月，如果保留期间有新的送达，将在这个新送达的时间点起再往后保留一个月。
 
-#### Resource
+### 调用地址
 
 GET /v3/received
 
-#### Example Request
+### 请求示例
 
 ```
 curl -v https://report.jpush.cn/v3/received?msg_ids=1613113584,1229760629 -u "7d431e42dfa6a6d693ac2d04:5e987ac6d2e04d95a9d8f0d1"
@@ -23,11 +23,11 @@ curl -v https://report.jpush.cn/v3/received?msg_ids=1613113584,1229760629 -u "7d
 < Authorization: Basic N2Q0MzFlNDJkZmE2YTZkNjkzYWMyZDA0OjVlOTg3YWM2ZDJlMDRkOTVhOWQ4ZjBkMQ==
 ```
 
-#### Request Params
+**Request Params**
 
 + msg_ids 推送API返回的 msg_id 列表，多个 msg_id 用逗号隔开，最多支持100个msg_id。
 
-#### Example Response
+### 返回示例
 
 ```
 < HTTP/1.1 200 OK 
@@ -46,7 +46,7 @@ curl -v https://report.jpush.cn/v3/received?msg_ids=1613113584,1229760629 -u "7d
     "wp_mpns_sent" : null}
 ]
 ```
-#### Response Params
+**Response Params**
 
 JSON Array.
 
@@ -55,17 +55,18 @@ JSON Array.
 + ios_msg_received  iOS 自定义消息送达数。如果无此项数据则为null。
 + wp_mpns_sent       winphone通知送达。如果无此项数据则为 null。
 
-### 消息统计（VIP专属接口）
+## 消息统计（VIP专属接口）
 
 与“送达统计” API 不同的是，该 API 提供更多的针对一个 msgid 的统计数据。
 
 
 如需要开通此接口，请联系：[商务客服](https://www.jiguang.cn/accounts/business/form)
 
-#### Resource
+### 调用地址
+
 GET /v3/messages
 
-#### Example Request
+### 请求示例
 
 ```
 curl -v https://report.jpush.cn/v3/messages?msg_ids=269978303 -u "7d431e42dfa6a6d693ac2d04:5e987ac6d2e04d95a9d8f0d1"
@@ -74,10 +75,11 @@ curl -v https://report.jpush.cn/v3/messages?msg_ids=269978303 -u "7d431e42dfa6a6
 > Authorization: Basic N2Q0MzFlNDJkZmE2YTZkNjkzYWMyZDA0OjVlOTg3YWM2ZDJlMDRkOTVhOWQ4ZjBkMQ==
 ```
 
-#### Request Params
+**Request Params**
+
 + msg_ids 多个 msg_id 用逗号隔开，最多支持100个msg_id。
 
-#### Example Response
+### 返回示例
 
 ```
 < HTTP/1.1 200 OK
@@ -100,7 +102,7 @@ curl -v https://report.jpush.cn/v3/messages?msg_ids=269978303 -u "7d431e42dfa6a6
 
 ```
 
-#### Response Params
+**Response Params**
 
 JSON Array
 
@@ -128,17 +130,19 @@ JSON Array
 
 
 
-### 用户统计（VIP专属接口）
+## 用户统计（VIP专属接口）
 
 提供近2个月内某时间段的用户相关统计数据：新增用户、在线用户、活跃用户。  
 时间单位支持：HOUR（小时）、DAY（天）、MONTH（月）。
 
 
 如需要开通此接口，请联系：[商务客服](https://www.jiguang.cn/accounts/business/form) 
-#### Resource
+
+### 调用地址
+
 GET /v3/users
 
-#### Example Request
+### 请求示例
 
 ```
 curl -v "https://report.jpush.cn/v3/users?time_unit=DAY&start=2014-06-10&duration=3" -u "dd1066407b044738b6479275:2b38ce69b1de2a7fa95706ea"
@@ -147,7 +151,8 @@ curl -v "https://report.jpush.cn/v3/users?time_unit=DAY&start=2014-06-10&duratio
 > Authorization: Basic ZGQxMDY2NDA3YjA0NDczOGI2NDc5Mjc1OjJiMzhjZTY5YjFkZTJhN2ZhOTU3MDZlYQ==
 ```
 
-#### Request Params
+**Request Params**
+
 + time_unit 时间单位。有三个取值：
 	+ HOUR 小时
 	+ DAY 天
@@ -160,14 +165,16 @@ curl -v "https://report.jpush.cn/v3/users?time_unit=DAY&start=2014-06-10&duratio
 	+ 如果单位是天，则是持续的天数。以此类推。
 	+ 只支持查询60天以内的用户信息，对于time_unit为HOUR的，只支持输出当天的统计结果。
 
-#### Example Response
+### 返回示例
+
 ```
 < HTTP/1.1 200 OK
 <
 {"time_unit":"DAY","start":"2014-06-10","duration":3,"items":[{"time":"2014-06-10"},{"time":"2014-06-11","android":{"active":1}},{"time":"2014-06-12","android":{"active":1,"online":2}}]}
 ```
 
-#### Response Params
+**Response Params**
+
 JSON Object
 
 + time_unit 请求时的时间单位。
@@ -180,9 +187,9 @@ JSON Object
 
 
 
-###错误码
+##错误码
 
-#### 错误码定义
+### 错误码定义
 
 <div class="table-d" align="center" >
   <table border="1" width = "100%">
@@ -219,7 +226,7 @@ JSON Object
   </table>
 </div>
 
-####Example Response
+### 返回示例
 
 ```
 < HTTP/1.1 401 Unauthorized
