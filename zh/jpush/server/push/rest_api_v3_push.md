@@ -820,7 +820,7 @@ CID的有效期为1天。CID的格式为：{appkey}-{uuid}
 
 ### 调用示例
 
-#### Request Header  
+**Request Header**
  
 ```
 curl --insecure -X GET -v https://api.jpush.cn/v3/push/cid?count=3 -H "Content-Type: application/json" -u "2743204aad6fe2572aa2d8de:e674a3d0fd42a53b9a58121c"
@@ -833,7 +833,7 @@ Content-Type: text/plain
 Accept: application/json
 ```
 
-#### Request Params 
+**Request Params**
 
 ```
 count
@@ -842,7 +842,7 @@ type
 	可选参数。CID类型。取值：push(默认), schedule
 ```
 
-#### Response Header  
+**Response Header**
  
 ```
 HTTP/1.1 200 OK
@@ -859,7 +859,8 @@ Content-Type: application/json; charset=utf-8
 }
 ```
 
-#### Response Params
+**Response Params**
+
 ```
 cidlist
 	cid列表
