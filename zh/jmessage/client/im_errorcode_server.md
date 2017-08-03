@@ -382,142 +382,137 @@ JMessage 服务器端报的错误码。有可能出现在各平台的 SDK 里。
 		<tr >
 		    <td>808001</td>
 			<td>group name invalid</td>
-			<td>创建讨论组时组名为空，创建讨论组失败</td>
+			<td>创建群组时群名为空，创建群组失败</td>
 		</tr>
 		<tr >
 			<td>808002</td>
 			<td>user not permitted to create group</td>
-			<td>用户无创建讨论组权限，创建讨论组失败</td>
+			<td>用户无创建群组权限，创建群组失败</td>
 		</tr>
 		<tr >
 			<td>808003</td>
 			<td>amount of group exceed limit</td>
-			<td>用户拥有的讨论组数量已达上限,无法再创建</td>
+			<td>用户拥有的群组数量已达上限,无法再创建</td>
 		</tr>
 		<tr >
 			<td>808004</td>
 			<td>length of group name exceed limit</td>
-			<td>讨论组名长度超出上限，创建讨论组失败</td>
+			<td>群组名长度超出上限，创建群组失败</td>
 		</tr>
 		<tr >
 			<td>808005</td>
 			<td>length of group desc exceed limit</td>
-			<td>讨论组描述长度超出上限，创建讨论组失败</td>
+			<td>群组描述长度超出上限，创建群组失败</td>
 		</tr>
 		<tr >
 			<td>809001</td>
 			<td>group id not exist</td>
-			<td>用户退出讨论组时，讨论组ID不存在，退出讨论组失败</td>
+			<td>目标群组ID不存在</td>
 		</tr>
 		<tr >
 			<td>809002</td>
 			<td>user not in group</td>
-			<td>用户退出讨论组时，用户不在该讨论组中，退出讨论组失败</td>
+			<td>用户不在该群组中</td>
 		</tr>
 		<tr >
 			<td>810001</td>
 			<td>group id not exist</td>
-			<td>用户添加成员到讨论组时，讨论组ID不存在，添加成员失败</td>
+			<td>目标群组ID不存在</td>
 		</tr>
 		<tr >
 			<td>810002</td>
-			<td>zero member</td>
-			<td>用户添加成员到讨论组时，添加的成员列表为空，添加成员失败</td>
+			<td>add member list is null</td>
+			<td>添加的成员列表为空</td>
 		</tr>
 		<tr >
 			<td>810003</td>
-			<td>user not in group</td>
-			<td>用户添加成员到讨论组时，用户不在该讨论组中，添加成员失败</td>
+			<td>inviter not in group</td>
+			<td>邀请方不在该群组中</td>
 		</tr>
 		<tr >
 			<td>810004</td>
 			<td>user not permitted add member to group</td>
-			<td>用户添加成员到讨论组时，用户没有往讨论组中添加成员的权限，添加成员失败</td>
+			<td>用户没有往群组中添加成员的权限</td>
 		</tr>
 		<tr >
 			<td>810005</td>
-			<td>member not exist</td>
-			<td>用户添加成员到讨论组时，添加的成员列表中有成员未注册，添加成员失败</td>
-		</tr>
-		<tr >
-			<td>810006</td>
-			<td>member not permitted added to group</td>
-			<td>用户添加成员到讨论组时，添加的成员列表中有成员该用户没有权限进行添加，添加成员失败</td>
+			<td>have member not register</td>
+			<td>添加的成员列表中包含未注册成员</td>
 		</tr>
 		<tr >
 			<td>810007</td>
 			<td>repeated added member</td>
-			<td>用户添加成员到讨论组时，添加的成员列表中有成员重复添加，添加成员失败</td>
+			<td>添加的成员列表中有成员重复添加</td>
 		</tr>
 		<tr >
 			<td>810008</td>
 			<td>amount of member exceed group limit</td>
-			<td>用户添加成员到讨论组时，添加的成员数量超出讨论组拥有的最大成员数上限，添加成员失败</td>
+			<td>添加的成员数量超出群组拥有的最大成员数上限</td>
 		</tr>
 		<tr >
 			<td>810009</td>
 			<td>amount of group exceed member limit</td>
-			<td>用户添加成员到讨论组时，添加的成员列表中有成员拥有的讨论组数量已达上限，添加成员失败</td>
+			<td>添加的成员列表中有成员拥有的群组数量已达上限</td>
 		</tr>
 		<tr >
 			<td>811001</td>
 			<td>group id not exist</td>
-			<td>用户删除讨论组成员时，讨论组ID不存在，删除成员失败</td>
+			<td>目标群组ID不存在</td>
 		</tr>
 		<tr >
 			<td>811002</td>
-			<td>zero member</td>
-			<td>用户删除讨论组成员时，删除的成员列表为空，删除成员失败</td>
+			<td>del member list is null</td>
+			<td>删除的成员列表为空</td>
 		</tr>
 		<tr >
 			<td>811003</td>
-			<td>user not in group</td>
-			<td>用户删除讨论组成员时，用户不在该讨论组中，删除成员失败</td>
+			<td>applicant not in group</td>
+			<td>申请方不在该群组中</td>
 		</tr>
 		<tr >
 			<td>811004</td>
 			<td>user not permitted delete member of group</td>
-			<td>用户删除讨论组成员时，用户没有删除讨论组中成员的权限，删除成员失败</td>
+			<td>用户没有删除群组中成员的权限</td>
 		</tr>
 		<tr >
 			<td>811005</td>
-			<td>member not exist</td>
-			<td>用户删除讨论组成员时，删除的成员列表中有成员未注册，删除成员失败</td>
+			<td>have member not register</td>
+			<td>删除的成员列表中有成员未注册</td>
 		</tr>
 		<tr >
 			<td>811006</td>
 			<td>member of group not permitted deleted</td>
-			<td>用户删除讨论组成员时，删除的成员列表中有成员该用户没有权限进行删除，删除成员失败</td>
+			<td>删除的成员列表中有成员该用户没有权限进行删除</td>
 		</tr>
 		<tr >
 			<td>811007</td>
 			<td>repeated deleted member</td>
-			<td>用户删除讨论组成员时，删除的成员列表中有成员重复删除，删除成员失败</td>
+			<td>删除的成员列表中有成员重复删除</td>
 		</tr>
 		<tr >
 			<td>811008</td>
-			<td>member not in group</td>
-			<td>用户删除讨论组成员时，删除的成员列表中有成员不在该讨论组中，删除成员失败</td>
+			<td>have member not in group</td>
+			<td>删除的成员列表中有成员不在该群组中</td>
 		</tr>
 		<tr >
 			<td>812001</td>
 			<td>group id not exist</td>
-			<td>用户修改讨论组信息时，讨论组ID不存在，修改讨论组信息失败</td>
+			<td>目标群组ID不存在</td>
 		</tr>
 		<tr >
 			<td>812002</td>
 			<td>user not in group</td>
-			<td>用户修改讨论组信息时，用户不在该讨论组中，修改讨论组信息失败</td>
+			<td>用户不在该群组中</td>
 		</tr>
 		<tr >
 			<td>812003</td>
 			<td>length of group name exceed limit</td>
-			<td>用户修改讨论组信息时，讨论组名超出长度上限，修改讨论组信息失败</td>
+			<td>群组名超出长度上限</td>
 		</tr>
 		<tr >
 			<td>812004</td>
 			<td>length of group desc exceed limit</td>
-			<td>用户修改讨论组信息时，讨论组描述超出上限，修改讨论组信息失败</td>
+			<td>群组描述超出上限</td>
 		</tr>
 		<tr >
 			<td>818001</td>
@@ -603,6 +598,26 @@ JMessage 服务器端报的错误码。有可能出现在各平台的 SDK 里。
 			<td>843001</td>
 			<td>group never set</td>
 			<td>用户删除群组消息屏蔽时，该群组不处于消息屏蔽状态</td>
+		</tr>
+		<tr>
+			<td>855001</td>
+			<td>out of time</td>
+			<td>消息撤回失败，超出撤回时间</td>
+		</tr>
+		<tr>
+			<td>855002</td>
+			<td>request user is not message sender</td>
+			<td>消息撤回失败，请求撤回方不是消息发送方</td>
+		</tr>
+		<tr>
+			<td>855003</td>
+			<td>request message not exist</td>
+			<td>消息撤回失败，请求撤回消息不存在</td>
+		</tr>
+		<tr>
+			<td>855004</td>
+			<td>message already retract</td>
+			<td>消息撤回失败，该消息已经撤回</td>
 		</tr>
 </table>
 </div>
