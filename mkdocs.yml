@@ -17,7 +17,7 @@ pages:
 
 - home: 'index.md'
 
-- JPush:
+- 极光推送:
 
   - 入门指南:
     - 'JPush 产品简介': 'jpush/guideline/intro.md'
@@ -70,7 +70,7 @@ pages:
   - 最近更新: 'jpush/updates.md'
   - 资源下载: 'jpush/resources.md'
 
-- JAnalytics:
+- 极光统计:
 
   - 入门指南:
     - 'JAnalytics 产品简介': 'janalytics/guideline/intro.md'
@@ -86,7 +86,7 @@ pages:
   - 最近更新: 'janalytics/updates.md'
   - 资源下载: 'janalytics/resources.md'
 
-- JMessage:
+- 极光IM:
 
   - 入门指南:
     - 'JMessage 产品简介': 'jmessage/guideline/jmessage_guide.md'
@@ -124,7 +124,7 @@ pages:
   - 最近更新: 'jmessage/updates.md'
   - 资源下载: 'jmessage/resources.md'
 
-- JSMS:
+- 极光短信:
 
   - 入门指南:
     - '短信验证码概述': 'jsms/guideline/JSMS_guide.md'
@@ -146,7 +146,7 @@ pages:
   - 最近更新: 'jsms/updates.md'
   - 资源下载: 'jsms/resources.md'
 
-- JShare:
+- 极光分享:
 
   - 入门指南:
     - 'JShare 产品简介': 'jshare/guideline/intro.md'
