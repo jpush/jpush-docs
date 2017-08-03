@@ -71,24 +71,32 @@
             <li>可发送文字、图片、语音、表情、文件、地理位置等消息</li>
         </ul>
         <div class="row box">
-            <div class="col-xs-5">
+            <div class="col-xs-4">
                 <div class="row item">
                     <div class="col-md-12">
-                        <a href="https://sdkfiledl.jiguang.cn/jchat_v2.0.0.apk" class="btn btn-default" role="button">Android 下载</a>
+                        <a href="https://www.jiguang.cn/downloads/server_sdk/im/jchat_android" class="btn btn-default" role="button">Android 下载</a>
                     </div>
                     <div class="col-md-12 download-text">
                         <a href="https://github.com/jpush/jchat-android" target="_blank" style="margin-left:25px;">JChat 源码</a>
                     </div>
                 </div>
             </div>
-            <div class="col-xs-5">
+            <div class="col-xs-4">
                 <div class="row item">
                     <div class="col-md-12" >
-                        <a href="https://sdkfiledl.jiguang.cn/JChat_v3.0.0.ipa" class="btn btn-default" role="button">iOS 下载</a>
+                        <a href="https://www.jiguang.cn/downloads/server_sdk/im/jchat_swift" class="btn btn-default" style="margin-left:1px;width:111px"  role="button">iOS下载  </a>
                     </div>
                     <div class="col-md-12 download-text">
-                        <a href="https://github.com/jpush/jchat-swift" target="_blank" style="margin-left: 10px;">JChat 源码</a>
+                        <a href="https://github.com/jpush/jchat-swift" target="_blank" style="margin-left: 25px;">JChat 源码</a>
                     </div>
+                </div>
+            </div>
+            <div class="col-xs-4">
+                <div class="row item">
+                    <div class="col-md-8" >
+                        <a href="http://jchat.im.jiguang.cn" class="btn btn-default"  role="button" target="_blank">Web 在线体验</a>
+                    </div>
+            
                 </div>
             </div>
         </div>
