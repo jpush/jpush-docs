@@ -255,10 +255,20 @@ div#content h2 {
 }
 
 div#content h3 {
-    font-size: 18px;
+    font-size: 20px;
     color: #1b75bb;
     font-weight: bold;
-    font-size: 18px;
+}
+
+div#content h4 {
+    font-size: 16px;
+    color: #3a3a3a;
+    font-weight: bold;
+}
+
+div#content h5 {
+    font-size: 14px;
+    color: #1b75bb;
 }
 
 div#content ul li{
