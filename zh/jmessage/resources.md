@@ -94,7 +94,7 @@
             <div class="col-xs-4">
                 <div class="row item">
                     <div class="col-md-8" >
-                        <a href="http://jchat.im.jiguang.cn" class="btn btn-default"  role="button" target="_blank">Web 在线体验</a>
+                        <a href="https://jchat.im.jiguang.cn" class="btn btn-default"  role="button" target="_blank">Web 在线体验</a>
                     </div>
             
                 </div>
