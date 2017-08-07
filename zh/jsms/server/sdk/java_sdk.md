@@ -15,7 +15,7 @@
 <dependency>
     <groupId>cn.jpush.api</groupId>
     <artifactId>jsms-client</artifactId>
-    <version>1.2.2</version>
+    <version>1.2.3</version>
 </dependency>
 <dependency>
 	<groupId>com.google.code.gson</groupId>
