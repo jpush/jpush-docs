@@ -113,12 +113,12 @@
             <div class="caption">
                 <h4>Java SDK</h4>
                 <ul>
-                    <li>版本：v1.1.0</li>
-                    <li>更新时间：2017.7.12</li>
+                    <li>版本：v1.1.1</li>
+                    <li>更新时间：2017.08.07</li>
                     <li><a href="https://github.com/jpush/jmessage-api-java-client" target="_blank">GitHub 源码</a></li>
                     <li>更新日志：<a href="https://github.com/jpush/jmessage-api-java-client/releases" target="_blank">Change Log</a></li>
                 </ul>
-                <p><a href="https://sdkfiledl.jiguang.cn/jmessage-api-java-client-v1.1.0.zip" class="btn btn-default" role="button">下载</a></p>
+                <p><a href="https://sdkfiledl.jiguang.cn/jmessage-api-java-client-1.1.1.zip" class="btn btn-default" role="button">下载</a></p>
             </div>
         </div>
     </div>

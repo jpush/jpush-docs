@@ -27,22 +27,12 @@
 <dependency>
     <groupId>cn.jpush.api</groupId>
     <artifactId>jmessage-client</artifactId>
-    <version>1.0.0</version>
+    <version>1.1.1</version>
 </dependency>
 <dependency>
     <groupId>cn.jpush.api</groupId>
     <artifactId>jiguang-common</artifactId>
-    <version>0.1.6</version>
-    <exclusions>
-    	<exclusion>
-	    <groupId>org.slf4j</groupId>
-	    <artifactId>slf4j-jdk14</artifactId>
-	</exclusion>
-	<exclusion>
-	    <groupId>org.slf4j</groupId>
-	    <artifactId>slf4j-nop</artifactId>
-	</exclusion>
-    </exclusions>
+    <version>1.0.8</version>
 </dependency>
 <dependency>
 	<groupId>com.google.code.gson</groupId>
@@ -90,10 +80,10 @@
 * 如果不使用git，请到[Release页面](https://github.com/jpush/jmessage-api-java-client/releases)下载源码包并解压
 * 采用eclipse导入下载的源码工程，推荐采用maven的方式，方便依赖包的管理
 * 假如采用导入普通项目的方式，项目报错，检查Build Path，Libraries
- * 依赖jar包都在libs目录下可以找到，没有加入的请添加到Build Path，Libraries
- * jpush-client jar包可以[点击下载](https://github.com/jpush/jpush-api-java-client/releases)
- * 默认采用了log4j做日志框架，开发者可根据自己需求替换logback、commons-logging等日志框架
- * 极个别情况下，如果test目录报错，请手动添加test的依赖jar包mockwebserver-2.0.0.jar、okhttp-2.0.0.jar、okio-1.0.0.jar
+* 依赖jar包都在libs目录下可以找到，没有加入的请添加到Build Path，Libraries
+* jpush-client jar包可以[点击下载](https://github.com/jpush/jpush-api-java-client/releases)
+* 默认采用了log4j做日志框架，开发者可根据自己需求替换logback、commons-logging等日志框架
+* 极个别情况下，如果test目录报错，请手动添加test的依赖jar包mockwebserver-2.0.0.jar、okhttp-2.0.0.jar、okio-1.0.0.jar
 * 开发者需要注意，将本项目的编码格式设置为UTF-8
 
 ### 构建本项目
