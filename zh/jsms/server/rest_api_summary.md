@@ -1,35 +1,108 @@
 
-# REST API 概述
-<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px;">
-<ul style="margin-bottom: 0;">
-<li>使用 HTTP Basic Authentication 的方式做访问授权。这样整个 API 请求可以使用常见的 HTTP 工具来完成，比如：curl，浏览器插件等；</li>
-<li>API 请求的内容和响应完全使用 JSON 格式；</li>
-<li>短信所有 API 返回码汇总；</li>
-</ul>
-</div>
+# 服务端 REST API 概述
+
+JSMS 提供遵从 REST 规范的 HTTP API，以供开发者远程调用 JSMS 提供的服务。
+
+与此同时，为方便开发者使用 JSMS API，还提供[多种常用编程语言的开发包（SDK）](../resources/#sdk_1)。
+
 </br>
+## REST API 基本约束
 
-## HTTP 验证
-> 使用 HTTP Basic Authentication 的方式做访问授权。这样整个 API 请求可以使用常见的 HTTP 工具来完成，比如：curl，浏览器插件等；
+* API 被设计为符合 HTTP, REST 规范。例如：查询请求使用 Get 方法，提交请求使用 Post 方法。如果一个请求不是相应的 HTTP 方法，将返回错误。
+* 如无特殊说明，调用参数值应转码为：UTF-8, URL编码 [^1]。
 
-HTTP Header（头）里加一个字段（Key/Value对）：
+ [1]: [URL编码 - WikiPedia定义](http://zh.wikipedia.org/wiki/%E7%99%BE%E5%88%86%E5%8F%B7%E7%BC%96%E7%A0%81)
 
-```
-Authorization: Basic base64_auth_string
-```
+</br>
+## API 资源列表
 
-其中 base64_auth_string 的生成算法为：base64(appKey:masterSecret)，即:对 appKey 加上冒号，加上 masterSecret 拼装起来的字符串，再做 base64 转换。appKey、masterSecret 可以在控制台应用设置中查看。
+### 短信发送 API
+<div class="table-d" align="center" >
+        <table border="1" width = "100%">
+                <tr  bgcolor="#D3D3D3" >
+                        <th style="width: 185px;">名称</th>
+                        <th>资源</th>
+                </tr>
+                <tr >
+                        <td><a href="https://docs.jiguang.cn/jsms/server/rest_api_jsms/#api_1">发送文本验证码短信 API<a/></td>
+                        <td>POST https://api.sms.jpush.cn/v1/codes</td>
+                </tr>
+                <tr >
+                        <td><a href="https://docs.jiguang.cn/jsms/server/rest_api_jsms/#api_2">发送语音验证码短信 API</a></td>
+                        <td>POST https://api.sms.jpush.cn/v1/voice_codes</td>
+                </tr>
+                <tr >
+                        <td><a href="https://docs.jiguang.cn/jsms/server/rest_api_jsms/#api_3">验证码验证 API</a></td>
+                        <td>POST https://api.sms.jpush.cn/v1/codes/{msg_id}/valid</td>
+                </tr>
+                <tr >
+                        <td><a href="https://docs.jiguang.cn/jsms/server/rest_api_jsms/#api_4">发送单条模板短信 API</a></td>
+                        <td>POST https://api.sms.jpush.cn/v1/messages</td>
+                </tr>
+                <tr >
+                        <td><a href="https://docs.jiguang.cn/jsms/server/rest_api_jsms/#api_5">发送批量模板短信 API</a></td>
+                        <td>POST https://api.sms.jpush.cn/v1/messages/batch</td>
+                </tr>
+        </table>
+</div>
 
-## JSON格式
-> API 请求的内容和响应完全使用 JSON 格式；
+### 短信定时发送 API
 
-HTTP Header（头）里加一个字段（Key/Value对）：
+<div class="table-d" align="center" >
+        <table border="1" width = "100%">
+                <tr  bgcolor="#D3D3D3" >
+                        <th style="width: 185px;">名称</th>
+                        <th>资源</th>
+                </tr>
+                <tr >
+                        <td><a href="https://docs.jiguang.cn/jsms/server/rest_api_jsms_schedule/#api_1">单条定时短信提交 API</a></td>
+                        <td>POST https://api.sms.jpush.cn/v1/schedule</td>
+                </tr>
+                <tr >
+                        <td><a href="https://docs.jiguang.cn/jsms/server/rest_api_jsms_schedule/#api_2">批量定时短信提交 API</a></td>
+                        <td>POST https://api.sms.jpush.cn/v1/schedule/batch</td>
+                </tr>
+                <tr >
+                        <td><a href="https://docs.jiguang.cn/jsms/server/rest_api_jsms_schedule/#api_3">单条定时短信修改 API</a></td>
+                        <td>PUT https://api.sms.jpush.cn/v1/schedule/{schedule_id}</td>
+                </tr>
+                <tr >
+                        <td><a href="https://docs.jiguang.cn/jsms/server/rest_api_jsms_schedule/#api_4">批量定时短信修改 API</a></td>
+                        <td>PUT https://api.sms.jpush.cn/v1/schedule/batch/{schedule_id}</td>
+                </tr>
+                <tr >
+                        <td><a href="https://docs.jiguang.cn/jsms/server/rest_api_jsms_schedule/#api_5">定时短信查询API</a></td>
+                        <td>GET https://api.sms.jpush.cn/v1/schedule/{schedule_id}</td>
+                </tr>
+                <tr >
+                        <td><a href="https://docs.jiguang.cn/jsms/server/rest_api_jsms_schedule/#api_6">定时短信删除 API</a></td>
+                        <td>DELETE https://api.sms.jpush.cn/v1/schedule/{schedule_id}</td>
+                </tr>
+				<tr>
+        </table>
+</div>
 
-```
-Content-Type: application/json
-```
+### 短信余量查询 API
 
+<div class="table-d" align="center" >
+        <table border="1" width = "100%">
+                <tr  bgcolor="#D3D3D3" >
+                        <th style="width: 185px;">名称</th>
+                        <th>资源</th>
+                </tr>
+				</tr>
+                <tr >
+                        <td><a href="https://docs.jiguang.cn/jsms/server/rest_jsms_api_account/#api_1">账号余量查询 API</a></td>
+                        <td>GET https://api.sms.jpush.cn/v1/accounts/dev</td>
+                </tr>
+                <tr >
+                        <td><a href="https://docs.jiguang.cn/jsms/server/rest_jsms_api_account/#api_2">应用余量查询 API</a></td>
+                        <td>GET https://api.sms.jpush.cn/v1/accounts/app</td>
+                </tr>
+        </table>
+</div>
 
+</br>
 ## 返回码
 若请求失败，API 会返回如下 JSON 格式的返回码及说明
 
@@ -42,7 +115,7 @@ Content-Type: application/json
 }
 ```
 
-###短信 API 返回码汇总
+### REST API 返回码汇总
 
 |HTTP CODE| CODE| MESSAGE  | DESC|
 |:--- |:--- |:--- |:----
@@ -78,3 +151,4 @@ Content-Type: application/json
 |403|50029|wrong schedule status|定时短信已发送或已删除，无法再修改|
 |403|50030|recipients is empty|recipients 为空|
 |403|50031|too much recipients|recipients 短信接收者数量超过1000|
+|403|50034|repeat send|重复发送|

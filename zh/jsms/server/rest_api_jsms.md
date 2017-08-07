@@ -305,3 +305,4 @@ curl --insecure -X POST -v https://api.sms.jpush.cn/v1/messages/batch -H "Conten
 |403|50026|wrong msg_id|msg_id 无效|
 |403|50030|recipients is empty|recipients 为空|
 |403|50031|too much recipients|recipients 短信接收者数量超过1000|
+|403|50034|repeat send|重复发送|
