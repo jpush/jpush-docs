@@ -1265,7 +1265,7 @@ Example Response
 
 #### 群消息屏蔽
 
-    GET /v1/users/{username}/groupsShield
+    POST /v1/users/{username}/groupsShield
 
 
 Request Params
