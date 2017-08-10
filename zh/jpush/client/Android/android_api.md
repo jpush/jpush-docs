@@ -1141,6 +1141,38 @@ alias相关的操作会在此方法中回调结果。
 	   JPushInterface.reportNotificationOpened(context,bundle.getString(JPushInterface.EXTRA_MSG_ID));
 	        
 
+#### API - reportNotificationOpened
+
+##### 开始版本
+
++ Android SDK 3.0.9
+
+##### 功能说明
+
++ 用于上报用户的通知栏被打开，或者用于上报用户自定义消息被展示等客户端需要统计的事件。该接口针对第三方平台。
+
+##### 接口定义
+
+	public static void reportNotificationOpened(Context context, String msgId,byte whichPushSDK)
+
+参数说明
+
++ context：应用的 ApplicationContext
++ msgId：推送每一条消息和通知对应的唯一 ID(字段key值为:msg_id)。
++ whichPushSDK：接收到推送的平台(字段key值为:rom_type)。
+
+PS:通知支持自定义Activity。msgId及whichPushSDK需要在自定义Activity中的intent中获取。
+
+##### 代码示例	
+
+	
+	 String data = getIntent().getData().toString();
+	 String msgId = jsonObject.optString("msg_id");
+     byte whichPushSDK = (byte)jsonObject.optInt("rom_type"); 
+     JPushInterface.reportNotificationOpened(context,msgId, whichPushSDK);
+
+
+
 ## 清除通知 API
 
 #### 支持的版本
@@ -1487,7 +1519,7 @@ JPushInterface.setLatestNotificationNumber(context, 3);
 		</tr>
 		<tr >
 			<td>-997</td>
-			<td>注册失败</td>
+			<td>注册失败/登录失败</td>
 			<td>（一般是由于没有网络造成的）如果确保设备网络正常，还是一直遇到此问题，则还有另外一个原因：JPush 服务器端拒绝注册。而这个的原因一般是：你当前的 App 的 Android 包名，以及 appKey ，与你在 Portal 上注册的应用的 Android 包名与 AppKey 不相同。</td>
 		</tr>
 		<tr >
