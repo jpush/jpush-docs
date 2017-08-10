@@ -1161,7 +1161,7 @@ alias相关的操作会在此方法中回调结果。
 + msgId：推送每一条消息和通知对应的唯一 ID(字段key值为:msg_id)。
 + whichPushSDK：接收到推送的平台(字段key值为:rom_type)。
 
-PS:通知支持自定义Activity，通知内容中包含的推送平台。msgId及whichPushSDK需要在自定义Activity中的intent中获取。
+PS:通知支持自定义Activity。msgId及whichPushSDK需要在自定义Activity中的intent中获取。
 
 ##### 代码示例	
 
