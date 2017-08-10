@@ -1487,7 +1487,7 @@ JPushInterface.setLatestNotificationNumber(context, 3);
 		</tr>
 		<tr >
 			<td>-997</td>
-			<td>注册失败</td>
+			<td>注册失败/登录失败</td>
 			<td>（一般是由于没有网络造成的）如果确保设备网络正常，还是一直遇到此问题，则还有另外一个原因：JPush 服务器端拒绝注册。而这个的原因一般是：你当前的 App 的 Android 包名，以及 appKey ，与你在 Portal 上注册的应用的 Android 包名与 AppKey 不相同。</td>
 		</tr>
 		<tr >
