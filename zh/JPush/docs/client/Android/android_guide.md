@@ -4,7 +4,7 @@
 
 本文是 JPush Android SDK 标准的集成指南文档。用以指导 SDK 的使用方法，默认读者已经熟悉IDE（Eclipse 或者 Android Studio）的基本使用方法，以及具有一定的 Android 编程知识基础。
 
-本篇指南匹配的 JPush Android SDK 版本为：v3.0.0 及以后版本。
+本篇指南匹配的 JPush Android SDK 版本为：3.0.0 及以后版本。
 
 + [3 分钟快速 Demo（Android）](android_3m/)：如果您想要快速地测试、感受下极光推送的效果，请参考本文在几分钟内跑通Demo。
 + 极光推送[文档网站](http://docs.jiguang.cn/)上，有极光推送相关的所有指南、API、教程等全部的文档。包括本文档的更新版本，都会及时地发布到该网站上。
@@ -136,10 +136,12 @@
         
 ***注*** : 如果在添加以上 abiFilter 配置之后android Studio出现以下提示：
 
-        NDK integration is deprecated in the current plugin. Consider trying the new experimental plugin.
+        NDK integration is deprecated in the current plugin. Consider trying the new experimental plugin
+        
 则在 Project 根目录的gradle.properties文件中添加：
 
-        android.useDeprecatedNdk=true。
+        android.useDeprecatedNdk=true
+        
 ***说明***：若没有res/drawable-xxxx/jpush_notification_icon这个资源默认使用应用图标作为通知icon，在5.0以上系统将应用图标作为statusbar icon可能显示不正常，用户可定义没有阴影和渐变色的icon替换这个文件，文件名不要变。
 
 
@@ -251,7 +253,15 @@ defaultConfig {
                 <action android:name="cn.jpush.android.intent.PUSH_TIME" />
             </intent-filter>
         </service>
-         
+        
+        <!-- Required SDK 核心功能-->
+        <!-- since 3.0.9 Required SDK 核心功能-->
+        <provider
+            android:authorities="您应用的包名.DataProvider"
+            android:name="cn.jpush.android.service.DataProvider"
+            android:exported="true"
+           /> 
+           
         <!-- since 1.8.0 option 可选项。用于同一设备中不同应用的JPush服务相互拉起的功能。 -->
         <!-- 若不启用该功能可删除该组件，将不拉起其他应用也不能被其他应用拉起 -->
          <service
@@ -317,6 +327,18 @@ defaultConfig {
         
         <!-- Required SDK核心功能-->
         <receiver android:name="cn.jpush.android.service.AlarmReceiver" />
+        
+        <!-- Required since 3.0.7 -->
+        <!-- 新的tag/alias接口结果返回需要开发者配置一个自定的广播 -->
+        <!-- 该广播需要继承JPush提供的JPushMessageReceiver类, 并如下新增一个 Intent-Filter -->
+        <receiver
+        android:name="自定义 Receiver"
+        android:enabled="true" >
+        <intent-filter>
+        <action android:name="cn.jpush.android.intent.RECEIVE_MESSAGE" />
+        <category android:name="您应用的包名" />
+        </intent-filter>
+        </receiver>
 
         <!-- User defined. 用户自定义的广播接收器-->
          <receiver
@@ -420,12 +442,13 @@ defaultConfig {
 
         -dontwarn cn.jpush.**
         -keep class cn.jpush.** { *; }
+        -keep class * extends cn.jpush.android.helpers.JPushMessageReceiver { *; }
         
         -dontwarn cn.jiguang.**
         -keep class cn.jiguang.** { *; }
         
 
-+ v2.0.5 ~ v2.1.7 版本有引入 gson 和 protobuf ，增加排除混淆的配置。(2.1.8版本不需配置)
++ 2.0.5 ~ 2.1.7 版本有引入 gson 和 protobuf ，增加排除混淆的配置。(2.1.8版本不需配置)
   
         #==================gson && protobuf==========================
         -dontwarn com.google.**
