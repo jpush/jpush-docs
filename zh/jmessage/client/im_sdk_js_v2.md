@@ -167,8 +167,8 @@ JMessage#register()
 ```
   JIM.register({
             'username' : '<register name>',
-			'password' : '<register password>',
-			'is_md5' : '<is_md5>'
+	    'password' : '<register password>',
+	      'is_md5' : '<is_md5>'
         }).onSuccess(function(data) {
             //data.code 返回码
             //data.message 描述
@@ -277,7 +277,7 @@ JMessage#getUserInfo()
 ```
   JIM.getUserInfo({
             'username' : '<search username>',
-			'appkey' : '<search appkey>'
+	    'appkey' : '<search appkey>'
         }).onSuccess(function(data) {
             //data.code 返回码
             //data.message 描述
@@ -493,7 +493,7 @@ JMessage#sendSingleMsg()
    // 发送消息
    JIM.sendSingleMsg({
                  'target_username' : '<targetName>',
-	             'target_nickname' : '<targetNickname>',
+	         'target_nickname' : '<targetNickname>',
                  'content' : '<textContent>',
                  'appkey' : '<targetAppkey>',
                  'extras' : 'json object'
@@ -512,7 +512,7 @@ JMessage#sendSingleMsg()
    // 转发消息
    JIM.sendSingleMsg({
                  'target_username' : '<targetName>',
-	             'target_nickname' : '<targetNickname>',
+	         'target_nickname' : '<targetNickname>',
                  'msg_body' : {
                               'text' : '',
                             'extras' : 'json object'
@@ -563,7 +563,7 @@ JMessage#sendSinglePic()
  // 发送消息
  JIM.sendSinglePic({
                  'target_username' : '<targetName>',
-	             'target_nickname' : '<targetNickname>',
+	         'target_nickname' : '<targetNickname>',
                  'image' : '<formData with image>',
                  'appkey' : '<targetAppkey>',
                  'extras' : 'json object'
@@ -581,7 +581,7 @@ JMessage#sendSinglePic()
   // 转发消息
   JIM.sendSinglePic({
                  'target_username' : '<targetName>',
-	             'target_nickname' : '<targetNickname>',
+	         'target_nickname' : '<targetNickname>',
                  'msg_body' : {
                              'media_id':'',
                           'media_crc32':'',
@@ -633,7 +633,7 @@ JMessage#sendSingleFile()
   // 发送消息
   JIM.sendSingleFile({
                  'target_username' : '<targetName>',
-		         'target_nickname' : '<targetNickname>',
+		 'target_nickname' : '<targetNickname>',
                  'file' : '<formData with file>',
                  'appkey' : '<targetAppkey>',
                  'extras' : 'json object'
@@ -651,7 +651,7 @@ JMessage#sendSingleFile()
   // 转发消息
   JIM.sendSingleFile({
                  'target_username' : '<targetName>',
-	             'target_nickname' : '<targetNickname>',
+	         'target_nickname' : '<targetNickname>',
                  'msg_body' : {
                              'media_id':'',
                           'media_crc32':'',
@@ -705,8 +705,8 @@ JMessage#sendSingleLocation()
   // 发送消息
   JIM.sendSingleLocation({
                  'target_username' : '<targetName>',
-		         'target_nickname' : '<targetNickname>',
-		         'latitude' : '<latitude>',
+		 'target_nickname' : '<targetNickname>',
+		 'latitude' : '<latitude>',
                  'longitude' : '<longitude>',
                  'scale' : '<scale>',
                  'label' : '<address label>'
@@ -726,8 +726,8 @@ JMessage#sendSingleLocation()
   // 转发消息
   JIM.sendSingleLocation({
                  'target_username' : '<targetName>',
-		         'target_nickname' : '<targetNickname>',
-		         'msg_body' : {
+		 'target_nickname' : '<targetNickname>',
+		        'msg_body' : {
                                'latitude' : '<latitude>',
                               'longitude' : '<longitude>',
                                   'scale' : '<scale>',
@@ -775,7 +775,7 @@ JMessage#sendSingleCustom()
    // 发送消息
    JIM.sendSingleCustom({
                  'target_username' : '<targetName>',
-		         'target_nickname' : '<targetNickname>',
+		 'target_nickname' : '<targetNickname>',
                  'custome' : '<json object>'
                  'appkey' : '<targetAppkey>'
                }).onSuccess(function(data , msg) {
@@ -792,7 +792,7 @@ JMessage#sendSingleCustom()
   // 转发消息
   JIM.sendSingleCustom({
                  'target_username' : '<targetName>',
-		         'target_nickname' : '<targetNickname>',
+		 'target_nickname' : '<targetNickname>',
                  'msg_body' : '<json object>', // 可以直接从已有消息体里面获取msg_body
                  'appkey' : '<targetAppkey>'
                }).onSuccess(function(data , msg) {
@@ -837,7 +837,7 @@ JMessage#sendGroupMsg()
    // 发送消息
    JIM.sendGroupMsg({
                  'target_gid' : '<targetGid>',
-		         'target_gname' : '<targetGName>',
+		 'target_gname' : '<targetGName>',
                  'content' : '<textContent>',
                  'extras' : '<json object>',
                  'at_list' : [] //at all
@@ -855,7 +855,7 @@ JMessage#sendGroupMsg()
    // 转发消息
    JIM.sendGroupMsg({
                  'target_gid' : '<targetGid>',
-		         'target_gname' : '<targetGName>',
+		 'target_gname' : '<targetGName>',
                  'msg_body' : {
                               'text' : '',
                             'extras' : ''
@@ -902,7 +902,7 @@ JMessage#sendGroupPic()
    // 发送消息
    JIM.sendGroupPic({
                  'target_gid' : '<targetGid>',
-		         'target_gname' : '<targetGName>',
+		 'target_gname' : '<targetGName>',
                  'image' : '<formData with image>',
                  'extras' : 'json object'
                }).onSuccess(function(data , msg) {
@@ -919,7 +919,7 @@ JMessage#sendGroupPic()
   // 转发消息
   JIM.sendGroupPic({
                  'target_gid' : '<targetGid>',
-		         'target_gname' : '<targetGName>',
+	       'target_gname' : '<targetGName>',
                   'msg_body' : {
                              'media_id':'',
                           'media_crc32':'',
@@ -969,7 +969,7 @@ JMessage#sendGroupFile()
    // 发送消息
    JIM.sendGroupFile({
                  'target_gid' : '<targetGid>',
-		         'target_gname' : '<targetGName>',
+		 'target_gname' : '<targetGName>',
                  'file' : '<formData with file>',
                  'extras' : 'json object'
                }).onSuccess(function(data , msg) {
@@ -986,7 +986,7 @@ JMessage#sendGroupFile()
    // 转发消息
    JIM.sendGroupFile({
                  'target_gid' : '<targetGid>',
-		         'target_gname' : '<targetGName>',
+		 'target_gname' : '<targetGName>',
                  'msg_body' : {
                              'media_id':'',
                           'media_crc32':'',
@@ -1038,8 +1038,8 @@ JMessage#sendGroupLocation()
    // 发送消息
    JIM.sendGroupLocation({
                  'target_gid' : '<targetGid>',
-		         'target_gname' : '<targetGName>',
-		         'latitude' : '<latitude>',
+		 'target_gname' : '<targetGName>',
+		 'latitude' : '<latitude>',
                  'longitude' : '<longitude>',
                  'scale' : '<scale>',
                  'label' : '<address label>',
@@ -1058,8 +1058,8 @@ JMessage#sendGroupLocation()
    // 转发消息
    JIM.sendGroupLocation({
                  'target_gid' : '<targetGid>',
-		         'target_gname' : '<targetGName>',
-		         'msg_body' : {
+               'target_gname' : '<targetGName>',
+		   'msg_body' : {
                               'latitude' : '<latitude>',
                              'longitude' : '<longitude>',
                                  'scale' : '<scale>',
@@ -1105,8 +1105,8 @@ JMessage#sendGroupMsg()
    // 发送消息
    JIM.sendGroupMsg({
                   'target_gid' : '<targetGid>',
-		          'target_gname' : '<targetGName>',
-		          'custom' : '<json object>'
+		'target_gname' : '<targetGName>',
+		      'custom' : '<json object>'
                }).onSuccess(function(data , msg) {
                   //data.code 返回码
                   //data.message 描述
@@ -1121,8 +1121,8 @@ JMessage#sendGroupMsg()
    // 转发消息
    JIM.sendGroupMsg({
                   'target_gid' : '<targetGid>',
-		          'target_gname' : '<targetGName>',
-		          'msg_body' : '<json object>'// 可以直接从已有消息体里面获取msg_body
+		'target_gname' : '<targetGName>',
+		    'msg_body' : '<json object>'// 可以直接从已有消息体里面获取msg_body
                }).onSuccess(function(data , msg) {
                   //data.code 返回码
                   //data.message 描述
@@ -1151,7 +1151,7 @@ JMessage#createGroup()
 ```
    JIM.createGroup({
                  'group_name' : '<groupName>',
-			     'group_description' : '<groupDescription>'
+          'group_description' : '<groupDescription>'
                }).onSuccess(function(data) {
                   //data.code 返回码
                   //data.message 描述
