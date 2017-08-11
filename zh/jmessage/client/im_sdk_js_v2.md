@@ -369,7 +369,7 @@ JMessage#updateSelfPwd()
 
 ```
    JIM.updateSelfPwd({
-                'old_pwd' : '<oldPwd>',
+                 'old_pwd' : '<oldPwd>',
                  'new_pwd' : '<newPwd>',
                   'is_md5' : '<idMd5>'
                }).onSuccess(function(data) {
@@ -399,10 +399,12 @@ JMessage#getConversation()
                    //data.message 描述
                    //data.conversations[] 会话列表，属性如下示例
                    //data.conversations[0].name  会话名称
+                   //data.conversations[0].appkey  appkey(单聊)
+                   //data.conversations[0].username  用户名(单聊)
                    //data.conversations[0].nickname  用户昵称(单聊)
                    //data.conversations[0].avatar  用户头像 id (单聊)
                    //data.conversations[0].type  会话类型(3 代表单聊会话类型，4 代表群聊会话类型)
-                   //data.conversations[0].key会话对象唯一标识(单聊用户唯一标识，群聊群组 gid)
+                   //data.conversations[0].key会话标识(单聊用户会话标识，群聊代表群组 gid)
                }).onFail(function(data) {
                    //data.code 返回码
                    //data.message 描述
@@ -467,29 +469,59 @@ JMessage#sendSingleMsg()
 
 **请求参数：**
 
-| KEY             | REQUIRE | DESCRIPTION                              |
-| --------------- | ------- | ---------------------------------------- |
-| target_username | TRUE    | 接收消息者 username                           |
-| content         | TRUE    | 消息文本                                     |
-| target_nickname | FALSE   | 接收者的展示名                                  |
-| extras          | FALSE   | 附加字段,字典类型                                |
-| appkey          | FALSE   | 跨应用查询时必填，目标应用的 appkey                    |
-| no_offline      | FALSE   | 消息离线控制标志，false，默认值，保存离线消息；true，不保存离线消息   |
-| no_notification | FALSE   | 状态栏显示消息标志，false，默认值，状态栏显示消息；true，状态栏不显示消息 |
+| KEY                 | REQUIRE           | DESCRIPTION                              |
+| ------------------- | ----------------- | ---------------------------------------- |
+| target_username     | TRUE              | 接收消息者 username                           |
+| content             | 与 msg_body  参数二选一 | 消息文本                                     |
+| msg_body            | 与 content 参数二选一   | 消息的 msg_body，用来实现消息转发功能                  |
+| target_nickname     | FALSE             | 接收者的展示名                                  |
+| extras              | FALSE             | 附加字段,字典类型                                |
+| appkey              | FALSE             | 跨应用查询时必填，目标应用的 appkey                    |
+| no_offline          | FALSE             | 消息离线控制标志，false，默认值，保存离线消息；true，不保存离线消息   |
+| no_notification     | FALSE             | 状态栏显示消息标志，false，默认值，状态栏显示消息；true，状态栏不显示消息 |
+| custom_notification | FALSE             | 通知栏参数，见下表                                |
+**custom_notification：**
+| KEY     | REQUIRE | DESCRIPTION           |
+| ------- | ------- | --------------------- |
+| enabled | TRUE    | 是否启用自定义消息通知栏 默认 FALSE |
+| title   | FALSE   | 通知栏标题                 |
+| alert   | FALSE   | 通知栏内容                 |
 
 **请求示例**
 
 ```
+   // 发送消息
    JIM.sendSingleMsg({
                  'target_username' : '<targetName>',
-	         'target_nickname' : '<targetNickname>',
+	             'target_nickname' : '<targetNickname>',
                  'content' : '<textContent>',
                  'appkey' : '<targetAppkey>',
                  'extras' : 'json object'
                }).onSuccess(function(data , msg<可选>) {
                   //data.code 返回码
                   //data.message 描述
-                  //data.msg_id 发送成功后的消息id
+                  //data.msg_id 发送成功后的消息 id
+                  //data.ctime_ms 消息生成时间,毫秒
+                  //msg.content 发送成功消息体,见下面消息体详情
+               }).onFail(function(data) {
+                  //data.code 返回码
+                  //data.message 描述
+               });
+```
+```
+   // 转发消息
+   JIM.sendSingleMsg({
+                 'target_username' : '<targetName>',
+	             'target_nickname' : '<targetNickname>',
+                 'msg_body' : {
+                              'text' : '',
+                            'extras' : 'json object'
+                              }, // 可以直接从已有消息体里面获取msg_body
+                 'appkey' : '<targetAppkey>',
+               }).onSuccess(function(data , msg<可选>) {
+                  //data.code 返回码
+                  //data.message 描述
+                  //data.msg_id 发送成功后的消息 id
                   //data.ctime_ms 消息生成时间,毫秒
                   //msg.content 发送成功消息体,见下面消息体详情
                }).onFail(function(data) {
@@ -507,22 +539,31 @@ JMessage#sendSinglePic()
 
 **请求参数：**
 
-| KEY             | REQUIRE | DESCRIPTION                              |
-| --------------- | ------- | ---------------------------------------- |
-| target_username | TRUE    | 接收消息者 username                           |
-| image           | TRUE    | 图片的 DataForm 对象                          |
-| target_nickname | FALSE   | 接收者的展示名                                  |
-| extras          | FALSE   | 附加字段,字典类型                                |
-| appkey          | FALSE   | 跨应用查询时必填，目标应用的 appkey                    |
-| no_offline      | FALSE   | 消息离线控制标志，false，默认值，保存离线消息；true，不保存离线消息   |
-| no_notification | FALSE   | 状态栏显示消息标志，false，默认值，状态栏显示消息；true，状态栏不显示消息 |
+| KEY                 | REQUIRE          | DESCRIPTION                              |
+| ------------------- | ---------------- | ---------------------------------------- |
+| target_username     | TRUE             | 接收消息者 username                           |
+| image               | 与 msg_body 参数二选一 | 图片的 DataForm 对象                          |
+| msg_body            | 与 image 参数二选一    | 消息的 msg_body，用来实现消息转发功能                  |
+| target_nickname     | FALSE            | 接收者的展示名                                  |
+| extras              | FALSE            | 附加字段,字典类型                                |
+| appkey              | FALSE            | 跨应用查询时必填，目标应用的 appkey                    |
+| no_offline          | FALSE            | 消息离线控制标志，false，默认值，保存离线消息；true，不保存离线消息   |
+| no_notification     | FALSE            | 状态栏显示消息标志，false，默认值，状态栏显示消息；true，状态栏不显示消息 |
+| custom_notification | FALSE            | 通知栏参数，见下表                                |
+**custom_notification：**
+| KEY     | REQUIRE | DESCRIPTION           |
+| ------- | ------- | --------------------- |
+| enabled | TRUE    | 是否启用自定义消息通知栏 默认 FALSE |
+| title   | FALSE   | 通知栏标题                 |
+| alert   | FALSE   | 通知栏内容                 |
 
 **请求示例**
 
 ```
-   JIM.sendSinglePic({
+ // 发送消息
+ JIM.sendSinglePic({
                  'target_username' : '<targetName>',
-	         'target_nickname' : '<targetNickname>',
+	             'target_nickname' : '<targetNickname>',
                  'image' : '<formData with image>',
                  'appkey' : '<targetAppkey>',
                  'extras' : 'json object'
@@ -531,7 +572,32 @@ JMessage#sendSinglePic()
                   //data.message 描述
                   //data.msg_id 发送成功后的消息id
                   //data.ctime_ms 消息生成时间,毫秒
-                  //msg.content 发送成功消息体,见下面消息体详情
+                  //msg.content 发送成功消息体
+               }).onFail(function(data) {
+                  //同发送单聊文本
+               });
+```
+```
+  // 转发消息
+  JIM.sendSinglePic({
+                 'target_username' : '<targetName>',
+	             'target_nickname' : '<targetNickname>',
+                 'msg_body' : {
+                             'media_id':'',
+                          'media_crc32':'',
+                                'width':'',
+                               'height':'',
+                               'format':'',
+                                'fsize':'',
+                              'extras' : 'json object'
+                                }, // 可以直接从已有消息体里面获取msg_body
+                 'appkey' : '<targetAppkey>',
+               }).onSuccess(function(data , msg<可选>) {
+                  //data.code 返回码
+                  //data.message 描述
+                  //data.msg_id 发送成功后的消息id
+                  //data.ctime_ms 消息生成时间,毫秒
+                  //msg.content 发送成功消息体
                }).onFail(function(data) {
                   //同发送单聊文本
                });
@@ -543,22 +609,31 @@ JMessage#sendSingleFile()
 
 **请求参数：**
 
-| KEY             | REQUIRE | DESCRIPTION                              |
-| --------------- | ------- | ---------------------------------------- |
-| target_username | TRUE    | 接收消息者 username                           |
-| file            | TRUE    | 文件的 DataForm 对象                          |
-| target_nickname | FALSE   | 接收者的展示名                                  |
-| extras          | FALSE   | 附加字段,字典类型                                |
-| appkey          | FALSE   | 跨应用查询时必填，目标应用的 appkey                    |
-| no_offline      | FALSE   | 消息离线控制标志，false，默认值，保存离线消息；true，不保存离线消息   |
-| no_notification | FALSE   | 状态栏显示消息标志，false，默认值，状态栏显示消息；true，状态栏不显示消息 |
+| KEY                 | REQUIRE          | DESCRIPTION                              |
+| ------------------- | ---------------- | ---------------------------------------- |
+| target_username     | TRUE             | 接收消息者 username                           |
+| file                | 与 msg_body 参数二选一 | 文件的 DataForm 对象                          |
+| msg_body            | 与 file 参数二选一     | 消息的 msg_body，用来实现消息转发                    |
+| target_nickname     | FALSE            | 接收者的展示名                                  |
+| extras              | FALSE            | 附加字段,字典类型                                |
+| appkey              | FALSE            | 跨应用查询时必填，目标应用的 appkey                    |
+| no_offline          | FALSE            | 消息离线控制标志，false，默认值，保存离线消息；true，不保存离线消息   |
+| no_notification     | FALSE            | 状态栏显示消息标志，false，默认值，状态栏显示消息；true，状态栏不显示消息 |
+| custom_notification | FALSE            | 通知栏参数，见下表                                |
+**custom_notification：**
+| KEY     | REQUIRE | DESCRIPTION           |
+| ------- | ------- | --------------------- |
+| enabled | TRUE    | 是否启用自定义消息通知栏 默认 FALSE |
+| title   | FALSE   | 通知栏标题                 |
+| alert   | FALSE   | 通知栏内容                 |
 
 **请求示例**
 
 ```
-   JIM.sendSingleFile({
+  // 发送消息
+  JIM.sendSingleFile({
                  'target_username' : '<targetName>',
-		 'target_nickname' : '<targetNickname>',
+		         'target_nickname' : '<targetNickname>',
                  'file' : '<formData with file>',
                  'appkey' : '<targetAppkey>',
                  'extras' : 'json object'
@@ -567,9 +642,33 @@ JMessage#sendSingleFile()
                   //data.message 描述
                   //data.msg_id 发送成功后的消息id
                   //data.ctime_ms 消息生成时间,毫秒
-                  //msg.content 发送成功消息体,见下面消息体详情
+                  //msg.content 发送成功消息体
                }).onFail(function(data) {
                    //同发送单聊文本
+               });
+```
+```
+  // 转发消息
+  JIM.sendSingleFile({
+                 'target_username' : '<targetName>',
+	             'target_nickname' : '<targetNickname>',
+                 'msg_body' : {
+                             'media_id':'',
+                          'media_crc32':'',
+                                 'hash':'',
+                                'fname':'',
+                                'fsize':'',
+                              'extras' : 'json object'
+                                }, // 可以直接从已有消息体里面获取msg_body
+                 'appkey' : '<targetAppkey>',
+               }).onSuccess(function(data , msg<可选>) {
+                  //data.code 返回码
+                  //data.message 描述
+                  //data.msg_id 发送成功后的消息id
+                  //data.ctime_ms 消息生成时间,毫秒
+                  //msg.content 发送成功消息体
+               }).onFail(function(data) {
+                  //同发送单聊文本
                });
 ```
 
@@ -579,26 +678,35 @@ JMessage#sendSingleLocation()
 
 **请求参数：**
 
-| KEY             | REQUIRE | DESCRIPTION                              |
-| --------------- | ------- | ---------------------------------------- |
-| target_username | TRUE    | 接收消息者 username                           |
-| latitude        | TRUE    | 维度                                       |
-| longitude       | TRUE    | 精度                                       |
-| scale           | TRUE    | 地图缩放级别                                   |
-| label           | TRUE    | 地址                                       |
-| target_nickname | FALSE   | 接收者的展示名                                  |
-| extras          | FALSE   | 附加字段,字典类型                                |
-| appkey          | FALSE   | 跨应用查询时必填，目标应用的 appkey                    |
-| no_offline      | FALSE   | 消息离线控制标志，false，默认值，保存离线消息；true，不保存离线消息   |
-| no_notification | FALSE   | 状态栏显示消息标志，false，默认值，状态栏显示消息；true，状态栏不显示消息 |
+| KEY                 | REQUIRE        | DESCRIPTION                              |
+| ------------------- | -------------- | ---------------------------------------- |
+| target_username     | TRUE           | 接收消息者 username                           |
+| latitude            | 与 msg_body 二选一 | 维度                                       |
+| longitude           | 与 msg_body 二选一 | 精度                                       |
+| scale               | 与 msg_body 二选一 | 地图缩放级别                                   |
+| label               | 与 msg_body 二选一 | 地址                                       |
+| msg_body            | 与位置相关参数二选一     | 消息的 msg_body，用来实现消息转发功能                  |
+| target_nickname     | FALSE          | 接收者的展示名                                  |
+| extras              | FALSE          | 附加字段,字典类型                                |
+| appkey              | FALSE          | 跨应用查询时必填，目标应用的 appkey                    |
+| no_offline          | FALSE          | 消息离线控制标志，false，默认值，保存离线消息；true，不保存离线消息   |
+| no_notification     | FALSE          | 状态栏显示消息标志，false，默认值，状态栏显示消息；true，状态栏不显示消息 |
+| custom_notification | FALSE          | 通知栏参数，见下表                                |
+**custom_notification：**
+| KEY     | REQUIRE | DESCRIPTION           |
+| ------- | ------- | --------------------- |
+| enabled | TRUE    | 是否启用自定义消息通知栏 默认 FALSE |
+| title   | FALSE   | 通知栏标题                 |
+| alert   | FALSE   | 通知栏内容                 |
 
 **请求示例**
 
 ```
-   JIM.sendSingleLocation({
+  // 发送消息
+  JIM.sendSingleLocation({
                  'target_username' : '<targetName>',
-		 'target_nickname' : '<targetNickname>',
-		 'latitude' : '<latitude>',
+		         'target_nickname' : '<targetNickname>',
+		         'latitude' : '<latitude>',
                  'longitude' : '<longitude>',
                  'scale' : '<scale>',
                  'label' : '<address label>'
@@ -609,7 +717,30 @@ JMessage#sendSingleLocation()
                   //data.message 描述
                   //data.msg_id 发送成功后的消息id
                   //data.ctime_ms 消息生成时间,毫秒
-                  //msg.content 发送成功消息体,见下面消息体详情
+                  //msg.content 发送成功消息体
+               }).onFail(function(data) {
+                   //同发送单聊文本
+               });
+```
+```
+  // 转发消息
+  JIM.sendSingleLocation({
+                 'target_username' : '<targetName>',
+		         'target_nickname' : '<targetNickname>',
+		         'msg_body' : {
+                               'latitude' : '<latitude>',
+                              'longitude' : '<longitude>',
+                                  'scale' : '<scale>',
+                                  'label' : '<address label>',
+                                 'extras' : 'json object'
+		                      } // 可以直接从已有消息体里面获取msg_body
+                 'appkey' : '<targetAppkey>',
+               }).onSuccess(function(data , msg) {
+                  //data.code 返回码
+                  //data.message 描述
+                  //data.msg_id 发送成功后的消息id
+                  //data.ctime_ms 消息生成时间,毫秒
+                  //msg.content 发送成功消息体
                }).onFail(function(data) {
                    //同发送单聊文本
                });
@@ -621,21 +752,30 @@ JMessage#sendSingleCustom()
 
 **请求参数：**
 
-| KEY             | REQUIRE | DESCRIPTION                              |
-| --------------- | ------- | ---------------------------------------- |
-| target_username | TRUE    | 接收消息者 username                           |
-| custom          | TRUE    | 自定义 json object 消息                       |
-| target_nickname | FALSE   | 接收者的展示名                                  |
-| appkey          | FALSE   | 跨应用查询时必填，目标应用的 appkey                    |
-| no_offline      | FALSE   | 消息离线控制标志，false，默认值，保存离线消息；true，不保存离线消息   |
-| no_notification | FALSE   | 状态栏显示消息标志，false，默认值，状态栏显示消息；true，状态栏不显示消息 |
+| KEY                 | REQUIRE      | DESCRIPTION                              |
+| ------------------- | ------------ | ---------------------------------------- |
+| target_username     | TRUE         | 接收消息者 username                           |
+| custom              | TRUE         | 自定义 json object 消息                       |
+| msg_body            | 与 custom 二选一 | 消息的 msg_body，用来实现消息转发功能                  |
+| target_nickname     | FALSE        | 接收者的展示名                                  |
+| appkey              | FALSE        | 跨应用查询时必填，目标应用的 appkey                    |
+| no_offline          | FALSE        | 消息离线控制标志，false，默认值，保存离线消息；true，不保存离线消息   |
+| no_notification     | FALSE        | 状态栏显示消息标志，false，默认值，状态栏显示消息；true，状态栏不显示消息 |
+| custom_notification | FALSE        | 通知栏参数，见下表                                |
+**custom_notification：**
+| KEY     | REQUIRE | DESCRIPTION           |
+| ------- | ------- | --------------------- |
+| enabled | TRUE    | 是否启用自定义消息通知栏 默认 FALSE |
+| title   | FALSE   | 通知栏标题                 |
+| alert   | FALSE   | 通知栏内容                 |
 
 **请求示例**
 
 ```
+   // 发送消息
    JIM.sendSingleCustom({
                  'target_username' : '<targetName>',
-		 'target_nickname' : '<targetNickname>',
+		         'target_nickname' : '<targetNickname>',
                  'custome' : '<json object>'
                  'appkey' : '<targetAppkey>'
                }).onSuccess(function(data , msg) {
@@ -643,7 +783,24 @@ JMessage#sendSingleCustom()
                   //data.message 描述
                   //data.msg_id 发送成功后的消息id
                   //data.ctime_ms 消息生成时间,毫秒
-                  //msg.content 发送成功消息体,见下面消息体详情
+                  //msg.content 发送成功消息体
+               }).onFail(function(data) {
+                  //同发送单聊文本
+               });
+```
+```
+  // 转发消息
+  JIM.sendSingleCustom({
+                 'target_username' : '<targetName>',
+		         'target_nickname' : '<targetNickname>',
+                 'msg_body' : '<json object>', // 可以直接从已有消息体里面获取msg_body
+                 'appkey' : '<targetAppkey>'
+               }).onSuccess(function(data , msg) {
+                  //data.code 返回码
+                  //data.message 描述
+                  //data.msg_id 发送成功后的消息id
+                  //data.ctime_ms 消息生成时间,毫秒
+                  //msg.content 发送成功消息体
                }).onFail(function(data) {
                   //同发送单聊文本
                });
@@ -655,22 +812,32 @@ JMessage#sendGroupMsg()
 
 **请求参数：**
 
-| KEY             | REQUIRE | DESCRIPTION                              |
-| --------------- | ------- | ---------------------------------------- |
-| target_gid      | TRUE    | 群组 id                                    |
-| content         | TRUE    | 消息文本                                     |
-| target_gname    | FALSE   | 接收者的展示名                                  |
-| extras          | FALSE   | 附加字段,字典类型                                |
-| at_list         | FALSE   | @用户列表：[{'username': 'name1', 'appkey': '跨应用必填，默认不填表示本应用'}],@ALL  直接空数组：[] |
-| no_offline      | FALSE   | 消息离线控制标志，false，默认值，保存离线消息；true，不保存离线消息   |
-| no_notification | FALSE   | 状态栏显示消息标志，false，默认值，状态栏显示消息；true，状态栏不显示消息 |
+| KEY                 | REQUIRE          | DESCRIPTION                              |
+| ------------------- | ---------------- | ---------------------------------------- |
+| target_gid          | TRUE             | 群组 id                                    |
+| content             | 与 msg_body 参数二选一 | 消息文本                                     |
+| msg_body            | 与 content 参数二选一  | 消息的 msg_body，用来实现消息转发                    |
+| target_gname        | FALSE            | 接收者的展示名                                  |
+| extras              | FALSE            | 附加字段,字典类型                                |
+| at_list             | FALSE            | @用户列表：[{'username': 'name1', 'appkey': '跨应用必填，默认不填表示本应用'}],@ALL  直接空数组：[] |
+| no_offline          | FALSE            | 消息离线控制标志，false，默认值，保存离线消息；true，不保存离线消息   |
+| no_notification     | FALSE            | 状态栏显示消息标志，false，默认值，状态栏显示消息；true，状态栏不显示消息 |
+| custom_notification | FALSE            | 通知栏参数，见下表                                |
+**custom_notification：**
+| KEY       | REQUIRE | DESCRIPTION          |
+| --------- | ------- | -------------------- |
+| enabled   | TRUE    | 是否启用自定义消息通知栏 默认FALSE |
+| title     | FALSE   | 通知栏标题                |
+| alert     | FALSE   | 通知栏内容                |
+| at_prefix | FALSE   | 被@目标的通知内容前缀          |
 
 **请求示例**
 
 ```
+   // 发送消息
    JIM.sendGroupMsg({
                  'target_gid' : '<targetGid>',
-		 'target_gname' : '<targetGName>',
+		         'target_gname' : '<targetGName>',
                  'content' : '<textContent>',
                  'extras' : '<json object>',
                  'at_list' : [] //at all
@@ -679,7 +846,27 @@ JMessage#sendGroupMsg()
                   //data.message 描述
                   //data.msg_id 发送成功后的消息id
                   //data.ctime_ms 消息生成时间,毫秒
-                  //msg.content 发送成功消息体,见下面消息体详情
+                  //msg.content 发送成功消息体
+               }).onFail(function(data) {
+                  //同发送单聊文本
+               });
+```
+```
+   // 转发消息
+   JIM.sendGroupMsg({
+                 'target_gid' : '<targetGid>',
+		         'target_gname' : '<targetGName>',
+                 'msg_body' : {
+                              'text' : '',
+                            'extras' : ''
+                               }, // 可以直接从已有消息体里面获取msg_body
+                 'at_list' : [] //at all
+               }).onSuccess(function(data , msg) {
+                  //data.code 返回码
+                  //data.message 描述
+                  //data.msg_id 发送成功后的消息id
+                  //data.ctime_ms 消息生成时间,毫秒
+                  //msg.content 发送成功消息体
                }).onFail(function(data) {
                   //同发送单聊文本
                });
@@ -692,21 +879,30 @@ JMessage#sendGroupPic()
 
 **请求参数：**
 
-| KEY             | REQUIRE | DESCRIPTION                              |
-| --------------- | ------- | ---------------------------------------- |
-| target_gid      | TRUE    | 群组 id                                    |
-| image           | TRUE    | 图片的 DataForm 对象                          |
-| target_gname    | FALSE   | 接收者的展示名                                  |
-| extras          | FALSE   | 附加字段,字典类型                                |
-| no_offline      | FALSE   | 消息离线控制标志，false，默认值，保存离线消息；true，不保存离线消息   |
-| no_notification | FALSE   | 状态栏显示消息标志，false，默认值，状态栏显示消息；true，状态栏不显示消息 |
+| KEY             | REQUIRE          | DESCRIPTION                              |
+| --------------- | ---------------- | ---------------------------------------- |
+| target_gid      | TRUE             | 群组 id                                    |
+| image           | 与 msg_body 参数二选一 | 图片的 DataForm 对象                          |
+| msg_body        | 与 image 参数二选一    | 消息的 msg_body，用来实现消息转发                    |
+| target_gname    | FALSE            | 接收者的展示名                                  |
+| extras          | FALSE            | 附加字段,字典类型                                |
+| no_offline      | FALSE            | 消息离线控制标志，false，默认值，保存离线消息；true，不保存离线消息   |
+| no_notification | FALSE            | 状态栏显示消息标志，false，默认值，状态栏显示消息；true，状态栏不显示消息 |
+**custom_notification：**
+| KEY       | REQUIRE | DESCRIPTION          |
+| --------- | ------- | -------------------- |
+| enabled   | TRUE    | 是否启用自定义消息通知栏 默认FALSE |
+| title     | FALSE   | 通知栏标题                |
+| alert     | FALSE   | 通知栏内容                |
+| at_prefix | FALSE   | 被@目标的通知内容前缀          |
 
 **请求示例**
 
 ```
+   // 发送消息
    JIM.sendGroupPic({
                  'target_gid' : '<targetGid>',
-		  'target_gname' : '<targetGName>',
+		         'target_gname' : '<targetGName>',
                  'image' : '<formData with image>',
                  'extras' : 'json object'
                }).onSuccess(function(data , msg) {
@@ -714,7 +910,31 @@ JMessage#sendGroupPic()
                   //data.message 描述
                   //data.msg_id 发送成功后的消息id
                   //data.ctime_ms 消息生成时间,毫秒
-                  //msg.content 发送成功消息体,见下面消息体详情
+                  //msg.content 发送成功消息体
+               }).onFail(function(data) {
+                  //同发送单聊文本
+               });
+```
+```
+  // 转发消息
+  JIM.sendGroupPic({
+                 'target_gid' : '<targetGid>',
+		         'target_gname' : '<targetGName>',
+                  'msg_body' : {
+                             'media_id':'',
+                          'media_crc32':'',
+                                'width':'',
+                               'height':'',
+                               'format':'',
+                                'fsize':'',
+                              'extras' : 'json object'
+                                }, // 可以直接从已有消息体里面获取msg_body
+               }).onSuccess(function(data , msg) {
+                  //data.code 返回码
+                  //data.message 描述
+                  //data.msg_id 发送成功后的消息id
+                  //data.ctime_ms 消息生成时间,毫秒
+                  //msg.content 发送成功消息体
                }).onFail(function(data) {
                   //同发送单聊文本
                });
@@ -726,21 +946,30 @@ JMessage#sendGroupFile()
 
 **请求参数：**
 
-| KEY             | REQUIRE | DESCRIPTION                              |
-| --------------- | ------- | ---------------------------------------- |
-| target_gid      | TRUE    | 群组 id                                    |
-| file            | TRUE    | 文件的 DataForm 对象                          |
-| target_gname    | FALSE   | 接收者的展示名                                  |
-| extras          | FALSE   | 附加字段,字典类型                                |
-| no_offline      | FALSE   | 消息离线控制标志，false，默认值，保存离线消息；true，不保存离线消息   |
-| no_notification | FALSE   | 状态栏显示消息标志，false，默认值，状态栏显示消息；true，状态栏不显示消息 |
+| KEY             | REQUIRE          | DESCRIPTION                              |
+| --------------- | ---------------- | ---------------------------------------- |
+| target_gid      | TRUE             | 群组 id                                    |
+| file            | 与 msg_body 参数二选一 | 文件的 DataForm 对象                          |
+| msg_body        | 与 file 参数二选一     | 消息的 msg_body，用来实现消息转发                    |
+| target_gname    | FALSE            | 接收者的展示名                                  |
+| extras          | FALSE            | 附加字段,字典类型                                |
+| no_offline      | FALSE            | 消息离线控制标志，false，默认值，保存离线消息；true，不保存离线消息   |
+| no_notification | FALSE            | 状态栏显示消息标志，false，默认值，状态栏显示消息；true，状态栏不显示消息 |
+**custom_notification：**
+| KEY       | REQUIRE | DESCRIPTION          |
+| --------- | ------- | -------------------- |
+| enabled   | TRUE    | 是否启用自定义消息通知栏 默认FALSE |
+| title     | FALSE   | 通知栏标题                |
+| alert     | FALSE   | 通知栏内容                |
+| at_prefix | FALSE   | 被@目标的通知内容前缀          |
 
 **请求示例**
 
 ```
+   // 发送消息
    JIM.sendGroupFile({
                  'target_gid' : '<targetGid>',
-		  'target_gname' : '<targetGName>',
+		         'target_gname' : '<targetGName>',
                  'file' : '<formData with file>',
                  'extras' : 'json object'
                }).onSuccess(function(data , msg) {
@@ -748,7 +977,30 @@ JMessage#sendGroupFile()
                   //data.message 描述
                   //data.msg_id 发送成功后的消息id
                   //data.ctime_ms 消息生成时间,毫秒
-                  //msg.content 发送成功消息体,见下面消息体详情
+                  //msg.content 发送成功消息体
+               }).onFail(function(data) {
+                   //同发送单聊文本
+               });
+```
+```
+   // 转发消息
+   JIM.sendGroupFile({
+                 'target_gid' : '<targetGid>',
+		         'target_gname' : '<targetGName>',
+                 'msg_body' : {
+                             'media_id':'',
+                          'media_crc32':'',
+                                 'hash':'',
+                                'fname':'',
+                                'fsize':'',
+                                'extras' : 'json object'
+                                } // 可以直接从已有消息体里面获取msg_body
+               }).onSuccess(function(data , msg) {
+                  //data.code 返回码
+                  //data.message 描述
+                  //data.msg_id 发送成功后的消息id
+                  //data.ctime_ms 消息生成时间,毫秒
+                  //msg.content 发送成功消息体
                }).onFail(function(data) {
                    //同发送单聊文本
                });
@@ -760,25 +1012,34 @@ JMessage#sendGroupLocation()
 
 **请求参数：**
 
-| KEY             | REQUIRE | DESCRIPTION                              |
-| --------------- | ------- | ---------------------------------------- |
-| target_gid      | TRUE    | 群组 id                                    |
-| latitude        | TRUE    | 维度                                       |
-| longitude       | TRUE    | 精度                                       |
-| scale           | TRUE    | 地图缩放级别                                   |
-| label           | TRUE    | 地址                                       |
-| target_gname    | FALSE   | 接收者的展示名                                  |
-| extras          | FALSE   | 附加字段,字典类型                                |
-| no_offline      | FALSE   | 消息离线控制标志，false，默认值，保存离线消息；true，不保存离线消息   |
-| no_notification | FALSE   | 状态栏显示消息标志，false，默认值，状态栏显示消息；true，状态栏不显示消息 |
+| KEY             | REQUIRE        | DESCRIPTION                              |
+| --------------- | -------------- | ---------------------------------------- |
+| target_gid      | TRUE           | 群组 id                                    |
+| latitude        | 与 msg_body 二选一 | 维度                                       |
+| longitude       | 与 msg_body 二选一 | 精度                                       |
+| scale           | 与 msg_body 二选一 | 地图缩放级别                                   |
+| label           | 与 msg_body 二选一 | 地址                                       |
+| msg_body        | 与位置相关参数二选一     | 消息的 msg_body，用来实现消息转发                    |
+| target_gname    | FALSE          | 接收者的展示名                                  |
+| extras          | FALSE          | 附加字段,字典类型                                |
+| no_offline      | FALSE          | 消息离线控制标志，false，默认值，保存离线消息；true，不保存离线消息   |
+| no_notification | FALSE          | 状态栏显示消息标志，false，默认值，状态栏显示消息；true，状态栏不显示消息 |
+**custom_notification：**
+| KEY       | REQUIRE | DESCRIPTION          |
+| --------- | ------- | -------------------- |
+| enabled   | TRUE    | 是否启用自定义消息通知栏 默认FALSE |
+| title     | FALSE   | 通知栏标题                |
+| alert     | FALSE   | 通知栏内容                |
+| at_prefix | FALSE   | 被@目标的通知内容前缀          |
 
 **请求示例**
 
 ```
+   // 发送消息
    JIM.sendGroupLocation({
-                  'target_gid' : '<targetGid>',
-		 'target_gname' : '<targetGName>',
-		 'latitude' : '<latitude>',
+                 'target_gid' : '<targetGid>',
+		         'target_gname' : '<targetGName>',
+		         'latitude' : '<latitude>',
                  'longitude' : '<longitude>',
                  'scale' : '<scale>',
                  'label' : '<address label>',
@@ -788,7 +1049,29 @@ JMessage#sendGroupLocation()
                   //data.message 描述
                   //data.msg_id 发送成功后的消息id
                   //data.ctime_ms 消息生成时间,毫秒
-                  //msg.content 发送成功消息体,见下面消息体详情
+                  //msg.content 发送成功消息体
+               }).onFail(function(data) {
+                   //同发送单聊文本
+               });
+```
+```
+   // 转发消息
+   JIM.sendGroupLocation({
+                 'target_gid' : '<targetGid>',
+		         'target_gname' : '<targetGName>',
+		         'msg_body' : {
+                              'latitude' : '<latitude>',
+                             'longitude' : '<longitude>',
+                                 'scale' : '<scale>',
+                                 'label' : '<address label>',
+                                 'extras' : 'json object'
+		                      } // 可以直接从已有消息体里面获取msg_body
+               }).onSuccess(function(data , msg) {
+                  //data.code 返回码
+                  //data.message 描述
+                  //data.msg_id 发送成功后的消息id
+                  //data.ctime_ms 消息生成时间,毫秒
+                  //msg.content 发送成功消息体
                }).onFail(function(data) {
                    //同发送单聊文本
                });
@@ -800,32 +1083,56 @@ JMessage#sendGroupMsg()
 
 **请求参数：**
 
-| KEY             | REQUIRE | DESCRIPTION                              |
-| --------------- | ------- | ---------------------------------------- |
-| target_gid      | TRUE    | 群组 id                                    |
-| custom          | TRUE    | 自定义 json object 消息                       |
-| target_gname    | FALSE   | 接收者的展示名                                  |
-| no_offline      | FALSE   | 消息离线控制标志，false，默认值，保存离线消息；true，不保存离线消息   |
-| no_notification | FALSE   | 状态栏显示消息标志，false，默认值，状态栏显示消息；true，状态栏不显示消息 |
+| KEY             | REQUIRE      | DESCRIPTION                              |
+| --------------- | ------------ | ---------------------------------------- |
+| target_gid      | TRUE         | 群组 id                                    |
+| custom          | TRUE         | 自定义 json object 消息                       |
+| msg_body        | 与 custom 二选一 | 消息的 msg_body，用来实现消息转发                    |
+| target_gname    | FALSE        | 接收者的展示名                                  |
+| no_offline      | FALSE        | 消息离线控制标志，false，默认值，保存离线消息；true，不保存离线消息   |
+| no_notification | FALSE        | 状态栏显示消息标志，false，默认值，状态栏显示消息；true，状态栏不显示消息 |
+**custom_notification：**
+| KEY       | REQUIRE | DESCRIPTION          |
+| --------- | ------- | -------------------- |
+| enabled   | TRUE    | 是否启用自定义消息通知栏 默认FALSE |
+| title     | FALSE   | 通知栏标题                |
+| alert     | FALSE   | 通知栏内容                |
+| at_prefix | FALSE   | 被@目标的通知内容前缀          |
 
 **请求示例**
 
 ```
+   // 发送消息
    JIM.sendGroupMsg({
                   'target_gid' : '<targetGid>',
-		  'target_gname' : '<targetGName>',
-		  'custom' : '<json object>'
+		          'target_gname' : '<targetGName>',
+		          'custom' : '<json object>'
                }).onSuccess(function(data , msg) {
                   //data.code 返回码
                   //data.message 描述
                   //data.msg_id 发送成功后的消息id
                   //data.ctime_ms 消息生成时间,毫秒
-                  //msg.content 发送成功消息体,见下面消息体详情
+                  //msg.content 发送成功消息体
                }).onFail(function(data) {
                    //同发送单聊文本
                });
 ```
-
+```
+   // 转发消息
+   JIM.sendGroupMsg({
+                  'target_gid' : '<targetGid>',
+		          'target_gname' : '<targetGName>',
+		          'msg_body' : '<json object>'// 可以直接从已有消息体里面获取msg_body
+               }).onSuccess(function(data , msg) {
+                  //data.code 返回码
+                  //data.message 描述
+                  //data.msg_id 发送成功后的消息id
+                  //data.ctime_ms 消息生成时间,毫秒
+                  //msg.content 发送成功消息体
+               }).onFail(function(data) {
+                   //同发送单聊文本
+               });
+```
 ### 群组管理
 
 #### 创建群组
@@ -1176,6 +1483,32 @@ JMessage#delGroupNoDisturb()
                });
 ```
 
+#### 群屏蔽列表
+
+JMessage#groupShieldList()
+
+**请求参数：**
+
+无
+
+**请求示例**
+
+```
+   JIM.groupShieldList().onSuccess(function(data) {
+                  //data.code 返回码
+                  //data.message 描述
+                  //data.group_list[] 群组列表，如下示例
+                  //data.group_list[0].gid 群id
+                  //data.group_list[0].name 群名
+                  //data.group_list[0].desc 群描述
+                  //data.group_list[0].appkey 群所属appkey
+                  //data.group_list[0].ctime 群创建时间
+                  //data.group_list[0].mtime 最近一次群信息修改时间 
+               }).onFail(function(data) {
+                   // 同上
+               });
+```
+
 #### 添加群屏蔽
 
 JMessage#addGroupShield()
@@ -1487,14 +1820,13 @@ JMessage#onMsgReceive(fn)
 
 **返回参数**
 
-| KEY       | DESCRIPTION                              |
-| --------- | ---------------------------------------- |
-| ctime_ms  | 消息生成时间,毫秒                                |
-| from_gid  | 群组 GID，群聊下有效                             |
-| msg_type  | 消息类型   3-single, 4-group                 |
-| msg_id    | 消息 ID                                    |
-| msg_level |                                          |
-| content   | [消息体](https://docs.jiguang.cn/jmessage/advanced/im_message_protocol/) |
+| KEY      | DESCRIPTION                              |
+| -------- | ---------------------------------------- |
+| ctime_ms | 消息生成时间,毫秒                                |
+| msg_type | 消息类型   3-single, 4-group                 |
+| key      | 会话 key                                   |
+| msg_id   | 消息 ID                                    |
+| content  | [消息体](https://docs.jiguang.cn/jmessage/advanced/im_message_protocol/) |
 
 **使用示例**
 
@@ -1578,12 +1910,16 @@ JMessage#onEventNotification(fn)
 | from_username | 事件发起者 username                           |
 | from_appkey   | 事件发起者 appkey                             |
 | to_usernames  | 事件当事人 [{"username":"","appkey":"","nickname":""},...] |
-| ctime         | 事件生成时间                                   |
-| extra         | 用于好友邀请事件                                 |
+| ctime_ms      | 事件生成时间,精确到毫秒                             |
+| extra         | 标识制字段                                    |
 | return_code   | 用于好友邀请应答事件                               |
 | description   | 描述                                       |
 | msg_ids       | 消息 id 列表                                 |
 | from_gid      | 群 gid                                    |
+| to_groups     | 目标群组，格式 [{'gid':' ','name':' '},...]     |
+| new_owner     | 新群主，格式  {'appkey':' ','username':' '}    |
+| group_name    | 群名                                       |
+| type          | 0:单聊，1:群聊                                |
 
 
 **同时登录，被迫下线示例：event_type = 1**
@@ -1593,7 +1929,7 @@ JMessage#onEventNotification(fn)
 JIM.onEventNotification(function(data) {
     //data.event_id 事件 id
     //data.event_type 事件类型
-    //data.ctime 事件生成时间
+    //data.ctime_ms 事件生成时间
 });
 ```
 
@@ -1604,7 +1940,7 @@ JIM.onEventNotification(function(data) {
 JIM.onEventNotification(function(data) {
     //data.event_id 事件 id
     //data.event_type 事件类型
-    //data.ctime 事件生成时间
+    //data.ctime_ms 事件生成时间
 });
 ```
 
@@ -1615,7 +1951,7 @@ JIM.onEventNotification(function(data) {
 JIM.onEventNotification(function(data) {
     //data.event_id 事件 id
     //data.event_type 事件类型
-    //data.ctime 事件生成时间
+    //data.ctime_ms 事件生成时间
     //data.from_username 邀请方 username
     //data.from_appkey 邀请方 appkey
     //data.extra 1-来自邀请方的事件，2－来自被邀请方，即好友邀请的应答事件
@@ -1630,7 +1966,7 @@ JIM.onEventNotification(function(data) {
 JIM.onEventNotification(function(data) {
     //data.event_id 事件 id
     //data.event_type 事件类型
-    //data.ctime 事件生成时间
+    //data.ctime_ms 事件生成时间
     //data.from_username 被邀请方 username
     //data.from_appkey 被邀请方 appkey
     //data.extra 1-来自邀请方的事件，2－来自被邀请方，即好友邀请的应答事件
@@ -1646,7 +1982,7 @@ JIM.onEventNotification(function(data) {
 JIM.onEventNotification(function(data) {
     //data.event_id 事件 id
     //data.event_type 事件类型
-    //data.ctime 事件生成时间
+    //data.ctime_ms 事件生成时间
     //data.from_username 删除请求方 username
     //data.from_appkey 删除请求方 appkey
 });
@@ -1659,7 +1995,7 @@ JIM.onEventNotification(function(data) {
 JIM.onEventNotification(function(data) {
     //data.event_id 事件 id
     //data.event_type 事件类型
-    //data.ctime 事件生成时间
+    //data.ctime_ms 事件生成时间
     //data.description API 好友管理
 });
 ```
@@ -1671,7 +2007,7 @@ JIM.onEventNotification(function(data) {
 JIM.onEventNotification(function(data) {
     //data.event_id 事件 id
     //data.event_type 事件类型
-    //data.ctime 事件生成时间
+    //data.ctime_ms 事件生成时间
     //data.from_username 创建者 username
     //data.from_appkey 创建者 appkey
     //data.to_usernames 创建者
@@ -1682,15 +2018,16 @@ JIM.onEventNotification(function(data) {
 **退出群组事件示例：event_type = 9**
 
 ```
-//群里所有人接收，即除退群者外的其他人，群主退群则群主和群里其他成员均会收到事件
+//群里所有人接收，包括退群者
 JIM.onEventNotification(function(data) {
     //data.event_id 事件 id
     //data.event_type 事件类型
-    //data.ctime 事件生成时间
+    //data.ctime_ms 事件生成时间
     //data.from_username 退群者 username
     //data.from_appkey 退群者 appkey
     //data.to_usernames 退群者
     //data.gid 群 id
+    //data.new_owner 如果是群主退出，这个表示新群主
 });
 ```
 
@@ -1701,7 +2038,7 @@ JIM.onEventNotification(function(data) {
 JIM.onEventNotification(function(data) {
     //data.event_id 事件 id
     //data.event_type 事件类型
-    //data.ctime 事件生成时间
+    //data.ctime_ms 事件生成时间
     //data.from_username 添加者 username
     //data.from_appkey 添加者 appkey
     //data.to_usernames 被添加的成员
@@ -1716,22 +2053,23 @@ JIM.onEventNotification(function(data) {
 JIM.onEventNotification(function(data) {
     //data.event_id 事件 id
     //data.event_type 事件类型
-    //data.ctime 事件生成时间
+    //data.ctime_ms 事件生成时间
     //data.from_username 删除者 username
     //data.from_appkey 删除者 appkey
     //data.to_usernames 被删除的成员
     //data.gid 群 id
+    //data.new_owner 如果是群主被删除，这个表示新群主
 });
 ```
 
 **修改群信息事件示例：event_type = 12**
 
 ```
-//群里所有人接收该事件
+//群里所有人接收该事件，包括修改者
 JIM.onEventNotification(function(data) {
     //data.event_id 事件 id
     //data.event_type 事件类型
-    //data.ctime 事件生成时间
+    //data.ctime_ms 事件生成时间
     //data.from_username 修改者 username
     //data.from_appkey 修改者 appkey
     //data.to_usernames 修改者
@@ -1746,7 +2084,7 @@ JIM.onEventNotification(function(data) {
 JIM.onEventNotification(function(data) {
     //data.event_id 事件 id
     //data.event_type 事件类型
-    //data.ctime 事件生成时间
+    //data.ctime_ms 事件生成时间
 });
 ```
 
@@ -1757,7 +2095,29 @@ JIM.onEventNotification(function(data) {
 JIM.onEventNotification(function(data) {
     //data.event_id 事件 id
     //data.event_type 事件类型
-    //data.ctime 事件生成时间
+    //data.ctime_ms 事件生成时间
+});
+```
+
+**群屏蔽变更事件示例：event_type =39**
+
+```
+//变更方接收该事件
+JIM.onEventNotification(function(data) {
+    //data.event_id 事件 id
+    //data.event_type 事件类型
+    //data.ctime_ms 事件生成时间
+});
+```
+
+**用户信息变更事件示例：event_type = 40**
+
+```
+//变更方接收该事件
+JIM.onEventNotification(function(data) {
+    //data.event_id 事件 id
+    //data.event_type 事件类型
+    //data.ctime_ms 事件生成时间
 });
 ```
 
@@ -1768,14 +2128,91 @@ JIM.onEventNotification(function(data) {
 JIM.onEventNotification(function(data) {
     //data.event_id 事件 id
     //data.event_type 事件类型
-    //data.ctime 事件生成时间
+    //data.ctime_ms 事件生成时间
     //data.from_username 消息发送方 username
     //data.from_appkey 消息发送方 appkey
-    //msgid_list 被撤回的消息列表
-    //from_gid 单聊消息 = 0，群聊 = gid
+    //data.msgid_list 被撤回的消息列表
+    //data.type 0 单聊 ，1 群聊
+    //data.to_usernames 撤回消息目标用户，单聊有效
+    //data.from_gid 群id 群聊有效
+});
+```
+**多通道好友变更事件示例：event_type =100**
+
+```
+//自己触发
+JIM.onEventNotification(function(data) {
+    //data.event_id 事件 id
+    //data.event_type 事件类型
+    //data.ctime_ms 事件生成时间
+    //data.extra 5 添加好友 6 删除好友 7 修改好友备注
+    //data.to_usernames 目标用户
+    //data.description extra=7有效，格式{'memo_name':','memo_others':''}
 });
 ```
 
+**多通道黑名单变更事件示例：event_type =101**
+
+```
+//自己触发
+JIM.onEventNotification(function(data) {
+    //data.event_id 事件 id
+    //data.event_type 事件类型
+    //data.ctime_ms 事件生成时间
+    //data.to_usernames 目标用户
+    //data.extra 1 添加黑名单 2 删除黑名单
+});
+```
+
+**多通道免打扰变更事件示例：event_type =102**
+
+```
+//自己触发
+JIM.onEventNotification(function(data) {
+    //data.event_id 事件 id
+    //data.event_type 事件类型
+    //data.ctime_ms 事件生成时间
+    //data.extra 31 添加单聊免打扰 32 删除单聊免打扰
+    //           33 添加群组免打扰 34 删除群组免打扰
+    //           35 添加全局免打扰 36 删除全局免打扰
+    //data.to_usernames 目标用户, extra = 31,32 有效
+    //data.to_groups 目标群组, extra = 33,34 有效
+});
+```
+
+**多通道群屏蔽变更事件示例：event_type =103**
+
+```
+//自己触发
+JIM.onEventNotification(function(data) {
+    //data.event_id 事件 id
+    //data.event_type 事件类型
+    //data.ctime_ms 事件生成时间
+    //data.extra 1 添加群屏蔽 2 删除群屏蔽
+    //data.to_groups 目标群组
+});
+```
+
+### 业务事件同步监听
+
+JMessage#onSyncEvent(fn)
+
+**请求参数:**
+
+| KEY  | REQUIRE | DESCRIPTION |
+| ---- | ------- | ----------- |
+| fn   | TRUE    | 事件接收处理函数    |
+
+**返回参数**
+ 同业务事件监听
+
+ **使用示例**
+
+```
+JIM.onSyncEvent(function(data) {
+    // data 为事件数组 [event1,event2,...]
+});
+```
 
 
 
