@@ -36,7 +36,7 @@
 
 ### 支持的版本
 
-开始的版本：v1.3.3
+开始支持的版本：1.3.3
 
 ### 功能说明
 
@@ -47,8 +47,6 @@ JPush SDK 提供的推送服务是默认开启的。
 <div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px;">
 <p> 本功能是一个完全本地的状态操作。也就是说：停止推送服务的状态不会保存到服务器上。
  <p>如果停止推送服务后，开发者App被卸载重新安装，JPush SDK 会恢复正常的默认行为。
- <p>而清理应用数据的情况，还是必须要调用恢复服务接口才能恢复。
-<br> 
  <p>本功能其行为类似于网络中断的效果，即：推送服务停止期间推送的消息，
  <p>恢复推送服务后，如果推送的消息还在保留的时长范围内，则客户端是会收到离线消息。
 </div>
@@ -403,7 +401,7 @@ SDK 对自定义消息，只是传递，不会有任何界面上的展示。
 	+ 通知栏的Notification ID，可以用于清除Notification
 	
 			Bundle bundle = intent.getExtras();
-			int notificationId = bundle.getInt(JPushInterface.EXTRA_NOTIFICATION_ID
+			int notificationId = bundle.getInt(JPushInterface.EXTRA_NOTIFICATION_ID);
 			  
 + JPushInterface.EXTRA\_MSG\_ID
 	+ SDK 1.6.1 以上版本支持。
@@ -512,7 +510,7 @@ JPush 服务的连接状态发生变化。（注：不是指 Android 系统的�
 ### 功能说明
 
 ```
-温馨提示，设置标签别名请注意处理call back结果。只有call back 返回值为 0 才设置成功，
+温馨提示，设置标签别名请注意处理call back结果。只有设置成功，
 才可以向目标推送。否则服务器 API 会返回1011错误。
 ```	
 
@@ -536,6 +534,369 @@ JPush 服务的连接状态发生变化。（注：不是指 Android 系统的�
 
 举例： game, old_page,  women
 
+### Method - filterValidTag
+
+<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px;">
+<p>使用建议
+ <br>
+ <p>设置 tags 时，如果其中一个 tag 无效，则整个设置过程失败。
+ <br>
+ <p>如果 App 的 tags 会在运行过程中动态设置，并且存在对 JPush SDK tag 规定的无效字符，
+ <p>则有可能一个 tag 无效导致这次调用里所有的 tags 更新失败。
+ <br>
+ <p>这时你可以调用本方法 filterValidTags 来过滤掉无效的 tags，得到有效的 tags，
+ <p>再调用 JPush SDK 的 set tags / alias 方法。
+</div>
+
+#### 支持的版本
+
+开始支持的版本：1.5.0
+
+#### 接口的定义
+
+	public static Set<String> filterValidTags(Set<String> tags);
+	
+#### 接口返回
+
+有效的 tag 集合。
+
+
+##新别名alias与标签tag接口
+新别名与标签接口支持增删改查的功能,从3.0.7版本开始支持,老版本别名与标签的接口从3.0.7版本开始不再维护
+
+
+### Method - setAlias
+
+调用此 API 来设置别名。
+
+需要理解的是，这个接口是覆盖逻辑，而不是增量逻辑。即新的调用会覆盖之前的设置。
+
+#### 支持的版本
+
+开始支持的版本：3.0.7
+
+#### 接口定义
+
+	public static void setAlias(Context context, int sequence, String alias);
+
+参数定义
+
++ sequence
+	+ 用户自定义的操作序列号,  同操作结果一起返回，用来标识一次操作的唯一性。
+
++ alias
+
+	+ 每次调用设置有效的别名，覆盖之前的设置。
+	+ 有效的别名组成：字母（区分大小写）、数字、下划线、汉字、特殊字符@!#$&*+=.|。
+	+ 限制：alias 命名长度限制为 40 字节。（判断长度需采用UTF-8编码）
+
+
+### Method - deleteAlias
+
+调用此 API 来删除别名。
+
+#### 支持的版本
+
+开始支持的版本：3.0.7
+
+#### 接口定义
+
+	public static void deleteAlias(Context context,int sequence);
+
+参数定义
+
++ sequence
+	+ 用户自定义的操作序列号,  同操作结果一起返回，用来标识一次操作的唯一性。
+
+
+### Method - getAlias
+
+调用此 API 来查询别名。
+
+#### 支持的版本
+
+开始支持的版本：3.0.7
+
+#### 接口定义
+
+	public static void getAlias(Context context,int sequence);
+
+参数定义
+
++ sequence
+	+ 用户自定义的操作序列号,  同操作结果一起返回，用来标识一次操作的唯一性。
+
+
+### Method - setTags
+
+调用此 API 来设置标签。
+
+需要理解的是，这个接口是覆盖逻辑，而不是增量逻辑。即新的调用会覆盖之前的设置。
+
+#### 支持的版本
+
+开始支持的版本：3.0.7
+
+#### 接口定义
+
+	public static void setTags(Context context, int sequence,Set<String> tags);
+
+#### 参数定义
+
++ sequence
+	+ 用户自定义的操作序列号,  同操作结果一起返回，用来标识一次操作的唯一性。
+
++ tags
+
+	+ 每次调用至少设置一个 tag，覆盖之前的设置，不是新增。
+	+ 有效的标签组成：字母（区分大小写）、数字、下划线、汉字、特殊字符@!#$&*+=.|。
+	+ 限制：每个 tag 命名长度限制为 40 字节，最多支持设置 1000 个 tag，且单次操作总长度不得超过5000字节。（判断长度需采用UTF-8编码）
+		+ 单个设备最多支持设置 1000 个 tag。App 全局 tag 数量无限制。
+
+
+### Method - addTags
+
+调用此 API 来新增标签。
+
+#### 支持的版本
+
+开始支持的版本：3.0.7
+
+#### 接口定义
+
+	public static void addTags(Context context, int sequence,Set<String> tags);
+
+#### 参数定义
+
++ sequence
+	+ 用户自定义的操作序列号,  同操作结果一起返回，用来标识一次操作的唯一性。
+
++ tags
+
+	+ 每次调用至少新增一个 tag。
+	+ 有效的标签组成：字母（区分大小写）、数字、下划线、汉字、特殊字符@!#$&*+=.|。
+	+ 限制：每个 tag 命名长度限制为 40 字节，最多支持设置 1000 个 tag，且单次操作总长度不得超过5000字节。（判断长度需采用UTF-8编码）
+		+ 单个设备最多支持设置 1000 个 tag。App 全局 tag 数量无限制。
+
+
+### Method - deleteTags
+
+调用此 API 来删除指定标签。
+
+#### 支持的版本
+
+开始支持的版本：3.0.7
+
+#### 接口定义
+
+	public static void deleteTags(Context context, int sequence,Set<String> tags);
+
+#### 参数定义
+
++ sequence
+	+ 用户自定义的操作序列号,  同操作结果一起返回，用来标识一次操作的唯一性。
+
++ tags
+
+	+ 每次调用至少删除一个 tag。
+	+ 有效的标签组成：字母（区分大小写）、数字、下划线、汉字、特殊字符@!#$&*+=.|。
+	+ 限制：每个 tag 命名长度限制为 40 字节，最多支持设置 1000 个 tag，且单次操作总长度不得超过5000字节。（判断长度需采用UTF-8编码）
+		+ 单个设备最多支持设置 1000 个 tag。App 全局 tag 数量无限制。
+
+
+### Method - cleanTags
+
+调用此 API 来清除所有标签。
+
+#### 支持的版本
+
+开始支持的版本：3.0.7
+
+#### 接口定义
+
+	public static void cleanTags(Context context, int sequence);
+
+#### 参数定义
+
++ sequence
+	+ 用户自定义的操作序列号,  同操作结果一起返回，用来标识一次操作的唯一性。
+
+
+### Method - getAllTags
+
+调用此 API 来查询所有标签。
+
+#### 支持的版本
+
+开始支持的版本：3.0.7
+
+#### 接口定义
+
+	public static void getAllTags(Context context, int sequence);
+
+#### 参数定义
+
++ sequence
+	+ 用户自定义的操作序列号,  同操作结果一起返回，用来标识一次操作的唯一性。
+
+
+### Method - checkTagBindState
+
+调用此 API 来查询指定tag与当前用户绑定的状态。
+
+#### 支持的版本
+
+开始支持的版本：3.0.7
+
+#### 接口定义
+
+	public static void checkTagBindState(Context context,int sequence,String tag);
+
+#### 参数定义
+
++ sequence
+	+ 用户自定义的操作序列号,  同操作结果一起返回，用来标识一次操作的唯一性。
+
++ tag
+	+ 被查询的tag
+
+
+### Class - cn.jpush.android.service.JPushMessageReceiver
+1. 新的消息回调方式中相关回调类。
+2. 当前仅仅新的tag与alias操作回调会在开发者定义的该类的子类中触发。
+
+tag与alias操作的回调父类,开发者使用新的tag或alias接口时需要继承该类并在Manifest中配置您对应实现的类,tag或alias操作的结果会在您配置的类中的如下方法中回调。
+
+### Method - onTagOperatorResult
+
+tag增删查改的操作会在此方法中回调结果。
+
+####  支持的版本
+
+开始支持的版本：3.0.7
+
+#### 接口定义
+
+	public void onTagOperatorResult(Context context, JPushMessage jPushMessage);
+
+#### 参数定义
+
++ jPushMessage
+	+ tag相关操作返回的消息结果体,具体参考JPushMessage类的说明。
+
+### Method - onCheckTagOperatorResult
+
+查询某个tag与当前用户的绑定状态的操作会在此方法中回调结果。
+
+#### 接口定义
+
+	public void onCheckTagOperatorResult(Context context, JPushMessage jPushMessage);
+
+#### 参数定义
+
++ jPushMessage
+	+ check tag与当前用户绑定状态的操作返回的消息结果体,具体参考JPushMessage类的说明。
+
+### Method - onAliasOperatorResult
+
+alias相关的操作会在此方法中回调结果。
+
+#### 方法定义
+
+	public void onAliasOperatorResult(Context context, JPushMessage jPushMessage);
+
+#### 参数定义
+
++ jPushMessage
+	+ alias相关操作返回的消息结果体,具体参考JPushMessage类的说明。
+
+
+### Class - cn.jpush.android.api.JPushMessage
+
+1. 新的消息回调方式中相关回调的结果类,使用该类对象可获取对应的操作结果。
+2. 当前仅仅新的tag与alias操作回调会涉及到该类
+
+### Method - getAlias
+
+开发者传或查询得到的alias。
+
+####  支持的版本
+
+开始支持的版本：3.0.7
+
+#### 方法定义
+
+	public String getAlias();
+    
+### Method - getTags
+
+开发者传或查询得到的tags。
+
+####  支持的版本
+
+开始支持的版本：3.0.7
+
+#### 方法定义
+
+	public Set<String> getTags();
+
+### Method - getErrorCode
+
+对应操作的返回码,0为成功，其他返回码请参考错误码定义.
+
+####  支持的版本
+
+开始支持的版本：3.0.7
+
+#### 方法定义
+
+	public int getErrorCode();
+
+
+### Method - getSequence
+
+开发者调用接口时传入的sequence,通过该sequence开发者可以从开发者自己缓存中获取到对应的操作。
+
+####  支持的版本
+
+开始支持的版本：3.0.7
+
+#### 方法定义
+
+	public int getSequence();
+
+### Method - getTagCheckStateResult
+
+开发者想要查询的tag与当前用户绑定的状态。
+
+####  支持的版本
+
+开始支持的版本：3.0.7
+
+
+#### 方法定义
+
+	public boolean getTagCheckStateResult();
+
+### Method - getCheckTag
+
+ 开发者想要查询绑定状态的tag。
+
+####  支持的版本
+
+开始支持的版本：3.0.7
+
+
+#### 方法定义
+
+	public String getCheckTag();
+
+
+
+##老别名alias与标签tag接口
+1.5.0 ～ 3.0.6 版本提供的别名与标签接口都是覆盖的逻辑, 从3.0.7版本开始不再维护（但仍会继续保留）。建议开发者使用3.0.7开始提供的新tag、alias接口。
+
+
 ### Method - setAliasAndTags (with Callback)
 
 调用此 API 来同时设置别名与标签。
@@ -546,7 +907,7 @@ JPush 服务的连接状态发生变化。（注：不是指 Android 系统的�
 
 #### 支持的版本
 
-开始支持的版本：1.5.0.
+开始支持的版本：1.5.0
 
 #### 接口定义
 
@@ -554,7 +915,7 @@ JPush 服务的连接状态发生变化。（注：不是指 Android 系统的�
 	public static void setAliasAndTags(Context context, 
 	                                   String alias, 
 	                                   Set<String> tags, 
-	                                   TagAliasCallback callback)
+	                                   TagAliasCallback callback);
 
 #### 参数定义
 
@@ -563,7 +924,7 @@ JPush 服务的连接状态发生变化。（注：不是指 Android 系统的�
 	+ null 此次调用不设置此值。（注：不是指的字符串"null"）
 	+ "" （空字符串）表示取消之前的设置。
 	+ 每次调用设置有效的别名，覆盖之前的设置。
-	+ 有效的别名组成：字母（区分大小写）、数字、下划线、汉字、特殊字符(v2.1.6支持)@!#$&*+=.|。
+	+ 有效的别名组成：字母（区分大小写）、数字、下划线、汉字、特殊字符(2.1.6支持)@!#$&*+=.|。
 	+ 限制：alias 命名长度限制为 40 字节。（判断长度需采用UTF-8编码）
 
 + tags
@@ -571,8 +932,8 @@ JPush 服务的连接状态发生变化。（注：不是指 Android 系统的�
 	+ null 此次调用不设置此值。（注：不是指的字符串"null"）
     + 空数组或列表表示取消之前的设置。
 	+ 每次调用至少设置一个 tag，覆盖之前的设置，不是新增。
-	+ 有效的标签组成：字母（区分大小写）、数字、下划线、汉字、特殊字符(v2.1.6支持)@!#$&*+=.|。
-	+ 限制：每个 tag 命名长度限制为 40 字节，最多支持设置 1000 个 tag，但总长度不得超过7K字节。（判断长度需采用UTF-8编码）
+	+ 有效的标签组成：字母（区分大小写）、数字、下划线、汉字、特殊字符(2.1.6支持)@!#$&*+=.|。
+	+ 限制：每个 tag 命名长度限制为 40 字节，最多支持设置 1000 个 tag，且单次操作总长度不得超过7000字节。（判断长度需采用UTF-8编码）
 
 + callback
 
@@ -586,7 +947,7 @@ JPush 服务的连接状态发生变化。（注：不是指 Android 系统的�
 
 #### 支持的版本
 
-开始支持的版本：1.5.0.
+开始支持的版本：1.5.0
 
 #### 接口定义
 
@@ -598,7 +959,7 @@ JPush 服务的连接状态发生变化。（注：不是指 Android 系统的�
 
 	+ "" （空字符串）表示取消之前的设置。
 	+ 每次调用设置有效的别名，覆盖之前的设置。
-	+ 有效的别名组成：字母（区分大小写）、数字、下划线、汉字、特殊字符(v2.1.6支持)@!#$&*+=.|。
+	+ 有效的别名组成：字母（区分大小写）、数字、下划线、汉字、特殊字符(2.1.6支持)@!#$&*+=.|。
 	+ 限制：alias 命名长度限制为 40 字节。（判断长度需采用UTF-8编码）
 	
 + callback
@@ -622,7 +983,7 @@ JPush 服务的连接状态发生变化。（注：不是指 Android 系统的�
 
 #### 支持的版本
 
-开始支持的版本：1.5.0.
+开始支持的版本：1.5.0
 
 #### 接口定义
 
@@ -634,8 +995,8 @@ JPush 服务的连接状态发生变化。（注：不是指 Android 系统的�
 
 	+ 空数组或列表表示取消之前的设置。
 	+ 每次调用至少设置一个 tag，覆盖之前的设置，不是新增。
-	+ 有效的标签组成：字母（区分大小写）、数字、下划线、汉字、特殊字符(v2.1.6支持)@!#$&*+=.|。
-	+ 限制：每个 tag 命名长度限制为 40 字节，最多支持设置 1000 个 tag，但总长度不得超过7K字节。（判断长度需采用UTF-8编码）
+	+ 有效的标签组成：字母（区分大小写）、数字、下划线、汉字、特殊字符(2.1.6支持)@!#$&*+=.|。
+	+ 限制：每个 tag 命名长度限制为 40 字节，最多支持设置 1000 个 tag，且单次操作总长度不得超过7000字节。（判断长度需采用UTF-8编码）
 		+ 单个设备最多支持设置 1000 个 tag。App 全局 tag 数量无限制。
 		
 + callback
@@ -643,41 +1004,13 @@ JPush 服务的连接状态发生变化。（注：不是指 Android 系统的�
 	+ 在 TagAliasCallback 的 gotResult 方法，返回对应的参数 alias, tags。并返回对应的状态码：0为成功，其他返回码请参考错误码定义。 
 
 
-
-
-### Method - filterValidTag
-
-<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px;">
-<p>使用建议
- <br>
- <p>设置 tags 时，如果其中一个 tag 无效，则整个设置过程失败。
- <br>
- <p>如果 App 的 tags 会在运行过程中动态设置，并且存在对 JPush SDK tag 规定的无效字符，
- <p>则有可能一个 tag 无效导致这次调用里所有的 tags 更新失败。
- <br>
- <p>这时你可以调用本方法 filterValidTags 来过滤掉无效的 tags，得到有效的 tags，
- <p>再调用 JPush SDK 的 set tags / alias 方法。
-</div>
-
-#### 支持的版本
-
-1.5.0
-
-#### 接口的定义
-
-	public static Set<String> filterValidTags(Set<String> tags)
-	
-#### 接口返回
-
-有效的 tag 集合。
-
 ### Class - TagAliasCallback
 
 设置别名与标签方法的回调类，可在 gotResult 方法上得到回调的结果。回调 responseCode = 0，则确认设置成功。
 
 ####  支持的版本
 
-1.5.0
+开始支持的版本：1.5.0
 
 #### 接口定义
 
@@ -704,7 +1037,7 @@ JPush 服务的连接状态发生变化。（注：不是指 Android 系统的�
 ## 获取 RegistrationID API
 ### 支持的版本
 
-r1.6.0 开始支持。
+开始支持的版本：1.6.0 
 
 ### 功能说明
 
@@ -723,7 +1056,7 @@ r1.6.0 开始支持。
 
 #### 支持的版本
 
-开始支持的版本：1.6.0。
+开始支持的版本：1.6.0
 
 #### 接口定义
 
@@ -738,13 +1071,13 @@ r1.6.0 开始支持。
 
 可以通过 RegistrationID 来推送消息和通知， 参考文档 Push API v2， 当 receiver_type = 5 并且设置 receiver_value 为 RegistrationID 时候即可根据 RegistrationID 推送。
 
-注：要使用此功能，客户端 App 一定要集成有 r1.6.0 及以上版本的 JPush Android SDK。
+注：要使用此功能，客户端 App 一定要集成有 1.6.0 及以上版本的 JPush Android SDK。
 
 ## 统计分析 API
 
 #### 支持的版本
 
-r1.6.0 版本开始。
+开始支持的版本：1.6.0
 
 
 #### 功能说明
@@ -808,11 +1141,43 @@ r1.6.0 版本开始。
 	   JPushInterface.reportNotificationOpened(context,bundle.getString(JPushInterface.EXTRA_MSG_ID));
 	        
 
+#### API - reportNotificationOpened
+
+##### 开始版本
+
++ Android SDK 3.0.9
+
+##### 功能说明
+
++ 用于上报用户的通知栏被打开，或者用于上报用户自定义消息被展示等客户端需要统计的事件。该接口针对第三方平台。
+
+##### 接口定义
+
+	public static void reportNotificationOpened(Context context, String msgId,byte whichPushSDK)
+
+参数说明
+
++ context：应用的 ApplicationContext
++ msgId：推送每一条消息和通知对应的唯一 ID(字段key值为:msg_id)。
++ whichPushSDK：接收到推送的平台(字段key值为:rom_type)。
+
+PS:通知支持自定义Activity。msgId及whichPushSDK需要在自定义Activity中的intent中获取。
+
+##### 代码示例	
+
+	
+	 String data = getIntent().getData().toString();
+	 String msgId = jsonObject.optString("msg_id");
+     byte whichPushSDK = (byte)jsonObject.optInt("rom_type"); 
+     JPushInterface.reportNotificationOpened(context,msgId, whichPushSDK);
+
+
+
 ## 清除通知 API
 
 #### 支持的版本
 
-开始的版本：1.3.5。
+开始支持的版本：1.3.5
 
 #### 功能说明
 
@@ -849,7 +1214,7 @@ r1.6.0 版本开始。
 
 #### 支持的版本
 
-开始的版本：最初。
+开始的版本：最初
 
 #### 功能说明
 
@@ -893,7 +1258,7 @@ r1.6.0 版本开始。
 ## 设置通知静默时间 API
 ### 支持的版本
 
-开始的版本：v1.4.0
+开始支持的版本：1.4.0
 
 ### 功能说明
 
@@ -924,7 +1289,7 @@ r1.6.0 版本开始。
 
 ## 申请权限接口（Android 6.0 及以上）
 ###支持的版本
-开始的版本：v2.1.0
+开始支持的版本：2.1.0
 
 ### 功能说明
 在 Android 6.0 及以上的系统上，需要去请求一些用到的权限，JPush SDK 用到的一些需要请求如下权限，因为需要这些权限使统计更加精准，功能更加丰富，建议开发者调用。
@@ -947,7 +1312,7 @@ r1.6.0 版本开始。
 
 ## 通知栏样式定制 API
 ### 支持的版本
-开始的版本：最初。
+开始支持的版本：最初
 
 
 ### 功能说明
@@ -1000,13 +1365,13 @@ public static void setPushNotificationBuilder(Integer notificationBuilderId, Bas
 
 
 ### 支持的版本
-开始的版本：v1.3.0
+开始支持的版本：1.3.0
 
 
 ### 功能说明
 通过极光推送，推送了很多通知到客户端时，如果用户不去处理，就会有很多保留在那里。
 
-新版本 SDK (v1.3.0) 增加此功能，限制保留的通知条数。默认为保留最近 5 条通知。
+新版本 SDK (1.3.0) 增加此功能，限制保留的通知条数。默认为保留最近 5 条通知。
 
 开发者可通过调用此 API 来定义为不同的数量。
 
@@ -1049,7 +1414,7 @@ JPushInterface.setLatestNotificationNumber(context, 3);
 		</tr>
 		<tr >
 			<td>6001</td>
-			<td>无效的设置，tag/alias 不应参数都为 null</td>
+			<td>无效的设置，tag/alias 不应参数都为 null,3.0.7开始的新tag/alias接口此错误码表示 tag/alias参数不能为空</td>
 			<td></td>
 		</tr>
 		<tr >
@@ -1060,7 +1425,7 @@ JPushInterface.setLatestNotificationNumber(context, 3);
 		<tr >
 			<td>6003</td>
 			<td>alias 字符串不合法</td>
-			<td>有效的别名、标签组成：字母（区分大小写）、数字、下划线、汉字、特殊字符(v2.1.6支持)@!#$&*+=.|</td>
+			<td>有效的别名、标签组成：字母（区分大小写）、数字、下划线、汉字、特殊字符(2.1.6支持)@!#$&*+=.|</td>
 		</tr>
 		<tr >
 			<td>6004</td>
@@ -1070,7 +1435,7 @@ JPushInterface.setLatestNotificationNumber(context, 3);
 		<tr >
 			<td>6005</td>
 			<td>某一个 tag 字符串不合法</td>
-			<td>有效的别名、标签组成：字母（区分大小写）、数字、下划线、汉字、特殊字符(v2.1.6支持)@!#$&*+=.|</td>
+			<td>有效的别名、标签组成：字母（区分大小写）、数字、下划线、汉字、特殊字符(2.1.6支持)@!#$&*+=.|</td>
 		</tr>
 		<tr >
 			<td>6006</td>
@@ -1085,7 +1450,7 @@ JPushInterface.setLatestNotificationNumber(context, 3);
 		<tr >
 			<td>6008</td>
 			<td>tag 超出总长度限制</td>
-			<td>总长度最多 7K 字节</td>
+			<td>3.0.7版本中新增tag/alias接口最长度最多5000字节,tag/alias老接口总长度最多 7000 字节</td>
 		</tr>
 		<tr >
 			<td>6009</td>
@@ -1107,9 +1472,54 @@ JPushInterface.setLatestNotificationNumber(context, 3);
 			<td>用户设备时间轴异常</td>
 			<td>3.0.6 版本新增的错误码。设备本地时间轴异常变化影响了设置频率。</td>
 		</tr>
+        <tr >
+			<td>6014</td>
+			<td>服务器繁忙,建议重试</td>
+			<td>3.0.7 版本新增的错误码</td>
+		</tr>
+        <tr >
+			<td>6015</td>
+			<td>appkey 在黑名单中</td>
+			<td>3.0.7 版本新增的错误码</td>
+		</tr>
+        <tr >
+			<td>6016</td>
+			<td>无效用户</td>
+			<td>3.0.7 版本新增的错误码</td>
+		</tr>
+        <tr >
+			<td>6017</td>
+			<td>无效请求</td>
+			<td>3.0.7 版本新增的错误码</td>
+		</tr>
+        <tr >
+			<td>6018</td>
+			<td>后台累计设置的tag数超过1000个,建议先清除部分tag</td>
+			<td>3.0.7 版本新增的错误码</td>
+		</tr>
+        <tr >
+			<td>6019</td>
+			<td>查询请求已过期</td>
+			<td>3.0.7 版本新增的错误码</td>
+		</tr>
+        <tr >
+			<td>6020</td>
+			<td>tag/alias操作暂停,建议过一段时间再设置</td>
+			<td>3.0.7 版本新增的错误码</td>
+		</tr>
+        <tr >
+			<td>6021</td>
+			<td>tags操作正在进行中，暂时不能进行其他tags操作</td>
+			<td>3.0.7 版本新增的错误码</td>
+		</tr>
+        <tr >
+			<td>6022</td>
+			<td>alias操作正在进行中，暂时不能进行其他alias操作</td>
+			<td>3.0.7 版本新增的错误码</td>
+		</tr>
 		<tr >
 			<td>-997</td>
-			<td>注册失败</td>
+			<td>注册失败/登录失败</td>
 			<td>（一般是由于没有网络造成的）如果确保设备网络正常，还是一直遇到此问题，则还有另外一个原因：JPush 服务器端拒绝注册。而这个的原因一般是：你当前的 App 的 Android 包名，以及 appKey ，与你在 Portal 上注册的应用的 Android 包名与 AppKey 不相同。</td>
 		</tr>
 		<tr >
@@ -1144,7 +1554,7 @@ JPushInterface.setLatestNotificationNumber(context, 3);
 ## CrashLog收集并上报
 ###支持的版本
 
-+ v2.1.8版本及以后版本，默认为开启状态，并增加 stopCrashHandler接口。
++ 2.1.8 及以后版本，默认为开启状态，并增加 stopCrashHandler接口。
 
 ### 功能说明
 SDK通过Thread.UncaughtExceptionHandler  捕获程序崩溃日志，并在程序奔溃时实时上报如果实时上报失败则会在程序下次启动时发送到服务器。 如需要程序崩溃日志功能可调用此方法。
@@ -1168,7 +1578,7 @@ SDK通过Thread.UncaughtExceptionHandler  捕获程序崩溃日志，并在程�
 ## 获取推送连接状态
 ### 支持的版本
 
-开始的版本：1.6.3。
+开始支持的版本：1.6.3
 
 ### 功能说明
 开发者可以使用此功能获取当前Push服务的连接状态
@@ -1209,7 +1619,7 @@ else if(JPushInterface.ACTION_CONNECTION_CHANGE.equals(intent.getAction())) {
 
 ##本地通知API
 ### 支持的版本
-开始的版本：v1.6.4
+开始支持的版本：1.6.4
 
 ###功能说明
 通过极光推送的SDK，开发者只需要简单调用几个接口，便可以在应用中定时发送本地通知

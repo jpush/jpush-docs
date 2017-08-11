@@ -47,6 +47,7 @@ JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用
 ###SDK初始化(设置漫游)
 
 ***Since v3.1.0***
+
 SDK 初始化时，可设置是否启用消息记录漫游。
 打开消息漫游之后，用户多个设备之间登录时，SDK会自动将历史消息同步到本地，同步完成之后SDK会以 Conversation 为单位触发代理方法`onSyncRoamingMessageConversation:`通知上层刷新,具体方法见[消息同步监听代理](#消息同步版本说明)
 
@@ -118,11 +119,11 @@ SDK 初始化时，可设置是否启用消息记录漫游。
  * @param value 新的值. 会覆盖服务器上保存的值(这个用户)
  *
  * @discussion 本接口不会改变应用本地的角标值.
- * 本地仍须调用 UIApplication:setApplicationIconBadgeNumber 函数来设置脚标.
+ * 本地仍须调用 UIApplication:setApplicationIconBadgeNumber 函数来设置角标.
  *
  * 该功能解决的问题是, 服务器端推送 APNs 时, 并不知道客户端原来已经存在的角标是多少, 指定一个固定的数字不太合理.
  *
- * APNS 服务器端脚标功能提供:
+ * APNS 服务器端角标功能提供:
  *
  * - 通过本 API 把当前客户端(当前这个用户的) 的实际 badge 设置到服务器端保存起来;
  * - 调用服务器端 API 发 APNs 时(通常这个调用是批量针对大量用户),
@@ -258,14 +259,14 @@ SDK 初始化时，可设置是否启用消息记录漫游。
 	                completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)handler;
 ##### 例子
 	/*
-            userFieldType:
-            kJMSGUserFieldsNickname: 用户名
-            kJMSGUserFieldsBirthday: 生日
-            kJMSGUserFieldsSignature: 签名
-            kJMSGUserFieldsGender: 性别
-            kJMSGUserFieldsRegion: 区域
-            kJMSGUserFieldsAvatar: 头像
-      */
+	    userFieldType:
+	    kJMSGUserFieldsNickname: 用户名
+	    kJMSGUserFieldsBirthday: 生日
+	    kJMSGUserFieldsSignature: 签名
+	    kJMSGUserFieldsGender: 性别
+	    kJMSGUserFieldsRegion: 区域
+	    kJMSGUserFieldsAvatar: 头像
+     */
 	[JMSGUser updateMyInfoWithParameter:parameter userFieldType:kJMSGUserFieldsGender completionHandler:^(id resultObject, NSError *error) {
 	            if (!error) {
 	                //updateMyInfoWithPareter success
@@ -273,7 +274,24 @@ SDK 初始化时，可设置是否启用消息记录漫游。
 	                //updateMyInfoWithPareter fail
 	            }
 	        }];
-
+#### 统一上传用户信息更新
+	/*!
+	 * @abstract 更新用户信息（支持将字段统一上传）
+	 *
+	 * @param userInfo  用户信息对象，类型是 JMSGUserInfo
+	 * @param handler   更新用户信息回调接口函数
+	 *
+	 * @discussion 参数 userInfo 是 JMSGUserInfo 类，JMSGUserInfo 仅可用于修改用户信息
+	 */
+	+ (void)updateMyInfoWithUserInfo:(JMSGUserInfo *)userInfo
+	               completionHandler:(JMSGCompletionHandler)handler;
+##### 例子
+	JMSGUserInfo *userInfo = [[JMSGUserInfo alloc] init];
+    userInfo.nickname = @"new nick name";
+    userInfo.address = @"new address";
+    [JMSGUser updateMyInfoWithUserInfo:userInfo completionHandler:^(id resultObject, NSError *error) {
+        //
+    }];
 #### 更新密码
 	/*!
 	 * @abstract 更新密码接口
@@ -1195,6 +1213,56 @@ SDK 升级到 3.1.0 版本后（或之后的版本），上层只需要做以下
 	 */
 	- (NSString *)displayName;
 
+### 消息撤回
+***Since 3.2.0***
+
+由消息撤回方发起调用，在一定时间内，SDK 可以撤回会话中某条消息。
+
++ 发送方，在撤回成功的回调里可以获取到撤回之后的 message，并同时更新 UI 界面的这条被撤回的消息；
++ 接收方，如果已经接收了这条消息，然后对方又撤回，则消息接收放回收到一个消息撤回事件，上层可以通过这个事件获取到所属会话和撤回之后的消息，然后刷新 UI 界面。
+
+
+#### JMSGMessage
+	/*!
+	 * @abstract 消息撤回
+	 *
+	 * @param message 需要撤回的消息
+	 * @param handler 结果回调
+	 *
+	 * - resultObject 撤回后的消息
+	 * - error        错误信息
+	 *
+	 * @discussion 注意：SDK可撤回3分钟内的消息
+	 */
+	+ (void)retractMessage:(JMSGMessage *)message completionHandler:(JMSGCompletionHandler)handler;
+##### 例子
+	[JMSGMessage retractMessage:message completionHandler:^(id resultObject, NSError *error) {
+		if(!error){
+			// 撤回之后显示的消息，例如：xx撤回了一条消息
+			JMSGMessage *resultMessage = (JMSGMessage *) resultObject;
+		}
+	}];
+#### JMSGConversation
+	/*!
+	 * @abstract 消息撤回
+	 *
+	 * @param message 需要撤回的消息
+	 * @param handler 结果回调
+	 *
+	 * - resultObject 撤回后的消息
+	 * - error        错误信息
+	 *
+	 * @discussion 注意：SDK可撤回3分钟内的消息
+	 */
+	- (void)retractMessage:(JMSGMessage *)message completionHandler:(JMSGCompletionHandler)handler;
+##### 例子
+	[conversation retractMessage:message completionHandler:^(id resultObject, NSError *error) {
+	    if (!error) {
+		    // 撤回之后显示的消息，例如：xx撤回了一条消息
+	        JMSGMessage *resultMessage = (JMSGMessage *)resultObject;
+	    }
+	}]
+
 ### 群组@功能
 消息发送方可以发一条带有@list的消息。
 接收方收到带有@list的消息之后，如果@list中包含了自己，则在sdk默认弹出的通知栏提示中会有相应的提示，如"xxx在群中@了你"。
@@ -1260,6 +1328,17 @@ JMSGTextContent *textContent2 = [[JMSGTextContent alloc] initWithText:@"创建�
 JMSGMessage *message = [JMSGMessage createGroupMessageWithContent:textContent2 groupId:@"gid"];
 [conversation sendMessage: message atMessage at_list:[NSArray arrayWithObjects:user1,user2, nil]]
 ```
+#### 发送@所有人的消息
+```
+/*!
+ * @abstract 发送@所有人消息（已经创建好对象的）
+ *
+ * @param message 通过消息创建类接口，创建好的消息对象
+ *
+ * @discussion 发送消息的多个接口，都未在方法上直接提供回调。你应通过 JMSGMessageDelegate中的onReceiveMessage: error:方法来注册消息发送结果
+ */
+- (void)sendAtAllMessage:(JMSGMessage *)message;
+```
 
 ### 群消息屏蔽
 群组被设置为屏蔽之后，将收不到该群的消息，但是群成员变化事件还是能正常收到。
@@ -1303,6 +1382,35 @@ JMSGMessage *message = [JMSGMessage createGroupMessageWithContent:textContent2 g
 	 * @discussion 从服务器获取，返回所有设置群消息屏蔽的群组。
 	 */
 	+ (void)shieldList:(JMSGCompletionHandler)handler;
+### 通知栏管理
+#### JMSGConversation
+发送消息时，SDK 可以控制离线消息的存储、自定义通知栏内容等，具体的功能可以想象查看 [JMSGOptionalContent](./jmessage_ios_appledoc_html/Classes/JMSGOptionalContent.html#) 类里面的说明。
+
+```
+/*!
+ * @abstract 发送消息（附带可选功能，如：控制离线消息存储、自定义通知栏内容等）
+ *
+ * @param message           通过消息创建类接口，创建好的消息对象
+ * @param optionalContent   可选功能，具体请查看 JMSGOptionalContent 类
+ *
+ * @discussion 可选功能里可以设置离线消息存储、自定义通知栏内容等，具体请查看 JMSGOptionalContent 类。
+ *
+ */
+- (void)sendMessage:(JMSGMessage *)message optionalContent:(JMSGOptionalContent *)optionalContent;
+```
+
+```
+/*!
+ * @abstract 发送消息（附带可选功能，如：控制离线消息存储、自定义通知栏内容等）
+ *
+ * @param message           通过消息创建类接口，创建好的消息对象
+ * @param optionalContent   可选功能，具体请查看 JMSGOptionalContent 类
+ *
+ * @discussion 可选功能里可以设置离线消息存储、自定义通知栏内容等，具体请查看 JMSGOptionalContent 类。
+ *
+ */
++ (void)sendMessage:(JMSGMessage *)message optionalContent:(JMSGOptionalContent *)optionalContent;
+```
 
 ###<span id="JMSGFriendManager">好友管理</span>
 
@@ -1729,7 +1837,6 @@ BOOL isAlreadSet = user.isNoDisturb;
 	    kJMSGEventNotificationServerAlterPassword = 2,
 	    /// 事件类型：用户登录状态异常事件（需要重新登录）
 	    kJMSGEventNotificationUserLoginStatusUnexpected = 70,
-
 	    /// 事件类型：当前登录用户信息变更通知事件(非客户端修改)
 		 kJMSGEventNotificationCurrentUserInfoChange = 40,
 
@@ -1744,7 +1851,10 @@ BOOL isAlreadSet = user.isNoDisturb;
 	    kJMSGEventNotificationDeletedFriend             = 6,
 		 /// 事件类型：非客户端修改好友关系收到好友更新事件
 		 kJMSGEventNotificationReceiveServerFriendUpdate = 7,
-
+		 
+		 /// 事件类型: 消息撤回
+		 kJMSGEventNotificationMessageRetract = 55,
+	    
 	    /// 消息事件
 	    /// 事件类型: 群组被创建
 	    kJMSGEventNotificationCreateGroup = 8,
@@ -1760,7 +1870,8 @@ BOOL isAlreadSet = user.isNoDisturb;
 
 
 * 消息事件，如：群事件，SDK会作为一个特殊的消息类型处理，上层通过[onReceiveMessage:error:](./jmessage_ios_appledoc_html/Protocols/JMSGMessageDelegate.html#//api/name/onReceiveMessage:error:)可监听到此事件。
-* 非消息事件，如：被踢、加好友等,SDK会作为通知事件下发,上层通过 [onReceiveNotificationEvent:](./jmessage_ios_appledoc_html/Protocols/JMSGEventDelegate.html#//api/name/onReceiveNotificationEvent:) 类中的方法监听此类事件. [使用示例](#监听下发事件实例)
+* 非消息事件，如：用户登录状态变更、好友相关事件等,SDK会作为通知事件下发,上层通过 [onReceiveNotificationEvent:](./jmessage_ios_appledoc_html/Protocols/JMSGEventDelegate.html#//api/name/onReceiveNotificationEvent:) 方法监听此类事件. [使用示例](#监听下发事件实例)
+* 消息撤回事件，上层通过[onReceiveMessageRetractEvent:](./jmessage_ios_appledoc_html/Protocols/JMSGEventDelegate.html#//api/name/onReceiveMessageRetractEvent:)方法监听此事件.
 
 #### 用户登录状态变更事件
 #### JMSGNotificationEvent
@@ -1775,6 +1886,28 @@ BOOL isAlreadSet = user.isNoDisturb;
 	 * @discussion 下发事件的文字描述，可能为空
 	 */
 	@property(nonatomic, strong, readonly) NSString *eventDescription;
+
+##### 例子
+[监听该事件的使用示例](#监听下发事件实例)	
+
+#### 消息撤回事件
+#### JMSGNotificationEvent
+	/*!
+	 * @abstract 消息撤回事件
+	 *
+	 * @discussion 上层通过 JMSGEventDelegate 类中的 -(void)onReceiveNotificationEvent: 代理方法监听此事件,详见官方文档.
+	 */
+	@interface JMSGMessageRetractEvent : JMSGNotificationEvent
+	
+	/**
+	 * @abstract 消息撤回所属会话
+	 */
+	@property(nonatomic, strong, readonly) JMSGConversation *conversation;
+	
+	/**
+	 * @abstract 撤回之后的消息
+	 */
+	@property(nonatomic, strong, readonly) JMSGMessage *retractMessage;
 
 #### 好友管理事件
 #### JMSGFriendNotificationEvent
@@ -1798,12 +1931,7 @@ BOOL isAlreadSet = user.isNoDisturb;
 	- (JMSGUser *JMSG_NULLABLE)getFromUser;
 
 ##### 例子
-	// 对方拒绝你的好友邀请，会有事件下发，可通过这个接口获取对方所填拒绝理由
-	NSString *reason = [friendEvent getReason];
-	// 获取事件发送者称呼，注意：返回优先级 备注名 -> 昵称 -> username
-	NSString *name = [friendEvent getFromUsername];
-	// 获取事件发送对象user
-	JMSGUser *user = [friendEvent getFromUser];
+[监听该事件的使用示例](#监听下发事件实例)	
 
 #### 消息事件
 #### JMSGEventContent
@@ -2085,21 +2213,36 @@ JMSGCompletionHandler 有 2 个参数：
 <span id="JMSGEventDelegate"></span>
 
 #### JMSGEventDelegate
-	/*!
-	 * @abstract 监听通知事件
-	 *
-	 * @param event 下发的通知事件
-	 *
-	 * @discussion SDK 收到服务器端下发事件后，会以通知代理的方式给到上层,通过event.eventType判断事件类型.
-	 *
-	 * 注意：
-	 * 消息事件，如：群事件，SDK会作为一个特殊的消息类型下发，上层依旧通过 JMSGMessageDelegate 监听消息事件.
-	 *
-	 * 非消息事件，如：被踢下线、加好友，SDK会作为通知事件下发,上层通过本类 JMSGEventDelegate 的方法可监听此类事件.
-	 */
-	@optional
-	- (void)onReceiveNotificationEvent:(JMSGNotificationEvent *)event;
-
+```
+/*!
+ * @abstract 监听通知事件
+ *
+ * @param event 下发的通知事件
+ *
+ * @discussion SDK 收到服务器端下发事件后，会以通知代理的方式给到上层,通过event.eventType判断事件类型.
+ *
+ * 注意：
+ * 消息事件，如：群事件，SDK会作为一个特殊的消息类型下发，上层依旧通过 JMSGMessageDelegate 监听消息事件.
+ *
+ * 非消息事件，如：被踢下线、加好友，SDK会作为通知事件下发,上层通过本类 JMSGEventDelegate 的方法可监听此类事件.
+ */
+@optional
+- (void)onReceiveNotificationEvent:(JMSGNotificationEvent *)event;
+```
+	
+```
+/*!
+ * @abstract 消息撤回事件
+ *
+ * @param retractEvent 下发的通知事件，事件类型请查看 JMSGMessageRetractEvent 类
+ *
+ * @discussion 收到此事件时，可以通过 event.conversation 判断是否属于某个会话
+ *
+ * @since 3.2.0
+ */
+@optional
+- (void)onReceiveMessageRetractEvent:(JMSGMessageRetractEvent *)retractEvent;
+```
 
 #### JMSGDBMigrateDelegate
 	/*!

@@ -1,9 +1,9 @@
-# jsms-api-java-client
+# JSMS API Java Client
 
-### 概述
+## 概述
 这是短信 Rest API 的 Java 版本封装开发包，是有极光推送官方提供的，一般支持最新的 API功能。
 
-对应的 Rest API 文档：http://docs.jiguang.cn/server/rest_api_jsms/
+对应的 Rest API 文档：<http://docs.jiguang.cn/server/rest_api_jsms/>
 
 ## 安装
 
@@ -15,7 +15,7 @@
 <dependency>
     <groupId>cn.jpush.api</groupId>
     <artifactId>jsms-client</artifactId>
-    <version>1.2.1</version>
+    <version>1.2.3</version>
 </dependency>
 <dependency>
 	<groupId>com.google.code.gson</groupId>
@@ -30,7 +30,7 @@
 <dependency>
     <groupId>cn.jpush.api</groupId>
     <artifactId>jiguang-common</artifactId>
-    <version>1.0.6</version>
+    <version>1.0.8</version>
 </dependency>
 <!-- For log4j -->
 <dependency>

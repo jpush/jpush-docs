@@ -3,8 +3,30 @@
 本文说明如何在小程序中集成 JMessage。jmessage-wxapplet-sdk 是 JMessage 专门为适配小程序应用而开发的，其功能基本涵盖所有[ WEB SDK ](https://docs.jiguang.cn/jmessage/client/im_sdk_js_v2/)所提供的功能
 
 ## SDK下载
-SDK 版本：v1.0.0    
-点击下载：[ jmessage-wxapplet-sdk-1.0.0 ](https://sdkfiledl.jiguang.cn/jmessage-wxapplet-sdk-1.0.0.min.zip)
+
+#### jmessage-wxapplet-sdk v1.1.1
+
+更新时间
+
++ 2017-6-29
+
+Change Log
+
+##### BugFix:
+
++ 真机上报Blob对象undefined错误
++ 性能优化
+
+升级提示
+
++ 升级！
+
+升级指南
+
++ 用最新的 jmessage-wxapplet-sdk-1.1.1.min.js 替换掉老版本的 sdk
+
+点击下载：[ jmessage-wxapplet-sdk-1.1.1 ](https://sdkfiledl.jiguang.cn/jmessage-wxapplet-sdk-1.1.1.zip)
+
 
 
 ## 项目配置

@@ -1,5 +1,90 @@
 # 最近更新
 
+### JPush Android SDK v3.0.8
+
+#### 更新时间
+
++ 2017-07-26
+
+#### Change Log
++ 修复：若干开发者反馈的 bug
+
+#### 升级提示
+
++ 建议升级！
+
+#### 升级指南
+
++ 首先解压您获取到的 zip 压缩包
+
++ 更新库文件
+	+ 打开libs文件夹。添加 jcore-android-1.1.6.jar。用 jpush-android-3.0.8.jar 替换项目中原有的极光 jar 文件，并删除原有极光 jar 文件。用对应CPU文件夹下的 libjcore116.so 文件，替换项目中原有的libjpushXXX.so文件，并删除原有的极光 so 文件，每种型号的so文件都可以在SDK下载包中找到。
+
++ 更新AndroidManifest.xml
+	+ 请对照示例 AndroidManifest 更新跟 JPush 相关的组件属性，permission，Action等配置。要使用富媒体推送，请将压缩包res中的资源放到项目的对应文件夹，并按照示例 AndroidManifest 配置 PushActivity 组件。
+
++ 添加资源文件
+    + 将res文件夹下的资源文件，添加到您项目res/下对应的文件夹中。根据您应用的界面风格，您可以修改layout文件的配色，字体等属性，或者修改drawable文件夹下的图标。但注意请不要修改所有的文件名，和布局文件中的组件 id。
+
++ 如果使用jcenter的方式集成JPush，不需要添加相关组件和资源，详细说明请参考官方集成指南。
+
+### JPush Android SDK v3.0.7
+
+#### 更新时间
+
++ 2017-07-10
+
+#### Change Log
++ 新增：一套 tag/alias 操作接口
++ 优化：tag/alias 设置超时的问题
++ 修复：若干开发者反馈的 bug
+
+#### 升级提示
+
++ 建议升级！
+
+#### 升级指南
+
++ 首先解压您获取到的 zip 压缩包
+
++ 更新库文件
+	+ 打开libs文件夹。添加jcore-android_v1.1.5.jar。用 jpush-android_v3.0.7.jar 替换项目中原有的极光jar文件，并删除原有极光jar文件。用对应CPU文件夹下的 libjcore115.so 文件，替换项目中原有的libjpushXXX.so文件，并删除原有的极光so文件，每种型号的so文件都可以在SDK下载包中找到。
+
++ 更新AndroidManifest.xml
+	+ 请对照示例 AndroidManifest 更新跟 JPush 相关的组件属性，permission，Action等配置。要使用富媒体推送，请将压缩包res中的资源放到项目的对应文件夹，并按照示例 AndroidManifest 配置 PushActivity 组件。
+
++ 添加资源文件
+    + 将res文件夹下的资源文件，添加到您项目res/下对应的文件夹中。根据您应用的界面风格，您可以修改layout文件的配色，字体等属性，或者修改drawable文件夹下的图标。但注意请不要修改所有的文件名，和布局文件中的组件id。
+
++ 如果使用jcenter的方式集成JPush，不需要添加相关组件和资源，详细说明请参考官方集成指南。
+
+
+### JPush iOS SDK v3.0.6
+
+#### 更新时间
++ 2017-07-03
+
+#### Change Log
++ Tag接口变动，建议使用新的增删改查接口
++ 优化连接协议，提高连接速度及稳定性
+
+#### 升级提示
+
++ 建议升级！
++ 注意：不支持 Xcode 8.0 以下版本 开启 bitcode。
++ 极光开发者服务 SDK 采用了模块化的使用模式，即一个核心（JCore）+N种服务（JPush，JAnalytics，...）的使用方式，方便开发者使用某一项服务或多项服务，极大的优化了多模块同时使用时功能模块重复的问题。
+
+#### 升级指南
++ 3.0.6 版本的 JPush 只支持 1.1.5 及以上的 JCore 版本，升级 SDK 的时候请将 JCore 一起升级。
++ 注意 3.0.0及以上版本将不再支持处理器为i386的模拟器。
++ 添加libresolv.tbd库，否则编译运行会报错（2.2.0及以上版本要求）
++ 替换 lib 文件夹里的文件:先删除项目里旧的.a和.h文件,重新导入新的.a和.h文件（注意新版本替换APService.h为JPUSHService.h）
++ Xcode7 环境下，替换原先导入的 libz.dylib 框架为 libz.tbd （特别留意）
++ 需要删除旧的 libPushSDK-Simulator.a （如果存在）
++ 关于 iOS 7 Background Push，JPush 提供一个教程文档：[iOS 7 Background Remote Notification](client/iOS/ios_new_fetures/#ios-7-background-remote-notification)
++ 如果是1.2.7及之前版本升级 请在Build Settings里面，找到Other Linker Flags，去掉-all_load, -ObjC
+
+
 ### JPush Android SDK v3.0.6
 
 #### 更新时间

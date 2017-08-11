@@ -1,8 +1,8 @@
-# JSMS API PHP CLIENT
+# JSMS API PHP Client
 
 这是短信 API 的 PHP 版本封装开发包，是由极光官方提供的，一般支持最新的 API 功能。
 
-对应的 API 文档：http://docs.jiguang.cn/server/rest_api_jsms/
+对应的 API 文档：<http://docs.jiguang.cn/server/rest_api_jsms/>
 
 > 支持的 PHP 版本: 5.3.3 ～ 5.6.x, 7.0.x
 > 须启用 cURL 扩展

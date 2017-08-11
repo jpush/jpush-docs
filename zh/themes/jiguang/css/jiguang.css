@@ -200,6 +200,22 @@ div.row.downloads .thumbnail > .caption .li-clear {
     display: none;
 }
 
+div.row.downloads .box .item {
+    text-align: left;
+}
+div.row.downloads .box .item .download-text {
+    margin-top: 7px;
+}
+div.row.downloads .box .item .download-text a {
+	font-size: 12px;
+    text-align: center;
+}
+div.row.downloads.j-chat-demo {
+    border: 1px solid #ddd;
+    margin-bottom: 40px;
+    padding: 10px;
+}
+
 @media (min-width: 992px) {
     div.row.downloads  .thumbnail > img {
         display: block;
@@ -239,10 +255,20 @@ div#content h2 {
 }
 
 div#content h3 {
-    font-size: 18px;
+    font-size: 20px;
     color: #1b75bb;
     font-weight: bold;
-    font-size: 18px;
+}
+
+div#content h4 {
+    font-size: 16px;
+    color: #3a3a3a;
+    font-weight: bold;
+}
+
+div#content h5 {
+    font-size: 14px;
+    color: #1b75bb;
 }
 
 div#content ul li{

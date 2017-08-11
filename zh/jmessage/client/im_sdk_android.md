@@ -202,11 +202,14 @@ JMessageClient.updateMyInfo(UserInfo.Field updateField, UserInfo info, BasicCall
 
 + UserInfo.Field updateField 枚举类型，表示需要更新的用户信息字段。包括：
 
-  - nickname
-  - birthday
-  - signature
-  - gender
-  - region
+	  - nickname 昵称
+	  - birthday 生日
+	  - signature 签名
+	  - gender 性别
+	  - region 地区
+	  - address 地址
+	  - all 以上全部
+
 + UserInfo userInfo 待更新的用户信息（对象）。SDK将根据field参数来判断需要将哪个属性更新到服务器上去。
 + BasicCallback callback 结果回调
 
@@ -539,16 +542,6 @@ JMessageClient.createGroupCustomMessage(long groupID,
   Map<? extends String, ?> valuesMap)
 ```
 
-#### 发送消息
-
-向服务器给发送对象发送消息，并且保存到本地会话。
-```
-JMessageClient.sendMessage(Message message);
-```
-参数说明
-
-+ Message message 消息（对象）
-
 #### 消息发送结果监听
 消息发送完成后，会回调这里的接口通知上层。
 ```
@@ -557,6 +550,28 @@ message.setOnSendCompleteCallback(BasicCallback sendCompleteCallback)
 参数说明
 
 + BasicCallback sendCompleteCallback 回调接口
+
+#### 消息发送
+
+向服务器给发送对象发送消息，并且保存到本地会话。使用默认的配置参数发送
+```
+JMessageClient.sendMessage(Message message);
+```
+参数说明
+
++ Message message 消息对象
+
+#### 附带控制参数的消息发送
+***Since 2.2.0***  
+针对此次消息发送操作，支持一些可选参数的配置，具体参数见[MessageSendingOptions](./im_android_api_docs/cn/jpush/im/android/api/options/MessageSendingOptions.html)
+
+```
+JMessageClient.sendMessage(Message message, MessageSendingOptions options);
+```
+参数说明
+
++ Message message 消息对象
++ MessageSendingOptions options 消息发送时的控制选项。
 
 ##### 代码示例
 ```
@@ -571,8 +586,51 @@ message.setOnSendCompleteCallback(new BasicCallback() {
         }
     }
 });
-JMessageClient.sendMessage(message);
+
+MessageSendingOptions options = new MessageSendingOptions();
+options.setRetainOffline(false);
+
+JMessageClient.sendMessage(message);//使用默认控制参数发送消息
+//JMessageClient.sendMessage(message,options);//使用自定义的控制参数发送消息
 ```
+
+#### 本地消息记录获取
+任何的消息都从属某一会话，所以要获取本地消息记录，首先需要获取到会话对象`conversation`,进而获取该会话下的消息记录。
+
+**获取会话中所有消息**
+
+```
+	/**
+     * 获取会话中所有消息，消息按照时间升序排列.<br/>
+     *
+     * @return 包含会话中所有消息的List
+     */
+	conversation.getAllMessage();
+```
+
+
+**按条件获取消息列表**
+
+```
+	/**
+     * 会话中消息按时间降序排列，从其中的offset位置，获取limit条数的消息.
+     *
+     * @param offset 获取消息的起始位置
+     * @param limit  获取消息的条数
+     * @return 符合查询条件的消息List, 如果查询失败则返回空的List。
+     */
+	conversation.getMessagesFromNewest(int offset, int limit)
+	
+	/**
+     * 会话中消息按时间升序排列，从其中的offset位置，获取limit条数的消息.<br/>
+     *
+     * @param offset 获取消息的起始位置
+     * @param limit  获取消息的条数
+     * @return 符合查询条件的消息List, 如果查询失败则返回空的List。
+     */
+    conversation.getMessagesFromOldest(int offset, int limit);
+```
+
 
 #### 接收消息
 sdk收到消息时，会上抛消息事件[MessageEvent](./im_android_api_docs/cn/jpush/im/android/api/event/MessageEvent.html?_blank) 或 [OfflineMessageEvent](./im_android_api_docs/cn/jpush/im/android/api/event/OfflineMessageEvent.html)，开发者可以通过这个事件来拿到具体的Message对象，进而执行UI刷新或者其他相关逻辑。具体事件处理方法见[事件处理](#Event)一节
@@ -631,6 +689,29 @@ sdk升级到2.1.0版本（或以上）后，上层需要针对消息接收的处
         System.out.println("事件发生的原因 : " + reason);
     }
 ```
+
+
+### 消息撤回
+
+#### 撤回会话中某条消息
+***Since 2.2.0***  
+由消息撤回方发起调用
+
+```
+	conversation.retractMessage(Message message, BasicCallback callback)
+```
+
+参数说明
+
++ Message message 需要被撤回的消息的消息实体
++ BasicCallback callback 回调接口
+
+#### 被撤回方事件通知
+***Since 2.2.0***  
+消息发送方发起撤回后，被撤回方会收到一条事件通知[MessageRetractEvent](./im_android_api_docs/cn/jpush/im/android/api/event/MessageRetractEvent.html)，具体事件处理方式见[事件处理](#Event)一节
+
+
+**注意：** 无论是撤回方还是被撤回方，消息被撤回后，对应message content会被替换为[PromtContent](./im_android_api_docs/cn/jpush/im/android/api/content/PromptContent.html)类型，消息之前内容变成不可见。
 
 
 ###<span id="Event">事件处理</span>
@@ -851,6 +932,29 @@ public void onEventMainThread(EventEntity event){
       <td >getReason()</td>
       <td >Reason</td>
       <td >获取登录状态变更原因。</td>
+    </tr>
+  </table>
+</div>
+
+消息被对方撤回通知事件
+***Since 2.2.0***
+<div class="table-d" align="left" >
+  <table border="1" width = "100%">
+    <tr  bgcolor="#D3D3D3" >
+      <th width="100px">方法</th>
+      <th width="20px">类型</th>
+      <th width="300px">说明</th>
+    </tr>
+    <tr >
+      <td >getConversation()</td>
+      <td >Conversation</td>
+      <td >获取被撤回消息所属的会话对象</td>
+    </tr>
+    <tr >
+      <td >getRetractedMessage()</td>
+      <td >Message</td>
+      <td >获取被撤回的message对象.  
+      (注意!此时获取到的Message的MessageContent对象已经从撤回前的真正的消息内容变为了PromptContent类型的提示文字)</td>
     </tr>
   </table>
 </div>
@@ -1121,10 +1225,10 @@ JMessageClient.getBlockedGroupsList(GetGroupInfoListCallback callback)
 + GetGroupInfoListCallback callback 结果回调。
 
 ### 群组@功能
-***Since 2.1.0***  
 消息发送方可以发一条带有@list的消息。  
-接收方收到带有@list的消息之后，如果@list中包含了自己，则在sdk默认弹出的通知栏提示中会有相应的提示，如"xxx在群中@了你"。  
+接收方收到带有@list的消息之后，如果@list中包含了自己，或者是@全体成员，则在sdk默认弹出的通知栏提示中会有相应的提示，如"xxx在群中@了你"。  
 #### 创建@群成员的消息
+***Since 2.1.0***  
 ```
 conversation.createSendMessage(MessageContent content, List<UserInfo> atList, String customFromName)
 ```
@@ -1138,7 +1242,22 @@ conversation.createSendMessage(MessageContent content, List<UserInfo> atList, St
 
 + Message 消息对象。
 
+#### 创建@全体群成员的消息
+***Since 2.2.0***  
+```
+conversation.createSendMessageAtAllMember(MessageContent content, String customFromName)
+```
+参数说明
+
++ MessageContent content 消息内容对象
++ String customFromName 自定义fromName
+
+返回
+
++ Message 一条包含@全体成员信息的消息对象。
+
 #### 判断消息是否@了自己
+***Since 2.1.0***  
 ```
 message.isAtMe()
 ```
@@ -1146,13 +1265,23 @@ message.isAtMe()
 
 + boolean true - atList中包含了自己， false - atList中不包含自己
 
+#### 判断消息是否是@全体成员
+***Since 2.2.0***  
+```
+message.isAtAll()
+```
+返回
+
++ boolean true - 是@全体成员， false - 不是@全体成员
+
 #### 获取消息中@的群成员列表
+***Since 2.1.0***  
 ```
 message.getAtUserList(GetUserInfoListCallback callback)
 ```
 参数说明
 
-+ GetUserInfoListCallback callback 获取用户列表的回调接口。
++ GetUserInfoListCallback callback 获取用户列表的回调接口。注意当这条消息是一条@全体成员的消息时，此接口将返回空。
 
 #### 代码示例
 
@@ -1229,18 +1358,22 @@ JMessageClient.getBlacklist(GetBlacklistCallback callback)
 ### 通知栏管理
 #### 设置通知展示类型
 ```
-JMessageClient.setNotificationMode(int mode);
+JMessageClient.setNotificationFlag(int flag);
 ```
 参数说明
 
-+ int mode  显示通知的模式
++ int flag  显示通知的模式,包括[FLAG_NOTIFY_WITH_SOUND](./im_android_api_docs/cn/jpush/im/android/api/JMessageClient.html#FLAG_NOTIFY_WITH_SOUND)、[FLAG_NOTIFY_WITH_VIBRATE](./im_android_api_docs/cn/jpush/im/android/api/JMessageClient.html#FLAG_NOTIFY_WITH_VIBRATE)、[FLAG_NOTIFY_WITH_LED](./im_android_api_docs/cn/jpush/im/android/api/JMessageClient.html#FLAG_NOTIFY_WITH_LED)等类型，支持使用 '|' 符号联结各个参数
 
-	+ JMessageClient.NOTI_MODE_DEFAULT 显示通知，有声音，有震动。
-	+ JMessageClient.NOTI_MODE_NO_SOUND 显示通知，无声音，有震动。
-	+ JMessageClient.NOTI_MODE_NO_VIBRATE 显示通知，有声音，无震动。
-	+ JMessageClient.NOTI_MODE_SILENCE 显示通知，无声音，无震动。
-	+ JMessageClient.NOTI_MODE_NO_NOTIFICATION 不显示通知。
 
+#### 获取通知栏展示类型
+***Since 2.2.0***
+
+```
+JMessageClient.getNotificationFlag();
+```
+返回
+
++ int 当前设置的通知栏的展示类型。
 
 #### 进入单聊会话
 进入单聊会话。默认进入的是本应用appKey下用户的会话。

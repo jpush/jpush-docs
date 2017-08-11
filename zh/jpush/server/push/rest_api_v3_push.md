@@ -97,6 +97,11 @@ HTTP Header（头）里加一个字段（Key/Value对）：
 			<td>可选</td>
 			<td>推送参数 </td>
 		</tr>
+		<tr >
+			<td>cid</td>
+			<td>可选</td>
+			<td>用于防止 api 调用端重试造成服务端的重复推送而定义的一个标识符。</td>
+		</tr>
 	</table>
 </div>
 
@@ -104,6 +109,7 @@ HTTP Header（头）里加一个字段（Key/Value对）：
 
 ```
 {
+    "cid": "8103a4c628a0b98974ec1949-711261d4-5f17-4d2f-a855-5e5a8909b26e",
     "platform": "all",
     "audience": {
         "tag": [
@@ -222,6 +228,22 @@ JPush 当前支持 Android, iOS, Windows Phone 三个平台的推送。其关键
 			<td>注册ID</td>
 			<td>数组。多个注册ID之间是 OR 关系，即取并集。</td>
 			<td>设备标识。一次推送最多 1000 个。</td>
+		</tr>
+		
+		<tr >
+			<td>segment</td>
+			<td>JSON Array</td>
+			<td>用户分群ID</td>
+			<td>在页面创建的用户分群的 ID。定义为数组，但目前限制一次只能推送一个。</td>
+			<td>目前限制是一次只能推送一个。</td>
+		</tr>
+		
+		<tr>
+			<td>abtest</td>
+			<td>JSON Array</td>
+			<td>A/B Test ID</td>
+			<td>在页面创建的 A/B 测试的 ID。定义为数组，但目前限制是一次只能推送一个。</td>
+			<td>目前限制一次只能推送一个。</td>
 		</tr>
 	</table>
 </div>
@@ -782,7 +804,90 @@ iOS 1.7.3及以上的版本才能正确解析v3的message，但是无法解析v2
 	</table>
 </div>
 
+## cid: 推送唯一标识符
+
+### 调用地址
+GET https://api.jpush.cn/v3/push/cid[?count=n[&type=xx]]
+
+### 功能说明
+cid 是用于防止 api 调用端重试造成服务端的重复推送而定义的一个推送参数。
+
+用户使用一个 cid 推送后，再次使用相同的 cid 进行推送，则会直接返回第一次成功推送的结果，不会再次进行推送。
+
+CID的有效期为1天。CID的格式为：{appkey}-{uuid}
+
+在使用cid之前，必须通过接口获取你的 cid 池。获取时type=push或者不传递type值。
+
+### 调用示例
+
+**Request Header**
+ 
+```
+curl --insecure -X GET -v https://api.jpush.cn/v3/push/cid?count=3 -H "Content-Type: application/json" -u "2743204aad6fe2572aa2d8de:e674a3d0fd42a53b9a58121c"
+```
+
+```
+GET /v3/push/cid?count=3
+Authorization: Basic (base64 auth string)
+Content-Type: text/plain
+Accept: application/json
+```
+
+**Request Params**
+
+```
+count
+	可选参数。数值类型，不传则默认为1。范围为[1, 1000]
+type
+	可选参数。CID类型。取值：push(默认), schedule
+```
+
+**Response Header**
+ 
+```
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+ 
+ Response Data  
+ 
+{
+ "cidlist":[
+ "8103a4c628a0b98994ec1949-128eeb45-471c-49f3-b442-a05c20c9ed56",
+ "8103a4c628a0b98994ec1949-6e44d7f1-89f5-48a8-bec4-e359c15b13e5",
+ "8103a4c628a0b98994ec1949-47e0a960-ce67-4e71-94ce-b4b9e8813af0"
+ ]
+}
+```
+
+**Response Params**
+
+```
+cidlist
+	cid列表
+```
+
+
+
+## Group Push API: 应用分组推送 
+
+### 调用地址
+POST  https://api.jpush.cn/v3/grouppush
+
+### 功能说明
+该 API 用于为开发者在 portal 端创建的应用分组创建推送。
+groupkey 可以在创建的分组信息中获取，使用起来同 appkey 类似，但在使用的时候前面要加上 “group-” 前缀。
+
+***注***：暂不支持 option 中 override\_msg\_id 的属性。
+
+### 调用示例
+
+```
+curl --insecure -X POST -v https://api.jpush.cn/v3/grouppush -H "Content-Type: application/json" -u "group-e4c938578ee598be517a2243:71d1dc4dae126674ed386b7b" -d '{"platform":["android"],"audience":"all","notification":{"android":{"alert":"notification content","title":"notification title"}},"message":{"msg_content":"message content"}}'
+```
+
 ## 推送校验 API
+
+### 调用地址
 POST https://api.jpush.cn/v3/push/validate
 
 ### 功能说明

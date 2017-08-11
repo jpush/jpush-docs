@@ -17,7 +17,7 @@ pages:
 
 - home: 'index.md'
 
-- JPush:
+- 极光推送:
 
   - 入门指南:
     - 'JPush 产品简介': 'jpush/guideline/intro.md'
@@ -70,7 +70,7 @@ pages:
   - 最近更新: 'jpush/updates.md'
   - 资源下载: 'jpush/resources.md'
 
-- JAnalytics:
+- 极光统计:
 
   - 入门指南:
     - 'JAnalytics 产品简介': 'janalytics/guideline/intro.md'
@@ -86,7 +86,7 @@ pages:
   - 最近更新: 'janalytics/updates.md'
   - 资源下载: 'janalytics/resources.md'
 
-- JMessage:
+- 极光IM:
 
   - 入门指南:
     - 'JMessage 产品简介': 'jmessage/guideline/jmessage_guide.md'
@@ -124,7 +124,7 @@ pages:
   - 最近更新: 'jmessage/updates.md'
   - 资源下载: 'jmessage/resources.md'
 
-- JSMS:
+- 极光短信:
 
   - 入门指南:
     - '短信验证码概述': 'jsms/guideline/JSMS_guide.md'
@@ -134,7 +134,11 @@ pages:
   - iOS:
     - 'iOS SDK 概述': 'jsms/client/iOS_SMS_SDK.md'
   - REST API:
-    - 'REST API 概述': 'jsms/server/rest_api_jsms.md'
+    - 'REST API 概述': 'jsms/server/rest_api_summary.md'
+    - '短信发送 API': 'jsms/server/rest_api_jsms.md'
+    - '短信定时发送 API': 'jsms/server/rest_api_jsms_schedule.md'
+    - '短信余量查询 API': 'jsms/server/rest_jsms_api_account.md'
+    - '回调接口': 'jsms/server/callback.md'
   - 服务端 SDK:
     - 'Java SDK': 'jsms/server/sdk/java_sdk.md'
     - 'PHP SDK': 'jsms/server/sdk/php_sdk.md'
@@ -142,7 +146,7 @@ pages:
   - 最近更新: 'jsms/updates.md'
   - 资源下载: 'jsms/resources.md'
 
-- JShare:
+- 极光分享:
 
   - 入门指南:
     - 'JShare 产品简介': 'jshare/guideline/intro.md'

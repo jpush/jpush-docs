@@ -12,7 +12,7 @@
                     <li><a href="../client/Android/android_guide">集成指南</a></li>
                     <li><a href="../client/Android/android_3m">3 分钟快速 Demo</a></li>
                     <li><a href="../client/Android/android_debug_guide">调试指南</a></li>
-                    <li><a href="https://sdkfiledl.jiguang.cn/jpush-android-google-play-3.0.6.zip">Google Play 版本</a></li>
+                    <li><a href="https://sdkfiledl.jiguang.cn/jpush-android-google-play-3.0.8.zip?123">Google Play 版本</a></li>
                 </ul>
                 <p><a href="https://www.jiguang.cn/downloads/sdk/android/" class="btn btn-default" role="button">下载</a></p>
             </div>
@@ -60,13 +60,13 @@
             <div class="caption">
                 <h4>Java SDK</h4>
                 <ul>
-                    <li>版本号：v3.2.20</li>
-                    <li>更新时间：2017-5-25</li>
+                    <li>版本号：v3.3.0</li>
+                    <li>更新时间：2017-7-06</li>
                     <li>更新内容：<a href="https://github.com/jpush/jpush-api-java-client/releases" target="_blank">Change Log</a></li>
                     <li>GitHub：<a href="https://github.com/jpush/jpush-api-java-client" target="_blank">源码</a></li>
                     <li>支持：Push API v3</li>
                 </ul>
-                <p><a href="https://sdkfiledl.jiguang.cn/jpush-api-java-client-3.2.20.zip" class="btn btn-default" role="button">下载</a></p>
+                <p><a href="https://sdkfiledl.jiguang.cn/jpush-api-java-client-3.3.0.zip" class="btn btn-default" role="button">下载</a></p>
             </div>
         </div>
     </div>
