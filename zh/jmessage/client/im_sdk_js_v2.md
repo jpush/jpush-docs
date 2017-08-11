@@ -480,7 +480,9 @@ JMessage#sendSingleMsg()
 | no_offline          | FALSE             | 消息离线控制标志，false，默认值，保存离线消息；true，不保存离线消息   |
 | no_notification     | FALSE             | 状态栏显示消息标志，false，默认值，状态栏显示消息；true，状态栏不显示消息 |
 | custom_notification | FALSE             | 通知栏参数，见下表                                |
+
 **custom_notification：**
+
 | KEY     | REQUIRE | DESCRIPTION           |
 | ------- | ------- | --------------------- |
 | enabled | TRUE    | 是否启用自定义消息通知栏 默认 FALSE |
