@@ -15,6 +15,9 @@
 | 880001 | missing error                            | 未知错误码               |
 | 880002 | invalid parameter                        | 参数不合法               |
 | 880003 | invalid value                            | 非法内容格式              |
+| 880004 | invalid type                           | 非法内容格式              |
+| 880005 | file not exist                           | 文件不存在              |
+| 880006 | login out before register  | 注册之前先退出     |
 | 880101 | appkey not exist                         | appkey 不存在          |
 | 880102 | signatu fail                             | 签名错误                |
 | 880103 | user not existr                          | 用户不存在               |
@@ -25,6 +28,13 @@
 | 880206 | length of message exceed limit.          | 消息大小超过限制            |
 | 880207 | user in blacklist                        | 用户被对方拉黑             |
 | 880208 | message is sensitive                     | 消息包含敏感词汇            |
+| 880209 | beyond the frequency limit    | 发送速度超过限制          |
+| 880210 | file size exceed the limit    | 文件大小超过限制            |
+| 880301 | target user not exist    | 目标用户不存在            |
+| 880302 | repeated added friend    | 重复添加好友            |
+| 880303 | user not friend    | 不是好友关系            |
+| 880304 | Invalid friend memo    | 好友备注不合法            |
+| 880305 | target user refuse added    | 用户拒绝加好友            |
 | 880402 | not permitted to create group            | 没有创建群组的权限           |
 | 880403 | amount of group exceed limit             | 群数量到达上限             |
 | 880404 | length of group name exceed limit        | 群名字超过长度限制，创建失败      |
