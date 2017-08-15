@@ -105,8 +105,8 @@
         dependencies {
             ......
             
-            compile 'cn.jiguang.sdk:jmessage:2.2.0'  // 此处以JMessage 2.2.0 版本为例。
-            compile 'cn.jiguang.sdk:jcore:1.1.3'  // 此处以JCore 1.1.3 版本为例。
+            compile 'cn.jiguang.sdk:jmessage:2.2.1'  // 此处以JMessage 2.2.0 版本为例。
+            compile 'cn.jiguang.sdk:jcore:1.1.6'  // 此处以JCore 1.1.3 版本为例。
             ......
         }
         
