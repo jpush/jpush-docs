@@ -1020,6 +1020,9 @@ class MessageEventReceiver extends Activity{
             case group_member_exit:
             //群成员退群事件
             break;
+            case group_info_updated://since 2.2.1
+            //群信息变更事件
+            break;
         }
         break;
     }
