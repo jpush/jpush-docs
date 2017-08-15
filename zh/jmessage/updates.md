@@ -13,6 +13,7 @@
 + 提升sdk稳定性
 
 ##### NewFeature:
++ 离线事件处理升级为事件同步机制，大幅提升处理大量事件的性能，上层无需改动和适配
 + 群事件`EventNotificationContent`中新增一个类型`group_info_updated`表示群信息被更新。代码示例见[事件处理](https://docs.jiguang.cn/jmessage/client/im_sdk_android/#_46)一节中“接收消息事件”部分
 + 新增创建ImageContent时，指定存储时的扩展名的接口
 
