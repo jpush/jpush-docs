@@ -6,7 +6,6 @@
 
 * 如果你想要快速测试、请参考本文在几分钟内跑通 Demo。
 * 极光文档官网上有相关的所有指南、API、教程等全部的文档。包括本文档的更新版本，都会及时地发布到该网站上。
-* [极光社区](https://community.jiguang.cn/)网站：大家对文档有疑惑，以及产品出现问题，可以到极光社区来提问题，可以及时得到回应。
 
 ## 产品功能说明
 JSHARE SDK 可以让你的应用支持多平台分享，无需花耗时间了解、集成每个社会化分享平台的 SDK，可以有效的降低包体积。
@@ -36,8 +35,8 @@ JSHARE SDK 可以让你的应用支持多平台分享，无需花耗时间了解
 * libs/(cpu-type)/libjcore1xy.so
 	* 各种CPU类型的native开发包。
 * example
-	* 是一个完整的Android项目，通过这个演示了JShare SDK的基本用法，可以用来做参考。  
-	
+	* 是一个完整的Android项目，通过这个演示了JShare SDK的基本用法，可以用来做参考。
+
 ### Android SDK 版本
 JShare SDK支持Android 2.3及以上版本的Android系统。
 

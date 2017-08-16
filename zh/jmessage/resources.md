@@ -8,8 +8,8 @@
             <img src="../image/resource_android.png" alt="android">
             <div class="caption">
                 <h4>Android SDK</h4>
-                <p>版本：v2.2.0</p>
-                <p>更新时间：2017.06.15</p>
+                <p>版本：v2.2.1</p>
+                <p>更新时间：2017.08.15</p>
                 <ul>
                     <li><a href="../client/jmessage_android_guide">集成步骤</a></li>
                     <li><a href="../client/im_sdk_android/">开发指南</a></li>
@@ -40,8 +40,8 @@
             <img src="../image/resource_js.png" alt="Web">
             <div class="caption">
                 <h4>Web SDK</h4>
-                <p>版本：v2.3.0</p>
-                <p>更新时间：2017.06.15</p>
+                <p>版本：v2.3.1</p>
+                <p>更新时间：2017.08.11</p>
                 <ul>
                     <li><a href="../client/im_sdk_js_v2/">开发指南</a></li>
                     <li class="li-clear"></li>
@@ -96,7 +96,7 @@
                     <div class="col-md-8" >
                         <a href="https://jchat.im.jiguang.cn" class="btn btn-default"  role="button" target="_blank">Web 在线体验</a>
                     </div>
-            
+
                 </div>
             </div>
         </div>
@@ -113,8 +113,6 @@
             <div class="caption">
                 <h4>Java SDK</h4>
                 <ul>
-                    <li>版本：v1.1.1</li>
-                    <li>更新时间：2017.08.07</li>
                     <li><a href="https://github.com/jpush/jmessage-api-java-client" target="_blank">GitHub 源码</a></li>
                     <li>更新日志：<a href="https://github.com/jpush/jmessage-api-java-client/releases" target="_blank">Change Log</a></li>
                 </ul>
@@ -128,12 +126,10 @@
             <div class="caption">
                 <h4>Python SDK</h4>
                 <ul>
-                    <li>版本：v1.0.3</li>
-                    <li>更新时间：2017.01.10</li>
                     <li><a href="https://github.com/jpush/jmessage-api-python-client" target="_blank">GitHub 源码</a></li>
                     <li>更新日志：<a href="https://github.com/jpush/jmessage-api-python-client/releases" target="_blank">Change Log</a></li>
                 </ul>
-                <p><a href="https://sdkfiledl.jiguang.cn/jmessage-api-python-client-1.0.1.zip" class="btn btn-default" role="button">下载</a></p>
+                <p><a href="https://github.com/jpush/jmessage-api-python-client/archive/master.zip" class="btn btn-default" role="button">下载</a></p>
             </div>
         </div>
     </div>
@@ -145,12 +141,10 @@
             <div class="caption">
                 <h4>PHP SDK</h4>
                 <ul>
-                    <li>版本：v1.0.4</li>
-                    <li>更新时间：2017.06.26</li>
                     <li><a href="https://github.com/jpush/jmessage-api-php-client" target="_blank">GitHub 源码</a></li>
                     <li>更新日志：<a href="https://github.com/jpush/jmessage-api-php-client/releases" target="_blank">Change Log</a></li>
                 </ul>
-                <p><a href="https://sdkfiledl.jiguang.cn/jmessage-api-php-client-1.0.2.zip" class="btn btn-default" role="button">下载</a></p>
+                <p><a href="https://github.com/jpush/jmessage-api-php-client/archive/master.zip" class="btn btn-default" role="button">下载</a></p>
             </div>
         </div>
     </div>
@@ -160,12 +154,10 @@
             <div class="caption">
                 <h4>C# SDK</h4>
                 <ul>
-                    <li>版本：v1.1.0</li>
-                    <li>更新时间：2017.07.03</li>
                     <li><a href="https://github.com/jpush/jmessage-api-csharp-client" target="_blank">GitHub 源码</a></li>
                     <li>更新日志：<a href="https://github.com/jpush/jmessage-api-csharp-client/releases" target="_blank">Change Log</a></li>
                 </ul>
-                <p><a href="https://sdkfiledl.jiguang.cn/jmessage-api-csharp-client-1.0.0.zip" class="btn btn-default" role="button">下载</a></p>
+                <p><a href="https://github.com/jpush/jmessage-api-csharp-client/archive/master.zip" class="btn btn-default" role="button">下载</a></p>
             </div>
         </div>
     </div>

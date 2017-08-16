@@ -1,8 +1,8 @@
 # iOS SDK API
 ##SDK 接口说明
 
-1. JANALYTICSService类，包含统计SDK的所有接口 
-2. JANALYTICSLaunchConfig类，统计SDK启动配置模型  
+1. JANALYTICSService类，包含统计SDK的所有接口
+2. JANALYTICSLaunchConfig类，统计SDK启动配置模型
 3. JANALYTICSEventObject类，统计事件模型
 
 ---
@@ -11,13 +11,13 @@
 + ***\+ (void)setupWithConfig:(JANALYTICSLaunchConfig \*)config***
 	+ 接口说明：
 		+ 初始化接口,建议在application:didFinishLaunchingWithOptions:中调用
-		
+
 	+ 参数说明：
 		+ config：JANALYTICSLaunchConfig类
-		
+
 	+ 调用示例：
-	
-~~~			
+
+~~~
 	JANALYTICSLaunchConfig * config = [[JANALYTICSLaunchConfig alloc] init];
  
 	config.appKey = @"your appkey";
@@ -31,12 +31,12 @@
 + ***\+ (void)startLogPageView:(NSString \*)pageName***
 	+ 接口说明：
 		+ 页面流统计开始接口，建议在ViewControler的viewDidAppear:方法中调用
-		
+
 	+ 参数说明：
-		+ pageName：要开始统计的页面名 
-		
+		+ pageName：要开始统计的页面名
+
 	+ 调用示例：
-	
+
 ~~~
 	- (void)viewDidAppear:(BOOL)animated {
 	    [JANALYTICSService startLogPageView:@"first_page_flow"];
@@ -46,13 +46,13 @@
 + ***\+ (void)stopLogPageView:(NSString \*)pageName***
 	+ 接口说明：
 		+ 页面流统计结束接口，建议在ViewControler的viewDidDisappear:方法中调用
-		
+
 	+ 参数说明：
 		+ pageName：要结束统计的页面名
-		
+
 	+ 调用示例：
-	
-~~~	
+
+~~~
 	- (void)viewDidDisappear:(BOOL)animated {
 	    [JANALYTICSService stopLogPageView:@"first_page_flow"];
 	}
@@ -62,7 +62,7 @@
 + ***\+ (void)setLatitude:(double)latitude longitude:(double)longitude***
 	+ 接口说明：
 		+ 上报LBS信息
-		
+
 	+ 参数说明：
 		+ latitude：纬度
 		+ longitude： 经度
@@ -75,7 +75,7 @@
 + ***\+ (void)setLocation:(CLLocation \*)location***
 	+ 接口说明：
 		+ 上报LBS信息
-		
+
 	+ 参数说明：
 		+ 	location: CoreLocation.framework框架中的LBS类
 
@@ -101,7 +101,7 @@
 + ***\+ (void)setDebug:(BOOL)enable***
 	+ 接口说明：
 		+ 设置是否打印sdk产生的Debug级log信息, 默认为NO(不打印log)
-		
+
 	+ 参数说明：
 		+ enable：设置为YES开启，设置为NO关闭
 
@@ -115,10 +115,10 @@
 + ***\+ (void)eventRecord:(JANALYTICSEventObject \*)event***
 	+ 接口说明：
 		+ 自定义事件。通过传入不同的事件模型来进行各种事件的统计，具体的事件模型请查看事件模型介绍
-		
+
 	+ 参数说明：
 		+ event：事件统计对象
-		
+
 **关于事件统计的说明：**
 
 1. 模板属性值分为非空和可选，参考下面介绍
@@ -147,7 +147,7 @@
 |:-----:|:-----:|:----:|
 |method|	NSString|登录方式(非空)|
 |success|BOOL|登录是否成功(非空)|
- 
+
 调用示例:
 
 ~~~
@@ -180,7 +180,7 @@
 |:-----:|:----:|:-----:|
 |method|	NSString	|注册方式(非空)|
 |success|BOOL|注册是否成功(非空)|
- 
+
 调用示例:
 
 ~~~
@@ -218,7 +218,7 @@
 |currency|JANALYTICSPurchaseCurrency|货币类型，目前只支持CNY/USD,具体请参考JANALYTICSPurchaseEvent头文件|
 |goodsType|NSString|商品类型|
 |quantity|NSInteger|商品数量|
- 
+
 调用示例:
 
 ~~~
@@ -255,9 +255,9 @@
     purchase_success
     此类 key 已被模型使用，如果使用则会导致统计到的数据不准确.
 <a name="content"></a>
-##浏览事件模型    
+##浏览事件模型
 + ***JANALYTICSBrowseEvent***
- 
+
 该模型是浏览事件模型，可以设置参数进行数据上报。
 
 参数说明：
@@ -306,7 +306,7 @@
 | 参数名称 | 参数类型 | 参数说明 |
 |:-------:|:------:|:-------:|
 | eventID | NSString |事件ID(非空)|
- 
+
 调用示例:
 
 ~~~
@@ -352,17 +352,13 @@
 ~~~
 
 **注意：**
-     
+
      自定义计算事件模型中扩展参数中不能使用以下 key 值：
      event_id
      event_value
      此类 key 已被模型使用，如果使用则会导致统计到的数据不准确.
 
-    
+
 ## 技术支持
 
 邮件联系：<support@jpush.cn>
-
-问答社区：[极光社区](http://community.jiguang.cn/)
-
-

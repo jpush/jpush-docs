@@ -8,7 +8,6 @@
 
 + [3 分钟快速 Demo（Android）](android_3m/)：如果您想要快速地测试、感受下极光推送的效果，请参考本文在几分钟内跑通Demo。
 + 极光推送[文档网站](http://docs.jiguang.cn/)上，有极光推送相关的所有指南、API、教程等全部的文档。包括本文档的更新版本，都会及时地发布到该网站上。
-+ [极光社区](http://community.jiguang.cn/)网站：大家除了文档之外，还有问题与疑问，会到这里来提问题，以及时地得到解答。
 + 如果您看到本文档，但还未下载Android SDK，请访问[SDK下载页面](http://docs.jiguang.cn/jpush/resources/)下载。
 
 ## 产品功能说明
@@ -36,7 +35,7 @@
     + 极光开发者服务的核心包。
 + libs/jpush-android_v3.x.y.jar
     + JPush SDK 开发包。
-+ libs/(cpu-type)/libjcore1xy.so 
++ libs/(cpu-type)/libjcore1xy.so
     + 各种CPU类型的native开发包。
 + res
     + 集成SDK必须添加的资源文件
@@ -60,59 +59,59 @@
 		<manifest xmlns:android="http://schemas.android.com/apk/res/android"
 			package="com.android.tests.flavorlib.app"
 			xmlns:tools="http://schemas.android.com/tools">
-			
+
 			<application
 				android:icon="@drawable/icon"
 				android:name="com.example.jpushdemo.ExampleApplication"
 				android:label="@string/app_name" >
-				
+
 				<service android:name="cn.jpush.android.service.PushService"
             		android:process=":multiprocess"
             		tools:node="replace" >
-            		
+
             		……
             	</service>
-            
+
             ……
-          </application>  
-          
+          </application>
+
           ……
 		</manifest>
 
 
 + 确认android studio的 Project 根目录的主 gradle 中配置了jcenter支持。（新建project默认配置就支持）
-        
+
         buildscript {
             repositories {
                 jcenter()
             }
             ......
         }
-        
+
         allprojets {
             repositories {
                 jcenter()
             }
         }
-              
-        
-        
+
+
+
 + 在 module 的 gradle 中添加依赖和AndroidManifest的替换变量。
 
 
-        
+
         android {
             ......
             defaultConfig {
                 applicationId "com.xxx.xxx" //JPush上注册的包名.
                 ......
-                
+
                 ndk {
-                    //选择要添加的对应cpu类型的.so库。 
-                    abiFilters 'armeabi', 'armeabi-v7a', 'armeabi-v8a' 
+                    //选择要添加的对应cpu类型的.so库。
+                    abiFilters 'armeabi', 'armeabi-v7a', 'armeabi-v8a'
                     // 还可以添加 'x86', 'x86_64', 'mips', 'mips64'
                 }
-                
+
                 manifestPlaceholders = [
                     JPUSH_PKGNAME : applicationId,
                     JPUSH_APPKEY : "你的appkey", //JPush上注册的包名对应的appkey.
@@ -122,26 +121,26 @@
             }
             ......
         }
-        
-        
-       
+
+
+
         dependencies {
             ......
-            
+
             compile 'cn.jiguang.sdk:jpush:3.0.9'  // 此处以JPush 3.0.9 版本为例。
             compile 'cn.jiguang.sdk:jcore:1.1.7'  // 此处以JCore 1.1.7 版本为例。
             ......
         }
-        
-        
+
+
 ***注*** : 如果在添加以上 abiFilter 配置之后android Studio出现以下提示：
 
         NDK integration is deprecated in the current plugin. Consider trying the new experimental plugin
-        
+
 则在 Project 根目录的gradle.properties文件中添加：
 
         android.useDeprecatedNdk=true
-        
+
 ***说明***：若没有res/drawable-xxxx/jpush_notification_icon这个资源默认使用应用图标作为通知icon，在5.0以上系统将应用图标作为statusbar icon可能显示不正常，用户可定义没有阴影和渐变色的icon替换这个文件，文件名不要变。
 
 
@@ -157,7 +156,7 @@
 
 ***说明 2***：使用android studio的开发者，如果使用jniLibs文件夹导入so文件，则仅需将所有cpu类型的文件夹拷进去；如果将so文件添加在module的libs文件夹下，注意在module的gradle配置中添加一下配置：
 
-       
+
         android {
             ......
             sourceSets {
@@ -208,10 +207,10 @@ defaultConfig {
     <uses-sdk android:minSdkVersion="9" android:targetSdkVersion="23" />
 
     <!-- Required -->
-    <permission 
-        android:name="您应用的包名.permission.JPUSH_MESSAGE"  
+    <permission
+        android:name="您应用的包名.permission.JPUSH_MESSAGE"
         android:protectionLevel="signature" />
-   
+
     <!-- Required -->
     <uses-permission android:name="您应用的包名.permission.JPUSH_MESSAGE" />
     <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
@@ -223,9 +222,9 @@ defaultConfig {
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.WRITE_SETTINGS" /> 
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-     
+
     <!-- Optional. Required for location feature -->
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" /> <!-- 用于开启 debug 版本的应用在6.0 系统上 层叠窗口权限 -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
@@ -234,12 +233,12 @@ defaultConfig {
     <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
     <uses-permission android:name="android.permission.GET_TASKS" />
-         
+
     <application
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:name="Your Application Name">
-         
+
         <!-- Required SDK 核心功能-->
         <!-- 可配置android:process参数将PushService放在其他进程中 -->
         <service
@@ -253,14 +252,14 @@ defaultConfig {
                 <action android:name="cn.jpush.android.intent.PUSH_TIME" />
             </intent-filter>
         </service>
-        
+
         <!-- since 3.0.9 Required SDK 核心功能-->
         <provider
              android:authorities="您应用的包名.DataProvider"
              android:name="cn.jpush.android.service.DataProvider"
              android:exported="true"
-             /> 
-         
+             />
+
         <!-- since 1.8.0 option 可选项。用于同一设备中不同应用的JPush服务相互拉起的功能。 -->
         <!-- 若不启用该功能可删除该组件，将不拉起其他应用也不能被其他应用拉起 -->
          <service
@@ -277,9 +276,9 @@ defaultConfig {
         <receiver
             android:name="cn.jpush.android.service.PushReceiver"
             android:enabled="true" >
-          <intent-filter android:priority="1000"> 
-                <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED_PROXY" /> 
-                <category android:name="您应用的包名"/> 
+          <intent-filter android:priority="1000">
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED_PROXY" />
+                <category android:name="您应用的包名"/>
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.USER_PRESENT" />
@@ -292,7 +291,7 @@ defaultConfig {
                 <data android:scheme="package" />
             </intent-filter>
         </receiver>
-        
+
         <!-- Required SDK核心功能-->
         <activity
             android:name="cn.jpush.android.ui.PushActivity"
@@ -316,17 +315,17 @@ defaultConfig {
                 <category android:name="您应用的包名" />
             </intent-filter>
         </activity>
-        
+
         <!-- Required SDK核心功能-->
         <service
             android:name="cn.jpush.android.service.DownloadService"
             android:enabled="true"
             android:exported="false" >
         </service>
-        
+
         <!-- Required SDK核心功能-->
         <receiver android:name="cn.jpush.android.service.AlarmReceiver" />
-        
+
         <!-- Required since 3.0.7 -->
         <!-- 新的tag/alias接口结果返回需要开发者配置一个自定的广播 -->
         <!-- 该广播需要继承JPush提供的JPushMessageReceiver类, 并如下新增一个 Intent-Filter -->
@@ -345,19 +344,19 @@ defaultConfig {
              android:enabled="true">
              <intent-filter>
                  <!--Required 用户注册SDK的intent-->
-                 <action android:name="cn.jpush.android.intent.REGISTRATION" /> 
-                 <!--Required 用户接收SDK消息的intent--> 
-                 <action android:name="cn.jpush.android.intent.MESSAGE_RECEIVED" /> 
+                 <action android:name="cn.jpush.android.intent.REGISTRATION" />
+                 <!--Required 用户接收SDK消息的intent-->
+                 <action android:name="cn.jpush.android.intent.MESSAGE_RECEIVED" />
                  <!--Required 用户接收SDK通知栏信息的intent-->
-                 <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED" /> 
+                 <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED" />
                  <!--Required 用户打开自定义通知栏的intent-->
-                 <action android:name="cn.jpush.android.intent.NOTIFICATION_OPENED" /> 
+                 <action android:name="cn.jpush.android.intent.NOTIFICATION_OPENED" />
                  <!-- 接收网络变化 连接/断开 since 1.6.3 -->
                  <action android:name="cn.jpush.android.intent.CONNECTION" />
                  <category android:name="您应用的包名" />
              </intent-filter>
          </receiver>
-      
+
         <!-- Required. For publish channel feature -->
         <!-- JPUSH_CHANNEL 是为了方便开发者统计APK分发渠道。-->
         <!-- 例如: -->
@@ -366,7 +365,7 @@ defaultConfig {
         <!-- 目前这个渠道统计功能的报表还未开放。-->
         <meta-data android:name="JPUSH_CHANNEL" android:value="developer-default"/>
         <!-- Required. AppKey copied from Portal -->
-        <meta-data android:name="JPUSH_APPKEY" android:value="您应用的Appkey"/> 
+        <meta-data android:name="JPUSH_APPKEY" android:value="您应用的Appkey"/>
     </application>
 </manifest>
 ```
@@ -442,13 +441,13 @@ defaultConfig {
         -dontwarn cn.jpush.**
         -keep class cn.jpush.** { *; }
         -keep class * extends cn.jpush.android.helpers.JPushMessageReceiver { *; }
-        
+
         -dontwarn cn.jiguang.**
         -keep class cn.jiguang.** { *; }
-        
+
 
 + 2.0.5 ~ 2.1.7 版本有引入 gson 和 protobuf ，增加排除混淆的配置。(2.1.8版本不需配置)
-  
+
         #==================gson && protobuf==========================
         -dontwarn com.google.**
         -keep class com.google.gson.** {*;}
@@ -462,9 +461,9 @@ JPush SDK 提供的 API 接口，都主要集中在 cn.jpush.android.api.JPushIn
 
 #### 基础API
 + init 初始化SDK
-        
+
         public static void init(Context context)
-        
+
 + setDebugMode 设置调试模式
 
  注：该接口需在init接口之前调用，避免出现部分日志没打印的情况。多进程情况下建议在自定义的Application中onCreate中调用。
@@ -482,7 +481,7 @@ JPush SDK 提供的 API 接口，都主要集中在 cn.jpush.android.api.JPushIn
 
 + 以下代码定制一个本应用程序 Application 类。需要在 AndoridManifest.xml 里配置。请参考上面 AndroidManifest.xml 片断，或者 example 项目。
 
-    
+
         public class ExampleApplication extends Application {
         @Override
             public void onCreate() {
@@ -492,8 +491,8 @@ JPush SDK 提供的 API 接口，都主要集中在 cn.jpush.android.api.JPushIn
             }
         }
 
-        
-        
+
+
 ### 测试确认
 
 + 确认所需的权限都已经添加。如果必须的权限未添加，日志会提示错误。
@@ -529,5 +528,3 @@ JPush SDK 提供的 API 接口，都主要集中在 cn.jpush.android.api.JPushIn
 ## 技术支持
 
 邮件联系：<support@jpush.cn>
-
-问答社区：[极光社区](http://community.jiguang.cn/)
