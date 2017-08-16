@@ -306,3 +306,6 @@ curl --insecure -X POST -v https://api.sms.jpush.cn/v1/messages/batch -H "Conten
 |403|50030|recipients is empty|recipients 为空|
 |403|50031|too much recipients|recipients 短信接收者数量超过1000|
 |403|50034|repeat send|重复发送|
+|403|50035|illegal IP|非法 IP 请求|
+|403|50036|app in black|应用被列为黑名单|
+|403|50037|has black word|短信内容存在敏感词汇|
