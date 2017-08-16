@@ -5,7 +5,6 @@
 
 * 如果你想要快速测试、请参考本文在几分钟内跑通 Demo。
 * 极光文档官网上有相关的所有指南、API、教程等全部的文档。包括本文档的更新版本，都会及时地发布到该网站上。
-* [极光社区](https://community.jiguang.cn/)网站：大家对文档有疑惑，以及产品出现问题，可以到极光社区来提问题，可以及时得到回应。
 
 ##产品功能说明
 JSHARE SDK 可以让你的应用支持多平台分享，无需花耗时间了解、集成每个社会化分享平台的 SDK，可以有效的降低包体积。
@@ -38,7 +37,7 @@ JSHARE SDK 可以让你的应用支持多平台分享，无需花耗时间了解
 * 解压压缩包，将 Lib 下的所有文件复制到工程中，即可开始使用 SDK。
 
 * 增加相关的 framework 依赖：
- 
+
 	* UIKit
 	* SystemConfiguration
 	* CoreTelephony
@@ -66,7 +65,7 @@ JSHARELaunchConfig 类：JSHARE SDK 启动配置模型。
 
 JSHAREService 类，包含分享 SDK 的所有接口。
 
- 
+
 ### method - setupWithConfig
 ####接口定义：
 +(void)setupWithConfig:(JSHARELaunchConfig *)config<br>
@@ -100,7 +99,7 @@ JSHAREService 类，包含分享 SDK 的所有接口。
 ####参数说明：
 
 * message：JSHAREMessage 类的实例
-* handler：JSHAREStateHandler 分享后的回调      
+* handler：JSHAREStateHandler 分享后的回调
 
 ####调用示例：
 
@@ -139,7 +138,7 @@ JSHAREMessage *message = [JSHAREMessage message];
 ####接口定义：
 +(void)getSocialUserInfo:(JSHAREPlatform)platform
                   handler:(JSHARESocialHandler)handler
-                  
+
 ####接口说明：
 通过调用获取用户信息接口，获取用户在第三方平台的用户ID、头像等资料完成账号体系的构建。
 
@@ -165,8 +164,8 @@ JSHAREMessage *message = [JSHAREMessage message];
         dispatch_async(dispatch_get_main_queue(), ^{
             [Alert show];
         });
-        
-        
+
+
     }];
 ```
 
@@ -245,11 +244,11 @@ Xcode 工程目录中的 [TARGETS] -> [Info] 中设置：
 
 ###HTTPS 设置
  > Apple 将从2017年开始执行 ATS(App Transport Security)，所有进行审核的应用中网络请求全部支持 HTTPS，届时以下配置将会失效，请提前做好准备。
- 
+
   目前 JSHARE 支持不存在新浪微博客户端情况下的网页分享，但是由于新浪微博的 api 尚未针对 https 做优化所以需要针对新浪的做对应的 https 设置。在 JSHARE 中是默认关闭新浪微博的网页端分享的，如需使用这个功能则需要在 JSHARELaunchConfig 类的实例中将 **isSupportWebSina** 属性设置为 YES。
- 
-  以iOS10 SDK 编译的工程会默认以 SSL 安全协议进行网络传输，即 HTTPS，如果依然使用 HTTP 协议请求网络会报系统异常并中断请求。目前可用如下这种方式保持用 HTTP 进行网络连接：   
- 
+
+  以iOS10 SDK 编译的工程会默认以 SSL 安全协议进行网络传输，即 HTTPS，如果依然使用 HTTP 协议请求网络会报系统异常并中断请求。目前可用如下这种方式保持用 HTTP 进行网络连接：
+
 在 info.plist 中加入安全域名白名单(右键 info.plist 用 source code 打开)
 
 ```
@@ -318,7 +317,7 @@ Xcode 工程目录中的 [TARGETS] -> [Info] 中设置：
            <key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
            <false/>
        </dict>
-       <!-- 新浪微博-->  
+       <!-- 新浪微博-->
    </dict>
 </dict>
 ```
