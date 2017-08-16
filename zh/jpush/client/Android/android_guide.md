@@ -127,8 +127,8 @@
         dependencies {
             ......
 
-            compile 'cn.jiguang.sdk:jpush:3.0.9'  // 此处以JPush 3.0.9 版本为例。
-            compile 'cn.jiguang.sdk:jcore:1.1.7'  // 此处以JCore 1.1.7 版本为例。
+            compile 'cn.jiguang.sdk:jpush:3.0.3'  // 此处以JPush 3.0.3 版本为例。
+            compile 'cn.jiguang.sdk:jcore:1.1.1'  // 此处以JCore 1.1.1 版本为例。
             ......
         }
 
@@ -252,13 +252,6 @@ defaultConfig {
                 <action android:name="cn.jpush.android.intent.PUSH_TIME" />
             </intent-filter>
         </service>
-
-        <!-- since 3.0.9 Required SDK 核心功能-->
-        <provider
-             android:authorities="您应用的包名.DataProvider"
-             android:name="cn.jpush.android.service.DataProvider"
-             android:exported="true"
-             />
 
         <!-- since 1.8.0 option 可选项。用于同一设备中不同应用的JPush服务相互拉起的功能。 -->
         <!-- 若不启用该功能可删除该组件，将不拉起其他应用也不能被其他应用拉起 -->
