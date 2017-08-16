@@ -1097,7 +1097,7 @@ JMessage#sendGroupLocation()
 
 #### 发送群聊自定义消息
 
-JMessage#sendGroupMsg()
+JMessage#sendGroupCustom()
 
 **请求参数：**
 
@@ -1123,7 +1123,7 @@ JMessage#sendGroupMsg()
 
 ```
    // 发送消息
-   JIM.sendGroupMsg({
+   JIM.sendGroupCustom({
                   'target_gid' : '<targetGid>',
 		'target_gname' : '<targetGName>',
 		      'custom' : '<json object>'
@@ -1139,7 +1139,7 @@ JMessage#sendGroupMsg()
 ```
 ```
    // 转发消息
-   JIM.sendGroupMsg({
+   JIM.sendGroupCustom({
                   'target_gid' : '<targetGid>',
 		'target_gname' : '<targetGName>',
 		    'msg_body' : '<json object>'// 可以直接从已有消息体里面获取msg_body
