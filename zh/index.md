@@ -3,7 +3,7 @@
 <div class="row"><h2>极光官方文档</h2></div>
 
 <div class="row">
-<div class="col-sm-6 col-md-3">
+<!-- <div class="col-sm-6 col-md-3">
 <a href="http://community.jiguang.cn/" target="_blank">
     <div class="thumbnail">
         <i class="fa fa-users fa-4x" aria-hidden="true"></i>
@@ -26,8 +26,8 @@
         <div class="caption"><p>视频教程</p></div>
     </div>
 </a>
-</div>
-<div class="col-sm-6 col-md-3">
+</div> -->
+<div class="col-sm-12 col-md-12">
 <a href="https://github.com/jpush" target="_blank">
     <div class="thumbnail">
     <i class="fa fa-github fa-4x" aria-hidden="true"></i>
