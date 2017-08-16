@@ -1,6 +1,8 @@
-<h1>实时消息路由</h1>
+# 实时消息路由
 
-## 极光可以帮助开发者实现以下场景：
+## 使用场景
+
+极光可以帮助开发者实现以下场景：
 
 1. 在 APP 自己的服务端实时保存聊天历史
 2. 开发者可以实现针对客户消息的内容进行自动回复
@@ -8,7 +10,7 @@
 如需要开通此功能，请联系：[商务客服](https://www.jiguang.cn/accounts/business/form)；如果开发者没有实时性需求，建议使用免费的IM REST Report拉取历史消息。
 
 
-### 目前服务只支持https回调
+## 目前服务只支持https回调
 
 关于开发者鉴权的问题，为了防止开发者服务被随意调用，开发者服务验证采用 HTTP Basic 机制，即 HTTP Header（头）里加一个字段（Key/Value对）：
 
@@ -20,7 +22,7 @@ Authorization: Basic base64_auth_string
 
 msg callback在请求的时候会带上Authorization: Basic base64_auth_string让开发者服务进行验证
 
-#### https 接口采用post方法 
+### https 接口采用post方法 
 
 Request header
 
@@ -62,7 +64,7 @@ Request Body
 
 与REST Report历史消息获取的消息格式相同
 
-#### msg callback 所需的成功响应
+### msg callback 所需的成功响应
 
 Response
 
