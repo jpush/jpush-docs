@@ -96,7 +96,9 @@
                     <div class="col-md-8" >
                         <a href="https://jchat.im.jiguang.cn" class="btn btn-default"  role="button" target="_blank">Web 在线体验</a>
                     </div>
-
+                    <div class="col-md-12 download-text">
+                        <a href="https://github.com/jpush/jchat-web" target="_blank" style="margin-left: 25px;">JChat 源码</a>
+                    </div>
                 </div>
             </div>
         </div>
