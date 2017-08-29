@@ -24,8 +24,8 @@
             <img src="../image/resource_ios.png" alt="iOS">
             <div class="caption">
                 <h4>iOS SDK</h4>
-                <p>版本：v3.2.0</p>
-                <p>更新时间：2017.06.30</p>
+                <p>版本：v3.2.1</p>
+                <p>更新时间：2017.08.29</p>
                 <ul>
                     <li><a href="../client/jmessage_ios_guide/">集成步骤</a></li>
                     <li><a href="../client/im_sdk_ios/">开发指南</a></li>
