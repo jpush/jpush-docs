@@ -157,15 +157,13 @@ SDK 初始化时，可设置是否启用消息记录漫游。
 	                    password:(NSString *)password
 	           completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)handler;
 ##### 例子
-	[JMSGUser registerWithUsername:@"用户名"
-	                      password:@"密码"
-	                     completionHandler:^(id resultObject, NSError *error) {
-	                         if (!error) {
-	                             //注册成功
-	                         } else {
-	                            //注册失败
-	                         }
-	                     }];
+	[JMSGUser registerWithUsername:@"用户名" password:@"密码" completionHandler:^(id resultObject, NSError *error) {
+         if (!error) {
+             //注册成功
+         } else {
+            //注册失败
+         }
+     }];
 #### 用户登录
 	/*!
 	 * @abstract 用户登录
@@ -184,15 +182,13 @@ SDK 初始化时，可设置是否启用消息记录漫游。
 	                 password:(NSString *)password
 	        completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)handler;
 ##### 例子
-	[JMSGUser loginWithUsername:@"用户名"
-	                           password:@"密码"
-	                  completionHandler:^(id resultObject, NSError *error) {
-	                      if (!error) {
-	                         //登录成功
-	                      } else {
-	                         //登录失败
-	                      }
-	                  }];
+	[JMSGUser loginWithUsername:@"用户名" password:@"密码" completionHandler:^(id resultObject, NSError *error) {
+		  if (!error) {
+		     //登录成功
+		  } else {
+		     //登录失败
+		  } 
+	 }];
 
 #### 退出登录
 	/*!
@@ -206,13 +202,13 @@ SDK 初始化时，可设置是否启用消息记录漫游。
 	+ (void)logout:(JMSGCompletionHandler JMSG_NULLABLE)handler;
 ##### 例子
 	//退出当前登录的用户
-	        [JMSGUser logout:^(id resultObject, NSError *error) {
-	            if (!error) {
-	             	//退出登录成功
-	            } else {
-	                //退出登录失败
-	            }
-	        }];
+	[JMSGUser logout:^(id resultObject, NSError *error) {
+	    if (!error) {
+	     	//退出登录成功
+	    } else {
+	        //退出登录失败
+	    }
+	}];
 
 ### 用户管理
 #### 批量获取用户信息
@@ -268,12 +264,12 @@ SDK 初始化时，可设置是否启用消息记录漫游。
 	    kJMSGUserFieldsAvatar: 头像
      */
 	[JMSGUser updateMyInfoWithParameter:parameter userFieldType:kJMSGUserFieldsGender completionHandler:^(id resultObject, NSError *error) {
-	            if (!error) {
-	                //updateMyInfoWithPareter success
-	            } else {
-	                //updateMyInfoWithPareter fail
-	            }
-	        }];
+        if (!error) {
+            //updateMyInfoWithPareter success
+        } else {
+            //updateMyInfoWithPareter fail
+        }
+    }];
 #### 统一上传用户信息更新
 	/*!
 	 * @abstract 更新用户信息（支持将字段统一上传）
@@ -472,6 +468,13 @@ SDK 升级到 3.1.0 版本后（或之后的版本），上层只需要做以下
 + 添加漫游消息的代理方法 [onSyncRoamingMessageConversation:](./jmessage_ios_appledoc_html/Protocols/JMSGConversationDelegate.html#//api/name/onSyncRoamingMessageConversation:) 通过此方法可以监听到漫游消息同步情况，从而刷新UI（不需要漫游消息的开发者可忽略此操作）。
 + 添加离线消息的代理方法 [onSyncOfflineMessageConversation:](./jmessage_ios_appledoc_html/Protocols/JMSGConversationDelegate.html#//api/name/onSyncOfflineMessageConversation:offlineMessages:) 通过此方法可以监听到离线消息同步情况，从而刷新UI。
 
+**注意:** 
+
+SDK 3.2.1 版本开始（包括3.2.1），离线事件也会走消息同步策略。
+离线事件分为：
+
++ 群事件：如果有离线的群事件，也会触发一次离线消息的代理方法。
++ 非群事件：其他事件还是不变，走以前的代理方法。
 
 ### 消息管理
 #### 创建单聊消息

@@ -1,6 +1,38 @@
 # 最近更新
 
 
+### iOS SDK v3.2.1
+
+#### 更新时间
+
+2017-08-29
+
+#### ChangeLog
+
+##### BugFix:
+
+* 修复用户反馈的一些 bug
+
+##### NewFeature
+
+* 离线事件处理升级为事件同步机制，大幅提升处理大量事件的性能，上层无需改动和适配
+* 创建 imageContent 时，可指定后缀名
+* 上传头像时，指定后缀名
+
+* 新增接口：
+	* JMSGUser
+		* +(void)updateMyAvatarWithData:avatarFormat:completionHandler;//指定头像后缀名
+	* JMSGImageContent
+		* @property(nonatomic, strong) NSString *format;//指定图片后缀名
+	* JMSGFileContent
+		* -(void)fileDataWithProgress:completionHandler: ;// 带下载进度的文件下载接口
+
+#### 升级指南
+* 使用新版本的JMessage.framework文件替换原工程下的同名旧文件
+* 将新版本的JMessage.framework里的JCore link到工程中，详细参见官网集成文档
+
+
+
 ### Android SDK v2.2.1
 
 #### 更新时间
