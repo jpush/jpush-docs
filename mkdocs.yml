@@ -52,6 +52,7 @@ pages:
     - 'Report API v3': 'jpush/server/push/rest_api_v3_report.md'
     - 'Device API v3': 'jpush/server/push/rest_api_v3_device.md'
     - 'Schedule API v3': 'jpush/server/push/rest_api_push_schedule.md'
+    - 'Admin API v1': 'jpush/server/push/rest_api_admin_api_v1.md'
     - 'HTTP 状态码': 'jpush/server/push/http_status_code.md'
   - 高级:
     - 'JPush 应用场景': 'jpush/advanced/scenes.md'
