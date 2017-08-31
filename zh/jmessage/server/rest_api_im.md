@@ -326,6 +326,51 @@ Response Data
 + 899002 用户不存在
 
 
+### 批量用户在线状态查询
+
+```
+Post /v1/users/{username}/userstat
+```
+#### Example Request
+
+Request Header 
+
+```
+Post /v1/users/userstat
+Content-Type: application/json; charset=utf-8 
+```
+Request Params
+
+N/A
+
+Request Body
+
+["USER1","USER2"]
+
+#### Example Response
+Response Header
+
+```
+HTTP/1.1 200 
+Content-Type: application/json; charset=utf-8
+```
+
+Response Data
+
+```
+[{"devices": [],"username": "caiyh01"},{"devices": [{"login": false,"online": false,"platform": "a"}],"username": "Rauly"}]
+```
++ devices  设备登陆状态数组，没有登陆过数组为空
++ platform SDK各平台：a-Android，i-iOS，j-JS，w-Windows
+
+#### Error Code
+
+错误码
+
++ 899003 username不合法
++ 899002 用户不存在
+
+
 ### 修改密码
 
 ```
