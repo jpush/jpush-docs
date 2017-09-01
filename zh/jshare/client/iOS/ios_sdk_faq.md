@@ -17,7 +17,7 @@ URL Types 没有配置或者 URL Schemes 格式不对；查看：<a href="https:
 
 
 ##分享成功，但是统计不到数据
-需要在AppDelegate类的 - (BOOL)application:(UIApplication \*)application handleOpenURL:(NSURL \*)url 函数中，调用此函数 +(BOOL)handleOpenUrl:(NSURL *)url;否则获取不到分享成功后的数据。
+需要在AppDelegate类的 - （BOOL）应用程序中：（UIApplication* ）application handleOpenURL：（NSURL* ）url函数中，调用此函数+（BOOL）handleOpenUrl：（NSURL*）url;否则获取不到分享成功后的数据。
 
 
 ##新浪微博登录授权时报错，error：sso package or sign error
