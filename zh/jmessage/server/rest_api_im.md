@@ -329,7 +329,7 @@ Response Data
 ### 批量用户在线状态查询
 
 ```
-Post /v1/users/{username}/userstat
+Post /v1/users/userstat
 ```
 #### Example Request
 
