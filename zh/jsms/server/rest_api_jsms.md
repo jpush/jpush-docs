@@ -83,6 +83,8 @@ curl --insecure -X POST -v https://api.sms.jpush.cn/v1/voice_codes -H "Content-T
 |KEY|REQUIRE|DESCRIPTION|
 |----|----|----|
 |mobile|TRUE|手机号码|
+|code|FALSE|语音验证码的值，验证码仅支持 4-8 个数字|
+|voice_lang|FALSE|语音验证码播报语言选择，0：中文播报，1：英文播报，2：中英混合播报|
 |ttl|FALSE|验证码有效期，默认为60秒|
 
 ### 返回示例
@@ -309,3 +311,7 @@ curl --insecure -X POST -v https://api.sms.jpush.cn/v1/messages/batch -H "Conten
 |403|50035|illegal IP|非法 IP 请求|
 |403|50036|app in black|应用被列为黑名单|
 |403|50037|has black word|短信内容存在敏感词汇|
+|403|50038|invalid code length|语音验证码长度错误|
+|403|50039|invalid code type|语音验证码内容错误，验证码仅支持数字|
+|403|50040|invalid voice language type|语音验证码播报语言类型错误|
+|403|50041|invalid ttl value|验证码有效期错误|

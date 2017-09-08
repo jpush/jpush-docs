@@ -155,3 +155,7 @@ JSMS 提供遵从 REST 规范的 HTTP API，以供开发者远程调用 JSMS 提
 |403|50035|illegal IP|非法 IP 请求|
 |403|50036|app in black|应用被列为黑名单|
 |403|50037|has black word|短信内容存在敏感词汇|
+|403|50038|invalid code length|语音验证码长度错误|
+|403|50039|invalid code type|语音验证码内容错误，验证码仅支持数字|
+|403|50040|invalid voice language type|语音验证码播报语言类型错误|
+|403|50041|invalid ttl value|验证码有效期错误|
