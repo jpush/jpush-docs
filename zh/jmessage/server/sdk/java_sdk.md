@@ -27,7 +27,7 @@
 <dependency>
     <groupId>cn.jpush.api</groupId>
     <artifactId>jmessage-client</artifactId>
-    <version>1.1.1</version>
+    <version>1.1.2</version>
 </dependency>
 <dependency>
     <groupId>cn.jpush.api</groupId>
