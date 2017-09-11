@@ -10,8 +10,12 @@ REPOS_PATH=$DOC_PATH/repos
 
 repo=$1
 repo_path=$REPOS_PATH/$repo
-array=(${repo//-/ })
 
+if [ ! -d $repo_path ]; then
+    git clone https://github.com/jpush/${repo}.git
+fi
+
+array=(${repo//-/ })
 product=${array[0]}
 language=${array[2]}
 
