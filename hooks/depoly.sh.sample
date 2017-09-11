@@ -1,0 +1,35 @@
+#!/bin/bash
+
+echo "========================================================================"
+echo `date`
+
+DOC_PATH=/.../jpush-docs
+VENV_PATH=$DOC_PATH/venv
+REMOTE_REPO_MAME=origin
+DEPOLY_BRANCH=master
+
+if [[ $# -eq 0 || $DEPOLY_BRANCH == $1 ]]; then
+    # Run directly without params
+    # OR within python webhooks script
+    echo "Depoly JPush Docs Branch $DEPOLY_BRANCH"
+
+    cd $DOC_PATH
+
+    git fetch
+    diff=`git diff $DEPOLY_BRANCH $REMOTE_REPO_MAME/$DEPOLY_BRANCH`
+
+    if [ -n "$diff" ]; then
+        echo "Something Changed"
+
+        git checkout $DEPOLY_BRANCH
+        git merge $REMOTE_REPO_MAME/$DEPOLY_BRANCH
+
+        source $VENV_PATH/bin/activate
+        mkdocs build
+        deactivate
+    else
+        echo "Nothing Changed"
+    fi
+fi
+
+echo -e "\n\n"

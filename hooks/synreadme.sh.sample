@@ -1,0 +1,37 @@
+#!/bin/bash
+
+echo "========================================================================"
+echo `date`
+
+DOC_PATH=/.../jpush-docs
+
+VENV_PATH=$DOC_PATH/venv
+REPOS_PATH=$DOC_PATH/repos
+
+repo=$1
+repo_path=$REPOS_PATH/$repo
+array=(${repo//-/ })
+
+product=${array[0]}
+language=${array[2]}
+
+dist=$DOC_PATH/zh/$product/server/sdk/${language}_sdk.md
+if [ "jpush" == "$product" ]; then
+    dist=$DOC_PATH/zh/$product/server/3rd/${language}_sdk.md
+fi
+
+echo "Syn ${repo}'s README to Docs..."
+
+cd $repo_path
+git pull
+
+cp $repo_path/README.md $dist
+
+# rebuild mkdocs
+cd $DOC_PATH
+source $VENV_PATH/bin/activate
+mkdocs build
+echo "Building documentation..."
+deactivate
+
+echo -e "\n\n"
