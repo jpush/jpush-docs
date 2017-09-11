@@ -63,7 +63,7 @@
                     <li>更新内容：<a href="https://github.com/jpush/jpush-api-java-client/releases" target="_blank">Change Log</a></li>
                     <li>GitHub：<a href="https://github.com/jpush/jpush-api-java-client" target="_blank">源码</a></li>
                 </ul>
-                <p><a href="https://sdkfiledl.jiguang.cn/jpush-api-java-client-3.3.0.zip" class="btn btn-default" role="button">下载</a></p>
+                <p><a href="https://sdkfiledl.jiguang.cn/src/jpush-api-java-client-3.3.1.zip" class="btn btn-default" role="button">下载</a></p>
             </div>
         </div>
     </div>
