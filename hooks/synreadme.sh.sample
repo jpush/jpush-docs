@@ -1,6 +1,5 @@
 #!/bin/bash
 
-echo "========================================================================"
 echo `date`
 
 DOC_PATH=/.../jpush-docs
@@ -37,5 +36,3 @@ source $VENV_PATH/bin/activate
 mkdocs build
 echo "Building documentation..."
 deactivate
-
-echo -e "\n\n"

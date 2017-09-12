@@ -1,6 +1,5 @@
 #!/bin/bash
 
-echo "========================================================================"
 echo `date`
 
 DOC_PATH=/.../jpush-docs
@@ -31,5 +30,3 @@ if [[ $# -eq 0 || $DEPOLY_BRANCH == $1 ]]; then
         echo "Nothing Changed"
     fi
 fi
-
-echo -e "\n\n"
