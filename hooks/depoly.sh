@@ -2,17 +2,16 @@
 
 echo `date`
 
-DOC_PATH=/.../jpush-docs
-VENV_PATH=$DOC_PATH/venv
-REMOTE_REPO_MAME=origin
-DEPOLY_BRANCH=master
+DOC_DIR=$(cd `dirname $0`;cd ..; pwd)
+VENV_PATH=$DOC_DIR/venv
 
+source $DOC_DIR/hooks/hooksrc
+
+# Run directly without params OR within python webhooks script
 if [[ $# -eq 0 || $DEPOLY_BRANCH == $1 ]]; then
-    # Run directly without params
-    # OR within python webhooks script
     echo "Depoly JPush Docs Branch $DEPOLY_BRANCH"
 
-    cd $DOC_PATH
+    cd $DOC_DIR
 
     git fetch
     diff=`git diff $DEPOLY_BRANCH $REMOTE_REPO_MAME/$DEPOLY_BRANCH`
@@ -25,8 +24,11 @@ if [[ $# -eq 0 || $DEPOLY_BRANCH == $1 ]]; then
 
         source $VENV_PATH/bin/activate
         mkdocs build
+        echo "Building documentation..."
         deactivate
     else
         echo "Nothing Changed"
     fi
+else
+    echo "DEPOLY_BRANCH #${DEPOLY_BRANCH} and Event Branch #${1} are Not Match"
 fi

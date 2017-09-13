@@ -63,8 +63,11 @@ _book/
 zh/.DS_Store
 en/.DS_Store
 
-hooks/depoly.sh
-hooks/synreadme.sh
-hooks/uwsgi.ini
 venv
 repos
+
+hooks/uwsgi.ini
+hooks/hooksrc
+zh/jpush/server/sdk/
+zh/jmessage/server/sdk/
+zh/jsms/server/sdk/
