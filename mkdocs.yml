@@ -59,12 +59,12 @@ pages:
     - 'JPush 高级话题': 'jpush/advanced/topics.md'
   - 客户端集成插件: 'jpush/client/client_plugins.md'
   - 服务端 SDK:
-    - 'Java SDK': 'jpush/server/3rd/java_sdk.md'
-    - 'Python SDK': 'jpush/server/3rd/python_sdk.md'
-    - 'PHP SDK': 'jpush/server/3rd/php_sdk.md'
-    - 'Ruby SDK': 'jpush/server/3rd/ruby_sdk.md'
-    - 'C# SDK': 'jpush/server/3rd/csharp_sdk.md'
-    - 'Node.js SDK': 'jpush/server/3rd/nodejs_sdk.md'
+    - 'Java SDK': 'jpush/server/sdk/java_sdk.md'
+    - 'Python SDK': 'jpush/server/sdk/python_sdk.md'
+    - 'PHP SDK': 'jpush/server/sdk/php_sdk.md'
+    - 'Ruby SDK': 'jpush/server/sdk/ruby_sdk.md'
+    - 'C# SDK': 'jpush/server/sdk/csharp_sdk.md'
+    - 'Node.js SDK': 'jpush/server/sdk/nodejs_sdk.md'
   - 旧文档:
     - 'REST API v2 - Push': 'jpush/server/old/rest_api_v2_push.md'
     - 'REST API v2 - Report': 'jpush/server/old/rest_api_v2_report.md'
