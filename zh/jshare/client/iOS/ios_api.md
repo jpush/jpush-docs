@@ -35,8 +35,7 @@ config：JSHARELaunchConfig 类。
     config.QQAppKey = @"glFYjkHQGSOCJHMC";
     config.WeChatAppId = @"wxa2ea563906227379";
     config.WeChatAppSecret = @"bb63c0a06bf0ee7f633a5bc44304d110";
-    config.FacebookAppID = @"1847959632183996";
-    config.FacebookDisplayName = @"JShareDemo";
+    
     [JSHAREService setupWithConfig:config];
 ```
 
@@ -95,7 +94,7 @@ url：在 Appdelegate 的 application:handleOpenURL: 中调用。不调用此接
   <tr>
     <td class="tg-yw4l">videoAssetURL</td>
     <td class="tg-yw4l">NSString</td>
-    <td class="tg-yw4l">本地视频AssetURL:分享本地视频到 QQ 空间的必填参数，可传ALAsset的ALAssetPropertyAssetURL，或者PHAsset的localIdentifier。分享到视频类型至 facebook 、facebookMessenger 只能识别 ALAsset 的ALAssetPropertyAssetURL。</td>
+    <td class="tg-yw4l">本地视频AssetURL:分享本地视频到 QQ 空间的必填参数，可传 ALAsset的ALAssetPropertyAssetURL，或者 PHAsset 的 localIdentifier。</td>
   </tr>
   <tr>
     <td class="tg-yw4l">thumbnail</td>
@@ -110,7 +109,7 @@ url：在 Appdelegate 的 application:handleOpenURL: 中调用。不调用此接
   <tr>
     <td class="tg-yw4l">images</td>
     <td class="tg-yw4l">NSArray</td>
-    <td class="tg-yw4l">图片数组：分享到 QQ 空间 或 Facebook/Messenger 支持多张图片，图片数组的元素需要为 NSData 类型，QQ 空间图片数量限制为20张。若只分享单张图片使用 image 字段即可。</td>
+    <td class="tg-yw4l">图片数组：分享到 QQ 空间支持多张图片，图片数组的元素需要为 NSData 类型，图片数量限制为20张。若只分享单张图片至 QQ 空间使用 image 字段即可。</td>
   </tr>
   <tr>
     <td class="tg-yw4l">mediaType</td>
@@ -203,14 +202,6 @@ handler：分享结果的回调。
     
  +(BOOL)isSinaWeiBoInstalled
 
-##检查是否存在 Facebook 客户端
-    
- +(BOOL)isFacebookInstalled
- 
-##检查是否存在 Messenger 客户端
-    
- +(BOOL)isFacebookMessengerInstalled
- 
 ##获取社交平台用户信息
 ###method - getSocialUserInfo
 ####接口定义：
