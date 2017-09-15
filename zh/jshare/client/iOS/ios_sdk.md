@@ -1,7 +1,7 @@
 # iOS JShare 对外集成文档
 ##使用提示
 本文是 JSHARE iOS SDK 的标准集成指南文档。
-匹配的 SDK 版本为：V1.3.0及以后版本。
+匹配的 SDK 版本为：V1.2.0及以后版本。
 
 * 如果你想要快速测试、请参考本文在几分钟内跑通 Demo。
 * 极光文档官网上有相关的所有指南、API、教程等全部的文档。包括本文档的更新版本，都会及时地发布到该网站上。
@@ -13,7 +13,6 @@ JSHARE SDK 可以让你的应用支持多平台分享，无需花耗时间了解
 
 * 将分享内容分享到 QQ、微信、新浪微博三个主要的社交平台。
 * 获取QQ、微信、新浪微博三个主要平台的个人信息，用于第三方登录。
-* 分享内容到 Facebook 和 Messenger，以及获取 Facebook 用户的个人信息用于第三方登录。
 
 ###集成压缩包内容
 
@@ -87,8 +86,6 @@ JSHAREService 类，包含分享 SDK 的所有接口。
     config.QQAppKey = @"glFYjkHQGSOCJHMC";
     config.WeChatAppId = @"wxa2ea563906227379";
     config.WeChatAppSecret = @"bb63c0a06bf0ee7f633a5bc44304d110";
-    config.FacebookAppID = @"1847959632183996";
-    config.FacebookDisplayName = @"JShareDemo";
     [JSHAREService setupWithConfig:config];
     [JSHAREService setDebug:YES];
 
@@ -229,12 +226,6 @@ JSHAREMessage *message = [JSHAREMessage message];
     <string>mqzoneopensdkapi</string>
     <string>mqqbrowser</string>
     <string>mttbrowser</string>
-    
-    <!-- Facebook URL Scheme 白名单-->
-    <string>fbapi</string>
-    <string>fb-messenger-api</string>
-    <string>fbauth2</string>
-    <string>fbshareextension</string>
 </array>
 ```
 
@@ -246,7 +237,7 @@ JSHAREMessage *message = [JSHAREMessage message];
 |微信 | 微信 appKey | wxa2ea563906227379|
 |QQ | 需添加：“tencent” + 腾讯 QQ 互联应用 appID | 如 appID 为:1105864531<br> URL Schemes 值为:tencent1105864531|
 |新浪微博 | “wb”+新浪 appKey | 如 appKey 为:727232518<br>URL Schemes 值为: wb727232518 |
-|Facebook | “fb”+FacebookAppID | 如 appID 为:1847959632183996<br>URL Schemes 值为: fb1847959632183996 |
+
 #### URL Types 设置<br>
 Xcode 工程目录中的 [TARGETS] -> [Info] 中设置：
 ![](../image/urlType.png)
