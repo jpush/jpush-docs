@@ -108,7 +108,7 @@
 
                 ndk {
                     //选择要添加的对应cpu类型的.so库。
-                    abiFilters 'armeabi', 'armeabi-v7a', 'armeabi-v8a'
+                    abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a'
                     // 还可以添加 'x86', 'x86_64', 'mips', 'mips64'
                 }
 
