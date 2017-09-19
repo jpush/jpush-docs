@@ -55,6 +55,66 @@ JSON Array.
 + ios_msg_received  iOS 自定义消息送达数。如果无此项数据则为null。
 + wp_mpns_sent       winphone通知送达。如果无此项数据则为 null。
 
+## 送达状态查询
+
+Status API 用于查询已推送的一条消息在一组设备上的送达状态。
+
+### 调用地址
+
+POST /v3/status/message
+
+### 请求示例
+
+```
+curl --insecure -X POST -v https://report.jpush.cn/v3/status/message -H "Content-Type: application/json" -u "29ea851419f747be7b5785a0:79f486970ec5c41bfe381bc3" -d '{ "msg_id": 327640176, "registration_ids":["1506bfd3a7c568d4761", "02078f0f1b8", "0207870a9b8"]}'
+
+> POST /v3/status/message HTTP/1.1
+> Host: report.jpush.cn
+> Authorization: Basic MjllYTg1MTQxOWY3NDdiZTdiNTc4NWEwOjc5ZjQ4Njk3MGVjNMM0MWJmZTM4MWJjMw==
+```
+
+**Request Params**
+
+JSON Object
+
++ msg_id 必传。消息 id，一次调用仅支持一个消息 id 查询。
++ registration_ids 必传。JSON Array 类型，多个registration id 用逗号隔开，一次调用最多支持1000个。
++ data 可选。查询的指定日期，格式为yyyy-mm-dd，默认为当天。
+
+### 返回示例
+
+**Response Header** 
+
+```
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+```
+
+**Response Data**
+
+```
+{
+    "02078f0f1b8": {
+        "status": 2
+    },
+    "1507bfd3a7c568d4761": {
+        "status": 0
+    },
+    "0207870a9b8": {
+        "status": 2
+    }
+}
+```
+
+**status 含义：**
+
++ 0: 送达；
++ 1: 未送达；
++ 2: registration_id 不属于该应用；
++ 3: registration_id 属于该应用，但不是该条 message 的推送目标；
++ 4: 系统异常。
+
+
 ## 消息统计（VIP专属接口）
 
 与“送达统计” API 不同的是，该 API 提供更多的针对一个 msgid 的统计数据。
