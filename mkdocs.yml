@@ -136,6 +136,7 @@ pages:
     - 'iOS SDK 概述': 'jsms/client/iOS_SMS_SDK.md'
   - REST API:
     - 'REST API 概述': 'jsms/server/rest_api_summary.md'
+    - '短信模版 API': 'jsms/server/rest_api_jsms_templates.md'
     - '短信发送 API': 'jsms/server/rest_api_jsms.md'
     - '短信定时发送 API': 'jsms/server/rest_api_jsms_schedule.md'
     - '短信余量查询 API': 'jsms/server/rest_jsms_api_account.md'
