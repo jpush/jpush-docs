@@ -305,7 +305,7 @@ Content-Type: application/json; charset=utf-8
 
 ```
 
-### 用户在线状态查询
+### 用户在线状态查询 
 
 ```
 Get /v1/users/{username}/userstat
@@ -339,6 +339,7 @@ Response Data
 ```
 {"login":true, "online": false}
 ```
+该接口不适用于多端在线，多端在线请用批量状态接口
 
 #### Error Code
 
