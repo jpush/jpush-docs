@@ -58,6 +58,22 @@ cp_readme() {
 
     cp $repo_dir/README.md $readme
 
+    # add github link
+    case $product in
+        'jpush' )
+        pattern='JPush'
+        ;;
+        'jmessage' )
+        pattern='JMessage'
+        ;;
+        'jsms' )
+        pattern='JSMS'
+        ;;
+    esac
+
+    markup="[Github 源码](https://github.com/jpush/${repo})"
+    sed -i "/# ${pattern}/ a ${markup}" $readme
+
     return 0
 }
 
