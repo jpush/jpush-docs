@@ -1277,6 +1277,21 @@ alias相关的操作会在此方法中回调结果。
 #### 参数说明
 + context 当前应用的 Activity 的上下文
 
+## 设置是否开启省电模式
+###支持的版本
+开始支持的版本：3.0.9
+
+### 功能说明
+JPush SDK开启和关闭省电模式，默认为关闭。
+
+### API - setPowerSaveMode
+
+#### 接口定义
+	public static void setPowerSaveMode(Context context,boolean enable);
+#### 参数说明
++ context 当前应用的 Activity 的上下文
++ enable 是否需要开启或关闭，true为开启，false为关闭
+
 
 ## 通知栏样式定制 API
 ### 支持的版本
