@@ -1590,7 +1590,7 @@ API 用于统计用户应用崩溃日志
 
 
 
-[0]: https://developer.apple.com/library/ios/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/IPhoneOSClientImp.html#//apple_ref/doc/uid/TP40008194-CH103-SW4
+[0]: https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/index.html#//apple_ref/doc/uid/TP40008194-CH3-SW1
 [1]: https://github.com/ylechelle/OpenUDID
 
 
