@@ -1031,8 +1031,8 @@ alias相关的操作会在此方法中回调结果。
 
 ###  相关文档
 
-+ [Android SDK 标签与别名 API] (../../client/Android/android_api/#api_3)
-+ [iOS SDK 标签与别名 API] (../../client/iOS/ios_api/#api-ios)
++ [Android SDK 标签与别名 API](../../client/Android/android_api/#api_3)
++ [iOS SDK 标签与别名 API](../../client/iOS/ios_api/#api-ios)
 
 ## 获取 RegistrationID API
 ### 支持的版本
