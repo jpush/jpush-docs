@@ -49,7 +49,7 @@ JPush SDK 迁移到 Android Studio 需要添加.SO文件打包到APK的lib文件
 
 		-dontwarn cn.jpush.**
 		-keep class cn.jpush.** { *; }
-		
+
 + 请使用 SDK1.3.X 及以后的版本
 
 + v2.0.5 及以上的版本由于引入了protobuf ，在上面基础之上增加排出混淆的配置。
@@ -138,16 +138,16 @@ try {
 
 ## Tag、Alias、Registrationid需要每次初始化时都重新设置吗，会变化吗？
 
-+ tag、alias可以参考[别名与标签 API](../android_api/#api_1)进行设置，每次设置是覆盖设置，而不是增量设置。Tag和alias一经设置成功，除非取消或覆盖，是不会变化的。设置好的tag、alias与客户端的对应关系保存在JPush服务器，目前没有从JPush服务器查询这个对应关系的接口，所以需要客户将对应关系保存在APP应用服务器。
++ tag、alias可以参考[别名与标签 API](./android_api/#api_1)进行设置，每次设置是覆盖设置，而不是增量设置。Tag和alias一经设置成功，除非取消或覆盖，是不会变化的。设置好的tag、alias与客户端的对应关系保存在JPush服务器，目前没有从JPush服务器查询这个对应关系的接口，所以需要客户将对应关系保存在APP应用服务器。
 
-+ Registrationid是客户端SDK第一次成功连接到Jpush服务器时，Jpush服务器给分配的。可以通过[获取 RegistrationID](../android_api/#registrationid-api) API来获取Registrationid进行推送。Registrationid对应一个应用的一个客户端。
++ Registrationid是客户端SDK第一次成功连接到Jpush服务器时，Jpush服务器给分配的。可以通过[获取 RegistrationID](./android_api/#registrationid-api) API来获取Registrationid进行推送。Registrationid对应一个应用的一个客户端。
 
 <br />
 
 ## 没有沙箱API怎么测试？
 
  直接用 JPush 的 API 测试就行。
- 
+
 <br />
 
 ## 其他国家能否使用极光推送（局域网能否使用极光推送）？
@@ -186,7 +186,7 @@ android 的包名和 appkey 需对应。
 
 ## 内网使用极光推送应该怎么设置？
 
-内网使用极光推送需要服务器开放下列端口限制，用于JPush的登录注册及保持推送长链接：   
+内网使用极光推送需要服务器开放下列端口限制，用于JPush的登录注册及保持推送长链接：
 
 + 19000
 + 3000-3020
