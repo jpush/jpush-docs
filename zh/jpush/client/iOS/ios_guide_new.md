@@ -179,7 +179,7 @@ didFinishLaunchingWithOptions:(NSDictionary \*)launchOptions
 ```
 #####部分参数说明：
 * appKey
-    * 填写[管理Portal上创建应用](https://www.jiguang.cn/app/form)后自动生成的AppKey值。请确保应用内配置的 AppKey 与 Portal 上创建应用后生成的 AppKey 一致。
+    * 选择 [Web Portal上 的应用](https://www.jiguang.cn/dev/#/app/list) ，点击“设置” 获取其 appkey 值。请确保应用内配置的 appkey 与 Portal 上创建应用后生成的 appkey 一致。
 * channel
     * 指明应用程序包的下载渠道，为方便分渠道统计，具体值由你自行定义，如：App Store。
 * apsForProduction
