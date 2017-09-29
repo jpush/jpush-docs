@@ -452,5 +452,5 @@ HTTP/1.1 200 OK
 </div>
 
 ### 参考
-参考文档：[Http-Status-Code](../server/http_status_code)
+参考文档：[Http-Status-Code](../pus/http_status_code)
 
