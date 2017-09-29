@@ -764,7 +764,7 @@ iOS 1.7.3及以上的版本才能正确解析v3的message，但是无法解析v2
 			<td>int</td>
 			<td>可选</td>
 			<td>推送序号</td>
-			<td>纯粹用来作为 API 调用标识，API 返回时被原样返回，以方便 API 调用方匹配请求与返回。</td>
+			<td>纯粹用来作为 API 调用标识，API 返回时被原样返回，以方便 API 调用方匹配请求与返回。值为 0 表示该 messageid 无 sendno，所以字段取值范围为非 0 的 int.</td>
 		</tr>
 		<tr >
 			<td>time_to_live</td>
