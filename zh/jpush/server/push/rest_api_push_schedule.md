@@ -71,7 +71,9 @@ Authorization: Basic base64_auth_string
 每一个schedule任务，都由name、enabled、trigger、push这四个小节组成。
 
 + cid
-	+ 和 push api 中 cid 用法一致，详见 [cid 说明](rest_api_v3_push/#cid) 。注：schedule payload 中的 push 字段中含有 cid 字段将会被忽略。	
+	+ 和 push api 中 cid 用法一致，详见 [cid 说明](rest_api_v3_push/#cid) 。注：schedule api payload 中的 push 字段中含有 cid 字段将会被忽略。	
++ push
+	+ 参考 [ push api ](rest_api_v3_push) 中各个字段。
 + name
 	+ 表示schedule任务的名字，由schedule-api在用户成功创建schedule任务后返回，不得超过255字节，由汉字、字母、数字、下划线组成。
 + enabled
