@@ -8,8 +8,8 @@ img[alt=jpush_ios] { width: 800px; }
 
 ### 适用版本
 
-本文匹配的 SDK版本：r2.1.5 以后。  
-[查看最近更新](../../updates)了解最新的SDK更新情况。  
+本文匹配的 SDK版本：r2.1.5 以后。
+[查看最近更新](../../updates)了解最新的SDK更新情况。
 使用Xcode 6及以上版本可以使用新版Push SDK，Xcode 5环境下需要运行旧版本SDK(1.7.4)
 
 
@@ -22,11 +22,11 @@ img[alt=jpush_ios] { width: 800px; }
 * demo文件夹：示例
 
 ## 创建应用
-* 在 JPush的管理Portal 上创建应用并上传APNs证书。如果对APNs证书不太了解 请参考： [iOS 证书设置指南](ios_cer_guide) 
+* 在 JPush的管理Portal 上创建应用并上传APNs证书。如果对APNs证书不太了解 请参考： [iOS 证书设置指南](ios_cer_guide)
 
 ![jpush_ios][0]
 
-* 创建成功后自动生成 AppKey 用以标识该应用。 
+* 创建成功后自动生成 AppKey 用以标识该应用。
 
 ![jpush_ios][1]
 
@@ -48,7 +48,7 @@ pod 'JPush', '3.0.2'
 **选择2：手动导入**
 
 * 在极光官网下载[最新SDK](http://docs.jiguang.cn/jpush/resources/)
-* 将SDK包解压，在Xcode中选择“Add files to 'Your project name'...”，将解压后的lib子文件夹（包含JPUSHService.h、jpush-ios-x.x.x.a、jcore-ios-x.x.x.a）添加到你的工程目录中。  
+* 将SDK包解压，在Xcode中选择“Add files to 'Your project name'...”，将解压后的lib子文件夹（包含JPUSHService.h、jpush-ios-x.x.x.a、jcore-ios-x.x.x.a）添加到你的工程目录中。
 * 添加Framework
 	* CFNetwork.framework
 	* CoreFoundation.framework
@@ -77,11 +77,11 @@ pod 'JPush', '3.0.2'
 * 设置 Search Paths 下的 User Header Search Paths 和 Library Search Paths，比如SDK文件夹（默认为lib）与工程文件在同一级目录下，则都设置为"$(SRCROOT)/{静态库所在文件夹名称}"即可。
 
 ### Capabilities
-如使用Xcode8及以上环境开发，请开启Application Target的Capabilities->Push Notifications选项，如图：  
+如使用Xcode8及以上环境开发，请开启Application Target的Capabilities->Push Notifications选项，如图：
 ![jpush_ios][7]
 
 ### 允许Xcode7支持Http传输方法
-如果您使用的是2.1.9及以上的版本则不需要配置此步骤  
+如果您使用的是2.1.9及以上的版本则不需要配置此步骤
 如果用的是Xcode7或更新版本，需要在App项目的plist手动配置下key和值以支持http传输:
 
 **选择1：根据域名配置**
@@ -100,11 +100,11 @@ pod 'JPush', '3.0.2'
 **选择2：全局配置**
 
 ```
-  <key>NSAppTransportSecurity</key> 
-  <dict> 
-  	<key>NSAllowsArbitraryLoads</key> 
-  	<true/> 
-  </dict>            
+  <key>NSAppTransportSecurity</key>
+  <dict>
+  	<key>NSAllowsArbitraryLoads</key>
+  	<true/>
+  </dict>
 ```
 
 ## 添加头文件
@@ -122,7 +122,7 @@ pod 'JPush', '3.0.2'
 ```
 
 ## 添加Delegate
-为AppDelegate添加Delegate。  
+为AppDelegate添加Delegate。
 
 参考代码：
 
@@ -139,11 +139,11 @@ pod 'JPush', '3.0.2'
 
 ### 添加初始化APNs代码
 
-请将以下代码添加到  
+请将以下代码添加到
 -(BOOL)application:(UIApplication \*)application
 didFinishLaunchingWithOptions:(NSDictionary \*)launchOptions
 
-```   	
+```
   //Required
   //notice: 3.0.0及以后版本注册可以这样写，也可以继续用之前的注册方式
   JPUSHRegisterEntity * entity = [[JPUSHRegisterEntity alloc] init];
@@ -154,11 +154,11 @@ didFinishLaunchingWithOptions:(NSDictionary \*)launchOptions
     // NSSet<UIUserNotificationCategory *> *categories for iOS8 and iOS9
   }
   [JPUSHService registerForRemoteNotificationConfig:entity delegate:self];
-  
+
 ```
 ### 添加初始化JPush代码
 
-请将以下代码添加到  
+请将以下代码添加到
 -(BOOL)application:(UIApplication \*)application
 didFinishLaunchingWithOptions:(NSDictionary \*)launchOptions
 
@@ -175,7 +175,7 @@ didFinishLaunchingWithOptions:(NSDictionary \*)launchOptions
   [JPUSHService setupWithOption:launchOptions appKey:appKey
                         channel:channel
                apsForProduction:isProduction
-          advertisingIdentifier:advertisingId];  
+          advertisingIdentifier:advertisingId];
 ```
 #####部分参数说明：
 * appKey
@@ -187,17 +187,17 @@ didFinishLaunchingWithOptions:(NSDictionary \*)launchOptions
     * 0 (默认值)表示采用的是开发证书，1 表示采用生产证书发布应用。
     * 注：此字段的值要与Build Settings的Code Signing配置的证书环境一致。
 * advertisingIdentifier
-    * 详见[关于IDFA](#_8)。 
+    * 详见[关于IDFA](#_8)。
 
-    
+
 ### 注册APNs成功并上报DeviceToken
 
 请在AppDelegate.m实现该回调方法并添加回调方法中的代码
 
 ```
-- (void)application:(UIApplication *)application 
+- (void)application:(UIApplication *)application
 didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
-     
+
   /// Required - 注册 DeviceToken
   [JPUSHService registerDeviceToken:deviceToken];
 }
@@ -243,14 +243,14 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
- 
+
   // Required, iOS 7 Support
   [JPUSHService handleRemoteNotification:userInfo];
   completionHandler(UIBackgroundFetchResultNewData);
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-   
+
   // Required,For systems with less than or equal to iOS6
   [JPUSHService handleRemoteNotification:userInfo];
 }
@@ -269,10 +269,10 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 真机调试该项目，如果控制台输出以下日志则代表您已经集成成功。
 
 ```
-2016-08-19 17:12:12.745823 219b28[1443:286814]  | JPUSH | I - [JPUSHLogin] 
------ login result -----  
-uid:5460310207   
-registrationID:171976fa8a8620a14a4  
+2016-08-19 17:12:12.745823 219b28[1443:286814]  | JPUSH | I - [JPUSHLogin]
+----- login result -----
+uid:5460310207
+registrationID:171976fa8a8620a14a4
 ```
 
 如果调试运行中遇到问题请参考：[iOS SDK 调试指南](ios_debug_guide)
@@ -288,14 +288,14 @@ r2.1.5版本增加一个上传IDFA字符串的接口
                      channel:(NSString *)channel
             apsForProduction:(BOOL)isProduction
        advertisingIdentifier:(NSString *)advertisingId;
-	
-如果不使用IDFA，仍可使用接口	
-	
+
+如果不使用IDFA，仍可使用接口
+
 	+ (void)setupWithOption:(NSDictionary *)launchingOption
                       appKey:(NSString *)appKey
                      channel:(NSString *)channel
             apsForProduction:(BOOL)isProduction;
-            
+
 ### JPush SDK 相关事件监听
 
 建议开发者加上API里面提供的以下类型的通知：
@@ -327,12 +327,12 @@ extern NSString * const kJPFNetworkDidReceiveMessageNotification; // 收到自�
 
 ## 技术支持
 
-邮件联系：[support@jpush.cn][4]
+邮件联系：[support&#64;jpush.cn][4]
 
 [0]: ../image/create_ios_app.jpg
 [1]: ../image/Screenshot_13-4_2_create.jpg
 [2]: ../image/Screenshot_13-4-15_3_31.png
 [3]: ios_api
-[4]: mailto:support@jpush.cn
+[4]: mailto:support&#64;jpush.cn
 [6]: ../image/ios_http.png
 [7]: ../image/capabilities_intro.jpg

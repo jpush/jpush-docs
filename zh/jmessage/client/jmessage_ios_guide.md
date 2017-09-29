@@ -3,7 +3,7 @@
 ## 集成说明
 
 ### 适用SDK版本
-本文档适配 JMessage iOS SDK V3.0.0 及以后版本。     
+本文档适配 JMessage iOS SDK V3.0.0 及以后版本。
 已集成之前版本的用户升级或已集成 JPush 的用户想同时集成IM，请参见下文的[注意事项](#注意事项)。
 
 ### 系统要求与开发环境
@@ -33,7 +33,7 @@
 如果需要安装指定版本则使用：
 
 	pod 'JMessage', :head
-	
+
 使用用Cocoapods导入SDK则可以跳过步骤3.
 
 #### 手动导入
@@ -64,7 +64,7 @@
     -ObjC
 ```
 
-### 5、初始化极光 IM SDK 
+### 5、初始化极光 IM SDK
 
 在工程的 AppDelegate 中的以下方法中，调用 SDK 对应方法 ：
 
@@ -166,5 +166,5 @@ JMessage iOS SDK V3.0.0 及以后版本不再包含 JPush 的功能，需要使�
 [1]: ./image/Screenshot_13-4_2_create.png
 [2]: ./image/Screenshot_13-4-15_3_31.png
 [3]: ../../client_sdks/ios_api
-[4]: mailto:support@jpush.cn
+[4]: mailto:support&#64;jpush.cn
 

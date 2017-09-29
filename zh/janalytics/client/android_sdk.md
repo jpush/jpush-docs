@@ -41,7 +41,7 @@ JAnalytics Android SDK采用了数据记录与数据上报分离的策略，数�
 当出现问题时：
 
 + 请仔细阅读文档，查看是否有遗漏。
-+ 给我们的support发邮件：<support@jpush.cn>
++ 给我们的support发邮件：[support&#64;jpush.cn](mailto:support&#64;jpush.cn)
 
 为了更快速的解决问题，在寻求帮助时，请提供下列信息：
 

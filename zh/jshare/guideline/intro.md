@@ -44,7 +44,7 @@ IOS 开发者请参考文档：[JShare iOS SDK 集成指南](../client/iOS/ios_s
 当出现问题时：
 
 + 请仔细阅读文档，查看是否有遗漏。 [Android FAQ](../client/Android/android_sdk_faq/)  [iOS FAQ](../client/iOS/ios_sdk_faq/)
-+ 给我们的support发邮件：<support@jpush.cn>
++ 给我们的support发邮件：[support&#64;jpush.cn](mailto:support&#64;jpush.cn)
 
 
 为了更快速的解决问题，在寻求帮助时，请提供下列信息：

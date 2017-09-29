@@ -526,4 +526,4 @@ JPush SDK 提供的 API 接口，都主要集中在 cn.jpush.android.api.JPushIn
 
 ## 技术支持
 
-邮件联系：<support@jpush.cn>
+邮件联系：[support&#64;jpush.cn](mailto:support&#64;jpush.cn)
