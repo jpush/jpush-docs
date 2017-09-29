@@ -17,7 +17,6 @@ page_filters = [
     'javadoc.md',
     'iOSdoc.md',
     'server/sdk',
-    'server/old'
 ]
 
 link_filters = [
