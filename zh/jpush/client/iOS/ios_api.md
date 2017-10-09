@@ -1323,11 +1323,15 @@ r1.7.0 版本开始。
 ### 支持版本
 v1.8.0版本开始
 
+<div style="font-size:13px;background: #ffa07a;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 10;margin-bottom: 0;">
+在 iOS11 上，原有的 NSLocationAlwaysUsageDeion 被降级为 NSLocationWhenInUseUsageDeion。因此，需要在 plist 文件中配置 NSLocationAlwaysAndWhenInUseUsageDeion，在获取定位的时候，系统才会弹出提示窗口。建议新旧 key 值都在plist里配置上。
+</div>
+
 ### Method  SetLatitude: longitude
 
 #### 功能说明
 
-API 用于统计用户地理信息
+API 用于统计用户地理信息。
 
 #### 接口定义
 
