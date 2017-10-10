@@ -1,11 +1,12 @@
 # iOS SDK API
 
 ##SDK 接口说明：
-JSHAREService 类，包含分享 SDK 的所有接口。<br>
-JSHARELaunchConfig 类，分享 SDK 启动配置模型。<br>
-JSHAREMessage 类，分享参数模型。<br>
-JSHARESocial 类，社交平台授权信息模型。<br>
-JSHARESocialUserInfo 类，社交平台用户信息模型，继承于 JSHARESocial。<br>
+JSHAREService 类，包含分享 SDK 的所有接口。  
+JSHARELaunchConfig 类，分享 SDK 启动配置模型。  
+JSHAREMessage 类，分享参数模型。  
+JSHARESocial 类，社交平台授权信息模型。  
+JSHARESocialUserInfo 类，社交平台用户信息模型，继承于 JSHARESocial。    
+
 ##SDK 初始化：
 
 ### Method - setupWithConfig
@@ -35,7 +36,8 @@ config：JSHARELaunchConfig 类。
     config.QQAppKey = @"glFYjkHQGSOCJHMC";
     config.WeChatAppId = @"wxa2ea563906227379";
     config.WeChatAppSecret = @"bb63c0a06bf0ee7f633a5bc44304d110";
-    
+    config.FacebookAppID = @"1847959632183996";
+    config.FacebookDisplayName = @"JShareDemo";
     [JSHAREService setupWithConfig:config];
 ```
 
@@ -94,7 +96,7 @@ url：在 Appdelegate 的 application:handleOpenURL: 中调用。不调用此接
   <tr>
     <td class="tg-yw4l">videoAssetURL</td>
     <td class="tg-yw4l">NSString</td>
-    <td class="tg-yw4l">本地视频AssetURL:分享本地视频到 QQ 空间的必填参数，可传 ALAsset的ALAssetPropertyAssetURL，或者 PHAsset 的 localIdentifier。</td>
+    <td class="tg-yw4l">本地视频AssetURL:分享本地视频到 QQ 空间的必填参数，可传ALAsset的ALAssetPropertyAssetURL，或者PHAsset的localIdentifier。分享到视频类型至 facebook 、facebookMessenger 只能识别 ALAsset 的ALAssetPropertyAssetURL。</td>
   </tr>
   <tr>
     <td class="tg-yw4l">thumbnail</td>
@@ -109,7 +111,7 @@ url：在 Appdelegate 的 application:handleOpenURL: 中调用。不调用此接
   <tr>
     <td class="tg-yw4l">images</td>
     <td class="tg-yw4l">NSArray</td>
-    <td class="tg-yw4l">图片数组：分享到 QQ 空间支持多张图片，图片数组的元素需要为 NSData 类型，图片数量限制为20张。若只分享单张图片至 QQ 空间使用 image 字段即可。</td>
+    <td class="tg-yw4l">图片数组：分享到 QQ 空间 或 Facebook/Messenger 支持多张图片，图片数组的元素需要为 NSData 类型。<br>1.QQ 空间图片数量限制为20张。若只分享单张图片使用 image 字段即可。<br> 2.Facebook/Messenger 图片数量限制为6张。如果分享单张图片，图片大小建议不要超过12M；如果分享多张图片，图片大小建议不要超过700K，否则可能出现重启手机或者不能分享。</td>
   </tr>
   <tr>
     <td class="tg-yw4l">mediaType</td>
@@ -190,28 +192,36 @@ handler：分享结果的回调。
 
  +(BOOL)sinaWeiboWebLogOut
  
-##检查是否存在微信客户端
+## 检查是否存在微信客户端
     
  +(BOOL)isWeChatInstalled
     
-##检查是否存在 QQ 客户端
+## 检查是否存在 QQ 客户端
     
  +(BOOL)isQQInstalled
 
-##检查是否存在新浪微博客户端
+## 检查是否存在新浪微博客户端
     
  +(BOOL)isSinaWeiBoInstalled
 
-##获取社交平台用户信息
+## 检查是否存在 Facebook 客户端
+    
+ +(BOOL)isFacebookInstalled
+ 
+## 检查是否存在 Messenger 客户端
+    
+ +(BOOL)isFacebookMessengerInstalled
+ 
+## 获取社交平台用户信息
 ###method - getSocialUserInfo
-####接口定义：
+#### 接口定义：
 +(void)getSocialUserInfo:(JSHAREPlatform)platform
                   handler:(JSHARESocialHandler)handler
                   
-####接口说明：
-通过调用获取用户信息接口，获取用户在第三方平台的用户ID、头像等资料完成账号体系的构建。
+#### 接口说明：
+通过调用获取用户信息接口，获取用户在第三方平台的用户 ID、头像等资料完成账号体系的构建。
 
-####参数说明：
+#### 参数说明：
 
 * platform : JSHAREPlatform 枚举类型
 * handler : JSHARESocialHandler 获取用户信息的回调
@@ -238,48 +248,48 @@ handler：分享结果的回调。
     }];
 ```
 
-###method - isPlatformAuth
-####接口定义：
+### method - isPlatformAuth
+#### 接口定义：
 +(BOOL)isPlatformAuth:(JSHAREPlatform)platform
-####接口说明：
+#### 接口说明：
 检查用户授权之后信息是否过期。注意：仅仅检验本地 token 是否在有效期内，假如对应的社交平台用户在社交平台手动取消了授权，即使本地 token 还在有效期内，但是还是失效的。
 
-####参数说明：
+#### 参数说明：
 * platform: 社交平台枚举 
 
-####调用实例：
+#### 调用实例：
 ```
 BOOL isOauth = [JSHAREService isPlatformAuth:JSHAREPlatformQQ];
 ```
-###method - cancelAuthWithPlatform
-####接口定义：
+### method - cancelAuthWithPlatform
+#### 接口定义：
 +(BOOL)cancelAuthWithPlatform:(JSHAREPlatform)platfrom
 
-####接口说明：
+#### 接口说明：
 删除用户授权之后的储存在本地的授权信息。
 
-####参数说明：
+#### 参数说明：
 * platform: 社交平台枚举 
 
-####调用实例：
+#### 调用实例：
 ```
-BOOL cancelOauth =     [JSHAREService cancelAuthWithPlatform:JSHAREPlatformQQ];
+BOOL cancelOauth = [JSHAREService cancelAuthWithPlatform:JSHAREPlatformQQ];
 ;
 ```
 
 
-##日志等级设置
-###Method - setDebug
-####接口说明：
+## 日志等级设置
+### Method - setDebug
+#### 接口说明：
 设置是否打印 sdk 产生的 Debug 级 log 信息, 默认为 NO (不打印 Debug 级 log)
-####接口定义：
+#### 接口定义：
 ```    
 +(void)setDebug:(BOOL)enable
 ```
-####参数说明：
+#### 参数说明：
 enable：设置为 YES 开启，设置为 NO 关闭
 
-####调用示例： 
+#### 调用示例： 
         
 ```
 [JSHAREService setDebug:YES];
