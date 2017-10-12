@@ -10,7 +10,7 @@
 如需要开通此功能，请联系：[商务客服](https://www.jiguang.cn/accounts/business/form)；如果开发者没有实时性需求，建议使用免费的IM REST Report拉取历史消息。
 
 
-## 目前服务只支持https回调
+## 目前服务支持https和http回调
 
 关于开发者鉴权的问题，为了防止开发者服务被随意调用，开发者服务验证采用 HTTP Basic 机制，即 HTTP Header（头）里加一个字段（Key/Value对）：
 
