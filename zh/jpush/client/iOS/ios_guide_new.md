@@ -324,6 +324,19 @@ extern NSString * const kJPFNetworkDidReceiveMessageNotification; // 收到自�
 
 请参考文档：[iOS SDK API](ios_api)
 
+### Notification Service Extension
+
+从 iOS JPush SDK 3.0.7 版本，开发者可使用 Notification Service Extension SDK 上报每条 APNs 信息的送达状态。
+
+**使用方法：**
+
++ 将 jpush-extension-ios-xxx.a 和 JPushNotificationExtensionService.h 两个文件引入到您的 Service Extentsion 工程中。
++ 调用 [jpushSetAppkey:] 方法设置您的 appkey，请注意这里的 appkey 应该和您极光应用的 appkey 相同。
++ 调用 [jpushReceiveNotificationRequest:] 方法上报您的 apns 消息，完成送达统计；在该方法的block回调中进行apns 的显示。
+
+更具体的使用示例请参考版本压缩包中附带的 Demo 代码。
+
+参考文档：[iOS SDK API](ios_api)
 
 ## 技术支持
 
