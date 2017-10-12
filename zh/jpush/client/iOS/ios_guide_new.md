@@ -324,7 +324,16 @@ extern NSString * const kJPFNetworkDidReceiveMessageNotification; // 收到自�
 
 请参考文档：[iOS SDK API](ios_api)
 
-### Notification Service Extension
+### 通知送达统计
+
+<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">
+<p>温馨提示：
+  <br>
+<p>
+iOS 10 新增的 Notification Service Extension 功能，用 mutable-content 字段来控制。 
+	<br>
+若使用 Web 控制台，需勾选 “可选设置”中 mutable-content  选项；若使用 RESTFul API 需设置 mutable-content 字段为 true。
+</div>
 
 从 iOS JPush SDK 3.0.7 版本，开发者可使用 Notification Service Extension SDK 上报每条 APNs 信息的送达状态。
 
