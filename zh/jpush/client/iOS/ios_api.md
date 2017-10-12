@@ -1461,6 +1461,43 @@ API 用于统计用户应用崩溃日志
 [JPUSHService crashLogON];
 ```
 
+## Notification Service Extension相关接口
+
+### 支持的版本
+
+Notification Service Extension SDK v1.0.0 (随 JPush iOS SDK 3.0.7 版本发布) 及以后的版本
+
+### 功能说明
+
+使用Notification Service Extension SDK 上报推送送达情况
+
+### API jpushSetAppkey
+
+设置appkey接口，必须提前调用
+
+#### 接口定义
+
+```
++ (void)jpushSetAppkey:(NSString *)appkey
+```
+#### 参数说明
+
+* appkey  需要和main app中的JPush SDK的appkey保持一致
+
+### API jpushReceiveNotificationRequest:with:
+
+消息送达统计接口，调用该接口上报APNs消息体中的JPush相关数据
+
+#### 接口定义
+
+```
++ (void)jpushReceiveNotificationRequest:(UNNotificationRequest *)request with:(void (^)(void))completion
+```
+#### 参数说明
+
+* request  UNNotificationRequest
+* completion 消息送达上报回调，请在该回调中执行显示APNs等操作
+
 ## 客户端错误码定义
 <A NAME="client_error_code"></a>
 
@@ -1585,12 +1622,7 @@ API 用于统计用户应用崩溃日志
 </div>
 
 
-
-
 更多地说明请参考Apple的官方文档
-
-
-
 
 
 
