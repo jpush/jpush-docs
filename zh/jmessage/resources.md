@@ -3,7 +3,7 @@
 ## 客户端 SDK 下载
 
 <div class="row client downloads">
-    <div class="col-md-4">
+    <div class="col-md-6">
         <div class="thumbnail">
             <img src="../image/resource_android.png" alt="android">
             <div class="caption">
@@ -13,13 +13,12 @@
                 <ul>
                     <li><a href="../client/jmessage_android_guide">集成步骤</a></li>
                     <li><a href="../client/im_sdk_android/">开发指南</a></li>
-                    <li><a href="https://github.com/jpush/jchat-android/" target="_blank">JChat 源码</a></li>
                 </ul>
                 <p><a href="https://www.jiguang.cn/downloads/sdk/im_android/" class="btn btn-default" role="button">下载</a></p>
             </div>
         </div>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-6">
         <div class="thumbnail">
             <img src="../image/resource_ios.png" alt="iOS">
             <div class="caption">
@@ -29,13 +28,14 @@
                 <ul>
                     <li><a href="../client/jmessage_ios_guide/">集成步骤</a></li>
                     <li><a href="../client/im_sdk_ios/">开发指南</a></li>
-                    <li><a href="https://github.com/jpush/jchat-swift" target="_blank">JChat 源码</a></li>
                 </ul>
                 <p><a href="https://www.jiguang.cn/downloads/sdk/im_ios/" class="btn btn-default" role="button">下载</a></p>
             </div>
         </div>
     </div>
-    <div class="col-md-4">
+</div>
+<div class="row client downloads">
+    <div class="col-md-6">
         <div class="thumbnail">
             <img src="../image/resource_js.png" alt="Web">
             <div class="caption">
@@ -45,9 +45,23 @@
                 <ul>
                     <li><a href="../client/im_sdk_js_v2/">开发指南</a></li>
                     <li class="li-clear"></li>
-                    <li class="li-clear"></li>
                 </ul>
                 <p><a href="https://www.jiguang.cn/downloads/sdk/im_js/" class="btn btn-default" role="button">下载</a></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="thumbnail">
+            <img src="../image/windows.png" alt="Windows">
+            <div class="caption">
+                <h4>Windows SDK</h4>
+                <p>版本：v1.0.0</p>
+                <p>更新时间：2017.10.12</p>
+                <ul>
+                    <li><a href="../client/im_sdk_win/">开发指南</a></li>
+                    <li class="li-clear"></li>
+                </ul>
+                <p><a href="https://www.jiguang.cn/downloads/sdk/im_win" class="btn btn-default" role="button">下载</a></p>
             </div>
         </div>
     </div>
