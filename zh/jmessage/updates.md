@@ -1,6 +1,31 @@
 # 最近更新
 
 
+
+### Windows SDK v1.0.0
+
+#### 更新时间
+
++ 2017-10-13
+
+#### Change Log
++ JMessage Windows C++ SDK 首次发布， 涵盖当前 Web SDK v2.3.1 的全部功能，基于最新 C++17 语言标准(需要VS2017)， 使用了大量方便开发的新特性，基于[cpprestsdk](https://github.com/Microsoft/cpprestsdk/wiki/Programming-with-Tasks)的task/then异步接口[(更多关于task)](https://docs.microsoft.com/zh-cn/cpp/parallel/concrt/reference/task-class?f1url=https%3A%2F%2Fmsdn.microsoft.com%2Fquery%2Fdev15.query%3FappId%3DDev15IDEF1%26l%3DZH-CN%26k%3Dk(PPLTASKS%2FConcurrency%3A%3Atask)%3Bk(Concurrency%3A%3Atask)%3Bk(task)%3Bk(DevLang-C%2B%2B)%3Bk(TargetOS-Windows)%26rd%3Dtrue) ，上层可以使用回调或者co_await方式使用SDK
+
+##### NewFeature:
++ 支持多端同时在线
++ 消息已读回执
++ 群组头像
+
+#### 升级提示
+
++ 建议升级！
+
+#### 升级指南
+
++ 下载 SDK ，详细集成说明请参考官方[集成指南](https://docs.jiguang.cn/jmessage/client/im_sdk_win/)
+
+
+
 ### iOS SDK v3.2.1
 
 #### 更新时间
@@ -15,7 +40,7 @@
 
 ##### NewFeature
 
-* 离线事件处理升级为事件同步机制，大幅提升处理大量事件的性能，上层无需改动和适配
+* 离线事件处理升级为事件同步机制，大幅提升处理大量事件的性能，上层无需改动和适配  
 * 创建 imageContent 时，可指定后缀名
 * 上传头像时，指定后缀名
 
