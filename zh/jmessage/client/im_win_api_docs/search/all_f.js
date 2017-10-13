@@ -1,0 +1,22 @@
+var searchData=
+[
+  ['randomstr',['randomStr',['../struct_jmcpp_1_1_authorization.html#a80c60ba1ac529f22e349a778ad86b370',1,'Jmcpp::Authorization']]],
+  ['readuserlist',['readUserList',['../struct_jmcpp_1_1_message_receipts.html#ac1b6ce5b77d7249248109a1d6bd33967',1,'Jmcpp::MessageReceipts']]],
+  ['reason',['reason',['../struct_jmcpp_1_1_force_logout_event.html#ab204a87db2de565cea0acf8864e69d93',1,'Jmcpp::ForceLogoutEvent::reason()'],['../struct_jmcpp_1_1_force_logout_event.html#a2bad86d7b0d12010890195ee6f1ed4bc',1,'Jmcpp::ForceLogoutEvent::Reason()']]],
+  ['receipts',['receipts',['../struct_jmcpp_1_1_receipts_updated_event.html#ae6e18f4e40d9ab2570745ab3d8e06093',1,'Jmcpp::ReceiptsUpdatedEvent']]],
+  ['receiptsupdatedevent',['ReceiptsUpdatedEvent',['../struct_jmcpp_1_1_receipts_updated_event.html',1,'Jmcpp']]],
+  ['receiver',['receiver',['../class_jmcpp_1_1_message.html#a542fe26106d796e912088059028f1a4a',1,'Jmcpp::Message']]],
+  ['region',['region',['../struct_jmcpp_1_1_user_info.html#ad5421a7511559271b54b6dabef615beb',1,'Jmcpp::UserInfo::region()'],['../struct_jmcpp_1_1_update_user_info_param.html#a8c37304124a1c29995172a8215eb2c2d',1,'Jmcpp::UpdateUserInfoParam::region()']]],
+  ['registers',['registers',['../group___xE6_xB3_xA8_xE5_x86_x8C_xE7_x99_xBB_xE5_xBD_x95.html#gac3b2ba60b4e7505abddcd514a0c699ff',1,'Jmcpp::Client']]],
+  ['rejectaddfriend',['rejectAddFriend',['../group___xE5_xA5_xBD_xE5_x8F_x8B_xE7_x9B_xB8_xE5_x85_xB3.html#ga5d9f212785d19e4a778d53be51cd61d4',1,'Jmcpp::Client']]],
+  ['rejectaddfriendevent',['RejectAddFriendEvent',['../struct_jmcpp_1_1_reject_add_friend_event.html',1,'Jmcpp']]],
+  ['rejectreason',['rejectReason',['../struct_jmcpp_1_1_reject_add_friend_event.html#a5ad14d204348fdf68b09075c306ebbc2',1,'Jmcpp::RejectAddFriendEvent']]],
+  ['remark',['remark',['../struct_jmcpp_1_1_multi_friend_remark_updated_event.html#a33a96cd258fb17c192d84a54b426f404',1,'Jmcpp::MultiFriendRemarkUpdatedEvent::remark()'],['../struct_jmcpp_1_1_user_info.html#a2f0ff668bf41f92c17df2c16acce80d5',1,'Jmcpp::UserInfo::remark()']]],
+  ['remarkother',['remarkOther',['../struct_jmcpp_1_1_multi_friend_remark_updated_event.html#a640929ec8d5a9e72baa41facec1bbe4b',1,'Jmcpp::MultiFriendRemarkUpdatedEvent::remarkOther()'],['../struct_jmcpp_1_1_user_info.html#a80b2434c2d975329acba710e81b77dd4',1,'Jmcpp::UserInfo::remarkOther()']]],
+  ['removedbyfriendevent',['RemovedByFriendEvent',['../struct_jmcpp_1_1_removed_by_friend_event.html',1,'Jmcpp']]],
+  ['removedfromgroupevent',['RemovedFromGroupEvent',['../struct_jmcpp_1_1_removed_from_group_event.html',1,'Jmcpp']]],
+  ['removefromblacklist',['removeFromBlackList',['../group___xE9_xBB_x91_xE5_x90_x8D_xE5_x8D_x95_xE7_xAE_xA1_xE7_x90_x86.html#ga9f22cf2c4c1d8b3189e8b54e41065320',1,'Jmcpp::Client']]],
+  ['removegroupmembers',['removeGroupMembers',['../group___xE7_xBE_xA4_xE7_xBB_x84_xE7_xAE_xA1_xE7_x90_x86.html#gac66d7589957d3d9db4325a3bd447d281',1,'Jmcpp::Client']]],
+  ['requestaddfriendevent',['RequestAddFriendEvent',['../struct_jmcpp_1_1_request_add_friend_event.html',1,'Jmcpp']]],
+  ['retractmessage',['retractMessage',['../group___xE6_xB6_x88_xE6_x81_xAF_xE5_x8F_x91_xE9_x80_x81_xE4_xB8_x8E_xE7_xAE_xA1_xE7_x90_x86.html#ga19e77dd3c378f7cebfb5d915cddb88bf',1,'Jmcpp::Client']]]
+];

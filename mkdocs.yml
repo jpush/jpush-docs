@@ -1,4 +1,4 @@
-site_name: 极光文档
+﻿site_name: 极光文档
 site_author: JiGuang Offical
 site_url: https://docs.jiguang.cn/
 repo_url: https://github.com/jpush/jpush-docs/
@@ -102,10 +102,13 @@ pages:
     - 'SDK ErrorCode 定义': 'jmessage/client/im_errorcode_ios.md'
     - 'SDK API Doc': 'jmessage/client/iOSdoc.md'
   - Web:
-    - 'Web SDK 开发指南 V2': 'jmessage/client/im_sdk_js_v2.md'
-    - 'Web SDK 开发指南': 'jmessage/client/im_sdk_js.md'
+    - 'SDK 开发指南 V2': 'jmessage/client/im_sdk_js_v2.md'
+    - 'SDK 开发指南': 'jmessage/client/im_sdk_js.md'
     - '微信小程序 SDK': 'jmessage/client/im_sdk_wxapplet.md'
     - 'SDK ErrorCode 定义': 'jmessage/client/im_errorcode_js.md'
+  - Windows:
+    - 'SDK 集成指南': 'jmessage/client/im_sdk_win.md'
+    - 'SDK API Doc': 'jmessage/client/windoc.md'
   - REST API:
     - 'REST API': 'jmessage/server/rest_api_im.md'
     - 'REST Report V2': 'jmessage/server/rest_api_im_report_v2.md'
