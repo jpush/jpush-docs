@@ -1159,9 +1159,7 @@ Example Response
     "name": "display_name", 
     "members_username": [], 
     "desc":"doubi",
-    "MaxMemberCount" = 500, 
-    "mtime" = "2014-07-01 00:00:00", 
-    "ctime"="2014-06-05 00:00:00"
+    "MaxMemberCount" = 500
 }
 ```
 
