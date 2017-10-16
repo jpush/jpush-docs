@@ -15,35 +15,45 @@
 | 880001 | missing error                            | 未知错误码               |
 | 880002 | invalid parameter                        | 参数不合法               |
 | 880003 | invalid value                            | 非法内容格式              |
-| 880004 | invalid type                           | 非法内容格式              |
-| 880005 | file not exist                           | 文件不存在              |
-| 880006 | login out before register  | 注册之前先退出     |
+| 880004 | invalid type                             | 非法内容格式              |
+| 880005 | file not exist                           | 文件不存在               |
+| 880006 | login out before register                | 注册之前先退出             |
+| 880007 | register limit                           | 被限制注册               |
+| 880008 | msg_id not valid                         | msg_id 非法           |
 | 880101 | appkey not exist                         | appkey 不存在          |
 | 880102 | signatu fail                             | 签名错误                |
 | 880103 | user not existr                          | 用户不存在               |
-| 880104 | invalid password.                        | 密码错误                |
+| 880104 | invalid password                         | 密码错误                |
+| 880106 | signatu is expire                        | 签名过期                |
+| 880107 | already login,please login out before login | 已经是登录状态             |
+| 880109 | repetitive operation                     | 重复登录操作              |
+| 880110 | multi channel online error,please update your sdk version | 多通道错误，更新sdk版本       |
+| 880111 | user disabled                            | 用户被禁用               |
 | 880203 | target user not exist                    | 目标用户不存在             |
 | 880204 | target group not exist                   | 目标群组不存在             |
 | 880205 | user not in group                        | 用户不在群组              |
-| 880206 | length of message exceed limit.          | 消息大小超过限制            |
+| 880206 | length of message exceed limit           | 消息大小超过限制            |
 | 880207 | user in blacklist                        | 用户被对方拉黑             |
 | 880208 | message is sensitive                     | 消息包含敏感词汇            |
-| 880209 | beyond the frequency limit    | 发送速度超过限制          |
-| 880210 | file size exceed the limit    | 文件大小超过限制            |
-| 880301 | target user not exist    | 目标用户不存在            |
-| 880302 | repeated added friend    | 重复添加好友            |
-| 880303 | user not friend    | 不是好友关系            |
-| 880304 | Invalid friend memo    | 好友备注不合法            |
-| 880305 | target user refuse added    | 用户拒绝加好友            |
+| 880209 | beyond the frequency limit               | 发送速度超过限制            |
+| 880210 | file size exceed the limit               | 文件大小超过限制            |
+| 880301 | target user not exist                    | 目标用户不存在             |
+| 880302 | repeated added friend                    | 重复添加好友              |
+| 880303 | user not friend                          | 不是好友关系              |
+| 880304 | Invalid friend memo                      | 好友备注不合法             |
+| 880305 | target user refuse added                 | 用户拒绝加好友             |
 | 880402 | not permitted to create group            | 没有创建群组的权限           |
 | 880403 | amount of group exceed limit             | 群数量到达上限             |
 | 880404 | length of group name exceed limit        | 群名字超过长度限制，创建失败      |
 | 880405 | length of group desc exceed limit        | 群描述长度超过限制           |
+| 880501 | group id not exist                       | 群 id 不存在            |
 | 880502 | user not in group                        | 用户不在群里面             |
 | 880602 | zero member                              | 添加的群成员为空            |
 | 880603 | user not in group                        | 用户不在群里面             |
 | 880604 | user not permitted add member to group   | 没权限添加群成员            |
+| 880605 | member not exist                         | 用户不存在               |
 | 880606 | member not permitted added to group      | 成员列表中有用户没有被添加到群组的权限 |
+| 880607 | repeated added member                    | 重复添加群成员             |
 | 880608 | amount of member exceed group limit      | 群成员数量超过限制           |
 | 880609 | amount of group exceed member limit      | 成员列表中存在成员的群组数量超过限制  |
 | 880703 | user not in group                        | 删除的群成员列表存在成员不属于该群组  |
@@ -51,8 +61,8 @@
 | 880705 | member of group not permitted deleted    | 成员列表中存在成员用户没权限删除    |
 | 880803 | length of group name exceed limit        | 群组名长度超过限制           |
 | 880804 | length of group desc exceed limit        | 群组描述长度超过限制          |
+| 880902 | member not exist                         | 成员列表中有不存在的成员        |
 | 880903 | member not permitted added               | 成员列表中有成员不能被添加，添加失败  |
-| 881002 | member not exist                         | 成员列表中有不存在的成员        |
 | 881101 | member already set                       | 该成员已处于免打扰状态         |
 | 881102 | member never set                         | 该成员不处于免打扰状态         |
 | 881103 | group not exist                          | 该群组不存在              |
@@ -74,6 +84,11 @@
 | 881402 | request user is not message sender       | 请求撤回方不是消息发送方        |
 | 881403 | request message not exist                | 消息不存在               |
 | 881404 | message already retract                  | 已经撤回                |
+| 881601 | target group not exist                   | 目标群组不存在             |
+| 881602 | target user not login                    | 目标用户未登录             |
+| 881603 | target user not exist                    | 目标用户不存在             |
+| 881604 | length of trans cmd exceed limit         | 消息长度超出限制            |
+| 881605 | user not in group                        | 用户不在群里面             |
 | 882001 | server internal error                    | 系统内部错误              |
 | 882002 | user exit，no such user，password error，uid invalid，gid invalid | 视操作而定               |
 | 882003 | invalid parameter                        | 参数不合法               |
