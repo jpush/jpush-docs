@@ -41,7 +41,7 @@
                     <li>更新内容：<a href="https://github.com/jpush/jsms-api-java-client/releases" target="_blank">Change Log</a></li>
                     <li>GitHub：<a href="https://github.com/jpush/jsms-api-java-client" target="_blank">源码</a></li>
                 </ul>
-                <p><a href="https://sdkfiledl.jiguang.cn/jsms-api-java-client-1.2.3.zip" class="btn btn-default" role="button">下载</a></p>
+                <p><a href="https://sdkfiledl.jiguang.cn/src/jsms-api-java-client-1.2.6.zip" class="btn btn-default" role="button">下载</a></p>
             </div>
         </div>
     </div>
