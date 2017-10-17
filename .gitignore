@@ -63,7 +63,11 @@ _book/
 zh/.DS_Store
 en/.DS_Store
 
+venv
+repos
 
-pyvenv.cfg
-lib64
-depoly.sh
+hooks/uwsgi.ini
+hooks/hooksrc
+zh/jpush/server/sdk/
+zh/jmessage/server/sdk/
+zh/jsms/server/sdk/

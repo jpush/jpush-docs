@@ -1,0 +1,12 @@
+[uwsgi]
+master = true
+base = /.../jpush-docs
+chdir = %(base)
+// http-socket = 127.0.0.1:8080
+socket = 127.0.0.1:8080
+home = %(base)/venv
+wsgi-file = %(base)/hooks/webhooks.py
+callable = app
+processes = 4
+threads = 2
+stats = 127.0.0.1:8088
