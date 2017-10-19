@@ -4,18 +4,26 @@
 
 ## SDK下载
 
-#### jmessage-wxapplet-sdk v1.1.1
+#### jmessage-wxapplet-sdk v1.2.0
 
 更新时间
 
-+ 2017-6-29
++ 2017-10-19
 
 Change Log
 
-##### BugFix:
+##### NewFeature:
 
-+ 真机上报Blob对象undefined错误
-+ 性能优化
++ 事件同步
++ 自定义通知栏
++ 消息转发
++ 支持消息透传
++ 支持群组头像
++ 支持多端同时在线
++ 消息已读回执
++ 会话、用户信息支持扩展字段
++ 注册支持扩展字段
++ 支持会话未读数获取、重置会话未读数
 
 升级提示
 
@@ -23,9 +31,9 @@ Change Log
 
 升级指南
 
-+ 用最新的 jmessage-wxapplet-sdk-1.1.1.min.js 替换掉老版本的 sdk
++ 用最新的 jmessage-wxapplet-sdk-1.2.0.min.js 替换掉老版本的 sdk
 
-点击下载：[ jmessage-wxapplet-sdk-1.1.1 ](https://sdkfiledl.jiguang.cn/jmessage-wxapplet-sdk-1.1.1.zip)
+点击下载：[ jmessage-wxapplet-sdk-1.2.0 ](https://sdkfiledl.jiguang.cn/src/jmessage-wxapplet-sdk-1.2.0.zip)
 
 
 
