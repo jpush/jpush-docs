@@ -203,13 +203,41 @@ div.row.downloads .thumbnail > .caption .li-clear {
 div.row.downloads .box .item {
     text-align: left;
 }
-div.row.downloads .box .item .download-text {
-    margin-top: 7px;
+div.row.downloads .box .demo-download {
+	/*border: 1px solid #ccc;
+	border-radius: 2px;*/
+	margin-right: 4px;
+	text-align: center;
 }
-div.row.downloads .box .item .download-text a {
+div.row.downloads .box .demo-download .apk:hover,
+div.row.downloads .box .demo-download .code:hover{
+	background: #e6e6e6;
+}
+div.row.downloads .box .demo-download .apk{
+	border: 1px solid #ccc;
+	border-radius: 2px;
+}
+div.row.downloads .box .demo-download a {
+	border: none;
+	height: 30px;
+	line-height: 30px;
+	color: #3a3a3a;
+	font-size: 14px;
+	margin: 0 5px;
+}
+div.row.downloads .box .demo-download a:hover{
+	text-decoration: none;
+}
+
+div.row.downloads .box .item .download-text {
+    /*margin-top: 7px;*/
+  	visibility:hidden;
+
+}
+/*div.row.downloads .box .item .download-text a {
 	font-size: 12px;
     text-align: center;
-}
+}*/
 div.row.downloads.j-chat-demo {
     border: 1px solid #ddd;
     margin-bottom: 40px;
