@@ -793,7 +793,7 @@ iOS 1.7.3及以上的版本才能正确解析v3的message，但是无法解析v2
 			<td>boolean</td>
 			<td>可选</td>
 			<td>APNs是否生产环境</td>
-			<td>True 表示推送生产环境，False 表示要推送开发环境；如果不指定则为推送生产环境。JPush 官方 API LIbrary (SDK) 默认设置为推送 “开发环境”。</td>
+			<td>True 表示推送生产环境，False 表示要推送开发环境；如果不指定则为推送生产环境。但注意，JPush 服务端 SDK 默认设置为推送 “开发环境”。</td>
 		</tr>
 		<tr >
 			<td>apns_collapse_id</td>
