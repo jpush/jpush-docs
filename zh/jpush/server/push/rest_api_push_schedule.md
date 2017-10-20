@@ -7,7 +7,15 @@ API 层面支持定时功能。
 
 ### 调用地址
 
-POST [https://api.jpush.cn](https://api.jpush.cn)
+https://api.jpush.cn/v3/schedules
+
+<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px;">
+<p>如果极光应用分配在北京机房（极光控制台 “应用设置” -> "应用信息" 中可以看到），并且开发者接口调用的服务器也位于北京，则可以调用如下地址：</p>
+<p>https://bjapi.push.jiguang.cn/v3/push/schedules</p>
+<p>可以提升 API 的响应速度。</p>
+<p>详细对应关系见 “应用信息” 中的说明。</p>
+
+</div>
 
 ### 调用验证
 
