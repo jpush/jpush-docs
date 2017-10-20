@@ -120,13 +120,21 @@ JMessageClient.init(Context context, boolean msgRoaming)
 #### 注册
 ```
 JMessageClient.register(String username, String password, BasicCallback callback);
+
+/**
+ * 注册同时指定用户信息中的其他字段
+ * @since 2.3.0
+ */
+JMessageClient.register(String userName, String password, RegisterOptionalUserInfo optionalUserInfo, BasicCallback callback);
 ```
 
 参数说明
 
 + String username 用户名
 + String password 用户密码
++ RegisterOptionalUserInfo optionalUserInfo 注册时的用户其他信息
 + BasicCallback callback 结果回调
+
 
 #### 登录
 ```
@@ -144,9 +152,9 @@ JMessageClient.login(String username, String password, BasicCallback callback);
 JMessageClient.logout();
 ```
 
-参数说明
+### 多端同时在线
+SDK从2.3.0版本开始支持多端同时在线，具体规则见[多端在线说明](../guideline/faq/#_5)
 
-- 无
 
 ### 用户属性维护
 
@@ -716,7 +724,7 @@ sdk升级到2.1.0版本（或以上）后，上层需要针对消息接收的处
 ### 消息已读回执
 
 #### 已读回执设置
-消息发送方可以在发送消息时，针对单条消息设置是否需要接收方发送已读回执。  
+消息发送方可以在发送消息时，针对单条消息设置是否需要接收方发送已读回执。默认行为为false  
 ***Since 2.3.0***  
 
 ```
@@ -839,6 +847,41 @@ if(!message.haveRead()){ //当消息的haveRead状态为false时，调用setHave
 
 ```
 
+### 命令透传
+***Since 2.3.0***  
+命令透传发送的命令后台不会为其离线保存，只会在对方用户在线的前提下将命令推送给对方。sdk收到命令之后也不会本地保存，不发送通知栏通知，整体快速响应。  
+开发者可以通过命令透传拓展一些在线场景下的辅助功能，如：实现输入状态提示等。
+
+#### 发送命令透传
+
+```
+	/**
+     * 发送消息透传给个人。
+     * 消息不会进入到后台的离线存储中去，仅当对方用户当前在线时，透传消息才会成功送达。
+     * 透传命令送达时，接收方会收到一个{@link CommandNotificationEvent}事件通知。
+     * sdk不会将此类透传消息内容本地化。
+     *
+     * @param username 目标的用户名
+     * @param appKey   目标的appKey, 如果传入null或空字符串，则默认用本应用的appKey
+     * @param msg      发送的消息内容
+     * @param callback 回调函数
+     * @since 2.3.0
+     */
+	JMessageClient.sendSingleTransCommand(String username, appkey, String cmd,  BasicCallback callback)
+	
+	/**
+     * 发送消息透传给群。
+     * 消息不会进入到后台的离线存储中去，仅当对方用户当前在线时，透传消息才会成功送达。
+     * 透传命令送达时，接收方会收到一个{@link CommandNotificationEvent}事件通知。
+     * sdk不会将此类透传消息内容本地化。
+     *
+     * @param gid      群组的gid
+     * @param msg      发送的消息内容
+     * @param callback 回调函数
+     * @since 2.3.0
+     */
+    JMessageClient.sendGroupTransCommand(long gid, String msg, BasicCallback callback)
+```
 
 
 ###<span id="Event">事件处理</span>
@@ -1063,7 +1106,7 @@ public void onEventMainThread(EventEntity event){
   </table>
 </div>
 
-消息被对方撤回通知事件
+消息被对方撤回通知事件MessageRetractEvent
 ***Since 2.2.0***
 <div class="table-d" align="left" >
   <table border="1" width = "100%">
@@ -1086,7 +1129,7 @@ public void onEventMainThread(EventEntity event){
   </table>
 </div>
 
-消息未回执人数变更事件
+消息未回执人数变更事件MessageReceiptStatusChangeEvent
 ***Since 2.3.0***
 <div class="table-d" align="left" >
   <table border="1" width = "100%">
@@ -1097,16 +1140,49 @@ public void onEventMainThread(EventEntity event){
     </tr>
     <tr >
       <td >getConversation()</td>
-      <td >Conversation</td>
+      <td >`Conversation`</td>
       <td >获取未回执数变更的消息所属的会话对象</td>
     </tr>
     <tr >
       <td >getMessageReceiptMetas()</td>
-      <td >Message</td>
+      <td >`List<MessageReceiptMeta>`</td>
       <td >获取未回执数发生变化的消息的MessageReceiptMeta。其中包括了消息的serverMsg Id、当前的未回执人数、以及未回执人数更新的时间</td>
     </tr>
   </table>
 </div>
+
+命令透传事件CommandNotificationEvent
+***Since 2.3.0***
+<div class="table-d" align="left" >
+  <table border="1" width = "100%">
+    <tr  bgcolor="#D3D3D3" >
+      <th width="100px">方法</th>
+      <th width="20px">类型</th>
+      <th width="300px">说明</th>
+    </tr>
+    <tr >
+      <td >getSenderUserInfo()</td>
+      <td >`UserInfo`</td>
+      <td >获取命令透传消息发送者的UserInfo</td>
+    </tr>
+    <tr >
+      <td >getType()</td>
+      <td >`Type`</td>
+      <td >获取命令透传消息对象的类型，单聊是`Type.single`,群聊则是`Type.group`</td>
+    </tr>    
+    <tr >
+      <td >getTargetInfo()</td>
+      <td >`Objcet`</td>
+      <td >获取命令透传消息发送对象的Info。若对象是单聊用户则是`UserInfo`,对象是群组则是`GroupInfo`，使用时强制转型</td>
+    </tr>
+    <tr >
+      <td >getMsg()</td>
+      <td >`String`</td>
+      <td >获取命令透传消息的实际内容</td>
+    </tr>
+  </table>
+</div>
+
 
 #### 示例代码
 接收消息事件
