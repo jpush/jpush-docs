@@ -1,5 +1,44 @@
 # 最近更新
 
+### Android SDK v2.3.0
+
+#### 更新时间
+
++ 2017-10-20
+
+#### Change Log
+##### BugFix:
++ 修复deleteSingleConversation接口可能出现的删除失败的问题
++ 提升sdk稳定性
+
+##### NewFeature:
++ 支持多端同时在线
++ 新增消息已读回执功能
++ 新增消息转发接口
++ 支持命令透传
++ Conversation类新增extra扩展字段
++ 支持群组头像
++ UserInfo支持扩展字段extras
++ 用户注册接口支持其他属性设置
+
+#### 升级提示
+
++ 建议升级！
+
+#### 升级指南
+
++ 首先解压您获取到的 zip 压缩包
+
++ 更新库文件
+	+ 打开libs文件夹。添加jcore-android_v1.1.7.jar。用 jmessage-android_v2.3.0.jar 替换项目中原有的极光jar文件，并删除原有极光jar文件。用对应CPU文件夹下的 libjcore117.so 文件，替换项目中原有的libjcoreXXX.so文件，并删除原有的极光so文件，每种型号的so文件都可以在SDK下载包中找到。
+
++ 更新AndroidManifest.xml
+	+ 请参考 SDK下载包最新版本的 demo 来更新AndroidManifest.xml 文件配置。  
+	***注意JCore 1.1.7版本新增了provider组件，集成时需要注意manifest中新增的provider组件的配置***
+
++ 如果使用jcenter的方式集成JMessage，不需要添加相关组件和资源，详细集成说明请参考官方[集成指南](https://docs.jiguang.cn/jmessage/client/jmessage_android_guide/)
+
+
 
 ### Web SDK v2.4.0
 
