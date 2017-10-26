@@ -1159,9 +1159,7 @@ Example Response
     "name": "display_name", 
     "members_username": [], 
     "desc":"doubi",
-    "MaxMemberCount" = 500, 
-    "mtime" = "2014-07-01 00:00:00", 
-    "ctime"="2014-06-05 00:00:00"
+    "MaxMemberCount" = 500
 }
 ```
 
@@ -1571,6 +1569,27 @@ Example Response
 + flag
     - 0 - 普通群成员
     - 1 - 群主
+
+    
+### 跨应用获取用户群组
+GET /v1/cross/users/{username}/groups
+
+Request Params
+
++ username 用户名
+
+Example Response
+
+
+```
+< HTTP/1.1 200 OK
+< Content-Type: application/json; charset=utf-8
+
+[ { "gid": 12345, "name" : "jpush", "desc" : "push", "appkey" : "dcf71ef5082057832bd44fbd","max_member_count" : 200, "mtime" : "2014-07-01 00:00:00", "ctime" : "2014-06-05 00:00:00","appkey":"appkey"}]
+
+```
+
+
 
 ### 跨应用添加黑名单
 
