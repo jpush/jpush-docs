@@ -1,5 +1,98 @@
 # 最近更新
 
+### Android SDK v2.3.0
+
+#### 更新时间
+
++ 2017-10-20
+
+#### Change Log
+##### BugFix:
++ 修复deleteSingleConversation接口可能出现的删除失败的问题
++ 提升sdk稳定性
+
+##### NewFeature:
++ 支持多端同时在线
++ 新增消息已读回执功能
++ 新增消息转发接口
++ 支持命令透传
++ Conversation类新增extra扩展字段
++ 支持群组头像
++ UserInfo支持扩展字段extras
++ 用户注册接口支持其他属性设置
+
+#### 升级提示
+
++ 建议升级！
+
+#### 升级指南
+
++ 首先解压您获取到的 zip 压缩包
+
++ 更新库文件
+	+ 打开libs文件夹。添加jcore-android_v1.1.7.jar。用 jmessage-android_v2.3.0.jar 替换项目中原有的极光jar文件，并删除原有极光jar文件。用对应CPU文件夹下的 libjcore117.so 文件，替换项目中原有的libjcoreXXX.so文件，并删除原有的极光so文件，每种型号的so文件都可以在SDK下载包中找到。
+
++ 更新AndroidManifest.xml
+	+ 请参考 SDK下载包最新版本的 demo 来更新AndroidManifest.xml 文件配置。  
+	***注意JCore 1.1.7版本新增了provider组件，集成时需要注意manifest中新增的provider组件的配置***
+
++ 如果使用jcenter的方式集成JMessage，不需要添加相关组件和资源，详细集成说明请参考官方[集成指南](https://docs.jiguang.cn/jmessage/client/jmessage_android_guide/)
+
+
+
+### Web SDK v2.4.0
+
+#### 更新时间
+
++ 2017-10-16
+
+#### Change Log
+
+##### NewFeature:
+
++ 支持消息透传
++ 支持群组头像
++ 支持多端同时在线
++ 消息已读回执
++ 会话、用户信息支持扩展字段
++ 注册支持扩展字段
++ 支持会话未读数获取、重置会话未读数
+
+#### 升级提示
+
++ 建议升级！
+
+#### 升级指南
+
++ 用最新的 jmessage-sdk-web.2.4.0.min.js 替换掉老版本的 sdk
+
+
+
+
+
+### Windows SDK v1.0.0
+
+#### 更新时间
+
++ 2017-10-13
+
+#### Change Log
++ JMessage Windows C++ SDK 首次发布， 涵盖当前 Web SDK v2.3.1 的全部功能，基于最新 C++17 语言标准(需要VS2017)， 使用了大量方便开发的新特性，基于[cpprestsdk](https://github.com/Microsoft/cpprestsdk/wiki/Programming-with-Tasks)的task/then异步接口[(更多关于task)](https://docs.microsoft.com/zh-cn/cpp/parallel/concrt/reference/task-class?f1url=https%3A%2F%2Fmsdn.microsoft.com%2Fquery%2Fdev15.query%3FappId%3DDev15IDEF1%26l%3DZH-CN%26k%3Dk(PPLTASKS%2FConcurrency%3A%3Atask)%3Bk(Concurrency%3A%3Atask)%3Bk(task)%3Bk(DevLang-C%2B%2B)%3Bk(TargetOS-Windows)%26rd%3Dtrue) ，上层可以使用回调或者co_await方式使用SDK
+
+##### NewFeature:
++ 支持多端同时在线
++ 消息已读回执
++ 群组头像
+
+#### 升级提示
+
++ 建议升级！
+
+#### 升级指南
+
++ 下载 SDK ，详细集成说明请参考官方[集成指南](https://docs.jiguang.cn/jmessage/client/im_sdk_win/)
+
+
 
 ### iOS SDK v3.2.1
 
@@ -15,7 +108,7 @@
 
 ##### NewFeature
 
-* 离线事件处理升级为事件同步机制，大幅提升处理大量事件的性能，上层无需改动和适配
+* 离线事件处理升级为事件同步机制，大幅提升处理大量事件的性能，上层无需改动和适配  
 * 创建 imageContent 时，可指定后缀名
 * 上传头像时，指定后缀名
 

@@ -27,15 +27,15 @@
 + SDK丰富的接口，可定制通知栏提示样式
 + 服务器大容量、稳定
 
-### jpush-android-release-3.x.y.zip 集成压缩包内容
+### jpush-android-3.x.x-release.zip 集成压缩包内容
 
 + AndroidManifest.xml
     + 客户端嵌入SDK参考的配置文件
-+ libs/jcore-android.v1.x.y.jar
++ libs/jcore-android.1.x.x.jar
     + 极光开发者服务的核心包。
-+ libs/jpush-android_v3.x.y.jar
++ libs/jpush-android-3.x.y.jar
     + JPush SDK 开发包。
-+ libs/(cpu-type)/libjcore1xy.so
++ libs/(cpu-type)/libjcore1xx.so
     + 各种CPU类型的native开发包。
 + res
     + 集成SDK必须添加的资源文件
@@ -46,7 +46,6 @@
 ### Android SDK 版本
 
 目前SDK只支持Android 2.3或以上版本的手机系统。富媒体信息流功能则需Android3.0或以上版本的系统。
-
 
 
 ## jcenter 自动集成步骤
@@ -108,7 +107,7 @@
 
                 ndk {
                     //选择要添加的对应cpu类型的.so库。
-                    abiFilters 'armeabi', 'armeabi-v7a', 'armeabi-v8a'
+                    abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a'
                     // 还可以添加 'x86', 'x86_64', 'mips', 'mips64'
                 }
 
@@ -146,9 +145,9 @@
 
 ## 手动集成步骤
 
-+ 解压缩 jpush-android-release-3.x.y.zip 集成压缩包。
-+ 复制 libs/jcore-android_v1.x.y.jar 到工程 libs/ 目录下。
-+ 复制 libs/jpush-android_v3.x.y.jar 到工程 libs/ 目录下。
++ 解压缩 jpush-android--3.x.x-release.zip 集成压缩包。
++ 复制 libs/jcore-android-1.x.x.jar 到工程 libs/ 目录下。
++ 复制 libs/jpush-android-3.x.x.jar 到工程 libs/ 目录下。
 + 复制 libs/(cpu-type)/libjcore1xy.so 到你的工程中存放对应cpu类型的目录下。
 + 复制 res/ 中drawable-hdpi, layout, values文件夹中的资源文件到你的工程中 res/ 对应同名的目录下。
 
@@ -201,8 +200,8 @@ defaultConfig {
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="您应用的包名"
-    android:versionCode="303"
-    android:versionName="3.0.3"
+    android:versionCode="309"
+    android:versionName="3.0.9"
     >
     <uses-sdk android:minSdkVersion="9" android:targetSdkVersion="23" />
 
@@ -252,6 +251,14 @@ defaultConfig {
                 <action android:name="cn.jpush.android.intent.PUSH_TIME" />
             </intent-filter>
         </service>
+
+
+	<!-- since 3.0.9 Required SDK 核心功能-->
+        <provider
+            android:authorities="您应用的包名.DataProvider"
+            android:name="cn.jpush.android.service.DataProvider"
+            android:exported="true"
+        />
 
         <!-- since 1.8.0 option 可选项。用于同一设备中不同应用的JPush服务相互拉起的功能。 -->
         <!-- 若不启用该功能可删除该组件，将不拉起其他应用也不能被其他应用拉起 -->
@@ -520,4 +527,4 @@ JPush SDK 提供的 API 接口，都主要集中在 cn.jpush.android.api.JPushIn
 
 ## 技术支持
 
-邮件联系：<support@jpush.cn>
+邮件联系：[support&#64;jpush.cn](mailto:support&#64;jpush.cn)

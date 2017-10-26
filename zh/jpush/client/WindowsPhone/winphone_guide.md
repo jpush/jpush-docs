@@ -31,7 +31,7 @@
 + [在JPush的管理Portal](https://www.jiguang.cn)上创建应用
 + 创建成功后自动生成AppKey用以标识该应用
 
-### 导入API开发包到应用程序项目    
+### 导入API开发包到应用程序项目
 
 将SDK包解压，在vs2012工程目录中的“Reference”上单击右键，在弹出菜单的右下角选择"Browse",在资源管理器的文件夹中选中SDK目录下的JPushSDK-v1.0.0.dll。
 
@@ -66,7 +66,7 @@
 	{
 		//Required
 		JPushSDK.JServer.Activated();
-	
+
 	}
 	private void Application_Deactivated(object sender, DeactivatedEventArgs e)
 	{
@@ -83,7 +83,7 @@ toast 通知点击提示
 	{
 		JPushSDK.JServer.HandleToastNotification(NavigationContext.QueryString);
 		base.OnNavigatedFrom(e);
-		
+
 	}
 添加统计页面
 
@@ -104,7 +104,7 @@ toast 通知点击提示
 请注意：发布到商店前，一定关闭要JPush SDK调试模式。
 
 	JPushSDK.JServer.IsDebug = true;
-	
+
 ##高级功能
 请参考：
 
@@ -112,5 +112,4 @@ toast 通知点击提示
 
 ##技术支持
 
-邮件联系：<support@jpush.cn>
-	
+邮件联系：[support&#64;jpush.cn](mailto:support&#64;jpush.cn)

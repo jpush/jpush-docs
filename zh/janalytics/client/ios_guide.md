@@ -85,4 +85,4 @@
 
 ## 技术支持
 
-邮件联系：<support@jpush.cn>
+邮件联系：[support&#64;jpush.cn](mailto:support&#64;jpush.cn)

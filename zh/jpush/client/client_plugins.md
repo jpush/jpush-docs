@@ -43,7 +43,6 @@
 用 C# 创建 Android, iOS, Mac, Windows 应用。
 
 + 文章：[将JPush（java库）集成到xamarin工程中](http://smilehyh.blog.163.com/blog/static/123343886201362110857402/)
-+ 文章：[JPush (极光推送) For Xamarin.Android](http://www.cnblogs.com/xling/p/JPush-for-Xamarin-Android.html?utm_source=tuicool&utm_medium=referral)
 
 ### 技术支持
 

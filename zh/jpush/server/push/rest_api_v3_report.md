@@ -1,6 +1,19 @@
 # Report API V3
+
+## 概述
 JPush Report API V3 提供各类统计数据查询功能。  
-这类 API 地址统一为（注意与 Push API 不同）：https://report.jpush.cn
+
+### 调用地址
+
+https://report.jpush.cn/v3
+
+<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px;">
+<p>如果极光应用分配在北京机房（极光控制台 “应用设置” -> "应用信息" 中可以看到），并且开发者接口调用的服务器也位于北京，则可以调用如下地址：</p>
+<p>https://bjapi.push.jiguang.cn/v3/report</p>
+<p>可以提升 API 的响应速度。</p>
+<p>详细对应关系见 “应用信息” 中的说明。</p>
+
+</div>
 
 ##  送达统计
 
@@ -12,7 +25,7 @@ Received API 以 msg_id 作为参数，去获取该 msg_id 的送达统计数据
 
 ### 调用地址
 
-GET /v3/received
+GET /received
 
 ### 请求示例
 
@@ -55,6 +68,66 @@ JSON Array.
 + ios_msg_received  iOS 自定义消息送达数。如果无此项数据则为null。
 + wp_mpns_sent       winphone通知送达。如果无此项数据则为 null。
 
+## 送达状态查询
+
+Status API 用于查询已推送的一条消息在一组设备上的送达状态。
+
+### 调用地址
+
+POST /status/message
+
+### 请求示例
+
+```
+curl --insecure -X POST -v https://report.jpush.cn/v3/status/message -H "Content-Type: application/json" -u "29ea851419f747be7b5785a0:79f486970ec5c41bfe381bc3" -d '{ "msg_id": 327640176, "registration_ids":["1506bfd3a7c568d4761", "02078f0f1b8", "0207870a9b8"]}'
+
+> POST /v3/status/message HTTP/1.1
+> Host: report.jpush.cn
+> Authorization: Basic MjllYTg1MTQxOWY3NDdiZTdiNTc4NWEwOjc5ZjQ4Njk3MGVjNMM0MWJmZTM4MWJjMw==
+```
+
+**Request Params**
+
+JSON Object
+
++ msg_id 必传。消息 id，一次调用仅支持一个消息 id 查询。
++ registration_ids 必传。JSON Array 类型，多个registration id 用逗号隔开，一次调用最多支持1000个。
++ data 可选。查询的指定日期，格式为yyyy-mm-dd，默认为当天。
+
+### 返回示例
+
+**Response Header** 
+
+```
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+```
+
+**Response Data**
+
+```
+{
+    "02078f0f1b8": {
+        "status": 2
+    },
+    "1507bfd3a7c568d4761": {
+        "status": 0
+    },
+    "0207870a9b8": {
+        "status": 2
+    }
+}
+```
+
+**status 含义：**
+
++ 0: 送达；
++ 1: 未送达；
++ 2: registration_id 不属于该应用；
++ 3: registration_id 属于该应用，但不是该条 message 的推送目标；
++ 4: 系统异常。
+
+
 ## 消息统计（VIP专属接口）
 
 与“送达统计” API 不同的是，该 API 提供更多的针对一个 msgid 的统计数据。
@@ -64,7 +137,7 @@ JSON Array.
 
 ### 调用地址
 
-GET /v3/messages
+GET /messages
 
 ### 请求示例
 
@@ -140,7 +213,7 @@ JSON Array
 
 ### 调用地址
 
-GET /v3/users
+GET /users
 
 ### 请求示例
 

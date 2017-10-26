@@ -3,12 +3,12 @@
 ## 认识极光 IM
 
 
-极光 IM（英文名 JMessage）致力于帮助 App 解决应用内聊天和跨应用聊天问题，开发者可集成SDK，快速实现稳定可靠的聊天功能。目前提供 iOS / Android / web 的 SDK，以及 Rest API 和后台管理系统，满足开发者不同场景下的需求，大大减少开发成本，提高效率。
+极光 IM（英文名 JMessage）致力于帮助 App 解决应用内聊天和跨应用聊天问题，开发者可集成SDK，快速实现稳定可靠的聊天功能。目前提供 iOS / Android / web  / Windows 的 SDK，以及 Rest API 和后台管理系统，满足开发者不同场景下的需求，大大减少开发成本，提高效率。
 
 
 ### 模块化的极光开发者SDK
 
-极光开发者服务SDK采用了模块化的使用模式，即一个核心模块 （JCore）+N种服务（IM，JPush，JAnalytics）的使用方式，方便开发者同时集成多项极光开发者服务，极大的优化了多模块同时使用时功能模块重复的问题。如下图：
+极光开发者服务SDK采用了模块化的使用模式，即一个核心模块 （JCore）+N 种服务（IM，JPush，JAnalytics）的使用方式，方便开发者同时集成多项极光开发者服务，极大的优化了多模块同时使用时功能模块重复的问题。如下图：
 ![jiguang](../image/sdk_model.png)
 
 
@@ -152,6 +152,7 @@ App 使用 JMessage 提供的群组功能创建群组时得到的群组标识。
 + [JMessage Android SDK 开发指南](../client/im_sdk_android/)
 + [JMessage iOS SDK 开发指南](../client/im_sdk_ios/)
 + [JMessage WEB SDK 开发指南](https://docs.jiguang.cn/jmessage/client/im_sdk_js/)
++ [JMessage Windows SDK 集成指南](https://docs.jiguang.cn/jmessage/client/im_sdk_win/)
 
 
 

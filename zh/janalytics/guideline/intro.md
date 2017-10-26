@@ -23,7 +23,7 @@ JAnalytics SDK 不仅提供了模版型事件，还提供了两种自定义类�
 
 + 如果您初次使用极光开发者的产品
 	+ 进入极光官网[注册开发者账户](https://www.jiguang.cn/accounts/register/form);
-	+ 进入[管理控制台](https://www.jiguang.cn/app/list)，创建应用程序，得到 Appkey（SDK与服务器端通过Appkey互相识别）；
+	+ 进入[管理控制台](https://www.jiguang.cn/dev/#/app/list)，创建应用程序，得到 Appkey（SDK与服务器端通过Appkey互相识别）；
 	+ 下载SDK，通过“集成指南”的帮助完成JAnalytics SDK的集成并运行应用程序。
 + 如果您已经是极光开发者
 	+ 给原有应用添加JAnalytics SDK，在需要添加该功能的应用的设置页面获取Appkey；
@@ -33,7 +33,7 @@ JAnalytics SDK 不仅提供了模版型事件，还提供了两种自定义类�
 当出现问题时：
 
 + 请仔细阅读文档，查看是否有遗漏。
-+ 给我们的support发邮件：<support@jpush.cn>
++ 给我们的support发邮件：[support&#64;jpush.cn](mailto:support&#64;jpush.cn)
 
 为了更快速的解决问题，在寻求帮助时，请提供下列信息：
 

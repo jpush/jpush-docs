@@ -173,6 +173,43 @@
       <td>文件不存在</td>
     </tr>
 
+    </tr>
+        <tr>
+      <td>42001</td>
+      <td>invalid credential</td>
+      <td>不合法的调用凭证</td>
+    </tr>
+        </tr>
+        <tr>
+      <td>50001</td>
+      <td>get access token error</td>
+      <td>获取access token 错误</td>
+    </tr>
+        </tr>
+        <tr>
+      <td>50002</td>
+      <td>share failed</td>
+      <td>分享失败</td>
+    </tr>
+        </tr>
+        <tr>
+      <td>50003</td>
+      <td>get userinfo failed</td>
+      <td>获取用户信息失败</td>
+    </tr>
+        </tr>
+        <tr>
+      <td>50004</td>
+      <td>auth failed</td>
+      <td>授权失败</td>
+    </tr>
+        </tr>
+        <tr>
+      <td>50005</td>
+      <td>this platform unsupported authorize</td>
+      <td>平台不支持授权</td>
+    </tr>
+
     
 </table>
 </div>

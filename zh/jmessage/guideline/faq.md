@@ -1,10 +1,5 @@
 # 常见问题
 
-<style>
-img[alt=jpush_ios_v] { width: 500px; }
-img[alt=jpush_android_so] { width: 800px; }
-
-</style>
 
 ## 离线消息保存时间和条数是多少？
 免费版本：每个会话保存100条离线消息，保存15天。    
@@ -32,6 +27,16 @@ img[alt=jpush_android_so] { width: 800px; }
 极光服务端可为您保存近60天的历史记录。SDK会在本地保存一份消息历史记录，可永久保存，同时提供删除和查询的接口，您可自行管理。
 
 可使用免费的[IM REST Report](https://docs.jiguang.cn/jmessage/server/rest_api_im_report_v2/)拉取保存在服务端的历史消息，如果需要在APP自己的服务端实时保存聊天历史，可联系客服开通实时消息路由功能。
+
+
+<br />
+## 多端同时在线功能如何开启？具体规则是什么？
+多端同时在线功能可在[极光控制台](https://www.jiguang.cn/accounts/login/form)开启，选择“应用设置”中的 “IM 设置”，点击启用按钮进行开启。需要注意的是此功能开启后不支持关闭。
+![多端在线](../image/online.png)
+
+功能说明：支持移动端（ Android 、 iOS ），PC端，Web端（JS、微信小程序），多端同时在线，端内平台之间互踢。    
+版本说明：仅支持 Android v2.3.0、iOS v3.3.0、Web v2.4.0、wxapplet v1.2.0、Windows v1.0.0及以上版本 SDK。开启后，只要用户在以上版本多端登录过，所有更低版本的 SDK 将无法再登录使用。     
+例如：用户 A 使用以上版本的 SDK 同时登录了 Android 和 Web 端，之后他再用更低版本的 SDK 登录 Android、iOS、微信小程序或Web端，都无法登录。
 
 
 <br />

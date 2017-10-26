@@ -21,7 +21,15 @@
 推送的内容只能是 JSON 表示的一个推送对象。
 
 ### 调用地址 
-POST  https://api.jpush.cn/v3/push
+https://api.jpush.cn/v3/push
+
+<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px;">
+<p>如果极光应用分配在北京机房（极光控制台 “应用设置” -> "应用信息" 中可以看到），并且开发者接口调用的服务器也位于北京，则可以调用如下地址：</p>
+<p>https://bjapi.push.jiguang.cn/v3/push</p>
+<p>可以提升 API 的响应速度。</p>
+<p>详细对应关系见 “应用信息” 中的说明。</p>
+
+</div>
 
 ### 请求示例
 
@@ -764,7 +772,7 @@ iOS 1.7.3及以上的版本才能正确解析v3的message，但是无法解析v2
 			<td>int</td>
 			<td>可选</td>
 			<td>推送序号</td>
-			<td>纯粹用来作为 API 调用标识，API 返回时被原样返回，以方便 API 调用方匹配请求与返回。</td>
+			<td>纯粹用来作为 API 调用标识，API 返回时被原样返回，以方便 API 调用方匹配请求与返回。值为 0 表示该 messageid 无 sendno，所以字段取值范围为非 0 的 int.</td>
 		</tr>
 		<tr >
 			<td>time_to_live</td>
@@ -785,7 +793,7 @@ iOS 1.7.3及以上的版本才能正确解析v3的message，但是无法解析v2
 			<td>boolean</td>
 			<td>可选</td>
 			<td>APNs是否生产环境</td>
-			<td>True 表示推送生产环境，False 表示要推送开发环境；如果不指定则为推送生产环境。JPush 官方 API LIbrary (SDK) 默认设置为推送 “开发环境”。</td>
+			<td>True 表示推送生产环境，False 表示要推送开发环境；如果不指定则为推送生产环境。但注意，JPush 服务端 SDK 默认设置为推送 “开发环境”。</td>
 		</tr>
 		<tr >
 			<td>apns_collapse_id</td>
