@@ -78,6 +78,11 @@ Authorization: Basic base64_auth_string
 			<td>用户最后修改时间</td>
 			<td></td>
 		</tr>
+		<tr >
+			<td>extras</td>
+			<td>用户自定义json对象</td>
+			<td>Byte(0~512)</td>
+		</tr>
 	</table>
 </div>
 
@@ -121,6 +126,7 @@ JSON Array.
     - 支持的字符：全部，包括 Emoji
 + address   （选填）地址
     - 支持的字符：全部，包括 Emoji
++ extras     (选填) 用户自定义json对象
 
 #### Example Response
 
@@ -162,6 +168,21 @@ POST /v1/admins/
     - 英文点、减号、@
 
 + password Byte(4-128) 字符不限
++ nickname  （选填）用户昵称
+    - 不支持的字符：英文字符： \n \r\n 
++ avatar  （选填）头像
+    - 需要填上从文件上传接口获得的media_id	
++ birthday    （选填）生日 example: 1990-01-24
+    - yyyy-MM-dd 
++ signature  （选填）签名
+    - 支持的字符：全部，包括 Emoji
++ gender    （选填） 性别
+    - 0 - 未知， 1 - 男 ，2 - 女 
++ region      （选填）地区
+    - 支持的字符：全部，包括 Emoji
++ address   （选填）地址
+    - 支持的字符：全部，包括 Emoji
++ extras     (选填) 用户自定义json对象
 
 #### Example Response
 
@@ -272,6 +293,7 @@ Content-Type: application/json; charset=utf-8
     - 支持的字符：全部，包括 Emoji
 + address   （选填）地址
     - 支持的字符：全部，包括 Emoji
++ extras     (选填) 用户自定义json对象
 
 
 
@@ -283,7 +305,7 @@ Content-Type: application/json; charset=utf-8
 
 ```
 
-### 用户在线状态查询
+### 用户在线状态查询 
 
 ```
 Get /v1/users/{username}/userstat
@@ -317,6 +339,52 @@ Response Data
 ```
 {"login":true, "online": false}
 ```
+该接口不适用于多端在线，多端在线请用批量状态接口
+
+#### Error Code
+
+错误码
+
++ 899003 username不合法
++ 899002 用户不存在
+
+
+### 批量用户在线状态查询
+
+```
+Post /v1/users/userstat
+```
+#### Example Request
+
+Request Header 
+
+```
+Post /v1/users/userstat
+Content-Type: application/json; charset=utf-8 
+```
+Request Params
+
+N/A
+
+Request Body
+
+["USER1","USER2"]
+
+#### Example Response
+Response Header
+
+```
+HTTP/1.1 200 
+Content-Type: application/json; charset=utf-8
+```
+
+Response Data
+
+```
+[{"devices": [],"username": "caiyh01"},{"devices": [{"login": false,"online": false,"platform": "a"}],"username": "Rauly"}]
+```
++ devices  设备登陆状态数组，没有登陆过数组为空
++ platform SDK各平台：a-Android，i-iOS，j-JS，w-Windows
 
 #### Error Code
 
@@ -1038,6 +1106,11 @@ Response Data
 			<td>最后修改时间</td>
 			<td></td>
 		</tr>
+		<tr >
+			<td>avatar</td>
+			<td>群组头像</td>
+			<td></td>
+		</tr>
 	</table>
 </div>
 
@@ -1069,6 +1142,7 @@ Request Params
 + name               （必填）群组名字
     - 支持的字符：全部，包括 Emoji。
 + members_username 成员 username
++ avatar           （选填）群组头像，上传接口所获得的media_id 
 + desc               （选填） 群描述 
     - 支持的字符：全部，包括 Emoji。
 
@@ -1085,9 +1159,7 @@ Example Response
     "name": "display_name", 
     "members_username": [], 
     "desc":"doubi",
-    "MaxMemberCount" = 500, 
-    "mtime" = "2014-07-01 00:00:00", 
-    "ctime"="2014-06-05 00:00:00"
+    "MaxMemberCount" = 500
 }
 ```
 
@@ -1124,6 +1196,7 @@ Request Params
 
 + name 群名称
 + desc 群描述
++ avatar 群组头像media_id
 
 ```
 PUT /v1/groups/{Group id}
@@ -1496,6 +1569,27 @@ Example Response
 + flag
     - 0 - 普通群成员
     - 1 - 群主
+
+    
+### 跨应用获取用户群组
+GET /v1/cross/users/{username}/groups
+
+Request Params
+
++ username 用户名
+
+Example Response
+
+
+```
+< HTTP/1.1 200 OK
+< Content-Type: application/json; charset=utf-8
+
+[ { "gid": 12345, "name" : "jpush", "desc" : "push", "appkey" : "dcf71ef5082057832bd44fbd","max_member_count" : 200, "mtime" : "2014-07-01 00:00:00", "ctime" : "2014-06-05 00:00:00","appkey":"appkey"}]
+
+```
+
+
 
 ### 跨应用添加黑名单
 
