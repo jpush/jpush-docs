@@ -119,7 +119,7 @@
 
 ~~~
 	CountEvent cEvent = new Event("test1_event_id");
-	cEvent.addKeyValue("key1","value1").addKeyVaule("key2","value2");
+	cEvent.addKeyValue("key1","value1").addKeyValue("key2","value2");
 ~~~
 
 **注意：**
