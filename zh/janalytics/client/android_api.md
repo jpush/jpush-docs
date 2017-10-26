@@ -145,7 +145,7 @@
 
 ~~~
 	CalculateEvent cEvent = new CalculateEvent("test2_event_id","test2_event_value");
-	cEvent.setEventValue(1.1).addKeyValue("key1","value1").addKeyVaule("key2","value2");
+	cEvent.setEventValue(1.1).addKeyValue("key1","value1").addKeyValue("key2","value2");
 ~~~
 
 **注意：**
@@ -172,7 +172,7 @@
 
 ~~~
 	LoginEvent lEvent = new LoginEvent("qq",true);
-	lEvent.addKeyValue("key1","value1").addKeyVaule("key2","value2");
+	lEvent.addKeyValue("key1","value1").addKeyValue("key2","value2");
 ~~~
 
 **注意：**
@@ -199,7 +199,7 @@
 
 ~~~
 	RegisterEvent rEvent = new RegisterEvent("sina",true);
-	rEvent.addKeyValue("key1","value1").addKeyVaule("key2","value2");
+	rEvent.addKeyValue("key1","value1").addKeyValue("key2","value2");
 ~~~
 
 **注意：**
@@ -228,7 +228,7 @@
 
 ~~~
 	BrowseEvent bEvent = new BrowseEvent("browse_id","深圳热点新闻","news",30);
-	bEvent.addKeyValue("key1","value1").addKeyVaule("key2","value2");
+	bEvent.addKeyValue("key1","value1").addKeyValue("key2","value2");
 ~~~
 
 **注意：**
@@ -262,7 +262,7 @@
 
 ~~~
 	PurchaseEvent pEvent = new PurchaseEvent("goodsId","篮球",300,true,Currency.CNY,"sport",1);
-	pEvent.addKeyValue("key1","value1").addKeyVaule("key2","value2");
+	pEvent.addKeyValue("key1","value1").addKeyValue("key2","value2");
 ~~~
 
 **注意：**
