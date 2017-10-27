@@ -106,7 +106,7 @@ JMessage#init()
 
 **漫游参数**
 
-Since SDK v2.2.0  新增漫游参数，初始化时，可设置是否启用消息记录漫游。
+***Since 2.2.0***  新增漫游参数，初始化时，可设置是否启用消息记录漫游。
 打开消息漫游之后，用户多个设备之间登录时，sdk 会自动同步当前登录用户的历史消息。
 
 **请求参数:**
@@ -153,9 +153,16 @@ JMessage#onDisconnect(fn)
   });
 ```
 
+### 多端同时在线
+
+SDK从2.4.0版本开始支持多端同时在线，具体规则见[多端在线说明](../guideline/faq/#_5)
+
+
 ### 注册登录相关
 
 #### 注册
+
+***Since 2.4.0*** 注册支持其他字段
 
 JMessage#register()
 
@@ -278,6 +285,8 @@ JIM.loginOut();//无回调函数，调用则成功
 
 #### 获取用户信息
 
+***Since 2.4.0*** 支持 extras 字段
+
 JMessage#getUserInfo()
 
 **请求参数:**
@@ -314,6 +323,8 @@ JMessage#getUserInfo()
 ```
 
 #### 更新个人信息
+
+***Since 2.4.0*** 支持 extras 字段
 
 JMessage#updateSelfInfo()
 
@@ -403,6 +414,8 @@ JMessage#updateSelfPwd()
 
 #### 获取会话列表
 
+***Since 2.4.0*** 支持会话 extras 字段
+
 JMessage#getConversation()
 
 **请求参数：**
@@ -434,6 +447,8 @@ JMessage#getConversation()
 
 #### 更新会话信息
 
+***Since 2.4.0***
+
 JMessage#updateConversation()
 
 **请求参数：**
@@ -464,6 +479,8 @@ JMessage#updateConversation()
 
 #### 获取会话未读数
 
+***Since 2.4.0***
+
 JMessage#getUnreadMsgCnt()
 
 **请求参数：**
@@ -490,6 +507,8 @@ JMessage#getUnreadMsgCnt()
 
 #### 重置会话未读数
 
+***Since 2.4.0***
+
 JMessage#resetUnreadCount()
 
 **请求参数：**
@@ -514,8 +533,9 @@ JMessage#resetUnreadCount()
                            });
 ```
 
-
 #### 消息未读用户列表
+
+***Since 2.4.0***
 
 JMessage#msgUnreadList()
 
@@ -551,6 +571,8 @@ JMessage#msgUnreadList()
 
 #### 单聊消息已读回执
 
+***Since 2.4.0***
+
 JMessage#addSingleReceiptReport()
 
 **请求参数：**
@@ -579,6 +601,8 @@ JMessage#addSingleReceiptReport()
 ```
 
 #### 群聊消息已读回执
+
+***Since 2.4.0***
 
 JMessage#addGroupReceiptReport()
 
@@ -897,8 +921,8 @@ JMessage#sendSingleLocation()
 | KEY                 | REQUIRE        | DESCRIPTION                              |
 | ------------------- | -------------- | ---------------------------------------- |
 | target_username     | TRUE           | 接收消息者 username                           |
-| latitude            | 与 msg_body 二选一 | 维度                                       |
-| longitude           | 与 msg_body 二选一 | 精度                                       |
+| latitude            | 与 msg_body 二选一 | 纬度                                       |
+| longitude           | 与 msg_body 二选一 | 经度                                       |
 | scale               | 与 msg_body 二选一 | 地图缩放级别                                   |
 | label               | 与 msg_body 二选一 | 地址                                       |
 | msg_body            | 与位置相关参数二选一     | 消息的 msg_body，用来实现消息转发功能                  |
@@ -1266,8 +1290,8 @@ JMessage#sendGroupLocation()
 | KEY             | REQUIRE        | DESCRIPTION                              |
 | --------------- | -------------- | ---------------------------------------- |
 | target_gid      | TRUE           | 群组 id                                    |
-| latitude        | 与 msg_body 二选一 | 维度                                       |
-| longitude       | 与 msg_body 二选一 | 精度                                       |
+| latitude        | 与 msg_body 二选一 | 纬度                                       |
+| longitude       | 与 msg_body 二选一 | 经度                                       |
 | scale           | 与 msg_body 二选一 | 地图缩放级别                                   |
 | label           | 与 msg_body 二选一 | 地址                                       |
 | msg_body        | 与位置相关参数二选一     | 消息的 msg_body，用来实现消息转发                    |
@@ -1399,6 +1423,7 @@ JMessage#sendGroupCustom()
                });
 ```
 #### 单聊消息透传
+***Since 2.4.0***
 
 JMessage#transSingleMsg()
 
@@ -1426,6 +1451,7 @@ JMessage#transSingleMsg()
 ```
 
 #### 群聊消息透传
+***Since 2.4.0***
 
 JMessage#transGroupMsg()
 
@@ -1454,6 +1480,8 @@ JMessage#transGroupMsg()
 ### 群组管理
 
 #### 创建群组
+
+***Since 2.4.0*** 支持群头像
 
 JMessage#createGroup()
 
@@ -1620,6 +1648,8 @@ JMessage#getGroupInfo()
 ```
 
 #### 更新群信息
+
+***Since 2.4.0*** 支持群头像
 
 JMessage#updateGroupInfo()
 
@@ -2061,6 +2091,8 @@ JMessage#addFriend()
 
 #### 同意好友请求
 
+***Since 2.4.0***
+
 JMessage#acceptFriend()
 
 **请求参数：**
@@ -2085,6 +2117,8 @@ JMessage#acceptFriend()
 ```
 
 #### 拒绝好友请求
+
+***Since 2.4.0***
 
 JMessage#declineFriend()
 
@@ -2641,6 +2675,8 @@ JIM.onSyncEvent(function(data) {
 
 ### 消息已读数变更事件实时监听
 
+***Since 2.4.0***
+
 JMessage#onMsgReceiptChange(fn)
 
 **请求参数:**
@@ -2682,6 +2718,8 @@ JIM.onMsgReceiptChange(function(data) {
 
 ### 消息已读数变更事件同步监听
 
+***Since 2.4.0***
+
 JMessage#onSyncMsgReceipt(fn)
 
 **请求参数:**
@@ -2703,6 +2741,8 @@ JIM.onSyncMsgReceipt(function(data) {
 ```
 
 ### 会话未读数变更监听（多端在线）
+
+***Since 2.4.0***
 
 JMessage#onMutiUnreadMsgUpdate(fn)
 
@@ -2732,6 +2772,7 @@ JIM.onMutiUnreadMsgUpdate(function(data) {
 });
 ```
 ### 消息透传监听
+***Since 2.4.0***
 
 JMessage#onTransMsgRec(fn)
 
