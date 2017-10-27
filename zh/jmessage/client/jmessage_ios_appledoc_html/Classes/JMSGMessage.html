@@ -86,6 +86,8 @@
 		
 		<option value="//api/name/flag">flag</option>
 		
+		<option value="//api/name/isHaveRead">isHaveRead</option>
+		
 	</optgroup>
 	
 
@@ -136,11 +138,15 @@
 		
 		<option value="//api/name/retractMessage:completionHandler:">+ retractMessage:completionHandler:</option>
 		
+		<option value="//api/name/forwardMessage:target:optionalContent:">+ forwardMessage:target:optionalContent:</option>
+		
 	</optgroup>
 	
 
 	
 	<optgroup label="Instance Methods">
+		
+		<option value="//api/name/init">- init</option>
 		
 		<option value="//api/name/isAtMe">- isAtMe</option>
 		
@@ -148,7 +154,11 @@
 		
 		<option value="//api/name/getAt_List:">- getAt_List:</option>
 		
-		<option value="//api/name/init">- init</option>
+		<option value="//api/name/setMessageHaveRead:">- setMessageHaveRead:</option>
+		
+		<option value="//api/name/getMessageUnreadCount">- getMessageUnreadCount</option>
+		
+		<option value="//api/name/messageReadDetailHandler:">- messageReadDetailHandler:</option>
 		
 		<option value="//api/name/setFromName:">- setFromName:</option>
 		
@@ -270,7 +280,13 @@ NSString *msgText = textContent.text;
 				
 					<tr>
 						<th scope="row" class="argument-name"><code>username</code></th>
-						<td><p>单聊用户 username</p></td>
+						<td><p>单聊用户 username</p>
+
+<h4>注意：</h4>
+
+<p>1、单独调用此接口创建消息，SDK 不会本地保存消息，再调用发送接口时才会保存；</p>
+
+<p>2、如果上层希望创建消息时就本地化保存，请使用 <a href="../Classes/JMSGConversation.html#//api/name/createMessageWithContent:">[JMSGConversation createMessageWithContent:]</a></p></td>
 					</tr>
 				
 				</table>
@@ -281,11 +297,6 @@ NSString *msgText = textContent.text;
 
 			
 
-			
-			<div class="method-subsection discussion-section">
-				<h4 class="method-subtitle">Discussion</h4>
-				<p>不关心会话时的直接创建聊天消息的接口。一般建议使用 <a href="../Classes/JMSGConversation.html">JMSGConversation</a> -> createMessageWithContent:</p>
-			</div>
 			
 
 			
@@ -333,7 +344,13 @@ NSString *msgText = textContent.text;
 				
 					<tr>
 						<th scope="row" class="argument-name"><code>groupId</code></th>
-						<td><p>群聊ID</p></td>
+						<td><p>群聊ID</p>
+
+<h4>注意：</h4>
+
+<p>1、单独调用此接口创建消息，SDK 不会本地保存消息，再调用发送接口时才会保存；</p>
+
+<p>2、如果上层希望创建消息时就本地化保存，请使用 <a href="../Classes/JMSGConversation.html#//api/name/createMessageWithContent:">[JMSGConversation createMessageWithContent:]</a></p></td>
 					</tr>
 				
 				</table>
@@ -344,11 +361,6 @@ NSString *msgText = textContent.text;
 
 			
 
-			
-			<div class="method-subsection discussion-section">
-				<h4 class="method-subtitle">Discussion</h4>
-				<p>不关心会话时的直接创建聊天消息的接口。一般建议使用 <a href="../Classes/JMSGConversation.html">JMSGConversation</a> -> createMessageWithContent:</p>
-			</div>
 			
 
 			
@@ -401,7 +413,13 @@ NSString *msgText = textContent.text;
 				
 					<tr>
 						<th scope="row" class="argument-name"><code>at_list</code></th>
-						<td><p>@对象的数组</p></td>
+						<td><p>@对象的数组</p>
+
+<h4>注意：</h4>
+
+<p>1、单独调用此接口创建消息，SDK 不会本地保存消息，再调用发送接口时才会保存；</p>
+
+<p>2、如果上层希望创建消息时就本地化保存，请使用 <a href="../Classes/JMSGConversation.html#//api/name/createMessageWithContent:">[JMSGConversation createMessageWithContent:]</a></p></td>
 					</tr>
 				
 				</table>
@@ -412,11 +430,6 @@ NSString *msgText = textContent.text;
 
 			
 
-			
-			<div class="method-subsection discussion-section">
-				<h4 class="method-subtitle">Discussion</h4>
-				<p>不关心会话时的直接创建聊天消息的接口。一般建议使用 <a href="../Classes/JMSGConversation.html">JMSGConversation</a> -> createMessageWithContent:</p>
-			</div>
 			
 
 			
@@ -464,7 +477,13 @@ NSString *msgText = textContent.text;
 				
 					<tr>
 						<th scope="row" class="argument-name"><code>groupId</code></th>
-						<td><p>群聊ID</p></td>
+						<td><p>群聊ID</p>
+
+<h4>注意：</h4>
+
+<p>1、单独调用此接口创建消息，SDK 不会本地保存消息，再调用发送接口时才会保存；</p>
+
+<p>2、如果上层希望创建消息时就本地化保存，请使用 <a href="../Classes/JMSGConversation.html#//api/name/createMessageWithContent:">[JMSGConversation createMessageWithContent:]</a></p></td>
 					</tr>
 				
 				</table>
@@ -475,11 +494,6 @@ NSString *msgText = textContent.text;
 
 			
 
-			
-			<div class="method-subsection discussion-section">
-				<h4 class="method-subtitle">Discussion</h4>
-				<p>不关心会话时的直接创建聊天消息的接口。一般建议使用 <a href="../Classes/JMSGConversation.html">JMSGConversation</a> -> createMessageWithContent:</p>
-			</div>
 			
 
 			
@@ -565,7 +579,7 @@ NSString *msgText = textContent.text;
 			
 			
 			<div class="method-subsection brief-description">
-				<p>发送消息（附带可选功能，如：控制离线消息存储、自定义通知栏内容等）</p>
+				<p>发送消息（附带可选功能，如：控制离线消息存储、自定义通知栏内容、消息已读回执等）</p>
 			</div>
 			
 		    
@@ -599,7 +613,7 @@ NSString *msgText = textContent.text;
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>可选功能里可以设置离线消息存储、自定义通知栏内容等，具体请查看 <a href="../Classes/JMSGOptionalContent.html">JMSGOptionalContent</a> 类。</p>
+				<p>可选功能里可以设置离线消息存储、自定义通知栏内容、消息已读回执等，具体请查看 <a href="../Classes/JMSGOptionalContent.html">JMSGOptionalContent</a> 类。</p>
 			</div>
 			
 
@@ -1706,8 +1720,8 @@ NSString *msgText = textContent.text;
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/isAtMe" title="isAtMe"></a>
-	<h3 class="method-title"><code><a href="#//api/name/isAtMe">&ndash;&nbsp;isAtMe</a></code>
+	<a name="//api/name/forwardMessage:target:optionalContent:" title="forwardMessage:target:optionalContent:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/forwardMessage:target:optionalContent:">+&nbsp;forwardMessage:target:optionalContent:</a></code>
 </h3>
 
 	<div class="method-info">
@@ -1717,94 +1731,12 @@ NSString *msgText = textContent.text;
 			
 			
 			<div class="method-subsection brief-description">
-				<p>是否是@自己的消息（只针对群消息，单聊消息无@功能）</p>
+				<p>消息转发</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (BOOL)isAtMe</code></div>
-
-		    
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">JMSGMessage.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/isAtAll" title="isAtAll"></a>
-	<h3 class="method-title"><code><a href="#//api/name/isAtAll">&ndash;&nbsp;isAtAll</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>是否是@所有人的消息（只针对群消息，单聊消息无@功能）</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>- (BOOL)isAtAll</code></div>
-
-		    
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">JMSGMessage.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/getAt_List:" title="getAt_List:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/getAt_List:">&ndash;&nbsp;getAt_List:</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>获取消息体中所有@对象（只针对群消息，单聊消息无@功能）</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>- (void)getAt_List:(JMSGCompletionHandler)<em>handler</em></code></div>
+			<div class="method-subsection method-declaration"><code>+ (void)forwardMessage:(JMSGMessage *)<em>message</em> target:(id)<em>target</em> optionalContent:(JMSGOptionalContent *JMSG_NULLABLE)<em>optionalContent</em></code></div>
 
 		    
 			
@@ -1813,18 +1745,18 @@ NSString *msgText = textContent.text;
 				<table class="argument-def parameter-def">
 				
 					<tr>
-						<th scope="row" class="argument-name"><code>handler</code></th>
-						<td><p>结果回调。回调参数：</p>
-
-<ul>
-<li>resultObject 类型为 NSArray，数组里成员的类型为 <a href="../Classes/JMSGUser.html">JMSGUser</a>
-注意：如果该消息为@所有人消息时，resultObject 返回nil，可以通过 <a href="#//api/name/isAtAll">isAtAll</a> 接口来判断是否是@所有人的消息</li>
-<li>error 错误信息</li>
-</ul>
-
-
-<p>如果 error 为 nil, 表示获取成功
-如果 error 不为 nil,表示获取失败</p></td>
+						<th scope="row" class="argument-name"><code>message</code></th>
+						<td><p>需要转发的消息</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>target</code></th>
+						<td><p>目标 target，只能为 <a href="../Classes/JMSGUser.html">JMSGUser</a> 或 <a href="../Classes/JMSGGroup.html">JMSGGroup</a></p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>optionalContent</code></th>
+						<td><p>可选功能，具体请查看 <a href="../Classes/JMSGOptionalContent.html">JMSGOptionalContent</a> 类</p></td>
 					</tr>
 				
 				</table>
@@ -1838,7 +1770,7 @@ NSString *msgText = textContent.text;
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>从服务器获取，返回消息的所有@对象。</p>
+				<p>注意：只能转发消息状态为 SendSucceed 和 ReceiveSucceed 的消息。</p>
 			</div>
 			
 
@@ -2590,6 +2522,54 @@ NSString *msgText = textContent.text;
 			
 		</div>
 	</div>
+</div><div class="section-method">
+	<a name="//api/name/isHaveRead" title="isHaveRead"></a>
+	<h3 class="method-title"><code><a href="#//api/name/isHaveRead">&nbsp;&nbsp;isHaveRead</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>是否已读(只针对接收的消息)</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign, readonly) BOOL isHaveRead</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>该属性与实例方法 [-(void)setMessageHaveRead:] 是对应的。</p>
+
+<p>注意：只有发送方调用 [+sendMessage:optionalContent:] 方法设置 message 需要已读回执，此属性才有意义。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGMessage.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
 </div>
 						</div>
 						
@@ -2647,6 +2627,343 @@ NSString *msgText = textContent.text;
 
 
 <p>或者直接也可以调用 JMSGMessage 类方法发消息而不必创建 JMSGMessage 对象.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGMessage.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/isAtMe" title="isAtMe"></a>
+	<h3 class="method-title"><code><a href="#//api/name/isAtMe">&ndash;&nbsp;isAtMe</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>是否是@自己的消息（只针对群消息，单聊消息无@功能）</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (BOOL)isAtMe</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGMessage.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/isAtAll" title="isAtAll"></a>
+	<h3 class="method-title"><code><a href="#//api/name/isAtAll">&ndash;&nbsp;isAtAll</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>是否是@所有人的消息（只针对群消息，单聊消息无@功能）</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (BOOL)isAtAll</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGMessage.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/getAt_List:" title="getAt_List:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/getAt_List:">&ndash;&nbsp;getAt_List:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>获取消息体中所有@对象（只针对群消息，单聊消息无@功能）</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)getAt_List:(JMSGCompletionHandler)<em>handler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>handler</code></th>
+						<td><p>结果回调。回调参数：</p>
+
+<ul>
+<li>resultObject 类型为 NSArray，数组里成员的类型为 <a href="../Classes/JMSGUser.html">JMSGUser</a>
+注意：如果该消息为@所有人消息时，resultObject 返回nil，可以通过 <a href="#//api/name/isAtAll">isAtAll</a> 接口来判断是否是@所有人的消息</li>
+<li>error 错误信息</li>
+</ul>
+
+
+<p>如果 error 为 nil, 表示获取成功
+如果 error 不为 nil,表示获取失败</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>从服务器获取，返回消息的所有@对象。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGMessage.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setMessageHaveRead:" title="setMessageHaveRead:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setMessageHaveRead:">&ndash;&nbsp;setMessageHaveRead:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>设置为已读</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)setMessageHaveRead:(JMSGCompletionHandler)<em>handler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>handler</code></th>
+						<td><p>回调</p>
+
+<ul>
+<li>resultObject 返回对应的 message，不过成功失败都会返回 message 对象</li>
+<li>error        不为 nil 表示操作失败</li>
+</ul>
+</td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>注意: 只针对消息接收方有效</p>
+
+<p>这是一个异步接口;</p>
+
+<p>1、接收方：设置消息为已读状态后，<a href="#//api/name/isHaveRead">isHaveRead</a> 属性也会被设置为 YES，</p>
+
+<p>2、发送方：会收到消息已读状态变更事件，SDK 会更新消息的未读人数。</p>
+
+<p>注意：只有发送方调用 [+sendMessage:optionalContent:] 方法设置 message 需要已读回执，此方法才有效。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGMessage.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/getMessageUnreadCount" title="getMessageUnreadCount"></a>
+	<h3 class="method-title"><code><a href="#//api/name/getMessageUnreadCount">&ndash;&nbsp;getMessageUnreadCount</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>消息未读人数</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (NSInteger)getMessageUnreadCount</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>只针对消息发送方有效</p>
+
+<p>注意：只有发送方调用 [+sendMessage:optionalContent:] 方法设置 message 需要已读回执，此方法才有意义。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGMessage.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/messageReadDetailHandler:" title="messageReadDetailHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/messageReadDetailHandler:">&ndash;&nbsp;messageReadDetailHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>已读未读用户列表</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)messageReadDetailHandler:(void ( ^ ) ( NSArray *JMSG_NULLABLE readUsers , NSArray *JMSG_NULLABLE unreadUsers , NSError *JMSG_NULLABLE error ))<em>handler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>handler</code></th>
+						<td><p>结果回调。回调参数:</p>
+
+<ul>
+<li>unreadUsers  未读用户列表</li>
+<li>readsUsers   读用户列表</li>
+<li>error        不为nil表示出错</li>
+</ul>
+</td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>只针对消息发送方有效</p>
+
+<p>注意：只有发送方调用 [+sendMessage:optionalContent:] 方法设置 message 需要已读回执，此方法才有意义。</p>
 			</div>
 			
 
@@ -2951,7 +3268,7 @@ NSString *msgText = textContent.text;
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2017 HXHG. All rights reserved. Updated: 2017-07-03</p>
+						<p class="copyright">Copyright &copy; 2017 HXHG. All rights reserved. Updated: 2017-10-27</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
