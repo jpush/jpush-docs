@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 
-	<title>JMSGFriendNotificationEvent Class Reference</title>
+	<title>JMSGMessageTransparentEvent Class Reference</title>
 
 	<link rel="stylesheet" href="../css/style.css">
 	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
@@ -43,6 +43,8 @@
 							<select id="jump-to">
 	<option value="top">Jump To&#133;</option>
 	
+	<option value="overview">Overview</option>
+	
 
 	
 	
@@ -52,19 +54,17 @@
 
 	
 	
-
-	
-
-	
-	<optgroup label="Instance Methods">
+	<optgroup label="Properties">
 		
-		<option value="//api/name/getReason">- getReason</option>
+		<option value="//api/name/conversation">conversation</option>
 		
-		<option value="//api/name/getFromUsername">- getFromUsername</option>
-		
-		<option value="//api/name/getFromUser">- getFromUser</option>
+		<option value="//api/name/transparentText">transparentText</option>
 		
 	</optgroup>
+	
+
+	
+
 	
 	
 </select>
@@ -79,7 +79,7 @@
 		<div id="overview_contents" class="container">
 			<div id="content">
 				<main role="main">
-					<h1 class="title">JMSGFriendNotificationEvent Class Reference</h1>
+					<h1 class="title">JMSGMessageTransparentEvent Class Reference</h1>
 
 					
 					<div class="section section-specification"><table cellspacing="0"><tbody>
@@ -88,12 +88,14 @@
 	<td><a href="../Classes/JMSGNotificationEvent.html">JMSGNotificationEvent</a> : NSObject</td>
 </tr><tr>
 	<th>Declared in</th>
-	<td>JMSGFriendNotificationEvent.h</td>
+	<td>JMSGNotificationEvent.h</td>
 </tr>
 						</tbody></table></div>
 					
 
                     
+					
+					
 
 					
 					
@@ -106,8 +108,8 @@
 
 						<div class="task-list">
 							<div class="section-method">
-	<a name="//api/name/getReason" title="getReason"></a>
-	<h3 class="method-title"><code><a href="#//api/name/getReason">&ndash;&nbsp;getReason</a></code>
+	<a name="//api/name/conversation" title="conversation"></a>
+	<h3 class="method-title"><code><a href="#//api/name/conversation">&nbsp;&nbsp;conversation</a></code>
 </h3>
 
 	<div class="method-info">
@@ -117,12 +119,12 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>获取事件发生的理由</p>
+				<p>消息所属会话</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (NSString *JMSG_NULLABLE)getReason</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) JMSGConversation *conversation</code></div>
 
 		    
 			
@@ -131,11 +133,6 @@
 
 			
 
-			
-			<div class="method-subsection discussion-section">
-				<h4 class="method-subtitle">Discussion</h4>
-				<p>该字段由对方发起请求时所填，对方如果未填则将返回默认字符串</p>
-			</div>
 			
 
 			
@@ -145,15 +142,15 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">JMSGFriendNotificationEvent.h</code></p>
+				<p><code class="declared-in-ref">JMSGNotificationEvent.h</code></p>
 			</div>
 			
 			
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/getFromUsername" title="getFromUsername"></a>
-	<h3 class="method-title"><code><a href="#//api/name/getFromUsername">&ndash;&nbsp;getFromUsername</a></code>
+	<a name="//api/name/transparentText" title="transparentText"></a>
+	<h3 class="method-title"><code><a href="#//api/name/transparentText">&nbsp;&nbsp;transparentText</a></code>
 </h3>
 
 	<div class="method-info">
@@ -163,59 +160,12 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>事件发送者的username</p>
+				<p>用户自定义透传内容</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (NSString *JMSG_NULLABLE)getFromUsername</code></div>
-
-		    
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection discussion-section">
-				<h4 class="method-subtitle">Discussion</h4>
-				<p>该字段由对方发起请求时所填，对方如果未填则将返回默认字符串
-如果设置了noteName、nickname，返回优先级为noteName、nickname；否则返回username</p>
-			</div>
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">JMSGFriendNotificationEvent.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/getFromUser" title="getFromUser"></a>
-	<h3 class="method-title"><code><a href="#//api/name/getFromUser">&ndash;&nbsp;getFromUser</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>获取事件发送者user</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>- (JMSGUser *JMSG_NULLABLE)getFromUser</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) NSString *transparentText</code></div>
 
 		    
 			
@@ -233,7 +183,7 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">JMSGFriendNotificationEvent.h</code></p>
+				<p><code class="declared-in-ref">JMSGNotificationEvent.h</code></p>
 			</div>
 			
 			

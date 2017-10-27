@@ -64,6 +64,8 @@
 		
 		<option value="//api/name/level">level</option>
 		
+		<option value="//api/name/avatar">avatar</option>
+		
 		<option value="//api/name/flag">flag</option>
 		
 		<option value="//api/name/owner">owner</option>
@@ -84,7 +86,13 @@
 		
 		<option value="//api/name/createGroupWithName:desc:memberArray:completionHandler:">+ createGroupWithName:desc:memberArray:completionHandler:</option>
 		
+		<option value="//api/name/createGroupWithGroupInfo:memberArray:completionHandler:">+ createGroupWithGroupInfo:memberArray:completionHandler:</option>
+		
 		<option value="//api/name/updateGroupInfoWithGroupId:name:desc:completionHandler:">+ updateGroupInfoWithGroupId:name:desc:completionHandler:</option>
+		
+		<option value="//api/name/updateGroupAvatarWithGroupId:avatarData:avatarFormat:completionHandler:">+ updateGroupAvatarWithGroupId:avatarData:avatarFormat:completionHandler:</option>
+		
+		<option value="//api/name/updateGroupInfoWithGid:groupInfo:completionHandler:">+ updateGroupInfoWithGid:groupInfo:completionHandler:</option>
 		
 		<option value="//api/name/groupInfoWithGroupId:completionHandler:">+ groupInfoWithGroupId:completionHandler:</option>
 		
@@ -115,6 +123,14 @@
 		<option value="//api/name/removeMembersWithUsernameArray:appKey:completionHandler:">- removeMembersWithUsernameArray:appKey:completionHandler:</option>
 		
 		<option value="//api/name/exit:">- exit:</option>
+		
+		<option value="//api/name/thumbAvatarData:">- thumbAvatarData:</option>
+		
+		<option value="//api/name/thumbAvatarLocalPath">- thumbAvatarLocalPath</option>
+		
+		<option value="//api/name/largeAvatarData:">- largeAvatarData:</option>
+		
+		<option value="//api/name/largeAvatarLocalPath">- largeAvatarLocalPath</option>
 		
 		<option value="//api/name/displayName">- displayName</option>
 		
@@ -246,6 +262,75 @@
 		</div>
 	</div>
 </div><div class="section-method">
+	<a name="//api/name/createGroupWithGroupInfo:memberArray:completionHandler:" title="createGroupWithGroupInfo:memberArray:completionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/createGroupWithGroupInfo:memberArray:completionHandler:">+&nbsp;createGroupWithGroupInfo:memberArray:completionHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>创建群组</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)createGroupWithGroupInfo:(JMSGGroupInfo *)<em>groupInfo</em> memberArray:(NSArray JMSG_GENERIC ( __kindof NSString *) *JMSG_NULLABLE)<em>usernameArray</em> completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)<em>handler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>groupInfo</code></th>
+						<td><p>群信息类，详细请查看 <a href="../Classes/JMSGGroupInfo.html">JMSGGroupInfo</a> 类</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>usernameArray</code></th>
+						<td><p>初始成员列表。NSArray 里的类型是 NSString</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>handler</code></th>
+						<td><p>结果回调。正常返回 resultObject 的类型是 JMSGGroup。</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>向服务器端提交创建群组请求，返回生成后的群组对象.
+返回群组对象, 群组ID是App 需要关注的, 是后续各种群组维护的基础.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGGroup.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
 	<a name="//api/name/updateGroupInfoWithGroupId:name:desc:completionHandler:" title="updateGroupInfoWithGroupId:name:desc:completionHandler:"></a>
 	<h3 class="method-title"><code><a href="#//api/name/updateGroupInfoWithGroupId:name:desc:completionHandler:">+&nbsp;updateGroupInfoWithGroupId:name:desc:completionHandler:</a></code>
 </h3>
@@ -262,7 +347,7 @@
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>+ (void)updateGroupInfoWithGroupId:(NSString *)<em>groupId</em> name:(NSString *)<em>groupName</em> desc:(NSString *)<em>groupDesc</em> completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)<em>handler</em></code></div>
+			<div class="method-subsection method-declaration"><code>+ (void)updateGroupInfoWithGroupId:(NSString *)<em>groupId</em> name:(NSString *JMSG_NULLABLE)<em>groupName</em> desc:(NSString *JMSG_NULLABLE)<em>groupDesc</em> completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)<em>handler</em></code></div>
 
 		    
 			
@@ -298,6 +383,152 @@
 
 			
 
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>注意：<a href="#//api/name/name">name</a> 和 <a href="#//api/name/desc">desc</a> 不允许传空字符串</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGGroup.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/updateGroupAvatarWithGroupId:avatarData:avatarFormat:completionHandler:" title="updateGroupAvatarWithGroupId:avatarData:avatarFormat:completionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/updateGroupAvatarWithGroupId:avatarData:avatarFormat:completionHandler:">+&nbsp;updateGroupAvatarWithGroupId:avatarData:avatarFormat:completionHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>更新群头像（支持传图片格式）</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)updateGroupAvatarWithGroupId:(NSString *JMSG_NONNULL)<em>groupId</em> avatarData:(NSData *JMSG_NONNULL)<em>avatarData</em> avatarFormat:(NSString *JMSG_NULLABLE)<em>avatarFormat</em> completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)<em>handler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>groupId</code></th>
+						<td><p>待更新的群组ID</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>avatarData</code></th>
+						<td><p>头像数据</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>avatarFormat</code></th>
+						<td><p>头像格式，可以为空，不包括"."</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>handler</code></th>
+						<td><p>回调</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>头像格式参数直接填格式名称，不要带点。正确：@&ldquo;png"，错误：@&rdquo;.png"</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGGroup.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/updateGroupInfoWithGid:groupInfo:completionHandler:" title="updateGroupInfoWithGid:groupInfo:completionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/updateGroupInfoWithGid:groupInfo:completionHandler:">+&nbsp;updateGroupInfoWithGid:groupInfo:completionHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>更新群信息</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)updateGroupInfoWithGid:(NSString *)<em>gid</em> groupInfo:(JMSGGroupInfo *)<em>groupInfo</em> completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)<em>handler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>gid</code></th>
+						<td><p>群组 id</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>groupInfo</code></th>
+						<td><p>群信息类，详细请查看 <a href="../Classes/JMSGGroupInfo.html">JMSGGroupInfo</a> 类</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>handler</code></th>
+						<td><p>结果回调. 正常返回时, resultObject 为 nil.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>注意：修改群名称和群描述时参数不允许传空字符串</p>
+			</div>
 			
 
 			
@@ -673,6 +904,52 @@
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
 				<p>不同等级的群组，人数上限不同。当前默认等级 4，人数上限 200。客户端不可更改。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGGroup.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/avatar" title="avatar"></a>
+	<h3 class="method-title"><code><a href="#//api/name/avatar">&nbsp;&nbsp;avatar</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>群组头像（媒体文件ID）</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) NSString *avatar</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>此文件ID仅用于内部更新，不支持外部URL。</p>
 			</div>
 			
 
@@ -1505,6 +1782,234 @@
 		</div>
 	</div>
 </div><div class="section-method">
+	<a name="//api/name/thumbAvatarData:" title="thumbAvatarData:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/thumbAvatarData:">&ndash;&nbsp;thumbAvatarData:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>获取头像缩略图文件数据</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)thumbAvatarData:(JMSGAsyncDataHandler)<em>handler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>handler</code></th>
+						<td><p>结果回调。回调参数:</p>
+
+<ul>
+<li>data     头像数据;</li>
+<li>objectId 群组 <a href="#//api/name/gid">gid</a>;</li>
+<li>error    不为nil表示出错;</li>
+</ul>
+
+
+<p>如果 error 为 nil, data 也为 nil, 表示没有头像数据.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>需要展示缩略图时使用。
+如果本地已经有文件，则会返回本地，否则会从服务器上下载。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGGroup.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/thumbAvatarLocalPath" title="thumbAvatarLocalPath"></a>
+	<h3 class="method-title"><code><a href="#//api/name/thumbAvatarLocalPath">&ndash;&nbsp;thumbAvatarLocalPath</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>获取头像缩略文件的本地路径</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (NSString *JMSG_NULLABLE)thumbAvatarLocalPath</code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>返回本地路，返回值只有在下载完成之后才有意义</p>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGGroup.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/largeAvatarData:" title="largeAvatarData:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/largeAvatarData:">&ndash;&nbsp;largeAvatarData:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>获取头像大图文件数据</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)largeAvatarData:(JMSGAsyncDataHandler)<em>handler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>handler</code></th>
+						<td><p>结果回调。回调参数:</p>
+
+<ul>
+<li>data     头像数据;</li>
+<li>objectId 群组 <a href="#//api/name/gid">gid</a>;</li>
+<li>error    不为nil表示出错;</li>
+</ul>
+
+
+<p>如果 error 为 nil, data 也为 nil, 表示没有头像数据.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>需要展示大图图时使用
+如果本地已经有文件，则会返回本地，否则会从服务器上下载。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGGroup.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/largeAvatarLocalPath" title="largeAvatarLocalPath"></a>
+	<h3 class="method-title"><code><a href="#//api/name/largeAvatarLocalPath">&ndash;&nbsp;largeAvatarLocalPath</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>获取头像大图文件的本地路径</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (NSString *JMSG_NULLABLE)largeAvatarLocalPath</code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>返回本地路，返回值只有在下载完成之后才有意义</p>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGGroup.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
 	<a name="//api/name/displayName" title="displayName"></a>
 	<h3 class="method-title"><code><a href="#//api/name/displayName">&ndash;&nbsp;displayName</a></code>
 </h3>
@@ -1565,7 +2070,7 @@
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2017 HXHG. All rights reserved. Updated: 2017-07-03</p>
+						<p class="copyright">Copyright &copy; 2017 HXHG. All rights reserved. Updated: 2017-10-27</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
