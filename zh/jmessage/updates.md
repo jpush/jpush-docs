@@ -1,5 +1,35 @@
 # 最近更新
 
+
+### iOS SDK v3.3.0
+
+#### 更新时间
+
+2017-10-27
+
+#### ChangeLog
+
+##### BugFix:
+
+* 修复用户反馈的一些 bug
+
+##### NewFeature
+
+* 支持多端同时在线
+* 支持群组头像
+* 支持消息透传
+* 新增消息已读回执功能
+* 新增消息转发接口
+* JMSGConversation 类新增 extras 扩展字段
+* JMSGUser 类新增 extras 扩展字段
+* 用户注册接口支持其他属性值设置
+
+#### 升级指南
+* 使用新版本的JMessage.framework文件替换原工程下的同名旧文件
+* 将新版本的JMessage.framework里的JCore link到工程中，详细参见官网集成文档
+
+
+
 ### Android SDK v2.3.0
 
 #### 更新时间
