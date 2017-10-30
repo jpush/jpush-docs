@@ -1294,7 +1294,7 @@ Example Response
 
 ###  获取某用户的群组列表
 
-    POST /v1/users/{username}/groups/
+    GET /v1/users/{username}/groups/
 
 Request Params
 
