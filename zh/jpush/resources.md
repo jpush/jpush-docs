@@ -14,7 +14,7 @@
                     <li><a href="../client/Android/android_debug_guide">调试指南</a></li>
                     <li><a href="https://sdkfiledl.jiguang.cn/src/jpush-android-3.0.9-google_play.zip">Google Play 版本</a></li>
                 </ul>
-                <p><a href="https://www.jiguang.cn/v1/website/downloads/sdk/android" class="btn btn-default" role="button">下载</a></p>
+                <p><a href="https://www.jiguang.cn/downloads/sdk/android" class="btn btn-default" role="button">下载</a></p>
             </div>
         </div>
     </div>
@@ -29,7 +29,7 @@
                     <li class="li-clear"></li>
                     <li class="li-clear"></li>
                 </ul>
-                <p><a href="https://www.jiguang.cn/v1/website/downloads/sdk/ios" class="btn btn-default" role="button">下载</a></p>
+                <p><a href="https://www.jiguang.cn/downloads/sdk/ios" class="btn btn-default" role="button">下载</a></p>
             </div>
         </div>
     </div>
@@ -44,7 +44,7 @@
                     <li class="li-clear"></li>
                     <li class="li-clear"></li>
                 </ul>
-                <p><a href="https://www.jiguang.cn/v1/website/downloads/sdk/winphone" class="btn btn-default" role="button">下载</a></p>
+                <p><a href="https://www.jiguang.cn/downloads/sdk/winphone" class="btn btn-default" role="button">下载</a></p>
             </div>
         </div>
     </div>
