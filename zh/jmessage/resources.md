@@ -14,7 +14,7 @@
                     <li><a href="../client/jmessage_android_guide">集成步骤</a></li>
                     <li><a href="../client/im_sdk_android/">开发指南</a></li>
                 </ul>
-                <p><a href="https://www.jiguang.cn/v1/website/downloads/sdk/im_android" class="btn btn-default" role="button">下载</a></p>
+                <p><a href="https://www.jiguang.cn/downloads/sdk/im_android/" class="btn btn-default" role="button">下载</a></p>
             </div>
         </div>
     </div>
@@ -29,7 +29,7 @@
                     <li><a href="../client/jmessage_ios_guide/">集成步骤</a></li>
                     <li><a href="../client/im_sdk_ios/">开发指南</a></li>
                 </ul>
-                <p><a href="https://www.jiguang.cn/v1/website/downloads/sdk/im_ios" class="btn btn-default" role="button">下载</a></p>
+                <p><a href="https://www.jiguang.cn/downloads/sdk/im_ios/" class="btn btn-default" role="button">下载</a></p>
             </div>
         </div>
     </div>
@@ -46,7 +46,7 @@
                     <li><a href="../client/im_sdk_js_v2/">开发指南</a></li>
                     <li class="li-clear"></li>
                 </ul>
-                <p><a href="https://www.jiguang.cn/v1/website/downloads/sdk/im_js" class="btn btn-default" role="button">下载</a></p>
+                <p><a href="https://www.jiguang.cn/downloads/sdk/im_js/" class="btn btn-default" role="button">下载</a></p>
             </div>
         </div>
     </div>
@@ -61,7 +61,7 @@
                     <li><a href="../client/im_sdk_win/">集成指南</a></li>
                     <li class="li-clear"></li>
                 </ul>
-                <p><a href="https://www.jiguang.cn/v1/website/downloads/sdk/im_win" class="btn btn-default" role="button">下载</a></p>
+                <p><a href="https://www.jiguang.cn/downloads/sdk/im_win" class="btn btn-default" role="button">下载</a></p>
             </div>
         </div>
     </div>
@@ -88,7 +88,7 @@
             <div class="col-xs-3">
                 <div class="row item demo-download">
                     <div class="apk">
-                        <a href="https://www.jiguang.cn/v1/website/downloads/server_sdk/im/jchat_android"  role="button">Android 下载</a>
+                        <a href="https://www.jiguang.cn/downloads/server_sdk/im/jchat_android"  role="button">Android 下载</a>
                      </div>
                 
                 <div class="code">
@@ -100,7 +100,7 @@
             <div class="col-xs-3" style="padding-left: 10px">
                 <div class="row item demo-download">
                 <div class="apk">
-                <a href="https://www.jiguang.cn/v1/website/downloads/server_sdk/im/jchat_swift" style="margin-left:1px;width:111px"  role="button">iOS下载  </a>
+                <a href="https://www.jiguang.cn/downloads/server_sdk/im/jchat_swift" style="margin-left:1px;width:111px"  role="button">iOS下载  </a>
                 </div>
                  <div class="code">
                  <a href="https://github.com/jpush/jchat-swift" target="_blank" class="download-text">源码</a>
@@ -111,7 +111,7 @@
             <div class="col-xs-3" style="padding-left: 8px;padding-right: 8px">
                 <div class="row item  demo-download">
                  <div class="apk">
-                    <a href="https://www.jiguang.cn/v1/website/downloads/server_sdk/im/jchat_windows" role="button">Windows 下载</a></div>
+                    <a href="https://www.jiguang.cn/downloads/server_sdk/im/jchat_windows" role="button">Windows 下载</a></div>
                      <div class="code">
                      <a href="https://github.com/jpush/jchat-windows" target="_blank" class=" download-text">源码</a></div>
                 </div>
