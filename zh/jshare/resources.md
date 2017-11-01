@@ -11,7 +11,7 @@
                 <ul>
                     <li><a href="../client/Android/android_sdk">Android SDK 集成指南</a></li>
                 </ul>
-                <p><a href="https://www.jiguang.cn/downloads/sdk/share_android" class="btn btn-default" role="button">下载</a></p>
+                <p><a href="https://www.jiguang.cn/v1/website/downloads/sdk/jshare_android" class="btn btn-default" role="button">下载</a></p>
             </div>
         </div>
     </div>
@@ -23,7 +23,7 @@
                 <ul>
                     <li><a href="../client/iOS/ios_sdk">iOS 集成指南</a></li>
                 </ul>
-                <p><a href="https://www.jiguang.cn/downloads/sdk/share_ios" class="btn btn-default" role="button">下载</a></p>
+                <p><a href="https://www.jiguang.cn/v1/website/downloads/sdk/jshare_ios" class="btn btn-default" role="button">下载</a></p>
             </div>
         </div>
     </div>
