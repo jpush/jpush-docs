@@ -2070,7 +2070,7 @@ Response Data
 "words": [
 {
 "name": "fuck",
-"itime": "itime": "1970-01-17 16:49:11"
+"itime": "1970-01-17 16:49:11"
 }
 ],
 "total": 3
