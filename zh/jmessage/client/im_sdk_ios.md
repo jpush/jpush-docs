@@ -1508,7 +1508,7 @@ NSLog(@"消息是否已读:%@", status?@"是":@"否");
  *
  * @param transparentEvent 下发的通知事件，事件类型请查看 JMSGMessageTransparentEvent 类
  *
- * @discussion 上层可以通过 transparentEvent 获取相应信息，如果自定义的透传信息、会话
+ * @discussion 上层可以通过 transparentEvent 获取相应信息，如自定义的透传信息、会话
  *
  * @since 3.3.0
  */
