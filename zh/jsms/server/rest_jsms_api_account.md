@@ -40,8 +40,16 @@ curl --insecure -X GET -v https://api.sms.jpush.cn/v1/accounts/dev -H "Content-T
 ##### 发送成功
 
 ```json
-{"dev_balance": 20}
+{ "dev_balance": 9,  "dev_voice": 702, "dev_industry": 121981, "dev_market": 11683 }
 ```
+
+Response Params
+
+- dev_balance 全类型短信余量
+- dev_voice 语音短信余量
+- dev_industry 行业短信余量
+- dev_market 营销短信余量
+- 如果字段值返回 null 即为未分配余量
 
 ##### 发送失败
 
@@ -87,8 +95,15 @@ curl --insecure -X GET -v https://api.sms.jpush.cn/v1/accounts/app -H "Content-T
 ##### 发送成功
 
 ```json
-{"app_balance": 20}
+{ "app_balance": 1, "app_voice": 22, "app_industry": 44, "app_market": 14 }
 ```
+Response Params
+
+- app_balance 全类型短信余量
+- app_voice 语音短信余量
+- app_industry 行业短信余量
+- app_market 营销短信余量
+- 如果字段值返回 null 即为未分配余量
 
 ##### 发送失败
 
