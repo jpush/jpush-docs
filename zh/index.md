@@ -39,7 +39,7 @@
 
 <div class="row">
 <div class="panel panel-default">
-<div class="panel-heading">JPush 文档</div>
+<div class="panel-heading">极光推送文档</div>
 <div class="panel-body">
     <ul>
     <li><a href="/jpush/client/Android/android_sdk/">Android SDK 概述</a></li>
@@ -67,7 +67,25 @@
 
 <div class="row">
 <div class="panel panel-default">
-<div class="panel-heading">JMessage 文档</div>
+<div class="panel-heading">极光统计文档</div>
+<div class="panel-body">
+    <ul>
+    <li><a href="/janalytics/client/android_sdk/">Android SDK 概述</a></li>
+    <li><a href="/janalytics/client/android_guide/">Android SDK 集成指南</a></li>
+    <li><a href="/janalytics/client/android_api/">Android SDK API</a></li>
+    </ul>
+    <ul>
+    <li><a href="/janalytics/client/ios_sdk/">iOS SDK 概述</a></li>
+    <li><a href="/janalytics/client/ios_guide/">iOS SDK 集成指南</a></li>
+    <li><a href="/janalytics/client/ios_api/">iOS SDK API</a></li>
+    </ul>
+</div>
+</div>
+</div>
+
+<div class="row">
+<div class="panel panel-default">
+<div class="panel-heading">极光 IM 文档</div>
 <div class="panel-body">
     <ul>
     <li><a href="/jmessage/client/im_sdk_android/">Android SDK 概述</a></li>
@@ -89,7 +107,7 @@
 
 <div class="row">
 <div class="panel panel-default">
-<div class="panel-heading">短信服务 文档</div>
+<div class="panel-heading">极光短信文档</div>
 <div class="panel-body">
     <ul>
     <li><a href="/jsms/guideline/JSMS_guide/">短信验证码概述</a></li>
@@ -102,4 +120,22 @@
 </div>
 </div>
 </div>
+
+<div class="row">
+<div class="panel panel-default">
+<div class="panel-heading">极光分享文档</div>
+<div class="panel-body">
+    <ul>
+    <li><a href="/jshare/guideline/intro/">产品介绍</a></li>
+    <li><a href="/jshare/client/Android/android_sdk/">Android SDK 集成指南</a></li>
+    <li><a href="/jshare/client/Android/android_api/">Android SDK API</a></li>
+    </ul>
+    <ul>
+    <li><a href="/jshare/client/iOS/ios_sdk/">iOS SDK 集成指南</a></li>
+    <li><a href="/jshare/client/iOS/ios_api/">iOS SDK API</a></li>
+    </ul>
+</div>
+</div>
+</div>
+
 </div>
