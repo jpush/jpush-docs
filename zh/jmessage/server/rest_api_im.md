@@ -2039,7 +2039,7 @@ Example Request
 Request Header 
 
 ```
-GET  /v1/sensitiveword?stat={start}&count={count}
+GET  /v1/sensitiveword?start={start}&count={count}
 Content-Type: application/json; charset=utf-8  
 ```
 
