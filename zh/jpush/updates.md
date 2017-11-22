@@ -80,7 +80,7 @@
 + 首先解压您获取到的 zip 压缩包
 
 + 更新库文件
-	+ 打开libs文件夹。添加 jcore-android-1.1.7.jar。用 jpush-android-3.0.9.jar 替换项目中原有的极光 jar 文件，并删除原有极光 jar 文件。用对应CPU文件夹下的 libjcore116.so 文件，替换项目中原有的libjpushXXX.so文件，并删除原有的极光 so 文件，每种型号的so文件都可以在SDK下载包中找到。
+	+ 打开libs文件夹。用 jpush-android-3.0.9.jar 和 jcore-android-1.1.7.jar 替换项目中原有的极光 jar 文件，并删除原有极光 jar 文件。用对应CPU文件夹下的 libjcore117.so 文件，替换项目中原有的libjpushXXX.so文件，并删除原有的极光 so 文件，每种型号的so文件都可以在SDK下载包中找到。
 
 + 更新AndroidManifest.xml
 	+ 请对照示例 AndroidManifest 更新 JPush 相关的组件属性，Permission，Action等配置。并在中文提示的位置替换你的包名 和 appkey。
