@@ -858,7 +858,13 @@
 
 #### Change Log
 + 新增：对 Android 6.0 的支持(注意:如果是compileSdkVersion 23上编译,请在build.gradle的android中加入 useLibrary 'org.apache.http.legacy',用来支持apache的http类);
-+ 新增：Android 6.0 请求权限接口:JPushInterface.requestPermission(Activity context),开发者可以在自己的Activity页面调用此接口,请求权限包括{"android.permission.READ_PHONE_STATE","android.permission.WRITE_EXTERNAL_STORAGE","android.permission.READ_EXTERNAL_STORAGE","android.permission.ACCESS_FINE_LOCATION"}.
++ 新增：Android 6.0 请求权限接口:JPushInterface.requestPermission(Activity context),开发者可以在自己的Activity页面调用此接口,请求权限包括: 
+
+	{"android.permission.READ_PHONE_STATE",
+	"android.permission.WRITE_EXTERNAL_STORAGE",
+	"android.permission.READ_EXTERNAL_STORAGE",
+	"android.permission.ACCESS_FINE_LOCATION"}.
+
 + 修复：setPushTime接口的bug。
 + 修复：setLatestNotificationNumber接口的bug。
 + 修复：分离进程导致的部分数据读写异常。
