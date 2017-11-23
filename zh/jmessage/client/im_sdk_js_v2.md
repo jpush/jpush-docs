@@ -1483,7 +1483,7 @@ JMessage#transGroupMsg()
 
 ***Since 2.4.0*** 支持群头像
 
-***Since 2.5.0*** 支持公有群
+***Since 2.5.0*** 支持公开群
 
 JMessage#createGroup()
 
@@ -1494,7 +1494,7 @@ JMessage#createGroup()
 | group_name        | TRUE    | 群组名                |
 | group_description | FALSE   | 群组描述               |
 | avatar            | FALSE   | 群头像图片的 DataForm 对象 |
-| is_limit          | FALSE   | 是否是公有群,默认 false    |
+| is_limit          | FALSE   | 是否是公开群,默认 false    |
 
 **请求示例**
 
@@ -1626,7 +1626,7 @@ JMessage#getGroups()
 
 JMessage#getGroupInfo()
 
-***Since 2.5.0*** 支持公有群
+***Since 2.5.0*** 支持公开群
 
 **请求参数：**
 
@@ -1717,7 +1717,7 @@ JIM.getGroupMembers({
                });
 ```
 
-#### 主动加群（公有群）
+#### 主动加群（公开群）
 
 JMessage#joinGroup()
 
