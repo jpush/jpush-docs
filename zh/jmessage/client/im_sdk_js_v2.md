@@ -1483,6 +1483,8 @@ JMessage#transGroupMsg()
 
 ***Since 2.4.0*** 支持群头像
 
+***Since 2.5.0*** 支持公开群
+
 JMessage#createGroup()
 
 **请求参数：**
@@ -1492,6 +1494,7 @@ JMessage#createGroup()
 | group_name        | TRUE    | 群组名                |
 | group_description | FALSE   | 群组描述               |
 | avatar            | FALSE   | 群头像图片的 DataForm 对象 |
+| is_limit          | FALSE   | 是否是公开群,默认 false    |
 
 **请求示例**
 
@@ -1591,6 +1594,8 @@ JMessage#delGroupMembers()
 
 JMessage#getGroups()
 
+***Since 2.5.0*** 支持 flag 标记
+
 
 **请求参数：**
 
@@ -1610,6 +1615,7 @@ JMessage#getGroups()
                   //data.group_list[0].ctime 群创建时间
                   //data.group_list[0].mtime 最近一次群信息修改时间
                   //data.group_list[0].avatar 群头像
+                  //data.group_list[0].group_type 公开群:2,私有群:0或者1
                }).onFail(function(data) {
                   //data.code 返回码
                   //data.message 描述
@@ -1619,6 +1625,8 @@ JMessage#getGroups()
 #### 获取群信息
 
 JMessage#getGroupInfo()
+
+***Since 2.5.0*** 支持公开群
 
 **请求参数：**
 
@@ -1641,6 +1649,7 @@ JMessage#getGroupInfo()
                   //data.group_info.ctime 群创建时间
                   //data.group_info.mtime 最近一次群信息修改时间
                   //data.group_list[0].avatar 群头像
+                  //data.group_list[0].group_type 公开群:2,私有群:0或者1
                }).onFail(function(data) {
                    //data.code 返回码
                    //data.message 描述
@@ -1705,6 +1714,570 @@ JIM.getGroupMembers({
                }).onFail(function(data) {
                    //data.code 返回码
                    //data.message 描述
+               });
+```
+
+#### 主动加群（公开群）
+
+JMessage#joinGroup()
+
+***Since 2.5.0*** 
+
+**请求参数：**
+
+| KEY    | REQUIRE | DESCRIPTION |
+| ------ | ------- | ----------- |
+| gid    | TRUE    | 群id         |
+| reason | FALSE   | 申请理由        |
+
+**请求示例**
+
+```
+JIM.joinGroup({
+                  'gid' : '<gid>',
+                  'reason' : '<reason>'
+               }).onSuccess(function(data) {
+                  //data.code 返回码
+                  //data.message 描述
+               }).onFail(function(data) {
+                   //data.code 返回码
+                   //data.message 描述
+               });
+```
+
+#### 群主审批入群请求
+
+JMessage#addGroupMemberResp()
+
+***Since 2.5.0*** 
+
+**请求参数：**
+
+| KEY             | REQUIRE | DESCRIPTION                |
+| --------------- | ------- | -------------------------- |
+| gid             | TRUE    | 群id                        |
+| event_id        | TRUE    | 入群申请事件的 id                 |
+| from_username   | TRUE    | 邀请方 username               |
+| target_username | TRUE    | 被邀请方 username              |
+| result          | TRUE    | 审批结果，0:同意 1:拒绝             |
+| reason          | FALSE   | 拒绝原因                       |
+| from_appkey     | FALSE   | 邀请方所属 appkey,默认本应用 appkey  |
+| target_appkey   | FALSE   | 被邀请方所属 appkey,默认本应用 appkey |
+
+
+**请求示例**
+
+```
+
+JIM.addGroupMemberResp({
+                  'gid' : '<gid>',
+                  'event_id' : '<event_id>'
+                  'target_appkey' : '<target_appkey>',
+                  'target_username' : '<target_username>',
+                  'result' : 2,
+                  'from_appkey' : '<from_appkey>',
+                  'from_username' : '<from_username>'
+                  'resaon' : '<reason>'
+               }).onSuccess(function(data) {
+                  //data.code 返回码
+                  //data.message 描述
+               }).onFail(function(data) {
+                   //data.code 返回码
+                   //data.message 描述
+               });
+```
+
+#### 添加群用户禁言
+
+JMessage#addGroupMemSilence()
+
+***Since 2.5.0*** 
+
+**请求参数：**
+
+| KEY             | REQUIRE | DESCRIPTION |
+| --------------- | ------- | ----------- |
+| gid             | TRUE    | 群id         |
+| target_username | TRUE    | 目标 username |
+| target_appkey   | FALSE   | 目标 appkey   |
+
+
+**请求示例**
+
+```
+
+JIM.addGroupMemSilence({
+                  'gid' : '<gid>',
+                  'target_appkey' : '<target_appkey>',
+                  'target_username' : '<target_username>'
+               }).onSuccess(function(data) {
+                  //data.code 返回码
+                  //data.message 描述
+               }).onFail(function(data) {
+                   //data.code 返回码
+                   //data.message 描述
+               });
+```
+
+#### 取消群用户禁言
+
+JMessage#delGroupMemSilence()
+
+***Since 2.5.0*** 
+
+**请求参数：**
+
+| KEY             | REQUIRE | DESCRIPTION |
+| --------------- | ------- | ----------- |
+| gid             | TRUE    | 群id         |
+| target_username | TRUE    | 目标 username |
+| target_appkey   | FALSE   | 目标 appkey   |
+
+
+**请求示例**
+
+```
+
+JIM.delGroupMemSilence({
+                  'gid' : '<gid>',
+                  'target_appkey' : '<target_appkey>',
+                  'target_username' : '<target_username>'
+               }).onSuccess(function(data) {
+                  //data.code 返回码
+                  //data.message 描述
+               }).onFail(function(data) {
+                   //data.code 返回码
+                   //data.message 描述
+               });
+```
+
+### 聊天室
+
+***Since 2.5.0*** 加入聊天室相关功能
+
+#### 获取appkey下聊天室分页列表
+
+JMessage#getAppkeyChatrooms()
+
+**请求参数：**
+
+
+| KEY    | REQUIRE | DESCRIPTION        |
+| ------ | ------- | ------------------ |
+| start  | TRUE    | 分页下标,首页获取为0        |
+| appkey | FALSE   | 聊天室所属 appkey,默认本应用 |
+
+
+**请求示例**
+
+```
+   JIM.getAppkeyChatrooms({
+                   'start' : 0
+                 }).onSuccess(function(data) {
+                   //data.code 返回码
+                   //data.message 描述
+                   //data.result.total 聊天室总数量
+                   //data.result.start 本次查询 index 下标值
+                   //data.result.count 本次查询返回列表大小
+                   //data.result.rooms[].id 聊天室 id
+                   //data.result.rooms[].name 聊天室名字
+                   //data.result.rooms[].description 聊天室描述
+                   //data.result.rooms[].appkey 聊天室所属 appkey
+                   //data.result.rooms[].total_member_count 当前聊天室人数
+                   //data.result.rooms[].max_member_count 聊天室最大容量
+               }).onFail(function(data) {
+                   //data.code 返回码
+                   //data.message 描述
+               });
+```
+
+#### 获取已加入的聊天室
+
+JMessage#getSelfChatrooms()
+
+**请求参数：**
+
+无
+
+**请求示例**
+
+```
+   JIM.getSelfChatrooms().onSuccess(function(data) {
+                   //data.code 返回码
+                   //data.message 描述
+                   //data.chat_rooms[].id 聊天室 id
+                   //data.chat_rooms[].name 聊天室名字
+                   //data.chat_rooms[].description 聊天室描述
+                   //data.chat_rooms[].appkey 聊天室所属 appkey
+                   //data.chat_rooms[].total_member_count 当前聊天室人数
+                   //data.chat_rooms[].max_member_count 聊天室最大容量
+               }).onFail(function(data) {
+                   //data.code 返回码
+                   //data.message 描述
+               });
+```
+
+#### 获取聊天室详情
+
+JMessage#getChatroomInfo()
+
+**请求参数：**
+
+
+| KEY  | REQUIRE | DESCRIPTION |
+| ---- | ------- | ----------- |
+| id   | TRUE    | 聊天室 id      |
+
+
+**请求示例**
+
+```
+   JIM.getChatroomInfo({
+                   'id' : '<id>'
+                 }).onSuccess(function(data) {
+                   //data.code 返回码
+                   //data.message 描述
+                   //data.info.id 聊天室 id
+                   //data.info.name 聊天室名字
+                   //data.info.description 聊天室描述
+                   //data.info.appkey 聊天室所属 appkey
+                   //data.info.total_member_count 当前聊天室人数
+                   //data.info.max_member_count 聊天室最大容量
+               }).onFail(function(data) {
+                   //data.code 返回码
+                   //data.message 描述
+               });
+```
+
+#### 进入聊天室
+
+JMessage#enterChatroom ()
+
+**请求参数：**
+
+
+| KEY  | REQUIRE | DESCRIPTION |
+| ---- | ------- | ----------- |
+| id   | TRUE    | 聊天室id       |
+
+
+**请求示例**
+
+```
+   JIM.enterChatroom({
+                   'id' : '<id>'
+                 }).onSuccess(function(data) {
+                   //data.code 返回码
+                   //data.message 描述
+                   //data.id 聊天室 id
+               }).onFail(function(data) {
+                   //data.code 返回码
+                   //data.message 描述
+               });
+```
+
+#### 退出聊天室
+
+JMessage#exitChatroom ()
+
+**请求参数：**
+
+
+| KEY  | REQUIRE | DESCRIPTION |
+| ---- | ------- | ----------- |
+| id   | TRUE    | 聊天室id       |
+
+
+**请求示例**
+
+```
+   JIM.exitChatroom({
+                   'id' : '<id>'
+                 }).onSuccess(function(data) {
+                   //data.code 返回码
+                   //data.message 描述
+                   //data.id 聊天室 id
+               }).onFail(function(data) {
+                   //data.code 返回码
+                   //data.message 描述
+               });
+```
+
+#### 聊天室发送文本消息
+
+JMessage#sendChatroomMsg()
+
+**请求参数：**
+
+| KEY          | REQUIRE           | DESCRIPTION             |
+| ------------ | ----------------- | ----------------------- |
+| target_rid   | TRUE              | 目标 id                   |
+| content      | 与 msg_body  参数二选一 | 消息文本                    |
+| msg_body     | 与 content 参数二选一   | 消息的 msg_body，用来实现消息转发功能 |
+| target_rname | FALSE             | 接收者的展示名                 |
+| extras       | FALSE             | 附加字段,字典类型               |
+
+**请求示例**
+
+```
+   // 发送文本消息
+   JIM.sendChatroomMsg({
+                 'target_rid' : '<targetRid>',
+                 'content' : '<textContent>',
+                 'extras' : 'json object'
+               }).onSuccess(function(data , msg<可选>) {
+                  //data.code 返回码
+                  //data.message 描述
+                  //data.room_id 目标聊天室 id
+                  //data.msg_id 发送成功后的消息 id
+                  //data.ctime_ms 消息生成时间,毫秒
+               }).onFail(function(data) {
+                  //data.code 返回码
+                  //data.message 描述
+               });
+```
+```
+   // 转发文本消息
+   JIM.sendChatroomMsg({
+                 'target_rid' : '<targetRid>',
+                 'msg_body' : {
+                              'text' : '',
+                            'extras' : 'json object'
+                              }, // 可以直接从已有消息体里面获取msg_body
+               }).onSuccess(function(data , msg<可选>) {
+                  //data.code 返回码
+                  //data.message 描述
+                  //data.room_id 目标聊天室 id
+                  //data.msg_id 发送成功后的消息 id
+                  //data.ctime_ms 消息生成时间,毫秒
+               }).onFail(function(data) {
+                  //data.code 返回码
+                  //data.message 描述
+               });
+```
+**消息体**
+
+[消息体详情](https://docs.jiguang.cn/jmessage/advanced/im_message_protocol/): 
+
+#### 聊天室发送图片消息
+
+JMessage#sendChatroomPic()
+
+**请求参数：**
+
+| KEY          | REQUIRE          | DESCRIPTION             |
+| ------------ | ---------------- | ----------------------- |
+| target_rid   | TRUE             | 目标 id                   |
+| image        | 与 msg_body 参数二选一 | 图片的 DataForm 对象         |
+| msg_body     | 与 image 参数二选一    | 消息的 msg_body，用来实现消息转发功能 |
+| target_rname | FALSE            | 接收者的展示名                 |
+| extras       | FALSE            | 附加字段,字典类型               |
+
+
+**请求示例**
+
+```
+ // 发送消息
+ JIM.sendChatroomPic({
+            'target_rid' : '<targetRid>',
+                 'image' : '<formData with image>',
+                 'extras' : 'json object'
+               }).onSuccess(function(data , msg<可选>) {
+                  //data.code 返回码
+                  //data.message 描述
+                  //data.room_id 目标聊天室 id
+                  //data.msg_id 发送成功后的消息 id
+                  //data.ctime_ms 消息生成时间,毫秒
+               }).onFail(function(data) {
+                  //同发送单聊文本
+               });
+```
+```
+  // 转发消息
+  JIM.sendChatroomPic({
+               'target_rid' : '<targetRid>',
+                 'msg_body' : {
+                             'media_id':'',
+                          'media_crc32':'',
+                                'width':'',
+                               'height':'',
+                               'format':'',
+                                'fsize':'',
+                              'extras' : 'json object'
+                                } // 可以直接从已有消息体里面获取msg_body
+               }).onSuccess(function(data , msg<可选>) {
+                  //data.code 返回码
+                  //data.message 描述
+                  //data.room_id 目标聊天室 id
+                  //data.msg_id 发送成功后的消息 id
+                  //data.ctime_ms 消息生成时间,毫秒
+               }).onFail(function(data) {
+                  //同发送单聊文本
+               });
+```
+
+#### 聊天室发送文件消息
+
+JMessage#sendChatroomFile()
+
+**请求参数：**
+
+| KEY          | REQUIRE          | DESCRIPTION           |
+| ------------ | ---------------- | --------------------- |
+| target_rid   | TRUE             | 目标 id                 |
+| file         | 与 msg_body 参数二选一 | 文件的 DataForm 对象       |
+| msg_body     | 与 file 参数二选一     | 消息的 msg_body，用来实现消息转发 |
+| target_rname | FALSE            | 接收者的展示名               |
+| extras       | FALSE            | 附加字段,字典类型             |
+
+
+**请求示例**
+
+```
+  // 发送消息
+  JIM.sendChatroomFile({
+                 'target_rid' : '<targetRid>',
+                 'file' : '<formData with file>',
+                 'extras' : 'json object'
+               }).onSuccess(function(data , msg) {
+                  //data.code 返回码
+                  //data.message 描述
+                  //data.room_id 目标聊天室 id
+                  //data.msg_id 发送成功后的消息 id
+                  //data.ctime_ms 消息生成时间,毫秒
+               }).onFail(function(data) {
+                   //同发送单聊文本
+               });
+```
+```
+  // 转发消息
+  JIM.sendChatroomFile({
+                 'target_rid' : '<targetRid>',
+                 'msg_body' : {
+                             'media_id':'',
+                          'media_crc32':'',
+                                 'hash':'',
+                                'fname':'',
+                                'fsize':'',
+                              'extras' : 'json object'
+                                } // 可以直接从已有消息体里面获取msg_body
+               }).onSuccess(function(data , msg<可选>) {
+                  //data.code 返回码
+                  //data.message 描述
+                  //data.room_id 目标聊天室 id
+                  //data.msg_id 发送成功后的消息 id
+                  //data.ctime_ms 消息生成时间,毫秒
+               }).onFail(function(data) {
+                  //同发送单聊文本
+               });
+```
+
+#### 聊天室发送位置消息
+
+JMessage#sendChatroomLocation()
+
+**请求参数：**
+
+| KEY          | REQUIRE        | DESCRIPTION             |
+| ------------ | -------------- | ----------------------- |
+| target_rid   | TRUE           | 接收消息者 username          |
+| latitude     | 与 msg_body 二选一 | 纬度                      |
+| longitude    | 与 msg_body 二选一 | 经度                      |
+| scale        | 与 msg_body 二选一 | 地图缩放级别                  |
+| label        | 与 msg_body 二选一 | 地址                      |
+| msg_body     | 与位置相关参数二选一     | 消息的 msg_body，用来实现消息转发功能 |
+| target_rname | FALSE          | 接收者的展示名                 |
+| extras       | FALSE          | 附加字段,字典类型               |
+
+
+**请求示例**
+
+```
+  // 发送消息
+  JIM.sendChatroomLocation({
+                'target_rid' : '<targetRid>',
+		          'latitude' : '<latitude>',
+                 'longitude' : '<longitude>',
+                 'scale' : '<scale>',
+                 'label' : '<address label>'
+                 'extras' : 'json object'
+               }).onSuccess(function(data , msg) {
+                  //data.code 返回码
+                  //data.message 描述
+                  //data.room_id 目标聊天室 id
+                  //data.msg_id 发送成功后的消息 id
+                  //data.ctime_ms 消息生成时间,毫秒
+               }).onFail(function(data) {
+                   //同发送单聊文本
+               });
+```
+```
+  // 转发消息
+  JIM.sendChatroomLocation({
+              'target_rid' : '<targetRid>',
+		        'msg_body' : {
+                               'latitude' : '<latitude>',
+                              'longitude' : '<longitude>',
+                                  'scale' : '<scale>',
+                                  'label' : '<address label>',
+                                 'extras' : 'json object'
+		                      } // 可以直接从已有消息体里面获取msg_body
+               }).onSuccess(function(data , msg) {
+                  //data.code 返回码
+                  //data.message 描述
+                  //data.room_id 目标聊天室 id
+                  //data.msg_id 发送成功后的消息 id
+                  //data.ctime_ms 消息生成时间,毫秒
+               }).onFail(function(data) {
+                   //同发送单聊文本
+               });
+```
+
+#### 聊天室发送自定义消息
+
+JMessage#sendChatroomCustom()
+
+**请求参数：**
+
+| KEY          | REQUIRE      | DESCRIPTION             |
+| ------------ | ------------ | ----------------------- |
+| target_rid   | TRUE         | 接收消息者 username          |
+| custom       | TRUE         | 自定义 json object 消息      |
+| msg_body     | 与 custom 二选一 | 消息的 msg_body，用来实现消息转发功能 |
+| target_rname | FALSE        | 接收者的展示名                 |
+| extras       | FALSE        | 附加字段,字典类型               |
+
+**请求示例**
+
+```
+   // 发送消息
+   JIM.sendChatroomCustom({
+              'target_rid' : '<targetRid>',
+                 'custome' : '<json object>'
+                 'appkey' : '<targetAppkey>'
+               }).onSuccess(function(data , msg) {
+                  //data.code 返回码
+                  //data.message 描述
+                  //data.room_id 目标聊天室 id
+                  //data.msg_id 发送成功后的消息 id
+                  //data.ctime_ms 消息生成时间,毫秒
+               }).onFail(function(data) {
+                  //同发送单聊文本
+               });
+```
+```
+  // 转发消息
+  JIM.sendChatroomCustom({
+           'target_rid' : '<targetRid>',
+           'msg_body' : '<json object>' // 可以直接从已有消息体里面获取msg_body
+               }).onSuccess(function(data , msg) {
+                 //data.code 返回码
+                  //data.message 描述
+                  //data.room_id 目标聊天室 id
+                  //data.msg_id 发送成功后的消息 id
+                  //data.ctime_ms 消息生成时间,毫秒
+               }).onFail(function(data) {
+                  //同发送单聊文本
                });
 ```
 
@@ -2579,6 +3152,68 @@ JIM.onEventNotification(function(data) {
     //data.from_gid 群id 群聊有效
 });
 ```
+**入群申请事件示例：event_type = 56**
+
+***Since 2.5.0*** 
+
+```
+//群主接收该事件
+JIM.onEventNotification(function(data) {
+    //data.event_id 事件 id
+    //data.from_gid 群 id
+    //data.group_name 群名
+    //data.media_id 群头像
+    //data.event_type 事件类型
+    //data.ctime_ms 事件生成时间
+    //data.by_self 是否主动申请入群，true 是，false 被动邀请
+    //data.from_appkey 邀请方或申请方 appkey
+    //data.from_username 邀请方或申请方 username
+    //data.target_appkey 被邀请方所属 appkey
+    //data.to_usernames 被邀请方数组，by_self=false 有效，当by_self=true的时候邀请的目标用户就是from_user
+    //data.description 申请理由，by_self=true 有效
+});
+```
+
+**入群申请被拒绝事件示例：event_type = 57**
+
+***Since 2.5.0*** 
+
+```
+//邀请方或者申请方接收该事件
+JIM.onEventNotification(function(data) {
+    //data.event_id 事件 id
+    //data.from_gid 群 id
+    //data.group_name 群名
+    //data.media_id 群头像
+    //data.event_type 事件类型
+    //data.ctime_ms 事件生成时间
+    //data.from_appkey 群主所属 appkey
+    //data.from_username 群主 username
+    //data.to_usernames 被邀请方或申请方   
+    //data.description 拒绝理由
+});
+```
+
+**群用户禁言事件：event_type = 65**
+
+***Since 2.5.0*** 
+
+```
+//群所有用户接收该事件
+JIM.onEventNotification(function(data) {
+    //data.event_id 事件 id
+    //data.from_gid 群 id
+    //data.group_name 群名
+    //data.media_id 群头像
+    //data.event_type 事件类型
+    //data.ctime_ms 事件生成时间
+    //data.from_appkey 群主所属 appkey
+    //data.from_username 群主 username
+    //data.to_usernames 目标用户列表   
+    //data.extra 1:禁言 2:取消禁言
+});
+```
+
 **多端在线好友变更事件示例：event_type =100**
 
 ```
@@ -2804,6 +3439,38 @@ JIM.onTransMsgRec(function(data) {
 });
 ```
 
+###聊天室消息监听
+
+JMessage#onRoomMsg(fn)
+
+***Since 2.5.0***
+
+**请求参数:**
+
+| KEY  | REQUIRE | DESCRIPTION |
+| ---- | ------- | ----------- |
+| fn   | TRUE    | 消息接收处理函数    |
+
+**返回消息数组**
+
+| KEY      | DESCRIPTION                              |
+| -------- | ---------------------------------------- |
+| room_id  | 聊天室 id                                   |
+| msg_id   | 消息 ID                                    |
+| ctime_ms | 消息生成时间,毫秒                                |
+| content  | [消息体](https://docs.jiguang.cn/jmessage/advanced/im_message_protocol/) |
+
+**使用示例**
+
+```
+JIM.onRoomMsg(function(data) {
+   // data.room_id 聊天室 id
+   // data.msg_id 消息 id
+   // data.ctime_ms 消息生成时间
+   // data.content
+});
+```
+
 ## 高级应用
 
 ### 发送跨应用消息
@@ -2825,7 +3492,7 @@ JMessage#sendSingleMsg()
 | appkey          | FALSE   | 跨应用查询时必填，目标应用的 appkey |
 其中 appkey 为目标 appkey，其他接口类似
 
-### 发送图片或文件
+### 发送、接收图片或文件
 
 SDK 支持单图片,单文件发送。发送文件和图片接口需要接收一个类型为 FormData 参数值，该参数值包含了用户需要发送的文件信息。
 
@@ -2852,6 +3519,8 @@ sendSinglePic({
 ```
 
 其他发送文件,图片接口类似
+
+图片、文件的接收需要通过 JMessage#getResource 接口传入资源 media_id 获取访问路径
 
 ### 发送和接收 Emoij 表情
 
