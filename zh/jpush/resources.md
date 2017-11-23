@@ -12,9 +12,9 @@
                     <li><a href="../client/Android/android_guide">集成指南</a></li>
                     <li><a href="../client/Android/android_3m">3 分钟快速 Demo</a></li>
                     <li><a href="../client/Android/android_debug_guide">调试指南</a></li>
-                    <li><a href="https://sdkfiledl.jiguang.cn/src/jpush-android-3.0.9-google_play.zip">Google Play 版本</a></li>
+                    <li><a href="https://sdkfiledl.jiguang.cn/src/jpush-android-3.1.0-google_play.zip">Google Play 版本</a></li>
                 </ul>
-                <p><a href="https://www.jiguang.cn/downloads/sdk/android/" class="btn btn-default" role="button">下载</a></p>
+                <p><a href="https://www.jiguang.cn/downloads/sdk/android" class="btn btn-default" role="button">下载</a></p>
             </div>
         </div>
     </div>
@@ -44,7 +44,7 @@
                     <li class="li-clear"></li>
                     <li class="li-clear"></li>
                 </ul>
-                <p><a href="https://www.jiguang.cn/downloads/sdk/winphone/" class="btn btn-default" role="button">下载</a></p>
+                <p><a href="https://www.jiguang.cn/downloads/sdk/winphone" class="btn btn-default" role="button">下载</a></p>
             </div>
         </div>
     </div>
@@ -63,7 +63,7 @@
                     <li>更新内容：<a href="https://github.com/jpush/jpush-api-java-client/releases" target="_blank">Change Log</a></li>
                     <li>GitHub：<a href="https://github.com/jpush/jpush-api-java-client" target="_blank">源码</a></li>
                 </ul>
-                <p><a href="https://sdkfiledl.jiguang.cn/src/jpush-api-java-client-3.3.1.zip" class="btn btn-default" role="button">下载</a></p>
+                <p><a href="https://sdkfiledl.jiguang.cn/src/jpush-api-java-client-3.3.3.zip" class="btn btn-default" role="button">下载</a></p>
             </div>
         </div>
     </div>

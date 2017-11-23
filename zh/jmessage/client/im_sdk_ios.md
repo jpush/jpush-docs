@@ -146,18 +146,26 @@ SDK 初始化时，可设置是否启用消息记录漫游。
 ### 注册与登录
 #### 用户注册
 	/*!
-	 * @abstract 新用户注册
+	 * @abstract 新用户注册(支持携带用户信息字段)
 	 *
-	 * @param username 用户名. 长度 4~128 位.
-	 *                 支持的字符: 字母,数字,下划线,英文减号,英文点,@邮件符号. 首字母只允许是字母或者数字.
-	 * @param password 用户密码. 长度 4~128 位.
-	 * @param handler 结果回调. 返回正常时 resultObject 为 nil.
+	 * @param userInfo  用户名. 长度 4~128 位.
+	 *                  支持的字符: 字母,数字,下划线,英文减号,英文点,@邮件符号. 首字母只允许是字母或者数字.
+	 * @param password  用户密码. 长度 4~128 位.
+	 * @param userInfo  用户信息类，注册时携带用户信息字段，除用户头像字段
+	 * @param handler   结果回调. 返回正常时 resultObject 为 nil.
+	 *
+	 * @discussion 注意: 注册时不支持上传头像，其他信息全部支持
 	 */
 	+ (void)registerWithUsername:(NSString *)username
 	                    password:(NSString *)password
+	                    userInfo:(JMSGUserInfo *JMSG_NULLABLE)userInfo
 	           completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)handler;
 ##### 例子
-	[JMSGUser registerWithUsername:@"用户名" password:@"密码" completionHandler:^(id resultObject, NSError *error) {
+	JMSGUserInfo *info = [[JMSGUserInfo alloc]init];
+	info.nickname = @"昵称";
+	info.signature = @"签名";
+	//···
+	[JMSGUser registerWithUsername:@"用户名" password:@"密码" userInfo:info completionHandler:^(id resultObject, NSError *error) {
          if (!error) {
              //注册成功
          } else {
@@ -209,6 +217,9 @@ SDK 初始化时，可设置是否启用消息记录漫游。
 	        //退出登录失败
 	    }
 	}];
+
+### 多端同时在线
+SDK 从 3.3.0版本开始支持多端同时在线，具体规则见[多端在线说明](../guideline/faq/#_5)
 
 ### 用户管理
 #### 批量获取用户信息
@@ -651,6 +662,20 @@ SDK 3.2.1 版本开始（包括3.2.1），离线事件也会走消息同步策�
 	                           scale:(NSNumber *)scale
 	                         address:(NSString *)address
 	                         toGroup:(NSString *)groupId;
+
+#### 消息转发
+	/*!
+	 * @abstract 消息转发
+	 *
+	 * @param message         需要转发的消息
+	 * @param target          目标 target，只能为 JMSGUser 或 JMSGGroup
+	 * @param optionalContent 可选功能，具体请查看 JMSGOptionalContent 类
+	 *
+	 * @discussion 注意：只能转发消息状态为 SendSucceed 和 ReceiveSucceed 的消息。
+	 */
+	+ (void)forwardMessage:(JMSGMessage *)message
+	                target:(id)target
+	       optionalContent:(JMSGOptionalContent *JMSG_NULLABLE)optionalContent;
 
 #### 设置消息的FromName
 	/*!
@@ -1099,10 +1124,12 @@ SDK 3.2.1 版本开始（包括3.2.1），离线事件也会走消息同步策�
 	 * @param groupName 新名称
 	 * @param groupDesc 新描述
 	 * @param handler 结果回调. 正常返回时, resultObject 为 nil.
+	 *
+	 * @discussion 注意：name 和 desc 不允许传空字符串
 	 */
 	+ (void)updateGroupInfoWithGroupId:(NSString *)groupId
-	                              name:(NSString *)groupName
-	                              desc:(NSString *)groupDesc
+	                              name:(NSString *JMSG_NULLABLE)groupName
+	                              desc:(NSString *JMSG_NULLABLE)groupDesc
 	                 completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)handler;
 ##### 例子
 	// 更新群组信息
@@ -1111,6 +1138,35 @@ SDK 3.2.1 版本开始（包括3.2.1），离线事件也会走消息同步策�
                     NSLog(@"更新群组信息成功!");
                 }
     }];
+    
+#### 更新群组信息（统一字段上传）
+	/*!
+	 * @abstract 更新群信息（统一字段上传）
+	 *
+	 * @param gid         群组 id
+	 * @param groupInfo   群信息类，详细请查看 JMSGGroupInfo 类
+	 * @param handler     结果回调. 正常返回时, resultObject 为 nil.
+	 *
+	 * @discussion 注意：修改群名称和群描述时参数不允许传空字符串
+	 */
+	+ (void)updateGroupInfoWithGid:(NSString *)gid
+	                     groupInfo:(JMSGGroupInfo *)groupInfo
+	             completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)handler;    
+#### 更新头像
+	/*!
+	 * @abstract 更新群头像（支持传图片格式）
+	 *
+	 * @param groupId         待更新的群组ID
+	 * @param avatarData      头像数据
+	 * @param avatarFormat    头像格式，可以为空，不包括"."
+	 * @param handler         回调
+	 *
+	 * @discussion 头像格式参数直接填格式名称，不要带点。正确：@"png"，错误：@".png"
+	 */
+	+ (void)updateGroupAvatarWithGroupId:(NSString *JMSG_NONNULL)groupId
+	                          avatarData:(NSData *JMSG_NONNULL)avatarData
+	                        avatarFormat:(NSString *JMSG_NULLABLE)avatarFormat
+	                   completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)handler;    
 
 #### 获取群组信息
 	/*!
@@ -1265,6 +1321,200 @@ SDK 3.2.1 版本开始（包括3.2.1），离线事件也会走消息同步策�
 	        JMSGMessage *resultMessage = (JMSGMessage *)resultObject;
 	    }
 	}]
+
+### 消息已读回执
+***Since 3.3.0***
+#### 已读回执设置
+消息发送方可以在发送消息时，针对单条消息设置是否需要接收方发送已读回执。默认行为为 NO。
+
+通过设置 JMSGOptionalContent 类中的 needReadReceipt 属性来设置是否需要已读回执。
+
+```
+/*!
+ * @abstract 发送消息（附带可选功能，如：控制离线消息存储、自定义通知栏内容、消息已读回执等）
+ *
+ * @param message           通过消息创建类接口，创建好的消息对象
+ * @param optionalContent   可选功能，具体请查看 JMSGOptionalContent 类
+ *
+ * @discussion 可选功能里可以设置离线消息存储、自定义通知栏内容、消息已读回执等，具体请查看 JMSGOptionalContent 类。
+ *
+ */
+- (void)sendMessage:(JMSGMessage *)message optionalContent:(JMSGOptionalContent *)optionalContent;
+```
+
+#### 获取未发送已读回执的人数
+
+当一条需要接收方发送已读回执的消息成功发出之后，消息发送方可以查看这条消息当前尚未发送已读回执的人数.
+
+	/*!
+	 * @abstract 消息未读人数
+	 *
+	 * @discussion 只针对消息发送方有效
+	 *
+	 * 注意：只有发送方调用 [+sendMessage:optionalContent:] 方法设置 message 需要已读回执，此方法才有意义。
+	 */
+	- (NSInteger)getMessageUnreadCount;
+
+#### 获取已读回执详情
+
+发送方可以查看这条消息当前已读回执的详情,详情中包含当前已发送已读回执和未发送已读回执的用户 User 列表等信息
+
+```
+/*!
+ * @abstract 已读未读用户列表
+ *
+ * @param handler 结果回调。回调参数:
+ *
+ * - unreadUsers  未读用户列表
+ * - readsUsers   读用户列表
+ * - error        不为nil表示出错
+ *
+ * @discussion 只针对消息发送方有效
+ *
+ * 注意：只有发送方调用 [+sendMessage:optionalContent:] 方法设置 message 需要已读回执，此方法才有意义。
+ */
+- (void)messageReadDetailHandler:(void(^)(NSArray *JMSG_NULLABLE readUsers, NSArray *JMSG_NULLABLE unreadUsers, NSError *JMSG_NULLABLE error))handler;
+```
+
+#### 消息接收方将消息标记为已读
+
+对于消息接收方，可以将一条消息标记为已读，标记成功后，这条消息的已读状态会记录在本地。 当这条消息是一条需要已读回执的消息时，SDK 还将主动发送一个通知事件 [JMSGMessageReceiptStatusChangeEvent:](./jmessage_ios_appledoc_html/Classes/JMSGMessageReceiptStatusChangeEvent.html) 给消息发送方，通知对方这条消息的已读回执人数发生变化。
+
+***注意：***这个已读状态只会保存在本地，当本地数据被清除，或者用户更换设备登陆之后，已读状态会被重置为NO。
+
+上层通过方法监听此事件.
+
+```
+/*!
+ * @abstract 设置为已读
+ *
+ * @param handler 回调
+ *
+ * - resultObject 返回对应的 message，不过成功失败都会返回 message 对象
+ * - error        不为 nil 表示操作失败
+ *
+ * @discussion 注意: 只针对消息接收方有效
+ * 
+ * 这是一个异步接口;
+ *
+ * 1、接收方：设置消息为已读状态后，isHaveRead 属性也会被设置为 YES，
+ *
+ * 2、发送方：会收到消息已读状态变更事件，SDK 会更新消息的未读人数。
+ *
+ * 注意：只有发送方调用 [+sendMessage:optionalContent:] 方法设置 message 需要已读回执，此方法才有效。
+ */
+- (void)setMessageHaveRead:(JMSGCompletionHandler)handler;
+```
+#### 获取消息是否是已读状态
+
+对于消息接收方，可以通过此接口获取到这条消息是否是已读的状态。 默认所有收到的消息已读状态都为NO。在成功调用  -(void)setMessageHaveRead: 接口后，消息的已读状态变成 YES.
+
+注意:这个已读状态只会保存在本地，当本地数据被清除，或者用户更换设备登陆之后，已读状态会被重置为NO。
+
+```
+/*!
+ * @abstract 是否已读(只针对接收的消息)
+ *
+ * @discussion 该属性与实例方法 [-(void)setMessageHaveRead:] 是对应的。
+ *
+ * 注意：只有发送方调用 [+sendMessage:optionalContent:] 方法设置 message 需要已读回执，此属性才有意义。
+ */
+@property(nonatomic, assign, readonly) BOOL isHaveRead;
+```
+
+#### 消息回执状态变更事件
+对于消息发送方,发送的需要接收方发送已读回执的消息，接收方通过 setMessageHaveRead: 接口成功发送已读回执后，SDK 会上抛这个事件通知消息发送方。发送方通过监听这个事件可以知道是哪个会话中的哪条消息的未回执人数发生了变化。
+
+发送方添加监听：
+
+```
+/*!
+ * @abstract 消息回执状态变更事件
+ *
+ * @param receiptEvent 下发的通知事件，事件类型请查看 JMSGMessageReceiptStatusChangeEvent 类
+ *
+ * @discussion 上层可以通过 receiptEvent 获取相应信息
+ *
+ * @since 3.3.0
+ */
+@optional
+- (void)onReceiveMessageReceiptStatusChangeEvent:(JMSGMessageReceiptStatusChangeEvent *)receiptEvent;
+```
+##### 消息回执相关示例
+
+```
+//发送方
+1、设置消息需要回执功能
+JMSGTextContent *textContent = [[JMSGTextContent alloc] initWithText:text];
+JMSGOptionalContent *optionalCon = [[JMSGOptionalContent alloc] init];
+optionalCon.needReadReceipt = YES;    
+[conversation sendMessage:message optionalContent:optionalCon];
+
+2、获取未回执人数
+NSInteger count =  [self.message getMessageUnreadCount];
+NSLog(@"消息未读人数:%ld",count);
+
+3、获取消息回执详情
+[self.message messageReadDetailHandler:^(NSArray * _Nullable readUsers, NSArray * _Nullable unreadUsers, NSError * _Nullable error) {
+  NSLog(@"\n 已读列表：%@，\n 未读列表：%@",readUsers,unreadUsers);
+ }];
+ 
+ 4、监听已读回执变更事件
+ - (void)onReceiveMessageReceiptStatusChangeEvent:(JMSGMessageReceiptStatusChangeEvent *)receiptEvent{
+    NSArray *messages =receiptEvent.messages;
+    JMSGConversation *conversation = receiptEvent.conversation;
+}
+                
+//接收方
+1、设置消息已读
+[self.message setMessageHaveRead:^(id resultObject, NSError *error) {
+    NSLog(@"发送已读回执:%@",error?@"失败":@"成功");
+ }];
+ 
+2、查看消息已读状态
+BOOL status = self.message.isHaveRead;
+NSLog(@"消息是否已读:%@", status?@"是":@"否");
+```
+
+### 消息透传
+消息透传发送的内容后台不会为其离线保存，只会在对方用户在线的前提下将内容推送给对方。SDK 收到命令之后也不会本地保存，不发送通知栏通知，整体快速响应。  
+开发者可以通过消息透传拓展一些在线场景下的辅助功能，如：实现输入状态提示等。
+
+#### 发送消息透传
+
+```
+/*!
+ * @abstract 消息透传
+ *
+ * @param transparentText 用户自定义透传内容，仅限 NSString 类型
+ * @param handler 回调，error=nil 表示成功
+ *
+ * @discussion 注意：
+ *
+ *  1. 消息透传功能，消息不会进入到后台的离线存储中去，仅当对方用户当前在线时才会成功送达，可以快速响应，方便开发者拓展自定义行为；
+ *
+ *  2. 可用来快速实现一些在线场景下的辅助功能 ：输入状态提示、位置信息提示、开发者自定义等。
+ *
+ */
+- (void)sendTransparentMessage:(NSString *JMSG_NONNULL)transparentText
+             completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)handler;
+```
+
+#### 监听透传消息
+
+```
+/*!
+ * @abstract 消息透传事件
+ *
+ * @param transparentEvent 下发的通知事件，事件类型请查看 JMSGMessageTransparentEvent 类
+ *
+ * @discussion 上层可以通过 transparentEvent 获取相应信息，如自定义的透传信息、会话
+ *
+ * @since 3.3.0
+ */
+@optional
+- (void)onReceiveMessageTransparentEvent:(JMSGMessageTransparentEvent *)transparentEvent;
+```
 
 ### 群组@功能
 消息发送方可以发一条带有@list的消息。
@@ -1857,6 +2107,10 @@ BOOL isAlreadSet = user.isNoDisturb;
 		 
 		 /// 事件类型: 消息撤回
 		 kJMSGEventNotificationMessageRetract = 55,
+		 /// 事件类型: 消息透传
+		 kJMSGEventNotificationMessageTransparent = 58,
+		 /// 事件类型: 消息回执变更
+		 kJMSGEventNotificationMessageReceiptStatusChange = 68,
 	    
 	    /// 消息事件
 	    /// 事件类型: 群组被创建
@@ -1875,6 +2129,8 @@ BOOL isAlreadSet = user.isNoDisturb;
 * 消息事件，如：群事件，SDK会作为一个特殊的消息类型处理，上层通过[onReceiveMessage:error:](./jmessage_ios_appledoc_html/Protocols/JMSGMessageDelegate.html#//api/name/onReceiveMessage:error:)可监听到此事件。
 * 非消息事件，如：用户登录状态变更、好友相关事件等,SDK会作为通知事件下发,上层通过 [onReceiveNotificationEvent:](./jmessage_ios_appledoc_html/Protocols/JMSGEventDelegate.html#//api/name/onReceiveNotificationEvent:) 方法监听此类事件. [使用示例](#监听下发事件实例)
 * 消息撤回事件，上层通过[onReceiveMessageRetractEvent:](./jmessage_ios_appledoc_html/Protocols/JMSGEventDelegate.html#//api/name/onReceiveMessageRetractEvent:)方法监听此事件.
+* 消息透传事件，上层通过[JMSGMessageTransparentEvent:](./jmessage_ios_appledoc_html/Protocols/JMSGEventDelegate.html#//api/name/onReceiveMessageTransparentEvent:)方法监听此事件.
+* 消息回执变更事件，上层通过[JMSGMessageReceiptStatusChangeEvent:](./jmessage_ios_appledoc_html/Protocols/JMSGEventDelegate.html#//api/name/onReceiveMessageReceiptStatusChangeEvent:)方法监听此事件.
 
 #### 用户登录状态变更事件
 #### JMSGNotificationEvent
@@ -1892,25 +2148,6 @@ BOOL isAlreadSet = user.isNoDisturb;
 
 ##### 例子
 [监听该事件的使用示例](#监听下发事件实例)	
-
-#### 消息撤回事件
-#### JMSGNotificationEvent
-	/*!
-	 * @abstract 消息撤回事件
-	 *
-	 * @discussion 上层通过 JMSGEventDelegate 类中的 -(void)onReceiveNotificationEvent: 代理方法监听此事件,详见官方文档.
-	 */
-	@interface JMSGMessageRetractEvent : JMSGNotificationEvent
-	
-	/**
-	 * @abstract 消息撤回所属会话
-	 */
-	@property(nonatomic, strong, readonly) JMSGConversation *conversation;
-	
-	/**
-	 * @abstract 撤回之后的消息
-	 */
-	@property(nonatomic, strong, readonly) JMSGMessage *retractMessage;
 
 #### 好友管理事件
 #### JMSGFriendNotificationEvent
@@ -1936,6 +2173,63 @@ BOOL isAlreadSet = user.isNoDisturb;
 ##### 例子
 [监听该事件的使用示例](#监听下发事件实例)	
 
+#### 消息撤回事件
+#### JMSGNotificationEvent
+	/*!
+	 * @abstract 消息撤回事件
+	 *
+	 * @discussion 上层通过 JMSGEventDelegate 类中的 -(void)onReceiveNotificationEvent: 代理方法监听此事件,详见官方文档.
+	 */
+	@interface JMSGMessageRetractEvent : JMSGNotificationEvent
+	
+	/**
+	 * @abstract 消息撤回所属会话
+	 */
+	@property(nonatomic, strong, readonly) JMSGConversation *conversation;
+	
+	/**
+	 * @abstract 撤回之后的消息
+	 */
+	@property(nonatomic, strong, readonly) JMSGMessage *retractMessage;
+	
+#### 消息透传事件
+#### JMSGMessageTransparentEvent
+	/*!
+	 * @abstract 消息透传事件
+	 */
+	@interface JMSGMessageTransparentEvent : JMSGNotificationEvent
+	/*!
+	 * @abstract 消息所属会话
+	 */
+	@property(nonatomic, strong, readonly) JMSGConversation *conversation;
+	/*!
+	 * @abstract 用户自定义透传内容
+	 */
+	@property(nonatomic, strong, readonly) NSString *transparentText;
+	@end
+	
+##### 例子
+消息透传事件上层通过[onReceiveMessageTransparentEvent:](./jmessage_ios_appledoc_html/Protocols/JMSGEventDelegate.html#//api/name/onReceiveMessageTransparentEvent:)方法监听此事件.
+	
+#### 消息回执变更事件	
+#### JMSGMessageReceiptStatusChangeEvent
+	/*!
+	 * @abstract 消息已读回执状态变更事件
+	 */
+	@interface JMSGMessageReceiptStatusChangeEvent : JMSGNotificationEvent
+	/**
+	 * @abstract 消息所属会话
+	 */
+	@property(nonatomic, strong, readonly) JMSGConversation *conversation;
+	/**
+	 * @abstract 已读回执变更的消息列表
+	 */
+	@property(nonatomic, strong, readonly) NSArray <__kindof JMSGMessage *>*messages;
+	@end
+	
+##### 例子
+消息回执变更事件上层通过[JMSGMessageReceiptStatusChangeEvent:](./jmessage_ios_appledoc_html/Protocols/JMSGEventDelegate.html#//api/name/onReceiveMessageReceiptStatusChangeEvent:)方法监听此事件.
+	
 #### 消息事件
 #### JMSGEventContent
 	/*!
@@ -2093,10 +2387,10 @@ JMSGCompletionHandler 有 2 个参数：
 
 ```
 /*!
- * @abstract 同步离线消息通知
+ * @abstract 同步离线消息、离线事件通知
  *
  * @param conversation    同步离线消息的会话
- * @param offlineMessages 离线消息数组
+ * @param offlineMessages 离线消息、离线事件数组
  *
  * @discussion 注意：
  *
@@ -2109,11 +2403,12 @@ JMSGCompletionHandler 有 2 个参数：
  *
  * 3.1.0 版本之后: SDK 会以会话为单位，不管该会话有多少离线消息，SDK同步完成后每个会话只上抛一次.
  *
- * 注意一个会话只会上抛一个会话,这样会大大减轻上层在收到消息事件需要刷新 UI 的应用场景下,UI 刷新的压力.
+ * 3.2.1 版本之后: SDK 会以会话为单位，不管该会话有多少离线事件，SDK同步完成后每个会话只上抛一次
+ *
+ * 注意：一个会话最多触发两次这个代理，即：离线消息和离线事件各一次,这样会大大减轻上层在收到消息刷新 UI 的压力.
  *
  * 上层通过此代理方法监听离线消息同步的会话,详见官方文档.
  *
- * @since 3.1.0
  */
 @optional
 - (void)onSyncOfflineMessageConversation:(JMSGConversation *)conversation
@@ -2246,6 +2541,36 @@ JMSGCompletionHandler 有 2 个参数：
 @optional
 - (void)onReceiveMessageRetractEvent:(JMSGMessageRetractEvent *)retractEvent;
 ```
+
+```
+/*!
+ * @abstract 消息回执状态变更事件
+ *
+ * @param receiptEvent 下发的通知事件，事件类型请查看 JMSGMessageReceiptStatusChangeEvent 类
+ *
+ * @discussion 上层可以通过 receiptEvent 获取相应信息
+ *
+ * @since 3.3.0
+ */
+@optional
+- (void)onReceiveMessageReceiptStatusChangeEvent:(JMSGMessageReceiptStatusChangeEvent *)receiptEvent;
+```
+
+```
+/*!
+ * @abstract 消息透传事件
+ *
+ * @param transparentEvent 下发的通知事件，事件类型请查看 JMSGMessageTransparentEvent 类
+ *
+ * @discussion 上层可以通过 transparentEvent 获取相应信息，如果自定义的透传信息、会话
+ *
+ * @since 3.3.0
+ */
+@optional
+- (void)onReceiveMessageTransparentEvent:(JMSGMessageTransparentEvent *)transparentEvent;
+```
+
+
 
 #### JMSGDBMigrateDelegate
 	/*!

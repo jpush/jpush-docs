@@ -49,12 +49,14 @@ curl -v https://report.jpush.cn/v3/received?msg_ids=1613113584,1229760629 -u "7d
 [  {"msg_id":"1613113584",
     "android_received":62,
     "ios_apns_sent":11,
+    "ios_apns_received":5,
     "ios_msg_received": 3, 
     "wp_mpns_sent" : 3},
 
    {"msg_id":"1229760629",
     "android_received":56,
     "ios_apns_sent":33,
+    "ios_apns_received":17,
     "ios_msg_received": 3,  
     "wp_mpns_sent" : null}
 ]
@@ -64,9 +66,10 @@ curl -v https://report.jpush.cn/v3/received?msg_ids=1613113584,1229760629 -u "7d
 JSON Array.
 
 + android_received Android 送达。如果无此项数据则为 null。
-+ ios_apns_sent iOS 推送成功。如果无此项数据则为 null。
-+ ios_msg_received  iOS 自定义消息送达数。如果无此项数据则为null。
-+ wp_mpns_sent       winphone通知送达。如果无此项数据则为 null。
++ ios\_apns_sent iOS 通知推送到 APNs 成功。如果无此项数据则为 null。
++ ios\_apns_received iOS 通知送达到设备。如果无项数据则为 null。统计该项请参考 [集成指南高级功能](../../client/iOS/ios_guide_new/#_9) 。
++ ios\_msg_received  iOS 自定义消息送达数。如果无此项数据则为null。
++ wp\_mpns_sent       winphone通知送达。如果无此项数据则为 null。
 
 ## 送达状态查询
 
@@ -164,7 +167,7 @@ curl -v https://report.jpush.cn/v3/messages?msg_ids=269978303 -u "7d431e42dfa6a6
       {"received":1,"target":4,"online_push":1,"click":null,"msg_click":null},
 
    "ios":
-      {"apns_sent":2,"apns_target":2,"click":null,"target":10,"received":8},
+      {"apns_sent":2,"apns_target":2,"apns_received":1,"click":null,"target":10,"received":8},
    
    "winphone":
       {"mpns_target": 100,"mpns_sent": 100,"click": 100,},
@@ -182,18 +185,19 @@ JSON Array
 + msg_id 查询的消息ID
 
 + android Android统计数据
-	   + target 推送目标数
-	   + online_push 在线推送数
-	   + received 推送送达数
-	   + click 用户点击数
-     + msg_click 自定义消息点击数
+	+ target 推送目标数
+	+ online_push 在线推送数
+	+ received 推送送达数
+	+ click 用户点击数
+	+ msg_click 自定义消息点击数
      
 + ios iOS统计数据
-	   + apns_target APNs通知推送目标数
-	   + apns_sent APNS通知成功推送数
-	   + click 用户点击数
-     + target 自定义消息目标数
-     + received 自定义消息送达数
+	+ apns_target APNs通知推送目标数	
+	+ apns_sent APNS通知推送成功数	
+	+ apns_received APNs 通知送达数 ，统计该项请参考 [集成指南高级功能](../../client/iOS/ios_guide_new/#_9) 
+	+ click 用户点击数
+	+ target 自定义消息目标数
+	+ received 自定义消息送达数
 
 + winphone Winphone统计数据
      + mpns_target MPNs通知推送目标数

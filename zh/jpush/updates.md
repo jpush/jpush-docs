@@ -1,5 +1,39 @@
 # 最近更新
 
+### JPush Android SDK v3.1.0
+
+#### 更新时间
+
++ 2017-11-17
+
+#### Change Log
++ 优化进程间通信机制；
++ 优化维持长连接的心跳机制；
++ 代码结构调整以缩减动态库文件的大小；
++ 修复开发者反馈的问题；
+
+#### 升级提示
+
++ 建议升级！
+
+#### 升级指南
+
++ 首先解压您获取到的 zip 压缩包
+
++ 更新库文件
+	+ 打开libs文件夹。用 jpush-android-3.1.0.jar 和 jcore-android-1.1.8.jar 替换项目中原有的极光 jar 文件，并删除原有极光 jar 文件。用对应CPU文件夹下的 libjcore118.so 文件，替换项目中原有的libjpushXXX.so文件，并删除原有的极光 so 文件，每种型号的so文件都可以在SDK下载包中找到。
+
++ 更新AndroidManifest.xml
+	+ 请对照示例 AndroidManifest 更新 JPush 相关的组件属性，Permission，Action等配置。并在中文提示的位置替换你的包名 和 appkey。
+	+ 老用户升级，请注意 3.0.9 版本之后新增了 ContentProvider 组件。
+
++ 添加资源文件
+    + 将res文件夹下的资源文件，添加到您项目res/下对应的文件夹中。根据您应用的界面风格，您可以修改layout文件的配色，字体等属性，或者修改drawable文件夹下的图标。但注意请不要修改所有的文件名，和布局文件中的组件 id。
+    + Android 5.0 以上，使用应用图标做通知icon可能显示异常，请参考res/drawable-xxxx/jpush_notification_icon 作为专门的通知icon。
+详细请见Android SDK 集成指南中的说明，或者example中的示例。
+
++ 如果使用 jcenter 的方式集成JPush，不需要添加相关组件和资源，详细说明请参考官方集成指南。
+
 ### JPush iOS SDK v3.0.7
 
 #### 更新时间
@@ -46,7 +80,7 @@
 + 首先解压您获取到的 zip 压缩包
 
 + 更新库文件
-	+ 打开libs文件夹。添加 jcore-android-1.1.7.jar。用 jpush-android-3.0.9.jar 替换项目中原有的极光 jar 文件，并删除原有极光 jar 文件。用对应CPU文件夹下的 libjcore116.so 文件，替换项目中原有的libjpushXXX.so文件，并删除原有的极光 so 文件，每种型号的so文件都可以在SDK下载包中找到。
+	+ 打开libs文件夹。用 jpush-android-3.0.9.jar 和 jcore-android-1.1.7.jar 替换项目中原有的极光 jar 文件，并删除原有极光 jar 文件。用对应CPU文件夹下的 libjcore117.so 文件，替换项目中原有的libjpushXXX.so文件，并删除原有的极光 so 文件，每种型号的so文件都可以在SDK下载包中找到。
 
 + 更新AndroidManifest.xml
 	+ 请对照示例 AndroidManifest 更新 JPush 相关的组件属性，Permission，Action等配置。并在中文提示的位置替换你的包名 和 appkey。
@@ -824,7 +858,13 @@
 
 #### Change Log
 + 新增：对 Android 6.0 的支持(注意:如果是compileSdkVersion 23上编译,请在build.gradle的android中加入 useLibrary 'org.apache.http.legacy',用来支持apache的http类);
-+ 新增：Android 6.0 请求权限接口:JPushInterface.requestPermission(Activity context),开发者可以在自己的Activity页面调用此接口,请求权限包括{"android.permission.READ_PHONE_STATE","android.permission.WRITE_EXTERNAL_STORAGE","android.permission.READ_EXTERNAL_STORAGE","android.permission.ACCESS_FINE_LOCATION"}.
++ 新增：Android 6.0 请求权限接口:JPushInterface.requestPermission(Activity context),开发者可以在自己的Activity页面调用此接口,请求权限包括: 
+
+	{"android.permission.READ_PHONE_STATE",
+	"android.permission.WRITE_EXTERNAL_STORAGE",
+	"android.permission.READ_EXTERNAL_STORAGE",
+	"android.permission.ACCESS_FINE_LOCATION"}.
+
 + 修复：setPushTime接口的bug。
 + 修复：setLatestNotificationNumber接口的bug。
 + 修复：分离进程导致的部分数据读写异常。

@@ -23,8 +23,8 @@
             <img src="../image/resource_ios.png" alt="iOS">
             <div class="caption">
                 <h4>iOS SDK</h4>
-                <p>版本：v3.2.1</p>
-                <p>更新时间：2017.08.29</p>
+                <p>版本：v3.3.0</p>
+                <p>更新时间：2017.10.27</p>
                 <ul>
                     <li><a href="../client/jmessage_ios_guide/">集成步骤</a></li>
                     <li><a href="../client/im_sdk_ios/">开发指南</a></li>
@@ -40,8 +40,8 @@
             <img src="../image/resource_js.png" alt="Web">
             <div class="caption">
                 <h4>Web SDK</h4>
-                <p>版本：v2.4.0</p>
-                <p>更新时间：2017.10.16</p>
+                <p>版本：v2.4.1</p>
+                <p>更新时间：2017.11.02</p>
                 <ul>
                     <li><a href="../client/im_sdk_js_v2/">开发指南</a></li>
                     <li class="li-clear"></li>
@@ -111,7 +111,7 @@
             <div class="col-xs-3" style="padding-left: 8px;padding-right: 8px">
                 <div class="row item  demo-download">
                  <div class="apk">
-                    <a href="https://www.jiguang.cn/downloads/server_sdk/im/jchat_windows" role="button" target="_blank">Windows 下载</a></div>
+                    <a href="https://www.jiguang.cn/downloads/server_sdk/im/jchat_windows" role="button">Windows 下载</a></div>
                      <div class="code">
                      <a href="https://github.com/jpush/jchat-windows" target="_blank" class=" download-text">源码</a></div>
                 </div>

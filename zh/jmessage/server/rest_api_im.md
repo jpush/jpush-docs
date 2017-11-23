@@ -1294,7 +1294,7 @@ Example Response
 
 ###  获取某用户的群组列表
 
-    POST /v1/users/{username}/groups/
+    GET /v1/users/{username}/groups/
 
 Request Params
 
@@ -2039,7 +2039,7 @@ Example Request
 Request Header 
 
 ```
-GET  /v1/sensitiveword?stat={start}&count={count}
+GET  /v1/sensitiveword?start={start}&count={count}
 Content-Type: application/json; charset=utf-8  
 ```
 
@@ -2070,7 +2070,7 @@ Response Data
 "words": [
 {
 "name": "fuck",
-"itime": "itime": "1970-01-17 16:49:11"
+"itime": "1970-01-17 16:49:11"
 }
 ],
 "total": 3
