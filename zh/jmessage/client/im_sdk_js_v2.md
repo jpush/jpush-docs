@@ -1711,6 +1711,7 @@ JIM.getGroupMembers({
                   //data.member_list[0].nickname 用户昵称
                   //data.member_list[0].avatar 用户头像 id
                   //data.member_list[0].flag  0：普通成员 1：群主
+                  //data.member_list[0].keep_silence 是否被禁言true|false
                }).onFail(function(data) {
                    //data.code 返回码
                    //data.message 描述
