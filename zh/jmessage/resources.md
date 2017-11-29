@@ -40,8 +40,8 @@
             <img src="../image/resource_js.png" alt="Web">
             <div class="caption">
                 <h4>Web SDK</h4>
-                <p>版本：v2.4.1</p>
-                <p>更新时间：2017.11.02</p>
+                <p>版本：v2.5.0</p>
+                <p>更新时间：2017.11.29</p>
                 <ul>
                     <li><a href="../client/im_sdk_js_v2/">开发指南</a></li>
                     <li class="li-clear"></li>
