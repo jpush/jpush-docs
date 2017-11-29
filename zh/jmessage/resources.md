@@ -92,7 +92,7 @@
                      </div>
                 
                 <div class="code">
-                <a href="https://github.com/jpush/jchat-android" target="_blank" class="download-text" role="button">源码</a>
+                <a href="https://github.com/jpush/jchat-android" target="_blank" class="download-text">源码</a>
                 </div>
                 
                 </div>
