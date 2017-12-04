@@ -29,7 +29,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Windows C++ SDK
-   &#160;<span id="projectnumber">1.0.0</span>
+   &#160;<span id="projectnumber">1.1.0</span>
    </div>
    <div id="projectbrief">Windows C++ SDK</div>
   </td>
@@ -87,79 +87,64 @@ $(document).ready(function(){initNavTree('index.html','');});
 <div class="contents">
 <div class="textblock"><h1>Windows C++ SDK 开发指南</h1>
 <h2>概述</h2>
-<p>JMessage Windows SDK 使用 C++ 语言开发, 基于 Web SDK 协议，提供易用的 C++ 接口，编译器支持 VS2017(vc141)，兼容系统 Windows 7、Windows 8/8.1、Windows 10。</p>
+<p>JMessage Windows SDK 使用 C++ 语言开发， 基于 Web SDK 协议，提供易用的 C++ 接口，编译器支持 VS2017(vc141)，兼容系统 Windows 7、Windows 8/8.1、Windows 10。</p>
 <h3>功能</h3>
 <ul>
-<li>实时消息，离线消息，单聊，群聊</li>
+<li>实时消息，离线消息，单聊，群聊，聊天室</li>
 <li>消息类型支持文本，语音，图片，文件，位置，自定义消息等</li>
-<li>异步接口，以<a href="https://github.com/Microsoft/cpprestsdk">cpprestsdk</a>为基础， 请参考<a href="https://github.com/Microsoft/cpprestsdk/wiki/Programming-with-Tasks">Programming with Tasks</a></li>
+<li>基于<a href="https://github.com/Microsoft/cpprestsdk/wiki/Programming-with-Tasks">cpprestsdk</a>的task/then异步接口<a href="https://docs.microsoft.com/zh-cn/cpp/parallel/concrt/reference/task-class?f1url=https%3A%2F%2Fmsdn.microsoft.com%2Fquery%2Fdev15.query%3FappId%3DDev15IDEF1%26l%3DZH-CN%26k%3Dk(PPLTASKS%2FConcurrency%3A%3Atask)%3Bk(Concurrency%3A%3Atask)%3Bk(task)%3Bk(DevLang-C%2B%2B)%3Bk(TargetOS-Windows)%26rd%3Dtrue">(更多关于task)</a> ，上层可以使用回调或co_await方式调用异步接口</li>
 <li>功能基于WEB SDK，开发者可参考 <a href="https://docs.jiguang.cn/jmessage/client/im_sdk_js_v2/">Web SDK</a></li>
 </ul>
 <h3>鉴权</h3>
 <p>SDK在初始化的时候，需要提供相关参数</p>
 <ul>
 <li>appkey : 开发者在极光平台注册的 IM 应用 appkey</li>
-<li>randomStr : 20-36 长度的随机字符串, 作为签名 salt 使用</li>
+<li>randomStr : 20-36 长度的随机字符串， 作为签名 salt 使用</li>
 <li>timestamp : 当前时间戳，用于防止重放攻击，精确到毫秒</li>
 <li>signature : 签名，10 分钟后失效</li>
 </ul>
 <p>签名生成算法如下:</p>
 <div class="fragment"><div class="line">signature = md5(&quot;appkey={appkey}&amp;timestamp={timestamp}&amp;random_str={randomStr}&amp;key={secret}&quot;)</div></div><!-- fragment --><p>其中 secret 为开发者在极光平台注册的 IM 应用 masterSecret</p>
-<p>不建议在客户端计算签名,有泄漏masterSecret的风险</p>
-<div class="fragment"><div class="line">签名生成示例(Qt):</div><div class="line">auto timestamp = QDateTime::currentDateTime().toMSecsSinceEpoch();</div><div class="line">auto str = QString(&quot;appkey=007a1134fb361233c566a1cc&amp;timestamp=%1&amp;random_str=022cd9fd995849b58b3ef0e943421ed9&amp;key=122d61038232226fc12d0422&quot;).arg(time);</div><div class="line"></div><div class="line">auto signature = QCryptographicHash::hash(str.toUtf8(), QCryptographicHash::Md5).toHex().toStdString();</div></div><!-- fragment --><h2>快速开始</h2>
+<p>不建议在客户端计算签名，有泄漏masterSecret的风险</p>
+<div class="fragment"><div class="line">//签名生成示例(Qt):</div><div class="line">auto timestamp = QDateTime::currentDateTime().toMSecsSinceEpoch();</div><div class="line">auto str = QString(&quot;appkey=007a1134fb361233c566a1cc&amp;timestamp=%1&amp;random_str=022cd9fd995849b58b3ef0e943421ed9&amp;key=122d61038232226fc12d0422&quot;).arg(time);</div><div class="line"></div><div class="line">auto signature = QCryptographicHash::hash(str.toUtf8()， QCryptographicHash::Md5).toHex().toStdString();</div></div><!-- fragment --><h2>快速开始</h2>
 <h3>依赖</h3>
 <ul>
 <li>编译器:VS2017</li>
 <li>第三方库: <a href="https://github.com/Microsoft/cpprestsdk">https://github.com/Microsoft/cpprestsdk</a></li>
 </ul>
 <h3>简单示例</h3>
-<p>1.<a href="https://docs.jiguang.cn/jmessage/resources/">下载 SDK</a> ,SDK压缩包内包含:</p>
-<ul>
-<li>lib<ul>
-<li>SDK 导入库</li>
+<p>1.使用SDK包，有两种方式:</p>
+<ol type="1">
+<li><p class="startli">使用NuGet程序包， 在Visual Studio 中右键单击你的项目， 选择<code>管理Nuget程序包</code></p>
+<p class="startli">选择浏览页，搜索<code>jmessage-cpp</code> ， 然后安装需要的版本SDK即可</p>
+</li>
+<li>手动下载<a href="https://docs.jiguang.cn/jmessage/resources/">SDK</a> ，解压<ul>
+<li>将SDK include目录添加到<code>工程属性页-&gt; C/C++ -&gt; 常规-&gt;附加包含目录</code></li>
+<li>将SDK lib 目录添加到<code>工程属性页-&gt; 链接器 -&gt; 常规-&gt;附加库目录</code></li>
+<li>链接SDK库， 在<code>工程属性页-&gt;链接器-&gt; 输入-&gt;附加依赖项</code> 中， Release配置加入Jmcpp.lib， Debug配置加入Jmcppd.lib</li>
 </ul>
 </li>
-<li>include<ul>
-<li>SDK 头文件</li>
-</ul>
-</li>
-<li>bin<ul>
-<li>SDK 运行库</li>
-</ul>
-</li>
-<li>example<ul>
-<li>SDK 使用简单示例工程</li>
-</ul>
-</li>
-</ul>
-<p>2.在Visual Studio 中使用</p>
+</ol>
+<p>2.创建Client</p>
 <ul>
-<li>将SDK include目录添加到VC++ 头文件包含路径</li>
-<li>将SDK lib 目录添加到VC++ 库目录</li>
+<li>Client类提供了SDK的主要功能，所以先创建一个Client对象</li>
+<li>Configuration 参数配置Client， 包括SDK缓存路径， 日志级别等， 一般默认即可 <div class="fragment"><div class="line">#include &lt;Jmcpp/Client.h&gt; // 包含头文件</div><div class="line">Jmcpp::Configuration cfg; // 默认配置</div><div class="line">Jmcpp::Client client(cfg); //创建Client对象</div></div><!-- fragment --></li>
 </ul>
-<p>3.包括头文件,链接SDK库</p>
-<div class="fragment"><div class="line">#include &lt;Jmcpp/Client.h&gt;</div><div class="line">#pragma comment(lib,&quot;Jmcpp.lib&quot;)</div></div><!-- fragment --><p>4.创建Client</p>
+<p>3.在登录前， SDK应该设置相应的监听回调，处理消息接收与事件</p>
 <ul>
-<li>Client类提供了SDK的主要功能,所以先创建一个Client对象</li>
-<li>Configuration 参数配置Client，包括自定义服务器地址，SDK缓存路径，日志级别等，一般默认即可</li>
+<li>SDK提供监听消息接收的回调接口，消息分为实时消息(用户在线时收到的消息)与离线消息 <div class="fragment"><div class="line">// 监听消息</div><div class="line">client.onMessageReceive([](Jmcpp::MessagePtr msg)</div><div class="line">{</div><div class="line">    auto content = msg-&gt;content;</div><div class="line">    if(std::holds_alternative&lt;Jmcpp::TextContent&gt;(content))</div><div class="line">    {</div><div class="line">        auto&amp;&amp; imageCont = std::get&lt;Jmcpp::TextContent&gt;(content);</div><div class="line">        std::cout</div><div class="line">            &lt;&lt; msg-&gt;sender.username &lt;&lt; &quot; send to &quot;</div><div class="line">            &lt;&lt; msg-&gt;receiver.username &lt;&lt; &quot; : &quot;</div><div class="line">            &lt;&lt; imageCont.text</div><div class="line">            &lt;&lt; std::endl;</div><div class="line">    }</div><div class="line">    else if(std::holds_alternative&lt;Jmcpp::ImageContent&gt;(content))</div><div class="line">    {</div><div class="line"></div><div class="line">    }</div><div class="line">    else</div><div class="line">    {</div><div class="line">    }</div><div class="line">});</div><div class="line"></div><div class="line">// 监听同步消息</div><div class="line">client.onMessageSync([](std::vector&lt;Jmcpp::MessagePtr&gt; msgs)</div><div class="line">{</div><div class="line">});</div></div><!-- fragment --></li>
+<li>SDK提供监听事件的回调接口，同样事件分为实时事件与同步事件 <div class="fragment"><div class="line">// 监听实时事件</div><div class="line">client.onEventReceive([](Jmcpp::Event ev)</div><div class="line">{</div><div class="line">    if(std::holds_alternative&lt;Jmcpp::ForceLogoutEvent&gt;(ev))</div><div class="line">    {</div><div class="line">        auto&amp;&amp; e = std::get&lt;Jmcpp::ForceLogoutEvent&gt;(ev);</div><div class="line"></div><div class="line">    }</div><div class="line">    else if(std::holds_alternative&lt;Jmcpp::MessageRetractedEvent&gt;(ev))</div><div class="line">    {</div><div class="line">        auto&amp;&amp; e = std::get&lt;Jmcpp::MessageRetractedEvent&gt;(ev);</div><div class="line"></div><div class="line">    }</div><div class="line">    else</div><div class="line">    {</div><div class="line">        //...</div><div class="line">    }</div><div class="line">});</div><div class="line"></div><div class="line">// 监听事件同步</div><div class="line">client.onEventSync([](std::vector&lt;Jmcpp::Event&gt; ev)</div><div class="line">{</div><div class="line">    //...</div><div class="line">});</div></div><!-- fragment --></li>
 </ul>
-<div class="fragment"><div class="line">Jmcpp::Configuration cfg; // 默认配置</div><div class="line">Jmcpp::Client client(cfg); //创建Client对象</div></div><!-- fragment --><p>5.在登录前，SDK应该设置相应的监听回调，处理消息接收与事件</p>
+<p>4.登录，鉴权，发送消息</p>
 <ul>
-<li>SDK提供监听消息接收的回调接口，消息分为实时消息(用户在线时收到的消息)与离线消息</li>
+<li>SDK登录注册需要开发者鉴权，其中签名开发者应该通过某个服务或其它方式得到，不建议在客户端通过masterSecret计算，这里只是演示用法 <div class="fragment"><div class="line">Jmcpp::Authorization auth;</div><div class="line">auth.appKey = &quot;25b693b31d2c2ad5f072ef0c&quot;;</div><div class="line">auth.randomStr = &quot;022cd9fd995849b58b3ef0e943421ed9&quot;;</div><div class="line">auth.timestamp = &quot;1467967210887&quot;;// 使用时应该获取当前事件戳，这里只是演示</div><div class="line">auth.signature = &quot;D97C2DDA3E46E5E6D482E9E8EE84AF93&quot;;//使用时应该动态计算得到，这里只是演示</div><div class="line"></div><div class="line">//登录</div><div class="line">client.login(&quot;yourUsername&quot;, &quot;yourPassword&quot;,auth).get();</div><div class="line"></div><div class="line">// 创建一条文本消息内容</div><div class="line">auto content = client.createTextContent(&quot;hello!&quot;).get();</div><div class="line">// 创建消息，包含要发送的用户或群</div><div class="line">auto msg = client.buildMessage(Jmcpp::UserId(&quot;targetUsername&quot;), content);</div><div class="line">// 发送消息</div><div class="line">client.sendMessage(msg).get();</div></div><!-- fragment --></li>
 </ul>
-<div class="fragment"><div class="line">// 监听实时消息</div><div class="line">client.onMessageReceive([](Jmcpp::MessagePtr msg)</div><div class="line">{</div><div class="line">    auto content = msg-&gt;content;</div><div class="line">    if(std::holds_alternative&lt;Jmcpp::TextContent&gt;(content))</div><div class="line">    {</div><div class="line">        auto&amp;&amp; imageCont = std::get&lt;Jmcpp::TextContent&gt;(content);</div><div class="line">        std::cout</div><div class="line">                &lt;&lt; msg-&gt;sender.username &lt;&lt; &quot; send to &quot;</div><div class="line">                &lt;&lt; msg-&gt;receiver.username &lt;&lt; &quot; : &quot;</div><div class="line">                &lt;&lt; imageCont.text</div><div class="line">                &lt;&lt; std::endl;</div><div class="line">    }</div><div class="line">    else if(std::holds_alternative&lt;Jmcpp::ImageContent&gt;(content))</div><div class="line">    {</div><div class="line">        ///...</div><div class="line">    }</div><div class="line">    else</div><div class="line">    {</div><div class="line">        //...</div><div class="line">    }</div><div class="line">});</div><div class="line">// 监听同步消息</div><div class="line">client.onMessageSync([](std::vector&lt;Jmcpp::MessagePtr&gt; msgs)</div><div class="line">{</div><div class="line"></div><div class="line">});</div></div><!-- fragment --><ul>
-<li>SDK提供监听事件的回调接口，同样事件分为实时事件与同步事件，</li>
-</ul>
-<div class="fragment"><div class="line">  // 监听事件</div><div class="line">client.onEventReceive([](Jmcpp::Event ev)</div><div class="line">{</div><div class="line">    if(std::holds_alternative&lt;Jmcpp::ForceLogoutEvent&gt;(ev))</div><div class="line">    {</div><div class="line">        auto&amp;&amp; e = std::get&lt;Jmcpp::ForceLogoutEvent&gt;(ev);</div><div class="line">        //...</div><div class="line">    }</div><div class="line">    else if(std::holds_alternative&lt;Jmcpp::MessageRetractedEvent&gt;(ev))</div><div class="line">    {</div><div class="line">        auto&amp;&amp; e = std::get&lt;Jmcpp::MessageRetractedEvent&gt;(ev);</div><div class="line">    }</div><div class="line">    else</div><div class="line">    {</div><div class="line">        //...</div><div class="line">    }</div><div class="line">});</div><div class="line">// 监听事件同步</div><div class="line">client.onEventSync([](std::vector&lt;Jmcpp::Event&gt; ev)</div><div class="line">{</div><div class="line"></div><div class="line">});</div></div><!-- fragment --><p>6.登录，鉴权，发送消息</p>
-<ul>
-<li>SDK登录注册需要开发者鉴权，其中签名开发者应该通过某个服务或其它方式得到,不建议在客户端通过masterSecret计算,这里只是演示用法</li>
-</ul>
-<div class="fragment"><div class="line">Jmcpp::Authorization auth;</div><div class="line">auth.appKey = &quot;25b693b31d2c2ad5f072ef0c&quot;;</div><div class="line">auth.randomStr = &quot;022cd9fd995849b58b3ef0e943421ed9&quot;;</div><div class="line">auth.timestamp = &quot;1467967210887&quot;;// 使用时应该获取当前事件戳,这里只是演示</div><div class="line">auth.signature = &quot;D97C2DDA3E46E5E6D482E9E8EE84AF93&quot;;//使用时应该动态计算得到,这里只是演示</div><div class="line"></div><div class="line">//登录</div><div class="line">client.login(&quot;yourUsername&quot;, &quot;yourPassword&quot;,auth).get();</div><div class="line"></div><div class="line">// 创建一条文本消息内容</div><div class="line">auto content = client.createTextContent(&quot;hello!&quot;).get();</div><div class="line">// 创建消息,包含要发送的用户或群</div><div class="line">auto msg = client.buildMessage(Jmcpp::UserId(&quot;targetUsername&quot;), content);</div><div class="line">// 发送消息</div><div class="line">client.sendMessage(msg).get();</div></div><!-- fragment --><p>7.退出登录，销毁Client</p>
-<div class="fragment"><div class="line">client.logout();</div></div><!-- fragment --><p>8.错误处理</p>
-<div class="fragment"><div class="line">try</div><div class="line">{</div><div class="line">    client.login(&quot;yourUsername&quot;, &quot;yourPassword&quot;,auth).get();</div><div class="line">    auto content = client.createTextContent(&quot;hello!&quot;).get();</div><div class="line">    auto msg = client.buildMessage(Jmcpp::UserId(&quot;targetUsername&quot;), content);</div><div class="line">    client.sendMessage(msg).get();</div><div class="line">    client.logout();</div><div class="line">}</div><div class="line">catch(Jmcpp::ServerException&amp; e)</div><div class="line">{</div><div class="line">   // API 服务器调用返回的错误</div><div class="line">   std::cout &lt;&lt; e.what() &lt;&lt; std::endl;</div><div class="line">}</div><div class="line">catch(std::system_error&amp; e)</div><div class="line">{</div><div class="line">   // API 调用产生的其它错误</div><div class="line">   std::cout &lt;&lt; e.what() &lt;&lt; std::endl;</div><div class="line">}</div></div><!-- fragment --><p>完整示例请查看SDK压缩包内的example</p>
+<p>5.退出登录，销毁Client</p>
+<div class="fragment"><div class="line">client.logout();</div></div><!-- fragment --><p>6.错误处理</p>
+<div class="fragment"><div class="line">try{</div><div class="line">        client.login(&quot;yourUsername&quot;, &quot;yourPassword&quot;, getAuthorization()).get();</div><div class="line">        auto content = client.createTextContent(&quot;hello!&quot;).get();</div><div class="line">        auto msg = client.buildMessage(Jmcpp::UserId(&quot;test&quot;), content);</div><div class="line">        client.sendMessage(msg).get();</div><div class="line">        client.logout();</div><div class="line">    }</div><div class="line">    catch(Jmcpp::ServerException&amp; e)</div><div class="line">    {</div><div class="line">        // API 服务器调用返回的错误</div><div class="line">        std::cout &lt;&lt; e.what() &lt;&lt; std::endl;</div><div class="line">    }</div><div class="line">    catch(std::system_error&amp; e)</div><div class="line">    {</div><div class="line">        // API 调用产生的其它错误</div><div class="line">        std::cout &lt;&lt; e.what() &lt;&lt; std::endl;</div><div class="line">    }</div></div><!-- fragment --><p>完整示例请查看SDK压缩包内的example</p>
 <h2>参考文档</h2>
 <p>错误码定义：<a href="https://docs.jiguang.cn/jmessage/client/im_errorcode_js/">IM web SDK 错误码列表</a></p>
-<p>完整 API 文档：[Windows C++ SDK API]() </p>
+<p>完整 API 文档：<a href="https://docs.jiguang.cn/jmessage/client/im_win_api_docs/">Windows C++ SDK API</a> </p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

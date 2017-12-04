@@ -1,26 +1,4 @@
 var searchData=
 [
-  ['getblacklist',['getBlackList',['../group___xE9_xBB_x91_xE5_x90_x8D_xE5_x8D_x95_xE7_xAE_xA1_xE7_x90_x86.html#ga47351cdfbd90d65be3bd424dab88a2be',1,'Jmcpp::Client']]],
-  ['getconid',['getConId',['../class_jmcpp_1_1_message.html#a23f8d6c317d6577b4483d0650d77352e',1,'Jmcpp::Message']]],
-  ['getconversationlist',['getConversationList',['../class_jmcpp_1_1_client.html#aefeff5049e13291b2dfba2a46112d443',1,'Jmcpp::Client']]],
-  ['getcurrentuser',['getCurrentUser',['../group___xE6_xB3_xA8_xE5_x86_x8C_xE7_x99_xBB_xE5_xBD_x95.html#ga9e8db67ed9d89c5e5c3bf4e8835e8670',1,'Jmcpp::Client']]],
-  ['geteventid',['getEventId',['../namespace_jmcpp.html#aea5da0957c9d9a2fddbaf335347c5641',1,'Jmcpp']]],
-  ['geteventtime',['getEventTime',['../namespace_jmcpp.html#a906b15b6692c32a561f6f97f8b9f2ad0',1,'Jmcpp']]],
-  ['getfriendlist',['getFriendList',['../group___xE5_xA5_xBD_xE5_x8F_x8B_xE7_x9B_xB8_xE5_x85_xB3.html#ga956a5e1311ae6f6218ac5979126d333d',1,'Jmcpp::Client']]],
-  ['getgroupid',['getGroupId',['../class_jmcpp_1_1_chat_id.html#a41d7b03e08fedd7bd2626c6610af8fe6',1,'Jmcpp::ChatId']]],
-  ['getgroupinfo',['getGroupInfo',['../group___xE7_xBE_xA4_xE7_xBB_x84_xE7_xAE_xA1_xE7_x90_x86.html#ga988b58598ad0296b326469423043fdfc',1,'Jmcpp::Client']]],
-  ['getgroupmembers',['getGroupMembers',['../group___xE7_xBE_xA4_xE7_xBB_x84_xE7_xAE_xA1_xE7_x90_x86.html#ga5d78602d0ec1a6a0380b1cdc4fada5e4',1,'Jmcpp::Client']]],
-  ['getgroups',['getGroups',['../group___xE7_xBE_xA4_xE7_xBB_x84_xE7_xAE_xA1_xE7_x90_x86.html#gabc530bc7f963b91567195593a9c8fbbc',1,'Jmcpp::Client']]],
-  ['getgroupshields',['getGroupShields',['../group___xE7_xBE_xA4_xE5_xB1_x8F_xE8_x94_xBD_xE7_xAE_xA1_xE7_x90_x86.html#gaa0eb795164585036d757343d87015ba5',1,'Jmcpp::Client']]],
-  ['getlatestmessage',['getLatestMessage',['../group___xE6_xB6_x88_xE6_x81_xAF_xE5_x8F_x91_xE9_x80_x81_xE4_xB8_x8E_xE7_xAE_xA1_xE7_x90_x86.html#ga4adbd45db519e61114186952ac03d04f',1,'Jmcpp::Client']]],
-  ['getmessagereceipts',['getMessageReceipts',['../group___xE6_xB6_x88_xE6_x81_xAF_xE5_x9B_x9E_xE6_x89_xA7_xE4_xB8_x8E_xE6_x9C_xAA_xE8_xAF_xBB.html#ga153eb4b1de9d5000dfa1c0e525121544',1,'Jmcpp::Client']]],
-  ['getmessages',['getMessages',['../group___xE6_xB6_x88_xE6_x81_xAF_xE5_x8F_x91_xE9_x80_x81_xE4_xB8_x8E_xE7_xAE_xA1_xE7_x90_x86.html#ga4efd32c7e570b3595ca7ca9267fc4b3e',1,'Jmcpp::Client']]],
-  ['getmessagesasync',['getMessagesAsync',['../group___xE6_xB6_x88_xE6_x81_xAF_xE5_x8F_x91_xE9_x80_x81_xE4_xB8_x8E_xE7_xAE_xA1_xE7_x90_x86.html#gaa44d351594df53ab6493087c2f23d3f7',1,'Jmcpp::Client']]],
-  ['getnotdisturb',['getNotDisturb',['../group___xE5_x85_x8D_xE6_x89_x93_xE6_x89_xB0_xE7_xAE_xA1_xE7_x90_x86.html#gab8cf97a1a50682d470c62cc58ae80426',1,'Jmcpp::Client']]],
-  ['getresource',['getResource',['../class_jmcpp_1_1_client.html#abe9b7ec58ce215ba756b214502cb6c6f',1,'Jmcpp::Client']]],
-  ['getresourcedata',['getResourceData',['../class_jmcpp_1_1_client.html#aed253894a9f57998fcc982fb87bc2d12',1,'Jmcpp::Client']]],
-  ['getselfinfo',['getSelfInfo',['../group___xE7_x94_xA8_xE6_x88_xB7_xE4_xBF_xA1_xE6_x81_xAF.html#gab7f1544f8ab77f1d8e553aa3184f81e5',1,'Jmcpp::Client']]],
-  ['getuser',['getUser',['../class_jmcpp_1_1_message.html#a70802e2101ba41e1553f8bfc9b5c33d2',1,'Jmcpp::Message']]],
-  ['getuserid',['getUserId',['../class_jmcpp_1_1_chat_id.html#ac930ab27933ca02ac0f91bdd2aa7f887',1,'Jmcpp::ChatId']]],
-  ['getuserinfo',['getUserInfo',['../group___xE7_x94_xA8_xE6_x88_xB7_xE4_xBF_xA1_xE6_x81_xAF.html#ga3eebee8b8524e46ccac2092e7b2270dc',1,'Jmcpp::Client']]]
+  ['fromstring',['fromString',['../struct_jmcpp_1_1_user_id.html#a51a5c5888e8158c66c789baaca00dd51',1,'Jmcpp::UserId']]]
 ];
