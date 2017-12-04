@@ -1,6 +1,32 @@
 # 最近更新
 
 
+### Windows SDK v1.1.0
+
+#### 更新时间
+
++ 2017-12-04
+
+#### Change Log
+
+##### NewFeature:
++ 聊天室功能
++ 公开群类型，用户可申请入群
++ 支持群禁言
++ 消息透传
++ 提供NuGet程序包
++ 添加 GroupId 类型,代替int64_t , 使用GroupId::get 获取值
+
+#### 升级提示
+
++ 建议升级！
+
+#### 升级指南
+
++ 查阅最新的[SDK文档](https://docs.jiguang.cn/jmessage/client/im_win_api_docs/)
+
+
+
 ### Web SDK v2.5.0
 
 #### 更新时间

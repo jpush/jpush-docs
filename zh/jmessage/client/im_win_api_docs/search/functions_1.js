@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['buildmessage',['buildMessage',['../group___xE6_xB6_x88_xE6_x81_xAF_xE5_x8F_x91_xE9_x80_x81_xE4_xB8_x8E_xE7_xAE_xA1_xE7_x90_x86.html#gaa099f4bae66480f646177ba7cca38056',1,'Jmcpp::Client::buildMessage(UserId const &amp;targetUserId, MessageContent const &amp;content, MessageSettings const &amp;settings={})'],['../group___xE6_xB6_x88_xE6_x81_xAF_xE5_x8F_x91_xE9_x80_x81_xE4_xB8_x8E_xE7_xAE_xA1_xE7_x90_x86.html#gab2794c1c7fe57daaf09af4ef31e01c0e',1,'Jmcpp::Client::buildMessage(int64_t groupId, MessageContent const &amp;content, MessageSettings const &amp;settings={}, std::optional&lt; UserIdList &gt; const &amp;atUsers=std::nullopt)'],['../group___xE6_xB6_x88_xE6_x81_xAF_xE5_x8F_x91_xE9_x80_x81_xE4_xB8_x8E_xE7_xAE_xA1_xE7_x90_x86.html#ga4044dfb2b33c8014120cfc3151ee8eda',1,'Jmcpp::Client::buildMessage(ConversationId const &amp;conId, MessageContent const &amp;content, MessageSettings const &amp;settings={}, std::optional&lt; UserIdList &gt; const &amp;atUsers=std::nullopt)']]]
+  ['addfriend',['addFriend',['../group___xE5_xA5_xBD_xE5_x8F_x8B_xE7_x9B_xB8_xE5_x85_xB3.html#ga2354038231fb48d1f7123a800fa74ee5',1,'Jmcpp::Client']]],
+  ['addgroupmembers',['addGroupMembers',['../group___xE7_xBE_xA4_xE7_xBB_x84_xE7_xAE_xA1_xE7_x90_x86.html#gacfb41f3ced84c69f6b7e6873d48a9211',1,'Jmcpp::Client']]],
+  ['addtoblacklist',['addToBlackList',['../group___xE9_xBB_x91_xE5_x90_x8D_xE5_x8D_x95_xE7_xAE_xA1_xE7_x90_x86.html#gaa8f00dbfe6f31dfd49bd0cb42998ab4d',1,'Jmcpp::Client']]]
 ];

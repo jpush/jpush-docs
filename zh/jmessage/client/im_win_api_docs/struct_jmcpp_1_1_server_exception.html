@@ -29,7 +29,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Windows C++ SDK
-   &#160;<span id="projectnumber">1.0.0</span>
+   &#160;<span id="projectnumber">1.1.0</span>
    </div>
    <div id="projectbrief">Windows C++ SDK</div>
   </td>
@@ -83,6 +83,7 @@ $(document).ready(function(){initNavTree('struct_jmcpp_1_1_server_exception.html
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pro-attribs">Protected 属性</a> &#124;
 <a href="struct_jmcpp_1_1_server_exception-members.html">所有成员列表</a>  </div>
   <div class="headertitle">
 <div class="title">Jmcpp::ServerException结构体 参考</div>  </div>
@@ -98,23 +99,31 @@ $(document).ready(function(){initNavTree('struct_jmcpp_1_1_server_exception.html
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public 成员函数</h2></td></tr>
-<tr class="memitem:aba484447360b7e5fae9c036cb85cba20"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_jmcpp_1_1_server_exception.html#aba484447360b7e5fae9c036cb85cba20">ServerException</a> (int errc, std::string const &amp;msg)</td></tr>
-<tr class="separator:aba484447360b7e5fae9c036cb85cba20"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2593e803c65456dedc18176d415a0aa8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_jmcpp_1_1_server_exception.html#a2593e803c65456dedc18176d415a0aa8">ServerException</a> (int errc, std::string const &amp;msg, std::string const &amp;<a class="el" href="struct_jmcpp_1_1_server_exception.html#aceef0f01470ff561b75de950b636aa31">context</a>={})</td></tr>
+<tr class="separator:a2593e803c65456dedc18176d415a0aa8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4668c511216eafc3e8e5c4549b801b54"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_jmcpp_1_1_server_exception.html#a4668c511216eafc3e8e5c4549b801b54">~ServerException</a> ()</td></tr>
+<tr class="separator:a4668c511216eafc3e8e5c4549b801b54"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4501c400cf4900f3d646575f1e871776"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_jmcpp_1_1_server_exception.html#a4501c400cf4900f3d646575f1e871776">code</a> () const</td></tr>
 <tr class="memdesc:a4501c400cf4900f3d646575f1e871776"><td class="mdescLeft">&#160;</td><td class="mdescRight">错误码  <a href="#a4501c400cf4900f3d646575f1e871776">更多...</a><br /></td></tr>
 <tr class="separator:a4501c400cf4900f3d646575f1e871776"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aceef0f01470ff561b75de950b636aa31"><td class="memItemLeft" align="right" valign="top">std::string const  &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_jmcpp_1_1_server_exception.html#aceef0f01470ff561b75de950b636aa31">context</a> () const</td></tr>
+<tr class="separator:aceef0f01470ff561b75de950b636aa31"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+Protected 属性</h2></td></tr>
+<tr class="memitem:a9e4b6f7bfc320afe9e06f3248e3e21f8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_jmcpp_1_1_server_exception.html#a9e4b6f7bfc320afe9e06f3248e3e21f8">_errc</a> = 0</td></tr>
+<tr class="separator:a9e4b6f7bfc320afe9e06f3248e3e21f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a13a4091e6bb78791e07ca9b0941703b6"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_jmcpp_1_1_server_exception.html#a13a4091e6bb78791e07ca9b0941703b6">_context</a></td></tr>
+<tr class="separator:a13a4091e6bb78791e07ca9b0941703b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p>调用SDK,服务器返回的错误异常 </p>
 </div><h2 class="groupheader">构造及析构函数说明</h2>
-<a id="aba484447360b7e5fae9c036cb85cba20"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aba484447360b7e5fae9c036cb85cba20">&#9670;&nbsp;</a></span>ServerException()</h2>
+<a id="a2593e803c65456dedc18176d415a0aa8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2593e803c65456dedc18176d415a0aa8">&#9670;&nbsp;</a></span>ServerException()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">Jmcpp::ServerException::ServerException </td>
@@ -126,7 +135,13 @@ Public 成员函数</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">std::string const &amp;&#160;</td>
-          <td class="paramname"><em>msg</em>&#160;</td>
+          <td class="paramname"><em>msg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string const &amp;&#160;</td>
+          <td class="paramname"><em>context</em> = <code>{}</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -134,11 +149,23 @@ Public 成员函数</h2></td></tr>
           <td></td><td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4668c511216eafc3e8e5c4549b801b54"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4668c511216eafc3e8e5c4549b801b54">&#9670;&nbsp;</a></span>~ServerException()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Jmcpp::ServerException::~ServerException </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
 </div><div class="memdoc">
 
 </div>
@@ -149,9 +176,6 @@ Public 成员函数</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">int Jmcpp::ServerException::code </td>
@@ -160,15 +184,72 @@ Public 成员函数</h2></td></tr>
           <td> const</td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>错误码 </p>
 <dl class="section see"><dt>参见</dt><dd><a href="https://docs.jiguang.cn/jmessage/client/im_errorcode_js/">https://docs.jiguang.cn/jmessage/client/im_errorcode_js/</a> </dd></dl>
+
+</div>
+</div>
+<a id="aceef0f01470ff561b75de950b636aa31"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aceef0f01470ff561b75de950b636aa31">&#9670;&nbsp;</a></span>context()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string const&amp; Jmcpp::ServerException::context </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">类成员变量说明</h2>
+<a id="a9e4b6f7bfc320afe9e06f3248e3e21f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9e4b6f7bfc320afe9e06f3248e3e21f8">&#9670;&nbsp;</a></span>_errc</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Jmcpp::ServerException::_errc = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a13a4091e6bb78791e07ca9b0941703b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a13a4091e6bb78791e07ca9b0941703b6">&#9670;&nbsp;</a></span>_context</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string Jmcpp::ServerException::_context</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
