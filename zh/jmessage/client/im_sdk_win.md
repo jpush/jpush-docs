@@ -71,17 +71,19 @@ auto signature = QCryptographicHash::hash(str.toUtf8()， QCryptographicHash::Md
 
    * Client类提供了SDK的主要功能，所以先创建一个Client对象
    * Configuration 参数配置Client， 包括SDK缓存路径， 日志级别等， 一般默认即可
-   ```
+
+```
     #include <Jmcpp/Client.h> // 包含头文件
     Jmcpp::Configuration cfg; // 默认配置
     Jmcpp::Client client(cfg); //创建Client对象
-   ```
+```
 
 
 3.在登录前， SDK应该设置相应的监听回调，处理消息接收与事件
 
   * SDK提供监听消息接收的回调接口，消息分为实时消息(用户在线时收到的消息)与离线消息
-   ```
+
+```
 	// 监听消息
 	client.onMessageReceive([](Jmcpp::MessagePtr msg)
 	{
@@ -108,10 +110,11 @@ auto signature = QCryptographicHash::hash(str.toUtf8()， QCryptographicHash::Md
 	client.onMessageSync([](std::vector<Jmcpp::MessagePtr> msgs)
 	{
 	});
-   ```
+```
 
   * SDK提供监听事件的回调接口，同样事件分为实时事件与同步事件
-   ```
+  
+```
 	// 监听实时事件
 	client.onEventReceive([](Jmcpp::Event ev)
 	{
@@ -136,13 +139,14 @@ auto signature = QCryptographicHash::hash(str.toUtf8()， QCryptographicHash::Md
 	{
 		//...
 	});
-   ```
+```
 
 
 4.登录，鉴权，发送消息
 
   * SDK登录注册需要开发者鉴权，其中签名开发者应该通过某个服务或其它方式得到，不建议在客户端通过masterSecret计算，这里只是演示用法
-   ```
+  
+```
     Jmcpp::Authorization auth;
     auth.appKey = "25b693b31d2c2ad5f072ef0c";
     auth.randomStr = "022cd9fd995849b58b3ef0e943421ed9";
@@ -158,18 +162,18 @@ auto signature = QCryptographicHash::hash(str.toUtf8()， QCryptographicHash::Md
     auto msg = client.buildMessage(Jmcpp::UserId("targetUsername"), content);
     // 发送消息
     client.sendMessage(msg).get();
-   ```
+```
 
 
 5.退出登录，销毁Client
 
-   ```
+```
      client.logout();
-   ```
+```
 
 6.错误处理
 
-   ```
+```
 try{
 		client.login("yourUsername", "yourPassword", getAuthorization()).get();
 		auto content = client.createTextContent("hello!").get();
@@ -187,7 +191,7 @@ try{
 		// API 调用产生的其它错误
 		std::cout << e.what() << std::endl;
 	}
-   ```
+```
 
    
 
@@ -196,7 +200,7 @@ try{
 
 ## 参考文档
 
-错误码定义：[IM web SDK 错误码列表](https://docs.jiguang.cn/jmessage/client/im_errorcode_js/)
+错误码定义：[IM Web SDK 错误码列表](https://docs.jiguang.cn/jmessage/client/im_errorcode_js/)
 
 完整 API 文档：[Windows C++ SDK API](https://docs.jiguang.cn/jmessage/client/im_win_api_docs/)
 
