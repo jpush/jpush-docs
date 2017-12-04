@@ -1,4 +1,4 @@
-<h1>Windows C++ SDK 开发指南</h1>
+<h1>Windows C++ SDK 集成指南</h1>
 
 
 ## 概述
