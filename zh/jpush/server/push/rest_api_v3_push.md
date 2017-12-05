@@ -263,13 +263,19 @@ JPush 当前支持 Android, iOS, Windows Phone 三个平台的推送。其关键
 <p>这几种类型可以并存，多项的隐含关系是 AND，即取几种类型结果的交集。</p>
 <p>例如：
 
-先计算 tag 中字段 tag1 和 tag2 的结果 ***`tag1或tag2=A`***;
+"audience" : {
+        "tag" : [ "tag1", "tag2" ],
+        "tag\_and" : [ "tag3", "tag4"],
+        "tag\_not" : [ "tag5", "tag6"]
+    }
 
-再计算 tag\_and 中字段 tag3 和 tag4 的结果 ***`tag3且tag4=B`***;
+先计算 "tag" 字段的结果 ***`tag1或tag2=A`***;
 
-再计算 tag\_not 中字段 tag5 和 tag6 的结果 ***`非(tag5或tag6)=C`*** 。
+再计算 "tag\_and" 字段的结果 ***`tag3且tag4=B`***;
 
-最终的结果为  ***`A且B且C`*** 。 </p>
+再计算 "tag\_not" 字段的结果 ***`非(tag5或tag6)=C`*** 
+
+"audience" 的最终结果为  ***`A且B且C`*** 。 </p>
 </div>
 <br>
 
@@ -337,7 +343,7 @@ JPush 当前支持 Android, iOS, Windows Phone 三个平台的推送。其关键
 ```
 {
 	"audience" : {
-		"tag" : [ "深圳", "广州" ]
+		"tag" : [ "深圳", "广州" ],
 		"tag_and" : [ "女", "会员"]
 	}
 }
