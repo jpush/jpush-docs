@@ -2414,6 +2414,7 @@ class ContactNotifyEventReceiver extends Activity{
     ChatRoomManager.leaveChatRoom(long roomID, final BasicCallback callback);
 ```
 #### 获取聊天室会话信息
+***Since 2.4.0***
 ```
     /**
      * 获取聊天室会话信息
