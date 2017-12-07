@@ -111,7 +111,10 @@
 <div class="panel-body">
     <ul>
     <li><a href="/jsms/guideline/JSMS_guide/">短信验证码概述</a></li>
-    <li><a href="/jsms/client/Android_SMS_SDK/">短信 Android SDK 集成指南</a></li>
+    <li><a href="/jsms/client/Android/android_guide/">短信 Android SDK 集成指南</a></li>
+    <li><a href="/jsms/client/Android/android_api/">Android SDK API</a></li>
+    </ul>
+    <ul>
     <li><a href="/jsms/client/iOS_SMS_SDK/">短信 iOS SDK集成指南</a></li>
     </ul>
     <ul>
