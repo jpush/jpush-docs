@@ -115,7 +115,8 @@
     <li><a href="/jsms/client/Android/android_api/">Android SDK API</a></li>
     </ul>
     <ul>
-    <li><a href="/jsms/client/iOS_SMS_SDK/">短信 iOS SDK集成指南</a></li>
+    <li><a href="/jsms/client/iOS/ios_guide/">短信 iOS SDK 集成指南</a></li>
+    <li><a href="/jsms/client/iOS/ios_api/">iOS SDK API</a></li>
     </ul>
     <ul>
     <li><a href="/jsms/server/rest_api_jsms/">短信 REST API</a></li>

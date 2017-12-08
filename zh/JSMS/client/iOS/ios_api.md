@@ -1,56 +1,6 @@
-# JSMS iOS SDK集成指南
-##SDK 说明
+# JSMS iOS SDK API描述
 
-+ 目前SDK支持iOS7.0及以上版本.
-
-### SDK 压缩包内包括
-
-+ lib文件夹：包含头文件 JSMSSDK.h、JSMSConstant.h，静态库文件libsms-lib.a ，支持的iOS版本为 7.0 及以上版本。
-+ pdf文件：集成指南
-+ demo文件夹：示例
-
-## 集成步骤
-
-### 创建应用
-
-注册成为JPush开发者。在极光的web portal 上创建应用得到APPkey，如果您已经是是极光其他产品的用户并且创建过应用，那么无需重复创建。
-
-### 导入开发包
-
-将SDK包解压，将解压后的JsmsSDK文件夹（包含头文件 include，静态库文件libsms-lib.a 。头文件目录包含JSMSSDK.h、JSMSConstant.h两个对外接口文件）添加到工程目录中。 
-
-### Build Settings
-
-+ 在项目配置，Build Settings，Other Linker Flags 里增加  -ObjC ;
-<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">	<p>1.2.0版本之后，sdk完全支持https传输，不需要再进行AppTransportSecurity相关设置。
-</div>
-
-### Capabilities
-由于SDK内部加密协议涉及KeyChain，如使用Xcode8及以上环境开发，在模拟器运行调试时请开启Application Target的Capabilities->KeyChain Sharing选项，如图：  
-![jsms_ios][1]
-
-### 添加代码
-```
- + (void)registerWithAppKey:(NSString * _Nonnull)appkey; 
-```
-**接口说明**
-
-注册SDK接口：在官网创建应用,创建成功后自动生成 AppKey 用以标识该应用
-
-**调用示例：**
-
-```
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-      // Override point for customization after application launch.
-  
-      //从官网注册获取
-      //注册短信验证的appKey
-      [JSMSSDK registerWithAppKey:kAppKey];
-
-      return YES;
- }
-```
-
+### 获取短信验证码
 ```
 + (void)getVerificationCodeWithPhoneNumber:(NSString * _Nonnull)number 
                              andTemplateID:(NSString * _Nonnull)templateID
@@ -86,6 +36,7 @@
      }];
  }
 ```
+###获取语音验证码
 <div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">	<p>1.2.0版本新增--获取语音验证码接口。
 </div>
 
@@ -120,7 +71,46 @@
      }];
  }
 ```
+###获取语音验证码（可设置播报语言）
+<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">	<p>1.4.0版本新增--获取语音验证码，可设置播报语言类型。
+</div>
 
+```
++ (void)getVoiceVerificationCodeWithPhoneNumber:(NSString * _Nonnull)number
+                                languageOptions:(JSMSLanguageOptions)options
+                              completionHandler:(JSMSCompletionHandler _Nonnull)handler;
+```
+
+**接口说明**
+
+获取语音验证码接口：创建获取语音验证码的按钮，或者是在自己已有的界面的按钮事件里调用获取语音验证码的方法
+
+**参数说明：**
+
++ number :手机号码
++ options:播报语言。参数无效时，默认中文播报
++ handler:请求成功或者失败的回调
+
+**调用示例：**
+
+```
+
+//点击获取语音验证码
+ - (IBAction)sendVoiceAuthCode:(id)sender {
+  
+     [JSMSSDK getVoiceVerificationCodeWithPhoneNumber:@"152xxxxxxxx"
+                                         languageOptions:JSMSLanguage_zh_Hans
+                                       completionHandler:^(id resultObject, NSError *error) {
+     	if (!error) {
+         	NSLog(@"Get voice verification code success!");
+     	}else{
+         	NSLog(@"Get voice verification code failure!");
+         	NSLog(@"%@",error);
+     	}
+     }];
+ }
+```
+### 验证验证码
 ```
 + (void)commitWithPhoneNumber:(NSString * _Nonnull)number
              verificationCode:(NSString * _Nonnull)vCode
@@ -150,7 +140,7 @@
       }
  }];
 ```
-
+### 设置请求验证码时间间隔
 <div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">	<p>1.2.0版本新增--设置获取验证码请求时间间隔的接口。
 </div>
 
@@ -206,4 +196,3 @@
 | 5000   | 服务端错误               |      |
 
 
-[1]: ./image/Jsms-ios-1.png
