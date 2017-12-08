@@ -51,5 +51,6 @@
  }
 ```
 更多接口，参考[iOS SDK API](ios_api)文档说明
-[1]: ./image/Jsms-ios-1.png
+
+[1]: ../image/Jsms-ios-1.png
 
