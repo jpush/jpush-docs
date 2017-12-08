@@ -9,7 +9,7 @@
             <div class="caption">
                 <h4>Android SDK</h4>
                 <ul>
-                    <li><a href="../client/Android_SMS_SDK">Android SDK集成指南</a></li>
+                    <li><a href="../client/Android/android_guide">Android SDK集成指南</a></li>
                 </ul>
                 <p><a href="https://www.jiguang.cn/downloads/sdk/sms_android" class="btn btn-default" role="button">下载</a></p>
             </div>
@@ -21,7 +21,7 @@
             <div class="caption">
                 <h4>iOS SDK</h4>
                 <ul>
-                    <li><a href="../client/iOS_SMS_SDK">iOS SDK 集成指南</a></li>
+                    <li><a href="../client/iOS/ios_guide">iOS SDK 集成指南</a></li>
                 </ul>
                 <p><a href="https://www.jiguang.cn/downloads/sdk/sms_ios" class="btn btn-default" role="button">下载</a></p>
             </div>
