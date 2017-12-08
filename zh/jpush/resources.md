@@ -141,14 +141,21 @@
 ## 服务器端第三方代码
 
 <div class="row 3rd downloads">
-    <div class="col-md-6">
+    <div class="col-md-4">
         <h4>Go</h4>
         <ul>
             <li>开发者： <a href="https://github.com/ylywyn">ylywyn</a></li>
             <li><a href="https://github.com/ylywyn/jpush-api-go-client" target="_blank">项目地址</a></li>
         </ul>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-4">
+        <h4>Go</h4>
+        <ul>
+            <li>开发者：<a href="https://github.com/xialeistudio">xialeistudio</a></li>
+            <li><a href="https://github.com/xialeistudio/go-jpushh" target="_blank">项目地址</a></li>
+        </ul>
+    </div>
+    <div class="col-md-4">
         <h4>C</h4>
         <ul>
             <li>开发者：<a href="https://github.com/coldwind">coldwind</a></li>
