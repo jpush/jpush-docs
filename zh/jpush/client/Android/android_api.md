@@ -32,6 +32,8 @@
 
 + context 应用的 ApplicationContext
 
+**注：** 如果暂时不希望初始化 JPush SDK ，不要调用 init， 并且在应用初始化的时候就调用 stopPush.
+
 ## 停止与恢复推送服务 API
 
 ### 支持的版本
