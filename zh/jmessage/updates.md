@@ -1,6 +1,66 @@
 # 最近更新
 
 
+### iOS SDK v3.4.0
+
+#### 更新时间
+
+2017-12-11
+
+#### ChangeLog
+
+##### BugFix:
+
+* 修复用户反馈的一些 bug
+
+##### NewFeature
+
+* 新增：聊天室功能
+* 新增：群成员禁言功能
+* 新增：公开群组功能，支持申请入群
+* 新增：发送文件消息时支持设置文件类型
+
+#### 升级指南
+* 使用新版本的JMessage.framework文件替换原工程下的同名旧文件
+* 将新版本的JMessage.framework里的JCore link到工程中，详细参见官网集成文档
+
+
+
+### Android SDK v2.4.0
+
+#### 更新时间
+
++ 2017-12-11
+
+#### Change Log
+##### BugFix:
++ 修复从数据库中读取conversation时，targetAppkey没有设置导致title和avatar不正确
++ 提升sdk稳定性
+
+##### NewFeature:
++ 新增聊天室功能
++ 新增公开群组类型，支持申请入群
++ 新增群成员禁言功能
+
+#### 升级提示
+
++ 建议升级！
+
+#### 升级指南
+
++ 首先解压您获取到的 zip 压缩包
+
++ 更新库文件
+	+ 打开libs文件夹。添加jcore-android_v1.1.8.jar。用 jmessage-android_v2.4.0.jar 替换项目中原有的极光jar文件，并删除原有极光jar文件。用对应CPU文件夹下的 libjcore118.so 文件，替换项目中原有 的libjcoreXXX.so 文件，并删除原有的极光 so 文件，每种型号的 so 文件都可以在 SDK 下载包中找到。
+
++ 更新AndroidManifest.xml
+	+ 请参考 SDK下载包最新版本的 demo 来更新AndroidManifest.xml 文件配置。  
+	***注意JCore 从1.1.7版本开始新增了provider组件，如果项目中使用的JCore是1.1.7之前的版本，集成时需要注意manifest中新增的provider组件的配置***
+
++ 如果使用jcenter的方式集成JMessage，不需要添加相关组件和资源，详细集成说明请参考官方[集成指南](https://docs.jiguang.cn/jmessage/client/jmessage_android_guide/)
+
+
+
 ### Windows SDK v1.1.0
 
 #### 更新时间
