@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 
-	<title>JMSGGroupDelegate Protocol Reference</title>
+	<title>JMSGGroupAdminRejectApplicationEvent Class Reference</title>
 
 	<link rel="stylesheet" href="../css/style.css">
 	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
@@ -54,15 +54,19 @@
 
 	
 	
-
-	
-
-	
-	<optgroup label="Instance Methods">
+	<optgroup label="Properties">
 		
-		<option value="//api/name/onGroupInfoChanged:">- onGroupInfoChanged:</option>
+		<option value="//api/name/groupID">groupID</option>
+		
+		<option value="//api/name/rejectReason">rejectReason</option>
+		
+		<option value="//api/name/groupManager">groupManager</option>
 		
 	</optgroup>
+	
+
+	
+
 	
 	
 </select>
@@ -77,27 +81,21 @@
 		<div id="overview_contents" class="container">
 			<div id="content">
 				<main role="main">
-					<h1 class="title">JMSGGroupDelegate Protocol Reference</h1>
+					<h1 class="title">JMSGGroupAdminRejectApplicationEvent Class Reference</h1>
 
 					
 					<div class="section section-specification"><table cellspacing="0"><tbody>
 						<tr>
-	<th>Conforms to</th>
-	<td>NSObject</td>
+	<th>Inherits from</th>
+	<td><a href="../Classes/JMSGNotificationEvent.html">JMSGNotificationEvent</a> : NSObject</td>
 </tr><tr>
 	<th>Declared in</th>
-	<td>JMSGGroupDelegate.h</td>
+	<td>JMSGNotificationEvent.h</td>
 </tr>
 						</tbody></table></div>
 					
 
                     
-					
-					<div class="section section-overview">
-						<a title="Overview" name="overview"></a>
-						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>Group 相关变更通知</p>
-					</div>
 					
 					
 
@@ -112,8 +110,8 @@
 
 						<div class="task-list">
 							<div class="section-method">
-	<a name="//api/name/onGroupInfoChanged:" title="onGroupInfoChanged:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/onGroupInfoChanged:">&ndash;&nbsp;onGroupInfoChanged:</a></code>
+	<a name="//api/name/groupID" title="groupID"></a>
+	<h3 class="method-title"><code><a href="#//api/name/groupID">&nbsp;&nbsp;groupID</a></code>
 </h3>
 
 	<div class="method-info">
@@ -123,37 +121,20 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>群组信息 (GroupInfo) 信息通知</p>
+				<p>群 gid</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (void)onGroupInfoChanged:(JMSGGroup *)<em>group</em></code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) NSString *groupID</code></div>
 
 		    
 			
-			<div class="method-subsection arguments-section parameters">
-				<h4 class="method-subtitle parameter-title">Parameters</h4>
-				<table class="argument-def parameter-def">
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>group</code></th>
-						<td><p>变更后的群组对象</p></td>
-					</tr>
-				
-				</table>
-			</div>
-			
 
 			
 
 			
 
-			
-			<div class="method-subsection discussion-section">
-				<h4 class="method-subtitle">Discussion</h4>
-				<p>如果想要获取通知, 需要先注册回调. 具体请参考 <a href="../Protocols/JMessageDelegate.html">JMessageDelegate</a> 里的说明.</p>
-			</div>
 			
 
 			
@@ -163,7 +144,89 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">JMSGGroupDelegate.h</code></p>
+				<p><code class="declared-in-ref">JMSGNotificationEvent.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/rejectReason" title="rejectReason"></a>
+	<h3 class="method-title"><code><a href="#//api/name/rejectReason">&nbsp;&nbsp;rejectReason</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>拒绝原因</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) NSString *rejectReason</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGNotificationEvent.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/groupManager" title="groupManager"></a>
+	<h3 class="method-title"><code><a href="#//api/name/groupManager">&nbsp;&nbsp;groupManager</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>操作的管理员</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) JMSGUser *groupManager</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGNotificationEvent.h</code></p>
 			</div>
 			
 			
