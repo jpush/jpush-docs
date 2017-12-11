@@ -82,11 +82,15 @@
 		
 		<option value="//api/name/groupConversationWithGroupId:">+ groupConversationWithGroupId:</option>
 		
+		<option value="//api/name/chatRoomConversationWithRoomId:">+ chatRoomConversationWithRoomId:</option>
+		
 		<option value="//api/name/createSingleConversationWithUsername:completionHandler:">+ createSingleConversationWithUsername:completionHandler:</option>
 		
 		<option value="//api/name/createSingleConversationWithUsername:appKey:completionHandler:">+ createSingleConversationWithUsername:appKey:completionHandler:</option>
 		
 		<option value="//api/name/createGroupConversationWithGroupId:completionHandler:">+ createGroupConversationWithGroupId:completionHandler:</option>
+		
+		<option value="//api/name/createChatRoomConversationWithRoomId:completionHandler:">+ createChatRoomConversationWithRoomId:completionHandler:</option>
 		
 		<option value="//api/name/deleteSingleConversationWithUsername:">+ deleteSingleConversationWithUsername:</option>
 		
@@ -94,9 +98,13 @@
 		
 		<option value="//api/name/deleteGroupConversationWithGroupId:">+ deleteGroupConversationWithGroupId:</option>
 		
+		<option value="//api/name/deleteChatRoomConversationWithRoomId:">+ deleteChatRoomConversationWithRoomId:</option>
+		
 		<option value="//api/name/allConversations:">+ allConversations:</option>
 		
 		<option value="//api/name/allUnsortedConversations:">+ allUnsortedConversations:</option>
+		
+		<option value="//api/name/allChatRoomConversation:">+ allChatRoomConversation:</option>
 		
 		<option value="//api/name/getAllUnreadCount">+ getAllUnreadCount</option>
 		
@@ -384,6 +392,64 @@
 		</div>
 	</div>
 </div><div class="section-method">
+	<a name="//api/name/chatRoomConversationWithRoomId:" title="chatRoomConversationWithRoomId:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/chatRoomConversationWithRoomId:">+&nbsp;chatRoomConversationWithRoomId:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>获取聊天室会话</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (JMSGConversation *JMSG_NULLABLE)chatRoomConversationWithRoomId:(NSString *)<em>roomId</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>roomId</code></th>
+						<td><p>聊天室 ID</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>如果会话还不存在，则返回 nil</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGConversation.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
 	<a name="//api/name/createSingleConversationWithUsername:completionHandler:" title="createSingleConversationWithUsername:completionHandler:"></a>
 	<h3 class="method-title"><code><a href="#//api/name/createSingleConversationWithUsername:completionHandler:">+&nbsp;createSingleConversationWithUsername:completionHandler:</a></code>
 </h3>
@@ -538,6 +604,71 @@
 				<p>如果会话已经存在，则直接返回。如果不存在则创建。
 创建会话时如果发现该 groupId 的信息本地还没有，则需要从服务器端上拉取。
 如果从服务器上获取 groupId 的信息不存在或者失败，则创建会话失败。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGConversation.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/createChatRoomConversationWithRoomId:completionHandler:" title="createChatRoomConversationWithRoomId:completionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/createChatRoomConversationWithRoomId:completionHandler:">+&nbsp;createChatRoomConversationWithRoomId:completionHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>创建聊天室会话</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)createChatRoomConversationWithRoomId:(NSString *)<em>roomId</em> completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)<em>handler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>roomId</code></th>
+						<td><p>聊天室 ID。</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>handler</code></th>
+						<td><p>结果回调。正常返回时 resultObject 类型为 JMSGConversation。</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>如果会话已经存在，则直接返回。如果不存在则创建。
+创建会话时如果发现该 roomId 的信息本地还没有，则需要从服务器端上拉取。
+如果从服务器上获取 roomId 的信息不存在或者失败，则创建会话失败。</p>
 			</div>
 			
 
@@ -712,6 +843,64 @@
 		</div>
 	</div>
 </div><div class="section-method">
+	<a name="//api/name/deleteChatRoomConversationWithRoomId:" title="deleteChatRoomConversationWithRoomId:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/deleteChatRoomConversationWithRoomId:">+&nbsp;deleteChatRoomConversationWithRoomId:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>删除聊天室会话</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (BOOL)deleteChatRoomConversationWithRoomId:(NSString *)<em>roomId</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>roomId</code></th>
+						<td><p>聊天室 ID</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>除了删除会话本身，还会删除该会话下所有的聊天消息。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGConversation.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
 	<a name="//api/name/allConversations:" title="allConversations:"></a>
 	<h3 class="method-title"><code><a href="#//api/name/allConversations:">+&nbsp;allConversations:</a></code>
 </h3>
@@ -752,9 +941,7 @@
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>当前是返回所有的 conversation 列表，默认是已经排序。
-我们设计上充分考虑到性能问题，数据库无关联表查询，性能应该不会差。
-但考虑到潜在的性能问题可能，此接口还是异步返回</p>
+				<p>当前是返回所有的 conversation 列表，不包括聊天室会话，默认是已经排序。</p>
 			</div>
 			
 
@@ -812,7 +999,65 @@
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>返回所有的 conversation 列表，返回是没有排序的列表。</p>
+				<p>返回所有的 conversation 列表，不包括聊天室会话，返回是没有排序的列表。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGConversation.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/allChatRoomConversation:" title="allChatRoomConversation:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/allChatRoomConversation:">+&nbsp;allChatRoomConversation:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>返回聊天室 conversation 列表（异步,已排序）</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)allChatRoomConversation:(JMSGCompletionHandler)<em>handler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>handler</code></th>
+						<td><p>结果回调。正常返回时 resultObject 的类型为 NSArray，数组里成员的类型为 JMSGConversation</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>当前是返回所有的chatroom conversation 列表，不包括单聊和群聊会话，默认是已经排序。</p>
 			</div>
 			
 
@@ -1077,7 +1322,7 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>会话类型 - 单聊，群聊</p>
+				<p>会话类型 - 单聊，群聊，聊天室</p>
 			</div>
 			
 		    
@@ -1140,12 +1385,12 @@
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>需要根据会话类型转型。单聊时转型为 JMSGUser，群聊时转型为 <a href="../Classes/JMSGGroup.html">JMSGGroup</a></p>
+				<p>需要根据会话类型转型。单聊时转型为 JMSGUser，群聊时转型为 JMSGGroup，聊天时转型为 <a href="../Classes/JMSGChatRoom.html">JMSGChatRoom</a></p>
 
 <p>注意: 在会话列表上, 请不要使用此属性, 否则有性能问题. 只在进入聊天界面(单个会话) 时使用此属性.</p>
 
 <p>进入会话(聊天界面)后, 访问会话对象的各种信息, 包括群聊的群组成员, 都应使用此属性,
-而没有必要再通过接口查询 UserInfo / GroupInfo.</p>
+而没有必要再通过接口查询 UserInfo / GroupInfo / ChatRoomInfo.</p>
 			</div>
 			
 
@@ -2923,7 +3168,7 @@ JMSGImageContent *imageContent = [[JMSGImageContent alloc] initWithImageData:ima
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2017 HXHG. All rights reserved. Updated: 2017-10-27</p>
+						<p class="copyright">Copyright &copy; 2017 HXHG. All rights reserved. Updated: 2017-12-11</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 
-	<title>JMSGCustomNotification Class Reference</title>
+	<title>JMSGApplyJoinGroupEvent Class Reference</title>
 
 	<link rel="stylesheet" href="../css/style.css">
 	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
@@ -56,13 +56,17 @@
 	
 	<optgroup label="Properties">
 		
-		<option value="//api/name/enabled">enabled</option>
+		<option value="//api/name/eventID">eventID</option>
 		
-		<option value="//api/name/title">title</option>
+		<option value="//api/name/groupID">groupID</option>
 		
-		<option value="//api/name/alert">alert</option>
+		<option value="//api/name/isInitiativeApply">isInitiativeApply</option>
 		
-		<option value="//api/name/atPrefix">atPrefix</option>
+		<option value="//api/name/sendApplyUser">sendApplyUser</option>
+		
+		<option value="//api/name/joinGroupUsers">joinGroupUsers</option>
+		
+		<option value="//api/name/reason">reason</option>
 		
 	</optgroup>
 	
@@ -83,27 +87,21 @@
 		<div id="overview_contents" class="container">
 			<div id="content">
 				<main role="main">
-					<h1 class="title">JMSGCustomNotification Class Reference</h1>
+					<h1 class="title">JMSGApplyJoinGroupEvent Class Reference</h1>
 
 					
 					<div class="section section-specification"><table cellspacing="0"><tbody>
 						<tr>
 	<th>Inherits from</th>
-	<td>NSObject</td>
+	<td><a href="../Classes/JMSGNotificationEvent.html">JMSGNotificationEvent</a> : NSObject</td>
 </tr><tr>
 	<th>Declared in</th>
-	<td>JMSGOptionalContent.h</td>
+	<td>JMSGNotificationEvent.h</td>
 </tr>
 						</tbody></table></div>
 					
 
                     
-					
-					<div class="section section-overview">
-						<a title="Overview" name="overview"></a>
-						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>自定义通知栏消息的内容</p>
-					</div>
 					
 					
 
@@ -118,8 +116,8 @@
 
 						<div class="task-list">
 							<div class="section-method">
-	<a name="//api/name/enabled" title="enabled"></a>
-	<h3 class="method-title"><code><a href="#//api/name/enabled">&nbsp;&nbsp;enabled</a></code>
+	<a name="//api/name/eventID" title="eventID"></a>
+	<h3 class="method-title"><code><a href="#//api/name/eventID">&nbsp;&nbsp;eventID</a></code>
 </h3>
 
 	<div class="method-info">
@@ -129,12 +127,12 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>是否启用自定义通知栏，默认:NO</p>
+				<p>事件的 id</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) BOOL enabled</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) NSString *eventID</code></div>
 
 		    
 			
@@ -152,15 +150,15 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">JMSGOptionalContent.h</code></p>
+				<p><code class="declared-in-ref">JMSGNotificationEvent.h</code></p>
 			</div>
 			
 			
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/title" title="title"></a>
-	<h3 class="method-title"><code><a href="#//api/name/title">&nbsp;&nbsp;title</a></code>
+	<a name="//api/name/groupID" title="groupID"></a>
+	<h3 class="method-title"><code><a href="#//api/name/groupID">&nbsp;&nbsp;groupID</a></code>
 </h3>
 
 	<div class="method-info">
@@ -170,12 +168,12 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>自定义消息通知栏的标题</p>
+				<p>群 gid</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *title</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) NSString *groupID</code></div>
 
 		    
 			
@@ -193,15 +191,15 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">JMSGOptionalContent.h</code></p>
+				<p><code class="declared-in-ref">JMSGNotificationEvent.h</code></p>
 			</div>
 			
 			
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/alert" title="alert"></a>
-	<h3 class="method-title"><code><a href="#//api/name/alert">&nbsp;&nbsp;alert</a></code>
+	<a name="//api/name/isInitiativeApply" title="isInitiativeApply"></a>
+	<h3 class="method-title"><code><a href="#//api/name/isInitiativeApply">&nbsp;&nbsp;isInitiativeApply</a></code>
 </h3>
 
 	<div class="method-info">
@@ -211,12 +209,12 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>自定义消息通知栏的内容</p>
+				<p>是否是用户主动申请入群，YES：主动申请加入，NO：被邀请加入</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *alert</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign, readonly) BOOL isInitiativeApply</code></div>
 
 		    
 			
@@ -234,15 +232,15 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">JMSGOptionalContent.h</code></p>
+				<p><code class="declared-in-ref">JMSGNotificationEvent.h</code></p>
 			</div>
 			
 			
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/atPrefix" title="atPrefix"></a>
-	<h3 class="method-title"><code><a href="#//api/name/atPrefix">&nbsp;&nbsp;atPrefix</a></code>
+	<a name="//api/name/sendApplyUser" title="sendApplyUser"></a>
+	<h3 class="method-title"><code><a href="#//api/name/sendApplyUser">&nbsp;&nbsp;sendApplyUser</a></code>
 </h3>
 
 	<div class="method-info">
@@ -252,12 +250,12 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>被@目标的通知内容前缀</p>
+				<p>发起申请的 user</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *atPrefix</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) JMSGUser *sendApplyUser</code></div>
 
 		    
 			
@@ -266,11 +264,6 @@
 
 			
 
-			
-			<div class="method-subsection discussion-section">
-				<h4 class="method-subtitle">Discussion</h4>
-				<p>此字段仅对@消息设置有效</p>
-			</div>
 			
 
 			
@@ -280,7 +273,89 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">JMSGOptionalContent.h</code></p>
+				<p><code class="declared-in-ref">JMSGNotificationEvent.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/joinGroupUsers" title="joinGroupUsers"></a>
+	<h3 class="method-title"><code><a href="#//api/name/joinGroupUsers">&nbsp;&nbsp;joinGroupUsers</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>被邀请入群的 user 数组</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) NSArray JMSG_GENERIC ( __kindof JMSGUser **joinGroupUsers</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGNotificationEvent.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/reason" title="reason"></a>
+	<h3 class="method-title"><code><a href="#//api/name/reason">&nbsp;&nbsp;reason</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>原因</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) NSString *reason</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGNotificationEvent.h</code></p>
 			</div>
 			
 			
