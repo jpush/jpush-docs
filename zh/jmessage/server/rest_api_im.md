@@ -1132,6 +1132,7 @@ Example Request
     "owner_username": "tom", 
     "name": "群聊天室", 
     "members_username": ["eddie", "annie"], 
+    "flag": 1,
     "desc": "运动"
 }
 ```
@@ -1145,6 +1146,11 @@ Request Params
 + avatar           （选填）群组头像，上传接口所获得的media_id 
 + desc               （选填） 群描述 
     - 支持的字符：全部，包括 Emoji。
++ flag               （选填） 类型 
+
+    - 1 - 私有群（默认）
+    - 2 - 公开群
+    - 不指定flag，默认为1
 
 Example Response
 
@@ -1302,7 +1308,8 @@ Request Params
 
 Example Response
 
-+ ctime  群组创建时间
++ ctime  群组
++ 创建时间
 + mtime 群组最后修改时间 
 
 ```
