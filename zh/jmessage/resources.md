@@ -118,7 +118,7 @@
                     <li><a href="https://github.com/jpush/jmessage-api-java-client" target="_blank">GitHub 源码</a></li>
                     <li>更新日志：<a href="https://github.com/jpush/jmessage-api-java-client/releases" target="_blank">Change Log</a></li>
                 </ul>
-                <p><a href="https://sdkfiledl.jiguang.cn/src/jmessage-api-java-client-1.1.2.zip" class="btn btn-default" role="button">下载</a></p>
+                <p><a href="https://sdkfiledl.jiguang.cn/src/jmessage-api-java-client-1.1.5.zip" class="btn btn-default" role="button">下载</a></p>
             </div>
         </div>
     </div>
