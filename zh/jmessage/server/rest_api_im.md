@@ -1907,6 +1907,43 @@ Response Data
 
 N/A
 
+### 跨应用管理聊天室成员
+	POST  /cross/chatroom/{room_id}/members
+Request Params
+
++ add  json数组 表示要添加到聊天室的用户(可选)
++ remove  json数组 表示要从聊天室删除的用户（可选）
++ appkey 管理用户所属的appkey 必填
+
+add remove两者至少要有一个
+
+Example Request 
+
+```
+[{ 
+ "appkey":" 4f7aef34fb361292c566a1cd",
+ "add": [
+ "test1",
+ "test2"
+ ],
+ "remove": [
+ "name3",
+ "name4"
+ ]
+}]
+```
+Example Response
+
+```
+< HTTP/1.1 204 NO Content
+< Content-Type: application/json; charset=utf-8 
+```
+
+Response Data
+
+N/A
+
+
 ## 敏感词
 
 ### 添加敏感词
@@ -2240,8 +2277,7 @@ Response Data
 
 #### Request Params
 
-+ [100000, 10000001]
-room_id列表
+	[10000001,10000002] roomid数组
 
 #### Example Response
 ```
@@ -2250,7 +2286,7 @@ Content-Type: application/json; charset=utf-8
 
 [
     {
-        "id": 100000,
+        "id": 10000001,
         "owner_username": "xiaoming",
         "max_member_count": 10000,
         "appkey": "4f7aef34fb361292c566a1cd",
@@ -2260,7 +2296,7 @@ Content-Type: application/json; charset=utf-8
         "ctime": "2017-11-27 18:38:25"
     }，
  {
-        "id": 10000001,
+        "id": 10000002,
         "owner_username": "xiaoming",
         "max_member_count": 10000,
         "appkey": "4f7aef34fb361292c566a1cd",
@@ -2403,7 +2439,7 @@ PUT  /v1/chatroom/100000/forbidden/caiyh?status=1
 
 ###  获取聊天室成员列表
 
-    GET /v1/chatroom/{room_id}/members
+    GET /v1/chatroom/{room_id}/members?start={start}&count={count}
 
 Request Params
 
@@ -2419,22 +2455,27 @@ Example Response
  HTTP/1.1 200 OK
  Content-Type: application/json
 
-[
 {
-"username": "xia_12",
-"flag": 0,
-"room_ctime": "2017-11-16 19:13:07",
-"mtime": "2017-02-08 17:56:04",
-"ctime": "2017-02-08 17:56:04"
-},
-{
-"username": "13538013231",
-"flag": 0,
-"room_ctime": "2017-11-17 08:57:54",
-"mtime": "2017-10-30 17:24:17",
-"ctime": "2017-10-30 17:24:17"
+    "total": 2, 
+    "users": [
+        {
+            "username": "13538013231", 
+            "flag": 0, 
+            "room_ctime": "2017-11-17 08:57:54", 
+            "mtime": "2017-10-30 17:24:17", 
+            "ctime": "2017-10-30 17:24:17"
+        }, 
+        {
+            "username": "xia_12", 
+            "flag": 0, 
+            "room_ctime": "2017-11-16 19:13:07", 
+            "mtime": "2017-02-08 17:56:04", 
+            "ctime": "2017-02-08 17:56:04"
+        }
+    ], 
+    "count": 2, 
+    "start": 0
 }
-]
 ```
 
 
