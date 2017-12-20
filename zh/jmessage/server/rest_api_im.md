@@ -655,7 +655,8 @@ Error Code
 + 899003 username不合法；
 + 899002 用户不存在；
 + 899051  群组不存在；
-+ 899052 设置群组消息屏蔽，设置的群组屏蔽已经打开
++ 899052 设置群组
++ 屏蔽，设置的群组屏蔽已经打开
 + 99053 设置群组消息屏蔽，设置的群组屏蔽已经关闭
 
 
@@ -695,7 +696,7 @@ POST /v1/messages
 		</tr>
 		<tr >
 			<td>target_type</td>
-			<td>发送目标类型 single - 个人，group - 群组 （必填）</td>
+			<td>发送目标类型 single - 个人，group - 群组 chatroom - 聊天室（必填）</td>
 		</tr>
 		<tr >
 			<td>from_type</td>
@@ -707,7 +708,7 @@ POST /v1/messages
 		</tr>
 		<tr >
 			<td>target_id</td>
-			<td>目标id single填username group 填Group id （必填）</td>
+			<td>目标id single填username group 填Group id chatroom 填chatroomid（必填）</td>
 		</tr>
 		<tr >
 			<td>target_appkey</td>
@@ -2259,7 +2260,12 @@ Response Data
 
 {"owner_username":"liming", "name" : "测试聊天室", "description":"测试", "members_username":[]}
 
+Request Params
 
++ owner_username     （必填）聊天室拥有者
++ name               （必填）聊天室名称
++ members_username   （选填）成员 username
++ description               （选填） 描述 
 #### Example Response
 
 ```
