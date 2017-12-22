@@ -242,14 +242,14 @@ Content-Type: application/json; charset=utf-8
 ## 用户统计 
 
 ```
-GET GET /statistic/users?time_unit={time_unit}&start={start}&duration={duration}
+GET /statistic/users?time_unit={time_unit}&start={start}&duration={duration}
 ```
 ### Example Request 
 
 ####  Request Header  
 
 ```
-GET GET /statistic/users?time_unit=DAY&start=2017-03-01&duration=3
+GET /statistic/users?time_unit=DAY&start=2017-03-01&duration=3
 ```
 
 
@@ -259,7 +259,7 @@ N/A
 
 ####  Request Params  
 + time_unit （必填）查询维度 目前只有 DAY  
-+ start (必填)  开始时间 time_unit 为DAY的时候格式为yyyy-MM-dd time
++ start (必填)  开始时间 time_unit 为DAY的时候格式为yyyy-MM-dd 
 + duration (必填)   请求时的持续时长，DAY 最大为60天
 + 统计只保存最近60天的记录
 
@@ -310,14 +310,14 @@ Content-Type: application/json; charset=utf-8
 ## 消息统计 
 
 ```
-GET GET /statistic/messages?time_unit={time_unit}&start={start}&duration={duration}
+GET /statistic/messages?time_unit={time_unit}&start={start}&duration={duration}
 ```
 ### Example Request 
 
 ####  Request Header  
 
 ```
-GET GET /statistic/messages?time_unit=DAY&start=2017-03-01&duration=2
+GET /statistic/messages?time_unit=DAY&start=2017-03-01&duration=2
 ```
 
 
@@ -327,7 +327,7 @@ N/A
 
 ####  Request Params  
 + time_unit （必填）查询维度 目前有 HOUR  DAY  MONTH 三个维度可以选
-+ start (必填) 开始时间 time_unit 为 HOUR时 格式为yyyy-MM-dd HH ,DAY的时候格式为yyyy-MM-dd time, MONTH的时候格式为 yyyy-MM 
++ start (必填) 开始时间 time_unit 为 HOUR时 格式为yyyy-MM-dd HH ,DAY的时候格式为yyyy-MM-dd , MONTH的时候格式为 yyyy-MM 
 + duration (必填)   请求时的持续时长 HOUR 只支持查询当天的统计， DAY 最大为60天 ，MOTH为两个月  
 + 统计只保存最近60天的记录
 
@@ -394,14 +394,14 @@ Content-Type: application/json; charset=utf-8
 ## 群组统计 
 
 ```
-GET GET /statistic/groups?time_unit={time_unit}&start={start}&duration={duration}
+GET /statistic/groups?time_unit={time_unit}&start={start}&duration={duration}
 ```
 ### Example Request 
 
 ####  Request Header  
 
 ```
-GET GET /statistic/groups?time_unit=DAY&start=2017-03-01&duration=3
+GET /statistic/groups?time_unit=DAY&start=2017-03-01&duration=3
 ```
 
 
@@ -411,7 +411,7 @@ N/A
 
 ####  Request Params  
 + time_unit （必填）查询维度 目前只有 DAY  
-+ start (必填)  开始时间 time_unit 为DAY的时候格式为yyyy-MM-dd time
++ start (必填)  开始时间 time_unit 为DAY的时候格式为yyyy-MM-dd
 + duration (必填)   请求时的持续时长，DAY 最大为60天
 + 统计只保存最近60天的记录
 

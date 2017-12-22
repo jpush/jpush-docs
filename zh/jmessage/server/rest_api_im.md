@@ -1378,7 +1378,27 @@ Example Response
 < Content-Type: application/json
 ```
 
+### 群成员禁言
 
+    PUT  /groups/messages/{gid}/silence?status={status}
+
+
+Request body
+```
+[ "username1", "username2"]  
+备注：username json数组
+```
+Request Params
+
+```
+status：开启或关闭禁言 true表示开启 flase表示关闭
+```
+
+Example Response
+```
+< HTTP/1.1 204 OK
+< Content-Type: application/json
+```
 
 
 ## 好友
