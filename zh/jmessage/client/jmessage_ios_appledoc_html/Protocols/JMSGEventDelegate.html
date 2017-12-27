@@ -64,6 +64,14 @@
 		
 		<option value="//api/name/onReceiveMessageRetractEvent:">- onReceiveMessageRetractEvent:</option>
 		
+		<option value="//api/name/onReceiveMessageReceiptStatusChangeEvent:">- onReceiveMessageReceiptStatusChangeEvent:</option>
+		
+		<option value="//api/name/onReceiveMessageTransparentEvent:">- onReceiveMessageTransparentEvent:</option>
+		
+		<option value="//api/name/onReceiveApplyJoinGroupApprovalEvent:">- onReceiveApplyJoinGroupApprovalEvent:</option>
+		
+		<option value="//api/name/onReceiveGroupAdminRejectApplicationEvent:">- onReceiveGroupAdminRejectApplicationEvent:</option>
+		
 	</optgroup>
 	
 	
@@ -221,9 +229,256 @@
 			
 
 			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGEventDelegate.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/onReceiveMessageReceiptStatusChangeEvent:" title="onReceiveMessageReceiptStatusChangeEvent:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/onReceiveMessageReceiptStatusChangeEvent:">&ndash;&nbsp;onReceiveMessageReceiptStatusChangeEvent:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>消息回执状态变更事件</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)onReceiveMessageReceiptStatusChangeEvent:(JMSGMessageReceiptStatusChangeEvent *)<em>receiptEvent</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>receiptEvent</code></th>
+						<td><p>下发的通知事件，事件类型请查看 <a href="../Classes/JMSGMessageReceiptStatusChangeEvent.html">JMSGMessageReceiptStatusChangeEvent</a> 类</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection availability">
+				<h4 class="method-subtitle parameter-title">Availability</h4>
+				<p>3.3.0</p>
+			</div>
+			
+
+			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>收到此事件时，可以通过 event.conversation 判断是否属于某个会话</p>
+				<p>上层可以通过 receiptEvent 获取相应信息</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGEventDelegate.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/onReceiveMessageTransparentEvent:" title="onReceiveMessageTransparentEvent:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/onReceiveMessageTransparentEvent:">&ndash;&nbsp;onReceiveMessageTransparentEvent:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>消息透传事件</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)onReceiveMessageTransparentEvent:(JMSGMessageTransparentEvent *)<em>transparentEvent</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>transparentEvent</code></th>
+						<td><p>下发的通知事件，事件类型请查看 <a href="../Classes/JMSGMessageTransparentEvent.html">JMSGMessageTransparentEvent</a> 类</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection availability">
+				<h4 class="method-subtitle parameter-title">Availability</h4>
+				<p>3.3.0</p>
+			</div>
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>上层可以通过 transparentEvent 获取相应信息，如自定义的透传信息、会话</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGEventDelegate.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/onReceiveApplyJoinGroupApprovalEvent:" title="onReceiveApplyJoinGroupApprovalEvent:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/onReceiveApplyJoinGroupApprovalEvent:">&ndash;&nbsp;onReceiveApplyJoinGroupApprovalEvent:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>申请入群事件</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)onReceiveApplyJoinGroupApprovalEvent:(JMSGApplyJoinGroupEvent *)<em>event</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>event</code></th>
+						<td><p>申请入群事件</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection availability">
+				<h4 class="method-subtitle parameter-title">Availability</h4>
+				<p>3.4.0</p>
+			</div>
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>申请入群事件相关参数请查看 <a href="../Classes/JMSGApplyJoinGroupEvent.html">JMSGApplyJoinGroupEvent</a> 类，在群主审批此事件时需要传递事件的相关参数</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGEventDelegate.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/onReceiveGroupAdminRejectApplicationEvent:" title="onReceiveGroupAdminRejectApplicationEvent:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/onReceiveGroupAdminRejectApplicationEvent:">&ndash;&nbsp;onReceiveGroupAdminRejectApplicationEvent:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>管理员拒绝入群申请通知</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)onReceiveGroupAdminRejectApplicationEvent:(JMSGGroupAdminRejectApplicationEvent *)<em>event</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>event</code></th>
+						<td><p>拒绝入群申请事件</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection availability">
+				<h4 class="method-subtitle parameter-title">Availability</h4>
+				<p>3.4.0</p>
+			</div>
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>拒绝的相关描述和原因请查看 <a href="../Classes/JMSGGroupAdminRejectApplicationEvent.html">JMSGGroupAdminRejectApplicationEvent</a> 类</p>
 			</div>
 			
 
@@ -255,7 +510,7 @@
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2017 HXHG. All rights reserved. Updated: 2017-07-03</p>
+						<p class="copyright">Copyright &copy; 2017 HXHG. All rights reserved. Updated: 2017-12-11</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

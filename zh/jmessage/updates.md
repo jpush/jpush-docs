@@ -1,6 +1,350 @@
 # 最近更新
 
 
+### iOS SDK v3.4.0
+
+#### 更新时间
+
+2017-12-11
+
+#### ChangeLog
+
+##### BugFix:
+
+* 修复用户反馈的一些 bug
+
+##### NewFeature
+
+* 新增：聊天室功能
+* 新增：群成员禁言功能
+* 新增：公开群组功能，支持申请入群
+* 新增：发送文件消息时支持设置文件类型
+
+#### 升级指南
+* 使用新版本的JMessage.framework文件替换原工程下的同名旧文件
+* 将新版本的JMessage.framework里的JCore link到工程中，详细参见官网集成文档
+
+
+
+### Android SDK v2.4.0
+
+#### 更新时间
+
++ 2017-12-11
+
+#### Change Log
+##### BugFix:
++ 修复从数据库中读取conversation时，targetAppkey没有设置导致title和avatar不正确
++ 提升sdk稳定性
+
+##### NewFeature:
++ 新增聊天室功能
++ 新增公开群组类型，支持申请入群
++ 新增群成员禁言功能
+
+#### 升级提示
+
++ 建议升级！
+
+#### 升级指南
+
++ 首先解压您获取到的 zip 压缩包
+
++ 更新库文件
+	+ 打开libs文件夹。添加jcore-android_v1.1.8.jar。用 jmessage-android_v2.4.0.jar 替换项目中原有的极光jar文件，并删除原有极光jar文件。用对应CPU文件夹下的 libjcore118.so 文件，替换项目中原有 的libjcoreXXX.so 文件，并删除原有的极光 so 文件，每种型号的 so 文件都可以在 SDK 下载包中找到。
+
++ 更新AndroidManifest.xml
+	+ 请参考 SDK下载包最新版本的 demo 来更新AndroidManifest.xml 文件配置。  
+	***注意JCore 从1.1.7版本开始新增了provider组件，如果项目中使用的JCore是1.1.7之前的版本，集成时需要注意manifest中新增的provider组件的配置***
+
++ 如果使用jcenter的方式集成JMessage，不需要添加相关组件和资源，详细集成说明请参考官方[集成指南](https://docs.jiguang.cn/jmessage/client/jmessage_android_guide/)
+
+
+
+### Windows SDK v1.1.0
+
+#### 更新时间
+
++ 2017-12-04
+
+#### Change Log
+
+##### NewFeature:
++ 聊天室功能
++ 公开群类型，用户可申请入群
++ 支持群禁言
++ 消息透传
++ 提供NuGet程序包
++ 添加 GroupId 类型,代替int64_t , 使用GroupId::get 获取值
+
+#### 升级提示
+
++ 建议升级！
+
+#### 升级指南
+
++ 查阅最新的[SDK文档](https://docs.jiguang.cn/jmessage/client/im_win_api_docs/)
+
+
+
+### Web SDK v2.5.0
+
+#### 更新时间
+
++ 2017-11-29
+
+#### Change Log
+
+##### NewFeature:
++ 新增聊天室功能
++ 新增公开群类型，用户可申请入群
++ 支持群禁言
+
+#### 升级提示
+
++ 建议升级！
+
+#### 升级指南
+
++ 用最新的 jmessage-sdk-web.2.5.0.min.js 替换掉老版本的 sdk
+
+
+
+
+
+### Web SDK v2.4.1
+
+#### 更新时间
+
++ 2017-11-02
+
+#### Change Log
+
+##### BugFix:
+
++ 未读数逻辑优化
+
+#### 升级提示
+
++ 建议升级！
+
+#### 升级指南
+
++ 用最新的 jmessage-sdk-web.2.4.1.min.js 替换掉老版本的 sdk
+
+
+### iOS SDK v3.3.0
+
+#### 更新时间
+
+2017-10-27
+
+#### ChangeLog
+
+##### BugFix:
+
+* 修复用户反馈的一些 bug
+
+##### NewFeature
+
+* 支持多端同时在线
+* 支持群组头像
+* 支持消息透传
+* 新增消息已读回执功能
+* 新增消息转发接口
+* JMSGConversation 类新增 extras 扩展字段
+* JMSGUser 类新增 extras 扩展字段
+* 用户注册接口支持其他属性值设置
+
+#### 升级指南
+* 使用新版本的JMessage.framework文件替换原工程下的同名旧文件
+* 将新版本的JMessage.framework里的JCore link到工程中，详细参见官网集成文档
+
+
+
+### Android SDK v2.3.0
+
+#### 更新时间
+
++ 2017-10-20
+
+#### Change Log
+##### BugFix:
++ 修复deleteSingleConversation接口可能出现的删除失败的问题
++ 提升sdk稳定性
+
+##### NewFeature:
++ 支持多端同时在线
++ 新增消息已读回执功能
++ 新增消息转发接口
++ 支持命令透传
++ Conversation类新增extra扩展字段
++ 支持群组头像
++ UserInfo支持扩展字段extras
++ 用户注册接口支持其他属性设置
+
+#### 升级提示
+
++ 建议升级！
+
+#### 升级指南
+
++ 首先解压您获取到的 zip 压缩包
+
++ 更新库文件
+	+ 打开libs文件夹。添加jcore-android_v1.1.7.jar。用 jmessage-android_v2.3.0.jar 替换项目中原有的极光jar文件，并删除原有极光jar文件。用对应CPU文件夹下的 libjcore117.so 文件，替换项目中原有的libjcoreXXX.so文件，并删除原有的极光so文件，每种型号的so文件都可以在SDK下载包中找到。
+
++ 更新AndroidManifest.xml
+	+ 请参考 SDK下载包最新版本的 demo 来更新AndroidManifest.xml 文件配置。  
+	***注意JCore 1.1.7版本新增了provider组件，集成时需要注意manifest中新增的provider组件的配置***
+
++ 如果使用jcenter的方式集成JMessage，不需要添加相关组件和资源，详细集成说明请参考官方[集成指南](https://docs.jiguang.cn/jmessage/client/jmessage_android_guide/)
+
+
+
+### Web SDK v2.4.0
+
+#### 更新时间
+
++ 2017-10-16
+
+#### Change Log
+
+##### NewFeature:
+
++ 支持消息透传
++ 支持群组头像
++ 支持多端同时在线
++ 消息已读回执
++ 会话、用户信息支持扩展字段
++ 注册支持扩展字段
++ 支持会话未读数获取、重置会话未读数
+
+#### 升级提示
+
++ 建议升级！
+
+#### 升级指南
+
++ 用最新的 jmessage-sdk-web.2.4.0.min.js 替换掉老版本的 sdk
+
+
+
+
+
+### Windows SDK v1.0.0
+
+#### 更新时间
+
++ 2017-10-13
+
+#### Change Log
++ JMessage Windows C++ SDK 首次发布， 涵盖当前 Web SDK v2.3.1 的全部功能，基于最新 C++17 语言标准(需要VS2017)， 使用了大量方便开发的新特性，基于[cpprestsdk](https://github.com/Microsoft/cpprestsdk/wiki/Programming-with-Tasks)的task/then异步接口[(更多关于task)](https://docs.microsoft.com/zh-cn/cpp/parallel/concrt/reference/task-class?f1url=https%3A%2F%2Fmsdn.microsoft.com%2Fquery%2Fdev15.query%3FappId%3DDev15IDEF1%26l%3DZH-CN%26k%3Dk(PPLTASKS%2FConcurrency%3A%3Atask)%3Bk(Concurrency%3A%3Atask)%3Bk(task)%3Bk(DevLang-C%2B%2B)%3Bk(TargetOS-Windows)%26rd%3Dtrue) ，上层可以使用回调或者co_await方式使用SDK
+
+##### NewFeature:
++ 支持多端同时在线
++ 消息已读回执
++ 群组头像
+
+#### 升级提示
+
++ 建议升级！
+
+#### 升级指南
+
++ 下载 SDK ，详细集成说明请参考官方[集成指南](https://docs.jiguang.cn/jmessage/client/im_sdk_win/)
+
+
+
+### iOS SDK v3.2.1
+
+#### 更新时间
+
+2017-08-29
+
+#### ChangeLog
+
+##### BugFix:
+
+* 修复用户反馈的一些 bug
+
+##### NewFeature
+
+* 离线事件处理升级为事件同步机制，大幅提升处理大量事件的性能，上层无需改动和适配  
+* 创建 imageContent 时，可指定后缀名
+* 上传头像时，指定后缀名
+
+* 新增接口：
+	* JMSGUser
+		* +(void)updateMyAvatarWithData:avatarFormat:completionHandler;//指定头像后缀名
+	* JMSGImageContent
+		* @property(nonatomic, strong) NSString *format;//指定图片后缀名
+	* JMSGFileContent
+		* -(void)fileDataWithProgress:completionHandler: ;// 带下载进度的文件下载接口
+
+#### 升级指南
+* 使用新版本的JMessage.framework文件替换原工程下的同名旧文件
+* 将新版本的JMessage.framework里的JCore link到工程中，详细参见官网集成文档
+
+
+
+### Android SDK v2.2.1
+
+#### 更新时间
+
++ 2017-08-15
+
+#### Change Log
+##### BugFix:
++ 修复发送自定义类型消息时，自定义通知栏文字不生效
++ 提升sdk稳定性
+
+##### NewFeature:
++ 离线事件处理升级为事件同步机制，大幅提升处理大量事件的性能，上层无需改动和适配
++ 群事件`EventNotificationContent`中新增一个类型`group_info_updated`表示群信息被更新。代码示例见[事件处理](https://docs.jiguang.cn/jmessage/client/im_sdk_android/#_46)一节中“接收消息事件”部分
++ 新增创建ImageContent时，指定存储时的扩展名的接口
+
+#### 升级提示
+
++ 建议升级！
+
+#### 升级指南
+
++ 首先解压您获取到的 zip 压缩包
+
++ 更新库文件
+	+ 打开libs文件夹。添加jcore-android_v1.1.6.jar。用 jmessage-android_v2.2.1.jar 替换项目中原有的极光jar文件，并删除原有极光jar文件。用对应CPU文件夹下的 libjcore116.so 文件，替换项目中原有的libjcoreXXX.so文件，并删除原有的极光so文件，每种型号的so文件都可以在SDK下载包中找到。
+
++ 更新AndroidManifest.xml
+	+ 请参考 SDK下载包最新版本的 demo 来更新AndroidManifest.xml 文件配置。
+
++ 如果使用jcenter的方式集成JMessage，不需要添加相关组件和资源，详细集成说明请参考官方[集成指南](https://docs.jiguang.cn/jmessage/client/jmessage_android_guide/)
+
+
+
+### Web SDK v2.3.1
+
+#### 更新时间
+
++ 2017-08-11
+
+#### Change Log
+
+##### NewFeature:
++ 事件同步
++ 自定义通知栏
++ 消息转发
++ 群屏蔽列表
+
+#### 升级提示
+
++ 建议升级！
+
+#### 升级指南
+
++ 用最新的 jmessage-sdk-web.2.3.1.min.js 替换掉老版本的 sdk
+
+
 ### iOS SDK v3.2.0
 
 #### 更新时间
@@ -99,7 +443,7 @@
 
 
 
-### WEB SDK v2.3.0
+### Web SDK v2.3.0
 
 #### 更新时间
 
@@ -124,7 +468,7 @@
 
 
 
-### WEB SDK v2.2.1
+### Web SDK v2.2.1
 
 #### 更新时间
 

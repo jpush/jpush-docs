@@ -152,3 +152,16 @@ JSMS 提供遵从 REST 规范的 HTTP API，以供开发者远程调用 JSMS 提
 |403|50030|recipients is empty|recipients 为空|
 |403|50031|too much recipients|recipients 短信接收者数量超过1000|
 |403|50034|repeat send|重复发送|
+|403|50035|illegal IP|非法 IP 请求|
+|403|50036|app in black|应用被列为黑名单|
+|403|50037|has black word|短信内容存在敏感词汇|
+|403|50038|invalid code length|语音验证码长度错误|
+|403|50039|invalid code type|语音验证码内容错误，验证码仅支持数字|
+|403|50040|invalid voice language type|语音验证码播报语言类型错误|
+|403|50041|invalid ttl value|验证码有效期错误|
+|403|50042|template is empty|模板内容为空|
+|403|50043|template too long|模板内容过长，含签名长度限制为350字符|
+|403|50044|template parameter invalid|模板参数无效|
+|403|50045|remark too long|备注内容过长，长度限制为500字符|
+|403|50046|signature not set|该应用未设置签名，请先设置签名|
+|403|50047|modify template not allow|只有审核不通过状态的模板才允许修改|

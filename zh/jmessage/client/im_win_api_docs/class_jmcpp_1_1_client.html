@@ -1,0 +1,395 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Windows C++ SDK: Jmcpp::Client类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Windows C++ SDK
+   &#160;<span id="projectnumber">1.1.0</span>
+   </div>
+   <div id="projectbrief">Windows C++ SDK</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('class_jmcpp_1_1_client.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="class_jmcpp_1_1_client-members.html">所有成员列表</a>  </div>
+  <div class="headertitle">
+<div class="title">Jmcpp::Client类 参考</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Client类提供了SDK的主要功能  
+ <a href="class_jmcpp_1_1_client.html#details">更多...</a></p>
+
+<p><code>#include &lt;Client.h&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:a7f139490c1c447c594a3d710a3abcb6e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_jmcpp_1_1_client.html#a7f139490c1c447c594a3d710a3abcb6e">Client</a> (<a class="el" href="struct_jmcpp_1_1_configuration.html">Configuration</a> const &amp;cfg=<a class="el" href="struct_jmcpp_1_1_configuration.html">Configuration</a>())</td></tr>
+<tr class="separator:a7f139490c1c447c594a3d710a3abcb6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ddf324ce2376c78a25ed6f1c6752c67"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_jmcpp_1_1_client.html#a5ddf324ce2376c78a25ed6f1c6752c67">~Client</a> ()</td></tr>
+<tr class="separator:a5ddf324ce2376c78a25ed6f1c6752c67"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga94adcb6333494b6d178c13130ebfa4b1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___xE5_x9B_x9E_xE8_xB0_x83_xE8_xAE_xBE_xE7_xBD_xAE.html#ga94adcb6333494b6d178c13130ebfa4b1">onLogined</a> (std::function&lt; void(bool firstLogin)&gt; cb)</td></tr>
+<tr class="memdesc:ga94adcb6333494b6d178c13130ebfa4b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置登录成功回调  <a href="group___xE5_x9B_x9E_xE8_xB0_x83_xE8_xAE_xBE_xE7_xBD_xAE.html#ga94adcb6333494b6d178c13130ebfa4b1">更多...</a><br /></td></tr>
+<tr class="separator:ga94adcb6333494b6d178c13130ebfa4b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaddf86fbceb86686c0632bea5dcc3688b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___xE5_x9B_x9E_xE8_xB0_x83_xE8_xAE_xBE_xE7_xBD_xAE.html#gaddf86fbceb86686c0632bea5dcc3688b">onLogined</a> (std::function&lt; void()&gt; cb)</td></tr>
+<tr class="memdesc:gaddf86fbceb86686c0632bea5dcc3688b"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置登录成功回调  <a href="group___xE5_x9B_x9E_xE8_xB0_x83_xE8_xAE_xBE_xE7_xBD_xAE.html#gaddf86fbceb86686c0632bea5dcc3688b">更多...</a><br /></td></tr>
+<tr class="separator:gaddf86fbceb86686c0632bea5dcc3688b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2174b493a3d7a6ab1a9f358a3e3a4ac5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___xE5_x9B_x9E_xE8_xB0_x83_xE8_xAE_xBE_xE7_xBD_xAE.html#ga2174b493a3d7a6ab1a9f358a3e3a4ac5">onDisconnected</a> (std::function&lt; void()&gt; cb)</td></tr>
+<tr class="memdesc:ga2174b493a3d7a6ab1a9f358a3e3a4ac5"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置网络非正常断开回调  <a href="group___xE5_x9B_x9E_xE8_xB0_x83_xE8_xAE_xBE_xE7_xBD_xAE.html#ga2174b493a3d7a6ab1a9f358a3e3a4ac5">更多...</a><br /></td></tr>
+<tr class="separator:ga2174b493a3d7a6ab1a9f358a3e3a4ac5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga926df0da8516d9e1f68e2c1242bb4b7b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___xE5_x9B_x9E_xE8_xB0_x83_xE8_xAE_xBE_xE7_xBD_xAE.html#ga926df0da8516d9e1f68e2c1242bb4b7b">onMessageReceive</a> (std::function&lt; void(<a class="el" href="namespace_jmcpp.html#ac9d81250d6bca065b4e5af39d8ff8837">MessagePtr</a>)&gt; cb)</td></tr>
+<tr class="memdesc:ga926df0da8516d9e1f68e2c1242bb4b7b"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置消息接收回调  <a href="group___xE5_x9B_x9E_xE8_xB0_x83_xE8_xAE_xBE_xE7_xBD_xAE.html#ga926df0da8516d9e1f68e2c1242bb4b7b">更多...</a><br /></td></tr>
+<tr class="separator:ga926df0da8516d9e1f68e2c1242bb4b7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf0ccdca0e09ca9eee0302dbbd270723e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___xE5_x9B_x9E_xE8_xB0_x83_xE8_xAE_xBE_xE7_xBD_xAE.html#gaf0ccdca0e09ca9eee0302dbbd270723e">onMessageSync</a> (std::function&lt; void(std::vector&lt; <a class="el" href="namespace_jmcpp.html#ac9d81250d6bca065b4e5af39d8ff8837">MessagePtr</a> &gt;)&gt; cb)</td></tr>
+<tr class="memdesc:gaf0ccdca0e09ca9eee0302dbbd270723e"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置消息同步回调  <a href="group___xE5_x9B_x9E_xE8_xB0_x83_xE8_xAE_xBE_xE7_xBD_xAE.html#gaf0ccdca0e09ca9eee0302dbbd270723e">更多...</a><br /></td></tr>
+<tr class="separator:gaf0ccdca0e09ca9eee0302dbbd270723e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga36df1dfd298e45decfdb1883b2f62a36"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___xE5_x9B_x9E_xE8_xB0_x83_xE8_xAE_xBE_xE7_xBD_xAE.html#ga36df1dfd298e45decfdb1883b2f62a36">onEventReceive</a> (std::function&lt; void(<a class="el" href="namespace_jmcpp.html#a70894f9d002b395ebda5b5e5d0a1a236">Event</a>)&gt; cb)</td></tr>
+<tr class="memdesc:ga36df1dfd298e45decfdb1883b2f62a36"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置事件通知回调  <a href="group___xE5_x9B_x9E_xE8_xB0_x83_xE8_xAE_xBE_xE7_xBD_xAE.html#ga36df1dfd298e45decfdb1883b2f62a36">更多...</a><br /></td></tr>
+<tr class="separator:ga36df1dfd298e45decfdb1883b2f62a36"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5ecb1f1974eec14b254a50d98dbf7536"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___xE5_x9B_x9E_xE8_xB0_x83_xE8_xAE_xBE_xE7_xBD_xAE.html#ga5ecb1f1974eec14b254a50d98dbf7536">onEventSync</a> (std::function&lt; void(std::vector&lt; <a class="el" href="namespace_jmcpp.html#a70894f9d002b395ebda5b5e5d0a1a236">Event</a> &gt;)&gt; cb)</td></tr>
+<tr class="memdesc:ga5ecb1f1974eec14b254a50d98dbf7536"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置事件同步回调  <a href="group___xE5_x9B_x9E_xE8_xB0_x83_xE8_xAE_xBE_xE7_xBD_xAE.html#ga5ecb1f1974eec14b254a50d98dbf7536">更多...</a><br /></td></tr>
+<tr class="separator:ga5ecb1f1974eec14b254a50d98dbf7536"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga70f91ee0c470fe85cdee5ab6c05055cb"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___xE6_xB3_xA8_xE5_x86_x8C_xE7_x99_xBB_xE5_xBD_x95.html#ga70f91ee0c470fe85cdee5ab6c05055cb">isLogined</a> () const</td></tr>
+<tr class="memdesc:ga70f91ee0c470fe85cdee5ab6c05055cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">登录状态  <a href="group___xE6_xB3_xA8_xE5_x86_x8C_xE7_x99_xBB_xE5_xBD_x95.html#ga70f91ee0c470fe85cdee5ab6c05055cb">更多...</a><br /></td></tr>
+<tr class="separator:ga70f91ee0c470fe85cdee5ab6c05055cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1bf744042ae54646b08cee10ef6ae637"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___xE6_xB3_xA8_xE5_x86_x8C_xE7_x99_xBB_xE5_xBD_x95.html#ga1bf744042ae54646b08cee10ef6ae637">isConnected</a> () const</td></tr>
+<tr class="memdesc:ga1bf744042ae54646b08cee10ef6ae637"><td class="mdescLeft">&#160;</td><td class="mdescRight">网络状态  <a href="group___xE6_xB3_xA8_xE5_x86_x8C_xE7_x99_xBB_xE5_xBD_x95.html#ga1bf744042ae54646b08cee10ef6ae637">更多...</a><br /></td></tr>
+<tr class="separator:ga1bf744042ae54646b08cee10ef6ae637"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9e8db67ed9d89c5e5c3bf4e8835e8670"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_jmcpp_1_1_user_id.html">UserId</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___xE6_xB3_xA8_xE5_x86_x8C_xE7_x99_xBB_xE5_xBD_x95.html#ga9e8db67ed9d89c5e5c3bf4e8835e8670">getCurrentUser</a> () const</td></tr>
+<tr class="memdesc:ga9e8db67ed9d89c5e5c3bf4e8835e8670"><td class="mdescLeft">&#160;</td><td class="mdescRight">当前登录用户Id  <a href="group___xE6_xB3_xA8_xE5_x86_x8C_xE7_x99_xBB_xE5_xBD_x95.html#ga9e8db67ed9d89c5e5c3bf4e8835e8670">更多...</a><br /></td></tr>
+<tr class="separator:ga9e8db67ed9d89c5e5c3bf4e8835e8670"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7298d20c2d534e418a21d38e09331098"><td class="memItemLeft" align="right" valign="top">pplx::task&lt; void &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___xE6_xB3_xA8_xE5_x86_x8C_xE7_x99_xBB_xE5_xBD_x95.html#ga7298d20c2d534e418a21d38e09331098">registers</a> (std::string_view username, std::string_view password, <a class="el" href="struct_jmcpp_1_1_authorization.html">Authorization</a> const &amp;auth, <a class="el" href="struct_jmcpp_1_1_user_info_param.html">UserInfoParam</a> const &amp;userInfo={}) const</td></tr>
+<tr class="memdesc:ga7298d20c2d534e418a21d38e09331098"><td class="mdescLeft">&#160;</td><td class="mdescRight">注册  <a href="group___xE6_xB3_xA8_xE5_x86_x8C_xE7_x99_xBB_xE5_xBD_x95.html#ga7298d20c2d534e418a21d38e09331098">更多...</a><br /></td></tr>
+<tr class="separator:ga7298d20c2d534e418a21d38e09331098"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaef7f14c9460ca320b16e991095711884"><td class="memItemLeft" align="right" valign="top">pplx::task&lt; void &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___xE6_xB3_xA8_xE5_x86_x8C_xE7_x99_xBB_xE5_xBD_x95.html#gaef7f14c9460ca320b16e991095711884">login</a> (std::string_view username, std::string_view password, <a class="el" href="struct_jmcpp_1_1_authorization.html">Authorization</a> const &amp;auth, bool encoded=false, int roaming=1)</td></tr>
+<tr class="memdesc:gaef7f14c9460ca320b16e991095711884"><td class="mdescLeft">&#160;</td><td class="mdescRight">登录  <a href="group___xE6_xB3_xA8_xE5_x86_x8C_xE7_x99_xBB_xE5_xBD_x95.html#gaef7f14c9460ca320b16e991095711884">更多...</a><br /></td></tr>
+<tr class="separator:gaef7f14c9460ca320b16e991095711884"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga22e48cc8ecd45b1e79c0fa74a60df06c"><td class="memItemLeft" align="right" valign="top">pplx::task&lt; void &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___xE6_xB3_xA8_xE5_x86_x8C_xE7_x99_xBB_xE5_xBD_x95.html#ga22e48cc8ecd45b1e79c0fa74a60df06c">relogin</a> (<a class="el" href="struct_jmcpp_1_1_authorization.html">Authorization</a> const &amp;auth)</td></tr>
+<tr class="memdesc:ga22e48cc8ecd45b1e79c0fa74a60df06c"><td class="mdescLeft">&#160;</td><td class="mdescRight">断线后重登录  <a href="group___xE6_xB3_xA8_xE5_x86_x8C_xE7_x99_xBB_xE5_xBD_x95.html#ga22e48cc8ecd45b1e79c0fa74a60df06c">更多...</a><br /></td></tr>
+<tr class="separator:ga22e48cc8ecd45b1e79c0fa74a60df06c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad0be4bba9106f1ed1c1992d855340cb4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___xE6_xB3_xA8_xE5_x86_x8C_xE7_x99_xBB_xE5_xBD_x95.html#gad0be4bba9106f1ed1c1992d855340cb4">logout</a> ()</td></tr>
+<tr class="memdesc:gad0be4bba9106f1ed1c1992d855340cb4"><td class="mdescLeft">&#160;</td><td class="mdescRight">退出登录,断开网络连接等,析构自动调用  <a href="group___xE6_xB3_xA8_xE5_x86_x8C_xE7_x99_xBB_xE5_xBD_x95.html#gad0be4bba9106f1ed1c1992d855340cb4">更多...</a><br /></td></tr>
+<tr class="separator:gad0be4bba9106f1ed1c1992d855340cb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga81f19b7cb6b01bc702461e82d89e9709"><td class="memItemLeft" align="right" valign="top">pplx::task&lt; <a class="el" href="struct_jmcpp_1_1_user_info.html">UserInfo</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___xE7_x94_xA8_xE6_x88_xB7_xE4_xBF_xA1_xE6_x81_xAF.html#ga81f19b7cb6b01bc702461e82d89e9709">getUserInfo</a> (<a class="el" href="struct_jmcpp_1_1_user_id.html">UserId</a> const &amp;userId) const</td></tr>
+<tr class="memdesc:ga81f19b7cb6b01bc702461e82d89e9709"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取用户信息  <a href="group___xE7_x94_xA8_xE6_x88_xB7_xE4_xBF_xA1_xE6_x81_xAF.html#ga81f19b7cb6b01bc702461e82d89e9709">更多...</a><br /></td></tr>
+<tr class="separator:ga81f19b7cb6b01bc702461e82d89e9709"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad8c7c282438cbc2f4b06165a5d533617"><td class="memItemLeft" align="right" valign="top">pplx::task&lt; <a class="el" href="struct_jmcpp_1_1_user_info.html">UserInfo</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___xE7_x94_xA8_xE6_x88_xB7_xE4_xBF_xA1_xE6_x81_xAF.html#gad8c7c282438cbc2f4b06165a5d533617">getSelfInfo</a> () const</td></tr>
+<tr class="separator:gad8c7c282438cbc2f4b06165a5d533617"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf6c6d139ad80bfa5c9bc8bfee27cced5"><td class="memItemLeft" align="right" valign="top">pplx::task&lt; void &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___xE7_x94_xA8_xE6_x88_xB7_xE4_xBF_xA1_xE6_x81_xAF.html#gaf6c6d139ad80bfa5c9bc8bfee27cced5">updateSelfInfo</a> (<a class="el" href="namespace_jmcpp.html#aded2bae352ef3a102c2ffb711870d02b">UpdateUserInfoParam</a> const &amp;userInfo) const</td></tr>
+<tr class="separator:gaf6c6d139ad80bfa5c9bc8bfee27cced5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5eb7b16d86a9a4b9dc5f8d3191703b02"><td class="memItemLeft" align="right" valign="top">pplx::task&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___xE7_x94_xA8_xE6_x88_xB7_xE4_xBF_xA1_xE6_x81_xAF.html#ga5eb7b16d86a9a4b9dc5f8d3191703b02">updateSelfAvatar</a> (std::string_view filePath) const</td></tr>
+<tr class="memdesc:ga5eb7b16d86a9a4b9dc5f8d3191703b02"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置自己的头像  <a href="group___xE7_x94_xA8_xE6_x88_xB7_xE4_xBF_xA1_xE6_x81_xAF.html#ga5eb7b16d86a9a4b9dc5f8d3191703b02">更多...</a><br /></td></tr>
+<tr class="separator:ga5eb7b16d86a9a4b9dc5f8d3191703b02"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad9a98f0d9f61cbe11fcdb7a861f191e7"><td class="memItemLeft" align="right" valign="top">pplx::task&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___xE7_x94_xA8_xE6_x88_xB7_xE4_xBF_xA1_xE6_x81_xAF.html#gad9a98f0d9f61cbe11fcdb7a861f191e7">updateSelfAvatar</a> (const void *data, size_t size, std::string_view imageExt) const</td></tr>
+<tr class="memdesc:gad9a98f0d9f61cbe11fcdb7a861f191e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置自己的头像  <a href="group___xE7_x94_xA8_xE6_x88_xB7_xE4_xBF_xA1_xE6_x81_xAF.html#gad9a98f0d9f61cbe11fcdb7a861f191e7">更多...</a><br /></td></tr>
+<tr class="separator:gad9a98f0d9f61cbe11fcdb7a861f191e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab536ac0c80e9e25c5dbc87a41b85186d"><td class="memItemLeft" align="right" valign="top">pplx::task&lt; void &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___xE7_x94_xA8_xE6_x88_xB7_xE4_xBF_xA1_xE6_x81_xAF.html#gab536ac0c80e9e25c5dbc87a41b85186d">updateSelfPassword</a> (std::string_view oldPwd, std::string_view newPwd) const</td></tr>
+<tr class="memdesc:gab536ac0c80e9e25c5dbc87a41b85186d"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置新密码  <a href="group___xE7_x94_xA8_xE6_x88_xB7_xE4_xBF_xA1_xE6_x81_xAF.html#gab536ac0c80e9e25c5dbc87a41b85186d">更多...</a><br /></td></tr>
+<tr class="separator:gab536ac0c80e9e25c5dbc87a41b85186d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaba9c8e0303f432bd9fa38e422d314f36"><td class="memItemLeft" align="right" valign="top">pplx::task&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___xE5_xA4_x9A_xE5_xAA_x92_xE4_xBD_x93_xE8_xB5_x84_xE6_xBA_x90.html#gaba9c8e0303f432bd9fa38e422d314f36">getResourceUrl</a> (std::string_view mediaId) const</td></tr>
+<tr class="memdesc:gaba9c8e0303f432bd9fa38e422d314f36"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取文件 mediaId 的临时url  <a href="group___xE5_xA4_x9A_xE5_xAA_x92_xE4_xBD_x93_xE8_xB5_x84_xE6_xBA_x90.html#gaba9c8e0303f432bd9fa38e422d314f36">更多...</a><br /></td></tr>
+<tr class="separator:gaba9c8e0303f432bd9fa38e422d314f36"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga72016f8f7f9f12bbbef3143fe1caafee"><td class="memItemLeft" align="right" valign="top">pplx::task&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___xE5_xA4_x9A_xE5_xAA_x92_xE4_xBD_x93_xE8_xB5_x84_xE6_xBA_x90.html#ga72016f8f7f9f12bbbef3143fe1caafee">getResource</a> (std::string_view mediaId) const</td></tr>
+<tr class="memdesc:ga72016f8f7f9f12bbbef3143fe1caafee"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取文件 mediaId 的临时url  <a href="group___xE5_xA4_x9A_xE5_xAA_x92_xE4_xBD_x93_xE8_xB5_x84_xE6_xBA_x90.html#ga72016f8f7f9f12bbbef3143fe1caafee">更多...</a><br /></td></tr>
+<tr class="separator:ga72016f8f7f9f12bbbef3143fe1caafee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga783d9cffcb6e81e7fd53f90f67d4fc2c"><td class="memItemLeft" align="right" valign="top">pplx::task&lt; std::vector&lt; unsigned char &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___xE5_xA4_x9A_xE5_xAA_x92_xE4_xBD_x93_xE8_xB5_x84_xE6_xBA_x90.html#ga783d9cffcb6e81e7fd53f90f67d4fc2c">getResourceData</a> (std::string_view mediaId) const</td></tr>
+<tr class="memdesc:ga783d9cffcb6e81e7fd53f90f67d4fc2c"><td class="mdescLeft">&#160;</td><td class="mdescRight">下载 mediaId 对应的资源,返回字节数组  <a href="group___xE5_xA4_x9A_xE5_xAA_x92_xE4_xBD_x93_xE8_xB5_x84_xE6_xBA_x90.html#ga783d9cffcb6e81e7fd53f90f67d4fc2c">更多...</a><br /></td></tr>
+<tr class="separator:ga783d9cffcb6e81e7fd53f90f67d4fc2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga353d15ec0d6beb87ae334cddd942fd10"><td class="memItemLeft" align="right" valign="top">pplx::task&lt; <a class="el" href="struct_jmcpp_1_1_group_info.html">GroupInfo</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___xE7_xBE_xA4_xE7_xBB_x84_xE7_xAE_xA1_xE7_x90_x86.html#ga353d15ec0d6beb87ae334cddd942fd10">createGroup</a> (std::string_view groupName, std::optional&lt; std::string_view &gt; const &amp;description=std::nullopt, std::optional&lt; std::string_view &gt; const &amp;filePath=std::nullopt, bool isPublic=0) const</td></tr>
+<tr class="memdesc:ga353d15ec0d6beb87ae334cddd942fd10"><td class="mdescLeft">&#160;</td><td class="mdescRight">创建群  <a href="group___xE7_xBE_xA4_xE7_xBB_x84_xE7_xAE_xA1_xE7_x90_x86.html#ga353d15ec0d6beb87ae334cddd942fd10">更多...</a><br /></td></tr>
+<tr class="separator:ga353d15ec0d6beb87ae334cddd942fd10"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8037b0240a4d6c1e3223037b9a7d7f1e"><td class="memItemLeft" align="right" valign="top">pplx::task&lt; void &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___xE7_xBE_xA4_xE7_xBB_x84_xE7_xAE_xA1_xE7_x90_x86.html#ga8037b0240a4d6c1e3223037b9a7d7f1e">updateGroupInfo</a> (<a class="el" href="namespace_jmcpp.html#a89ce42712f6ace60cc54a9cbba78afda">GroupId</a> groupId, std::optional&lt; std::string_view &gt; const &amp;groupName=std::nullopt, std::optional&lt; std::string_view &gt; const &amp;description=std::nullopt, std::optional&lt; std::string_view &gt; const &amp;filePath=std::nullopt) const</td></tr>
+<tr class="memdesc:ga8037b0240a4d6c1e3223037b9a7d7f1e"><td class="mdescLeft">&#160;</td><td class="mdescRight">更新群信息  <a href="group___xE7_xBE_xA4_xE7_xBB_x84_xE7_xAE_xA1_xE7_x90_x86.html#ga8037b0240a4d6c1e3223037b9a7d7f1e">更多...</a><br /></td></tr>
+<tr class="separator:ga8037b0240a4d6c1e3223037b9a7d7f1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9c29e0d573863d67a42cfa84c9475a36"><td class="memItemLeft" align="right" valign="top">pplx::task&lt; <a class="el" href="struct_jmcpp_1_1_group_info.html">GroupInfo</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___xE7_xBE_xA4_xE7_xBB_x84_xE7_xAE_xA1_xE7_x90_x86.html#ga9c29e0d573863d67a42cfa84c9475a36">exitGroup</a> (<a class="el" href="namespace_jmcpp.html#a89ce42712f6ace60cc54a9cbba78afda">GroupId</a> groupId) const</td></tr>
+<tr class="memdesc:ga9c29e0d573863d67a42cfa84c9475a36"><td class="mdescLeft">&#160;</td><td class="mdescRight">退出群  <a href="group___xE7_xBE_xA4_xE7_xBB_x84_xE7_xAE_xA1_xE7_x90_x86.html#ga9c29e0d573863d67a42cfa84c9475a36">更多...</a><br /></td></tr>
+<tr class="separator:ga9c29e0d573863d67a42cfa84c9475a36"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga483e41650cacdc9b914c90b61e6c80f8"><td class="memItemLeft" align="right" valign="top">pplx::task&lt; <a class="el" href="struct_jmcpp_1_1_group_info.html">GroupInfo</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___xE7_xBE_xA4_xE7_xBB_x84_xE7_xAE_xA1_xE7_x90_x86.html#ga483e41650cacdc9b914c90b61e6c80f8">leaveGroup</a> (<a class="el" href="namespace_jmcpp.html#a89ce42712f6ace60cc54a9cbba78afda">GroupId</a> groupId) const</td></tr>
+<tr class="memdesc:ga483e41650cacdc9b914c90b61e6c80f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">退出群  <a href="group___xE7_xBE_xA4_xE7_xBB_x84_xE7_xAE_xA1_xE7_x90_x86.html#ga483e41650cacdc9b914c90b61e6c80f8">更多...</a><br /></td></tr>
+<tr class="separator:ga483e41650cacdc9b914c90b61e6c80f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gacfb41f3ced84c69f6b7e6873d48a9211"><td class="memItemLeft" align="right" valign="top">pplx::task&lt; void &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___xE7_xBE_xA4_xE7_xBB_x84_xE7_xAE_xA1_xE7_x90_x86.html#gacfb41f3ced84c69f6b7e6873d48a9211">addGroupMembers</a> (<a class="el" href="namespace_jmcpp.html#a89ce42712f6ace60cc54a9cbba78afda">GroupId</a> groupId, std::vector&lt; <a class="el" href="struct_jmcpp_1_1_user_id.html">UserId</a> &gt; const &amp;userList) const</td></tr>
+<tr class="memdesc:gacfb41f3ced84c69f6b7e6873d48a9211"><td class="mdescLeft">&#160;</td><td class="mdescRight">邀请群成员加入群  <a href="group___xE7_xBE_xA4_xE7_xBB_x84_xE7_xAE_xA1_xE7_x90_x86.html#gacfb41f3ced84c69f6b7e6873d48a9211">更多...</a><br /></td></tr>
+<tr class="separator:gacfb41f3ced84c69f6b7e6873d48a9211"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad9cfa675438956d38d50c0757009fc5a"><td class="memItemLeft" align="right" valign="top">pplx::task&lt; void &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___xE7_xBE_xA4_xE7_xBB_x84_xE7_xAE_xA1_xE7_x90_x86.html#gad9cfa675438956d38d50c0757009fc5a">removeGroupMembers</a> (<a class="el" href="namespace_jmcpp.html#a89ce42712f6ace60cc54a9cbba78afda">GroupId</a> groupId, std::vector&lt; <a class="el" href="struct_jmcpp_1_1_user_id.html">UserId</a> &gt; const &amp;userList) const</td></tr>
+<tr class="memdesc:gad9cfa675438956d38d50c0757009fc5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">删除群成员  <a href="group___xE7_xBE_xA4_xE7_xBB_x84_xE7_xAE_xA1_xE7_x90_x86.html#gad9cfa675438956d38d50c0757009fc5a">更多...</a><br /></td></tr>
+<tr class="separator:gad9cfa675438956d38d50c0757009fc5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0e200a4eb681e5ec884c8bd68838c222"><td class="memItemLeft" align="right" valign="top">pplx::task&lt; <a class="el" href="namespace_jmcpp.html#a6736f17789b913fe02e8d758093451fb">GroupInfoList</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___xE7_xBE_xA4_xE7_xBB_x84_xE7_xAE_xA1_xE7_x90_x86.html#ga0e200a4eb681e5ec884c8bd68838c222">getGroups</a> () const</td></tr>
+<tr class="memdesc:ga0e200a4eb681e5ec884c8bd68838c222"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取用户群列表  <a href="group___xE7_xBE_xA4_xE7_xBB_x84_xE7_xAE_xA1_xE7_x90_x86.html#ga0e200a4eb681e5ec884c8bd68838c222">更多...</a><br /></td></tr>
+<tr class="separator:ga0e200a4eb681e5ec884c8bd68838c222"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga46b8644b46440224c92415ecad9003e7"><td class="memItemLeft" align="right" valign="top">pplx::task&lt; <a class="el" href="struct_jmcpp_1_1_group_info.html">GroupInfo</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___xE7_xBE_xA4_xE7_xBB_x84_xE7_xAE_xA1_xE7_x90_x86.html#ga46b8644b46440224c92415ecad9003e7">getGroupInfo</a> (<a class="el" href="namespace_jmcpp.html#a89ce42712f6ace60cc54a9cbba78afda">GroupId</a> groupId) const</td></tr>
+<tr class="memdesc:ga46b8644b46440224c92415ecad9003e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取群信息  <a href="group___xE7_xBE_xA4_xE7_xBB_x84_xE7_xAE_xA1_xE7_x90_x86.html#ga46b8644b46440224c92415ecad9003e7">更多...</a><br /></td></tr>
+<tr class="separator:ga46b8644b46440224c92415ecad9003e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga44fa8478d63532e71f40f4c88503c9fe"><td class="memItemLeft" align="right" valign="top">pplx::task&lt; <a class="el" href="namespace_jmcpp.html#abb8d12a1949152234adf6b64f3b8462b">GroupMemberList</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___xE7_xBE_xA4_xE7_xBB_x84_xE7_xAE_xA1_xE7_x90_x86.html#ga44fa8478d63532e71f40f4c88503c9fe">getGroupMembers</a> (<a class="el" href="namespace_jmcpp.html#a89ce42712f6ace60cc54a9cbba78afda">GroupId</a> groupId) const</td></tr>
+<tr class="memdesc:ga44fa8478d63532e71f40f4c88503c9fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取群成员列表  <a href="group___xE7_xBE_xA4_xE7_xBB_x84_xE7_xAE_xA1_xE7_x90_x86.html#ga44fa8478d63532e71f40f4c88503c9fe">更多...</a><br /></td></tr>
+<tr class="separator:ga44fa8478d63532e71f40f4c88503c9fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gacb313ed26e0e837cd58161a505d8f24e"><td class="memItemLeft" align="right" valign="top">pplx::task&lt; void &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___xE7_xBE_xA4_xE7_xBB_x84_xE7_xAE_xA1_xE7_x90_x86.html#gacb313ed26e0e837cd58161a505d8f24e">joinGroup</a> (<a class="el" href="namespace_jmcpp.html#a89ce42712f6ace60cc54a9cbba78afda">GroupId</a> groupId, std::string_view requestMsg=std::string_view()) const</td></tr>
+<tr class="memdesc:gacb313ed26e0e837cd58161a505d8f24e"><td class="mdescLeft">&#160;</td><td class="mdescRight">申请加入群  <a href="group___xE7_xBE_xA4_xE7_xBB_x84_xE7_xAE_xA1_xE7_x90_x86.html#gacb313ed26e0e837cd58161a505d8f24e">更多...</a><br /></td></tr>
+<tr class="separator:gacb313ed26e0e837cd58161a505d8f24e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5aa61e519e0f23edcd1801967340d41f"><td class="memItemLeft" align="right" valign="top">pplx::task&lt; void &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___xE7_xBE_xA4_xE7_xBB_x84_xE7_xAE_xA1_xE7_x90_x86.html#ga5aa61e519e0f23edcd1801967340d41f">passJoinGroup</a> (<a class="el" href="namespace_jmcpp.html#a89ce42712f6ace60cc54a9cbba78afda">GroupId</a> groupId, int64_t eventId, <a class="el" href="struct_jmcpp_1_1_user_id.html">Jmcpp::UserId</a> const &amp;user, <a class="el" href="struct_jmcpp_1_1_user_id.html">Jmcpp::UserId</a> const &amp;fromUser) const</td></tr>
+<tr class="memdesc:ga5aa61e519e0f23edcd1801967340d41f"><td class="mdescLeft">&#160;</td><td class="mdescRight">通过加入群请求  <a href="group___xE7_xBE_xA4_xE7_xBB_x84_xE7_xAE_xA1_xE7_x90_x86.html#ga5aa61e519e0f23edcd1801967340d41f">更多...</a><br /></td></tr>
+<tr class="separator:ga5aa61e519e0f23edcd1801967340d41f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8fb5be8c45dec45348c37a58ae7dd6cc"><td class="memItemLeft" align="right" valign="top">pplx::task&lt; void &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___xE7_xBE_xA4_xE7_xBB_x84_xE7_xAE_xA1_xE7_x90_x86.html#ga8fb5be8c45dec45348c37a58ae7dd6cc">rejectJoinGroup</a> (<a class="el" href="namespace_jmcpp.html#a89ce42712f6ace60cc54a9cbba78afda">GroupId</a> groupId, int64_t eventId, <a class="el" href="struct_jmcpp_1_1_user_id.html">Jmcpp::UserId</a> const &amp;user, <a class="el" href="struct_jmcpp_1_1_user_id.html">Jmcpp::UserId</a> const &amp;fromUser, std::string_view rejectReason) const</td></tr>
+<tr class="memdesc:ga8fb5be8c45dec45348c37a58ae7dd6cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">拒绝加入群请求  <a href="group___xE7_xBE_xA4_xE7_xBB_x84_xE7_xAE_xA1_xE7_x90_x86.html#ga8fb5be8c45dec45348c37a58ae7dd6cc">更多...</a><br /></td></tr>
+<tr class="separator:ga8fb5be8c45dec45348c37a58ae7dd6cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9145d02d8fd519511917582bd48a3d83"><td class="memItemLeft" align="right" valign="top">pplx::task&lt; void &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___xE7_xBE_xA4_xE7_xBB_x84_xE7_xAE_xA1_xE7_x90_x86.html#ga9145d02d8fd519511917582bd48a3d83">setGroupMemberSilent</a> (<a class="el" href="namespace_jmcpp.html#a89ce42712f6ace60cc54a9cbba78afda">GroupId</a> groupId, <a class="el" href="struct_jmcpp_1_1_user_id.html">Jmcpp::UserId</a> const &amp;user, bool on) const</td></tr>
+<tr class="memdesc:ga9145d02d8fd519511917582bd48a3d83"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置群成员禁言  <a href="group___xE7_xBE_xA4_xE7_xBB_x84_xE7_xAE_xA1_xE7_x90_x86.html#ga9145d02d8fd519511917582bd48a3d83">更多...</a><br /></td></tr>
+<tr class="separator:ga9145d02d8fd519511917582bd48a3d83"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gada5af4b0f5f74403363d00768e5d5f60"><td class="memItemLeft" align="right" valign="top">pplx::task&lt; <a class="el" href="struct_jmcpp_1_1_get_rooms_result.html">GetRoomsResult</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___xE8_x81_x8A_xE5_xA4_xA9_xE5_xAE_xA4.html#gada5af4b0f5f74403363d00768e5d5f60">getAppRooms</a> (size_t start, std::string_view appkey=std::string_view()) const</td></tr>
+<tr class="memdesc:gada5af4b0f5f74403363d00768e5d5f60"><td class="mdescLeft">&#160;</td><td class="mdescRight">分页获取appkey下的所有聊天室  <a href="group___xE8_x81_x8A_xE5_xA4_xA9_xE5_xAE_xA4.html#gada5af4b0f5f74403363d00768e5d5f60">更多...</a><br /></td></tr>
+<tr class="separator:gada5af4b0f5f74403363d00768e5d5f60"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga07216e546d4586c70154d6539123fa8c"><td class="memItemLeft" align="right" valign="top">pplx::task&lt; <a class="el" href="namespace_jmcpp.html#a326e54864f38d9de9f77ffb87feff2bb">RoomInfoList</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___xE8_x81_x8A_xE5_xA4_xA9_xE5_xAE_xA4.html#ga07216e546d4586c70154d6539123fa8c">getSelfRooms</a> () const</td></tr>
+<tr class="memdesc:ga07216e546d4586c70154d6539123fa8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取已进入的聊天室  <a href="group___xE8_x81_x8A_xE5_xA4_xA9_xE5_xAE_xA4.html#ga07216e546d4586c70154d6539123fa8c">更多...</a><br /></td></tr>
+<tr class="separator:ga07216e546d4586c70154d6539123fa8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gafce61913ae464407d4cef9bd7377d4cc"><td class="memItemLeft" align="right" valign="top">pplx::task&lt; void &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___xE8_x81_x8A_xE5_xA4_xA9_xE5_xAE_xA4.html#gafce61913ae464407d4cef9bd7377d4cc">enterRoom</a> (<a class="el" href="namespace_jmcpp.html#a1ec9d374efb8e52f01d0538edde80ceb">RoomId</a> roomId) const</td></tr>
+<tr class="memdesc:gafce61913ae464407d4cef9bd7377d4cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">进入聊天室  <a href="group___xE8_x81_x8A_xE5_xA4_xA9_xE5_xAE_xA4.html#gafce61913ae464407d4cef9bd7377d4cc">更多...</a><br /></td></tr>
+<tr class="separator:gafce61913ae464407d4cef9bd7377d4cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae22dfb6b9eaf398a07108e6d805da6a0"><td class="memItemLeft" align="right" valign="top">pplx::task&lt; void &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___xE8_x81_x8A_xE5_xA4_xA9_xE5_xAE_xA4.html#gae22dfb6b9eaf398a07108e6d805da6a0">leaveRoom</a> (<a class="el" href="namespace_jmcpp.html#a1ec9d374efb8e52f01d0538edde80ceb">RoomId</a> roomId) const</td></tr>
+<tr class="memdesc:gae22dfb6b9eaf398a07108e6d805da6a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">离开聊天室  <a href="group___xE8_x81_x8A_xE5_xA4_xA9_xE5_xAE_xA4.html#gae22dfb6b9eaf398a07108e6d805da6a0">更多...</a><br /></td></tr>
+<tr class="separator:gae22dfb6b9eaf398a07108e6d805da6a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0937df75791aafc0ca6915731d5950de"><td class="memItemLeft" align="right" valign="top">pplx::task&lt; <a class="el" href="struct_jmcpp_1_1_room_info.html">RoomInfo</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___xE8_x81_x8A_xE5_xA4_xA9_xE5_xAE_xA4.html#ga0937df75791aafc0ca6915731d5950de">getRoomInfo</a> (<a class="el" href="namespace_jmcpp.html#a1ec9d374efb8e52f01d0538edde80ceb">RoomId</a> roomId) const</td></tr>
+<tr class="memdesc:ga0937df75791aafc0ca6915731d5950de"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取聊天室信息  <a href="group___xE8_x81_x8A_xE5_xA4_xA9_xE5_xAE_xA4.html#ga0937df75791aafc0ca6915731d5950de">更多...</a><br /></td></tr>
+<tr class="separator:ga0937df75791aafc0ca6915731d5950de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga91069d1a3933dba6ecdb9c15efedab8f"><td class="memItemLeft" align="right" valign="top">pplx::task&lt; <a class="el" href="struct_jmcpp_1_1_not_disturb_info.html">NotDisturbInfo</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___xE5_x85_x8D_xE6_x89_x93_xE6_x89_xB0_xE7_xAE_xA1_xE7_x90_x86.html#ga91069d1a3933dba6ecdb9c15efedab8f">getNotDisturb</a> () const</td></tr>
+<tr class="memdesc:ga91069d1a3933dba6ecdb9c15efedab8f"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取当前免打扰设置  <a href="group___xE5_x85_x8D_xE6_x89_x93_xE6_x89_xB0_xE7_xAE_xA1_xE7_x90_x86.html#ga91069d1a3933dba6ecdb9c15efedab8f">更多...</a><br /></td></tr>
+<tr class="separator:ga91069d1a3933dba6ecdb9c15efedab8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga71f22ff641f1e264c3ce34060de82aa9"><td class="memItemLeft" align="right" valign="top">pplx::task&lt; void &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___xE5_x85_x8D_xE6_x89_x93_xE6_x89_xB0_xE7_xAE_xA1_xE7_x90_x86.html#ga71f22ff641f1e264c3ce34060de82aa9">setGlobalNotDisturb</a> (bool on) const</td></tr>
+<tr class="memdesc:ga71f22ff641f1e264c3ce34060de82aa9"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置全局免打扰  <a href="group___xE5_x85_x8D_xE6_x89_x93_xE6_x89_xB0_xE7_xAE_xA1_xE7_x90_x86.html#ga71f22ff641f1e264c3ce34060de82aa9">更多...</a><br /></td></tr>
+<tr class="separator:ga71f22ff641f1e264c3ce34060de82aa9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae229d4f1c892e1df43decd0065b5283a"><td class="memItemLeft" align="right" valign="top">pplx::task&lt; void &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___xE5_x85_x8D_xE6_x89_x93_xE6_x89_xB0_xE7_xAE_xA1_xE7_x90_x86.html#gae229d4f1c892e1df43decd0065b5283a">setNotDisturb</a> (<a class="el" href="struct_jmcpp_1_1_user_id.html">UserId</a> const &amp;userId, bool on) const</td></tr>
+<tr class="memdesc:gae229d4f1c892e1df43decd0065b5283a"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置用户免打扰  <a href="group___xE5_x85_x8D_xE6_x89_x93_xE6_x89_xB0_xE7_xAE_xA1_xE7_x90_x86.html#gae229d4f1c892e1df43decd0065b5283a">更多...</a><br /></td></tr>
+<tr class="separator:gae229d4f1c892e1df43decd0065b5283a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga872605217bd560ab7270290ef80e69dd"><td class="memItemLeft" align="right" valign="top">pplx::task&lt; void &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___xE5_x85_x8D_xE6_x89_x93_xE6_x89_xB0_xE7_xAE_xA1_xE7_x90_x86.html#ga872605217bd560ab7270290ef80e69dd">setNotDisturb</a> (<a class="el" href="namespace_jmcpp.html#a89ce42712f6ace60cc54a9cbba78afda">GroupId</a> groupId, bool on) const</td></tr>
+<tr class="memdesc:ga872605217bd560ab7270290ef80e69dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置群免打扰  <a href="group___xE5_x85_x8D_xE6_x89_x93_xE6_x89_xB0_xE7_xAE_xA1_xE7_x90_x86.html#ga872605217bd560ab7270290ef80e69dd">更多...</a><br /></td></tr>
+<tr class="separator:ga872605217bd560ab7270290ef80e69dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa0eb795164585036d757343d87015ba5"><td class="memItemLeft" align="right" valign="top">pplx::task&lt; <a class="el" href="namespace_jmcpp.html#a6736f17789b913fe02e8d758093451fb">GroupInfoList</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___xE7_xBE_xA4_xE5_xB1_x8F_xE8_x94_xBD_xE7_xAE_xA1_xE7_x90_x86.html#gaa0eb795164585036d757343d87015ba5">getGroupShields</a> () const</td></tr>
+<tr class="memdesc:gaa0eb795164585036d757343d87015ba5"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取群屏蔽列表  <a href="group___xE7_xBE_xA4_xE5_xB1_x8F_xE8_x94_xBD_xE7_xAE_xA1_xE7_x90_x86.html#gaa0eb795164585036d757343d87015ba5">更多...</a><br /></td></tr>
+<tr class="separator:gaa0eb795164585036d757343d87015ba5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab4cba61a2ef0981fd99e473a8dd20776"><td class="memItemLeft" align="right" valign="top">pplx::task&lt; void &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___xE7_xBE_xA4_xE5_xB1_x8F_xE8_x94_xBD_xE7_xAE_xA1_xE7_x90_x86.html#gab4cba61a2ef0981fd99e473a8dd20776">setGroupShield</a> (<a class="el" href="namespace_jmcpp.html#a89ce42712f6ace60cc54a9cbba78afda">GroupId</a> groupId, bool on) const</td></tr>
+<tr class="memdesc:gab4cba61a2ef0981fd99e473a8dd20776"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置群屏蔽  <a href="group___xE7_xBE_xA4_xE5_xB1_x8F_xE8_x94_xBD_xE7_xAE_xA1_xE7_x90_x86.html#gab4cba61a2ef0981fd99e473a8dd20776">更多...</a><br /></td></tr>
+<tr class="separator:gab4cba61a2ef0981fd99e473a8dd20776"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaef31770f0207ee4f39ac87a2a01dbcb5"><td class="memItemLeft" align="right" valign="top">pplx::task&lt; <a class="el" href="namespace_jmcpp.html#a94f35753dcc427e89897cb2284cc1469">UserInfoList</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___xE9_xBB_x91_xE5_x90_x8D_xE5_x8D_x95_xE7_xAE_xA1_xE7_x90_x86.html#gaef31770f0207ee4f39ac87a2a01dbcb5">getBlackList</a> () const</td></tr>
+<tr class="memdesc:gaef31770f0207ee4f39ac87a2a01dbcb5"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取黑名单列表  <a href="group___xE9_xBB_x91_xE5_x90_x8D_xE5_x8D_x95_xE7_xAE_xA1_xE7_x90_x86.html#gaef31770f0207ee4f39ac87a2a01dbcb5">更多...</a><br /></td></tr>
+<tr class="separator:gaef31770f0207ee4f39ac87a2a01dbcb5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa8f00dbfe6f31dfd49bd0cb42998ab4d"><td class="memItemLeft" align="right" valign="top">pplx::task&lt; void &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___xE9_xBB_x91_xE5_x90_x8D_xE5_x8D_x95_xE7_xAE_xA1_xE7_x90_x86.html#gaa8f00dbfe6f31dfd49bd0cb42998ab4d">addToBlackList</a> (std::vector&lt; <a class="el" href="struct_jmcpp_1_1_user_id.html">UserId</a> &gt; const &amp;usernames) const</td></tr>
+<tr class="memdesc:gaa8f00dbfe6f31dfd49bd0cb42998ab4d"><td class="mdescLeft">&#160;</td><td class="mdescRight">添加到黑名单  <a href="group___xE9_xBB_x91_xE5_x90_x8D_xE5_x8D_x95_xE7_xAE_xA1_xE7_x90_x86.html#gaa8f00dbfe6f31dfd49bd0cb42998ab4d">更多...</a><br /></td></tr>
+<tr class="separator:gaa8f00dbfe6f31dfd49bd0cb42998ab4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6cbdb0c60ba4977146a76b191509a630"><td class="memItemLeft" align="right" valign="top">pplx::task&lt; void &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___xE9_xBB_x91_xE5_x90_x8D_xE5_x8D_x95_xE7_xAE_xA1_xE7_x90_x86.html#ga6cbdb0c60ba4977146a76b191509a630">removeFromBlackList</a> (std::vector&lt; <a class="el" href="struct_jmcpp_1_1_user_id.html">UserId</a> &gt; const &amp;usernames) const</td></tr>
+<tr class="memdesc:ga6cbdb0c60ba4977146a76b191509a630"><td class="mdescLeft">&#160;</td><td class="mdescRight">移出黑名单  <a href="group___xE9_xBB_x91_xE5_x90_x8D_xE5_x8D_x95_xE7_xAE_xA1_xE7_x90_x86.html#ga6cbdb0c60ba4977146a76b191509a630">更多...</a><br /></td></tr>
+<tr class="separator:ga6cbdb0c60ba4977146a76b191509a630"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2354038231fb48d1f7123a800fa74ee5"><td class="memItemLeft" align="right" valign="top">pplx::task&lt; void &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___xE5_xA5_xBD_xE5_x8F_x8B_xE7_x9B_xB8_xE5_x85_xB3.html#ga2354038231fb48d1f7123a800fa74ee5">addFriend</a> (<a class="el" href="struct_jmcpp_1_1_user_id.html">UserId</a> const &amp;userId, std::string_view requestMsg) const</td></tr>
+<tr class="memdesc:ga2354038231fb48d1f7123a800fa74ee5"><td class="mdescLeft">&#160;</td><td class="mdescRight">请求添加好友  <a href="group___xE5_xA5_xBD_xE5_x8F_x8B_xE7_x9B_xB8_xE5_x85_xB3.html#ga2354038231fb48d1f7123a800fa74ee5">更多...</a><br /></td></tr>
+<tr class="separator:ga2354038231fb48d1f7123a800fa74ee5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaab7073bf47cbf3bbee922bd2b395ccb7"><td class="memItemLeft" align="right" valign="top">pplx::task&lt; void &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___xE5_xA5_xBD_xE5_x8F_x8B_xE7_x9B_xB8_xE5_x85_xB3.html#gaab7073bf47cbf3bbee922bd2b395ccb7">passAddFriend</a> (<a class="el" href="struct_jmcpp_1_1_user_id.html">UserId</a> const &amp;userId) const</td></tr>
+<tr class="memdesc:gaab7073bf47cbf3bbee922bd2b395ccb7"><td class="mdescLeft">&#160;</td><td class="mdescRight">通过添加好友  <a href="group___xE5_xA5_xBD_xE5_x8F_x8B_xE7_x9B_xB8_xE5_x85_xB3.html#gaab7073bf47cbf3bbee922bd2b395ccb7">更多...</a><br /></td></tr>
+<tr class="separator:gaab7073bf47cbf3bbee922bd2b395ccb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7747c61bd26dbfe45f803b85ab8a47fa"><td class="memItemLeft" align="right" valign="top">pplx::task&lt; void &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___xE5_xA5_xBD_xE5_x8F_x8B_xE7_x9B_xB8_xE5_x85_xB3.html#ga7747c61bd26dbfe45f803b85ab8a47fa">rejectAddFriend</a> (<a class="el" href="struct_jmcpp_1_1_user_id.html">UserId</a> const &amp;userId, std::string_view rejectReason) const</td></tr>
+<tr class="memdesc:ga7747c61bd26dbfe45f803b85ab8a47fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">拒绝添加好友  <a href="group___xE5_xA5_xBD_xE5_x8F_x8B_xE7_x9B_xB8_xE5_x85_xB3.html#ga7747c61bd26dbfe45f803b85ab8a47fa">更多...</a><br /></td></tr>
+<tr class="separator:ga7747c61bd26dbfe45f803b85ab8a47fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga06eea397df367a693e07e6589e7c0b60"><td class="memItemLeft" align="right" valign="top">pplx::task&lt; void &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___xE5_xA5_xBD_xE5_x8F_x8B_xE7_x9B_xB8_xE5_x85_xB3.html#ga06eea397df367a693e07e6589e7c0b60">delFriend</a> (<a class="el" href="struct_jmcpp_1_1_user_id.html">UserId</a> const &amp;userId) const</td></tr>
+<tr class="memdesc:ga06eea397df367a693e07e6589e7c0b60"><td class="mdescLeft">&#160;</td><td class="mdescRight">删除好友  <a href="group___xE5_xA5_xBD_xE5_x8F_x8B_xE7_x9B_xB8_xE5_x85_xB3.html#ga06eea397df367a693e07e6589e7c0b60">更多...</a><br /></td></tr>
+<tr class="separator:ga06eea397df367a693e07e6589e7c0b60"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9c762b682f724ec05650683cf6213593"><td class="memItemLeft" align="right" valign="top">pplx::task&lt; void &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___xE5_xA5_xBD_xE5_x8F_x8B_xE7_x9B_xB8_xE5_x85_xB3.html#ga9c762b682f724ec05650683cf6213593">updateFriendRemark</a> (<a class="el" href="struct_jmcpp_1_1_user_id.html">UserId</a> const &amp;userId, std::string_view remark, std::string_view remarkOthers={}) const</td></tr>
+<tr class="memdesc:ga9c762b682f724ec05650683cf6213593"><td class="mdescLeft">&#160;</td><td class="mdescRight">更新好友备注  <a href="group___xE5_xA5_xBD_xE5_x8F_x8B_xE7_x9B_xB8_xE5_x85_xB3.html#ga9c762b682f724ec05650683cf6213593">更多...</a><br /></td></tr>
+<tr class="separator:ga9c762b682f724ec05650683cf6213593"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7cbc95661d7c84a7196f1634105da5aa"><td class="memItemLeft" align="right" valign="top">pplx::task&lt; <a class="el" href="namespace_jmcpp.html#a94f35753dcc427e89897cb2284cc1469">UserInfoList</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___xE5_xA5_xBD_xE5_x8F_x8B_xE7_x9B_xB8_xE5_x85_xB3.html#ga7cbc95661d7c84a7196f1634105da5aa">getFriendList</a> () const</td></tr>
+<tr class="separator:ga7cbc95661d7c84a7196f1634105da5aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gadd3d536772e52ddfdc890cd24163321e"><td class="memItemLeft" align="right" valign="top">pplx::task&lt; void &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___xE6_xB6_x88_xE6_x81_xAF_xE5_x9B_x9E_xE6_x89_xA7_xE4_xB8_x8E_xE6_x9C_xAA_xE8_xAF_xBB.html#gadd3d536772e52ddfdc890cd24163321e">clearUnreadCount</a> (<a class="el" href="namespace_jmcpp.html#a311efbb4afe3e944cc9adcaff7e08ea4">ConversationId</a> const &amp;conId) const</td></tr>
+<tr class="memdesc:gadd3d536772e52ddfdc890cd24163321e"><td class="mdescLeft">&#160;</td><td class="mdescRight">重置会话未读数,会同步多端登录,调用必成功  <a href="group___xE6_xB6_x88_xE6_x81_xAF_xE5_x9B_x9E_xE6_x89_xA7_xE4_xB8_x8E_xE6_x9C_xAA_xE8_xAF_xBB.html#gadd3d536772e52ddfdc890cd24163321e">更多...</a><br /></td></tr>
+<tr class="separator:gadd3d536772e52ddfdc890cd24163321e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6e51ee441884dacd162219ee3b28533c"><td class="memItemLeft" align="right" valign="top">pplx::task&lt; <a class="el" href="struct_jmcpp_1_1_message_receipts.html">MessageReceipts</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___xE6_xB6_x88_xE6_x81_xAF_xE5_x9B_x9E_xE6_x89_xA7_xE4_xB8_x8E_xE6_x9C_xAA_xE8_xAF_xBB.html#ga6e51ee441884dacd162219ee3b28533c">getMessageReceipts</a> (int64_t msgId) const</td></tr>
+<tr class="separator:ga6e51ee441884dacd162219ee3b28533c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad423d1ebd931b67982a0e16e1f48d441"><td class="memItemLeft" align="right" valign="top">pplx::task&lt; void &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___xE6_xB6_x88_xE6_x81_xAF_xE5_x9B_x9E_xE6_x89_xA7_xE4_xB8_x8E_xE6_x9C_xAA_xE8_xAF_xBB.html#gad423d1ebd931b67982a0e16e1f48d441">sendMessageReceipts</a> (<a class="el" href="namespace_jmcpp.html#a311efbb4afe3e944cc9adcaff7e08ea4">ConversationId</a> const &amp;conId, std::vector&lt; int64_t &gt; const &amp;msgIds) const</td></tr>
+<tr class="memdesc:gad423d1ebd931b67982a0e16e1f48d441"><td class="mdescLeft">&#160;</td><td class="mdescRight">发送消息回执  <a href="group___xE6_xB6_x88_xE6_x81_xAF_xE5_x9B_x9E_xE6_x89_xA7_xE4_xB8_x8E_xE6_x9C_xAA_xE8_xAF_xBB.html#gad423d1ebd931b67982a0e16e1f48d441">更多...</a><br /></td></tr>
+<tr class="separator:gad423d1ebd931b67982a0e16e1f48d441"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0f18cad066b9c76b4d055e49406e688a"><td class="memItemLeft" align="right" valign="top">pplx::task&lt; void &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___xE6_xB6_x88_xE6_x81_xAF_xE5_x8F_x91_xE9_x80_x81_xE4_xB8_x8E_xE7_xAE_xA1_xE7_x90_x86.html#ga0f18cad066b9c76b4d055e49406e688a">retractMessage</a> (int64_t msgId) const</td></tr>
+<tr class="memdesc:ga0f18cad066b9c76b4d055e49406e688a"><td class="mdescLeft">&#160;</td><td class="mdescRight">撤回消息  <a href="group___xE6_xB6_x88_xE6_x81_xAF_xE5_x8F_x91_xE9_x80_x81_xE4_xB8_x8E_xE7_xAE_xA1_xE7_x90_x86.html#ga0f18cad066b9c76b4d055e49406e688a">更多...</a><br /></td></tr>
+<tr class="separator:ga0f18cad066b9c76b4d055e49406e688a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8bbe5c9ac3221f8285938740832400cc"><td class="memItemLeft" align="right" valign="top">pplx::task&lt; <a class="el" href="struct_jmcpp_1_1_text_content.html">TextContent</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___xE6_xB6_x88_xE6_x81_xAF_xE5_x8F_x91_xE9_x80_x81_xE4_xB8_x8E_xE7_xAE_xA1_xE7_x90_x86.html#ga8bbe5c9ac3221f8285938740832400cc">createTextContent</a> (std::string_view text) const</td></tr>
+<tr class="memdesc:ga8bbe5c9ac3221f8285938740832400cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">创建文本消息内容  <a href="group___xE6_xB6_x88_xE6_x81_xAF_xE5_x8F_x91_xE9_x80_x81_xE4_xB8_x8E_xE7_xAE_xA1_xE7_x90_x86.html#ga8bbe5c9ac3221f8285938740832400cc">更多...</a><br /></td></tr>
+<tr class="separator:ga8bbe5c9ac3221f8285938740832400cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac44ac3f22c224d1049494c32aefaf212"><td class="memItemLeft" align="right" valign="top">pplx::task&lt; <a class="el" href="struct_jmcpp_1_1_image_content.html">ImageContent</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___xE6_xB6_x88_xE6_x81_xAF_xE5_x8F_x91_xE9_x80_x81_xE4_xB8_x8E_xE7_xAE_xA1_xE7_x90_x86.html#gac44ac3f22c224d1049494c32aefaf212">createImageContent</a> (std::string_view filePath) const</td></tr>
+<tr class="memdesc:gac44ac3f22c224d1049494c32aefaf212"><td class="mdescLeft">&#160;</td><td class="mdescRight">从文件创建图片消息内容  <a href="group___xE6_xB6_x88_xE6_x81_xAF_xE5_x8F_x91_xE9_x80_x81_xE4_xB8_x8E_xE7_xAE_xA1_xE7_x90_x86.html#gac44ac3f22c224d1049494c32aefaf212">更多...</a><br /></td></tr>
+<tr class="separator:gac44ac3f22c224d1049494c32aefaf212"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga73801da2eb51b00c1db7c58a59eb2c6c"><td class="memItemLeft" align="right" valign="top">pplx::task&lt; <a class="el" href="struct_jmcpp_1_1_image_content.html">ImageContent</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___xE6_xB6_x88_xE6_x81_xAF_xE5_x8F_x91_xE9_x80_x81_xE4_xB8_x8E_xE7_xAE_xA1_xE7_x90_x86.html#ga73801da2eb51b00c1db7c58a59eb2c6c">createImageContent</a> (const void *data, size_t size, std::string_view fileName) const</td></tr>
+<tr class="memdesc:ga73801da2eb51b00c1db7c58a59eb2c6c"><td class="mdescLeft">&#160;</td><td class="mdescRight">从内存数据创建图片消息内容  <a href="group___xE6_xB6_x88_xE6_x81_xAF_xE5_x8F_x91_xE9_x80_x81_xE4_xB8_x8E_xE7_xAE_xA1_xE7_x90_x86.html#ga73801da2eb51b00c1db7c58a59eb2c6c">更多...</a><br /></td></tr>
+<tr class="separator:ga73801da2eb51b00c1db7c58a59eb2c6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4f0c0ce2bfaf5303e7a829431fd8d5e9"><td class="memItemLeft" align="right" valign="top">pplx::task&lt; <a class="el" href="struct_jmcpp_1_1_file_content.html">FileContent</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___xE6_xB6_x88_xE6_x81_xAF_xE5_x8F_x91_xE9_x80_x81_xE4_xB8_x8E_xE7_xAE_xA1_xE7_x90_x86.html#ga4f0c0ce2bfaf5303e7a829431fd8d5e9">createFileContent</a> (std::string_view filePath) const</td></tr>
+<tr class="memdesc:ga4f0c0ce2bfaf5303e7a829431fd8d5e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">创建文件消息内容  <a href="group___xE6_xB6_x88_xE6_x81_xAF_xE5_x8F_x91_xE9_x80_x81_xE4_xB8_x8E_xE7_xAE_xA1_xE7_x90_x86.html#ga4f0c0ce2bfaf5303e7a829431fd8d5e9">更多...</a><br /></td></tr>
+<tr class="separator:ga4f0c0ce2bfaf5303e7a829431fd8d5e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6188d5777eb4ad64b82442f4631f57fa"><td class="memItemLeft" align="right" valign="top">pplx::task&lt; <a class="el" href="struct_jmcpp_1_1_location_content.html">LocationContent</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___xE6_xB6_x88_xE6_x81_xAF_xE5_x8F_x91_xE9_x80_x81_xE4_xB8_x8E_xE7_xAE_xA1_xE7_x90_x86.html#ga6188d5777eb4ad64b82442f4631f57fa">createLocationContent</a> (double latitude, double longitude, double scale, std::string_view label) const</td></tr>
+<tr class="memdesc:ga6188d5777eb4ad64b82442f4631f57fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">创建位置消息内容  <a href="group___xE6_xB6_x88_xE6_x81_xAF_xE5_x8F_x91_xE9_x80_x81_xE4_xB8_x8E_xE7_xAE_xA1_xE7_x90_x86.html#ga6188d5777eb4ad64b82442f4631f57fa">更多...</a><br /></td></tr>
+<tr class="separator:ga6188d5777eb4ad64b82442f4631f57fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6a893c0e358e94d3b046aac02dafc851"><td class="memItemLeft" align="right" valign="top">pplx::task&lt; <a class="el" href="struct_jmcpp_1_1_custom_content.html">CustomContent</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___xE6_xB6_x88_xE6_x81_xAF_xE5_x8F_x91_xE9_x80_x81_xE4_xB8_x8E_xE7_xAE_xA1_xE7_x90_x86.html#ga6a893c0e358e94d3b046aac02dafc851">createCustomContent</a> (std::string_view custom) const</td></tr>
+<tr class="memdesc:ga6a893c0e358e94d3b046aac02dafc851"><td class="mdescLeft">&#160;</td><td class="mdescRight">创建自定义消息内容  <a href="group___xE6_xB6_x88_xE6_x81_xAF_xE5_x8F_x91_xE9_x80_x81_xE4_xB8_x8E_xE7_xAE_xA1_xE7_x90_x86.html#ga6a893c0e358e94d3b046aac02dafc851">更多...</a><br /></td></tr>
+<tr class="separator:ga6a893c0e358e94d3b046aac02dafc851"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga92cba453c06ad907a3cec396cbe47676"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespace_jmcpp.html#ac9d81250d6bca065b4e5af39d8ff8837">MessagePtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___xE6_xB6_x88_xE6_x81_xAF_xE5_x8F_x91_xE9_x80_x81_xE4_xB8_x8E_xE7_xAE_xA1_xE7_x90_x86.html#ga92cba453c06ad907a3cec396cbe47676">buildMessage</a> (<a class="el" href="struct_jmcpp_1_1_user_id.html">UserId</a> const &amp;targetUserId, <a class="el" href="namespace_jmcpp.html#a03e8fb0723307eaaab504f6459b8a51e">MessageContent</a> const &amp;content, <a class="el" href="struct_jmcpp_1_1_message_settings.html">MessageSettings</a> const &amp;settings={}) const</td></tr>
+<tr class="memdesc:ga92cba453c06ad907a3cec396cbe47676"><td class="mdescLeft">&#160;</td><td class="mdescRight">创建一条单聊消息  <a href="group___xE6_xB6_x88_xE6_x81_xAF_xE5_x8F_x91_xE9_x80_x81_xE4_xB8_x8E_xE7_xAE_xA1_xE7_x90_x86.html#ga92cba453c06ad907a3cec396cbe47676">更多...</a><br /></td></tr>
+<tr class="separator:ga92cba453c06ad907a3cec396cbe47676"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2d107c70dc8babff82d0974a7cf9c265"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespace_jmcpp.html#ac9d81250d6bca065b4e5af39d8ff8837">MessagePtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___xE6_xB6_x88_xE6_x81_xAF_xE5_x8F_x91_xE9_x80_x81_xE4_xB8_x8E_xE7_xAE_xA1_xE7_x90_x86.html#ga2d107c70dc8babff82d0974a7cf9c265">buildMessage</a> (<a class="el" href="namespace_jmcpp.html#a89ce42712f6ace60cc54a9cbba78afda">GroupId</a> groupId, <a class="el" href="namespace_jmcpp.html#a03e8fb0723307eaaab504f6459b8a51e">MessageContent</a> const &amp;content, <a class="el" href="struct_jmcpp_1_1_message_settings.html">MessageSettings</a> const &amp;settings={}, std::optional&lt; <a class="el" href="namespace_jmcpp.html#a34d16288414c1dd6b97279ebb0684519">UserIdList</a> &gt; const &amp;atUsers=std::nullopt) const</td></tr>
+<tr class="memdesc:ga2d107c70dc8babff82d0974a7cf9c265"><td class="mdescLeft">&#160;</td><td class="mdescRight">创建一条群聊消息  <a href="group___xE6_xB6_x88_xE6_x81_xAF_xE5_x8F_x91_xE9_x80_x81_xE4_xB8_x8E_xE7_xAE_xA1_xE7_x90_x86.html#ga2d107c70dc8babff82d0974a7cf9c265">更多...</a><br /></td></tr>
+<tr class="separator:ga2d107c70dc8babff82d0974a7cf9c265"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad8446859be4a66afc23200327aa9c753"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespace_jmcpp.html#ac9d81250d6bca065b4e5af39d8ff8837">MessagePtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___xE6_xB6_x88_xE6_x81_xAF_xE5_x8F_x91_xE9_x80_x81_xE4_xB8_x8E_xE7_xAE_xA1_xE7_x90_x86.html#gad8446859be4a66afc23200327aa9c753">buildMessage</a> (<a class="el" href="namespace_jmcpp.html#a1ec9d374efb8e52f01d0538edde80ceb">RoomId</a> const &amp;roomId, <a class="el" href="namespace_jmcpp.html#a03e8fb0723307eaaab504f6459b8a51e">MessageContent</a> const &amp;content, <a class="el" href="struct_jmcpp_1_1_message_settings.html">MessageSettings</a> const &amp;settings={}) const</td></tr>
+<tr class="memdesc:gad8446859be4a66afc23200327aa9c753"><td class="mdescLeft">&#160;</td><td class="mdescRight">创建一条聊天室消息  <a href="group___xE6_xB6_x88_xE6_x81_xAF_xE5_x8F_x91_xE9_x80_x81_xE4_xB8_x8E_xE7_xAE_xA1_xE7_x90_x86.html#gad8446859be4a66afc23200327aa9c753">更多...</a><br /></td></tr>
+<tr class="separator:gad8446859be4a66afc23200327aa9c753"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga900d63452ea40ebf72c8bf9ca2275b00"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespace_jmcpp.html#ac9d81250d6bca065b4e5af39d8ff8837">MessagePtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___xE6_xB6_x88_xE6_x81_xAF_xE5_x8F_x91_xE9_x80_x81_xE4_xB8_x8E_xE7_xAE_xA1_xE7_x90_x86.html#ga900d63452ea40ebf72c8bf9ca2275b00">buildMessage</a> (<a class="el" href="namespace_jmcpp.html#a311efbb4afe3e944cc9adcaff7e08ea4">ConversationId</a> const &amp;conId, <a class="el" href="namespace_jmcpp.html#a03e8fb0723307eaaab504f6459b8a51e">MessageContent</a> const &amp;content, <a class="el" href="struct_jmcpp_1_1_message_settings.html">MessageSettings</a> const &amp;settings={}, std::optional&lt; <a class="el" href="namespace_jmcpp.html#a34d16288414c1dd6b97279ebb0684519">UserIdList</a> &gt; const &amp;atUsers=std::nullopt) const</td></tr>
+<tr class="memdesc:ga900d63452ea40ebf72c8bf9ca2275b00"><td class="mdescLeft">&#160;</td><td class="mdescRight">创建一条单聊或群聊或聊天室消息,调用上面的3个函数  <a href="group___xE6_xB6_x88_xE6_x81_xAF_xE5_x8F_x91_xE9_x80_x81_xE4_xB8_x8E_xE7_xAE_xA1_xE7_x90_x86.html#ga900d63452ea40ebf72c8bf9ca2275b00">更多...</a><br /></td></tr>
+<tr class="separator:ga900d63452ea40ebf72c8bf9ca2275b00"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf107b3bc47b9b89364f521a8d0229ee5"><td class="memItemLeft" align="right" valign="top">pplx::task&lt; <a class="el" href="namespace_jmcpp.html#ac9d81250d6bca065b4e5af39d8ff8837">MessagePtr</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___xE6_xB6_x88_xE6_x81_xAF_xE5_x8F_x91_xE9_x80_x81_xE4_xB8_x8E_xE7_xAE_xA1_xE7_x90_x86.html#gaf107b3bc47b9b89364f521a8d0229ee5">sendMessage</a> (<a class="el" href="namespace_jmcpp.html#ac9d81250d6bca065b4e5af39d8ff8837">MessagePtr</a> const &amp;msg) const</td></tr>
+<tr class="memdesc:gaf107b3bc47b9b89364f521a8d0229ee5"><td class="mdescLeft">&#160;</td><td class="mdescRight">发送消息  <a href="group___xE6_xB6_x88_xE6_x81_xAF_xE5_x8F_x91_xE9_x80_x81_xE4_xB8_x8E_xE7_xAE_xA1_xE7_x90_x86.html#gaf107b3bc47b9b89364f521a8d0229ee5">更多...</a><br /></td></tr>
+<tr class="separator:gaf107b3bc47b9b89364f521a8d0229ee5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1f636836e521c136dacb39ec6ba9fe11"><td class="memItemLeft" align="right" valign="top">pplx::task&lt; void &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___xE6_xB6_x88_xE6_x81_xAF_xE5_x8F_x91_xE9_x80_x81_xE4_xB8_x8E_xE7_xAE_xA1_xE7_x90_x86.html#ga1f636836e521c136dacb39ec6ba9fe11">sendTransCommand</a> (<a class="el" href="namespace_jmcpp.html#a311efbb4afe3e944cc9adcaff7e08ea4">ConversationId</a> const &amp;conId, std::string_view cmd) const</td></tr>
+<tr class="memdesc:ga1f636836e521c136dacb39ec6ba9fe11"><td class="mdescLeft">&#160;</td><td class="mdescRight">发送透传命令  <a href="group___xE6_xB6_x88_xE6_x81_xAF_xE5_x8F_x91_xE9_x80_x81_xE4_xB8_x8E_xE7_xAE_xA1_xE7_x90_x86.html#ga1f636836e521c136dacb39ec6ba9fe11">更多...</a><br /></td></tr>
+<tr class="separator:ga1f636836e521c136dacb39ec6ba9fe11"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4378f36e9a862a678762888f235718fd"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="namespace_jmcpp.html#ac9d81250d6bca065b4e5af39d8ff8837">MessagePtr</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___xE6_xB6_x88_xE6_x81_xAF_xE5_x8F_x91_xE9_x80_x81_xE4_xB8_x8E_xE7_xAE_xA1_xE7_x90_x86.html#ga4378f36e9a862a678762888f235718fd">getMessages</a> (<a class="el" href="namespace_jmcpp.html#a311efbb4afe3e944cc9adcaff7e08ea4">ConversationId</a> const &amp;conId, size_t count, <a class="el" href="namespace_jmcpp.html#ac9d81250d6bca065b4e5af39d8ff8837">MessagePtr</a> const &amp;msg, bool timeAsc=false) const</td></tr>
+<tr class="memdesc:ga4378f36e9a862a678762888f235718fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取消息历史记录  <a href="group___xE6_xB6_x88_xE6_x81_xAF_xE5_x8F_x91_xE9_x80_x81_xE4_xB8_x8E_xE7_xAE_xA1_xE7_x90_x86.html#ga4378f36e9a862a678762888f235718fd">更多...</a><br /></td></tr>
+<tr class="separator:ga4378f36e9a862a678762888f235718fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga06d458034e35a55db085238b137a8019"><td class="memItemLeft" align="right" valign="top">pplx::task&lt; std::vector&lt; <a class="el" href="namespace_jmcpp.html#ac9d81250d6bca065b4e5af39d8ff8837">MessagePtr</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___xE6_xB6_x88_xE6_x81_xAF_xE5_x8F_x91_xE9_x80_x81_xE4_xB8_x8E_xE7_xAE_xA1_xE7_x90_x86.html#ga06d458034e35a55db085238b137a8019">getMessagesAsync</a> (<a class="el" href="namespace_jmcpp.html#a311efbb4afe3e944cc9adcaff7e08ea4">ConversationId</a> const &amp;conId, size_t count, <a class="el" href="namespace_jmcpp.html#ac9d81250d6bca065b4e5af39d8ff8837">MessagePtr</a> const &amp;msg, bool timeAsc=false) const</td></tr>
+<tr class="memdesc:ga06d458034e35a55db085238b137a8019"><td class="mdescLeft">&#160;</td><td class="mdescRight">异步获取消息历史记录  <a href="group___xE6_xB6_x88_xE6_x81_xAF_xE5_x8F_x91_xE9_x80_x81_xE4_xB8_x8E_xE7_xAE_xA1_xE7_x90_x86.html#ga06d458034e35a55db085238b137a8019">更多...</a><br /></td></tr>
+<tr class="separator:ga06d458034e35a55db085238b137a8019"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4adbd45db519e61114186952ac03d04f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespace_jmcpp.html#ac9d81250d6bca065b4e5af39d8ff8837">MessagePtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___xE6_xB6_x88_xE6_x81_xAF_xE5_x8F_x91_xE9_x80_x81_xE4_xB8_x8E_xE7_xAE_xA1_xE7_x90_x86.html#ga4adbd45db519e61114186952ac03d04f">getLatestMessage</a> (<a class="el" href="namespace_jmcpp.html#a311efbb4afe3e944cc9adcaff7e08ea4">ConversationId</a> const &amp;conId) const</td></tr>
+<tr class="separator:ga4adbd45db519e61114186952ac03d04f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6e10a9dc8d89f0fb5d9666fdb6054646"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___xE6_xB6_x88_xE6_x81_xAF_xE5_x8F_x91_xE9_x80_x81_xE4_xB8_x8E_xE7_xAE_xA1_xE7_x90_x86.html#ga6e10a9dc8d89f0fb5d9666fdb6054646">deleteMessage</a> (<a class="el" href="namespace_jmcpp.html#a311efbb4afe3e944cc9adcaff7e08ea4">ConversationId</a> const &amp;conId, int64_t msgId)</td></tr>
+<tr class="memdesc:ga6e10a9dc8d89f0fb5d9666fdb6054646"><td class="mdescLeft">&#160;</td><td class="mdescRight">删除会话消息记录  <a href="group___xE6_xB6_x88_xE6_x81_xAF_xE5_x8F_x91_xE9_x80_x81_xE4_xB8_x8E_xE7_xAE_xA1_xE7_x90_x86.html#ga6e10a9dc8d89f0fb5d9666fdb6054646">更多...</a><br /></td></tr>
+<tr class="separator:ga6e10a9dc8d89f0fb5d9666fdb6054646"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga846be14582d9174444056e8e3b6a79b2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___xE6_xB6_x88_xE6_x81_xAF_xE5_x8F_x91_xE9_x80_x81_xE4_xB8_x8E_xE7_xAE_xA1_xE7_x90_x86.html#ga846be14582d9174444056e8e3b6a79b2">deleteAllMessage</a> (<a class="el" href="namespace_jmcpp.html#a311efbb4afe3e944cc9adcaff7e08ea4">ConversationId</a> const &amp;conId)</td></tr>
+<tr class="memdesc:ga846be14582d9174444056e8e3b6a79b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">删除会话所有消息记录  <a href="group___xE6_xB6_x88_xE6_x81_xAF_xE5_x8F_x91_xE9_x80_x81_xE4_xB8_x8E_xE7_xAE_xA1_xE7_x90_x86.html#ga846be14582d9174444056e8e3b6a79b2">更多...</a><br /></td></tr>
+<tr class="separator:ga846be14582d9174444056e8e3b6a79b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaefeff5049e13291b2dfba2a46112d443"><td class="memItemLeft" align="right" valign="top">pplx::task&lt; std::vector&lt; <a class="el" href="namespace_jmcpp.html#a311efbb4afe3e944cc9adcaff7e08ea4">ConversationId</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___xE6_xB6_x88_xE6_x81_xAF_xE5_x8F_x91_xE9_x80_x81_xE4_xB8_x8E_xE7_xAE_xA1_xE7_x90_x86.html#gaefeff5049e13291b2dfba2a46112d443">getConversationList</a> () const</td></tr>
+<tr class="memdesc:gaefeff5049e13291b2dfba2a46112d443"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取同步会话列表  <a href="group___xE6_xB6_x88_xE6_x81_xAF_xE5_x8F_x91_xE9_x80_x81_xE4_xB8_x8E_xE7_xAE_xA1_xE7_x90_x86.html#gaefeff5049e13291b2dfba2a46112d443">更多...</a><br /></td></tr>
+<tr class="separator:gaefeff5049e13291b2dfba2a46112d443"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>Client类提供了SDK的主要功能 </p>
+<dl class="section version"><dt>版本</dt><dd>1.1.0 </dd></dl>
+</div><h2 class="groupheader">构造及析构函数说明</h2>
+<a id="a7f139490c1c447c594a3d710a3abcb6e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7f139490c1c447c594a3d710a3abcb6e">&#9670;&nbsp;</a></span>Client()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Jmcpp::Client::Client </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_jmcpp_1_1_configuration.html">Configuration</a> const &amp;&#160;</td>
+          <td class="paramname"><em>cfg</em> = <code><a class="el" href="struct_jmcpp_1_1_configuration.html">Configuration</a>()</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5ddf324ce2376c78a25ed6f1c6752c67"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5ddf324ce2376c78a25ed6f1c6752c67">&#9670;&nbsp;</a></span>~Client()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual Jmcpp::Client::~Client </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>Client.h</li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespace_jmcpp.html">Jmcpp</a></li><li class="navelem"><a class="el" href="class_jmcpp_1_1_client.html">Client</a></li>
+    <li class="footer">制作者
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
+  </ul>
+</div>
+</body>
+</html>

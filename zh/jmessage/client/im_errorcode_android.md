@@ -40,6 +40,11 @@
       <td>服务器内部错误</td>
     </tr>
     <tr >
+      <td>871105</td>
+      <td>User info not found.</td>
+      <td>请求的用户信息不存在</td>
+    </tr>
+    <tr >
       <td>871201</td>
       <td>Get response timeout,please try again later.</td>
       <td>响应超时</td>
@@ -132,8 +137,33 @@
     <tr >
       <td>871318</td>
       <td>Illegal message content.</td>
-      <td>不合法的消息体，出现这个问题可能是由于上层没有参照集成文档进行混淆配置导致的，关于jmessage的混淆配置见<a href="./jmessage_android_guide/" target="_blank">集成指南</a></td>
+      <td>不合法的消息体，出现这个问题可能是由于上层没有参照集成文档进行混淆配置导致的，关于jmessage的混淆配置见<a href="../jmessage_android_guide/" target="_blank">集成指南</a></td>
     </tr>
+    <tr >
+      <td>871319</td>
+      <td>Create ForwardMessage failed</td>
+      <td>创建转发消息失败，具体原因见logcat打印</td>
+    </tr>
+    <tr >
+      <td>871320</td>
+      <td>Set message HaveRead status failed.</td>
+      <td>将消息标记为已读时出现问题，可能这条消息已经是已读状态，或者这条消息本身不是接受类型的消息</td>
+    </tr>
+    <tr >
+      <td>871321</td>
+      <td>Get receipt details failed.</td>
+      <td>获取未回执详情失败，只有消息的发送者可以查询消息的未回执详情</td>
+    </tr>
+    <tr >
+      <td>871322</td>
+      <td>Get receipt details failed.</td>
+      <td>获取未回执详情失败，这条消息尚未成功发送，只有成功发送的消息可以查询未回执详情</td>
+    </tr>
+	<tr >
+	  <td>871323</td>
+	  <td>Chatroom not exist.</td>
+	  <td>请求的聊天室信息未找到，该聊天室不存在</td>
+	</tr>
     <tr >
       <td>871402</td>
       <td>Upload file failed.auth error.</td>
@@ -179,7 +209,7 @@
       <td>Push register error,invalid IMEI.</td>
       <td>Push 注册失败，设备IMEI不合法</td>
     </tr>
-    
+
 </table>
 </div>
 <br>

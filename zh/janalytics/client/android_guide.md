@@ -8,7 +8,6 @@
 
 + 如果您想要快速地测试、请参考本文在几分钟内跑通Demo。
 + 极光推送文档网站上，有相关的所有指南、API、教程等全部的文档。包括本文档的更新版本，都会及时地发布到该网站上。
-+ [极光社区](http://community.jiguang.cn/)网站：大家除了文档之外，还有问题与疑问，会到这里来提问题，以及时地得到解答。
 
 ##产品说明
 利用事件模板统计App用户的行为事件并上报给极光服务器，极光提供加工过的数据通过WebPortal展示给开发者，让开发者更加了解自己的应用在用户手中的使用情况。
@@ -17,7 +16,7 @@
 	1.统计页面流
 	2.统计自定义计数事件
 	3.统计自定义计算事件
-	
+
 ###janalytics-android-release-1.x.y.zip 集成压缩包内容
 
 + AndroidManifest.xml
@@ -30,7 +29,7 @@
 	+ SDK analysis 开发包
 + example
 	+ 是一个完整的 Android 项目，通过这个演示了 JAnalysis SDK 的基本用法，可以用来做参考。
-	
+
 ###Android SDK 版本
 目前SDK只支持Android 2.3或以上版本的手机系统.
 
@@ -41,7 +40,7 @@
 请访问[极光推送官方网站](https://www.jiguang.cn/push) 注册您的极光账号。
 
 ![jpush_android_guide](../image/jpush_app_register.png)
- 
+
 ###Portal上创建应用
 
 使用注册账号登陆，进入极光控制台后，点击“创建应用”按钮，进入创建应用的界面。填上你的应用程序的名称以及应用包名这二项就可以了，最后点击最下方的 “创建我的应用”按钮，创建应用完毕。
@@ -60,31 +59,31 @@
 ***说明*** ： 使用jcenter自动集成的开发者，不需要在项目中添加jar，jcenter会自动完成依赖；jcenter 也会自动导入 JAnalytics 所需的权限和 meta-data 节点进你项目的 AndroidManifest 中。
 
 + 确认android studio的 Project 根目录的主 gradle 中配置了jcenter支持。（新建project默认配置就支持）
-        
+
         buildscript {
             repositories {
                 jcenter()
             }
             ......
         }
-        
+
         allprojects {
             repositories {
                 jcenter()
             }
         }
-              
-     
+
+
 + 在 module 的 gradle 中添加依赖和AndroidManifest的替换变量。
 
 
-        
+
         android {
             ......
             defaultConfig {
                 applicationId "com.xxx.xxx" // 你应用的包名.
                 ......
-      
+
                 manifestPlaceholders = [
                     JPUSH_APPKEY : "你的appkey", //JPush上注册的包名对应的appkey.
                     JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
@@ -93,12 +92,12 @@
             }
             ......
         }
-        
-        
-       
+
+
+
         dependencies {
             ......
-            
+
             compile 'cn.jiguang.sdk:janalytics:1.1.1' // 此处以JAnalytics 1.1.1 版本为例。
             compile 'cn.jiguang.sdk:jcore:1.1.2' // 此处以JCore 1.1.2 版本为例。
             ......
@@ -133,7 +132,7 @@
             <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
             <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
             <uses-permission android:name="android.permission.GET_TASKS" />
-            
+
 	+ 配置appkey：从 portal 上应用信息中获取 AppKey，并填写你的 Channel。
 
 			<meta-data android:name="JPUSH_APPKEY" android:value="Your AppKey"/>
@@ -155,19 +154,17 @@
 
 + 设置调试模式：参数为 true 表示打开调试模式，可看到 sdk 的日志。
 
-		JAnalyticsInterface.setDebugMode(boolean isDebugMode); 
-		
+		JAnalyticsInterface.setDebugMode(boolean isDebugMode);
+
 ### 更多 API
 
 其他 API 的使用方法请参考接口文档：[Android SDK API](http://docs-test.jiguang.cn/janalytics/client/android_api/)
-    
+
 ### 运行 demo
 
 压缩包附带的 example 是一个 API 演示例子。你可以将它导入到你的工程，并将你的 AppKey 填入到 example 的 AndroidManifest 中，然后直接运行起来测试。
 
-    
+
 ## 技术支持
 
-邮件联系：<support@jpush.cn>
-
-问答社区：[极光社区](http://community.jiguang.cn/)
+邮件联系：[support&#64;jpush.cn](mailto:support&#64;jpush.cn)

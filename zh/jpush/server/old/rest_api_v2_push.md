@@ -34,7 +34,7 @@ http://api.jpush.cn:8800/v2/push
 
 ##### sendno
 
-int 必须 
+int 必须
 
 发送编号（最大支持32位正整数(即 4294967295 )）。由开发者自己维护，用于开发者自己标识一次发送请求。
 
@@ -50,10 +50,10 @@ int 必须
 
 接收者类型。
 
-2 - 指定的 tag。   
-3 - 指定的 alias。   
-4 - 广播：对 app_key 下的所有用户推送消息。   
-5 - 根据 RegistrationID 进行推送。Android SDK r1.6.0 及以上版本支持。 
+2 - 指定的 tag。
+3 - 指定的 alias。
+4 - 广播：对 app_key 下的所有用户推送消息。
+5 - 根据 RegistrationID 进行推送。Android SDK r1.6.0 及以上版本支持。
 
 ##### receiver_value
 
@@ -61,10 +61,10 @@ string 可选
 
 发送范围值，与 receiver_type 相对应。
 
-2 - App 调用 SDK API 设置的 tag （标签）。支持多达 10 个，使用 "," 间隔。填写多个 tag 时，最后推送对象是这多个 tag 的 user set 的并集，而不会有重复用户。   
-3 - App 调用 SDK API 设置的 alias （别名）。支持多达 1000 个，使用 "," 间隔。   
-4 - 不需要填。   
-5 - 目标设备的 RegistrationID。支持多达 1000 个，使用 “,” （逗号）间隔。 
+2 - App 调用 SDK API 设置的 tag （标签）。支持多达 10 个，使用 "," 间隔。填写多个 tag 时，最后推送对象是这多个 tag 的 user set 的并集，而不会有重复用户。
+3 - App 调用 SDK API 设置的 alias （别名）。支持多达 1000 个，使用 "," 间隔。
+4 - 不需要填。
+5 - 目标设备的 RegistrationID。支持多达 1000 个，使用 “,” （逗号）间隔。
 
 ##### verification_code
 
@@ -86,7 +86,7 @@ int 必须
 
 1 - 通知
 
-2 - 自定义消息（只有 Android 支持） 
+2 - 自定义消息（只有 Android 支持）
 
 ##### msg_content
 
@@ -104,7 +104,7 @@ string 必须
 
 ##### apns_production
 
-int 可选 
+int 可选
 
 指定 APNS 通知发送环境：0: 开发环境，1：生产环境。
 
@@ -140,9 +140,9 @@ string 可选
 
 正常情况下返回码为 200，返回内容类型为字符串，形式为 JSON。
 
-| Key名称 | Value内容说明 | 
-| :---| :---| 
-|errcode|错误码。参考：错误码定义| 
+| Key名称 | Value内容说明 |
+| :---| :---|
+|errcode|错误码。参考：错误码定义|
 |errmsg |错误说明|
 | msg_id|该消息的 ID|
 
@@ -157,10 +157,10 @@ string 可选
 当调用参数 msg_type = 1 时，msg_content JSON 要求：
 
 | Key名称 | 是否必须 | Value内容说明 |
-| :---| :---| :---| 
-|n_builder_id|可选 |1-1000的数值，不填则默认为 0，使用 极光Push SDK 的默认通知样式。只有 Android 支持这个参数。进一步了解请参考文档 [通知栏样式定制 API](../../client/android_api)| 
-|n_title|可选 |通知标题。不填则默认使用该应用的名称。只有 Android支持这个参数。| 
-|n_content| 必须 |通知内容。| 
+| :---| :---| :---|
+|n_builder_id|可选 |1-1000的数值，不填则默认为 0，使用 极光Push SDK 的默认通知样式。只有 Android 支持这个参数。进一步了解请参考文档 [通知栏样式定制 API](../../client/Android/android_api)|
+|n_title|可选 |通知标题。不填则默认使用该应用的名称。只有 Android支持这个参数。|
+|n_content| 必须 |通知内容。|
 |n_extras| 可选 |通知附加参数。JSON格式。客户端可取得全部内容。|
 
 ```
@@ -176,10 +176,10 @@ string 可选
 关于 APNs 的具体详细定义，请参考官方文档：[Apple Push Notification Service](http://developer.apple.com/library/ios/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/ApplePushService/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW12)。
 
 | JPush 字段 | APNs 字段 |
-| :---| :---| 
-|n_content |alert| 
-|n_extras -> ios -> badge |badge| 
-|n_extras -> ios -> sound |sound| 
+| :---| :---|
+|n_content |alert|
+|n_extras -> ios -> badge |badge|
+|n_extras -> ios -> sound |sound|
 |n_extras -> ios >content-available |content-available|
 
 n_content 字段必须存在，但可以为空字符串。这时，如果 extras 里带了 badge 字段，则收到的通知会显示应用图标右上角数字，而没有通知栏内容。
@@ -189,17 +189,17 @@ n_extras 整体可以不填。
 指定了 iOS 特定参数的完整的通知 msg_content JSON串示例：
 
     {
-     "n_content":"通知内容", 
+     "n_content":"通知内容",
      "n_extras":{
      	"ios":{
-     		"badge":88, 
-     		"sound":"default", 
+     		"badge":88,
+     		"sound":"default",
      		"content-available":1
-     		}, 
-     "user_param_1":"value1", 
+     		},
+     "user_param_1":"value1",
      "user_param_2":"value2"}
     }
-    
+
 
 #### 通知长度限制说明
 
@@ -271,12 +271,12 @@ JPush API 同时支持 Andorid 与 iOS 平台的通知推送。
     int sendno = 3321;
     int receiverType = 2;
     String receiverValue = "game, oldman, student";
-    String masterSecret = "71638202938228382811FCB1CB308ADC"; //极光推送portal 
+    String masterSecret = "71638202938228382811FCB1CB308ADC"; //极光推送portal
     上分配的 appKey 的验证串(masterSecret)
      
     String input = String.valueOf(sendno) + receiverType + receiverValue + masterSecret;
     String verificationCode = StringUtils.toMD5(input);
-    
+
 
 ### 特殊字符问题
 
@@ -377,7 +377,7 @@ HTTP 返回码为 200 时，是业务相关的错误。
 
 如果群发：则此应用还没有一个客户端用户注册。请检查 SDK 集成是否正常。
 
-如果是推送给某别名或者标签：则此别名或者标签还没有在任何客户端SDK提交设置成功。 
+如果是推送给某别名或者标签：则此别名或者标签还没有在任何客户端SDK提交设置成功。
 
 ```
 
@@ -388,5 +388,5 @@ HTTP 返回码为 200 时，是业务相关的错误。
 了解API 频率限制：[API 频率限制][3]
 
 [1]: http://www.json.org/
-[2]: ../server/rest_api_v3_report
-[3]: ../server/server_overview/#api-rating
+[2]: ../push/rest_api_v3_report
+[3]: ../push/server_overview/#api-rating

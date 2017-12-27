@@ -32,6 +32,8 @@
 
 + context 应用的 ApplicationContext
 
+**注：** 如果暂时不希望初始化 JPush SDK ，不要调用 init， 并且在应用初始化的时候就调用 stopPush.
+
 ## 停止与恢复推送服务 API
 
 ### 支持的版本
@@ -186,7 +188,7 @@ SDK 向 JPush Server 注册所得到的注册 ID 。
 
 要深入地集成极光推送，开发者想要自己保存App用户与JPush 用户关系时，则接受此广播，取得 Registration ID 并保存与App uid 的关系到开发者自己的应用服务器上。
 
-使用极光推送提供的别名与标签功能，是更加简单轻便的绑定App用户与JPush用户的方式，请参考文档：[别名与标签使用教程。]()
+使用极光推送提供的别名与标签功能，是更加简单轻便的绑定App用户与JPush用户的方式，请参考文档：[别名与标签使用教程。](android_senior/#_1)
 
 ##### Intent 参数
 
@@ -1031,8 +1033,8 @@ alias相关的操作会在此方法中回调结果。
 
 ###  相关文档
 
-+ Android[别名与标签使用教程](/client/Android/android_api/#api_1)
-+ [标签与别名 API (iOS)](/client/iOS/ios_api/#api-ios)
++ [Android SDK 标签与别名 API](../../client/Android/android_api/#api_3)
++ [iOS SDK 标签与别名 API](../../client/iOS/ios_api/#api-ios)
 
 ## 获取 RegistrationID API
 ### 支持的版本
@@ -1277,6 +1279,21 @@ alias相关的操作会在此方法中回调结果。
 #### 参数说明
 + context 当前应用的 Activity 的上下文
 
+## 设置是否开启省电模式
+###支持的版本
+开始支持的版本：3.0.9
+
+### 功能说明
+JPush SDK开启和关闭省电模式，默认为关闭。
+
+### API - setPowerSaveMode
+
+#### 接口定义
+	public static void setPowerSaveMode(Context context,boolean enable);
+#### 参数说明
++ context 当前应用的 Activity 的上下文
++ enable 是否需要开启或关闭，true为开启，false为关闭
+
 
 ## 通知栏样式定制 API
 ### 支持的版本
@@ -1487,7 +1504,7 @@ JPushInterface.setLatestNotificationNumber(context, 3);
 		</tr>
 		<tr >
 			<td>-997</td>
-			<td>注册失败</td>
+			<td>注册失败/登录失败</td>
 			<td>（一般是由于没有网络造成的）如果确保设备网络正常，还是一直遇到此问题，则还有另外一个原因：JPush 服务器端拒绝注册。而这个的原因一般是：你当前的 App 的 Android 包名，以及 appKey ，与你在 Portal 上注册的应用的 Android 包名与 AppKey 不相同。</td>
 		</tr>
 		<tr >

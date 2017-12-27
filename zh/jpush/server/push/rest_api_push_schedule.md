@@ -7,7 +7,15 @@ API 层面支持定时功能。
 
 ### 调用地址
 
-POST [https://api.jpush.cn](https://api.jpush.cn)
+https://api.jpush.cn/v3/schedules
+
+<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px;">
+<p>如果极光应用分配在北京机房（极光控制台 “应用设置” -> "应用信息" 中可以看到），并且开发者接口调用的服务器也位于北京，则可以调用如下地址：</p>
+<p>https://bjapi.push.jiguang.cn/v3/push/schedules</p>
+<p>可以提升 API 的响应速度。</p>
+<p>详细对应关系见 “应用信息” 中的说明。</p>
+
+</div>
 
 ### 调用验证
 
@@ -20,6 +28,7 @@ Authorization: Basic base64_auth_string
 
 ```
 {
+   "cid": "7103a4c428a0b98974ec1849-711161d4-5f17-4d2f-b855-5e5a8909b26e",
    "name": "Schedule_Name",
    "enabled": true,
    "trigger": {
@@ -69,6 +78,10 @@ Authorization: Basic base64_auth_string
 
 每一个schedule任务，都由name、enabled、trigger、push这四个小节组成。
 
++ cid
+	+ 和 push api 中 cid 用法一致，详见 [cid 说明](rest_api_v3_push/#cid) 。注：schedule api payload 中的 push 字段中含有 cid 字段将会被忽略。	
++ push
+	+ 参考 [ push api ](rest_api_v3_push) 中各个字段。
 + name
 	+ 表示schedule任务的名字，由schedule-api在用户成功创建schedule任务后返回，不得超过255字节，由汉字、字母、数字、下划线组成。
 + enabled

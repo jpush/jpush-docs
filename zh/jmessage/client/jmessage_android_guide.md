@@ -105,8 +105,8 @@
         dependencies {
             ......
             
-            compile 'cn.jiguang.sdk:jmessage:2.2.0'  // 此处以JMessage 2.2.0 版本为例。
-            compile 'cn.jiguang.sdk:jcore:1.1.3'  // 此处以JCore 1.1.3 版本为例。
+            compile 'cn.jiguang.sdk:jmessage:2.4.0'  // 此处以JMessage 2.4.0 版本为例。
+            compile 'cn.jiguang.sdk:jcore:1.1.8'  // 此处以JCore 1.1.8 版本为例。
             ......
         }
         
@@ -249,6 +249,12 @@ defaultConfig {
         <receiver
             android:name="cn.jpush.android.service.AlarmReceiver"
             android:exported="false" />
+            
+        <!-- Required since JCore 1.1.7. SDK 核心功能-->
+        <provider
+            android:name="cn.jpush.android.service.DataProvider"
+            android:authorities="您自己的包名.DataProvider"
+            android:exported="true" />
 
         <!-- Required JMessage SDK核心功能-->
         <receiver

@@ -30,12 +30,17 @@
 
 - 创建群组、退出群组；
 - 加群组成员、移除群组成员；
+- 2.4.0版本新增[公开群组](#PublicGroup)
 
 
 ### 好友
 + jmessage android sdk 从1.4.0版本开始提供接口实现对用户好友关系的托管，以及相关好友请求的发送和接收。
 
 <font color= SteelBlue>说明：除此之外的任何建立在好友关系之上的功能（如仅限于好友之间才能进行的聊天等），需要开发者的应用层自己实现。</font>
+
+### 聊天室
++ jmessage android sdk 从2.4.0版本开始提供聊天室功能，包括查询基本信息，加入聊天室，退出聊天室，详细介绍见[聊天室管理](#ChatRoom)。
+
 
 ### 字符串规范
 此处定义JMessage产品里字段属性与规范，用于校验与规范化。  
@@ -120,13 +125,21 @@ JMessageClient.init(Context context, boolean msgRoaming)
 #### 注册
 ```
 JMessageClient.register(String username, String password, BasicCallback callback);
+
+/**
+ * 注册同时指定用户信息中的其他字段
+ * @since 2.3.0
+ */
+JMessageClient.register(String userName, String password, RegisterOptionalUserInfo optionalUserInfo, BasicCallback callback);
 ```
 
 参数说明
 
 + String username 用户名
 + String password 用户密码
++ RegisterOptionalUserInfo optionalUserInfo 注册时的用户其他信息
 + BasicCallback callback 结果回调
+
 
 #### 登录
 ```
@@ -144,9 +157,9 @@ JMessageClient.login(String username, String password, BasicCallback callback);
 JMessageClient.logout();
 ```
 
-参数说明
+### 多端同时在线
+SDK从2.3.0版本开始支持多端同时在线，具体规则见[多端在线说明](../guideline/faq/#_5)
 
-- 无
 
 ### 用户属性维护
 
@@ -695,7 +708,7 @@ sdk升级到2.1.0版本（或以上）后，上层需要针对消息接收的处
 
 #### 撤回会话中某条消息
 ***Since 2.2.0***  
-由消息撤回方发起调用
+由消息发送方发起调用
 
 ```
 	conversation.retractMessage(Message message, BasicCallback callback)
@@ -712,6 +725,168 @@ sdk升级到2.1.0版本（或以上）后，上层需要针对消息接收的处
 
 
 **注意：** 无论是撤回方还是被撤回方，消息被撤回后，对应message content会被替换为[PromtContent](./im_android_api_docs/cn/jpush/im/android/api/content/PromptContent.html)类型，消息之前内容变成不可见。
+
+### 消息已读回执
+
+#### 已读回执设置
+消息发送方可以在发送消息时，针对单条消息设置是否需要接收方发送已读回执。默认行为为false  
+***Since 2.3.0***  
+
+```
+	messageSendingOptions.setNeedReadReceipt(boolean needReadReceipt)
+```
+
+参数说明
+
++ boolean needReadReceipt 是否需要接收方发送已读回执. true - 是,false - 否.
+
+#### 获取当前未发送已读回执的人数
+当一条需要接收方发送已读回执的消息成功发出之后，消息发送方可以查看这条消息当前尚未发送已读回执的人数.  
+***Since 2.3.0***  
+
+```
+	message.getUnreceiptCnt()
+```
+
+接口返回
+
++ int 当前尚未发送已读回执的人数.  
+当所有接收者均已读，或者这条消息不是一条需要已读回执的消息时,返回0
+
+#### 获取当前已读回执详情
+当一条需要接收方发送已读回执的消息成功发出之后，消息发送方可以查看这条消息当前已读回执的详情.详情中包含当前已发送已读回执和未发送已读回执的用户`UserInfo`列表等信息  
+***Since 2.3.0***  
+
+```
+	message.getReceiptDetails(GetReceiptDetailsCallback callback)
+```
+
+参数说明
+
++ GetReceiptDetailsCallback callback 结果回调
+
+#### 消息接收方将消息标记为已读
+对于消息接收方，可以将一条消息标记为已读，标记成功后，这条消息的已读状态会记录在本地。
+当这条消息是一条需要已读回执的消息时，sdk还将主动发送一个通知事件`MessageReceiptStatusChangeEvent`给消息发送方，通知对方这条消息的已读回执人数发生变化。  
+注意这个已读状态只会保存在本地，当本地数据被清除，或者用户更换设备登陆之后，已读状态会被重置为false。  
+***Since 2.3.0***  
+
+```
+	message.setHaveRead(BasicCallback callback)
+```
+
+参数说明
+
++ BasicCallback callback 结果回调
+
+
+#### 获取消息是否是已读状态
+对于消息接收方，可以通过此接口获取到这条消息是否是已读的状态。
+默认所有收到的消息已读状态都为`false`。在成功调用`message.setHaveRead(BasicCallback callback)`接口后，消息的已读状态变成`true`  
+注意这个已读状态只会保存在本地，当本地数据被清除，或者用户更换设备登陆之后，已读状态会被重置为false。  
+***Since 2.3.0***  
+
+```
+	message.haveRead()
+```
+
+接口返回
+
++ boolean 消息的已读状态. true - 已读,false - 未读
+
+#### 消息回执状态变更事件
+
+```
+MessageReceiptStatusChangeEvent
+```
+
+对于消息发送方发送的需要接收方发送已读回执的消息，接收方通过`message.setHaveRead(BasicCallback callback)`接口成功发送已读回执后，sdk会上抛这个事件通知消息发送方。发送方通过这个事件可以知道是哪个会话中的哪条消息的未回执人数发生了变化。  
+具体处理方法见[事件处理](#Event)一节
+
+**回执相关代码示例：**
+
+```
+//消息发送方：
+//===========发送带已读回执的消息：
+final Message message = mConversation.createSendMessage(new TextContent(“这是一条需要对方发送已读回执的消息.”));
+message.setOnSendCompleteCallback(new BasicCallback() {
+    @Override
+    public void gotResult(int responseCode, String responseDesc) {
+        if (responseCode == 0) {
+            //消息发送成功
+            message.getUnreceiptCnt();//带回执的消息发送成功后，可以查看当前尚未发送已读回执的人数
+            message.getReceiptDetails(...);//获取当前已读回执详情,具体包括已读和未读用户的UserInfo列表。callback中代码略
+        } else {
+            //消息发送失败
+        }
+    }
+});
+MessageSendingOptions options = new MessageSendingOptions();
+options.setNeedReadReceipt(true);//针对这条消息打开已读回执功能
+JMessageClient.sendMessage(message,options);//使用自定义的控制参数发送消息
+//===========
+
+//===========消息发送方监听回执状态变化：
+public void onEventMainThread(MessageReceiptStatusChangeEvent event) {
+        Conversation conv = event.getConversation();
+        tv_refreshEvent.append(String.format(Locale.SIMPLIFIED_CHINESE, "\n收到MessageReceiptStatusChangeEvent事件,会话对象是%s\n", conv.getTargetId()));
+        for (MessageReceiptStatusChangeEvent.MessageReceiptMeta meta : event.getMessageReceiptMetas()) {
+            tv_refreshEvent.append(String.format(Locale.SIMPLIFIED_CHINESE,
+                    "回执数有更新的消息serverMsgID：%d\n当前未发送已读回执的人数：%d", meta.getServerMsgId(), meta.getUnReceiptCnt()));
+        }
+}
+//===========
+
+
+//消息接收方
+//===========将消息标记为已读
+if(!message.haveRead()){ //当消息的haveRead状态为false时，调用setHaveRead,将消息标记为已读
+	msg.setHaveRead(new BasicCallback() {
+        @Override
+        public void gotResult(int responseCode, String responseMessage) {
+            Toast.makeText(MessageReceiptActivity.this, "成功将消息标记为已读. responseCode = " + responseCode + " responseMessage =" + responseMessage, Toast.LENGTH_SHORT).show();
+        }
+    });
+}
+//===========
+
+```
+
+### 命令透传
+***Since 2.3.0***  
+命令透传发送的命令后台不会为其离线保存，只会在对方用户在线的前提下将命令推送给对方。sdk收到命令之后也不会本地保存，不发送通知栏通知，整体快速响应。  
+开发者可以通过命令透传拓展一些在线场景下的辅助功能，如：实现输入状态提示等。
+
+#### 发送命令透传
+
+```
+	/**
+     * 发送消息透传给个人。
+     * 消息不会进入到后台的离线存储中去，仅当对方用户当前在线时，透传消息才会成功送达。
+     * 透传命令送达时，接收方会收到一个{@link CommandNotificationEvent}事件通知。
+     * sdk不会将此类透传消息内容本地化。
+     *
+     * @param username 目标的用户名
+     * @param appKey   目标的appKey, 如果传入null或空字符串，则默认用本应用的appKey
+     * @param msg      发送的消息内容
+     * @param callback 回调函数
+     * @since 2.3.0
+     */
+	JMessageClient.sendSingleTransCommand(String username, appkey, String cmd,  BasicCallback callback)
+	
+	/**
+     * 发送消息透传给群。
+     * 消息不会进入到后台的离线存储中去，仅当对方用户当前在线时，透传消息才会成功送达。
+     * 透传命令送达时，接收方会收到一个{@link CommandNotificationEvent}事件通知。
+     * sdk不会将此类透传消息内容本地化。
+     *
+     * @param gid      群组的gid
+     * @param msg      发送的消息内容
+     * @param callback 回调函数
+     * @since 2.3.0
+     */
+    JMessageClient.sendGroupTransCommand(long gid, String msg, BasicCallback callback)
+```
 
 
 ###<span id="Event">事件处理</span>
@@ -936,7 +1111,7 @@ public void onEventMainThread(EventEntity event){
   </table>
 </div>
 
-消息被对方撤回通知事件
+消息被对方撤回通知事件MessageRetractEvent
 ***Since 2.2.0***
 <div class="table-d" align="left" >
   <table border="1" width = "100%">
@@ -959,6 +1134,182 @@ public void onEventMainThread(EventEntity event){
   </table>
 </div>
 
+消息未回执人数变更事件MessageReceiptStatusChangeEvent
+***Since 2.3.0***
+<div class="table-d" align="left" >
+  <table border="1" width = "100%">
+    <tr  bgcolor="#D3D3D3" >
+      <th width="100px">方法</th>
+      <th width="20px">类型</th>
+      <th width="300px">说明</th>
+    </tr>
+    <tr >
+      <td >getConversation()</td>
+      <td >`Conversation`</td>
+      <td >获取未回执数变更的消息所属的会话对象</td>
+    </tr>
+    <tr >
+      <td >getMessageReceiptMetas()</td>
+      <td >`List<MessageReceiptMeta>`</td>
+      <td >获取未回执数发生变化的消息的MessageReceiptMeta。其中包括了消息的serverMsg Id、当前的未回执人数、以及未回执人数更新的时间</td>
+    </tr>
+  </table>
+</div>
+
+命令透传事件CommandNotificationEvent
+***Since 2.3.0***
+<div class="table-d" align="left" >
+  <table border="1" width = "100%">
+    <tr  bgcolor="#D3D3D3" >
+      <th width="100px">方法</th>
+      <th width="20px">类型</th>
+      <th width="300px">说明</th>
+    </tr>
+    <tr >
+      <td >getSenderUserInfo()</td>
+      <td >`UserInfo`</td>
+      <td >获取命令透传消息发送者的UserInfo</td>
+    </tr>
+    <tr >
+      <td >getType()</td>
+      <td >`Type`</td>
+      <td >获取命令透传消息对象的类型，单聊是`Type.single`,群聊则是`Type.group`</td>
+    </tr>    
+    <tr >
+      <td >getTargetInfo()</td>
+      <td >`Objcet`</td>
+      <td >获取命令透传消息发送对象的Info。若对象是单聊用户则是`UserInfo`,对象是群组则是`GroupInfo`，使用时强制转型</td>
+    </tr>
+    <tr >
+      <td >getMsg()</td>
+      <td >`String`</td>
+      <td >获取命令透传消息的实际内容</td>
+    </tr>
+  </table>
+</div>
+
+群成员审批事件GroupApprovalEvent
+***Since 2.4.0***
+<div class="table-d" align="left" >
+  <table border="1" width = "100%">
+    <tr  bgcolor="#D3D3D3" >
+      <th width="100px">方法</th>
+      <th width="20px">类型</th>
+      <th width="300px">说明</th>
+    </tr>
+    <tr >
+      <td >getType()</td>
+      <td >`Type`</td>
+      <td >获取群成员审批通知事件类型，主动申请入群是`Type.apply_join_group`，邀请入群是`Type.invited_into_group`</td>
+    </tr>
+    <tr >
+      <td >getFromUserInfo()</td>
+      <td >`UserInfo`</td>
+      <td >获取群成员审批事件发起方`UserInfo`，主动申请入群时是申请人`UserInfo`，邀请入群时是邀请人`UserInfo`</td>
+    </tr>
+    <tr >
+      <td >getApprovalUserInfoList()</td>
+      <td >`List<UserInfo>`</td>
+      <td >获取需要审批入群的用户`UserInfo`</td>
+    </tr>
+    <tr >
+      <td >getReason()</td>
+      <td >`String`</td>
+      <td >获取事件发生的理由，主动申请入群时是申请理由(可为null)，邀请入群时是null</td>
+    </tr>
+	<tr >
+      <td >acceptGroupApproval()</td>
+      <td >`void`</td>
+      <td >入群审批同意,需要指定`username`，`appKey`</td>
+    </tr>
+	<tr >
+      <td >refuseGroupApproval()</td>
+      <td >`void`</td>
+      <td >入群审批拒绝,需要指定`username`，`appKey`，`reason`(可为null)</td>
+    </tr>
+  </table>
+</div>
+
+群成员审批拒绝事件GroupApprovalRefuseEvent
+***Since 2.4.0***
+<div class="table-d" align="left" >
+  <table border="1" width = "100%">
+    <tr  bgcolor="#D3D3D3" >
+      <th width="100px">方法</th>
+      <th width="20px">类型</th>
+      <th width="300px">说明</th>
+    </tr>
+    <tr >
+      <td >getFromUserInfo()</td>
+      <td >`UserInfo`</td>
+      <td >获取事件发起方userInfo，在本事件中为群主信息</td>
+    </tr>
+    <tr >
+      <td >getToUserInfoList()</td>
+      <td >`List<UserInfo>`</td>
+      <td >获取事件对象用户信息列表，在本事件中为被拒绝入群的用户`UserInfo`列表</td>
+    </tr>
+    <tr >
+      <td >getReason()</td>
+      <td >`String`</td>
+      <td >获取事件发生的理由, 在本事件中为群主审批拒绝的理由</td>
+    </tr>
+    <tr >
+      <td >getGid()</td>
+      <td >`long`</td>
+      <td >返回实际群组Gid</td>
+    </tr>
+  </table>
+</div>
+
+聊天室消息事件ChatRoomMessageEvent
+***Since 2.4.0***
+<div class="table-d" align="left" >
+  <table border="1" width = "100%">
+    <tr  bgcolor="#D3D3D3" >
+      <th width="100px">方法</th>
+      <th width="20px">类型</th>
+      <th width="300px">说明</th>
+    </tr>
+    <tr >
+      <td >getFromUserInfo()</td>
+      <td >`UserInfo`</td>
+      <td >获取事件发起方userInfo，在本事件中为群主信息</td>
+    </tr>
+    <tr >
+      <td >getToUserInfoList()</td>
+      <td >`List<UserInfo>`</td>
+      <td >获取事件对象用户信息列表，在本事件中为被拒绝入群的用户`UserInfo`列表</td>
+    </tr>
+    <tr >
+      <td >getReason()</td>
+      <td >`String`</td>
+      <td >获取事件发生的理由, 在本事件中为群主审批拒绝的理由</td>
+    </tr>
+    <tr >
+      <td >getGid()</td>
+      <td >`long`</td>
+      <td >返回实际群组Gid</td>
+    </tr>
+  </table>
+</div>
+
+聊天室消息事件ChatRoomMessageEvent
+***Since 2.4.0***
+<div class="table-d" align="left" >
+  <table border="1" width = "100%">
+    <tr  bgcolor="#D3D3D3" >
+      <th width="100px">方法</th>
+      <th width="20px">类型</th>
+      <th width="300px">说明</th>
+    </tr>
+    <tr >
+      <td >getMessages()</td>
+      <td >`List<Message>`</td>
+      <td >获取聊天室消息事件中包含的消息列表</td>
+    </tr>
+  </table>
+</div>
 
 #### 示例代码
 接收消息事件
@@ -1020,6 +1371,9 @@ class MessageEventReceiver extends Activity{
             case group_member_exit:
             //群成员退群事件
             break;
+            case group_info_updated://since 2.2.1
+            //群信息变更事件
+            break;
         }
         break;
     }
@@ -1058,7 +1412,7 @@ class UserLogoutEventReceiver extends Activity{
     @Override
     protected void onDestroy() {
         JMessageClient.unRegisterEventReceiver(this);
-        super.onDestroy();
+        super.onDestroy();``
     }
     public void onEvent(LoginStateChangeEvent event){
         LoginStateChangeEvent.Reason reason = event.getReason();//获取变更的原因
@@ -1086,11 +1440,16 @@ class UserLogoutEventReceiver extends Activity{
 #### 创建群组
 ```
 JMessageClient.createGroup(String groupName, String groupDesc, CreateGroupCallback callback);
+
+@since 2.3.0
+JMessageClient.createGroup(String groupName, String groupDesc, File groupAvatarFile, String format, CreateGroupCallback callback)
 ```  
 参数说明
 
 + String groupName 群名称
 + String groupDesc 群描述
++ File groupAvatarFile 群头像文件
++ String format 头像文件扩展名，注意名称中不要包括"."
 + CreateGroupCallback callback 结果回调
 
 回调
@@ -1111,7 +1470,7 @@ public abstract void gotResult(int responseCode, String responseMessage,
 + `List<Long>` groupIDList  当前用户所加入的群组的groupID的list
 
 
-#### 获取群组详情
+#### 获取群组信息
 ```
 JMessageClient.getGroupInfo(long groupId, GetGroupInfoCallback callback)
 ```
@@ -1122,34 +1481,41 @@ JMessageClient.getGroupInfo(long groupId, GetGroupInfoCallback callback)
 
 回调
 ```
-  public void gotResult(int responseCode, String responseMessage, Group group)
+  public void gotResult(int responseCode, String responseMessage, GroupInfo groupInfo)
 ```
-+ Group group 返回的群组详情
++ GroupInfo groupInfo 返回的群组信息对象
 
 #### 更新群组名称
 ```
-JMessageClient.updateGroupName(long groupID,
-      String groupName,BasicCallback callback);
+groupInfo.updateName(String groupName, BasicCallback callback);
 ```
 参数说明
 
-+ long groupID 待更新信息的群组ID
 + String groupName 新的名称
 + BasicCallback callback 结果回调
 
-#### 更新群组详情
+#### 更新群组描述
 ```
-JMessageClient.updateGroupDescription(long groupID,
-      String groupDesc,BasicCallback callback);
+groupInfo.updateDescription(String groupDesc, BasicCallback callback);
 ```
 参数说明
 
-+ long groupID 待更新信息的群组ID
 + String groupName 新的群组详情描述
 + BasicCallback callback 结果回调
 
+#### 更新群组头像
+**Since 2.3.0**
+```
+groupInfo.updateAvatar(File avatar, String format, BasicCallback callback);
+```
+参数说明
 
-#### 加群组成员
++ File avatar 群头像文件
++ String format 文件扩展名，注意名称中不要包含“.”
++ BasicCallback callback 结果回调
+
+
+#### 添加群组成员
 ```
 JMessageClient.addGroupMembers(long groupID, String appKey, List<String> userNameList, BasicCallback callback)
 ```  
@@ -1318,6 +1684,255 @@ message.getAtUserList(GetUserInfoListCallback callback)
 	}
 ```
 
+### <span id="PublicGroup">公开群组</span>
+***Since 2.4.0***  
+2.4.0版本新增公开群组类型，公开群组与私有群组(原有群组)的区别是只有群主邀请入群才能直接入群，
+群内其他人员邀请他人入群需要经过群主审批，同时公开群组支持申请入群操作。
+#### 创建公开群组
+***Since 2.4.0***  
+```
+    /**
+     * 创建公开群组, 群组创建成功后，创建者会默认包含在群成员中。
+     * 公开群组与私有群组的区别是公开群组只有群主邀请入群才能直接入群，群内其他人员邀请他人入群需要经过群主审批，
+     * 同时公开群组支持申请入群操作{@link JMessageClient#applyJoinGroup(long, String, BasicCallback)},
+     * 申请入群时也需要群主审批, 需要群主审批入群时群主会收到{@link cn.jpush.im.android.api.event.GroupApprovalEvent}事件
+     *
+     * @param groupName 群组名称
+     * @param groupDesc 群组描述
+     * @param callback  回调接口
+     * @since 2.4.0
+     */
+    JMessageClient.createPublicGroup(String groupName, String groupDesc,
+                                             CreateGroupCallback callback);
+	
+    /**
+     * 创建公开群组，群组创建成功后，创建者会默认包含在群成员中。
+     * 公开群组定义参考{@link JMessageClient#createPublicGroup(String, String, CreateGroupCallback)}
+     * 使用此接口创建群组时可以指定群头像,并且可以指定头像文件在后台存储时的扩展名，如果填空或者不填，则后台存储文件时将没有扩展名。
+     *
+     * @param groupName       群组名称
+     * @param groupDesc       群组描述
+     * @param groupAvatarFile 群组头像文件
+     * @param format          头像文件扩展名，注意名称中不要包括"."
+     * @param callback        回调接口
+     * @since 2.4.0
+     */
+    JMessageClient.createPublicGroup(final String groupName, final String groupDesc, final File groupAvatarFile, String format,
+                                             final CreateGroupCallback callback);
+```
+
+#### 申请入群
+***Since 2.4.0***  
+```
+    /**
+     * 申请加入群组，只有公开群组(公开群组定义参考{@link JMessageClient#createPublicGroup(String, String, CreateGroupCallback)}),
+     * 才能发送入群申请
+     *
+     * @param groupID  申请加入群组的gid
+     * @param reason   申请理由，可为null
+     * @param callback
+     * @since 2.4.0
+     */
+    JMessageClient.applyJoinGroup(long groupID, String reason, BasicCallback callback);
+```
+
+#### <span id="GroupApprovalEvent">群成员审批事件</span>
+***Since 2.4.0***  
+
+```
+GroupApprovalEvent
+```
+群成员审批事件，收到群成员审批通知时，sdk将会抛出此事件通知上层。
+具体处理方法见[事件处理](#Event)一节
+
+#### 入群审批
+***Since 2.4.0***  
+通过接收到的[群成员审批事件](#GroupApprovalEvent)进行审批操作
+```
+	/**
+	 * 入群审批同意，操作成功后，群内所有成员包括被审批人自己都会收到一个包含群成员变化的EventNotification类型的消息
+	 *
+	 * @param username 同意入群者的username
+	 * @param appKey 同意入群者的appKey，若传入空则默认使用本应用的appKey
+	 * @param callback
+	 */
+	groupApprovalEvent.acceptGroupApproval(String username, String appKey, final BasicCallback callback);
+
+	/**
+	 * 入群审批拒绝，操作成功后，该次审批请求的发起方(Type为{@link Type#apply_join_group}时是申请人 Type为{@link Type#invited_into_group}时是邀请人)
+	 * 会收到一个审批拒绝通知事件{@link GroupApprovalRefuseEvent}
+	 *
+	 * @param username 拒绝入群者的username
+	 * @param appKey 拒绝入群者的appKey, 若传入空则默认使用本应用的appKey
+	 * @param reason 拒绝理由，可填null
+	 * @param callback
+	 */
+	groupApprovalEvent.refuseGroupApproval(String username, String appKey, String reason, BasicCallback callback);
+```
+
+#### 群成员审批拒绝事件
+***Since 2.4.0***  
+```
+GroupApprovalRefuseEvent
+```
+群成员审批拒绝通知事件，收到群成员审批拒绝通知时，sdk将会抛出此事件通知上层，具体处理方法见[事件处理](#Event)一节
+
+** 公开群组相关代码示例：**
+```
+//创建公开群组
+JMessageClient.createPublicGroup(name, desc, callback);
+JMessageClient.createPublicGroup(name, desc, avatarFile, format, callback);//包含群头像
+
+//申请入群
+JMessageClient.applyJoinGroup(Long.parseLong(mEt_groupID.getText().toString()), reason, new BasicCallback() {
+	@Override
+	public void gotResult(int responseCode, String responseMessage) {
+		mProgressDialog.dismiss();
+		if (responseCode == 0) {
+			Toast.makeText(ApplyJoinGroupActivity.this, "申请成功", Toast.LENGTH_SHORT).show();
+		} else {
+			Log.d(TAG, "apply failed. code :" + responseCode + " msg : " + responseMessage);
+			Toast.makeText(ApplyJoinGroupActivity.this, "申请失败", Toast.LENGTH_SHORT).show();
+		}
+	}
+});
+
+//入群审批
+event.acceptGroupApproval(username, appKey, new BasicCallback() {
+	@Override
+	public void gotResult(int responseCode, String responseMessage) {
+		if (0 == responseCode) {
+			Toast.makeText(getApplicationContext(), "添加成功", Toast.LENGTH_SHORT).show();
+		} else {
+			Log.i(TAG, "acceptApplyJoinGroup failed,"+ " code = " + responseCode + ";msg = " + responseMessage);
+			Toast.makeText(getApplicationContext(), "添加失败", Toast.LENGTH_SHORT).show();
+		}
+	}
+}); //入群审批同意
+
+event.refuseGroupApproval(username, appKey, reason, new BasicCallback() {
+	@Override
+	public void gotResult(int responseCode, String responseMessage) {
+		if (0 == responseCode) {
+			Toast.makeText(getApplicationContext(), "拒绝成功", Toast.LENGTH_SHORT).show();
+		} else {
+			Log.i(TAG, "refuseApplyJoinGroup failed,"+ " code = " + responseCode + ";msg = " + responseMessage);
+			Toast.makeText(getApplicationContext(), "拒绝失败", Toast.LENGTH_SHORT).show();
+		}
+	}
+}); //入群审批拒绝
+```
+
+### 群成员禁言
+***Since 2.4.0***  
+2.4.0版本新增群成员禁言状态设置,禁言后用户可正常接收消息，但无法向被禁言的群组中发送消息，解禁后可正常发送消息。
+#### 群成员禁言状态设置
+***Since 2.4.0***
+```
+	/**
+	 * 群成员禁言状态设置,禁言后用户可正常接收消息，但无法向被禁言的群组中发送消息
+	 * 解禁后可正常发送消息,禁言状态设置成功后群内所有成员将会收到群禁言通知事件
+	 * sdk收到群禁言通知事件后会以类型为{@link cn.jpush.im.android.api.enums.ContentType#eventNotification}
+	 * 的消息事件方式上报
+	 *
+	 * @param username 待设置群成员的username
+	 * @param appKey 待设置群成员的appKey，传入空则默认使用本应用appKey
+	 * @param keepSilence //true 设置禁言， false 取消禁言
+	 * @param callback
+	 * @since 2.4.0
+	 */
+	groupInfo.setGroupMemSilence(String username, String appKey, boolean keepSilence, BasicCallback callback);
+```
+
+#### 获取禁言列表
+***Since 2.4.0***
+```
+	/**
+	 * 获取群成员禁言列表，返回群内被禁言的成员信息列表
+	 *
+	 * @return List<UserInfo>
+	 * @since 2.4.0
+	 */
+	groupInfo.getGroupSilenceMembers();
+```
+
+#### 判断用户是否被禁言
+***Since 2.4.0***
+```
+	/**
+	 * 判断用户在该群内是否被禁言，若被禁言返回true，否则返回false
+	 *
+	 * @param username 待判断用户的用户名
+	 * @param appKey 待判断用户的appKey，若传入空则默认使用本应用appKey
+	 * @return boolean
+	 * @since 2.4.0
+	 */
+	groupInfo.isKeepSilence(String username, String appKey);
+```
+
+**群成员禁言相关代码示例**
+```
+//设置群成员禁言状态
+JMessageClient.getGroupInfo(mGroupID, new GetGroupInfoCallback() {
+	@Override
+	public void gotResult(int responseCode, String responseMessage, GroupInfo groupInfo) {
+		if (0 == responseCode) {
+			groupInfo.setGroupMemSilence(mNames, mAppKey, keepSilence, new BasicCallback() {
+				@Override
+				public void gotResult(int i, String s) {
+					mProgressDialog.dismiss();
+					if (0 == i) {
+						Toast.makeText(getApplicationContext(), keepSilence ? "设置禁言成功" : "取消禁言成功", Toast.LENGTH_SHORT).show();
+					} else {
+						Toast.makeText(getApplicationContext(), keepSilence ? "设置禁言失败" : "取消禁言失败", Toast.LENGTH_SHORT).show();
+						Log.i(TAG, "GroupInfo.setGroupMemSilence " + ", responseCode = " + i + " ; Desc = " + s);
+					}
+				}
+			});
+		} else {
+			mProgressDialog.dismiss();
+			Toast.makeText(getApplicationContext(), keepSilence ? "设置禁言失败" : "取消禁言失败", Toast.LENGTH_SHORT).show();
+			Log.i(TAG, "getGroupInfo failed " + ", responseCode = " + responseCode + " :Desc = " + responseMessage);
+		}
+	}
+});
+
+//获取群成员禁言列表
+JMessageClient.getGroupInfo(mGetId, new GetGroupInfoCallback() {
+	@Override
+	public void gotResult(int responseCode, String responseMessage, GroupInfo groupInfo) {
+		mProgressDialog.dismiss();
+		if (responseCode == 0) {
+			List<UserInfo> silenceMembers = groupInfo.getGroupSilenceMembers();
+			StringBuilder sb = new StringBuilder();
+			for (UserInfo info : silenceMembers) {
+				sb.append(info.getUserName());
+				sb.append("\n");
+			}
+			mTv_showGroupInfo.append("群成员禁言信息列表(这里获取name,需要其他信息请自行获取)：\n" + sb.toString());
+			Toast.makeText(getApplicationContext(), "获取成功", Toast.LENGTH_SHORT).show();
+		} else {
+			Log.i("GetGroupInfoActivity", "groupInfo.getGroupMembers" + ", responseCode = " + responseCode + " ; Desc = " + responseMessage);
+			Toast.makeText(getApplicationContext(), "获取失败", Toast.LENGTH_SHORT).show();
+		}
+	}
+});
+
+//判断用户是否被禁言
+JMessageClient.getGroupInfo(mGetId, new GetGroupInfoCallback() {
+	@Override
+	public void gotResult(int i, String s, GroupInfo groupInfo) {
+		if (i == 0) {
+			mProgressDialog.dismiss();
+			Toast.makeText(getApplicationContext(), groupInfo.isKeepSilence(name, appKey) ? "已被禁言" : "没有被禁言或者用户不存在或不在指定群", Toast.LENGTH_SHORT).show();
+		} else {
+			mProgressDialog.dismiss();
+			Log.i("GetGroupInfoActivity", "groupInfo.getGroupMemberSilenceStatus" + ", responseCode = " + i + " ; Desc = " + s);
+			Toast.makeText(getApplicationContext(), "获取失败", Toast.LENGTH_SHORT).show();
+		}
+	}
+});
+```
 
 ### 黑名单管理
 可以将对方用户加入到“黑名单”列表中，加入之后，我方依然能给对方发消息，但是对方给我发消息时会返回指定错误码，发送消息失败。
@@ -1380,7 +1995,7 @@ JMessageClient.getNotificationFlag();
 	UI在进入单聊会话页面时需要调用此函数，SDK会根据传入的username来决定是否需要发送通知
 
 ```
-JMessageClient.enterSingleConversaion(String username)
+JMessageClient.enterSingleConversation(String username)
 ```
 参数定义
 
@@ -1391,7 +2006,7 @@ JMessageClient.enterSingleConversaion(String username)
 	UI在进入单聊会话页面时需要调用此函数，SDK会根据传入的username来决定是否需要发送通知
 
 ```
-JMessageClient.enterSingleConversaion(String username,String appKey)
+JMessageClient.enterSingleConversation(String username,String appKey)
 ```
 参数定义
 
@@ -1414,7 +2029,7 @@ JMessageClient.enterGroupConversation(long groupID)
 #### 退出会话
 退出会话。UI在退出会话页面时需要调用此函数。
 ```
-JMessageClient.exitConversaion();
+JMessageClient.exitConversation();
 ```
 #### 通知栏点击事件监听
 用户可以通过接受通知栏点击事件NotificationClickEvent，来实现自定义跳转，该事件如果没有接收者，点击通知栏时SDK将默认跳转到程序主界面。
@@ -1671,6 +2286,265 @@ class ContactNotifyEventReceiver extends Activity{
 
 }
 
+```
+
+### <sapn id="ChatRoom">聊天室管理</span>
+***Since 2.4.0***  
+聊天室和群组最大的区别在于，聊天室的消息没有推送通知和离线保存，也没有常驻成员的概念，只要进入聊天室即可接收消息，开始聊天，
+一旦退出聊天室，不再会接收到任何消息、通知和提醒。
+
+#### 聊天室信息
+***Since 2.4.0***  
+新增聊天室信息`ChatRoomInfo`
+<div class="table-d" align="left" >
+  <table border="1" width = "100%">
+    <tr  bgcolor="#D3D3D3" >
+      <th width="100px">方法</th>
+      <th width="20px">类型</th>
+      <th width="300px">说明</th>
+    </tr>
+    <tr >
+      <td >getRoomID()</td>
+      <td >`long`</td>
+      <td >获取聊天室id</td>
+    </tr>
+    <tr >
+      <td >getName()</td>
+      <td >`String`</td>
+      <td >获取聊天室名称</td>
+    </tr>
+    <tr >
+      <td >getAppKey()</td>
+      <td >`String`</td>
+      <td >获取聊天室所属AppKey</td>
+    </tr>
+    <tr >
+      <td >getOwnerInfo()</td>
+      <td >`UserInfo`</td>
+      <td >获取聊天室拥有者UserInfo</td>
+    </tr>
+	<tr >
+      <td >getMaxMemberCount()</td>
+      <td >`int`</td>
+      <td >获取聊天室允许的最大成员数量</td>
+    </tr>
+	<tr >
+      <td >getDescription()</td>
+      <td >`String`</td>
+      <td >获取聊天室描述</td>
+    </tr>
+	<tr >
+      <td >getTotalMemberCount()</td>
+      <td >`int`</td>
+      <td >获取聊天室当前成员数量</td>
+    </tr>
+	<tr >
+	  <td >getCreateTime()</td>
+	  <td>`int`</td>
+	  <td >获取聊天室创建时间 单位-秒</td>
+	</tr>
+  </table>
+</div>
+
+#### 获取当前应用appkey所属下聊天室信息
+***Since 2.4.0***
+```
+	/**
+	 * 获取当前应用appkey所属下聊天室信息。
+	 *
+	 * @param start    起始位置
+	 * @param count    获取个数
+	 * @param callback 接口回调
+	 * @since 2.4.0
+	 */
+	ChatRoomManager.getChatRoomListByApp(int start, int count, RequestCallback<List<ChatRoomInfo>> callback);
+```
+
+#### 获取当前用户所加入的所有聊天室的信息
+***Since 2.4.0***
+```
+	/**
+	 * 获取当前用户所加入的所有聊天室的信息。
+	 *
+	 * @param callback 接口回调
+	 * @since 2.4.0
+	 */
+	ChatRoomManager.getChatRoomListByUser(RequestCallback<List<ChatRoomInfo>> callback);
+```
+
+#### 查询指定roomID的聊天室信息
+***Since 2.4.0***
+```
+	/**
+	 * 查询指定roomID的聊天室信息。
+	 *
+	 * @param roomIDs  待查询的roomID集合
+	 * @param callback 接口回调
+	 * @since 2.4.0
+	 */
+	ChatRoomManager.getChatRoomInfos(Set<Long> roomIDs, final RequestCallback<List<ChatRoomInfo>> callback);
+```
+
+#### 进入聊天室
+***Since 2.4.0***
+```
+    /**
+     * 进入聊天室.
+     * 用户只有成功调用此接口之后，才能收到聊天室消息，以及在此聊天室中发言。
+     * 成功进入聊天室之后，会将聊天室中最近若干条聊天记录同步到本地并以{@link cn.jpush.im.android.api.event.ChatRoomMessageEvent}事件的形式通知到上层。
+     *
+     * @param roomID   聊天室的roomID
+     * @param callback 接口回调
+     * @since 2.4.0
+     */
+    ChatRoomManager.enterChatRoom(long roomID, final RequestCallback<Conversation> callback);
+```
+
+#### 离开聊天室
+***Since 2.4.0***
+```
+    /**
+     * 离开聊天室.
+     * 成功调用此接口之后，用户将能不在此聊天室收发消息。
+     *
+     * @param roomID   聊天室的roomID
+     * @param callback 接口回调
+     * @since 2.4.0
+     */
+    ChatRoomManager.leaveChatRoom(long roomID, final BasicCallback callback);
+```
+#### 获取聊天室会话信息
+***Since 2.4.0***
+```
+    /**
+     * 获取聊天室会话信息
+     *
+     * @param roomID 群组的groupID
+     * @return 返回会话信息，若不存在和指定对象的会话则返回null
+     * @since 2.4.0
+     */
+    JMessageClient.getChatRoomConversation(long roomID);
+```
+
+#### 从本地获取用户的聊天室会话列表
+***Since 2.4.0***
+```
+    /**
+     * 从本地数据库中获取包含所有的聊天室会话的列表
+     *
+     * @return 返回当前用户的聊天室会话列表，没有则返回空的列表
+     * @since 2.4.0
+     */
+    JMessageClient.getChatRoomConversationList();
+```
+
+#### 删除聊天室会话
+***Since 2.4.0***
+```
+    /**
+     * 删除聊天室会话，同时删除掉本地相关缓存文件
+     *
+     * @param roomID 聊天室roomID
+     * @return 删除成功返回true, 否则返回false
+     * @since 2.4.0
+     */
+    JMessageClient.deleteChatRoomConversation(long roomID);
+```
+
+#### 创建聊天室会话
+***Since 2.4.0***
+```
+    /**
+     * 创建聊天室会话，如果本地已存在对应会话，则不会重新创建，直接返回本地会话对象。
+     *
+     * @param roomID 聊天室的roomID
+     * @return 会话对象
+     * @since 2.4.0
+     */
+    Conversation.createChatRoomConversation(long roomID);
+```
+
+#### 聊天室消息事件
+***Since 2.4.0***
+```
+ChatRoomMessageEvent
+```
+用户进入聊天室之后，收到聊天室消息时，sdk会主动上抛此事件通知上层，具体处理方法见[事件处理](#Event)一节。
+
+**聊天室相关代码示例**
+```
+// 获取当前应用appkey所属下聊天室信息
+ChatRoomManager.getChatRoomListByApp(start, count, new RequestCallback<List<ChatRoomInfo>>() {
+	@Override
+	public void gotResult(int responseCode, String responseMessage, List<ChatRoomInfo> chatRoomInfos) {
+		String result = null != chatRoomInfos ? chatRoomInfos.toString() : null;
+		postTextToDisplay("getChatRoomListByApp", responseCode, responseMessage, result);
+	}
+});
+
+// 获取当前用户所加入的所有聊天室的信息
+ChatRoomManager.getChatRoomListByUser(new RequestCallback<List<ChatRoomInfo>>() {
+	@Override
+	public void gotResult(int responseCode, String responseMessage, List<ChatRoomInfo> chatRoomInfos) {
+		String result = null != chatRoomInfos ? chatRoomInfos.toString() : null;
+		postTextToDisplay("getChatRoomListByUser", responseCode, responseMessage, result);
+	}
+});
+
+// 查询指定roomID的聊天室信息
+ChatRoomManager.getChatRoomInfos(Collections.singleton(roomID), new RequestCallback<List<ChatRoomInfo>>() {
+	@Override
+	public void gotResult(int responseCode, String responseMessage, List<ChatRoomInfo> chatRoomInfos) {
+		String result = null != chatRoomInfos ? chatRoomInfos.toString() : null;
+		postTextToDisplay("getChatRoomInfos", responseCode, responseMessage, result);
+	}
+});
+
+// 进入聊天室
+ChatRoomManager.enterChatRoom(roomID, new RequestCallback<Conversation>() {
+	@Override
+	public void gotResult(int responseCode, String responseMessage, Conversation conversation) {
+		String result = null != conversation ? conversation.toString() : null;
+		postTextToDisplay("enterChatRoom", responseCode, responseMessage, result);
+	}
+});
+
+// 离开聊天室
+ChatRoomManager.leaveChatRoom(roomID, new BasicCallback() {
+	@Override
+	public void gotResult(int responseCode, String responseMessage) {
+		postTextToDisplay("leaveChatRoom", responseCode, responseMessage, null);
+	}
+});
+
+// 发送聊天室消息
+Conversation conv = JMessageClient.getChatRoomConversation(roomID);
+if (null == conv) {
+	conv = Conversation.createChatRoomConversation(roomID);
+}
+String text = etInputText.getText().toString();
+final Message msg = conv.createSendTextMessage(text);//实际聊天室可以支持所有类型的消息发送，demo为了简便，仅仅实现了文本类型的消息发送
+msg.setOnSendCompleteCallback(new BasicCallback() {
+	@Override
+	public void gotResult(int responseCode, String responseMessage) {
+		if (0 == responseCode) {
+			postMessageToDisplay("MessageSent", responseCode, responseMessage, msg);
+		} else {
+			postTextToDisplay("MessageSent", responseCode, responseMessage, "消息发送失败");
+		}
+	}
+});
+JMessageClient.sendMessage(msg);
+
+// 接收聊天室消息
+public void onEventMainThread(ChatRoomMessageEvent event) {
+	Log.d("tag", "ChatRoomMessageEvent received .");
+	List<Message> msgs = event.getMessages();
+	for (Message msg : msgs) {
+		//这个页面仅仅展示聊天室会话的消息
+		postMessageToDisplay("MessageReceived", event.getResponseCode(), event.getResponseDesc(), msg);
+	}
+}
 ```
 
 ### 免打扰相关

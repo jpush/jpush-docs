@@ -33,3 +33,13 @@ $('a').click(function(e) {
 $("li.disabled a").click(function() {
     event.preventDefault();
 });
+
+// $('.demo-download').hover(function(){
+// 	$(this).children(".code").children(".download-text").css('visibility', 'visible');
+// 	$(this).children(".apk").css('border', 'none');
+// 	$(this).css('border', '1px solid #ccc').css('border-radius', '2px')
+// }, function(){
+// 	$(this).children(".code").children(".download-text").css('visibility', 'hidden');
+// 	$(this).children(".apk").css('border', '1px solid #ccc').css('border-radius', '2px')
+// 	$(this).css('border', 'none');
+// });

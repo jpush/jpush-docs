@@ -12,9 +12,9 @@
                     <li><a href="../client/Android/android_guide">集成指南</a></li>
                     <li><a href="../client/Android/android_3m">3 分钟快速 Demo</a></li>
                     <li><a href="../client/Android/android_debug_guide">调试指南</a></li>
-                    <li><a href="https://sdkfiledl.jiguang.cn/jpush-android-google-play-3.0.8.zip?123">Google Play 版本</a></li>
+                    <li><a href="https://sdkfiledl.jiguang.cn/src/jpush-android-3.1.0-google_play.zip">Google Play 版本</a></li>
                 </ul>
-                <p><a href="https://www.jiguang.cn/downloads/sdk/android/" class="btn btn-default" role="button">下载</a></p>
+                <p><a href="https://www.jiguang.cn/downloads/sdk/android" class="btn btn-default" role="button">下载</a></p>
             </div>
         </div>
     </div>
@@ -44,7 +44,7 @@
                     <li class="li-clear"></li>
                     <li class="li-clear"></li>
                 </ul>
-                <p><a href="https://www.jiguang.cn/downloads/sdk/winphone/" class="btn btn-default" role="button">下载</a></p>
+                <p><a href="https://www.jiguang.cn/downloads/sdk/winphone" class="btn btn-default" role="button">下载</a></p>
             </div>
         </div>
     </div>
@@ -60,13 +60,10 @@
             <div class="caption">
                 <h4>Java SDK</h4>
                 <ul>
-                    <li>版本号：v3.3.0</li>
-                    <li>更新时间：2017-7-06</li>
                     <li>更新内容：<a href="https://github.com/jpush/jpush-api-java-client/releases" target="_blank">Change Log</a></li>
                     <li>GitHub：<a href="https://github.com/jpush/jpush-api-java-client" target="_blank">源码</a></li>
-                    <li>支持：Push API v3</li>
                 </ul>
-                <p><a href="https://sdkfiledl.jiguang.cn/jpush-api-java-client-3.3.0.zip" class="btn btn-default" role="button">下载</a></p>
+                <p><a href="https://sdkfiledl.jiguang.cn/src/jpush-api-java-client-3.3.3.zip" class="btn btn-default" role="button">下载</a></p>
             </div>
         </div>
     </div>
@@ -76,13 +73,10 @@
             <div class="caption">
                 <h4>Python SDK</h4>
                 <ul>
-                    <li>版本号：v3.2.4</li>
-                    <li>更新时间：2017-01-03</li>
                     <li>更新内容：<a href="https://github.com/jpush/jpush-api-python-client/releases" target="_blank">Change Log</a></li>
                     <li>GitHub：<a href="https://github.com/jpush/jpush-api-python-client" target="_blank">源码</a></li>
-                    <li>支持：Push API v3</li>
                 </ul>
-                <p><a href="https://sdkfiledl.jiguang.cn/jpush-api-python-client-3.2.4.zip" class="btn btn-default" role="button">下载</a></p>
+                <p><a href="https://github.com/jpush/jpush-api-python-client/archive/master.zip" class="btn btn-default" role="button">下载</a></p>
             </div>
         </div>
     </div>
@@ -94,13 +88,10 @@
             <div class="caption">
                 <h4>PHP SDK</h4>
                 <ul>
-                    <li>版本号：v3.5.12</li>
-                    <li>更新时间：2017-02-27</li>
                     <li>更新内容：<a href="https://github.com/jpush/jpush-api-php-client/releases" target="_blank">Change Log</a></li>
                     <li>GitHub：<a href="https://github.com/jpush/jpush-api-php-client" target="_blank">源码</a></li>
-                    <li>支持：Push API v3</li>
                 </ul>
-                <p><a href="https://github.com/jpush/jpush-api-php-client/archive/v3.5.12.zip" class="btn btn-default" role="button">下载</a></p>
+                <p><a href="https://github.com/jpush/jpush-api-php-client/archive/master.zip" class="btn btn-default" role="button">下载</a></p>
             </div>
         </div>
     </div>
@@ -110,13 +101,10 @@
             <div class="caption">
                 <h4>C# SDK</h4>
                 <ul>
-                    <li>版本号：v3.2.7</li>
-                    <li>更新时间：2017-02-14</li>
                     <li>更新内容：<a href="https://github.com/jpush/jpush-api-csharp-client/releases" target="_blank">Change Log</a></li>
                     <li>GitHub：<a href="https://github.com/jpush/jpush-api-csharp-client" target="_blank">源码</a></li>
-                    <li>支持：Push API v3</li>
                 </ul>
-                <p><a href="https://sdkfiledl.jiguang.cn/jpush-api-csharp-client-3.2.7.1.zip" class="btn btn-default" role="button">下载</a></p>
+                <p><a href="https://github.com/jpush/jpush-api-csharp-client/archive/master.zip" class="btn btn-default" role="button">下载</a></p>
             </div>
         </div>
     </div>
@@ -128,13 +116,10 @@
             <div class="caption">
                 <h4>Nodejs SDK</h4>
                 <ul>
-                    <li>版本号：v3.2.4</li>
-                    <li>更新时间：2016-11-01</li>
                     <li>更新内容：<a href="https://github.com/jpush/jpush-api-nodejs-client/releases" target="_blank">Change Log</a></li>
                     <li>GitHub：<a href="https://github.com/jpush/jpush-api-nodejs-client" target="_blank">源码</a></li>
-                    <li>支持：Push API v3</li>
                 </ul>
-                <p><a href="https://github.com/jpush/jpush-api-nodejs-client/archive/v3.2.4.zip" class="btn btn-default" role="button">下载</a></p>
+                <p><a href="https://github.com/jpush/jpush-api-nodejs-client/archive/master.zip" class="btn btn-default" role="button">下载</a></p>
             </div>
         </div>
     </div>
@@ -144,13 +129,10 @@
             <div class="caption">
                 <h4>Ruby SDK</h4>
                 <ul>
-                    <li>版本号：v4.0.6</li>
-                    <li>更新时间：2017-01-17</li>
                     <li>更新内容：<a href="https://github.com/jpush/jpush-api-ruby-client/releases" target="_blank">Change Log</a></li>
                     <li>GitHub：<a href="https://github.com/jpush/jpush-api-ruby-client" target="_blank">源码</a></li>
-                    <li>支持：Push API v3</li>
                 </ul>
-                <p><a href="https://github.com/jpush/jpush-api-ruby-client/archive/v4.0.6.zip" class="btn btn-default" role="button">下载</a></p>
+                <p><a href="https://github.com/jpush/jpush-api-ruby-client/archive/master.zip" class="btn btn-default" role="button">下载</a></p>
             </div>
         </div>
     </div>
@@ -159,14 +141,21 @@
 ## 服务器端第三方代码
 
 <div class="row 3rd downloads">
-    <div class="col-md-6">
+    <div class="col-md-4">
         <h4>Go</h4>
         <ul>
             <li>开发者： <a href="https://github.com/ylywyn">ylywyn</a></li>
             <li><a href="https://github.com/ylywyn/jpush-api-go-client" target="_blank">项目地址</a></li>
         </ul>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-4">
+        <h4>Go</h4>
+        <ul>
+            <li>开发者：<a href="https://github.com/xialeistudio">xialeistudio</a></li>
+            <li><a href="https://github.com/xialeistudio/go-jpushh" target="_blank">项目地址</a></li>
+        </ul>
+    </div>
+    <div class="col-md-4">
         <h4>C</h4>
         <ul>
             <li>开发者：<a href="https://github.com/coldwind">coldwind</a></li>

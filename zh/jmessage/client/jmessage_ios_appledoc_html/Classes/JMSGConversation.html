@@ -82,11 +82,15 @@
 		
 		<option value="//api/name/groupConversationWithGroupId:">+ groupConversationWithGroupId:</option>
 		
+		<option value="//api/name/chatRoomConversationWithRoomId:">+ chatRoomConversationWithRoomId:</option>
+		
 		<option value="//api/name/createSingleConversationWithUsername:completionHandler:">+ createSingleConversationWithUsername:completionHandler:</option>
 		
 		<option value="//api/name/createSingleConversationWithUsername:appKey:completionHandler:">+ createSingleConversationWithUsername:appKey:completionHandler:</option>
 		
 		<option value="//api/name/createGroupConversationWithGroupId:completionHandler:">+ createGroupConversationWithGroupId:completionHandler:</option>
+		
+		<option value="//api/name/createChatRoomConversationWithRoomId:completionHandler:">+ createChatRoomConversationWithRoomId:completionHandler:</option>
 		
 		<option value="//api/name/deleteSingleConversationWithUsername:">+ deleteSingleConversationWithUsername:</option>
 		
@@ -94,9 +98,13 @@
 		
 		<option value="//api/name/deleteGroupConversationWithGroupId:">+ deleteGroupConversationWithGroupId:</option>
 		
+		<option value="//api/name/deleteChatRoomConversationWithRoomId:">+ deleteChatRoomConversationWithRoomId:</option>
+		
 		<option value="//api/name/allConversations:">+ allConversations:</option>
 		
 		<option value="//api/name/allUnsortedConversations:">+ allUnsortedConversations:</option>
+		
+		<option value="//api/name/allChatRoomConversation:">+ allChatRoomConversation:</option>
 		
 		<option value="//api/name/getAllUnreadCount">+ getAllUnreadCount</option>
 		
@@ -120,6 +128,8 @@
 		
 		<option value="//api/name/createMessageAsyncWithImageContent:completionHandler:">- createMessageAsyncWithImageContent:completionHandler:</option>
 		
+		<option value="//api/name/createMessageAsyncWithMediaContent:completionHandler:">- createMessageAsyncWithMediaContent:completionHandler:</option>
+		
 		<option value="//api/name/sendMessage:">- sendMessage:</option>
 		
 		<option value="//api/name/sendMessage:optionalContent:">- sendMessage:optionalContent:</option>
@@ -140,6 +150,8 @@
 		
 		<option value="//api/name/retractMessage:completionHandler:">- retractMessage:completionHandler:</option>
 		
+		<option value="//api/name/sendTransparentMessage:completionHandler:">- sendTransparentMessage:completionHandler:</option>
+		
 		<option value="//api/name/avatarData:">- avatarData:</option>
 		
 		<option value="//api/name/avatarLocalPath">- avatarLocalPath</option>
@@ -147,6 +159,12 @@
 		<option value="//api/name/clearUnreadCount">- clearUnreadCount</option>
 		
 		<option value="//api/name/latestMessageContentText">- latestMessageContentText</option>
+		
+		<option value="//api/name/getConversationExtras">- getConversationExtras</option>
+		
+		<option value="//api/name/getExtraValueForKey:">- getExtraValueForKey:</option>
+		
+		<option value="//api/name/setExtraValue:forKey:">- setExtraValue:forKey:</option>
 		
 		<option value="//api/name/isMessageForThisConversation:">- isMessageForThisConversation:</option>
 		
@@ -374,6 +392,64 @@
 		</div>
 	</div>
 </div><div class="section-method">
+	<a name="//api/name/chatRoomConversationWithRoomId:" title="chatRoomConversationWithRoomId:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/chatRoomConversationWithRoomId:">+&nbsp;chatRoomConversationWithRoomId:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>获取聊天室会话</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (JMSGConversation *JMSG_NULLABLE)chatRoomConversationWithRoomId:(NSString *)<em>roomId</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>roomId</code></th>
+						<td><p>聊天室 ID</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>如果会话还不存在，则返回 nil</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGConversation.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
 	<a name="//api/name/createSingleConversationWithUsername:completionHandler:" title="createSingleConversationWithUsername:completionHandler:"></a>
 	<h3 class="method-title"><code><a href="#//api/name/createSingleConversationWithUsername:completionHandler:">+&nbsp;createSingleConversationWithUsername:completionHandler:</a></code>
 </h3>
@@ -528,6 +604,71 @@
 				<p>如果会话已经存在，则直接返回。如果不存在则创建。
 创建会话时如果发现该 groupId 的信息本地还没有，则需要从服务器端上拉取。
 如果从服务器上获取 groupId 的信息不存在或者失败，则创建会话失败。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGConversation.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/createChatRoomConversationWithRoomId:completionHandler:" title="createChatRoomConversationWithRoomId:completionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/createChatRoomConversationWithRoomId:completionHandler:">+&nbsp;createChatRoomConversationWithRoomId:completionHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>创建聊天室会话</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)createChatRoomConversationWithRoomId:(NSString *)<em>roomId</em> completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)<em>handler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>roomId</code></th>
+						<td><p>聊天室 ID。</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>handler</code></th>
+						<td><p>结果回调。正常返回时 resultObject 类型为 JMSGConversation。</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>如果会话已经存在，则直接返回。如果不存在则创建。
+创建会话时如果发现该 roomId 的信息本地还没有，则需要从服务器端上拉取。
+如果从服务器上获取 roomId 的信息不存在或者失败，则创建会话失败。</p>
 			</div>
 			
 
@@ -702,6 +843,64 @@
 		</div>
 	</div>
 </div><div class="section-method">
+	<a name="//api/name/deleteChatRoomConversationWithRoomId:" title="deleteChatRoomConversationWithRoomId:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/deleteChatRoomConversationWithRoomId:">+&nbsp;deleteChatRoomConversationWithRoomId:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>删除聊天室会话</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (BOOL)deleteChatRoomConversationWithRoomId:(NSString *)<em>roomId</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>roomId</code></th>
+						<td><p>聊天室 ID</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>除了删除会话本身，还会删除该会话下所有的聊天消息。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGConversation.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
 	<a name="//api/name/allConversations:" title="allConversations:"></a>
 	<h3 class="method-title"><code><a href="#//api/name/allConversations:">+&nbsp;allConversations:</a></code>
 </h3>
@@ -742,9 +941,7 @@
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>当前是返回所有的 conversation 列表，默认是已经排序。
-我们设计上充分考虑到性能问题，数据库无关联表查询，性能应该不会差。
-但考虑到潜在的性能问题可能，此接口还是异步返回</p>
+				<p>当前是返回所有的 conversation 列表，不包括聊天室会话，默认是已经排序。</p>
 			</div>
 			
 
@@ -802,7 +999,65 @@
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>返回所有的 conversation 列表，返回是没有排序的列表。</p>
+				<p>返回所有的 conversation 列表，不包括聊天室会话，返回是没有排序的列表。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGConversation.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/allChatRoomConversation:" title="allChatRoomConversation:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/allChatRoomConversation:">+&nbsp;allChatRoomConversation:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>返回聊天室 conversation 列表（异步,已排序）</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)allChatRoomConversation:(JMSGCompletionHandler)<em>handler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>handler</code></th>
+						<td><p>结果回调。正常返回时 resultObject 的类型为 NSArray，数组里成员的类型为 JMSGConversation</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>当前是返回所有的chatroom conversation 列表，不包括单聊和群聊会话，默认是已经排序。</p>
 			</div>
 			
 
@@ -1067,7 +1322,7 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>会话类型 - 单聊，群聊</p>
+				<p>会话类型 - 单聊，群聊，聊天室</p>
 			</div>
 			
 		    
@@ -1130,12 +1385,12 @@
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>需要根据会话类型转型。单聊时转型为 JMSGUser，群聊时转型为 <a href="../Classes/JMSGGroup.html">JMSGGroup</a></p>
+				<p>需要根据会话类型转型。单聊时转型为 JMSGUser，群聊时转型为 JMSGGroup，聊天时转型为 <a href="../Classes/JMSGChatRoom.html">JMSGChatRoom</a></p>
 
 <p>注意: 在会话列表上, 请不要使用此属性, 否则有性能问题. 只在进入聊天界面(单个会话) 时使用此属性.</p>
 
 <p>进入会话(聊天界面)后, 访问会话对象的各种信息, 包括群聊的群组成员, 都应使用此属性,
-而没有必要再通过接口查询 UserInfo / GroupInfo.</p>
+而没有必要再通过接口查询 UserInfo / GroupInfo / ChatRoomInfo.</p>
 			</div>
 			
 
@@ -1606,11 +1861,54 @@ JMSGImageContent *imageContent = [[JMSGImageContent alloc] initWithImageData:ima
 			
 			<div class="method-subsection brief-description">
 				<p>创建消息对象（图片，异步）</p>
+
+<p>注意：此方法已过期，请使用 createMessageAsyncWithMediaContent: 方法</p>
 			</div>
 			
 		    
 
 			<div class="method-subsection method-declaration"><code>- (void)createMessageAsyncWithImageContent:(JMSGImageContent *)<em>content</em> completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)<em>handler</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGConversation.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/createMessageAsyncWithMediaContent:completionHandler:" title="createMessageAsyncWithMediaContent:completionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/createMessageAsyncWithMediaContent:completionHandler:">&ndash;&nbsp;createMessageAsyncWithMediaContent:completionHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>创建消息对象（多媒体消息，异步）</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)createMessageAsyncWithMediaContent:(JMSGMediaAbstractContent *)<em>content</em> completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)<em>handler</em></code></div>
 
 		    
 			
@@ -1620,7 +1918,7 @@ JMSGImageContent *imageContent = [[JMSGImageContent alloc] initWithImageData:ima
 				
 					<tr>
 						<th scope="row" class="argument-name"><code>content</code></th>
-						<td><p>准备好的图片内容</p></td>
+						<td><p>准备好的多媒体内容，如：图片、语音、文件等</p></td>
 					</tr>
 				
 					<tr>
@@ -1639,7 +1937,7 @@ JMSGImageContent *imageContent = [[JMSGImageContent alloc] initWithImageData:ima
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>对于图片消息，因为 SDK 要做缩图有一定的性能损耗，图片文件很大时存储落地也会较慢。
+				<p>注意：对于多媒体消息，因为 SDK 要做缩图有一定的性能损耗，图片文件很大时存储落地也会较慢。
 所以创建图片消息，建议使用这个异步接口。</p>
 			</div>
 			
@@ -1727,7 +2025,7 @@ JMSGImageContent *imageContent = [[JMSGImageContent alloc] initWithImageData:ima
 			
 			
 			<div class="method-subsection brief-description">
-				<p>发送消息（附带可选功能，如：控制离线消息存储、自定义通知栏内容等）</p>
+				<p>发送消息（附带可选功能，如：控制离线消息存储、自定义通知栏内容、消息已读回执等）</p>
 			</div>
 			
 		    
@@ -1761,7 +2059,7 @@ JMSGImageContent *imageContent = [[JMSGImageContent alloc] initWithImageData:ima
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>可选功能里可以设置离线消息存储、自定义通知栏内容等，具体请查看 <a href="../Classes/JMSGOptionalContent.html">JMSGOptionalContent</a> 类。</p>
+				<p>可选功能里可以设置离线消息存储、自定义通知栏内容、消息已读回执等，具体请查看 <a href="../Classes/JMSGOptionalContent.html">JMSGOptionalContent</a> 类。</p>
 			</div>
 			
 
@@ -2284,6 +2582,75 @@ JMSGImageContent *imageContent = [[JMSGImageContent alloc] initWithImageData:ima
 		</div>
 	</div>
 </div><div class="section-method">
+	<a name="//api/name/sendTransparentMessage:completionHandler:" title="sendTransparentMessage:completionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/sendTransparentMessage:completionHandler:">&ndash;&nbsp;sendTransparentMessage:completionHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>消息透传</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)sendTransparentMessage:(NSString *JMSG_NONNULL)<em>transparentText</em> completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)<em>handler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>transparentText</code></th>
+						<td><p>用户自定义透传内容，仅限 NSString 类型</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>handler</code></th>
+						<td><p>回调，error=nil 表示成功</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>注意：</p>
+
+<ol>
+<li><p>消息透传功能，消息不会进入到后台的离线存储中去，仅当对方用户当前在线时才会成功送达，可以快速响应，方便开发者拓展自定义行为；</p></li>
+<li><p>可用来快速实现一些在线场景下的辅助功能 ：输入状态提示、位置信息提示、开发者自定义等。</p></li>
+</ol>
+
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGConversation.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
 	<a name="//api/name/avatarData:" title="avatarData:"></a>
 	<h3 class="method-title"><code><a href="#//api/name/avatarData:">&ndash;&nbsp;avatarData:</a></code>
 </h3>
@@ -2295,7 +2662,7 @@ JMSGImageContent *imageContent = [[JMSGImageContent alloc] initWithImageData:ima
 			
 			
 			<div class="method-subsection brief-description">
-				<p>异步获取会话头像(仅限单聊)</p>
+				<p>异步获取会话头像</p>
 			</div>
 			
 		    
@@ -2370,7 +2737,7 @@ JMSGImageContent *imageContent = [[JMSGImageContent alloc] initWithImageData:ima
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (NSString *)avatarLocalPath</code></div>
+			<div class="method-subsection method-declaration"><code>- (NSString *JMSG_NULLABLE)avatarLocalPath</code></div>
 
 		    
 			
@@ -2483,6 +2850,171 @@ JMSGImageContent *imageContent = [[JMSGImageContent alloc] initWithImageData:ima
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
 				<p>通常用来展示在会话列表的第 2 行. 如果是图片消息,通常是文本 [图片] 之类. CustomContent 可以定制这个文本.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGConversation.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/getConversationExtras" title="getConversationExtras"></a>
+	<h3 class="method-title"><code><a href="#//api/name/getConversationExtras">&ndash;&nbsp;getConversationExtras</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>获取会话所有扩展字段</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (NSDictionary *JMSG_NULLABLE)getConversationExtras</code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>返回所有值，NSDictionary 类型</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>与 [- (void)setExtraValue:forKey:] 配套使用，可用于对会话属性的扩展</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGConversation.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/getExtraValueForKey:" title="getExtraValueForKey:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/getExtraValueForKey:">&ndash;&nbsp;getExtraValueForKey:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>获取单个扩展字段</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (NSString *JMSG_NULLABLE)getExtraValueForKey:(NSString *JMSG_NONNULL)<em>key</em></code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>返回 key 对应值，NSString 类型</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>与 [- (void)setExtraValue:forKey:] 配套使用，可用于对会话属性的扩展</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGConversation.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setExtraValue:forKey:" title="setExtraValue:forKey:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setExtraValue:forKey:">&ndash;&nbsp;setExtraValue:forKey:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>增加或更新扩展字段,可扩展会话属性，比如：会话置顶、标识特殊会话等</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)setExtraValue:(NSString *JMSG_NULLABLE)<em>value</em> forKey:(NSString *JMSG_NONNULL)<em>key</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>value</code></th>
+						<td><p>新增键值对的值. String 类型.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>key</code></th>
+						<td><p>新增键值对的键</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>如果 value = nil，则删除 extras 中 key 对应的值</p>
 			</div>
 			
 
@@ -2636,7 +3168,7 @@ JMSGImageContent *imageContent = [[JMSGImageContent alloc] initWithImageData:ima
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2017 HXHG. All rights reserved. Updated: 2017-07-03</p>
+						<p class="copyright">Copyright &copy; 2017 HXHG. All rights reserved. Updated: 2017-12-11</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

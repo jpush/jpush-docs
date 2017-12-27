@@ -4,7 +4,7 @@ img[alt= jiguang] { width: 800px; }
 </style>
 ## JAnalytics iOS
 ### 模块化的极光开发者SDK
-极光开发者服务SDK采用了模块化的使用模式，即一个核心（JCore）+N种服务（JPush，JAnalytics，...）的使用方式，方便开发者使用某一项服务或多项服务，极大的优化了多模块同时使用时功能模块重复的问题。如下图：  
+极光开发者服务SDK采用了模块化的使用模式，即一个核心（JCore）+N种服务（JPush，JAnalytics，...）的使用方式，方便开发者使用某一项服务或多项服务，极大的优化了多模块同时使用时功能模块重复的问题。如下图：
 ![jiguang](./image/sdk_model.png)
 
 ## 上报策略
@@ -23,7 +23,7 @@ JAnalytics iOS SDK采用了数据记录与数据上报分离的策略，数据�
 + 一个完整的 iOS  Demo项目，通过这个演示了 JAnalytics SDK 的基本用法，可以用来做参考。
 
 ## 集成方式
-目前SDK只支持iOS 7以上版本的手机系统。  
+目前SDK只支持iOS 7以上版本的手机系统。
 参考：[JAnalytics iOS SDK 集成指南](ios_guide)
 
 ## 接口说明
@@ -34,8 +34,7 @@ JAnalytics iOS SDK采用了数据记录与数据上报分离的策略，数据�
 当出现问题时：
 
 + 请仔细阅读文档，查看是否有遗漏。
-+ 你可以到[极光社区](http://community.jiguang.cn/)搜索类似问题。
-+ 给我们的support发邮件：<support@jpush.cn>
++ 给我们的support发邮件：[support&#64;jpush.cn](mailto:support&#64;jpush.cn)
 
 为了更快速的解决问题，在寻求帮助时，请提供下列信息：
 

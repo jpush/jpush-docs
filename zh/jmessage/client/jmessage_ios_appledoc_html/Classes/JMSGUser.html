@@ -72,6 +72,8 @@
 		
 		<option value="//api/name/appKey">appKey</option>
 		
+		<option value="//api/name/extras">extras</option>
+		
 		<option value="//api/name/isNoDisturb">isNoDisturb</option>
 		
 		<option value="//api/name/isInBlacklist">isInBlacklist</option>
@@ -86,6 +88,8 @@
 		
 		<option value="//api/name/registerWithUsername:password:completionHandler:">+ registerWithUsername:password:completionHandler:</option>
 		
+		<option value="//api/name/registerWithUsername:password:userInfo:completionHandler:">+ registerWithUsername:password:userInfo:completionHandler:</option>
+		
 		<option value="//api/name/loginWithUsername:password:completionHandler:">+ loginWithUsername:password:completionHandler:</option>
 		
 		<option value="//api/name/logout:">+ logout:</option>
@@ -99,6 +103,8 @@
 		<option value="//api/name/updateMyInfoWithParameter:userFieldType:completionHandler:">+ updateMyInfoWithParameter:userFieldType:completionHandler:</option>
 		
 		<option value="//api/name/updateMyInfoWithUserInfo:completionHandler:">+ updateMyInfoWithUserInfo:completionHandler:</option>
+		
+		<option value="//api/name/updateMyAvatarWithData:avatarFormat:completionHandler:">+ updateMyAvatarWithData:avatarFormat:completionHandler:</option>
 		
 		<option value="//api/name/updateMyPasswordWithNewPassword:oldPassword:completionHandler:">+ updateMyPasswordWithNewPassword:oldPassword:completionHandler:</option>
 		
@@ -233,6 +239,74 @@
 
 			
 
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGUser.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/registerWithUsername:password:userInfo:completionHandler:" title="registerWithUsername:password:userInfo:completionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/registerWithUsername:password:userInfo:completionHandler:">+&nbsp;registerWithUsername:password:userInfo:completionHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>新用户注册(支持携带用户信息字段)</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)registerWithUsername:(NSString *)<em>username</em> password:(NSString *)<em>password</em> userInfo:(JMSGUserInfo *JMSG_NULLABLE)<em>userInfo</em> completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)<em>handler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>password</code></th>
+						<td><p>用户密码. 长度 4~128 位.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>userInfo</code></th>
+						<td><p>用户信息类，注册时携带用户信息字段，除用户头像字段</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>handler</code></th>
+						<td><p>结果回调. 返回正常时 resultObject 为 nil.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>注意: 注册时不支持上传头像，其他信息全部支持</p>
+			</div>
 			
 
 			
@@ -508,6 +582,11 @@
 			
 
 			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>注意：返回值有可能为空</p>
+			</div>
+			
 
 			
 
@@ -550,7 +629,7 @@
 					<tr>
 						<th scope="row" class="argument-name"><code>parameter</code></th>
 						<td><p>新的属性值
-Birthday&amp;&amp;Gender 是NSNumber类型, Avatar NSData类型 其他 NSString</p></td>
+Birthday&amp;&amp;Gender 是NSNumber类型, Avatar NSData类型, extras是 NSDictionary 类型， 其他 NSString</p></td>
 					</tr>
 				
 					<tr>
@@ -571,6 +650,11 @@ Birthday&amp;&amp;Gender 是NSNumber类型, Avatar NSData类型 其他 NSString<
 
 			
 
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>注意：建议使用 [+(void)updateMyInfoWithUserInfo:completionHandler:] 接口修改信息</p>
+			</div>
 			
 
 			
@@ -633,6 +717,74 @@ Birthday&amp;&amp;Gender 是NSNumber类型, Avatar NSData类型 其他 NSString<
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
 				<p>参数 userInfo 是 <a href="../Classes/JMSGUserInfo.html">JMSGUserInfo</a> 类，<a href="../Classes/JMSGUserInfo.html">JMSGUserInfo</a> 仅可用于修改用户信息</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGUser.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/updateMyAvatarWithData:avatarFormat:completionHandler:" title="updateMyAvatarWithData:avatarFormat:completionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/updateMyAvatarWithData:avatarFormat:completionHandler:">+&nbsp;updateMyAvatarWithData:avatarFormat:completionHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>更新头像（支持传图片格式）</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)updateMyAvatarWithData:(NSData *)<em>avatarData</em> avatarFormat:(NSString *)<em>avatarFormat</em> completionHandler:(JMSGCompletionHandler)<em>handler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>avatarData</code></th>
+						<td><p>头像数据</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>avatarFormat</code></th>
+						<td><p>头像格式，可以为空，不包括"."</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>handler</code></th>
+						<td><p>回调</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>头像格式参数直接填格式名称，不要带点。正确：@&ldquo;png"，错误：@&rdquo;.png"</p>
 			</div>
 			
 
@@ -744,16 +896,7 @@ Birthday&amp;&amp;Gender 是NSNumber类型, Avatar NSData类型 其他 NSString<
 				
 					<tr>
 						<th scope="row" class="argument-name"><code>handler</code></th>
-						<td><p>结果回调。回调参数：</p>
-
-<ul>
-<li>resultObject 相应对象</li>
-<li>error 错误信息</li>
-</ul>
-
-
-<p>如果 error 为 nil, 表示设置成功
-如果 error 不为 nil,表示设置失败</p></td>
+						<td><p>结果回调。回调参数： error 为 nil, 表示设置成功</p></td>
 					</tr>
 				
 				</table>
@@ -816,16 +959,7 @@ Birthday&amp;&amp;Gender 是NSNumber类型, Avatar NSData类型 其他 NSString<
 				
 					<tr>
 						<th scope="row" class="argument-name"><code>handler</code></th>
-						<td><p>结果回调。回调参数：</p>
-
-<ul>
-<li>resultObject 相应对象</li>
-<li>error 错误信息</li>
-</ul>
-
-
-<p>如果 error 为 nil, 表示设置成功
-如果 error 不为 nil,表示设置失败</p></td>
+						<td><p>结果回调。回调参数：error 为 nil, 表示设置成功</p></td>
 					</tr>
 				
 				</table>
@@ -888,16 +1022,7 @@ Birthday&amp;&amp;Gender 是NSNumber类型, Avatar NSData类型 其他 NSString<
 				
 					<tr>
 						<th scope="row" class="argument-name"><code>handler</code></th>
-						<td><p>结果回调。回调参数：</p>
-
-<ul>
-<li>resultObject 相应对象</li>
-<li>error 错误信息</li>
-</ul>
-
-
-<p>如果 error 为 nil, 表示设置成功
-如果 error 不为 nil,表示设置失败</p></td>
+						<td><p>结果回调。回调参数：error 为 nil, 表示设置成功</p></td>
 					</tr>
 				
 					<tr>
@@ -965,16 +1090,7 @@ Birthday&amp;&amp;Gender 是NSNumber类型, Avatar NSData类型 其他 NSString<
 				
 					<tr>
 						<th scope="row" class="argument-name"><code>handler</code></th>
-						<td><p>结果回调。回调参数：</p>
-
-<ul>
-<li>resultObject 相应对象</li>
-<li>error 错误信息</li>
-</ul>
-
-
-<p>如果 error 为 nil, 表示设置成功
-如果 error 不为 nil,表示设置失败</p></td>
+						<td><p>结果回调。回调参数：error 为 nil, 表示设置成功</p></td>
 					</tr>
 				
 					<tr>
@@ -1372,6 +1488,47 @@ Birthday&amp;&amp;Gender 是NSNumber类型, Avatar NSData类型 其他 NSString<
 		</div>
 	</div>
 </div><div class="section-method">
+	<a name="//api/name/extras" title="extras"></a>
+	<h3 class="method-title"><code><a href="#//api/name/extras">&nbsp;&nbsp;extras</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>用户扩展字段</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) NSDictionary *extras</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGUser.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
 	<a name="//api/name/isNoDisturb" title="isNoDisturb"></a>
 	<h3 class="method-title"><code><a href="#//api/name/isNoDisturb">&nbsp;&nbsp;isNoDisturb</a></code>
 </h3>
@@ -1541,16 +1698,7 @@ Birthday&amp;&amp;Gender 是NSNumber类型, Avatar NSData类型 其他 NSString<
 				
 					<tr>
 						<th scope="row" class="argument-name"><code>handler</code></th>
-						<td><p>结果回调。回调参数：</p>
-
-<ul>
-<li>resultObject 相应对象</li>
-<li>error 错误信息</li>
-</ul>
-
-
-<p>如果 error 为 nil, 表示设置成功
-如果 error 不为 nil,表示设置失败</p></td>
+						<td><p>结果回调。回调参数： error 为 nil, 表示设置成功</p></td>
 					</tr>
 				
 				</table>
@@ -1564,8 +1712,7 @@ Birthday&amp;&amp;Gender 是NSNumber类型, Avatar NSData类型 其他 NSString<
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>针对单个用户设置免打扰
-这个接口支持跨应用设置免打扰</p>
+				<p>针对单个用户设置免打扰，这个接口支持跨应用设置免打扰</p>
 			</div>
 			
 
@@ -1783,7 +1930,7 @@ Birthday&amp;&amp;Gender 是NSNumber类型, Avatar NSData类型 其他 NSString<
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (NSString *)thumbAvatarLocalPath</code></div>
+			<div class="method-subsection method-declaration"><code>- (NSString *JMSG_NULLABLE)thumbAvatarLocalPath</code></div>
 
 		    
 			
@@ -1897,7 +2044,7 @@ Birthday&amp;&amp;Gender 是NSNumber类型, Avatar NSData类型 其他 NSString<
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (NSString *)largeAvatarLocalPath</code></div>
+			<div class="method-subsection method-declaration"><code>- (NSString *JMSG_NULLABLE)largeAvatarLocalPath</code></div>
 
 		    
 			
@@ -1987,7 +2134,7 @@ Birthday&amp;&amp;Gender 是NSNumber类型, Avatar NSData类型 其他 NSString<
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2017 HXHG. All rights reserved. Updated: 2017-07-03</p>
+						<p class="copyright">Copyright &copy; 2017 HXHG. All rights reserved. Updated: 2017-12-11</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

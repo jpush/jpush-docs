@@ -1,21 +1,24 @@
 # jmessage-wxapplet-sdk 集成指南
 
-本文说明如何在小程序中集成 JMessage。jmessage-wxapplet-sdk 是 JMessage 专门为适配小程序应用而开发的，其功能基本涵盖所有[ WEB SDK ](https://docs.jiguang.cn/jmessage/client/im_sdk_js_v2/)所提供的功能
+本文说明如何在小程序中集成 JMessage。jmessage-wxapplet-sdk 是 JMessage 专门为适配小程序应用而开发的，其功能基本涵盖所有[ Web SDK ](https://docs.jiguang.cn/jmessage/client/im_sdk_js_v2/)所提供的功能
 
 ## SDK下载
 
-#### jmessage-wxapplet-sdk v1.1.1
+#### jmessage-wxapplet-sdk v1.3.0
 
 更新时间
 
-+ 2017-6-29
++ 2017-11-29
 
 Change Log
 
-##### BugFix:
+##### NewFeature:
 
-+ 真机上报Blob对象undefined错误
-+ 性能优化
++ 新增聊天室功能
++ 新增公开群类型支持
++ 群禁言支持
++ 文件发送支持
++ 小视频发送支持
 
 升级提示
 
@@ -23,9 +26,9 @@ Change Log
 
 升级指南
 
-+ 用最新的 jmessage-wxapplet-sdk-1.1.1.min.js 替换掉老版本的 sdk
++ 用最新的 jmessage-wxapplet-sdk-1.3.0.min.js 替换掉老版本的 sdk
 
-点击下载：[ jmessage-wxapplet-sdk-1.1.1 ](https://sdkfiledl.jiguang.cn/jmessage-wxapplet-sdk-1.1.1.zip)
+点击下载：[ jmessage-wxapplet-sdk-1.3.0 ](https://sdkfiledl.jiguang.cn/src/jmessage-wxapplet-sdk-1.3.0.zip)
 
 
 
@@ -71,13 +74,34 @@ var jim = new JMessage({
         });  
 ```
 
-所有 api 操作跟 WEB SDK 类似，可以直接参考[ WEB SDK API](https://docs.jiguang.cn/jmessage/client/im_sdk_js_v2/)
+所有 api 操作跟 Web SDK 类似，可以直接参考[ WEB SDK API](https://docs.jiguang.cn/jmessage/client/im_sdk_js_v2/)
 
 ## 其他说明
 
-1. 小程序不支持文件传输，所以单聊以及群聊文件发送相关 api 不可用
+#### 小程序SDK视频发送接口 
+ ```
+//单聊发送视频示例,群聊、聊天室类似
+//先通过小程序API获取视频资源
+wx.chooseVideo({
+         sourceType: ['album', 'camera'],
+         camera: 'back',
+         success: function (res) {
+                       //sendGroupVedio(),sendChatroomVedio()类似
+                       jim.sendSingleVedio({
+                          'target_username' : '<target_username>',
+   			              'target_nickname' : '<target_nickname>',
+   		                           'appkey' : '<appkey>',
+                                     'file' : res.tempFilePath
+                              }).onSuccess(function(data,msg) {
+                                 //TODO
+                              }).onFail(function(data) {
+                                 //TODO
+                               });
+                    }
+             })
+ ```
 
-2. 发送图片(单聊和群聊)接口跟 WEB SDK API 有所差异
+#### 发送图片(单聊,群聊,聊天室)接口跟 WEB SDK API 有所差异
 
    ```
          //先通过小程序API获取图片

@@ -26,8 +26,16 @@ Device API 用于在服务器端查询、设置、更新、删除设备的 tag,a
 + tag 用于查询/设置/删除设备的标签；
 + alias 用于查询/设置/删除设备的别名。
 
+### 调用地址
+https://device.jpush.cn
 
-API URL: [https://device.jpush.cn](https://device.jpush.cn)
+<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px;">
+<p>如果极光应用分配在北京机房（极光控制台 “应用设置” -> "应用信息" 中可以看到），并且开发者接口调用的服务器也位于北京，则可以调用如下地址：</p>
+<p>https://bjapi.push.jiguang.cn/v3/device</p>
+<p>可以提升 API 的响应速度。</p>
+<p>注意原地址为 /v3 和 /v3/devices 后缀的都统一为了 https://bjapi.push.jiguang.cn/v3/device </p>
+<p>详细对应关系见 “应用信息” 中的说明。</p>
+</div>
 
 
 ## 查询设备的别名与标签
@@ -452,5 +460,5 @@ HTTP/1.1 200 OK
 </div>
 
 ### 参考
-参考文档：[Http-Status-Code](../server/http_status_code)
+参考文档：[Http-Status-Code](../pus/http_status_code)
 

@@ -14,7 +14,7 @@ Authorization: Basic base64_auth_string
 
 即，对 appKey 加上冒号，加上 masterSecret 拼装起来的字符串，再做 base64 转换。
 
-### User对象字段总览
+## User对象字段总览
 
 <div class="table-d" align="center" >
 	<table border="1" width = "100%">
@@ -78,51 +78,57 @@ Authorization: Basic base64_auth_string
 			<td>用户最后修改时间</td>
 			<td></td>
 		</tr>
+		<tr >
+			<td>extras</td>
+			<td>用户自定义json对象</td>
+			<td>Byte(0~512)</td>
+		</tr>
 	</table>
 </div>
 
 
-###  用户注册
+##  用户注册
 
 
-#### 注册用户
+### 注册用户
 
 批量注册用户到极光IM 服务器，一次批量注册最多支持500个用户。
 
 	POST /v1/users/
 
 
-##### Example Request
+#### Example Request
 
 ```
 [{"username": "dev_fang", "password": "password"}] 
 ```
 
-##### Request Params
+#### Request Params
 
 JSON Array.
 
 + username（必填）用户名
-  + 开头：字母或者数字
-  + 字母、数字、下划线
-  + 英文点、减号、@
+    - 开头：字母或者数字
+    - 字母、数字、下划线
+    - 英文点、减号、@
 + password（必填）用户密码。极光IM服务器会MD5加密保存。
 + nickname  （选填）用户昵称
-  + 不支持的字符：英文字符： \n \r\n 
+    - 不支持的字符：英文字符： \n \r\n 
 + avatar  （选填）头像
-  + 需要填上从文件上传接口获得的media_id	
+    - 需要填上从文件上传接口获得的media_id	
 + birthday    （选填）生日 example: 1990-01-24
-  + yyyy-MM-dd 
+    - yyyy-MM-dd 
 + signature  （选填）签名
-  + 支持的字符：全部，包括 Emoji
+    - 支持的字符：全部，包括 Emoji
 + gender    （选填） 性别
-  + 0 - 未知， 1 - 男 ，2 - 女 
+    - 0 - 未知， 1 - 男 ，2 - 女 
 + region      （选填）地区
-  + 支持的字符：全部，包括 Emoji
+    - 支持的字符：全部，包括 Emoji
 + address   （选填）地址
-  + 支持的字符：全部，包括 Emoji
+    - 支持的字符：全部，包括 Emoji
++ extras     (选填) 用户自定义json对象
 
-##### Example Response
+#### Example Response
 
 ```
 < HTTP/1.1 201 Created
@@ -131,77 +137,92 @@ JSON Array.
 [{"username": "dev_fang"  }] 
 ```
 
-##### Response Params
+#### Response Params
 
 JSON Array.
 
 + username
 + error 某个用户注册出错时，该对象里会有 error 对象，说明错误原因。
-  + 899003   参数错误，Request Body参数不符合要求
-  + 899001   用户已存在
+    - 899003   参数错误，Request Body参数不符合要求
+    - 899001   用户已存在
 
 
-### Admin 注册
+## Admin 注册
 
-#### Admin Register 管理员注册 (管理员api发送消息接口的权限)
+### Admin Register 管理员注册 (管理员api发送消息接口的权限)
 
 ```
 POST /v1/admins/
 ```
-##### Example Request
+#### Example Request
 
 ```
 {"username": "dev_fang", "password": "password"}
 ```
 
-##### Request Params
+#### Request Params
 
 + username Byte(4-128) 支持字符
-   + 开头：字母或者数字
-   + 字母、数字、下划线
-   + 英文点、减号, @
+    - 开头：字母或者数字
+    - 字母、数字、下划线
+    - 英文点、减号、@
 
 + password Byte(4-128) 字符不限
++ nickname  （选填）用户昵称
+    - 不支持的字符：英文字符： \n \r\n 
++ avatar  （选填）头像
+    - 需要填上从文件上传接口获得的media_id	
++ birthday    （选填）生日 example: 1990-01-24
+    - yyyy-MM-dd 
++ signature  （选填）签名
+    - 支持的字符：全部，包括 Emoji
++ gender    （选填） 性别
+    - 0 - 未知， 1 - 男 ，2 - 女 
++ region      （选填）地区
+    - 支持的字符：全部，包括 Emoji
++ address   （选填）地址
+    - 支持的字符：全部，包括 Emoji
++ extras     (选填) 用户自定义json对象
 
-##### Example Response
+#### Example Response
 
 ```
 HTTP/1.1 201 Created
 Content-Type: application/json; charset=utf-8 
 ```
 
-#### GetAdminsListByAppkey  获取应用管理员列表
+### GetAdminsListByAppkey  获取应用管理员列表
 
 ```
 GET /v1/admins?start={start}&count={count}
 ```
-##### Example Request
+#### Example Request
 
-##### Request Header 
+#### Request Header 
 
 ```
 GET /admins?start=1&count=30
 Accept: application/json
 ```
-##### Request Body
+#### Request Body
 
 ```
 N/A
 ```
 
-##### request params
+#### request params
 + start    起始记录位置 从0开始
 + count  查询条数 最多支持500条
 
-##### Example Response
+#### Example Response
 
-##### Response Header
+#### Response Header
 
 ```
 HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8
 ```
-##### Response Data 
+#### Response Data 
 
 ```
 {
@@ -215,17 +236,17 @@ Content-Type: application/json; charset=utf-8
 }
 ```
 
-### 用户维护
+## 用户维护
 
-#### 获取用户信息
+### 获取用户信息
 
 	GET /v1/users/{username}
 
-##### Request Params
+#### Request Params
 
 + username 用户名。填充到请求路径上。
 
-##### Example Response
+#### Example Response
 
 ```
 {
@@ -244,11 +265,11 @@ Content-Type: application/json; charset=utf-8
 
 除了username mtime ctime这三个子段之外，其余字段如果没存json中就没有相应的key
 
-#### 更新用户信息
+### 更新用户信息
 
 	PUT /v1/users/{username}
 
-##### Example Request
+#### Example Request
 
 ```
 {
@@ -256,26 +277,27 @@ Content-Type: application/json; charset=utf-8
 }
 ```
 
-##### Request Params
+#### Request Params
 
 + nickname  （选填）用户昵称
-  + 不支持的字符：英文字符： \n \r\n 
+    - 不支持的字符：英文字符： \n \r\n 
 + avatar  （选填）头像
-  + 需要填上从文件上传接口获得的media_id	
+    - 需要填上从文件上传接口获得的media_id	
 + birthday    （选填）生日 example: 1990-01-24
-  + yyyy-MM-dd 
+    - yyyy-MM-dd 
 + signature  （选填）签名
-  + 支持的字符：全部，包括 Emoji
+    - 支持的字符：全部，包括 Emoji
 + gender    （选填） 性别
-  + 0 - 未知， 1 - 男 ，2 - 女 
+    - 0 - 未知， 1 - 男 ，2 - 女 
 + region      （选填）地区
-  + 支持的字符：全部，包括 Emoji
+    - 支持的字符：全部，包括 Emoji
 + address   （选填）地址
-  + 支持的字符：全部，包括 Emoji
+    - 支持的字符：全部，包括 Emoji
++ extras     (选填) 用户自定义json对象
 
 
 
-##### Example Response
+#### Example Response
 
 ```
 < HTTP/1.1 204 
@@ -283,12 +305,12 @@ Content-Type: application/json; charset=utf-8
 
 ```
 
-#### 用户在线状态查询
+### 用户在线状态查询 
 
 ```
 Get /v1/users/{username}/userstat
 ```
-##### Example Request
+#### Example Request
 
 Request Header 
 
@@ -304,7 +326,7 @@ Request Body
 
 N/A
 
-##### Example Response
+#### Example Response
 Response Header
 
 ```
@@ -317,8 +339,9 @@ Response Data
 ```
 {"login":true, "online": false}
 ```
+该接口不适用于多端在线，多端在线请用批量状态接口
 
-##### Error Code
+#### Error Code
 
 错误码
 
@@ -326,39 +349,84 @@ Response Data
 + 899002 用户不存在
 
 
-#### 修改密码
+### 批量用户在线状态查询
+
+```
+Post /v1/users/userstat
+```
+#### Example Request
+
+Request Header 
+
+```
+Post /v1/users/userstat
+Content-Type: application/json; charset=utf-8 
+```
+Request Params
+
+N/A
+
+Request Body
+
+["USER1","USER2"]
+
+#### Example Response
+Response Header
+
+```
+HTTP/1.1 200 
+Content-Type: application/json; charset=utf-8
+```
+
+Response Data
+
+```
+[{"devices": [],"username": "caiyh01"},{"devices": [{"login": false,"online": false,"platform": "a"}],"username": "Rauly"}]
+```
++ devices  设备登陆状态数组，没有登陆过数组为空
++ platform SDK各平台：a-Android，i-iOS，j-JS，w-Windows
+
+#### Error Code
+
+错误码
+
++ 899003 username不合法
++ 899002 用户不存在
+
+
+### 修改密码
 
 ```
 PUT /v1/users/{username}/password
 ```
 
-##### Request Header 
+#### Request Header 
 
 ```
 PUT /v1/users/javen/password
 ```
 
-##### Example Request
+#### Example Request
 
 ```
 {
 	 "new_password": "654321" 
 }
 ```
-##### Request Params
+#### Request Params
 
 + new_password （必填）新密码
 
-##### Example Response
+#### Example Response
 
 ```
 HTTP/1.1 204 NO Content
 Content-Type: application/json; charset=utf-8
 ```
-##### Response Data
+#### Response Data
 + N/A
 
-#### 删除用户
+### 删除用户
 
 	DELETE /v1/users/{username}
 
@@ -374,7 +442,7 @@ Example Response
 ```
 
 
-#### 添加黑名单
+### 添加黑名单
 
 ```
 Put /v1/users/{username}/blacklist
@@ -417,7 +485,7 @@ Response Data
 N/A
 
 
-#### 移除黑名单
+### 移除黑名单
 
 ```
 Delete /v1/users/{username}/blacklist
@@ -459,7 +527,7 @@ Response Data
 
 N/A
 
-#### 黑名单列表
+### 黑名单列表
 
 ```
 Get /v1/users/{username}/blacklist
@@ -498,7 +566,7 @@ Response Data
 ```
 
 
-#### 获取用户列表
+### 获取用户列表
 
 	GET /v1/users/?start={start}&count={count}
 
@@ -524,7 +592,7 @@ Example Response
 }
 ```
 
-###免打扰
+### 免打扰
 #### 免打扰设置
 
 ```
@@ -587,13 +655,14 @@ Error Code
 + 899003 username不合法；
 + 899002 用户不存在；
 + 899051  群组不存在；
-+ 899052 设置群组消息屏蔽，设置的群组屏蔽已经打开
++ 899052 设置群组
++ 屏蔽，设置的群组屏蔽已经打开
 + 99053 设置群组消息屏蔽，设置的群组屏蔽已经关闭
 
 
-#### 禁用用户
+### 禁用用户
 
-	GET /v1//users/{username}/forbidden?disable={disable}
+	PUT /v1/users/{username}/forbidden?disable={disable}
 
 Request Params
 
@@ -607,9 +676,9 @@ Example Response
 ```
 
 
-### 消息相关
+## 消息相关
 
-#### 发送消息
+### 发送消息
 
 ```
 POST /v1/messages
@@ -627,7 +696,7 @@ POST /v1/messages
 		</tr>
 		<tr >
 			<td>target_type</td>
-			<td>发送目标类型 single - 个人，group - 群组 （必填）</td>
+			<td>发送目标类型 single - 个人，group - 群组 chatroom - 聊天室（必填）</td>
 		</tr>
 		<tr >
 			<td>from_type</td>
@@ -639,7 +708,7 @@ POST /v1/messages
 		</tr>
 		<tr >
 			<td>target_id</td>
-			<td>目标id single填username group 填Group id （必填）</td>
+			<td>目标id single填username group 填Group id chatroom 填chatroomid（必填）</td>
 		</tr>
 		<tr >
 			<td>target_appkey</td>
@@ -755,7 +824,7 @@ POST /v1/messages
 
 
 
-##### Example Request
+#### Example Request
 
 ```
 msg_type:text
@@ -824,7 +893,7 @@ msg_type:custom
 }
 ```
 
-##### Request Params
+#### Request Params
 
 + JSON Object.
 
@@ -832,7 +901,7 @@ msg_type:custom
 
 + 此api只能用admin用户发送
 
-##### Example Response
+#### Example Response
 
 ```
 < HTTP/1.1 201 Created
@@ -850,12 +919,12 @@ Error Code
 
 
 
-#### 消息撤回
+### 消息撤回
 
 ```
 POST /v1/messages/{username}/{msgid}/retract
 ```
-##### Example Request
+#### Example Request
 
 Request Header 
 
@@ -875,7 +944,7 @@ Request Params
 | username | 发送此msg的用户名 |      |
 
 
-##### Example Response 
+#### Example Response 
 Response Header
 
 ```
@@ -888,14 +957,14 @@ Error Code 
 	•	855003 撤回消息不存在
 	•	855004 消息已经撤回
 
-### 媒体文件下载与上传
+## 媒体文件下载与上传
 
 #### 文件下载
 
 ```
 GET /v1/resource?mediaId={mediaId}
 ```
-##### Example Request
+#### Example Request
 
 Request Header 
 
@@ -914,7 +983,7 @@ Request Params
 | mediaId | 资源的mediaId，包括用户的avatar字段 |      |
 
 
-##### Example Response 
+#### Example Response 
 Response Header
 
 ```
@@ -928,12 +997,12 @@ Response Data
 {"url":"http://........."}
 ```
 
-#### 文件上传
+### 文件上传
 
 ```
 POST /v1/resource?type=image
 ```
-##### Example Request
+#### Example Request
 文件上传采用form表单上传
 curl示例:
 图片上传 curl   -F "filename=@/home/test.jpg" https://api.im.jpush.cn/v1/resource?type=image -u "appkey:secret"
@@ -953,7 +1022,7 @@ curl示例:
 
 Response Header  
 
-##### Example Response 
+#### Example Response 
 
 ```
 HTTP/1.1 200
@@ -999,7 +1068,7 @@ Response Data
 +  format String 源文件格式
 
 
-### Group对象字段总览
+## Group对象字段总览
 
 <div class="table-d" align="center" >
 	<table border="1" width = "100%">
@@ -1038,14 +1107,19 @@ Response Data
 			<td>最后修改时间</td>
 			<td></td>
 		</tr>
+		<tr >
+			<td>avatar</td>
+			<td>群组头像</td>
+			<td></td>
+		</tr>
 	</table>
 </div>
 
 <br>
 
-### 群组维护
+## 群组维护
 
-#### 创建群组
+### 创建群组
 
 	POST /v1/groups/
 
@@ -1059,6 +1133,7 @@ Example Request
     "owner_username": "tom", 
     "name": "群聊天室", 
     "members_username": ["eddie", "annie"], 
+    "flag": 1,
     "desc": "运动"
 }
 ```
@@ -1067,10 +1142,16 @@ Request Params
 
 + owner_username     （必填）群主username
 + name               （必填）群组名字
-  + 支持的字符：全部，包括 Emoji。
+    - 支持的字符：全部，包括 Emoji。
 + members_username 成员 username
++ avatar           （选填）群组头像，上传接口所获得的media_id 
 + desc               （选填） 群描述 
-  + 支持的字符：全部，包括 Emoji。
+    - 支持的字符：全部，包括 Emoji。
++ flag               （选填） 类型 
+
+    - 1 - 私有群（默认）
+    - 2 - 公开群
+    - 不指定flag，默认为1
 
 Example Response
 
@@ -1085,13 +1166,11 @@ Example Response
     "name": "display_name", 
     "members_username": [], 
     "desc":"doubi",
-    "MaxMemberCount" = 500, 
-    "mtime" = "2014-07-01 00:00:00", 
-    "ctime"="2014-06-05 00:00:00"
+    "MaxMemberCount" = 500
 }
 ```
 
-####  获取群组详情
+###  获取群组详情
 
 	GET /v1/groups/{Group id}
 
@@ -1116,7 +1195,7 @@ Example Response
 }
 ```
 
-####  更新群组信息
+###  更新群组信息
 ```
 PUT /v1/groups/{Group id}
 ```
@@ -1124,6 +1203,7 @@ Request Params
 
 + name 群名称
 + desc 群描述
++ avatar 群组头像media_id
 
 ```
 PUT /v1/groups/{Group id}
@@ -1140,7 +1220,7 @@ HTTP/1.1 204 NO Content
 ```
 
 
-#### 删除群组
+### 删除群组
 
 删除某个群组。
 
@@ -1159,7 +1239,7 @@ Example Response
 < Content-Type: application/json
 ```
 
-#### 更新群组成员
+### 更新群组成员
 
 批量增加与删除某 gid 群组的成员。
 
@@ -1194,7 +1274,7 @@ Example Response
 < Content-Type: application/json
 ```
 
-####  获取群组成员列表
+###  获取群组成员列表
 
     GET /v1/groups/{Group id}/members/
 
@@ -1215,13 +1295,13 @@ Example Response
 ]
 ```
 + flag
-  + 0 - 普通群成员
-  + 1 - 群主
+    - 0 - 普通群成员
+    - 1 - 群主
 
 
-####  获取某用户的群组列表
+###  获取某用户的群组列表
 
-    POST /v1/users/{username}/groups/
+    GET /v1/users/{username}/groups/
 
 Request Params
 
@@ -1229,7 +1309,8 @@ Request Params
 
 Example Response
 
-+ ctime  群组创建时间
++ ctime  群组
++ 创建时间
 + mtime 群组最后修改时间 
 
 ```
@@ -1240,7 +1321,7 @@ Example Response
 ```
 
 
-#### 获取当前应用的群组列表
+### 获取当前应用的群组列表
 
     GET /v1/groups/?start={start}&count={count}
 
@@ -1263,9 +1344,9 @@ Example Response
 
 ```
 
-#### 群消息屏蔽
+### 群消息屏蔽
 
-    GET /v1/users/{username}/groupsShield
+    POST /v1/users/{username}/groupsShield
 
 
 Request Params
@@ -1297,12 +1378,32 @@ Example Response
 < Content-Type: application/json
 ```
 
+### 群成员禁言
+
+    PUT  /groups/messages/{gid}/silence?status={status}
 
 
+Request body
+```
+[ "username1", "username2"]  
+备注：username json数组
+```
+Request Params
 
-### 好友
+```
+status：开启或关闭禁言 true表示开启 flase表示关闭
+```
 
-#### 添加好友
+Example Response
+```
+< HTTP/1.1 204 OK
+< Content-Type: application/json
+```
+
+
+## 好友
+
+### 添加好友
 	POST  /v1/users/{username}/friends
 
 Request Params
@@ -1334,7 +1435,7 @@ Error Code
 + 899070  已经添加了好友；
 
 
-#### 删除好友
+### 删除好友
 	DELETE  /v1/users/{username}/friends
 
 Request Params
@@ -1362,7 +1463,7 @@ Error Code
 + 899003  Request Body json格式不符合要求，json参数不符合要求；
 + 899002  用户不存在；
 
-#### 更新好友备注
+### 更新好友备注
       PUT  /v1/users/{username}/friends
 
 Request Params
@@ -1397,7 +1498,7 @@ Error Code
 + 899003  Request Body json格式不符合要求，json参数不符合要求；
 + 899002  用户不存在；
 
-#### 获取好友列表
+### 获取好友列表
      GET  /v1/users/{username}/friends
 
 Request Params
@@ -1426,9 +1527,9 @@ Error Code
 + 899003  Request Body json格式不符合要求，json参数不符合要求；
 + 899002  用户不存在；
 
-### 跨应用
+## 跨应用
 
-#### 跨应用管理群组成员
+### 跨应用管理群组成员
 	POST  /v1/cross/groups/{gid}/members
 Request Params
 
@@ -1472,7 +1573,7 @@ Error Code
 + 899014  用户不存在于群组；
 + 899011  用户已经存在于群组；
 
-#### 跨应用获取群组成员列表
+### 跨应用获取群组成员列表
 
     GET /v1/cross/groups/{Group id}/members/
 
@@ -1494,10 +1595,31 @@ Example Response
 ```
 
 + flag
-  + 0 - 普通群成员
-  + 1 - 群主
+    - 0 - 普通群成员
+    - 1 - 群主
 
-#### 跨应用添加黑名单
+    
+### 跨应用获取用户群组
+GET /v1/cross/users/{username}/groups
+
+Request Params
+
++ username 用户名
+
+Example Response
+
+
+```
+< HTTP/1.1 200 OK
+< Content-Type: application/json; charset=utf-8
+
+[ { "gid": 12345, "name" : "jpush", "desc" : "push", "appkey" : "dcf71ef5082057832bd44fbd","max_member_count" : 200, "mtime" : "2014-07-01 00:00:00", "ctime" : "2014-06-05 00:00:00","appkey":"appkey"}]
+
+```
+
+
+
+### 跨应用添加黑名单
 
 ```
 Put /v1/cross/users/{username}/blacklist
@@ -1540,7 +1662,7 @@ Response Data
 
 N/A
 
-#### 跨应用移除黑名单
+### 跨应用移除黑名单
 
 ```
 Delete /v1/cross/users/{username}/blacklist
@@ -1585,7 +1707,7 @@ N/A
 
 
 
-#### 跨应用黑名单列表
+### 跨应用黑名单列表
 
 ```
 Get /v1/cross/users/{username}/blacklist
@@ -1623,7 +1745,7 @@ Response Data
 [{"username" : "javen", "nickname" : "hello", "avatar" = "/avatar", "birthday" : "1990-01-24 00:00:00", "gender" : 0, "signature" : "orz", "region" : "shenzhen", "address" : "shenzhen", "mtime" : "2015-01-01 00:00:00", "ctime" : "2015-01-01 00:00:00", "appkey":"appkey"}]
 ```
 
-#### 跨应用免打扰设置
+### 跨应用免打扰设置
 
 ```
 POST  /v1/cross/users/{username}/nodisturb
@@ -1675,7 +1797,7 @@ Error Code
 + 899052 设置群组消息屏蔽，设置的群组屏蔽已经打开
 + 899053 设置群组消息屏蔽，设置的群组屏蔽已经关闭
 
-#### 跨应用添加好友 
+### 跨应用添加好友 
 
 ```
 POST  /v1/cross/users/{username}/friends
@@ -1718,7 +1840,7 @@ Response Data
 
 N/A
 
-#### 跨应用删除好友 
+### 跨应用删除好友 
 
 ```
 DELETE  /v1/cross/users/{username}/friends
@@ -1761,7 +1883,7 @@ Response Data
 
 N/A
 
-#### 跨应用更新好友备注 
+### 跨应用更新好友备注 
 
 ```
 PUT  /v1/cross/users/{username}/friends
@@ -1806,9 +1928,46 @@ Response Data
 
 N/A
 
-### 敏感词
+### 跨应用管理聊天室成员
+	POST  /cross/chatroom/{room_id}/members
+Request Params
 
-#### 添加敏感词
++ add  json数组 表示要添加到聊天室的用户(可选)
++ remove  json数组 表示要从聊天室删除的用户（可选）
++ appkey 管理用户所属的appkey 必填
+
+add remove两者至少要有一个
+
+Example Request 
+
+```
+[{ 
+ "appkey":" 4f7aef34fb361292c566a1cd",
+ "add": [
+ "test1",
+ "test2"
+ ],
+ "remove": [
+ "name3",
+ "name4"
+ ]
+}]
+```
+Example Response
+
+```
+< HTTP/1.1 204 NO Content
+< Content-Type: application/json; charset=utf-8 
+```
+
+Response Data
+
+N/A
+ 
+
+## 敏感词
+
+### 添加敏感词
 
 ```
 POST  /v1/sensitiveword
@@ -1849,7 +2008,7 @@ Response Data
 N/A
 
 
-#### 修改敏感词
+### 修改敏感词
 
 ```
 PUT  /v1/sensitiveword
@@ -1892,7 +2051,7 @@ Response Data
 N/A
 
 
-#### 删除敏感词
+### 删除敏感词
 
 ```
 DELETE /v1/sensitiveword
@@ -1934,7 +2093,7 @@ Response Data
 N/A
 
 
-#### 获取敏感词列表
+### 获取敏感词列表
 
 ```
 GET /v1/sensitiveword
@@ -1945,7 +2104,7 @@ Example Request
 Request Header 
 
 ```
-GET  /v1/sensitiveword?stat={start}&count={count}
+GET  /v1/sensitiveword?start={start}&count={count}
 Content-Type: application/json; charset=utf-8  
 ```
 
@@ -1976,14 +2135,14 @@ Response Data
 "words": [
 {
 "name": "fuck",
-"itime": "itime": "1970-01-17 16:49:11"
+"itime": "1970-01-17 16:49:11"
 }
 ],
 "total": 3
 }
 ```
 
-#### 更新敏感词功能状态
+### 更新敏感词功能状态
 
 ```
 PUT /v1/sensitiveword/status
@@ -2019,7 +2178,7 @@ Response Data
 
 N/A
 
-#### 获取敏感词功能状态
+### 获取敏感词功能状态
 
 ```
 GET /v1/sensitiveword/status
@@ -2056,12 +2215,333 @@ Response Data
 ```
  {"status": 1} 
 ```
+## 聊天室字段总览
 
-### HTTP 返回
+<div class="table-d" align="center" >
+	<table border="1" width = "100%">
+		<tr  bgcolor="#D3D3D3" >
+			<th >参数</th>
+			<th >含义</th>
+			<th >字符长度限制</th>
+		</tr>
+		<tr >
+			<td>name</td>
+			<td>聊天室名字（必填)</td>
+			<td>Byte(0~64)</td>
+		</tr>
+		<tr >
+			<td>owner_username</td>
+			<td>聊天室创建者（必填）</td>
+			<td>Byte (4~128)</td>
+		</tr>
+		<tr >
+			<td>description</td>
+			<td>聊天室描述（选填）</td>
+			<td>Byte(250)</td>
+		</tr>
+		<tr >
+			<td>members_username</td>
+			<td>聊天室成员列表（选填）</td>
+			<td></td>
+		</tr>
+		<tr >
+			<td>ctime</td>
+			<td>创建时间</td>
+			<td></td>
+		</tr>
+		<tr >
+			<td>max_member_count</td>
+			<td>最大成员数</td>
+			<td></td>
+		</tr>
+		<tr >
+			<td>total_member_count</td>
+			<td>当前总人数</td>
+			<td></td>
+		</tr>
+		<tr >
+			<td>flag</td>
+			<td>禁言标志</td>
+			<td>0表示不禁言 1表示开启禁言 </td>
+		</tr>
+	</table>
+</div>
+
+<br>
+
+## 聊天室维护
+
+### 创建聊天室
+
+	POST /v1/chatroom/
+
+
+#### Request Body
+
+{"owner_username":"liming", "name" : "测试聊天室", "description":"测试", "members_username":[]}
+
+Request Params
+
++ owner_username     （必填）聊天室拥有者
++ name               （必填）聊天室名称
++ members_username   （选填）成员 username
++ description               （选填） 描述 
+#### Example Response
+
+```
+ HTTP/1.1 201 Created
+ Content-Type: application/json
+
+{
+"room_id": 1000000
+}
+```
+
+###  获取聊天室详情
+
+	POST /v1/chatroom/batch
+
+#### Request Params
+
+	[10000001,10000002] roomid数组
+
+#### Example Response
+```
+HTTP/1.1 200 OK 
+Content-Type: application/json; charset=utf-8  
+
+[
+    {
+        "id": 10000001,
+        "owner_username": "xiaoming",
+        "max_member_count": 10000,
+        "appkey": "4f7aef34fb361292c566a1cd",
+        "name": "test",
+        "description": "test",  
+        "total_member_count": 2,
+        "ctime": "2017-11-27 18:38:25"
+    }，
+ {
+        "id": 10000002,
+        "owner_username": "xiaoming",
+        "max_member_count": 10000,
+        "appkey": "4f7aef34fb361292c566a1cd",
+        "name": "test",
+        "description": "test",
+        "total_member_count": 2,
+        "ctime": "2017-11-27 18:38:25"
+    }
+]
+```
+
+###  GET 获取用户聊天室列表
+```
+ GET /v1/users/{username}/chatroom
+```
+
+#### Example Request
+	
+	GET /v1/users/xiaoming/chatroom
+
+#### Example Response
+
+```
+HTTP/1.1 200 OK 
+Content-Type: application/json; charset=utf-8 
+
+[
+    {
+        "id": 100000,
+        "owner_username": "xiaoming",
+        "max_member_count": 10000,
+        "appkey": "4f7aef34fb361292c566a1cd",
+        "name": "test",
+        "description": "test",
+        "total_member_count": 2，
+       "ctime": "2017-11-27 18:38:25"
+    }，
+ {
+        "id": 10000001,
+        "owner_username": "xiaoming",
+        "max_member_count": 10000,
+        "appkey": "4f7aef34fb361292c566a1cd",
+        "name": "test",
+        "description": "test",
+        "total_member_count": 2，
+        "ctime": "2017-11-27 18:38:25"
+    }
+]
+
+```
+
+### GET 获取应用下聊天室列表
+
+	GET /v1/chatroom?start={start}&count={count}
+
+#### Example Request 
+
+	GET  /v1/chatroom?start=0&count=10
+
+#### Example Response
+
+```
+HTTP/1.1 200 OK 
+Content-Type: application/json; charset=utf-8 
+
+{
+    "total": 1,
+    "rooms": [
+        {
+            "id": 62,
+            "owner_username": "xiaoming",
+            "max_member_count": 10000,
+            "appkey": "4f7aef34fb361292c566a1cd",
+            "name": "test",
+            "description": "test"，
+             total_member_count": 11,
+            "ctime": "2017-11-27 18:38:25"
+        }
+    ],
+    "start": 0,
+    "count": 1
+}
+```
+
+### 更新聊天室信息
+
+	 PUT /v1/chatroom/{room_id}
+
+#### Example Request
+
+```
+ PUT /v1/chatroom/111000001
+
+```
+#### Request Body
+	
+	{"owner_username":"135380113231", "name" : "中国人", "description":"说什么来这"}
+
+#### Example Response
+
+```
+HTTP/1.1 204  
+Content-Type: application/json; charset=utf-8 
+```
+
+### 删除聊天室
+
+	DELETE /v1/chatroom/{room_id}
+
+#### Example Request 
+
+```
+DELETE  /v1/chatroom/100000
+```
+
+#### Example Response
+
+```
+HTTP/1.1 204  
+Content-Type: application/json; charset=utf-8 
+```
+
+###  修改用户禁言状态
+
+     PUT /v1/chatroom/{room_id}/forbidden/{username}?status={status}
+
+status  0表示不禁言 1表示开启禁言 必填
+#### Example Request 
+
+```
+PUT  /v1/chatroom/100000/forbidden/caiyh?status=1
+```
+#### Example Response
+
+```
+ HTTP/1.1 204 OK
+ Content-Type: application/json; charset=utf-8
+
+```
+
+###  获取聊天室成员列表
+
+    GET /v1/chatroom/{room_id}/members?start={start}&count={count}
+
+Request Params
+
++ room_id 聊天室ID。
+
+Example Response
+
++ username  用户名
++ ctime 创建时间
++ flag 禁言标记
+
+```
+ HTTP/1.1 200 OK
+ Content-Type: application/json
+
+{
+    "total": 2, 
+    "users": [
+        {
+            "username": "13538013231", 
+            "flag": 0, 
+            "room_ctime": "2017-11-17 08:57:54", 
+            "mtime": "2017-10-30 17:24:17", 
+            "ctime": "2017-10-30 17:24:17"
+        }, 
+        {
+            "username": "xia_12", 
+            "flag": 0, 
+            "room_ctime": "2017-11-16 19:13:07", 
+            "mtime": "2017-02-08 17:56:04", 
+            "ctime": "2017-02-08 17:56:04"
+        }
+    ], 
+    "count": 2, 
+    "start": 0
+}
+```
+
+
+### 添加聊天室成员
+
+     PUT /v1/chatroom/{room_id}/members
+
+Request Params
+
++ username的json数组 最多支持3000个
+
+Example Response
+
+```
+HTTP/1.1 204  
+Content-Type: application/json; charset=utf-8 
+
+```
+
+### 移除聊天室成员
+
+      DELETE /v1/chatroom/{room_id}/members
+
+Request Params
+
++ username的json数组 最多支持3000个
+
+Example Response
+
+```
+HTTP/1.1 204  
+Content-Type: application/json; charset=utf-8 
+
+```
+
+## HTTP 返回
 
 HTTP 返回码参考文档：[HTTP-Status-Code](https://docs.jiguang.cn/jpush/server/push/http_status_code/)
 
-#### Example Error Response
+### Example Error Response
 
 ```
 < HTTP/1.1 401 Unauthorized
@@ -2075,7 +2555,7 @@ HTTP 返回码参考文档：[HTTP-Status-Code](https://docs.jiguang.cn/jpush/se
 }
 ```
 
-### 业务错误码定义
+## 业务错误码定义
 
 [IM Server ErrorCode](https://docs.jiguang.cn/jmessage/client/im_errorcode_server/)
 

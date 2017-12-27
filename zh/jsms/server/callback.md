@@ -68,6 +68,14 @@ Step4：点击选择需要使用的回调接口
 |replyTime| Date| 消息送达到极光平台的时间|
 |content| String| 用户回复的消息内容|
 
+###模板审核结果回调参数 
+
+|CODE| TYPE| DESCRIPTION|
+|---| ----| ----|
+|tempId| Integer| 模板ID|
+|status| Integer| 模板状态，1代表审核通过，2代表审核不通过|
+|refuseReason| String| 审核不通过的原因|
+
 <a name="回调测试"></a>
 ##回调测试
 ### 功能说明
@@ -94,6 +102,13 @@ Step4：点击选择需要使用的回调接口
 |receiveTime|	1492150740292|
 |status|	4001|
 
+###模板审核结果回调测试数据
+|KEY| VALUE|
+|----|----|
+|tempId|	57496|
+|status|	1|
+|refuseReason| 	null|
+
 ###curl 模拟 POST 回调请求
 在 linux 上可以很方便的使用 curl 命令发起 HTTP POST 请求，在 windows 下需要安装 curl 工具软件。以下是 curl 模拟回调的示例
 
@@ -108,6 +123,12 @@ curl -d "nonce=7659972084945889195&timestamp=1492150740274&signature=007eff6a105
 
 ```
 curl -d "nonce=7659972084945889195&timestamp=1492150740274&signature=007eff6a105503211b472802eecc42465582ba70&type=SMS_REPORT&data={\"msgId\":\"1652496\",\"phone\":\"15822889320\",\"receiveTime\":1492150741392,\"status\":4001}" "http://localhost:8088/callback"
+```
+
+###模板审核结果回调
+
+```
+curl -d "nonce=7659972084945889195&timestamp=1492150740274&signature=007eff6a105503211b472802eecc42465582ba70&type=SMS_TEMPLATE&data={\"tempId\":57496,\"status\":1,\"refuseReason\":null}" "http://localhost:8088/callback"
 ```
 
 
@@ -153,21 +174,21 @@ import java.util.*;
 /**  
  * Created by jiguang on 2017/4/14.  
  */  
-public class CallbackTest {  
-    private final static String URL = "http://localhost:8088/callback"; // 开发者将自己的回调URL写入  
-    private final static String APPKEY = "dev_sample_appKey";       // 开发者将自己的appKey写入  
-    private final static String APPMASTERSECRET = "dev_sample_appMasterSecret"; // 开发者将自己的appMasterSecret写入  
+public class CallbackTest {
+    private final static String URL = "http://localhost:8088/callback"; // 开发者将自己的回调URL写入
+    private final static String APPKEY = "dev_sample_appKey";       // 开发者将自己的appKey写入
+    private final static String APPMASTERSECRET = "dev_sample_appMasterSecret"; // 开发者将自己的appMasterSecret写入
     public static void main(String[] args) throws IOException {
         long nonce = new Random().nextLong();
         long timestamp = System.currentTimeMillis();
         String str = String.format("appKey=%s&appMasterSecret=%s&nonce=%s&timestamp=%s",
-                APPKEY, APPMASTERSECRET, nonce, timestamp);  
-        String signature = encrypt(str);  
-        Map<String, Object> params = new HashMap<>();  
-        params.put("nonce", nonce);  
-        params.put("timestamp", timestamp);  
-        params.put("signature", signature);  
- 
+                APPKEY, APPMASTERSECRET, nonce, timestamp);
+        String signature = encrypt(str);
+        Map<String, Object> params = new HashMap<>();
+        params.put("nonce", nonce);
+        params.put("timestamp", timestamp);
+        params.put("signature", signature);
+
         // 测试用户回复消息回调
         ReplyMessage replyMessage = new ReplyMessage();
         replyMessage.setPhone("13720481024");
@@ -177,19 +198,29 @@ public class CallbackTest {
         params.put("type", "SMS_REPLY");
         System.out.println("post params: " + JSON.toJSONString(params));
         sendPost(URL, params);
- 
+
         // 测试短信送达状态回调
-        SendStateMessage sendStateMessage = new SendStateMessage();
-        sendStateMessage.setMsgId("1652496");
-        sendStateMessage.setStatus(4001);
-        sendStateMessage.setPhone("15822889320");
-        sendStateMessage.setReceiveTime(new Date());
-        params.put("data", JSON.toJSONString(sendStateMessage));
-        params.put("type", "SMS_STATE");
+        ReportMessage reportMessage = new ReportMessage();
+        reportMessage.setMsgId("1652496");
+        reportMessage.setStatus(4001);
+        reportMessage.setPhone("15822889320");
+        reportMessage.setReceiveTime(new Date());
+        params.put("data", JSON.toJSONString(reportMessage));
+        params.put("type", "SMS_REPORT");
+        System.out.println("post params: " + JSON.toJSONString(params));
+        sendPost(URL, params);
+
+        // 测试短信模板审核结果回调
+        TemplateMessage templateMessage = new TemplateMessage();
+        templateMessage.setTempId(57496);
+        templateMessage.setStatus(1);
+        templateMessage.setRefuseReason(null);
+        params.put("data", JSON.toJSONString(templateMessage));
+        params.put("type", "SMS_TEMPLATE");
         System.out.println("post params: " + JSON.toJSONString(params));
         sendPost(URL, params);
     }
- 
+
     private static void sendPost(String url, Map<String, Object> params) throws IOException {
         HttpClient httpClient = HttpClients.custom().build();
         HttpPost httpPost = new HttpPost(url);
@@ -202,7 +233,7 @@ public class CallbackTest {
         HttpResponse response = httpClient.execute(httpPost);
         System.out.println("response: " + JSON.toJSONString(response));
     }
- 
+
     private static class ReplyMessage {
         private String phone;
         private Date replyTime;
@@ -226,8 +257,8 @@ public class CallbackTest {
             this.replyTime = replayTime;
         }
     }
- 
-    private static class SendStateMessage {
+
+    private static class ReportMessage {
         private String msgId;
         private Integer status;
         private String phone;
@@ -257,7 +288,31 @@ public class CallbackTest {
             this.receiveTime = receiveTime;
         }
     }
- 
+
+    private static class TemplateMessage {
+        private Integer tempId;
+        private Integer status;
+        private String refuseReason;
+        public Integer getTempId() {
+            return tempId;
+        }
+        public void setTempId(Integer tempId) {
+            this.tempId = tempId;
+        }
+        public Integer getStatus() {
+            return status;
+        }
+        public void setStatus(Integer status) {
+            this.status = status;
+        }
+        public String getRefuseReason() {
+            return refuseReason;
+        }
+        public void setRefuseReason(String refuseReason) {
+            this.refuseReason = refuseReason;
+        }
+    }
+
     /**
      * SHA1加密
      *
@@ -277,7 +332,7 @@ public class CallbackTest {
         }
         return strDes;
     }
- 
+
     /**
      * byte数组转换为16进制字符串
      *
