@@ -2293,7 +2293,7 @@ Request Params
  Content-Type: application/json
 
 {
-"room_id": 1000000
+"chatroom_id": 1000000
 }
 ```
 

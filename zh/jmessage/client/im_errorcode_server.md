@@ -234,6 +234,16 @@ JMessage 服务器端报的错误码。有可能出现在各平台的 SDK 里。
 			<td>Server response time out, please try again later</td>
 			<td>系统繁忙，稍后重试</td>
 		</tr>
+    <tr >
+      <td>899081</td>
+			<td>room id no exist</td>
+			<td>聊天室ID不存在</td>
+		</tr>
+		<tr>
+			<td>899082</td>
+			<td>user not in room</td>
+			<td>用户不在聊天室中</td>
+		</tr>
 		<tr >
 			<td>800003</td>
 			<td>appkey not exist</td>
@@ -520,7 +530,7 @@ JMessage 服务器端报的错误码。有可能出现在各平台的 SDK 里。
 			<td>用户移除好友出黑名单时，成员列表为空，操作失败</td>
 		</tr>
 		<tr >
-		    <td>819002</td>
+		  <td>819002</td>
 			<td>member not exist</td>
 			<td>用户删除黑名单时，成员列表中有成员不存在，删除失败</td>
 		</tr>
@@ -664,6 +674,16 @@ JMessage 服务器端报的错误码。有可能出现在各平台的 SDK 里。
 			<td>owner can not leave chatroom</td>
 			<td>踢出或退出聊天室时，存在owner用户退出聊天室</td>
 		</tr>
+    <tr>
+			<td>853001</td>
+			<td>chatroom not exist</td>
+			<td>更新不存在的聊天室信息</td>
+		</tr>
+		<tr>
+			<td>853002</td>
+			<td>owner not in chatroom</td>
+			<td>更新聊天室owner时，新的owner并不在该聊天室中</td>
+    </tr>
 		<tr>
 			<td>855001</td>
 			<td>out of time</td>
