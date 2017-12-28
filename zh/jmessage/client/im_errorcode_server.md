@@ -600,6 +600,26 @@ JMessage 服务器端报的错误码。有可能出现在各平台的 SDK 里。
 			<td>用户删除群组消息屏蔽时，该群组不处于消息屏蔽状态</td>
 		</tr>
 		<tr>
+			<td>847001</td>
+			<td>user not in chatroom</td>
+			<td>发送聊天室消息失败，发起者不在该聊天室中</td>
+		</tr>
+		<tr>
+			<td>847002</td>
+			<td>user baned to post</td>
+			<td>发送聊天室消息失败，发起者在该聊天室中被禁言</td>
+		</tr>
+		<tr>
+			<td>847003</td>
+			<td>chatroom not exist</td>
+			<td>发送聊天室消息失败，该聊天室不存在</td>
+		</tr>
+		<tr>
+			<td>847004</td>
+			<td>length of chatroom message exceed limit</td>
+			<td>发送聊天室消息失败，消息长度超过限制</td>
+		</tr>
+		<tr>
 			<td>855001</td>
 			<td>out of time</td>
 			<td>消息撤回失败，超出撤回时间</td>
@@ -618,6 +638,86 @@ JMessage 服务器端报的错误码。有可能出现在各平台的 SDK 里。
 			<td>855004</td>
 			<td>message already retract</td>
 			<td>消息撤回失败，该消息已经撤回</td>
+		</tr>
+		<tr>
+			<td>899081</td>
+			<td>room id no exist</td>
+			<td>聊天室ID不存在</td>
+		</tr>
+		<tr>
+			<td>899082</td>
+			<td>user not in room</td>
+			<td>用户不在聊天室中</td>
+		</tr>
+		<tr>
+			<td>850001</td>
+			<td>chatroom not exist</td>
+			<td>删除不存在的聊天室</td>
+		</tr>
+		<tr>
+			<td>851001</td>
+			<td>repeated invit chatroom member</td>
+			<td>邀请成员到聊天室时，邀请的成员列表中有重复的成员，邀请失败</td>
+		</tr>
+		<tr>
+			<td>851002</td>
+			<td>invit member not exist</td>
+			<td>邀请成员到聊天室时，邀请的成员列表中有未注册成员，邀请失败</td>
+		</tr>
+		<tr>
+			<td>851003</td>
+			<td>member has in the chatroom</td>
+			<td>邀请或加入到聊天室时，邀请或加入的成员已在聊天室中，邀请或加入失败</td>
+		</tr>
+		<tr>
+			<td>851003</td>
+			<td>member has in the chatroom</td>
+			<td>邀请或加入到聊天室时，邀请或加入的成员已在聊天室中，邀请或加入失败</td>
+		</tr>
+		<tr>
+			<td>851004</td>
+			<td>chatroom not exist</td>
+			<td>邀请或加入不存在的聊天室</td>
+		</tr>
+		<tr>
+			<td>851005</td>
+			<td>zero member</td>
+			<td>邀请成员到聊天室时，邀请的成员列表为空，邀请成员失败</td>
+		</tr>
+		<tr>
+			<td>851006</td>
+			<td>amount of member exceed chatroom limit</td>
+			<td>邀请或加入聊天时，邀请的人员数量超过聊天室剩余加入的人员数量</td>
+		</tr>
+		<tr>
+			<td>852001</td>
+			<td>user not in chatroom</td>
+			<td>踢出或退出聊天室时，该用户其实并不在该聊天室中，踢出或退出聊天室失败</td>
+		</tr>
+		<tr>
+			<td>852002</td>
+			<td>chatroom not exist</td>
+			<td>踢出或退出不存在的聊天室</td>
+		</tr>
+		<tr>
+			<td>852003</td>
+			<td>zero member</td>
+			<td>踢出成员到聊天室时，踢出的成员列表为空，踢出成员失败</td>
+		</tr>
+		<tr>
+			<td>852004</td>
+			<td>owner can not leave chatroom</td>
+			<td>踢出或退出聊天室时，存在owner用户退出聊天室</td>
+		</tr>
+		<tr>
+			<td>853001</td>
+			<td>chatroom not exist</td>
+			<td>更新不存在的聊天室信息</td>
+		</tr>
+		<tr>
+			<td>853002</td>
+			<td>owner not in chatroom</td>
+			<td>更新聊天室owner时，新的owner并不在该聊天室中</td>
 		</tr>
 </table>
 </div>
