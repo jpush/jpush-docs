@@ -1272,38 +1272,6 @@ public void onEventMainThread(EventEntity event){
       <th width="300px">说明</th>
     </tr>
     <tr >
-      <td >getFromUserInfo()</td>
-      <td >`UserInfo`</td>
-      <td >获取事件发起方userInfo，在本事件中为群主信息</td>
-    </tr>
-    <tr >
-      <td >getToUserInfoList()</td>
-      <td >`List<UserInfo>`</td>
-      <td >获取事件对象用户信息列表，在本事件中为被拒绝入群的用户`UserInfo`列表</td>
-    </tr>
-    <tr >
-      <td >getReason()</td>
-      <td >`String`</td>
-      <td >获取事件发生的理由, 在本事件中为群主审批拒绝的理由</td>
-    </tr>
-    <tr >
-      <td >getGid()</td>
-      <td >`long`</td>
-      <td >返回实际群组Gid</td>
-    </tr>
-  </table>
-</div>
-
-聊天室消息事件ChatRoomMessageEvent
-***Since 2.4.0***
-<div class="table-d" align="left" >
-  <table border="1" width = "100%">
-    <tr  bgcolor="#D3D3D3" >
-      <th width="100px">方法</th>
-      <th width="20px">类型</th>
-      <th width="300px">说明</th>
-    </tr>
-    <tr >
       <td >getMessages()</td>
       <td >`List<Message>`</td>
       <td >获取聊天室消息事件中包含的消息列表</td>
@@ -1777,6 +1745,23 @@ GroupApprovalRefuseEvent
 ```
 群成员审批拒绝通知事件，收到群成员审批拒绝通知时，sdk将会抛出此事件通知上层，具体处理方法见[事件处理](#Event)一节
 
+#### 获取指定应用下所有公开群组
+***Since 2.4.1***
+```
+    /**
+     * 获取指定应用appKey所属下公开群组基本信息, 如果appKey为空则默认使用本应用appKey.
+     * 公开群组定义见{@link JMessageClient#createPublicGroup(String, String, CreateGroupCallback)}，
+     * 群基本信息定义见{@link GroupBasicInfo}
+     *
+     * @param appKey   指定应用的appKey
+     * @param start    起始位置
+     * @param count    获取个数
+     * @param callback 接口回调
+     * @since 2.4.1
+     */
+    JMessageClient.getPublicGroupListByApp(String appKey, int start, int count, RequestCallback<List<GroupBasicInfo>> callback);
+```
+
 ** 公开群组相关代码示例：**
 ```
 //创建公开群组
@@ -1821,6 +1806,30 @@ event.refuseGroupApproval(username, appKey, reason, new BasicCallback() {
 		}
 	}
 }); //入群审批拒绝
+
+//获取指定应用下所有公开群组
+JMessageClient.getPublicGroupListByApp(appkey, start, count, new RequestCallback<List<GroupBasicInfo>>() {
+	@Override
+	public void gotResult(int responseCode, String responseMessage, List<GroupBasicInfo> groupBasicInfos) {
+		if (responseCode == 0) {
+			String result = "";
+			for (GroupBasicInfo groupBasicInfo : groupBasicInfos) {
+				result += "GroupID: " + groupBasicInfo.getGroupID() + ", GroupType: " + groupBasicInfo.getGroupType() +
+						", GroupName: " + groupBasicInfo.getGroupName() + ", GroupDescription: " + groupBasicInfo.getGroupDescription() +
+						", GroupAvatarMediaID: " + groupBasicInfo.getAvatar() + ", GroupMaxMemberCount: " + groupBasicInfo.getMaxMemberCount()+ "\n\n";
+			}
+			tvDisplay.setText(result);
+			tvDisplay.post(new Runnable() {
+				@Override
+				public void run() {
+					scrollView.fullScroll(ScrollView.FOCUS_DOWN);
+				}
+			});
+		} else {
+			tvDisplay.setText("获取失败!\nresponseCode:" + responseCode + "\nresponseMsg" + responseMessage);
+		}
+	}
+});
 ```
 
 ### 群成员禁言
