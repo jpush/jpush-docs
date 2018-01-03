@@ -1204,6 +1204,27 @@ info.desc = @"这个群组是公开群";
 }];
 ```
 
+#### 获取公开群列表
+
+支持分页获取 AppKey 下的公开群信息，注意接口返回的数组元素是 JMSGGroupInfo ，而不是 JMSGGroup ，需要获取群组的属性值和调用群组接口，则需要通过 JMSGGroupInfo 中的 gid 获取到 JMSGGroup 对象先，然后再操作
+
+```
+/*!
+ * @abstract 分页获取 appkey 下所有公开群信息
+ *
+ * @param appkey    群组所在的 AppKey，不填则默认为当前应用 AppKey
+ * @param start     分页获取的下标，第一页从  index = 0 开始
+ * @param count     每一页的数量，最大值为500
+ * @param handler   结果回调，NSArray<JMSGGroupInfo>
+ *
+ * #### 注意：返回数据中不是 JMSGGroup 类型，而是 JMSGGroupInfo 类型，只能用于展示信息，如果想要调用相关群组 API 接口则需要通过 gid 获取到 JMSGGroup 对象才可以调用
+ */
++ (void)getPublicGroupInfoWithAppKey:(NSString *JMSG_NULLABLE)appkey
+                               start:(NSInteger)start
+                               count:(NSInteger)count
+                   completionHandler:(JMSGCompletionHandler)handler;
+```
+
 #### 更新群组信息
 	/*!
 	 * @abstract 更新群组信息
