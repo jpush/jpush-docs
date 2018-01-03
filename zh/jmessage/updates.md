@@ -1,6 +1,29 @@
 # 最近更新
 
 
+### iOS SDK v3.4.1
+
+#### 更新时间
+
+2018-01-03
+
+#### ChangeLog
+
+##### BugFix:
+
+* 修复用户反馈的一些 bug
+
+##### NewFeature
+
+* 新增：获取 AppKey 下所有公开群接口
+
+#### 升级指南
+* 使用新版本的 JMessage.framework 文件替换原工程下的同名旧文件
+* 将新版本的 JMessage.framework 里的 JCore link 到工程中，详细参见官网集成文档
+
+
+
+
 ### Android SDK v2.4.1
 
 #### 更新时间
