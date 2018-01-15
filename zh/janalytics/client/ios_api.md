@@ -359,6 +359,74 @@
      此类 key 已被模型使用，如果使用则会导致统计到的数据不准确.
 
 
+##SDK 设置用户信息
++ ***\+ (void)identifyAccount:(JANALYTICSUserInfo \*)userInfo with:(void (\^)(NSInteger err, NSString \* msg))completion***
+	+ 接口说明：
+		+ 绑定用户维度
+
+	+ 参数说明：
+		+ userInfo：用户信息模型
+		+ completion： 错误码和错误信息callback
+
+调用示例：
+
+~~~
+  JANALYTICSUserInfo * userinfo = [[JANALYTICSUserInfo alloc] init];
+  userinfo.accountID = @"janalyticsID1";
+  userinfo.creationTime = [[NSDate date] timeIntervalSince1970];
+  userinfo.sex = JANALYTICSSexMale;
+  userinfo.paid = JANALYTICSPaidPaid;
+  userinfo.email = @"test@jiguang.cn";
+  [userinfo setExtraObject:@"extraObj1" forKey:@"extrakey1"];
+  
+  [JANALYTICSService identifyAccount:userinfo with:^(NSInteger err, NSString *msg) {
+    if (err) {
+      NSLog(@"identify ERR:%ld|%@", err, msg);
+    }else {
+      NSLog(@"identify success");
+    }
+  }];
+~~~
+***JANALYTICSUserInfo***模型的使用方法请参考对应头文件
+
+##SDK 解绑当前的用户信息
++ ***\+ (void)detachAccount:(void (\^)(NSInteger err, NSString \* msg))completion***
+	+ 接口说明：
+		+ 解绑当前绑定的用户维度
+
+	+ 参数说明：
+		+ completion： 错误码和错误信息callback
+
+调用示例：
+
+~~~
+  [JANALYTICSService detachAccount:^(NSInteger err, NSString *msg) {
+    if (err) {
+      NSLog(@"detach ERR:%ld|%@", err, msg);
+    }else {
+      NSLog(@"detach success");
+    }
+  }];
+~~~
+
+##SDK 设置上报频率
++ ***\+ (void)setFrequency:(NSUInteger)frequency***
+	+ 接口说明：
+		+ 设置页面流/事件等周期上报频率
+		+ 默认一分钟上报一次
+
+	+ 参数说明：
+		+ frequency： 定时上报频率单位秒
+		<br/>频率允许区间：10 < frequency < 24*60*60
+
+调用示例：
+
+~~~
+//e.g. 十分钟上报一次 
+[JANALYTICSService setFrequency:600];
+~~~
 ## 技术支持
 
-邮件联系：[support&#64;jpush.cn](mailto:support&#64;jpush.cn)
+邮件联系：<support@jpush.cn>
+
+
