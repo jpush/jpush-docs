@@ -275,3 +275,92 @@
     purchase_goods_type
     purchase_quantity
     此类 key 已被模型使用，如果使用则会导致统计到的数据不准确.
+
+##统计上报周期API 
+
++ ***JAnalyticsInterface.setAnalyticsReportPeriod(int period)***
+	+ 接口说明：
+		+ 设置统计上报的自动周期，未调用前默认周期时60秒
+	+ 参数说明：
+		+ period：周期，单位秒，最小10秒，最大1天，超出范围会打印调用失败日志
+	+ 调用示例：
+
+~~~
+	JAnalyticsInterface.setAnalyticsReportPeriod(60);
+~~~
+
+##账户维度模型介绍  
+
+开发者可以为用户增加账户信息，使统计数据可以以账户维度做统计分析
+现开发的属性有：
+
+|中文名|英文名|类型|鉴权/备注|
+|:-----:|:----:|:-----:|:-----:|
+|账号ID|accountID|String	||
+|账号创建时间|creationTime|long|时间戳|
+|姓名|name|String||
+|性别|sex|int|0未知 1男 2女/不能为其他数字，默认为0|
+|是否付费|paid|int|0未知 1是 2否/不能为其他数字，默认为0|
+|出生年月|birthdate|long|yyyyMMdd格式校验|
+|手机号码|phone|String|手机号码校验|
+|电子邮件|email|String|邮箱格式校验|
+|新浪微博ID|weiboID|String||
+|微信ID|wechatID|String||
+|QQ ID|qqID|String||
+|自定义维度|extra	|key-value|key只能为字符串，value只能为字符串或数字类型或null类型； 当value设置为空类型时，将该key从服务器上删除 key不能使用极光内部namespace（符号$）|
+
+具体使用方法，是先调用cn.jiguang.analytics.android.api.Account设置属性，  
+再调用JAnalyticsInterface.identifyAccount(account, callback)登记账户信息  
+也可以只设置部分属性，再次调用identifyAccount修改账户信息  
+调用示例：
+
+~~~java
+Account account = new Account("account001");    //account001为账号id
+account.setCreationTime(1513749859);        //账户创建的时间戳
+account.setName("张三");
+account.setSex(1);
+account.setPaid(1);
+account.setBirthdate("19880920");       //"19880920"是yyyyMMdd格式的字符串
+account.setPhone("13800000000");
+account.setEmail("support@jiguang.cn");
+account.setExtraAttr("attr1","value1");
+JAnalyticsInterface.identifyAccount(account, new AccountCallback() {
+    @Override
+    public void callback(int code, String msg) {
+        Log.d("tag", "code = " + code  + " msg =" + msg);
+    }
+})
+~~~
+
+AccountCallback是回调方法，可以根据返回的code和msg获取调用成功/失败的信息
+
+###错误码
+|code|message|备注|
+|:-----:|:----:|:-----:|
+|0|调用成功||
+|1001|account_id can not be empty|accountID为关键参数，不能填写null或""|
+|1002|detach failed because account_id is empty|当前没有绑定accountID时调用了解绑接口|
+|1003|operation is too busy|10s内请求频率不能超过30次
+|1004|account_id is too long, please make it less than 255 characters|accountID长度不能超过255字符|
+|1101|the value of $sex should be in [0,2]|0未知 1男 2女/不能为其他数字，默认为0|
+|1101|the value of $birthdate should be date as yyyyMMdd|yyyyMMdd格式校验|
+|1101|the value of $paid should be in [0,2]|0未知 1是 2否/不能为其他数字，默认为0|
+|1101|the value of $phone is NOT a phone number|电话号码格式校验（含国际号码）|
+|1101|the value of $email is NOT email address|邮箱格式校验|
+|1101|the key={key} in extra is invalid|自定义属性key不能为空，不能使用极光内部namespace(符号$)|
+|1101|the value of {key} in extra should be String or Number|自定义属性value只能为字符串或数字类型或null类型|
+
+
+
+
+如果要解绑当前用户信息，调用JAnalyticsInterface.detachAccount(callback);  
+调用示例：
+
+~~~java
+JAnalyticsInterface.detachAccount(new AccountCallback() {
+    @Override
+    public void callback(int code, String msg) {
+        Log.d("tag", "code = " + code  + " msg =" + msg);
+    }
+})
+~~~
