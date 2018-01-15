@@ -1,5 +1,53 @@
 # 最近更新
 
+### JAnalytics iOS SDK v1.2.0
+
+#### 更新时间
++ 2018-01-15
+
+#### Change Log 
++ 增加用户维度绑定/解绑功能。
++ 增加定时上报功能。
++ 优化内部逻辑。
+
+#### 升级提示
+
++ 建议升级！
+
+#### 升级指南
+
++ 首先解压您获取到的zip压缩包
++ 更新库文件
+
+### JAnalytics Android SDK v1.2.0
+
+#### 更新时间
++ 2018-01-15
+
+#### Change Log 
++ 新增统计维度-账号，用户可以登记账号信息、解除关联信息。
++ 新增统计频率设置，用户可以设定统计数据的自动上报周期。
++ 修复一些已知问题。
+
+#### 升级提示
+
++ 建议升级！
+
+
+#### 升级指南
+
++ 首先解压您获取到的zip压缩包。
++ 更新库文件。
+打开libs文件夹。
+用janalytics-android-v1.x.x.jar 替换项目中原有的极光统计sdk的jar文件，并删除原有极光统计sdk的jar文件。
+用jcoe-android-v1.x.x.jar 替换项目中原有的极光jcore的jar文件，并删除原有极光jcore的jar文件。
+用对应CPU文件夹下的 libjcore1xx.so文件，替换项目中原有的极光so文件，并删除原有的极光so文件。
++ 更新AndroidManifest.xml。
+压缩包根目录下有AndroidManifest文件，里面配有统计sdk需要的权限。
+请对照示例更新跟JAnalytics相关的组件属性，permission 等配置。
+注:其中极光所有的android sdk使用同一个key与channel。详细请见JAnalytics Android SDK 集成指南中的说明，或者example中的示例。
++ 如果使用jcenter的方式集成JAnalytics，不需要添加相关组件和资源，详细说明请参考官方集成指南。
+
 ### JAnalytics Android SDK v1.1.2
 
 #### 更新时间
