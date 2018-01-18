@@ -1,4 +1,5 @@
 # Android JShare API
+## SDK 初始化 API
 ### API - init
 初始化接口，建议在项目的 Application 的 OnCreate 中使用。  
 #### 接口定义
@@ -8,6 +9,81 @@ public static void init(Context context)
 #### 参数说明
 * context 应用的 ApplicationContext
 
+### API - init
+初始化接口，建议在项目的 Application 的 OnCreate 中使用，这个初始化 API 支持代码中设置第三方平台信息。  
+
+* SDK 1.5.0 以上版本支持
+
+#### 接口定义
+```
+public static void init(Context context, PlatformConfig platformConfig)
+```
+#### 参数说明
+* context 应用的 ApplicationContext
+* platformConfig 第三方平台信息配置，详情见第三方平台信息设置 API
+
+## 第三方平台信息设置 API
+JShare 提供 PlatformConfig 类，实例化后可选择设置相应的第三方平台信息。
+### API - setWechat
+设置微信平台信息。  
+#### 接口定义
+```
+public PlatformConfig setWechat(String appId, String appSecret)
+```
+#### 参数说明
+* appId 微信平台 appId
+* appSecret 微信平台 appSecret
+
+### API - setQQ
+设置 QQ 平台信息。  
+#### 接口定义
+```
+public PlatformConfig setQQ(String appId, String appKey)
+```
+#### 参数说明
+* appId QQ 平台 appId
+* appKey QQ 平台 appKey
+
+### API - setSinaWeibo
+设置新浪微博平台信息。  
+#### 接口定义
+```
+public PlatformConfig setSinaWeibo(String appKey, String appSecret, String redirectUrl)
+```
+#### 参数说明
+* appKey 新浪微博平台 appKey
+* appSecret 新浪微博平台 appSecret
+* redirectUrl 新浪微博平台的回调 url
+
+### API - setFacebook
+设置 Facebook 平台信息。  
+#### 接口定义
+```
+public PlatformConfig setFacebook(String appId, String appName)
+```
+#### 参数说明
+* appId Facebook 平台 appId
+* appName Facebook 平台 appName
+
+### API - setTwitter
+设置 Twitter 平台信息。  
+#### 接口定义
+```
+public PlatformConfig setTwitter(String consumerKey, String consumerSecret)
+```
+#### 参数说明
+* consumerKey Twitter 平台 consumerKey
+* consumerSecret Twitter 平台 consumerSecret
+
+## 获取已经正确配置的平台 API
+### API - getPlatformList
+获取 SDK 所有能用的平台名称，如要使用某个平台，必须正确配置相应的jar以及第三方平台信息。  
+#### 接口定义
+```
+public static List<String> getPlatformList()
+```
+
+## 设置调试模式 API
 ### API - setDebugMode
 设置调试模式。  
 注：该接口需在 init 接口之前调用，避免出现部分日志没打印的情况。多进程情况下建议在自定义的 Application 中 onCreate 中调用。
@@ -18,13 +94,15 @@ public static void setDebugMode(boolean enable)
 #### 参数说明
 * enable 为 true 则会打印 debug 级别的日志，false 则只会打印 warning 级别以上的日志
 
+## 获取正确配置的平台 API
 ### API - getPlatformList
-获取 SDK 所有能用的平台名称，如要使用某个平台，必须在 JGShareSDK.xml 中配置。  
+获取 SDK 所有能用的平台名称，如要使用某个平台，必须正确配置相应的jar以及第三方平台信息。  
 #### 接口定义
 ```
 public static List<String> getPlatformList()
 ```
 
+## 判断某平台分享是否有效 API
 ### API - isClientValid
 判断该平台的分享是否有效。
 #### 接口定义
@@ -32,8 +110,9 @@ public static List<String> getPlatformList()
 public static boolean isClientValid(String name)
 ```
 #### 参数说明
-* name 平台名称，值可选 Wechat.Name、WechatMoments.Name、WechatFavorite.Name、SinaWeibo.Name、SinaWeiboMessage.Name、QQ.Name、QZone.Name。  
+* name 平台名称，值可选 Wechat.Name、WechatMoments.Name、WechatFavorite.Name、SinaWeibo.Name、SinaWeiboMessage.Name、QQ.Name、QZone.Name、Facebook.Name、FbMessenger.Name、Twitter.Name。  
 
+## 分享 API
 ### API - share
 分享接口
 #### 接口定义
@@ -41,29 +120,35 @@ public static boolean isClientValid(String name)
 public static void share(String name, ShareParams shareParams, PlatActionListener shareActionListener))
 ```
 #### 参数说明
-* name 平台名称，值可选 Wechat.Name、WechatMoments.Name、WechatFavorite.Name、SinaWeibo.Name、SinaWeiboMessage.Name、QQ.Name、QZone.Name、Facebook.Name、FbMessenger.Name。  
+* name 平台名称，值可选 Wechat.Name、WechatMoments.Name、WechatFavorite.Name、SinaWeibo.Name、SinaWeiboMessage.Name、QQ.Name、QZone.Name、Facebook.Name、FbMessenger.Name、Twitter.Name。  
 * shareParams 分享的配置参数，具体设置请参考各个平台的分享参数说明。
 * shareActionListener 回调接口，可为 null，为 null 时则没有回调
 
+## 判断某平台是否支持授权 API
 ### API - isSupportAuthorize 
 判断某平台是否支持授权
+
 * SDK 1.2.0 以上版本支持
+
 #### 接口定义
 ```
 public static boolean isSupportAuthorize(String name)
 ```
 #### 参数说明
-* name 平台名称，值可选 Wechat.Name、WechatMoments.Name、WechatFavorite.Name、SinaWeibo.Name、SinaWeiboMessage.Name、QQ.Name、QZone.Name、Facebook.Name、FbMessenger.Name。  
+* name 平台名称，值可选 Wechat.Name、WechatMoments.Name、WechatFavorite.Name、SinaWeibo.Name、SinaWeiboMessage.Name、QQ.Name、QZone.Name、Facebook.Name、FbMessenger.Name、Twitter.Name。  
 
+## 授权 API
 ### API - authorize
 授权接口
+
 * SDK 1.2.0 以上版本支持
+
 #### 接口定义
 ```
 public static void authorize(String name, AuthListener authListener)
 ```
 #### 参数说明
-* name 平台名称，值可选 Wechat.Name、WechatMoments.Name、WechatFavorite.Name、SinaWeibo.Name、SinaWeiboMessage.Name、QQ.Name、QZone.Name、Facebook.Name、FbMessenger.Name。
+* name 平台名称，值可选 Wechat.Name、WechatMoments.Name、WechatFavorite.Name、SinaWeibo.Name、SinaWeiboMessage.Name、QQ.Name、QZone.Name、Facebook.Name、FbMessenger.Name、Twitter.Name。
 * authListener 回调接口，可为 null，为 null 时则没有回调。
 #### 代码示例
 ```
@@ -75,8 +160,8 @@ JShareInterface.authorize(platform, new AuthListener() {
         switch (action) {
             case Platform.ACTION_AUTHORIZING:
                 if (data instanceof AccessTokenInfo) {        //授权信息
-                    String token = ((AccessTokenInfo) data).getToken();//token
-                    long expiration = ((AccessTokenInfo) data).getExpiresIn();//token有效时间，时间戳
+                    String token = ((AccessTokenInfo) data).getToken();// token
+                    long expiration = ((AccessTokenInfo) data).getExpiresIn();// token有效时间，时间戳
                     String refresh_token = ((AccessTokenInfo) data).getRefeshToken();//refresh_token
                     String openid = ((AccessTokenInfo) data).getOpenid();//openid
                     //授权原始数据，开发者可自行处理
@@ -112,26 +197,32 @@ JShareInterface.authorize(platform, new AuthListener() {
 });
 ```
 
-
+## 判断是否已经授权 API
 ### API - isAuthorize
 判断是否已经授权接口
+
 * SDK 1.2.0以上版本支持
+
 #### 接口定义
 ```
 public static boolean isAuthorize(String name)
 ```
 #### 参数说明
-* name 平台名称，值可选 Wechat.Name、WechatMoments.Name、WechatFavorite.Name、SinaWeibo.Name、SinaWeiboMessage.Name、QQ.Name、QZone.Name、Facebook.Name、FbMessenger.Name。
+* name 平台名称，值可选 Wechat.Name、WechatMoments.Name、WechatFavorite.Name、SinaWeibo.Name、SinaWeiboMessage.Name、QQ.Name、QZone.Name、Facebook.Name、FbMessenger.Name、Twitter.Name。
 
+## 删除授权 API
 ### API - removeAuthorize
 删除授权接口
+
 * SDK 1.2.0 以上版本支持
+
+
 #### 接口定义
 ```
 public static void removeAuthorize(String name, AuthListener actionListener)
 ```
 #### 参数说明
-* name 平台名称，值可选 Wechat.Name、WechatMoments.Name、WechatFavorite.Name、SinaWeibo.Name、SinaWeiboMessage.Name、QQ.Name、QZone.Name、Facebook.Name、FbMessenger.Name。
+* name 平台名称，值可选 Wechat.Name、WechatMoments.Name、WechatFavorite.Name、SinaWeibo.Name、SinaWeiboMessage.Name、QQ.Name、QZone.Name、Facebook.Name、FbMessenger.Name、Twitter.Name。
 * authListener 回调接口，可为 null，为 null 时则没有回调
 #### 代码示例
 ```
@@ -164,15 +255,21 @@ JShareInterface.removeAuthorize(platform, new AuthListener() {
     }
 });
 ```
+
+## 获取个人信息 API
 ### API - getUserInfo
-获取个人信息接口
-* SDK 1.2.0 以上版本支持
+获取个人信息接口    
+
+* SDK 1.2.0 以上版本支持    
+
+
 #### 接口定义
 ```
 public static void getUserInfo(String platName, AuthListener authListener)
 ```
 #### 参数说明
-* name 平台名称，值可选 Wechat.Name、WechatMoments.Name、WechatFavorite.Name、SinaWeibo.Name、SinaWeiboMessage.Name、QQ.Name、QZone.Name、Facebook.Name、FbMessenger.Name。
+
+* name 平台名称，值可选 Wechat.Name、WechatMoments.Name、WechatFavorite.Name、SinaWeibo.Name、SinaWeiboMessage.Name、QQ.Name、QZone.Name、Facebook.Name、FbMessenger.Name、Twitter.Name。
 * authListener 回调接口，可为 null，为 null 时则没有回调
 #### 代码示例
 ```
@@ -240,8 +337,8 @@ shareParams.setText("Text");//必须
 参数 |是否必须|参数类型|参数说明|备注
 ---- |-----|----|----|----
 ShareType | 是| int| 分享类型| Platform.SHARE_IMAGE
-ImagePath| 否 | String|本地图片路径|长度不能超过 10KB,大小不能超过 10M，ImagePath 与 ImageData 必须二选一
-ImageData| 否 | Bitmap|图片 Bitmap|大小不能超过1 0M，ImagePath 与 ImageData 必须二选一
+ImagePath| 否 | String|缩略图，本地图片路径|长度不能超过 10KB,大小不能超过 32K,与 ImageData 二选一
+ImageData| 否 | Bitmap|缩略图，图片 Bitmap|大小不能超过 32K,与 ImagePath 二选一
 ```
 ShareParams shareParams = new ShareParams();
 shareParams.setShareType(Platform.SHARE_IMAGE);
@@ -538,4 +635,56 @@ VideoPath| 否 | String|本地视频地址|
 ShareParams shareParams = new ShareParams();
 shareParams.setShareType(Platform.SHARE_VIDEO);
 shareParams.setVideoPath(file.getAbsolutePath());
+```
+
+## Twitter
+### 1)分享文本
+参数 |是否必须|参数类型|参数说明|备注
+---- |-----|----|----|----
+ShareType | 是| int| 分享类型| Platform.SHARE_TEXT
+Text| 是 | String|文本|不可为空，文本长度不超过 140
+```
+ShareParams shareParams = new ShareParams();
+shareParams.setShareType(Platform.SHARE_TEXT);
+shareParams.setUrl(text);
+```
+### 2)分享链接
+参数 |是否必须|参数类型|参数说明|备注
+---- |-----|----|----|----
+ShareType | 是| int| 分享类型| Platform.SHARE_WEBPAGE
+Url| 是 | String|分享链接|仅支持http、https，分享可以带有图片或者视频，但是不能同时带有图片和视频
+Text| 否 | String|文本|文本长度与链接长度的和不能超过140
+ImagePath| 否 | String|本地图片地址|JPG, PNG, GIF, WEBP格式，不能超过5M，ImagePath与ImageUrl、ImageArray 只能三选一
+ImageData| 否 | String|本地图片bitmap|JPG, PNG, GIF, WEBP格式，不能超过5M，ImagePath与ImageUrl、ImageArray 只能三选一
+ImageArray| 否 | Array|本地图片地址数组|支持多个图片，最多4张，JPG, PNG, GIF, WEBP格式，单张不能超过5M，ImagePath与ImageUrl、ImageArray必须三选一
+VideoPath| 否 | String|本地视频地址|不支持网络视频，
+```
+ShareParams shareParams = new ShareParams();
+shareParams.setShareType(Platform.SHARE_WEBPAGE);
+shareParams.setUrl(share_url);
+```
+
+### 3)分享图片
+参数 |是否必须|参数类型|参数说明|备注
+---- |-----|----|----|----
+ShareType | 是| int| 分享类型| Platform.SHARE_IMAGE
+Text| 否 | String|文本|文本长度不能超过140
+ImagePath| 否 | String|本地图片地址|JPG, PNG, GIF, WEBP格式，不能超过5M，ImagePath与ImageUrl、ImageArray必须三选一
+ImageData| 否 | String|本地图片bitmap|JPG, PNG, GIF, WEBP格式，不能超过5M，ImagePath与ImageUrl、ImageArray必须三选一
+ImageArray| 否 | Array|本地图片地址数组|支持多个图片，最多4张，JPG, PNG, GIF, WEBP格式，单张不能超过5M，ImagePath与ImageUrl、ImageArray必须三选一
+```
+ShareParams shareParams = new ShareParams();
+shareParams.setShareType(Platform.SHARE_IMAGE);
+shareParams.setImagePath(file.getAbsolutePath());
+```
+### 4)分享视频
+参数 |是否必须|参数类型|参数说明|备注
+---- |-----|----|----|----
+ShareType | 是| int| 分享类型| Platform.SHARE_VIDEO
+Text| 否 | String|文本|文本长度不能超过140
+VideoPath| 是 | String|本地视频地址|不支持网络视频，视频的格式要求较多，具体参考twitter文档：https://developer.twitter.com/en/docs/media/upload-media/uploading-media/media-best-practices
+```
+ShareParams shareParams = new ShareParams();
+shareParams.setShareType(Platform.SHARE_VIDEO);
+shareParams.setVideoPath(videoPath);
 ```

@@ -31,3 +31,10 @@
 填写相关应用信息并提交审核，
 ![](image/facebook_info.png)
 根据提示填写应用信息即可。
+
+
+
+## 申请 Twitter 的 appID
+登录 <a href="https://apps.twitter.com/">Twitter 开发者平台</a> ,点击 Create New APP ，创建应用如下图：
+![](image/twitter_info.png)
+根据提示填写创建应用信息，回调地址不要忘记填写，创建成功之后，可以看到 ConsumerKey 和 consumerSecret 信息.

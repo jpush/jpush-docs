@@ -172,9 +172,17 @@
       <td>file not exist</td>
       <td>文件不存在</td>
     </tr>
-
+    <tr>
+      <td>41028</td>
+      <td>text and url size out of limit</td>
+      <td>文本和url长度超过限制</td>
     </tr>
-        <tr>
+    <tr>
+      <td>41029</td>
+      <td>can't share image and video together</td>
+      <td>不能同时分享图片和视频</td>
+    </tr>
+    <tr>
       <td>42001</td>
       <td>invalid credential</td>
       <td>不合法的调用凭证</td>
@@ -209,7 +217,30 @@
       <td>this platform unsupported authorize</td>
       <td>平台不支持授权</td>
     </tr>
-
+    
+    <tr>
+      <td>50006</td>
+      <td>Invalid or expired token</td>
+      <td>无效或过期的token</td>
+    </tr>
+    
+    <tr>
+      <td>50007</td>
+      <td>Unable to verify your credentials</td>
+      <td>无法验证你的凭证</td>
+    </tr>
+    
+    <tr>
+      <td>50008</td>
+      <td>Internal error</td>
+      <td>发生未知的内部错误</td>
+    </tr>
+    
+    <tr>
+      <td>50009</td>
+      <td>Status is a duplicate</td>
+      <td>该状态的内容已经过验证的帐户发布</td>
+    </tr>
     
 </table>
 </div>
