@@ -262,7 +262,7 @@ JIM.login({
 }).onSuccess(function(data) {
      //data.code 返回码
      //data.message 描述
-}.onFail(function(data){
+}).onFail(function(data) {
   //同上
 });
 ```
