@@ -1,4 +1,4 @@
-# Device-API
+# Device API <small>v3</small>
 
 <div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px;">
 <p> Device API 用于在服务器端查询、设置、更新、删除设备的 tag,alias 信息，使用时需要注意不要让服务端设置的标签又被客户端给覆盖了。</p>
@@ -30,11 +30,13 @@ Device API 用于在服务器端查询、设置、更新、删除设备的 tag,a
 https://device.jpush.cn
 
 <div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px;">
-<p>如果极光应用分配在北京机房（极光控制台 “应用设置” -> "应用信息" 中可以看到），并且开发者接口调用的服务器也位于北京，则可以调用如下地址：</p>
-<p>https://bjapi.push.jiguang.cn/v3/device</p>
-<p>可以提升 API 的响应速度。</p>
-<p>注意原地址为 /v3 和 /v3/devices 后缀的都统一为了 https://bjapi.push.jiguang.cn/v3/device </p>
-<p>详细对应关系见 “应用信息” 中的说明。</p>
+
+<p>如果创建的极光应用分配的北京机房，并且 API 调用方的服务器也位于北京，则比较适合调用极光北京机房的 API，可以提升一定的响应速度。</p>
+<p>通过极光 Web 控制台 “应用设置” -> "应用信息" 中可以看到应用所在机房。如果应用所在地为北京机房，同时会给出各 API 的调用地址。</p>
+
+<p>北京机房 Push API 调用地址： https://bjapi.push.jiguang.cn/v3/device </p>
+<p>详细对应关系见 “应用信息” 中 “服务器所在地” 后的信息。</p>
+
 </div>
 
 
