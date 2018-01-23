@@ -33,8 +33,24 @@
 
 ![jpush_ios_guide](../image/create_ios_app.png)
 ![jpush_ios_guide](../image/create_ios_app2.png)
-##SDK集成步骤
-+ 	解压压缩包，将Lib下的所有文件复制到工程中
+##SDK导入
+**选择1：Cocoapods导入**
+
+* 通过Cocoapods下载地址：
+
+```
+pod 'JAnalytics'
+```
+* 如果需要安装指定版本则使用以下方式（以1.2.0版本为例）：
+
+```
+pod 'JAnalytics', '1.2.0'
+```
+
+**选择2：手动导入**
+
++ 在极光官网下载[最新SDK](http://docs.jiguang.cn/janalytics/resources/)
++ 解压压缩包，将Lib下的所有文件复制到工程中
 + 增加相关的framework依赖
 	+ UIKit
 	+ SystemConfiguration,
@@ -58,7 +74,7 @@
 	// 如果需要使用idfa功能所需要引入的头文件（可选）
 	#import <AdSupport/AdSupport.h>
 ~~~
-## 添加初始化代码
+##添加初始化代码
 
 请将以下代码添加到
 -(BOOL)application:(UIApplication \*)application didFinishLaunchingWithOptions:(NSDictionary \*)launchOptions
