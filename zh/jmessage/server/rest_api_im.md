@@ -655,7 +655,8 @@ Error Code
 + 899003 username不合法；
 + 899002 用户不存在；
 + 899051  群组不存在；
-+ 899052 设置群组消息屏蔽，设置的群组屏蔽已经打开
++ 899052 设置群组
++ 屏蔽，设置的群组屏蔽已经打开
 + 99053 设置群组消息屏蔽，设置的群组屏蔽已经关闭
 
 
@@ -695,7 +696,7 @@ POST /v1/messages
 		</tr>
 		<tr >
 			<td>target_type</td>
-			<td>发送目标类型 single - 个人，group - 群组 （必填）</td>
+			<td>发送目标类型 single - 个人，group - 群组 chatroom - 聊天室（必填）</td>
 		</tr>
 		<tr >
 			<td>from_type</td>
@@ -707,7 +708,7 @@ POST /v1/messages
 		</tr>
 		<tr >
 			<td>target_id</td>
-			<td>目标id single填username group 填Group id （必填）</td>
+			<td>目标id single填username group 填Group id chatroom 填chatroomid（必填）</td>
 		</tr>
 		<tr >
 			<td>target_appkey</td>
@@ -1132,6 +1133,7 @@ Example Request
     "owner_username": "tom", 
     "name": "群聊天室", 
     "members_username": ["eddie", "annie"], 
+    "flag": 1,
     "desc": "运动"
 }
 ```
@@ -1145,6 +1147,11 @@ Request Params
 + avatar           （选填）群组头像，上传接口所获得的media_id 
 + desc               （选填） 群描述 
     - 支持的字符：全部，包括 Emoji。
++ flag               （选填） 类型 
+
+    - 1 - 私有群（默认）
+    - 2 - 公开群
+    - 不指定flag，默认为1
 
 Example Response
 
@@ -1302,7 +1309,8 @@ Request Params
 
 Example Response
 
-+ ctime  群组创建时间
++ ctime  群组
++ 创建时间
 + mtime 群组最后修改时间 
 
 ```
@@ -1370,7 +1378,27 @@ Example Response
 < Content-Type: application/json
 ```
 
+### 群成员禁言
 
+    PUT  /groups/messages/{gid}/silence?status={status}
+
+
+Request body
+```
+[ "username1", "username2"]  
+备注：username json数组
+```
+Request Params
+
+```
+status：开启或关闭禁言 true表示开启 flase表示关闭
+```
+
+Example Response
+```
+< HTTP/1.1 204 OK
+< Content-Type: application/json
+```
 
 
 ## 好友
@@ -1900,6 +1928,43 @@ Response Data
 
 N/A
 
+### 跨应用管理聊天室成员
+	POST  /cross/chatroom/{room_id}/members
+Request Params
+
++ add  json数组 表示要添加到聊天室的用户(可选)
++ remove  json数组 表示要从聊天室删除的用户（可选）
++ appkey 管理用户所属的appkey 必填
+
+add remove两者至少要有一个
+
+Example Request 
+
+```
+[{ 
+ "appkey":" 4f7aef34fb361292c566a1cd",
+ "add": [
+ "test1",
+ "test2"
+ ],
+ "remove": [
+ "name3",
+ "name4"
+ ]
+}]
+```
+Example Response
+
+```
+< HTTP/1.1 204 NO Content
+< Content-Type: application/json; charset=utf-8 
+```
+
+Response Data
+
+N/A
+ 
+
 ## 敏感词
 
 ### 添加敏感词
@@ -2149,6 +2214,327 @@ Response Data
 
 ```
  {"status": 1} 
+```
+## 聊天室字段总览
+
+<div class="table-d" align="center" >
+	<table border="1" width = "100%">
+		<tr  bgcolor="#D3D3D3" >
+			<th >参数</th>
+			<th >含义</th>
+			<th >字符长度限制</th>
+		</tr>
+		<tr >
+			<td>name</td>
+			<td>聊天室名字（必填)</td>
+			<td>Byte(0~64)</td>
+		</tr>
+		<tr >
+			<td>owner_username</td>
+			<td>聊天室创建者（必填）</td>
+			<td>Byte (4~128)</td>
+		</tr>
+		<tr >
+			<td>description</td>
+			<td>聊天室描述（选填）</td>
+			<td>Byte(250)</td>
+		</tr>
+		<tr >
+			<td>members_username</td>
+			<td>聊天室成员列表（选填）</td>
+			<td></td>
+		</tr>
+		<tr >
+			<td>ctime</td>
+			<td>创建时间</td>
+			<td></td>
+		</tr>
+		<tr >
+			<td>max_member_count</td>
+			<td>最大成员数</td>
+			<td></td>
+		</tr>
+		<tr >
+			<td>total_member_count</td>
+			<td>当前总人数</td>
+			<td></td>
+		</tr>
+		<tr >
+			<td>flag</td>
+			<td>禁言标志</td>
+			<td>0表示不禁言 1表示开启禁言 </td>
+		</tr>
+	</table>
+</div>
+
+<br>
+
+## 聊天室维护
+
+### 创建聊天室
+
+	POST /v1/chatroom/
+
+
+#### Request Body
+
+{"owner_username":"liming", "name" : "测试聊天室", "description":"测试", "members_username":[]}
+
+Request Params
+
++ owner_username     （必填）聊天室拥有者
++ name               （必填）聊天室名称
++ members_username   （选填）成员 username
++ description               （选填） 描述 
+#### Example Response
+
+```
+ HTTP/1.1 201 Created
+ Content-Type: application/json
+
+{
+"chatroom_id": 1000000
+}
+```
+
+###  获取聊天室详情
+
+	POST /v1/chatroom/batch
+
+#### Request Params
+
+	[10000001,10000002] roomid数组
+
+#### Example Response
+```
+HTTP/1.1 200 OK 
+Content-Type: application/json; charset=utf-8  
+
+[
+    {
+        "id": 10000001,
+        "owner_username": "xiaoming",
+        "max_member_count": 10000,
+        "appkey": "4f7aef34fb361292c566a1cd",
+        "name": "test",
+        "description": "test",  
+        "total_member_count": 2,
+        "ctime": "2017-11-27 18:38:25"
+    }，
+ {
+        "id": 10000002,
+        "owner_username": "xiaoming",
+        "max_member_count": 10000,
+        "appkey": "4f7aef34fb361292c566a1cd",
+        "name": "test",
+        "description": "test",
+        "total_member_count": 2,
+        "ctime": "2017-11-27 18:38:25"
+    }
+]
+```
+
+###  GET 获取用户聊天室列表
+```
+ GET /v1/users/{username}/chatroom
+```
+
+#### Example Request
+	
+	GET /v1/users/xiaoming/chatroom
+
+#### Example Response
+
+```
+HTTP/1.1 200 OK 
+Content-Type: application/json; charset=utf-8 
+
+[
+    {
+        "id": 100000,
+        "owner_username": "xiaoming",
+        "max_member_count": 10000,
+        "appkey": "4f7aef34fb361292c566a1cd",
+        "name": "test",
+        "description": "test",
+        "total_member_count": 2，
+       "ctime": "2017-11-27 18:38:25"
+    }，
+ {
+        "id": 10000001,
+        "owner_username": "xiaoming",
+        "max_member_count": 10000,
+        "appkey": "4f7aef34fb361292c566a1cd",
+        "name": "test",
+        "description": "test",
+        "total_member_count": 2，
+        "ctime": "2017-11-27 18:38:25"
+    }
+]
+
+```
+
+### GET 获取应用下聊天室列表
+
+	GET /v1/chatroom?start={start}&count={count}
+
+#### Example Request 
+
+	GET  /v1/chatroom?start=0&count=10
+
+#### Example Response
+
+```
+HTTP/1.1 200 OK 
+Content-Type: application/json; charset=utf-8 
+
+{
+    "total": 1,
+    "rooms": [
+        {
+            "id": 62,
+            "owner_username": "xiaoming",
+            "max_member_count": 10000,
+            "appkey": "4f7aef34fb361292c566a1cd",
+            "name": "test",
+            "description": "test"，
+             total_member_count": 11,
+            "ctime": "2017-11-27 18:38:25"
+        }
+    ],
+    "start": 0,
+    "count": 1
+}
+```
+
+### 更新聊天室信息
+
+	 PUT /v1/chatroom/{room_id}
+
+#### Example Request
+
+```
+ PUT /v1/chatroom/111000001
+
+```
+#### Request Body
+	
+	{"owner_username":"135380113231", "name" : "中国人", "description":"说什么来这"}
+
+#### Example Response
+
+```
+HTTP/1.1 204  
+Content-Type: application/json; charset=utf-8 
+```
+
+### 删除聊天室
+
+	DELETE /v1/chatroom/{room_id}
+
+#### Example Request 
+
+```
+DELETE  /v1/chatroom/100000
+```
+
+#### Example Response
+
+```
+HTTP/1.1 204  
+Content-Type: application/json; charset=utf-8 
+```
+
+###  修改用户禁言状态
+
+     PUT /v1/chatroom/{room_id}/forbidden/{username}?status={status}
+
+status  0表示不禁言 1表示开启禁言 必填
+#### Example Request 
+
+```
+PUT  /v1/chatroom/100000/forbidden/caiyh?status=1
+```
+#### Example Response
+
+```
+ HTTP/1.1 204 OK
+ Content-Type: application/json; charset=utf-8
+
+```
+
+###  获取聊天室成员列表
+
+    GET /v1/chatroom/{room_id}/members?start={start}&count={count}
+
+Request Params
+
++ room_id 聊天室ID。
+
+Example Response
+
++ username  用户名
++ ctime 创建时间
++ flag 禁言标记
+
+```
+ HTTP/1.1 200 OK
+ Content-Type: application/json
+
+{
+    "total": 2, 
+    "users": [
+        {
+            "username": "13538013231", 
+            "flag": 0, 
+            "room_ctime": "2017-11-17 08:57:54", 
+            "mtime": "2017-10-30 17:24:17", 
+            "ctime": "2017-10-30 17:24:17"
+        }, 
+        {
+            "username": "xia_12", 
+            "flag": 0, 
+            "room_ctime": "2017-11-16 19:13:07", 
+            "mtime": "2017-02-08 17:56:04", 
+            "ctime": "2017-02-08 17:56:04"
+        }
+    ], 
+    "count": 2, 
+    "start": 0
+}
+```
+
+
+### 添加聊天室成员
+
+     PUT /v1/chatroom/{room_id}/members
+
+Request Params
+
++ username的json数组 最多支持3000个
+
+Example Response
+
+```
+HTTP/1.1 204  
+Content-Type: application/json; charset=utf-8 
+
+```
+
+### 移除聊天室成员
+
+      DELETE /v1/chatroom/{room_id}/members
+
+Request Params
+
++ username的json数组 最多支持3000个
+
+Example Response
+
+```
+HTTP/1.1 204  
+Content-Type: application/json; charset=utf-8 
+
 ```
 
 ## HTTP 返回

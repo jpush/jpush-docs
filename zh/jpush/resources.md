@@ -12,7 +12,7 @@
                     <li><a href="../client/Android/android_guide">集成指南</a></li>
                     <li><a href="../client/Android/android_3m">3 分钟快速 Demo</a></li>
                     <li><a href="../client/Android/android_debug_guide">调试指南</a></li>
-                    <li><a href="https://sdkfiledl.jiguang.cn/src/jpush-android-3.1.0-google_play.zip">Google Play 版本</a></li>
+                    <li><a href="https://sdkfiledl.jiguang.cn/src/jpush-android-3.1.1-google_play.zip">Google Play 版本</a></li>
                 </ul>
                 <p><a href="https://www.jiguang.cn/downloads/sdk/android" class="btn btn-default" role="button">下载</a></p>
             </div>
@@ -141,14 +141,21 @@
 ## 服务器端第三方代码
 
 <div class="row 3rd downloads">
-    <div class="col-md-6">
+    <div class="col-md-4">
         <h4>Go</h4>
         <ul>
             <li>开发者： <a href="https://github.com/ylywyn">ylywyn</a></li>
             <li><a href="https://github.com/ylywyn/jpush-api-go-client" target="_blank">项目地址</a></li>
         </ul>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-4">
+        <h4>Go</h4>
+        <ul>
+            <li>开发者：<a href="https://github.com/xialeistudio">xialeistudio</a></li>
+            <li><a href="https://github.com/xialeistudio/go-jpushh" target="_blank">项目地址</a></li>
+        </ul>
+    </div>
+    <div class="col-md-4">
         <h4>C</h4>
         <ul>
             <li>开发者：<a href="https://github.com/coldwind">coldwind</a></li>

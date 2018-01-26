@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['useridlist',['UserIdList',['../namespace_jmcpp.html#a34d16288414c1dd6b97279ebb0684519',1,'Jmcpp']]],
-  ['userinfolist',['UserInfoList',['../namespace_jmcpp.html#a94f35753dcc427e89897cb2284cc1469',1,'Jmcpp']]],
-  ['userinfolitelist',['UserInfoLiteList',['../namespace_jmcpp.html#a4d18da31ea7049eb626572c77b0f1738',1,'Jmcpp']]]
+  ['roomid',['RoomId',['../namespace_jmcpp.html#a1ec9d374efb8e52f01d0538edde80ceb',1,'Jmcpp']]],
+  ['roominfolist',['RoomInfoList',['../namespace_jmcpp.html#a326e54864f38d9de9f77ffb87feff2bb',1,'Jmcpp']]]
 ];

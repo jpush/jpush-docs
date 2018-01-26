@@ -1,9 +1,7 @@
 var searchData=
 [
-  ['label',['label',['../struct_jmcpp_1_1_location_content.html#a24156b5a6d4bd8615596e83a3afa080d',1,'Jmcpp::LocationContent']]],
-  ['lastmessagetime',['lastMessageTime',['../struct_jmcpp_1_1_multi_unread_msg_count_changed_event.html#ae743014317672d0ce91ba781da3dd63d',1,'Jmcpp::MultiUnreadMsgCountChangedEvent']]],
-  ['latitude',['latitude',['../struct_jmcpp_1_1_location_content.html#aca4fa24e00972342130ea07578e45c31',1,'Jmcpp::LocationContent']]],
-  ['logger',['logger',['../struct_jmcpp_1_1_configuration.html#a6a22f1823b8070b58de6e00bba1249b2',1,'Jmcpp::Configuration']]],
-  ['loglevel',['logLevel',['../struct_jmcpp_1_1_configuration.html#a165fe38d0d2c787221e802bc73e95bbd',1,'Jmcpp::Configuration']]],
-  ['longitude',['longitude',['../struct_jmcpp_1_1_location_content.html#a3d71cf78ed5b136ded73aef9a0edf26d',1,'Jmcpp::LocationContent']]]
+  ['isoutgoing',['isOutgoing',['../class_jmcpp_1_1_message.html#a792b0292d4426eb8581cc8ae6fb628f2',1,'Jmcpp::Message']]],
+  ['isowner',['isOwner',['../struct_jmcpp_1_1_group_member.html#a56515f2ec416673c58ea03daa381f78a',1,'Jmcpp::GroupMember']]],
+  ['ispublic',['isPublic',['../struct_jmcpp_1_1_group_info.html#a93a8b121b162977797db62c2d237254a',1,'Jmcpp::GroupInfo']]],
+  ['issilent',['isSilent',['../struct_jmcpp_1_1_group_member.html#abe14e11b9a642db3ea66968c1b4f851f',1,'Jmcpp::GroupMember']]]
 ];

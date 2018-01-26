@@ -722,6 +722,19 @@ SDK 3.2.1 版本开始（包括3.2.1），离线事件也会走消息同步策�
 	 */
 	+ (JMSGConversation * JMSG_NULLABLE)groupConversationWithGroupId:(NSString *)groupId;
 
+#### 获取聊天室会话
+
+```
+/*!
+ * @abstract 获取聊天室会话
+ *
+ * @param roomId 聊天室 ID
+ *
+ * @discussion 如果会话还不存在，则返回 nil
+ */
++ (JMSGConversation * JMSG_NULLABLE)chatRoomConversationWithRoomId:(NSString *)roomId;
+```
+
 #### 创建单聊会话
 	/*!
 	 * @abstract 创建单聊会话
@@ -766,6 +779,23 @@ SDK 3.2.1 版本开始（包括3.2.1），离线事件也会走消息同步策�
 			                }
 			            }];
 
+#### 创建聊天室会话			            
+
+```
+/*!
+ * @abstract 创建聊天室会话
+ *
+ * @param roomId  聊天室 ID。
+ * @param handler 结果回调。正常返回时 resultObject 类型为 JMSGConversation。
+ *
+ * @discussion 如果会话已经存在，则直接返回。如果不存在则创建。
+ * 创建会话时如果发现该 roomId 的信息本地还没有，则需要从服务器端上拉取。
+ * 如果从服务器上获取 roomId 的信息不存在或者失败，则创建会话失败。
+ */
++ (void)createChatRoomConversationWithRoomId:(NSString *)roomId
+                           completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)handler;
+```
+
 #### 删除单聊会话
 	/*!
 	 * @abstract 删除单聊会话
@@ -787,13 +817,26 @@ SDK 3.2.1 版本开始（包括3.2.1），离线事件也会走消息同步策�
 	 */
 	+ (BOOL)deleteGroupConversationWithGroupId:(NSString *)groupId;
 
-#### conversation列表
+#### 删除聊天室会话
+
+```
+/*!
+ * @abstract 删除聊天室会话
+ *
+ * @param roomId  聊天室 ID
+ *
+ * @discussion 除了删除会话本身，还会删除该会话下所有的聊天消息。
+ */
++ (BOOL)deleteChatRoomConversationWithRoomId:(NSString *)roomId;
+```
+
+#### 会话列表列表
 	/*!
 	 * @abstract 返回 conversation 列表（异步,已经排序）
 	 *
 	 * @param handler 结果回调。正常返回时 resultObject 的类型为 NSArray，数组里成员的类型为 JMSGConversation
 	 *
-	 * @discussion 当前是返回所有的 conversation 列表，默认是已经排序。
+	 * @discussion 当前是返回所有的 conversation 列表，不包括聊天室会话，默认是已经排序。
 	 *
 	 */
 	 + (void)allConversations:(JMSGCompletionHandler)handler;
@@ -805,6 +848,19 @@ SDK 3.2.1 版本开始（包括3.2.1），离线事件也会走消息同步策�
 				//获取失败
             }
 	    }];
+
+#### 聊天室会话列表
+
+```
+/*!
+ * @abstract 返回聊天室 conversation 列表（异步,已排序）
+ *
+ * @param handler 结果回调。正常返回时 resultObject 的类型为 NSArray，数组里成员的类型为 JMSGConversation
+ *
+ * @discussion 当前是返回所有的chatroom conversation 列表，不包括单聊和群聊会话，默认是已经排序。
+ */
++ (void)allChatRoomConversation:(JMSGCompletionHandler)handler;
+```
 
 消息相关操作：
 #### 获取某条消息
@@ -1091,9 +1147,10 @@ SDK 3.2.1 版本开始（包括3.2.1），离线事件也会走消息同步策�
 
 
 ### 群组管理
-#### 创建群组
+群组分为私有群和公开群，群的类型在创建成功之后就不能修改，公开群需要申请，等管理员审批同意之后方可入群。
+#### 创建群组（(只能创建私有群)）
 	/*!
-	 * @abstract 创建群组
+	 * @abstract 创建群组(只能创建私有群)
 	 *
 	 * @param groupName 群组名称
 	 * @param groupDesc 群组描述信息
@@ -1115,6 +1172,58 @@ SDK 3.2.1 版本开始（包括3.2.1），离线事件也会走消息同步策�
             JMSGGroup *group = (JMSGGroup *)resultObject;
         }
     }];
+#### 创建群组（可创建私有群、公开群）
+
+```
+/*!
+ * @abstract 创建群组（可创建私有群、公开群）
+ *
+ * @param groupInfo     群信息类，如：群名、群类型等，详细请查看 JMSGGroupInfo 类
+ * @param usernameArray 初始成员列表。NSArray 里的类型是 NSString
+ * @param handler       结果回调。正常返回 resultObject 的类型是 JMSGGroup。
+ *
+ * @discussion 向服务器端提交创建群组请求，返回生成后的群组对象.
+ * 返回群组对象, 群组ID是App 需要关注的, 是后续各种群组维护的基础.
+ */
++ (void)createGroupWithGroupInfo:(JMSGGroupInfo *)groupInfo
+                     memberArray:(NSArray JMSG_GENERIC(__kindof NSString *) *JMSG_NULLABLE)usernameArray
+               completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)handler;
+```
+
+##### 例子
+
+```
+JMSGGroupInfo *info = [[JMSGGroupInfo alloc] init];
+info.name =@"公开群001";
+info.groupType = kJMSGGroupTypePublic;
+info.desc = @"这个群组是公开群";
+[JMSGGroup createGroupWithGroupInfo:info memberArray:nil completionHandler:^(id resultObject, NSError *error) {
+    if (!error) {
+        myGroup = resultObject;
+    }
+}];
+```
+
+#### 获取公开群列表
+
+支持分页获取 AppKey 下的公开群信息，注意接口返回的数组元素是 JMSGGroupInfo ，而不是 JMSGGroup ，需要获取群组的属性值和调用群组接口，则需要通过 JMSGGroupInfo 中的 gid 获取到 JMSGGroup 对象先，然后再操作
+
+```
+/*!
+ * @abstract 分页获取 appkey 下所有公开群信息
+ *
+ * @param appkey    群组所在的 AppKey，不填则默认为当前应用 AppKey
+ * @param start     分页获取的下标，第一页从  index = 0 开始
+ * @param count     每一页的数量，最大值为500
+ * @param handler   结果回调，NSArray<JMSGGroupInfo>
+ *
+ * #### 注意：返回数据中不是 JMSGGroup 类型，而是 JMSGGroupInfo 类型，只能用于展示信息，如果想要调用相关群组 API 接口则需要通过 gid 获取到 JMSGGroup 对象才可以调用
+ */
++ (void)getPublicGroupInfoWithAppKey:(NSString *JMSG_NULLABLE)appkey
+                               start:(NSInteger)start
+                               count:(NSInteger)count
+                   completionHandler:(JMSGCompletionHandler)handler;
+```
 
 #### 更新群组信息
 	/*!
@@ -1188,6 +1297,94 @@ SDK 3.2.1 版本开始（包括3.2.1），离线事件也会走消息同步策�
             NSLog(@"获取群组信息成功");
         }
     }];
+
+#### 申请入群
+对于公开群，需要申请或者其他群成员邀请，并由管理员审批同意才可以入群
+
+```
+/*!
+ * @abstract 申请加入群组
+ *
+ * @param gid     群组 gid
+ * @param reason   申请原因
+ * @param handler 结果回调
+ *
+ * @discussion 只有公开群需要申请才能加入，私有群不需要申请。
+ */
++ (void)applyJoinGroupWithGid:(NSString *JMSG_NONNULL)gid
+                       reason:(NSString *JMSG_NULLABLE)reason
+            completionHandler:(JMSGCompletionHandler)handler;
+```
+
+#### 管理员审批入群申请
+当有用户申请加入群组，管理员会接收到入群申请事件 [JMSGApplyJoinGroupEvent](#跳转-入群申请事件) ，管理员需要对该申请做一个审批，如果管理员拒绝了该申请，则申请人和被申请人都会收到一个管理员拒绝入群申请事件 [JMSGGroupAdminRejectApplicationEvent](#跳转-管理员拒绝入群申请事件)。
+
+```
+/*!
+ * @abstract 管理员审批入群申请
+ *
+ * @patam eventId     入取申请事件的 id，详情请查看 JMSGApplyJoinGroupEvent 类
+ * @param gid         群组 gid
+ * @param joinUser    入群的用户
+ * @param applyUser   发起申请的的用户，如果是主动申请入群则和 member 是相同的
+ * @param isAgree     是否同意申请，YES : 同意， NO: 不同意
+ * @param reason      拒绝申请的理由，选填
+ * @param handler     结果回调
+ *
+ * @discussion 只有管理员才有权限审批入群申请，SDK 不会保存申请入群事件(JMSGApplyJoinGroupEvent)，上层可以自己封装再保存，或则归档直接保存，以便此接口取值调用。
+ */
++ (void)processApplyJoinGroupEventID:(NSString *JMSG_NONNULL)eventId
+                                 gid:(NSString *JMSG_NONNULL)gid
+                            joinUser:(JMSGUser *JMSG_NONNULL)joinUser
+                           applyUser:(JMSGUser *JMSG_NONNULL)applyUser
+                             isAgree:(BOOL)isAgree
+                              reason:(NSString *JMSG_NULLABLE)reason
+                             handler:(JMSGCompletionHandler)handler;
+```
+
+#### 设置群成员禁言
+
+```
+/*!
+ * @abstract 群成员禁言设置
+ *
+ * @param isSilence 是否禁言， YES:是 NO: 否
+ * @param username  带设置的用户的 username
+ * @param username  带设置的用户的 appKey,若传入空则默认使用本应用appKey
+ * @param handler   结果回调
+ *
+ * @discussion 注意: 目前 SDK 只支持群主设置群里某个用户禁言
+ */
+- (void)setGroupMemberSilence:(BOOL)isSilence
+                     username:(NSString *JMSG_NONNULL)username
+                       appKey:(NSString *JMSG_NULLABLE)appKey
+                      handler:(JMSGCompletionHandler JMSG_NULLABLE)handler;
+```
+
+#### 判断用户是否被禁言
+
+```
+/*!
+ * @abstract 判断用户在该群内是否被禁言
+ *
+ * @param username  待判断用户的用户名
+ * @param appKey    待判断用户的appKey，若传入空则默认使用本应用appKey
+ */
+- (BOOL)isSilenceMemberWithUsername:(NSString *JMSG_NONNULL)username
+                             appKey:(NSString *JMSG_NULLABLE)appKey;
+```
+
+#### 获取群禁言列表
+
+```
+/*!
+ * @abstract 禁言列表
+ *
+ * @return 禁言的成员列表. NSArray 里成员类型是 JMSGUser
+ */
+- (NSArray JMSG_GENERIC(__kindof JMSGUser *)*)groupSilenceMembers;
+```
+
 #### 获取我的群组列表
 	/*!
 	 * @abstract 获取我的群组列表
@@ -1271,6 +1468,92 @@ SDK 3.2.1 版本开始（包括3.2.1），离线事件也会走消息同步策�
 	 * @discussion 如果 group.name 为空, 则此接口会拼接群组前 5 个成员的展示名返回.
 	 */
 	- (NSString *)displayName;
+
+### 聊天室管理
+***Since 3.4.0***
+
++ 主要特点：聊天室的消息没有推送通知和离线保存，也没有常驻成员的概念，只要进入聊天室即可接收消息，开始聊天，一旦退出聊天室，不再会接收到任何消息、通知和提醒。
++ 发送消息：聊天室消息的发送与单聊、群聊是一样的，通用的发送接口
++ 接收消息：聊天室消息的接收与单聊、群聊做了区分，聊天室消息的接收将通过 JMSGConversationDelegate 类里的 [onReceiveChatRoomConversation:messages:](#跳转-聊天室接收消息代理方法) 方法通知到上层
+
+#### 分页获取聊天室
+
+```
+/*!
+ * @abstract 分页获取聊天室详情
+ *
+ * @param appKey  选填，为 nil 则获取当前应用下的聊天室
+ * @param start   分页获取的下标，第一页从  index = 0 开始
+ * @param count   一页的数量，每页最大值是 50
+ * @param handler 结果回调. 正常返回时 resultObject 类型是 NSArray<JMSGChatRoom>
+ *
+ * @discussion 该接口总是向服务器端发起请求.
+ */
++ (void)getChatRoomListWithAppKey:(NSString *JMSG_NULLABLE)appKey
+                            start:(NSInteger)start
+                            count:(NSInteger)count
+                completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)handler;
+```
+#### 获取已加入的聊天室
+
+```
+/*!
+ * @abstract 获取当前用户已加入的聊天室列表
+ *
+ * @param handler 结果回调. 正常返回时 resultObject 类型是 NSArray<JMSGChatRoom>
+ *
+ * @discussion 该接口总是向服务器端发起请求.
+ */
++ (void)getMyChatRoomListCompletionHandler:(JMSGCompletionHandler JMSG_NULLABLE)handler;
+```
+#### 获取聊天室详情
+
+```
+/*!
+ * @abstract 获取聊天室详情
+ *
+ * @param roomIds   待获取详情的聊天室 ID 数组
+ * @param handler   结果回调. 正常返回时 resultObject 类型是 NSArray<JMSGChatRoom>
+ *
+ * @discussion 该接口总是向服务器端发起请求.
+ */
++ (void)getChatRoomInfosWithRoomIds:(NSArray *JMSG_NONNULL)roomIds
+                  completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)handler;
+```
+#### 加入聊天室
+
+```
+/*!
+ * @abstract 加入聊天室
+ *
+ * @param roomId    聊天室 id
+ * @param handler   结果回调. error = nil 表示加入成功，resultObject 为 JMSGConversation 类型
+ *
+ * @discussion 成功进入聊天室之后，会将聊天室中最近若干条聊天记录同步下来并以 onReceiveChatRoomConversation: 事件的形式通知到上层。
+ */
++ (void)enterChatRoomWithRoomId:(NSString *JMSG_NONNULL)roomId
+              completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)handler;
+```
+#### 退出聊天室
+
+```
+/*!
+ * @abstract 退出聊天室
+ *
+ * @param roomId    聊天室 id
+ * @param handler   结果回调. error = nil 表示加入成功.
+ *
+ * @discussion 退出聊天室后获取不到任何消息和通知.
+ */
++ (void)leaveChatRoomWithRoomId:(NSString *JMSG_NONNULL)roomId
+              completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)handler;
+```
+
+#### 接收聊天室消息
+
++ 发送消息：发送消息的接口与单聊、群里一样
++ 接收消息：聊天室消息的接收的代理方法与单聊、群里的做了区分，定义了新的接口[接收聊天室消息](#跳转-聊天室接收消息代理方法)
+
 
 ### 消息撤回
 ***Since 3.2.0***
@@ -2228,7 +2511,49 @@ BOOL isAlreadSet = user.isNoDisturb;
 	@end
 	
 ##### 例子
-消息回执变更事件上层通过[JMSGMessageReceiptStatusChangeEvent:](./jmessage_ios_appledoc_html/Protocols/JMSGEventDelegate.html#//api/name/onReceiveMessageReceiptStatusChangeEvent:)方法监听此事件.
+消息回执变更事件上层通过[onReceiveMessageReceiptStatusChangeEvent:](./jmessage_ios_appledoc_html/Protocols/JMSGEventDelegate.html#//api/name/onReceiveMessageReceiptStatusChangeEvent:)方法监听此事件.
+
+<span id="跳转-入群申请事件"></span>
+#### 入群申请事件	
+#### JMSGApplyJoinGroupEvent
+
+```
+@interface JMSGApplyJoinGroupEvent : JMSGNotificationEvent
+/// 事件的 id
+@property(nonatomic, strong, readonly) NSString *eventID;
+/// 群 gid
+@property(nonatomic, strong, readonly) NSString *groupID;
+/// 是否是用户主动申请入群，YES：主动申请加入，NO：被邀请加入
+@property(nonatomic, assign, readonly) BOOL isInitiativeApply;
+/// 发起申请的 user，如果 isInitiativeApply = YES，则与 sendApplyUser 和 joinGroupUser 是相同的
+@property(nonatomic, strong, readonly) JMSGUser *sendApplyUser;
+/// 被邀请入群的 user，如果 isInitiativeApply = YES，则与 sendApplyUser 和 joinGroupUser 是相同的
+@property(nonatomic, strong, readonly) JMSGUser *joinGroupUser;
+/// 原因
+@property(nonatomic, strong, readonly) NSString *reason;
+@end
+```
+
+##### 例子
+入群申请事件上层通过[onReceiveApplyJoinGroupApprovalEvent:](./jmessage_ios_appledoc_html/Protocols/JMSGEventDelegate.html#//api/name/onReceiveApplyJoinGroupApprovalEvent:)方法监听此事件.
+	
+
+<span id="跳转-管理员拒绝入群申请事件"></span>
+#### 管理员拒绝入群申请事件	
+#### JMSGGroupAdminRejectApplicationEvent	
+```
+@interface JMSGGroupAdminRejectApplicationEvent : JMSGNotificationEvent
+/// 群 gid
+@property(nonatomic, strong, readonly) NSString *groupID;
+/// 拒绝原因
+@property(nonatomic, strong, readonly) NSString *rejectReason;
+/// 操作的管理员
+@property(nonatomic, strong, readonly) JMSGUser *groupManager;
+@end
+```
+	
+##### 例子
+管理员拒绝入群申请事件上层通过[onReceiveGroupAdminRejectApplicationEvent:](./jmessage_ios_appledoc_html/Protocols/JMSGEventDelegate.html#//api/name/onReceiveGroupAdminRejectApplicationEvent:)方法监听此事件.
 	
 #### 消息事件
 #### JMSGEventContent
@@ -2362,6 +2687,7 @@ JMSGCompletionHandler 有 2 个参数：
 #### JMSGConversationDelegate
 <span id="JMSGConversationDelegate"></span>
 
+#### 会话信息变更通知
 	/*!
 	 * @abstract 会话信息变更通知
 	 *
@@ -2382,7 +2708,7 @@ JMSGCompletionHandler 有 2 个参数：
 	@optional
 	- (void)onUnreadChanged:(NSUInteger)newCount;
 
-***消息同步代理方法 Since v3.1.0***
+#### 消息同步代理方法 
 <span id="onSyncConversation:"></span>
 
 ```
@@ -2414,8 +2740,8 @@ JMSGCompletionHandler 有 2 个参数：
 - (void)onSyncOfflineMessageConversation:(JMSGConversation *)conversation
                          offlineMessages:(NSArray JMSG_GENERIC(__kindof JMSGMessage *)*)offlineMessages;
 ```
-```
 
+```
 /*!
  * @abstract 同步漫游消息通知
  *
@@ -2430,6 +2756,26 @@ JMSGCompletionHandler 有 2 个参数：
  */
 @optional
 - (void)onSyncRoamingMessageConversation:(JMSGConversation *)conversation;
+```
+
+<span id="跳转-聊天室接收消息代理方法"></span>
+#### 聊天室接收消息代理方法
+
+```
+/*!
+ * @abstract 接收聊天室消息
+ *
+ * @param conversation 聊天室会话
+ * @param messages      接收到的消息数组，元素是 JMSGMessage
+ *
+ * @discussion 注意：
+ *
+ * 接收聊天室的消息与单聊、群聊消息不同，聊天室消息都是通过这个代理方法来接收的。
+ *
+ * @since 3.4.0
+ */
+- (void)onReceiveChatRoomConversation:(JMSGConversation *)conversation
+                             messages:(NSArray JMSG_GENERIC(__kindof JMSGMessage *)*)messages;
 ```
 
 

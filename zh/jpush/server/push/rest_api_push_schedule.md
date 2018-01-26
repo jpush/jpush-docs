@@ -1,4 +1,4 @@
-#API Push Schedule
+# Schedule API <small>v3</small>
 
 ## 概述
 
@@ -10,12 +10,15 @@ API 层面支持定时功能。
 https://api.jpush.cn/v3/schedules
 
 <div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px;">
-<p>如果极光应用分配在北京机房（极光控制台 “应用设置” -> "应用信息" 中可以看到），并且开发者接口调用的服务器也位于北京，则可以调用如下地址：</p>
-<p>https://bjapi.push.jiguang.cn/v3/push/schedules</p>
-<p>可以提升 API 的响应速度。</p>
-<p>详细对应关系见 “应用信息” 中的说明。</p>
+
+<p>如果创建的极光应用分配的北京机房，并且 API 调用方的服务器也位于北京，则比较适合调用极光北京机房的 API，可以提升一定的响应速度。</p>
+<p>通过极光 Web 控制台 “应用设置” -> "应用信息" 中可以看到应用所在机房。如果应用所在地为北京机房，同时会给出各 API 的调用地址。</p>
+
+<p>北京机房 Schedule API 调用地址： https://bjapi.push.jiguang.cn/v3/push/schedules </p>
+<p>详细对应关系见 “应用信息” 中 “服务器所在地” 后的信息。</p>
 
 </div>
+
 
 ### 调用验证
 

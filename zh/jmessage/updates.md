@@ -1,6 +1,174 @@
 # 最近更新
 
 
+### iOS SDK v3.4.1
+
+#### 更新时间
+
+2018-01-03
+
+#### ChangeLog
+
+##### BugFix:
+
+* 修复用户反馈的一些 bug
+
+##### NewFeature
+
+* 新增：获取 AppKey 下所有公开群接口
+
+#### 升级指南
+* 使用新版本的 JMessage.framework 文件替换原工程下的同名旧文件
+* 将新版本的 JMessage.framework 里的 JCore link 到工程中，详细参见官网集成文档
+
+
+
+
+### Android SDK v2.4.1
+
+#### 更新时间
+
++ 2018-01-02
+
+#### Change Log
+##### BugFix:
++ 修复处理离线群成员删除和退出事件时禁言列表未更新问题
++ 提升sdk稳定性
+
+##### NewFeature:
++ 新增获取指定应用下所有公开群组的接口
++ 自定义消息和消息的extras支持获取value为Object类型的数据
+
+#### 升级提示
+
++ 建议升级！
+
+#### 升级指南
+
++ 首先解压您获取到的 zip 压缩包
+
++ 更新库文件
+	+ 打开libs文件夹。添加jcore-android_v1.1.8.jar。用 jmessage-android_v2.4.1.jar 替换项目中原有的极光jar文件，并删除原有极光jar文件。用对应CPU文件夹下的 libjcore118.so 文件，替换项目中原有的libjcoreXXX.so文件，并删除原有的极光so文件，每种型号的so文件都可以在SDK下载包中找到。
+
++ 更新AndroidManifest.xml
+	+ 请参考 SDK下载包最新版本的 demo 来更新AndroidManifest.xml 文件配置。  
+	***注意JCore 从1.1.7版本开始新增了provider组件，如果项目中使用的JCore是1.1.7之前的版本，集成时需要注意manifest中新增的provider组件的配置***
+
++ 如果使用jcenter的方式集成JMessage，不需要添加相关组件和资源，详细集成说明请参考官方[集成指南](https://docs.jiguang.cn/jmessage/client/jmessage_android_guide/)
+
+
+
+### iOS SDK v3.4.0
+
+#### 更新时间
+
+2017-12-11
+
+#### ChangeLog
+
+##### BugFix:
+
+* 修复用户反馈的一些 bug
+
+##### NewFeature
+
+* 新增：聊天室功能
+* 新增：群成员禁言功能
+* 新增：公开群组功能，支持申请入群
+* 新增：发送文件消息时支持设置文件类型
+
+#### 升级指南
+* 使用新版本的JMessage.framework文件替换原工程下的同名旧文件
+* 将新版本的JMessage.framework里的JCore link到工程中，详细参见官网集成文档
+
+
+
+### Android SDK v2.4.0
+
+#### 更新时间
+
++ 2017-12-11
+
+#### Change Log
+##### BugFix:
++ 修复从数据库中读取conversation时，targetAppkey没有设置导致title和avatar不正确
++ 提升sdk稳定性
+
+##### NewFeature:
++ 新增聊天室功能
++ 新增公开群组类型，支持申请入群
++ 新增群成员禁言功能
+
+#### 升级提示
+
++ 建议升级！
+
+#### 升级指南
+
++ 首先解压您获取到的 zip 压缩包
+
++ 更新库文件
+	+ 打开libs文件夹。添加jcore-android_v1.1.8.jar。用 jmessage-android_v2.4.0.jar 替换项目中原有的极光jar文件，并删除原有极光jar文件。用对应CPU文件夹下的 libjcore118.so 文件，替换项目中原有 的libjcoreXXX.so 文件，并删除原有的极光 so 文件，每种型号的 so 文件都可以在 SDK 下载包中找到。
+
++ 更新AndroidManifest.xml
+	+ 请参考 SDK下载包最新版本的 demo 来更新AndroidManifest.xml 文件配置。  
+	***注意JCore 从1.1.7版本开始新增了provider组件，如果项目中使用的JCore是1.1.7之前的版本，集成时需要注意manifest中新增的provider组件的配置***
+
++ 如果使用jcenter的方式集成JMessage，不需要添加相关组件和资源，详细集成说明请参考官方[集成指南](https://docs.jiguang.cn/jmessage/client/jmessage_android_guide/)
+
+
+
+### Windows SDK v1.1.0
+
+#### 更新时间
+
++ 2017-12-04
+
+#### Change Log
+
+##### NewFeature:
++ 聊天室功能
++ 公开群类型，用户可申请入群
++ 支持群禁言
++ 消息透传
++ 提供NuGet程序包
++ 添加 GroupId 类型,代替int64_t , 使用GroupId::get 获取值
+
+#### 升级提示
+
++ 建议升级！
+
+#### 升级指南
+
++ 查阅最新的[SDK文档](https://docs.jiguang.cn/jmessage/client/im_win_api_docs/)
+
+
+
+### Web SDK v2.5.0
+
+#### 更新时间
+
++ 2017-11-29
+
+#### Change Log
+
+##### NewFeature:
++ 新增聊天室功能
++ 新增公开群类型，用户可申请入群
++ 支持群禁言
+
+#### 升级提示
+
++ 建议升级！
+
+#### 升级指南
+
++ 用最新的 jmessage-sdk-web.2.5.0.min.js 替换掉老版本的 sdk
+
+
+
+
+
 ### Web SDK v2.4.1
 
 #### 更新时间

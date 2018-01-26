@@ -56,11 +56,19 @@
 	
 	<optgroup label="Properties">
 		
+		<option value="//api/name/gid">gid</option>
+		
 		<option value="//api/name/name">name</option>
 		
 		<option value="//api/name/desc">desc</option>
 		
 		<option value="//api/name/avatarData">avatarData</option>
+		
+		<option value="//api/name/avatar">avatar</option>
+		
+		<option value="//api/name/groupType">groupType</option>
+		
+		<option value="//api/name/maxMemberCount">maxMemberCount</option>
 		
 	</optgroup>
 	
@@ -97,12 +105,6 @@
 
                     
 					
-					<div class="section section-overview">
-						<a title="Overview" name="overview"></a>
-						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>群信息类（用于修改群信息、创建群）</p>
-					</div>
-					
 					
 
 					
@@ -116,6 +118,47 @@
 
 						<div class="task-list">
 							<div class="section-method">
+	<a name="//api/name/gid" title="gid"></a>
+	<h3 class="method-title"><code><a href="#//api/name/gid">&nbsp;&nbsp;gid</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>群 id</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) NSString *gid</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGGroup.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
 	<a name="//api/name/name" title="name"></a>
 	<h3 class="method-title"><code><a href="#//api/name/name">&nbsp;&nbsp;name</a></code>
 </h3>
@@ -132,7 +175,7 @@
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *name</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readwrite) NSString *name</code></div>
 
 		    
 			
@@ -173,7 +216,7 @@
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *desc</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readwrite) NSString *desc</code></div>
 
 		    
 			
@@ -209,12 +252,135 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>群头像数据</p>
+				<p>群头像数据，此属性只用户修改群信息，切勿从此类拿来此属性来展示</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSData *avatarData</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readwrite) NSData *avatarData</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGGroup.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/avatar" title="avatar"></a>
+	<h3 class="method-title"><code><a href="#//api/name/avatar">&nbsp;&nbsp;avatar</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>群头像的媒体文件ID</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) NSString *avatar</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGGroup.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/groupType" title="groupType"></a>
+	<h3 class="method-title"><code><a href="#//api/name/groupType">&nbsp;&nbsp;groupType</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>群组类型，私有、公开，注意：仅限于创建群组时设置，创建成功之后不允许修改群类型</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign, readwrite) JMSGGroupType groupType</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGGroup.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/maxMemberCount" title="maxMemberCount"></a>
+	<h3 class="method-title"><code><a href="#//api/name/maxMemberCount">&nbsp;&nbsp;maxMemberCount</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>群组人数上限</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) NSString *maxMemberCount</code></div>
 
 		    
 			
@@ -253,7 +419,7 @@
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2017 HXHG. All rights reserved. Updated: 2017-10-27</p>
+						<p class="copyright">Copyright &copy; 2018 HXHG. All rights reserved. Updated: 2018-01-03</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

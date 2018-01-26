@@ -29,7 +29,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Windows C++ SDK
-   &#160;<span id="projectnumber">1.0.0</span>
+   &#160;<span id="projectnumber">1.1.0</span>
    </div>
    <div id="projectbrief">Windows C++ SDK</div>
   </td>
@@ -104,6 +104,10 @@ Public 成员函数</h2></td></tr>
 <tr class="separator:a4886d42b9004aa9a07fba68a5b7bae6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae974d3e9d767cc81f088c950be31736b"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_jmcpp_1_1_user_id.html#ae974d3e9d767cc81f088c950be31736b">toString</a> () const</td></tr>
 <tr class="separator:ae974d3e9d767cc81f088c950be31736b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a02e0a830b93c9fa782c377057fadc842"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_jmcpp_1_1_user_id.html#a02e0a830b93c9fa782c377057fadc842">isValid</a> () const</td></tr>
+<tr class="separator:a02e0a830b93c9fa782c377057fadc842"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a487bc4c31be67188e5780efc276e1c93"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_jmcpp_1_1_user_id.html#a487bc4c31be67188e5780efc276e1c93">operator bool</a> () const</td></tr>
+<tr class="separator:a487bc4c31be67188e5780efc276e1c93"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abb6481be67e1f8f258548e10a3a60334"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_jmcpp_1_1_user_id.html#abb6481be67e1f8f258548e10a3a60334">operator&lt;</a> (<a class="el" href="struct_jmcpp_1_1_user_id.html">UserId</a> const &amp;other) const noexcept</td></tr>
 <tr class="separator:abb6481be67e1f8f258548e10a3a60334"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afbc6874ef3b44eebf7cbf5f737fafc86"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_jmcpp_1_1_user_id.html#afbc6874ef3b44eebf7cbf5f737fafc86">operator&lt;=</a> (<a class="el" href="struct_jmcpp_1_1_user_id.html">UserId</a> const &amp;other) const noexcept</td></tr>
@@ -116,8 +120,6 @@ Public 成员函数</h2></td></tr>
 <tr class="separator:a8e9ac19af8a7ca739d7dd17b0619b236"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4f3aa436d0edd4c76a9993cb63144585"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_jmcpp_1_1_user_id.html#a4f3aa436d0edd4c76a9993cb63144585">operator!=</a> (<a class="el" href="struct_jmcpp_1_1_user_id.html">UserId</a> const &amp;other) const noexcept</td></tr>
 <tr class="separator:a4f3aa436d0edd4c76a9993cb63144585"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a487bc4c31be67188e5780efc276e1c93"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_jmcpp_1_1_user_id.html#a487bc4c31be67188e5780efc276e1c93">operator bool</a> () const</td></tr>
-<tr class="separator:a487bc4c31be67188e5780efc276e1c93"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 静态 Public 成员函数</h2></td></tr>
@@ -133,7 +135,7 @@ Public 属性</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p>用户Id </p>
-<p>包含用户名和用户所属的appkey 当appKey为空时,表示与当前登录用户appkey相同 </p>
+<p>包含用户名和用户所属的appkey </p>
 </div><h2 class="groupheader">构造及析构函数说明</h2>
 <a id="a17812bfcb46ca982e205be6ea4f354c7"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a17812bfcb46ca982e205be6ea4f354c7">&#9670;&nbsp;</a></span>UserId() <span class="overload">[1/2]</span></h2>
@@ -242,6 +244,56 @@ Public 属性</h2></td></tr>
   </td>
   <td class="mlabels-right">
 <span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a02e0a830b93c9fa782c377057fadc842"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a02e0a830b93c9fa782c377057fadc842">&#9670;&nbsp;</a></span>isValid()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Jmcpp::UserId::isValid </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a487bc4c31be67188e5780efc276e1c93"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a487bc4c31be67188e5780efc276e1c93">&#9670;&nbsp;</a></span>operator bool()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Jmcpp::UserId::operator bool </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">explicit</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -398,31 +450,6 @@ Public 属性</h2></td></tr>
   </td>
   <td class="mlabels-right">
 <span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a487bc4c31be67188e5780efc276e1c93"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a487bc4c31be67188e5780efc276e1c93">&#9670;&nbsp;</a></span>operator bool()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">Jmcpp::UserId::operator bool </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">explicit</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">

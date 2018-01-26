@@ -28,6 +28,6 @@
 
 
 ## 集成指南
-* [JSMS Android SDK 集成指南](../client/Android_SMS_SDK.md)。
-* [JSMS iOS SDK 集成指南](../client/iOS_SMS_SDK.md)。
+* [JSMS Android SDK 集成指南](../client/Android/android_guide.md)。
+* [JSMS iOS SDK 集成指南](../client/iOS/ios_guide.md)。
 * [JSMS Rest API](../server/rest_api_jsms.md)。

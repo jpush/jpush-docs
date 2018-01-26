@@ -1,17 +1,10 @@
 var searchData=
 [
-  ['offline',['offline',['../struct_jmcpp_1_1_message_settings.html#a315a4a32a82830441a119b248ab82fd1',1,'Jmcpp::MessageSettings']]],
-  ['ondisconnected',['onDisconnected',['../group___xE5_x9B_x9E_xE8_xB0_x83_xE8_xAE_xBE_xE7_xBD_xAE.html#ga2174b493a3d7a6ab1a9f358a3e3a4ac5',1,'Jmcpp::Client']]],
-  ['oneventreceive',['onEventReceive',['../group___xE5_x9B_x9E_xE8_xB0_x83_xE8_xAE_xBE_xE7_xBD_xAE.html#ga36df1dfd298e45decfdb1883b2f62a36',1,'Jmcpp::Client']]],
-  ['oneventsync',['onEventSync',['../group___xE5_x9B_x9E_xE8_xB0_x83_xE8_xAE_xBE_xE7_xBD_xAE.html#ga5ecb1f1974eec14b254a50d98dbf7536',1,'Jmcpp::Client']]],
-  ['onlogined',['onLogined',['../group___xE5_x9B_x9E_xE8_xB0_x83_xE8_xAE_xBE_xE7_xBD_xAE.html#gaddf86fbceb86686c0632bea5dcc3688b',1,'Jmcpp::Client']]],
-  ['onmessagereceive',['onMessageReceive',['../group___xE5_x9B_x9E_xE8_xB0_x83_xE8_xAE_xBE_xE7_xBD_xAE.html#ga926df0da8516d9e1f68e2c1242bb4b7b',1,'Jmcpp::Client']]],
-  ['onmessagesync',['onMessageSync',['../group___xE5_x9B_x9E_xE8_xB0_x83_xE8_xAE_xBE_xE7_xBD_xAE.html#gaf0ccdca0e09ca9eee0302dbbd270723e',1,'Jmcpp::Client']]],
-  ['operator_20bool',['operator bool',['../struct_jmcpp_1_1_user_id.html#a487bc4c31be67188e5780efc276e1c93',1,'Jmcpp::UserId']]],
-  ['operator_21_3d',['operator!=',['../struct_jmcpp_1_1_user_id.html#a4f3aa436d0edd4c76a9993cb63144585',1,'Jmcpp::UserId::operator!=()'],['../class_jmcpp_1_1_chat_id.html#a1bede803b736a074d7a3c6b636c31798',1,'Jmcpp::ChatId::operator!=()']]],
-  ['operator_3c',['operator&lt;',['../struct_jmcpp_1_1_user_id.html#abb6481be67e1f8f258548e10a3a60334',1,'Jmcpp::UserId::operator&lt;()'],['../class_jmcpp_1_1_chat_id.html#a1452d61f6642629b0b9bb8cd22021b61',1,'Jmcpp::ChatId::operator&lt;()']]],
-  ['operator_3c_3d',['operator&lt;=',['../struct_jmcpp_1_1_user_id.html#afbc6874ef3b44eebf7cbf5f737fafc86',1,'Jmcpp::UserId::operator&lt;=()'],['../class_jmcpp_1_1_chat_id.html#ab11fed0251e7840322ee2a38298615f2',1,'Jmcpp::ChatId::operator&lt;=()']]],
-  ['operator_3d_3d',['operator==',['../struct_jmcpp_1_1_user_id.html#a8e9ac19af8a7ca739d7dd17b0619b236',1,'Jmcpp::UserId::operator==()'],['../class_jmcpp_1_1_chat_id.html#ab11d85f4639e6fa2e9daa18fd8e0d7c7',1,'Jmcpp::ChatId::operator==()']]],
-  ['operator_3e',['operator&gt;',['../struct_jmcpp_1_1_user_id.html#a7d50d96fce2492a566cf8fa2f4d33d23',1,'Jmcpp::UserId::operator&gt;()'],['../class_jmcpp_1_1_chat_id.html#ac4322b61e218fe0478ffd09662e5124f',1,'Jmcpp::ChatId::operator&gt;()']]],
-  ['operator_3e_3d',['operator&gt;=',['../struct_jmcpp_1_1_user_id.html#a21bd303c760125d91eb8fc7793c4d514',1,'Jmcpp::UserId::operator&gt;=()'],['../class_jmcpp_1_1_chat_id.html#a78653e0ff7a5c799b63c43e4f26c5c78',1,'Jmcpp::ChatId::operator&gt;=()']]]
+  ['needreceipt',['needReceipt',['../struct_jmcpp_1_1_message_settings.html#ac46d10992b0c708930c2f13905f8b4c3',1,'Jmcpp::MessageSettings::needReceipt()'],['../class_jmcpp_1_1_message.html#af489c598d3cb2d66bff384585eb5ea7d',1,'Jmcpp::Message::needReceipt()']]],
+  ['newowner',['newOwner',['../struct_jmcpp_1_1_leaved_group_event.html#ac9167ac239501fa3ad259e34d1fa15c4',1,'Jmcpp::LeavedGroupEvent::newOwner()'],['../struct_jmcpp_1_1_removed_from_group_event.html#ad956c3e008191f1bc0263ad733a0830e',1,'Jmcpp::RemovedFromGroupEvent::newOwner()']]],
+  ['nickname',['nickname',['../struct_jmcpp_1_1_user_info.html#a9396a3563396b9c1a939130adaf4e332',1,'Jmcpp::UserInfo::nickname()'],['../struct_jmcpp_1_1_user_info_param.html#a73dde79e95a9d93baf176efe4d6e8975',1,'Jmcpp::UserInfoParam::nickname()'],['../struct_jmcpp_1_1_user_info_lite.html#ae843d002e4d8b956590b7ca6fab08942',1,'Jmcpp::UserInfoLite::nickname()'],['../struct_jmcpp_1_1_group_member.html#a2c9d990904ad6aa559767d53a6065e7f',1,'Jmcpp::GroupMember::nickname()']]],
+  ['nodisturbupdatedevent',['NoDisturbUpdatedEvent',['../struct_jmcpp_1_1_no_disturb_updated_event.html',1,'Jmcpp']]],
+  ['notdisturbinfo',['NotDisturbInfo',['../struct_jmcpp_1_1_not_disturb_info.html',1,'Jmcpp']]],
+  ['nullcontent',['NullContent',['../struct_jmcpp_1_1_null_content.html',1,'Jmcpp']]],
+  ['nullevent',['NullEvent',['../struct_jmcpp_1_1_null_event.html',1,'Jmcpp']]]
 ];

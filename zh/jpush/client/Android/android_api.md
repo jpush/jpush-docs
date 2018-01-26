@@ -32,6 +32,8 @@
 
 + context 应用的 ApplicationContext
 
+**注：** 如果暂时不希望初始化 JPush SDK ，不要调用 init， 并且在应用初始化的时候就调用 stopPush.
+
 ## 停止与恢复推送服务 API
 
 ### 支持的版本
@@ -562,8 +564,9 @@ JPush 服务的连接状态发生变化。（注：不是指 Android 系统的�
 
 
 ##新别名alias与标签tag接口
-新别名与标签接口支持增删改查的功能,从3.0.7版本开始支持,老版本别名与标签的接口从3.0.7版本开始不再维护
-
+新别名与标签接口支持增删改查的功能,从3.0.7版本开始支持,老版本别名与标签的接口从3.0.7版本开始不再维护。
+#### 回调说明
+新别名alias与标签tag接口回调触发cn.jpush.android.service.JPushMessageReceiver，详细的回调方法请参考[新的消息回调方式说明](#new-callback)。
 
 ### Method - setAlias
 
@@ -760,12 +763,46 @@ JPush 服务的连接状态发生变化。（注：不是指 Android 系统的�
 + tag
 	+ 被查询的tag
 
+##设置手机号码接口
 
+3.1.1 版本开始提供设置手机号码的接口，用于[短信补充功能](../../guideline/push-SMS-intro.md)。  
+<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px;">
+<p>注：短信补充仅支持国内业务，号码格式为 11位数字，有无 +86 前缀皆可。
+</div>
+
+
+### Method - setMobileNumber 
+
+调用此API设置手机号码。该接口会控制调用频率，频率为 10s之内最多三次。
+
+#### 支持的版本
+
+开始支持的版本：3.1.1
+
+#### 方法定义
+
+	public static void setMobileNumber(Context context,int sequence, String mobileNumber);
+
+#### 参数定义
++ context
+	+ 应用的ApplicationContext。
++ sequence
+	+ 用户自定义的操作序列号,  同操作结果一起返回，用来标识一次操作的唯一性。 
++ mobileNumber
+	+ 手机号码。如果传null或空串则为解除号码绑定操作。
+	+ 限制：只能以 “+” 或者 数字开头；后面的内容只能包含 “-” 和 数字。
+
+#### 回调说明
+接口回调触发cn.jpush.android.service.JPushMessageReceiver，详细的回调方法请参考[新的消息回调方式说明](#new-callback)。
+
+##<span id="new-callback">新的消息回调方式说明</span>
+3.0.7版本之后新增的回调方式。
 ### Class - cn.jpush.android.service.JPushMessageReceiver
 1. 新的消息回调方式中相关回调类。
-2. 当前仅仅新的tag与alias操作回调会在开发者定义的该类的子类中触发。
+2. 新的tag与alias操作回调会在开发者定义的该类的子类中触发。
+3. 手机号码设置的回调会在开发者定义的该类的子类中触发。
 
-tag与alias操作的回调父类,开发者使用新的tag或alias接口时需要继承该类并在Manifest中配置您对应实现的类,tag或alias操作的结果会在您配置的类中的如下方法中回调。
+该类为回调父类,开发者需要继承该类并在Manifest中配置您对应实现的类,接口操作的结果会在您配置的类中的如下方法中回调。
 
 ### Method - onTagOperatorResult
 
@@ -810,6 +847,24 @@ alias相关的操作会在此方法中回调结果。
 + jPushMessage
 	+ alias相关操作返回的消息结果体,具体参考JPushMessage类的说明。
 
+### Method - onMobileNumberOperatorResult
+
+设置手机号码会在此方法中回调结果。
+
+####  支持的版本
+
+开始支持的版本：3.1.1
+
+#### 方法定义
+
+	 public void onMobileNumberOperatorResult(Context context, JPushMessage jPushMessage)
+
+#### 参数定义
+
++ context
+	+ 应用的Application Context。
++ jPushMessage
+	+ 设置手机号码返回的消息结果体,具体参考JPushMessage类的说明。
 
 ### Class - cn.jpush.android.api.JPushMessage
 
@@ -891,6 +946,16 @@ alias相关的操作会在此方法中回调结果。
 
 	public String getCheckTag();
 
+### Method - getMobileNumber
+
+开发者调用设置接口时传入的手机号码。
+####  支持的版本
+
+开始支持的版本：3.1.1
+
+#### 方法定义
+
+	public String getMobileNumber();
 
 
 ##老别名alias与标签tag接口
@@ -1190,11 +1255,11 @@ alias相关的操作会在此方法中回调结果。
 
 开发者可以调用此 API 来设置允许推送的时间。
 
-如果不在该时间段内收到消息，当前的行为是：推送到的通知会被扔掉。
+如果不在该时间段内收到消息，SDK 的处理是：**推送到的通知会被扔掉。**
 
 ```
- 这是一个纯粹客户端的实现。
- 所以与客户端时间是否准确、时区等这些，都没有关系。
+ 这是一个纯粹客户端的实现，所以与客户端时间是否准确、时区等这些，都没有关系。
+ 而且该接口仅对通知有效，自定义消息不受影响。
 ```
 
 #### API - setPushTime
@@ -1207,7 +1272,7 @@ alias相关的操作会在此方法中回调结果。
 
 + Context context 应用的ApplicationContext
 + Set<Integer> days  0表示星期天，1表示星期一，以此类推。 （7天制，Set集合里面的int范围为0到6）
-	+ Sdk1.2.9 – 新功能:set的值为null,则任何时间都可以收到消息和通知，set的size为0，则表示任何时间都收不到消息和通知.
+	+ set的值为null, 则任何时间都可以收到通知，set的size为0，则表示任何时间都收不到通知.
 + int startHour 允许推送的开始时间 （24小时制：startHour的范围为0到23）
 + int endHour 允许推送的结束时间 （24小时制：endHour的范围为0到23）
 
@@ -1442,12 +1507,12 @@ JPushInterface.setLatestNotificationNumber(context, 3);
 		</tr>
 		<tr >
 			<td>6011</td>
-			<td>10s内设置tag或alias大于10次</td>
+			<td>10s内设置tag或alias大于10次，或10s内设置手机号码大于3次</td>
 			<td>短时间内操作过于频繁</td>
 		</tr>
 		<tr >
 			<td>6012</td>
-			<td>在JPush服务stop状态下设置了tag或alias</td>
+			<td>在JPush服务stop状态下设置了tag或alias或手机号码</td>
 			<td>3.0.0版本新增的错误码。开发者可根据这个错误码的信息做相关处理或者提示。</td>
 		</tr>
 		<tr >
@@ -1499,6 +1564,21 @@ JPushInterface.setLatestNotificationNumber(context, 3);
 			<td>6022</td>
 			<td>alias操作正在进行中，暂时不能进行其他alias操作</td>
 			<td>3.0.7 版本新增的错误码</td>
+		</tr>
+		 <tr >
+			<td>6023</td>
+			<td>手机号码不合法</td>
+			<td>只能以 “+” 或者 数字开头；后面的内容只能包含 “-” 和 数字；3.1.1 版本新增的错误码。</td>
+		</tr>
+		 <tr >
+			<td>6024</td>
+			<td>服务器内部错误</td>
+			<td>服务器内部错误,过一段时间再重试；3.1.1 版本新增的错误码。</td>
+		</tr>
+		 <tr >
+			<td>6025</td>
+			<td>手机号码太长</td>
+			<td>手机号码过长，目前极光检测手机号码的最大长度为20。3.1.1 版本新增的错误码。</td>
 		</tr>
 		<tr >
 			<td>-997</td>

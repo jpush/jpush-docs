@@ -134,9 +134,11 @@ pages:
     - '短信验证码概述': 'jsms/guideline/JSMS_guide.md'
     - '控制台操作指南': 'jsms/guideline/JSMS_consoleguide.md'
   - Android:
-    - 'Android SDK 概述': 'jsms/client/Android_SMS_SDK.md'
+    - 'Android SDK 集成指南': 'jsms/client/Android/android_guide.md'
+    - 'Android SDK API': 'jsms/client/Android/android_api.md'
   - iOS:
-    - 'iOS SDK 概述': 'jsms/client/iOS_SMS_SDK.md'
+    - 'iOS SDK 集成指南': 'jsms/client/iOS/ios_guide.md'
+    - 'iOS SDK API': 'jsms/client/iOS/ios_api.md'
   - REST API:
     - 'REST API 概述': 'jsms/server/rest_api_summary.md'
     - '短信模版 API': 'jsms/server/rest_api_jsms_templates.md'

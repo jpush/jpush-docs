@@ -159,6 +159,16 @@
       <td>Get receipt details failed.</td>
       <td>获取未回执详情失败，这条消息尚未成功发送，只有成功发送的消息可以查询未回执详情</td>
     </tr>
+	<tr >
+	  <td>871323</td>
+	  <td>Chatroom not exist.</td>
+	  <td>请求的聊天室信息未找到，该聊天室不存在</td>
+	</tr>
+	<tr >
+	  <td>871324</td>
+	  <td>Illegal message content type, when send message.</td>
+	  <td>发送消息时消息体类型不合法，注意eventNotification和prompt类型的消息体不能发送</td>
+	</tr>
     <tr >
       <td>871402</td>
       <td>Upload file failed.auth error.</td>

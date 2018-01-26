@@ -8,8 +8,8 @@
             <img src="../image/resource_android.png" alt="android">
             <div class="caption">
                 <h4>Android SDK</h4>
-                <p>版本：v2.3.0</p>
-                <p>更新时间：2017.10.20</p>
+                <p>版本：v2.4.1</p>
+                <p>更新时间：2018.01.02</p>
                 <ul>
                     <li><a href="../client/jmessage_android_guide">集成步骤</a></li>
                     <li><a href="../client/im_sdk_android/">开发指南</a></li>
@@ -23,8 +23,8 @@
             <img src="../image/resource_ios.png" alt="iOS">
             <div class="caption">
                 <h4>iOS SDK</h4>
-                <p>版本：v3.3.0</p>
-                <p>更新时间：2017.10.27</p>
+                <p>版本：v3.4.1</p>
+                <p>更新时间：2018.01.03</p>
                 <ul>
                     <li><a href="../client/jmessage_ios_guide/">集成步骤</a></li>
                     <li><a href="../client/im_sdk_ios/">开发指南</a></li>
@@ -40,8 +40,8 @@
             <img src="../image/resource_js.png" alt="Web">
             <div class="caption">
                 <h4>Web SDK</h4>
-                <p>版本：v2.4.1</p>
-                <p>更新时间：2017.11.02</p>
+                <p>版本：v2.5.0</p>
+                <p>更新时间：2017.11.29</p>
                 <ul>
                     <li><a href="../client/im_sdk_js_v2/">开发指南</a></li>
                     <li class="li-clear"></li>
@@ -55,8 +55,8 @@
             <img src="../image/windows.png" alt="Windows">
             <div class="caption">
                 <h4>Windows SDK</h4>
-                <p>版本：v1.0.0</p>
-                <p>更新时间：2017.10.13</p>
+                <p>版本：v1.1.0</p>
+                <p>更新时间：2017.12.04</p>
                 <ul>
                     <li><a href="../client/im_sdk_win/">集成指南</a></li>
                     <li class="li-clear"></li>
@@ -141,7 +141,7 @@
                     <li><a href="https://github.com/jpush/jmessage-api-java-client" target="_blank">GitHub 源码</a></li>
                     <li>更新日志：<a href="https://github.com/jpush/jmessage-api-java-client/releases" target="_blank">Change Log</a></li>
                 </ul>
-                <p><a href="https://sdkfiledl.jiguang.cn/jmessage-api-java-client-1.1.1.zip" class="btn btn-default" role="button">下载</a></p>
+                <p><a href="https://www.jiguang.cn/downloads/server_sdk/im/java" class="btn btn-default" role="button">下载</a></p>
             </div>
         </div>
     </div>

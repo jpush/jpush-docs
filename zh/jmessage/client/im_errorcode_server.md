@@ -234,6 +234,16 @@ JMessage 服务器端报的错误码。有可能出现在各平台的 SDK 里。
 			<td>Server response time out, please try again later</td>
 			<td>系统繁忙，稍后重试</td>
 		</tr>
+    <tr >
+      <td>899081</td>
+			<td>room id no exist</td>
+			<td>聊天室ID不存在</td>
+		</tr>
+		<tr>
+			<td>899082</td>
+			<td>user not in room</td>
+			<td>用户不在聊天室中</td>
+		</tr>
 		<tr >
 			<td>800003</td>
 			<td>appkey not exist</td>
@@ -280,6 +290,26 @@ JMessage 服务器端报的错误码。有可能出现在各平台的 SDK 里。
 			<td>发起的用户设备不匹配,当前请求的设备与上次登录的设备不匹配导致，需要先登录</td>
 		</tr>
 		<tr >
+		    <td>800017</td>
+			<td>beyond the frequency limit</td>
+			<td>发送请求频率超过系统限制</td>
+		</tr>
+		<tr >
+		    <td>800018</td>
+			<td>group id not exist</td>
+			<td>群组ID不存在</td>
+		</tr>
+		<tr >
+		    <td>800019</td>
+			<td>req user not in group</td>
+			<td>请求用户不在群组中</td>
+		</tr>
+		<tr >
+		    <td>800020</td>
+			<td>request user no permission</td>
+			<td>请求用户无操作权限</td>
+		</tr>
+		<tr >
 			<td>801003</td>
 			<td>user not exist</td>
 			<td>登录的用户名未注册，登录失败</td>
@@ -293,6 +323,16 @@ JMessage 服务器端报的错误码。有可能出现在各平台的 SDK 里。
 			<td>801005</td>
 			<td>invalid device</td>
 			<td>登录的用户设备有误，登录失败</td>
+		</tr>
+		<tr >
+			<td>801006</td>
+			<td>user disabled</td>
+			<td>登录的用户被禁用，登录失败</td>
+		</tr>
+		<tr >
+			<td>801007</td>
+			<td>multi channel online error</td>
+			<td>多通道同时登录错误，登录失败</td>
 		</tr>
 		<tr >
 			<td>802002</td>
@@ -355,6 +395,11 @@ JMessage 服务器端报的错误码。有可能出现在各平台的 SDK 里。
 			<td>发送消息失败，消息格式配置错误</td>
 		</tr>
 		<tr >
+		    <td>803012</td>
+			<td>can not chat while silent</td>
+			<td>发送消息失败，请求用户被管理员禁言</td>
+		</tr>
+		<tr >
 		    <td>805001</td>
 			<td>target user not exist</td>
 			<td>目标用户不存在</td>
@@ -405,34 +450,9 @@ JMessage 服务器端报的错误码。有可能出现在各平台的 SDK 里。
 			<td>群组描述长度超出上限，创建群组失败</td>
 		</tr>
 		<tr >
-			<td>809001</td>
-			<td>group id not exist</td>
-			<td>目标群组ID不存在</td>
-		</tr>
-		<tr >
-			<td>809002</td>
-			<td>user not in group</td>
-			<td>用户不在该群组中</td>
-		</tr>
-		<tr >
-			<td>810001</td>
-			<td>group id not exist</td>
-			<td>目标群组ID不存在</td>
-		</tr>
-		<tr >
 			<td>810002</td>
 			<td>add member list is null</td>
 			<td>添加的成员列表为空</td>
-		</tr>
-		<tr >
-			<td>810003</td>
-			<td>inviter not in group</td>
-			<td>邀请方不在该群组中</td>
-		</tr>
-		<tr >
-			<td>810004</td>
-			<td>user not permitted add member to group</td>
-			<td>用户没有往群组中添加成员的权限</td>
 		</tr>
 		<tr >
 			<td>810005</td>
@@ -455,24 +475,9 @@ JMessage 服务器端报的错误码。有可能出现在各平台的 SDK 里。
 			<td>添加的成员列表中有成员拥有的群组数量已达上限</td>
 		</tr>
 		<tr >
-			<td>811001</td>
-			<td>group id not exist</td>
-			<td>目标群组ID不存在</td>
-		</tr>
-		<tr >
 			<td>811002</td>
 			<td>del member list is null</td>
 			<td>删除的成员列表为空</td>
-		</tr>
-		<tr >
-			<td>811003</td>
-			<td>applicant not in group</td>
-			<td>申请方不在该群组中</td>
-		</tr>
-		<tr >
-			<td>811004</td>
-			<td>user not permitted delete member of group</td>
-			<td>用户没有删除群组中成员的权限</td>
 		</tr>
 		<tr >
 			<td>811005</td>
@@ -493,16 +498,6 @@ JMessage 服务器端报的错误码。有可能出现在各平台的 SDK 里。
 			<td>811008</td>
 			<td>have member not in group</td>
 			<td>删除的成员列表中有成员不在该群组中</td>
-		</tr>
-		<tr >
-			<td>812001</td>
-			<td>group id not exist</td>
-			<td>目标群组ID不存在</td>
-		</tr>
-		<tr >
-			<td>812002</td>
-			<td>user not in group</td>
-			<td>用户不在该群组中</td>
 		</tr>
 		<tr >
 			<td>812003</td>
@@ -535,7 +530,7 @@ JMessage 服务器端报的错误码。有可能出现在各平台的 SDK 里。
 			<td>用户移除好友出黑名单时，成员列表为空，操作失败</td>
 		</tr>
 		<tr >
-		    <td>819002</td>
+		  <td>819002</td>
 			<td>member not exist</td>
 			<td>用户删除黑名单时，成员列表中有成员不存在，删除失败</td>
 		</tr>
@@ -600,6 +595,96 @@ JMessage 服务器端报的错误码。有可能出现在各平台的 SDK 里。
 			<td>用户删除群组消息屏蔽时，该群组不处于消息屏蔽状态</td>
 		</tr>
 		<tr>
+			<td>847001</td>
+			<td>user not in chatroom</td>
+			<td>发送聊天室消息失败，发起者不在该聊天室中</td>
+		</tr>
+		<tr>
+			<td>847002</td>
+			<td>user baned to post</td>
+			<td>发送聊天室消息失败，发起者在该聊天室中被禁言</td>
+		</tr>
+		<tr>
+			<td>847003</td>
+			<td>chatroom not exist</td>
+			<td>发送聊天室消息失败，该聊天室不存在</td>
+		</tr>
+		<tr>
+			<td>847004</td>
+			<td>length of chatroom message exceed limit</td>
+			<td>发送聊天室消息失败，消息长度超过限制</td>
+		</tr>
+		<tr>
+			<td>847005</td>
+			<td>chatroom msg content json error</td>
+			<td>发送聊天室消息失败，消息内容格式错误</td>
+		</tr>
+		<tr>
+			<td>850001</td>
+			<td>chatroom not exist</td>
+			<td>删除不存在的聊天室</td>
+		</tr>
+		<tr>
+			<td>851001</td>
+			<td>repeated invit chatroom member</td>
+			<td>邀请成员到聊天室时，邀请的成员列表中有重复的成员，邀请失败</td>
+		</tr>
+		<tr>
+			<td>851002</td>
+			<td>invit member not exist</td>
+			<td>邀请成员到聊天室时，邀请的成员列表中有未注册成员，邀请失败</td>
+		</tr>
+		<tr>
+			<td>851003</td>
+			<td>member has in the chatroom</td>
+			<td>邀请或加入到聊天室时，邀请或加入的成员已在聊天室中，邀请或加入失败</td>
+		</tr>
+		<tr>
+			<td>851004</td>
+			<td>chatroom not exist</td>
+			<td>邀请或加入不存在的聊天室</td>
+		</tr>
+		<tr>
+			<td>851005</td>
+			<td>zero member</td>
+			<td>邀请成员到聊天室时，邀请的成员列表为空，邀请成员失败</td>
+		</tr>
+		<tr>
+			<td>851006</td>
+			<td>amount of member exceed chatroom limit</td>
+			<td>邀请或加入聊天时，邀请的人员数量超过聊天室剩余加入的人员数量</td>
+		</tr>
+		<tr>
+			<td>852001</td>
+			<td>user not in chatroom</td>
+			<td>踢出或退出聊天室时，该用户其实并不在该聊天室中，踢出或退出聊天室失败</td>
+		</tr>
+		<tr>
+			<td>852002</td>
+			<td>chatroom not exist</td>
+			<td>踢出或退出不存在的聊天室</td>
+		</tr>
+		<tr>
+			<td>852003</td>
+			<td>zero member</td>
+			<td>踢出成员到聊天室时，踢出的成员列表为空，踢出成员失败</td>
+		</tr>
+		<tr>
+			<td>852004</td>
+			<td>owner can not leave chatroom</td>
+			<td>踢出或退出聊天室时，存在owner用户退出聊天室</td>
+		</tr>
+    <tr>
+			<td>853001</td>
+			<td>chatroom not exist</td>
+			<td>更新不存在的聊天室信息</td>
+		</tr>
+		<tr>
+			<td>853002</td>
+			<td>owner not in chatroom</td>
+			<td>更新聊天室owner时，新的owner并不在该聊天室中</td>
+    </tr>
+		<tr>
 			<td>855001</td>
 			<td>out of time</td>
 			<td>消息撤回失败，超出撤回时间</td>
@@ -618,6 +703,66 @@ JMessage 服务器端报的错误码。有可能出现在各平台的 SDK 里。
 			<td>855004</td>
 			<td>message already retract</td>
 			<td>消息撤回失败，该消息已经撤回</td>
+		</tr>
+		<tr>
+			<td>856001</td>
+			<td>this request already process</td>
+			<td>审批失效，该添加成员邀请已经被处理</td>
+		</tr>
+		<tr>
+			<td>856002</td>
+			<td>invalid request data</td>
+			<td>请求数据无效</td>
+		</tr>
+		<tr>
+			<td>857001</td>
+			<td>target group not exist</td>
+			<td>目标群组不存在</td>
+		</tr>
+		<tr>
+			<td>857002</td>
+			<td>target not online</td>
+			<td>目标不在线</td>
+		</tr>
+		<tr>
+			<td>857003</td>
+			<td>target user not exist</td>
+			<td>目标用户不存在</td>
+		</tr>
+		<tr>
+			<td>857004</td>
+			<td>length of trans cmd exceed limit</td>
+			<td>透传消息长度超过限制</td>
+		</tr>
+		<tr>
+			<td>857005</td>
+			<td>user not in group</td>
+			<td>请求用户不在群组中</td>
+		</tr>
+		<tr>
+			<td>857006</td>
+			<td>target can't be self</td>
+			<td>目标不能为自己</td>
+		</tr>
+		<tr>
+			<td>859001</td>
+			<td>user already in the group</td>
+			<td>用户已经在目标群组中</td>
+		</tr>
+		<tr>
+			<td>859002</td>
+			<td>group type not support</td>
+			<td>目标群组类型不支持申请入群</td>
+		</tr>
+		<tr>
+			<td>765001</td>
+			<td>target not in group</td>
+			<td>目标用户不在群组中</td>
+		</tr>
+		<tr>
+			<td>765002</td>
+			<td>request user no permission</td>
+			<td>请求用户无操作权限</td>
 		</tr>
 </table>
 </div>
