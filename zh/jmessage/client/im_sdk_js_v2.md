@@ -1494,7 +1494,7 @@ JMessage#transPlatMsg()
 
 | KEY      | REQUIRE | DESCRIPTION    |
 | -------- | ------- | -------------- |
-| platform | TRUE    | 多端在线目标平台：[all,android,ios,pc |
+| platform | TRUE    | 多端在线目标平台：[all,android,ios,pc] |
 | cmd      | TRUE    | 透传信息 string 类型 |
 
 **请求示例**
