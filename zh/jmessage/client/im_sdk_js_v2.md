@@ -2,7 +2,7 @@
 
 ## 概述
 
-极光 IM Web SDK 为 Web 应用提供一个 IM 系统开发框架, 屏蔽掉 IM 系统的复杂的细节, 对外提供较为简洁的 API 接口, 方便第三方应用快速集成 IM 功能。
+极光 IM Web SDK 为 Web 应用提供一个 IM 系统开发框架, 屏蔽掉 IM 系统的复杂的细节, 对外提供较为简洁的 API 接口, 方便第三方应用快速集成 IM 功能。SDK 支持 IE10及以上版本，Edge、Chrome、 Safari 、Firefox 、UC等主流浏览器
 
 ## 版本说明
 
@@ -243,6 +243,8 @@ JIM.isLogin();// 无回调函数，调用则成功
 
 #### 登录
 
+***Since 2.6.0*** 支持online_list
+
 JMessage#login()
 
 **请求参数:**
@@ -262,6 +264,12 @@ JIM.login({
 }).onSuccess(function(data) {
      //data.code 返回码
      //data.message 描述
+     //data.online_list[] 在线设备列表
+     //data.online_list[].platform  Android,ios,pc,web
+     //data.online_list[].mtime 最近一次登录时间
+     //data.online_list[].isOnline 是否在线 true or false
+     //data.online_list[].isLogin 是否登录 true or false
+     //data.online_list[].flag 该设备是否被当前登录设备踢出 true or false
 }.onFail(function(data){
   //同上
 });
@@ -669,7 +677,7 @@ JMessage#msgRetract  ()
 
 ```
    JIM.msgRetract({
-                 'msg_id ' : '<msg_id >',
+                 'msg_id' : '<msg_id >',
                }).onSuccess(function(data , msg) {
                    //data.code 返回码
                    //data.message 描述
@@ -1477,6 +1485,33 @@ JMessage#transGroupMsg()
                });
 ```
 
+#### 多端在线消息透传
+***Since 2.6.0***
+
+JMessage#transPlatMsg()
+
+**请求参数：**
+
+| KEY      | REQUIRE | DESCRIPTION    |
+| -------- | ------- | -------------- |
+| platform | TRUE    | 多端在线目标平台：[all  |
+| cmd      | TRUE    | 透传信息 string 类型 |
+
+**请求示例**
+
+```
+   JIM.transPlatMsg({
+                 'platform' : 'android',
+                 'cmd' : '<cmd>'
+               }).onSuccess(function(data) {
+                  //data.code 返回码
+                  //data.message 描述
+               }).onFail(function(data) {
+                    //data.code 返回码
+                    //data.message 描述
+               });
+```
+
 ### 群组管理
 
 #### 创建群组
@@ -1710,7 +1745,7 @@ JIM.getGroupMembers({
                   //data.member_list[0].appkey 用户所属 appkey
                   //data.member_list[0].nickname 用户昵称
                   //data.member_list[0].avatar 用户头像 id
-                  //data.member_list[0].flag  0：普通成员 1：群主
+                  //data.member_list[0].flag  0：普通成员 1：群主 2：管理员
                   //data.member_list[0].keep_silence 是否被禁言true|false
                }).onFail(function(data) {
                    //data.code 返回码
@@ -1720,9 +1755,9 @@ JIM.getGroupMembers({
 
 #### 主动加群（公开群）
 
-JMessage#joinGroup()
-
 ***Since 2.5.0*** 
+
+JMessage#joinGroup()
 
 **请求参数：**
 
@@ -1746,11 +1781,11 @@ JIM.joinGroup({
                });
 ```
 
-#### 群主审批入群请求
-
-JMessage#addGroupMemberResp()
+#### 审批入群请求
 
 ***Since 2.5.0*** 
+
+JMessage#addGroupMemberResp()
 
 **请求参数：**
 
@@ -1790,9 +1825,10 @@ JIM.addGroupMemberResp({
 
 #### 添加群用户禁言
 
+***Since 2.5.0*** 
+
 JMessage#addGroupMemSilence()
 
-***Since 2.5.0*** 
 
 **请求参数：**
 
@@ -1822,9 +1858,10 @@ JIM.addGroupMemSilence({
 
 #### 取消群用户禁言
 
+***Since 2.5.0*** 
+
 JMessage#delGroupMemSilence()
 
-***Since 2.5.0*** 
 
 **请求参数：**
 
@@ -1851,6 +1888,172 @@ JIM.delGroupMemSilence({
                    //data.message 描述
                });
 ```
+
+#### 添加管理员
+
+***Since 2.6.0*** 
+
+JMessage#addGroupKeeper()
+
+
+**请求参数：**
+
+| KEY              | REQUIRE | DESCRIPTION                              |
+| ---------------- | ------- | ---------------------------------------- |
+| gid              | TRUE    | 群id                                      |
+| member_usernames | TRUE    | 增加管理员列表,示例：[{'username':'name1', 'appkey': '跨应用必填，默认不填表示本应用'},...] |
+
+
+
+**请求示例**
+
+```
+
+JIM.addGroupKeeper({
+                  'gid' : '<gid>',
+                   'member_usernames' : [{'username':'name1'},{'username':'name2','appkey':'appkey2'}...]
+               }).onSuccess(function(data) {
+                  //data.code 返回码
+                  //data.message 描述
+               }).onFail(function(data) {
+                   //data.code 返回码
+                   //data.message 描述
+               });
+```
+
+#### 删除管理员
+
+***Since 2.6.0*** 
+
+JMessage#delGroupKeeper()
+
+
+**请求参数：**
+
+| KEY              | REQUIRE | DESCRIPTION                              |
+| ---------------- | ------- | ---------------------------------------- |
+| gid              | TRUE    | 群id                                      |
+| member_usernames | TRUE    | 增加管理员列表,示例：[{'username':'name1', 'appkey': '跨应用必填，默认不填表示本应用'},...] |
+
+
+
+**请求示例**
+
+```
+
+JIM.delGroupKeeper({
+                  'gid' : '<gid>',
+                   'member_usernames' : [{'username':'name1'},{'username':'name2','appkey':'appkey2'}...]
+               }).onSuccess(function(data) {
+                  //data.code 返回码
+                  //data.message 描述
+               }).onFail(function(data) {
+                   //data.code 返回码
+                   //data.message 描述
+               });
+```
+
+#### 移交群主权限
+
+***Since 2.6.0*** 
+
+JMessage#changeGroupAdmin()
+
+
+**请求参数：**
+
+| KEY             | REQUIRE | DESCRIPTION            |
+| --------------- | ------- | ---------------------- |
+| gid             | TRUE    | 群id                    |
+| target_username | TRUE    | 目标用户名                  |
+| target_appkey   | FALSE   | 跨应用 appkey,默认本应用appkey |
+
+
+
+**请求示例**
+
+```
+
+JIM.changeGroupAdmin({
+                  'gid' : '<gid>',
+                   'target_username' : '<username>'
+               }).onSuccess(function(data) {
+                  //data.code 返回码
+                  //data.message 描述
+               }).onFail(function(data) {
+                   //data.code 返回码
+                   //data.message 描述
+               });
+```
+
+#### 解散群
+
+***Since 2.6.0*** 
+
+JMessage#dissolveGroup()
+
+
+**请求参数：**
+
+| KEY  | REQUIRE | DESCRIPTION |
+| ---- | ------- | ----------- |
+| gid  | TRUE    | 群id         |
+
+**请求示例**
+
+```
+
+JIM.dissolveGroup({
+                  'gid' : '<gid>'
+               }).onSuccess(function(data) {
+                  //data.code 返回码
+                  //data.message 描述
+               }).onFail(function(data) {
+                   //data.code 返回码
+                   //data.message 描述
+               });
+```
+
+#### 获取公开群
+
+***Since 2.6.0*** 
+
+JMessage#getAppkeyPublicGroups()
+
+
+**请求参数：**
+
+| KEY    | REQUIRE | DESCRIPTION      |
+| ------ | ------- | ---------------- |
+| start  | TRUE    | 分页下标,首页获取为0      |
+| appkey | FALSE   | 群所属 appkey,默认本应用 |
+
+**请求示例**
+
+```
+
+JIM.getAppkeyPublicGroups({
+                   'start' : 0
+               }).onSuccess(function(data) {
+                  //data.code 返回码
+                  //data.message 描述
+                  //data.result.total 群总数量
+                  //data.result.start 本次查询 index 下标值
+                  //data.result.groups[] 群列表
+                  //data.result.groups[0].gid 群id
+                  //data.result.groups[0].name 群名
+                  //data.result.groups[0].desc 群描述
+                  //data.result.groups[0].appkey 群所属appkey
+                  //data.result.groups[0].ctime 群创建时间
+                  //data.result.groups[0].mtime 最近一次群信息修改时间
+                  //data.result.groups[0].avatar 群头像
+                  //data.result.groups[0].group_type 公开群:2,私有群:0或者1
+               }).onFail(function(data) {
+                   //data.code 返回码
+                   //data.message 描述
+               });
+```
+
 
 ### 聊天室
 
@@ -2302,12 +2505,15 @@ JMessage#getNoDisturb()
                    //data.no_disturb.users[] 免打扰用户列表，比如示例
                    //data.no_disturb.users[0].username 用户名
                    //data.no_disturb.users[0].nickname 用户昵称
-                   //data.no_disturb.users[0].appkey 用户所属 appkey
-                   //data.no_disturb.groups[] 免打扰群组列表，比如示例
-                   //data.no_disturb.groups[0].gid 群组 id
-                   //data.no_disturb.groups[0].name 群名字
-                   //data.no_disturb.groups[0].appkey 群所属 appkey
+                   //data.no_disturb.users[0].appkey 用户所属 appkey                 
+                   //data.no_disturb.groups[0].gid 群id
+                   //data.no_disturb.groups[0].name 群名
                    //data.no_disturb.groups[0].desc 群描述
+                   //data.no_disturb.groups[0].appkey 群所属appkey
+                   //data.no_disturb.groups[0].ctime 群创建时间
+                   //data.no_disturb.groups[0].mtime 最近一次群信息修改时间
+                   //data.no_disturb.groups[0].avatar 群头像
+                   //data.no_disturb.groups[0].group_type 公开群:2,私有群:0或者1
                }).onFail(function(data) {
                    //data.code 返回码
                    //data.message 描述
@@ -2430,7 +2636,9 @@ JMessage#groupShieldList()
                   //data.group_list[0].desc 群描述
                   //data.group_list[0].appkey 群所属appkey
                   //data.group_list[0].ctime 群创建时间
-                  //data.group_list[0].mtime 最近一次群信息修改时间 
+                  //data.group_list[0].mtime 最近一次群信息修改时间
+                  //data.group_list[0].avatar 群头像
+                  //data.group_list[0].group_type 公开群:2,私有群:0或者1 
                }).onFail(function(data) {
                    // 同上
                });
@@ -2928,7 +3136,7 @@ JMessage#onEventNotification(fn)
 | group_name    | 群名                                       |
 
 
-**同时登录，被迫下线示例：event_type = 1**
+**同时登录或者被禁用，被迫下线示例：event_type = 1**
 
 ```
 //被踢者收到该事件
@@ -2936,6 +3144,7 @@ JIM.onEventNotification(function(data) {
     //data.event_id 事件 id
     //data.event_type 事件类型
     //data.ctime_ms 事件生成时间
+    //data.extra =0同时登录，=1用户被禁用，=2用户被删除
 });
 ```
 
@@ -3033,8 +3242,9 @@ JIM.onEventNotification(function(data) {
     //data.event_id 事件 id
     //data.event_type 事件类型
     //data.ctime_ms 事件生成时间
-    //data.from_username 退群者 username
-    //data.from_appkey 退群者 appkey
+    //data.extra=69 表示群主解散群，所有成员退出
+    //data.from_username 退群者 username，extra=69 为空
+    //data.from_appkey 退群者 appkey，extra=69 为空
     //data.to_usernames 退群者
     //data.gid 群 id
     //data.media_id 群头像
@@ -3194,6 +3404,25 @@ JIM.onEventNotification(function(data) {
     //data.description 拒绝理由
 });
 ```
+**管理员审批拒绝事件示例：event_type = 58**
+
+***Since 2.6.0*** 
+
+```
+//群里所有管理员和群主
+JIM.onEventNotification(function(data) {
+    //data.event_id 事件 id
+    //data.from_gid 群 id
+    //data.group_name 群名
+    //data.media_id 群头像
+    //data.event_type 事件类型
+    //data.ctime_ms 事件生成时间
+    //data.from_appkey 群主所属 appkey
+    //data.from_username 群主 username
+    //data.to_usernames 被拒绝成员   
+    //data.from_eventid 操作事件 id
+});
+```
 
 **群用户禁言事件：event_type = 65**
 
@@ -3214,6 +3443,46 @@ JIM.onEventNotification(function(data) {
     //data.extra 1:禁言 2:取消禁言
 });
 ```
+
+**群组管理员变更事件：event_type = 80**
+
+***Since 2.6.0*** 
+
+```
+//群所有用户接收该事件
+JIM.onEventNotification(function(data) {
+    //data.event_id 事件 id
+    //data.from_gid 群 id
+    //data.group_name 群名
+    //data.media_id 群头像
+    //data.event_type 事件类型
+    //data.ctime_ms 事件生成时间
+    //data.from_appkey 群主所属 appkey
+    //data.from_username 群主 username
+    //data.to_usernames 目标用户列表   
+    //data.extra =1 添加管理员 2=取消管理员
+});
+```
+
+**群主移交事件：event_type = 82**
+
+***Since 2.6.0*** 
+
+```
+//群所有用户接收该事件
+JIM.onEventNotification(function(data) {
+    //data.event_id 事件 id
+    //data.from_gid 群 id
+    //data.group_name 群名
+    //data.media_id 群头像
+    //data.event_type 事件类型
+    //data.ctime_ms 事件生成时间
+    //data.from_appkey 老群主 appkey
+    //data.from_username 老群主 username
+    //data.to_usernames 新群主   
+});
+```
+
 
 **多端在线好友变更事件示例：event_type =100**
 
@@ -3420,13 +3689,14 @@ JMessage#onTransMsgRec(fn)
 
 **返回参数**
 
-| KEY           | DESCRIPTION           |
-| ------------- | --------------------- |
-| type          | 3 单聊消息透传 ，4 群聊消息透传    |
-| gid           | 群 id ，type=4 有效       |
-| from_appkey   | 用户 appkey，type=3 有效   |
-| from_username | 用户 username，type=3 有效 |
-| cmd           | 透传信息                  |
+| KEY           | DESCRIPTION                              |
+| ------------- | ---------------------------------------- |
+| type          | 3 单聊消息透传 ，4 群聊消息透传, 5 在线设备消息透传           |
+| gid           | 群 id ，type=4 有效                          |
+| from_appkey   | 用户 appkey，type=3 有效                      |
+| from_username | 用户 username，type=3 有效                    |
+| platform      | 目标平台 all \| android \| ios \| pc，type=5 有效 |
+| cmd           | 透传信息                                     |
 
  **使用示例**
 
@@ -3436,6 +3706,7 @@ JIM.onTransMsgRec(function(data) {
     // data.gid 群 id
     // data.from_appkey 用户所属 appkey
     // data.from_username 用户 username
+    // data.platform 目标平台
     // data.cmd 透传信息
 });
 ```
