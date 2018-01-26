@@ -4,31 +4,30 @@
 
 ## SDK下载
 
-#### jmessage-wxapplet-sdk v1.3.0
+#### jmessage-wxapplet-sdk v1.4.0
 
 更新时间
 
-+ 2017-11-29
++ 2018-01-26
 
 Change Log
 
 ##### NewFeature:
 
-+ 新增聊天室功能
-+ 新增公开群类型支持
-+ 群禁言支持
-+ 文件发送支持
-+ 小视频发送支持
++ 新增：群组管理员角色
++ 新增：解散群、移交群主功能
++ 新增：设备间消息透传、登录设备记录获取
++ 新增：获取 appkey 下所有公开群功能
 
 升级提示
 
-+ 升级！
++ 建议升级！
 
 升级指南
 
-+ 用最新的 jmessage-wxapplet-sdk-1.3.0.min.js 替换掉老版本的 sdk
++ 用最新的 jmessage-wxapplet-sdk-1.4.0.min.js 替换掉老版本的 sdk
 
-点击下载：[ jmessage-wxapplet-sdk-1.3.0 ](https://sdkfiledl.jiguang.cn/src/jmessage-wxapplet-sdk-1.3.0.zip)
+点击下载：[ jmessage-wxapplet-sdk-1.4.0 ](https://www.jiguang.cn/downloads/server_sdk/im/wxapplet)
 
 
 
