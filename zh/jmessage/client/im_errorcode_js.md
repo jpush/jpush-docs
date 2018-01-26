@@ -22,7 +22,7 @@
 | 880008 | msg_id not valid                         | msg_id 非法           |
 | 880101 | appkey not exist                         | appkey 不存在          |
 | 880102 | signatu fail                             | 签名错误                |
-| 880103 | user not existr                          | 用户不存在               |
+| 880103 | user not exist                           | 用户不存在               |
 | 880104 | invalid password                         | 密码错误                |
 | 880106 | signatu is expire                        | 签名过期                |
 | 880107 | already login,please login out before login | 已经是登录状态             |
@@ -42,12 +42,16 @@
 | 880403 | amount of group exceed limit             | 群数量到达上限             |
 | 880404 | length of group name exceed limit        | 群名字超过长度限制，创建失败      |
 | 880405 | length of group desc exceed limit        | 群描述长度超过限制           |
-| 880602 | zero member                              | 添加的群成员为空            |
+| 880602 | zero member                              | 目标为空                |
 | 880604 | user not permitted add member to group   | 没权限添加群成员            |
 | 880606 | member not permitted added to group      | 成员列表中有用户没有被添加到群组的权限 |
-| 880607 | repeated added member                    | 重复添加群成员             |
-| 880608 | amount of member exceed group limit      | 群成员数量超过限制           |
+| 880607 | repeated added                           | 重复添加                |
+| 880608 | num exceed  limit                        | 数量超过限制              |
 | 880609 | amount of group exceed member limit      | 成员列表中存在成员的群组数量超过限制  |
+| 880610 | user already in the group                | 用户已经在群里面            |
+| 880611 | group type not support                   | 群类型不支持该操作           |
+| 880612 | this request already process             | 已经处理                |
+| 880614 | no permission                            | 无权限操作               |
 | 880704 | user not permitted delete member of group | 用户没有删除群成员的权限        |
 | 880705 | member of group not permitted deleted    | 成员列表中存在成员用户没权限删除    |
 | 880903 | member not permitted added               | 成员列表中有成员不能被添加，添加失败  |
@@ -74,8 +78,10 @@
 | 881504 | length of chatroom message exceed limit  | 消息长度超出限制            |
 | 881507 | member has in the chatroom               | 用户已经在聊天室            |
 | 881508 | amount of member exceed chatroom limit   | 超过聊天室人数限制           |
+| 881509 | msg format err                           | 消息格式错误              |
 | 881602 | target user not login                    | 目标用户未登录             |
 | 881604 | length of trans cmd exceed limit         | 消息长度超出限制            |
+| 881701 | user not admin                           | 用户不是群管理员            |
 | 882001 | server internal error                    | 系统内部错误              |
 | 882002 | user exit，no such user，password error，uid invalid，gid invalid | 视操作而定               |
 | 882003 | invalid parameter                        | 参数不合法               |
