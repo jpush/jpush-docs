@@ -166,6 +166,16 @@
       <td>群组字段无效</td>
     </tr>
     <tr>
+      <td>868001</td>
+      <td>ChatRoom not support</td>
+      <td>聊天室不支持</td>
+    </tr>
+    <tr>
+      <td>868002</td>
+      <td> ChatRoom not exist</td>
+      <td>聊天室不存在</td>
+    </tr>
+    <tr>
       <td>869999</td>
       <td>Unknown SDK error</td>
       <td>未知的SDK错误码</td>

@@ -1475,6 +1475,7 @@ info.desc = @"这个群组是公开群";
 + 主要特点：聊天室的消息没有推送通知和离线保存，也没有常驻成员的概念，只要进入聊天室即可接收消息，开始聊天，一旦退出聊天室，不再会接收到任何消息、通知和提醒。
 + 发送消息：聊天室消息的发送与单聊、群聊是一样的，通用的发送接口
 + 接收消息：聊天室消息的接收与单聊、群聊做了区分，聊天室消息的接收将通过 JMSGConversationDelegate 类里的 [onReceiveChatRoomConversation:messages:](#跳转-聊天室接收消息代理方法) 方法通知到上层
++ 进入聊天室会自动获取最近 50 条消息
 
 #### 分页获取聊天室
 
@@ -1529,7 +1530,7 @@ info.desc = @"这个群组是公开群";
  * @param roomId    聊天室 id
  * @param handler   结果回调. error = nil 表示加入成功，resultObject 为 JMSGConversation 类型
  *
- * @discussion 成功进入聊天室之后，会将聊天室中最近若干条聊天记录同步下来并以 onReceiveChatRoomConversation: 事件的形式通知到上层。
+ * @discussion 成功进入聊天室之后，会将聊天室中最近若干条聊天记录同步下来并以 onReceiveChatRoomConversation: 事件的形式通知到上层，进入聊天室会自动获取最近50条消息。
  */
 + (void)enterChatRoomWithRoomId:(NSString *JMSG_NONNULL)roomId
               completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)handler;
