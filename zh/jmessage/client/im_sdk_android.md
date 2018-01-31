@@ -2300,7 +2300,8 @@ class ContactNotifyEventReceiver extends Activity{
 ### <sapn id="ChatRoom">聊天室管理</span>
 ***Since 2.4.0***  
 聊天室和群组最大的区别在于，聊天室的消息没有推送通知和离线保存，也没有常驻成员的概念，只要进入聊天室即可接收消息，开始聊天，
-一旦退出聊天室，不再会接收到任何消息、通知和提醒。
+一旦退出聊天室，不再会接收到任何消息、通知和提醒。</br>
+<font color= SteelBlue>注意：进入聊天室会自动获取最近50条消息，客户端目前不支持创建聊天室</font>
 
 #### 聊天室信息
 ***Since 2.4.0***  
