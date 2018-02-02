@@ -1,10 +1,12 @@
 var searchData=
 [
   ['offline',['offline',['../struct_jmcpp_1_1_message_settings.html#a315a4a32a82830441a119b248ab82fd1',1,'Jmcpp::MessageSettings']]],
+  ['oldowner',['oldOwner',['../struct_jmcpp_1_1_group_owner_changed_event.html#a6562417baebd47ab18045618f5b0ff2b',1,'Jmcpp::GroupOwnerChangedEvent']]],
   ['on',['on',['../struct_jmcpp_1_1_group_member_silent_changed_event.html#a7d7abc6ff7186c8e907d312e728767ce',1,'Jmcpp::GroupMemberSilentChangedEvent']]],
   ['ondisconnected',['onDisconnected',['../group___xE5_x9B_x9E_xE8_xB0_x83_xE8_xAE_xBE_xE7_xBD_xAE.html#ga2174b493a3d7a6ab1a9f358a3e3a4ac5',1,'Jmcpp::Client']]],
   ['oneventreceive',['onEventReceive',['../group___xE5_x9B_x9E_xE8_xB0_x83_xE8_xAE_xBE_xE7_xBD_xAE.html#ga36df1dfd298e45decfdb1883b2f62a36',1,'Jmcpp::Client']]],
   ['oneventsync',['onEventSync',['../group___xE5_x9B_x9E_xE8_xB0_x83_xE8_xAE_xBE_xE7_xBD_xAE.html#ga5ecb1f1974eec14b254a50d98dbf7536',1,'Jmcpp::Client']]],
+  ['online',['online',['../struct_jmcpp_1_1_multi_login_record.html#a4e7661ca73249eeb9c7e0bb0e13e9055',1,'Jmcpp::MultiLoginRecord']]],
   ['onlogined',['onLogined',['../group___xE5_x9B_x9E_xE8_xB0_x83_xE8_xAE_xBE_xE7_xBD_xAE.html#ga94adcb6333494b6d178c13130ebfa4b1',1,'Jmcpp::Client::onLogined(std::function&lt; void(bool firstLogin)&gt; cb)'],['../group___xE5_x9B_x9E_xE8_xB0_x83_xE8_xAE_xBE_xE7_xBD_xAE.html#gaddf86fbceb86686c0632bea5dcc3688b',1,'Jmcpp::Client::onLogined(std::function&lt; void()&gt; cb)']]],
   ['onmessagereceive',['onMessageReceive',['../group___xE5_x9B_x9E_xE8_xB0_x83_xE8_xAE_xBE_xE7_xBD_xAE.html#ga926df0da8516d9e1f68e2c1242bb4b7b',1,'Jmcpp::Client']]],
   ['onmessagesync',['onMessageSync',['../group___xE5_x9B_x9E_xE8_xB0_x83_xE8_xAE_xBE_xE7_xBD_xAE.html#gaf0ccdca0e09ca9eee0302dbbd270723e',1,'Jmcpp::Client']]],
@@ -15,5 +17,5 @@ var searchData=
   ['operator_3d_3d',['operator==',['../struct_jmcpp_1_1_user_id.html#a8e9ac19af8a7ca739d7dd17b0619b236',1,'Jmcpp::UserId::operator==()'],['../class_jmcpp_1_1_chat_id.html#ab11d85f4639e6fa2e9daa18fd8e0d7c7',1,'Jmcpp::ChatId::operator==()']]],
   ['operator_3e',['operator&gt;',['../struct_jmcpp_1_1_user_id.html#a7d50d96fce2492a566cf8fa2f4d33d23',1,'Jmcpp::UserId::operator&gt;()'],['../class_jmcpp_1_1_chat_id.html#ac4322b61e218fe0478ffd09662e5124f',1,'Jmcpp::ChatId::operator&gt;()']]],
   ['operator_3e_3d',['operator&gt;=',['../struct_jmcpp_1_1_user_id.html#a21bd303c760125d91eb8fc7793c4d514',1,'Jmcpp::UserId::operator&gt;=()'],['../class_jmcpp_1_1_chat_id.html#a78653e0ff7a5c799b63c43e4f26c5c78',1,'Jmcpp::ChatId::operator&gt;=()']]],
-  ['owner',['owner',['../struct_jmcpp_1_1_group_member_silent_changed_event.html#abf2c523cecf753a0f778d792614675a1',1,'Jmcpp::GroupMemberSilentChangedEvent']]]
+  ['owner',['owner',['../struct_jmcpp_1_1_group_member_silent_changed_event.html#abf2c523cecf753a0f778d792614675a1',1,'Jmcpp::GroupMemberSilentChangedEvent::owner()'],['../struct_jmcpp_1_1_group_admin_changed_event.html#aa11cb114f448d8ee8ea0555f76b7d28e',1,'Jmcpp::GroupAdminChangedEvent::owner()']]]
 ];

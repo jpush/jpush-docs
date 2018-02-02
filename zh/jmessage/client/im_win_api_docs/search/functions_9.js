@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['jmcpp_5fworkaround',['JMCPP_WORKAROUND',['../namespace_jmcpp.html#a1e88364e4ed044e5e4973605fc33dec7',1,'Jmcpp::JMCPP_WORKAROUND(Event)'],['../namespace_jmcpp.html#aabbcb4e568726b6163a72881950766ef',1,'Jmcpp::JMCPP_WORKAROUND(MessageContent)'],['../namespace_jmcpp.html#a4a5a80697eed0b9bb299706249545142',1,'Jmcpp::JMCPP_WORKAROUND(UserInfoParam)']]],
-  ['joingroup',['joinGroup',['../group___xE7_xBE_xA4_xE7_xBB_x84_xE7_xAE_xA1_xE7_x90_x86.html#gacb313ed26e0e837cd58161a505d8f24e',1,'Jmcpp::Client']]]
+  ['leavegroup',['leaveGroup',['../group___xE7_xBE_xA4_xE7_xBB_x84_xE7_xAE_xA1_xE7_x90_x86.html#ga483e41650cacdc9b914c90b61e6c80f8',1,'Jmcpp::Client']]],
+  ['leaveroom',['leaveRoom',['../group___xE8_x81_x8A_xE5_xA4_xA9_xE5_xAE_xA4.html#gae22dfb6b9eaf398a07108e6d805da6a0',1,'Jmcpp::Client']]],
+  ['login',['login',['../group___xE6_xB3_xA8_xE5_x86_x8C_xE7_x99_xBB_xE5_xBD_x95.html#ga0d2ca9b981373f400dd0e450fc498920',1,'Jmcpp::Client']]],
+  ['logout',['logout',['../group___xE6_xB3_xA8_xE5_x86_x8C_xE7_x99_xBB_xE5_xBD_x95.html#gad0be4bba9106f1ed1c1992d855340cb4',1,'Jmcpp::Client']]]
 ];

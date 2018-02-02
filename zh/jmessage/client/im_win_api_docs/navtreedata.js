@@ -18,7 +18,7 @@ var NAVTREE =
       [ "类成员", "functions.html", [
         [ "全部", "functions.html", "functions_dup" ],
         [ "函数", "functions_func.html", null ],
-        [ "变量", "functions_vars.html", null ],
+        [ "变量", "functions_vars.html", "functions_vars" ],
         [ "枚举", "functions_enum.html", null ],
         [ "枚举值", "functions_eval.html", null ]
       ] ]
@@ -29,8 +29,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"index.html",
-"struct_jmcpp_1_1_voice_content.html#a4a0c73754a2d7cd0695135ca55633c62"
+"group___xE7_xBE_xA4_xE7_xBB_x84_xE7_xAE_xA1_xE7_x90_x86.html#gabf5799e8c49e50141763806962108bf6",
+"struct_jmcpp_1_1_server_exception.html"
 ];
 
 var SYNCONMSG = '点击 关闭 面板同步';

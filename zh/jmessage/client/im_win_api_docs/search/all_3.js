@@ -2,9 +2,9 @@ var searchData=
 [
   ['chatid',['ChatId',['../class_jmcpp_1_1_chat_id.html',1,'Jmcpp::ChatId'],['../class_jmcpp_1_1_chat_id.html#a238315b8d324930e0b8140d6476c296b',1,'Jmcpp::ChatId::ChatId()'],['../class_jmcpp_1_1_chat_id.html#ab4bfbaa903f814681e684ddaf5d757ea',1,'Jmcpp::ChatId::ChatId(GroupId const &amp;groupId)'],['../class_jmcpp_1_1_chat_id.html#a60dd804989ec0542961d869f520d68a2',1,'Jmcpp::ChatId::ChatId(RoomId const &amp;roomId)'],['../class_jmcpp_1_1_chat_id.html#a622b22a8c7cc84cf876a13c147d0288d',1,'Jmcpp::ChatId::ChatId(UserId const &amp;userId)']]],
   ['clearunreadcount',['clearUnreadCount',['../group___xE6_xB6_x88_xE6_x81_xAF_xE5_x9B_x9E_xE6_x89_xA7_xE4_xB8_x8E_xE6_x9C_xAA_xE8_xAF_xBB.html#gadd3d536772e52ddfdc890cd24163321e',1,'Jmcpp::Client']]],
-  ['client',['Client',['../class_jmcpp_1_1_client.html',1,'Jmcpp::Client'],['../class_jmcpp_1_1_client.html#a7f139490c1c447c594a3d710a3abcb6e',1,'Jmcpp::Client::Client()']]],
+  ['client',['Client',['../class_jmcpp_1_1_client.html',1,'Jmcpp::Client'],['../class_jmcpp_1_1_client.html#a227274ea113d3f4395b5145cc9c690dc',1,'Jmcpp::Client::Client()']]],
   ['clientptr',['ClientPtr',['../namespace_jmcpp.html#a9de7efd098bc057245ccf113c8b8c682',1,'Jmcpp']]],
-  ['cmd',['cmd',['../struct_jmcpp_1_1_trans_command_event.html#aad43b2b6968d785fe4d6548fe5da205a',1,'Jmcpp::TransCommandEvent']]],
+  ['cmd',['cmd',['../struct_jmcpp_1_1_trans_command_event.html#aad43b2b6968d785fe4d6548fe5da205a',1,'Jmcpp::TransCommandEvent::cmd()'],['../struct_jmcpp_1_1_platform_trans_command_event.html#a337ae7a6d2aee1c00178a4dfbcf8a1dd',1,'Jmcpp::PlatformTransCommandEvent::cmd()']]],
   ['code',['code',['../struct_jmcpp_1_1_server_exception.html#a4501c400cf4900f3d646575f1e871776',1,'Jmcpp::ServerException']]],
   ['configuration',['Configuration',['../struct_jmcpp_1_1_configuration.html',1,'Jmcpp']]],
   ['conid',['conId',['../struct_jmcpp_1_1_message_retracted_event.html#ac0ce437e3a00e98600858764eca1c800',1,'Jmcpp::MessageRetractedEvent::conId()'],['../struct_jmcpp_1_1_multi_no_disturb_changed_event.html#a91e0b656ebb820e1cd185b960162244a',1,'Jmcpp::MultiNoDisturbChangedEvent::conId()'],['../struct_jmcpp_1_1_multi_unread_msg_count_changed_event.html#ac314e5a2b50bc3c17fd9a9f76ef0eff6',1,'Jmcpp::MultiUnreadMsgCountChangedEvent::conId()'],['../struct_jmcpp_1_1_multi_receipt_changed_event.html#a94213e7bc69920cb9dc38d8b34ee5698',1,'Jmcpp::MultiReceiptChangedEvent::conId()'],['../struct_jmcpp_1_1_receipts_updated_event.html#a80d6093563b202ac9be73b330d2d61c8',1,'Jmcpp::ReceiptsUpdatedEvent::conId()'],['../struct_jmcpp_1_1_trans_command_event.html#a580eff1f52fc51b7a1e4cb726a12cea1',1,'Jmcpp::TransCommandEvent::conId()'],['../class_jmcpp_1_1_message.html#af2908cad3990e461fc657b49f3a92971',1,'Jmcpp::Message::conId()']]],
@@ -20,7 +20,7 @@ var searchData=
   ['createlocationcontent',['createLocationContent',['../group___xE6_xB6_x88_xE6_x81_xAF_xE5_x8F_x91_xE9_x80_x81_xE4_xB8_x8E_xE7_xAE_xA1_xE7_x90_x86.html#ga6188d5777eb4ad64b82442f4631f57fa',1,'Jmcpp::Client']]],
   ['createtextcontent',['createTextContent',['../group___xE6_xB6_x88_xE6_x81_xAF_xE5_x8F_x91_xE9_x80_x81_xE4_xB8_x8E_xE7_xAE_xA1_xE7_x90_x86.html#ga8bbe5c9ac3221f8285938740832400cc',1,'Jmcpp::Client']]],
   ['ctime',['ctime',['../struct_jmcpp_1_1_group_info.html#a5101140b6a64c897e5862f0cefe7213e',1,'Jmcpp::GroupInfo::ctime()'],['../struct_jmcpp_1_1_room_info.html#a7f86c4d735b21483eee361c0186d4fdf',1,'Jmcpp::RoomInfo::ctime()']]],
-  ['currentmembercount',['currentMemberCount',['../struct_jmcpp_1_1_room_info.html#a15ae2b7bef2c1cf1a8af8029671a7bda',1,'Jmcpp::RoomInfo']]],
+  ['currentmembercount',['currentMemberCount',['../struct_jmcpp_1_1_room_info.html#aa750dee2c2001a5a282d44f26ad210b9',1,'Jmcpp::RoomInfo']]],
   ['custom',['custom',['../struct_jmcpp_1_1_custom_content.html#a23483ab57434bfa86dfe47b63c12999f',1,'Jmcpp::CustomContent']]],
   ['customcontent',['CustomContent',['../struct_jmcpp_1_1_custom_content.html',1,'Jmcpp']]]
 ];
