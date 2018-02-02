@@ -55,8 +55,8 @@
             <img src="../image/windows.png" alt="Windows">
             <div class="caption">
                 <h4>Windows SDK</h4>
-                <p>版本：v1.1.0</p>
-                <p>更新时间：2017.12.04</p>
+                <p>版本：v1.2.0</p>
+                <p>更新时间：2018.02.02</p>
                 <ul>
                     <li><a href="../client/im_sdk_win/">集成指南</a></li>
                     <li class="li-clear"></li>
