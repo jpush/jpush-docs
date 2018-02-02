@@ -4,6 +4,8 @@ var searchData=
   ['lastmessagetime',['lastMessageTime',['../struct_jmcpp_1_1_multi_unread_msg_count_changed_event.html#ae743014317672d0ce91ba781da3dd63d',1,'Jmcpp::MultiUnreadMsgCountChangedEvent']]],
   ['latitude',['latitude',['../struct_jmcpp_1_1_location_content.html#aca4fa24e00972342130ea07578e45c31',1,'Jmcpp::LocationContent']]],
   ['logger',['logger',['../struct_jmcpp_1_1_configuration.html#a6a22f1823b8070b58de6e00bba1249b2',1,'Jmcpp::Configuration']]],
+  ['login',['login',['../struct_jmcpp_1_1_multi_login_record.html#a4bfa3fa1446ca98640f6555f6c03d145',1,'Jmcpp::MultiLoginRecord']]],
+  ['logintime',['loginTime',['../struct_jmcpp_1_1_multi_login_record.html#a51c57d5e2fb8eb32b39a5f34658a58e0',1,'Jmcpp::MultiLoginRecord']]],
   ['loglevel',['logLevel',['../struct_jmcpp_1_1_configuration.html#a165fe38d0d2c787221e802bc73e95bbd',1,'Jmcpp::Configuration']]],
   ['longitude',['longitude',['../struct_jmcpp_1_1_location_content.html#a3d71cf78ed5b136ded73aef9a0edf26d',1,'Jmcpp::LocationContent']]]
 ];
