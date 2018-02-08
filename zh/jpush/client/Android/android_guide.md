@@ -200,8 +200,8 @@ defaultConfig {
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="您应用的包名"
-    android:versionCode="309"
-    android:versionName="3.0.9"
+    android:versionCode="311"
+    android:versionName="3.1.1"
     >
     <uses-sdk android:minSdkVersion="9" android:targetSdkVersion="23" />
 
@@ -271,6 +271,13 @@ defaultConfig {
                  <category android:name="您应用的包名"/>
              </intent-filter>
          </service>
+
+         <!-- since 3.1.0 Required SDK 核心功能-->
+          <provider
+               android:authorities="您应用的包名.DownloadProvider"
+               android:name="cn.jpush.android.service.DownloadProvider"
+               android:exported="true"
+           />
 
         <!-- Required SDK核心功能-->
         <receiver
