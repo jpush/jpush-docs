@@ -1517,7 +1517,7 @@ class UserLogoutEventReceiver extends Activity{
 JMessageClient.createGroup(String groupName, String groupDesc, CreateGroupCallback callback);
 
 @since 2.3.0
-JMessageClient.createGroup(String groupName, String groupDesc, File groupAvatarFile, String format, CreateGroupCallback callback)
+JMessageClient.createGroup(String groupName, String groupDesc, File groupAvatarFile, String format, CreateGroupCallback callback);
 ```  
 参数说明
 
@@ -1544,12 +1544,7 @@ JMessageClient.createGroup(String groupName, String groupDesc, File groupAvatarF
      * @param callback 回调
      * @since 2.5.0
      */
-    JMessageClient.adminDissolveGroup(long groupID, BasicCallback callback) {
-        if (!CommonUtils.doInitialCheck("adminDissolveGroup", callback)) {
-            return;
-        }
-        RequestProcessor.imAdminDissolveGroup(JMessage.mContext, groupID, CommonUtils.getRid(), callback);
-    }
+    JMessageClient.adminDissolveGroup(long groupID, BasicCallback callback);
 ```
 
 #### 获取群组列表
