@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 
-	<title>JMSGConversationType Constants Reference</title>
+	<title>JMSGPlatformType Constants Reference</title>
 
 	<link rel="stylesheet" href="../css/style.css">
 	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
@@ -59,7 +59,7 @@
 		<div id="overview_contents" class="container">
 			<div id="content">
 				<main role="main">
-					<h1 class="title">JMSGConversationType Constants Reference</h1>
+					<h1 class="title">JMSGPlatformType Constants Reference</h1>
 
 					
 					<div class="section section-specification"><table cellspacing="0"><tbody>
@@ -75,11 +75,11 @@
 					
 
                     
-                    <h3 class="subsubtitle method-title">JMSGConversationType</h3>
+                    <h3 class="subsubtitle method-title">JMSGPlatformType</h3>
                     
 					
 					<div class="section section-overview">
-                        <p>会话类型 - 单聊、群聊</p>
+                        <p>平台类型</p>
 					</div>
 					
 					
@@ -87,13 +87,17 @@
                         <!-- display enum values -->
                         
                         <h4 class="method-subtitle">Definition</h4>
-                        <code>typedef NS_ENUM(NSInteger, JMSGConversationType ) {<br>
+                        <code>typedef NS_ENUM(NSInteger, JMSGPlatformType ) {<br>
                             
-                            &nbsp;&nbsp; <a href="">kJMSGConversationTypeSingle</a> = 1,<br>
+                            &nbsp;&nbsp; <a href="">kJMSGPlatformTypeAll</a> = 0,<br>
                             
-                            &nbsp;&nbsp; <a href="">kJMSGConversationTypeGroup</a> = 2,<br>
+                            &nbsp;&nbsp; <a href="">kJMSGPlatformTypeAndroid</a> = 1,<br>
                             
-                            &nbsp;&nbsp; <a href="">kJMSGConversationTypeChatRoom</a> = 3,<br>
+                            &nbsp;&nbsp; <a href="">kJMSGPlatformTypeiOS</a> = 2,<br>
+                            
+                            &nbsp;&nbsp; <a href="">kJMSGPlatformTypeWindows</a> = 4,<br>
+                            
+                            &nbsp;&nbsp; <a href="">kJMSGPlatformTypeWeb</a> = 16,<br>
                             
                             };</code>
                     
@@ -103,11 +107,11 @@
                         <h4 class="method-subtitle">Constants</h4>
                         <dl class="termdef">
                             
-                            <dt><a name="" title="kJMSGConversationTypeSingle"></a><code>kJMSGConversationTypeSingle</code></dt>
+                            <dt><a name="" title="kJMSGPlatformTypeAll"></a><code>kJMSGPlatformTypeAll</code></dt>
 <dd>
 
 
-<p>单聊</p>
+<p>所有平台</p>
 
 
 
@@ -120,11 +124,11 @@
 	
 </dd>
                             
-                            <dt><a name="" title="kJMSGConversationTypeGroup"></a><code>kJMSGConversationTypeGroup</code></dt>
+                            <dt><a name="" title="kJMSGPlatformTypeAndroid"></a><code>kJMSGPlatformTypeAndroid</code></dt>
 <dd>
 
 
-<p>群聊</p>
+<p>Android 端</p>
 
 
 
@@ -137,11 +141,45 @@
 	
 </dd>
                             
-                            <dt><a name="" title="kJMSGConversationTypeChatRoom"></a><code>kJMSGConversationTypeChatRoom</code></dt>
+                            <dt><a name="" title="kJMSGPlatformTypeiOS"></a><code>kJMSGPlatformTypeiOS</code></dt>
 <dd>
 
 
-<p>聊天室</p>
+<p>iOS 端</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">JMSGConstants.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="kJMSGPlatformTypeWindows"></a><code>kJMSGPlatformTypeWindows</code></dt>
+<dd>
+
+
+<p>Windows 端</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">JMSGConstants.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="kJMSGPlatformTypeWeb"></a><code>kJMSGPlatformTypeWeb</code></dt>
+<dd>
+
+
+<p>web 端</p>
 
 
 

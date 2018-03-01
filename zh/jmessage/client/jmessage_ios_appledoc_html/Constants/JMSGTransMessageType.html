@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 
-	<title>JMSGConversationType Constants Reference</title>
+	<title>JMSGTransMessageType Constants Reference</title>
 
 	<link rel="stylesheet" href="../css/style.css">
 	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
@@ -59,7 +59,7 @@
 		<div id="overview_contents" class="container">
 			<div id="content">
 				<main role="main">
-					<h1 class="title">JMSGConversationType Constants Reference</h1>
+					<h1 class="title">JMSGTransMessageType Constants Reference</h1>
 
 					
 					<div class="section section-specification"><table cellspacing="0"><tbody>
@@ -75,11 +75,11 @@
 					
 
                     
-                    <h3 class="subsubtitle method-title">JMSGConversationType</h3>
+                    <h3 class="subsubtitle method-title">JMSGTransMessageType</h3>
                     
 					
 					<div class="section section-overview">
-                        <p>会话类型 - 单聊、群聊</p>
+                        <p>发送消息透传的的类型</p>
 					</div>
 					
 					
@@ -87,13 +87,13 @@
                         <!-- display enum values -->
                         
                         <h4 class="method-subtitle">Definition</h4>
-                        <code>typedef NS_ENUM(NSInteger, JMSGConversationType ) {<br>
+                        <code>typedef NS_ENUM(NSInteger, JMSGTransMessageType ) {<br>
                             
-                            &nbsp;&nbsp; <a href="">kJMSGConversationTypeSingle</a> = 1,<br>
+                            &nbsp;&nbsp; <a href="">kJMSGTransMessageTypeSingle</a> = 1,<br>
                             
-                            &nbsp;&nbsp; <a href="">kJMSGConversationTypeGroup</a> = 2,<br>
+                            &nbsp;&nbsp; <a href="">kJMSGTransMessageTypeGroup</a> = 2,<br>
                             
-                            &nbsp;&nbsp; <a href="">kJMSGConversationTypeChatRoom</a> = 3,<br>
+                            &nbsp;&nbsp; <a href="">kJMSGTransMessageTypeCrossDevice</a> = 3,<br>
                             
                             };</code>
                     
@@ -103,11 +103,11 @@
                         <h4 class="method-subtitle">Constants</h4>
                         <dl class="termdef">
                             
-                            <dt><a name="" title="kJMSGConversationTypeSingle"></a><code>kJMSGConversationTypeSingle</code></dt>
+                            <dt><a name="" title="kJMSGTransMessageTypeSingle"></a><code>kJMSGTransMessageTypeSingle</code></dt>
 <dd>
 
 
-<p>单聊</p>
+<p>单聊透传消息</p>
 
 
 
@@ -120,11 +120,11 @@
 	
 </dd>
                             
-                            <dt><a name="" title="kJMSGConversationTypeGroup"></a><code>kJMSGConversationTypeGroup</code></dt>
+                            <dt><a name="" title="kJMSGTransMessageTypeGroup"></a><code>kJMSGTransMessageTypeGroup</code></dt>
 <dd>
 
 
-<p>群聊</p>
+<p>群里透传消息</p>
 
 
 
@@ -137,11 +137,11 @@
 	
 </dd>
                             
-                            <dt><a name="" title="kJMSGConversationTypeChatRoom"></a><code>kJMSGConversationTypeChatRoom</code></dt>
+                            <dt><a name="" title="kJMSGTransMessageTypeCrossDevice"></a><code>kJMSGTransMessageTypeCrossDevice</code></dt>
 <dd>
 
 
-<p>聊天室</p>
+<p>设备间透传消息</p>
 
 
 

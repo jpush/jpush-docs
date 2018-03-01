@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 
-	<title>JMSGMessageTransparentEvent Class Reference</title>
+	<title>JMSGGroupAdminApprovalEvent Class Reference</title>
 
 	<link rel="stylesheet" href="../css/style.css">
 	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
@@ -56,15 +56,15 @@
 	
 	<optgroup label="Properties">
 		
-		<option value="//api/name/transMessageType">transMessageType</option>
+		<option value="//api/name/isAgreeApply">isAgreeApply</option>
 		
-		<option value="//api/name/sendUser">sendUser</option>
+		<option value="//api/name/applyEventID">applyEventID</option>
 		
-		<option value="//api/name/target">target</option>
+		<option value="//api/name/groupID">groupID</option>
 		
-		<option value="//api/name/transparentText">transparentText</option>
+		<option value="//api/name/groupAdmin">groupAdmin</option>
 		
-		<option value="//api/name/conversation">conversation</option>
+		<option value="//api/name/users">users</option>
 		
 	</optgroup>
 	
@@ -85,7 +85,7 @@
 		<div id="overview_contents" class="container">
 			<div id="content">
 				<main role="main">
-					<h1 class="title">JMSGMessageTransparentEvent Class Reference</h1>
+					<h1 class="title">JMSGGroupAdminApprovalEvent Class Reference</h1>
 
 					
 					<div class="section section-specification"><table cellspacing="0"><tbody>
@@ -104,7 +104,7 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>上层通过 JMSGEventDelegate 类中的 <a href="../Protocols/JMSGEventDelegate.html#//api/name/onReceiveMessageTransparentEvent:">[JMSGEventDelegate onReceiveMessageTransparentEvent:]</a> 代理方法监听该事件</p>
+						<p>管理员同意或者拒绝了某个入群申请，其他管理员会收到该通知，上层通过 JMSGGroupDelegate 类中的 <a href="../Protocols/JMSGGroupDelegate.html#//api/name/onReceiveGroupAdminApprovalEvent:">[JMSGGroupDelegate onReceiveGroupAdminApprovalEvent:]</a> 代理方法监听该事件</p>
 					</div>
 					
 					
@@ -120,8 +120,8 @@
 
 						<div class="task-list">
 							<div class="section-method">
-	<a name="//api/name/transMessageType" title="transMessageType"></a>
-	<h3 class="method-title"><code><a href="#//api/name/transMessageType">&nbsp;&nbsp;transMessageType</a></code>
+	<a name="//api/name/isAgreeApply" title="isAgreeApply"></a>
+	<h3 class="method-title"><code><a href="#//api/name/isAgreeApply">&nbsp;&nbsp;isAgreeApply</a></code>
 </h3>
 
 	<div class="method-info">
@@ -131,12 +131,12 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>消息透传的类型,单聊、群聊、设备间透传消息</p>
+				<p>管理员是否同意申请，YES：同意，NO：拒绝</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign, readonly) JMSGTransMessageType transMessageType</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign, readonly) BOOL isAgreeApply</code></div>
 
 		    
 			
@@ -161,8 +161,8 @@
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/sendUser" title="sendUser"></a>
-	<h3 class="method-title"><code><a href="#//api/name/sendUser">&nbsp;&nbsp;sendUser</a></code>
+	<a name="//api/name/applyEventID" title="applyEventID"></a>
+	<h3 class="method-title"><code><a href="#//api/name/applyEventID">&nbsp;&nbsp;applyEventID</a></code>
 </h3>
 
 	<div class="method-info">
@@ -172,12 +172,12 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>透传消息的发送者</p>
+				<p>申请入群事件的事件 id</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) JMSGUser *sendUser</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) NSString *applyEventID</code></div>
 
 		    
 			
@@ -202,8 +202,8 @@
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/target" title="target"></a>
-	<h3 class="method-title"><code><a href="#//api/name/target">&nbsp;&nbsp;target</a></code>
+	<a name="//api/name/groupID" title="groupID"></a>
+	<h3 class="method-title"><code><a href="#//api/name/groupID">&nbsp;&nbsp;groupID</a></code>
 </h3>
 
 	<div class="method-info">
@@ -213,12 +213,12 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>透传消息的目标对象，JMSGUser、<a href="../Classes/JMSGGroup.html">JMSGGroup</a></p>
+				<p>群 gid</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) id target</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) NSString *groupID</code></div>
 
 		    
 			
@@ -243,8 +243,8 @@
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/transparentText" title="transparentText"></a>
-	<h3 class="method-title"><code><a href="#//api/name/transparentText">&nbsp;&nbsp;transparentText</a></code>
+	<a name="//api/name/groupAdmin" title="groupAdmin"></a>
+	<h3 class="method-title"><code><a href="#//api/name/groupAdmin">&nbsp;&nbsp;groupAdmin</a></code>
 </h3>
 
 	<div class="method-info">
@@ -254,12 +254,12 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>透传消息内容</p>
+				<p>操作的管理员</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) NSString *transparentText</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) JMSGUser *groupAdmin</code></div>
 
 		    
 			
@@ -284,8 +284,8 @@
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/conversation" title="conversation"></a>
-	<h3 class="method-title"><code><a href="#//api/name/conversation">&nbsp;&nbsp;conversation</a></code>
+	<a name="//api/name/users" title="users"></a>
+	<h3 class="method-title"><code><a href="#//api/name/users">&nbsp;&nbsp;users</a></code>
 </h3>
 
 	<div class="method-info">
@@ -295,12 +295,12 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>透传消息所属会话</p>
+				<p>申请或被邀请加入群的用户，即：实际入群的用户</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) JMSGConversation *conversation</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) NSArray JMSG_GENERIC ( __kindof JMSGUser **users</code></div>
 
 		    
 			
@@ -309,11 +309,6 @@
 
 			
 
-			
-			<div class="method-subsection discussion-section">
-				<h4 class="method-subtitle">Discussion</h4>
-				<p>注意：如果接收到设备间的透传事件，此属性的值为 nil；如果本地并没有创建会话，此属性也为 nil</p>
-			</div>
 			
 
 			
