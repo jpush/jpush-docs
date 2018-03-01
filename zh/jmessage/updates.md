@@ -1,6 +1,35 @@
 # 最近更新
 
 
+### iOS SDK v3.5.0
+
+#### 更新时间
+
+* 2018-03-01
+
+#### ChangeLog
+
+##### BugFix:
+
+* 修复用户反馈的一些 bug
+
+##### NewFeature
+
+* 设置群组管理员功能
+* 解散群组功能
+* 移交群主权限功能
+* 设备间消息透传功能
+* 登录接口返回用户登录设备记录
+
+#### 升级指南
+* 使用新版本的 JMessage.framework 文件替换原工程下的同名旧文件
+* 将新版本的 JMessage.framework 里的 JCore link 到工程中，详细参见官网集成文档
+
+#### 接口变更
++ `-(void)onReceiveNotificationEvent:` 接口细分为 `-(void)onReceiveUserLoginStatusChangeEvent:` 和 `-(void)onReceiveFriendNotificationEvent:`
+
+
+
 ### Android SDK v2.5.0
 
 #### 更新时间
