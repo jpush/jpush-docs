@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 
-	<title>JMSGMessageTransparentEvent Class Reference</title>
+	<title>JMSGDeviceInfo Class Reference</title>
 
 	<link rel="stylesheet" href="../css/style.css">
 	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
@@ -56,15 +56,15 @@
 	
 	<optgroup label="Properties">
 		
-		<option value="//api/name/transMessageType">transMessageType</option>
+		<option value="//api/name/platformType">platformType</option>
 		
-		<option value="//api/name/sendUser">sendUser</option>
+		<option value="//api/name/isLogin">isLogin</option>
 		
-		<option value="//api/name/target">target</option>
+		<option value="//api/name/online">online</option>
 		
-		<option value="//api/name/transparentText">transparentText</option>
+		<option value="//api/name/mtime">mtime</option>
 		
-		<option value="//api/name/conversation">conversation</option>
+		<option value="//api/name/flag">flag</option>
 		
 	</optgroup>
 	
@@ -85,16 +85,16 @@
 		<div id="overview_contents" class="container">
 			<div id="content">
 				<main role="main">
-					<h1 class="title">JMSGMessageTransparentEvent Class Reference</h1>
+					<h1 class="title">JMSGDeviceInfo Class Reference</h1>
 
 					
 					<div class="section section-specification"><table cellspacing="0"><tbody>
 						<tr>
 	<th>Inherits from</th>
-	<td><a href="../Classes/JMSGNotificationEvent.html">JMSGNotificationEvent</a> : NSObject</td>
+	<td>NSObject</td>
 </tr><tr>
 	<th>Declared in</th>
-	<td>JMSGNotificationEvent.h</td>
+	<td>JMessage.h</td>
 </tr>
 						</tbody></table></div>
 					
@@ -104,7 +104,7 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>上层通过 JMSGEventDelegate 类中的 <a href="../Protocols/JMSGEventDelegate.html#//api/name/onReceiveMessageTransparentEvent:">[JMSGEventDelegate onReceiveMessageTransparentEvent:]</a> 代理方法监听该事件</p>
+						<p>用户登录设备信息</p>
 					</div>
 					
 					
@@ -120,8 +120,8 @@
 
 						<div class="task-list">
 							<div class="section-method">
-	<a name="//api/name/transMessageType" title="transMessageType"></a>
-	<h3 class="method-title"><code><a href="#//api/name/transMessageType">&nbsp;&nbsp;transMessageType</a></code>
+	<a name="//api/name/platformType" title="platformType"></a>
+	<h3 class="method-title"><code><a href="#//api/name/platformType">&nbsp;&nbsp;platformType</a></code>
 </h3>
 
 	<div class="method-info">
@@ -131,12 +131,12 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>消息透传的类型,单聊、群聊、设备间透传消息</p>
+				<p>设备所属平台，Android、iOS、Windows、web</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign, readonly) JMSGTransMessageType transMessageType</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign, readonly) JMSGPlatformType platformType</code></div>
 
 		    
 			
@@ -154,15 +154,15 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">JMSGNotificationEvent.h</code></p>
+				<p><code class="declared-in-ref">JMessage.h</code></p>
 			</div>
 			
 			
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/sendUser" title="sendUser"></a>
-	<h3 class="method-title"><code><a href="#//api/name/sendUser">&nbsp;&nbsp;sendUser</a></code>
+	<a name="//api/name/isLogin" title="isLogin"></a>
+	<h3 class="method-title"><code><a href="#//api/name/isLogin">&nbsp;&nbsp;isLogin</a></code>
 </h3>
 
 	<div class="method-info">
@@ -172,12 +172,12 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>透传消息的发送者</p>
+				<p>是否登录，YES:已登录，NO:未登录</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) JMSGUser *sendUser</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign, readonly) BOOL isLogin</code></div>
 
 		    
 			
@@ -195,15 +195,15 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">JMSGNotificationEvent.h</code></p>
+				<p><code class="declared-in-ref">JMessage.h</code></p>
 			</div>
 			
 			
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/target" title="target"></a>
-	<h3 class="method-title"><code><a href="#//api/name/target">&nbsp;&nbsp;target</a></code>
+	<a name="//api/name/online" title="online"></a>
+	<h3 class="method-title"><code><a href="#//api/name/online">&nbsp;&nbsp;online</a></code>
 </h3>
 
 	<div class="method-info">
@@ -213,12 +213,12 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>透传消息的目标对象，JMSGUser、<a href="../Classes/JMSGGroup.html">JMSGGroup</a></p>
+				<p>是否在线，0:不在线，1:在线</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) id target</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign, readonly) UInt32 online</code></div>
 
 		    
 			
@@ -236,15 +236,15 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">JMSGNotificationEvent.h</code></p>
+				<p><code class="declared-in-ref">JMessage.h</code></p>
 			</div>
 			
 			
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/transparentText" title="transparentText"></a>
-	<h3 class="method-title"><code><a href="#//api/name/transparentText">&nbsp;&nbsp;transparentText</a></code>
+	<a name="//api/name/mtime" title="mtime"></a>
+	<h3 class="method-title"><code><a href="#//api/name/mtime">&nbsp;&nbsp;mtime</a></code>
 </h3>
 
 	<div class="method-info">
@@ -254,12 +254,12 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>透传消息内容</p>
+				<p>上次登录时间</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) NSString *transparentText</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) NSNumber *mtime</code></div>
 
 		    
 			
@@ -277,15 +277,15 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">JMSGNotificationEvent.h</code></p>
+				<p><code class="declared-in-ref">JMessage.h</code></p>
 			</div>
 			
 			
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/conversation" title="conversation"></a>
-	<h3 class="method-title"><code><a href="#//api/name/conversation">&nbsp;&nbsp;conversation</a></code>
+	<a name="//api/name/flag" title="flag"></a>
+	<h3 class="method-title"><code><a href="#//api/name/flag">&nbsp;&nbsp;flag</a></code>
 </h3>
 
 	<div class="method-info">
@@ -295,12 +295,12 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>透传消息所属会话</p>
+				<p>默认为0，1表示该设备被当前登录设备踢出</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) JMSGConversation *conversation</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign, readonly) NSInteger flag</code></div>
 
 		    
 			
@@ -309,11 +309,6 @@
 
 			
 
-			
-			<div class="method-subsection discussion-section">
-				<h4 class="method-subtitle">Discussion</h4>
-				<p>注意：如果接收到设备间的透传事件，此属性的值为 nil；如果本地并没有创建会话，此属性也为 nil</p>
-			</div>
 			
 
 			
@@ -323,7 +318,7 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">JMSGNotificationEvent.h</code></p>
+				<p><code class="declared-in-ref">JMessage.h</code></p>
 			</div>
 			
 			

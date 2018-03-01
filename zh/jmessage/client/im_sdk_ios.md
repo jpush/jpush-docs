@@ -173,22 +173,46 @@ SDK 初始化时，可设置是否启用消息记录漫游。
          }
      }];
 #### 用户登录
-	/*!
-	 * @abstract 用户登录
-	 *
-	 * @param username 登录用户名. 规则与注册接口相同.
-	 * @param password 登录密码. 规则与注册接口相同.
-	 * @param handler 结果回调
-	 *
-	 * - resultObject 简单封装的user对象
-	 * - error 错误信息
-	 *
-	 * 注意：上层不要直接使用 resultObject 对象做操作, 因为 resultOjbect 只是一个简单封装的user对象.
-	 */
 
-	+ (void)loginWithUsername:(NSString *)username
-	                 password:(NSString *)password
-	        completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)handler;
++ 回调中返回登录设备信息
+
+```
+/*!
+ * @abstract 用户登录
+ *
+ * @param username 登录用户名. 规则与注册接口相同.
+ * @param password 登录密码. 规则与注册接口相同.
+ * @param handler 结果回调
+ *
+ * - devices 用户登录设备信息，NSArray<JMSGDeviceInfo>
+ * - error   错误信息,为 nil 时表示成功
+ *
+ * @discussion 回调中 devices 返回的是设备信息，具体属性请查看 JMSGDeviceInfo 类
+ */
++ (void)loginWithUsername:(NSString *)username
+                 password:(NSString *)password
+                  handler:(void(^)(NSArray <__kindof JMSGDeviceInfo *>*devices,NSError *error))handler;
+```
+
+```
+/*!
+ * @abstract 用户登录
+ *
+ * @param username 登录用户名. 规则与注册接口相同.
+ * @param password 登录密码. 规则与注册接口相同.
+ * @param handler 结果回调
+ *
+ * - resultObject 简单封装的user对象
+ * - error 错误信息
+ *
+ * 注意：上层不要直接使用 resultObject 对象做操作, 因为 resultOjbect 只是一个简单封装的user对象.
+ */
+
++ (void)loginWithUsername:(NSString *)username
+                 password:(NSString *)password
+        completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)handler;
+```        
+        
 ##### 例子
 	[JMSGUser loginWithUsername:@"用户名" password:@"密码" completionHandler:^(id resultObject, NSError *error) {
 		  if (!error) {
@@ -1204,6 +1228,22 @@ info.desc = @"这个群组是公开群";
 }];
 ```
 
+#### 解散群组
++ 群组类型：普通群和受限群都拥有此功能
++ 权限：仅群主可解散，普通群成员和管理员无此权限
+
+```
+/*!
+ * @abstract 解散群组
+ *
+ * @patam gid     需要解散的群组 id
+ * @param handler 结果回调,error = nil 表示操作成功
+ *
+ * @discussion 只有群主才有权限解散群。
+ */
++ (void)dissolveGroupWithGid:(NSString *)gid handler:(JMSGCompletionHandler)handler;
+```
+
 #### 获取公开群列表
 
 支持分页获取 AppKey 下的公开群信息，注意接口返回的数组元素是 JMSGGroupInfo ，而不是 JMSGGroup ，需要获取群组的属性值和调用群组接口，则需要通过 JMSGGroupInfo 中的 gid 获取到 JMSGGroup 对象先，然后再操作
@@ -1297,6 +1337,77 @@ info.desc = @"这个群组是公开群";
             NSLog(@"获取群组信息成功");
         }
     }];
+#### 设置群管理员
+
++ 范围：私有群和公开群都增加管理员角色。
++ 描述：仅群主可对群管理员进行管理，可指定群内任意成员成为管理员，也可取消管理员身份。
++ 管理员权限：拥有普通群成员的所有基础功能和权限，除此之外还拥有更高的权限:设置禁言、审批入群.
+
+```
+/*!
+ * @abstract 添加管理员
+ *
+ * @param username 用户名
+ * @param appkey   用户 AppKey，不填则默认为本应用 AppKey
+ * @param handler 结果回调。error 为 nil 表示成功.
+ *
+ * @discussion 注意：非 VIP 应用最多设置 15 个管理员，不包括群主本身
+ */
+- (void)addGroupAdminWithUsername:(NSString *JMSG_NONNULL)username
+                           appKey:(NSString *JMSG_NULLABLE)appkey
+                completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)handler;
+
+```
+```
+/*!
+ * @abstract 删除管理员
+ *
+ * @param username 用户名
+ * @param appkey   用户 AppKey，不填则默认为本应用 AppKey
+ * @param handler 结果回调。error 为 nil 表示成功.
+ */
+- (void)deleteGroupAdminWithUsername:(NSString *)username
+                              appKey:(NSString *JMSG_NULLABLE)appkey
+                   completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)handler;
+```
+
+```
+/*!
+ * @abstract 判断用户是否是管理员
+ *
+ * @param username  待判断用户的用户名
+ * @param appKey    待判断用户的appKey，若传入空则默认使用本应用appKey
+ */
+- (BOOL)isAdminMemberWithUsername:(NSString *JMSG_NONNULL)username
+                           appKey:(NSString *JMSG_NULLABLE)appKey;
+
+/*!
+ * @abstract 管理员列表
+ *
+ * @return 管理员列表. NSArray 里成员类型是 JMSGUser
+ *
+ * @discussion 注意：返回列表中包含群主；仅在获取群成员成功后此接口才有效
+ */
+- (NSArray JMSG_GENERIC(__kindof JMSGUser *)*)groupAdminMembers;
+```
+
+#### 移交群主
++ 群主可选择群内任意一位成员进行群主变更，把群主权限移交给他，移交后之前的群主变为普通群成员。
++ 适用群组类型：私有群和公开群都拥有此功能
++ 仅群主有此权限
+
+```
+/*!
+ * @abstract 移交群主
+ *
+ * @param username 新群主用户名
+ * @param appkey   新群主用户 AppKey，不填则默认为本应用 AppKey
+ * @param handler 结果回调。error 为 nil 表示成功.
+ */
+- (void)transferGroupOwnerWithUsername:(NSString *JMSG_NONNULL)username
+                                appKey:(NSString *JMSG_NULLABLE)appkey
+                     completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)handler;
+```
 
 #### 申请入群
 对于公开群，需要申请或者其他群成员邀请，并由管理员审批同意才可以入群
@@ -1760,11 +1871,51 @@ BOOL status = self.message.isHaveRead;
 NSLog(@"消息是否已读:%@", status?@"是":@"否");
 ```
 
-### 消息透传
+### 消息透传命令
+
 消息透传发送的内容后台不会为其离线保存，只会在对方用户在线的前提下将内容推送给对方。SDK 收到命令之后也不会本地保存，不发送通知栏通知，整体快速响应。  
 开发者可以通过消息透传拓展一些在线场景下的辅助功能，如：实现输入状态提示等。
 
-#### 发送消息透传
+#### 透传命令分类：
+
+```
+/*!
+ * 发送消息透传的的类型
+ */
+typedef NS_ENUM(NSInteger,JMSGTransMessageType) {
+  /// 单聊透传消息
+  kJMSGTransMessageTypeSingle        = 1,
+  /// 群里透传消息
+  kJMSGTransMessageTypeGroup        = 2,
+  /// 设备间透传消息
+  kJMSGTransMessageTypeCrossDevice  = 3,
+};
+```
+#### 设备间消息透传
+支持同用户下不同设备之间消息透传
+
+```
+/*!
+ * @abstract 发送透传消息给自己在线的其他设备
+ *
+ * @param message   发送的内容
+ * @param platform  设备类型
+ * @param handler   回调
+ *
+ * @discussion 注意：
+ *
+ *  1. 消息透传功能，消息不会进入到后台的离线存储中去，仅当对方用户当前在线时才会成功送达，SDK 不会将此类消息内容存储；
+ *
+ *  2. 透传命令到达是，接收方通过 [JMSGEventDelegate onReceiveMessageTransparentEvent:] 方法监听。
+ *
+ * @since 3.5.0
+ */
++ (void)sendCrossDeviceTransMessage:(NSString *)message
+                           platform:(JMSGPlatformType)platform
+                            handler:(JMSGCompletionHandler)handler;
+```
+
+#### 会话间消息透传
 
 ```
 /*!
