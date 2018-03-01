@@ -105,8 +105,8 @@
         dependencies {
             ......
             
-            compile 'cn.jiguang.sdk:jmessage:2.4.1'  // 此处以JMessage 2.4.1 版本为例。
-            compile 'cn.jiguang.sdk:jcore:1.1.8'  // 此处以JCore 1.1.8 版本为例。
+            compile 'cn.jiguang.sdk:jmessage:2.5.0'  // 此处以JMessage 2.5.0 版本为例。
+            compile 'cn.jiguang.sdk:jcore:1.1.9'  // 此处以JCore 1.1.9 版本为例。
             ......
         }
         
@@ -261,12 +261,6 @@ defaultConfig {
             android:name="cn.jpush.im.android.helpers.IMReceiver"
             android:enabled="true"
             android:exported="false">
-            <intent-filter android:priority="1000">
-                <action android:name="cn.jpush.im.android.action.IM_RESPONSE" />
-                <action android:name="cn.jpush.im.android.action.NOTIFICATION_CLICK_PROXY" />
-
-                <category android:name="您自己的包名" />
-            </intent-filter>
         </receiver>
 
         <!-- Required. For publish channel feature -->
