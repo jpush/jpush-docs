@@ -109,7 +109,8 @@ JMessageClient.init(Context context)
 ### SDK初始化(设置消息记录漫游)
 ***Since 2.1.0***  
 SDK初始化,同时指定是否启用消息记录漫游。  
-打开消息漫游之后，用户多个设备之间登录时，sdk会自动将当前登录用户的历史消息同步到本地，同步完成之后sdk会发送一个`ConversationRefreshEvent`事件通知上层刷新，具体事件处理方法见[事件处理](#Event)一节。
+打开消息漫游之后，用户多个设备之间登录时，sdk会自动将当前登录用户的历史消息同步到本地，同步完成之后sdk会发送一个`ConversationRefreshEvent`事件通知上层刷新，具体事件处理方法见[事件处理](#Event)一节。</br>
+<font color= SteelBlue>注意：如果应用包含多个进程，SDK的初始化应放在Application里。</font>
 
 ```
 JMessageClient.init(Context context, boolean msgRoaming)
