@@ -13,6 +13,10 @@
 
 官方地址：[https://github.com/jpush/jmessage-phonegap-plugin](https://github.com/jpush/jmessage-phonegap-plugin)
 
+### React Native
+
+官方地址：[https://github.com/jpush/jmessage-react-plugin](https://github.com/jpush/jmessage-react-plugin)
+
 ## 技术支持
 
 - QQ 交流群：413602425
