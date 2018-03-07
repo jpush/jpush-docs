@@ -440,7 +440,22 @@ Example Response
 < HTTP/1.1 204 NO CONTENT
 < Content-Type: application/json; charset=utf-8   
 ```
+### 批量删除用户
 
+	DELETE /v1/users/
+
+Request Body
+```
+["USER1","USER2"]
+```
++ username 用户名数组。（最多支持同时删除100个用户）
+
+Example Response
+
+```
+< HTTP/1.1 20 NO CONTENT
+< Content-Type: application/json; charset=utf-8   
+```
 
 ### 添加黑名单
 
