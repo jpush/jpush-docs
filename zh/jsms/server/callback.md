@@ -20,7 +20,7 @@ Step4：点击选择需要使用的回调接口
 ![](./callback_image/dev_response_set.jpg)
 
 ###设置回调地址
-在控制台填写回调地址，回调地址必须以 http:// 或 https:// 开头，支持所有端口。填写回调地址后需校验通过后才可以使用，校验规则：极光将给回调 URL 发起一个 GET 请求并附带一个 8 位随机字符串的参数 echostr，开发者需要在 Response Body 里原样输出 echostr 的值。   
+在控制台填写回调地址，回调地址必须以 http:// 或 https:// 开头，不支持自定义端口。填写回调地址后需校验通过后才可以使用，校验规则：极光将给回调 URL 发起一个 GET 请求并附带一个 8 位随机字符串的参数 echostr，开发者需要在 Response Body 里原样输出 echostr 的值。   
 
 ##回调消息格式
 ###回调方式说明
@@ -76,6 +76,14 @@ Step4：点击选择需要使用的回调接口
 |status| Integer| 模板状态，1代表审核通过，2代表审核不通过|
 |refuseReason| String| 审核不通过的原因|
 
+###签名审核结果回调参数 
+
+|CODE| TYPE| DESCRIPTION|
+|---| ----| ----|
+|signId| Integer| 签名ID|
+|status| Integer| 签名状态，1代表审核通过，2代表审核不通过|
+|refuseReason| String| 审核不通过的原因|
+
 <a name="回调测试"></a>
 ##回调测试
 ### 功能说明
@@ -109,6 +117,13 @@ Step4：点击选择需要使用的回调接口
 |status|	1|
 |refuseReason| 	null|
 
+###签名审核结果回调测试数据
+|KEY| VALUE|
+|----|----|
+|signId|	123|
+|status|	1|
+|refuseReason| 	null|
+
 ###curl 模拟 POST 回调请求
 在 linux 上可以很方便的使用 curl 命令发起 HTTP POST 请求，在 windows 下需要安装 curl 工具软件。以下是 curl 模拟回调的示例
 
@@ -131,6 +146,11 @@ curl -d "nonce=7659972084945889195&timestamp=1492150740274&signature=007eff6a105
 curl -d "nonce=7659972084945889195&timestamp=1492150740274&signature=007eff6a105503211b472802eecc42465582ba70&type=SMS_TEMPLATE&data={\"tempId\":57496,\"status\":1,\"refuseReason\":null}" "http://localhost:8088/callback"
 ```
 
+###签名审核结果回调
+
+```
+curl -d "nonce=7659972084945889195&timestamp=1492150740274&signature=007eff6a105503211b472802eecc42465582ba70&type=SMS_SIGN&data={\"signId\":57496,\"status\":1,\"refuseReason\":null}" "http://localhost:8088/callback"
+```
 
 ###HttpClient 模拟 POST 回调请求
 
