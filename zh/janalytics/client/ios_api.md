@@ -45,7 +45,7 @@
 
 + ***\+ (void)stopLogPageView:(NSString \*)pageName***
 	+ 接口说明：
-		+ 页面流统计结束接口，建议在ViewControler的viewDidDisappear:方法中调用
+		+ 页面流统计结束接口，建议在ViewControler的viewDidDisappear:方法中调用；结束后，默认即时上报此页面。可通过[setFrequency:]方法更改为周期性上报策略
 
 	+ 参数说明：
 		+ pageName：要结束统计的页面名
@@ -124,6 +124,7 @@
 1. 模板属性值分为非空和可选，参考下面介绍
 2. 字符串属性以及自定义属性（extra中的key与value）限制大小不超过256字节，当存在越界时该事件将会被丢弃.
 3. 自定义键值对数目不能超过10个，超过10个限制该事件将会被丢弃.
+4. 默认即时上报事件。可通过[setFrequency:]方法更改为周期性上报策略
 
 + ***JANALYTICSEventObject***
 
@@ -413,11 +414,12 @@
 + ***\+ (void)setFrequency:(NSUInteger)frequency***
 	+ 接口说明：
 		+ 设置页面流/事件等周期上报频率
-		+ 默认一分钟上报一次
+		+ 默认为未设置频率，即时上报
+		+ 可以设置为0，即表示取消周期上报，改为即时上报
 
 	+ 参数说明：
 		+ frequency： 定时上报频率单位秒
-		<br/>频率允许区间：10 < frequency < 24*60*60
+		<br/>频率允许区间：0 或者 10 < frequency < 24\*60\*60
 
 调用示例：
 
