@@ -1,10 +1,10 @@
 var searchData=
 [
-  ['cmd',['cmd',['../struct_jmcpp_1_1_trans_command_event.html#aad43b2b6968d785fe4d6548fe5da205a',1,'Jmcpp::TransCommandEvent']]],
+  ['cmd',['cmd',['../struct_jmcpp_1_1_trans_command_event.html#aad43b2b6968d785fe4d6548fe5da205a',1,'Jmcpp::TransCommandEvent::cmd()'],['../struct_jmcpp_1_1_platform_trans_command_event.html#a337ae7a6d2aee1c00178a4dfbcf8a1dd',1,'Jmcpp::PlatformTransCommandEvent::cmd()']]],
   ['conid',['conId',['../struct_jmcpp_1_1_message_retracted_event.html#ac0ce437e3a00e98600858764eca1c800',1,'Jmcpp::MessageRetractedEvent::conId()'],['../struct_jmcpp_1_1_multi_no_disturb_changed_event.html#a91e0b656ebb820e1cd185b960162244a',1,'Jmcpp::MultiNoDisturbChangedEvent::conId()'],['../struct_jmcpp_1_1_multi_unread_msg_count_changed_event.html#ac314e5a2b50bc3c17fd9a9f76ef0eff6',1,'Jmcpp::MultiUnreadMsgCountChangedEvent::conId()'],['../struct_jmcpp_1_1_multi_receipt_changed_event.html#a94213e7bc69920cb9dc38d8b34ee5698',1,'Jmcpp::MultiReceiptChangedEvent::conId()'],['../struct_jmcpp_1_1_receipts_updated_event.html#a80d6093563b202ac9be73b330d2d61c8',1,'Jmcpp::ReceiptsUpdatedEvent::conId()'],['../struct_jmcpp_1_1_trans_command_event.html#a580eff1f52fc51b7a1e4cb726a12cea1',1,'Jmcpp::TransCommandEvent::conId()'],['../class_jmcpp_1_1_message.html#af2908cad3990e461fc657b49f3a92971',1,'Jmcpp::Message::conId()']]],
   ['content',['content',['../class_jmcpp_1_1_message.html#ae32ffb0c1f67b2c3081d050faa7c3b23',1,'Jmcpp::Message']]],
   ['crc32',['crc32',['../struct_jmcpp_1_1_image_content.html#a772da7306844d0900f0ee5907ebd4c98',1,'Jmcpp::ImageContent::crc32()'],['../struct_jmcpp_1_1_file_content.html#a51e60ac2f64f2f73300e1acef662db5d',1,'Jmcpp::FileContent::crc32()'],['../struct_jmcpp_1_1_voice_content.html#a6c954873ff9305fb4be7998f4a09ae83',1,'Jmcpp::VoiceContent::crc32()']]],
   ['ctime',['ctime',['../struct_jmcpp_1_1_group_info.html#a5101140b6a64c897e5862f0cefe7213e',1,'Jmcpp::GroupInfo::ctime()'],['../struct_jmcpp_1_1_room_info.html#a7f86c4d735b21483eee361c0186d4fdf',1,'Jmcpp::RoomInfo::ctime()']]],
-  ['currentmembercount',['currentMemberCount',['../struct_jmcpp_1_1_room_info.html#a15ae2b7bef2c1cf1a8af8029671a7bda',1,'Jmcpp::RoomInfo']]],
+  ['currentmembercount',['currentMemberCount',['../struct_jmcpp_1_1_room_info.html#aa750dee2c2001a5a282d44f26ad210b9',1,'Jmcpp::RoomInfo']]],
   ['custom',['custom',['../struct_jmcpp_1_1_custom_content.html#a23483ab57434bfa86dfe47b63c12999f',1,'Jmcpp::CustomContent']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['male',['Male',['../namespace_jmcpp.html#abeb7b66b7d49d4ffdf1f9963f6440589a63889cfb9d3cbe05d1bd2be5cc9953fd',1,'Jmcpp']]]
+  ['ios',['iOS',['../namespace_jmcpp.html#a5cfe2cd99045a069ebdbde3779622e1fa1bdf605991920db11cbdf8508204c4eb',1,'Jmcpp']]]
 ];

@@ -1,5 +1,100 @@
 # 最近更新
 
+
+### iOS SDK v3.5.0
+
+#### 更新时间
+
+* 2018-03-01
+
+#### ChangeLog
+
+##### BugFix:
+
+* 修复用户反馈的一些 bug
+
+##### NewFeature
+
+* 设置群组管理员功能
+* 解散群组功能
+* 移交群主权限功能
+* 设备间消息透传功能
+* 登录接口返回用户登录设备记录
+
+#### 升级指南
+* 使用新版本的 JMessage.framework 文件替换原工程下的同名旧文件
+* 将新版本的 JMessage.framework 里的 JCore link 到工程中，详细参见官网集成文档
+
+#### 接口变更
++ `-(void)onReceiveNotificationEvent:` 接口细分为 `-(void)onReceiveUserLoginStatusChangeEvent:` 和 `-(void)onReceiveFriendNotificationEvent:`
+
+
+
+### Android SDK v2.5.0
+
+#### 更新时间
+
++ 2018-03-01
+
+#### Change Log
+##### BugFix:
++ 修复老版本升级时禁言列表获取不到问题
++ 修复其他用户反馈的一些bug
+
+##### NewFeature:
++ Android O系统适配
++ 新增群组管理员
++ 支持解散群组
++ 支持获取设备登陆记录
++ 支持移交群主权限
++ 支持设备间消息透传
+
+#### 升级提示
+
++ 建议升级！
+
+#### 升级指南
+
++ 首先解压您获取到的 zip 压缩包
+
++ 更新库文件
+	+ 打开libs文件夹。添加jcore-android_v1.1.9.jar。用 jmessage-android_v2.5.0.jar 替换项目中原有的极光jar文件，并删除原有极光jar文件。用对应CPU文件夹下的 libjcore119.so 文件，替换项目中原有的libjcoreXXX.so文件，并删除原有的极光so文件，每种型号的so文件都可以在SDK下载包中找到。
+
++ 更新AndroidManifest.xml
+	+ 请参考 SDK下载包最新版本的 demo 来更新AndroidManifest.xml 文件配置。  
+	***注意JCore 从1.1.7版本开始新增了provider组件，如果项目中使用的JCore是1.1.7之前的版本，集成时需要注意manifest中新增的provider组件的配置***
+
++ 如果使用jcenter的方式集成JMessage，不需要添加相关组件和资源，详细集成说明请参考官方[集成指南](https://docs.jiguang.cn/jmessage/client/jmessage_android_guide/)
+
+
+### Windows SDK V1.2.0
+
+#### 更新时间
+
++ 2018-02-02
+
+#### ChangeLog
+
+##### NewFeature:
+
++ 登录设备历史记录
++ 解散群
++ 设置群管理员
++ 获取公开群列表
++ 转让群主身份
++ 设备间消息透传
+
+#### 升级提示
+
++ 建议升级！
+
+#### 升级指南
+
++ 从官网下载SDK包,直接全部替换即可
+
++ 如果使用的NuGet包,可以使用NuGet包管理器直接更新
+
+
 ### Web SDK v2.6.0
 
 #### 更新时间
@@ -21,6 +116,7 @@
 #### 升级指南
 
 + 用最新的 jmessage-sdk-web.2.6.0.min.js 替换掉老版本的 sdk
+
 
 
 ### iOS SDK v3.4.1

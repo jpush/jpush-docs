@@ -108,11 +108,17 @@
 		
 		<option value="//api/name/processApplyJoinGroupEventID:gid:joinUser:applyUser:isAgree:reason:handler:">+ processApplyJoinGroupEventID:gid:joinUser:applyUser:isAgree:reason:handler:</option>
 		
+		<option value="//api/name/dissolveGroupWithGid:handler:">+ dissolveGroupWithGid:handler:</option>
+		
 	</optgroup>
 	
 
 	
 	<optgroup label="Instance Methods">
+		
+		<option value="//api/name/memberArray">- memberArray</option>
+		
+		<option value="//api/name/memberArrayWithCompletionHandler:">- memberArrayWithCompletionHandler:</option>
 		
 		<option value="//api/name/setIsNoDisturb:handler:">- setIsNoDisturb:handler:</option>
 		
@@ -124,9 +130,15 @@
 		
 		<option value="//api/name/groupSilenceMembers">- groupSilenceMembers</option>
 		
-		<option value="//api/name/memberArray">- memberArray</option>
+		<option value="//api/name/isAdminMemberWithUsername:appKey:">- isAdminMemberWithUsername:appKey:</option>
 		
-		<option value="//api/name/memberArrayWithCompletionHandler:">- memberArrayWithCompletionHandler:</option>
+		<option value="//api/name/groupAdminMembers">- groupAdminMembers</option>
+		
+		<option value="//api/name/transferGroupOwnerWithUsername:appKey:completionHandler:">- transferGroupOwnerWithUsername:appKey:completionHandler:</option>
+		
+		<option value="//api/name/addGroupAdminWithUsername:appKey:completionHandler:">- addGroupAdminWithUsername:appKey:completionHandler:</option>
+		
+		<option value="//api/name/deleteGroupAdminWithUsername:appKey:completionHandler:">- deleteGroupAdminWithUsername:appKey:completionHandler:</option>
 		
 		<option value="//api/name/addMembersWithUsernameArray:completionHandler:">- addMembersWithUsernameArray:completionHandler:</option>
 		
@@ -791,7 +803,9 @@
 						<th scope="row" class="argument-name"><code>handler</code></th>
 						<td><p>结果回调，NSArray<a href="../Classes/JMSGGroupInfo.html">JMSGGroupInfo</a></p>
 
-<h4>注意：返回数据中不是 JMSGGroup 类型，而是 <a href="../Classes/JMSGGroupInfo.html">JMSGGroupInfo</a> 类型，只能用于展示信息，如果想要调用相关群组 API 接口则需要通过 <a href="#//api/name/gid">gid</a> 获取到 JMSGGroup 对象才可以调用</h4></td>
+<h4>注意：</h4>
+
+<p>返回数据中不是 JMSGGroup 类型，而是 <a href="../Classes/JMSGGroupInfo.html">JMSGGroupInfo</a> 类型，只能用于展示信息，如果想要调用相关群组 API 接口则需要通过 <a href="#//api/name/gid">gid</a> 获取到 JMSGGroup 对象才可以调用</p></td>
 					</tr>
 				
 				</table>
@@ -954,6 +968,66 @@
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
 				<p>只有管理员才有权限审批入群申请，SDK 不会保存申请入群事件(<a href="../Classes/JMSGApplyJoinGroupEvent.html">JMSGApplyJoinGroupEvent</a>)，上层可以自己封装再保存，或则归档直接保存，以便此接口取值调用。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGGroup.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/dissolveGroupWithGid:handler:" title="dissolveGroupWithGid:handler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/dissolveGroupWithGid:handler:">+&nbsp;dissolveGroupWithGid:handler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>解散群组</p>
+
+<p>@patam <a href="#//api/name/gid">gid</a>     需要解散的群组 id</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)dissolveGroupWithGid:(NSString *)<em>gid</em> handler:(JMSGCompletionHandler)<em>handler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>handler</code></th>
+						<td><p>结果回调,error = nil 表示操作成功</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>只有群主才有权限解散群。</p>
 			</div>
 			
 
@@ -1525,6 +1599,115 @@
 			
 		</div>
 	</div>
+</div>
+						</div>
+						
+
+						<a title="Group members maintenance 群组成员维护" name="task_Group members maintenance 群组成员维护"></a>
+						<h2 class="task-title">Group members maintenance 群组成员维护</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/memberArray" title="memberArray"></a>
+	<h3 class="method-title"><code><a href="#//api/name/memberArray">&ndash;&nbsp;memberArray</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>获取群组成员列表（同步接口，建议使用异步接口）</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (NSArray JMSG_GENERIC ( __kindof JMSGUser *) *)memberArray</code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>成员列表. NSArray 里成员类型是 <a href="../Classes/JMSGUser.html">JMSGUser</a>.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>一般在群组详情界面调用此接口，展示群组的所有成员列表。
+本接口只是在本地请求成员列表，不会发起服务器端请求。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGGroup.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/memberArrayWithCompletionHandler:" title="memberArrayWithCompletionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/memberArrayWithCompletionHandler:">&ndash;&nbsp;memberArrayWithCompletionHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>获取群组成员列表（异步接口）</p>
+
+<p>@handler 成员列表. NSArray 里成员类型是 <a href="../Classes/JMSGUser.html">JMSGUser</a>.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)memberArrayWithCompletionHandler:(JMSGCompletionHandler JMSG_NULLABLE)<em>handler</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>一般在群组详情界面调用此接口，展示群组的所有成员列表。
+本接口只是在本地请求成员列表，不会发起服务器端请求。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGGroup.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
 </div><div class="section-method">
 	<a name="//api/name/setIsNoDisturb:handler:" title="setIsNoDisturb:handler:"></a>
 	<h3 class="method-title"><code><a href="#//api/name/setIsNoDisturb:handler:">&ndash;&nbsp;setIsNoDisturb:handler:</a></code>
@@ -1819,64 +2002,9 @@
 			
 
 			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">JMSGGroup.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div>
-						</div>
-						
-
-						<a title="Group members maintenance 群组成员维护" name="task_Group members maintenance 群组成员维护"></a>
-						<h2 class="task-title">Group members maintenance 群组成员维护</h2>
-
-						<div class="task-list">
-							<div class="section-method">
-	<a name="//api/name/memberArray" title="memberArray"></a>
-	<h3 class="method-title"><code><a href="#//api/name/memberArray">&ndash;&nbsp;memberArray</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>获取群组成员列表（同步接口，建议使用异步接口）</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>- (NSArray JMSG_GENERIC ( __kindof JMSGUser *) *)memberArray</code></div>
-
-		    
-			
-
-			
-			<div class="method-subsection return">
-				<h4 class="method-subtitle parameter-title">Return Value</h4>
-				<p>成员列表. NSArray 里成员类型是 <a href="../Classes/JMSGUser.html">JMSGUser</a>.</p>
-			</div>
-			
-
-			
-
-			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>一般在群组详情界面调用此接口，展示群组的所有成员列表。
-本接口只是在本地请求成员列表，不会发起服务器端请求。</p>
+				<p>仅在获取群成员成功后此接口才有效</p>
 			</div>
 			
 
@@ -1894,8 +2022,8 @@
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/memberArrayWithCompletionHandler:" title="memberArrayWithCompletionHandler:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/memberArrayWithCompletionHandler:">&ndash;&nbsp;memberArrayWithCompletionHandler:</a></code>
+	<a name="//api/name/isAdminMemberWithUsername:appKey:" title="isAdminMemberWithUsername:appKey:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/isAdminMemberWithUsername:appKey:">&ndash;&nbsp;isAdminMemberWithUsername:appKey:</a></code>
 </h3>
 
 	<div class="method-info">
@@ -1905,16 +2033,208 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>获取群组成员列表（异步接口）</p>
-
-<p>@handler 成员列表. NSArray 里成员类型是 <a href="../Classes/JMSGUser.html">JMSGUser</a>.</p>
+				<p>判断用户是否是管理员</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (void)memberArrayWithCompletionHandler:(JMSGCompletionHandler JMSG_NULLABLE)<em>handler</em></code></div>
+			<div class="method-subsection method-declaration"><code>- (BOOL)isAdminMemberWithUsername:(NSString *JMSG_NONNULL)<em>username</em> appKey:(NSString *JMSG_NULLABLE)<em>appKey</em></code></div>
 
 		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>username</code></th>
+						<td><p>待判断用户的用户名</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>appKey</code></th>
+						<td><p>待判断用户的appKey，若传入空则默认使用本应用appKey</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGGroup.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/groupAdminMembers" title="groupAdminMembers"></a>
+	<h3 class="method-title"><code><a href="#//api/name/groupAdminMembers">&ndash;&nbsp;groupAdminMembers</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>管理员列表</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (NSArray JMSG_GENERIC ( __kindof JMSGUser *) *)groupAdminMembers</code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>管理员列表. NSArray 里成员类型是 <a href="../Classes/JMSGUser.html">JMSGUser</a></p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>注意：返回列表中包含群主；仅在获取群成员成功后此接口才有效</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGGroup.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/transferGroupOwnerWithUsername:appKey:completionHandler:" title="transferGroupOwnerWithUsername:appKey:completionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/transferGroupOwnerWithUsername:appKey:completionHandler:">&ndash;&nbsp;transferGroupOwnerWithUsername:appKey:completionHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>移交群主</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)transferGroupOwnerWithUsername:(NSString *JMSG_NONNULL)<em>username</em> appKey:(NSString *JMSG_NULLABLE)<em>appkey</em> completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)<em>handler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>username</code></th>
+						<td><p>新群主用户名</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>appkey</code></th>
+						<td><p>新群主用户 AppKey，不填则默认为本应用 AppKey</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>handler</code></th>
+						<td><p>结果回调。error 为 nil 表示成功.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGGroup.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/addGroupAdminWithUsername:appKey:completionHandler:" title="addGroupAdminWithUsername:appKey:completionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/addGroupAdminWithUsername:appKey:completionHandler:">&ndash;&nbsp;addGroupAdminWithUsername:appKey:completionHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>添加管理员</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)addGroupAdminWithUsername:(NSString *JMSG_NONNULL)<em>username</em> appKey:(NSString *JMSG_NULLABLE)<em>appkey</em> completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)<em>handler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>username</code></th>
+						<td><p>用户名</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>appkey</code></th>
+						<td><p>用户 AppKey，不填则默认为本应用 AppKey</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>handler</code></th>
+						<td><p>结果回调。error 为 nil 表示成功.</p></td>
+					</tr>
+				
+				</table>
+			</div>
 			
 
 			
@@ -1924,9 +2244,71 @@
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>一般在群组详情界面调用此接口，展示群组的所有成员列表。
-本接口只是在本地请求成员列表，不会发起服务器端请求。</p>
+				<p>注意：非 VIP 应用最多设置 15 个管理员，不包括群主本身</p>
 			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGGroup.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/deleteGroupAdminWithUsername:appKey:completionHandler:" title="deleteGroupAdminWithUsername:appKey:completionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/deleteGroupAdminWithUsername:appKey:completionHandler:">&ndash;&nbsp;deleteGroupAdminWithUsername:appKey:completionHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>删除管理员</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)deleteGroupAdminWithUsername:(NSString *)<em>username</em> appKey:(NSString *JMSG_NULLABLE)<em>appkey</em> completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)<em>handler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>username</code></th>
+						<td><p>用户名</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>appkey</code></th>
+						<td><p>用户 AppKey，不填则默认为本应用 AppKey</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>handler</code></th>
+						<td><p>结果回调。error 为 nil 表示成功.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
 			
 
 			
@@ -2516,7 +2898,7 @@
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2018 HXHG. All rights reserved. Updated: 2018-01-03</p>
+						<p class="copyright">Copyright &copy; 2018 HXHG. All rights reserved. Updated: 2018-03-01</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

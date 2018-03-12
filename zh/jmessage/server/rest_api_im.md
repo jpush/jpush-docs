@@ -440,7 +440,22 @@ Example Response
 < HTTP/1.1 204 NO CONTENT
 < Content-Type: application/json; charset=utf-8   
 ```
+### 批量删除用户
 
+	DELETE /v1/users/
+
+Request Body
+```
+["USER1","USER2"]
+```
++ username 用户名数组。（最多支持同时删除100个用户）
+
+Example Response
+
+```
+< HTTP/1.1 20 NO CONTENT
+< Content-Type: application/json; charset=utf-8   
+```
 
 ### 添加黑名单
 
@@ -2536,6 +2551,61 @@ HTTP/1.1 204
 Content-Type: application/json; charset=utf-8 
 
 ```
+##  配置
+
+
+### 设置SDK-API用户注册开关
+
+打开或者关闭SDK-API用户注册。
+
+	PUT /sdkregister/status?status={status}
+
+
+#### Example Request
+
+```
+PUT /sdkregister/status?status=0
+```
+
+#### Request Params
+
+JSON Array.
+
++ status：0为关闭，不提供SDK-API 注册功能，1为开启
+
+#### Example Response
+
+```
+ HTTP/1.1 204 Created
+ Content-Type: application/json
+ 
+Response Data
+  N/A
+```
+### 获得SDK-API用户注册开关
+
+
+	get /sdkregister/status
+
+
+#### Example Request
+
+```
+get /sdkregister/status
+```
+
+#### Example Response
+
+```
+ HTTP/1.1 200 
+ Content-Type: application/json
+ 
+Response Data
+{
+"status": 0
+}
+status： 0为关闭，不提供SDK-API 注册功能，1为开启
+```
 
 ## HTTP 返回
 
@@ -2544,9 +2614,9 @@ HTTP 返回码参考文档：[HTTP-Status-Code](https://docs.jiguang.cn/jpush/se
 ### Example Error Response
 
 ```
-< HTTP/1.1 401 Unauthorized
-< Content-Type: application/json
-<
+ HTTP/1.1 401 Unauthorized
+ Content-Type: application/json
+
 { 
   "error": {
         "code": 899008, 

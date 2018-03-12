@@ -9,6 +9,7 @@ var searchData=
   ['rejectreason',['rejectReason',['../struct_jmcpp_1_1_reject_add_friend_event.html#a5ad14d204348fdf68b09075c306ebbc2',1,'Jmcpp::RejectAddFriendEvent::rejectReason()'],['../struct_jmcpp_1_1_reject_join_group_event.html#a8bbbe24db4a9aae8247c405a43473655',1,'Jmcpp::RejectJoinGroupEvent::rejectReason()']]],
   ['remark',['remark',['../struct_jmcpp_1_1_multi_friend_remark_updated_event.html#a33a96cd258fb17c192d84a54b426f404',1,'Jmcpp::MultiFriendRemarkUpdatedEvent::remark()'],['../struct_jmcpp_1_1_user_info.html#a2f0ff668bf41f92c17df2c16acce80d5',1,'Jmcpp::UserInfo::remark()']]],
   ['remarkother',['remarkOther',['../struct_jmcpp_1_1_multi_friend_remark_updated_event.html#a640929ec8d5a9e72baa41facec1bbe4b',1,'Jmcpp::MultiFriendRemarkUpdatedEvent::remarkOther()'],['../struct_jmcpp_1_1_user_info.html#a80b2434c2d975329acba710e81b77dd4',1,'Jmcpp::UserInfo::remarkOther()']]],
+  ['requestjoingroupeventid',['requestJoinGroupEventId',['../struct_jmcpp_1_1_admin_reject_join_group_event.html#a5dc8481d0214c0cd94622bfb3dfd236a',1,'Jmcpp::AdminRejectJoinGroupEvent']]],
   ['requestmsg',['requestMsg',['../struct_jmcpp_1_1_request_join_group_event.html#a58e4bb30309bef8bf7d44a3e1b08c0e2',1,'Jmcpp::RequestJoinGroupEvent']]],
   ['roomid',['roomId',['../struct_jmcpp_1_1_room_info.html#a31fd5190b27181003a19e891e8fec4eb',1,'Jmcpp::RoomInfo']]],
   ['roomname',['roomName',['../struct_jmcpp_1_1_room_info.html#a4eed6b7faf02d025784233eae79043f6',1,'Jmcpp::RoomInfo']]],

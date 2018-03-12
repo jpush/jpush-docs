@@ -8,8 +8,8 @@
             <img src="../image/resource_android.png" alt="android">
             <div class="caption">
                 <h4>Android SDK</h4>
-                <p>版本：v2.4.1</p>
-                <p>更新时间：2018.01.02</p>
+                <p>版本：v2.5.0</p>
+                <p>更新时间：2018.03.01</p>
                 <ul>
                     <li><a href="../client/jmessage_android_guide">集成步骤</a></li>
                     <li><a href="../client/im_sdk_android/">开发指南</a></li>
@@ -23,8 +23,8 @@
             <img src="../image/resource_ios.png" alt="iOS">
             <div class="caption">
                 <h4>iOS SDK</h4>
-                <p>版本：v3.4.1</p>
-                <p>更新时间：2018.01.03</p>
+                <p>版本：v3.5.0</p>
+                <p>更新时间：2018.03.01</p>
                 <ul>
                     <li><a href="../client/jmessage_ios_guide/">集成步骤</a></li>
                     <li><a href="../client/im_sdk_ios/">开发指南</a></li>
@@ -55,8 +55,8 @@
             <img src="../image/windows.png" alt="Windows">
             <div class="caption">
                 <h4>Windows SDK</h4>
-                <p>版本：v1.1.0</p>
-                <p>更新时间：2017.12.04</p>
+                <p>版本：v1.2.0</p>
+                <p>更新时间：2018.02.02</p>
                 <ul>
                     <li><a href="../client/im_sdk_win/">集成指南</a></li>
                     <li class="li-clear"></li>

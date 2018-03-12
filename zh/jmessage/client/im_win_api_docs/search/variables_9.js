@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['isadmin',['isAdmin',['../struct_jmcpp_1_1_group_member.html#a62d8f25d455b0d951fd614679dd5a68a',1,'Jmcpp::GroupMember']]],
   ['isoutgoing',['isOutgoing',['../class_jmcpp_1_1_message.html#a792b0292d4426eb8581cc8ae6fb628f2',1,'Jmcpp::Message']]],
   ['isowner',['isOwner',['../struct_jmcpp_1_1_group_member.html#a56515f2ec416673c58ea03daa381f78a',1,'Jmcpp::GroupMember']]],
   ['ispublic',['isPublic',['../struct_jmcpp_1_1_group_info.html#a93a8b121b162977797db62c2d237254a',1,'Jmcpp::GroupInfo']]],

@@ -109,7 +109,8 @@ JMessageClient.init(Context context)
 ### SDK初始化(设置消息记录漫游)
 ***Since 2.1.0***  
 SDK初始化,同时指定是否启用消息记录漫游。  
-打开消息漫游之后，用户多个设备之间登录时，sdk会自动将当前登录用户的历史消息同步到本地，同步完成之后sdk会发送一个`ConversationRefreshEvent`事件通知上层刷新，具体事件处理方法见[事件处理](#Event)一节。
+打开消息漫游之后，用户多个设备之间登录时，sdk会自动将当前登录用户的历史消息同步到本地，同步完成之后sdk会发送一个`ConversationRefreshEvent`事件通知上层刷新，具体事件处理方法见[事件处理](#Event)一节。</br>
+<font color= SteelBlue>注意：如果应用包含多个进程，SDK的初始化应放在Application里。</font>
 
 ```
 JMessageClient.init(Context context, boolean msgRoaming)
@@ -156,6 +157,64 @@ JMessageClient.login(String username, String password, BasicCallback callback);
 ```
 JMessageClient.logout();
 ```
+
+#### 登陆设备记录
+***Since 2.5.0***  
+登陆时获取设备登陆记录
+```
+    /**
+     * 用户登陆，并且在回调中获取用户账号所登陆过的设备信息{@link cn.jpush.im.android.api.model.DeviceInfo}<br/>
+     * 每个端：移动端（Android 、iOS），PC端，Web端（JS、微信小程序）只保存最近一次设备登陆记录。
+     *
+     * @param userName 开发者注册的用户名，应该唯一。
+     * @param password 用户登录密码，推荐将字符串加密。
+     * @param callback 回调接口
+     * @since 2.5.0
+     */
+    public static void login(String userName, String password, RequestCallback<List<DeviceInfo>> callback) {
+        login(userName, password, (BasicCallback) callback);
+    }
+```
+DeviceInfo
+<div class="table-d" align="left" >
+  <table border="1" width = "100%">
+    <tr  bgcolor="#D3D3D3" >
+      <th width="10px">方法</th>
+      <th width="20px">类型</th>
+      <th width="370px">说明</th>
+    </tr>
+    <tr >
+      <td >getDeviceID()</td>
+      <td >`long`</td>
+      <td >获取设备ID</td>
+    </tr>
+	<tr >
+      <td >getPlatformType()</td>
+      <td >`PlatformType`</td>
+      <td >获取设备所属平台类型</td>
+    </tr>
+    <tr >
+      <td >getOnlineStatus()</td>
+      <td >`int`</td>
+      <td >获取设备在线状态，0不在线，1在线</td>
+    </tr>
+	<tr >
+      <td >isLogin()</td>
+      <td >`boolean`</td>
+      <td >判断设备当前是否处于登陆状态, true:登陆，false:登出</td>
+    </tr>
+	<tr >
+      <td >getLastLoginTime()</td>
+      <td >`int`</td>
+      <td > 获取设备最近一次登陆时间，单位-秒</td>
+    </tr>
+	<tr >
+      <td >getFlag()</td>
+      <td >`int`</td>
+      <td > 默认为0，1表示该设备被当前登录设备踢出</td>
+    </tr>
+    </table>
+</div>
 
 ### 多端同时在线
 SDK从2.3.0版本开始支持多端同时在线，具体规则见[多端在线说明](../guideline/faq/#_5)
@@ -886,8 +945,20 @@ if(!message.haveRead()){ //当消息的haveRead状态为false时，调用setHave
      * @since 2.3.0
      */
     JMessageClient.sendGroupTransCommand(long gid, String msg, BasicCallback callback)
+	
+	/**
+     * 发送透传消息给当前用户在其他平台已登录的设备。
+     * 消息不会进入到后台的离线存储中去，仅当对方用户当前在线时，透传消息才会成功送达。
+     * 透传命令送达时，接收方会收到一个{@link CommandNotificationEvent}事件通知。
+     * sdk不会将此类透传消息内容本地化。
+     *
+     * @param platformType 平台类型，其中{@link PlatformType#all}表示发送给当前多端在线的其他所有设备（不包括本设备）。
+     * @param msg          发送的消息内容
+     * @param callback     回调函数
+     * @since 2.5.0
+     */
+    JMessageClient.sendCrossDeviceTransCommand(PlatformType platformType, String msg, BasicCallback callback)
 ```
-
 
 ###<span id="Event">事件处理</span>
 #### 事件接收类的注册
@@ -1279,6 +1350,43 @@ public void onEventMainThread(EventEntity event){
   </table>
 </div>
 
+已审批事件通知GroupApprovedNotificationEvent
+***Since 2.5.0***
+<div class="table-d" align="left" >
+  <table border="1" width = "100%">
+    <tr  bgcolor="#D3D3D3" >
+      <th width="100px">方法</th>
+      <th width="20px">类型</th>
+      <th width="300px">说明</th>
+    </tr>
+    <tr >
+      <td >getApprovalEventID()</td>
+      <td >`long`</td>
+      <td >获取对应的入群审批事件ID</td>
+    </tr>
+	<tr >
+      <td >getApprovalResult()</td>
+      <td >`boolean`</td>
+      <td >获取入群审批结果</td>
+    </tr>
+    <tr >
+      <td >getGroupID()</td>
+      <td >`long`</td>
+      <td >获取入群审批事件对应的群组ID</td>
+    </tr>
+	<tr >
+      <td >getOperator()</td>
+      <td >`UserInfo`</td>
+      <td >获取该次入群审批的操作者用户信息</td>
+    </tr>
+    <tr >
+      <td >getApprovedUserInfoList()</td>
+      <td >`List<UserInfo>`</td>
+      <td >获取已被审批过的用户信息，这些用户的入群审批已经被审批</td>
+    </tr>
+  </table>
+</div>
+
 #### 示例代码
 接收消息事件
 ```Java
@@ -1410,7 +1518,7 @@ class UserLogoutEventReceiver extends Activity{
 JMessageClient.createGroup(String groupName, String groupDesc, CreateGroupCallback callback);
 
 @since 2.3.0
-JMessageClient.createGroup(String groupName, String groupDesc, File groupAvatarFile, String format, CreateGroupCallback callback)
+JMessageClient.createGroup(String groupName, String groupDesc, File groupAvatarFile, String format, CreateGroupCallback callback);
 ```  
 参数说明
 
@@ -1425,6 +1533,20 @@ JMessageClient.createGroup(String groupName, String groupDesc, File groupAvatarF
   public abstract void gotResult(int responseCode, String responseMsg, long groupId);
 ```  
 + long groupId 新创建成功的群组ID（resopnseCode = 0 时）。
+
+#### 解散群组
+***Since 2.5.0***
+```
+    /**
+     * 解散指定的群组，只有群的群主有权限解散。
+     * 群组解散后会以message的形式通知到群内所有成员，类型为{@link cn.jpush.im.android.api.content.EventNotificationContent.EventNotificationType#group_dissolved}
+     *
+     * @param groupID 群组id
+     * @param callback 回调
+     * @since 2.5.0
+     */
+    JMessageClient.adminDissolveGroup(long groupID, BasicCallback callback);
+```
 
 #### 获取群组列表
 ```
@@ -1504,6 +1626,21 @@ JMessageClient.removeGroupMembers(long groupId, String appKey, List<String> user
 + String appkey 被移除的群成员所属的appkey，不填则默认为本应用appkey
 + List usernameList 待删除的成员列表。
 + BasicCallback callback 结果回调。
+
+#### 移交群主
+***Since 2.5.0***
+```
+    /**
+     * 移交群主,将群主移交給指定群内成员,移交群主后原群主成为普通群成员.<br/>
+     * 移交群主成功后群内所有成员会收到群主变更事件，SDK收到事件会以类型为{@link cn.jpush.im.android.api.content.EventNotificationContent.EventNotificationType#group_owner_changed}
+     * 的消息事件方式上报
+     *
+     * @param username 待移交者用户名
+     * @param appKey 待移交者appKey, 若传入空则默认使用本应用appKey
+     * @since 2.5.0
+     */
+    groupInfo.changeGroupAdmin(String username, String appKey, BasicCallback callback);
+```
 
 #### 退出群组
 ```
@@ -1654,16 +1791,17 @@ message.getAtUserList(GetUserInfoListCallback callback)
 
 ### <span id="PublicGroup">公开群组</span>
 ***Since 2.4.0***  
-2.4.0版本新增公开群组类型，公开群组与私有群组(原有群组)的区别是只有群主邀请入群才能直接入群，
-群内其他人员邀请他人入群需要经过群主审批，同时公开群组支持申请入群操作。
+2.4.0版本新增公开群组类型，公开群组与私有群组(原有群组)的区别是只有群主或管理员邀请入群才能直接入群，
+群内其他人员邀请他人入群需要经过群主或管理员审批，同时公开群组支持申请入群操作。
 #### 创建公开群组
 ***Since 2.4.0***  
 ```
     /**
      * 创建公开群组, 群组创建成功后，创建者会默认包含在群成员中。
-     * 公开群组与私有群组的区别是公开群组只有群主邀请入群才能直接入群，群内其他人员邀请他人入群需要经过群主审批，
-     * 同时公开群组支持申请入群操作{@link JMessageClient#applyJoinGroup(long, String, BasicCallback)},
-     * 申请入群时也需要群主审批, 需要群主审批入群时群主会收到{@link cn.jpush.im.android.api.event.GroupApprovalEvent}事件
+     * 公开群组与私有群组的区别是公开群组只有群主和管理员邀请入群才能直接入群，群内其他人员邀请他人入群需要经过群主或管理员审批，
+     * 管理员相关见{@link GroupInfo#addGroupKeeper(List, BasicCallback)}, 同时公开群组支持申请入群操作{@link JMessageClient#applyJoinGroup(long, String, BasicCallback)},
+     * 申请入群时也需要群主或管理员审批, 需要审批入群时群主和管理员会收到{@link cn.jpush.im.android.api.event.GroupApprovalEvent}事件
+     * 通过{@link GroupInfo#getGroupType()}得到群组类型
      *
      * @param groupName 群组名称
      * @param groupDesc 群组描述
@@ -1713,9 +1851,17 @@ GroupApprovalEvent
 群成员审批事件，收到群成员审批通知时，sdk将会抛出此事件通知上层。
 具体处理方法见[事件处理](#Event)一节
 
+####<span id="GroupApprovedNotificationEvent">已审批事件通知</span>
+***Since 2.5.0***
+```
+GroupApprovedNotificationEvent
+```
+群成员审批事件已经被审批通知事件，当有一个群管理员或群主审批过群成员审批事件，sdk将会抛出此事件通知上层,
+只有该审批事件对应群的群主和群管理员会收到此事件。具体处理方法见[事件处理](#Event)一节
+
 #### 入群审批
 ***Since 2.4.0***  
-通过接收到的[群成员审批事件](#GroupApprovalEvent)进行审批操作
+通过接收到的[群成员审批事件](#GroupApprovalEvent)进行审批操作,审批不能多人操作，当一人同意或拒绝后其他管理者或群主收到[已审批事件通知]
 ```
 	/**
 	 * 入群审批同意，操作成功后，群内所有成员包括被审批人自己都会收到一个包含群成员变化的EventNotification类型的消息
@@ -1941,6 +2087,85 @@ JMessageClient.getGroupInfo(mGetId, new GetGroupInfoCallback() {
 		}
 	}
 });
+```
+
+### 群组管理员
+***Since 2.5.0***  
+2.5.0版本新增群组管理员,管理员可以移除、禁言普通群成员，并且在公开群组里可以直接添加群成员和审核入群审批。群主可以添加、取消管理员并且移除或禁言管理员
+####添加群管理员
+***Since 2.5.0*** 
+```
+    /**
+     * 添加群管理员
+     *
+     * @param userInfos 群成员UserInfo列表
+     * @param callback 回调
+     * @since 2.5.0
+     */
+    groupInfo.addGroupKeeper(List<UserInfo> userInfos, BasicCallback callback);
+```
+
+####取消管理员
+***Since 2.5.0***
+```
+    /**
+     * 取消群管理员，管理员角色描述详见官方文档<a href="https://docs.jiguang.cn/jmessage/client/im_sdk_android/">群组管理员<a/>
+     *
+     * @param userInfos 群成员UserInfo列表
+     * @param callback 回调
+     * @since 2.5.0
+     */
+    groupInfo.removeGroupKeeper(List<UserInfo> userInfos, BasicCallback callback);
+```
+
+####获取管理员列表
+***Since 2.5.0***
+```
+    /**
+     * 获取群管理员列表, 返回群内管理员的成员信息列表，管理员角色描述详见官方文档<a href="https://docs.jiguang.cn/jmessage/client/im_sdk_android/">群组管理员<a/>
+     *
+     * @return 管理员的成员信息列表
+     * @since 2.5.0
+     */
+    groupInfo.getGroupKeepers();
+```
+**代码示例**
+```
+//添加管理员
+groupInfo.addGroupKeeper(userInfos, new BasicCallback() {
+	@Override
+	public void gotResult(int responseCode, String responseMessage) {
+		if (responseCode == 0) {
+			Toast.makeText(getApplicationContext(), "添加管理员成功", Toast.LENGTH_SHORT).show();
+		} else {
+			Toast.makeText(getApplicationContext(), "添加管理员失败", Toast.LENGTH_SHORT).show();
+			mTvGroupKeeper.setText("responseCode:" + responseCode + "\nresponseMessage:" + responseMessage);
+		}
+	}
+});
+
+//取消管理员
+groupInfo.removeGroupKeeper(userInfos, new BasicCallback() {
+	@Override
+	public void gotResult(int responseCode, String responseMessage) {
+		if (responseCode == 0) {
+			Toast.makeText(getApplicationContext(), "取消管理员成功", Toast.LENGTH_SHORT).show();
+		} else {
+			Toast.makeText(getApplicationContext(), "取消管理员失败", Toast.LENGTH_SHORT).show();
+			mTvGroupKeeper.setText("responseCode:" + responseCode + "\nresponseMessage:" + responseMessage);
+		}
+	}
+});
+
+//获取管理员列表
+List<UserInfo> userInfos = groupInfo.getGroupKeepers();
+String result = "这里只展示username:";
+for (UserInfo userInfo : userInfos) {
+	if (userInfo != null) {
+		result += "\n" + userInfo.getUserName();
+	}
+}
+mTvGroupKeeper.setText(result);
 ```
 
 ### 黑名单管理
@@ -2300,7 +2525,8 @@ class ContactNotifyEventReceiver extends Activity{
 ### <sapn id="ChatRoom">聊天室管理</span>
 ***Since 2.4.0***  
 聊天室和群组最大的区别在于，聊天室的消息没有推送通知和离线保存，也没有常驻成员的概念，只要进入聊天室即可接收消息，开始聊天，
-一旦退出聊天室，不再会接收到任何消息、通知和提醒。
+一旦退出聊天室，不再会接收到任何消息、通知和提醒。</br>
+<font color= SteelBlue>注意：进入聊天室会自动获取最近50条消息，客户端目前不支持创建聊天室</font>
 
 #### 聊天室信息
 ***Since 2.4.0***  

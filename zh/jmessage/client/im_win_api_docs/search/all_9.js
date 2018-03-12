@@ -1,6 +1,8 @@
 var searchData=
 [
   ['imagecontent',['ImageContent',['../struct_jmcpp_1_1_image_content.html',1,'Jmcpp']]],
+  ['ios',['iOS',['../namespace_jmcpp.html#a5cfe2cd99045a069ebdbde3779622e1fa1bdf605991920db11cbdf8508204c4eb',1,'Jmcpp']]],
+  ['isadmin',['isAdmin',['../struct_jmcpp_1_1_group_member.html#a62d8f25d455b0d951fd614679dd5a68a',1,'Jmcpp::GroupMember']]],
   ['isconnected',['isConnected',['../group___xE6_xB3_xA8_xE5_x86_x8C_xE7_x99_xBB_xE5_xBD_x95.html#ga1bf744042ae54646b08cee10ef6ae637',1,'Jmcpp::Client']]],
   ['isgroup',['isGroup',['../class_jmcpp_1_1_chat_id.html#a5b036952807abba148c8b795736cd8a9',1,'Jmcpp::ChatId']]],
   ['islogined',['isLogined',['../group___xE6_xB3_xA8_xE5_x86_x8C_xE7_x99_xBB_xE5_xBD_x95.html#ga70f91ee0c470fe85cdee5ab6c05055cb',1,'Jmcpp::Client']]],

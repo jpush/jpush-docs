@@ -81,7 +81,7 @@ Android 开发者参考文档：[统计分析API](../client/Android/android_api/
 
 
 ##快速开始
-+  到极光推送官方网站[注册开发者帐号](https://www.jiguang.cn/accounts/register/form)；
++  到极光推送官方网站[注册开发者帐号](https://www.jiguang.cn/accounts/register)；
 +  [登录](https://www.jiguang.cn/accounts/login/form)进入管理控制台，创建应用程序，得到 Appkey（SDK与服务器端通过Appkey互相识别）；
 +  [下载SDK](../resources/) 集成到 App 里。
 

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['female',['Female',['../namespace_jmcpp.html#abeb7b66b7d49d4ffdf1f9963f6440589ab719ce180ec7bd9641fece2f920f4817',1,'Jmcpp']]]
+  ['all',['All',['../namespace_jmcpp.html#a5cfe2cd99045a069ebdbde3779622e1fab1c94ca2fbc3e78fc30069c8d0f01680',1,'Jmcpp']]],
+  ['android',['Android',['../namespace_jmcpp.html#a5cfe2cd99045a069ebdbde3779622e1fae84e30b9390cdb64db6db2c9ab87846d',1,'Jmcpp']]]
 ];
