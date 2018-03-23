@@ -142,10 +142,11 @@
 
 + 打开xxx-info.plist的Bundle identifier项把上传到JPush 控制台的bundle id填写进去：
 
-![build_settings](../image/ios_cert/xcode_1_buildsettings_cs.png)
+![settings_bundle](../image/ios_cert/xcode_2_bundle.png)
 
 + 点击项目，选择目标TARGETS后进入Build Setting 界面，搜索“Code signing”，按照下图配置
 
-![settings_bundle](../image/ios_cert/xcode_2_bundle.png)
+![build_settings](../image/ios_cert/xcode_1_buildsettings_cs.png)
+
 
 
