@@ -734,6 +734,8 @@ iOS 1.7.3及以上的版本才能正确解析v3的message，但是无法解析v2
 
 用于设置短信推送内容以及短信发送的延迟时间。手机接收号码,开发者需要先把用户的手机号码与设备的registration id匹配。绑定方法：[服务端-Device-更新设备](rest_api_v3_device/#device)
 
+**注：** ： 应运营商规定，短信内容需审核。自2018年3月起，短信补充的用户必须提交短信模板，审核通过后即可使用。因此推送时需要填写 temp\_id （模版有设置参数则需要填写 temp\_para）。
+
 与原有 JSON 业务协议相匹配，消息有如下字段信息：
 
 <div class="table-d" align="center" >
@@ -745,17 +747,25 @@ iOS 1.7.3及以上的版本才能正确解析v3的message，但是无法解析v2
 			<th>示例</th>
 		</tr>
 		<tr >
-			<td>content</td>
-			<td>string</td>
-			<td>必填</td>
-			<td>不能超过480个字符。"你好,JPush"为8个字符。70个字符记一条短信费，如果超过70个字符则按照每条67个字符拆分，逐条计费。单个汉字、标点、英文都算一个字。</td>
-		</tr>
-		<tr >
 			<td>delay_time</td>
 			<td>int</td>
 			<td>必填</td>
 			<td>单位为秒，不能超过24小时。设置为0，表示立即发送短信。该参数仅对android平台有效，iOS 和 Winphone平台则会立即发送短信</td>
 		</tr>
+		<tr >
+			<td>temp_id</td>
+			<td>long</td>
+			<td>可选</td>
+			<td>短信补充的内容模板 ID。参考 [控制台设置短信模板](https://docs.jiguang.cn/jsms/guideline/JSMS_consoleguide/#_12) 和 [短信模板 API](https://docs.jiguang.cn/jpush/server/push/server_overview/) 。
+			没有填写该字段即表示不使用短信补充功能。</td>
+		</tr>
+<tr >
+			<td>temp_para</td>
+			<td>JSON</td>
+			<td>可选</td>
+			<td>短信模板中的参数。 </td>
+		</tr>
+
 	</table>
 </div>
 
