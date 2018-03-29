@@ -76,7 +76,7 @@ curl -X POST \
 
 ### 调用地址
 
-- PUT https://api.sms.jpush.cn/v1/sign/{sign_id}
+- POST https://api.sms.jpush.cn/v1/sign/{sign_id}
 
 ### 请求示例
 
@@ -206,15 +206,13 @@ HTTP/1.0 200
 |400|50003|missing body|body 为空
 |403|50007|invalid body|body 无效
 |403|50008|no sms code auth|未开通短信业务
-|403|50013|invalid temp_id|模版ID 无效
 |404|50016|api not found|API 不存在
 |415|50017|media not supported|媒体类型不支持
 |405|50018|request method not support|请求方法不支持
 |500|50019|server error|服务端异常|
-|403|50025|wrong template type|错误的模板类型|
 |403|50101|invalid image|非法的图片|
-|403|50102|invalid sign id|非法的签名Id|
+|403|50102|invalid sign id|非法的签名 ID|
 |403|50103|other signatures in the audit|已经存在其他待审核的签名，不能提交|
-|403|50104|invalid signature|非法的签名内容|
-|403|50105|the signature in use cannot be deleted|使用中的签名不能被删除|
+|403|50104|invalid signature|非法签名内容|
+|403|50105|the signature in use cannot be deleted|使用中签名不允许删除|
 
