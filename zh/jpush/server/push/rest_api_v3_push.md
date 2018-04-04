@@ -154,7 +154,10 @@ HTTP Header（头）里加一个字段（Key/Value对）：
         }
     },
     "sms_message":{
-    	"content":"sms msg content",
+       "temp_id":1250,
+       "temp_para":{
+       		"code":"123456"
+       },
     	"delay_time":3600
 	},
     "options": {
