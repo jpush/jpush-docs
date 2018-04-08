@@ -706,6 +706,7 @@ r1.2.5 以后。
     - (void)networkDidReceiveMessage:(NSNotification *)notification {
         NSDictionary * userInfo = [notification userInfo];
         NSString *content = [userInfo valueForKey:@"content"];
+        NSString *messageID = [userInfo valueForKey:@"_j_msgid"];
         NSDictionary *extras = [userInfo valueForKey:@"extras"]; 
         NSString *customizeField1 = [extras valueForKey:@"customizeField1"]; //服务端传递的Extras附加字段，key是自己定义的
      
@@ -715,6 +716,8 @@ r1.2.5 以后。
 #### 参数描述：
 
 content：获取推送的内容
+
+messageID：获取推送的messageID(key为@"_j_msgid")
 
 extras：获取用户自定义参数
 
