@@ -1636,8 +1636,8 @@ Notification Service Extension SDK v1.0.0 (随 JPush iOS SDK 3.0.7 版本发布)
     </tr>
     <tr >
       <td>6014</td>
-      <td>请求繁忙</td>
-      <td>请求频率太高，本次请求失败,请重新发起请求</td>
+      <td>网络繁忙</td>
+      <td>网络繁忙，本次请求失败，请重新发起请求</td>
     </tr>
     <tr >
       <td>6015</td>
