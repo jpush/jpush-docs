@@ -453,7 +453,7 @@ Request Body
 Example Response
 
 ```
-< HTTP/1.1 20 NO CONTENT
+< HTTP/1.1 200 NO CONTENT
 < Content-Type: application/json; charset=utf-8   
 ```
 
@@ -1406,7 +1406,7 @@ Request body
 Request Params
 
 ```
-status：开启或关闭禁言 true表示开启 flase表示关闭
+status：开启或关闭禁言 true表示开启 false表示关闭
 ```
 
 Example Response
@@ -1414,7 +1414,31 @@ Example Response
 < HTTP/1.1 204 OK
 < Content-Type: application/json
 ```
+### 移交群主
 
+    PUT  /groups/owner/{gid}
+
+
+Request body
+```
+{ "appkey":"XXXXX",
+"username": "xxxxxxx"}   注：跨应用下的用户
+
+或者
+
+{ "username": "xxxxxxx"} 本应用下的用户
+```
+Request Params
+
+
+Example Response
+```
+HTTP/1.1 204 NO Content
+Error Code
+
+899003 gid不合法；Request Body json格式不符合要求，json参数不符合要求；
+899006 gid不存在；
+```
 
 ## 好友
 
