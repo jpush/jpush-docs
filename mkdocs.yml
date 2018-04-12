@@ -107,7 +107,7 @@ pages:
     - 'SDK 开发指南': 'jmessage/client/im_sdk_js.md'
     - '微信小程序 SDK': 'jmessage/client/im_sdk_wxapplet.md'
     - 'SDK ErrorCode 定义': 'jmessage/client/im_errorcode_js.md'
-  - Windows:
+  - PC:
     - 'SDK 集成指南': 'jmessage/client/im_sdk_win.md'
     - 'SDK API Doc': 'jmessage/client/windoc.md'
   - REST API:

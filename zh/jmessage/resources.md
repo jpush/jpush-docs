@@ -52,16 +52,17 @@
     </div>
     <div class="col-md-6">
         <div class="thumbnail">
-            <img src="../image/windows.png" alt="Windows">
+            <img src="../image/pc.png" alt="pc">
             <div class="caption">
-                <h4>Windows SDK</h4>
-                <p>版本：v1.2.0</p>
-                <p>更新时间：2018.02.02</p>
+                <h4>PC SDK</h4>
+                <p>版本：v1.2.1</p>
+                <p>更新时间：2018.04.12</p>
                 <ul>
                     <li><a href="../client/im_sdk_win/">集成指南</a></li>
                     <li class="li-clear"></li>
                 </ul>
-                <p><a href="https://www.jiguang.cn/downloads/sdk/im_win" class="btn btn-default" role="button">下载</a></p>
+                <p><a href="https://www.jiguang.cn/downloads/sdk/im_win" class="btn btn-default" role="button">Windows 下载</a>
+				<a href="https://www.jiguang.cn/downloads/sdk/im_mac" class="btn btn-default" role="button">macOS 下载</a></p>
             </div>
         </div>
     </div>
@@ -187,3 +188,4 @@
         </div>
     </div>
 </div>
+
