@@ -1,6 +1,6 @@
 var NAVTREE =
 [
-  [ "Windows C++ SDK", "index.html", [
+  [ "JMessage PC SDK", "index.html", [
     [ "模块", "modules.html", "modules" ],
     [ "命名空间", null, [
       [ "命名空间列表", "namespaces.html", "namespaces" ],
