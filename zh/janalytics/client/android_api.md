@@ -278,15 +278,17 @@
 
 ##统计上报周期API 
 
-+ ***JAnalyticsInterface.setAnalyticsReportPeriod(int period)***
++ ***JAnalyticsInterface.setAnalyticsReportPeriod(Context context, int period)***
 	+ 接口说明：
-		+ 设置统计上报的自动周期，未调用前默认周期时60秒
+		+ 设置统计上报的自动周期，未调用前默认即时上报
 	+ 参数说明：
-		+ period：周期，单位秒，最小10秒，最大1天，超出范围会打印调用失败日志
+		+ period：周期，单位秒，最小10秒，最大1天，超出范围会打印调用失败日志。传0表示统计数据即时上报
+	+ 旧版接口：
+		+ JAnalyticsInterface.setAnalyticsReportPeriod(int period)，请使用带Context参数的新接口
 	+ 调用示例：
 
 ~~~
-	JAnalyticsInterface.setAnalyticsReportPeriod(60);
+	JAnalyticsInterface.setAnalyticsReportPeriod(getApplicationContext(), 60);
 ~~~
 
 ##账户维度模型介绍  
@@ -310,11 +312,11 @@
 |自定义维度|extra	|key-value|key只能为字符串，value只能为字符串或数字类型或null类型； 当value设置为空类型时，将该key从服务器上删除 key不能使用极光内部namespace（符号$）|
 
 具体使用方法，是先调用cn.jiguang.analytics.android.api.Account设置属性，  
-再调用JAnalyticsInterface.identifyAccount(account, callback)登记账户信息  
+再调用JAnalyticsInterface.identifyAccount(context, account, callback)登记账户信息  
 也可以只设置部分属性，再次调用identifyAccount修改账户信息  
 调用示例：
 
-~~~java
+~~~
 Account account = new Account("account001");    //account001为账号id
 account.setCreationTime(1513749859);        //账户创建的时间戳
 account.setName("张三");
@@ -323,8 +325,8 @@ account.setPaid(1);
 account.setBirthdate("19880920");       //"19880920"是yyyyMMdd格式的字符串
 account.setPhone("13800000000");
 account.setEmail("support@jiguang.cn");
-account.setExtraAttr("attr1","value1");
-JAnalyticsInterface.identifyAccount(account, new AccountCallback() {
+account.setExtraAttr("attr1","value1");  //key如果为空，或者以极光内部namespace(符号$)开头，会设置失败并打印日志
+JAnalyticsInterface.identifyAccount(getApplicationContext(), account, new AccountCallback() {
     @Override
     public void callback(int code, String msg) {
         Log.d("tag", "code = " + code  + " msg =" + msg);
@@ -342,6 +344,7 @@ AccountCallback是回调方法，可以根据返回的code和msg获取调用成�
 |1002|detach failed because account_id is empty|当前没有绑定accountID时调用了解绑接口|
 |1003|operation is too busy|10s内请求频率不能超过30次
 |1004|account_id is too long, please make it less than 255 characters|accountID长度不能超过255字符|
+|1005|failed, please call JAnalyticsInterface.init(context) first|SDK尚未初始化，应先调用init()方法|
 |1101|the value of $sex should be in [0,2]|0未知 1男 2女/不能为其他数字，默认为0|
 |1101|the value of $birthdate should be date as yyyyMMdd|yyyyMMdd格式校验|
 |1101|the value of $paid should be in [0,2]|0未知 1是 2否/不能为其他数字，默认为0|
@@ -353,11 +356,11 @@ AccountCallback是回调方法，可以根据返回的code和msg获取调用成�
 
 
 
-如果要解绑当前用户信息，调用JAnalyticsInterface.detachAccount(callback);  
+如果要解绑当前用户信息，调用JAnalyticsInterface.detachAccount(context, callback);  
 调用示例：
 
-~~~java
-JAnalyticsInterface.detachAccount(new AccountCallback() {
+~~~
+JAnalyticsInterface.detachAccount(getApplicationContext(), new AccountCallback() {
     @Override
     public void callback(int code, String msg) {
         Log.d("tag", "code = " + code  + " msg =" + msg);
