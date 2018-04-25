@@ -26,7 +26,7 @@ img[alt=jpush_android_so] { width: 800px; }
 ##充值与开通
 短信价格按照月消费数量会有所不同，详细价目表请咨询商务。  
 如果您想开通短信服务，请向商务提供相关登记信息，并预存费用至极光推送的账户即可开通。  
-[联系商务开通服务](https://www.jiguang.cn/accounts/business/form)
+[联系商务开通服务](https://www.jiguang.cn/accounts/business_contact?fromPage=push_doc)
 
 
 ##使用指南

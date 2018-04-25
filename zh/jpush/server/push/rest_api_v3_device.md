@@ -350,7 +350,7 @@ DELETE /v3/tags/{tag_value}?platform=android,ios
 
 ## 获取用户在线状态（VIP专属接口）
 
-如需要开通此接口，请联系：[商务客服](https://www.jiguang.cn/accounts/business/form)
+如需要开通此接口，请联系：[商务客服](https://www.jiguang.cn/accounts/business_contact?fromPage=push_doc)
 
 ### Example Request
 

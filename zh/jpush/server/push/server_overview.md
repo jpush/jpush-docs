@@ -111,7 +111,7 @@ JPush API 对访问次数，具有频率控制。即一定的时间窗口内，A
         </table>
 </div>
 
-收费版本根据终端用户规模的不同，具有不同级别的频率。如有需要，请[联系商务](https://www.jiguang.cn/accounts/business_contact?fromPage=index)。
+收费版本根据终端用户规模的不同，具有不同级别的频率。如有需要，请[联系商务](https://www.jiguang.cn/accounts/business_contact?fromPage=push_doc)。
 
 ### 获取频率信息
 
