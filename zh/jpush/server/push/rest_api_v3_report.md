@@ -140,7 +140,7 @@ Content-Type: application/json; charset=utf-8
 与“送达统计” API 不同的是，该 API 提供更多的针对一个 msgid 的统计数据。
 
 
-如需要开通此接口，请联系：[商务客服](https://www.jiguang.cn/accounts/business/form)
+如需要开通此接口，请联系：[商务客服](https://www.jiguang.cn/accounts/business_contact?fromPage=push_doc)
 
 ### 调用地址
 
