@@ -591,7 +591,7 @@ JMessageClient.getAllUnReadMsgCount();
 
 #### 创建自定义消息
 ```
- /**
+    /**
      * 创建一条单聊自定义消息，此方法是创建message的快捷接口，对于不需要关注会话实例的开发者可以使用此方法
      * 快捷的创建一条消息。其他的情况下推荐使用{@link Conversation#createSendMessage(MessageContent)}
      * 接口来创建消息
@@ -601,18 +601,57 @@ JMessageClient.getAllUnReadMsgCount();
      * @param valuesMap 包含自定义键值对的map.
      * @return 消息对象
      */
-JMessageClient.createSingleCustomMessage(String username, String appKey, Map<? extends String, ? extends String> valuesMap)
+    JMessageClient.createSingleCustomMessage(String username, String appKey, Map<? extends String, ? extends String> valuesMap)
 
- /**
-  * 创建一条群聊自定义消息
-  *
-  * @param groupID   群组groupID
-  * @param valuesMap 包含了自定义键值对的map
-  * @return  消息对象
-  */
-JMessageClient.createGroupCustomMessage(long groupID,
-  Map<? extends String, ?> valuesMap)
+   /**
+    * 创建一条群聊自定义消息
+    *
+    * @param groupID   群组groupID
+    * @param valuesMap 包含了自定义键值对的map
+    * @return  消息对象
+    */
+    JMessageClient.createGroupCustomMessage(long groupID,
+    Map<? extends String, ?> valuesMap)
 ```
+
+#### 创建视频消息
+```
+    /**
+     * 创建一条单聊video消息，此方法是创建message的快捷接口，对于不需要关注会话实例的开发者可以使用此方法
+     * 快捷的创建一条消息。其他的情况下推荐使用{@link Conversation#createSendMessage(MessageContent)}
+     * 接口来创建消息
+     *
+     * @param userName      聊天对象用户名
+     * @param appKey        聊天对象所属应用appkey
+     * @param thumbImage    视频缩略图，可不填。
+     * @param thumbFormat   视频缩略图格式名
+     * @param videoFile     视频文件对象
+     * @param videoFileName 视频文件名称，如果不填或为空，则默认使用文件原名
+     * @param duration      视频时长
+     * @return 消息对象
+     * @throws IOException
+     * @since 2.6.0
+     */
+    JMessageClient.createSingleVideoMessage(String userName, String appKey, Bitmap thumbImage, String thumbFormat, File videoFile, String videoFileName, int duration) throws IOException
+
+	/**
+     * 创建一条群聊video消息，此方法是创建message的快捷接口，对于不需要关注会话实例的开发者可以使用此方法
+     * 快捷的创建一条消息。其他的情况下推荐使用{@link Conversation#createSendMessage(MessageContent)}
+     * 接口来创建消息
+     *
+     * @param groupID       群组groupID
+     * @param thumbImage    视频缩略图，可不填。
+     * @param thumbFormat   视频缩略图格式名
+     * @param videoFile     视频文件对象
+     * @param videoFileName 视频文件名称，如果不填或为空，则默认使用文件原名
+     * @param duration      视频时长
+     * @return 消息对象
+     * @throws IOException
+     * @since 2.6.0
+     */
+    JMessageClient.createGroupVideoMessage(long groupID, Bitmap thumbImage, String thumbFormat, File videoFile, String videoFileName, int duration) throws IOException
+```
+
 
 #### 消息发送结果监听
 消息发送完成后，会回调这里的接口通知上层。
@@ -784,6 +823,35 @@ sdk升级到2.1.0版本（或以上）后，上层需要针对消息接收的处
 
 
 **注意：** 无论是撤回方还是被撤回方，消息被撤回后，对应message content会被替换为[PromtContent](./im_android_api_docs/cn/jpush/im/android/api/content/PromptContent.html)类型，消息之前内容变成不可见。
+
+### 消息转发
+
+#### 转发会话中的某条消息
+```
+    /**
+     * 转发消息,只有发送成功或收到的消息才可转发
+     *
+     * @param message  需要转发的消息对象
+     * @param conv     目标会话
+     * @param options  消息转发时的控制选项，仅对此次发送生效, null则使用默认配置
+     * @param callback 回调函数
+     * @since 2.3.0
+     * @deprecated deprecated since jmessage 2.6.0 use {@link JMessageClient#forwardMessage(Message, Conversation, MessageSendingOptions, RequestCallback)} instead.
+     */
+    JMessageClient.forwardMessage(Message message, Conversation conv, MessageSendingOptions options, BasicCallback callback);
+
+    /**
+     * 转发消息,注意只有发送成功或收到的消息才可转发,符合转发要求后会创建新的消息发送，
+     * 创建的消息会在回调中返回（无论发送是否成功），如果不符合转发要求则不会创建新消息 message返回null。<br/>
+     *
+     * @param message  需要转发的消息对象
+     * @param conv     目标会话
+     * @param options  消息转发时的控制选项，仅对此次发送生效, null则使用默认配置
+     * @param callback 回调函数
+     * @since 2.6.0
+     */
+    JMessageClient.forwardMessage(Message message, Conversation conv, MessageSendingOptions options, final RequestCallback<Message> callback);
+```
 
 ### 消息已读回执
 
