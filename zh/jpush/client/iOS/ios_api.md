@@ -1277,7 +1277,7 @@ API用来关闭日志信息（除了必要的错误信息）
 r1.7.0 版本开始。
 
 <div style="font-size:13px;background: #ffa07a;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 10;margin-bottom: 0;">
-JPush 上该系列 api 的功能已废弃，如需页面流相关的统计请使用极光统计产品 JAnalytics。
+JPush 上该系列 api 的功能已废弃，如需页面流相关的统计请使用极光统计产品 <a href="https://docs.jiguang.cn/janalytics/client/ios_api/#sdk_1">JAnalytics</a> 。
 </div>
 
 
