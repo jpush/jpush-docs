@@ -1276,6 +1276,11 @@ API用来关闭日志信息（除了必要的错误信息）
 
 r1.7.0 版本开始。
 
+<div style="font-size:13px;background: #ffa07a;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 10;margin-bottom: 0;">
+JPush 上该系列 api 的功能已废弃，如需页面流相关的统计请使用极光统计产品 JAnalytics。
+</div>
+
+
 ### 功能说明
 
 本 API 用于“用户指定页面使用时长”的统计，并上报到服务器，在 Portal 上展示给开发者。页面统计集成正确，才能够获取正确的页面访问路径、访问深度（PV）的数据。
