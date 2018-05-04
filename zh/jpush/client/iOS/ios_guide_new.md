@@ -348,6 +348,7 @@ iOS 10 新增的 Notification Service Extension 功能，用 mutable-content 字
 **使用方法：**
 
 + 将 jpush-extension-ios-xxx.a 和 JPushNotificationExtensionService.h 两个文件引入到您的 Service Extentsion 工程中。
++ 添加Framework ： libz.tbd 和 libresolv.tbd。
 + 调用 [jpushSetAppkey:] 方法设置您的 appkey，请注意这里的 appkey 应该和您极光应用的 appkey 相同。
 + 调用 [jpushReceiveNotificationRequest:] 方法上报您的 apns 消息，完成送达统计；在该方法的block回调中进行apns 的显示。
 
