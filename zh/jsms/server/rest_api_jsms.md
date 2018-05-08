@@ -211,6 +211,7 @@ curl --insecure -X POST -v https://api.sms.jpush.cn/v1/messages -H "Content-Type
 curl --insecure -X POST -v https://api.sms.jpush.cn/v1/messages/batch -H "Content-Type: application/json" -u "7d431e42dfa6a6d693ac2d04:5e987ac6d2e04d95a9d8f0d1" -d \
 '{
     "temp_id": 1250,
+	"tag":"标签",
     "recipients": [
         {
             "mobile": "13812345678",
@@ -236,6 +237,7 @@ curl --insecure -X POST -v https://api.sms.jpush.cn/v1/messages/batch -H "Conten
 |recipients|TRUE|接收者列表|
 |recipients.mobile|TRUE|手机号码|
 |recipients.temp_para|FALSE|模板参数,需要替换的参数名和 value 的键值对|
+|tag|FALSE|标签|
 
 ### 返回示例
 
