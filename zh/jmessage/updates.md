@@ -1,5 +1,45 @@
 # 最近更新
 
+### Android SDK v2.6.0
+
+#### 更新时间
+
++ 2018-05-09
+
+#### ChangeLog
+
+##### BugFix:
+
++ 修复某些情况下本地群成员获取顺序不正确的问题
++ 修复init不在Application中调用时sdk出现的问题
++ 修复conversation对象的last记录的lastMsgDate是错误的本地时间而不是后台返回的实际时间的问题
++ 修复删除会话并退群后，又创建出一个空会话的问题
+
+##### NewFeature:
++ 新增VideoContent消息类型
++ 缓存优化
++ 请求队列优化
++ JMessageClient.getGroupInfo接口优先从本地返回
++ model类实现序列化
++ 收到dev api更新好友关系事件之后，sdk上抛好友关系变更事件
+
+#### 升级提示
+
++ 建议升级！
+
+#### 升级指南
+
++ 首先解压您获取到的 zip 压缩包
+
++ 更新库文件
+	+ 打开libs文件夹。添加jcore-android_v1.2.0.jar。用 jmessage-android_v2.6.0.jar 替换项目中原有的极光jar文件，并删除原有极光jar文件。用对应CPU文件夹下的 libjcore120.so 文件，替换项目中原有的libjcoreXXX.so文件，并删除原有的极光so文件，每种型号的so文件都可以在SDK下载包中找到。
+
++ 更新AndroidManifest.xml
+	+ 请参考 SDK下载包最新版本的 demo 来更新AndroidManifest.xml 文件配置。
+	***注意JCore 从1.1.7版本开始新增了provider组件，如果项目中使用的JCore是1.1.7之前的版本，集成时需要注意manifest中新增的provider组件的配置***
+
++ 如果使用jcenter的方式集成JMessage，不需要添加相关组件和资源，详细集成说明请参考官方[集成指南](https://docs.jiguang.cn/jmessage/client/jmessage_android_guide/)
+
 ### PC SDK V1.2.1
 
 #### 更新时间
