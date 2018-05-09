@@ -105,8 +105,8 @@
         dependencies {
             ......
             
-            compile 'cn.jiguang.sdk:jmessage:2.5.0'  // 此处以JMessage 2.5.0 版本为例。
-            compile 'cn.jiguang.sdk:jcore:1.1.9'  // 此处以JCore 1.1.9 版本为例。
+            compile 'cn.jiguang.sdk:jmessage:2.6.0'  // 此处以JMessage 2.6.0 版本为例。
+            compile 'cn.jiguang.sdk:jcore:1.2.0'  // 此处以JCore 1.2.0 版本为例。
             ......
         }
         
@@ -254,7 +254,7 @@ defaultConfig {
         <provider
             android:name="cn.jpush.android.service.DataProvider"
             android:authorities="您自己的包名.DataProvider"
-            android:exported="true" />
+            android:exported="false" />
 
         <!-- Required JMessage SDK核心功能-->
         <receiver
