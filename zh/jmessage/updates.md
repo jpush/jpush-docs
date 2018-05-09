@@ -10,16 +10,10 @@
 
 ##### BugFix:
 
-+ 修复某些情况下本地群成员获取顺序不正确的问题
-+ 修复init不在Application中调用时sdk出现的问题
-+ 修复conversation对象的last记录的lastMsgDate是错误的本地时间而不是后台返回的实际时间的问题
-+ 修复删除会话并退群后，又创建出一个空会话的问题
++ 修复其他用户反馈的一些bug
 
 ##### NewFeature:
 + 新增VideoContent消息类型
-+ 缓存优化
-+ 请求队列优化
-+ JMessageClient.getGroupInfo接口优先从本地返回
 + model类实现序列化
 + 收到dev api更新好友关系事件之后，sdk上抛好友关系变更事件
 
