@@ -8,8 +8,8 @@
             <img src="../image/resource_android.png" alt="android">
             <div class="caption">
                 <h4>Android SDK</h4>
-                <p>版本：v2.5.0</p>
-                <p>更新时间：2018.03.01</p>
+                <p>版本：v2.6.0</p>
+                <p>更新时间：2018.05.09</p>
                 <ul>
                     <li><a href="../client/jmessage_android_guide">集成步骤</a></li>
                     <li><a href="../client/im_sdk_android/">开发指南</a></li>
