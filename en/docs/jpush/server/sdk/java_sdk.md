@@ -1,83 +1,120 @@
-JPush API Java Library
-Github Source Code 
+# JPush API Java Library
 
-Overview
+[Github Source Code](https://github.com/jpush/jpush-api-java-client)
+
+## Overview
+
 This is a Java version development package for the JPush REST API. It is provided by the JPush officially and generally supports the latest API features.
-Corresponding REST API documentation: REST API - Push, REST API - Report.3
-This Development Kit Javadoc: API Docs
-Version update: Release Page. Download updates here.
-Developers are very welcome to submit code and contribute a piece of power. Valid code reviewed will be incorporated into this project.
 
-Installation
-Maven Way
+Corresponding REST API documentation: [REST API - Push](https://docs.jiguang.cn/jpush/server/push/rest_api_v3_push/), [REST API - Report](https://docs.jiguang.cn/jpush/server/push/rest_api_v3_report/).
+
+This Development Kit Javadoc: [API Docs](http://jpush.github.io/jpush-api-java-client/apidocs/)
+
+Version update: [Release Page](https://github.com/jpush/jpush-api-java-client/releases). Download updates here.
+
+> Developers are very welcome to submit code and contribute a piece of power. Valid code reviewed will be incorporated into this project.
+
+## Installation
+
+### Maven Way
+
 Place the following dependencies in your project's maven pom.xml file.
+
+```xml
 <dependency>
     <groupId>cn.jpush.api</groupId>
     <artifactId>jpush-client</artifactId>
     <version>3.3.4</version>
 </dependency>
-Jar Package Mode
-Please go to the Release Page to download the corresponding release package
-Dependent Package
-    • slf4j / log4j (Logger)
-    • gson (Google JSON Utils)
-Among them, slf4j can work with log frames such as logback, log4j, and commons-logging, and can be configured and used according to your needs.
-If you use Maven to build your project, you need to add it to your project pom.xml:
-    <dependency>
-        <groupId>cn.jpush.api</groupId>
-        <artifactId>jiguang-common</artifactId>
-        <version>1.1.1</version>
-    </dependency>
-    <dependency>
-        <groupId>io.netty</groupId>
-        <artifactId>netty-all</artifactId>
-        <version>4.1.6.Final</version>
-        <scope>compile</scope>
-    </dependency>
-    <dependency>
-        <groupId>com.google.code.gson</groupId>
-        <artifactId>gson</artifactId>
-        <version>2.3</version>
-    </dependency>
-    <dependency>
-        <groupId>org.slf4j</groupId>
-        <artifactId>slf4j-api</artifactId>
-        <version>1.7.7</version>
-    </dependency>
+```
 
-    <!-- For log4j -->
-    <dependency>
-        <groupId>org.slf4j</groupId>
-        <artifactId>slf4j-log4j12</artifactId>
-        <version>1.7.7</version>
-    </dependency>
-    <dependency>
-        <groupId>log4j</groupId>
-        <artifactId>log4j</artifactId>
-        <version>1.2.17</version>
-    </dependency>
+### Jar Package Mode
+
+Please go to the [Release Page](https://github.com/jpush/jpush-api-java-client/releases) to download the corresponding release package
+
+### Dependent Package
+
+* [slf4j](http://www.slf4j.org/) / log4j (Logger)
+* [gson](https://code.google.com/p/google-gson/) (Google JSON Utils)
+
+> Among them, slf4j can work with log frames such as logback, log4j, and commons-logging, and can be configured and used according to your needs.
+
+If you use Maven to build your project, you need to add it to your project pom.xml:
+
+```xml
+<dependency>
+    <groupId>cn.jpush.api</groupId>
+    <artifactId>jiguang-common</artifactId>
+    <version>1.1.1</version>
+</dependency>
+<dependency>
+    <groupId>io.netty</groupId>
+    <artifactId>netty-all</artifactId>
+    <version>4.1.6.Final</version>
+    <scope>compile</scope>
+</dependency>
+<dependency>
+    <groupId>com.google.code.gson</groupId>
+    <artifactId>gson</artifactId>
+    <version>2.3</version>
+</dependency>
+<dependency>
+    <groupId>org.slf4j</groupId>
+    <artifactId>slf4j-api</artifactId>
+    <version>1.7.7</version>
+</dependency>
+
+<!-- For log4j -->
+<dependency>
+    <groupId>org.slf4j</groupId>
+    <artifactId>slf4j-log4j12</artifactId>
+    <version>1.7.7</version>
+</dependency>
+<dependency>
+    <groupId>log4j</groupId>
+    <artifactId>log4j</artifactId>
+    <version>1.2.17</version>
+</dependency>
+```
+
 If you are not using Maven to build the project, the dependencies jar in the project libs/ directory can be copied to your project.
 
-Compile Source Code
-If the developer wants to do some extended development based on this project, or want to understand the source code of the project, this chapter can be a reference, otherwise please skip this chapter.
-Import this Item
-    • You can use git clone https://github.com/jpush/jpush-api-java-client.git jpush-api-src to download the source code
-    • If you don't use git, go to the Release Page to download the source package and unzip it
-    • Use eclipse to import and download the source code project. Maven is recommended to facilitate management of dependent packages
-    • If you use the method of importing an ordinary project, the project will report and error. Then please check the Build Path, Libraries
-    • Dependent jar packages can be found in the libs directory. Please add them to Build Path, Libraries if it is not added
-    • Log4j is used as the logging framework by default. Developers can replace logback, commons-logging, and other logging frameworks according to their needs.
-    • In rare cases, if the test directory reports an error, please manually add the test dependency jar package mockwebserver-2.0.0.jar, okhttp-2.0.0.jar, okio-1.0.0.jar
-    • Developers need to be careful to set the encoding format of this project to UTF-8
-Build this Project
-You can use the Eclipse class IDE to export jar packages. It is recommended to use maven directly to execute the command:
-mvn package
-Automated Test
-Execute the command in the project directory:
-mvn test
+## Compile Source Code
 
-Use Samples
+> If the developer wants to do some extended development based on this project, or want to understand the source code of the project, this chapter can be a reference, otherwise please skip this chapter.
+
+### Import this Item
+
+* You can use git clone https://github.com/jpush/jpush-api-java-client.git jpush-api-src to download the source code
+* If you don't use git, go to the Release Page to download the source package and unzip it
+* Use eclipse to import and download the source code project. Maven is recommended to facilitate management of dependent packages
+* If you use the method of importing an ordinary project, the project will report and error. Then please check the Build Path, Libraries
+* Dependent jar packages can be found in the libs directory. Please add them to Build Path, Libraries if it is not added
+* Log4j is used as the logging framework by default. Developers can replace logback, commons-logging, and other logging frameworks according to their needs.
+* In rare cases, if the test directory reports an error, please manually add the test dependency jar package mockwebserver-2.0.0.jar, okhttp-2.0.0.jar, okio-1.0.0.jar
+* Developers need to be careful to set the encoding format of this project to UTF-8
+
+### Build this Project
+
+You can use the Eclipse class IDE to export jar packages. It is recommended to use maven directly to execute the command:
+
+```
+mvn package
+```
+
+### Automated Test
+
+Execute the command in the project directory:
+
+```
+mvn test
+```
+
+### Use Samples
+
 If you use NettyHttpClient (new in version 3.2.15), you need to manually call the close method in NettyHttpClient after the response is returned. Otherwise, the process will not exit. Code example:
+
+```java
 ...
 try {
     PushResult result = jpushClient.sendPush(payload);
@@ -88,120 +125,162 @@ try {
 } catch(InterruptedException e) {
     e.printStackTrace();
 }
+```
+
 After the 3.2.17 release, the user can freely switch between ApacheHttpClient, NettyHttpClient, or NativeHttpClient, if the setHttpClient(IHttpClient client) method was added to the PushClient.
-Push Sample
-The following fragment comes from the file in the project code: example / cn.jpush.api.examples.PushExample
-    JPushClient jpushClient = new JPushClient(MASTER_SECRET, APP_KEY, null, ClientConfig.getInstance());
 
-    // For push, all you need do is to build PushPayload object.
-    PushPayload payload = buildPushObject_all_all_alert();
+### Push Sample
 
-    try {
-        PushResult result = jpushClient.sendPush(payload);
-        LOG.info("Got result - " + result);
+> The following fragment comes from the file in the project code: example / cn.jpush.api.examples.PushExample
 
-    } catch (APIConnectionException e) {
-        // Connection error, should retry later
-        LOG.error("Connection error, should retry later", e);
+```java
+JPushClient jpushClient = new JPushClient(MASTER_SECRET, APP_KEY, null, ClientConfig.getInstance());
 
-    } catch (APIRequestException e) {
-        // Should review the error, and fix the request
-        LOG.error("Should review the error, and fix the request", e);
-        LOG.info("HTTP Status: " + e.getStatus());
-        LOG.info("Error Code: " + e.getErrorCode());
-        LOG.info("Error Message: " + e.getErrorMessage());
-    }
+// For push, all you need do is to build PushPayload object.
+PushPayload payload = buildPushObject_all_all_alert();
+
+try {
+    PushResult result = jpushClient.sendPush(payload);
+    LOG.info("Got result - " + result);
+
+} catch (APIConnectionException e) {
+    // Connection error, should retry later
+    LOG.error("Connection error, should retry later", e);
+
+} catch (APIRequestException e) {
+    // Should review the error, and fix the request
+    LOG.error("Should review the error, and fix the request", e);
+    LOG.info("HTTP Status: " + e.getStatus());
+    LOG.info("Error Code: " + e.getErrorCode());
+    LOG.info("Error Message: " + e.getErrorMessage());
+}
+```
+
 The key to pushing is to build a PushPayload object. The following example shows the generic usage for building object.
-    • Build push objects quickly: In all platforms and all devices, Notifications with ALERT as its content
-    public static PushPayload buildPushObject_all_all_alert() {
-        return PushPayload.alertAll(ALERT);
-    }
-    • Build push objects: In all platforms, the push target with "alias1" as alias and ALERT as notification content.
-    public static PushPayload buildPushObject_all_alias_alert() {
-        return PushPayload.newBuilder()
-                .setPlatform(Platform.all())
-                .setAudience(Audience.alias("alias1"))
-                .setNotification(Notification.alert(ALERT))
-                .build();
-    }
-    • Build push objects: The platform is Android, the target is a device with "tag1" as tag, Android notification ALERT as content, and TITLE as title
-    public static PushPayload buildPushObject_android_tag_alertWithTitle() {
-        return PushPayload.newBuilder()
-                .setPlatform(Platform.android())
-                .setAudience(Audience.tag("tag1"))
-                .setNotification(Notification.android(ALERT, TITLE, null))
-                .build();
-    }
-    • Build push objects: the platform is iOS, the push target is the intersection of "tag1", "tag_all", and the push content includes both notifications and messages – ALERT as  notification information, 5 as the number of corner signs, "happy" as the notification sound,  from = "JPush" as additional Field; the message content is MSG_CONTENT. The notification is in the APNs push channel, and the message is in the JPush application message channel. APNs push environment is "production" (Library defaults to development if not explicitly set)
-    public static PushPayload buildPushObject_ios_tagAnd_alertWithExtrasAndMessage() {
-        return PushPayload.newBuilder()
-                .setPlatform(Platform.ios())
-                .setAudience(Audience.tag_and("tag1", "tag_all"))
-                .setNotification(Notification.newBuilder()
-                        .addPlatformNotification(IosNotification.newBuilder()
-                                .setAlert(ALERT)
-                                .setBadge(5)
-                                .setSound("happy")
-                                .addExtra("from", "JPush")
-                                .build())
-                        .build())
-                 .setMessage(Message.content(MSG_CONTENT))
-                 .setOptions(Options.newBuilder()
-                         .setApnsProduction(true)
-                         .build())
-                 .build();
-    }
-    • Build push objects: The platform is Andorid and iOS, the push target is intersection of (the union of "tag1" and "tag2") (the union of "alias1" and "alias2"), and the push content is - the message with MSG_CONTENT as content and from = JPush as additional fields.
-    public static PushPayload buildPushObject_ios_audienceMore_messageWithExtras() {
-        return PushPayload.newBuilder()
-                .setPlatform(Platform.android_ios())
-                .setAudience(Audience.newBuilder()
-                        .addAudienceTarget(AudienceTarget.tag("tag1", "tag2"))
-                        .addAudienceTarget(AudienceTarget.alias("alias1", "alias2"))
-                        .build())
-                .setMessage(Message.newBuilder()
-                        .setMsgContent(MSG_CONTENT)
-                        .addExtra("from", "JPush")
-                        .build())
-                .build();
-    }
-    • Build push objects: Push content contains SMS information
-    public static void testSendWithSMS() {
-        JPushClient jpushClient = new JPushClient(masterSecret, appKey);
-        try {
-            SMS sms = SMS.content("Test SMS", 10);
-            PushResult result = jpushClient.sendAndroidMessageWithAlias("Test SMS", "test sms", sms, "alias1");
-            LOG.info("Got result - " + result);
-        } catch (APIConnectionException e) {
-            LOG.error("Connection error. Should retry later. ", e);
-        } catch (APIRequestException e) {
-            LOG.error("Error response from JPush server. Should review and fix it. ", e);
-            LOG.info("HTTP Status: " + e.getStatus());
-            LOG.info("Error Code: " + e.getErrorCode());
-            LOG.info("Error Message: " + e.getErrorMessage());
-        }
-    }
-Statistics Acquisition Sample
-The following fragment comes from the file in the project code: example / cn.jpush.api.examples.ReportsExample
+
+* Build push objects quickly: In all platforms and all devices, Notifications with ALERT as its content
+
+```java
+public static PushPayload buildPushObject_all_all_alert() {
+    return PushPayload.alertAll(ALERT);
+}
+```
+
+* Build push objects: In all platforms, the push target with "alias1" as alias and ALERT as notification content.
+
+```java
+public static PushPayload buildPushObject_all_alias_alert() {
+    return PushPayload.newBuilder()
+            .setPlatform(Platform.all())
+            .setAudience(Audience.alias("alias1"))
+            .setNotification(Notification.alert(ALERT))
+            .build();
+}
+```
+
+* Build push objects: The platform is Android, the target is a device with "tag1" as tag, Android notification ALERT as content, and TITLE as title
+
+```java
+public static PushPayload buildPushObject_android_tag_alertWithTitle() {
+    return PushPayload.newBuilder()
+            .setPlatform(Platform.android())
+            .setAudience(Audience.tag("tag1"))
+            .setNotification(Notification.android(ALERT, TITLE, null))
+            .build();
+}
+```
+
+* Build push objects: the platform is iOS, the push target is the intersection of "tag1", "tag_all", and the push content includes both notifications and messages – ALERT as  notification information, 5 as the number of corner signs, "happy" as the notification sound,  from = "JPush" as additional Field; the message content is MSG_CONTENT. The notification is in the APNs push channel, and the message is in the JPush application message channel. APNs push environment is "production" (Library defaults to development if not explicitly set)
+
+```java
+public static PushPayload buildPushObject_ios_tagAnd_alertWithExtrasAndMessage() {
+    return PushPayload.newBuilder()
+        .setPlatform(Platform.ios())
+        .setAudience(Audience.tag_and("tag1", "tag_all"))
+        .setNotification(Notification.newBuilder()
+            .addPlatformNotification(IosNotification.newBuilder()
+                .setAlert(ALERT)
+                .setBadge(5)
+                .setSound("happy")
+                .addExtra("from", "JPush")
+                .build())
+            .build())
+        .setMessage(Message.content(MSG_CONTENT))
+        .setOptions(Options.newBuilder()
+             .setApnsProduction(true)
+             .build())
+         .build();
+}
+```
+
+* Build push objects: The platform is Andorid and iOS, the push target is intersection of (the union of "tag1" and "tag2") (the union of "alias1" and "alias2"), and the push content is - the message with MSG_CONTENT as content and from = JPush as additional fields.
+
+```java
+public static PushPayload buildPushObject_ios_audienceMore_messageWithExtras() {
+    return PushPayload.newBuilder()
+        .setPlatform(Platform.android_ios())
+        .setAudience(Audience.newBuilder()
+            .addAudienceTarget(AudienceTarget.tag("tag1", "tag2"))
+            .addAudienceTarget(AudienceTarget.alias("alias1", "alias2"))
+            .build())
+        .setMessage(Message.newBuilder()
+            .setMsgContent(MSG_CONTENT)
+            .addExtra("from", "JPush")
+            .build())
+        .build();
+}
+```
+
+* Build push objects: Push content contains SMS information
+
+```java
+public static void testSendWithSMS() {
     JPushClient jpushClient = new JPushClient(masterSecret, appKey);
     try {
-        ReceivedsResult result = jpushClient.getReportReceiveds("1942377665");
-        LOG.debug("Got result - " + result);
-
+        SMS sms = SMS.content("Test SMS", 10);
+        PushResult result = jpushClient.sendAndroidMessageWithAlias("Test SMS", "test sms", sms, "alias1");
+        LOG.info("Got result - " + result);
     } catch (APIConnectionException e) {
-        // Connection error, should retry later
-        LOG.error("Connection error, should retry later", e);
-
+        LOG.error("Connection error. Should retry later. ", e);
     } catch (APIRequestException e) {
-        // Should review the error, and fix the request
-        LOG.error("Should review the error, and fix the request", e);
+        LOG.error("Error response from JPush server. Should review and fix it. ", e);
         LOG.info("HTTP Status: " + e.getStatus());
         LOG.info("Error Code: " + e.getErrorCode());
         LOG.info("Error Message: " + e.getErrorMessage());
     }
-Tag/Alias Sample
-The following fragment comes from the file in the project code: example /cn.jpush.api.examples.DeviceExample
-    • Get Tag Alias
+}
+```
+
+### Statistics Acquisition Sample
+
+> The following fragment comes from the file in the project code: example / cn.jpush.api.examples.ReportsExample
+
+```java
+JPushClient jpushClient = new JPushClient(masterSecret, appKey);
+try {
+    ReceivedsResult result = jpushClient.getReportReceiveds("1942377665");
+    LOG.debug("Got result - " + result);
+
+} catch (APIConnectionException e) {
+    // Connection error, should retry later
+    LOG.error("Connection error, should retry later", e);
+
+} catch (APIRequestException e) {
+    // Should review the error, and fix the request
+    LOG.error("Should review the error, and fix the request", e);
+    LOG.info("HTTP Status: " + e.getStatus());
+    LOG.info("Error Code: " + e.getErrorCode());
+    LOG.info("Error Message: " + e.getErrorMessage());
+}
+```
+
+### Tag/Alias Sample
+
+> The following fragment comes from the file in the project code: example /cn.jpush.api.examples.DeviceExample
+
+* Get Tag Alias
+
+```java
     try {
         TagAliasResult result = jpushClient.getDeviceTagAlias(REGISTRATION_ID1);
 
@@ -215,7 +294,11 @@ The following fragment comes from the file in the project code: example /cn.jpus
         LOG.info("Error Code: " + e.getErrorCode());
         LOG.info("Error Message: " + e.getErrorMessage());
     }
-    • Bind Phone Number
+```
+
+* Bind Phone Number
+
+```java
     try {
         DefaultResult result =  jpushClient.bindMobile(REGISTRATION_ID1, "13000000000");
         LOG.info("Got result " + result);
@@ -227,8 +310,13 @@ The following fragment comes from the file in the project code: example /cn.jpus
         LOG.info("Error Code: " + e.getErrorCode());
         LOG.info("Error Message: " + e.getErrorMessage());
     }
-Schedule Sample
-The following fragment comes from the file in the project code: example / cn.jpush.api.examples.ScheduleExample
+```
+
+### Schedule Sample
+
+> The following fragment comes from the file in the project code: example / cn.jpush.api.examples.ScheduleExample
+
+```java
     JPushClient jpushClient = new JPushClient(masterSecret, appKey);
     String name = "test_schedule_example";
     String time = "2016-07-30 12:30:25";
@@ -244,9 +332,15 @@ The following fragment comes from the file in the project code: example / cn.jpu
         LOG.info("Error Code: " + e.getErrorCode());
         LOG.info("Error Message: " + e.getErrorMessage());
     }
-Sample of Custom Client 
-The fragment comes from the file in the project code: example /cn.jpush.api.examples.ClientExample
-    • The configured SSLVersion indicates that at least the supported protocol version is specified, and other multiple protocol versions may also be supported. The list of supported protocol versions depends on the JRE and the operating environment.
+```
+
+### Sample of Custom Client
+
+> The fragment comes from the file in the project code: example /cn.jpush.api.examples.ClientExample
+
+* The configured SSLVersion indicates that at least the supported protocol version is specified, and other multiple protocol versions may also be supported. The list of supported protocol versions depends on the JRE and the operating environment.
+
+```java
     public static void testCustomClient() {
         ClientConfig config = ClientConfig.getInstance();
         config.setMaxRetryTimes(5);
@@ -268,279 +362,42 @@ The fragment comes from the file in the project code: example /cn.jpush.api.exam
     //  PushClient pushClient = new PushClient(masterSecret, appKey, null, config);     // push client only
 
     }
-Weblogic Uses the Java SDK
-Some things that needs to pay attention to when using jpush-api-java-client by Weblogic.
-Precautions
-This document is based on weblogic 10.3.6 version. For version 12, please configure the path accordingly.
-In rare cases, the certificate will have a version upgrade, so be sure to verify that the fingerprints of current and the official certificate are the same.
-Settings of Weblogic console 
-    • [HostName Authentication] Set to None, otherwise, weblogic.security.SSL.HostnameVerifier is used for host name verification, and hostname authentication will fail.
-        ◦ Configuration path Weblogic Console> Server Settings> SSL> Advanced> Host Name Verification
-    • Select [Use JSSE SSL], because Weblogic's default encryption algorithm is different from the encryption algorithm in Java standard
-        ◦ Configuration path Weblogic Console> Server Settings> SSL> Advanced> Using JSSE SSL
-Certificate Configuration
-    • Check the location of the Trust Key Store used by Weblogic
-        ◦ The default file used is the jre\lib\security\cacerts file in the JRE directory
-        ◦ Some developers may change to a custom Trust Key Store
-    • Check if the corresponding truststore contains the root certificate of Geo Trust or secondary certificate of Geo Trust SSL 
-        ◦ Example: keytool -list -keystore cacerts
-        ◦ This process requires the password of the truststore (default changeit)
-        ◦ If any of these two certificates is contained, calling the JPush interface can be invoked through
-    • If the truststore does not contain the above certificate, you need to import the public key to the corresponding truststore
-        ◦ Open jpush.cn and export the public key (can be either Geo Trust root certificate, Geo Trust SSL or *.jpush.cn, please search in Baidu for specific exporting method)
-        ◦ Import the exported public key certificate to the corresponding trust store in step 1
-        ◦ Example: keytool -import -alias geotrustssl -keystore cacerts -file GeoTrustSSL.cer
-        ◦ This process requires the password of the truststore (default changeit)
-Comparison of Certificates
-    • Execute the keytool -list -keystore mykey.jks command to list all the public keys in the truststore and observe the fingerprint of the corresponding certificate.
-    • Check the official website certificate and observe the fingerprint of the corresponding certificate
-    •  Compare whether two fingerprints are the same, as shown in the figure below
+```
 
-Abnormal Record
-Certificate Error Exception
-Can not connect to JPush Server. Please ensure your internet connection is ok. 
-If the problem persists, please let us know at support@jpush.cn.
-javax.net.ssl.SSLHandshakeException: General SSLEngine problem
- at com.sun.net.ssl.internal.ssl.Handshaker.checkThrown(Handshaker.java:1015)
- at com.sun.net.ssl.internal.ssl.SSLEngineImpl.checkTaskThrown(SSLEngineImpl.java:485)
- at com.sun.net.ssl.internal.ssl.SSLEngineImpl.writeAppRecord(SSLEngineImpl.java:1128)
- at com.sun.net.ssl.internal.ssl.SSLEngineImpl.wrap(SSLEngineImpl.java:1100)
- at javax.net.ssl.SSLEngine.wrap(SSLEngine.java:452)
- at weblogic.security.SSL.jsseadapter.JaSSLEngine$1.run(JaSSLEngine.java:68)
- at weblogic.security.SSL.jsseadapter.JaSSLEngine.doAction(JaSSLEngine.java:732)
- at weblogic.security.SSL.jsseadapter.JaSSLEngine.wrap(JaSSLEngine.java:66)
- at weblogic.socket.JSSEFilterImpl.wrapAndWrite(JSSEFilterImpl.java:619)
- at weblogic.socket.JSSEFilterImpl.doHandshake(JSSEFilterImpl.java:91)
- at weblogic.socket.JSSEFilterImpl.doHandshake(JSSEFilterImpl.java:64)
- at weblogic.socket.JSSEFilterImpl.doHandshake(JSSEFilterImpl.java:59)
- at weblogic.socket.JSSEFilterImpl.write(JSSEFilterImpl.java:390)
- at weblogic.socket.JSSESocket$JSSEOutputStream.write(JSSESocket.java:78)
- at java.io.BufferedOutputStream.flushBuffer(BufferedOutputStream.java:65)
- at java.io.BufferedOutputStream.flush(BufferedOutputStream.java:123)
- at java.io.FilterOutputStream.flush(FilterOutputStream.java:123)
- at weblogic.net.http.HttpURLConnection.writeRequests(HttpURLConnection.java:186)
- at weblogic.net.http.HttpURLConnection.getOutputStream(HttpURLConnection.java:280)
- at cn.jpush.api.common.connection.NativeHttpClient._doRequest(NativeHttpClient.java:153)
- at cn.jpush.api.common.connection.NativeHttpClient.doRequest(NativeHttpClient.java:93)
- at cn.jpush.api.common.connection.NativeHttpClient.sendPost(NativeHttpClient.java:80)
- at cn.jpush.api.push.PushClient.sendPush(PushClient.java:119)
- at cn.jpush.api.JPushClient.sendMessageAll(JPushClient.java:362)
- at cn.liucy.hello.HelloPush.doPost(HelloPush.java:40)
- at cn.liucy.hello.HelloPush.doGet(HelloPush.java:29)
- at javax.servlet.http.HttpServlet.service(HttpServlet.java:707)
- at javax.servlet.http.HttpServlet.service(HttpServlet.java:820)
- at weblogic.servlet.internal.StubSecurityHelper$ServletServiceAction.run(StubSecurityHelper.java:227)
- at weblogic.servlet.internal.StubSecurityHelper.invokeServlet(StubSecurityHelper.java:125)
- at weblogic.servlet.internal.ServletStubImpl.execute(ServletStubImpl.java:301)
- at weblogic.servlet.internal.ServletStubImpl.execute(ServletStubImpl.java:184)
- at weblogic.servlet.internal.WebAppServletContext$ServletInvocationAction.wrapRun(WebAppServletContext.java:3732)
- at weblogic.servlet.internal.WebAppServletContext$ServletInvocationAction.run(WebAppServletContext.java:3696)
- at weblogic.security.acl.internal.AuthenticatedSubject.doAs(AuthenticatedSubject.java:321)
- at weblogic.security.service.SecurityManager.runAs(SecurityManager.java:120)
- at weblogic.servlet.internal.WebAppServletContext.securedExecute(WebAppServletContext.java:2273)
- at weblogic.servlet.internal.WebAppServletContext.execute(WebAppServletContext.java:2179)
- at weblogic.servlet.internal.ServletRequestImpl.run(ServletRequestImpl.java:1490)
- at weblogic.work.ExecuteThread.execute(ExecuteThread.java:256)
- at weblogic.work.ExecuteThread.run(ExecuteThread.java:221)
-Caused by: javax.net.ssl.SSLHandshakeException: General SSLEngine problem
- at com.sun.net.ssl.internal.ssl.Alerts.getSSLException(Alerts.java:174)
- at com.sun.net.ssl.internal.ssl.SSLEngineImpl.fatal(SSLEngineImpl.java:1528)
- at com.sun.net.ssl.internal.ssl.Handshaker.fatalSE(Handshaker.java:243)
- at com.sun.net.ssl.internal.ssl.Handshaker.fatalSE(Handshaker.java:235)
- at com.sun.net.ssl.internal.ssl.ClientHandshaker.serverCertificate(ClientHandshaker.java:1206)
- at com.sun.net.ssl.internal.ssl.ClientHandshaker.processMessage(ClientHandshaker.java:136)
- at com.sun.net.ssl.internal.ssl.Handshaker.processLoop(Handshaker.java:593)
- at com.sun.net.ssl.internal.ssl.Handshaker$1.run(Handshaker.java:533)
- at java.security.AccessController.doPrivileged(Native Method)
- at com.sun.net.ssl.internal.ssl.Handshaker$DelegatedTask.run(Handshaker.java:952)
- at weblogic.socket.JSSEFilterImpl.doTasks(JSSEFilterImpl.java:186)
- at weblogic.socket.JSSEFilterImpl.doHandshake(JSSEFilterImpl.java:95)
- ... 31 more
-Caused by: sun.security.validator.ValidatorException: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
- at sun.security.validator.PKIXValidator.doBuild(PKIXValidator.java:323)
- at sun.security.validator.PKIXValidator.engineValidate(PKIXValidator.java:217)
- at sun.security.validator.Validator.validate(Validator.java:218)
- at com.sun.net.ssl.internal.ssl.X509TrustManagerImpl.validate(X509TrustManagerImpl.java:126)
- at com.sun.net.ssl.internal.ssl.X509TrustManagerImpl.checkServerTrusted(X509TrustManagerImpl.java:209)
- at weblogic.security.SSL.jsseadapter.JaTrustManager.checkServerTrusted(JaTrustManager.java:125)
- at com.sun.net.ssl.internal.ssl.ClientHandshaker.serverCertificate(ClientHandshaker.java:1198)
- ... 38 more
-Caused by: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
- at sun.security.provider.certpath.SunCertPathBuilder.engineBuild(SunCertPathBuilder.java:174)
- at java.security.cert.CertPathBuilder.build(CertPathBuilder.java:238)
- at sun.security.validator.PKIXValidator.doBuild(PKIXValidator.java:318)
- ... 44 more
-Exception of Not Using JSSE SSL 
-Can not connect to JPush Server. Please ensure your internet connection is ok. 
-If the problem persists, please let us know at support@jpush.cn.
-javax.net.ssl.SSLKeyException: FATAL Alert:BAD_CERTIFICATE - A corrupt or unuseable certificate was received.
- at com.certicom.tls.interfaceimpl.TLSConnectionImpl.fireException(Unknown Source)
- at com.certicom.tls.interfaceimpl.TLSConnectionImpl.fireAlertSent(Unknown Source)
- at com.certicom.tls.record.handshake.HandshakeHandler.fireAlert(Unknown Source)
- at com.certicom.tls.record.handshake.HandshakeHandler.handleHandshakeMessages(Unknown Source)
- at com.certicom.tls.record.MessageInterpreter.interpretContent(Unknown Source)
- at com.certicom.tls.record.MessageInterpreter.decryptMessage(Unknown Source)
- at com.certicom.tls.record.ReadHandler.processRecord(Unknown Source)
- at com.certicom.tls.record.ReadHandler.readRecord(Unknown Source)
- at com.certicom.tls.record.ReadHandler.readUntilHandshakeComplete(Unknown Source)
- at com.certicom.tls.interfaceimpl.TLSConnectionImpl.completeHandshake(Unknown Source)
- at com.certicom.tls.record.WriteHandler.write(Unknown Source)
- at com.certicom.io.OutputSSLIOStreamWrapper.write(Unknown Source)
- at java.io.BufferedOutputStream.flushBuffer(BufferedOutputStream.java:65)
- at java.io.BufferedOutputStream.flush(BufferedOutputStream.java:123)
- at java.io.FilterOutputStream.flush(FilterOutputStream.java:123)
- at weblogic.net.http.HttpURLConnection.writeRequests(HttpURLConnection.java:186)
- at weblogic.net.http.HttpURLConnection.getOutputStream(HttpURLConnection.java:280)
- at cn.jpush.api.common.connection.NativeHttpClient._doRequest(NativeHttpClient.java:153)
- at cn.jpush.api.common.connection.NativeHttpClient.doRequest(NativeHttpClient.java:93)
- at cn.jpush.api.common.connection.NativeHttpClient.sendPost(NativeHttpClient.java:80)
- at cn.jpush.api.push.PushClient.sendPush(PushClient.java:119)
- at cn.jpush.api.JPushClient.sendMessageAll(JPushClient.java:362)
- at cn.liucy.hello.HelloPush.doPost(HelloPush.java:40)
- at cn.liucy.hello.HelloPush.doGet(HelloPush.java:29)
- at javax.servlet.http.HttpServlet.service(HttpServlet.java:707)
- at javax.servlet.http.HttpServlet.service(HttpServlet.java:820)
- at weblogic.servlet.internal.StubSecurityHelper$ServletServiceAction.run(StubSecurityHelper.java:227)
- at weblogic.servlet.internal.StubSecurityHelper.invokeServlet(StubSecurityHelper.java:125)
- at weblogic.servlet.internal.ServletStubImpl.execute(ServletStubImpl.java:301)
- at weblogic.servlet.internal.ServletStubImpl.execute(ServletStubImpl.java:184)
- at weblogic.servlet.internal.WebAppServletContext$ServletInvocationAction.wrapRun(WebAppServletContext.java:3732)
- at weblogic.servlet.internal.WebAppServletContext$ServletInvocationAction.run(WebAppServletContext.java:3696)
- at weblogic.security.acl.internal.AuthenticatedSubject.doAs(AuthenticatedSubject.java:321)
- at weblogic.security.service.SecurityManager.runAs(SecurityManager.java:120)
- at weblogic.servlet.internal.WebAppServletContext.securedExecute(WebAppServletContext.java:2273)
- at weblogic.servlet.internal.WebAppServletContext.execute(WebAppServletContext.java:2179)
- at weblogic.servlet.internal.ServletRequestImpl.run(ServletRequestImpl.java:1490)
- at weblogic.work.ExecuteThread.execute(ExecuteThread.java:256)
- at weblogic.work.ExecuteThread.run(ExecuteThread.java:221)
-15/12/09 13:52:03 ERROR hello.HelloPush: Failed to server.
-cn.jpush.api.common.resp.APIConnectionException: Connection IO error. 
-Can not connect to JPush Server. Please ensure your internet connection is ok. 
-If the problem persists, please let us know at support@jpush.cn.
- at cn.jpush.api.common.connection.NativeHttpClient._doRequest(NativeHttpClient.java:242)
- at cn.jpush.api.common.connection.NativeHttpClient.doRequest(NativeHttpClient.java:93)
- at cn.jpush.api.common.connection.NativeHttpClient.sendPost(NativeHttpClient.java:80)
- at cn.jpush.api.push.PushClient.sendPush(PushClient.java:119)
- at cn.jpush.api.JPushClient.sendMessageAll(JPushClient.java:362)
- at cn.liucy.hello.HelloPush.doPost(HelloPush.java:40)
- at cn.liucy.hello.HelloPush.doGet(HelloPush.java:29)
- at javax.servlet.http.HttpServlet.service(HttpServlet.java:707)
- at javax.servlet.http.HttpServlet.service(HttpServlet.java:820)
- at weblogic.servlet.internal.StubSecurityHelper$ServletServiceAction.run(StubSecurityHelper.java:227)
- at weblogic.servlet.internal.StubSecurityHelper.invokeServlet(StubSecurityHelper.java:125)
- at weblogic.servlet.internal.ServletStubImpl.execute(ServletStubImpl.java:301)
- at weblogic.servlet.internal.ServletStubImpl.execute(ServletStubImpl.java:184)
- at weblogic.servlet.internal.WebAppServletContext$ServletInvocationAction.wrapRun(WebAppServletContext.java:3732)
- at weblogic.servlet.internal.WebAppServletContext$ServletInvocationAction.run(WebAppServletContext.java:3696)
- at weblogic.security.acl.internal.AuthenticatedSubject.doAs(AuthenticatedSubject.java:321)
- at weblogic.security.service.SecurityManager.runAs(SecurityManager.java:120)
- at weblogic.servlet.internal.WebAppServletContext.securedExecute(WebAppServletContext.java:2273)
- at weblogic.servlet.internal.WebAppServletContext.execute(WebAppServletContext.java:2179)
- at weblogic.servlet.internal.ServletRequestImpl.run(ServletRequestImpl.java:1490)
- at weblogic.work.ExecuteThread.execute(ExecuteThread.java:256)
- at weblogic.work.ExecuteThread.run(ExecuteThread.java:221)
-Caused by: javax.net.ssl.SSLKeyException: FATAL Alert:BAD_CERTIFICATE - A corrupt or unuseable certificate was received.
- at com.certicom.tls.interfaceimpl.TLSConnectionImpl.fireException(Unknown Source)
- at com.certicom.tls.interfaceimpl.TLSConnectionImpl.fireAlertSent(Unknown Source)
- at com.certicom.tls.record.handshake.HandshakeHandler.fireAlert(Unknown Source)
- at com.certicom.tls.record.handshake.HandshakeHandler.handleHandshakeMessages(Unknown Source)
- at com.certicom.tls.record.MessageInterpreter.interpretContent(Unknown Source)
- at com.certicom.tls.record.MessageInterpreter.decryptMessage(Unknown Source)
- at com.certicom.tls.record.ReadHandler.processRecord(Unknown Source)
- at com.certicom.tls.record.ReadHandler.readRecord(Unknown Source)
- at com.certicom.tls.record.ReadHandler.readUntilHandshakeComplete(Unknown Source)
- at com.certicom.tls.interfaceimpl.TLSConnectionImpl.completeHandshake(Unknown Source)
- at com.certicom.tls.record.WriteHandler.write(Unknown Source)
- at com.certicom.io.OutputSSLIOStreamWrapper.write(Unknown Source)
- at java.io.BufferedOutputStream.flushBuffer(BufferedOutputStream.java:65)
- at java.io.BufferedOutputStream.flush(BufferedOutputStream.java:123)
- at java.io.FilterOutputStream.flush(FilterOutputStream.java:123)
- at weblogic.net.http.HttpURLConnection.writeRequests(HttpURLConnection.java:186)
- at weblogic.net.http.HttpURLConnection.getOutputStream(HttpURLConnection.java:280)
- at cn.jpush.api.common.connection.NativeHttpClient._doRequest(NativeHttpClient.java:153)
- ... 21 more
-Exception of Hostname Verification Failure 
-Can not connect to JPush Server. Please ensure your internet connection is ok. 
-If the problem persists, please let us know at support@jpush.cn.
-javax.net.ssl.SSLKeyException: Hostname verification failed: HostnameVerifier=weblogic.security.utils.SSLWLSHostnameVerifier, hostname=api.jpush.cn.
- at weblogic.security.SSL.jsseadapter.JaSSLEngine.doPostHandshake(JaSSLEngine.java:675)
- at weblogic.security.SSL.jsseadapter.JaSSLEngine.doAction(JaSSLEngine.java:746)
- at weblogic.security.SSL.jsseadapter.JaSSLEngine.unwrap(JaSSLEngine.java:132)
- at weblogic.socket.JSSEFilterImpl.unwrap(JSSEFilterImpl.java:505)
- at weblogic.socket.JSSEFilterImpl.unwrapAndHandleResults(JSSEFilterImpl.java:448)
- at weblogic.socket.JSSEFilterImpl.doHandshake(JSSEFilterImpl.java:80)
- at weblogic.socket.JSSEFilterImpl.doHandshake(JSSEFilterImpl.java:64)
- at weblogic.socket.JSSEFilterImpl.doHandshake(JSSEFilterImpl.java:59)
- at weblogic.socket.JSSEFilterImpl.write(JSSEFilterImpl.java:390)
- at weblogic.socket.JSSESocket$JSSEOutputStream.write(JSSESocket.java:78)
- at java.io.BufferedOutputStream.flushBuffer(BufferedOutputStream.java:65)
- at java.io.BufferedOutputStream.flush(BufferedOutputStream.java:123)
- at java.io.FilterOutputStream.flush(FilterOutputStream.java:123)
- at weblogic.net.http.HttpURLConnection.writeRequests(HttpURLConnection.java:186)
- at weblogic.net.http.HttpURLConnection.getOutputStream(HttpURLConnection.java:280)
- at cn.jpush.api.common.connection.NativeHttpClient._doRequest(NativeHttpClient.java:153)
- at cn.jpush.api.common.connection.NativeHttpClient.doRequest(NativeHttpClient.java:93)
- at cn.jpush.api.common.connection.NativeHttpClient.sendPost(NativeHttpClient.java:80)
- at cn.jpush.api.push.PushClient.sendPush(PushClient.java:119)
- at cn.jpush.api.JPushClient.sendMessageAll(JPushClient.java:362)
- at cn.liucy.hello.HelloPush.doPost(HelloPush.java:40)
- at cn.liucy.hello.HelloPush.doGet(HelloPush.java:29)
- at javax.servlet.http.HttpServlet.service(HttpServlet.java:707)
- at javax.servlet.http.HttpServlet.service(HttpServlet.java:820)
- at weblogic.servlet.internal.StubSecurityHelper$ServletServiceAction.run(StubSecurityHelper.java:227)
- at weblogic.servlet.internal.StubSecurityHelper.invokeServlet(StubSecurityHelper.java:125)
- at weblogic.servlet.internal.ServletStubImpl.execute(ServletStubImpl.java:301)
- at weblogic.servlet.internal.ServletStubImpl.execute(ServletStubImpl.java:184)
- at weblogic.servlet.internal.WebAppServletContext$ServletInvocationAction.wrapRun(WebAppServletContext.java:3732)
- at weblogic.servlet.internal.WebAppServletContext$ServletInvocationAction.run(WebAppServletContext.java:3696)
- at weblogic.security.acl.internal.AuthenticatedSubject.doAs(AuthenticatedSubject.java:321)
- at weblogic.security.service.SecurityManager.runAs(SecurityManager.java:120)
- at weblogic.servlet.internal.WebAppServletContext.securedExecute(WebAppServletContext.java:2273)
- at weblogic.servlet.internal.WebAppServletContext.execute(WebAppServletContext.java:2179)
- at weblogic.servlet.internal.ServletRequestImpl.run(ServletRequestImpl.java:1490)
- at weblogic.work.ExecuteThread.execute(ExecuteThread.java:256)
- at weblogic.work.ExecuteThread.run(ExecuteThread.java:221)
-15/12/09 14:27:17 ERROR hello.HelloPush: Failed to server.
-cn.jpush.api.common.resp.APIConnectionException: Connection IO error. 
-Can not connect to JPush Server. Please ensure your internet connection is ok. 
-If the problem persists, please let us know at support@jpush.cn.
- at cn.jpush.api.common.connection.NativeHttpClient._doRequest(NativeHttpClient.java:242)
- at cn.jpush.api.common.connection.NativeHttpClient.doRequest(NativeHttpClient.java:93)
- at cn.jpush.api.common.connection.NativeHttpClient.sendPost(NativeHttpClient.java:80)
- at cn.jpush.api.push.PushClient.sendPush(PushClient.java:119)
- at cn.jpush.api.JPushClient.sendMessageAll(JPushClient.java:362)
- at cn.liucy.hello.HelloPush.doPost(HelloPush.java:40)
- at cn.liucy.hello.HelloPush.doGet(HelloPush.java:29)
- at javax.servlet.http.HttpServlet.service(HttpServlet.java:707)
- at javax.servlet.http.HttpServlet.service(HttpServlet.java:820)
- at weblogic.servlet.internal.StubSecurityHelper$ServletServiceAction.run(StubSecurityHelper.java:227)
- at weblogic.servlet.internal.StubSecurityHelper.invokeServlet(StubSecurityHelper.java:125)
- at weblogic.servlet.internal.ServletStubImpl.execute(ServletStubImpl.java:301)
- at weblogic.servlet.internal.ServletStubImpl.execute(ServletStubImpl.java:184)
- at weblogic.servlet.internal.WebAppServletContext$ServletInvocationAction.wrapRun(WebAppServletContext.java:3732)
- at weblogic.servlet.internal.WebAppServletContext$ServletInvocationAction.run(WebAppServletContext.java:3696)
- at weblogic.security.acl.internal.AuthenticatedSubject.doAs(AuthenticatedSubject.java:321)
- at weblogic.security.service.SecurityManager.runAs(SecurityManager.java:120)
- at weblogic.servlet.internal.WebAppServletContext.securedExecute(WebAppServletContext.java:2273)
- at weblogic.servlet.internal.WebAppServletContext.execute(WebAppServletContext.java:2179)
- at weblogic.servlet.internal.ServletRequestImpl.run(ServletRequestImpl.java:1490)
- at weblogic.work.ExecuteThread.execute(ExecuteThread.java:256)
- at weblogic.work.ExecuteThread.run(ExecuteThread.java:221)
-Caused by: javax.net.ssl.SSLKeyException: Hostname verification failed: HostnameVerifier=weblogic.security.utils.SSLWLSHostnameVerifier, hostname=api.jpush.cn.
- at weblogic.security.SSL.jsseadapter.JaSSLEngine.doPostHandshake(JaSSLEngine.java:675)
- at weblogic.security.SSL.jsseadapter.JaSSLEngine.doAction(JaSSLEngine.java:746)
- at weblogic.security.SSL.jsseadapter.JaSSLEngine.unwrap(JaSSLEngine.java:132)
- at weblogic.socket.JSSEFilterImpl.unwrap(JSSEFilterImpl.java:505)
- at weblogic.socket.JSSEFilterImpl.unwrapAndHandleResults(JSSEFilterImpl.java:448)
- at weblogic.socket.JSSEFilterImpl.doHandshake(JSSEFilterImpl.java:80)
- at weblogic.socket.JSSEFilterImpl.doHandshake(JSSEFilterImpl.java:64)
- at weblogic.socket.JSSEFilterImpl.doHandshake(JSSEFilterImpl.java:59)
- at weblogic.socket.JSSEFilterImpl.write(JSSEFilterImpl.java:390)
- at weblogic.socket.JSSESocket$JSSEOutputStream.write(JSSESocket.java:78)
- at java.io.BufferedOutputStream.flushBuffer(BufferedOutputStream.java:65)
- at java.io.BufferedOutputStream.flush(BufferedOutputStream.java:123)
- at java.io.FilterOutputStream.flush(FilterOutputStream.java:123)
- at weblogic.net.http.HttpURLConnection.writeRequests(HttpURLConnection.java:186)
- at weblogic.net.http.HttpURLConnection.getOutputStream(HttpURLConnection.java:280)
- at cn.jpush.api.common.connection.NativeHttpClient._doRequest(NativeHttpClient.java:153)
- ... 21 more
+### Weblogic Uses the Java SDK
+
+Some things that needs to pay attention to when using jpush-api-java-client by Weblogic.
+
+#### Precautions
+
+This document is based on weblogic 10.3.6 version. For version 12, please configure the path accordingly.
+
+In rare cases, the certificate will have a version upgrade, so be sure to verify that the fingerprints of current and the official certificate are the same.
+
+**Settings of Weblogic console**
+
+* [HostName Authentication] Set to None, otherwise, weblogic.security.SSL.HostnameVerifier is used for host name verification, and hostname authentication will fail.
+    * Configuration path Weblogic Console> Server Settings> SSL> Advanced> Host Name Verification
+* Select [Use JSSE SSL], because Weblogic's default encryption algorithm is different from the encryption algorithm in Java standard
+    * Configuration path Weblogic Console> Server Settings> SSL> Advanced> Using JSSE SSL
+
+**Certificate Configuration**
+
+* Check the location of the Trust Key Store used by Weblogic
+    * The default file used is the jre\lib\security\cacerts file in the JRE directory
+    * Some developers may change to a custom Trust Key Store
+* Check if the corresponding truststore contains the root certificate of Geo Trust or secondary certificate of Geo Trust SSL
+    * Example: keytool -list -keystore cacerts
+    * This process requires the password of the truststore (default changeit)
+    * If any of these two certificates is contained, calling the JPush interface can be invoked through
+* If the truststore does not contain the above certificate, you need to import the public key to the corresponding truststore
+    * Open jpush.cn and export the public key (can be either Geo Trust root certificate, Geo Trust SSL or *.jpush.cn, please search in Baidu for specific exporting method)
+    * Import the exported public key certificate to the corresponding trust store in step 1
+    * Example: keytool -import -alias geotrustssl -keystore cacerts -file GeoTrustSSL.cer
+    * This process requires the password of the truststore (default changeit)
+
+**Comparison of Certificates**
+
+* Execute the keytool -list -keystore mykey.jks command to list all the public keys in the truststore and observe the fingerprint of the corresponding certificate.
+* Check the official website certificate and observe the fingerprint of the corresponding certificate
+*  Compare whether two fingerprints are the same, as shown in the figure below
