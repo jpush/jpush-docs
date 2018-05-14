@@ -160,6 +160,7 @@ The JPush SDK receives the push and forwards it to the developer App via broadca
 This action is not necessary. The user defines the Receiver class to handle broadcasts from the SDK when he has needs.
 
 If you do not do this, that is, you do not write a custom Receiver, nor do you configure this Receiver in AndroidManifest.xml, then the default behavior is:
+
 + Custom message frome receiving to push is not processed
 + You can receive the notification normally. The user clicks to open the main application interface.
 
@@ -599,6 +600,7 @@ Supported version: 3.0.7
     public static void setAlias(Context context, int sequence, String alias);
 
 Parameter Definition
+
 + sequence
 	+ The user-defined operation sequence number, which returned with the operation result, is used to identify the uniqueness of an operation.
 + alias
@@ -1075,6 +1077,7 @@ Supported Version: 1.5.0
 
 ####  
 Parameter Definition
+
 + responseCode
     * 0 indicates successful call.
     * For other return codes, please refer to the definition of error codes.
@@ -1310,8 +1313,12 @@ public static void setSilenceTime(Context context, int startHour, int startMinut
 + int endHour: ending time of silence period - hours (24-hour format, range: 0~23)
 + int endMinute: ending time of the silence period - minutes (range: 0~59)
 
-Code Example
+#### Code Example
+
+```
 JPushInterface.setSilenceTime(getApplicationContext(), 22, 30, 8, 30);
+```
+
 This code indicates a silence period from 10:30 in the evening to 8:30 in the morning.
 
 ## Interface for Application Permission (Android 6.0 and above)
@@ -1323,6 +1330,7 @@ Supported Version: 2.1.0
 ### Function Description
 
 On Android 6.0 and above systems, it is necessary to request some of the privileges that are used. Some of the JPush SDKs need to request the following permissions, because these permissions are needed to make statistics more accurate and feature richer. We recommend developers to call them.
+
 ```
 "android.permission.READ_PHONE_STATE"
 "android.permission.WRITE_EXTERNAL_STORAGE"
@@ -1332,11 +1340,14 @@ On Android 6.0 and above systems, it is necessary to request some of the privile
 
 ### API - requestPermission
 
-Interface Definition
+#### Interface Definition
+
 ```
 public static void requestPermission(Context context);
 ```
-Parameter Description
+
+#### Parameter Description
+
 + The context of the currently applied Activity
 
 ## Set Whether Power Saving Mode Is Enabled
@@ -1351,11 +1362,14 @@ JPush SDK enables and disables the power saving mode. The default is off.
 
 ### API - setPowerSaveMode
 
-Interface Definition
+####Interface Definition
+
 ```
 public static void setPowerSaveMode(Context context,boolean enable);
 ```
-Parameter Description
+
+#### Parameter Description
+
 + The context of the currently applied Activity
 + Enable- whether needs to be on or off, true is on, false is off
 
@@ -1371,33 +1385,45 @@ In most cases, the developer does not need to call the custom notification bar A
 
 If you want to:
 
-Change the ringtone, vibration, display, and disappearance behavior in Notification
-Display Styles of Custom Notification Bar 
-Different Push notifications have different Notification styles
++ Change the ringtone, vibration, display, and disappearance behavior in Notification
++ Display Styles of Custom Notification Bar 
++ Different Push notifications have different Notification styles
+
 Please use this notification bar to customize the capabilities provided by the API
 
 ### Tutorials and code examples
 
-Please refer to the document: Style Tutorial of Custom Notification Bar 
+Please refer to the document: [Style Tutorial of Custom Notification Bar ](android_senior/#_8)
 
 ### API - Set building class of default notification bar style 
 
+```
 public static void setDefaultPushNotificationBuilder(DefaultPushNotificationBuilder builder)
+```
+
 This method can be called when the user needs to customize the default notification bar style.
+
 The JPush SDK provides 3 building classes for customizing the notification bar style:
+
 + BasicPushNotificationBuilder
     * Basic is used to customize basic styles (behavior) such as defaults / flags / icon in Android Notification
 + CustomPushNotificationBuilder
     * Inherit Basic to further lets developers customize Notification Layout
 + MultiActionsNotificationBuilder
     * Inherit DefaultPushNotificationBuilder to further allow developers to customize Notification Layout
+
 If you do not call this method to customize, the default notification bar style of JPush SDK is: notification bar prompts in Android standard.
 
 ### API - Set notification bar style building classes in a number 
 
+```
 public static void setPushNotificationBuilder(Integer notificationBuilderId, BasicPushNotificationBuilder builder)
+```
+
 When the developer needs to specify different notification bar styles (behaviors) for different notifications, this method needs to be called to set multiple notification bar building classes.
+
 Version 3.0.0 adds MultiActionsNotificationBuilder, a notification bar building class with buttons that can be set via this api.
+
 When setting, the developer maintains the number of the notificationBuilderId himself. When the notification is delivered, the number is specified by using n_builder_id. Thus, the Push SDK calls the specified number of notification bar building class set in the developer application to customize the style of the notification bar.
 
 ## Set Retained Notifications API Recently
@@ -1409,119 +1435,203 @@ Supported Version: 1.3.0
 ### Function Description
 
 When pushing a lot of notifications to the client with JPush, if the user does not deal with it, there will be a lot of reservations there.
+
 The new version of the SDK (1.3.0) adds this feature to limit the number of notifications retained. The default is to keep the last 5 notifications.
+
 Developers can define different quantities by calling this API.
-Only valid for notifications. The so-called retention of the latest means that if there is a new notification, the oldest one in the previous list will be removed.
-For example, set to keep the last 5 notifications. Suppose there are already 5 items in the notification bar. When the 6th item arrives, the 1st item will be removed.
+
+<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px;">
+ <p>Only valid for notifications. The so-called retention of the latest means that if there is a new notification, the oldest one in the previous list will be removed.
+ <br>
+ <p>For example, set to keep the last 5 notifications. Suppose there are already 5 items in the notification bar. When the 6th item arrives, the 1st item will be removed.
+</div>
+
 
 ### API - setLatestNotificationNumber
-Interface Definition
+
+#### Interface Definition
+
+```
 public static void setLatestNotificationNumber(Context context, int maxNum)
-Parameter Description
+```
+
+#### Parameter Description
 + ApplicationContext of the ApplicationContext
 + maxNum: The maximum number of displays
 
-Call Description
+#### Call Description
+
 This interface can be called anywhere after JPushInterface.init. It can be called multiple times. The SDK uses the last called value.
 
-Code Example
+#### Code Example
+
+```
 JPushInterface.init(context);
 JPushInterface.setLatestNotificationNumber(context, 3);
+```
+<a name="client_error_code"></a>
+## Definition of Client Error Code
 
-Definition of Client Error Code
- 
-Code
-Description
-Detailed Explanation
-6001
-Invalid setting, tag/alias should not be null, new tag/alias interface starting from 3.0.7 This error code indicates that the tag/alias parameter cannot be null
 
-6002
-Set timeout
-Recommend to try again
-6003
-Alias string is illegal
-Valid aliases and labels are composed of letters (case-sensitive), numbers, underscores, kanji, special characters (2.1.6 support) @!#$&*+=.|
-6004
-Alias is too long. Up to 40 bytes
-Chinese UTF-8 is 3 bytes
-6005
-One of the tag strings is illegal
-Valid aliases and labels are composed of letters (case-sensitive), numbers, underscores, kanji, special characters (2.1.6 support) @!#$&*+=.|
-6006
-One tag is extremely long. One tag up to 40 bytes
-Chinese UTF-8 is 3 bytes
-6007
-The number of tags exceeds the limit. Up to 1000
-This is a device limitation. There is no limitations on the number of tags in per application
-6008
-Tag exceeds the total length limit
-The new added tag/alias interface in the 3.0.7 version has a maximum length of up to 5000 bytes and the old interface of tag/alias has a total length of up to 7000 bytes.
-6009
-Unknown mistake
-PushService startup exception due to permission problem
-6011
-Set tag or alias greater than 10 times within 10s, or set mobile number greater than 3 times within 10s
-Operation is too frequent in a short time
-6012
-Set tag or alias or mobile phone number in stop state of JPush service 
-New error code for version 3.0.0. Developers can do relevant processing or hints based on this error code information
-6013
-Time axis of user device is abnormal
-New error code for version 3.0.6. Abnormal changes in the device's local time axis affect the set frequency
-6014
-The server is busy and it is recommended to try again
-New error code for Version 3.0.7
-6015
-Appkey in the blacklist
-New error code for Version 3.0.7
-6016
-Invalid user
-New error code for Version 3.0.7
-6017
-Invalid request
-New error code for Version 3.0.7
-6018
-The number of tags accumulated in the backend exceeds 1000. It is recommended that some tags be cleared first.
-New error code for Version 3.0.7
-6019
-Query request expired
-New error code for Version 3.0.7
-6020
-Tag/alias operation paused. It is recommended to set it again 
-New error code for Version 3.0.7
-6021
-Tags operation is in progress, and other tags operations are temporarily unavailable
-New error code for Version 3.0.7
-6022
-The alias operation is in progress, and other alias operations are temporarily unavailable
-New error code for Version 3.0.7
-6023
-Invalid mobile phone number
-Can only start with "+" or digit; the following content can only contain "-" and digits; new error code added in Version 3.1.1 
-6024
-Server internal error
-Server internal error, please retry later; new error code added in Version 3.1.1
-6025
-Phone number is too long
-The mobile phone number is too long. The maximum length of the current Jiguang detection mobile phone number is 20. new error code added in Version 3.1.1.
--997
-Registration failed/login failed
-(Usually due to lack of network) If you keep the network of the device properly, and still encounter this problem, that the JPush server refuses to register is another reason. The reason for this is generally that the Android package name of your current App, as well as the appKey, is different from the Android package name and AppKey of the application you registered on the Portal.
-1005
-Package name and AppKey do not match
-
-1008
-AppKey is illegal
-Please go to the official website to check the appkey in this app details and confirm it is correct
-1009
-Android app is not created under current appkey
-Please go to the official website to check the application details of this application
--996
-Disconnected network
-If you ensure that the device network is normal, it may be because the package name is incorrect, and the server is forced to disconnect the client.
--994
-Network connection timeout
+<div class="table-d" align="center" >
+	<table border="1" width = "100%">
+		<tr  bgcolor="#D3D3D3" >
+			<th >Code</th>
+			<th >Description</th>
+			<th>Detailed Explanation</th>
+		</tr>
+		<tr >
+			<td>6001</td>
+			<td>Invalid setting, tag/alias should not be null, new tag/alias interface starting from 3.0.7 This error code indicates that the tag/alias parameter cannot be null</td>
+			<td></td>
+		</tr>
+		<tr >
+			<td>6002</td>
+			<td>Set timeout</td>
+			<td>Recommend to try again</td>
+		</tr>
+		<tr >
+			<td>6003</td>
+			<td>Alias string is illegal</td>
+			<td>Valid aliases and labels are composed of letters (case-sensitive), numbers, underscores, kanji, special characters (2.1.6 support) @!#$&*+=.|</td>
+		</tr>
+		<tr >
+			<td>6004</td>
+			<td>Alias is too long. Up to 40 bytes</td>
+			<td>Chinese UTF-8 is 3 bytes</td>
+		</tr>
+		<tr >
+			<td>6005</td>
+			<td>One of the tag strings is illegal</td>
+			<td>Valid aliases and labels are composed of letters (case-sensitive), numbers, underscores, kanji, special characters (2.1.6 support) @!#$&*+=.|</td>
+		</tr>
+		<tr >
+			<td>6006</td>
+			<td>One tag is extremely long. One tag up to 40 bytes</td>
+			<td>Chinese UTF-8 is 3 bytes</td>
+		</tr>
+		<tr >
+			<td>6007</td>
+			<td>The number of tags exceeds the limit. Up to 1000</td>
+			<td>This is a device limitation. There is no limitations on the number of tags in per application.</td>
+		</tr>
+		<tr >
+			<td>6008</td>
+			<td>Tag exceeds the total length limit</td>
+			<td>The new added tag/alias interface in the 3.0.7 version has a maximum length of up to 5000 bytes and the old interface of tag/alias has a total length of up to 7000 bytes.</td>
+		</tr>
+		<tr >
+			<td>6009</td>
+			<td>Unknown mistake</td>
+			<td>PushService startup exception due to permission problem</td>
+		</tr>
+		<tr >
+			<td>6011</td>
+			<td>Set tag or alias greater than 10 times within 10s, or set mobile number greater than 3 times within 10s</td>
+			<td>Operation is too frequent in a short time</td>
+		</tr>
+		<tr >
+			<td>6012</td>
+			<td>Set tag or alias or mobile phone number in stop state of JPush service </td>
+			<td>New error code for version 3.0.0. Developers can do relevant processing or hints based on this error code information</td>
+		</tr>
+		<tr >
+			<td>6013</td>
+			<td>Time axis of user device is abnormal</td>
+			<td>New error code for version 3.0.6. Abnormal changes in the device's local time axis affect the set frequency</td>
+		</tr>
+        <tr >
+			<td>6014</td>
+			<td>The server is busy and it is recommended to try again</td>
+			<td>New error code for Version 3.0.7</td>
+		</tr>
+        <tr >
+			<td>6015</td>
+			<td>Appkey in the blacklist</td>
+			<td>New error code for Version 3.0.7</td>
+		</tr>
+        <tr >
+			<td>6016</td>
+			<td>Invalid user</td>
+			<td>New error code for Version 3.0.7</td>
+		</tr>
+        <tr >
+			<td>6017</td>
+			<td>Invalid request</td>
+			<td>New error code for Version 3.0.7</td>
+		</tr>
+        <tr >
+			<td>6018</td>
+			<td>The number of tags accumulated in the backend exceeds 1000. It is recommended that some tags be cleared first.</td>
+			<td>New error code for Version 3.0.7</td>
+		</tr>
+        <tr >
+			<td>6019</td>
+			<td>Query request expired</td>
+			<td>New error code for Version 3.0.7</td>
+		</tr>
+        <tr >
+			<td>6020</td>
+			<td>Tag/alias operation paused. It is recommended to set it again </td>
+			<td>New error code for Version 3.0.7</td>
+		</tr>
+        <tr >
+			<td>6021</td>
+			<td>Tags operation is in progress, and other tags operations are temporarily unavailable</td>
+			<td>New error code for Version 3.0.7</td>
+		</tr>
+        <tr >
+			<td>6022</td>
+			<td>The alias operation is in progress, and other alias operations are temporarily unavailable</td>
+			<td>New error code for Version 3.0.7</td>
+		</tr>
+		 <tr >
+			<td>6023</td>
+			<td>Invalid mobile phone number</td>
+			<td>Can only start with "+" or digit; the following content can only contain "-" and digits; new error code added in Version 3.1.1 </td>
+		</tr>
+		 <tr >
+			<td>6024</td>
+			<td>Server internal error</td>
+			<td>Server internal error, please retry later; new error code added in Version 3.1.1</td>
+		</tr>
+		 <tr >
+			<td>6025</td>
+			<td>Phone number is too long</td>
+			<td>The mobile phone number is too long. The maximum length of the current Jiguang detection mobile phone number is 20. new error code added in Version 3.1.1.</td>
+		</tr>
+		<tr >
+			<td>-997</td>
+			<td>Registration failed/login failed</td>
+			<td>(Usually due to lack of network) If you keep the network of the device properly, and still encounter this problem, that the JPush server refuses to register is another reason. The reason for this is generally that the Android package name of your current App, as well as the appKey, is different from the Android package name and AppKey of the application you registered on the Portal.</td>
+		</tr>
+		<tr >
+			<td>1005</td>
+			<td>Package name and AppKey do not match</td>
+			<td></td>
+		</tr>
+		<tr >
+			<td>1008</td>
+			<td>AppKey is illegal</td>
+			<td>Please go to the official website to check the appkey in this app details and confirm it is correct</td>
+		</tr>
+		<tr >
+			<td>1009</td>
+			<td>Android app is not created under current appkey</td>
+			<td>Please go to the official website to check the application details of this application</td>
+		</tr>
+		<tr >
+			<td>-996</td>
+			<td>Disconnected network</td>
+			<td>If you ensure that the device network is normal, it may be because the package name is incorrect, and the server is forced to disconnect the client.</td>
+		</tr>
+		<tr >
+			<td>-994</td>
+			<td>Network connection timeout</td>
+			<td></td>
+		</tr>
+	</table>
+</div>
 
 
 
@@ -1537,17 +1647,25 @@ The SDK captures the crash log through Thread.UncaughtExceptionHandler and repor
 
 ### API - stopCrashHandler (turn off CrashLog reporting)
 
-Interface Definition
+#### Interface Definition
+
+```
 public static void stopCrashHandler(Context context)
-Parameter Description
-Context ApplicationContext of Context application
+```
+
+#### Parameter Description
++ Context ApplicationContext of Context application
 
 ### API - initCrashHandler (Open CrashLog)
 
-Interface Definition
+#### Interface Definition
+
+```
 public static void initCrashHandler(Context context);
-Parameter Description
-ApplicationContext of the Context application
+```
+
+#### Parameter Description
++ ApplicationContext of the Context application
 
 ## Get Connection Status of Push 
 
@@ -1563,27 +1681,38 @@ When the connection status changes (connected, disconnected), a broadcast will b
 
 ### API getConnectionState
 
-Function Description
+#### Function Description
+
 Get current connection status
 
-Interface Definition
+#### Interface Definition
 
 ```
 public static boolean getConnectionState(Context context);
 ```
-Parameter Description
-ApplicationContext of the Context application
+#### Parameter Description
 
-ACTION cn.jpush.android.intent.CONNECTION
-Intent Parameter
++ ApplicationContext of the Context application
+
+#### ACTION cn.jpush.android.intent.CONNECTION
+
+##### Intent Parameter
 JPushInterface.EXTRA_CONNECTION_CHANGE: the value passed by broadcast when Push connection status changes
+
+```
 boolean connected = bundle.getBooleanExtra(JPushInterface.EXTRA_CONNECTION_CHANGE, false);
-Sample Code
+```
+
+##### Sample Code
+
 Add the following code in the MyReceiver onReceive method of JPush Demo:
+
+```
 else if(JPushInterface.ACTION_CONNECTION_CHANGE.equals(intent.getAction())) {
             boolean connected = intent.getBooleanExtra(JPushInterface.EXTRA_CONNECTION_CHANGE, false);
             Log.e(TAG, "[MyReceiver]" + intent.getAction() +" connected:"+connected);
         }
+```
 
 ## Local Notification API
 
@@ -1595,17 +1724,25 @@ Supported Version: 1.6.4
 
 Through the JPush SDK, developers only need to simply call a few interfaces and they can send local notifications in the application at regular intervals.
 
-The local notification API does not depend on the network and can still be triggered under non-network conditions
-Local notifications and web push notifications are independent of each other and are not subject to the limit of the number of recent retained notifications 
-The timing time of local notification is calculated from the time of sending and is not affected by operations such as intermediate shutdown.
+<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px;">
+<p>The local notification API does not depend on the network and can still be triggered under non-network conditions
+<br>
+<p>Local notifications and web push notifications are independent of each other and are not subject to the limit of the number of recent retained notifications 
+<br>
+<p>The timing time of local notification is calculated from the time of sending and is not affected by operations such as intermediate shutdown.
+</div>
+
 
 ### API addLocalNotification: Add a local notification
 
-Interface Definition
+#### Interface Definition
+
 ```
 public static void addLocalNotification(Context context, JPushLocalNotification notification)
-Parameter Description
 ```
+
+#### Parameter Description
+
 + context is the application's ApplicationContext
 + notification is the object of local notification 
 
@@ -1614,24 +1751,37 @@ This interface can be called anywhere after JPushInterface.init
 
 ### API removeLocalNotification: Remove the specified local notification
 
-Interface Definition
+#### Interface Definition
+```
 public static void removeLocalNotification(Context context, long notificationId)
-Parameter Description
+```
+
+#### Parameter Description
 + context is the application's ApplicationContext
 + notificationId is the local notification ID to remove
 
-Call Description
+#### Call Description
+
 This interface can be called anywhere after JPushInterface.init
 
-API clearLocalNotifications: Removes all local notifications
-Interface Definition
-public static void clearLocalNotifications(Context context)
-Parameter Description
-+ context is the application's ApplicationContext
-Call Description
-+ This interface can be called anywhere after JPushInterface.init
+### API clearLocalNotifications: Removes all local notifications
 
-Local Notification Related Settings
+#### Interface Definition
+```
+public static void clearLocalNotifications(Context context)
+```
+
+#### Parameter Description
+
++ context is the application's ApplicationContext
+
+#### Call Description
+
+This interface can be called anywhere after JPushInterface.init
+
+#### Local Notification Related Settings
+
+```
 //设置本地通知样式
 
 public void setBuilderId(long)
@@ -1659,9 +1809,11 @@ public void setBroadcastTime(long broadCastTime)
 public void setBroadcastTime(Date date)
 
 public void setBroadcastTime(int year, int month, int day, int hour, int minute, int second)
+```
 
 ### Sample Code
 
+```
 JPushLocalNotification ln = new JPushLocalNotification();
 ln.setBuilderId(0);
 ln.setContent("hhh");
@@ -1675,4 +1827,4 @@ map.put("test", "111") ;
 JSONObject json = new JSONObject(map) ;
 ln.setExtras(json.toString()) ;
 JPushInterface.addLocalNotification(getApplicationContext(), ln);
-
+```
