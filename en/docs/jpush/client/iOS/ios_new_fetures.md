@@ -245,7 +245,7 @@ payload example:
 
 The biggest change in this iOS 7 push is permission. After the app receives the notification, it runs a piece of code in the background state, which can be used to get content updates from the server. Functional usage scenarios: (multi-media) chat, email updates, notification-based subscription content synchronization, and other functions that enhance the end-user experience.
 
-Remote Notifications 与之前版本的对比可以参考下面两张 Apple 官方的图片便可一目了然。The comparison between Remote Notifications and previous versions can be seen at the following two official Apple images.
+The comparison between Remote Notifications and previous versions can be seen at the following two official Apple images.
 
 ![jpush_ios](../image/iOS6_push.jpg)
 
