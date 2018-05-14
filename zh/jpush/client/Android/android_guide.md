@@ -524,8 +524,32 @@ JPush SDK 提供的 API 接口，都主要集中在 cn.jpush.android.api.JPushIn
 + 检查 Androidmanifest.xml，如果有 Required 的权限不存在，则启动失败
 + 连接服务器登录，如果存在网络问题，则登陆失败,或者前面三步有问题，不会启动JPush SDK
 
+## 集成 FCM 通道
+### 概述
 
-## 高级功能
+Firebase 云消息传递 (FCM) 是由 Google 提供的推送服务，可以在服务器和用户设备之间建立可靠而且省电的连接，提高推送送达率。
+
+JPush SDK 为了尽可能提高开发者在国外设备的推送送达率，对集成 FCM 的设备推送，自动切换到 FCM 通道。同时，为了保证 SDK 的易用性，原本 JPush 的所有接口调用逻辑都不用修改,JPush 会对自身支持的功能做兼容。
+
+### 功能描述
++ FCM 集成完成后，在支持的设备上自动进行初始化。
+
++ FCM 可以与 JPUSH 和 其他 三方通道 共存。
+
++ FCM 通道初始化后支持 tag/alias 这些 JPush 原有的功能,其它的 JPush 未支持的功能目前暂时还不可用。
+
+### 集成方式
++ 开发者需要自行在 [Firebase](https://firebase.google.com/) 平台注册账号和应用id；
++ 开发者需要开通极光推送的 vip 服务，提供 Firebase 平台的应用信息，我们来开通通道；
+
+具体的开通方式和资费情况，请 [联系商务](https://www.jiguang.cn/accounts/business_contact?fromPage=push_doc) 。
+
+***注1：***  使用 FCM 通道需要 Google Play 服务为系统服务且版本不低于11.0.4。
+
+***注2：***  当设备网络环境为非中国时才会通过 FCM 通道进行推送。
+
+
+## 进阶功能
 
 请参考：
 
