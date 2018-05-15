@@ -42,24 +42,24 @@
 <div class="panel-heading">JPush Document</div>
 <div class="panel-body">
     <ul>
-    <li><a href="/jpush/client/Android/android_sdk/">Android SDK Overview</a></li>
-    <li><a href="/jpush/client/Android/android_guide/">Android SDK Integration Guide</a></li>
-    <li><a href="/jpush/client/Android/android_api/">Android API</a></li>
+    <li><a href="jpush/client/Android/android_sdk/">Android SDK Overview</a></li>
+    <li><a href="jpush/client/Android/android_guide/">Android SDK Integration Guide</a></li>
+    <li><a href="jpush/client/Android/android_api/">Android API</a></li>
     </ul>
     <ul>
-    <li><a href="/jpush/client/iOS/ios_sdk/">iOS SDK Overview</a></li>
-    <li><a href="/jpush/client/iOS/ios_guide_new/">iOS SDK Integration Guide</a></li>
-    <li><a href="/jpush/client/iOS/ios_api/">iOS API</a></li>
+    <li><a href="jpush/client/iOS/ios_sdk/">iOS SDK Overview</a></li>
+    <li><a href="jpush/client/iOS/ios_guide_new/">iOS SDK Integration Guide</a></li>
+    <li><a href="jpush/client/iOS/ios_api/">iOS API</a></li>
     </ul>
     <ul>
-    <li><a href="/jpush/client/WindowsPhone/winphone_sdk/">Windows Phone SDK Overview</a></li>
-    <li><a href="/jpush/client/WindowsPhone/winphone_guide/">Windows Phone SDK Integration Guide</a></li>
+    <li><a href="jpush/client/WindowsPhone/winphone_sdk/">Windows Phone SDK Overview</a></li>
+    <li><a href="jpush/client/WindowsPhone/winphone_guide/">Windows Phone SDK Integration Guide</a></li>
     </ul>
     <ul>
-    <li><a href="/jpush/client/client_plugins/">Client Integration Plugins</a></li>
-    <li><a href="/jpush/server/push/server_overview/">REST API Overview</a></li>
-    <li><a href="/jpush/server/push/rest_api_v3_push/">REST API Push</a></li>
-    <li><a href="/jpush/server/push/rest_api_v3_report/">REST API Report</a></li>
+    <li><a href="jpush/client/client_plugins/">Client Integration Plugins</a></li>
+    <li><a href="jpush/server/push/server_overview/">REST API Overview</a></li>
+    <li><a href="jpush/server/push/rest_api_v3_push/">REST API Push</a></li>
+    <li><a href="jpush/server/push/rest_api_v3_report/">REST API Report</a></li>
     </ul>
 </div>
 </div>
