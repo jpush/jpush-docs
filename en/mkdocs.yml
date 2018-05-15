@@ -1,10 +1,71 @@
-site_name: 极光推送文档
+site_name: JiGuang Docs
+site_author: JiGuang Offical
+site_url: https://docs.jiguang.cn/en/
+repo_url: https://github.com/jpush/jpush-docs/
+site_favicon: img/favicon.ico
+site_description: JPush, JMessage, Android Push, iOS Push, APNs, Push Notification
+copyright: Copyright 2011-2018, jiguang.cn, All Rights Reserved. <br />粤ICP备12056275号-13 深圳市和讯华谷信息技术有限公司
+theme: 'mkdocs'
+theme_dir: 'jiguang'
+docs_dir: 'docs'
+extra_css: []
+extra_javascript: []
+extra_templates: []
+
 pages:
-- [index.md, 首页]
-- [server_apis/push_api.md, REST API, Push API]
-- [server_apis/server_sdks.md, REST API, 服务器端SDK]
-- [client_sdks/android_sdk.md, 客户端SDK, Android SDK]
-- [user_guides/android_guide.md, 使用指南, Android 集成指南]
-- [about.md, 关于]
 
+- home: 'index.md'
 
+- JPush:
+
+  - Getting Started Guide:
+    - 'Product Introduction of JPush': 'jpush/guideline/intro.md'
+    - 'Console Usage Guide': 'jpush/console/Instructions.md'
+    - 'JPush SMS Supplement': 'jpush/guideline/push-SMS-intro.md'
+    - 'Rich Push Development Guide': 'jpush/advanced/rich_push.md'
+    - 'FAQ': 'jpush/guideline/faq.md'
+  - Android:
+    - 'Android SDK Overview': 'jpush/client/Android/android_sdk.md'
+    - '3 Minutes Demo': 'jpush/client/Android/android_3m.md'
+    - 'Android SDK Integration Guide': 'jpush/client/Android/android_guide.md'
+    - 'Android SDK Debugging Guide': 'jpush/client/Android/android_debug_guide.md'
+    - 'Android SDK Advanced Tutorial': 'jpush/client/Android/android_senior.md'
+    - 'Android SDK API': 'jpush/client/Android/android_api.md'
+    - 'Android SDK FAQ': 'jpush/client/Android/android_faq.md'
+  - iOS:
+    - 'iOS SDK Overview': 'jpush/client/iOS/ios_sdk.md'
+    - 'iOS SDK Integration Guide': 'jpush/client/iOS/ios_guide_new.md'
+    - 'iOS SDK Debugging Guide': 'jpush/client/iOS/ios_debug_guide.md'
+    - 'iOS Certificate Setup Guide': 'jpush/client/iOS/ios_cer_guide.md'
+    - 'New Features of iOS': 'jpush/client/iOS/ios_new_fetures.md'
+    - 'iOS SDK API': 'jpush/client/iOS/ios_api.md'
+    - 'iOS SDK FAQ': 'jpush/client/iOS/ios_faq.md'
+  - WindowsPhone:
+    - 'Overview of Windows Phone SDK': 'jpush/client/WindowsPhone/winphone_sdk.md'
+    - '3 Minutes Fast Demo of Windows Phone': 'jpush/client/WindowsPhone/winphone_3m.md'
+    - 'Integration Guide of Windows Phone SDK ': 'jpush/client/WindowsPhone/winphone_guide.md'
+    - 'Windows Phone API': 'jpush/client/WindowsPhone/winphone_api.md'
+  - REST API:
+    - 'Overview of REST API': 'jpush/server/push/server_overview.md'
+    - 'Push API v3': 'jpush/server/push/rest_api_v3_push.md'
+    - 'Report API v3': 'jpush/server/push/rest_api_v3_report.md'
+    - 'Device API v3': 'jpush/server/push/rest_api_v3_device.md'
+    - 'Schedule API v3': 'jpush/server/push/rest_api_push_schedule.md'
+    - 'Admin API v1': 'jpush/server/push/rest_api_admin_api_v1.md'
+    - 'HTTP Status Code': 'jpush/server/push/http_status_code.md'
+  - Advanced:
+    - 'Application Scenarios of JPush': 'jpush/advanced/scenes.md'
+    - 'Advanced Topics of JPush': 'jpush/advanced/topics.md'
+  - Client Integration Plugin: 'jpush/client/client_plugins.md'
+  - Server SDK:
+    - 'Java SDK': 'jpush/server/sdk/java_sdk.md'
+    - 'Python SDK': 'jpush/server/sdk/python_sdk.md'
+    - 'PHP SDK': 'jpush/server/sdk/php_sdk.md'
+    - 'Ruby SDK': 'jpush/server/sdk/ruby_sdk.md'
+    - 'C# SDK': 'jpush/server/sdk/csharp_sdk.md'
+    - 'Node.js SDK': 'jpush/server/sdk/nodejs_sdk.md'
+  - Old Documents:
+    - 'REST API v2 - Push': 'jpush/server/old/rest_api_v2_push.md'
+    - 'REST API v2 - Report': 'jpush/server/old/rest_api_v2_report.md'
+  - Recent Updates: 'jpush/updates.md'
+  - Download: 'jpush/resources.md'
