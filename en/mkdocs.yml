@@ -6,7 +6,7 @@ site_favicon: img/favicon.ico
 site_description: JPush, JMessage, Android Push, iOS Push, APNs, Push Notification
 copyright: Copyright 2011-2018, jiguang.cn, All Rights Reserved. <br />粤ICP备12056275号-13 深圳市和讯华谷信息技术有限公司
 theme: 'mkdocs'
-theme_dir: '../zh/themes/jiguang'
+theme_dir: 'jiguang'
 docs_dir: 'docs'
 extra_css: []
 extra_javascript: []

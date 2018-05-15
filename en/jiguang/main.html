@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+
+{%- block styles %}
+<link href="{{ base_url }}/css/bootstrap.min.css" rel="stylesheet">
+<link href="{{ base_url }}/css/font-awesome-4.5.0.css" rel="stylesheet">
+<link href="{{ base_url }}/css/base.css" rel="stylesheet">
+<link href="{{ base_url }}/css/jiguang.css" rel="stylesheet">
+{%- endblock %}
+
+{%- block libs %}
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+<![endif]-->
+<script src="{{ base_url }}/js/jquery-1.10.2.min.js"></script>
+<script src="{{ base_url }}/js/bootstrap-3.0.3.min.js"></script>
+{%- endblock %}
+
+{%- block content %}
+{%- if page and page.is_homepage %}
+<div id="homepage">
+    {% include "content.html" %}
+    <footer>
+        <hr>
+        {%- if config.copyright %}
+            <p>{{ config.copyright }}</p>
+        {%- endif %}
+        <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+    </footer>
+</div>
+{%- else %}
+<div class="col-lg-3 col-md-3 col-sm-4">{% include "sidebar.html" %}</div>
+<div class="col-lg-8 col-md-9 col-sm-8" role="main" id="content">
+    <article>{% include "content.html" %}</article>
+    <footer>
+        <hr>
+        {%- if config.copyright %}
+            <p>{{ config.copyright }}</p>
+        {%- endif %}
+        <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+    </footer>
+</div>
+<div class="col-lg-1 hidden-print hidden-xs hidden-sm hidden-md" role="complementary">{% include "toc.html" %}</div>
+{%- endif %}
+{%- endblock %}
+
+{%- block footer %}
+<!-- <div class="container">
+    <hr>
+    {%- if config.copyright %}
+        <p>{{ config.copyright }}</p>
+    {%- endif %}
+    <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+</div> -->
+{%- endblock %}
+
+{%- block scripts %}
+    <script src="{{ base_url }}/js/base.js"></script>
+{%- endblock %}
