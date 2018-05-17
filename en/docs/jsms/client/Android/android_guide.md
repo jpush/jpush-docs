@@ -1,43 +1,49 @@
-# JSMS Android SDK 集成指南
+# Integration Guide of JSMS Android SDK 
 
-## SDK 说明
+## SDK Instructions
 
-### 支持版本
-+ 目前 SDK 只支持 Android 2.3 及以上版本的手机系统。
+### Support Versions
 
-### SDK 压缩包包含
++ The current SDK only supports mobile phone systems in Android 2.3 and above.
 
-+ AndroidManifest.xml：客户端嵌入 SDK 参考的配置文件；
-+ libs/jpush-sdk-sms-v1.x.x.jar：SDK Java 开发包；
-+ example：一个完整的 Android 项目，演示了 SMS SDK 的基本用法，可以用作参考。
+### SDK Package Contains
 
-## 集成步骤
++ AndroidManifest.xml: configuration file of client-embedded SDK;
++ libs/jpush-sdk-sms-v1.x.x.jar: SDK Java Development Kit;
++ example: A complete Android project that demonstrates the basic usage of the SMS SDK can be used as a reference.
 
-### 创建应用
-注册成为极光开发者，在极光的 Web Portal 上创建应用得到 AppKey。如果您已经是是极光其他产品的用户并且创建过应用，那么无需重复创建。
 
-### 导入 SDK 开发包
-解压压缩包，将 libs/jpush-sdk-sms-v1.x.x.jar 复制到工程的 libs 目录下面。
+## Integration Steps
 
-### 集成 JPush Android SDK 的混淆
+### Create an Application
 
+Register as an Jiguang developer and create an App on the Jiguang Web Portal. If you are already a user of Jiguang 's other products and have created applications, you do not need to create them again.
+
+### Import SDK Development Kit
+
+Unzip the package and copy libs/jpush-sdk-sms-v1.x.x.jar to the project's libs directory.
+
+### Integrate the Confusion of JPush Android SDK
 ```
 -keep class cn.jpush.sms.SMSSDK {*;}
 -keep class cn.jpush.sms.listener.** {*;}
 ```
 
-### 配置 AndroidManifest.xml
-+ 配置权限：
+### Configure AndroidManifest.xml
 
-		<uses-permission android:name="android.permission.INTERNET"/>
-		<uses-permission android:name="android.permission.READ_PHONE_STATE"/>
-		<uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
-		<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
++ Configure permissions:
 
-+ 配置 AppKey：
+```
+<uses-permission android:name="android.permission.INTERNET"/>
+<uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+<uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+```
 
-		<meta-data android:name="JPUSH_APPKEY" android:value="Your AppKey"/>
++ Configure AppKey：
+```
+<meta-data android:name="JPUSH_APPKEY" android:value="Your AppKey"/>
+```
 
-### 添加代码
-参考 Demo 和 SDK API 说明进行添加集成。
-
+### Add Code
+Refer to the Demo and SDK API instructions for adding integration.
