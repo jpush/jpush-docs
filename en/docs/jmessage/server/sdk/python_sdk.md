@@ -1,31 +1,36 @@
 # JMessage API Python SDK
-[Github 源码](https://github.com/jpush/jmessage-api-python-client)
 
-## 简介
-这是 JMessage REST API 的 Python 封装开发包，是由极光推送官方提供的，一般支持最新的 API 功能。
+[Github](https://github.com/jpush/jmessage-api-python-client)
 
-对应的 REST API 文档：[https://docs.jiguang.cn/jmessage/server/rest_api_im/](https://docs.jiguang.cn/jmessage/server/rest_api_im/)
+## Introduction
 
-## 支持
+This is the Python development package for the JMessage REST API, which is provided by the JPush officially and generally supports the latest API features.
+
+Corresponding REST API documentation：[https://docs.jiguang.cn/jmessage/server/rest_api_im/](https://docs.jiguang.cn/jmessage/server/rest_api_im/)
+
+## Support
 
 Python 2.7
 
-## 安装
+## Installation
 
-pip 安装
+Install Pip
+
 ```
 pip install jmessage
 ```
 
-下载之后运行
-```
-python setup.py install 
-```
-
-## 样例
->以下代码截取自项目目录下的 example/users/regist_user.py
+Run after downloading
 
 ```
+python setup.py install
+```
+
+## Samples
+
+> The following code is taken from example/users/regist_user.py under the project directory
+
+```python
 from jmessage import users
 from jmessage import common
 from conf import *
@@ -37,9 +42,9 @@ response=users.regist_user(user)
 print (response.content)
 ```
 
->以下代码截取自项目目录下的 example/messages/send_message.py
+> The following code is taken from the example/messages/send_message.py under the project directory
 
-```
+```python
 from jmessage import users
 from jmessage import common
 from conf import *
@@ -51,10 +56,9 @@ response=messages.send_messages(message)
 print (response.content)
 ```
 
->以下代码截取自项目目录下的 example/groups/create_groups.py
+> The following code is taken from example/groups/create_groups.py under the project directory
 
-```
-
+```python
 from jmessage import users
 from jmessage import common
 from conf import *

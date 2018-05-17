@@ -1,38 +1,29 @@
 # IM REST Report V2
 
-## 消息历史
+## Message history
 
-目前只保存最近60天消息，这类 API 地址统一为（注意与 Push API 不同）：**https://report.im.jpush.cn/v2**
-相比于V1 V2改进了整体查询的稳定性以及速度，提高查询一页的数量上限
+Currently, only the last 60 days of messages are saved. Addresses of The APIs are unified (note that unlike the Push API): https://report.im.jpush.cn/v2 ,which improves the stability and speed of the overall query compared to V1 V2, and also increases the maximum number of pages for a query
 
-### HTTP 验证
+### HTTP Authentication
 
-验证采用 HTTP Basic 机制，即 HTTP Header（头）里加一个字段（Key/Value对）：
-Authorization: Basic base64_auth_string
-其中 base64_auth_string 的生成算法为：base64(appKey:masterSecret)
-即，对 appKey 加上冒号，加上 masterSecret 拼装起来的字符串，再做 base64 转换。
+Authentication uses the HTTP Basic mechanism, that is, a field (Key/Value pair) Authorization: Basic base64_auth_string is added in the HTTP Header (header). The generation algorithm of base64_auth_string is: base64(appKey:masterSecret) That is, adding a colon to appKey, plus masterSecret Assembled strings, and then do a base64 conversion.
 
 <div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px;">
-<p>温馨提示：</p>
-<p>使用此接口，传递给JMessage的URL需要经过URL Encode处理，例如时间格式中的空格需要被转义为 %20</p>
+<p>Tips：</p>
+<p>
+The URL passed to the JMessage via this interface needs to be processed by the URL Encode, for example, spaces in the time format need to be escaped as %20.
+</p>
 </div>
 
-<br/>
-
-
-## 获取消息
-
-
-
+## Get Message
 
 ```
 GET  /messages?count=1000&begin_time={begin_time}&end_time={end_time}
-
 ```
 
-### Example Request 
+### Example Request
 
-####  Request Header  
+#### Request Header
 
 ```
 GET /messages?count=500&begin_time=2015-11-02 10:10:10&end_time=2015-11-02 10:10:12 (第一次请求)
@@ -42,64 +33,65 @@ GET /messages?count=500&begin_time=2015-11-02 10:10:10&end_time=2015-11-02 10:10
 GET /messages?cursor=KSDKF34UISOCGAASD （第n次获取 n>1）
 ```
 
-#### Request Body  
+#### Request Body
 
-N/A
++ N/A
 
-####  Request Params  
+#### Request Params
 
-+ count （必填）每次查询的总条数  一次最多1000
-+ begin_time (必填) 记录开始时间 格式  yyyy-MM-dd HH:mm:ss  设置筛选条件大于等于begin time   
-+ end_time (必填)   记录结束时间  格式 yyyy-MM-dd HH:mm:ss  设置筛选条件下于等于end time   
-+ begin_time end_time 之间最大范围不得超过7天
-+ 	cursor  当第一次请求后如果后面有数据，会返回一个cursor回来用这个获取接下来的消息 (cursor 有效时间是120s，过期后需要重新通过第一个请求获得cursor，重新遍历)
-+ 查询的消息按发送时间升序排序
++ count (required): The total number of entries per query. Up to 1000 at a time
++ begin_time (required): Start time of the record. Format yyyy-MM-dd HH:mm:ss. Set the filter condition greater than or equal to the begin time
++ end_time (required): End time of the record. Format yyyy-MM-dd HH:mm:ss. Set the filter condition smarter or equal to end time
++ The maximum range between begin_time end_time must not exceed 7 days.
++ cursor: If there is data after the first request, it will return a cursor to get the following message (valid time of cursor is 120s. Need to re-pass the first request cursor after it is expired)
++ Queried messages are sorted in ascending order by sending time
 
-### Example Response  
+### Example Response
 
-#### Response Header   
-
-```
-HTTP/1.1 200 
-Content-Type: application/json; charset=utf-8 
-```
-
-#### Response Data  
+#### Response Header
 
 ```
-{ 
-	"total": 3000, "cursor":"APSK234ASDKQWE", "count": 1, 
- 	"messages": [ 
-        { "target_type": "single", 
-          "msg_type": "text", 
-          "target_name": "", 
-          "target_id": "10010648", 
-          "from_id": "868802000386631", 
-          "from_name": "868802000386631", 
-          "from_type": "user", 
-          "from_platform": "a", 
+HTTP/1.1 200
+Content-Type: application/json; charset=utf-8
+```
+
+#### Response Data
+
+```
+{
+    "total": 3000, "cursor":"APSK234ASDKQWE", "count": 1,
+    "messages": [
+        { "target_type": "single",
+          "msg_type": "text",
+          "target_name": "",
+          "target_id": "10010648",
+          "from_id": "868802000386631",
+          "from_name": "868802000386631",
+          "from_type": "user",
+          "from_platform": "a",
           "msg_body": {
-                 "text": "text", 
-                 "extras": { } 
-          }, 
-          "create_time": 1446016259, 
+                 "text": "text",
+                 "extras": { }
+          },
+          "create_time": 1446016259,
           "version": 1,
           "msgid": 13242735,
           "msg_level" : 0, // 0代表应用内消息 1代表跨应用消息
-          "msg_ctime" : 1466866468352 // 服务器接收到消息的时间，单位毫秒 
+          "msg_ctime" : 1466866468352 // 服务器接收到消息的时间，单位毫秒
         }
- 	] 
-} 
+    ]
+}
 ```
 
-## 获取用户消息
+## Get user messages
 
 ```
 GET /users/{username}/messages?count=1000&begin_time={begin_time}&end_time={end_time}
 ```
-### Example Request 
 
-####  Request Header  
+### Example Request
+
+#### Request Header
 
 ```
 GET /users/caiyh/messages?count=500&begin_time=2015-11-02 10:10:10&end_time=2015-11-02 10:10:12 （ 第一次请求）
@@ -109,66 +101,67 @@ GET /users/caiyh/messages?count=500&begin_time=2015-11-02 10:10:10&end_time=2015
 GET /users/{username}/messages?cursor=KSDKF34UISOCGAASD （第n次获取 n>1）
 ```
 
-#### Request Body  
+#### Request Body
 
-N/A
++ N/A
 
-####  Request Params  
-+ count （必填）查询的总条数  一次最多1000
-+ begin_time (必填) 记录开始时间 格式  yyyy-MM-dd HH:mm:ss 设置筛选条件大于end time   
-+ end_time (必填)   记录结束时间  格式 yyyy-MM-dd HH:mm:ss  设置筛选条件下于begin time   
-+ begin_time end_time 之间最大范围不得超过7天
-+ cursor  当第一次请求后如果后面有数据，会返回一个cursor回来用这个获取接下来的消息 (cursor 有效时间是120s，过期后需要重新通过第一个请求获得cursor，重新遍历)
-+ 查询的消息按发送时间升序排序
+#### Request Params
 
-### Example Response  
++ Query messages are sorted in ascending order by sending time
++ count (required): The total number of entries per query. Up to 1000 at a time
++ begin_time (required): Start time of the record. Format yyyy-MM-dd HH:mm:ss. Set the filter condition greater than or equal to the begin time
++ end_time (required): End time of the record. Format yyyy-MM-dd HH:mm:ss. Set the filter condition smarter or equal to end time
++ The maximum range between begin_time end_time must not exceed 7 days.
++ cursor: If there is data after the first request, it will return a cursor to get the following message (valid time of cursor is 120s. Need to re-pass the first request cursor after it is expired)
++ Queried messages are sorted in ascending order by sending time
 
-#### Response Header   
+### Example Response
 
-```
-HTTP/1.1 200 
-Content-Type: application/json; charset=utf-8 
-```
-
-#### Response Data  
+#### Response Header
 
 ```
-{ 
-  "total": 3000, "cursor":"APSK234ASDKQWE", "count": 1, 
-  "messages": [ 
-        { "target_type": "single", 
-          "msg_type": "text", 
-          "target_name": "", 
-          "target_id": "10010648", 
-          "from_id": "868802000386631", 
-          "from_name": "868802000386631", 
-          "from_type": "user", 
-          "from_platform": "a", 
-          "from_appkey": "4f7aef34fb361292c566a1cd", 
-          "target_appkey": "4f7aef34fb361292c566a1cd", 
+HTTP/1.1 200
+Content-Type: application/json; charset=utf-8
+```
+
+#### Response Data
+
+```
+{
+  "total": 3000, "cursor":"APSK234ASDKQWE", "count": 1,
+  "messages": [
+        { "target_type": "single",
+          "msg_type": "text",
+          "target_name": "",
+          "target_id": "10010648",
+          "from_id": "868802000386631",
+          "from_name": "868802000386631",
+          "from_type": "user",
+          "from_platform": "a",
+          "from_appkey": "4f7aef34fb361292c566a1cd",
+          "target_appkey": "4f7aef34fb361292c566a1cd",
           "msg_body": {
-                 "text": "text", 
-                 "extras": { } 
-          }, 
-          "create_time": 1446016259, 
-          "version": 1 , 
+                 "text": "text",
+                 "extras": { }
+          },
+          "create_time": 1446016259,
+          "version": 1 ,
           "msgid": 13242735,
           "msg_level" : 0 // 0代表应用内消息 1代表跨应用消息
-          "msg_ctime" : 1466866468352 // 服务器接收到消息的时间，单位毫秒 
+          "msg_ctime" : 1466866468352 // 服务器接收到消息的时间，单位毫秒
         }
- ] 
+ ]
 }
 ```
 
-
-## 获取群组消息 
+## Get group messages
 
 ```
 GET /groups/{gid}/messages?count=1000&begin_time={begin_time}&end_time={end_time}
 ```
-### Example Request 
+### Example Request
 
-####  Request Header  
+#### Request Header
 
 ```
 GET /groups/10055201/messages?count=500&begin_time=2015-11-02 10:10:10&end_time=2015-11-02 10:10:12 （ 第一次请求）
@@ -178,28 +171,29 @@ GET /groups/10055201/messages?count=500&begin_time=2015-11-02 10:10:10&end_time=
 GET /groups/10055201/messages?cursor=KSDKF34UISOCGAASD （第n次获取 n>1）
 ```
 
-#### Request Body  
+#### Request Body
 
-N/A
++ N/A
 
-####  Request Params  
-+ count （必填）查询的总条数  一次最多1000
-+ begin_time (必填) 记录开始时间 格式  yyyy-MM-dd HH:mm:ss 设置筛选条件大于end time   
-+ end_time (必填)   记录结束时间  格式 yyyy-MM-dd HH:mm:ss  设置筛选条件下于begin time   
-+ begin_time end_time 之间最大范围不得超过7天
-+ cursor  当第一次请求后如果后面有数据，会返回一个cursor回来用这个获取接下来的消息 (cursor 有效时间是120s，过期后需要重新通过第一个请求获得cursor，重新遍历)
-+ 查询的消息按发送时间升序排序
+#### Request Params
 
-### Example Response  
++ count (required): The total number of entries per query. Up to 1000 at a time
++ begin_time (required): Start time of the record. Format yyyy-MM-dd HH:mm:ss. Set the filter condition greater than or equal to the begin time
++ end_time (required): End time of the record. Format yyyy-MM-dd HH:mm:ss. Set the filter condition smarter or equal to end time
++ The maximum range between begin_time end_time must not exceed 7 days.
++ cursor: If there is data after the first request, it will return a cursor to get the following message (valid time of cursor is 120s. Need to re-pass the first request cursor after it is expired)
++ Queried messages are sorted in ascending order by sending time
 
-#### Response Header   
+### Example Response
+
+#### Response Header
 
 ```
-HTTP/1.1 200 
-Content-Type: application/json; charset=utf-8 
+HTTP/1.1 200
+Content-Type: application/json; charset=utf-8
 ```
 
-#### Response Data  
+#### Response Data
 
 ```
 {
@@ -231,17 +225,17 @@ Content-Type: application/json; charset=utf-8
         }
     ]
 }
-
 ```
 
-## 获取聊天室消息 
+## Get chat room messages
 
 ```
 GET /chatrooms/{chatroomid}/messages?count=100&begin_time={begin_time}&end_time={end_time}
 ```
-### Example Request 
 
-####  Request Header  
+### Example Request
+
+#### Request Header
 
 ```
 GET /chatrooms/{chatroomid}/messages?count=100&begin_time=2017-11-02 10:10:10&end_time=2017-11-02 10:10:12 （ 第一次请求）
@@ -251,28 +245,30 @@ GET /chatrooms/{chatroomid}/messages?count=100&begin_time=2017-11-02 10:10:10&en
 GET /chatrooms/{chatroomid}/messages?cursor=KSDKF34UISOCGAASD （第n次获取 n>1）
 ```
 
-#### Request Body  
+#### Request Body
 
-N/A
++ N/A
 
-####  Request Params  
-+ count （必填）查询的总条数  一次最多1000
-+ begin_time (必填) 记录开始时间 格式  yyyy-MM-dd HH:mm:ss 设置筛选条件大于end time   
-+ end_time (必填)   记录结束时间  格式 yyyy-MM-dd HH:mm:ss  设置筛选条件下于begin time   
-+ begin_time end_time 之间最大范围不得超过7天
-+ cursor  当第一次请求后如果后面有数据，会返回一个cursor回来用这个获取接下来的消息 (cursor 有效时间是120s，过期后需要重新通过第一个请求获得cursor，重新遍历)
-+ 查询的消息按发送时间升序排序
+#### Request Params
 
-### Example Response  
++ count (required): The total number of entries per query. Up to 1000 at a time
++ begin_time (required): Start time of the record. Format yyyy-MM-dd HH:mm:ss. Set the filter condition greater than or equal to the begin time
++ end_time (required): End time of the record. Format yyyy-MM-dd HH:mm:ss. Set the filter condition smarter or equal to end time
++ The maximum range between begin_time end_time must not exceed 7 days.
++ cursor: If there is data after the first request, it will return a cursor to get the following message (valid time of cursor is 120s. Need to re-pass the first request cursor after it is expired)
++ Queried messages are sorted in ascending order by sending time
 
-#### Response Header   
+
+### Example Response
+
+#### Response Header
 
 ```
-HTTP/1.1 200 
-Content-Type: application/json; charset=utf-8 
+HTTP/1.1 200
+Content-Type: application/json; charset=utf-8
 ```
 
-#### Response Data  
+#### Response Data
 
 ```
 {
@@ -304,46 +300,45 @@ Content-Type: application/json; charset=utf-8
         }
     ]
 }
-
 ```
 
+# Statistics interface (vip exclusive interface)
 
-# 统计接口 （vip专属接口）
-
-## 用户统计 
+## User Statistics
 
 ```
 GET /statistic/users?time_unit={time_unit}&start={start}&duration={duration}
 ```
-### Example Request 
 
-####  Request Header  
+### Example Request
+
+#### Request Header
 
 ```
 GET /statistic/users?time_unit=DAY&start=2017-03-01&duration=3
 ```
 
+#### Request Body
 
-#### Request Body  
++ N/A
 
-N/A
+#### Request Params
 
-####  Request Params  
-+ time_unit （必填）查询维度 目前只有 DAY  
-+ start (必填)  开始时间 time_unit 为DAY的时候格式为yyyy-MM-dd 
-+ duration (必填)   请求时的持续时长，DAY 最大为60天
-+ 统计只保存最近60天的记录
++ time_unit (required): query dimension, currently only DAY
++ start (required): The starting time, time_unit is DAY when the format is yyyy-MM-dd
++ duration (required): The duration of the request, up to 60 days for DAY
++ Statistics only save records for the last 60 days
 
-### Example Response  
+### Example Response
 
-#### Response Header   
+#### Response Header
 
 ```
-HTTP/1.1 200 
-Content-Type: application/json; charset=utf-8 
+HTTP/1.1 200
+Content-Type: application/json; charset=utf-8
 ```
 
-#### Response Data  
+#### Response Data
 
 ```
 [
@@ -371,47 +366,46 @@ Content-Type: application/json; charset=utf-8
 ]
 ```
 
-+ active_user ：活跃用户数
-+ total_users ：总用户数
-+ send_msg_users ：发送了消息的用户数
-+ new_user ：新增用户数
++ active_user： active users
++ total_users： total users
++ send_msg_users： number of users who sent the message
++ new_user： new users
 
-
-
-## 消息统计 
+## Message Statistics
 
 ```
 GET /statistic/messages?time_unit={time_unit}&start={start}&duration={duration}
 ```
-### Example Request 
 
-####  Request Header  
+### Example Request
+
+#### Request Header
 
 ```
 GET /statistic/messages?time_unit=DAY&start=2017-03-01&duration=2
 ```
 
+#### Request Body
 
-#### Request Body  
++ N/A
 
-N/A
+#### Request Params
 
-####  Request Params  
-+ time_unit （必填）查询维度 目前有 HOUR  DAY  MONTH 三个维度可以选
-+ start (必填) 开始时间 time_unit 为 HOUR时 格式为yyyy-MM-dd HH ,DAY的时候格式为yyyy-MM-dd , MONTH的时候格式为 yyyy-MM 
-+ duration (必填)   请求时的持续时长 HOUR 只支持查询当天的统计， DAY 最大为60天 ，MOTH为两个月  
-+ 统计只保存最近60天的记录
++ time_unit (required): query dimension. There are currently three dimensions of HOUR, DAY, MONTH to choose from
++ start (required:) Start time. Format is yyyy-MM-dd HH when time_unit is HOUR, yyyy-MM-dd when time_unit is DAT, and yyyy-MM when time_unit is MONTH.
++ duration (required): duration of the request. HOUR only supports statistics for the day of the query, maximum for DAY is 60 days, MONTH is two months
++ Statistics only save records for the last 60 days
 
-### Example Response  
+### Example Response
 
-#### Response Header   
+#### Response Header
 
 ```
-HTTP/1.1 200 
-Content-Type: application/json; charset=utf-8 
+HTTP/1.1 200
+Content-Type: application/json; charset=utf-8
 ```
 
-#### Response Data  
+#### Response Data
 
 ```
 {
@@ -447,55 +441,55 @@ Content-Type: application/json; charset=utf-8
 }
 ```
 
-+ send_msg_stat : 发送消息统计
-+ send_msg_stat->group_send_msg : 群组发送消息数
-+ send_msg_stat->single_send_msg : 单聊发送消息数
-+ group_msg_stat ：群组消息类型统计
-+ group_msg_stat->txt_msg : 群组文本消息条数
-+ group_msg_stat->image_msg : 群组图片消息条数
-+ group_msg_stat->voice_msg : 群组语音消息条数
-+ group_msg_stat->other_msg : 群组其他类型消息条数
-+ single_msg_stat ：单聊消息类型统计
-+ single_msg_stat->txt_msg : 单聊文本消息条数
-+ single_msg_stat->image_msg : 单聊图片消息条数
-+ single_msg_stat->voice_msg : 单聊语音消息条数
-+ single_msg_stat->other_msg : 单聊其他类型消息条数
++ send_msg_stat : statistics of sending message
++ send_msg_stat->group_send_msg : 群组发送消息数number of group send messages
++ send_msg_stat->single_send_msg : 单聊发送消息数number of single chat messages
++ group_msg_stat ：群组消息类型统计group message type statistics
++ group_msg_stat->txt_msg : 群组文本消息条数number of group text messages
++ group_msg_stat->image_msg : 群组图片消息条数number of group image messages
++ group_msg_stat->voice_msg : 群组语音消息条数number of group voice messages
++ group_msg_stat->other_msg : 群组其他类型消息条数number of other types of messages in the group
++ single_msg_stat ：单聊消息类型统计single chat message type statistics
++ single_msg_stat->txt_msg : 单聊文本消息条数The number of single-talk text messages
++ single_msg_stat->image_msg : 单聊图片消息条数Number of single chat picture messages
++ single_msg_stat->voice_msg : 单聊语音消息条数number of single chat voice messages
++ single_msg_stat->other_msg : 单聊其他类型消息条数single chat other types of messages
 
-
-## 群组统计 
+## Group Statistics
 
 ```
 GET /statistic/groups?time_unit={time_unit}&start={start}&duration={duration}
 ```
-### Example Request 
 
-####  Request Header  
+### Example Request
+
+#### Request Header
 
 ```
 GET /statistic/groups?time_unit=DAY&start=2017-03-01&duration=3
 ```
 
+#### Request Body
 
-#### Request Body  
++ N/A
 
-N/A
+#### Request Params
 
-####  Request Params  
-+ time_unit （必填）查询维度 目前只有 DAY  
-+ start (必填)  开始时间 time_unit 为DAY的时候格式为yyyy-MM-dd
-+ duration (必填)   请求时的持续时长，DAY 最大为60天
-+ 统计只保存最近60天的记录
++ time_unit (required): query dimension, currently only DAY
++ start (required)：starting time, format is yyyy-MM-dd when time_unit is DAY
++ duration (required): duration of the request, up to 60 days for DAY
++ Statistics only save records for the last 60 days
 
-### Example Response  
+### Example Response
 
-#### Response Header   
+#### Response Header
 
 ```
-HTTP/1.1 200 
-Content-Type: application/json; charset=utf-8 
+HTTP/1.1 200
+Content-Type: application/json; charset=utf-8
 ```
 
-#### Response Data  
+#### Response Data
 
 ```
 [
@@ -520,8 +514,7 @@ Content-Type: application/json; charset=utf-8
 ]
 ```
 
-+ active_group ：活跃群组数
-+ total_groups ：总群组数
-+ send_msg_users ：发送了消息的用户数
-+ new_groups ：新增群组数
-
++ active_user：active users
++ total_users： total users
++ send_msg_users ： number of users who sent the message
++ new_user： new users

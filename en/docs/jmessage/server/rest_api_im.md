@@ -1,406 +1,423 @@
 # IM REST API
 
-极光 IM API 为开发者提供 IM 相关功能的 HTTP API。
+The JMessage API provides developers with an HTTP API for related IM functionality.
 
-这类 API 地址统一为（注意与 Push API 不同）：https://api.im.jpush.cn  
+Addresses of these API are unified (note that unlike the Push API): https://api.im.jpush.cn
 
-**HTTP 验证**
+**HTTP Authentication**
 
-验证采用 HTTP Basic 机制，即 HTTP Header（头）里加一个字段（Key/Value对）：
+Authentication uses the HTTP Basic mechanism, which adds a field (Key/Value pair) to the HTTP Header (header):
 
 Authorization: Basic base64_auth_string
 
-其中 base64_auth_string 的生成算法为：base64(appKey:masterSecret)
+The generation algorithm of base64_auth_string is: base64(appKey:masterSecret)
 
-即，对 appKey 加上冒号，加上 masterSecret 拼装起来的字符串，再做 base64 转换。
+That is, add a colon to the appKey, plus the string assembled by masterSecret, and do a base64 conversion.
 
-## User对象字段总览
+## Overview of User Object Fields
 
 <div class="table-d" align="center" >
-	<table border="1" width = "100%">
-		<tr  bgcolor="#D3D3D3" >
-			<th >参数</th>
-			<th >含义</th>
-			<th >字符长度限制</th>
-		</tr>
-		<tr >
-			<td>username</td>
-			<td>用户登录名</td>
-			<td>Byte(4~128)</td>
-		</tr>
-		<tr >
-			<td>password</td>
-			<td>登录密码</td>
-			<td>Byte(4~128)</td>
-		</tr>
-		<tr >
-			<td>appkey</td>
-			<td>用户所属于的应用的appkey</td>
-			<td></td>
-		</tr>
-		<tr >
-			<td>nickname</td>
-			<td>用户昵称</td>
-			<td>Byte(0~64)</td>
-		</tr>
-		<tr >
-			<td>birthday</td>
-			<td>生日</td>
-			<td>yyyy-MM-dd HH:mm:ss</td>
-		</tr>
-		<tr >
-			<td>gender</td>
-			<td>性别 0 - 未知， 1 - 男 ，2 - 女 </td>
-			<td></td>
-		</tr>
-		<tr >
-			<td>signature</td>
-			<td>用户签名</td>
-			<td>Byte(0~250)</td>
-		</tr>
-		<tr >
-			<td>region</td>
-			<td>用户所属地区</td>
-			<td>Byte(0~250)</td>
-		</tr>
-		<tr >
-			<td>address</td>
-			<td>用户详细地址</td>
-			<td>Byte(0~250)</td>
-		</tr>
-		<tr >
-			<td>ctime</td>
-			<td>用户创建时间</td>
-			<td></td>
-		</tr>
-		<tr >
-			<td>mtime</td>
-			<td>用户最后修改时间</td>
-			<td></td>
-		</tr>
-		<tr >
-			<td>extras</td>
-			<td>用户自定义json对象</td>
-			<td>Byte(0~512)</td>
-		</tr>
-	</table>
+    <table border="1" width = "100%">
+        <tr  bgcolor="#D3D3D3" >
+            <th>Parameter</th>
+            <th>Meaning</th>
+            <th>Limits of character length</th>
+        </tr><tr>
+            <td>username</td>
+            <td>User login name</td>
+            <td>Byte(4~128)</td>
+        </tr><tr>
+            <td>password</td>
+            <td>Login password</td>
+            <td>Byte(4~128)</td>
+        </tr><tr>
+            <td>appkey</td>
+            <td>Appkey to which the user belongs</td>
+            <td></td>
+        </tr><tr>
+            <td>nickname</td>
+            <td>User nickname</td>
+            <td>Byte(0~64)</td>
+        </tr><tr>
+            <td>birthday</td>
+            <td>Birthday</td>
+            <td>yyyy-MM-dd HH:mm:ss</td>
+        </tr><tr>
+            <td>gender</td>
+            <td>Gender 0 - Unknown, 1 - Male, 2 - Female</td>
+            <td></td>
+        </tr><tr>
+            <td>signature</td>
+            <td>User signature</td>
+            <td>Byte(0~250)</td>
+        </tr><tr>
+            <td>region</td>
+            <td>User area</td>
+            <td>Byte(0~250)</td>
+        </tr><tr>
+            <td>address</td>
+            <td>Detailed address</td>
+            <td>Byte(0~250)</td>
+        </tr><tr>
+            <td>ctime</td>
+            <td>User creation time</td>
+            <td></td>
+        </tr><tr>
+            <td>mtime</td>
+            <td>Last modified time</td>
+            <td></td>
+        </tr><tr>
+            <td>extras</td>
+            <td>User-defined json objects</td>
+            <td>Byte(0~512)</td>
+        </tr>
+    </table>
 </div>
 
+## User Registration
 
-##  用户注册
+### Register as user
 
+Batch registration of users to JMessage server, up to 500 users in one batch registration
 
-### 注册用户
-
-批量注册用户到极光IM 服务器，一次批量注册最多支持500个用户。
-
-	POST /v1/users/
-
+```
+POST /v1/users/
+```
 
 #### Example Request
 
 ```
-[{"username": "dev_fang", "password": "password"}] 
+[{"username": "dev_fang", "password": "password"}]
 ```
 
-#### Request Params
+**Request Params**
 
 JSON Array.
 
-+ username（必填）用户名
-    - 开头：字母或者数字
-    - 字母、数字、下划线
-    - 英文点、减号、@
-+ password（必填）用户密码。极光IM服务器会MD5加密保存。
-+ nickname  （选填）用户昵称
-    - 不支持的字符：英文字符： \n \r\n 
-+ avatar  （选填）头像
-    - 需要填上从文件上传接口获得的media_id	
-+ birthday    （选填）生日 example: 1990-01-24
-    - yyyy-MM-dd 
-+ signature  （选填）签名
-    - 支持的字符：全部，包括 Emoji
-+ gender    （选填） 性别
-    - 0 - 未知， 1 - 男 ，2 - 女 
-+ region      （选填）地区
-    - 支持的字符：全部，包括 Emoji
-+ address   （选填）地址
-    - 支持的字符：全部，包括 Emoji
-+ extras     (选填) 用户自定义json对象
++ username (required)
+     - At the beginning: letters or numbers
+     - letters, numbers, underscores
+     - English, minus, @
++ password (required) JMessage server will be saved with MD5 encryption.
++ nickname (optional)
+     - Unsupported characters: English characters: \n \r\n
++ avatar (optional)
+     - Need to fill in the media_id obtained from the uploading interface of files
++ birthday (optional) example: 1990-01-24
+     - yyyy-MM-dd
++ signature (optional)
+     - Supported characters: All, including Emoji
++ gender (optional)
+     - 0 - Unknown, 1 - Male, 2 - Female
++ region (optional)
+     - Supported characters: All, including Emoji
++ address (optional)
+     - Supported characters: All, including Emoji
++ extras (optional) user-defined json objects
 
 #### Example Response
 
 ```
 < HTTP/1.1 201 Created
 < Content-Type: application/json
-< 
-[{"username": "dev_fang"  }] 
+<
+[{"username": "dev_fang"  }]
 ```
 
-#### Response Params
+**Response Params**
 
 JSON Array.
 
 + username
-+ error 某个用户注册出错时，该对象里会有 error 对象，说明错误原因。
-    - 899003   参数错误，Request Body参数不符合要求
-    - 899001   用户已存在
++ Error: When an error occurs in the registration of a user, there is an error object in the object indicating the cause of the error.
+     - 899003: parameter error, **Request Body** does not meet the requirements
+     - 899001: user already exists
 
+## Admin Registration
 
-## Admin 注册
-
-### Admin Register 管理员注册 (管理员api发送消息接口的权限)
+### Admin Register (Administrator api sends permissions of message interface)
 
 ```
 POST /v1/admins/
 ```
+
 #### Example Request
 
 ```
 {"username": "dev_fang", "password": "password"}
 ```
 
-#### Request Params
+**Request Params**
 
-+ username Byte(4-128) 支持字符
-    - 开头：字母或者数字
-    - 字母、数字、下划线
-    - 英文点、减号、@
-
-+ password Byte(4-128) 字符不限
-+ nickname  （选填）用户昵称
-    - 不支持的字符：英文字符： \n \r\n 
-+ avatar  （选填）头像
-    - 需要填上从文件上传接口获得的media_id	
-+ birthday    （选填）生日 example: 1990-01-24
-    - yyyy-MM-dd 
-+ signature  （选填）签名
-    - 支持的字符：全部，包括 Emoji
-+ gender    （选填） 性别
-    - 0 - 未知， 1 - 男 ，2 - 女 
-+ region      （选填）地区
-    - 支持的字符：全部，包括 Emoji
-+ address   （选填）地址
-    - 支持的字符：全部，包括 Emoji
-+ extras     (选填) 用户自定义json对象
++ username Byte(4-128) supported character
+     - At the beginning: letters or numbers
+     - letters, numbers, underscores
+     - English, minus, @
++ password Byte(4-128) Characters are not limited
++ nickname (optional)
+     - Unsupported characters: English characters: \n \r\n
++ avatar (optional)
+     - Need to fill in the media_id obtained from the uploading interface of files
++ birthday (optional) birthday example: 1990-01-24
+     - yyyy-MM-dd
++ signature (optional)
+     - Supported characters: All, including Emoji
++ gender (optional)
+     - 0 - Unknown, 1 - Male, 2 - Female
++ region (optional)
+     - Supported characters: All, including Emoji
++ address (optional)
+     - Supported characters: All, including Emoji
++ extras (optional) user-defined json objects
 
 #### Example Response
 
 ```
 HTTP/1.1 201 Created
-Content-Type: application/json; charset=utf-8 
+Content-Type: application/json; charset=utf-8
 ```
 
-### GetAdminsListByAppkey  获取应用管理员列表
+### GetAdminsListByAppkey: Get admin list of app
 
 ```
 GET /v1/admins?start={start}&count={count}
 ```
+
 #### Example Request
 
-#### Request Header 
+**Request Header**
 
 ```
 GET /admins?start=1&count=30
-Accept: application/json
-```
-#### Request Body
-
-```
-N/A
+Acct: application/json
 ```
 
-#### request params
-+ start    起始记录位置 从0开始
-+ count  查询条数 最多支持500条
+**Request Body**
+
++ N/A
+
+**request params**
+
++ start: record position of starting, starts from 0
++ count: query number, supports up to 500
 
 #### Example Response
 
-#### Response Header
+**Response Header**
 
 ```
 HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8
 ```
-#### Response Data 
+
+**Response Data**
 
 ```
 {
-  "total":1233, 
+  "total":1233,
   "start":1100,
   "count":3,
   "users":
-    [{"username" : "cai", "nickname" : "hello", "mtime" : "2015-01-01 00:00:00", "ctime" : "2015-01-01 00:00:00"},
-      {"username" : "yi", "nickname" : "hello", "mtime" : "2015-01-01 00:00:00", "ctime" : "2015-01-01 00:00:00"},
-      {"username" : "huang", "nickname" : "hello", "mtime" : "2015-01-01 00:00:00", "ctime" : "2015-01-01 00:00:00"} ]
-}
+    [{  "username": "cai",
+        "nickname": "hello",
+        "mtime": "2015-01-01 00:00:00",
+        "ctime": "2015-01-01 00:00:00"
+    }, {"username": "yi",
+        "nickname": "hello",
+        "mtime": "2015-01-01 00:00:00",
+        "ctime": "2015-01-01 00:00:00"
+    }, {"username": "huang",
+        "nickname": "hello",
+        "mtime": "2015-01-01 00:00:00",
+        "ctime": "2015-01-01 00:00:00"
+    }]}
 ```
 
-## 用户维护
+## User Maintenance
 
-### 获取用户信息
+### Get user information
 
-	GET /v1/users/{username}
+```
+GET /v1/users/{username}
+```
 
-#### Request Params
+**Request Params**
 
-+ username 用户名。填充到请求路径上。
++ username: Fill to the request path
 
 #### Example Response
 
 ```
 {
-	"username" : "javen", 
- 	"nickname" : "hello", 
- 	"avatar" : "/avatar", 
- 	"birthday" : "1990-01-24 00:00:00", 
- 	"gender" : 0, 
- 	"signature" : "orz", 
- 	"region" : "shenzhen", 
- 	"address" : "shenzhen", 
- 	"mtime" : "2015-01-01 00:00:00", 
- 	"ctime" : "2015-01-01 00:00:00"}
+    "username": "javen",
+    "nickname": "hello",
+    "avatar": "/avatar",
+    "birthday": "1990-01-24 00:00:00",
+    "gender": 0,
+    "signature": "orz",
+    "region": "shenzhen",
+    "address": "shenzhen",
+    "mtime": "2015-01-01 00:00:00",
+    "ctime": "2015-01-01 00:00:00"}
 ```
-说明
 
-除了username mtime ctime这三个子段之外，其余字段如果没存json中就没有相应的key
+**Instructions**
 
-### 更新用户信息
+In addition to the username mtime ctime, these three sub-sections, if there is no json for the the remaining fields, then there is no corresponding key.
 
-	PUT /v1/users/{username}
+### Update user information
+
+```
+PUT /v1/users/{username}
+```
 
 #### Example Request
 
 ```
 {
-	"nickname": "Hello JMessage"
+    "nickname": "Hello JMessage"
 }
 ```
 
-#### Request Params
+**Request Params**
 
-+ nickname  （选填）用户昵称
-    - 不支持的字符：英文字符： \n \r\n 
-+ avatar  （选填）头像
-    - 需要填上从文件上传接口获得的media_id	
-+ birthday    （选填）生日 example: 1990-01-24
-    - yyyy-MM-dd 
-+ signature  （选填）签名
-    - 支持的字符：全部，包括 Emoji
-+ gender    （选填） 性别
-    - 0 - 未知， 1 - 男 ，2 - 女 
-+ region      （选填）地区
-    - 支持的字符：全部，包括 Emoji
-+ address   （选填）地址
-    - 支持的字符：全部，包括 Emoji
-+ extras     (选填) 用户自定义json对象
-
-
++ nickname (optional)
+     - Unsupported characters: English characters: \n \r\n
++ avatar (optional)
+     - Need to fill in the media_id obtained from the uploading interface of files
++ birthday (optional) birthday example: 1990-01-24
+     - yyyy-MM-dd
++ signature (optional)
+     - Supported characters: All, including Emoji
++ gender (optional)
+     - 0 - Unknown, 1 - Male, 2 - Female
++ region (optional)
+     - Supported characters: All, including Emoji
++ address (optional) address
+     - Supported characters: All, including Emoji
++ extras (optional) user-defined json objects
 
 #### Example Response
 
 ```
-< HTTP/1.1 204 
+< HTTP/1.1 204
 < Content-Type: application/json; charset=utf-8
-
 ```
 
-### 用户在线状态查询 
+### Query user online status
 
 ```
 Get /v1/users/{username}/userstat
 ```
+
 #### Example Request
 
-Request Header 
+**Request Header**
 
 ```
 Get /v1/users/caiyh/userstat
-Content-Type: application/json; charset=utf-8 
+Content-Type: application/json; charset=utf-8
 ```
-Request Params
 
-+ username 用户名 
+**Request Params**
 
-Request Body
++ username
 
-N/A
+**Request Body**
+
++ N/A
 
 #### Example Response
-Response Header
+
+**Response Header**
 
 ```
 HTTP/1.1 200 NO Content
 Content-Type: application/json; charset=utf-8
 ```
 
-Response Data
+**Response Data**
 
 ```
 {"login":true, "online": false}
 ```
-该接口不适用于多端在线，多端在线请用批量状态接口
+
+This interface is not applicable to multi-end online. Please use batch status interface for multi-end online.
 
 #### Error Code
 
-错误码
++ 899003: username is illegal
++ 899002: user does not exist
 
-+ 899003 username不合法
-+ 899002 用户不存在
-
-
-### 批量用户在线状态查询
+### Query bulk user online status
 
 ```
 Post /v1/users/userstat
 ```
+
 #### Example Request
 
-Request Header 
+**Request Header**
 
 ```
 Post /v1/users/userstat
-Content-Type: application/json; charset=utf-8 
-```
-Request Params
-
-N/A
-
-Request Body
-
-["USER1","USER2"]
-
-#### Example Response
-Response Header
-
-```
-HTTP/1.1 200 
 Content-Type: application/json; charset=utf-8
 ```
 
-Response Data
+**Request Params**
+
++ N/A
+
+**Request Body**
 
 ```
-[{"devices": [],"username": "caiyh01"},{"devices": [{"login": false,"online": false,"platform": "a"}],"username": "Rauly"}]
+["USER1","USER2"]
 ```
-+ devices  设备登陆状态数组，没有登陆过数组为空
-+ platform SDK各平台：a-Android，i-iOS，j-JS，w-Windows
+
+#### Example Response
+
+**Response Header**
+
+```
+HTTP/1.1 200
+Content-Type: application/json; charset=utf-8
+```
+
+**Response Data**
+
+```
+[
+    {
+        "devices": [],
+        "username": "caiyh01"
+    },
+    {
+        "devices": [{
+            "login": false,
+            "online": false,
+            "platform": "a"
+        }],
+        "username": "Rauly"
+    }
+]
+
+```
+
++ devices: Array of device login status. Array as empty if no login.
++ Platform SDK Platforms: a-Android, i-iOS, j-JS, w-Windows
 
 #### Error Code
 
-错误码
++ 899003: username is illegal
++ 899002: user does not exist
 
-+ 899003 username不合法
-+ 899002 用户不存在
-
-
-### 修改密码
+### Change password
 
 ```
 PUT /v1/users/{username}/password
 ```
 
-#### Request Header 
+**Request Header**
 
 ```
 PUT /v1/users/javen/password
@@ -410,12 +427,13 @@ PUT /v1/users/javen/password
 
 ```
 {
-	 "new_password": "654321" 
+    "new_password": "654321"
 }
 ```
-#### Request Params
 
-+ new_password （必填）新密码
+**Request Params**
+
++ new_password （required）
 
 #### Example Response
 
@@ -423,61 +441,70 @@ PUT /v1/users/javen/password
 HTTP/1.1 204 NO Content
 Content-Type: application/json; charset=utf-8
 ```
-#### Response Data
+
+**Response Data**
+
 + N/A
 
-### 删除用户
+### Delete users
 
-	DELETE /v1/users/{username}
+```
+DELETE /v1/users/{username}
+```
 
-Request Params
+**Request Params**
 
-+ username 用户名。
++ username
 
-Example Response
+#### Example Response
 
 ```
 < HTTP/1.1 204 NO CONTENT
-< Content-Type: application/json; charset=utf-8   
+< Ctent-Type: application/json; charset=utf-8
 ```
-### 批量删除用户
 
-	DELETE /v1/users/
+### Delete users in batches
 
-Request Body
+```
+DELETE /v1/users/
+```
+
+**Request Body**
+
 ```
 ["USER1","USER2"]
 ```
-+ username 用户名数组。（最多支持同时删除100个用户）
 
-Example Response
++ username: Array of usernames. (Maximum support for deleting 100 users at the same time)
 
-```
-< HTTP/1.1 200 NO CONTENT
-< Content-Type: application/json; charset=utf-8   
-```
-
-### 添加黑名单
+#### Example Response
 
 ```
-Put /v1/users/{username}/blacklist
+< HTTP/1.1 20 NO CONTENT
+< Content-Type: application/json; charset=utf-8
 ```
 
-Example Request
-
-Request Header 
+### Add blacklist
 
 ```
 Put /v1/users/{username}/blacklist
-Content-Type: application/json; charset=utf-8  
 ```
 
-Request Params 
+#### Example Request
+
+**Request Header**
+
+```
+Put /v1/users/{username}/blacklist
+Content-Type: application/json; charset=utf-8
+```
+
+**Request Params**
 
 + JsonArray
-  + username的JsonArray
++ username的JsonArray
 
-Request Body
+**Request Body**
 
 ```
 [
@@ -486,114 +513,125 @@ Request Body
  ]
 ```
 
-Example Response 
+#### Example Response
 
-Response Header 
+**Response Header**
 
 ```
 HTTP/1.1 204 NO Content
-Content-Type: application/json; charset=utf-8 
+Content-Type: application/json; charset=utf-8
 ```
 
-Response Data
+**Response Data**
 
-N/A
++ N/A
 
-
-### 移除黑名单
-
-```
-Delete /v1/users/{username}/blacklist
-```
-
-Example Request
-
-Request Header 
+### Remove blacklist
 
 ```
 Delete /v1/users/{username}/blacklist
-Content-Type: application/json; charset=utf-8  
 ```
 
-Request Params
+#### Example Request
+
+**Request Header**
+
+```
+Delete /v1/users/{username}/blacklist
+Content-Type: application/json; charset=utf-8
+```
+
+**Request Params**
 
 + JsonArray
-  + username的JsonArray
++ username的JsonArray
 
-Request Body
+**Request Body**
 
 ```
 [
- "test1",
- "test2"
+    "test1",
+    "test2"
  ]
 ```
 
-Example Response
+#### Example Response
 
-Response Header
+**Response Header**
 
 ```
 HTTP/1.1 204 NO Content
-Content-Type: application/json; charset=utf-8   
+Content-Type: application/json; charset=utf-8
 ```
 
-Response Data
+**Response Data**
 
-N/A
++ N/A
 
-### 黑名单列表
+### List of blacklist
 
 ```
 Get /v1/users/{username}/blacklist
 ```
 
-Example Request
+#### Example Request
 
-Request Header 
+**Request Header**
 
 ```
 Put /v1/users/{username}/blacklist
-Content-Type: application/json; charset=utf-8 
+Content-Type: application/json; charset=utf-8
 ```
 
-Request Params
+**Request Params**
 
-+ username 用户名
++ username
 
-Request Body
+**Request Body**
 
-N/A
++ N/A
 
-Example Response
+#### Example Response
 
-Response Header 
+**Response Header**
 
 ```
 HTTP/1.1 200 NO Content
-Content-Type: application/json; charset=utf-8   
+Content-Type: application/json; charset=utf-8
 ```
 
-Response Data
+**Response Data**
 
 ```
-[{"username" : "javen", "nickname" : "hello", "avatar" = "/avatar", "birthday" : "1990-01-24 00:00:00", "gender" : 0, "signature" : "orz", "region" : "shenzhen", "address" : "shenzhen", "mtime" : "2015-01-01 00:00:00", "ctime" : "2015-01-01 00:00:00"}]
+[{
+    "username": "javen",
+    "nickname": "hello",
+    "avatar" = "/avatar",
+    "birthday": "1990-01-24 00:00:00",
+    "gender": 0,
+    "signature": "orz",
+    "region": "shenzhen",
+    "address": "shenzhen",
+    "mtime": "2015-01-01 00:00:00",
+    "ctime": "2015-01-01 00:00:00"
+}]
 ```
 
-
-### 获取用户列表
-
-	GET /v1/users/?start={start}&count={count}
-
-Request Params
-
-+ start 开始的记录数
-+ count 要获取的记录个数
-
-Example Response
+### Get user list
 
 ```
-< HTTP/1.1 200 
+GET /v1/users/?start={start}&count={count}
+```
+
+**Request Params**
+
++ start: Number of records started
++ count: Number of records to retrieve
+
+#### Example Response
+
+```
+< HTTP/1.1 200
 < Content-Type: application/json
 
 {
@@ -601,36 +639,46 @@ Example Response
     "start": 1100,
     "count": 100,
     "users":
-    [{"username" : "cai", "nickname" : "hello", "mtime" : "2015-01-01 00:00:00", "ctime" : "2015-01-01 00:00:00"},
-      {"username" : "yi", "nickname" : "hello", "mtime" : "2015-01-01 00:00:00", "ctime" : "2015-01-01 00:00:00"},
-      {"username" : "huang", "nickname" : "hello", "mtime" : "2015-01-01 00:00:00", "ctime" : "2015-01-01 00:00:00"} ]
+    [{  "username": "cai",
+        "nickname": "hello",
+        "mtime": "2015-01-01 00:00:00",
+        "ctime": "2015-01-01 00:00:00"
+    }, {"username": "yi",
+        "nickname": "hello",
+        "mtime": "2015-01-01 00:00:00",
+        "ctime": "2015-01-01 00:00:00"
+    },{ "username": "huang",
+        "nickname": "hello",
+        "mtime": "2015-01-01 00:00:00",
+        "ctime": "2015-01-01 00:00:00"
+    }]
 }
 ```
 
-### 免打扰
-#### 免打扰设置
+### Do-Not-Disturb
+
+#### Do-Not-Disturb settings
 
 ```
 POST  /v1/users/{username}/nodisturb
 ```
 
-Example Request
+#### Example Request
 
-Request Header 
+**Request Header**
 
 ```
 POST  /v1/users/{username}/nodisturb
-Content-Type: application/json; charset=utf-8  
+Content-Type: application/json; charset=utf-8
 ```
 
-Request Params
+**Request Params**
 
-+ single  单聊免打扰，支持add remove数组 （可选）
-+ group   群聊免打扰，支持add remove数组（可选）
-+ global  全局免打扰，0或1 0表示关闭，1表示打开 （可选）
++ single: single chat DND, supports add remove array (optional)
++ group: group chat DND, supports add remove array (optional)
++ global: global DND, 0 or 1 0 means closed, 1 means open (optional)
 
-
-Request Body
+**Request Body**
 
 ```
 {   
@@ -652,627 +700,611 @@ Request Body
 }
 ```
 
-Example Response
+#### Example Response
 
-Response Header
+**Response Header**
 
 ```
 HTTP/1.1 204 NO Content
-Content-Type: application/json; charset=utf-8   
+Content-Type: application/json; charset=utf-8
 ```
 
-Response Data
+**Response Data**
 
-N/A
++ N/A
 
-Error Code
+#### Error Code
 
-+ 899003 username不合法；
-+ 899002 用户不存在；
-+ 899051  群组不存在；
-+ 899052 设置群组
-+ 屏蔽，设置的群组屏蔽已经打开
-+ 99053 设置群组消息屏蔽，设置的群组屏蔽已经关闭
++ 899003: username is illegal;
++ 899002: user does not exist;
++ 899051: group does not exist
++ 899052: sets group
++ Blocked, group blocking is turned on
++ 99053: sets group message block and the group blocking is turned off
 
+### Disable users
 
-### 禁用用户
+```
+PUT /v1/users/{username}/forbidden?disable={disable}
+```
 
-	PUT /v1/users/{username}/forbidden?disable={disable}
+**Request Params**
 
-Request Params
++ disable boolean, true for disabled users, false for activated users
 
-+ disable  boolean,true代表禁用用户，false代表激活用户
-
-Example Response
+#### Example Response
 
 ```
 < HTTP/1.1 204 NO CONTENT
 < Content-Type: application/json
 ```
 
+## Message Related
 
-## 消息相关
-
-### 发送消息
+### Send a message
 
 ```
 POST /v1/messages
 ```
 
 <div class="table-d" align="center" >
-	<table border="1" width = "100%">
-		<tr  bgcolor="#D3D3D3" >
-			<th >参数</th>
-			<th >含义</th>
-		</tr>
-		<tr >
-			<td>version</td>
-			<td>版本号 目前是1 （必填）</td>
-		</tr>
-		<tr >
-			<td>target_type</td>
-			<td>发送目标类型 single - 个人，group - 群组 chatroom - 聊天室（必填）</td>
-		</tr>
-		<tr >
-			<td>from_type</td>
-			<td>发送消息者身份 当前只限admin用户，必须先注册admin用户 （必填）</td>
-		</tr>
-		<tr >
-			<td>msg_type</td>
-			<td>发消息类型 text - 文本，image - 图片, custom - 自定义消息（msg_body为json对象即可，服务端不做校验）voice - 语音 （必填）</td>
-		</tr>
-		<tr >
-			<td>target_id</td>
-			<td>目标id single填username group 填Group id chatroom 填chatroomid（必填）</td>
-		</tr>
-		<tr >
-			<td>target_appkey</td>
-			<td>跨应用目标appkey（选填）</td>
-		</tr>
-		<tr >
-			<td>from_id</td>
-			<td>发送者的username （必填</td>
-		</tr>
-		<tr >
-			<td>from_name</td>
-			<td>发送者展示名（选填）</td>
-		</tr>
-		<tr >
-			<td>target_name</td>
-			<td>接受者展示名（选填）</td>
-		</tr>
-		<tr >
-			<td>no_offline</td>
-			<td>消息是否离线存储 true或者false，默认为false，表示需要离线存储（选填）</td>
-		</tr>
-		<tr >
-			<td>no_notification</td>
-			<td>消息是否在通知栏展示 true或者false，默认为false，表示在通知栏展示（选填）
-</td>
-		</tr>
-		<tr >
-			<td>notification</td>
-			<td>自定义通知栏展示（选填）</td>
-		</tr>
-		<tr >
-			<td>notification->title</td>
-			<td>通知的标题（选填）</td>
-		</tr>
-		<tr >
-			<td>notification->alert</td>
-			<td> 通知的内容（选填）</td>
-		</tr>
-		<tr bgcolor="#D3D3D3">
-			<td>msg_body</td>
-			<td>Json对象的消息体 限制为4096byte</td>
-		</tr>
-				<tr>
-		<td colspan="2" ><font  color="red">msg_type为text时，msg_body的格式如下 </font></td>
-		</tr>
-		<tr >
-			<td>msg_body -> text</td>
-			<td>消息内容 （必填）</td>
-		</tr>
-		<tr >
-			<td>msg_body-> extras</td>
-			<td>选填的json对象 开发者可以自定义extras里面的key value（选填）	</td>
-		</tr>
-
-		<tr>
-		<td colspan="2" ><font  color="red">msg_type为image时,msg_body为上传图片返回的json，格式如下 </td>
-		</tr>
-		<tr>
-		<td>msg_body->media_id</td>
-		<td>String 文件上传之后服务器端所返回的key，用于之后生成下载的url（必填）</td>
-		</tr>
-		<tr>
-		<td>msg_body->media_crc32</td>
-		<td>long 文件的crc32校验码，用于下载大图的校验 （必填）</td>
-		</tr>
-		<tr>
-		<td>msg_body->width</td>
-		<td>int 图片原始宽度（必填）</td>
-		</tr>
-		<tr>
-		<td>msg_body->height</td>
-		<td>int 图片原始高度（必填）</td>
-		</tr>
-		<tr>
-		<td>msg_body->format </td>
-		<td>String 图片格式（必填）</td>
-		</tr>
-		<tr>
-		<td>msg_body->hash </td>
-		<td>String 图片hash值（可选）</td>
-		</tr>
-		<tr>
-		<td>msg_body->fsize</td>
-		<td>int 文件大小（字节数）（必填）</td>
-		</tr>
-	
-	<td colspan="2" ><font  color="red">msg_type为voice时,msg_body为上传语音返回的json，格式如下 </td>
-		</tr>
-		<tr>
-		<td>msg_body->media_id</td>
-		<td>String 文件上传之后服务器端所返回的key，用于之后生成下载的url（必填）</td>
-		</tr>
-		<tr>
-		<td>msg_body->media_crc32</td>
-		<td>long 文件的crc32校验码，用于下载大图的校验 （必填）</td>
-		</tr>
-		<tr>
-		<td>msg_body->duration</td>
-		<td>int 音频时长（必填）</td>
-		</tr>
-		
-		<tr>
-		<td>msg_body->hash </td>
-		<td>String 音频hash值（可选）</td>
-		</tr>
-		<tr>
-		<td>msg_body->fsize</td>
-		<td>int 文件大小（字节数）（必填）</td>
-		</tr>
-	</table>
+    <table border="1" width = "100%">
+        <tr  bgcolor="#D3D3D3" >
+            <th>Parameter</th>
+            <th>Meaning</th>
+        </tr><tr>
+            <td>version</td>
+            <td>Version number is currently 1 (required)</td>
+        </tr><tr>
+            <td>target_type</td>
+            <td>Target type: single - person, group – group, chatroom - chat room (required)</td>
+        </tr><tr>
+            <td>from_type</td>
+            <td>The sender's identity is currently restricted to the admin user and must be registered as an admin user (required)</td>
+        </tr><tr>
+            <td>msg_type</td>
+            <td>Message type: text, image, custom message (msg_body is json object, server does not check) voice (required)</td>
+        </tr><tr>
+            <td>target_id</td>
+            <td>Target id: single to fill username, group to fill group id, chatroom to fill chatroomid (required)</td>
+        </tr><tr>
+            <td>target_appkey</td>
+            <td>Cross-app target appkey (optional)</td>
+        </tr><tr>
+            <td>from_id</td>
+            <td>Sender's username (required)</td>
+        </tr><tr>
+            <td>from_name</td>
+            <td>Sender’s display name (optional)</td>
+        </tr><tr>
+            <td>target_name</td>
+            <td>Recipient’s display name (optional)</td>
+        </tr><tr>
+            <td>no_offline</td>
+            <td>Whether the message is stored offline, true or false, defaults to false, indicating that it needs to be stored offline (optional)</td>
+        </tr><tr>
+            <td>no_notification</td>
+            <td>Whether the message is displayed in the notification bar, true or false, the default is false, which means to display in the notification bar (optional)</td>
+        </tr><tr>
+            <td>notification</td>
+            <td>Custom notification bar display (optional)</td>
+        </tr><tr>
+            <td>notification->title</td>
+            <td>Title of the notification (optional)</td>
+        </tr><tr>
+            <td>notification->alert</td>
+            <td>Content of notification (optional)</td>
+        </tr><tr>
+            <td bgcolor="#D3D3D3">msg_body</td>
+            <td>The body of the Json object is limited to 4096 bytes</td>
+        </tr><tr>
+            <td colspan="2" ><font  color="red">When msg_type is text, the format of msg_body is as follows</td>
+        </tr><tr>
+            <td>msg_body -> text</td>
+            <td>Message content (required)</td>
+        </tr><tr>
+            <td>msg_body-> extras</td>
+            <td>Optional json objects. Developers can customize the extra key value (optional)</td>
+        </tr><tr>
+            <td colspan="2" ><font  color="red">When msg_type is an image, msg_body is the json returned by the uploaded image in the following format</td>
+        </tr><tr>
+            <td>msg_body->media_id</td>
+            <td>String: The key returned by the server after the file is uploaded. It is used to generate the downloaded URL (required)</td>
+        </tr><tr>
+            <td>msg_body->media_crc32</td>
+            <td>The crc32 checksum of a long file, used to download the checksum of the large image (required)</td>
+        </tr><tr>
+            <td>msg_body->width</td>
+            <td>Int: Original width of image (required)</td>
+        </tr><tr>
+            <td>msg_body->height</td>
+            <td>Int: Original height of image (required)</td>
+        </tr><tr>
+            <td>msg_body->format</td>
+            <td>String: Image format (required)</td>
+        </tr><tr>
+            <td>msg_body->hash</td>
+            <td>String: Image hash (optional)</td>
+        </tr><tr>
+            <td>msg_body->fsize</td>
+            <td>Int: File size (bytes) (required)</td>
+        </tr><tr>
+            <td colspan="2" ><font  color="red">When msg_type is voice, msg_body is the json returned by uploading voice. The format is as follows:</td>
+        </tr><tr>
+            <td>msg_body->media_id</td>
+            <td>String: The key returned by the server after the file is uploaded. It is used to generate the downloaded URL (required)</td>
+        </tr><tr>
+            <td>msg_body->media_crc32</td>
+            <td>The crc32 checksum of a long file, used to download the checksum of the large image (required)</td>
+        </tr><tr>
+            <td>msg_body->duration</td>
+            <td>Int: Audio duration (required)</td>
+        </tr><tr>
+            <td>msg_body->hash</td>
+            <td>String: Audio hash (optional)</td>
+        </tr><tr>
+            <td>msg_body->fsize</td>
+            <td>Int: File size (bytes) (required)</td>
+        </tr>
+    </table>
 </div>
-
-
-
 
 #### Example Request
 
 ```
 msg_type:text
 {
-	"version": 1, 
-	"target_type": "single",
-	"target_id": "javen",
-	"from_type": "admin",
-	"from_id": "fang", 
-	"msg_type": "text",
-	"msg_body": {
-	    "extras": {},
-		"text": "Hello, JMessage!"	
-	}
+    "version": 1,
+    "target_type": "single",
+    "target_id": "javen",
+    "from_type": "admin",
+    "from_id": "fang",
+    "msg_type": "text",
+    "msg_body": {
+        "extras": {},
+        "text": "Hello, JMessage!"
+    }
 }
 
 msg_type:image
 {
-	"version": 1, 
-	"target_type": "single",
-	"target_id": "javen",
-	"from_type": "admin",
-	"from_id": "fang", 
-	"msg_type": "image",
-	"msg_body": {
-	"media_id": "qiniu/image/CE0ACD035CBF71F8",
-	"media_crc32":2778919613,
-	"width":3840,
-	"height":2160,
-	"fsize":3328738,
-	"format":"jpg"
-	}
+    "version": 1,
+    "target_type": "single",
+    "target_id": "javen",
+    "from_type": "admin",
+    "from_id": "fang",
+    "msg_type": "image",
+    "msg_body": {
+    "media_id": "qiniu/image/CE0ACD035CBF71F8",
+    "media_crc32":2778919613,
+    "width":3840,
+    "height":2160,
+    "fsize":3328738,
+    "format":"jpg"
+    }
 }
 
 msg_type:voice
 
 {
-    "version": 1, 
+    "version": 1,
     "target_type": "single",
     "target_id": "ppppp",
     "from_type": "admin",
-     "from_id": "admin_caiyh", 
+     "from_id": "admin_caiyh",
     "msg_type": "voice",
     "msg_body": {
     "media_id": "qiniu/voice/j/A96B61EB3AF0E5CDE66D377DEA4F76B8",
     "media_crc32":1882116055,
     "hash":"FoYn15bAGRUM9gZCAkvf9dolVH7h",
-	"fsize" :12344;
-	 "duration": 6
+    "fsize" :12344;
+     "duration": 6
     }
 }
 ```
+
 ```
 msg_type:custom
 
 {
-    "version": 1, 
+    "version": 1,
     "target_type": "single",
     "target_id": "ppppp",
     "from_type": "admin",
-     "from_id": "admin_caiyh", 
+     "from_id": "admin_caiyh",
     "msg_type": "voice",
     "msg_body": {
-   		json define yourself
+        json define yourself
        }
 }
 ```
 
-#### Request Params
+**Request Params**
 
 + JSON Object.
-
-+ 遵循协议文档：[IM 消息协议](https://docs.jiguang.cn/jmessage/advanced/im_message_protocol/)
-
-+ 此api只能用admin用户发送
++ Follow the protocol document: [IM Message Protocol](https://docs.jiguang.cn/jmessage/advanced/im_message_protocol/)
++ This api can only be sent by admin user
 
 #### Example Response
 
 ```
 < HTTP/1.1 201 Created
 < Content-Type: application/json
-< 
+<
 {"msg_id": 43143728109, "msg_ctime":1493794522950}
 ```
-msg_ctime:  消息创建的时间戳
 
-Error Code
+msg_ctime: time stamp created  the message
 
-+ 899003    参数错误，Request Body参数不符合要求
-+ 899002   用户不存在，target_id或者from_id不存在
-+ 899016   from_id 没有权限发送message
+#### Error Code
 
++ 899003: parameter error, Request Body parameter does not meet the requirements
++ 899002: user does not exist, and target_id or from_id does not exist
++ 899016: from_id does not have permission to send messages
 
-
-### 消息撤回
+### Retract message
 
 ```
 POST /v1/messages/{username}/{msgid}/retract
 ```
+
 #### Example Request
 
-Request Header 
+**Request Header**
 
 ```
 POST /v1/messages/{username}/{msgid}/retract
 ```
-Request Body
 
-N/A
+**Request Body**
 
-Request Params
++ N/A
 
+**Request Params**
 
-| 参数      | 含义                       | 备注   |
-| ------- | ------------------------ | ---- |
-| msgid | 消息msgid  |      |
-| username | 发送此msg的用户名 |      |
+Parameter | Meaning | Note
+--- | --- | ---
+msgid | Message msgid |
+username | Username who send this msg |
 
+#### Example Response
 
-#### Example Response 
-Response Header
+**Response Header**
 
 ```
 HTTP/1.1 204 No Content
 Content-Type: application/json; charset=utf-8 
 ```
 
-Error Code 
-	•	855001 超出撤回消息时间 有效撤回时间为消息发出后3分钟之内
-	•	855003 撤回消息不存在
-	•	855004 消息已经撤回
+#### Error Code 
 
-## 媒体文件下载与上传
++ 855001: Exceed the withdrawal time. The effective withdrawal time was within 3 minutes after the message was sent.
++ 855003: Revocation message does not exist
++ 855004: Message has been withdrawn
 
-#### 文件下载
+## Download and Upload Media Files
+
+### Download Document
 
 ```
 GET /v1/resource?mediaId={mediaId}
 ```
+
 #### Example Request
 
-Request Header 
+**Request Header**
 
 ```
 GET /v1/resource?mediaId={mediaId}
 ```
-Request Body
 
-N/A
+**Request Body**
 
-Request Params
++ N/A
 
+**Request Params**
 
-| 参数      | 含义                       | 备注   |
-| ------- | ------------------------ | ---- |
-| mediaId | 资源的mediaId，包括用户的avatar字段 |      |
+Parameter | Meaning | Note
+--- | --- | ---
+mediaId | The mediaId of the resource, including the user's avatar field |
 
+#### Example Response
 
-#### Example Response 
-Response Header
+**Response Header**
 
 ```
 HTTP/1.1 200 no content
-Content-Type: application/json; charset=utf-8 
+Content-Type: application/json; charset=utf-8
 ```
 
-Response Data
+**Response Data**
 
 ```
 {"url":"http://........."}
 ```
 
-### 文件上传
+### Upload File
 
 ```
 POST /v1/resource?type=image
 ```
+
 #### Example Request
-文件上传采用form表单上传
-curl示例:
-图片上传 curl   -F "filename=@/home/test.jpg" https://api.im.jpush.cn/v1/resource?type=image -u "appkey:secret"
 
-文件上传 curl   -F "filename=@/home/test.mp3" https://api.im.jpush.cn/v1/resource?type=file -u "appkey:secret"
+File uploading uses form to upload curl examples:
 
-语音上传 curl   -F "filename=@/home/test.mp3" https://api.im.jpush.cn/v1/resource?type=voice -u "appkey:secret"
+image uploading curl -F "filename=@/home/test.jpg" https://api.im.jpush.cn/v1/resource?type=image -u "appkey:secret ""
 
-注：文件大小限制8m，暂时只支持图片格式 jpg bmp gif png等
+File uploading curl -F "filename=@/home/test.mp3" https://api.im.jpush.cn/v1/resource?type=file -u "appkey:secret"
 
+Voice uploading curl -F "filename=@/home/test.mp3" https://api.im.jpush.cn/v1/resource?type=voice -u "appkey:secret"
 
-| 参数       | 含义                     | 备注   |
-| -------- | ---------------------- | ---- |
-| filename | 磁盘本地文件路径               |      |
-| type     | 文件类型 支持是"image", "file", "voice" |      |
+Note: The file size is limited to 8m. It only supports image formats currently, including jpg bmp gif png, etc.
 
+Parameter | Meaning | Note
+--- | --- | ---
+filename | File path of local disk |
+type | File type: Supports "image", "file", "voice" |
 
-Response Header  
+**Response Header**
 
-#### Example Response 
+#### Example Response
 
 ```
 HTTP/1.1 200
-Content-Type: application/json; charset=utf-8 
-```
-Response Data
-图片 Response
-
-```
-{"media_id":"qiniu/image/F39AA12204DAB6A2","media_crc32":1338734977,"width":720,"height":1280,"format":"jpg","fsize":52468}
+Content-Type: application/json; charset=utf-8
 ```
 
-+ media_id String  文件上传之后服务器端所返回的key
-+ media_crc32 long 文件的crc32校验码
-+ width int  图片原始宽度
-+ height  int  图片原始高度
-+ format String 图片格式
-+ fsize int 文件大小 （字节数）
-+ hash String 可选，用于crc校验码不存在时的替代的验证
+**Response Data**
 
-文件 Response 
-
-```
-{"media_id":"qiniu/file/j/1BB3B833AEABFF62E883C5CE421867A9","media_crc32":1415584260,"fname":"0839d1c0-48e9-4032-9333-f3691a7d9e48.dmp","fsize":176512,"hash":"FtH0kPT0YI89HAw1K9wv_vVKiNab"}
-```
-
-+  media_id String 文件上传之后服务器端所返回的key，用于之后生成下载的url
-+  media_crc32 long 文件的crc32校验码
-+  hash String 可选，用于crc校验码不存在时的替代的验证
-+  fsize int 文件大小（字节数）
-+  fname String 发送与接收到的文件名
-
-语音 Response
-
-```
-{"media_id":"qiniu/voice/j/9C4312B1EA0FB28337566D1A29A244B5","media_crc32":1882116055,"hash":"FoYn15bAGRUM9gZCAkvf9dolVH7h","format":"m4a","fsize":238105}
-```
-
-+  media_id String 文件上传之后服务器端所返回的key，用于之后生成下载的url
-+  media_crc32 long 文件的crc32校验码
-+  hash String 可选，用于crc校验码不存在时的替代的验证
-+  fsize int 文件大小（字节数）
-+  format String 源文件格式
-
-
-## Group对象字段总览
-
-<div class="table-d" align="center" >
-	<table border="1" width = "100%">
-		<tr  bgcolor="#D3D3D3" >
-			<th >参数</th>
-			<th >含义</th>
-			<th >字符长度限制</th>
-		</tr>
-		<tr >
-			<td>name</td>
-			<td>群组名称</td>
-			<td>Byte(0~64)</td>
-		</tr>
-		<tr >
-			<td>desc</td>
-			<td>群组描述</td>
-			<td>Byte(0~250)</td>
-		</tr>
-		<tr >
-			<td>owner_username</td>
-			<td>群主的username</td>
-			<td>Byte(4-128)</td>
-		</tr>
-		<tr >
-			<td>MaxMemberCount</td>
-			<td>群组默认500人</td>
-			<td></td>
-		</tr>
-		<tr >
-			<td>ctime</td>
-			<td>创建时间</td>
-			<td></td>
-		</tr>
-		<tr >
-			<td>mtime</td>
-			<td>最后修改时间</td>
-			<td></td>
-		</tr>
-		<tr >
-			<td>avatar</td>
-			<td>群组头像</td>
-			<td></td>
-		</tr>
-	</table>
-</div>
-
-<br>
-
-## 群组维护
-
-### 创建群组
-
-	POST /v1/groups/
-
-群组MaxMemberCount（人数限制）定义
-
-
-Example Request
+Image Response
 
 ```
 {
-    "owner_username": "tom", 
-    "name": "群聊天室", 
-    "members_username": ["eddie", "annie"], 
+    "media_id":"qiniu/image/F39AA12204DAB6A2",
+    "media_crc32":1338734977,
+    "width":720,
+    "height":1280,
+    "format":"jpg",
+    "fsize":52468
+}
+```
+
++ media_id String: The key returned by the server after the file is uploaded
++ Crc32 checksum of media_crc32 long file
++ width int: original width of picture
++ height int: original height of picture
++ format String: image format
++ fsize int: file size (bytes)
++ hash String: optional, for alternative verification when the crc checksum does not exist
+
+File Response
+
+```
+{
+    "media_id":"qiniu/file/j/1BB3B833AEABFF62E883C5CE421867A9",
+    "media_crc32":1415584260,
+    "fname":"0839d1c0-48e9-4032-9333-f3691a7d9e48.dmp",
+    "fsize":176512,
+    "hash":"FtH0kPT0YI89HAw1K9wv_vVKiNab"
+}
+```
+
++ media_id String: The key returned by the server after the file is uploaded. It is used to generate the downloaded URL.
++ Crc32 checksum of media_crc32 long file
++ hash String; optional, for alternative verification when the crc checksum does not exist
++ fsize int: file size (bytes)
++ fname String: file names of sending and receiving
+
+Voice Response
+
+```
+{
+    "media_id":"qiniu/voice/j/9C4312B1EA0FB28337566D1A29A244B5",
+    "media_crc32":1882116055,
+    "hash":"FoYn15bAGRUM9gZCAkvf9dolVH7h",
+    "format":"m4a",
+    "fsize":238105
+}
+```
+
++ media_id String: The key returned by the server after the file is uploaded. It is used to generate the downloaded URL
++ Crc32 checksum for media_crc32 long file
++ hash String: optional, for alternative verification when the crc checksum does not exist
++ fsize int: file size (bytes)
++ format String: format of source file
+
+## Overview of Group Object Fields
+
+<div class="table-d" align="center" >
+    <table border="1" width = "100%">
+        <tr  bgcolor="#D3D3D3" >
+            <th>Parameter</th>
+            <th>Meaning</th>
+            <th>Limits of character length</th>
+        </tr><tr>
+            <td>name</td>
+            <td>Group name</td>
+            <td>Byte(0~64)</td>
+        </tr><tr>
+            <td>desc</td>
+            <td>Group description</td>
+            <td>Byte(0~250)</td>
+        </tr><tr>
+            <td>owner_username</td>
+            <td>Owner's username</td>
+            <td>Byte(4-128)</td>
+        </tr><tr>
+            <td>MaxMemberCount</td>
+            <td>Group default to 500 people</td>
+            <td></td>
+        </tr><tr>
+            <td>ctime</td>
+            <td>Creation time</td>
+            <td></td>
+        </tr><tr>
+            <td>mtime</td>
+            <td>Last Modified Time</td>
+            <td></td>
+        </tr><tr>
+            <td>avatar</td>
+            <td>Group avatar</td>
+            <td></td>
+        </tr>
+    </table>
+</div>
+
+## Group Maintenance
+
+### Create a group
+
+```
+POST /v1/groups/
+```
+
+Group MaxMemberCount (number limit) definition
+
+#### Example Request
+
+```
+{
+    "owner_username": "tom",
+    "name": "群聊天室",
+    "members_username": ["eddie", "annie"],
     "flag": 1,
     "desc": "运动"
 }
 ```
 
-Request Params
+**Request Params**
 
-+ owner_username     （必填）群主username
-+ name               （必填）群组名字
-    - 支持的字符：全部，包括 Emoji。
-+ members_username 成员 username
-+ avatar           （选填）群组头像，上传接口所获得的media_id 
-+ desc               （选填） 群描述 
-    - 支持的字符：全部，包括 Emoji。
-+ flag               （选填） 类型 
++ owner_username (required)
++ name (required) group name
+     - Supported characters: All, including Emoji.
++ members_username
++ avatar (optional) group avatar, media_id obtaine when uploading interfaces
++ desc (optional) group description
+     - Supported characters: All, including Emoji.
++ flag (optional) type
+     - 1 - private group (default)
+     - 2 - public group
+     - does not specify the flag, the default is 1
 
-    - 1 - 私有群（默认）
-    - 2 - 公开群
-    - 不指定flag，默认为1
-
-Example Response
+#### Example Response
 
 ```
 < HTTP/1.1 201 Created
 < Content-Type: application/json
-< 
+<
 
 {
-    "gid":12345, 
-    "owner_username": 123456, 
-    "name": "display_name", 
-    "members_username": [], 
+    "gid":12345,
+    "owner_username": 123456,
+    "name": "display_name",
+    "members_username": [],
     "desc":"doubi",
     "MaxMemberCount" = 500
 }
 ```
 
-###  获取群组详情
+### Get group details
 
-	GET /v1/groups/{Group id}
+```
+GET /v1/groups/{Group id}
+```
 
-Request Params
+**Request Params**
 
-+ Group id 群组ID。由创建群组时分配。
++ Group id: assigned when creating a group
 
-Example Response
+#### Example Response
+
 ```
 < HTTP/1.1 200 OK
 < Content-Type: application/json
-< 
+<
 
 {
-      "gid": 12345, 
-      "name" : "jpush", 
-      "desc" : "push", 
-      "appkey" : "dcf71ef5082057832bd44fbd", 
-      "MaxMemberCount" : 500,  
-      "mtime" : "2014-07-01 00:00:00", 
-      "ctime" : "2014-06-05 00:00:00"
+      "gid": 12345,
+      "name": "jpush",
+      "desc": "push",
+      "appkey": "dcf71ef5082057832bd44fbd",
+      "MaxMemberCount": 500,
+      "mtime": "2014-07-01 00:00:00",
+      "ctime": "2014-06-05 00:00:00"
 }
 ```
 
-###  更新群组信息
-```
-PUT /v1/groups/{Group id}
-```
-Request Params
-
-+ name 群名称
-+ desc 群描述
-+ avatar 群组头像media_id
+### Update group information
 
 ```
 PUT /v1/groups/{Group id}
 ```
-Request Body
+
+**Request Params**
+
++ name: group name
++ desc: group description
++ atar: group avatar, media_id
 
 ```
-{ "the key you want to update" : "the value you want to update" }
+PUT /v1/groups/{Group id}
 ```
-Example Response
+
+**Request Body**
+
+```
+{ "the key you want to update": "the value you want to update" }
+```
+
+#### Example Response
 
 ```
 HTTP/1.1 204 NO Content
 ```
 
+### Delete group
 
-### 删除群组
+Delete a group.
 
-删除某个群组。
+All members of the group will receive notification that the group has been dissolved.
 
-该群组的所有成员都会收到群组被解散通知。
+```
+DELETE /v1/groups/{Group id}
+```
 
-	DELETE /v1/groups/{Group id}
+**Request Params**
 
-Request Params
++ Group id
 
-+ Group id 群组ID。
-
-Example Response
+#### Example Response
 
 ```
 < HTTP/1.1 204 NO CONTENT
 < Content-Type: application/json
 ```
 
-### 更新群组成员
+### Update group members
 
-批量增加与删除某 gid 群组的成员。
+Batch adding and deleting members of a gid group.
 
-群组成员将收到增加与删除成员的通知。
-
-	POST /v1/groups/{Group id}/members
-
-Request Params
-
-+ gid 群组ID
-+ add        json数组 表示要添加到群组的用户(可选)
-+ remove   json数组 表示要从群组删除的用户（可选）
-+ 两者至少要有一个
-
-Example Request 
+Group members will receive notifications of adding and deleting members
 
 ```
-{    
+POST /v1/groups/{Group id}/members
+```
+
+**Request Params**
+
++ gid: group ID
++ add json array: Indicates the user to add to the group (optional)
++ remove json array: Indicates the user to remove from the group (optional)
++ At least one of the two
+
+#### Example Request
+
+```
+{
     "add":[
         "test1", "test2"
     ],
@@ -1282,1051 +1314,1109 @@ Example Request
 }
 ```
 
-Example Response
+#### Example Response
 
 ```
 < HTTP/1.1 204 NO CONTENT
 < Content-Type: application/json
 ```
 
-###  获取群组成员列表
+### Get a list of group members
 
-    GET /v1/groups/{Group id}/members/
+```
+GET /v1/groups/{Group id}/members/
+```
 
-Request Params
+**Request Params**
 
-+ Group id 群组ID。
++ Group id
 
-Example Response
+#### Example Response
 
-+ JsonObject UID数组
++ JsonObject UID array
 
 ```
 < HTTP/1.1 200 OK
 < Content-Type: application/json; charset=utf-8
 
-[ 
-	{"username" : "javen", "nickname" : "hello", "avatar" = "/avatar", "birthday" : "1990-01-24 00:00:00", "gender" : 0, "signature" : "orz", "region" : "shenzhen", "address" : "shenzhen", "flag":0} 
+[
+    {
+        "username": "javen",
+        "nickname": "hello",
+        "avatar" = "/avatar",
+        "birthday": "1990-01-24 00:00:00",
+        "gender": 0, "signature": "orz",
+        "region": "shenzhen",
+        "address": "shenzhen",
+        "flag":0
+    }
 ]
 ```
+
 + flag
-    - 0 - 普通群成员
-    - 1 - 群主
+     - 0 - common group members
+     - 1 - Group owner
 
+### Get the group list of some user
 
-###  获取某用户的群组列表
+```
+GET /v1/users/{username}/groups/
+```
 
-    GET /v1/users/{username}/groups/
+**Request Params**
 
-Request Params
++ username
 
-+ username 用户名。
+#### Example Response
 
-Example Response
-
-+ ctime  群组
-+ 创建时间
-+ mtime 群组最后修改时间 
++ ctime: group
++ Creation time
++ Mtime: last modified time of group
 
 ```
 < HTTP/1.1 200 OK
 < Content-Type: application/json
 
-[ { "gid": 12345, "name" : "jpush", "desc" : "push", "appkey" : "dcf71ef5082057832bd44fbd", "MaxMemberCount" : 500, "mtime" : "2014-07-01 00:00:00", "ctime" : "2014-06-05 00:00:00"}]
+[   {
+        "gid": 12345,
+        "name": "jpush",
+        "desc": "push",
+        "appkey": "dcf71ef5082057832bd44fbd",
+        "MaxMemberCount": 500,
+        "mtime": "2014-07-01 00:00:00",
+        "ctime": "2014-06-05 00:00:00"
+    }
+]
 ```
 
+### Get the group list of current application
 
-### 获取当前应用的群组列表
+```
+GET /v1/groups/?start={start}&count={count}
+```
 
-    GET /v1/groups/?start={start}&count={count}
+**Request Params**
 
-Request Params
++ Start: number of records started
++ count: number of records read this time. The maximum is 500
 
-+ start 开始的记录数。
-+ count 本次读取的记录数量。最大值为500
-
-Example Response
+#### Example Response
 
 ```
 < HTTP/1.1 200 OK
 < Content-Type: application/json
 
-{ "total":1233, 
-  "start":1100, 
-  "count":1, 
-  "groups": 
- [ { "gid": 12345, "name" : "jpush", "desc" : "push", "appkey" : "dcf71ef5082057832bd44fbd", "MaxMemberCount" : 500, "mtime" : "2014-07-01 00:00:00", "ctime" : "2014-06-05 00:00:00"}] } 
-
-```
-
-### 群消息屏蔽
-
-    POST /v1/users/{username}/groupsShield
-
-
-Request Params
-
-N/A
-
-Example Request Body
-```
-{   
-      "add":[   
-         110000101
-      ],
-      "remove":[   
-         1000001111
-      ]
-
+{
+    "total":1233,
+    "start":1100,
+    "count":1,
+    "groups":
+    [{
+        "gid": 12345,
+        "name": "jpush",
+        "desc": "push",
+        "appkey": "dcf71ef5082057832bd44fbd",
+        "MaxMemberCount": 500,
+        "mtime": "2014-07-01 00:00:00",
+        "ctime": "2014-06-05 00:00:00"
+    }]
 }
 ```
-| 参数 | 含义 | 
-| -------- | -----: | 
-| add |添加群消息屏蔽的gid数组  （可选）| 
-|remove | 移除群消息屏蔽的gid数组 （可选）| 
 
+### Block group message
 
+```
+POST /v1/users/{username}/groupsShield
+```
 
-Example Response
+#### Request Param
+
++ N/A
+
+**Request Body**
+
+```
+{   
+    "add":[   
+        110000101
+     ],
+     "remove":[   
+        1000001111
+     ]
+}
+```
+
+Parameter | Meaning
+--- | ---
+add | Add the gid array of the group message blocking (optional)
+remove | Remove the gid array of group message blocking(optional)
+
+#### Example Response
+
 ```
 < HTTP/1.1 204 OK
 < Content-Type: application/json
 ```
 
-### 群成员禁言
+### Ban group members
 
-    PUT  /groups/messages/{gid}/silence?status={status}
-
-
-Request body
 ```
-[ "username1", "username2"]  
+PUT  /groups/messages/{gid}/silence?status={status}
+```
+
+**Request body**
+
+```
+[ "username1", "username2"]
 备注：username json数组
 ```
-Request Params
+
+**Request Params**
 
 ```
-status：开启或关闭禁言 true表示开启 false表示关闭
+status：开启或关闭禁言 true表示开启 flase表示关闭
 ```
 
-Example Response
+#### Example Response
+
 ```
 < HTTP/1.1 204 OK
 < Content-Type: application/json
 ```
-### 移交群主
 
-    PUT  /groups/owner/{gid}
+## Friends
 
+### Add friend
 
-Request body
 ```
-{ "appkey":"XXXXX",
-"username": "xxxxxxx"}   注：跨应用下的用户
-
-或者
-
-{ "username": "xxxxxxx"} 本应用下的用户
-```
-Request Params
-
-
-Example Response
-```
-HTTP/1.1 204 NO Content
-Error Code
-
-899003 gid不合法；Request Body json格式不符合要求，json参数不符合要求；
-899006 gid不存在；
+POST  /v1/users/{username}/friends
 ```
 
-## 好友
+**Request Params**
 
-### 添加好友
-	POST  /v1/users/{username}/friends
++ json array: Indicates the list of user names to be added. Maximum limit is 500.
 
-Request Params
-
-+ json数组 表示要添加的用户名列表 最大限制500个
-
-
-
-Example Request 
+#### Example Request
 
 ```
 ["user01","user02"] 
-
-```
-Example Response
-
-```
-< HTTP/1.1 201 
-< Content-Type: application/json; charset=utf-8 
 ```
 
-Response Data
-N/A
+#### Example Response
 
-Error Code
+```
+< HTTP/1.1 201
+< Content-Type: application/json; charset=utf-8
+```
 
-+ 899003  Request Body json格式不符合要求，json参数不符合要求；
-+ 899002  用户不存在；
-+ 899070  已经添加了好友；
+**Response Data**
 
++ N/A
 
-### 删除好友
-	DELETE  /v1/users/{username}/friends
+#### Error Code
 
-Request Params
++ 899003: format of Request Body json does not meet the requirements, and json parameter does not meet the requirements;
++ 899002: user does not exist
++ 899070: has added friends
 
-+ json数组 表示要删除的用户名列表 最大限制500个
+### Delete friend
 
-Example Request 
+```
+DELETE  /v1/users/{username}/friends
+```
+
+**Request Params**
+
++ The json array represents the list of user names to be removed. The maximum limit is 500.
+
+#### Example Request
 
 ```
 ["user01","user02"] 
-
-```
-Example Response
-
-```
-< HTTP/1.1 204 NO Content
-< Content-Type: application/json; charset=utf-8 
 ```
 
-Response Data
-N/A
-
-Error Code
-
-+ 899003  Request Body json格式不符合要求，json参数不符合要求；
-+ 899002  用户不存在；
-
-### 更新好友备注
-      PUT  /v1/users/{username}/friends
-
-Request Params
-
-+ note_name 表示要添加的好友列表， 格式：Byte(64)
-  支持的字符：不包括 "\n" "\r"。
-+ others 其他备注信息，格式：Byte(250)
-  支持的字符：全部，包括 Emoji。
-+ username 用户username；
-+ 支持批量修改 最大限制500个
-
-
-
-Example Request 
-
-```
-[{ "note_name": "new note name", "others": “好友备注文档" ,"username":"user01"}]
-
-```
-Example Response
+#### Example Response
 
 ```
 < HTTP/1.1 204 NO Content
-< Content-Type: application/json; charset=utf-8 
+< Content-Type: application/json; charset=utf-8
 ```
 
-Response Data
-N/A
+**Response Data**
 
-Error Code
++ N/A
 
-+ 899003  Request Body json格式不符合要求，json参数不符合要求；
-+ 899002  用户不存在；
+#### Error Code
 
-### 获取好友列表
-     GET  /v1/users/{username}/friends
++ 899003: format of Request Body json does not meet the requirements, and json parameter does not meet the requirements;
++ 899002: user does not exist;
 
-Request Params
+### Update friend notes
 
-N/A 
+```
+PUT  /v1/users/{username}/friends
+```
 
+**Request Params**
 
-Example Request 
++ note_name indicates the list of friends to add. Format: Supported characters of byte(64) excludes "\n" "\r".
++ others: Other note information, Format: byte(250) supports all characters, including Emoji.
++ Username;
++ Support batch modification with maximum limit as 500.
 
+#### Example Request
 
-Example Response
+```
+[{
+    "note_name": "new note name",
+    "others": “好友备注文档",
+    "username":"user01"
+}]
+```
+
+#### Example Response
+
+```
+< HTTP/1.1 204 NO Content
+< Content-Type: application/json; charset=utf-8
+```
+
+**Response Data**
+
++ N/A
+
+#### Error Code
+
++ 899003: format of Request Body json does not meet the requirements, and json parameter does not meet the requirements;
++ 899002: user does not exist;
+
+### Get friend list
+
+```
+GET  /v1/users/{username}/friends
+```
+
+**Request Params**
+
++ N/A
+
+#### Example Request
+
+#### Example Response
 
 ```
 < HTTP/1.1 200 NO Content
-< Content-Type: application/json; charset=utf-8 
+< Content-Type: application/json; charset=utf-8
 ```
 
-Response Data
+**Response Data**
 
 ```
-[{"username" : "javen", "nickname" : "hello", "avatar" = "/avatar", "birthday" : "1990-01-24 00:00:00", "gender" : 0, "signature" : "orz", "region" : "shenzhen", "address" : "shenzhen", "mtime" : "2015-01-01 00:00:00", "ctime" : "2015-01-01 00:00:00","note_name":"= =","others":"test", "appkey":"pojkasouduioadk"}]
-```
-
-Error Code
-
-+ 899003  Request Body json格式不符合要求，json参数不符合要求；
-+ 899002  用户不存在；
-
-## 跨应用
-
-### 跨应用管理群组成员
-	POST  /v1/cross/groups/{gid}/members
-Request Params
-
-+ add  json数组 表示要添加到群组的用户(可选)
-+ remove  json数组 表示要从群组删除的用户（可选）
-+ appkey 管理用户所属的appkey 必填
-
-add remove两者至少要有一个
-
-Example Request 
-
-```
-[{ 
- "appkey":" 4f7aef34fb361292c566a1cd",
- "add": [
- "test1",
- "test2"
- ],
- "remove": [
- "name3",
- "name4"
- ]
+[{
+    "username": "javen",
+    "nickname": "hello",
+    "avatar": "/avatar",
+    "birthday": "1990-01-24 00:00:00",
+    "gender": 0,
+    "signature": "orz",
+    "region": "shenzhen",
+    "address": "shenzhen",
+    "mtime": "2015-01-01 00:00:00",
+    "ctime": "2015-01-01 00:00:00",
+    "note_name":"= =",
+    "others":"test",
+    "appkey":"pojkasouduioadk"
 }]
 ```
-Example Response
+
+#### Error Code
+
++ 899003: format of Request Body json does not meet the requirements, and json parameter does not meet the requirements;
++ 899002: user does not exist;
+
+## Cross-application
+
+### Cross-application manage group members
+
+```
+POST  /v1/cross/groups/{gid}/members
+```
+
+**Request Params**
+
++ add json array: Indicates the user to add to the group (optional)
++ remove json array: Indicates the user to remove from the group (optional)
++ appkey: The appkey of user managed is required
+
+at least one of the add and remove
+
+#### Example Request
+
+```
+[{
+    "appkey":" 4f7aef34fb361292c566a1cd",
+    "add": [
+        "test1",
+        "test2"
+    ],
+    "remove": [
+        "name3",
+        "name4"
+    ]
+}]
+```
+
+#### Example Response
 
 ```
 < HTTP/1.1 204 NO Content
-< Content-Type: application/json; charset=utf-8 
+< Content-Type: application/json; charset=utf-8
 ```
 
-Response Data
-N/A
+**Response Data**
 
-备注：当群组没有成员的时候 群会被删除 
-Error Code
++ N/A
 
-+ 899003  Request Body json格式不符合要求，json参数不符合要求；
-+ 899002  用户不存在；
-+ 899012  没有足够的位置添加群成员；
-+ 899014  用户不存在于群组；
-+ 899011  用户已经存在于群组；
+Remarks: The group wille deleted when the group has no members
 
-### 跨应用获取群组成员列表
+#### Error Code
 
-    GET /v1/cross/groups/{Group id}/members/
++ 899003: format of Request Body json does not meet the requirements, and json parameter does not meet the requirements;
++ 899002: user does not exist;
++ 899012: There are not enough places to add group members;
++ 899014: users do not exist in the group
++ 899011: users already exist in the group
 
-Request Params
+### Get a group member list across applications
 
-+ Group id 群组ID。
+```
+GET /v1/cross/groups/{Group id}/members/
+```
 
-Example Response
+**Request Params**
 
-+ JsonObject UID数组
++ Group id
+
+#### Example Response
+
++ JsonObject UID: array
 
 ```
 < HTTP/1.1 200 OK
 < Content-Type: application/json; charset=utf-8
 
-[ 
-	{"username" : "javen", "nickname" : "hello", "avatar" = "/avatar", "birthday" : "1990-01-24 00:00:00", "gender" : 0, "signature" : "orz", "region" : "shenzhen", "address" : "shenzhen", "flag":0, "appkey":"appkey"} 
-]
+[{
+    "username": "javen",
+    "nickname": "hello",
+    "avatar": "/avatar",
+    "birthday": "1990-01-24 00:00:00",
+    "gender": 0,
+    "signature": "orz",
+    "region": "shenzhen",
+    "address": "shenzhen",
+    "flag":0,
+    "appkey":"appkey"
+}]
 ```
 
 + flag
-    - 0 - 普通群成员
-    - 1 - 群主
+     - 0 - common group members
+     - 1 - Group owner
 
-    
-### 跨应用获取用户群组
+### Get user groups across applications
+
+```
 GET /v1/cross/users/{username}/groups
+```
 
-Request Params
+**Request Params**
 
-+ username 用户名
++ username
 
-Example Response
-
+#### Example Response
 
 ```
 < HTTP/1.1 200 OK
 < Content-Type: application/json; charset=utf-8
 
-[ { "gid": 12345, "name" : "jpush", "desc" : "push", "appkey" : "dcf71ef5082057832bd44fbd","max_member_count" : 200, "mtime" : "2014-07-01 00:00:00", "ctime" : "2014-06-05 00:00:00","appkey":"appkey"}]
-
+[ {
+    "gid": 12345,
+    "name": "jpush",
+    "desc": "push",
+    "appkey": "dcf71ef5082057832bd44fbd",
+    "max_member_count": 200,
+    "mtime": "2014-07-01 00:00:00",
+    "ctime": "2014-06-05 00:00:00",
+    "appkey":"appkey"
+}]
 ```
 
-
-
-### 跨应用添加黑名单
-
-```
-Put /v1/cross/users/{username}/blacklist
-```
-
-Example Request
-
-Request Header 
+### Add a blacklist across applications
 
 ```
 Put /v1/cross/users/{username}/blacklist
-Content-Type: application/json; charset=utf-8  
 ```
 
-Request Params 
+#### Example Request
 
-+ username 添加的用户的数组
-+ appkey   用户所属的appkey
+**Request Header**
 
-Request Body
+```
+Put /v1/cross/users/{username}/blacklist
+Content-Type: application/json; charset=utf-8
+```
+
+**Request Params**
+
++ username: An array of added users
++ appkey: appkey to which the user belongs
+
+**Request Body**
 
 ```
  [{
- "appkey":"appkey",
- "usernames":[ "test1", "test2"]
- 
- } ] 
+
+    "appkey":"appkey",
+    "usernames": [
+        "test1", "test2"
+    ]
+
+}]
 ```
 
-Example Response 
+#### Example Response
 
-Response Header 
+**Response Header**
 
 ```
 HTTP/1.1 204 NO Content
-Content-Type: application/json; charset=utf-8 
+Content-Type: application/json; charset=utf-8
 ```
 
-Response Data
+**Response Data**
 
-N/A
++ N/A
 
-### 跨应用移除黑名单
+### Cross-application remove blacklist
 
 ```
 Delete /v1/cross/users/{username}/blacklist
 ```
 
-Example Request
+#### Example Request
 
-Request Header 
+**Request Header**
 
 ```
 Delete /v1/cross/users/{username}/blacklist
-Content-Type: application/json; charset=utf-8  
+Content-Type: application/json; charset=utf-8
 ```
 
-Request Params 
+**Request Params**
 
-+ username 移除的用户的数组
-+ appkey   用户所属的appkey
++ username: An array of removed users
++ appkey: appkey to which the user belongs
 
-Request Body
+**Request Body**
 
 ```
- [{
- "appkey":"appkey",
- "usernames":[ "test1", "test2"]
- 
- } ] 
+[{
+    "appkey": "appkey",
+    "usernames": [
+        "test1", "test2"
+    ]
+}]
 ```
 
-Example Response
+#### Example Response
 
-Response Header
+**Response Header**
 
 ```
 HTTP/1.1 204 NO Content
-Content-Type: application/json; charset=utf-8   
+Content-Type: application/json; charset=utf-8
 ```
 
-Response Data
+**Response Data**
 
-N/A
++ N/A
 
-
-
-### 跨应用黑名单列表
+### Cross-application list of blacklists
 
 ```
 Get /v1/cross/users/{username}/blacklist
 ```
 
-Example Request
+#### Example Request
 
-Request Header 
+**Request Header**
 
 ```
 Get /v1/cross/users/{username}/blacklist
-Content-Type: application/json; charset=utf-8 
+Content-Type: application/json; charset=utf-8
 ```
 
-Request Params
+**Request Params**
 
-+ username 用户名
++ username
 
-Request Body
+**Request Body**
 
-N/A
++ N/A
 
-Example Response
+#### Example Response
 
-Response Header 
-
-```
-HTTP/1.1 200 
-Content-Type: application/json; charset=utf-8   
-```
-
-Response Data
+**Response Header**
 
 ```
-[{"username" : "javen", "nickname" : "hello", "avatar" = "/avatar", "birthday" : "1990-01-24 00:00:00", "gender" : 0, "signature" : "orz", "region" : "shenzhen", "address" : "shenzhen", "mtime" : "2015-01-01 00:00:00", "ctime" : "2015-01-01 00:00:00", "appkey":"appkey"}]
+HTTP/1.1 200
+Content-Type: application/json; charset=utf-8
 ```
 
-### 跨应用免打扰设置
+**Response Data**
+
+```
+[{
+    "username": "javen",
+    "nickname": "hello",
+    "avatar": "/avatar",
+    "birthday": "1990-01-24 00:00:00",
+    "gender": 0,
+    "signature": "orz",
+    "region": "shenzhen",
+    "address": "shenzhen",
+    "mtime": "2015-01-01 00:00:00",
+    "ctime": "2015-01-01 00:00:00",
+    "appkey":"appkey"
+}]
+```
+
+### Cross-application Do-Not-Disturb Settings
 
 ```
 POST  /v1/cross/users/{username}/nodisturb
 ```
 
-Example Request
+#### Example Request
 
-Request Header 
+**Request Header**
 
 ```
 POST  /v1/cross/users/{username}/nodisturb
-Content-Type: application/json; charset=utf-8  
+Content-Type: application/json; charset=utf-8
 ```
 
-Request Params
+**Request Params**
 
-+ single  单聊免打扰，支持add remove数组 （可选）
-+ group   群聊免打扰，支持add remove数组（可选）
-+ appkey  目标的appkey
++ single: single chat DND, supports adding or removing array (optional)
++ group: group chat DND, supports adding or removing array (optional)
++ appkey: appkey of targets
 
-
-Request Body
+**Request Body**
 
 ```
 [ {
-   "appkey":"appkey1",    "single":{          "add":[             "username1",          "username2"       ]    },    "group":{          "add":[             110000101       ],       "remove":[             1000001111       ]    } }
-]
-
+    "appkey":"appkey1",    "single":{          "add":[             "username1",          "username2"       ]    },    "group":{          "add":[             110000101       ],       "remove":[             1000001111       ]    } 
+}]
 ```
 
-Example Response
+#### Example Response
 
-Response Header
+**Response Header**
 
 ```
 HTTP/1.1 204 NO Content
-Content-Type: application/json; charset=utf-8   
+Content-Type: application/json; charset=utf-8
 ```
 
-Response Data
+**Response Data**
 
-N/A
++ N/A
 
-Error Code
+#### Error Code
 
-+ 899003 username不合法；
-+ 899002 用户不存在；
-+ 899051  群组不存在；
-+ 899052 设置群组消息屏蔽，设置的群组屏蔽已经打开
-+ 899053 设置群组消息屏蔽，设置的群组屏蔽已经关闭
++ 899003: username is illegal;
++ 899002: user does not exist
++ 899051: group does not exist
++ 899052: Set the group message blocj and the setting of group block is already open
++ 899053: Set the group message blocj and the setting of group block is already turned off
 
-### 跨应用添加好友 
-
-```
-POST  /v1/cross/users/{username}/friends
-```
-
-Example Request
-
-Request Header 
+### Add friends across applications
 
 ```
 POST  /v1/cross/users/{username}/friends
-Content-Type: application/json; charset=utf-8  
 ```
 
-Request Params
+#### Example Request
 
-+ appkey  用户所属的appkey （必填）
-+ users   username的json数组 最多500个（必填）
-
-
-Request Body
+**Request Header**
 
 ```
- {
-   "appkey":"appkey1",    "users":         [            "username1",         "username2"       ]     }
-
-
+POST  /v1/cross/users/{username}/friends
+Content-Type: application/json; charset=utf-8
 ```
 
-Example Response
+**Request Params**
 
-Response Header
++ appkey: Appkey to which the user belongs (required)
++ json array of users username: up to 500 (required)
+
+**Request Body**
+```
+{
+   "appkey":"appkey1",    "users":         [            "username1",         "username2"       ]     
+}
+```
+
+#### Example Response
+
+**Response Header**
 
 ```
 HTTP/1.1 201 Created
-Content-Type: application/json; charset=utf-8   
+Content-Type: application/json; charset=utf-8
 ```
 
-Response Data
+**Response Data**
 
-N/A
++ N/A
 
-### 跨应用删除好友 
-
-```
-DELETE  /v1/cross/users/{username}/friends
-```
-
-Example Request
-
-Request Header 
+### Delete friends across applications
 
 ```
 DELETE  /v1/cross/users/{username}/friends
-Content-Type: application/json; charset=utf-8  
 ```
 
-Request Params
+#### Example Request
 
-+ appkey  用户所属的appkey （必填）
-+ users   username的json数组 最多500个（必填）
+**Request Header**
 
+```
+DELETE  /v1/cross/users/{username}/friends
+Content-Type: application/json; charset=utf-8
+```
 
-Request Body
+**Request Params**
 
++ appkey: The appkey to which the user belongs (required)
++ json array of users username: up to 500 (required)
+
+**Request Body**
 ```
  {
    "appkey":"appkey1",    "users":         [            "username1",         "username2"       ]     }
-
-
 ```
 
-Example Response
+#### Example Response
 
-Response Header
+**Response Header**
 
 ```
 HTTP/1.1 204 NO Content
-Content-Type: application/json; charset=utf-8   
+Content-Type: application/json; charset=utf-8
 ```
 
-Response Data
+**Response Data**
 
-N/A
++ N/A
 
-### 跨应用更新好友备注 
+### Update friend notes across applications
 
 ```
 PUT  /v1/cross/users/{username}/friends
 ```
 
-Example Request
+#### Example Request
 
-Request Header 
+**Request Header**
 
 ```
 PUT  /v1/cross/users/{username}/friends
-Content-Type: application/json; charset=utf-8  
+Content-Type: application/json; charset=utf-8
 ```
 
-Request Params
+**Request Params**
 
-+ appkey  用户所属的appkey （必填）
-+ note_name 表示要添加的好友列表， 格式：Byte(64)
-  支持的字符：不包括 "\n" "\r"。
-+ others 其他备注信息，格式：Byte(250)
-  支持的字符：全部，包括 Emoji。  
++ appkey: The appkey to which the user belongs (required)
++ note_name: Indicates the list of friends to add. Format: Supported characters of byte(64) excludes "\n" "\r".
++ others: Other note information, Format: byte(250) supports all characters, including Emoji.
 
-
-Request Body
+**Request Body**
 
 ```
-[{ "note_name": "new note name", "others": “好友备注文档" ,"username":"user01", "appkey":"appkey"}]
-
-
-```
-
-Example Response
-
-Response Header
-
-```
-HTTP/1.1 204 NO Content
-Content-Type: application/json; charset=utf-8   
-```
-
-Response Data
-
-N/A
-
-### 跨应用管理聊天室成员
-	POST  /cross/chatroom/{room_id}/members
-Request Params
-
-+ add  json数组 表示要添加到聊天室的用户(可选)
-+ remove  json数组 表示要从聊天室删除的用户（可选）
-+ appkey 管理用户所属的appkey 必填
-
-add remove两者至少要有一个
-
-Example Request 
-
-```
-[{ 
- "appkey":" 4f7aef34fb361292c566a1cd",
- "add": [
- "test1",
- "test2"
- ],
- "remove": [
- "name3",
- "name4"
- ]
+[{
+    "note_name": "new note name",
+    "others": “好友备注文档" ,
+    "username":"user01",
+    "appkey":"appkey"
 }]
 ```
-Example Response
+
+#### Example Response
+
+**Response Header**
+
+```
+HTTP/1.1 204 NO Content
+Content-Type: application/json; charset=utf-8
+```
+
+**Response Data**
+
++ N/A
+
+### Cross-application manage chat room members
+
+```
+POST  /cross/chatroom/{room_id}/members
+```
+
+**Request Params**
+
++ add json array: Representing the user to add to the chat room (optional)
++ remove json array: Indicates the user to delete from the chat room (optional)
++ appkey: appkey to which the managed user belongs (required)
+
+add/remove:at least one of the two
+
+#### Example Request
+
+```
+[{
+    "appkey":" 4f7aef34fb361292c566a1cd",
+    "add": [
+        "test1",
+        "test2"
+    ],
+    "remove": [
+        "name3",
+        "name4"
+    ]
+}]
+```
+
+#### Example Response
 
 ```
 < HTTP/1.1 204 NO Content
-< Content-Type: application/json; charset=utf-8 
+< Content-Type: application/json; charset=utf-8
 ```
 
-Response Data
+**Response Data**
 
-N/A
- 
++ N/A
 
-## 敏感词
+## Sensitive Words
 
-### 添加敏感词
-
-```
-POST  /v1/sensitiveword
-```
-
-Example Request
-
-Request Header 
+### Add sensitive words
 
 ```
 POST  /v1/sensitiveword
-Content-Type: application/json; charset=utf-8  
 ```
 
-Request Params
-  N/A
+#### Example Request
 
-Request Body
-+ 敏感词数组 一个词长度最多为10，默认支持100个敏感词，[有更高需求可联系商务](https://www.jiguang.cn/accounts/business/form?from=im)
+**Request Header**
 
 ```
-["FUCK"] 
-
-
+POST  /v1/sensitiveword
+Content-Type: application/json; charset=utf-8
 ```
 
-Example Response
+**Request Params**
 
-Response Header
++ N/A
+
+**Request Body**
+
++ Array of Sensitive Words: A word with a length of up to 10, defaults to 100 sensitive words, and contact with [business team](https://www.jiguang.cn/accounts/business/form?from=im) for higher demands
+
+```
+["FUCK"]
+```
+
+#### Example Response
+
+**Response Header**
 
 ```
 HTTP/1.1 204 NO Content
-Content-Type: application/json; charset=utf-8   
+Content-Type: application/json; charset=utf-8
 ```
+**Response Data**
 
-Response Data
++ N/A
 
-N/A
-
-
-### 修改敏感词
+### Modify sensitive words
 
 ```
 PUT  /v1/sensitiveword
 ```
 
-Example Request
+#### Example Request
 
-Request Header 
+**Request Header**
 
 ```
 PUT  /v1/sensitiveword
-Content-Type: application/json; charset=utf-8  
+Content-Type: application/json; charset=utf-8
 ```
 
-Request Params
+**Request Params**
 
-  N/A
++ N/A
 
-Request Body
-+ old_word  旧敏感词
-+ new_word  新敏感词
+**Request Body**
+
++ old_word: old sensitive word,
++ new_word: new sensitive word
 
 ```
 {"new_word":"fuck", "old_word":"FUCK"}
-
-
 ```
 
-Example Response
+#### Example Response
 
-Response Header
+**Response Header**
 
 ```
 HTTP/1.1 204 NO Content
-Content-Type: application/json; charset=utf-8   
+Content-Type: application/json; charset=utf-8
 ```
 
-Response Data
+**Response Data**
 
-N/A
++ N/A
 
-
-### 删除敏感词
+### Delete sensitive words
 
 ```
 DELETE /v1/sensitiveword
 ```
 
-Example Request
+#### Example Request
 
-Request Header 
+**Request Header**
 
 ```
 DELETE  /v1/sensitiveword
-Content-Type: application/json; charset=utf-8  
+Content-Type: application/json; charset=utf-8
 ```
 
-Request Params
+**Request Params**
 
-   N/A
++ N/A
 
-Request Body
-+ word  被删除的敏感词
+**Request Body**
+
++ word: sensitive words deleted
 
 ```
 {"word":"fuck"}
-
-
 ```
 
-Example Response
+### Example Response
 
-Response Header
+**Response Header**
 
 ```
 HTTP/1.1 204 NO Content
-Content-Type: application/json; charset=utf-8   
+Content-Type: application/json; charset=utf-8
 ```
 
-Response Data
+**Response Data**
 
-N/A
++ N/A
 
-
-### 获取敏感词列表
+### Get a list of sensitive words
 
 ```
 GET /v1/sensitiveword
 ```
 
-Example Request
+#### Example Request
 
-Request Header 
+**Request Header**
 
 ```
 GET  /v1/sensitiveword?start={start}&count={count}
-Content-Type: application/json; charset=utf-8  
+Content-Type: application/json; charset=utf-8
 ```
 
-Request Params
+**Request Params**
 
-+ start：起始序号 从0开始
-+ count: 查询条数，最多2000
++ start: start number, starting from 0
++ count: number of queries, up to 2000
 
-Request Body
+**Request Body**
 
-N/A
++ N/A
 
-Example Response
+#### Example Response
 
-Response Header
+**Response Header**
 
 ```
 HTTP/1.1 200
-Content-Type: application/json; charset=utf-8   
+Content-Type: application/json; charset=utf-8
 ```
 
-Response Data
+**Response Data**
 
 ```
 {
-"start": 2,
-"count": 1,
-"words": [
+    "start": 2,
+    "count": 1,
+    "words": [
 {
-"name": "fuck",
-"itime": "1970-01-17 16:49:11"
+    "name": "fuck",
+    "itime": "1970-01-17 16:49:11"
 }
 ],
-"total": 3
+    "total": 3
 }
 ```
 
-### 更新敏感词功能状态
+### Update the status of sensitive words
 
 ```
 PUT /v1/sensitiveword/status
 ```
 
-Example Request
+#### Example Request
 
-Request Header 
+**Request Header**
 
 ```
 PUT  /v1/sensitiveword/status?status=0
-Content-Type: application/json; charset=utf-8  
+Content-Type: application/json; charset=utf-8
 ```
 
-Request Params
+**Request Params**
 
-+ status : 敏感词开关状态， 1表示开启过滤， 0表示关闭敏感词过滤
++ status: switch status of sensitive words, 1 means turn on filtering, 0 means turn off sensitive word filtering
 
-Request Body
+**Request Body**
 
-N/A
++ N/A
 
-Example Response
+#### Example Response
 
-Response Header
+**Response Header**
 
 ```
 HTTP/1.1 204
-Content-Type: application/json; charset=utf-8   
+Content-Type: application/json; charset=utf-8
 ```
 
-Response Data
+**Response Data**
 
-N/A
++ N/A
 
-### 获取敏感词功能状态
+### Get the status of sensitive words
 
 ```
 GET /v1/sensitiveword/status
 ```
 
-Example Request
+#### Example Request
 
-Request Header 
+**Request Header**
 
 ```
 GET  /v1/sensitiveword/status
-Content-Type: application/json; charset=utf-8  
+Content-Type: application/json; charset=utf-8
 ```
 
-Request Params
+**Request Params**
 
-N/A
++ N/A
 
-Request Body
+**Request Body**
 
-N/A
++ N/A
 
-Example Response
+#### Example Response
 
-Response Header
+**Response Header**
 
 ```
 HTTP/1.1 200
-Content-Type: application/json; charset=utf-8   
+Content-Type: application/json; charset=utf-8
 ```
 
-Response Data
+**Response Data**
 
 ```
- {"status": 1} 
+ {"status": 1}
 ```
-## 聊天室字段总览
+
+## Overview of chat room fields
 
 <div class="table-d" align="center" >
-	<table border="1" width = "100%">
-		<tr  bgcolor="#D3D3D3" >
-			<th >参数</th>
-			<th >含义</th>
-			<th >字符长度限制</th>
-		</tr>
-		<tr >
-			<td>name</td>
-			<td>聊天室名字（必填)</td>
-			<td>Byte(0~64)</td>
-		</tr>
-		<tr >
-			<td>owner_username</td>
-			<td>聊天室创建者（必填）</td>
-			<td>Byte (4~128)</td>
-		</tr>
-		<tr >
-			<td>description</td>
-			<td>聊天室描述（选填）</td>
-			<td>Byte(250)</td>
-		</tr>
-		<tr >
-			<td>members_username</td>
-			<td>聊天室成员列表（选填）</td>
-			<td></td>
-		</tr>
-		<tr >
-			<td>ctime</td>
-			<td>创建时间</td>
-			<td></td>
-		</tr>
-		<tr >
-			<td>max_member_count</td>
-			<td>最大成员数</td>
-			<td></td>
-		</tr>
-		<tr >
-			<td>total_member_count</td>
-			<td>当前总人数</td>
-			<td></td>
-		</tr>
-		<tr >
-			<td>flag</td>
-			<td>禁言标志</td>
-			<td>0表示不禁言 1表示开启禁言 </td>
-		</tr>
-	</table>
+    <table border="1" width = "100%">
+        <tr  bgcolor="#D3D3D3" >
+            <th>Parameter</th>
+            <th>Meaning</th>
+            <th>Limits of character length</th>
+        </tr><tr>
+            <td>name</td>
+            <td>Chat room name (required)</td>
+            <td>Byte(0~64)</td>
+        </tr><tr>
+            <td>owner_username</td>
+            <td>Creator of Chat room (required)</td>
+            <td>Byte (4~128)</td>
+        </tr><tr>
+            <td>description</td>
+            <td>Chat room description (optional)</td>
+            <td>Byte(250)</td>
+        </tr><tr>
+            <td>members_username</td>
+            <td>Member list of chat room (optional)</td>
+            <td></td>
+        </tr><tr>
+            <td>ctime</td>
+            <td>Creation time</td>
+            <td></td>
+        </tr><tr>
+            <td>max_member_count</td>
+            <td>Maximum number of members</td>
+            <td></td>
+        </tr><tr>
+            <td>total_member_count</td>
+            <td>Current total number</td>
+            <td></td>
+        </tr><tr>
+            <td>flag</td>
+            <td>Forbidden signs</td>
+            <td>0 means not banned, 1 means open the ban</td>
+        </tr>
+    </table>
 </div>
 
-<br>
+## Chat room maintenance
 
-## 聊天室维护
+### Create a chat room
 
-### 创建聊天室
+```
+POST /v1/chatroom/
+```
 
-	POST /v1/chatroom/
+**Request Body**
 
+```
+{"owner_username":"liming", "name": "测试聊天室", "description":"测试", "members_username":[]}
+```
 
-#### Request Body
+**Request Params**
 
-{"owner_username":"liming", "name" : "测试聊天室", "description":"测试", "members_username":[]}
++ owner_username (required) owner the chat room
++ name (required) chat room name
++ members_username (optional) username of members
++ description (optional) Description
 
-Request Params
-
-+ owner_username     （必填）聊天室拥有者
-+ name               （必填）聊天室名称
-+ members_username   （选填）成员 username
-+ description               （选填） 描述 
 #### Example Response
-
 ```
  HTTP/1.1 201 Created
  Content-Type: application/json
@@ -2336,18 +2426,21 @@ Request Params
 }
 ```
 
-###  获取聊天室详情
+#### Get chat room details
 
-	POST /v1/chatroom/batch
+```
+POST /v1/chatroom/batch
+```
 
-#### Request Params
+**Request Params**
 
-	[10000001,10000002] roomid数组
+[10000001,10000002] roomid数组
 
 #### Example Response
+
 ```
-HTTP/1.1 200 OK 
-Content-Type: application/json; charset=utf-8  
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
 
 [
     {
@@ -2356,7 +2449,7 @@ Content-Type: application/json; charset=utf-8
         "max_member_count": 10000,
         "appkey": "4f7aef34fb361292c566a1cd",
         "name": "test",
-        "description": "test",  
+        "description": "test",
         "total_member_count": 2,
         "ctime": "2017-11-27 18:38:25"
     }，
@@ -2373,20 +2466,23 @@ Content-Type: application/json; charset=utf-8
 ]
 ```
 
-###  GET 获取用户聊天室列表
+### GET Get a list of user’s chat rooms
+
 ```
  GET /v1/users/{username}/chatroom
 ```
 
 #### Example Request
-	
-	GET /v1/users/xiaoming/chatroom
+
+```
+GET /v1/users/xiaoming/chatroom
+```
 
 #### Example Response
 
 ```
-HTTP/1.1 200 OK 
-Content-Type: application/json; charset=utf-8 
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
 
 [
     {
@@ -2410,22 +2506,25 @@ Content-Type: application/json; charset=utf-8
         "ctime": "2017-11-27 18:38:25"
     }
 ]
-
 ```
 
-### GET 获取应用下聊天室列表
+### GET Get a list of chat rooms under the app
 
-	GET /v1/chatroom?start={start}&count={count}
+```
+GET /v1/chatroom?start={start}&count={count}
+```
 
-#### Example Request 
+#### Example Request
 
-	GET  /v1/chatroom?start=0&count=10
+```
+GET  /v1/chatroom?start=0&count=10
+```
 
 #### Example Response
 
 ```
-HTTP/1.1 200 OK 
-Content-Type: application/json; charset=utf-8 
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
 
 {
     "total": 1,
@@ -2446,32 +2545,38 @@ Content-Type: application/json; charset=utf-8
 }
 ```
 
-### 更新聊天室信息
+#### Update chat room information
 
-	 PUT /v1/chatroom/{room_id}
+```
+ PUT /v1/chatroom/{room_id}
+```
 
 #### Example Request
 
 ```
  PUT /v1/chatroom/111000001
+```
+
+**Request Body**
 
 ```
-#### Request Body
-	
-	{"owner_username":"135380113231", "name" : "中国人", "description":"说什么来这"}
+{"owner_username":"135380113231", "name": "中国人", "description":"说什么来这"}
+```
 
 #### Example Response
 
 ```
-HTTP/1.1 204  
-Content-Type: application/json; charset=utf-8 
+HTTP/1.1 204
+Content-Type: application/json; charset=utf-8
 ```
 
-### 删除聊天室
+### Delete chat room
 
-	DELETE /v1/chatroom/{room_id}
+```
+DELETE /v1/chatroom/{room_id}
+```
 
-#### Example Request 
+#### Example Request
 
 ```
 DELETE  /v1/chatroom/100000
@@ -2480,110 +2585,117 @@ DELETE  /v1/chatroom/100000
 #### Example Response
 
 ```
-HTTP/1.1 204  
-Content-Type: application/json; charset=utf-8 
+HTTP/1.1 204
+Content-Type: application/json; charset=utf-8
 ```
 
-###  修改用户禁言状态
+### Modify user banned state
 
-     PUT /v1/chatroom/{room_id}/forbidden/{username}?status={status}
+```
+ PUT /v1/chatroom/{room_id}/forbidden/{username}?status={status}
+```
 
-status  0表示不禁言 1表示开启禁言 必填
-#### Example Request 
+Status 0 means not banned, 1 means open the ban (required)
+
+#### Example Request
 
 ```
 PUT  /v1/chatroom/100000/forbidden/caiyh?status=1
 ```
+
 #### Example Response
 
 ```
  HTTP/1.1 204 OK
  Content-Type: application/json; charset=utf-8
-
 ```
 
-###  获取聊天室成员列表
+### Get a list of chat room members
 
-    GET /v1/chatroom/{room_id}/members?start={start}&count={count}
+```
+GET /v1/chatroom/{room_id}/members?start={start}&count={count}
+```
 
-Request Params
+**Request Params**
 
-+ room_id 聊天室ID。
++ room_id
 
-Example Response
+#### Example Response
 
-+ username  用户名
-+ ctime 创建时间
-+ flag 禁言标记
++ username
++ ctime
++ flag
 
 ```
  HTTP/1.1 200 OK
  Content-Type: application/json
 
 {
-    "total": 2, 
+    "total": 2,
     "users": [
         {
-            "username": "13538013231", 
-            "flag": 0, 
-            "room_ctime": "2017-11-17 08:57:54", 
-            "mtime": "2017-10-30 17:24:17", 
+            "username": "13538013231",
+            "flag": 0,
+            "room_ctime": "2017-11-17 08:57:54",
+            "mtime": "2017-10-30 17:24:17",
             "ctime": "2017-10-30 17:24:17"
-        }, 
+        },
         {
-            "username": "xia_12", 
-            "flag": 0, 
-            "room_ctime": "2017-11-16 19:13:07", 
-            "mtime": "2017-02-08 17:56:04", 
+            "username": "xia_12",
+            "flag": 0,
+            "room_ctime": "2017-11-16 19:13:07",
+            "mtime": "2017-02-08 17:56:04",
             "ctime": "2017-02-08 17:56:04"
         }
-    ], 
-    "count": 2, 
+    ],
+    "count": 2,
     "start": 0
 }
 ```
 
-
-### 添加聊天室成员
-
-     PUT /v1/chatroom/{room_id}/members
-
-Request Params
-
-+ username的json数组 最多支持3000个
-
-Example Response
+### Add chat room members
 
 ```
-HTTP/1.1 204  
-Content-Type: application/json; charset=utf-8 
-
+ PUT /v1/chatroom/{room_id}/members
 ```
 
-### 移除聊天室成员
+**Request Params**
 
-      DELETE /v1/chatroom/{room_id}/members
++ json array of username: supports up to 3000
 
-Request Params
-
-+ username的json数组 最多支持3000个
-
-Example Response
+#### Example Response
 
 ```
-HTTP/1.1 204  
-Content-Type: application/json; charset=utf-8 
+HTTP/1.1 204
+Content-Type: application/json; charset=utf-8
+```
+
+### Remove chat room members
 
 ```
-##  配置
+DELETE /v1/chatroom/{room_id}/members
+```
 
+**Request Params**
 
-### 设置SDK-API用户注册开关
++ json array of username: supports up to 3000
 
-打开或者关闭SDK-API用户注册。
+### Example Response
 
-	PUT /sdkregister/status?status={status}
+```
+HTTP/1.1 204
+Content-Type: application/json; charset=utf-8
+```
 
+## Configuration
+
+### Set SDK-API user registration switch
+
+Open or close the SDK-API user registration.
+
+```
+PUT /sdkregister/status?status={status}
+```
 
 #### Example Request
 
@@ -2591,26 +2703,28 @@ Content-Type: application/json; charset=utf-8
 PUT /sdkregister/status?status=0
 ```
 
-#### Request Params
+**Request Params**
 
 JSON Array.
 
-+ status：0为关闭，不提供SDK-API 注册功能，1为开启
++ status:0 is off, indicating SDK-API registration is not provided, 1 is on
 
 #### Example Response
 
 ```
  HTTP/1.1 204 Created
  Content-Type: application/json
- 
+
 Response Data
-  N/A
+
+N/A
 ```
-### 获得SDK-API用户注册开关
 
+### Get SDK-API user registration switch
 
-	get /sdkregister/status
-
+```
+get /sdkregister/status
+```
 
 #### Example Request
 
@@ -2621,9 +2735,9 @@ get /sdkregister/status
 #### Example Response
 
 ```
- HTTP/1.1 200 
+ HTTP/1.1 200
  Content-Type: application/json
- 
+
 Response Data
 {
 "status": 0
@@ -2631,9 +2745,9 @@ Response Data
 status： 0为关闭，不提供SDK-API 注册功能，1为开启
 ```
 
-## HTTP 返回
+## HTTP return
 
-HTTP 返回码参考文档：[HTTP-Status-Code](https://docs.jiguang.cn/jpush/server/push/http_status_code/)
+Reference documentation of HTTP return code: [HTTP-Status-Code](https://docs.jiguang.cn/jpush/server/push/http_status_code/)
 
 ### Example Error Response
 
@@ -2641,16 +2755,14 @@ HTTP 返回码参考文档：[HTTP-Status-Code](https://docs.jiguang.cn/jpush/se
  HTTP/1.1 401 Unauthorized
  Content-Type: application/json
 
-{ 
+{
   "error": {
-        "code": 899008, 
+        "code": 899008,
         "message": "Basic authentication failed"
      }
 }
 ```
 
-## 业务错误码定义
+## Definition of business error code
 
 [IM Server ErrorCode](https://docs.jiguang.cn/jmessage/client/im_errorcode_server/)
-
-

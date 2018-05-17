@@ -1,42 +1,8 @@
-# 最近更新
-
-### Android SDK v2.6.0
-
-#### 更新时间
-
-+ 2018-05-09
-
-#### ChangeLog
-
-##### BugFix:
-
-+ 修复其他用户反馈的一些bug
-
-##### NewFeature:
-+ 新增VideoContent消息类型
-+ model类实现序列化
-+ 收到dev api更新好友关系事件之后，sdk上抛好友关系变更事件
-
-#### 升级提示
-
-+ 建议升级！
-
-#### 升级指南
-
-+ 首先解压您获取到的 zip 压缩包
-
-+ 更新库文件
-	+ 打开libs文件夹。添加jcore-android_v1.2.0.jar。用 jmessage-android_v2.6.0.jar 替换项目中原有的极光jar文件，并删除原有极光jar文件。用对应CPU文件夹下的 libjcore120.so 文件，替换项目中原有的libjcoreXXX.so文件，并删除原有的极光so文件，每种型号的so文件都可以在SDK下载包中找到。
-
-+ 更新AndroidManifest.xml
-	+ 请参考 SDK下载包最新版本的 demo 来更新AndroidManifest.xml 文件配置。
-	***注意JCore 从1.1.7版本开始新增了provider组件，如果项目中使用的JCore是1.1.7之前的版本，集成时需要注意manifest中新增的provider组件的配置***
-
-+ 如果使用jcenter的方式集成JMessage，不需要添加相关组件和资源，详细集成说明请参考官方[集成指南](https://docs.jiguang.cn/jmessage/client/jmessage_android_guide/)
+# Recent Updates
 
 ### PC SDK V1.2.1
 
-#### 更新时间
+#### Update Time
 
 + 2018-04-12
 
@@ -44,2066 +10,2016 @@
 
 ##### NewFeature:
 
-+ 全新 PC 端 SDK，同时支持Windows、macOS
-+ 同步 Windows v1.2.0 的所有功能
++ New PC-side SDK supports Windows and macOS
++ Synchronize all features of Windows v1.2.0
 
-#### 升级提示
+#### Upgrade Prompt
 
-+ 建议升级！
++ Suggest an upgrade!
 
-#### 升级指南
+#### Upgrade Guide
 
-+ 从官网下载SDK包,直接全部替换即可
-+ 如果使用的NuGet包,可以使用NuGet包管理器直接更新
-
++ Download SDK package from the official website and simply replace it all
++ If using NuGet package, you can use NuGet package manager to update directly
 
 ### iOS SDK v3.5.0
 
-#### 更新时间
-
-* 2018-03-01
-
-#### ChangeLog
-
-##### BugFix:
-
-* 修复用户反馈的一些 bug
-
-##### NewFeature
-
-* 设置群组管理员功能
-* 解散群组功能
-* 移交群主权限功能
-* 设备间消息透传功能
-* 登录接口返回用户登录设备记录
-
-#### 升级指南
-* 使用新版本的 JMessage.framework 文件替换原工程下的同名旧文件
-* 将新版本的 JMessage.framework 里的 JCore link 到工程中，详细参见官网集成文档
-
-#### 接口变更
-+ `-(void)onReceiveNotificationEvent:` 接口细分为 `-(void)onReceiveUserLoginStatusChangeEvent:` 和 `-(void)onReceiveFriendNotificationEvent:`
-
-
-
-### Android SDK v2.5.0
-
-#### 更新时间
+#### Update Time
 
 + 2018-03-01
 
-#### Change Log
+#### ChangeLog
+
+
 ##### BugFix:
-+ 修复老版本升级时禁言列表获取不到问题
-+ 修复其他用户反馈的一些bug
+
++ Fix some bugs in user feedback
+
+##### NewFeature
+
++ Set group administrator
++ Dissolve group
++ Transfer owner privileges
++ Transparent transmission of messages between devices
++ Login interface returns records of login device
+
+#### Upgrade Guide
+
++ Replace the old file with the same name under the original project with a new version of the JMessage.framework file
++ Link the JCore of the JMessage.framework in the new version to the project. For details, see the official Integration Document.
+Interface Change
++ -(void)onReceiveNotificationEvent: The interface is subdivided into -(void)onReceiveUserLoginStatusChangeEvent: and -(void)onReceiveFriendNotificationEvent:
+
+### Android SDK v2.5.0
+
+#### Update Time
+
++ 2018-03-01
+
+##### Change Log
+
+
+##### BugFix:
+
++ Fix an issue where the banned list in the old version was not available
++ Fix some bugs reported by other users
 
 ##### NewFeature:
-+ Android O系统适配
-+ 新增群组管理员
-+ 支持解散群组
-+ 支持获取设备登陆记录
-+ 支持移交群主权限
-+ 支持设备间消息透传
 
-#### 升级提示
++ Adaptation to Android O system
++ Add group managers
++ Support for dissolving groups
++ Support for obtaining device landing records
++ Support to transfer owner privileges
++ Support transparent transmission of messages between devices
 
-+ 建议升级！
+#### Upgrade Prompt
 
-#### 升级指南
++ Suggest an upgrade!
 
-+ 首先解压您获取到的 zip 压缩包
+#### Upgrade Guide
 
-+ 更新库文件
-	+ 打开libs文件夹。添加jcore-android_v1.1.9.jar。用 jmessage-android_v2.5.0.jar 替换项目中原有的极光jar文件，并删除原有极光jar文件。用对应CPU文件夹下的 libjcore119.so 文件，替换项目中原有的libjcoreXXX.so文件，并删除原有的极光so文件，每种型号的so文件都可以在SDK下载包中找到。
-
-+ 更新AndroidManifest.xml
-	+ 请参考 SDK下载包最新版本的 demo 来更新AndroidManifest.xml 文件配置。  
-	***注意JCore 从1.1.7版本开始新增了provider组件，如果项目中使用的JCore是1.1.7之前的版本，集成时需要注意manifest中新增的provider组件的配置***
-
-+ 如果使用jcenter的方式集成JMessage，不需要添加相关组件和资源，详细集成说明请参考官方[集成指南](https://docs.jiguang.cn/jmessage/client/jmessage_android_guide/)
-
++ First unzip the zip archive you got
++ Update library files
+    + Open the libs folder and add jcore-android_v1.1.9.jar. Replace the original Jiguang jar file in the project with jmessage-android_v2.5.0.jar and delete the original Jiguang jar file. Replace the original libjcoreXXX.so file in the project with the libjcore119.so file in the corresponding CPU folder, and delete the original Jiguang so file. Each type of so file can be found in the SDK download package.
++ Update AndroidManifest.xml
+    + Please refer to the latest demo version of SDK download package to update the configuration of AndroidManifest.xml file.
+Note that JCore has added the provider component from version 1.1.7. If the JCore used in the project is earlier than 1.1.7, you need to pay attention to the configuration of the new provider component in the manifest when intergrating.
++ If JMessage is integrated by jcenter, you do not need to add related components and resources. For detailed integration instructions, please refer to the official Integration Guide.
 
 ### Windows SDK V1.2.0
 
-#### 更新时间
+#### Update Time
 
 + 2018-02-02
 
 #### ChangeLog
 
+
 ##### NewFeature:
 
-+ 登录设备历史记录
-+ 解散群
-+ 设置群管理员
-+ 获取公开群列表
-+ 转让群主身份
-+ 设备间消息透传
++ Login device history
++ Dissove group
++ Set up group administrators
++ Get a list of public groups
++ Transfer owner
++ Transparent transmission of messages between devices
 
-#### 升级提示
+#### Upgrade Prompt
 
-+ 建议升级！
++ Suggest an upgrade!
 
-#### 升级指南
+#### Upgrade Guide
 
-+ 从官网下载SDK包,直接全部替换即可
-
-+ 如果使用的NuGet包,可以使用NuGet包管理器直接更新
-
++ Download SDK package on the official website and simply replace it all
++ If using NuGet package, you can use NuGet package manager to update directly
 
 ### Web SDK v2.6.0
 
-#### 更新时间
+#### Update Time
 
 + 2018-01-26
 
-#### Change Log
+##### Change Log
+
 
 ##### NewFeature:
-+ 新增：群组管理员角色
-+ 新增：解散群、移交群主功能
-+ 新增：设备间消息透传、登录设备记录获取
-+ 新增：获取 appkey 下所有公开群
 
-#### 升级提示
++ Add administrator role
++ Add the functions to dissolve groups and transfer owner
++ Add access to transparent transmission of messages between devices and device records
++ Add access to all public groups under appkey
 
-+ 建议升级！
+#### Upgrade Prompt
 
-#### 升级指南
++ Suggest an upgrade!
 
-+ 用最新的 jmessage-sdk-web.2.6.0.min.js 替换掉老版本的 sdk
+#### Upgrade Guide
 
-
++ Replace the old version of sdk with the latest jmessage-sdk-web.2.6.0.min.js
 
 ### iOS SDK v3.4.1
 
-#### 更新时间
+#### Update Time
 
-2018-01-03
++ 2018-01-03
 
 #### ChangeLog
 
+
 ##### BugFix:
 
-* 修复用户反馈的一些 bug
++ Fix some bugs in user feedback
 
 ##### NewFeature
 
-* 新增：获取 AppKey 下所有公开群接口
++ Add access to all public group interfaces under AppKey
 
-#### 升级指南
-* 使用新版本的 JMessage.framework 文件替换原工程下的同名旧文件
-* 将新版本的 JMessage.framework 里的 JCore link 到工程中，详细参见官网集成文档
+#### Upgrade Guide
 
-
-
++ Replace old file with the same name under the original project with a new version of the JMessage.framework file
++ Link the JCore in the new version of JMessage.framework to the project. For details, see the integration document on the official website.
 
 ### Android SDK v2.4.1
 
-#### 更新时间
+#### Update Time
 
 + 2018-01-02
 
-#### Change Log
+##### Change Log
+
+
 ##### BugFix:
-+ 修复处理离线群成员删除和退出事件时禁言列表未更新问题
-+ 提升sdk稳定性
+
++ Fix the problem where the banned list was not updated when dealing with offline group member deletion and exit
++ Improve sdk stability
 
 ##### NewFeature:
-+ 新增获取指定应用下所有公开群组的接口
-+ 自定义消息和消息的extras支持获取value为Object类型的数据
 
-#### 升级提示
++ Add interface to get all public groups under a specified application
++ Extras of custom messages and messages support to get data of value as Object
 
-+ 建议升级！
+#### Upgrade Prompt
 
-#### 升级指南
++ Suggest an upgrade!
 
-+ 首先解压您获取到的 zip 压缩包
+#### Upgrade Guide
 
-+ 更新库文件
-	+ 打开libs文件夹。添加jcore-android_v1.1.8.jar。用 jmessage-android_v2.4.1.jar 替换项目中原有的极光jar文件，并删除原有极光jar文件。用对应CPU文件夹下的 libjcore118.so 文件，替换项目中原有的libjcoreXXX.so文件，并删除原有的极光so文件，每种型号的so文件都可以在SDK下载包中找到。
-
-+ 更新AndroidManifest.xml
-	+ 请参考 SDK下载包最新版本的 demo 来更新AndroidManifest.xml 文件配置。  
-	***注意JCore 从1.1.7版本开始新增了provider组件，如果项目中使用的JCore是1.1.7之前的版本，集成时需要注意manifest中新增的provider组件的配置***
-
-+ 如果使用jcenter的方式集成JMessage，不需要添加相关组件和资源，详细集成说明请参考官方[集成指南](https://docs.jiguang.cn/jmessage/client/jmessage_android_guide/)
-
-
++ First unzip the zip archive you got
++ Update library files
+    + Open the libs folder and add jcore-android_v1.1.8.jar. Replace the original Jiguang jar file in the project with jmessage-android_v2.4.1.jar and delete the original Jiguang jar file. Replace the original libjcoreXXX.so file in the project with the libjcore118.so file in the corresponding CPU folder, and delete the original Jiguang so file. Each type of so file can be found in the SDK download package.
++ Update AndroidManifest.xml
+    + Please refer to the latest demo version of the SDK download package to update the configuration of AndroidManifest.xml file.
+Note that JCore has added the provider component from version 1.1.7. If the JCore used in the project is earlier than 1.1.7, you need to pay attention to the configuration of the new provider component in the manifest when integrating.
++ If integrating JMessage by jcenter, you do not need to add related components and resources. For detailed integration instructions, please refer to the official Integration Guide.
 
 ### iOS SDK v3.4.0
 
-#### 更新时间
-
-2017-12-11
-
-#### ChangeLog
-
-##### BugFix:
-
-* 修复用户反馈的一些 bug
-
-##### NewFeature
-
-* 新增：聊天室功能
-* 新增：群成员禁言功能
-* 新增：公开群组功能，支持申请入群
-* 新增：发送文件消息时支持设置文件类型
-
-#### 升级指南
-* 使用新版本的JMessage.framework文件替换原工程下的同名旧文件
-* 将新版本的JMessage.framework里的JCore link到工程中，详细参见官网集成文档
-
-
-
-### Android SDK v2.4.0
-
-#### 更新时间
+#### Update Time
 
 + 2017-12-11
 
-#### Change Log
+#### ChangeLog
+
+
 ##### BugFix:
-+ 修复从数据库中读取conversation时，targetAppkey没有设置导致title和avatar不正确
-+ 提升sdk稳定性
+
++ Fix some bugs in user feedback
+
+##### NewFeature
+
++ Add chat room features
++ Add bans to group member
++ Add public group function which supports application for admission
++ Add supporting for setting file types when sending file messages
+
+#### Upgrade Guide
+
++ Replace the old file with the same name under the original project with a new version of the JMessage.framework file
++ Link the JCore in the new version of JMessage.framework to the project. For details, see the integration document on the official website.
+
+### Android SDK v2.4.0
+
+#### Update Time
+
++ 2017-12-11
+
+##### Change Log
+
+
+##### BugFix:
+
++ Fix the incorrect title and avatar resulted by absence of targetAppkey settings when reading conversation from database
++ Improve sdk stability
 
 ##### NewFeature:
-+ 新增聊天室功能
-+ 新增公开群组类型，支持申请入群
-+ 新增群成员禁言功能
 
-#### 升级提示
++ Add chat room features
++ Add public group types to support application for admission
++ Add bans to group member
 
-+ 建议升级！
+#### Upgrade Prompt
 
-#### 升级指南
++ Suggest an upgrade!
 
-+ 首先解压您获取到的 zip 压缩包
+#### Upgrade Guide
 
-+ 更新库文件
-	+ 打开libs文件夹。添加jcore-android_v1.1.8.jar。用 jmessage-android_v2.4.0.jar 替换项目中原有的极光jar文件，并删除原有极光jar文件。用对应CPU文件夹下的 libjcore118.so 文件，替换项目中原有 的libjcoreXXX.so 文件，并删除原有的极光 so 文件，每种型号的 so 文件都可以在 SDK 下载包中找到。
-
-+ 更新AndroidManifest.xml
-	+ 请参考 SDK下载包最新版本的 demo 来更新AndroidManifest.xml 文件配置。  
-	***注意JCore 从1.1.7版本开始新增了provider组件，如果项目中使用的JCore是1.1.7之前的版本，集成时需要注意manifest中新增的provider组件的配置***
-
-+ 如果使用jcenter的方式集成JMessage，不需要添加相关组件和资源，详细集成说明请参考官方[集成指南](https://docs.jiguang.cn/jmessage/client/jmessage_android_guide/)
-
-
++ First unzip the zip archive you got
++ Update library files
+    + Open the libs folder and add jcore-android_v1.1.8.jar. Replace the original Jiguang jar file in the project with jmessage-android_v2.4.0.jar and delete the original Jiguang jar file. Replace the existing libjcoreXXX.so file in the project with the libjcore118.so file in the corresponding CPU folder, and delete the original Jiguang so file. Each type of so file can be found in the SDK download package.
++ Update AndroidManifest.xml
+    + Please refer to the latest demo version of SDK download package to update the configuration of AndroidManifest.xml file.
+Note that JCore has added the provider component from version 1.1.7. If the JCore used in the project is earlier than 1.1.7, you need to pay attention to configuration of the new provider component in the manifest when integrating.
++ If you use jcenter to integrate JMessage, you do not need to add related components and resources. For detailed integration instructions, please refer to the official Integration Guide.
 
 ### Windows SDK v1.1.0
 
-#### 更新时间
+#### Update Time
 
 + 2017-12-04
 
-#### Change Log
+##### Change Log
+
 
 ##### NewFeature:
-+ 聊天室功能
-+ 公开群类型，用户可申请入群
-+ 支持群禁言
-+ 消息透传
-+ 提供NuGet程序包
-+ 添加 GroupId 类型,代替int64_t , 使用GroupId::get 获取值
 
-#### 升级提示
++ Chat room features
++ Public group in which users can apply for admission
++ Support group bans
++ Transparent transmission of message
++ Provide NuGet package
++ Add GroupId type to replace int64_t, and use GroupId::get to get value
 
-+ 建议升级！
+#### Upgrade Prompt
 
-#### 升级指南
++ Suggest an upgrade!
 
-+ 查阅最新的[SDK文档](https://docs.jiguang.cn/jmessage/client/im_win_api_docs/)
+#### Upgrade Guide
 
-
++ Check the latest SDK documentation
 
 ### Web SDK v2.5.0
 
-#### 更新时间
+#### Update Time
 
 + 2017-11-29
 
-#### Change Log
+##### Change Log
+
 
 ##### NewFeature:
-+ 新增聊天室功能
-+ 新增公开群类型，用户可申请入群
-+ 支持群禁言
 
-#### 升级提示
++ Add chat room features
++ Add public group types in which users can apply for admission
++ Support group bans
 
-+ 建议升级！
+#### Upgrade Prompt
 
-#### 升级指南
++ Suggest an upgrade!
 
-+ 用最新的 jmessage-sdk-web.2.5.0.min.js 替换掉老版本的 sdk
+#### Upgrade Guide
 
-
-
-
++ Replace the old version of sdk with the latest jmessage-sdk-web.2.5.0.min.js
 
 ### Web SDK v2.4.1
 
-#### 更新时间
+#### Update Time
 
 + 2017-11-02
 
-#### Change Log
+##### Change Log
+
 
 ##### BugFix:
 
-+ 未读数逻辑优化
++ Logic optimization of the unread
 
-#### 升级提示
+#### Upgrade Prompt
 
-+ 建议升级！
++ Suggest an upgrade!
 
-#### 升级指南
+#### Upgrade Guide
 
-+ 用最新的 jmessage-sdk-web.2.4.1.min.js 替换掉老版本的 sdk
-
++ Replace the old version of sdk with the latest jmessage-sdk-web.2.4.1.min.js
 
 ### iOS SDK v3.3.0
 
-#### 更新时间
+#### Update Time
 
-2017-10-27
++ 2017-10-27
 
 #### ChangeLog
 
+
 ##### BugFix:
 
-* 修复用户反馈的一些 bug
++ Fix some bugs in user feedback
 
 ##### NewFeature
 
-* 支持多端同时在线
-* 支持群组头像
-* 支持消息透传
-* 新增消息已读回执功能
-* 新增消息转发接口
-* JMSGConversation 类新增 extras 扩展字段
-* JMSGUser 类新增 extras 扩展字段
-* 用户注册接口支持其他属性值设置
++ Support multi-end simultaneously online
++ Support group avatar
++ Support message transparent transmission
++ Add message read receipt function
++ Add message forwarding interface
++ Extras extension fields is added to JMSGConversation class
++ Extras extension field is added to the JMSGUser class
++ User registration interface supports other attribute value settings
 
-#### 升级指南
-* 使用新版本的JMessage.framework文件替换原工程下的同名旧文件
-* 将新版本的JMessage.framework里的JCore link到工程中，详细参见官网集成文档
+#### Upgrade Guide
 
-
++ Replace the old file with the same name under the original project with a new version of the JMessage.framework file
++ Link the JCore in the new version of JMessage.framework to the project. For details, see the integration document on the official website
 
 ### Android SDK v2.3.0
 
-#### 更新时间
+#### Update Time
 
 + 2017-10-20
 
-#### Change Log
+##### Change Log
+
+
 ##### BugFix:
-+ 修复deleteSingleConversation接口可能出现的删除失败的问题
-+ 提升sdk稳定性
+
++ Fix delete failures that may occur on the deleteSingleConversation interface
++ Improve sdk stability
 
 ##### NewFeature:
-+ 支持多端同时在线
-+ 新增消息已读回执功能
-+ 新增消息转发接口
-+ 支持命令透传
-+ Conversation类新增extra扩展字段
-+ 支持群组头像
-+ UserInfo支持扩展字段extras
-+ 用户注册接口支持其他属性设置
 
-#### 升级提示
++ Support multi-end simultaneously online
++ Add message read receipt function
++ Add message forwarding interface
++ Support command transparent transmission
++ Extra extension fields is added to Conversation class
++ Support group avatar
++ UserInfo supports extension field extras
++ User registration interface supports other attribute settings
 
-+ 建议升级！
+#### Upgrade Prompt
 
-#### 升级指南
++ Suggest an upgrade!
 
-+ 首先解压您获取到的 zip 压缩包
+#### Upgrade Guide
 
-+ 更新库文件
-	+ 打开libs文件夹。添加jcore-android_v1.1.7.jar。用 jmessage-android_v2.3.0.jar 替换项目中原有的极光jar文件，并删除原有极光jar文件。用对应CPU文件夹下的 libjcore117.so 文件，替换项目中原有的libjcoreXXX.so文件，并删除原有的极光so文件，每种型号的so文件都可以在SDK下载包中找到。
-
-+ 更新AndroidManifest.xml
-	+ 请参考 SDK下载包最新版本的 demo 来更新AndroidManifest.xml 文件配置。  
-	***注意JCore 1.1.7版本新增了provider组件，集成时需要注意manifest中新增的provider组件的配置***
-
-+ 如果使用jcenter的方式集成JMessage，不需要添加相关组件和资源，详细集成说明请参考官方[集成指南](https://docs.jiguang.cn/jmessage/client/jmessage_android_guide/)
-
-
++ First unzip the zip archive you got
++ Update library files
+    + Open the libs folder and add jcore-android_v1.1.7.jar. Replace the original Jiguang jar file in the project with jmessage-android_v2.3.0.jar and delete the original Jiguang jar file. Replace the existing libjcoreXXX.so file in the project with the libjcore117.so file in the corresponding CPU folder, and delete the original Jiguang so file. Each type of so file can be found in the SDK download package.
++ Update AndroidManifest.xml
+    + Please refer to the lastest demo version of SDK download package to update the configuration of AndroidManifest.xml.
+Note that the JCore 1.1.7 version adds a provider component. When integrating, you need to pay attention to the configuration of the new provider component in the manifest.
++ If you use jcenter to integrate JMessage, you do not need to add related components and resources. For detailed integration instructions, please refer to the official Integration Guide.
 
 ### Web SDK v2.4.0
 
-#### 更新时间
+#### Update Time
 
 + 2017-10-16
 
-#### Change Log
+##### Change Log
+
 
 ##### NewFeature:
 
-+ 支持消息透传
-+ 支持群组头像
-+ 支持多端同时在线
-+ 消息已读回执
-+ 会话、用户信息支持扩展字段
-+ 注册支持扩展字段
-+ 支持会话未读数获取、重置会话未读数
++ Support message transparent transmission
++ Support group avatar
++ Support multi-end simultaneously online
++ Message read receipt
++ Session and user information support extension fields
++ Registration supports extension fields
++ Support acquiring number of unread sessions and resetting number of unreading sessions
 
-#### 升级提示
+#### Upgrade Prompt
 
-+ 建议升级！
++ Suggest an upgrade!
 
-#### 升级指南
+#### Upgrade Guide
 
-+ 用最新的 jmessage-sdk-web.2.4.0.min.js 替换掉老版本的 sdk
-
-
-
-
++ Replace the old version of sdk with the latest jmessage-sdk-web.2.4.0.min.js
 
 ### Windows SDK v1.0.0
 
-#### 更新时间
+#### Update Time
 
 + 2017-10-13
 
-#### Change Log
-+ JMessage Windows C++ SDK 首次发布， 涵盖当前 Web SDK v2.3.1 的全部功能，基于最新 C++17 语言标准(需要VS2017)， 使用了大量方便开发的新特性，基于[cpprestsdk](https://github.com/Microsoft/cpprestsdk/wiki/Programming-with-Tasks)的task/then异步接口[(更多关于task)](https://docs.microsoft.com/zh-cn/cpp/parallel/concrt/reference/task-class?f1url=https%3A%2F%2Fmsdn.microsoft.com%2Fquery%2Fdev15.query%3FappId%3DDev15IDEF1%26l%3DZH-CN%26k%3Dk(PPLTASKS%2FConcurrency%3A%3Atask)%3Bk(Concurrency%3A%3Atask)%3Bk(task)%3Bk(DevLang-C%2B%2B)%3Bk(TargetOS-Windows)%26rd%3Dtrue) ，上层可以使用回调或者co_await方式使用SDK
+##### Change Log
+
+    ### • SDK The first release of the JMessage Windows C++ SDK covers all features of the current Web SDK v2.3.1, which used a number of new features for convenient development based on the latest C++17 language standard (requires VS2017). Based on the task/then asynchronous interface of cpprestsdk (More about task), the upper layer can use the SDK with callbacks or co_await methods.
+
 
 ##### NewFeature:
-+ 支持多端同时在线
-+ 消息已读回执
-+ 群组头像
 
-#### 升级提示
++ Support multi-end simultaneously online
++ Message read receipt
++ Group avatar
 
-+ 建议升级！
+#### Upgrade Prompt
 
-#### 升级指南
++ Suggest an upgrade!
 
-+ 下载 SDK ，详细集成说明请参考官方[集成指南](https://docs.jiguang.cn/jmessage/client/im_sdk_win/)
+#### Upgrade Guide
 
-
++ Download the SDK. For detailed integration instructions, please refer to the official Integration Guide
 
 ### iOS SDK v3.2.1
 
-#### 更新时间
+#### Update Time
 
-2017-08-29
++ 2017-08-29
 
 #### ChangeLog
 
+
 ##### BugFix:
 
-* 修复用户反馈的一些 bug
++ Fix some bugs in user feedback
 
 ##### NewFeature
 
-* 离线事件处理升级为事件同步机制，大幅提升处理大量事件的性能，上层无需改动和适配  
-* 创建 imageContent 时，可指定后缀名
-* 上传头像时，指定后缀名
++ Offline event processing is upgraded to an event synchronization mechanism, which greatly improves the performance of handling a large number of events. The upper layer does not need to be modified or adapted.
++ Specify the suffix name when creating imageContent
++ Specify the suffix name when uploading an avatar
++ Add interfaces：
+    + JMSGUser
+        + +(void)updateMyAvatarWithData:avatarFormat:completionHandler;// specifies suffix name of the avatar
+    + JMSGImageContent
+        + @property(nonatomic, strong) NSString *format;//specifies extension name of the picture
+    + JMSGFileContent
+        + -(void)fileDataWithProgress:completionHandler: ;// file download interface with download progress
 
-* 新增接口：
-	* JMSGUser
-		* +(void)updateMyAvatarWithData:avatarFormat:completionHandler;//指定头像后缀名
-	* JMSGImageContent
-		* @property(nonatomic, strong) NSString *format;//指定图片后缀名
-	* JMSGFileContent
-		* -(void)fileDataWithProgress:completionHandler: ;// 带下载进度的文件下载接口
+#### Upgrade Guide
 
-#### 升级指南
-* 使用新版本的JMessage.framework文件替换原工程下的同名旧文件
-* 将新版本的JMessage.framework里的JCore link到工程中，详细参见官网集成文档
-
-
++ Replace the old file with the same name under the original project with a new version of the JMessage.framework file
++ Link the JCore in the new version of JMessage.framework to the project. For details, see the integration document on official website.
 
 ### Android SDK v2.2.1
 
-#### 更新时间
+#### Update Time
 
 + 2017-08-15
 
-#### Change Log
+##### Change Log
+
+
 ##### BugFix:
-+ 修复发送自定义类型消息时，自定义通知栏文字不生效
-+ 提升sdk稳定性
+
++ Fix the problem that custom notification bar text does not work when sending custom type messages
++ Improve sdk stability
 
 ##### NewFeature:
-+ 离线事件处理升级为事件同步机制，大幅提升处理大量事件的性能，上层无需改动和适配
-+ 群事件`EventNotificationContent`中新增一个类型`group_info_updated`表示群信息被更新。代码示例见[事件处理](https://docs.jiguang.cn/jmessage/client/im_sdk_android/#_46)一节中“接收消息事件”部分
-+ 新增创建ImageContent时，指定存储时的扩展名的接口
 
-#### 升级提示
++ Offline event processing is upgraded to an event synchronization mechanism, which greatly improves the performance of handling a large number of events. The upper layer does not need to be modified or adapted.
++ A new type group_info_updated is added to the group event EventNotificationContent to indicate that the group information is updated. See the "Receiving Message Events" section in the Event Handling section for code examples
++ Add interfaces of extention name when creating ImageContent and specifying storage
 
-+ 建议升级！
+#### Upgrade Prompt
 
-#### 升级指南
++ Suggest an upgrade!
 
-+ 首先解压您获取到的 zip 压缩包
+#### Upgrade Guide
 
-+ 更新库文件
-	+ 打开libs文件夹。添加jcore-android_v1.1.6.jar。用 jmessage-android_v2.2.1.jar 替换项目中原有的极光jar文件，并删除原有极光jar文件。用对应CPU文件夹下的 libjcore116.so 文件，替换项目中原有的libjcoreXXX.so文件，并删除原有的极光so文件，每种型号的so文件都可以在SDK下载包中找到。
-
-+ 更新AndroidManifest.xml
-	+ 请参考 SDK下载包最新版本的 demo 来更新AndroidManifest.xml 文件配置。
-
-+ 如果使用jcenter的方式集成JMessage，不需要添加相关组件和资源，详细集成说明请参考官方[集成指南](https://docs.jiguang.cn/jmessage/client/jmessage_android_guide/)
-
-
++ First unzip the zip archive you got
++ Update library files
+    + Open the libs folder and add jcore-android_v1.1.6.jar. Replace the original Jiguang jar file in the project with jmessage-android_v2.2.1.jar and delete the original Jiguang jar file. Use the libjcore116.so file in the corresponding CPU folder to replace the original libjcoreXXX.so file in the project and delete the original Jiguang so file. Each type of so file can be found in the SDK download package.
++ Update AndroidManifest.xml
+    + Please refer to the latest demo version of SDK download package to update the configuration of AndroidManifest.xml file.
++ If JMessage is integrated by jcenter, you do not need to add related components and resources. For detailed integration instructions, please refer to the official Integration Guide.
 
 ### Web SDK v2.3.1
 
-#### 更新时间
+#### Update Time
 
 + 2017-08-11
 
-#### Change Log
+##### Change Log
+
 
 ##### NewFeature:
-+ 事件同步
-+ 自定义通知栏
-+ 消息转发
-+ 群屏蔽列表
 
-#### 升级提示
++ Event synchronization
++ Custom notification bar
++ Message forwarding
++ Group block list
 
-+ 建议升级！
+#### Upgrade Prompt
 
-#### 升级指南
++ Suggest an upgrade!
 
-+ 用最新的 jmessage-sdk-web.2.3.1.min.js 替换掉老版本的 sdk
+#### Upgrade Guide
 
++ Replace the old version of sdk with the latest jmessage-sdk-web.2.3.1.min.js
 
 ### iOS SDK v3.2.0
 
-#### 更新时间
+#### Update Time
 
-2017-06-30
++ 2017-06-30
 
 #### ChangeLog
 
+
 ##### BugFix:
 
-+ 修复：用户信息自动更新问题
++ Fix the automatic update of user information
 
 ##### NewFeature
 
-+ 新增：消息撤回功能
-+ 新增：离线消息存储控制功能
-+ 新增：通知栏消息显示控制功能
-+ 新增：自定义通知栏功能
-+ 新增：统一上传用户信息接口
++ Add the message recall feature
++ Add storage and controlling function of offline messages
++ Add displaying and controlling function of notification bar messages
++ Add custom notification bar
++ Add the interface for unified uploading user information
++ Add classes：
+    + JMSGPromptContent
+        + @property(nonatomic, readonly, copy) NSString *promptText;// propmts message
+    + JMSGOptionalContent
+        + @property(nonatomic, assign) BOOL noSaveOffline;// does not save offline messages
+        + @property(nonatomic, assign) BOOL noSaveNotification;// does not save notification message
+        + @property(nonatomic, strong) JMSGCustomNotification * customNotification; // custom notification bar
+    + JMSGUserInfo
+        + This class is only used to modify user information
++ Add interfaces：
+    + JMSGEventDelegate
+        + -(void)onReceiveMessageRetractEvent:;// monitors message revocation events
+    + JMSGConversation
+        + -(void)retractMessage: completionHandler: ;// retracts messages
+        + -(void)sendMessage: optionalContent:;// customizes contents of notification bar and controls storage of offline messages
+        + -(NSString *)avatarLocalPath;// gets the local path of the session avatar
+    + JMSGMessage
+        + +(void)retractMessage: completionHandler: ;// retracts messages
+        + +(void)sendMessage: optionalContent:;// customizes contents of notification bar and controls storage of offline messages
+    + JMSGUser
+        + +(void)updateMyInfoWithUserInfo: completionHandler:;// updates user information (support for unified uploading of fields)
+        + -(NSString *)thumbAvatarLocalPath;// gets the local path of thumbnail file of user avatar
+        + -(NSString *)largeAvatarLocalPath;// gets the local path of big picture file of user avatar
+    + JMSGMediaAbstractContent
+        + @property(nonatomic, strong, readonly) NSString * originMediaLocalPath; // gets the local path of original file
+    + JMSGImageContent
+        + @property(nonatomic, strong, readonly) NSString *thumbImageLocalPath;// gets  the local path of thumbnail
 
-+ 新增类：
-	+ 提示性消息内容类 JMSGPromptContent
-		+ @property(nonatomic, readonly, copy) NSString *promptText；//提示信息
-	+ 发送消息可选功能类 JMSGOptionalContent
-		+ @property(nonatomic, assign) BOOL noSaveOffline;//不保存离线消息
-		+ @property(nonatomic, assign) BOOL noSaveNotification;//不保存通知消息
-		+ @property(nonatomic, strong) JMSGCustomNotification * customNotification; //自定义通知栏
-	+ 用户信息类 JMSGUserInfo
-		+ 此类仅用于修改用户信息
-+ 新增接口：
-	+ JMSGEventDelegate
-		+ -(void)onReceiveMessageRetractEvent:;//监听消息撤回事件
-	+ JMSGConversation
-		+ -(void)retractMessage: completionHandler: ;//消息撤回
-		+ -(void)sendMessage: optionalContent:;//自定义通知栏内容、控制离线消息存储
-		+ -(NSString *)avatarLocalPath;//获取会话头像的本地路径
-	+ JMSGMessage
-		+ +(void)retractMessage: completionHandler: ;//消息撤回
-		+ +(void)sendMessage: optionalContent:;//自定义通知栏内容、控制离线消息存储
-	+ JMSGUser
-		+ +(void)updateMyInfoWithUserInfo: completionHandler:;//更新用户信息（支持将字段统一上传）
-		+ -(NSString *)thumbAvatarLocalPath;//获取用户头像缩略图文件的本地路径
-		+ -(NSString *)largeAvatarLocalPath;//获取用户头像大图文件的本地路径
-	+ JMSGMediaAbstractContent
-		+ @property(nonatomic, strong, readonly) NSString * originMediaLocalPath; //获取原文件的本地路径
-	+ JMSGImageContent
-		+ @property(nonatomic, strong, readonly) NSString *thumbImageLocalPath;//获取缩略图的本地路径
+#### Upgrade Guide
 
-
-#### 升级指南
-+ 使用新版本的 JMessage.framework 文件替换原工程下的同名旧文件
-+ 将新版本的 JMessage.framework 里的 JCore link 到工程中，详细参见官网集成文档
-
-
-
++ Replace the old file with the same name under the original project with a new version of the JMessage.framework file
++ Link the JCore in the new version of JMessage.framework to the project. For details, see the official integration document.
 
 ### Android SDK v2.2.0
 
-#### 更新时间
+#### Update Time
 
 + 2017-6-15
 
-#### Change Log
+##### Change Log
+
+
 ##### BugFix:
-+ 提升sdk稳定性
+
++ Improve sdk stability
 
 ##### NewFeature:
-+ 支持[消息撤回](https://docs.jiguang.cn/jmessage/client/im_sdk_android/#_42)
-+ 支持消息发送时的各种控制,包括：
-	+ 离线消息存储控制
-	+ 消息通知栏显示控制
-	+ 自定义消息通知栏文字  
-具体见开发指南[消息管理](https://docs.jiguang.cn/jmessage/client/im_sdk_android/#_30)一节
 
-+ 新增统一更新用户所有信息的接口
-+ 支持群聊@所有人
-+ 支持用户信息自动更新
-+ 支持通知栏通知点亮呼吸灯
++ Support message recall
++ Support various controls when sending messages, including：
+    + Storage control of offline messages
+    + Display control of message notification bar
+    + Text of custom message notification bar
+See Message Management section in development guidance
++ Add an interface to uniformly update all information of users
++ Support @everyone in group chats
++ Support automatic update of user information
++ Support notification bar to light up breathing light
 
-#### 升级提示
+#### Upgrade Prompt
 
-+ 建议升级！
++ Suggest an upgrade!
 
-#### 升级指南
+#### Upgrade Guide
 
-+ 首先解压您获取到的 zip 压缩包
-
-+ 更新库文件
-	+ 打开libs文件夹。添加jcore-android_v1.1.3.jar。用 jmessage-android_v2.2.0.jar 替换项目中原有的极光jar文件，并删除原有极光jar文件。用对应CPU文件夹下的 libjcore113.so 文件，替换项目中原有的libjcoreXXX.so文件，并删除原有的极光so文件，每种型号的so文件都可以在SDK下载包中找到。
-
-+ 更新AndroidManifest.xml
-	+ 请参考 SDK下载包最新版本的 demo 来更新AndroidManifest.xml 文件配置。
-
-+ 如果使用jcenter的方式集成JMessage，不需要添加相关组件和资源，详细集成说明请参考官方[集成指南](https://docs.jiguang.cn/jmessage/client/jmessage_android_guide/)
-
-
-
++ First unzip the zip archive you got
++ Update library files
+    + Open the libs folder and add jcore-android_v1.1.3.jar. Replace the original Jiguang jar file in the project with jmessage-android_v2.2.0.jar and delete the original Jiguang jar file. Replace the original libjcoreXXX.so file in the project with the libjcore113.so file in the corresponding CPU folder, and delete the original Jiguang so file. Each type of so file can be found in the SDK download package.
++ Update AndroidManifest.xml
+    + Please refer to the latest demo version of SDK download package to update the configuration of AndroidManifest.xml file.
++ If JMessage is integrated by jcenter, you do not need to add related components and resources. For detailed integration instructions, please refer to the official Integration Guide
 
 ### Web SDK v2.3.0
 
-#### 更新时间
+#### Update Time
 
 + 2017-6-15
 
-#### Change Log
+##### Change Log
+
 
 ##### NewFeature:
-+ 离线消息存储控制及消息通知栏显示控制
-+ 消息撤回
-+ 用户信息更新监听
-+ 可获取 SDK 连接、初始化以及登录状态
-+ 事件监听字段优化
 
-#### 升级提示
++ Storage control of offline message and display control of message notification bar
++ Message recall
++ Monitor updata of user information
++ Get status of SDK connection, initialization, and login
++ Optimize event listener field
 
-+ 建议升级！
+#### Upgrade Prompt
 
-#### 升级指南
++ Suggest an upgrade!
 
-+ 用最新的 jmessage-sdk-web.2.3.0.min.js 替换掉老版本的 sdk
+#### Upgrade Guide
 
-
++ Replace the old version of sdk with the latest jmessage-sdk-web.2.3.0.min.js
 
 ### Web SDK v2.2.1
 
-#### 更新时间
+#### Update Time
 
 + 2017-05-09
 
-#### Change Log
+##### Change Log
+
 
 ##### BugFix:
 
-+ 修复：页面加载完立刻初始化报异常 bug
-+ 修复：在漫游模式下，部分场景不能获取历史消息 bug
-
++ Fix the bug immediately reported by initialization after page loading
++ Fix the problem where some scenes cannot get historical news in roaming mode
 
 ##### NewFeature:
 
-+ 获取群成员接口新增昵称、头像字段
-+ 获取会话列表接口：单聊新增昵称、头像字段，群聊新增群名称字段
++ Nickname and avatar field are added to get group member interface.
++ Get session list interface: Nickname and avatar field are added in the single chats and group name field is added in group chats
 
-#### 升级提示
+#### Upgrade Prompt
 
-+ 建议升级！
++ Suggest an upgrade!
 
-#### 升级指南
+#### Upgrade Guide
 
-+ 用最新的 jmessage-sdk-web.2.2.1.min.js 替换掉老版本的 sdk
-
-
++ Replace the old version of sdk with the latest jmessage-sdk-web.2.2.1.min.js
 
 ### iOS SDK v3.1.1
 
-#### 更新时间
+#### Update Time
 
-2017-05-05
++ 2017-05-05
 
 #### ChangeLog
 
+
 ##### BugFix:
 
-* 修复：allConversations 接口排序逻辑问题
-* 修复：下载多媒体文件时下载进度回调错误的问题
++ Fix the logic problem when sorting allConversations interface
++ Fix the problem of download progress with callback error when downloading multimedia files
 
 ##### NewFeature
 
-* Conversation 新增 latestMsgTime 属性，用于会话排序
-	* @property(nonatomic, strong, readonly) NSNumber *latestMsgTime;
++ Conversation adds latestMsgTime attribute for session ordering
+    + @property(nonatomic, strong, readonly) NSNumber *latestMsgTime;
 
+#### Upgrade Guide
 
-#### 升级指南
-* 使用新版本的JMessage.framework文件替换原工程下的同名旧文件
-* 将新版本的JMessage.framework里的JCore link到工程中，详细参见官网集成文档
-
++ Replace the old file with the same name under the original project with a new version of the JMessage.framework file
++ Link the JCore in the new version of JMessage.framework to the project. For details, see the official integration document.
 
 ### Android SDK v2.1.2
 
-#### 更新时间
+#### Update Time
 
 + 2017-4-28
 
-#### Change Log
+##### Change Log
+
+
 ##### BugFix:
-+ 提升sdk稳定性
+
++ Improve sdk stability
 
 ##### NewFeature:
-+ 新增获取全局未读数接口JMessageClient.getAllUnReadMsgCount()
-+ 支持 jcenter 自动集成
 
-#### 升级提示
++ Add the interface JMessageClient.getAllUnReadMsgCount() to get global unread number
++ Support jcenter to automatically integrate
 
-+ 建议升级！
+#### Upgrade Prompt
 
-#### 升级指南
++ Suggest an upgrade!
 
-+ 首先解压您获取到的 zip 压缩包
+#### Upgrade Guide
 
-+ 更新库文件
-	+ 打开 libs 文件夹。添加 jcore-android_v1.1.2.jar。用 jmessage-android_v2.1.2.jar 替换项目中原有的极光 jar 文件，并删除原有极光 jar 文件。用对应 CPU 文件夹下的 libjcore112.so 文件，替换项目中原有的 libjcoreXXX.so 文件，并删除原有的极光 so 文件，每种型号的 so 文件都可以在 SDK 下载包中找到。
-
-+ 更新 AndroidManifest.xml
-	+ 请参考 SDK 下载包最新版本的 demo 来更新 AndroidManifest.xml 文件配置。
-
-+ 如果使用 jcenter 的方式集成 JMessage，不需要添加相关组件和资源，详细集成说明请参考官方[集成指南](https://docs.jiguang.cn/jmessage/client/jmessage_android_guide/)
-
-
++ First unzip the zip archive you got
++ Update library files
+    + Open the libs folder and add jcore-android_v1.1.2.jar. Replace the original Jiguang jar file in the project with jmessage-android_v2.1.2.jar and delete the original Jiguang jar file. Replace the existing libjcoreXXX.so file in the project with the libjcore112.so file in the corresponding CPU folder, and delete the original Jiguang so file. Each type of so file can be found in the SDK download package.
++ Update AndroidManifest.xml
+    + Please refer to the latest demo version of SDK download package to update the configuration of AndroidManifest.xml file
++ If JMessage is integrated by jcenter, you do not need to add related components and resources. For detailed integration instructions, please refer to the official Integration Guide.
 
 ### iOS SDK v3.1.0
 
-#### 更新时间
+#### Update Time
 
-2017-04-05
++ 2017-04-05
 
 #### ChangeLog
 
+
 ##### BugFix:
 
-+ 修复:小概率出现的由于mediaID重复导致的消息发送失败问题。
-+ 修复:获取群成员列表未按入群时间排序返回问题。
++ Fix the occasional failures of message sending due to repetition of mediaID.
++ Fix the problem that the group member list is not returned sequentially according to the time of entering the group.
 
 ##### NewFeature
 
-+ 新的消息同步机制
-+ 支持消息漫游
-+ 群组@功能
-+ 群消息屏蔽
-+ 支持用户信息自动更新
-+ 媒体消息新增一种校验方式：hash校验。用来兼容web sdk发送的媒体消息
++ New message synchronization mechanism
++ Support message roaming
++ Group@feature
++ Block group message
++ Support automatic update of user information
++ Add a parity mode for media messages: hash check, which is used to be compatible with media messages sent by web sdk
++ Add interfaces：
+    + Message synchronization agent
+        + Offline messages - (void)onSyncOfflineMessageConversation:offlineMessages:
+        + Roaming messages - (void)onSyncRoamingMessageConversation:
+        + Set up message roaming + (void)setupJMessage:appKey:channel:apsForProduction:category:messageRoaming:
+    + Group@function related
+        + Create a group message with atList：+ (JMSGMessage *)createGroupMessageWithContent:groupId:at_list:
+        + Send atList message：- (void)sendMessage: at_list:
+        + Create @ all group message：+ (JMSGMessage *)createGroupAtAllMessageWithContent:groupId:
+        + Send @ all message：- (void)sendAtAllMessage:
+        + Determine if yourself is @ in the message：- (BOOL)isAtMe
+        + Determine if all are @ in the message：- (BOOL)isAtAll
+        + Get the list of members of @：- (void)getAt_List:
+    + Block group message related
+        + Set up group message block：- (void)setIsShield:handler:
+        + Determine if the group is blocked：group.isShieldMessage
+        + Get the current user's group block list：+ (void)shieldList:
++ Interface changes：
+    + To adapt the use of Swift, interface name of allConversationsByDefault is changed to allUnsortedConversations. Only the interface name is modified, and the function of the interface remains unchanged
 
-+ 新增接口：  
-	+ 消息同步代理 
-		+ 离线消息[- (void)onSyncOfflineMessageConversation:offlineMessages:](https://docs.jiguang.cn/jmessage/client/jmessage_ios_appledoc_html/Protocols/JMSGConversationDelegate.html#//api/name/onSyncOfflineMessageConversation:offlineMessages:)
-		+ 漫游消息[- (void)onSyncRoamingMessageConversation:](https://docs.jiguang.cn/jmessage/client/jmessage_ios_appledoc_html/Protocols/JMSGConversationDelegate.html#//api/name/onSyncRoamingMessageConversation:)
-		+ 设置消息漫游 [+ (void)setupJMessage:appKey:channel:apsForProduction:category:messageRoaming:](https://docs.jiguang.cn/jmessage/client/jmessage_ios_appledoc_html/Classes/JMessage.html#//api/name/setupJMessage:appKey:channel:apsForProduction:category:messageRoaming:)
-	+ 群组@功能相关
-		+ 创建包含 atList 的群消息 ：[+ (JMSGMessage *)createGroupMessageWithContent:groupId:at_list:](https://docs.jiguang.cn/jmessage/client/jmessage_ios_appledoc_html/Classes/JMSGMessage.html#//api/name/createGroupMessageWithContent:groupId:at_list:)
-		+ 发送 atList 的消息：[- (void)sendMessage: at_list:](https://docs.jiguang.cn/jmessage/client/jmessage_ios_appledoc_html/Classes/JMSGConversation.html#//api/name/sendMessage:at_list:)
-		+ 创建 @ 所有人的群消息 ：[+ (JMSGMessage *)createGroupAtAllMessageWithContent:groupId:](https://docs.jiguang.cn/jmessage/client/jmessage_ios_appledoc_html/Classes/JMSGMessage.html#//api/name/createGroupAtAllMessageWithContent:groupId:)
-		+ 发送 @ 所有人的消息：[- (void)sendAtAllMessage:](https://docs.jiguang.cn/jmessage/client/jmessage_ios_appledoc_html/Classes/JMSGConversation.html#//api/name/sendAtAllMessage:)
-		+ 判断消息中是否 @ 了自己：[- (BOOL)isAtMe](https://docs.jiguang.cn/jmessage/client/jmessage_ios_appledoc_html/Classes/JMSGMessage.html#//api/name/isAtMe)
-		+ 判断消息中是否 @ 了所有人：[- (BOOL)isAtAll](https://docs.jiguang.cn/jmessage/client/jmessage_ios_appledoc_html/Classes/JMSGMessage.html#//api/name/isAtAll)
-		+ 获取消息 @ 的群成员列表：[- (void)getAt_List:](https://docs.jiguang.cn/jmessage/client/jmessage_ios_appledoc_html/Classes/JMSGMessage.html#//api/name/getAt_List:)
-	+ 群消息屏蔽相关
-		+ 设置群消息屏蔽：[- (void)setIsShield:handler:](https://docs.jiguang.cn/jmessage/client/jmessage_ios_appledoc_html/Classes/JMSGGroup.html#//api/name/setIsShield:handler:)
-		+ 判断群组是否被屏蔽：[group.isShieldMessage](https://docs.jiguang.cn/jmessage/client/jmessage_ios_appledoc_html/Classes/JMSGGroup.html#//api/name/isShieldMessage)
-		+ 获取当前用户的群屏蔽列表：[+ (void)shieldList:](https://docs.jiguang.cn/jmessage/client/jmessage_ios_appledoc_html/Classes/JMSGGroup.html#//api/name/shieldList:)
+#### Upgrade Guide
 
-+ 接口变动：
-	+ 为适配Swift的使用，allConversationsByDefault接口名改为allUnsortedConversations，只修改接口名，接口的功能保持不变。
++ Replace the old file with the same name under the original project with a new version of the JMessage.framework file
 
-#### 升级指南
-+ 使用新版本的JMessage.framework文件替换原工程下的同名旧文件
+#### Upgrade Prompt
 
-#### 升级提示
-+ 升级版本后，上层需要添加消息同步的监听代理方法，不然上层无法感知
-+ 需要设置消息记录漫游的开发者，调用新的初始化方法设置是否启用消息漫游
-
-
++ After upgrading the version, the upper layer needs to add the monitoring agent method of message synchronization, otherwise the upper layer cannot sense
++ Developers who need to set message record roaming, call a new initialization method to set whether message roaming is enabled
 
 ### Android SDK v2.1.1
 
-#### 更新时间
+#### Update Time
 
 + 2017-03-22
 
-#### Change Log
+##### Change Log
+
+
 ##### BugFix:
-+ 修复某些情况下，获取不到用户头像的问题
-+ 修复其他一些用户反馈的bug
 
-#### 升级提示
++ Fix the issue of getting no user avatar in some cases
++ Fix other bugs reported by users
 
-+ 建议升级！
+#### Upgrade Prompt
 
-#### 升级指南
++ Suggest an upgrade!
 
-+ 首先解压您获取到的 zip 压缩包
+#### Upgrade Guide
 
-+ 更新库文件
-	+ 打开libs文件夹。添加jcore-android_v1.1.0.jar。用 jmessage-android_v2.1.1.jar 替换项目中原有的极光jar文件，并删除原有极光jar文件。用对应CPU文件夹下的 libjcore110.so 文件，替换项目中原有的libjpushXXX.so文件，并删除原有的极光so文件，每种型号的so文件都可以在SDK下载包中找到。
-
-+ 更新AndroidManifest.xml
-	+ 请参考 SDK下载包最新版本的 demo 来更新AndroidManifest.xml 文件配置。
-
-+ 详细集成说明请参考官方[集成指南](https://docs.jiguang.cn/jmessage/client/jmessage_android_guide/)
-
-
++ First unzip the zip archive you got
++ Update library files
+    + Open the libs folder and add jcore-android_v1.1.0.jar. Replace the original Jiguang jar file in the project with jmessage-android_v2.1.1.jar and delete the original Jiguang jar file. Replace the original libjpushXXX.so file in the project with the libjcore110.so file in the corresponding CPU folder, and delete the original Jiguang so file. Each type of so file can be found in the SDK download package.
++ Update AndroidManifest.xml
+    + Please refer to the latest demo version of SDK download package to update the configuration of AndroidManifest.xml file
++ For detailed integration instructions, please refer to the official Integration Guide.
 
 ### Web SDK v2.2.0
 
-#### 更新时间
+#### Update Time
 
 + 2017-03-17
 
-#### Change Log
+##### Change Log
 
-+ 新增：群聊@功能
-+ 新增：群屏蔽功能
-+ 新增：获取资源访问路径接口
-+ 新增：离线消息同步监听接口（优化性能）
-+ 新增：异常断线监听
++ Add group chat @ features
++ Add group blocking feature
++ Add path interface access to resource
++ Add synchronization listening interface of offline messages (optimized performance)
++ Add abnormal disconnection monitoring
 
+#### Upgrade Prompt
 
-#### 升级提示
++ Suggest an upgrade!
 
-+ 建议升级！
+#### Upgrade Guide
 
-#### 升级指南
-
-+ 用最新的jmessage-sdk-web.2.2.0.min.js替换掉老版本的sdk
-
-
-
++ Replace the old version of sdk with the latest jmessage-sdk-web.2.2.0.min.js
 
 ### Android SDK v2.1.0
 
-#### 更新时间
+#### Update Time
 
 + 2017-03-10
 
-#### Change Log
+##### Change Log
+
+
 ##### BugFix:
-+ 修复获取群组信息成功后，会概率出现getgroupowner()为空的情况
-+ 修复发送多张图片，概率出现发送图片失败
-+ 修复会话不存在时，不会上抛相关群成员变化事件
-+ 修复小概率出现的由于mediaID重复导致的消息发送失败问题
-+ 修复其他一些用户反馈的bug
+
++ Fix the probability of getgroupowner() is empty after successfully get the group information
++ Fix the occasional failure of picture sending when sending a large number of pictures
++ Fix the problem that related group member change events will not be thrown when the session does not exist.
++ Fix the occasional failure of message sending due to duplication of mediaID
++ Fix other bugs reported by users
 
 ##### NewFeature
 
-+ 新的消息同步机制
-+ 支持消息漫游
-+ 群组@功能
-+ 群消息屏蔽
-+ 支持Dev-api好友更新事件
-+ 新增一个用户离线原因：登陆状态异常
-+ 支持Dev-api用户信息更新事件
++ New message synchronization mechanism
++ Support message roaming
++ Group@feature
++ Block group messages
++ Support Dev-api buddy updateeEvent
++ Add a user offline reason: Login status is abnormal
++ Support Dev-api user information update event
+Add interfaces
++ Group@function related interfaces
+    + Create a group message containing atList ：conversation.createSendMessage(content,atlist,string)、JMessageClient. createAtGroupMembersMessage(long,atlist,content)
+    + Determine if the message has @ yourself：message.isAtMe()
+    + Get the list of group members @ in the message：message.getAtUserList(callback)
++ Group block related interfaces
+    + Set group message blocking：groupInfo.setBlockGroupMessage(int,callback)
+    + Determine if the group is blocked：groupInfo.isGroupBlocked()
+    + Get the current user's group blocking list：JMessageClient.getBlockedGroupsList(callback)
++ Set whether message roaming is required：JMessageClient.init(context,boolean)
++ Add offline message event：OfflineMessageEvent
++ Add synchronization completion event of roaming message：ConversationRefreshEvent
++ Add user information updated event：MyInfoUpdatedEvent
 
-##### 新增接口：
-+ 群组@功能相关接口
-	+ 创建包含atList的群消息 ：[conversation.createSendMessage(content,atlist,string)](https://docs.jiguang.cn/jmessage/client/im_android_api_docs/cn/jpush/im/android/api/model/Conversation.html#createSendMessage(cn.jpush.im.android.api.content.MessageContent,%20java.util.List,%20java.lang.String))、[JMessageClient. createAtGroupMembersMessage(long,atlist,content)](https://docs.jiguang.cn/jmessage/client/im_android_api_docs/cn/jpush/im/android/api/JMessageClient.html#createAtGroupMembersMessage(long,%20java.util.List,%20cn.jpush.im.android.api.content.MessageContent))
+#### Upgrade Prompt
 
-	+ 判断消息是否@了自己：[message.isAtMe()](https://docs.jiguang.cn/jmessage/client/im_android_api_docs/cn/jpush/im/android/api/model/Message.html#isAtMe())
++ Suggest an upgrade!
 
-	+ 获取消息中@的群成员列表：[message.getAtUserList(callback)](https://docs.jiguang.cn/jmessage/client/im_android_api_docs/cn/jpush/im/android/api/model/Message.html#getAtUserList(cn.jpush.im.android.api.callback.GetUserInfoListCallback))
+#### Upgrade Guide
 
-+ 群屏蔽功能相关接口
-	+ 设置群消息屏蔽：[groupInfo.setBlockGroupMessage(int,callback)](https://docs.jiguang.cn/jmessage/client/im_android_api_docs/cn/jpush/im/android/api/model/GroupInfo.html#setBlockGroupMessage(int,%20BasicCallback))
-	+ 判断群组是否被屏蔽：[groupInfo.isGroupBlocked()](https://docs.jiguang.cn/jmessage/client/im_android_api_docs/cn/jpush/im/android/api/model/GroupInfo.html#isGroupBlocked())
-	+ 获取当前用户的群屏蔽列表：[JMessageClient.getBlockedGroupsList(callback)](https://docs.jiguang.cn/jmessage/client/im_android_api_docs/cn/jpush/im/android/api/JMessageClient.html#getBlockedGroupsList(cn.jpush.im.android.api.callback.GetGroupInfoListCallback))
-
-+ 设置是否需要消息漫游：[JMessageClient.init(context,boolean)](https://docs.jiguang.cn/jmessage/client/im_android_api_docs/cn/jpush/im/android/api/JMessageClient.html#init(android.content.Context,%20boolean))
-
-+ 新增离线消息事件：[OfflineMessageEvent](https://docs.jiguang.cn/jmessage/client/im_android_api_docs/cn/jpush/im/android/api/event/OfflineMessageEvent.html)
-
-+ 新增漫游消息同步完成事件：[ConversationRefreshEvent](https://docs.jiguang.cn/jmessage/client/im_android_api_docs/cn/jpush/im/android/api/event/ConversationRefreshEvent.html)
-
-+ 新增用户信息被更新事件： [MyInfoUpdatedEvent](https://docs.jiguang.cn/jmessage/client/im_android_api_docs/cn/jpush/im/android/api/event/MyInfoUpdatedEvent.html)
-
-
-#### 升级提示
-
-+ 建议升级！
-
-#### 升级指南
-
-+ 首先解压您获取到的 zip 压缩包
-
-+ 更新库文件
-	+ 打开libs文件夹。添加jcore-android_v1.1.0.jar。用 jmessage-android_v2.1.0.jar 替换项目中原有的极光jar文件，并删除原有极光jar文件。用对应CPU文件夹下的 libjcore110.so 文件，替换项目中原有的libjpushXXX.so文件，并删除原有的极光so文件，每种型号的so文件都可以在SDK下载包中找到。
-
-+ 更新AndroidManifest.xml
-	+ 请参考 SDK下载包最新版本的 demo 来更新AndroidManifest.xml 文件配置。
-
-+ 详细集成说明请参考官方[集成指南](https://docs.jiguang.cn/jmessage/client/jmessage_android_guide/)
-
-
++ First unzip the zip archive you got
++ Update library files
+    + Open the libs folder and add jcore-android_v1.1.0.jar. Replace the original Jiguang jar file in the project with jmessage-android_v2.1.0.jar and delete the original Jiguang jar file. Replace the original libjpushXXX.so file in the project with the libjcore110.so file in the corresponding CPU folder, and delete the original Jiguang so file. Each type of so file can be found in the SDK download package.
++ Update AndroidManifest.xml
+    + Please refer to the latest demo version of SDK download package to update the configuration of AndroidManifest.xml file
++ For detailed integration instructions, please refer to the official Integration Guide.
 
 ### iOS SDK v3.0.1
 
-#### 更新时间
+#### Update Time
 
-2017-02-15
++ 2017-02-15
 
 #### ChangeLog
 
+
 ##### BugFix:
 
-+ 修复：SDK启动时小概率出现crash。
-+ 修复：从分离前版本升级到分离后版本，如果集成JPush时，需要重新登录才能收到消息的问题。
-+ 修复：偶现调用登录接口没有回调的问题。
++ Fix the occasional crashes occurred when the SDK starts.
++ Fix the problem that you need to log in again to receive the message when integrating JPush after a pre-separation version upgrading to a post-separation version.
++ Fix the problem that there is sometimes no callback when calling the login interface
 
 ##### NewFeature
 
-+ 在JMessage提供设计角标的方法（原来通过JPush中提供的方法进行设置）
++ JMessage provides the method of designing the markers (originally set by JPush)
++ Add interfaces
++ Set the marker: + (BOOL)setBadge:(NSInteger)value;
++ Reset the marker: + (void)resetBadge;
 
-+ 新增接口：
-   + 设置角标：+ (BOOL)setBadge:(NSInteger)value;
-   + 重置角标：+ (void)resetBadge;
+#### Upgrade Guide
 
++ Replace the old file with the same name under the original project with a new version of the JMessage.framework file
++ Link the JCore in the new version of JMessage.framework to the project. For details, see the official integration document.
 
-#### 升级指南
-+ 使用新版本的JMessage.framework文件替换原工程下的同名旧文件
-+ 将新版本的JMessage.framework里的JCore link到工程中，详细参见官网集成文档
+#### Upgrade Prompt
 
-#### 升级提示
-+ 升级版本后，因为JCore更新为v1.1.1版本,需要重要手动引入到工程中
-
++ After the upgrade, because JCore is updated to v1.1.1, it needs to be manually introduced into the project.
 
 ### iOS SDK v3.0.0
 
-#### 更新时间
+#### Update Time
 
-2017-01-10
++ 2017-01-10
 
 #### ChangeLog
 
-+ 模块化分离为 JCore、JMessage 两部分集成，并且脱离和JPush的依赖关系。      
-极光开发者服务 SDK 采用了模块化的使用模式，即一个核心（JCore）+N种服务（JMessage，JPush...）的使用方式，方便开发者使用某一项服务或多项服务，极大的优化了多模块同时使用时功能模块重复的问题。
++  Modularly separate to the integration of JCore and JMessage, and separate from the dependency with JPush
+The Jiguang Developer Service SDK adopts a modular usage model, namely a core (JCore)+N service (JMessage, JPush...) usage, which facilitates developers to use a single service or multiple services and greatly optimize the problem of duplication of function modules when multiple modules are used.
++ Add interfaces：
+    + Register remote push: + (void)registerForRemoteNotificationTypes:(NSUInteger)types categories:(NSSet *)categories;
+    + Register DeviceToken: + (void)registerDeviceToken: (NSData *)deviceToken
 
-+ 新增接口：
+#### Upgrade Guide
 
-	+ 注册远程推送： + (void)registerForRemoteNotificationTypes:(NSUInteger)types categories:(NSSet *)categories;
-	+ 注册DeviceToken：+ (void)registerDeviceToken:(NSData *)deviceToken;
-
-#### 升级指南
-+ 注意 3.0.0及以上版本将不再支持处理器为i386的模拟器
-+ 使用新版本的JMessage.framework文件替换原工程下的同名旧文件
-+ 将新版本的JMessage.framework里的JCore link到工程中，详细参见官网集成文档
-
-
++ Note that the processor for i386 is no longer supported in 3.0.0 and above
++ Replace the old file with the same name under the original project with a new version of the JMessage.framework file
++ Link the JCore in the new version of JMessage.framework to the project. For details, see the official integration document.
 
 ### Android SDK v2.0.0
 
-#### 更新时间
+#### Update Time
 
 + 2017-01-09
 
-#### Change Log
+##### Change Log
 
-+ 新增：模块化分离为 JCore，JMessage 两部分集成，原有使用的一个 jar 包，分为了 jcore 和 jmessage 两个jar 包。并且脱离和JPush的依赖关系
++ Add the modular separation to JCore.  And JMessage. The original jar package used is divided into two jar packages, jcore and jmessage, and get rid of the dependency with JPush.
++ Fix some bugs reported by users.
 
-+ 修复一些用户反馈的bug 。
+#### Upgrade Prompt
 
-#### 升级提示
++ Suggest an upgrade!
 
-+ 建议升级！
+#### Upgrade Guide
 
-#### 升级指南
-
-+ 首先解压您获取到的 zip 压缩包
-
-+ 更新库文件
-	+ 打开libs文件夹。添加jcore-android_v1.1.0.jar。用 jmessage-android_2.0.0.jar 替换项目中原有的极光jar文件，并删除原有极光jar文件。用对应CPU文件夹下的 libjcore110.so 文件，替换项目中原有的libjpushXXX.so文件，并删除原有的极光so文件，每种型号的so文件都可以在SDK下载包中找到。
-
-+ 更新AndroidManifest.xml
-	+ 请参考 SDK下载包最新版本的 demo 来更新AndroidManifest.xml 文件配置。
-
-+ 详细集成说明请参考官方[集成指南](https://docs.jiguang.cn/jmessage/client/jmessage_android_guide/)
-
++ First unzip the zip archive you got
++ Update library files
+    + Open the libs folder and add jcore-android_v1.1.0.jar. Replace the original Jiguang jar file in the project with jmessage-android_2.0.0.jar and delete the original Jiguang jar file. Replace the original libjpushXXX.so file in the project with the libjcore110.so file in the corresponding CPU folder, and delete the original Jiguang so file. Each type of so file can be found in the SDK download package.
++ Update AndroidManifest.xml
+    + Please refer to the latest demo version of SDK download package to update the configuration of AndroidManifest.xml file
++ For detailed integration instructions, please refer to the official Integration Guide.
 
 ### iOS SDK v2.2.4
 
-#### 更新时间
+#### Update Time
 
 + 2016-12-19
 
-#### Change Log
+##### Change Log
+
 
 ##### BugFix
-+ 修复：下载缩略图大小固定的问题
-+ 修改：部分地区发送图片、语音失败的问题
 
-##### NewFeature 
-+ 新增：当前登录用户信息变更通知事件 [kJMSGEventNotificationCurrentUserInfoChange](./client/jmessage_ios_appledoc_html/Constants/JMSGEventNotificationType.html)
-+ 新增：修改消息 extra 字段接口[- (void)updateMessageExtra:extraValue:extraKey:](./client/jmessage_ios_appledoc_html/Classes/JMSGMessage.html#//api/name/updateMessageExtraValue:forKey:)
-+ 新增：获取当前所有会话的未读消息的总数接口 [+ (NSNumber *)getAllUnreadCount](./client/jmessage_ios_appledoc_html/Classes/JMSGConversation.html#//api/name/getAllUnreadCount)
++ Fix the problem with fixed download size of thumbnails
++ Modify the failures of sending pictures and voices in some regions
 
- 
+##### NewFeature
 
-#### 升级指南
++ Add notification event of current user information change kJMSGEventNotificationCurrentUserInfoChange
++ Add extra field interface for modifying message -(void)updateMessageExtra:extraValue:extraKey:
++ Add the interface used to get the total number of unread messages for all current sessions + (NSNumber *)getAllUnreadCount
 
-+ 使用新版本的JMessage.framework文件替换原工程下的同名旧文件
+#### Upgrade Guide
 
-
++ Replace the old file with the same name under the original project with a new version of the JMessage.framework file
 
 ### Web SDK v2.1.0
 
-#### 更新时间
+#### Update Time
 
 + 2016-12-14
 
-#### Change Log
+##### Change Log
 
-+ 新增：好友模块（添加好友，删除好友，修改好友备注，好友列表）
-+ 新增：新增登出接口
-+ 优化：发送消息成功回调函数新增一个参数，用于获取发送内容
-+ 优化：被迫下线（sdk层面自动下线）
++ Add friend modules (adding friends, delete friends, modify friend notes, friends list)
++ Add logout interface
++ Optimize callback function of successful message sending with a added parameter to get content already sent
++ Optimize forced offline (sdk level enables automatically offline)
 
+#### Upgrade Guide
 
-#### 升级指南
-
-+ 使用新版本的 jmessage-sdk-web.js 文件替换原工程下的同名旧文件
-
++ Replace the old file with the same name under the original project with a new version of the jmessage-sdk-web.js file
 
 ### Web SDK v1.2.1
-#### 更新时间
+
+#### Update Time
+
 + 2016-12-05
 
-#### Change Log
+##### Change Log
 
-+ 修复：Web SDK v1.2.0上传图片问题
+    ### • Fix the image uploading problem of Web SDK v1.2.0
 
-#### 下载地址
+Download Link
+    ### • Click to download Web SDK v1.2.1
 
-+ [点击下载 Web SDK v1.2.1](https://sdkfiledl.jiguang.cn/jmessage-web-sdk.1.2.1.zip)
-
-
-#### 特别说明
-
-+ v1.x版本将不再提供新功能，仅维护因bug导致的问题，建议尽快切换到2.x版本
-
-
+ Special Note
++ The v1.x version will no longer provide new features and only maintains problems caused by bugs. It is recommended to switch to the 2.x version as soon as possible.
 
 ### iOS SDK v2.2.3
-#### 更新时间
+
+#### Update Time
+
 + 2016-11-30
 
-#### Change Log
+##### Change Log
 
-+ 优化改进：SDK内HTTP全面更换HTTPS
-+ 修复：群组事件无法创建会话的问题
-+ 修复：循环发送消息导致崩溃问题
++ Optimize HTTPS in SDK to HTTP
++ Fix the problem with group event unable to create session
++ Fix the crash cause by sending messages in a loop
 
+#### Upgrade Guide
 
-#### 升级指南
-
-+ 使用新版本的JMessage.framework文件替换原工程下的同名旧文件
-
-
++ Replace the old file with the same name under the original project with a new version of the JMessage.framework file
 
 ### Web SDK v2.0.0
 
-#### 更新时间
+#### Update Time
 
 + 2016-11-23
 
-#### Change Log
+##### Change Log
 
-+ 全面升级API，支持Promise风格API
-+ 新增修改用户信息功能
-+ 新增更新头像功能
-+ 新增更新用户密码功能
-+ 新增接收位置功能
-+ 新增文件上传下载功能
-+ 新增支持发送和接收emoij表情功能
-+ 新增跨应用消息免打扰功能
-+ 新增消息自动重试逻辑功能
++ Comprehensively upgrade APIs to support Promise style APIs
++ Add the function for modifying user information
++ Add the function for updating avatar
++ Add the function for updating user password
++ Add the function for receiving location
++ Add the function for file uploading and downloading
++ Add support for sending and receiving emoij expressions
++ Add cross-application message Do-Not-Disturb functionality
++ Add message auto-retry logic
 
-#### 升级指南
+#### Upgrade Guide
 
-+ 在页面引入最新的`jmessage-sdk-web.min.js`。
++ Introduce the latest jmessage-sdk-web.min.js on the page.
 
-#### 升级提示
+#### Upgrade Prompt
 
-+ 因为API调用方式都改变了，需要修改所有接入代码才能进行升级。
-
-#### 特别说明
-
-+ v1.x版本将不再提供新功能，仅维护因bug导致的问题，建议更新到v2.0版本
-
++ Because the API call mode has changed, all access codes need to be modified to upgrade.
+Special Note
++ The v1.x version will no longer provide new features and will only maintain bug-related issues. It is recommended to update to v2.0.
 
 ### iOS SDK v2.2.1
-#### 更新时间
+
+#### Update Time
+
 + 2016-11-04
 
-#### Change Log
+##### Change Log
 
-+ 优化改进：适配JPush SDK 2.2.0，增加SDK稳定性
-+ 修复：消息展示名获取不正确的问题
++ Optimize to adapt to JPush SDK 2.2.0 to increase SDK stability
++ Fix the incorrect display named of message
++ Add events
+    + kJMSGEventNotificationReceiveServerFriendUpdate; // event type: Non-client modifies friend relationship and receives friend update event
 
-+ 新增事件：
-	+ kJMSGEventNotificationReceiveServerFriendUpdate; //事件类型：非客户端修改好友关系收到好友更新事件
+#### Upgrade Guide
 
++ Replace the old file with the same name under the original project with a new version of the JMessage.framework file
 
-#### 升级指南
+#### Upgrade Prompt
 
-+ 使用新版本的JMessage.framework文件替换原工程下的同名旧文件
-
-#### 升级提示
-
-+ 注意：项目中添加libresolv.tbd库，否则编译运行会报错（2.2.1及以上版本要求）
-
-
++ Note: The libresolv.tbd library is added to the project. Otherwise, the compiler will report an error (2.2.1 and above).
 
 ### iOS SDK v2.2.0
 
-#### 更新时间
+#### Update Time
+
 + 2016-10-18
 
-#### Change Log
+##### Change Log
+
 ##### New Feature
-+ 新增：好友功能
 
-+ 新增：好友备注名和备注信息设置
-
-+ 新增：发送文件消息
-
-+ 新增：发送位置消息
-
-+ 新增：适配 iOS 10
-
-+ 新增事件：
-    + kJMSGEventNotificationServerAlterPassword       = 2,  // 事件类型: 非客户端修改密码强制登出事件
-    
-    + kJMSGEventNotificationUserLoginStatusUnexpected   = 70,// 事件类型：用户登录状态异常事件（需要重新登录）
-    
-    + kJMSGEventNotificationReceiveFriendInvitation    = 51,// 事件类型: 收到好友邀请
-    
-    + kJMSGEventNotificationAcceptedFriendInvitation  = 52,// 事件类型: 对方接受了你的好友邀请
-    
-    + kJMSGEventNotificationDeclinedFriendInvitation   = 53,// 事件类型: 对方拒绝了你的好友邀请
-    
-    + kJMSGEventNotificationDeletedFriend                   = 6, // 事件类型: 对方将你从好友中删除
-
-##### 新增接口：
++ Add friend function
++ Add friend note name and comment information settings
++ Add file message sending
++ Add location message sending
++ Add adaptation to iOS 10
++ Add events
+    + kJMSGEventNotificationServerAlterPassword = 2, // event type: Non-client alters password for forced logout event
+    + kJMSGEventNotificationUserLoginStatusUnexpected = 70,// event type: User login status exception event (requires login again)
+    + kJMSGEventNotificationReceiveFriendInvitation = 51,// event type: receives a friend invitation
+    + kJMSGEventNotificationAcceptedFriendInvitation = 52,// event type: The other party accepts your friend invitation
+    + kJMSGEventNotificationDeclinedFriendInvitation = 53,// event type: The other party rejects your friend invitation
+    + kJMSGEventNotificationDeletedFriend = 6, // event type: The other party removes you from his friends
+Add interfaces：
 + JMSGEventDelegate
-	+ -(void)onReceiveNotificationEvent:(JMSGNotificationEvent *)event;//监听事件通知，如：好友事件、被踢事件等都可以用此函数监听
+    + -(void)onReceiveNotificationEvent:(JMSGNotificationEvent *)event;// monitors event notifications. For example, buddy events, kicked events, etc. can all be listened to with this parameter.
 + JMSGFriendManager
-	+ +(void)getFriendList:;//获取好友列表
-	+ +(void)sendInvitationRequestWithUsername: appKey: reason: completionHandler: ;//发送添加好友请求
-	+ +(void)acceptInvitationWithUsername: appKey: completionHandler: ;//接受好友邀请
-	+ +(void)rejectInvitationWithUsername: appKey: reason: completionHandler: ;//拒绝好友邀请
-	+ +(void)removeFriendWithUsername: appKey: completionHandler: ;//删除好友
+    + +(void)getFriendList:;// gets friend list
+    + +(void)sendInvitationRequestWithUsername: appKey: reason: completionHandler: ;// sends a request for adding friends
+    + +(void)acceptInvitationWithUsername: appKey: completionHandler: ;// accepts friend invitations
+    + +(void)rejectInvitationWithUsername: appKey: reason: completionHandler: ;// rejects friend invitations
+    + +(void)removeFriendWithUsername: appKey: completionHandler: ;// deletes friends
 + JMSGUser
-	+ @property(nonatomic, assign, readonly) BOOL isFriend;//好友关系状态
-	+ @property(nonatomic, copy, readonly) NSString *noteName;//备注名
-	+ @property(nonatomic, copy, readonly) NSString *noteText;//备注信息
-	+ -(void)updateNoteName: completionHandler: ;//修改用户备注名
-	+ -(void)updateNoteText: completionHandler: ;//修改用户备注信息
+    + @property(nonatomic, assign, readonly) BOOL isFriend;// friends status
+    + @property(nonatomic, copy, readonly) NSString *noteName;//note name
+    + @property(nonatomic, copy, readonly) NSString *noteText;// remarks
+    + -(void)updateNoteName: completionHandler: ;// modifies user comment name
+    + -(void)updateNoteText: completionHandler: ;// modifies user comment information
 + JMSGFriendNotificationEvent
-	+ @property(nonatomic, assign, readonly) JMSGEventNotificationType eventType;//好友通知事件类型
-	+ -(NSString *JMSG_NULLABLE)getReason;//获取事件发生的理由
-	+ -(NSString *JMSG_NULLABLE)getFromUsername;//事件发送者的username
-	+ -(JMSGUser *JMSG_NULLABLE)getFromUser;//获取事件发送者user
+    + @property(nonatomic, assign, readonly) JMSGEventNotificationType eventType;// friend notification event type
+    + - (NSString *JMSG_NULLABLE) getReason;// gets the reason for the event
+    + - (NSString *JMSG_NULLABLE) getFromUsername;// username of the event sender
+    + -(JMSGUser *JMSG_NULLABLE)getFromUser;// gets user of event sender
 + JMSGConversation
-	+ -(void)sendFileMessage: fileName: ;//发送文件消息
-	+ -(void)sendLocationMessage: longitude: scale: address: ;发送地理位置消息
+    + -(void)sendFileMessage: fileName: ;// sends file message
+    + -(void)sendLocationMessage: longitude: scale: address: ;  sends location message
 + JMSGMessage
-	+ +(void)sendSingleFileMessage: fileName: toUser: ;//发送单聊文件消息
-	+ +(void)sendSingleFileMessage: fileName: toUser: appKey: ;//发送跨应用单聊文件消息
-	+ +(void)sendGroupFileMessage: fileName:toGroup: ;//发送群聊文件消息
-	+ +(void)sendSingleLocationMessage: longitude: scale: address: toUser: ;//发送单聊地理位置消息
-	+ +(void)sendSingleLocationMessage: longitude: scale: address: toUser: appKey: ;//发送跨应用单聊地理位置消息
-	+ +(void)sendGroupLocationMessage: longitude: scale: address: toGroup: ;发送群聊地理位置消息
+    + +(void)sendSingleFileMessage: fileName: toUser: ;// sends file message of single chats
+    + +(void)sendSingleFileMessage: fileName: toUser: appKey: ;// sends cross-application file message of single chats
+    + +(void)sendGroupFileMessage: fileName:toGroup: ;// sends file message of group chats
+    + +(void)sendSingleLocationMessage: longitude: scale: address: toUser: ; // sends location message of single chats
+    + +(void)sendSingleLocationMessage: longitude: scale: address: toUser: appKey: ;// sends cross-application location message of single chats
+    + +(void)sendGroupLocationMessage: longitude: scale: address: toGroup: ; sends location message of group chats
 + JMSGFileContent
-	+ @property(nonatomic, copy, readonly) NSString *fileName;//文件名
-	+ -(instancetype)initWithFileData: fileName: ;//初始化文件内容
-	+ -(void)fileData:(JMSGAsyncDataHandler)handler;获取文件内容的数据
+    + @property(nonatomic, copy, readonly) NSString *fileName;// filename
+    + - (instancetype) initWithFileData: fileName: ;/ / initializates file content
+    + -(void)fileData:(JMSGAsyncDataHandler)handler; gets data of file contents
 + JMSGLocationContent
-	+ @property(nonatomic, strong, readonly) NSNumber *latitude;//纬度
-	+ @property(nonatomic, strong, readonly) NSNumber *longitude;//经度
-	+ @property(nonatomic, strong, readonly) NSNumber *scale;//缩放
-	+ @property(nonatomic, copy, readonly) NSString *address;//详细地址信息
-	+ -(instancetype)initWithLatitude: longitude: scale: address: ;//初始化文件内容
-
-##### 已过时接口：
+    + @property(nonatomic, strong, readonly) NSNumber *latitude;// latitude
+    + @property(nonatomic, strong, readonly) NSNumber *longitude;/ /longitude
+    + @property(nonatomic, strong, readonly) NSNumber *scale;// zoom
+    + @property(nonatomic, copy, readonly) NSString *address;// detailed address information
+    + -(instancetype)initWithLatitude: longitude: scale: address: ;// initializes the file contents
+Obsolete interface
 + JMSGUserDelegate
-	+ -(void)onLoginUserKicked;// 改用JMSGEventDelegate类中的 onReceiveNotificationEvent 方法统一监听被踢、用户信息过期、好友等通知事件
+    + -(void)onLoginUserKicked;// Use the onReceiveNotificationEvent method in the JMSGEventDelegate class to monitor events such as kicking, user information expiration, and friends.
 
 ##### Bug Fix
-+ 修复：版本升级后会聊头像无法获取问题；
-+ 修复：创建群聊会话时，如果创建群成功并且初始化成员失败时，会同时返回群信息和错误信息
 
-#### 升级指南
-+ 使用新版本的JMessage.framework文件替换原工程下的同名旧文件
++ Fix the problem that avatar can not obtained after the version upgraded
++ Fix the problem that group information and error information are returned meantime when the group is successfully created and the initialization of group members fails.
 
- 
+#### Upgrade Guide
 
++ Replace the old file with the same name under the original project with a new version of the JMessage.framework file
 
 ### Web SDK v1.2.0
 
-#### 更新时间
+#### Update Time
+
 + 2016-10-10
 
-#### Change Log
+##### Change Log
+
 ##### New Feature
 
-+ 增加发送图片接口
-+ 增加用户注册接口
-+ 增加黑名单的跨应用接口
-+ 增加群组跨应用支持
-+ 优化Demo
++ Increase the interface for sending pictures
++ Increase the interface for user registration
++ Increase cross-application interface for blacklist
++ Increase cross-application support between groups
++ Optimize Demo
 
-#### 升级提示
-+ 建议升级！
+#### Upgrade Prompt
 
++ Suggest an upgrade!
 
 ### iOS SDK v2.1.8
 
-#### 更新时间
+#### Update Time
+
 + 2016-09-22
 
-#### Change Log
+##### Change Log
+
+
 ##### Bug Fix
-+ 修复：在收到大量消息的同时进行前后切换，会导致应用crash的问题；
-+ 修复：在登录时偶现crash的问题
-+ 修复：网络或者后台出现问题导致的下发重复事件问题
 
-#### 升级指南
-+ 使用新版本的JMessage.framework文件替换原工程下的同名旧文件
++ Fix the crashes of application when switching back and forth at the same time of receiving a large number of messages
++ Fix occasional crashes when logging in
++ Fix the issue of duplicate events caused by problems on the network or in the background
 
+#### Upgrade Guide
 
++ Replace the old file with the same name under the original project with a new version of the JMessage.framework file
 
 ### Android SDK v1.4.2
-#### 更新时间
+
+#### Update Time
+
 + 2016-09-21
 
-#### SDK Change Log
+##### SDK Change Log
+
 
 ##### Bug Fix
 
-+ 修复媒体消息发送问题
++ Fix the problems on sending media messages
 
-#### 升级指南
+#### Upgrade Guide
 
-+ jar包更新至jmessage-sdk-1.4.2.jar更新时需删除老版本jar包
-+ 将so库更新至 libjpush220.so 同时删除原来老版本so。注意不同的cpu型号对应的结构
-+ 由于富媒体的展示需求，SDK 中增加一个res文件夹存放资源文件。用户需将对应文件夹下的资源文件放入工程的目录中
-+ 如果是从更早起的版本升级过来，建议参考 SDK下载包最新版本的 demo 来更新 AndroidManifest.xml 文件配置
-
++ Old jar package needs to be removed when jar package is updated to jmessage-sdk-1.4.2.jar.
++ Update the so library to libjpush220.so and delete the old version so. Pay attention to the structure of different cpu models
++ Due to the display requirements of rich media, a res folder is added to the SDK to store resource files. Users need to put the resource file in the corresponding folder into the project directory
++ If you are upgrading from an earlier version, it is recommended to update the configuration of AndroidManifest.xml file by referring to the latest demo version of SDK download package.
 
 ### Android SDK v1.4.1
-#### 更新时间
+
+#### Update Time
+
 + 2016-09-14
 
-#### SDK Change Log
+##### SDK Change Log
+
 
 ##### Bug Fix
 
-+ 修复某些型号的手机应用启动时会弹出位置权限授权框的问题
++ Fixed the issue where the authorization box of location permission pops up when some models of mobile apps launch
 
-#### 升级指南
+#### Upgrade Guide
 
-+ jar包更新至jmessage-sdk-1.4.1.jar更新时需删除老版本jar包
-+ 将so库更新至 libjpush220.so 同时删除原来老版本so。注意不同的cpu型号对应的结构
-+ 由于富媒体的展示需求，SDK 中增加一个res文件夹存放资源文件。用户需将对应文件夹下的资源文件放入工程的目录中
-+ 如果是从更早起的版本升级过来，建议参考 SDK下载包最新版本的 demo 来更新 AndroidManifest.xml 文件配置
-
++ Old jar package needs to be deleted when updating to jmessage-sdk-1.4.1.jar.
++ Update the so library to libjpush220.so and delete the old version so. Pay attention to the structure of different cpu models.
++ Due to the display requirements of rich media, a res folder is added to the SDK to store resource files. Users need to put the resource file in the corresponding folder into the project directory.
++ If you are upgrading from an earlier version, it is recommended to update the configuration of AndroidManifest.xml file by referring to the latest demo version of SDK download package.
 
 ### iOS SDK v2.1.7
 
-#### 更新时间
+#### Update Time
+
 + 2016-09-09
 
-#### Change Log
+##### Change Log
+
+
 ##### Bug Fix
-+ 修复：在32位系统下，message的时间戳不正确的问题
 
-#### 升级指南
-+ 使用新版本的JMessage.framework文件替换原工程下的同名旧文件
++ Fixed the problem with incorrect timestamp of message in 32-bit system
 
+#### Upgrade Guide
+
++ Replace the old file with the same name under the original project with a new version of the JMessage.framework file
 
 ### Android SDK v1.4.0
-#### 更新时间
+
+#### Update Time
+
 + 2016-09-09
 
-#### SDK Change Log
+##### SDK Change Log
+
 
 ##### Bug Fix
 
-+ 修复跨应用添加用户进黑名单时可添加自己进黑名单
-+ 修复跨应用免打扰中自己可以给自己设置免打扰
-+ 修复上层应用进程崩溃重启后，导致im请求发送超时。
-+ 修复点击通知栏时，有一定几率message对象为空
-+ 修复特殊用户名下，相关内部逻辑错误
-+ 修复本地会话过多时，数据库访问的问题。
-
++ Fix the problem that you may add yourself to blacklist when adding users into the blacklist across applicaions
++ Fix the problem that you may set DND to yourself when setting DND across applications.
++ Fix thet timeout of im request caused by crashes and restarts of the upper application process
++ Fix the problem that there is a chance that the message object is empty when clicking notification bar
++ Fix related internal logic error under special user name
++ Fix the problem with database access when there are too many local sessions.
 ##### New Feature
 
-+ 新增好友模块
-+ 新增用户备注名和备注信息设置
-+ 新增文件信息发送接口
-+ 新增位置信息发送接口
-+ GroupInfo中增加获取群主用户所属应用appkey的实例接口
-+ getConversationList默认按时间降序排序。
-+ 优化接口执行效率
++ Add friend module
++ Added user note name and comment information settings
++ Add sending interface for file information
++ Add sending interface for location information
++ Add an instance interface to get the application appkey of the group owner in GroupInfo
++ getConversationList is sorted in descending order by default.
++ Optimize execution efficiency of interfaces
+Add interfaces
++ ContactManager: Buddy management interface class
+    + See api doc: ContactManager for specific definition
++ New instance interface in UserInfo class
+    + Set note name：updateNotename
+    + Set note text：updateNoteText
+    + Remove the user from buddy list：removeFromFriendList
++ ContactNotifyEvent: Buddy related notification event class
+    + See api doc: ContactNotifyEvent for specific definition
++ Add two types of message content:
+    + File message：FileContent
+    + Location Message：LocationContent
++ Add instance interface in the GroupInfo class：getOwnerAppkey
+Note
+Starting from this version, JChat source code will no longer be released as part of sdk zip with sdk. Instead, it is a simple JMessage Demo that shows only the interface usage.
+See GitHub for previous JChat source code.
 
-##### 新增接口
+#### Upgrade Guide
 
-+ ContactManager 好友管理接口入口类。
-	+ 具体定义见api doc: [ContactManager](http://docs.jiguang.cn/jmessage/client/im_android_api_docs/cn/jpush/im/android/api/ContactManager.html)
-+ UserInfo类中新增实例接口：
-	+ 设置备注名：[updateNotename](http://docs.jiguang.cn/jmessage/client/im_android_api_docs/cn/jpush/im/android/api/model/UserInfo.html#updateNoteName(java.lang.String,%20cn.jpush.im.api.BasicCallback))
-	+ 设置备注信息：[updateNoteText](http://docs.jiguang.cn/jmessage/client/im_android_api_docs/cn/jpush/im/android/api/model/UserInfo.html#updateNoteText(java.lang.String,%20cn.jpush.im.api.BasicCallback))
-	+ 将用户从好友列表中移除：[removeFromFriendList](http://docs.jiguang.cn/jmessage/client/im_android_api_docs/cn/jpush/im/android/api/model/UserInfo.html#removeFromFriendList(cn.jpush.im.api.BasicCallback))
-   
-+ ContactNotifyEvent 好友相关通知事件类
-	+ 具体定义见api doc: [ContactNotifyEvent](http://docs.jiguang.cn/jmessage/client/im_android_api_docs/cn/jpush/im/android/api/event/ContactNotifyEvent.html)
-   
-+ 增加两种message content类型：
-	+ 文件消息：[FileContent](http://docs.jiguang.cn/jmessage/client/im_android_api_docs/cn/jpush/im/android/api/content/FileContent.html)
-	+ 位置消息：[LocationContent](http://docs.jiguang.cn/jmessage/client/im_android_api_docs/cn/jpush/im/android/api/content/LocationContent.html)
-
-+ GroupInfo类中新增实例接口：[getOwnerAppkey](http://docs.jiguang.cn/jmessage/client/im_android_api_docs/cn/jpush/im/android/api/model/GroupInfo.html#getOwnerAppkey())
-
-##### 注意
-从此版本开始，JChat源码将不再作为sdk zip的一部分随sdk发布，取而代之的是一个界面简化的仅仅用来展示接口用法的JMessage Demo。
-
-之前JChat的源码见[GitHub](https://github.com/jpush/jchat-android)
-
-
-#### 升级指南
-
-+ jar包更新至jmessage-sdk-1.4.0.jar更新时需删除老版本jar包。
-+ 将so库更新至 libjpush219.so 同时删除原来老版本so。注意不同的cpu型号对应的结构
-+ 由于富媒体的展示需求，SDK 中增加一个res文件夹存放资源文件。用户需将对应文件夹下的资源文件放入工程的目录中。
-+ 如果是从更早起的版本升级过来，建议参考 SDK下载包最新版本的 demo 来更新 AndroidManifest.xml 文件配置。
-
++ When the jar package is updated to the jmessage-sdk-1.4.0.jar update, the old version jar package needs to be removed.
++ Update the so library to libjpush219.so and delete the old version so. Pay attention to the structure of different cpu models.
++ Due to the display requirements of rich media, a res folder is added to the SDK to store resource files. Users need to put the resource file in the corresponding folder into the project directory
++ If you are upgrading from an earlier version, it is recommended to update the configuration of AndroidManifest.xml file by referring to the latest demo version of SDK download package
 
 ### iOS SDK v2.1.6
 
-#### 更新时间
+#### Update Time
+
 + 2016-09-01
 
-#### Change Log
+##### Change Log
+
+
 ##### Bug Fix
-+ 修复：网络或者后台出现问题导致的下发重复消息问题
 
-#### 升级指南
-+ 使用新版本的JMessage.framework文件替换原工程下的同名旧文件
++ Fix the duplicate messages due to problems on the network or in the background
 
+#### Upgrade Guide
+
++ Replace the old file with the same name under the original project with a new version of the JMessage.framework file
 
 ### Web SDK v1.1.2
 
-#### 更新时间
+#### Update Time
+
 + 2016-08-31
 
-#### Change Log
-+ 添加类型转换，iOS端接收消息问题
+##### Change Log
 
-#### 升级提示
-+ 建议升级！
++ Add type conversion and iOS receiving message
 
+#### Upgrade Prompt
+
++ Suggest an upgrade!
 
 ### Web SDK v1.1.1
 
-#### 更新时间
+#### Update Time
+
 + 2016-08-30
 
-#### Change Log
-+ 修复发送群组消息问题
+##### Change Log
 
-#### 升级提示
-+ 建议升级！
++ Fix the issue of sending group messages
+
+#### Upgrade Prompt
+
++ Suggest an upgrade!
 
 ### Web SDK v1.1.0
 
-#### 更新时间
+#### Update Time
+
 + 2016-08-26
 
-#### Change Log
-##### New Feature
-+ 增加免打扰功能
-+ 支持图片，音频消息的接收功能
+##### Change Log
 
-#### 升级提示
-+ 建议升级！
+##### New Feature
+
++ Add Do-Not-Disturb function
++ Support the reception of pictures and audio messages
+
+#### Upgrade Prompt
+
++ Suggest an upgrade!
 
 ### Web SDK v1.0.1
 
-#### 更新时间
+#### Update Time
+
 + 2016-08-19
 
-#### Change Log
+##### Change Log
+
 ##### New Feature
-+ 增加获取用户信息的跨应用接口
-+ 增加发送单聊消息的跨应用接口
 
-#### 升级提示
-+ 可选升级！
++ Add cross-application interface for obtaining user information
++ Add cross-application interface for sending single chat message
 
+#### Upgrade Prompt
+
++ Optional upgrade!
 
 ### iOS SDK v2.1.5
-#### 更新时间
+
+#### Update Time
+
 + 2016-08-13
 
-#### SDK Change Log
+##### SDK Change Log
+
 
 ##### BugFix:
-+ 修复本地时间和服务器时间不一致时，消息顺序错乱的问题
 
-#### 升级指南
-+ 使用新版本的JMessage.framework文件替换原工程下的同名旧文件
++ Fix the inconsistent message sequence caused by inconsistent local time and background time
 
+#### Upgrade Guide
+
++ Replace the old file with the same name under the original project with a new version of the JMessage.framework file
 
 ### Android SDK v1.3.1
-#### 更新时间
+
+#### Update Time
+
 + 2016-08-13
 
-#### SDK Change Log
+##### SDK Change Log
+
 
 ##### Bug Fix
 
-+ 修复：本地时间与后台时间不一致导致的消息顺序错乱
++ Fix the inconsistent message sequence caused by inconsistent local time and background time
 
+##### JChat Change Log
 
-#### JChat Change Log
-+ 适配JMessage SDK 1.3.1
++ Adaptation to JMessage SDK 1.3.1
 
+#### Upgrade Guide
 
-#### 升级指南
-
-+ jar包更新至jmessage-sdk-1.3.1.jar更新时需删除老版本jar包。
-+ 将so库更新至 libjpush216.so 同时删除原来老版本so。注意不同的cpu型号对应的结构
-+ 由于富媒体的展示需求，SDK 中增加一个res文件夹存放资源文件。用户需将对应文件夹下的资源文件放入工程的目录中。
-+ 如果是从更早起的版本升级过来，建议参考 SDK下载包最新版本的 demo 来更新 AndroidManifest.xml 文件配置。
-
++ Need to delete the old version jar package when the jar package is updated to the jmessage-sdk-1.3.1.jar
++ Update the so library to libjpush216.so and delete the old version so. Pay attention to the structure of different cpu models
++ Due to display requirements of rich media, a res folder is added to the SDK to store resource files. The user needs to put the resource file in the corresponding folder into the project directory.
++ If you are upgrading from an earlier version, it is recommended to update the configuration of AndroidManifest.xml file by referring to the latest demo version of the SDK download package.
 
 ### iOS SDK v2.1.3
 
-#### 更新时间
+#### Update Time
+
 + 2016-07-15
 
-#### SDK Change Log
+##### SDK Change Log
 
 ##### New Feature
-+ 新增：本应用和跨应用的免打扰功能；
-+ 新增：跨应用群聊功能；
-+ 新增：本应用和跨应用的黑名单功能；
-+ 新增：暴露event msg作用对象的username(s),用户开发者定制event msg；
-+ 新增：JMGGroup 增加一个属性 max_member_count，表示当前群成员最大人数；
-+ 新增：JMGGroup 增加一个属性 ownerAppKey，表示当前群群主的appKey。
-+ 新增接口：
-	+ JMessage
-		+ +(void)noDisturbList:(JMSGCompletionHandler)handler;//用户免打扰列表
-		设置全局免打扰标识。
-        + +(BOOL)isSetGlobalNoDisturb;//获取全局免打扰状态
-        + +(void)setIsGlobalNoDisturb:(BOOL)isNoDisturb handler:(JMSGCompletionHandler)handler;//设置是否全局免打扰
-        + +(void)balckList:(JMSGCompletionHandler)handler;//获取黑名单列表
+
++ Add Do-Not-Disturb function of this application and cross-application
++ Add cross-application group chat feature
++ Add blacklist feature of this application and cross-application
++ Add username(s) that exposes the event msg object and event msg; customed by developer
++ Added JMGGroup adds an attribute max_member_count, indicating the maximum number of members in the current group;
++ Added JMGGroup adds an attribute ownerAppKey, which indicates the appKey of the current group owner.
++ Add interfaces：
+    + JMessage
+        + +(void)noDisturbList:(JMSGCompletionHandler)handler;//User Do-Not-Disturb List Sets the global Do-Not-Disturb indicator
+        + +(BOOL)isSetGlobalNoDisturb;//Get global Do-Not-Disturb status
+        + +(void)setIsGlobalNoDisturb:(BOOL)isNoDisturb handler:(JMSGCompletionHandler)handler;//Set whether global Do-Not-Disturb
+        + +(void)balckList:(JMSGCompletionHandler)handler;//Get blacklist
     + JMSGUser
-        + @property(nonatomic, assign, readonly) BOOL isNoDisturb;//获取免打扰状态
-        + -(void)setIsNoDisturb:(BOOL)isNoDisturb handler:(JMSGCompletionHandler)handler;//设置用户免打扰（支持跨应用设置）
-        + @property(nonatomic, assign, readonly) BOOL isInBlacklist;//获取黑名单状态
-        + +(void)addUsersToBlacklist:(NSArray JMSG_GENERIC(__kindof NSString *) *)usernameArray completionHandler:(JMSGCompletionHandler)handler;//添加黑名单
-        + +(void)delUsersFromBlacklist:(NSArray JMSG_GENERIC(__kindof NSString *) *)usernameArray completionHandler:(JMSGCompletionHandler)handler;//删除黑名单
-        + +(void)addUsersToBlacklist:(NSArray JMSG_GENERIC(__kindof NSString *) *)usernameArray appKey:(NSString *)userAppKey completionHandler:(JMSGCompletionHandler)handler;//跨应用添加黑名单
-        + +(void)delUsersFromBlacklist:(NSArray JMSG_GENERIC(__kindof NSString *) *)usernameArray appKey:(NSString *)userAppKey completionHandler:(JMSGCompletionHandler)handler;//跨应用删除黑名单
+        + @property(nonatomic, assign, readonly) BOOL isNoDisturb;//Get Do-Not-Disturb Status
+        + -(void)setIsNoDisturb:(BOOL)isNoDisturb handler:(JMSGCompletionHandler)handler;//Set user Do-Not-Disturb (support cross-application settings)
+        + @property(nonatomic, assign, readonly) BOOL isInBlacklist;//get status of blacklist
+        + +(void)addUsersToBlacklist:(NSArray JMSG_GENERIC(__kindof NSString))usernameArray completionHandler:(JMSGCompletionHandler)handler;//Add blacklist
+        + +(void)delUsersFromBlacklist:(NSArray JMSG_GENERIC(__kindof NSString))usernameArray completionHandler:(JMSGCompletionHandler)handler; //Delete blacklist
+        + +(void)addUsersToBlacklist:(NSArray JMSG_GENERIC(__kindof NSString))usernameArray appKey:(NSString *)userAppKey completionHandler:(JMSGCompletionHandler)handler;//Add a blacklist across applications
+        + +(void)delUsersFromBlacklist:(NSArray JMSG_GENERIC(__kindof NSString))usernameArray appKey:(NSString *)userAppKey completionHandler:(JMSGCompletionHandler)handler;//Remove blacklist across applications
     + JMSGGroup
-        + @property(nonatomic, copy, readonly) NSString *ownerAppKey;//群主的appKey
-        + @property(nonatomic, strong, readonly) NSString     *maxMemberCount;//获取群组人数上限
-        + @property(nonatomic, assign, readonly) BOOL isNoDisturb;//获取免打扰状态
-        + -(void)setIsNoDisturb:(BOOL)isNoDisturb handler:(JMSGCompletionHandler)handler;//设置群组消息免打扰（支持跨应用设置）
+        + @property(nonatomic, copy, readonly) NSString *ownerAppKey;//appkey of owner
+        + @property(nonatomic, strong, readonly) NSString *maxMemberCount;//Get the maximum number of groups
+        + @property(nonatomic, assign, readonly) BOOL isNoDisturb;//Get Do-Not-Disturb status
+        + -(void)setIsNoDisturb:(BOOL)isNoDisturb handler:(JMSGCompletionHandler)handler;//Set group message Do-Not-Disturb (support cross-application settings)
     + JMSGEventContent
-        + -(NSString *JMSG_NULLABLE)getEventFromUsername;//获取事件发起者的用户名
-        + -(NSArray *JMSG_NULLABLE)getEventToUsernameList;//获取事件作用对象用户名列表
+        + -(NSString *JMSG_NULLABLE)getEventFromUsername;//Get the username of initiator of the event
+        + -(NSArray *JMSG_NULLABLE)getEventToUsernameList;// Get the username list of object acted by events
     + JMSGMessage
-        + +(void)sendSingleTextMessage:(NSString *)text toUser:(NSString *)username appKey:(NSString *)userAppKey; //发送跨应用单聊文本消息
-        + (void)sendSingleImageMessage:(NSData *)imageData toUser:(NSString *)username appKey:(NSString *)userAppKey; //发送跨应用单聊图片消息
-        + (void)sendSingleVoiceMessage:(NSData *)voiceData voiceDuration:(NSNumber *)duration toUser:(NSString *)username appKey:(NSString *)userAppKey; //发送跨应用单聊语音消息
-    + 跨应用群聊
-        + -(void)addMembersWithUsernameArray:(NSArray JMSG_GENERIC(__kindof NSString *) *)usernameArray appKey:(NSString *)userAppKey completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)handler;//添加群组跨应用成员
-        + -(void)removeMembersWithUsernameArray:(NSArray JMSG_GENERIC(__kindof NSString *) *)usernameArray appKey:(NSString *)userAppKey completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)handler;//删除群组跨应用成员
+        + +(void)sendSingleTextMessage:(NSString)text toUser:(NSString)username appKey:(NSString *)userAppKey; //Send cross-application text message of a single chat
+        +  (void)sendSingleImageMessage:(NSData) imageData toUser:(NSString)username appKey:(NSString *)userAppKey; //send cross-application picture message of a single chat
+        +  (void)sendSingleVoiceMessage:(NSData)voiceData voiceDuration:(NSNumber) duration toUser:(NSString) username appKey:(NSString)userAppKey; //send cross-application voice message of a single chat
+    + Cross-application group chat
+        + -(void)addMembersWithUsernameArray:(NSArray JMSG_GENERIC(__kindof NSString))usernameArray appKey:(NSString *)userAppKey completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)handler;//Add cross-application group members
+        + -(void)removeMembersWithUsernameArray:(NSArray JMSG_GENERIC(__kindof NSString))usernameArray appKey:(NSString *)userAppKey completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)handler;//Delete cross-application group members
 
 ##### Bug Fix
 
-+ 修复：群event msg 事件不能定制问题；
++ Fix the problem that group event msg event cannot be customized;
 
-#### 升级指南
-+ 使用新版本的JMessage.framework文件替换原工程下的同名旧文件！
+#### Upgrade Guide
+
++ Replace the old file with the same name in the original project with the new version of the JMessage.framework file!
 
 ### Web SDK v1.0.0
 
-#### 更新时间
+#### Update Time
+
 + 2016-07-13
 
-#### Change Log
-+ JMessage Web SDK 首次发布
-+ 聊天支持：单聊，群聊
-+ 聊天内容：文本
-+ 提供用户管理 ，群组管理，会话列表获取功能
+##### Change Log
 
-#### 升级提示
-+ 可选升级！
++ First release of the JMessage Web SDK
++ Chat supports: single chat, group chat
++ Chat content: text
++ Provide user management, group management and acquisition of session list
 
+#### Upgrade Prompt
+
++ Optional upgrade!
 
 ### Android SDK v1.3.0
 
-#### 更新时间
+#### Update Time
+
 + 2016-07-12
 
-#### SDK Change Log
+##### SDK Change Log
 
 ##### New Feature
-+ 增加群组、黑名单、免打扰功能的跨应用能力
-+ 新增全局免打扰接口
-+ 新增接口：
-	+ JMessageClient
-		+ setNoDisturbGlobal
-		设置全局免打扰标识。
-		+ getNoDisturbGlobal
-		获取全局免打扰标识
-		+ addGroupMembers
-		添加群成员（跨应用)
-		+ removeGroupMembers
-		移出群成员（跨应用）
-		+ addUsersToBlacklist
-		将用户加入黑名单（跨应用）
-		+ delUsersFromBlacklist 
-		将用户移出黑名单（跨应用）
-	+ GroupInfo
-		+ getGroupMemberInfo
-		获取群成员信息（跨应用）
 
++ Increase cross-application capabilities for group, blacklist and DND
++ Add Global Do-Not-Disturb interface
++ Add interfaces
+    + JMessageClient
+        + setNoDisturbGlobal Set global Do-Not-Disturb identifier
+        + getNoDisturbGlobal Get Global Do-Not-Disturb identifier
+        + addGroupMembers Add group members (cross-application)
+        + removeGroupMembers remove group members (cross-application)
+        + addUsersToBlacklist Add users to the blacklist (cross-application)
+        + delUsersFromBlacklist remove users from the blacklist (cross-application)
+    + GroupInfo
+        + getGroupMemberInfo Get information of group members(cross-application)
 
 ##### Bug Fix
 
-+ 修复：小概率出现的无法收到消息的问题
-+ 修复：偶现的native层崩溃
++ Fix the problem with low probability of receiving messages
++ Fix the occasional crashes of native layer
 
+##### JChat Change Log
 
-#### JChat Change Log
-+ 适配JMessage SDK 1.3.0
-
++ Adaptation to JMessage SDK 1.3.0
 ##### New Feature
 
-+ 适配：群聊、黑名单、免打扰的跨应用功能
-+ 新增：全局免打扰功能
++ Adaptation to the cross-application function of group chat, blacklist and Do-Not-Disturb
++ Add global Do-Not-Disturb function
 
+#### Upgrade Guide
 
-#### 升级指南
-
-+ jar包更新至jmessage-sdk-1.3.0.jar更新时需删除老版本jar包。
-+ 将so库更新至 libjpush216.so 同时删除原来老版本so。注意不同的cpu型号对应的结构
-+ 由于富媒体的展示需求，SDK 中增加一个res文件夹存放资源文件。用户需将对应文件夹下的资源文件放入工程的目录中。
-+ 如果是从更早起的版本升级过来，建议参考 SDK下载包最新版本的 demo 来更新 AndroidManifest.xml 文件配置。
-
++ Need to delete the old version jar package when the jar package is updated to the jmessage-sdk-1.3.0.jar
++ Update the so library to libjpush216.so and delete the old version so. Pay attention to the structure of different cpu models
++ Due to display requirements of rich media, a res folder is added to the SDK to store resource files. The user needs to put the resource file in the corresponding folder into the project directory.
++ If you are upgrading from an earlier version, it is recommended to update the configuration of AndroidManifest.xml file by referring to the latest demo version of the SDK download package.
 
 ### iOS SDK v2.1.1
 
-#### 更新时间
-* 2016-06-15
+#### Update Time
 
-#### 版本号
-* JMessage SDK 2.1.1
-* JChat 1.1.0b1893
++ 2016-06-15
+Version Number
++ JMessage SDK 2.1.1
++ JChat 1.1.0b1893
 
-#### Change Log
+##### Change Log
 
-+ 新增：对IPv6网络的支持。
++ Add supports for IPv6 networks.
 
-#### 升级提示
+#### Upgrade Prompt
 
-+ 建议升级！
++ Suggest an upgrade!
 
-#### 升级指南
-+ 使用新版本的JMessage.framework文件替换原工程下的同名旧文件
+#### Upgrade Guide
 
-
-
++ Replace the old file with the same name under the original project with a new version of the JMessage.framework file
 
 ### Android SDK v1.2.5
 
-#### 更新时间
+#### Update Time
+
 + 2016-06-12
 
-#### SDK Change Log
+##### SDK Change Log
 
 ##### New Feature
-+ Conversation对象新增设置本地未读消息数的接口
-+ 新增接口：
-	+ conversation.setUnReadMessageCnt
-	
+
++ Conversation object adds an interface to set the number of local unread messages
++ Add interface：
+    + conversation.setUnReadMessageCnt
+
 ##### Bug Fix
 
-+ 修复：群成员退群时，其他成员处显示的提示文字不正确
-+ 修复：群主退群后，本地群主信息没有更新。
-+ 修复：用户首次收到消息，打印收到的message 中targetName为空
-+ 修复：概率出发送群聊消息，应用崩溃
-+ 修复：登录一个帐号A，快速再登录帐号B概率出现数据库操作异常
-+ 修复：dev api移除群聊免打扰后，sdk没有更新状态
-+ 修复：SDK接收到group event后messageid字段值为0
-+ 优化：有大量群成员的群组中，数据的处理效率
++ Fix the problem that prompt text displayed at other members is incorrect when the group member quits the group
++ Fix the problem that the local owner information is not updated after the owner quits the group.
++ Fix the problem that printing of targetName in the received message is empty when the user received message for the first time
++ Fix the occasional crash of application when sending group chat message
++ Fix the abnormal operation of database when quickly loging in to account B after logined to an account A
++ Fix the problem that sdk is not updated after dev api removes DND of group chat
++ Fix the problem that messageid field value is 0 after the SDK receives the group event
++ Optimize the efficiency of data processing in groups with a large number of group members
 
+##### JChat Change Log
 
-#### JChat Change Log
-+ 适配 JMessage SDK 1.2.5
-								
++ Adaptation to JMessage SDK 1.2.5
+
 ##### Bug Fix
 
-+ 修复：1.2.9下拉刷新bug
-+ 修复：1.2.9收到消息后可能出现会话丢失的bug
-+ 优化：收到大量离线消息后UI卡顿现象
++ Fix the bug when 1.2.9 pulldowns the refresh
++ Fix the bug that 1.2.9 may have session lost after receiving message
++ Optimize the stuck UI after receiving a large number of offline messages
 
-#### 升级指南
+#### Upgrade Guide
 
-+ jar包更新至jmessage-sdk-1.2.5.jar更新时需删除老版本jar包。
-+ 将so库更新至 libjpush211.so 同时删除原来老版本so。注意不同的cpu型号对应的结构
-+ 由于富媒体的展示需求，SDK 中增加一个res文件夹存放资源文件。用户需将对应文件夹下的资源文件放入工程的目录中。
-+ 如果是从更早起的版本升级过来，建议参考 SDK下载包最新版本的 example 来更新 AndroidManifest.xml 文件配置。
-
++ Need to delete the old version jar package when the jar package is updated to the jmessage-sdk-1.2.5.jar
++ Update the so library to libjpush211.so and delete the old version so. Pay attention to the structure of different cpu models
++ Due to display requirements of rich media, a res folder is added to the SDK to store resource files. The user needs to put the resource file in the corresponding folder into the project directory.
++ If you are upgrading from an earlier version, it is recommended to update the configuration of AndroidManifest.xml file by referring to the latest demo version of the SDK download package.
 
 ### iOS SDK v2.1.0
 
-#### 更新时间
-* 2016-05-10
+#### Update Time
 
-#### 版本号
-* JMessage SDK 2.1.0
-* JChat 1.1.0b1870
++ 2016-05-10
+Version Number
++ JMessage SDK 2.1.0
++ JChat 1.1.0b1870
 
-#### Change Log
-+ 实现跨应用单聊
-+ 支持VIP用户群组上限突破200
+##### Change Log
 
-#### 升级提示
++ Implement cross-application single chat
++ Support the upper limit of VIP user groups exceeding 200
 
-+ 建议升级！
+#### Upgrade Prompt
 
-#### 升级指南
-+ 使用新版本的JMessage.framework文件替换原工程下的同名旧文件
++ Suggest an upgrade!
 
+#### Upgrade Guide
+
++ Replace the old file with the same name under the original project with a new version of the JMessage.framework file
 
 ### Android SDK v1.2.3
 
-#### 更新时间
+#### Update Time
+
 + 2016-04-07
 
-#### SDK Change Log
+##### SDK Change Log
+
 
 ##### Bug Fix
 
-+ 修复：从旧版本升级到1.2.1导致的崩溃问题
++ Fix the crash caused by upgrading from old version to 1.2.1
 
+##### JChat Change Log
 
-#### JChat Change Log
-+ 更新JMessage jar到1.2.3
-								
++ Update JMessage jar to 1.2.3
 
+#### Upgrade Guide
 
-#### 升级指南
-
-+ jar包更新至jmessage-sdk-1.2.3.jar更新时需删除老版本jar包。
-+ 将so库更新至 libjpush213.so 同时删除原来老版本so。注意不同的cpu型号对应的结构
-+ 由于富媒体的展示需求，SDK 中增加一个res文件夹存放资源文件。用户需将对应文件夹下的资源文件放入工程的目录中。
-+ 如果是从更早起的版本升级过来，建议参考 SDK下载包最新版本的 example 来更新 AndroidManifest.xml 文件配置。
-
++ Need to delete the old version jar package when the jar package is updated to the jmessage-sdk-1.2.3.jar
++ Update the so library to libjpush213.so and delete the old version so. Pay attention to the structure of different cpu models
++ Due to display requirements of rich media, a res folder is added to the SDK to store resource files. The user needs to put the resource file in the corresponding folder into the project directory.
++ If you are upgrading from an earlier version, it is recommended to update the configuration of AndroidManifest.xml file by referring to the latest demo version of the SDK download package.
 
 ### Android SDK v1.2.1
 
-#### 更新时间
+#### Update Time
+
 + 2016-03-31
 
-#### SDK Change Log
+##### SDK Change Log
 
 ##### New Feature
-+ 新增免打扰功能
-+ 支持VIP用户群组上限突破200
-	+ groupInfo中新增max_member_count属性，表示当前群成员最大人数。
-+ 对外接口中需要传List作为参数的，对List size做限制。
-+ 新增接口：
-	+ JMessageClient
-		+ JMessageClient.getNoDisturbList(GetNoDisturbListCallback callback) 获取用户的免打扰名单
-	+ UserInfo
-		+ userinfo.setNoDisturb(int noDisturb,Callback callback) 设置用户的免打扰状态
-		+ userinfo.getNoDisturb() 获取用户的免打扰状态
-		
-	+ GroupInfo：
-		+ groupinfo.setNoDisturb（int noDisturb,Callback callback）设置群组的免打扰状态
-		+ groupinfo.getNoDisturb() 获取群组的免打扰状态
-		+ groupinfo.getMaxMemberCount() 获取群成员的最大上限
- 
 
++ Add Do-Not-Disturb Function
++ Support the upper limit of VIP user groups exceeding 200
+    + The max_member_count attribute is added to groupInfo to indicate the maximum number of members in the current group.
++ If you want to pass List as the parameter in the external interface, limit the list size.
++ Add interfaces：
+    + JMessageClient
+        + JMessageClient.getNoDisturbList(GetNoDisturbListCallback callback) Get Do-Not-Disturb list of the user
+    + UserInfo
+        + userinfo.setNoDisturb(int noDisturb,Callback callback) Set Do-Not-Disturb status of the user
+        + userinfo.getNoDisturb() Get Do-Not-Disturb status of the user
+    + GroupInfo：
+        + groupinfo.setNoDisturb(int noDisturb, Callback callback) Set Do-Not-Disturb status of the group
+        + groupinfo.getNoDisturb() Get Do-Not-Disturb status of the group
+        + groupinfo.getMaxMemberCount() Get maximum limit of group members
 
 ##### Bug Fix
 
-+ 修复：api 调用GetGroupInfo 获取一个已经被销毁的群组，返回码为0
-+ 修复：消息正在发送的过程中，调用Login有可能导致数据库报错
++ Fix the problem that return code is 0 when the api calls GetGroupInfo to get a group that has been destroyed
++ Fix the problem that database reports an error when invoking when the message is being sent
 
+##### JChat Change Log
 
-#### JChat Change Log
-+ 适配JMessage SDK 1.2.1
-								
++ Adaptation to JMessage SDK 1.2.1
 ##### New Feature
 
-+ 新增免打扰功能.
++ Add Do-Not-Disturb function.
 
 ##### Bug Fix
 
-+ 修复compileSdkVersion 改到23（android 6.0）后，工程报错。
-+ 修复添加群组成员，界面无变化
-+ 群成员搜索优化
++ Fix the problem that the project reports an error after compileSdkVersion is changed to 23 (android 6.0).
++ Fix the problem that interface is unchanged after adding group members
++ Optimize the search of group member
 
+#### Upgrade Guide
 
-#### 升级指南
-
-+ jar包更新至jmessage-sdk-1.2.1.jar更新时需删除老版本jar包。
-+ 将so库更新至 libjpush211.so 同时删除原来老版本so。注意不同的cpu型号对应的结构
-+ 由于富媒体的展示需求，SDK 中增加一个res文件夹存放资源文件。用户需将对应文件夹下的资源文件放入工程的目录中。
-+ 如果是从更早起的版本升级过来，建议参考 SDK下载包最新版本的 example 来更新 AndroidManifest.xml 文件配置。
++ Need to delete the old version jar package when the jar package is updated to the jmessage-sdk-1.2.1.jar
++ Update the so library to libjpush211.so and delete the old version so. Pay attention to the structure of different cpu models
++ Due to display requirements of rich media, a res folder is added to the SDK to store resource files. The user needs to put the resource file in the corresponding folder into the project directory.
++ If you are upgrading from an earlier version, it is recommended to update the configuration of AndroidManifest.xml file by referring to the latest demo version of the SDK download package.
 
 ### iOS SDK v2.0.1
 
-#### 更新时间
-* 2016-03-22
+#### Update Time
 
-#### 版本号
-* JMessage SDK 2.0.1
-* JChat 1.1.0b1611
++ 2016-03-22
+Version Number
++ JMessage SDK 2.0.1
++ JChat 1.1.0b1611
 
-#### Change Log
-+ 修复：由于切换设备变更群成员， 群组信息不同步引起的消息发送失败。
+##### Change Log
 
-#### 升级提示
++ Fix the failure of message sending due to group information is not synchronized when switching devices and changing group members.
 
-+ 建议升级！
-+ 由于 API 与 Model 层面很大范围的变更，建议参考 JChat 项目来适配新的 JMessage iOS SDK。
+#### Upgrade Prompt
 
-#### 升级指南
-+ 使用新版本的JMessage.framework文件替换原工程下的同名旧文件
++ Suggest an upgrade!
+    ### • JMessage iOS SDK。 Due to a wide range of changes at the API and Model level, it is recommended to refer to the JChat project to adapt the new JMessage iOS SDK.
 
+
+#### Upgrade Guide
+
++ Replace the old file with the same name under the original project with a new version of the JMessage.framework file
 
 ### Android SDK v1.2.0
 
-#### 更新时间
+#### Update Time
 
 + 2016-03-07
 
-#### SDK Change Log
+##### SDK Change Log
 
 ##### New Feature
-+ 实现跨应用聊天
-+ message中新增getServerMessageId接口
-+ 新增setDebugMode接口
-+ 新增服务器修改用户密码的event处理
-+ 新增接口
-	+ Conversation
-		+ conversation.getTargetAppkey 获取会话对象的appkey（仅单聊）
-		+ Conversation.createSingleConversation(username,appkey) 创建指定appkey的跨应用会话。
-		+ JMessageClient.getSingleConversation(username,appkey) 获取与指定appkey下user的会话。
-		+ JMessageClient.enterSingleConversation(username,appkey) 进入与指定appkey下user的会话。
-		+ JMessageClient.deleteSingleConversation(username,appkey) 删除与指定appkey下user的会话
-	+ Message
-		+ message.getTargetAppKey 获取消息对象的appkey.（仅单聊消息）
-		+ message.getFromAppKey 获取消息发送这个的appkey。
-		+ message.getServerMessageId 获取消息对应服务端的messageId。
-	+ UserInfo
-		+ userinfo.getAppKey 获取用户所属的appkey。
-		+ JMessageClient.getUserInfo(username,appkey,callback) 获取指定appkey下的用户信息。
-	+ JMessageClient
-		+ setDebugMode 打开JMessage的debug模式，作用等同于JPush的setDebugMode.
 
-	+ 已过时接口
-		+ JMessageClient.enterSingleConversaion 接口名拼写错误，使用JMessageClient.enterSingleConversation替代。
-		+ JMessageClient.exitConversaion 接口名拼写错误, 使用JMessageClient.exitConversation替代。
-		+ UserDeletedEvent 、 UserLogoutEvent 统一使用LoginStateChangeEvent替代。
-
++ Implement cross-application chat
++ getServerMessageId interface is added in message
++ Add setDebugMode interface
++ Add event processing for server to modifying the user password
++ Add interfaces
+    + Conversation
+        + conversation.getTargetAppkey gets the appkey of the session object (single chat only)
+        + Conversation.createSingleConversation(username,appkey) creates a cross-application session for the specified appkey
+        + JMessageClient.getSingleConversation(username,appkey) gets the session with the user under the specified appkey.
+        + JMessageClient.enterSingleConversation(username,appkey) enters the session with the user under the specified appkey.
+        + JMessageClient.deleteSingleConversation(username,appkey) deletes the session with the user named appkey
+    + Message
+        + message.getTargetAppKey gets the appkey of the message object. (Single chat message only)
+        + message.getFromAppKey gets the appkey of the message sent.
+        + message.getServerMessageId gets the messageId of corresponding message to the server.
+    + UserInfo
+        + userinfo.getAppKey gets the appkey to which the user belongs.
+        + JMessageClient.getUserInfo(username,appkey,callback) gets the user information under the specified appkey.
+    + JMessageClient
+        + setDebugMode opens debug mode of JMessage, which is equivalent to JPush's setDebugMode.
+    + Obsolete interface
+        + The interface name of JMessageClient.enterSingleConversaion is misspelled, and use JMessageClient.enterSingleConversation instead.
+        + The interface name of JMessageClient.exitConversaion is misspelled, and use JMessageClient.exitConversation instead.
+        + Use LoginStateChangeEvent to replace UserDeletedEvent and UserLogoutEvent.
 
 ##### Bug Fix
 
-+ 修复通过getGroupList拿到gid之后，直接拿groupMembers返回空的问题
-+ 修复删除会话时未删除通知栏消息
-+ 修复conversation 接口名拼写错误
-+ 修复首次收到消息创建会话的title错误。
-+ 修复createConversation接口没有做登陆验证。
-+ 修复跨应用某种情况下会出现循环获取userinfo的bug
-+ 修复多次调用login而不调logout导致上一个登陆用户的缓存信息未清掉
++ Fix the problem of getting groupMembers to return null directly after getting gid via getGroupList
++ Fix the problem of without deleting notification bar message when deleting a session
++ Fix spelling error of conversation interface name
++ Fix the title error of creation session when received the message for the first time.
++ Fix the problem of createConversation interface not doing login verification.
++ Fix a bug where looping for userinfo occurs across applications
++ Fix the problem that cache information of login user is not flushed when calling login for multiple times without adjusting logout
 
-#### JChat Change Log
-+ 适配JMessage SDK 1.2.0
-								
+##### JChat Change Log
+
++ Adaptation to JMessage SDK 1.2.0
 ##### New Feature
 
-+ 会话列表提供断网提示
-+ 草稿可以在会话列表显示
++ Conversation list provides disconnected prompts
++ Drafts can be displayed in the conversation list
 
 ##### Bug Fix
 
-+ 修复：某些机型拍照上传图片失败bug
-+ 修复：App启动时抛出WindowWarning的bug
-+ 修复：对话框裁剪成圆角后有黑色阴影的bug
-+ 修复：删除本地跨应用会话，对应通知栏消息未清掉
-+ 修复：群聊天详情里，点击删除成员，进入到聊天成员中，群成员不显示用户名
-+ 修复：群聊天详情界面中，点击全部群成员界面添加不存在的用户，界面停留在转圈的状态
-+ 修复：用户主动退出群，退出群时会被系统桌面覆盖
++ Fix the bug that some models failed to upload pictures
++ Fix the bug that throwing WindowWarning when App starts
++ Fix the bug with black shading after the dialog box was cropped
++ Fix the problem that the corresponding notification bar is not cleared after deleting the local cross-application session
++ Fix the problem that  username of the group member does not display in the group chat details after clicking to delete the member and entering to the chat members
++ Fix the problem that the interface stays in the state of the circle in group chat details interface, after clicking on the group member interface to add non-existent users
++ Fix the problem that group desktop is overwritten when the user exits the group.
 
+#### Upgrade Guide
 
-#### 升级指南
-
-+ jar包更新至jmessage-sdk-1.2.0.jar更新时需删除老版本jar包。
-+ 将so库更新至 libjpush207.so 同时删除原来老版本so。注意不同的cpu型号对应的结构
-+ 由于富媒体的展示需求，SDK 中增加一个res文件夹存放资源文件。用户需将对应文件夹下的资源文件放入工程的目录中。
-+ 如果是从更早起的版本升级过来，建议参考 SDK下载包最新版本的 example 来更新 AndroidManifest.xml 文件配置。
++ Need to delete the old version jar package when the jar package is updated to the jmessage-sdk-1.2.0.jar
++ Update the so library to libjpush207.so and delete the old version so. Pay attention to the structure of different cpu models
++ Due to display requirements of rich media, a res folder is added to the SDK to store resource files. The user needs to put the resource file in the corresponding folder into the project directory.
++ If you are upgrading from an earlier version, it is recommended to update the configuration of AndroidManifest.xml file by referring to the latest demo version of the SDK download package.
 
 ### iOS SDK v2.0.0
 
-#### 更新时间
-* 2016-02-22
+#### Update Time
 
-#### 版本号
-* JMessage SDK 2.0.0
-* JChat 1.1.0b1460
++ 2016-02-22
+Version Number
++ JMessage SDK 2.0.0
++ JChat 1.1.0b1460
 
-#### Change Log
-+ 消息结构调整：现在一条消息由一个 JMSGMessage 类加上多个类型的 Content 组成，如 JMSGTextContent;
-+ 对象化：会话里有 target 对象（JMSGUser 或者 JMSGGroup），消息里有 target JMSGUser 对象，fromUser 对象；
-+ 通知调整：由之前的 NSNotification 换成 Delegate 的方式，使用更简单、直观；
-+ 性能优化：对常用的信息，SDK内部做了缓存，以减少文件、网络访问；
-+ 对外 API 头文件加了完善的文档注释，包含使用建议。
+##### Change Log
 
-#### 升级提示
++ Adjustment of message structure: A message is now composed of a JMSGMessage class plus multiple types of Content, such as JMSGTextContent;
++ Objectivization: There are target objects in the session (JMSGUser or JMSGGroup), and there are target JMSGUser objects and fromUser objects in the message.
++ Notification adjustment: The method of changing from the previous NSNotification to Delegate is more simple and intuitive.
++ Performance optimization: For commonly used information, the SDK internally caches to reduce file and network access.
++ Complete documentation comments are added on the external API headers, including recommendations for use.
 
-+ 建议升级！
-+ 由于 API 与 Model 层面很大范围的变更，建议参考 JChat 项目来适配新的 JMessage iOS SDK。
+#### Upgrade Prompt
 
-#### 升级指南
-+ 使用新版本的JMessage.framework文件替换原工程下的同名旧文件
++ Suggest an upgrade!
+    ### • Due to a wide range of changes at the API and Model level, it is recommended to refer to the JChat project to adapt the new JMessage iOS SDK
+
+
+#### Upgrade Guide
+
++ Replace the old file with the same name under the original project with a new version of the JMessage.framework file
 
 ### Android SDK v1.1.5
 
-#### 更新时间
+#### Update Time
 
-* 2015-12-11
++ 2015-12-11
 
-#### SDK Change Log
+##### SDK Change Log
 
 ##### New Feature
 
-* 群成员变化event全部上抛sdk不过滤
-* 用户小头像sdk内部作缓存
-* 内部并发线程数控制，防止太多线程并发执行导致问题
-* 优化网络任务执行效率
-* 本地媒体文件存储按会话分类，方便之后清理。
-* 新增接口:
-	* ImageContent 新增通过传Bitmap来构造实例的接口
-	* Conversation.CreateMessage 新增自定义FromName的接口，开发者可以自定义message的FromName
-	* UserInfo 新增获取头像bitmap的异步接口getAvatarBitmap、getBigAvatarBitmap，并且sdk会在内部会对小头像的bitmap做缓存。
-* 已过时接口:
-	* EventNotificationContent.containsGroupOwner
-	* UserInfo.getAvatarFileAsync
-
-
-##### Bug Fix
-
-
-* 使用自定义类继承BasicCallback时，请求会报错
-* 一些对外接口没有做登陆检查,未登录时调用接口会有问题
-* 修复发送大语音文件，对方收到后下载失败的bug
-* 修复首次收到群消息展示的群组的ID
-* 修复同时调用拿大头像和小头像时，其中有一个返回Null。
-
-#### JChat Change Log
-* 适配JMessage1.1.5
-
-#### New Feature
-
-
-* 发送多张图片时，逐张发送
-* 相册按照修改时间进行排序
-* 上传头像时进行裁剪
-* 优化：一次发送9张图片，能发送成功，但效率比较低
-* 优化：点击jchat 用户在【我】处查看自己头像，提示正在加载，体验待优化
-
++ Group member changes event all throw sdk without filtering.
++ Small user avatar for caching in sdk internally
++ Internal concurrent threads control, to prevent too many concurrent threads from causing problems
++ Optimize execution efficiency of network task
++ Storage of local media file is categorized by session for easy cleanup
++ Add interfaces
+    + ImageContent adds an interface for constructing instances by passing Bitmaps
+    + Conversation.CreateMessage adds a custom FromName interface. Developers can customize the FromName of the message
+    + UserInfo adds the asynchronous interface getAvatarBitmap and getBigAvatarBitmap of the avatar bitmap, and sdk internally caches the bitmap of the avatar.
++ Obsolete interfaces:
+    + EventNotificationContent.containsGroupOwner
+    + UserInfo.getAvatarFileAsync
 
 ##### Bug Fix
 
++ The request will report an error when using a custom class to inherit BasicCallback
++ Some external interfaces do not have a login check and there will be a problem with invoking an interface when not logged in
++ Fix the bug where the other party will fail to download after sending large voice files
++ Fix the group ID that displayed when receiving the group message for the first time
++ Fix the problem of returning a null when calling both big avatars and small avatars at the same time
 
-* 修复：加载上一页消息时如果不存在上一页消息，会多次刷新的问题
-* 修复：单聊清空聊天记录异常的问题
-* 修复：发送多张图片有时出现NPE异常
-* 修复：发送9张图片，可能会卡在正在发送的提示界面，图片实际没有发送成功
-* 修复：小米4手机更新头像，从文件管理处选择图片无法更新头像
+##### JChat Change Log
 
++ Adaptation to JMessage1.1.5
+##### New Feature
 
-#### 升级提示
++ Send one by one when sending multiple pictures,
++ Albums are sorted by modification time
++ Crop when uploading an avatar
++ Optimization: Could send 9 pictures at a time successfully, but with a low efficiency
++ Optimization: Suggesting that it is loading after clicking jchat user to view his avatar in [I], which means the experience is needed to be optimized.
 
-+ 建议升级！
+##### Bug Fix
 
-#### 升级指南
-* 将jar包更新至 jmessage-sdk-1.1.5.jar更新时需删除老版本jar包。
-* 将so库更新至 libjpush205.so 同时删除原来老版本so。注意不同的cpu型号对应的结构
-* 由于富媒体的展示需求，SDK 中增加一个res文件夹存放资源文件。用户需将对应文件夹下的资源文件放入工程的目录中。
-* 如果是从更早的版本升级过来，建议参考 SDK下载包最新版本的 example 来更新 AndroidManifest.xml 文件配置。
++ Fix the issue of multiple updates if there is no previous message when loading a previous message
++ Fix the exception when clearing the history messages in single chats
++ Fix the occasional NPE exception when sending multiple pictures
++ Fix the problem that when sending 9 pictures, it may get stuck on the prompt screen that is being sent, but the picture is not sent successfully.
++ Fix the problem that the avatar can not be updated by selecting picture from file management when Xiaomi 4 phone updates the avatar.
 
+#### Upgrade Prompt
+
++ Suggest an upgrade!
+
+#### Upgrade Guide
+
++ Need to delete the old version jar package when the jar package is updated to the jmessage-sdk-1.1.5.jar
++ Update the so library to libjpush205.so and delete the old version so. Pay attention to the structure of different cpu models
++ Due to display requirements of rich media, a res folder is added to the SDK to store resource files. The user needs to put the resource file in the corresponding folder into the project directory.
++ If you are upgrading from an earlier version, it is recommended to update the configuration of AndroidManifest.xml file by referring to the latest demo version of the SDK download package.
 
 ### Android SDK v1.1.4
-#### 更新时间
 
-* 2015-09-28
+#### Update Time
 
-#### SDK Change Log
++ 2015-09-28
+
+##### SDK Change Log
 
 ##### New Feature
 
-* 新增黑名单功能
-* 新增用户被删除事件
-* 收到群聊消息时，通知栏的tickerText显示消息发送者的displayName而不是群名
-* 新增接口：createGroupConversation(long)、createSingleConversation(String)、getTargetInfo()、getLatestMessage()
-* 过时接口：createConversation(ConversationType,long)、createConversation(ConversationType,String)、getTargetID()、getLatestMsgDate()
-getLatestType()、getLatestText()
-* 新增接口：getTargetInfo()、getFromUser()
-* 已过时接口：getTargetID()、getTargetName()、getFromID()、getFromName()、getFromType()
-* 新增接口：ImageContent类中新增createImageContentAsync异步创建ImageContent的接口
++ Add blacklist function
++ Add user delete event
++ When a group chat message is received, tickerText in the notification bar displays the sender's displayName instead of the group name
++ New interfaces: createGroupConversation(long), createSingleConversation(String), getTargetInfo(), getLatestMessage()
++ Obsolete interfaces: createConversation(ConversationType, long), createConversation(ConversationType, String), getTargetID(), getLatestMsgDate() getLatestType(), getLatestText()
++ Add interfaces: getTargetInfo(), getFromUser()
++ Obsolete interfaces: getTargetID(), getTargetName(), getFromID(), getFromName(), getFromType()
++ Add interfaces: new createImageContentAsync in ImageContent class to create ImageContent interface asynchronously
 
 ##### Bug Fix
 
-* 修复dev api 添加删除群用户，群的聊天详情UI没有更新
-* 修复customContent.setContentType方法文档没有说明其作用
-* 修复昵称设置仅仅是表情会出现异常，返回服务端错误
-* 修复调用stopPush后IM无法登录。
-* 修复JMessage配置文件包名和appkey不匹配的，Demo APP依然能注册成功。
-* 修复createSendMessage接口在用户未登录时调用直接崩溃。
-* 修复用户发媒体信息时被踢下线，之前发送的消息状态一直处于"sending"
-* 修复dev api添加/删除群用户时，相应事件未抛给上层
-* 修复收到富媒体推送时，点击通知栏没有跳转的问题
++ Fix the problem that group chat details UI is not updated after dev api adding the deletion of group users.
++ Fix the problem that the method documentation of customContent.setContentType does not explain its role
++ Fix the problem that nickname settings will only cause an anomaly if only in the expressions and return an error on the server
++ Fix the problem that IM cannot log in after invoking stopPush.
++ Fix the problem that the Demo APP can still register successfully even though package name of JMessage configuration file does not match the appkey.
++ Fix the direct crash when createSendMessage interface is called when the user is not logged in.
++ Fix the problem that status of the previously sent message was always "sending" after the user was kicked offline while sending media information
++ Fix the problem that corresponding event is not thrown to the upper layer when dev api adding/deleting group users
++ Fix an issue where the notification bar did not jump after clicking when receiving a rich media push
 
-#### JChat Change Log
+##### JChat Change Log
 
-#### New Feature
+##### New Feature
 
-* 聊天消息支持分页加载
-* 增加"关于"页面
-* 优化聊天、聊天详情界面加载的性能
-* 被拉黑时，使用自定义消息"消息已发出，但被对方拒收了"提示用户
++ Chat messages support paging loading
++ Add "About" page
++ Optimize the performance of chat, chat details interface loading
++ When blacked out, use a custom message "message has been sent but rejected by the other party" to prompt the user
 
 ##### Bug Fix
 
-* 修复发送图片成功，但UI界面显示100%
-* 修复群主点击进入群【聊天详情】，减号有时候加载5/6s才显示
-* 修复如果一个会话窗口的消息过多，点击会话出现加载无响应的情况
-* 修复软键盘弹出后，点击软键盘上的收起按钮，界面不会收回的bug
-* 修复在被踢下线后，点击确定按钮抛出WindowLeak异常的bug
-* 修复在启动APP后可能出现的异常：RuntimeException：Performing stop activity that is not resume
-* 修复某些手机设置录音为询问或禁止时，点击录音崩溃bug
-* 修复聊天标题设置emoji后显示不正常bug
-* 修复在聊天界面预览大图与聊天界面图片消息顺序不一致bug
-* 修复通过接口不填写昵称时，进入聊天界面不显示用户名的bug
-* 修复选择图片后，点击原图后发送图片，APP崩溃bug
-* 修复发送图片时，通过聊天详情再次进入聊天界面时，图片进度不更新bug
-* 图片发送成功后，删除生成的图片
-* 修复接收离线消息时，APP崩溃bug
++ Fix the problem that UI interface shows 100% after the picture was successfully sent
++ Fix the problem that minus sign sometimes loaded 5/6s to show after the group owner clicking to enter the group [chat details],
++ Fix the problem of no response loading after clicking on the session if there are too many messages in a session window.
++ Fix the bug that the interface will not be closed after the soft keyboard pops up and shut-off button of soft keyboard is clicked.
++ Fix the bug where WindowLeak was thrown abnormally by clicking the OK button after being kicked off the line
++ Fix possible exceptions after starting APP: RuntimeException: Performing stop activity that is not resume
++ Fix the bug when clicking the recording after some phones setting recordings as inquiry or forbidden
++ Fix the bug that chat titles with emoji display abnormally
++ Fix the inconsistency in the order of previewing large picture and chat interface picture messages in the chat interface
++ Fix the bug of not displaying the username when entering the chat interface without the nickname filled in through the interface
++ Fix the bug of APP when clicking on the original image and sending the image after selecting the image
++ Fix the bug that picture progress is not updated when reentering the chat interface via chat details
++ Delete the generated picture after the picture is sent successfully
++ Fix the bug of APP when receiving offline messages
 
-#### 升级提示
+#### Upgrade Prompt
 
-+ 建议升级！
++ Suggest an upgrade!
 
-#### 升级指南
-* 将jar包更新至 jmessage-sdk-1.1.4.jar更新时需删除老版本jar包。
-* 将so库更新至 libjpush205.so 同时删除原来老版本so。注意不同的cpu型号对应的结构
-* 由于富媒体的展示需求，SDK 中增加一个res文件夹存放资源文件。用户需将对应文件夹下的资源文件放入工程的目录中。
-* 如果是从更早的版本升级过来，建议参考 SDK下载包最新版本的 example 来更新 AndroidManifest.xml 文件配置。
+#### Upgrade Guide
 
-
-
++ Need to delete the old version jar package when the jar package is updated to the jmessage-sdk-1.1.4.jar
++ Update the so library to libjpush205.so and delete the old version so. Pay attention to the structure of different cpu models
++ Due to display requirements of rich media, a res folder is added to the SDK to store resource files. The user needs to put the resource file in the corresponding folder into the project directory.
++ If you are upgrading from an earlier version, it is recommended to update the configuration of AndroidManifest.xml file by referring to the latest demo version of the SDK download package.
 
 ### iOS SDK v1.0.6
 
-#### 更新时间
-* 2015-09-14
+#### Update Time
 
-#### 版本号
-* JMessage 1.0.6b283
-* JChat 1.0.2b11
++ 2015-09-14
+Version Number
++ JMessage 1.0.6b283
++ JChat 1.0.2b11
 
-#### Change Log
-+ 收发消息过多时引起的bug
-+ 解决引用第三方库冲突
-+ 七牛Token失效无法恢复。
-+ 发送语音或者图片七牛上传时候崩溃
-+ 接收宽图收到为长图
-+ 下载原图实际为缩略图
-+ 解决custom类型消息收发崩溃问题
-+ 播放语音和录制语音不能同时进行
-+ 修复iOS端发送给安卓端无法下载大图
-+ 修复语音不能正常下载问题
-+ 修复了APNS用户不显示昵称而是username问题
-+ 修复了转换json错误信息
-+ 增加了API的登陆校验
-+ 解决badge上报bug
+##### Change Log
 
-#### 升级提示
++ Bugs caused by sending and receiving too many messages
++ Resolve conflicts when referring to third-party library
++ Qiniu Token failed and cannot be restored.
++ Crashes occur when sending voice or uploading pictures to Qiniu
++ Width pictures received are long pictures.
++ Downloaded original image is actually a thumbnail
++ Solve the crash of receiving and sendig custom type message
++ Playing voice and recording voice cannot be performed at the same time
++ Fix the problem that big picture cannot be downloaded when iOS side sent to the Android side
++ Fix the problem that voice cannot be downloaded properly
++ Fix the problem of APNS user not displaying nickname but username
++ Fix error messages when converting json
++ Add login verification to API
++ Solve the bug reported by badge
 
-+ 建议升级！
+#### Upgrade Prompt
 
-#### 升级指南
-+ 使用新版本的JMessage.framework文件替换原工程下的同名旧文件
++ Suggest an upgrade!
+
+#### Upgrade Guide
+
++ Replace the old file with the same name under the original project with a new version of the JMessage.framework file
 
 ### Android SDK v1.1.3
 
-#### 更新时间
-2015-08-17
+#### Update Time
 
-#### Change Log
-+ 修复断开网络，群聊的会话界面里，进入【聊天详情】的按钮会消失
-+ 修复发送自定义类型消息，jchat 接收方通知栏会有展示
-+ 修复异步获取用户头像的接口getAvatarFileAsync，获取无头像的用户信息，返回码不合理
-+ 修复没有昵称的群主在邀请人进群后，被邀请方显示的通知中没有显示群主的username
-+ 修复收到加群事件时，由于网络不稳定导致事件有小概率丢失
-+ JChat:修复收到的首张图片不会自动下载
-+ JChat:修复从群详情里，选择里面的群成员发送消息，应用崩溃
++ 2015-08-17
 
+##### Change Log
 
-#### 升级提示
++ Fix the problem that button to enter the [chat details] will disappear in the chat interface of the group chat when network is disconnected
++ Fix the issue thar jchat receiver notification bar will show when sending custom message
++ Fix the problem that return code is unreasonable when interface getAvatarFileAsync, which is used to get the user avatar asynchronously, gets information of user without avatar
++ Fix the problem that owner's username is not displayed in invitee's notification when an owner without a nickname invites someone to enter the group
++ Fix the problem that events are rarely lost due to network instability when receiving invitation to entering the group
++ JChat fixes the problem that the first picture received will not be download automatically
++ JChat fixes the crashes of application when selecting the group members from the group details to send the message
 
-+ 建议升级！
+#### Upgrade Prompt
 
-#### 升级指南
-+ jar包更新至jmessage-android-1.1.3.jar，更新时需删除老版本jar
-+ so库更新，/libs/armeabi/libjpush205.so.同时删除原来老版本的so
++ Suggest an upgrade!
 
+#### Upgrade Guide
+
++ Update jar package to jmessage-android-1.1.3.jar, and delete the old version of jar
++ Update so library, /libs/armeabi/libjpush205.so . Also delete the old version of so
 
 ### Android SDK v1.0.18
-#### 更新时间
-2015-04-01
 
-#### Change Log
-+ JMesssage Android SDK 首次发布
-+ 聊天支持：单聊，群聊
-+ 聊天内容：文本，图片，语音对讲
-+ 提供用户管理 ，群组管理功能
+#### Update Time
 
-#### 升级提示
++ 2015-04-01
 
-可选升级！
+##### Change Log
 
-#### 升级指南
++ First release of JMesssage Android SDK
++ Chat supports: single chat, group chat
++ Chat content: text, pictures, voice intercom
++ Provides user management and group management
 
-+ 打开后请按照AndroidManifest的提示替换您的包名和APPKey；
-+ 全局替换："import cn.jpush.im.android.demo.R;" 替换为 "import 您的包名.R;"
-+ 如果是Android Studio用户注意检查 build.gradle 中的 applicationId 与你的包名一致
+#### Upgrade Prompt
+
+Optional upgrade!
+
+#### Upgrade Guide
+
++ After opening, replace your package name and APPKey according to the prompt of AndroidManifest.
++ Replace "import cn.jpush.im.android.demo.R;" with "import your package name. R;"
++ If you are a Android Studio user, check that the applicationId in build.gradle is consistent with your package name

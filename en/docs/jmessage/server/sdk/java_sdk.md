@@ -1,26 +1,26 @@
-[![GitHub version](https://badge.fury.io/gh/jpush%2Fjmessage-api-java-client.svg)](https://badge.fury.io/gh/jpush%2Fjmessage-api-java-client) 
-
 # JMessage API Java Library
-[Github 源码](https://github.com/jpush/jmessage-api-java-client)
 
-## 概述
+[Github Source Code ](https://github.com/jpush/jmessage-api-java-client)
 
-这是 JMessage REST API 的 Java 版本封装开发包，是由极光推送官方提供的，一般支持最新的 API 功能。
+## Overview
 
-对应的 REST API 文档：<https://docs.jiguang.cn/jmessage/server/rest_api_im/>
+This is a development package in Java version for the JMessage REST API, which is provided by the JPush officially and generally supports the latest API features.
 
-本开发包 Javadoc：[API Docs](http://jpush.github.io/jmessage-api-java-client/apidocs/)
+Corresponding REST API documentation：<https://docs.jiguang.cn/jmessage/server/rest_api_im/>
 
-版本更新：[Release页面](https://github.com/jpush/jmessage-api-java-client/releases)。下载更新请到这里。
+This Development Kit Javadoc: [API Docs](http://jpush.github.io/jmessage-api-java-client/apidocs/)
 
-> 非常欢迎各位开发者提交代码，贡献一份力量，review过有效的代码将会合入本项目。
+Version update: [Releases](https://github.com/jpush/jmessage-api-java-client/releases). Please download updates here.
 
+> Developers are very welcome to submit code and contribute a piece of power. Valid code reviewed will be incorporated into this project.
 
-## 安装
+## Installation
 
-### maven 方式
-将下边的依赖条件放到你项目的 maven pom.xml 文件里。
-> 其中 slf4j 可以与 logback, log4j, commons-logging 等日志框架一起工作，可根据你的需要配置使用。
+### Maven way
+
+Place the following dependencies in maven pom.xml file of your project.
+
+> Among them, slf4j can work with logging frameworks such as logback, log4j, and commons-logging, and can be configured and used according to your needs.
 
 ```Java
 <dependency>
@@ -56,84 +56,90 @@
 	<version>1.2.17</version>
 </dependency>
 ```
-### jar 包方式
 
-请到 [Release页面](https://github.com/jpush/jmessage-api-java-client/releases)下载相应版本的发布包。
+### Jar package method
 
-### 依赖包
+Please go to the [Releases](https://github.com/jpush/jmessage-api-java-client/releases) to download the corresponding release package.
+
+### Dependent package
 * [slf4j](http://www.slf4j.org/) / log4j (Logger)
 * [gson](https://code.google.com/p/google-gson/) (Google JSON Utils)
 * [jiguang-common](https://github.com/jpush/jiguang-java-client-common)
 
-> 其中 slf4j 可以与 logback, log4j, commons-logging 等日志框架一起工作，可根据你的需要配置使用。
+> Among them, slf4j can work with logging frameworks such as logback, log4j, and commons-logging, and can be configured and used according to your needs.
 
-> jiguang-common 的 jar 包下载。[请点击](https://github.com/jpush/jmessage-api-java-client/releases)
+> [Click](https://github.com/jpush/jmessage-api-java-client/releases) to download jar package of jiguang-common.
 
-## 编译源码
+## Compile Source Code
 
-> 如果开发者想基于本项目做一些扩展的开发，或者想了解本项目源码，可以参考此章，否则可略过此章。
+> If the developer wants to do some extended development based on this project, or want to understand the source code of the project, he can refer to this chapter, otherwise skip this chapter.
 
-### 导入本项目
+### Import this item
 
-* 可以采用 `git clone https://github.com/jpush/jmessage-api-java-client.git jmessage-api-src` 命令下载源码
-* 如果不使用git，请到[Release页面](https://github.com/jpush/jmessage-api-java-client/releases)下载源码包并解压
-* 采用eclipse导入下载的源码工程，推荐采用maven的方式，方便依赖包的管理
-* 假如采用导入普通项目的方式，项目报错，检查Build Path，Libraries
- * 依赖jar包都在libs目录下可以找到，没有加入的请添加到Build Path，Libraries
- * jpush-client jar包可以[点击下载](https://github.com/jpush/jpush-api-java-client/releases)
- * 默认采用了log4j做日志框架，开发者可根据自己需求替换logback、commons-logging等日志框架
- * 极个别情况下，如果test目录报错，请手动添加test的依赖jar包mockwebserver-2.0.0.jar、okhttp-2.0.0.jar、okio-1.0.0.jar
-* 开发者需要注意，将本项目的编码格式设置为UTF-8
+* You can use `git clone https://github.com/jpush/jmessage-api-java-client.git jmessage-api-src` to download the source code
+* If you don't use git, go to the [Releases](https://github.com/jpush/jmessage-api-java-client/releases) to download the source code package and unzip it
+* Use eclipse to import the downloaded source code project. Maven is recommended for easy management of dependent packages.
+* If you use the method of importing an ordinary project, the project may report an error. Please check the Build Path and Libraries then,
+* Dependent jar packages can be found in the libs directory. Please add the ones not in there yet to Build Path and Libraries
+* Jpush-client jar package can [click to download](https://github.com/jpush/jpush-api-java-client/releases)
+* Log4j is used as the logging framework by default. Developers can replace logback, commons-logging, and other logging frameworks according to their needs.
+* In rare cases, if the test directory reports an error, please manually add the dependency jar package of test：mockwebserver-2.0.0.jar, okhttp-2.0.0.jar, okio-1.0.0.jar
+* Developers need to be careful to set the encoding format of this project to UTF-8
 
-### 构建本项目
+### Build this project
 
-可以用 Eclipse 类 IDE 导出 jar 包。建议直接使用 maven，执行命令：
+You can use the Eclipse class IDE to export jar packages. It is recommended to use maven directly to execute the command
 
-	maven package
-
-### 自动化测试
-
-在项目目录下执行命令：
-
-	mvn test
-
-## 使用样例
-
-> 以下片断来自项目代码里的文件：example / cn.jmessage.api.examples.UserExample
-
-```Java
-	public static void testGetUserInfo() {
-        JMessageClient client = new JMessageClient(appkey, masterSecret);
-        try {
-            String res = client.getUserInfo("test_user");
-            LOG.info(res);
-        } catch (APIConnectionException e) {
-            LOG.error("Connection error. Should retry later. ", e);
-        } catch (APIRequestException e) {
-            LOG.error("Error response from JPush server. Should review and fix it. ", e);
-            LOG.info("HTTP Status: " + e.getStatus());
-            LOG.info("Error Message: " + e.getMessage());
-        }
-    }
+```
+maven package
 ```
 
-> 以下片断来自项目代码里的文件：example / cn.jmessage.api.examples.GroupExample
-```Java
-	public static void testCreateGroup() {
-        JMessageClient client = new JMessageClient(appkey, masterSecret);
-        try {
-            String res = client.createGroup("test_user", "test_gname1", "description", "test_user");
-            LOG.info(res);
-        } catch (APIConnectionException e) {
-            LOG.error("Connection error. Should retry later. ", e);
-        } catch (APIRequestException e) {
-            LOG.error("Error response from JPush server. Should review and fix it. ", e);
-            LOG.info("HTTP Status: " + e.getStatus());
-            LOG.info("Error Message: " + e.getMessage());
-        }
-    }
+### Automated testing
+
+Execute the command in the project directory:
+
+```
+mvn test
 ```
 
-## 贡献者列表
+## Samples
+
+> The following fragment comes from the file in the project code: example/cn.jmessage.api.examples.UserExample
+
+```java
+public static void testGetUserInfo() {
+    JMessageClient client = new JMessageClient(appkey, masterSecret);
+    try {
+        String res = client.getUserInfo("test_user");
+        LOG.info(res);
+    } catch (APIConnectionException e) {
+        LOG.error("Connection error. Should retry later. ", e);
+    } catch (APIRequestException e) {
+        LOG.error("Error response from JPush server. Should review and fix it. ", e);
+        LOG.info("HTTP Status: " + e.getStatus());
+        LOG.info("Error Message: " + e.getMessage());
+    }
+}
+```
+
+> The following fragment comes from the file in the project code: example/cn.jmessage.api.examples.GroupExample
+
+```java
+public static void testCreateGroup() {
+    JMessageClient client = new JMessageClient(appkey, masterSecret);
+    try {
+        String res = client.createGroup("test_user", "test_gname1", "description", "test_user");
+        LOG.info(res);
+    } catch (APIConnectionException e) {
+        LOG.error("Connection error. Should retry later. ", e);
+    } catch (APIRequestException e) {
+        LOG.error("Error response from JPush server. Should review and fix it. ", e);
+        LOG.info("HTTP Status: " + e.getStatus());
+        LOG.info("Error Message: " + e.getMessage());
+    }
+}
+```
+
+## Contributor List
 
 * [@tangyikai](https://github.com/tangyikai)

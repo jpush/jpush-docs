@@ -1,157 +1,153 @@
 # IM REST Report
 
 <div style="font-size:13px;background: #F0E68C;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 10px; padding-bottom: 0;margin-bottom: 0;">
-<p>特别提示：v1 版本获取数据有数量限制，此版本将不再提供新功能，仅维护因 bug 导致的问题，请正在使用此版本的开发者尽快升级到 v2 版本。
+<p>
+  Special note: There is a limit on the number of data obtained by the v1 version. This version will no longer provide new features and will only maintain problems caused by bugs. Please update to the v2 version as soon as possible.
+</p>
 </div>
 
-## 消息历史
+## Message History
 
-目前只保存最近60天消息，这类 API 地址统一为（注意与 Push API 不同）：**https://report.im.jpush.cn/v1**
+Currently, only the last 60 days of messages are saved. Addresses of these APIs are unified (note that unlike the Push API)：https://report.im.jpush.cn/v1
 
-### HTTP 验证
+### HTTP Authentication
 
-验证采用 HTTP Basic 机制，即 HTTP Header（头）里加一个字段（Key/Value对）：
-Authorization: Basic base64_auth_string
-其中 base64_auth_string 的生成算法为：base64(appKey:masterSecret)
-即，对 appKey 加上冒号，加上 masterSecret 拼装起来的字符串，再做 base64 转换。
+Authentication uses the HTTP Basic mechanism, that is, a field (Key/Value pair) Authorization: Basic base64_auth_string is added in the HTTP Header (header). The generation algorithm of base64_auth_string is: base64(appKey:masterSecret) That is, adding a colon to appKey, plus masterSecret Assembled strings, and then do a base64 conversion.
 
 <div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px;">
-<p>温馨提示：</p>
-<p>使用此接口，传递给JMessage的URL需要经过URL Encode处理，例如时间格式中的空格需要被转义为 %20</p>
+<p>Tips：</p>
+<p>
+The URL passed to the JMessage via this interface needs to be processed by the URL Encode, for example, spaces in the time format need to be escaped as %20.
+</p>
 </div>
 
-<br/>
-
-
-## 获取消息
-
-
+## Get Message
 
 ```
 GET /messages?&start=0&count=500&begin_time={begin_time}&end_time={end_time}
 ```
 
-### Example Request 
+### Example Request
 
-####  Request Header  
+#### Request Header
 
 ```
 GET /messages?start=0&count=500&begin_time=2015-11-02 10:10:10&end_time=2015-11-02 10:10:12
 ```
 
-#### Request Body  
+#### Request Body
 
-N/A
++ N/A
 
-####  Request Params  
+#### Request Params
 
-+ start （必填）查询的起始纪录
-+ count （必填）查询的总条数  一次最多1000
-+ begin_time (可选) 记录开始时间 格式  yyyy-MM-dd HH:mm:ss  设置筛选条件大于等于begin time 不设置不生效  
-+ end_time (可选)   记录结束时间  格式 yyyy-MM-dd HH:mm:ss  设置筛选条件小于等于end time   不设置不生效
-+ end time begin time 都不设置的话 说明两个条件都不生效，则查询服务端保存的所有消息
-+ 查询的消息按发送时间升序排序
++ start (required): the starting record of the query
++ count (required): the total number of queries, up to 1000 at a time
++ begin_time (optional): record of starting time. Format yyyy-MM-dd HH:mm:ss. Set filtering condition greater than or equal to beginning time. Not take effect if not set.
++ end_time (optional): record of ending time. Format yyyy-MM-dd HH:mm:ss. Set filtering condition less than or equal to ending time. Not take effect if not set.
++ If neither ending time or beginning time is set, both conditions are not valid, and then query all messages stored on the server.
++ Queried messages are sorted in ascending order by sending time
 
-### Example Response  
+### Example Response
 
-#### Response Header   
-
-```
-HTTP/1.1 200 
-Content-Type: application/json; charset=utf-8 
-```
-
-#### Response Data  
+#### Response Header
 
 ```
-{ 
-	"total": 3000, "start": 0, "count": 1, 
- 	"messages": [ 
-        { "target_type": "single", 
-          "msg_type": "text", 
-          "target_name": "", 
-          "target_id": "10010648", 
-          "from_id": "868802000386631", 
-          "from_name": "868802000386631", 
-          "from_type": "user", 
-          "from_platform": "a", 
+HTTP/1.1 200
+Content-Type: application/json; charset=utf-8
+```
+
+#### Response Data
+
+```
+{
+    "total": 3000, "start": 0, "count": 1,
+    "messages": [
+        { "target_type": "single",
+          "msg_type": "text",
+          "target_name": "",
+          "target_id": "10010648",
+          "from_id": "868802000386631",
+          "from_name": "868802000386631",
+          "from_type": "user",
+          "from_platform": "a",
           "msg_body": {
-                 "text": "text", 
-                 "extras": { } 
-          }, 
-          "create_time": 1446016259, 
+                 "text": "text",
+                 "extras": { }
+          },
+          "create_time": 1446016259,
           "version": 1,
           "msgid": 13242735,
           "msg_level" : 0, // 0代表应用内消息 1代表跨应用消息
-          "msg_ctime" : 1466866468352 // 服务器接收到消息的时间，单位毫秒 
+          "msg_ctime" : 1466866468352 // 服务器接收到消息的时间，单位毫秒
         }
- 	] 
-} 
+    ]
+}
 ```
 
-## 获取用户消息
+## Get user messages
 
 ```
 GET /users/{username}/messages?start=0&count=500&begin_time={begin_time}&end_time={end_time}
 ```
-### Example Request 
 
-####  Request Header  
+### Example Request
+
+#### Request Header
 
 ```
 GET /users/caiyh/messages?start=0&count=500&begin_time=2015-11-02 10:10:10&end_time=2015-11-02 10:10:12
 ```
 
-#### Request Body  
+#### Request Body
 
-N/A
++ N/A
 
-####  Request Params  
-+ start （必填）查询的起始纪录
-+ count （必填）查询的总条数  一次最多1000
-+ begin_time (可选) 记录开始时间 格式  yyyy-MM-dd HH:mm:ss 设置筛选条件大于end time 不设置不生效  
-+ end_time (可选)   记录结束时间  格式 yyyy-MM-dd HH:mm:ss  设置筛选条件小于begin time   不设置不生效
-+ end time begin time 都不设置的话 说明两个条件都不生效，则查询服务端保存的所有消息
-+ 使用此接口，传递给JPush的URL需要经过URL Encode处理，例如时间格式中的空格需要被转义为 %20
-+ 查询的消息按发送时间升序排序
+#### Request Params
 
-### Example Response  
++ start (required): the starting record of the query
++ count (required): the total number of queries, up to 1000 at a time
++ begin_time (optional): record of starting time. Format yyyy-MM-dd HH:mm:ss. Set filtering condition greater than or equal to beginning time. Not take effect if not set.
++ end_time (optional): record of ending time. Format yyyy-MM-dd HH:mm:ss. Set filtering condition less than or equal to ending time. Not take effect if not set.
++ If neither ending time or beginning time is set, both conditions are not valid, and then query all messages stored on the server.
++ The URL passed to the JMessage via this interface needs to be processed by the URL Encode, for example, spaces in the time format need to be escaped as %20.
++ Queried messages are sorted in ascending order by sending time
 
-#### Response Header   
+### Example Response
 
-```
-HTTP/1.1 200 
-Content-Type: application/json; charset=utf-8 
-```
-
-#### Response Data  
+#### Response Header
 
 ```
-{ 
-  "total": 3000, "start": 0, "count": 1, 
-  "messages": [ 
-        { "target_type": "single", 
-          "msg_type": "text", 
-          "target_name": "", 
-          "target_id": "10010648", 
-          "from_id": "868802000386631", 
-          "from_name": "868802000386631", 
-          "from_type": "user", 
-          "from_platform": "a", 
-          "from_appkey": "4f7aef34fb361292c566a1cd", 
-          "target_appkey": "4f7aef34fb361292c566a1cd", 
+HTTP/1.1 200
+Content-Type: application/json; charset=utf-8
+```
+
+#### Response Data
+
+```
+{
+  "total": 3000, "start": 0, "count": 1,
+  "messages": [
+        { "target_type": "single",
+          "msg_type": "text",
+          "target_name": "",
+          "target_id": "10010648",
+          "from_id": "868802000386631",
+          "from_name": "868802000386631",
+          "from_type": "user",
+          "from_platform": "a",
+          "from_appkey": "4f7aef34fb361292c566a1cd",
+          "target_appkey": "4f7aef34fb361292c566a1cd",
           "msg_body": {
-                 "text": "text", 
-                 "extras": { } 
-          }, 
-          "create_time": 1446016259, 
-          "version": 1 , 
+                 "text": "text",
+                 "extras": { }
+          },
+          "create_time": 1446016259,
+          "version": 1 ,
           "msgid": 13242735,
           "msg_level" : 0 // 0代表应用内消息 1代表跨应用消息
-          "msg_ctime" : 1466866468352 // 服务器接收到消息的时间，单位毫秒 
+          "msg_ctime" : 1466866468352 // 服务器接收到消息的时间，单位毫秒
         }
- ] 
+ ]
 }
 ```
-
-

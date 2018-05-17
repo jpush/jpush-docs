@@ -1,9 +1,10 @@
 # JMessage Library for .NET
-[Github 源码](https://github.com/jpush/jmessage-api-csharp-client)
+
+[Github Source Code](https://docs.jiguang.cn/jmessage/server/sdk/csharp_sdk/)
 
 JMessage's officially supported .NET library for accessing JMessage APIs.
 
-极光官方支持的 IM .NET 服务器端 SDK。
+IM .NET server-side SDK officially supported by Jiguang.
 
 ## Install
 
@@ -11,7 +12,7 @@ JMessage's officially supported .NET library for accessing JMessage APIs.
 
 ## Example
 
-可参考项目 *./Test* 目录中的测试代码。
+Refer to the test code in the ./Test directory.
 
 ## Document
 
@@ -20,13 +21,13 @@ JMessage's officially supported .NET library for accessing JMessage APIs.
 ## Support
 
 - [Issues](https://github.com/jpush/jmessage-api-csharp-client/issues)
-- [极光社区](https://community.jiguang.cn/)
+- [Jiguang Community](https://community.jiguang.cn/)
 
 ## FAQ
 
-1. 如果调用异步方法时出现死锁，即一直没有返回 HttpResponse，可参考这篇[文章](https://blogs.msdn.microsoft.com/jpsanders/2017/08/28/asp-net-do-not-use-task-result-in-main-context/)。
+1. If there is a deadlock when calling the asynchronous method, ie HttpResponse has not been returned, please refer to [this article](https://blogs.msdn.microsoft.com/jpsanders/2017/08/28/asp-net-do-not-use-task-result-in-main-context/).
 
-1. 因为使用了 HttpClient，所以当前 library 不支持 .NET Framework 4.0 及以下版本。因此如果是这些版本的话，建议使用 [v1](https://github.com/jpush/jmessage-api-csharp-client/tree/v1) 版本的 library。
+2. Because HttpClient is used, the current library does not support .NET Framework 4.0 or below. Therefore, if they are these versions, it is recommended to use the [v1 version](https://github.com/jpush/jmessage-api-csharp-client/tree/v1) of the library.
 
 ## Contribute
 

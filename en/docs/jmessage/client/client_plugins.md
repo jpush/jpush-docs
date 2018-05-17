@@ -1,22 +1,21 @@
-# 客户端集成插件
+# Client Integration Plugin
 
-除了原生的 Android SDK 与 iOS SDK 之外，极光推送提供主流的开发工具集成插件。
+In addition to the native Android SDK and iOS SDK, JPush offers mainstream development tool integration plugins.
 
-## 官方维护
+## Official Maintenance
 
-官方维护的版本放在 [Github - 极光开发者](https://github.com/jpush) 上以开源的形式发布。如果需下载打包版本，请点击相应项目页面的 "Releases"，下载你想要的发布打包。
+The officially maintained version is distributed on [Github – Jiguang Developers](https://github.com/jpush) as open source. If you need to download the packaged version, please click "Releases" on the corresponding project page to download the package you want.
 
-官方插件地址包含：安装方法、demo(example 文件夹内)、API 文档、常见问题，请开发者仔细参阅。
+The official plug-in address includes: installation method, demo (in the example folder), API documentation, and frequently asked questions.
 
-### PhoneGap
+###  PhoneGap
 
-
-官方地址：[https://github.com/jpush/jmessage-phonegap-plugin](https://github.com/jpush/jmessage-phonegap-plugin)
+Official address：[https://github.com/jpush/jmessage-phonegap-plugin](https://github.com/jpush/jmessage-phonegap-plugin)
 
 ### React Native
 
-官方地址：[https://github.com/jpush/jmessage-react-plugin](https://github.com/jpush/jmessage-react-plugin)
+Official address：[https://github.com/jpush/jmessage-react-plugin](https://github.com/jpush/jmessage-react-plugin)
 
-## 技术支持
+## Technical support
 
-- QQ 交流群：413602425
++ QQ exchange group：413602425
