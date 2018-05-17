@@ -69,3 +69,30 @@ pages:
     - 'REST API v2 - Report': 'jpush/server/old/rest_api_v2_report.md'
   - Recent Updates: 'jpush/updates.md'
   - Download: 'jpush/resources.md'
+
+
+- JSMS:
+
+  - Getting Started Guide:
+    - 'Overview of SMS Verification Code': 'jsms/guideline/JSMS_guide.md'
+    - 'Console Operation Guide': 'jsms/guideline/JSMS_consoleguide.md'
+  - Android:
+    - 'Android SDK Integration Guide': 'jsms/client/Android/android_guide.md'
+    - 'Android SDK API': 'jsms/client/Android/android_api.md'
+  - iOS:
+    - 'iOS SDK Integration Guide': 'jsms/client/iOS/ios_guide.md'
+    - 'iOS SDK API': 'jsms/client/iOS/ios_api.md'
+  - REST API:
+    - 'Overview of REST API': 'jsms/server/rest_api_summary.md'
+    - 'SMS Signing API': 'jsms/server/rest_api_jsms_sign.md'
+    - 'SMS Template API': 'jsms/server/rest_api_jsms_templates.md'
+    - 'SMS Sending API': 'jsms/server/rest_api_jsms.md'
+    - 'Scheduled SMS API': 'jsms/server/rest_api_jsms_schedule.md'
+    - 'SMS Margin Querying API': 'jsms/server/rest_jsms_api_account.md'
+    - 'Callback Interface': 'jsms/server/callback.md'
+  - Server SDK:
+    - 'Java SDK': 'jsms/server/sdk/java_sdk.md'
+    - 'PHP SDK': 'jsms/server/sdk/php_sdk.md'
+    - 'C# SDK': 'jsms/server/sdk/csharp_sdk.md'
+  - Recent Updates: 'jsms/updates.md'
+  - Download: 'jsms/resources.md'
