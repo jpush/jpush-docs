@@ -1,174 +1,207 @@
-## SDK API 描述
-+ SMSSDK 类：对外的类，该类为单例，调用该类的方法都需要获取该类的唯一实例，获得方法为 SMSSDK.getInstance()。
+## Description of SDK API
 
-+ SmscodeListener：获取验证码的回调接口，在调用 SMSSDK 的 getSmsCode 时需要传入接口实例。
-
-+ SmscheckListener：检查验证码的回调接口，在调用 SMSSDK 的 checkSmsCode 时需要传入接口实例。
++ SMSSDK class: External class. This class is a singleton. The methods that call this class need to obtain the unique instance of the class. The method is SMSSDK.getInstance().
++ SmscodeListener: Get the callback interface for verification code. You need to pass in the interface instance when calling the SMSSDK's getSmsCode.
++ SmscheckListener: Check the callback interface of the verification code. An instance of the interface needs to be passed in when calling the SMSSDK's checkSmsCode.
 
 ### SMSSDK.initSdk(Context context)
-#### 接口说明
 
-该接口为初始化接口，主要是检测一些配置信息，如果配置错误将会初始化失败，将会打印错误日志。调用其它接口前必须先调用该接口，仅且仅需调用一次，建议在 Application 或初始 Activity 中调用。
+#### Interface Description
 
-#### 调用示例
+This interface is an initialization interface. It is mainly to detect some configuration information. If the configuration is incorrect, the initialization will fail and an error log will be printed. The interface must be called before calling other interfaces. It is called only once and it is recommended to call it in the Application or initial activity.
 
-	SMSSDK.getInstance().initSdk(this);
+#### Call Example
+```
+SMSSDK.getInstance().initSdk(this);
+```
 
-### SMSSDK.getSmsCode(String phone, String tempId, SmscodeListener listener)
-#### 接口说明
-获取验证码。
+###SMSSDK.getSmsCode(String phone, String tempId, SmscodeListener listener)
 
->该接口是在非 UI 线程回调，需要在 UI 线程回调可调用 SMSSDK.getSmsCodeAsyn()。
+#### Interface Description
 
-#### 参数说明
-+ phone：手机号码
-+ tempId：短信模板
-+ listener：回调接口
+Get the verification code.
 
-#### 调用示例
+>The interface is a callback in a non-UI thread that needs to call back in the UI thread SMSSDK.getSmsCodeAsyn().
 
-	SMSSDK.getInstance().getSmsCodeAsyn("159xxxxxxxx", "1", new SmscodeListener() {
-		@Override
-		public void getCodeSuccess(final String uuid) {
-			// 获取验证码成功，uuid 为此次获取的唯一标识码。
-		}
+#### Parameter Description
 
-		@Override
-		public void getCodeFail(int errCode, final String errMsg) {
-			// 获取验证码失败 errCode 为错误码，详情请见文档后面的错误码表；errMsg 为错误描述。
-		}
-	});
++ phone：Phone number
++ tempId：SMS template
++ listener：Callback interface
+
+#### Call Example
+```
+SMSSDK.getInstance().getSmsCodeAsyn("159xxxxxxxx", "1", new SmscodeListener() {
+    @Override
+    public void getCodeSuccess(final String uuid) {
+        // 获取验证码成功，uuid 为此次获取的唯一标识码。
+    }
+
+    @Override
+    public void getCodeFail(int errCode, final String errMsg) {
+        // 获取验证码失败 errCode 为错误码，详情请见文档后面的错误码表；errMsg 为错误描述。
+    }
+});
+```
 
 ### SMSSDK.checkSmsCode(String phone, String code, SmscheckListener listener)
-#### 接口说明
-验证码验证接口。
->该接口是在非 UI 线程回调，需要在 UI 线程回调可调用 SMSSDK.checkSmsCodeAsyn()。
 
-#### 参数说明
-+ phone：手机号码
-+ code：短信验证码
-+ listener：回调接口
+#### Interface Description
 
-#### 调用示例
+Verification interface of verification code
+>The interface is a callback in a non-UI thread that needs to call back in the UI thread SMSSDK.checkSmsCodeAsyn().
 
-	SMSSDK.getInstance().checkSmsCodeAsyn("159xxxxxxxx", "123456", new SmscheckListener() {
-		@Override
-		public void checkCodeSuccess(final String code) {
-			// 验证码验证成功，code 为验证码信息。
-		}
+#### Parameter Description
 
-		@Override
-		public void checkCodeFail(int errCode, final String errMsg) {
-			// 验证码验证失败, errCode 为错误码，详情请见文档后面的错误码表；errMsg 为错误描述。
-		}
-	});
++ phone：Phone number
++ code：SMS verification code
++ listener：Callback interface
+
+#### Call Example
+```
+SMSSDK.getInstance().checkSmsCodeAsyn("159xxxxxxxx", "123456", new SmscheckListener() {
+    @Override
+    public void checkCodeSuccess(final String code) {
+        // 验证码验证成功，code 为验证码信息。
+    }
+
+    @Override
+    public void checkCodeFail(int errCode, final String errMsg) {
+        // 验证码验证失败, errCode 为错误码，详情请见文档后面的错误码表；errMsg 为错误描述。
+    }
+});
+```
 
 ### SMSSDK.getVoiceCode(String phone, SmscodeListener listener)
-#### 接口说明
-获取语音验证码。语音语言为中文。
 
->该接口是在非 UI 线程回调，需要在 UI 线程回调可调用 SMSSDK.getVoiceCodeAsyn()。
+#### Interface Description
 
-#### 参数说明
-+ phone：手机号码
-+ listener：回调接口
+Get voice verification code. The speech language is Chinese.
 
-#### 调用示例
+>The interface is a callback in a non-UI thread that needs to call back in the UI thread SMSSDK.getVoiceCodeAsyn().
 
-	SMSSDK.getInstance().getVoiceCodeAsyn("159xxxxxxxx", new SmscodeListener() {
-		@Override
-        public void getCodeSuccess(final String uuid) {
-            //获取验证码成功，uuid 为此次获取的唯一标识码。
-        }
-        @Override
-        public void getCodeFail(int errCode, final String errMsg) {
-            //获取验证码失败，errCode 为错误码，详情请见文档后面的错误码表；errMsg 为错误描述。
-        }
-	});
+
+#### Parameter Description
+
++ phone：Phone number
++ listener：Callback interface
+
+#### Call Example
+```
+SMSSDK.getInstance().getVoiceCodeAsyn("159xxxxxxxx", new SmscodeListener() {
+    @Override
+    public void getCodeSuccess(final String uuid) {
+        //获取验证码成功，uuid 为此次获取的唯一标识码。
+    }
+    @Override
+    public void getCodeFail(int errCode, final String errMsg) {
+        //获取验证码失败，errCode 为错误码，详情请见文档后面的错误码表；errMsg 为错误描述。
+    }
+});
+```
 
 ### SMSSDK.getVoiceCode(String phone,int language,SmscodeListener listener)
-#### 接口说明
-获取语音验证码。该接口可指定语言。
 
->该接口是在非 UI 线程回调，需要在 UI 线程回调可调用 SMSSDK.getVoiceCodeAsyn()。
+#### Interface Description
 
-#### 参数说明
-+ phone：手机号码
-+ language：0为中文，1为英文，2为中英文，传入不支持的语言会报50040错误
-+ listener：回调接口
+Get voice verification code. This interface can specify the language.
 
-#### 调用示例
+>The interface is a callback in a non-UI thread that needs to call back in the UI thread SMSSDK.getVoiceCodeAsyn()
 
-	SMSSDK.getInstance().getVoiceCodeAsyn("159xxxxxxxx",2,new SmscodeListener() {
-		@Override
-        public void getCodeSuccess(final String uuid) {
-            //获取验证码成功，uuid 为此次获取的唯一标识码。
-        }
-        @Override
-        public void getCodeFail(int errCode, final String errMsg) {
-            //获取验证码失败，errCode 为错误码，详情请见文档后面的错误码表；errMsg 为错误描述。
-        }
-	});
+#### Parameter Description
+
++ phone：Phone number
++ language：0 for Chinese, 1 for English, and 2 for Chinese and English. If unsupported languages passed in, it will report 50040.
++ listener：Callback interface
+#### Call Example
+```
+SMSSDK.getInstance().getVoiceCodeAsyn("159xxxxxxxx",2,new SmscodeListener() {
+    @Override
+    public void getCodeSuccess(final String uuid) {
+        //获取验证码成功，uuid 为此次获取的唯一标识码。
+    }
+    @Override
+    public void getCodeFail(int errCode, final String errMsg) {
+        //获取验证码失败，errCode 为错误码，详情请见文档后面的错误码表；errMsg 为错误描述。
+    }
+});
+```
 
 ### SMSSDK.setIntervalTime(long intervalTime)
-#### 接口说明
-设置前后两次获取验证码的时间间隔，默认 30 秒。
 
-#### 参数说明
-+ intervalTime：时间间隔，单位是毫秒(ms)。
+#### Interface Description
 
-#### 调用示例
+Set the interval for getting the verification code twice. Default to 30 seconds.
 
-    SMSSDK.getInstance().setIntervalTime(60000);    // 设置间隔时间为 60 秒
+#### Parameter Description
+
++ intervalTime：Interval, in milliseconds (ms).
+
+#### Call Example
+```
+SMSSDK.getInstance().setIntervalTime(60000);    // 设置间隔时间为 60 秒
+```
 
 ### SMSSDK.getIntervalTime()
-#### 接口说明
-获取当前设置的时间间隔。
-#### 返回值
-+ long：单位为毫秒(ms)。
 
-#### 调用示例
+#### Interface Description
 
-    SMSSDK.getInstance().getIntervalTime();
+Get the interval of current settings.
+
+#### Return Value
+
++ long：The unit is milliseconds (ms). 
+
+#### Call Example
+```
+SMSSDK.getInstance().getIntervalTime();
+```
 
 ### SMSSDK.setDebugMode(boolean debugMode)
-#### 接口说明
-设置 debug 模式，设置 true 会输出 SDK 打印的日志。
 
-#### 参数说明
-+ debugMode：true 为 debug 模式，false 为非 debug 模式。
+#### Interface Description
 
-#### 调用示例
+Set the debug mode. Setting true will output the logs printed by the SDK.
 
-    SMSSDK.getInstance().setDebugMode(true);
+#### Parameter Description
 
++ debugMode：true is debug mode, false is non-debug mode.
 
-## 错误码描述
-| 错误码 | 错误码描述 | 备注 |
+#### Call Example
+```
+SMSSDK.getInstance().setDebugMode(true);
+```
+
+## Description of Error Code 
+
+| Error code | Description of Error code | Remarks |
 |--------|---------------------|--------------------------|
-| 3001 | 请求超时 |  |
-| 3002 | 无效的手机号码 |  |
-| 4001 | body 为空 |  |
-| 4002 | 无效的 AppKey |  |
-| 4003 | 无效的来源 |  |
-| 4004 | body 解密失败 |  |
-| 4005 | aes key 解密失败 |  |
-| 4006 | 时间戳转化失败 |  |
-| 4007 | body 格式不正确 |  |
-| 4008 | 无效时间戳 |  |
-| 4009 | 没有短信验证权限 |  |
-| 4011 | 发送超频 | 同一手机号每天获取验证码无限制，通知类相同内容10分钟3条，不同内容无限制，营销类10分钟3条。|
-| 4013 | 模板不存在 |  |
-| 4014 | extra 为空 |  |
-| 4015 | 验证码不正确 |  |
-| 4016 | 没有余额 |  |
-| 4017 | 验证码超时 |  |
-| 4018 | 重复验证 |  |
-| 2993 | 验证码校验失败 | 短信已下发但获取 uuid 异常 |
-| 2994 | 本地数据有误 |  |
-| 2995 | 数据解析错误 |  |
-| 2996 | 两次请求不超过 1 分钟 | 本地校验 |
-| 2997 | 未获取验证码 |  |
-| 2998 | 网络错误 | 没有网络等 |
-| 2999 | 其它错误 |  |
-| 50040 | 传入不支持的语言 | 0为中文，1为英文，2为中英文 |
+| 3001 | Request timed out |  |
+| 3002 | Invalid phone number |  |
+| 4001 | Body is empty |  |
+| 4002 | Invalid AppKey |  |
+| 4003 | Invalid source |  |
+| 4004 | Decryption of body failed|  |
+| 4005 | Decryption of aes key failed |  |
+| 4006 | Timestamp conversion failed |  |
+| 4007 | Format of body is incorrect |  |
+| 4008 | Invalid timestamp |  |
+| 4009 | No SMS verification permission |  |
+| 4011 | Send overclocking | There is no limit for the same mobile phone number getting verification code every day. The notification verification code with same content is 3 pieces in 10 minutes, and there are no restrictions on different contents. The marketing category is also 3 in 10 minutes.|
+| 4013 | Template does not exist |  |
+| 4014 | Extra is empty |  |
+| 4015 | Incorrect verification code |  |
+| 4016 | No margin |  |
+| 4017 | Verification code timeout |  |
+| 4018 | Double verification |  |
+| 2993 | Verification of verification code failed | SMS delivered but get uuid exception |
+| 2994 | Local data is wrong |  |
+| 2995 | Data parsing error |  |
+| 2996 | Interval for two requests is no more than 1 minute | Local verification |
+| 2997 | Failed to get verification code |  |
+| 2998 | Network Error | No network, etc |
+| 2999 | Other errors |  |
+| 50040 | Pass in unsupported language | 0 for Chinese, 1 for English, 2 for English and Chinese |
+
+
+
