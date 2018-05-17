@@ -1,173 +1,167 @@
-# Android SDK 集成指南
+# Android SDK Integration Guide
 
-## 使用提示
+## Use Suggestions
 
-本文是 JMessage Android SDK 标准的集成指南文档。用以指导 SDK 的使用方法，默认读者已经熟悉IDE（Eclipse 或者 Android Studio）的基本使用方法，以及具有一定的 Android 编程知识基础。
+This article is an integration guide document for the JMessage Android SDK standard, which is used to guide the use of the SDK. The default reader is developers who are already familiar with the basic usage of the IDE (Eclipse or Android Studio) and have a certain knowledge base of Android programming.
 
-本篇指南匹配的 JMessage Android SDK 版本为：2.0.0 及以后版本。
+JMessage Android SDK version matched with this guide matches is: 2.0.0 and later.
 
-+ [极光文档](https://docs.jiguang.cn/jmessage/guideline/jmessage_guide/)网站上有JMessage相关的所有指南、API、教程等全部的文档。包括本文档的更新版本，都会及时地发布到该网站上。
-+ 如果您看到本文档，但还未下载Android SDK，请访问[SDK下载页面](https://docs.jiguang.cn/jmessage/resources/)下载。
++ [The JIGUANG Documentation](https://docs.jiguang.cn/jmessage/guideline/jmessage_guide/) has all the JMessage-related guides, APIs, tutorials, and all other documents. Updated versions of this document will be posted to the site in a timely manner.
++ If you see this document but have not yet [downloaded the Android SDK](https://docs.jiguang.cn/jmessage/resources/), please visit the SDK download page to download it.
 
-
-### JMessage SDK压缩包内容简介
+### Brief introduction of JMessage SDK package
 
 + demo/
-	+ 一个用来展示JMessage SDK接口基本用法的demo应用。
+    + A demo application to demonstrate the basic usage of the JMessage SDK interface
 + doc/
-	+ JMessage sdk中所包含所有对外接口的java doc。
+    + Java doc for all external interfaces contained in the JMessage sdk.
 + libs/jcore-android_v1.X.Y.jar
-	+ 极光开发者服务的核心包。
+    + The core package of Jiguang Developer Services.
 + libs/jmessage-android-2.X.Y.jar
-	+ JMessage SDK开发包
-+ libs/(cpu-type)/libjcore1xy.so 
-    + 各种CPU类型的native开发包。
+    + JMessage SDK Development Kit
++ libs/(cpu-type)/libjcore1xy.so
+    + Native development kits for various CPU types.
 
-### Android SDK 版本
+### Android SDK version
 
-目前SDK只支持Android 2.3或以上版本的手机系统。
+At present, the SDK only supports Android 2.3 or later mobile phone systems.
 
-## jcenter 自动集成步骤
+## Automatic Integration Steps of jcenter
 
+***Instructions***: JMessage supports jcenter automatic integration since version 2.1.2. Developers who use jcenter automatic integration do not need to add jar and so in the project, and jcenter will automatically complete the dependency; he does nor need to add any configuration related to JPush SDK in AndroidManifest.xml neither, instead, jcenter will automatically import them.
 
-***说明*** ： JMessage从2.1.2版本开始支持jcenter自动集成，使用jcenter自动集成的开发者，不需要在项目中添加jar和so，jcenter会自动完成依赖；在AndroidManifest.xml中不需要添加任何JPush SDK 相关的配置，jcenter会自动导入。
++ If the developer needs to modify component properties, he can define the component with the same name in the local AndroidManifest and configure the desired properties. Then use xmlns:tools to control the local component to override the component on jcenter. Example:
 
-+ 如果开发者需要修改组件属性，可以在本地的 AndroidManifest 中定义同名的组件并配置想要的属性，然后用 xmlns:tools 来控制本地组件覆盖 jcenter 上的组件。示例：
+```
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.android.tests.flavorlib.app"
+    xmlns:tools="http://schemas.android.com/tools">
 
-		<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-			package="com.android.tests.flavorlib.app"
-			xmlns:tools="http://schemas.android.com/tools">
-			
-			<application
-				android:icon="@drawable/icon"
-				android:name="com.example.jpushdemo.ExampleApplication"
-				android:label="@string/app_name" >
-				
-				<service android:name="cn.jpush.android.service.PushService"
-            		android:process=":multiprocess"
-            		tools:node="replace" >
-            		
-            		……
-            	</service>
-            
+    <application
+        android:icon="@drawable/icon"
+        android:name="com.example.jpushdemo.ExampleApplication"
+        android:label="@string/app_name" >
+
+        <service android:name="cn.jpush.android.service.PushService"
+            android:process=":multiprocess"
+            tools:node="replace" >
+
             ……
-          </application>  
-          
-          ……
-		</manifest>
+        </service>
 
+    ……
+  </application>
 
-+ 确认android studio的 Project 根目录的主 gradle 中配置了jcenter支持。（新建project默认配置就支持）
-        
-        buildscript {
-            repositories {
-                jcenter()
-            }
-            ......
-        }
-        
-        allprojets {
-            repositories {
-                jcenter()
-            }
-        }
-              
-        
-        
-+ 在 module 的 gradle 中添加依赖和AndroidManifest的替换变量。
+  ……
+</manifest>
+```
 
++ Confirm that jcenter support is configured in the main gradle of the android studio's Project root directory. (Support if new project defaults the configuration)
 
-        
-        android {
-            ......
-            defaultConfig {
-                applicationId "com.xxx.xxx" //JPush上注册的包名.
-                ......
-                
-                ndk {
-                    //选择要添加的对应cpu类型的.so库。 
-                    abiFilters 'armeabi', 'armeabi-v7a', 'armeabi-v8a' 
-                    // 还可以添加 'x86', 'x86_64', 'mips', 'mips64'
-                }
-                
-                manifestPlaceholders = [
-                    JPUSH_PKGNAME : applicationId,
-                    JPUSH_APPKEY : "你的appkey", //JPush上注册的包名对应的appkey.
-                    JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
-                ]
-                ......
-            }
-            ......
-        }
-        
-        
-       
-        dependencies {
-            ......
-            
-            compile 'cn.jiguang.sdk:jmessage:2.6.0'  // 此处以JMessage 2.6.0 版本为例。
-            compile 'cn.jiguang.sdk:jcore:1.2.0'  // 此处以JCore 1.2.0 版本为例。
-            ......
-        }
-        
-        
-***注*** : 如果在添加以上 abiFilter 配置之后android Studio出现以下提示：
+```
+buildscript {
+    repositories {
+        jcenter()
+    }
+    ......
+}
 
-        NDK integration is deprecated in the current plugin. Consider trying the new experimental plugin.
-则在 Project 根目录的gradle.properties文件中添加：
+allprojets {
+    repositories {
+        jcenter()
+    }
+}
+```
 
-        android.useDeprecatedNdk=true
++ Add substitution variables of dependency and AndroidManifest in gradle of module
 
+```
+android {
+    ......
+    defaultConfig {
+        applicationId "com.xxx.xxx" //JPush上注册的包名.
+        ......
 
-## 手动集成步骤
-
-+ 解压缩 jmessage-sdk-android-2.X.Y.zip 集成压缩包。
-+ 复制 libs/jcore-android_v1.X.Y.jar 到工程 libs/ 目录下。
-+ 复制 libs/jmessage-android_2.X.Y.jar 到工程 libs/ 目录下。
-+ 复制 libs/(cpu-type)/libjcore1xy.so 到你的工程中存放对应cpu类型的目录下。
-
-
-***说明***：使用android studio的开发者，如果使用jniLibs文件夹导入so文件，则仅需将所有cpu类型的文件夹拷进去；如果将so文件添加在module的libs文件夹下，注意在module的gradle配置中添加一下配置：
-
-       
-        android {
-            ......
-            sourceSets {
-                main {
-                    jniLibs.srcDirs = ['libs']
-                    ......
-                }
-                ......
-            }
-            ......
+        ndk {
+            //选择要添加的对应cpu类型的.so库。 
+            abiFilters 'armeabi', 'armeabi-v7a', 'armeabi-v8a' 
+            // 还可以添加 'x86', 'x86_64', 'mips', 'mips64'
         }
 
-### 配置 AndroidManifest.xml
+        manifestPlaceholders = [
+            JPUSH_PKGNAME : applicationId,
+            JPUSH_APPKEY : "你的appkey", //JPush上注册的包名对应的appkey.
+            JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
+        ]
+        ......
+    }
+    ......
+}
 
-根据 SDK 压缩包里demo中的 AndroidManifest.xml 样例文件，来配置应用程序项目的 AndroidManifest.xml 。
+dependencies {
+    ......
 
-主要步骤为：
+    compile 'cn.jiguang.sdk:jmessage:2.5.0'  // 此处以JMessage 2.5.0 版本为例。
+    compile 'cn.jiguang.sdk:jcore:1.1.9'  // 此处以JCore 1.1.9 版本为例。
+    ......
+}
+```
 
-+ 复制备注为 "Required" 的部分
-+ 将标注为“您应用的包名”的部分，替换为当前应用程序的包名
-+ 将标注为“您应用的Appkey”的部分，替换为在Portal上注册该应用的的Key,例如：9fed5bcb7b9b87413678c407
+***Note***: If android Studio displays the following prompt after adding the above abiFilter configuration:
 
-**小帖士**
+    NDK integration is deprecated in the current plugin. Consider trying the new experimental plugin.
 
-如果使用android studio, 可在AndroidManifest中引用applicationId的值，在build.gradle配置中 defaultConfig节点下配置，如：
+Then add the below in the gradle.properties file of the Project root directory
+
+    android.useDeprecatedNdk=true
+
+## Manually Integration Steps
+
++ Unzip the jmessage-sdk-android-2.X.Y.zip integrated archive.
++ Copy libs/jcore-android_v1.X.Y.jar to the project libs/ directory.
++ Copy libs/jmessage-android_2.X.Y.jar to the project libs/ directory.
++ Copy libs/(cpu-type)/libjcore1xy.so to the corresponding cpu type directory of your project
+
+***Instruction***: For the developer using android studio, if he uses the jniLibs folder to import the so file, he only needs to copy all the cpu type folder into; if the so file is added in the module's libs folder, pay attention to add the following configuration in the gradle configuration of module:
+
+```
+android {
+    ......
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+            ......
+        }
+        ......
+    }
+    ......
+}
+```
+
+### Configure AndroidManifest.xml
+
+Configure the AndroidManifest.xml of the application project according to the AndroidManifest.xml sample file in the demo of the SDK archive.
+
+The main steps are:
+
++ Copy the part with the comment "Required"
++ Replace the section labeled "package name of your application" with the current application package name
++ Replace the section labeled “AppKey for your app” with the key for registering the app on Portal, for example: 9fed5bcb7b9b87413678c407
+
+**Tips**
+
+If android studio is used, the value of applicationId can be referenced in the AndroidManifest and configured under the defaultConfig node in the build.gradle configuration. For example:
 
 ```
 defaultConfig {
       applicationId "cn.jmessage.example" // <--您应用的包名
       ……
  }
-
 ```
 
-在AndroidManifest中使用 ${applicationId} 引用gradle中定义的包名
+Use ${applicationId} in AndroidManifest to refer to the package name defined in gradle
 
-
-**AndroidManifest 示例**
+**AndroidManifest example**
 
 ```
 <?xml version="1.0" encoding="utf-8"?>
@@ -249,12 +243,12 @@ defaultConfig {
         <receiver
             android:name="cn.jpush.android.service.AlarmReceiver"
             android:exported="false" />
-            
+
         <!-- Required since JCore 1.1.7. SDK 核心功能-->
         <provider
             android:name="cn.jpush.android.service.DataProvider"
             android:authorities="您自己的包名.DataProvider"
-            android:exported="false" />
+            android:exported="true" />
 
         <!-- Required JMessage SDK核心功能-->
         <receiver
@@ -272,7 +266,7 @@ defaultConfig {
         <meta-data
             android:name="JPUSH_CHANNEL"
             android:value="developer-default" />
-            
+
         <!-- Required. AppKey copied from Portal -->
         <meta-data
             android:name="JPUSH_APPKEY"
@@ -281,102 +275,104 @@ defaultConfig {
     </application>
 
 </manifest>
-
 ```
 
-### 必须权限说明
+### Required permissions description
 
 <div class="table-d" align="center" >
   <table border="1" width = "100%">
     <tr  bgcolor="#D3D3D3" >
-      <th >权限</th>
-      <th >用途</th>
+      <th >Authority</th>
+      <th >Use</th>
     </tr>
     <tr >
       <td>Your Package.permission.JPUSH_MESSAGE</td>
-      <td>官方定义的权限，允许应用接收JPUSH内部代码发送的广播消息。</td>
+      <td>Officially defined permissions allow the application to receive broadcast messages sent by the JPUSH internal code.</td>
     </tr>
     <tr >
       <td>RECEIVE_USER_PRESENT</td>
-      <td>允许应用可以接收点亮屏幕或解锁广播。</td>
+      <td>Allows the app to receive lighted screens or unlock broadcasts.</td>
     </tr>
     <tr >
       <td>INTERNET</td>
-      <td>允许应用可以访问网络。</td>
+      <td>Allows apps to access the web.</td>
     </tr>
     <tr >
       <td>WAKE_LOCK</td>
-      <td>允许应用在手机屏幕关闭后后台进程仍然运行</td>
+      <td>Allows the app to run after the phone screen is turned off</td>
     </tr>
     <tr >
       <td>READ_PHONE_STATE</td>
-      <td>允许应用访问手机状态。</td>
+      <td>Allows the app to access the phone's status.</td>
     </tr>
     <tr >
       <td>WRITE_EXTERNAL_STORAGE</td>
-      <td>允许应用写入外部存储。</td>
+      <td>Allows the application to write to external storage.</td>
     </tr>
     <tr >
       <td>READ_EXTERNAL_STORAGE</td>
-      <td>允许应用读取外部存储。</td>
+      <td>Allows the app to read external storage.</td>
     </tr>
     <tr >
       <td>WRITE_SETTINGS</td>
-      <td>允许应用读写系统设置项。</td>
+      <td>Allows the application to read and write system settings.</td>
     </tr>
     <tr >
       <td>VIBRATE</td>
-      <td>允许应用震动。</td>
+      <td>Allows the application to vibrate.</td>
     </tr>
     <tr >
       <td>MOUNT_UNMOUNT_FILESYSTEMS</td>
-      <td>允许应用挂载/卸载 外部文件系统。</td>
+      <td>Allows the app to mount/unmount external file systems.</td>
     </tr>
     <tr >
       <td>ACCESS_NETWORK_STATE</td>
-      <td>允许应用获取网络信息状态，如当前的网络连接是否有效。</td>
+      <td>Allows the app to obtain network information status, such as whether the current network connection is valid.</td>
     </tr>
   </table>
 </div>
 
 
-### 添加代码
+### Add code
 
-#### 基础API
-+ setDebugMode 设置调试模式
+#### Basic API
 
-        // You can enable debug mode in developing state. You should close debug mode when release.
-        JMessageClient.setDebugMode(boolean debugEnalbed)
++ setDebugMode  set debug mode
 
-+ init 初始化SDK
-        
-        JMessageClient.init(Context context)
-        
+```
+// You can enable debug mode in developing state. You should close debug mode when release.
+JMessageClient.setDebugMode(boolean debugEnalbed)
+```
 
-#### 调用示例代码（参考 example 项目）
++ init  initialization SDK
 
-+ init 只需要在应用程序启动时调用一次即可。
+```
+JMessageClient.init(Context context)
+```
 
-+ 以下代码定制一个本应用程序 Application 类。需要在 AndoridManifest.xml 里配置。请参考上面 AndroidManifest.xml 片断，或者 demo 项目。
+#### Call sample code (see example project)
 
-    
-        public class IMDebugApplication extends Application {
-        @Override
-            public void onCreate() {
-                super.onCreate();
-                JMessageClient.setDebugMode(true);
-                JMessageClient.init(this);
-            }
-        }
++ init only needs to be called once at application startup
 
++ The following code customizes an Application class, and needs to be configured in AndoridManifest.xml. Please refer to the AndroidManifest.xml fragment above, or the demo project.
 
-### 测试确认
+```
+public class IMDebugApplication extends Application {
+@Override
+    public void onCreate() {
+        super.onCreate();
+        JMessageClient.setDebugMode(true);
+        JMessageClient.init(this);
+    }
+}
+```
 
-+ 确认所需的权限都已经添加。如果必须的权限未添加，日志会提示错误。
-+ 确认 AppKey（在Portal上生成的）已经正确的写入 Androidmanifest.xml 。
-+ 确认在程序启动时候调用了init(context) 接口
-+ 确认测试手机（或者模拟器）已成功连入网络
-    ＋ 客户端调用 init 后不久，如果一切正常，应有长连接登陆成功的日志信息,日志信息会如下:
+### Test confirmation
+
++ Verify that the required permissions have been added. If the necessary permissions are not added, the log will indicate an error.
++ Verify that the AppKey (generated on the Portal) has been correctly written to Androidmanifest.xml.
++ Verify that the init(context) interface is called when the program starts
++ Verify that the test phone (or emulator) has successfully connected to the network + client shortly after the init invoked. If everything is ok, there should be log information for the long connection of logging in successfully. The log information will be as follows:
 
 ```
 [JMessageClient] JMessage SDK init finished!
@@ -386,104 +382,96 @@ defaultConfig {
 [ConnectingHelper] Login succeed!
 ```
 
-如图所示，客户端启动分为 4 步：
+As shown in the figure, the client startup is divided into 4 steps:
 
-+ 检查 metadata 的 appKey 和 channel ，如果不存在，则启动失败
-+ 初始化 JMessage SDK，检查 JNI 等库文件的有效性，如果库文件无效，则启动失败
-+ 检查 Androidmanifest.xml，如果有 Required 的权限不存在，则启动失败
-+ 连接服务器登录，如果存在网络问题，则长连接登陆失败,或者前面三步有问题，不会启动  
-JMessage SDK
++ Check the appKey and channel of metadata. If it does not exist, the startup fails
++ Initialize the JMessage SDK to check the validity of library files such as JNI. If the library file is invalid, the startup fails.
++ Check Androidmanifest.xml. If permissions for Required do not exist, the startup fails.
++ Connect server to login in. If there is a network problem, the long connection login fails, or if there are problems in the first three steps, JMessage SDK won’t be initiated.
 
-## 集成时注意
+## Points to Note When Integrating
 
-因为从JMessage 2.0.0版本开始jar包的结构和之前发生了一些变化， 集成时有一些注意事项开发者需要注意
-### 如果之前集成过JMessage
-对于集成过JMessage 2.0.0以前版本的开发者,之前的JMessage是包含了Push的完整功能的，所以仅需要集成JMessage一个包就能同时拥有JMessage和JPush的完整功能。  
+Since the structure of the jar package has changed from the JMessage 2.0.0 version, there are some considerations for integration developers need to pay attention to
 
-而新的JMessage 2.0.0将**不再包含JPush的功能**。JMessage和JPush今后将会作为两个相对独立的模块需要分别集成。所以对于之前已经集成过JMessage（2.0.0版本以前）的开发者，将JMessage升级到2.0.0之后，如果还需要使用JPush相关功能，请参照[JPush3.0.0的集成文档][3]将JPush集成进项目。  
+### If you previously integrated JMessage
 
-</br>
-**基于JMessage手动集成JPush时注意事项：**
+For developers who previously integrated versions before JMessage 2.0.0, the previous JMessage contained the full functionality of Push, so he only needs to integrates JMessage to obtain the full functionality of both JMessage and JPush.
 
-+ 版本要求：对应的JCore需要1.1.0或以上版本，JPush需要3.0.0或以上版本。
-+ jcore的替换：下载下来的JPush SDK zip包中同样包含了名为jcore-android_v1.X.Y的jar包,集成时需要注意项目中只保留一个jcore的jar就好，如果出现JPush和JMessage中所包含的jcore jar包版本不一致的情况，则保留版本号更新的那一个。so文件同理。
-+ Manifest的配置：关于manifest中必要组件的配置，因为JMessage和JPush的manifest示例中包含了一部分公共的组件配置，对于已经集成JMessage 2.0.0（及以上）的开发者，仅需要将其中JPush部分的组件配置复制过来就好，包括（但不仅限以下组件，可能根据JPush之后版本变化而有不同，具体请参考[JPush3.0.0的集成文档][3]）：
-
-	+ cn.jpush.android.service.DaemonService
-	+ cn.jpush.android.ui.PushActivity
-	+ cn.jpush.android.service.DownloadService
-	+ cn.jpush.android.ui.PopWinActivity
-	+ JPush用户的自定义广播接收器（需要的话）
-
-+ 别忘了添加JPush SDK中的res资源
-+ 加上JPush的初始化代码：JPushInterface.init(context)
-
-
-### 如果之前集成过JPush
-对于已经集成了JPush 3.0.0或以上版本的开发者，如果需要IM功能，直接参照上面"jcenter自动集成步骤"或“手动集成步骤”一节配置JMessage就好，其中有以下几项需要注意：
+The new JMessage 2.0.0 will **no longer include the functionality of JPush**. JMessage and JPush will be integrated separately as two relatively independent modules in the future. Therefore, for developers who have integrated JMessage (pre-2.0.0 version) before, if he needs to use JPush related functions after updating JMessage to 2.0.0, please refer to [the JPush3.0.0 Integration Document][3] to integrate JPush into the project.
 
 </br>
-**基于JPush手动集成JMessage时注意事项：**
+**Points to note when manually integrating JPush based on JMessage:**
 
-+ 版本要求：JCore需要1.1.0或以上版本，对应的JMessage需要2.0.0或以上版本。
-+ jcore的替换：下载下来的JMessage SDK zip包中同样包含了名为jcore-android_v1.X.Y的jar包,集成时需要注意项目中只保留一个jcore的jar就好，如果出现JPush和JMessage中所包含的jcore jar包版本不一致的情况，则保留版本号更新的那一个。so文件同理
-+ Manifest的配置：因为JMessage和JPush的manifest示例中包含了一部分公共的组件配置，对于已经集成JPush 3.0.0（及以上）的开发者，仅需要将其中JMessage部分的组件配置复制过来就好，包括（但不仅限以下组件，可能根据JMessage之后版本变化而有改动，具体参照上文中的“AndroidManifest 示例”)
++ Version requirements: The corresponding JCore requires version 1.1.0 or later, and JPush requires version 3.0.0 or later.
++ Replacement of jcore: The downloaded JPush SDK zip package also contains a jar package named jcore-android_v1.XY. When integrating, you need to pay attention to only save one jcore jar in the project. If the version of the jcore jar package in JPush and JMessage is inconsistent, then just save the updated version. So file likewise.
++ Manifest configuration: For configuration of the necessary components in the manifest, since manifest examples  of JMessage and JPush contain some common component configurations, developers who have integrated JMessage 2.0.0 (and above), only need to copy the component configuration of JPush part, including (but not limited to the following components, may vary according to the later JPush version, please refer to the Integration Document of JPush3.0.0):
 
-	+  cn.jpush.im.android.helpers.IMReceiver
+    + cn.jpush.android.service.DaemonService
+    + cn.jpush.android.ui.PushActivity
+    + cn.jpush.android.service.DownloadService
+    + cn.jpush.android.ui.PopWinActivity
+    + custom broadcast receiver of JPush user (if needed)
 
-+ 加上JMessage的初始化代码：JMessageClient.init(context)
++ Don't forget to add the res resource in the JPush SDK
++ Plus initial code of JPush: JPushInterface.init(context)
 
+### If you previously integrated JPush
 
+If developers who have integrated JPush 3.0.0 or above，need the IM function, he can directly configure the JMessage by referring to the above "jcenter automatic integration procedure" or "manual integration procedure" section, among which the following items need be pay attention to:
 
-## JMessage混淆
+</br>
 
-+ 请下载4.x版本的[proguard.jar](http://sourceforge.net/projects/proguard/files/proguard/)， 并替换你Android Sdk "tools\proguard\lib\proguard.jar"
+**Points to note when manually integrating JMessage based on JPush:**
 
++ Version requirements: JCore requires version 1.1.0 or later, and the corresponding JMessage requires version 2.0.0 or later.
++ Replacement of jcore: The downloaded JMessage SDK zip package also contains a jar package named jcore-android_v1.XY. When integrating, you need to pay attention to only save one jcore jar in the project. If the version of the jcore jar package in JPush and JMessage is inconsistent, then just save the updated version. So file likewise.
++ Configuration of Manifest: Because manifest examples of JMessage and JPush contain some common component configurations, developers who already integrate JPush 3.0.0 (and above), just need to copy the component configuration of the JMessage section, which includes (but not limited to the following components, may change according to the JMessage after the version changes, specifically refer to the "AndroidManifest example" above)
 
-+ 请在工程的混淆文件中添加以下配置：
-
-        -dontoptimize
-        -dontpreverify
-		-keepattributes  EnclosingMethod,Signature
-        -dontwarn cn.jpush.**
-        -keep class cn.jpush.** { *; }
-        
-        -dontwarn cn.jiguang.**
-        -keep class cn.jiguang.** { *; }
-        
-        
-		 -keepclassmembers class ** {
-		     public void onEvent*(**);
-		 }
-		 
-		#========================gson================================
-		-dontwarn com.google.**
-		-keep class com.google.gson.** {*;}
-
-		#========================protobuf================================
-		-keep class com.google.protobuf.** {*;}
-
+    + cn.jpush.im.android.helpers.IMReceiver
     
++ Plus initialization code of JMessage: JMessageClient.init(context)
 
-## IM场景代码样例
+## JMessage Obfuscation
 
-极光 JMessage 提供了一个完整的IM场景下的应用JChat，它就是一个 IM App。如果你的 App 需求只是 IM 功能，做以下两个变更就可以把它变成你自己的 IM App 了：
++ Please download the 4.x version of proguard.jar and replace your Android Sdk "tools\proguard\lib\proguard.jar"
 
-+ 换 Logo 
-+ 在 JPush Web 控制台上注册应用，获取到的 Appkey 更新到 JChat 里
++ Add the following configuration to the project's obfuscated file
 
-[JChat Android 项目源代码](https://github.com/jpush/jchat-android/)，开源放在 Github 上，供大家下载参考。
+```
+-dontoptimize
+-dontpreverify
+-keepattributes  EnclosingMethod,Signature
+-dontwarn cn.jpush.**
+-keep class cn.jpush.** { *; }
 
+-dontwarn cn.jiguang.**
+-keep class cn.jiguang.** { *; }
 
-## 技术支持
+ -keepclassmembers class ** {
+     public void onEvent*(**);
+ }
 
-邮件联系：[support@jiguang.cn][4]
+#========================gson================================
+-dontwarn com.google.**
+-keep class com.google.gson.** {*;}
+
+#========================protobuf================================
+-keep class com.google.protobuf.** {*;}
+```
+
+## Sample of IM Scene Code
+
+JMessage provides a complete JChat application under the IM scenario. It is an IM App. If you only need IM features, you can turn it into your own IM App with the following two changes:
+
++ Change Logo
++ Register your app on the JPush web console and update Appkey obtained to JChat
+
+[JChat Android Project Source Code](https://github.com/jpush/jchat-android/), open source on Github, for your reference.
+
+## Technical Support
+
+E-mail us at: [support@jiguang.cn][4]
 
 
 [3]: https://docs.jiguang.cn/jpush/client/Android/android_guide/
 [4]: mailto:support@jiguang.cn
-
-
-
-
-
