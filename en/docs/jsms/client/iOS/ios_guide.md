@@ -1,43 +1,51 @@
-# JSMS iOS SDK集成指南
-##SDK 说明
+# Integration Guide of JSMS iOS SDK
 
-+ 目前SDK支持iOS7.0及以上版本.
+## SDK Instructions
 
-### SDK 压缩包内包括
+-   Currently SDK supports iOS 7.0 and above.
 
-+ lib文件夹：包含头文件 JSMSSDK.h、JSMSConstant.h，静态库文件libsms-lib.a ，支持的iOS版本为 7.0 及以上版本。
-+ pdf文件：集成指南
-+ demo文件夹：示例
+### SDK package includes
 
-## 集成步骤
+-   The lib folder: Contains the header files JSMSSDK.h, JSMSConstant.h, and the static library file libsms-lib.a. The supported iOS versions are 7.0 and above.
 
-### 创建应用
+-   pdf file: Integration Guide
 
-注册成为JPush开发者。在极光的web portal 上创建应用得到APPkey，如果您已经是是极光其他产品的用户并且创建过应用，那么无需重复创建。
+-   demo folder: Example
 
-### 导入开发包
+## Integration Steps
 
-将SDK包解压，将解压后的JsmsSDK文件夹（包含头文件 include，静态库文件libsms-lib.a 。头文件目录包含JSMSSDK.h、JSMSConstant.h两个对外接口文件）添加到工程目录中。 
+### Create an Application
+
+Register as a JPush developer. Create an app on the Jiguang web portal to get APPkey. If you are already a user of Jiguang 's other products and have created an app, you don't need to create it again.
+
+### Import Development Package
+
+Extract the SDK package and add the extracted JsmsSDK folder (including the header include, the static library libsms-lib.a, and JSMSSDK.h, JSMSConstant.h, two external interface files in the header directory) to the project directory.
 
 ### Build Settings
 
-+ 在项目配置，Build Settings，Other Linker Flags 里增加  -ObjC ;
-<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">	<p>1.2.0版本之后，sdk完全支持https传输，不需要再进行AppTransportSecurity相关设置。
+-   Increase -ObjC in Project Configuration, Build Settings, Other Linker Flags.
+
+<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">	<p>After the 1.2.0 release, sdk fully supports https transport and does not require any additional AppTransportSecurity settings.
 </div>
 
 ### Capabilities
-由于SDK内部加密协议涉及KeyChain，如使用Xcode8及以上环境开发，在模拟器运行调试时请开启Application Target的Capabilities->KeyChain Sharing选项，如图：  
+
+Since SDK internal encryption protocol involves KeyChain, if you use Xcode8 and above environment to develop, please open the Capabilities-\>KeyChain Sharing option of Application Target when the simulator is running and debugging.
+
 ![jsms_ios][1]
 
-### 添加初始化代码
+### Add Initialization Code
+
 ```
  + (void)registerWithAppKey:(NSString * _Nonnull)appkey; 
 ```
-**接口说明**
 
-注册SDK接口：在官网创建应用,创建成功后自动生成 AppKey 用以标识该应用
+**Interface Description**
 
-**调用示例：**
+Register the SDK interface: Create an application on the official website, and automatically generate an AppKey to identify the application.
+
+**Call Example**
 
 ```
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
@@ -50,7 +58,7 @@
       return YES;
  }
 ```
-更多接口，参考[iOS SDK API](ios_api)文档说明
+
+For more interfaces, refer to [iOS SDK API](ios_api) documentation.
 
 [1]: ../image/Jsms-ios-1.png
-

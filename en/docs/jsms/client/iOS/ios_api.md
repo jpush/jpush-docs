@@ -1,25 +1,27 @@
-# JSMS iOS SDK API描述
 
-### 获取短信验证码
+# Description of JSMS iOS SDK API
+
+### Obtain SMS Verification Code
+
 ```
 + (void)getVerificationCodeWithPhoneNumber:(NSString * _Nonnull)number 
                              andTemplateID:(NSString * _Nonnull)templateID
                          completionHandler:(JSMSCompletionHandler _Nonnull)handler;
 ```
 
+**Interface Description**
 
+Get interface of SMS verification code: Create a button to get the SMS verification code, or call the SMS verification code in the button event of the existing interface.
 
-**接口说明**
+**Parameter Description**
 
-获取短信验证码接口：创建获取短信验证码的按钮，或者是在自己已有的界面的按钮事件里调用获取短信验证码的方法
+-   number: Mobile number
 
-**参数说明：**
+-   templateID: SMS template ID
 
-+ number :手机号码
-+ templateID:短信模板ID
-+ handler:请求成功或者失败的回调
+-   handler: The callback of request or request failure
 
-**调用示例：**
+**Call Example**
 
 ```
 
@@ -36,25 +38,28 @@
      }];
  }
 ```
-###获取语音验证码
-<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">	<p>1.2.0版本新增--获取语音验证码接口。
+
+### Get Voice Verification Code
+
+<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">	<p>Interface to get voice verification code is added in Version 1.2.0.
 </div>
 
 ```
 + (void)getVoiceVerificationCodeWithPhoneNumber:(NSString * _Nonnull)number
                               completionHandler:(JSMSCompletionHandler _Nonnull)handler;
 ```
+**Interface Description**
 
-**接口说明**
+Interface for obtaining voice verification code: Create button to get voice verification code, or call the method to get voice verification code in button event of existing interface
 
-获取语音验证码接口：创建获取语音验证码的按钮，或者是在自己已有的界面的按钮事件里调用获取语音验证码的方法
+**Parameter Description**
 
-**参数说明：**
+-   number: Mobile number
 
-+ number :手机号码
-+ handler:请求成功或者失败的回调
+-   handler: The callback of request or request failure
 
-**调用示例：**
+**Call Example**
+
 
 ```
 
@@ -71,8 +76,10 @@
      }];
  }
 ```
-###获取语音验证码（可设置播报语言）
-<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">	<p>1.4.0版本新增--获取语音验证码，可设置播报语言类型。
+
+### Get Voice Verification Code (broadcast language can be set)
+
+<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">	<p>Interface to get voice verification code is added in Version 1.4.0, which can set type of broadcast language.
 </div>
 
 ```
@@ -81,17 +88,19 @@
                               completionHandler:(JSMSCompletionHandler _Nonnull)handler;
 ```
 
-**接口说明**
+**Interface Description**
 
-获取语音验证码接口：创建获取语音验证码的按钮，或者是在自己已有的界面的按钮事件里调用获取语音验证码的方法
+Interface for obtaining voice verification code: Create button to get voice verification code, or call the method to get voice verification code in button event of existing interface
 
-**参数说明：**
+**Parameter Description**
 
-+ number :手机号码
-+ options:播报语言。参数无效时，默认中文播报
-+ handler:请求成功或者失败的回调
+-   number: Mobile number
 
-**调用示例：**
+-   options: Broadcast language. When the parameter is invalid, default language is Chinese
+
+-   handler: The callback of request or request failure
+
+**Call Example**
 
 ```
 
@@ -110,24 +119,28 @@
      }];
  }
 ```
-### 验证验证码
+
+### Verify Verification Code
+
 ```
 + (void)commitWithPhoneNumber:(NSString * _Nonnull)number
              verificationCode:(NSString * _Nonnull)vCode
             completionHandler:(JSMSCompletionHandler _Nonnull)handler;
 ```
 
-**接口说明**
+**Interface Description**
 
-验证验证码：创建提交验证码的按钮，或者是在自己已有的界面的按钮事件里调用提交验证码的方法
+Verify verification code: Create a button to submit a verification code, or call a verification code in a button event of an existing interface.
 
-**参数说明：**
+**Parameter Description**
 
-+ number:手机号码
-+ vCode:短信验证码
-+ handler:请求成功或者失败的回调
+-   number: Mobile number
 
-**调用示例：**
+-   vCode: SMS verification code
+
+-   handler: The callback of request or request failure
+
+**Call Example**
 
 ```
 //验证验证码 
@@ -140,22 +153,25 @@
       }
  }];
 ```
-### 设置请求验证码时间间隔
-<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">	<p>1.2.0版本新增--设置获取验证码请求时间间隔的接口。
+
+**Set the Interval of Verification Code Request**
+
+<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">	<p>Set the interface for obtaining the interval of verification code request is added in Version 1.2.0.
 </div>
 
 ```
 + (void)setMinimumTimeInterval:(NSTimeInterval)seconds;
 ```
-**接口说明**
 
-设置获取验证码请求时间间隔的接口：在设置时间间隔内只能发送一次获取验证码的请求。如果不调用此接口，sdk默认间隔是30s
+**Interface Description**
 
-**参数说明：**
+Set the interface for obtaining the interval of verification code request: You can only send the request to obtain the verification code within the set interval once. If you do not call this interface, default interval of sdk is 30s
 
-+ seconds:时间间隔
+**Parameter Description**
 
-**调用示例：**
+-   seconds: Interval
+
+**Call Example**
 
 ```
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
@@ -164,35 +180,34 @@
       return YES;
  }
 ```
-## 错误码描述
 
-| 错误码 | 错误码描述               | 备注 |
-|--------|--------------------------|------|
-| 2993   | uuid错误，验证码验证失败 |      |
-| 2994   | 参数错误               |      |
-| 2996   | 两次请求在最小时间间隔内  |      |
-| 2997   | 号码改变，请首先获取验证码 |      |
-| 2998   | 网络错误                 |      |
-| 2999   | 其他错误                 |      |
-| 3001   | 请求超时                 |      |
-| 4204   | 无效的手机号码           |      |
-| 4001   | body为空                 |      |
-| 4002   | 无效的appkey             |      |
-| 4003   | 无效的来源               |      |
-| 4004   | body解密失败             |      |
-| 4005   | aes key解密失败          |      |
-| 4006   | 时间戳转化失败           |      |
-| 4007   | body格式不正确           |      |
-| 4008   | 无效时间戳               |      |
-| 4009   | 没有短信验证权限         |      |
-| 4011   | 发送超频                 | 同一手机号每天获取验证码无限制，通知类相同内容10分钟3条，不同内容无限制，营销类10分钟3条。|
-| 4012   | api不存在                |      |
-| 4013   | 模板不存在               |      |
-| 4014   | extra为空                |      |
-| 4015   | 验证码不正确             |      |
-| 4016   | 没有余额                 |      |
-| 4017   | 验证码超时               |      |
-| 4018   | 验证码已经验证过              |      |
-| 5000   | 服务端错误               |      |
+## Description of Error Code
 
-
+| **Error Code** | **Description of Error Code**                              | **Remarks**                                                                                                                                                                                                                                                                  |
+|----------------|------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 2993           | Uuid error. Verification of verification code failed       |                                                                                                                                                                                                                                                                              |
+| 2994           | Parameter error                                            |                                                                                                                                                                                                                                                                              |
+| 2996           | Two requests within the minimum time interval              |                                                                                                                                                                                                                                                                              |
+| 2997           | The number changed. Please get the verification code first |                                                                                                                                                                                                                                                                              |
+| 2998           | Network Error                                              |                                                                                                                                                                                                                                                                              |
+| 2999           | Other errors                                               |                                                                                                                                                                                                                                                                              |
+| 3001           | Request timed out                                          |                                                                                                                                                                                                                                                                              |
+| 4204           | Invalid mobile number                                      |                                                                                                                                                                                                                                                                              |
+| 4001           | Body is empty                                              |                                                                                                                                                                                                                                                                              |
+| 4002           | Invalid AppKey                                             |                                                                                                                                                                                                                                                                              |
+| 4003           | Invalid source                                             |                                                                                                                                                                                                                                                                              |
+| 4004           | Decryption of body failed                                  |                                                                                                                                                                                                                                                                              |
+| 4005           | Decryption of aes key failed                               |                                                                                                                                                                                                                                                                              |
+| 4006           | Timestamp conversion failed                                |                                                                                                                                                                                                                                                                              |
+| 4007           | Format of body is incorrect                                |                                                                                                                                                                                                                                                                              |
+| 4008           | Invalid timestamp                                          |                                                                                                                                                                                                                                                                              |
+| 4009           | No SMS verification permission                             |                                                                                                                                                                                                                                                                              |
+| 4011           | Send overclocking                                          | There is no limit for the same mobile phone number getting verification code every day. The notification verification code with same content is 3 pieces in 10 minutes, and there are no restrictions on different contents. The marketing category is also 3 in 10 minutes. |
+| 4012           | Api does not exist                                         |                                                                                                                                                                                                                                                                              |
+| 4013           | Template does not exist                                    |                                                                                                                                                                                                                                                                              |
+| 4014           | Extra is empty                                             |                                                                                                                                                                                                                                                                              |
+| 4015           | Incorrect verification code                                |                                                                                                                                                                                                                                                                              |
+| 4016           | No margin                                                  |                                                                                                                                                                                                                                                                              |
+| 4017           | Verification code timeout                                  |                                                                                                                                                                                                                                                                              |
+| 4018           | Verification code has been verified                        |                                                                                                                                                                                                                                                                              |
+| 5000           | Server error                                               |                                                                                                                                                                                                                                                                              |
