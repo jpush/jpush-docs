@@ -1,42 +1,38 @@
-<h1>JMessage PC SDK 开发指南</h1>
+<h1>JMessage PC SDK Development Guide</h1>
 
+## Overview
 
-## 概述
+JMessage PC SDK develops with C++ languageon the basis of Web SDK protocol, and provides an easy-to-use C++ interface.
 
-JMessage PC SDK , 使用C++语言开发, 基于 Web SDK 协议，提供易用的 C++ 接口
+The compiler supports VS2017 (msvc141) and is compatible with Windows 7, Windows 8/8.1, and Windows 10.
 
-编译器支持 VS2017(msvc141)，兼容系统 Windows 7、Windows 8/8.1、Windows 10
+MacOS supports Clang5+, MacOS 10.13 (x86_64)
 
-MacOS 支持Clang5+, MacOS 10.13 (x86_64)
+### Function
 
++ Real-time messages, offline messages, single chats, group chats, chat rooms
++ Message types support text, voice, pictures, files, location, custom messages, etc.
++ task/then asynchronous interface based on [cpprestsdk](https://github.com/Microsoft/cpprestsdk/wiki/Programming-with-Tasks) ([more about the task](https://docs.microsoft.com/zh-cn/cpp/parallel/concrt/reference/task-class)). The upper layer can invoke the asynchronous interface by using the callback or co_await mode.
++ Features based on WEB SDK. Developers can refer to [Web SDK](https://docs.jiguang.cn/jmessage/client/im_sdk_js_v2/).
 
-### 功能
+## Authentication
 
-- 实时消息，离线消息，单聊，群聊，聊天室等
-- 消息类型支持文本，语音，图片，文件，位置，自定义消息等
-- 基于[cpprestsdk](https://github.com/Microsoft/cpprestsdk/wiki/Programming-with-Tasks)的task/then异步接口[(更多关于task)](https://docs.microsoft.com/zh-cn/cpp/parallel/concrt/reference/task-class?f1url=https%3A%2F%2Fmsdn.microsoft.com%2Fquery%2Fdev15.query%3FappId%3DDev15IDEF1%26l%3DZH-CN%26k%3Dk(PPLTASKS%2FConcurrency%3A%3Atask)%3Bk(Concurrency%3A%3Atask)%3Bk(task)%3Bk(DevLang-C%2B%2B)%3Bk(TargetOS-Windows)%26rd%3Dtrue) ，上层可以使用回调或co_await协程方式调用异步接口
-- 功能基于WEB SDK，开发者可参考 [Web SDK](https://docs.jiguang.cn/jmessage/client/im_sdk_js_v2/) 
+Need to provide relevant parameters When the SDK is initializing.
 
++ appkey : an IM application appkey registered by the developer on Jiguang platform
++ randomStr : a random string of 20-36 lengths, used as a signature salt
++ timestamp : current timestamp, used to prevent replay attacks. Accurate to millisecond.
++ signature : signature, which is expired after 10 minutes
 
-
-### 鉴权
-
-SDK在初始化的时候，需要提供相关参数
-
-* appkey : 开发者在极光平台注册的 IM 应用 appkey
-* randomStr : 20-36 长度的随机字符串， 作为签名 salt 使用
-* timestamp : 当前时间戳，用于防止重放攻击，精确到毫秒
-* signature : 签名，10 分钟后失效
-
-签名生成算法如下:
+The generation algorithm of signature is as follows
 
 ```
 signature = md5("appkey={appkey}&timestamp={timestamp}&random_str={randomStr}&key={secret}")
 ```
 
-其中 secret 为开发者在极光平台注册的 IM 应用 masterSecret
+Secret is an IM application masterSecret registered by the developer on Jiguang platforms
 
-不建议在客户端计算签名，有泄漏masterSecret的风险
+It is not recommended to calculate the signature on the client, since there is a risk of leaking masterSecret
 
 ```
 //签名生成示例(Qt):
@@ -46,182 +42,155 @@ auto str = QString("appkey=007a1134fb361233c566a1cc&timestamp=%1&random_str=022c
 auto signature = QCryptographicHash::hash(str.toUtf8()， QCryptographicHash::Md5).toHex().toStdString();
 ```
 
+## Quick Start
 
+### Dependence
 
-## 快速开始
++ Compiler: VS2017
++ Third-party library: <https://github.com/Microsoft/cpprestsdk>
 
-### 依赖
+### Simple Examples
 
-####Windows
+1. There are two ways to use the SDK package:
 
-- 编译器:VS2017(msvc141)
-- 第三方库: <https://github.com/Microsoft/cpprestsdk>
+    1. Using the NuGet package, right-click your project in Visual Studio and select `Manage Nuget Packages`
 
+        Select the browse page, search for jmessage-cpp, and install the required SDK version
 
-#### MacOS
+    2. Manually download the [SDK](https://docs.jiguang.cn/jmessage/resources/) and unzip it
 
-- 编译器:Clang, 需要C++17 支持, 安装命令 brew install llvm 
-- 第三方库:cpprestsdk, 安装命令 brew install cpprestsdk
+        + Add SDK include directory to Project property page -> C/C++ -> General -> Additional include directory
+        + Add the SDK lib directory to thc Project property page -> Linker -> General -> Additional include directory
+        + Link the SDK library and add Jmcpp.libin the Release configuration and Jmcppd.lib in the Debug configuration in  Project property page -> Linker -> Input -> Additional dependencies
 
-### 简单示例
+2. Create Client
 
-1.使用SDK包
++ Client class provides the main function of the SDK, so first create a Client object
++ The Configuration parameter configures the Client, including the SDK cache path, log level, etc. Generally choose the default.
 
-   1. Windows:使用NuGet程序包， 在Visual Studio 中右键单击你的项目， 选择`管理Nuget程序包`
+```
+#include <Jmcpp/Client.h> // 包含头文件
+Jmcpp::Configuration cfg; // 默认配置
+Jmcpp::Client client(cfg); //创建Client对象
+```
 
-      选择浏览页，搜索`jmessage-cpp` ， 然后安装需要的版本SDK即可
+3. Before logging in, the SDK should set the corresponding listener callback to handle message reception events.
 
-   2. 手动下载相应平台的[SDK](https://docs.jiguang.cn/jmessage/resources/) 
++ The SDK provides a callback interface for message listening. The messages are divided into real-time messages (messages received when users are online) and offline messages.
 
-      Windows SDK包括:
+```
+// 监听消息
+client.onMessageReceive([](Jmcpp::MessagePtr msg)
+{
+    auto content = msg->content;
+    if(std::holds_alternative<Jmcpp::TextContent>(content))
+    {
+        auto&& imageCont = std::get<Jmcpp::TextContent>(content);
+        std::cout
+            << msg->sender.username << " send to "
+            << msg->receiver.username << " : "
+            << imageCont.text
+            << std::endl;
+    }
+    else if(std::holds_alternative<Jmcpp::ImageContent>(content))
+    {
 
-      * include: 头文件
-      * lib: 链接库
-      * bin:动态库
+    }
+    else
+    {
+    }
+});
 
-      Mac SDK包括:
+// 监听同步消息
+client.onMessageSync([](std::vector<Jmcpp::MessagePtr> msgs)
+{
+});
+```
 
-      * Jmcpp.framework
++ The SDK provides a callback interface for event listening. The events are divided into real-time events and synchronization events.
 
+```
+// 监听实时事件
+client.onEventReceive([](Jmcpp::Event ev)
+{
+    if(std::holds_alternative<Jmcpp::ForceLogoutEvent>(ev))
+    {
+        auto&& e = std::get<Jmcpp::ForceLogoutEvent>(ev);
 
-2.创建Client
+    }
+    else if(std::holds_alternative<Jmcpp::MessageRetractedEvent>(ev))
+    {
+        auto&& e = std::get<Jmcpp::MessageRetractedEvent>(ev);
 
-   * Client类提供了SDK的主要功能，所以先创建一个Client对象
-   * Configuration 参数配置Client， 包括SDK缓存路径， 日志级别等， 一般默认即可
-   ```
-    #include <Jmcpp/Client.h> // 包含头文件
-    Jmcpp::Configuration cfg; // 默认配置
-    Jmcpp::Client client(cfg); //创建Client对象
-   ```
+    }
+    else
+    {
+        //...
+    }
+});
 
+// 监听事件同步
+client.onEventSync([](std::vector<Jmcpp::Event> ev)
+{
+    //...
+});
+```
 
-3.在登录前， SDK应该设置相应的监听回调，处理消息接收与事件
+4. Login, Authentication, and Send Messages
 
-  * SDK提供监听消息接收的回调接口，消息分为实时消息(用户在线时收到的消息)与离线消息
-   ```
-	// 监听消息
-	client.onMessageReceive([](Jmcpp::MessagePtr msg)
-	{
-		auto content = msg->content;
-		if(std::holds_alternative<Jmcpp::TextContent>(content))
-		{
-			auto&& imageCont = std::get<Jmcpp::TextContent>(content);
-			std::cout
-				<< msg->sender.username << " send to "
-				<< msg->receiver.username << " : "
-				<< imageCont.text
-				<< std::endl;
-		}
-		else if(std::holds_alternative<Jmcpp::ImageContent>(content))
-		{
++ Login and registration of SDK requires developer’s authentication, where the signature should be obtained by the developer through a service or other means. It is not recommended to use the masterSecret calculation on the client. Here just a demonstration usage.
 
-		}
-		else
-		{
-		}
-	});
+```
+Jmcpp::Authorization auth;
+auth.appKey = "25b693b31d2c2ad5f072ef0c";
+auth.randomStr = "022cd9fd995849b58b3ef0e943421ed9";
+auth.timestamp = "1467967210887";// 使用时应该获取当前事件戳，这里只是演示
+auth.signature = "D97C2DDA3E46E5E6D482E9E8EE84AF93";//使用时应该动态计算得到，这里只是演示
 
-	// 监听同步消息
-	client.onMessageSync([](std::vector<Jmcpp::MessagePtr> msgs)
-	{
-	});
-   ```
+//登录
+client.login("yourUsername", "yourPassword",auth).get();
 
-  * SDK提供监听事件的回调接口，同样事件分为实时事件与同步事件
-   ```
-	// 监听实时事件
-	client.onEventReceive([](Jmcpp::Event ev)
-	{
-		if(std::holds_alternative<Jmcpp::ForceLogoutEvent>(ev))
-		{
-			auto&& e = std::get<Jmcpp::ForceLogoutEvent>(ev);
+// 创建一条文本消息内容
+auto content = client.createTextContent("hello!").get();
+// 创建消息，包含要发送的用户或群
+auto msg = client.buildMessage(Jmcpp::UserId("targetUsername"), content);
+// 发送消息
+client.sendMessage(msg).get();
+```
 
-		}
-		else if(std::holds_alternative<Jmcpp::MessageRetractedEvent>(ev))
-		{
-			auto&& e = std::get<Jmcpp::MessageRetractedEvent>(ev);
+5. Log out and Destroy Client
 
-		}
-		else
-		{
-			//...
-		}
-	});
+```
+client.logout();
+```
 
-	// 监听事件同步
-	client.onEventSync([](std::vector<Jmcpp::Event> ev)
-	{
-		//...
-	});
-   ```
+6. Error Handling
 
-
-4.登录，鉴权，发送消息
-
-  * SDK登录注册需要开发者鉴权，其中签名开发者应该通过某个服务或其它方式得到，不建议在客户端通过masterSecret计算，这里只是演示用法
-   ```
-    Jmcpp::Authorization auth;
-    auth.appKey = "25b693b31d2c2ad5f072ef0c";
-    auth.randomStr = "022cd9fd995849b58b3ef0e943421ed9";
-    auth.timestamp = "1467967210887";// 使用时应该获取当前事件戳，这里只是演示
-    auth.signature = "D97C2DDA3E46E5E6D482E9E8EE84AF93";//使用时应该动态计算得到，这里只是演示
-
-    //登录
-    client.login("yourUsername", "yourPassword",auth).get();
-
-    // 创建一条文本消息内容
-    auto content = client.createTextContent("hello!").get();
-    // 创建消息，包含要发送的用户或群
-    auto msg = client.buildMessage(Jmcpp::UserId("targetUsername"), content);
-    // 发送消息
-    client.sendMessage(msg).get();
-   ```
-
-
-5.退出登录，销毁Client
-
-   ```
-     client.logout();
-   ```
-
-6.错误处理
-
-   ```
+```
 try{
-		client.login("yourUsername", "yourPassword", getAuthorization()).get();
-		auto content = client.createTextContent("hello!").get();
-		auto msg = client.buildMessage(Jmcpp::UserId("test"), content);
-		client.sendMessage(msg).get();
-		client.logout();
-	}
-	catch(Jmcpp::ServerException& e)
-	{
-		// API 服务器调用返回的错误
-		std::cout << e.what() << std::endl;
-	}
-	catch(std::system_error& e)
-	{
-		// API 调用产生的其它错误
-		std::cout << e.what() << std::endl;
-	}
-   ```
+    client.login("yourUsername", "yourPassword", getAuthorization()).get();
+    auto content = client.createTextContent("hello!").get();
+    auto msg = client.buildMessage(Jmcpp::UserId("test"), content);
+    client.sendMessage(msg).get();
+    client.logout();
+}
+catch(Jmcpp::ServerException& e)
+{
+    // API 服务器调用返回的错误
+    std::cout << e.what() << std::endl;
+}
+catch(std::system_error& e)
+{
+    // API 调用产生的其它错误
+    std::cout << e.what() << std::endl;
+}
+```
 
-   
+Please see the example in the SDK archive for complete example.
 
-完整SDK使用可以参考[Windows JChat](https://github.com/jpush/jchat-windows)
+## Reference Documents
 
+Error Code Definition: [Error Code List of IM Web SDK](https://docs.jiguang.cn/jmessage/client/im_errorcode_js/)
 
-## 参考文档
-
-错误码定义：[IM web SDK 错误码列表](https://docs.jiguang.cn/jmessage/client/im_errorcode_js/)
-
-完整 API 文档：[JMessage PC SDK API](https://docs.jiguang.cn/jmessage/client/im_win_api_docs/)
-
-
-
-
-
-
-
-
+Full API Documentation: [Windows C++ SDK API](https://docs.jiguang.cn/jmessage/client/im_win_api_docs/)
 

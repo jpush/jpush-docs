@@ -79,12 +79,12 @@ pages:
     - 'SDK Development Guide': 'jmessage/client/im_sdk_android.md'
     - 'SDK Integration Guide': 'jmessage/client/jmessage_android_guide.md'
     - 'Definition of SDK ErrorCode': 'jmessage/client/im_errorcode_android.md'
-    # - 'SDK API Doc': 'jmessage/client/javadoc.md'
+    - 'SDK API Doc': 'jmessage/client/javadoc.md'
   - iOS:
     - 'SDK Development Guide': 'jmessage/client/im_sdk_ios.md'
     - 'SDK Integration Guide': 'jmessage/client/jmessage_ios_guide.md'
     - 'Definition of SDK ErrorCode': 'jmessage/client/im_errorcode_ios.md'
-    # - 'SDK API Doc': 'jmessage/client/iOSdoc.md'
+    - 'SDK API Doc': 'jmessage/client/iOSdoc.md'
   - Web:
     - 'SDK Development Guide V2': 'jmessage/client/im_sdk_js_v2.md'
     - 'SDK Development Guide': 'jmessage/client/im_sdk_js.md'
@@ -92,7 +92,7 @@ pages:
     - 'Definition of SDK ErrorCode': 'jmessage/client/im_errorcode_js.md'
   - PC:
     - 'SDK Development Guide': 'jmessage/client/im_sdk_win.md'
-    # - 'SDK API Doc': 'jmessage/client/windoc.md'
+    - 'SDK API Doc': 'jmessage/client/windoc.md'
   - REST API:
     - 'REST API': 'jmessage/server/rest_api_im.md'
     - 'REST Report V2': 'jmessage/server/rest_api_im_report_v2.md'

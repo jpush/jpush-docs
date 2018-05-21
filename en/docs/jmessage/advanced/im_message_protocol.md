@@ -1,141 +1,139 @@
-# 消息协议
+# Message Agreement
 
-## 概述
+## Overview
 
-JMessage 对于不同的消息类型，有一个 JSON 格式的消息协议。这个业务级别的协议，由发送者编码，由接收者解码，并处理接收到的消息。
+JMessage has a message protocol in JSON format for different message types. This service-level protocol is encoded by the sender, decoded and processed by the receiver.
 
-面向开发者接口提供的发送消息接口，也需要遵循此文档定义来组装消息，以发往客户端。
+The sending message interface provided for the developer interface also needs to follow this document definition to assemble the message for sending to the client.
 
+## Protocol Definition
 
-## 协议定义
-
-+ version Number 
-	+ 必须。
-	+ 协议版本号。第一版本：1，以此类推。
-+ target_type String 
-	+ 必须。
-	+ 接收者类型。
-	+ 选项：single, group
-+ target_id  String
-	+ 必须。
-	+ 接收者ID。
-	+ 可能值：${username}, ${gid} 
-	+ 接收方可用此字段，校验消息是不是发给自己的。
-+ target_name String 
-	+ 可选。
-	+ 接收者的展示名。
-+ from_type String 
-	+ 必须。
-	+ 发送方来源。
-	+ 选项：user, robot, admin, ...。可用于扩展特定消息来源。 
-	+ 用户只允许发送 from_type = user 的消息。
-+ from_id String 
-	+ 必须。
-	+ 发送者 username
-+ from_name String 
-	+ 可选。
-	+ 发送方展示名。
++ version Number
+	+ Required
+	+ Version number of protocol. The first version: 1, and so on.
++ target_type String
+	+ Required
+	+ Type of recipient
+	+ Options: single, group
++ target_id String
+	+ Required
+	+ Receiver ID.
+	+ Possible values: ${username}, ${gid}
+	+ The recipient can use this field to check whether the message was sent to himself.
++ target_name String
+	+ Optional.
+	+ Display name of recipient.
++ from_type String
+	+ Required
+	+ Source of sender
+	+ Options: user, robot, admin, .... can be used to extend specific news sources.
+	+ Users are only allowed to send messages like from_type = user.
++ from_id String
+	+ Required
+	+ Username of sender
++ from_name String
+	+ Optional
+	+ Display name of sender
 + from_platform String
-	+ 必须。
-	+ 发送方平台。
-	+ 可选项： a - Android, i - iOS, w - WinPhone, web - Web
-+ create_time Number 
-	+ 必须。
-	+ 消息发送时间。
-	+ 精确到秒。
-+ msg_type String 
-	+ 必须。
-	+ 选项：text, voice, image, custom
-+ msg_body JsonObject 
-	+ 必须。
-	+ 消息实体。
+	+ Required
+	+ Platform of sender
+	+ Options: a - Android, i - iOS, w - WinPhone, web - Web
++ create_time Number
+	+ Required
+	+ The time message was sent.
+	+ Accurate to second.
++ msg_type String
+	+ Required
+	+ Options: text, voice, image, custom
++ msg_body JsonObject
+	+ Required
+	+ Message entity.
 
-## 消息体定义
+## Message Body Definition
 
-根据 msg_type 的不同，msg_body 里会有以下字段信息。
+According to the different msg_type, msg_body will have the following field information.
 
 + extras
-	+ 可选。
+	+ Optional.
 	+ JsonObject
-	+ 用于附加参数。所有的消息类型都可以带此字段。
+	+ For additional parameters. All message types can have this field.
 
 msg_type = text
 
 + text String
-	+ 必须。
-	+ 文本类型消息内容。
+	+ Required
+	+ Message content of text type.
 
 msg_type = voice
 
 + media_id String
-	+ 必须。
-	+ 媒体文件上传到得到的KEY，用于生成下载URL。
+	+ Required
+	+ The media file is uploaded to the obtained KEY for generating a download URL.
 + media_crc32 Number
-	+ 必须。
-	+ 文件的 CRC32 校验码。
+	+ Required
+	+ The file's CRC32 checksum.
 + duration Number
-	+ 必须。
-	+ 语音时长（单位：秒）
+	+ Required
+	+ Voice duration (unit: seconds)
 + format String
-	+ 必须。
-	+ 语音类型。
-+ fsize  Number
-	+ 必须
-	+ 文件大小（字节数）
+	+ Required
+	+ Voice type.
++ fsize Number
+	+ Required
+	+ File size (bytes)
 
 msg_type = image
 
 + media_id String
-	+ 必须。
-	+ 媒体文件上传到得到的KEY，用于生成下载URL。
+	+ Required
+	+ The media file is uploaded to the obtained KEY for generating a download URL.
 + media_crc32 Number
-	+ 必须。
-	+ 文件的 CRC32 校验码。
+	+ Required
+	+ The file's CRC32 checksum.
 + width Number
-	+ 必须。
-	+ 原图片宽度。
+	+ Required
+	+ Original image width.
 + height Number
-	+ 必须。
-	+ 原图片调度。
+	+ Required
+	+ Original image scheduling.
 + format String
-	+ 可选。
-	+ 图片格式。
-+ fsize  Number
-	+ 必须
-	+ 文件大小（字节数）
+	+ Optional.
+	+ Image format.
++ fsize Number
+	+ Required
+	+ File size (bytes)
 + img_link String
-	+ 可选。
-	+ 图片链接。
+	+ Optional.
+	+ Picture links
 
 msg_type = custom
 
-开发者自定义字段。JsonObject。
+Developer custom fields. JsonObject.
 
-
-## 消息示例
+## Message Example
 
 ```
 {
-	"version": 1, 
-	"target_type": "single",
-	"target_id": "javen",
-	"target_name": "Javen Fang",
-	"from_type": "user",
-	"from_id": "fang", 
-	"from_name": "Fang Javen", 
-	"create_time": 135432432187,
-	"msg_type": "text",
-	"msg_body": {
-		"text": "Hello, JPush IM!"	
-	}
+    "version": 1,
+    "target_type": "single",
+    "target_id": "javen",
+    "target_name": "Javen Fang",
+    "from_type": "user",
+    "from_id": "fang",
+    "from_name": "Fang Javen",
+    "create_time": 135432432187,
+    "msg_type": "text",
+    "msg_body": {
+        "text": "Hello, JPush IM!"
+    }
 }
 ```
 
-## 相关文档
+## Related documentation
 
-+ [JMessage 产品简介](../guideline/jmessage_guide/)
++ [JMessage Product Brief](../guideline/jmessage_guide/)
 + [IM REST API](https://docs.jiguang.cn/jmessage/server/rest_api_im/)
-+ [资源下载](https://docs.jiguang.cn/jmessage/resources/)
++ [Download](https://docs.jiguang.cn/jmessage/resources/)
 
 
 

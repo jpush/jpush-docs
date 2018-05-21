@@ -1,10 +1,10 @@
-# 业务对象
+# Business Objects
 
-IM 在各类对外暴露的接口里，有一些公共的业务对象。本文档集中定义这些业务对象。
+There are some common business objects in various types of externally exposed interfaces. This document defines these business objects.
 
-这些业务对象都以 JSON 格式定义。在 Android SDK, iOS SDK 里的 API 暴露是相应语言的对象，不适用本文档。
+These business objects are defined in JSON format. In the Android SDK, the API exposure in the iOS SDK is an object of the corresponding language, which is not applied in this document.
 
-## 用户信息
+## User Information
 
 ```
 {
@@ -21,7 +21,7 @@ IM 在各类对外暴露的接口里，有一些公共的业务对象。本文�
 }
 ```
 
-## 群组信息
+## Group information
 
 ```
 {
@@ -33,9 +33,10 @@ IM 在各类对外暴露的接口里，有一些公共的业务对象。本文�
     "level": 3,                              // 群组级别
     "mtime": "2014-07-01 00:00:00",          // 更新时间
     "ctime": "2014-07-01 00:00:00"           // 创建时间
+}
 ```
 
-## 事件通知
+## Event Notification
 
 ```
 {
@@ -48,23 +49,21 @@ IM 在各类对外暴露的接口里，有一些公共的业务对象。本文�
 }
 ```
 
-事件类型：
+Event type
 
-- create_group
-- exit_group
-- add_members
-- remove_members
++ create_group
++ exit_group
++ add_members
++ remove_members
 
-## 聊天消息
+## Chat Message
 
-定义在单独的文档：[IM 消息协议](../advanced/im_message_protocol/)
+Defined in a separate document: [IM Message Protocol](../advanced/im_message_protocol/)
 
+## Related Documents
 
-## 相关文档
-
-+ [JMessage 产品简介](../guideline/jmessage_guide/)
-+ [Android SDK 开发指南](../client/im_sdk_android/)
-+ [iOS SDK 开发指南](../client/im_sdk_ios/)
-+ [资源下载](https://docs.jiguang.cn/jmessage/resources/)
-
++ [JMessage  Product Brief](../guideline/jmessage_guide/)
++ [Android SDK Development Guide](../client/im_sdk_android/)
++ [iOS SDK Development Guide](../client/im_sdk_ios/)
++ [Download](https://docs.jiguang.cn/jmessage/resources/)
 

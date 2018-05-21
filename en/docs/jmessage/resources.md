@@ -69,7 +69,7 @@
 </div>
 
 
-## DEMO Dnload体验
+## DEMO
 
 <div class="row server downloads j-chat-demo" style="margin: 0">
     <div class="box">
@@ -130,7 +130,7 @@
 </div>
 
 
-## 服务器端 SDK Dnload
+## Server SDK Download
 
 <div class="row server downloads">
     <div class="col-md-6">
