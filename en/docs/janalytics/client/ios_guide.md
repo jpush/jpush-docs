@@ -1,104 +1,131 @@
-# 极光统计 iOS SDK 集成指南
+# [Integration Guide of JStatistics iOS SDK](https://docs.jiguang.cn/janalytics/client/android_guide/)
 
-##使用提示
+## Use Suggestions
 
-本文是JAnalytics iOS SDK 标准的集成指南文档。
+This article is an integration guide document of the JAnalytics iOS SDK standard.
 
-匹配的 SDK 版本为：v1.0.0及以后版本。
+The matching SDK version is v1.0.0 and later.
 
-+ 如果您想要快速地测试、请参考本文在几分钟内跑通Demo。
-+ 极光推送文档网站上，有相关的所有指南、API、教程等全部的文档。包括本文档的更新版本，都会及时地发布到该网站上。
+-   If you want to test quickly, please refer to this article to run the Demo in minutes.
 
-##产品功能说明
-利用事件模版统计App用户的行为事件并上报给极光服务器，极光提供加工过的数据通过WebPortal展示给开发者，让开发者更加了解自己的产品在用户手中的使用情况。
-###主要场景：
+-   All documents, including all guides, APIs, and tutorials, are available on the JPush Doc website. Updated versions of this document will also be posted to the website in a timely manner.
 
-	1.统计页面流
-	2.统计事件：JAnalytics将事件统计模型化，目前提供了六种事件模型（登录，注册，购买，内容浏览，自定义计数事件，自定义计算事件）
+## 
 
-###集成压缩包内容
+## Product Function Description
 
-+	janalytics-ios-x.x.x.a静态库
-+	jcore-ios-x.x.x.a静态库
-+	统计入口JANALYTICSService.h头文件
-+	统计事件对象文件JANALYTICSEventObject.h头文件
-+	一个完整的 iOS Demo项目，通过这个演示了 JAnalytics SDK 的基本用法，可以用来做参考
+Event templates are used to count App users' behavior events and report them to Jiguang servers. Jiguang provides processed data to developers through Web Portal, allowing developers to better understand the use of their products in the hands of users.
 
-###iOS SDK 版本
-目前SDK只支持iOS 7以上版本的手机系统。
+### Main scenes：
+```
+1. Statistics page flow
 
-## 创建应用
+2. Statistical events: JAnalytics models event statistics and currently provides six event models (login, registration, purchase, content browsing, custom count events, custom calculation events).
+```
 
-* 创建成功后自动生成 AppKey 用以标识该应用。
+### Content of Integrated Archive
+
+-   janalytics-ios-x.x.x.a static library
+
+-   jcore-ios-x.x.x.a static library
+
+-   header file of statistics portal JANALYTICSService.h
+
+-   header file of statistics event object file JANALYTICSEventObject.h
+
+-   A complete iOS Demo project that demonstrates the basic usage of the JAnalytics SDK and can be used as a reference
+
+### iOS SDK Version
+
+The current SDK only supports iOS 7 or later mobile phone systems.
+
+## Create an Application
+AppKey is automatically generated to identify the application after successful creation.
 
 ![jpush_ios_guide](../image/create_ios_app.png)
 ![jpush_ios_guide](../image/create_ios_app2.png)
-##SDK导入
-**选择1：Cocoapods导入**
 
-* 通过Cocoapods下载地址：
+## Import SDK
 
+**Option 1: Import Cocoapods**
+
+-   Download address through Cocoapods:
 ```
 pod 'JAnalytics'
 ```
-* 如果需要安装指定版本则使用以下方式（以1.2.0版本为例）：
 
+-   If you want to install the specified version, use the following methods (take the 1.2.0 version as an example):
 ```
 pod 'JAnalytics', '1.2.0'
 ```
 
-**选择2：手动导入**
+**Option 2: Manual Import**
 
-+ 在极光官网下载[最新SDK](http://docs.jiguang.cn/janalytics/resources/)
-+ 解压压缩包，将Lib下的所有文件复制到工程中
-+ 增加相关的framework依赖
-	+ UIKit
-	+ SystemConfiguration
-	+ CoreTelephony
-	+ CoreGraphics
-	+ Security
-	+ Foundation
-	+ CoreLocation
-	+ CoreFoundation
-	+ CFNetwork
-	+ libz.tbd
-	+ libresolv.tbd
+-   Download the <span class="underline">[ latest SDK](http://docs.jiguang.cn/janalytics/resources/)</span> on Jiguang official website
 
-+ 可以开始使用统计SDK了！
+-   Extract the compressed package and copy all files under Lib to the project
 
-##添加头文件
-请将以下代码添加到 AppDelegate.m 引用头文件的位置
-~~~
-	// 引入JAnalytics功能所需头文件
+-   Increase related framework dependencies
+
+    -   UIKit
+
+    -   SystemConfiguration
+
+    -   CoreTelephony
+
+    -   CoreGraphics
+
+    -   Security
+
+    -   Foundation
+
+    -   CoreLocation
+
+    -   CoreFoundation
+
+    -   CFNetwork
+
+    -   libz.tbd
+
+    -   libresolv.tbd
+
+-   You can start using the statistics SDK!
+
+## Add Header Files
+
+Please add the following code to the location where the AppDelegate.m refers header file
+
+```
+    // 引入JAnalytics功能所需头文件
 	#import "JANALYTICSService.h"
 	// 如果需要使用idfa功能所需要引入的头文件（可选）
 	#import <AdSupport/AdSupport.h>
-~~~
-##添加初始化代码
+```
 
-请将以下代码添加到
+## Add Initialization Code
+
+Please add the following code to 
 -(BOOL)application:(UIApplication \*)application didFinishLaunchingWithOptions:(NSDictionary \*)launchOptions
 
-~~~
-	JANALYTICSLaunchConfig * config = [[JANALYTICSLaunchConfig alloc] init];
+```
+JANALYTICSLaunchConfig * config = [[JANALYTICSLaunchConfig alloc] init];
  
 	config.appKey = @"your appkey";
 	 
 	config.channel = @"channel";
 	 
 	[JANALYTICSService setupWithConfig:config];
-~~~
+```
+
+### More APIs
+
+For the usage of other APIs, please refer to the interface document: [iOS SDK API](ios_api)
+
+### Run the demo
+
+The demo attached with the package is an API demo example. You can import it into your project and fill in your AppKey into the demo's AppDelegate, then set the BundleID and run it directly.
 
 
-### 更多 API
+## Technical Support
 
-其他 API 的使用方法请参考接口文档：[iOS SDK API](ios_api)
-
-### 运行 demo
-
-压缩包附带的 demo 是一个 API 演示例子。你可以将它导入到你的工程，并将你的 AppKey 填入到 demo 的 AppDelegate 中，设置上BundleID然后直接运行起来测试。
-
-
-## 技术支持
-
-邮件联系：[support&#64;jpush.cn](mailto:support&#64;jpush.cn)
+Email Contact: [support&#64;jpush.cn](mailto:support&#64;jpush.cn)

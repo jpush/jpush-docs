@@ -1,74 +1,96 @@
-# iOS JShare 对外集成文档
-##使用提示
-本文是 JSHARE iOS SDK 的标准集成指南文档。
-匹配的 SDK 版本为：V1.5.0及以后版本。
+# iOS JShare Integration Guide
 
-* 如果你想要快速测试、请参考本文在几分钟内跑通 Demo。
-* 极光文档官网上有相关的所有指南、API、教程等全部的文档。包括本文档的更新版本，都会及时地发布到该网站上。
+## Use Suggestions
 
-## 产品功能说明
-JSHARE SDK 可以让你的应用支持多平台分享，无需花耗时间了解、集成每个社会化分享平台的 SDK，可以有效的降低包体积。
+This article is a standard integration guide document for the JShare iOS SDK. The matching SDK version is V1.5.0 and later.
 
-### 主要场景：
+-   If you want a quick test, please refer to this article to run through the Demo within minutes.
 
-* 将分享内容分享到 QQ、微信、新浪微博三个主要的社交平台。
-* 获取QQ、微信、新浪微博三个主要平台的个人信息，用于第三方登录。
-* 分享内容到 Facebook 和 Messenger，以及获取 Facebook 用户的个人信息用于第三方登录。
-* 分享内容到 twitter 以及获取 twitter 用户的个人信息用于第三方登录。
+-   All documents, including all guides, APIs, and tutorials, are available on the Jiguang Doc website. Updated versions of this document will be posted to the site in a timely manner.
 
-### 集成压缩包内容
+## Description of Product Function
 
-* jshare-ios-x.x.x.a 静态库
-* jcore-ios-x.x.x.a 静态库
-* JSHARE SDK 入口 JSHAREService.h 头文件
-* 一个完整的 iOS Demo 项目工程，这个工程演示了 JSHARE SDK 的基本用法，配置 SDK 时建议参考这个 Demo。
+JShare SDK allows your application to support multi-platform sharing. It does not take time to understand and integrate the SDK of each social sharing platform, which can effectively reduce the package size.
 
-### iOS SDK 支持版本
-目前 JSHARE 只支持 iOS 7 及以上 iOS 版本。
+### Main Scenes：
 
-## 快速体验
-* 双击压缩包里面的 JShareDemo.xcodeproj 打开 Demo；
-* 修改 AppDelegate.m 里面的 appKey 的值;
-* 在项目的【General】页面 -> 【Identity】->【Bundle Identifier】 选项填写你在极光创建应用所上传的证书的 Bundle id;
-* 运行安装 Demo 到真机。
+-   Share content to three major social platforms including QQ, WeChat and Sina Weibo.
 
+-   Access to personal information on QQ, WeChat, Sina Weibo for third-party login.
 
-## JSHARE SDK 集成步骤
+-   Share content to Facebook and Messenger, and access to personal information of Facebook users for third-party logins.
 
-**选择1：Cocoapods导入**
+-   Share content to twitter and get personal information of twitter users for third-party login.
 
-* 通过Cocoapods下载地址：
+### Content of Integrated Package
 
+-   jshare-ios-x.x.x.a static library
+
+-   jcore-ios-x.x.x.a static library
+
+-   header file of JSHARE SDK entrance JSHAREService.h
+
+-   A complete iOS Demo project that demonstrates the basic usage of the JSHARE SDK. Refer to this Demo when configuring the SDK.
+
+### Versions Supported by iOS SDK
+
+Currently JSHARE only supports iOS 7 and above iOS versions.
+
+## Quick Experience
+
+-   Double-click on JShareDemo.xcodeproj in the archive to open Demo;
+
+-   Modify the value of appKey in AppDelegate.m;
+
+-   Fill in the Bundle id of the certificate you uploaded in application created by Jiguang, in the \[General\] page -\> \[Identity\] -\> \[Bundle Identifier\]
+
+-   Run to Install Demo to Real Machine.
+
+## 
+
+## JSHARE SDK Integration Steps
+
+**Option 1: Import by Cocoapods**
+
+-   Download address through Cocoapods：
 ```
 pod 'JShare'
 ```
-* 如果需要安装指定版本则使用以下方式（以1.3.0版本为例）：
 
+-   If you need to install a specific version, use the following method (take the 1.3.0 version as an example)：
 ```
 pod 'JShare', '1.3.0'
 ```
 
-**选择2：手动导入**
+**Option 2: Import Manually**
 
+-   Unzip the package and copy all the files under Lib into the project to start using the SDK.
 
-* 解压压缩包，将 Lib 下的所有文件复制到工程中，即可开始使用 SDK。
+-   Add related framework dependencies：
 
-* 增加相关的 framework 依赖：
+    -   UIKit
 
-	* UIKit
-	* SystemConfiguration
-	* CoreTelephony
-	* CoreGraphics
-	* Security
-	* Foundation
-	* CoreLocation
-	* CoreFoundation
-	* CFNetwork
-	* libz.tbd
-	* libresolv.tbd
+    -   SystemConfiguration
 
-* 在 AppDelegate.m 引用头文件的位置
+    -   CoreTelephony
 
+    -   CoreGraphics
+
+    -   Security
+
+    -   Foundation
+
+    -   CoreLocation
+
+    -   CoreFoundation
+
+    -   CFNetwork
+
+    -   libz.tbd
+
+    -   libresolv.tbd
+
+-   The location where AppDelegate.m refers header file
 
 ```
 // 引入 JSHARE 功能所需头文件
@@ -77,21 +99,27 @@ pod 'JShare', '1.3.0'
 #import <AdSupport/AdSupport.h>
 ```
 
-## SDK 主要接口说明
-JSHARELaunchConfig 类：JSHARE SDK 启动配置模型。
+## Description of SDK Main Interfaces
 
-JSHAREService 类，包含分享 SDK 的所有接口。
+JSHARELaunchConfig class: The JSHARE SDK launches the configuration model.
 
+JSHAREService class contains all interfaces of share SDK.
 
 ### method - setupWithConfig
-#### 接口定义：
-+(void)setupWithConfig:(JSHARELaunchConfig *)config    
-#### 接口说明：
-初始化接口。建议在 application:didFinishLaunchingWithOptions: 中调用。
-#### 参数说明：
-* config：JSHARELaunchConfig 类的实例。
 
-#### 调用示例：
+#### Interface Definition：
+
++(void)setupWithConfig:(JSHARELaunchConfig \*)config
+
+#### Interface Description：
+
+Initialize the interface. It is recommended to call in application:didFinishLaunchingWithOptions:.
+
+#### Parameter Description：
+
+-   config：Instance of the JSHARELaunchConfig class
+
+#### Call Example：
 
 ```
     JSHARELaunchConfig *config = [[JSHARELaunchConfig alloc] init];
@@ -113,16 +141,19 @@ JSHAREService 类，包含分享 SDK 的所有接口。
 ```
 
 ### method - share
-#### 接口定义：
+
+#### Interface Definition：
+
 +(void)share:(JSHAREMessage *)message
       handler:(JSHAREStateHandler)handler
 
-#### 参数说明：
+#### Parameter Description：
 
-* message：JSHAREMessage 类的实例
-* handler：JSHAREStateHandler 分享后的回调
+-   message：Instance of the JSHAREMessage class
 
-#### 调用示例：
+-   handler：Callback after JSHAREStateHandler is shared
+
+#### Call Example：
 
 ```
 JSHAREMessage *message = [JSHAREMessage message];
@@ -136,18 +167,22 @@ JSHAREMessage *message = [JSHAREMessage message];
 ```
 
 ### method - handleOpenUrl
-#### 接口定义：
-+(BOOL)handleOpenUrl:(NSURL *)url
-#### 接口说明：
-分享的回调接口，必要！
 
-iOS 9以下，在 Appdelegate 的 application:handleOpenURL: 中调用;
-iOS 9以上，在 Appdelegate 的 application: openURL: options 中调用。
-#### 参数说明：
+#### Interface Definition：
 
-* url：回调的 url。
++(BOOL)handleOpenUrl:(NSURL \*)url
 
-#### 调用示例：
+#### Interface Description：
+
+Callback interface of sharing, required!
+
+Below iOS 9, call application:handleOpenURL: of Appdelegate ; above iOS 9, call application of Appdelegate: openURL: options.
+
+#### Parameter Description：
+
+-   url：url of the callback.
+
+#### Call Example：
 
 ```
 //目前适用所有 iOS 系统
@@ -163,20 +198,24 @@ iOS 9以上，在 Appdelegate 的 application: openURL: options 中调用。
 }
 
 ```
+
 ### method - getSocialUserInfo
-#### 接口定义：
-+(void) getSocialUserInfo:(JSHAREPlatform)platform
-                  handler:(JSHARESocialHandler)handler
 
-#### 接口说明：
-通过调用获取用户信息接口，获取用户在第三方平台的用户 ID、头像等资料完成账号体系的构建。
+#### Interface Definition：
 
-#### 参数说明：
++(void) getSocialUserInfo:(JSHAREPlatform)platform handler:(JSHARESocialHandler)handler
 
-* platform : JSHAREPlatform 枚举类型。
-* handler : JSHARESocialHandler 获取用户信息的回调。
+#### Interface Description：
 
-#### 调用实例：
+By invoking interface for user information acquiring, obtain the user ID, avatar, and other data on the third-party platform to complete the construction of account system
+
+#### Parameter Description：
+
+-   platform: JSHAREPlatform enumeration type.
+
+-   handler: JSHARESocialHandler gets callbacks of user information
+
+#### Call Example：
 
 ```
 [JSHAREService getSocialUserInfo:platfrom handler:^(JSHARESocialUserInfo *userInfo, NSError *error) {
@@ -198,22 +237,21 @@ iOS 9以上，在 Appdelegate 的 application: openURL: options 中调用。
     }];
 ```
 
-其他接口详见 JSHAREService.h 。
+For other interfaces, please see JSHAREService.h.
 
+## Configuration in Xcode 
 
+### Configure ApplicationQueriesSchemes
 
+Under iOS9/10, you need to add a whitelist for applications to jump to, that is, LSApplicationQueriesSchemes, otherwise you will return NO when the SDK determine whether to use canOpenURL to jump, and then only share/failed to share with webview.
 
+Add the application whitelist to the info.plist of the project：
 
-## Xcode 中的设置
+-   Right click info.plist
 
-### 配置 ApplicationQueriesSchemes
-在 iOS9/10 下就需要增加一个应用可跳转的白名单，即 LSApplicationQueriesSchemes，否则将在 SDK 判断是否跳转时用到的canOpenURL 时返回 NO，进而只进行 webview 分享/分享失败。
+-   Select source code
 
-在项目中的 info.plist 中加入应用白名单：
-
-* 右键 info.plist
-* 选择 source code
-* 添加如下内容：
+-   Add the following content
 
 ```
 <key>LSApplicationQueriesSchemes</key>
@@ -268,30 +306,35 @@ iOS 9以上，在 Appdelegate 的 application: openURL: options 中调用。
 </array>
 ```
 
-### 添加 URL Types
-#### 各个平台的 URL Schemes 格式说明：
+### 
 
-|平台 | 格式 | 举例 |
-|------------ | ------------- | ------------- |
-|微信 | 微信 appKey | wxa2ea563906227379|
-|QQ | 需添加：“tencent” + 腾讯 QQ 互联应用 appID | 如 appID 为:1105864531<br> URL Schemes 值为:tencent1105864531|
-|新浪微博 | “wb”+新浪 appKey | 如 appKey 为:727232518<br>URL Schemes 值为: wb727232518 |
-|Facebook | “fb”+FacebookAppID | 如 appID 为:1847959632183996<br>URL Schemes 值为: fb1847959632183996 |
-|Twitter | “twitterkit-”+TwitterConsumerKey | 如 TwitterConsumerKey 为:4hCeIip1cpTk9oPYeCbYKhVWi<br>URL Schemes 值为: twitterkit-4hCeIip1cpTk9oPYeCbYKhVWi |
+### Add URL Types
 
+#### Format description of URL Schemes for each platform：
 
-#### URL Types 设置  
-Xcode 工程目录中的 [TARGETS] -> [Info] 中设置：
+| **Platform** | **Format**                                             | **Example**                                                                                                                    |
+|--------------|--------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------|
+| WeChat       | WeChat appKey                                          | wxa2ea563906227379                                                                                                             |
+| QQ           | Need to add: "tencent" + Tencent QQ Internet app appID | If appID is 1105864531, then the value fo URL Schemes will be tencent1105864531                                                |
+| Sina Weibo   | “wb”+Sina appKey                                       | If appKey is 727232518, then the value fo URL Schemes will be wb727232518                                                      |
+| Facebook     | “fb”+FacebookAppID                                     | If appID is 1847959632183996, then the value of URL Schemes will be fb1847959632183996                                         |
+| Twitter      | “twitterkit-”+TwitterConsumerKey                       | If TwitterConsumerKey is 4hCeIip1cpTk9oPYeCbYKhVWi, then the value of URL Schemes will be twitterkit-4hCeIip1cpTk9oPYeCbYKhVWi |
+
+#### 
+
+#### URL Types Settings
+
+Set in \[TARGETS\] -\> \[Info\] in the Xcode project directory:
+
 ![](../image/urlType.png)
 
-### HTTPS 设置
- > Apple 将从2017年开始执行 ATS(App Transport Security)，所有进行审核的应用中网络请求全部支持 HTTPS，届时以下配置将会失效，请提前做好准备。
+### HTTPS Settings
 
-  目前 JSHARE 支持不存在新浪微博客户端情况下的网页分享，但是由于新浪微博的 api 尚未针对 https 做优化所以需要针对新浪的做对应的 https 设置。在 JSHARE 中是默认关闭新浪微博的网页端分享的，如需使用这个功能则需要在 JSHARELaunchConfig 类的实例中将 **isSupportWebSina** 属性设置为 YES。
+> Apple will implement ATS (App Transport Security) starting from 2017. All network applications under review will support HTTPS. The following configurations will be invalidated. Please prepare in advance.
 
-  以iOS10 SDK 编译的工程会默认以 SSL 安全协议进行网络传输，即 HTTPS，如果依然使用 HTTP 协议请求网络会报系统异常并中断请求。目前可用如下这种方式保持用 HTTP 进行网络连接：
+At present, JShare supports webpage sharing in the absence of a Sina Weibo client. However, because Sina Weibo's api has not yet been optimized for https, it needs a corresponding https setting for Sina. In JShare, the webpage sharing of Sina Weibo is turned off by default. To use this function, you need to set the isSupportWebSina attribute to YES in the instance of the **JSHARELaunchConfig** class.
 
-在 info.plist 中加入安全域名白名单(右键 info.plist 用 source code 打开)
+A project compiled with iOS10 SDK will use the SSL security protocol to perform network transmission by default, that is, HTTPS. If you still use the HTTP protocol to request the network, a system exception will be reported and interrupt the request. Currently, you can use HTTP to keep your network connection in this way:
 
 ```
 <key>NSAppTransportSecurity</key>
@@ -363,6 +406,4 @@ Xcode 工程目录中的 [TARGETS] -> [Info] 中设置：
    </dict>
 </dict>
 ```
-
-#end
-
+# end

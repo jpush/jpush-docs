@@ -1,157 +1,196 @@
 # iOS SDK API
-##SDK 接口说明
 
-1. JANALYTICSService类，包含统计SDK的所有接口
-2. JANALYTICSLaunchConfig类，统计SDK启动配置模型
-3. JANALYTICSEventObject类，统计事件模型
+## Interface Description
+
+1.  JANALYTICSService class, including all interfaces of the statistics SDK
+
+2.  JANALYTICSLaunchConfig class, counting SDK startup configuration model
+
+3.  JANALYTICSEventObject class, counting event models
 
 ---
 
-##SDK SDK初始化
-+ ***\+ (void)setupWithConfig:(JANALYTICSLaunchConfig \*)config***
-	+ 接口说明：
-		+ 初始化接口,建议在application:didFinishLaunchingWithOptions:中调用
+## SDK Initialization
 
-	+ 参数说明：
-		+ config：JANALYTICSLaunchConfig类
+-   ***+ (void)setupWithConfig:(JANALYTICSLaunchConfig \*)config***
 
-	+ 调用示例：
+    -   Interface Description
 
-~~~
-	JANALYTICSLaunchConfig * config = [[JANALYTICSLaunchConfig alloc] init];
+        -   Initialize the interface, it is recommended to call in application:didFinishLaunchingWithOptions:
+
+    -   Parameter Description
+
+        -   config：JANALYTICSLaunchConfig class
+
+    -   Call Example
+
+```
+    JANALYTICSLaunchConfig * config = [[JANALYTICSLaunchConfig alloc] init];
  
 	config.appKey = @"your appkey";
 	 
 	config.channel = @"channel";
 	 
 	[JANALYTICSService setupWithConfig:config];
-~~~
+```
+
 <a name="pageflow"></a>
-##SDK 页面流统计
-+ ***\+ (void)startLogPageView:(NSString \*)pageName***
-	+ 接口说明：
-		+ 页面流统计开始接口，建议在ViewControler的viewDidAppear:方法中调用
 
-	+ 参数说明：
-		+ pageName：要开始统计的页面名
+## SDK Page Flow Statistics
 
-	+ 调用示例：
+-   ***+ (void)startLogPageView:(NSString \*)pageName***
 
-~~~
+    -   Interface Description
+
+        -   Interface to start page flow statistics. It is recommended to call in viewDidAppear: method of ViewControler
+
+    -   Parameter Description
+
+        -   pageName：The name of the page to start statistics
+
+    -   Call Example
+
+```
 	- (void)viewDidAppear:(BOOL)animated {
 	    [JANALYTICSService startLogPageView:@"first_page_flow"];
 	}
-~~~
+```
 
-+ ***\+ (void)stopLogPageView:(NSString \*)pageName***
-	+ 接口说明：
-		+ 页面流统计结束接口，建议在ViewControler的viewDidDisappear:方法中调用；结束后，默认即时上报此页面。可通过[setFrequency:]方法更改为周期性上报策略
+-   ***+ (void)stopLogPageView:(NSString \*)pageName***
 
-	+ 参数说明：
-		+ pageName：要结束统计的页面名
+    -   Interface Description
 
-	+ 调用示例：
+        -   Interface to end the page flow statistics is recommended to be called in the viewDidDisappear: method of the ViewControler. After the ending, the page is reported in a timely manner by default. It can be changed to a periodic reporting strategy through the \[setFrequency:\] method
 
-~~~
+    -   Parameter Description
+
+        -   pageName：The page name to end the statistics
+
+    -   Call Example
+
+```
 	- (void)viewDidDisappear:(BOOL)animated {
 	    [JANALYTICSService stopLogPageView:@"first_page_flow"];
 	}
-~~~
+```
 
-##SDK 地理位置统计
-+ ***\+ (void)setLatitude:(double)latitude longitude:(double)longitude***
-	+ 接口说明：
-		+ 上报LBS信息
+## SDK Location Statistics
 
-	+ 参数说明：
-		+ latitude：纬度
-		+ longitude： 经度
+-   ***+ (void)setLatitude:(double)latitude longitude:(double)longitude***
 
-调用示例：
+    -   Interface Description
 
-~~~
-	[JANALYTICSService setLatitude:116.46 longitude:39.92];
-~~~
-+ ***\+ (void)setLocation:(CLLocation \*)location***
-	+ 接口说明：
-		+ 上报LBS信息
+        -   Report LBS information
 
-	+ 参数说明：
-		+ 	location: CoreLocation.framework框架中的LBS类
+    -   Parameter Description
 
-调用示例：
+        -   latitude
 
-~~~
-	CLLocation * location = [[CLLocation alloc] initWithCoordinate:CLLocationCoordinate2DMake(116.46, 39.92) altitude:50 horizontalAccuracy:50 verticalAccuracy:50 timestamp:[NSDate date]];
+        -   longitude
+
+Call Example
+
+```
+[JANALYTICSService setLatitude:116.46 longitude:39.92];
+```
+
+-   ***+ (void)setLocation:(CLLocation \*)location***
+
+    -   Interface Description
+
+        -   Report LBS information
+
+    -   Parameter Description
+
+        -   location: LBS class in CoreLocation.framework framework
+
+Call Example
+
+```
+CLLocation * location = [[CLLocation alloc] initWithCoordinate:CLLocationCoordinate2DMake(116.46, 39.92) altitude:50 horizontalAccuracy:50 verticalAccuracy:50 timestamp:[NSDate date]];
 	[JANALYTICSService setLocation:location];
-~~~
+```
 
-##SDK 崩溃日志统计
-+ ***\+ (void)crashLogON***
-	+ 接口说明：
-		+ 开启crash日志收集，默认是关闭状态
+## SDK Crash Log statistics
 
-调用示例：
+-   ***+ (void)crashLogON***
 
-~~~
-	[JANALYTICSService crashLogON];
-~~~
+    -   Interface Description
 
-##SDK 日志等级设置
-+ ***\+ (void)setDebug:(BOOL)enable***
-	+ 接口说明：
-		+ 设置是否打印sdk产生的Debug级log信息, 默认为NO(不打印log)
+        -   Turn on crash log collection, the default is off
 
-	+ 参数说明：
-		+ enable：设置为YES开启，设置为NO关闭
+Call Example
 
-调用示例：
+```
+[JANALYTICSService setDebug:YES];
+```
 
-~~~
-	[JANALYTICSService setDebug:YES];
-~~~
+**Log Level Settings**
 
-##事件统计
-+ ***\+ (void)eventRecord:(JANALYTICSEventObject \*)event***
-	+ 接口说明：
-		+ 自定义事件。通过传入不同的事件模型来进行各种事件的统计，具体的事件模型请查看事件模型介绍
+-   ***+ (void)setDebug:(BOOL)enable***
 
-	+ 参数说明：
-		+ event：事件统计对象
+    -   Interface Description
 
-**关于事件统计的说明：**
+        -   Set whether to print Debug level log information generated by sdk, and the default is NO (do not print log)
 
-1. 模板属性值分为非空和可选，参考下面介绍
-2. 字符串属性以及自定义属性（extra中的key与value）限制大小不超过256字节，当存在越界时该事件将会被丢弃.
-3. 自定义键值对数目不能超过10个，超过10个限制该事件将会被丢弃.
-4. 默认即时上报事件。可通过[setFrequency:]方法更改为周期性上报策略
+    -   Parameter Description
 
-+ ***JANALYTICSEventObject***
+        -   enable: Set YES to enable, set NO to turn off
 
-该模型是通用的父模型，不能单独使用
-参数说明：
+Call Example
 
-|参数名称|参数类型|参数说明|
-|:-----:|:-----:|:----:|
-|extra|	NSDictionary<NSString *, NSString *>|自定义属性|
+```
+[JANALYTICSService setDebug:YES];
+```
 
+## Event Statistics
 
-<a name="login"></a>
-##登录事件模型
-+ ***JANALYTICSLoginEvent***
+-   ***+ (void)eventRecord:(JANALYTICSEventObject \*)event***
 
-该模型是登录事件模型，可以设置参数进行数据上报。
+    -   Interface Description
 
-参数说明：
+        -   Custom events. Statistics of various events need to introduce different event models. For the specific event models, please see the event model description
 
-|参数名称|参数类型|参数说明|
-|:-----:|:-----:|:----:|
-|method|	NSString|登录方式(非空)|
-|success|BOOL|登录是否成功(非空)|
+    -   Parameter Description
 
-调用示例:
+        -   event：Object of event statistics
 
-~~~
+**Descriptions of the incident statistics:**
+
+1.  The value of template attributes value is divided into non-empty and optional, refer to the following introduction
+
+2.  Size of string attributes and custom attributes (key and value in extra) is limited not to exceed 256 bytes. The event will be discarded when there is an out of bounds.
+
+3.  The number of custom key pairs cannot exceed 10, and more than 10, the event will be discarded.
+
+4.  By default, events are reported immediately. It can be changed to a periodic reporting strategy through the \[setFrequency:\] method
+
+- ***JANALYTICSEventObject***
+
+This model is a generic parent model and cannot be used alone.
+
+**Parameter Description**
+
+| **Parameter Name** | **Parameter Type** | **Parameter Description** |
+|--------------------|--------------------|---------------------------|
+| extra              | NSDictionary       | Custom attributes         |
+
+**Login Event model**
+
+-   ***JANALYTICSLoginEvent***
+
+This model is a login event model, which can set parameters for date reporting.
+
+Parameter Description
+
+| **Parameter Name** | **Parameter Type** | **Parameter Description**                   |
+|--------------------|--------------------|---------------------------------------------|
+| method             | NSString           | Login method (not empty)                    |
+| success            | BOOL               | Whether the login is successful (not empty) |
+
+Call Example
+
+```
 	JANALYTICSLoginEvent * event = [[JANALYTICSLoginEvent alloc] init];
 	 
 	event.success = YES;
@@ -161,30 +200,35 @@
 	event.extra = @{@"custom key1":@"custom value"};
 	 
 	[JANALYTICSService eventRecord:event];
-~~~
+```
 
-**注意：**
+**Note:**
+```
+    The following key values cannot be used in extension parameters in the login event model:
 
-     登录事件模型中扩展参数中不能使用以下 key 值：
-     login_method
-     login_success
-     此类 key 已被模型使用，如果使用则会导致统计到的数据不准确.
-<a name="register"></a>
-##注册事件模型
-+ ***JANALYTICSRegisterEvent***
+    login_method
 
-该模型是注册事件模型，可以设置参数进行数据上报。
+    login_success
 
-参数说明：
+    This type of key is already used by the model, and using them will result in inaccurate statistics.
+```
 
-|参数名称|参数类型|参数说明|
-|:-----:|:----:|:-----:|
-|method|	NSString	|注册方式(非空)|
-|success|BOOL|注册是否成功(非空)|
+**Register Event Model**
 
-调用示例:
+-   ***JANALYTICSRegisterEvent***
 
-~~~
+This model is a registered event model and can set parameters for data reporting.
+
+Parameter Description
+
+| **Parameter Name** | **Parameter Type** | **Parameter Description**                   |
+|--------------------|--------------------|---------------------------------------------|
+| method             | NSString           | Registration method (not empty)             |
+| success            | BOOL               | Whether the login is successful (not empty) |
+
+Call Example
+
+```
     JANALYTICSRegisterEvent * event = [[JANALYTICSRegisterEvent alloc] init];
  
     event.success = YES;
@@ -194,35 +238,42 @@
     event.extra = @{@"custom key1":@"custom value"};
  
     [JANALYTICSService eventRecord:event];
-~~~
+```
 
-**注意：**
+**Note:**
+```
+    The following key values cannot be used in extended parameters in the register event model:
 
-	注册事件模型中扩展参数中不能使用以下 key 值:
-	register_method
-	register_success
-	此类 key 已被模型使用，如果使用则会导致统计到的数据不准确.
+    register_method
+
+    register_success
+
+    This type of key is already used by the model, and using them will result in inaccurate statistics.
+```
+
 <a name="purchase"></a>
-##购买事件模型
-+ ***JANALYTICSPurchaseEvent***
 
-该模型是购买事件模型，可以设置参数进行数据上报。
+## Purchase Event Model
 
-参数说明：
+-   ***JANALYTICSPurchaseEvent***
 
-|参数名称|参数类型|参数说明|
-|:-----:|:----:|:-----:|
-|goodsID|NSString	|商品id|
-|goodsName|NSString|	商品名称|
-|price|CGFloat|购买价格(非空)|
-|success|BOOL|购买是否成功(非空)|
-|currency|JANALYTICSPurchaseCurrency|货币类型，目前只支持CNY/USD,具体请参考JANALYTICSPurchaseEvent头文件|
-|goodsType|NSString|商品类型|
-|quantity|NSInteger|商品数量|
+This model is a purchase event model and can set parameters for data reporting.
 
-调用示例:
+Parameter Description
 
-~~~
+| **Parameter Name** | **Parameter Type**         | **Parameter Description**                                                                                            |
+|--------------------|----------------------------|----------------------------------------------------------------------------------------------------------------------|
+| goodsID            | NSString                   | Product id                                                                                                           |
+| goodsName          | NSString                   | Product name                                                                                                         |
+| price              | CGFloat                    | Purchase price (non-empty)                                                                                           |
+| success            | BOOL                       | Whether the purchase is successful (not empty)                                                                       |
+| currency           | JANALYTICSPurchaseCurrency | Currency type. Currently only supports CNY/USD. Please refer to the JANALYTICSPurchaseEvent header file for details. |
+| goodsType          | NSString                   | Product types                                                                                                        |
+| quantity           | NSInteger                  | Product quantity                                                                                                     |
+
+Call Example
+
+```
     JANALYTICSPurchaseEvent * event = [[JANALYTICSPurchaseEvent alloc] init];
  
     event.success = NO;
@@ -242,37 +293,46 @@
     event.extra = @{@"custom key1":@"custom value"};
  
     [JANALYTICSService eventRecord:event];
-~~~
+```
 
-**注意：**
+**Note**
 
-    购买事件模型中扩展参数中不能使用以下 key 值：
-    purchase_goods_id
-    purchase_goods_name
-    purchase_price
-    purchase_currency
-    purchase_goods_type
-    purchase_quantity
-    purchase_success
-    此类 key 已被模型使用，如果使用则会导致统计到的数据不准确.
-<a name="content"></a>
-##浏览事件模型
-+ ***JANALYTICSBrowseEvent***
+The following key values cannot be used in extended parameters in the purchase event model:
 
-该模型是浏览事件模型，可以设置参数进行数据上报。
+purchase_goods_id
 
-参数说明：
+purchase_goods_name
 
-|参数名称|参数类型|参数说明|
-|:-----:|:----:|:-----:|
-|contentID|NSString|浏览内容id|
-|name|NSString|内容名称(非空)|
-|type|NSString|内容类型|
-|duration|CGFloat|浏览时长|
+purchase_price
 
-调用示例:
+purchase_currency
 
-~~~
+purchase_goods_type
+
+purchase_quantity
+
+purchase_success
+
+This type of key is already used by the model, and using them will result in inaccurate statistics.
+
+**Browse Event Model**
+
+-   ***JANALYTICSBrowseEvent***
+
+This model is a browse event model which can set parameters for data reporting.
+
+Parameter Description
+
+| **Parameter Name** | **Parameter Type** | **Parameter Description** |
+|--------------------|--------------------|---------------------------|
+| contentID          | NSString           | Browse content id         |
+| name               | NSString           | Content name (not empty)  |
+| type               | NSString           | Content type              |
+| duration           | CGFloat            | Browse length             |
+
+Call Example
+
+```
   JANALYTICSBrowseEvent * event = [[JANALYTICSBrowseEvent alloc] init];
  
   event.name = @"browse name";
@@ -286,31 +346,40 @@
   event.extra = @{@"custom key1":@"custom value"};
  
   [JANALYTICSService eventRecord:event];
-~~~
+```
 
-**注意：**
+**Note:**
+```
+    The following key values cannot be used in the extended parameters in the browse event model:
 
-    浏览事件模型中扩展参数中不能使用以下 key 值：
     browse_content_id
+
     browse_name
+
     browse_type
+
     browse_duration
-    此类 key 已被模型使用，如果使用则会导致统计到的数据不准确.
+
+    This type of key is already used by the model, and using them will result in inaccurate statistics.
+```
+
 <a name="times"></a>
-##计数事件模型
-+ ***JANALYTICSCountEvent***
 
-该模型是自定义计数事件模型，可以设置参数进行数据上报。
+**Count Event Model**
 
-参数说明：
+-   ***JANALYTICSCountEvent***
 
-| 参数名称 | 参数类型 | 参数说明 |
-|:-------:|:------:|:-------:|
-| eventID | NSString |事件ID(非空)|
+This model is a custom count event model which can set parameters for data reporting.
 
-调用示例:
+Parameter Description
 
-~~~
+| **Parameter Name** | **Parameter Type** | **Parameter Description** |
+|--------------------|--------------------|---------------------------|
+| eventID            | NSString           | Event ID (not empty)      |
+
+Call Example
+
+```
   JANALYTICSCountEvent * event = [[JANALYTICSCountEvent alloc] init];
  
   event.eventID = @"event id";
@@ -318,29 +387,35 @@
   event.extra = @{@"custom key1":@"custom value"};
  
   [JANALYTICSService eventRecord:event];
-~~~
+```
 
-**注意：**
+**Note:**
+```
+    The following key values cannot be used in extended parameters in a custom count event model:
 
-		自定义计数事件模型中扩展参数中不能使用以下 key 值：
-		event_id
-		此类 key 已被模型使用，如果使用则会导致统计到的数据不准确.
+    event_id
+
+    This type of key is already used by the model, and using them will result in inaccurate statistics.
+```
+
 <a name="count"></a>
-##计算事件模型
-+ ***JANALYTICSCalculateEvent***
 
-该模型是自定义计算事件模型，计算事件会通过相同的事件不同的值进行累加，可以设置参数进行数据上报。
+## Calculate Event Model
 
-参数说明：
+-   ***JANALYTICSCalculateEvent***
 
-|参数名称|参数类型|参数说明|
-|:------:|:----:|:-----:|
-|eventId|String|事件Id(非空)|
-|value|CGFloat|事件的值(非空)|
+This model is a custom calculate event model. The calculate event will be accumulated by different values of the same event, and the parameters can be set to report data.
 
-调用示例:
+Parameter Description
 
-~~~
+| **Parameter Name** | **Parameter Type** | **Parameter Description**      |
+|--------------------|--------------------|--------------------------------|
+| eventId            | String             | Event Id (not empty)           |
+| value              | CGFloat            | The value of event (not empty) |
+
+Call Example
+
+```
   JANALYTICSCalculateEvent * event = [[JANALYTICSCalculateEvent alloc] init];
  
   event.eventID = @"event id";
@@ -350,57 +425,66 @@
   event.extra = @{@"custom key1":@"custom value"};
  
   [JANALYTICSService eventRecord:event];
-~~~
+```
 
-**注意：**
+**Note:**
+```
+    The following key values cannot be used in extended parameters in a custom calculate event model
+    event_id
+    event_value
+    This type of key is already used by the model, and using them will result in inaccurate statistics.
+```
 
-     自定义计算事件模型中扩展参数中不能使用以下 key 值：
-     event_id
-     event_value
-     此类 key 已被模型使用，如果使用则会导致统计到的数据不准确.
+## SDK Sets Up User Information
 
+-   ***+ (void)identifyAccount:(JANALYTICSUserInfo \*)userInfo with:(void (\\\^)(NSInteger err, NSString \* msg))completion***
 
-##SDK 设置用户信息
-+ ***\+ (void)identifyAccount:(JANALYTICSUserInfo \*)userInfo with:(void (\^)(NSInteger err, NSString \* msg))completion***
-	+ 接口说明：
-		+ 绑定用户维度
+    -   Interface Description
 
-	+ 参数说明：
-		+ userInfo：用户信息模型
-		+ completion： 错误码和错误信息callback
+        -   Bind user dimension
 
-调用示例：
+    -   Parameter Description
 
-~~~
-  JANALYTICSUserInfo * userinfo = [[JANALYTICSUserInfo alloc] init];
-  userinfo.accountID = @"janalyticsID1";
-  userinfo.creationTime = [[NSDate date] timeIntervalSince1970];
-  userinfo.sex = JANALYTICSSexMale;
-  userinfo.paid = JANALYTICSPaidPaid;
-  userinfo.email = @"test@jiguang.cn";
-  [userinfo setExtraObject:@"extraObj1" forKey:@"extrakey1"];
-  
-  [JANALYTICSService identifyAccount:userinfo with:^(NSInteger err, NSString *msg) {
+        -   userInfo：User information model
+
+        -   completion：Callback of error code and error message
+
+Call Example
+
+```
+    JANALYTICSUserInfo * userinfo = [[JANALYTICSUserInfo alloc] init];
+    userinfo.accountID = @"janalyticsID1";
+    userinfo.creationTime = [[NSDate date] timeIntervalSince1970];
+    userinfo.sex = JANALYTICSSexMale;
+    userinfo.paid = JANALYTICSPaidPaid;
+    userinfo.email = @"test@jiguang.cn";
+    [userinfo setExtraObject:@"extraObj1" forKey:@"extrakey1"];
+
+    [JANALYTICSService identifyAccount:userinfo with:^(NSInteger err, NSString *msg) {
     if (err) {
-      NSLog(@"identify ERR:%ld|%@", err, msg);
+    NSLog(@"identify ERR:%ld|%@", err, msg);
     }else {
-      NSLog(@"identify success");
+    NSLog(@"identify success");
     }
-  }];
-~~~
-***JANALYTICSUserInfo***模型的使用方法请参考对应头文件
+    }];
 
-##SDK 解绑当前的用户信息
-+ ***\+ (void)detachAccount:(void (\^)(NSInteger err, NSString \* msg))completion***
-	+ 接口说明：
-		+ 解绑当前绑定的用户维度
+```
 
-	+ 参数说明：
-		+ completion： 错误码和错误信息callback
+**SDK Unbinds Current User Information**
 
-调用示例：
+-   ***+ (void)detachAccount:(void (\\\^)(NSInteger err, NSString \* msg))completion***
 
-~~~
+    -   Interface Description
+
+        -   Unbind the currently bound user dimension
+
+    -   Parameter Description
+
+        -   completion： Callback of error code and error message
+
+Call Example
+
+```
   [JANALYTICSService detachAccount:^(NSInteger err, NSString *msg) {
     if (err) {
       NSLog(@"detach ERR:%ld|%@", err, msg);
@@ -408,27 +492,33 @@
       NSLog(@"detach success");
     }
   }];
-~~~
+```
 
-##SDK 设置上报频率
-+ ***\+ (void)setFrequency:(NSUInteger)frequency***
-	+ 接口说明：
-		+ 设置页面流/事件等周期上报频率
-		+ 默认为未设置频率，即时上报
-		+ 可以设置为0，即表示取消周期上报，改为即时上报
+**SDK Sets Report Frequency**
 
-	+ 参数说明：
-		+ frequency： 定时上报频率单位秒
-		<br/>频率允许区间：0，或者 10 - 24\*60\*60的区间
+-   ***+ (void)setFrequency:(NSUInteger)frequency***
 
-调用示例：
+    -   Interface Description
 
-~~~
+        -   Set the periodic reporting frequency such as page flow/event
+
+        -   The default is not set frequency, but report timely
+
+        -   It can be set to 0, which means cancel the periodic report and change it to instant report.
+
+    -   Parameter Description
+
+        -   frequency：frequency of instant report, in seconds
+
+        -   Allowed frequency range: 0, or 10 - 24\*60\*60
+
+Call Example
+
+```
 //e.g. 十分钟上报一次 
 [JANALYTICSService setFrequency:600];
-~~~
-## 技术支持
+```
 
-邮件联系：<support@jpush.cn>
+## Technical Support
 
-
+Email Contact: <support@jpush.cn>

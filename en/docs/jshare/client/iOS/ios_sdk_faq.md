@@ -1,28 +1,24 @@
-#iOS SDK FAQ
+# iOS SDK FAQ
+
+## What to do if the share failed?
+
+In iOS 9/10, you need to add a whitelist that the application can jump to. If no whitelist is configured, the sharing is unsuccessful
+
+Info.plist whitelist in the project can be viewed in: [ApplicationQueriesSchemes](https://docs.jiguang.cn/jshare/client/iOS/ios_sdk/#xcode)
+
+## Why cannot return to the application after sharing successfully?
+
+URL Types is not configured or the format of URL Schemes is incorrect; see: [URL Types Settings](https://docs.jiguang.cn/jshare/client/iOS/ios_sdk/#xcode)
 
 
+## Why there is no statistics after sharing successfully?
 
+Need to call + (BOOL) handleOpenUrl: (NSURL \*) url in the - (BOOL) application of the AppDelegate class: (UIApplication) application handleOpenURL: (NSURL) url, otherwise the data after successful sharing cannot be obtained.
 
-##分享不成功？
+## Report an error when Weibo logins to authorize：sso package or sign error
 
-
-在iOS9/10下就需要增加一个应用可跳转的白名单，如果没配置白名单，则分享不成功。
-
-在项目中的 info.plist 应用白名单看：<a href="https://docs.jiguang.cn/jshare/client/iOS/ios_sdk/#xcode">ApplicationQueriesSchemes</a>
-
-
-##分享成功后，回不到应用
-
-URL Types 没有配置或者 URL Schemes 格式不对；查看：<a href="https://docs.jiguang.cn/jshare/client/iOS/ios_sdk/#xcode">URL Types 设置</a>
-
-
-##分享成功，但是统计不到数据
-需要在AppDelegate类的 - （BOOL）应用程序中：（UIApplication* ）application handleOpenURL：（NSURL* ）url函数中，调用此函数+（BOOL）handleOpenUrl：（NSURL*）url;否则获取不到分享成功后的数据。
-
-
-##新浪微博登录授权时报错，error：sso package or sign error
-在[新浪微博开放平台](http://open.weibo.com/)的基本信息中查看 Bundle ID；
+View the Bundle ID in the basic information of the [Sina Weibo open platform](http://open.weibo.com/)；
 
 ![](../image/bundle_id.png)
 
-将项目的 Bundle ID 设置为开放平台的 Bundle ID 即可。
+Set Bundle ID of the project as Bundle ID of the open platform.

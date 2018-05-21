@@ -1,44 +1,58 @@
-# iOS SDK 概述
+# [iOS SDK Overview]
 <style>
 img[alt= jiguang] { width: 800px; }
 </style>
+
 ## JAnalytics iOS
-### 模块化的极光开发者SDK
-极光开发者服务SDK采用了模块化的使用模式，即一个核心（JCore）+N种服务（JPush，JAnalytics，...）的使用方式，方便开发者使用某一项服务或多项服务，极大的优化了多模块同时使用时功能模块重复的问题。如下图：
+
+###  Modular Jiguang Developer SDK
+
+The Jiguang Developer Service SDK adopts a modular usage model, namely a core (JCore)+N service (JPush,JAnalytics,...), which allows developers to use a single service or multiple services, which greatly optimizes the duplication of functional modules when multiple modules are used simultaneously. As shown below:
+
 ![jiguang](./image/sdk_model.png)
 
-## 上报策略
-JAnalytics iOS SDK采用了数据记录与数据上报分离的策略，数据实时记录，按照上报策略上报数据。
 
-+ 打开应用上报
-+ 关闭应用上报
+## Reporting Strategy
 
-备注：如遇到极端情况导致数据上报不成功，数据不会被清除，等待下一次上报策略触发再上报。
+The JAnalytics iOS SDK adopts a strategy of separating data records from data reporting. The data is recorded in real time and reported in accordance with the reporting strategy.
 
-## 压缩包说明
-+ janalytics-ios-x.x.x.a静态库
-+ jcore-ios-x.x.x.a静态库
-+ 统计入口JANALYTICSService.h头文件
-+ 统计事件对象文件JANALYTICSEventObject.h头文件
-+ 一个完整的 iOS  Demo项目，通过这个演示了 JAnalytics SDK 的基本用法，可以用来做参考。
+-   Open application reporting
 
-## 集成方式
-目前SDK只支持iOS 7以上版本的手机系统。
-参考：[JAnalytics iOS SDK 集成指南](ios_guide)
+-   Close application reporting
 
-## 接口说明
-参考：[JAnalytics iOS API](ios_api)
+Remarks: In the event of an extreme situation leading to unsuccessful data reporting, the data will not be cleared, but wait to be triggered by the next reporting strategy and then report.
 
-## 技术支持
+## Package Description
 
-当出现问题时：
+-   janalytics-ios-x.x.x.a static library
 
-+ 请仔细阅读文档，查看是否有遗漏。
-+ 给我们的support发邮件：[support&#64;jpush.cn](mailto:support&#64;jpush.cn)
+-   jcore-ios-x.x.x.a static library
 
-为了更快速的解决问题，在寻求帮助时，请提供下列信息：
+-   header file of statistics portal JANALYTICSService.h
 
-+ 提供appkey
-+ 如果是 SDK 问题请提供对应的 SDK 版本和完整的日志记录
+-   header file of statistics event object file JANALYTICSEventObject.h
+
+-   a complete iOS Demo project that demonstrates the basic usage of the JAnalytics SDK and can be used as a reference.
 
 
+## Integration Approach
+
+The current SDK only supports iOS 7 or later mobile phone systems. Reference: [Integration Guide of JAnalytics iOS SDK](ios_guide)
+
+## Interface Description
+
+Reference: [JAnalytics iOS API](ios_api)
+
+## Technical Support
+
+When a problem occurs:
+
+-   Please read the documentation carefully to see if there are any omissions.
+
+-   Send an email to our support: [support&#64;jpush.cn](mailto:support&#64;jpush.cn)
+
+In order to solve the problem more quickly, please provide the following information when seeking help:
+
+-   Provide appkey
+
+-   If it is a SDK issue, please provide the corresponding SDK version and complete logging
