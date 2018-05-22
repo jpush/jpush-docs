@@ -1,237 +1,254 @@
-#最近更新
-###iOS SDK v1.5.0
+# Recent Updates
 
-####更新时间
+### iOS SDK v1.5.0
+
+#### Update Time
+
 + 2018-1-18
 
+#### Change Log
 
-####Change Log
-+ 增加 twitter 平台分享功能，支持文本，图片，视频，链接 这四种类型分享到twitter。
-+ 增加 twitter 平台授权和获取个人信息功能
++ Add sharing features on twitter, and support sharing text, pictures, videos and links to twitter.
++ Add twitter platform authorization and access to personal information
 
-####升级提升
-+ 建议升级
+#### Upgrade Prompt
 
-####升级指南
-+ 首先解压您获取到的zip压缩包
-+ 更新库文件
++ Recommend upgrading!
 
-###Android SDK v1.5.0
+#### Upgrade Guide
 
-####更新时间
++ First unzip the zip archive you got
++ Update library files
+
+### Android SDK v1.5.0
+
+#### Update Time
+
 + 2018-1-18
 
-####Change Log
-+ 增加 Twitter 平台分享、授权、获取个人信息。
-+ 增加代码设置第三方平台信息接口。
-+ 修复微信分享图片缩略图不显示问题。
+#### Change Log
 
-####升级提升
-+ 建议升级
++ Add sharing, authorization, and access to personal information on Twitter
++ Add the code to set up information interfaces of third-party platform
++ Repair the problem that thumbnails shared by WeChat failed to show
 
-####升级指南
-+ 首先解压您获取到的 zip 压缩包。
-+ 更新库文件。
-	- 打开 libs 文件夹。删除原有极光jar文件, 并将 jcore-android-1.x.y.jar 、 jshare-android-1.5.0.jar、jshare-[platform]-android-1.5.0.jar复制入libs 文件夹。
-	- 用对应 CPU 文件夹下的 libjcorexxx.so 文件，替换项目中原有的极光 so 文件。
-+ 更新 AndroidManifest.xml。
-	- 压缩包根目录下有示例 AndroidManifest 文件。请对照示例更新跟 JShare 相关的组件属性，permission，Action 等配置。并在中文提示的位置替换你的包名 和 appkey。
-+ 更新 JGShareSDK.xml。
-	- 压缩包根目录下有示例 JGShareSDK 文件。请对照示例更新各个平台配置。
-+ 如果使用 jcenter 的方式集成 JShare，不需要添加相关组件和资源，详细说明请参考官方集成指南。
+#### Upgrade Prompt
 
++ Recommend upgrading!
 
+#### Upgrade Guide
 
++ First unzip the zip archive you got
++ Update library files
+        ◦ Open the libs folder. Delete the original Jiguang jar file and copy jcore-android-1.x.y.jar, jshare-android-1.5.0.jar, jshare-[platform]-android-1.5.0.ja to the libs folder.
+        ◦ Replace the original Jiguang so file in the project with the libjcorexxx.so file in the corresponding CPU folder.
++ Update AndroidManifest.xml
+        ◦ There is an example AndroidManifest file in the root directory of the package. Please refer to the examples to update JShare related component properties, permissions, Action and other configurations. Replace your package name and appkey in the location of the Chinese prompt.
++ Update JGShareSDK.xml
+        ◦ There is an example JGShareSDK file in the root directory of the package. Please refer to the example to update configuration of each platform.
++ If integrating JShare by jcenter, you do not need to add related components and resources. For details, refer to the official integration guide.
 
-###iOS SDK v1.3.0
+### iOS SDK v1.3.0
 
-####更新时间
+#### Update Time
+
 + 2017-10-10
 
+#### Change Log
 
-####Change Log
-+ 增加 Facebook 平台分享功能
-+ 增加 Facebook 平台授权和获取个人信息功能
++ Add sharing function on Facebook
++ Add authorization and access to personal information on Facebook
 
-####升级提升
-+ 建议升级
+#### Upgrade Prompt
 
-####升级指南
-+ 首先解压您获取到的zip压缩包
-+ 更新库文件
++ Recommend upgrading!
 
+#### Upgrade Guide
 
-###Android SDK v1.3.0
++ First unzip the zip archive you got
++ Update library files
 
-####更新时间
+### Android SDK v1.3.0
+
+#### Update Time
+
 + 2017-10-10
 
-####Change Log
-+ 增加 Facebook 平台分享功能
-+ 增加 Facebook 平台授权和获取个人信息功能
-+ 修复bug
+#### Change Log
 
-####升级提升
-+ 建议升级
++ Add sharing function on Facebook
++ Add authorization and access to personal information on Facebook
++ Fix bugs
 
-####升级指南
-+ 首先解压您获取到的 zip 压缩包。
-+ 更新库文件。
-	- 打开 libs 文件夹。删除原有极光 jar 文件, 并将 jcore-android-1.x.y.jar 、 jshare-android-1.3.0.jar、jshare-qq-android-1.3.0.jar、jshare-sina-android-1.3.0.jar、jshare-wechat-android-1.3.0.jar 以及 jshare-facebook-android-1.3.0.jar 复制入 libs 文件夹。
-用对应 CPU 文件夹下的 libjcorexxx.so 文件，替换项目中原有的极光 so 文件。
-+ 更新 AndroidManifest.xml。
-	- 压缩包根目录下有示例 AndroidManifest 文件。请对照示例更新跟 JShare 相关的组件属性，permission，Action 等配置。并在中文提示的位置替换你的包名 和 appkey。
-+ 更新 JGShareSDK.xml。
-	- 压缩包根目录下有示例 JGShareSDK 文件。请对照示例更新各个平台配置。
-+ 如果使用 jcenter 的方式集成 JShare，不需要添加相关组件和资源，详细说明请参考官方集成指南。
+#### Upgrade Prompt
 
++ Recommend upgrading!
 
+#### Upgrade Guide
 
++ First unzip the zip archive you got
++ Update library files
+        ◦ Open the libs folder. Delete the original Jiguang jar file and copy jcore-android-1.x.y.jar, jshare-android-1.3.0.jar, jshare-qq-android-1.3.0.jar, and jshare-sina-android-1.3.0. jar and jshare- facebook-android-1.3.0.jar to the libs folder. Replace the original Jiguang so file in the project with the libjcorexxx.so file in the corresponding CPU folder.
++ Update AndroidManifest.xml
+        ◦ There is an example AndroidManifest file in the root directory of the package. Please refer to the examples to update JShare related component properties, permissions, Action and other configurations. Replace your package name and appkey in the location of the Chinese prompt.
++ Update JGShareSDK.xml
+        ◦ There is an example JGShareSDK file in the root directory of the package. Please refer to the example to update configuration of each platform.
++ If integrating JShare by jcenter, you do not need to add related components and resources. For details, refer to the official integration guide.
 
+### iOS SDK v1.2.1
 
-###iOS SDK v1.2.1
+#### Update Time
 
-####更新时间
 + 2017-9-1
 
+#### Change Log
 
-####Change Log
-+ 修复取消获取微信用户信息崩溃的 Bug。
++ Fix the bug that cancelling WeChat user information causes crashes.
 
-####升级提升
-+ 建议升级
+#### Upgrade Prompt
 
-####升级指南
-+ 首先解压您获取到的zip压缩包
-+ 更新库文件
++ Recommend upgrading!
 
+#### Upgrade Guide
 
++ First unzip the zip archive you got
++ Update library files
 
-###Android SDK v1.2.1
+### Android SDK v1.2.1
 
-####更新时间
+#### Update Time
+
 + 2017-7-21
 
-####Change Log
-+ 修复bug
+#### Change Log
 
-####升级提升
-+ 建议升级
++ Fix bugs
 
-####升级指南
-+ 首先解压您获取到的 zip 压缩包。
-+ 更新库文件。
-	- 打开 libs 文件夹。删除原有极光jar文件, 并将 jcore-android-1.x.y.jar 、 jshare-android-1.2.0.jar、jshare-qq-android-1.2.0.jar、jshare-sina-android-1.2.0.jar以及jshare-wechat-android-1.2.0.jar 复制入libs 文件夹。
-用对应CPU文件夹下的 libjcorexxx.so文件，替换项目中原有的极光so文件。
-+ 更新 AndroidManifest.xml。
-	- 压缩包根目录下有示例 AndroidManifest 文件。请对照示例更新跟 JShare 相关的组件属性，permission，Action 等配置。并在中文提示的位置替换你的包名 和 appkey。
-+ 更新 JGShareSDK.xml。
-	- 压缩包根目录下有示例 JGShareSDK 文件。请对照示例更新各个平台配置。
-+ 如果使用 jcenter 的方式集成 JShare，不需要添加相关组件和资源，详细说明请参考官方集成指南。
+#### Upgrade Prompt
 
++ Recommend upgrading!
 
+#### Upgrade Guide
 
++ First unzip the zip archive you got
++ Update library files
+        ◦ Open the libs folder. Delete the original Jiguang jar file and copy jcore-android-1.x.y.jar, jshare-android-1.2.0.jar, jshare-qq-android-1.2.0.jar, and jshare-sina-android-1.2.0. jar and jshare-wechat-android-1.2.0.jar to the libs folder. Replace the original Jiguang so file in the project with the libjcorexxx.so file in the corresponding CPU folder.
++ Update AndroidManifest.xml
+        ◦ There is an example AndroidManifest file in the root directory of the package. Please refer to the examples to update JShare related component properties, permissions, Action and other configurations. Replace your package name and appkey in the location of the Chinese prompt.
++ Update JGShareSDK.xml
+        ◦ There is an example JGShareSDK file in the root directory of the package. Please refer to the example to update configuration of each platform.
++ If integrating JShare by jcenter, you do not need to add related components and resources. For details, refer to the official integration guide.
 
-###Android SDK v1.2.0
+### Android SDK v1.2.0
 
-####更新时间
+#### Update Time
+
 + 2017-7-17
 
-####Change Log
-+ 增加微信、微博、QQ授权、获取第三方个人信息功能。
-+ 修复QQ未登陆时没有回调问题。
+#### Change Log
 
-####升级提升
-+ 建议升级
++ Add authorization and access to third-party personal information on WeChat, Weibo and QQ
++ Fix the problem that there was no callback when QQ was not logged in.
 
-####升级指南
-+ 首先解压您获取到的 zip 压缩包。
-+ 更新库文件。
-	- 打开 libs 文件夹。删除原有极光jar文件, 并将 jcore-android-1.x.y.jar 、 jshare-android-1.2.0.jar、jshare-qq-android-1.2.0.jar、jshare-sina-android-1.2.0.jar以及jshare-wechat-android-1.2.0.jar 复制入libs 文件夹。
-用对应CPU文件夹下的 libjcorexxx.so文件，替换项目中原有的极光so文件。
-+ 更新 AndroidManifest.xml。
-	- 压缩包根目录下有示例 AndroidManifest 文件。请对照示例更新跟 JShare 相关的组件属性，permission，Action 等配置。并在中文提示的位置替换你的包名 和 appkey。
-+ 更新 JGShareSDK.xml。
-	- 压缩包根目录下有示例 JGShareSDK 文件。请对照示例更新各个平台配置。
-+ 如果使用 jcenter 的方式集成 JShare，不需要添加相关组件和资源，详细说明请参考官方集成指南。
+#### Upgrade Prompt
 
++ Recommend upgrading!
 
+#### Upgrade Guide
 
-###iOS SDK v1.2.0
++ First unzip the zip archive you got
++ Update library files
+        ◦ Open the libs folder. Delete the original Jiguang jar file and copy jcore-android-v1.x.y.jar, jshare-android-v1.2.0.jar, jshare-qq-android-v1.2.0.jar, and jshare-sina-android-v1.2.0. jar and jshare-wechat-android-v1.2.0.jar to the libs folder. Replace the original Jiguang so file in the project with the libjcorexxx.so file in the corresponding CPU folder.
++ Update AndroidManifest.xml
+        ◦ There is an example AndroidManifest file in the root directory of the package. Please refer to the examples to update JShare related component properties, permissions, Action and other configurations. Replace your package name and appkey in the location of the Chinese prompt.
++ Update JGShareSDK.xml
+        ◦ There is an example JGShareSDK file in the root directory of the package. Please refer to the example to update configuration of each platform.
++ If integrating JShare by jcenter, you do not need to add related components and resources. For details, refer to the official integration guide.
 
-####更新时间
+### iOS SDK v1.2.0
+
+#### Update Time
+
 + 2017-7-17
 
+#### Change Log
 
-####Change Log
-+ 增加获取微信、QQ、新浪微博社交平台用户信息功能。
-+ 修复 Bug。
++ Add the function to obtain user information of social platforms such as WeChat, QQ, and Sina Weibo
++ Fix bugs
 
-####升级提升
-+ 建议升级
+#### Upgrade Prompt
 
-####升级指南
-+ 首先解压您获取到的zip压缩包
-+ 更新库文件
++ Recommend upgrading!
 
+#### Upgrade Guide
 
-###Android SDK v1.1.0
++ First unzip the zip archive you got
++ Update library files
 
-####更新时间
+### Android SDK v1.1.0
+
+#### Update Time
+
 + 2017-5-25
 
-####Change Log
-+ 支持不存在新浪客户端情况下的网页分享。
-+ 支持分享内容至新浪微博私信。
+#### Change Log
 
-####升级提升
-+ 建议升级
++ Support web sharing in the absence of a Sina client.
++ Support sharing content to private messages of Sina Weibo.
 
-####升级指南
-+ 首先解压您获取到的 zip 压缩包。
-+ 更新库文件。
-	- 打开 libs 文件夹。删除原有极光 jar 文件, 并将 jcore-android-v1.x.y.jar 、 jshare-android-v1.1.0.jar、jshare-qq-android-v1.1.0.jar、jshare-sina-android-v1.1.0.jar 以及 jshare-wechat-android-v1.1.0.jar 复制入 libs 文件夹。
-用对应 CPU 文件夹下的 libjcorexxx.so 文件，替换项目中原有的极光 so 文件。
-+ 更新 AndroidManifest.xml。
-	- 压缩包根目录下有示例 AndroidManifest 文件。请对照示例更新跟 JShare 相关的组件属性，permission，Action 等配置。并在中文提示的位置替换你的包名 和 appkey。
-+ 更新 JGShareSDK.xml。
-	- 压缩包根目录下有示例 JGShareSDK 文件。请对照示例更新各个平台配置。
-+ 如果使用 jcenter 的方式集成 JShare，不需要添加相关组件和资源，详细说明请参考官方集成指南。
+#### Upgrade Prompt
 
-###iOS SDK v1.1.0
++ Recommend upgrading!
 
-####更新时间
+#### Upgrade Guide
+
++ First unzip the zip archive you got
++ Update library files。
+        ◦ Open the libs folder. Delete the original Jiguang jar file and copy jcore-android-v1.xyjar, jshare-android-v1.1.0.jar, jshare-qq-android-v1.1.0.jar, and jshare-sina-android-v1.1.0.jar and jshare-wechat-android-v1.1.0.jar to the libs folder. Replace the original Jiguang so file in the project with the libjcorexxx.so file in the corresponding CPU folder.
++ Update AndroidManifest.xml
+        ◦ There is an example AndroidManifest file in the root directory of the package. Please refer to the examples to update JShare related component properties, permissions, Action and other configurations. Replace your package name and appkey in the location of the Chinese prompt.
++ Update JGShareSDK.xml
+        ◦ There is an example JGShareSDK file in the root directory of the package. Please refer to the example to update configuration of each platform.
++ If integrating JShare by jcenter, you do not need to add related components and resources. For details, refer to the official integration guide.
+
+### iOS SDK v1.1.0
+
+#### Update Time
+
 + 2017-5-25
 
+#### Change Log
 
-####Change Log
-+ 支持不存在新浪客户端情况下的网页分享。
-+ 支持分享内容至新浪微博私信。
-+ 修复部分 Log 错误。
-+ 支持 CocoaPods。
++ Support web sharing in the absence of a Sina client.
++ Support sharing content to private messages of Sina Weibo.
++ Fix some Log errors
++ Support CocoaPods
 
-####升级提升
-+ 建议升级
+#### Upgrade Prompt
 
-####升级指南
-+ 首先解压您获取到的zip压缩包
-+ 更新库文件
++ Recommend upgrading!
 
+#### Upgrade Guide
 
-###Android SDK v1.0.0
++ First unzip the zip archive you got
++ Update library files
 
-####更新时间
+### Android SDK v1.0.0
+
+#### Update Time
+
 + 2017-4-18
 
-####Change Log
-+ 支持基本内容分享到微信好友，微信朋友圈、QQ好友、QQ空间、新浪微博。
+#### Change Log
 
++ Support basic content sharing to WeChat friends, Wechat moments, QQ friends, QQ space and Sina Weibo.
 
-###iOS SDK v1.0.0
+### iOS SDK v1.0.0
 
-####更新时间
+#### Update Time
+
 + 2017-4-18
 
+#### Change Log
 
-####Change Log
-+ 支持基本内容分享到微信好友，微信朋友圈、QQ好友、QQ空间、新浪微博。
++ Support basic content sharing to WeChat friends, Wechat moments, QQ friends, QQ space and Sina Weibo.
