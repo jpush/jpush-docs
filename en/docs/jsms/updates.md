@@ -1,148 +1,146 @@
-# 最近更新
-###JSMS Android SDK v1.2.0
+# Recent Updates
 
-####更新时间
+### JSMS Android SDK v1.2.0
+
+#### Update Time
 
 + 2017-10-24
 
-####Change Log
+#### Change Log
 
-+ 新增语音验证码播报语言
++ Add broadcast language of voice verification code
 
-####升级提示
+#### Upgrade
 
-+ 建议升级！
++ Recommend to upgrade!
 
-####升级指南   
-+ 首先解压您获取到的zip压缩包
-+ 导入 SDK 开发包
-+ 配置 AndroidManifest.xml
+#### Upgrade Guide
 
++ First unzip the zip archive you got
++ Import SDK Development Kit
++ Configure AndroidManifest.xml
 
-###JSMS iOS SDK v1.4.0
+### JSMS iOS SDK v1.4.0
 
-####更新时间
+#### Update Time
 
 + 2017-10-24 
 
-####Change Log
+#### Change Log
 
-+ 新增语音验证码播报语言
++ Add broadcast language of voice verification code
 
-####升级提示
+#### Upgrade
 
-+ 建议升级！
++ Recommend to upgrade!
 
-####升级指南   
-+ 首先解压您获取到的zip压缩包
-+ 更新库文件
+#### Upgrade Guide
+
++ First unzip the zip archive you got
++ Update library files
 
 ### JSMS iOS SDK 1.3.0
 
-#### 更新时间
+#### Update Time
 
 + 2017-06-05
 
 #### Change Log
 
-+ 支持 bitcode
-+ 增加集成文档
++ Support bitcode
++ Increase integration documents
 
-#### 升级提示
+#### Upgrade
 
-+ 建议升级！
++ Recommend to upgrade!
 
-#### 升级指南
+#### Upgrade Guide
 
-+ 首先解压您获取到的zip压缩包
-+ 更新库文件
-
++ First unzip the zip archive you got
++ Update library files
 
 ### JSMS Android SDK 1.1.0
 
-#### 更新时间
+#### Update Time
 
 + 2016-10-11
 
 #### Change Log
 
-+ 代码结构调整
-+ 去除 gson 包
-+ 去掉相关的混淆配置
-+ 新增语音接口(同步和异步共两个)
-+ 新增设置间隔时间的接口 
-+ 增加备用域名功能
++ Adjustment of code structure
++ Remove the gson package
++ Remove the relevant obfuscation configuration
++ Add voice interface (simultaneous interface and asynchronous interface)
++ Add interface to set interval
++ Add an alternate domain
 
-#### 升级提示
+#### Upgrade
 
-+ 建议升级！
++ Recommend to upgrade!
 
-#### 升级指南
+#### Upgrade Guide
 
-+ 首先解压您获取到的zip压缩包
-+ 导入 SDK 开发包
-+ 配置 AndroidManifest.xml
-
++ First unzip the zip archive you got
++ Import SDK Development Kit
++ Configure AndroidManifest.xml
 
 ### JSMS iOS SDK 1.2.0
 
-#### 更新时间
+#### Update Time
 
 + 2016-10-10
 
 #### Change Log
 
-+ 增加语音验证码功能
-+ 增加设置请求时间间隔接口
-+ SDK完全使用HTTPS链接
++ Add voice verification code
++ Increase interface for setting of request time interval
++ SDK fully uses HTTPS links
 
-#### 升级提示
+#### Upgrade
 
-+ 建议升级！
++ Recommend to upgrade!
 
-#### 升级指南
+#### Upgrade Guide
 
-+ 首先解压您获取到的zip压缩包
-+ 更新库文件
-
++ First unzip the zip archive you got
++ Update library files
 
 ### JSMS Android SDK 1.0.0
 
-#### 更新时间
+#### Update Time
 
 + 2016-06-27
 
 #### Change Log
 
-+ 功能：提供 android 短信验证码
++ Function: Provide android SMS verification code
 
-#### 升级提示
+#### Upgrade
 
-+ 建议升级！
++ Recommend to upgrade!
 
-#### 升级指南
+#### Upgrade Guide
 
-+ 首先解压您获取到的zip压缩包
-+ 导入 SDK 开发包
-+ 配置 AndroidManifest.xml
-
++ First unzip the zip archive you got
++ Import SDK Development Kit
++ Configure AndroidManifest.xml
 
 ### JSMS iOS SDK 1.1.0
 
-#### 更新时间
+#### Update Time
 
 + 2016-06-13
 
 #### Change Log
 
 + 优化与 JPush 集成出现的冲突
++ Optimize conflicts when integrating with JPush
 
-#### 升级提示
+#### Upgrade
 
-+ 建议升级！
++ Recommend to upgrade!
 
-#### 升级指南
+#### Upgrade Guide
 
-+ 首先解压您获取到的zip压缩包
-+ 更新库文件
-
++ First unzip the zip archive you got
++ Update library files
