@@ -1,6 +1,6 @@
-# 资源下载
+# Download
 
-## 客户端 SDK 下载
+## Download Client SDK
 
 <div class="row client downloads">
     <div class="col-md-6">
@@ -9,9 +9,9 @@
             <div class="caption">
                 <h4>Android SDK</h4>
                 <ul>
-                    <li><a href="../client/Android/android_sdk">Android SDK 集成指南</a></li>
+                    <li><a href="../client/Android/android_sdk">Android SDK Integration Guide</a></li>
                 </ul>
-                <p><a href="https://www.jiguang.cn/downloads/sdk/jshare_android" class="btn btn-default" role="button">下载</a></p>
+                <p><a href="https://www.jiguang.cn/downloads/sdk/jshare_android" class="btn btn-default" role="button">Download</a></p>
             </div>
         </div>
     </div>
@@ -21,9 +21,9 @@
             <div class="caption">
                 <h4>iOS SDK</h4>
                 <ul>
-                    <li><a href="../client/iOS/ios_sdk">iOS 集成指南</a></li>
+                    <li><a href="../client/iOS/ios_sdk">iOS SDK Integration Guide</a></li>
                 </ul>
-                <p><a href="https://www.jiguang.cn/downloads/sdk/jshare_ios" class="btn btn-default" role="button">下载</a></p>
+                <p><a href="https://www.jiguang.cn/downloads/sdk/jshare_ios" class="btn btn-default" role="button">Download</a></p>
             </div>
         </div>
     </div>
