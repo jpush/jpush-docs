@@ -1,41 +1,32 @@
 #Android SDK FAQ
 
+##How appkey of the third-party platform corresponds to signature and package name?
 
 
-
-##第三方平台的 appkey 和签名，包名怎样对应
-由于申请新浪微博和微信的 appkey 和 secret 时，需要填写应用的签名和包名，如下：<br>
-填写新浪微博的签名包名信息：
+When applying for appkey and secret on Sina Weibo and WeChat, you need to fill in the application's signature and package name, as follows:<br>
+Fill in signature and package name on Sina Weibo： 
 ![](../image/Sina_package.png)<br>
-填写微信的签名包名信息
+Fill in signature and package name on WeChat
 ![](../image/WeChat_package.png)<br>
-所以，SinaWeibo 和 WeChat 的 appkey 是跟包名，签名一一对应的，因此在程序的 build.gradle 文件里配置的签名文件要与 JGShareSDK.xml 里配置的第三方平台 appkey 和程序的包名是一一对应的。<br/>
+The appkey of Sina Weibo and WeChat correspond to the package name and signature. Therefore, the signature file configured in the program's build.gradle must correspond to the package name of the third-party platform appkey and program configured in JGShareSDK.xml. <br/>
+
+## Why no callback after sharing to Wechat?
+
+Check the package name and WeChat callback configuration configured in the AndroidMmanifest.xml file
+```
+<!-- Optional 微信分享回调-->
+    < activity
+        android:name=".wxapi.WXEntryActivity"
+        android:exported="true" />
+```
+
+The wxapi pointed to by the name field of WeChat callback must be in the package directory; if the path where the wxapi is located is not in the package directory, there is no callback.
+
+## Report an error when Weibo is sharing or authorizing: redirect\_uri\_mismatch
 
 
-
-
-##微信分享后没有回调？
-检查 AndroidMmanifest.xml 文件里配置的 package 包名和微信回调配置；
-
-
-
-	
-	<!-- Optional 微信分享回调-->
-        < activity
-            android:name=".wxapi.WXEntryActivity"
-            android:exported="true" />
-	
-
-
-
-微信回调的 name 字段所指的 wxapi 必须在包名（package）目录下；如果 wxapi 所在的路径不在包名（package）目录下，则没有回调。
-
-
-
-
-##微博分享或授权时报 error: redirect\_uri\_mismatch
-当分享或授权时报出如图错误<br>
+Report an error when sharing or authorizing<br>
 ![](../image/redirect_uri.png)<br>
-这个报错说明你在JGShareSDK.xml文件配置的回调地址和微博开放平台的回调地址不一致导致；登录新浪微博开放平台，
+This error indicates that the callback address you configured in the JGShareSDK.xml file is inconsistent with the callback address of the Weibo open platform. Log in to the Sina Weibo open platform.
 ![](../image/redirect_u.png)<br>
-将JGShareSDK.xml里微博的 RedirectUrl 设置为和微博开放平台的授权回调页地址相同即可。
+Set the RedirectUrl of Weibo in JGShareSDK.xml to be the same as the authorized callback page address of Weibo open platform.
