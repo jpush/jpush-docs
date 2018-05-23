@@ -69,3 +69,44 @@ pages:
     - 'REST API v2 - Report': 'jpush/server/old/rest_api_v2_report.md'
   - Recent Updates: 'jpush/updates.md'
   - Download: 'jpush/resources.md'
+
+- JMessage:
+
+  - Getting Started Guide:
+    - 'Product Introduction of JMessage': 'jmessage/guideline/jmessage_guide.md'
+    - 'FAQ': 'jmessage/guideline/faq.md'
+  - Android:
+    - 'SDK Development Guide': 'jmessage/client/im_sdk_android.md'
+    - 'SDK Integration Guide': 'jmessage/client/jmessage_android_guide.md'
+    - 'Definition of SDK ErrorCode': 'jmessage/client/im_errorcode_android.md'
+    - 'SDK API Doc': 'jmessage/client/javadoc.md'
+  - iOS:
+    - 'SDK Development Guide': 'jmessage/client/im_sdk_ios.md'
+    - 'SDK Integration Guide': 'jmessage/client/jmessage_ios_guide.md'
+    - 'Definition of SDK ErrorCode': 'jmessage/client/im_errorcode_ios.md'
+    - 'SDK API Doc': 'jmessage/client/iOSdoc.md'
+  - Web:
+    - 'SDK Development Guide V2': 'jmessage/client/im_sdk_js_v2.md'
+    - 'SDK Development Guide': 'jmessage/client/im_sdk_js.md'
+    - 'WeChat Applet SDK': 'jmessage/client/im_sdk_wxapplet.md'
+    - 'Definition of SDK ErrorCode': 'jmessage/client/im_errorcode_js.md'
+  - PC:
+    - 'SDK Development Guide': 'jmessage/client/im_sdk_win.md'
+    - 'SDK API Doc': 'jmessage/client/windoc.md'
+  - REST API:
+    - 'REST API': 'jmessage/server/rest_api_im.md'
+    - 'REST Report V2': 'jmessage/server/rest_api_im_report_v2.md'
+    - 'REST Report': 'jmessage/server/rest_api_im_report.md'
+    - 'Definition of Server ErrorCode': 'jmessage/client/im_errorcode_server.md'
+  - Advanced:
+    - 'Message Agreement': 'jmessage/advanced/im_message_protocol.md'
+    - 'Business Objects': 'jmessage/advanced/im_objects.md'
+    - 'Real-time Message Routing': 'jmessage/advanced/jmessage_callback.md'
+  - Client Integration Plugin: 'jmessage/client/client_plugins.md'
+  - Server SDK:
+    - 'Java SDK': 'jmessage/server/sdk/java_sdk.md'
+    - 'Python SDK': 'jmessage/server/sdk/python_sdk.md'
+    - 'PHP SDK': 'jmessage/server/sdk/php_sdk.md'
+    - 'C# SDK': 'jmessage/server/sdk/csharp_sdk.md'
+  - Recent Updates: 'jmessage/updates.md'
+  - Download: 'jmessage/resources.md'
