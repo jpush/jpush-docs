@@ -1,50 +1,57 @@
-# Android SDK 概述
+# Android SDK Overview
+
 <style>
 img[alt= jiguang] { width: 800px; }
 </style>
+
 ## JAnalytics Android
-### 模块化的极光开发者SDK
-极光开发者服务SDK采用了模块化的使用模式，即一个核心（JCore）+N种服务（JPush，JAnalytics，...）的使用方式，方便开发者使用某一项服务或多项服务，极大的优化了多模块同时使用时功能模块重复的问题。如下图：
+
+### Modular Jiguang Developer SDK
+
+The Jiguang Developer Service SDK adopts a modular usage model, namely a core (JCore)+N service (JPush,JAnalytics,...), which allows developers to use a single service or multiple services, which greatly optimizes the duplication of functional modules when multiple modules are used simultaneously. As shown below:
 ![jiguang](./image/sdk_model.png)
 
-## 上报策略
-JAnalytics Android SDK采用了数据记录与数据上报分离的策略，数据实时记录，按照上报策略上报数据。
 
-+ 打开应用上报
-+ 关闭应用上报
+## Reporting Strategy
 
-备注：如遇到极端情况导致数据上报不成功，数据不会被清除，等待下一次上报策略触发再上报。
+The JAnalytics Android SDK adopts a strategy of separating data records from data reporting. The data is recorded in real time and reported in accordance with the reporting strategy.
 
-## 压缩包说明
-供下载的 JPush Android SDK 压缩包，一般包含以下几个部分：
++ Open application reporting
++ Close application reporting
+
+Remarks: In the event of an extreme situation leading to unsuccessful data reporting, the data will not be cleared, but wait to be triggered by the next reporting strategy and then report.
+
+##  Package Description
+
+The JPush Android SDK archive for downloading contains the following sections
 
 + AndroidManifest.xml
-	+ 客户端嵌入SDK参考的配置文件
+	+ Configuration file of client embedded SDK 
 + libs/jcore-android_1.x.x.jar
-	+ sdk 核心包
+	+ Sdk core package
 + libs/xxx/xx.so
-	+ sdk需要用的so文件
+	+ so file needed by sdk
 + libs/janalytics-android-sdk_1.x.x.jar
-	+ SDK analysis 开发包
+	+ SDK analysis development package
 + example
-	+ 是一个完整的 Android 项目，通过这个演示了 JAnalysis SDK 的基本用法，可以用来做参考。
+	+ It is a complete Android project that demonstrates the basic usage of the JAnalysis SDK and can be used as a reference.
 
-## 集成方式
-目前SDK只支持Android 2.3或以上版本的手机系统。
-参考：[JAnalytics Android SDK 集成指南](android_guide)
+## Integration Approach
 
-## 接口说明
-参考：[JAnalytics Android API](android_api)
+At present, the SDK only supports Android 2.3 or later mobile phone systems. Reference: [Integration Guide of JAnalytics Android SDK.](android_guide)
 
-## 技术支持
+## Interface Description
+Reference: [JAnalytics Android API](android_api)
 
-当出现问题时：
+## Technical Support
 
-+ 请仔细阅读文档，查看是否有遗漏。
-+ 给我们的support发邮件：[support&#64;jpush.cn](mailto:support&#64;jpush.cn)
+When a problem occurs:
 
-为了更快速的解决问题，在寻求帮助时，请提供下列信息：
++ Please read the documentation carefully to see if there are any omissions.
++ Send an email to us: support@jpush.cn
 
-+ 提供appkey
-+ 如果是 SDK 问题请提供对应的 SDK 版本和完整的日志记录
+In order to solve the problem more quickly, please provide the following information when seeking help:
+
++ Provide appkey
++ If it is a SDK issue, please provide the corresponding SDK version and complete logging
 

@@ -1,156 +1,168 @@
 # Android JShare API
-## SDK 初始化 API
+
+## SDK Initializes API
+
 ### API - init
-初始化接口，建议在项目的 Application 的 OnCreate 中使用。  
-#### 接口定义
+
+The initialization interface is recommended to use in the OnCreate of the project's Application.
+
+#### Interface Definition
 ```
 public static void init(Context context)
 ```
-#### 参数说明
-* context 应用的 ApplicationContext
+
+#### Parameter Description
+
+* ApplicationContext of the context
 
 ### API - init
-初始化接口，建议在项目的 Application 的 OnCreate 中使用，这个初始化 API 支持代码中设置第三方平台信息。  
+The initialization interface is recommended to use in the OnCreate of the project's Application, and this initialization API supports the setting of third-party platform information in the code.
 
-* SDK 1.5.0 以上版本支持
+* Supported by SDK 1.5.0 or later versions
 
-#### 接口定义
+#### Interface Definition
 ```
 public static void init(Context context, PlatformConfig platformConfig)
 ```
-#### 参数说明
-* context 应用的 ApplicationContext
-* platformConfig 第三方平台信息配置，详情见第三方平台信息设置 API
 
-## 第三方平台信息设置 API
-JShare 提供 PlatformConfig 类，实例化后可选择设置相应的第三方平台信息。
+#### Parameter Description
+* ApplicationContext of the context
+* platformConfig: Information configuration of third-party platform, please see information settings API of third-party platforms
+
+## Information Settings API of Third-party Platforms
+JShare provides the PlatformConfig class. After the instantiation, you can choose to set the corresponding third-party platform information.
 ### API - setWechat
-设置微信平台信息。  
-#### 接口定义
+Set up information on WeChat platform
+#### Interface Definition
 ```
 public PlatformConfig setWechat(String appId, String appSecret)
 ```
-#### 参数说明
-* appId 微信平台 appId
-* appSecret 微信平台 appSecret
+#### Parameter Description
+* appId：appId of WeChat
+* appSecret：appSecret of WeChat
+
 
 ### API - setQQ
-设置 QQ 平台信息。  
-#### 接口定义
+Set up information on QQ platform
+#### Interface Definition
 ```
 public PlatformConfig setQQ(String appId, String appKey)
 ```
-#### 参数说明
-* appId QQ 平台 appId
-* appKey QQ 平台 appKey
+
+#### Parameter Description
+* appId: appId of QQ
+* appKey: appKey of QQ
 
 ### API - setSinaWeibo
-设置新浪微博平台信息。  
-#### 接口定义
+Set up information on Sina Weibo platform
+#### Interface Definition
 ```
 public PlatformConfig setSinaWeibo(String appKey, String appSecret, String redirectUrl)
 ```
-#### 参数说明
-* appKey 新浪微博平台 appKey
-* appSecret 新浪微博平台 appSecret
-* redirectUrl 新浪微博平台的回调 url
+#### Parameter Description
+* appKey: appKey of Sina Weibo
+* appSecret: appSecret of Sina Weibo
+* redirectUrl: callback url of Sina Weibo
 
 ### API - setFacebook
-设置 Facebook 平台信息。  
-#### 接口定义
+Set up information on Facebook platform
+#### Interface Definition
 ```
 public PlatformConfig setFacebook(String appId, String appName)
 ```
-#### 参数说明
-* appId Facebook 平台 appId
-* appName Facebook 平台 appName
+#### Parameter Description
+* appId: appId of Facebook
+* appName; appName of Facebook
 
 ### API - setTwitter
-设置 Twitter 平台信息。  
-#### 接口定义
+Set up information on Twitter platform
+#### Interface Definition
 ```
 public PlatformConfig setTwitter(String consumerKey, String consumerSecret)
 ```
-#### 参数说明
-* consumerKey Twitter 平台 consumerKey
-* consumerSecret Twitter 平台 consumerSecret
 
-## 获取已经正确配置的平台 API
+#### Parameter Description
+* consumerKey; consumerKey of Twitter
+* consumerSecret: consumerSecret of Twitter
+
+## Get Platform APIs That Are Already Configured Correctly
 ### API - getPlatformList
-获取 SDK 所有能用的平台名称，如要使用某个平台，必须正确配置相应的jar以及第三方平台信息。  
-#### 接口定义
+Get all available platform names for the SDK. If you want to use a platform, you must configure the appropriate jar and third-party platform information.
+#### Interface Definition
 ```
 public static List<String> getPlatformList()
 ```
 
-## 设置调试模式 API
+## Set Debug Mode API
 ### API - setDebugMode
-设置调试模式。  
-注：该接口需在 init 接口之前调用，避免出现部分日志没打印的情况。多进程情况下建议在自定义的 Application 中 onCreate 中调用。
-#### 接口定义
+Set debug mode.
+Note: This interface needs to be called before the init interface to avoid the situation where some logs are not printed. In the case of multi-process, it is recommended to call in onCreate in the custom Application.
+#### Interface Definition
 ```
 public static void setDebugMode(boolean enable)
 ```
-#### 参数说明
-* enable 为 true 则会打印 debug 级别的日志，false 则只会打印 warning 级别以上的日志
+#### Parameter Description
+* Print debug level logs when enable is true, and only print logs above warning level when enable is false
 
-## 获取正确配置的平台 API
+## Get Platform APIs That Are Already Configured Correctly
 ### API - getPlatformList
-获取 SDK 所有能用的平台名称，如要使用某个平台，必须正确配置相应的jar以及第三方平台信息。  
-#### 接口定义
+Get all available platform names for the SDK. If you want to use a platform, you must configure the appropriate jar and third-party platform information.
+
+#### Interface Definition
 ```
 public static List<String> getPlatformList()
 ```
 
-## 判断某平台分享是否有效 API
-### API - isClientValid
-判断该平台的分享是否有效。
-#### 接口定义
+##Determine whether sharing of the platform is a valid API
+###API - isClientValid
+Determine whether sharing of the platform is valid.
+#### Interface Definition
 ```
 public static boolean isClientValid(String name)
 ```
-#### 参数说明
-* name 平台名称，值可选 Wechat.Name、WechatMoments.Name、WechatFavorite.Name、SinaWeibo.Name、SinaWeiboMessage.Name、QQ.Name、QZone.Name、Facebook.Name、FbMessenger.Name、Twitter.Name。  
+####Parameter Description
+* Name: platform name, values could be Wechat.Name、WechatMoments.Name、WechatFavorite.Name、SinaWeibo.Name、SinaWeiboMessage.Name、QQ.Name、QZone.Name、Facebook.Name、FbMessenger.Name、Twitter.Name
 
-## 分享 API
+## Sharing API
 ### API - share
-分享接口
-#### 接口定义
+Sharing interface
+#### Interface Definition
 ```
 public static void share(String name, ShareParams shareParams, PlatActionListener shareActionListener))
 ```
-#### 参数说明
-* name 平台名称，值可选 Wechat.Name、WechatMoments.Name、WechatFavorite.Name、SinaWeibo.Name、SinaWeiboMessage.Name、QQ.Name、QZone.Name、Facebook.Name、FbMessenger.Name、Twitter.Name。  
-* shareParams 分享的配置参数，具体设置请参考各个平台的分享参数说明。
-* shareActionListener 回调接口，可为 null，为 null 时则没有回调
+#### Parameter Description
+* Name: platform name, values could be Wechat.Name、WechatMoments.Name、WechatFavorite.Name、SinaWeibo.Name、SinaWeiboMessage.Name、QQ.Name、QZone.Name、Facebook.Name、FbMessenger.Name、Twitter.Name
+* shareParams: Please refer to the share parameter instructions on each platform for its specific settings
+* shareActionListener: callback interface, which could be null. No callback when it is null.
 
-## 判断某平台是否支持授权 API
-### API - isSupportAuthorize 
-判断某平台是否支持授权
+## Determine whether a platform supports the authorization API
+### API - isSupportAuthorize
+Determine whether a platform supports authorization
 
-* SDK 1.2.0 以上版本支持
+* Supported by SDK 1.2.0 or later versions
 
-#### 接口定义
+#### Interface Definition
 ```
 public static boolean isSupportAuthorize(String name)
 ```
-#### 参数说明
-* name 平台名称，值可选 Wechat.Name、WechatMoments.Name、WechatFavorite.Name、SinaWeibo.Name、SinaWeiboMessage.Name、QQ.Name、QZone.Name、Facebook.Name、FbMessenger.Name、Twitter.Name。  
+#### Parameter Description
+* Name: platform name, values could be Wechat.Name、WechatMoments.Name、WechatFavorite.Name、SinaWeibo.Name、SinaWeiboMessage.Name、QQ.Name、QZone.Name、Facebook.Name、FbMessenger.Name、Twitter.Name
 
-## 授权 API
+## Authorization API
+
 ### API - authorize
-授权接口
+Authorization interface
 
-* SDK 1.2.0 以上版本支持
+* Supported by SDK 1.2.0 or later versions
 
-#### 接口定义
+#### Interface Definition
 ```
 public static void authorize(String name, AuthListener authListener)
 ```
-#### 参数说明
-* name 平台名称，值可选 Wechat.Name、WechatMoments.Name、WechatFavorite.Name、SinaWeibo.Name、SinaWeiboMessage.Name、QQ.Name、QZone.Name、Facebook.Name、FbMessenger.Name、Twitter.Name。
-* authListener 回调接口，可为 null，为 null 时则没有回调。
-#### 代码示例
+#### Parameter Description
+* Name: platform name, values could be Wechat.Name、WechatMoments.Name、WechatFavorite.Name、SinaWeibo.Name、SinaWeiboMessage.Name、QQ.Name、QZone.Name、Facebook.Name、FbMessenger.Name、Twitter.Name.
+* authListener: callback interface, which could be null. No callback when it is null.
+#### Code Example
 ```
 JShareInterface.authorize(platform, new AuthListener() {
     @Override
@@ -197,34 +209,36 @@ JShareInterface.authorize(platform, new AuthListener() {
 });
 ```
 
-## 判断是否已经授权 API
+## Determine whether the API has been authorized
+
 ### API - isAuthorize
-判断是否已经授权接口
+Determine whether the interface has been authorized
 
-* SDK 1.2.0以上版本支持
+* Supported by SDK 1.2.0 or later versions
 
-#### 接口定义
+#### Interface Definition
 ```
 public static boolean isAuthorize(String name)
 ```
-#### 参数说明
-* name 平台名称，值可选 Wechat.Name、WechatMoments.Name、WechatFavorite.Name、SinaWeibo.Name、SinaWeiboMessage.Name、QQ.Name、QZone.Name、Facebook.Name、FbMessenger.Name、Twitter.Name。
+#### Parameter Description
+* Name: platform name, values could be Wechat.Name、WechatMoments.Name、WechatFavorite.Name、SinaWeibo.Name、SinaWeiboMessage.Name、QQ.Name、QZone.Name、Facebook.Name、FbMessenger.Name、Twitter.Name
 
-## 删除授权 API
+## Remove Authorization API
 ### API - removeAuthorize
-删除授权接口
+Remove authorization interface
 
-* SDK 1.2.0 以上版本支持
+* Supported by SDK 1.2.0 or later versions
 
-
-#### 接口定义
+#### Interface Definition
 ```
 public static void removeAuthorize(String name, AuthListener actionListener)
 ```
-#### 参数说明
-* name 平台名称，值可选 Wechat.Name、WechatMoments.Name、WechatFavorite.Name、SinaWeibo.Name、SinaWeiboMessage.Name、QQ.Name、QZone.Name、Facebook.Name、FbMessenger.Name、Twitter.Name。
-* authListener 回调接口，可为 null，为 null 时则没有回调
-#### 代码示例
+
+#### Parameter Description
+* Name: platform name, values could be Wechat.Name、WechatMoments.Name、WechatFavorite.Name、SinaWeibo.Name、SinaWeiboMessage.Name、QQ.Name、QZone.Name、Facebook.Name、FbMessenger.Name、Twitter.Name
+* authListener: callback interface, which could be null. No callback when it is null.
+
+#### Code Example
 ```
 JShareInterface.removeAuthorize(platform, new AuthListener() {
     @Override
@@ -251,27 +265,27 @@ JShareInterface.removeAuthorize(platform, new AuthListener() {
 
     @Override
     public void onCancel(Platform platform, int i) {
-    
+
     }
 });
 ```
 
-## 获取个人信息 API
+## Get User Information API
 ### API - getUserInfo
-获取个人信息接口    
+Get user information interface
 
-* SDK 1.2.0 以上版本支持    
+* Supported by SDK 1.2.0 or later versions
 
-
-#### 接口定义
+#### Interface Definition
 ```
 public static void getUserInfo(String platName, AuthListener authListener)
 ```
-#### 参数说明
+#### Parameter Description
 
-* name 平台名称，值可选 Wechat.Name、WechatMoments.Name、WechatFavorite.Name、SinaWeibo.Name、SinaWeiboMessage.Name、QQ.Name、QZone.Name、Facebook.Name、FbMessenger.Name、Twitter.Name。
-* authListener 回调接口，可为 null，为 null 时则没有回调
-#### 代码示例
+* Name: platform name, values could be Wechat.Name、WechatMoments.Name、WechatFavorite.Name、SinaWeibo.Name、SinaWeiboMessage.Name、QQ.Name、QZone.Name、Facebook.Name、FbMessenger.Name、Twitter.Name
+* authListener: callback interface, which could be null. No callback when it is null.
+
+#### Code Example
 ```
 JShareInterface.getUserInfo(platform, new AuthListener() {
     @Override
@@ -319,42 +333,46 @@ JShareInterface.getUserInfo(platform, new AuthListener() {
 });
 ```
 
-# 各个平台的分享参数说明
-## 微信(包括微信朋友圈、微信收藏)
-### 1）分享文本
+# Instructions of Share Parameters on Each Platform
+## Wechat (including WeChat moments, Wechat collection)
+### 1）Share Texts
 
-参数 |是否必须|参数类型|参数说明|备注
+Parameter |Whether Required|Parameter Type|Parameter Description|Remarks
 ---- |-----|----|----|----
-ShareType | 是| int| 分享类型| Platform.SHARE_TEXT
-Text | 是 | String|分享标题|不超过 10KB
+ShareType | Yes| int| Share type| Platform.SHARE_TEXT
+Text | Yes | String|Share title|No more than 10KB
 
 ```
 ShareParams shareParams = new ShareParams();
 shareParams.setShareType(Platform.SHARE_TEXT);
 shareParams.setText("Text");//必须
 ```
-### 2）分享图片
-参数 |是否必须|参数类型|参数说明|备注
+
+### 2）Share Pictures
+Parameter |Whether Required|Parameter Type|Parameter Description|Remarks
 ---- |-----|----|----|----
-ShareType | 是| int| 分享类型| Platform.SHARE_IMAGE
-ImagePath| 否 | String|缩略图，本地图片路径|长度不能超过 10KB,大小不能超过 32K,与 ImageData 二选一
-ImageData| 否 | Bitmap|缩略图，图片 Bitmap|大小不能超过 32K,与 ImagePath 二选一
+ShareType | Yes| int| Share Type| Platform.SHARE_IMAGE
+ImagePath|NoNo | String|Thumbnail, local image path|Length can't exceed 10KB, size can't exceed 32K, choose it or ImageData
+ImageData| No | Bitmap|Thumbnail, picture Bitmap|Size can't exceed 32K, choose it or ImagePath
 ```
 ShareParams shareParams = new ShareParams();
 shareParams.setShareType(Platform.SHARE_IMAGE);
 shareParams.setImagePath(file.getAbsolutePath());
 //shareParams.setImageData(bitmap);
 ```
-### 3）分享音乐
-参数 |是否必须|参数类型|参数说明|备注
+
+
+### 3）Share Musics
+
+Parameter |Whether Required|Parameter Type|Parameter Description|Remarks
 ---- |-----|----|----|----
-ShareType | 是| int| 分享类型| Platform.SHARE_MUSIC
-Title| 否 | String|音乐标题|长度不能超过 512
-Text| 否 | String|音乐描述|长度不能超过 1K
-MusicUrl| 是 | String|音乐资源 Url|点击播放按钮可直接播放 url,长度不能超过 10K
-Url| 否 | String|跳转 Url|点击跳转页面 url,长度不能超过 10K
-ImagePath| 否 | String|缩略图，本地图片路径|长度不能超过 10KB,大小不能超过 32K,与 ImageData 二选一
-ImageData| 否 | Bitmap|缩略图，图片 Bitmap|大小不能超过 32K,与 ImagePath 二选一
+ShareType | Yes| int| ShareType| Platform.SHARE_MUSIC
+Title| No | String|Music title|Length cannot exceed 512
+Text| No | String|Music description|Length cannot exceed 1k
+MusicUrl| Yes | String|Music resources Url|Click play button to play url directly. The length cannot exceed 10K
+Url| No | String|Jump Url|Click on the jump page url. The length cannot exceed 10K
+ImagePath| No | String|Thumbnail, local image path|Length can't exceed 10KB, size can't exceed 32K, choose it or ImageData
+ImageData| No | Bitmap|Thumbnail, picture Bitmap|Size can't exceed 32K, choose it or ImagePath
 ```
 ShareParams shareParams = new ShareParams();
 shareParams.setTitle(share_title);
@@ -364,15 +382,17 @@ shareParams.setUrl(url);
 shareParams.setMusicUrl(music_url);
 shareParams.setImagePath(file.getAbsolutePath());
 ```
-### 4）分享视频
-参数 |是否必须|参数类型|参数说明|备注
+
+### 4）Share Videos
+
+Parameter |Whether Required|Parameter Type|Parameter Description|Remarks
 ---- |-----|----|----|----
-ShareType | 是| int| 分享类型| Platform.SHARE_VIDEO
-Title| 否 | String|视频标题|长度不能超过 512
-Text| 否 | String|视频描述|长度不能超过 1K，朋友圈不显示该字段内容
-Url| 是 | String|视频Url|长度不能超过 10K
-ImagePath| 否 | String|缩略图，本地图片路径|长度不能超过 10KB,大小不能超过 32K,与 ImageData 二选一
-ImageData| 否 | Bitmap|缩略图，图片 Bitmap|大小不能超过 32K,与 ImagePath 二选一
+ShareType | Yes| int| ShareType| Platform.SHARE_VIDEO
+Title| No | String|Video title|Length cannot exceed 512
+Text| No | String|Video description|Length cannot exceed 1K, and Wechat moments does not display the contents of this field
+Url| Yes | String|Video Url|Length cannot exceed 10K
+ImagePath| No | String|Thumbnail, local image path|Length can't exceed 10KB, size can't exceed 32K, choose it or ImageData
+ImageData| No | Bitmap|Thumbnail, picture Bitmap|Size can't exceed 32K, choose it or ImagePath
 ```
 ShareParams shareParams = new ShareParams();
 shareParams.setTitle(share_title);
@@ -381,15 +401,17 @@ shareParams.setShareType(Platform.SHARE_VIDEO);
 shareParams.setUrl(share_videourl);
 shareParams.setImagePath(file.getAbsolutePath());
 ```
-### 5）分享网页
-参数 |是否必须|参数类型|参数说明|备注
+
+### 5）Share Websites
+
+Parameter |Whether Required|Parameter Type|Parameter Description|Remarks
 ---- |-----|----|----|----
-ShareType | 是| int| 分享类型| Platform.SHARE_WEBPAGE
-Title| 否 | String|网页标题|长度不能超过 512
-Text| 否 | String|网页描述|长度不能超过 1K，朋友圈不显示该字段内容
-Url| 是 | String|网页 Url|长度不能超过 10K
-ImagePath| 否 | String|缩略图，本地图片路径|长度不能超过 10KB,大小不能超过 32K,与 ImageData 二选一
-ImageData| 否 | Bitmap|缩略图，图片 Bitmap|大小不能超过 32K,与 ImagePath 二选一
+ShareType | Yes| int| ShareType| Platform.SHARE_WEBPAGE
+Title| No | String|Webpage title|Length cannot exceed 512
+Text| No | String|Webpage description|Length cannot exceed 1K, and Wechat moments does not display the contents of this field
+Url| Yes | String|Webpage Url|Length cannot exceed 10K
+ImagePath| No | String|Thumbnail, local image path|Length can't exceed 10KB, size can't exceed 32K, choose it or ImageData
+ImageData| No | Bitmap|Thumbnail, picture Bitmap|Size can't exceed 32K, choose it or ImagePath
 ```
 ShareParams shareParams = new ShareParams();
 shareParams.setTitle(share_title);
@@ -398,48 +420,57 @@ shareParams.setShareType(Platform.SHARE_WEBPAGE);
 shareParams.setUrl(share_url);//必须
 shareParams.setImagePath(file.getAbsolutePath());
 ```
-### 6）分享 Emoji 表情（朋友圈、微信收藏不支持）
-参数 |是否必须|参数类型|参数说明|备注
+
+### 6）Share Emoji Expressions (Not support in Wechat moments and Wechat collection)
+
+Parameter |Whether Required|Parameter Type|Parameter Description|Remarks
 ---- |-----|----|----|----
-ShareType | 是| int| 分享类型| Platform.SHARE_EMOJI
-ImagePath| 否 | String|本地图片路径|长度不能超过 10KB,大小不能超过 10M，ImagePath 与 ImageData 必须二选一
-ImageData| 否 | Bitmap|图片 Bitmap|大小不能超过 10M，ImagePath 与 ImageData 必须二选一
+ShareType | Yes| int| ShareType| Platform.SHARE_EMOJI
+ImagePath| No | String|Local image path|Length can't exceed 10KB, size can't exceed 32K, choose it or ImageData
+ImageData| No | Bitmap|Picture Bitmap|Size can't exceed 32K, choose it or ImagePath
 ```
 ShareParams shareParams = new ShareParams();
 shareParams.setShareType(Platform.SHARE_EMOJI);
 shareParams.setImagePath(file.getAbsolutePath());
 ```
-### 7）分享文件（朋友圈、微信收藏不支持）
-参数 |是否必须|参数类型|参数说明|备注
+
+### 7）Share Files (Not support in Wechat moments and Wechat collection)
+
+Parameter |Whether Required|Parameter Type|Parameter Description|Remarks
 ---- |-----|----|----|----
-ShareType | 是| int| 分享类型| Platform.SHARE_FILE
-FilePath| 是 | String|本地文件路径|长度不能超过 10KB,大小不能超过 10M
+ShareType |Yes| int| Share type| Platform.SHARE_FILE
+FilePath| Yes | String|Local file path|Length can't exceed 10KB, and size can't exceed 32K
 ```
 ShareParams shareParams = new ShareParams();
 shareParams.setShareType(Platform.SHARE_FILE);
 shareParams.setFilePath(file.getAbsolutePath());
 ```
+
 ## QQ
-### 1）分享图片
-参数 |是否必须|参数类型|参数说明|备注
+### 1）Share Pictures
+
+Parameter |Whether Required|Parameter Type|Parameter Description|Remarks
 ---- |-----|----|----|----
-ShareType | 是| int| 分享类型| Platform.SHARE_IMAGE
-ImagePath| 否 | String|本地图片路径|ImagePath 与 ImageUrl 必须二选一
-ImageUrl| 否 | String|网络图片地址|必须以 http 或 https 开头,ImagePath 与 ImageUrl 必须二选一
+ShareType | Yes| int| Share Type| Platform.SHARE_IMAGE
+ImagePath| no | String|Local image path|Choose either ImagePath or ImageUrl 
+ImageUrl| no | String|Network image address|Must start with http or https. Choose either ImagePath or ImageUrl
 ```
 ShareParams shareParams = new ShareParams();
 shareParams.setShareType(Platform.SHARE_IMAGE);
 shareParams.setImagePath(file.getAbsolutePath());
 ```
-### 2）分享链接
-参数 |是否必须|参数类型|参数说明|备注
+
+
+### 2）Share Links
+
+Parameter |Whether Required|Parameter Type|Parameter Description|Remarks
 ---- |-----|----|----|----
-ShareType | 是| int| 分享类型| Platform.SHARE_WEBPAGE
-Title| 否 | String|标题|不超过 30 字符
-Text| 否 | String|描述|不超过 40 字符
-ImagePath| 否 | String|缩略图，本地图片路径|与 ImageUrl 二选一
-ImageUrl| 否 | String|缩略图，网络图片地址|必须以 http 或 https 开头,与 ImagePath 二选一
-Url| 是 | String|跳转链接|必须以 http 或 https 开头
+ShareType | Yes| int| 分享类型| Platform.SHARE_WEBPAGE
+Title| No | String|Title|No more than 30 characters
+Text| No | String|Description|No more than 40 characters
+ImagePath| No | String|Thumbnail, local image path|Choose either ImagePath or ImageUrl
+ImageUrl| No | String|Thumbnail, web image address|Must start with http or https. Choose either ImagePath or ImageUrl
+Url| Yes | String|Jump link|Must start with http or https
 ```
 ShareParams shareParams = new ShareParams();
 shareParams.setShareType(Platform.SHARE_WEBPAGE);
@@ -448,16 +479,18 @@ shareParams.setText(share_text);
 shareParams.setUrl(share_url);
 shareParams.setImagePath(file.getAbsolutePath());
 ```
-### 3）分享音乐
-参数 |是否必须|参数类型|参数说明|备注
+
+### 3）Share Musics
+
+Parameter |Whether Required|Parameter Type|Parameter Description|Remarks
 ---- |-----|----|----|----
-ShareType | 是| int| 分享类型| Platform.SHARE_MUSIC
-Title| 否 | String|标题|不超过 30 字符
-Text| 否 | String|描述|不超过 40 字符
-MusicUrl| 是 | String|音乐链接|音乐文件的远程链接 ,点击播放按钮可直接播放， 以 URL 的形式传入 , 不支持本地音乐，必须以 http 或 https 开头
-Url| 是 | String|跳转链接|跳转页面 url,必须以 http 或 https 开头
-ImagePath| 否 | String|缩略图，本地图片路径|与 ImageUrl 二选一
-ImageUrl| 否 | String|缩略图，网络图片地址|必须以 http 或 https 开头,与 ImagePath 二选一
+ShareType | Yes| int| Share Type| Platform.SHARE_MUSIC
+Title| No | String|Title|No more than 30 characters
+Text| No | String|Description|No more than 40 characters
+MusicUrl| Yes | String|Music link|Remote link for music files. Click play button to play directly. It is passed as URL, does not support local music, and must start with http or https
+Url| Yes | String|Jump link|Jump page url. Must start with http or https
+ImagePath| No | String|Thumbnail, local image path|Choose either ImagePath or ImageUrl
+ImageUrl| No | String|Thumbnail, web image address|Must start with http or https. Choose either ImagePath or ImageUrl
 ```
 ShareParams shareParams = new ShareParams();
 shareParams.setShareType(Platform.SHARE_MUSIC);
@@ -468,24 +501,29 @@ shareParams.setMusicUrl(music_url);
 shareParams.setImagePath(file.getAbsolutePath());
 //shareParams.setImageUrl("http://inews.gtimg.com/newsapp_bt/0/876781763/1000");
 ```
-## QQ空间
-### 1)分享文本
-参数 |是否必须|参数类型|参数说明|备注
+
+
+## QQ Space
+### 1)Share Texts
+
+Parameter |Whether Required|Parameter Type|Parameter Description|Remarks
 ---- |-----|----|----|----
-ShareType | 是| int| 分享类型| Platform.SHARE_TEXT
-Text| 否 | String|描述|不超过 10000 字符
+ShareType | Yes| int| Share type| Platform.SHARE_TEXT
+Text| No | String|Description|No more than 10000 characters
 ```
 ShareParams shareParams = new ShareParams();
 shareParams.setShareType(Platform.SHARE_TEXT);
 shareParams.setText(share_text);
 ```
-### 2)分享图片
-参数 |是否必须|参数类型|参数说明|备注
+
+### 2)Share Pictures
+
+Parameter |Whether Required|Parameter Type|Parameter Description|Remarks
 ---- |-----|----|----|----
-ShareType | 是| int| 分享类型| Platform.SHARE_IMAGE
-ImagePath| 否 | String|本地图片路径|ImagePath与ImageUrl、ImageArray必须三选一
-ImageUrl| 否 | String|网络图片地址|必须以http或https开头,ImagePath与ImageUrl、ImageArray必须三选一
-ImageArray| 否 | Array|图片地址数组|支持多个图片，超出9张后，会变成上传相册，上传相册时只支持本地图片,ImagePath与ImageUrl、ImageArray必须三选一
+ShareType | Yes| int| Share Type| Platform.SHARE_IMAGE
+ImagePath| No | String|Local image path|Choose one from ImagePath, ImageUrl、and ImageArray 
+ImageUrl| No | String|Must start with http or https. Choose one from ImagePath, ImageUrl、and ImageArray
+ImageArray| No | Array|Image address array|Support multiple pictures. After more than 9 pictures, it will become an uploaded album. Uploaded album only supports local pictures. Choose one from ImagePath, ImageUrl、and ImageArray.
 ```
 ShareParams shareParams = new ShareParams();
 shareParams.setShareType(Platform.SHARE_IMAGE);
@@ -494,15 +532,17 @@ shareParams.setImagePath(MyApplication.ImagePath);
 //String[] array = new String[]{ share_imageurl, share_imageurl_1};
 //shareParams.setImageArray(array);
 ```
-### 3)分享链接
-参数 |是否必须|参数类型|参数说明|备注
+
+### 3)Share Links
+
+Parameter |Whether Required|Parameter Type|Parameter Description|Remarks
 ---- |-----|----|----|----
-ShareType | 是| int| 分享类型| Platform.SHARE_WEBPAGE
-Title| 是 | String|标题|最长 200 个字符
-Text| 否 | String|描述|最长 600 个字符
-Url| 是 | String|跳转链接|必须以 http 或 https 开头
-ImagePath| 否 | String|缩略图，本地图片路径|与 ImageUrl 二选一
-ImageUrl| 否 | String|缩略图，网络图片地址|必须以 http 或 https 开头,与 ImagePath 二选一
+ShareType | Yes| int| Share type| Platform.SHARE_WEBPAGE
+Title| Yes | String|Title|Up to 200 characters
+Text| No | String|Description|Up to 600 characters
+Url| Yes | String|Jump link|Must start with http or https.
+ImagePath| No | String|Thumbnail, local image path|Choose either ImagePath or ImageUrl
+ImageUrl| No | String|Thumbnail, web image address|Must start with http or https. Choose either ImagePath or ImageUrl
 ```
 ShareParams shareParams = new ShareParams();
 shareParams.setShareType(Platform.SHARE_WEBPAGE);
@@ -511,16 +551,19 @@ shareParams.setUrl(share_url);
 shareParams.setImagePath(file.getAbsolutePath());
 //shareParams.setImageUrl("http://inews.gtimg.com/newsapp_bt/0/876781763/1000");
 ```
-### 4)分享音乐
-参数 |是否必须|参数类型|参数说明|备注
+
+
+### 4)Share Musics
+
+Parameter |Whether Required|Parameter Type|Parameter Description|Remarks
 ---- |-----|----|----|----
-ShareType | 是| int| 分享类型| Platform.SHARE_MUSIC
-Title| 是 | String|标题|最长 200 个字符
-Text| 否 | String|描述|最长 600 个字符
-MusicUrl| 否 | String|音乐链接|音乐文件的远程链接 ,点击播放按钮可直接播放， 以 URL 的形式传入 , 不支持本地音乐,必须以 http 或 https 开头
-Url| 是 | String|跳转链接|跳转页面 url,必须以 http 或 https 开头
-ImagePath| 否 | String|缩略图，本地图片路径|与 ImageUrl 二选一
-ImageUrl| 否 | String|缩略图，网络图片地址|必须以 http 或 https 开头,与 ImagePath 二选一
+ShareType | Yes| int| Share Type| Platform.SHARE_MUSIC
+Title| Yes | String|Title|Up to 200 characters
+Text| No | String|Description|Up to 600 characters
+MusicUrl| No | String|Music links|Remote link for music files. Click play button to play directly. It is passed as URL, does not support local music, and must start with http or https
+Url| Yes | String|Jump link|Jump page url. Must start with http or https
+ImagePath| No | String|Thumbnail, local image path|Choose either ImagePath or ImageUrl
+ImageUrl| No | String|Thumbnail, web image address|Must start with http or https. Choose either ImagePath or ImageUrl
 ```
 ShareParams shareParams = new ShareParams();
 shareParams.setShareType(Platform.SHARE_MUSIC);
@@ -530,51 +573,59 @@ shareParams.setUrl(music_shareUrl);
 shareParams.setImagePath(file.getAbsolutePath());
 //shareParams.setImageUrl("http://inews.gtimg.com/newsapp_bt/0/876781763/1000");
 ```
-### 5)分享本地视频
-参数 |是否必须|参数类型|参数说明|备注
+
+
+### 5)Share Local Videos
+
+Parameter |Whether Required|Parameter Type|Parameter Description|Remarks
 ---- |-----|----|----|----
-ShareType | 是| int| 分享类型| Platform.SHARE_VIDEO
-VideoPath| 是 | String|本地视频地址|不支持网络视频
+ShareType | Yes| int| ShareType| Platform.SHARE_VIDEO
+VideoPath| Yes | String|Local video address|Not support online videos
 ```
 ShareParams shareParams = new ShareParams();
 shareParams.setShareType(Platform.SHARE_VIDEO);
 shareParams.setVideoPath(MyApplication.VideoPath);
 ```
-## 新浪微博
-### 1)分享文本
-参数 |是否必须|参数类型|参数说明|备注
+
+## Sina Weibo
+### 1)Share Texts
+Parameter |Whether Required|Parameter Type|Parameter Description|Remarks
 ---- |-----|----|----|----
-ShareType | 是| int| 分享类型| Platform.SHARE_TEXT
-Text| 是 | String|文本|不超过 1999
-ImagePath| 否 | String|本地图片地址|不支持网络图片,文件不超过 10M，与 ImageData 二选一
-ImageData| 否 | Bitmap|本地图片 bitmap|不支持网络图片,不超过 2M，与 ImagePath 二选一
+ShareType | Yes| int| ShareType| Platform.SHARE_TEXT
+Text| Yes | String|Text|No more than 1999
+ImagePath| No | String|Local image address |Not support network images, and files cannot exceed 2M. Choose either it or ImageData
+ImageData| No | Bitmap|Local picture bitmap|Not support network images, and files cannot exceed 2M. Choose either it or ImagePath
 ```
 ShareParams shareParams = new ShareParams();
 shareParams.setShareType(Platform.SHARE_IMAGE);
 shareParams.setText(share_text);
 shareParams.setImagePath(file.getAbsolutePath());
 ```
-### 2)分享图片
-参数 |是否必须|参数类型|参数说明|备注
+
+
+### 2)Share Pictures
+
+Parameter |Whether Required|Parameter Type|Parameter Description|Remarks
 ---- |-----|----|----|----
-ShareType | 是| int| 分享类型| Platform.SHARE_IMAGE
-Text| 否 | String|文本|不超过 1999
-ImagePath| 是 | String|本地图片地址|不支持网络图片,文件不超过 10M，与 ImageData 二选一
-ImageData| 是 | Bitmap|本地图片 bitmap|不支持网络图片,不超过 2M，与 ImagePath 二选一
+ShareType | Yes| int| ShareType| Platform.SHARE_IMAGE
+Text| No | String|Text|No more than 1999
+ImagePath| Yes | String|Local image address |Not support network images, and files cannot exceed 2M. Choose either it or ImageData
+ImageData| Yes | Bitmap|Local picture bitmap|Not support network images, and files cannot exceed 2M. Choose either it or ImagePath
 ```
 ShareParams shareParams = new ShareParams();
 shareParams.setShareType(Platform.SHARE_IMAGE);
 shareParams.setText(share_text);
 shareParams.setImagePath(file.getAbsolutePath());
 ```
-### 3)分享链接
-参数 |是否必须|参数类型|参数说明|备注
+
+### 3)Share Links
+Parameter |Whether Required|Parameter Type|Parameter Description|Remarks
 ---- |-----|----|----|----
-ShareType | 是| int| 分享类型| Platform.SHARE_WEBPAGE
-Text| 否 | String|文本|不超过1999
-ImagePath| 否 | String|本地图片地址|不支持网络图片,文件不超过 10M，与 ImageData 二选一
-ImageData| 否 | Bitmap|本地图片 bitmap|不支持网络图片,不超过 2M，与 ImagePath 二选一
-Url| 是 | String|跳转链接|长度不超过 512
+ShareType | Yes| int| ShareType| Platform.SHARE_WEBPAGE
+Text| No | String|Text|No more than 1999
+ImagePath| No | String|Local image address |Not support network images, and files cannot exceed 2M. Choose either it or ImageData
+ImageData| No | Bitmap|Local picture bitmap|Not support network images, and files cannot exceed 2M. Choose either it or ImagePath
+Url| Yes | String|Jump link|Length cannot exceed 512
 ```
 ShareParams shareParams = new ShareParams();
 shareParams.setShareType(Platform.SHARE_WEBPAGE);
@@ -582,16 +633,18 @@ shareParams.setText(share_text);
 shareParams.setImagePath(file.getAbsolutePath());
 shareParams.setUrl(share_url);
 ```
-## 新浪微博私信
-### 1)分享链接
-参数 |是否必须|参数类型|参数说明|备注
+
+## Direct Message on Sina Weibo
+### 1)Share Links
+
+Parameter |Whether Required|Parameter Type|Parameter Description|Remarks
 ---- |-----|----|----|----
-ShareType | 是| int| 分享类型| Platform.SHARE_WEBPAGE
-Text| 否 | String|文本|不超过1024
-Title| 否 | String|标题|不超过512
-ImagePath| 否 | String|本地图片地址|不支持网络图片,文件不超过 32K，与 ImageData 二选一
-ImageData| 否 | Bitmap|本地图片 bitmap|不支持网络图片,不超过 32K，与 ImagePath 二选一
-Url| 是 | String|跳转链接|长度不超过512
+ShareType | Yes| int| ShareType| Platform.SHARE_WEBPAGE
+Text| No | String|Text|No more than 1024
+Title| No | String|Title|No more than 512
+ImagePath| No | String|Local image address |Not support network images, and files cannot exceed 32K. Choose either it or ImageData
+ImageData| No | Bitmap|Local picture bitmap|Not support network images, and files cannot exceed 32K. Choose either it or ImagePath
+Url| Yes | String|Jump links|The length does not exceed 512
 ```
 ShareParams shareParams = new ShareParams();
 shareParams.setShareType(Platform.SHARE_WEBPAGE);
@@ -601,12 +654,13 @@ shareParams.setUrl(share_url);
 ```
 
 ## Facebook、FbMessenger
-### 1)分享链接
-参数 |是否必须|参数类型|参数说明|备注
+### 1)Share Links
+
+Parameter |Whether Required|Parameter Type|Parameter Description|Remarks
 ---- |-----|----|----|----
-ShareType | 是| int| 分享类型| Platform.SHARE_WEBPAGE
-Url| 是 | String|分享链接|
-Quote| 否 | String|分享引用|
+ShareType | Yes| int| ShareType| Platform.SHARE_WEBPAGE
+Url| Yes | String|Share links|
+Quote| No | String|Share references|
 ```
 ShareParams shareParams = new ShareParams();
 shareParams.setShareType(Platform.SHARE_WEBPAGE);
@@ -614,23 +668,24 @@ shareParams.setUrl(share_url);
 shareParams.setQuote(quote);
 ```
 
-### 2)分享图片
-参数 |是否必须|参数类型|参数说明|备注
+### 2)Share Pictures
+Parameter |Whether Required|Parameter Type|Parameter Description|Remarks
 ---- |-----|----|----|----
-ShareType | 是| int| 分享类型| Platform.SHARE_IMAGE
-ImagePath| 否 | String|本地图片地址|
-ImageData| 否 | String|本地图片bitmap|
+ShareType | Yes| int| ShareType| Platform.SHARE_IMAGE
+ImagePath| No | String|Local image address |
+ImageData| No | String|Local picture bitmap|
 ```
 ShareParams shareParams = new ShareParams();
 shareParams.setShareType(Platform.SHARE_IMAGE);
 shareParams.setImagePath(file.getAbsolutePath());
 ```
 
-### 2)分享视频
-参数 |是否必须|参数类型|参数说明|备注
+### 3)Share Videos
+
+Parameter |Whether Required|Parameter Type|Parameter Description|Remarks
 ---- |-----|----|----|----
-ShareType | 是| int| 分享类型| Platform.SHARE_VIDEO
-VideoPath| 否 | String|本地视频地址|
+ShareType | 是| int| ShareType| Platform.SHARE_VIDEO
+VideoPath| No | String|Local video address|
 ```
 ShareParams shareParams = new ShareParams();
 shareParams.setShareType(Platform.SHARE_VIDEO);
@@ -638,53 +693,60 @@ shareParams.setVideoPath(file.getAbsolutePath());
 ```
 
 ## Twitter
-### 1)分享文本
-参数 |是否必须|参数类型|参数说明|备注
+### 1)Share Texts
+
+Parameter |Whether Required|Parameter Type|Parameter Description|Remarks
 ---- |-----|----|----|----
-ShareType | 是| int| 分享类型| Platform.SHARE_TEXT
-Text| 是 | String|文本|不可为空，文本长度不超过 140
+ShareType | 是| int| ShareType| Platform.SHARE_TEXT
+Text| 是 | String|Text|Cannot be empty, and text length cannot exceed 140
 ```
 ShareParams shareParams = new ShareParams();
 shareParams.setShareType(Platform.SHARE_TEXT);
 shareParams.setUrl(text);
 ```
-### 2)分享链接
-参数 |是否必须|参数类型|参数说明|备注
+
+### 2)Share Links
+
+Parameter |Whether Required|Parameter Type|Parameter Description|Remarks
 ---- |-----|----|----|----
-ShareType | 是| int| 分享类型| Platform.SHARE_WEBPAGE
-Url| 是 | String|分享链接|仅支持http、https，分享可以带有图片或者视频，但是不能同时带有图片和视频
-Text| 否 | String|文本|文本长度与链接长度的和不能超过140
-ImagePath| 否 | String|本地图片地址|JPG, PNG, GIF, WEBP格式，不能超过5M，ImagePath与ImageUrl、ImageArray 只能三选一
-ImageData| 否 | String|本地图片bitmap|JPG, PNG, GIF, WEBP格式，不能超过5M，ImagePath与ImageUrl、ImageArray 只能三选一
-ImageArray| 否 | Array|本地图片地址数组|支持多个图片，最多4张，JPG, PNG, GIF, WEBP格式，单张不能超过5M，ImagePath与ImageUrl、ImageArray必须三选一
-VideoPath| 否 | String|本地视频地址|不支持网络视频，
+ShareType | 是| int| Share Type| Platform.SHARE_WEBPAGE
+Url| 是 | String|Share Links|Only supports http and https. Sharing can have pictures or videos, but cannot have pictures and videos at the same time
+Text| No | String|Text|The sum of text length and link length cannot exceed 140
+ImagePath| No | String|Local image address |In the format of JPG, PNG, GIF, WEBP and cannot exceed 5M. Choose one from ImagePath, ImageUrl and ImageArray 
+ImageData| No | String|Local picture bitmap|JIn the format of JPG, PNG, GIF, WEBP and cannot exceed 5M. Choose one from ImagePath, ImageUrl and ImageArray 
+ImageArray| No | Array|Array of local image address|Support multiple pictures, up to 4. In the format of JPG, PNG, GIF, WEBP and cannot exceed 5M. Choose one from ImagePath, ImageUrl and ImageArray
+VideoPath| No | String|Local video address|Not support online videos
 ```
 ShareParams shareParams = new ShareParams();
 shareParams.setShareType(Platform.SHARE_WEBPAGE);
 shareParams.setUrl(share_url);
 ```
 
-### 3)分享图片
-参数 |是否必须|参数类型|参数说明|备注
+### 3)Share Pictures
+
+Parameter |Whether Required|Parameter Type|Parameter Description|Remarks
 ---- |-----|----|----|----
-ShareType | 是| int| 分享类型| Platform.SHARE_IMAGE
-Text| 否 | String|文本|文本长度不能超过140
-ImagePath| 否 | String|本地图片地址|JPG, PNG, GIF, WEBP格式，不能超过5M，ImagePath与ImageUrl、ImageArray必须三选一
-ImageData| 否 | String|本地图片bitmap|JPG, PNG, GIF, WEBP格式，不能超过5M，ImagePath与ImageUrl、ImageArray必须三选一
-ImageArray| 否 | Array|本地图片地址数组|支持多个图片，最多4张，JPG, PNG, GIF, WEBP格式，单张不能超过5M，ImagePath与ImageUrl、ImageArray必须三选一
+ShareType | 是| int| ShareType| Platform.SHARE_IMAGE
+Text| No | String|Text|Text length cannot exceed 140
+ImagePath| No | String|Local image address |In the format of JPG, PNG, GIF, WEBP and cannot exceed 5M. Choose one from ImagePath, ImageUrl and ImageArray 
+ImageData| No | String|Local picture bitmap|In the format of JPG, PNG, GIF, WEBP and cannot exceed 5M. Choose one from ImagePath, ImageUrl and ImageArray 
+ImageArray| No | Array|Array of local image address |Support multiple pictures, up to 4. In the format of JPG, PNG, GIF, WEBP and cannot exceed 5M. Choose one from ImagePath, ImageUrl and ImageArray
 ```
 ShareParams shareParams = new ShareParams();
 shareParams.setShareType(Platform.SHARE_IMAGE);
 shareParams.setImagePath(file.getAbsolutePath());
 ```
-### 4)分享视频
-参数 |是否必须|参数类型|参数说明|备注
+
+### 4)Share Videos
+
+Parameter |Whether Required|Parameter Type|Parameter Description|Remarks
 ---- |-----|----|----|----
-ShareType | 是| int| 分享类型| Platform.SHARE_VIDEO
-Text| 否 | String|文本|文本长度不能超过140
-VideoPath| 是 | String|本地视频地址|不支持网络视频，视频的格式要求较多，具体参考twitter文档：https://developer.twitter.com/en/docs/media/upload-media/uploading-media/media-best-practices
+ShareType | Yes| int| ShareType| Platform.SHARE_VIDEO
+Text| No | String|Text|Text length cannot exceed 140
+VideoPath| Yes | String|Local video address|Not support online videos. There are many requirements on formats of the video, please refer to the twitter document: https://developer.twitter.com/en/docs/media/upload-media/uploading-media/media-best-practices
 ```
 ShareParams shareParams = new ShareParams();
 shareParams.setShareType(Platform.SHARE_VIDEO);
 shareParams.setVideoPath(videoPath);
 ```
+

@@ -1,322 +1,341 @@
 # Android SDK API
 
-##SDK 初始化 API
+## SDK Initializes API
 
 + ***JAnalyticsInterface.init(Context context)***
-	+ 接口说明：
-		+ 初始化接口。建议在Application的onCreate中调用
-	+ 参数说明：
-		+ context：android的上下文
-	+ 调用示例：
-	
-~~~			
-	JAnalyticsInterface.init(this);
-~~~
+	+ Interface Description
+		+ Initialize the interface. It is recommended to call in onCreate of the Application
+	+ Parameter Description:
+		+ context：Android context
+	+ Call Example:
+
+```
+    JAnalyticsInterface.init(this);
+```
 
 + ***JAnalyticsInterface.setDebugMode(boolean enable)***
-	+ 接口说明：
-		+ 设置是否开启debug模式。true则会打印更多的日志信息。建议在init接口之前调用。
-	+ 参数说明：
-		+ enable：debug开关 
-	+ 调用示例：
+	+ Interface Description
+		+ Set whether to enable debug mode. True will print more log information. It is recommended to call before the init interface.
+	+ Parameter Description
+		+ enable：Debug switch
+	+ Call Example
 
-~~~
-	JAnalyticsInterface.setDebugMode(true);
-~~~
+```
+    JAnalyticsInterface.setDebugMode(true);
+```
++ ***AnalyticsInterface.initCrashHandler(Context context)***
+	+ Interface Description
+		+ Turn on log reporting of crashlog
+	+ Parameter Description
+		+ context: Android context
+	+ Call Example
 
-+ ***JAnalyticsInterface.initCrashHandler(Context context)***
-	+ 接口说明：
-		+ 开启crashlog日志上报
-	+ 参数说明：
-		+ context:android的上下文 
-	+ 调用示例：
-
-~~~
-	JAnalyticsInterface.initCrashHandler(this);
-~~~
+```
+    JAnalyticsInterface.initCrashHandler(this);
+```
 
 + ***JAnalyticsInterface.stopCrashHandler(Context context)***
-	+ 接口说明：
-		+ 关闭crashlog日志上报
-	+ 参数说明：
-		+ context:android的上下文 
-	+ 调用示例：
+	+ Interface Description
+		+ Turn off log reporting of crashlog
+	+ Parameter Description
+		+ context: Android context
+	+ Call Example
 
-~~~
-	JAnalyticsInterface.stopCrashHandler(this);
-~~~
+```
+    JAnalyticsInterface.stopCrashHandler(this);
+```
 
 <a name="pageflow"></a>
-##页面流统计 API
+## Page Flow Statistics API
 
 + ***JAnalyticsInterface.onPageStart(Context context,String pageName)***
-	+ 接口说明：
-		+ 页面启动接口。在页面(activity和fragment)的相关生命周期内调用，和onPageEnd需要成对调用，关于activity和fragment的不同情况下会对生命周期造成影响，详细请见说明
-	+ 参数说明：
-		+ context：activity的上下文
-		+ pageName：页面名称 
-	+ 调用示例：
-	
-~~~
-	JAnalyticsInterface.onPageStart(this,this.getClass().getCanonicalName());
-~~~
+	+ Interface Description
+		+ Interface to launch the page. Calls in the page (activity and fragment) related life cycle, need to be in pairs with onPageEnd. Different circumstances of the activity and fragment will affect the life cycle, please see the instructions
+	+ Parameter Description
+		+ context：The context of activity
+		+ pageName：Page name
+	+ Call Example
+
+```
+    JAnalyticsInterface.onPageStart(this,this.getClass().getCanonicalName());
+```
 
 + ***JAnalyticsInterface.onPageEnd(Context context,String pageName)***
-	+ 接口说明：
-		+ 页面结束接口。在页面(activity和fragment)的相关生命周期内调用，和onPageStart需要成对调用，关于activity和fragment的不同情况下会对生命周期造成影响，详细请见说明
-	+ 参数说明：
-		+ context：activity的上下文
-		+ pageName：页面名称 
-	+ 调用示例：
-	
-~~~	
-	JAnalyticsInterface.onPageEnd(this,this.getClass().getCanonicalName());
-~~~
- 
-**关于页面流做如下说明：**
+	+ Interface Description
+		+ Interface to close the page. Calls in the page (activity and fragment) related life cycle, need to be in pairs with onPageStart. Different circumstances of the activity and fragment will affect the life cycle, please see the instructions
+	+ Parameter Description
+		+ context：The context of activity
+		+ pageName：Page name
+	+ Call Example
 
-1. 开发者自己决定activity和fragment是否是一个页面。在相应的方法调用onPageStart和onPageEnd方法，并且需要是成对调用
-	
-2. 当activity中包含多个fragment，每个fragment都需当做页面统计时，基于fragment的切换模式，提供以下建议
-	+ replace模式:这种模式切换fragment，则是正常进行onResume和onPause的生命周期。
-	+ viewpage中包号多个fragment进行切换：这种模式切换需在fragment中监听 setUserVisibleHint接口，通过其返回的参数进行onPageStart和onPageEnd的调用
-	+ show/hide模式:这种模式下切换fragment需要监听onHiddenChanged接口来确认fragment是否显示。并需要在onResume中也需要调用onPageStart(onPause不需要调用onPageEnd)
+```
+    JAnalyticsInterface.onPageEnd(this,this.getClass().getCanonicalName());
+```
 
-##自定义事件统计 API
+**Instructions about the page flow:**
+
+1.	The developer decides whether the activity and fragment are a page. The onPageStart and onPageEnd methods are called in the corresponding method and need to be called in pairs
+2.	When the activity contains multiple fragments, and each fragment needs to be treated as page statistics, the following suggestions are provided based on the switching pattern of fragment:
+	+ Replace mode: Switching the fragment with this mode, is normal for the life cycle of onResume and onPause
+	+ Switching multiple fragments in the viewpage: In this mode, switching needs to listen to the setUserVisibleHint interface in the fragment, and call the onPageStart and onPageEnd parameters through the returned parameters.
+	+ Show/hide mode: In this mode, switching the fragment needs to monitor the onHiddenChanged interface to confirm whether the fragment is displayed. And need to call onPageStart in onResume (onPause does not need to call onPageEnd)
+
+## Custom Event Statistics API
 
 + ***JAnalyticsInterface.onEvent(Context context,Event event)***
-	+ 接口说明：
-		+ 自定义事件。通过传入不同的事件模型来进行各种事件的统计，具体的事件模型请查看事件模型介绍
-	+ 参数说明：
-		+ context：上下文
-		+ event:事件模型，支持CountEvent(计数事件)、CalculateEvent(计算事件)、RegisterEvent(注册事件)、LoginEvent(登录事件)、BrowseEvent(浏览事件)、PurchaseEvent(购买事件)
+	+ Interface Description
+		+ Custom events. Statistics of various events need to introduce different event models. For the specific event models, please see the event model description
+	+ Parameter Description
+		+ context：Context of the event
+		+ event: Event models that support CountEvent, CalculateEvent, RegisterEvent, LoginEvent, BrowseEvent and PurchaseEvent
 
-**关于自定义事件做如下说明：**
+**Instructions about custom events**
 
-1. 字符串字段（key与 value）限制大小不超过256字节，超过限制的key或value该事件将会被丢弃.
-2. 自定义键值对数目不能超过10个，超过10个限制该事件将会被丢弃.
+1.	The size of the string field (key and value) does not exceed 256 bytes. The event will be discarded if it exceeds the limited key or value.
+2.	The number of custom key pairs cannot exceed 10. More than 10 restrictions will be discarded.
 
-调用示例：
+Call Example
 
-~~~
-	CountEvent cEvent = new CountEvent("eventId","eventName");
-	JAnalyticsInterface.onEvent(context, cEvent);
-~~~
+```
+    CountEvent cEvent = new CountEvent("eventId","eventName");
+    JAnalyticsInterface.onEvent(context, cEvent);
+```
+
 <a name="times"></a>
-##计数事件模型
-+ ***CountEvent***
+##Count Event Model
 
-该模型是自定义计数事件模型，可以设置参数进行数据上报。
++ CountEvent
 
-参数说明：
+The model is a custom count event model, which can set parameters to report data
 
-| 参数名称 | 参数类型 | 参数说明 |
+Parameter Description：
+
+| Parameter Name | Parameter Type | Parameter Description |
 |:-------:|:------:|:-------:|
-| eventId | String |事件Id(非空)|
-| extMap | Map | 扩展参数 |
- 
-调用示例:
+| eventId | String |Event id (not empty)|
+| extMap | Map | Extended parameters |
 
-~~~
-	CountEvent cEvent = new Event("test1_event_id");
-	cEvent.addKeyValue("key1","value1").addKeyValue("key2","value2");
-~~~
 
-**注意：**
+Call Example:
 
-		自定义计数事件模型中扩展参数中不能使用以下 key 值：
-		event_id
-		此类 key 已被模型使用，如果使用则会导致统计到的数据不准确.
+```
+    CountEvent cEvent = new Event("test1_event_id");
+    cEvent.addKeyValue("key1","value1").addKeyValue("key2","value2");
+```
+
+**Note:：**
+
+    The following key values cannot be used in extended parameters in a custom count event model:
+    event_id
+    This type of key is already used by the model, and using them will result in inaccurate statistics.
+
 <a name="count"></a>
-##计算事件模型
-+ ***CalculateEvent***
+## Calculate Event Model
++ CalculateEvent
 
-该模型是自定义计算事件模型，计算事件会通过相同的事件不同的值进行累加，可以设置参数进行数据上报。
+This model is a custom calculate event model. The calculate event will be accumulated by different values of the same event. You can set the parameters to report the data.
 
-参数说明：
+Parameter Description:
 
-|参数名称|参数类型|参数说明|
+|Parameter Name|Parameter Type|Parameter Description|
 |:------:|:----:|:-----:|
-|eventId|String|事件Id(非空)|
-|eventValue| double |事件的值(非空)|
-|extMap|Map|扩展参数|
+|eventId|String|Event id (not empty)|
+|eventValue| double |The value of the event (not empty)|
+|extMap|Map|Extended parameters|
 
-调用示例:
+Call Example:
 
-~~~
-	CalculateEvent cEvent = new CalculateEvent("test2_event_id","test2_event_value");
-	cEvent.setEventValue(1.1).addKeyValue("key1","value1").addKeyValue("key2","value2");
-~~~
+```
+    CalculateEvent cEvent = new CalculateEvent("test2_event_id","test2_event_value");
+    cEvent.setEventValue(1.1).addKeyValue("key1","value1").addKeyValue("key2","value2");
+```
 
-**注意：**
-     
-     自定义计算事件模型中扩展参数中不能使用以下 key 值：
-     event_id
-     event_value
-     此类 key 已被模型使用，如果使用则会导致统计到的数据不准确.
+**Note：**
+```
+ The following key values cannot be used in extended parameters in a custom calculate event model：
+ event_id
+ event_value
+ This type of key is already used by the model, and using them will result in inaccurate statistics.
+```
 <a name="login"></a>
-##登录事件模型
-+ ***LoginEvent***
+##Login Event Model
++ LoginEvent
 
-该模型是登录事件模型，可以设置参数进行数据上报。
+This model is a login event model, which can set parameters for data reporting.
 
-参数说明：
+Parameter Description：
 
-|参数名称|参数类型|参数说明|
+|Parameter Name|Parameter Type|Parameter Description|
 |:-----:|:-----:|:----:|
-|loginMethod|	String|登录方式(非空)|
-|loginSuccess|boolean|登录是否成功(非空)|
-|extMap|Map|扩展参数|
- 
-调用示例:
+|loginMethod|	String|Login method (not empty)|
+|loginSuccess|boolean|Whether login is successful (not empty)|
+|extMap|Map|Extended parameters|
 
-~~~
-	LoginEvent lEvent = new LoginEvent("qq",true);
-	lEvent.addKeyValue("key1","value1").addKeyValue("key2","value2");
-~~~
+Call Example:
 
-**注意：**
+```
+    LoginEvent lEvent = new LoginEvent("qq",true);
+    lEvent.addKeyValue("key1","value1").addKeyValue("key2","value2");
+```
 
-     登录事件模型中扩展参数中不能使用以下 key 值：
-     login_method
-     login_success
-     此类 key 已被模型使用，如果使用则会导致统计到的数据不准确.
+**Note：**
+
+```
+ The following key values cannot be used in extension parameters in the login event model:
+ login_method
+ login_success
+ This type of key is already used by the model, and using them will result in inaccurate statistics.
+```
+
 <a name="register"></a>
-##注册事件模型
-+ ***RegisterEvent***
+##
+Register Event Model
++ RegisterEvent
 
-该模型是注册事件模型，可以设置参数进行数据上报。
+This model is a register event model that can set parameters for data reporting
 
-参数说明：
+Parameter Description：
 
-|参数名称|参数类型|参数说明|
+|Parameter Name|Parameter Type|Parameter Description|
 |:-----:|:----:|:-----:|
-|registerMethod|	String	|注册方式(非空)|
-|registerSuccess|boolean|注册是否成功(非空)|
-|extMap|Map|扩展参数|
- 
-调用示例:
+|registerMethod|	String	|Registration method (non-empty)|
+|registerSuccess|boolean|Whether the registration is successful (non-empty)|
+|extMap|Map|Extended parameters|
 
-~~~
-	RegisterEvent rEvent = new RegisterEvent("sina",true);
-	rEvent.addKeyValue("key1","value1").addKeyValue("key2","value2");
-~~~
 
-**注意：**
+Call Example:
 
-	注册事件模型中扩展参数中不能使用以下 key 值:
-	register_method
-	register_success
-	此类 key 已被模型使用，如果使用则会导致统计到的数据不准确.
+```
+    RegisterEvent rEvent = new RegisterEvent("sina",true);
+    rEvent.addKeyValue("key1","value1").addKeyValue("key2","value2");
+```
+
+**Note：**
+
+```
+The following key values cannot be used in extended parameters in the register event model:
+register_method
+register_success
+This type of key is already used by the model, and using them will result in inaccurate statistics.
+```
+
 <a name="content"></a>
-##浏览事件模型
-+ ***BrowseEvent***
- 
-该模型是浏览事件模型，可以设置参数进行数据上报。
+##Browse Event Model
++ BrowseEvent
 
-参数说明：
+This model is a browse event model, which can set parameters for data reporting.
 
-|参数名称|参数类型|参数说明|
+Parameter Description：
+
+|Parameter Name|Parameter Type|Parameter Description|
 |:-----:|:----:|:-----:|
-|browseId|String	|浏览内容id|
-|browseName|String|内容名称(非空)|
-|browseType|String|内容类型|
-|browseDuration|long|浏览时长，单位秒|
-|extMap|Map|扩展参数|
- 
-调用示例:
+|browseId|String	|Browse content id|
+|browseName|String|Content name (not empty)|
+|browseType|String|Content type|
+|browseDuration|long|Browse duration, in seconds|
+|extMap|Map|Extended parameters|
 
-~~~
-	BrowseEvent bEvent = new BrowseEvent("browse_id","深圳热点新闻","news",30);
-	bEvent.addKeyValue("key1","value1").addKeyValue("key2","value2");
-~~~
+Call Example:
 
-**注意：**
+```
+    BrowseEvent bEvent = new BrowseEvent("browse_id","深圳热点新闻","news",30);
+    bEvent.addKeyValue("key1","value1").addKeyValue("key2","value2");
+```
 
-    浏览事件模型中扩展参数中不能使用以下 key 值：
-    browse_content_id
-    browse_name
-    browse_type
-    browse_duration
-    此类 key 已被模型使用，如果使用则会导致统计到的数据不准确.
+**Note:**
+```
+The following key values cannot be used in the extended parameters in the browse event model:
+browse_content_id
+browse_name
+browse_type
+browse_duration
+This type of key is already used by the model, and using them will result in inaccurate statistics.
+```
+
 <a name="purchase"></a>
-##购买事件模型
-+ ***PurchaseEvent***
+##Purchase Event Model
++ PurchaseEvent
 
-该模型是购买事件模型，可以设置参数进行数据上报。
+This model is a purchase event model, which can set parameters for data reporting.
 
-参数说明：
+Parameter Description：
 
-|参数名称|参数类型|参数说明|
+|Parameter Name|Parameter Type|Parameter Description|
 |:-----:|:----:|:-----:|
-|purchaseGoodsid|String	|商品id|
-|purchaseGoodsName|String|	商品名称|
-|purchasePrice|double|购买价格(非空)|
-|purchaseSuccess|boolean|购买是否成功(非空)|
-|purchaseCurrency|Currency|货币类型，一个枚举类|
-|purchaseGoodsType|String|商品类型|
-|purchaseGoodsCount|int	|商品数量|
-|extMap|Map|扩展参数|
- 
-调用示例:
+|purchaseGoodsid|String	|Product id|
+|purchaseGoodsName|String|	Product name|
+|purchasePrice|double|Purchase price (non-empty)|
+|purchaseSuccess|boolean|Whether the purchase is successful (not empty)|
+|purchaseCurrency|Currency|Currency type, an enumeration class|
+|purchaseGoodsType|String|Product types|
+|purchaseGoodsCount|int	|Product quantity|
+|extMap|Map|Extended parameters|
 
-~~~
-	PurchaseEvent pEvent = new PurchaseEvent("goodsId","篮球",300,true,Currency.CNY,"sport",1);
-	pEvent.addKeyValue("key1","value1").addKeyValue("key2","value2");
-~~~
 
-**注意：**
+Call Example
 
-    购买事件模型中扩展参数中不能使用以下 key 值：
-    purchase_goods_id
-    purchase_goods_name
-    purchase_price
-    purchase_currency
-    purchase_goods_type
-    purchase_quantity
-    此类 key 已被模型使用，如果使用则会导致统计到的数据不准确.
+```
+    PurchaseEvent pEvent = new PurchaseEvent("goodsId","篮球",300,true,Currency.CNY,"sport",1);
+    pEvent.addKeyValue("key1","value1").addKeyValue("key2","value2");
+```
 
-##统计上报周期API 
+**Note:**
 
-+ ***JAnalyticsInterface.setAnalyticsReportPeriod(Context context, int period)***
-	+ 接口说明：
-		+ 设置统计上报的自动周期，未调用前默认即时上报
-	+ 参数说明：
-		+ period：周期，单位秒，最小10秒，最大1天，超出范围会打印调用失败日志。传0表示统计数据即时上报
-	+ 旧版接口：
-		+ JAnalyticsInterface.setAnalyticsReportPeriod(int period)，请使用带Context参数的新接口
-	+ 调用示例：
+```
+The following key values cannot be used in extended parameters in the purchase event model
+purchase_goods_id
+purchase_goods_name
+purchase_price
+purchase_currency
+purchase_goods_type
+purchase_quantity
+This type of key is already used by the model, and using them will result in inaccurate statistics.
+```
+
+## Statistics Report Period API
+
++ ***JAnalyticsInterface.setAnalyticsReportPeriod(int period)***
+	+ Interface description:
+		+ Set the automatic cycle for statistics reporting, which defaults the period to 60 seconds before being called
+	+ Parameter description
+		+ Period: In seconds. The minimum is 10 seconds, and the maximum is 1 day. Out of range will print call failure log
+	+ Call Example：
 
 ~~~
 	JAnalyticsInterface.setAnalyticsReportPeriod(getApplicationContext(), 60);
 ~~~
 
-##账户维度模型介绍  
+## Introduction of Account Dimension Model
 
-开发者可以为用户增加账户信息，使统计数据可以以账户维度做统计分析
-现开发的属性有：
+Developers can increase account information for users, so that statistical data can be statistically analyzed with account dimensions.
 
-|中文名|英文名|类型|鉴权/备注|
+Currently development attributes are:
+
+|CN Name|EN Name|Type|Authentication/Remarks|
 |:-----:|:----:|:-----:|:-----:|
-|账号ID|accountID|String	||
-|账号创建时间|creationTime|long|时间戳|
-|姓名|name|String||
-|性别|sex|int|0未知 1男 2女/不能为其他数字，默认为0|
-|是否付费|paid|int|0未知 1是 2否/不能为其他数字，默认为0|
-|出生年月|birthdate|long|yyyyMMdd格式校验|
-|手机号码|phone|String|手机号码校验|
-|电子邮件|email|String|邮箱格式校验|
-|新浪微博ID|weiboID|String||
-|微信ID|wechatID|String||
+|Account ID|accountID|String	||
+|Account creation time|creationTime|long|Timestamps|
+|Name|name|String||
+|Gender|sex|int|0 for unknown, 1 for male, 2 for female. Cannot be other numbers, and the default is 0|
+|Whether is free|paid|int|0 for unknown, 1 for yes, 2 for no. Cannot be other numbers, and the default is 0|
+|Year of birth|birthdate|long|yyyyMMdd format verification|
+|Phone number|phone|String|Phone number verification|
+|E-mail|email|String|Mailbox format verification|
+|Sina Weibo ID|weiboID|String||
+|WeChat ID|wechatID|String||
 |QQ ID|qqID|String||
-|自定义维度|extra	|key-value|key只能为字符串，value只能为字符串或数字类型或null类型； 当value设置为空类型时，将该key从服务器上删除 key不能使用极光内部namespace（符号$）|
+|Custom dimension|extra	|key-value|Key can only be a string,  and value can only be a string or numeric type or null type; when the value is set to an empty type, removing the key from the server cannot use Jiguang internal namespace (symbol $)|
 
-具体使用方法，是先调用cn.jiguang.analytics.android.api.Account设置属性，  
-再调用JAnalyticsInterface.identifyAccount(context, account, callback)登记账户信息  
-也可以只设置部分属性，再次调用identifyAccount修改账户信息  
-调用示例：
 
-~~~
+The specific use method is to first call the cn.jiguang.analytics.android.api.Account setting properties.
+
+Then call JAnalyticsInterface.identifyAccount(account, callback) to register account information
+
+Can also set only some of the properties, and call identifyAccount to modify account information again
+
+Call Example：
+
+```
 Account account = new Account("account001");    //account001为账号id
 account.setCreationTime(1513749859);        //账户创建的时间戳
 account.setName("张三");
@@ -325,45 +344,43 @@ account.setPaid(1);
 account.setBirthdate("19880920");       //"19880920"是yyyyMMdd格式的字符串
 account.setPhone("13800000000");
 account.setEmail("support@jiguang.cn");
-account.setExtraAttr("attr1","value1");  //key如果为空，或者以极光内部namespace(符号$)开头，会设置失败并打印日志
-JAnalyticsInterface.identifyAccount(getApplicationContext(), account, new AccountCallback() {
+account.setExtraAttr("attr1","value1");
+JAnalyticsInterface.identifyAccount(account, new AccountCallback() {
     @Override
     public void callback(int code, String msg) {
         Log.d("tag", "code = " + code  + " msg =" + msg);
     }
 })
-~~~
+```
 
-AccountCallback是回调方法，可以根据返回的code和msg获取调用成功/失败的信息
+AccountCallback is a callback method, which can get the success/failure of the call according to the returned code and msg
 
-###错误码
-|code|message|备注|
+### Error Code
+|code|message|Remarks|
 |:-----:|:----:|:-----:|
-|0|调用成功||
-|1001|account_id can not be empty|accountID为关键参数，不能填写null或""|
-|1002|detach failed because account_id is empty|当前没有绑定accountID时调用了解绑接口|
-|1003|operation is too busy|10s内请求频率不能超过30次
-|1004|account_id is too long, please make it less than 255 characters|accountID长度不能超过255字符|
-|1005|failed, please call JAnalyticsInterface.init(context) first|SDK尚未初始化，应先调用init()方法|
-|1101|the value of $sex should be in [0,2]|0未知 1男 2女/不能为其他数字，默认为0|
-|1101|the value of $birthdate should be date as yyyyMMdd|yyyyMMdd格式校验|
-|1101|the value of $paid should be in [0,2]|0未知 1是 2否/不能为其他数字，默认为0|
-|1101|the value of $phone is NOT a phone number|电话号码格式校验（含国际号码）|
-|1101|the value of $email is NOT email address|邮箱格式校验|
-|1101|the key={key} in extra is invalid|自定义属性key不能为空，不能使用极光内部namespace(符号$)|
-|1101|the value of {key} in extra should be String or Number|自定义属性value只能为字符串或数字类型或null类型|
+|0|Call success||
+|1001|account_id can not be empty|accountID is a key parameter and cannot be filled with null or ""|
+|1002|detach failed because account_id is empty|Call to know the binding interface when no accountID is currently bound|
+|1003|operation is too busy|Request frequency within 10s cannot exceed 30 times
+|1004|account_id is too long, please make it less than 255 characters|Length of accountID cannot exceed 255 characters|
+|1005|failed, please call JAnalyticsInterface.init(context) first|SDK not been init,should be inited first|
+|1101|the value of $sex should be in [0,2]|0 for unknown, 1 for male, 2 for female. Cannot be other numbers, and the default is 0|
+|1101|the value of $birthdate should be date as yyyyMMdd|yyyyMMdd format check|
+|1101|the value of $paid should be in [0,2]|0 for unknown, 1 for yes, 2 for no. Cannot be other numbers, and the default is 0|
+|1101|the value of $phone is NOT a phone number|Format verification of telephone number (including international number) |
+|1101|the value of $email is NOT email address|Mailbox format check|
+|1101|the key={key} in extra is invalid|The custom property key cannot be empty and the Jiguang internal namespace (symbol $) cannot be used|
+|1101|the value of {key} in extra should be String or Number|Custom property value can only be a string or numeric type or null type|
 
 
+If you want to unbind the current user information, call JAnalyticsInterface.detachAccount(callback);
 
-
-如果要解绑当前用户信息，调用JAnalyticsInterface.detachAccount(context, callback);  
-调用示例：
-
-~~~
-JAnalyticsInterface.detachAccount(getApplicationContext(), new AccountCallback() {
+Call Example：
+```
+JAnalyticsInterface.detachAccount(new AccountCallback() {
     @Override
     public void callback(int code, String msg) {
         Log.d("tag", "code = " + code  + " msg =" + msg);
     }
 })
-~~~
+```
