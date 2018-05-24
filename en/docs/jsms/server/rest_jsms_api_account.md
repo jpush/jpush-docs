@@ -1,57 +1,58 @@
-# 短信余量查询 API
+# SMS Margin Querying API
 <div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px;">
 <ul style="margin-bottom: 0;">
-<li>支持查询开发者账号余量</li>
-<li>支持查询应用余量</li>
+<li>Support query the margin of developer accounts</li>
+<li>Support query the margin of applications</li>
 </ul>
 </div>
 </br>
 
-## 账号余量查询 API
+## Account Margin Querying API
 
-### 功能说明
+### Function Description
 
-- 查询账号余量，账号余量指未分配给某个应用，属于账号共享的短信余量。
++ Check the account margin. The account margin refers to the amount of SMS margin that is not assigned to a specific application and belongs to the shared account.
 
-### 调用地址
+### Call Address
 
-- GET https://api.sms.jpush.cn/v1/accounts/dev
++ GET https://api.sms.jpush.cn/v1/accounts/dev
 
-### HTTP 验证
-> 使用 HTTP Basic Authentication 的方式做访问授权。这样整个 API 请求可以使用常见的 HTTP 工具来完成，比如：curl，浏览器插件等；
+### HTTP Authentication
 
-HTTP Header（头）里加一个字段（Key/Value对）：
+> Use HTTP Basic Authentication to do access authorization. In this way, the entire API request can be completed by common HTTP tools such as curl, browser plugins, etc.
+
+A field (Key/Value pair) is added in the HTTP Header：
 
 ```
 Authorization: Basic base64_auth_string
 ```
 
-其中 base64_auth_string 的生成算法为：base64(devKey:apiDevSecret)，即:对 devKey 加上冒号，加上 API DevSecret 拼装起来的字符串，再做 base64 转换。devKey、apiDevSecret 可以在控制台个人信息中查看。
+The generation algorithm of base64_auth_string is: base64(appKey:masterSecret), that is: appKey plus a colon, plus string assembled by masterSecret, and then do a base64 conversion. appKey, masterSecret can be viewed in the application settings of console.
 
-
-### 请求示例
+### Request Example
 
 ```
 curl --insecure -X GET -v https://api.sms.jpush.cn/v1/accounts/dev -H "Content-Type: application/json" -u "7e503edcb0cb725e331b0311:7289516381dcdf1113730f2b"
 ```
 
-### 返回示例
+### Return Example
 
-##### 发送成功
+#### Sent Successfully
 
 ```json
 { "dev_balance": 9,  "dev_voice": 702, "dev_industry": 121981, "dev_market": 11683 }
 ```
 
-Response Params
+#### Response Params
 
-- dev_balance 全类型短信余量
-- dev_voice 语音短信余量
-- dev_industry 行业短信余量
-- dev_market 营销短信余量
-- 如果字段值返回 null 即为未分配余量
++ dev_balance; Margin of full-size SMS
++ dev_voice; Margin of voice SMS
++ dev_industry; Margin of industry SMS
++ dev_market; Margin of marketing SMS
++ Field value returns null means that margin is not allocated.
 
-##### 发送失败
+
+#### Failed to Send
 
 ```json
 {
@@ -62,50 +63,51 @@ Response Params
 }
 ```
 
-## 应用余量查询 API
+## Application Margin Querying API
 
-### 功能说明
+### Function Description
 
-- 查询应用余量，应用余量指分配给某个应用单独使用的短信余量。
++ Query application margin. Application margin refers to the SMS amount allocated to an application solely.
 
-### 调用地址
+### Call Address
 
-- GET https://api.sms.jpush.cn/v1/accounts/app
++ GET https://api.sms.jpush.cn/v1/accounts/app
 
-### HTTP 验证
-> 使用 HTTP Basic Authentication 的方式做访问授权。这样整个 API 请求可以使用常见的 HTTP 工具来完成，比如：curl，浏览器插件等；
+### HTTP Authentication
 
-HTTP Header（头）里加一个字段（Key/Value对）：
+> Use HTTP Basic Authentication to do access authorization. In this way, the entire API request can be completed by common HTTP tools such as curl, browser plugins, etc.
+
+A field (Key/Value pair) is added in the HTTP Header：
 
 ```
 Authorization: Basic base64_auth_string
 ```
 
-其中 base64_auth_string 的生成算法为：base64(appKey:masterSecret)，即:对 appKey 加上冒号，加上 masterSecret 拼装起来的字符串，再做 base64 转换。appKey、masterSecret 可以在控制台应用设置中查看。
+The generation algorithm of base64_auth_string is: base64(appKey:masterSecret), that is: appKey plus a colon, plus string assembled by masterSecret, and then do a base64 conversion. appKey, masterSecret can be viewed in the application settings of console.
 
-
-### 请求示例
+### Request Example
 
 ```
 curl --insecure -X GET -v https://api.sms.jpush.cn/v1/accounts/app -H "Content-Type: application/json" -u "4c6921c9b20b2fd9bcd8ca3d:5b3e2979c8a48b84cebeaaf4"
 ```
 
-### 返回示例
+### Return Example
 
-##### 发送成功
+#### Sent Successfully
 
 ```json
 { "app_balance": 1, "app_voice": 22, "app_industry": 44, "app_market": 14 }
 ```
-Response Params
 
-- app_balance 全类型短信余量
-- app_voice 语音短信余量
-- app_industry 行业短信余量
-- app_market 营销短信余量
-- 如果字段值返回 null 即为未分配余量
+#### Response Params
 
-##### 发送失败
++ app_balance: Margin of full-size SMS
++ app_voice: Margin of voice SMS
++ app_industry: Margin of industry SMS
++ app_market: Margin of marketing SMS
++ Field value returns null means that margin is not allocated.
+
+#### Failed to Send
 
 ```json
 {
@@ -116,17 +118,17 @@ Response Params
 }
 ```
 
-## 返回码
+## Return Code
 
 |HTTP CODE| CODE| CONTENT  | DESC|
 |:---- |:---- |:---- |:----
-|200|50000|success|请求成功
-|400|50001|missing auth|auth为空
-|401|50002|auth failed|auth鉴权失败
-|403|50008|no sms code auth|未开通短信业务
-|403|50009|out of freq|发送超频
-|404|50016|api not found|API 不存在
-|415|50017|media not supported|媒体类型不支持
-|405|50018|request method not support|请求方法不支持
-|500|50019|server error|服务端异常
-|403|50033|app quota not assigned|该应用未分配余量
+| 200 | 50000 | success | Request successfully
+| 400 | 50001 | missing auth | Auth is empty
+| 401 | 50002 | auth failed | Auth authentication failed
+| 403 | 50008 | no sms code auth | SMS service is not opened
+| 403 | 50009 | out of freq | Send overclocking
+| 404 | 50016 | api not found | API does not exist
+| 415 | 50017 | media not supported | Media type is not supported
+| 405 | 50018 | request method not support | Request method is not supported
+| 500 | 50019 | server error | Server exception
+| 403 | 50033 | app quota not assigned | The app does not allocate margin

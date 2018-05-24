@@ -1,7 +1,7 @@
 # JSMS Library for .NET
-[Github 源码](https://github.com/jpush/jsms-api-csharp-client)
+[Github](https://github.com/jpush/jsms-api-csharp-client)
 
-[极光](https://www.jiguang.cn/)官方支持的 [JSMS](https://docs.jiguang.cn/jsms/guideline/JSMS_guide/) .NET API Client。
+[JSMS](https://docs.jiguang.cn/jsms/guideline/JSMS_guide/) .NET API Client officially supported by [Jiguang](https://www.jiguang.cn/)
 
 ## Installation
 
@@ -20,11 +20,11 @@
 
 ## Support
 
-[极光社区](http://community.jiguang.cn/) 
+[Jiguang Community](http://community.jiguang.cn/)
 
 ## FAQ
 
-1.如果调用异步方法时出现死锁，即一直没有返回 [HttpResponse](https://github.com/jpush/jsms-api-csharp-client/blob/v2-dev/Jiguang.JSMS/Model/HttpResponse.cs)，可参考这篇[文章](https://blogs.msdn.microsoft.com/jpsanders/2017/08/28/asp-net-do-not-use-task-result-in-main-context/)。
+1.If a deadlock occurs when the asynchronous method is called, that is, [HttpResponse](https://github.com/jpush/jsms-api-csharp-client/blob/v2-dev/Jiguang.JSMS/Model/HttpResponse.cs)，has not been returned, please refer to [this article](https://blogs.msdn.microsoft.com/jpsanders/2017/08/28/asp-net-do-not-use-task-result-in-main-context/).
 
 ## Contribute
 

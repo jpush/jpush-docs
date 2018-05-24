@@ -1,33 +1,37 @@
-# 短信签名 API
+# SMS Signing API
+
 <div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px;">
 <ul style="margin-bottom: 0;">
-<li>支持创建、修改、查询和删除短信签名</li>
+<li>Support for creating, modifying, querying, and deleting SMS signatures</li>
 </ul>
 </div>
 </br>
-## HTTP 验证
-> 使用 HTTP Basic Authentication 的方式做访问授权。这样整个 API 请求可以使用常见的 HTTP 工具来完成，比如：curl，浏览器插件等；
 
-HTTP Header（头）里加一个字段（Key/Value对）：
+## HTTP Authentication
+
+> Use HTTP Basic Authentication to do access authorization. In this way, the entire API request can be completed by common HTTP tools such as curl, browser plugins, etc.
+
+A field (Key/Value pair) is added in the HTTP Header：
 
 ```
 Authorization: Basic base64_auth_string
 ```
 
-其中 base64_auth_string 的生成算法为：base64(appKey:masterSecret)，即:对 appKey 加上冒号，加上 masterSecret 拼装起来的字符串，再做 base64 转换。appKey、masterSecret 可以在控制台应用设置中查看。
+The generation algorithm of base64_auth_string is: base64(appKey:masterSecret), that is: appKey plus a colon, plus string assembled by masterSecret, and then do a base64 conversion. appKey, masterSecret can be viewed in the application settings of console.
 
-</br>
-## 创建签名 API
-### 功能说明
+## Create Signature API
 
-- 创建短信签名
+### Function Description
 
-### 调用地址
++ Create SMS Signature
 
-- POST https://api.sms.jpush.cn/v1/sign
+### Call Address
 
-### 请求示例
-请注意，content-type为multipart/form-data的方式。
++ POST https://api.sms.jpush.cn/v1/sign
+
+### Request Example
+
+Please note that the content-type is multipart/form-data.
 
 ```
 curl -X POST \
@@ -35,30 +39,29 @@ curl -X POST \
   -u '7d431e42dfa6a6d693ac2d04:5e987ac6d2e04d95a9d8f0d1' \
   -H 'content-type: multipart/form-data;' \
   -F 'sign=申请的签名'
-
 ```
 
-#### 参数
+### Parameter
 
 |KEY|REQUIRE|DESCRIPTION|
 |----|----|----|
-|sign|TRUE|签名内容|
-|image0|FALSE|签名审核附带图片|
-|image1|FALSE|签名审核附带图片|
-|image2|FALSE|签名审核附带图片|
-|image3|FALSE|签名审核附带图片|
+|sign|TRUE|Signature content|
+|image0|FALSE|Signature review with picture|
+|image1|FALSE|Signature review with picture|
+|image2|FALSE|Signature review with picture|
+|image3|FALSE|Signature review with picture|
 
-### 返回示例
+### Return Example
 
-#### 请求成功
+#### Successful Request
 
-```json
+```
 {"sign_id": 37582}
 ```
 
-#### 请求失败
+#### Failed Request
 
-```json
+```
 {
     "error": {
         "code": *****,
@@ -67,18 +70,17 @@ curl -X POST \
 }
 ```
 
+## Modify Signature API
 
-<br/>  
-## 修改签名 API
-### 功能说明
+### Function Description
 
-- 修改审核不通过的签名，并再次提交审核
++ Modify the signature that failed the audit and submit the audit again
 
-### 调用地址
+### Call Address
 
-- POST https://api.sms.jpush.cn/v1/sign/{sign_id}
++ PUT https://api.sms.jpush.cn/v1/sign/{sign_id}
 
-### 请求示例
+### Request Example
 
 ```
 curl -X POST \
@@ -86,60 +88,58 @@ curl -X POST \
   -u '7d431e42dfa6a6d693ac2d04:5e987ac6d2e04d95a9d8f0d1' \
   -H 'content-type: multipart/form-data;' \
   -F 'sign=修改的签名'
-
 ```
 
-#### 参数
+### Parameter
 
 |KEY|REQUIRE|DESCRIPTION|
 |----|----|----|
-|sign|TRUE|签名内容|
-|image0|FALSE|签名审核附带图片|
-|image1|FALSE|签名审核附带图片|
-|image2|FALSE|签名审核附带图片|
-|image3|FALSE|签名审核附带图片|
+|sign|TRUE|Signature content|
+|image0|FALSE|Signature review with picture|
+|image1|FALSE|Signature review with picture|
+|image2|FALSE|Signature review with picture|
+|image3|FALSE|Signature review with picture|
 
-### 返回示例
+### Return Example
 
-#### 请求成功
+#### Successful Request
 
-```json
+```
 {"sign_id": 37582}
 ```
 
-#### 请求失败
+#### Failed Request
 
-```json
+```
 {
     "error": {
         "code": *****,
         "message": "*****"
     }
 }
-```  
+```
 
+## Query Signature API
 
-<br/>  
-## 查询签名 API
-### 功能说明
+### Function Description
 
-- 查询短信签名
++ Query SMS signature
 
-### 调用地址
+### Call Address
 
-- GET https://api.sms.jpush.cn/v1/sign/{sign_id}
++ GET https://api.sms.jpush.cn/v1/sign/{sign_id}
 
-### 请求示例
+### Request Example
 
 ```
 curl --insecure -X GET -v https://api.sms.jpush.cn/v1/sign/37582 -H "Content-Type: application/json" -u "7d431e42dfa6a6d693ac2d04:5e987ac6d2e04d95a9d8f0d1"
 ```
 
-### 返回示例
+### Return Example
 
-#### 请求成功
+#### Successful Request
 
-```json
+```
 {
     "sign_id": 37582,
     "sign": "极光推送",
@@ -148,9 +148,9 @@ curl --insecure -X GET -v https://api.sms.jpush.cn/v1/sign/37582 -H "Content-Typ
 }
 ```
 
-#### 请求失败
+#### Failed Request
 
-```json
+```
 {
     "error": {
         "code": *****,
@@ -159,35 +159,35 @@ curl --insecure -X GET -v https://api.sms.jpush.cn/v1/sign/37582 -H "Content-Typ
 }
 ```
 
-<br/>  
-## 删除签名 API
-### 功能说明
+## Delete Signature API
 
-- 删除短信签名
+### Function Description
 
-### 调用地址
++ Delete SMS signature
 
-- DELETE https://api.sms.jpush.cn/v1/sign/{sign_id}
+### Call Address
 
-### 请求示例
++ DELETE https://api.sms.jpush.cn/v1/sign/{sign_id}
+
+### Request Example
 
 ```
 curl --insecure -X DELETE -v https://api.sms.jpush.cn/v1/sign/37582 -H "Content-Type: application/json" -u "7d431e42dfa6a6d693ac2d04:5e987ac6d2e04d95a9d8f0d1"
 ```
 
-### 返回示例
+### Return Example
 
-#### 请求成功
+#### Successful Request
 
-```json
+```
 HTTP/1.0 200
   Content-Type: application/json
   Content-Length: 0
 ```
 
-#### 请求失败
+#### Failed Request
 
-```json
+```
 {
     "error": {
         "code": *****,
@@ -196,23 +196,24 @@ HTTP/1.0 200
 }
 ```
 
-<br/>
-## 返回码
+## Return Code
+
 |HTTP CODE| CODE| MESSAGE  | DESC|
 |:--- |:--- |:--- |:----
-|200|50000|success|请求成功
-|400|50001|missing auth|auth 为空
-|401|50002|auth failed|auth 鉴权失败
-|400|50003|missing body|body 为空
-|403|50007|invalid body|body 无效
-|403|50008|no sms code auth|未开通短信业务
-|404|50016|api not found|API 不存在
-|415|50017|media not supported|媒体类型不支持
-|405|50018|request method not support|请求方法不支持
-|500|50019|server error|服务端异常|
-|403|50101|invalid image|非法的图片|
-|403|50102|invalid sign id|非法的签名 ID|
-|403|50103|other signatures in the audit|已经存在其他待审核的签名，不能提交|
-|403|50104|invalid signature|非法签名内容|
-|403|50105|the signature in use cannot be deleted|使用中签名不允许删除|
-
+| 200 | 50000 | success | Successful Request
+| 400 | 50001 | missing auth | auth is empty
+| 401 | 50002 | auth failed | Authentication of Auth failed
+| 400 | 50003 | missing body | body is empty
+| 403 | 50007 | invalid body | body is invalid
+| 403 | 50008 | no sms code auth | Not open SMS service
+| 403 | 50013 | invalid temp_id | Template ID is empty
+| 404 | 50016 | api not found | API does not exist
+| 415 | 50017 | media not supported | Media type is not supported
+| 405 | 50018 | request method not support | Request method is not supported
+| 500 | 50019 | server error | Server exception
+| 403 | 50025 | wrong template type | Wrong template type
+| 403 | 50101 | invalid image | Illegal picture
+| 403 | 50102 | invalid sign id | Illegal signature id
+| 403 | 50103 | other signatures in the audit | Other pending signatures exists and cannot be submitted
+| 403 | 50104 | invalid signature | Illegal signature content
+| 403 | 50105 | the signature in use cannot be deleted | The signature in use cannot be deleted

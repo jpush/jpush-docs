@@ -1,32 +1,34 @@
-# 短信定时发送 API
+# Scheduled SMS API
+
 <div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px;">
 <ul style="margin-bottom: 0;">
-<li>支持提交、修改、查询和删除模板短信定时发送任务</li>
+<li>Support for submitting, modifying, querying, and deleting of scheduled SMS templates</li>
 </ul>
 </div>
-</br>
-## HTTP 验证
-> 使用 HTTP Basic Authentication 的方式做访问授权。这样整个 API 请求可以使用常见的 HTTP 工具来完成，比如：curl，浏览器插件等；
 
-HTTP Header（头）里加一个字段（Key/Value对）：
+## HTTP Authentication
+
+> Use HTTP Basic Authentication to do access authorization. In this way, the entire API request can be completed by common HTTP tools such as curl, browser plugins, etc.
+
+A field (Key/Value pair) is added in the HTTP Header：
 
 ```
 Authorization: Basic base64_auth_string
 ```
 
-其中 base64_auth_string 的生成算法为：base64(appKey:masterSecret)，即:对 appKey 加上冒号，加上 masterSecret 拼装起来的字符串，再做 base64 转换。appKey、masterSecret 可以在控制台应用设置中查看。
+The generation algorithm of base64_auth_string is: base64(appKey:masterSecret), that is: appKey plus a colon, plus string assembled by masterSecret, and then do a base64 conversion. appKey, masterSecret can be viewed in the application settings of console.
 
-</br>
-## 单条定时短信提交 API
-### 功能说明
+## Single Scheduled SMS Submitting API
 
-- 提交单条模板短信定时发送任务
+### Function Description
 
-### 调用地址
++ Submit sending tasks of single scheduled SMS
 
-- POST https://api.sms.jpush.cn/v1/schedule
+### Call Address
 
-### 请求示例
++ POST https://api.sms.jpush.cn/v1/schedule
+
+### Request Example
 
 ```
 curl --insecure -X POST -v https://api.sms.jpush.cn/v1/schedule -H "Content-Type: application/json" -u "7d431e42dfa6a6d693ac2d04:5e987ac6d2e04d95a9d8f0d1" -d \
@@ -40,24 +42,24 @@ curl --insecure -X POST -v https://api.sms.jpush.cn/v1/schedule -H "Content-Type
 }'
 ```
 
-#### 参数
+#### Parameters
 
 |KEY|REQUIRE|DESCRIPTION|
 |----|----|----|
-|send_time|TRUE|发送时间，格式为 yyyy-MM-dd HH:mm:ss|
-|mobile|TRUE|手机号码|
-|temp_id|TRUE|模板ID|
-|temp_para|FALSE|模板参数,需要替换的参数名和 value 的键值对|
+|send_time|TRUE|Delivery time, in the format of yyyy-MM-dd HH:mm:ss|
+|mobile|TRUE|Phone number|
+|temp_id|TRUE|Template ID|
+|temp_para|FALSE|Template parameters, parameter names and key-value pairs of values that need to be replaced.|
 
-### 返回示例
+### Return Example
 
-#### 请求成功
+#### Successful Request
 
 ```json
 {"schedule_id": "1a886e7c-a267-49e6-9970-0d396ca5bb1e"}
 ```
 
-#### 请求失败
+#### Failed Request
 
 ```json
 {
@@ -68,17 +70,17 @@ curl --insecure -X POST -v https://api.sms.jpush.cn/v1/schedule -H "Content-Type
 }
 ```
 
-<br/>
-## 批量定时短信提交 API
-### 功能说明
+## Scheduled SMS Bulk Submitting API
 
-- 提交批量模板短信定时发送任务
+### Function Description
 
-### 调用地址
++ Submit sending tasks of bulk scheduled SMS
 
-- POST https://api.sms.jpush.cn/v1/schedule/batch
+### Call Address
 
-### 请求示例
++ POST https://api.sms.jpush.cn/v1/schedule/batch
+
+### Request Example
 
 ```
 curl --insecure -X POST -v https://api.sms.jpush.cn/v1/schedule/batch -H "Content-Type: application/json" -u "7d431e42dfa6a6d693ac2d04:5e987ac6d2e04d95a9d8f0d1" -d \
@@ -102,19 +104,19 @@ curl --insecure -X POST -v https://api.sms.jpush.cn/v1/schedule/batch -H "Conten
 }'
 ```
 
-#### 参数
+#### Parameters
 
 |KEY|REQUIRE|DESCRIPTION|
 |----|----|----|
-|send_time|TRUE|发送时间，格式为 yyyy-MM-dd HH:mm:ss|
-|temp_id|TRUE|模板ID|
-|recipients|TRUE|短信接收者列表|
-|recipients.mobile|TRUE|手机号码|
-|recipients.temp_para|FALSE|模板参数,需要替换的参数名和 value 的键值对|
+|send_time|TRUE|Delivery time, in the format of yyyy-MM-dd HH:mm:ss|
+|temp_id|TRUE|Template ID|
+|recipients|TRUE|List of SMS recipients|
+|recipients.mobile|TRUE|Phone number|
+|recipients.temp_para|FALSE|Template parameters, parameter names and key-value pairs of values that need to be replaced.|
 
-### 返回示例
+### Return Example
 
-#### 请求成功
+#### Successful Request
 
 ```json
 {
@@ -134,7 +136,7 @@ curl --insecure -X POST -v https://api.sms.jpush.cn/v1/schedule/batch -H "Conten
 }
 ```
 
-#### 请求失败
+#### Failed Request
 
 ```json
 {
@@ -145,17 +147,17 @@ curl --insecure -X POST -v https://api.sms.jpush.cn/v1/schedule/batch -H "Conten
 }
 ```
 
-<br/>  
-## 单条定时短信修改 API
-### 功能说明
+## Single Scheduled SMS Modifying API
 
-- 修改单条模版短信定时发送任务
+### Function Description
 
-### 调用地址
++ Modify sending tasks of single scheduled SMS
 
-- PUT https://api.sms.jpush.cn/v1/schedule/{schedule_id}
+### Call Address
 
-### 请求示例
++ PUT https://api.sms.jpush.cn/v1/schedule/{schedule_id}
+
+### Request Example
 
 ```
 curl --insecure -X PUT -v https://api.sms.jpush.cn/v1/schedule/1a886e7c-a267-49e6-9970-0d396ca5bb1e -H "Content-Type: application/json" -u "7d431e42dfa6a6d693ac2d04:5e987ac6d2e04d95a9d8f0d1" -d \
@@ -169,46 +171,45 @@ curl --insecure -X PUT -v https://api.sms.jpush.cn/v1/schedule/1a886e7c-a267-49e
 }'
 ```
 
-#### 参数
+#### Parameters
 
 |KEY|REQUIRE|DESCRIPTION|
 |----|----|----|
-|send_time|TRUE|发送时间，格式为 yyyy-MM-dd HH:mm:ss|
-|mobile|TRUE|手机号码|
-|temp_id|TRUE|模板ID|
-|temp_para|FALSE|模板参数,需要替换的参数名和 value 的键值对|
+|send_time|TRUE|Delivery time, in the format of yyyy-MM-dd HH:mm:ss|
+|mobile|TRUE|Phone number|
+|temp_id|TRUE|Template ID|
+|temp_para|FALSE|Template parameters, parameter names and key-value pairs of values that need to be replaced.|
 
-### 返回示例
+### Return Example
 
-#### 请求成功
+#### Successful Request
 
 ```json
 {"schedule_id": "1a886e7c-a267-49e6-9970-0d396ca5bb1e"}
 ```
 
-#### 请求失败
+#### Failed Request
 
-```json
+```
 {
     "error": {
         "code": *****,
         "message": "*****"
     }
 }
-```  
+```
 
+## Scheduled SMS Bulk Modifying API
 
-<br/>  
-## 批量定时短信修改 API
-### 功能说明
+### Function Description
 
-- 修改批量模板短信定时发送任务
++ Modify sending tasks of bulk scheduled SMS
 
-### 调用地址
+### Call Address
 
-- PUT https://api.sms.jpush.cn/v1/schedule/batch/{schedule_id}
++ PUT https://api.sms.jpush.cn/v1/schedule/batch/{schedule_id}
 
-### 请求示例
+### Request Example
 
 ```
 curl --insecure -X PUT -v https://api.sms.jpush.cn/v1/schedule/batch/1a886e7c-a267-49e6-9970-0d396ca5bb1e -H "Content-Type: application/json" -u "7d431e42dfa6a6d693ac2d04:5e987ac6d2e04d95a9d8f0d1" -d \
@@ -232,19 +233,19 @@ curl --insecure -X PUT -v https://api.sms.jpush.cn/v1/schedule/batch/1a886e7c-a2
 }'
 ```
 
-#### 参数
+#### Parameters
 
 |KEY|REQUIRE|DESCRIPTION|
 |----|----|----|
-|send_time|TRUE|发送时间，格式为 yyyy-MM-dd HH:mm:ss|
-|temp_id|TRUE|模板ID|
-|recipients|TRUE|短信接收者列表|
-|recipients.mobile|TRUE|手机号码|
-|recipients.temp_para|FALSE|模板参数,需要替换的参数名和 value 的键值对|
+|send_time|TRUE|Delivery time, in the format of yyyy-MM-dd HH:mm:ss|
+|temp_id|TRUE|Template ID|
+|recipients|TRUE|List of SMS recipients|
+|recipients.mobile|TRUE|Phone number|
+|recipients.temp_para|FALSE|Template parameters, parameter names and key-value pairs of values that need to be replaced.|
 
-### 返回示例
+### Return Example
 
-#### 请求成功
+#### Successful Request
 
 ```json
 {
@@ -264,7 +265,7 @@ curl --insecure -X PUT -v https://api.sms.jpush.cn/v1/schedule/batch/1a886e7c-a2
 }
 ```
 
-#### 请求失败
+#### Failed Request
 
 ```json
 {
@@ -273,27 +274,27 @@ curl --insecure -X PUT -v https://api.sms.jpush.cn/v1/schedule/batch/1a886e7c-a2
         "message": "*****"
     }
 }
-```  
+```
 
-<br/>  
-## 定时短信查询API
-### 功能说明
+## Scheduled SMS Querying API
 
-- 查询模板短信定时发送任务
+### Function Description
 
-### 调用地址
++ Query sending tasks of scheduled SMS
 
-- GET https://api.sms.jpush.cn/v1/schedule/{schedule_id}
+### Call Address
 
-### 请求示例
++ GET https://api.sms.jpush.cn/v1/schedule/{schedule_id}
+
+### Request Example
 
 ```
 curl --insecure -X GET -v https://api.sms.jpush.cn/v1/schedule/1a886e7c-a267-49e6-9970-0d396ca5bb1e -H "Content-Type: application/json" -u "7d431e42dfa6a6d693ac2d04:5e987ac6d2e04d95a9d8f0d1"
 ```
 
-### 返回示例
+### Return Example
 
-#### 请求成功
+#### Successful Request
 
 ```json
 {
@@ -312,7 +313,7 @@ curl --insecure -X GET -v https://api.sms.jpush.cn/v1/schedule/1a886e7c-a267-49e
 }
 ```
 
-#### 请求失败
+#### Failed Request
 
 ```json
 {
@@ -323,25 +324,25 @@ curl --insecure -X GET -v https://api.sms.jpush.cn/v1/schedule/1a886e7c-a267-49e
 }
 ```
 
-<br/>  
-## 定时短信删除 API
-### 功能说明
+## Scheduled SMS Deleting API
 
-- 删除模板短信定时发送任务
+### Function Description
 
-### 调用地址
++ Delete sending tasks of scheduled SMS
 
-- DELETE https://api.sms.jpush.cn/v1/schedule/{schedule_id}
+### Call Address
 
-### 请求示例
++ DELETE https://api.sms.jpush.cn/v1/schedule/{schedule_id}
+
+### Request Example
 
 ```
 curl --insecure -X DELETE -v https://api.sms.jpush.cn/v1/schedule/1a886e7c-a267-49e6-9970-0d396ca5bb1e -H "Content-Type: application/json" -u "7d431e42dfa6a6d693ac2d04:5e987ac6d2e04d95a9d8f0d1"
 ```
 
-### 返回示例
+### Return Example
 
-#### 请求成功
+#### Successful Request
 
 ```json
 HTTP/1.0 200
@@ -349,7 +350,7 @@ HTTP/1.0 200
   Content-Length: 0
 ```
 
-#### 请求失败
+#### Failed Request
 
 ```json
 {
@@ -360,35 +361,35 @@ HTTP/1.0 200
 }
 ```
 
-<br/>
-## 返回码
-|HTTP CODE| CODE| MESSAGE  | DESC|
+## Return Code
+
+| HTTP CODE | CODE | MESSAGE | DESC
 |:--- |:--- |:--- |:----
-|200|50000|success|请求成功
-|400|50001|missing auth|auth 为空
-|401|50002|auth failed|auth 鉴权失败
-|400|50003|missing body|body 为空
-|400|50004|missing mobile|手机号码为空
-|400|50005|missing  temp_id|模版ID 为空
-|403|50006|invalid mobile|手机号码无效
-|403|50007|invalid body|body 无效
-|403|50008|no sms code auth|未开通短信业务
-|403|50013|invalid temp_id|模版ID 无效
-|403|50014|no money|可发短信余量不足
-|404|50016|api not found|API 不存在
-|415|50017|media not supported|媒体类型不支持
-|405|50018|request method not support|请求方法不支持
-|500|50019|server error|服务端异常|
-|403|50020|template auditing|模板审核中|
-|403|50021|template not pass|模板审核未通过|
-|403|50022|parameters not all replaced|模板中参数未全部替换|
-|403|50023|parameters is empty|参数为空|
-|403|50024|unsubscribed mobile|手机号码已退订|
-|403|50025|wrong template type|该 API 不支持此模版类型|
-|403|50026|wrong msg_id|msg_id 无效|
-|403|50027|invalid send_time|send_time 为空或在当前时间之前|
-|403|50028|invalid schedule_id|schedule_id 无效|
-|403|50029|wrong schedule status|定时短信已发送或已删除，无法再修改|
-|403|50030|recipients is empty|recipients 为空|
-|403|50031|too much recipients|recipients 短信接收者数量超过1000|
-|403|50034|repeat send|重复发送|
+| 200 | 50000 | success | Successful Request
+| 400 | 50001 | missing auth | Auth is empty
+| 401 | 50002 | auth failed | Auth authentication failed
+| 400 | 50003 | missing body | Body is empty.
+| 400 | 50004 | missing mobile | Phone number is empty.
+| 400 | 50005 | missing temp_id | Template ID is empty.
+| 403 | 50006 | invalid mobile | Phone number is invalid.
+| 403 | 50007 | invalid body | body is invalid.
+| 403 | 50008 | no sms code auth | SMS service is not opened
+| 403 | 50013 | invalid temp_id | Template ID is invalid.
+| 403 | 50014 | no money | SMS margin is Insufficient.
+| 404 | 50016 | api not found | API does not exist
+| 415 | 50017 | media not supported | Media type is not supported
+| 405 | 50018 | request method not support | Request method is not supported
+| 500 | 50019 | server error | Server exception
+| 403 | 50020 | template auditing | The template is in auditing.
+| 403 | 50021 | template not pass | Auditing of template failed.
+| 403 | 50022 | parameters not all replaced | Not all parameters in the template are replaced.
+| 403 | 50023 | parameters is empty | The parameter is empty.
+| 403 | 50024 | unsubscribed mobile | Phone number has been unsubscribed.
+| 403 | 50025 | wrong template type | API does not support this template type
+| 403 | 50026 | wrong msg_id | msg_id is invalid.
+| 403 | 50027 | invalid send_time | send_time is empty or before the current time.
+| 403 | 50028 | invalid schedule_id | schedule_id is invalid.
+| 403 | 50029 | wrong schedule status | Scheduled SMS has been sent or deleted and cannot be modified
+| 403 | 50030 | recipients is empty | Recipients are empty.
+| 403 | 50031 | too much recipients | Number of SMS recipients exceeds 1000
+| 403 | 50034 | repeat send | Repeatedly send

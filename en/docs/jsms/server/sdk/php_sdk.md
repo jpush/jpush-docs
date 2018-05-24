@@ -1,28 +1,29 @@
 # JSMS API PHP CLIENT
-[Github 源码](https://github.com/jpush/jsms-api-php-client)
 
-这是短信 API 的 PHP 版本封装开发包，是由极光官方提供的，一般支持最新的 API 功能。
+[Github](https://github.com/jpush/jsms-api-php-client)
 
-对应的 API 文档：https://docs.jiguang.cn/jsms/server/rest_api_summary/
+This is a PHP version development package for SMS API. It is provided officially by Jiguang and generally supports the latest API features.
 
-> 支持的 PHP 版本: 5.3.3 ～ 5.6.x, 7.0.x
-> 须启用 cURL 扩展
+Corresponding API documentation: https://docs.jiguang.cn/jsms/server/rest_api_summary/
+
+> Supported PHP versions: 5.3.3 to 5.6.x, 7.0.x
+> must have cURL extension enabled
 
 ## Installation
 
-- 在项目中的 `composer.json` 文件中添加 JSMS 依赖：
+- Add JSMS dependencies in the `composer.json` file in your project
 
 ```json
 "require": {
-    "jiguang/jsms": "~1.0"
+    "jiguang/jsms": "*"
 }
 ```
 
-- 执行 `$ php composer.phar install` 或 `$ composer install` 进行安装。
+- Perform `$ php composer.phar install` or `$ composer install` to install
 
 ## Usage
 
-#### 初始化
+#### Initialization
 
 ```php
 use JiGuang\JSMS as JSMS;
@@ -40,118 +41,117 @@ OR
 $client = new \JiGuang\JSMS($app_key, $master_secret);
 ```
 
-#### 证书问题
+#### Certificate Issue
 
 ```php
 // 禁用 SSL 证书的验证，
 $client = new JSMS($app_key, $master_secret, [ 'disable_ssl' => true ]);
 ```
 
-**希望开发者在了解相关风险的前提下如此处理 SSL 证书问题。**
+**We hope that developers will handle SSL certificate issues as they understand the risks involved.**
 
-#### 发送验证码
+#### Send Verification Code of Voice SMS
 
 ```php
 $client->sendCode($phone, $temp_id);
 ```
 
-**参数说明:**
+**Parameter Description::**
 
-> $phone: 接收验证码的手机号码
+> $phone: Phone number to receive verification code
 
-> $temp_id: 模板ID
+> $temp_id: Template id
 
-#### 发送语音短信验证码
+#### Send Verification Code of Voice SMS
 
 ```php
 $client->sendVoiceCode($phone, $options = []);
 ```
 
-**参数说明:**
+**Parameter Description::**
 
-> $phone: 接收验证码的手机号码
+> $phone: Phone number to receive verification code
 
-> $options: 可选选项数组，接受 3 个键 `ttl`，`code`，`voice_lang` 中的一个或多个。
+> $options: An array of optional options, accepting one or more of the three keys `ttl`，`code`，`voice_lang`
 
-- ttl: 超时时间，默认为 60 秒
-- code: 语音验证码的值，验证码仅支持 4-8 个数字
-- voice_lang: 播报语言选择，0：中文播报，1：英文播报，2：中英混合播报
++ ttl: Timeout. Default is 60 seconds
++ code: The value of voice verification code. The verification code only supports 4-8 digits
++ voice_lang: Broadcast language selection, 0: Chinese, 1: English, 2: Chinese and English
 
-#### 验证
+#### Verification
 
 ```php
 $client->checkCode($msg_id, $code);
 ```
 
-**参数说明:**
+**Parameter Description::**
 
-> $msg_id: 发送验证码 sendCode 函数返回的数组中的 msg_id 键对应的值
+> $msg_id: Corresponding value of msg_id key in the array returned by the sendCode function after sending a verification code
+> $code: Verification code received by the phone
 
-> $code: 手机接收到的验证码
-
-#### 发送模板短信
+#### Send Template SMS
 
 ```php
 $client->sendMessage($mobile, $temp_id, array $temp_para = [], $time = null);
 ```
 
-**参数说明:**
+**Parameter Description::**
 
-> $phone: 接收验证码的手机号码
+> $phone: Phone number to receive verification code
 
-> $temp_id: 模板 ID
+> $temp_id: Template id
 
-> $temp_para: 模板参数,需要替换的参数名和 value 的键值对,仅接受数组类型的值
+> $temp_para: Template parameter. Parameter name and the corresponding value of pair need to be replaced, and only accepts values in array type
 
-> $time: 定时短信发送时间，格式为 yyyy-MM-dd HH:mm:ss，默认为 `null` 表示立即发送
+> $time: Sending time of scheduled SMS is in the format of yyyy-MM-dd HH:mm:ss. Defaults `null` to send immediately.
 
-#### 发送批量模板短信
+#### Send Template SMS in Batch
 
 ```php
 $client->sendBatchMessage($temp_id, array $recipients， $time = null);
 ```
 
-**参数说明:**
+**Parameter Description::**
 
-> $temp_id: 模板 ID
+> $temp_id: Template id
 
-> $recipients: 接收者列表，接受一个以 mobile 为键，对应其 temp_para 为值的关联数组
+> $recipients: List of receivers, accepting an associative array with a mobile key corresponding to its temp_para value
 
-> $time: 定时短信发送时间，格式为 yyyy-MM-dd HH:mm:ss，默认为 `null` 表示立即发送
+> $time: Sending time of scheduled SMS is in the format of yyyy-MM-dd HH:mm:ss. Defaults `null` to send immediately.
 
-#### 查询定时模板短信
+#### Query Scheduled Template SMS
 
 ```php
 $client->showSchedule($scheduleId);
 ```
 
-#### 删除定时模板短信
+#### Delete Scheduled Template SMS
 
 ```php
 $client->deleteSchedule($scheduleId);
 ```
 
-#### 应用余量查询
+#### Query Application Margin
 
 ```php
 $client->getAppBalance();
 ```
 
-#### 调用返回码说明
+#### Description of Call Return Code
 
-http://docs.jiguang.cn/server/rest_api_jsms/#_12
+http://docs.jiguang.cn/en/server/rest_api_jsms/#_12
 
 ## Examples
 
-在下载的中的 [examples](https://github.com/jpush/jsms-api-php-client/tree/master/examples) 文件夹有简单示例代码, 开发者可以参考其中的样例快速了解该库的使用方法。
+There is a simple example code in the downloaded [example folder](https://github.com/jpush/jsms-api-php-client/tree/master/examples). Developers can refer to the sample to quickly understand how to use the library.
 
-> **注：所下载的样例代码不可马上使用，需要在相应文件中填入相关的必要参数，不然示例运行会失败**
+> Note: The downloaded sample code can't be used immediately, so you need to fill in the relevant file with the necessary parameters. Otherwise, the sample operation will fail.
 
-#### 简单使用方法
+#### Simple Use
 
-> 假定当前目录为 JSMS 源码所在的根目录
+> Assuming the current directory is the root directory of the JSMS source
 
-- 编辑 send_example.php 文件，填写信息
++ Edit send_example.php and fill in the information
 
 ```php
 $appKey = 'xxxx';
@@ -159,11 +159,11 @@ $masterSecret = 'xxxx';
 $phone = 'xxxxxxxxxxx';
 ```
 
-- 运行示例 `$ php examples/send_example.php`
+- Run the example `$ php examples/send_example.php`
 
-- 获取 `msg_id` 和 `code`
+- Get `msg_id` and `code`
 
-- 编辑 check_example.php 文件，填写信息
+- Edit `check_example.php` and fill in the information
 
 ```php
 $appKey = 'xxxx';
@@ -171,7 +171,7 @@ $masterSecret = 'xxxx';
 $msg_id = 'xxxx';
 $code = 'xxxxxx';
 ```
-- 运行示例 `$ php examples/check_example.php`
+- Run the example `$ php examples/check_example.php`
 
 ## Contributing
 

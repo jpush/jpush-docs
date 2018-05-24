@@ -1,32 +1,35 @@
-# 短信模板 API
+# SMS Template API
+
 <div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px;">
 <ul style="margin-bottom: 0;">
-<li>支持创建、修改、查询和删除短信模板</li>
+<li>Support for creating, modifying, querying, and deleting SMS signatures</li>
 </ul>
 </div>
 </br>
-## HTTP 验证
-> 使用 HTTP Basic Authentication 的方式做访问授权。这样整个 API 请求可以使用常见的 HTTP 工具来完成，比如：curl，浏览器插件等；
 
-HTTP Header（头）里加一个字段（Key/Value对）：
+## HTTP Authentication
+
+> Use HTTP Basic Authentication to do access authorization. In this way, the entire API request can be completed by common HTTP tools such as curl, browser plugins, etc.
+
+A field (Key/Value pair) is added in the HTTP Header：
 
 ```
 Authorization: Basic base64_auth_string
 ```
 
-其中 base64_auth_string 的生成算法为：base64(appKey:masterSecret)，即:对 appKey 加上冒号，加上 masterSecret 拼装起来的字符串，再做 base64 转换。appKey、masterSecret 可以在控制台应用设置中查看。
+The generation algorithm of base64_auth_string is: base64(appKey:masterSecret), that is: appKey plus a colon, plus string assembled by masterSecret, and then do a base64 conversion. appKey, masterSecret can be viewed in the application settings of console.
 
-</br>
-## 创建模板 API
-### 功能说明
+## Create Template API
 
-- 创建短信模板
+### Function Description
 
-### 调用地址
++ Create SMS template
 
-- POST https://api.sms.jpush.cn/v1/templates
+### Call Address
 
-### 请求示例
++ POST https://api.sms.jpush.cn/v1/templates
+
+### Request Example
 
 ```
 curl --insecure -X POST -v https://api.sms.jpush.cn/v1/templates -H "Content-Type: application/json" -u "7d431e42dfa6a6d693ac2d04:5e987ac6d2e04d95a9d8f0d1" -d \
@@ -38,24 +41,24 @@ curl --insecure -X POST -v https://api.sms.jpush.cn/v1/templates -H "Content-Typ
 }'
 ```
 
-#### 参数
+### Parameters
 
-|KEY|REQUIRE|DESCRIPTION|
-|----|----|----|
-|template|TRUE|模板内容，注意：根据运营商规定下发短信的内容不能超过350字符|
-|type|TRUE|模板类型，1为验证码类，2为通知类，3为营销类|
-|ttl|FALSE|验证码有效期，单位为秒（当模板类型为1时必传）|
-|remark|FALSE|备注，长度限制为500字符|
+|KEY|REQUIRE|DESCRIPTION
+|----|----|----
+|template|TRUE|Template content. Note: The contents of SMS, according to operator’s regulations, cannot exceed 350 characters
+|type|TRUE|Template type, 1 for verification code, 2 for notification, 3 for marketing
+|ttl|FALSE|Validity period of verification code, in seconds (must be transmitted when the template type is 1)
+|remark|FALSE|Remarks, length is limited to 500 characters
 
-### 返回示例
+### Return Example
 
-#### 请求成功
+#### Successful Request
 
 ```json
 {"temp_id": 37582}
 ```
 
-#### 请求失败
+#### Failed Request
 
 ```json
 {
@@ -66,18 +69,17 @@ curl --insecure -X POST -v https://api.sms.jpush.cn/v1/templates -H "Content-Typ
 }
 ```
 
+## Modify Template API
 
-<br/>  
-## 修改模板 API
-### 功能说明
+### Function Description
 
-- 修改审核不通过的模板，并再次提交审核
++ Modify the template that failed the audit and submit the audit again
 
-### 调用地址
+### Call Address
 
-- PUT https://api.sms.jpush.cn/v1/templates/{temp_id}
++ PUT https://api.sms.jpush.cn/v1/templates/{temp_id}
 
-### 请求示例
+### Request Example
 
 ```
 curl --insecure -X PUT -v https://api.sms.jpush.cn/v1/templates/37582 -H "Content-Type: application/json" -u "7d431e42dfa6a6d693ac2d04:5e987ac6d2e04d95a9d8f0d1" -d \
@@ -90,25 +92,25 @@ curl --insecure -X PUT -v https://api.sms.jpush.cn/v1/templates/37582 -H "Conten
 }'
 ```
 
-#### 参数
+### Parameters
 
-|KEY|REQUIRE|DESCRIPTION|
-|----|----|----|
-|temp_id|TRUE|模板ID|
-|template|TRUE|模板内容，注意：根据运营商规定下发短信的内容不能超过350字符|
-|type|TRUE|模板类型，1为验证码类，2为通知类，3为营销类|
-|ttl|FALSE|验证码有效期，单位为秒（当模板类型为1时必传）|
-|remark|FALSE|备注，长度限制为500字符|
+|KEY|REQUIRE|DESCRIPTION
+|----|----|----
+| temp_id | TRUE | Template ID
+| template | TRUE | Template content. Note: The contents of SMS, according to operator’s regulations, cannot exceed 350 characters
+| type | TRUE | Template type, 1 for verification code, 2 for notification, 3 for marketing
+| ttl | FALSE | Validity period of verification code, in seconds (must be transmitted when the template type is 1)
+| remark | FALSE | Remarks, length is limited to 500 characters
 
-### 返回示例
+### Return Example
 
-#### 请求成功
+#### Successful Request
 
 ```json
 {"temp_id": 37582}
 ```
 
-#### 请求失败
+#### Failed Request
 
 ```json
 {
@@ -117,28 +119,27 @@ curl --insecure -X PUT -v https://api.sms.jpush.cn/v1/templates/37582 -H "Conten
         "message": "*****"
     }
 }
-```  
+```
 
+## Query Template API
 
-<br/>  
-## 查询模板 API
-### 功能说明
+### Function Description
 
-- 查询短信模板
++ Query SMS template
 
-### 调用地址
+### Call Address
 
-- GET https://api.sms.jpush.cn/v1/templates/{temp_id}
++ GET https://api.sms.jpush.cn/v1/templates/{temp_id}
 
-### 请求示例
+### Request Example
 
 ```
 curl --insecure -X GET -v https://api.sms.jpush.cn/v1/templates/37582 -H "Content-Type: application/json" -u "7d431e42dfa6a6d693ac2d04:5e987ac6d2e04d95a9d8f0d1"
 ```
 
-### 返回示例
+### Return Example
 
-#### 请求成功
+#### Successful Request
 
 ```json
 {
@@ -151,7 +152,7 @@ curl --insecure -X GET -v https://api.sms.jpush.cn/v1/templates/37582 -H "Conten
 }
 ```
 
-#### 请求失败
+#### Failed Request
 
 ```json
 {
@@ -162,33 +163,33 @@ curl --insecure -X GET -v https://api.sms.jpush.cn/v1/templates/37582 -H "Conten
 }
 ```
 
-<br/>  
-## 删除模板 API
-### 功能说明
+## Delete Template API
 
-- 删除短信模板
+### Function Description
 
-### 调用地址
++ Delete SMS template
 
-- DELETE https://api.sms.jpush.cn/v1/templates/{temp_id}
+### Call Address
 
-### 请求示例
++ DELETE https://api.sms.jpush.cn/v1/templates/{temp_id}
+
+### Request Example
 
 ```
 curl --insecure -X DELETE -v https://api.sms.jpush.cn/v1/templates/37582 -H "Content-Type: application/json" -u "7d431e42dfa6a6d693ac2d04:5e987ac6d2e04d95a9d8f0d1"
 ```
 
-### 返回示例
+### Return Example
 
-#### 请求成功
+#### Successful Request
 
-```json
+```
 HTTP/1.0 200
   Content-Type: application/json
   Content-Length: 0
 ```
 
-#### 请求失败
+#### Failed Request
 
 ```json
 {
@@ -199,27 +200,27 @@ HTTP/1.0 200
 }
 ```
 
-<br/>
-## 返回码
+## Return Code
+
 |HTTP CODE| CODE| MESSAGE  | DESC|
 |:--- |:--- |:--- |:----
-|200|50000|success|请求成功
-|400|50001|missing auth|auth 为空
-|401|50002|auth failed|auth 鉴权失败
-|400|50003|missing body|body 为空
-|403|50007|invalid body|body 无效
-|403|50008|no sms code auth|未开通短信业务
-|403|50013|invalid temp_id|模版ID 无效
-|404|50016|api not found|API 不存在
-|415|50017|media not supported|媒体类型不支持
-|405|50018|request method not support|请求方法不支持
-|500|50019|server error|服务端异常|
-|403|50025|wrong template type|错误的模板类型|
-|403|50037|has black word|模板内容含有敏感词|
-|403|50041|invalid ttl value|ttl无效，必须大于0并且不超过86400秒（24小时）|
-|403|50042|template is empty|模板内容为空|
-|403|50043|template too long|模板内容过长，含签名长度限制为350字符|
-|403|50044|template parameter invalid|模板参数无效|
-|403|50045|remark too long|备注内容过长，长度限制为500字符|
-|403|50046|signature not set|该应用未设置签名，请先设置签名|
-|403|50047|modify template not allow|只有审核不通过状态的模板才允许修改|
+| 200 | 50000 | success | Successful Request
+| 400 | 50001 | missing auth | auth is empty
+| 401 | 50002 | auth failed | Authentication of Auth failed
+| 400 | 50003 | missing body | body is empty
+| 403 | 50007 | invalid body | body is invalid
+| 403 | 50008 | no sms code auth | Not open SMS service
+| 403 | 50013 | invalid temp_id | Template ID is empty
+| 404 | 50016 | api not found | API does not exist
+| 415 | 50017 | media not supported | Media type is not supported
+| 405 | 50018 | request method not support | Request method is not supported
+| 500 | 50019 | server error | Server exception
+| 403 | 50025 | wrong template type | Wrong template type
+| 403 | 50037 | has black word | Template content contains sensitive words
+| 403 | 50041 | invalid ttl value | Ttl is invalid and must be greater than 0 and no more than 86400 seconds (24 hours)
+| 403 | 50042 | template is empty | Template content is empty
+| 403 | 50043 | template too long | Content of the template is too long and the length of the signature is limited to 350 characters
+| 403 | 50044 | template parameter invalid | Template Parameters is invalid
+| 403 | 50045 | remark too long | The comment is too long and the length is limited to 500 characters
+| 403 | 50046 | signature not set | The application does not have a signature, please set the signature first
+| 403 | 50047 | modify template not allow | Only the template that failed the audit is allowed to modify

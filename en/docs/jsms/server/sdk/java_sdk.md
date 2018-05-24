@@ -1,18 +1,21 @@
 # JSMS API JAVA CLIENT
-[Github 源码](https://github.com/jpush/jsms-api-java-client)
 
-### 概述
-这是短信 Rest API 的 Java 版本封装开发包，是由极光推送官方提供的，一般支持最新的 API功能。
+[Github](https://github.com/jpush/jsms-api-java-client)
 
-对应的 Rest API 文档：http://docs.jiguang.cn/server/rest_api_jsms/
+### Overview
 
-## 安装
+This is a Java version development package of SMS Rest API. It is officially provided by JPush and generally supports the latest API functions.
+Corresponding Rest API documentation: http://docs.jiguang.cn/server/rest_api_jsms/
 
-### maven 方式
-将下边的依赖条件放到你项目的 maven pom.xml 文件里。
-> 其中 slf4j 可以与 logback, log4j, commons-logging 等日志框架一起工作，可根据你的需要配置使用。
+## Installation
 
-```Java
+### Way of maven
+
+Place the following dependencies in your project's maven pom.xml.
+
+> Slf4j can work with log frames such as logback, log4j, and commons-logging, and can be configured and used according to your needs.
+
+```xml
 <dependency>
     <groupId>cn.jpush.api</groupId>
     <artifactId>jsms-client</artifactId>
@@ -46,10 +49,11 @@
 </dependency>
 ```
 
-### jar 包方式
+### Way of Jar Package
+
 * [slf4j](http://www.slf4j.org/) / log4j (Logger)
 * [gson](https://code.google.com/p/google-gson/) (Google JSON Utils)
 * [jiguang-common-client](https://github.com/jpush/jiguang-java-client-common)
 * [jsms-client](https://github.com/jpush/jsms-api-java-client/releases/download/jsms-client-1.2.5/jsms-client-1.2.5.zip)
 
-[项目 libs/ 目录](https://github.com/jpush/jsms-api-java-client/tree/master/libs)下可以找到 slf4j 及 gson jar 包 可复制到你的项目里去。
+The slf4j and gson jar packages can be found in the [project libs/ directory](https://github.com/jpush/jsms-api-java-client/tree/master/libs) and can be copied to your project.
