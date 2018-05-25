@@ -1,40 +1,60 @@
-# 第三方平台申请
-##为什么需要申请第三方平台帐号？
-应用在分享到 QQ，微信和新浪微博分享成功后显示的应用信息、应用名称、应用图标等信息跟第三方开放平台设置有关，因此需要在第三方开放平台创建应用并审核通过。
-## 申请 QQ 的 appID
+# Third-party Platform Application
 
-登录腾讯开放平台,应用接入(<a href="http://op.open.qq.com/appregv2/">点击链接</a>） ，根据需要选择 Android 应用或者 iOS 应用，
+## Why do I need to apply for a third-party platform account?
+
+The information such as application information, application name, and application icon displayed after the application is successfully shared with QQ, WeChat and Sina Weibo is related to the settings of third-party open platforms. Therefore, the application needs to be created and approved through a third-party open platform.
+
+## Apply for appID of QQ
+
+Log in to Tencent open platform, access the application (<a href="http://op.open.qq.com/appregv2/">click the link</a>), and select Android application or iOS application according to your needs.
+
 ![](image/qq_select_platform.png)
-点击创建应用，填写相关应用信息并提交审核，
+
+Click Create Application, fill in the relevant application information and submit it for review.
+
 ![](image/qq_ios_platform.png)
-根据提示填写应用信息，应用未通过审核前只能使用测试账号。
 
-## 申请微信 appID
-登录<a href="https://open.weixin.qq.com/">微信开发者平台</a>，进入管理中心,点击创建移动应用，根据提示填写应用的基本信息以及平台信息
+Fill in the application information according to the prompt. You can only use the test account before the application passes the audit.
+
+## Apply for appID of WeChat
+
+Log in to the <a href="https://open.weixin.qq.com/">WeChat Developer Platform</a>, enter the management center, click to create a mobile application, and then fill in the basic information of the application and platform information according to the prompts
+
 ![](image/wechat_platform.png)
-提交审核，审核通过后即可获得 appID 和 appsecret；至此，应用已具有分享的能力，如果还需要使用微信登录功能，开发者还需要申请微信平台的开发者资质认证。<br>
-<font color="red">需要特别注意的是在申请时填写的包名和签名必须与 apk 文件相对应。</font>
 
-## 申请新浪微博 appkey
-登录<a href="http://open.weibo.com"/>新浪微博开放平台</a>,进入微链接－》移动应用，点击立即接入创建应用
+The appID and appsecret can be obtained after the audit is passed. At this point, the app already has the ability to share. If you still need to use the WeChat log-in function, the developer also needs to apply for the developer qualification certification of the WeChat platform.<br>
+<font color="red">
+It is important to note that the package name and signature entered during the application must correspond to the apk file.</font>
+
+## Apply for appkey of Sina Weibo
+
+Log in to <a href="http://open.weibo.com"/>Sina Weibo Open Platform</a>, enter the micro link－》mobile application, click to create an application immediately
+
 ![](image/sina_platform.png)
-根据提示填写应用信息创建新应用
+
+Fill in the application information according to the prompt to create a new application
+
 ![](image/sina_create_platform.png)
-提交审核，审核通过后即可获得 appkey 和 appsecret。<br>
-<font color="red">需要特别注意的是在申请时填写的包名和签名必须与 apk 文件相对应。</font>
 
+Submit for approval and get appkey and appsecret after the approval<br>
+<font color="red">It is important to note that the package name and signature entered during the application must correspond to the apk file.</font>
 
+## Apply for appID of Facebook
 
-## 申请 Facebook 的 appID
-登录 Facebook 开发者平台,点击添加新应用(<a href="https://developers.facebook.com/apps/">点击链接</a>） ，根据需要选择 Android 应用或者 iOS 应用，
+Log in to the Facebook Developer Platform, click to add new application (<a href="https://developers.facebook.com/apps/">click the link</a>), and select Android App or iOS App as needed.
+
 ![](image/facebook_create.png)
-填写相关应用信息并提交审核，
+
+Fill in the relevant application information and submit it for review
+
 ![](image/facebook_info.png)
-根据提示填写应用信息即可。
 
+Fill in the application information as prompted
 
+## Apply for appID of Twitter
 
-## 申请 Twitter 的 appID
-登录 <a href="https://apps.twitter.com/">Twitter 开发者平台</a> ,点击 Create New APP ，创建应用如下图：
+Log in to the <a href="https://apps.twitter.com/">Twitter Developer Platform</a> and click Create New APP to create the application as shown below:
+
 ![](image/twitter_info.png)
-根据提示填写创建应用信息，回调地址不要忘记填写，创建成功之后，可以看到 ConsumerKey 和 consumerSecret 信息.
+
+Fill in the information for creating the application according to the prompts. Do not forget to fill in the callback address. After the creation is successful, you can see the ConsumerKey and consumerSecret information.
