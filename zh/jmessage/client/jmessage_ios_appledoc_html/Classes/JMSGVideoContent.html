@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 
-	<title>JMSGImageContent Class Reference</title>
+	<title>JMSGVideoContent Class Reference</title>
 
 	<link rel="stylesheet" href="../css/style.css">
 	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
@@ -56,13 +56,15 @@
 	
 	<optgroup label="Properties">
 		
-		<option value="//api/name/imageLink">imageLink</option>
+		<option value="//api/name/duration">duration</option>
+		
+		<option value="//api/name/videoThumbImageSize">videoThumbImageSize</option>
+		
+		<option value="//api/name/videoThumbImageLocalPath">videoThumbImageLocalPath</option>
 		
 		<option value="//api/name/format">format</option>
 		
-		<option value="//api/name/imageSize">imageSize</option>
-		
-		<option value="//api/name/thumbImageLocalPath">thumbImageLocalPath</option>
+		<option value="//api/name/fileName">fileName</option>
 		
 	</optgroup>
 	
@@ -72,11 +74,11 @@
 	
 	<optgroup label="Instance Methods">
 		
-		<option value="//api/name/initWithImageData:">- initWithImageData:</option>
+		<option value="//api/name/initWithVideoData:thumbData:duration:">- initWithVideoData:thumbData:duration:</option>
 		
-		<option value="//api/name/thumbImageData:">- thumbImageData:</option>
+		<option value="//api/name/videoThumbImageData:">- videoThumbImageData:</option>
 		
-		<option value="//api/name/largeImageDataWithProgress:completionHandler:">- largeImageDataWithProgress:completionHandler:</option>
+		<option value="//api/name/videoDataWithProgress:completionHandler:">- videoDataWithProgress:completionHandler:</option>
 		
 	</optgroup>
 	
@@ -93,7 +95,7 @@
 		<div id="overview_contents" class="container">
 			<div id="content">
 				<main role="main">
-					<h1 class="title">JMSGImageContent Class Reference</h1>
+					<h1 class="title">JMSGVideoContent Class Reference</h1>
 
 					
 					<div class="section section-specification"><table cellspacing="0"><tbody>
@@ -105,7 +107,7 @@
 	<td>NSCopying</td>
 </tr><tr>
 	<th>Declared in</th>
-	<td>JMSGImageContent.h</td>
+	<td>JMSGVideoContent.h</td>
 </tr>
 						</tbody></table></div>
 					
@@ -115,24 +117,7 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>图片内容</p>
-
-<p>图片区分缩略图与大图.</p>
-
-<p>大图指的创建对象时图片. 这个大图一般来说, 也是 App 对拍照或者相册里的 &ldquo;原图&rdquo; 经过压缩处理的.
-因为消息应用一般不会发送相册或者拍照的 &ldquo;原图&rdquo;, 这太大了.</p>
-
-<p>暂不支持可选 &ldquo;原图&rdquo; 发送功能. 有计划支持.</p>
-
-<p>缩略图则是 SDK 根据一定的算法 (主要基于屏幕, 长宽比等), 裁减出来的一个相对小的图片,
-用于默认显示在聊天窗口.
-第一次访问缩略图后, SDK 会缓存把该数据缓存在该对象上, 所以访问多次访问会非常快,
-有利于聊天窗口滚动的性能表现.</p>
-
-<p>收到消息时, SDK 会默认预下载缩略图, 这样查看消息就可以即时展示出来.
-而大图, 则一般是 App 预览图片调用接口时, SDK 再去发起下载.</p>
-
-<p>针对每种资源(缩略图或者大图), 只提供一个异步接口获取数据. SDK 去做缓存,文件,下载的适配工作.</p>
+						<p>视频内容类型</p>
 					</div>
 					
 					
@@ -148,8 +133,8 @@
 
 						<div class="task-list">
 							<div class="section-method">
-	<a name="//api/name/imageLink" title="imageLink"></a>
-	<h3 class="method-title"><code><a href="#//api/name/imageLink">&nbsp;&nbsp;imageLink</a></code>
+	<a name="//api/name/duration" title="duration"></a>
+	<h3 class="method-title"><code><a href="#//api/name/duration">&nbsp;&nbsp;duration</a></code>
 </h3>
 
 	<div class="method-info">
@@ -159,12 +144,12 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>图片链接</p>
+				<p>视频时长 (单位:秒)</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) NSString *imageLink</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, copy, readonly) NSNumber *duration</code></div>
 
 		    
 			
@@ -182,15 +167,15 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">JMSGImageContent.h</code></p>
+				<p><code class="declared-in-ref">JMSGVideoContent.h</code></p>
 			</div>
 			
 			
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/format" title="format"></a>
-	<h3 class="method-title"><code><a href="#//api/name/format">&nbsp;&nbsp;format</a></code>
+	<a name="//api/name/videoThumbImageSize" title="videoThumbImageSize"></a>
+	<h3 class="method-title"><code><a href="#//api/name/videoThumbImageSize">&nbsp;&nbsp;videoThumbImageSize</a></code>
 </h3>
 
 	<div class="method-info">
@@ -200,14 +185,12 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>图片格式</p>
-
-<p>注意：格式后缀不需要带点，只需后缀名，如：png、jpg 等</p>
+				<p>视频封面图片大小</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *format</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign, readonly) CGSize videoThumbImageSize</code></div>
 
 		    
 			
@@ -225,15 +208,15 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">JMSGImageContent.h</code></p>
+				<p><code class="declared-in-ref">JMSGVideoContent.h</code></p>
 			</div>
 			
 			
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/imageSize" title="imageSize"></a>
-	<h3 class="method-title"><code><a href="#//api/name/imageSize">&nbsp;&nbsp;imageSize</a></code>
+	<a name="//api/name/videoThumbImageLocalPath" title="videoThumbImageLocalPath"></a>
+	<h3 class="method-title"><code><a href="#//api/name/videoThumbImageLocalPath">&nbsp;&nbsp;videoThumbImageLocalPath</a></code>
 </h3>
 
 	<div class="method-info">
@@ -243,53 +226,12 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>图片原始大小</p>
+				<p>获取视频封面图片的本地路径</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign, readonly) CGSize imageSize</code></div>
-
-		    
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">JMSGImageContent.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/thumbImageLocalPath" title="thumbImageLocalPath"></a>
-	<h3 class="method-title"><code><a href="#//api/name/thumbImageLocalPath">&nbsp;&nbsp;thumbImageLocalPath</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>获取缩略图的本地路径</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) NSString *thumbImageLocalPath</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) NSString *videoThumbImageLocalPath</code></div>
 
 		    
 			
@@ -312,15 +254,15 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">JMSGImageContent.h</code></p>
+				<p><code class="declared-in-ref">JMSGVideoContent.h</code></p>
 			</div>
 			
 			
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/initWithImageData:" title="initWithImageData:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/initWithImageData:">&ndash;&nbsp;initWithImageData:</a></code>
+	<a name="//api/name/initWithVideoData:thumbData:duration:" title="initWithVideoData:thumbData:duration:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/initWithVideoData:thumbData:duration:">&ndash;&nbsp;initWithVideoData:thumbData:duration:</a></code>
 </h3>
 
 	<div class="method-info">
@@ -330,12 +272,12 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>初始化消息图片内容</p>
+				<p>初始化视频消息内容</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (nullable instancetype)initWithImageData:(NSData *JMSG_NONNULL)<em>data</em></code></div>
+			<div class="method-subsection method-declaration"><code>- (instancetype)initWithVideoData:(NSData *)<em>data</em> thumbData:(NSData *JMSG_NULLABLE)<em>thumbData</em> duration:(NSNumber *)<em>duration</em></code></div>
 
 		    
 			
@@ -345,7 +287,17 @@
 				
 					<tr>
 						<th scope="row" class="argument-name"><code>data</code></th>
-						<td><p>图片数据</p></td>
+						<td><p>该视频内容的数据</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>thumbData</code></th>
+						<td><p>缩略图，建议：缩略图上层要控制大小，避免上传过大图片</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>duration</code></th>
+						<td><p>该视频内容的持续时长，长度应大于 0</p></td>
 					</tr>
 				
 				</table>
@@ -359,11 +311,7 @@
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>这是预设的初始化方法. 创建一个图片内容对象, 必须要传入图片数据.</p>
-
-<p>对于图片消息, 一般来说创建此图片内容的数据, 是对拍照原图经过裁减处理的, 否则发图片消息太大.
-这里传入的图片数据, SDK视为大图. 方法 largeImageDataWithProgress:completionHandler 下载到的,
-就是这个概念上的图片数据.</p>
+				<p>建议：缩略图上层要控制大小，避免上传过大图片.</p>
 			</div>
 			
 
@@ -374,15 +322,15 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">JMSGImageContent.h</code></p>
+				<p><code class="declared-in-ref">JMSGVideoContent.h</code></p>
 			</div>
 			
 			
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/thumbImageData:" title="thumbImageData:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/thumbImageData:">&ndash;&nbsp;thumbImageData:</a></code>
+	<a name="//api/name/format" title="format"></a>
+	<h3 class="method-title"><code><a href="#//api/name/format">&nbsp;&nbsp;format</a></code>
 </h3>
 
 	<div class="method-info">
@@ -392,12 +340,104 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>获取图片消息的缩略图数据</p>
+				<p>视频格式</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (void)thumbImageData:(JMSGAsyncDataHandler JMSG_NULLABLE)<em>handler</em></code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *format</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>创建 videoContent 时可设置，建议设置 format。后缀不需要带点，只需后缀名，如： mp4、mov 等</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGVideoContent.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/fileName" title="fileName"></a>
+	<h3 class="method-title"><code><a href="#//api/name/fileName">&nbsp;&nbsp;fileName</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>视频文件名</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *fileName</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>创建 videoContent 时可设置</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGVideoContent.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/videoThumbImageData:" title="videoThumbImageData:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/videoThumbImageData:">&ndash;&nbsp;videoThumbImageData:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>获取视频消息的封面缩略图</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)videoThumbImageData:(JMSGAsyncDataHandler JMSG_NULLABLE)<em>handler</em></code></div>
 
 		    
 			
@@ -430,9 +470,7 @@
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>展示缩略时调用此接口，获取缩略图数据。
-如果本地数据文件已经存在, 则直接返回;
-如果本地还没有图片，会发起网络请求下载。下载完后再回调。</p>
+				<p>展示缩略时调用此接口，获取缩略图数据。如果本地数据文件已经存在, 则直接返回; 如果本地还没有图片，会发起网络请求下载。下载完后再回调。</p>
 			</div>
 			
 
@@ -443,15 +481,15 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">JMSGImageContent.h</code></p>
+				<p><code class="declared-in-ref">JMSGVideoContent.h</code></p>
 			</div>
 			
 			
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/largeImageDataWithProgress:completionHandler:" title="largeImageDataWithProgress:completionHandler:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/largeImageDataWithProgress:completionHandler:">&ndash;&nbsp;largeImageDataWithProgress:completionHandler:</a></code>
+	<a name="//api/name/videoDataWithProgress:completionHandler:" title="videoDataWithProgress:completionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/videoDataWithProgress:completionHandler:">&ndash;&nbsp;videoDataWithProgress:completionHandler:</a></code>
 </h3>
 
 	<div class="method-info">
@@ -461,12 +499,12 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>获取图片消息的大图数据</p>
+				<p>获取视频</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (void)largeImageDataWithProgress:(JMSGMediaProgressHandler JMSG_NULLABLE)<em>progressHandler</em> completionHandler:(JMSGAsyncDataHandler JMSG_NULLABLE)<em>handler</em></code></div>
+			<div class="method-subsection method-declaration"><code>- (void)videoDataWithProgress:(JMSGMediaProgressHandler JMSG_NULLABLE)<em>progressHandler</em> completionHandler:(JMSGAsyncDataHandler JMSG_NULLABLE)<em>handler</em></code></div>
 
 		    
 			
@@ -484,7 +522,7 @@
 						<td><p>结果回调。回调参数:</p>
 
 <ul>
-<li>data 图片数据;</li>
+<li>data 文件数据;</li>
 <li>objectId 消息msgId;</li>
 <li>error 不为nil表示出错;</li>
 </ul>
@@ -504,9 +542,7 @@
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>一般在预览图片大图时，要用此接口。
-如果本地数据文件已经存在, 则直接返回;
-如果本地还没有图片，会发起网络请求下载。下载完后再回调。</p>
+				<p>如果本地数据文件已经存在, 则直接返回;如果本地还没有文件，会发起网络请求下载。下载完后再回调。</p>
 			</div>
 			
 
@@ -517,7 +553,7 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">JMSGImageContent.h</code></p>
+				<p><code class="declared-in-ref">JMSGVideoContent.h</code></p>
 			</div>
 			
 			

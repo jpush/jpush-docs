@@ -178,20 +178,22 @@ SDK 初始化时，可设置是否启用消息记录漫游。
 
 ```
 /*!
- * @abstract 用户登录
+ * @abstract 用户登录，返回登录设备信息
  *
- * @param username 登录用户名. 规则与注册接口相同.
- * @param password 登录密码. 规则与注册接口相同.
- * @param handler 结果回调
+ * @param username    登录用户名. 规则与注册接口相同.
+ * @param password    登录密码. 规则与注册接口相同.
+ * @param devicesInfo 登录设备回调，返回数据为 NSArray<JMSGDeviceInfo>
+ * @param handler     结果回调
  *
- * - devices 用户登录设备信息，NSArray<JMSGDeviceInfo>
- * - error   错误信息,为 nil 时表示成功
+ * - resultObject 简单封装的user对象，上层不要直接使用 resultObject 对象做操作, 因为它只是一个简单封装的user对象
+ * - error 错误信息
  *
  * @discussion 回调中 devices 返回的是设备信息，具体属性请查看 JMSGDeviceInfo 类
  */
 + (void)loginWithUsername:(NSString *)username
                  password:(NSString *)password
-                  handler:(void(^)(NSArray <__kindof JMSGDeviceInfo *>*devices,NSError *error))handler;
+              devicesInfo:(nullable void(^)(NSArray <__kindof JMSGDeviceInfo *>*devices))devicesInfo
+        completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)handler;
 ```
 
 ```
@@ -512,6 +514,7 @@ SDK 3.2.1 版本开始（包括3.2.1），离线事件也会走消息同步策�
 + 非群事件：其他事件还是不变，走以前的代理方法。
 
 ### 消息管理
+
 #### 创建单聊消息
 	/*!
 	 * @abstract 创建单聊消息
@@ -541,6 +544,180 @@ SDK 3.2.1 版本开始（包括3.2.1），离线事件也会走消息同步策�
 ##### 例子
 	JMSGTextContent *textContent = [[JMSGTextContent alloc] initWithText:@"textContent"];
 	JMSGMessage *message = [JMSGMessage createGroupMessageWithContent:textContent groupId:@"groupId"];
+	
+#### 创建文本消息
++ JMSGTextContent 
+
+```
+/*!
+ * @abstract 基于文本初始化内容对象
+ *
+ * @param text 纯文本内容
+ *
+ * @discussion 这是预设的创建文本类型内容的方法
+ */
+- (instancetype)initWithText:(NSString *)text;
+```
++ 创建消息
+
+```
+JMSGTextContent *content = [[JMSGTextContent alloc] initWithText:@"textContent"];
+JMSGMessage *singleMessage = [JMSGMessage createSingleMessageWithContent: content username:@"username"];
+JMSGMessage *groupMessage = [JMSGMessage createGroupMessageWithContent: content groupId:@"groupId"];
+```
+
+#### 创建图片消息
++ JMSGImageContent 
+
+```
+/*!
+ * @abstract 初始化消息图片内容
+ *
+ * @param data 图片数据
+ */
+- (nullable instancetype)initWithImageData:(NSData * JMSG_NONNULL)data;
+```
++ 创建消息
+
+```
+JMSGImageContent *content = [[JMSGImageContent alloc] initWithImageData:imageData];
+content.format = @"png";//可选设置
+JMSGMessage *singleMessage = [JMSGMessage createSingleMessageWithContent: content username:@"username"];
+JMSGMessage *groupMessage = [JMSGMessage createGroupMessageWithContent: content groupId:@"groupId"];
+```
+#### 创建语音消息
++ JMSGVoiceContent 
+
+```
+/*!
+ * @abstract 初始化语音内容
+ *
+ * @param data 该语音内容的数据. 不允许为 nil, 并且内容长度应大于 0, 否则失败
+ * @param duration 该语音内容的持续时长. 单位是秒. 不允许为 nil, 并且应大于 0.
+ *
+ * @discussion 这是预设的初始化方法, 创建一条语音内容, 必然传入语音数据, 以及时长.
+ */
+- (instancetype)initWithVoiceData:(NSData *)data
+                    voiceDuration:(NSNumber *)duration;
+```
++ 创建消息
+
+```
+JMSGVoiceContent *content = [[JMSGVoiceContent alloc] initWithVoiceData:data voiceDuration:@(10)];
+JMSGMessage *singleMessage = [JMSGMessage createSingleMessageWithContent: content username:@"username"];
+JMSGMessage *groupMessage = [JMSGMessage createGroupMessageWithContent: content groupId:@"groupId"];
+```
+#### 创建视频消息
++ JMSGVideoContent 
+
+```
+/*!
+ * @abstract 初始化视频消息内容
+ *
+ * @param data      该视频内容的数据
+ * @param thumbData 缩略图，建议：缩略图上层要控制大小，避免上传过大图片
+ * @param duration  该视频内容的持续时长，长度应大于 0
+ *
+ * @discussion 建议：缩略图上层要控制大小，避免上传过大图片.
+ */
+- (instancetype)initWithVideoData:(NSData *)data
+                        thumbData:(NSData *JMSG_NULLABLE)thumbData
+                         duration:(NSNumber *)duration;
+```
++ 创建消息
+
+```
+JMSGVideoContent *content = [[JMSGVideoContent alloc] initWithVideoData:videoData thumbData:thumbData duration:@(10)];
+content.format = @"mp4";//可选设置
+content.fileName = @"myvideofile";//可选设置
+JMSGMessage *singleMessage = [JMSGMessage createSingleMessageWithContent: content username:@"username"];
+JMSGMessage *groupMessage = [JMSGMessage createGroupMessageWithContent: content groupId:@"groupId"];
+```
+#### 创建文件消息
++ JMSGFileContent 
+
+```
+/**
+ *  初始化文件内容
+ *
+ *  @param data     文件数据
+ *  @param fileName 文件名
+ *
+ */
+- (instancetype)initWithFileData:(NSData *)data
+                        fileName:(NSString *)fileName;
+```
++ 创建消息
+
+```
+JMSGFileContent *content = [[JMSGFileContent alloc] initWithFileData:data fileName:@"myvideofile"];
+content.format = @"doc";//可选设置
+JMSGMessage *singleMessage = [JMSGMessage createSingleMessageWithContent: content username:@"username"];
+JMSGMessage *groupMessage = [JMSGMessage createGroupMessageWithContent: content groupId:@"groupId"];
+```
+#### 创建位置消息
++ JMSGLocationContent 
+
+```
+/**
+ *  初始化地理位置消息内容
+ *
+ *  @param latitude  纬度
+ *  @param longitude 经度
+ *  @param scale     缩放比例
+ *  @param address   详细地址信息
+ *
+ *  @return 地理位置消息内容
+ */
+- (instancetype)initWithLatitude:(NSNumber *)latitude
+                       longitude:(NSNumber *)longitude
+                           scale:(NSNumber *)scale
+                        address:(NSString *)address;
+```
++ 创建消息
+
+```
+JMSGLocationContent *content = [[JMSGLocationContent alloc] initWithLatitude:@(100) longitude:@(100) scale:@(1) address:@"address"];
+JMSGMessage *singleMessage = [JMSGMessage createSingleMessageWithContent: content username:@"username"];
+JMSGMessage *groupMessage = [JMSGMessage createGroupMessageWithContent: content groupId:@"groupId"];
+```
+#### 创建自定义消息
++ JMSGCustomContent 
+
+```
+/*!
+ * @abstract 预期使用的初始化方法
+ *
+ * @param customDict 初始化时指定的字典
+ */
+- (instancetype)initWithCustomDictionary:(NSDictionary * JMSG_NULLABLE)customDict;
+
+// 添加一个键值对
+- (BOOL)addObjectValue:(NSObject *)value forKey:(NSString *)key;
+
+// 快捷添加 String 类型 value 的方法
+- (BOOL)addStringValue:(NSString *)value forKey:(NSString *)key;
+
+// 快捷添加 Number 类型 value 的方法
+- (BOOL)addNumberValue:(NSNumber *)value forKey:(NSString *)key;
+
+/*!
+ * @abstract 设置该自定义消息内容的文本描述
+ * @param contentText 内容文本描述
+ * @discussion 用于展示在会话列表, 文本地简要描述这条消息.如果未设置, 则默认值为 "[自定义消息]"
+ */
+- (void)setContentText:(NSString *)contentText;
+```
++ 创建消息
+
+```
+JMSGCustomContent *content = [[JMSGCustomContent alloc] initWithCustomDictionary:@{@"key":@"value"}];
+[content addNumberValue:@(1) forKey:@"number_key"];
+[content addStringValue:@"string" forKey:@"string_key"];
+[content setContentText:@"自定的消息"];
+JMSGMessage *singleMessage = [JMSGMessage createSingleMessageWithContent: content username:@"username"];
+JMSGMessage *groupMessage = [JMSGMessage createGroupMessageWithContent: content groupId:@"groupId"];
+```
 
 #### 发送消息
 	/*!
@@ -551,141 +728,6 @@ SDK 3.2.1 版本开始（包括3.2.1），离线事件也会走消息同步策�
 	 * @discussion 此接口与 createMessage:: 相关接口配合使用，创建好后使用此接口发送。
 	 */
 	+ (void)sendMessage:(JMSGMessage *)message;
-
-#### 发送单聊文本消息
-	/*!
-	 * @abstract 发送单聊文本消息
-	 *
-	 * @param text 文本内容
-	 * @param username 单聊对象 username
-	 *
-	 * @discussion 快捷方法，不需要先创建消息而直接发送。
-	 */
-	+ (void)sendSingleTextMessage:(NSString *)text
-	                       toUser:(NSString *)username;
-
-#### 发送单聊图片消息
-	/*!
-	 * @abstract 发送单聊图片消息
-	 *
-	 * @param imageData 图片数据
-	 * @param username 单聊对象 username
-	 *
-	 * @discussion 快捷方法，不需要先创建消息而直接发送。
-	 */
-	+ (void)sendSingleImageMessage:(NSData *)imageData
-	                        toUser:(NSString *)username;
-
-#### 发送单聊语音消息
-	/*!
-	 * @abstract 发送单聊语音消息
-	 *
-	 * @param voiceData 语音数据
-	 * @param duration 语音时长
-	 * @param username 单聊对象 username
-	 *
-	 * @discussion 快捷方法，不需要先创建消息而直接发送。
-	 */
-	+ (void)sendSingleVoiceMessage:(NSData *)voiceData
-	                 voiceDuration:(NSNumber *)duration
-	                        toUser:(NSString *)username;
-
-#### 发送单聊文件消息
-	/*!
-	 * @abstract 发送单聊文件消息
-	 *
-	 * @param fileData 文件数据数据
-	 * @param fileName 文件名
-	 * @param username 单聊对象 username
-	 *
-	 * @discussion 快捷方法，不需要先创建消息而直接发送。
-	 */
-	+ (void)sendSingleFileMessage:(NSData *)fileData
-	                     fileName:(NSString *)fileName
-	                       toUser:(NSString *)username;
-
-#### 发送单聊位置消息
-	/*!
-	 * @abstract 发送单聊地理位置消息
-	 * @param latitude 纬度
-	 * @param longitude 经度
-	 * @param scale 缩放比例
-	 * @param address 详细地址
-	 * @param username 单聊对象
-	 * @discussion 快捷方法，不需要先创建消息而直接发送。
-	 */
-	+ (void)sendSingleLocationMessage:(NSNumber *)latitude
-	                        longitude:(NSNumber *)longitude
-	                            scale:(NSNumber *)scale
-	                          address:(NSString *)address
-	                           toUser:(NSString *)username;
-
-#### 发送群聊文本消息
-	/*!
-	 * @abstract 发送群聊文本消息
-	 *
-	 * @param text 文本内容
-	 * @param groupId 群聊目标群组ID
-	 *
-	 * @discussion 快捷方法，不需要先创建消息而直接发送。
-	 */
-	+ (void)sendGroupTextMessage:(NSString *)text
-	                     toGroup:(NSString *)groupId;
-
-#### 发送群聊图片消息
-	/*!
-	 * @abstract 发送群聊图片消息
-	 *
-	 * @param imageData 图片数据
-	 * @param groupId 群聊目标群组ID
-	 *
-	 * @discussion 快捷方法，不需要先创建消息而直接发送。
-	 */
-	+ (void)sendGroupImageMessage:(NSData *)imageData
-	                      toGroup:(NSString *)groupId;
-
-#### 发送群聊语音消息
-	/*!
-	 * @abstract 发送群聊语音消息
-	 *
-	 * @param voiceData 语音数据
-	 * @param duration 语音时长
-	 * @param groupId 群聊目标群组ID
-	 *
-	 * @discussion 快捷方法，不需要先创建消息而直接发送。
-	 */
-	+ (void)sendGroupVoiceMessage:(NSData *)voiceData
-	                voiceDuration:(NSNumber *)duration
-	                      toGroup:(NSString *)groupId;
-
-#### 发送群聊文件消息
-	/*!
-	 * @abstract 发送群聊文件消息
-	 *
-	 * @param fileData 文件数据
-	 * @param fileName 文件名
-	 * @param groupId 群聊目标群组ID
-	 *
-	 * @discussion 快捷方法，不需要先创建消息而直接发送。
-	 */
-	+ (void)sendGroupFileMessage:(NSData *)fileData
-	                    fileName:(NSString *)fileName
-	                     toGroup:(NSString *)groupId;
-
-#### 发送群聊位置消息
-	/*!
-	 * @abstract 发送群聊地理位置消息
-	 * @param latitude 纬度
-	 * @param longitude 经度
-	 * @param scale 缩放比例
-	 * @param address 详细地址
-	 * @param groupId 群聊目标群组ID
-	 */
-	+ (void)sendGroupLocationMessage:(NSNumber *)latitude
-	                       longitude:(NSNumber *)longitude
-	                           scale:(NSNumber *)scale
-	                         address:(NSString *)address
-	                         toGroup:(NSString *)groupId;
 
 #### 消息转发
 	/*!
@@ -700,6 +742,23 @@ SDK 3.2.1 版本开始（包括3.2.1），离线事件也会走消息同步策�
 	+ (void)forwardMessage:(JMSGMessage *)message
 	                target:(id)target
 	       optionalContent:(JMSGOptionalContent *JMSG_NULLABLE)optionalContent;
+
+#### 消息撤回
+
+```
+/*!
+ * @abstract 消息撤回
+ *
+ * @param message 需要撤回的消息
+ * @param handler 结果回调
+ *
+ * - resultObject 撤回后的消息
+ * - error        错误信息
+ *
+ * @discussion 注意：SDK可撤回3分钟内的消息
+ */
++ (void)retractMessage:(JMSGMessage *)message completionHandler:(JMSGCompletionHandler)handler;
+```   
 
 #### 设置消息的FromName
 	/*!
@@ -986,26 +1045,29 @@ SDK 3.2.1 版本开始（包括3.2.1），离线事件也会走消息同步策�
 	 */
 	- (JMSGMessage * JMSG_NULLABLE)createMessageWithContent:(JMSGAbstractContent *)content;
 
-#### 创建图片消息对象
-	/*!
-	 * @abstract 创建消息对象（图片，异步）
-	 *
-	 * @param content 准备好的图片内容
-	 * @param handler 结果回调. 正常返回时 resultObject 类型为 JMSGMessage.
-	 *
-	 * @discussion 对于图片消息，因为 SDK 要做缩图有一定的性能损耗，图片文件很大时存储落地也会较慢。
-	 * 所以创建图片消息，建议使用这个异步接口。
-	 */
-	- (void)createMessageAsyncWithImageContent:(JMSGImageContent *)content
-	                         completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)handler;
+#### 创建多媒体消息对象
+
+```
+/*!
+ * @abstract 创建消息对象（多媒体消息，异步）
+ *
+ * @param content 准备好的多媒体内容，如：图片、语音、文件等
+ * @param handler 结果回调. 正常返回时 resultObject 类型为 JMSGMessage.
+ *
+ * @discussion 注意：对于多媒体消息，因为 SDK 要做缩图有一定的性能损耗，图片文件很大时存储落地也会较慢。
+ * 所以创建图片消息，建议使用这个异步接口。
+ */
+- (void)createMessageAsyncWithMediaContent:(JMSGMediaAbstractContent *)content
+                         completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)handler;
+```
 ##### 例子
 	//_conversation 为Conversation的实例对象
-	[_conversation createMessageAsyncWithImageContent:imageContent completionHandler:^(id resultObject, NSError *error) {
-	            if (!error) {
-	            	//创建成功
-	            	//resultObject 为Message内容
-	            }
-	        }];
+	[_conversation createMessageAsyncWithMediaContent:mediaContent completionHandler:^(id resultObject, NSError *error) {
+        if (!error) {
+        	//创建成功
+        	//resultObject 为Message内容
+        }
+	  }];
 
 #### 发送消息
 	/*!
@@ -1066,6 +1128,24 @@ SDK 3.2.1 版本开始（包括3.2.1），离线事件也会走消息同步策�
 	                  longitude:(NSNumber *)longitude
 	                      scale:(NSNumber *)scale
 	                    address:(NSString *)address;
+#### 发送视频消息
+
+```
+/*!
+ * @abstract 发送视频消息
+ *
+ * @param videoData 视频消息数据
+ * @param thumbData 视频封面图片
+ * @param videoFormat 视频格式，如：mp4、mov
+ * @param duration  视频消息时长（秒）. 长度必须大于 0.
+ *
+ * @discussion 快捷发送消息接口。如果发送语音消息不需要附加 extra，则使用此接口更方便。
+ */
+- (void)sendVideoMessage:(NSData *)videoData
+               thumbData:(NSData *JMSG_NULLABLE)thumbData
+             videoFormat:(NSString *JMSG_NULLABLE)videoFormat
+                duration:(NSNumber *)duration;
+```
 
 #### 获取会话头像
 	/*!
@@ -1337,6 +1417,22 @@ info.desc = @"这个群组是公开群";
             NSLog(@"获取群组信息成功");
         }
     }];
+    
+#### 修改群类型
+创建群组之后，可以通过此接口修改群的类型，公开群、私有群相互切换
+
+```
+/*!
+ * @abstract 修改群组类型
+ *
+ * @param type    群类型，公开群、私有群
+ * @param handler 结果回调。error = nil 表示成功
+ *
+ * @discussion 对于已经创建的群组，可以通过此接口来修改群组的类型
+ */
+- (void)changeGroupType:(JMSGGroupType)type handler:(JMSGCompletionHandler)handler;
+```
+    
 #### 设置群管理员
 
 + 范围：私有群和公开群都增加管理员角色。
@@ -1357,6 +1453,10 @@ info.desc = @"这个群组是公开群";
                            appKey:(NSString *JMSG_NULLABLE)appkey
                 completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)handler;
 
+/** @abstract 批量添加管理员*/
+- (void)addGroupAdminWithUsernames:(NSArray <__kindof NSString *>*)usernames
+                            appKey:(NSString *JMSG_NULLABLE)appkey
+                 completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)handler;
 ```
 ```
 /*!
@@ -1369,6 +1469,11 @@ info.desc = @"这个群组是公开群";
 - (void)deleteGroupAdminWithUsername:(NSString *)username
                               appKey:(NSString *JMSG_NULLABLE)appkey
                    completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)handler;
+                              
+/** @abstract 批量删除管理员*/
+- (void)deleteGroupAdminWithUsernames:(NSArray <__kindof NSString *>*)usernames
+                               appKey:(NSString *JMSG_NULLABLE)appkey
+                    completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)handler;                   
 ```
 
 ```
@@ -1451,6 +1556,24 @@ info.desc = @"这个群组是公开群";
                              isAgree:(BOOL)isAgree
                               reason:(NSString *JMSG_NULLABLE)reason
                              handler:(JMSGCompletionHandler)handler;
+```
+```
+/*!
+ * @abstract 管理员审批入群申请（批量接口）
+ *
+ * @patam events      入取申请事件的 eventId 数组，详情请查看 JMSGApplyJoinGroupEvent 类
+ * @param isAgree     是否同意申请，YES : 同意， NO: 不同意
+ * @param reason      拒绝申请的理由，选填
+ * @param isSendInviter 是否将结果通知给邀请方，默认是 NO
+ * @param handler     结果回调
+ *
+ * @discussion 批量处理接口，event 下包含的所有被邀请者会被一起审批处理。只有管理员才有权限审批入群申请。
+ */
++ (void)processApplyJoinGroupEvents:(NSArray <__kindof NSString *>*)events
+                            isAgree:(BOOL)isAgree
+                             reason:(NSString *JMSG_NULLABLE)reason
+                        sendInviter:(BOOL)isSendInviter
+                            handler:(JMSGCompletionHandler)handler;
 ```
 
 #### 设置群成员禁言
