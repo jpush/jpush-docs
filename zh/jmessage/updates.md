@@ -1,5 +1,34 @@
 # 最近更新
 
+### JMessage iOS SDK v3.6.0
+
+#### 更新时间
+
+2018-05-25
+
+#### ChangeLog
+
+##### BugFix:
+
+* 修复用户反馈的一些 bug
+
+##### NewFeature
+
+* 新增：修改群组类型接口
+* 新增：video 视频类型消息
+* 新增：批量增加、删除管理员接口
+* 新增：公开群添加群成员可填写理由接口
+* 新增：批量审批入群申请接口
+
+#### 升级指南
+* 使用新版本的 JMessage.framework 文件替换原工程下的同名旧文件
+* 将新版本的 JMessage.framework 里的 JCore link 到工程中，详细参见官网集成文档
+
+#### 接口变更
+因为 swift 版本兼容问题，登录返回设备记录接口修改为:  
+`+(void)loginWithUsername:password:devicesInfo:completionHandler:`
+
+
 ### Android SDK v2.6.0
 
 #### 更新时间
