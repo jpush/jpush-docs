@@ -1,6 +1,6 @@
 # 最近更新
 
-### JMessage iOS SDK v3.6.0
+### iOS SDK v3.6.0
 
 #### 更新时间
 
