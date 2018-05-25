@@ -1,41 +1,38 @@
-# JAnalytics产品简介
+# Product Introduction of JAnalytics
 
-极光以提供更加全面的开发者服务为目标，利用极光推送的数据和网络优势结合更丰富的功能，推出了极光统计（英文：JAnalytics）。极光统计为独立的统计 SDK ，让开发者可以更便捷的集成无需依赖 JPush 可以单独使用。通过简洁直观的数据报表帮助开发者了解用户的属性和使用情况，优化用户体验，为企业决策提供有效的数据支撑。
+Aiming to provide more comprehensive developer services, Jiguang combines with richer features by utilizing JPush's data and network advantages to launch JAnalytics. JAnalytics is an independent statistical SDK that allows developers to integrate more easily without relying on JPush. Through simple and intuitive data reports, developers can understand the user's attributes and usage, optimize user experience, and provide effective data support for enterprise decision-making.
 
+## Template Events
 
-## 模版型事件
+JAnalytics SDK provides rich template events for developers, so that developers do not have to rack their brains to construct template attributes, and they can see more detailed data reports based on corresponding template events. Current template events supported by JAnalytics include, purchase, content browsing, registration, login.
 
-JAnalytics SDK 提供了丰富的模版型事件给开发者，让开发者不必绞尽脑汁去构造模版的属性，而且还可以看到根据对应模版事件的更加详细的数据报表。
-目前JAnalytics支持的模版事件有，购买, 内容浏览, 注册, 登录。
+## Custom Events
 
-## 自定义事件
+JAnalytics SDK not only provides template-type events, but also provides two types of custom events, custom calculation events, and custom count events, which enable developers to implement statistics for triggers and values of simple events that are not included in template events through custom events.
 
-JAnalytics SDK 不仅提供了模版型事件，还提供了两种自定义类型的事件，自定义计算事件， 自定义计数事件。
-让开发者可以通过自定义事件实现不包含在模版事件内的简单事件触发次数和数值的统计。
+## Page Statistics
 
+In order to allow developers to better understand the user's usage habits, and determine whether the page after the software revision meets the user's expectations, JAnalytics SDK provides an interface for page statistics. Developers only need to use the life cycle callback of the corresponding page to view the corresponding page statistics in the Jiguang Web Portal and view the results of the previous work. This data can also be used to provide more reasonable suggestions for the next development.
 
-## 页面统计
+## Quick Start
 
-为了让开发者更了解用户的使用习惯，和判断软件改版之后的页面是否符合用户的预期，JAnalytics SDK 提供了页面统计的接口。只需要开发者在对应页面的生命周期回调方法就能在极光的Web Portal查看对应的页面统计，让开发者看到之前的工作成果，也可以通过此数据为下一版本的开发提出更多合理改进意见。
+- If you are using Jiguang products for developers for the first time
+	- Enter Jiguang official website to [register a developer account](https://www.jiguang.cn/accounts/register/form);
+	- Enter the [console](https://www.jiguang.cn/dev/#/app/list), create an application and get Appkey (the SDK and the server identify each other through Appkey);
+	- Download the SDK and complete the JAnalytics SDK integration and run the application with the help of the Integration Guide.
 
+- If you are already an Jiguang developer
+	- Add the JAnalytics SDK to the original application, and get the Appkey on the setting page of application that needs to add the function;
+	- Download the SDK and complete the JAnalytics SDK integration and run the application with the help of the Integration Guide.
 
-## 快速开始
+## Technical Support
 
-+ 如果您初次使用极光开发者的产品
-	+ 进入极光官网[注册开发者账户](https://www.jiguang.cn/accounts/register/form);
-	+ 进入[管理控制台](https://www.jiguang.cn/dev/#/app/list)，创建应用程序，得到 Appkey（SDK与服务器端通过Appkey互相识别）；
-	+ 下载SDK，通过“集成指南”的帮助完成JAnalytics SDK的集成并运行应用程序。
-+ 如果您已经是极光开发者
-	+ 给原有应用添加JAnalytics SDK，在需要添加该功能的应用的设置页面获取Appkey；
-	+ 下载SDK，通过“集成指南”的帮助完成JAnalytics SDK的集成并运行应用程序。
+When a problem occurs:
 
-## 技术支持
-当出现问题时：
+- Please read the documentation carefully to see if there are any omissions.
+- Send an email to us: support@jpush.cn
 
-+ 请仔细阅读文档，查看是否有遗漏。
-+ 给我们的support发邮件：[support&#64;jpush.cn](mailto:support&#64;jpush.cn)
+In order to solve the problem more quickly, please provide the following information when seeking help:
 
-为了更快速的解决问题，在寻求帮助时，请提供下列信息：
-
-+ 提供appkey
-+ 如果是 SDK 问题请提供对应的 SDK 版本和完整的日志记录
+- Provide appkey
+- If it is a SDK issue, please provide the corresponding SDK version and complete logging
