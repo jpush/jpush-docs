@@ -24,7 +24,7 @@
             <div class="caption">
                 <h4>iOS SDK</h4>
                 <p>版本：v3.6.0</p>
-                <p>更新时间：2018.03.01</p>
+                <p>更新时间：2018.05.25</p>
                 <ul>
                     <li><a href="../client/jmessage_ios_guide/">集成步骤</a></li>
                     <li><a href="../client/im_sdk_ios/">开发指南</a></li>
