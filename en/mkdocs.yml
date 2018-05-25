@@ -70,6 +70,22 @@ pages:
   - Recent Updates: 'jpush/updates.md'
   - Download: 'jpush/resources.md'
 
+- JAnalytics:
+
+  - Getting Started Guide:
+    - 'Product Introduction of JAnalytics': 'janalytics/guideline/intro.md'
+    - 'FAQ': 'janalytics/guideline/faq.md'
+  - Android:
+    - 'Android SDK Overview': 'janalytics/client/android_sdk.md'
+    - 'Android SDK Integration Guide': 'janalytics/client/android_guide.md'
+    - 'Android SDK API': 'janalytics/client/android_api.md'
+  - iOS:
+    - 'iOS SDK Overview': 'janalytics/client/ios_sdk.md'
+    - 'iOS SDK Integration Guide': 'janalytics/client/ios_guide.md'
+    - 'iOS SDK API': 'janalytics/client/ios_api.md'
+  - Recent Updates: 'janalytics/updates.md'
+  - Download: 'janalytics/resources.md'
+
 - JMessage:
 
   - Getting Started Guide:
@@ -110,3 +126,22 @@ pages:
     - 'C# SDK': 'jmessage/server/sdk/csharp_sdk.md'
   - Recent Updates: 'jmessage/updates.md'
   - Download: 'jmessage/resources.md'
+
+- JShare:
+
+  - Getting Started Guide:
+    - 'Product Introduction of JShare': 'jshare/guideline/intro.md'
+    - 'Third-party Platform Application': 'jshare/guideline/social_platform_apply.md'
+    - 'FAQ': 'jshare/guideline/faq.md'
+  - Android:
+    - 'Android SDK Integration Guide': 'jshare/client/Android/android_sdk.md'
+    - 'Android SDK API': 'jshare/client/Android/android_api.md'
+    - 'Android SDK FAQ': 'jshare/client/Android/android_sdk_faq.md'
+    - 'ErrorCode': 'jshare/client/Android/jshare_errorcode.md'
+  - iOS:
+    - 'iOS SDK Integration Guide': 'jshare/client/iOS/ios_sdk.md'
+    - 'iOS SDK API': 'jshare/client/iOS/ios_api.md'
+    - 'iOS SDK FAQ': 'jshare/client/iOS/ios_sdk_faq.md'
+    - 'ErrorCode': 'jshare/client/iOS/jshare_errorcode.md'
+  - Recent Updates: 'jshare/updates.md'
+  - Download: 'jshare/resources.md'
