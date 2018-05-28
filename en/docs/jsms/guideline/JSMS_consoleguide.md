@@ -1,96 +1,118 @@
-#控制台操作指南
-##开发者认证
-因运营商要求，短信业务需完成个人实名认证或企业资质认证后使用。
-###个人认证
-支持个人开发者认证，认证内容均必填，且认证通过后不允许修改，请认真填写个人认证资料，避免影响日后使用短信业务。
-####操作路径
-Step1：登入控制台  
-Step2：进入账号  
-Step3：右侧菜单中选择［开发者认证］  
-Step4：开发者类型选择［个人］  
+# Console Operation Guide
+
+## Developer Certification
+
+Due to operator’s requirements, SMS business is available after personal real name certification or enterprise qualification certification.
+
+### Personal Authentication
+
+Support personal developer certification. The content of certification is required and cannot be modified after the certification is passed. Please fill in the personal certification information carefully to avoid affecting the use of the SMS service in the future.
+
+#### Operation Path
+
+Step1: Log in to the console
+Step2: Enter your account
+Step3: Select [Developer Certification] in the right menu
+Step4: Select [Personal] in the Developer Type
 ![](./consoleguide_image/auth_personal.jpg)
 
-###企业认证
-支持企业开发者认证，认证内容均必填，且认证通过后不允许修改，请认真填写企业认证资料，避免影响日后使用短信业务。
-####操作路径
-Step1：登入控制台  
-Step2：进入账号  
-Step3：右侧菜单中选择［开发者认证］  
-Step4：开发者类型选择［企业］ 
+### Enterprise Certification
+
+Support enterprise developer certification. The content of the certification is required and cannot be modified after the certification is passed. Please fill in the enterprise certification information carefully to avoid affecting the future use of SMS services.
+
+#### Operation Path
+
+Step1: Log in to the console
+Step2: Enter your account
+Step3: Select [Developer Certification] in the right menu
+Step4: Select [Enterprise] in the Developer Type
 ![](./consoleguide_image/auth_company.jpg)
 
-##创建应用
-####操作步骤
-Step1：登入控制台  
-Step2：点击［创建应用］按钮  
-![](./consoleguide_image/app_createbutton.jpg)  
+## Create an Application
 
-Step3：填写［应用名称］和［应用图标］，其中［应用名称］为必填。  
+#### Steps
+
+Step1: Log in to the console
+Step2: Click the [Create Application] button
+![](./consoleguide_image/app_createbutton.jpg)
+
+Step3: Fill in [Application Name] and [Application Icon]. [Application Name] is required.
 ![](./consoleguide_image/app_create.jpg)
 
-##签名设置
-签名显示在短信内容的最前面，示意这条短信来自哪家公司，哪款产品或哪个软件。因运营商要求，签名需通过审核后使用，正常情况下审核周期为两个工作日。
-####操作路径
-Step1：登入控制台  
-Step2：进入短信业务模版  
-Step3：右侧菜单中选择［签名管理］  
-Step4：点击［新建签名］按钮  
+## Signature Settings
+
+The signature is shown at the top of the text message, indicating which company, which product, or which software the message came from. Due to the operator's request, the signature needs to be used after the audit. Under normal circumstances, the audit cycle is two working days.
+
+#### Operation Path
+
+Step1: Log in to the console
+Step2: Enter the SMS service template
+Step3: Select [Signature Management] in the right menu
+Step4: Click the [New Signature] button
 ![](./consoleguide_image/sign_createbutton.jpg)
 
-####创建签名
-* 签名支持上传 2～10 个中英文或数字，不允许输入空格或特殊符号;  
-* 当签名签名与开发者认证信息不一致时，请上传签名相关证件图片;
-* 若已有使用中签名，创建的新签名通过审核后将直接替换老签名。  
+#### Create a Signature
 
++ The signature supports the upload of 2 to 10 Chinese and English or numbers. Spaces or special symbols are not allowed.
++ When the signature is inconsistent with the developer certification information, please upload the signature related certificate picture;
++ If there is an in-use signature, the new signature created will directly replace the old signature after auditing
 ![](./consoleguide_image/sign_set.jpg)
 
-##模板设置
-模板为带参数的短信内容，API 调用时直接填写模板 ID 和对应的参数内容即可。因运营商要求，模板需通过审核后才可使用，正常情况下审核周期为工作时间三小时内。
-###操作路径
-Step1：登入控制台  
-Step2：进入短信业务模板  
-Step3：右侧菜单中选择［模板管理］  
-Step4：点击［新建模板］按钮  
+## Template Settings
+
+The template is the content of the short message with parameters, and template ID and the corresponding parameter content can be directly filled in when invoking API. Due to the operator's request, the template must be audited before use. Under normal circumstances, the audit cycle is within three hours of the working time.
+
+#### Operation Path
+
+Step1: Log in to the console
+Step2: Enter the SMS service template
+Step3: Select [Template Management] in the right menu
+Step4: Click the [New Template] button
 ![](./consoleguide_image/mobile_createbutton.jpg)
 
-###创建模板
-* 模板类型：支持创建文本验证码类短信模板、通知类短信模板和营销类短信模板；
-* 模版格式：模板中参数格式为  {{key-name}}，其中分隔符采用两个大括号；
-* 验证码类模板：参数名必须为code，当设置多个参数，参数名必须全为code，验证码类模版中支持设置验证码有效期，有效期必须在0～24小时之间，单位为秒；  
+### Create a Template
+
++ Template type: Support for creating SMS templates of text verification code, notification SMS templates, and marketing SMS templates;
++ Template format: The format of the parameter in the template is {{key-name}}, where the separator uses two braces;
++ Template of verification code: The parameter name must be code. When multiple parameters are set, the parameter name must be code. Validation period is supported in the verification code template. The valid period must be between 0 and 24 hours, and the unit is second.
  ![](./consoleguide_image/mobile_code.jpg)
- 
-* 通知类模板：模板中必须至少包含一个参数，参数名由开发者指定，仅支持字母及下划线，且下划线不允许在开头和结尾；  
+
++ Notification template: The template must contain at least one parameter and the parameter name is specified by the developer. Only letters and underscores are supported, and underscores are not allowed at the beginning and end;
 ![](./consoleguide_image/mobile_message.jpg)
 
-* 营销类模板：模板中必须至少包含一个参数，参数名由开发者指定，仅支持字母及下划线，且下划线不允许在开头和结尾，根据运营商规定，营销短信内容中必须包含退订相关信息，系统已默认添加“回TD退订”，模板中可不填写；  
++ Marketing template: The template must contain at least one parameter and the parameter name is specified by the developer. Only the letters and underscores are supported, and the underscore is not allowed at the beginning and end. According to the operator's regulations, the marketing message must contain unsubscribe related information. If the system has added "Send TD to unsubscribe" by default, could not fill in the template.
 ![](./consoleguide_image/mobile_market.jpg)
 
-* 默认模版：目前仅验证码类短信模版有默认模版，当未设置签名时，默认模版使用［极光推送］的签名。
++ Default template: At present, only the verification code SMS template has a default template. When the signature is not set, the default template uses the signature of [JPush].
 
-##营销短信
-营销短信除了可以通过调用 API 发送，还可以在网站发送，并且支持定时发送。
-###创建营销短信
-####操作路径
-Step1：登入控制台  
-Step2：进入短信业务模版  
-Step3：右侧菜单中选择［营销短信］中的［预发送列表］  
-Step4：点击［创建营销短信］按钮  
+## Marketing SMS
+
+In addition to sending by API, marketing messages can also be sent in the website, and supports for scheduled delivery.
+
+### Create Marketing SMS
+
+#### Operation Path
+
+Step1: Log in to the console
+Step2: Enter the SMS service template
+Step3: Select [Pre-Send List] of [Marketing SMS] in the right menu
+Step4: Click the [Create Marketing SMS] button
 ![](./consoleguide_image/market_createbutton.jpg)
-     
-####创建营销短信
- 
-* 签名将自动写入使用中的签名，若未设置签名，请先设置签名在创建营销短信；
-* 短信内容：输入短信内容，根据运营商规定，营销短信内容中必须包含退订相关信息，系统已默认添加“回TD退订”，内容中可不填写；
-* 发送时间：支持即使发送或定时发送，营销短信通过审核后将按照预定时间发送；
-* 接受人群：上传txt文件，一个手机号一行；
-* 全部填写完，点击下一步，确认信息无误后，点击确认，创建成功并冻结对应余量。  
 
+#### Create Marketing SMS
+
++ The in-use signature will be automatically written. If the signature is not set, set the signature first to create a marketing message;
++ SMS content: Enter the content of the SMS. According to the regulations of the operator, the content of the marketing message must contain unsubscribe related information. If the system has added "Send TD to unsubscribe" by default, could not fill in the template
++ Sending time: Support for instant sending or timing sending. Marketing messages will be sent according to the scheduled time after the audition;
++ Target audience: Upload txt file with a mobile phone in a line;
++ After completing all the contents, click Next and confirm that the information is correct. Click OK and freeze the corresponding balance.
 ![](./consoleguide_image/market_create.jpg)
 
-查看预发送列表 
-可查看营销短信审核结果，和未到发送时间｀的营销短信。
-##查看数据
-* 数据概览可查看该应用数据，包括短信余量，发送量和消耗量；
-* 所有类型的短信，包括：验证码类、通知类、营销类和推送补充类的发送记录可在发送记录中查看；
-* 收到的所有上行短信记录可在回复记录中查看；
-* 营销短信发送记录也可以在营销短信的发送历史中查看。  
+View the pre-sending list to check out the review results of the marketing message, and the marketing messages which are not sent yet.
+
+## View Data
+
++ Data overview to view the application data, including SMS margin, delivery volume and consumption volume;
++ All types of text messages, including: recordings of verification code, notifications, marketing and push supplements, can be viewed in the history record;
++ All uplink SMS messages received can be viewed in the reply log;
++ Sending records of marketing messages can also be viewed in the sending history of marketing messages.
