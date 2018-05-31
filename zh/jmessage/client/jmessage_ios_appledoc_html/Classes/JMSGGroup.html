@@ -108,6 +108,8 @@
 		
 		<option value="//api/name/processApplyJoinGroupEventID:gid:joinUser:applyUser:isAgree:reason:handler:">+ processApplyJoinGroupEventID:gid:joinUser:applyUser:isAgree:reason:handler:</option>
 		
+		<option value="//api/name/processApplyJoinGroupEvents:isAgree:reason:sendInviter:handler:">+ processApplyJoinGroupEvents:isAgree:reason:sendInviter:handler:</option>
+		
 		<option value="//api/name/dissolveGroupWithGid:handler:">+ dissolveGroupWithGid:handler:</option>
 		
 	</optgroup>
@@ -119,6 +121,8 @@
 		<option value="//api/name/memberArray">- memberArray</option>
 		
 		<option value="//api/name/memberArrayWithCompletionHandler:">- memberArrayWithCompletionHandler:</option>
+		
+		<option value="//api/name/changeGroupType:handler:">- changeGroupType:handler:</option>
 		
 		<option value="//api/name/setIsNoDisturb:handler:">- setIsNoDisturb:handler:</option>
 		
@@ -138,11 +142,17 @@
 		
 		<option value="//api/name/addGroupAdminWithUsername:appKey:completionHandler:">- addGroupAdminWithUsername:appKey:completionHandler:</option>
 		
+		<option value="//api/name/addGroupAdminWithUsernames:appKey:completionHandler:">- addGroupAdminWithUsernames:appKey:completionHandler:</option>
+		
 		<option value="//api/name/deleteGroupAdminWithUsername:appKey:completionHandler:">- deleteGroupAdminWithUsername:appKey:completionHandler:</option>
+		
+		<option value="//api/name/deleteGroupAdminWithUsernames:appKey:completionHandler:">- deleteGroupAdminWithUsernames:appKey:completionHandler:</option>
 		
 		<option value="//api/name/addMembersWithUsernameArray:completionHandler:">- addMembersWithUsernameArray:completionHandler:</option>
 		
 		<option value="//api/name/addMembersWithUsernameArray:appKey:completionHandler:">- addMembersWithUsernameArray:appKey:completionHandler:</option>
+		
+		<option value="//api/name/addMembersWithUsernameArray:appKey:reason:completionHandler:">- addMembersWithUsernameArray:appKey:reason:completionHandler:</option>
 		
 		<option value="//api/name/removeMembersWithUsernameArray:completionHandler:">- removeMembersWithUsernameArray:completionHandler:</option>
 		
@@ -616,8 +626,7 @@
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>该接口总是向服务器端发起请求, 即使本地已经存在.
-如果考虑性能损耗, 在群聊时获取群组信息, 可以获取 <a href="../Classes/JMSGConversation.html">JMSGConversation</a> -> target 属性.</p>
+				<p>如果考虑性能损耗, 在群聊时获取群组信息, 可以获取 <a href="../Classes/JMSGConversation.html">JMSGConversation</a> -> target 属性.</p>
 			</div>
 			
 
@@ -968,6 +977,81 @@
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
 				<p>只有管理员才有权限审批入群申请，SDK 不会保存申请入群事件(<a href="../Classes/JMSGApplyJoinGroupEvent.html">JMSGApplyJoinGroupEvent</a>)，上层可以自己封装再保存，或则归档直接保存，以便此接口取值调用。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGGroup.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/processApplyJoinGroupEvents:isAgree:reason:sendInviter:handler:" title="processApplyJoinGroupEvents:isAgree:reason:sendInviter:handler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/processApplyJoinGroupEvents:isAgree:reason:sendInviter:handler:">+&nbsp;processApplyJoinGroupEvents:isAgree:reason:sendInviter:handler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>管理员审批入群申请（批量接口）</p>
+
+<p>@patam events      入取申请事件的 eventId 数组，详情请查看 <a href="../Classes/JMSGApplyJoinGroupEvent.html">JMSGApplyJoinGroupEvent</a> 类</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)processApplyJoinGroupEvents:(NSArray&lt;__kindofNSString*&gt; *)<em>events</em> isAgree:(BOOL)<em>isAgree</em> reason:(NSString *JMSG_NULLABLE)<em>reason</em> sendInviter:(BOOL)<em>isSendInviter</em> handler:(JMSGCompletionHandler)<em>handler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>isAgree</code></th>
+						<td><p>是否同意申请，YES : 同意， NO: 不同意</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>reason</code></th>
+						<td><p>拒绝申请的理由，选填</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>isSendInviter</code></th>
+						<td><p>是否将结果通知给邀请方，默认是 NO</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>handler</code></th>
+						<td><p>结果回调</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>批量处理接口，event 下包含的所有被邀请者会被一起审批处理。只有管理员才有权限审批入群申请。</p>
 			</div>
 			
 
@@ -1709,6 +1793,69 @@
 		</div>
 	</div>
 </div><div class="section-method">
+	<a name="//api/name/changeGroupType:handler:" title="changeGroupType:handler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/changeGroupType:handler:">&ndash;&nbsp;changeGroupType:handler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>修改群组类型</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)changeGroupType:(JMSGGroupType)<em>type</em> handler:(JMSGCompletionHandler)<em>handler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>type</code></th>
+						<td><p>群类型，公开群、私有群</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>handler</code></th>
+						<td><p>结果回调。error = nil 表示成功</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>对于已经创建的群组，可以通过此接口来修改群组的类型</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGGroup.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
 	<a name="//api/name/setIsNoDisturb:handler:" title="setIsNoDisturb:handler:"></a>
 	<h3 class="method-title"><code><a href="#//api/name/setIsNoDisturb:handler:">&ndash;&nbsp;setIsNoDisturb:handler:</a></code>
 </h3>
@@ -1876,6 +2023,11 @@
 				
 					<tr>
 						<th scope="row" class="argument-name"><code>username</code></th>
+						<td><p>带设置的用户的 user<a href="#//api/name/name">name</a></p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>appKey</code></th>
 						<td><p>带设置的用户的 appKey,若传入空则默认使用本应用appKey</p></td>
 					</tr>
 				
@@ -2113,7 +2265,7 @@
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>注意：返回列表中包含群主；仅在获取群成员成功后此接口才有效</p>
+				<p>注意：返回列表中不包含群主；仅在获取群成员成功后此接口才有效</p>
 			</div>
 			
 
@@ -2262,6 +2414,47 @@
 		</div>
 	</div>
 </div><div class="section-method">
+	<a name="//api/name/addGroupAdminWithUsernames:appKey:completionHandler:" title="addGroupAdminWithUsernames:appKey:completionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/addGroupAdminWithUsernames:appKey:completionHandler:">&ndash;&nbsp;addGroupAdminWithUsernames:appKey:completionHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>批量添加管理员</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)addGroupAdminWithUsernames:(NSArray&lt;__kindofNSString*&gt; *)<em>usernames</em> appKey:(NSString *JMSG_NULLABLE)<em>appkey</em> completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)<em>handler</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGGroup.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
 	<a name="//api/name/deleteGroupAdminWithUsername:appKey:completionHandler:" title="deleteGroupAdminWithUsername:appKey:completionHandler:"></a>
 	<h3 class="method-title"><code><a href="#//api/name/deleteGroupAdminWithUsername:appKey:completionHandler:">&ndash;&nbsp;deleteGroupAdminWithUsername:appKey:completionHandler:</a></code>
 </h3>
@@ -2303,6 +2496,47 @@
 				
 				</table>
 			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGGroup.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/deleteGroupAdminWithUsernames:appKey:completionHandler:" title="deleteGroupAdminWithUsernames:appKey:completionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/deleteGroupAdminWithUsernames:appKey:completionHandler:">&ndash;&nbsp;deleteGroupAdminWithUsernames:appKey:completionHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>批量删除管理员</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)deleteGroupAdminWithUsernames:(NSArray&lt;__kindofNSString*&gt; *)<em>usernames</em> appKey:(NSString *JMSG_NULLABLE)<em>appkey</em> completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)<em>handler</em></code></div>
+
+		    
 			
 
 			
@@ -2410,6 +2644,79 @@
 					<tr>
 						<th scope="row" class="argument-name"><code>usernameArray</code></th>
 						<td><p>用户名数组。数组里的成员类型是 NSString</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>userAppKey</code></th>
+						<td><p>用户的 AppKey，这批添加的成员必须在同一个 AppKey 下的用户</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>handler</code></th>
+						<td><p>结果回调。正常返回时 resultObject 为 nil.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGGroup.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/addMembersWithUsernameArray:appKey:reason:completionHandler:" title="addMembersWithUsernameArray:appKey:reason:completionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/addMembersWithUsernameArray:appKey:reason:completionHandler:">&ndash;&nbsp;addMembersWithUsernameArray:appKey:reason:completionHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>添加群组成员</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)addMembersWithUsernameArray:(NSArray JMSG_GENERIC ( __kindof NSString *) *)<em>usernameArray</em> appKey:(NSString *JMSG_NULLABLE)<em>userAppKey</em> reason:(NSString *JMSG_NULLABLE)<em>reason</em> completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)<em>handler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>usernameArray</code></th>
+						<td><p>用户名数组。数组里的成员类型是 NSString</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>userAppKey</code></th>
+						<td><p>用户的 AppKey，这批添加的成员必须在同一个 AppKey 下的用户</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>reason</code></th>
+						<td><p>邀请原因，可选</p></td>
 					</tr>
 				
 					<tr>
@@ -2898,7 +3205,7 @@
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2018 HXHG. All rights reserved. Updated: 2018-03-01</p>
+						<p class="copyright">Copyright &copy; 2018 HXHG. All rights reserved. Updated: 2018-05-24</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
