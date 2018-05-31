@@ -18,7 +18,7 @@ img[alt=jpush_ios] { width: 800px; }
 包名为JPush-iOS-SDK-{版本号}
 
 * lib文件夹：包含头文件 JPUSHService.h，静态库文件jpush-ios-x.x.x.a，jcore-ios-x.x.x.a，支持的iOS版本为 6.0 及以上版本。（请注意：模拟器不支持APNs）
-* pdf文件：集成指南
+* README文件：SDK相关说明
 * demo文件夹：示例
 
 ## 创建应用
@@ -191,6 +191,14 @@ didFinishLaunchingWithOptions:(NSDictionary \*)launchOptions
 
 
 ### 注册APNs成功并上报DeviceToken
+<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">	
+<p>温馨提示：
+	<br>
+<p>	
+JPush 3.0.9 之前的版本，必须调用此接口，注册 token 之后才可以登录极光，使用通知和自定义消息功能。
+	<br>
+从 JPush 3.0.9 版本开始，不调用此方法也可以登录极光。但是不能使用APNs通知功能，只可以使用JPush自定义消息。
+</div>
 
 请在AppDelegate.m实现该回调方法并添加回调方法中的代码
 
@@ -216,14 +224,6 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 
 
 ### 添加处理APNs通知回调方法
-<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">	
-<p>温馨提示：
-	<br>
-<p>	
-JPush 3.0.9 之前的版本，必须调用此接口，注册 token 之后才可以登录极光，使用通知和自定义消息功能。
-	<br>
-从 JPush 3.0.9 版本开始，不调用此方法也可以登录极光。但是不能使用APNs通知功能，只可以使用JPush自定义消息。
-</div>
 
 请在AppDelegate.m实现该回调方法并添加回调方法中的代码
 
