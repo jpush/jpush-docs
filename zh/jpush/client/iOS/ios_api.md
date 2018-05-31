@@ -928,7 +928,10 @@ request中传入已有推送的request.requestIdentifier即更新已有的推送
   
   //#import <CoreLocation/CoreLocation.h>
   //一到某地点提醒，iOS8以上支持
-  CLRegion *region = [[CLRegion alloc] initCircularRegionWithCenter:CLLocationCoordinate2DMake(0, 0) radius:0 identifier:@"test"];
+  CLLocationCoordinate2D cen = CLLocationCoordinate2DMake(37.335400, -122.009201);
+  CLCircularRegion *region = [[CLCircularRegion alloc] initWithCenter:cen
+                                                               radius:2000.0
+                                                           identifier:@"jiguang"];
   JPushNotificationTrigger *trigger4 = [[JPushNotificationTrigger alloc] init];
   trigger4.region = region;
   
@@ -1005,7 +1008,7 @@ API 用于查找推送（支持iOS10，并兼容iOS10以下版本）
 + identifier [JPushNotificationIdentifier]实体类型
 
 #### 调用说明
-- iOS10以上可以通过设置identifier.delivered和identifier.identifiers来查找相应在通知中心显示推送或待推送请求，identifier.identifiers如果设置为nil或空数组则返回相应标志下所有在通知中心显示推送或待推送请求；iOS10以下identifier.delivered属性无效，identifier.identifiers如果设置nil或空数组则返回所有推送。
+- iOS10以上可以通过设置identifier.delivered和identifier.identifiers来查找相应在通知中心显示推送或待推送请求，identifier.identifiers如果设置为nil或空数组则返回相应标志下所有在通知中心显示推送或待推送请求；iOS10以下identifier.delivered属性无效，identifier.identifiers如果设置nil或空数组则返回所有未触发的推送。
 - 须要设置identifier.findCompletionHandler回调才能得到查找结果，通过(NSArray *results)返回相应对象数组。
 
 #### 代码示例
@@ -1331,8 +1334,12 @@ JPush 上该系列 api 的功能已废弃，如需页面流相关的统计请使
 ### 支持版本
 v1.8.0版本开始
 
-<div style="font-size:13px;background: #ffa07a;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 10;margin-bottom: 0;">
-在 iOS11 上，原有的 NSLocationAlwaysUsageDeion 被降级为 NSLocationWhenInUseUsageDeion。因此，需要在 plist 文件中配置 NSLocationAlwaysAndWhenInUseUsageDeion，在获取定位的时候，系统才会弹出提示窗口。建议新旧 key 值都在plist里配置上。
+<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">
+<p>温馨提示: iOS11上要弹出获取地理位置的弹框，建议在 info.plist 配置以下3个key。
+
+<p>NSLocationAlwaysAndWhenInUseUsageDescription
+<p>NSLocationAlwaysUsageDescription
+<p>NSLocationWhenInUseUsageDescription
 </div>
 
 ### Method  SetLatitude: longitude
