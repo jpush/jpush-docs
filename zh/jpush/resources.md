@@ -152,7 +152,7 @@
         <h4>Go</h4>
         <ul>
             <li>开发者：<a href="https://github.com/xialeistudio">xialeistudio</a></li>
-            <li><a href="https://github.com/xialeistudio/go-jpushh" target="_blank">项目地址</a></li>
+            <li><a href="https://github.com/xialeistudio/go-jpush" target="_blank">项目地址</a></li>
         </ul>
     </div>
     <div class="col-md-4">

@@ -150,7 +150,7 @@
         <h4>Go</h4>
         <ul>
             <li>Developer：<a href="https://github.com/xialeistudio">xialeistudio</a></li>
-            <li><a href="https://github.com/xialeistudio/go-jpushh" target="_blank">Project Address</a></li>
+            <li><a href="https://github.com/xialeistudio/go-jpush" target="_blank">Project Address</a></li>
         </ul>
     </div>
     <div class="col-md-4">
