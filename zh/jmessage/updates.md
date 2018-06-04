@@ -1,5 +1,22 @@
 # 最近更新
 
+### iOS SDK v3.6.1
+
+#### 更新时间
+
+2018-06-04
+
+#### ChangeLog
+
+##### BugFix:
+
+* 修复 bug
+
+#### 升级指南
+* 使用新版本的 JMessage.framework 文件替换原工程下的同名旧文件
+* 将新版本的 JMessage.framework 里的 JCore link 到工程中，详细参见官网集成文档
+
+
 ### iOS SDK v3.6.0
 
 #### 更新时间
