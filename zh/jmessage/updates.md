@@ -10,11 +10,16 @@
 
 ##### BugFix:
 
-* 修复 bug
+* 修复获取群列表接口返回类型错误的问题
+
+#### 升级提示
+
++ 建议升级！
 
 #### 升级指南
 * 使用新版本的 JMessage.framework 文件替换原工程下的同名旧文件
 * 将新版本的 JMessage.framework 里的 JCore link 到工程中，详细参见官网集成文档
+
 
 
 ### iOS SDK v3.6.0
