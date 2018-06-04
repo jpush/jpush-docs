@@ -99,7 +99,7 @@ JSON Object
 
 + msg_id 必传。消息 id，一次调用仅支持一个消息 id 查询。
 + registration_ids 必传。JSON Array 类型，多个registration id 用逗号隔开，一次调用最多支持1000个。
-+ data 可选。查询的指定日期，格式为yyyy-mm-dd，默认为当天。
++ date 可选。查询的指定日期，格式为yyyy-mm-dd，默认为当天。
 
 ### 返回示例
 
