@@ -1,4 +1,4 @@
-<h1>Android SDK 开发指南</h1>
+<h1>Android IM SDK 开发指南</h1>
 
 
 ## 概述
@@ -217,7 +217,7 @@ DeviceInfo
 </div>
 
 ### 多端同时在线
-SDK从2.3.0版本开始支持多端同时在线，具体规则见[多端在线说明](../guideline/faq/#_5)
+SDK从2.3.0版本开始支持多端同时在线，具体规则见[多端在线说明](../guideline/faq/#multi-platfrom)
 
 
 ### 用户属性维护

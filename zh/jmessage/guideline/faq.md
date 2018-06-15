@@ -139,7 +139,7 @@
 
 
 <br />
-## 多端同时在线功能如何开启？具体规则是什么？
+## <span id="multi-platfrom">多端同时在线功能如何开启？具体规则是什么？</span>
 多端同时在线功能可在[极光控制台](https://www.jiguang.cn/accounts/login/form)开启，选择“应用设置”中的 “IM 设置”，点击启用按钮进行开启。需要注意的是此功能开启后不支持关闭。
 ![多端在线](../image/online.png)
 
