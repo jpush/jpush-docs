@@ -85,6 +85,7 @@ curl --insecure -X POST -v https://api.sms.jpush.cn/v1/schedule/batch -H "Conten
 '{
     "send_time": "2017-07-01 09:00:00",
     "temp_id": 1250,
+	"tag":"标签",
     "recipients": [
         {
             "mobile": "13812345678",
@@ -111,6 +112,7 @@ curl --insecure -X POST -v https://api.sms.jpush.cn/v1/schedule/batch -H "Conten
 |recipients|TRUE|短信接收者列表|
 |recipients.mobile|TRUE|手机号码|
 |recipients.temp_para|FALSE|模板参数,需要替换的参数名和 value 的键值对|
+|tag|FALSE|标签|
 
 ### 返回示例
 
