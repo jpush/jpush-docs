@@ -34,7 +34,7 @@
 #### 集成步骤:
 + 解压缩 jmessage-sdk-android-with-JMRTC-v2.X.Y.zip 集成压缩包
 + 如果您没有集成过JMessage或JMessage版本低于2.6.0需要先集成JMessage，请见[JMessage集成指南](./jmessage_android_guide)。
-	+ 注意下载的JMessage with JMRTC SDK包含JMessage SDK包，集成JMessgae时无需再下载
+	+ 注意下载的JMessage with JMRTC SDK包含JMessage SDK包，集成JMessage时无需再下载
 + 复制 libs/jmrtc-android-1.X.Y.jar.jar 到工程 libs/ 目录下。
 + 复制 libs/agora-rtc-sdk.jar 到工程 libs/ 目录下
 + 配置AndroidManifest.xml，查看AndroidManifest.xml是否包含以下内容，不包含则添加
