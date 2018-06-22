@@ -1,4 +1,4 @@
-# Android SDK 集成指南
+# Android IM SDK 集成指南
 
 ## 使用提示
 

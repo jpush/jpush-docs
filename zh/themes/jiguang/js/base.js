@@ -15,7 +15,7 @@ $(document).ready(function() {
             }
         }, 50);
     });
-
+   
 });
 
 
@@ -34,12 +34,20 @@ $("li.disabled a").click(function() {
     event.preventDefault();
 });
 
-// $('.demo-download').hover(function(){
-// 	$(this).children(".code").children(".download-text").css('visibility', 'visible');
-// 	$(this).children(".apk").css('border', 'none');
-// 	$(this).css('border', '1px solid #ccc').css('border-radius', '2px')
-// }, function(){
-// 	$(this).children(".code").children(".download-text").css('visibility', 'hidden');
-// 	$(this).children(".apk").css('border', '1px solid #ccc').css('border-radius', '2px')
-// 	$(this).css('border', 'none');
-// });
+//android
+$('.download-btn-android').click(function(event) {
+    if ($('.andorid-voice').is(':checked')) { //音视频地址
+        $('.android-href').attr('href', 'https://www.jiguang.cn/downloads/server_sdk/im/JMRTC_Android');
+    } else{
+        $('.android-href').attr('href', 'https://www.jiguang.cn/downloads/sdk/im_android/');
+    }
+});
+
+//ios
+$('.download-btn-ios').click(function(event) {
+    if ($('.ios-voice').is(':checked')) { //音视频地址
+        $('.ios-href').attr('href', 'https://www.jiguang.cn/downloads/server_sdk/im/JMRTC_iOS');
+    } else{
+        $('.ios-href').attr('href', 'https://www.jiguang.cn/downloads/sdk/im_ios/');
+    }
+});

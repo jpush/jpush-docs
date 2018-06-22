@@ -1,5 +1,36 @@
 # 最近更新
 
+### JMRTC Android SDK v1.0.0
+
+#### 更新时间
+
+2018-06-22
+
+#### ChangeLog
+
++ JMRTC 首次发布
++ 支持多人实时音视频通话
++ 支持通话中设备控制（切换摄像头、免提模式等）
++ 支持视频输出分辨率设置
+
+#### 升级指示
++ 可选升级！
+
+#### 升级指南
+
++ 集成jmessage
++ 拷贝jmrtc相关jar和so
+	+ 打开libs文件夹。拷贝jmrtc-android_v1.0.0.jar以及agora-rtc-sdk.jar。
+	+ 拷贝CPU文件夹下的.so 文件，每种型号的so文件都可以在SDK下载包中找到。
++ 更新AndroidManifest.xml
+  权限声明处增加：
+```
+  <uses-permission android:name="android.permission.RECORD_AUDIO" />
+  <uses-permission android:name="android.permission.CAMERA" />
+  <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+```
+  几项配置
+
 ### iOS SDK v3.6.1
 
 #### 更新时间

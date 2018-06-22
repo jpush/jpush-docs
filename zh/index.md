@@ -88,9 +88,9 @@
 <div class="panel-heading">极光 IM 文档</div>
 <div class="panel-body">
     <ul>
-    <li><a href="/jmessage/client/im_sdk_android/">Android SDK 概述</a></li>
-    <li><a href="/jmessage/client/jmessage_android_guide/">Android SDK 集成指南</a></li>
-    <li><a href="https://docs.jiguang.cn/jmessage/client/im_android_api_docs/">Android SDK API</a></li>
+    <li><a href="/jmessage/client/im_sdk_android/">Android IM SDK 开发指南</a></li>
+    <li><a href="/jmessage/client/jmessage_android_guide/">Android IM SDK 集成指南</a></li>
+    <li><a href="https://docs.jiguang.cn/jmessage/client/im_android_api_docs/">Android IM API</a></li>
     </ul>
     <ul>
     <li><a href="/jmessage/client/im_sdk_ios/">iOS SDK 概述</a></li>
@@ -98,9 +98,14 @@
     <li><a href="https://docs.jiguang.cn/jmessage/client/jmessage_ios_appledoc_html/">iOS SDK API</a></li>
     </ul>
     <ul>
-    <li><a href="/jmessage/client/im_sdk_js/">WEB SDK 开发文档</a></li>
+    <li><a href="/jmessage/client/im_sdk_js/">WEB SDK 开发指南</a></li>
+	<li><a href="/jmessage/client/im_sdk_win/">PC SDK 开发指南</a></li>
     <li><a href="/jmessage/server/rest_api_im/">IM REST API</a></li>
     </ul>
+	<ul>
+	<li><a href="/jmessage/client/im_jmrtc_android/">Android 实时音视频</a></li>
+	<li><a href="/jmessage/client/im_jmrtc_android_api_docs/">Android JMRTC API</a></li>
+	</ul>
 </div>
 </div>
 </div>

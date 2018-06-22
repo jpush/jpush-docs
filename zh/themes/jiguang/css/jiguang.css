@@ -183,6 +183,8 @@ div.row.downloads  .thumbnail > img {
     vertical-align: top;
     padding-left: 40px;
     padding-right: 50px;
+    display: block;
+    margin-bottom: -10px;
 }
 
 div.row.downloads  .thumbnail > .caption {
@@ -248,6 +250,39 @@ div.row.downloads.j-chat-demo {
     padding: 10px;
 }
 
+div.client.row.downloads .thumbnail > .caption {
+    display: block;
+    text-align: center;
+}
+div.client.row.downloads .thumbnail > .caption .version{
+        font-size: 12px;
+    margin-left: 5px;
+    font-weight: normal;
+}
+div.client.row.downloads .thumbnail .download-options {
+    margin: 20px auto;
+}
+div.client.row.downloads .thumbnail .download-options .option{
+    display: inline-block;
+}
+
+div.client.row.downloads .thumbnail .download-options .option input{
+    vertical-align: top;
+}
+
+div.client.row.downloads .thumbnail .download-options .option span{
+    margin-left: 5px;
+}
+div.client.row.downloads .thumbnail > .caption .download-btn a{
+    width: 205px;
+}
+div.client.row.downloads .thumbnail > .caption .doc-options{
+    width: 205px;
+    margin: 20px auto 0px;
+}
+div.client.row.downloads .thumbnail > .caption .doc-options a{
+    color: #666666;
+}
 @media (min-width: 992px) {
     div.row.downloads  .thumbnail > img {
         display: block;

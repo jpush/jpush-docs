@@ -93,10 +93,12 @@ pages:
     - 'JMessage 产品简介': 'jmessage/guideline/jmessage_guide.md'
     - '常见问题': 'jmessage/guideline/faq.md'
   - Android:
-    - 'SDK 开发指南': 'jmessage/client/im_sdk_android.md'
-    - 'SDK 集成指南': 'jmessage/client/jmessage_android_guide.md'
-    - 'SDK ErrorCode 定义': 'jmessage/client/im_errorcode_android.md'
-    - 'SDK API Doc': 'jmessage/client/javadoc.md'
+    - 'IM 开发指南': 'jmessage/client/im_sdk_android.md'
+    - 'IM 集成指南': 'jmessage/client/jmessage_android_guide.md'
+    - '实时音视频': 'jmessage/client/im_jmrtc_android.md'
+    - 'IM API Doc': 'jmessage/client/javadoc.md'
+    - 'JMRTC API Doc': 'jmessage/client/jmrtc_android_doc.md'
+    - 'ErrorCode 定义': 'jmessage/client/im_errorcode_android.md'
   - iOS:
     - 'SDK 开发指南': 'jmessage/client/im_sdk_ios.md'
     - 'SDK 集成指南': 'jmessage/client/jmessage_ios_guide.md'
