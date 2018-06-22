@@ -1,10 +1,10 @@
 # 最近更新
 
-### JMRTC Android SDK 1.0.0
+### JMRTC Android SDK v1.0.0
 
 #### 更新时间
 
-2018-06-20
+2018-06-22
 
 #### ChangeLog
 

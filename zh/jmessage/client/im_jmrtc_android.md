@@ -31,7 +31,12 @@
 + libs/(cpu-type)/libjcore1xy.so 
     + 各种CPU类型的native开发包。
 
-#### 集成步骤:
+#### jcenter 自动集成步骤
++ 如果您没有集成过JMessage或JMessage版本低于2.6.0需要先集成JMessage，请见[JMessage集成指南](./jmessage_android_guide)。
+```
+compile 'cn.jiguang.sdk:jmrtc:1.0.0'  // 此处以jmrtc 1.0.0 版本为例
+```
+#### 手动集成步骤:
 + 解压缩 jmessage-sdk-android-with-JMRTC-v2.X.Y.zip 集成压缩包
 + 如果您没有集成过JMessage或JMessage版本低于2.6.0需要先集成JMessage，请见[JMessage集成指南](./jmessage_android_guide)。
 	+ 注意下载的JMessage with JMRTC SDK包含JMessage SDK包，集成JMessage时无需再下载
