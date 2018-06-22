@@ -29,7 +29,6 @@
   <uses-permission android:name="android.permission.CAMERA" />
   <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
 ```
-  几项配置
 
 ### iOS SDK v3.6.1
 
