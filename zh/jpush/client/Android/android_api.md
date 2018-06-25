@@ -1134,7 +1134,7 @@ alias相关的操作会在此方法中回调结果。
 
 #### 通过 RegistrationID 进行点对点推送
 
-可以通过 RegistrationID 来推送消息和通知， 参考文档 Push API v2， 当 receiver_type = 5 并且设置 receiver_value 为 RegistrationID 时候即可根据 RegistrationID 推送。
+可以通过 RegistrationID 来推送消息和通知， 参考文档 [Push API v3](../../server/push/rest_api_v3_push/#audience)
 
 注：要使用此功能，客户端 App 一定要集成有 1.6.0 及以上版本的 JPush Android SDK。
 
