@@ -7,7 +7,7 @@
 1. 在 APP 自己的服务端实时保存聊天历史
 2. 开发者可以实现针对客户消息的内容进行自动回复
 
-如需要开通此功能，请联系：[商务客服](https://www.jiguang.cn/accounts/business/form)；如果开发者没有实时性需求，建议使用免费的IM REST Report拉取历史消息。
+如需要开通此功能，请联系：[商务客服](https://www.jiguang.cn/accounts/business_contact?fromPage=im)；如果开发者没有实时性需求，建议使用免费的IM REST Report拉取历史消息。
 
 
 ## 目前服务支持https和http回调
