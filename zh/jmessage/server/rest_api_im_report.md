@@ -109,8 +109,8 @@ N/A
 ####  Request Params  
 + start （必填）查询的起始纪录
 + count （必填）查询的总条数  一次最多1000
-+ begin_time (可选) 记录开始时间 格式  yyyy-MM-dd HH:mm:ss 设置筛选条件大于end time 不设置不生效  
-+ end_time (可选)   记录结束时间  格式 yyyy-MM-dd HH:mm:ss  设置筛选条件小于begin time   不设置不生效
++ begin_time (可选) 记录开始时间 格式  yyyy-MM-dd HH:mm:ss 设置筛选条件大于begin time 不设置不生效  
++ end_time (可选)   记录结束时间  格式 yyyy-MM-dd HH:mm:ss  设置筛选条件小于end time   不设置不生效
 + end time begin time 都不设置的话 说明两个条件都不生效，则查询服务端保存的所有消息
 + 使用此接口，传递给JPush的URL需要经过URL Encode处理，例如时间格式中的空格需要被转义为 %20
 + 查询的消息按发送时间升序排序
