@@ -52,7 +52,7 @@
                  <div class="download-options">
                      <div class="option"><input type="checkbox" checked onclick="return false;"><span  style=" margin-right: 20px;">IM即时通讯</span></div>
                  </div>
-                 <div class="download-btn">
+                 <div>
                      <a class="btn btn-default" role="button" href="https://www.jiguang.cn/downloads/sdk/im_js/">下载 SDK</a>
                  </div>
                  <div class="doc-options">
