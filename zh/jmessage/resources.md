@@ -27,10 +27,10 @@
             <img src="../image/resource_ios.png" alt="iOS">
 
             <div class="caption">
-            <h4><span>iOS SDK</span><span class="version">v3.6.1</span></h4>
+            <h4><span>iOS SDK</span><span class="version">v3.6.2</span></h4>
                 <div class="download-options">
 			        <div class="option"><input type="checkbox" checked onclick="return false;"><span  style=" margin-right: 20px;">IM即时通讯</span></div>
-                    <div class="option" style="display:none;"><input type="checkbox" class="ios-voice"><span>实时音视频</span></div>
+                  <div class="option"><input type="checkbox" class="ios-voice"><span>实时音视频</span></div>
                 </div>
                 <div class="download-btn-ios">
                  <a class="btn btn-default ios-href" role="button" href="https://www.jiguang.cn/downloads/sdk/im_ios/">下载 SDK</a>

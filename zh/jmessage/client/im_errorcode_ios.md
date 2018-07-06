@@ -180,11 +180,90 @@
       <td>Unknown SDK error</td>
       <td>未知的SDK错误码</td>
     </tr>
-
-
-    
 </table>
 </div>
+
+## JMRTC iOS
+<div class="table-d" align="center">
+<table border="1" width = "100%">
+    <tr  bgcolor="#D3D3D3" >
+        <th >Code</th>
+        <th>Error Message</th>
+        <th>说明</th>
+    </tr>
+    <tr>
+        <td>871001</td>
+        <td>network error or tcp can not connected.</td>
+        <td>网络错误</td>
+    </tr>
+    <tr>
+        <td>871002</td>
+        <td>the %@ operation cannot be performed in the %@ state.</td>
+        <td>当前状态不能发起此行为</td>
+    </tr>
+    <tr>
+        <td>871003</td>
+        <td>parameter error</td>
+        <td>参数错误</td>
+    </tr>
+    <tr>
+        <td>871004</td>
+        <td>JMessage user is not start or login!</td>
+        <td>IM 账户未登录</td>
+    </tr>
+    <tr>
+        <td>871005</td>
+        <td>currtent user login status is abnormal.</td>
+        <td>IM 账户登录状态异常</td>
+    </tr>
+    <tr>
+        <td>871006</td>
+        <td>the engine is not initialized.</td>
+        <td>音视频引擎未初始化</td>
+    </tr>
+    <tr>
+        <td>871007</td>
+        <td>engine init fail，please initialize engine.</td>
+        <td>初始化音视频引擎失败</td>
+    </tr>
+    <tr>
+        <td>871008</td>
+        <td>user is already in the call session.</td>
+        <td>用户已经在通话中</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+</table>
+</div>
+
 
 <br>若以上列表中没有找到对应的错误码，可查看[服务端错误码](https://docs.jiguang.cn/jmessage/client/im_errorcode_server/)## 相关文档+ [Android SDK 错误码](../client/im_errorcode_android/)+ [服务端错误码](https://docs.jiguang.cn/jmessage/client/im_errorcode_server/)
 
