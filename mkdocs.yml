@@ -100,10 +100,12 @@ pages:
     - 'JMRTC API Doc': 'jmessage/client/jmrtc_android_doc.md'
     - 'ErrorCode 定义': 'jmessage/client/im_errorcode_android.md'
   - iOS:
-    - 'SDK 开发指南': 'jmessage/client/im_sdk_ios.md'
-    - 'SDK 集成指南': 'jmessage/client/jmessage_ios_guide.md'
+    - 'IM 开发指南': 'jmessage/client/im_sdk_ios.md'
+    - 'IM 集成指南': 'jmessage/client/jmessage_ios_guide.md'
+    - '实时音视频': 'jmessage/client/im_jmrtc_ios.md'
+    - 'IM API Doc': 'jmessage/client/iOSdoc.md'
+    - 'JMRTC API Doc': 'jmessage/client/jmrtc_ios_doc.md'
     - 'SDK ErrorCode 定义': 'jmessage/client/im_errorcode_ios.md'
-    - 'SDK API Doc': 'jmessage/client/iOSdoc.md'
   - Web:
     - 'SDK 开发指南 V2': 'jmessage/client/im_sdk_js_v2.md'
     - 'SDK 开发指南': 'jmessage/client/im_sdk_js.md'
