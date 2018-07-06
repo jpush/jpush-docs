@@ -1,5 +1,42 @@
 # 最近更新
 
+### JMRTC iOS SDK v1.0.0
+
+#### 更新时间
+
+2018-07-06
+
+#### ChangeLog
+
+* JMRTC 首次发布
+* 支持多人实时音视频通话
+* 支持通话中设备控制（切换摄像头、免提模式等）
+* 支持视频输出分辨率设置
+
+#### 升级提示
+
+* 可选升级
+
+#### 升级指南
+* 集成 JMessage
+* 将新版本的 JMRTC.framework 加到工程中，详细参见官网集成文档
+
+### iOS SDK v3.6.2
+
+#### 更新时间
+
+2018-07-06
+
+#### ChangeLog
+
+##### BugFix:
+
+* 支持 JMRTC
+
+#### 升级指南
+* 使用新版本的 JMessage.framework 文件替换原工程下的同名旧文件
+* 将新版本的 JMessage.framework 里的 JCore link 到工程中，详细参见官网集成文档
+* 
 ### JMRTC Android SDK v1.0.0
 
 #### 更新时间
