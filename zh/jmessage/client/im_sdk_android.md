@@ -1351,6 +1351,11 @@ public void onEventMainThread(EventEntity event){
       <td >`List<UserInfo>`</td>
       <td >获取需要审批入群的用户`UserInfo`</td>
     </tr>
+	<tr >
+	  <td>getApprovalUserCount()</td>
+	  <td>`int`</td>
+	  <td>获取需要审批入群的用户的人数</td>
+	</tr>
     <tr >
       <td >getReason()</td>
       <td >`String`</td>
@@ -1672,6 +1677,16 @@ groupInfo.updateAvatar(File avatar, String format, BasicCallback callback);
 + String format 文件扩展名，注意名称中不要包含“.”
 + BasicCallback callback 结果回调
 
+#### 修改群组类型
+***Since 2.6.1***
+```
+groupInfo.changeGroupType(Type type, BasicCallback callback);
+```
+参数说明
+
++ Type type 群组类型
++ BasicCallback callback 结果回调
+
 
 #### 添加群组成员
 ```
@@ -1682,6 +1697,20 @@ JMessageClient.addGroupMembers(long groupID, String appKey, List<String> userNam
 + long groupId 待加群的群组ID。创建群组时返回的。
 + String appkey 被添加的群成员所属的appkey，不填则默认为本应用appkey
 + List usernameList 群组成员列表，使用成员 username。
++ BasicCallback callback 结果回调
+
+
+#### 添加群组成员,附带reason参数，注意只对[公开群组](#PublicGroup)有效
+***Since 2.6.1***
+```
+JMessageClient.addGroupMembers(final long groupID, final String appKey, final List<String> userNameList, final String reason, final BasicCallback callback);
+```
+参数说明
+
++ long groupId 待加群的群组ID。创建群组时返回的。
++ String appkey 被添加的群成员所属的appkey，不填则默认为本应用appkey
++ List usernameList 群组成员列表，使用成员 username。
++ String reason 公开群组邀请人入群的理由
 + BasicCallback callback 结果回调
 
 #### 移除群组成员
@@ -1952,6 +1981,24 @@ GroupApprovedNotificationEvent
 	groupApprovalEvent.refuseGroupApproval(String username, String appKey, String reason, BasicCallback callback);
 ```
 
+#### 入群审批审批事件批量同意
+***Since 2.6.1***
+```
+
+    /**
+     * 批量同意审批事件内所有成员进群.
+     * <p>
+     * 操作成功后，事件GroupApprovalEvent对象内包含的所有待审批的用户都会被批准入群。之后，
+     * 群内所有成员包括被审批人自己都会收到一个包含群成员变化的EventNotification类型的消息
+     *
+     * @param events     待处理的事件对象集合
+     * @param sendNotify 预留字段，暂时无用
+     * @param callback   操作结果回调
+     * @since 2.6.1
+     */
+    GroupApprovalEvent.acceptGroupApprovalInBatch(Collection<GroupApprovalEvent> events, boolean sendNotify, BasicCallback callback);
+```
+
 #### 群成员审批拒绝事件
 ***Since 2.4.0***  
 ```
@@ -2020,6 +2067,15 @@ event.refuseGroupApproval(username, appKey, reason, new BasicCallback() {
 		}
 	}
 }); //入群审批拒绝
+
+GroupApprovalEvent.acceptGroupApprovalInBatch(events, false, new BasicCallback() {
+	@Override
+	public void gotResult(int responseCode, String responseMessage) {
+		textView.append("批量审批请求发送完成。 responseCode = " + responseCode + " responseMessage = " + responseMessage + "\n");
+		scrollView.fullScroll(ScrollView.FOCUS_DOWN);
+		events.clear();
+	}
+}); // 入群审批批量同意
 
 //获取指定应用下所有公开群组
 JMessageClient.getPublicGroupListByApp(appkey, start, count, new RequestCallback<List<GroupBasicInfo>>() {
