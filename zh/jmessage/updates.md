@@ -1,5 +1,40 @@
 # 最近更新
 
+### Android SDK v2.6.1
+
+#### 更新时间
+
+2018-07-10
+
+#### ChangeLog
+
+##### BugFix:
++ 修复用户反馈的一些bug
+
+##### NewFeature:
++ 支持批量同意审批事件操作
++ 支持修改群组类型
++ 审批事件中增加获取待审批用户人数的接口
++ 添加群成员接口增加reason
++ 增加群组成员上限调整通知
++ 加人进群事件支持自定义扩展字段
++ Model类提供toJson方法
+
+#### 升级提示
++ 建议升级！
+
+#### 升级指南
+
++ 首先解压您获取到的 zip 压缩包
+
++ 更新库文件
+	+ 打开libs文件夹。添加jcore-android_v1.2.1.jar。用 jmessage-android_v2.6.1.jar 替换项目中原有的极光jar文件，并删除原有极光jar文件。用对应CPU文件夹下的 libjcore121.so 文件，替换项目中原有的libjcoreXXX.so文件，并删除原有的极光so文件，每种型号的so文件都可以在SDK下载包中找到。
+
++ 更新AndroidManifest.xml
+	+ 请参考 SDK下载包最新版本的 demo 来更新AndroidManifest.xml 文件配置。
+
++ 如果使用jcenter的方式集成JMessage，不需要添加相关组件和资源，详细集成说明请参考官方[集成指南](https://docs.jiguang.cn/jmessage/client/jmessage_android_guide/)
+
 ### JMRTC iOS SDK v1.0.0
 
 #### 更新时间
