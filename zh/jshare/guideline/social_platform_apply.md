@@ -38,3 +38,7 @@
 登录 <a href="https://apps.twitter.com/">Twitter 开发者平台</a> ,点击 Create New APP ，创建应用如下图：
 ![](image/twitter_info.png)
 根据提示填写创建应用信息，回调地址不要忘记填写，创建成功之后，可以看到 ConsumerKey 和 consumerSecret 信息.
+
+
+## 申请趣聊平台的 JChatProAuth
+由于当前趣聊并没有对外的开发者平台让开发者申请趣聊平台 JChatProAuth ，开发者若想使用趣聊平台的分享可以通过邮件 support@jpush.cn 联系相关工作人员。

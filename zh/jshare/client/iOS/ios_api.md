@@ -88,6 +88,50 @@ handler：分享结果的回调。
 ```
     
 
+    
+##发起分享 - 仅支持JChatPro
+### Method - share
+####接口说明
+调用此接口发起分享
+####接口定义
+```
+ + (void)share:(JSHAREMessage *)message
+      completionHandler:(JSHARECompletionHandler)handler ;
+```
+####参数说明
+message：JSHAREMessage 类<br>
+handler：分享结果的回调。
+        
+####调用示例：
+    
+    
+```
+    JSHAREMessage *message = [JSHAREMessage message];
+    message.mediaType = JSHAREText;
+    message.url = @"http://tech.qq.com/zt2012/tmtdecode/252.htm";
+    message.text = @"欢迎使用极光社会化组件 JShare，SDK 包体积小，集成简单，支持主流社交平台、帮助开发者轻松实现社会化功能";
+    message.title = @"极光社会化组件";
+    message.platform = JSHAREPlatformJChatPro;
+    message.thumbUrl = @"http://img2.imgtn.bdimg.com/it/u=3721213387,3527941751&fm=27&gp=0.jpg";
+    message.extInfo = @"extramessage";
+    message.callbackUrl = @"https://www.jiguang.cn/";
+    message.pkgName = @"android_pkg";
+    message.className = @"android_class_name";
+    message.appName = @"我是MT";
+    message.fromScheme = @"jchatproa7e2ce002d1a071a6ca9f37d";
+
+    [JSHAREService share:message completionHandler:^(JSHAREState state, NSError *error, id responseObject) {
+        NSLog(@"responseObject :%@", responseObject);
+        if (!error) {
+            NSLog(@"分享图文成功");
+        }else{
+            NSLog(@"分享图文失败, error : %@", error);
+        }
+    }];
+```
+        
+       
+
 
 ## 各平台分享参数说明
 
@@ -591,6 +635,85 @@ images| 否 | NSArray|图片|分享多张图片用images ，图片数组的元�
     message.image = imageData;
 ```
 
+
+
+### JChatPro
+#### 1）分享文本
+
+参数 |是否必须|参数类型|参数说明|备注
+---- |-----|----|----|----
+mediaType | 是| NS_ENUM| 分享类型| JSHAREText
+text | 是 | NSString|消息内容|不超过4k字节
+title | 否 | NSString|消息标题|
+extInfo | 否 | NSString|点击消息跳转到第三方应用时带的extra信息|
+callbackUrl | 否 | NSString|当应用内的分享消息被点击时，如果启动的客户端不存在时，回调的url。开发者可以通过这个配置实现本地应用不存在时跳转到他们的官网之类的操作|
+pkgName | 否 | NSString|点击消息时跳转第三方android客户端的包名|
+className | 否 | NSString|点击消息时跳转第三方android客户端的类名|
+appName | 否 | NSString|第三方客户端应用名称|
+
+```
+    message.mediaType = JSHAREText;
+    message.text = @"JChatPro 分享文本TEST";
+    message.title = @"极光社会化组件";
+    message.appName = @"我是MT";
+    message.platform = JSHAREPlatformJChatPro;
+```
+
+
+#### 2)分享图片
+
+参数 |是否必须|参数类型|参数说明|备注
+---- |-----|----|----|----
+mediaType | 是| NS_ENUM | 分享类型| JSHAREImage
+thumbUrl| 否 | NSString|图片|网络缩略图地址
+image| images且imageURL为空时必填 | NSData|图片|分享单张图片，暂无限制。
+images| image且imageURL为空时必填 | NSArray|图片|分享多张图片用images ，图片数组的元素需要为 NSData 类型，图片数量限制为9张。
+imageURL| image且images为空时必填 | NSString |图片|图片网络地址。
+text | 否 | NSString|消息内容|不超过4k字节
+title | 否 | NSString|消息标题|
+extInfo | 否 | NSString|点击消息跳转到第三方应用时带的extra信息|
+callbackUrl | 否 | NSString|当应用内的分享消息被点击时，如果启动的客户端不存在时，回调的url。开发者可以通过这个配置实现本地应用不存在时跳转到他们的官网之类的操作|
+pkgName | 否 | NSString|点击消息时跳转第三方android客户端的包名|
+className | 否 | NSString|点击消息时跳转第三方android客户端的类名|
+appName | 否 | NSString|第三方客户端应用名称|
+```
+    message.mediaType = JSHAREImage;
+    message.platform = JSHAREPlatformJChatPro;
+    message.imageURL = @"http://pic.58pic.com/58pic/13/76/61/33N58PICRdp_1024.jpg";
+    message.image = imageData;
+    message.images = @[imageData,imageData,imageData];
+```
+
+#### 3）分享图文
+参数 |是否必须|参数类型|参数说明|备注
+---- |-----|----|----|----
+mediaType | 是| NS_ENUM | 分享类型| JSHARGraphic
+thumbUrl| 否 | NSString|图片|网络缩略图地址
+image| 否 | NSData|图片|分享单张图片，暂无限制。
+images| 否| NSArray|图片|分享多张图片用images ，图片数组的元素需要为 NSData 类型，图片数量限制为9张。
+imageURL| 否 | NSString |图片网络地址|
+text | 否 | NSString|消息内容|不超过4k字节
+title | 否 | NSString|消息标题|
+extInfo | 否 | NSString|点击消息跳转到第三方应用时带的extra信息|
+callbackUrl | 否 | NSString|当应用内的分享消息被点击时，如果启动的客户端不存在时，回调的url。开发者可以通过这个配置实现本地应用不存在时跳转到他们的官网之类的操作|
+pkgName | 否 | NSString|点击消息时跳转第三方android客户端的包名|
+className | 否 | NSString|点击消息时跳转第三方android客户端的类名|
+appName | 否 | NSString|第三方客户端应用名称|
+
+```    
+    message.mediaType = JSHARGraphic;
+    message.platform = JSHAREPlatformJChatPro;
+    message.text = @"欢迎使用极光社会化组件 JShare，SDK 包体积小，集成简单，支持主流社交平台、帮助开发者轻松实现社会化功能";
+    message.title = @"极光社会化组件";
+
+    message.thumbUrl = @"http://d.lanrentuku.com/down/png/0905/pngicon-12/png-1102.png";
+    message.extInfo = @"extramessage";
+    message.callbackUrl = @"https://www.jiguang.cn/";
+    message.pkgName = @"android_pkg";
+    message.className = @"android_class_name";
+    message.appName = @"我是MT";
+```
+
 参数的具体使用可参考Demo。
 
 
@@ -628,6 +751,9 @@ images| 否 | NSArray|图片|分享多张图片用images ，图片数组的元�
  
 ## 检查是否存在 Twitter 客户端
   +(BOOL)isTwitterInstalled
+ 
+## 检查是否存在JChatPro客户端
+  +(BOOL)isJChatProInstalled
  
 ## 获取社交平台用户信息
 ### method - getSocialUserInfo
