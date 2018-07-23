@@ -127,7 +127,7 @@
             ......
 
             compile 'cn.jiguang.sdk:jpush:3.1.5'  // 此处以JPush 3.1.5 版本为例。
-            compile 'cn.jiguang.sdk:jcore:1.2.2'  // 此处以JCore 1.2.2 版本为例。
+            compile 'cn.jiguang.sdk:jcore:1.2.3'  // 此处以JCore 1.2.3 版本为例。
             ......
         }
 
