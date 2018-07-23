@@ -361,18 +361,20 @@ defaultConfig {
         <!-- 新的tag/alias接口结果返回需要开发者配置一个自定的广播 -->
         <!-- 该广播需要继承JPush提供的JPushMessageReceiver类, 并如下新增一个 Intent-Filter -->
         <receiver
-        android:name="自定义 Receiver"
-        android:enabled="true" >
-        <intent-filter>
-        <action android:name="cn.jpush.android.intent.RECEIVE_MESSAGE" />
-        <category android:name="您应用的包名" />
-        </intent-filter>
+            android:name="自定义 Receiver"
+            android:enabled="true" 
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="cn.jpush.android.intent.RECEIVE_MESSAGE" />
+                <category android:name="您应用的包名" />
+            </intent-filter>
         </receiver>
 
         <!-- User defined. 用户自定义的广播接收器-->
          <receiver
              android:name="您自己定义的Receiver"
-             android:enabled="true">
+             android:enabled="true"
+             android:exported="false">
              <intent-filter>
                  <!--Required 用户注册SDK的intent-->
                  <action android:name="cn.jpush.android.intent.REGISTRATION" />
