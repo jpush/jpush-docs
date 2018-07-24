@@ -184,7 +184,8 @@ JPush SDK 收到推送，通过广播的方式，转发给开发者App，这样�
 
 	<receiver
 	    android:name="Your Receiver"
-	    android:enabled="true">
+	    android:enabled="true"
+	    android:exported="false">
 	    <intent-filter>
 	        <action android:name="cn.jpush.android.intent.REGISTRATION" />
 	        <action android:name="cn.jpush.android.intent.MESSAGE_RECEIVED" />
