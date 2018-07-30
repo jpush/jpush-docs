@@ -289,7 +289,7 @@ curl --insecure -X POST -v https://api.sms.jpush.cn/v1/messages/batch -H "Conten
 |403|50006|invalid mobile|手机号码无效
 |403|50007|invalid body|body 无效
 |403|50008|no sms code auth|未开通短信业务
-|403|50009|out of freq|发送超频
+|403|50009|out of freq|下发超频
 |403|50010|invalid code|验证码无效
 |403|50011|expired code|验证码过期
 |403|50012|verified code|验证码已验证通过
