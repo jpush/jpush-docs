@@ -1,4 +1,25 @@
 # 最近更新
+###JSMS Android SDK v1.2.2
+
+####更新时间
+
++ 2018-07-30
+
+####Change Log
+
++ 新增 https 的预埋证书（Ps：JSMS Android SDK v1.2.2 之前版本中 https 证书将于2019年03月失效。）
+
+####升级提示
+
++ 必须升级！ 
+
+####升级指南
+
++ 首先解压您获取到的zip压缩包
++ 导入 SDK 开发包
++ 配置 AndroidManifest.xml
+
+
 ###JSMS Android SDK v1.2.0
 
 ####更新时间

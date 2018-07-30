@@ -126,8 +126,8 @@
         dependencies {
             ......
 
-            compile 'cn.jiguang.sdk:jpush:3.1.1'  // 此处以JPush 3.1.1 版本为例。
-            compile 'cn.jiguang.sdk:jcore:1.1.9'  // 此处以JCore 1.1.9 版本为例。
+            compile 'cn.jiguang.sdk:jpush:3.1.5'  // 此处以JPush 3.1.5 版本为例。
+            compile 'cn.jiguang.sdk:jcore:1.2.3'  // 此处以JCore 1.2.3 版本为例。
             ......
         }
 
@@ -139,6 +139,30 @@
 则在 Project 根目录的gradle.properties文件中添加：
 
         android.useDeprecatedNdk=true
+
+***注*** : 使用NDK r17时，可能Android Studio会出现以下提示：
+
+        A problem occurred starting process ‘command 
+        ‘/Users/xxx/Library/Android/sdk/ndk-bundle/toolchains/mips64el-linux-android-4.9/prebuilt
+        /darwin-x86_64/bin/mips64el-linux-android-strip”
+        
+        系统找不到指定的文件
+
+这是因为NDK r17 之后不再支持mips平台，在build.gradle里增加如下配置可解决
+
+        android {
+        
+            defaultConfig {
+                .....
+            }
+            
+            packagingOptions { 
+                doNotStrip '*/mips/*.so' 
+                doNotStrip '*/mips64/*.so' 
+            }
+        }
+        
+
 
 ***说明***：若没有res/drawable-xxxx/jpush_notification_icon这个资源默认使用应用图标作为通知icon，在5.0以上系统将应用图标作为statusbar icon可能显示不正常，用户可定义没有阴影和渐变色的icon替换这个文件，文件名不要变。
 
@@ -214,11 +238,9 @@ defaultConfig {
     <uses-permission android:name="您应用的包名.permission.JPUSH_MESSAGE" />
     <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
@@ -232,6 +254,8 @@ defaultConfig {
     <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
     <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    
 
     <application
         android:icon="@drawable/ic_launcher"
@@ -337,18 +361,20 @@ defaultConfig {
         <!-- 新的tag/alias接口结果返回需要开发者配置一个自定的广播 -->
         <!-- 该广播需要继承JPush提供的JPushMessageReceiver类, 并如下新增一个 Intent-Filter -->
         <receiver
-        android:name="自定义 Receiver"
-        android:enabled="true" >
-        <intent-filter>
-        <action android:name="cn.jpush.android.intent.RECEIVE_MESSAGE" />
-        <category android:name="您应用的包名" />
-        </intent-filter>
+            android:name="自定义 Receiver"
+            android:enabled="true" 
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="cn.jpush.android.intent.RECEIVE_MESSAGE" />
+                <category android:name="您应用的包名" />
+            </intent-filter>
         </receiver>
 
         <!-- User defined. 用户自定义的广播接收器-->
          <receiver
              android:name="您自己定义的Receiver"
-             android:enabled="true">
+             android:enabled="true"
+             android:exported="false">
              <intent-filter>
                  <!--Required 用户注册SDK的intent-->
                  <action android:name="cn.jpush.android.intent.REGISTRATION" />

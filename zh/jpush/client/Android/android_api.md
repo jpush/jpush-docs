@@ -95,11 +95,11 @@ JPush SDK 提供的推送服务是默认开启的。
 
 	public static boolean isPushStopped(Context context);
 
-###参数说明
+#### 参数说明
 
 + context 应用的 ApplicationContext
 
-###代码示例
+#### 代码示例
 	
 以下代码来自于 JPush Android Example。
 
@@ -140,6 +140,27 @@ JPush SDK 提供的推送服务是默认开启的。
 	    }
 	}
 	
+## 配置Channel API
+### API - setChannel
+
+动态配置channel，优先级比AndroidManifest里配置的高
+
++ SDK 3.1.5 以上版本支持。
+
+#### 接口定义
+
+	public static void setChannel(Context context, String channel);
+
+#### 参数说明
+
++ context 应用的 ApplicationContext
++ channel 希望配置的channel，传null表示依然使用AndroidManifest里配置的channel
+
+#### 代码示例
+
+	JPushInterface.setChannel(this, "channel_1");
+
+
 ## 接收推送消息Receiver
 	
 ### 支持的版本
@@ -163,7 +184,8 @@ JPush SDK 收到推送，通过广播的方式，转发给开发者App，这样�
 
 	<receiver
 	    android:name="Your Receiver"
-	    android:enabled="true">
+	    android:enabled="true"
+	    android:exported="false">
 	    <intent-filter>
 	        <action android:name="cn.jpush.android.intent.REGISTRATION" />
 	        <action android:name="cn.jpush.android.intent.MESSAGE_RECEIVED" />
@@ -611,7 +633,7 @@ JPush 服务的连接状态发生变化。（注：不是指 Android 系统的�
 + sequence
 	+ 用户自定义的操作序列号,  同操作结果一起返回，用来标识一次操作的唯一性。
 
-
+``
 ### Method - getAlias
 
 调用此 API 来查询别名。
@@ -1134,7 +1156,7 @@ alias相关的操作会在此方法中回调结果。
 
 #### 通过 RegistrationID 进行点对点推送
 
-可以通过 RegistrationID 来推送消息和通知， 参考文档 [Push API v3](../../server/push/rest_api_v3_push/#audience)
+可以通过 RegistrationID 来推送消息和通知， 参考文档 Push API v2， 当 receiver_type = 5 并且设置 receiver_value 为 RegistrationID 时候即可根据 RegistrationID 推送。
 
 注：要使用此功能，客户端 App 一定要集成有 1.6.0 及以上版本的 JPush Android SDK。
 
@@ -1579,6 +1601,11 @@ JPushInterface.setLatestNotificationNumber(context, 3);
 			<td>6025</td>
 			<td>手机号码太长</td>
 			<td>手机号码过长，目前极光检测手机号码的最大长度为20。3.1.1 版本新增的错误码。</td>
+		</tr>
+		 <tr >
+			<td>6026</td>
+			<td>数据包体过大</td>
+			<td>数据包体过大，目前极光支持的数据通信包体最大为8128。3.1.5 版本新增的错误码。</td>
 		</tr>
 		<tr >
 			<td>-997</td>

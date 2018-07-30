@@ -1,5 +1,33 @@
 # 最近更新
 
+### JMRTC Android SDK v1.0.1
+
+#### 更新时间
+
++ 2018-07-27
+
+#### ChangLog
+
+##### Bugfix
++ 修复用户反馈的一些bug
+
+#### 集成指南
++ 集成jmessage(需要2.6.0或以上版本)。集成文档见官方[JMessage集成指南](https://docs.jiguang.cn/jmessage/client/jmessage_android_guide/)
+
++ 拷贝jmrtc相关库文件
+	+ 打开libs文件夹。拷贝jmrtc-android_v1.0.1.jar以及agora-rtc-sdk.jar。
+	+ 拷贝CPU文件夹下的.so 文件，每种型号的so文件都可以在SDK下载包中找到。
+
++ 更新AndroidManifest.xml
+	+ 权限声明处增加：
+```
+	<uses-permission android:name="android.permission.RECORD_AUDIO" />  
+	<uses-permission android:name="android.permission.CAMERA" />  
+	<uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+```   
+	
++ 如果使用jcenter的方式集成JMRTC，不需要添加相关组件和资源，详细集成说明请参考官方[JMRTC集成指南](https://docs.jiguang.cn/jmessage/client/im_jmrtc_android/)
+
 ### Android SDK v2.6.1
 
 #### 更新时间
