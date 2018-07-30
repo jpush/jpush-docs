@@ -37,6 +37,7 @@ config：JSHARELaunchConfig 类。
     config.FacebookDisplayName = @"JShareDemo";
     config.TwitterConsumerKey = @"4hCeIip1cpTk9oPYeCbYKhVWi";
     config.TwitterConsumerSecret = @"DuIontT8KPSmO2Y1oAvby7tpbWHJimuakpbiAUHEKncbffekmC";
+    config.JChatProAuth = @"a7e2ce002d1a071a6ca9f37d";
     [JSHAREService setupWithConfig:config];
 ```
 

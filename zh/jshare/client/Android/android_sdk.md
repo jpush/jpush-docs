@@ -14,7 +14,6 @@ JSHARE SDK 可以让你的应用支持多平台分享，无需花耗时间了解
 ### 主要场景：
 
 * 将分享内容分享到 QQ、微信、新浪微博、Facebook、Twitter、趣聊等主要的社交平台。
-* 获得QQ、微信、新浪微博、Facebook、Twitter等主要平台授权。
 * 获取QQ、微信、新浪微博、Facebook、Twitter等主要平台的个人信息，用于第三方登录。
 
 
@@ -252,7 +251,12 @@ android {
 			android:name="cn.jiguang.share.facebook.FacebookContentProvider"
 			android:exported="true"
 		/>
-
+       <!-- Optional jchatpro分享回调,plugin必须在包名路径下，否则回调不成功-->
+        <activity android:name="cn.jiguang.share.demo.plugin.JChatProCallbackActivity"
+            android:exported="true"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+        />
+        
 		<!-- User defined.  For test only  用户自定义的广播接收器-->
 		<receiver android:name="cn.jiguang.share.demo.FaceBookUploadReceiver">
 			<intent-filter>
