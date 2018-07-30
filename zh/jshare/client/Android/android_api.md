@@ -113,7 +113,7 @@ public static void setDebugMode(boolean enable)
 public static boolean isClientValid(String name)
 ```
 #### 参数说明
-* name 平台名称，值可选 Wechat.Name、WechatMoments.Name、WechatFavorite.Name、SinaWeibo.Name、SinaWeiboMessage.Name、QQ.Name、QZone.Name、Facebook.Name、FbMessenger.Name、JChatPro.Name。  
+* name 平台名称，值可选 Wechat.Name、WechatMoments.Name、WechatFavorite.Name、SinaWeibo.Name、SinaWeiboMessage.Name、QQ.Name、QZone.Name、Facebook.Name、FbMessenger.Name、Twitter.Name、JChatPro.Name。  
 
 ## 分享 API
 ### API - share
@@ -123,7 +123,7 @@ public static boolean isClientValid(String name)
 public static void share(String name, ShareParams shareParams, PlatActionListener shareActionListener))
 ```
 #### 参数说明
-* name 平台名称，值可选 Wechat.Name、WechatMoments.Name、WechatFavorite.Name、SinaWeibo.Name、SinaWeiboMessage.Name、QQ.Name、QZone.Name、Facebook.Name、FbMessenger.Name、JChatPro.Name。  
+* name 平台名称，值可选 Wechat.Name、WechatMoments.Name、WechatFavorite.Name、SinaWeibo.Name、SinaWeiboMessage.Name、QQ.Name、QZone.Name、Facebook.Name、FbMessenger.Name、Twitter.Name、JChatPro.Name。  
 * shareParams 分享的配置参数，具体设置请参考各个平台的分享参数说明。
 * shareActionListener 回调接口，可为 null，为 null 时则没有回调
 
@@ -136,7 +136,7 @@ public static void share(String name, ShareParams shareParams, PlatActionListene
 public static boolean isSupportAuthorize(String name)
 ```
 #### 参数说明
-* name 平台名称，值可选 Wechat.Name、WechatMoments.Name、WechatFavorite.Name、SinaWeibo.Name、SinaWeiboMessage.Name、QQ.Name、QZone.Name、Facebook.Name、FbMessenger.Name、JChatPro.Name。  
+* name 平台名称，值可选 Wechat.Name、SinaWeibo.Name、QQ.Name、Facebook.Name、Twitter.Name、JChatPro.Name。  
 
 ## 授权 API
 ### API - authorize
@@ -147,7 +147,7 @@ public static boolean isSupportAuthorize(String name)
 public static void authorize(String name, AuthListener authListener)
 ```
 #### 参数说明
-* name 平台名称，值可选 Wechat.Name、WechatMoments.Name、WechatFavorite.Name、SinaWeibo.Name、SinaWeiboMessage.Name、QQ.Name、QZone.Name、Facebook.Name、FbMessenger.Name、JChatPro.Name。  
+* name 平台名称，值可选 Wechat.Name、SinaWeibo.Name、QQ.Name、Facebook.Name、Twitter.Name、JChatPro.Name。  
 * authListener 回调接口，可为 null，为 null 时则没有回调。
 #### 代码示例
 ```
@@ -205,7 +205,7 @@ JShareInterface.authorize(platform, new AuthListener() {
 public static boolean isAuthorize(String name)
 ```
 #### 参数说明
-* name 平台名称，值可选 Wechat.Name、WechatMoments.Name、WechatFavorite.Name、SinaWeibo.Name、SinaWeiboMessage.Name、QQ.Name、QZone.Name、Facebook.Name、FbMessenger.Name、JChatPro.Name。  
+* name 平台名称，值可选 Wechat.Name、SinaWeibo.Name、QQ.Name、Facebook.Name、Twitter.Name、JChatPro.Name。  
 
 ## 删除授权 API
 ### API - removeAuthorize
@@ -216,7 +216,7 @@ public static boolean isAuthorize(String name)
 public static void removeAuthorize(String name, AuthListener actionListener)
 ```
 #### 参数说明
-* name 平台名称，值可选 Wechat.Name、WechatMoments.Name、WechatFavorite.Name、SinaWeibo.Name、SinaWeiboMessage.Name、QQ.Name、QZone.Name、Facebook.Name、FbMessenger.Name、JChatPro.Name。  
+* name 平台名称，值可选 Wechat.Name、SinaWeibo.Name、QQ.Name、Facebook.Name、Twitter.Name、JChatPro.Name。  
 * authListener 回调接口，可为 null，为 null 时则没有回调
 #### 代码示例
 ```
@@ -259,7 +259,7 @@ JShareInterface.removeAuthorize(platform, new AuthListener() {
 public static void getUserInfo(String platName, AuthListener authListener)
 ```
 #### 参数说明
-* name 平台名称，值可选 Wechat.Name、WechatMoments.Name、WechatFavorite.Name、SinaWeibo.Name、SinaWeiboMessage.Name、QQ.Name、QZone.Name、Facebook.Name、FbMessenger.Name、JChatPro.Name。  
+* name 平台名称，值可选 Wechat.Name、SinaWeibo.Name、QQ.Name、Facebook.Name、Twitter.Name、JChatPro.Name。  
 * authListener 回调接口，可为 null，为 null 时则没有回调
 #### 代码示例
 ```
