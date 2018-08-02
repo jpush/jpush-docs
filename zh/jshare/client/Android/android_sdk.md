@@ -323,8 +323,10 @@ android {
         ConsumerKey="twitter 的 ConsumerKey"
         ConsumerSecret="twitter 的 ConsumerSecret"
     />
+     
+    <!-- 趣聊平台appkey的申请， 请查看入门指南的第三方平台申请文档 -->
     <JChatPro
-		  auth="趣聊 的 appkey"
+		  auth="申请后的 appkey"
     />
 
 </DevInfor>
