@@ -35,7 +35,7 @@
                 <ul>
                     <li><a href="../client/quickapp_guide">QuickApp SDK 集成指南</a></li>
                 </ul>
-                <p><a href="https://www.jiguang.cn/downloads/sdk/analytics_quickApp" class="btn btn-default" role="button">下载</a></p>
+                <p><a href="https://www.jiguang.cn/downloads/sdk/analytics_quickapp" class="btn btn-default" role="button">下载</a></p>
             </div>
         </div>
     </div>
