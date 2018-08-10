@@ -27,4 +27,16 @@
             </div>
         </div>
     </div>
+    <div class="col-md-6">
+        <div class="thumbnail">
+            <img src="../image/resource_quickapp.png" alt="QuickApp">
+            <div class="caption">
+                <h4>QuickApp SDK</h4>
+                <ul>
+                    <li><a href="../client/quickapp_guide">QuickApp SDK 集成指南</a></li>
+                </ul>
+                <p><a href="https://www.jiguang.cn/downloads/sdk/analytics_quickapp" class="btn btn-default" role="button">下载</a></p>
+            </div>
+        </div>
+    </div>
 </div>

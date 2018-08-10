@@ -84,6 +84,10 @@ pages:
     - 'iOS SDK 概述': 'janalytics/client/ios_sdk.md'
     - 'iOS SDK 集成指南': 'janalytics/client/ios_guide.md'
     - 'iOS SDK API': 'janalytics/client/ios_api.md'
+  - QuickApp:
+    - 'QuickApp SDK 概述': 'janalytics/client/quickapp_sdk.md'
+    - 'QuickApp SDK 集成指南': 'janalytics/client/quickapp_guide.md'
+    - 'QuickApp SDK API': 'janalytics/client/quickapp_api.md'
   - 最近更新: 'janalytics/updates.md'
   - 资源下载: 'janalytics/resources.md'
 
