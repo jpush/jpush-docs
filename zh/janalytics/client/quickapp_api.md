@@ -2,20 +2,23 @@
 
 ##SDK 初始化 API
 
-+ ***JAnalyticsInterface.init(appkey:string,channel:string)***
++ ***JAnalyticsInterface.init(context,appkey:string,channel:string)***
 	+ 接口说明：
 		+ 初始化接口。需app.ux的onCreate中调用。之后在其它模块中可使用this.$app.JAnalyticsInterface方式进行其它接口调用。
 	+ 参数说明：
+		+ context：应用上下文
 		+ appkey：官网中创建应用后分配的appkey
+		+ channel：渠道名称，默认值为:default-channel
+		
 	+ 调用示例：
 	
 ~~~			
-	this.JAnalyticsInterface=JAnalyticsInterface.init("官网中创建应用后分配的appkey","自定义channel");
+	this.JAnalyticsInterface=JAnalyticsInterface.init(this,"官网中创建应用后分配的appkey","自定义channel");
 ~~~
 
 + ***JAnalyticsInterface.setDebugMode(enable:boolean)***
 	+ 接口说明：
-		+ 设置是否开启debug模式。true则会打印更多的日志信息。建议在init接口之前调用。
+		+ 设置是否开启debug模式。true则会打印更多的日志信息。设置false则会关闭sdk的所有日志打印,建议在init接口之前调用。
 	+ 参数说明：
 		+ enable：debug开关 
 	+ 调用示例：
@@ -79,7 +82,7 @@
 
 ~~~
 	let { CountEvent } = this.$app.JAnalyticsInterface.Event;
-	CountEvent cEvent = new CountEvent("eventId","eventName");
+	let cEvent = new CountEvent("eventId","eventName");
 	this.$app.JAnalyticsInterface.onEvent(cEvent);
 ~~~
 
@@ -106,8 +109,9 @@
 
 ~~~
 	let { CalculateEvent } = this.$app.JAnalyticsInterface.Event;
-	CalculateEvent cEvent = new CalculateEvent("test2_event_id","test2_event_value");
+	let cEvent = new CalculateEvent("test2_event_id","test2_event_value");
 	cEvent.setEventValue(1.1).addKeyValue("key1","value1").addKeyValue("key2","value2");
+	this.$app.JAnalyticsInterface.onEvent(cEvent);
 ~~~
 
 **注意：**
@@ -134,8 +138,9 @@
 
 ~~~
 	let { LoginEvent } = this.$app.JAnalyticsInterface.Event;
-	LoginEvent lEvent = new LoginEvent("qq",true);
+	let lEvent = new LoginEvent("qq",true);
 	lEvent.addKeyValue("key1","value1").addKeyValue("key2","value2");
+	this.$app.JAnalyticsInterface.onEvent(lEvent);
 ~~~
 
 **注意：**
@@ -162,8 +167,9 @@
 
 ~~~
 	let { RegisterEvent } = this.$app.JAnalyticsInterface.Event;
-	RegisterEvent rEvent = new RegisterEvent("sina",true);
+	let rEvent = new RegisterEvent("sina",true);
 	rEvent.addKeyValue("key1","value1").addKeyValue("key2","value2");
+	this.$app.JAnalyticsInterface.onEvent(rEvent);
 ~~~
 
 **注意：**
@@ -192,8 +198,9 @@
 
 ~~~
 	let { BrowseEvent } = this.$app.JAnalyticsInterface.Event;
-	BrowseEvent bEvent = new BrowseEvent("browse_id","深圳热点新闻","news",30);
+	let bEvent = new BrowseEvent("browse_id","深圳热点新闻","news",30);
 	bEvent.addKeyValue("key1","value1").addKeyValue("key2","value2");
+	this.$app.JAnalyticsInterface.onEvent(bEvent);
 ~~~
 
 **注意：**
@@ -218,7 +225,7 @@
 |purchaseGoodsName|String|	商品名称|
 |purchasePrice|double|购买价格(非空)|
 |purchaseSuccess|boolean|购买是否成功(非空)|
-|purchaseCurrency|Currency|货币类型，一个枚举类|
+|purchaseCurrency|String|货币类型(目前仅支持CNY及USD两种) |
 |purchaseGoodsType|String|商品类型|
 |purchaseGoodsCount|int	|商品数量|
 |extMap|Map|扩展参数|
@@ -227,8 +234,9 @@
 
 ~~~
 	let { PurchaseEvent } = this.$app.JAnalyticsInterface.Event;
-	PurchaseEvent pEvent = new PurchaseEvent("goodsId","篮球",300,true,Currency.CNY,"sport",1);
+	let pEvent = new PurchaseEvent("goodsId","篮球",300,true,"CNY","sport",1);
 	pEvent.addKeyValue("key1","value1").addKeyValue("key2","value2");
+	this.$app.JAnalyticsInterface.onEvent(pEvent);
 ~~~
 
 **注意：**
@@ -242,15 +250,3 @@
     purchase_quantity
     此类 key 已被模型使用，如果使用则会导致统计到的数据不准确.
 
-##统计上报周期API 
-
-+ ***JAnalyticsInterface.setAnalyticsReportPeriod(int period)***
-	+ 接口说明：
-		+ 设置统计上报的自动周期，未调用前默认周期时60秒
-	+ 参数说明：
-		+ period：周期，单位秒，最小10秒，最大1天，超出范围会打印调用失败日志
-	+ 调用示例：
-
-~~~
-	this.$app.JAnalyticsInterface.setAnalyticsReportPeriod(60);
-~~~

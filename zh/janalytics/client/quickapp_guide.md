@@ -19,13 +19,13 @@
 
 ###janalytics-quick-app-release-1.x.y.zip 集成压缩包内容
 
-+ libs/janalytisc-quickapp_v1.x.x.js
++ libs/janalytics-quickapp-1.x.x.js
 	+ SDK analysis 开发包
 + example
 	+ 是一个完整的 Quick App 项目，通过这个演示了 JAnalysis SDK 的基本用法，可以用来做参考。
 
 ###Quick App 平台版本
-目前SDK只支持1000或以上版本的手机系统.
+SDK支持在快应用平台v1000及以后版本上使用。
 
 ##创建应用
 
@@ -52,9 +52,29 @@
 ##本地工程配置
 
 + 解压压缩包，将libs下的文件复制到工程的libs下面.
-	+ janalytisc-quickapp_v1.x.x.js。
+	+ janalytisc-quickapp-1.x.x.js。
 
-##工程依赖
+##配置manifest.json
+需要在在manifest.json 配置SDK所需的快应用平台依赖库和开启开应用日志。示例如下：
+
+	"features": [
+    	{ "name": "system.prompt" },
+    	{ "name": "system.router" },
+    	{ "name": "system.shortcut" },
+    	{ "name": "system.device" },
+    	{ "name": "system.app" },
+    	{ "name": "system.fetch" },
+    	{ "name": "system.storage" },
+    	{ "name": "system.cipher" },
+    	{ "name": "system.network" }
+    ],
+    "config": {
+    	"logLevel": "debug"
+    },
+ 
+	
+
+##添加SDK的Nodejs依赖库
 该统计sdk需要依赖nodejs库。依赖方式及说明如下(如已经依赖相关模块则跳过)：
 
 ###npm install uuid --save
@@ -68,17 +88,27 @@
 
 
 
-##添加代码
 
-### 基础 API
-
-+ 初始化 sdk ： 传入 appkey 来初始化 sdk 。
-
-		JAnalyticsInterface.init(appkey,channel);
+##SDK 初始化
 
 + 设置调试模式：参数为 true 表示打开调试模式，可看到 sdk 的日志。
 
 		JAnalyticsInterface.setDebugMode(boolean isDebugMode);
++ 在 app.ux 中导入 SDK 并使用 AppKey 初始化:
+
+	
+		JAnalyticsInterface.init(context,appkey,channel);
+		import { JAnalyticsInterface } from './libs/janalytics-quickapp-1.0.0'
+		  export default {
+    		showMenu: util.showMenu,
+    		createShortcut: util.createShortcut,
+		 	onCreate(){
+		 		JAnalyticsInterface.setDebugMode(true);
+		 		this.JAnalyticsInterface = JAnalyticsInterface.init(this, "your appkey", "test-channel")
+		 	}
+		}
+
+ps:建议将JAnalyticsInterface对象设置为全局的方法，暴露给每个页面使用，无需重复导入，需要时使用 this.$app.JAnalyticsInterface 调用 SDK 相关方法。
 
 ### 更多 API
 
@@ -86,7 +116,7 @@
 
 ### 运行 demo
 
-压缩包附带的 example 是一个 API 演示例子。你可以直接运行起来测试。运行可参考 [Quick App官方文档](https://doc.quickapp.cn/)
+压缩包附带的 example 是一个 API 演示例子。你可以直接运行起来测试。运行可参考[Quick App官方文档](https://doc.quickapp.cn/)
 
 
 ## 技术支持
