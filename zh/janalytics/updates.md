@@ -11,7 +11,7 @@
 
 #### 升级提示
 
-+ 建议升级！
++ 我是第一版
 
 #### 升级指南
 
@@ -20,7 +20,8 @@
 打开libs文件夹。
 用janalytics-quickapp-sdk_1.x.x.jar 替换项目中原有的极光统计sdk的js文件，并删除原有极光统计sdk的js文件。
 
-+ 详细请见JAnalytics QuickApp SDK 集成指南中的说明，或者example中的示例。首先解压您获取到的zip压缩包
++ 详细请见JAnalytics QuickApp SDK 集成指南中的说明，或者example中的示例。
+
 
 ### JAnalytics Android SDK v1.2.1
 
