@@ -1,4 +1,4 @@
-# Quickapp SDK API
+# QuickApp SDK API
 
 ##SDK 初始化 API
 
