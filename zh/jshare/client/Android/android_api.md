@@ -340,7 +340,7 @@ shareParams.setImagePath(file.getAbsolutePath());
 ---- |-----|----|----|----
 ShareType | 是| int| 分享类型| Platform.SHARE_MUSIC
 Title| 否 | String|音乐标题|长度不能超过 512
-Text| 否 | String|音乐描述|长度不能超过 1K
+Text| 否 | String|音乐描述|长度不能超过 1K，
 MusicUrl| 是 | String|音乐资源 Url|点击播放按钮可直接播放 url,长度不能超过 10K
 Url| 否 | String|跳转 Url|点击跳转页面 url,长度不能超过 10K
 ImagePath| 否 | String|缩略图，本地图片路径|长度不能超过 10KB,大小不能超过 32K,与 ImageData 二选一
@@ -359,7 +359,7 @@ shareParams.setImagePath(file.getAbsolutePath());
 ---- |-----|----|----|----
 ShareType | 是| int| 分享类型| Platform.SHARE_VIDEO
 Title| 否 | String|视频标题|长度不能超过 512
-Text| 否 | String|视频描述|长度不能超过 1K，朋友圈不显示该字段内容
+Text| 否 | String|视频描述|长度不能超过 1K，朋友圈不显示该字段内容，
 Url| 是 | String|视频Url|长度不能超过 10K
 ImagePath| 否 | String|缩略图，本地图片路径|长度不能超过 10KB,大小不能超过 32K,与 ImageData 二选一
 ImageData| 否 | Bitmap|缩略图，图片 Bitmap|大小不能超过 32K,与 ImagePath 二选一
@@ -376,7 +376,7 @@ shareParams.setImagePath(file.getAbsolutePath());
 ---- |-----|----|----|----
 ShareType | 是| int| 分享类型| Platform.SHARE_WEBPAGE
 Title| 否 | String|网页标题|长度不能超过 512
-Text| 否 | String|网页描述|长度不能超过 1K，朋友圈不显示该字段内容
+Text| 否 | String|网页描述|长度不能超过 1K，朋友圈不显示该字段内容 ; Title 和 Text 不能同时为空。
 Url| 是 | String|网页 Url|长度不能超过 10K
 ImagePath| 否 | String|缩略图，本地图片路径|长度不能超过 10KB,大小不能超过 32K,与 ImageData 二选一
 ImageData| 否 | Bitmap|缩略图，图片 Bitmap|大小不能超过 32K,与 ImagePath 二选一
