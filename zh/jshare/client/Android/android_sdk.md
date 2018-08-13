@@ -110,7 +110,7 @@ dependencies {
     compile 'cn.jiguang.sdk:jshare-facebookmodel:1.6.0'  // 此处以jshare-facebookmodel 1.6.0  版本为例，具体版本请参考压缩包libs的jar包版本。
     compile 'cn.jiguang.sdk:jshare-twittermodel:1.6.0'  // 此处以jshare-twittermodel 1.6.0  版本为例，具体版本请参考压缩包libs的jar包版本。
     compile 'cn.jiguang.sdk:jshare-jchatpromodel:1.6.0'  // 此处以jshare-twittermodel 1.6.0  版本为例，具体版本请参考压缩包libs的jar包版本。
-    compile 'cn.jiguang.sdk:jcore:1.1.7'  // 此处以JCore 1.1.7版本为例，具体版本请参考压缩包libs的jar包版本。
+    compile 'cn.jiguang.sdk:jcore:1.2.3'  // 此处以JCore 1.2.3版本为例，具体版本请参考压缩包libs的jar包版本。
     ......
 }
 ```

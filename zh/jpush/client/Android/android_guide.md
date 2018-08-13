@@ -428,7 +428,7 @@ defaultConfig {
     </tr>
     <tr >
       <td>WAKE_LOCK</td>
-      <td>允许应用在手机屏幕关闭后后台进程仍然运行</td>
+      <td>允许应用在手机屏幕关闭后后台进程仍然运行； 该权限从 JPush 3.1.5 版本开始变为可选权限，在 3.1.5 前的版本为必须权限。</td>
     </tr>
     <tr >
       <td>READ_PHONE_STATE</td>
@@ -448,7 +448,7 @@ defaultConfig {
     </tr>
     <tr >
       <td>VIBRATE</td>
-      <td>允许应用震动。</td>
+      <td>允许应用震动。 该权限从 JPush 3.1.5版本开始变为可选权限，在 3.1.5 前版本为必须权限。</td>
     </tr>
     <tr >
       <td>MOUNT_UNMOUNT_FILESYSTEMS</td>
