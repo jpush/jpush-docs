@@ -54,7 +54,7 @@ curl --insecure -X POST -v https://api.jpush.cn/v3/push -H "Content-Type: applic
 
 ## 调用验证
 
-HTTP Header（头）里加一个字段（Key/Value对）：
+HTTP Header（头）里加一个字段（Key/Value 对）：
 
 	Authorization: Basic base64_auth_string
 
@@ -188,7 +188,7 @@ JPush 当前支持 Android, iOS, Windows Phone 三个平台的推送。其关键
 
 ## audience：推送目标
 
-推送设备对象，表示一条推送可以被推送到哪些设备列表。确认推送设备对象，JPush 提供了多种方式，比如：别名、标签、注册ID、分群、广播等。
+推送设备对象，表示一条推送可以被推送到哪些设备列表。确认推送设备对象，JPush 提供了多种方式，比如：别名、标签、注册 ID、分群、广播等。
 
 ### all
 
@@ -212,7 +212,7 @@ JPush 当前支持 Android, iOS, Windows Phone 三个平台的推送。其关键
 			<td>JSON Array</td>
 			<td>标签OR</td>
 			<td>数组。多个标签之间是 OR 的关系，即取并集。 </td>
-			<td>用标签来进行大规模的设备属性、用户属性分群。 一次推送最多 20 个。<ul style="margin-bottom: 0;"><li>有效的 tag 组成：字母（区分大小写）、数字、下划线、汉字、特殊字符@!#$&*+=.|￥。</li><li>限制：每一个 tag 的长度限制为 40 字节。（判断长度需采用UTF-8编码）</li></td>
+			<td>用标签来进行大规模的设备属性、用户属性分群。 一次推送最多 20 个。<ul style="margin-bottom: 0;"><li>有效的 tag 组成：字母（区分大小写）、数字、下划线、汉字、特殊字符@!#$&*+=.|￥。</li><li>限制：每一个 tag 的长度限制为 40 字节。（判断长度需采用 UTF-8 编码）</li></td>
 		</tr>
 		<tr >
 			<td>tag_and</td>
@@ -233,20 +233,20 @@ JPush 当前支持 Android, iOS, Windows Phone 三个平台的推送。其关键
 			<td>JSON Array</td>
 			<td>别名</td>
 			<td>数组。多个别名之间是 OR 关系，即取并集。</td>
-			<td>用别名来标识一个用户。一个设备只能绑定一个别名，但多个设备可以绑定同一个别名。一次推送最多 1000 个。<ul style="margin-bottom: 0;"><li>有效的 alias 组成：字母（区分大小写）、数字、下划线、汉字、特殊字符@!#$&*+=.|￥。</li><li>限制：每一个 alias 的长度限制为 40 字节。（判断长度需采用UTF-8编码）</li></td>
+			<td>用别名来标识一个用户。一个设备只能绑定一个别名，但多个设备可以绑定同一个别名。一次推送最多 1000 个。<ul style="margin-bottom: 0;"><li>有效的 alias 组成：字母（区分大小写）、数字、下划线、汉字、特殊字符@!#$&*+=.|￥。</li><li>限制：每一个 alias 的长度限制为 40 字节。（判断长度需采用 UTF-8 编码）</li></td>
 		</tr>
 		<tr >
 			<td>registration_id</td>
 			<td>JSON Array</td>
 			<td>注册ID</td>
-			<td>数组。多个注册ID之间是 OR 关系，即取并集。</td>
+			<td>数组。多个注册 ID 之间是 OR 关系，即取并集。</td>
 			<td>设备标识。一次推送最多 1000 个。</td>
 		</tr>
 		
 		<tr >
 			<td>segment</td>
 			<td>JSON Array</td>
-			<td>用户分群ID</td>
+			<td>用户分群 ID </td>
 			<td>在页面创建的用户分群的 ID。定义为数组，但目前限制一次只能推送一个。</td>
 			<td>目前限制是一次只能推送一个。</td>
 		</tr>
@@ -333,7 +333,7 @@ JPush 当前支持 Android, iOS, Windows Phone 三个平台的推送。其关键
 }
 ```
 
-+ 推送给多个注册ID：
++ 推送给多个注册 ID：
 
 ```
 {
@@ -403,7 +403,7 @@ Android 平台上的通知，JPush SDK 按照一定的通知栏样式展示。
 			<td>string</td>
 			<td>可选</td>
 			<td>通知标题</td>
-			<td>如果指定了，则通知里原来展示 App名称的地方，将展示成这个字段。</td>
+			<td>如果指定了，则通知里原来展示 App 名称的地方，将展示成这个字段。</td>
 		</tr>
 		<tr >
 			<td>builder_id</td>
@@ -431,7 +431,7 @@ Android 平台上的通知，JPush SDK 按照一定的通知栏样式展示。
 			<td>int</td>
 			<td>可选</td>
 			<td>通知栏样式类型</td>
-			<td>默认为0，还有1，2，3可选，用来指定选择哪种通知栏样式，其他值无效。有三种可选分别为bigText=1，Inbox=2，bigPicture=3。</td>
+			<td>默认为 0，还有 1，2，3 可选，用来指定选择哪种通知栏样式，其他值无效。有三种可选分别为 bigText=1，Inbox=2，bigPicture=3。</td>
 		</tr>
 		<tr >
 			<td>alert_type</td>
@@ -445,21 +445,21 @@ Android 平台上的通知，JPush SDK 按照一定的通知栏样式展示。
 			<td>string</td>
 			<td>可选</td>
 			<td>大文本通知栏样式</td>
-			<td>当 style = 1 时可用，内容会被通知栏以大文本的形式展示出来。支持 api 16以上的rom。</td>
+			<td>当 style = 1 时可用，内容会被通知栏以大文本的形式展示出来。支持 api 16 以上的 rom。</td>
 		</tr>
 		<tr >
 			<td>inbox</td>
 			<td>JSONObject</td>
 			<td>可选</td>
 			<td>文本条目通知栏样式</td>
-			<td>当 style = 2 时可用， json 的每个 key 对应的 value 会被当作文本条目逐条展示。支持 api 16以上的rom。</td>
+			<td>当 style = 2 时可用， json 的每个 key 对应的 value 会被当作文本条目逐条展示。支持 api 16 以上的 rom。</td>
 		</tr>
 		<tr >
 			<td>big_pic_path</td>
 			<td>string</td>
 			<td>可选</td>
 			<td>大图片通知栏样式</td>
-			<td>当 style = 3 时可用，可以是网络图片 url，或本地图片的 path，目前支持.jpg和.png后缀的图片。图片内容会被通知栏以大图片的形式展示出来。如果是 http／https 的url，会自动下载；如果要指定开发者准备的本地图片就填sdcard 的相对路径。支持 api 16以上的rom。</td>
+			<td>当 style = 3 时可用，可以是网络图片 url，或本地图片的 path，目前支持.jpg 和.png 后缀的图片。图片内容会被通知栏以大图片的形式展示出来。如果是 http／https 的 url，会自动下载；如果要指定开发者准备的本地图片就填 sdcard 的相对路径。支持 api 16 以上的 rom。</td>
 		</tr>
 		<tr >
 			<td>extras</td>
@@ -523,35 +523,35 @@ iOS 平台上 APNs 通知结构。
 			<td>string</td>
 			<td>可选</td>
 			<td width="20%">通知提示声音</td>
-			<td>如果无此字段，则此消息无声音提示；有此字段，如果找到了指定的声音就播放该声音，否则播放默认声音,如果此字段为空字符串，iOS 7 为默认声音，iOS 8及以上系统为无声音。(消息) 说明：JPush 官方 API Library (SDK) 会默认填充声音字段。提供另外的方法关闭声音。</td>
+			<td>如果无此字段，则此消息无声音提示；有此字段，如果找到了指定的声音就播放该声音，否则播放默认声音,如果此字段为空字符串，iOS 7 为默认声音，iOS 8 及以上系统为无声音。(消息) 说明：JPush 官方 API Library (SDK) 会默认填充声音字段。提供另外的方法关闭声音。</td>
 		</tr>
 		<tr >
 			<td>badge</td>
 			<td>int</td>
 			<td>可选</td>
 			<td width="20%">应用角标</td>
-			<td>如果不填，表示不改变角标数字；否则把角标数字改为指定的数字；为 0 表示清除。JPush 官方 API Library(SDK) 会默认填充badge值为"+1",详情参考：<a href="http://blog.jpush.cn/ios_apns_badge_plus/">badge +1</a></td>
+			<td>如果不填，表示不改变角标数字；否则把角标数字改为指定的数字；为 0 表示清除。JPush 官方 API Library(SDK) 会默认填充badge值为 "+1",详情参考：<a href="http://blog.jpush.cn/ios_apns_badge_plus/">badge +1</a></td>
 		</tr>
 		<tr >
 			<td>content-available</td>
 			<td>boolean</td>
 			<td>可选</td>
 			<td width="20%">推送唤醒</td>
-			<td>推送的时候携带"content-available":true 说明是 Background Remote Notification，如果不携带此字段则是普通的Remote Notification。详情参考：<a href="../../../client/iOS/ios_new_fetures/#ios-7-background-remote-notification">Background Remote Notification</a></td>
+			<td>推送的时候携带 "content-available":true 说明是 Background Remote Notification，如果不携带此字段则是普通的 Remote Notification。详情参考：<a href="../../../client/iOS/ios_new_fetures/#ios-7-background-remote-notification">Background Remote Notification</a></td>
 		</tr>
 		<tr >
 			<td>mutable-content</td>
 			<td>boolean</td>
 			<td>可选</td>
 			<td width="20%">通知扩展</td>
-			<td>推送的时候携带”mutable-content":true 说明是支持iOS10的UNNotificationServiceExtension，如果不携带此字段则是普通的Remote Notification。详情参考：<a href="../../../client/iOS/ios_new_fetures/#ios-10-service-extension">UNNotificationServiceExtension</a></td>
+			<td>推送的时候携带 ”mutable-content":true 说明是支持iOS10的UNNotificationServiceExtension，如果不携带此字段则是普通的 Remote Notification。详情参考：<a href="../../../client/iOS/ios_new_fetures/#ios-10-service-extension">UNNotificationServiceExtension</a></td>
 		</tr>
 		<tr >
 			<td>category</td>
 			<td>string</td>
 			<td>可选</td>
 			<td width="20%"> </td>
-			<td>IOS8才支持。设置APNs payload中的"category"字段值</td>
+			<td>IOS 8 才支持。设置 APNs payload 中的 "category" 字段值</td>
 		</tr>
 		<tr >
 			<td>extras</td>
@@ -567,7 +567,7 @@ iOS 平台上 APNs 通知结构。
 <br>
 <div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px;">
 <p>iOS 通知 JPush 要转发给 APNs 服务器。APNs 协议定义通知长度为 2048 字节。</p>
-<p>JPush 因为需要重新组包，并且考虑一点安全冗余，要求"iOS":{ } 及大括号内的总体长度不超过：2000 个字节。JPush 使用 utf-8 编码，所以一个汉字占用 3 个字节长度。</p>
+<p>JPush 因为需要重新组包，并且考虑一点安全冗余，要求 "iOS":{ } 及大括号内的总体长度不超过：2000 个字节。JPush 使用 utf-8 编码，所以一个汉字占用 3 个字节长度。</p>
 <br>
  
 </div>
@@ -675,7 +675,7 @@ Windows Phone 平台上的通知。
 
 应用内消息。或者称作：自定义消息，透传消息。  
 此部分内容不会展示到通知栏上，JPush SDK 收到消息内容后透传给 App。需要 App 自行处理。  
-iOS 平台上，此部分内容在推送应用内消息通道（非APNS）获取。Windows Phone 暂时不支持应用内消息。
+iOS 平台上，此部分内容在推送应用内消息通道（非 APNS）获取。Windows Phone 暂时不支持应用内消息。
 
 消息包含如下字段：
 
@@ -718,11 +718,11 @@ iOS 平台上，此部分内容在推送应用内消息通道（非APNS）获取
 <br>
 
 ```
-Android 1.6.2及以下版本 接收notification 与message并存（即本次api调用同时推送通知和消息）的离线推送， 只能收到通知部分，message 部分没有透传给 App。
+Android 1.6.2 及以下版本 接收 notification 与 message 并存（即本次 api 调用同时推送通知和消息）的离线推送， 只能收到通知部分，message 部分没有透传给 App。
 
-Android 1.6.3及以上SDK 版本已做相应调整，能正常接收同时推送通知和消息的离线记录。
+Android 1.6.3 及以上SDK 版本已做相应调整，能正常接收同时推送通知和消息的离线记录。
 
-iOS 1.7.3及以上的版本才能正确解析v3的message，但是无法解析v2推送通知同时下发的应用内消息。
+iOS 1.7.3 及以上的版本才能正确解析 v3 的 message，但是无法解析 v2 推送通知同时下发的应用内消息。
 
 ```
 
@@ -730,14 +730,14 @@ iOS 1.7.3及以上的版本才能正确解析v3的message，但是无法解析v2
 
 <div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px;">
 <p>温馨提示：</p>
-<p>使用短信业务，会产生额外的运营商费用，具体请咨询商务，联系电话：400-612-5955  商务QQ：800024881</p>
+<p>使用短信业务，会产生额外的运营商费用，具体请咨询商务，联系电话：400-612-5955  商务 QQ：800024881</p>
 </div>
 
 <br>
 
-用于设置短信推送内容以及短信发送的延迟时间。手机接收号码,开发者需要先把用户的手机号码与设备的registration id匹配。绑定方法：[服务端-Device-更新设备](rest_api_v3_device/#device)
+用于设置短信推送内容以及短信发送的延迟时间。手机接收号码，开发者需要先把用户的手机号码与设备的registration id 匹配。绑定方法：[服务端-Device-更新设备](rest_api_v3_device/#device)
 
-**注：** 应运营商规定，短信内容需审核。自2018年3月起，短信补充的用户必须提交短信模板，审核通过后即可使用。因此推送时需要填写 temp\_id （模版有设置参数则需要填写 temp\_para）。参考 [控制台设置短信模板](https://docs.jiguang.cn/jsms/guideline/JSMS_consoleguide/#_12) 和 [短信模板 API](https://docs.jiguang.cn/jpush/server/push/server_overview/) 。
+**注：** 应运营商规定，短信内容需审核。自 2018 年 3 月起，短信补充的用户必须提交短信模板，审核通过后即可使用。因此推送时需要填写 temp\_id （模版有设置参数则需要填写 temp\_para）。参考 [控制台设置短信模板](https://docs.jiguang.cn/jsms/guideline/JSMS_consoleguide/#_12) 和 [短信模板 API](https://docs.jiguang.cn/jpush/server/push/server_overview/) 。
 
 与原有 JSON 业务协议相匹配，消息有如下字段信息：
 
@@ -753,7 +753,7 @@ iOS 1.7.3及以上的版本才能正确解析v3的message，但是无法解析v2
 			<td>delay_time</td>
 			<td>int</td>
 			<td>必填</td>
-			<td>单位为秒，不能超过24小时。设置为0，表示立即发送短信。该参数仅对 android 和 iOS 平台有效，Winphone 平台则会立即发送短信。</td>
+			<td>单位为秒，不能超过 24 小时。设置为0，表示立即发送短信。该参数仅对 android 和 iOS 平台有效，Winphone 平台则会立即发送短信。</td>
 		</tr>
 		<tr >
 			<td>temp_id</td>
@@ -761,13 +761,12 @@ iOS 1.7.3及以上的版本才能正确解析v3的message，但是无法解析v2
 			<td>必填</td>
 			<td>短信补充的内容模板 ID。没有填写该字段即表示不使用短信补充功能。</td>
 		</tr>
-<tr >
+        <tr >
 			<td>temp_para</td>
 			<td>JSON</td>
 			<td>可选</td>
 			<td>短信模板中的参数。 </td>
 		</tr>
-
 	</table>
 </div>
 
@@ -805,7 +804,7 @@ iOS 1.7.3及以上的版本才能正确解析v3的message，但是无法解析v2
 			<td>override_msg_id</td>
 			<td>long</td>
 			<td>可选</td>
-			<td>要覆盖的消息ID</td>
+			<td>要覆盖的消息 ID</td>
 			<td>如果当前的推送要覆盖之前的一条推送，这里填写前一条推送的 msg_id 就会产生覆盖效果，即：1）该 msg_id 离线收到的消息是覆盖后的内容；2）即使该 msg_id Android 端用户已经收到，如果通知栏还未清除，则新的消息内容会覆盖之前这条通知；覆盖功能起作用的时限是：1 天。如果在覆盖指定时限内该 msg_id 不存在，则返回 1003 错误，提示不是一次有效的消息覆盖操作，当前的消息不会被推送。</td>
 		</tr>
 		<tr >
@@ -827,7 +826,7 @@ iOS 1.7.3及以上的版本才能正确解析v3的message，但是无法解析v2
 			<td>int</td>
 			<td>可选</td>
 			<td>定速推送时长(分钟)</td>
-			<td>又名缓慢推送，把原本尽可能快的推送速度，降低下来，给定的n分钟内，均匀地向这次推送的目标用户推送。最大值为1400.未设置则不是定速推送。</td>
+			<td>又名缓慢推送，把原本尽可能快的推送速度，降低下来，给定的 n 分钟内，均匀地向这次推送的目标用户推送。最大值为 1400。未设置则不是定速推送。</td>
 		</tr>
 	</table>
 </div>
@@ -842,9 +841,9 @@ cid 是用于防止 api 调用端重试造成服务端的重复推送而定义�
 
 用户使用一个 cid 推送后，再次使用相同的 cid 进行推送，则会直接返回第一次成功推送的结果，不会再次进行推送。
 
-CID的有效期为1天。CID的格式为：{appkey}-{uuid}
+CID 的有效期为 1 天。CID 的格式为：{appkey}-{uuid}
 
-在使用cid之前，必须通过接口获取你的 cid 池。获取时type=push或者不传递type值。
+在使用 cid 之前，必须通过接口获取你的 cid 池。获取时 type=push 或者不传递 type 值。
 
 ### 调用示例
 
@@ -865,9 +864,9 @@ Accept: application/json
 
 ```
 count
-	可选参数。数值类型，不传则默认为1。范围为[1, 1000]
+	可选参数。数值类型，不传则默认为 1。范围为 [1, 1000]
 type
-	可选参数。CID类型。取值：push(默认), schedule
+	可选参数。CID 类型。取值：push（默认），schedule
 ```
 
 **Response Header**
@@ -891,7 +890,7 @@ Content-Type: application/json; charset=utf-8
 
 ```
 cidlist
-	cid列表
+	cid 列表
 ```
 
 
@@ -954,7 +953,7 @@ POST https://api.jpush.cn/v3/push/validate
 		<tr >
 			<td>1003</td>
 			<td>参数值不合法</td>
-			<td>必须改正。参数不合法的情况如：Audience参数中tag，alias，registration_id有空值；单发指定的 registration_id 非法或者格式错误。 </td>
+			<td>必须改正。参数不合法的情况如：Audience 参数中 tag，alias，registration_id 有空值；单发指定的 registration_id 非法或者格式错误。 </td>
 			<td>400</td>
 		</tr>
 		<tr >
@@ -967,27 +966,27 @@ POST https://api.jpush.cn/v3/push/validate
 			<td>1005</td>
 			<td>消息体太大</td>
 			<td>必须改正。
-				Android平台Notification+Message长度限制为4000字节；
-				iOS Notification 中 “iOS”:{ } 及大括号内的总体长度不超过：2000个字节（包括自定义参数和符号），iOS 的 Message部分长度不超过 4000 字节；
-				WinPhone平台Notification长度限制为1000字节</td>
+				Android 平台 Notification+Message 长度限制为 4000 字节；
+				iOS Notification 中 “iOS”:{ } 及大括号内的总体长度不超过：2000 个字节（包括自定义参数和符号），iOS 的 Message 部分长度不超过 4000 字节；
+				WinPhone 平台 Notification 长度限制为 1000 字节</td>
 			<td>400</td>
 		</tr>
 		<tr >
 			<td>1008</td>
-			<td>app_key参数非法</td>
+			<td>app_key 参数非法</td>
 			<td>必须改正</td>
 			<td>400</td>
 		</tr>
 		<tr >
 			<td>1009</td>
-			<td>推送对象中有不支持的key</td>
+			<td>推送对象中有不支持的 key</td>
 			<td>必须改正</td>
 			<td>400</td>
 		</tr>
 		<tr >
 			<td>1011</td>
 			<td>没有满足条件的推送目标</td>
-			<td>请检查audience</td>
+			<td>请检查 audience</td>
 			<td>400</td>
 		</tr>
 		<tr >
@@ -1010,7 +1009,7 @@ POST https://api.jpush.cn/v3/push/validate
 		</tr>
 		<tr>
 			<td>2003</td>
-			<td>该应用appkey已被限制调用 API</td>
+			<td>该应用 appkey 已被限制调用 API</td>
 			<td>联系技术支持查明限制原因和寻求帮助</td>
 			<td>403</td>
 		</tr>
@@ -1026,14 +1025,13 @@ POST https://api.jpush.cn/v3/push/validate
 			<td>检测到目标用户累计发送消息量过大，超过合理的使用范围，需要检查业务逻辑或者联系技术支持。</td>
 			<td>403</td>
 		</tr>
-
 	</table>
 </div>
 
 
 ## 参考
 + HTTP 返回码：[HTTP-Status-Code](http_status_code/)
-+ 获取推送送达API：[Report-API](rest_api_v3_report)
++ 获取推送送达 API：[Report-API](rest_api_v3_report)
 + 老版本 Push API：[Push API v2](../old/rest_api_v2_push)
 + HTTP 规范参考：[HTTP基本认证](http://zh.wikipedia.org/zh/HTTP基本认证)
 + Apple APNs 规范：[Apple Push Notification Service](https://developer.apple.com/library/ios/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW12)

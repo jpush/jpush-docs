@@ -7,10 +7,10 @@
 + 2018-07-20
 
 #### Change Log
-+ 支持接口设置channel
-+ 调整震动权限为可选权限，去掉wakelock权限检测.
-+ 设置tagalias 与设置手机号码增加6026 错误码
-+ 修改targetversion 大于21时在7.0及以上手机上通知不显示时间的问题
++ 支持接口设置 channel
++ 调整震动权限为可选权限，去掉 wakelock 权限检测.
++ 设置 tagalias 与设置手机号码增加 6026 错误码
++ 修改 targetversion 大于 21 时在 7.0 及以上手机上通知不显示时间的问题
 
 #### 升级提示
 
@@ -21,16 +21,16 @@
 + 首先解压您获取到的 zip 压缩包
 
 + 更新库文件
-	+ 打开libs文件夹。用 jpush-android-3.1.5.jar 和 jcore-android-1.2.3.jar 替换项目中原有的极光 jar 文件，并删除原有极光 jar 文件。用对应CPU文件夹下的 libjcore123.so 文件，替换项目中原有的libjpushXXX.so文件，并删除原有的极光 so 文件，每种型号的so文件都可以在SDK下载包中找到。
+	+ 打开 libs 文件夹。用 jpush-android-3.1.5.jar 和 jcore-android-1.2.3.jar 替换项目中原有的极光 jar 文件，并删除原有极光 jar 文件。用对应 CPU 文件夹下的 libjcore123.so 文件，替换项目中原有的 libjpushXXX.so文件，并删除原有的极光 so 文件，每种型号的 so 文件都可以在 SDK 下载包中找到。
 
-+ 更新AndroidManifest.xml
-	+ 请对照示例 AndroidManifest 更新 JPush 相关的组件属性，Permission，Action等配置。并在中文提示的位置替换你的包名 和 appkey。
++ 更新 AndroidManifest.xml
+	+ 请对照示例 AndroidManifest 更新 JPush 相关的组件属性，Permission，Action 等配置。并在中文提示的位置替换你的包名 和 appkey。
 	+ 老用户升级，请注意 3.0.9 版本之后新增了 ContentProvider 组件。
 
 + 添加资源文件
-    + 将res文件夹下的资源文件，添加到您项目res/下对应的文件夹中。根据您应用的界面风格，您可以修改layout文件的配色，字体等属性，或者修改drawable文件夹下的图标。但注意请不要文件名，和布局文件中的组件 id。
-    + Android 5.0 以上，使用应用图标做通知icon可能显示异常，请参考res/drawable-xxxx/jpush_notification_icon 作为专门的通知icon。
-详细请见Android SDK 集成指南中的说明，或者example中的示例。
+    + 将 res 文件夹下的资源文件，添加到您项目 res/ 下对应的文件夹中。根据您应用的界面风格，您可以修改layout 文件的配色，字体等属性，或者修改 drawable 文件夹下的图标。但注意请不要文件名，和布局文件中的组件 id。
+    + Android 5.0 以上，使用应用图标做通知 icon 可能显示异常，请参考res/drawable-xxxx/jpush_notification_icon 作为专门的通知 icon。
+详细请见 Android SDK 集成指南中的说明，或者 example 中的示例。
 
 + 如果使用 jcenter 的方式集成JPush，不需要添加 JPush 相关组件和资源，详细说明请参考官方集成指南。
 
@@ -43,24 +43,24 @@
 #### Change Log
 + 修改本地通知部分设置问题
 + 修复设置手机号码回调问题
-+ 修复tag相关异常问题
++ 修复 tag 相关异常问题
 
 #### 升级提示
 
 + 建议升级！
-+ 注意：不支持 Xcode 8.0 以下版本 开启 bitcode。
-+ 极光开发者服务 SDK 采用了模块化的使用模式，即一个核心（JCore）+N种服务（JPush，JAnalytics，...）的使用方式，方便开发者使用某一项服务或多项服务，极大的优化了多模块同时使用时功能模块重复的问题。
++ 注意：不支持 Xcode 8.0 以下版本开启 bitcode。
++ 极光开发者服务 SDK 采用了模块化的使用模式，即一个核心（JCore）+ N 种服务（JPush，JAnalytics，...）的使用方式，方便开发者使用某一项服务或多项服务，极大的优化了多模块同时使用时功能模块重复的问题。
 
 #### 升级指南
 + 3.1.0 版本的 JPush 只支持 1.1.9 及以上的 JCore 版本，升级 SDK 的时候请将 JCore 一起升级。
 + 3.1.0 版本开始压缩包中 Lib 新增了 Notification Service Extension SDK ，可用于统计通知送达，开发者请注意添加到 Libs 中，使用方式见集成指南。
-+ 注意 3.0.0及以上版本 JPush SDK 将不再支持处理器为i386的模拟器。
-+ 添加libresolv.tbd库，否则编译运行会报错（2.2.0及以上版本要求）
-+ 替换 lib 文件夹里的文件:先删除项目里旧的.a和.h文件,重新导入新的.a和.h文件（注意新版本替换APService.h为JPUSHService.h）
++ 注意 3.0.0 及以上版本 JPush SDK 将不再支持处理器为 i386 的模拟器。
++ 添加libresolv.tbd库，否则编译运行会报错（2.2.0 及以上版本要求）
++ 替换 lib 文件夹里的文件:先删除项目里旧的 .a 和 .h 文件，重新导入新的 .a 和 .h 文件（注意新版本替换 APService.h 为 JPUSHService.h）
 + Xcode7 环境下，替换原先导入的 libz.dylib 框架为 libz.tbd （特别留意）
 + 需要删除旧的 libPushSDK-Simulator.a （如果存在）
 + 关于 iOS 7 Background Push，JPush 提供一个教程文档：[iOS 7 Background Remote Notification](client/iOS/ios_new_fetures/#ios-7-background-remote-notification)
-+ 如果是1.2.7及之前版本升级 请在Build Settings里面，找到Other Linker Flags，去掉-all_load, -ObjC
++ 如果是 1.2.7 及之前版本升级 请在 Build Settings 里面，找到 Other Linker Flags，去掉-all_load, -ObjC
 
 ### JPush Android SDK v3.1.3
 

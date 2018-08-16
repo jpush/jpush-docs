@@ -19,7 +19,7 @@ JPush Android SDK 是作为 Android Service 长期运行在后台的，从而创
 
 #### 多平台支持
 
-JPush Android SDK 除了 jar 包，还有一个 .so文件，.so文件需要与CPU平台适配，需要支持哪个平台的 CPU，就需要包含这个平台相应的 .so 编译文件。
+JPush Android SDK 除了 jar 包，还有一个 .so文件，.so 文件需要与 CPU 平台适配，需要支持哪个平台的 CPU，就需要包含这个平台相应的 .so 编译文件。
 
 除支持默认的 ARM CPU 平台之外，JPush SDK 还提供 x86 与 MIPs 平台的 CPU 版本 SDK。请单独到 [资源下载](../../resources/) 页下载。
 
@@ -46,7 +46,7 @@ AndroidManifest.xml 配置示例可能在版本升级时，会有变更。请留
 
 请参考以下文档与教程，来集成 Android SDK。
 
-+ [3分钟快速Demo(Android)](android_3m)
++ [3 分钟快速 Demo（Android）](android_3m)
 + [Android 集成指南](android_guide)
 
 

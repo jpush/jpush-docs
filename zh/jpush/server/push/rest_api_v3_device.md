@@ -1,16 +1,16 @@
 # Device API <small>v3</small>
 
 <div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px;">
-<p> Device API 用于在服务器端查询、设置、更新、删除设备的 tag,alias 信息，使用时需要注意不要让服务端设置的标签又被客户端给覆盖了。</p>
+<p> Device API 用于在服务器端查询、设置、更新、删除设备的 tag，alias 信息，使用时需要注意不要让服务端设置的标签又被客户端给覆盖了。</p>
 <ul style="margin-bottom: 0;">
-   <li>如果不是熟悉 tag，alias的逻辑建议只使用客户端或服务端二者中的一种。</li>
+   <li>如果不是熟悉 tag，alias 的逻辑建议只使用客户端或服务端二者中的一种。</li>
    <li>如果是两边同时使用，请确认自己应用可以处理好标签和别名的同步。</li>
  </ul>
 </div>
 
 <br>
 
-* 需要了解tag,alias的详细信息，请参考对应客户端平台的API说明。
+* 需要了解 tag，alias 的详细信息，请参考对应客户端平台的 API 说明。
 
     * [Android - tag,alias](../../client/Android/android_api/#api_1)
     * [iOS - tag,alias](../../client/iOS/ios_api/#api-ios)
@@ -18,11 +18,11 @@
 
 ## API 概述
 
-Device API 用于在服务器端查询、设置、更新、删除设备的 tag,alias 信息。
+Device API 用于在服务器端查询、设置、更新、删除设备的 tag, alias 信息。
 
-包含了device, tag, alias 三组API。其中：
+包含了 device, tag, alias 三组 API。其中：
 
-+ device 用于查询/设置设备的各种属性，包含tags, alias；
++ device 用于查询/设置设备的各种属性，包含 tags, alias；
 + tag 用于查询/设置/删除设备的标签；
 + alias 用于查询/设置/删除设备的别名。
 
@@ -44,7 +44,7 @@ https://device.jpush.cn
 
 ```
 GET /v3/devices/{registration_id}
-获取当前设备的所有属性，包含tags, alias，手机号码mobile。
+获取当前设备的所有属性，包含 tags, alias，手机号码 mobile。
 ```
 
 ### Example Request
@@ -80,7 +80,7 @@ HTTP/1.1 200 OK
 }
 ```
 
-+ 找不到统计项就是null,否则为统计项的值
++ 找不到统计项就是 null，否则为统计项的值
 
 ## 设置设备的别名与标签
 
@@ -88,7 +88,7 @@ HTTP/1.1 200 OK
 
 ```
 POST /v3/devices/{registration_id}
-更新当前设备的指定属性，当前支持tags, alias，手机号码mobile。
+更新当前设备的指定属性，当前支持 tags, alias，手机号码 mobile。
 ```
 
 ### Example Request
@@ -121,13 +121,13 @@ POST /v3/devices/{registration_id}
 ```
 **Request Params**
 
-+ tags:  支持add, remove 或者空字符串。当tags参数为空字符串的时候，表示清空所有的 tags；add/remove 下是增加或删除指定的 tag；
++ tags：支持 add, remove 或者空字符串。当 tags 参数为空字符串的时候，表示清空所有的 tags；add/remove 下是增加或删除指定的 tag；
     + 一次 add/remove tag 的上限均为 100 个，且总长度均不能超过 1000 字节。
-    + 可以多次调用 API 设置，一个注册 id tag 上限为1000个，应用 tag 总数没有限制 。
-+ alias:  更新设备的别名属性；当别名为空串时，删除指定设备的别名；
-+ mobile: 设备关联的手机号码
+    + 可以多次调用 API 设置，一个设备（registrationID）能设置的 tag 上限为 1000 个，应用 tag 总数没有限制 。
++ alias：更新设备的别名属性；当别名为空串时，删除指定设备的别名；
++ mobile：设备关联的手机号码
 
-###Example Response
+### Example Response
 **Response Header**
 
 ```
@@ -140,7 +140,7 @@ HTTP/1.1 200 OK
 + N/A
 
 ## 查询别名
-获取指定alias下的设备，最多输出10个；
+获取指定 alias 下的设备，最多输出 10 个；
 
 ```
 GET /v3/aliases/{alias_value}
@@ -204,7 +204,7 @@ DELETE /v3/aliases/{alias_value}?platform=android,ios
 GET /v3/tags/
 ```
 
-获取当前应用的所有标签列表，每个平台最多返回100个。
+获取当前应用的所有标签列表，每个平台最多返回 100 个。
 
 
 ### Example Request
@@ -256,7 +256,7 @@ GET /v3/tags/{tag_value}/registration_ids/090c1f59f89
 
 **Request Params**
 
-+ registration_id  必须，设备的registration_id
++ registration_id  必须，设备的 registration_id
 
 ### Example Response
 
@@ -309,9 +309,9 @@ POST /v3/tags/{tag_value}
 ```
 **Request Params**
 
-+ action操作类型，有两个可选："add"，"remove"，标识本次请求是"添加"还是"删除"。
-+ registration_ids 需要添加/删除的设备registration_id。
-+ add/remove最多各支持1000个；
++ action 操作类型，有两个可选："add"，"remove"，标识本次请求是"添加"还是"删除"。
++ registration_ids 需要添加/删除的设备 registration_id。
++ add/remove 最多各支持 1000 个；
 
 ### Example Response
 **Response Header**
@@ -348,7 +348,7 @@ DELETE /v3/tags/{tag_value}?platform=android,ios
 
 
 
-## 获取用户在线状态（VIP专属接口）
+## 获取用户在线状态（VIP 专属接口）
 
 如需要开通此接口，请联系：[商务客服](https://www.jiguang.cn/accounts/business_contact?fromPage=push_doc)
 
@@ -371,7 +371,7 @@ POST /v3/devices/status/
 
 **Request Params**
 
-+ registration_ids  需要在线状态的用户registration_id， 最多支持查询1000个registration_id；
++ registration_ids  需要在线状态的用户 registration_id， 最多支持查询 1000 个 registration_id；
 + 需要申请开通了这个业务的 Appkey 才可以调用此 API。
 
 
@@ -404,14 +404,14 @@ HTTP/1.1 200 OK
 **Response Params**
 
 + online
-    + true: 10分钟之内在线；
-    + false: 10分钟之内不在线；
+    + true: 10 分钟之内在线；
+    + false: 10 分钟之内不在线；
 
 + last_online_time
-    + 当online为true时，该字段不返回;
-    + 当online为false，且该字段不返回时，则表示最后一次在线时间是两天之前；
+    + 当 online 为 true 时，该字段不返回;
+    + 当 online 为 false，且该字段不返回时，则表示最后一次在线时间是两天之前；
 
-+ 对于无效的regid或者不属于该appkey的regid，该registration id返回的结果为空;
++ 对于无效的 regid 或者不属于该 appkey 的 regid，该 registration id 返回的结果为空;
 
 
 
@@ -455,7 +455,7 @@ HTTP/1.1 200 OK
     <tr >
       <td>7008</td>
       <td>appkey 不存在</td>
-      <td>检查工程填写的appkey是否与官网应用一致</td>
+      <td>检查工程填写的 appkey 是否与官网应用一致</td>
       <td>400</td>
     </tr>
   </table>

@@ -9,7 +9,7 @@ JPush 提供遵从 REST 规范的 HTTP API，以供开发者远程调用 JPush �
 ## REST API 基本约束
 
 * API 被设计为符合 HTTP, REST 规范。例如：查询请求使用 Get 方法，提交请求使用 Post 方法。如果一个请求不是相应的 HTTP 方法，将返回错误。
-* 如无特殊说明，调用参数值应转码为：UTF-8, [URL编码](http://zh.wikipedia.org/wiki/%E7%99%BE%E5%88%86%E5%8F%B7%E7%BC%96%E7%A0%81)。
+* 如无特殊说明，调用参数值应转码为：UTF-8，[URL 编码](http://zh.wikipedia.org/wiki/%E7%99%BE%E5%88%86%E5%8F%B7%E7%BC%96%E7%A0%81)。
 * API 请求有[频率限制](#api_1)。
 * API 请求有[黑名单机制](#blacklist)。
 
@@ -46,7 +46,7 @@ JPush 提供遵从 REST 规范的 HTTP API，以供开发者远程调用 JPush �
 
 ## 鉴权方式
 
-极光 REST API 采用 [HTTP基本认证](http://zh.wikipedia.org/wiki/HTTP%E5%9F%BA%E6%9C%AC%E8%AE%A4%E8%AF%81) 的验证方式。
+极光 REST API 采用 [HTTP 基本认证](http://zh.wikipedia.org/wiki/HTTP%E5%9F%BA%E6%9C%AC%E8%AE%A4%E8%AF%81) 的验证方式。
 
 基本作法为，HTTP Header（头）里加 Authorization：
 
@@ -158,6 +158,6 @@ JPush API 对访问次数，具有频率控制。即一定的时间窗口内，A
 
 ## 参考
 
-+ [HTTP 错误码 429  - WikiPedia定义](http://en.wikipedia.org/wiki/List_of_HTTP_status_codes#4xx_Client_Error)
++ [HTTP 错误码 429  - WikiPedia 定义](http://en.wikipedia.org/wiki/List_of_HTTP_status_codes#4xx_Client_Error)
 + [Twitter API 频率控制定义](https://dev.twitter.com/docs/rate-limiting/1.1)
 
