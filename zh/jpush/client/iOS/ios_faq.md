@@ -9,9 +9,9 @@ img[alt=jpush_ios_5] { width: 500px; }##
 
 ### iOS 9 变动影响 SDK 部分:
 
-+ 增加了 bitCode 编码格式，当 SDK 不支持 bitCode 时，用户集成时无法开启 bitCode 选项.
++ 增加了 bitCode 编码格式，当 SDK 不支持 bitCode 时，用户集成时无法开启 bitCode 选项。
 	+ 现象：用户集成 SDK 后无法编译通过，错误日志里包含了 bitCode 的相关错误信息
-+ 默认使用 https 连接,如果请求为 http，需要手动配置 plist 来支持 http 服务，当前我们的服务器请求都走 http 服务。
++ 默认使用 https 连接，如果请求为 http，需要手动配置 plist 来支持 http 服务，当前我们的服务器请求都走 http 服务。
 	+ 现象：用户集成 SDK 后，所有 JPush 相关的 http 服务都提示连接错误或者连接超时，可能是此问题。
 
 ### bitCode 解决方式
@@ -41,11 +41,11 @@ SDK 未提供 https 地址版本时
 
 如果你确认 AppKey 在 SDK 客户端与 Portal 上设置是一致，其他环节也按照文档正确地操作。但还是收不到推送消息。那么，有一定的可能性，是你在 Portal 上上传的证书，不是 APNs (Push) 证书。推送时指定的 iOS 推送环境需要和应用证书是同一个环境。
 
-请参考 [iOS 证书设置指南](ios_cer_guide)再次检查证书选择是否正确。
+请参考 [iOS 证书设置指南](ios_cer_guide)再次检查证书选择是否正确。    
 
-请注意：iOS 能接受消息的必要条件是：应用程序的证书要和你上传到 jpush portal 上的证书对应，如果你的程序是直接在 xcode 上运行的，你的应用部署环境必须是开发状态才能收到 APNS 消息。
+请注意：iOS 能接受消息的必要条件是：应用程序的证书要和你上传到 jpush portal 上的证书对应，如果你的程序是直接在 xcode 上运行的，你的应用部署环境必须是开发状态才能收到 APNS 消息。    
 
-温馨提示：目前 api 推送的时候可以通过参数 apns_production 可以指定推送环境，false 为开发环境，true 为生产环境。直接调 V3 api 不带此参数则默认为生产环境，使用封装 V3 api 的极光官方 sdk 在不带此参数时默认为开发环境。如果 api 有传 apns_production 则以此值为准。
+>温馨提示：目前 api 推送的时候可以通过[参数 apns_production ](https://docs.jiguang.cn/jpush/server/push/rest_api_v3_push/#options)可以指定推送环境，false 为开发环境，true 为生产环境。直接调 V3 api 不带此参数则默认为生产环境，使用封装 V3 api 的极光官方 sdk 在不带此参数时默认为开发环境。如果 api 有传 apns_production 则以此值为准。    
 
 
 ## 为什么启动的时候出现 Did Fail To Register For Remote Notifications With Error 的错误
@@ -79,7 +79,7 @@ SDK 未提供 https 地址版本时
 ```
 [[UIApplication sharedApplication] unregisterForRemoteNotifications]；
 ```
->注意：iOS9 设备使用此代码反注册 APNs ，再调用初始化代码恢复注册 APNs ，需要杀死应用后，再重新开启应用才会有 APNs 提示（这里可能与系统本身 bug 有关）。
+>注意：iOS 9 设备使用此代码反注册 APNs ，再调用初始化代码恢复注册 APNs ，需要杀死应用后，再重新开启应用才会有 APNs 提示（这里可能与系统本身 bug 有关）。
 
 ## App badge number（角标）如何更改与清空？
 
@@ -161,7 +161,11 @@ badge 累加只能通过 v3 api 推送，且只有 1.7.4 版本以上才能支�
 
 
 
-## 为什么日志里面会打印：You've implemented -[ <UIApplicationDelegate\> application:didReceiveRemoteNotification:fetchCompletionHandler:], but you still need to add "remote-notification" to the list of your supported UIBackgroundModes in your Info.plist.
+## 为什么日志里面会打印：you still need to add "remote-notification" to the list of your supported UIBackgroundModes in your Info.plist.
+```
+You've implemented -[ <UIApplicationDelegate\> application:didReceiveRemoteNotification:fetchCompletionHandler:], 
+but you still need to add "remote-notification" to the list of your supported UIBackgroundModes in your Info.plist.
+```
 
 这个主要是提示开发者如果要支持 UIBackgroundModes，需要开启 Remote notifications，具体操作可以看：[iOS 7 Background Remote Notification](ios_new_fetures/#ios-7-background-remote-notification)
 

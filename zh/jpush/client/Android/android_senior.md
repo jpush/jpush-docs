@@ -29,15 +29,15 @@
 + JPush SDK 把该关系设置保存到 JPush Server 上
 + 在服务器端推送消息时，指定向之前设置过的别名或者标签推送
 
-SDK 支持的 Alias 与 Tags 接口请参考相应的文档：[别名与标签 API](android_api/#api_1)
+SDK 支持的 Alias 与 Tags 接口请参考相应的文档：[别名与标签 API](android_api/#api_3)
 
 使用过程中有几个点做特别说明：
 
 + 1.5.0 版本开始提供的旧版 tag、alias 设置接口已不再维护，建议开发者使用 3.0.7 版本开始提供的新的 tag、alias 接口，支持对别名标签进行增删改查。
 
-	+ 在 callback 返回结果中如果返回 6002 （超时）或 6014 (服务繁忙) 则建议重试,具体错误码定义请参考错误码定义.
+	+ 在 callback 返回结果中如果返回 6002 （超时）或 6014（服务繁忙）则建议重试，具体错误码定义请参考[错误码定义](https://docs.jiguang.cn/jpush/client/Android/android_api/#_153)。
 
-+ Portal 上推送或者 API 调用向别名或者标签推送时，可能会报错：不存在推送目标用户。该报错表明，JPush Server 上还没有针对你所推送的别名或者标签的用户绑定关系，所以没有推送目标。这时请开发者检查确认，开发者App是否正确地调用了 alias 和 tags API，以及调用时是否网络不好，JPush SDK 暂时未能保存成功。
++ Portal 上推送或者 API 调用向别名或者标签推送时，可能会报错：不存在推送目标用户。该报错表明，JPush Server 上还没有针对你所推送的别名或者标签的用户绑定关系，所以没有推送目标。这时请开发者检查确认，开发者 App 是否正确地调用了 alias 和 tags API，以及调用时是否网络不好，JPush SDK 暂时未能保存成功。
 
 ### 使用别名
 
@@ -54,7 +54,7 @@ SDK 支持的 Alias 与 Tags 接口请参考相应的文档：[别名与标签 A
 
 JPush 提供的设置标签的 API 是在客户端的。开发者如何做到在自己的服务器端动态去设置分组呢？ 比如一个企业 OA 系统，经常需要去变更部门人员分组。以下是大概的思路：
 
-+ 设计一种自定义消息格式（业务协议），App 解析后可以调用 JPush SDK setAliasAndTags API 来重新设置标签（分组）
++ 设计一种自定义消息格式（业务协议），App 解析后可以调用 JPush SDK setTags API 来重新设置标签（分组），从 3.0.7 版本开始支持对标签进行增删改查，更便于对标签进行更新操作。
 	+ 例：{"action":"resetTags", "newTags":["dep_level_1":"A公司", "dep_level_2":"技术部", "dep_level_3":"Android开发组", "address":"深圳", "lang":"zh"]}
 + 要动态设置分组时，推送这条自定义消息给指定的用户
 	+ 使用别名的机制，推送到指定的用户。
@@ -74,7 +74,7 @@ App 开发者合理地处理设置失败，则偶尔失败对应用的正常使�
 + 遇到 6002 超时，则稍延迟重试。
 
 
-		// 这是来自 JPush Example 的设置别名的 Activity 里的代码,更详细的示例请参考 JPush Example。一般 App 的设置的调用入口，在任何方便的地方调用都可以。
+		// 这是来自 JPush Example 的设置别名的 Activity 里的代码，更详细的示例请参考 JPush Example。一般 App 的设置的调用入口，在任何方便的地方调用都可以。
 		private void handleAction(int sequence,TagAliasBean tagAliasBean) {
 		    if(tagAliasBean == null){
                 Log.w(TAG,"tagAliasBean was null");
@@ -126,7 +126,9 @@ JPush 通知推送到客户端时，默认使用手机的默认设置来显示�
 </div>
 
 <br>
-不使用自定义通知栏样式时，此编号默认为 0。如需使用自定义的通知栏样式，编号应大于 0，小于 1000。
+不使用自定义通知栏样式时，此编号默认为 0。如需使用自定义的通知栏样式，编号应大于 0 小于 1000。先在客户端调 API 设置通知栏样式，推送设置 Builder ID 值即可在收到消息时得到对应的样式效果。   
+
+调 API 进行推送时，在 Notification - Android 属性下设置 [builder_id 值](https://docs.jiguang.cn/jpush/server/push/rest_api_v3_push/#notification)    
 
 在 Portal 上发送通知时，首先选择推送平台为 Android，然后展开“可选设置”，开发者可指定当前要推送的通知的样式编号。如下图所示：
 
@@ -134,7 +136,7 @@ JPush 通知推送到客户端时，默认使用手机的默认设置来显示�
 
 ### 客户端设置通知栏样式
 
-自定义的通知栏样式，是在客户端进行设置的。请参考 [通知栏样式定制 API](android_api/#api_6) 来看所支持的功能。
+自定义的通知栏样式，是在客户端进行设置的。请参考 [通知栏样式定制 API](android_api/#api_8) 来看所支持的功能。
 
 #### 自定义通知栏样式设计
 
@@ -229,7 +231,7 @@ JPush 通知推送到客户端时，默认使用手机的默认设置来显示�
 
 #### 自定义消息
 
-自定义消息不是通知，默认不会被SDK展示到通知栏上，极光推送仅负责透传给 SDK。其内容和展示形式完全由开发者自己定义。
+自定义消息不是通知，默认不会被 SDK 展示到通知栏上，极光推送仅负责透传给 SDK。其内容和展示形式完全由开发者自己定义。
 
 自定义消息主要用于应用的内部业务逻辑和特殊展示需求。
 
@@ -248,7 +250,7 @@ JPush Android SDK 提供了 API 让开发者来定制通知栏的效果，请参
 
 SDK 不会把自定义消息展示到通知栏。所以调试时，需要到日志里才可以看到服务器端推送的自定义消息。
 
-自定义消息一定要由开发者写[ 接收推送消息Receiver](android_api/#receiver) 来处理收到的消息。
+自定义消息一定要由开发者写[接收推送消息 Receiver](android_api/#receiver) 来处理收到的消息。
 
 <div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">
 <p>注意：
@@ -275,7 +277,7 @@ public class MyReceiver extends BroadcastReceiver {
         Logger.d(TAG, "onReceive - " + intent.getAction() + ", extras: " + AndroidUtil.printBundle(bundle));
          
         if (JPushInterface.ACTION_REGISTRATION_ID.equals(intent.getAction())) {
-            Logger.d(TAG, "JPush用户注册成功");
+            Logger.d(TAG, "JPush 用户注册成功");
              
         } else if (JPushInterface.ACTION_MESSAGE_RECEIVED.equals(intent.getAction())) {
             Logger.d(TAG, "接受到推送下来的自定义消息");
@@ -332,7 +334,7 @@ public class MyReceiver extends BroadcastReceiver {
 
 ### 使用自定义消息
 
-使用自定义消息，在客户端 App 里一定要写代码，去接受 JPush SDK 的广播，从而取得推送下来的消息内容。具体请参考文档：接收推送消息 Receiver。
+使用自定义消息，在客户端 App 里一定要写代码，去接受 JPush SDK 的广播，从而取得推送下来的消息内容。具体请参考文档：[接收推送消息 Receiver](android_api/#receiver)。
 
 以下代码来自于推聊。
 

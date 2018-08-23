@@ -9,7 +9,7 @@ img[alt=jpush_ios] { width: 800px; }
 ### 适用版本
 
 本文匹配的 SDK 版本：r2.1.5 以后。
-[查看最近更新](../../updates)了解最新的SDK更新情况。
+[查看最近更新](../../updates)了解最新的 SDK 更新情况。
 使用 Xcode 6 及以上版本可以使用新版 Push SDK，Xcode 5 环境下需要运行旧版本 SDK（1.7.4）
 
 
@@ -39,8 +39,9 @@ img[alt=jpush_ios] { width: 800px; }
 ```
 pod 'JPush'
 ```
->注：如果无法导入最新版本，请执行 pod repo update master 这个命令来升级 pod 库，然后重新 pod
-
+```
+注：如果无法导入最新版本，请执行 pod repo update master 这个命令来升级本机的 pod 库，然后重新 pod 'JPush'
+```
 * 如果需要安装指定版本则使用以下方式（以 3.0.2 版本为例）：
 
 ```
@@ -61,15 +62,15 @@ pod 'JPush', '3.0.2'
 	* Foundation.framework
 	* UIKit.framework
 	* Security.framework
-	* libz.tbd（Xcode7 以下版本是 libz.dylib）
+	* libz.tbd（Xcode 7 以下版本是 libz.dylib）
 	* AdSupport.framework（获取 IDFA 需要；如果不使用 IDFA，请不要添加）
-	* UserNotifications.framework（Xcode8 及以上）
-	* libresolv.tbd（JPush 2.2.0 及以上版本需要, Xcode 7 以下版本是 libresolv.dylib）
+	* UserNotifications.framework（Xcode 8 及以上）
+	* libresolv.tbd（JPush 2.2.0 及以上版本需要，Xcode 7 以下版本是 libresolv.dylib）
 
 <div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">	<p>注意：
 如果集成 JPush 3.0.1 及以上版本， 且同时集成极光其他 SDK（如：JMessage 3.0.0 及以上版本）
 <br>
-1. Cocoapods 导入，建议都更新为线上最新版本，来避免 Jcore 版本不一致导致的冲突。
+1. Cocoapods 导入，建议都更新为线上最新版本，来避免 JCore 版本不一致导致的冲突。
 <br>
 2. 手动导入，在工程中只需保留一个最新版本的 jcore-ios-x.x.x.a 静态库文件。
 </div>
@@ -84,7 +85,7 @@ pod 'JPush', '3.0.2'
 ![jpush_ios][7]
 
 ### 允许 Xcode 7 支持 Http 传输方法
-如果您使用的是 2.1.9 及以上的版本则不需要配置此步骤
+如果您使用的是 2.1.9 及以上的版本则不需要配置此步骤    
 如果用的是 Xcode 7 或更新版本，需要在 App 项目的 plist 手动配置下 key 和值以支持 http 传输:
 
 **选择1：根据域名配置**
@@ -212,13 +213,11 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
   /// Required - 注册 DeviceToken
   [JPUSHService registerDeviceToken:deviceToken];
 }
-
 ```
 
 ### 实现注册 APNs 失败接口（可选）
 
 ```
-
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
   //Optional
   NSLog(@"did Fail To Register For Remote Notifications With Error: %@", error);
@@ -262,15 +261,12 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
 
-  // Required,For systems with less than or equal to iOS 6
+  // Required, For systems with less than or equal to iOS 6
   [JPUSHService handleRemoteNotification:userInfo];
 }
-
-
-
 ```
 
-### 添加处理JPush自定义消息回调方法
+### 添加处理 JPush 自定义消息回调方法
 
 如需使用 JPush 的自定义消息功能，请参考[文档](ios_api/#message)来实现自定义消息的处理回调方法。
 
@@ -329,11 +325,11 @@ extern NSString * const kJPFNetworkDidLoginNotification; // 登录成功
 <p>Registration id 需要添加注册 kJPFNetworkDidLoginNotification 通知的方法里获取，也可以调用 [registrationIDCompletionHandler:] 方法，通过 completionHandler 获取
 </div>
 
-extern NSString * const kJPFNetworkDidReceiveMessageNotification; // 收到自定义消息(非APNs)
+extern NSString * const kJPFNetworkDidReceiveMessageNotification; // 收到自定义消息(非 APNs)
 
 其中，kJPFNetworkDidReceiveMessageNotification 传递的数据可以通过 NSNotification 中的 userInfo 方法获取，包括标题、内容、extras 信息等
 
-请参考文档：[iOS SDK API](ios_api)
+请参考文档：[iOS SDK API](https://docs.jiguang.cn/jpush/client/iOS/ios_api/#_51)
 
 ### 通知送达统计
 
@@ -351,17 +347,29 @@ iOS 10 新增的 Notification Service Extension 功能，用 mutable-content 字
 **使用方法：**
 
 + 将 jpush-extension-ios-xxx.a 和 JPushNotificationExtensionService.h 两个文件引入到您的 Service Extentsion 工程中。
-+ 添加 Framework ： libz.tbd 和 libresolv.tbd。
++ 添加 Framework：libz.tbd 和 libresolv.tbd。
 + 调用 [jpushSetAppkey:] 方法设置您的 appkey，请注意这里的 appkey 应该和您极光应用的 appkey 相同。
 + 调用 [jpushReceiveNotificationRequest:] 方法上报您的 apns 消息，完成送达统计；在该方法的 block 回调中进行 apns 的显示。
 
 更具体的使用示例请参考版本压缩包中附带的 Demo 代码。
 
-参考文档：[iOS SDK API](ios_api)
+参考文档：[iOS SDK API](https://docs.jiguang.cn/jpush/client/iOS/ios_api/#notification-service-extension)
 
 ## 技术支持
 
-邮件联系：[support&#64;jpush.cn][4]
+当出现问题时：
+
++ 请仔细阅读文档，查看是否有遗漏。 [iOS FAQ](../client/iOS/ios_faq/)
++ 你可以到极光社区搜索类似问题
++ 给我们的 support 发邮件 [support&#64;jpush.cn][4]
+
+为了更快速的解决问题，在寻求帮助时，请提供下列信息：
+
++ 你需要咨询的产品是 JPush，是否同时使用了极光其他的产品
++ 你所调用的是什么 API，所传参数，完整的报错信息，出现异常的时间点
++ 如果收不到消息，提供应用的 Appkey，消息的 Message ID，设备的 registration ID 信息
++ 如果是 SDK 问题请提供对应的 SDK 版本和完整的日志记录，日志信息请使用 TXT 文件上传
++ 出现异常的设备是 iOS ，列出具体的机型和系统
 
 [0]: ../image/create_ios_app1.png
 [1]: ../image/Screenshot_13-4_2_create.jpg

@@ -14,7 +14,7 @@ img[alt=jpush_winphone_3m] { width: 500px; }
 
 填写注册信息，勾选协议，点击“同意协议并提交”。
 
-![jpush_winphone_3m](../image/jpush_app_register.png)
+![jpush_winphone_3m](../image/jpush_app_register1.png)
 
 ### Portal 上创建应用
 创建帐号进入极光推送后，首先显示的是创建应用的界面。填上你的应用程序的名称，保存后在推送设置页面展开 WinPhone 设置，选择启动 WinPhone。

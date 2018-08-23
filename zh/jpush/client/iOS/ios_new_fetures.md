@@ -68,7 +68,6 @@ v1.8.0 版本开始
 - (void)application:(UIApplication *)application handleActionWithIdentifier:(nullableNSString *)identifier forLocalNotification:(UILocalNotification *)notification withResponseInfo:(NSDictionary *)responseInfo completionHandler:(void(^)())completionHandler NS_AVAILABLE_IOS(9_0)
 
 - (void)application:(UIApplication *)application handleActionWithIdentifier:(nullableNSString *)identifier forRemoteNotification:(NSDictionary *)userInfo withResponseInfo:(NSDictionary *)responseInfo completionHandler:(void(^)())completionHandler NS_AVAILABLE_IOS(9_0)
-
 ```
 
 **说明**:
@@ -225,7 +224,6 @@ if ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0) {
 ```
 payload example:
 {"aps":{"alert":"example", "sound":"default", "badge": 1, "category":"identifier"}}
-
 ```
 
 
@@ -285,8 +283,8 @@ Remote Notifications 与之前版本的对比可以参考下面两张 Apple 官�
 
 更详细的说明资料请查阅 Apple 官方的 iOS 开发文档。
 
-- https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/index.html#//apple_ref/doc/uid/TP40008194-CH3-SW1
+- [Local and Remote Notifications Overview](https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/index.html#//apple_ref/doc/uid/TP40008194-CH3-SW1)
 
-- https://github.com/ylechelle/OpenUDID
+[1]:https://github.com/ylechelle/OpenUDID
 
 

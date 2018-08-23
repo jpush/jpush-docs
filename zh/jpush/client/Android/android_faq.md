@@ -13,34 +13,53 @@
 
 ## 日志：Java.lang.UnsatisfiedLinkError
 
-![jpush_ios_v](../image/error.jpg)
-
-
+```
+E/art: No implementation found for int cn.jiguang.service.Protocol.GetSdkVersion() (tried Java_cn_jiguang_service_Protocol_GetSdkVersion and Java_cn_jiguang_service_Protocol_GetSdkVersion__)
+E/JIGUANG-JCore: [JCoreGlobal] Get sdk version fail![获取sdk版本失败!]
+W/System.err: java.lang.UnsatisfiedLinkError: No implementation found for int cn.jiguang.service.Protocol.GetSdkVersion() (tried Java_cn_jiguang_service_Protocol_GetSdkVersion and Java_cn_jiguang_service_Protocol_GetSdkVersion__)
+W/System.err:     at cn.jiguang.service.Protocol.GetSdkVersion(Native Method)
+W/System.err:     at cn.jiguang.d.a.a(Unknown Source)
+W/System.err:     at cn.jiguang.d.a.d(Unknown Source)
+W/System.err:     at cn.jiguang.d.a.b(Unknown Source)
+W/System.err:     at cn.jiguang.api.JCoreInterface.init(Unknown Source)
+W/System.err:     at cn.jiguang.d.d.j.b(Unknown Source)
+W/System.err:     at cn.jiguang.api.JCoreInterface.triggerSceneCheck(Unknown Source)
+W/System.err:     at cn.jiguang.a.a.d.a.onActivityStarted(Unknown Source)
+E/JIGUANG-JCore: [JCoreGlobal] JCore .so file do not match JCore .jar file in the project, Failed to init JCore
+W/JIGUANG-JCore: [JCoreInterface] JCore init failed
+```
 <br />
-此错误是由于没有正确的加载 libjpush.so 文件，请检查 libjpush.so 是否在正确的位置(libs–>armeabi–>libjpush.so)
+此错误是由于没有正确的加载 libjcore.so 文件，请检查 libjcore.so 是否在正确的位置(libs–>armeabi–>libjcore.so)
 
-JPush SDK 迁移到 Android Studio 需要添加 .so 文件打包到 APK 的 lib 文件夹中,可以编辑 build.gradle 脚本，自定义 *.so 目录，参考 Demo：
+JPush SDK 迁移到 Android Studio 需要添加 .so 文件打包到 APK 的 lib 文件夹中，可以编辑 build.gradle 脚本，自定义 *.so 目录，参考 Demo：
 
-![jpush_android_so](../image/dictionary_path.png)
-
+![jpush_android_so](../image/dictionary_path1.png)
 <br />
 
 ## 日志：The permission should be defined
 
-![](../image/permission.jpg)
+
+```
+E/JIGUANG-JCore: [AndroidUtil] The permissoin is required - com.jpush.test.permission.JPUSH_MESSAGE
+E/JIGUANG-JCore: [AndroidUtil] The permission should be defined - com.jpush.test.permission.JPUSH_MESSAGE
+W/JIGUANG-JCore: [JCoreInterface] JCore init failed
+```
 
 此错误是没有正确的定义 permision，请添加权限：
 
 ```
-<permission android:name="您应用的包名.permission.JPUSH_MESSAGE" android:protectionLevel="signature" />
-<uses-permission android:name="您应用的包名.permission.JPUSH_MESSAGE" />
+    <permission
+        android:name="您应用的包名.permission.JPUSH_MESSAGE"
+        android:protectionLevel="signature" />
+  
+    <uses-permission android:name="您应用的包名.permission.JPUSH_MESSAGE" />
 ```
 
 <br />
 
 ## 如何在代码时混淆忽略 jpush-sdk-release.jar
 
-+ 请下载 4.x 及以上版本的[proguard.jar](http://sourceforge.net/projects/proguard/files/proguard/)， 并替换你Android Sdk "tools\proguard\lib\proguard.jar"
++ 请下载 4.x 及以上版本的 [proguard.jar](http://sourceforge.net/projects/proguard/files/proguard/)， 并替换你 Android SDK "tools\proguard\lib\proguard.jar"
 
 + 开发工具使用 Eclipse 或者 Android Studio，请在工程的 project.properties 中配置好 proguard-android.txt，并且在 proguard-android.txt 配置：
 
@@ -117,7 +136,7 @@ JPush SDK 迁移到 Android Studio 需要添加 .so 文件打包到 APK 的 lib 
 
 <br />
 
-## AsyncTask 就没办法执行到 onPostExecute()方法
+## AsyncTask 就没办法执行到 onPostExecute() 方法
 
 这是 Android 旧系统带有的问题，解决办法如下：
 
@@ -136,11 +155,11 @@ try {
 
 <br />
 
-## Tag、Alias、Registrationid 需要每次初始化时都重新设置吗，会变化吗？
+## Tag、Alias、Registration ID 需要每次初始化时都重新设置吗，会变化吗？
 
-+ tag、alias 可以参考[别名与标签 API ](./android_api/#api_1)进行设置，3.0.7 版本以前的接口每次设置是覆盖设置，而不是增量设置；从 3.0.7 版本开始，对别名标签提供增删改查接口。Tag 和 alias 一经设置成功，除非取消或覆盖，是不会变化的。设置好的 tag、alias 与客户端的对应关系保存在 JPush 服务器，目前没有从 JPush 服务器查询这个对应关系的接口，所以需要客户将对应关系保存在 APP 应用服务器。
++ tag、alias 可以参考[别名与标签 API ](./android_api/#api_3)进行设置，3.0.7 版本以前的接口每次设置是覆盖设置，而不是增量设置；从 3.0.7 版本开始，对别名标签提供增删改查接口。Tag 和 alias 一经设置成功，除非取消或覆盖，是不会变化的。设置好的 tag、alias 与客户端的对应关系保存在 JPush 服务器，目前没有从 JPush 服务器查询这个对应关系的接口，所以需要客户将对应关系保存在 APP 应用服务器。
 
-+ Registrationid 是客户端 SDK 第一次成功连接到 JPush 服务器时，JPush 服务器给分配的。可以通过[获取 RegistrationID](./android_api/#registrationid-api) API 来获取 Registrationid 进行推送。Registrationid 对应一个应用的一个客户端。
++ Registration ID 是客户端 SDK 第一次成功连接到 JPush 服务器时，JPush 服务器给分配的。可以通过[获取 RegistrationID](./android_api/#registrationid-api) API 来获取 Registration ID 进行推送。Registration ID 对应一个应用的一个客户端，Android 的 registration ID 一般不会改变。
 
 <br />
 
@@ -158,12 +177,14 @@ try {
 
 ## 为什么发送推送提示没有任何设备或调用 API 返回 1011
 
-![](../image/none_target.png)
+![](../image/none_target1.png)
 
-这可能有两种情况：
+这可能有如下几种情况：
 
-+ SDK 没有集成成功，客户端有 "Login succeed" 日志才表示 SDK 集成成功。
-+ 设置别名或标签失败，请调用带返回值的函数 [Method - setAliasAndTags (with Callback)](android_api)来设置标签或别名，同时参考[错误码定义](android_api)来修改直到设置成功返回 0。
++ SDK 没有集成成功，客户端有 "Login succeed" 日志、获取到了 registration ID 才表示 SDK 集成成功。
++ 广播推送有 10 分钟延迟，在第一个设备初始化成功后立即进行广播推送会报错。
++ 设置别名或标签失败，请注意查看设置别名标签的回调结果，从 3.0.7 版本开始，新接口是异步回调，需要在 Androidmanifest 里面配置自定义广播接收器，参考[错误码定义](https://docs.jiguang.cn/jpush/client/Android/android_api/#_153)来修改直到设置成功返回 0。
++ 所传的 registration ID 对应的客户端所配的 Appkey 与推送使用的 Appkey 不一致。
 
 <br />
 

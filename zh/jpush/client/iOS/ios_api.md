@@ -22,7 +22,7 @@
 
 同一个应用程序内，对不同的用户，建议取不同的别名。这样，尽可能根据别名来唯一确定用户。
 
-系统不限定一个别名只能指定一个用户。如果一个别名被指定到了多个用户，当给指定这个别名发消息时，服务器端API会同时给这多个用户发送消息。
+系统不限定一个别名只能指定一个用户。如果一个别名被指定到了多个用户，当给指定这个别名发消息时，服务器端 API 会同时给这多个用户发送消息。
 
 举例：在一个用户要登录的游戏中，可能设置别名为 userid。游戏运营时，发现该用户 3 天没有玩游戏了，则根据 userid 调用服务器端 API 发通知到客户端提醒用户。
 
@@ -39,7 +39,7 @@
 
 调用此 API 来增加标签，在 block 中返回结果
 
-Note:这个接口是增加逻辑，而不是覆盖逻辑
+Note：这个接口是增加逻辑，而不是覆盖逻辑
 
 #### 支持的版本
 
@@ -59,7 +59,7 @@ Note:这个接口是增加逻辑，而不是覆盖逻辑
     * 集合成员类型要求为 NSString 类型
     * 每次调用至少设置一个 tag
     * 有效的标签组成：字母（区分大小写）、数字、下划线、汉字、特殊字符@!#$&*+=.|
-    * 限制：每个 tag 命名长度限制为 40 字节，最多支持设置 1000 个 tag，但总长度不得超过 5K 字节。（判断长度需采用 UTF-8 编码）
+    * 限制：每个 tag 命名长度限制为 40 字节，最多支持设置 1000 个 tag，但总长度不得超过 5 K 字节。（判断长度需采用 UTF-8 编码）
     * 单个设备最多支持设置 1000 个 tag。App 全局 tag 数量无限制
 
 * completion 
@@ -74,7 +74,7 @@ Note:这个接口是增加逻辑，而不是覆盖逻辑
 
 调用此 API 来设置标签，在 block 中返回结果
 
-Note:这个接口是覆盖逻辑，而不是增加逻辑，调用此接口会覆盖之前设置的全部标签
+Note：这个接口是覆盖逻辑，而不是增加逻辑，调用此接口会覆盖之前设置的全部标签
 
 #### 支持的版本
 
@@ -94,7 +94,7 @@ Note:这个接口是覆盖逻辑，而不是增加逻辑，调用此接口会覆
     * 集合成员类型要求为 NSString 类型
     * 每次调用至少设置一个 tag
     * 有效的标签组成：字母（区分大小写）、数字、下划线、汉字、特殊字符@!#$&*+=.|
-    * 限制：每个 tag 命名长度限制为 40 字节，最多支持设置 1000 个 tag，但总长度不得超过5K字节。（判断长度需采用 UTF-8编码）
+    * 限制：每个 tag 命名长度限制为 40 字节，最多支持设置 1000 个 tag，但总长度不得超过 5 K 字节。（判断长度需采用 UTF-8 编码）
     * 单个设备最多支持设置 1000 个 tag。App 全局 tag 数量无限制
 
 * completion 
@@ -127,7 +127,7 @@ Note:这个接口是覆盖逻辑，而不是增加逻辑，调用此接口会覆
     * 集合成员类型要求为 NSString 类型
     * 每次调用至少删除一个 tag
     * 有效的标签组成：字母（区分大小写）、数字、下划线、汉字、特殊字符@!#$&*+=.|
-    * 限制：每个 tag 命名长度限制为 40 字节，最多支持删除 1000 个 tag，但总长度不得超过5K字节。（判断长度需采用 UTF-8 编码）
+    * 限制：每个 tag 命名长度限制为 40 字节，最多支持删除 1000 个 tag，但总长度不得超过 5 K 字节。（判断长度需采用 UTF-8 编码）
 
 * completion 
 
@@ -320,7 +320,7 @@ Note:这个接口是覆盖逻辑，而不是增加逻辑，调用此接口会覆
     - nil 此次调用不设置此值。
     - 空字符串（@""）表示取消之前的设置。
     - 每次调用设置有效的别名，覆盖之前的设置。
-    - 有效的别名组成：字母（区分大小写）、数字、下划线、汉字、特殊字符（ 2.1.9 支持）@!#$&*+=.|。
+    - 有效的别名组成：字母（区分大小写）、数字、下划线、汉字、特殊字符（2.1.9 支持）@!#$&*+=.|。
     - 限制：alias 命名长度限制为 40 字节。（判断长度需采用 UTF-8 编码）
 
 * tags
@@ -330,7 +330,7 @@ Note:这个接口是覆盖逻辑，而不是增加逻辑，调用此接口会覆
     * 集合成员类型要求为 NSString 类型
     * 每次调用至少设置一个 tag，覆盖之前的设置，不是新增。
     * 有效的标签组成：字母（区分大小写）、数字、下划线、汉字、特殊字符（2.1.9 支持）@!#$&*+=.|。
-    * 限制：每个 tag 命名长度限制为 40 字节，最多支持设置 1000 个 tag，但总长度不得超过 7K 字节。（判断长度需采用 UTF-8 编码）
+    * 限制：每个 tag 命名长度限制为 40 字节，最多支持设置 1000 个 tag，但总长度不得超过 7 K 字节。（判断长度需采用 UTF-8 编码）
     * 单个设备最多支持设置 1000 个 tag。App 全局 tag 数量无限制。
 
 * callbackSelector 
@@ -390,7 +390,7 @@ Note:这个接口是覆盖逻辑，而不是增加逻辑，调用此接口会覆
     * 集合成员类型要求为 NSString 类型
     * 每次调用至少设置一个 tag，覆盖之前的设置，不是新增。
     * 有效的标签组成：字母（区分大小写）、数字、下划线、汉字、特殊字符（2.1.9 支持）@!#$&*+=.|。
-    * 限制：每个 tag 命名长度限制为 40 字节，最多支持设置 1000 个 tag，但总长度不得超过 7K 字节。（判断长度需采用 UTF-8 编码）
+    * 限制：每个 tag 命名长度限制为 40 字节，最多支持设置 1000 个 tag，但总长度不得超过 7 K 字节。（判断长度需采用 UTF-8 编码）
     * 单个设备最多支持设置 1000 个 tag。App 全局 tag 数量无限制。
 
 ```
@@ -431,7 +431,7 @@ Note:这个接口是覆盖逻辑，而不是增加逻辑，调用此接口会覆
     * 集合成员类型要求为 NSString 类型
     * 每次调用至少设置一个 tag，覆盖之前的设置，不是新增。
     * 有效的标签组成：字母（区分大小写）、数字、下划线、汉字、特殊字符（2.1.9 支持）@!#$&*+=.|。
-    * 限制：每个 tag 命名长度限制为 40 字节，最多支持设置 1000 个 tag，但总长度不得超过 7K 字节。（判断长度需采用 UTF-8 编码）
+    * 限制：每个 tag 命名长度限制为 40 字节，最多支持设置 1000 个 tag，但总长度不得超过 7 K 字节。（判断长度需采用 UTF-8 编码）
     * 单个设备最多支持设置 1000 个 tag。App 全局 tag 数量无限制。
 
 * (void (^)(int iResCode, NSSet *iTags, NSString *iAlias))completionHandler
@@ -476,8 +476,8 @@ Note:这个接口是覆盖逻辑，而不是增加逻辑，调用此接口会覆
     * nil 此次调用不设置此值。
     * 空集合（[NSSet set]）表示取消之前的设置。
     * 每次调用至少设置一个 tag，覆盖之前的设置，不是新增。
-    * 有效的标签组成：字母（区分大小写）、数字、下划线、汉字、特殊字符（ 2.1.9 支持）@!#$&*+=.|。
-    * 限制：每个 tag 命名长度限制为 40 字节，最多支持设置 1000 个tag，但总长度不得超过 7K 字节。（判断长度需采用 UTF-8 编码）
+    * 有效的标签组成：字母（区分大小写）、数字、下划线、汉字、特殊字符（2.1.9 支持）@!#$&*+=.|。
+    * 限制：每个 tag 命名长度限制为 40 字节，最多支持设置 1000 个tag，但总长度不得超过 7 K 字节。（判断长度需采用 UTF-8 编码）
     * 单个设备最多支持设置 1000 个 tag。App 全局 tag 数量无限制。
 
 * callbackSelector
@@ -579,7 +579,7 @@ Note:这个接口是覆盖逻辑，而不是增加逻辑，调用此接口会覆
 
 ### 功能说明
 
-iOS 设备收到一条推送（APNs），用户点击推送通知打开应用时，应用程序根据状态不同进行处理需在 AppDelegate 中的以下两个方法中添加代码以获取apn内容
+iOS 设备收到一条推送（APNs），用户点击推送通知打开应用时，应用程序根据状态不同进行处理需在 AppDelegate 中的以下两个方法中添加代码以获取 apn 内容
 
 * 如果 App 状态为未运行，此函数将被调用，如果 launchOptions 包含 UIApplicationLaunchOptionsRemoteNotificationKey 表示用户点击 apn 通知导致 app 被启动运行；如果不含有对应键值则表示 App 不是因点击 apn 而被启动，可能为直接点击 icon 被启动或其他。
 
@@ -644,7 +644,7 @@ NSDictionary *remoteNotification = [launchOptions objectForKey: UIApplicationLau
   completionHandler(UIBackgroundFetchResultNewData);
 }
 
-#pragma mark- JPUSHRegisterDelegate // 2.1.9版新增JPUSHRegisterDelegate,需实现以下两个方法
+#pragma mark- JPUSHRegisterDelegate // 2.1.9 版新增JPUSHRegisterDelegate,需实现以下两个方法
 
 // iOS 10 Support
 - (void)jpushNotificationCenter:(UNUserNotificationCenter *)center  willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(NSInteger))completionHandler {
@@ -695,7 +695,6 @@ r1.2.5 以后。
  在方法- (BOOL)application:(UIApplication \*)application didFinishLaunchingWithOptions:(NSDictionary \*) launchOptions 加入下面的代码：
 
 ```
-
     NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
     [defaultCenter addObserver:self selector:@selector(networkDidReceiveMessage:) name:kJPFNetworkDidReceiveMessageNotification object:nil];
 ```
@@ -708,8 +707,7 @@ r1.2.5 以后。
         NSString *content = [userInfo valueForKey:@"content"];
         NSString *messageID = [userInfo valueForKey:@"_j_msgid"];
         NSDictionary *extras = [userInfo valueForKey:@"extras"]; 
-        NSString *customizeField1 = [extras valueForKey:@"customizeField1"]; //服务端传递的 Extras 附加字段，key 是自己定义的
-     
+        NSString *customizeField1 = [extras valueForKey:@"customizeField1"]; //服务端传递的 Extras 附加字段，key 是自己定义的  
     }
 ```
 
@@ -723,7 +721,7 @@ extras：获取用户自定义参数
 
 customizeField1：根据自定义 key 获取自定义的 value
 
-更多实现参考 SDK 下载压缩包中的 demo。
+更多实现参考[ SDK 下载压缩包](https://docs.jiguang.cn/jpush/resources/)中的 demo。
 
 ## 获取 RegistrationID
 
@@ -743,7 +741,6 @@ customizeField1：根据自定义 key 获取自定义的 value
 
 ```
 + (void)registrationIDCompletionHandler:(void(^)(int resCode,NSString *registrationID))completionHandler;
-
 ```
 #### 参数说明
 
@@ -789,16 +786,14 @@ customizeField1：根据自定义 key 获取自定义的 value
 可以通过 RegistrationID 来推送消息和通知， 参考文档 [Push API v3](../../server/push/rest_api_v3_push/#audience)， 当 audience 参数为 RegistrationID 时候即可根据  RegistrationID 推送。
 
 <div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">
-<p>注：
-  <br>
-  <p>要使用此功能，客户端 App 一定要集成有 r1.7.0 及以上版本的 JPush iOS SDK
+<p>注：要使用此功能，客户端 App 一定要集成有 r1.7.0 及以上版本的 JPush iOS SDK
 </div>
 
-## 设置Badge
+## 设置 Badge
 
 ### 支持的版本
 
-v1.7.4及后续版本
+v1.7.4 及后续版本
 
 ### 功能说明
 
@@ -806,6 +801,7 @@ badge 是 iOS 用来标记应用程序状态的一个数字，出现在程序图
 JPush 封装 badge 功能，允许应用上传 badge 值至 JPush 服务器，由 JPush 后台帮助管理每个用户所对应的推送 badge 值，简化了设置推送 badge 的操作。
 
 实际应用中，开发者可以直接对 badge 值做增减操作，无需自己维护用户与 badge 值之间的对应关系。
+推送消息时，只需[设置角标 +1](https://docs.jiguang.cn/jpush/server/push/rest_api_v3_push/#notification)，极光会在服务器中存储的每个用户的 badge 值上自动 +1 后下发给用户。
 
 ### API setBadge
 
@@ -821,7 +817,7 @@ JPush 封装 badge 功能，允许应用上传 badge 值至 JPush 服务器，�
 * value 取值范围：[0,99999]
 
 <div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">
-<p>设置 badge 值，本地仍须调用 UIApplication:setApplicationIconBadgeNumber 函数
+<p>本地仍须调用 UIApplication:setApplicationIconBadgeNumber 函数设置图标上显示的 badge 值
 </div>
 
 <br>
@@ -876,8 +872,7 @@ iOS 设备收到一条本地通知，用户点击通知打开应用时，应用�
 - (void)jpushNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler: (void (^)())completionHandler; 
   // if (![response.notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) { 
   // 本地通知为 response.notification 
-  // }
-	
+  // }	
 ```
 
 ### Method  AddNotification
@@ -886,7 +881,7 @@ iOS 设备收到一条本地通知，用户点击通知打开应用时，应用�
 v2.1.9 及后续版本
 
 #### 功能说明
-API 用于注册或更新推送（支持 iOS10，并兼容 iOS10 以下版本）
+API 用于注册或更新推送（支持 iOS 10，并兼容 iOS 10 以下版本）
 
 #### 接口定义
 
@@ -894,7 +889,7 @@ API 用于注册或更新推送（支持 iOS10，并兼容 iOS10 以下版本）
 + (void)addNotification:(JPushNotificationRequest *)request;
 ```
 #### 参数说明
-+ request [JPushNotificationRequest]实体类型，可传入推送的属性
++ request [JPushNotificationRequest] 实体类型，可传入推送的属性
 
 #### 调用说明
 request 中传入已有推送的 request.requestIdentifier 即更新已有的推送，否则为注册新推送。
@@ -918,7 +913,7 @@ request 中传入已有推送的 request.requestIdentifier 即更新已有的推
   trigger2.timeInterval = 3600;
   trigger2.repeat = YES;
   
-  //每周一早上 8：00 提醒，iOS10 以上支持
+  //每周一早上 8：00 提醒，iOS 10 以上支持
   NSDateComponents *components = [[NSDateComponents alloc] init];
   components.weekday = 2;
   components.hour = 8;
@@ -927,7 +922,7 @@ request 中传入已有推送的 request.requestIdentifier 即更新已有的推
   trigger3.repeat = YES;
   
   //#import <CoreLocation/CoreLocation.h>
-  //一到某地点提醒，iOS8 以上支持
+  //一到某地点提醒，iOS 8 以上支持
   CLLocationCoordinate2D cen = CLLocationCoordinate2DMake(37.335400, -122.009201);
   CLCircularRegion *region = [[CLCircularRegion alloc] initWithCenter:cen
                                                                radius:2000.0
@@ -935,7 +930,7 @@ request 中传入已有推送的 request.requestIdentifier 即更新已有的推
   JPushNotificationTrigger *trigger4 = [[JPushNotificationTrigger alloc] init];
   trigger4.region = region;
   
-  //5s 后提醒，iOS10 以下支持
+  //5s 后提醒，iOS 10 以下支持
   JPushNotificationTrigger *trigger5 = [[JPushNotificationTrigger alloc] init];
   trigger5.fireDate = [NSDate dateWithTimeIntervalSinceNow:5];
 
@@ -956,7 +951,7 @@ request 中传入已有推送的 request.requestIdentifier 即更新已有的推
 v2.1.9 及后续版本
 
 #### 功能说明
-API 用于移除待推送或已在通知中心显示的推送（支持 iOS10，并兼容 iOS10 以下版本）
+API 用于移除待推送或已在通知中心显示的推送（支持 iOS 10，并兼容 iOS 10 以下版本）
 
 #### 接口定义
 
@@ -967,7 +962,7 @@ API 用于移除待推送或已在通知中心显示的推送（支持 iOS10，�
 + identifier [JPushNotificationIdentifier]实体类型
 
 #### 调用说明
-+ iOS1 0以上 identifier 设置为 nil，则移除所有在通知中心显示推送和待推送请求，也可以通过设置 identifier.delivered 和 identifier.identifiers 来移除相应在通知中心显示推送或待推送请求，identifier.identifiers 如果设置为 nil 或空数组则移除相应标志下所有在通知中心显示推送或待推送请求；iOS10 以下 identifier 设置为 nil，则移除所有推送，identifier.delivered 属性无效，另外可以通过 identifier.notificationObj 传入特定推送对象来移除此推送。
++ iOS 10 以上 identifier 设置为 nil，则移除所有在通知中心显示推送和待推送请求，也可以通过设置 identifier.delivered 和 identifier.identifiers 来移除相应在通知中心显示推送或待推送请求，identifier.identifiers 如果设置为 nil 或空数组则移除相应标志下所有在通知中心显示推送或待推送请求；iOS 10 以下 identifier 设置为 nil，则移除所有推送，identifier.delivered 属性无效，另外可以通过 identifier.notificationObj 传入特定推送对象来移除此推送。
 
 #### 代码示例
 
@@ -975,15 +970,15 @@ API 用于移除待推送或已在通知中心显示的推送（支持 iOS10，�
 - (void)testRemoveNotification {
   JPushNotificationIdentifier *identifier = [[JPushNotificationIdentifier alloc] init];
   identifier.identifiers = @[@"sampleRequest"];
-  identifier.delivered = YES;  //iOS10 以上有效，等于 YES 则在通知中心显示的里面移除，等于 NO 则为在待推送的里面移除；iOS10 以下无效
+  identifier.delivered = YES;  //iOS 10 以上有效，等于 YES 则在通知中心显示的里面移除，等于 NO 则为在待推送的里面移除；iOS 10 以下无效
   [JPUSHService removeNotification:identifier];
 }
 
 
 - (void)testRemoveAllNotification {
-  [JPUSHService removeNotification:nil];  // iOS10 以下移除所有推送；iOS10 以上移除所有在通知中心显示推送和待推送请求
+  [JPUSHService removeNotification:nil];  // iOS 10 以下移除所有推送；iOS 10 以上移除所有在通知中心显示推送和待推送请求
 
-//  //iOS10 以上支持
+//  //iOS 10 以上支持
 //  JPushNotificationIdentifier *identifier = [[JPushNotificationIdentifier alloc] init];
 //  identifier.identifiers = nil;
 //  identifier.delivered = YES;  //等于 YES 则移除所有在通知中心显示的，等于 NO 则为移除所有待推送的
@@ -997,7 +992,7 @@ API 用于移除待推送或已在通知中心显示的推送（支持 iOS10，�
 v2.1.9 及后续版本
 
 #### 功能说明
-API 用于查找推送（支持 iOS10，并兼容 iOS10 以下版本）
+API 用于查找推送（支持 iOS 10，并兼容 iOS 10 以下版本）
 
 #### 接口定义
 
@@ -1008,7 +1003,7 @@ API 用于查找推送（支持 iOS10，并兼容 iOS10 以下版本）
 + identifier [JPushNotificationIdentifier]实体类型
 
 #### 调用说明
-- iOS10 以上可以通过设置 identifier.delivered和identifier.identifiers 来查找相应在通知中心显示推送或待推送请求，identifier.identifiers 如果设置为 nil 或空数组则返回相应标志下所有在通知中心显示推送或待推送请求；iOS10 以下 identifier.delivered 属性无效，identifier.identifiers 如果设置 nil 或空数组则返回所有未触发的推送。
+- iOS 10 以上可以通过设置 identifier.delivered和identifier.identifiers 来查找相应在通知中心显示推送或待推送请求，identifier.identifiers 如果设置为 nil 或空数组则返回相应标志下所有在通知中心显示推送或待推送请求；iOS 10 以下 identifier.delivered 属性无效，identifier.identifiers 如果设置 nil 或空数组则返回所有未触发的推送。
 - 须要设置 identifier.findCompletionHandler 回调才能得到查找结果，通过 (NSArray *results) 返回相应对象数组。
 
 #### 代码示例
@@ -1017,9 +1012,9 @@ API 用于查找推送（支持 iOS10，并兼容 iOS10 以下版本）
 - (void)testFindNotification {
   JPushNotificationIdentifier *identifier = [[JPushNotificationIdentifier alloc] init];
   identifier.identifiers = @[@"sampleRequest"];
-  identifier.delivered = YES;  //iOS10 以上有效，等于 YES 则在通知中心显示的里面查找，等于 NO 则在待推送的里面查找；iOS10 以下无效
+  identifier.delivered = YES;  //iOS 10 以上有效，等于 YES 则在通知中心显示的里面查找，等于 NO 则在待推送的里面查找；iOS10 以下无效
   identifier.findCompletionHandler = ^(NSArray *results) {
-  NSLog(@"返回结果为：%@", results); // iOS10 以下返回 UILocalNotification 对象数组，iOS10 以上根据 delivered 传入值返回 UNNotification 或 UNNotificationRequest 对象数组
+  NSLog(@"返回结果为：%@", results); // iOS 10 以下返回 UILocalNotification 对象数组，iOS10 以上根据 delivered 传入值返回 UNNotification 或 UNNotificationRequest 对象数组
 };
   [JPUSHService findNotification:identifier];
 }
@@ -1027,9 +1022,9 @@ API 用于查找推送（支持 iOS10，并兼容 iOS10 以下版本）
 - (void)testFindAllNotification {
   JPushNotificationIdentifier *identifier = [[JPushNotificationIdentifier alloc] init];
   identifier.identifiers = nil;
-  identifier.delivered = YES;  //iOS10 以上有效，等于 YES 则查找所有在通知中心显示的，等于 NO 则为查找所有待推送的；iOS10 以下无效
+  identifier.delivered = YES;  //iOS 10 以上有效，等于 YES 则查找所有在通知中心显示的，等于 NO 则为查找所有待推送的；iOS 10 以下无效
   identifier.findCompletionHandler = ^(NSArray *results) {
-  NSLog(@"返回结果为：%@", results); // iOS10 以下返回 UILocalNotification 对象数组，iOS10 以上根据 delivered 传入值返回 UNNotification 或 UNNotificationRequest 对象数组
+  NSLog(@"返回结果为：%@", results); // iOS 10 以下返回 UILocalNotification 对象数组，iOS 10 以上根据 delivered 传入值返回 UNNotification 或 UNNotificationRequest 对象数组
 };
   [JPUSHService findNotification:identifier];
 }
@@ -1054,7 +1049,7 @@ v2.1.9 版后将会被废弃，由 AddNotification 方法取代，建议及早�
                                      userInfo:(NSDictionary *)userInfo
                                     soundName:(NSString *)soundName;
 ```
-iOS 8 新参数使用 API。非 iOS8 版本或者不需要使用 iOS 8 新功能请使用上面的 API 
+iOS 8 新参数使用 API。非 iOS 8 版本或者不需要使用 iOS 8 新功能请使用上面的 API 
 
 ```
 
@@ -1101,9 +1096,9 @@ fireDate 必须大于当前时间，同时不能为空。注册通知数目必�
 ### Method  showLocalNotificationAtFront
 
 #### 功能说明
-API 用来在 APP 前台运行时，仍然将通知显示出来。(样式为 UIAlertView )
+API 用来在 APP 前台运行时，仍然将通知显示出来。（样式为 UIAlertView）
 <div style="font-size:13px;background: #ffa07a;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 10;margin-bottom: 0;">
-iOS10 以下还可继续使用，iOS10以上在 [JPUSHRegisterDelegate jpushNotificationCenter:willPresentNotification:withCompletionHandler:] 方法中调用 completionHandler(UNNotificationPresentationOptionSound | UNNotificationPresentationOptionAlert);即可，故 v2.1.9 版后将会被废弃，建议及早放弃使用。
+iOS 10 以下还可继续使用，iOS 10 以上在 [JPUSHRegisterDelegate jpushNotificationCenter:willPresentNotification:withCompletionHandler:] 方法中调用 completionHandler(UNNotificationPresentationOptionSound | UNNotificationPresentationOptionAlert);即可，故 v2.1.9 版后将会被废弃，建议及早放弃使用。
 </div>
 
 #### 接口定义
@@ -1139,7 +1134,6 @@ v2.1.9 版后将会被废弃，由 FindNotification 方法取代，建议及早�
 
 ```
 + (NSArray *)findLocalNotificationWithIdentifier:(NSString *)notificationKey;
-
 ```
 #### 参数说明
 
@@ -1151,7 +1145,6 @@ API 返回数组，包含所有和 identifierKey 匹配的 LocalNotification 对
 #### 代码示例
 
 ```
-
 NSArray *LocalNotifications = [JPUSHService findLocalNotificationWithIdentifier:@"identifierKey"];
 ```
 
@@ -1257,7 +1250,7 @@ API 用于开启 Debug 模式，显示更多的日志信息
 
 #### 功能说明
 
-API用来关闭日志信息（除了必要的错误信息）
+API 用来关闭日志信息（除了必要的错误信息）
 
 #### 接口定义
 ```
@@ -1335,7 +1328,7 @@ JPush 上该系列 api 的功能已废弃，如需页面流相关的统计请使
 v1.8.0 版本开始
 
 <div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">
-<p>温馨提示: iOS11 上要弹出获取地理位置的弹框，建议在 info.plist 配置以下 3 个 key。
+<p>温馨提示: iOS 11 上要弹出获取地理位置的弹框，建议在 info.plist 配置以下 3 个 key。
 
 <p>NSLocationAlwaysAndWhenInUseUsageDescription
 <p>NSLocationAlwaysUsageDescription
@@ -1368,7 +1361,6 @@ API 用于统计用户地理信息。
 
 #### 代码示例
 ```
-
 [JPUSHService setLatitude:100.0 longitude:100.0];
 ```
 
@@ -1394,7 +1386,7 @@ CLLocation 对象需要开发者自己调用苹果的地理位置信息 API 获�
 #### 代码示例
 
 ```
-Build Phases中Link Binary With Libraries添加CoreLocation.framework
+Build Phases 中 Link Binary With Libraries 添加 CoreLocation.framework
 应用的 plist 增加 NSLocationAlwaysUsageDescription 或 NSLocationWhenInUseUsageDescription 字段，内容为是否允许 alert 的内容
  
 #import <CoreLocation/CoreLocation.h>
@@ -1513,11 +1505,11 @@ v3.0.8 版本开始
 ```
 
 
-## Notification Service Extension相关接口
+## Notification Service Extension 相关接口
 
 ### 支持的版本
 
-Notification Service Extension SDK v1.0.0 (随 JPush iOS SDK 3.0.7 版本发布) 及以后的版本
+Notification Service Extension SDK v1.0.0（随 JPush iOS SDK 3.0.7 版本发布）及以后的版本
 
 ### 功能说明
 
@@ -1552,8 +1544,8 @@ Notification Service Extension SDK v1.0.0 (随 JPush iOS SDK 3.0.7 版本发布)
 
 ### setLogOff
 
-关闭日志
-默认为开启,建议发布时关闭以减少不必要的 IO
+关闭日志    
+默认为开启，建议发布时关闭以减少不必要的 IO
 
 #### 接口定义
 
@@ -1573,8 +1565,8 @@ Notification Service Extension SDK v1.0.0 (随 JPush iOS SDK 3.0.7 版本发布)
     </tr>
     <tr >
       <td>1005</td>
-      <td>AppKey不存在</td>
-      <td></td>
+      <td>AppKey 不存在</td>
+      <td>请到官网检查 Appkey 对应的应用是否已被删除</td>
     </tr>
     <tr >
       <td>1008</td>
@@ -1594,7 +1586,7 @@ Notification Service Extension SDK v1.0.0 (随 JPush iOS SDK 3.0.7 版本发布)
     <tr >
       <td>6002</td>
       <td>设置超时</td>
-      <td>建议重试</td>
+      <td>建议重试，一般出现在网络不佳、初始化尚未完成时</td>
     </tr>
     <tr >
       <td>6003</td>
@@ -1624,7 +1616,7 @@ Notification Service Extension SDK v1.0.0 (随 JPush iOS SDK 3.0.7 版本发布)
     <tr >
       <td>6008</td>
       <td>tag 超出总长度限制</td>
-      <td>总长度最多 7K 字节</td>
+      <td>总长度最多 7 K 字节</td>
     </tr>
     <tr >
       <td>6009</td>
@@ -1633,8 +1625,8 @@ Notification Service Extension SDK v1.0.0 (随 JPush iOS SDK 3.0.7 版本发布)
     </tr>
     <tr >
       <td>6011</td>
-      <td>10s 内设置 tag 或 alias 大于 10 次，或 10s 内设置手机号码大于 3 次</td>
       <td>短时间内操作过于频繁</td>
+      <td>10s 内设置 tag 或 alias 大于 10 次，或 10s 内设置手机号码大于 3 次</td>
     </tr>
     <tr >
       <td>6012</td>
@@ -1654,7 +1646,7 @@ Notification Service Extension SDK v1.0.0 (随 JPush iOS SDK 3.0.7 版本发布)
     <tr >
       <td>6015</td>
       <td>黑名单</td>
-      <td>用户被拉入黑名单</td>
+      <td>用户被拉入黑名单，请联系 support 解除</td>
     </tr>
     <tr >
       <td>6016</td>
@@ -1684,12 +1676,12 @@ Notification Service Extension SDK v1.0.0 (随 JPush iOS SDK 3.0.7 版本发布)
     <tr >
       <td>6021</td>
       <td>上一次的 tags 请求还在等待响应，暂时不能执行下一次请求</td>
-      <td>多次调用 tag 相关的 API ，请在获取到上一次调用回调后再做下一次操作；在未取到回调的情况下，等待 20 秒后可做下一次操作。</td>
+      <td>多次调用 tag 相关的 API，请在获取到上一次调用回调后再做下一次操作；在未取到回调的情况下，等待 20 秒后可做下一次操作。</td>
     </tr>
 	 <tr >
       <td>6022</td>
       <td>上一次的 alias 请求还在等待响应，暂时不能执行下一次请求。</td>
-      <td>多次调用 alias 相关的 API ，请在获取到上一次调用回调后再做下一次操作；在未取到回调的情况下，等待 20 秒后可做下一次操作。</td>
+      <td>多次调用 alias 相关的 API，请在获取到上一次调用回调后再做下一次操作；在未取到回调的情况下，等待 20 秒后可做下一次操作。</td>
     </tr>
     <tr >
       <td>6023</td>

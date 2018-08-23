@@ -71,7 +71,7 @@ JSON Array.
 
 + android_received Android 送达。如果无此项数据则为 null。
 + ios\_apns_sent iOS 通知推送到 APNs 成功。如果无此项数据则为 null。
-+ ios\_apns_received iOS 通知送达到设备。如果无项数据则为 null。统计该项请参考 [集成指南高级功能](../../client/iOS/ios_guide_new/#_9) 。
++ ios\_apns_received iOS 通知送达到设备。如果无项数据则为 null。统计该项请参考 [集成指南高级功能-通知送达统计](../../client/iOS/ios_guide_new/#_9) 。
 + ios\_msg_received  iOS 自定义消息送达数。如果无此项数据则为 null。
 + wp\_mpns_sent       winphone通知送达。如果无此项数据则为 null。
 
@@ -135,7 +135,7 @@ Content-Type: application/json; charset=utf-8
 + 4: 系统异常。
 
 
-## 消息统计（VIP专属接口）
+## 消息统计（VIP 专属接口）
 
 与“送达统计” API 不同的是，该 API 提供更多的针对一个 msgid 的统计数据。
 
@@ -179,7 +179,6 @@ curl -v https://report.jpush.cn/v3/messages?msg_ids=269978303 -u "7d431e42dfa6a6
    "msg_id":"269978303"
   }
 ]
-
 ```
 
 **Response Params**
@@ -198,7 +197,7 @@ JSON Array
 + ios iOS 统计数据
 	+ apns_target APNs通知推送目标数	
 	+ apns_sent APNS通知推送成功数	
-	+ apns_received APNs 通知送达数 ，统计该项请参考 [集成指南高级功能](../../client/iOS/ios_guide_new/#_9) 
+	+ apns_received APNs 通知送达数 ，统计该项请参考 [集成指南高级功能-通知送达统计](../../client/iOS/ios_guide_new/#_9) 
 	+ click 用户点击数
 	+ target 自定义消息目标数
 	+ received 自定义消息送达数
@@ -292,7 +291,7 @@ JSON Object
     <tr >
       <td>3001</td>
       <td>HTTP Basic authorization 失败。</td>
-      <td>请参考 API 文档相关说明</td>
+      <td>请检查<a href="https://docs.jiguang.cn/jpush/server/push/server_overview/#_1">调用验证</a>，Appkey 与 MasterSecret 的正确性</td>
     </tr>
     <tr >
       <td>3004</td>

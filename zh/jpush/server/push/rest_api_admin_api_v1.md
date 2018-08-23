@@ -2,7 +2,7 @@
 JPush Admin API 提供给开发者操创建/删除 app，上传证书等功能。  
 这类 API 地址统一为： https://admin.jpush.cn/v1/
 
-**注：Admin API 目前尚未完全开放，如需体验该功能，请**[联系我们](https://www.jiguang.cn/contact) 。
+**注：Admin API 目前尚未完全开放，如需体验该功能，请**[联系我们](https://www.jiguang.cn/accounts/business_contact?fromPage=push) 。
 
 
 <div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px;">
@@ -116,7 +116,7 @@ POST https://admin.jpush.cn/v1/app/{appKey}/certificate
          -u '{devKey}:{devSecret}'
 ```
 
-   如果没有dev证书或pro证书,则不需要相应的-F参数及相应password，比如: 只有dev证书。
+   如果没有 dev 证书或 pro 证书，则不需要相应的 -F 参数及相应 password，只有 dev 证书的请求示例：
 
 ```
     curl https://admin.jpush.cn/v1/app/ffbb0932c267d938941e470b/certificate
@@ -158,7 +158,7 @@ HTTP Status Code| Error Code|描述|
 200|1012|证书不合法|
 200|1013|appkey 不合法|
 200|1014|参数中没有证书文件|
-200|1015|app删除失败|
+200|1015|app 删除失败|
 405|4001|只支持 HTTP Post 方法|
 400|4002|请求参数为空|
 400|4003|请求参数非法|

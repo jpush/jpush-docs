@@ -45,7 +45,7 @@
 
 ### Android SDK 版本
 
-目前 SDK 只支持 Android 2.3 或以上版本的手机系统。富媒体信息流功能则需 Android3.0 或以上版本的系统。
+目前 SDK 只支持 Android 2.3 或以上版本的手机系统。富媒体信息流功能则需 Android 3.0 或以上版本的系统。
 
 
 ## jcenter 自动集成步骤
@@ -134,7 +134,7 @@
 
 ***注*** : 如果在添加以上 abiFilter 配置之后 android Studio 出现以下提示：
 
-        NDK integration is deprecated in the current plugin. Consider trying the new experimental plugin
+    NDK integration is deprecated in the current plugin. Consider trying the new experimental plugin
 
 则在 Project 根目录的 gradle.properties 文件中添加：
 
@@ -213,14 +213,12 @@ defaultConfig {
       applicationId "cn.jpush.example" // <--您应用的包名
       ……
  }
-
 ```
 在 AndroidManifest 中使用 ${applicationId} 引用 gradle 中定义的包名
 
 **AndroidManifest 示例**
 
 ```
-
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="您应用的包名"
@@ -247,7 +245,7 @@ defaultConfig {
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
     <!-- Optional. Required for location feature -->
-    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" /> <!-- 用于开启 debug 版本的应用在 6.0 系统上 层叠窗口权限 -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" /> <!-- 用于开启 debug 版本的应用在 6.0 系统上的层叠窗口权限 -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -448,11 +446,11 @@ defaultConfig {
     </tr>
     <tr >
       <td>VIBRATE</td>
-      <td>允许应用震动。 该权限从 JPush 3.1.5版本开始变为可选权限，在 3.1.5 前版本为必须权限。</td>
+      <td>允许应用震动。 该权限从 JPush 3.1.5 版本开始变为可选权限，在 3.1.5 前版本为必须权限。</td>
     </tr>
     <tr >
       <td>MOUNT_UNMOUNT_FILESYSTEMS</td>
-      <td>允许应用挂载/卸载 外部文件系统。</td>
+      <td>允许应用挂载/卸载外部文件系统。</td>
     </tr>
     <tr >
       <td>ACCESS_NETWORK_STATE</td>
@@ -463,7 +461,7 @@ defaultConfig {
 
 ### 集成 JPush Android SDK 的混淆
 
-+ 请下载 4.x 及以上版本的 [proguard.jar](http://sourceforge.net/projects/proguard/files/proguard/)， 并替换你 Android Sdk "tools\proguard\lib\proguard.jar"
++ 请下载 4.x 及以上版本的 [proguard.jar](http://sourceforge.net/projects/proguard/files/proguard/)， 并替换你 Android SDK "tools\proguard\lib\proguard.jar"
 
 + 请在工程的混淆文件中添加以下配置：
 
@@ -478,7 +476,7 @@ defaultConfig {
         -keep class cn.jiguang.** { *; }
 
 
-+ 2.0.5 ~ 2.1.7 版本有引入 gson 和 protobuf ，增加排除混淆的配置。（2.1.8 版本不需配置）
++ 2.0.5 ~ 2.1.7 版本有引入 gson 和 protobuf，增加排除混淆的配置。（2.1.8 版本不需配置）
 
         #==================gson && protobuf==========================
         -dontwarn com.google.**
@@ -505,7 +503,7 @@ JPush SDK 提供的 API 接口，都主要集中在 cn.jpush.android.api.JPushIn
 
 #### 添加统计代码
 
-+ 参考文档： [统计分析 API](http://docs.jiguang.cn/jpush/client/Android/android_api/#api_2)
++ 参考文档： [统计分析 API](http://docs.jiguang.cn/jpush/client/Android/android_api/#api_4)
 
 #### 调用示例代码（参考 example 项目）
 
@@ -537,9 +535,7 @@ JPush SDK 提供的 API 接口，都主要集中在 cn.jpush.android.api.JPushIn
 
 ```
 [JPushInterface] action:init
-
 .......
-
 [PushService] Login succeed!
 ```
 

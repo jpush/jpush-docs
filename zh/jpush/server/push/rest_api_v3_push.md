@@ -175,6 +175,7 @@ JPush 当前支持 Android, iOS, Windows Phone 三个平台的推送。其关键
 
 <div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px;  padding-bottom: 0;margin-bottom: 0;">
 <p>如果目标平台为 iOS 平台 需要在 options 中通过 apns_production 字段来设定推送环境。True 表示推送生产环境，False 表示要推送开发环境； 如果不指定则为推送生产环境</p>
+<p>调用一次 API 只能推送给一个 iOS 环境，无法使开发环境和生产环境的设备同时收到同一条消息</p>
 </div>
 <br>
 
@@ -240,7 +241,7 @@ JPush 当前支持 Android, iOS, Windows Phone 三个平台的推送。其关键
 			<td>JSON Array</td>
 			<td>注册ID</td>
 			<td>数组。多个注册 ID 之间是 OR 关系，即取并集。</td>
-			<td>设备标识。一次推送最多 1000 个。</td>
+			<td>设备标识。一次推送最多 1000 个。客户端集成 SDK 后可获取到该值。</td>
 		</tr>
 		
 		<tr >
@@ -409,15 +410,15 @@ Android 平台上的通知，JPush SDK 按照一定的通知栏样式展示。
 			<td>builder_id</td>
 			<td>int</td>
 			<td>可选</td>
-			<td>通知栏样式ID</td>
-			<td>Android SDK 可设置通知栏样式，这里根据样式 ID 来指定该使用哪套样式。</td>
+			<td>通知栏样式 ID</td>
+			<td>Android SDK 可<a href="https://docs.jiguang.cn/jpush/client/Android/android_api/#api_8">设置通知栏样式</a>，这里根据样式 ID 来指定该使用哪套样式。</td>
 		</tr>
 		<tr >
 			<td>priority</td>
 			<td>int</td>
 			<td>可选</td>
 			<td>通知栏展示优先级</td>
-			<td>默认为0，范围为 -2～2 ，其他值将会被忽略而采用默认。</td>
+			<td>默认为 0，范围为 -2～2 ，其他值将会被忽略而采用默认。</td>
 		</tr>
 		<tr >
 			<td>category</td>
@@ -438,7 +439,7 @@ Android 平台上的通知，JPush SDK 按照一定的通知栏样式展示。
 			<td>int</td>
 			<td>可选</td>
 			<td>通知提醒方式</td>
-			<td>可选范围为 -1 ～ 7 ，对应 Notification.DEFAULT_ALL = -1 或者 Notification.DEFAULT_SOUND = 1, Notification.DEFAULT_VIBRATE = 2, Notification.DEFAULT_LIGHTS = 4 的任意 “or” 组合。默认按照 -1 处理。  </td>
+			<td>可选范围为 -1～7 ，对应 Notification.DEFAULT_ALL = -1 或者 Notification.DEFAULT_SOUND = 1, Notification.DEFAULT_VIBRATE = 2, Notification.DEFAULT_LIGHTS = 4 的任意 “or” 组合。默认按照 -1 处理。  </td>
 		</tr>
 		<tr >
 			<td>big_text</td>
@@ -459,14 +460,14 @@ Android 平台上的通知，JPush SDK 按照一定的通知栏样式展示。
 			<td>string</td>
 			<td>可选</td>
 			<td>大图片通知栏样式</td>
-			<td>当 style = 3 时可用，可以是网络图片 url，或本地图片的 path，目前支持.jpg 和.png 后缀的图片。图片内容会被通知栏以大图片的形式展示出来。如果是 http／https 的 url，会自动下载；如果要指定开发者准备的本地图片就填 sdcard 的相对路径。支持 api 16 以上的 rom。</td>
+			<td>当 style = 3 时可用，可以是网络图片 url，或本地图片的 path，目前支持 .jpg 和 .png 后缀的图片。图片内容会被通知栏以大图片的形式展示出来。如果是 http／https 的 url，会自动下载；如果要指定开发者准备的本地图片就填 sdcard 的相对路径。支持 api 16 以上的 rom。</td>
 		</tr>
 		<tr >
 			<td>extras</td>
 			<td>JSON Object</td>
 			<td>可选</td>
 			<td>扩展字段</td>
-			<td>这里自定义 JSON 格式的 Key/Value 信息，以供业务使用。</td>
+			<td>这里自定义 JSON 格式的 Key / Value 信息，以供业务使用。</td>
 		</tr>
 	</table>
 </div>
@@ -516,21 +517,21 @@ iOS 平台上 APNs 通知结构。
 			<td>string或JSON Object</td>
 			<td>必填</td>
 			<td width="20%">通知内容</td>
-			<td>这里指定内容将会覆盖上级统一指定的 alert 信息；内容为空则不展示到通知栏。支持字符串形式也支持官方定义的<a href="https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/PayloadKeyReference.html">alert payload</a> 结构</td>
+			<td>这里指定内容将会覆盖上级统一指定的 alert 信息；内容为空则不展示到通知栏。支持字符串形式也支持官方定义的<a href="https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/PayloadKeyReference.html"> alert payload</a> 结构，在该结构中包含 title 和 subtitle 等官方支持的 key</td>
 		</tr>
 		<tr >
 			<td>sound</td>
 			<td>string</td>
 			<td>可选</td>
 			<td width="20%">通知提示声音</td>
-			<td>如果无此字段，则此消息无声音提示；有此字段，如果找到了指定的声音就播放该声音，否则播放默认声音,如果此字段为空字符串，iOS 7 为默认声音，iOS 8 及以上系统为无声音。(消息) 说明：JPush 官方 API Library (SDK) 会默认填充声音字段。提供另外的方法关闭声音。</td>
+			<td>如果无此字段，则此消息无声音提示；有此字段，如果找到了指定的声音就播放该声音，否则播放默认声音，如果此字段为空字符串，iOS 7 为默认声音，iOS 8 及以上系统为无声音。说明：JPush 官方 SDK 会默认填充声音字段，提供另外的方法关闭声音，详情查看各 SDK 的源码。</td>
 		</tr>
 		<tr >
 			<td>badge</td>
 			<td>int</td>
 			<td>可选</td>
 			<td width="20%">应用角标</td>
-			<td>如果不填，表示不改变角标数字；否则把角标数字改为指定的数字；为 0 表示清除。JPush 官方 API Library(SDK) 会默认填充badge值为 "+1",详情参考：<a href="http://blog.jpush.cn/ios_apns_badge_plus/">badge +1</a></td>
+			<td>如果不填，表示不改变角标数字，否则把角标数字改为指定的数字；为 0 表示清除。JPush 官方 SDK 会默认填充 badge 值为 "+1",详情参考：<a href="http://blog.jpush.cn/ios_apns_badge_plus/">badge +1</a></td>
 		</tr>
 		<tr >
 			<td>content-available</td>
@@ -558,7 +559,7 @@ iOS 平台上 APNs 通知结构。
 			<td>JSON Object</td>
 			<td>可选</td>
 			<td width="20%">附加字段</td>
-			<td>这里自定义 Key/value 信息，以供业务使用。</td>
+			<td>这里自定义 Key / value 信息，以供业务使用。</td>
 		</tr>
 	</table>
 </div>
@@ -568,8 +569,6 @@ iOS 平台上 APNs 通知结构。
 <div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px;">
 <p>iOS 通知 JPush 要转发给 APNs 服务器。APNs 协议定义通知长度为 2048 字节。</p>
 <p>JPush 因为需要重新组包，并且考虑一点安全冗余，要求 "iOS":{ } 及大括号内的总体长度不超过：2000 个字节。JPush 使用 utf-8 编码，所以一个汉字占用 3 个字节长度。</p>
-<br>
- 
 </div>
 <br>
 
@@ -591,7 +590,7 @@ iOS 平台上 APNs 通知结构。
 }				 
 ```
 
-**客户端收到apns**
+**客户端收到 apns**
 
 ```
 {
@@ -720,10 +719,9 @@ iOS 平台上，此部分内容在推送应用内消息通道（非 APNS）获�
 ```
 Android 1.6.2 及以下版本 接收 notification 与 message 并存（即本次 api 调用同时推送通知和消息）的离线推送， 只能收到通知部分，message 部分没有透传给 App。
 
-Android 1.6.3 及以上SDK 版本已做相应调整，能正常接收同时推送通知和消息的离线记录。
+Android 1.6.3 及以上 SDK 版本已做相应调整，能正常接收同时推送通知和消息的离线记录。
 
 iOS 1.7.3 及以上的版本才能正确解析 v3 的 message，但是无法解析 v2 推送通知同时下发的应用内消息。
-
 ```
 
 ## sms_message：短信补充
@@ -735,7 +733,7 @@ iOS 1.7.3 及以上的版本才能正确解析 v3 的 message，但是无法解�
 
 <br>
 
-用于设置短信推送内容以及短信发送的延迟时间。手机接收号码，开发者需要先把用户的手机号码与设备的registration id 匹配。绑定方法：[服务端-Device-更新设备](rest_api_v3_device/#device)
+用于设置短信推送内容以及短信发送的延迟时间。手机接收号码，开发者需要先把用户的手机号码与设备的registration id 匹配。绑定方法：[服务端-Device-更新设备](rest_api_v3_device/#_3)；[Android API - 设置手机号码](https://docs.jiguang.cn/jpush/client/Android/android_api/#_61)；[iOS API - 设置手机号码](https://docs.jiguang.cn/jpush/client/iOS/ios_api/#_151)
 
 **注：** 应运营商规定，短信内容需审核。自 2018 年 3 月起，短信补充的用户必须提交短信模板，审核通过后即可使用。因此推送时需要填写 temp\_id （模版有设置参数则需要填写 temp\_para）。参考 [控制台设置短信模板](https://docs.jiguang.cn/jsms/guideline/JSMS_consoleguide/#_12) 和 [短信模板 API](https://docs.jiguang.cn/jpush/server/push/server_overview/) 。
 
@@ -753,7 +751,7 @@ iOS 1.7.3 及以上的版本才能正确解析 v3 的 message，但是无法解�
 			<td>delay_time</td>
 			<td>int</td>
 			<td>必填</td>
-			<td>单位为秒，不能超过 24 小时。设置为0，表示立即发送短信。该参数仅对 android 和 iOS 平台有效，Winphone 平台则会立即发送短信。</td>
+			<td>单位为秒，不能超过 24 小时。设置为 0，表示立即发送短信。该参数仅对 android 和 iOS 平台有效，Winphone 平台则会立即发送短信。</td>
 		</tr>
 		<tr >
 			<td>temp_id</td>
@@ -947,7 +945,7 @@ POST https://api.jpush.cn/v3/push/validate
 		<tr >
 			<td>1002</td>
 			<td>缺少了必须的参数</td>
-			<td>必须改正</td>
+			<td>必须改正，检查要求必填的参数是否未写</td>
 			<td>400</td>
 		</tr>
 		<tr >
@@ -959,7 +957,7 @@ POST https://api.jpush.cn/v3/push/validate
 		<tr >
 			<td>1004</td>
 			<td>验证失败</td>
-			<td>必须改正。详情请看：<a href="./#_5">调用验证</a></td>
+			<td>必须改正。检查 Appkey 与 MasterSecret，详情请看：<a href="./#_5">调用验证</a></td>
 			<td>401</td>
 		</tr>
 		<tr >
@@ -974,19 +972,19 @@ POST https://api.jpush.cn/v3/push/validate
 		<tr >
 			<td>1008</td>
 			<td>app_key 参数非法</td>
-			<td>必须改正</td>
+			<td>必须改正，请仔细对比你所传的 Appkey 是否与应用信息中的一致，是否多了空格</td>
 			<td>400</td>
 		</tr>
 		<tr >
 			<td>1009</td>
 			<td>推送对象中有不支持的 key</td>
-			<td>必须改正</td>
+			<td>必须改正，提示：Android 属性不支持 sound 字段；是否将 content-available 错误地写为 content_available，builder_id 错误地写为 build_id；除文档中指定的字段外，还需传递自定义的 key 请在 extras 中填写。</td>
 			<td>400</td>
 		</tr>
 		<tr >
 			<td>1011</td>
 			<td>没有满足条件的推送目标</td>
-			<td>请检查 audience</td>
+			<td>请检查是否有设备满足 audience 的目标条件（别名与标签是否设置成功）；若客户端未完成 SDK 集成，服务端先做测试，需下载 demo 安装到手机上再做推送；第一次集成成功，若采用广播推送请等待 10 分钟。</td>
 			<td>400</td>
 		</tr>
 		<tr >
@@ -998,13 +996,13 @@ POST https://api.jpush.cn/v3/push/validate
 		<tr >
 			<td>1030</td>
 			<td>内部服务超时</td>
-			<td>稍后重试</td>
+			<td>稍后重试，若多次重试无法成功，请联系 support@jpush.cn</td>
 			<td>503</td>
 		</tr>
 		<tr>
 			<td>2002</td>
 			<td>API调用频率超出该应用的限制</td>
-			<td>联系极光商务或技术支持开通更高的 API 调用频率</td>
+			<td>注意<a href="https://docs.jiguang.cn/jpush/server/push/server_overview/#api_1"> API 频率控制</a>，可联系极光商务或技术支持开通更高的 API 调用频率</td>
 			<td>429</td>
 		</tr>
 		<tr>
@@ -1016,7 +1014,7 @@ POST https://api.jpush.cn/v3/push/validate
 		<tr>
 			<td>2004</td>
 			<td>无权限执行当前操作</td>
-			<td>必须改正。当前调用 API 的源 ip 地址不在该应用的 ip 白名单中。</td>
+			<td>必须改正。当前调用 API 的源 ip 地址不在该应用的 ip 白名单中，请在官网应用设置中配置 IP 白名单。</td>
 			<td>403</td>
 		</tr>
 		<tr>
@@ -1033,7 +1031,7 @@ POST https://api.jpush.cn/v3/push/validate
 + HTTP 返回码：[HTTP-Status-Code](http_status_code/)
 + 获取推送送达 API：[Report-API](rest_api_v3_report)
 + 老版本 Push API：[Push API v2](../old/rest_api_v2_push)
-+ HTTP 规范参考：[HTTP基本认证](http://zh.wikipedia.org/zh/HTTP基本认证)
-+ Apple APNs 规范：[Apple Push Notification Service](https://developer.apple.com/library/ios/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW12)
++ HTTP 规范参考：[HTTP 基本认证](http://zh.wikipedia.org/zh/HTTP基本认证)
++ Apple APNs 规范：[Apple Push Notification Service](https://developer.apple.com/library/archive/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html#//apple_ref/doc/uid/TP40008194-CH8-SW1)
 + Microsoft MPNs 规范：[Push notifications for Windows Phone 8](http://msdn.microsoft.com/en-us/library/windowsphone/develop/ff402558(v=vs.105).aspx)
 

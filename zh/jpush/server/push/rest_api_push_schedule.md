@@ -86,7 +86,7 @@ Authorization: Basic base64_auth_string
 + push
 	+ 参考 [ push api ](rest_api_v3_push) 中各个字段。
 + name
-	+ 表示schedule 任务的名字，由 schedule-api 在用户成功创建 schedule 任务后返回，不得超过 255 字节，由汉字、字母、数字、下划线组成。
+	+ 表示 schedule 任务的名字，由 schedule-api 在用户成功创建 schedule 任务后返回，不得超过 255 字节，由汉字、字母、数字、下划线组成。
 + enabled
 	+ 表示任务当前状态，布尔值，必须为 true 或 false，创建任务时必须为 true。
 + trigger 
@@ -152,16 +152,16 @@ POST /v3/schedules
 
 ```
 {
- "name": "&#23450;时推送示例", 
+ "name": "定时推送示例", 
  "enabled": true, 
  "trigger": { 
      "periodical": { 
        "start":"2014-09-17 12:00:00", 
        "end": "2014-10-18 12:00:00", 
        "time": "12:00:00", 
-       "time_unit": "WEEK", //month, week, day, &#22823;小写不敏感 
+       "time_unit": "WEEK", //month, week, day；大小写不敏感 
        "frequency": 2, 
-       "point": ["WED","FRI"] //time_unit&#20026;day 时候，point 不能存在。WED,FRI 大小写不敏感。month:"01","02" 
+       "point": ["WED","FRI"] //time_unit 为 day 的时候，point 不能存在。WED,FRI 大小写不敏感。month:"01","02" 
      }
   },
  "push": {
@@ -183,7 +183,7 @@ POST /v3/schedules
 ***Request Data 说明***
 
 + 由于定时任务相对简单，我们例中只对定期任务进行说明
-+ 以上表示创建一个定期任务，起始生效时间必须'2014-09-17 12:00:00 之后'第一个 time 时间点，过期时间为'2014-10-18 12:00:00'，在有效期内每两周的周三、周五中午 12 点分别执行一次
++ 以上表示创建一个定期任务，起始生效时间必须 '2014-09-17 12:00:00 之后'第一个 time 时间点，过期时间为 '2014-10-18 12:00:00'，在有效期内每两周的周三、周五中午 12 点分别执行一次
 + 定期任务首次创建时的触发时间不得晚于其 end 中指定的时间。否则创建失败
 + 定期任务（包括定时任务）首次创建时其 enabled 项必须为 true。不能创建 enabled:false 的任务，否则创建失败
 + push 必须为有效合法的 push 动作，否则创建失败。
@@ -200,7 +200,7 @@ HTTP/1.1 200 CREATED
 ```
 {
     "schedule_id":"0eac1b80-c2ac-4b69-948b-c65b34b96512",
-    "name":"&#23450;时推送示例"    //长度最大 255 字节，数字、字母、下划线、汉字。
+    "name":"定时推送示例"    //长度最大 255 字节，数字、字母、下划线、汉字。
 }
 ```
 
@@ -221,13 +221,13 @@ HTTP/1.1 400 BAD REQUEST
 }
 ```
 
-## 获取有效的schedule列表
+## 获取有效的 Schedule 列表
 
 ```
 GET https://api.jpush.cn/v3/schedules?page=
 ```
 
-获取当前有效（endtime未过期）的 schedule 列表
+获取当前有效（endtime 未过期）的 schedule 列表
 
 ### Example Request
 
@@ -241,7 +241,7 @@ GET /v3/schedules?page=
 ```
 
 + 返回当前请求页的详细的 schedule-task 列表，如未指定 page 则 page 为 1。
-+ 排序规则:创建时间,由 schedule-service 完成。
++ 排序规则：创建时间，由 schedule-service 完成。
 + 如果请求页数大于总页数，则 page 为请求值，schedules 为空。
 + 每页最多返回 50 个 task，如请求页实际的 task 的个数小于 50，则返回实际数量的 task。
 
@@ -255,15 +255,15 @@ HTTP/1.1 200 OK
 ```
 ```
 {
-    "total_count":1000,  //&#25968;字 表示总数
-    "total_pages":5,      //&#24635;页数。
-    "page":4,     //&#24403;前为第四页。
+    "total_count":1000,  //表示总数
+    "total_pages":5,      //总页数。
+    "page":4,     //当前为第四页。
     "schedules":[
-        {"schedule_id":"0eac1b80-c2ac-4b69-948b-c65b34b96512","name":"","enabled":...},{}, //&#35814;细信息列表。
+        {"schedule_id":"0eac1b80-c2ac-4b69-948b-c65b34b96512","name":"","enabled":...},{}, //详细信息列表。
     ]
 }
 ```
-+ 以上表示总共 1000 个 schedule-task, 总共 5 页，当前为第 4 页，包含 50 个 schedule-task 的信息。
++ 以上表示总共 1000 个 schedule-task，总共 5 页，当前为第 4 页，包含 50 个 schedule-task 的信息。
 + 返回的 schedules 为 schedule-task 的详细信息列表。
 
 ## 获取指定的定时任务
@@ -298,7 +298,7 @@ HTTP/1.1 200 OK
 ```
 { 
       "schedule_id":"0eac1b80-c2ac-4b69-948b-c65b34b96512"
-      "name": "&#23450;时推送示例", 
+      "name": "定时推送示例", 
       "enabled": true, 
       "trigger": {
          ...
@@ -340,7 +340,7 @@ PUT /v3/schedules/{schedule_id}
 
 ```
 { 
-  "name": "&#23450;时推送示例", 
+  "name": "定时推送示例", 
   "enabled": true, 
   "trigger": {
      "periodical": { 
@@ -356,7 +356,7 @@ PUT /v3/schedules/{schedule_id}
         "platform":"ios",
         "options":{"apns_production":"false"},
         "audience":"all",
-        "notification" : {"alert":"&#23450;时任务更新"}
+        "notification" : {"alert":"定时任务更新"}
    }
 }
 ```
@@ -373,7 +373,7 @@ PUT /v3/schedules/{schedule_id}
           "platform":"android",
           "options":{"apns_production":"false"},
           "audience":"all",
-          "notification" : {"alert":"&#23450;时任务更新"}
+          "notification" : {"alert":"定时任务更新"}
        }
     }
     ## 此处的 push 更新后必须仍是有效的，否则也会更新失败。
@@ -415,7 +415,7 @@ HTTP/1.0 200 CREATED
 
 ```
 { 
-  "name": "&#23450;时推送示例", 
+  "name": "定时推送示例", 
   "enabled": true, 
   "trigger": { 
     "periodical": { 
@@ -430,7 +430,7 @@ HTTP/1.0 200 CREATED
    "platform":"andiro", 
    "options":{"apns_production":"false"}, 
    "audience":"all", 
-   "notification" : {"alert":"&#23450;时任务更新"}
+   "notification" : {"alert":"定时任务更新"}
    }
 }
 ```
@@ -516,9 +516,9 @@ HTTP/1.0 404 Not Found
 		<tr >
 			<td>8104</td>
 			<td>404</td>
-			<td>请求的 schedule 任务，不存在</td>
+			<td>请求的 schedule 任务不存在</td>
 			<td>Request schedule operation doesn't exist</td>
-			<td>请求的定时 api 操作不存在</td>
+			<td>对应的任务已发送，或 schedule id 错误</td>
 		</tr>
 		<tr >
 			<td>8101</td>
@@ -559,5 +559,6 @@ HTTP/1.0 404 Not Found
 
 ## 调用限制
 + 定时最多有效数（当前未过期数）与周期最多有效数（当前未过期数）总数 100 个。超过后失败。
++ VIP 客户可申请提高总数上限，最高可达 2000 个。
 + 最大频率当前为 100/分。
 + periodical 任务的最大跨度为 12 个月。

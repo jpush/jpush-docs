@@ -44,7 +44,7 @@
 
 JPush SDK 提供的推送服务是默认开启的。
 
-开发者 App 可以通过调用停止推送服务API来停止极光推送服务。当又需要使用极光推送服务时，则必须要调用恢复推送服务 API。
+开发者 App 可以通过调用停止推送服务 API 来停止极光推送服务。当又需要使用极光推送服务时，则必须要调用恢复推送服务 API。
 
 <div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px;">
 <p> 本功能是一个完全本地的状态操作。也就是说：停止推送服务的状态不会保存到服务器上。
@@ -60,7 +60,7 @@ JPush SDK 提供的推送服务是默认开启的。
 调用了本 API 后，JPush 推送服务完全被停止。具体表现为：
 
 + 收不到推送消息
-+ 极光推送所有的其他 API 调用都无效,不能通过 JPushInterface.init 恢复，需要调用 resumePush 恢复。
++ 极光推送所有的其他 API 调用都无效，不能通过 JPushInterface.init 恢复，需要调用 resumePush 恢复。
 
 #### 接口定义
 
@@ -308,7 +308,7 @@ SDK 对自定义消息，只是传递，不会有任何界面上的展示。
 + JPushInterface.EXTRA\_NOTIFICATION\_ID
 	+ SDK 1.3.5 以上版本支持。
 	+ 通知栏的 Notification ID，可以用于清除 Notification
-	+ 如果服务端内容（alert）字段为空，则 Notification ID 为0
+	+ 如果服务端内容（alert）字段为空，则 Notification ID 为 0
 
 			Bundle bundle = intent.getExtras();
 			int notificationId = bundle.getInt(JPushInterface.EXTRA_NOTIFICATION_ID);
@@ -439,7 +439,7 @@ SDK 对自定义消息，只是传递，不会有任何界面上的展示。
 	"cn.jpush.android.intent.NOTIFICATION_CLICK_ACTION"
 
 ##### 功能描述
-用户点击了通知栏中自定义的按钮。(SDK 3.0.0 以上版本支持)
+用户点击了通知栏中自定义的按钮。（SDK 3.0.0 以上版本支持）
 
 使用普通通知的开发者不需要配置此 receiver action。只有开发者使用了 MultiActionsNotificationBuilder 构建携带按钮的通知栏的通知时，可通过该 action 捕获到用户点击通知栏按钮的操作，并自行处理。
 
@@ -509,7 +509,7 @@ JPush 服务的连接状态发生变化。（注：不是指 Android 系统的�
 
 	    if (JPushInterface.ACTION_REGISTRATION_ID.equals(intent.getAction())) {
 	        String regId = bundle.getString(JPushInterface.EXTRA_REGISTRATION_ID);
-	        Log.d(TAG, "[MyReceiver] 接收Registration Id : " + regId);
+	        Log.d(TAG, "[MyReceiver] 接收 Registration Id : " + regId);
 	    }else if (JPushInterface.ACTION_MESSAGE_RECEIVED.equals(intent.getAction())) {
 	        Log.d(TAG, "收到了自定义消息。消息内容是：" + bundle.getString(JPushInterface.EXTRA_MESSAGE));
 	        // 自定义消息不会展示在通知栏，完全要开发者写代码去处理
@@ -527,15 +527,15 @@ JPush 服务的连接状态发生变化。（注：不是指 Android 系统的�
 	    }
 	}
 	
-更多示例代码请参考 Android SDK 压缩包中的 example 工程。
+更多示例代码请参考[ Android SDK 压缩包](https://docs.jiguang.cn/jpush/resources/)中的 example 工程。
 	
 ## 别名与标签 API	
 
 ### 功能说明
 
 ```
-温馨提示，设置标签别名请注意处理 call back 结果。只有设置成功，
-才可以向目标推送。否则服务器 API 会返回 1011 错误。
+温馨提示，设置标签别名请注意处理 call back 结果，只有设置成功才可以向目标推送，否则服务器 API 会返回 1011 错误。
+从 3.0.7 版本开始，别名和标签是异步回调，注意在 Androidmanifest 里面配置自定义广播接收器
 ```	
 
 #### 别名 alias
@@ -546,9 +546,9 @@ JPush 服务的连接状态发生变化。（注：不是指 Android 系统的�
 
 同一个应用程序内，对不同的用户，建议取不同的别名。这样，尽可能根据别名来唯一确定用户。
 
-系统不限定一个别名只能指定一个用户。如果一个别名被指定到了多个用户，当给指定这个别名发消息时，[服务器端API](../../server/push/rest_api_v3_push)会同时给这多个用户发送消息。
+系统不限定一个别名只能指定一个用户。如果一个别名被指定到了多个用户，当给指定这个别名发消息时，[服务器端 API ](../../server/push/rest_api_v3_push)会同时给这多个用户发送消息。
 
-举例：在一个用户要登录的游戏中，可能设置别名为 userid。游戏运营时，发现该用户 3 天没有玩游戏了，则根据 userid 调用[服务器端API](../../server/push/rest_api_v3_push)发通知到客户端提醒用户。
+举例：在一个用户要登录的游戏中，可能设置别名为 userid。游戏运营时，发现该用户 3 天没有玩游戏了，则根据 userid 调用[服务器端 API ](../../server/push/rest_api_v3_push)发通知到客户端提醒用户。
 
 #### 标签 tag
 
@@ -633,7 +633,6 @@ JPush 服务的连接状态发生变化。（注：不是指 Android 系统的�
 + sequence
 	+ 用户自定义的操作序列号，同操作结果一起返回，用来标识一次操作的唯一性。
 
-``
 ### Method - getAlias
 
 调用此 API 来查询别名。
@@ -824,7 +823,7 @@ JPush 服务的连接状态发生变化。（注：不是指 Android 系统的�
 2. 新的 tag 与 alias 操作回调会在开发者定义的该类的子类中触发。
 3. 手机号码设置的回调会在开发者定义的该类的子类中触发。
 
-该类为回调父类，开发者需要继承该类并在 Manifest 中配置您对应实现的类，接口操作的结果会在您配置的类中的如下方法中回调。
+该类为回调父类，开发者需要继承该类并[在 Manifest 中配置](https://docs.jiguang.cn/jpush/client/Android/android_guide/#_5)您对应实现的类，接口操作的结果会在您配置的类中的如下方法中回调。
 
 ### Method - onTagOperatorResult
 
@@ -1147,8 +1146,8 @@ alias 相关的操作会在此方法中回调结果。
 
 #### 接口定义
 
-	//SDK 初次注册成功后，开发者通过在自定义的 Receiver 里监听 Action - cn.jpush.android.intent.REGISTRATION 来获取对应的 RegistrationID。注册成功后，也可以通过此函数获取
-	public static String getRegistrationID(Context context)
+	SDK 初次注册成功后，开发者通过在自定义的 Receiver 里监听 Action - cn.jpush.android.intent.REGISTRATION 来获取对应的 RegistrationID。
+	注册成功后，也可以通过函数 public static String getRegistrationID(Context context) 获取
 	
 
 
@@ -1156,7 +1155,7 @@ alias 相关的操作会在此方法中回调结果。
 
 #### 通过 RegistrationID 进行点对点推送
 
-可以通过 RegistrationID 来推送消息和通知，参考文档 Push API v2，当 receiver_type = 5 并且设置 receiver_value 为 RegistrationID 时候即可根据 RegistrationID 推送。
+可以通过 RegistrationID 来推送消息和通知，参考文档 Push API v3，[设置 Audience ](https://docs.jiguang.cn/jpush/server/push/rest_api_v3_push/#audience)为 RegistrationID 时即可根据 RegistrationID 推送。
 
 注：要使用此功能，客户端 App 一定要集成有 1.6.0 及以上版本的 JPush Android SDK。
 
@@ -1262,7 +1261,7 @@ alias 相关的操作会在此方法中回调结果。
 	+ int notificationId：通知 ID
 
 ```
- 此 notificationId 来源于 intent 参数 JPushInterface.EXTRA_NOTIFICATION_ID，可参考文档 接收推送消息 Receiver
+此 notificationId 来源于 intent 参数 JPushInterface.EXTRA_NOTIFICATION_ID，可参考文档：接收推送消息 Receiver
 ```
 
 ## 设置允许推送时间 API
@@ -1294,7 +1293,7 @@ alias 相关的操作会在此方法中回调结果。
 
 + Context context 应用的 ApplicationContext
 + Set<Integer> days  0 表示星期天，1 表示星期一，以此类推。 （ 7 天制，Set 集合里面的 int 范围为 0 到 6 ）
-	+ set 的值为 null，则任何时间都可以收到通知，set 的 size 为 0，则表示任何时间都收不到通知.
+	+ set 的值为 null，则任何时间都可以收到通知，set 的 size 为 0，则表示任何时间都收不到通知。
 + int startHour 允许推送的开始时间 （ 24 小时制：startHour 的范围为 0 到 23 ）
 + int endHour 允许推送的结束时间 （ 24 小时制：endHour 的范围为 0 到 23 ）
 
@@ -1428,7 +1427,7 @@ public static void setPushNotificationBuilder(Integer notificationBuilderId, Bas
 
 3.0.0 版本新增 MultiActionsNotificationBuilder，即带按钮的通知栏构建类，可通过该 api 设置。
 
-设置时，开发者自己维护 notificationBuilderId 这个编号，下发通知时使用 builder_id 指定该编号，从而 Push SDK 会调用开发者应用程序里设置过的指定编号的通知栏构建类，来定制通知栏样式。
+设置时，开发者自己维护 notificationBuilderId 这个编号，下发通知时使用[ builder_id ](https://docs.jiguang.cn/jpush/server/push/rest_api_v3_push/#notification)指定该编号，从而 Push SDK 会调用开发者应用程序里设置过的指定编号的通知栏构建类，来定制通知栏样式。
 
 
 ## 设置保留最近通知条数 API
@@ -1490,7 +1489,7 @@ JPushInterface.setLatestNotificationNumber(context, 3);
 		<tr >
 			<td>6002</td>
 			<td>设置超时</td>
-			<td>建议重试</td>
+			<td>建议重试，一般出现在网络不佳、初始化尚未完成时。</td>
 		</tr>
 		<tr >
 			<td>6003</td>
@@ -1535,7 +1534,7 @@ JPushInterface.setLatestNotificationNumber(context, 3);
 		<tr >
 			<td>6012</td>
 			<td>在 JPush 服务 stop 状态下设置了 tag 或 alias 或手机号码</td>
-			<td>3.0.0 版本新增的错误码。开发者可根据这个错误码的信息做相关处理或者提示。</td>
+			<td>3.0.0 版本新增的错误码，调了 stopPush 必须调用 resumePush 恢复服务后方可调用其他的 API，开发者可根据这个错误码的信息做相关处理或者提示。</td>
 		</tr>
 		<tr >
 			<td>6013</td>
@@ -1550,7 +1549,7 @@ JPushInterface.setLatestNotificationNumber(context, 3);
         <tr >
 			<td>6015</td>
 			<td>appkey 在黑名单中</td>
-			<td>3.0.7 版本新增的错误码</td>
+			<td>3.0.7 版本新增，该 appkey 在黑名单中，请联系 support 解除</td>
 		</tr>
         <tr >
 			<td>6016</td>
@@ -1564,8 +1563,8 @@ JPushInterface.setLatestNotificationNumber(context, 3);
 		</tr>
         <tr >
 			<td>6018</td>
-			<td>后台累计设置的 tag 数超过 1000 个，建议先清除部分 tag</td>
-			<td>3.0.7 版本新增的错误码</td>
+			<td>Tags 过多</td>
+			<td>3.0.7 版本新增，该设备设置的 tag 数超过 1000 个，建议先清除部分 tag</td>
 		</tr>
         <tr >
 			<td>6019</td>
@@ -1574,38 +1573,38 @@ JPushInterface.setLatestNotificationNumber(context, 3);
 		</tr>
         <tr >
 			<td>6020</td>
-			<td>tag/alias 操作暂停,建议过一段时间再设置</td>
-			<td>3.0.7 版本新增的错误码</td>
+			<td>tag/alias 操作暂停</td>
+			<td>3.0.7 版本新增的错误码，建议过一段时间再设置</td>
 		</tr>
         <tr >
 			<td>6021</td>
 			<td>tags 操作正在进行中，暂时不能进行其他 tags 操作</td>
-			<td>3.0.7 版本新增的错误码，多次调用 tag 相关的 API ，请在获取到上一次调用回调后再做下一次操作；在未取到回调的情况下，等待 20 秒后可做下一次操作。</td>
+			<td>3.0.7 版本新增的错误码，多次调用 tag 相关的 API，请在获取到上一次调用回调后再做下一次操作；在未取到回调的情况下，等待 20 秒后再做下一次操作。</td>
 		</tr>
         <tr >
 			<td>6022</td>
 			<td>alias 操作正在进行中，暂时不能进行其他 alias 操作</td>
-			<td>3.0.7 版本新增的错误码，多次调用 alias 相关的 API ，请在获取到上一次调用回调后再做下一次操作；在未取到回调的情况下，等待 20 秒后可做下一次操作。</td>
+			<td>3.0.7 版本新增的错误码，多次调用 alias 相关的 API，请在获取到上一次调用回调后再做下一次操作；在未取到回调的情况下，等待 20 秒后再做下一次操作。</td>
 		</tr>
 		 <tr >
 			<td>6023</td>
 			<td>手机号码不合法</td>
-			<td>只能以 “+” 或者 数字开头；后面的内容只能包含 “-” 和 数字；3.1.1 版本新增的错误码。</td>
+			<td>3.1.1 版本新增的错误码；只能以 “+” 或者 数字开头；后面的内容只能包含 “-” 和 数字。</td>
 		</tr>
 		 <tr >
 			<td>6024</td>
 			<td>服务器内部错误</td>
-			<td>服务器内部错误,过一段时间再重试；3.1.1 版本新增的错误码。</td>
+			<td>3.1.1 版本新增的错误码；服务器内部错误，过一段时间再重试。</td>
 		</tr>
 		 <tr >
 			<td>6025</td>
 			<td>手机号码太长</td>
-			<td>手机号码过长，目前极光检测手机号码的最大长度为 20。3.1.1 版本新增的错误码。</td>
+			<td>3.1.1 版本新增的错误码；手机号码过长，目前极光检测手机号码的最大长度为 20。</td>
 		</tr>
 		 <tr >
 			<td>6026</td>
 			<td>数据包体过大</td>
-			<td>数据包体过大，目前极光支持的数据通信包体最大为 8128。3.1.5 版本新增的错误码。</td>
+			<td>3.1.5 版本新增的错误码；数据包体过大，目前极光支持的数据通信包体最大为 8128。</td>
 		</tr>
 		<tr >
 			<td>-997</td>

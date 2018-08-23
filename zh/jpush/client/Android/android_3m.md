@@ -12,7 +12,7 @@
 ### 创建极光推送开发者帐号
 要创建极光推送开发者帐号，请访问[极光推送官方网站 https://www.jiguang.cn/push](https://www.jiguang.cn/push)
 
-![jpush_android_3m](../image/jpush_app_register.png)
+![jpush_android_3m](../image/jpush_app_register1.png)
  
 ### Portal 上创建应用
 使用注册账号登陆，进入极光控制台后，点击“创建应用”按钮，填写应用名称即可创建应用成功。点击“推送设置”，在 Android 版块填上你的应用包名，选择保存即可。
@@ -20,7 +20,7 @@
 ![jpush_android_3m](../image/jpush_app_create.png)
 
 ### 下载应用 Example
-点击 ”下载 Demo “下载资源文件或“扫描下载安装包”直接下载 apk 到手机安装。
+点击“下载 Demo” 下载资源文件或“扫描下载安装包”直接下载 apk 到手机安装。
 
 ![jpush_android_3m](../image/jpush_app_detail.png)
 

@@ -12,7 +12,7 @@
 
 * 需要了解 tag，alias 的详细信息，请参考对应客户端平台的 API 说明。
 
-    * [Android - tag,alias](../../client/Android/android_api/#api_1)
+    * [Android - tag,alias](../../client/Android/android_api/#api_3)
     * [iOS - tag,alias](../../client/iOS/ios_api/#api-ios)
     * [WinPhone - tag,alias](../../client/WindowsPhone/winphone_api/#api_1)
 
@@ -25,6 +25,11 @@ Device API 用于在服务器端查询、设置、更新、删除设备的 tag, 
 + device 用于查询/设置设备的各种属性，包含 tags, alias；
 + tag 用于查询/设置/删除设备的标签；
 + alias 用于查询/设置/删除设备的别名。
+
+需要用到的关键信息还有 registration ID：    
+
++ 设备的 registration_id 在客户端集成后获取，详情查看 [Android](https://docs.jiguang.cn/jpush/client/Android/android_api/#registrationid-api)、 [iOS](https://docs.jiguang.cn/jpush/client/iOS/ios_api/#registrationid) 和 [WinPhone](https://docs.jiguang.cn/jpush/client/WindowsPhone/winphone_api/#registrationid) 的 API 文档；
++ 服务端未提供 API 去获取设备的 registrationID 值，需要开发者在客户端获取到 registration ID 后上传给开发者服务器保存。
 
 ### 调用地址
 https://device.jpush.cn
@@ -84,7 +89,7 @@ HTTP/1.1 200 OK
 
 ## 设置设备的别名与标签
 
-使用短信业务，请结合服务端[SMS_MESSAGE](rest_api_v3_push/#sms_message)字段
+使用短信业务，请结合服务端[ SMS_MESSAGE ](rest_api_v3_push/#sms_message)字段
 
 ```
 POST /v3/devices/{registration_id}
@@ -117,7 +122,6 @@ POST /v3/devices/{registration_id}
         "alias": "alias1",
         "mobile":"13012345678"
     }
-
 ```
 **Request Params**
 
@@ -437,25 +441,25 @@ HTTP/1.1 200 OK
     <tr >
       <td>7001</td>
       <td>校验信息为空</td>
-      <td>必须改正</td>
+      <td><a href="https://docs.jiguang.cn/jpush/server/push/server_overview/#_1">调用验证</a>中的 Appkey 与 MasterSecret 为空</td>
       <td>401</td>
     </tr>
     <tr >
       <td>7002</td>
       <td>请求参数非法</td>
-      <td>必须改正</td>
+      <td>需严格遵守文档参数类型与值说明</td>
       <td>400</td>
     </tr>
     <tr >
       <td>7004</td>
       <td>校验失败</td>
-      <td>必须修正</td>
+      <td>检查<a href="https://docs.jiguang.cn/jpush/server/push/server_overview/#_1">调用验证</a>中的 Appkey 与 MasterSecret 是否正确</td>
       <td>401</td>
     </tr>
     <tr >
       <td>7008</td>
       <td>appkey 不存在</td>
-      <td>检查工程填写的 appkey 是否与官网应用一致</td>
+      <td>检查工程填写的 Appkey 是否与官网应用一致</td>
       <td>400</td>
     </tr>
   </table>

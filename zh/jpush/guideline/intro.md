@@ -41,8 +41,8 @@ Android 开发者参考文档：[Rich Push开发指南](../advanced/rich_push/)
 本地通知与网络推送的通知是相互独立的，不受保留最近通知条数上限的限制。
 本地通知适用于在特定时间发出的通知，如一些 Todo 和闹钟类的应用，在每周、每月固定时间提醒用户回到应用查看任务。
 
-Android 开发者参考文档：[Android 本地通知](../client/Android/android_api/#api_8)
-iOS 开发者参考文档：[iOS 本地通知](../client/iOS/ios_api/#_47)
+Android 开发者参考文档：[Android 本地通知](../client/Android/android_api/#api_10)
+iOS 开发者参考文档：[iOS 本地通知](../client/iOS/ios_api/#_67)
 
 ## 推送目标
 通过使用标签，别名，Registration ID 和用户分群，开发者可以向特定的一个或多个用户推送消息。
@@ -57,19 +57,19 @@ iOS 开发者参考文档：[iOS 本地通知](../client/iOS/ios_api/#_47)
 每个用户只能指定一个别名。
 同一个应用程序内，对不同的用户，建议取不同的别名。这样，尽可能根据别名来唯一确定用户。
 
-Android 开发者参考文档：[Android 标签和别名](../client/Android/android_api/#api_1)
-iOS 开发者参考文档：[iOS 标签和别名](../client/iOS/ios_api/#api-ios)
+Android 开发者参考文档：[Android 标签和别名](../client/Android/android_api/#api_3)
+iOS 开发者参考文档：[iOS 标签和别名](../client/iOS/ios_api/#apiios)
 使用别名和标签推送请参考文档：[Push API v3 Audience](../server/push/rest_api_v3_push/#audience)
 
 ### Registration ID
 客户端初始化 JPush 成功后，JPush 服务端会分配一个 Registration ID，作为此设备的标识（同一个手机不同 App 的 Registration ID 是不同的）。开发者可以通过指定具体的 Registration ID 来进行对单一设备的推送。
 
 ### 用户分群
-用户分群的筛选条件有：标签、地理位置、系统版本、注册时间、活跃用户和在线用户。
-比如，开发者可以设置这样的用户分群：位于北京、上海、广州和深圳，并且最近 7 天在线的用户。
+用户分群的筛选条件有：标签、地理位置、活跃用户、系统版本、智能标签。
+比如，开发者可以设置这样的用户分群：位于北京、上海、广州和深圳，并且最近 7 天内的活跃用户。
 开发者可以通过在控制台设置好用户分群之后，在控制台推送时指定该分群的名称或使用 API 调用该分群的 id 发送。
 
-用户分群控制台使用指南：[用户分群](../console/Instructions/#_14)
+用户分群控制台使用指南：[用户分群](../console/Instructions/#_16)
 
 
 ## 统计分析
@@ -77,13 +77,14 @@ JPush 支持推送数量、用户打开次数、用户使用时长、新增用�
 Android 开发者需要实现了相关的统计 API，才可以进行用户相关的统计。
 iOS 开发者不需要实现统计 API，可以直接在【控制台】-【统计】页面查看相关数据。
 
-Android 开发者参考文档：[统计分析API](../client/Android/android_api/#api_2)
+Android 开发者参考文档：[统计分析API](../client/Android/android_api/#api_4)
 
 
 ## 快速开始
 +  到极光推送官方网站[注册开发者帐号](https://www.jiguang.cn/accounts/register)；
 +  [登录](https://www.jiguang.cn/accounts/login/form)进入管理控制台，创建应用程序，得到 Appkey（SDK 与服务器端通过 Appkey 互相识别）；
-+  [下载SDK](../resources/) 集成到 App 里。
++  在推送设置中给 Android 设置包名、给 iOS 上传证书、启用 WinPhone，根据你的需求进行选择；
++  [下载 SDK](../resources/) 集成到 App 里。
 
 
 ## 技术支持
@@ -95,11 +96,11 @@ Android 开发者参考文档：[统计分析API](../client/Android/android_api/
 
 为了更快速的解决问题，在寻求帮助时，请提供下列信息：
 
-+ 你需要咨询的产品是 JPush，是否同时使用了极光其他的产品 
++ 你需要咨询的产品是 JPush，是否同时使用了极光其他的产品
 + 你所调用的是什么 API，所传参数，完整的报错信息，出现异常的时间点
 + 如果收不到消息，提供应用的 Appkey，消息的 Message ID，设备的 registration ID 信息
 + 如果是 SDK 问题请提供对应的 SDK 版本和完整的日志记录，日志信息请使用 TXT 文件上传
-+ 出现异常的设备是 iOS 还是 Android ，列出具体的机型和系统
++ 出现异常的设备是 iOS 还是 Android，列出具体的机型和系统
 
 
 

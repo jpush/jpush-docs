@@ -27,7 +27,7 @@ JPush iOS SDK 不负责 APNs 通知的展现，只是向 JPush 服务器端上�
 
 此消息不经过 APNs 服务器，完全由 JPush 提供功能支持。
 
-[获取应用内消息推送内容](ios_api/#_24)
+[获取应用内消息推送内容](ios_api/#_51)
 
 ### APNs 通知与应用内消息对比
 
@@ -65,13 +65,13 @@ JPush API v3 支持同时一次调用同时推送 APNs 通知与 JPush 应用内
     </tr>
     <tr >
       <td>展示效果</td>
-      <td>如果应用后台或退出，会有系统的 APNS 提醒。<p>如果应用处于打开状态，则不展示。</td>
+      <td>如果应用后台或退出，会有系统的 APNS 提醒。<p>如果应用处于打开状态，则不展示，iOS 10 开始可实现前台展示。</td>
       <td>非 APNS，默认不展示。可通过获取接口自行编码处理。</td>
     </tr>
     <tr >
       <td>处理函数</td>
       <td>Apple 提供的接口：<a href="../ios_api/#apns">didReceiveRemoteNotification</a></td>
-      <td>JPush 提供的接口：<a href="../ios_api/#_19">networkDidReceiveMessage</a></td>
+      <td>JPush 提供的接口：<a href="../ios_api/#_51">networkDidReceiveMessage</a></td>
     </tr>
   </table>
 </div>
@@ -96,8 +96,8 @@ JPush API v3 支持同时一次调用同时推送 APNs 通知与 JPush 应用内
 + 支持 iOS 版本为 10.0 以上的版本时需知。
 	+ Notification Service Extension 证书配置时需要注意 BundleID 不能与 Main Target 一致，证书需要单独额外配置。
 	+ 请将 Notification Service Extension 中的 Deployment Target 设置为 10.0。
-	+ 在 XCode7 或者更低的版本中删除 Notification Service Extension 所对应的 Target。
-	+ 在 XCode7 或者更低的版本中请将引入的 'UserNotifications.framework' 删除。
+	+ 在 XCode 7 或者更低的版本中删除 Notification Service Extension 所对应的 Target。
+	+ 在 XCode 7 或者更低的版本中请将引入的 'UserNotifications.framework' 删除。
 
 
 ### 组成

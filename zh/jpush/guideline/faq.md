@@ -16,7 +16,7 @@ img[alt=jpush_android_so] { width: 800px; }
 #### **推送频率**
 
 免费版本的每个 Appkey 的最高推送频率为 600 次/分钟。  
-付费版本可享有更高的推送频率，具体请联系商务。
+付费版本可享有更高的推送频率，具体请[联系商务](https://www.jiguang.cn/accounts/business_contact?fromPage=push_doc)。
 
 
 ## 推送数量和推送频率的限制是多少？
@@ -47,9 +47,9 @@ img[alt=jpush_android_so] { width: 800px; }
 ## 为什么在控制台上或者调用 API 推送消息时提示：找不到目标用户？
 其含义是：当向客户端推送消息时，发现对于指定的推送方式，找不到该方式下的目标用户。
 
-+ 如果推送方式是群发，则表示：该应用还没有一个客户端成功地集成了 JPush SDK 并连接到 JPush 服务器。如果您确实做了客户端 App 集成 JPush SDK 的工作，请检查客户端日志，看是不是注册失败。
++ 如果推送方式是群发，则表示：该应用还没有一个客户端成功地集成了 JPush SDK 并连接到 JPush 服务器。如果您确实做了客户端 App 集成 JPush SDK 的工作，请检查客户端日志，看是不是注册失败，根据错误日志排查和处理问题。
 
-+ 如果推送方式是别名或者标签，则表示：该别名或者标签，在客户端还未被成功地调用 setAliasAndTags 设置成功。请参考：别名与标签使用教程[Android 文档](../client/Android/android_senior/#_1) [iOS 文档](../client/iOS/ios_api/#api-ios)。
++ 如果推送方式是别名或者标签，则表示：该别名或者标签，在客户端还未被成功地调用 setAlias / setTags 设置成功。请参考：别名与标签使用教程[Android 文档](../client/Android/android_senior/#_1) 、[iOS 文档](../client/iOS/ios_api/#api-ios)，注意回调结果。
 
 
 
@@ -66,31 +66,31 @@ img[alt=jpush_android_so] { width: 800px; }
 
 
 ## 消息的长度是否有限制？
-+ Android 平台 Notification + Message 长度限制为 4000 字节。
-+ iOS Notification 中 “iOS”:{ } 及大括号内的总体长度不超过：2000 个字节（包括自定义参数和符号），iOS 的 Message 部分长度不超过 4000 字节。
-+ WinPhone 平台 Notification 长度限制为 1000 字节。
+Android 平台 Notification + Message 长度限制为 4000 字节。    
+iOS Notification 中 “iOS”:{ } 及大括号内的总体长度不超过：2000 个字节（包括自定义参数和符号），iOS 的 Message 部分长度不超过 4000 字节。    
+WinPhone 平台 Notification 长度限制为 1000 字节。    
 
 
 ## 怎么样向特定的某个用户推送消息？
 直接对用户的 registration ID 推送消息。
-或在客户端使用 setAliasAndTags API 来为该用户指定别名。以便服务器端对该别名推送消息。  
-客户端如何设置别名和标签：[Android 标签和别名](../client/Android/android_api/#api_1)
+或在客户端使用 setAlias API 来为该用户指定别名。以便服务器端对该别名推送消息。  
+客户端如何设置别名和标签：[Android 标签和别名](../client/Android/android_api/#api_1)、
 [iOS 标签和别名](../client/iOS/ios_api/#api-ios)  
 使用别名和标签推送请参考文档：[标签与别名API](../server/push/rest_api_v3_push/#audience) 
 
 
 
 ## 怎么样向指定的一群用户推送消息？
-在客户端使用 setAliasAndTags API 来为该用户设置标签。这样服务器可以向所有具有该标签的用户群发消息。  
-另外还可以在控制台设置用户分群（根据标签，地理位置等条件筛选用户），在控制台推送时指定该分群的名称或使用 API 调用该分群的id发送，也可以向一群用户推送消息。  
-客户端如何设置别名和标签：[Android 标签和别名](../client/Android/android_api/#api_1)
+在客户端使用 setTags API 来为该用户设置标签。这样服务器可以向所有具有该标签的用户群发消息。  
+另外还可以在控制台设置用户分群（根据标签，地理位置等条件筛选用户），在控制台推送时指定该分群的名称或使用 API 调用该分群的 id 发送，也可以向一群用户推送消息。  
+客户端如何设置别名和标签：[Android 标签和别名](../client/Android/android_api/#api_1)、
 [iOS 标签和别名](../client/iOS/ios_api/#api-ios)  
-使用别名和标签推送请参考文档：[标签与别名API](../server/push/rest_api_v3_push/#audience) 
+使用别名和标签推送请参考文档：[标签与别名 API](../server/push/rest_api_v3_push/#audience) 
 
 
 ## 其他国家能否使用极光推送（局域网能否使用极光推送）？
 JPush 对于访问国家没有任何限制。理论上国外使用是没有问题的，但具体区域还需要开发者自己评估。  
-服务器端判断能否访问JPush服务器的方法是 ping 通 api.jpush.cn,也可以执行 curl 测试。  
+服务器端判断能否访问 JPush 服务器的方法是 ping 通 api.jpush.cn，也可以执行 curl 测试。  
 客户端判断是否正常可以通过观察日志，看是否可以注册和连接成功。
 
 

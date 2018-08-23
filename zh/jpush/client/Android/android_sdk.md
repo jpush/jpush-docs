@@ -40,7 +40,7 @@ JPush Android SDK 由于使用自定义协议，协议体做得极致地小，�
 
 其中 .jar, .so 文件有版本号后缀，需要互相匹配。请升级时一定记得检查版本号，并删除旧版本。
 
-AndroidManifest.xml 配置示例可能在版本升级时，会有变更。请留意版本发布说明。
+AndroidManifest.xml 配置示例可能在版本升级时，会有变更。请留意[版本发布说明](https://docs.jiguang.cn/jpush/updates/)。
 
 ### Android SDK 集成
 
