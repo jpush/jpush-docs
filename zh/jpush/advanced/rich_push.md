@@ -34,6 +34,7 @@ JPush 从终端用户使用体验的角度出发，充分考虑到国内的网�
 #### 下载支持 Rich Push 的 JPush Android SDK
 
 + 根据相关文档集成到 Android App 里
++ 手动集成需将压缩包 res 中的资源放到项目的对应文件夹，并按照示例 AndroidManifest 配置 PushActivity 组件
 + Android 6.0 以上需要申请动态权限 WRITE_EXTERNAL_STORAGE，请参考[申请权限接口](../client/Android/android_api/#android-60)
 
 

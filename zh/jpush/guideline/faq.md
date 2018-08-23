@@ -74,7 +74,7 @@ WinPhone 平台 Notification 长度限制为 1000 字节。
 ## 怎么样向特定的某个用户推送消息？
 直接对用户的 registration ID 推送消息。
 或在客户端使用 setAlias API 来为该用户指定别名。以便服务器端对该别名推送消息。  
-客户端如何设置别名和标签：[Android 标签和别名](../client/Android/android_api/#api_1)、
+客户端如何设置别名和标签：[Android 标签和别名](../client/Android/android_api/#api_3)、
 [iOS 标签和别名](../client/iOS/ios_api/#api-ios)  
 使用别名和标签推送请参考文档：[标签与别名API](../server/push/rest_api_v3_push/#audience) 
 
@@ -83,7 +83,7 @@ WinPhone 平台 Notification 长度限制为 1000 字节。
 ## 怎么样向指定的一群用户推送消息？
 在客户端使用 setTags API 来为该用户设置标签。这样服务器可以向所有具有该标签的用户群发消息。  
 另外还可以在控制台设置用户分群（根据标签，地理位置等条件筛选用户），在控制台推送时指定该分群的名称或使用 API 调用该分群的 id 发送，也可以向一群用户推送消息。  
-客户端如何设置别名和标签：[Android 标签和别名](../client/Android/android_api/#api_1)、
+客户端如何设置别名和标签：[Android 标签和别名](../client/Android/android_api/#api_3)、
 [iOS 标签和别名](../client/iOS/ios_api/#api-ios)  
 使用别名和标签推送请参考文档：[标签与别名 API](../server/push/rest_api_v3_push/#audience) 
 
@@ -98,4 +98,14 @@ JPush 对于访问国家没有任何限制。理论上国外使用是没有问�
 免费用户提供基础的推送服务，消息数量和用户数都没有限制，并且提供数据统计服务和报表。在免费推送的内容上，不会加上“极光推送”的字样，所有推送的内容都是由开发者自己定义的。
 
 VIP 用户在此基础上推送速度更快，推送频率更高。VIP 用户还可以享受更多功能，请参见[极光推送产品价格页面](https://www.jiguang.cn/push-price) 
+
+## 极光账号下的应用是否可以迁移到其他账户？
+
+极光支持将极光官网的一个 App 由 A 账号迁移到 B 账号，App 的数据不会有任何变化，如果需要应用迁移，请联系 support@jpush.cn，提供如下信息（缺一不可）    
+1. 迁移理由    
+2. 应用 AppKey     
+3. 新账号邮箱地址    
+4. 新账号账户信息截图（确认信息，附件提供）    
+5. 原账号账户信息截图（验证身份，附件提供）    
+
 

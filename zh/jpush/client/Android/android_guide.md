@@ -579,4 +579,16 @@ JPush SDK 为了尽可能提高开发者在国外设备的推送送达率，对�
 
 ## 技术支持
 
-邮件联系：[support&#64;jpush.cn](mailto:support&#64;jpush.cn)
+当出现问题时：
+
++ 请仔细阅读文档，查看是否有遗漏。 [Android FAQ](../Android/android_faq/)
++ 你可以到极光社区搜索类似问题
++ 给我们的 support 发邮件 [support&#64;jpush.cn](mailto:support&#64;jpush.cn)
+
+为了更快速的解决问题，在寻求帮助时，请提供下列信息：
+
++ 你需要咨询的产品是 JPush，是否同时使用了极光其他的产品
++ 你所调用的是什么 API，所传参数，完整的报错信息，出现异常的时间点
++ 如果收不到消息，提供应用的 Appkey，消息的 Message ID，设备的 registration ID 信息
++ 如果是 SDK 问题请提供对应的 SDK 版本和完整的日志记录，日志信息请使用 TXT 文件上传
++ 出现异常的设备是 Android ，列出具体的机型和系统

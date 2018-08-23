@@ -359,7 +359,7 @@ iOS 10 新增的 Notification Service Extension 功能，用 mutable-content 字
 
 当出现问题时：
 
-+ 请仔细阅读文档，查看是否有遗漏。 [iOS FAQ](../client/iOS/ios_faq/)
++ 请仔细阅读文档，查看是否有遗漏。 [iOS FAQ](../iOS/ios_faq/)
 + 你可以到极光社区搜索类似问题
 + 给我们的 support 发邮件 [support&#64;jpush.cn][4]
 

@@ -64,7 +64,7 @@ Authorization: Basic base64_auth_string
           "time": "12:00:00", 
           "time_unit": "WEEK",   //month, week, day, 大小写不敏感
           "frequency": 1,
-          "point": ["WED","FRI"]   //time_unit为day时候，point不能存在。WED,FRI 大小写不敏感。month:"01","02"
+          "point": ["WED","FRI"]   //time_unit为 day 的时候，point 不能存在。WED，FRI 大小写不敏感。month:"01","02"
      }
   }, 
   "push": { 
@@ -183,7 +183,7 @@ POST /v3/schedules
 ***Request Data 说明***
 
 + 由于定时任务相对简单，我们例中只对定期任务进行说明
-+ 以上表示创建一个定期任务，起始生效时间必须 '2014-09-17 12:00:00 之后'第一个 time 时间点，过期时间为 '2014-10-18 12:00:00'，在有效期内每两周的周三、周五中午 12 点分别执行一次
++ 以上表示创建一个定期任务，起始生效时间必须 '2014-09-17 12:00:00' 之后第一个 time 时间点，过期时间为 '2014-10-18 12:00:00'，在有效期内每两周的周三、周五中午 12 点分别执行一次
 + 定期任务首次创建时的触发时间不得晚于其 end 中指定的时间。否则创建失败
 + 定期任务（包括定时任务）首次创建时其 enabled 项必须为 true。不能创建 enabled:false 的任务，否则创建失败
 + push 必须为有效合法的 push 动作，否则创建失败。
@@ -330,7 +330,7 @@ PUT /v3/schedules/{schedule_id}
    "name": "task", 
    "enabled": true, 
    "trigger": { 
-        
+       ... 
     },
    "push": { ... } 
 }
@@ -383,7 +383,6 @@ PUT /v3/schedules/{schedule_id}
       "trigger":{
          "end":"2014-11-18 12:00:00"
       }
-   &#65373;
 ## RIGHT:  更新 periodical 中的过期时间延后一个月：
    {
       "trigger":{
@@ -559,6 +558,6 @@ HTTP/1.0 404 Not Found
 
 ## 调用限制
 + 定时最多有效数（当前未过期数）与周期最多有效数（当前未过期数）总数 100 个。超过后失败。
-+ VIP 客户可申请提高总数上限，最高可达 2000 个。
++ VIP 客户可申请提高总数上限，最高可达 2000 个，[联系商务](https://www.jiguang.cn/accounts/business_contact?fromPage=push)开通。
 + 最大频率当前为 100/分。
 + periodical 任务的最大跨度为 12 个月。

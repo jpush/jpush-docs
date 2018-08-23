@@ -12,7 +12,14 @@
 Step1： 基本信息：输入应用名称 (必填), 上传一个图标；  
 配置 Android 平台信息：填写应用包名, JPush 系统会在后台根据你输入的包名生成的推送的 Android 应用 Demo, 该 Demo 包含了该配置的信息;  
 Step2： 配置 iOS 平台信息：上传相关环境的推送证书，并填写和证书配套的密码；  
-Step3： 配置 WinPhone 平台信息：选择是否开启即可；  
+Step3： 配置 WinPhone 平台信息：选择是否开启即可；
+
+```
+注意：Android 的包名和 iOS 的证书一旦配置，不允许修改；
+如果测试应用配置有误，可删除应用重新创建（应用信息 - 编辑 - 删除）；
+如果是线上应用的某一个平台配置有误需要更改，可联系 support@jpush.cn 处理。
+```  
+
 ![jpush_web](image/setting_application.png)  
 Step4： 信息配置完成后，查看应用信息如下：  
 ![jpush_web](image/info_application.png)
@@ -44,6 +51,9 @@ Step4： 信息配置完成后，查看应用信息如下：
 路径：选择应用－>推送－>发送通知  
 填写推送内容后点击页面最下方的［立即发送］按钮即可；  
 该功能对应 Rest API - Push - [Notification](https://docs.jiguang.cn/jpush/server/push/rest_api_v3_push/#notification)
+```
+注意：如果选择别名、标签、registrationID 推送，在输入一个值后需要回车确认。
+```
 ![jpush_web](image/send_notification.png)
 
 Web 界面会弹出对话框, 提示是否发送, 选［发送吧］即可;  
