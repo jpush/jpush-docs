@@ -1,4 +1,4 @@
-# JPush产品简介
+# JPush 产品简介
 
 <br/>
 
@@ -34,7 +34,7 @@ JPush 提供了 5 种模板，开发者可以通过填充模板的内容，发�
 富媒体当前支持 Android 平台，为更好的使用富媒体的功能，建议更新当前 SDK 版本至 v2.1.8 及以上。
 暂时只能通过极光推送的控制台发送，不支持 API 形式。
 
-Android 开发者参考文档：[Rich Push开发指南](../advanced/rich_push/)
+Android 开发者参考文档：[Rich Push 开发指南](../advanced/rich_push/)
 
 ### 本地通知
 本地通知 API 不依赖于网络，无网条件下依旧可以触发；本地通知的定时时间是自发送时算起的，不受中间关机等操作的影响。
@@ -77,7 +77,7 @@ JPush 支持推送数量、用户打开次数、用户使用时长、新增用�
 Android 开发者需要实现了相关的统计 API，才可以进行用户相关的统计。
 iOS 开发者不需要实现统计 API，可以直接在【控制台】-【统计】页面查看相关数据。
 
-Android 开发者参考文档：[统计分析API](../client/Android/android_api/#api_4)
+Android 开发者参考文档：[统计分析 API](../client/Android/android_api/#api_4)
 
 
 ## 快速开始

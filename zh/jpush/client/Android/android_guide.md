@@ -43,9 +43,11 @@
     + 是一个完整的 Android 项目，通过这个演示了 JPush SDK 的基本用法，可以用来做参考。
 
 
-### Android SDK 版本
+### SDK 所支持的 Android 系统版本
 
-目前 SDK 只支持 Android 2.3 或以上版本的手机系统。富媒体信息流功能则需 Android 3.0 或以上版本的系统。
+目前 SDK 只支持 Android 2.3 或以上版本的手机系统。
+
+富媒体信息流功能则需 Android 3.0 或以上版本的系统。
 
 
 ## jcenter 自动集成步骤
@@ -414,7 +416,7 @@ defaultConfig {
     </tr>
     <tr >
       <td>You Package.permission.JPUSH_MESSAGE</td>
-      <td>官方定义的权限，允许应用接收 JPUSH 内部代码发送的广播消息。</td>
+      <td>官方定义的权限，允许应用接收 JPush 内部代码发送的广播消息。</td>
     </tr>
     <tr >
       <td>RECEIVE_USER_PRESENT</td>
@@ -556,7 +558,7 @@ JPush SDK 为了尽可能提高开发者在国外设备的推送送达率，对�
 ### 功能描述
 + FCM 集成完成后，在支持的设备上自动进行初始化。
 
-+ FCM 可以与 JPUSH 和 其他 三方通道 共存。
++ FCM 可以与 JPush 和 其他三方通道 共存。
 
 + FCM 通道初始化后支持 tag/alias 这些 JPush 原有的功能，其它的 JPush 未支持的功能目前暂时还不可用。
 
@@ -575,7 +577,7 @@ JPush SDK 为了尽可能提高开发者在国外设备的推送送达率，对�
 
 请参考：
 
-[API: Android](android_api)
+[API：Android](android_api)
 
 ## 技术支持
 

@@ -105,7 +105,7 @@
 
 ![add_to_portal](../image/ios_cert/authkey_6_addInfoToPortal.png)
 
-## Provisioning Profile的创建
+## Provisioning Profile 的创建
 
 + 创建 Provisioning Profile 的前提，已在 Apple Developer 网站创建待发布应用所使用的 Bundle ID 的 App ID，且为该 App ID 创建了 iOS Development 证书。
 
@@ -139,9 +139,9 @@
 
 + 双击下载下来的 Provisioning Profile，添加到 xcode。
 
-## XCode的证书配置教程
+## XCode 的证书配置教程
 
-参照[iOS SDK 集成指南](ios_guide_new/)集成 JPush SDK 和上传了推送用到的 p12 证书后在编译运行前需要先配置一下证书，步骤如下：
+参照[ iOS SDK 集成指南](ios_guide_new/)集成 JPush SDK 和上传了推送用到的 p12 证书后在编译运行前需要先配置一下证书，步骤如下：
 
 + 打开 xxx-info.plist 的 Bundle identifier 项把上传到 JPush 控制台的 bundle id 填写进去：
 

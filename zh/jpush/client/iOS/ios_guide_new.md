@@ -4,7 +4,7 @@
 img[alt=jpush_ios] { width: 800px; }
 </style>
 
-## SDK说明
+## SDK 说明
 
 ### 适用版本
 
@@ -42,10 +42,10 @@ pod 'JPush'
 ```
 注：如果无法导入最新版本，请执行 pod repo update master 这个命令来升级本机的 pod 库，然后重新 pod 'JPush'
 ```
-* 如果需要安装指定版本则使用以下方式（以 3.0.2 版本为例）：
+* 如果需要安装指定版本则使用以下方式（以 3.1.0 版本为例）：
 
 ```
-pod 'JPush', '3.0.2'
+pod 'JPush', '3.1.0'
 ```
 
 
@@ -125,7 +125,7 @@ pod 'JPush', '3.0.2'
 #import <AdSupport/AdSupport.h>
 ```
 
-## 添加Delegate
+## 添加 Delegate
 为 AppDelegate 添加 Delegate。
 
 参考代码：
@@ -141,7 +141,7 @@ pod 'JPush', '3.0.2'
 <div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">	<p>2.1.0 版本开始，API 类名为 JPUSHService，不再使用原先的 APService。
 </div>
 
-### 添加初始化APNs代码
+### 添加初始化 APNs 代码
 
 请将以下代码添加到
 -(BOOL)application:(UIApplication \*)application
@@ -158,7 +158,6 @@ didFinishLaunchingWithOptions:(NSDictionary \*)launchOptions
     // NSSet<UIUserNotificationCategory *> *categories for iOS8 and iOS9
   }
   [JPUSHService registerForRemoteNotificationConfig:entity delegate:self];
-
 ```
 ### 添加初始化 JPush 代码
 

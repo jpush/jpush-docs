@@ -69,7 +69,7 @@ app_key          |string 	    | 应用标识
 android_package  |string 	    | 应用包名（Android）
 is_new_created   |boolean 	    |
 
-## app删除
+## app 删除
 
 ### 功能说明
 

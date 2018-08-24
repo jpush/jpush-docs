@@ -54,7 +54,7 @@ img[alt=jpush_winphone_3m] { width: 500px; }
 
 做下一步动作之前，请确保你的手机上的网络是可用的。
 
-### Portal上推送通知
+### Portal 上推送通知
 ![jpush_winphone_3m](../image/20180814-165428.png)
 
 发送消息时，选中需要的平台（Windows phone）

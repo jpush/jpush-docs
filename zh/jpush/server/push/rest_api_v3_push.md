@@ -174,8 +174,7 @@ HTTP Header（头）里加一个字段（Key/Value 对）：
 JPush 当前支持 Android, iOS, Windows Phone 三个平台的推送。其关键字分别为："android", "ios", "winphone"。
 
 <div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px;  padding-bottom: 0;margin-bottom: 0;">
-<p>如果目标平台为 iOS 平台 需要在 options 中通过 apns_production 字段来设定推送环境。True 表示推送生产环境，False 表示要推送开发环境； 如果不指定则为推送生产环境</p>
-<p>调用一次 API 只能推送给一个 iOS 环境，无法使开发环境和生产环境的设备同时收到同一条消息</p>
+<p>如果目标平台为 iOS 平台，推送 Notification 时需要在 options 中通过 apns_production 字段来设定推送环境。True 表示推送生产环境，False 表示要推送开发环境； 如果不指定则为推送生产环境；一次只能推送给一个环境。</p>
 </div>
 <br>
 
@@ -674,7 +673,7 @@ Windows Phone 平台上的通知。
 
 应用内消息。或者称作：自定义消息，透传消息。  
 此部分内容不会展示到通知栏上，JPush SDK 收到消息内容后透传给 App。需要 App 自行处理。  
-iOS 平台上，此部分内容在推送应用内消息通道（非 APNS）获取。Windows Phone 暂时不支持应用内消息。
+iOS 在推送应用内消息通道（非 APNS）获取此部分内容，即需 App 处于前台。Windows Phone 暂时不支持应用内消息。
 
 消息包含如下字段：
 
@@ -796,21 +795,21 @@ iOS 1.7.3 及以上的版本才能正确解析 v3 的 message，但是无法解�
 			<td>int</td>
 			<td>可选</td>
 			<td>离线消息保留时长(秒)</td>
-			<td>推送当前用户不在线时，为该用户保留多长时间的离线消息，以便其上线时再次推送。默认 86400 （1 天），最长 10 天。设置为 0 表示不保留离线消息，只有推送当前在线的用户可以收到。</td>
+			<td>推送当前用户不在线时，为该用户保留多长时间的离线消息，以便其上线时再次推送。默认 86400 （1 天），最长 10 天。设置为 0 表示不保留离线消息，只有推送当前在线的用户可以收到。该字段对 iOS 的 Notification 消息无效。</td>
 		</tr>
 		<tr >
 			<td>override_msg_id</td>
 			<td>long</td>
 			<td>可选</td>
 			<td>要覆盖的消息 ID</td>
-			<td>如果当前的推送要覆盖之前的一条推送，这里填写前一条推送的 msg_id 就会产生覆盖效果，即：1）该 msg_id 离线收到的消息是覆盖后的内容；2）即使该 msg_id Android 端用户已经收到，如果通知栏还未清除，则新的消息内容会覆盖之前这条通知；覆盖功能起作用的时限是：1 天。如果在覆盖指定时限内该 msg_id 不存在，则返回 1003 错误，提示不是一次有效的消息覆盖操作，当前的消息不会被推送。</td>
+			<td>如果当前的推送要覆盖之前的一条推送，这里填写前一条推送的 msg_id 就会产生覆盖效果，即：1）该 msg_id 离线收到的消息是覆盖后的内容；2）即使该 msg_id Android 端用户已经收到，如果通知栏还未清除，则新的消息内容会覆盖之前这条通知；覆盖功能起作用的时限是：1 天。如果在覆盖指定时限内该 msg_id 不存在，则返回 1003 错误，提示不是一次有效的消息覆盖操作，当前的消息不会被推送；该字段仅对 Android 有效。</td>
 		</tr>
 		<tr >
 			<td>apns_production</td>
 			<td>boolean</td>
 			<td>可选</td>
-			<td>APNs是否生产环境</td>
-			<td>True 表示推送生产环境，False 表示要推送开发环境；如果不指定则为推送生产环境。但注意，JPush 服务端 SDK 默认设置为推送 “开发环境”。</td>
+			<td>APNs 是否生产环境</td>
+			<td>True 表示推送生产环境，False 表示要推送开发环境；如果不指定则为推送生产环境。但注意，JPush 服务端 SDK 默认设置为推送 “开发环境”。该字段仅对 iOS 的 Notification 有效。</td>
 		</tr>
 		<tr >
 			<td>apns_collapse_id</td>
@@ -829,7 +828,7 @@ iOS 1.7.3 及以上的版本才能正确解析 v3 的 message，但是无法解�
 	</table>
 </div>
 
-## cid: 推送唯一标识符
+## cid：推送唯一标识符
 
 ### 调用地址
 GET https://api.jpush.cn/v3/push/cid[?count=n[&type=xx]]
@@ -893,16 +892,17 @@ cidlist
 
 
 
-## Group Push API: 应用分组推送 
+## Group Push API：应用分组推送 
 
 ### 调用地址
 POST  https://api.jpush.cn/v3/grouppush
 
 ### 功能说明
 该 API 用于为开发者在 portal 端创建的应用分组创建推送。
+
 groupkey 可以在创建的分组信息中获取，使用起来同 appkey 类似，但在使用的时候前面要加上 “group-” 前缀。
 
-***注***：暂不支持 option 中 override\_msg\_id 的属性。
+***注***：暂不支持 option 中 override\_msg\_id 的属性；分组推送仅在官网支持设置定时，调 Schedule API 时不支持。
 
 ### 调用示例
 

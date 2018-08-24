@@ -52,7 +52,9 @@ JPush Android 基于 override_msg_id ，iOS 基于 apns_collapse_id 来定义消
 JPush 提供消息覆盖的机制，使得你可以有机会可以更新暂时离线的用户最后会收到的消息。
 
 JPush 暂未开放删除 “离线消息” 的机制与接口。如果特殊原因有需求，请发邮件到 [support&#64;jpush.cn](mailto:support&#64;jpush.cn) 由极光推送技术支持人员来操作：
-
+```
+注：仅可删除因用户不在线暂未下发的离线消息，iOS 的 Notification 即发即达，因此无法通过删除达到撤回的效果。
+```
 + 说明需要删除离线消息的原因；
 + 提供应用的 Appkey，需要删除的消息的 Message ID，如果有多个 ID 值，请用英文逗号分开，不要换行；
 + 如果误发了大量的消息，而他们针对的推送目标 Audience 是一样的，则根据极光离线消息保存规则，可仅提供最新 5 条消息的 MessageID 删除即可，更早的消息已经被自动删除。
