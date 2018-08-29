@@ -4,7 +4,7 @@
 
 #### 更新时间
 
-2018-08-24
+2018-08-30
 
 #### ChangeLog
 
@@ -12,6 +12,7 @@
 + 修复用户反馈的一些bug
 
 ##### NewFeature:
++ 群组成员信息重构，新增GroupMemberInfo代表群组成员信息，原有获取群成员信息返回UserInfo的接口deprecated,新增接口返回GroupMemberInfo
 + 支持获取入群时间
 + 支持群成员呢称功能
 
