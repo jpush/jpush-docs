@@ -469,6 +469,9 @@ JMessage SDK
 		#========================protobuf================================
 		-keep class com.google.protobuf.** {*;}
 
+		#========================support=================================
+		-dontwarn cn.jmessage.support.**
+		-keep class cn.jmessage.support.**{*;}
 
 
 ## IM场景代码样例
