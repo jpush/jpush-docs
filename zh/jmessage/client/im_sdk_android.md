@@ -1460,7 +1460,7 @@ public void onEventMainThread(EventEntity event){
   </table>
 </div>
 
-群成员呢称修改事件GroupMemNicknameChangedEvent
+群成员昵称修改事件GroupMemNicknameChangedEvent
 ***Since 2.7.0***
 <div class="table-d" align="left" >
   <table border="1" width = "100%">
@@ -1477,7 +1477,7 @@ public void onEventMainThread(EventEntity event){
 	<tr >
       <td >getChangeEntities()</td>
       <td >`List<ChangeEntity>`</td>
-      <td >获取呢称修改事件列表,按照时间升序排列</td>
+      <td >获取昵称修改事件列表,按照时间升序排列</td>
     </tr>
   </table>
 </div>
@@ -1814,7 +1814,7 @@ JMessageClient.getGroupMembers(long groupID,
     <tr >
       <td >getNickName()</td>
       <td >String</td>
-      <td >获取群成员呢称</td>
+      <td >获取群成员昵称</td>
     </tr>
 	<tr >
       <td >getDisplayName()</td>
@@ -1829,15 +1829,15 @@ JMessageClient.getGroupMembers(long groupID,
   </table>
 </div>
 
-#### 设置群成员呢称
+#### 设置群成员昵称
 ***Since 2.7.0***
 ```
     /**
-     * 修改群成员呢称,群成员仅能修改自己在此群的呢称，管理员或群主修改任何普通群成员在此群的呢称，群成员类型见{@link GroupMemberInfo#type}
+     * 修改群成员昵称,群成员仅能修改自己在此群的昵称，管理员或群主修改任何普通群成员在此群的昵称，群成员类型见{@link GroupMemberInfo#type}
      *
      * @param username 群成员用户名
      * @param appKey 群成员appKey,传入空则默认使用本应用appKey
-     * @param nickName 呢称
+     * @param nickName 昵称
      * @param callback 结果回调
      * @since 2.7.0
      */
