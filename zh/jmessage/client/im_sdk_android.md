@@ -1460,6 +1460,28 @@ public void onEventMainThread(EventEntity event){
   </table>
 </div>
 
+群成员呢称修改事件GroupMemNicknameChangedEvent
+***Since 2.7.0***
+<div class="table-d" align="left" >
+  <table border="1" width = "100%">
+    <tr  bgcolor="#D3D3D3" >
+      <th width="100px">方法</th>
+      <th width="20px">类型</th>
+      <th width="300px">说明</th>
+    </tr>
+    <tr >
+      <td >getGroupID()</td>
+      <td >`long`</td>
+      <td >获取群组id</td>
+    </tr>
+	<tr >
+      <td >getChangeEntities()</td>
+      <td >`List<ChangeEntity>`</td>
+      <td >获取呢称修改事件列表,按照时间升序排列</td>
+    </tr>
+  </table>
+</div>
+
 #### 示例代码
 接收消息事件
 ```Java
@@ -1751,18 +1773,76 @@ JMessageClient.exitGroup(long groupId, BasicCallback callback);
 #### 获取群组成员列表
 ```
 JMessageClient.getGroupMembers(long groupID,
-      GetGroupMembersCallback callback)
+      RequestCallback<List<GroupMemberInfo>> callback)
 ```
 参数说明
 
 + long groupId 群组ID
-+ GetGroupMembersCallback callback
++ RequestCallback callback
 
 回调
 ```
-  public void gotResult(int responseCode, String responseMessage, List<String> members);
+  public void gotResult(int responseCode, String responseMessage, List<GroupMemberInfo> members);
 ```  
-+ List members 成员列表(username)。
++ List GroupMemberInfos 成员列表(GroupMemberInfo)。
+
+#### 群成员信息
+群成员信息实体类 GroupMemberInfo  
+***Since 2.7.0***
+<div class="table-d" align="left" >
+  <table border="1" width = "100%">
+    <tr  bgcolor="#D3D3D3" >
+      <th width="20px">方法</th>
+      <th width="40px">类型</th>
+      <th width="300px">说明</th>
+    </tr>
+	<tr >
+      <td >getType()</td>
+      <td >Type</td>
+      <td >获取群成员类别：群主，群管理员，普通群成员</td>
+    </tr>
+    <tr >
+      <td >isKeepSilence()</td>
+      <td >boolean</td>
+      <td >群成员在群内是否被禁言 true被禁言，false没有被禁言</td>
+    </tr>
+    <tr >
+      <td >getUserInfo()</td>
+      <td >UserInfo</td>
+      <td >获取群成员对应的用户信息</td>
+    </tr>
+    <tr >
+      <td >getNickName()</td>
+      <td >String</td>
+      <td >获取群成员呢称</td>
+    </tr>
+	<tr >
+      <td >getDisplayName()</td>
+      <td >String</td>
+      <td >获取群成员在群内的展示名，展示名返回优先级为：群昵称>备注名>用户昵称>用户名</td>
+    </tr>
+    <tr >
+      <td >getJoinGroupTime()</td>
+      <td >long</td>
+      <td >获取入群时间，单位豪秒</td>
+    </tr>
+  </table>
+</div>
+
+#### 设置群成员呢称
+***Since 2.7.0***
+```
+    /**
+     * 修改群成员呢称,群成员仅能修改自己在此群的呢称，管理员或群主修改任何普通群成员在此群的呢称，群成员类型见{@link GroupMemberInfo#type}
+     *
+     * @param username 群成员用户名
+     * @param appKey 群成员appKey,传入空则默认使用本应用appKey
+     * @param nickName 呢称
+     * @param callback 结果回调
+     * @since 2.7.0
+     */
+    groupInfo.setMemNickname(String username, String appKey, String nickName, BasicCallback callback);
+```
 
 ### 群消息屏蔽
 群组被设置为屏蔽之后，将收不到该群的消息。但是群成员变化事件还是能正常收到  
@@ -2131,8 +2211,17 @@ JMessageClient.getPublicGroupListByApp(appkey, start, count, new RequestCallback
 	 *
 	 * @return List<UserInfo>
 	 * @since 2.4.0
+	 * @deprecated deprecated in jmessage 2.7.0 use {@link #getGroupSilenceMemberInfos()} instead
 	 */
 	groupInfo.getGroupSilenceMembers();
+
+    /**
+     * 获取群成员禁言列表，返回群内被禁言的成员{@link GroupMemberInfo}列表
+     *
+     * @return 群内被禁言的成员GroupMemberInfo列表
+     * @since 2.7.0
+     */
+    groupInfo.getGroupSilenceMemberInfos();
 ```
 
 #### 判断用户是否被禁言
@@ -2250,8 +2339,17 @@ JMessageClient.getGroupInfo(mGetId, new GetGroupInfoCallback() {
      *
      * @return 管理员的成员信息列表
      * @since 2.5.0
+	 * @deprecated deprecated in jmessage 2.7.0 use{@link #getGroupKeeperMemberInfos()}instead
      */
     groupInfo.getGroupKeepers();
+
+    /**
+     * 获取群管理员列表, 返回群内管理员的成员{@link GroupMemberInfo}列表
+     *
+     * @return 管理员的成员GroupMemberInfo列表
+     * @since 2.7.0
+     */
+    groupInfo.getGroupKeeperMemberInfos();
 ```
 **代码示例**
 ```
