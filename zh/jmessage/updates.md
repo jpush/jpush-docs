@@ -14,7 +14,7 @@
 ##### NewFeature:
 + 群组成员信息重构，新增GroupMemberInfo代表群组成员信息，原有获取群成员信息返回UserInfo的接口deprecated,新增接口返回GroupMemberInfo
 + 支持获取入群时间
-+ 支持群成员呢称功能
++ 支持群成员昵称功能
 
 #### 升级提示
 + 建议升级！
