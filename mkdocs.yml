@@ -140,6 +140,7 @@ pages:
 
   - 入门指南:
     - '短信验证码概述': 'jsms/guideline/JSMS_guide.md'
+    - '名词解释': 'jsms/guideline/jsms_terminology.md'
     - '控制台操作指南': 'jsms/guideline/JSMS_consoleguide.md'
   - Android:
     - 'Android SDK 集成指南': 'jsms/client/Android/android_guide.md'
