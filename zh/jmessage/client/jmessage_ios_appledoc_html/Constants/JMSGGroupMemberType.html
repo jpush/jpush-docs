@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 
-	<title>JMSGPlatformType Constants Reference</title>
+	<title>JMSGGroupMemberType Constants Reference</title>
 
 	<link rel="stylesheet" href="../css/style.css">
 	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
@@ -59,7 +59,7 @@
 		<div id="overview_contents" class="container">
 			<div id="content">
 				<main role="main">
-					<h1 class="title">JMSGPlatformType Constants Reference</h1>
+					<h1 class="title">JMSGGroupMemberType Constants Reference</h1>
 
 					
 					<div class="section section-specification"><table cellspacing="0"><tbody>
@@ -75,11 +75,11 @@
 					
 
                     
-                    <h3 class="subsubtitle method-title">JMSGPlatformType</h3>
+                    <h3 class="subsubtitle method-title">JMSGGroupMemberType</h3>
                     
 					
 					<div class="section section-overview">
-                        <p>平台类型</p>
+                        <p>群成员类型</p>
 					</div>
 					
 					
@@ -87,17 +87,13 @@
                         <!-- display enum values -->
                         
                         <h4 class="method-subtitle">Definition</h4>
-                        <code>typedef NS_ENUM(NSInteger, JMSGPlatformType ) {<br>
+                        <code>typedef NS_ENUM(NSInteger, JMSGGroupMemberType ) {<br>
                             
-                            &nbsp;&nbsp; <a href="">kJMSGPlatformTypeAll</a> = 0,<br>
+                            &nbsp;&nbsp; <a href="">kJMSGGroupMemberTypeOrdinary</a> = 0,<br>
                             
-                            &nbsp;&nbsp; <a href="">kJMSGPlatformTypeAndroid</a> = 1,<br>
+                            &nbsp;&nbsp; <a href="">kJMSGGroupMemberTypeOwner</a> = 1,<br>
                             
-                            &nbsp;&nbsp; <a href="">kJMSGPlatformTypeiOS</a> = 2,<br>
-                            
-                            &nbsp;&nbsp; <a href="">kJMSGPlatformTypeWindows</a> = 4,<br>
-                            
-                            &nbsp;&nbsp; <a href="">kJMSGPlatformTypeWeb</a> = 16,<br>
+                            &nbsp;&nbsp; <a href="">kJMSGGroupMemberTypeAdmin</a> = 2,<br>
                             
                             };</code>
                     
@@ -107,11 +103,11 @@
                         <h4 class="method-subtitle">Constants</h4>
                         <dl class="termdef">
                             
-                            <dt><a name="" title="kJMSGPlatformTypeAll"></a><code>kJMSGPlatformTypeAll</code></dt>
+                            <dt><a name="" title="kJMSGGroupMemberTypeOrdinary"></a><code>kJMSGGroupMemberTypeOrdinary</code></dt>
 <dd>
 
 
-<p>所有平台</p>
+<p>普通成员</p>
 
 
 
@@ -124,11 +120,11 @@
 	
 </dd>
                             
-                            <dt><a name="" title="kJMSGPlatformTypeAndroid"></a><code>kJMSGPlatformTypeAndroid</code></dt>
+                            <dt><a name="" title="kJMSGGroupMemberTypeOwner"></a><code>kJMSGGroupMemberTypeOwner</code></dt>
 <dd>
 
 
-<p>Android 端</p>
+<p>群主</p>
 
 
 
@@ -141,45 +137,11 @@
 	
 </dd>
                             
-                            <dt><a name="" title="kJMSGPlatformTypeiOS"></a><code>kJMSGPlatformTypeiOS</code></dt>
+                            <dt><a name="" title="kJMSGGroupMemberTypeAdmin"></a><code>kJMSGGroupMemberTypeAdmin</code></dt>
 <dd>
 
 
-<p>iOS 端</p>
-
-
-
-
-
-    
-	<p>
-		Declared In <code class="declared-in-ref">JMSGConstants.h</code>.
-	</p>
-	
-</dd>
-                            
-                            <dt><a name="" title="kJMSGPlatformTypeWindows"></a><code>kJMSGPlatformTypeWindows</code></dt>
-<dd>
-
-
-<p>Windows 端</p>
-
-
-
-
-
-    
-	<p>
-		Declared In <code class="declared-in-ref">JMSGConstants.h</code>.
-	</p>
-	
-</dd>
-                            
-                            <dt><a name="" title="kJMSGPlatformTypeWeb"></a><code>kJMSGPlatformTypeWeb</code></dt>
-<dd>
-
-
-<p>web 端</p>
+<p>管理员</p>
 
 
 

@@ -122,11 +122,19 @@
 		
 		<option value="//api/name/memberArrayWithCompletionHandler:">- memberArrayWithCompletionHandler:</option>
 		
+		<option value="//api/name/memberInfoList:">- memberInfoList:</option>
+		
+		<option value="//api/name/memberInfoWithUsername:appkey:">- memberInfoWithUsername:appkey:</option>
+		
 		<option value="//api/name/changeGroupType:handler:">- changeGroupType:handler:</option>
 		
 		<option value="//api/name/setIsNoDisturb:handler:">- setIsNoDisturb:handler:</option>
 		
 		<option value="//api/name/setIsShield:handler:">- setIsShield:handler:</option>
+		
+		<option value="//api/name/setGroupNickname:username:appKey:handler:">- setGroupNickname:username:appKey:handler:</option>
+		
+		<option value="//api/name/groupNicknameWithUsername:appKey:">- groupNicknameWithUsername:appKey:</option>
 		
 		<option value="//api/name/setGroupMemberSilence:username:appKey:handler:">- setGroupMemberSilence:username:appKey:handler:</option>
 		
@@ -167,6 +175,8 @@
 		<option value="//api/name/largeAvatarData:">- largeAvatarData:</option>
 		
 		<option value="//api/name/largeAvatarLocalPath">- largeAvatarLocalPath</option>
+		
+		<option value="//api/name/memberDisplayName:">- memberDisplayName:</option>
 		
 		<option value="//api/name/displayName">- displayName</option>
 		
@@ -670,7 +680,7 @@
 				
 					<tr>
 						<th scope="row" class="argument-name"><code>handler</code></th>
-						<td><p>结果回调。正常返回时 resultObject 的类型是 NSArray，数组里的成员类型是JMSGGroup的<a href="#//api/name/gid">gid</a></p></td>
+						<td><p>结果回调。正常返回时 resultObject 的类型是 NSArray(NSNumber)，数组里的成员类型是JMSGGroup的<a href="#//api/name/gid">gid</a></p></td>
 					</tr>
 				
 				</table>
@@ -1755,7 +1765,7 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>获取群组成员列表（异步接口）</p>
+				<p>获取群组成员列表（建议使用 <a href="#//api/name/memberInfoList:">[JMSGGroup memberInfoList:]</a> 接口）</p>
 
 <p>@handler 成员列表. NSArray 里成员类型是 <a href="../Classes/JMSGUser.html">JMSGUser</a>.</p>
 			</div>
@@ -1776,6 +1786,122 @@
 				<h4 class="method-subtitle">Discussion</h4>
 				<p>一般在群组详情界面调用此接口，展示群组的所有成员列表。
 本接口只是在本地请求成员列表，不会发起服务器端请求。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGGroup.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/memberInfoList:" title="memberInfoList:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/memberInfoList:">&ndash;&nbsp;memberInfoList:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>获取所有群成员信息列表</p>
+
+<p>@handler 成员列表. 类型为 NSArray，里面元素为 <a href="../Classes/JMSGGroupMemberInfo.html">JMSGGroupMemberInfo</a>.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)memberInfoList:(JMSGCompletionHandler JMSG_NULLABLE)<em>handler</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>返回数据中的 <a href="../Classes/JMSGGroupMemberInfo.html">JMSGGroupMemberInfo</a> 包含了成员 user 信息、入群时间、群昵称等</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGGroup.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/memberInfoWithUsername:appkey:" title="memberInfoWithUsername:appkey:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/memberInfoWithUsername:appkey:">&ndash;&nbsp;memberInfoWithUsername:appkey:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>获取单个群成员信息</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (JMSGGroupMemberInfo *JMSG_NULLABLE)memberInfoWithUsername:(NSString *JMSG_NONNULL)<em>username</em> appkey:(NSString *JMSG_NULLABLE)<em>appkey</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>username</code></th>
+						<td><p>目标用户 user<a href="#//api/name/name">name</a></p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>appkey</code></th>
+						<td><p>目标用户 appkey，不传则默认本应用 appkey</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>群成员信息对象</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p><a href="../Classes/JMSGGroupMemberInfo.html">JMSGGroupMemberInfo</a> 包含了成员 user 信息、入群时间、群昵称等</p>
 			</div>
 			
 
@@ -1992,6 +2118,133 @@
 		</div>
 	</div>
 </div><div class="section-method">
+	<a name="//api/name/setGroupNickname:username:appKey:handler:" title="setGroupNickname:username:appKey:handler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setGroupNickname:username:appKey:handler:">&ndash;&nbsp;setGroupNickname:username:appKey:handler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>设置成员群昵称</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)setGroupNickname:(NSString *JMSG_NULLABLE)<em>nickname</em> username:(NSString *JMSG_NONNULL)<em>username</em> appKey:(NSString *JMSG_NULLABLE)<em>appKey</em> handler:(JMSGCompletionHandler JMSG_NULLABLE)<em>handler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>nickname</code></th>
+						<td><p>群昵称</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>username</code></th>
+						<td><p>目标用户的 user<a href="#//api/name/name">name</a></p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>appKey</code></th>
+						<td><p>目标用户的 appKey,若传入空则默认使用本应用appKey</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGGroup.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/groupNicknameWithUsername:appKey:" title="groupNicknameWithUsername:appKey:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/groupNicknameWithUsername:appKey:">&ndash;&nbsp;groupNicknameWithUsername:appKey:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>获取成员的群昵称</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (NSString *JMSG_NULLABLE)groupNicknameWithUsername:(NSString *)<em>username</em> appKey:(NSString *JMSG_NULLABLE)<em>appKey</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>username</code></th>
+						<td><p>群成员 user<a href="#//api/name/name">name</a>
+@patam  appKey   群成员 appKey，不传则默认是本应用 appkey</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>群昵称</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>还可以通过获取群成员信息 <a href="../Classes/JMSGGroupMemberInfo.html">JMSGGroupMemberInfo</a> 来获取群昵称</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGGroup.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
 	<a name="//api/name/setGroupMemberSilence:username:appKey:handler:" title="setGroupMemberSilence:username:appKey:handler:"></a>
 	<h3 class="method-title"><code><a href="#//api/name/setGroupMemberSilence:username:appKey:handler:">&ndash;&nbsp;setGroupMemberSilence:username:appKey:handler:</a></code>
 </h3>
@@ -2023,12 +2276,7 @@
 				
 					<tr>
 						<th scope="row" class="argument-name"><code>username</code></th>
-						<td><p>带设置的用户的 user<a href="#//api/name/name">name</a></p></td>
-					</tr>
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>appKey</code></th>
-						<td><p>带设置的用户的 appKey,若传入空则默认使用本应用appKey</p></td>
+						<td><p>带待设置的用户的 appKey,若传入空则默认使用本应用appKey</p></td>
 					</tr>
 				
 					<tr>
@@ -3145,6 +3393,64 @@
 		</div>
 	</div>
 </div><div class="section-method">
+	<a name="//api/name/memberDisplayName:" title="memberDisplayName:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/memberDisplayName:">&ndash;&nbsp;memberDisplayName:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>获取群成员的展示名</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (NSString *)memberDisplayName:(UInt64)<em>memberUid</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>memberUid</code></th>
+						<td><p>群成员的 uid（即：<a href="../Classes/JMSGUser.html#//api/name/uid">[JMSGUser uid]</a>）</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>展示优先级：群昵称 > 好友备注(user.noteName) > 用户昵称(user.nick<a href="#//api/name/name">name</a>) > 用户名(user.user<a href="#//api/name/name">name</a>)</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGGroup.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
 	<a name="//api/name/displayName" title="displayName"></a>
 	<h3 class="method-title"><code><a href="#//api/name/displayName">&ndash;&nbsp;displayName</a></code>
 </h3>
@@ -3205,7 +3511,7 @@
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2018 HXHG. All rights reserved. Updated: 2018-05-24</p>
+						<p class="copyright">Copyright &copy; 2018 HXHG. All rights reserved. Updated: 2018-09-04</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 
-	<title>JMSGMediaAbstractContent Class Reference</title>
+	<title>JMSGGroupMemberInfo Class Reference</title>
 
 	<link rel="stylesheet" href="../css/style.css">
 	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
@@ -56,21 +56,25 @@
 	
 	<optgroup label="Properties">
 		
-		<option value="//api/name/mediaID">mediaID</option>
+		<option value="//api/name/user">user</option>
 		
-		<option value="//api/name/format">format</option>
+		<option value="//api/name/ctime">ctime</option>
 		
-		<option value="//api/name/fSize">fSize</option>
+		<option value="//api/name/groupNickname">groupNickname</option>
 		
-		<option value="//api/name/uploadHandler">uploadHandler</option>
-		
-		<option value="//api/name/originMediaLocalPath">originMediaLocalPath</option>
+		<option value="//api/name/memberType">memberType</option>
 		
 	</optgroup>
 	
 
 	
 
+	
+	<optgroup label="Instance Methods">
+		
+		<option value="//api/name/displayName">- displayName</option>
+		
+	</optgroup>
 	
 	
 </select>
@@ -85,19 +89,16 @@
 		<div id="overview_contents" class="container">
 			<div id="content">
 				<main role="main">
-					<h1 class="title">JMSGMediaAbstractContent Class Reference</h1>
+					<h1 class="title">JMSGGroupMemberInfo Class Reference</h1>
 
 					
 					<div class="section section-specification"><table cellspacing="0"><tbody>
 						<tr>
 	<th>Inherits from</th>
-	<td><a href="../Classes/JMSGAbstractContent.html">JMSGAbstractContent</a> : NSObject</td>
-</tr><tr>
-	<th>Conforms to</th>
-	<td>NSCopying</td>
+	<td>NSObject</td>
 </tr><tr>
 	<th>Declared in</th>
-	<td>JMSGMediaAbstractContent.h</td>
+	<td>JMSGGroup.h</td>
 </tr>
 						</tbody></table></div>
 					
@@ -107,12 +108,9 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>媒体内容类型的抽象父类</p>
+						<p>群成员信息类</p>
 
-<p>所有的媒体文件内容, 如 VoiceContent,ImageContent,
-都有媒体文件的处理逻辑, 比如上传与下载, 这些逻辑都放在这个类里统一处理.</p>
-
-<p>这个类一般对外不可见.</p>
+<h4>可通过 <a href="../Classes/JMSGGroup.html#//api/name/memberInfoList:">[JMSGGroup memberInfoList:]</a>和 <a href="../Classes/JMSGGroup.html#//api/name/memberInfoWithUsername:appkey:">[JMSGGroup memberInfoWithUsername:appkey:]</a> 两个接口获取群成员信息</h4>
 					</div>
 					
 					
@@ -128,8 +126,8 @@
 
 						<div class="task-list">
 							<div class="section-method">
-	<a name="//api/name/mediaID" title="mediaID"></a>
-	<h3 class="method-title"><code><a href="#//api/name/mediaID">&nbsp;&nbsp;mediaID</a></code>
+	<a name="//api/name/user" title="user"></a>
+	<h3 class="method-title"><code><a href="#//api/name/user">&nbsp;&nbsp;user</a></code>
 </h3>
 
 	<div class="method-info">
@@ -139,12 +137,176 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>媒体文件ID</p>
+				<p>成员用户信息</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) NSString *mediaID</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) JMSGUser *user</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGGroup.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/ctime" title="ctime"></a>
+	<h3 class="method-title"><code><a href="#//api/name/ctime">&nbsp;&nbsp;ctime</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>入群时间</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign, readonly) UInt64 ctime</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGGroup.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/groupNickname" title="groupNickname"></a>
+	<h3 class="method-title"><code><a href="#//api/name/groupNickname">&nbsp;&nbsp;groupNickname</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>群昵称</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) NSString *groupNickname</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGGroup.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/memberType" title="memberType"></a>
+	<h3 class="method-title"><code><a href="#//api/name/memberType">&nbsp;&nbsp;memberType</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>群组成员的身份</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign, readonly) JMSGGroupMemberType memberType</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGGroup.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/displayName" title="displayName"></a>
+	<h3 class="method-title"><code><a href="#//api/name/displayName">&ndash;&nbsp;displayName</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>获取群成员的展示名</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (NSString *JMSG_NULLABLE)displayName</code></div>
 
 		    
 			
@@ -156,11 +318,9 @@
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>这是 <a href="../Classes/JMessage.html">JMessage</a> 内部用于表示资源文件的ID，使用该ID 可以定位到网络上的资源。</p>
+				<p>展示优先级：群昵称 > 好友备注(user.noteName) > 用户昵称(user.nickname) > 用户名(user.username)</p>
 
-<p>收到消息时，通过此ID 可以下载到资源；发出消息时，文件上传成功会生成此ID。</p>
-
-<p>注意: 不支持外部设置媒体ID，也不支持把此字段设置为 URL 来下载到资源文件。</p>
+<h4>同接口 <a href="../Classes/JMSGGroup.html#//api/name/memberDisplayName:">[JMSGGroup memberDisplayName:]</a> 相同效果</h4>
 			</div>
 			
 
@@ -171,181 +331,7 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">JMSGMediaAbstractContent.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/format" title="format"></a>
-	<h3 class="method-title"><code><a href="#//api/name/format">&nbsp;&nbsp;format</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>媒体格式</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) NSString *format</code></div>
-
-		    
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">JMSGMediaAbstractContent.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/fSize" title="fSize"></a>
-	<h3 class="method-title"><code><a href="#//api/name/fSize">&nbsp;&nbsp;fSize</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>媒体文件大小</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) NSNumber *fSize</code></div>
-
-		    
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">JMSGMediaAbstractContent.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/uploadHandler" title="uploadHandler"></a>
-	<h3 class="method-title"><code><a href="#//api/name/uploadHandler">&nbsp;&nbsp;uploadHandler</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>上传资源文件progress绑定(用来监听上传progress回调)</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) JMSGMediaProgressHandler JMSG_NULLABLE uploadHandler</code></div>
-
-		    
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection discussion-section">
-				<h4 class="method-subtitle">Discussion</h4>
-				<p>如果需要监听这条消息的上传文件进度, 则需要赋值这个 block 为你你自己的实现</p>
-			</div>
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">JMSGMediaAbstractContent.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/originMediaLocalPath" title="originMediaLocalPath"></a>
-	<h3 class="method-title"><code><a href="#//api/name/originMediaLocalPath">&nbsp;&nbsp;originMediaLocalPath</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>获取原文件的本地路径</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) NSString *originMediaLocalPath</code></div>
-
-		    
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection discussion-section">
-				<h4 class="method-subtitle">Discussion</h4>
-				<p>此属性是通过懒加载的方式获取，必须在下载完成之后此属性值才有意义</p>
-			</div>
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">JMSGMediaAbstractContent.h</code></p>
+				<p><code class="declared-in-ref">JMSGGroup.h</code></p>
 			</div>
 			
 			
