@@ -1,5 +1,30 @@
 # 最近更新
 
+### iOS SDK v3.7.0
+
+#### 更新时间
+
+2018-09-05
+
+#### ChangeLog
+
+##### BugFix
+
++ 修复用户反馈的一些 bug
++ 修改 iOS 发视频消息 Android 下载缩略图失败
+
+##### NewFeature:
+
++ 新增：群组成员上限修改通知
++ 新增：群昵称功能
++ 新增：群组成员信息类 [JMSGGroupMemberInfo](./client/jmessage_ios_appledoc_html/Classes/JMSGGroupMemberInfo.html)
++ 新增：获取群成员信息接口 [-(void)memberInfoList:](./client/jmessage_ios_appledoc_html/Classes/JMSGGroup.html#//api/name/memberInfoList:)
+
+#### 升级指南
++ 使用新版本的 JMessage.framework 文件替换原工程下的同名旧文件
++ 将新版本的 JMessage.framework 里的 JCore link 到工程中，详细参见官网集成文档
+
+
 ### Android SDK v2.7.0
 
 #### 更新时间
@@ -38,6 +63,7 @@
 ```
 
 + 如果使用jcenter的方式集成JMessage，不需要添加相关组件和资源，详细集成说明请参考官方[集成指南](https://docs.jiguang.cn/jmessage/client/jmessage_android_guide/)
+
 
 ### JMRTC Android SDK v1.0.2
 #### 更新时间

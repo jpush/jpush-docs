@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 
-	<title>JMSGUserDelegate Protocol Reference</title>
+	<title>JMSGGroupNicknameChangeEvent Class Reference</title>
 
 	<link rel="stylesheet" href="../css/style.css">
 	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
@@ -54,17 +54,21 @@
 
 	
 	
-
-	
-
-	
-	<optgroup label="Instance Methods">
+	<optgroup label="Properties">
 		
-		<option value="//api/name/onReceiveUserLoginStatusChangeEvent:">- onReceiveUserLoginStatusChangeEvent:</option>
+		<option value="//api/name/group">group</option>
 		
-		<option value="//api/name/onLoginUserKicked">- onLoginUserKicked</option>
+		<option value="//api/name/fromMemberInfo">fromMemberInfo</option>
+		
+		<option value="//api/name/toMemberInfo">toMemberInfo</option>
+		
+		<option value="//api/name/ctime">ctime</option>
 		
 	</optgroup>
+	
+
+	
+
 	
 	
 </select>
@@ -79,16 +83,16 @@
 		<div id="overview_contents" class="container">
 			<div id="content">
 				<main role="main">
-					<h1 class="title">JMSGUserDelegate Protocol Reference</h1>
+					<h1 class="title">JMSGGroupNicknameChangeEvent Class Reference</h1>
 
 					
 					<div class="section section-specification"><table cellspacing="0"><tbody>
 						<tr>
-	<th>Conforms to</th>
+	<th>Inherits from</th>
 	<td>NSObject</td>
 </tr><tr>
 	<th>Declared in</th>
-	<td>JMSGUserDelegate.h</td>
+	<td>JMSGNotificationEvent.h</td>
 </tr>
 						</tbody></table></div>
 					
@@ -98,7 +102,7 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>User 相关变更通知</p>
+						<p>如果是离线事件， memberInfoList 里会包含群成员每一次的修改记录</p>
 					</div>
 					
 					
@@ -110,12 +114,12 @@
 						
 
 						
-						<h2 class="task-title">Other Methods</h2>
+						
 
 						<div class="task-list">
 							<div class="section-method">
-	<a name="//api/name/onReceiveUserLoginStatusChangeEvent:" title="onReceiveUserLoginStatusChangeEvent:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/onReceiveUserLoginStatusChangeEvent:">&ndash;&nbsp;onReceiveUserLoginStatusChangeEvent:</a></code>
+	<a name="//api/name/group" title="group"></a>
+	<h3 class="method-title"><code><a href="#//api/name/group">&nbsp;&nbsp;group</a></code>
 </h3>
 
 	<div class="method-info">
@@ -125,12 +129,12 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>监听当前用户登录状态变更事件</p>
+				<p>群组</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (void)onReceiveUserLoginStatusChangeEvent:(JMSGUserLoginStatusChangeEvent *)<em>event</em></code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) JMSGGroup *group</code></div>
 
 		    
 			
@@ -138,17 +142,7 @@
 			
 
 			
-			<div class="method-subsection availability">
-				<h4 class="method-subtitle parameter-title">Availability</h4>
-				<p>3.5.0</p>
-			</div>
-			
 
-			
-			<div class="method-subsection discussion-section">
-				<h4 class="method-subtitle">Discussion</h4>
-				<p>可监听：当前登录用户被踢、非客户端修改密码强制登出、登录状态异常、被删除、被禁用、信息变更等事件</p>
-			</div>
 			
 
 			
@@ -158,23 +152,15 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">JMSGUserDelegate.h</code></p>
+				<p><code class="declared-in-ref">JMSGNotificationEvent.h</code></p>
 			</div>
 			
 			
 		</div>
 	</div>
-</div>
-						</div>
-						
-
-						<a title="以下是已经过期方法，请使用提示的新方法" name="task_以下是已经过期方法，请使用提示的新方法"></a>
-						<h2 class="task-title">以下是已经过期方法，请使用提示的新方法</h2>
-
-						<div class="task-list">
-							<div class="section-method">
-	<a name="//api/name/onLoginUserKicked" title="onLoginUserKicked"></a>
-	<h3 class="method-title"><code><a href="#//api/name/onLoginUserKicked">&ndash;&nbsp;onLoginUserKicked</a></code>
+</div><div class="section-method">
+	<a name="//api/name/fromMemberInfo" title="fromMemberInfo"></a>
+	<h3 class="method-title"><code><a href="#//api/name/fromMemberInfo">&nbsp;&nbsp;fromMemberInfo</a></code>
 </h3>
 
 	<div class="method-info">
@@ -184,12 +170,12 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>当前登录用户被踢下线通知(方法已过期，建议使用新方法)</p>
+				<p>修改昵称的群成员</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (void)onLoginUserKicked</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) JMSGGroupMemberInfo *fromMemberInfo</code></div>
 
 		    
 			
@@ -198,16 +184,6 @@
 
 			
 
-			
-			<div class="method-subsection discussion-section">
-				<h4 class="method-subtitle">Discussion</h4>
-				<p>一般可能是, 该用户在其他设备上登录, 把当前设备的登录踢出登录.</p>
-
-<p>SDK 收到服务器端下发事件后, 会内部退出登录.
-App 也应该退出登录. 否则所有的 SDK API 调用将失败, 因为 SDK 已经退出登录了.</p>
-
-<p>注意: 这是旧版本的监听方法，建议不要使用,已经过期,请使用 <a href="#//api/name/onReceiveUserLoginStatusChangeEvent:">[JMSGUserDelegate onReceiveUserLoginStatusChangeEvent:]</a> 新的监听方法.</p>
-			</div>
 			
 
 			
@@ -217,7 +193,89 @@ App 也应该退出登录. 否则所有的 SDK API 调用将失败, 因为 SDK �
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">JMSGUserDelegate.h</code></p>
+				<p><code class="declared-in-ref">JMSGNotificationEvent.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/toMemberInfo" title="toMemberInfo"></a>
+	<h3 class="method-title"><code><a href="#//api/name/toMemberInfo">&nbsp;&nbsp;toMemberInfo</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>被修改昵称的群成员</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) JMSGGroupMemberInfo *toMemberInfo</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGNotificationEvent.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/ctime" title="ctime"></a>
+	<h3 class="method-title"><code><a href="#//api/name/ctime">&nbsp;&nbsp;ctime</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>事件时间</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign, readonly) UInt64 ctime</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGNotificationEvent.h</code></p>
 			</div>
 			
 			
