@@ -727,14 +727,13 @@ iOS 1.7.3 及以上的版本才能正确解析 v3 的 message，但是无法解�
 
 <div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px;">
 <p>温馨提示：</p>
-<p>使用短信业务，会产生额外的运营商费用，具体请咨询商务，联系电话：400-612-5955  商务 QQ：800024881</p>
+<p>1. 使用短信业务，会产生额外的运营商费用，具体请咨询商务，联系电话：400-612-5955，商务 QQ：800024881</p>
+<p>2. 应运营商规定，短信内容需审核。自 2018 年 3 月起，短信补充的用户必须提交短信模板，审核通过后即可使用。因此推送时需要填写 temp_id（如果模版有设置参数则需要填写 temp_para）。参考<a href="https://docs.jiguang.cn/jsms/guideline/JSMS_consoleguide/#_12">控制台设置短信模板</a>和<a href="https://docs.jiguang.cn/jpush/server/push/server_overview/">短信模板 API</a>。</p>
 </div>
-
 <br>
+sms_message 用于设置短信推送内容以及短信发送的延迟时间。   
 
-用于设置短信推送内容以及短信发送的延迟时间。手机接收号码，开发者需要先把用户的手机号码与设备的registration id 匹配。绑定方法：[服务端-Device-更新设备](rest_api_v3_device/#_3)；[Android API - 设置手机号码](https://docs.jiguang.cn/jpush/client/Android/android_api/#_61)；[iOS API - 设置手机号码](https://docs.jiguang.cn/jpush/client/iOS/ios_api/#_151)
-
-**注：** 应运营商规定，短信内容需审核。自 2018 年 3 月起，短信补充的用户必须提交短信模板，审核通过后即可使用。因此推送时需要填写 temp\_id （模版有设置参数则需要填写 temp\_para）。参考 [控制台设置短信模板](https://docs.jiguang.cn/jsms/guideline/JSMS_consoleguide/#_12) 和 [短信模板 API](https://docs.jiguang.cn/jpush/server/push/server_overview/) 。
+开发者需要先把用户的手机号码与设备的 registrationID 匹配。绑定方法：[服务端-Device-更新设备](rest_api_v3_device/#_3)；[Android API-设置手机号码](https://docs.jiguang.cn/jpush/client/Android/android_api/#_61)；[iOS API-设置手机号码](https://docs.jiguang.cn/jpush/client/iOS/ios_api/#_151)
 
 与原有 JSON 业务协议相匹配，消息有如下字段信息：
 
@@ -744,7 +743,7 @@ iOS 1.7.3 及以上的版本才能正确解析 v3 的 message，但是无法解�
 			<th width="10%">关键字</th>
 			<th width="8%">类型</th>
 			<th width="6%">选项</th>
-			<th>示例</th>
+			<th>说明</th>
 		</tr>
 		<tr >
 			<td>delay_time</td>

@@ -55,6 +55,8 @@
 
 ***说明*** ： 使用 jcenter 自动集成的开发者，不需要在项目中添加 jar 和 so，jcenter 会自动完成依赖；在 AndroidManifest.xml 中不需要添加任何 JPush SDK 相关的配置，jcenter 会自动导入。
 
+>***注意*** ：如果需要处理收到的消息、使用 3.0.7 版本支持的别名与标签的新接口，AndroidManifest 中的自定义广播接收器仍需开发者手动配置，参考 SDK 压缩包里的 AndroidManifest.xml 样例文件。
+
 + 如果开发者需要修改组件属性，可以在本地的 AndroidManifest 中定义同名的组件并配置想要的属性，然后用 xmlns:tools 来控制本地组件覆盖 jcenter 上的组件。示例：
 
 		<manifest xmlns:android="http://schemas.android.com/apk/res/android"
