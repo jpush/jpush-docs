@@ -1,8 +1,8 @@
 # App-Create-API
-## 创建App
+## 创建 App
 ### 功能说明
 
-方便开发者创建App
+方便开发者创建 App
 
 ### 调用地址
 
@@ -32,13 +32,13 @@ POST https://admin.jpush.cn/v1/app
 
 HTTP Header Authorization 的值：Basic base64_auth_string
 
-+ base64_auth_string 生成规则是：base64(dev_key:dev_secret),dev_key及dev_secret请登录官  网的帐号页面获取。
-+ 留意 dev_key与 dev_secret中间使用 ":" 冒号隔开
-+ 请参考相关规范文档：[HTTP基本认证](http://zh.wikipedia.org/zh/HTTP基本认证)。
++ base64_auth_string 生成规则是：base64(dev_key:dev_secret),dev_key 及 dev_secret 请登录官网的帐号页面获取。
++ 留意 dev_key 与 dev_secret中间使用 ":" 冒号隔开
++ 请参考相关规范文档：[HTTP 基本认证](http://zh.wikipedia.org/zh/HTTP基本认证)。
 
 ### 请求体
 
-请求参数为一个App对象，以 JSON 格式表达，包含的字段信息如下：
+请求参数为一个 App 对象，以 JSON 格式表达，包含的字段信息如下：
 
 
 参数名称           | 类型          |是否必需  |描述
@@ -58,9 +58,9 @@ android_package  |string 	    | 应用包名(Android)
 is_new_created   |boolean 	    | 
 
 
-## HTTP状态码及业务错误码
+## HTTP 状态码及业务错误码
 
-###HTTP 状态码
+### HTTP 状态码
 
 参考文档：[HTTP-Status-Code]()
 

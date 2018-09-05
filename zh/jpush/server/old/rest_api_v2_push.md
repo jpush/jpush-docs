@@ -24,10 +24,10 @@ http://api.jpush.cn:8800/v2/push
 <p>  请使用域名访问 JPush API，不要直接使用 IP。
 <p>  本接口只支持 HTTP Post 请求。
 <p>  若无特殊说明，接口中统一使用 utf-8 编码。
-<p>  HTTP Post 的Content-Type 需采用 application/x-www-form-urlencoded
+<p>  HTTP Post 的 Content-Type 需采用 application/x-www-form-urlencoded
 <p>  考虑内容里可能有一些特殊字符，有必要在调用接口前对内容进行 URL Encode。更详细说明请参考：特殊字符问题。
 <p>  如果你很重视接口安全，请使用 SSL 接口，默认走443ssl加密协议端口，即接口URL改为: [> https://+ api.jpush.cn/v2/push][0]> 。
-<p>  无论你在极光推送Portal上的应用是生产环境还是测试环境，都使用这个 API 地址推送消息。
+<p>  无论你在极光推送 Portal 上的应用是生产环境还是测试环境，都使用这个 API 地址推送消息。
 </div>
 
 #### 调用参数
@@ -36,13 +36,13 @@ http://api.jpush.cn:8800/v2/push
 
 int 必须
 
-发送编号（最大支持32位正整数(即 4294967295 )）。由开发者自己维护，用于开发者自己标识一次发送请求。
+发送编号（最大支持 32 位正整数（即 4294967295））。由开发者自己维护，用于开发者自己标识一次发送请求。
 
 ##### app_key
 
 int 必须
 
-待发送的应用程序(appKey)，只能填一个。
+待发送的应用程序（appKey），只能填一个。
 
 ##### receiver_type
 
@@ -50,10 +50,10 @@ int 必须
 
 接收者类型。
 
-2 - 指定的 tag。
-3 - 指定的 alias。
-4 - 广播：对 app_key 下的所有用户推送消息。
-5 - 根据 RegistrationID 进行推送。Android SDK r1.6.0 及以上版本支持。
+2 - 指定的 tag。    
+3 - 指定的 alias。    
+4 - 广播：对 app_key 下的所有用户推送消息。    
+5 - 根据 RegistrationID 进行推送。Android SDK r1.6.0 及以上版本支持。    
 
 ##### receiver_value
 
@@ -61,10 +61,10 @@ string 可选
 
 发送范围值，与 receiver_type 相对应。
 
-2 - App 调用 SDK API 设置的 tag （标签）。支持多达 10 个，使用 "," 间隔。填写多个 tag 时，最后推送对象是这多个 tag 的 user set 的并集，而不会有重复用户。
-3 - App 调用 SDK API 设置的 alias （别名）。支持多达 1000 个，使用 "," 间隔。
-4 - 不需要填。
-5 - 目标设备的 RegistrationID。支持多达 1000 个，使用 “,” （逗号）间隔。
+2 - App 调用 SDK API 设置的 tag （标签）。支持多达 10 个，使用 "," 间隔。填写多个 tag 时，最后推送对象是这多个 tag 的 user set 的并集，而不会有重复用户。     
+3 - App 调用 SDK API 设置的 alias （别名）。支持多达 1000 个，使用 "," 间隔。    
+4 - 不需要填。    
+5 - 目标设备的 RegistrationID。支持多达 1000 个，使用 “,” （逗号）间隔。    
 
 ##### verification_code
 
@@ -72,11 +72,11 @@ string 必须
 
 验证串，用于校验发送的合法性。
 
-由 sendno, receiver_type, receiver_value, master_secret 4个值拼接起来（直接拼接字符串）后，进行一次MD5 (32位大写) 生成。
+由 sendno, receiver_type, receiver_value, master_secret 4 个值拼接起来（直接拼接字符串）后，进行一次MD5 (32 位大写) 生成。
 
 参考：verification code 拼接示例
 
-由于验证串的组成部分有 String 内容，而 JPush采用 UTF-8 编码。所以，如果你的 API 调用没有使用 UTF-8 编码时，首先会遇到 verification_code 不正确验证失败的错误返回，导致调用不成功。
+由于验证串的组成部分有 String 内容，而 JPush 采用 UTF-8 编码。所以，如果你的 API 调用没有使用 UTF-8 编码时，首先会遇到 verification_code 不正确验证失败的错误返回，导致调用不成功。
 
 ##### msg_type
 
@@ -114,11 +114,11 @@ int 可选
 
 int 可选
 
-从消息推送时起，保存离线的时长。秒为单位。最多支持10天（864000秒）。
+从消息推送时起，保存离线的时长。秒为单位。最多支持 10 天（864000 秒）。
 
 0 表示该消息不保存离线。即：用户在线马上发出，当前不在线用户将不会收到此消息。
 
-此参数不设置则表示默认，默认为保存1天的离线消息（86400秒）。
+此参数不设置则表示默认，默认为保存 1 天的离线消息（86400 秒）。
 
 ##### override_msg_id
 
@@ -136,11 +136,11 @@ string 可选
 
 #### 调用返回
 
-当调用接口时，极光Push Server会进行简单的校验检查，并立即返回结果。
+当调用接口时，极光 Push Server 会进行简单的校验检查，并立即返回结果。
 
 正常情况下返回码为 200，返回内容类型为字符串，形式为 JSON。
 
-| Key名称 | Value内容说明 |
+| Key 名称 | Value 内容说明 |
 | :---| :---|
 |errcode|错误码。参考：错误码定义|
 |errmsg |错误说明|
@@ -156,12 +156,12 @@ string 可选
 
 当调用参数 msg_type = 1 时，msg_content JSON 要求：
 
-| Key名称 | 是否必须 | Value内容说明 |
+| Key名称 | 是否必须 | Value 内容说明 |
 | :---| :---| :---|
-|n_builder_id|可选 |1-1000的数值，不填则默认为 0，使用 极光Push SDK 的默认通知样式。只有 Android 支持这个参数。进一步了解请参考文档 [通知栏样式定制 API](../../client/Android/android_api)|
-|n_title|可选 |通知标题。不填则默认使用该应用的名称。只有 Android支持这个参数。|
+|n_builder_id|可选 |1-1000 的数值，不填则默认为 0，使用 极光 Push SDK 的默认通知样式。只有 Android 支持这个参数。进一步了解请参考文档 [通知栏样式定制 API](../../client/Android/android_api/#api_8)|
+|n_title|可选 |通知标题。不填则默认使用该应用的名称。只有 Android 支持这个参数。|
 |n_content| 必须 |通知内容。|
-|n_extras| 可选 |通知附加参数。JSON格式。客户端可取得全部内容。|
+|n_extras| 可选 |通知附加参数。JSON 格式。客户端可取得全部内容。|
 
 ```
  关于长度限制，请参考：通知长度限制说明。
@@ -173,7 +173,7 @@ string 可选
 
 通过 JPush API 同时推送 iOS APNs 消息时，有一些内容需要与 APNs 适配。
 
-关于 APNs 的具体详细定义，请参考官方文档：[Apple Push Notification Service](http://developer.apple.com/library/ios/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/ApplePushService/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW12)。
+关于 APNs 的具体详细定义，请参考官方文档：[Apple Push Notification Service](https://developer.apple.com/library/archive/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html#//apple_ref/doc/uid/TP40008194-CH8-SW1)。
 
 | JPush 字段 | APNs 字段 |
 | :---| :---|
@@ -186,7 +186,7 @@ n_content 字段必须存在，但可以为空字符串。这时，如果 extras
 
 n_extras 整体可以不填。
 
-指定了 iOS 特定参数的完整的通知 msg_content JSON串示例：
+指定了 iOS 特定参数的完整的通知 msg_content JSON 串示例：
 
     {
      "n_content":"通知内容",
@@ -212,7 +212,6 @@ JPush API 同时支持 Andorid 与 iOS 平台的通知推送。
  <br>
  <p>另一方面，我们也认为，对于“通知”，在通知栏展示的信息，
  这么长的长度足够了。
-<br>
 <br>另外请留意：这里说的长度，是指字节。由于使用 UTF-8 编码，所以一个中文字符占 3 个字节。
 </div>
 
@@ -233,7 +232,7 @@ JPush API 同时支持 Andorid 与 iOS 平台的通知推送。
     <tr  bgcolor="#D3D3D3" >
       <th >Key名称</th>
       <th >选项</th>
-      <th >Value内容说明</th>
+      <th >Value 内容说明</th>
     </tr>
     <tr >
       <td>message</td>
@@ -271,8 +270,8 @@ JPush API 同时支持 Andorid 与 iOS 平台的通知推送。
     int sendno = 3321;
     int receiverType = 2;
     String receiverValue = "game, oldman, student";
-    String masterSecret = "71638202938228382811FCB1CB308ADC"; //极光推送portal
-    上分配的 appKey 的验证串(masterSecret)
+    String masterSecret = "71638202938228382811FCB1CB308ADC"; //极光推送 portal
+    上分配的 appKey 的验证串（masterSecret）
      
     String input = String.valueOf(sendno) + receiverType + receiverValue + masterSecret;
     String verificationCode = StringUtils.toMD5(input);
@@ -291,9 +290,9 @@ JPush API 同时支持 Andorid 与 iOS 平台的通知推送。
 
 所以，在正式调用接口发出内容前，你的代码需要对内容做两个部分的处理： JSON encode, URL encode。
 
-对于 JSON encode，如果你直接使用一些 JSON library来处理 JSON，那么，这些包会自动帮你处理特殊字符转义。
+对于 JSON encode，如果你直接使用一些 JSON library 来处理 JSON，那么，这些包会自动帮你处理特殊字符转义。
 
-如果你完全手动拼装 JSON字符串，则有必要你自己来写 JSON 特殊字符串转义。请参考 JSON 官方文档：[http://www.json.org/][1]
+如果你完全手动拼装 JSON 字符串，则有必要你自己来写 JSON 特殊字符串转义。请参考 JSON 官方文档：[http://www.json.org/][1]
 
 URL encode 一般来说，各开发语言平台都提供了这方面的工具方法，来做 URL encode 操作。
 
@@ -373,11 +372,11 @@ HTTP 返回码为 200 时，是业务相关的错误。
 
 
 ```
-返回1011时：
+返回 1011 时：
 
 如果群发：则此应用还没有一个客户端用户注册。请检查 SDK 集成是否正常。
 
-如果是推送给某别名或者标签：则此别名或者标签还没有在任何客户端SDK提交设置成功。
+如果是推送给某别名或者标签：则此别名或者标签还没有在任何客户端 SDK 提交设置成功。
 
 ```
 
@@ -385,7 +384,7 @@ HTTP 返回码为 200 时，是业务相关的错误。
 
 查询消息送达情况请参考： [Report-API][2]
 
-了解API 频率限制：[API 频率限制][3]
+了解 API 频率限制：[API 频率限制][3]
 
 [1]: http://www.json.org/
 [2]: ../push/rest_api_v3_report

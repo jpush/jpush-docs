@@ -3,7 +3,8 @@
 ## 概述
 
 API 层面支持定时功能。  
-这是一个相对独立的任务执行模块，维护一个 Schedule 对象。
+这是一个相对独立的任务执行模块，维护一个 Schedule 对象。    
+**注：**调 API 创建的定时任务只能调 API 获取/修改/删除，在官网定时消息页面不展示。
 
 ### 调用地址
 
@@ -22,7 +23,7 @@ https://api.jpush.cn/v3/schedules
 
 ### 调用验证
 
-HTTP Header（头）里加一个字段（Key/Value对）：  
+HTTP Header（头）里加一个字段（Key/Value 对）：  
 Authorization: Basic base64_auth_string  
 其中 base64_auth_string 的生成算法为：base64(appKey:masterSecret)  
 即，对 appKey 加上冒号，加上 masterSecret 拼装起来的字符串，再做 base64 转换。
@@ -64,7 +65,7 @@ Authorization: Basic base64_auth_string
           "time": "12:00:00", 
           "time_unit": "WEEK",   //month, week, day, 大小写不敏感
           "frequency": 1,
-          "point": ["WED","FRI"]   //time_unit为day时候，point不能存在。WED,FRI 大小写不敏感。month:"01","02"
+          "point": ["WED","FRI"]   //time_unit为 day 的时候，point 不能存在。WED，FRI 大小写不敏感。month:"01","02"
      }
   }, 
   "push": { 
@@ -79,29 +80,29 @@ Authorization: Basic base64_auth_string
 
 ***字段说明：***
 
-每一个schedule任务，都由name、enabled、trigger、push这四个小节组成。
+每一个 schedule 任务，都由 name、enabled、trigger、push 这四个小节组成。
 
 + cid
 	+ 和 push api 中 cid 用法一致，详见 [cid 说明](rest_api_v3_push/#cid) 。注：schedule api payload 中的 push 字段中含有 cid 字段将会被忽略。	
 + push
 	+ 参考 [ push api ](rest_api_v3_push) 中各个字段。
 + name
-	+ 表示schedule任务的名字，由schedule-api在用户成功创建schedule任务后返回，不得超过255字节，由汉字、字母、数字、下划线组成。
+	+ 表示 schedule 任务的名字，由 schedule-api 在用户成功创建 schedule 任务后返回，不得超过 255 字节，由汉字、字母、数字、下划线组成。
 + enabled
-	+ 表示任务当前状态，布尔值，必须为true或false，创建任务时必须为true。
+	+ 表示任务当前状态，布尔值，必须为 true 或 false，创建任务时必须为 true。
 + trigger 
-	+ 表示schedule任务的触发条件，当前只支持定时任务（single）与定期任务（periodical）。
+	+ 表示 schedule 任务的触发条件，当前只支持定时任务（single）与定期任务（periodical）。
 		+ single
 			+ 表示定时任务  
-				+ time为必选项且格式为"YYYY-mm-dd HH:MM:SS“，如"2014-02-15 13:16:59"，不能为"2014-2-15 13:16:59"或"2014-12-15 13:16"，即日期时间格式必须完整。
+				+ time 为必选项且格式为 "YYYY-mm-dd HH:MM:SS“，如 "2014-02-15 13:16:59"，不能为 "2014-2-15 13:16:59" 或 "2014-12-15 13:16"，即日期时间格式必须完整。定时任务的最晚时间不能超过一年。
 		+ periodical
 			+ 表示定期任务
-				+ start 表示定期任务有效起始时间，格式与必须严格为: "YYYY-mm-dd HH:MM:SS"，且时间必须为24小时制。
-				+ end  表示定期任务的过期时间，格式同上。定时任务不超过一年。
-				+ time 表示触发定期任务的定期执行时间，格式严格为: "HH:MM:SS"，且为24小时制。
-				+ time_unit 表示定期任务的执行的最小时间单位有："day"、"week" 及"month" 三种。大小写不敏感，如"day", "Day", "DAy" 均为合法的time_unit。
-				+ frequency 此项与time_unit的乘积共同表示的定期任务的执行周期，如time_unit为day，frequency为2，则表示每两天触发一次推送，目前支持的最大值为100。
-				+ point 一个列表，此项与time_unit相对应：
+				+ start 表示定期任务有效起始时间，格式与必须严格为: "YYYY-mm-dd HH:MM:SS"，且时间必须为 24 小时制。
+				+ end  表示定期任务的过期时间，格式同上。定期任务最大跨度不能超过一年。
+				+ time 表示触发定期任务的定期执行时间，格式严格为: "HH:MM:SS"，且为 24 小时制。
+				+ time_unit 表示定期任务的执行的最小时间单位有："day"、"week" 及 "month" 三种。大小写不敏感，如 "day", "Day", "DAy" 均为合法的 time_unit。
+				+ frequency 此项与 time_unit 的乘积共同表示的定期任务的执行周期，如 time_unit 为 day，frequency 为 2，则表示每两天触发一次推送，目前支持的最大值为 100。
+				+ point 一个列表，此项与 time_unit 相对应：
 
 <div class="table-d" align="center" >
 	<table border="1" width = "100%">
@@ -113,17 +114,17 @@ Authorization: Basic base64_auth_string
 		<tr >
 			<td>day</td>
 			<td>NIL</td>
-			<td>当time_unit为day时point此项无效</td>
+			<td>当 time_unit 为 day 时 point 此项无效</td>
 		</tr>
 		<tr >
 			<td>week</td>
 			<td>"MON","TUE","WED","THU","FRI","SAT","SUN"</td>
-			<td>当time_unit为week时，point为对应项的一项或多项，表示星期几进行触发,point中的值大小写不敏感</td>
+			<td>当 time_unit 为 week 时，point 为对应项的一项或多项，表示星期几进行触发，point 中的值大小写不敏感</td>
 		</tr>
 		<tr >
 			<td>month</td>
 			<td>"01","02","03" .... "31"</td>
-			<td>当time_unit为month时，point为当前进行月对应的日期，且必须有效，如month为2月，则31或30日是不会进行触发的</td>
+			<td>当 time_unit 为 month 时，point 为当前进行月对应的日期，且必须有效，如 month 为 2 月，则 31 或 30 日是不会进行触发的</td>
 		</tr>
 	</table>
 </div>
@@ -152,16 +153,16 @@ POST /v3/schedules
 
 ```
 {
- "name": "&#23450;时推送示例", 
+ "name": "定时推送示例", 
  "enabled": true, 
  "trigger": { 
      "periodical": { 
        "start":"2014-09-17 12:00:00", 
        "end": "2014-10-18 12:00:00", 
        "time": "12:00:00", 
-       "time_unit": "WEEK", //month, week, day, &#22823;小写不敏感 
+       "time_unit": "WEEK", //month, week, day；大小写不敏感 
        "frequency": 2, 
-       "point": ["WED","FRI"] //time_unit&#20026;day时候，point不能存在。WED,FRI 大小写不敏感。month:"01","02" 
+       "point": ["WED","FRI"] //time_unit 为 day 的时候，point 不能存在。WED,FRI 大小写不敏感。month:"01","02" 
      }
   },
  "push": {
@@ -183,10 +184,10 @@ POST /v3/schedules
 ***Request Data 说明***
 
 + 由于定时任务相对简单，我们例中只对定期任务进行说明
-+ 以上表示创建一个定期任务，起始生效时间必须'2014-09-17 12:00:00之后'第一个time时间点，过期时间为'2014-10-18 12:00:00'，在有效期内每两周的周三、周五中午12点分别执行一次
-+ 定期任务首次创建时的触发时间不得晚于其end中指定的时间。否则创建失败
-+ 定期任务（包括定时任务）首次创建时其enabled项必须为true。不能创建enabled:false的任务，否则创建失败
-+ push 必须为有效合法的push动作，否则创建失败。
++ 以上表示创建一个定期任务，起始生效时间必须 '2014-09-17 12:00:00' 之后第一个 time 时间点，过期时间为 '2014-10-18 12:00:00'，在有效期内每两周的周三、周五中午 12 点分别执行一次
++ 定期任务首次创建时的触发时间不得晚于其 end 中指定的时间。否则创建失败
++ 定期任务（包括定时任务）首次创建时其 enabled 项必须为 true。不能创建 enabled:false 的任务，否则创建失败
++ push 必须为有效合法的 push 动作，否则创建失败。
 
 ### Example Response
 
@@ -200,7 +201,7 @@ HTTP/1.1 200 CREATED
 ```
 {
     "schedule_id":"0eac1b80-c2ac-4b69-948b-c65b34b96512",
-    "name":"&#23450;时推送示例"    //长度最大255字节，数字、字母、下划线、汉字。
+    "name":"定时推送示例"    //长度最大 255 字节，数字、字母、下划线、汉字。
 }
 ```
 
@@ -221,15 +222,15 @@ HTTP/1.1 400 BAD REQUEST
 }
 ```
 
-## 获取有效的schedule列表
+## 获取有效的 Schedule 列表
 
 ```
 GET https://api.jpush.cn/v3/schedules?page=
 ```
 
-获取当前有效（endtime未过期）的 schedule 列表
+获取当前有效（endtime 未过期）的 schedule 列表
 
-###Example Request
+### Example Request
 
 ***Request Header***
 
@@ -240,12 +241,12 @@ GET /v3/schedules?page=
  Accept: application/json
 ```
 
-+ 返回当前请求页的详细的schedule-task列表，如未指定page则page为1。
-+ 排序规则:创建时间,由schedule-service完成。
-+ 如果请求页数大于总页数，则 page为请求值，schedules为空。
-+ 每页最多返回50个task，如请求页实际的task的个数小于50，则返回实际数量的task。
++ 返回当前请求页的详细的 schedule-task 列表，如未指定 page 则 page 为 1。
++ 排序规则：创建时间，由 schedule-service 完成。
++ 如果请求页数大于总页数，则 page 为请求值，schedules 为空。
++ 每页最多返回 50 个 task，如请求页实际的 task 的个数小于 50，则返回实际数量的 task。
 
-###Example Response
+### Example Response
 
 ***Success Response***
 
@@ -255,16 +256,16 @@ HTTP/1.1 200 OK
 ```
 ```
 {
-    "total_count":1000,  //&#25968;字 表示总数
-    "total_pages":5,      //&#24635;页数。
-    "page":4,     //&#24403;前为第四页。
+    "total_count":1000,  //表示总数
+    "total_pages":5,      //总页数。
+    "page":4,     //当前为第四页。
     "schedules":[
-        {"schedule_id":"0eac1b80-c2ac-4b69-948b-c65b34b96512","name":"","enabled":...},{}, //&#35814;细信息列表。
+        {"schedule_id":"0eac1b80-c2ac-4b69-948b-c65b34b96512","name":"","enabled":...},{}, //详细信息列表。
     ]
 }
 ```
-+ 以上表示总共1000个schedule-task, 总共5页，当前为第4页，包含50个schedule-task的信息。
-+ 返回的schedules为schedule-task的详细信息列表。
++ 以上表示总共 1000 个 schedule-task，总共 5 页，当前为第 4 页，包含 50 个 schedule-task 的信息。
++ 返回的 schedules 为 schedule-task 的详细信息列表。
 
 ## 获取指定的定时任务
 
@@ -272,7 +273,7 @@ HTTP/1.1 200 OK
  GET https://api.jpush.cn/v3/schedules/{schedule_id}
 ```
 
-###Example Request
+### Example Request
 
 ***Request Header***
 
@@ -282,9 +283,9 @@ GET /v3/schedules/{schedule_id}
  Content-Type: application/json
  Accept: application/json
 ```
-+ 获取当前用户的schedule任务id为{schedule_id}的定时任务的详情。
++ 获取当前用户的 schedule 任务 id 为 {schedule_id} 的定时任务的详情。
 
-###Example Response
+### Example Response
 
 ***Success Reponse***
 
@@ -298,7 +299,7 @@ HTTP/1.1 200 OK
 ```
 { 
       "schedule_id":"0eac1b80-c2ac-4b69-948b-c65b34b96512"
-      "name": "&#23450;时推送示例", 
+      "name": "定时推送示例", 
       "enabled": true, 
       "trigger": {
          ...
@@ -307,15 +308,15 @@ HTTP/1.1 200 OK
 }
 ```
 
-+ 如schedule_id不存在，则返回404，否则返回实际schedule-task的详情。
++ 如 schedule_id 不存在，则返回 404，否则返回实际 schedule-task 的详情。
 
-## 修改指定的Schedule
+## 修改指定的 Schedule
 
 ```
 PUT https://api.jpush.cn/v3/schedules/{schedule_id}
 ```
 
-###Example Request
+### Example Request
 
 ```
 PUT /v3/schedules/{schedule_id}
@@ -323,24 +324,24 @@ PUT /v3/schedules/{schedule_id}
  Content-Type: application/x-www-form-urlencoded
  Accept: application/json
 ```
-+ 更新指定id的schedule任务。
++ 更新指定 id 的 schedule 任务。
 
 ```
 {
    "name": "task", 
    "enabled": true, 
    "trigger": { 
-        
+       ... 
     },
    "push": { ... } 
 }
 ```
-+ 更新操作可为 "name"，"enabled"、"trigger"或"push" 四项中的一项或多项。
++ 更新操作可为 "name"，"enabled"、"trigger" 或 "push" 四项中的一项或多项。
 + 不支持部分更新，如更新之前的任务为：
 
 ```
 { 
-  "name": "&#23450;时推送示例", 
+  "name": "定时推送示例", 
   "enabled": true, 
   "trigger": {
      "periodical": { 
@@ -356,35 +357,34 @@ PUT /v3/schedules/{schedule_id}
         "platform":"ios",
         "options":{"apns_production":"false"},
         "audience":"all",
-        "notification" : {"alert":"&#23450;时任务更新"}
+        "notification" : {"alert":"定时任务更新"}
    }
 }
 ```
 + 则以下为错误的更新及与之对应的正确的更新示例：
 
 ```
-## WRONG: 更新push中的平台为安卓：
+## WRONG: 更新 push 中的平台为安卓：
     { 
       "push":{"platform":"android"}
     }
-## RIGHT: 更新push中的平台为安卓：
+## RIGHT: 更新 push 中的平台为安卓：
     {
       "push":{       
           "platform":"android",
           "options":{"apns_production":"false"},
           "audience":"all",
-          "notification" : {"alert":"&#23450;时任务更新"}
+          "notification" : {"alert":"定时任务更新"}
        }
     }
-    ## 此处的push更新后必须仍是有效的，否则也会更新失败。
+    ## 此处的 push 更新后必须仍是有效的，否则也会更新失败。
  
-## WRONG： 更新periodical中的过期时间延后一个月:
+## WRONG： 更新 periodical 中的过期时间延后一个月:
    {
       "trigger":{
          "end":"2014-11-18 12:00:00"
       }
-   &#65373;
-## RIGHT:  更新periodical中的过期时间延后一个月：
+## RIGHT:  更新 periodical 中的过期时间延后一个月：
    {
       "trigger":{
         "periodical": { 
@@ -397,14 +397,14 @@ PUT /v3/schedules/{schedule_id}
         }
       }
    }
-   ## time、time_unit、frequency、point的更新同上。
-   ## 更新后的trigger必须仍是有效合法的，否则即使trigger整体更新也会失败。可以更新enable:false的任务。
-   ## 定时任务(single)与定期任务(periodical)之间不能进行相互更新，即，原先为single类任务，则不能更新为periodical任务，反之亦然。
-   ## 不能更新已过期的schedule任务
+   ## time、time_unit、frequency、point 的更新同上。
+   ## 更新后的 trigger 必须仍是有效合法的，否则即使 trigger 整体更新也会失败。可以更新 enable:false 的任务。
+   ## 定时任务（single）与定期任务（periodical）之间不能进行相互更新，即，原先为 single 类任务，则不能更新为 periodical 任务，反之亦然。
+   ## 不能更新已过期的 schedule 任务
 ```
 
 
-###Example Response
+### Example Response
 
 ***Success Response***
 
@@ -415,7 +415,7 @@ HTTP/1.0 200 CREATED
 
 ```
 { 
-  "name": "&#23450;时推送示例", 
+  "name": "定时推送示例", 
   "enabled": true, 
   "trigger": { 
     "periodical": { 
@@ -430,14 +430,14 @@ HTTP/1.0 200 CREATED
    "platform":"andiro", 
    "options":{"apns_production":"false"}, 
    "audience":"all", 
-   "notification" : {"alert":"&#23450;时任务更新"}
+   "notification" : {"alert":"定时任务更新"}
    }
 }
 ```
 
 ***Fail Response***
 
-+ schedule_id无效，不是有效的uuid。
++ schedule_id 无效，不是有效的 uuid。
 
 ```
 HTTP/1.0 404 Not Found
@@ -451,15 +451,15 @@ HTTP/1.0 400 BAD REQUEST
  Content-Type: application/json
 ```
 
-##删除指定的Schedule任务
+## 删除指定的 Schedule 任务
 
 ```
 DELETE https://api.jpush.cn/v3/schedules/{schedule_id}
 ```
 
-schedule\_id为已创建的schedule任务的id，如果schedule_id不合法即不是有效的uuid，则404。
+schedule\_id 为已创建的 schedule 任务的 id，如果 schedule_id 不合法即不是有效的 uuid，则 404。
 
-###Example Request
+### Example Request
 
 ```
 DELETE /v3/schedules/{schedule_id}
@@ -468,7 +468,7 @@ DELETE /v3/schedules/{schedule_id}
  Accept: application/json
 ```
 
-###Example Response
+### Example Response
 
 ***Success Response***
 
@@ -516,9 +516,9 @@ HTTP/1.0 404 Not Found
 		<tr >
 			<td>8104</td>
 			<td>404</td>
-			<td>请求的schedule任务，不存在</td>
+			<td>请求的 schedule 任务不存在</td>
 			<td>Request schedule operation doesn't exist</td>
-			<td>请求的定时api操作不存在</td>
+			<td>对应的任务已发送，或 schedule id 错误</td>
 		</tr>
 		<tr >
 			<td>8101</td>
@@ -539,7 +539,7 @@ HTTP/1.0 404 Not Found
 			<td>503</td>
 			<td>系统内部错误，建议稍后重试</td>
 			<td>Execute action timeout, please try later again</td>
-			<td>与schedule-server 通信错误</td>
+			<td>与 schedule-server 通信错误</td>
 		</tr>
 		<tr >
 			<td>8200</td>
@@ -558,6 +558,7 @@ HTTP/1.0 404 Not Found
 ```
 
 ## 调用限制
-+ 定时最多有效数（当前未过期数）与周期最多有效数（当前未过期数）总数 100个。超过后失败。
-+ 最大频率当前为100/分。
-+ periodical任务的最大跨度为12个月。
++ 定时最多有效数（当前未过期数）与周期最多有效数（当前未过期数）总数 100 个。超过后失败。
++ VIP 客户可申请提高总数上限，最高可达 2000 个，[联系商务](https://www.jiguang.cn/accounts/business_contact?fromPage=push)开通。
++ 最大频率当前为 100/分。
++ 定时任务（single）的最晚时间与定期任务（periodical）的最大跨度均不能超过 1 年。

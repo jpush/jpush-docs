@@ -28,11 +28,11 @@ GET /v2/received
 
 ###Request Params
 
-+ msg_ids 推送API返回的 msg_id 列表，多个 msg_id 用逗号隔开，最多支持100个msg_id。
++ msg_ids 推送API返回的 msg_id 列表，多个 msg_id 用逗号隔开，最多支持 100 个 msg_id。
 + HTTP Header Authorization 的值：Basic base64_auth_string
 	+ base64_auth_string 生成规则是：base64(appKey:masterSecret) 
 	+ 留意 appKey 与 masterSecret 中间使用 ":" 冒号隔开
-	+ 请参考相关规范文档：[HTTP基本认证。](http://zh.wikipedia.org/zh/HTTP基本认证)
+	+ 请参考相关规范文档：[HTTP 基本认证。](http://zh.wikipedia.org/zh/HTTP基本认证)
 
 
 ###Example Response

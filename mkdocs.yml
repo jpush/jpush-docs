@@ -58,13 +58,13 @@ pages:
     - 'JPush 应用场景': 'jpush/advanced/scenes.md'
     - 'JPush 高级话题': 'jpush/advanced/topics.md'
   - 客户端集成插件: 'jpush/client/client_plugins.md'
-  - 服务端 SDK:
-    - 'Java SDK': 'jpush/server/sdk/java_sdk.md'
-    - 'Python SDK': 'jpush/server/sdk/python_sdk.md'
-    - 'PHP SDK': 'jpush/server/sdk/php_sdk.md'
-    - 'Ruby SDK': 'jpush/server/sdk/ruby_sdk.md'
-    - 'C# SDK': 'jpush/server/sdk/csharp_sdk.md'
-    - 'Node.js SDK': 'jpush/server/sdk/nodejs_sdk.md'
+  # - 服务端 SDK:
+    # - 'Java SDK': 'jpush/server/sdk/java_sdk.md'
+    # - 'Python SDK': 'jpush/server/sdk/python_sdk.md'
+    # - 'PHP SDK': 'jpush/server/sdk/php_sdk.md'
+    # - 'Ruby SDK': 'jpush/server/sdk/ruby_sdk.md'
+    # - 'C# SDK': 'jpush/server/sdk/csharp_sdk.md'
+    # - 'Node.js SDK': 'jpush/server/sdk/nodejs_sdk.md'
   - 旧文档:
     - 'REST API v2 - Push': 'jpush/server/old/rest_api_v2_push.md'
     - 'REST API v2 - Report': 'jpush/server/old/rest_api_v2_report.md'
@@ -128,11 +128,11 @@ pages:
     - '业务对象': 'jmessage/advanced/im_objects.md'
     - '实时消息路由': 'jmessage/advanced/jmessage_callback.md'
   - 客户端集成插件: 'jmessage/client/client_plugins.md'
-  - 服务端 SDK:
-    - 'Java SDK': 'jmessage/server/sdk/java_sdk.md'
-    - 'Python SDK': 'jmessage/server/sdk/python_sdk.md'
-    - 'PHP SDK': 'jmessage/server/sdk/php_sdk.md'
-    - 'C# SDK': 'jmessage/server/sdk/csharp_sdk.md'
+  # - 服务端 SDK:
+    # - 'Java SDK': 'jmessage/server/sdk/java_sdk.md'
+    # - 'Python SDK': 'jmessage/server/sdk/python_sdk.md'
+    # - 'PHP SDK': 'jmessage/server/sdk/php_sdk.md'
+    # - 'C# SDK': 'jmessage/server/sdk/csharp_sdk.md'
   - 最近更新: 'jmessage/updates.md'
   - 资源下载: 'jmessage/resources.md'
 
@@ -157,10 +157,10 @@ pages:
     - '短信余量查询 API': 'jsms/server/rest_jsms_api_account.md'
     - '回调接口': 'jsms/server/callback.md'
     - '短信发送状态说明': 'jsms/server/sendcode.md'
-  - 服务端 SDK:
-    - 'Java SDK': 'jsms/server/sdk/java_sdk.md'
-    - 'PHP SDK': 'jsms/server/sdk/php_sdk.md'
-    - 'C# SDK': 'jsms/server/sdk/csharp_sdk.md'
+  # - 服务端 SDK:
+    # - 'Java SDK': 'jsms/server/sdk/java_sdk.md'
+    # - 'PHP SDK': 'jsms/server/sdk/php_sdk.md'
+    # - 'C# SDK': 'jsms/server/sdk/csharp_sdk.md'
   - 最近更新: 'jsms/updates.md'
   - 资源下载: 'jsms/resources.md'
 

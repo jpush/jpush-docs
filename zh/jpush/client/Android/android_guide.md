@@ -2,56 +2,60 @@
 
 ## 使用提示
 
-本文是 JPush Android SDK 标准的集成指南文档。用以指导 SDK 的使用方法，默认读者已经熟悉IDE（Eclipse 或者 Android Studio）的基本使用方法，以及具有一定的 Android 编程知识基础。
+本文是 JPush Android SDK 标准的集成指南文档。用以指导 SDK 的使用方法，默认读者已经熟悉 IDE（Eclipse 或者 Android Studio）的基本使用方法，以及具有一定的 Android 编程知识基础。
 
 本篇指南匹配的 JPush Android SDK 版本为：3.0.0 及以后版本。
 
-+ [3 分钟快速 Demo（Android）](android_3m/)：如果您想要快速地测试、感受下极光推送的效果，请参考本文在几分钟内跑通Demo。
++ [3 分钟快速 Demo（Android）](android_3m/)：如果您想要快速地测试、感受下极光推送的效果，请参考本文在几分钟内跑通 Demo。
 + 极光推送[文档网站](http://docs.jiguang.cn/)上，有极光推送相关的所有指南、API、教程等全部的文档。包括本文档的更新版本，都会及时地发布到该网站上。
-+ 如果您看到本文档，但还未下载Android SDK，请访问[SDK下载页面](http://docs.jiguang.cn/jpush/resources/)下载。
++ 如果您看到本文档，但还未下载 Android SDK，请访问[ SDK 下载页面](http://docs.jiguang.cn/jpush/resources/)下载。
 
 ## 产品功能说明
 
-极光推送（JPush）是一个端到端的推送服务，使得服务器端消息能够及时地推送到终端用户手机上，让开发者积极地保持与用户的连接，从而提高用户活跃度、提高应用的留存率。极光推送客户端支持 Android, iOS 两个平台。
+极光推送（JPush）是一个端到端的推送服务，使得服务器端消息能够及时地推送到终端用户手机上，让开发者积极地保持与用户的连接，从而提高用户活跃度、提高应用的留存率。极光推送客户端支持 Android，iOS 两个平台。
 
 本 Android SDK 方便开发者基于 JPush 来快捷地为 Android App 增加推送功能。
 
 ### 主要功能
 
 + 保持与服务器的长连接，以便消息能够即时推送到达客户端
-+ 接收通知与自定义消息，并向开发者App 传递相关信息
++ 接收通知与自定义消息，并向开发者 App 传递相关信息
 
 ### 主要特点
 
 + 客户端维持连接占用资源少、耗电低
-+ SDK丰富的接口，可定制通知栏提示样式
++ SDK 丰富的接口，可定制通知栏提示样式
 + 服务器大容量、稳定
 
 ### jpush-android-3.x.x-release.zip 集成压缩包内容
 
 + AndroidManifest.xml
-    + 客户端嵌入SDK参考的配置文件
+    + 客户端嵌入 SDK 参考的配置文件
 + libs/jcore-android.1.x.x.jar
     + 极光开发者服务的核心包。
 + libs/jpush-android-3.x.y.jar
     + JPush SDK 开发包。
 + libs/(cpu-type)/libjcore1xx.so
-    + 各种CPU类型的native开发包。
+    + 各种 CPU 类型的 native 开发包。
 + res
-    + 集成SDK必须添加的资源文件
+    + 集成 SDK 必须添加的资源文件
 + example
     + 是一个完整的 Android 项目，通过这个演示了 JPush SDK 的基本用法，可以用来做参考。
 
 
-### Android SDK 版本
+### SDK 所支持的 Android 系统版本
 
-目前SDK只支持Android 2.3或以上版本的手机系统。富媒体信息流功能则需Android3.0或以上版本的系统。
+目前 SDK 只支持 Android 2.3 或以上版本的手机系统。
+
+富媒体信息流功能则需 Android 3.0 或以上版本的系统。
 
 
 ## jcenter 自动集成步骤
 
 
-***说明*** ： 使用jcenter自动集成的开发者，不需要在项目中添加jar和so，jcenter会自动完成依赖；在AndroidManifest.xml中不需要添加任何JPush SDK 相关的配置，jcenter会自动导入。
+***说明*** ： 使用 jcenter 自动集成的开发者，不需要在项目中添加 jar 和 so，jcenter 会自动完成依赖；在 AndroidManifest.xml 中不需要添加任何 JPush SDK 相关的配置，jcenter 会自动导入。
+
+>***注意*** ：如果需要处理收到的消息、使用 3.0.7 版本支持的别名与标签的新接口，AndroidManifest 中的自定义广播接收器仍需开发者手动配置，参考 SDK 压缩包里的 AndroidManifest.xml 样例文件。
 
 + 如果开发者需要修改组件属性，可以在本地的 AndroidManifest 中定义同名的组件并配置想要的属性，然后用 xmlns:tools 来控制本地组件覆盖 jcenter 上的组件。示例：
 
@@ -78,7 +82,7 @@
 		</manifest>
 
 
-+ 确认android studio的 Project 根目录的主 gradle 中配置了jcenter支持。（新建project默认配置就支持）
++ 确认 android studio 的 Project 根目录的主 gradle 中配置了 jcenter 支持。（新建 project 默认配置就支持）
 
         buildscript {
             repositories {
@@ -95,25 +99,25 @@
 
 
 
-+ 在 module 的 gradle 中添加依赖和AndroidManifest的替换变量。
++ 在 module 的 gradle 中添加依赖和 AndroidManifest 的替换变量。
 
 
 
         android {
             ......
             defaultConfig {
-                applicationId "com.xxx.xxx" //JPush上注册的包名.
+                applicationId "com.xxx.xxx" //JPush 上注册的包名.
                 ......
 
                 ndk {
-                    //选择要添加的对应cpu类型的.so库。
+                    //选择要添加的对应 cpu 类型的 .so 库。
                     abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a'
                     // 还可以添加 'x86', 'x86_64', 'mips', 'mips64'
                 }
 
                 manifestPlaceholders = [
                     JPUSH_PKGNAME : applicationId,
-                    JPUSH_APPKEY : "你的appkey", //JPush上注册的包名对应的appkey.
+                    JPUSH_APPKEY : "你的 Appkey ", //JPush 上注册的包名对应的 Appkey.
                     JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
                 ]
                 ......
@@ -132,15 +136,15 @@
         }
 
 
-***注*** : 如果在添加以上 abiFilter 配置之后android Studio出现以下提示：
+***注*** : 如果在添加以上 abiFilter 配置之后 android Studio 出现以下提示：
 
-        NDK integration is deprecated in the current plugin. Consider trying the new experimental plugin
+    NDK integration is deprecated in the current plugin. Consider trying the new experimental plugin
 
-则在 Project 根目录的gradle.properties文件中添加：
+则在 Project 根目录的 gradle.properties 文件中添加：
 
         android.useDeprecatedNdk=true
 
-***注*** : 使用NDK r17时，可能Android Studio会出现以下提示：
+***注*** : 使用 NDK r17 时，可能 Android Studio 会出现以下提示：
 
         A problem occurred starting process ‘command 
         ‘/Users/xxx/Library/Android/sdk/ndk-bundle/toolchains/mips64el-linux-android-4.9/prebuilt
@@ -148,7 +152,7 @@
         
         系统找不到指定的文件
 
-这是因为NDK r17 之后不再支持mips平台，在build.gradle里增加如下配置可解决
+这是因为 NDK r17 之后不再支持 mips 平台，在 build.gradle 里增加如下配置可解决
 
         android {
         
@@ -164,7 +168,7 @@
         
 
 
-***说明***：若没有res/drawable-xxxx/jpush_notification_icon这个资源默认使用应用图标作为通知icon，在5.0以上系统将应用图标作为statusbar icon可能显示不正常，用户可定义没有阴影和渐变色的icon替换这个文件，文件名不要变。
+***说明***：若没有 res/drawable-xxxx/jpush_notification_icon 这个资源默认使用应用图标作为通知 icon，在 5.0 以上系统将应用图标作为 statusbar icon 可能显示不正常，用户可定义没有阴影和渐变色的 icon 替换这个文件，文件名不要变。
 
 
 ## 手动集成步骤
@@ -172,12 +176,12 @@
 + 解压缩 jpush-android--3.x.x-release.zip 集成压缩包。
 + 复制 libs/jcore-android-1.x.x.jar 到工程 libs/ 目录下。
 + 复制 libs/jpush-android-3.x.x.jar 到工程 libs/ 目录下。
-+ 复制 libs/(cpu-type)/libjcore1xy.so 到你的工程中存放对应cpu类型的目录下。
-+ 复制 res/ 中drawable-hdpi, layout, values文件夹中的资源文件到你的工程中 res/ 对应同名的目录下。
++ 复制 libs/(cpu-type)/libjcore1xy.so 到你的工程中存放对应 cpu 类型的目录下。
++ 复制 res/ 中 drawable-hdpi, layout, values 文件夹中的资源文件到你的工程中 res/ 对应同名的目录下。
 
-***说明 1***：若没有res/drawable-xxxx/jpush_notification_icon这个资源默认使用应用图标作为通知icon，在5.0以上系统将应用图标作为statusbar icon可能显示不正常，用户可定义没有阴影和渐变色的icon替换这个文件，文件名不要变。
+***说明 1***：若没有 res/drawable-xxxx/jpush_notification_icon 这个资源默认使用应用图标作为通知 icon，在 5.0 以上系统将应用图标作为 statusbar icon 可能显示不正常，用户可定义没有阴影和渐变色的 icon 替换这个文件，文件名不要变。
 
-***说明 2***：使用android studio的开发者，如果使用jniLibs文件夹导入so文件，则仅需将所有cpu类型的文件夹拷进去；如果将so文件添加在module的libs文件夹下，注意在module的gradle配置中添加一下配置：
+***说明 2***：使用 android studio 的开发者，如果使用 jniLibs 文件夹导入 so 文件，则仅需将所有 cpu 类型的文件夹拷进去；如果将 so 文件添加在 module的libs 文件夹下，注意在 module 的 gradle 配置中添加一下配置：
 
 
         android {
@@ -202,25 +206,23 @@
 
 + 复制备注为 "Required" 的部分
 + 将标注为“您应用的包名”的部分，替换为当前应用程序的包名
-+ 将标注为“您应用的Appkey”的部分，替换为在Portal上注册该应用的的Key,例如：9fed5bcb7b9b87413678c407
++ 将标注为“您应用的 Appkey” 的部分，替换为在 Portal 上创建该应用后应用信息中的 Appkey，例如：9fed5bcb7b9b87413678c407
 
 **小帖士**
 
-如果使用android studio, 可在AndroidManifest中引用applicationId的值，在build.gradle配置中 defaultConfig节点下配置，如：
+如果使用 android studio，可在 AndroidManifest 中引用 applicationId 的值，在 build.gradle 配置中 defaultConfig 节点下配置，如：
 
 ```
 defaultConfig {
       applicationId "cn.jpush.example" // <--您应用的包名
       ……
  }
-
 ```
-在AndroidManifest中使用 ${applicationId} 引用gradle中定义的包名
+在 AndroidManifest 中使用 ${applicationId} 引用 gradle 中定义的包名
 
 **AndroidManifest 示例**
 
 ```
-
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="您应用的包名"
@@ -247,7 +249,7 @@ defaultConfig {
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
     <!-- Optional. Required for location feature -->
-    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" /> <!-- 用于开启 debug 版本的应用在6.0 系统上 层叠窗口权限 -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" /> <!-- 用于开启 debug 版本的应用在 6.0 系统上的层叠窗口权限 -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -263,7 +265,7 @@ defaultConfig {
         android:name="Your Application Name">
 
         <!-- Required SDK 核心功能-->
-        <!-- 可配置android:process参数将PushService放在其他进程中 -->
+        <!-- 可配置 android:process 参数将 PushService 放在其他进程中 -->
         <service
             android:name="cn.jpush.android.service.PushService"
             android:enabled="true"
@@ -284,7 +286,7 @@ defaultConfig {
             android:exported="true"
         />
 
-        <!-- since 1.8.0 option 可选项。用于同一设备中不同应用的JPush服务相互拉起的功能。 -->
+        <!-- since 1.8.0 option 可选项。用于同一设备中不同应用的 JPush 服务相互拉起的功能。 -->
         <!-- 若不启用该功能可删除该组件，将不拉起其他应用也不能被其他应用拉起 -->
          <service
              android:name="cn.jpush.android.service.DaemonService"
@@ -303,7 +305,7 @@ defaultConfig {
                android:exported="true"
            />
 
-        <!-- Required SDK核心功能-->
+        <!-- Required SDK 核心功能-->
         <receiver
             android:name="cn.jpush.android.service.PushReceiver"
             android:enabled="true" >
@@ -323,7 +325,7 @@ defaultConfig {
             </intent-filter>
         </receiver>
 
-        <!-- Required SDK核心功能-->
+        <!-- Required SDK 核心功能-->
         <activity
             android:name="cn.jpush.android.ui.PushActivity"
             android:configChanges="orientation|keyboardHidden"
@@ -335,7 +337,7 @@ defaultConfig {
                 <category android:name="您应用的包名" />
             </intent-filter>
         </activity>
-        <!-- SDK核心功能-->
+        <!-- SDK 核心功能-->
         <activity
             android:name="cn.jpush.android.ui.PopWinActivity"
             android:configChanges="orientation|keyboardHidden"
@@ -347,19 +349,19 @@ defaultConfig {
             </intent-filter>
         </activity>
 
-        <!-- Required SDK核心功能-->
+        <!-- Required SDK 核心功能-->
         <service
             android:name="cn.jpush.android.service.DownloadService"
             android:enabled="true"
             android:exported="false" >
         </service>
 
-        <!-- Required SDK核心功能-->
+        <!-- Required SDK 核心功能-->
         <receiver android:name="cn.jpush.android.service.AlarmReceiver" />
 
         <!-- Required since 3.0.7 -->
-        <!-- 新的tag/alias接口结果返回需要开发者配置一个自定的广播 -->
-        <!-- 该广播需要继承JPush提供的JPushMessageReceiver类, 并如下新增一个 Intent-Filter -->
+        <!-- 新的 tag/alias 接口结果返回需要开发者配置一个自定的广播 -->
+        <!-- 该广播需要继承 JPush 提供的 JPushMessageReceiver 类, 并如下新增一个 Intent-Filter -->
         <receiver
             android:name="自定义 Receiver"
             android:enabled="true" 
@@ -372,17 +374,17 @@ defaultConfig {
 
         <!-- User defined. 用户自定义的广播接收器-->
          <receiver
-             android:name="您自己定义的Receiver"
+             android:name="您自己定义的 Receiver"
              android:enabled="true"
              android:exported="false">
              <intent-filter>
-                 <!--Required 用户注册SDK的intent-->
+                 <!--Required 用户注册 SDK 的 intent-->
                  <action android:name="cn.jpush.android.intent.REGISTRATION" />
-                 <!--Required 用户接收SDK消息的intent-->
+                 <!--Required 用户接收 SDK 消息的 intent-->
                  <action android:name="cn.jpush.android.intent.MESSAGE_RECEIVED" />
-                 <!--Required 用户接收SDK通知栏信息的intent-->
+                 <!--Required 用户接收 SDK 通知栏信息的 intent-->
                  <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED" />
-                 <!--Required 用户打开自定义通知栏的intent-->
+                 <!--Required 用户打开自定义通知栏的 intent-->
                  <action android:name="cn.jpush.android.intent.NOTIFICATION_OPENED" />
                  <!-- 接收网络变化 连接/断开 since 1.6.3 -->
                  <action android:name="cn.jpush.android.intent.CONNECTION" />
@@ -391,19 +393,19 @@ defaultConfig {
          </receiver>
 
         <!-- Required. For publish channel feature -->
-        <!-- JPUSH_CHANNEL 是为了方便开发者统计APK分发渠道。-->
+        <!-- JPUSH_CHANNEL 是为了方便开发者统计 APK 分发渠道。-->
         <!-- 例如: -->
-        <!-- 发到 Google Play 的APK可以设置为 google-play; -->
+        <!-- 发到 Google Play 的 APK 可以设置为 google-play; -->
         <!-- 发到其他市场的 APK 可以设置为 xxx-market。 -->
         <meta-data android:name="JPUSH_CHANNEL" android:value="developer-default"/>
         <!-- Required. AppKey copied from Portal -->
-        <meta-data android:name="JPUSH_APPKEY" android:value="您应用的Appkey"/>
+        <meta-data android:name="JPUSH_APPKEY" android:value="您应用的 Appkey"/>
     </application>
 </manifest>
 ```
 
 
-##配置和代码说明
+## 配置和代码说明
 
 
 ### 必须权限说明
@@ -416,7 +418,7 @@ defaultConfig {
     </tr>
     <tr >
       <td>You Package.permission.JPUSH_MESSAGE</td>
-      <td>官方定义的权限，允许应用接收JPUSH内部代码发送的广播消息。</td>
+      <td>官方定义的权限，允许应用接收 JPush 内部代码发送的广播消息。</td>
     </tr>
     <tr >
       <td>RECEIVE_USER_PRESENT</td>
@@ -448,11 +450,11 @@ defaultConfig {
     </tr>
     <tr >
       <td>VIBRATE</td>
-      <td>允许应用震动。 该权限从 JPush 3.1.5版本开始变为可选权限，在 3.1.5 前版本为必须权限。</td>
+      <td>允许应用震动。 该权限从 JPush 3.1.5 版本开始变为可选权限，在 3.1.5 前版本为必须权限。</td>
     </tr>
     <tr >
       <td>MOUNT_UNMOUNT_FILESYSTEMS</td>
-      <td>允许应用挂载/卸载 外部文件系统。</td>
+      <td>允许应用挂载/卸载外部文件系统。</td>
     </tr>
     <tr >
       <td>ACCESS_NETWORK_STATE</td>
@@ -463,7 +465,7 @@ defaultConfig {
 
 ### 集成 JPush Android SDK 的混淆
 
-+ 请下载4.x及以上版本的[proguard.jar](http://sourceforge.net/projects/proguard/files/proguard/)， 并替换你Android Sdk "tools\proguard\lib\proguard.jar"
++ 请下载 4.x 及以上版本的 [proguard.jar](http://sourceforge.net/projects/proguard/files/proguard/)， 并替换你 Android SDK "tools\proguard\lib\proguard.jar"
 
 + 请在工程的混淆文件中添加以下配置：
 
@@ -478,7 +480,7 @@ defaultConfig {
         -keep class cn.jiguang.** { *; }
 
 
-+ 2.0.5 ~ 2.1.7 版本有引入 gson 和 protobuf ，增加排除混淆的配置。(2.1.8版本不需配置)
++ 2.0.5 ~ 2.1.7 版本有引入 gson 和 protobuf，增加排除混淆的配置。（2.1.8 版本不需配置）
 
         #==================gson && protobuf==========================
         -dontwarn com.google.**
@@ -492,20 +494,20 @@ defaultConfig {
 JPush SDK 提供的 API 接口，都主要集中在 cn.jpush.android.api.JPushInterface 类里。
 
 #### 基础API
-+ init 初始化SDK
++ init 初始化 SDK
 
         public static void init(Context context)
 
 + setDebugMode 设置调试模式
 
- 注：该接口需在init接口之前调用，避免出现部分日志没打印的情况。多进程情况下建议在自定义的Application中onCreate中调用。
+ 注：该接口需在 init 接口之前调用，避免出现部分日志没打印的情况。多进程情况下建议在自定义的 Application 中 onCreate 中调用。
 
         // You can enable debug mode in developing state. You should close debug mode when release.
         public static void setDebugMode(boolean debugEnalbed)
 
 #### 添加统计代码
 
-+ 参考文档： [统计分析 API](http://docs.jiguang.cn/jpush/client/Android/android_api/#api_2)
++ 参考文档： [统计分析 API](http://docs.jiguang.cn/jpush/client/Android/android_api/#api_4)
 
 #### 调用示例代码（参考 example 项目）
 
@@ -528,49 +530,47 @@ JPush SDK 提供的 API 接口，都主要集中在 cn.jpush.android.api.JPushIn
 ### 测试确认
 
 + 确认所需的权限都已经添加。如果必须的权限未添加，日志会提示错误。
-+ 确认 AppKey（在Portal上生成的）已经正确的写入 Androidmanifest.xml 。
-+ 确认在程序启动时候调用了init(context) 接口
++ 确认 AppKey（在 Portal 上生成的）已经正确的写入 Androidmanifest.xml 。
++ 确认在程序启动时候调用了 init（context）接口
 + 确认测试手机（或者模拟器）已成功连入网络
     ＋ 客户端调用 init 后不久，如果一切正常，应有登录成功的日志信息
-+ 启动应用程序，在 Portal 上向应用程序发送自定义消息或者通知栏提示。详情请参考管理[Portal](../../console/Instructions)。
++ 启动应用程序，在 Portal 上向应用程序发送自定义消息或者通知栏提示。详情请参考管理 [Portal](../../console/Instructions)。
     + 在几秒内，客户端应可收到下发的通知或者正定义消息，如果 SDK 工作正常，则日志信息会如下：
 
 ```
 [JPushInterface] action:init
-
 .......
-
 [PushService] Login succeed!
 ```
 
 如图所示，客户端启动分为 4 步：
 
-+ 检查 metadata 的 appKey 和 channel ，如果不存在，则启动失败
++ 检查 metadata 的 appKey 和 channel，如果不存在，则启动失败
 + 初始化 JPush SDK，检查 JNI 等库文件的有效性，如果库文件无效，则启动失败
 + 检查 Androidmanifest.xml，如果有 Required 的权限不存在，则启动失败
-+ 连接服务器登录，如果存在网络问题，则登陆失败,或者前面三步有问题，不会启动JPush SDK
++ 连接服务器登录，如果存在网络问题，则登陆失败，或者前面三步有问题，不会启动 JPush SDK
 
 ## 集成 FCM 通道
 ### 概述
 
-Firebase 云消息传递 (FCM) 是由 Google 提供的推送服务，可以在服务器和用户设备之间建立可靠而且省电的连接，提高推送送达率。
+Firebase 云消息传递（FCM）是由 Google 提供的推送服务，可以在服务器和用户设备之间建立可靠而且省电的连接，提高推送送达率。
 
-JPush SDK 为了尽可能提高开发者在国外设备的推送送达率，对集成 FCM 的设备推送，自动切换到 FCM 通道。同时，为了保证 SDK 的易用性，原本 JPush 的所有接口调用逻辑都不用修改,JPush 会对自身支持的功能做兼容。
+JPush SDK 为了尽可能提高开发者在国外设备的推送送达率，对集成 FCM 的设备推送，自动切换到 FCM 通道。同时，为了保证 SDK 的易用性，原本 JPush 的所有接口调用逻辑都不用修改，JPush 会对自身支持的功能做兼容。
 
 ### 功能描述
 + FCM 集成完成后，在支持的设备上自动进行初始化。
 
-+ FCM 可以与 JPUSH 和 其他 三方通道 共存。
++ FCM 可以与 JPush 和 其他三方通道 共存。
 
-+ FCM 通道初始化后支持 tag/alias 这些 JPush 原有的功能,其它的 JPush 未支持的功能目前暂时还不可用。
++ FCM 通道初始化后支持 tag/alias 这些 JPush 原有的功能，其它的 JPush 未支持的功能目前暂时还不可用。
 
 ### 集成方式
-+ 开发者需要自行在 [Firebase](https://firebase.google.com/) 平台注册账号和应用id；
++ 开发者需要自行在 [Firebase](https://firebase.google.com/) 平台注册账号和应用 id；
 + 开发者需要开通极光推送的 vip 服务，提供 Firebase 平台的应用信息，我们来开通通道；
 
 具体的开通方式和资费情况，请 [联系商务](https://www.jiguang.cn/accounts/business_contact?fromPage=push_doc) 。
 
-***注1：***  使用 FCM 通道需要 Google Play 服务为系统服务且版本不低于11.0.4。
+***注1：***  使用 FCM 通道需要 Google Play 服务为系统服务且版本不低于 11.0.4。
 
 ***注2：***  当设备网络环境为非中国时才会通过 FCM 通道进行推送。
 
@@ -579,8 +579,20 @@ JPush SDK 为了尽可能提高开发者在国外设备的推送送达率，对�
 
 请参考：
 
-[API: Android](android_api)
+[API：Android](android_api)
 
 ## 技术支持
 
-邮件联系：[support&#64;jpush.cn](mailto:support&#64;jpush.cn)
+当出现问题时：
+
++ 请仔细阅读文档，查看是否有遗漏。 [Android FAQ](../Android/android_faq/)
++ 你可以到极光社区搜索类似问题
++ 给我们的 support 发邮件 [support&#64;jpush.cn](mailto:support&#64;jpush.cn)
+
+为了更快速的解决问题，在寻求帮助时，请提供下列信息：
+
++ 你需要咨询的产品是 JPush，是否同时使用了极光其他的产品
++ 你所调用的是什么 API，所传参数，完整的报错信息，出现异常的时间点
++ 如果收不到消息，提供应用的 Appkey，消息的 Message ID，设备的 registration ID 信息
++ 如果是 SDK 问题请提供对应的 SDK 版本和完整的日志记录，日志信息请使用 TXT 文件上传
++ 出现异常的设备是 Android ，列出具体的机型和系统

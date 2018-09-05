@@ -6,11 +6,11 @@
 
 推送消息时，要指定推送的对象：全部，某一个人，或者某一群人。
 
-全部很好办，针对某应用“群发”就好了。Portal与API都支持向指定的 appKey 群发消息。
+全部很好办，针对某应用“群发”就好了。Portal 与 API 都支持向指定的 AppKey 群发消息。
 
-要指定向某一个特定的人，或者某一群特定的人，则相对复杂。因为对于 JPush 来说，某一个人就是一个注册ID，这个注册ID与开发者App没有任何关系，或者说对开发者App是没有意义的。
+要指定向某一个特定的人，或者某一群特定的人，则相对复杂。因为对于 JPush 来说，某一个人就是一个注册 ID，这个注册 ID 与开发者 App 没有任何关系，或者说对开发者 App 是没有意义的。
 
-如果要对开发者App有意义的某个特定的用户推送消息，则需要：把 JPush 注册用户与开发者App 用户绑定起来。
+如果要对开发者 App 有意义的某个特定的用户推送消息，则需要：把 JPush 注册用户与开发者 App 用户绑定起来。
 
 这个绑定有两个基本思路：
 
@@ -25,19 +25,19 @@
 
 别名与标签的机制，其工作方式是：
 
-+ 客户端开发者App调用 setAlias或者setTags API 来设置关系
++ 客户端开发者 App 调用 setAlias 或者 setTags API 来设置关系
 + JPush SDK 把该关系设置保存到 JPush Server 上
 + 在服务器端推送消息时，指定向之前设置过的别名或者标签推送
 
-SDK 支持的Alias与Tags接口请参考相应的文档：[别名与标签 API](android_api/#api_1)
+SDK 支持的 Alias 与 Tags 接口请参考相应的文档：[别名与标签 API](android_api/#api_3)
 
 使用过程中有几个点做特别说明：
 
-+ 1.5.0版本开始提供的旧版tag、alias设置接口已不再维护，建议开发者使用3.0.7版本开始提供的新的tag、alias接口。
++ 1.5.0 版本开始提供的旧版 tag、alias 设置接口已不再维护，建议开发者使用 3.0.7 版本开始提供的新的 tag、alias 接口，支持对别名标签进行增删改查。
 
-	+ 在callback返回结果中如果返回 6002 （超时）或 6014(服务繁忙) 则建议重试,具体错误码定义请参考错误码定义.
+	+ 在 callback 返回结果中如果返回 6002 （超时）或 6014（服务繁忙）则建议重试，具体错误码定义请参考[错误码定义](https://docs.jiguang.cn/jpush/client/Android/android_api/#_153)。
 
-+ Portal 上推送或者 API 调用向别名或者标签推送时，可能会报错：不存在推送目标用户。该报错表明，JPush Server 上还没有针对你所推送的别名或者标签的用户绑定关系，所以没有推送目标。这时请开发者检查确认，开发者App是否正确地调用了 alias和tags API，以及调用时是否网络不好，JPush SDK 暂时未能保存成功。
++ Portal 上推送或者 API 调用向别名或者标签推送时，可能会报错：不存在推送目标用户。该报错表明，JPush Server 上还没有针对你所推送的别名或者标签的用户绑定关系，所以没有推送目标。这时请开发者检查确认，开发者 App 是否正确地调用了 alias 和 tags API，以及调用时是否网络不好，JPush SDK 暂时未能保存成功。
 
 ### 使用别名
 
@@ -52,21 +52,21 @@ SDK 支持的Alias与Tags接口请参考相应的文档：[别名与标签 API](
 
 #### 动态标签
 
-JPush 提供的设置标签的 API 是在客户端的。开发者如何做到在自己的服务器端动态去设置分组呢？ 比如一个企业OA系统，经常需要去变更部门人员分组。以下是大概的思路：
+JPush 提供的设置标签的 API 是在客户端的。开发者如何做到在自己的服务器端动态去设置分组呢？ 比如一个企业 OA 系统，经常需要去变更部门人员分组。以下是大概的思路：
 
-+ 设计一种自定义消息格式（业务协议），App解析后可以调用 JPush SDK setAliasAndTags API 来重新设置标签（分组）
++ 设计一种自定义消息格式（业务协议），App 解析后可以调用 JPush SDK setTags API 来重新设置标签（分组），从 3.0.7 版本开始支持对标签进行增删改查，更便于对标签进行更新操作。
 	+ 例：{"action":"resetTags", "newTags":["dep_level_1":"A公司", "dep_level_2":"技术部", "dep_level_3":"Android开发组", "address":"深圳", "lang":"zh"]}
 + 要动态设置分组时，推送这条自定义消息给指定的用户
 	+ 使用别名的机制，推送到指定的用户。
-+ 客户端App 调用 JPush SDK API 来设置新的标签
++ 客户端 App 调用 JPush SDK API 来设置新的标签
 
 
-##别名与标签设置异常处理
+## 别名与标签设置异常处理
 
 由于网络连接不稳定的原因，有一定的概率 JPush SDK 设置别名与标签会失败。
 App 开发者合理地处理设置失败，则偶尔失败对应用的正常使用 JPush 影响是有限的。
 
-以下以 Android SDK 作为示例,更为详细的请参考example。
+以下以 Android SDK 作为示例,更为详细的请参考 example。
 
 基本思路：
 
@@ -74,7 +74,7 @@ App 开发者合理地处理设置失败，则偶尔失败对应用的正常使�
 + 遇到 6002 超时，则稍延迟重试。
 
 
-		// 这是来自 JPush Example 的设置别名的 Activity 里的代码,更详细的示例请参考JPush Example。一般 App 的设置的调用入口，在任何方便的地方调用都可以。
+		// 这是来自 JPush Example 的设置别名的 Activity 里的代码，更详细的示例请参考 JPush Example。一般 App 的设置的调用入口，在任何方便的地方调用都可以。
 		private void handleAction(int sequence,TagAliasBean tagAliasBean) {
 		    if(tagAliasBean == null){
                 Log.w(TAG,"tagAliasBean was null");
@@ -126,17 +126,19 @@ JPush 通知推送到客户端时，默认使用手机的默认设置来显示�
 </div>
 
 <br>
-不使用自定义通知栏样式时，此编号默认为 0。如需使用自定义的通知栏样式，编号应大于 0，小于 1000。
+不使用自定义通知栏样式时，此编号默认为 0。如需使用自定义的通知栏样式，编号应大于 0 小于 1000。先在客户端调 API 设置通知栏样式，推送设置 Builder ID 值即可在收到消息时得到对应的样式效果。   
 
-在 Portal 上发送通知时，最下边的“可选”部分展开，开发者可指定当前要推送的通知的样式编号。如下图所示：
+调 API 进行推送时，在 Notification - Android 属性下设置 [builder_id 值](https://docs.jiguang.cn/jpush/server/push/rest_api_v3_push/#notification)    
 
-![](../image/image2012-11-6_9_16_45.png)
+在 Portal 上发送通知时，首先选择推送平台为 Android，然后展开“可选设置”，开发者可指定当前要推送的通知的样式编号。如下图所示：
+
+![](../image/20180815-102830.png)
 
 ### 客户端设置通知栏样式
 
-自定义的通知栏样式，是在客户端进行设置的。请参考 [通知栏样式定制API](android_api/#api_6) 来看所支持的功能。
+自定义的通知栏样式，是在客户端进行设置的。请参考 [通知栏样式定制 API](android_api/#api_8) 来看所支持的功能。
 
-####自定义通知栏样式设计
+#### 自定义通知栏样式设计
 
 + 有个 PushNotificationBuilder 概念，开发者使用 setPushNotificationBuilder 方法为某种类型的 PushNotificationBuilder 指定编号。
 + setPushNotificationBuilder 可以在 JPushInterface.init() 之后任何地方调用，可以是开发者应用的逻辑来触发调用，或者初始化时调用。
@@ -164,10 +166,10 @@ JPush 通知推送到客户端时，默认使用手机的默认设置来显示�
 			| Notification.DEFAULT_LIGHTS;  // 设置为铃声、震动、呼吸灯闪烁都要
 	JPushInterface.setPushNotificationBuilder(1, builder);
 	
-定制带按钮的Notification样式(3.0.0及以上版本sdk才支持该样式，且该样式在某些与Android原生系统有差异的机型上无法正常显示)。
+定制带按钮的 Notification 样式（3.0.0 及以上版本 sdk 才支持该样式，且该样式在某些与 Android 原生系统有差异的机型上无法正常显示）。
 
 	MultiActionsNotificationBuilder builder = new MultiActionsNotificationBuilder(PushSetActivity.this);
-	//添加按钮，参数(按钮图片、按钮文字、扩展数据)
+	//添加按钮，参数（按钮图片、按钮文字、扩展数据）
 	builder.addJPushAction(R.drawable.jpush_ic_richpush_actionbar_back, "first", "my_extra1");
 	builder.addJPushAction(R.drawable.jpush_ic_richpush_actionbar_back, "second", "my_extra2");
 	builder.addJPushAction(R.drawable.jpush_ic_richpush_actionbar_back, "third", "my_extra3");
@@ -206,11 +208,11 @@ JPush 通知推送到客户端时，默认使用手机的默认设置来显示�
 
 建议不要使用 JPush 提供的通知功能，而使用自定义消息功能。
 
-即：推送自定义消息到客户端后，App取到自定义消息全部内容，然后App自己来写代码做通知的展示。请参考文档：通知 vs. 自定义消息。
+即：推送自定义消息到客户端后，App 取到自定义消息全部内容，然后 App 自己来写代码做通知的展示。请参考文档：通知 vs. 自定义消息。
 
 
 <a name="vs"></a>
-##通知 vs 自定义消息
+## 通知 vs 自定义消息
 
 
 极光推送包含有通知与自定义消息两种类型的推送。本文描述他们的区别，以及建议的应用场景。
@@ -229,7 +231,7 @@ JPush 通知推送到客户端时，默认使用手机的默认设置来显示�
 
 #### 自定义消息
 
-自定义消息不是通知，默认不会被SDK展示到通知栏上，极光推送仅负责透传给SDK。其内容和展示形式完全由开发者自己定义。
+自定义消息不是通知，默认不会被 SDK 展示到通知栏上，极光推送仅负责透传给 SDK。其内容和展示形式完全由开发者自己定义。
 
 自定义消息主要用于应用的内部业务逻辑和特殊展示需求。
 
@@ -241,19 +243,20 @@ JPush 通知推送到客户端时，默认使用手机的默认设置来显示�
 
 简单场景下的通知，用户可以不写一行代码，而完全由 SDK 来负责默认的效果展示，以及默认用户点击时打开应用的主界面。
 
-JPush Android SDK 提供了 API 让开发者来定制通知栏的效果，请参考：自定义通知栏样式教程；也提供了 接收推送消息Receiver 让你来定制在收到通知时与用户点击通知时的不同行为。
+JPush Android SDK 提供了 API 让开发者来定制通知栏的效果，请参考：自定义通知栏样式教程；也提供了接收推送消息 Receiver 让你来定制在收到通知时与用户点击通知时的不同行为。
 
 
 #### 自定义消息
 
 SDK 不会把自定义消息展示到通知栏。所以调试时，需要到日志里才可以看到服务器端推送的自定义消息。
 
-自定义消息一定要由开发者写[ 接收推送消息Receiver](android_api/#receiver) 来处理收到的消息。
+自定义消息一定要由开发者写[接收推送消息 Receiver](android_api/#receiver) 来处理收到的消息。
 
 <div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">
 <p>注意：
-	<p>当自定义消息内容msg_content为空时，SDK不会对消息进行广播，使得app无法接收到推送的消息，因此建议在使用自定义消息推送时添加内容。
+	<p>当自定义消息内容 msg_content 为空时，SDK 不会对消息进行广播，使得 App 无法接收到推送的消息，因此建议在使用自定义消息推送时添加内容。
 </div>
+
 ### 使用通知  
 
 请参考以下示例代码。
@@ -274,7 +277,7 @@ public class MyReceiver extends BroadcastReceiver {
         Logger.d(TAG, "onReceive - " + intent.getAction() + ", extras: " + AndroidUtil.printBundle(bundle));
          
         if (JPushInterface.ACTION_REGISTRATION_ID.equals(intent.getAction())) {
-            Logger.d(TAG, "JPush用户注册成功");
+            Logger.d(TAG, "JPush 用户注册成功");
              
         } else if (JPushInterface.ACTION_MESSAGE_RECEIVED.equals(intent.getAction())) {
             Logger.d(TAG, "接受到推送下来的自定义消息");
@@ -331,7 +334,7 @@ public class MyReceiver extends BroadcastReceiver {
 
 ### 使用自定义消息
 
-使用自定义消息，在客户端App里一定要写代码，去接受 JPush SDK 的广播，从而取得推送下来的消息内容。具体请参考文档：接收推送消息Receiver。
+使用自定义消息，在客户端 App 里一定要写代码，去接受 JPush SDK 的广播，从而取得推送下来的消息内容。具体请参考文档：[接收推送消息 Receiver](android_api/#receiver)。
 
 以下代码来自于推聊。
 
@@ -351,7 +354,7 @@ public class TalkReceiver extends BroadcastReceiver {
         Logger.d(TAG, "onReceive - " + intent.getAction() + ", extras: " + AndroidUtil.printBundle(bundle));
          
         if (JPushInterface.ACTION_REGISTRATION_ID.equals(intent.getAction())) {
-            Logger.d(TAG, "JPush用户注册成功");
+            Logger.d(TAG, "JPush 用户注册成功");
              
         } else if (JPushInterface.ACTION_MESSAGE_RECEIVED.equals(intent.getAction())) {
             Logger.d(TAG, "接受到推送下来的自定义消息");
@@ -467,11 +470,6 @@ public class TalkReceiver extends BroadcastReceiver {
     }
 }
 ```
-
-+ 19000
-+ 3000-3020
-+ 7000-7020
-+ 8000-8020
 
 <br />
 
