@@ -1645,7 +1645,7 @@ JMessageClient.createGroup(String groupName, String groupDesc, File groupAvatarF
 
 #### 获取群组列表
 ```
-JMessageClient.getGroupIDList(GetGroupListCallback callback)
+JMessageClient.getGroupIDList(GetGroupIDListCallback callback)
 ```
 回调
 ```
