@@ -130,8 +130,8 @@
         dependencies {
             ......
 
-            compile 'cn.jiguang.sdk:jpush:3.1.5'  // 此处以JPush 3.1.5 版本为例。
-            compile 'cn.jiguang.sdk:jcore:1.2.3'  // 此处以JCore 1.2.3 版本为例。
+            compile 'cn.jiguang.sdk:jpush:3.1.6'  // 此处以JPush 3.1.6 版本为例。
+            compile 'cn.jiguang.sdk:jcore:1.2.5'  // 此处以JCore 1.2.5 版本为例。
             ......
         }
 
@@ -226,8 +226,8 @@ defaultConfig {
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="您应用的包名"
-    android:versionCode="311"
-    android:versionName="3.1.1"
+    android:versionCode="316"
+    android:versionName="3.1.6"
     >
     <uses-sdk android:minSdkVersion="9" android:targetSdkVersion="23" />
 
