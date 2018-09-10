@@ -1,4 +1,35 @@
 # 最近更新
+### JPush Android SDK v3.1.6
+
+#### 更新时间
+
++ 2018-09-10
+
+#### Change Log
++ 增加通道共享功能
++ 修复已知问题
+
+#### 升级提示
+
++ 建议升级！
+
+#### 升级指南
+
++ 首先解压您获取到的 zip 压缩包
+
++ 更新库文件
+	+ 打开 libs 文件夹。用 jpush-android-3.1.6.jar 和 jcore-android-1.2.5.jar 替换项目中原有的极光 jar 文件，并删除原有极光 jar 文件。用对应 CPU 文件夹下的 libjcore125.so 文件，替换项目中原有的 libjpushXXX.so 文件，并删除原有的极光 so 文件，每种型号的 so 文件都可以在 SDK 下载包中找到。
+
++ 更新 AndroidManifest.xml
+	+ 请对照示例 AndroidManifest 更新 JPush 相关的组件属性，Permission，Action 等配置。并在中文提示的位置替换你的包名 和 appkey。
+	+ 老用户升级，请注意 3.0.9 版本之后新增了 ContentProvider 组件。
+
++ 添加资源文件
+    + 将 res 文件夹下的资源文件，添加到您项目 res/ 下对应的文件夹中。根据您应用的界面风格，您可以修改 layout 文件的配色，字体等属性，或者修改 drawable 文件夹下的图标。但注意请不要文件名，和布局文件中的组件 id。
+    + Android 5.0 以上，使用应用图标做通知 icon 可能显示异常，请参考 res/drawable-xxxx/jpush_notification_icon 作为专门的通知 icon。
+详细请见 Android SDK 集成指南中的说明，或者 example 中的示例。
+
++ 如果使用 jcenter 的方式集成 JPush，不需要添加 JPush 相关组件和资源，详细说明请参考官方集成指南。
 
 ### JPush Android SDK v3.1.5
 
