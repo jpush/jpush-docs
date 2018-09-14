@@ -437,7 +437,24 @@ shareParams.setText(share_text);
 shareParams.setUrl(share_url);
 shareParams.setImagePath(file.getAbsolutePath());
 ```
-### 3）分享音乐
+
+### 3）分享app
+参数 |是否必须|参数类型|参数说明|备注
+---- |-----|----|----|----
+ShareType | 是| int| 分享类型| Platform.SHARE_APPS
+Title| 否 | String|标题|不超过 30 字符
+Text| 否 | String|描述|不超过 40 字符
+ImagePath| 否 | String|缩略图，本地图片路径|与 ImageUrl 二选一
+ImageUrl| 否 | String|缩略图，网络图片地址|必须以 http 或 https 开头,与 ImagePath 二选一
+```
+ShareParams shareParams = new ShareParams();
+shareParams.setShareType(Platform.SHARE_APPS);
+shareParams.setTitle(share_title);
+shareParams.setText(share_text);
+shareParams.setImagePath(file.getAbsolutePath());
+```
+
+### 4）分享音乐
 参数 |是否必须|参数类型|参数说明|备注
 ---- |-----|----|----|----
 ShareType | 是| int| 分享类型| Platform.SHARE_MUSIC
