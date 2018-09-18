@@ -46,6 +46,18 @@
 	JAnalyticsInterface.stopCrashHandler(this);
 ~~~
 
++ ***JAnalyticsInterface.setChannel(Context context, String channel)***
+	+ 接口说明：
+		+ 动态配置channel，优先级比AndroidManifest里配置的高
+	+ 参数说明：
+		+ context:android的上下文 
+		+ channel:希望配置的channel，传null表示依然使用AndroidManifest里配置的channel
+	+ 调用示例：
+
+~~~
+	JAnalyticsInterface.setChannel(this, "channel_1");
+~~~
+
 <a name="pageflow"></a>
 ##页面流统计 API
 
@@ -79,7 +91,7 @@
 	
 2. 当activity中包含多个fragment，每个fragment都需当做页面统计时，基于fragment的切换模式，提供以下建议
 	+ replace模式:这种模式切换fragment，则是正常进行onResume和onPause的生命周期。
-	+ viewpage中包号多个fragment进行切换：这种模式切换需在fragment中监听 setUserVisibleHint接口，通过其返回的参数进行onPageStart和onPageEnd的调用
+	+ viewpage中包含多个fragment进行切换：这种模式切换需在fragment中监听 setUserVisibleHint接口，通过其返回的参数进行onPageStart和onPageEnd的调用
 	+ show/hide模式:这种模式下切换fragment需要监听onHiddenChanged接口来确认fragment是否显示。并需要在onResume中也需要调用onPageStart(onPause不需要调用onPageEnd)
 
 ##自定义事件统计 API
@@ -118,7 +130,7 @@
 调用示例:
 
 ~~~
-	CountEvent cEvent = new Event("test1_event_id");
+	CountEvent cEvent = new CountEvent("test1_event_id");
 	cEvent.addKeyValue("key1","value1").addKeyValue("key2","value2");
 ~~~
 
@@ -145,7 +157,7 @@
 
 ~~~
 	CalculateEvent cEvent = new CalculateEvent("test2_event_id","test2_event_value");
-	cEvent.setEventValue(1.1).addKeyValue("key1","value1").addKeyValue("key2","value2");
+	cEvent.addKeyValue("key1","value1").addKeyValue("key2","value2");
 ~~~
 
 **注意：**
