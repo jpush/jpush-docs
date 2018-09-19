@@ -3,7 +3,7 @@
 ### JAnalytics Android SDK v1.2.2
 
 #### 更新时间
-+ 2018-09-18
++ 2018-09-19
 
 #### Change Log 
 + 增加setChannel接口，允许开发者动态配置channel
