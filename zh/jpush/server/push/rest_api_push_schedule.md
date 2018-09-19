@@ -310,6 +310,61 @@ HTTP/1.1 200 OK
 
 + 如 schedule_id 不存在，则返回 404，否则返回实际 schedule-task 的详情。
 
+
+## 获取定时任务对应的所有 msg_id
+
+```
+ GET https://api.jpush.cn/v3/schedules/{schedule_id}/msg_ids
+```
+
+### Example Request
+
+***Request Header***
+
+```
+GET /v3/schedules/{schedule_id}/msg_ids
+ Authorization: Basic (base64 auth string)
+ Content-Type: application/json
+ Accept: application/json
+```
++ 获取当前用户的 schedule 任务 id 为 {schedule_id} 对应的所有消息 id 列表。
+
+### Example Response
+
+***Success Reponse***
+
+```
+HTTP/1.1 200 OK 
+ Content-Type: application/json; charset=utf-8
+```
+
+***新 Response Data***
+
+```
+{
+	"count":3,
+	"msgids":[
+	"{"msg_id":"1076080897","error":{"code":0,"message":""},"needRetry":false}",
+	"{"msg_id":"1076080898","error":{"code":0,"message":""},"needRetry":false}",
+	"{"msg_id":"1076080899","error":{"code":0,"message":""},"needRetry":false}",
+	]
+}
+```
+
+***旧 Response Data***
+
+```
+{
+    "count":3,
+    "msgids":["12345567","2234567","3234567"]
+}
+```
++ 新 Response Data 格式在 2018-09-12 至 2018-09-13 号上线，若 schedule_id 是 12 日前，则返回旧 Response Data 格式；若 schedule_id 是 13 日后，则返回新 Response Data 格式；需要开发者做好兼容。
+
+
+
+
+
 ## 修改指定的 Schedule
 
 ```
