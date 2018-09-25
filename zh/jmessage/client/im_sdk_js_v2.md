@@ -172,7 +172,7 @@ JMessage#register()
 | --------- | ------- | ---------------- |
 | username  | TRUE    | 用户名              |
 | password  | TRUE    | 密码               |
-| is_md5    | FALSE   | 密码是否是 MD5 密码，默认否 |
+| is_md5    | FALSE   | 密码是否是 MD5 密码，true/false。默认false |
 | nickname  | FALSE   | 昵称               |
 | birthday  | FALSE   | 生日               |
 | signature | FALSE   | 签名               |
@@ -188,7 +188,7 @@ JMessage#register()
   JIM.register({
         'username' : '<register name>',
 	    'password' : '<register password>',
-	      'is_md5' : '<is_md5>',
+	      'is_md5' : <is_md5>,
 	      'extras' : {'key1':'val1','key2':'val2'},
 	     'address' : '深圳'
         }).onSuccess(function(data) {
@@ -253,7 +253,7 @@ JMessage#login()
 | -------- | ------- | ---------------- |
 | username | TRUE    | 用户名              |
 | password | TRUE    | 密码               |
-| is_md5   | FALSE   | 密码是否是 MD5 密码，默认否 |
+| is_md5   | FALSE   | 密码是否是 MD5 密码，true/false。默认false |
 
 **请求示例**
 
@@ -400,7 +400,7 @@ JMessage#updateSelfPwd()
 | ------- | ------- | ----------- |
 | old_pwd | TRUE    | 旧的密码        |
 | new_pwd | TRUE    | 新的密码        |
-| is_md5  | FALSE   | 密码是否经过 MD5  |
+| is_md5  | FALSE   | 密码是否经过 MD5，true/false。 默认false  |
 
 **请求示例**
 
@@ -408,7 +408,7 @@ JMessage#updateSelfPwd()
    JIM.updateSelfPwd({
                  'old_pwd' : '<oldPwd>',
                  'new_pwd' : '<newPwd>',
-                  'is_md5' : '<idMd5>'
+                  'is_md5' : <idMd5>
                }).onSuccess(function(data) {
                    //data.code 返回码
                    //data.message 描述
