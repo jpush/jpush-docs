@@ -183,3 +183,23 @@ pages:
     - 'ErrorCode 定义': 'jshare/client/iOS/jshare_errorcode.md'
   - 最近更新: 'jshare/updates.md'
   - 资源下载: 'jshare/resources.md'
+
+- 极光认证:
+
+  - 入门指南:
+    - 'JVerification 产品介绍': 'jverification/guideline/intro.md'
+    - '控制台使用指南': 'jverification/guideline/portal.md'
+    - '常见问题': 'jverification/guideline/faq.md'
+  - Android:
+    - 'Android SDK 概述': 'jverification/client/android_sdk.md'
+    - 'Android SDK 集成指南': 'jverification/client/android_guide.md'
+    - 'Android SDK API': 'jverification/client/android_api.md'
+  - iOS:
+    - 'iOS SDK 概述': 'jverification/client/ios_sdk.md'
+    - 'iOS SDK 集成指南': 'jverification/client/ios_guide.md'
+    - 'iOS SDK API': 'jverification/client/ios_api.md'
+  - 最近更新: 'jverification/updates.md'
+  - 资源下载: 'jverification/resources.md'
+
+
+
