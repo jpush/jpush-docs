@@ -11,6 +11,7 @@
 ##压缩包说明
 
 供下载的JVerification iOS SDK压缩包，一般包含以下几部分：
+
 * jverification-iOS-x.x.x.a静态库
 * jcore-ios-x.x.x.a静态库
 * 认证入口JVERIFICATIONService.h头文件
