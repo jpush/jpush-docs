@@ -29,7 +29,8 @@
   	* 接口说明:
   		- 获取手机号校验token
   	* 参数说明
-  		- completion 返回token 、错误码等相关信息，token有效期1分钟, 一次认证后失效。
+  		- completion  参数是字典 返回token 、错误码等相关信息，token有效期1分钟, 一次认证后失效 
+      - result 字典 获取到token时key有code、token两个字段，获取不到token是key为code和content字段 
   	* 调用示例:
 ~~~
     [JVERIFICATIONService getToken:^(NSDictionary *result) {
@@ -48,7 +49,8 @@
   		- 手机号认证
   	* 参数说明
   		- completion 认证结果
-    		-  entity  认证实体类
+    	- result 字典 key为code和content两个字段
+      - entity  认证实体类
   	* 调用示例:
 
 ~~~

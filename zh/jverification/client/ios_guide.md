@@ -28,6 +28,7 @@
 ###添加SDK到工程中
 
 请在自己的工程中导入libs文件夹下的SDK文件:
+
 * jcore-ios-x.x.x.a  jcore版本 1.2.3及其以上
 * jverification-ios-x.x.x.a  jssp 版本1.0.0
 * account_verify_sdk_core.framework

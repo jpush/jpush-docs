@@ -35,16 +35,15 @@
 + ***JVerificationInterface.getToken(Context context, VerifyListener listener)***
 	+ 接口说明：
 		+ 获取当前在线的sim卡所在运营商及token。如果获取成功代表可以用来验证手机号。获取失败则建议做短信验证
-		+
 	+ 参数说明：
 		+ context：android的上下文
 		+ listener：接口回调
-  + 回调说明：
+	+ 回调说明：
     ***onResult(int code, String  content, String operator)***
-    + code: 返回码，2000代表获取成功，其他为失败，详见错误码描述
-    + content：成功时为token，可用于调用验证手机号接口。token有效期为1分钟，超过时效需要重新获取才能使用。失败时为失败信息
-    + operator：成功时为对应运营商，CM代表中国移动，CU代表中国联通，CT代表中国电信。失败时可能为null
-  + 调用示例：
+  		+ code: 返回码，2000代表获取成功，其他为失败，详见错误码描述
+    	+ content：成功时为token，可用于调用验证手机号接口。token有效期为1分钟，超过时效需要重新获取才能使用。失败时为失败信息
+    	+ operator：成功时为对应运营商，CM代表中国移动，CU代表中国联通，CT代表中国电信。失败时可能为null
+  	+ 调用示例：
 
 ~~~
 	JVerificationInterface.getToken(this, new VerifyListner{
@@ -62,20 +61,19 @@
 ##SDK发起认证
 
 + ***JVerificationInterface.verifyNumber(Context context, String token, String phone, VerifyListener listener)***
-  + 接口说明：
-		+ 验证手机号是否是当前在线的sim卡的手机号
-	+ 参数说明：
-		+ context：android的上下文
+	+ 接口说明：
+    	+ 验证手机号是否是当前在线的sim卡的手机号
+  	+ 参数说明：
+    	+ context：android的上下文
 		+ token：选填，getToken接口返回的token。如果传空，将自动调用getToken方法再执行手机号验证
 		+ phone：必填，需要验证的手机号。如果传空会报4001参数错误
 		+ listener：接口回调
-  + 回调说明：
-    ***onResult(int code, String  content, String operator)***
-
-	  + code: 返回码，1000代表验证一致，1001代表验证不一致，其他为失败，详见错误码描述
-	  + content：返回码的解释信息
-	  + operator：成功时为对应运营商，CM代表中国移动，CU代表中国联通，CT代表中国电信。失败时可能为null
-  + 调用示例：
+  	+ 回调说明：
+  	***onResult(int code, String  content, String operator)***
+		+ code: 返回码，1000代表验证一致，1001代表验证不一致，其他为失败，详见错误码描述
+		+ content：返回码的解释信息
+		+ operator：成功时为对应运营商，CM代表中国移动，CU代表中国联通，CT代表中国电信。失败时可能为null
+  	+ 调用示例：
 
 ~~~
 	JVerificationInterface.verifyNumber(this, null, "13512341234", new VerifyListner{
