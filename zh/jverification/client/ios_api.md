@@ -6,15 +6,15 @@
 2. JVAuthConfig类，应用配置信息类
 3. VAuthEntity类，认证实体类
 
-##SDK初始化
+##SDK初始化
 
 * ***+ setupWithConfig:(JVAuthConfig * )config;***
 
-  	* 接口说明:
-  		- 初始化接口
-  	* 参数说明
-  		- config 配置类
-  	* 调用示例:
+    * 接口说明:
+      - 初始化接口
+    * 参数说明
+      - config 配置类
+    * 调用示例:
 
 ~~~
     JVAuthConfig *config = [[JVAuthConfig alloc] init];
@@ -26,12 +26,13 @@
 
 * ***+ (void)getToken:(void (^)(NSDictionary * result))completion;***
 
-  	* 接口说明:
-  		- 获取手机号校验token
-  	* 参数说明
-  		- completion  参数是字典 返回token 、错误码等相关信息，token有效期1分钟, 一次认证后失效 
-      - result 字典 获取到token时key有code、token两个字段，获取不到token是key为code和content字段 
-  	* 调用示例:
+    * 接口说明:
+      - 获取手机号校验token
+    * 参数说明
+      - completion  参数是字典 返回token 、错误码等相关信息，token有效期1分钟, 一次认证后失效
+      - result 字典 获取到token时key有code、token两个字段，获取不到token是key为code和content字段
+
+    * 调用示例:
 ~~~
     [JVERIFICATIONService getToken:^(NSDictionary *result) {
         NSLog(@"getToken result:%@", result)
@@ -45,12 +46,13 @@
 
 * ***+ (void)verifyNumber:(JVAuthEntity * )entity result:(void (^)(NSDictionary * result))completion;***
 
-  	* 接口说明:
-  		- 手机号认证
-  	* 参数说明
-  		- completion 认证结果
-    	- result 字典 key为code和content两个字段
-      - entity  认证实体类
+    * 接口说明:
+      - 手机号认证
+    * 参数说明:
+      - completion 认证结果
+      - result 字典 key为code和content两个字段
+      - entity 认证实体类
+
   	* 调用示例:
 
 ~~~
@@ -65,10 +67,10 @@
 ##SDK设置debug模式
 
 * ***+  (void)setDebug:(BOOL)enable;***
-  	* 接口说明:
-  		- 开启debug模式
-  	*  参数说明
-    	- enable 是否开启debug模式
+    * 接口说明:
+      - 开启debug模式
+    *  参数说明
+      - enable 是否开启debug模式
 
 ##JVAuthConfig类
 
@@ -84,7 +86,7 @@
 
 ##JVAuthEntity类
 
-认证实体类。包涵认证的手机号和token。以下是属性说明：
+认证实体类。包含认证的手机号和token。以下是属性说明：
 
 |参数名称|参数类型|参数说明|
 |:-----:|:----:|:-----:|
