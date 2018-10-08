@@ -8,13 +8,13 @@
 
 ##SDK初始化
 
-* ***+ setupWithConfig:(JVAuthConfig * )config;***
++ ***+ setupWithConfig:(JVAuthConfig * )config;***
 
-    * 接口说明:
-      - 初始化接口
-    * 参数说明
-      - config 配置类
-    * 调用示例:
+    + 接口说明:
+        + 初始化接口
+    + 参数说明
+        + config 配置类
+    + 调用示例:
 
 ~~~
     JVAuthConfig *config = [[JVAuthConfig alloc] init];
@@ -24,15 +24,15 @@
 
 ##SDK获取token
 
-* ***+ (void)getToken:(void (^)(NSDictionary * result))completion;***
++ ***+ (void)getToken:(void (^)(NSDictionary * result))completion;***
 
-    * 接口说明:
-      - 获取手机号校验token
-    * 参数说明
-      - completion  参数是字典 返回token 、错误码等相关信息，token有效期1分钟, 一次认证后失效
-      - result 字典 获取到token时key有code、token两个字段，获取不到token是key为code和content字段
+    + 接口说明:
+        + 获取手机号校验token
+    + 参数说明
+        + completion  参数是字典 返回token 、错误码等相关信息，token有效期1分钟, 一次认证后失效
+        + result 字典 获取到token时key有code、token两个字段，获取不到token是key为code和content字段
 
-    * 调用示例:
+    + 调用示例:
 ~~~
     [JVERIFICATIONService getToken:^(NSDictionary *result) {
         NSLog(@"getToken result:%@", result)
@@ -44,16 +44,16 @@
 
 ##SDK发起认证
 
-* ***+ (void)verifyNumber:(JVAuthEntity * )entity result:(void (^)(NSDictionary * result))completion;***
++ ***+ (void)verifyNumber:(JVAuthEntity * )entity result:(void (^)(NSDictionary * result))completion;***
 
-    * 接口说明:
-      - 手机号认证
-    * 参数说明:
-      - completion 认证结果
-      - result 字典 key为code和content两个字段
-      - entity 认证实体类
+    + 接口说明:
+        + 手机号认证
+    + 参数说明:
+        + completion 认证结果
+        + result 字典 key为code和content两个字段
+        + entity 认证实体类
 
-  	* 调用示例:
+    + 调用示例:
 
 ~~~
     JVAuthEntity *entity = [[JVAuthEntity alloc] init];
@@ -66,11 +66,11 @@
 
 ##SDK设置debug模式
 
-* ***+  (void)setDebug:(BOOL)enable;***
-    * 接口说明:
-      - 开启debug模式
-    *  参数说明
-      - enable 是否开启debug模式
++ ***+  (void)setDebug:(BOOL)enable;***
+    + 接口说明:
+        + 开启debug模式
+    +  参数说明
+        + enable 是否开启debug模式
 
 ##JVAuthConfig类
 
