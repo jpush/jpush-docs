@@ -287,7 +287,7 @@ defaultConfig {
         />
 
         <!-- since 1.8.0 option 可选项。用于同一设备中不同应用的 JPush 服务相互拉起的功能。 -->
-        <!-- 若不启用该功能可删除该组件，将不拉起其他应用也不能被其他应用拉起 -->
+        <!-- 若不启用该功能可删除该组件，将不能被其他应用拉起, 但仍可拉起其他应用 -->
          <service
              android:name="cn.jpush.android.service.DaemonService"
              android:enabled="true"
