@@ -2746,13 +2746,18 @@ class ContactNotifyEventReceiver extends Activity{
 
 ### <sapn id="ChatRoom">聊天室管理</span>
 ***Since 2.4.0***  
-聊天室和群组最大的区别在于，聊天室的消息没有推送通知和离线保存，也没有常驻成员的概念，只要进入聊天室即可接收消息，开始聊天，
-一旦退出聊天室，不再会接收到任何消息、通知和提醒。</br>
-<font color= SteelBlue>注意：进入聊天室会自动获取最近50条消息，客户端目前不支持创建聊天室</font>
+聊天室和群组的主要区别在于：  
+1. 聊天室的消息没有推送通知和离线保存，也没有常驻成员的概念，只要进入聊天室即可接收消息，开始聊天，
+一旦退出聊天室，不再会接收到任何消息、通知和提醒。  
+2. 本地获取聊天室会话对象需要通过单独的接口`JMessageClient.getChatRoomConversationList`或者`JMessageClient.getChatRoomConversation`获取。  
+`JMessageClient.getConversationList`接口不会返回聊天室的会话对象。  
+3. 在线收到聊天室消息时，sdk仅仅只会将消息通过`ChatRoomMessageEvent`事件上抛，不会将消息落地。上层通过聊天室会话对象获取message时，sdk将返回空。  
+
+<font color= SteelBlue>注意：进入聊天室会自动获取最近50条消息，通过`ChatRoomMessageEvent `事件上抛给应用层。客户端目前不支持创建聊天室</font>
 
 #### 聊天室信息
 ***Since 2.4.0***  
-新增聊天室信息`ChatRoomInfo`
+聊天室信息`ChatRoomInfo`
 <div class="table-d" align="left" >
   <table border="1" width = "100%">
     <tr  bgcolor="#D3D3D3" >
