@@ -22,7 +22,7 @@
 ###Android SDK 版本
 目前SDK只支持Android 2.3或以上版本的手机系统.
 
-###jverify-android-release-1.x.y.zip 集成压缩包内容
+###jverification-android-release-1.x.y.zip 集成压缩包内容
 
 + AndroidManifest.xml
     + 客户端嵌入SDK参考的配置文件
@@ -30,23 +30,23 @@
     + sdk 核心包
 + libs/xxx/xx.so
     + sdk需要用的so文件
-+ libs/jverify-android-sdk_v1.x.x.jar
-    + SDK jverify 开发包
++ libs/jverification-android-sdk_v1.x.x.jar
+    + SDK jverification 开发包
 + example
     + 是一个完整的 Android 项目，通过这个演示了 JVerification SDK 的基本用法，可以用来做参考。
 
 
 ##手动集成步骤
 
-+ 解压缩 jverify-android--1.x.x-release.zip 集成压缩包。
++ 解压缩 jverification-android--1.x.x-release.zip 集成压缩包。
 + 复制 libs/jcore-android-1.x.x.jar 到工程 libs/ 目录下。
-+ 复制 libs/jverify-android-1.x.x.jar 到工程 libs/ 目录下。
++ 复制 libs/jverification-android-1.x.x.jar 到工程 libs/ 目录下。
 + 复制 libs/(cpu-type)/libjcore1xy.so 到你的工程中存放对应cpu类型的目录下。
 
 ##本地工程配置
 
 + 解压压缩包，将libs下的所有文件复制到工程的libs下面.
-	+ jcore 和 jverify 两个 jar 文件。
+	+ jcore 和 jverification 两个 jar 文件。
 	+ 所有 CPU 平台的 so 文件。
 
 ***说明***：使用android studio的开发者，如果使用jniLibs文件夹导入so文件，则仅需将所有cpu类型的文件夹拷进去；如果将so文件添加在module的libs文件夹下，注意在module的gradle配置中添加一下配置：
