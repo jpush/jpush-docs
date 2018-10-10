@@ -12,16 +12,16 @@
 
 供下载的JVerification Android SDK压缩包，一般包含以下几部分：
 
-* AndroidManifest.xml
-  * 客户端嵌入SDK参考的配置文件
-* libs/jcore-android_1.x.x.jar
-  * sdk 核心包
-* libs/xxx/xx.so
-  * sdk需要用的so文件
-* libs/janalytics-android-sdk_1.x.x.jar
-  * SDK jverification 开发包
-* example
-  * 是一个完整的 Android 项目，通过这个演示了 JAnalysis SDK 的基本用法，可以用来做参考。
++ AndroidManifest.xml
+    + 客户端嵌入SDK参考的配置文件
++ libs/jcore-android_1.x.x.jar
+    + sdk 核心包
++ libs/xxx/xx.so
+    + sdk需要用的so文件
++ libs/jverification-android-sdk_1.x.x.jar
+    + SDK jverification 开发包
++ example
+    + 是一个完整的 Android 项目，通过这个演示了 JVerification SDK 的基本用法，可以用来做参考。
 
 
 ##集成方式
