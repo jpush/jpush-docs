@@ -231,6 +231,15 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 ```
 #pragma mark- JPUSHRegisterDelegate
 
+// iOS 12 Support
+- (void)jpushNotificationCenter:(UNUserNotificationCenter *)center openSettingsForNotification:(UNNotification *)notification{
+  if (notification && [notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
+    //从通知界面直接进入应用
+  }else{
+    //从通知设置界面进入应用
+  }
+}
+
 // iOS 10 Support
 - (void)jpushNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(NSInteger))completionHandler {
   // Required

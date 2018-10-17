@@ -1,4 +1,37 @@
 # 最近更新
+
+### JPush iOS SDK v3.1.1
+
+#### 更新时间
++ 2018-10-17
+
+#### Change Log
++ 适配 iOS12 通知新特性
++ 修复 tag、alias 传 nil 导致崩溃的 bug 
++ 解决对外 demo 存在的部分 bug
++ iOS 10 以上对于本地通知的badge不做转换处理
++ 修复 bug
+
+
+
+
+#### 升级提示
+
++ 建议升级！
++ 注意：不支持 Xcode 8.0 以下版本开启 bitcode。
++ 极光开发者服务 SDK 采用了模块化的使用模式，即一个核心（JCore）+ N 种服务（JPush，JAnalytics，...）的使用方式，方便开发者使用某一项服务或多项服务，极大的优化了多模块同时使用时功能模块重复的问题。
+
+#### 升级指南
++ 3.1.1 版本的 JPush 只支持 1.2.3 及以上的 JCore 版本，升级 SDK 的时候请将 JCore 一起升级。
++ 3.0.7 版本开始压缩包中 Lib 新增了 Notification Service Extension SDK ，可用于统计通知送达，开发者请注意添加到 Libs 中，使用方式见集成指南。
++ 注意 3.0.0 及以上版本 JPush SDK 将不再支持处理器为 i386 的模拟器。
++ 添加libresolv.tbd库，否则编译运行会报错（2.2.0 及以上版本要求）
++ 替换 lib 文件夹里的文件:先删除项目里旧的 .a 和 .h 文件，重新导入新的 .a 和 .h 文件（注意新版本替换 APService.h 为 JPUSHService.h）
++ Xcode 7 环境下，替换原先导入的 libz.dylib 框架为 libz.tbd （特别留意）
++ 需要删除旧的 libPushSDK-Simulator.a （如果存在）
++ 关于 iOS 7 Background Push，JPush 提供一个教程文档：[iOS 7 Background Remote Notification](https://docs.jiguang.cn/jpush/client/iOS/ios_new_fetures/#ios-7-background-remote-notification)
++ 如果是 1.2.7 及之前版本升级 请在 Build Settings 里面，找到 Other Linker Flags，去掉 -all_load, -ObjC
+
 ### JPush Android SDK v3.1.6
 
 #### 更新时间
@@ -84,7 +117,7 @@
 
 #### 升级指南
 + 3.1.0 版本的 JPush 只支持 1.1.9 及以上的 JCore 版本，升级 SDK 的时候请将 JCore 一起升级。
-+ 3.1.0 版本开始压缩包中 Lib 新增了 Notification Service Extension SDK ，可用于统计通知送达，开发者请注意添加到 Libs 中，使用方式见集成指南。
++ 3.0.7 版本开始压缩包中 Lib 新增了 Notification Service Extension SDK ，可用于统计通知送达，开发者请注意添加到 Libs 中，使用方式见集成指南。
 + 注意 3.0.0 及以上版本 JPush SDK 将不再支持处理器为 i386 的模拟器。
 + 添加libresolv.tbd库，否则编译运行会报错（2.2.0 及以上版本要求）
 + 替换 lib 文件夹里的文件:先删除项目里旧的 .a 和 .h 文件，重新导入新的 .a 和 .h 文件（注意新版本替换 APService.h 为 JPUSHService.h）
@@ -177,7 +210,7 @@
 
 #### 升级指南
 + 3.0.9 版本的 JPush 只支持 1.1.9 及以上的 JCore 版本，升级 SDK 的时候请将 JCore 一起升级。
-+ 3.0.9 版本开始压缩包中 Lib 新增了 Notification Service Extension SDK ，可用于统计通知送达，开发者请注意添加到 Libs 中，使用方式见集成指南。
++ 3.0.7 版本开始压缩包中 Lib 新增了 Notification Service Extension SDK ，可用于统计通知送达，开发者请注意添加到 Libs 中，使用方式见集成指南。
 + 注意 3.0.0及以上版本 JPush SDK 将不再支持处理器为i386的模拟器。
 + 添加 libresolv.tbd 库，否则编译运行会报错（2.2.0 及以上版本要求）
 + 替换 lib 文件夹里的文件：先删除项目里旧的 .a 和 .h 文件，重新导入新的 .a 和 .h 文件（注意新版本替换 APService.h 为 JPUSHService.h）
@@ -204,7 +237,7 @@
 
 #### 升级指南
 + 3.0.8 版本的 JPush 只支持 1.1.7 及以上的 JCore 版本，升级 SDK 的时候请将 JCore 一起升级。
-+ 3.0.8 版本开始压缩包中 Lib 新增了 Notification Service Extension SDK ，可用于统计通知送达，开发者请注意添加到 Libs 中，使用方式见集成指南。
++ 3.0.7 版本开始压缩包中 Lib 新增了 Notification Service Extension SDK ，可用于统计通知送达，开发者请注意添加到 Libs 中，使用方式见集成指南。
 + 注意 3.0.0 及以上版本 JPush SDK 将不再支持处理器为i386的模拟器。
 + 添加 libresolv.tbd 库，否则编译运行会报错（2.2.0 及以上版本要求）
 + 替换 lib 文件夹里的文件：先删除项目里旧的 .a 和 .h 文件，重新导入新的 .a 和 .h 文件（注意新版本替换 APService.h 为 JPUSHService.h）
