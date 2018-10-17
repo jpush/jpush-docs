@@ -2,11 +2,11 @@
 ## iOS 12 New Features
 ###推送分组
 iOS 12 中同一类型的通知会被合成一个通知组，用户可以通过点击通知组展开组里的所有通知    
-![jpush_ios](../image/iOS12_groupedNotifications1.png) 
+![jpush_ios](../image/ios12_groupednotifications1.png)
 
 通知分组使用两种分组方式：自动分组（Automatic grouping）和线程标识（Thread identifier）。开发者不需要对自动分组做额外的操作，系统会根据App的 bundleId 对推送进行分组。如果需要对通知做更细致的分组就需要用上 线程标识了。    
-![jpush_ios](../image/iOS12_groupedNotifications2.png)     
-![jpush_ios](../image/iOS12_groupedNotifications3.png) 
+![jpush_ios](../image/ios12_groupednotifications2.png)     
+![jpush_ios](../image/ios12_groupednotifications3.png) 
 用户可以对分组进行设置(自动、按应用、关闭)
 
 线程标识（Thread identifier)这个属性在iOS10就已经存在，但是在iOS12才真正实现分组功能。
@@ -47,16 +47,16 @@ iOS 12 中同一类型的通知会被合成一个通知组，用户可以通过�
 
 ###通知管理
 苹果针对消息增加了一个"管理"的按钮，消息左滑即可出现。    
-![jpush_ios](../image/iOS12_groupedNotifications4.png) 
+![jpush_ios](../image/ios12_groupednotifications4.png) 
 
 ###临时授权
 临时授权主要体现就是推送消息过来会有两个按钮，会主动让用户自己选择    
-![jpush_ios](../image/iOS12_groupedNotifications5.png) 
+![jpush_ios](../image/ios12_groupednotifications5.png) 
 
 ###警告通知
 比如家庭安全、健康、公共安全等因素的时候。此消息需要用户必须采取行动。最简单的一个场景是家里安装了一个摄像头，我们去上班了，此时如果家中有人，则摄像头会推送消息给我们。这类通知需要申请特别的证书。
 
-![jpush_ios](../image/iOS12_groupedNotifications6.png) 
+![jpush_ios](../image/ios12_groupednotifications6.png) 
 
 
 ## iOS 10 New Features
