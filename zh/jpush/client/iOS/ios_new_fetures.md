@@ -2,7 +2,7 @@
 ## iOS 12 New Features
 ###推送分组
 iOS 12 中同一类型的通知会被合成一个通知组，用户可以通过点击通知组展开组里的所有通知    
-![jpush_ios](../image/ios12_groupednotifications1.png)
+![jpush_ios](../image/ios12_groupednotifications11.png)
 
 通知分组使用两种分组方式：自动分组（Automatic grouping）和线程标识（Thread identifier）。开发者不需要对自动分组做额外的操作，系统会根据App的 bundleId 对推送进行分组。如果需要对通知做更细致的分组就需要用上 线程标识了。    
 ![jpush_ios](../image/ios12_groupednotifications2.png)     
