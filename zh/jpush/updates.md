@@ -7,9 +7,6 @@
 
 #### Change Log
 + 适配 iOS12 通知新特性
-+ 修复 tag、alias 传 nil 导致崩溃的 bug 
-+ 解决对外 demo 存在的部分 bug
-+ iOS 10 以上对于本地通知的badge不做转换处理
 + 修复 bug
 
 

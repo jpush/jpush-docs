@@ -151,7 +151,7 @@ didFinishLaunchingWithOptions:(NSDictionary \*)launchOptions
   //Required
   //notice: 3.0.0 及以后版本注册可以这样写，也可以继续用之前的注册方式
   JPUSHRegisterEntity * entity = [[JPUSHRegisterEntity alloc] init];
-  entity.types = JPAuthorizationOptionAlert|JPAuthorizationOptionBadge|JPAuthorizationOptionSound;
+  entity.types = JPAuthorizationOptionAlert|JPAuthorizationOptionBadge|JPAuthorizationOptionSound|JPAuthorizationOptionProvidesAppNotificationSettings;
   if ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0) {
     // 可以添加自定义 categories
     // NSSet<UNNotificationCategory *> *categories for iOS10 or later
