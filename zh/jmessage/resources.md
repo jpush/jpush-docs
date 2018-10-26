@@ -7,7 +7,7 @@
         <div class="thumbnail">
             <img src="../image/resource_android.png" alt="android">
             <div class="caption">
-                 <h4><span>Android SDK</span><span class="version">v2.7.0</span></h4>
+                 <h4><span>Android SDK</span><span class="version">v2.7.1</span></h4>
                  <div class="download-options">
                      <div class="option"><input type="checkbox" checked onclick="return false;"><span  style=" margin-right: 20px;">IM即时通讯</span></div>
                      <div class="option"><input type="checkbox" class="andorid-voice"><span>实时音视频</span></div>
