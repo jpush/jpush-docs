@@ -666,6 +666,13 @@ message.setOnSendCompleteCallback(BasicCallback sendCompleteCallback)
 
 向服务器给发送对象发送消息，并且保存到本地会话。使用默认的配置参数发送
 ```
+/**
+ * 发送消息，使用默认发送配置参数.<br/>
+ * 注意只有创建的消息和发送失败的消息可以被发送{@link MessageStatus}，<br/>
+ * 发送成功或收到的消息再次发送需调用转发接口{@link JMessageClient#forwardMessage(Message, Conversation, MessageSendingOptions, RequestCallback)}.
+ *
+ * @param message 消息对象
+ */
 JMessageClient.sendMessage(Message message);
 ```
 参数说明
@@ -841,7 +848,7 @@ sdk升级到2.1.0版本（或以上）后，上层需要针对消息接收的处
     JMessageClient.forwardMessage(Message message, Conversation conv, MessageSendingOptions options, BasicCallback callback);
 
     /**
-     * 转发消息,注意只有发送成功或收到的消息才可转发,符合转发要求后会创建新的消息发送，
+     * 转发消息,注意支持转发的消息{@link Message#isSupportForward()}才可转发,符合转发要求后会创建新的消息发送，
      * 创建的消息会在回调中返回（无论发送是否成功），如果不符合转发要求则不会创建新消息 message返回null。<br/>
      *
      * @param message  需要转发的消息对象
