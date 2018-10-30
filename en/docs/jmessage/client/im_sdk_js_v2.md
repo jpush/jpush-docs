@@ -108,13 +108,13 @@ Add roaming parameters Since 2.2.0. You can set whether to enable message loggin
 
 **Request Parameter**
 
-| KEY	| REQUIRE	| DESCRIPTION| 
-| ------| ----------| -----------------------| 
-| appkey	| TRUE	| IM applications appkey registered by developers on the Jiguang platforms| 
-| random_str	| TRUE	| Random string| 
-| timestamp	| TRUE	| Original timestamp| 
-| signature	| TRUE	| Signature| 
-| flag	| FALSE	| Whether to enable message logging roaming, default 0 as no, 1 as yes| 
+| KEY	| REQUIRE	| DESCRIPTION|
+| ------| ----------| -----------------------|
+| appkey	| TRUE	| IM applications appkey registered by developers on the Jiguang platforms|
+| random_str	| TRUE	| Random string|
+| timestamp	| TRUE	| Original timestamp|
+| signature	| TRUE	| Signature|
+| flag	| FALSE	| Whether to enable message logging roaming, default 0 as no, 1 as yes|
 
 **Request Example**
 
@@ -139,9 +139,9 @@ JMessage#onDisconnect(fn)
 
 **Request Parameter**
 
-| KEY	| REQUIRE	| DESCRIPTION| 
+| KEY	| REQUIRE	| DESCRIPTION|
 | ---- | ------- | ----------- |
-| fn	| TRUE	| Disconnected processing function| 
+| fn	| TRUE	| Disconnected processing function|
 
 **Request Example**
 
@@ -193,7 +193,7 @@ JMessage#register()
           }).onFail(function(data) {
             // 同上
         });
-```        
+```
 
 ### Connection Status
 
@@ -245,11 +245,11 @@ JMessage#login()
 
 **Request Parameter**
 
-| KEY	| REQUIRE	| DESCRIPTION| 
+| KEY	| REQUIRE	| DESCRIPTION|
 | -------- | ------- | ---------------- |
-| username	| TRUE	| Username| 
-| password	| TRUE	| Password| 
-| is_md5	| FALSE	| Whether the password is an MD5 password, and the default is No| 
+| username	| TRUE	| Username|
+| password	| TRUE	| Password|
+| is_md5	| FALSE	| Whether the password is an MD5 password, and the default is No|
 
 **Request Example**
 
@@ -334,15 +334,15 @@ JMessage#updateSelfInfo()
 
 **Request Parameter**
 
-| KEY	| REQUIRE	| DESCRIPTION| 
+| KEY	| REQUIRE	| DESCRIPTION|
 | --------- | ------- | ---------------- |
-| nickname	| FALSE	| Nickname| 
-| birthday	| FALSE	| Birthday| 
-| signature	| FALSE	| Signature| 
-| gender	| FALSE	| Gender, 0-Unknown, 1-Male, 2-Female| 
-| region	| FALSE	| Area| 
-| address	| FALSE	| Address| 
-| extras	| FALSE	| Custom json format fields| 
+| nickname	| FALSE	| Nickname|
+| birthday	| FALSE	| Birthday|
+| signature	| FALSE	| Signature|
+| gender	| FALSE	| Gender, 0-Unknown, 1-Male, 2-Female|
+| region	| FALSE	| Area|
+| address	| FALSE	| Address|
+| extras	| FALSE	| Custom json format fields|
 
 **Request Example**
 
@@ -370,8 +370,8 @@ JMessage#updateSelfAvatar()
 **Request Parameter**
 
 | KEY	| REQUIRE	| DESCRIPTION|
-| ------ | ------- | ------------------- | 
-| avatar	| TRUE	| DataForm object of avatar images| 
+| ------ | ------- | ------------------- |
+| avatar	| TRUE	| DataForm object of avatar images|
 
 **Request Example**
 
@@ -392,10 +392,10 @@ JMessage#updateSelfPwd()
 
 **Request Parameter**
 
-| KEY	| REQUIRE	| DESCRIPTION| 
+| KEY	| REQUIRE	| DESCRIPTION|
 | ------ | ------- | ------------------- |
-| old_pwd	| TRUE	| Old password| 
-| new_pwd	| TRUE	| New password| 
+| old_pwd	| TRUE	| Old password|
+| new_pwd	| TRUE	| New password|
 | is_md5	| FALSE	| Whether the password passed MD5
 
 **Request Example**
@@ -456,12 +456,12 @@ JMessage#updateConversation()
 
 **Request Parameter**
 
-| KEY	| REQUIRE	| DESCRIPTION| 
+| KEY	| REQUIRE	| DESCRIPTION|
 | -------- | ------- | --------------------- |
-| gid	| FALSE	| Group id. Valid for group chat sessions.| 
-| username	| FALSE	| Username. Valid for single chat sessions.| 
-| appkey	| FALSE	| User appkey. Valid for single chat sessions.| 
-| extras	| TRUE	| Json object. Old data will be covered| 
+| gid	| FALSE	| Group id. Valid for group chat sessions.|
+| username	| FALSE	| Username. Valid for single chat sessions.|
+| appkey	| FALSE	| User appkey. Valid for single chat sessions.|
+| extras	| TRUE	| Json object. Old data will be covered|
 
 **Request Example**
 
@@ -488,11 +488,11 @@ JMessage#getUnreadMsgCnt()
 
 **Request Parameter**
 
-| KEY	| REQUIRE	| DESCRIPTION| 
+| KEY	| REQUIRE	| DESCRIPTION|
 | -------- | ------- | ----------------- |
-| gid	| FALSE	| Group id. Valid for group chat sessions.| 
-| username	| FALSE	| Username. Valid for single chat sessions.| 
-| appkey	| FALSE	| User appkey. Valid for single chat sessions.| 
+| gid	| FALSE	| Group id. Valid for group chat sessions.|
+| username	| FALSE	| Username. Valid for single chat sessions.|
+| appkey	| FALSE	| User appkey. Valid for single chat sessions.|
 
 **Request Example**
 
@@ -515,11 +515,11 @@ JMessage#resetUnreadCount()
 
 **Request Parameter**
 
-| KEY	| REQUIRE	| DESCRIPTION| 
+| KEY	| REQUIRE	| DESCRIPTION|
 | -------- | ------- | ----------------- |
-| gid	| FALSE	| Group id. Valid for group chat sessions.| 
-| username	| FALSE	| Username. Valid for single chat sessions.| 
-| appkey	| FALSE	| User appkey. Valid for single chat sessions.| 
+| gid	| FALSE	| Group id. Valid for group chat sessions.|
+| username	| FALSE	| Username. Valid for single chat sessions.|
+| appkey	| FALSE	| User appkey. Valid for single chat sessions.|
 
 **Request Example**
 
@@ -542,9 +542,9 @@ JMessage#msgUnreadList()
 
 **Request Parameter**
 
-| KEY	| REQUIRE	| DESCRIPTION| 
+| KEY	| REQUIRE	| DESCRIPTION|
 | ------ | ------- | ----------- |
-| msg_id	| TRUE	| Message id| 
+| msg_id	| TRUE	| Message id|
 
 **Request Example**
 
@@ -568,7 +568,7 @@ JMessage#msgUnreadList()
                         //data.code 返回码
                         //data.message 描述
                      });
-```                    
+```
 
 #### Read Receipt of Single Chat Messages
 
@@ -590,7 +590,7 @@ JMessage#addSingleReceiptReport()
    // 接收方收到需要消息回执的消息，阅读后进行消息回执操作
    JIM.addSingleReceiptReport({
                       'username' : '<用户 name>',
-                      'msg_id' : '<[msg_ids]>'
+                      'msg_ids' : '<[msg_ids]>'
                      }).onSuccess(function(data,msg_ids){
                        // data.code 返回码
                        // data.appkey 目标 appkey
@@ -609,10 +609,10 @@ JMessage#addGroupReceiptReport()
 
 **Request Parameter**
 
-| KEY	| REQUIRE	| DESCRIPTION| 
+| KEY	| REQUIRE	| DESCRIPTION|
 | ------- | ------- | -------------------- |
-| gid	| TRUE	| Group ID| 
-| msg_ids	| TRUE	| Id list and array type of messages that have been read| 
+| gid	| TRUE	| Group ID|
+| msg_ids	| TRUE	| Id list and array type of messages that have been read|
 
 **Request Example**
 
@@ -636,9 +636,9 @@ JMessage#getResource ()
 
 **Request Parameter**
 
-| KEY	| REQUIRE	| DESCRIPTION| 
+| KEY	| REQUIRE	| DESCRIPTION|
 | -------- | ------- | -------------- |
-| media_id	| TRUE	| Media_id：resource id| 
+| media_id	| TRUE	| Media_id：resource id|
 
 **Request Example**
 
@@ -661,9 +661,9 @@ JMessage#msgRetract ()
 
 **Request Parameter**
 
-| KEY	| REQUIRE	| DESCRIPTION| 
+| KEY	| REQUIRE	| DESCRIPTION|
 | -------- | ------- | -------------- |
-| msg_id	| TRUE	| Message id| 
+| msg_id	| TRUE	| Message id|
 
 **Request Example**
 
@@ -685,16 +685,16 @@ JMessage#sendSingleMsg()
 
 **Request Parameter**
 
-| KEY	| REQUIRE	| DESCRIPTION| 
+| KEY	| REQUIRE	| DESCRIPTION|
 | ------------------- | ----------------- | ---------------------------------------- |
-| target_username	| TRUE	| Username of message receiver| 
-| content	|Either content or  msg_body	| Message text| 
+| target_username	| TRUE	| Username of message receiver|
+| content	|Either content or  msg_body	| Message text|
 | msg_body	|Either content or  msg_body	| Message's msg_body, used to implement message forwarding|
 | target_nickname	|FALSE	| Recipient's display name|
 | extras	|FALSE	| Additional fields, dictionary type|
 | appkey	|FALSE	| Appkey of target app is required when queried across applications.|
-| no_offline	|FALSE	| Control flag of offline messages, false as default value, means to save offline messages; true means not to save offline message| 
-|no_notification	|FALSE	| Message flag displayed on status bar, false as default value, means that status bar displays messages; true, means that status bar does not display messages| 
+| no_offline	|FALSE	| Control flag of offline messages, false as default value, means to save offline messages; true means not to save offline message|
+|no_notification	|FALSE	| Message flag displayed on status bar, false as default value, means that status bar displays messages; true, means that status bar does not display messages|
 |custom_notification	|FALSE	| See the table below for notification bar parameters.|
 |need_receipt	|FALSE	|Whether to need a read receipt. Need as true, not need as false|
 
@@ -763,26 +763,26 @@ JMessage#sendSinglePic()
 
 **Request Parameter:**
 
-| KEY	| REQUIRE	| DESCRIPTION| 
+| KEY	| REQUIRE	| DESCRIPTION|
 | ------------------- | ---------------- | ---------------------------------------- |
-| target_username	| TRUE	| Username of message receiver| 
-| image	| Either image or  msg_body	| DataForm object of images| 
-| msg_body	| Either image or  msg_body	| Message's msg_body, used to implement message forwarding| 
-| target_nickname	| FALSE	| Recipient's display name| 
-| extras	| FALSE	| Additional fields, dictionary type| 
-| appkey	| FALSE	| Appkey of target app is required when queried across applications.| 
-| no_offline	| FALSE	| Control flag of offline messages, false as default value, means to save offline messages; true means not to save offline message| 
-| no_notification	| FALSE	| Message flag displayed on status bar, false as default value, means that status bar displays messages; true, means that status bar does not display messages| 
-| custom_notification	| FALSE	| See the table below for notification bar parameters.| 
-| need_receipt	| FALSE	| Whether to need a read receipt. Need as true, not need as false| 
+| target_username	| TRUE	| Username of message receiver|
+| image	| Either image or  msg_body	| DataForm object of images|
+| msg_body	| Either image or  msg_body	| Message's msg_body, used to implement message forwarding|
+| target_nickname	| FALSE	| Recipient's display name|
+| extras	| FALSE	| Additional fields, dictionary type|
+| appkey	| FALSE	| Appkey of target app is required when queried across applications.|
+| no_offline	| FALSE	| Control flag of offline messages, false as default value, means to save offline messages; true means not to save offline message|
+| no_notification	| FALSE	| Message flag displayed on status bar, false as default value, means that status bar displays messages; true, means that status bar does not display messages|
+| custom_notification	| FALSE	| See the table below for notification bar parameters.|
+| need_receipt	| FALSE	| Whether to need a read receipt. Need as true, not need as false|
 
 **custom_notification：**
 
-| KEY	| REQUIRE	| DESCRIPTION| 
+| KEY	| REQUIRE	| DESCRIPTION|
 | ------------------- | ---------------- | ---------------------------------------- |
-| enabled	| TRUE	| Whether to enable notification bar of custom message. Default to FALSE| 
-| title	| FALSE	| Heading of notification bar | 
-| alert	| FALSE	| Content of notification bar | 
+| enabled	| TRUE	| Whether to enable notification bar of custom message. Default to FALSE|
+| title	| FALSE	| Heading of notification bar |
+| alert	| FALSE	| Content of notification bar |
 
 **Request Example**
 
@@ -840,26 +840,26 @@ JMessage#sendSingleFile()
 
 **Request Parameter**
 
-| KEY	| REQUIRE	| DESCRIPTION| 
+| KEY	| REQUIRE	| DESCRIPTION|
 | ------------------- | ---------------- | ---------------------------------------- |
-| target_username	| TRUE	| Username of message receiver| 
-| file	| Either file or  msg_body	| DataForm object of images| 
-| msg_body	| Either file or  msg_body	| Message's msg_body, used to implement message forwarding| 
-| target_nickname	| FALSE	| Recipient's display name| 
-| extras	| FALSE	| Additional fields, dictionary type| 
-| appkey	| FALSE	| Appkey of target app is required when queried across applications.| 
-| no_offline	| FALSE	| Control flag of offline messages, false as default value, means to save offline messages; true means not to save offline message| 
-| no_notification	| FALSE	| Message flag displayed on status bar, false as default value, means that status bar displays messages; true, means that status bar does not display messages| 
-| custom_notification	| FALSE	| See the table below for notification bar parameters.| 
-| need_receipt	| FALSE	| Whether to need a read receipt. Need as true, not need as false| 
+| target_username	| TRUE	| Username of message receiver|
+| file	| Either file or  msg_body	| DataForm object of images|
+| msg_body	| Either file or  msg_body	| Message's msg_body, used to implement message forwarding|
+| target_nickname	| FALSE	| Recipient's display name|
+| extras	| FALSE	| Additional fields, dictionary type|
+| appkey	| FALSE	| Appkey of target app is required when queried across applications.|
+| no_offline	| FALSE	| Control flag of offline messages, false as default value, means to save offline messages; true means not to save offline message|
+| no_notification	| FALSE	| Message flag displayed on status bar, false as default value, means that status bar displays messages; true, means that status bar does not display messages|
+| custom_notification	| FALSE	| See the table below for notification bar parameters.|
+| need_receipt	| FALSE	| Whether to need a read receipt. Need as true, not need as false|
 
 **custom_notification：**
 
-| KEY	| REQUIRE	| DESCRIPTION| 
+| KEY	| REQUIRE	| DESCRIPTION|
 | ------------------- | ---------------- | ---------------------------------------- |
-| enabled	| TRUE	| Whether to enable notification bar of custom message. Default to FALSE| 
-| title	| FALSE	| Heading of notification bar | 
-| alert	| FALSE	| Content of notification bar|  
+| enabled	| TRUE	| Whether to enable notification bar of custom message. Default to FALSE|
+| title	| FALSE	| Heading of notification bar |
+| alert	| FALSE	| Content of notification bar|
 
 **Request Example**
 
@@ -964,7 +964,7 @@ JMessage#sendSingleLocation()
                }).onFail(function(data) {
                    //同发送单聊文本
                });
-```  
+```
 ```  
   // 转发消息
   JIM.sendSingleLocation({
@@ -999,23 +999,23 @@ JMessage#sendSingleCustom()
 
 |KEY	|REQUIRE	|DESCRIPTION|
 | ------------------- | ------------ | ---------------------------------------- |
-| target_username	| TRUE	| Username of message receiver| 
-| custom	| TRUE	| Custom json object message| 
-| msg_body	| Either custom or  msg_body	| Message's msg_body, used to implement message forwarding| 
-| target_nickname	| FALSE	| Recipient's display name| 
-| appkey	| FALSE	| Appkey of target app is required when queried across applications.| 
-| no_offline	| FALSE	| Control flag of offline messages, false as default value, means to save offline messages; true means not to save offline message| 
-| no_notification	| FALSE	| Message flag displayed on status bar, false as default value, means that status bar displays messages; true, means that status bar does not display messages| 
-| custom_notification	| FALSE	| See the table below for notification bar parameters.| 
-| need_receipt	| FALSE	| Whether to need a read receipt. Need as true, not need as false| 
+| target_username	| TRUE	| Username of message receiver|
+| custom	| TRUE	| Custom json object message|
+| msg_body	| Either custom or  msg_body	| Message's msg_body, used to implement message forwarding|
+| target_nickname	| FALSE	| Recipient's display name|
+| appkey	| FALSE	| Appkey of target app is required when queried across applications.|
+| no_offline	| FALSE	| Control flag of offline messages, false as default value, means to save offline messages; true means not to save offline message|
+| no_notification	| FALSE	| Message flag displayed on status bar, false as default value, means that status bar displays messages; true, means that status bar does not display messages|
+| custom_notification	| FALSE	| See the table below for notification bar parameters.|
+| need_receipt	| FALSE	| Whether to need a read receipt. Need as true, not need as false|
 
 **custom_notification：**
 
-| KEY	| REQUIRE	| DESCRIPTION| 
+| KEY	| REQUIRE	| DESCRIPTION|
 | ------- | ------- | --------------------- |
-| enabled	| TRUE	| Whether to enable notification bar of custom message. Default to FALSE| 
-| title	| FALSE	| Heading of notification bar | 
-| alert	| FALSE	| Content of notification bar | 
+| enabled	| TRUE	| Whether to enable notification bar of custom message. Default to FALSE|
+| title	| FALSE	| Heading of notification bar |
+| alert	| FALSE	| Content of notification bar |
 
 **Request Example**
 
@@ -1037,7 +1037,7 @@ JMessage#sendSingleCustom()
                }).onFail(function(data) {
                   //同发送单聊文本
                });
-```  
+```
 ```
   // 转发消息
   JIM.sendSingleCustom({
@@ -1057,34 +1057,34 @@ JMessage#sendSingleCustom()
                   //同发送单聊文本
                });
 ```
-               
+
 #### Send Group Chat Texts
 
 JMessage#sendGroupMsg()
 
 **Request Parameter**
 
-| KEY	| REQUIRE	| DESCRIPTION| 
+| KEY	| REQUIRE	| DESCRIPTION|
 | ------- | ------- | --------------------- |
-| target_gid	| TRUE	| Group id| 
-| content	| Either content or  msg_body	| Message text| 
-| msg_body	| Either content or  msg_body	| Message's msg_body, used to implement message forwarding| 
-| target_gname	| FALSE	| Recipient's display name| 
-| extras	| FALSE	| Additional fields, dictionary type| 
-| at_list	| FALSE	| @user list: [{'username': 'name1', 'appkey': ' Required for cross-application, default is not filled in to indicate this application'}], @ALL direct empty array: []| 
-| no_offline	| FALSE	| Control flag of offline messages, false as default value, means to save offline messages; true means not to save offline message| 
-| no_notification	| FALSE	| Message flag displayed on status bar, false as default value, means that status bar displays messages; true, means that status bar does not display messages| 
-| custom_notification	| FALSE	| See the table below for notification bar parameters.| 
-| need_receipt	| FALSE	| Whether to need a read receipt. Need as true, not need as false| 
+| target_gid	| TRUE	| Group id|
+| content	| Either content or  msg_body	| Message text|
+| msg_body	| Either content or  msg_body	| Message's msg_body, used to implement message forwarding|
+| target_gname	| FALSE	| Recipient's display name|
+| extras	| FALSE	| Additional fields, dictionary type|
+| at_list	| FALSE	| @user list: [{'username': 'name1', 'appkey': ' Required for cross-application, default is not filled in to indicate this application'}], @ALL direct empty array: []|
+| no_offline	| FALSE	| Control flag of offline messages, false as default value, means to save offline messages; true means not to save offline message|
+| no_notification	| FALSE	| Message flag displayed on status bar, false as default value, means that status bar displays messages; true, means that status bar does not display messages|
+| custom_notification	| FALSE	| See the table below for notification bar parameters.|
+| need_receipt	| FALSE	| Whether to need a read receipt. Need as true, not need as false|
 
 **custom_notification：**
 
-| KEY	| REQUIRE	| DESCRIPTION| 
+| KEY	| REQUIRE	| DESCRIPTION|
 | --------- | ------- | -------------------- |
-| enabled	| TRUE| 	Whether to enable notification bar of custom message. Default to FALSE| 
-| title| 	FALSE	| Heading of notification bar | 
-| alert| 	FALSE	| Content of notification bar | 
-| at_prefix	| FALSE| 	Notification content prefix of @ target| 
+| enabled	| TRUE| 	Whether to enable notification bar of custom message. Default to FALSE|
+| title| 	FALSE	| Heading of notification bar |
+| alert| 	FALSE	| Content of notification bar |
+| at_prefix	| FALSE| 	Notification content prefix of @ target|
 
 **Request Example**
 
@@ -1137,12 +1137,12 @@ JMessage#sendGroupPic()
 
 **Request Parameter**
 
-| KEY	| REQUIRE	| DESCRIPTION| 
+| KEY	| REQUIRE	| DESCRIPTION|
 | --------- | ------- | -------------------- |
-| target_gid	| TRUE	| Group id| 
-| image	| Either image or  msg_body	| DataForm object of images| 
-| msg_body	| Either image or  msg_body	| Message's msg_body, used to implement message forwarding| 
-| target_gname	| FALSE	| Recipient's display name| 
+| target_gid	| TRUE	| Group id|
+| image	| Either image or  msg_body	| DataForm object of images|
+| msg_body	| Either image or  msg_body	| Message's msg_body, used to implement message forwarding|
+| target_gname	| FALSE	| Recipient's display name|
 | extras	| FALSE| 	Additional fields, dictionary type
 | no_offline| 	FALSE	| Control flag of offline messages, false as default value, means to save offline messages; true means not to save offline message| 
 | no_notification| 	FALSE	| Message flag displayed on status bar, false as default value, means that status bar displays messages; true, means that status bar does not display messages| 
@@ -1150,12 +1150,12 @@ JMessage#sendGroupPic()
 
 **custom_notification：**
 
-| KEY| 	REQUIRE| 	DESCRIPTION| 
+| KEY| 	REQUIRE| 	DESCRIPTION|
 | --------- | ------- | -------------------- |
-| enabled| 	TRUE	| Whether to enable notification bar of custom message. Default to FALSE| 
-| title	| FALSE| 	Heading of notification bar | 
-| alert| 	FALSE| 	Content of notification bar | 
-| at_prefix| 	FALSE| 	Notification content prefix of @ target| 
+| enabled| 	TRUE	| Whether to enable notification bar of custom message. Default to FALSE|
+| title	| FALSE| 	Heading of notification bar |
+| alert| 	FALSE| 	Content of notification bar |
+| at_prefix| 	FALSE| 	Notification content prefix of @ target|
 
 **Request Example**
 
@@ -1211,25 +1211,25 @@ JMessage#sendGroupFile()
 
 **Request Parameter**
 
-| KEY| 	REQUIRE| 	DESCRIPTION| 
+| KEY| 	REQUIRE| 	DESCRIPTION|
 | --------- | ------- | -------------------- |
-| target_gid	| TRUE| 	Group id| 
-| file| 	Either file or  msg_body	| The DataForm object of the file| 
-| msg_body	| Either file or  msg_body	| Message's msg_body, used to implement message forwarding| 
-| target_gname| 	FALSE| 	Recipient's display name| 
-| extras	| FALSE	| Additional fields, dictionary type| 
-| no_offline	| FALSE	| Control flag of offline messages, false as default value, means to save offline messages; true means not to save offline message| 
-| no_notification| 	FALSE	| Message flag displayed on status bar, false as default value, means that status bar displays messages; true, means that status bar does not display messages| 
-| need_receipt| 	FALSE| 	Whether to need a read receipt. Need as true, not need as false| 
+| target_gid	| TRUE| 	Group id|
+| file| 	Either file or  msg_body	| The DataForm object of the file|
+| msg_body	| Either file or  msg_body	| Message's msg_body, used to implement message forwarding|
+| target_gname| 	FALSE| 	Recipient's display name|
+| extras	| FALSE	| Additional fields, dictionary type|
+| no_offline	| FALSE	| Control flag of offline messages, false as default value, means to save offline messages; true means not to save offline message|
+| no_notification| 	FALSE	| Message flag displayed on status bar, false as default value, means that status bar displays messages; true, means that status bar does not display messages|
+| need_receipt| 	FALSE| 	Whether to need a read receipt. Need as true, not need as false|
 
 **custom_notification：**
 
-| KEY	| REQUIRE	| DESCRIPTION| 
+| KEY	| REQUIRE	| DESCRIPTION|
 | --------- | ------- | -------------------- |
-| enabled	| TRUE| 	Whether to enable notification bar of custom message. Default to FALSE| 
-| title	| FALSE	| Heading of notification bar | 
+| enabled	| TRUE| 	Whether to enable notification bar of custom message. Default to FALSE|
+| title	| FALSE	| Heading of notification bar |
 | alert	| FALSE| 	Content of notification bar |
-| at_prefix	| FALSE	| Notification content prefix of @ target| 
+| at_prefix	| FALSE	| Notification content prefix of @ target|
 
 **Request Example**
 
@@ -1284,28 +1284,28 @@ JMessage#sendGroupLocation()
 
 **Request Parameter**
 
-| KEY	| REQUIRE	| DESCRIPTION| 
+| KEY	| REQUIRE	| DESCRIPTION|
 | --------- | ------- | -------------------- |
-| target_gid	| TRUE| 	Group id| 
-| latitude| 	Either latitude or  msg_body| 	Latitude| 
-| longitude	| Either longitude or  msg_body| 	Longitude| 
-| scale| 	Either scale or  msg_body	| Map zoom level| 
-| label	| Either label or  msg_body	| Address| 
-| msg_body	| Either msg_body or  position related parameter	| Message's msg_body, used to implement message forwarding| 
-| target_gname	| FALSE	| Recipient's display name| 
-| extras	| FALSE| 	Additional fields, dictionary type| 
-| no_offline	| FALSE	| Control flag of offline messages, false as default value, means to save offline messages; true means not to save offline message| 
-| no_notification	| FALSE| 	Message flag displayed on status bar, false as default value, means that status bar displays messages; true, means that status bar does not display messages| 
-| need_receipt| 	FALSE	| Whether to need a read receipt. Need as true, not need as false| 
+| target_gid	| TRUE| 	Group id|
+| latitude| 	Either latitude or  msg_body| 	Latitude|
+| longitude	| Either longitude or  msg_body| 	Longitude|
+| scale| 	Either scale or  msg_body	| Map zoom level|
+| label	| Either label or  msg_body	| Address|
+| msg_body	| Either msg_body or  position related parameter	| Message's msg_body, used to implement message forwarding|
+| target_gname	| FALSE	| Recipient's display name|
+| extras	| FALSE| 	Additional fields, dictionary type|
+| no_offline	| FALSE	| Control flag of offline messages, false as default value, means to save offline messages; true means not to save offline message|
+| no_notification	| FALSE| 	Message flag displayed on status bar, false as default value, means that status bar displays messages; true, means that status bar does not display messages|
+| need_receipt| 	FALSE	| Whether to need a read receipt. Need as true, not need as false|
 
 **custom_notification：**
 
-| KEY	| REQUIRE| 	DESCRIPTION| 
+| KEY	| REQUIRE| 	DESCRIPTION|
 | --------- | ------- | -------------------- |
-| enabled	| TRUE| 	Whether to enable custom message notification bar. Default to FALSE.| 
-| title	| FALSE| 	Heading of notification bar| 
-| alert	| FALSE| 	Content of notification bar| 
-| at_prefix| 	FALSE| 	Notification content prefix of @ target| 
+| enabled	| TRUE| 	Whether to enable custom message notification bar. Default to FALSE.|
+| title	| FALSE| 	Heading of notification bar|
+| alert	| FALSE| 	Content of notification bar|
+| at_prefix| 	FALSE| 	Notification content prefix of @ target|
 
 **Request Example**
 
@@ -1362,24 +1362,24 @@ JMessage#sendGroupCustom()
 
 **Request Parameter**
 
-| KEY	| REQUIRE	| DESCRIPTION| 
+| KEY	| REQUIRE	| DESCRIPTION|
 | --------- | ------- | -------------------- |
-| target_gid	| TRUE	| Group id| 
-| custom	| TRUE| 	Custom json object message| 
-| msg_body	| Either custom or  msg_body| 	Message's msg_body, used to implement message forwarding| 
-| target_gname	| FALSE| 	Recipient's display name| 
-| no_offline	| FALSE	| Control flag of offline messages, false as default value, means to save offline messages; true means not to save offline message| 
-| no_notification| 	FALSE	| Message flag displayed on status bar, false as default value, means that status bar displays messages; true, means that status bar does not display messages| 
-| need_receipt| 	FALSE| 	Whether to need a read receipt. Need as true, not need as false| 
+| target_gid	| TRUE	| Group id|
+| custom	| TRUE| 	Custom json object message|
+| msg_body	| Either custom or  msg_body| 	Message's msg_body, used to implement message forwarding|
+| target_gname	| FALSE| 	Recipient's display name|
+| no_offline	| FALSE	| Control flag of offline messages, false as default value, means to save offline messages; true means not to save offline message|
+| no_notification| 	FALSE	| Message flag displayed on status bar, false as default value, means that status bar displays messages; true, means that status bar does not display messages|
+| need_receipt| 	FALSE| 	Whether to need a read receipt. Need as true, not need as false|
 
 **custom_notification：**
 
-| KEY	| REQUIRE	| DESCRIPTION| 
+| KEY	| REQUIRE	| DESCRIPTION|
 | --------- | ------- | -------------------- |
-| enabled	| TRUE	| Whether to enable notification bar of custom message. Default to FALSE| 
-| title	| FALSE| 	Heading of notification bar | 
-| alert	| FALSE| 	Content of notification bar | 
-| at_prefix| 	FALSE	| Notification content prefix of @ target| 
+| enabled	| TRUE	| Whether to enable notification bar of custom message. Default to FALSE|
+| title	| FALSE| 	Heading of notification bar |
+| alert	| FALSE| 	Content of notification bar |
+| at_prefix| 	FALSE	| Notification content prefix of @ target|
 
 **Request Example**
 
@@ -1428,11 +1428,11 @@ JMessage#transSingleMsg()
 
 **Request Parameter**
 
-| KEY	| REQUIRE	| DESCRIPTION| 
+| KEY	| REQUIRE	| DESCRIPTION|
 | ---- | ------- | -------------- |
-| target_username	| TRUE	| Target user| 
-| cmd	| TRUE	| String type of transparent information|  
-| target_appkey	| FALSE| 	Appkey of target user | 
+| target_username	| TRUE	| Target user|
+| cmd	| TRUE	| String type of transparent information|
+| target_appkey	| FALSE| 	Appkey of target user |
 
 **Request Example**
 
@@ -1457,10 +1457,10 @@ JMessage#transGroupMsg()
 
 **Request Parameter**
 
-| KEY	| REQUIRE	| DESCRIPTION| 
+| KEY	| REQUIRE	| DESCRIPTION|
 | ---- | ------- | -------------- |
-| gid	| TRUE	| Target group id| 
-| cmd	| TRUE	| String type of transparent transmission information| 
+| gid	| TRUE	| Target group id|
+| cmd	| TRUE	| String type of transparent transmission information|
 
 **Request Example**
 
@@ -1485,10 +1485,10 @@ JMessage#transPlatMsg()
 
 **Request Parameter**
 
-| KEY| 	REQUIRE| 	DESCRIPTION| 
+| KEY| 	REQUIRE| 	DESCRIPTION|
 | -------- | ------- | -------------- |
-| platform	| TRUE| 	Target platform of multi-end online: [all,android,ios,pc]| 
-| cmd	| TRUE	| String type of transparent transmission information| 
+| platform	| TRUE| 	Target platform of multi-end online: [all,android,ios,pc]|
+| cmd	| TRUE	| String type of transparent transmission information|
 
 **Request Example**
 
@@ -1516,12 +1516,12 @@ JMessage#createGroup()
 
 **Request Parameter**
 
-| KEY| 	REQUIRE| 	DESCRIPTION| 
+| KEY| 	REQUIRE| 	DESCRIPTION|
 | ----------------- | ------- | ------------------ |
-| group_name	| TRUE| 	Group name| 
-| group_description	| FALSE	| Group description| 
-| avatar	| FALSE	| DataForm object of group portrait image| 
-| is_limit| 	FALSE	| Whether it is a public group. The default is false| 
+| group_name	| TRUE| 	Group name|
+| group_description	| FALSE	| Group description|
+| avatar	| FALSE	| DataForm object of group portrait image|
+| is_limit| 	FALSE	| Whether it is a public group. The default is false|
 
 **Request Example**
 
@@ -1656,9 +1656,9 @@ Support public groups ***since 2.5.0***
 
 **Request Parameter**
 
-| KEY	| REQUIRE	| DESCRIPTION| 
+| KEY	| REQUIRE	| DESCRIPTION|
 | ---------------- | ------- | ---------------------------------------- |
-| gid| 	TRUE| 	Group id| 
+| gid| 	TRUE| 	Group id|
 
 **Request Example**
 
@@ -1690,12 +1690,12 @@ JMessage#updateGroupInfo()
 
 **Request Parameter**
 
-| KEY	| REQUIRE| 	DESCRIPTION| 
+| KEY	| REQUIRE| 	DESCRIPTION|
 | ----------------- | ------- | --------------------------- |
-| gid	|TRUE	| Group id| 
-| group_name	| FALSE| 	Group name. Required at least one attribute, and cannot be empty.| 
-| group_description	|FALSE	| Group description. Required at least one attribute, and cannot be empty.| 
-| avatar	| FALSE	| The DataForm object of the group avatar image. Required at least one attribute, and cannot be empty.| 
+| gid	|TRUE	| Group id|
+| group_name	| FALSE| 	Group name. Required at least one attribute, and cannot be empty.|
+| group_description	|FALSE	| Group description. Required at least one attribute, and cannot be empty.|
+| avatar	| FALSE	| The DataForm object of the group avatar image. Required at least one attribute, and cannot be empty.|
 
 **Request Example**
 
@@ -1779,16 +1779,16 @@ JMessage#addGroupMemberResp()
 
 **Request Parameter**
 
-|KEY	| REQUIRE	| DESCRIPTION| 
+|KEY	| REQUIRE	| DESCRIPTION|
 | --------------- | ------- | -------------------------- |
-|gid| 	 TRUE	| Group id| 
-|event_id	| TRUE| 	The id of group admission event| 
-|from_username| 	TRUE| 	Username of the inviter| 
-|target_username	| TRUE| 	Username of the invitee| 
-|result	| TRUE| 	Approval result, 0: Agree 1: Decline| 
-|reason	| FALSE| 	Reason for rejection| 
-|from_appkey	| FALSE	| Inviter’s appkey, defaults to appkey of this application | 
-|target_appkey| 	FALSE| 	Invitee's appkey, defaults to appkey of this application| 
+|gid| 	 TRUE	| Group id|
+|event_id	| TRUE| 	The id of group admission event|
+|from_username| 	TRUE| 	Username of the inviter|
+|target_username	| TRUE| 	Username of the invitee|
+|result	| TRUE| 	Approval result, 0: Agree 1: Decline|
+|reason	| FALSE| 	Reason for rejection|
+|from_appkey	| FALSE	| Inviter’s appkey, defaults to appkey of this application |
+|target_appkey| 	FALSE| 	Invitee's appkey, defaults to appkey of this application|
 
 **Request Example**
 
@@ -1819,11 +1819,11 @@ JMessage#addGroupMemSilence()
 
 **Request Parameter**
 
-| KEY	| REQUIRE	| DESCRIPTION| 
+| KEY	| REQUIRE	| DESCRIPTION|
 | --------------- | ------- | ----------- |
-| gid	| TRUE	| Group id| 
-| target_username	| TRUE	| Target username| 
-| target_appkey	| FALSE	| Target appkey| 
+| gid	| TRUE	| Group id|
+| target_username	| TRUE	| Target username|
+| target_appkey	| FALSE	| Target appkey|
 
 **Request Example**
 
@@ -1849,11 +1849,11 @@ JMessage#delGroupMemSilence()
 
 **Request Parameter**
 
-| KEY	| REQUIRE	| DESCRIPTION| 
+| KEY	| REQUIRE	| DESCRIPTION|
 | --------------- | ------- | ----------- |
-| gid	| TRUE	| Group id| 
-| target_username	| TRUE	| Target username| 
-| target_appkey	| FALSE	| Target appkey| 
+| gid	| TRUE	| Group id|
+| target_username	| TRUE	| Target username|
+| target_appkey	| FALSE	| Target appkey|
 
 **Request Example**
 
@@ -1879,10 +1879,10 @@ JMessage#addGroupKeeper()
 
 **Request Parameter**
 
-| KEY	| REQUIRE	| DESCRIPTION| 
+| KEY	| REQUIRE	| DESCRIPTION|
 | --------------- | ------- | ----------- |
-| gid	| TRUE	| Group id| 
-| member_usernames	| TRUE	| Add admin list, example: [{'username':'name1', 'appkey': ' Required for cross-application, default is not filled in to indicate this application '},...]| 
+| gid	| TRUE	| Group id|
+| member_usernames	| TRUE	| Add admin list, example: [{'username':'name1', 'appkey': ' Required for cross-application, default is not filled in to indicate this application '},...]|
 
 **Request Example**
 
@@ -1907,10 +1907,10 @@ JMessage#delGroupKeeper()
 
 **Request Parameter**
 
-| KEY	| REQUIRE	| DESCRIPTION| 
+| KEY	| REQUIRE	| DESCRIPTION|
 | ---------------- | ------- | ---------------------------------------- |
-| gid	| TRUE| 	Group id| 
-| member_usernames| 	TRUE| 	Add admin list, example: [{'username':'name1', 'appkey': ' Required for cross-application, default is not filled in to indicate this application '},...]| 
+| gid	| TRUE| 	Group id|
+| member_usernames| 	TRUE| 	Add admin list, example: [{'username':'name1', 'appkey': ' Required for cross-application, default is not filled in to indicate this application '},...]|
 
 **Request Example**
 
@@ -1935,11 +1935,11 @@ JMessage#changeGroupAdmin()
 
 **Request Parameter**
 
-| KEY	| REQUIRE	| DESCRIPTION| 
+| KEY	| REQUIRE	| DESCRIPTION|
 | ---------------- | ------- | ---------------------------------------- |
-| gid	| TRUE| 	Group id| 
-| target_username	| TRUE| 	Target username| 
-| target_appkey	| FALSE| 	Cross-application appkey, defaults to the appkey of this application| 
+| gid	| TRUE| 	Group id|
+| target_username	| TRUE| 	Target username|
+| target_appkey	| FALSE| 	Cross-application appkey, defaults to the appkey of this application|
 
 **Request Example**
 
@@ -1964,9 +1964,9 @@ JMessage#dissolveGroup()
 
 **Request Parameter**
 
-| KEY	| REQUIRE	| DESCRIPTION| 
+| KEY	| REQUIRE	| DESCRIPTION|
 | ---- | ------- | ----------- |
-| gid	| TRUE	| Group id| 
+| gid	| TRUE	| Group id|
 
 **Request Example**
 
@@ -1990,10 +1990,10 @@ JMessage#getAppkeyPublicGroups()
 
 **Request Parameter**
 
-| KEY	| REQUIRE	| DESCRIPTION| 
+| KEY	| REQUIRE	| DESCRIPTION|
 | ---- | ------- | ----------- |
-| start	| TRUE	| Pagination subscript. Home page gets 0| 
-| appkey| 	FALSE	| The appkey of chat room, defaults to this application| 
+| start	| TRUE	| Pagination subscript. Home page gets 0|
+| appkey| 	FALSE	| The appkey of chat room, defaults to this application|
 
 **Request Example**
 
@@ -2030,10 +2030,10 @@ JMessage#getAppkeyChatrooms()
 
 **Request Parameter**
 
-| KEY	| REQUIRE	| DESCRIPTION| 
+| KEY	| REQUIRE	| DESCRIPTION|
 | --------------- | ------- | ----------- |
-| start	| TRUE	| Pagination subscript. Home page gets 0| 
-| appkey	| FALSE	| The appkey of chat room, defaults to this application| 
+| start	| TRUE	| Pagination subscript. Home page gets 0|
+| appkey	| FALSE	| The appkey of chat room, defaults to this application|
 
 **Request Example**
 
@@ -2090,9 +2090,9 @@ JMessage#getChatroomInfo()
 
 **Request Parameter**
 
-| KEY	| REQUIRE| 	DESCRIPTION| 
+| KEY	| REQUIRE| 	DESCRIPTION|
 | ---- | ------- | ----------- |
-| id	| TRUE	| Chat room id| 
+| id	| TRUE	| Chat room id|
 
 **Request Example**
 
@@ -2120,9 +2120,9 @@ JMessage#enterChatroom ()
 
 **Request Parameter**
 
-| KEY| 	REQUIRE| 	DESCRIPTION| 
+| KEY| 	REQUIRE| 	DESCRIPTION|
 | ---- | ------- | ----------- |
-| id| 	TRUE| 	Chat room id| 
+| id| 	TRUE| 	Chat room id|
 
 
 **Request Example**
@@ -2146,9 +2146,9 @@ JMessage#exitChatroom ()
 
 **Request Parameter**
 
-| KEY	| REQUIRE	| DESCRIPTION| 
+| KEY	| REQUIRE	| DESCRIPTION|
 | ---- | ------- | ----------- |
-| id| 	TRUE	| Chat room id| 
+| id| 	TRUE	| Chat room id|
 
 **Request Example**
 
@@ -2172,13 +2172,13 @@ JMessage#sendChatroomMsg()
 **Request Parameter**
 
 
-| KEY	| REQUIRE	| DESCRIPTION| 
+| KEY	| REQUIRE	| DESCRIPTION|
 | ------------ | ----------------- | ----------------------- |
-| target_rid	| TRUE| 	Target id| 
-| content	| Either content or  msg_body| 	Message text| 
-| msg_body	| Either content or  msg_body| 	Message's msg_body, used to implement message forwarding| 
-| target_rname	| FALSE| 	Recipient's display name| 
-| extras	| FALSE	| Additional fields, dictionary type| 
+| target_rid	| TRUE| 	Target id|
+| content	| Either content or  msg_body| 	Message text|
+| msg_body	| Either content or  msg_body| 	Message's msg_body, used to implement message forwarding|
+| target_rname	| FALSE| 	Recipient's display name|
+| extras	| FALSE	| Additional fields, dictionary type|
 
 **Request Example**
 
@@ -2198,7 +2198,7 @@ JMessage#sendChatroomMsg()
                   //data.code 返回码
                   //data.message 描述
                });
-``` 
+```
 ```
    // 转发文本消息
    JIM.sendChatroomMsg({
@@ -2231,13 +2231,13 @@ JMessage#sendChatroomPic()
 
 **Request Parameter**
 
-| KEY	| REQUIRE	| DESCRIPTION| 
+| KEY	| REQUIRE	| DESCRIPTION|
 | ------------ | ---------------- | ----------------------- |
-| target_rid	| TRUE| 	Target id| 
-| image	| Either image or msg_body	| DataForm object of images| 
-| msg_body	| Either image or msg_body	| Message's msg_body, used to implement message forwarding| 
-| target_rname| 	FALSE	| Recipient's display name| 
-| extras	| FALSE	| Additional fields, dictionary type| 
+| target_rid	| TRUE| 	Target id|
+| image	| Either image or msg_body	| DataForm object of images|
+| msg_body	| Either image or msg_body	| Message's msg_body, used to implement message forwarding|
+| target_rname| 	FALSE	| Recipient's display name|
+| extras	| FALSE	| Additional fields, dictionary type|
 
 **Request Example**
 
@@ -2287,13 +2287,13 @@ JMessage#sendChatroomFile()
 
 **Request Parameter**
 
-| KEY	| REQUIRE	| DESCRIPTION| 
+| KEY	| REQUIRE	| DESCRIPTION|
 | ------------ | -------------- | ----------------------- |
-| target_rid	| TRUE	| Target id| 
-| file	| Either file or msg_body	| DataForm object of images| 
-| msg_body| 	Either file or msg_body	| Message's msg_body, used to implement message forwarding| 
-| target_rname| 	FALSE| 	Recipient's display name| 
-| extras	| FALSE	| Additional fields, dictionary type| 
+| target_rid	| TRUE	| Target id|
+| file	| Either file or msg_body	| DataForm object of images|
+| msg_body| 	Either file or msg_body	| Message's msg_body, used to implement message forwarding|
+| target_rname| 	FALSE| 	Recipient's display name|
+| extras	| FALSE	| Additional fields, dictionary type|
 
 **Request Example**
 
@@ -2312,7 +2312,7 @@ JMessage#sendChatroomFile()
                }).onFail(function(data) {
                    //同发送单聊文本
                });
-``` 
+```
 ```
   // 转发消息
   JIM.sendChatroomFile({
@@ -2342,16 +2342,16 @@ JMessage#sendChatroomLocation()
 
 **Request Parameter**
 
-| KEY	| REQUIRE| 	DESCRIPTION| 
+| KEY	| REQUIRE| 	DESCRIPTION|
 | ------------ | -------------- | ----------------------- |
-| target_rid	| TRUE	| Username of message receiver| 
-| latitude	| Either latitude or msg_body| 	Latitude| 
-| longitude	| Either longitude or msg_body	| Longitude| 
-| scale	| Either scale or msg_body	| Map zoom level| 
-| label	| Either label or msg_body| 	Address| 
-| msg_body	| Either position related parameter or msg_body	| Message's msg_body, used to implement message forwarding| 
-| target_rname	| FALSE| 	Recipient's display name| 
-| extras	| FALSE| 	Additional fields, dictionary type| 
+| target_rid	| TRUE	| Username of message receiver|
+| latitude	| Either latitude or msg_body| 	Latitude|
+| longitude	| Either longitude or msg_body	| Longitude|
+| scale	| Either scale or msg_body	| Map zoom level|
+| label	| Either label or msg_body| 	Address|
+| msg_body	| Either position related parameter or msg_body	| Message's msg_body, used to implement message forwarding|
+| target_rname	| FALSE| 	Recipient's display name|
+| extras	| FALSE| 	Additional fields, dictionary type|
 
 **Request Example**
 
@@ -2402,13 +2402,13 @@ JMessage#sendChatroomCustom()
 
 **Request Parameter**
 
-| KEY| 	REQUIRE| 	DESCRIPTION| 
+| KEY| 	REQUIRE| 	DESCRIPTION|
 | ------------ | ------------ | ----------------------- |
-| target_rid	| TRUE| 	Username of message receiver| 
-| custom	| TRUE| 	Custom json object message| 
-| msg_body	| Either custom or msg_body	| Message's msg_body, used to implement message forwarding| 
-| target_rname| 	FALSE| 	Recipient's display name| 
-| extras| 	FALSE	| Additional fields, dictionary type| 
+| target_rid	| TRUE| 	Username of message receiver|
+| custom	| TRUE| 	Custom json object message|
+| msg_body	| Either custom or msg_body	| Message's msg_body, used to implement message forwarding|
+| target_rname| 	FALSE| 	Recipient's display name|
+| extras| 	FALSE	| Additional fields, dictionary type|
 
 **Request Example**
 
@@ -2491,10 +2491,10 @@ JMessage#addSingleNoDisturb()
 **Request Parameter**
 
 
-| KEY	| REQUIRE	| DESCRIPTION| 
+| KEY	| REQUIRE	| DESCRIPTION|
 | ----------- | ------- | --------------- |
-| target_name	| TRUE	| Username| 
-| appkey	| FALSE	| Required for cross-application, default is not filled in to indicate this application| 
+| target_name	| TRUE	| Username|
+| appkey	| FALSE	| Required for cross-application, default is not filled in to indicate this application|
 
 **Request Example**
 
@@ -2516,10 +2516,10 @@ JMessage#delSingleNoDisturb()
 
 **Request Parameter**
 
-| KEY	| REQUIRE	| DESCRIPTION| 
+| KEY	| REQUIRE	| DESCRIPTION|
 | ----------- | ------- | --------------- |
-| target_name| 	TRUE| 	Username| 
-| appkey	| FALSE| 	Required for cross-application, default is not filled in to indicate this application| 
+| target_name| 	TRUE| 	Username|
+| appkey	| FALSE| 	Required for cross-application, default is not filled in to indicate this application|
 
 **Request Example**
 
@@ -2541,9 +2541,9 @@ JMessage#addGroupNoDisturb()
 
 **Request Parameter**
 
-| KEY	| REQUIRE	| DESCRIPTION| 
+| KEY	| REQUIRE	| DESCRIPTION|
 | ----------- | ------- | --------------- |
-| gid	| TRUE	| Group id| 
+| gid	| TRUE	| Group id|
 
 **Request Example**
 
@@ -2564,9 +2564,9 @@ JMessage#delGroupNoDisturb()
 
 **Request Parameter**
 
-| KEY	| REQUIRE	| DESCRIPTION| 
+| KEY	| REQUIRE	| DESCRIPTION|
 | ---- | ------- | ----------- |
-| gid	| TRUE	| Group id| 
+| gid	| TRUE	| Group id|
 
 **Request Example**
 
@@ -2615,9 +2615,9 @@ JMessage#addGroupShield()
 
 **Request Parameter**
 
-| KEY	| REQUIRE	| DESCRIPTION| 
+| KEY	| REQUIRE	| DESCRIPTION|
 | ---- | ------- | ----------- |
-| gid	| TRUE| 	Group id| 
+| gid	| TRUE| 	Group id|
 
 
 **Request Example**
@@ -2639,9 +2639,9 @@ JMessage#delGroupShield()
 
 **Request Parameter**
 
-| KEY	| REQUIRE	| DESCRIPTION| 
+| KEY	| REQUIRE	| DESCRIPTION|
 | ---- | ------- | ----------- |
-| gid	| TRUE	| Group id| 
+| gid	| TRUE	| Group id|
 
 **Request Example**
 
@@ -2732,9 +2732,9 @@ JMessage#addSingleBlacks()
 
 **Request Parameter**
 
-| KEY	| REQUIRE	| DESCRIPTION| 
+| KEY	| REQUIRE	| DESCRIPTION|
 | ---------------- | ------- | ---------------------------------------- |
-| member_usernames	| TRUE	| Example of user lists: [{'username': 'name1', 'appkey': ' Required for cross-application, default is not filled in to indicate this application '}]| 
+| member_usernames	| TRUE	| Example of user lists: [{'username': 'name1', 'appkey': ' Required for cross-application, default is not filled in to indicate this application '}]|
 
 **Request Example**
 
@@ -2757,9 +2757,9 @@ JMessage#delSingleBlacks()
 
 **Request Parameter**
 
-| KEY	| REQUIRE	| DESCRIPTION| 
+| KEY	| REQUIRE	| DESCRIPTION|
 | ---------------- | ------- | ---------------------------------------- |
-| member_usernames	| TRUE	| Example of user lists: [{'username': 'name1', 'appkey': ' Required for cross-application, default is not filled in to indicate this application'}]| 
+| member_usernames	| TRUE	| Example of user lists: [{'username': 'name1', 'appkey': ' Required for cross-application, default is not filled in to indicate this application'}]|
 
 
 **Request Example**\
@@ -2819,11 +2819,11 @@ JMessage#addFriend()
 **Request Parameter**
 
 
-| KEY	| REQUIRE	| DESCRIPTION| 
+| KEY	| REQUIRE	| DESCRIPTION|
 | ----------- | ------- | --------------------- |
-| target_name	| TRUE	| Target username| 
-| why	| TRUE| 	Invitation instructions| 
-| appkey	| FALSE	| Appkey of target app is required when queried across applications| 
+| target_name	| TRUE	| Target username|
+| why	| TRUE| 	Invitation instructions|
+| appkey	| FALSE	| Appkey of target app is required when queried across applications|
 
 **Request Example**
 
@@ -2850,10 +2850,10 @@ JMessage#acceptFriend()
 **Request Parameter**
 
 
-| KEY	| REQUIRE	| DESCRIPTION| 
+| KEY	| REQUIRE	| DESCRIPTION|
 | ----------- | ------- | --------------------- |
-| target_name	| TRUE| 	Target username| 
-| appkey| 	FALSE	| Appkey of target app is required when queried across applications| 
+| target_name	| TRUE| 	Target username|
+| appkey| 	FALSE	| Appkey of target app is required when queried across applications|
 
 **Request Example**
 
@@ -2878,11 +2878,11 @@ JMessage#declineFriend()
 **Request Parameter**
 
 
-| KEY| 	REQUIRE| 	DESCRIPTION| 
+| KEY| 	REQUIRE| 	DESCRIPTION|
 | ----------- | ------- | --------------------- |
-| target_name	| TRUE| 	Target username| 
-| why| 	FALSE| 	Reason for rejection| 
-| appkey| 	FALSE| 	Appkey of target app is required when queried across applications| 
+| target_name	| TRUE| 	Target username|
+| why| 	FALSE| 	Reason for rejection|
+| appkey| 	FALSE| 	Appkey of target app is required when queried across applications|
 
 
 **Request Example**
@@ -2906,10 +2906,10 @@ JMessage#delFriend()
 
 **Request Parameter**
 
-| KEY	| REQUIRE	| DESCRIPTION| 
+| KEY	| REQUIRE	| DESCRIPTION|
 | ----------- | ------- | --------------------- |
-| target_name	| TRUE| 	Target username| 
-| appkey	| FALSE	| Appkey of target app is required when queried across applications| 
+| target_name	| TRUE| 	Target username|
+| appkey	| FALSE	| Appkey of target app is required when queried across applications|
 
 **Request Example**
 
@@ -2962,26 +2962,26 @@ JMessage#onMsgReceive(fn)
 
 **Request Parameter**
 
-| KEY| 	REQUIRE| 	DESCRIPTION| 
+| KEY| 	REQUIRE| 	DESCRIPTION|
 | ---- | ------- | ----------- |
-| fn	| TRUE	| Message reception handler| 
+| fn	| TRUE	| Message reception handler|
 
 **Array of returned messages**
 
-| KEY| 	DESCRIPTION| 
+| KEY| 	DESCRIPTION|
 | ---- | ------- |
-| ctime_ms| 	Message generation time, milliseconds| 
-| msg_type| 	Message type, 3-single, 4-group| 
-| from_appkey| 	Source appkey, valid for single chat| 
-| from_username| 	Source username, valid for single chat| 
-| from_gid| 	Source group id, valid for group chat| 
-| msg_id	| Message ID| 
-| need_receipt| 	Whether need a receipt| 
-| custom_notification.enabled| 	Whether to enable notification bar of custom message| 
-| custom_notification.title| 	Heading of notification bar| 
-| custom_notification.alert	| Content of notification bar | 
-| custom_notification.at_prefix| 	Notification content prefix of @ target| 
-| content	| [Message body](https://docs.jiguang.cn/jmessage/advanced/im_message_protocol/)| 
+| ctime_ms| 	Message generation time, milliseconds|
+| msg_type| 	Message type, 3-single, 4-group|
+| from_appkey| 	Source appkey, valid for single chat|
+| from_username| 	Source username, valid for single chat|
+| from_gid| 	Source group id, valid for group chat|
+| msg_id	| Message ID|
+| need_receipt| 	Whether need a receipt|
+| custom_notification.enabled| 	Whether to enable notification bar of custom message|
+| custom_notification.title| 	Heading of notification bar|
+| custom_notification.alert	| Content of notification bar |
+| custom_notification.at_prefix| 	Notification content prefix of @ target|
+| content	| [Message body](https://docs.jiguang.cn/jmessage/advanced/im_message_protocol/)|
 
 **Example**
 
@@ -3011,15 +3011,15 @@ JMessage#onSyncConversation(fn)
 
 **Request Parameter**
 
-| KEY| 	REQUIRE	| DESCRIPTION| 
+| KEY| 	REQUIRE	| DESCRIPTION|
 | ---- | ------- | ----------- |
-| fn| 	TRUE| 	Message reception handler| 
+| fn| 	TRUE| 	Message reception handler|
 
 **Return Parameter**
 
-| KEY	| DESCRIPTION| 
+| KEY	| DESCRIPTION|
 | -------- | ---------------------------------------- |
-| messages| 	[{'msg_type':'session_type','from_appkey':' target appkey','from_username':'target username','from_gid':'target group id','unread_msg_count':'nnumber of unread messages', 'receipt_msgs':[{'msg_id':'message id','unread_count':'unread number','mtime':'update time, millisecond'},...],'msgs':[{refer to real-time monitoring of chat message },...]},...]| 
+| messages| 	[{'msg_type':'session_type','from_appkey':' target appkey','from_username':'target username','from_gid':'target group id','unread_msg_count':'nnumber of unread messages', 'receipt_msgs':[{'msg_id':'message id','unread_count':'unread number','mtime':'update time, millisecond'},...],'msgs':[{refer to real-time monitoring of chat message },...]},...]|
 
 **Example**
 
@@ -3060,17 +3060,17 @@ Monitoring objects include friends, group members, single chats in the conversat
 
 **Request Parameter**
 
-| KEY	| REQUIRE| 	DESCRIPTION| 
+| KEY	| REQUIRE| 	DESCRIPTION|
 | -------- | ---------------------------------------- |
-| fn| 	TRUE| 	Handler function| 
+| fn| 	TRUE| 	Handler function|
 
 **Return Parameter**
 
-| KEY	| DESCRIPTION| 
+| KEY	| DESCRIPTION|
 | -------- | ----------- |
-| appkey	| Changer's appkey| 
-| username| 	Changer’s username| 
-| mtime| 	Change time (seconds)| 
+| appkey	| Changer's appkey|
+| username| 	Changer’s username|
+| mtime| 	Change time (seconds)|
 
 **Example**
 
@@ -3086,32 +3086,32 @@ JMessage#onEventNotification(fn)
 
 **Request Parameter( Value based on the event)**
 
-| KEY	| REQUIRE	| DESCRIPTION| 
+| KEY	| REQUIRE	| DESCRIPTION|
 | ---- | ------- | ----------- |
-| fn| 	TRUE	| Event reception handler| 
+| fn| 	TRUE	| Event reception handler|
 
 **Return Parameter**\
 
 
-| KEY| 	DESCRIPTION| 
+| KEY| 	DESCRIPTION|
 | ------------- | ---------------------------------------- |
-| event_id| 	Event id| 
-| event_type| 	The event type. The developer takes related field based on the corresponding event type, see the following example| 
-| gid| 	Relationship type| 
-| from_username	| Username of the event initiator | 
-| from_appkey	| appkey of the event initiator| 
-| to_usernames	| Event party [{"username":"","appkey":"","nickname":""},...]| 
-| ctime_ms| 	Event generation time, accurate to milliseconds| 
-| extra	| Identification field| 
-| return_code	| Used for friend invitation response events| 
-| description	| Description| 
-| msg_ids	| Message id list| 
-| from_gid| 	Group gid| 
-| to_groups	| Target group, format [{'gid':' ','name':' '},...]| 
-| new_owner	| New owner, format {'appkey':' ','username':' '}| 
-| group_name| 	Group name| 
-| type| 	0: single chat, 1: group chat| 
-| group_name| 	Group name| 
+| event_id| 	Event id|
+| event_type| 	The event type. The developer takes related field based on the corresponding event type, see the following example|
+| gid| 	Relationship type|
+| from_username	| Username of the event initiator |
+| from_appkey	| appkey of the event initiator|
+| to_usernames	| Event party [{"username":"","appkey":"","nickname":""},...]|
+| ctime_ms| 	Event generation time, accurate to milliseconds|
+| extra	| Identification field|
+| return_code	| Used for friend invitation response events|
+| description	| Description|
+| msg_ids	| Message id list|
+| from_gid| 	Group gid|
+| to_groups	| Target group, format [{'gid':' ','name':' '},...]|
+| new_owner	| New owner, format {'appkey':' ','username':' '}|
+| group_name| 	Group name|
+| type| 	0: single chat, 1: group chat|
+| group_name| 	Group name|
 
 **Example of simultaneous login or being banned and forced to offline event: event_type = 1**
 
@@ -3543,9 +3543,9 @@ JMessage#onSyncEvent(fn)
 
 **Request Parameter**
 
-| KEY| 	REQUIRE	| DESCRIPTION| 
+| KEY| 	REQUIRE	| DESCRIPTION|
 | ---- | ------- | ----------- |
-| fn	| TRUE| 	Event reception handler| 
+| fn	| TRUE| 	Event reception handler|
 
 **Return Parameter (Same as business event monitoring)**
 
@@ -3565,26 +3565,26 @@ JMessage#onMsgReceiptChange(fn)
 
 **Request Parameter**
 
-| KEY| 	REQUIRE| 	DESCRIPTION| 
+| KEY| 	REQUIRE| 	DESCRIPTION|
 | ---- | ------- | ----------- |
-| fn	| TRUE	| Event reception handler| 
+| fn	| TRUE	| Event reception handler|
 
 **Return Parameter**
 
-| KEY| 	DESCRIPTION| 
+| KEY| 	DESCRIPTION|
 | ------------ | -------------- |
-| gid	| Group ID, valid for group chat| 
-| appkey	| appkey belongs to, valid for single chat| 
-| username| 	User name, valid for single chat| 
-| type| 	Session type, 3: single chat, 4: group chat| 
-| receipt_msgs| 	The list of unread messages is as follows| 
+| gid	| Group ID, valid for group chat|
+| appkey	| appkey belongs to, valid for single chat|
+| username| 	User name, valid for single chat|
+| type| 	Session type, 3: single chat, 4: group chat|
+| receipt_msgs| 	The list of unread messages is as follows|
 
 **Message Unread Status Parameter**
 
-| KEY	| DESCRIPTION| 
+| KEY	| DESCRIPTION|
 | ------------ | -------------- |
-| msg_id	| Message id| 
-| unread_count| 	Unread number of messages. Compared with the previous one, take the smallest as the latest number of unread messages.| 
+| msg_id	| Message id|
+| unread_count| 	Unread number of messages. Compared with the previous one, take the smallest as the latest number of unread messages.|
 
 **Example**
 
@@ -3612,9 +3612,9 @@ JMessage#onSyncMsgReceipt(fn)
 
 **Request Parameter**
 
-| KEY	| REQUIRE	| DESCRIPTION| 
+| KEY	| REQUIRE	| DESCRIPTION|
 | ---- | ------- | ----------- |
-| fn	| TRUE| 	Event reception handler| 
+| fn	| TRUE| 	Event reception handler|
 
 
 **Return Parameter**
@@ -3638,18 +3638,18 @@ JMessage#onMutiUnreadMsgUpdate(fn)
 
 **Request Parameter**
 
-| KEY	| REQUIRE	| DESCRIPTION| 
+| KEY	| REQUIRE	| DESCRIPTION|
 | ---- | ------- | ----------- |
-| fn	| TRUE	| Event reception handler| 
+| fn	| TRUE	| Event reception handler|
 
 **Return Parameter**
 
-| KEY| 	DESCRIPTION| 
+| KEY| 	DESCRIPTION|
 | -------- | ----------------------- |
-| type	| 3 single chat, 4 group chat| 
-| gid	| Group id , type=4 is valid| 
-| appkey	| Appkey of target user, type=3 is valid| 
-| username	| Username of target user,type=3 is valid| 
+| type	| 3 single chat, 4 group chat|
+| gid	| Group id , type=4 is valid|
+| appkey	| Appkey of target user, type=3 is valid|
+| username	| Username of target user,type=3 is valid|
 
 **Example**
 
@@ -3672,20 +3672,20 @@ JMessage#onTransMsgRec(fn)
 
 **Request Parameter**
 
-| KEY	| REQUIRE	| DESCRIPTION| 
+| KEY	| REQUIRE	| DESCRIPTION|
 | ---- | ------- | ----------- |
-| fn	| TRUE| 	Monitoring handler function| 
+| fn	| TRUE| 	Monitoring handler function|
 
 **Return Parameter**
 
-| KEY	| DESCRIPTION| 
+| KEY	| DESCRIPTION|
 | ------------- | ---------------------------------------- |
-| type| 	3: transparent transmission of single chat messages, 4: transparent transmission of group chat messages, 5: transparent | | transmission of messages on online devices| 
-| gid| 	Group id , type=4 is valid| 
-| from_appkey	| Appkey of target user, type=3 is valid| 
-| from_username| 	Username of target user, type=3 is valid| 
-| platform| 	Target platforms: all | android | ios | pc, type=5 is valid| 
-| cmd	| Transparent transmission of information| 
+| type| 	3: transparent transmission of single chat messages, 4: transparent transmission of group chat messages, 5: transparent | | transmission of messages on online devices|
+| gid| 	Group id , type=4 is valid|
+| from_appkey	| Appkey of target user, type=3 is valid|
+| from_username| 	Username of target user, type=3 is valid|
+| platform| 	Target platforms: all | android | ios | pc, type=5 is valid|
+| cmd	| Transparent transmission of information|
 
 **Example**
 
@@ -3708,18 +3708,18 @@ JMessage#onRoomMsg(fn)
 
 **Request Parameter**
 
-| KEY| 	REQUIRE	| DESCRIPTION| 
+| KEY| 	REQUIRE	| DESCRIPTION|
 | ---- | ------- | ----------- |
-| fn| 	TRUE| 	Message reception handler| 
+| fn| 	TRUE| 	Message reception handler|
 
 **Array of returned messages**
 
-| KEY| 	DESCRIPTION| 
+| KEY| 	DESCRIPTION|
 | -------- | ---------------------------------------- |
-| room_id	| Chat room id| 
-| msg_id	| Message ID| 
-| ctime_ms| 	Message generation time, milliseconds| 
-| content	| [Message body](https://docs.jiguang.cn/jmessage/advanced/im_message_protocol/)| 
+| room_id	| Chat room id|
+| msg_id	| Message ID|
+| ctime_ms| 	Message generation time, milliseconds|
+| content	| [Message body](https://docs.jiguang.cn/jmessage/advanced/im_message_protocol/)|
 
 **Example**
 
@@ -3745,13 +3745,13 @@ JMessage#sendSingleMsg()
 
 **Request Parameter**
 
-| KEY| 	REQUIRE| 	DESCRIPTION| 
+| KEY| 	REQUIRE| 	DESCRIPTION|
 | --------------- | ------- | --------------------- |
-| target_username	| TRUE	Username of message receiver| 
-| target_nickname	| TRUE	Nickname of message receiver| 
-| content	| TRUE| 	Message text| 
-| extras	| FALSE	| Additional fields, dictionary type| 
-| appkey	| FALSE	| Appkey of target app is required when queried across applications.| 
+| target_username	| TRUE	Username of message receiver|
+| target_nickname	| TRUE	Nickname of message receiver|
+| content	| TRUE| 	Message text|
+| extras	| FALSE	| Additional fields, dictionary type|
+| appkey	| FALSE	| Appkey of target app is required when queried across applications.|
 
 Appkey is the target appkey and similar with other interfaces		
 
