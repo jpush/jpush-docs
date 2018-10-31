@@ -1,5 +1,27 @@
 #最近更新
 
+##JVerification iOS SDK v1.0.1
+
+**更新时间**
+
+* 2018-10-31
+
+**Change Log**
+
+* 修复已知问题
+
+**升级建议**
+
+* 建议升级
+
+**升级指南**
+
++ 首先解压您获取到的zip压缩包
+
++ 更新库文件
+    + 打开libs文件夹
+    + 用jverification-ios-v1.x.x.a 替换项目中原有的极光认证sdk的文件
+
 ##JVerification Android SDK v1.0.1
 
 **更新时间**
