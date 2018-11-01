@@ -27,44 +27,61 @@
 
 ###添加SDK到工程中
 
-请在自己的工程中导入libs文件夹下的SDK文件:
+**选择 1: Cocoapods 导入**
 
-* jcore-ios-x.x.x.a  jcore版本 1.2.3及其以上
-* jverification-ios-x.x.x.a  jssp 版本1.0.0
-* account_verify_sdk_core.framework
-* EAccountSDK.framework
-* TYRZNoUISDK.framework
-* JVERIFICATIONService.h
++ 通过 Cocoapods 下载地址：
 
-###为工程添加相应的Frameworks
+~~~
+    pod 'JVerification'
+~~~
 
-需要为项目添加的Frameworks如下
+注：如果无法导入最新版本，请执行 pod repo update master 这个命令来升级本机的 pod 库，然后重新 pod 'JVerification'
 
-* AdSupport.framework
-* CoreLocation.framework
-* CFNetwork.framework
-* CoreFoundation.framework
-* libresolv.tbd
-* libz.tbd
-* CoreTelephony.framework
-* SystemConfiguration.framework
-* Security.framework
-* CoreGraphics.framework
-* libsqlite3.tbd
-* MobileCoreServices.framework
-* account_verify_sdk_core.framework
-* EAccountSDK.framework
-* TYRZNoUISDK.framework
-* jcore-ios-x.x.x.a  jcore版本 1.2.3及其以上
-* jverification-ios-x.x.x.a  jverification 版本1.0.0
++ 如果需要安装指定版本则使用以下方式（以1.0.1版本为例）：
+
+~~~
+    pod 'JVerification', '1.0.1'
+~~~
+
+**选择 2：手动导入**
+
++ 在极光官网下载最新 SDK
++ 请在自己的工程中导入libs文件夹下的SDK文件:
+
+    * jcore-ios-x.x.x.a  jcore版本 1.2.3及其以上
+    * jverification-ios-x.x.x.a
+    * account_verify_sdk_core.framework
+    * EAccountSDK.framework
+    * TYRZNoUISDK.framework
+    * JVERIFICATIONService.h
+
++ 为工程添加相应的Frameworks，需要为项目添加的Frameworks如下
+
+    * AdSupport.framework
+    * CoreLocation.framework
+    * CFNetwork.framework
+    * CoreFoundation.framework
+    * libresolv.tbd
+    * libz.tbd
+    * CoreTelephony.framework
+    * SystemConfiguration.framework
+    * Security.framework
+    * CoreGraphics.framework
+    * libsqlite3.tbd
+    * MobileCoreServices.framework
+    * account_verify_sdk_core.framework
+    * EAccountSDK.framework
+    * TYRZNoUISDK.framework
+    * jcore-ios-x.x.x.a  jcore版本 1.2.3及其以上
+    * jverification-ios-x.x.x.a
 
 ##接入代码
 
 请将以下代码添加到引用JAuthHelper.h头文件的的相关类中
 
 ~~~
-	//引入JVERIFICATIONService.h头文件
-	import "JVERIFICATIONService.h"
+    //引入JVERIFICATIONService.h头文件
+		import "JVERIFICATIONService.h"
 ~~~
 
 接入的JVerification SDK的应用，必须先初始化JAuthHelper,否则将会无法正常使用，请将以下代码添加到合适的位置
