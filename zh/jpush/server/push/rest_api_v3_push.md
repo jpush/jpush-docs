@@ -132,6 +132,10 @@ HTTP Header（头）里加一个字段（Key/Value 对）：
             "alert": "Hi, JPush!",
             "title": "Send to Android",
             "builder_id": 1,
+            "large_icon": "http://www.jiguang.cn/largeIcon.jpg",
+            "intent": {
+                "url": "intent:#Intent;component=com.jiguang.push/com.example.jpushdemo.SettingActivity;end",
+            },
             "extras": {
                 "newsid": 321
             }
@@ -468,6 +472,21 @@ Android 平台上的通知，JPush SDK 按照一定的通知栏样式展示。
 			<td>扩展字段</td>
 			<td>这里自定义 JSON 格式的 Key / Value 信息，以供业务使用。</td>
 		</tr>
+		<tr >
+			<td>large_icon</td>
+			<td>string</td>
+			<td>可选</td>
+			<td>通知栏大图标</td>
+			<td>图标路径可以是以http或https开头的网络图片，如：http:jiguang.cn/logo.png 
+也可以是位于drawable资源文件夹的图标路径，如：R.drawable.lg_icon     。</td>
+		</tr>
+		<tr >
+			<td>intent</td>
+			<td>JSON Object</td>
+			<td>可选</td>
+			<td>指定跳转页面</td>
+			<td>使用 intent 里的 url 指定点击通知栏后跳转的目标页面。</td>
+		</tr>
 	</table>
 </div>
 
@@ -487,6 +506,10 @@ Android 平台上的通知，JPush SDK 按照一定的通知栏样式展示。
 			 "big_pic_path":"picture url",
 			 "priority":0, // -2~2
 			 "category":"category str",
+			 "large_icon": "http://www.jiguang.cn/largeIcon.jpg",
+           "intent": {
+                "url": "intent:#Intent;component=com.jiguang.push/com.example.jpushdemo.SettingActivity;end",
+            },
 			 "extras" : {
 				  "news_id" : 134, 
 				  "my_key" : "a value"
