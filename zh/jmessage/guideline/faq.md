@@ -178,5 +178,10 @@ JMessage SDK 支持 emoji 表情发送。
 ## Demo的UI可以修改吗？
 可以修改，JMessage提供的是SDK和接口层的功能，界面可以任意自由实现，Demo  UI 仅供参考并支持修改和重新设计。
 
+<br/>
+## Android通知栏小图标可以自定义吗？
+可以自定义，在上层项目的res/drawable-xxx/目录下，提供一个名为jmessage_notification_icon.png的文件作为自定义图标，如果不存在此名称的文件，sdk会使用默认应用icon作为通知栏小图标,
+具体可以参考sdk demo。
+
 
 

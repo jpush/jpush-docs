@@ -589,7 +589,7 @@ JMessage#addSingleReceiptReport()
    // 接收方收到需要消息回执的消息，阅读后进行消息回执操作
    JIM.addSingleReceiptReport({
                       'username' : '<用户 name>',
-                      'msg_id' : '<[msg_ids]>'
+                      'msg_ids' : '<[msg_ids]>'
                      }).onSuccess(function(data,msg_ids){
                        // data.code 返回码
                        // data.appkey 目标 appkey
