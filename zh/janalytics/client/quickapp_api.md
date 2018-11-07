@@ -308,6 +308,7 @@ this.$app.JAnalyticsInterface.identifyAccount(this, account, 	new function(code,
 |1101|	the value of $email is NOT email address	|邮箱格式校验
 |1101	|the key={key} in extra is invalid	|自定义属性key不能为空，不能使用极光内部namespace(符号$)
 |1101	|the value of {key} in extra should be String or Number	|自定义属性value只能为字符串或数字类型或null类型
+
 如果要解绑当前用户信息，调用JAnalyticsInterface.detachAccount(context, callback);
 调用示例：
 
