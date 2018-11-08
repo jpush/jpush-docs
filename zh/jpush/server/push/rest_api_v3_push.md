@@ -478,7 +478,7 @@ Android 平台上的通知，JPush SDK 按照一定的通知栏样式展示。
 			<td>可选</td>
 			<td>通知栏大图标</td>
 			<td>图标路径可以是以http或https开头的网络图片，如：http:jiguang.cn/logo.png 
-也可以是位于drawable资源文件夹的图标路径，如：R.drawable.lg_icon     。</td>
+也可以是位于drawable资源文件夹的图标路径，如：R.drawable.lg_icon； 图标大小不超过 30 k 。</td>
 		</tr>
 		<tr >
 			<td>intent</td>
