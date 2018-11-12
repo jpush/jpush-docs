@@ -88,7 +88,7 @@
 <div class="panel-heading">极光 IM 文档</div>
 <div class="panel-body">
     <ul>
-    <li><a href="/jmessage/client/im_sdk_android/">Android IM SDK 开发指南</a></li>
+    <li><a href="/jmessage/client/android_sdk/basic/">Android IM SDK 开发指南</a></li>
     <li><a href="/jmessage/client/jmessage_android_guide/">Android IM SDK 集成指南</a></li>
     <li><a href="https://docs.jiguang.cn/jmessage/client/im_android_api_docs/">Android IM API</a></li>
     </ul>
