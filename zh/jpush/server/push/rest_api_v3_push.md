@@ -477,8 +477,8 @@ Android 平台上的通知，JPush SDK 按照一定的通知栏样式展示。
 			<td>string</td>
 			<td>可选</td>
 			<td>通知栏大图标</td>
-			<td>图标路径可以是以http或https开头的网络图片，如：http:jiguang.cn/logo.png 
-也可以是位于drawable资源文件夹的图标路径，如：R.drawable.lg_icon； 图标大小不超过 30 k 。</td>
+			<td>图标路径可以是以http或https开头的网络图片，如：http:jiguang.cn/logo.png ,图标大小不超过 30 k;
+也可以是位于drawable资源文件夹的图标路径，如：R.drawable.lg_icon； </td>
 		</tr>
 		<tr >
 			<td>intent</td>
@@ -543,10 +543,11 @@ iOS 平台上 APNs 通知结构。
 		</tr>
 		<tr >
 			<td>sound</td>
-			<td>string</td>
+			<td>string 或 JSON Object</td>
 			<td>可选</td>
-			<td width="20%">通知提示声音</td>
-			<td>如果无此字段，则此消息无声音提示；有此字段，如果找到了指定的声音就播放该声音，否则播放默认声音，如果此字段为空字符串，iOS 7 为默认声音，iOS 8 及以上系统为无声音。说明：JPush 官方 SDK 会默认填充声音字段，提供另外的方法关闭声音，详情查看各 SDK 的源码。</td>
+			<td width="20%">通知提示声音或警告通知</td>
+			<td>普通通知： string类型，如果无此字段，则此消息无声音提示；有此字段，如果找到了指定的声音就播放该声音，否则播放默认声音，如果此字段为空字符串，iOS 7 为默认声音，iOS 8 及以上系统为无声音。说明：JPush 官方 SDK 会默认填充声音字段，提供另外的方法关闭声音，详情查看各 SDK 的源码。<br>
+			告警通知： JSON Object ,支持官方定义的<a href="https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/generating_a_remote_notification#2990112"> payload</a> 结构，在该结构中包含 critical 、name 和 volume 等官方支持的 key .</td>
 		</tr>
 		<tr >
 			<td>badge</td>
