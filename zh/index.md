@@ -153,11 +153,11 @@
 <div class="panel-body">
     <ul>
     <li><a href="/jverification/guideline/intro/">产品介绍</a></li>
-    <li><a href="/jverification/client/android_sdk/">Android SDK 集成指南</a></li>
+    <li><a href="/jverification/client/android_guide/">Android SDK 集成指南</a></li>
     <li><a href="/jverification/client/android_api/">Android SDK API</a></li>
     </ul>
     <ul>
-    <li><a href="/jverification/client/ios_sdk/">iOS SDK 集成指南</a></li>
+    <li><a href="/jverification/client/ios_guide/">iOS SDK 集成指南</a></li>
     <li><a href="/jverification/client/ios_api/">iOS SDK API</a></li>
     </ul>
 </div>
