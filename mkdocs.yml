@@ -198,6 +198,7 @@ pages:
     - 'iOS SDK 概述': 'jverification/client/ios_sdk.md'
     - 'iOS SDK 集成指南': 'jverification/client/ios_guide.md'
     - 'iOS SDK API': 'jverification/client/ios_api.md'
+  - 客户端集成插件: 'jverification/client/client_plugins.md'
   - 最近更新: 'jverification/updates.md'
   - 资源下载: 'jverification/resources.md'
 

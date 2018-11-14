@@ -46,16 +46,7 @@
             <div class="caption">
                 <h4>iOS Demo</h4>
                 <a href="../client/ios_guide">iOS SDK集成指南</a>
-                <br>
-                <br>
-                <br>
-                <br>
-                <p>敬请期待</p>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
+                <p><img src="../image/qr_code_iOS.png" alt="iOS"></p>
             </div>
         </div>
     </div>
