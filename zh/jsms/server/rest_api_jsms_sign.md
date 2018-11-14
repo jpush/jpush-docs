@@ -33,8 +33,10 @@ Authorization: Basic base64_auth_string
 curl -X POST \
   https://api.sms.jpush.cn/v1/sign \
   -u '7d431e42dfa6a6d693ac2d04:5e987ac6d2e04d95a9d8f0d1' \
-  -H 'content-type: multipart/form-data;' \
+  -H 'content-type: multipart/form-data' \
   -F 'sign=申请的签名'
+  -F 'type=签名类型'
+  -F 'remark=申请说明'
 
 ```
 
@@ -43,10 +45,9 @@ curl -X POST \
 |KEY|REQUIRE|DESCRIPTION|
 |----|----|----|
 |sign|TRUE|签名内容|
-|image0|FALSE|签名审核附带图片|
-|image1|FALSE|签名审核附带图片|
-|image2|FALSE|签名审核附带图片|
-|image3|FALSE|签名审核附带图片|
+|type|FALSE|签名类型，填写数字代号即可<br>1:公司名称全称或简称： 需提供营业执照<br>2:工信部备案的网站全称或简称： 需提供主办单位的营业执照<br>3:APP应用全称或简称： 需提供任一应用商店的下载链接及开发者的营业执照<br>4:公众号或小程序名称的全称或简称： 需提供公众号（小程序）主体营业执照<br>5:电商平台店铺全称或简称： 需提供经营者营业执照<br>6:商标名称全称或简称： 需提供商标注册证书<br>7:其他： 需提供所有者营业执照|
+|image0|FALSE|请提供签名相关的资质证件图片|
+|remark|FALSE|请简略描述您的业务使用场景，不超过100个字|
 
 ### 返回示例
 
@@ -84,9 +85,10 @@ curl -X POST \
 curl -X POST \
   https://api.sms.jpush.cn/v1/sign/37582 \
   -u '7d431e42dfa6a6d693ac2d04:5e987ac6d2e04d95a9d8f0d1' \
-  -H 'content-type: multipart/form-data;' \
+  -H 'content-type: multipart/form-data' \
   -F 'sign=修改的签名'
-
+  -F 'type=签名类型'
+  -F 'remark=业务场景说明'
 ```
 
 #### 参数
@@ -94,10 +96,9 @@ curl -X POST \
 |KEY|REQUIRE|DESCRIPTION|
 |----|----|----|
 |sign|TRUE|签名内容|
-|image0|FALSE|签名审核附带图片|
-|image1|FALSE|签名审核附带图片|
-|image2|FALSE|签名审核附带图片|
-|image3|FALSE|签名审核附带图片|
+|type|FALSE|签名类型，填写数字代号即可<br>1:公司名称全称或简称： 需提供营业执照<br>2:工信部备案的网站全称或简称： 需提供主办单位的营业执照<br>3:APP应用全称或简称： 需提供任一应用商店的下载链接及开发者的营业执照<br>4:公众号或小程序名称的全称或简称： 需提供公众号（小程序）主体营业执照<br>5:电商平台店铺全称或简称： 需提供经营者营业执照<br>6:商标名称全称或简称： 需提供商标注册证书<br>7:其他： 需提供所有者营业执照|
+|image0|FALSE|请提供签名相关的资质证件图片|
+|remark|FALSE|请简略描述您的业务使用场景，不超过100个字|
 
 ### 返回示例
 
@@ -116,7 +117,7 @@ curl -X POST \
         "message": "*****"
     }
 }
-```  
+```
 
 
 <br/>  
@@ -144,6 +145,7 @@ curl --insecure -X GET -v https://api.sms.jpush.cn/v1/sign/37582 -H "Content-Typ
     "sign_id": 37582,
     "sign": "极光推送",
     "status": 1, //签名审核状态,1为通过，2为未通过
+    "is_default": 1, //签名使用状态，1为默认签名
     "use_status": 1 //签名使用状态，1为使用中，0为未使用
 }
 ```
@@ -199,20 +201,19 @@ HTTP/1.0 200
 <br/>
 ## 返回码
 |HTTP CODE| CODE| MESSAGE  | DESC|
-|:--- |:--- |:--- |:----
-|200|50000|success|请求成功
-|400|50001|missing auth|auth 为空
-|401|50002|auth failed|auth 鉴权失败
-|400|50003|missing body|body 为空
-|403|50007|invalid body|body 无效
-|403|50008|no sms code auth|未开通短信业务
-|404|50016|api not found|API 不存在
-|415|50017|media not supported|媒体类型不支持
-|405|50018|request method not support|请求方法不支持
+|:--- |:--- |:--- |:----|
+|200|50000|success|请求成功|
+|400|50001|missing auth|auth 为空|
+|401|50002|auth failed|auth 鉴权失败|
+|400|50003|missing body|body 为空|
+|403|50007|invalid body|body 无效|
+|403|50008|no sms code auth|未开通短信业务|
+|404|50016|api not found|API 不存在|
+|415|50017|media not supported|媒体类型不支持|
+|405|50018|request method not support|请求方法不支持|
 |500|50019|server error|服务端异常|
 |403|50101|invalid image|非法的图片|
 |403|50102|invalid sign id|非法的签名 ID|
 |403|50103|other signatures in the audit|已经存在其他待审核的签名，不能提交|
 |403|50104|invalid signature|非法签名内容|
-|403|50105|the signature in use cannot be deleted|使用中签名不允许删除|
-
+|403|50105|default signature cannot be deleted|默认签名不能删除|

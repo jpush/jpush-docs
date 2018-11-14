@@ -42,10 +42,10 @@ curl --insecure -X POST -v https://api.sms.jpush.cn/v1/templates -H "Content-Typ
 
 |KEY|REQUIRE|DESCRIPTION|
 |----|----|----|
-|template|TRUE|模板内容，注意：根据运营商规定下发短信的内容不能超过350字符|
+|template|TRUE|模板内容<br>1. 短信内容不超过350个字，短信内容包括：签名、正文、退订方式（仅营销短信），创建模版时请预留签名等文字的字数<br>2. 验证码模版仅支持设置一个变量，且变量名必须为 code<br>3. 通知、营销短信中，若含有链接变量，变量名必须为 url ，为避免短信发送时因进入人工审核而导致发送延迟，请在 remark 参数中填写链接以报备|
 |type|TRUE|模板类型，1为验证码类，2为通知类，3为营销类|
-|ttl|FALSE|验证码有效期，单位为秒（当模板类型为1时必传）|
-|remark|FALSE|备注，长度限制为500字符|
+|ttl|FALSE|验证码有效期，必须大于 0 且不超过 86400 ，单位为秒（当模板类型为1时必传）|
+|remark|FALSE|请简略描述正文模版的发送场景及发送对象，不超过100字|
 
 ### 返回示例
 
@@ -95,10 +95,10 @@ curl --insecure -X PUT -v https://api.sms.jpush.cn/v1/templates/37582 -H "Conten
 |KEY|REQUIRE|DESCRIPTION|
 |----|----|----|
 |temp_id|TRUE|模板ID|
-|template|TRUE|模板内容，注意：根据运营商规定下发短信的内容不能超过350字符|
+|template|TRUE|模板内容<br>1. 短信内容不超过350个字，短信内容包括：签名、正文、退订方式（仅营销短信），创建模版时请预留签名等文字的字数<br>2. 验证码模版仅支持设置一个变量，且变量名必须为 code<br>3. 通知、营销短信中，若含有链接变量，变量名必须为 url ，为避免短信发送时因进入人工审核而导致发送延迟，请在 remark 参数中填写链接以报备|
 |type|TRUE|模板类型，1为验证码类，2为通知类，3为营销类|
-|ttl|FALSE|验证码有效期，单位为秒（当模板类型为1时必传）|
-|remark|FALSE|备注，长度限制为500字符|
+|ttl|FALSE|验证码有效期，必须大于 0 且不超过 86400 ，单位为秒（当模板类型为1时必传）|
+|remark|FALSE|请简略描述正文模版的发送场景及发送对象，不超过100字|
 
 ### 返回示例
 
@@ -117,7 +117,7 @@ curl --insecure -X PUT -v https://api.sms.jpush.cn/v1/templates/37582 -H "Conten
         "message": "*****"
     }
 }
-```  
+```
 
 
 <br/>  
@@ -202,24 +202,26 @@ HTTP/1.0 200
 <br/>
 ## 返回码
 |HTTP CODE| CODE| MESSAGE  | DESC|
-|:--- |:--- |:--- |:----
-|200|50000|success|请求成功
-|400|50001|missing auth|auth 为空
-|401|50002|auth failed|auth 鉴权失败
-|400|50003|missing body|body 为空
-|403|50007|invalid body|body 无效
-|403|50008|no sms code auth|未开通短信业务
-|403|50013|invalid temp_id|模版ID 无效
-|404|50016|api not found|API 不存在
-|415|50017|media not supported|媒体类型不支持
-|405|50018|request method not support|请求方法不支持
+|:--- |:--- |:--- |:----|
+|200|50000|success|请求成功|
+|400|50001|missing auth|auth 为空|
+|401|50002|auth failed|auth 鉴权失败|
+|400|50003|missing body|body 为空|
+|403|50007|invalid body|body 无效|
+|403|50008|no sms code auth|未开通短信业务|
+|403|50013|invalid temp_id|模版ID 无效|
+|404|50016|api not found|API 不存在|
+|415|50017|media not supported|媒体类型不支持|
+|405|50018|request method not support|请求方法不支持|
 |500|50019|server error|服务端异常|
 |403|50025|wrong template type|错误的模板类型|
 |403|50037|has black word|模板内容含有敏感词|
-|403|50041|invalid ttl value|ttl无效，必须大于0并且不超过86400秒（24小时）|
+|403|50041|invalid ttl value|验证码有效期无效，ttl 参数值必须大于 0 并且不超过 86400 |
 |403|50042|template is empty|模板内容为空|
-|403|50043|template too long|模板内容过长，含签名长度限制为350字符|
+|403|50043|template too long|模板内容过长，短信内容不超过350个字，短信内容包括：签名、正文、退订方式（仅营销短信），创建模版时请预留签名等文字的字数|
 |403|50044|template parameter invalid|模板参数无效|
 |403|50045|remark too long|备注内容过长，长度限制为500字符|
 |403|50046|signature not set|该应用未设置签名，请先设置签名|
 |403|50047|modify template not allow|只有审核不通过状态的模板才允许修改|
+|403|50052|template contains special symbol|模板不能含有特殊符号，如【】|
+|403|50053|special template parameter need extra remark for confirmation|模板中存在链接变量，请在 remark 参数中填写链接以报备，避免短信发送时因进入人工审核而导致发送延迟|
