@@ -45,7 +45,7 @@ Step4：点击选择需要使用的回调接口
 |----|----|----|
 |msgId|	String| API 调用的时候返回的 msg_id|
 |status| Integer| 发送状态返回码|
-|receiveTime| Date| 短信送达时间|
+|receiveTime| Timestamp| 短信送达时间|
 |phone|	String| 短信送达手机号|
 
 ###发送状态返回码

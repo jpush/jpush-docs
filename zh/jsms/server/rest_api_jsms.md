@@ -33,7 +33,7 @@ Authorization: Basic base64_auth_string
 
 ```
 curl --insecure -X POST -v https://api.sms.jpush.cn/v1/codes -H "Content-Type: application/json" \
--u "7d431e42dfa6a6d693ac2d04:5e987ac6d2e04d95a9d8f0d1" -d '{"mobile":"xxxxxxxxxxx","temp_id":*}'
+-u "7d431e42dfa6a6d693ac2d04:5e987ac6d2e04d95a9d8f0d1" -d '{"mobile":"xxxxxxxxxxx","sign_id":*,"temp_id":*}'
 ```
 
 #### 参数
@@ -41,6 +41,7 @@ curl --insecure -X POST -v https://api.sms.jpush.cn/v1/codes -H "Content-Type: a
 |KEY|REQUIRE|DESCRIPTION|
 |----|----|----|
 |mobile|TRUE|手机号码|
+|sign_id|FALSE|签名ID，该字段为空则使用应用默认签名|
 |temp_id|TRUE|模板ID|
 
 ### 返回示例
@@ -138,7 +139,7 @@ curl --insecure -X POST -v https://api.sms.jpush.cn/v1/codes/288193860302/valid 
     "is_valid": true
 }
 ```
-    
+
 #### 验证不通过
 
 ```
@@ -165,7 +166,7 @@ curl --insecure -X POST -v https://api.sms.jpush.cn/v1/codes/288193860302/valid 
 
 ```
 curl --insecure -X POST -v https://api.sms.jpush.cn/v1/messages -H "Content-Type: application/json" -u "7d431e42dfa6a6d693ac2d04:5e987ac6d2e04d95a9d8f0d1" \
--d '{"mobile":"xxxxxxxxxxxxxx","temp_id":1,"temp_para":{"xxxx":"xxxx"}}'
+-d '{"mobile":"xxxxxxxxxxxxxx","sign_id":*,"temp_id":1,"temp_para":{"xxxx":"xxxx"}}'
 ```
 
 #### 参数
@@ -173,6 +174,7 @@ curl --insecure -X POST -v https://api.sms.jpush.cn/v1/messages -H "Content-Type
 |KEY|REQUIRE|DESCRIPTION|
 |----|----|----|
 |mobile|TRUE|手机号码|
+|sign_id|FALSE|签名ID，该字段为空则使用应用默认签名|
 |temp_id|TRUE|模板ID|
 |temp_para|FALSE|模板参数,需要替换的参数名和 value 的键值对|
 
@@ -210,6 +212,7 @@ curl --insecure -X POST -v https://api.sms.jpush.cn/v1/messages -H "Content-Type
 ```
 curl --insecure -X POST -v https://api.sms.jpush.cn/v1/messages/batch -H "Content-Type: application/json" -u "7d431e42dfa6a6d693ac2d04:5e987ac6d2e04d95a9d8f0d1" -d \
 '{
+    "sign_id": *,
     "temp_id": 1250,
 	"tag":"标签",
     "recipients": [
@@ -233,11 +236,12 @@ curl --insecure -X POST -v https://api.sms.jpush.cn/v1/messages/batch -H "Conten
 
 |KEY|REQUIRE|DESCRIPTION|
 |----|----|----|
+|sign_id|FALSE|签名ID，该字段为空则使用应用默认签名|
 |temp_id|TRUE|模板ID|
+|tag|FALSE|标签|
 |recipients|TRUE|接收者列表|
 |recipients.mobile|TRUE|手机号码|
 |recipients.temp_para|FALSE|模板参数,需要替换的参数名和 value 的键值对|
-|tag|FALSE|标签|
 
 ### 返回示例
 
@@ -279,29 +283,29 @@ curl --insecure -X POST -v https://api.sms.jpush.cn/v1/messages/batch -H "Conten
 <br/>
 ## 返回码
 |HTTP CODE| CODE| MESSAGE  | DESC|
-|:--- |:--- |:--- |:----
-|200|50000|success|请求成功
-|400|50001|missing auth|auth 为空
-|401|50002|auth failed|auth 鉴权失败
-|400|50003|missing body|body 为空
-|400|50004|missing mobile|手机号码为空
-|400|50005|missing  temp_id|模版ID 为空
-|403|50006|invalid mobile|手机号码无效
-|403|50007|invalid body|body 无效
-|403|50008|no sms code auth|未开通短信业务
-|403|50009|out of freq|下发超频
-|403|50010|invalid code|验证码无效
-|403|50011|expired code|验证码过期
-|403|50012|verified code|验证码已验证通过
-|403|50013|invalid temp_id|模版ID 无效
-|403|50014|no money|可发短信余量不足
-|400|50015|missing code|验证码为空
-|404|50016|api not found|API 不存在
-|415|50017|media not supported|媒体类型不支持
-|405|50018|request method not support|请求方法不支持
+|:--- |:--- |:--- |:----|
+|200|50000|success|请求成功|
+|400|50001|missing auth|auth 为空|
+|401|50002|auth failed|auth 鉴权失败|
+|400|50003|missing body|body 为空|
+|400|50004|missing mobile|手机号码为空|
+|400|50005|missing  temp_id|模版ID 为空|
+|403|50006|invalid mobile|手机号码无效|
+|403|50007|invalid body|body 无效|
+|403|50008|no sms code auth|未开通短信业务|
+|403|50009|out of freq|下发超频|
+|403|50010|invalid code|验证码无效|
+|403|50011|expired code|验证码过期|
+|403|50012|verified code|验证码已验证通过|
+|403|50013|invalid temp_id|模版ID 无效|
+|403|50014|no money|可发短信余量不足|
+|400|50015|missing code|验证码为空|
+|404|50016|api not found|API 不存在|
+|415|50017|media not supported|媒体类型不支持|
+|405|50018|request method not support|请求方法不支持|
 |500|50019|server error|服务端异常|
-|403|50020|template auditing|模板审核中
-|403|50021|template not pass|模板审核未通过
+|403|50020|template auditing|模板审核中|
+|403|50021|template not pass|模板审核未通过|
 |403|50022|parameters not all replaced|模板中参数未全部替换|
 |403|50023|parameters is empty|参数为空|
 |403|50024|unsubscribed mobile|手机号码已退订|
@@ -313,7 +317,8 @@ curl --insecure -X POST -v https://api.sms.jpush.cn/v1/messages/batch -H "Conten
 |403|50035|illegal IP|非法 IP 请求|
 |403|50036|app in black|应用被列为黑名单|
 |403|50037|has black word|短信内容存在敏感词汇|
-|403|50038|invalid code length|语音验证码长度错误|
+|403|50038|invalid content length|短信内容长度错误，文本短信长度不超过350个字，语音短信验证码长度4～8数字|
 |403|50039|invalid code type|语音验证码内容错误，验证码仅支持数字|
 |403|50040|invalid voice language type|语音验证码播报语言类型错误|
 |403|50041|invalid ttl value|验证码有效期错误|
+|403|50054|content contains special symbol|短信正文不能含有特殊符号，如【】|
