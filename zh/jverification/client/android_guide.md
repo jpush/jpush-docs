@@ -31,7 +31,7 @@
 + libs/xxx/xx.so
     + sdk需要用的so文件
 + libs/jverification-android-sdk_v1.x.x.jar
-    + SDK jverification 开发包
+    + SDK jverification 开发包
 + example
     + 是一个完整的 Android 项目，通过这个演示了 JVerification SDK 的基本用法，可以用来做参考。
 
