@@ -15,11 +15,11 @@
 * jverification-iOS-x.x.x.a静态库
 * jcore-ios-x.x.x.a静态库
 * 认证入口JVERIFICATIONService.h头文件
-* 一个完整的iOS Demo项目，通过这个演示了JVerification SDK的基本用法，可以用来做参考
+* 一个完整的iOS Demo项目，通过这个演示了JVerification SDK的基本用法，可以用来做参考
 
 ##集成方式
 
-目前SDK只支持iOS 7以上版本的手机系统。参考：[iOS SDK 集成指南](../ios_guide)
+目前SDK只支持iOS 7以上版本的手机系统。参考：[iOS SDK 集成指南](../ios_guide)
 
 ##接口说明
 
@@ -35,4 +35,4 @@
 为了更快速的解决问题，在寻求帮助时，请提供下列信息：
 
 * 提供appKey
-* 如果是SDK问题请提供对应的SDK版本和完整的日志记录
+* 如果是SDK问题请提供对应的SDK版本和完整的日志记录

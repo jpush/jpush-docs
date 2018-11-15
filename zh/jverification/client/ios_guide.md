@@ -4,7 +4,7 @@
 
 本文是JVerification iOS SDK 标准的集成指南文档。
 
-匹配的 SDK 版本为：v1.0.0及以后版本。
+匹配的 SDK 版本为：v1.1.0及以后版本。
 
 + 如果您想要快速地测试、请参考本文在几分钟内跑通Demo。
 + 极光认证文档网站上，有相关的所有指南、API、教程等全部的文档。包括本文档的更新版本，都会及时地发布到该网站上。
@@ -35,7 +35,7 @@
     pod 'JVerification'
 ~~~
 
-注：如果无法导入最新版本，请执行 pod repo update master 这个命令来升级本机的 pod 库，然后重新 pod 'JVerification'
+注：如果无法导入最新版本，请执行 pod repo update master 这个命令来升级本机的 pod 库，然后重新 pod 'JVerification'
 
 + 如果需要安装指定版本则使用以下方式（以1.0.1版本为例）：
 

@@ -12,7 +12,7 @@
 
 供下载的JVerification Android SDK压缩包，一般包含以下几部分：
 
-+ AndroidManifest.xml
++ AndroidManifest.xml
     + 客户端嵌入SDK参考的配置文件
 + libs/jcore-android_1.x.x.jar
     + sdk 核心包
@@ -26,7 +26,7 @@
 
 ##集成方式
 
-目前SDK只支持Android 2.3或以上版本的手机系统。参考：[Android SDK 集成指南](../android_guide)
+目前SDK只支持Android 2.3或以上版本的手机系统。参考：[Android SDK 集成指南](../android_guide)
 
 ##接口说明
 
