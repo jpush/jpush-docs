@@ -51,7 +51,6 @@
     * jcore-ios-x.x.x.a  jcore版本 1.2.3及其以上
     * jverification-ios-x.x.x.a
     * account_verify_sdk_core.framework
-    * EAccountSDK.framework
     * TYRZNoUISDK.framework
     * JVERIFICATIONService.h
 
@@ -70,7 +69,6 @@
     * libsqlite3.tbd
     * MobileCoreServices.framework
     * account_verify_sdk_core.framework
-    * EAccountSDK.framework
     * TYRZNoUISDK.framework
     * jcore-ios-x.x.x.a  jcore版本 1.2.3及其以上
     * jverification-ios-x.x.x.a
