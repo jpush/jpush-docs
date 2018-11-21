@@ -21,7 +21,7 @@
 ### 如果您初次使用极光开发者的产品
 
   1. 进入极光官网[注册开发者账号](https://www.jiguang.cn/accounts/register)；
-  2. 进入[管理控制台](https://www.jiguang.cn/dev/#/app/list)，创建应用程序，得到 AppKey（SDK与服务器端通过AppKey互相识别）；
+  2. 进入[管理控制台](https://www.jiguang.cn/dev/#/app/list)，创建应用程序，得到 AppKey（SDK与服务器端通过AppKey互相识别）；
   3. 完成[开发者认证](https://www.jiguang.cn/accounts/profile/developer_create)；
   4. 选择要开通极光认证的应用程序，在应用设置中点击左侧的［极光认证］按钮。在应用介绍中填写［应用分类］ 、［应用简介］。Android应用需要填写［应用包名］和［应用签名］，iOS应用需要填写［Bundle ID］，填写完成后点击［提交审核］，如果应用程序同时具有Android和iOS版本，需要在此页面分别提交申请；
   5. 待审核通过后，下载SDK，通过“集成指南”的帮助完成JVerification SDK集成并运行应用程序。
