@@ -27,7 +27,7 @@ Header 名称是 "Authorization", 值是 base64转换过的 "appKey:masterSecret
 你的 appKey 是 "7d431e42dfa6a6d693ac2d04", masterSecret 是 "5e987ac6d2e04d95a9d8f0d1"，则调用 Verification API v1 时，使用 curl 命令的话，是这样写：
 
 ~~~
-   curl --insecure -X POST -v https://api.verification.jpush.cn/v1/verify 
+   curl --insecure -X POST -v https://api.verification.jpush.cn/v1/web/verify 
    -H "Content-Type: application/json"
    -u "7d431e42dfa6a6d693ac2d04:5e987ac6d2e04d95a9d8f0d1"
    ...
@@ -36,7 +36,7 @@ Header 名称是 "Authorization", 值是 base64转换过的 "appKey:masterSecret
 HTTP 请求是：
 
 ~~~
-   > POST /v1/verify HTTP/1.1
+   > POST /v1/web/verify HTTP/1.1
    > Authorization: Basic N2Q0MzFlNDJkZmE2YTZkNjkzYWMyZDA0OjVlOTg3YWM2ZDJlMDRkOTVhOWQ4ZjBkMQ==
 ~~~
 
@@ -44,7 +44,7 @@ HTTP 请求是：
 
 |名称|资源|
 |---|---|
-|[发起认证API](../verify_api.md)|POST https://api.verification.jpush.cn/v1/verify|
+|[发起认证API](../verify_api.md)|POST https://api.verification.jpush.cn/v1/web/verify|
 
 
 

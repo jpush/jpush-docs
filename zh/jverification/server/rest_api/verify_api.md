@@ -6,12 +6,12 @@
 
 ##调用地址
 
-+ POST https://api.jverification.jpush.cn/v1/verify
++ POST https://api.verification.jpush.cn/v1/web/verify
 
 ##请求示例
 
 ~~~
-   curl --insecure -X POST -v https://api.jverification.jpush.cn/v1/verify -H "Content-Type: application/json" -u "e59f12dfcc5767b4eb7f4ef4:50dc155bd4009dee53bdf37b" -d '{"token":"STsid0000001542695429579Ob28vB7b0cYTI9w0GGZrv8ujUu05qZvw","phone":15813554612,"carrier":"CM","platform":"a","exID":"1234566"}'
+   curl --insecure -X POST -v https://api.verification.jpush.cn/v1/web/verify -H "Content-Type: application/json" -u "7d431e42dfa6a6d693ac2d04:5e987ac6d2e04d95a9d8f0d1" -d '{"token":"STsid0000001542695429579Ob28vB7b0cYTI9w0GGZrv8ujUu05qZvw","phone":15813554612,"carrier":"CM","platform":"a","exID":"1234566"}'
 ~~~
 
 + 请求参数
