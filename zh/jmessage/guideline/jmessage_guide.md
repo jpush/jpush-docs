@@ -141,7 +141,7 @@ App 使用 JMessage 提供的群组功能创建群组时得到的群组标识。
 
 ## 集成流程
 
-1. 在 Web 控制台上创建应用，得到 AppKey。如果之前已经使用了 JPush，可以直接延用老的 AppKey。
+1. 在 Web 控制台上创建应用，得到[appkey](../guideline/faq/#getappkey)。如果之前已经使用了 JPush，可以直接延用老的[appkey](../guideline/faq/#getappkey)。
 2. 集成客户端 SDK。
 	+ 集成 IM SDK 到 App 里。      
 	  Android 开发者请参考文档：[JMessage Android SDK 集成指南](https://docs.jiguang.cn/jmessage/client/jmessage_android_guide/)  

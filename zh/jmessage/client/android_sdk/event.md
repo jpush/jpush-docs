@@ -33,13 +33,13 @@ JMessageClient.unRegisterEventReceiver(Object receiver);
 
 可以通过定义不同类型的参数，来接收不同种类的事件。具体事件类型定义见 “事件类型” 一节
 
-#### 默认线程（子线程）模式
+#### 子线程模式（默认线程）
 ```
 public void onEvent(EventEntity event){
   //do your own business
 }
 ```
-方法体将在默认线程（子线程）中被调用， 可以用来处理耗时操作。
+方法体将在子线程中被调用， 可以用来处理耗时操作。
 
 参数定义
 

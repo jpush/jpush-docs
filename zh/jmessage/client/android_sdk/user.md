@@ -3,15 +3,11 @@
 
 ## 概述
 
-- 开发者的用户，基于 username / password 注册到 JMessage，SDK 侧可以发起注册用户，也可由服务器端批量发起注册。
-
-- 用户登录 App，也同时登录到 JMessage，登录后，就可以向其他 username 发聊天消息，也可以收到来自其他 username 的消息，或者群组消息了。用户 A 是否有权限向用户 B 发消息，由 App 逻辑自己控制。
-
-- 可选让用户把头像等用户属性更新到 JMessage。
++ 开发者应用的用户，通过username / password 注册到 JMessage后，SDK 侧可以发起注册，服务器端也可发起批量注册。+ 用户登录 App，也同时登录 JMessage。登录后可以向其他 username 发聊天消息，也可以收到来自其他 username 或者群组的消息。+ 用户 A 是否有权限向用户 B 发消息，需由开发者的App 自己控制。+ 开发者可选择将用户头像等用户信息同步更新到 JMessage。
 
 
 ### 获取用户信息
-异步从后台获取用户信息，此接口可用来获取不同appKey下用户的信息,如果appKey为空，则默认获取当前appKey下的用户信息。
+异步从后台获取用户信息，此接口可用来获取不同[appkey](../../guideline/faq/#getappkey)下用户的信息,如果appKey为空，则默认获取当前[appkey](../../guideline/faq/#getappkey)下的用户信息。
 
 ```
 JMessageClient.getUserInfo(String username, String appKey, GetUserInfoCallback callback);
@@ -139,6 +135,12 @@ JMessageClient.getNotificationFlag();
 
 + int 当前设置的通知栏的展示类型。
 
+#### 通知栏点击事件监听
+用户可以通过接受通知栏点击事件NotificationClickEvent，来实现自定义跳转，该事件如果没有接收者，点击通知栏时SDK将默认跳转到程序主界面。
+
+事件接收方法见[事件处理](./event)一节
+
+
 #### 进入单聊会话
 UI层在进入聊天会话界面时调用，设置当前正在聊天的对象，调用此接口之后，收到对应用户发来的消息时，sdk不会弹出通知栏提示。  
 同时还会清掉与该聊天对象会话的未读消息数，以及通知栏通知。  
@@ -171,13 +173,10 @@ JMessageClient.enterGroupConversation(long groupID)
 ```
 JMessageClient.exitConversation();
 ```
-#### 通知栏点击事件监听
-用户可以通过接受通知栏点击事件NotificationClickEvent，来实现自定义跳转，该事件如果没有接收者，点击通知栏时SDK将默认跳转到程序主界面。
-
-事件接收方法见[事件处理](./event)一节
 
 
-### 免打扰相关
+
+### 免打扰设置
 可以将用户/群组添加到“免打扰”列表中，收到免打扰用户/群组发过来的消息时，sdk不会弹出默认的通知提示，但[消息事件](../im_android_api_docs/cn/jpush/im/android/api/event/MessageEvent.html)照常下发。
 
 #### 获取免打扰列表

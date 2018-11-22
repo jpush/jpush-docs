@@ -1,27 +1,27 @@
 <h1>会话与消息</h1>
 
-
 ## 概述
 
-### 会话概述
+#### 会话
 
-与一个聊天对象（用户、群组、聊天室等）的整个聊天上下文我们称之为一个会话。会话是消息的载体，消息一定是从属与某个会话对象的。
+与一个聊天对象（用户、群组、聊天室等）之间的聊天。我们称之为一个会话。会话是消息的载体，消息一定是从属于某个会话对象的。
 
-### 消息概述
+#### 消息
 
-极光 IM 最核心的功能是消息功能。核心核心能力包含以下：
+极光 IM 最核心的功能是消息功能。核心能力包含以下：
 
-- 保证消息及时下发；
-- 单聊，群聊；
+- 消息的及时下发；
+- 单聊，群聊，聊天室；
 - 消息类型：文本、语音、图片、文件、位置等；
-- 用户未在线时保存离线消息；
+- 保存消息记录；
+- 用户离线时保存离线消息；
 - 基于 JPush 原有的大容量稳定的长连接、大容量消息并发能力；
 
 
 ### 本地会话管理
 
 #### 创建单聊会话
-创建单聊会话，如果本地已存在对应会话，则不会重新创建，直接返回本地会话对象。通过指定appkey，可以实现给其他appkey下的用户发消息。
+创建单聊会话时，如果本地已存在对应会话，则不会重复创建，将直接返回本地会话对象。通过指定appkey，可以实现给其他appkey下的用户发消息。
 
 ```
 	Conversation.createSingleConversation(String username, String appkey)
@@ -363,7 +363,6 @@ JMessageClient.getAllUnReadMsgCount();
     JMessageClient.createGroupVideoMessage(long groupID, Bitmap thumbImage, String thumbFormat, File videoFile, String videoFileName, int duration) throws IOException
 ```
 
-
 ### 消息发送结果监听
 消息发送完成后，会回调这里的接口通知上层。
 ```
@@ -372,6 +371,7 @@ message.setOnSendCompleteCallback(BasicCallback sendCompleteCallback)
 参数说明
 
 + BasicCallback sendCompleteCallback 回调接口
+
 
 ### 发送消息
 
@@ -402,7 +402,7 @@ JMessageClient.sendMessage(Message message, MessageSendingOptions options);
 + Message message 消息对象
 + MessageSendingOptions options 消息发送时的控制选项。
 
-##### 代码示例
+#### 代码示例
 ```
 Message message = mConversation.createSendMessage(new TextContent(“Hello jmessage.”));
 message.setOnSendCompleteCallback(new BasicCallback() {
@@ -480,45 +480,6 @@ sdk升级到2.1.0版本（或以上）后，上层需要针对消息接收的处
         System.out.println("事件发生的原因 : " + reason);
     }
 ```
-
-
-### 本地消息记录获取
-任何的消息都从属某一会话，所以要获取本地消息记录，首先需要获取到会话对象`conversation`,进而获取该会话下的消息记录。
-
-**获取会话中所有消息**
-
-```
-	/**
-     * 获取会话中所有消息，消息按照时间升序排列.<br/>
-     *
-     * @return 包含会话中所有消息的List
-     */
-	conversation.getAllMessage();
-```
-
-
-**按条件获取消息列表**
-
-```
-	/**
-     * 会话中消息按时间降序排列，从其中的offset位置，获取limit条数的消息.
-     *
-     * @param offset 获取消息的起始位置
-     * @param limit  获取消息的条数
-     * @return 符合查询条件的消息List, 如果查询失败则返回空的List。
-     */
-	conversation.getMessagesFromNewest(int offset, int limit)
-	
-	/**
-     * 会话中消息按时间升序排列，从其中的offset位置，获取limit条数的消息.<br/>
-     *
-     * @param offset 获取消息的起始位置
-     * @param limit  获取消息的条数
-     * @return 符合查询条件的消息List, 如果查询失败则返回空的List。
-     */
-    conversation.getMessagesFromOldest(int offset, int limit);
-```
-
 
 
 ### 撤回消息
@@ -697,6 +658,44 @@ if(!message.haveRead()){ //当消息的haveRead状态为false时，调用setHave
 //===========
 
 ```
+
+### 本地消息记录获取
+任何的消息都从属某一会话，所以要获取本地消息记录，首先需要获取到会话对象`conversation`,进而获取该会话下的消息记录。
+
+**获取会话中所有消息**
+
+```
+	/**
+     * 获取会话中所有消息，消息按照时间升序排列.<br/>
+     *
+     * @return 包含会话中所有消息的List
+     */
+	conversation.getAllMessage();
+```
+
+
+**按条件获取消息列表**
+
+```
+	/**
+     * 会话中消息按时间降序排列，从其中的offset位置，获取limit条数的消息.
+     *
+     * @param offset 获取消息的起始位置
+     * @param limit  获取消息的条数
+     * @return 符合查询条件的消息List, 如果查询失败则返回空的List。
+     */
+	conversation.getMessagesFromNewest(int offset, int limit)
+	
+	/**
+     * 会话中消息按时间升序排列，从其中的offset位置，获取limit条数的消息.<br/>
+     *
+     * @param offset 获取消息的起始位置
+     * @param limit  获取消息的条数
+     * @return 符合查询条件的消息List, 如果查询失败则返回空的List。
+     */
+    conversation.getMessagesFromOldest(int offset, int limit);
+```
+
 
 ### 命令透传
 ***Since 2.3.0***  

@@ -150,7 +150,7 @@ userinfo.removeFromFriendList(new BasicCallback() {
 ```
 
 ### 更新用户备注名/备注信息
-仅当用户存在于你的好友列表中时，才能更新其用户备注名和备注信息。
+为好友添加备注名和备注信息。仅当用户存在于你的好友列表中时，才能更新其备注名和备注信息。
 
 ```
 userinfo.updateNoteName(String noteName, BasicCallback callback)

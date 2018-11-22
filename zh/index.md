@@ -90,7 +90,7 @@
     <ul>
     <li><a href="/jmessage/client/android_sdk/basic/">Android IM SDK 开发指南</a></li>
     <li><a href="/jmessage/client/jmessage_android_guide/">Android IM SDK 集成指南</a></li>
-    <li><a href="https://docs.jiguang.cn/jmessage/client/im_android_api_docs/">Android IM API</a></li>
+    <li><a href="/jmessage/client/javadoc/">Android IM API Docs</a></li>
     </ul>
     <ul>
     <li><a href="/jmessage/client/im_sdk_ios/">iOS SDK 概述</a></li>
@@ -104,7 +104,7 @@
     </ul>
 	<ul>
 	<li><a href="/jmessage/client/im_jmrtc_android/">Android 实时音视频</a></li>
-	<li><a href="/jmessage/client/im_jmrtc_android_api_docs/">Android JMRTC API</a></li>
+	<li><a href="/jmessage/client/javadoc/">Android JMRTC API Docs</a></li>
 	</ul>
 </div>
 </div>

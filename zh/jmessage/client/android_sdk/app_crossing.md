@@ -26,14 +26,14 @@
 </table>
 
 
-**：实现跨应用群聊的关键在于群组中加入跨应用的群成员，而创建会话和发送消息的流程和普通的群聊实现方式一致。*
+*：实现跨应用群聊的关键在于群组中加入跨应用的群成员，而创建会话和发送消息的流程和普通的群聊实现方式一致。*
 
-## 跨应用相关接口摘要
+### 跨应用相关接口摘要
 
-跨应用接口与非跨应用接口区别主要在于：跨应用接口增加了appkey作为参数。只要接口中需要传appkey作为参数的，均可以支持跨应用通信，详细接口说明请前往极光IM [Android API Java docs](../im_android_api_docs/)。这里仅列举一些常用的跨应用接口和实现。
+跨应用接口与非跨应用接口区别主要在于：跨应用接口增加了[appkey](../../guideline/faq/#getappkey)作为参数。只要接口中需要传[appkey](../../guideline/faq/#getappkey)作为参数的，均可以支持跨应用通信，详细接口说明请前往极光IM [Android API Java docs](../im_android_api_docs/)。这里仅列举一些常用的跨应用接口和实现。
 
 
-### Conversation跨应用接口摘要
+#### Conversation跨应用接口摘要
 
 创建单聊跨应用会话
 
@@ -41,7 +41,7 @@
 createSingleConversation(String userName, String appKey)
 ```  
 
-### JMessageClient跨应用接口摘要
+#### JMessageClient跨应用接口摘要
 
 跨应用获取用户信息
 
@@ -74,7 +74,7 @@ addUsersToBlacklist(List<String> usernames,String appKey,BasicCallback callback)
 delUsersFromBlacklist(List<String> usernames,String appKey,BasicCallback callback)  
 ```    
 
-### GroupInfo跨应用接口摘要
+#### GroupInfo跨应用接口摘要
 
 获取群成员信息
 
@@ -83,9 +83,9 @@ getGroupMemberInfo(String username, String appKey)
 ```    
 
 
-## 跨应用相关具体实现
+### 跨应用相关具体实现
 
-### 跨应用获取用户信息
+#### 跨应用获取用户信息
 
 通过指定appKey可以实现获取跨应用用户信息。
 
@@ -111,7 +111,7 @@ JMessageClient.getUserInfo("username", "appKey", new GetUserInfoCallback() {
 });
 ```
 
-### 跨应用单聊实现
+#### 跨应用单聊实现
 
 创建单聊会话时指定对方用户所属appKey，即可建立起一个和跨应用用户的单聊会话。
 
@@ -138,7 +138,7 @@ Message message = con.createSendMessage(content);
 JMessageClient.sendMessage(message);
 ```
 
-### 跨应用群聊实现
+#### 跨应用群聊实现
 
 实现跨应用群聊的关键在于群组中加入跨应用的群成员，而创建会话和发送消息的流程和普通的群聊实现方式一致。
 
@@ -199,7 +199,7 @@ JMessageClient.addGroupMembers(testGid, "appKey", userNameList, new BasicCallbac
 });
 ```
 
-### 跨应用添加黑名单实现
+#### 跨应用添加黑名单实现
 
 通过以下接口在操作黑名单列表时指定appKey，即可实现将跨应用的用户加入黑名单。
 
@@ -242,7 +242,7 @@ JMessageClient.addUsersToBlacklist(usernames, "appKey",new BasicCallback() {
 ```
 
 
-### 跨应用免打扰实现
+#### 跨应用免打扰实现
 
 原有接口无需变动。免打扰相关接口是在userinfo对象上的实例接口，也就是说只要获取到的user是跨应用的用户，直接调用该userinfo对象的免打扰接口就可实现跨应用
 

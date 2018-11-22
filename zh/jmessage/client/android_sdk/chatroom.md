@@ -5,15 +5,15 @@
 
 jmessage android sdk 从2.4.0版本开始提供聊天室功能，包括查询基本信息，加入聊天室，退出聊天室等。
 
-聊天室和群组的主要区别在于：  
+**聊天室和群组的主要区别在于：**
 
-1. 聊天室的消息没有推送通知和离线保存，也没有常驻成员的概念，只要进入聊天室即可接收消息，开始聊天，
++ 聊天室的消息没有推送通知和离线保存，也没有常驻成员的概念，只要进入聊天室即可接收消息，开始聊天。
 一旦退出聊天室，不再会接收到任何消息、通知和提醒。  
 
-2. 本地获取聊天室会话对象需要通过单独的接口  `JMessageClient.getChatRoomConversationList`或者  `JMessageClient.getChatRoomConversation`获取。  
++ 本地获取聊天室会话对象需要通过单独的接口  `JMessageClient.getChatRoomConversationList`或者  `JMessageClient.getChatRoomConversation`获取。  
 `JMessageClient.getConversationList`接口不会返回聊天室的会话对象。 
  
-3. 在线收到聊天室消息时，sdk仅仅只会将消息通过`ChatRoomMessageEvent`事件上抛，不会将消息落地。上层通过聊天室会话对象获取message时，sdk将返回空。  
++ 在线收到聊天室消息时，sdk仅仅只会将消息通过`ChatRoomMessageEvent`事件上抛，不会将消息落地。上层通过聊天室会话对象获取message时，sdk将返回空。  
 
 
 <font color= SteelBlue>注意：进入聊天室会自动获取最近50条消息，通过`ChatRoomMessageEvent `事件上抛给应用层。客户端目前不支持创建聊天室</font>
