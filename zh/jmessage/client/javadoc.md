@@ -1,9 +1,8 @@
-<html>
-<head>
-<meta http-equiv="Content-Language" content="zh-CN">
-<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=gb2312">
-<meta http-equiv="refresh" content="0;url=https://docs.jiguang.cn/jmessage/client/im_android_api_docs/">
-<title>jiguang</title>
-</head>
+<h1>API Doc</h1>
+API Doc中包含完整的接口文档以及详细接口注释
 
-</html>  
+#### JMessage API Doc
+[极光JMessage API Doc](./im_android_api_docs)
+
+#### JMRTC API Doc
+[极光JMRTC API Doc](./im_jmrtc_android_api_docs)
