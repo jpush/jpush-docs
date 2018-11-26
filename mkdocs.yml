@@ -1,4 +1,4 @@
-﻿site_name: 极光文档
+site_name: 极光文档
 site_author: JiGuang Offical
 site_url: https://docs.jiguang.cn/
 repo_url: https://github.com/jpush/jpush-docs/
@@ -88,6 +88,8 @@ pages:
     - 'QuickApp SDK 概述': 'janalytics/client/quickapp_sdk.md'
     - 'QuickApp SDK 集成指南': 'janalytics/client/quickapp_guide.md'
     - 'QuickApp SDK API': 'janalytics/client/quickapp_api.md'
+  - 高级:
+    - '漏斗分析': 'janalytics/funnel/funnel_intro.md'
   - 最近更新: 'janalytics/updates.md'
   - 资源下载: 'janalytics/resources.md'
 
@@ -97,11 +99,17 @@ pages:
     - 'JMessage 产品简介': 'jmessage/guideline/jmessage_guide.md'
     - '常见问题': 'jmessage/guideline/faq.md'
   - Android:
-    - 'IM 开发指南': 'jmessage/client/im_sdk_android.md'
     - 'IM 集成指南': 'jmessage/client/jmessage_android_guide.md'
+    - '基础功能': 'jmessage/client/android_sdk/basic.md'
+    - '用户信息管理': 'jmessage/client/android_sdk/user.md'
+    - '会话与消息': 'jmessage/client/android_sdk/message.md'
+    - '事件处理': 'jmessage/client/android_sdk/event.md'
+    - '好友管理': 'jmessage/client/android_sdk/friend.md'
+    - '群组管理': 'jmessage/client/android_sdk/group.md'
+    - '聊天室管理': 'jmessage/client/android_sdk/chatroom.md'
+    - '跨应用通信': 'jmessage/client/android_sdk/app_crossing.md'
     - '实时音视频': 'jmessage/client/im_jmrtc_android.md'
-    - 'IM API Doc': 'jmessage/client/javadoc.md'
-    - 'JMRTC API Doc': 'jmessage/client/jmrtc_android_doc.md'
+    - 'API Doc': 'jmessage/client/javadoc.md'
     - 'ErrorCode 定义': 'jmessage/client/im_errorcode_android.md'
   - iOS:
     - 'IM 开发指南': 'jmessage/client/im_sdk_ios.md'

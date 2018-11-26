@@ -1,6 +1,12 @@
 # 常见问题
 
+ <div id=“getappkey”></div>
+## appkey如何获得？
+在[极光开发者控制台](https://www.jiguang.cn/accounts/login/form)创建应用后，可在该位置查看appkey。如图
+![shiyong](../image/appkey.png)
 
+
+<br />
 ## 离线消息保存时间和条数是多少？
 免费版本：每个会话保存100条离线消息，保存15天。    
 付费版本：每个会话保存300条离线消息，保存30天。
