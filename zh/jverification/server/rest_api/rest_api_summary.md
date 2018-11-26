@@ -44,7 +44,7 @@ HTTP 请求是：
 
 |名称|资源|
 |---|---|
-|[发起认证API](../verify_api.md)|POST https://api.verification.jpush.cn/v1/web/verify|
+|[发起认证API](../verify_api/)|POST https://api.verification.jpush.cn/v1/web/verify|
 
 
 
