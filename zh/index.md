@@ -159,6 +159,11 @@
     <ul>
     <li><a href="/jverification/client/ios_guide/">iOS SDK 集成指南</a></li>
     <li><a href="/jverification/client/ios_api/">iOS SDK API</a></li>
+    <li><a href="/jverification/client/client_plugins/">客户端集成插件</a></li>
+    </ul>
+    <ul>
+    <li><a href="/jverification/server/rest_api/rest_api_summary/">REST API 概述</a></li>
+    <li><a href="/jverification/server/rest_api/verify_api/">Verify API</a></li>
     </ul>
 </div>
 </div>
