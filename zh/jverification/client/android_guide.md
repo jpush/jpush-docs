@@ -4,7 +4,7 @@
 
 本文是JVerification Android SDK 标准的集成指南文档。
 
-匹配的 SDK 版本为：v1.0.0及以后版本。
+匹配的 SDK 版本为：v1.1.0及以后版本。
 
 + 如果您想要快速地测试、请参考本文在几分钟内跑通Demo。
 + 极光认证文档网站上，有相关的所有指南、API、教程等全部的文档。包括本文档的更新版本，都会及时地发布到该网站上。
@@ -110,6 +110,24 @@
     </application>
 </manifest>
 
+~~~
+
++ 混淆配置
+
+请下载 4.x 及以上版本的 [proguard.jar](http://sourceforge.net/projects/proguard/files/proguard/)， 替换你 Android SDK "tools\proguard\lib\proguard.jar"，并在工程的混淆文件中添加以下混淆代码：
+
+~~~
+		-dontwarn cn.jpush.**
+		-keep class cn.jpush.** { *; }
+		
+		-dontwarn cn.jiguang.**
+		-keep class cn.jiguang.** { *; }
+		
+		-dontwarn com.cmic.**
+		-keep class com.cmic.** { *; }
+		
+		-dontwarn com.unicom.**
+		-keep class com.unicom.** { *; }
 ~~~
 
 ##添加代码
