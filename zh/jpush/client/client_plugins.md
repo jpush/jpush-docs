@@ -30,6 +30,18 @@
 
 官方地址：[https://github.com/jpush/jpush-hbuilder-demo](https://github.com/jpush/jpush-hbuilder-demo)
 
+#### Flutter
+
+官方地址：[https://github.com/jpush/jpush-flutter-plugin](https://github.com/jpush/jpush-flutter-plugin)
+
+#### weex
+
+官方地址：[https://github.com/jpush/jpush-weex-plugin](https://github.com/jpush/jpush-weex-plugin)
+
+#### Swift Demo
+
+官方地址：[https://github.com/jpush/jpush-swift-demo](https://github.com/jpush/jpush-swift-demo)
+
 ### 第三方开发者维护
 
 #### Ionic
@@ -45,6 +57,6 @@
 
 ### 技术支持
 
-- 优先支持：开发将优先处理在各插件 GitHub 页面提的 issue 
+- 优先支持：开发将优先处理在各插件 GitHub 页面提的 issue
 - cordova QQ 交流群：413602425
 - react QQ 交流群：553406342

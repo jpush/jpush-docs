@@ -90,6 +90,7 @@ pages:
     - 'QuickApp SDK API': 'janalytics/client/quickapp_api.md'
   - 高级:
     - '漏斗分析': 'janalytics/funnel/funnel_intro.md'
+  - 客户端集成插件: 'janalytics/client/client_plugins.md'
   - 最近更新: 'janalytics/updates.md'
   - 资源下载: 'janalytics/resources.md'
 
@@ -166,6 +167,7 @@ pages:
     - '短信余量查询 API': 'jsms/server/rest_jsms_api_account.md'
     - '回调接口': 'jsms/server/callback.md'
     - '短信发送状态说明': 'jsms/server/sendcode.md'
+  - 客户端集成插件: 'jsms/client/client_plugins.md'
   - 服务端 SDK:
     - 'Java SDK': 'jsms/server/sdk/java_sdk.md'
     - 'PHP SDK': 'jsms/server/sdk/php_sdk.md'
@@ -189,6 +191,7 @@ pages:
     - 'iOS SDK API': 'jshare/client/iOS/ios_api.md'
     - 'iOS SDK FAQ': 'jshare/client/iOS/ios_sdk_faq.md'
     - 'ErrorCode 定义': 'jshare/client/iOS/jshare_errorcode.md'
+  - 客户端集成插件: 'jshare/client/client_plugins.md'
   - 最近更新: 'jshare/updates.md'
   - 资源下载: 'jshare/resources.md'
 
