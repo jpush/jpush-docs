@@ -84,16 +84,16 @@
     <!-- Required -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
 
     <!-- Optional -->
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" /> <!-- 用于开启 debug 版本的应用在6.0 系统上 层叠窗口权限 -->
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
-    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
     <uses-permission android:name="android.permission.GET_TASKS" />
     <uses-permission android:name="android.permission.VIBRATE" />
 
@@ -114,7 +114,7 @@
 
 + 混淆配置
 
-请下载 4.x 及以上版本的 [proguard.jar](http://sourceforge.net/projects/proguard/files/proguard/)， 替换你 Android SDK "tools\proguard\lib\proguard.jar"，并在工程的混淆文件中添加以下混淆代码：
+请下载 4.x 及以上版本的 [proguard.jar](http://sourceforge.net/projects/proguard/files/proguard/)， 替换 Android SDK "tools\proguard\lib\proguard.jar"，并在工程的混淆文件中添加以下混淆代码：
 
 ~~~
 		-dontwarn cn.jpush.**
@@ -154,7 +154,7 @@ JVerification SDK 提供的 API 接口，都主要集中在 cn.jiguang.verify.ap
 
 ###运行Demo
 
-压缩包附带的 example 是一个 API 演示例子。你可以将它导入到你的工程，并将你的 AppKey 填入到 example 的 AndroidManifest 中，然后直接运行起来测试。
+压缩包附带的 example 是一个 API 演示例子。你可以将它导入到你的工程，并将你的 appKey 填入到 example 的 AndroidManifest 中，然后直接运行起来测试。
 
 ## 技术支持
 
