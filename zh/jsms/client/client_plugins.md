@@ -8,19 +8,10 @@
 
 官方插件地址包含：安装方法、demo(example 文件夹内)、API 文档、常见问题，请开发者仔细参阅。
 
-### PhoneGap
+### Cordova
 
-
-官方地址：[https://github.com/jpush/jmessage-phonegap-plugin](https://github.com/jpush/jmessage-phonegap-plugin)
+官方地址：[https://github.com/jpush/jsms-react-native](https://github.com/jpush/jsms-react-native)
 
 ### React Native
 
-官方地址：[https://github.com/jpush/jmessage-react-plugin](https://github.com/jpush/jmessage-react-plugin)
-
-### aurora-imui
-
-官方地址：[https://github.com/jpush/aurora-imui](https://github.com/jpush/aurora-imui)
-
-## 技术支持
-
-- QQ 交流群：413602425
+官方地址：[https://github.com/jpush/jsms-react-native](https://github.com/jpush/jsms-react-native)
