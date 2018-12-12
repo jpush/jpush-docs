@@ -144,6 +144,7 @@ HTTP Header（头）里加一个字段（Key/Value 对）：
             "alert": "Hi, JPush!",
             "sound": "default",
             "badge": "+1",
+            "thread-id": "default"
             "extras": {
                 "newsid": 321
             }
@@ -583,6 +584,13 @@ iOS 平台上 APNs 通知结构。
 			<td>可选</td>
 			<td width="20%">附加字段</td>
 			<td>这里自定义 Key / value 信息，以供业务使用。</td>
+		</tr>
+		<tr >
+			<td>thread-id</td>
+			<td>string</td>
+			<td>可选</td>
+			<td width="20%">通知分组</td>
+			<td>ios 的远程通知通过该属性来对通知进行分组，同一个 thread-id 的通知归为一组。</td>
 		</tr>
 	</table>
 </div>
