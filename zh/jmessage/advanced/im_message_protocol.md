@@ -137,17 +137,17 @@ msg_type = video
 
 + video JsonObject 
 	+ 必须
-	+ 视频文件信息， 使用<FileObject>消息体子类型,类型定义见下文
+	+ 视频文件信息， 使用FileObject消息体子类型,类型定义见下文
 + duration Number 
 	+ 必须
 	+ 视频时长
-thumb JsonObject 
++ thumb JsonObject 
 	+ 可选
-	+ 缩略图文件信息， 使用<ImageObject>消息体子类型,类型定义见下文
+	+ 缩略图文件信息， 使用ImageObject消息体子类型,类型定义见下文
 
 msg_type = custom
 
-开发者自定义字段。JsonObject。
++ 开发者自定义字段。JsonObject。
 
 
 ### 消息体子类型定义
@@ -242,7 +242,7 @@ ImageObject
     }
 }
 
-位置信息
+位置消息
 {
 	"version":1,
 	"target_type":"single",	
@@ -259,7 +259,7 @@ ImageObject
 	}
 }
 
-视频信息
+视频消息
 {
 	"version":1,
 	"target_type":"single",	
