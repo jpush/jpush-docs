@@ -127,6 +127,16 @@
 
 ***说明 1***：若没有 res/drawable-xxxx/jmessage_notification_icon 这个资源默认使用应用图标作为通知 icon，在 5.0 以上系统将应用图标作为 statusbar icon 可能显示不正常，用户可定义没有阴影和渐变色的 icon 替换这个文件，文件名不要变。
 
+另外注意，上层应用在打包时如果开启了`shrinkResources true`压缩资源的功能，需要注意将`jmessage_notification_icon`加入到res/raw/keep.xml 文件的keep规则中去：
+
+```
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools"
+    tools:keep="@drawable/jmessage_notification_icon*"/>
+```
+
+
+
 ***说明 2***：使用android studio的开发者，如果使用jniLibs文件夹导入so文件，则仅需将所有cpu类型的文件夹拷进去；如果将so文件添加在module的libs文件夹下，注意在module的gradle配置中添加一下配置：
 
 
