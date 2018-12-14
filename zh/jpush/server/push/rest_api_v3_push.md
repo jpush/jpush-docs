@@ -760,12 +760,15 @@ iOS 1.7.3 及以上的版本才能正确解析 v3 的 message，但是无法解�
 <div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px;">
 <p>温馨提示：</p>
 <p>1. 使用短信业务，会产生额外的运营商费用，具体请咨询商务，联系电话：400-612-5955，商务 QQ：800024881</p>
-<p>2. 应运营商规定，短信内容需审核。自 2018 年 3 月起，短信补充的用户必须提交短信模板，审核通过后即可使用。因此推送时需要填写 temp_id（如果模版有设置参数则需要填写 temp_para）。参考<a href="https://docs.jiguang.cn/jsms/guideline/JSMS_consoleguide/#_12">控制台设置短信模板</a>和<a href="https://docs.jiguang.cn/jpush/server/push/server_overview/">短信模板 API</a>。</p>
+<p>2. 短信由签名和正文内容两部分组成。应运营商规定，签名和正文内容需审核。参考 <a href="https://docs.jiguang.cn/jsms/guideline/jsms_terminology/">名词解释</a> </p>
+<p>3. 签名设置参考 <a href="https://docs.jiguang.cn/jsms/guideline/JSMS_consoleguide/#_9">《控制台操作指南》之签名设置</a> 和 <a href="https://docs.jiguang.cn/jsms/server/rest_api_jsms_sign/">短信签名 API</a> 。</p>
+<p>4. 自 2018 年 3 月起，短信补充的开发者必须提交正文内容模板，审核通过后即可使用。因此推送时需要填写 temp_id（如果模版有设置参数则需要填写 temp_para）。参考 <a href="https://docs.jiguang.cn/jsms/guideline/JSMS_consoleguide/#_12">《控制台操作指南》之模板设置</a> 和 <a href="https://docs.jiguang.cn/jsms/server/rest_api_jsms_templates/">短信模板 API</a> 。</p>
 </div>
 <br>
 sms_message 用于设置短信推送内容以及短信发送的延迟时间。   
 
-开发者需要先把用户的手机号码与设备的 registrationID 匹配。绑定方法：[服务端-Device-更新设备](rest_api_v3_device/#_3)；[Android API-设置手机号码](https://docs.jiguang.cn/jpush/client/Android/android_api/#_61)；[iOS API-设置手机号码](https://docs.jiguang.cn/jpush/client/iOS/ios_api/#_151)
+开发者需要先把用户的手机号码与设备的 registrationID 匹配。绑定方法：<a href="https://docs.jiguang.cn/jpush/server/push/rest_api_v3_device/#_3">服务端-Device-更新设备</a>; 
+<a href="https://docs.jiguang.cn/jpush/client/Android/android_api/#_61">Android API-设置手机号码</a>; <a href="https://docs.jiguang.cn/jpush/client/iOS/ios_api/#_151">iOS API-设置手机号码</a>；
 
 与原有 JSON 业务协议相匹配，消息有如下字段信息：
 
@@ -782,6 +785,12 @@ sms_message 用于设置短信推送内容以及短信发送的延迟时间。
 			<td>int</td>
 			<td>必填</td>
 			<td>单位为秒，不能超过 24 小时。设置为 0，表示立即发送短信。该参数仅对 android 和 iOS 平台有效，Winphone 平台则会立即发送短信。</td>
+		</tr>
+		<tr >
+			<td>signid</td>
+			<td>int</td>
+			<td>选填</td>
+			<td>签名ID，该字段为空则使用应用默认签名。</td>
 		</tr>
 		<tr >
 			<td>temp_id</td>
