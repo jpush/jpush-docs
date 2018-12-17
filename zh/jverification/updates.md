@@ -1,4 +1,30 @@
 #最近更新
+##JVerification Android SDK v1.1.1
+
+**更新时间**
+
+* 2018-12-17
+
+**Change Log**
+
+* 中国电信协议变更
+
+**升级建议**
+
+* 必须升级
+
+**升级指南**
+
++ 首先解压您获取到的zip压缩包
+
++ 更新库文件
+    + 打开libs文件夹
+    + 用jverification-android-v1.x.x.jar 替换项目中原有的极光认证sdk的jar文件
+    + 用jcore-android-v1.x.x.jar 替换项目中原有的极光jcore的jar文件
+    + 用对应CPU文件夹下的 libjcore1xy.so文件，替换项目中原有的极光so文件
+
++ 更新AndroidManifest.xml
+    + 压缩包根目录下有示例 AndroidManifest 文件，请对照示例更新和JVerification相关的组件属性，permission 等配置，并在中文提示的位置替换你的包名和 appKey
 
 ##JVerification iOS SDK v1.1.0
 
