@@ -1806,3 +1806,38 @@ JSONObject json = new JSONObject(map) ;
 ln.setExtras(json.toString()) ;
 JPushInterface.addLocalNotification(getApplicationContext(), ln);
 ```
+
+##地理围栏 API
+### 支持的版本
+开始支持的版本：3.1.8
+
+### 功能说明
+JPush SDK 提供地理围栏功能，当设备进入或离开相应的地理区域才触发通知或自定义消息。开发者可以通过此功能对SDK提供的地理围栏功能进行设置。
+
+### API  setGeofenceInterval 
+
+#### 功能说明
+设置地理围栏监控周期，最小3分钟，最大1天。默认为15分钟，当距离地理围栏边界小于1000米周期自动调整为3分钟。设置成功后一直使用设置周期，不会进行调整。
+
+#### 接口定义
+```
+ public static void setGeofenceInterval(Context context, long interval)
+```
+
+#### 参数说明
++ context 是应用的 ApplicationContext
++ interval 监控周期，单位是毫秒。
+
+
+### API  setMaxGeofenceNumber 
+#### 功能说明
+设置最多允许保存的地理围栏数量，超过最大限制后，如果继续创建先删除最早创建的地理围栏。默认数量为10个，允许设置最小1个，最大100个。
+
+#### 接口定义
+```
+public static void setMaxGeofenceNumber(Context context, int maxNumber)
+```
+
+#### 参数说明
++ context 是应用的 ApplicationContext
++ maxNumber 最多允许保存的地理围栏个数
