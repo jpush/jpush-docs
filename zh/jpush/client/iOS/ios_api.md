@@ -1,5 +1,4 @@
 # iOS API
-
 ## 标签与别名 API（iOS）
 
 ### 功能说明
@@ -1518,6 +1517,111 @@ v3.0.8 版本开始
       }];
 ```
 
+##地理围栏
+### 功能说明
+
+<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; padding-bottom: 0;margin-bottom: 0;">
+<p>温馨提示，使用地理围栏时注意先要配置位置权限，然后在BackgroundModes中选中Location updates。
+iOS 11 以上版本必须有地理位置Always Use 权限，才能生效。
+</div>
+
+<br>
+地理围栏（Geo-fencing）是LBS的一种新应用，就是用一个虚拟的栅栏围出一个虚拟地理边界。当手机进入或离开某个特定地理区域时，手机可以接收自动通知和警告。
+
+### Method - registerLbsGeofenceDelegate: withLaunchOptions:
+
+调用此 API 注入地理围栏触发时的回调方法
+
+#### 支持的版本
+
+开始支持的版本：3.1.2
+
+#### 接口定义
+
+    + (void)registerLbsGeofenceDelegate:(id<JPUSHGeofenceDelegate>)delegate withLaunchOptions:(NSDictionary *)launchOptions;
+
+#### 参数说明
+
+* delegate 
+    * 代理 JPUSHGeofenceDelegate 类型
+    * 有三个代理方法回调给开发者，具体使用参考下面的接口说明
+*  launchOptions
+    * NSDictionary 类型application:didFinishlaunchOptions: 中传入的字典。
+    
+#### 调用说明
+在AppDelegate中application:didFinishlaunchOptions:  调用
+
+``` 
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions 
+{
+	[JPUSHService registerLbsGeofenceDelegate:self withLaunchOptions:launchOptions];
+}
+```
+### Delegate Method - jpushGeofenceIdentifer:didEnterRegion: error:
+
+用户进入地理围栏区域触发的回调。
+#### 支持的版本
+开始支持的版本：3.1.2
+
+#### 接口定义
+	- (void)jpushGeofenceIdentifer:(NSString * _Nonnull)geofenceId didEnterRegion:(NSDictionary * _Nullable)userInfo error:(NSError * _Nullable)error;
+
+#### 参数说明
+* geofenceId 
+    * 地理位栏唯一id
+    * NSString 字符串类型
+*  userInfo
+    * NSDictionary 类型。
+    * 触发地理围栏时回调的相关展示信息
+* error
+    * 错误信息
+
+### Delegate Method - jpushGeofenceIdentifer:didExitRegion: error:
+
+用户离开地理围栏区域触发的回调。
+#### 支持的版本
+开始支持的版本：3.1.2
+
+#### 接口定义
+	- (void)jpushGeofenceIdentifer:(NSString * _Nonnull)geofenceId didExitRegion:(NSDictionary * _Nullable)userInfo error:(NSError * _Nullable)error;
+
+#### 参数说明
+* geofenceId 
+    * 地理位栏唯一id
+    * NSString 字符串类型
+*  userInfo
+    * NSDictionary 类型。
+    * 触发地理围栏时回调的相关展示信息
+* error
+    * 错误信息
+
+
+
+
+
+
+### Method - setGeofenecMaxCount:
+
+调用此 API 来设置最大的地理围栏监听个数，默认值为10
+
+#### 支持的版本
+
+开始支持的版本：3.1.2
+
+#### 接口定义
+
+    + (void)setGeofenecMaxCount:(NSInteger)count;
+
+    
+#### 参数说明
+
+* count
+    * 类型要求为NSInteger 类型
+    * 默认值为10
+    * iOS系统要求最大不能超过20个，否则会报错。
+
+
+
 
 ## Notification Service Extension 相关接口
 
@@ -1712,6 +1816,17 @@ Notification Service Extension SDK v1.0.0（随 JPush iOS SDK 3.0.7 版本发布
       <td>手机号码太长</td>
       <td>手机号码过长，目前极光检测手机号码的最大长度为 20</td>
     </tr>
+    <tr >
+      <td>7000</td>
+      <td>地理围栏过期</td>
+      <td>当前时间超过设置的过期时间</td>
+    </tr>
+    <tr >
+      <td>7001</td>
+      <td>地理围栏不存在</td>
+      <td>逻辑是触发地理围栏的时候，本地缓存列表没有查找到对应的geofenceid</td>
+    </tr>
+
   </table>
 </div>
 

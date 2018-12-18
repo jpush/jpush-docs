@@ -1,4 +1,68 @@
 # 最近更新
+### JPush iOS SDK v3.1.2
+
+#### 更新时间
++ 2018-12-18
+
+#### Change Log
++ 新增地理围栏功能
+
+
+#### 升级提示
+
++ 建议升级！
++ 注意：不支持 Xcode 8.0 以下版本开启 bitcode。
++ 极光开发者服务 SDK 采用了模块化的使用模式，即一个核心（JCore）+ N 种服务（JPush，JAnalytics，...）的使用方式，方便开发者使用某一项服务或多项服务，极大的优化了多模块同时使用时功能模块重复的问题。
+
+#### 升级指南
++ 3.1.2 版本的 JPush 只支持 1.2.6 及以上的 JCore 版本，升级 SDK 的时候请将 JCore 一起升级。
++ 3.1.1 版本的 JPush 只支持 1.2.3 及以上的 JCore 版本，升级 SDK 的时候请将 JCore 一起升级。
++ 3.0.7 版本开始压缩包中 Lib 新增了 Notification Service Extension SDK ，可用于统计通知送达，开发者请注意添加到 Libs 中，使用方式见集成指南。
++ 注意 3.0.0 及以上版本 JPush SDK 将不再支持处理器为 i386 的模拟器。
++ 添加libresolv.tbd库，否则编译运行会报错（2.2.0 及以上版本要求）
++ 替换 lib 文件夹里的文件:先删除项目里旧的 .a 和 .h 文件，重新导入新的 .a 和 .h 文件（注意新版本替换 APService.h 为 JPUSHService.h）
++ Xcode 7 环境下，替换原先导入的 libz.dylib 框架为 libz.tbd （特别留意）
++ 需要删除旧的 libPushSDK-Simulator.a （如果存在）
++ 关于 iOS 7 Background Push，JPush 提供一个教程文档：[iOS 7 Background Remote Notification](https://docs.jiguang.cn/jpush/client/iOS/ios_new_fetures/#ios-7-background-remote-notification)
++ 如果是 1.2.7 及之前版本升级 请在 Build Settings 里面，找到 Other Linker Flags，去掉 -all_load, -ObjC
++ 使用地理围栏功能时一下相关配置：
+	- 位置权限配置。
+	- 选择Background Modes配置。 target -> capabilities ->Background Modes 选中Location updates。
+	- 注意registerLbsGeofenceDelegate: withLaunchOptions 方法最好在sdk初始化之前调用。
+
+
+### JPush Android SDK v3.1.8
+
+#### 更新时间
+
++ 2018-12-18
+
+#### Change Log
++ 新增地理围栏功能
++ 修复已知问题
+
+#### 升级提示
+
++ 建议升级！
+
+#### 升级指南
+
++ 首先解压您获取到的 zip 压缩包
+
++ 更新库文件
+	+ 打开 libs 文件夹。用 jpush-android-3.x.y.jar 和 jcore-android-1.x.y.jar 替换项目中原有的极光 jar 文件，并删除原有极光 jar 文件。用对应 CPU 文件夹下的 libjcorexxx.so 文件，替换项目中原有的 libjpushXXX.so 文件，并删除原有的极光 so 文件，每种型号的 so 文件都可以在 SDK 下载包中找到。
+
++ 更新 AndroidManifest.xml
+	+ 请对照示例 AndroidManifest 更新 JPush 相关的组件属性，Permission，Action 等配置。并在中文提示的位置替换你的包名 和 appkey。
+
++ 添加资源文件
+    + 将 res 文件夹下的资源文件，添加到您项目 res/ 下对应的文件夹中。根据您应用的界面风格，您可以修改 layout 文件的配色，字体等属性，或者修改 drawable 文件夹下的图标。但注意请不要文件名，和布局文件中的组件 id。
+    + Android 5.0 以上，使用应用图标做通知 icon 可能显示异常，请参考 res/drawable-xxxx/jpush_notification_icon 作为专门的通知 icon。
+详细请见 Android SDK 集成指南中的说明，或者 example 中的示例。
+
++ 如果使用 jcenter 的方式集成 JPush，不需要添加 JPush 相关组件和资源，详细说明请参考官方集成指南。
+
+
 ### JPush Android SDK v3.1.7
 
 #### 更新时间
