@@ -72,6 +72,11 @@ JMessage 服务器端报的错误码。有可能出现在各平台的 SDK 里。
 			<td>Server response time out, please try again later</td>
 			<td>系统繁忙，稍后重试</td>
 		</tr>
+		<tr>
+			<td>898031</td>
+			<td>project not exist</td>
+			<td>音视频服务还未开通，请参考doc和portal里的规则开通服务</td>
+		</tr>
 		<tr >
 			<td>899000</td>
 			<td>Server internal error</td>
@@ -763,6 +768,21 @@ JMessage 服务器端报的错误码。有可能出现在各平台的 SDK 里。
 			<td>765002</td>
 			<td>request user no permission</td>
 			<td>请求用户无操作权限</td>
+		</tr>
+		<tr>
+			<td>7100001</td>
+			<td>notify target is null or target logout</td>
+			<td>音视频信令通知目标用户为空或者目标已全部登出</td>
+		</tr>
+		<tr>
+			<td>7100002</td>
+			<td>invite targe logout</td>
+			<td>音视频被邀请的用户已登出</td>
+		</tr>
+		<tr>
+			<td>7100006</td>
+			<td>not enough rtc trial time</td>
+			<td>音视频服务试用时长不够，停用</td>
 		</tr>
 </table>
 </div>
