@@ -129,7 +129,7 @@ POST /v3/devices/{registration_id}
     + 一次 add/remove tag 的上限均为 100 个，且总长度均不能超过 1000 字节。
     + 可以多次调用 API 设置，一个设备（registrationID）能设置的 tag 上限为 1000 个，应用 tag 总数没有限制 。
 + alias：更新设备的别名属性；当别名为空串时，删除指定设备的别名；
-+ mobile：设备关联的手机号码
++ mobile：设备关联的手机号码；当 mobile 为空串时，表示清空设备关联的手机号码。
 
 ### Example Response
 **Response Header**
