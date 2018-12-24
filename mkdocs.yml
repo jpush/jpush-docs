@@ -217,7 +217,7 @@ pages:
   - 最近更新: 'jverification/updates.md'
   - 资源下载: 'jverification/resources.md'
 
-- 极光IoT：
+- 极光IoT:
   - 入门指南:
     - 'IoT 产品介绍': 'jiot/guideline/intro.md'
     - '名词释义': 'jiot/guideline/terms.md'
@@ -229,6 +229,4 @@ pages:
     - 'REST API 定义': 'jiot/server/restapi.md'
   - 最近更新: 'jiot/updates.md'
   - 资源下载: 'jiot/resources.md'
- 
-
 
