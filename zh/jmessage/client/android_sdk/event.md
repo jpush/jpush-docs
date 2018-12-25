@@ -461,6 +461,92 @@ public void onEventMainThread(EventEntity event){
   </table>
 </div>
 
+群公告变更事件GroupAnnouncementChangedEvent
+***Since 2.8.0***
+<div class="table-d" align="left" >
+  <table border="1" width = "100%">
+    <tr  bgcolor="#D3D3D3" >
+      <th width="100px">方法</th>
+      <th width="20px">类型</th>
+      <th width="300px">说明</th>
+    </tr>
+    <tr >
+      <td >getGroupID()</td>
+      <td >`long`</td>
+      <td >获取群组id</td>
+    </tr>
+	<tr >
+      <td >getChangeEntities()</td>
+      <td >`List<ChangeEntity>`</td>
+      <td >获取公告变更事件列表，按照时间升序排列</td>
+    </tr>
+  </table>
+</div>
+
+群黑名单变更事件GroupBlackListChangedEvent
+***Since 2.8.0***
+<div class="table-d" align="left" >
+  <table border="1" width = "100%">
+    <tr  bgcolor="#D3D3D3" >
+      <th width="100px">方法</th>
+      <th width="20px">类型</th>
+      <th width="300px">说明</th>
+    </tr>
+    <tr >
+      <td >getGroupID()</td>
+      <td >`long`</td>
+      <td >获取群组id</td>
+    </tr>
+	<tr >
+      <td >getChangeEntities()</td>
+      <td >`List<ChangeEntity>`</td>
+      <td >获取黑名单变更事件列表，按照时间升序排列</td>
+    </tr>
+  </table>
+</div>
+
+聊天室通知事件ChatRoomNotificationEvent
+***Since 2.8.0***
+<div class="table-d" align="left" >
+  <table border="1" width = "100%">
+    <tr  bgcolor="#D3D3D3" >
+      <th width="100px">方法</th>
+      <th width="20px">类型</th>
+      <th width="300px">说明</th>
+    </tr>
+    <tr >
+      <td >getEventID()</td>
+      <td >`long`</td>
+      <td >获取事件ID</td>
+    </tr>
+	<tr >
+      <td >getRoomID()</td>
+      <td >`long`</td>
+      <td >获取事件对应聊天室的房间ID</td>
+    </tr>
+	<tr >
+      <td >getType()</td>
+      <td >`Type`</td>
+      <td >获取事件类型</td>
+    </tr>
+    <tr >
+      <td >getOperator(GetUserInfoCallback callback)</td>
+      <td >`void`</td>
+      <td >获取事件操作者用户信息</td>
+    </tr>
+	<tr >
+      <td >getTargetUserInfoList(GetUserInfoListCallback callback)</td>
+      <td >`void`</td>
+      <td >获取目标用户信息列表</td>
+    </tr>
+    <tr >
+      <td >getCtime()</td>
+      <td >`long`</td>
+      <td >取事件发生时间，单位-毫秒</td>
+    </tr>
+  </table>
+</div>
+
 ### 示例代码
 接收消息事件
 ```Java
