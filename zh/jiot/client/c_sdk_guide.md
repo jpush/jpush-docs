@@ -4,6 +4,8 @@
 
 ## 压缩包说明
 解压后目录结构如下：
+
+```
 jiot-sdk
 ├── build-info.txt
 ├── examples
@@ -16,6 +18,7 @@ jiot-sdk
 │       └── jiot_code.h
 └── lib
     └── libjiot_c_sdk.a
+```
 
 ## 集成步骤
 ### 解压jiot-sdk压缩包
