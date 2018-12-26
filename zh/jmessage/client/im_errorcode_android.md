@@ -300,9 +300,9 @@
 </div>
 
 <br>
-若以上列表中没有找到对应的错误码，可查看[服务器端错误码](https://docs.jiguang.cn/jmessage/client/im_errorcode_server/)
+若以上列表中没有找到对应的错误码，可查看[服务器端错误码](./im_errorcode_server/)
 
 ## 相关文档
 
 + [iOS SDK 错误码](../client/im_errorcode_ios/)
-+ [服务器端错误码](https://docs.jiguang.cn/jmessage/client/im_errorcode_server/)
++ [服务器端错误码](./im_errorcode_server/)
