@@ -6,6 +6,9 @@
 |9002|unknown result|结果未知|
 |9003|token expired or not exist|token失效或不存在|
 |9004|config not found|获取配置失败|
+|9005|verify interval is less than the minimum limit|同一号码连续两次提交认证间隔过短|
+|9006|frequency of verifying single number is beyond the maximum limit|同一号码自然日内认证次数超过限制|
+|9007|beyond daily frequency limit|appKey自然日认证消耗超过限制|
 |9010|miss auth|缺少鉴权信息|
 |9011|auth failed|鉴权失败|
 |9012|parameter invalid|参数错误|

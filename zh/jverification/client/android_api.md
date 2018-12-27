@@ -89,6 +89,7 @@
 	    });
 ~~~
 
+***说明***：开发者调用该接口，需要在管理控制台找到该应用，并在［认证设置］-［其他设置］中开启［SDK发起认证］。
 
 ##错误码
 
@@ -98,6 +99,13 @@
 |1001|verify not consistent|手机号验证不一致|
 |1002|unknown result|未知结果|
 |1003|token expired|token失效|
+|1004|sdk verify has been closed|SDK发起认证未开启|
+|1005|包名和 AppKey 不匹配|请检查客户端配置的包名与官网对应 Appkey 应用下配置的包名是否一致|
+|1006|frequency of verifying single number is beyond the maximum limit|同一号码自然日内认证消耗超过限制|
+|1007|beyond daily frequency limit|appKey自然日认证消耗超过限制|
+|1008|AppKey 非法|请到官网检查此应用信息中的 appkey，确认无误|
+|1009||请到官网检查此应用的应用详情；更新应用中集成的极光SDK至最新|
+|1010|verify interval is less than the minimum limit|同一号码连续两次提交认证间隔过短|
 |2000|内容为token|获取token成功|
 |2001|fetch token failed|获取token失败|
 |2002|init failed|SDK初始化失败|
@@ -109,14 +117,14 @@
 |2008|Token requesting, please try again later|正在获取token中，稍后再试|
 |2009|verifying, please try again later|正在认证中，稍后再试 |
 |2010|don't have READ_PHONE_STATE permission|未开启读取手机状态权限|
+|2011|内容为异常信息|获取配置时代码异常|
+|2012|内容为异常信息|获取token时代码异常|
+|2013|内容为具体错误原因|网络发生异常|
 |4001|parameter invalid|参数错误。请检查参数，比如是否手机号格式不对|
 |4018||没有足够的余额|
 |4031||不是认证SDK用户|
 |4032||获取不到用户配置|
 |5000|bad server|服务器未知错误|
-|1005|包名和 AppKey 不匹配|请检查客户端配置的包名与官网对应 Appkey 应用下配置的包名是否一致|
-|1008|AppKey 非法|请到官网检查此应用信息中的 appkey，确认无误|
-|1009||请到官网检查此应用的应用详情；更新应用中集成的极光SDK至最新。|
 |-994|网络连接超时|   |
 |-996|网络连接断开|   |
 |-997|注册失败/登录失败|（一般是由于没有网络造成的）如果确保设备网络正常，还是一直遇到此问题，则还有另外一个原因：JPush 服务器端拒绝注册。而这个的原因一般是：你当前 App 的 Android 包名以及 AppKey，与你在 Portal 上注册的应用的 Android 包名与 AppKey 不相同。|
