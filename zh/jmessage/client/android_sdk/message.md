@@ -454,9 +454,21 @@ sdk升级到2.1.0版本（或以上）后，上层需要针对消息接收的处
 **代码示例：**
 
 ```
+	/**
+    *  接收在线消息
+    **/
+    public void onEvent(MessageEvent event) {
+        //获取事件发生的会话对象
+        Conversation conversation = event.getConversation();
+        Message newMessage = event.getMessage();//获取此次离线期间会话收到的新消息列表
+        System.out.println(String.format(Locale.SIMPLIFIED_CHINESE, "收到一条来自%s的在线消息。\n", conversation.getTargetId()));
+    }
+    
+
     /**
-      类似MessageEvent事件的接收，上层在需要的地方增加OfflineMessageEvent事件的接收
-      即可实现离线消息的接收。
+    * 接收离线消息。
+    * 类似MessageEvent事件的接收，上层在需要的地方增加OfflineMessageEvent事件的接收
+    * 即可实现离线消息的接收。
     **/
     public void onEvent(OfflineMessageEvent event) {
         //获取事件发生的会话对象
@@ -467,8 +479,9 @@ sdk升级到2.1.0版本（或以上）后，上层需要针对消息接收的处
 
 
     /**
-      如果在JMessageClient.init时启用了消息漫游功能，则每当一个会话的漫游消息同步完成时
-      sdk会发送此事件通知上层。
+    * 接收消息漫游事件
+    * 如果在JMessageClient.init时启用了消息漫游功能，则每当一个会话的漫游消息同步完成时
+    * sdk会发送此事件通知上层。
     **/
     public void onEvent(ConversationRefreshEvent event) {
         //获取事件发生的会话对象

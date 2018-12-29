@@ -64,6 +64,8 @@
     }];
 ~~~
 
+***说明***：开发者调用该接口，需要在管理控制台找到该应用，并在［认证设置］-［其他设置］中开启［SDK发起认证］。
+
 ##SDK设置debug模式
 
 + ***+  (void)setDebug:(BOOL)enable;***
@@ -101,6 +103,13 @@
 |1001 | verify not consistent|手机号验证不一致|
 |1002 | unknown result|未知结果|
 |1003 | token expired|token失效|
+|1004 | sdk verify has been closed|SDK发起认证未开启|
+|1005|AppKey 不存在|请到官网检查 Appkey 对应的应用是否已被删除|
+|1006|frequency of verifying single number is beyond the maximum limit|同一号码自然日内认证消耗超过限制|
+|1007|beyond daily frequency limit|appKey自然日认证消耗超过限制|
+|1008|AppKey 非法|请到官网检查此应用详情中的 Appkey，确认无误|
+|1009|当前的 Appkey 下没有创建 iOS 应用；你所使用的 JCore 版本过低|请到官网检查此应用的应用详情；更新应用中集成的 JCore 至最新。|
+|1010|verify interval is less than the minimum limit|同一号码连续两次提交认证间隔过短|
 |2000 | token request success |获取token 成功|
 |2001 | fetch token error |获取token失败|
 |2002 | sdk init failed |sdk初始化失败|
@@ -116,6 +125,3 @@
 |4031 ||不是认证用户|
 |4032 ||获取不到用户配置|
 |5000|bad server|服务器未知错误|
-|1005|AppKey 不存在|请到官网检查 Appkey 对应的应用是否已被删除|
-|1008|AppKey 非法|请到官网检查此应用详情中的 Appkey，确认无误|
-|1009|当前的 Appkey 下没有创建 iOS 应用；你所使用的 Jcore 版本过低|请到官网检查此应用的应用详情；更新应用中集成的 JCore 至最新。|
