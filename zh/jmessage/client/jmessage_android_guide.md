@@ -266,18 +266,6 @@ defaultConfig {
             android:authorities="您自己的包名.DataProvider"
             android:exported="false" />
 
-        <!-- since JCore 1.8.0 option 可选项可选项。用于同一设备中不同应用的 JMessage服务相互拉起的功能。 -->
-        <!-- 若不启用该功能可删除该组件，或把 enabled 设置成 false ；拉起服务被关闭，App 不会通过拉起服务拉起其他的 App，也不会被其他 App 拉起。 -->
-        <service
-            android:name="cn.jpush.android.service.DaemonService"
-            android:enabled="true"
-            android:exported="true">
-            <intent-filter >
-                <action android:name="cn.jpush.android.intent.DaemonService" />
-                <category android:name="您自己的包名"/>
-            </intent-filter>
-        </service>
-
         <!-- Required since JMessage 2.7.0 SDK 核心功能-->
         <provider
             android:name="cn.jpush.im.android.helpers.ipc.IMProvider"
@@ -291,7 +279,7 @@ defaultConfig {
             android:exported="false">
         </receiver>
         
-        <!-- since 1.8.0 option 可选项。用于同一设备中不同应用的 jiguang 服务相互拉起的功能。 -->
+        <!-- since JCore 1.8.0 option 可选项。用于同一设备中不同应用的 jiguang 服务相互拉起的功能。 -->
         <!-- 若不启用该功能可删除该组件，或把 enabled 设置成 false ；拉起服务被关闭，App 不会通过拉起服务拉起其他的 App，也不会被其他 App 拉起。 -->
          <service
              android:name="cn.jpush.android.service.DaemonService"
