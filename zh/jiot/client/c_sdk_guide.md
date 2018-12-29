@@ -59,7 +59,9 @@ libcrypto.so (libc6,hard-float) => /path/to/ssl/libcrypto.so.1.0.2
 ```
 ./demo ProductKey DeviceName DeviceSecret
 ```
+
 运行参数分别为：
+
 * ProductKey:在极光 IoT portal 上创建产品得到的对应的产品标识。
 * DeviceName:在 portal 上创建设备时输入的设备名。
 * DeviceSecret:在 portal 上创建设备成功后得到的产品密钥，可以通过设备详情页面查看。
