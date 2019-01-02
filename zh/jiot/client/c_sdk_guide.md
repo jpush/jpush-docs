@@ -26,33 +26,39 @@ jiot-sdk
 
 ### 编译
 
+#### 编译准备
+1. armv7可以用交叉环境编译也可以直接在开发板上编译，需要gcc 和make工具。
+2. 需要检查ssl和crypto库文件，armv7 版需要依赖 1.0.2 版本，x86 版本需要依赖 1.1 版本，可参考“ssl库配置”章节下载和配置。
+3. 修改demo的makefile添加依赖库的路径，比如ssl库在/path/to/ssl/目录下，可参考如下配置：LIBDIR = -L/path/to/ssl
+4. 保存makefile后，执行make编译命令即可生成demo执行文件。
+
+#### make
+
 可参考官方提供的demo.c编译。
-#### x86版本sdk使用：
+
 ```
 cd jiot-sdk/examples/linux
 make
 ```
+
 编译后会生成demo可执行文件。
-#### armv7 版本 sdk 使用：
-armv7可以用交叉环境编译也可以直接在开发板上编译，需要gcc （建议4.9.2版本以上）和make工具。
-需要检查ssl和crypto库文件，需要依赖libssl.so.1.0.2和libcrypto.so.1.0.2，可参考“ssl库配置”章节下载和配置。
-修改demo的makefile添加依赖库的路径，比如ssl库在/path/to/ssl/目录下，可参考如下配置：
-LIBDIR = -L/path/to/ssl
-保存makefile后，执行make编译命令即可生成demo执行文件。
 
 #### ssl库配置
 
-* 使用“ldconfig -p| grep ssl”查看ssl版本，如果版本不是“1.0.2”，参考以下步骤添加依赖库。
-* 点击下载依赖的ssl和crypto库。
-* 拷贝到开发板目录中，比如/path/to/ssl/下。
-* 将“/path/to/ssl/”添加到/etc/ld.so.conf文件中。
-* 执行ldconfig（需要root权限执行）。
-* 再次查看ssl动态库版本，会出现如下，即配置成功。
-
+1. 使用“ldconfig -p| grep ssl”查看ssl版本，如果版本和需求不一致，参考以下步骤添加依赖库。
+2. 点击下载依赖的 ssl 和 crypto 库。 
+    * [x_86 下载](https://sdkfiledl.jiguang.cn/sdk/libssl-1.1.tar.gz)
+    * [armv7 下载](https://sdkfiledl.jiguang.cn/sdk/libssl-1.0.2.tar.gz)
+     
+3. 拷贝到目录中，比如/path/to/ssl/下。
+4. 将“/path/to/ssl/”添加到/etc/ld.so.conf文件中。
+5. 执行ldconfig（需要root权限执行）。
+6. 再次查看ssl动态库版本，会出现如下版本lib（仅以1.0.2为例），即配置成功。
 ```
 libssl.so (libc6,hard-float) => /path/to/ssl/libssl.so.1.0.2
 libcrypto.so (libc6,hard-float) => /path/to/ssl/libcrypto.so.1.0.2
 ```
+
 
 ### 运行 Demo
 
