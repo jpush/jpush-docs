@@ -174,6 +174,11 @@
       <td>Illegal message status. only created or send_failed message can be sent.</td>
       <td>发送消息时消息状态不合法，只有消息状态为创建和发送失败的消息可以被发送</td>
     </tr>
+	<tr >
+      <td>871326</td>
+      <td>unsupported operation.</td>
+      <td>不支持的操作，例如聊天室撤回消息</td>
+    </tr>
     <tr >
       <td>871402</td>
       <td>Upload file failed.auth error.</td>
@@ -295,9 +300,9 @@
 </div>
 
 <br>
-若以上列表中没有找到对应的错误码，可查看[服务器端错误码](https://docs.jiguang.cn/jmessage/client/im_errorcode_server/)
+若以上列表中没有找到对应的错误码，可查看[服务器端错误码](./im_errorcode_server/)
 
 ## 相关文档
 
 + [iOS SDK 错误码](../client/im_errorcode_ios/)
-+ [服务器端错误码](https://docs.jiguang.cn/jmessage/client/im_errorcode_server/)
++ [服务器端错误码](./im_errorcode_server/)

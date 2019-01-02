@@ -455,6 +455,16 @@ JMessage 服务器端报的错误码。有可能出现在各平台的 SDK 里。
 			<td>群组描述长度超出上限，创建群组失败</td>
 		</tr>
 		<tr >
+			<td>808006</td>
+			<td>max group member count error</td>
+			<td>创建群组时指定成员人数上限错误</td>
+		</tr>
+		<tr >
+			<td>810001</td>
+			<td>target in group blacklist</td>
+			<td>目标用户在群组黑名单中，无法加入</td>
+		</tr>
+		<tr >
 			<td>810002</td>
 			<td>add member list is null</td>
 			<td>添加的成员列表为空</td>
@@ -516,7 +526,7 @@ JMessage 服务器端报的错误码。有可能出现在各平台的 SDK 里。
 		</tr>
 		<tr >
 			<td>818001</td>
-			<td>zero member</td>
+			<td>target list is null</td>
 			<td>用户添加黑名单时，成员列表为空，添加失败</td>
 		</tr>
 		<tr >
@@ -530,6 +540,21 @@ JMessage 服务器端报的错误码。有可能出现在各平台的 SDK 里。
 			<td>用户添加黑名单时，成员列表中有成员不能被添加，添加失败</td>
 		</tr>
 		<tr >
+			<td>818004</td>
+			<td>repeated added member</td>
+			<td>重复添加</td>
+		</tr>
+		<tr >
+			<td>818005</td>
+			<td>exceed max blacklist count</td>
+			<td>超过黑名单最大限制</td>
+		</tr>
+		<tr >
+			<td>818006</td>
+			<td>target not allow to add blacklist</td>
+			<td>目标用户列表中存在不允许加入黑名单的用户</td>
+		</tr>
+		<tr >
 			<td>819001</td>
 			<td>zero member</td>
 			<td>用户移除好友出黑名单时，成员列表为空，操作失败</td>
@@ -538,6 +563,16 @@ JMessage 服务器端报的错误码。有可能出现在各平台的 SDK 里。
 		  <td>819002</td>
 			<td>member not exist</td>
 			<td>用户删除黑名单时，成员列表中有成员不存在，删除失败</td>
+		</tr>
+		<tr >
+		  <td>819003</td>
+			<td>repeated deleted member</td>
+			<td>重复删除</td>
+		</tr>
+		<tr >
+		  <td>819004</td>
+			<td>target not in blacklist</td>
+			<td>待删除的黑名单用户不在黑名单中</td>
 		</tr>
 		<tr >
 			<td>831001</td>
@@ -760,6 +795,16 @@ JMessage 服务器端报的错误码。有可能出现在各平台的 SDK 里。
 			<td>目标群组类型不支持申请入群</td>
 		</tr>
 		<tr>
+			<td>786001</td>
+			<td>length of group announcement exceed limit</td>
+			<td>群公告长度超出上限</td>
+		</tr>
+		<tr>
+			<td>787001</td>
+			<td>announcement not exist</td>
+			<td>待删除公告不存在</td>
+		</tr>
+		<tr>
 			<td>765001</td>
 			<td>target not in group</td>
 			<td>目标用户不在群组中</td>
@@ -784,6 +829,7 @@ JMessage 服务器端报的错误码。有可能出现在各平台的 SDK 里。
 			<td>not enough rtc trial time</td>
 			<td>音视频服务试用时长不够，停用</td>
 		</tr>
+	
 </table>
 </div>
 

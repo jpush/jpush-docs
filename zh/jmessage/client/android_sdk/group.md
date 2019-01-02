@@ -840,3 +840,247 @@ JMessageClient.getGroupInfo(mGetId, new GetGroupInfoCallback() {
 });
 ```
 
+### 群公告
+
+#### 发布群公告
+*** Since 2.8.0 ***
+```
+    /**
+     * 发布群公告（只有群主和管理员有权限发送），选择是否向群中发布消息，sendMessage为true代表发送，false不发送<br/>
+     * 注意只有发送公告成功时才会向群中发布消息，创建的消息在回调中返回，如果发送公告失败或者创建消息失败则回调中message为null。<br/>
+     * 消息的发送是否成功可以通过{@link cn.jpush.im.android.api.enums.MessageStatus}判断,
+     * <p>Message的extra里带有公告的实现，key为""jmessage_group_announcement"， value为jsonString:
+     * <pre>
+     * {"id": 公告id,"text":"公告内容text,"publisher_uid"：发布者uid,"ctime" : 公告发布时间,"gid":群组id}
+     * <pre/>
+     * 获取方式如下:
+     * <pre>
+     * String announceJson = message.getContent.getStringExtras("jmessage_group_announcement");
+     * </pre></p>
+     * 可自己通过字段去解析json字符串，也可通过{@link GroupAnnouncement#fromJson(String)}得到公告对象
+     * 如果needSendMessage为false, 回调中message一直为null。<br/>
+     * 群公告最多100条，超过老的将会被删除，发布群公告成功时群内所有人会收到{@link cn.jpush.im.android.api.event.GroupAnnouncementChangedEvent}
+     * @param text 公告内容字节数不能超过1K(utf-8)
+     * @param needSendMessage 是否需要发送消息
+     * @param callback PublishAnnouncementCallback 回调中包含创建的公告和消息
+     * @since 2.8.0
+     */
+    groupInfo.publishGroupAnnouncement(String text, Boolean needSendMessage, PublishAnnouncementCallback callback);
+``` 
+
+#### 获取群公告
+*** Since 2.8.0 ***
+```
+    /**
+     * 按照顺序(置顶时间倒序，创建时间倒序)获取群内所有公告.<br/>
+     *
+     * @param callback 回调,如果获取成功但群没有公告则返回一个empty list
+     * @since 2.8.0
+     */
+    groupInfo.getAnnouncementsByOrder(RequestCallback<List<GroupAnnouncement>> callback);
+```
+
+#### 删除群公告
+*** Since 2.8.0 ***
+```
+    /**
+     * 删除群内指定id的公告，只有群主和管理员有权限删除<br/>
+     * 删除群公告成功时群内所有成员会收到{@link cn.jpush.im.android.api.event.GroupAnnouncementChangedEvent}
+	 *
+     * @param announceID 公告id 通过{@link GroupAnnouncement#getAnnounceID()}获取
+     * @param callback 回调
+     * @since 2.8.0
+     */
+    groupInfo.delGroupAnnouncement(int announceID, BasicCallback callback);
+```
+
+#### 置顶群公告
+*** Since 2.8.0 ***
+```
+    /**
+     * 设置置顶状态,本设置为改变置顶状态和置顶时间，同时会导致公告的排序发生改变{@link #getAnnouncementsByOrder(RequestCallback)}<br/>
+     * 设置成功时，群内所有成员会收到{@link cn.jpush.im.android.api.event.GroupAnnouncementChangedEvent}
+     *
+     * @param announceID 公告id, 通过{@link GroupAnnouncement#getAnnounceID()}获取
+     * @param isTop true置顶， false取消置顶
+     * @param callback 回调
+     * @since 2.8.0
+     */
+groupInfo.setTopAnnouncement(int announceID, boolean isTop, BasicCallback callback);
+```
+**群公告相关代码示例**
+```
+// 发布群公告
+String text = mEtText.getText().toString();
+boolean needSendMessage = Boolean.valueOf(mEtSendMessage.getText().toString());
+groupInfo.publishGroupAnnouncement(text, needSendMessage, new PublishAnnouncementCallback() {
+	@Override
+	public void gotResult(int responseCode, String responseMessage, GroupAnnouncement announcement, Message message) {
+		if (ErrorCode.NO_ERROR == responseCode) {
+			Toast.makeText(getApplicationContext(), "发布公告成功", Toast.LENGTH_SHORT).show();
+		} else {
+			Toast.makeText(getApplicationContext(), "发布公告失败", Toast.LENGTH_SHORT).show();
+			mTvResult.setText("responseCode:" + responseCode + "\nresponseMessage:" + responseMessage);
+		}
+	}
+});
+
+// 获取群公告
+groupInfo.getAnnouncementsByOrder(new RequestCallback<List<GroupAnnouncement>>() {
+	@Override
+	public void gotResult(int responseCode, String responseMessage, List<GroupAnnouncement> announcements) {
+		if (ErrorCode.NO_ERROR == responseCode) {
+			StringBuilder result = new StringBuilder();
+			for (GroupAnnouncement announcement : announcements) {
+				result.append("公告ID:" + announcement.getAnnounceID() + "\n");
+				result.append("公告内容:" + announcement.getText() + "\n");
+				result.append("公告创建时间:" + announcement.getCtime() + "\n");
+				result.append("公告是否置顶:" + announcement.isTop() + "\n");
+				result.append("公告置顶时间:" + announcement.getTopTime() + "\n");
+				result.append("公告发布者(username):" + announcement.getPublisher().getUserName() + "\n\n");
+			}
+			Toast.makeText(getApplicationContext(), "获取公告成功", Toast.LENGTH_SHORT).show();
+			mTvResult.setText(result.toString());
+		} else {
+			Toast.makeText(getApplicationContext(), "获取公告失败", Toast.LENGTH_SHORT).show();
+			mTvResult.setText("responseCode:" + responseCode + "\nresponseMessage:" + responseMessage);
+		}
+	}
+});
+
+// 删除群公告
+try {
+	int announceID = Integer.valueOf(mEtAnnounceID.getText().toString());
+	groupInfo.delGroupAnnouncement(announceID, new BasicCallback() {
+		@Override
+		public void gotResult(int responseCode, String responseMessage) {
+			if (ErrorCode.NO_ERROR == responseCode) {
+				Toast.makeText(getApplicationContext(), "删除公告成功", Toast.LENGTH_SHORT).show();
+			} else {
+				Toast.makeText(getApplicationContext(), "删除公告失败", Toast.LENGTH_SHORT).show();
+				mTvResult.setText("responseCode:" + responseCode + "\nresponseMessage:" + responseMessage);
+			}
+		}
+	});
+} catch (NumberFormatException e) {
+	Toast.makeText(getApplicationContext(), "请输入合法公告ID", Toast.LENGTH_SHORT).show();
+}
+
+// 置顶群公告
+try {
+	int announceID = Integer.valueOf(mEtAnnounceID.getText().toString());
+	groupInfo.setTopAnnouncement(announceID, isTop, new BasicCallback() {
+		@Override
+		public void gotResult(int responseCode, String responseMessage) {
+			StringBuilder result = new StringBuilder();
+			result.append(isTop ? "置顶" : "取消置顶");
+			if (ErrorCode.NO_ERROR == responseCode) {
+				result.append("成功");
+				Toast.makeText(getApplicationContext(), result.toString(), Toast.LENGTH_SHORT).show();
+			} else {
+				result.append("失败");
+				Toast.makeText(getApplicationContext(), result.toString(), Toast.LENGTH_SHORT).show();
+				mTvResult.setText("responseCode:" + responseCode + "\nresponseMessage:" + responseMessage);
+			}
+		}
+	});
+} catch (NumberFormatException e) {
+	Toast.makeText(getApplicationContext(), "请输入合法公告ID", Toast.LENGTH_SHORT).show();
+}
+```
+
+### 群组黑名单
+群黑名单用以屏蔽某些不良用户, 被加入黑名单的用户无法再次加入该群组除非从黑名单中移除，如果被加入黑名单的用户已经在群中会被踢出群。
+
+#### 将用户添加至黑名单
+*** Since 2.8.0 ***
+```
+    /**
+     * 将用户加到群组黑名单，只有群主和管理员有此权限, 被加入黑名单的用户如果在群内会被踢出群组，黑名单中的用户无法再加入群组<br/>
+     * 操作成功后群内成员将收到群黑名单变更事件{@link cn.jpush.im.android.api.event.GroupBlackListChangedEvent}
+     *
+     * @param userInfos 准备加入黑名单的用户userInfo集合
+     * @param callback 回调
+     * @since 2.8.0
+     */
+    groupInfo.addGroupBlacklist(List<UserInfo> userInfos, BasicCallback callback);
+```
+
+#### 将用户从群组黑名单中移除
+*** Since 2.8.0 ***
+```
+    /**
+     * 将用户从群组黑名单中移除，只有群主和管理员有此权限.<br/>
+     * 操作成功后群内成员将收到群黑名单变更事件{@link cn.jpush.im.android.api.event.GroupBlackListChangedEvent}
+     *
+     * @param userInfos 准备移出黑名单的用户userInfo集合
+     * @param callback 回调
+     * @since 2.8.0
+     */
+    groupInfo.delGroupBlacklist(List<UserInfo> userInfos, BasicCallback callback);
+```
+
+#### 获取群组黑名单用户列表
+*** Since 2.8.0 ***
+```
+    /**
+     * 获取群组的黑名单用户列表, 按照被拉黑时间倒序排列
+     *
+     * @param callback 回调
+     * @since 2.8.0
+     */
+    groupInfo.getGroupBlackList(RequestCallback<List<UserInfo>> callback);
+```
+
+**群组黑名单代码相关示例**
+```
+// 将用户加到群组黑名单
+groupInfo.addGroupBlacklist(Collections.singletonList(info), new BasicCallback() {
+	@Override
+	public void gotResult(int responseCode, String responseMessage) {
+		if (ErrorCode.NO_ERROR == responseCode) {
+			Toast.makeText(getApplicationContext(), "添加成功", Toast.LENGTH_SHORT).show();
+		} else {
+			Toast.makeText(getApplicationContext(), "添加失败", Toast.LENGTH_SHORT).show();
+			mTvShowResult.setText("添加用户到黑名单失败:\n" + "responseCode:" + responseCode + "\nresponseMessage:" + responseMessage);
+		}
+	}
+});
+
+// 将用户从群组黑名单中移除
+groupInfo.delGroupBlacklist(Collections.singletonList(info), new BasicCallback() {
+	@Override
+	public void gotResult(int responseCode, String responseMessage) {
+		if (ErrorCode.NO_ERROR == responseCode) {
+			Toast.makeText(getApplicationContext(), "移除成功", Toast.LENGTH_SHORT).show();
+		} else {
+			Toast.makeText(getApplicationContext(), "移除失败", Toast.LENGTH_SHORT).show();
+			mTvShowResult.setText("将用户从黑名单中移除失败:\n" + "responseCode:" + responseCode + "\nresponseMessage:" + responseMessage);
+		}
+	}
+});
+
+// 获取群组黑名单用户列表
+groupInfo.getGroupBlackList(new RequestCallback<List<UserInfo>>() {
+	@Override
+	public void gotResult(int responseCode, String responseMessage, List<UserInfo> result) {
+		if (ErrorCode.NO_ERROR == responseCode) {
+			Toast.makeText(getApplicationContext(), "获取成功", Toast.LENGTH_SHORT).show();
+			StringBuilder builder = new StringBuilder();
+			if (result.size() > 0) {
+				builder.append("群组黑名单:\n");
+				for (UserInfo userInfo : result) {
+					builder.append("用户名:").append(userInfo.getUserName()).append("\n");
+					builder.append("appKey:").append(userInfo.getAppKey()).append("\n\n");
+				}
+			} else {
+				builder.append("群组的黑名单为空");
+			}
+			mTvShowResult.setText(builder.toString());
+		} else {
+			Toast.makeText(getApplicationContext(), "获取失败", Toast.LENGTH_SHORT).show();
+			mTvShowResult.setText("获取群黑名单失败:\n" + "responseCode:" + responseCode + "\nresponseMessage:" + responseMessage);
+		}
+	}
+});
+```

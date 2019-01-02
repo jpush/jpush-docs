@@ -196,6 +196,101 @@ ChatRoomMessageEvent
 ```
 用户进入聊天室之后，收到聊天室消息时，sdk会主动上抛此事件通知上层，具体处理方法见[事件处理](./event)一节。
 
+### 聊天室管理员
+***Since 2.8.0***
+
+#### 设置聊天室管理员
+***Since 2.8.0***
+```
+    /**
+     * 将指定用户设置为聊天室的房管,只有房主有此权限，房管可设置聊天室的黑名单
+     *
+     * @param roomID 聊天室的roomID
+     * @param userInfos 准备设置为房管的用户UserInfo列表
+     * @param callback 回调
+     * @since 2.8.0
+     */
+    ChatRoomManager.addChatRoomAdmin(long roomID, List<UserInfo> userInfos, BasicCallback callback);
+```
+
+#### 取消聊天室管理员
+***Since 2.8.0***
+```
+    /**
+     * 取消指定用户的聊天室房管身份，只有房主有此权限
+     *
+     * @param roomID 聊天室的roomID
+     * @param userInfos 准备取消房管的用户UserInfo列表
+     * @param callback 回调
+     * @since 2.8.0
+     */
+    ChatRoomManager.delChatRoomAdmin(long roomID, List<UserInfo> userInfos, BasicCallback callback);
+```
+
+#### 获取聊天室管理员用户列表
+***Since 2.8.0***
+```
+    /**
+     * 获取聊天室的房管用户列表
+     *
+     * @param roomID 聊天室的roomID
+     * @param callback 回调
+     * @since 2.8.0
+     */
+    ChatRoomManager.getChatRoomAdminList(long roomID, RequestCallback<List<UserInfo>> callback);
+```
+
+### 聊天室黑名单
+***Since 2.8.0***
+
+#### 将用户添加至聊天室黑名单
+***Since 2.8.0***
+```
+    /**
+     * 将用户添加至聊天室黑名单，只有聊天室的房主和房管有此权限, 被设置黑名单用户会被立即踢出聊天室。
+     *
+     * @param roomID 聊天室的roomID
+     * @param userInfos 准备加入聊天室黑名单的用户userInfo集合
+     * @param callback
+     * @since 2.8.0
+     */
+    ChatRooomManager.addChatRoomBlacklist(long roomID, List<UserInfo> userInfos, BasicCallback callback);
+```
+
+####  将用户从聊天室黑名单中移除
+***Since 2.8.0***
+```
+    /**
+     * 将用户从聊天室黑名单中移除，只有聊天室的房主和房管有此权限
+     *
+     * @param roomID 聊天室的roomID
+     * @param userInfos 准备移出聊天室黑名单的用户userInfo集合
+     * @param callback 回调
+     * @since 2.8.0
+     */
+    ChatRooomManager.delChatRoomBlacklist(long roomID, List<UserInfo> userInfos, BasicCallback callback);
+```
+
+#### 获取聊天室的黑名单用户列表
+***Since 2.8.0***
+```
+    /**
+     * 获取聊天室的黑名单用户列表,按照被拉黑时间倒序排列
+     *
+     * @param roomID 聊天室的roomID
+     * @param callback 回调
+     * @since 2.8.0
+     */
+    ChatRoomManager.getChatRoomBlacklist(long roomID, RequestCallback<List<UserInfo>> callback);
+```
+
+### 聊天室通知事件
+聊天室管理员和黑名单变更时会下发此事件
+***Since 2.8.0***
+```
+ChatRoomNotificationEvent
+```
+
 ### 聊天室相关代码示例
 ```
 // 获取当前应用appkey所属下聊天室信息
@@ -270,6 +365,94 @@ public void onEventMainThread(ChatRoomMessageEvent event) {
 		postMessageToDisplay("MessageReceived", event.getResponseCode(), event.getResponseDesc(), msg);
 	}
 }
+
+// 设置聊天室管理员
+ChatRoomManager.addChatRoomAdmin(roomID, Collections.singletonList(info), new BasicCallback() {
+	@Override
+	public void gotResult(int responseCode, String responseMessage) {
+		if (0 == responseCode) {
+			postTextToDisplay("addChatRoomAdmin", responseCode, responseMessage, null);
+		} else {
+			postTextToDisplay("addChatRoomAdmin", responseCode, responseMessage, "设置房管失败");
+		}
+	}
+});
+
+// 取消聊天室管理员
+ChatRoomManager.delChatRoomAdmin(roomID, Collections.singletonList(info), new BasicCallback() {
+	@Override
+	public void gotResult(int responseCode, String responseMessage) {
+		if (0 == responseCode) {
+			postTextToDisplay("delChatRoomAdmin", responseCode, responseMessage, null);
+		} else {
+			postTextToDisplay("delChatRoomAdmin", responseCode, responseMessage, "取消房管失败");
+		}
+	}
+});
+
+// 获取聊天室管理员用户列表
+ChatRoomManager.getChatRoomAdminList(roomID, new RequestCallback<List<UserInfo>>() {
+	@Override
+	public void gotResult(int responseCode, String responseMessage, List<UserInfo> result) {
+		if (0 == responseCode) {
+			StringBuilder builder = new StringBuilder();
+			if (result.size() > 0) {
+				for (UserInfo userInfo : result) {
+					builder.append(userInfo.getUserName()).append("\n");
+				}
+			} else {
+				builder.append("该聊天室还没有房管");
+			}
+			postTextToDisplay("getChatRoomAdminList", responseCode, responseMessage, builder.toString());
+		} else {
+			postTextToDisplay("getChatRoomAdminList", responseCode, responseMessage, "获取聊天室房管列表失败");
+		}
+	}
+});
+
+//  将用户添加至聊天室黑名单
+ChatRoomManager.addChatRoomBlacklist(roomID, Collections.singletonList(info), new BasicCallback() {
+	@Override
+	public void gotResult(int responseCode, String responseMessage) {
+		if (0 == responseCode) {
+			postTextToDisplay("addChatRoomBlacklist", responseCode, responseMessage, null);
+		} else {
+			postTextToDisplay("addChatRoomBlacklist", responseCode, responseMessage, "添加聊天室黑名单失败");
+		}
+	}
+});
+
+// 将用户从聊天室黑名单中移除
+ChatRoomManager.delChatRoomBlacklist(roomID, Collections.singletonList(info), new BasicCallback() {
+	@Override
+	public void gotResult(int responseCode, String responseMessage) {
+		if (0== responseCode) {
+			postTextToDisplay("delChatRoomBlacklist", responseCode, responseMessage, null);
+		} else {
+			postTextToDisplay("delChatRoomBlacklist", responseCode, responseMessage, "从黑名单中移除失败");
+		}
+	}
+});
+
+// 获取聊天室的黑名单用户列表
+ChatRoomManager.getChatRoomBlacklist(roomID, new RequestCallback<List<UserInfo>>() {
+	@Override
+	public void gotResult(int responseCode, String responseMessage, List<UserInfo> result) {
+		if (0 == responseCode) {
+			StringBuilder builder = new StringBuilder();
+			if (result.size() > 0) {
+				for (UserInfo userInfo : result) {
+					builder.append(userInfo.getUserName()).append("\n");
+				}
+			} else {
+				builder.append("该聊天室黑名单列表为空");
+			}
+			postTextToDisplay("getChatRoomAdminList", responseCode, responseMessage, builder.toString());
+		} else {
+			postTextToDisplay("getChatRoomAdminList", responseCode, responseMessage, "获取聊天室黑名单列表失败");
+		}
+	}
+});
 ```
 
 

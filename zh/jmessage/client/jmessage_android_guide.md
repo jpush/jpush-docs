@@ -104,8 +104,8 @@
         dependencies {
             ......
 
-            compile 'cn.jiguang.sdk:jmessage:2.7.1'  // 此处以JMessage 2.7.1 版本为例。
-            compile 'cn.jiguang.sdk:jcore:1.2.5'  // 此处以JCore 1.2.5 版本为例。
+            compile 'cn.jiguang.sdk:jmessage:2.8.0'  // 此处以JMessage 2.8.0 版本为例。
+            compile 'cn.jiguang.sdk:jcore:1.2.6'  // 此处以JCore 1.2.6 版本为例。
             ......
         }
 
@@ -279,7 +279,7 @@ defaultConfig {
             android:exported="false">
         </receiver>
         
-        <!-- since 1.8.0 option 可选项。用于同一设备中不同应用的 jiguang 服务相互拉起的功能。 -->
+        <!-- since JCore 1.8.0 option 可选项。用于同一设备中不同应用的 jiguang 服务相互拉起的功能。 -->
         <!-- 若不启用该功能可删除该组件，或把 enabled 设置成 false ；拉起服务被关闭，App 不会通过拉起服务拉起其他的 App，也不会被其他 App 拉起。 -->
          <service
              android:name="cn.jpush.android.service.DaemonService"
