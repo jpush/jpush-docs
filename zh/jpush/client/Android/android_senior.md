@@ -191,7 +191,8 @@ JPush 通知推送到客户端时，默认使用手机的默认设置来显示�
 	                          R.layout.customer_notitfication_layout,
 	                          R.id.icon,
 	                          R.id.title,
-	                          R.id.text); 
+	                          R.id.text,
+	                          R.id.time); 
 	                         // 指定定制的 Notification Layout
 	builder.statusBarDrawable = R.drawable.your_notification_icon;     
 	// 指定最顶层状态栏小图标
