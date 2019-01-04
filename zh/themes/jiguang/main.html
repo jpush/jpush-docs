@@ -8,6 +8,18 @@
 <link href="{{ base_url }}/css/jiguang.css" rel="stylesheet">
 {%- endblock %}
 
+{%- block htmltitle %}
+<title>
+    {%- if nav|length>1 %}
+        {%- for menu in nav if menu.children %}
+            {%- if menu.active %} 极光{{ menu.title }} {%- endif %}
+        {%- endfor %}
+    {%- endif %}
+
+    {% if page and page.title and not page.is_homepage %} - {{ page.title }} - {% endif %}{{ config.site_name }}
+</title>
+{%- endblock %}
+
 {%- block libs %}
 <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
