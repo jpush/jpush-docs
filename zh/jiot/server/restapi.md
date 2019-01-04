@@ -17,7 +17,7 @@ curl --insecure -X POST -v http://api.iot.jiguang.cn/device/v1/propertyset -H "C
 | 关键字 | 类型 | 选项  | 含义 | 说明 |
 | --- | --- | --- | --- | --- |
 | device_name | string | 必填 | 待设置属性的设备名称 |  |
-| seq_no | int | 必填 | 应用端的对于该该操作的id |  |
+| seq_no | string | 必填 | 应用端的对于该该操作的id |  |
 | version | int | 必填 | 属性设置操作的版本id |  |
 | properties | array | 必填 | 待设置的属性项数组 |  |
 | name | string | 必填 | 属性项名称 |  |
@@ -65,7 +65,7 @@ curl --insecure -X POST -v http://api.iot.jiguang.cn/msg/v1/msgpub -H "Content-T
 
 | 关键字 | 类型 | 选项 | 含义 | 说明 |
 |--------|------|------|------|------|
-| seq_no | int | 必选 | 应用端的对于该该操作的id | |
+| seq_no | string | 必选 | 应用端的对于该该操作的id | |
 | msg_body | string | 必选 | 发送的消息体的内容 | 二进制内容需先用base64 编码。 最大长度 2048 byte。|
 | device_name | string | 必选 | 需要发送消息到的设备名称 | |
 
