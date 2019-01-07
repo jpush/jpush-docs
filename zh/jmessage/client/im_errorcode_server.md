@@ -695,6 +695,11 @@ JMessage 服务器端报的错误码。有可能出现在各平台的 SDK 里。
 			<td>邀请或加入聊天时，邀请的人员数量超过聊天室剩余加入的人员数量</td>
 		</tr>
 		<tr>
+			<td>851007</td>
+			<td>members have been blacklisted</td>
+			<td>邀请或加入聊天室时，邀请或加入的人员已被列入了黑名单</td>
+		</tr>
+		<tr>
 			<td>852001</td>
 			<td>user not in chatroom</td>
 			<td>踢出或退出聊天室时，该用户其实并不在该聊天室中，踢出或退出聊天室失败</td>
@@ -813,6 +818,91 @@ JMessage 服务器端报的错误码。有可能出现在各平台的 SDK 里。
 			<td>765002</td>
 			<td>request user no permission</td>
 			<td>请求用户无操作权限</td>
+		</tr>
+		<tr>
+			<td>7130001</td>
+			<td>request user no permission</td>
+			<td>用户没有权限设置管理员</td>
+		</tr>
+		<tr>
+			<td>7130002</td>
+			<td>set member is admin</td>
+			<td>设置为管理员的成员已经是管理员</td>
+		</tr>
+		<tr>
+			<td>7130003</td>
+			<td>set member is owner</td>
+			<td>设置为管理员的成员是个聊天室owner</td>
+		</tr>
+		<tr>
+			<td>7130004</td>
+			<td>exceed admin max count</td>
+			<td>超过管理员最大数量</td>
+		</tr>
+		<tr>
+			<td>7130005</td>
+			<td>chatroom not exist</td>
+			<td>聊天室不存在</td>
+		</tr>
+		<tr>
+			<td>7130006</td>
+			<td>set member not exist</td>
+			<td>设置为管理员的成员不在聊天室中</td>
+		</tr>
+		<tr>
+			<td>7130007</td>
+			<td>set target to null</td>
+			<td>设置目标为空</td>
+		</tr>
+		<tr>
+			<td>7131001</td>
+			<td>request user no permission</td>
+			<td>用户没有权限删除管理员资格（只有owner才能删除管理员资格）</td>
+		</tr>
+		<tr>
+			<td>7131002</td>
+			<td>set member is not an admin</td>
+			<td>对不是管理员的用户删除其管理员资格</td>
+		</tr>
+		<tr>
+			<td>7132001</td>
+			<td>request user no permission</td>
+			<td>用户没有权限设置黑名单</td>
+		</tr>
+		<tr>
+			<td>7132002</td>
+			<td>owner can not be set to blacklist</td>
+			<td>owner不能被设为黑名单</td>
+		</tr>
+		<tr>
+			<td>7132003</td>
+			<td>admin can not be set to blacklist</td>
+			<td>管理员不能被设为黑名单</td>
+		</tr>
+		<tr>
+			<td>7132004</td>
+			<td>chatroom not exist</td>
+			<td>聊天室不存在</td>
+		</tr>
+		<tr>
+			<td>7132005</td>
+			<td>exceed blacklist max count</td>
+			<td>超过黑名单最大数量</td>
+		</tr>
+		<tr>
+			<td>7132006</td>
+			<td>set member has in the blacklist</td>
+			<td>添加黑名单的成员已在黑名单中</td>
+		</tr>
+		<tr>
+			<td>7132007</td>
+			<td>set target to null</td>
+			<td>设置目标为空</td>
+		</tr>
+		<tr>
+			<td>7133001</td>
+			<td>delete target not in blacklist</td>
+			<td>删除黑名单的成员不在黑名单中</td>
 		</tr>
 		<tr>
 			<td>7100001</td>
