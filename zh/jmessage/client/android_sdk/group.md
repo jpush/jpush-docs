@@ -436,11 +436,11 @@ groupInfo.removeGroupKeeper(userInfos, new BasicCallback() {
 });
 
 //获取管理员列表
-List<UserInfo> userInfos = groupInfo.getGroupKeepers();
+List<GroupMemberInfo> memberInfos = groupInfo.getGroupKeeperMemberInfos();
 String result = "这里只展示username:";
-for (UserInfo userInfo : userInfos) {
-	if (userInfo != null) {
-		result += "\n" + userInfo.getUserName();
+for (GroupMemberInfo memberInfo : memberInfos) {
+	if (memberInfo != null) {
+		result += "\n" + memberInfo.getUserInfo().getUserName();
 	}
 }
 mTvGroupKeeper.setText(result);
@@ -545,8 +545,8 @@ message.getAtUserList(GetUserInfoListCallback callback)
     Conversation conv = Conversation.createGroupConversation(gid);
     GroupInfo groupInfo = (GroupInfo) conv.getTargetInfo();
     List<UserInfo> atList = new ArrayList<UserInfo>();
-    atList.add(groupInfo.getGroupMemberInfo("user1", appkey));//获取到被@的群成员的userinfo，并填充到atList中去。
-    atList.add(groupInfo.getGroupMemberInfo("user2", appkey));
+    atList.add(groupInfo.getGroupMember("user1", appkey).getUserInfo());//获取到被@的群成员的userinfo，并填充到atList中去。
+    atList.add(groupInfo.getGroupMember("user2", appkey).getUserInfo());
     
     //创建一条带有atList的消息。
     Message msg = conv.createSendMessage(new TextContent("a message with atList!"), atList, null);
@@ -809,10 +809,10 @@ JMessageClient.getGroupInfo(mGetId, new GetGroupInfoCallback() {
 	public void gotResult(int responseCode, String responseMessage, GroupInfo groupInfo) {
 		mProgressDialog.dismiss();
 		if (responseCode == 0) {
-			List<UserInfo> silenceMembers = groupInfo.getGroupSilenceMembers();
+			List<GroupMemberInfo> silenceMembers = groupInfo.getGroupSilenceMemberInfos();
 			StringBuilder sb = new StringBuilder();
-			for (UserInfo info : silenceMembers) {
-				sb.append(info.getUserName());
+			for (GroupMemberInfo info : silenceMembers) {
+				sb.append(info.getUserInfo().getUserName());
 				sb.append("\n");
 			}
 			mTv_showGroupInfo.append("群成员禁言信息列表(这里获取name,需要其他信息请自行获取)：\n" + sb.toString());
