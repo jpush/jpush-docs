@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 
-	<title>JMSGGroupMemberType Constants Reference</title>
+	<title>JMSGChatRoomEventType Constants Reference</title>
 
 	<link rel="stylesheet" href="../css/style.css">
 	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
@@ -59,7 +59,7 @@
 		<div id="overview_contents" class="container">
 			<div id="content">
 				<main role="main">
-					<h1 class="title">JMSGGroupMemberType Constants Reference</h1>
+					<h1 class="title">JMSGChatRoomEventType Constants Reference</h1>
 
 					
 					<div class="section section-specification"><table cellspacing="0"><tbody>
@@ -75,11 +75,13 @@
 					
 
                     
-                    <h3 class="subsubtitle method-title">JMSGGroupMemberType</h3>
+                    <h3 class="subsubtitle method-title">JMSGChatRoomEventType</h3>
                     
 					
 					<div class="section section-overview">
-                        <p>群成员类型</p>
+                        <p>聊天室事件类型</p>
+
+<h4>上层通过 <a href="../Protocols/JMSGEventDelegate.html">JMSGEventDelegate</a> 类里的方法来监听此类事件</h4>
 					</div>
 					
 					
@@ -87,13 +89,15 @@
                         <!-- display enum values -->
                         
                         <h4 class="method-subtitle">Definition</h4>
-                        <code>typedef NS_ENUM(NSInteger, JMSGGroupMemberType ) {<br>
+                        <code>typedef NS_ENUM(NSInteger, JMSGChatRoomEventType ) {<br>
                             
-                            &nbsp;&nbsp; <a href="">kJMSGGroupMemberTypeOrdinary</a> = 0,<br>
+                            &nbsp;&nbsp; <a href="">kJMSGEventNotificationChatRoomAddAdmin</a> = 130,<br>
                             
-                            &nbsp;&nbsp; <a href="">kJMSGGroupMemberTypeOwner</a> = 1,<br>
+                            &nbsp;&nbsp; <a href="">kJMSGEventNotificationChatRoomDelAdmin</a> = 131,<br>
                             
-                            &nbsp;&nbsp; <a href="">kJMSGGroupMemberTypeAdmin</a> = 2,<br>
+                            &nbsp;&nbsp; <a href="">kJMSGEventNotificationChatRoomAddBlacklist</a> = 132,<br>
+                            
+                            &nbsp;&nbsp; <a href="">kJMSGEventNotificationChatRoomDelBlacklist</a> = 133,<br>
                             
                             };</code>
                     
@@ -103,11 +107,11 @@
                         <h4 class="method-subtitle">Constants</h4>
                         <dl class="termdef">
                             
-                            <dt><a name="" title="kJMSGGroupMemberTypeOrdinary"></a><code>kJMSGGroupMemberTypeOrdinary</code></dt>
+                            <dt><a name="" title="kJMSGEventNotificationChatRoomAddAdmin"></a><code>kJMSGEventNotificationChatRoomAddAdmin</code></dt>
 <dd>
 
 
-<p>普通成员</p>
+<p>事件类型：添加管理员</p>
 
 
 
@@ -120,11 +124,11 @@
 	
 </dd>
                             
-                            <dt><a name="" title="kJMSGGroupMemberTypeOwner"></a><code>kJMSGGroupMemberTypeOwner</code></dt>
+                            <dt><a name="" title="kJMSGEventNotificationChatRoomDelAdmin"></a><code>kJMSGEventNotificationChatRoomDelAdmin</code></dt>
 <dd>
 
 
-<p>群主</p>
+<p>事件类型：删除管理员</p>
 
 
 
@@ -137,11 +141,28 @@
 	
 </dd>
                             
-                            <dt><a name="" title="kJMSGGroupMemberTypeAdmin"></a><code>kJMSGGroupMemberTypeAdmin</code></dt>
+                            <dt><a name="" title="kJMSGEventNotificationChatRoomAddBlacklist"></a><code>kJMSGEventNotificationChatRoomAddBlacklist</code></dt>
 <dd>
 
 
-<p>管理员</p>
+<p>事件类型：添加黑名单</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">JMSGConstants.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="kJMSGEventNotificationChatRoomDelBlacklist"></a><code>kJMSGEventNotificationChatRoomDelBlacklist</code></dt>
+<dd>
+
+
+<p>事件类型：删除黑名单</p>
 
 
 

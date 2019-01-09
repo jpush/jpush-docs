@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 
-	<title>JMSGUserInfo Class Reference</title>
+	<title>JMSGGroupAnnouncement Class Reference</title>
 
 	<link rel="stylesheet" href="../css/style.css">
 	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
@@ -56,27 +56,37 @@
 	
 	<optgroup label="Properties">
 		
-		<option value="//api/name/nickname">nickname</option>
+		<option value="//api/name/announcementId">announcementId</option>
 		
-		<option value="//api/name/birthday">birthday</option>
+		<option value="//api/name/gid">gid</option>
 		
-		<option value="//api/name/signature">signature</option>
+		<option value="//api/name/text">text</option>
 		
-		<option value="//api/name/gender">gender</option>
+		<option value="//api/name/publisher">publisher</option>
 		
-		<option value="//api/name/region">region</option>
+		<option value="//api/name/publishTime">publishTime</option>
 		
-		<option value="//api/name/address">address</option>
+		<option value="//api/name/isTop">isTop</option>
 		
-		<option value="//api/name/avatarData">avatarData</option>
-		
-		<option value="//api/name/extras">extras</option>
+		<option value="//api/name/topTime">topTime</option>
 		
 	</optgroup>
 	
 
 	
+	<optgroup label="Class Methods">
+		
+		<option value="//api/name/fromJson:">+ fromJson:</option>
+		
+	</optgroup>
+	
 
+	
+	<optgroup label="Instance Methods">
+		
+		<option value="//api/name/toJsonString">- toJsonString</option>
+		
+	</optgroup>
 	
 	
 </select>
@@ -91,7 +101,7 @@
 		<div id="overview_contents" class="container">
 			<div id="content">
 				<main role="main">
-					<h1 class="title">JMSGUserInfo Class Reference</h1>
+					<h1 class="title">JMSGGroupAnnouncement Class Reference</h1>
 
 					
 					<div class="section section-specification"><table cellspacing="0"><tbody>
@@ -100,7 +110,7 @@
 	<td>NSObject</td>
 </tr><tr>
 	<th>Declared in</th>
-	<td>JMSGUser.h</td>
+	<td>JMSGGroup.h</td>
 </tr>
 						</tbody></table></div>
 					
@@ -110,7 +120,7 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>用户信息类（用于修改用户信息、注册新用户）</p>
+						<p>群公告类</p>
 					</div>
 					
 					
@@ -126,8 +136,8 @@
 
 						<div class="task-list">
 							<div class="section-method">
-	<a name="//api/name/nickname" title="nickname"></a>
-	<h3 class="method-title"><code><a href="#//api/name/nickname">&nbsp;&nbsp;nickname</a></code>
+	<a name="//api/name/announcementId" title="announcementId"></a>
+	<h3 class="method-title"><code><a href="#//api/name/announcementId">&nbsp;&nbsp;announcementId</a></code>
 </h3>
 
 	<div class="method-info">
@@ -137,12 +147,12 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>昵称</p>
+				<p>公告 id</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *nickname</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign, readonly) UInt32 announcementId</code></div>
 
 		    
 			
@@ -160,15 +170,15 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">JMSGUser.h</code></p>
+				<p><code class="declared-in-ref">JMSGGroup.h</code></p>
 			</div>
 			
 			
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/birthday" title="birthday"></a>
-	<h3 class="method-title"><code><a href="#//api/name/birthday">&nbsp;&nbsp;birthday</a></code>
+	<a name="//api/name/gid" title="gid"></a>
+	<h3 class="method-title"><code><a href="#//api/name/gid">&nbsp;&nbsp;gid</a></code>
 </h3>
 
 	<div class="method-info">
@@ -178,12 +188,12 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>生日，格式：时间戳</p>
+				<p>群组 id</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSNumber *birthday</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) NSString *gid</code></div>
 
 		    
 			
@@ -201,15 +211,15 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">JMSGUser.h</code></p>
+				<p><code class="declared-in-ref">JMSGGroup.h</code></p>
 			</div>
 			
 			
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/signature" title="signature"></a>
-	<h3 class="method-title"><code><a href="#//api/name/signature">&nbsp;&nbsp;signature</a></code>
+	<a name="//api/name/text" title="text"></a>
+	<h3 class="method-title"><code><a href="#//api/name/text">&nbsp;&nbsp;text</a></code>
 </h3>
 
 	<div class="method-info">
@@ -219,12 +229,12 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>签名</p>
+				<p>公告内容</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *signature</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) NSString *text</code></div>
 
 		    
 			
@@ -242,15 +252,15 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">JMSGUser.h</code></p>
+				<p><code class="declared-in-ref">JMSGGroup.h</code></p>
 			</div>
 			
 			
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/gender" title="gender"></a>
-	<h3 class="method-title"><code><a href="#//api/name/gender">&nbsp;&nbsp;gender</a></code>
+	<a name="//api/name/publisher" title="publisher"></a>
+	<h3 class="method-title"><code><a href="#//api/name/publisher">&nbsp;&nbsp;publisher</a></code>
 </h3>
 
 	<div class="method-info">
@@ -260,12 +270,12 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>性别</p>
+				<p>发布者</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) JMSGUserGender gender</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) JMSGUser *publisher</code></div>
 
 		    
 			
@@ -283,15 +293,15 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">JMSGUser.h</code></p>
+				<p><code class="declared-in-ref">JMSGGroup.h</code></p>
 			</div>
 			
 			
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/region" title="region"></a>
-	<h3 class="method-title"><code><a href="#//api/name/region">&nbsp;&nbsp;region</a></code>
+	<a name="//api/name/publishTime" title="publishTime"></a>
+	<h3 class="method-title"><code><a href="#//api/name/publishTime">&nbsp;&nbsp;publishTime</a></code>
 </h3>
 
 	<div class="method-info">
@@ -301,12 +311,12 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>区域</p>
+				<p>发布时间</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *region</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign, readonly) UInt64 publishTime</code></div>
 
 		    
 			
@@ -324,15 +334,15 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">JMSGUser.h</code></p>
+				<p><code class="declared-in-ref">JMSGGroup.h</code></p>
 			</div>
 			
 			
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/address" title="address"></a>
-	<h3 class="method-title"><code><a href="#//api/name/address">&nbsp;&nbsp;address</a></code>
+	<a name="//api/name/isTop" title="isTop"></a>
+	<h3 class="method-title"><code><a href="#//api/name/isTop">&nbsp;&nbsp;isTop</a></code>
 </h3>
 
 	<div class="method-info">
@@ -342,12 +352,12 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>地址</p>
+				<p>是否置顶</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *address</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign, readonly) BOOL isTop</code></div>
 
 		    
 			
@@ -365,15 +375,15 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">JMSGUser.h</code></p>
+				<p><code class="declared-in-ref">JMSGGroup.h</code></p>
 			</div>
 			
 			
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/avatarData" title="avatarData"></a>
-	<h3 class="method-title"><code><a href="#//api/name/avatarData">&nbsp;&nbsp;avatarData</a></code>
+	<a name="//api/name/topTime" title="topTime"></a>
+	<h3 class="method-title"><code><a href="#//api/name/topTime">&nbsp;&nbsp;topTime</a></code>
 </h3>
 
 	<div class="method-info">
@@ -383,12 +393,12 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>头像数据，注意：注册新用户时不支持同时上传头像</p>
+				<p>置顶时间</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSData *avatarData</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign, readonly) UInt64 topTime</code></div>
 
 		    
 			
@@ -406,15 +416,15 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">JMSGUser.h</code></p>
+				<p><code class="declared-in-ref">JMSGGroup.h</code></p>
 			</div>
 			
 			
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/extras" title="extras"></a>
-	<h3 class="method-title"><code><a href="#//api/name/extras">&nbsp;&nbsp;extras</a></code>
+	<a name="//api/name/toJsonString" title="toJsonString"></a>
+	<h3 class="method-title"><code><a href="#//api/name/toJsonString">&ndash;&nbsp;toJsonString</a></code>
 </h3>
 
 	<div class="method-info">
@@ -424,12 +434,12 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>信息扩展字段，value 仅支持 NSString 类型</p>
+				<p>公告对象转换为 JSON 字符串的表示。</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSDictionary *extras</code></div>
+			<div class="method-subsection method-declaration"><code>- (NSString *JMSG_NULLABLE)toJsonString</code></div>
 
 		    
 			
@@ -447,7 +457,53 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">JMSGUser.h</code></p>
+				<p><code class="declared-in-ref">JMSGGroup.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/fromJson:" title="fromJson:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/fromJson:">+&nbsp;fromJson:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>JSON 字符串 转换为 公告对象。</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (JMSGGroupAnnouncement *JMSG_NULLABLE)fromJson:(NSString *JMSG_NONNULL)<em>json</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>失败时返回 nil</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGGroup.h</code></p>
 			</div>
 			
 			
