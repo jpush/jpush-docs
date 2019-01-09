@@ -142,11 +142,23 @@
 		
 		<option value="//api/name/groupSilenceMembers">- groupSilenceMembers</option>
 		
-		<option value="//api/name/isAdminMemberWithUsername:appKey:">- isAdminMemberWithUsername:appKey:</option>
+		<option value="//api/name/groupAnnouncementList:">- groupAnnouncementList:</option>
+		
+		<option value="//api/name/publishGroupAnnouncement:sendMessage:handler:">- publishGroupAnnouncement:sendMessage:handler:</option>
+		
+		<option value="//api/name/deleteGroupAnnouncement:handler:">- deleteGroupAnnouncement:handler:</option>
+		
+		<option value="//api/name/setGroupAnnouncementTop:announcementID:handler:">- setGroupAnnouncementTop:announcementID:handler:</option>
+		
+		<option value="//api/name/groupBlacklistHandler:">- groupBlacklistHandler:</option>
+		
+		<option value="//api/name/addGroupBlacklistWithUsernames:appKey:handler:">- addGroupBlacklistWithUsernames:appKey:handler:</option>
+		
+		<option value="//api/name/deleteGroupBlacklistWithUsernames:appKey:handler:">- deleteGroupBlacklistWithUsernames:appKey:handler:</option>
 		
 		<option value="//api/name/groupAdminMembers">- groupAdminMembers</option>
 		
-		<option value="//api/name/transferGroupOwnerWithUsername:appKey:completionHandler:">- transferGroupOwnerWithUsername:appKey:completionHandler:</option>
+		<option value="//api/name/isAdminMemberWithUsername:appKey:">- isAdminMemberWithUsername:appKey:</option>
 		
 		<option value="//api/name/addGroupAdminWithUsername:appKey:completionHandler:">- addGroupAdminWithUsername:appKey:completionHandler:</option>
 		
@@ -165,6 +177,8 @@
 		<option value="//api/name/removeMembersWithUsernameArray:completionHandler:">- removeMembersWithUsernameArray:completionHandler:</option>
 		
 		<option value="//api/name/removeMembersWithUsernameArray:appKey:completionHandler:">- removeMembersWithUsernameArray:appKey:completionHandler:</option>
+		
+		<option value="//api/name/transferGroupOwnerWithUsername:appKey:completionHandler:">- transferGroupOwnerWithUsername:appKey:completionHandler:</option>
 		
 		<option value="//api/name/exit:">- exit:</option>
 		
@@ -2422,8 +2436,8 @@
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/isAdminMemberWithUsername:appKey:" title="isAdminMemberWithUsername:appKey:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/isAdminMemberWithUsername:appKey:">&ndash;&nbsp;isAdminMemberWithUsername:appKey:</a></code>
+	<a name="//api/name/groupAnnouncementList:" title="groupAnnouncementList:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/groupAnnouncementList:">&ndash;&nbsp;groupAnnouncementList:</a></code>
 </h3>
 
 	<div class="method-info">
@@ -2433,12 +2447,12 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>判断用户是否是管理员</p>
+				<p>获取群公告列表</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (BOOL)isAdminMemberWithUsername:(NSString *JMSG_NONNULL)<em>username</em> appKey:(NSString *JMSG_NULLABLE)<em>appKey</em></code></div>
+			<div class="method-subsection method-declaration"><code>- (void)groupAnnouncementList:(JMSGCompletionHandler JMSG_NULLABLE)<em>handler</em></code></div>
 
 		    
 			
@@ -2447,13 +2461,8 @@
 				<table class="argument-def parameter-def">
 				
 					<tr>
-						<th scope="row" class="argument-name"><code>username</code></th>
-						<td><p>待判断用户的用户名</p></td>
-					</tr>
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>appKey</code></th>
-						<td><p>待判断用户的appKey，若传入空则默认使用本应用appKey</p></td>
+						<th scope="row" class="argument-name"><code>handler</code></th>
+						<td><p>结果回调。resultObject 是 NSArray 类型，元素是 <a href="../Classes/JMSGGroupAnnouncement.html">JMSGGroupAnnouncement</a></p></td>
 					</tr>
 				
 				</table>
@@ -2462,6 +2471,430 @@
 
 			
 
+			
+			<div class="method-subsection availability">
+				<h4 class="method-subtitle parameter-title">Availability</h4>
+				<p>3.8.0</p>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGGroup.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/publishGroupAnnouncement:sendMessage:handler:" title="publishGroupAnnouncement:sendMessage:handler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/publishGroupAnnouncement:sendMessage:handler:">&ndash;&nbsp;publishGroupAnnouncement:sendMessage:handler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>发布群公告</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)publishGroupAnnouncement:(NSString *JMSG_NONNULL)<em>announcement</em> sendMessage:(BOOL)<em>sendMessage</em> handler:(JMSGCompletionHandler JMSG_NULLABLE)<em>handler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>announcement</code></th>
+						<td><p>公告内容，大小必须在 1KB 以内</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>sendMessage</code></th>
+						<td><p>发布成功后是否需要发一条消息通知群成员，默认：YES</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>handler</code></th>
+						<td><p>结果回调。resultObject 为 JMSGGroupAnnouncement对象， error 为 nil 表示成功.</p>
+
+<p>@discussion</p>
+
+<h4>注意：</h4>
+
+<p>如果 sendMessage = NO，则 SDK 不会自动发送消息，上层可以在回调或者收到事件后，自己发送消息；
+如果 sendMessage = YES，则在发布公告成功后 SDK 会自动在群里发布一条文本消息，文本内容就是公告内容，另外消息的 extras 里会附带公告的相关数据，上层可根据此数据将 message 对应到相应的公告， extras 里的 key-value 如下，</p>
+
+<pre><code>key(String)       = "jmessage_group_announcement"
+value(JsonString) = {
+"id" : 公告 id,
+"text" : 公告内容 text,
+"publisher_uid" : 发布者 uid,
+"ctime" : 公告发布时间,
+"isTop" : 是否置顶,
+"topTime" : 置顶时间,
+"gid" : 群 gid
+}
+</code></pre>
+
+<p>群公告最多100条，发布公告后会有对应事件下发，上层通过 <a href="../Protocols/JMSGGroupDelegate.html#//api/name/onReceiveGroupAnnouncementEvents:">[JMSGGroupDelegate onReceiveGroupAnnouncementEvents:]</a> 监听</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection availability">
+				<h4 class="method-subtitle parameter-title">Availability</h4>
+				<p>3.8.0</p>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGGroup.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/deleteGroupAnnouncement:handler:" title="deleteGroupAnnouncement:handler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/deleteGroupAnnouncement:handler:">&ndash;&nbsp;deleteGroupAnnouncement:handler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>删除群公告</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)deleteGroupAnnouncement:(NSString *JMSG_NONNULL)<em>announcementID</em> handler:(JMSGCompletionHandler JMSG_NULLABLE)<em>handler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>announcementID</code></th>
+						<td><p>公告id</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>handler</code></th>
+						<td><p>结果回调。error 为 nil 表示成功.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection availability">
+				<h4 class="method-subtitle parameter-title">Availability</h4>
+				<p>3.8.0</p>
+			</div>
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>删除公告后会有对应事件下发，上层通过 <a href="../Protocols/JMSGGroupDelegate.html#//api/name/onReceiveGroupAnnouncementEvents:">[JMSGGroupDelegate onReceiveGroupAnnouncementEvents:]</a> 监听</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGGroup.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setGroupAnnouncementTop:announcementID:handler:" title="setGroupAnnouncementTop:announcementID:handler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setGroupAnnouncementTop:announcementID:handler:">&ndash;&nbsp;setGroupAnnouncementTop:announcementID:handler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>置顶/取消置顶 群公告</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)setGroupAnnouncementTop:(BOOL)<em>isTop</em> announcementID:(NSString *JMSG_NONNULL)<em>ID</em> handler:(JMSGCompletionHandler JMSG_NULLABLE)<em>handler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>isTop</code></th>
+						<td><p>置顶参数，YES:置顶，NO:取消置顶</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>ID</code></th>
+						<td><p>公告 id</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>handler</code></th>
+						<td><p>结果回调。error 为 nil 表示成功.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection availability">
+				<h4 class="method-subtitle parameter-title">Availability</h4>
+				<p>3.8.0</p>
+			</div>
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>置顶公告后会有对应事件下发，上层通过 <a href="../Protocols/JMSGGroupDelegate.html#//api/name/onReceiveGroupAnnouncementEvents:">[JMSGGroupDelegate onReceiveGroupAnnouncementEvents:]</a> 监听</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGGroup.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/groupBlacklistHandler:" title="groupBlacklistHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/groupBlacklistHandler:">&ndash;&nbsp;groupBlacklistHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>群黑名单列表</p>
+
+<p>@handler 结果回调. resultObject 是 NSArray 类型，元素是 <a href="../Classes/JMSGUser.html">JMSGUser</a></p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)groupBlacklistHandler:(JMSGCompletionHandler JMSG_NULLABLE)<em>handler</em></code></div>
+
+		    
+			
+
+			
+
+			
+			<div class="method-subsection availability">
+				<h4 class="method-subtitle parameter-title">Availability</h4>
+				<p>3.8.0</p>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGGroup.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/addGroupBlacklistWithUsernames:appKey:handler:" title="addGroupBlacklistWithUsernames:appKey:handler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/addGroupBlacklistWithUsernames:appKey:handler:">&ndash;&nbsp;addGroupBlacklistWithUsernames:appKey:handler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>添加群黑名单</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)addGroupBlacklistWithUsernames:(NSArray&lt;__kindofNSString*&gt; *)<em>usernames</em> appKey:(NSString *JMSG_NULLABLE)<em>appKey</em> handler:(JMSGCompletionHandler JMSG_NULLABLE)<em>handler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>usernames</code></th>
+						<td><p>用户名列表</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>handler</code></th>
+						<td><p>结果回调。error 为 nil 表示成功.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>appkey</code></th>
+						<td><p>用户 appKey，usernames 中的所有用户必须在同一个 AppKey 下，不填则默认为本应用 appKey</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection availability">
+				<h4 class="method-subtitle parameter-title">Availability</h4>
+				<p>3.8.0</p>
+			</div>
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>黑名单上限100个，超出将无法设置成功，被拉入黑名单用户会被主动踢出群组，且无法再次加入.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGGroup.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/deleteGroupBlacklistWithUsernames:appKey:handler:" title="deleteGroupBlacklistWithUsernames:appKey:handler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/deleteGroupBlacklistWithUsernames:appKey:handler:">&ndash;&nbsp;deleteGroupBlacklistWithUsernames:appKey:handler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>删除群黑名单</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)deleteGroupBlacklistWithUsernames:(NSArray&lt;__kindofNSString*&gt; *)<em>usernames</em> appKey:(NSString *JMSG_NULLABLE)<em>appKey</em> handler:(JMSGCompletionHandler JMSG_NULLABLE)<em>handler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>usernames</code></th>
+						<td><p>用户名列表</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>handler</code></th>
+						<td><p>结果回调。error 为 nil 表示成功.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>appkey</code></th>
+						<td><p>用户 appKey，usernames 中的所有用户必须在同一个 AppKey 下，不填则默认为本应用 appKey</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection availability">
+				<h4 class="method-subtitle parameter-title">Availability</h4>
+				<p>3.8.0</p>
+			</div>
 			
 
 			
@@ -2531,8 +2964,8 @@
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/transferGroupOwnerWithUsername:appKey:completionHandler:" title="transferGroupOwnerWithUsername:appKey:completionHandler:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/transferGroupOwnerWithUsername:appKey:completionHandler:">&ndash;&nbsp;transferGroupOwnerWithUsername:appKey:completionHandler:</a></code>
+	<a name="//api/name/isAdminMemberWithUsername:appKey:" title="isAdminMemberWithUsername:appKey:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/isAdminMemberWithUsername:appKey:">&ndash;&nbsp;isAdminMemberWithUsername:appKey:</a></code>
 </h3>
 
 	<div class="method-info">
@@ -2542,12 +2975,12 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>移交群主</p>
+				<p>判断用户是否是管理员</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (void)transferGroupOwnerWithUsername:(NSString *JMSG_NONNULL)<em>username</em> appKey:(NSString *JMSG_NULLABLE)<em>appkey</em> completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)<em>handler</em></code></div>
+			<div class="method-subsection method-declaration"><code>- (BOOL)isAdminMemberWithUsername:(NSString *JMSG_NONNULL)<em>username</em> appKey:(NSString *JMSG_NULLABLE)<em>appKey</em></code></div>
 
 		    
 			
@@ -2557,17 +2990,12 @@
 				
 					<tr>
 						<th scope="row" class="argument-name"><code>username</code></th>
-						<td><p>新群主用户名</p></td>
+						<td><p>待判断用户的用户名</p></td>
 					</tr>
 				
 					<tr>
-						<th scope="row" class="argument-name"><code>appkey</code></th>
-						<td><p>新群主用户 AppKey，不填则默认为本应用 AppKey</p></td>
-					</tr>
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>handler</code></th>
-						<td><p>结果回调。error 为 nil 表示成功.</p></td>
+						<th scope="row" class="argument-name"><code>appKey</code></th>
+						<td><p>待判断用户的appKey，若传入空则默认使用本应用appKey</p></td>
 					</tr>
 				
 				</table>
@@ -3112,6 +3540,69 @@
 		</div>
 	</div>
 </div><div class="section-method">
+	<a name="//api/name/transferGroupOwnerWithUsername:appKey:completionHandler:" title="transferGroupOwnerWithUsername:appKey:completionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/transferGroupOwnerWithUsername:appKey:completionHandler:">&ndash;&nbsp;transferGroupOwnerWithUsername:appKey:completionHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>移交群主</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)transferGroupOwnerWithUsername:(NSString *JMSG_NONNULL)<em>username</em> appKey:(NSString *JMSG_NULLABLE)<em>appkey</em> completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)<em>handler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>username</code></th>
+						<td><p>新群主用户名</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>appkey</code></th>
+						<td><p>新群主用户 AppKey，不填则默认为本应用 AppKey</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>handler</code></th>
+						<td><p>结果回调。error 为 nil 表示成功.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGGroup.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
 	<a name="//api/name/exit:" title="exit:"></a>
 	<h3 class="method-title"><code><a href="#//api/name/exit:">&ndash;&nbsp;exit:</a></code>
 </h3>
@@ -3511,7 +4002,7 @@
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2018 HXHG. All rights reserved. Updated: 2018-09-04</p>
+						<p class="copyright">Copyright &copy; 2019 HXHG. All rights reserved. Updated: 2019-01-08</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

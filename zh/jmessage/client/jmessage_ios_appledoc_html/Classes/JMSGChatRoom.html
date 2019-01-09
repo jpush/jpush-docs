@@ -94,6 +94,18 @@
 		
 		<option value="//api/name/getChatRoomOwnerInfo:">- getChatRoomOwnerInfo:</option>
 		
+		<option value="//api/name/chatRoomBlacklist:">- chatRoomBlacklist:</option>
+		
+		<option value="//api/name/addBlacklistWithUsernames:appKey:handler:">- addBlacklistWithUsernames:appKey:handler:</option>
+		
+		<option value="//api/name/deleteBlacklistWithUsernames:appKey:handler:">- deleteBlacklistWithUsernames:appKey:handler:</option>
+		
+		<option value="//api/name/chatRoomAdminList:">- chatRoomAdminList:</option>
+		
+		<option value="//api/name/addAdminWithUsernames:appKey:handler:">- addAdminWithUsernames:appKey:handler:</option>
+		
+		<option value="//api/name/deleteAdminWithUsernames:appKey:handler:">- deleteAdminWithUsernames:appKey:handler:</option>
+		
 		<option value="//api/name/displayName">- displayName</option>
 		
 	</optgroup>
@@ -834,6 +846,404 @@
 		</div>
 	</div>
 </div><div class="section-method">
+	<a name="//api/name/chatRoomBlacklist:" title="chatRoomBlacklist:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/chatRoomBlacklist:">&ndash;&nbsp;chatRoomBlacklist:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>聊天室的黑名单列表</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)chatRoomBlacklist:(JMSGCompletionHandler JMSG_NULLABLE)<em>handler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>handler</code></th>
+						<td><p>结果回调. resultObject 是 NSArray 类型，元素是 <a href="../Classes/JMSGUser.html">JMSGUser</a></p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection availability">
+				<h4 class="method-subtitle parameter-title">Availability</h4>
+				<p>3.8.0</p>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGChatRoom.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/addBlacklistWithUsernames:appKey:handler:" title="addBlacklistWithUsernames:appKey:handler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/addBlacklistWithUsernames:appKey:handler:">&ndash;&nbsp;addBlacklistWithUsernames:appKey:handler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>添加黑名单</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)addBlacklistWithUsernames:(NSArray&lt;__kindofNSString*&gt; *)<em>usernames</em> appKey:(NSString *JMSG_NULLABLE)<em>appKey</em> handler:(JMSGCompletionHandler JMSG_NULLABLE)<em>handler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>usernames</code></th>
+						<td><p>用户名列表</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>handler</code></th>
+						<td><p>结果回调。error 为 nil 表示成功.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>appkey</code></th>
+						<td><p>用户 appKey，usernames 中的所有用户必须在同一个 AppKey 下，不填则默认为本应用 appKey</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection availability">
+				<h4 class="method-subtitle parameter-title">Availability</h4>
+				<p>3.8.0</p>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGChatRoom.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/deleteBlacklistWithUsernames:appKey:handler:" title="deleteBlacklistWithUsernames:appKey:handler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/deleteBlacklistWithUsernames:appKey:handler:">&ndash;&nbsp;deleteBlacklistWithUsernames:appKey:handler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>删除黑名单</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)deleteBlacklistWithUsernames:(NSArray&lt;__kindofNSString*&gt; *)<em>usernames</em> appKey:(NSString *JMSG_NULLABLE)<em>appKey</em> handler:(JMSGCompletionHandler JMSG_NULLABLE)<em>handler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>usernames</code></th>
+						<td><p>用户名列表</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>handler</code></th>
+						<td><p>结果回调。error 为 nil 表示成功.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>appkey</code></th>
+						<td><p>用户 appKey，usernames 中的所有用户必须在同一个 AppKey 下，不填则默认为本应用 appKey</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection availability">
+				<h4 class="method-subtitle parameter-title">Availability</h4>
+				<p>3.8.0</p>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGChatRoom.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/chatRoomAdminList:" title="chatRoomAdminList:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/chatRoomAdminList:">&ndash;&nbsp;chatRoomAdminList:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>管理员列表</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)chatRoomAdminList:(JMSGCompletionHandler JMSG_NULLABLE)<em>handler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>handler</code></th>
+						<td><p>结果回调. resultObject 是 NSArray 类型，元素是 <a href="../Classes/JMSGUser.html">JMSGUser</a></p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection availability">
+				<h4 class="method-subtitle parameter-title">Availability</h4>
+				<p>3.8.0</p>
+			</div>
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>注意：返回列表中不包含房主.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGChatRoom.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/addAdminWithUsernames:appKey:handler:" title="addAdminWithUsernames:appKey:handler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/addAdminWithUsernames:appKey:handler:">&ndash;&nbsp;addAdminWithUsernames:appKey:handler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>添加管理员</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)addAdminWithUsernames:(NSArray&lt;__kindofNSString*&gt; *)<em>usernames</em> appKey:(NSString *JMSG_NULLABLE)<em>appkey</em> handler:(JMSGCompletionHandler JMSG_NULLABLE)<em>handler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>usernames</code></th>
+						<td><p>用户名列表</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>appkey</code></th>
+						<td><p>用户 AppKey，不填则默认为本应用 AppKey</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>handler</code></th>
+						<td><p>结果回调。error 为 nil 表示成功.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection availability">
+				<h4 class="method-subtitle parameter-title">Availability</h4>
+				<p>3.8.0</p>
+			</div>
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>注意：非 VIP 应用最多设置 15 个管理员，不包括群主本身</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGChatRoom.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/deleteAdminWithUsernames:appKey:handler:" title="deleteAdminWithUsernames:appKey:handler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/deleteAdminWithUsernames:appKey:handler:">&ndash;&nbsp;deleteAdminWithUsernames:appKey:handler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>删除管理员</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)deleteAdminWithUsernames:(NSArray&lt;__kindofNSString*&gt; *)<em>usernames</em> appKey:(NSString *JMSG_NULLABLE)<em>appkey</em> handler:(JMSGCompletionHandler JMSG_NULLABLE)<em>handler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>usernames</code></th>
+						<td><p>用户名列表</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>appkey</code></th>
+						<td><p>用户 AppKey，不填则默认为本应用 AppKey</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>handler</code></th>
+						<td><p>结果回调。error 为 nil 表示成功.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection availability">
+				<h4 class="method-subtitle parameter-title">Availability</h4>
+				<p>3.8.0</p>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGChatRoom.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
 	<a name="//api/name/displayName" title="displayName"></a>
 	<h3 class="method-title"><code><a href="#//api/name/displayName">&ndash;&nbsp;displayName</a></code>
 </h3>
@@ -894,7 +1304,7 @@
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2018 HXHG. All rights reserved. Updated: 2018-09-04</p>
+						<p class="copyright">Copyright &copy; 2019 HXHG. All rights reserved. Updated: 2019-01-08</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
