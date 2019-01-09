@@ -1337,6 +1337,7 @@ JMSGGroupInfo *info = [[JMSGGroupInfo alloc] init];
 info.name =@"公开群001";
 info.groupType = kJMSGGroupTypePublic;
 info.desc = @"这个群组是公开群";
+info.maxMemberCount = @"3";//人数上限，必须大于 2
 [JMSGGroup createGroupWithGroupInfo:info memberArray:nil completionHandler:^(id resultObject, NSError *error) {
     if (!error) {
         myGroup = resultObject;
@@ -1526,6 +1527,52 @@ info.desc = @"这个群组是公开群";
 - (NSArray JMSG_GENERIC(__kindof JMSGUser *)*)groupAdminMembers;
 ```
 
+#### 设置群黑名单
+
++ 由群主和管理员管理，被拉入黑名单用户会被主动踢出群组，且无法再次加入
+
+```
+/*!
+ * @abstract 群黑名单列表
+ *
+ * @handler 结果回调. resultObject 是 NSArray 类型，元素是 JMSGUser
+ *
+ * @since 3.8.0
+ */
+- (void)groupBlacklistHandler:(JMSGCompletionHandler JMSG_NULLABLE)handler;
+```
+
+```
+
+/*!
+ * @abstract 添加群黑名单
+ *
+ * @param usernames 用户名列表
+ * @param appkey   用户 appKey，usernames 中的所有用户必须在同一个 AppKey 下，不填则默认为本应用 appKey
+ * @param handler 结果回调。error 为 nil 表示成功.
+ *
+ * @discussion 黑名单上限100个，超出将无法设置成功，被拉入黑名单用户会被主动踢出群组，且无法再次加入.
+ * @since 3.8.0
+ */
+- (void)addGroupBlacklistWithUsernames:(NSArray <__kindof NSString *>*)usernames
+                                appKey:(NSString *JMSG_NULLABLE)appKey
+                               handler:(JMSGCompletionHandler JMSG_NULLABLE)handler;
+```
+
+```
+/*!
+ * @abstract 删除群黑名单
+ *
+ * @param usernames 用户名列表
+ * @param appkey   用户 appKey，usernames 中的所有用户必须在同一个 AppKey 下，不填则默认为本应用 appKey
+ * @param handler 结果回调。error 为 nil 表示成功.
+ *
+ * @since 3.8.0
+ */
+- (void)deleteGroupBlacklistWithUsernames:(NSArray <__kindof NSString *>*)usernames
+                                   appKey:(NSString *JMSG_NULLABLE)appKey
+                                  handler:(JMSGCompletionHandler JMSG_NULLABLE)handler;
+```
     
 #### 修改群类型
 创建群组之后，可以通过此接口修改群的类型，公开群、私有群相互切换
@@ -1713,6 +1760,89 @@ info.desc = @"这个群组是公开群";
 
 ```
 
+#### 群公告
+
++ 支持群主和管理员进行发布、删除、置顶和取消置顶操作；
++ 目前单个群最大群公告数量为 100
++ 发布群公告时，开发者可选择是否发送群消息通知群成员，或者自己定制消息通知其他群成员。
+
+```
+/*!
+ * @abstract 获取群公告列表
+ *
+ * @param handler 结果回调。resultObject 是 NSArray 类型，元素是 JMSGGroupAnnouncement
+ *
+ * @since 3.8.0
+ */
+- (void)groupAnnouncementList:(JMSGCompletionHandler JMSG_NULLABLE)handler;
+```
+
+```
+
+/*!
+ * @abstract 发布群公告
+ *
+ * @param announcement 公告内容，大小必须在 1KB 以内
+ * @param sendMessage 发布成功后是否需要发一条消息通知群成员，默认：YES
+ * @param handler 结果回调。resultObject 为 JMSGGroupAnnouncement对象， error 为 nil 表示成功.
+ *
+ * #### 注意：
+ *
+ * 如果 sendMessage = NO，则 SDK 不会自动发送消息，上层可以在回调或者收到事件后，自己发送消息；
+ * 如果 sendMessage = YES，则在发布公告成功后 SDK 会自动在群里发布一条文本消息，文本内容就是公告内容，另外消息的 extras 里会附带公告的相关数据，上层可根据此数据将 message 对应到相应的公告， extras 里的 key-value 如下，
+ *
+ *    ```
+ *    key(String)       = "jmessage_group_announcement"
+ *    value(JsonString) = {
+ *                        "id" : 公告 id,
+ *                        "text" : 公告内容 text,
+ *                        "publisher_uid" : 发布者 uid,
+ *                        "ctime" : 公告发布时间,
+ *                        "isTop" : 是否置顶,
+ *                        "topTime" : 置顶时间,
+ *                        "gid" : 群 gid
+ *                      }
+ *    ```
+ *
+ * @discussion 群公告最多100条，发布公告后会有对应事件下发，上层通过 [JMSGGroupDelegate onReceiveGroupAnnouncementEvents:] 监听
+ * @since 3.8.0
+ */
+- (void)publishGroupAnnouncement:(NSString *JMSG_NONNULL)announcement
+                     sendMessage:(BOOL)sendMessage
+                         handler:(JMSGCompletionHandler JMSG_NULLABLE)handler;
+```
+
+```
+
+/*!
+ * @abstract 删除群公告
+ *
+ * @param announcementID 公告id
+ * @param handler 结果回调。error 为 nil 表示成功.
+ *
+ * @discussion 删除公告后会有对应事件下发，上层通过 [JMSGGroupDelegate onReceiveGroupAnnouncementEvents:] 监听
+ * @since 3.8.0
+ */
+- (void)deleteGroupAnnouncement:(NSString *JMSG_NONNULL)announcementID
+                        handler:(JMSGCompletionHandler JMSG_NULLABLE)handler;
+```
+
+```
+
+/*!
+ * @abstract 置顶/取消置顶 群公告
+ *
+ * @param isTop 置顶参数，YES:置顶，NO:取消置顶
+ * @param ID    公告 id
+ * @param handler 结果回调。error 为 nil 表示成功.
+ *
+ * @discussion 置顶公告后会有对应事件下发，上层通过 [JMSGGroupDelegate onReceiveGroupAnnouncementEvents:] 监听
+ * @since 3.8.0
+ */
+- (void)setGroupAnnouncementTop:(BOOL)isTop
+                 announcementID:(NSString *JMSG_NONNULL)ID
+                        handler:(JMSGCompletionHandler JMSG_NULLABLE)handler;
+```
 
 #### 成员群昵称
 
@@ -1920,6 +2050,103 @@ info.desc = @"这个群组是公开群";
  */
 + (void)leaveChatRoomWithRoomId:(NSString *JMSG_NONNULL)roomId
               completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)handler;
+```
+
+#### 聊天室管理员
+
++ 聊天室 owner 可以设置聊天室一些成员主管理员，方便对聊天室进行一些权限管理；
++ 管理员变更时，上层会收到变更的事件通知，目前不保存该类型的离线事件。
+
+```
+/*!
+ * @abstract 管理员列表
+ *
+ * @param handler 结果回调. resultObject 是 NSArray 类型，元素是 JMSGUser
+ *
+ * @discussion 注意：返回列表中不包含房主.
+ *
+ * @since 3.8.0
+ */
+- (void)chatRoomAdminList:(JMSGCompletionHandler JMSG_NULLABLE)handler;
+```
+
+```
+
+/*!
+ * @abstract 添加管理员
+ *
+ * @param usernames 用户名列表
+ * @param appkey    用户 AppKey，不填则默认为本应用 AppKey
+ * @param handler   结果回调。error 为 nil 表示成功.
+ *
+ * @discussion 注意：非 VIP 应用最多设置 15 个管理员，不包括群主本身
+ *
+ * @since 3.8.0
+ */
+- (void)addAdminWithUsernames:(NSArray <__kindof NSString *>*)usernames
+                       appKey:(NSString *JMSG_NULLABLE)appkey
+                      handler:(JMSGCompletionHandler JMSG_NULLABLE)handler;
+```
+
+```
+/*!
+ * @abstract 删除管理员
+ *
+ * @param usernames 用户名列表
+ * @param appkey    用户 AppKey，不填则默认为本应用 AppKey
+ * @param handler   结果回调。error 为 nil 表示成功.
+ *
+ * @since 3.8.0
+ */
+- (void)deleteAdminWithUsernames:(NSArray <__kindof NSString *>*)usernames
+                          appKey:(NSString *JMSG_NULLABLE)appkey
+                         handler:(JMSGCompletionHandler JMSG_NULLABLE)handler;
+```
+
+#### 聊天室黑名单
+
++ 聊天室 owner 或者管理员可以设置聊天室成员黑名单，被设置黑名单用户会被立即踢出聊天室；
++ 黑名单变更时，上层会收到变更的事件通知，目前不保存该类型的离线事件。
+
+```
+/*!
+ * @abstract 聊天室的黑名单列表
+ *
+ * @handler 结果回调. resultObject 是 NSArray 类型，元素是 JMSGUser
+ *
+ * @since 3.8.0
+ */
+- (void)chatRoomBlacklist:(JMSGCompletionHandler JMSG_NULLABLE)handler;
+```
+
+```
+/*!
+ * @abstract 添加黑名单
+ *
+ * @param usernames 用户名列表
+ * @param appkey   用户 appKey，usernames 中的所有用户必须在同一个 AppKey 下，不填则默认为本应用 appKey
+ * @param handler 结果回调。error 为 nil 表示成功.
+ *
+ * @since 3.8.0
+ */
+- (void)addBlacklistWithUsernames:(NSArray <__kindof NSString *>*)usernames
+                           appKey:(NSString *JMSG_NULLABLE)appKey
+                          handler:(JMSGCompletionHandler JMSG_NULLABLE)handler;
+```
+
+```
+/*!
+ * @abstract 删除黑名单
+ *
+ * @param usernames 用户名列表
+ * @param appkey   用户 appKey，usernames 中的所有用户必须在同一个 AppKey 下，不填则默认为本应用 appKey
+ * @param handler 结果回调。error 为 nil 表示成功.
+ *
+ * @since 3.8.0
+ */
+- (void)deleteBlacklistWithUsernames:(NSArray <__kindof NSString *>*)usernames
+                              appKey:(NSString *JMSG_NULLABLE)appKey
+                             handler:(JMSGCompletionHandler JMSG_NULLABLE)handler;
 ```
 
 #### 接收聊天室消息
@@ -2684,51 +2911,135 @@ BOOL isAlreadSet = user.isNoDisturb;
 ```
 
 ### 事件处理
-#### 通知事件类型
 
-	typedef NS_ENUM(NSInteger, JMSGEventNotificationType) {
+```
+/*!
+ * 消息事件类型
+ */
+typedef NS_ENUM(NSInteger, JMSGEventNotificationType) {
+  // 消息事件
+  /// 事件类型: 群组被创建
+  kJMSGEventNotificationCreateGroup = 8,
+  /// 事件类型: 退出群组
+  kJMSGEventNotificationExitGroup = 9,
+  /// 事件类型: 群组添加新成员
+  kJMSGEventNotificationAddGroupMembers = 10,
+  /// 事件类型: 群组成员被踢出
+  kJMSGEventNotificationRemoveGroupMembers = 11,
+  /// 事件类型: 群信息更新
+  kJMSGEventNotificationUpdateGroupInfo = 12,
+  /// 事件类型: 群禁言通知事件
+  kJMSGEventNotificationGroupMemberSilence = 65,
+  /// 事件类型: 管理员角色变更通知事件
+  kJMSGEventNotificationGroupAdminChange = 80,
+  /// 事件类型: 群主变更通知事件
+  kJMSGEventNotificationGroupOwnerChange = 82,
+  /// 事件类型: 群类型变更通知事件
+  kJMSGEventNotificationGroupTypeChange = 83,
+  /// 事件类型: 解散群组
+  kJMSGEventNotificationDissolveGroup = 11001,
+  /// 事件类型: 群组成员上限变更
+  kJMSGEventNotificationGroupMaxMemberCountChange = 11002,
+};
+```
 
-	    /// 用户登录状态变更事件
-	    /// 事件类型: 登录被踢
-	    kJMSGEventNotificationLoginKicked = 1,
-	    /// 事件类型: 非客户端修改密码强制登出事件
-	    kJMSGEventNotificationServerAlterPassword = 2,
-	    /// 事件类型：用户登录状态异常事件（需要重新登录）
-	    kJMSGEventNotificationUserLoginStatusUnexpected = 70,
-	    /// 事件类型：当前登录用户信息变更通知事件(非客户端修改)
-		 kJMSGEventNotificationCurrentUserInfoChange = 40,
+```
+/*!
+ * 通知事件类型
+ *
+ * #### 上层通过 JMSGEventDelegate 类里的方法来监听此类事件
+ */
+typedef NS_ENUM(NSInteger, JMSGCommonEventType){
+  /// 事件类型: 消息撤回
+  kJMSGEventNotificationMessageRetract = 55,
+  /// 事件类型: 消息透传
+  kJMSGEventNotificationMessageTransparent = 12001,
+  /// 事件类型: 消息回执变更
+  kJMSGEventNotificationMessageReceiptStatusChange = 12002,
+};
+```
 
-	    /// 好友相关事件
-	    /// 事件类型: 收到好友邀请
-	    kJMSGEventNotificationReceiveFriendInvitation   = 51,
-	    /// 事件类型: 对方接受了你的好友邀请
-	    kJMSGEventNotificationAcceptedFriendInvitation  = 52,
-	    /// 事件类型: 对方拒绝了你的好友邀请
-	    kJMSGEventNotificationDeclinedFriendInvitation  = 53,
-	    /// 事件类型: 对方将你从好友中删除
-	    kJMSGEventNotificationDeletedFriend             = 6,
-		 /// 事件类型：非客户端修改好友关系收到好友更新事件
-		 kJMSGEventNotificationReceiveServerFriendUpdate = 7,
-		 
-		 /// 事件类型: 消息撤回
-		 kJMSGEventNotificationMessageRetract = 55,
-		 /// 事件类型: 消息透传
-		 kJMSGEventNotificationMessageTransparent = 58,
-		 /// 事件类型: 消息回执变更
-		 kJMSGEventNotificationMessageReceiptStatusChange = 68,
-	    
-	    /// 消息事件
-	    /// 事件类型: 群组被创建
-	    kJMSGEventNotificationCreateGroup = 8,
-	    /// 事件类型: 退出群组
-	    kJMSGEventNotificationExitGroup = 9,
-	    /// 事件类型: 群组添加新成员
-	    kJMSGEventNotificationAddGroupMembers = 10,
-	    /// 事件类型: 群组成员被踢出
-	    kJMSGEventNotificationRemoveGroupMembers = 11,
-	    /// 事件类型: 群信息更新
-	    kJMSGEventNotificationUpdateGroupInfo = 12,
-	};
+```
+/*!
+ * 用户登录状态变更事件类型
+ *
+ * #### 上层通过 JMSGUserDelegate 类里的方法来监听此类事件
+ */
+typedef NS_ENUM(NSInteger, JMSGLoginStatusChangeEventType) {
+  // 用户登录状态变更事件
+  /// 事件类型: 登录被踢
+  kJMSGEventNotificationLoginKicked = 1,
+  /// 事件类型: 非客户端修改密码强制登出事件
+  kJMSGEventNotificationServerAlterPassword = 2,
+  /// 事件类型：用户登录状态异常事件（需要重新登录）
+  kJMSGEventNotificationUserLoginStatusUnexpected = 70,
+  /// 事件类型：当前登录用户信息变更通知事件(非客户端修改)
+  kJMSGEventNotificationCurrentUserInfoChange = 40,
+  /// 事件类型：当前登录用户被删除事件（本地用户信息会被清空）
+  kJMSGEventNotificationCurrentUserDeleted = 10001,
+  /// 事件类型：当前登录用户被禁用事件（本地用户信息会被清空）
+  kJMSGEventNotificationCurrentUserDisabled = 10002,
+};
+```
+
+```
+/*!
+ * 好友事件类型
+ *
+ * #### 上层通过 JMSGEventDelegate 类里的方法来监听此类事件
+ */
+typedef NS_ENUM(NSInteger, JMSGFriendEventType) {
+  // 好友相关事件
+  /// 事件类型: 收到好友邀请
+  kJMSGEventNotificationReceiveFriendInvitation   = 51,
+  /// 事件类型: 对方接受了你的好友邀请
+  kJMSGEventNotificationAcceptedFriendInvitation  = 52,
+  /// 事件类型: 对方拒绝了你的好友邀请
+  kJMSGEventNotificationDeclinedFriendInvitation  = 53,
+  /// 事件类型: 对方将你从好友中删除
+  kJMSGEventNotificationDeletedFriend             = 6,
+  /// 事件类型：非客户端修改好友关系收到好友更新事件
+  kJMSGEventNotificationReceiveServerFriendUpdate = 7,
+};
+```
+
+```
+/*!
+ * 群组事件类型
+ *
+ * #### 上层通过 JMSGGroupDelegate 类里的方法来监听此类事件
+ */
+typedef NS_ENUM(NSInteger, JMSGGroupEventType) {
+  /// 事件类型：发布群公告
+  kJMSGEventNotificationPublishGroupAnnouncement  = 86,
+  /// 事件类型：删除群公告
+  kJMSGEventNotificationDeleteGroupAnnouncement = 87,
+  /// 事件类型：置顶/取消置顶 群公告
+  kJMSGEventNotificationTopGroupAnnouncement = 88,
+  /// 事件类型：添加群组黑名单
+  kJMSGEventNotificationAddGroupBlacklist = 89,
+  /// 事件类型：删除群组黑名单
+  kJMSGEventNotificationDelGroupBlacklist = 90,
+};
+```
+
+```
+/*!
+ * 聊天室事件类型
+ *
+ * #### 上层通过 JMSGEventDelegate 类里的方法来监听此类事件
+ */
+typedef NS_ENUM(NSInteger, JMSGChatRoomEventType) {
+  /// 事件类型：添加管理员
+  kJMSGEventNotificationChatRoomAddAdmin = 130,
+  /// 事件类型：删除管理员
+  kJMSGEventNotificationChatRoomDelAdmin = 131,
+  /// 事件类型：添加黑名单
+  kJMSGEventNotificationChatRoomAddBlacklist = 132,
+  /// 事件类型：删除黑名单
+  kJMSGEventNotificationChatRoomDelBlacklist = 133,
+};
+```
 
 
 * 消息事件，如：群事件，SDK会作为一个特殊的消息类型处理，上层通过[onReceiveMessage:error:](./jmessage_ios_appledoc_html/Protocols/JMSGMessageDelegate.html#//api/name/onReceiveMessage:error:)可监听到此事件。

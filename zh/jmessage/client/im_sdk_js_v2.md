@@ -270,7 +270,7 @@ JIM.login({
      //data.online_list[].isOnline 是否在线 true or false
      //data.online_list[].isLogin 是否登录 true or false
      //data.online_list[].flag 该设备是否被当前登录设备踢出 true or false
-}.onFail(function(data){
+}).onFail(function(data){
   //同上
 });
 ```
