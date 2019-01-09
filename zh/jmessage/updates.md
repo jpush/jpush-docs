@@ -2,7 +2,7 @@
 
 ### Android SDK v2.8.0
 
-2019-1-2
+2019-01-02
 
 #### ChangeLog
 
