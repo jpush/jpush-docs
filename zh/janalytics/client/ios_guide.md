@@ -53,7 +53,7 @@ pod 'JAnalytics', '1.2.0'
 + 解压压缩包，将Lib下的所有文件复制到工程中
 + 增加相关的framework依赖
 	+ UIKit
-	+ SystemConfiguration,
+	+ SystemConfiguration
 	+ CoreTelephony
 	+ CoreGraphics
 	+ Security

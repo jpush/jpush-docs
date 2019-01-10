@@ -56,6 +56,8 @@
 	
 	<optgroup label="Properties">
 		
+		<option value="//api/name/uid">uid</option>
+		
 		<option value="//api/name/username">username</option>
 		
 		<option value="//api/name/nickname">nickname</option>
@@ -92,11 +94,15 @@
 		
 		<option value="//api/name/loginWithUsername:password:completionHandler:">+ loginWithUsername:password:completionHandler:</option>
 		
+		<option value="//api/name/loginWithUsername:password:devicesInfo:completionHandler:">+ loginWithUsername:password:devicesInfo:completionHandler:</option>
+		
 		<option value="//api/name/logout:">+ logout:</option>
 		
 		<option value="//api/name/userInfoArrayWithUsernameArray:completionHandler:">+ userInfoArrayWithUsernameArray:completionHandler:</option>
 		
 		<option value="//api/name/userInfoArrayWithUsernameArray:appKey:completionHandler:">+ userInfoArrayWithUsernameArray:appKey:completionHandler:</option>
+		
+		<option value="//api/name/userWithUid:">+ userWithUid:</option>
 		
 		<option value="//api/name/myInfo">+ myInfo</option>
 		
@@ -280,6 +286,12 @@
 				<table class="argument-def parameter-def">
 				
 					<tr>
+						<th scope="row" class="argument-name"><code>username</code></th>
+						<td><p>用户名. 长度 4~128 位.
+支持的字符: 字母,数字,下划线,英文减号,英文点,@邮件符号. 首字母只允许是字母或者数字.</p></td>
+					</tr>
+				
+					<tr>
 						<th scope="row" class="argument-name"><code>password</code></th>
 						<td><p>用户密码. 长度 4~128 位.</p></td>
 					</tr>
@@ -378,6 +390,85 @@
 
 			
 
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGUser.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/loginWithUsername:password:devicesInfo:completionHandler:" title="loginWithUsername:password:devicesInfo:completionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/loginWithUsername:password:devicesInfo:completionHandler:">+&nbsp;loginWithUsername:password:devicesInfo:completionHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>用户登录，返回登录设备信息</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)loginWithUsername:(NSString *)<em>username</em> password:(NSString *)<em>password</em> devicesInfo:(nullable void ( ^ ) ( NSArray&lt;__kindofJMSGDeviceInfo*&gt; *devices ))<em>devicesInfo</em> completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)<em>handler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>username</code></th>
+						<td><p>登录用户名. 规则与注册接口相同.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>password</code></th>
+						<td><p>登录密码. 规则与注册接口相同.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>devicesInfo</code></th>
+						<td><p>登录设备回调，返回数据为 NSArray<a href="../Classes/JMSGDeviceInfo.html">JMSGDeviceInfo</a></p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>handler</code></th>
+						<td><p>结果回调</p>
+
+<ul>
+<li>resultObject 简单封装的user对象，上层不要直接使用 resultObject 对象做操作, 因为它只是一个简单封装的user对象</li>
+<li>error 错误信息</li>
+</ul>
+</td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>回调中 devices 返回的是设备信息，具体属性请查看 <a href="../Classes/JMSGDeviceInfo.html">JMSGDeviceInfo</a> 类</p>
+			</div>
 			
 
 			
@@ -535,6 +626,69 @@
 
 			
 
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGUser.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/userWithUid:" title="userWithUid:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/userWithUid:">+&nbsp;userWithUid:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>获取用户信息</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (JMSGUser *JMSG_NULLABLE)userWithUid:(SInt64)<em>uid</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>uid</code></th>
+						<td><p>用户的 <a href="#//api/name/uid">uid</a></p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>该 <a href="#//api/name/uid">uid</a> 用户信息</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>注意：返回值有可能为空，仅仅是本地查询</p>
+			</div>
 			
 
 			
@@ -1021,13 +1175,13 @@ Birthday&amp;&amp;Gender 是NSNumber类型, Avatar NSData类型, extras是 NSDic
 					</tr>
 				
 					<tr>
-						<th scope="row" class="argument-name"><code>handler</code></th>
-						<td><p>结果回调。回调参数：error 为 nil, 表示设置成功</p></td>
+						<th scope="row" class="argument-name"><code>userAppKey</code></th>
+						<td><p>应用的<a href="#//api/name/appKey">appKey</a></p></td>
 					</tr>
 				
 					<tr>
-						<th scope="row" class="argument-name"><code>appKey</code></th>
-						<td><p>应用的<a href="#//api/name/appKey">appKey</a></p></td>
+						<th scope="row" class="argument-name"><code>handler</code></th>
+						<td><p>结果回调。回调参数：error 为 nil, 表示设置成功</p></td>
 					</tr>
 				
 				</table>
@@ -1089,13 +1243,13 @@ Birthday&amp;&amp;Gender 是NSNumber类型, Avatar NSData类型, extras是 NSDic
 					</tr>
 				
 					<tr>
-						<th scope="row" class="argument-name"><code>handler</code></th>
-						<td><p>结果回调。回调参数：error 为 nil, 表示设置成功</p></td>
+						<th scope="row" class="argument-name"><code>userAppKey</code></th>
+						<td><p>应用的<a href="#//api/name/appKey">appKey</a></p></td>
 					</tr>
 				
 					<tr>
-						<th scope="row" class="argument-name"><code>appKey</code></th>
-						<td><p>应用的<a href="#//api/name/appKey">appKey</a></p></td>
+						<th scope="row" class="argument-name"><code>handler</code></th>
+						<td><p>结果回调。回调参数：error 为 nil, 表示设置成功</p></td>
 					</tr>
 				
 				</table>
@@ -1135,6 +1289,47 @@ Birthday&amp;&amp;Gender 是NSNumber类型, Avatar NSData类型, extras是 NSDic
 
 						<div class="task-list">
 							<div class="section-method">
+	<a name="//api/name/uid" title="uid"></a>
+	<h3 class="method-title"><code><a href="#//api/name/uid">&nbsp;&nbsp;uid</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>用户uid</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign, readonly) SInt64 uid</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGUser.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
 	<a name="//api/name/username" title="username"></a>
 	<h3 class="method-title"><code><a href="#//api/name/username">&nbsp;&nbsp;username</a></code>
 </h3>
@@ -2134,7 +2329,7 @@ Birthday&amp;&amp;Gender 是NSNumber类型, Avatar NSData类型, extras是 NSDic
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2018 HXHG. All rights reserved. Updated: 2018-01-03</p>
+						<p class="copyright">Copyright &copy; 2019 HXHG. All rights reserved. Updated: 2019-01-08</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

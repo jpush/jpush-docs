@@ -1,12 +1,12 @@
 # iOS 证书设置指南
 
-## 创建应用程序ID
+## 创建应用程序 ID
 
 + 登陆 [苹果开发者网站](https://developer.apple.com/) 进入开发者账户。
 
 ![go_to_account_page](../image/ios_cert/appid_1_goToAccountPage.png)
 
-+ 从开发者账户页面左侧入口进入“Certificates, IDs & Profiles” 页面。
++ 从开发者账户页面左侧入口进入 “Certificates, IDs & Profiles” 页面。
 
 ![go_to_cert_page](../image/ios_cert/appid_2_goToCertPage.png)
 
@@ -26,6 +26,8 @@
 + 填写好以上属性后，点击 “Continue”，确认 AppId 属性的正确性，点击 “Register”，注册 AppId 成功。
 
 ## 两种鉴权方式的配置
+
+极光官网应用的鉴权信息一旦配置，只能用相同 bundleID 的鉴权信息进行更新，无法修改为其他的 bundleID，请在配置前仔细检查 bundleID 是否正确，若因特殊原因需要修改，请联系 support@jpush.cn
 
 ### 方式一：通过 .p12 证书鉴权
 
@@ -66,12 +68,13 @@
 
 ![cert_ready](../image/ios_cert/p12_8_certReady.png)
 
-+ 双击证书后，会在“KeychainAccess”中打开，选择左侧“钥匙串”列表中“登录”，以及“种类”列表中“我的证书”，找到刚才下载的证书，并导出为 .p12 文件。如下图：
++ 双击证书后，会在 “KeychainAccess” 中打开，选择左侧“钥匙串”列表中“登录”，以及“种类”列表中“我的证书”，找到刚才下载的证书，并导出为 .p12 文件。如下图：
 
 ![export_p12](../image/ios_cert/p12_9_exportP12.png)
 ![save_p12](../image/ios_cert/p12_10_saveAsP12.png)
 
 + 在极光控制台上，进入你应用的应用设置中 iOS 的鉴权方式选择 “证书”，上传刚才导出的 .p12 证书。极光会在后台为你的应用进行鉴权。
++ Apple 的生产推送证书允许用于开发环境的推送，勾选将生产证书用于开发环境，开发者可以仅上传生产证书，即可在官网推送平台处选择开发环境做推送，不用再生成和上传开发证书。
 
 ![add_to_portal](../image/ios_cert/p12_11_addToPortal.png)
 
@@ -86,7 +89,7 @@
 
 ![create_auth_key](../image/ios_cert/authkey_2_createAuthKey.png)
 
-+ 点击 “Continue” 让你确认信息，再点击 “confirm”，就可以下载该 key了。（注意：记下 key id，而且只可以下载一次，请妥善保存。）
++ 点击 “Continue” 让你确认信息，再点击 “confirm”，就可以下载该 key 了。（注意：记下 key id，而且只可以下载一次，请妥善保存。）
 
 ![download_auth_key](../image/ios_cert/authkey_3_downloadAuthKey.png)
 
@@ -102,50 +105,51 @@
 
 ![add_to_portal](../image/ios_cert/authkey_6_addInfoToPortal.png)
 
-## Provisioning Profile的创建
+## Provisioning Profile 的创建
 
-+ 创建Provisioning Profile的前提，已在Apple Developer网站创建待发布应用所使用的Bundle ID的App ID，且为该App ID创建了 iOS Development 证书。
++ 创建 Provisioning Profile 的前提，已在 Apple Developer 网站创建待发布应用所使用的 Bundle ID 的 App ID，且为该 App ID 创建了 iOS Development 证书。
 
-+ 在[苹果开发者账号的Provisioning Profile](https://developer.apple.com/account/ios/profile/)页面点击下图按钮，创建Provisioning Profile
++ 在[苹果开发者账号的 Provisioning Profile ](https://developer.apple.com/account/ios/profile/)页面点击下图按钮，创建 Provisioning Profile
 
 ![go_to_add_pp](../image/ios_cert/pp_1_addPP.png)
 
-+ 选择此Provisioning Profile的环境后点击[Continue]：
++ 选择此 Provisioning Profile 的环境后点击 [Continue]：
 
 ![select_type](../image/ios_cert/pp_2_selectType.png)
 
-+ 选择要创建Provisioning Profile的App ID后点击[Continue]：
++ 选择要创建 Provisioning Profile 的 App ID 后点击 [Continue]：
 
 ![select_appid](../image/ios_cert/pp_3_selectAppId.png)
 
-+ 选择所属的开发者证书，（这里创建了多个开发者证书，建议只创建一个，方便管理）为了方便，选择了[Select All]，再点击[Continue]进入下一步：
++ 选择所属的开发者证书，（这里创建了多个开发者证书，建议只创建一个，方便管理）为了方便，选择了 [Select All]，再点击 [Continue] 进入下一步：
 
 ![select_cert](../image/ios_cert/pp_4_selectCert.png)
 
-+ 为该Provisioning Profile选择将要安装的设备（一般选择[Select All]），点击[Continue]:
++ 为该 Provisioning Profile 选择将要安装的设备（一般选择 [Select All]），点击 [Continue]:
 
 ![select_device](../image/ios_cert/pp_5_selectDevice.png)
 
-+ 给该Provisioning Profile填写Profile Name，点击[generate]完成创建。
++ 给该 Provisioning Profile 填写 Profile Name，点击 [generate] 完成创建。
 
 ![pp_name](../image/ios_cert/pp_6_ppName.png)
 
-+ 填写完Profile Name后点击[generate]完成创建，之后点击[DownLoad]下载Provisioning Profile
++ 填写完 Profile Name 后点击 [generate] 完成创建，之后点击 [DownLoad] 下载 Provisioning Profile
 
 ![pp_download](../image/ios_cert/pp_7_downloadPP.png)
 
-+ 双击下载下来的Provisioning Profile，添加到xcode。
++ 双击下载下来的 Provisioning Profile，添加到 xcode。
 
-## XCode的证书配置教程
+## XCode 的证书配置教程
 
-参照[iOS SDK 集成指南](ios_guide_new/)集成JPush SDK 和上传了推送用到的p12证书后在编译运行前需要先配置一下证书，步骤如下：
+参照[ iOS SDK 集成指南](ios_guide_new/)集成 JPush SDK 和上传了推送用到的 p12 证书后在编译运行前需要先配置一下证书，步骤如下：
 
-+ 打开xxx-info.plist的Bundle identifier项把上传到JPush 控制台的bundle id填写进去：
++ 打开 xxx-info.plist 的 Bundle identifier 项把上传到 JPush 控制台的 bundle id 填写进去：
+
+![settings_bundle](../image/ios_cert/xcode_2_bundle.png)
+
++ 点击项目，选择目标 TARGETS 后进入 Build Setting 界面，搜索 “Code signing”，按照下图配置
 
 ![build_settings](../image/ios_cert/xcode_1_buildsettings_cs.png)
 
-+ 点击项目，选择目标TARGETS后进入Build Setting 界面，搜索“Code signing”，按照下图配置
-
-![settings_bundle](../image/ios_cert/xcode_2_bundle.png)
 
 

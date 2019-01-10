@@ -1,20 +1,18 @@
 # iOS JShare 对外集成文档
 ##使用提示
 本文是 JSHARE iOS SDK 的标准集成指南文档。
-匹配的 SDK 版本为：V1.5.0及以后版本。
+匹配的 SDK 版本为：V1.6.0及以后版本。
 
 * 如果你想要快速测试、请参考本文在几分钟内跑通 Demo。
 * 极光文档官网上有相关的所有指南、API、教程等全部的文档。包括本文档的更新版本，都会及时地发布到该网站上。
 
 ## 产品功能说明
-JSHARE SDK 可以让你的应用支持多平台分享，无需花耗时间了解、集成每个社会化分享平台的 SDK，可以有效的降低包体积。
+JSHARE SDK 可以让你的应用支持多平台分享，无需耗费时间了解、集成每个社会化分享平台的 SDK，可以有效的降低包体积。
 
 ### 主要场景：
 
-* 将分享内容分享到 QQ、微信、新浪微博三个主要的社交平台。
-* 获取QQ、微信、新浪微博三个主要平台的个人信息，用于第三方登录。
-* 分享内容到 Facebook 和 Messenger，以及获取 Facebook 用户的个人信息用于第三方登录。
-* 分享内容到 twitter 以及获取 twitter 用户的个人信息用于第三方登录。
+* 将分享内容分享到 QQ、微信、新浪微博、Facebook、Twitter、趣聊等主要的社交平台。
+* 获取QQ、微信、新浪微博、Facebook、Twitter等主要平台的个人信息，用于第三方登录。
 
 ### 集成压缩包内容
 
@@ -34,7 +32,6 @@ JSHARE SDK 可以让你的应用支持多平台分享，无需花耗时间了解
 
 
 ## JSHARE SDK 集成步骤
-
 **选择1：Cocoapods导入**
 
 * 通过Cocoapods下载地址：
@@ -42,14 +39,13 @@ JSHARE SDK 可以让你的应用支持多平台分享，无需花耗时间了解
 ```
 pod 'JShare'
 ```
-* 如果需要安装指定版本则使用以下方式（以1.3.0版本为例）：
+* 如果需要安装指定版本则使用以下方式（以1.5.0版本为例）：
 
 ```
-pod 'JShare', '1.3.0'
+pod 'JShare', '1.5.0'
 ```
 
-**选择2：手动导入**
-
+**选择2：手动集成**    
 
 * 解压压缩包，将 Lib 下的所有文件复制到工程中，即可开始使用 SDK。
 
@@ -60,7 +56,6 @@ pod 'JShare', '1.3.0'
 	* CoreTelephony
 	* CoreGraphics
 	* Security
-	* Foundation
 	* CoreLocation
 	* CoreFoundation
 	* CFNetwork
@@ -85,7 +80,7 @@ JSHAREService 类，包含分享 SDK 的所有接口。
 
 ### method - setupWithConfig
 #### 接口定义：
-+(void)setupWithConfig:(JSHARELaunchConfig *)config    
++(void)setupWithConfig:(JSHARELaunchConfig *)config<br>
 #### 接口说明：
 初始化接口。建议在 application:didFinishLaunchingWithOptions: 中调用。
 #### 参数说明：
@@ -107,13 +102,14 @@ JSHAREService 类，包含分享 SDK 的所有接口。
     config.FacebookDisplayName = @"JShareDemo";
     config.TwitterConsumerKey = @"4hCeIip1cpTk9oPYeCbYKhVWi";
     config.TwitterConsumerSecret = @"DuIontT8KPSmO2Y1oAvby7tpbWHJimuakpbiAUHEKncbffekmC";
+    config.JChatProAuth = @"a7e2ce002d1a071a6ca9f37d";
     [JSHAREService setupWithConfig:config];
     [JSHAREService setDebug:YES];
 
 ```
 
 ### method - share
-#### 接口定义：
+####接口定义：
 +(void)share:(JSHAREMessage *)message
       handler:(JSHAREStateHandler)handler
 
@@ -133,6 +129,46 @@ JSHAREMessage *message = [JSHAREMessage message];
           NSLog(@"分享回调");
         }
     }];
+```
+
+
+### method - share 仅支持JChatPro
+####接口定义：
++ (void)share:(JSHAREMessage *)message
+      completionHandler:(JSHARECompletionHandler)handler ;
+
+#### 参数说明：
+
+* message：JSHAREMessage 类的实例
+* handler：JSHARECompletionHandler 分享后的回调
+
+#### 调用示例：
+
+```
+- (IBAction)shareGraphic:(id)sender {
+    JSHAREMessage *message = [JSHAREMessage message];
+    message.mediaType = JSHARGraphic;
+    message.url = @"http://tech.qq.com/zt2012/tmtdecode/252.htm";
+    message.text = @"欢迎使用极光社会化组件 JShare，SDK 包体积小，集成简单，支持主流社交平台、帮助开发者轻松实现社会化功能";
+    message.title = @"极光社会化组件";
+    message.platform = JSHAREPlatformJChatPro;
+    message.thumbUrl = @"http://img2.imgtn.bdimg.com/it/u=3721213387,3527941751&fm=27&gp=0.jpg";
+    message.extInfo = @"extramessage";
+    message.callbackUrl = @"https://www.jiguang.cn/";
+    message.pkgName = @"android_pkg";
+    message.className = @"android_class_name";
+    message.appName = @"我是MT";
+    message.fromScheme = @"jchatproa7e2ce002d1a071a6ca9f37d";
+
+    [JSHAREService share:message completionHandler:^(JSHAREState state, NSError *error, id responseObject) {
+        NSLog(@"responseObject :%@", responseObject);
+        if (!error) {
+            NSLog(@"分享图文成功");
+        }else{
+            NSLog(@"分享图文失败, error : %@", error);
+        }
+    }];
+}
 ```
 
 ### method - handleOpenUrl
@@ -165,7 +201,7 @@ iOS 9以上，在 Appdelegate 的 application: openURL: options 中调用。
 ```
 ### method - getSocialUserInfo
 #### 接口定义：
-+(void) getSocialUserInfo:(JSHAREPlatform)platform
++(void)getSocialUserInfo:(JSHAREPlatform)platform
                   handler:(JSHARESocialHandler)handler
 
 #### 接口说明：
@@ -265,6 +301,9 @@ iOS 9以上，在 Appdelegate 的 application: openURL: options 中调用。
     <!-- Twitter URL Scheme 白名单-->
     <string>twitter</string>
     <string>twitterauth</string>
+    
+    <!-- JChatPro URL Scheme 白名单-->
+    <string>JChatPro</string>
 </array>
 ```
 
@@ -278,6 +317,7 @@ iOS 9以上，在 Appdelegate 的 application: openURL: options 中调用。
 |新浪微博 | “wb”+新浪 appKey | 如 appKey 为:727232518<br>URL Schemes 值为: wb727232518 |
 |Facebook | “fb”+FacebookAppID | 如 appID 为:1847959632183996<br>URL Schemes 值为: fb1847959632183996 |
 |Twitter | “twitterkit-”+TwitterConsumerKey | 如 TwitterConsumerKey 为:4hCeIip1cpTk9oPYeCbYKhVWi<br>URL Schemes 值为: twitterkit-4hCeIip1cpTk9oPYeCbYKhVWi |
+|JChatPro | “ jchatpro”+appkey | 如 appkey为:a7e2ce002d1a071a6ca9f37d<br>URL Schemes 值为: jchatproa7e2ce002d1a071a6ca9f37d|
 
 
 #### URL Types 设置  

@@ -3,24 +3,24 @@
 
 本文目的在于，指导新接触极光推送的开发者，在短短几分钟时间内把极光推送跑起来：
 
-+ 安装Demo客户端到手机
++ 安装 Demo 客户端到手机
  
-+ 在Portal上推送通知
++ 在 Portal 上推送通知
 
-+ 客户端收到推送并显示在状态栏pi
++ 客户端收到推送并显示在状态栏 pi
 
 ### 创建极光推送开发者帐号
-要创建极光推送开发者帐号，请访问[极光推送官方网站https://www.jiguang.cn/push](https://www.jiguang.cn/push)
+要创建极光推送开发者帐号，请访问[极光推送官方网站 https://www.jiguang.cn/push](https://www.jiguang.cn/push)
 
-![jpush_android_3m](../image/jpush_app_register.png)
+![jpush_android_3m](../image/jpush_app_register1.png)
  
-### Portal上创建应用
-使用注册账号登陆，进入极光控制台后，点击“创建应用”按钮。创建帐号进入极光推送后，首先显示的是创建应用的界面。填上你的应用程序的名称，以及 Android包名这二项就可以了。
+### Portal 上创建应用
+使用注册账号登陆，进入极光控制台后，点击“创建应用”按钮，填写应用名称即可创建应用成功。点击“推送设置”，在 Android 版块填上你的应用包名，选择保存即可。
 
 ![jpush_android_3m](../image/jpush_app_create.png)
 
-### 下载应用Example
-点击 ”下载应用Example “
+### 下载应用 Example
+点击“下载 Demo” 下载资源文件或“扫描下载安装包”直接下载 apk 到手机安装。
 
 ![jpush_android_3m](../image/jpush_app_detail.png)
 
@@ -44,7 +44,7 @@
 如果你的 Android 手机接在电脑上了，则这个 JPush Example 应用就可以安装上，并运行起来了。  
 做下一步动作之前，请确保你的手机上的网络是可用的。
 
-### Portal上推送通知
+### Portal 上推送通知
 
 ![jpush_android_3m](../image/jpush_app_sendmsg.png)
 
@@ -55,12 +55,12 @@
 ![jpush_android_receiver](../image/jpush_app_received.png)
 
 
-### Portal上推送消息
+### Portal 上推送消息
 
 具体详情请查看[控制台使用](../../console/Instructions)
 
-### 在LogCat中查看收到的自定义消息
-自定义消息可以在LogCat日志中查看，开发者根据自己需要做展现处理，JPush不做干预.
+### 在 LogCat 中查看收到的自定义消息
+自定义消息可以在 LogCat 日志中查看，开发者根据自己需要做展现处理，JPush 不做干预.
 
 ![jpush_android_3m](../image/android_studio_logcat.png)
 

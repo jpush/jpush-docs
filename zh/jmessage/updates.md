@@ -1,5 +1,538 @@
 # 最近更新
 
+
+### iOS SDK v3.8.0
+
+#### 更新时间
+
+2019-01-09
+
+#### ChangeLog
+
+##### BugFix
+
++ 修复用户反馈的一些 bug
+
+##### NewFeature:
+
++ 新增：群公告
++ 新增：群组黑名单
++ 新增：创建群组时可设置成员上限
++ 新增：聊天室黑名单
++ 新增：聊天室管理员
++ 新增：聊天室管理员变更、黑名单变更事件
+
+#### 升级指南
++ 使用新版本的 JMessage.framework 文件替换原工程下的同名旧文件
++ 将新版本的 JMessage.framework 里的 JCore link 到工程中，详细参见官网集成文档
+
+
+### Android SDK v2.8.0
+
+2019-01-02
+
+#### ChangeLog
+
+##### BugFix:
++ 修复用户反馈的一些bug
+
+##### NewFeature:
++ 支持群公告功能
++ 支持群组黑名单功能
++ 支持聊天室管理员功能
++ 支持聊天室黑名单功能
+
+#### 升级提示
++ 建议升级！
+
+#### 升级指南
+
++ 首先解压您获取到的 zip 压缩包
+
++ 更新库文件
+	+ 打开libs文件夹。添加jcore-android_v1.2.6.jar。用 jmessage-android_v2.8.0.jar 替换项目中原有的极光jar文件，并删除原有极光jar文件。用对应CPU文件夹下的 libjcore126.so 文件，替换项目中原有的libjcoreXXX.so文件，并删除原有的极光so文件，每种型号的so文件都可以在SDK下载包中找到。
+
++ 更新AndroidManifest.xml
+	+ 请参考 SDK下载包最新版本的 demo 来更新AndroidManifest.xml 文件配置。
+	***注意JMessage 从2.7.0版本开始新增了provider组件，如果项目中使用的JMessage是2.7.0之前的版本，集成时需要注意manifest中新增的provider组件的配置，  
+	新增组件：***
+```
+<!-- Required since JMessage 2.7.0 SDK 核心功能-->
+        <provider
+            android:name="cn.jpush.im.android.helpers.ipc.IMProvider"
+            android:authorities="您自己的包名.IMProvider"
+            android:exported="false" />
+```
++ 添加资源文件
+    + Android5.0以上，使用应用图标作为通知栏小图标可能显示异常，请参考res/drawable-xxxx/jmessage_notification_icon作为通知栏小图标。详情请见
+    Android SDK集成指南中的说明，或者demo中的示例
++ 如果使用jcenter的方式集成JMessage，不需要添加相关组件，详细集成说明请参考官方[集成指南](https://docs.jiguang.cn/jmessage/client/jmessage_android_guide/)
+
+
+### Android SDK v2.7.1
+
+#### 更新时间
+
+2018-10-29
+
+#### ChangeLog
+
+##### BugFix:
++ 修复用户反馈的一些bug
+
+##### NewFeature:
++ 支持上层自定义通知栏小图标
+
+#### 升级提示
++ 建议升级！
+
+#### 升级指南
+
++ 首先解压您获取到的 zip 压缩包
+
++ 更新库文件
+	+ 打开libs文件夹。添加jcore-android_v1.2.5.jar。用 jmessage-android_v2.7.1.jar 替换项目中原有的极光jar文件，并删除原有极光jar文件。用对应CPU文件夹下的 libjcore125.so 文件，替换项目中原有的libjcoreXXX.so文件，并删除原有的极光so文件，每种型号的so文件都可以在SDK下载包中找到。
+
++ 更新AndroidManifest.xml
+	+ 请参考 SDK下载包最新版本的 demo 来更新AndroidManifest.xml 文件配置。
+	***注意JMessage 从2.7.0版本开始新增了provider组件，如果项目中使用的JMessage是2.7.0之前的版本，集成时需要注意manifest中新增的provider组件的配置,
+	新增组件：***
+```
+<!-- Required since JMessage 2.7.0 SDK 核心功能-->
+        <provider
+            android:name="cn.jpush.im.android.helpers.ipc.IMProvider"
+            android:authorities="您自己的包名.IMProvider"
+            android:exported="false" />
+```
++ 添加资源文件
+    + Android5.0以上，使用应用图标作为通知栏小图标可能显示异常，请参考res/drawable-xxxx/jmessage_notification_icon作为通知栏小图标。详情请见
+    Android SDK集成指南中的说明，或者demo中的示例
++ 如果使用jcenter的方式集成JMessage，不需要添加相关组件，详细集成说明请参考官方[集成指南](https://docs.jiguang.cn/jmessage/client/jmessage_android_guide/)
+
+### iOS SDK v3.7.0
+
+#### 更新时间
+
+2018-09-05
+
+#### ChangeLog
+
+##### BugFix
+
++ 修复用户反馈的一些 bug
++ 修改 iOS 发视频消息 Android 下载缩略图失败
+
+##### NewFeature:
+
++ 新增：群组成员上限修改通知
++ 新增：群昵称功能
++ 新增：群组成员信息类 [JMSGGroupMemberInfo](./client/jmessage_ios_appledoc_html/Classes/JMSGGroupMemberInfo.html)
++ 新增：获取群成员信息接口 [-(void)memberInfoList:](./client/jmessage_ios_appledoc_html/Classes/JMSGGroup.html#//api/name/memberInfoList:)
+
+#### 升级指南
++ 使用新版本的 JMessage.framework 文件替换原工程下的同名旧文件
++ 将新版本的 JMessage.framework 里的 JCore link 到工程中，详细参见官网集成文档
+
+
+### Android SDK v2.7.0
+
+#### 更新时间
+
+2018-08-30
+
+#### ChangeLog
+
+##### BugFix:
++ 修复用户反馈的一些bug
+
+##### NewFeature:
++ 群组成员信息重构，新增GroupMemberInfo代表群组成员信息，原有获取群成员信息返回UserInfo的接口deprecated,新增接口返回GroupMemberInfo
++ 支持获取入群时间
++ 支持群成员昵称功能
+
+#### 升级提示
++ 建议升级！
+
+#### 升级指南
+
++ 首先解压您获取到的 zip 压缩包
+
++ 更新库文件
+	+ 打开libs文件夹。添加jcore-android_v1.2.3.jar。用 jmessage-android_v2.7.0.jar 替换项目中原有的极光jar文件，并删除原有极光jar文件。用对应CPU文件夹下的 libjcore123.so 文件，替换项目中原有的libjcoreXXX.so文件，并删除原有的极光so文件，每种型号的so文件都可以在SDK下载包中找到。
+
++ 更新AndroidManifest.xml
+	+ 请参考 SDK下载包最新版本的 demo 来更新AndroidManifest.xml 文件配置。
+	***注意JMessage 从2.7.0版本开始新增了provider组件，如果项目中使用的JMessage是2.7.0之前的版本，集成时需要注意manifest中新增的provider组件的配置，新增组件：***  
+```
+<!-- Required since JMessage 2.7.0 SDK 核心功能-->
+        <provider
+            android:name="cn.jpush.im.android.helpers.ipc.IMProvider"
+            android:authorities="您自己的包名.IMProvider"
+            android:exported="false" />
+```
+
++ 如果使用jcenter的方式集成JMessage，不需要添加相关组件和资源，详细集成说明请参考官方[集成指南](https://docs.jiguang.cn/jmessage/client/jmessage_android_guide/)
+
+
+### JMRTC Android SDK v1.0.2
+#### 更新时间
+
++ 2018-08-24
+
+#### ChangLog
++ 域名更新，老版本将在9月份停用，请开发者尽快更新sdk
+
+
+#### 集成指南
++ 集成jmessage(需要2.6.0或以上版本)。集成文档见官方[JMessage集成指南](https://docs.jiguang.cn/jmessage/client/jmessage_android_guide/)
+
++ 拷贝jmrtc相关库文件
+	+ 打开libs文件夹。拷贝jmrtc-android_v1.0.2.jar以及agora-rtc-sdk.jar。
+	+ 拷贝CPU文件夹下的.so 文件，每种型号的so文件都可以在SDK下载包中找到。
+
++ 更新AndroidManifest.xml
+	+ 权限声明处增加：
+```
+	<uses-permission android:name="android.permission.RECORD_AUDIO" />  
+	<uses-permission android:name="android.permission.CAMERA" />  
+	<uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+```   
+	
++ 如果使用jcenter的方式集成JMRTC，不需要添加相关组件和资源，详细集成说明请参考官方[JMRTC集成指南](https://docs.jiguang.cn/jmessage/client/im_jmrtc_android/)
+
+### JMRTC Android SDK v1.0.1
+
+#### 更新时间
+
++ 2018-07-27
+
+#### ChangLog
+
+##### Bugfix
++ 修复用户反馈的一些bug
+
+#### 集成指南
++ 集成jmessage(需要2.6.0或以上版本)。集成文档见官方[JMessage集成指南](https://docs.jiguang.cn/jmessage/client/jmessage_android_guide/)
+
++ 拷贝jmrtc相关库文件
+	+ 打开libs文件夹。拷贝jmrtc-android_v1.0.1.jar以及agora-rtc-sdk.jar。
+	+ 拷贝CPU文件夹下的.so 文件，每种型号的so文件都可以在SDK下载包中找到。
+
++ 更新AndroidManifest.xml
+	+ 权限声明处增加：
+```
+	<uses-permission android:name="android.permission.RECORD_AUDIO" />  
+	<uses-permission android:name="android.permission.CAMERA" />  
+	<uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+```   
+	
++ 如果使用jcenter的方式集成JMRTC，不需要添加相关组件和资源，详细集成说明请参考官方[JMRTC集成指南](https://docs.jiguang.cn/jmessage/client/im_jmrtc_android/)
+
+### Android SDK v2.6.1
+
+#### 更新时间
+
+2018-07-10
+
+#### ChangeLog
+
+##### BugFix:
++ 修复用户反馈的一些bug
+
+##### NewFeature:
++ 支持批量同意审批事件操作
++ 支持修改群组类型
++ 审批事件中增加获取待审批用户人数的接口
++ 添加群成员接口增加reason
++ 增加群组成员上限调整通知
++ 加人进群事件支持自定义扩展字段
++ Model类提供toJson方法
+
+#### 升级提示
++ 建议升级！
+
+#### 升级指南
+
++ 首先解压您获取到的 zip 压缩包
+
++ 更新库文件
+	+ 打开libs文件夹。添加jcore-android_v1.2.1.jar。用 jmessage-android_v2.6.1.jar 替换项目中原有的极光jar文件，并删除原有极光jar文件。用对应CPU文件夹下的 libjcore121.so 文件，替换项目中原有的libjcoreXXX.so文件，并删除原有的极光so文件，每种型号的so文件都可以在SDK下载包中找到。
+
++ 更新AndroidManifest.xml
+	+ 请参考 SDK下载包最新版本的 demo 来更新AndroidManifest.xml 文件配置。
+
++ 如果使用jcenter的方式集成JMessage，不需要添加相关组件和资源，详细集成说明请参考官方[集成指南](https://docs.jiguang.cn/jmessage/client/jmessage_android_guide/)
+
+### JMRTC iOS SDK v1.0.0
+
+#### 更新时间
+
+2018-07-06
+
+#### ChangeLog
+
++ JMRTC 首次发布
++ 支持多人实时音视频通话
++ 支持通话中设备控制（切换摄像头、免提模式等）
++ 支持视频输出分辨率设置
+
+#### 升级提示
+
++ 可选升级
+
+#### 升级指南
++ 集成 JMessage
++ 将新版本的 JMRTC.framework 加到工程中，详细参见官网集成文档
+
+### iOS SDK v3.6.2
+
+#### 更新时间
+
+2018-07-06
+
+#### ChangeLog
+
+##### NewFeature:
+
++ 支持 JMRTC
+
+#### 升级指南
++ 使用新版本的 JMessage.framework 文件替换原工程下的同名旧文件
++ 将新版本的 JMessage.framework 里的 JCore link 到工程中，详细参见官网集成文档
+
+ 
+### JMRTC Android SDK v1.0.0
+
+#### 更新时间
+
+2018-06-22
+
+#### ChangeLog
+
++ JMRTC 首次发布
++ 支持多人实时音视频通话
++ 支持通话中设备控制（切换摄像头、免提模式等）
++ 支持视频输出分辨率设置
+
+#### 升级指示
++ 可选升级！
+
+#### 升级指南
+
++ 集成jmessage
++ 拷贝jmrtc相关jar和so
+	+ 打开libs文件夹。拷贝jmrtc-android_v1.0.0.jar以及agora-rtc-sdk.jar。
+	+ 拷贝CPU文件夹下的.so 文件，每种型号的so文件都可以在SDK下载包中找到。
++ 更新AndroidManifest.xml
+  权限声明处增加：
+```
+  <uses-permission android:name="android.permission.RECORD_AUDIO" />
+  <uses-permission android:name="android.permission.CAMERA" />
+  <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+```
+
+### iOS SDK v3.6.1
+
+#### 更新时间
+
+2018-06-04
+
+#### ChangeLog
+
+##### BugFix:
+
+* 修复获取群列表接口返回类型错误的问题
+
+#### 升级提示
+
++ 建议升级！
+
+#### 升级指南
+* 使用新版本的 JMessage.framework 文件替换原工程下的同名旧文件
+* 将新版本的 JMessage.framework 里的 JCore link 到工程中，详细参见官网集成文档
+
+
+
+### iOS SDK v3.6.0
+
+#### 更新时间
+
+2018-05-25
+
+#### ChangeLog
+
+##### BugFix:
+
+* 修复用户反馈的一些 bug
+
+##### NewFeature
+
+* 新增：修改群组类型接口
+* 新增：video 视频类型消息
+* 新增：批量增加、删除管理员接口
+* 新增：公开群添加群成员可填写理由接口
+* 新增：批量审批入群申请接口
+
+#### 升级指南
+* 使用新版本的 JMessage.framework 文件替换原工程下的同名旧文件
+* 将新版本的 JMessage.framework 里的 JCore link 到工程中，详细参见官网集成文档
+
+#### 接口变更
+因为 swift 版本兼容问题，登录返回设备记录接口修改为:  
+`+(void)loginWithUsername:password:devicesInfo:completionHandler:`
+
+
+### Android SDK v2.6.0
+
+#### 更新时间
+
++ 2018-05-09
+
+#### ChangeLog
+
+##### BugFix:
+
++ 修复其他用户反馈的一些bug
+
+##### NewFeature:
++ 新增VideoContent消息类型
++ model类实现序列化
++ 收到dev api更新好友关系事件之后，sdk上抛好友关系变更事件
+
+#### 升级提示
+
++ 建议升级！
+
+#### 升级指南
+
++ 首先解压您获取到的 zip 压缩包
+
++ 更新库文件
+	+ 打开libs文件夹。添加jcore-android_v1.2.0.jar。用 jmessage-android_v2.6.0.jar 替换项目中原有的极光jar文件，并删除原有极光jar文件。用对应CPU文件夹下的 libjcore120.so 文件，替换项目中原有的libjcoreXXX.so文件，并删除原有的极光so文件，每种型号的so文件都可以在SDK下载包中找到。
+
++ 更新AndroidManifest.xml
+	+ 请参考 SDK下载包最新版本的 demo 来更新AndroidManifest.xml 文件配置。
+	***注意JCore 从1.1.7版本开始新增了provider组件，如果项目中使用的JCore是1.1.7之前的版本，集成时需要注意manifest中新增的provider组件的配置***
+
++ 如果使用jcenter的方式集成JMessage，不需要添加相关组件和资源，详细集成说明请参考官方[集成指南](https://docs.jiguang.cn/jmessage/client/jmessage_android_guide/)
+
+### PC SDK V1.2.1
+
+#### 更新时间
+
++ 2018-04-12
+
+#### ChangeLog
+
+##### NewFeature:
+
++ 全新 PC 端 SDK，同时支持Windows、macOS
++ 同步 Windows v1.2.0 的所有功能
+
+#### 升级提示
+
++ 建议升级！
+
+#### 升级指南
+
++ 从官网下载SDK包,直接全部替换即可
++ 如果使用的NuGet包,可以使用NuGet包管理器直接更新
+
+
+### iOS SDK v3.5.0
+
+#### 更新时间
+
+* 2018-03-01
+
+#### ChangeLog
+
+##### BugFix:
+
+* 修复用户反馈的一些 bug
+
+##### NewFeature
+
+* 设置群组管理员功能
+* 解散群组功能
+* 移交群主权限功能
+* 设备间消息透传功能
+* 登录接口返回用户登录设备记录
+
+#### 升级指南
+* 使用新版本的 JMessage.framework 文件替换原工程下的同名旧文件
+* 将新版本的 JMessage.framework 里的 JCore link 到工程中，详细参见官网集成文档
+
+#### 接口变更
++ `-(void)onReceiveNotificationEvent:` 接口细分为 `-(void)onReceiveUserLoginStatusChangeEvent:` 和 `-(void)onReceiveFriendNotificationEvent:`
+
+
+
+### Android SDK v2.5.0
+
+#### 更新时间
+
++ 2018-03-01
+
+#### Change Log
+##### BugFix:
++ 修复老版本升级时禁言列表获取不到问题
++ 修复其他用户反馈的一些bug
+
+##### NewFeature:
++ Android O系统适配
++ 新增群组管理员
++ 支持解散群组
++ 支持获取设备登陆记录
++ 支持移交群主权限
++ 支持设备间消息透传
+
+#### 升级提示
+
++ 建议升级！
+
+#### 升级指南
+
++ 首先解压您获取到的 zip 压缩包
+
++ 更新库文件
+	+ 打开libs文件夹。添加jcore-android_v1.1.9.jar。用 jmessage-android_v2.5.0.jar 替换项目中原有的极光jar文件，并删除原有极光jar文件。用对应CPU文件夹下的 libjcore119.so 文件，替换项目中原有的libjcoreXXX.so文件，并删除原有的极光so文件，每种型号的so文件都可以在SDK下载包中找到。
+
++ 更新AndroidManifest.xml
+	+ 请参考 SDK下载包最新版本的 demo 来更新AndroidManifest.xml 文件配置。  
+	***注意JCore 从1.1.7版本开始新增了provider组件，如果项目中使用的JCore是1.1.7之前的版本，集成时需要注意manifest中新增的provider组件的配置***
+
++ 如果使用jcenter的方式集成JMessage，不需要添加相关组件和资源，详细集成说明请参考官方[集成指南](https://docs.jiguang.cn/jmessage/client/jmessage_android_guide/)
+
+
+### Windows SDK V1.2.0
+
+#### 更新时间
+
++ 2018-02-02
+
+#### ChangeLog
+
+##### NewFeature:
+
++ 登录设备历史记录
++ 解散群
++ 设置群管理员
++ 获取公开群列表
++ 转让群主身份
++ 设备间消息透传
+
+#### 升级提示
+
++ 建议升级！
+
+#### 升级指南
+
++ 从官网下载SDK包,直接全部替换即可
+
++ 如果使用的NuGet包,可以使用NuGet包管理器直接更新
+
+
 ### Web SDK v2.6.0
 
 #### 更新时间
@@ -21,6 +554,7 @@
 #### 升级指南
 
 + 用最新的 jmessage-sdk-web.2.6.0.min.js 替换掉老版本的 sdk
+
 
 
 ### iOS SDK v3.4.1

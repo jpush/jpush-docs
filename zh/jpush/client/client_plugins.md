@@ -1,15 +1,14 @@
 # 客户端集成插件
 
-除了原生的 Android SDK 与 iOS SDK 之外，极光推送提供主流的开发工具集成插件。
+除了原生的 Android SDK 与 iOS SDK 之外，极光推送还提供主流的开发工具集成插件。
 
 ### 官方维护
 
 官方维护的版本放在 [Github - 极光开发者](https://github.com/jpush) 上以开源的形式发布。如果需下载打包版本，请点击相应项目页面的 "Releases"，下载你想要的发布打包。
 
-官方插件地址包含：安装方法、demo(example 文件夹内)、API 文档、常见问题，请开发者仔细参阅。
+官方插件地址包含：安装方法、demo（example 文件夹内）、API 文档、常见问题，请开发者仔细参阅。
 
-#### PhoneGap
-
+#### PhoneGap / Cordova / Ionic
 
 官方地址：[https://github.com/jpush/jpush-phonegap-plugin](https://github.com/jpush/jpush-phonegap-plugin)
 
@@ -31,19 +30,33 @@
 
 官方地址：[https://github.com/jpush/jpush-hbuilder-demo](https://github.com/jpush/jpush-hbuilder-demo)
 
-###第三方开发者维护
+#### Flutter
+
+官方地址：[https://github.com/jpush/jpush-flutter-plugin](https://github.com/jpush/jpush-flutter-plugin)
+
+#### weex
+
+官方地址：[https://github.com/jpush/jpush-weex-plugin](https://github.com/jpush/jpush-weex-plugin)
+
+#### Swift Demo
+
+官方地址：[https://github.com/jpush/jpush-swift-demo](https://github.com/jpush/jpush-swift-demo)
+
+### 第三方开发者维护
 
 #### Ionic
 
-+ 代码：开源在 github上 － [基于 ionic2 极光推送示例](https://github.com/zjcboy/ionic2-jpush-demo)
-+ 文章：[Ionic JPush极光推送 插件实例](http://www.cnblogs.com/linsu/p/5641158.html)
++ 代码：开源在 Github 上 － [基于 ionic2 极光推送示例](https://github.com/zjcboy/ionic2-jpush-demo)
++ 文章：[Ionic JPush 极光推送 插件实例](http://www.cnblogs.com/linsu/p/5641158.html)
 
 #### Xamarin
 
 用 C# 创建 Android, iOS, Mac, Windows 应用。
 
-+ 文章：[将JPush（java库）集成到xamarin工程中](http://smilehyh.blog.163.com/blog/static/123343886201362110857402/)
++ 文章：[将 JPush（java 库）集成到 xamarin 工程中](http://smilehyh.blog.163.com/blog/static/123343886201362110857402/)
 
 ### 技术支持
 
-- QQ 交流群：413602425
+- 优先支持：开发将优先处理在各插件 GitHub 页面提的 issue
+- cordova QQ 交流群：413602425
+- react QQ 交流群：553406342

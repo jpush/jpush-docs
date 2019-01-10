@@ -20,7 +20,7 @@ Step4：点击选择需要使用的回调接口
 ![](./callback_image/dev_response_set.jpg)
 
 ###设置回调地址
-在控制台填写回调地址，回调地址必须以 http:// 或 https:// 开头，支持所有端口。填写回调地址后需校验通过后才可以使用，校验规则：极光将给回调 URL 发起一个 GET 请求并附带一个 8 位随机字符串的参数 echostr，开发者需要在 Response Body 里原样输出 echostr 的值。   
+在控制台填写回调地址，回调地址必须以 http:// 或 https:// 开头，不支持自定义端口。填写回调地址后需校验通过后才可以使用，校验规则：极光将给回调 URL 发起一个 GET 请求并附带一个 8 位随机字符串的参数 echostr，开发者需要在 Response Body 里原样输出 echostr 的值。   
 
 ##回调消息格式
 ###回调方式说明
@@ -45,7 +45,7 @@ Step4：点击选择需要使用的回调接口
 |----|----|----|
 |msgId|	String| API 调用的时候返回的 msg_id|
 |status| Integer| 发送状态返回码|
-|receiveTime| Date| 短信送达时间|
+|receiveTime| Timestamp| 短信送达时间|
 |phone|	String| 短信送达手机号|
 
 ###发送状态返回码
@@ -57,7 +57,11 @@ Step4：点击选择需要使用的回调接口
 |4003|手机终端问题，手机关机、停机等，请确认手机状态是否正常|
 |4004|被叫手机号码为空号，请核实手机号码是否合规|
 |4005|可发送短信余量不足|
-|4006|发送超频|
+|4006|发送超频，发送频率超过运营商限制|
+|4007|未应答，语音短信状态，语音短信呼叫成功，用户未接听或拒绝接听|
+|4008|用户正忙，语音短信状态，被叫用户正忙|
+|4009|无法接通，语音短信状态，不在服务区、手机无信号或电话被转入来电提醒等|
+|4010|敏感词拦截，因短信内容存在敏感词导致运营商拦截|
 |4100|其他错误|
 
 ###上行消息内容回调参数 
@@ -74,6 +78,14 @@ Step4：点击选择需要使用的回调接口
 |---| ----| ----|
 |tempId| Integer| 模板ID|
 |status| Integer| 模板状态，1代表审核通过，2代表审核不通过|
+|refuseReason| String| 审核不通过的原因|
+
+###签名审核结果回调参数 
+
+|CODE| TYPE| DESCRIPTION|
+|---| ----| ----|
+|signId| Integer| 签名ID|
+|status| Integer| 签名状态，1代表审核通过，2代表审核不通过|
 |refuseReason| String| 审核不通过的原因|
 
 <a name="回调测试"></a>
@@ -109,6 +121,13 @@ Step4：点击选择需要使用的回调接口
 |status|	1|
 |refuseReason| 	null|
 
+###签名审核结果回调测试数据
+|KEY| VALUE|
+|----|----|
+|signId|	123|
+|status|	1|
+|refuseReason| 	null|
+
 ###curl 模拟 POST 回调请求
 在 linux 上可以很方便的使用 curl 命令发起 HTTP POST 请求，在 windows 下需要安装 curl 工具软件。以下是 curl 模拟回调的示例
 
@@ -131,6 +150,11 @@ curl -d "nonce=7659972084945889195&timestamp=1492150740274&signature=007eff6a105
 curl -d "nonce=7659972084945889195&timestamp=1492150740274&signature=007eff6a105503211b472802eecc42465582ba70&type=SMS_TEMPLATE&data={\"tempId\":57496,\"status\":1,\"refuseReason\":null}" "http://localhost:8088/callback"
 ```
 
+###签名审核结果回调
+
+```
+curl -d "nonce=7659972084945889195&timestamp=1492150740274&signature=007eff6a105503211b472802eecc42465582ba70&type=SMS_SIGN&data={\"signId\":57496,\"status\":1,\"refuseReason\":null}" "http://localhost:8088/callback"
+```
 
 ###HttpClient 模拟 POST 回调请求
 

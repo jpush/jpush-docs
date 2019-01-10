@@ -88,9 +88,9 @@
 <div class="panel-heading">极光 IM 文档</div>
 <div class="panel-body">
     <ul>
-    <li><a href="/jmessage/client/im_sdk_android/">Android SDK 概述</a></li>
-    <li><a href="/jmessage/client/jmessage_android_guide/">Android SDK 集成指南</a></li>
-    <li><a href="https://docs.jiguang.cn/jmessage/client/im_android_api_docs/">Android SDK API</a></li>
+    <li><a href="/jmessage/client/android_sdk/basic/">Android IM SDK 开发指南</a></li>
+    <li><a href="/jmessage/client/jmessage_android_guide/">Android IM SDK 集成指南</a></li>
+    <li><a href="/jmessage/client/javadoc/">Android IM API Docs</a></li>
     </ul>
     <ul>
     <li><a href="/jmessage/client/im_sdk_ios/">iOS SDK 概述</a></li>
@@ -98,9 +98,14 @@
     <li><a href="https://docs.jiguang.cn/jmessage/client/jmessage_ios_appledoc_html/">iOS SDK API</a></li>
     </ul>
     <ul>
-    <li><a href="/jmessage/client/im_sdk_js/">WEB SDK 开发文档</a></li>
+    <li><a href="/jmessage/client/im_sdk_js/">WEB SDK 开发指南</a></li>
+	<li><a href="/jmessage/client/im_sdk_win/">PC SDK 开发指南</a></li>
     <li><a href="/jmessage/server/rest_api_im/">IM REST API</a></li>
     </ul>
+	<ul>
+	<li><a href="/jmessage/client/im_jmrtc_android/">Android 实时音视频</a></li>
+	<li><a href="/jmessage/client/javadoc/">Android JMRTC API Docs</a></li>
+	</ul>
 </div>
 </div>
 </div>
@@ -137,6 +142,28 @@
     <ul>
     <li><a href="/jshare/client/iOS/ios_sdk/">iOS SDK 集成指南</a></li>
     <li><a href="/jshare/client/iOS/ios_api/">iOS SDK API</a></li>
+    </ul>
+</div>
+</div>
+</div>
+
+<div class="row">
+<div class="panel panel-default">
+<div class="panel-heading">极光认证文档</div>
+<div class="panel-body">
+    <ul>
+    <li><a href="/jverification/guideline/intro/">产品介绍</a></li>
+    <li><a href="/jverification/client/android_guide/">Android SDK 集成指南</a></li>
+    <li><a href="/jverification/client/android_api/">Android SDK API</a></li>
+    </ul>
+    <ul>
+    <li><a href="/jverification/client/ios_guide/">iOS SDK 集成指南</a></li>
+    <li><a href="/jverification/client/ios_api/">iOS SDK API</a></li>
+    <li><a href="/jverification/client/client_plugins/">客户端集成插件</a></li>
+    </ul>
+    <ul>
+    <li><a href="/jverification/server/rest_api/rest_api_summary/">REST API 概述</a></li>
+    <li><a href="/jverification/server/rest_api/verify_api/">Verify API</a></li>
     </ul>
 </div>
 </div>

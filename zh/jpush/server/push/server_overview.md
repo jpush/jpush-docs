@@ -1,6 +1,12 @@
 # 服务端 REST API 概述
-</br>
-</br>
+
+<div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px; ">
+<p>特别提示：建议不要在客户端直接调用 Rest API。JPush 私密信息容易因此暴露给他人，得到 Appkey 和 MasterSecret 信息的人可能进行恶意的推送。
+<br>
+<p>建议的使用方式是：调用 JPush Rest API 的代码放在开发者应用服务器上。开发者应用服务器对自己的客户端提供接口，开发者服务器收到来自客户端的请求后再调极光的 API 。
+</div>
+
+
 JPush 提供遵从 REST 规范的 HTTP API，以供开发者远程调用 JPush 提供的服务。
 
 与此同时，为方便开发者使用 JPush API，还提供[多种常用编程语言的开发包（SDK）](../../resources/#sdk_1)。
@@ -8,12 +14,10 @@ JPush 提供遵从 REST 规范的 HTTP API，以供开发者远程调用 JPush �
 
 ## REST API 基本约束
 
-* API 被设计为符合 HTTP, REST 规范。例如：查询请求使用 Get 方法，提交请求使用 Post 方法。如果一个请求不是相应的 HTTP 方法，将返回错误。
-* 如无特殊说明，调用参数值应转码为：UTF-8, URL编码 [^1]。
+* API 被设计为符合 HTTP，REST 规范。例如：查询请求使用 Get 方法，提交请求使用 Post 方法。如果一个请求不是相应的 HTTP 方法，将返回错误。
+* 如无特殊说明，调用参数值应转码为：UTF-8，[URL 编码](http://zh.wikipedia.org/wiki/%E7%99%BE%E5%88%86%E5%8F%B7%E7%BC%96%E7%A0%81)。
 * API 请求有[频率限制](#api_1)。
 * API 请求有[黑名单机制](#blacklist)。
-
-[1]: [URL编码 - WikiPedia定义](http://zh.wikipedia.org/wiki/%E7%99%BE%E5%88%86%E5%8F%B7%E7%BC%96%E7%A0%81)
 
 ## API 资源列表
 <div class="table-d" align="center" >
@@ -40,7 +44,7 @@ JPush 提供遵从 REST 规范的 HTTP API，以供开发者远程调用 JPush �
                         <td>[REST API v3 - Devices](rest_api_v3_device)</td>
                         <td>/v3/devices</td>
                         <td>https://device.jpush.cn</td>
-                        <td>操作 tag,alias </td>
+                        <td>操作 tag, alias </td>
                 </tr>
         </table>
 </div>
@@ -48,9 +52,7 @@ JPush 提供遵从 REST 规范的 HTTP API，以供开发者远程调用 JPush �
 
 ## 鉴权方式
 
-极光 REST API 采用 HTTP基本认证[^2] 的验证方式。
-
-[2]: [HTTP 基本认证 - WikiPedia定义](http://zh.wikipedia.org/wiki/HTTP%E5%9F%BA%E6%9C%AC%E8%AE%A4%E8%AF%81)
+极光 REST API 采用 [HTTP 基本认证](http://zh.wikipedia.org/wiki/HTTP%E5%9F%BA%E6%9C%AC%E8%AE%A4%E8%AF%81) 的验证方式。
 
 基本作法为，HTTP Header（头）里加 Authorization：
 
@@ -115,7 +117,7 @@ JPush API 对访问次数，具有频率控制。即一定的时间窗口内，A
         </table>
 </div>
 
-收费版本根据终端用户规模的不同，具有不同级别的频率。如有需要，请[联系商务](https://www.jiguang.cn/accounts/business/form)。
+收费版本根据终端用户规模的不同，具有不同级别的频率。如有需要，请[联系商务](https://www.jiguang.cn/accounts/business_contact?fromPage=push_doc)。
 
 ### 获取频率信息
 
@@ -162,6 +164,6 @@ JPush API 对访问次数，具有频率控制。即一定的时间窗口内，A
 
 ## 参考
 
-+ [HTTP 错误码 429  - WikiPedia定义](http://en.wikipedia.org/wiki/List_of_HTTP_status_codes#4xx_Client_Error)
-+ [Twitter API 频率控制定义](https://dev.twitter.com/docs/rate-limiting/1.1)
++ [HTTP 错误码 429  - WikiPedia 定义](http://en.wikipedia.org/wiki/List_of_HTTP_status_codes#4xx_Client_Error)
++ [Twitter API 频率控制定义](https://developer.twitter.com/en/docs/basics/rate-limiting)
 

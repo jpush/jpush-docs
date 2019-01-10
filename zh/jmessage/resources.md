@@ -7,29 +7,38 @@
         <div class="thumbnail">
             <img src="../image/resource_android.png" alt="android">
             <div class="caption">
-                <h4>Android SDK</h4>
-                <p>版本：v2.4.1</p>
-                <p>更新时间：2018.01.02</p>
-                <ul>
-                    <li><a href="../client/jmessage_android_guide">集成步骤</a></li>
-                    <li><a href="../client/im_sdk_android/">开发指南</a></li>
-                </ul>
-                <p><a href="https://www.jiguang.cn/downloads/sdk/im_android/" class="btn btn-default" role="button">下载</a></p>
+                 <h4><span>Android SDK</span><span class="version">v2.8.0</span></h4>
+                 <div class="download-options">
+                     <div class="option"><input type="checkbox" checked onclick="return false;"><span  style=" margin-right: 20px;">IM即时通讯</span></div>
+                     <div class="option"><input type="checkbox" class="andorid-voice"><span>实时音视频</span></div>
+                 </div>
+                 <div class="download-btn-android">
+                     <a class="btn btn-default android-href" role="button" href="https://www.jiguang.cn/downloads/sdk/im_android/">下载 SDK</a>
+                 </div>
+                 <div class="doc-options">
+                     <a href="../client/im_sdk_android/" style="margin-right: 20px;">开发指南</a>
+                     <a href="../client/jmessage_android_guide">集成步骤</a>
+                 </div>
             </div>
         </div>
     </div>
     <div class="col-md-6">
         <div class="thumbnail">
             <img src="../image/resource_ios.png" alt="iOS">
+
             <div class="caption">
-                <h4>iOS SDK</h4>
-                <p>版本：v3.4.1</p>
-                <p>更新时间：2018.01.03</p>
-                <ul>
-                    <li><a href="../client/jmessage_ios_guide/">集成步骤</a></li>
-                    <li><a href="../client/im_sdk_ios/">开发指南</a></li>
-                </ul>
-                <p><a href="https://www.jiguang.cn/downloads/sdk/im_ios/" class="btn btn-default" role="button">下载</a></p>
+            <h4><span>iOS SDK</span><span class="version">v3.8.0</span></h4>
+                <div class="download-options">
+			        <div class="option"><input type="checkbox" checked onclick="return false;"><span  style=" margin-right: 20px;">IM即时通讯</span></div>
+                  <div class="option"><input type="checkbox" class="ios-voice"><span>实时音视频</span></div>
+                </div>
+                <div class="download-btn-ios">
+                 <a class="btn btn-default ios-href" role="button" href="https://www.jiguang.cn/downloads/sdk/im_ios/">下载 SDK</a>
+                </div>
+                <div class="doc-options">
+                 <a href="../client/im_sdk_ios/" style="margin-right: 20px;">开发指南</a>
+                 <a href="../client/jmessage_ios_guide/">集成步骤</a>
+                </div>
             </div>
         </div>
     </div>
@@ -39,29 +48,34 @@
         <div class="thumbnail">
             <img src="../image/resource_js.png" alt="Web">
             <div class="caption">
-                <h4>Web SDK</h4>
-                <p>版本：v2.6.0</p>
-                <p>更新时间：2018.01.26</p>
-                <ul>
-                    <li><a href="../client/im_sdk_js_v2/">开发指南</a></li>
-                    <li class="li-clear"></li>
-                </ul>
-                <p><a href="https://www.jiguang.cn/downloads/sdk/im_js/" class="btn btn-default" role="button">下载</a></p>
+                 <h4><span>Web SDK</span><span class="version">v2.6.0</span></h4>
+                 <div class="download-options">
+                     <div class="option"><input type="checkbox" checked onclick="return false;"><span  style=" margin-right: 20px;">IM即时通讯</span></div>
+                 </div>
+                 <div>
+                     <a class="btn btn-default" role="button" href="https://www.jiguang.cn/downloads/sdk/im_js/">下载 SDK</a>
+                 </div>
+                 <div class="doc-options">
+                     <a href="../client/im_sdk_js_v2/">开发指南</a>
+                 </div>
             </div>
         </div>
     </div>
     <div class="col-md-6">
         <div class="thumbnail">
-            <img src="../image/windows.png" alt="Windows">
+            <img src="../image/pc.png" alt="pc">
             <div class="caption">
-                <h4>Windows SDK</h4>
-                <p>版本：v1.1.0</p>
-                <p>更新时间：2017.12.04</p>
-                <ul>
-                    <li><a href="../client/im_sdk_win/">集成指南</a></li>
-                    <li class="li-clear"></li>
-                </ul>
-                <p><a href="https://www.jiguang.cn/downloads/sdk/im_win" class="btn btn-default" role="button">下载</a></p>
+                 <h4><span>PC SDK</span><span class="version">v1.2.1</span></h4>
+                 <div class="download-options">
+                     <div class="option"><input type="checkbox" checked onclick="return false;"><span  style=" margin-right: 20px;">IM即时通讯</span></div>
+                 </div>
+                 <div>
+                     <a class="btn btn-default" role="button" href="https://www.jiguang.cn/downloads/sdk/im_win" style="margin-right: 20px;">Windows 下载</a>
+                     <a class="btn btn-default" role="button" href="https://www.jiguang.cn/downloads/sdk/im_mac" >macOS 下载</a>
+                 </div>
+                 <div class="doc-options">
+                     <a href="../client/im_sdk_win/">集成指南</a>
+                 </div>
             </div>
         </div>
     </div>
@@ -90,11 +104,11 @@
                     <div class="apk">
                         <a href="https://www.jiguang.cn/downloads/server_sdk/im/jchat_android"  role="button">Android 下载</a>
                      </div>
-                
+
                 <div class="code">
                 <a href="https://github.com/jpush/jchat-android" target="_blank" class="download-text">源码</a>
                 </div>
-                
+
                 </div>
             </div>
             <div class="col-xs-3" style="padding-left: 10px">
@@ -105,7 +119,7 @@
                  <div class="code">
                  <a href="https://github.com/jpush/jchat-swift" target="_blank" class="download-text">源码</a>
                  </div>
-                   
+
                 </div>
             </div>
             <div class="col-xs-3" style="padding-left: 8px;padding-right: 8px">
@@ -187,3 +201,4 @@
         </div>
     </div>
 </div>
+

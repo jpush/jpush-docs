@@ -2,7 +2,7 @@
 JPush Admin API 提供给开发者操创建/删除 app，上传证书等功能。  
 这类 API 地址统一为： https://admin.jpush.cn/v1/
 
-**注：Admin API 目前尚未完全开放，如需体验该功能，请**[联系我们](https://www.jiguang.cn/contact) 。
+**注：Admin API 目前尚未完全开放，如需体验该功能，请**[联系我们](https://www.jiguang.cn/accounts/business_contact?fromPage=push) 。
 
 
 <div style="font-size:13px;background: #E0EFFE;border: 1px solid #ACBFD7;border-radius: 3px;padding: 8px 16px;">
@@ -40,13 +40,13 @@ POST https://admin.jpush.cn/v1/app
 
 **请求参数**
 
-请求参数为一个App对象，以 JSON 格式表达，包含的字段信息如下：
+请求参数为一个 App 对象，以 JSON 格式表达，包含的字段信息如下：
 
 
 参数名称           | 类型          |是否必需  |描述
 ---------------- | ------------  | -------- | ------------
 app_name         |string 	      | 是       |应用名称
-android_package  |string 	      | 是       |应用包名(Android)
+android_package  |string 	      | 是       |应用包名（Android）
 group_name       |string 	      | 否       |应用分组名称
 
 ```
@@ -66,10 +66,10 @@ group_name       |string 	      | 否       |应用分组名称
 参数名称          | 描述         |描述
 ---------------- | ----------- | ------------
 app_key          |string 	    | 应用标识
-android_package  |string 	    | 应用包名(Android)
+android_package  |string 	    | 应用包名（Android）
 is_new_created   |boolean 	    |
 
-## app删除
+## app 删除
 
 ### 功能说明
 
@@ -116,7 +116,7 @@ POST https://admin.jpush.cn/v1/app/{appKey}/certificate
          -u '{devKey}:{devSecret}'
 ```
 
-   如果没有dev证书或pro证书,则不需要相应的-F参数及相应password，比如: 只有dev证书。
+   如果没有 dev 证书或 pro 证书，则不需要相应的 -F 参数及相应 password，只有 dev 证书的请求示例：
 
 ```
     curl https://admin.jpush.cn/v1/app/ffbb0932c267d938941e470b/certificate
@@ -129,10 +129,10 @@ POST https://admin.jpush.cn/v1/app/{appKey}/certificate
 
 参数名称                 | 类型           |描述
 ----------------------  | ------------  | ----------
-devCertificatePassword  |string 	    |dev证书密码
-proCertificatePassword  |string 	    |pro证书密码
-devCertificateFile      |文件 	        |dev证书文件
-proCertificateFile      |文件 	        |pro证书文件
+devCertificatePassword  |string 	    |dev 证书密码
+proCertificatePassword  |string 	    |pro 证书密码
+devCertificateFile      |文件 	        |dev 证书文件
+proCertificateFile      |文件 	        |pro 证书文件
 
 ### 响应示例
 
@@ -156,9 +156,9 @@ HTTP Status Code| Error Code|描述|
 200| |Success!|
 200|1010|证书已存在|
 200|1012|证书不合法|
-200|1013|appkey不合法|
+200|1013|appkey 不合法|
 200|1014|参数中没有证书文件|
-200|1015|app删除失败|
+200|1015|app 删除失败|
 405|4001|只支持 HTTP Post 方法|
 400|4002|请求参数为空|
 400|4003|请求参数非法|

@@ -1,9 +1,9 @@
-﻿site_name: 极光文档
+site_name: 极光文档
 site_author: JiGuang Offical
 site_url: https://docs.jiguang.cn/
 repo_url: https://github.com/jpush/jpush-docs/
 site_favicon: img/favicon.ico
-site_description: JPush, JMessage, 极光推送, 极光IM, Android Push, Android 推送, 安卓推送, iOS Push, APNs, Push Notification
+site_description: JPush, JMessage, 极光推送, 极光IM, Android Push, Android 推送, 安卓推送, iOS Push, APNs, Push Notification, JIoT
 copyright: Copyright 2011-2017, jiguang.cn, All Rights Reserved. <br />粤ICP备12056275号-13 深圳市和讯华谷信息技术有限公司
 theme: 'mkdocs'
 theme_dir: 'zh/themes/jiguang'
@@ -17,7 +17,7 @@ pages:
 
 - home: 'index.md'
 
-- 极光推送:
+- 推送:
 
   - 入门指南:
     - 'JPush 产品简介': 'jpush/guideline/intro.md'
@@ -71,7 +71,7 @@ pages:
   - 最近更新: 'jpush/updates.md'
   - 资源下载: 'jpush/resources.md'
 
-- 极光统计:
+- 统计:
 
   - 入门指南:
     - 'JAnalytics 产品简介': 'janalytics/guideline/intro.md'
@@ -84,30 +84,47 @@ pages:
     - 'iOS SDK 概述': 'janalytics/client/ios_sdk.md'
     - 'iOS SDK 集成指南': 'janalytics/client/ios_guide.md'
     - 'iOS SDK API': 'janalytics/client/ios_api.md'
+  - QuickApp:
+    - 'QuickApp SDK 概述': 'janalytics/client/quickapp_sdk.md'
+    - 'QuickApp SDK 集成指南': 'janalytics/client/quickapp_guide.md'
+    - 'QuickApp SDK API': 'janalytics/client/quickapp_api.md'
+  - 高级:
+    - '漏斗分析': 'janalytics/funnel/funnel_intro.md'
+  - 客户端集成插件: 'janalytics/client/client_plugins.md'
   - 最近更新: 'janalytics/updates.md'
   - 资源下载: 'janalytics/resources.md'
 
-- 极光IM:
+- IM:
 
   - 入门指南:
     - 'JMessage 产品简介': 'jmessage/guideline/jmessage_guide.md'
     - '常见问题': 'jmessage/guideline/faq.md'
   - Android:
-    - 'SDK 开发指南': 'jmessage/client/im_sdk_android.md'
-    - 'SDK 集成指南': 'jmessage/client/jmessage_android_guide.md'
-    - 'SDK ErrorCode 定义': 'jmessage/client/im_errorcode_android.md'
-    - 'SDK API Doc': 'jmessage/client/javadoc.md'
+    - 'IM 集成指南': 'jmessage/client/jmessage_android_guide.md'
+    - '基础功能': 'jmessage/client/android_sdk/basic.md'
+    - '用户信息管理': 'jmessage/client/android_sdk/user.md'
+    - '会话与消息': 'jmessage/client/android_sdk/message.md'
+    - '事件处理': 'jmessage/client/android_sdk/event.md'
+    - '好友管理': 'jmessage/client/android_sdk/friend.md'
+    - '群组管理': 'jmessage/client/android_sdk/group.md'
+    - '聊天室管理': 'jmessage/client/android_sdk/chatroom.md'
+    - '跨应用通信': 'jmessage/client/android_sdk/app_crossing.md'
+    - '实时音视频': 'jmessage/client/im_jmrtc_android.md'
+    - 'API Doc': 'jmessage/client/javadoc.md'
+    - 'ErrorCode 定义': 'jmessage/client/im_errorcode_android.md'
   - iOS:
-    - 'SDK 开发指南': 'jmessage/client/im_sdk_ios.md'
-    - 'SDK 集成指南': 'jmessage/client/jmessage_ios_guide.md'
+    - 'IM 开发指南': 'jmessage/client/im_sdk_ios.md'
+    - 'IM 集成指南': 'jmessage/client/jmessage_ios_guide.md'
+    - '实时音视频': 'jmessage/client/im_jmrtc_ios.md'
+    - 'IM API Doc': 'jmessage/client/iOSdoc.md'
+    - 'JMRTC API Doc': 'jmessage/client/jmrtc_ios_doc.md'
     - 'SDK ErrorCode 定义': 'jmessage/client/im_errorcode_ios.md'
-    - 'SDK API Doc': 'jmessage/client/iOSdoc.md'
   - Web:
     - 'SDK 开发指南 V2': 'jmessage/client/im_sdk_js_v2.md'
     - 'SDK 开发指南': 'jmessage/client/im_sdk_js.md'
     - '微信小程序 SDK': 'jmessage/client/im_sdk_wxapplet.md'
     - 'SDK ErrorCode 定义': 'jmessage/client/im_errorcode_js.md'
-  - Windows:
+  - PC:
     - 'SDK 集成指南': 'jmessage/client/im_sdk_win.md'
     - 'SDK API Doc': 'jmessage/client/windoc.md'
   - REST API:
@@ -128,10 +145,12 @@ pages:
   - 最近更新: 'jmessage/updates.md'
   - 资源下载: 'jmessage/resources.md'
 
-- 极光短信:
+- 短信:
 
   - 入门指南:
     - '短信验证码概述': 'jsms/guideline/JSMS_guide.md'
+    - '名词解释': 'jsms/guideline/jsms_terminology.md'
+    - '审核标准': 'jsms/guideline/jsms_rules.md'
     - '控制台操作指南': 'jsms/guideline/JSMS_consoleguide.md'
   - Android:
     - 'Android SDK 集成指南': 'jsms/client/Android/android_guide.md'
@@ -141,11 +160,14 @@ pages:
     - 'iOS SDK API': 'jsms/client/iOS/ios_api.md'
   - REST API:
     - 'REST API 概述': 'jsms/server/rest_api_summary.md'
+    - '短信签名 API': 'jsms/server/rest_api_jsms_sign.md'
     - '短信模版 API': 'jsms/server/rest_api_jsms_templates.md'
     - '短信发送 API': 'jsms/server/rest_api_jsms.md'
     - '短信定时发送 API': 'jsms/server/rest_api_jsms_schedule.md'
     - '短信余量查询 API': 'jsms/server/rest_jsms_api_account.md'
     - '回调接口': 'jsms/server/callback.md'
+    - '短信发送状态说明': 'jsms/server/sendcode.md'
+  - 客户端集成插件: 'jsms/client/client_plugins.md'
   - 服务端 SDK:
     - 'Java SDK': 'jsms/server/sdk/java_sdk.md'
     - 'PHP SDK': 'jsms/server/sdk/php_sdk.md'
@@ -153,7 +175,7 @@ pages:
   - 最近更新: 'jsms/updates.md'
   - 资源下载: 'jsms/resources.md'
 
-- 极光分享:
+- 分享:
 
   - 入门指南:
     - 'JShare 产品简介': 'jshare/guideline/intro.md'
@@ -169,5 +191,41 @@ pages:
     - 'iOS SDK API': 'jshare/client/iOS/ios_api.md'
     - 'iOS SDK FAQ': 'jshare/client/iOS/ios_sdk_faq.md'
     - 'ErrorCode 定义': 'jshare/client/iOS/jshare_errorcode.md'
+  - 客户端集成插件: 'jshare/client/client_plugins.md'
   - 最近更新: 'jshare/updates.md'
   - 资源下载: 'jshare/resources.md'
+
+- 认证:
+
+  - 入门指南:
+    - 'JVerification 产品介绍': 'jverification/guideline/intro.md'
+    - '控制台使用指南': 'jverification/guideline/portal.md'
+    - '常见问题': 'jverification/guideline/faq.md'
+  - Android:
+    - 'Android SDK 概述': 'jverification/client/android_sdk.md'
+    - 'Android SDK 集成指南': 'jverification/client/android_guide.md'
+    - 'Android SDK API': 'jverification/client/android_api.md'
+  - iOS:
+    - 'iOS SDK 概述': 'jverification/client/ios_sdk.md'
+    - 'iOS SDK 集成指南': 'jverification/client/ios_guide.md'
+    - 'iOS SDK API': 'jverification/client/ios_api.md'
+  - REST API:
+    - 'REST API 概述': 'jverification/server/rest_api/rest_api_summary.md'
+    - 'Verify API': 'jverification/server/rest_api/verify_api.md'
+    - '返回码说明': 'jverification/server/rest_api/code_description.md'
+  - 客户端集成插件: 'jverification/client/client_plugins.md'
+  - 最近更新: 'jverification/updates.md'
+  - 资源下载: 'jverification/resources.md'
+
+- IoT:
+  - 入门指南:
+    - 'IoT 产品介绍': 'jiot/guideline/iot_intro.md'
+    - '名词释义': 'jiot/guideline/terms.md'
+  - 客户端:
+    - 'C SDK 集成指南': 'jiot/client/c_sdk_guide.md'
+    - 'C SDK 接口说明文档': 'jiot/client/c_sdk_api.md'
+  - REST API:
+    - 'REST API 概述': 'jiot/server/restapi_intro.md'
+    - 'REST API 定义': 'jiot/server/restapi.md'
+  - 最近更新: 'jiot/updates.md'
+  - 资源下载: 'jiot/resources.md'

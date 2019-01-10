@@ -33,6 +33,7 @@ curl --insecure -X POST -v https://api.sms.jpush.cn/v1/schedule -H "Content-Type
 '{
     "send_time": "2017-07-01 09:00:00",
     "mobile": "13812345678",
+    "sign_id": *,
     "temp_id": 1250,
     "temp_para": {
         "number": "741627"
@@ -46,6 +47,7 @@ curl --insecure -X POST -v https://api.sms.jpush.cn/v1/schedule -H "Content-Type
 |----|----|----|
 |send_time|TRUE|发送时间，格式为 yyyy-MM-dd HH:mm:ss|
 |mobile|TRUE|手机号码|
+|sign_id|FALSE|签名ID，该参数为空则使用应用默认签名|
 |temp_id|TRUE|模板ID|
 |temp_para|FALSE|模板参数,需要替换的参数名和 value 的键值对|
 
@@ -84,7 +86,9 @@ curl --insecure -X POST -v https://api.sms.jpush.cn/v1/schedule -H "Content-Type
 curl --insecure -X POST -v https://api.sms.jpush.cn/v1/schedule/batch -H "Content-Type: application/json" -u "7d431e42dfa6a6d693ac2d04:5e987ac6d2e04d95a9d8f0d1" -d \
 '{
     "send_time": "2017-07-01 09:00:00",
+    "sign_id": *,
     "temp_id": 1250,
+	"tag":"标签",
     "recipients": [
         {
             "mobile": "13812345678",
@@ -107,7 +111,9 @@ curl --insecure -X POST -v https://api.sms.jpush.cn/v1/schedule/batch -H "Conten
 |KEY|REQUIRE|DESCRIPTION|
 |----|----|----|
 |send_time|TRUE|发送时间，格式为 yyyy-MM-dd HH:mm:ss|
+|sign_id|FALSE|签名ID，该参数为空则使用应用默认签名|
 |temp_id|TRUE|模板ID|
+|tag|FALSE|标签，仅用作标示该短信的别名，不在短信中展示，最多不超过 10 个字|
 |recipients|TRUE|短信接收者列表|
 |recipients.mobile|TRUE|手机号码|
 |recipients.temp_para|FALSE|模板参数,需要替换的参数名和 value 的键值对|
@@ -161,7 +167,8 @@ curl --insecure -X POST -v https://api.sms.jpush.cn/v1/schedule/batch -H "Conten
 curl --insecure -X PUT -v https://api.sms.jpush.cn/v1/schedule/1a886e7c-a267-49e6-9970-0d396ca5bb1e -H "Content-Type: application/json" -u "7d431e42dfa6a6d693ac2d04:5e987ac6d2e04d95a9d8f0d1" -d \
 '{
     "send_time": "2017-07-01 09:00:00",
-    "mobile": "13812345678",
+    "mobile": "13812345678", 
+    "sign_id": *,
     "temp_id": 1250,
     "temp_para": {
         "number": "741627"
@@ -175,6 +182,7 @@ curl --insecure -X PUT -v https://api.sms.jpush.cn/v1/schedule/1a886e7c-a267-49e
 |----|----|----|
 |send_time|TRUE|发送时间，格式为 yyyy-MM-dd HH:mm:ss|
 |mobile|TRUE|手机号码|
+|sign_id|FALSE|签名ID，该参数为空则使用应用默认签名|
 |temp_id|TRUE|模板ID|
 |temp_para|FALSE|模板参数,需要替换的参数名和 value 的键值对|
 
@@ -195,7 +203,7 @@ curl --insecure -X PUT -v https://api.sms.jpush.cn/v1/schedule/1a886e7c-a267-49e
         "message": "*****"
     }
 }
-```  
+```
 
 
 <br/>  
@@ -214,6 +222,7 @@ curl --insecure -X PUT -v https://api.sms.jpush.cn/v1/schedule/1a886e7c-a267-49e
 curl --insecure -X PUT -v https://api.sms.jpush.cn/v1/schedule/batch/1a886e7c-a267-49e6-9970-0d396ca5bb1e -H "Content-Type: application/json" -u "7d431e42dfa6a6d693ac2d04:5e987ac6d2e04d95a9d8f0d1" -d \
 '{
     "send_time": "2017-07-01 09:00:00",
+    "sign_id": *,
     "temp_id": 1250,
     "recipients": [
         {
@@ -237,6 +246,7 @@ curl --insecure -X PUT -v https://api.sms.jpush.cn/v1/schedule/batch/1a886e7c-a2
 |KEY|REQUIRE|DESCRIPTION|
 |----|----|----|
 |send_time|TRUE|发送时间，格式为 yyyy-MM-dd HH:mm:ss|
+|sign_id|FALSE|签名ID，若不传，使用默认签名|
 |temp_id|TRUE|模板ID|
 |recipients|TRUE|短信接收者列表|
 |recipients.mobile|TRUE|手机号码|
@@ -273,7 +283,7 @@ curl --insecure -X PUT -v https://api.sms.jpush.cn/v1/schedule/batch/1a886e7c-a2
         "message": "*****"
     }
 }
-```  
+```
 
 <br/>  
 ## 定时短信查询API
@@ -363,21 +373,21 @@ HTTP/1.0 200
 <br/>
 ## 返回码
 |HTTP CODE| CODE| MESSAGE  | DESC|
-|:--- |:--- |:--- |:----
-|200|50000|success|请求成功
-|400|50001|missing auth|auth 为空
-|401|50002|auth failed|auth 鉴权失败
-|400|50003|missing body|body 为空
-|400|50004|missing mobile|手机号码为空
-|400|50005|missing  temp_id|模版ID 为空
-|403|50006|invalid mobile|手机号码无效
-|403|50007|invalid body|body 无效
-|403|50008|no sms code auth|未开通短信业务
-|403|50013|invalid temp_id|模版ID 无效
-|403|50014|no money|可发短信余量不足
-|404|50016|api not found|API 不存在
-|415|50017|media not supported|媒体类型不支持
-|405|50018|request method not support|请求方法不支持
+|:--- |:--- |:--- |:----|
+|200|50000|success|请求成功|
+|400|50001|missing auth|auth 为空|
+|401|50002|auth failed|auth 鉴权失败|
+|400|50003|missing body|body 为空|
+|400|50004|missing mobile|手机号码为空|
+|400|50005|missing  temp_id|模版ID 为空|
+|403|50006|invalid mobile|手机号码无效|
+|403|50007|invalid body|body 无效|
+|403|50008|no sms code auth|未开通短信业务|
+|403|50013|invalid temp_id|模版ID 无效|
+|403|50014|no money|可发短信余量不足|
+|404|50016|api not found|API 不存在|
+|415|50017|media not supported|媒体类型不支持|
+|405|50018|request method not support|请求方法不支持|
 |500|50019|server error|服务端异常|
 |403|50020|template auditing|模板审核中|
 |403|50021|template not pass|模板审核未通过|

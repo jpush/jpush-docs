@@ -36,28 +36,16 @@
           {%- endblock %}
 
             <ul class="nav navbar-nav navbar-right">
-              {%- block search_button %}
+              <!-- {%- block search_button %} -->
                <!--  <li>
                     <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
                         <i class="fa fa-search"></i> Search
                     </a>
                 </li> -->
-              {%- endblock %}
-
-              {%- block repo %}
-                {%- if config.repo_url %}
-                    <li>
-                        <a href="{{ config.repo_url }}">
-                            {%- if config.repo_name == 'GitHub' %}
-                                <i class="fa fa-github"></i>
-                            {%- elif config.repo_name == 'Bitbucket' -%}
-                                <i class="fa fa-bitbucket"></i>
-                            {%- endif -%}
-                            {{ config.repo_name }}
-                        </a>
-                    </li>
-                {%- endif %}
-              {%- endblock %}
+              <!-- {%- endblock %} -->
+              <span class='i18n'>
+                <a href="{{ page.canonical_url | replace(config.site_url, config.site_url ~ 'en/')}}">English Version</a>
+              </span>
             </ul>
         </div>
     </div>

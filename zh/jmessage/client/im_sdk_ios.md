@@ -27,28 +27,8 @@
 
 ### SDK初始化
 
-JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用。建议在 AppDelegate 里应用加载完成时调用。
-
-
-#### 初始化 JMessage SDK
-
-```
-/*!
- * @abstract 初始化 JMessage SDK(此方法在JMessage 3.1.0 版本已过期)
- * 此方法被[setupJMessage:appKey:channel:apsForProduction:category:messageRoaming:]取代
- */
-+ (void)setupJMessage:(NSDictionary *)launchOptions
-               appKey:(NSString *)appKey
-              channel:(NSString *)channel
-     apsForProduction:(BOOL)isProduction
-             category:(NSSet *)category;
-```
-
-###SDK初始化(设置漫游)
-
-***Since v3.1.0***
-
-SDK 初始化时，可设置是否启用消息记录漫游。
+JMessage.h 里定义的 setupJMessage 方法，需要在应用初始化时调用。	
+SDK 初始化时，可设置是否启用消息记录漫游。		
 打开消息漫游之后，用户多个设备之间登录时，SDK会自动将历史消息同步到本地，同步完成之后SDK会以 Conversation 为单位触发代理方法`onSyncRoamingMessageConversation:`通知上层刷新,具体方法见[消息同步监听代理](#消息同步版本说明)
 
 ```
@@ -173,22 +153,48 @@ SDK 初始化时，可设置是否启用消息记录漫游。
          }
      }];
 #### 用户登录
-	/*!
-	 * @abstract 用户登录
-	 *
-	 * @param username 登录用户名. 规则与注册接口相同.
-	 * @param password 登录密码. 规则与注册接口相同.
-	 * @param handler 结果回调
-	 *
-	 * - resultObject 简单封装的user对象
-	 * - error 错误信息
-	 *
-	 * 注意：上层不要直接使用 resultObject 对象做操作, 因为 resultOjbect 只是一个简单封装的user对象.
-	 */
 
-	+ (void)loginWithUsername:(NSString *)username
-	                 password:(NSString *)password
-	        completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)handler;
++ 回调中返回登录设备信息
+
+```
+/*!
+ * @abstract 用户登录，返回登录设备信息
+ *
+ * @param username    登录用户名. 规则与注册接口相同.
+ * @param password    登录密码. 规则与注册接口相同.
+ * @param devicesInfo 登录设备回调，返回数据为 NSArray<JMSGDeviceInfo>
+ * @param handler     结果回调
+ *
+ * - resultObject 简单封装的user对象，上层不要直接使用 resultObject 对象做操作, 因为它只是一个简单封装的user对象
+ * - error 错误信息
+ *
+ * @discussion 回调中 devices 返回的是设备信息，具体属性请查看 JMSGDeviceInfo 类
+ */
++ (void)loginWithUsername:(NSString *)username
+                 password:(NSString *)password
+              devicesInfo:(nullable void(^)(NSArray <__kindof JMSGDeviceInfo *>*devices))devicesInfo
+        completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)handler;
+```
+
+```
+/*!
+ * @abstract 用户登录
+ *
+ * @param username 登录用户名. 规则与注册接口相同.
+ * @param password 登录密码. 规则与注册接口相同.
+ * @param handler 结果回调
+ *
+ * - resultObject 简单封装的user对象
+ * - error 错误信息
+ *
+ * 注意：上层不要直接使用 resultObject 对象做操作, 因为 resultOjbect 只是一个简单封装的user对象.
+ */
+
++ (void)loginWithUsername:(NSString *)username
+                 password:(NSString *)password
+        completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)handler;
+```        
+        
 ##### 例子
 	[JMSGUser loginWithUsername:@"用户名" password:@"密码" completionHandler:^(id resultObject, NSError *error) {
 		  if (!error) {
@@ -488,6 +494,7 @@ SDK 3.2.1 版本开始（包括3.2.1），离线事件也会走消息同步策�
 + 非群事件：其他事件还是不变，走以前的代理方法。
 
 ### 消息管理
+
 #### 创建单聊消息
 	/*!
 	 * @abstract 创建单聊消息
@@ -517,6 +524,180 @@ SDK 3.2.1 版本开始（包括3.2.1），离线事件也会走消息同步策�
 ##### 例子
 	JMSGTextContent *textContent = [[JMSGTextContent alloc] initWithText:@"textContent"];
 	JMSGMessage *message = [JMSGMessage createGroupMessageWithContent:textContent groupId:@"groupId"];
+	
+#### 创建文本消息
++ JMSGTextContent 
+
+```
+/*!
+ * @abstract 基于文本初始化内容对象
+ *
+ * @param text 纯文本内容
+ *
+ * @discussion 这是预设的创建文本类型内容的方法
+ */
+- (instancetype)initWithText:(NSString *)text;
+```
++ 创建消息
+
+```
+JMSGTextContent *content = [[JMSGTextContent alloc] initWithText:@"textContent"];
+JMSGMessage *singleMessage = [JMSGMessage createSingleMessageWithContent: content username:@"username"];
+JMSGMessage *groupMessage = [JMSGMessage createGroupMessageWithContent: content groupId:@"groupId"];
+```
+
+#### 创建图片消息
++ JMSGImageContent 
+
+```
+/*!
+ * @abstract 初始化消息图片内容
+ *
+ * @param data 图片数据
+ */
+- (nullable instancetype)initWithImageData:(NSData * JMSG_NONNULL)data;
+```
++ 创建消息
+
+```
+JMSGImageContent *content = [[JMSGImageContent alloc] initWithImageData:imageData];
+content.format = @"png";//可选设置
+JMSGMessage *singleMessage = [JMSGMessage createSingleMessageWithContent: content username:@"username"];
+JMSGMessage *groupMessage = [JMSGMessage createGroupMessageWithContent: content groupId:@"groupId"];
+```
+#### 创建语音消息
++ JMSGVoiceContent 
+
+```
+/*!
+ * @abstract 初始化语音内容
+ *
+ * @param data 该语音内容的数据. 不允许为 nil, 并且内容长度应大于 0, 否则失败
+ * @param duration 该语音内容的持续时长. 单位是秒. 不允许为 nil, 并且应大于 0.
+ *
+ * @discussion 这是预设的初始化方法, 创建一条语音内容, 必然传入语音数据, 以及时长.
+ */
+- (instancetype)initWithVoiceData:(NSData *)data
+                    voiceDuration:(NSNumber *)duration;
+```
++ 创建消息
+
+```
+JMSGVoiceContent *content = [[JMSGVoiceContent alloc] initWithVoiceData:data voiceDuration:@(10)];
+JMSGMessage *singleMessage = [JMSGMessage createSingleMessageWithContent: content username:@"username"];
+JMSGMessage *groupMessage = [JMSGMessage createGroupMessageWithContent: content groupId:@"groupId"];
+```
+#### 创建视频消息
++ JMSGVideoContent 
+
+```
+/*!
+ * @abstract 初始化视频消息内容
+ *
+ * @param data      该视频内容的数据
+ * @param thumbData 缩略图，建议：缩略图上层要控制大小，避免上传过大图片
+ * @param duration  该视频内容的持续时长，长度应大于 0
+ *
+ * @discussion 建议：缩略图上层要控制大小，避免上传过大图片.
+ */
+- (instancetype)initWithVideoData:(NSData *)data
+                        thumbData:(NSData *JMSG_NULLABLE)thumbData
+                         duration:(NSNumber *)duration;
+```
++ 创建消息
+
+```
+JMSGVideoContent *content = [[JMSGVideoContent alloc] initWithVideoData:videoData thumbData:thumbData duration:@(10)];
+content.format = @"mp4";//可选设置
+content.fileName = @"myvideofile";//可选设置
+JMSGMessage *singleMessage = [JMSGMessage createSingleMessageWithContent: content username:@"username"];
+JMSGMessage *groupMessage = [JMSGMessage createGroupMessageWithContent: content groupId:@"groupId"];
+```
+#### 创建文件消息
++ JMSGFileContent 
+
+```
+/**
+ *  初始化文件内容
+ *
+ *  @param data     文件数据
+ *  @param fileName 文件名
+ *
+ */
+- (instancetype)initWithFileData:(NSData *)data
+                        fileName:(NSString *)fileName;
+```
++ 创建消息
+
+```
+JMSGFileContent *content = [[JMSGFileContent alloc] initWithFileData:data fileName:@"myvideofile"];
+content.format = @"doc";//可选设置
+JMSGMessage *singleMessage = [JMSGMessage createSingleMessageWithContent: content username:@"username"];
+JMSGMessage *groupMessage = [JMSGMessage createGroupMessageWithContent: content groupId:@"groupId"];
+```
+#### 创建位置消息
++ JMSGLocationContent 
+
+```
+/**
+ *  初始化地理位置消息内容
+ *
+ *  @param latitude  纬度
+ *  @param longitude 经度
+ *  @param scale     缩放比例
+ *  @param address   详细地址信息
+ *
+ *  @return 地理位置消息内容
+ */
+- (instancetype)initWithLatitude:(NSNumber *)latitude
+                       longitude:(NSNumber *)longitude
+                           scale:(NSNumber *)scale
+                        address:(NSString *)address;
+```
++ 创建消息
+
+```
+JMSGLocationContent *content = [[JMSGLocationContent alloc] initWithLatitude:@(100) longitude:@(100) scale:@(1) address:@"address"];
+JMSGMessage *singleMessage = [JMSGMessage createSingleMessageWithContent: content username:@"username"];
+JMSGMessage *groupMessage = [JMSGMessage createGroupMessageWithContent: content groupId:@"groupId"];
+```
+#### 创建自定义消息
++ JMSGCustomContent 
+
+```
+/*!
+ * @abstract 预期使用的初始化方法
+ *
+ * @param customDict 初始化时指定的字典
+ */
+- (instancetype)initWithCustomDictionary:(NSDictionary * JMSG_NULLABLE)customDict;
+
+// 添加一个键值对
+- (BOOL)addObjectValue:(NSObject *)value forKey:(NSString *)key;
+
+// 快捷添加 String 类型 value 的方法
+- (BOOL)addStringValue:(NSString *)value forKey:(NSString *)key;
+
+// 快捷添加 Number 类型 value 的方法
+- (BOOL)addNumberValue:(NSNumber *)value forKey:(NSString *)key;
+
+/*!
+ * @abstract 设置该自定义消息内容的文本描述
+ * @param contentText 内容文本描述
+ * @discussion 用于展示在会话列表, 文本地简要描述这条消息.如果未设置, 则默认值为 "[自定义消息]"
+ */
+- (void)setContentText:(NSString *)contentText;
+```
++ 创建消息
+
+```
+JMSGCustomContent *content = [[JMSGCustomContent alloc] initWithCustomDictionary:@{@"key":@"value"}];
+[content addNumberValue:@(1) forKey:@"number_key"];
+[content addStringValue:@"string" forKey:@"string_key"];
+[content setContentText:@"自定的消息"];
+JMSGMessage *singleMessage = [JMSGMessage createSingleMessageWithContent: content username:@"username"];
+JMSGMessage *groupMessage = [JMSGMessage createGroupMessageWithContent: content groupId:@"groupId"];
+```
 
 #### 发送消息
 	/*!
@@ -527,141 +708,6 @@ SDK 3.2.1 版本开始（包括3.2.1），离线事件也会走消息同步策�
 	 * @discussion 此接口与 createMessage:: 相关接口配合使用，创建好后使用此接口发送。
 	 */
 	+ (void)sendMessage:(JMSGMessage *)message;
-
-#### 发送单聊文本消息
-	/*!
-	 * @abstract 发送单聊文本消息
-	 *
-	 * @param text 文本内容
-	 * @param username 单聊对象 username
-	 *
-	 * @discussion 快捷方法，不需要先创建消息而直接发送。
-	 */
-	+ (void)sendSingleTextMessage:(NSString *)text
-	                       toUser:(NSString *)username;
-
-#### 发送单聊图片消息
-	/*!
-	 * @abstract 发送单聊图片消息
-	 *
-	 * @param imageData 图片数据
-	 * @param username 单聊对象 username
-	 *
-	 * @discussion 快捷方法，不需要先创建消息而直接发送。
-	 */
-	+ (void)sendSingleImageMessage:(NSData *)imageData
-	                        toUser:(NSString *)username;
-
-#### 发送单聊语音消息
-	/*!
-	 * @abstract 发送单聊语音消息
-	 *
-	 * @param voiceData 语音数据
-	 * @param duration 语音时长
-	 * @param username 单聊对象 username
-	 *
-	 * @discussion 快捷方法，不需要先创建消息而直接发送。
-	 */
-	+ (void)sendSingleVoiceMessage:(NSData *)voiceData
-	                 voiceDuration:(NSNumber *)duration
-	                        toUser:(NSString *)username;
-
-#### 发送单聊文件消息
-	/*!
-	 * @abstract 发送单聊文件消息
-	 *
-	 * @param fileData 文件数据数据
-	 * @param fileName 文件名
-	 * @param username 单聊对象 username
-	 *
-	 * @discussion 快捷方法，不需要先创建消息而直接发送。
-	 */
-	+ (void)sendSingleFileMessage:(NSData *)fileData
-	                     fileName:(NSString *)fileName
-	                       toUser:(NSString *)username;
-
-#### 发送单聊位置消息
-	/*!
-	 * @abstract 发送单聊地理位置消息
-	 * @param latitude 纬度
-	 * @param longitude 经度
-	 * @param scale 缩放比例
-	 * @param address 详细地址
-	 * @param username 单聊对象
-	 * @discussion 快捷方法，不需要先创建消息而直接发送。
-	 */
-	+ (void)sendSingleLocationMessage:(NSNumber *)latitude
-	                        longitude:(NSNumber *)longitude
-	                            scale:(NSNumber *)scale
-	                          address:(NSString *)address
-	                           toUser:(NSString *)username;
-
-#### 发送群聊文本消息
-	/*!
-	 * @abstract 发送群聊文本消息
-	 *
-	 * @param text 文本内容
-	 * @param groupId 群聊目标群组ID
-	 *
-	 * @discussion 快捷方法，不需要先创建消息而直接发送。
-	 */
-	+ (void)sendGroupTextMessage:(NSString *)text
-	                     toGroup:(NSString *)groupId;
-
-#### 发送群聊图片消息
-	/*!
-	 * @abstract 发送群聊图片消息
-	 *
-	 * @param imageData 图片数据
-	 * @param groupId 群聊目标群组ID
-	 *
-	 * @discussion 快捷方法，不需要先创建消息而直接发送。
-	 */
-	+ (void)sendGroupImageMessage:(NSData *)imageData
-	                      toGroup:(NSString *)groupId;
-
-#### 发送群聊语音消息
-	/*!
-	 * @abstract 发送群聊语音消息
-	 *
-	 * @param voiceData 语音数据
-	 * @param duration 语音时长
-	 * @param groupId 群聊目标群组ID
-	 *
-	 * @discussion 快捷方法，不需要先创建消息而直接发送。
-	 */
-	+ (void)sendGroupVoiceMessage:(NSData *)voiceData
-	                voiceDuration:(NSNumber *)duration
-	                      toGroup:(NSString *)groupId;
-
-#### 发送群聊文件消息
-	/*!
-	 * @abstract 发送群聊文件消息
-	 *
-	 * @param fileData 文件数据
-	 * @param fileName 文件名
-	 * @param groupId 群聊目标群组ID
-	 *
-	 * @discussion 快捷方法，不需要先创建消息而直接发送。
-	 */
-	+ (void)sendGroupFileMessage:(NSData *)fileData
-	                    fileName:(NSString *)fileName
-	                     toGroup:(NSString *)groupId;
-
-#### 发送群聊位置消息
-	/*!
-	 * @abstract 发送群聊地理位置消息
-	 * @param latitude 纬度
-	 * @param longitude 经度
-	 * @param scale 缩放比例
-	 * @param address 详细地址
-	 * @param groupId 群聊目标群组ID
-	 */
-	+ (void)sendGroupLocationMessage:(NSNumber *)latitude
-	                       longitude:(NSNumber *)longitude
-	                           scale:(NSNumber *)scale
-	                         address:(NSString *)address
-	                         toGroup:(NSString *)groupId;
 
 #### 消息转发
 	/*!
@@ -676,6 +722,46 @@ SDK 3.2.1 版本开始（包括3.2.1），离线事件也会走消息同步策�
 	+ (void)forwardMessage:(JMSGMessage *)message
 	                target:(id)target
 	       optionalContent:(JMSGOptionalContent *JMSG_NULLABLE)optionalContent;
+
+#### 消息撤回
+***Since 3.2.0***
+
+由消息撤回方发起调用，在一定时间内，SDK 可以撤回会话中某条消息。
+
+
++ JMSGMessage
+
+```
+/*!
+ * @abstract 消息撤回
+ *
+ * @param message 需要撤回的消息
+ * @param handler 结果回调
+ *
+ * - resultObject 撤回后的消息
+ * - error        错误信息
+ *
+ * @discussion 注意：SDK可撤回3分钟内的消息
+ */
++ (void)retractMessage:(JMSGMessage *)message completionHandler:(JMSGCompletionHandler)handler;
+```   
+	
++ JMSGConversation
+
+```   
+/*!
+ * @abstract 消息撤回
+ *
+ * @param message 需要撤回的消息
+ * @param handler 结果回调
+ *
+ * - resultObject 撤回后的消息
+ * - error        错误信息
+ *
+ * @discussion 注意：SDK可撤回3分钟内的消息
+ */
+- (void)retractMessage:(JMSGMessage *)message completionHandler:(JMSGCompletionHandler)handler;
+```   
 
 #### 设置消息的FromName
 	/*!
@@ -962,26 +1048,29 @@ SDK 3.2.1 版本开始（包括3.2.1），离线事件也会走消息同步策�
 	 */
 	- (JMSGMessage * JMSG_NULLABLE)createMessageWithContent:(JMSGAbstractContent *)content;
 
-#### 创建图片消息对象
-	/*!
-	 * @abstract 创建消息对象（图片，异步）
-	 *
-	 * @param content 准备好的图片内容
-	 * @param handler 结果回调. 正常返回时 resultObject 类型为 JMSGMessage.
-	 *
-	 * @discussion 对于图片消息，因为 SDK 要做缩图有一定的性能损耗，图片文件很大时存储落地也会较慢。
-	 * 所以创建图片消息，建议使用这个异步接口。
-	 */
-	- (void)createMessageAsyncWithImageContent:(JMSGImageContent *)content
-	                         completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)handler;
+#### 创建多媒体消息对象
+
+```
+/*!
+ * @abstract 创建消息对象（多媒体消息，异步）
+ *
+ * @param content 准备好的多媒体内容，如：图片、语音、文件等
+ * @param handler 结果回调. 正常返回时 resultObject 类型为 JMSGMessage.
+ *
+ * @discussion 注意：对于多媒体消息，因为 SDK 要做缩图有一定的性能损耗，图片文件很大时存储落地也会较慢。
+ * 所以创建图片消息，建议使用这个异步接口。
+ */
+- (void)createMessageAsyncWithMediaContent:(JMSGMediaAbstractContent *)content
+                         completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)handler;
+```
 ##### 例子
 	//_conversation 为Conversation的实例对象
-	[_conversation createMessageAsyncWithImageContent:imageContent completionHandler:^(id resultObject, NSError *error) {
-	            if (!error) {
-	            	//创建成功
-	            	//resultObject 为Message内容
-	            }
-	        }];
+	[_conversation createMessageAsyncWithMediaContent:mediaContent completionHandler:^(id resultObject, NSError *error) {
+        if (!error) {
+        	//创建成功
+        	//resultObject 为Message内容
+        }
+	  }];
 
 #### 发送消息
 	/*!
@@ -1042,6 +1131,24 @@ SDK 3.2.1 版本开始（包括3.2.1），离线事件也会走消息同步策�
 	                  longitude:(NSNumber *)longitude
 	                      scale:(NSNumber *)scale
 	                    address:(NSString *)address;
+#### 发送视频消息
+
+```
+/*!
+ * @abstract 发送视频消息
+ *
+ * @param videoData 视频消息数据
+ * @param thumbData 视频封面图片
+ * @param videoFormat 视频格式，如：mp4、mov
+ * @param duration  视频消息时长（秒）. 长度必须大于 0.
+ *
+ * @discussion 快捷发送消息接口。如果发送语音消息不需要附加 extra，则使用此接口更方便。
+ */
+- (void)sendVideoMessage:(NSData *)videoData
+               thumbData:(NSData *JMSG_NULLABLE)thumbData
+             videoFormat:(NSString *JMSG_NULLABLE)videoFormat
+                duration:(NSNumber *)duration;
+```
 
 #### 获取会话头像
 	/*!
@@ -1148,6 +1255,39 @@ SDK 3.2.1 版本开始（包括3.2.1），离线事件也会走消息同步策�
 
 ### 群组管理
 群组分为私有群和公开群，群的类型在创建成功之后就不能修改，公开群需要申请，等管理员审批同意之后方可入群。
+
+#### 群组成员
+群组成员是由 `JMSGUser` 对象组成的，但是群成员有更多的独有属性，如：群昵称、入群时间等，所以从 JMessage v3.7.0 开始新建群组成员信息类 `JMSGGroupMemberInfo`。	
+在 `JMSGGroupMemberInfo `类中包含了群成员 JMSGUser 对象、群昵称、入群时间、成员角色等属性。
+
+```
+/*!
+ * 群成员信息类
+ *
+ * #### 可通过 [JMSGGroup memberInfoList:]和 [JMSGGroup memberInfoWithUsername:appkey:] 两个接口获取群成员信息
+ */
+@interface JMSGGroupMemberInfo : NSObject
+
+/// 成员用户信息
+@property(nonatomic, strong, readonly) JMSGUser *JMSG_NULLABLE user;
+/// 入群时间
+@property(nonatomic, assign, readonly) UInt64 ctime;
+/// 群昵称
+@property(nonatomic, strong, readonly) NSString *JMSG_NULLABLE groupNickname;
+/// 群组成员的身份
+@property(nonatomic, assign, readonly) JMSGGroupMemberType memberType;
+
+/*!
+ * @abstract 获取群成员的展示名
+ *
+ * @discussion 展示优先级：群昵称 > 好友备注(user.noteName) > 用户昵称(user.nickname) > 用户名(user.username)
+ *
+ * #### 同接口 [JMSGGroup memberDisplayName:] 相同效果
+ */
+- (NSString *JMSG_NULLABLE)displayName;
+@end
+```
+
 #### 创建群组（(只能创建私有群)）
 	/*!
 	 * @abstract 创建群组(只能创建私有群)
@@ -1197,12 +1337,14 @@ JMSGGroupInfo *info = [[JMSGGroupInfo alloc] init];
 info.name =@"公开群001";
 info.groupType = kJMSGGroupTypePublic;
 info.desc = @"这个群组是公开群";
+info.maxMemberCount = @"3";//人数上限，必须大于 2
 [JMSGGroup createGroupWithGroupInfo:info memberArray:nil completionHandler:^(id resultObject, NSError *error) {
     if (!error) {
         myGroup = resultObject;
     }
 }];
 ```
+
 
 #### 获取公开群列表
 
@@ -1297,6 +1439,173 @@ info.desc = @"这个群组是公开群";
             NSLog(@"获取群组信息成功");
         }
     }];
+    
+ 
+#### 添加群组成员
+ 
+	/*!
+	 * @abstract 添加群组成员
+	 *
+	 * @param usernameArray 用户名数组。数组里的成员类型是 NSString
+	 * @param handler 结果回调。正常返回时 resultObject 为 nil.
+	 */
+	- (void)addMembersWithUsernameArray:(NSArray JMSG_GENERIC(__kindof NSString *) *)usernameArray
+	                  completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)handler;
+    
+#### 删除群组成员
+
+	/*!
+	 * @abstract 删除群组成员
+	 *
+	 * @param usernameArray 用户名数据. 数组里的成员类型是 NSString
+	 * @param handler 结果回调。正常返回时 resultObject 为 nil.
+	 */
+	- (void)removeMembersWithUsernameArray:(NSArray JMSG_GENERIC(__kindof NSString *) *)usernameArray
+	                     completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)handler;
+	        
+
+#### 设置群管理员
+
++ 范围：私有群和公开群都增加管理员角色。
++ 描述：仅群主可对群管理员进行管理，可指定群内任意成员成为管理员，也可取消管理员身份。
++ 管理员权限：拥有普通群成员的所有基础功能和权限，除此之外还拥有更高的权限:设置禁言、审批入群.
+
+```
+/*!
+ * @abstract 添加管理员
+ *
+ * @param username 用户名
+ * @param appkey   用户 AppKey，不填则默认为本应用 AppKey
+ * @param handler 结果回调。error 为 nil 表示成功.
+ *
+ * @discussion 注意：非 VIP 应用最多设置 15 个管理员，不包括群主本身
+ */
+- (void)addGroupAdminWithUsername:(NSString *JMSG_NONNULL)username
+                           appKey:(NSString *JMSG_NULLABLE)appkey
+                completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)handler;
+
+/** @abstract 批量添加管理员*/
+- (void)addGroupAdminWithUsernames:(NSArray <__kindof NSString *>*)usernames
+                            appKey:(NSString *JMSG_NULLABLE)appkey
+                 completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)handler;
+```
+```
+/*!
+ * @abstract 删除管理员
+ *
+ * @param username 用户名
+ * @param appkey   用户 AppKey，不填则默认为本应用 AppKey
+ * @param handler 结果回调。error 为 nil 表示成功.
+ */
+- (void)deleteGroupAdminWithUsername:(NSString *)username
+                              appKey:(NSString *JMSG_NULLABLE)appkey
+                   completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)handler;
+                              
+/** @abstract 批量删除管理员*/
+- (void)deleteGroupAdminWithUsernames:(NSArray <__kindof NSString *>*)usernames
+                               appKey:(NSString *JMSG_NULLABLE)appkey
+                    completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)handler;                   
+```
+
+```
+/*!
+ * @abstract 判断用户是否是管理员
+ *
+ * @param username  待判断用户的用户名
+ * @param appKey    待判断用户的appKey，若传入空则默认使用本应用appKey
+ */
+- (BOOL)isAdminMemberWithUsername:(NSString *JMSG_NONNULL)username
+                           appKey:(NSString *JMSG_NULLABLE)appKey;
+
+/*!
+ * @abstract 管理员列表
+ *
+ * @return 管理员列表. NSArray 里成员类型是 JMSGUser
+ *
+ * @discussion 注意：返回列表中包含群主；仅在获取群成员成功后此接口才有效
+ */
+- (NSArray JMSG_GENERIC(__kindof JMSGUser *)*)groupAdminMembers;
+```
+
+#### 设置群黑名单
+
++ 由群主和管理员管理，被拉入黑名单用户会被主动踢出群组，且无法再次加入
+
+```
+/*!
+ * @abstract 群黑名单列表
+ *
+ * @handler 结果回调. resultObject 是 NSArray 类型，元素是 JMSGUser
+ *
+ * @since 3.8.0
+ */
+- (void)groupBlacklistHandler:(JMSGCompletionHandler JMSG_NULLABLE)handler;
+```
+
+```
+
+/*!
+ * @abstract 添加群黑名单
+ *
+ * @param usernames 用户名列表
+ * @param appkey   用户 appKey，usernames 中的所有用户必须在同一个 AppKey 下，不填则默认为本应用 appKey
+ * @param handler 结果回调。error 为 nil 表示成功.
+ *
+ * @discussion 黑名单上限100个，超出将无法设置成功，被拉入黑名单用户会被主动踢出群组，且无法再次加入.
+ * @since 3.8.0
+ */
+- (void)addGroupBlacklistWithUsernames:(NSArray <__kindof NSString *>*)usernames
+                                appKey:(NSString *JMSG_NULLABLE)appKey
+                               handler:(JMSGCompletionHandler JMSG_NULLABLE)handler;
+```
+
+```
+/*!
+ * @abstract 删除群黑名单
+ *
+ * @param usernames 用户名列表
+ * @param appkey   用户 appKey，usernames 中的所有用户必须在同一个 AppKey 下，不填则默认为本应用 appKey
+ * @param handler 结果回调。error 为 nil 表示成功.
+ *
+ * @since 3.8.0
+ */
+- (void)deleteGroupBlacklistWithUsernames:(NSArray <__kindof NSString *>*)usernames
+                                   appKey:(NSString *JMSG_NULLABLE)appKey
+                                  handler:(JMSGCompletionHandler JMSG_NULLABLE)handler;
+```
+    
+#### 修改群类型
+创建群组之后，可以通过此接口修改群的类型，公开群、私有群相互切换
+
+```
+/*!
+ * @abstract 修改群组类型
+ *
+ * @param type    群类型，公开群、私有群
+ * @param handler 结果回调。error = nil 表示成功
+ *
+ * @discussion 对于已经创建的群组，可以通过此接口来修改群组的类型
+ */
+- (void)changeGroupType:(JMSGGroupType)type handler:(JMSGCompletionHandler)handler;
+```
+    
+#### 移交群主
++ 群主可选择群内任意一位成员进行群主变更，把群主权限移交给他，移交后之前的群主变为普通群成员。
++ 适用群组类型：私有群和公开群都拥有此功能
++ 仅群主有此权限
+
+```
+/*!
+ * @abstract 移交群主
+ *
+ * @param username 新群主用户名
+ * @param appkey   新群主用户 AppKey，不填则默认为本应用 AppKey
+ * @param handler 结果回调。error 为 nil 表示成功.
+ */
+- (void)transferGroupOwnerWithUsername:(NSString *JMSG_NONNULL)username
+                                appKey:(NSString *JMSG_NULLABLE)appkey
+                     completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)handler;
+```
 
 #### 申请入群
 对于公开群，需要申请或者其他群成员邀请，并由管理员审批同意才可以入群
@@ -1341,8 +1650,26 @@ info.desc = @"这个群组是公开群";
                               reason:(NSString *JMSG_NULLABLE)reason
                              handler:(JMSGCompletionHandler)handler;
 ```
+```
+/*!
+ * @abstract 管理员审批入群申请（批量接口）
+ *
+ * @patam events      入取申请事件的 eventId 数组，详情请查看 JMSGApplyJoinGroupEvent 类
+ * @param isAgree     是否同意申请，YES : 同意， NO: 不同意
+ * @param reason      拒绝申请的理由，选填
+ * @param isSendInviter 是否将结果通知给邀请方，默认是 NO
+ * @param handler     结果回调
+ *
+ * @discussion 批量处理接口，event 下包含的所有被邀请者会被一起审批处理。只有管理员才有权限审批入群申请。
+ */
++ (void)processApplyJoinGroupEvents:(NSArray <__kindof NSString *>*)events
+                            isAgree:(BOOL)isAgree
+                             reason:(NSString *JMSG_NULLABLE)reason
+                        sendInviter:(BOOL)isSendInviter
+                            handler:(JMSGCompletionHandler)handler;
+```
 
-#### 设置群成员禁言
+#### 群成员禁言
 
 ```
 /*!
@@ -1361,7 +1688,6 @@ info.desc = @"这个群组是公开群";
                       handler:(JMSGCompletionHandler JMSG_NULLABLE)handler;
 ```
 
-#### 判断用户是否被禁言
 
 ```
 /*!
@@ -1374,7 +1700,6 @@ info.desc = @"这个群组是公开群";
                              appKey:(NSString *JMSG_NULLABLE)appKey;
 ```
 
-#### 获取群禁言列表
 
 ```
 /*!
@@ -1385,6 +1710,170 @@ info.desc = @"这个群组是公开群";
 - (NSArray JMSG_GENERIC(__kindof JMSGUser *)*)groupSilenceMembers;
 ```
 
+#### 群消息屏蔽
+群组被设置为屏蔽之后，将收不到该群的消息，但是群成员变化事件还是能正常收到。
+
+
+```
+/*!
+ * @abstract 该群是否已被设置为消息屏蔽
+ *
+ * @discussion YES:是 , NO: 否
+ */
+@property(nonatomic, assign, readonly) BOOL isShieldMessage
+```
+
+```
+/*!
+ * @abstract 设置群组消息屏蔽
+ *
+ * @param isShield 是否群消息屏蔽 YES:是 NO: 否
+ * @param handler 结果回调。回调参数：
+ *
+ * - resultObject 相应对象
+ * - error 错误信息
+ *
+ * 如果 error 为 nil, 表示设置成功
+ * 如果 error 不为 nil,表示设置失败
+ *
+ * @discussion 针对单个群组设置群消息屏蔽
+ */
+- (void)setIsShield:(BOOL)isShield handler:(JMSGCompletionHandler)handler;
+
+```
+
+```
+/*!
+ * @abstract 获取所有设置群消息屏蔽的群组
+ *
+ * @param handler 结果回调。回调参数：
+ *
+ * - resultObject 类型为 NSArray，数组里成员的类型为 JMSGGroup
+ * - error 错误信息
+ *
+ * 如果 error 为 nil, 表示设置成功
+ * 如果 error 不为 nil,表示设置失败
+ *
+ * @discussion 从服务器获取，返回所有设置群消息屏蔽的群组。
+ */
++ (void)shieldList:(JMSGCompletionHandler)handler;
+
+```
+
+#### 群公告
+
++ 支持群主和管理员进行发布、删除、置顶和取消置顶操作；
++ 目前单个群最大群公告数量为 100
++ 发布群公告时，开发者可选择是否发送群消息通知群成员，或者自己定制消息通知其他群成员。
+
+```
+/*!
+ * @abstract 获取群公告列表
+ *
+ * @param handler 结果回调。resultObject 是 NSArray 类型，元素是 JMSGGroupAnnouncement
+ *
+ * @since 3.8.0
+ */
+- (void)groupAnnouncementList:(JMSGCompletionHandler JMSG_NULLABLE)handler;
+```
+
+```
+
+/*!
+ * @abstract 发布群公告
+ *
+ * @param announcement 公告内容，大小必须在 1KB 以内
+ * @param sendMessage 发布成功后是否需要发一条消息通知群成员，默认：YES
+ * @param handler 结果回调。resultObject 为 JMSGGroupAnnouncement对象， error 为 nil 表示成功.
+ *
+ * #### 注意：
+ *
+ * 如果 sendMessage = NO，则 SDK 不会自动发送消息，上层可以在回调或者收到事件后，自己发送消息；
+ * 如果 sendMessage = YES，则在发布公告成功后 SDK 会自动在群里发布一条文本消息，文本内容就是公告内容，另外消息的 extras 里会附带公告的相关数据，上层可根据此数据将 message 对应到相应的公告， extras 里的 key-value 如下，
+ *
+ *    ```
+ *    key(String)       = "jmessage_group_announcement"
+ *    value(JsonString) = {
+ *                        "id" : 公告 id,
+ *                        "text" : 公告内容 text,
+ *                        "publisher_uid" : 发布者 uid,
+ *                        "ctime" : 公告发布时间,
+ *                        "isTop" : 是否置顶,
+ *                        "topTime" : 置顶时间,
+ *                        "gid" : 群 gid
+ *                      }
+ *    ```
+ *
+ * @discussion 群公告最多100条，发布公告后会有对应事件下发，上层通过 [JMSGGroupDelegate onReceiveGroupAnnouncementEvents:] 监听
+ * @since 3.8.0
+ */
+- (void)publishGroupAnnouncement:(NSString *JMSG_NONNULL)announcement
+                     sendMessage:(BOOL)sendMessage
+                         handler:(JMSGCompletionHandler JMSG_NULLABLE)handler;
+```
+
+```
+
+/*!
+ * @abstract 删除群公告
+ *
+ * @param announcementID 公告id
+ * @param handler 结果回调。error 为 nil 表示成功.
+ *
+ * @discussion 删除公告后会有对应事件下发，上层通过 [JMSGGroupDelegate onReceiveGroupAnnouncementEvents:] 监听
+ * @since 3.8.0
+ */
+- (void)deleteGroupAnnouncement:(NSString *JMSG_NONNULL)announcementID
+                        handler:(JMSGCompletionHandler JMSG_NULLABLE)handler;
+```
+
+```
+
+/*!
+ * @abstract 置顶/取消置顶 群公告
+ *
+ * @param isTop 置顶参数，YES:置顶，NO:取消置顶
+ * @param ID    公告 id
+ * @param handler 结果回调。error 为 nil 表示成功.
+ *
+ * @discussion 置顶公告后会有对应事件下发，上层通过 [JMSGGroupDelegate onReceiveGroupAnnouncementEvents:] 监听
+ * @since 3.8.0
+ */
+- (void)setGroupAnnouncementTop:(BOOL)isTop
+                 announcementID:(NSString *JMSG_NONNULL)ID
+                        handler:(JMSGCompletionHandler JMSG_NULLABLE)handler;
+```
+
+#### 成员群昵称
+
+```
+/*!
+ * @abstract 设置成员群昵称
+ *
+ * @param nickname 群昵称
+ * @param username 目标用户的 username
+ * @param appKey   目标用户的 appKey,若传入空则默认使用本应用appKey
+ */
+- (void)setGroupNickname:(NSString *JMSG_NULLABLE)nickname
+                username:(NSString *JMSG_NONNULL)username
+                  appKey:(NSString *JMSG_NULLABLE)appKey
+                 handler:(JMSGCompletionHandler JMSG_NULLABLE)handler;
+```
+
+```
+/*!
+ * @abstract 获取成员的群昵称
+ *
+ * @param  username 群成员 username
+ * @patam  appKey   群成员 appKey，不传则默认是本应用 appkey
+ * @return 群昵称
+ *
+ * @discussion 还可以通过获取群成员信息 JMSGGroupMemberInfo 来获取群昵称
+ */
+- (NSString *JMSG_NULLABLE)groupNicknameWithUsername:(NSString *)username
+                                              appKey:(NSString *JMSG_NULLABLE)appKey;
+```
+                                           
 #### 获取我的群组列表
 	/*!
 	 * @abstract 获取我的群组列表
@@ -1405,48 +1894,30 @@ info.desc = @"这个群组是公开群";
     }];
 #### 获取群组成员列表
 	/*!
-	 * @abstract 获取群组成员列表
+	 * @abstract 获取所有群成员信息列表
 	 *
-	 * @return 成员列表. NSArray 里成员类型是 JMSGUser.
+	 * @handler 成员列表. 类型为 NSArray，里面元素为 JMSGGroupMemberInfo.
 	 *
-	 * @discussion 一般在群组详情界面调用此接口，展示群组的所有成员列表。
-	 * 本接口只是在本地请求成员列表，不会发起服务器端请求。
+	 * @discussion 返回数据中的 JMSGGroupMemberInfo 包含了成员 user 信息、入群时间、群昵称等
 	 */
-	- (NSArray JMSG_GENERIC(__kindof JMSGUser *)*)memberArray;
+	- (void)memberInfoList:(JMSGCompletionHandler JMSG_NULLABLE)handler;
 
-#### 添加群组成员
+#### 获取群成员(单个)
+	
 	/*!
-	 * @abstract 添加群组成员
+	 * @abstract 获取单个群成员信息
 	 *
-	 * @param usernameArray 用户名数组。数组里的成员类型是 NSString
-	 * @param handler 结果回调。正常返回时 resultObject 为 nil.
+	 * @param  username 目标用户 username
+	 * @param  appkey   目标用户 appkey，不传则默认本应用 appkey
+	 * @return 群成员信息对象
+	 *
+	 * @discussion JMSGGroupMemberInfo 包含了成员 user 信息、入群时间、群昵称等
 	 */
-	- (void)addMembersWithUsernameArray:(NSArray JMSG_GENERIC(__kindof NSString *) *)usernameArray
-	                  completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)handler;
+	- (JMSGGroupMemberInfo *JMSG_NULLABLE)memberInfoWithUsername:(NSString *JMSG_NONNULL)username
+	                                                      appkey:(NSString *JMSG_NULLABLE)appkey;
 
-##### 例子
-	// 添加群组成员
-	[group addMembersWithUsernameArray:[NSArray arrayWithObjects:@"username1",@"username2", nil] completionHandler:^(id resultObject, NSError *error) {
-        if (!error) {
-            NSLog(@"添加群成员成功！");
-        }
-    }];
-#### 删除群组成员
-	/*!
-	 * @abstract 删除群组成员
-	 *
-	 * @param usernameArray 用户名数据. 数组里的成员类型是 NSString
-	 * @param handler 结果回调。正常返回时 resultObject 为 nil.
-	 */
-	- (void)removeMembersWithUsernameArray:(NSArray JMSG_GENERIC(__kindof NSString *) *)usernameArray
-	                     completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)handler;
-##### 例子
-	// 删除群组成员
-	[group removeMembersWithUsernameArray:[NSArray arrayWithObjects:@"username1",@"username2", nil] completionHandler:^(id resultObject, NSError *error) {
-        if (!error) {
-            NSLog(@"删除群成员成功!");
-        }
-    }];
+
+    
 #### 退出当前群组
 	/*!
 	 * @abstract 退出当前群组(当前用户)
@@ -1461,6 +1932,24 @@ info.desc = @"这个群组是公开群";
             NSLog(@"退出群组成功!");
         }
     }];
+    
+    
+#### 解散群组
++ 群组类型：普通群和受限群都拥有此功能
++ 权限：仅群主可解散，普通群成员和管理员无此权限
+
+```
+/*!
+ * @abstract 解散群组
+ *
+ * @patam gid     需要解散的群组 id
+ * @param handler 结果回调,error = nil 表示操作成功
+ *
+ * @discussion 只有群主才有权限解散群。
+ */
++ (void)dissolveGroupWithGid:(NSString *)gid handler:(JMSGCompletionHandler)handler;
+```
+
 #### 获取群组的展示名
 	/*!
 	 * @abstract 获取群组的展示名
@@ -1468,6 +1957,19 @@ info.desc = @"这个群组是公开群";
 	 * @discussion 如果 group.name 为空, 则此接口会拼接群组前 5 个成员的展示名返回.
 	 */
 	- (NSString *)displayName;
+
+#### 群成员展示名
+
+```
+/*!
+ * @abstract 获取群成员的展示名
+ *
+ * @param memberUid 群成员的 uid（即：[JMSGUser uid]）
+ *
+ * @discussion 展示优先级：群昵称 > 好友备注(user.noteName) > 用户昵称(user.nickname) > 用户名(user.username)
+ */
+- (NSString *)memberDisplayName:(UInt64)memberUid;
+```
 
 ### 聊天室管理
 ***Since 3.4.0***
@@ -1550,61 +2052,108 @@ info.desc = @"这个群组是公开群";
               completionHandler:(JMSGCompletionHandler JMSG_NULLABLE)handler;
 ```
 
+#### 聊天室管理员
+
++ 聊天室 owner 可以设置聊天室一些成员主管理员，方便对聊天室进行一些权限管理；
++ 管理员变更时，上层会收到变更的事件通知，目前不保存该类型的离线事件。
+
+```
+/*!
+ * @abstract 管理员列表
+ *
+ * @param handler 结果回调. resultObject 是 NSArray 类型，元素是 JMSGUser
+ *
+ * @discussion 注意：返回列表中不包含房主.
+ *
+ * @since 3.8.0
+ */
+- (void)chatRoomAdminList:(JMSGCompletionHandler JMSG_NULLABLE)handler;
+```
+
+```
+
+/*!
+ * @abstract 添加管理员
+ *
+ * @param usernames 用户名列表
+ * @param appkey    用户 AppKey，不填则默认为本应用 AppKey
+ * @param handler   结果回调。error 为 nil 表示成功.
+ *
+ * @discussion 注意：非 VIP 应用最多设置 15 个管理员，不包括群主本身
+ *
+ * @since 3.8.0
+ */
+- (void)addAdminWithUsernames:(NSArray <__kindof NSString *>*)usernames
+                       appKey:(NSString *JMSG_NULLABLE)appkey
+                      handler:(JMSGCompletionHandler JMSG_NULLABLE)handler;
+```
+
+```
+/*!
+ * @abstract 删除管理员
+ *
+ * @param usernames 用户名列表
+ * @param appkey    用户 AppKey，不填则默认为本应用 AppKey
+ * @param handler   结果回调。error 为 nil 表示成功.
+ *
+ * @since 3.8.0
+ */
+- (void)deleteAdminWithUsernames:(NSArray <__kindof NSString *>*)usernames
+                          appKey:(NSString *JMSG_NULLABLE)appkey
+                         handler:(JMSGCompletionHandler JMSG_NULLABLE)handler;
+```
+
+#### 聊天室黑名单
+
++ 聊天室 owner 或者管理员可以设置聊天室成员黑名单，被设置黑名单用户会被立即踢出聊天室；
++ 黑名单变更时，上层会收到变更的事件通知，目前不保存该类型的离线事件。
+
+```
+/*!
+ * @abstract 聊天室的黑名单列表
+ *
+ * @handler 结果回调. resultObject 是 NSArray 类型，元素是 JMSGUser
+ *
+ * @since 3.8.0
+ */
+- (void)chatRoomBlacklist:(JMSGCompletionHandler JMSG_NULLABLE)handler;
+```
+
+```
+/*!
+ * @abstract 添加黑名单
+ *
+ * @param usernames 用户名列表
+ * @param appkey   用户 appKey，usernames 中的所有用户必须在同一个 AppKey 下，不填则默认为本应用 appKey
+ * @param handler 结果回调。error 为 nil 表示成功.
+ *
+ * @since 3.8.0
+ */
+- (void)addBlacklistWithUsernames:(NSArray <__kindof NSString *>*)usernames
+                           appKey:(NSString *JMSG_NULLABLE)appKey
+                          handler:(JMSGCompletionHandler JMSG_NULLABLE)handler;
+```
+
+```
+/*!
+ * @abstract 删除黑名单
+ *
+ * @param usernames 用户名列表
+ * @param appkey   用户 appKey，usernames 中的所有用户必须在同一个 AppKey 下，不填则默认为本应用 appKey
+ * @param handler 结果回调。error 为 nil 表示成功.
+ *
+ * @since 3.8.0
+ */
+- (void)deleteBlacklistWithUsernames:(NSArray <__kindof NSString *>*)usernames
+                              appKey:(NSString *JMSG_NULLABLE)appKey
+                             handler:(JMSGCompletionHandler JMSG_NULLABLE)handler;
+```
+
 #### 接收聊天室消息
 
 + 发送消息：发送消息的接口与单聊、群里一样
 + 接收消息：聊天室消息的接收的代理方法与单聊、群里的做了区分，定义了新的接口[接收聊天室消息](#跳转-聊天室接收消息代理方法)
 
-
-### 消息撤回
-***Since 3.2.0***
-
-由消息撤回方发起调用，在一定时间内，SDK 可以撤回会话中某条消息。
-
-+ 发送方，在撤回成功的回调里可以获取到撤回之后的 message，并同时更新 UI 界面的这条被撤回的消息；
-+ 接收方，如果已经接收了这条消息，然后对方又撤回，则消息接收放回收到一个消息撤回事件，上层可以通过这个事件获取到所属会话和撤回之后的消息，然后刷新 UI 界面。
-
-
-#### JMSGMessage
-	/*!
-	 * @abstract 消息撤回
-	 *
-	 * @param message 需要撤回的消息
-	 * @param handler 结果回调
-	 *
-	 * - resultObject 撤回后的消息
-	 * - error        错误信息
-	 *
-	 * @discussion 注意：SDK可撤回3分钟内的消息
-	 */
-	+ (void)retractMessage:(JMSGMessage *)message completionHandler:(JMSGCompletionHandler)handler;
-##### 例子
-	[JMSGMessage retractMessage:message completionHandler:^(id resultObject, NSError *error) {
-		if(!error){
-			// 撤回之后显示的消息，例如：xx撤回了一条消息
-			JMSGMessage *resultMessage = (JMSGMessage *) resultObject;
-		}
-	}];
-#### JMSGConversation
-	/*!
-	 * @abstract 消息撤回
-	 *
-	 * @param message 需要撤回的消息
-	 * @param handler 结果回调
-	 *
-	 * - resultObject 撤回后的消息
-	 * - error        错误信息
-	 *
-	 * @discussion 注意：SDK可撤回3分钟内的消息
-	 */
-	- (void)retractMessage:(JMSGMessage *)message completionHandler:(JMSGCompletionHandler)handler;
-##### 例子
-	[conversation retractMessage:message completionHandler:^(id resultObject, NSError *error) {
-	    if (!error) {
-		    // 撤回之后显示的消息，例如：xx撤回了一条消息
-	        JMSGMessage *resultMessage = (JMSGMessage *)resultObject;
-	    }
-	}]
 
 ### 消息已读回执
 ***Since 3.3.0***
@@ -1760,11 +2309,51 @@ BOOL status = self.message.isHaveRead;
 NSLog(@"消息是否已读:%@", status?@"是":@"否");
 ```
 
-### 消息透传
+### 消息透传命令
+
 消息透传发送的内容后台不会为其离线保存，只会在对方用户在线的前提下将内容推送给对方。SDK 收到命令之后也不会本地保存，不发送通知栏通知，整体快速响应。  
 开发者可以通过消息透传拓展一些在线场景下的辅助功能，如：实现输入状态提示等。
 
-#### 发送消息透传
+#### 透传命令分类：
+
+```
+/*!
+ * 发送消息透传的的类型
+ */
+typedef NS_ENUM(NSInteger,JMSGTransMessageType) {
+  /// 单聊透传消息
+  kJMSGTransMessageTypeSingle        = 1,
+  /// 群里透传消息
+  kJMSGTransMessageTypeGroup        = 2,
+  /// 设备间透传消息
+  kJMSGTransMessageTypeCrossDevice  = 3,
+};
+```
+#### 设备间消息透传
+支持同用户下不同设备之间消息透传
+
+```
+/*!
+ * @abstract 发送透传消息给自己在线的其他设备
+ *
+ * @param message   发送的内容
+ * @param platform  设备类型
+ * @param handler   回调
+ *
+ * @discussion 注意：
+ *
+ *  1. 消息透传功能，消息不会进入到后台的离线存储中去，仅当对方用户当前在线时才会成功送达，SDK 不会将此类消息内容存储；
+ *
+ *  2. 透传命令到达是，接收方通过 [JMSGEventDelegate onReceiveMessageTransparentEvent:] 方法监听。
+ *
+ * @since 3.5.0
+ */
++ (void)sendCrossDeviceTransMessage:(NSString *)message
+                           platform:(JMSGPlatformType)platform
+                            handler:(JMSGCompletionHandler)handler;
+```
+
+#### 会话间消息透传
 
 ```
 /*!
@@ -1877,48 +2466,7 @@ JMSGMessage *message = [JMSGMessage createGroupMessageWithContent:textContent2 g
 - (void)sendAtAllMessage:(JMSGMessage *)message;
 ```
 
-### 群消息屏蔽
-群组被设置为屏蔽之后，将收不到该群的消息，但是群成员变化事件还是能正常收到。
-#### JMSGGroup
-#### 判断群组是否被屏蔽
-	/*!
-	 * @abstract 该群是否已被设置为消息屏蔽
-	 *
-	 * @discussion YES:是 , NO: 否
-	 */
-	@property(nonatomic, assign, readonly) BOOL isShieldMessage
-#### 设置群消息屏蔽
-	/*!
-	 * @abstract 设置群组消息屏蔽
-	 *
-	 * @param isShield 是否群消息屏蔽 YES:是 NO: 否
-	 * @param handler 结果回调。回调参数：
-	 *
-	 * - resultObject 相应对象
-	 * - error 错误信息
-	 *
-	 * 如果 error 为 nil, 表示设置成功
-	 * 如果 error 不为 nil,表示设置失败
-	 *
-	 * @discussion 针对单个群组设置群消息屏蔽
-	 */
-	- (void)setIsShield:(BOOL)isShield handler:(JMSGCompletionHandler)handler;
 
-#### 获取当前用户的群屏蔽列表
-	/*!
-	 * @abstract 获取所有设置群消息屏蔽的群组
-	 *
-	 * @param handler 结果回调。回调参数：
-	 *
-	 * - resultObject 类型为 NSArray，数组里成员的类型为 JMSGGroup
-	 * - error 错误信息
-	 *
-	 * 如果 error 为 nil, 表示设置成功
-	 * 如果 error 不为 nil,表示设置失败
-	 *
-	 * @discussion 从服务器获取，返回所有设置群消息屏蔽的群组。
-	 */
-	+ (void)shieldList:(JMSGCompletionHandler)handler;
 ### 通知栏管理
 #### JMSGConversation
 发送消息时，SDK 可以控制离线消息的存储、自定义通知栏内容等，具体的功能可以想象查看 [JMSGOptionalContent](./jmessage_ios_appledoc_html/Classes/JMSGOptionalContent.html#) 类里面的说明。
@@ -1951,7 +2499,7 @@ JMSGMessage *message = [JMSGMessage createGroupMessageWithContent:textContent2 g
 
 ###<span id="JMSGFriendManager">好友管理</span>
 
-添加、删除、接受、拒绝好友等操作 SDK 会作为通知事件下发,上层通过 [onReceiveNotificationEvent:](./jmessage_ios_appledoc_html/Protocols/JMSGEventDelegate.html#//api/name/onReceiveNotificationEvent:) 类中的方法监听此类事件. [使用示例](#监听下发事件实例)然后做出相应的处理，
+添加、删除、接受、拒绝好友等操作 SDK 会作为通知事件下发,上层通过 [onReceiveNotificationEvent:](./jmessage_ios_appledoc_html/Protocols/JMSGEventDelegate.html#//api/name/onReceiveFriendNotificationEvent:) 类中的方法监听此类事件. 
 
 #### JMSGFriendManager
 #### 获取好友列表
@@ -2363,61 +2911,142 @@ BOOL isAlreadSet = user.isNoDisturb;
 ```
 
 ### 事件处理
-#### 通知事件类型
 
-	typedef NS_ENUM(NSInteger, JMSGEventNotificationType) {
+```
+/*!
+ * 消息事件类型
+ */
+typedef NS_ENUM(NSInteger, JMSGEventNotificationType) {
+  // 消息事件
+  /// 事件类型: 群组被创建
+  kJMSGEventNotificationCreateGroup = 8,
+  /// 事件类型: 退出群组
+  kJMSGEventNotificationExitGroup = 9,
+  /// 事件类型: 群组添加新成员
+  kJMSGEventNotificationAddGroupMembers = 10,
+  /// 事件类型: 群组成员被踢出
+  kJMSGEventNotificationRemoveGroupMembers = 11,
+  /// 事件类型: 群信息更新
+  kJMSGEventNotificationUpdateGroupInfo = 12,
+  /// 事件类型: 群禁言通知事件
+  kJMSGEventNotificationGroupMemberSilence = 65,
+  /// 事件类型: 管理员角色变更通知事件
+  kJMSGEventNotificationGroupAdminChange = 80,
+  /// 事件类型: 群主变更通知事件
+  kJMSGEventNotificationGroupOwnerChange = 82,
+  /// 事件类型: 群类型变更通知事件
+  kJMSGEventNotificationGroupTypeChange = 83,
+  /// 事件类型: 解散群组
+  kJMSGEventNotificationDissolveGroup = 11001,
+  /// 事件类型: 群组成员上限变更
+  kJMSGEventNotificationGroupMaxMemberCountChange = 11002,
+};
+```
 
-	    /// 用户登录状态变更事件
-	    /// 事件类型: 登录被踢
-	    kJMSGEventNotificationLoginKicked = 1,
-	    /// 事件类型: 非客户端修改密码强制登出事件
-	    kJMSGEventNotificationServerAlterPassword = 2,
-	    /// 事件类型：用户登录状态异常事件（需要重新登录）
-	    kJMSGEventNotificationUserLoginStatusUnexpected = 70,
-	    /// 事件类型：当前登录用户信息变更通知事件(非客户端修改)
-		 kJMSGEventNotificationCurrentUserInfoChange = 40,
+```
+/*!
+ * 通知事件类型
+ *
+ * #### 上层通过 JMSGEventDelegate 类里的方法来监听此类事件
+ */
+typedef NS_ENUM(NSInteger, JMSGCommonEventType){
+  /// 事件类型: 消息撤回
+  kJMSGEventNotificationMessageRetract = 55,
+  /// 事件类型: 消息透传
+  kJMSGEventNotificationMessageTransparent = 12001,
+  /// 事件类型: 消息回执变更
+  kJMSGEventNotificationMessageReceiptStatusChange = 12002,
+};
+```
 
-	    /// 好友相关事件
-	    /// 事件类型: 收到好友邀请
-	    kJMSGEventNotificationReceiveFriendInvitation   = 51,
-	    /// 事件类型: 对方接受了你的好友邀请
-	    kJMSGEventNotificationAcceptedFriendInvitation  = 52,
-	    /// 事件类型: 对方拒绝了你的好友邀请
-	    kJMSGEventNotificationDeclinedFriendInvitation  = 53,
-	    /// 事件类型: 对方将你从好友中删除
-	    kJMSGEventNotificationDeletedFriend             = 6,
-		 /// 事件类型：非客户端修改好友关系收到好友更新事件
-		 kJMSGEventNotificationReceiveServerFriendUpdate = 7,
-		 
-		 /// 事件类型: 消息撤回
-		 kJMSGEventNotificationMessageRetract = 55,
-		 /// 事件类型: 消息透传
-		 kJMSGEventNotificationMessageTransparent = 58,
-		 /// 事件类型: 消息回执变更
-		 kJMSGEventNotificationMessageReceiptStatusChange = 68,
-	    
-	    /// 消息事件
-	    /// 事件类型: 群组被创建
-	    kJMSGEventNotificationCreateGroup = 8,
-	    /// 事件类型: 退出群组
-	    kJMSGEventNotificationExitGroup = 9,
-	    /// 事件类型: 群组添加新成员
-	    kJMSGEventNotificationAddGroupMembers = 10,
-	    /// 事件类型: 群组成员被踢出
-	    kJMSGEventNotificationRemoveGroupMembers = 11,
-	    /// 事件类型: 群信息更新
-	    kJMSGEventNotificationUpdateGroupInfo = 12,
-	};
+```
+/*!
+ * 用户登录状态变更事件类型
+ *
+ * #### 上层通过 JMSGUserDelegate 类里的方法来监听此类事件
+ */
+typedef NS_ENUM(NSInteger, JMSGLoginStatusChangeEventType) {
+  // 用户登录状态变更事件
+  /// 事件类型: 登录被踢
+  kJMSGEventNotificationLoginKicked = 1,
+  /// 事件类型: 非客户端修改密码强制登出事件
+  kJMSGEventNotificationServerAlterPassword = 2,
+  /// 事件类型：用户登录状态异常事件（需要重新登录）
+  kJMSGEventNotificationUserLoginStatusUnexpected = 70,
+  /// 事件类型：当前登录用户信息变更通知事件(非客户端修改)
+  kJMSGEventNotificationCurrentUserInfoChange = 40,
+  /// 事件类型：当前登录用户被删除事件（本地用户信息会被清空）
+  kJMSGEventNotificationCurrentUserDeleted = 10001,
+  /// 事件类型：当前登录用户被禁用事件（本地用户信息会被清空）
+  kJMSGEventNotificationCurrentUserDisabled = 10002,
+};
+```
+
+```
+/*!
+ * 好友事件类型
+ *
+ * #### 上层通过 JMSGEventDelegate 类里的方法来监听此类事件
+ */
+typedef NS_ENUM(NSInteger, JMSGFriendEventType) {
+  // 好友相关事件
+  /// 事件类型: 收到好友邀请
+  kJMSGEventNotificationReceiveFriendInvitation   = 51,
+  /// 事件类型: 对方接受了你的好友邀请
+  kJMSGEventNotificationAcceptedFriendInvitation  = 52,
+  /// 事件类型: 对方拒绝了你的好友邀请
+  kJMSGEventNotificationDeclinedFriendInvitation  = 53,
+  /// 事件类型: 对方将你从好友中删除
+  kJMSGEventNotificationDeletedFriend             = 6,
+  /// 事件类型：非客户端修改好友关系收到好友更新事件
+  kJMSGEventNotificationReceiveServerFriendUpdate = 7,
+};
+```
+
+```
+/*!
+ * 群组事件类型
+ *
+ * #### 上层通过 JMSGGroupDelegate 类里的方法来监听此类事件
+ */
+typedef NS_ENUM(NSInteger, JMSGGroupEventType) {
+  /// 事件类型：发布群公告
+  kJMSGEventNotificationPublishGroupAnnouncement  = 86,
+  /// 事件类型：删除群公告
+  kJMSGEventNotificationDeleteGroupAnnouncement = 87,
+  /// 事件类型：置顶/取消置顶 群公告
+  kJMSGEventNotificationTopGroupAnnouncement = 88,
+  /// 事件类型：添加群组黑名单
+  kJMSGEventNotificationAddGroupBlacklist = 89,
+  /// 事件类型：删除群组黑名单
+  kJMSGEventNotificationDelGroupBlacklist = 90,
+};
+```
+
+```
+/*!
+ * 聊天室事件类型
+ *
+ * #### 上层通过 JMSGEventDelegate 类里的方法来监听此类事件
+ */
+typedef NS_ENUM(NSInteger, JMSGChatRoomEventType) {
+  /// 事件类型：添加管理员
+  kJMSGEventNotificationChatRoomAddAdmin = 130,
+  /// 事件类型：删除管理员
+  kJMSGEventNotificationChatRoomDelAdmin = 131,
+  /// 事件类型：添加黑名单
+  kJMSGEventNotificationChatRoomAddBlacklist = 132,
+  /// 事件类型：删除黑名单
+  kJMSGEventNotificationChatRoomDelBlacklist = 133,
+};
+```
 
 
 * 消息事件，如：群事件，SDK会作为一个特殊的消息类型处理，上层通过[onReceiveMessage:error:](./jmessage_ios_appledoc_html/Protocols/JMSGMessageDelegate.html#//api/name/onReceiveMessage:error:)可监听到此事件。
-* 非消息事件，如：用户登录状态变更、好友相关事件等,SDK会作为通知事件下发,上层通过 [onReceiveNotificationEvent:](./jmessage_ios_appledoc_html/Protocols/JMSGEventDelegate.html#//api/name/onReceiveNotificationEvent:) 方法监听此类事件. [使用示例](#监听下发事件实例)
-* 消息撤回事件，上层通过[onReceiveMessageRetractEvent:](./jmessage_ios_appledoc_html/Protocols/JMSGEventDelegate.html#//api/name/onReceiveMessageRetractEvent:)方法监听此事件.
-* 消息透传事件，上层通过[JMSGMessageTransparentEvent:](./jmessage_ios_appledoc_html/Protocols/JMSGEventDelegate.html#//api/name/onReceiveMessageTransparentEvent:)方法监听此事件.
-* 消息回执变更事件，上层通过[JMSGMessageReceiptStatusChangeEvent:](./jmessage_ios_appledoc_html/Protocols/JMSGEventDelegate.html#//api/name/onReceiveMessageReceiptStatusChangeEvent:)方法监听此事件.
+* 非消息事件，如：用户登录状态变更、好友相关事件等,SDK会作为通知事件下发,每一类事件都有对应的代理方法，上层通过对应方法监听事件.
 
 #### 用户登录状态变更事件
-#### JMSGNotificationEvent
+
 	/*!
 	 * @abstract 事件类型
 	 * @discussion 参考事件类型的定义 JMSGEventNotificationType
@@ -2430,11 +3059,13 @@ BOOL isAlreadSet = user.isNoDisturb;
 	 */
 	@property(nonatomic, strong, readonly) NSString *eventDescription;
 
-##### 例子
-[监听该事件的使用示例](#监听下发事件实例)	
+##### 代理方法
+[监听该事件的代理方法：onReceiveUserLoginStatusChangeEvent:](./jmessage_ios_appledoc_html/Protocols/JMSGUserDelegate.html#//api/name/onReceiveUserLoginStatusChangeEvent:)
+	
+<span id="监听好友管理事件"></span>
 
 #### 好友管理事件
-#### JMSGFriendNotificationEvent
+
 	/*!
 	 * @abstract 获取事件发生的理由
 	 *
@@ -2454,11 +3085,11 @@ BOOL isAlreadSet = user.isNoDisturb;
 	 */
 	- (JMSGUser *JMSG_NULLABLE)getFromUser;
 
-##### 例子
-[监听该事件的使用示例](#监听下发事件实例)	
+##### 代理方法
+[监听该事件的代理方法: onReceiveFriendNotificationEvent:](./jmessage_ios_appledoc_html/Protocols/JMSGEventDelegate.html#//api/name/onReceiveFriendNotificationEvent:)	
 
 #### 消息撤回事件
-#### JMSGNotificationEvent
+
 	/*!
 	 * @abstract 消息撤回事件
 	 *
@@ -2475,9 +3106,12 @@ BOOL isAlreadSet = user.isNoDisturb;
 	 * @abstract 撤回之后的消息
 	 */
 	@property(nonatomic, strong, readonly) JMSGMessage *retractMessage;
+
+##### 代理方法
+[监听该事件的代理方法: onReceiveMessageRetractEvent:](./jmessage_ios_appledoc_html/Protocols/JMSGEventDelegate.html#//api/name/onReceiveMessageRetractEvent:)
 	
 #### 消息透传事件
-#### JMSGMessageTransparentEvent
+
 	/*!
 	 * @abstract 消息透传事件
 	 */
@@ -2492,11 +3126,11 @@ BOOL isAlreadSet = user.isNoDisturb;
 	@property(nonatomic, strong, readonly) NSString *transparentText;
 	@end
 	
-##### 例子
-消息透传事件上层通过[onReceiveMessageTransparentEvent:](./jmessage_ios_appledoc_html/Protocols/JMSGEventDelegate.html#//api/name/onReceiveMessageTransparentEvent:)方法监听此事件.
+##### 代理方法
+[监听该事件的代理方法: onReceiveMessageTransparentEvent:](./jmessage_ios_appledoc_html/Protocols/JMSGEventDelegate.html#//api/name/onReceiveMessageTransparentEvent:)
 	
 #### 消息回执变更事件	
-#### JMSGMessageReceiptStatusChangeEvent
+
 	/*!
 	 * @abstract 消息已读回执状态变更事件
 	 */
@@ -2511,12 +3145,11 @@ BOOL isAlreadSet = user.isNoDisturb;
 	@property(nonatomic, strong, readonly) NSArray <__kindof JMSGMessage *>*messages;
 	@end
 	
-##### 例子
-消息回执变更事件上层通过[onReceiveMessageReceiptStatusChangeEvent:](./jmessage_ios_appledoc_html/Protocols/JMSGEventDelegate.html#//api/name/onReceiveMessageReceiptStatusChangeEvent:)方法监听此事件.
+##### 代理方法
+[监听该事件的代理方法: onReceiveMessageReceiptStatusChangeEvent:](./jmessage_ios_appledoc_html/Protocols/JMSGEventDelegate.html#//api/name/onReceiveMessageReceiptStatusChangeEvent:)
 
 <span id="跳转-入群申请事件"></span>
 #### 入群申请事件	
-#### JMSGApplyJoinGroupEvent
 
 ```
 @interface JMSGApplyJoinGroupEvent : JMSGNotificationEvent
@@ -2535,13 +3168,13 @@ BOOL isAlreadSet = user.isNoDisturb;
 @end
 ```
 
-##### 例子
-入群申请事件上层通过[onReceiveApplyJoinGroupApprovalEvent:](./jmessage_ios_appledoc_html/Protocols/JMSGEventDelegate.html#//api/name/onReceiveApplyJoinGroupApprovalEvent:)方法监听此事件.
+##### 代理方法
+[监听该事件的代理方法: onReceiveApplyJoinGroupApprovalEvent:](./jmessage_ios_appledoc_html/Protocols/JMSGGroupDelegate.html#//api/name/onReceiveApplyJoinGroupApprovalEvent:)
 	
 
 <span id="跳转-管理员拒绝入群申请事件"></span>
 #### 管理员拒绝入群申请事件	
-#### JMSGGroupAdminRejectApplicationEvent	
+
 ```
 @interface JMSGGroupAdminRejectApplicationEvent : JMSGNotificationEvent
 /// 群 gid
@@ -2553,8 +3186,31 @@ BOOL isAlreadSet = user.isNoDisturb;
 @end
 ```
 	
-##### 例子
-管理员拒绝入群申请事件上层通过[onReceiveGroupAdminRejectApplicationEvent:](./jmessage_ios_appledoc_html/Protocols/JMSGEventDelegate.html#//api/name/onReceiveGroupAdminRejectApplicationEvent:)方法监听此事件.
+##### 代理方法
+[监听该事件的代理方法: onReceiveGroupAdminRejectApplicationEvent:](./jmessage_ios_appledoc_html/Protocols/JMSGGroupDelegate.html#//api/name/onReceiveGroupAdminRejectApplicationEvent:)
+
+#### 群成员群昵称变更事件
+
+```
+/*!
+ * @abstract 群成员昵称修改事件
+ *
+ * @discussion 如果是离线事件， memberInfoList 里会包含群成员每一次的修改记录
+ */
+@interface JMSGGroupNicknameChangeEvent : NSObject
+/// 群组
+@property(nonatomic, strong, readonly) JMSGGroup *group;
+/// 修改昵称的群成员
+@property(nonatomic, strong, readonly) JMSGGroupMemberInfo *fromMemberInfo;
+/// 被修改昵称的群成员
+@property(nonatomic, strong, readonly) JMSGGroupMemberInfo *toMemberInfo;
+/// 事件时间
+@property(nonatomic, assign, readonly) UInt64 ctime;
+@end
+```
+
+##### 代理方法
+[监听该事件的代理方法: onReceiveGroupNicknameChangeEvents:](./jmessage_ios_appledoc_html/Protocols/JMSGGroupDelegate.html#//api/name/onReceiveGroupNicknameChangeEvents:)
 	
 #### 消息事件
 #### JMSGEventContent
@@ -2581,7 +3237,10 @@ BOOL isAlreadSet = user.isNoDisturb;
 	 * 可以用于定制 event message，拼接成完整的事件描述信息。
 	 */
 	- (NSArray *JMSG_NULLABLE)getEventToUsernameList;
+
 ##### 例子
+[监听该事件的代理方法: onReceiveMessage:error:](./jmessage_ios_appledoc_html/Protocols/JMSGMessageDelegate.html#//api/name/onReceiveMessage:error:)
+
 	// 事件的文本描述
 	if (message.contentType == kJMSGContentTypeEventNotification) {
 		NSString *showText = [((JMSGEventContent *)message.content) showEventNotification];
@@ -2619,51 +3278,6 @@ JMessage SDK 采用 Delegate 的机制给 App 发通知，而不是采用 iOS �
 
 由于 JMessage SDK 会在 setup 时检测数据库升级，如果有需要就发出通知。所以建议在 AppDelegate 里调用 setupJMessage 之前就添加监听。
 
-另外一个建议在 AppDelegate 里监听的通知是当前用户被踢出登录。
-
-	- (void)onLoginUserKicked;（此方法已过期，建议使用下面的新方法）
-
-	// 通过event.eventType 判断事件类型,如：被踢事件、好友相关事件等
-	- (void)onReceiveNotificationEvent:(JMSGNotificationEvent *)event;
-
-<span id="监听下发事件实例"></span>
-##### 示例代码
-	// 通知事件监听
-	- (void)onReceiveNotificationEvent:(JMSGNotificationEvent *)event{
-	    switch (event.eventType) {
-		     case kJMSGEventNotificationCurrentUserInfoChange:
-		     	  NSLog(@"Current user info change Event ");
-		     	  break;
-	        case kJMSGEventNotificationReceiveFriendInvitation:
-	            NSLog(@"Receive Friend Invitation Event ");
-	            break;
-	        case kJMSGEventNotificationAcceptedFriendInvitation:
-	            NSLog(@"Accepted Friend Invitation Event ");
-	            break;
-	        case kJMSGEventNotificationDeclinedFriendInvitation:
-	            NSLog(@"Declined Friend Invitation Event ");
-	            break;
-	        case kJMSGEventNotificationDeletedFriend:
-	            NSLog(@"Deleted Friend Event ");
-	            break;
-            case kJMSGEventNotificationReceiveServerFriendUpdate:
-	            NSLog(@"Receive Server Friend Update Event ");
-	            break;
-	        case kJMSGEventNotificationLoginKicked:
-	            NSLog(@"Login Kicked Event ");
-	            break;
-	        case kJMSGEventNotificationServerAlterPassword:
-	            NSLog(@"Server Alter Password Event ");
-	            break;
-	        case kJMSGEventNotificationUserLoginStatusUnexpected:
-	            NSLog(@"User login status unexpected Event ");
-	            break;
-	        default:
-		        NSLog(@"Other Notification Event ");
-	            break;
-	    }
-	}
-
 ### 结果回调
 
 JMessage SDK 提供的很多接口都以异步方式返回，其回调都是一个类型为 JMSGCompletionHandler 的 block，其定义为
@@ -2700,14 +3314,6 @@ JMSGCompletionHandler 有 2 个参数：
 	 */
 	@optional
 	- (void)onConversationChanged:(JMSGConversation *)conversation;
-
-	/*!
-	 * @abstract 当前剩余的全局未读数
-	 *
-	 * @param newCount 变更后的数量
-	 */
-	@optional
-	- (void)onUnreadChanged:(NSUInteger)newCount;
 
 #### 消息同步代理方法 
 <span id="onSyncConversation:"></span>
@@ -2794,7 +3400,7 @@ JMSGCompletionHandler 有 2 个参数：
 - (void)onSendMessageResponse:(JMSGMessage *)message
                         error:(NSError *)error;
 ```
-<span id="onReceiveMessage:error:"></span>
+<span id="监听JMSGEventContent"></span>
 
 ```
 /*!
@@ -2830,68 +3436,131 @@ JMSGCompletionHandler 有 2 个参数：
 - (void)onReceiveMessageDownloadFailed:(JMSGMessage *)message;
 ```
 #### JMSGGroupDelegate
-	/*!
-	 * @abstract 群组信息 (GroupInfo) 信息通知
-	 *
-	 * @param group 变更后的群组对象
-	 *
-	 * @discussion 如果想要获取通知, 需要先注册回调. 具体请参考 JMessageDelegate 里的说明.
-	 */
-	@optional
-	- (void)onGroupInfoChanged:(JMSGGroup *)group;
 
-#### JMSGUserDelegate（方法已过期，建议使用JMSGEventDelegate）
-	/*!
-	 * @abstract 当前登录用户被踢下线通知(方法已过期，建议使用新方法)
-	 *
-	 * @discussion 一般可能是, 该用户在其他设备上登录, 把当前设备的登录踢出登录.
-	 *
-	 * SDK 收到服务器端下发事件后, 会内部退出登录.
-	 * App 也应该退出登录. 否则所有的 SDK API 调用将失败, 因为 SDK 已经退出登录了.
-	 *
-	 * 注意: 这是旧版本的监听方法，建议不要使用,已经过期,
-	 * 使用 JMSGEventDelegate 类中的 onReceiveNotificationEvent 新的监听方法.
-	 */
-	@optional
-	- (void)onLoginUserKicked;
-
-<span id="JMSGEventDelegate"></span>
-
-#### JMSGEventDelegate
 ```
 /*!
- * @abstract 监听通知事件
+ * @abstract 群组信息 (GroupInfo) 信息通知
  *
- * @param event 下发的通知事件
+ * @param group 变更后的群组对象
  *
- * @discussion SDK 收到服务器端下发事件后，会以通知代理的方式给到上层,通过event.eventType判断事件类型.
- *
- * 注意：
- * 消息事件，如：群事件，SDK会作为一个特殊的消息类型下发，上层依旧通过 JMSGMessageDelegate 监听消息事件.
- *
- * 非消息事件，如：被踢下线、加好友，SDK会作为通知事件下发,上层通过本类 JMSGEventDelegate 的方法可监听此类事件.
+ * @discussion 如果想要获取通知, 需要先注册回调. 具体请参考 JMessageDelegate 里的说明.
  */
 @optional
-- (void)onReceiveNotificationEvent:(JMSGNotificationEvent *)event;
+- (void)onGroupInfoChanged:(JMSGGroup *)group;
 ```
-	
+
+<span id="监听-JMSGApplyJoinGroupEvent"></span>
+
 ```
 /*!
- * @abstract 消息撤回事件
+ * @abstract 监听申请入群通知
+ *
+ * @param event 申请入群事件
+ *
+ * @discussion 只有群主和管理员能收到此事件；申请入群事件相关参数请查看 JMSGApplyJoinGroupEvent 类，在群主审批此事件时需要传递事件的相关参数
+ *
+ * @since 3.4.0
+ */
+@optional
+- (void)onReceiveApplyJoinGroupApprovalEvent:(JMSGApplyJoinGroupEvent *)event;
+```
+
+<span id="监听-JMSGGroupAdminRejectApplicationEvent"></span>
+
+```
+/*!
+ * @abstract 监听管理员拒绝入群申请通知
+ *
+ * @param event 拒绝入群申请事件
+ *
+ * @discussion 只有申请方和被申请方会收到此事件；拒绝的相关描述和原因请查看 JMSGGroupAdminRejectApplicationEvent 类
+ *
+ * @since 3.4.0
+ */
+@optional
+- (void)onReceiveGroupAdminRejectApplicationEvent:(JMSGGroupAdminRejectApplicationEvent *)event;
+```
+
+<span id="监听-JMSGGroupAdminApprovalEvent"></span>
+
+```
+/*!
+ * @abstract 监听管理员审批通知
+ *
+ * @param event 管理员审批事件
+ *
+ * @discussion 只有管理员才会收到该事件；当管理员同意或拒绝了某个入群申请事件时，其他管理员就会收到该事件，相关属性请查看 JMSGGroupAdminApprovalEvent 类
+ *
+ * @since 3.5.0
+ */
+@optional
+- (void)onReceiveGroupAdminApprovalEvent:(JMSGGroupAdminApprovalEvent *)event;
+```
+
+<span id="监听-JMSGGroupNicknameChangeEvent"></span>
+
+```
+/*!
+ * @abstract 群成员群昵称变更通知
+ *
+ * @param events 群成员昵称变更事件列表
+ *
+ * @discussion 如果是离线事件，SDK 会将所有的修改记录加入数组上抛。事件具体相关属性请查看 JMSGGroupNicknameChangeEvent 类
+ *
+ * @since 3.7.0
+ */
+@optional
+- (void)onReceiveGroupNicknameChangeEvents:(NSArray<__kindof JMSGGroupNicknameChangeEvent*>*)events;
+```
+
+
+<span id="监听-JMSGUserLoginStatusChangeEvent"></span>
+
+#### JMSGUserDelegate
+	/*!
+	 * @abstract 监听当前用户登录状态变更事件
+	 *
+	 * @discussion 可监听：当前登录用户被踢、非客户端修改密码强制登出、登录状态异常、被删除、被禁用、信息变更等事件
+	 *
+	 * @since 3.5.0
+	 */
+	@optional
+	- (void)onReceiveUserLoginStatusChangeEvent:(JMSGUserLoginStatusChangeEvent *)event;
+
+<span id="监听-JMSGFriendNotificationEvent"></span>
+
+#### JMSGEventDelegate
+
+```
+/*!
+ * @abstract 监听好友相关事件
+ *
+ * @discussion 可监听：加好友、删除好友、好友更新等事件
+ *
+ * @since 3.5.0
+ */
+@optional
+- (void)onReceiveFriendNotificationEvent:(JMSGFriendNotificationEvent *)event;
+```
+
+<span id="监听-JMSGMessageRetractEvent"></span>
+
+```
+/*!
+ * @abstract 监听消息撤回事件
  *
  * @param retractEvent 下发的通知事件，事件类型请查看 JMSGMessageRetractEvent 类
- *
- * @discussion 收到此事件时，可以通过 event.conversation 判断是否属于某个会话
  *
  * @since 3.2.0
  */
 @optional
 - (void)onReceiveMessageRetractEvent:(JMSGMessageRetractEvent *)retractEvent;
 ```
+<span id="监听-JMSGMessageReceiptStatusChangeEvent"></span>
 
 ```
 /*!
- * @abstract 消息回执状态变更事件
+ * @abstract 监听消息回执状态变更事件
  *
  * @param receiptEvent 下发的通知事件，事件类型请查看 JMSGMessageReceiptStatusChangeEvent 类
  *
@@ -2902,14 +3571,15 @@ JMSGCompletionHandler 有 2 个参数：
 @optional
 - (void)onReceiveMessageReceiptStatusChangeEvent:(JMSGMessageReceiptStatusChangeEvent *)receiptEvent;
 ```
+<span id="监听-JMSGMessageTransparentEvent"></span>
 
 ```
 /*!
- * @abstract 消息透传事件
+ * @abstract 监听消息透传事件
  *
  * @param transparentEvent 下发的通知事件，事件类型请查看 JMSGMessageTransparentEvent 类
  *
- * @discussion 上层可以通过 transparentEvent 获取相应信息，如果自定义的透传信息、会话
+ * @discussion 消息透传的类型：单聊、群聊、设备间透传消息
  *
  * @since 3.3.0
  */

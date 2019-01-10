@@ -13,52 +13,53 @@ JSHARE SDK 可以让你的应用支持多平台分享，无需花耗时间了解
 
 ### 主要场景：
 
-* 将分享内容分享到 QQ、微信、新浪微博、Facebook、Twitter 等主要的社交平台。
-* 获得 QQ、微信、新浪微博、Facebook、Twitter 等主要平台授权。
-* 获取 QQ、微信、新浪微博、Facebook、Twitter 等主要平台的个人信息，用于第三方登录。
+* 将分享内容分享到 QQ、微信、新浪微博、Facebook、Twitter、趣聊等主要的社交平台。
+* 获取QQ、微信、新浪微博、Facebook、Twitter等主要平台的个人信息，用于第三方登录。
 
 
 ### jshare-android-1.x.y-release.zip 集成压缩包内容
 * JGShareSDK.xml
-	* 客户端嵌入 SDK，各个平台配置的参考文件。
+	* 客户端嵌入SDK，各个平台配置的参考文件。
 * AndroidManifest.xml
-	* 客户端嵌入 SDK 参考的配置文件。
+	* 客户端嵌入SDK参考的配置文件。
 * libs/jcore-android-1.x.y.jar
-	* 极光开发者服务的核心包。
+	* 极光开发者服务的核.心包。
 * jshare-android-1.x.y.jar
-	* JShare SDK 核心包。
+	* JShare SDK核心包。
 * jshare-wechat-android-1.x.y.jar
-	* JShare 微信平台包。
+	* JShare微信平台包。
 * jshare-qq-android-1.x.y.jar
-	* JShare QQ 平台包。
+	* JShareQQ平台包。
 * jshare-sina-android-1.x.y.jar
-	* JShare 新浪微博包。
+	* JShare新浪微博包。
 * jshare-facebook-android-1.x.y.jar
-    * JShareFacebook 平台包。
+    * JShareFacebook平台包。
 * jshare-twitter-android-1.x.y.jar
-    * JShare Twitter 平台包。
+    * JShareTwitter平台包。
+* jshare-jchatpro-android-1.x.y.jar
+    * JShareJChatPro平台包。
 * libs/(cpu-type)/libjcore1xy.so
-	* 各种 CPU 类型的 native 开发包。
+	* 各种CPU类型的native开发包。
 * example
-	* 是一个完整的 Android 项目，通过这个演示了 JShare SDK 的基本用法，可以用来做参考。  
+	* 是一个完整的Android项目，通过这个演示了JShare SDK的基本用法，可以用来做参考。  
 	
 ### Android SDK 版本
-JShare SDK 支持 Android 2.3 及以上版本的 Android 系统。
+JShare SDK支持Android 2.3及以上版本的Android系统。
 
 
 
-## jcenter 自动集成
-**说明 ：** 使用 jcenter 自动集成的开发者，不需要在项目中添加 jar 和 so，jcenter 会自动完成依赖。
+## jcenter自动集成
+**说明 ：** 使用jcenter自动集成的开发者，不需要在项目中添加jar和so，jcenter会自动完成依赖。
 
-* 在 gradle 配置 jcenter。
+* 在gradle 配置jcenter。
 * 配置第三方平台信息。
 * 配置微信回调（如不需要分享到微信，可跳过）。
 * 配置项目签名。
-* 参考 example 工程或者接口文档使用 JShare SDK。
+* 参考example工程或者接口文档使用JShare SDK。
 
 ### gradle 配置
 
-* 确认 android studio 的 Project 根目录的主 gradle 中配置了 jcenter 支持。（新建 project 默认配置就支持）
+* 确认android studio的 Project 根目录的主 gradle 中配置了jcenter支持。（新建project默认配置就支持）
 
 ```
 buildscript {
@@ -74,7 +75,7 @@ allprojects {
     }
 }
 ```
-* 在 module 的 gradle 中添加依赖和 AndroidManifest 的替换变量。
+* 在 module 的 gradle 中添加依赖和AndroidManifest的替换变量。
 
 ```
 android {
@@ -84,17 +85,17 @@ android {
         ......
 
         ndk {
-            //选择要添加的对应 cpu 类型的.so 库。
+            //选择要添加的对应cpu类型的.so库。
             abiFilters 'armeabi', 'armeabi-v7a', 'armeabi-v8a'
             // 还可以添加 'x86', 'x86_64', 'mips', 'mips64'
         }
 
         manifestPlaceholders = [
             JSHARE_PKGNAME : applicationId,
-            JPUSH_APPKEY : "你的 appkey", //极光控制台创建应用得到的 AppKey.
+            JPUSH_APPKEY : "你的appkey", //极光控制台创建应用得到的AppKey.
             JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
-            TENCENT_APPID: " QQ 开发者应用的 appID ",//腾讯开放平台注册应用得到的 appId
-            FACEBOOK_APPID: " facebook 开发者应用的 appID ",// facebook 注册应用得到的 appId
+            TENCENT_APPID: "QQ开发者应用的appID",//腾讯开放平台注册应用得到的appId
+            FACEBOOK_APPID: "facebook开发者应用的appID",//facebook注册应用得到的appId
         ]
         ......
     }
@@ -102,22 +103,23 @@ android {
 }
 dependencies {
     ......
-    compile 'cn.jiguang.sdk:jshare:1.5.0'  // 此处以 JShare 1.5.0 版本为例，具体版本请参考压缩包 libs 的 jar 包版本。
-    compile 'cn.jiguang.sdk:jshare-qqmodel:1.5.0'  // 此处以 jshare-qqmodel 1.5.0  版本为例，具体版本请参考压缩包 libs 的 jar 包版本。
-    compile 'cn.jiguang.sdk:jshare-wechatmodel:1.5.0'  // 此处以 jshare-wechatmodel 1.5.0  版本为例，具体版本请参考压缩包 libs 的 jar 包版本。
-    compile 'cn.jiguang.sdk:jshare-sinamodel:1.5.0'  // 此处以 jshare-sinamodel 1.5.0  版本为例，具体版本请参考压缩包 libs 的 jar 包版本。
-    compile 'cn.jiguang.sdk:jshare-facebookmodel:1.5.0'  // 此处以 jshare-facebookmodel 1.5.0  版本为例，具体版本请参考压缩包 libs 的 jar 包版本。
-    compile 'cn.jiguang.sdk:jshare-twittermodel:1.5.0'  // 此处以 jshare-twittermodel 1.5.0  版本为例，具体版本请参考压缩包 libs 的 jar 包版本。
-    compile 'cn.jiguang.sdk:jcore:1.1.7'  // 此处以 JCore 1.1.7 版本为例，具体版本请参考压缩包 libs 的 jar 包版本。
+    compile 'cn.jiguang.sdk:jshare:1.6.0'  // 此处以JShare 1.6.0 版本为例，具体版本请参考压缩包libs的jar包版本。
+    compile 'cn.jiguang.sdk:jshare-qqmodel:1.6.0'  // 此处以jshare-qqmodel 1.6.0  版本为例，具体版本请参考压缩包libs的jar包版本。
+    compile 'cn.jiguang.sdk:jshare-wechatmodel:1.6.0'  // 此处以jshare-wechatmodel 1.6.0  版本为例，具体版本请参考压缩包libs的jar包版本。
+    compile 'cn.jiguang.sdk:jshare-sinamodel:1.6.0'  // 此处以jshare-sinamodel 1.6.0  版本为例，具体版本请参考压缩包libs的jar包版本。
+    compile 'cn.jiguang.sdk:jshare-facebookmodel:1.6.0'  // 此处以jshare-facebookmodel 1.6.0  版本为例，具体版本请参考压缩包libs的jar包版本。
+    compile 'cn.jiguang.sdk:jshare-twittermodel:1.6.0'  // 此处以jshare-twittermodel 1.6.0  版本为例，具体版本请参考压缩包libs的jar包版本。
+    compile 'cn.jiguang.sdk:jshare-jchatpromodel:1.6.0'  // 此处以jshare-twittermodel 1.6.0  版本为例，具体版本请参考压缩包libs的jar包版本。
+    compile 'cn.jiguang.sdk:jcore:1.2.3'  // 此处以JCore 1.2.3版本为例，具体版本请参考压缩包libs的jar包版本。
     ......
 }
 ```
-**注 :** 如果在添加以上 abiFilter 配置之后 android Studio 出现以下提示：
+**注 :** 如果在添加以上 abiFilter 配置之后android Studio出现以下提示：
 
 ```
 NDK integration is deprecated in the current plugin. Consider trying the new experimental plugin.
 ```
-则在 Project 根目录的 gradle.properties 文件中添加：
+则在 Project 根目录的gradle.properties文件中添加：
 
 ```
 android.useDeprecatedNdk=true
@@ -125,18 +127,18 @@ android.useDeprecatedNdk=true
 
 ## 手动集成步骤
 * 解压缩 jshare-android-1.x.y-release.zip 集成压缩包。
-* 复制 libs/jcore-android-1.x.y.jar 到工程 libs 目录下。
-* 复制 libs/jshare-android-1.x.y.jar 到工程 libs 目录下。
-* 复制 libs/(cpu-type)/libjcore1xy.so 到你工程中存放对应 cpu 类型的目录下。
-* 根据需要复制 libs/jshare-xx.jar 平台 jar 包到工程 libs 目录下。
-* 按下面说明配置 AndroidManifest.xml。
+* 复制libs/jcore-android-1.x.y.jar到工程libs目录下。
+* 复制libs/jshare-android-1.x.y.jar到工程libs目录下。
+* 复制libs/(cpu-type)/libjcore1xy.so到你工程中存放对应cpu类型的目录下。
+* 根据需要复制libs/jshare-xx.jar平台jar包到工程libs目录下。
+* 按下面说明配置AndroidManifest.xml。
 * 配置第三方平台信息。
 * 配置微信回调（如不需要分享到微信，可跳过）。
 * 配置项目签名。
-* 参考 example 工程或者接口文档使用 JShare SDK 。
+* 参考example工程或者接口文档使用JShare SDK。
 
-**说明 ：** 使用 android studio 的开发者，如果使用 jniLibs 文件夹导入 so 文件，则仅需将所有 cpu 类型的文件夹拷进去；
-如果将 so 文件添加在 module 的 libs 文件夹下，注意在 module 的 gradle 配置中添加一下配置：
+**说明 ：** 使用android studio的开发者，如果使用jniLibs文件夹导入so文件，则仅需将所有cpu类型的文件夹拷进去；
+如果将so文件添加在module的libs文件夹下，注意在module的gradle配置中添加一下配置：
 
 ```
 android {
@@ -157,7 +159,7 @@ android {
 
 * 复制备注为 "Required" 的部分
 * 将标注为“您应用的包名”的部分，替换为当前应用程序的包
-* 将标注为“您应用的 Appkey ”的部分，替换为在 Portal 上注册该应用的的 Key, 例如： 
+* 将标注为“您应用的Appkey”的部分，替换为在Portal上注册该应用的的Key,例如：
 9fed5bcb7b9b87413678c407
 
 #### AndroidManifest 示例
@@ -206,17 +208,15 @@ android {
 		<activity android:name=".SelectPlatActivity"/>
         <activity android:name=".ShareTypeActivity"/>
 
-		<!-- Required SDK 核心功能-->
+		<!-- Required SDK核心功能-->
 		<activity
             android:name="cn.jiguang.share.android.ui.JiguangShellActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="true"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Translucent.NoTitleBar"
             android:windowSoftInputMode="stateHidden|adjustResize">
-            <!-- Optional QQ 分享回调-->
-            <!-- scheme为“tencent” 前缀再加上 QQ 开发者应用的 appID；例如 appID为123456，则 scheme＝“tencent123456” -->
+            <!-- Optional QQ分享回调-->
+            <!-- scheme为“tencent”前缀再加上QQ开发者应用的appID；例如appID为123456，则scheme＝“tencent123456” -->
             <intent-filter>
                 <data android:scheme="tencent+appID" />
                 <action android:name="android.intent.action.VIEW" />
@@ -230,7 +230,7 @@ android {
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
 
-            <!-- Optional 新浪微博私信回调 -->
+            <!-- Optional 新浪微博私信回调-->
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -239,20 +239,25 @@ android {
             </intent-filter>
         </activity>
 
-		<!-- Optional 微信分享回调,wxapi 必须在包名路径下，否则回调不成功 -->
+		<!-- Optional 微信分享回调,wxapi必须在包名路径下，否则回调不成功-->
 		<activity
 			android:name=".wxapi.WXEntryActivity"
 			 android:theme="@android:style/Theme.Translucent.NoTitleBar"
 			android:exported="true" />
 
-		<!-- Optional facebook 配置,authorities 必须为 com.facebook.app.FacebookContentProvider+APP_ID -->
+		<!-- Optional facebook配置,authorities必须为com.facebook.app.FacebookContentProvider+APP_ID-->
 		<provider
-			android:authorities="com.facebook.app.FacebookContentProvider 您申请的 facebook 的 AppId"
+			android:authorities="com.facebook.app.FacebookContentProvider您申请的facebook的AppId"
 			android:name="cn.jiguang.share.facebook.FacebookContentProvider"
 			android:exported="true"
 		/>
-
-		<!-- User defined.  For test only  用户自定义的广播接收器 -->
+       <!-- Optional jchatpro分享回调,plugin必须在包名路径下，否则回调不成功-->
+        <activity android:name="cn.jiguang.share.demo.plugin.JChatProCallbackActivity"
+            android:exported="true"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+        />
+        
+		<!-- User defined.  For test only  用户自定义的广播接收器-->
 		<receiver android:name="cn.jiguang.share.demo.FaceBookUploadReceiver">
 			<intent-filter>
 				<action android:name="com.facebook.platform.AppCallResultBroadcast" />
@@ -260,9 +265,9 @@ android {
 		</receiver>
 
 		<!-- Required. For publish channel feature -->
-		<!-- JPUSH_CHANNEL 是为了方便开发者统计 APK 分发渠道。-->
+		<!-- JPUSH_CHANNEL 是为了方便开发者统计APK分发渠道。-->
 		<!-- 例如: -->
-		<!-- 发到 Google Play 的 APK 可以设置为 google-play; -->
+		<!-- 发到 Google Play 的APK可以设置为 google-play; -->
 		<!-- 发到其他市场的 APK 可以设置为 xxx-market。 -->
 		<!-- 目前这个渠道统计功能的报表还未开放。-->
 		<meta-data
@@ -271,7 +276,7 @@ android {
 		<!-- Required. AppKey copied from Portal -->
 		<meta-data
 			android:name="JPUSH_APPKEY"
-			android:value="您应用的 Appkey" />
+			android:value="您应用的Appkey" />
 
 	</application>
 
@@ -279,19 +284,17 @@ android {
 ```
 
 ## 配置第三方平台信息
-1.5.0 版本开始支持两种方式配置第三方平台信息：    
-1、 配置 JGShareSDK.xml；    
-2、 在代码中设置。开发者应选择其中一种方式，1.5.0 之前版本只支持配置 JGShareSDK.xml 的方式。
+1.5.0版本开始支持两种方式配置第三方平台信息：1、配置JGShareSDK.xml；2、在代码中设置。开发者应选择其中一种方式，1.5.0之前版本只支持配置JGShareSDK.xml的方式。
 
-### JGShareSDK.xml 配置第三方平台信息
-无论是使用自动集成还是手动集成方式，都需要配置 JGShareSDK.xml。
+### JGShareSDK.xml配置第三方平台信息
+无论是使用自动集成还是手动集成方式，都需要配置JGShareSDK.xml。
 主要步骤为：
 
-* 复制或者新建 JGShareSDK.xml 到工程目录的 asset 目录下。
-* 把 JGShareSDK.xml 中相关的 AppKey、AppSecret 替换成自己在第三方平台创建的应用得到的信息。
+* 复制或者新建JGShareSDK.xml到工程目录的asset目录下。
+* 把JGShareSDK.xml中相关的AppKey、AppSecret替换成自己在第三方平台创建的应用得到的信息。
 * 根据需要配置各个平台，不需要的平台可以删除。
 
-#### JGShareSDK.xml 示例
+#### JGShareSDK.xml示例
 ```
 <?xml version="1.0" encoding="utf-8"?>
 <DevInfor>
@@ -299,8 +302,8 @@ android {
     <!-- 如果不需要支持某平台，可缺省该平台的配置-->
 
     <SinaWeibo
-        AppKey="新浪微博的 AppKey"
-        AppSecret="新浪微博 AppSecret"
+        AppKey="新浪微博的AppKey"
+        AppSecret="新浪微博ppSecret"
         RedirectUrl="微博开放平台填写的授权回调页"/>
 
     <QQ
@@ -309,7 +312,7 @@ android {
 
     <Wechat
         AppId="微信的 AppId"
-        AppSecret="微信的 AppSectet"/>
+        AppSecret=" 微信的 AppSectet"/>
         
     <Facebook
         AppId="facebook 的 appId"
@@ -320,19 +323,24 @@ android {
         ConsumerKey="twitter 的 ConsumerKey"
         ConsumerSecret="twitter 的 ConsumerSecret"
     />
+     
+    <!-- 趣聊平台appkey的申请， 请查看入门指南的第三方平台申请文档 -->
+    <JChatPro
+		  auth="申请后的 appkey"
+    />
 
 </DevInfor>
 ```
 
 ### 代码设置第三方平台信息
-详情见[SDK 初始化 API](https://docs.jiguang.cn/jshare/client/Android/android_api/#api_1) 以及 [第三方平台信息设置 API](https://docs.jiguang.cn/jshare/client/Android/android_api/#api_2);
+详情见[SDK初始化API](https://docs.jiguang.cn/jshare/client/Android/android_api/#api_1) 以及 [第三方平台信息设置API](https://docs.jiguang.cn/jshare/client/Android/android_api/#api_2);
 
 ## 配置微信平台回调
-* 在你的包名相应目录下新建一个 wxapi 目录，并在该 wxapi 目录下新增一个 WXEntryActivity 类，该类继承自WeChatHandleActivity（例如应用程序的包名为 cn.jiguang.share.demo，则新添加的类如下图所示）
+* 在你的包名相应目录下新建一个wxapi目录，并在该wxapi目录下新增一个WXEntryActivity类，该类继承自WeChatHandleActivity（例如应用程序的包名为cn.jiguang.share.demo，则新添加的类如下图所示）
 
 ![](http://i.imgur.com/2URxXFr.png)
 
-**注意：** 如果复写了 onCreate 方法、onNewIntent 方法，那么必须调用父类方法，否则无法获取分享结果，例如：
+**注意：** 如果复写了onCreate方法、onNewIntent方法，那么必须调用父类方法，否者无法获取分享结果，例如：
 
 ```
 @Override
@@ -347,7 +355,7 @@ protected void onNewIntent(Intent intent) {
     super.onNewIntent(intent);
 }
 ```
-* 并在 manifest 文件里面加上 exported 属性，设置为 true，例如：
+* 并在manifest文件里面加上exported属性，设置为true，例如：
 
 ```
 <activity
@@ -356,23 +364,19 @@ protected void onNewIntent(Intent intent) {
     android:exported="true" />
 ```
 
-## 配置 Facebook 平台
-* 在 manifest 文件里面添加 Facebook 的 ContentProvider 配置：
-
-
+## 配置Facebook平台
+* 在manifest文件里面添加Facebook的ContentProvider配置：
 ```
 <provider
-    android:authorities="com.facebook.app.FacebookContentProvider 您申请的 facebook的AppId"
+    android:authorities="com.facebook.app.FacebookContentProvider您申请的facebook的AppId"
     android:name="cn.jiguang.share.facebook.FacebookContentProvider"
     android:exported="true"
 />
 ```
 
-**注意：** provider 的 authorities 必须为 "com.facebook.app.FacebookContentProvider"+"AppId"。
+**注意：** provider的authorities必须为"com.facebook.app.FacebookContentProvider"+"AppId"。
 
-* 如果需要获取 facebook 上传图片、视频结果可自定义 BroadCastReceiver，继承 FacebookBroadcastReceiver，复写onSuccessfulAppCall、onFailedAppCall 方法：    
-
-
+* 如果需要获取facebook上传图片、视频结果可自定义BroadCastReceiver，继承FacebookBroadcastReceiver，复写onSuccessfulAppCall、onFailedAppCall方法：
 ```
 <receiver android:name="cn.jiguang.share.demo.FaceBookUploadReceiver">
     <intent-filter>
@@ -381,18 +385,48 @@ protected void onNewIntent(Intent intent) {
 </receiver>
 ```
 
-**注意：** receiver 的 action 必须为 "com.facebook.platform.AppCallResultBroadcast"。
+**注意：** receiver的action必须为"com.facebook.platform.AppCallResultBroadcast"。
+
+
+
+## 配置JChatPro平台回调
+* 在你的包名相应目录下新建一个plugin目录，并在该plugin目录下新增一个JChatProCallbackActivity类，该类继承自JChatProHandleActivity
+
+
+**注意：** 如果复写了onCreate方法、onNewIntent方法，那么必须调用父类方法，否者无法获取分享结果，例如：
+
+```
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+}
+```
+
+```
+@Override
+protected void onNewIntent(Intent intent) {
+    super.onNewIntent(intent);
+}
+```
+* 并在manifest文件里面加上exported属性，设置为true，例如：
+
+```
+ <activity android:name=".plugin.JChatProCallbackActivity"
+            android:exported="true"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            />
+```
 
 ## 配置项目签名
 
-### Android Studio 图形界面签名配置
-进入 Project Structure，选择您集成 JShare 的项目，具体配置如图：
+### Android Studio图形界面签名配置
+进入Project Structure，选择您集成JShare的项目，具体配置如图：
 
 ![](http://i.imgur.com/ahk1DoN.png)
 ![](http://i.imgur.com/2oh4IKp.png)
 
-### Android Studio 手动配置
-* 在项目的 build.gradle 的 android 内部新增签名配置，例如：
+### Android Studio手动配置
+* 在项目的build.gradle的android内部新增签名配置，例如：
 
 ```
 signingConfigs {
@@ -412,7 +446,7 @@ signingConfigs {
 ```
 
 
-* 然后在项目的 build.gradle 的 buildTypes 使用签名配置，例如：
+* 然后在项目的build.gradle的buildTypes使用签名配置，例如：
 
 ```
 buildTypes {
@@ -428,31 +462,29 @@ buildTypes {
 ```
 
 
-### Eclipse 环境配置
+### Eclipse环境配置
 
-* 在 Eclipse 的 Preferences，选择 Android -> Build，如下图：
+* 在Eclipse的Preferences，选择Android -> Build，如下图：
 
 ![](http://i.imgur.com/mKPb3De.png)
 
-* 指定 Custom debug keystore 选项的路径为 sdk demo 工程目录中的 debug.keystore 文件，并应用该配置，如下图：
+* 指定Custom debug keystore选项的路径为sdk demo工程目录中的debug.keystore文件，并应用该配置，如下图：
 ![](http://i.imgur.com/TgxykaK.png)
 
 ### 注意
-* 应用的包名、应用的签名、第三方平台注册的 AppID 及 Appkey 三者要一一对应，否则会无法分享。
+* 应用的包名、应用的签名、第三方平台注册的AppID及Appkey三者要一一对应，否则会无法分享。
 * 应用的签名要与在第三方平台填写的签名对应，否则会无法分享。
-* 新浪微博支持未安装客户端分享，需要注意 JGShareSDK.xml 中的 RedirectUrl 要与微博开放平台填写的需要一致，否则会发生错误。
-
-
+* 新浪微博支持未安装客户端分享，需要注意JGShareSDK.xml中的RedirectUrl要与微博开放平台填写的需要一致，否则会发生错误。
 ## 添加代码
-JShare SDK 提供的 API 接口，都主要集中在 cn.jiguang.share.android.api.JShareInterface 类，使用方法请参考 example 或者 API 接口文档。
+JShare SDK 提供的 API 接口，都主要集中在 cn.jiguang.share.android.api.JShareInterface 类，使用方法请参考example或者API接口文档。
 
-### API 基础API
-* init 初始化 SDK
+### API基础API
+* init 初始化SDK
 
 ```
 public static void init(Context context)
 ```
-* init 初始化 SDK，1.5.0 后版本支持，在代码中设置第三方平台信息
+* init 初始化SDK，1.5.0后版本支持，在代码中设置第三方平台信息
 
 ```
 public static void init(Context context, PlatformConfig platformConfig)
@@ -463,10 +495,10 @@ public static void init(Context context, PlatformConfig platformConfig)
 ```
 public static void setDebugMode(boolean enable)
 ```
-注：该接口需在 init 接口之前调用，避免出现部分日志没打印的情况。多进程情况下建议在自定义的 Application 中 onCreate 中调用。
+注：该接口需在init接口之前调用，避免出现部分日志没打印的情况。多进程情况下建议在自定义的Application中onCreate中调用。
 ### 测试确认
 * 确认所需要的文件已经添加进工程。
-* 确认 Androidmanifest.xml 已经正确配置。
+* 确认Androidmanifest.xml已经正确配置。
 * 确认第三方平台信息已经正确配置。
 * 根据如下日志确定配置了什么平台。
 * 确认应用的包名、签名与第三方后台所填写的信息一致。
@@ -478,7 +510,7 @@ public static void setDebugMode(boolean enable)
 [PlatformManager] platform Facebook has configured
 [PlatformManager] platform Twitter has configured
 ```
-**说明:** 假如某个平台配置失败，会有 log 信息，例如：
+**说明:** 假如某个平台配置失败，会有log信息，例如：
 
 ```
 [PlatformManager] QQ configure fail, please check project config:

@@ -100,7 +100,10 @@ Authorization: Basic base64_auth_string
 #### Example Request
 
 ```
-[{"username": "dev_fang", "password": "password"}] 
+[{
+	"username": "dev_fang",
+	"password": "password"
+}]
 ```
 
 #### Request Params
@@ -134,7 +137,9 @@ JSON Array.
 < HTTP/1.1 201 Created
 < Content-Type: application/json
 < 
-[{"username": "dev_fang"  }] 
+[{
+	"username": "dev_fang"
+}]
 ```
 
 #### Response Params
@@ -157,7 +162,10 @@ POST /v1/admins/
 #### Example Request
 
 ```
-{"username": "dev_fang", "password": "password"}
+{
+	"username": "dev_fang",
+	"password": "password"
+}
 ```
 
 #### Request Params
@@ -226,13 +234,28 @@ Content-Type: application/json; charset=utf-8
 
 ```
 {
-  "total":1233, 
-  "start":1100,
-  "count":3,
-  "users":
-    [{"username" : "cai", "nickname" : "hello", "mtime" : "2015-01-01 00:00:00", "ctime" : "2015-01-01 00:00:00"},
-      {"username" : "yi", "nickname" : "hello", "mtime" : "2015-01-01 00:00:00", "ctime" : "2015-01-01 00:00:00"},
-      {"username" : "huang", "nickname" : "hello", "mtime" : "2015-01-01 00:00:00", "ctime" : "2015-01-01 00:00:00"} ]
+	"total": 1233,
+	"start": 1100,
+	"count": 3,
+	"users": [{
+			"username": "cai",
+			"nickname": "hello",
+			"mtime": "2015-01-01 00:00:00",
+			"ctime": "2015-01-01 00:00:00"
+		},
+		{
+			"username": "yi",
+			"nickname": "hello",
+			"mtime": "2015-01-01 00:00:00",
+			"ctime": "2015-01-01 00:00:00"
+		},
+		{
+			"username": "huang",
+			"nickname": "hello",
+			"mtime": "2015-01-01 00:00:00",
+			"ctime": "2015-01-01 00:00:00"
+		}
+	]
 }
 ```
 
@@ -250,16 +273,17 @@ Content-Type: application/json; charset=utf-8
 
 ```
 {
-	"username" : "javen", 
- 	"nickname" : "hello", 
- 	"avatar" : "/avatar", 
- 	"birthday" : "1990-01-24 00:00:00", 
- 	"gender" : 0, 
- 	"signature" : "orz", 
- 	"region" : "shenzhen", 
- 	"address" : "shenzhen", 
- 	"mtime" : "2015-01-01 00:00:00", 
- 	"ctime" : "2015-01-01 00:00:00"}
+	"username": "javen",
+	"nickname": "hello",
+	"avatar": "/avatar",
+	"birthday": "1990-01-24 00:00:00",
+	"gender": 0,
+	"signature": "orz",
+	"region": "shenzhen",
+	"address": "shenzhen",
+	"mtime": "2015-01-01 00:00:00",
+	"ctime": "2015-01-01 00:00:00"
+}
 ```
 说明
 
@@ -337,7 +361,10 @@ Content-Type: application/json; charset=utf-8
 Response Data
 
 ```
-{"login":true, "online": false}
+{
+	"login": true,
+	"online": false
+}
 ```
 该接口不适用于多端在线，多端在线请用批量状态接口
 
@@ -381,7 +408,17 @@ Content-Type: application/json; charset=utf-8
 Response Data
 
 ```
-[{"devices": [],"username": "caiyh01"},{"devices": [{"login": false,"online": false,"platform": "a"}],"username": "Rauly"}]
+[{
+	"devices": [],
+	"username": "caiyh01"
+}, {
+	"devices": [{
+		"login": false,
+		"online": false,
+		"platform": "a"
+	}],
+	"username": "Rauly"
+}]
 ```
 + devices  设备登陆状态数组，没有登陆过数组为空
 + platform SDK各平台：a-Android，i-iOS，j-JS，w-Windows
@@ -440,7 +477,22 @@ Example Response
 < HTTP/1.1 204 NO CONTENT
 < Content-Type: application/json; charset=utf-8   
 ```
+### 批量删除用户
 
+	DELETE /v1/users/
+
+Request Body
+```
+["USER1","USER2"]
+```
++ username 用户名数组。（最多支持同时删除100个用户）
+
+Example Response
+
+```
+< HTTP/1.1 200 NO CONTENT
+< Content-Type: application/json; charset=utf-8   
+```
 
 ### 添加黑名单
 
@@ -562,7 +614,18 @@ Content-Type: application/json; charset=utf-8
 Response Data
 
 ```
-[{"username" : "javen", "nickname" : "hello", "avatar" = "/avatar", "birthday" : "1990-01-24 00:00:00", "gender" : 0, "signature" : "orz", "region" : "shenzhen", "address" : "shenzhen", "mtime" : "2015-01-01 00:00:00", "ctime" : "2015-01-01 00:00:00"}]
+[{
+	"username": "javen",
+	"nickname": "hello",
+	"avatar" = "/avatar",
+	"birthday": "1990-01-24 00:00:00",
+	"gender": 0,
+	"signature": "orz",
+	"region": "shenzhen",
+	"address": "shenzhen",
+	"mtime": "2015-01-01 00:00:00",
+	"ctime": "2015-01-01 00:00:00"
+}]
 ```
 
 
@@ -582,13 +645,28 @@ Example Response
 < Content-Type: application/json
 
 {
-    "total": 12580,
-    "start": 1100,
-    "count": 100,
-    "users":
-    [{"username" : "cai", "nickname" : "hello", "mtime" : "2015-01-01 00:00:00", "ctime" : "2015-01-01 00:00:00"},
-      {"username" : "yi", "nickname" : "hello", "mtime" : "2015-01-01 00:00:00", "ctime" : "2015-01-01 00:00:00"},
-      {"username" : "huang", "nickname" : "hello", "mtime" : "2015-01-01 00:00:00", "ctime" : "2015-01-01 00:00:00"} ]
+	"total": 12580,
+	"start": 1100,
+	"count": 100,
+	"users": [{
+			"username": "cai",
+			"nickname": "hello",
+			"mtime": "2015-01-01 00:00:00",
+			"ctime": "2015-01-01 00:00:00"
+		},
+		{
+			"username": "yi",
+			"nickname": "hello",
+			"mtime": "2015-01-01 00:00:00",
+			"ctime": "2015-01-01 00:00:00"
+		},
+		{
+			"username": "huang",
+			"nickname": "hello",
+			"mtime": "2015-01-01 00:00:00",
+			"ctime": "2015-01-01 00:00:00"
+		}
+	]
 }
 ```
 
@@ -889,7 +967,7 @@ msg_type:custom
     "msg_type": "voice",
     "msg_body": {
    		json define yourself
-       }
+    }
 }
 ```
 
@@ -1032,7 +1110,14 @@ Response Data
 图片 Response
 
 ```
-{"media_id":"qiniu/image/F39AA12204DAB6A2","media_crc32":1338734977,"width":720,"height":1280,"format":"jpg","fsize":52468}
+{
+	"media_id": "qiniu/image/F39AA12204DAB6A2",
+	"media_crc32": 1338734977,
+	"width": 720,
+	"height": 1280,
+	"format": "jpg",
+	"fsize": 52468
+}
 ```
 
 + media_id String  文件上传之后服务器端所返回的key
@@ -1046,7 +1131,13 @@ Response Data
 文件 Response 
 
 ```
-{"media_id":"qiniu/file/j/1BB3B833AEABFF62E883C5CE421867A9","media_crc32":1415584260,"fname":"0839d1c0-48e9-4032-9333-f3691a7d9e48.dmp","fsize":176512,"hash":"FtH0kPT0YI89HAw1K9wv_vVKiNab"}
+{
+	"media_id": "qiniu/file/j/1BB3B833AEABFF62E883C5CE421867A9",
+	"media_crc32": 1415584260,
+	"fname": "0839d1c0-48e9-4032-9333-f3691a7d9e48.dmp",
+	"fsize": 176512,
+	"hash": "FtH0kPT0YI89HAw1K9wv_vVKiNab"
+}
 ```
 
 +  media_id String 文件上传之后服务器端所返回的key，用于之后生成下载的url
@@ -1058,7 +1149,13 @@ Response Data
 语音 Response
 
 ```
-{"media_id":"qiniu/voice/j/9C4312B1EA0FB28337566D1A29A244B5","media_crc32":1882116055,"hash":"FoYn15bAGRUM9gZCAkvf9dolVH7h","format":"m4a","fsize":238105}
+{
+	"media_id": "qiniu/voice/j/9C4312B1EA0FB28337566D1A29A244B5",
+	"media_crc32": 1882116055,
+	"hash": "FoYn15bAGRUM9gZCAkvf9dolVH7h",
+	"format": "m4a",
+	"fsize": 238105
+}
 ```
 
 +  media_id String 文件上传之后服务器端所返回的key，用于之后生成下载的url
@@ -1290,9 +1387,17 @@ Example Response
 < HTTP/1.1 200 OK
 < Content-Type: application/json; charset=utf-8
 
-[ 
-	{"username" : "javen", "nickname" : "hello", "avatar" = "/avatar", "birthday" : "1990-01-24 00:00:00", "gender" : 0, "signature" : "orz", "region" : "shenzhen", "address" : "shenzhen", "flag":0} 
-]
+[{
+	"username": "javen",
+	"nickname": "hello",
+	"avatar" = "/avatar",
+	"birthday": "1990-01-24 00:00:00",
+	"gender": 0,
+	"signature": "orz",
+	"region": "shenzhen",
+	"address": "shenzhen",
+	"flag": 0
+}]
 ```
 + flag
     - 0 - 普通群成员
@@ -1317,7 +1422,15 @@ Example Response
 < HTTP/1.1 200 OK
 < Content-Type: application/json
 
-[ { "gid": 12345, "name" : "jpush", "desc" : "push", "appkey" : "dcf71ef5082057832bd44fbd", "MaxMemberCount" : 500, "mtime" : "2014-07-01 00:00:00", "ctime" : "2014-06-05 00:00:00"}]
+[{
+	"gid": 12345,
+	"name": "jpush",
+	"desc": "push",
+	"appkey": "dcf71ef5082057832bd44fbd",
+	"MaxMemberCount": 500,
+	"mtime": "2014-07-01 00:00:00",
+	"ctime": "2014-06-05 00:00:00"
+}]
 ```
 
 
@@ -1336,11 +1449,20 @@ Example Response
 < HTTP/1.1 200 OK
 < Content-Type: application/json
 
-{ "total":1233, 
-  "start":1100, 
-  "count":1, 
-  "groups": 
- [ { "gid": 12345, "name" : "jpush", "desc" : "push", "appkey" : "dcf71ef5082057832bd44fbd", "MaxMemberCount" : 500, "mtime" : "2014-07-01 00:00:00", "ctime" : "2014-06-05 00:00:00"}] } 
+{
+	"total": 1233,
+	"start": 1100,
+	"count": 1,
+	"groups": [{
+		"gid": 12345,
+		"name": "jpush",
+		"desc": "push",
+		"appkey": "dcf71ef5082057832bd44fbd",
+		"MaxMemberCount": 500,
+		"mtime": "2014-07-01 00:00:00",
+		"ctime": "2014-06-05 00:00:00"
+	}]
+}
 
 ```
 
@@ -1355,14 +1477,9 @@ N/A
 
 Example Request Body
 ```
-{   
-      "add":[   
-         110000101
-      ],
-      "remove":[   
-         1000001111
-      ]
-
+{         
+	"add": [ 110000101],
+	"remove": [ 1000001111]
 }
 ```
 | 参数 | 含义 | 
@@ -1391,7 +1508,7 @@ Request body
 Request Params
 
 ```
-status：开启或关闭禁言 true表示开启 flase表示关闭
+status：开启或关闭禁言 true表示开启 false表示关闭
 ```
 
 Example Response
@@ -1399,7 +1516,37 @@ Example Response
 < HTTP/1.1 204 OK
 < Content-Type: application/json
 ```
+### 移交群主
 
+    PUT  /groups/owner/{gid}
+
+
+Request body
+```
+{ 
+	"appkey":"xxxxxxx",
+    "username": "xxxxxxx"
+}  
+ 注：跨应用下的用户
+
+或者
+
+{ 
+	"username": "xxxxxxx"
+}  
+注：本应用下的用户
+```
+Request Params
+
+
+Example Response
+```
+HTTP/1.1 204 NO Content
+```
+Error Code
+
++ 899003 gid不合法；Request Body json格式不符合要求，json参数不符合要求；
++ 899006 gid不存在；
 
 ## 好友
 
@@ -1480,7 +1627,12 @@ Request Params
 Example Request 
 
 ```
-[{ "note_name": "new note name", "others": “好友备注文档" ,"username":"user01"}]
+[{
+		"note_name": "new note name",
+		"others": “好友备注文档 " ,"
+		username ":"
+		user01 "
+}]
 
 ```
 Example Response
@@ -1519,13 +1671,28 @@ Example Response
 Response Data
 
 ```
-[{"username" : "javen", "nickname" : "hello", "avatar" = "/avatar", "birthday" : "1990-01-24 00:00:00", "gender" : 0, "signature" : "orz", "region" : "shenzhen", "address" : "shenzhen", "mtime" : "2015-01-01 00:00:00", "ctime" : "2015-01-01 00:00:00","note_name":"= =","others":"test", "appkey":"pojkasouduioadk"}]
+[{
+	"username": "javen",
+	"nickname": "hello",
+	"avatar" = "/avatar",
+	"birthday": "1990-01-24 00:00:00",
+	"gender": 0,
+	"signature": "orz",
+	"region": "shenzhen",
+	"address": "shenzhen",
+	"mtime": "2015-01-01 00:00:00",
+	"ctime": "2015-01-01 00:00:00",
+	"note_name": "= =",
+	"others": "test",
+	"appkey": "pojkasouduioadk"
+}]
 ```
 
 Error Code
 
 + 899003  Request Body json格式不符合要求，json参数不符合要求；
 + 899002  用户不存在；
+
 
 ## 跨应用
 
@@ -1589,9 +1756,18 @@ Example Response
 < HTTP/1.1 200 OK
 < Content-Type: application/json; charset=utf-8
 
-[ 
-	{"username" : "javen", "nickname" : "hello", "avatar" = "/avatar", "birthday" : "1990-01-24 00:00:00", "gender" : 0, "signature" : "orz", "region" : "shenzhen", "address" : "shenzhen", "flag":0, "appkey":"appkey"} 
-]
+[{
+	"username": "javen",
+	"nickname": "hello",
+	"avatar" = "/avatar",
+	"birthday": "1990-01-24 00:00:00",
+	"gender": 0,
+	"signature": "orz",
+	"region": "shenzhen",
+	"address": "shenzhen",
+	"flag": 0,
+	"appkey": "appkey"
+}]
 ```
 
 + flag
@@ -1612,8 +1788,16 @@ Example Response
 ```
 < HTTP/1.1 200 OK
 < Content-Type: application/json; charset=utf-8
-
-[ { "gid": 12345, "name" : "jpush", "desc" : "push", "appkey" : "dcf71ef5082057832bd44fbd","max_member_count" : 200, "mtime" : "2014-07-01 00:00:00", "ctime" : "2014-06-05 00:00:00","appkey":"appkey"}]
+[{
+	"gid": 12345,
+	"name": "jpush",
+	"desc": "push",
+	"appkey": "dcf71ef5082057832bd44fbd",
+	"max_member_count": 200,
+	"mtime": "2014-07-01 00:00:00",
+	"ctime": "2014-06-05 00:00:00",
+	"appkey": "appkey"
+}]
 
 ```
 
@@ -1642,11 +1826,10 @@ Request Params
 Request Body
 
 ```
- [{
- "appkey":"appkey",
- "usernames":[ "test1", "test2"]
- 
- } ] 
+[{
+	"appkey": "appkey",
+	"usernames": ["test1", "test2"]
+}]
 ```
 
 Example Response 
@@ -1688,7 +1871,6 @@ Request Body
  [{
  "appkey":"appkey",
  "usernames":[ "test1", "test2"]
- 
  } ] 
 ```
 
@@ -1742,7 +1924,19 @@ Content-Type: application/json; charset=utf-8
 Response Data
 
 ```
-[{"username" : "javen", "nickname" : "hello", "avatar" = "/avatar", "birthday" : "1990-01-24 00:00:00", "gender" : 0, "signature" : "orz", "region" : "shenzhen", "address" : "shenzhen", "mtime" : "2015-01-01 00:00:00", "ctime" : "2015-01-01 00:00:00", "appkey":"appkey"}]
+[{
+	"username": "javen",
+	"nickname": "hello",
+	"avatar" = "/avatar",
+	"birthday": "1990-01-24 00:00:00",
+	"gender": 0,
+	"signature": "orz",
+	"region": "shenzhen",
+	"address": "shenzhen",
+	"mtime": "2015-01-01 00:00:00",
+	"ctime": "2015-01-01 00:00:00",
+	"appkey": "appkey"
+}]
 ```
 
 ### 跨应用免打扰设置
@@ -1770,8 +1964,23 @@ Request Params
 Request Body
 
 ```
-[ {
-   "appkey":"appkey1",    "single":{          "add":[             "username1",          "username2"       ]    },    "group":{          "add":[             110000101       ],       "remove":[             1000001111       ]    } }
+[{
+   "appkey":"appkey1",
+   "single":{
+      "add":[ 
+         "username1",
+         "username2"
+      ]
+   },
+   "group":{ 
+      "add":[
+         110000101
+      ],
+      "remove":[
+         1000001111
+      ]
+   }
+}
 ]
 
 ```
@@ -1821,9 +2030,10 @@ Request Params
 Request Body
 
 ```
- {
-   "appkey":"appkey1",    "users":         [            "username1",         "username2"       ]     }
-
+{
+	"appkey": "appkey",
+	"users": ["user01", "user02"]
+}
 
 ```
 
@@ -1864,9 +2074,11 @@ Request Params
 Request Body
 
 ```
- {
-   "appkey":"appkey1",    "users":         [            "username1",         "username2"       ]     }
 
+{
+	"appkey": "appkey",
+	"users": ["user01", "user02"]
+}
 
 ```
 
@@ -1910,8 +2122,14 @@ Request Params
 Request Body
 
 ```
-[{ "note_name": "new note name", "others": “好友备注文档" ,"username":"user01", "appkey":"appkey"}]
-
+[{
+		"note_name": "new note name",
+		"others": “好友备注文档 " ,"
+		username ":"
+		user01 ", "
+		appkey ":"
+		appkey "
+}]
 
 ```
 
@@ -1986,7 +2204,7 @@ Request Params
   N/A
 
 Request Body
-+ 敏感词数组 一个词长度最多为10，默认支持100个敏感词，[有更高需求可联系商务](https://www.jiguang.cn/accounts/business/form?from=im)
++ 敏感词数组 一个词长度最多为10，默认支持100个敏感词，[有更高需求可联系商务](https://www.jiguang.cn/accounts/business_contact?fromPage=im)
 
 ```
 ["FUCK"] 
@@ -2032,7 +2250,10 @@ Request Body
 + new_word  新敏感词
 
 ```
-{"new_word":"fuck", "old_word":"FUCK"}
+{
+	"new_word": "fuck",
+	"old_word": "FUCK"
+}
 
 
 ```
@@ -2277,9 +2498,14 @@ Response Data
 
 
 #### Request Body
-
-{"owner_username":"liming", "name" : "测试聊天室", "description":"测试", "members_username":[]}
-
+```
+{
+	"owner_username": "liming",
+	"name": "测试聊天室",
+	"description": "测试",
+	"members_username": []
+}
+```
 Request Params
 
 + owner_username     （必填）聊天室拥有者
@@ -2418,9 +2644,13 @@ Content-Type: application/json; charset=utf-8
 
 ```
 #### Request Body
-	
-	{"owner_username":"135380113231", "name" : "中国人", "description":"说什么来这"}
-
+```	
+{
+	"owner_username": "135380113231",
+	"name": "中国人",
+	"description": "说什么来这"
+}
+```
 #### Example Response
 
 ```
@@ -2536,6 +2766,61 @@ HTTP/1.1 204
 Content-Type: application/json; charset=utf-8 
 
 ```
+##  配置
+
+
+### 设置SDK-API用户注册开关
+
+打开或者关闭SDK-API用户注册。
+
+	PUT /sdkregister/status?status={status}
+
+
+#### Example Request
+
+```
+PUT /sdkregister/status?status=0
+```
+
+#### Request Params
+
+JSON Array.
+
++ status：0为关闭，不提供SDK-API 注册功能，1为开启
+
+#### Example Response
+
+```
+ HTTP/1.1 204 Created
+ Content-Type: application/json
+ 
+Response Data
+  N/A
+```
+### 获得SDK-API用户注册开关
+
+
+	get /sdkregister/status
+
+
+#### Example Request
+
+```
+get /sdkregister/status
+```
+
+#### Example Response
+
+```
+ HTTP/1.1 200 
+ Content-Type: application/json
+ 
+Response Data
+{
+"status": 0
+}
+status： 0为关闭，不提供SDK-API 注册功能，1为开启
+```
 
 ## HTTP 返回
 
@@ -2544,9 +2829,9 @@ HTTP 返回码参考文档：[HTTP-Status-Code](https://docs.jiguang.cn/jpush/se
 ### Example Error Response
 
 ```
-< HTTP/1.1 401 Unauthorized
-< Content-Type: application/json
-<
+ HTTP/1.1 401 Unauthorized
+ Content-Type: application/json
+
 { 
   "error": {
         "code": 899008, 

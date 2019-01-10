@@ -79,7 +79,7 @@
                     
 					
 					<div class="section section-overview">
-                        <p>通知事件类型</p>
+                        <p>消息事件类型</p>
 
 <p>本类 JMSGEventNotificationType 是 SDK 下发的通知事件类型,主要分为：消息事件、非消息事件</p>
 
@@ -89,7 +89,7 @@
 
 <h4>非消息事件</h4>
 
-<p>如：被踢、登录状态异常、加好友等，SDK 会作为通知事件下发,上层通过 <a href="../Protocols/JMSGEventDelegate.html">JMSGEventDelegate</a> 类的代理方法可监听此类事件.</p>
+<p>如：被踢、加好友等，SDK 会作为通知事件下发,上层通过 JMSGEventDelegate、<a href="../Protocols/JMSGGroupDelegate.html">JMSGGroupDelegate</a> 这些对应类的代理方法可监听此类事件.</p>
 					</div>
 					
 					
@@ -98,30 +98,6 @@
                         
                         <h4 class="method-subtitle">Definition</h4>
                         <code>typedef NS_ENUM(NSInteger, JMSGEventNotificationType ) {<br>
-                            
-                            &nbsp;&nbsp; <a href="">kJMSGEventNotificationLoginKicked</a> = 1,<br>
-                            
-                            &nbsp;&nbsp; <a href="">kJMSGEventNotificationServerAlterPassword</a> = 2,<br>
-                            
-                            &nbsp;&nbsp; <a href="">kJMSGEventNotificationUserLoginStatusUnexpected</a> = 70,<br>
-                            
-                            &nbsp;&nbsp; <a href="">kJMSGEventNotificationCurrentUserInfoChange</a> = 40,<br>
-                            
-                            &nbsp;&nbsp; <a href="">kJMSGEventNotificationReceiveFriendInvitation</a> = 51,<br>
-                            
-                            &nbsp;&nbsp; <a href="">kJMSGEventNotificationAcceptedFriendInvitation</a> = 52,<br>
-                            
-                            &nbsp;&nbsp; <a href="">kJMSGEventNotificationDeclinedFriendInvitation</a> = 53,<br>
-                            
-                            &nbsp;&nbsp; <a href="">kJMSGEventNotificationDeletedFriend</a> = 6,<br>
-                            
-                            &nbsp;&nbsp; <a href="">kJMSGEventNotificationReceiveServerFriendUpdate</a> = 7,<br>
-                            
-                            &nbsp;&nbsp; <a href="">kJMSGEventNotificationMessageRetract</a> = 55,<br>
-                            
-                            &nbsp;&nbsp; <a href="">kJMSGEventNotificationMessageTransparent</a> = 58,<br>
-                            
-                            &nbsp;&nbsp; <a href="">kJMSGEventNotificationMessageReceiptStatusChange</a> = 68,<br>
                             
                             &nbsp;&nbsp; <a href="">kJMSGEventNotificationCreateGroup</a> = 8,<br>
                             
@@ -135,6 +111,16 @@
                             
                             &nbsp;&nbsp; <a href="">kJMSGEventNotificationGroupMemberSilence</a> = 65,<br>
                             
+                            &nbsp;&nbsp; <a href="">kJMSGEventNotificationGroupAdminChange</a> = 80,<br>
+                            
+                            &nbsp;&nbsp; <a href="">kJMSGEventNotificationGroupOwnerChange</a> = 82,<br>
+                            
+                            &nbsp;&nbsp; <a href="">kJMSGEventNotificationGroupTypeChange</a> = 83,<br>
+                            
+                            &nbsp;&nbsp; <a href="">kJMSGEventNotificationDissolveGroup</a> = 11001,<br>
+                            
+                            &nbsp;&nbsp; <a href="">kJMSGEventNotificationGroupMaxMemberCountChange</a> = 11002,<br>
+                            
                             };</code>
                     
                     </div>
@@ -142,210 +128,6 @@
                     <div class="section section-methods">
                         <h4 class="method-subtitle">Constants</h4>
                         <dl class="termdef">
-                            
-                            <dt><a name="" title="kJMSGEventNotificationLoginKicked"></a><code>kJMSGEventNotificationLoginKicked</code></dt>
-<dd>
-
-
-<p>事件类型: 登录被踢</p>
-
-
-
-
-
-    
-	<p>
-		Declared In <code class="declared-in-ref">JMSGConstants.h</code>.
-	</p>
-	
-</dd>
-                            
-                            <dt><a name="" title="kJMSGEventNotificationServerAlterPassword"></a><code>kJMSGEventNotificationServerAlterPassword</code></dt>
-<dd>
-
-
-<p>事件类型: 非客户端修改密码强制登出事件</p>
-
-
-
-
-
-    
-	<p>
-		Declared In <code class="declared-in-ref">JMSGConstants.h</code>.
-	</p>
-	
-</dd>
-                            
-                            <dt><a name="" title="kJMSGEventNotificationUserLoginStatusUnexpected"></a><code>kJMSGEventNotificationUserLoginStatusUnexpected</code></dt>
-<dd>
-
-
-<p>事件类型：用户登录状态异常事件（需要重新登录）</p>
-
-
-
-
-
-    
-	<p>
-		Declared In <code class="declared-in-ref">JMSGConstants.h</code>.
-	</p>
-	
-</dd>
-                            
-                            <dt><a name="" title="kJMSGEventNotificationCurrentUserInfoChange"></a><code>kJMSGEventNotificationCurrentUserInfoChange</code></dt>
-<dd>
-
-
-<p>事件类型：当前登录用户信息变更通知事件(非客户端修改)</p>
-
-
-
-
-
-    
-	<p>
-		Declared In <code class="declared-in-ref">JMSGConstants.h</code>.
-	</p>
-	
-</dd>
-                            
-                            <dt><a name="" title="kJMSGEventNotificationReceiveFriendInvitation"></a><code>kJMSGEventNotificationReceiveFriendInvitation</code></dt>
-<dd>
-
-
-<p>事件类型: 收到好友邀请</p>
-
-
-
-
-
-    
-	<p>
-		Declared In <code class="declared-in-ref">JMSGConstants.h</code>.
-	</p>
-	
-</dd>
-                            
-                            <dt><a name="" title="kJMSGEventNotificationAcceptedFriendInvitation"></a><code>kJMSGEventNotificationAcceptedFriendInvitation</code></dt>
-<dd>
-
-
-<p>事件类型: 对方接受了你的好友邀请</p>
-
-
-
-
-
-    
-	<p>
-		Declared In <code class="declared-in-ref">JMSGConstants.h</code>.
-	</p>
-	
-</dd>
-                            
-                            <dt><a name="" title="kJMSGEventNotificationDeclinedFriendInvitation"></a><code>kJMSGEventNotificationDeclinedFriendInvitation</code></dt>
-<dd>
-
-
-<p>事件类型: 对方拒绝了你的好友邀请</p>
-
-
-
-
-
-    
-	<p>
-		Declared In <code class="declared-in-ref">JMSGConstants.h</code>.
-	</p>
-	
-</dd>
-                            
-                            <dt><a name="" title="kJMSGEventNotificationDeletedFriend"></a><code>kJMSGEventNotificationDeletedFriend</code></dt>
-<dd>
-
-
-<p>事件类型: 对方将你从好友中删除</p>
-
-
-
-
-
-    
-	<p>
-		Declared In <code class="declared-in-ref">JMSGConstants.h</code>.
-	</p>
-	
-</dd>
-                            
-                            <dt><a name="" title="kJMSGEventNotificationReceiveServerFriendUpdate"></a><code>kJMSGEventNotificationReceiveServerFriendUpdate</code></dt>
-<dd>
-
-
-<p>事件类型：非客户端修改好友关系收到好友更新事件</p>
-
-
-
-
-
-    
-	<p>
-		Declared In <code class="declared-in-ref">JMSGConstants.h</code>.
-	</p>
-	
-</dd>
-                            
-                            <dt><a name="" title="kJMSGEventNotificationMessageRetract"></a><code>kJMSGEventNotificationMessageRetract</code></dt>
-<dd>
-
-
-<p>事件类型: 消息撤回</p>
-
-
-
-
-
-    
-	<p>
-		Declared In <code class="declared-in-ref">JMSGConstants.h</code>.
-	</p>
-	
-</dd>
-                            
-                            <dt><a name="" title="kJMSGEventNotificationMessageTransparent"></a><code>kJMSGEventNotificationMessageTransparent</code></dt>
-<dd>
-
-
-<p>事件类型: 消息透传</p>
-
-
-
-
-
-    
-	<p>
-		Declared In <code class="declared-in-ref">JMSGConstants.h</code>.
-	</p>
-	
-</dd>
-                            
-                            <dt><a name="" title="kJMSGEventNotificationMessageReceiptStatusChange"></a><code>kJMSGEventNotificationMessageReceiptStatusChange</code></dt>
-<dd>
-
-
-<p>事件类型: 消息回执变更</p>
-
-
-
-
-
-    
-	<p>
-		Declared In <code class="declared-in-ref">JMSGConstants.h</code>.
-	</p>
-	
-</dd>
                             
                             <dt><a name="" title="kJMSGEventNotificationCreateGroup"></a><code>kJMSGEventNotificationCreateGroup</code></dt>
 <dd>
@@ -449,6 +231,91 @@
 	
 </dd>
                             
+                            <dt><a name="" title="kJMSGEventNotificationGroupAdminChange"></a><code>kJMSGEventNotificationGroupAdminChange</code></dt>
+<dd>
+
+
+<p>事件类型: 管理员角色变更通知事件</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">JMSGConstants.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="kJMSGEventNotificationGroupOwnerChange"></a><code>kJMSGEventNotificationGroupOwnerChange</code></dt>
+<dd>
+
+
+<p>事件类型: 群主变更通知事件</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">JMSGConstants.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="kJMSGEventNotificationGroupTypeChange"></a><code>kJMSGEventNotificationGroupTypeChange</code></dt>
+<dd>
+
+
+<p>事件类型: 群类型变更通知事件</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">JMSGConstants.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="kJMSGEventNotificationDissolveGroup"></a><code>kJMSGEventNotificationDissolveGroup</code></dt>
+<dd>
+
+
+<p>事件类型: 解散群组</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">JMSGConstants.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="kJMSGEventNotificationGroupMaxMemberCountChange"></a><code>kJMSGEventNotificationGroupMaxMemberCountChange</code></dt>
+<dd>
+
+
+<p>事件类型: 群组成员上限变更</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">JMSGConstants.h</code>.
+	</p>
+	
+</dd>
+                            
                         </dl>
                     </div>
                     
@@ -473,7 +340,7 @@
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2018 HXHG. All rights reserved. Updated: 2018-01-03</p>
+						<p class="copyright">Copyright &copy; 2019 HXHG. All rights reserved. Updated: 2019-01-08</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

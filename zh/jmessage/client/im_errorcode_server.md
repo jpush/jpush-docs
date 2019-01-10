@@ -72,6 +72,11 @@ JMessage 服务器端报的错误码。有可能出现在各平台的 SDK 里。
 			<td>Server response time out, please try again later</td>
 			<td>系统繁忙，稍后重试</td>
 		</tr>
+		<tr>
+			<td>898031</td>
+			<td>project not exist</td>
+			<td>音视频服务还未开通，请参考doc和portal里的规则开通服务</td>
+		</tr>
 		<tr >
 			<td>899000</td>
 			<td>Server internal error</td>
@@ -450,6 +455,16 @@ JMessage 服务器端报的错误码。有可能出现在各平台的 SDK 里。
 			<td>群组描述长度超出上限，创建群组失败</td>
 		</tr>
 		<tr >
+			<td>808006</td>
+			<td>max group member count error</td>
+			<td>创建群组时指定成员人数上限错误</td>
+		</tr>
+		<tr >
+			<td>810001</td>
+			<td>target in group blacklist</td>
+			<td>目标用户在群组黑名单中，无法加入</td>
+		</tr>
+		<tr >
 			<td>810002</td>
 			<td>add member list is null</td>
 			<td>添加的成员列表为空</td>
@@ -511,7 +526,7 @@ JMessage 服务器端报的错误码。有可能出现在各平台的 SDK 里。
 		</tr>
 		<tr >
 			<td>818001</td>
-			<td>zero member</td>
+			<td>target list is null</td>
 			<td>用户添加黑名单时，成员列表为空，添加失败</td>
 		</tr>
 		<tr >
@@ -525,6 +540,21 @@ JMessage 服务器端报的错误码。有可能出现在各平台的 SDK 里。
 			<td>用户添加黑名单时，成员列表中有成员不能被添加，添加失败</td>
 		</tr>
 		<tr >
+			<td>818004</td>
+			<td>repeated added member</td>
+			<td>重复添加</td>
+		</tr>
+		<tr >
+			<td>818005</td>
+			<td>exceed max blacklist count</td>
+			<td>超过黑名单最大限制</td>
+		</tr>
+		<tr >
+			<td>818006</td>
+			<td>target not allow to add blacklist</td>
+			<td>目标用户列表中存在不允许加入黑名单的用户</td>
+		</tr>
+		<tr >
 			<td>819001</td>
 			<td>zero member</td>
 			<td>用户移除好友出黑名单时，成员列表为空，操作失败</td>
@@ -533,6 +563,16 @@ JMessage 服务器端报的错误码。有可能出现在各平台的 SDK 里。
 		  <td>819002</td>
 			<td>member not exist</td>
 			<td>用户删除黑名单时，成员列表中有成员不存在，删除失败</td>
+		</tr>
+		<tr >
+		  <td>819003</td>
+			<td>repeated deleted member</td>
+			<td>重复删除</td>
+		</tr>
+		<tr >
+		  <td>819004</td>
+			<td>target not in blacklist</td>
+			<td>待删除的黑名单用户不在黑名单中</td>
 		</tr>
 		<tr >
 			<td>831001</td>
@@ -655,6 +695,11 @@ JMessage 服务器端报的错误码。有可能出现在各平台的 SDK 里。
 			<td>邀请或加入聊天时，邀请的人员数量超过聊天室剩余加入的人员数量</td>
 		</tr>
 		<tr>
+			<td>851007</td>
+			<td>members have been blacklisted</td>
+			<td>邀请或加入聊天室时，邀请或加入的人员已被列入了黑名单</td>
+		</tr>
+		<tr>
 			<td>852001</td>
 			<td>user not in chatroom</td>
 			<td>踢出或退出聊天室时，该用户其实并不在该聊天室中，踢出或退出聊天室失败</td>
@@ -755,6 +800,16 @@ JMessage 服务器端报的错误码。有可能出现在各平台的 SDK 里。
 			<td>目标群组类型不支持申请入群</td>
 		</tr>
 		<tr>
+			<td>786001</td>
+			<td>length of group announcement exceed limit</td>
+			<td>群公告长度超出上限</td>
+		</tr>
+		<tr>
+			<td>787001</td>
+			<td>announcement not exist</td>
+			<td>待删除公告不存在</td>
+		</tr>
+		<tr>
 			<td>765001</td>
 			<td>target not in group</td>
 			<td>目标用户不在群组中</td>
@@ -764,6 +819,107 @@ JMessage 服务器端报的错误码。有可能出现在各平台的 SDK 里。
 			<td>request user no permission</td>
 			<td>请求用户无操作权限</td>
 		</tr>
+		<tr>
+			<td>7130001</td>
+			<td>request user no permission</td>
+			<td>用户没有权限设置管理员</td>
+		</tr>
+		<tr>
+			<td>7130002</td>
+			<td>set member is admin</td>
+			<td>设置为管理员的成员已经是管理员</td>
+		</tr>
+		<tr>
+			<td>7130003</td>
+			<td>set member is owner</td>
+			<td>设置为管理员的成员是个聊天室owner</td>
+		</tr>
+		<tr>
+			<td>7130004</td>
+			<td>exceed admin max count</td>
+			<td>超过管理员最大数量</td>
+		</tr>
+		<tr>
+			<td>7130005</td>
+			<td>chatroom not exist</td>
+			<td>聊天室不存在</td>
+		</tr>
+		<tr>
+			<td>7130006</td>
+			<td>set member not exist</td>
+			<td>设置为管理员的成员不在聊天室中</td>
+		</tr>
+		<tr>
+			<td>7130007</td>
+			<td>set target to null</td>
+			<td>设置目标为空</td>
+		</tr>
+		<tr>
+			<td>7131001</td>
+			<td>request user no permission</td>
+			<td>用户没有权限删除管理员资格（只有owner才能删除管理员资格）</td>
+		</tr>
+		<tr>
+			<td>7131002</td>
+			<td>set member is not an admin</td>
+			<td>对不是管理员的用户删除其管理员资格</td>
+		</tr>
+		<tr>
+			<td>7132001</td>
+			<td>request user no permission</td>
+			<td>用户没有权限设置黑名单</td>
+		</tr>
+		<tr>
+			<td>7132002</td>
+			<td>owner can not be set to blacklist</td>
+			<td>owner不能被设为黑名单</td>
+		</tr>
+		<tr>
+			<td>7132003</td>
+			<td>admin can not be set to blacklist</td>
+			<td>管理员不能被设为黑名单</td>
+		</tr>
+		<tr>
+			<td>7132004</td>
+			<td>chatroom not exist</td>
+			<td>聊天室不存在</td>
+		</tr>
+		<tr>
+			<td>7132005</td>
+			<td>exceed blacklist max count</td>
+			<td>超过黑名单最大数量</td>
+		</tr>
+		<tr>
+			<td>7132006</td>
+			<td>set member has in the blacklist</td>
+			<td>添加黑名单的成员已在黑名单中</td>
+		</tr>
+		<tr>
+			<td>7132007</td>
+			<td>set target to null</td>
+			<td>设置目标为空</td>
+		</tr>
+		<tr>
+			<td>7133001</td>
+			<td>delete target not in blacklist</td>
+			<td>删除黑名单的成员不在黑名单中</td>
+		</tr>
+		<tr>
+			<td>7100001</td>
+			<td>notify target is null or target logout</td>
+			<td>音视频信令通知目标用户为空或者目标已全部登出</td>
+		</tr>
+		<tr>
+			<td>7100002</td>
+			<td>invite targe logout</td>
+			<td>音视频被邀请的用户已登出</td>
+		</tr>
+		<tr>
+			<td>7100006</td>
+			<td>not enough rtc trial time</td>
+			<td>音视频服务试用时长不够，停用</td>
+		</tr>
+	
 </table>
 </div>
 

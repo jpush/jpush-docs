@@ -13,6 +13,14 @@
 
 官方地址：[https://github.com/jpush/jmessage-phonegap-plugin](https://github.com/jpush/jmessage-phonegap-plugin)
 
+### React Native
+
+官方地址：[https://github.com/jpush/jmessage-react-plugin](https://github.com/jpush/jmessage-react-plugin)
+
+### aurora-imui
+
+官方地址：[https://github.com/jpush/aurora-imui](https://github.com/jpush/aurora-imui)
+
 ## 技术支持
 
 - QQ 交流群：413602425

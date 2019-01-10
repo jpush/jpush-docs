@@ -1,0 +1,53 @@
+<header class="navbar navbar-default navbar-fixed-top" role="navigation" id="menu">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            {%- if nav|length>1 or (page and (page.next_page or page.previous_page)) or config.repo_url %}
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            {%- endif %}
+
+            <a class="navbar-brand" href="{{ nav.homepage.url }}">
+                <img alt="Brand" src="/img/logo.jpg" width=159 height=36 />
+            </a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+          {%- block site_nav %}
+            {%- if nav|length>1 %}
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav main-menu">
+                {%- for menu in nav if menu.children %}
+                    <li class="{%- if menu.active %} actived {%- endif %}">
+                    <a href="{%- if menu.children[0].children %}{{menu.children[0].children[0].url}}{%- else %}{{menu.children[0].url}}{%- endif %}">
+                    {{ menu.title }}
+                    </a>
+                    </li>
+                {%- endfor %}
+                </ul>
+            {%- endif %}
+          {%- endblock %}
+
+            <ul class="nav navbar-nav navbar-right">
+              <!-- {%- block search_button %} -->
+               <!--  <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li> -->
+              <!-- {%- endblock %} -->
+
+              <span class='i18n'>
+                <a href="{{ page.canonical_url | replace('en/', '')}}">中文版本</a>
+              </span>
+            </ul>
+        </div>
+    </div>
+</header>

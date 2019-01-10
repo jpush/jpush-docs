@@ -170,6 +170,16 @@
 	  <td>发送消息时消息体类型不合法，注意eventNotification和prompt类型的消息体不能发送</td>
 	</tr>
     <tr >
+      <td>871325</td>
+      <td>Illegal message status. only created or send_failed message can be sent.</td>
+      <td>发送消息时消息状态不合法，只有消息状态为创建和发送失败的消息可以被发送</td>
+    </tr>
+	<tr >
+      <td>871326</td>
+      <td>unsupported operation.</td>
+      <td>不支持的操作，例如聊天室撤回消息</td>
+    </tr>
+    <tr >
       <td>871402</td>
       <td>Upload file failed.auth error.</td>
       <td>文件上传失败</td>
@@ -217,14 +227,82 @@
 
 </table>
 </div>
+
+## JMRTC Android
+<div class="table-d" align="center">
+<table border="1" width = "100%">
+    <tr  bgcolor="#D3D3D3" >
+        <th >Code</th>
+        <th>Error Message</th>
+        <th>说明</th>
+    </tr>
+    <tr>
+       <td>0</td>
+       <td>ok</td>
+       <td>成功</td>
+    </tr>
+    <tr>
+        <td>872100</td>
+        <td>Jmrtc engine init failed. appkey is empty.</td>
+        <td>音视频引擎初始化失败，appkey为空</td>
+    </tr>
+    <tr>
+        <td>872101</td>
+        <td>Jmrtc engine init failed. due to some error occurs . see logcat for more detail.</td>
+        <td>音视频引擎由于一些问题初始化失败，详情请看日志</td>
+    </tr>
+    <tr>
+        <td>872102</td>
+        <td>Jmrtc engine init failed. due to network exception.</td>
+        <td>音视频引擎初始化失败，由于网络异常造成</td>
+    </tr>
+    <tr>
+        <td>872103</td>
+        <td>Jmrtc engine init failed. due to server return error.</td>
+        <td>音视频引擎初始化失败，由于服务器端返回内容错误造成</td>
+    </tr>
+    <tr>
+        <td>872104</td>
+        <td>Jmrtc engine init failed. due to server internal error.</td>
+        <td>音视频引擎初始化失败，由于服务器端内部错误造成</td>
+    </tr>
+    <tr>
+        <td>872105</td>
+        <td>Jmrtc engine init failed. due to required permission not granted.</td>
+        <td>音视频引擎初始化失败，由于需要的权限没有获取成功造成</td>
+    </tr>
+    <tr>
+        <td>872106</td>
+        <td>Jmrtc engine have not init yet.</td>
+        <td>音视频引擎还未初始化</td>
+    </tr>
+    <tr>
+        <td>872001</td>
+        <td>Can not send %s signaling message . state error. cur state is %s.</td>
+        <td>状态机当前状态不能发起此行为</td>
+    </tr>
+    <tr>
+        <td>872002</td>
+        <td>State time out. cur state is %s. will return to idle state immediately.</td>
+        <td>状态机状态超时，将回到idle状态</td>
+    </tr>
+    <tr>
+        <td>872003</td>
+        <td>Invite user failed. user %s is already in chat.</td>
+        <td>邀请用户失败，用户已在聊天频道中</td>
+    </tr>
+    <tr>
+        <td>872004</td>
+        <td>Received a signaling message but engine not init yet. should init engine first.</td>
+        <td>收到信令，但当前引擎处于未初始化状态，先进行初始化操作</td>
+    </tr>
+</table>
+</div>
+
 <br>
-若以上列表中没有找到对应的错误码，可查看[服务器端错误码](https://docs.jiguang.cn/jmessage/client/im_errorcode_server/)
+若以上列表中没有找到对应的错误码，可查看[服务器端错误码](./im_errorcode_server/)
 
 ## 相关文档
 
 + [iOS SDK 错误码](../client/im_errorcode_ios/)
-+ [服务器端错误码](https://docs.jiguang.cn/jmessage/client/im_errorcode_server/)
-
-
-
-
++ [服务器端错误码](./im_errorcode_server/)

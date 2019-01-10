@@ -42,7 +42,7 @@ curl -v https://report.jpush.cn/v3/received?msg_ids=1613113584,1229760629 -u "7d
 
 **Request Params**
 
-+ msg_ids 推送API返回的 msg_id 列表，多个 msg_id 用逗号隔开，最多支持100个msg_id。
++ msg_ids 推送 API 返回的 msg_id 列表，多个 msg_id 用逗号隔开，最多支持 100 个 msg_id。
 
 ### 返回示例
 
@@ -71,8 +71,8 @@ JSON Array.
 
 + android_received Android 送达。如果无此项数据则为 null。
 + ios\_apns_sent iOS 通知推送到 APNs 成功。如果无此项数据则为 null。
-+ ios\_apns_received iOS 通知送达到设备。如果无项数据则为 null。统计该项请参考 [集成指南高级功能](../../client/iOS/ios_guide_new/#_9) 。
-+ ios\_msg_received  iOS 自定义消息送达数。如果无此项数据则为null。
++ ios\_apns_received iOS 通知送达到设备。如果无项数据则为 null。统计该项请参考 [集成指南高级功能-通知送达统计](../../client/iOS/ios_guide_new/#_9) 。
++ ios\_msg_received  iOS 自定义消息送达数。如果无此项数据则为 null。
 + wp\_mpns_sent       winphone通知送达。如果无此项数据则为 null。
 
 ## 送达状态查询
@@ -98,8 +98,8 @@ curl --insecure -X POST -v https://report.jpush.cn/v3/status/message -H "Content
 JSON Object
 
 + msg_id 必传。消息 id，一次调用仅支持一个消息 id 查询。
-+ registration_ids 必传。JSON Array 类型，多个registration id 用逗号隔开，一次调用最多支持1000个。
-+ data 可选。查询的指定日期，格式为yyyy-mm-dd，默认为当天。
++ registration_ids 必传。JSON Array 类型，多个registration id 用逗号隔开，一次调用最多支持 1000个。
++ date 可选。查询的指定日期，格式为 yyyy-mm-dd，默认为当天。
 
 ### 返回示例
 
@@ -135,12 +135,12 @@ Content-Type: application/json; charset=utf-8
 + 4: 系统异常。
 
 
-## 消息统计（VIP专属接口）
+## 消息统计（VIP 专属接口）
 
 与“送达统计” API 不同的是，该 API 提供更多的针对一个 msgid 的统计数据。
 
 
-如需要开通此接口，请联系：[商务客服](https://www.jiguang.cn/accounts/business/form)
+如需要开通此接口，请联系：[商务客服](https://www.jiguang.cn/accounts/business_contact?fromPage=push_doc)
 
 ### 调用地址
 
@@ -157,7 +157,7 @@ curl -v https://report.jpush.cn/v3/messages?msg_ids=269978303 -u "7d431e42dfa6a6
 
 **Request Params**
 
-+ msg_ids 多个 msg_id 用逗号隔开，最多支持100个msg_id。
++ msg_ids 多个 msg_id 用逗号隔开，最多支持 100 个 msg_id。
 
 ### 返回示例
 
@@ -179,41 +179,40 @@ curl -v https://report.jpush.cn/v3/messages?msg_ids=269978303 -u "7d431e42dfa6a6
    "msg_id":"269978303"
   }
 ]
-
 ```
 
 **Response Params**
 
 JSON Array
 
-+ msg_id 查询的消息ID
++ msg_id 查询的消息 ID
 
-+ android Android统计数据
++ android Android 统计数据
 	+ target 推送目标数
 	+ online_push 在线推送数
 	+ received 推送送达数
 	+ click 用户点击数
 	+ msg_click 自定义消息点击数
      
-+ ios iOS统计数据
++ ios iOS 统计数据
 	+ apns_target APNs通知推送目标数	
 	+ apns_sent APNS通知推送成功数	
-	+ apns_received APNs 通知送达数 ，统计该项请参考 [集成指南高级功能](../../client/iOS/ios_guide_new/#_9) 
+	+ apns_received APNs 通知送达数 ，统计该项请参考 [集成指南高级功能-通知送达统计](../../client/iOS/ios_guide_new/#_9) 
 	+ click 用户点击数
 	+ target 自定义消息目标数
 	+ received 自定义消息送达数
 
-+ winphone Winphone统计数据
-     + mpns_target MPNs通知推送目标数
-     + mpns_sent    MPNS通知成功推送数
++ winphone Winphone 统计数据
+     + mpns_target MPNs 通知推送目标数
+     + mpns_sent    MPNS 通知成功推送数
      + click 用户点击数
 
 
 
 
-## 用户统计（VIP专属接口）
+## 用户统计（VIP 专属接口）
 
-提供近2个月内某时间段的用户相关统计数据：新增用户、在线用户、活跃用户。  
+提供近 2 个月内某时间段的用户相关统计数据：新增用户、在线用户、活跃用户。  
 时间单位支持：HOUR（小时）、DAY（天）、MONTH（月）。
 
 
@@ -244,7 +243,7 @@ curl -v "https://report.jpush.cn/v3/users?time_unit=DAY&start=2014-06-10&duratio
 	+ 如果单位是月，则起始时间是日期（月），格式例：2014-06
 + duration 持续时长。
 	+ 如果单位是天，则是持续的天数。以此类推。
-	+ 只支持查询60天以内的用户信息，对于time_unit为HOUR的，只支持输出当天的统计结果。
+	+ 只支持查询 60 天以内的用户信息，对于 time_unit 为 HOUR 的，只支持输出当天的统计结果。
 
 ### 返回示例
 
@@ -292,16 +291,16 @@ JSON Object
     <tr >
       <td>3001</td>
       <td>HTTP Basic authorization 失败。</td>
-      <td>请参考 API 文档相关说明</td>
+      <td>请检查<a href="https://docs.jiguang.cn/jpush/server/push/server_overview/#_1">调用验证</a>，Appkey 与 MasterSecret 的正确性</td>
     </tr>
     <tr >
       <td>3004</td>
-      <td>time_unit与start参数值不匹配</td>
+      <td>time_unit 与 start 参数值不匹配</td>
       <td>必须修正</td>
     </tr>
     <tr >
       <td>3005</td>
-      <td>只支持查询60天以内的用户信息</td>
+      <td>只支持查询 60 天以内的用户信息</td>
       <td></td>
     </tr>
   </table>

@@ -56,9 +56,15 @@
 	
 	<optgroup label="Properties">
 		
-		<option value="//api/name/conversation">conversation</option>
+		<option value="//api/name/transMessageType">transMessageType</option>
+		
+		<option value="//api/name/sendUser">sendUser</option>
+		
+		<option value="//api/name/target">target</option>
 		
 		<option value="//api/name/transparentText">transparentText</option>
+		
+		<option value="//api/name/conversation">conversation</option>
 		
 	</optgroup>
 	
@@ -95,6 +101,12 @@
 
                     
 					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>上层通过 JMSGEventDelegate 类中的 <a href="../Protocols/JMSGEventDelegate.html#//api/name/onReceiveMessageTransparentEvent:">[JMSGEventDelegate onReceiveMessageTransparentEvent:]</a> 代理方法监听该事件</p>
+					</div>
+					
 					
 
 					
@@ -108,8 +120,8 @@
 
 						<div class="task-list">
 							<div class="section-method">
-	<a name="//api/name/conversation" title="conversation"></a>
-	<h3 class="method-title"><code><a href="#//api/name/conversation">&nbsp;&nbsp;conversation</a></code>
+	<a name="//api/name/transMessageType" title="transMessageType"></a>
+	<h3 class="method-title"><code><a href="#//api/name/transMessageType">&nbsp;&nbsp;transMessageType</a></code>
 </h3>
 
 	<div class="method-info">
@@ -119,12 +131,94 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>消息所属会话</p>
+				<p>消息透传的类型,单聊、群聊、设备间透传消息</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) JMSGConversation *conversation</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign, readonly) JMSGTransMessageType transMessageType</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGNotificationEvent.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/sendUser" title="sendUser"></a>
+	<h3 class="method-title"><code><a href="#//api/name/sendUser">&nbsp;&nbsp;sendUser</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>透传消息的发送者</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) JMSGUser *sendUser</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGNotificationEvent.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/target" title="target"></a>
+	<h3 class="method-title"><code><a href="#//api/name/target">&nbsp;&nbsp;target</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>透传消息的目标对象，JMSGUser、<a href="../Classes/JMSGGroup.html">JMSGGroup</a></p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) id target</code></div>
 
 		    
 			
@@ -160,7 +254,7 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>用户自定义透传内容</p>
+				<p>透传消息内容</p>
 			</div>
 			
 		    
@@ -174,6 +268,52 @@
 
 			
 
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGNotificationEvent.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/conversation" title="conversation"></a>
+	<h3 class="method-title"><code><a href="#//api/name/conversation">&nbsp;&nbsp;conversation</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>透传消息所属会话</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) JMSGConversation *conversation</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>注意：如果接收到设备间的透传事件，此属性的值为 nil；如果本地并没有创建会话，此属性也为 nil</p>
+			</div>
 			
 
 			
@@ -204,7 +344,7 @@
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2018 HXHG. All rights reserved. Updated: 2018-01-03</p>
+						<p class="copyright">Copyright &copy; 2019 HXHG. All rights reserved. Updated: 2019-01-08</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

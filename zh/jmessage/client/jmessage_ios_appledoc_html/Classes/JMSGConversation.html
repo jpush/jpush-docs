@@ -144,6 +144,8 @@
 		
 		<option value="//api/name/sendVoiceMessage:duration:">- sendVoiceMessage:duration:</option>
 		
+		<option value="//api/name/sendVideoMessage:thumbData:videoFormat:duration:">- sendVideoMessage:thumbData:videoFormat:duration:</option>
+		
 		<option value="//api/name/sendFileMessage:fileName:">- sendFileMessage:fileName:</option>
 		
 		<option value="//api/name/sendLocationMessage:longitude:scale:address:">- sendLocationMessage:longitude:scale:address:</option>
@@ -1103,7 +1105,7 @@
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>获取所有会话未读消息总数</p>
+				<p>获取所有会话未读消息总数，开启免打扰的会话未读数不会加入计数</p>
 			</div>
 			
 
@@ -2107,7 +2109,7 @@ JMSGImageContent *imageContent = [[JMSGImageContent alloc] initWithImageData:ima
 					</tr>
 				
 					<tr>
-						<th scope="row" class="argument-name"><code>at_list</code></th>
+						<th scope="row" class="argument-name"><code>userList</code></th>
 						<td><p>@对象的数组</p></td>
 					</tr>
 				
@@ -2377,6 +2379,79 @@ JMSGImageContent *imageContent = [[JMSGImageContent alloc] initWithImageData:ima
 		</div>
 	</div>
 </div><div class="section-method">
+	<a name="//api/name/sendVideoMessage:thumbData:videoFormat:duration:" title="sendVideoMessage:thumbData:videoFormat:duration:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/sendVideoMessage:thumbData:videoFormat:duration:">&ndash;&nbsp;sendVideoMessage:thumbData:videoFormat:duration:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>发送视频消息</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)sendVideoMessage:(NSData *)<em>videoData</em> thumbData:(NSData *JMSG_NULLABLE)<em>thumbData</em> videoFormat:(NSString *JMSG_NULLABLE)<em>videoFormat</em> duration:(NSNumber *)<em>duration</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>videoData</code></th>
+						<td><p>视频消息数据</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>thumbData</code></th>
+						<td><p>视频封面图片</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>videoFormat</code></th>
+						<td><p>视频格式，如：mp4、mov</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>duration</code></th>
+						<td><p>视频消息时长（秒）. 长度必须大于 0.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>快捷发送消息接口。如果发送语音消息不需要附加 extra，则使用此接口更方便。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGConversation.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
 	<a name="//api/name/sendFileMessage:fileName:" title="sendFileMessage:fileName:"></a>
 	<h3 class="method-title"><code><a href="#//api/name/sendFileMessage:fileName:">&ndash;&nbsp;sendFileMessage:fileName:</a></code>
 </h3>
@@ -2402,13 +2477,13 @@ JMSGImageContent *imageContent = [[JMSGImageContent alloc] initWithImageData:ima
 				<table class="argument-def parameter-def">
 				
 					<tr>
-						<th scope="row" class="argument-name"><code>fileName</code></th>
-						<td><p>文件名</p></td>
+						<th scope="row" class="argument-name"><code>fileData</code></th>
+						<td><p>文件消息数据</p></td>
 					</tr>
 				
 					<tr>
-						<th scope="row" class="argument-name"><code>voiceData</code></th>
-						<td><p>文件消息数据</p></td>
+						<th scope="row" class="argument-name"><code>fileName</code></th>
+						<td><p>文件名</p></td>
 					</tr>
 				
 				</table>
@@ -2632,6 +2707,7 @@ JMSGImageContent *imageContent = [[JMSGImageContent alloc] initWithImageData:ima
 <ol>
 <li><p>消息透传功能，消息不会进入到后台的离线存储中去，仅当对方用户当前在线时才会成功送达，可以快速响应，方便开发者拓展自定义行为；</p></li>
 <li><p>可用来快速实现一些在线场景下的辅助功能 ：输入状态提示、位置信息提示、开发者自定义等。</p></li>
+<li><p>透传命令到达是，接收方通过 <a href="../Protocols/JMSGEventDelegate.html#//api/name/onReceiveMessageTransparentEvent:">[JMSGEventDelegate onReceiveMessageTransparentEvent:]</a> 方法监听</p></li>
 </ol>
 
 			</div>
@@ -2732,7 +2808,7 @@ JMSGImageContent *imageContent = [[JMSGImageContent alloc] initWithImageData:ima
 			
 			
 			<div class="method-subsection brief-description">
-				<p>获取会话头像的本地路径(仅限单聊)</p>
+				<p>获取会话头像的本地路径</p>
 			</div>
 			
 		    
@@ -3168,7 +3244,7 @@ JMSGImageContent *imageContent = [[JMSGImageContent alloc] initWithImageData:ima
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2018 HXHG. All rights reserved. Updated: 2018-01-03</p>
+						<p class="copyright">Copyright &copy; 2019 HXHG. All rights reserved. Updated: 2019-01-08</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

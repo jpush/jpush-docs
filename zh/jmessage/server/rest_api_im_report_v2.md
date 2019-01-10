@@ -50,7 +50,7 @@ N/A
 
 + count （必填）每次查询的总条数  一次最多1000
 + begin_time (必填) 记录开始时间 格式  yyyy-MM-dd HH:mm:ss  设置筛选条件大于等于begin time   
-+ end_time (必填)   记录结束时间  格式 yyyy-MM-dd HH:mm:ss  设置筛选条件下于等于end time   
++ end_time (必填)   记录结束时间  格式 yyyy-MM-dd HH:mm:ss  设置筛选条件小于等于end time   
 + begin_time end_time 之间最大范围不得超过7天
 + 	cursor  当第一次请求后如果后面有数据，会返回一个cursor回来用这个获取接下来的消息 (cursor 有效时间是120s，过期后需要重新通过第一个请求获得cursor，重新遍历)
 + 查询的消息按发送时间升序排序
@@ -115,8 +115,8 @@ N/A
 
 ####  Request Params  
 + count （必填）查询的总条数  一次最多1000
-+ begin_time (必填) 记录开始时间 格式  yyyy-MM-dd HH:mm:ss 设置筛选条件大于end time   
-+ end_time (必填)   记录结束时间  格式 yyyy-MM-dd HH:mm:ss  设置筛选条件下于begin time   
++ begin_time (必填) 记录开始时间 格式  yyyy-MM-dd HH:mm:ss 设置筛选条件大于begin time   
++ end_time (必填)   记录结束时间  格式 yyyy-MM-dd HH:mm:ss  设置筛选条件小于end time   
 + begin_time end_time 之间最大范围不得超过7天
 + cursor  当第一次请求后如果后面有数据，会返回一个cursor回来用这个获取接下来的消息 (cursor 有效时间是120s，过期后需要重新通过第一个请求获得cursor，重新遍历)
 + 查询的消息按发送时间升序排序
@@ -184,8 +184,8 @@ N/A
 
 ####  Request Params  
 + count （必填）查询的总条数  一次最多1000
-+ begin_time (必填) 记录开始时间 格式  yyyy-MM-dd HH:mm:ss 设置筛选条件大于end time   
-+ end_time (必填)   记录结束时间  格式 yyyy-MM-dd HH:mm:ss  设置筛选条件下于begin time   
++ begin_time (必填) 记录开始时间 格式  yyyy-MM-dd HH:mm:ss 设置筛选条件大于begin time   
++ end_time (必填)   记录结束时间  格式 yyyy-MM-dd HH:mm:ss  设置筛选条件小于end time   
 + begin_time end_time 之间最大范围不得超过7天
 + cursor  当第一次请求后如果后面有数据，会返回一个cursor回来用这个获取接下来的消息 (cursor 有效时间是120s，过期后需要重新通过第一个请求获得cursor，重新遍历)
 + 查询的消息按发送时间升序排序
@@ -234,7 +234,78 @@ Content-Type: application/json; charset=utf-8
 
 ```
 
+## 获取聊天室消息 
 
+```
+GET /chatrooms/{chatroomid}/messages?count=100&begin_time={begin_time}&end_time={end_time}
+```
+### Example Request 
+
+####  Request Header  
+
+```
+GET /chatrooms/{chatroomid}/messages?count=100&begin_time=2017-11-02 10:10:10&end_time=2017-11-02 10:10:12 （ 第一次请求）
+```
+
+```
+GET /chatrooms/{chatroomid}/messages?cursor=KSDKF34UISOCGAASD （第n次获取 n>1）
+```
+
+#### Request Body  
+
+N/A
+
+####  Request Params  
++ count （必填）查询的总条数  一次最多1000
++ begin_time (必填) 记录开始时间 格式  yyyy-MM-dd HH:mm:ss 设置筛选条件大于begin time   
++ end_time (必填)   记录结束时间  格式 yyyy-MM-dd HH:mm:ss  设置筛选条件小于end time   
++ begin_time end_time 之间最大范围不得超过7天
++ cursor  当第一次请求后如果后面有数据，会返回一个cursor回来用这个获取接下来的消息 (cursor 有效时间是120s，过期后需要重新通过第一个请求获得cursor，重新遍历)
++ 查询的消息按发送时间升序排序
+
+### Example Response  
+
+#### Response Header   
+
+```
+HTTP/1.1 200 
+Content-Type: application/json; charset=utf-8 
+```
+
+#### Response Data  
+
+```
+{
+    "total": 1,
+    "cursor": "02838264C47BA022DE545AF2D013B59A",
+    "count": 1,
+    "messages": [
+        {
+            "set_from_name": 1,
+            "from_platform": "a",
+            "target_name": "",
+            "msg_type": "text",
+            "version": 1,
+            "target_id": "10055201",
+            "from_appkey": "4f7aef34fb361292c566a1cd",
+            "from_name": "custom name nnn",
+            "from_id": "ppppp",
+            "msg_body": {
+                "text": "hehe",
+                "extras": {}
+            },
+            "create_time": 1490930940,
+            "from_type": "user",
+            "target_appkey": "",
+            "target_type": "chatroom",
+            "msgid": 287090485,
+            "msg_ctime": 1490930941708,
+            "msg_level": 0
+        }
+    ]
+}
+
+```
 
 
 # 统计接口 （vip专属接口）

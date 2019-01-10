@@ -128,7 +128,7 @@ JSMS 提供遵从 REST 规范的 HTTP API，以供开发者远程调用 JSMS 提
 |403|50006|invalid mobile|手机号码无效
 |403|50007|invalid body|body 无效
 |403|50008|no sms code auth|未开通短信业务
-|403|50009|out of freq|发送超频
+|403|50009|out of freq|下发超频
 |403|50010|invalid code|验证码无效
 |403|50011|expired code|验证码过期
 |403|50012|verified code|验证码已验证过
@@ -155,7 +155,7 @@ JSMS 提供遵从 REST 规范的 HTTP API，以供开发者远程调用 JSMS 提
 |403|50035|illegal IP|非法 IP 请求|
 |403|50036|app in black|应用被列为黑名单|
 |403|50037|has black word|短信内容存在敏感词汇|
-|403|50038|invalid code length|语音验证码长度错误|
+|403|50038|invalid content length|短信内容长度错误，文本短信长度不超过350个字，语音短信验证码长度4～8数字|
 |403|50039|invalid code type|语音验证码内容错误，验证码仅支持数字|
 |403|50040|invalid voice language type|语音验证码播报语言类型错误|
 |403|50041|invalid ttl value|验证码有效期错误|
@@ -165,3 +165,11 @@ JSMS 提供遵从 REST 规范的 HTTP API，以供开发者远程调用 JSMS 提
 |403|50045|remark too long|备注内容过长，长度限制为500字符|
 |403|50046|signature not set|该应用未设置签名，请先设置签名|
 |403|50047|modify template not allow|只有审核不通过状态的模板才允许修改|
+|403|50052|template contains special symbol|模板不能含有特殊符号，如【】|
+|403|50053|special template parameter need extra remark for confirmation|模板中存在链接变量，请在 remark 参数中填写链接以报备，避免短信发送时因进入人工审核而导致发送延迟|
+|403|50054|content contains special symbol|短信正文不能含有特殊符号，如【】|
+|403|50101|invalid image|非法的图片|
+|403|50102|invalid sign id|非法的签名 ID|
+|403|50103|other signatures in the audit|已经存在其他待审核的签名，不能提交|
+|403|50104|invalid signature|非法签名内容|
+|403|50105|default signature cannot be deleted|默认签名不能删除|
