@@ -7,7 +7,7 @@ JMessage PC SDK , 使用C++语言开发, 基于 Web SDK 协议，提供易用的
 
 编译器支持 VS2017(msvc141)，兼容系统 Windows 7、Windows 8/8.1、Windows 10
 
-MacOS 支持Clang5+, MacOS 10.13 (x86_64)
+MacOS 支持Xcode 10, MacOS 10.13 (x86_64)
 
 
 ### 功能
@@ -60,7 +60,7 @@ auto signature = QCryptographicHash::hash(str.toUtf8()， QCryptographicHash::Md
 
 #### MacOS
 
-- 编译器:Clang, 需要C++17 支持, 安装命令 brew install llvm 
+- 编译器:Xcode 10 Toolchain
 - 第三方库:cpprestsdk, 安装命令 brew install cpprestsdk
 
 ### 简单示例

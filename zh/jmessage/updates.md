@@ -1,5 +1,31 @@
 # 最近更新
 
+### PC SDK V1.2.3
+
+#### 更新时间
+
+- 2019-01-15
+
+#### ChangeLog
+
+##### BugFix:
+
+- 修复反馈的bug
+
+##### NewFeature:
+
+- Windows 新增64位版本SDK
+- MacOS 更新至Xcode 10
+
+#### 升级提示
+
+- 建议升级！
+
+#### 升级指南
+
+- 从官网下载SDK包,直接全部替换即可
+- 如果使用的NuGet包,可以使用NuGet包管理器直接更新jmessage-cpp
+
 
 ### iOS SDK v3.8.0
 
