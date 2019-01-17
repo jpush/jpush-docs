@@ -119,6 +119,8 @@
 |2006 | fetch config failed |获取配置失败|
 |2008 | Token requesting, please wait|正在获取token中，稍后再试|
 |2009 | verifying, please try again later|正在认证中，稍后再试 |
+|2014 | internal error while requesting token|请求token时发生内部错误 |
+|2015 | rsa encode failed|rsa加密失败 |
 |4001 ||参数错误。请检查参数，比如是否手机号格式不对|
 |4009 ||解密rsa失败|
 |4018 ||没有足够的余额|
