@@ -157,6 +157,13 @@
       <td>text is empty	</td>
       <td>文本参数为空</td>
     </tr>
+
+ 	 <tr>
+      <td>41023</td>
+      <td>text and title is empty</td>
+      <td>标题和文本都为空</td>
+    </tr>
+
         <tr>
       <td>41025</td>
       <td>title is empty</td>

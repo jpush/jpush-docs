@@ -163,7 +163,8 @@ HTTP Header（头）里加一个字段（Key/Value 对）：
        "temp_para":{
        		"code":"123456"
        },
-    	"delay_time":3600
+    	"delay_time":3600,
+    	"active_filter":false
 	},
     "options": {
         "time_to_live": 60,
@@ -798,11 +799,17 @@ sms_message 用于设置短信推送内容以及短信发送的延迟时间。
 			<td>必填</td>
 			<td>短信补充的内容模板 ID。没有填写该字段即表示不使用短信补充功能。</td>
 		</tr>
-        <tr >
+       <tr >
 			<td>temp_para</td>
 			<td>JSON</td>
 			<td>可选</td>
 			<td>短信模板中的参数。 </td>
+		</tr>
+		<tr >
+			<td>active_filter</td>
+			<td>boolean</td>
+			<td>可选</td>
+			<td>active_filter 字段用来控制是否对补发短信的用户进行活跃过滤，默认为 true ，做活跃过滤；为 false，则不做活跃过滤； </td>
 		</tr>
 	</table>
 </div>
