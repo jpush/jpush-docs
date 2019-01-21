@@ -25,7 +25,7 @@ var searchData=
   ['requestjoingroupeventid',['requestJoinGroupEventId',['../struct_jmcpp_1_1_admin_reject_join_group_event.html#a5dc8481d0214c0cd94622bfb3dfd236a',1,'Jmcpp::AdminRejectJoinGroupEvent']]],
   ['requestmsg',['requestMsg',['../struct_jmcpp_1_1_request_join_group_event.html#a58e4bb30309bef8bf7d44a3e1b08c0e2',1,'Jmcpp::RequestJoinGroupEvent']]],
   ['retractmessage',['retractMessage',['../group___xE6_xB6_x88_xE6_x81_xAF_xE5_x8F_x91_xE9_x80_x81_xE4_xB8_x8E_xE7_xAE_xA1_xE7_x90_x86.html#ga0f18cad066b9c76b4d055e49406e688a',1,'Jmcpp::Client']]],
-  ['roomid',['roomId',['../struct_jmcpp_1_1_room_info.html#a31fd5190b27181003a19e891e8fec4eb',1,'Jmcpp::RoomInfo::roomId()'],['../namespace_jmcpp.html#abb71f91633dab76d65e179e598c1528f',1,'Jmcpp::RoomId()']]],
+  ['roomid',['roomId',['../struct_jmcpp_1_1_room_info.html#a31fd5190b27181003a19e891e8fec4eb',1,'Jmcpp::RoomInfo::roomId()'],['../namespace_jmcpp.html#a358c3e92119af8454a9975771fa115ff',1,'Jmcpp::RoomId()']]],
   ['roominfo',['RoomInfo',['../struct_jmcpp_1_1_room_info.html',1,'Jmcpp']]],
   ['roominfolist',['RoomInfoList',['../namespace_jmcpp.html#a326e54864f38d9de9f77ffb87feff2bb',1,'Jmcpp']]],
   ['roomname',['roomName',['../struct_jmcpp_1_1_room_info.html#a4eed6b7faf02d025784233eae79043f6',1,'Jmcpp::RoomInfo']]],

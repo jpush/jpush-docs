@@ -65,7 +65,7 @@
         <div class="thumbnail">
             <img src="../image/pc.png" alt="pc">
             <div class="caption">
-                 <h4><span>PC SDK</span><span class="version">v1.2.1</span></h4>
+                 <h4><span>PC SDK</span><span class="version">v1.2.3</span></h4>
                  <div class="download-options">
                      <div class="option"><input type="checkbox" checked onclick="return false;"><span  style=" margin-right: 20px;">IM即时通讯</span></div>
                  </div>

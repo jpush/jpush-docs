@@ -153,7 +153,7 @@ App 使用 JMessage 提供的群组功能创建群组时得到的群组标识。
 
 ### 相关文档
 
-+ [JMessage Android SDK 开发指南](../client/im_sdk_android/)
++ [JMessage Android SDK 开发指南](../client/android_sdk/basic/)
 + [JMessage iOS SDK 开发指南](../client/im_sdk_ios/)
 + [JMessage WEB SDK 开发指南](https://docs.jiguang.cn/jmessage/client/im_sdk_js/)
 + [JMessage Windows SDK 集成指南](https://docs.jiguang.cn/jmessage/client/im_sdk_win/)
