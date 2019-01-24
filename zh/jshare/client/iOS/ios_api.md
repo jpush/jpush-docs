@@ -446,7 +446,7 @@ videoAssetURL | 是 | NSString| 本地视频AssetURL |分享本地视频到 QQ �
 参数 |是否必须|参数类型|参数说明|备注
 ---- |-----|----|----|----
 mediaType | 是| NS_ENUM| 分享类型| JSHAREText
-text | 是 | NSString|分享文本|不超过140
+text | 是 | NSString|分享文本|不超过 140 字符
 
 ```
     message.text = @"JShare SDK支持主流社交平台、帮助开发者轻松实现社会化功能！";
@@ -459,7 +459,7 @@ text | 是 | NSString|分享文本|不超过140
 ---- |-----|----|----|----
 mediaType | 是| NS_ENUM | 分享类型| JSHAREImage
 image| 是 | NSData|图片|大小不能超过 10 M，
-text | 否 | NSString|分享内容的描述|不超过140
+text | 否 | NSString|分享内容的描述|不超过 140 字符
 ```
     NSString *imageURL = @"http://img2.3lian.com/2014/f5/63/d/23.jpg";
     NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:imageURL]];
@@ -473,7 +473,7 @@ text | 否 | NSString|分享内容的描述|不超过140
 ---- |-----|----|----|----
 mediaType | 是| NS_ENUM | 分享类型| JSHARELink
 title| 否 | NSString|标题|长度不能超过 1 K
-text| 否 | NSString|描述|长度不能超过 140
+text| 否 | NSString|描述|长度不能超过 140 字符
 Url| 是 | NSString|跳转Url|最大 512 字符。
 thumbnail| 否 | NSDate|缩略图|大小小于32k，当分享没有提供缩略图时，若image参数不为空，JSHARE将会裁剪此参数提供的图片去适配缩略图。
 

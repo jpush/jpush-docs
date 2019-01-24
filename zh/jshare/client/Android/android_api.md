@@ -551,7 +551,7 @@ shareParams.setVideoPath(MyApplication.VideoPath);
 参数 |是否必须|参数类型|参数说明|备注
 ---- |-----|----|----|----
 ShareType | 是| int| 分享类型| Platform.SHARE_TEXT
-Text| 是 | String|文本|不超过 1999
+Text| 是 | String|文本|不超过 1999 字符
 ImagePath| 否 | String|本地图片地址|不支持网络图片,文件不超过 10M，与 ImageData 二选一
 ImageData| 否 | Bitmap|本地图片 bitmap|不支持网络图片,不超过 2M，与 ImagePath 二选一
 ```
@@ -564,7 +564,7 @@ shareParams.setImagePath(file.getAbsolutePath());
 参数 |是否必须|参数类型|参数说明|备注
 ---- |-----|----|----|----
 ShareType | 是| int| 分享类型| Platform.SHARE_IMAGE
-Text| 否 | String|文本|不超过 1999
+Text| 否 | String|文本|不超过 1999 字符
 ImagePath| 是 | String|本地图片地址|不支持网络图片,文件不超过 10M，与 ImageData 二选一
 ImageData| 是 | Bitmap|本地图片 bitmap|不支持网络图片,不超过 2M，与 ImagePath 二选一
 ```
@@ -577,10 +577,10 @@ shareParams.setImagePath(file.getAbsolutePath());
 参数 |是否必须|参数类型|参数说明|备注
 ---- |-----|----|----|----
 ShareType | 是| int| 分享类型| Platform.SHARE_WEBPAGE
-Text| 否 | String|文本|不超过1999
+Text| 否 | String|文本|不超过1999 字符
 ImagePath| 否 | String|本地图片地址|不支持网络图片,文件不超过 10M，与 ImageData 二选一
 ImageData| 否 | Bitmap|本地图片 bitmap|不支持网络图片,不超过 2M，与 ImagePath 二选一
-Url| 是 | String|跳转链接|长度不超过 512
+Url| 是 | String|跳转链接|长度不超过 512 字节
 ```
 ShareParams shareParams = new ShareParams();
 shareParams.setShareType(Platform.SHARE_WEBPAGE);
@@ -593,11 +593,11 @@ shareParams.setUrl(share_url);
 参数 |是否必须|参数类型|参数说明|备注
 ---- |-----|----|----|----
 ShareType | 是| int| 分享类型| Platform.SHARE_WEBPAGE
-Text| 否 | String|文本|不超过1024
-Title| 否 | String|标题|不超过512
+Text| 否 | String|文本|不超过1024 字符
+Title| 否 | String|标题|不超过512 字符
 ImagePath| 否 | String|本地图片地址|不支持网络图片,文件不超过 32K，与 ImageData 二选一
 ImageData| 否 | Bitmap|本地图片 bitmap|不支持网络图片,不超过 32K，与 ImagePath 二选一
-Url| 是 | String|跳转链接|长度不超过512
+Url| 是 | String|跳转链接|长度不超过512 字节
 ```
 ShareParams shareParams = new ShareParams();
 shareParams.setShareType(Platform.SHARE_WEBPAGE);
@@ -648,7 +648,7 @@ shareParams.setVideoPath(file.getAbsolutePath());
 参数 |是否必须|参数类型|参数说明|备注
 ---- |-----|----|----|----
 ShareType | 是| int| 分享类型| Platform.SHARE_TEXT
-Text| 是 | String|文本|不可为空，文本长度不超过 140
+Text| 是 | String|文本|不可为空，文本长度不超过 140 字符
 ```
 ShareParams shareParams = new ShareParams();
 shareParams.setShareType(Platform.SHARE_TEXT);
@@ -659,7 +659,7 @@ shareParams.setText(text);
 ---- |-----|----|----|----
 ShareType | 是| int| 分享类型| Platform.SHARE_WEBPAGE
 Url| 是 | String|分享链接|仅支持http、https
-Text| 否 | String|文本|文本长度与链接长度只和不能超过140
+Text| 否 | String|文本|文本长度与链接长度之和不能超过140 字符
 ```
 ShareParams shareParams = new ShareParams();
 shareParams.setShareType(Platform.SHARE_WEBPAGE);
@@ -670,8 +670,8 @@ shareParams.setUrl(share_url);
 参数 |是否必须|参数类型|参数说明|备注
 ---- |-----|----|----|----
 ShareType | 是| int| 分享类型| Platform.SHARE_IMAGE
-Text| 否 | String|文本|与url总长度不能超过140
-Url| 是 | String|分享链接|仅支持http、https，与文本总长度不超过140
+Text| 否 | String|文本|与url总长度不能超过 140 字符
+Url| 是 | String|分享链接|仅支持http、https，与文本总长度不超过 140 字符
 ImagePath| 否 | String|本地图片地址|JPG, PNG, GIF, WEBP格式，不能超过5M，ImagePath与ImageUrl、ImageArray必须三选一
 ImageData| 否 | String|本地图片bitmap|JPG, PNG, GIF, WEBP格式，不能超过5M，ImagePath与ImageUrl、ImageArray必须三选一
 ImageArray| 否 | Array|本地图片地址数组|支持多个图片，最多4张，JPG, PNG, GIF, WEBP格式，单张不能超过5M，ImagePath与ImageUrl、ImageArray必须三选一
@@ -684,8 +684,8 @@ shareParams.setImagePath(file.getAbsolutePath());
 参数 |是否必须|参数类型|参数说明|备注
 ---- |-----|----|----|----
 ShareType | 是| int| 分享类型| Platform.SHARE_VIDEO
-Text| 否 | String|文本|与url总长度不能超过140
-Url| 是 | String|分享链接|仅支持http、https，与文本总长度不超过140
+Text| 否 | String|文本|与url总长度不能超过 140 字符
+Url| 是 | String|分享链接|仅支持http、https，与文本总长度不超过 140 字符
 VideoPath| 是 | String|本地视频地址|不支持网络视频，视频的格式要求较多，具体参考twitter文档：https://developer.twitter.com/en/docs/media/upload-media/uploading-media/media-best-practices
 ```
 ShareParams shareParams = new ShareParams();

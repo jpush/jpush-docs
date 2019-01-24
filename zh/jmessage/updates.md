@@ -1,8 +1,61 @@
 # 最近更新
 
+### PC SDK V1.2.3
+
+#### 更新时间
+
+- 2019-01-15
+
+#### ChangeLog
+
+##### BugFix:
+
+- 修复反馈的bug
+
+##### NewFeature:
+
+- Windows 新增64位版本SDK
+- MacOS 更新至Xcode 10
+
+#### 升级提示
+
+- 建议升级！
+
+#### 升级指南
+
+- 从官网下载SDK包,直接全部替换即可
+- 如果使用的NuGet包,可以使用NuGet包管理器直接更新jmessage-cpp
+
+
+### iOS SDK v3.8.0
+
+#### 更新时间
+
+2019-01-09
+
+#### ChangeLog
+
+##### BugFix
+
++ 修复用户反馈的一些 bug
+
+##### NewFeature:
+
++ 新增：群公告
++ 新增：群组黑名单
++ 新增：创建群组时可设置成员上限
++ 新增：聊天室黑名单
++ 新增：聊天室管理员
++ 新增：聊天室管理员变更、黑名单变更事件
+
+#### 升级指南
++ 使用新版本的 JMessage.framework 文件替换原工程下的同名旧文件
++ 将新版本的 JMessage.framework 里的 JCore link 到工程中，详细参见官网集成文档
+
+
 ### Android SDK v2.8.0
 
-2019-1-2
+2019-01-02
 
 #### ChangeLog
 
@@ -40,6 +93,7 @@
     + Android5.0以上，使用应用图标作为通知栏小图标可能显示异常，请参考res/drawable-xxxx/jmessage_notification_icon作为通知栏小图标。详情请见
     Android SDK集成指南中的说明，或者demo中的示例
 + 如果使用jcenter的方式集成JMessage，不需要添加相关组件，详细集成说明请参考官方[集成指南](https://docs.jiguang.cn/jmessage/client/jmessage_android_guide/)
+
 
 ### Android SDK v2.7.1
 

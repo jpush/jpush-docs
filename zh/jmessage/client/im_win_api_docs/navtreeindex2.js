@@ -1,5 +1,8 @@
 var NAVTREEINDEX2 =
 {
+"struct_jmcpp_1_1_room_info.html#aa5bddf296f9f7b31d87f216c0c947482":[2,0,0,53,4],
+"struct_jmcpp_1_1_room_info.html#aa750dee2c2001a5a282d44f26ad210b9":[2,0,0,53,5],
+"struct_jmcpp_1_1_room_info.html#ac672afafed540c67f058fc38aaf94ff5":[2,0,0,53,3],
 "struct_jmcpp_1_1_server_exception.html":[2,0,0,54],
 "struct_jmcpp_1_1_server_exception.html#a13a4091e6bb78791e07ca9b0941703b6":[2,0,0,54,5],
 "struct_jmcpp_1_1_server_exception.html#a2593e803c65456dedc18176d415a0aa8":[2,0,0,54,0],

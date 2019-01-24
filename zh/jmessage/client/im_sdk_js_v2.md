@@ -655,7 +655,7 @@ JMessage#getResource ()
                }).onSuccess(function(data) {
                    //data.code 返回码
                    //data.message 描述
-                   //data.url 资源临时访问路径
+                   //data.url 资源临时访问路径，具体超时时间expire time会包含在url中
                }).onFail(function(data) {
                    //data.code 返回码
                    //data.message 描述

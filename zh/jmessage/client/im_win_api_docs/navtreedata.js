@@ -29,8 +29,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"group___xE7_xBE_xA4_xE7_xBB_x84_xE7_xAE_xA1_xE7_x90_x86.html#gabf5799e8c49e50141763806962108bf6",
-"struct_jmcpp_1_1_server_exception.html"
+"group___xE7_xBE_xA4_xE7_xBB_x84_xE7_xAE_xA1_xE7_x90_x86.html#ga9c29e0d573863d67a42cfa84c9475a36",
+"struct_jmcpp_1_1_room_info.html#aa5bddf296f9f7b31d87f216c0c947482"
 ];
 
 var SYNCONMSG = '点击 关闭 面板同步';
