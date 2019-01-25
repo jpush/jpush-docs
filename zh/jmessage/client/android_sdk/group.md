@@ -618,7 +618,7 @@ GroupApprovedNotificationEvent
 	/**
 	 * 入群审批同意，操作成功后，群内所有成员包括被审批人自己都会收到一个包含群成员变化的EventNotification类型的消息
 	 *
-	 * @param username 同意入群者的username
+	 * @param username 被同意加入群组用户的username
 	 * @param appKey 同意入群者的appKey，若传入空则默认使用本应用的appKey
 	 * @param callback
 	 */
@@ -628,7 +628,7 @@ GroupApprovedNotificationEvent
 	 * 入群审批拒绝，操作成功后，该次审批请求的发起方(Type为{@link Type#apply_join_group}时是申请人 Type为{@link Type#invited_into_group}时是邀请人)
 	 * 会收到一个审批拒绝通知事件{@link GroupApprovalRefuseEvent}
 	 *
-	 * @param username 拒绝入群者的username
+	 * @param username 被拒绝加入群组用户的username
 	 * @param appKey 拒绝入群者的appKey, 若传入空则默认使用本应用的appKey
 	 * @param reason 拒绝理由，可填null
 	 * @param callback
