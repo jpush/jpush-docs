@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>JMSGEventDelegate Protocol Reference</title>
+
+	<link rel="stylesheet" href="../css/style.css">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
+	<meta name="generator" content="appledoc 2.2.1 (build 1334)">
+</head>
+<body class="appledoc">
+	<header>
+		<div class="container" class="hide-in-xcode">
+			
+			<h1 id="library-title">
+				<a href="../index.html">JMessage-iOS-SDK </a>
+			</h1>
+
+			<p id="developer-home">
+				<a href="../index.html">HXHG</a>
+			</p>
+			
+		</div>
+	</header>
+
+	<aside>
+		<div class="container">
+			<nav>
+				<ul id="header-buttons" role="toolbar">
+					<li><a href="../index.html">Index</a></li>
+<li><a href="../hierarchy.html">Hierarchy</a></li>
+
+					<li id="on-this-page" role="navigation">
+						<label>
+							On This Page
+
+							<div class="chevron">
+								<div class="chevy chevron-left"></div>
+								<div class="chevy chevron-right"></div>
+							</div>
+
+							<select id="jump-to">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+
+	
+	
+
+	
+
+	
+	<optgroup label="Instance Methods">
+		
+		<option value="//api/name/onReceiveFriendNotificationEvent:">- onReceiveFriendNotificationEvent:</option>
+		
+		<option value="//api/name/onReceiveMessageRetractEvent:">- onReceiveMessageRetractEvent:</option>
+		
+		<option value="//api/name/onReceiveMessageReceiptStatusChangeEvent:">- onReceiveMessageReceiptStatusChangeEvent:</option>
+		
+		<option value="//api/name/onReceiveMessageTransparentEvent:">- onReceiveMessageTransparentEvent:</option>
+		
+		<option value="//api/name/onReceiveChatRoomAdminChangeEvents:">- onReceiveChatRoomAdminChangeEvents:</option>
+		
+		<option value="//api/name/onReceiveChatRoomBlacklistChangeEvents:">- onReceiveChatRoomBlacklistChangeEvents:</option>
+		
+		<option value="//api/name/onReceiveNotificationEvent:">- onReceiveNotificationEvent:</option>
+		
+	</optgroup>
+	
+	
+</select>
+						</label>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</aside>
+
+	<article>
+		<div id="overview_contents" class="container">
+			<div id="content">
+				<main role="main">
+					<h1 class="title">JMSGEventDelegate Protocol Reference</h1>
+
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<th>Conforms to</th>
+	<td>NSObject</td>
+</tr><tr>
+	<th>Declared in</th>
+	<td>JMSGEventDelegate.h</td>
+</tr>
+						</tbody></table></div>
+					
+
+                    
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>监听通知事件</p>
+					</div>
+					
+					
+
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						
+
+						
+						<h2 class="task-title">Other Methods</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/onReceiveFriendNotificationEvent:" title="onReceiveFriendNotificationEvent:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/onReceiveFriendNotificationEvent:">&ndash;&nbsp;onReceiveFriendNotificationEvent:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>监听好友相关事件</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)onReceiveFriendNotificationEvent:(JMSGFriendNotificationEvent *)<em>event</em></code></div>
+
+		    
+			
+
+			
+
+			
+			<div class="method-subsection availability">
+				<h4 class="method-subtitle parameter-title">Availability</h4>
+				<p>3.5.0</p>
+			</div>
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>可监听：加好友、删除好友、好友更新等事件</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGEventDelegate.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/onReceiveMessageRetractEvent:" title="onReceiveMessageRetractEvent:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/onReceiveMessageRetractEvent:">&ndash;&nbsp;onReceiveMessageRetractEvent:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>监听消息撤回事件</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)onReceiveMessageRetractEvent:(JMSGMessageRetractEvent *)<em>retractEvent</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>retractEvent</code></th>
+						<td><p>下发的通知事件，事件类型请查看 <a href="../Classes/JMSGMessageRetractEvent.html">JMSGMessageRetractEvent</a> 类</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection availability">
+				<h4 class="method-subtitle parameter-title">Availability</h4>
+				<p>3.2.0</p>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGEventDelegate.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/onReceiveMessageReceiptStatusChangeEvent:" title="onReceiveMessageReceiptStatusChangeEvent:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/onReceiveMessageReceiptStatusChangeEvent:">&ndash;&nbsp;onReceiveMessageReceiptStatusChangeEvent:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>监听消息回执状态变更事件</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)onReceiveMessageReceiptStatusChangeEvent:(JMSGMessageReceiptStatusChangeEvent *)<em>receiptEvent</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>receiptEvent</code></th>
+						<td><p>下发的通知事件，事件类型请查看 <a href="../Classes/JMSGMessageReceiptStatusChangeEvent.html">JMSGMessageReceiptStatusChangeEvent</a> 类</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection availability">
+				<h4 class="method-subtitle parameter-title">Availability</h4>
+				<p>3.3.0</p>
+			</div>
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>上层可以通过 receiptEvent 获取相应信息</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGEventDelegate.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/onReceiveMessageTransparentEvent:" title="onReceiveMessageTransparentEvent:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/onReceiveMessageTransparentEvent:">&ndash;&nbsp;onReceiveMessageTransparentEvent:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>监听消息透传事件</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)onReceiveMessageTransparentEvent:(JMSGMessageTransparentEvent *)<em>transparentEvent</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>transparentEvent</code></th>
+						<td><p>下发的通知事件，事件类型请查看 <a href="../Classes/JMSGMessageTransparentEvent.html">JMSGMessageTransparentEvent</a> 类</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection availability">
+				<h4 class="method-subtitle parameter-title">Availability</h4>
+				<p>3.3.0</p>
+			</div>
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>消息透传的类型：单聊、群聊、设备间透传消息</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGEventDelegate.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/onReceiveChatRoomAdminChangeEvents:" title="onReceiveChatRoomAdminChangeEvents:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/onReceiveChatRoomAdminChangeEvents:">&ndash;&nbsp;onReceiveChatRoomAdminChangeEvents:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>聊天室管理员变更通知</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)onReceiveChatRoomAdminChangeEvents:(NSArray&lt;__kindofJMSGChatRoomAdminChangeEvent*&gt; *)<em>events</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>event</code></th>
+						<td><p>管理员事件列表</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection availability">
+				<h4 class="method-subtitle parameter-title">Availability</h4>
+				<p>3.8.0</p>
+			</div>
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>事件具体相关属性请查看 <a href="../Classes/JMSGChatRoomAdminChangeEvent.html">JMSGChatRoomAdminChangeEvent</a> 类</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGEventDelegate.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/onReceiveChatRoomBlacklistChangeEvents:" title="onReceiveChatRoomBlacklistChangeEvents:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/onReceiveChatRoomBlacklistChangeEvents:">&ndash;&nbsp;onReceiveChatRoomBlacklistChangeEvents:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>聊天室黑名单变更通知</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)onReceiveChatRoomBlacklistChangeEvents:(NSArray&lt;__kindofJMSGChatRoomBlacklisChangetEvent*&gt; *)<em>events</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>event</code></th>
+						<td><p>黑名单事件列表</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection availability">
+				<h4 class="method-subtitle parameter-title">Availability</h4>
+				<p>3.8.0</p>
+			</div>
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>事件具体相关属性请查看 <a href="../Classes/JMSGChatRoomBlacklisChangetEvent.html">JMSGChatRoomBlacklisChangetEvent</a> 类</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGEventDelegate.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+
+						<a title="以下是已经过期方法，请使用提示的新方法" name="task_以下是已经过期方法，请使用提示的新方法"></a>
+						<h2 class="task-title">以下是已经过期方法，请使用提示的新方法</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/onReceiveNotificationEvent:" title="onReceiveNotificationEvent:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/onReceiveNotificationEvent:">&ndash;&nbsp;onReceiveNotificationEvent:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>监听通知事件</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)onReceiveNotificationEvent:(JMSGNotificationEvent *)<em>event</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>event</code></th>
+						<td><p>下发的通知事件，上层通过 event.eventType 判断具体事件</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>此方法可监听如下事件:</p>
+
+<ul>
+<li>好友事件：加好友、删除好友、好友更新；</li>
+<li>当前用户登录状态变更事件：当前登录用户被踢、非客户端修改密码强制登出、登录状态异常、被删除、信息变更通；</li>
+</ul>
+
+
+<h4>方法变更：</h4>
+
+<p>之前版本的好友事件、当前登录用户状态变更事件都是通过此方法监听，SDK 从 3.5.0 开始将此方法细分为两个方法.</p>
+
+<pre><code>// 当前用户登录状态变更事件，在 JMSGUserDelegate 类
+- (void)onReceiveUserLoginStatusChangeEvent:(JMSGUserLoginStatusChangeEvent *)event;
+// 好友相关事件
+- (void)onReceiveFriendNotificationEvent:(JMSGFriendNotificationEvent *)event;
+</code></pre>
+
+<h4>注意：此方法已过期，请使用如上所述的两个方法</h4>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGEventDelegate.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+					</div>
+					
+					
+
+                    
+                    
+          
+				</main>
+
+				<footer>
+					<div class="footer-copyright">
+						
+						<p class="copyright">Copyright &copy; 2019 HXHG. All rights reserved. Updated: 2019-01-08</p>
+						
+						
+						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
+						
+					</div>
+				</footer>
+			</div>
+		</div>
+	</article>
+
+	<script src="../js/script.js"></script>
+</body>
+</html>

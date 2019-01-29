@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>JMRTCDelegate Protocol Reference</title>
+
+	<link rel="stylesheet" href="../css/style.css">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
+	<meta name="generator" content="appledoc 2.2.1 (build 1334)">
+</head>
+<body class="appledoc">
+	<header>
+		<div class="container" class="hide-in-xcode">
+			
+			<h1 id="library-title">
+				<a href="../index.html">JMRTC-iOS-SDK </a>
+			</h1>
+
+			<p id="developer-home">
+				<a href="../index.html">HXHG</a>
+			</p>
+			
+		</div>
+	</header>
+
+	<aside>
+		<div class="container">
+			<nav>
+				<ul id="header-buttons" role="toolbar">
+					<li><a href="../index.html">Index</a></li>
+<li><a href="../hierarchy.html">Hierarchy</a></li>
+
+					<li id="on-this-page" role="navigation">
+						<label>
+							On This Page
+
+							<div class="chevron">
+								<div class="chevy chevron-left"></div>
+								<div class="chevy chevron-right"></div>
+							</div>
+
+							<select id="jump-to">
+	<option value="top">Jump To&#133;</option>
+	
+
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+
+	
+	
+
+	
+
+	
+	<optgroup label="Instance Methods">
+		
+		<option value="//api/name/onCallOutgoing:">- onCallOutgoing:</option>
+		
+		<option value="//api/name/onCallReceiveInvite:">- onCallReceiveInvite:</option>
+		
+		<option value="//api/name/onCallConnecting:">- onCallConnecting:</option>
+		
+		<option value="//api/name/onCallConnected:">- onCallConnected:</option>
+		
+		<option value="//api/name/onCallMemberJoin:">- onCallMemberJoin:</option>
+		
+		<option value="//api/name/onCallDisconnect:disconnectReason:">- onCallDisconnect:disconnectReason:</option>
+		
+		<option value="//api/name/onCallMemberLeave:reason:">- onCallMemberLeave:reason:</option>
+		
+		<option value="//api/name/onCallOtherUserInvited:fromUser:">- onCallOtherUserInvited:fromUser:</option>
+		
+		<option value="//api/name/onCallError:">- onCallError:</option>
+		
+		<option value="//api/name/onCallUserVideoStreamEnabled:byUser:">- onCallUserVideoStreamEnabled:byUser:</option>
+		
+	</optgroup>
+	
+	
+</select>
+						</label>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</aside>
+
+	<article>
+		<div id="overview_contents" class="container">
+			<div id="content">
+				<main role="main">
+					<h1 class="title">JMRTCDelegate Protocol Reference</h1>
+
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<th>Conforms to</th>
+	<td>NSObject</td>
+</tr><tr>
+	<th>Declared in</th>
+	<td>JMRTCDelegate.h</td>
+</tr>
+						</tbody></table></div>
+					
+
+                    
+
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						
+
+						
+						
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/onCallOutgoing:" title="onCallOutgoing:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/onCallOutgoing:">&ndash;&nbsp;onCallOutgoing:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>通话邀请已发出</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)onCallOutgoing:(JMRTCSession *)<em>callSession</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>callSession</code></th>
+						<td><p>通话实体对象</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>在成功调用 <a href="../Classes/JMRTCClient.html#//api/name/startCallUsers:mediaType:handler:">[JMRTCClient startCallUsers:mediaType:handler:]</a> 接口之后，会触发这个回调</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMRTCDelegate.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/onCallReceiveInvite:" title="onCallReceiveInvite:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/onCallReceiveInvite:">&ndash;&nbsp;onCallReceiveInvite:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>收到通话邀请</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)onCallReceiveInvite:(JMRTCSession *)<em>callSession</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>callSession</code></th>
+						<td><p>通话实体对象</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>被邀请者收到通话邀请，会触发此回调</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMRTCDelegate.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/onCallConnecting:" title="onCallConnecting:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/onCallConnecting:">&ndash;&nbsp;onCallConnecting:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>通话正在连接</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)onCallConnecting:(JMRTCSession *)<em>callSession</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>callSession</code></th>
+						<td><p>通话实体对象</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>被邀请方调用 <a href="../Classes/JMRTCSession.html#//api/name/accept:">[JMRTCSession accept:]</a> 接口之后，会触发此回调</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMRTCDelegate.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/onCallConnected:" title="onCallConnected:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/onCallConnected:">&ndash;&nbsp;onCallConnected:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>通话连接已建立</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)onCallConnected:(JMRTCSession *)<em>callSession</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>callSession</code></th>
+						<td><p>通话实体对象</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>当被邀请方有任意一方成功调用 <a href="../Classes/JMRTCSession.html#//api/name/accept:">[JMRTCSession accept:]</a> 接受邀请后，邀请方和接受方都会触发此回调通知上层通信连接已建立</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMRTCDelegate.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/onCallMemberJoin:" title="onCallMemberJoin:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/onCallMemberJoin:">&ndash;&nbsp;onCallMemberJoin:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>有用户加入通话</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)onCallMemberJoin:(JMSGUser *)<em>joinUser</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>joinUser</code></th>
+						<td><p>加入的用户的用户信息</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMRTCDelegate.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/onCallDisconnect:disconnectReason:" title="onCallDisconnect:disconnectReason:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/onCallDisconnect:disconnectReason:">&ndash;&nbsp;onCallDisconnect:disconnectReason:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>通话断开</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)onCallDisconnect:(JMRTCSession *)<em>callSession</em> disconnectReason:(JMRTCDisconnectReason)<em>reason</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>callSession</code></th>
+						<td><p>通话实体对象</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>reason</code></th>
+						<td><p>断开原因</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>连接主动断开或异常断开时会触发此回调，断开原因请查看的 <a href="../Constants/JMRTCDisconnectReason.html">JMRTCDisconnectReason</a></p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMRTCDelegate.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/onCallMemberLeave:reason:" title="onCallMemberLeave:reason:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/onCallMemberLeave:reason:">&ndash;&nbsp;onCallMemberLeave:reason:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>有用户离开</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)onCallMemberLeave:(JMSGUser *)<em>leaveUser</em> reason:(JMRTCDisconnectReason)<em>reason</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>leaveUser</code></th>
+						<td><p>退出通话的用户的用户信息</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>reason</code></th>
+						<td><p>退出原因</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>不管是正在被邀请的用户离开，还是已经加入通话的用户离开，都会触发这个回调</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMRTCDelegate.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/onCallOtherUserInvited:fromUser:" title="onCallOtherUserInvited:fromUser:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/onCallOtherUserInvited:fromUser:">&ndash;&nbsp;onCallOtherUserInvited:fromUser:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>通话过程中，有其他用户被邀请</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)onCallOtherUserInvited:(NSArray&lt;__kindofJMSGUser*&gt; *)<em>invitedUsers</em> fromUser:(JMSGUser *)<em>fromUser</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>invitedUsers</code></th>
+						<td><p>被邀请方用户信息集合</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>fromUser</code></th>
+						<td><p>邀请发起方用户信息</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMRTCDelegate.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/onCallError:" title="onCallError:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/onCallError:">&ndash;&nbsp;onCallError:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>通话过程中发生错误</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)onCallError:(NSError *)<em>error</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>error</code></th>
+						<td><p>错误信息</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>错误具体情况请查看 error 的错误码和描述信息</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMRTCDelegate.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/onCallUserVideoStreamEnabled:byUser:" title="onCallUserVideoStreamEnabled:byUser:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/onCallUserVideoStreamEnabled:byUser:">&ndash;&nbsp;onCallUserVideoStreamEnabled:byUser:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>远端用户开启/关闭视频流</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)onCallUserVideoStreamEnabled:(BOOL)<em>enabled</em> byUser:(JMSGUser *)<em>user</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>enabled</code></th>
+						<td><p>开启/关闭</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>user</code></th>
+						<td><p>远端用户</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMRTCDelegate.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+					</div>
+					
+					
+
+                    
+                    
+          
+				</main>
+
+				<footer>
+					<div class="footer-copyright">
+						
+						<p class="copyright">Copyright &copy; 2018 HXHG. All rights reserved. Updated: 2018-07-05</p>
+						
+						
+						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
+						
+					</div>
+				</footer>
+			</div>
+		</div>
+	</article>
+
+	<script src="../js/script.js"></script>
+</body>
+</html>

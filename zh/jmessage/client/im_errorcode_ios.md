@@ -235,5 +235,5 @@
 </div>
 
 
-<br>若以上列表中没有找到对应的错误码，可查看[服务端错误码](https://docs.jiguang.cn/jmessage/client/im_errorcode_server/)## 相关文档+ [Android SDK 错误码](../client/im_errorcode_android/)+ [服务端错误码](https://docs.jiguang.cn/jmessage/client/im_errorcode_server/)
+<br>若以上列表中没有找到对应的错误码，可查看[服务端错误码](./im_errorcode_server/)## 相关文档+ [Android SDK 错误码](../client/im_errorcode_android/)+ [服务端错误码](./im_errorcode_server/)
 
