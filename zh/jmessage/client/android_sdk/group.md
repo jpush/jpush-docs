@@ -1084,3 +1084,5 @@ groupInfo.getGroupBlackList(new RequestCallback<List<UserInfo>>() {
 	}
 });
 ```
+### 群组免打扰
+群组免打扰参考用户信息管理[免打扰设置](./user#Nodisturb)一节

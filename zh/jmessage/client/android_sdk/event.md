@@ -43,7 +43,7 @@ public void onEvent(EventEntity event){
 
 参数定义
 
-+ EventEntity event 事件对象。（ 定义不同类型参数可以接收不同种类事件，具体用法可以参考“示例代码“。）
++ EventEntity event 事件对象。（ 指代下文的具体事件类型实体类型，具体用法可以参考“示例代码“。）
 
 #### 主线程模式
 ```
@@ -54,13 +54,91 @@ public void onEventMainThread(EventEntity event){
 方法体将在主线程中被调用，可以用来刷新UI。
 参数定义
 
-+ EventEntity event 事件对象。
++ EventEntity event 事件对象。EventEntity指代的是下文的具体事件类型
 
 
-### 事件类型
+### 用户事件
+**当前登录用户信息被更新事件实体类 MyInfoUpdatedEvent**
 
-消息事件实体类 MessageEvent
+<div class="table-d" align="left" >
+  <table border="1" width = "100%">
+    <tr  bgcolor="#D3D3D3" >
+      <th width="10px">方法</th>
+      <th width="20px">类型</th>
+      <th width="370px">说明</th>
+    </tr>
+    <tr >
+      <td >getMyInfo()</td>
+      <td >UserInfo</td>
+      <td >获取更新之后的我的userinfo</td>
+    </tr>
+    </table>
+</div>
 
+**用户下线事件UserLogoutEvent**  
+***(已过时，请使用LoginStateChangeEvent代替)***
+
+<div class="table-d" align="left" >
+  <table border="1" width = "100%">
+    <tr  bgcolor="#D3D3D3" >
+      <th width="100px">方法</th>
+      <th width="20px">类型</th>
+      <th width="300px">说明</th>
+    </tr>
+    <tr >
+      <td >getMyInfo()</td>
+      <td >UserInfo</td>
+      <td >获取当前被登出账号的信息</td>
+    </tr>
+  </table>
+</div>
+
+</br>
+
+**用户被删除事件UserDeletedEvent**  
+***(已过时，请使用LoginStateChangeEvent代替)***
+
+<div class="table-d" align="left" >
+  <table border="1" width = "100%">
+    <tr  bgcolor="#D3D3D3" >
+      <th width="100px">方法</th>
+      <th width="20px">类型</th>
+      <th width="300px">说明</th>
+    </tr>
+    <tr >
+      <td >getMyInfo()</td>
+      <td >UserInfo</td>
+      <td >获取当前被删除账号的信息</td>
+    </tr>
+  </table>
+</div>
+
+</br>
+
+**用户登录状态变更事件LoginStateChangeEvent**
+<div class="table-d" align="left" >
+  <table border="1" width = "100%">
+    <tr  bgcolor="#D3D3D3" >
+      <th width="100px">方法</th>
+      <th width="20px">类型</th>
+      <th width="300px">说明</th>
+    </tr>
+    <tr >
+      <td >getMyInfo()</td>
+      <td >UserInfo</td>
+      <td >获取当前登录状态改变的账号的信息</td>
+    </tr>
+    <tr >
+      <td >getReason()</td>
+      <td >Reason</td>
+      <td >获取登录状态变更原因。</td>
+    </tr>
+  </table>
+</div>
+
+
+### 消息/会话事件
+**在线消息事件实体类 MessageEvent**
 <div class="table-d" align="left" >
   <table border="1" width = "100%">
     <tr  bgcolor="#D3D3D3" >
@@ -78,7 +156,7 @@ public void onEventMainThread(EventEntity event){
 
 </br>
 
-离线消息事件实体类 OfflineMessageEvent
+**离线消息事件实体类 OfflineMessageEvent**  
 ***Since 2.1.0***
 
 <div class="table-d" align="left" >
@@ -106,9 +184,7 @@ public void onEventMainThread(EventEntity event){
   </table>
 </div>
 
-</br>
-
-会话刷新事件实体类 ConversationRefreshEvent
+**会话刷新事件实体类 ConversationRefreshEvent**
 
 <div class="table-d" align="left" >
   <table border="1" width = "100%">
@@ -125,111 +201,12 @@ public void onEventMainThread(EventEntity event){
     <tr >
       <td >getReason()</td>
       <td >Reason</td>
-      <td >获取事件发生的原因</td>
+      <td >获取事件发生的原因，包括消息漫游完成、会话信息更新等</td>
     </tr>
   </table>
 </div>
 
-</br>
-
-当前登录用户信息被更新事件实体类 MyInfoUpdatedEvent
-
-<div class="table-d" align="left" >
-  <table border="1" width = "100%">
-    <tr  bgcolor="#D3D3D3" >
-      <th width="10px">方法</th>
-      <th width="20px">类型</th>
-      <th width="370px">说明</th>
-    </tr>
-    <tr >
-      <td >getMyInfo()</td>
-      <td >UserInfo</td>
-      <td >获取更新之后的我的userinfo</td>
-    </tr>
-    </table>
-</div>
-
-</br>
-
-通知栏点击事件实体类NotificationClickEvent
-
-<div class="table-d" align="left" >
-  <table border="1" width = "100%">
-    <tr  bgcolor="#D3D3D3" >
-      <th width="30px">方法</th>
-      <th width="20px">类型</th>
-      <th width="300px">说明</th>
-    </tr>
-    <tr >
-      <td >getMessage()</td>
-      <td >Message</td>
-      <td >获取点击的通知所对应的消息对象</td>
-    </tr>
-  </table>
-</div>
-
-</br>
-
-用户下线事件UserLogoutEvent **(已过时，请使用LoginStateChangeEvent代替)**
-
-<div class="table-d" align="left" >
-  <table border="1" width = "100%">
-    <tr  bgcolor="#D3D3D3" >
-      <th width="100px">方法</th>
-      <th width="20px">类型</th>
-      <th width="300px">说明</th>
-    </tr>
-    <tr >
-      <td >getMyInfo()</td>
-      <td >UserInfo</td>
-      <td >获取当前被登出账号的信息</td>
-    </tr>
-  </table>
-</div>
-
-</br>
-
-用户被删除事件UserDeletedEvent **(已过时，请使用LoginStateChangeEvent代替)**
-
-<div class="table-d" align="left" >
-  <table border="1" width = "100%">
-    <tr  bgcolor="#D3D3D3" >
-      <th width="100px">方法</th>
-      <th width="20px">类型</th>
-      <th width="300px">说明</th>
-    </tr>
-    <tr >
-      <td >getMyInfo()</td>
-      <td >UserInfo</td>
-      <td >获取当前被删除账号的信息</td>
-    </tr>
-  </table>
-</div>
-
-</br>
-
-用户登录状态变更事件LoginStateChangeEvent
-<div class="table-d" align="left" >
-  <table border="1" width = "100%">
-    <tr  bgcolor="#D3D3D3" >
-      <th width="100px">方法</th>
-      <th width="20px">类型</th>
-      <th width="300px">说明</th>
-    </tr>
-    <tr >
-      <td >getMyInfo()</td>
-      <td >UserInfo</td>
-      <td >获取当前登录状态改变的账号的信息</td>
-    </tr>
-    <tr >
-      <td >getReason()</td>
-      <td >Reason</td>
-      <td >获取登录状态变更原因。</td>
-    </tr>
-  </table>
-</div>
-
-消息被对方撤回通知事件MessageRetractEvent
+**消息被对方撤回通知事件MessageRetractEvent**  
 ***Since 2.2.0***
 <div class="table-d" align="left" >
   <table border="1" width = "100%">
@@ -252,7 +229,7 @@ public void onEventMainThread(EventEntity event){
   </table>
 </div>
 
-消息未回执人数变更事件MessageReceiptStatusChangeEvent
+**消息未回执人数变更事件MessageReceiptStatusChangeEvent**  
 ***Since 2.3.0***
 <div class="table-d" align="left" >
   <table border="1" width = "100%">
@@ -274,39 +251,55 @@ public void onEventMainThread(EventEntity event){
   </table>
 </div>
 
-命令透传事件CommandNotificationEvent
-***Since 2.3.0***
-<div class="table-d" align="left" >
-  <table border="1" width = "100%">
-    <tr  bgcolor="#D3D3D3" >
-      <th width="100px">方法</th>
-      <th width="20px">类型</th>
-      <th width="300px">说明</th>
-    </tr>
-    <tr >
-      <td >getSenderUserInfo()</td>
-      <td >`UserInfo`</td>
-      <td >获取命令透传消息发送者的UserInfo</td>
-    </tr>
-    <tr >
-      <td >getType()</td>
-      <td >`Type`</td>
-      <td >获取命令透传消息对象的类型，单聊是`Type.single`,群聊则是`Type.group`</td>
-    </tr>    
-    <tr >
-      <td >getTargetInfo()</td>
-      <td >`Objcet`</td>
-      <td >获取命令透传消息发送对象的Info。若对象是单聊用户则是`UserInfo`,对象是群组则是`GroupInfo`，使用时强制转型</td>
-    </tr>
-    <tr >
-      <td >getMsg()</td>
-      <td >`String`</td>
-      <td >获取命令透传消息的实际内容</td>
-    </tr>
-  </table>
-</div>
 
-群成员审批事件GroupApprovalEvent
+### 群组事件
+**群成员变化相关事件**  
+群组成员变化相关事件因为sdk需要入库，所以sdk会将相关事件以消息事件的方式上抛，用户可以将群组中产生的成员变化事件理解成一条特殊的消息，其消息类型为eventNotification，例如：
+
+```
+  //用户在线期间，如果群组中发生了成员变化事件，sdk也会通过上抛MessageEvent的方式来通知上层
+  public void onEvent(MessageEvent event) {
+    Message msg = event.getMessage();
+	//获取消息类型，如text voice image eventNotification等。
+    switch (msg.getContentType()) {
+      //处理事件提醒消息，此处message的contentType类型为eventNotification。
+      case eventNotification:
+        //获取事件发生的群的群信息
+        GroupInfo groupInfo = (GroupInfo) msg.getTargetInfo();
+        //获取事件具体的内容对象
+        EventNotificationContent eventNotificationContent = (EventNotificationContent)msg.getContent();
+        //获取事件具体类型
+        switch (eventNotificationContent.getEventNotificationType()){ 
+          case group_member_added:
+          //群成员加群事件
+          break;
+          case group_member_removed:
+          //群成员被踢事件
+          break;
+          case group_member_exit:
+          //群成员退群事件
+          break;
+          case group_info_updated://since 2.2.1
+          //群信息变更事件
+          break;
+          ...
+        }
+        break;
+    }
+  }
+
+  //用户离线期间，如果群组中发生了成员变化事件，sdk也会通过上抛OfflineMessageEvent
+  //的方式来通知上层，处理方式类似上面的MessageEvent
+  public void onEvent(OfflineMessageEvent event) {
+    List<Message> msgs = event.getOfflineMessageList();
+    for (Message msg:msgs) {
+       //...
+    }
+  }
+
+```
+
+**群成员审批事件GroupApprovalEvent**  
 ***Since 2.4.0***
 <div class="table-d" align="left" >
   <table border="1" width = "100%">
@@ -353,7 +346,7 @@ public void onEventMainThread(EventEntity event){
   </table>
 </div>
 
-群成员审批拒绝事件GroupApprovalRefuseEvent
+**群成员审批拒绝事件GroupApprovalRefuseEvent**  
 ***Since 2.4.0***
 <div class="table-d" align="left" >
   <table border="1" width = "100%">
@@ -385,24 +378,7 @@ public void onEventMainThread(EventEntity event){
   </table>
 </div>
 
-聊天室消息事件ChatRoomMessageEvent
-***Since 2.4.0***
-<div class="table-d" align="left" >
-  <table border="1" width = "100%">
-    <tr  bgcolor="#D3D3D3" >
-      <th width="100px">方法</th>
-      <th width="20px">类型</th>
-      <th width="300px">说明</th>
-    </tr>
-    <tr >
-      <td >getMessages()</td>
-      <td >`List<Message>`</td>
-      <td >获取聊天室消息事件中包含的消息列表</td>
-    </tr>
-  </table>
-</div>
-
-已审批事件通知GroupApprovedNotificationEvent
+**已审批事件通知GroupApprovedNotificationEvent**  
 ***Since 2.5.0***
 <div class="table-d" align="left" >
   <table border="1" width = "100%">
@@ -439,7 +415,7 @@ public void onEventMainThread(EventEntity event){
   </table>
 </div>
 
-群成员昵称修改事件GroupMemNicknameChangedEvent
+**群成员昵称修改事件GroupMemNicknameChangedEvent**  
 ***Since 2.7.0***
 <div class="table-d" align="left" >
   <table border="1" width = "100%">
@@ -461,7 +437,7 @@ public void onEventMainThread(EventEntity event){
   </table>
 </div>
 
-群公告变更事件GroupAnnouncementChangedEvent
+**群公告变更事件GroupAnnouncementChangedEvent**  
 ***Since 2.8.0***
 <div class="table-d" align="left" >
   <table border="1" width = "100%">
@@ -483,7 +459,7 @@ public void onEventMainThread(EventEntity event){
   </table>
 </div>
 
-群黑名单变更事件GroupBlackListChangedEvent
+**群黑名单变更事件GroupBlackListChangedEvent**  
 ***Since 2.8.0***
 <div class="table-d" align="left" >
   <table border="1" width = "100%">
@@ -505,7 +481,29 @@ public void onEventMainThread(EventEntity event){
   </table>
 </div>
 
-聊天室通知事件ChatRoomNotificationEvent
+
+
+### 聊天室事件
+**聊天室消息事件ChatRoomMessageEvent**  
+***Since 2.4.0***
+聊天室消息因为sdk不会入库，所以没有走正常的消息事件，而是单独的聊天室消息事件。注意和消息事件做区分
+<div class="table-d" align="left" >
+  <table border="1" width = "100%">
+    <tr  bgcolor="#D3D3D3" >
+      <th width="100px">方法</th>
+      <th width="20px">类型</th>
+      <th width="300px">说明</th>
+    </tr>
+    <tr >
+      <td >getMessages()</td>
+      <td >`List<Message>`</td>
+      <td >获取聊天室消息事件中包含的消息列表</td>
+    </tr>
+  </table>
+</div>
+
+
+**聊天室通知事件ChatRoomNotificationEvent**  
 ***Since 2.8.0***
 <div class="table-d" align="left" >
   <table border="1" width = "100%">
@@ -547,6 +545,95 @@ public void onEventMainThread(EventEntity event){
   </table>
 </div>
 
+
+
+### 好友事件
+**好友相关事件通知实体类ContactNotifyEvent**  
+***Since 1.4.0***
+<div class="table-d" align="left" >
+  <table border="1" width = "100%">
+    <tr  bgcolor="#D3D3D3" >
+      <th width="100px">方法</th>
+      <th width="20px">类型</th>
+      <th width="300px">说明</th>
+    </tr>
+    <tr >
+      <td >getType()</td>
+      <td >`Type`</td>
+      <td >获取好友通知事件的具体类型。</td>
+    </tr>
+    <tr >
+      <td >getReason()</td>
+      <td >`String`</td>
+      <td >获取事件发生的理由，该字段由对方发起请求时所填。</td>
+    </tr>    
+    <tr >
+      <td >getFromUsername()</td>
+      <td >`String`</td>
+      <td >获取事件发起者用户的username</td>
+    </tr>
+    <tr >
+      <td >getfromUserAppKey()</td>
+      <td >`String`</td>
+      <td >获取事件发起者用户所属应用的appKey</td>
+    </tr>
+  </table>
+</div>
+
+### 命令透传事件
+**命令透传事件实体类CommandNotificationEvent**  
+***Since 2.3.0***
+<div class="table-d" align="left" >
+  <table border="1" width = "100%">
+    <tr  bgcolor="#D3D3D3" >
+      <th width="100px">方法</th>
+      <th width="20px">类型</th>
+      <th width="300px">说明</th>
+    </tr>
+    <tr >
+      <td >getSenderUserInfo()</td>
+      <td >`UserInfo`</td>
+      <td >获取命令透传消息发送者的UserInfo</td>
+    </tr>
+    <tr >
+      <td >getType()</td>
+      <td >`Type`</td>
+      <td >获取命令透传消息对象的类型，单聊是`Type.single`,群聊则是`Type.group`,如果是自己已登录设备间的命令透传则是`Type.self`</td>
+    </tr>    
+    <tr >
+      <td >getTargetInfo()</td>
+      <td >`Objcet`</td>
+      <td >获取命令透传消息发送对象的Info。若对象是单聊用户则是`UserInfo`,对象是群组则是`GroupInfo`，使用时强制转型</td>
+    </tr>
+    <tr >
+      <td >getMsg()</td>
+      <td >`String`</td>
+      <td >获取命令透传消息的实际内容</td>
+    </tr>
+  </table>
+</div>
+
+
+### 通知栏点击事件
+**通知栏点击事件实体类NotificationClickEvent**
+
+<div class="table-d" align="left" >
+  <table border="1" width = "100%">
+    <tr  bgcolor="#D3D3D3" >
+      <th width="30px">方法</th>
+      <th width="20px">类型</th>
+      <th width="300px">说明</th>
+    </tr>
+    <tr >
+      <td >getMessage()</td>
+      <td >Message</td>
+      <td >获取点击的通知所对应的消息对象</td>
+    </tr>
+  </table>
+</div>
+
+
+
 ### 示例代码
 接收消息事件
 ```Java
@@ -566,6 +653,7 @@ class MessageEventReceiver extends Activity {
     super.onDestroy();
   }
 
+  //用户在线期间收到的消息都会以MessageEvent的方式上抛
   public void onEvent(MessageEvent event) {
     Message msg = event.getMessage();
 
@@ -618,6 +706,15 @@ class MessageEventReceiver extends Activity {
         promptContent.getPromptType();//未知消息的type是unknown_msg_type
         promptContent.getPromptText();//提示文本，“当前版本不支持此类型消息，请更新sdk版本”
         break;
+    }
+  }
+  
+  //用户离线期间收到的消息会以OfflineMessageEvent的方式上抛，处理方式类似上面的
+  //MessageEvent
+  public void onEvent(OfflineMessageEvent event) {
+    List<Message> msgs = event.getOfflineMessageList();
+    for (Message msg:msgs) {
+       //...
     }
   }
 }
