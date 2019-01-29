@@ -93,9 +93,9 @@
     <li><a href="/jmessage/client/javadoc/">Android IM API Docs</a></li>
     </ul>
     <ul>
-    <li><a href="/jmessage/client/im_sdk_ios/">iOS SDK 概述</a></li>
-    <li><a href="/jmessage/client/jmessage_ios_guide/">iOS SDK 集成指南</a></li>
-    <li><a href="https://docs.jiguang.cn/jmessage/client/jmessage_ios_appledoc_html/">iOS SDK API</a></li>
+    <li><a href="/jmessage/client/ios_sdk/basic">iOS IM SDK 开发指南</a></li>
+    <li><a href="/jmessage/client/jmessage_ios_guide/">iOS IM SDK 集成指南</a></li>
+    <li><a href="/jmessage/client/ios_sdk/ios_doc">iOS IM API Docs</a></li>
     </ul>
     <ul>
     <li><a href="/jmessage/client/im_sdk_js/">WEB SDK 开发指南</a></li>
