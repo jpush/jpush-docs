@@ -90,6 +90,8 @@ pages:
     - 'QuickApp SDK API': 'janalytics/client/quickapp_api.md'
   - 高级:
     - '漏斗分析': 'janalytics/funnel/funnel_intro.md'
+    - '动态圈选（Beta）': 'janalytics/circle/circle_intro.md'
+
   - 客户端集成插件: 'janalytics/client/client_plugins.md'
   - 最近更新: 'janalytics/updates.md'
   - 资源下载: 'janalytics/resources.md'
