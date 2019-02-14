@@ -65,7 +65,7 @@
             ......
         }
 
-        allprojets {
+        allprojects {
             repositories {
                 jcenter()
             }
@@ -104,7 +104,7 @@
         dependencies {
             ......
 
-            compile 'cn.jiguang.sdk:jmessage:2.8.0'  // 此处以JMessage 2.8.0 版本为例。
+            compile 'cn.jiguang.sdk:jmessage:2.8.1'  // 此处以JMessage 2.8.1 版本为例。
             compile 'cn.jiguang.sdk:jcore:1.2.6'  // 此处以JCore 1.2.6 版本为例。
             ......
         }
@@ -466,35 +466,34 @@ JMessage SDK
 
 ### JMessage混淆
 
-+ 请下载4.x版本的[proguard.jar](http://sourceforge.net/projects/proguard/files/proguard/)， 并替换你Android Sdk "tools\proguard\lib\proguard.jar"
-
 
 + 请在工程的混淆文件中添加以下配置：
 
-        -dontoptimize
-        -dontpreverify
-		-keepattributes  EnclosingMethod,Signature
-        -dontwarn cn.jpush.**
-        -keep class cn.jpush.** { *; }
+```
+-dontoptimize
+-dontpreverify
+-keepattributes  EnclosingMethod,Signature
+-dontwarn cn.jpush.**
+-keep class cn.jpush.** { *; }
 
-        -dontwarn cn.jiguang.**
-        -keep class cn.jiguang.** { *; }
+-dontwarn cn.jiguang.**
+-keep class cn.jiguang.** { *; }
 
+-dontwarn cn.jmessage.**
+-keep class cn.jmessage.**{ *; }
 
-		 -keepclassmembers class ** {
-		     public void onEvent*(**);
-		 }
+-keepclassmembers class ** {
+    public void onEvent*(**);
+}
 
-		#========================gson================================
-		-dontwarn com.google.**
-		-keep class com.google.gson.** {*;}
+#========================gson================================
+-dontwarn com.google.**
+-keep class com.google.gson.** {*;}
 
-		#========================protobuf================================
-		-keep class com.google.protobuf.** {*;}
+#========================protobuf================================
+-keep class com.google.protobuf.** {*;}
+```
 
-		#========================support=================================
-		-dontwarn cn.jmessage.support.**
-		-keep class cn.jmessage.support.**{*;}
 
 
 ### IM场景代码样例

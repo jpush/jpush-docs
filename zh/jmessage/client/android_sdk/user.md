@@ -176,7 +176,7 @@ JMessageClient.exitConversation();
 
 
 
-### 免打扰设置
+### <span id="Nodisturb">免打扰设置</span>
 可以将用户/群组添加到“免打扰”列表中，收到免打扰用户/群组发过来的消息时，sdk不会弹出默认的通知提示，但[消息事件](../im_android_api_docs/cn/jpush/im/android/api/event/MessageEvent.html)照常下发。
 
 #### 获取免打扰列表
@@ -188,7 +188,18 @@ JMessageClient.getNoDisturblist(GetNoDisurbListCallback callback)
 + GetNoDisurbListCallback callback 回调接口。
 	
 #### 设置普通免打扰
-见api doc中[UserInfo](../im_android_api_docs/cn/jpush/im/android/api/model/UserInfo.html)和[GroupInfo](../im_android_api_docs/cn/jpush/im/android/api/model/GroupInfo.html)相关接口
+
+```
+    /**
+     * 将此用户设置为免打扰。
+     *
+     * @param noDisturb 1 -- 免打扰，其他 -- 非免打扰
+     * @param callback  回调接口
+     */
+    public abstract void setNoDisturb(int noDisturb, BasicCallback callback);
+    
+```
+具体见api doc中[UserInfo](../im_android_api_docs/cn/jpush/im/android/api/model/UserInfo.html)和[GroupInfo](../im_android_api_docs/cn/jpush/im/android/api/model/GroupInfo.html)相关接口
 
 
 #### 设置全局免打扰

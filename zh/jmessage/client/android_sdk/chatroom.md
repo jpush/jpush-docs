@@ -18,7 +18,7 @@ jmessage android sdk 从2.4.0版本开始提供聊天室功能，包括查询基
 
 <font color= SteelBlue>注意：进入聊天室会自动获取最近50条消息，通过`ChatRoomMessageEvent `事件上抛给应用层。客户端目前不支持创建聊天室</font>
 
-### 聊天室信息对象
+### 聊天室对象
 ***Since 2.4.0***  
 聊天室信息对象`ChatRoomInfo`
 <div class="table-d" align="left" >
@@ -71,11 +71,11 @@ jmessage android sdk 从2.4.0版本开始提供聊天室功能，包括查询基
   </table>
 </div>
 
-### 获取当前应用appkey所属下聊天室信息
+### 获取应用下聊天室列表
 ***Since 2.4.0***
 ```
 	/**
-	 * 获取当前应用appkey所属下聊天室信息。
+	 * 获取当前应用appkey所属下聊天室信息列表。
 	 *
 	 * @param start    起始位置
 	 * @param count    获取个数
@@ -85,11 +85,11 @@ jmessage android sdk 从2.4.0版本开始提供聊天室功能，包括查询基
 	ChatRoomManager.getChatRoomListByApp(int start, int count, RequestCallback<List<ChatRoomInfo>> callback);
 ```
 
-### 获取当前用户所加入的所有聊天室的信息
+### 获取当前用户加入的聊天室列表
 ***Since 2.4.0***
 ```
 	/**
-	 * 获取当前用户所加入的所有聊天室的信息。
+	 * 获取当前用户所加入的所有聊天室的信息列表。
 	 *
 	 * @param callback 接口回调
 	 * @since 2.4.0
@@ -138,7 +138,7 @@ jmessage android sdk 从2.4.0版本开始提供聊天室功能，包括查询基
      */
     ChatRoomManager.leaveChatRoom(long roomID, final BasicCallback callback);
 ```
-### 获取聊天室会话信息
+### 获取聊天室会话
 ***Since 2.4.0***
 ```
     /**
@@ -149,11 +149,7 @@ jmessage android sdk 从2.4.0版本开始提供聊天室功能，包括查询基
      * @since 2.4.0
      */
     JMessageClient.getChatRoomConversation(long roomID);
-```
 
-### 从本地获取用户的聊天室会话列表
-***Since 2.4.0***
-```
     /**
      * 从本地数据库中获取包含所有的聊天室会话的列表
      *
@@ -189,7 +185,7 @@ jmessage android sdk 从2.4.0版本开始提供聊天室功能，包括查询基
     JMessageClient.deleteChatRoomConversation(long roomID);
 ```
 
-### 聊天室消息事件
+### 聊天室消息
 ***Since 2.4.0***
 ```
 ChatRoomMessageEvent

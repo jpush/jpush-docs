@@ -9,9 +9,9 @@
 
 #### 集成说明
 
-+ JMRTC 是基于 JMessage 开发的，所以必须先集成[JMessage SDK](../resources.md) ，IM SDK 从 3.6.2 才开始支持JMRTC。
-+ 如果您看到本文档，但还未下载 JMRTC SDK，请访问[SDK下载页面](../resources)下载。
-+ 音视频服务需[付费开通](../guideline/faq/#open)或[申请试用](../guideline/faq/#_15)后才能使用，详细价格方案见：[计费说明](../guideline/faq/#_5)
++ JMRTC 是基于 JMessage 开发的，所以必须先集成[JMessage SDK](../../resources.md) ，IM SDK 从 3.6.2 才开始支持JMRTC。
++ 如果您看到本文档，但还未下载 JMRTC SDK，请访问[SDK下载页面](../../resources)下载。
++ 音视频服务需[付费开通](../guideline/faq/#open)或[申请试用](../../guideline/faq/#_15)后才能使用，详细价格方案见：[计费说明](../../guideline/faq/#_5)
 
 #### 集成步骤
 ##### 步骤 1：准备环境
@@ -31,7 +31,7 @@
 	+ 导入依赖库：`pod install`
 	
 + 手动导入	
-	+ 下载最新的 [JMRTC.framework 、JMessage.framework](../resources.md)
+	+ 下载最新的 [JMRTC.framework 、JMessage.framework](../../resources.md)
 	+ 添加指定版本的 [Agora SDK v2.2.1](https://docs.agora.io/cn/2.2.1/download)
  
 ##### 步骤 3: 添加系统库
@@ -59,7 +59,7 @@
 将 Privacy - Camera Usage Description 设置为 use camera to start video call  
 将 Privacy - Microphone Usage Description 设置为 use microphone to start video call
 ```
-![](image/ios_jmrtc_privacy.png)
+![](../image/ios_jmrtc_privacy.png)
 ##### 步骤 5：其他设置
 + 在项目配置，Build Settings，Other Linker Flags 里增加如下 1 项：
 
@@ -68,11 +68,11 @@
 	```	
 	
 + 设置后台模式。在 Background Modes 里选择 Audio, AirPlay, and Picture in Picture 
-![](image/ios_jmrtc_background.png)
+![](../image/ios_jmrtc_background.png)
 __注意__：APP 支持后台运行的具体实现，需要开发者自己完成开发。
 
 + 选择当前 Target, 并按照下图禁用 bitcode , 因为 Agora SDK 不支持 bitcode 。
-![](image/ios_jmrtc_bitcode.png)
+![](../image/ios_jmrtc_bitcode.png)
 
 ### JMRTC 开发文档
 
@@ -449,7 +449,7 @@ __注意__：APP 支持后台运行的具体实现，需要开发者自己完成
 
 ### 错误码定义
 
-参考文档：[JMRTC iOS SDK 错误码列表](./im_errorcode_ios/#jmrtc-ios)
+参考文档：[JMRTC iOS SDK 错误码列表](../im_errorcode_ios/#jmrtc-ios)
 
 
 
