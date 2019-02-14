@@ -330,7 +330,7 @@
 
 ~~~
 Account account = new Account("account001");    //account001为账号id
-account.setCreationTime(1513749859);        //账户创建的时间戳
+account.setCreationTime(1513749859L);        //账户创建的时间戳
 account.setName("张三");
 account.setSex(1);
 account.setPaid(1);

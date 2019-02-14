@@ -3,7 +3,7 @@
 img[alt= jiguang] { width: 800px; }
 </style>
 ## JAnalytics QuickApp
-针对小米与主流⼚商联合制定统⼀标准而产生的快应用SDK，集中快速且简易，有效降低开发者的接⼊成本。
+针对小米与主流⼚商联合制定统⼀标准而产生的快应用SDK，集成快速且简易，有效降低开发者的接⼊成本。
 
 
 ## 上报策略
@@ -37,7 +37,7 @@ JAnalytics QuickApp SDK 所有上报均为即时上报。即触发立马进行�
 当出现问题时：
 
 + 请仔细阅读文档，查看是否有遗漏。
-+ 给我们的support发邮件：[support&#64;jpush.cn](mailto:support&#64;jpush.cn)
++ 给我们的support发邮件：[support&#64;jiguang.cn](mailto:support&#64;jiguang.cn)
 
 为了更快速的解决问题，在寻求帮助时，请提供下列信息：
 

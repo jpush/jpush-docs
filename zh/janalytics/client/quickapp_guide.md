@@ -121,4 +121,4 @@ ps:建议将JAnalyticsInterface对象设置为全局的方法，暴露给每个�
 
 ## 技术支持
 
-邮件联系：[support&#64;jpush.cn](mailto:support&#64;jpush.cn)
+邮件联系：[support&#64;jiguang.cn](mailto:support&#64;jiguang.cn)

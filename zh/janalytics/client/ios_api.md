@@ -427,8 +427,28 @@
 //e.g. 十分钟上报一次 
 [JANALYTICSService setFrequency:600];
 ~~~
+
+##开启圈选埋点
++ ***\+ (BOOL)handleUrl:(NSURL \*)url***
+	+ 接口说明：
+		+ 扫码后，跳转至应用，调用此接口开启圈选埋点
+
+	+ 参数说明：
+		+ url： 圈选启动链接，请直接透传给sdk解析
+
+调用示例：
+
+~~~
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    if ([JANALYTICSService handleUrl:url]) {
+        return YES;
+    }
+    return NO;
+}
+~~~
+
 ## 技术支持
 
-邮件联系：<support@jpush.cn>
+邮件联系：<support@jiguang.cn>
 
 

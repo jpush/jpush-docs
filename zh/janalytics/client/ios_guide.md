@@ -15,6 +15,7 @@
 
 	1.统计页面流
 	2.统计事件：JAnalytics将事件统计模型化，目前提供了六种事件模型（登录，注册，购买，内容浏览，自定义计数事件，自定义计算事件）
+	3.动态圈选埋点统计（v2.0.0及以上版本支持）
 
 ###集成压缩包内容
 
@@ -63,17 +64,27 @@ pod 'JAnalytics', '1.2.0'
 	+ CFNetwork
 	+ libz.tbd
 	+ libresolv.tbd
+	+ libsqlite3.tbd（v2.0.0及以上版本需要）
 
 + 可以开始使用统计SDK了！
 
+##设置URL Schemes
+v2.0.0及以上版本激活圈选功能需要
+
+请进入工程配置，选择Info，添加相应URL Schemes，如图
+![jpush_ios_guide](../image/add_url_scheme.png)
+
+
 ##添加头文件
 请将以下代码添加到 AppDelegate.m 引用头文件的位置
+
 ~~~
 	// 引入JAnalytics功能所需头文件
 	#import "JANALYTICSService.h"
 	// 如果需要使用idfa功能所需要引入的头文件（可选）
 	#import <AdSupport/AdSupport.h>
 ~~~
+
 ##添加初始化代码
 
 请将以下代码添加到
@@ -89,6 +100,28 @@ pod 'JAnalytics', '1.2.0'
 	[JANALYTICSService setupWithConfig:config];
 ~~~
 
+##添加激活圈选代码
+v2.0.0及以上版本需要
+
+请实现以下方法并调用[JANALYTICSService handleUrl:]，在调试时确保函数[JANALYTICSService handleUrl:]会被执行到
+
+~~~
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    if ([JANALYTICSService handleUrl:url]) {
+        return YES;
+    }
+    return NO;
+}
+~~~
+
+若您在 AppDelegate 中实现了以下一个或多个方法，请在已实现的函数中，调用[JANALYTICSService handleUrl:]
+
+~~~
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(nullable NSString *)sourceApplication annotation:(id)annotation
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString*, id> *)options
+~~~
+
 
 ### 更多 API
 
@@ -96,9 +129,9 @@ pod 'JAnalytics', '1.2.0'
 
 ### 运行 demo
 
-压缩包附带的 demo 是一个 API 演示例子。你可以将它导入到你的工程，并将你的 AppKey 填入到 demo 的 AppDelegate 中，设置上BundleID然后直接运行起来测试。
+压缩包附带的 demo 是一个 API 演示例子。您可以将它导入到您的工程，并将您的 AppKey 填入到 demo 的 AppDelegate 中，设置上BundleID然后直接运行起来测试。
 
 
 ## 技术支持
 
-邮件联系：[support&#64;jpush.cn](mailto:support&#64;jpush.cn)
+邮件联系：[support&#64;jiguang.cn](mailto:support&#64;jiguang.cn)
