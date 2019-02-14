@@ -32,7 +32,7 @@ JAnalytics Android SDK采用了数据记录与数据上报分离的策略，数�
 ## 集成方式
 目前SDK只支持Android 2.3或以上版本的手机系统。
 
-动态圈选功能只支持Android4.2或以上版本的手机系统
+动态圈选功能只支持Android4.2或以上版本的手机系统。
 
 参考：[JAnalytics Android SDK 集成指南](android_guide)
 

@@ -29,7 +29,7 @@
 参考【集成指南】的【本地工程配置】部分进行配置。
 
 #### JCenter方式集成升级指南
-如果使用jcenter的方式集成JAnalytics，请参考官方【集成指南】的【JCenter 自动集成方式】部分。
++ 如果使用jcenter的方式集成JAnalytics，请参考官方【集成指南】的【JCenter 自动集成方式】部分。
 
 
 ### JAnalytics iOS SDK v2.0.0
