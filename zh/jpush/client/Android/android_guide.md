@@ -391,6 +391,15 @@ defaultConfig {
                  <category android:name="您应用的包名" />
              </intent-filter>
          </receiver>
+        
+        <!-- User defined. 用户自定义 Receiver 接收被拉起回调-->
+        <!-- 自定义 Receiver 组件，继承cn.jpush.android.service.WakedResultReceiver类,复写onWake(int wakeType)或 onWake(Context context, int wakeType)方法以监听被拉起 -->
+         <receiver android:name="xx.xx.xx.MyWakedResultReceiver">
+            <intent-filter>
+                <action android:name="cn.jpush.android.intent.WakedReceiver" />
+                <category android:name="${applicationId}" />
+            </intent-filter>
+    	  </receiver>
 
         <!-- Required. For publish channel feature -->
         <!-- JPUSH_CHANNEL 是为了方便开发者统计 APK 分发渠道。-->

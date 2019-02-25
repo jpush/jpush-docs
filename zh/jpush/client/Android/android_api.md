@@ -825,6 +825,8 @@ JPush 服务的连接状态发生变化。（注：不是指 Android 系统的�
 
 该类为回调父类，开发者需要继承该类并[在 Manifest 中配置](https://docs.jiguang.cn/jpush/client/Android/android_guide/#_5)您对应实现的类，接口操作的结果会在您配置的类中的如下方法中回调。
 
+
+
 ### Method - onTagOperatorResult
 
 tag 增删查改的操作会在此方法中回调结果。
@@ -1469,6 +1471,30 @@ public static void setPushNotificationBuilder(Integer notificationBuilderId, Bas
 JPushInterface.init(context);
 JPushInterface.setLatestNotificationNumber(context, 3);
 ```	
+
+
+## 自定义 Receiver 接收被拉起回调
+
+自定义一个Receiver组件，继承cn.jpush.android.service.WakedResultReceiver类,复写onWake(int wakeType)或onWake(Context context, int wakeType)方法(注：开发者二选一复写)以监听被拉起,直接在AndroidManifest配置即可。
+详细配置参考 AndroidManifest 示例。
+### onWake 方法参数说明
++ 应用被拉起时回调 onWake(int wakeType) 方法，wakeType 是拉起的类型，其取值对应的拉起方式如下：
+
+wakeType值 | 拉起方式
+---|---
+1|START_SERVICE
+2|BIND_SERVICE
+4|CONTENTPROVIDER
+
++ 应用被拉起时回调 onWake(Context context, int wakeType) 方法，context 是上下文，wakeType 是拉起的类型，其取值对应的拉起方式如下：
+
+wakeType值 | 拉起方式
+---|---
+1|START_SERVICE
+2|BIND_SERVICE
+4|CONTENTPROVIDER
+
+
 
 <a name="client_error_code"></a>
 ## 客户端错误码定义
