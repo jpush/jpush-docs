@@ -16,19 +16,18 @@ curl --insecure -X POST -v http://api.iot.jiguang.cn/device/v1/propertyset -H "C
 
 | 关键字 | 类型 | 选项  | 含义 | 说明 |
 | --- | --- | --- | --- | --- |
-| seq_no | int | 必填 | 应用端的对于该该操作的id |  |
+| seq_no | int | 必填 | 应用端的对于该该操作的id | 该 id 应用在15 分钟内不能重复使用，否则服务端会认为是重复请求|
 | device_name | string | 必填 | 待设置属性的设备名称 |  |
 | version | int | 必填 | 属性设置操作的版本id |  |
 | properties | array | 必填 | 待设置的属性项数组 |  |
 | name | string | 必填 | 属性项名称 |  |
-| value | string | 必填 | 属性项值 |当属性是 int 类型时，会校验值区间，如果设置了取值范围。当属性是 string 类型时，默认最大长度(1024 byte)。|
+| value | number/string | 必填 | 属性项值 |当属性为 int/double 时，字段类型使用 number，如果设置了值的区间，会校验值是否合法。当属性是 string 时，字段类型使用 string 默认最大长度(1024 byte)。|
 
 ### 返回示例
 ```
 < HTTP/1.1 200 OK
 < Content-Type: application/json
 {
-"code": 200,
 "msg": {
 "device_name": "your device_name",
 "op_code": 0,
@@ -65,7 +64,7 @@ curl --insecure -X POST -v http://api.iot.jiguang.cn/msg/v1/msgpub -H "Content-T
 
 | 关键字 | 类型 | 选项 | 含义 | 说明 |
 |--------|------|------|------|------|
-| seq_no | int | 必选 | 应用端的对于该该操作的id | |
+| seq_no | int | 必选 | 应用端的对于该该操作的id |该 id 应用在 15 分钟内不能重复使用，否则服务端会认为是重复请求 |
 | device_name | string | 必选 | 需要发送消息到的设备名称 | |
 | msg_body | string | 必选 | 发送的消息体的内容 | 二进制内容需先用base64 编码。 最大长度 2048 byte。|
 | ttl | int | 可选 | 该消息的有效期 | 范围为0~604800秒（0到7天），请求中如不携带，服务器默认为86400秒（1天）|

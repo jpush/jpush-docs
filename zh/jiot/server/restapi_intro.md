@@ -32,7 +32,12 @@ HTTP 请求发出的请求是：
 > POST /v3/push HTTP/1.1
 > Authorization: Basic N2Q0MzFlNDJkZmE2YTZkNjkzYWMyZDA0OjVlOTg3YWM2ZDJlMDRkOTVhOWQ4ZjBkMQ==
 ```
+## API 频率控制
+### 属性设置频率
+每个 ProductKey 在 30 秒内最多可调用 100 次属性设置操作。 若超出返回 Too Many Requests 错误。    
 
+### 消息下发频率
+每个 ProductKey 在 30 秒内最多可调用 100 次消息下发操作。 若超出返回 Too Many Requests 错误。
 
 ## 文档参考
 
