@@ -82,9 +82,137 @@ curl --insecure -X POST -v http://api.iot.jiguang.cn/msg/v1/msgpub -H "Content-T
 }
 ```
 
-###返回说明：
+### 返回说明：
 msg : 返回该消息的全局消息 id
 
+## 查询设备基本信息
+### 功能说明:
+查询设备基本信息。
+
+### 调用地址:
+https://api.iot.jiguang.cn/device/v1/baseinfo
+
+### 请求示例:
+```
+curl --insecure -X GET -v https://api.iot.jiguang.cn/device/v1/baseinfo?device_name="your device_name" -u "7d431e42dfa6a6d693ac2d04:5e987ac6d2e04d95a9d8f0d1"
+ 
+> GET /device/v1/baseinfo HTTP/1.1
+> Authorization: Basic N2Q0MzFlNDJkZmE2YTZkNjkzYWMyZDA0OjVlOTg3YWM2ZDJlMDRkOTVhOWQ4ZjBkMQ==
+```
+### 参数说明:
+| 关键字 | 类型 | 选项  | 含义 | 说明 |
+| --- | --- | --- | --- | --- |
+| device_name | string | 必填 | 需查询的设备名称 | |
+
+
+### 返回示例:
+```
+< HTTP/1.1 200 OK
+< Content-Type: application/json
+{
+    "device_secret": "a335f2e1c59b40e3908f57e9",
+    "flag": 0,
+    "time_create": 1547435552,
+    "time_active": 1547454560
+}
+```
+### 返回说明：
+设备基础信息的 json 对象:
+* device_secret : 设备的 device_secret
+* flag :  设备的 当前状态是启用还是禁用
+* time_create: 设备的创建时间 unix 时间戳
+* time_active: 设备的激活时间 unix 时间戳
+
+## 查询设备属性信息
+### 功能说明:
+查询设备属性信息。
+### 调用地址:
+https://api.iot.jiguang.cn/device/v1/property
+### 请求示例:
+```
+curl --insecure -X GET -v https://api.iot.jiguang.cn/device/v1/property?device_name="your device_name" -u "7d431e42dfa6a6d693ac2d04:5e987ac6d2e04d95a9d8f0d1"
+ 
+> GET /device/v1/property HTTP/1.1
+> Authorization: Basic N2Q0MzFlNDJkZmE2YTZkNjkzYWMyZDA0OjVlOTg3YWM2ZDJlMDRkOTVhOWQ4ZjBkMQ==
+```
+### 参数说明:
+
+| 关键字 | 类型 | 选项  | 含义 | 说明 |
+| --- | --- | --- | --- | --- |
+| device_name | string | 必填 | 需查询的设备名称 | |
+
+### 返回示例:
+```
+
+< HTTP/1.1 200 OK
+< Content-Type: application/json
+{
+    "properties": [{
+        "name": "string",
+        "desired_value": "test",
+        "desired_stime": 1547620623651,
+        "reported_value": "test",
+        "reported_stime": 1547620823651
+    }],
+    "sdk_ver": "1.01",
+    "app_ver": "1.00",
+    "last_desired_stime": 1547620623651,
+    "last_reported_stime": 1547620823651,
+    "last_desired_version": 3,
+    "last_reported_version": 2
+}
+```
+
+### 返回说明：
+
+* properties: 设备属性信息的 json 数组对象
+    * name : 属性名称。(必选)
+    * desired_value : 设置设备属性值。
+    * desired_stime ：设置设备属性值的 unix 时间戳。
+    * reported_value : 设备上报属性的当前值
+    * reported_stime ：设备上报属性的 unix 时间戳
+* sdk_ver : 设备端使用的 sdk 的版本信息
+* app_ver : 应用 app 的版本信息
+* last_desired_stime ：设备最近一次设备属性的 unix 时间戳
+* last_reported_stime ：设备最近一次设备属性的 unix 时间戳
+* last_desired_version ：设备下一次设置可用的属性版本 id
+* last_reported_version : 设备最近一次上报的属性版本
+
+## 查询设备状态信息
+
+### 功能说明:
+查询设备状态信息。
+### 调用地址:
+https://api.iot.jiguang.cn/device/v1/status
+### 请求示例:
+```
+curl --insecure -X GET -v https://api.iot.jiguang.cn/device/v1/status?device_name="your device_name" -u "7d431e42dfa6a6d693ac2d04:5e987ac6d2e04d95a9d8f0d1"
+ 
+> GET /device/v1/status HTTP/1.1
+> Authorization: Basic N2Q0MzFlNDJkZmE2YTZkNjkzYWMyZDA0OjVlOTg3YWM2ZDJlMDRkOTVhOWQ4ZjBkMQ==
+```
+### 参数说明:
+| 关键字 | 类型 | 选项  | 含义 | 说明 |
+| --- | --- | --- | --- | --- |
+| device_name | string | 必填 | 需查询的设备名称 | |
+
+### 返回示例:
+```
+< HTTP/1.1 200 OK
+< Content-Type: application/json
+{
+    "status": 0,
+    "client_ip": "113.31.131.101",
+    "last_login_time": "1547454560",
+    "last_logout_time": "1547454569"
+}
+```
+### 返回说明：
+* status : 设备当期的状态 0-未在线， 1-在线
+* client_ip : 设备最近一次上线时的 ip 地址
+* last_login_time : 设备最近一次登录时间
+* last_logout_time : 设备最近一次登出时间
+    
 ## 返回错误说明
 当返回的 code 不是 200 时，表示请求错误。
 
@@ -101,6 +229,8 @@ msg : 返回该消息的全局消息 id
 ###参数说明：
 code: 标识请求错误类型。
 msg : 标识请求错误具体的原因。
+
+
 
 ## 错误码
 
