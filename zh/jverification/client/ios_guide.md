@@ -79,14 +79,20 @@
 
 ~~~
     //引入JVERIFICATIONService.h头文件
-    import "JVERIFICATIONService.h"
+    #import "JVERIFICATIONService.h"
+    // 如果需要使用 idfa 功能所需要引入的头文件（可选）
+	#import <AdSupport/AdSupport.h>
 ~~~
 
 接入的JVerification SDK的应用，必须先初始化JAuthHelper,否则将会无法正常使用，请将以下代码添加到合适的位置
 
 ~~~
+    // 如需使用 IDFA 功能请添加此代码并在初始化配置类中设置 advertisingId
+    NSString *idfaStr = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
+    
     JVAuthConfig *config = [[JVAuthConfig alloc] init];
     config.appKey = @"your appkey";
+    config.advertisingId = idfaStr;
     [JVERIFICATIONService setupWithConfig:config];
 ~~~
 
