@@ -17,9 +17,33 @@
     + 调用示例:
 
 ~~~
+    // 如需使用 IDFA 功能请添加此代码并在初始化配置类中设置 advertisingId
+    NSString *idfaStr = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
+    
     JVAuthConfig *config = [[JVAuthConfig alloc] init];
-    config.appKey = @"your appkey";
+    config.appKey = @"a0e6ace8d5b3e0247e3f58db";
+    config.advertisingId = idfaStr;
     [JVERIFICATIONService setupWithConfig:config];
+~~~
+
+##SDK判断网络环境是否支持
+
++ ***+ (BOOL)checkVerifyEnable;***
+    + 接口说明:
+        + 判断当前网络环境是否可以发起认证
+    +  返回值说明
+        + YES 可以认证
+        + NO 不可以认证
+        
+    + 调用示例:
+
+~~~
+    if(![JVERIFICATIONService checkVerifyEnable]) {
+        NSLog(@"当前网络环境不支持认证！");
+        return;
+    }
+    //继续获取token操作
+    ...
 ~~~
 
 ##SDK获取token
@@ -30,7 +54,7 @@
         + 获取手机号校验token
     + 参数说明
         + completion  参数是字典 返回token 、错误码等相关信息，token有效期1分钟, 一次认证后失效
-        + result 字典 获取到token时key有code、token两个字段，获取不到token是key为code和content字段
+        + result 字典 获取到token时key有code、token两个字段，获取不到token时key为code和content字段
 
     + 调用示例:
 ~~~
@@ -121,6 +145,7 @@
 |2009 | verifying, please try again later|正在认证中，稍后再试 |
 |2014 | internal error while requesting token|请求token时发生内部错误 |
 |2015 | rsa encode failed|rsa加密失败 |
+|2016|network type not supported|当前网络环境不支持认证|
 |4001 ||参数错误。请检查参数，比如是否手机号格式不对|
 |4009 ||解密rsa失败|
 |4018 ||没有足够的余额|

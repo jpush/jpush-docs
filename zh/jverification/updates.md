@@ -4,7 +4,7 @@
 
 **更新时间**
 
-* 2019-02-20
+* 2019-02-25
 
 **Change Log**
 
@@ -26,6 +26,30 @@
 
 + 更新AndroidManifest.xml
     + 压缩包根目录下有示例 AndroidManifest 文件，请对照示例更新和JVerification相关的组件属性，permission 等配置，并在中文提示的位置替换你的包名和 appKey
+
+##JVerification iOS SDK v1.1.2
+
+**更新时间**
+
+* 2019-02-25
+
+**Change Log**
+
+* 新增判断网络环境是否支持认证的接口
+* 修复已知问题
+
+
+**升级建议**
+
+* 建议升级
+
+**升级指南**
+
++ 首先解压您获取到的zip压缩包
+
++ 更新库文件
+    + 打开libs文件夹
+    + 用jverification-ios-v1.x.x.a 替换项目中原有的极光认证sdk的文件
 
 ##JVerification iOS SDK v1.1.1
 

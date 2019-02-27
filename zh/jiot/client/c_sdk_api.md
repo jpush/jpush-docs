@@ -35,14 +35,14 @@ int jiotRegister(JHandle handle,void* pContext, JClientMessageCallback *cb);
 * cb: 客户端处理下行报文的回调函数结构体
 
 ####  返回值
-  0成功，非0失败
+  无
 
 ## SDK释放接口
 ### jiotDisConn
 断开连接MQTT服务端。
 #### 接口定义
 ```
-bool jiotDisConn(JHandle handle);
+void jiotDisConn(JHandle handle);
 ```
 #### 参数说明
 handle :JIOT客户端的句柄
@@ -94,78 +94,78 @@ JIOT客户端上报设备属性请求
 
 #### 接口定义
 ```
-int jiotPropertyReportReq(JHandle handle,PropertyReport *pReq);
+JiotResult jiotPropertyReportReq(JHandle handle,PropertyReport *pReq);
 ```
 #### 参数说明
 * handle :JIOT客户端的句柄
 * pReq :上报消息的结构体指针
 #### 返回值
-0成功，非0失败
+返回值结构体，内容为错误码和seqNO
 
 ### jiotEventReportReq
 JIOT客户端上报设备事件请求。
 
 #### 接口定义
 ```
-int jiotEventReportReq(JHandle handle,EventReport *pReq);
+JiotResult jiotEventReportReq(JHandle handle,EventReport *pReq);
 
 ```
 #### 参数说明
 * handle :JIOT客户端的句柄
 * pReq :上报消息的结构体指针
 #### 返回值
-0成功，非0失败
+返回值结构体，内容为错误码和seqNO
 
 ### jiotDataReportReq
 JIOT客户端上报设备数据请求
 #### 接口定义
 ```
-int jiotDataReportReq(JHandle handle, const DataReportReq * pReq);
+JiotResult jiotDataReportReq(JHandle handle, const DataReportReq * pReq);
 
 ```
 #### 参数说明
 * handle :JIOT客户端的句柄
 * pReq :上报消息的结构体指针
 #### 返回值
-0成功，非0失败
+返回值结构体，内容为错误码和seqNO
 
 ### jiotVersionReportReq
 JIOT客户端上报设备版本请求。
 #### 接口定义
 ```
-int jiotVersionReportReq(JHandle handle, const VersionReportReq * pReq);
+JiotResult jiotVersionReportReq(JHandle handle, const VersionReportReq * pReq);
 ```
 #### 参数说明
 * handle :JIOT客户端的句柄
 * pReq :上报消息的结构体指针
 #### 返回值
-0成功，非0失败 
+返回值结构体，内容为错误码和seqNO
 
 ### jiotPropertySetResp
 JIOT客户端回复属性设置请求的回复
 #### 接口定义
 ```
-int jiotPropertySetResp(JHandle handle, const PropertySetResp * pResp);
+JiotResult jiotPropertySetResp(JHandle handle, const PropertySetResp * pResp);
 ```
 #### 参数说明
 * handle :JIOT客户端的句柄
 * pResp :属性设置回复结构体指针
 
 #### 返回值
-0成功，非0失败
+返回值结构体，内容为错误码和seqNO
 
 ### jiotMsgDeliverResp
 JIOT客户端回复消息下发请求的回复
 
 #### 接口定义
 ```
-int jiotMsgDeliverResp(JHandle handle,const MsgDeliverResp * pResp);
+JiotResult jiotMsgDeliverResp(JHandle handle,const MsgDeliverResp * pResp);
 ```
 #### 参数说明
 * handle :JIOT客户端的句柄
 * pResp :属性设置回复结构体指针
 #### 返回值
-0成功，非0失败
+返回值结构体，内容为错误码和seqNO
 
 ## SDK接收下行消息回调函数接口
 
