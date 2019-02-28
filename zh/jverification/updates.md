@@ -49,7 +49,12 @@
 
 + 更新库文件
     + 打开libs文件夹
-    + 用jverification-ios-v1.x.x.a 替换项目中原有的极光认证sdk的文件
+    + 替换项目中原有的极光SDK文件
+        + jcore-ios-x.x.x.a
+        + jverification-ios-x.x.x.a
+        + account_verify_sdk_core.framework
+        + TYRZNoUISDK.framework
+        + JVERIFICATIONService.h
 
 ##JVerification iOS SDK v1.1.1
 
