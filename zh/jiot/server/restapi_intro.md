@@ -15,23 +15,6 @@
 Header 名称是 "Authorization", 值是 base64转换过的 "ProductKey:ProductSecret"（中间有个冒号）。这两者可以在极光 IoT 服务的Web控制台[产品设置]中查看。
 
 
-
-### 鉴权举例
-
-你的 appKey 是 "7d431e42dfa6a6d693ac2d04", masterSecret 是 "5e987ac6d2e04d95a9d8f0d1"，则调用 Push API v3 时，使用 curl 命令的话，是这样写：
-
-```
-curl --insecure -X POST -v https://api.jpush.cn/v3/push -H "Content-Type: application/json"
--u "7d431e42dfa6a6d693ac2d04:5e987ac6d2e04d95a9d8f0d1"
--d  '{"platform":"all","audience":"all","notification":{"alert":"Hi,JPush!"}}'
-```
-
-HTTP 请求发出的请求是：
-
-```
-> POST /v3/push HTTP/1.1
-> Authorization: Basic N2Q0MzFlNDJkZmE2YTZkNjkzYWMyZDA0OjVlOTg3YWM2ZDJlMDRkOTVhOWQ4ZjBkMQ==
-```
 ## API 频率控制
 ### 属性设置频率
 每个 ProductKey 在 30 秒内最多可调用 500 次属性设置操作。 若超出返回 Too Many Requests 错误。    
