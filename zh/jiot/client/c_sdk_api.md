@@ -129,29 +129,29 @@ JiotResult jiotVersionReportReq(JHandle handle, const VersionReportReq * pReq);
 #### 返回值
 返回值结构体，内容为错误码和seqNO
 
-### jiotPropertySetResp
+### jiotPropertySetRsp
 JIOT客户端回复属性设置请求的回复
 #### 接口定义
 ```
-JiotResult jiotPropertySetResp(JHandle handle, const PropertySetResp * pResp);
+JiotResult jiotPropertySetRsp(JHandle handle, const PropertySetRsp * Rsp);
 ```
 #### 参数说明
 * handle :JIOT客户端的句柄
-* pResp :属性设置回复结构体指针
+* Rsp :属性设置回复结构体指针
 
 #### 返回值
 返回值结构体，内容为错误码和seqNO
 
-### jiotMsgDeliverResp
+### jiotMsgDeliverRsp
 JIOT客户端回复消息下发请求的回复
 
 #### 接口定义
 ```
-JiotResult jiotMsgDeliverResp(JHandle handle,const MsgDeliverResp * pResp);
+JiotResult jiotMsgDeliverRsp(JHandle handle,const MsgDeliverRsp * Rsp);
 ```
 #### 参数说明
 * handle :JIOT客户端的句柄
-* pResp :属性设置回复结构体指针
+* Rsp :属性设置回复结构体指针
 #### 返回值
 返回值结构体，内容为错误码和seqNO
 
