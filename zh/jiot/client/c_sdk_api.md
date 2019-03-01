@@ -116,18 +116,6 @@ JiotResult jiotEventReportReq(JHandle handle,EventReport *pReq);
 #### 返回值
 返回值结构体，内容为错误码和seqNO
 
-### jiotDataReportReq
-JIOT客户端上报设备数据请求
-#### 接口定义
-```
-JiotResult jiotDataReportReq(JHandle handle, const DataReportReq * pReq);
-
-```
-#### 参数说明
-* handle :JIOT客户端的句柄
-* pReq :上报消息的结构体指针
-#### 返回值
-返回值结构体，内容为错误码和seqNO
 
 ### jiotVersionReportReq
 JIOT客户端上报设备版本请求。
@@ -169,97 +157,79 @@ JiotResult jiotMsgDeliverResp(JHandle handle,const MsgDeliverResp * pResp);
 
 ## SDK接收下行消息回调函数接口
 
-### jiotPropertyReportResp
+### jiotPropertyReportRsp
 
 处理服务端返回JIOT客户端上报设备属性请求回复
+
 #### 接口定义
 ```
-typdef int jiotPropertyReportResp(void* pContext, JHandle handle, const PropertyReportResp * pResp);
+typedef int jiotPropertyReportRsp(void* pContext, JHandle handle, const PropertyReportRsp * Rsp,int errcode);
 ```
+
 #### 参数说明
 * pContext:用户注册的上下文信息
-* handle :JIOT客户端的句柄
-* pResp :结构体指针
+* handle:JIOT客户端句柄
+* Rsp:结构体指针
+* errcode:错误码
 #### 返回值
+  
 
-### jiotEventReportResp
+### jiotEventReportRsp
 处理服务端返回JIOT客户端上报设备事件请求回复
 
 #### 接口定义
 ```
-typdef int jiotEventReportResp(void* pContext, JHandle handle, const EventReportResp * Resp);
+typedef int jiotEventReportRsp(void* pContext, JHandle handle, const EventReportRsp * Rsp,int errcode);
 ```
 #### 参数说明
 * pContext:用户注册的上下文信息
-* handle :JIOT客户端的句柄
-* pResp :接收回复消息的结构体指针
-#### 返回值
-
-### jiotEventReportResp
-处理服务端返回JIOT客户端上报设备事件请求回复
-
-#### 接口定义
-```
-typdef int jiotEventReportResp(void* pContext, JHandle handle, const EventReportResp * Resp);
-```
-#### 参数说明
-*  pContext:用户注册的上下文信息
-*  handle :JIOT客户端的句柄
-*  pResp :接收回复消息的结构体指针
+* handle:JIOT客户端句柄
+* Rsp:接收回复消息的结构体指针
+* errcode:错误码
 #### 返回值
 
 
-### jiotDataReportReq
- 处理服务端返回JIOT客户端上报设备数据请求回复
-
-#### 接口定义
-```
-typdef int jiotDataReportReq(void* pContext, JHandle handle, const DataReportResp * Resp);
-```
-#### 参数说明
-* pContext:用户注册的上下文信息
-* handle :JIOT客户端的句柄
-* pResp :接收回复消息的结构体指针
-#### 返回值
-
-
-### jiotVersionReportReq
+### jiotVersionReportRsp
 处理服务端返回JIOT客户端上报设备版本请求回复
+
 #### 接口定义
 ```
-typdef int jiotVersionReportReq(void* pContext, JHandle handle, const VersionReportResp * Resp);
+typedef int jiotVersionReportRsp(void* pContext, JHandle handle, const VersionReportRsp * Rsp,int errcode);
 
 ```
 #### 参数说明
 * pContext:用户注册的上下文信息
-* handle :JIOT客户端的句柄
-* pResp :接收回复消息的结构体指针
+* handle:JIOT客户端句柄
+* Rsp:接收回复消息的结构体指针
+* errcode:错误码
 #### 返回值
-
+  
 ### jiotPropertySetReq
 服务端下发给JIOT客户端设备属性设置请求。
 
 #### 接口定义
 ```
-typdef int jiotPropertySetReq(void* pContext,JHandle handle,,PropertySetReq *Req);
+typedef int jiotPropertySetReq(void* pContext,JHandle handle,,PropertySetReq *Req,int errcode);
 ```
 #### 参数说明
 * pContext:用户注册的上下文信息
-* handle :JIOT客户端的句柄
+* handle :JIOT客户端句柄
 * Req :接收属性设置消息的结构体指针
+* errcode:错误码
 #### 返回值
-
+  
 ### jiotMsgDeliverReq
 服务端下发给JIOT客户端消息下发请求。
 
 #### 接口定义
 ```
-typdef int jiotMsgDeliverReq(void* pContext, JHandle handle, MsgDeliverReq *Req);
+typedef int jiotMsgDeliverReq(void* pContext, JHandle handle, MsgDeliverReq *Req,int errcode);
 ```
 #### 参数说明
 * pContext:用户注册的上下文信息
 * handle :JIOT客户端的句柄
-* Req :接收属性设置消息的结构体指针
+* Req :接收属性设置消息的结构体指
+* errcode:错误码
 
 
 #### 返回值
@@ -272,7 +242,6 @@ struct JClientMessageCallback
 {
     jiotPropertyReportResp *_cbPropertyReportResp; 
     jiotEventReportResp *_cbEventReportResp; 
-    jiotDataReportReq *_cbDataReportReq;
     jiotVersionReportReq *_cbVersionReportReq;
     jiotPropertySetReq *_cbPropertySetReq; 
     jiotMsgDeliverReq *_cbMsgDeliverReq;
