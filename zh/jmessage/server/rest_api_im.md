@@ -1776,7 +1776,10 @@ Example Response
 
     
 ### 跨应用获取用户群组
+
+```
 GET /v1/cross/users/{username}/groups
+```
 
 Request Params
 
@@ -2773,13 +2776,13 @@ Content-Type: application/json; charset=utf-8
 
 打开或者关闭SDK-API用户注册。
 
-	PUT /sdkregister/status?status={status}
+	PUT /v1/sdkregister/status?status={status}
 
 
 #### Example Request
 
 ```
-PUT /sdkregister/status?status=0
+PUT /v1/sdkregister/status?status=0
 ```
 
 #### Request Params
@@ -2800,7 +2803,7 @@ Response Data
 ### 获得SDK-API用户注册开关
 
 
-	get /sdkregister/status
+	get /v1/sdkregister/status
 
 
 #### Example Request
