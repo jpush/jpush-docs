@@ -17,6 +17,10 @@
 
 官方地址：[https://github.com/jpush/jmessage-react-plugin](https://github.com/jpush/jmessage-react-plugin)
 
+### Flutter
+
+官方地址：[https://github.com/jpush/jmessage-flutter-plugin](https://github.com/jpush/jmessage-flutter-plugin)
+
 ### aurora-imui
 
 官方地址：[https://github.com/jpush/aurora-imui](https://github.com/jpush/aurora-imui)
