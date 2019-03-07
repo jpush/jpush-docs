@@ -220,6 +220,7 @@ pages:
   - REST API:
     - 'REST API 概述': 'jverification/server/rest_api/rest_api_summary.md'
     - 'Verify API': 'jverification/server/rest_api/verify_api.md'
+    - 'loginTokenVerify API': 'jverification/server/rest_api/loginTokenVerify_api.md'
     - '返回码说明': 'jverification/server/rest_api/code_description.md'
   - 客户端集成插件: 'jverification/client/client_plugins.md'
   - 最近更新: 'jverification/updates.md'
