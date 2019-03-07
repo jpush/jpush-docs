@@ -30,6 +30,25 @@
 	JVerificationInterface.setDebugMode(true);
 ~~~
 
+##SDK判断网络环境是否支持
+
++ ***JVerificationInterface.checkVerifyEnable(Context context)***
+	+ 接口说明：
+		+ 判断当前的手机网络环境是否可以使用认证。
+	+ 参数说明：
+		+ context：android的上下文
+	+ 返回说明：
+       + 返回true代表可以使用；返回false建议使用其他验证方式。
+	+ 调用示例：
+
+~~~
+	boolean verifyEnable = JVerificationInterface.checkVerifyEnable(this);
+        if(!verifyEnable){
+            Log.d(TAG,"当前网络环境不支持认证");
+            return;
+        }
+~~~
+
 ##SDK获取token
 
 + ***JVerificationInterface.getToken(Context context, VerifyListener listener)***
@@ -106,6 +125,7 @@
 |1008|AppKey 非法|请到官网检查此应用信息中的 appkey，确认无误|
 |1009||请到官网检查此应用的应用详情；更新应用中集成的极光SDK至最新|
 |1010|verify interval is less than the minimum limit|同一号码连续两次提交认证间隔过短|
+|1011|appSign invalid|应用签名错误，检查签名与Portal设置的是否一致|
 |2000|内容为token|获取token成功|
 |2001|fetch token failed|获取token失败|
 |2002|init failed|SDK初始化失败|
@@ -121,6 +141,7 @@
 |2012|内容为异常信息|获取token时代码异常|
 |2013|内容为具体错误原因|网络发生异常|
 |2014|internal error while requesting token|请求token时发生内部错误|
+|2016|network type not supported|当前网络环境不支持认证|
 |4001|parameter invalid|参数错误。请检查参数，比如是否手机号格式不对|
 |4018||没有足够的余额|
 |4031||不是认证SDK用户|
