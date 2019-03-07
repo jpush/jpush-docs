@@ -63,11 +63,12 @@ group_name       |string 	      | 否       |应用分组名称
 
 **响应参数**
 
-参数名称          | 描述         |描述
+参数名称          | 类型         |描述
 ---------------- | ----------- | ------------
 app_key          |string 	    | 应用标识
 android_package  |string 	    | 应用包名（Android）
 is_new_created   |boolean 	    |
+master_secret    |string       |  用于服务器端 API 调用时与 AppKey 配合使用达到鉴权的目的。            
 
 ## app 删除
 
