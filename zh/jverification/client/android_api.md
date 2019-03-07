@@ -6,6 +6,11 @@
 
 ##SDK初始化
 
+###支持的版本
+开始支持的版本 1.0.0
+
+###接口定义
+
 + ***JVerificationInterface.init(Context context)***
 	+ 接口说明：
 		+ 初始化接口。建议在Application的onCreate中调用
@@ -19,6 +24,11 @@
 
 ##SDK设置debug模式
 
+###支持的版本
+开始支持的版本 1.0.0
+
+###接口定义
+
 + ***JVerificationInterface.setDebugMode(boolean enable)***
 	+ 接口说明：
 		+ 设置是否开启debug模式。true则会打印更多的日志信息。建议在init接口之前调用。
@@ -31,6 +41,11 @@
 ~~~
 
 ##SDK判断网络环境是否支持
+
+###支持的版本
+开始支持的版本 1.1.3
+
+###接口定义
 
 + ***JVerificationInterface.checkVerifyEnable(Context context)***
 	+ 接口说明：
@@ -49,7 +64,12 @@
         }
 ~~~
 
-##SDK获取token
+##SDK获取号码认证token
+
+###支持的版本
+开始支持的版本 1.0.0
+
+###接口定义
 
 + ***JVerificationInterface.getToken(Context context, VerifyListener listener)***
 	+ 接口说明：
@@ -77,7 +97,12 @@
 ~~~
 ***说明***：开发者可以通过SDK获取token接口的回调信息来选择验证方式，若成功获取到token则可以继续使用极光认证进行号码验证；若获取token失败，需要换用短信验证码等方式继续完成验证。
 
-##SDK发起认证
+##SDK发起号码认证
+
+###支持的版本
+开始支持的版本 1.0.0
+
+###接口定义
 
 + ***JVerificationInterface.verifyNumber(Context context, String token, String phone, VerifyListener listener)***
 	+ 接口说明：
@@ -109,6 +134,74 @@
 ~~~
 
 ***说明***：开发者调用该接口，需要在管理控制台找到该应用，并在［认证设置］-［其他设置］中开启［SDK发起认证］。
+
+##SDK请求授权一键登录
+
+### 支持的版本
+开始支持的版本 2.0.0
+
+### 接口的定义
++ ***JVerificationInterface.loginAuth(final Context context, final VerifyListener listener)***
+	+ 接口说明：
+		+ 调起一键登录授权页面，在用户授权后获取loginToken
+	+ 参数说明：
+		+ context：android的上下文
+		+ listener：接口回调
+    + 回调说明：
+    ***onResult(int code, String  content, String operator)***
+        + code: 返回码，6000代表loginToken获取成功，6001代表loginToken获取失败，其他返回码详见描述
+        + content：返回码的解释信息，若获取成功，内容信息代表loginToken。
+        + operator：成功时为对应运营商，CM代表中国移动，CU代表中国联通，CT代表中国电信。失败时可能为null
+	+ 调用示例：
+	
+~~~			
+	JVerificationInterface.loginAuth(this, new VerifyListener() {
+         @Override
+              public void onResult(int code, String content, String operator) {
+                 if (code == 6000){
+                    Log.d(TAG, "code=" + code + ", token=" + content+" ,operator="+operator);
+                }else{
+                    Log.d(TAG, "code=" + code + ", message=" + content);
+                }
+              }
+          });
+~~~
+
+##SDK设置一键登录授权页面LOGO
+
+### 支持的版本
+开始支持的版本 2.0.0
+
+### 接口的定义
++ ***JVerificationInterface.setLoginAuthLogo(String logoResourceName)***
+	+ 接口说明：
+		+ 设置自定义的Logo图，该Logo展示在授权页上部。
+	+ 参数说明：
+		+ logoResourceName：图片资源名称，请预置图片资源到drawable下
+	+ 调用示例：
+	
+~~~			
+	JVerificationInterface.setLoginAuthLogo("mylogo");
+~~~
+
+##SDK设置不同运营商授权页面LOGO
+
+#### 支持的版本
+开始支持的版本 2.0.0
+   
+#### 接口的定义
++ ***JVerificationInterface.setLoginAuthLogo(String logoNameCM,String logoNameCU,String logoNameCT)***
+	+ 接口说明：
+		+ 设置自定义不同运营商的Logo图，该Logo展示在授权页上部。
+	+ 参数说明：
+		+ logoNameCM：移动的图片资源名称，请预置图片资源到drawable下
+		+ logoNameCU：联通的图片资源名称，请预置图片资源到drawable下
+		+ logoNameCT：电信的图片资源名称，请预置图片资源到drawable下
+	+ 调用示例：
+	
+~~~			
+	JVerificationInterface.setLoginAuthLogo("logo_cm","logo_cu","logo_ct");
+~~~
 
 ##错误码
 
@@ -146,7 +239,13 @@
 |4018||没有足够的余额|
 |4031||不是认证SDK用户|
 |4032||获取不到用户配置|
+|4033|appkey is not support login|不是一键登录用户|
 |5000|bad server|服务器未知错误|
+|6000|内容为token|获取loginToken成功|
+|6001|fetch loginToken failed|获取loginToken失败|
+|6002|fetch loginToken canceled|用户取消获取loginToken|
+|6003|UI 资源加载异常|未正常添加sdk所需的资源文件|
+|6004|authorization requesting, please try again later|正在登录中，稍后再试|
 |-994|网络连接超时|   |
 |-996|网络连接断开|   |
 |-997|注册失败/登录失败|（一般是由于没有网络造成的）如果确保设备网络正常，还是一直遇到此问题，则还有另外一个原因：JPush 服务器端拒绝注册。而这个的原因一般是：你当前 App 的 Android 包名以及 AppKey，与你在 Portal 上注册的应用的 Android 包名与 AppKey 不相同。|

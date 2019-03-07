@@ -164,6 +164,7 @@
     <ul>
     <li><a href="/jverification/server/rest_api/rest_api_summary/">REST API 概述</a></li>
     <li><a href="/jverification/server/rest_api/verify_api/">Verify API</a></li>
+    <li><a href="/jverification/server/rest_api/loginTokenVerify_api/">loginTokenVerify API</a></li>
     </ul>
 </div>
 </div>

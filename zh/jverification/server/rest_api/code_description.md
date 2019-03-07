@@ -1,6 +1,8 @@
 #返回码说明
 |code|content|备注| 
 |:---:|:---:|:---:|
+|8000|get phone success|获取一键登录的手机号码成功|
+|8001|get phone fail |获取一键登录的手机号码失败|
 |9000|verify consistent|手机号验证一致|
 |9001|verify not consistent|手机号验证不一致|
 |9002|unknown result|结果未知|
