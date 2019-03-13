@@ -164,6 +164,25 @@
     <ul>
     <li><a href="/jverification/server/rest_api/rest_api_summary/">REST API 概述</a></li>
     <li><a href="/jverification/server/rest_api/verify_api/">Verify API</a></li>
+    <li><a href="/jverification/server/rest_api/loginTokenVerify_api/">loginTokenVerify API</a></li>
+    </ul>
+</div>
+</div>
+</div>
+
+<div class="row">
+<div class="panel panel-default">
+<div class="panel-heading">极光IoT文档</div>
+<div class="panel-body">
+    <ul>
+    <li><a href="/jiot/guideline/iot_intro/">产品介绍</a></li>
+    <li><a href="/jiot/client/c_sdk_guide/">C SDK 集成指南</a></li>
+    <li><a href="/jiot/client/c_sdk_8266_guide/">C SDK ESP8266 集成指南</a></li>
+    </ul>
+    <ul>
+    <li><a href="/jiot/client/c_sdk_api/">C SDK 接口说明文档</a></li>
+    <li><a href="/jiot/server/restapi_intro/">REST API 概述</a></li>
+    <li><a href="/jiot/server/restapi/">REST API 定义</a></li>
     </ul>
 </div>
 </div>
