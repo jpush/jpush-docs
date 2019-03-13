@@ -93,20 +93,27 @@ SDK支持在快应用平台v1000及以后版本上使用。
 
 + 设置调试模式：参数为 true 表示打开调试模式，可看到 sdk 的日志。
 
-		JAnalyticsInterface.setDebugMode(boolean isDebugMode);
+```
+	JAnalyticsInterface.setDebugMode(boolean isDebugMode);
+```
+
 + 在 app.ux 中导入 SDK 并使用 AppKey 初始化:
 
 	
-		JAnalyticsInterface.init(context,appkey,channel);
-		import { JAnalyticsInterface } from './libs/janalytics-quickapp-1.0.0'
-		  export default {
-    		showMenu: util.showMenu,
-    		createShortcut: util.createShortcut,
-		 	onCreate(){
-		 		JAnalyticsInterface.setDebugMode(true);
-		 		this.JAnalyticsInterface = JAnalyticsInterface.init(this, "your appkey", "test-channel")
-		 	}
-		}
+```
+	JAnalyticsInterface.init(context,appkey,channel);
+	import { JAnalyticsInterface } from './libs/janalytics-quickapp-1.0.0'
+	     export default {
+    	 showMenu: util.showMenu,
+    	 createShortcut: util.createShortcut,
+		 onCreate(){
+		 	JAnalyticsInterface.setDebugMode(true);
+		 	this.JAnalyticsInterface = JAnalyticsInterface.init(this, "your appkey", "test-channel")
+		 }
+	}
+
+```
+
 
 ps:建议将JAnalyticsInterface对象设置为全局的方法，暴露给每个页面使用，无需重复导入，需要时使用 this.$app.JAnalyticsInterface 调用 SDK 相关方法。
 
