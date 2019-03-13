@@ -314,7 +314,7 @@
 |账号创建时间|creationTime|long|时间戳|
 |姓名|name|String||
 |性别|sex|int|0未知 1男 2女/不能为其他数字，默认为0|
-|是否付费|paid|int|0未知 1是 2否/不能为其他数字，默认为0|
+|是否付费|paid|int|0未知 1否 2是/不能为其他数字，默认为0|
 |出生年月|birthdate|long|yyyyMMdd格式校验|
 |手机号码|phone|String|手机号码校验|
 |电子邮件|email|String|邮箱格式校验|
