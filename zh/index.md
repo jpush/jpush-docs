@@ -172,7 +172,7 @@
 
 <div class="row">
 <div class="panel panel-default">
-<div class="panel-heading">极光IoT文档</div>
+<div class="panel-heading">极光 IoT 文档</div>
 <div class="panel-body">
     <ul>
     <li><a href="/jiot/guideline/iot_intro/">产品介绍</a></li>
