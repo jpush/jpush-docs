@@ -1035,6 +1035,12 @@ POST https://api.jpush.cn/v3/push/validate
 			<td>400</td>
 		</tr>
 		<tr >
+			<td>1012</td>
+			<td>符合当前条件的推送已超过限制</td>
+			<td>定速推送超过限制</td>
+			<td>400</td>
+		</tr>
+		<tr >
 			<td>1020</td>
 			<td>只支持 HTTPS 请求</td>
 			<td>必须改正</td>
