@@ -16,11 +16,8 @@ Header 名称是 "Authorization", 值是 base64转换过的 "ProductKey:ProductS
 
 
 ## API 频率控制
-### 属性设置频率
-每个 ProductKey 在 1 分钟内最多可调用 1000 次属性设置操作。 若超出返回 Too Many Requests 错误。    
+每个 ProductKey 在 1 分钟内最多可调用 1000 次 REST API 。 若超出返回 Too Many Requests 错误。属性设置、消息下发、查询接口分别单独计算。
 
-### 消息下发频率
-每个 ProductKey 在 1 分钟内最多可调用 1000 次消息下发操作。 若超出返回 Too Many Requests 错误。
 
 ## 文档参考
 
