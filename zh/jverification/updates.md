@@ -1,5 +1,32 @@
 #最近更新
 
+##JVerification iOS SDK v1.1.3
+
+**更新时间**
+
+* 2019-03-21
+
+**Change Log**
+
+* 修复不支持模拟器运行的问题
+
+**升级建议**
+
+* 建议升级
+
+**升级指南**
+
++ 首先解压您获取到的zip压缩包
+
++ 更新库文件
+    + 打开libs文件夹
+    + 替换项目中原有的极光SDK文件
+        + jcore-ios-x.x.x.a
+        + jverification-ios-x.x.x.a
+        + account_verify_sdk_core.framework
+        + TYRZNoUISDK.framework
+        + JVERIFICATIONService.h
+
 ##JVerification Android SDK v1.1.3
 
 **更新时间**
