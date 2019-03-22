@@ -28,12 +28,11 @@ curl --insecure -X POST -v http://api.iot.jiguang.cn/device/v1/property -H "Cont
 < HTTP/1.1 200 OK
 < Content-Type: application/json
 {
-"msg": {
-"device_name": "your device_name",
-"op_code": 0,
-"op_id": 1,
-"op_status": "ok"
-}
+    "device_name": "your device_name",
+    "op_code": 0,
+    "op_id": 1,
+    "op_status": "ok"
+
 }
 ```
 
@@ -76,9 +75,7 @@ curl --insecure -X POST -v http://api.iot.jiguang.cn/msg/v1/msg -H "Content-Type
 < HTTP/1.1 200 OK
 < Content-Type: application/json
 {
-    "msg": {
-        "msgid": 4
-    }
+    "msgid": 4
 }
 ```
 
