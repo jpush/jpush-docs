@@ -3797,8 +3797,8 @@ sendSinglePic({
 ### 发送和接收 Emoji 表情
 
 Emoji 表情就是一种在 Unicode 位于`\u1F601`-`\u1F64F`区段的字符。 JMessage的消息内容都是使用[utf8mb4](https://dev.mysql.com/doc/refman/5.5/en/charset-unicode-utf8mb4.html)编码，向下兼容 UTF8。
-只要正确输入 Emoij 字符都可以使用 JMessage 文本消息 API 进行发送。如果用户需要转存聊天消息，请先确保数据库支持 utf8mb4 编码。
-开发者可以使用第三方开源的 Web Emoij 解决方案，如[coocy/emoji](https://github.com/coocy/emoji),[iamcal/js-emoji](https://github.com/iamcal/js-emoji)来在网页上显示Emoij表情。
+只要正确输入 Emoji 字符都可以使用 JMessage 文本消息 API 进行发送。如果用户需要转存聊天消息，请先确保数据库支持 utf8mb4 编码。
+开发者可以使用第三方开源的 Web Emoji 解决方案，如[coocy/emoji](https://github.com/coocy/emoji),[iamcal/js-emoji](https://github.com/iamcal/js-emoji)来在网页上显示Emoij表情。
 
 
 ## 错误码定义
