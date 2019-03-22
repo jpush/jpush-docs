@@ -212,7 +212,60 @@ curl --insecure -X GET -v https://api.iot.jiguang.cn/device/v1/status?device_nam
 * client_ip : 设备最近一次上线时的 ip 地址
 * last_login_time : 设备最近一次登录时间
 * last_logout_time : 设备最近一次登出时间
-    
+
+
+## 批量创建设备
+### 功能说明:
+批量创建设备接口。
+### 调用地址:
+```
+https://api.iot.jiguang.cn/device/v1/devices
+```
+### 请求示例:
+```
+curl --insecure -X POST -v https://api.iot.jiguang.cn/device/v1/devices -H "Content-Type: application/json" -u "7d431e42dfa6a6d693ac2d04:5e987ac6d2e04d95a9d8f0d1" -d '{"device":[{"name":"device_1","mark":"备注1"},{"name":"device_2","mark":"备注2"}]}'
+ 
+> POST /device/v1/devices HTTP/1.1
+> Authorization: Basic N2Q0MzFlNDJkZmE2YTZkNjkzYWMyZDA0OjVlOTg3YWM2ZDJlMDRkOTVhOWQ4ZjBkMQ==
+```
+### 参数说明:
+
+| 关键字 | 类型 | 选项  | 含义 | 说明 |
+| --- | --- | --- | --- | --- |
+| device | 设备对象数组	| 必填 | 待创建的设备对象 |每个设备对象包括一个 name 和mark 每个请求最大支持添加1000个设备|
+| name | string	| 必填 | 设备的名字 |只支持数字、 英文字母和-_@. 长度为4~24 字符|
+| mark | string	| 可选 | 设备的名字 | 长度为0~128 字符 |
+
+### 返回示例:
+```
+< HTTP/1.1 200 OK
+< Content-Type: application/json
+{
+     "resp": [
+        {
+            "device_name": "device_1",
+            "code": 0,
+            "device_secret": "xxxxxxxx"
+        },
+        {
+            "device_name": "device_2",
+            "code": 0
+            "device_secret": "xxxxxxxx"
+
+        },
+        {
+            "device_name": "device_3",
+            "code": 0,
+            "device_secret": "xxxxxxxx"
+        }
+    ]
+}
+```
+
+### 返回说明：
+
+* resp json 对象：该对象为数组，数据中的每个元素对应请求中 device_name 的创建应答。如果设备创建成功，则包含device_secret，失败则包含错误原因。
+
 ## 返回错误说明
 当返回的 code 不是 200 时，表示请求错误。
 
@@ -229,7 +282,6 @@ curl --insecure -X GET -v https://api.iot.jiguang.cn/device/v1/status?device_nam
 ###参数说明：
 code: 标识请求错误类型。
 msg : 标识请求错误具体的原因。
-
 
 
 ## 错误码
