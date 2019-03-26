@@ -18,7 +18,7 @@
 + 首先解压您获取到的 zip 压缩包
 
 + 更新库文件
-	+ 打开 libs 文件夹。用 jpush-android-3.x.y.jar 和 jcore-android-1.x.y.jar 替换项目中原有的极光 jar 文件，并删除原有极光 jar 文件。用对应 CPU 文件夹下的 libjcorexxx.so 文件，替换项目中原有的 libjpushXXX.so 文件，并删除原有的极光 so 文件，每种型号的 so 文件都可以在 SDK 下载包中找到。
+	+ 打开 libs 文件夹。用 jpush-android-3.2.0.jar 和 jcore-android-1.2.7.jar 替换项目中原有的极光 jar 文件，并删除原有极光 jar 文件。用对应 CPU 文件夹下的 libjcorexxx.so 文件，替换项目中原有的 libjpushXXX.so 文件，并删除原有的极光 so 文件，每种型号的 so 文件都可以在 SDK 下载包中找到。
 
 + 更新 AndroidManifest.xml
 	+ 请对照示例 AndroidManifest 更新 JPush 相关的组件属性，Permission，Action 等配置。并在中文提示的位置替换你的包名 和 appkey。
@@ -84,7 +84,7 @@
 + 首先解压您获取到的 zip 压缩包
 
 + 更新库文件
-	+ 打开 libs 文件夹。用 jpush-android-3.x.y.jar 和 jcore-android-1.x.y.jar 替换项目中原有的极光 jar 文件，并删除原有极光 jar 文件。用对应 CPU 文件夹下的 libjcorexxx.so 文件，替换项目中原有的 libjpushXXX.so 文件，并删除原有的极光 so 文件，每种型号的 so 文件都可以在 SDK 下载包中找到。
+	+ 打开 libs 文件夹。用 jpush-android-3.1.8.jar 和 jcore-android-1.2.6.jar 替换项目中原有的极光 jar 文件，并删除原有极光 jar 文件。用对应 CPU 文件夹下的 libjcore126.so 文件，替换项目中原有的 libjpushXXX.so 文件，并删除原有的极光 so 文件，每种型号的 so 文件都可以在 SDK 下载包中找到。
 
 + 更新 AndroidManifest.xml
 	+ 请对照示例 AndroidManifest 更新 JPush 相关的组件属性，Permission，Action 等配置。并在中文提示的位置替换你的包名 和 appkey。
