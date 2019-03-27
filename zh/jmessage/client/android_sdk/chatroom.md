@@ -280,8 +280,72 @@ ChatRoomMessageEvent
     ChatRoomManager.getChatRoomBlacklist(long roomID, RequestCallback<List<UserInfo>> callback);
 ```
 
+### 聊天室禁言
+***Since 2.8.2***  
+聊天室owner或者管理员可以禁言聊天室成员
+
+#### 将指定用户添加进聊天室的禁言列表
+```
+    /**
+     * 将指定用户添加进聊天室的禁言列表(批量设置一次最多500个)，禁言时间下限5分钟，上限1年
+     * 聊天室owner或者管理员可以禁言聊天室成员，管理员或owner不能被禁言, 重复调用此接口将根据当前时间重新计算结束时间。
+     * 禁言成功聊天室成员会收到{@link cn.jpush.im.android.api.event.ChatRoomNotificationEvent}
+     *
+     * @param roomId 聊天室的roomId
+     * @param userInfos 准备加入聊天室禁言名单的用户
+     * @param times 禁言时间，单位：毫秒,禁言时间最少5分钟（300000毫秒），最长一年（31536000000毫秒) 即300000 <= times <= 31536000000
+     * @param callback 禁言结果回调
+     * @since 2.8.2
+     */
+    ChatRoomManager.addChatRoomSilence(long roomId, Collection<UserInfo> userInfos, long times, BasicCallback callback);
+```
+
+#### 将指定用户从聊天室禁言列表中移除
+```
+    /**
+     * 将指定用户从聊天室禁言名单中移除(批量设置一次最多500个)
+     * 只有房主和管理员可设置,取消成功聊天室成员会收到{@link cn.jpush.im.android.api.event.ChatRoomNotificationEvent}
+     *
+     * @param roomId 聊天室的roomId
+     * @param userInfos 将要被解除禁言的用户信息，size <= 500
+     * @param callback 解除禁言结果回调
+     * @since 2.8.2
+     */
+    ChatRoomManager.delChatRoomSilence(long roomId, Collection<UserInfo> userInfos, BasicCallback callback);
+```
+
+#### 获取聊天室禁言列表
+```
+	/**
+	 * 获取聊天室禁言列表以添加入禁言的先后的时间倒序排序（后加入的在前），从start位置开始获取count个禁言信息。
+	 * 例如总共20个被禁言，分页每次获取15人，第一次获取 start: 0, count : 15,返回15个人的禁言信息，第二次获取 start : 15, count : 15 返回5个人的禁言信息。
+	 * 禁言用户总数在回调中会返回。
+	 *
+	 * @param roomId 聊天室的roomId
+	 * @param start 获取禁言列表开始位置，从第 start 个开始，start >= 0
+	 * @param count 获取禁言信息数量, count > 0
+	 * @param callback 结果回调{@link GetChatRoomSilencesCallback}
+	 * @since 2.8.2
+	 */
+	ChatRoomManager.getChatRoomSilencesFromNewest(long roomId, int start, int count, GetChatRoomSilencesCallback callback);
+```
+
+#### 查询用户在聊天室的禁言状态
+```
+    /**
+     * 获取用户在聊天室的禁言状态，如果用户未处于禁言状态，回调中SilenceInfo为null
+     *
+     * @param roomId 聊天室的roomId
+     * @param username 用户名
+     * @param appkey 用户所在应用 AppKey，不填这默认本应用
+     * @param callback 结果回调, 如果用户未处于禁言状态，回调中SilenceInfo为null
+     * @since 2.8.2
+     */
+    ChatRoomManager.getChatRoomMemberSilence(final long roomId, String username, String appkey, final RequestCallback<SilenceInfo> callback);
+```
+
 ### 聊天室通知事件
-聊天室管理员和黑名单变更时会下发此事件
+聊天室管理员和黑名单，禁言列表变更时会下发此事件
 ***Since 2.8.0***
 ```
 ChatRoomNotificationEvent
@@ -446,6 +510,72 @@ ChatRoomManager.getChatRoomBlacklist(roomID, new RequestCallback<List<UserInfo>>
 			postTextToDisplay("getChatRoomAdminList", responseCode, responseMessage, builder.toString());
 		} else {
 			postTextToDisplay("getChatRoomAdminList", responseCode, responseMessage, "获取聊天室黑名单列表失败");
+		}
+	}
+});
+
+// 将指定用户添加进聊天室的禁言列表
+ChatRoomManager.addChatRoomSilence(roomId, Collections.singletonList(info), times, new BasicCallback() {
+	@Override
+	public void gotResult(int responseCode, String responseMessage) {
+		if (0 == responseCode) {
+			postTextToDisplay("addChatRoomSilence", responseCode, responseMessage, null);
+		} else {
+			postTextToDisplay("addChatRoomSilence", responseCode, responseMessage, "设置禁言失败");
+		}
+	}
+});
+
+// 将指定用户从聊天室禁言名单中移除
+ChatRoomManager.delChatRoomSilence(roomId, Collections.singletonList(info), new BasicCallback() {
+	@Override
+	public void gotResult(int responseCode, String responseMessage) {
+		if (0 == responseCode) {
+			postTextToDisplay("delChatRoomSilence", responseCode, responseMessage, null);
+		} else {
+			postTextToDisplay("delChatRoomSilence", responseCode, responseMessage, "设置禁言失败");
+		}
+	}
+});
+
+// 获取聊天室禁言列表
+ChatRoomManager.getChatRoomSilencesFromNewest(roomID, silenceStart, silenceCount, new GetChatRoomSilencesCallback() {
+	@Override
+	public void gotResult(int responseCode, String responseMessage, List<SilenceInfo> silenceInfos, int total) {
+		if (0 == responseCode) {
+			StringBuilder builder = new StringBuilder();
+			builder.append("聊天室禁言总量:").append(total).append(",本次获取到数量:")
+					.append(silenceInfos.size()).append("\n");
+			if (silenceInfos.size() > 0) {
+				for (SilenceInfo silenceInfo : silenceInfos) {
+					builder.append("username:").append(silenceInfo.getUserInfo().getUserName()).append("\n");
+					builder.append("silenceStart:").append(silenceInfo.getSilenceStartTime()).append("\n");
+					builder.append("silenceEnd:").append(silenceInfo.getSilenceEndTime()).append("\n\n");
+				}
+			}
+			postTextToDisplay("getChatRoomAdminList", responseCode, responseMessage, builder.toString());
+		} else {
+			postTextToDisplay("getChatRoomAdminList", responseCode, responseMessage, "获取禁言列表失败");
+		}
+	}
+});
+
+// 查询用户在聊天室的禁言状态
+ChatRoomManager.getChatRoomMemberSilence(roomID, username, appkey, new RequestCallback<SilenceInfo>() {
+	@Override
+	public void gotResult(int responseCode, String responseMessage, SilenceInfo result) {
+		if (0 == responseCode) {
+			StringBuilder builder = new StringBuilder();
+			if (result != null) {
+				builder.append("usname:").append(result.getUserInfo().getUserName()).append("\n");
+				builder.append("silenceStart:").append(result.getSilenceStartTime()).append("\n");
+				builder.append("silenceEnd:").append(result.getSilenceEndTime()).append("\n");
+			} else {
+				builder.append("该用户没有被禁言");
+			}
+			postTextToDisplay("getChatRoomMemberSilence", responseCode, responseMessage, builder.toString());
+		} else {
+			postTextToDisplay("getChatRoomMemberSilence", responseCode, responseMessage, "获取用户禁言状态失败");
 		}
 	}
 });

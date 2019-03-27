@@ -719,121 +719,108 @@ GroupApprovalEvent.acceptGroupApprovalInBatch(events, false, new BasicCallback()
 ### 群成员禁言
 ***Since 2.4.0***  
 2.4.0版本新增群成员禁言状态设置,禁言后用户可正常接收消息，但无法向被禁言的群组中发送消息，解禁后可正常发送消息。
+***2.4.0老接口废弃，请使用2.8.2新接口***
 #### 群成员禁言状态设置
-***Since 2.4.0***
+***Since 2.8.2***
 
 ```
-	/**
-	 * 群成员禁言状态设置,禁言后用户可正常接收消息，但无法向被禁言的群组中发送消息
-	 * 解禁后可正常发送消息,禁言状态设置成功后群内所有成员将会收到群禁言通知事件
-	 * sdk收到群禁言通知事件后会以类型为{@link cn.jpush.im.android.api.enums.ContentType#eventNotification}
-	 * 的消息事件方式上报
-	 *
-	 * @param username 待设置群成员的username
-	 * @param appKey 待设置群成员的appKey，传入空则默认使用本应用appKey
-	 * @param keepSilence //true 设置禁言， false 取消禁言
-	 * @param callback
-	 * @since 2.4.0
-	 */
-	groupInfo.setGroupMemSilence(String username, String appKey, boolean keepSilence, BasicCallback callback);
+    /**
+     * 设置群成员禁言（可设置禁言时间,批量设置一次最多500个）,群主和管理员可以禁言普通群成员,
+     * 群主和管理员不能被禁言，重复调用此接口将根据当前时间重新计算结束时间。
+     * 禁言后用户可正常接收消息，但无法向被禁言的群组中发送消息,禁言成功后会以系统消息形式通知群内成员
+     * @param userInfos 将要被禁言的用户信息，size <= 500
+     * @param silenceTime 禁言时间，单位：毫秒， 禁言时间最少5分钟（300000毫秒），最长一年（31536000000毫秒),即300000 <= times <= 31536000000
+     * @param callback 禁言结果回调
+     * @since 2.8.2
+     */
+    groupInfo.addGroupSilenceWithTime(Collection<UserInfo> userInfos, long silenceTime, BasicCallback callback);
 ```
 
 #### 获取禁言列表
-***Since 2.4.0***
+***Since 2.8.2***
 
 ```
-	/**
-	 * 获取群成员禁言列表，返回群内被禁言的成员信息列表
-	 *
-	 * @return List<UserInfo>
-	 * @since 2.4.0
-	 * @deprecated deprecated in jmessage 2.7.0 use {@link #getGroupSilenceMemberInfos()} instead
-	 */
-	groupInfo.getGroupSilenceMembers();
-
     /**
-     * 获取群成员禁言列表，返回群内被禁言的成员{@link GroupMemberInfo}列表
-     *
-     * @return 群内被禁言的成员GroupMemberInfo列表
-     * @since 2.7.0
+     * 获取群禁言列表,排序规则以添加入禁言的先后的时间倒序排序（后加入的在前）
+     * @param callback 结果回调
+     * @since 2.8.2
      */
-    groupInfo.getGroupSilenceMemberInfos();
+    groupInfo.getGroupSilenceList(RequestCallback<List<SilenceInfo>> callback);
 ```
 
-#### 判断用户是否被禁言
-***Since 2.4.0***
+#### 查询用户禁言状态
+***Since 2.8.2***
 
 ```
-	/**
-	 * 判断用户在该群内是否被禁言，若被禁言返回true，否则返回false
-	 *
-	 * @param username 待判断用户的用户名
-	 * @param appKey 待判断用户的appKey，若传入空则默认使用本应用appKey
-	 * @return boolean
-	 * @since 2.4.0
-	 */
-	groupInfo.isKeepSilence(String username, String appKey);
+    /**
+     * 查询群内用户的禁言状态，如果用户未处于禁言状态，回调中SilenceInfo为null
+     * @param name 群成员的username
+     * @param appkey 群成员的appKey，传入空则默认使用本应用appKey
+     * @param callback 回调，如果用户未处于禁言状态，回调中SilenceInfo为null
+     * @since 2.8.2
+     *
+     */
+    groupInfo.getGroupMemberSilence(String name, String appkey, RequestCallback<SilenceInfo> callback);
 ```
 
 **群成员禁言相关代码示例**
 
 ```
 //设置群成员禁言状态
-JMessageClient.getGroupInfo(mGroupID, new GetGroupInfoCallback() {
-	@Override
-	public void gotResult(int responseCode, String responseMessage, GroupInfo groupInfo) {
-		if (0 == responseCode) {
-			groupInfo.setGroupMemSilence(mNames, mAppKey, keepSilence, new BasicCallback() {
-				@Override
-				public void gotResult(int i, String s) {
-					mProgressDialog.dismiss();
-					if (0 == i) {
-						Toast.makeText(getApplicationContext(), keepSilence ? "设置禁言成功" : "取消禁言成功", Toast.LENGTH_SHORT).show();
-					} else {
-						Toast.makeText(getApplicationContext(), keepSilence ? "设置禁言失败" : "取消禁言失败", Toast.LENGTH_SHORT).show();
-						Log.i(TAG, "GroupInfo.setGroupMemSilence " + ", responseCode = " + i + " ; Desc = " + s);
-					}
-				}
-			});
-		} else {
-			mProgressDialog.dismiss();
-			Toast.makeText(getApplicationContext(), keepSilence ? "设置禁言失败" : "取消禁言失败", Toast.LENGTH_SHORT).show();
-			Log.i(TAG, "getGroupInfo failed " + ", responseCode = " + responseCode + " :Desc = " + responseMessage);
-		}
+GroupMemberInfo memberInfo = groupInfo.getGroupMember(mNames, mAppKey);
+UserInfo userInfo = memberInfo != null ? memberInfo.getUserInfo() : null;
+if (userInfo != null) {
+	List<UserInfo> userInfos = Collections.singletonList(userInfo);
+	SetSilenceCallback callback = new SetSilenceCallback(keepSilence);
+	if (keepSilence) {
+		groupInfo.addGroupSilenceWithTime(userInfos, silenceTime, callback);
+	} else {
+		groupInfo.delGroupSilence(userInfos, callback);
 	}
-});
+} else {
+	mProgressDialog.dismiss();
+	Toast.makeText(getApplicationContext(), "用户信息获取失败", Toast.LENGTH_SHORT).show();
+}
 
 //获取群成员禁言列表
-JMessageClient.getGroupInfo(mGetId, new GetGroupInfoCallback() {
+groupInfo.getGroupSilenceList(new RequestCallback<List<SilenceInfo>>() {
+		@Override
+		public void gotResult(int responseCode, String responseMessage, List<SilenceInfo> result) {
+			if (0 == responseCode) {
+				StringBuilder sb = new StringBuilder();
+				for (SilenceInfo silenceInfo : result) {
+					sb.append(silenceInfo.getUserInfo().getUserName())
+							.append(", begin:" + silenceInfo.getSilenceStartTime())
+							.append(", end:" + silenceInfo.getSilenceEndTime())
+							.append("\n");
+				}
+				mTv_showSilenceInfo.append("群成员禁言信息列表(这里获取name,需要其他信息请自行获取)：\n" + sb.toString());
+				Toast.makeText(getApplicationContext(), "获取成功", Toast.LENGTH_SHORT).show();
+			} else {
+				Log.i(TAG, "getGroupSilenceList" + ", responseCode = " + responseCode + " ; Desc = " + responseMessage);
+				Toast.makeText(getApplicationContext(), "获取失败", Toast.LENGTH_SHORT).show();
+			}
+		}
+	});
+
+//获取用户禁言状态
+groupInfo.getGroupMemberSilence(mNames, mAppKey, new RequestCallback<SilenceInfo>() {
 	@Override
-	public void gotResult(int responseCode, String responseMessage, GroupInfo groupInfo) {
+	public void gotResult(int responseCode, String responseMessage, SilenceInfo result) {
 		mProgressDialog.dismiss();
 		if (responseCode == 0) {
-			List<GroupMemberInfo> silenceMembers = groupInfo.getGroupSilenceMemberInfos();
-			StringBuilder sb = new StringBuilder();
-			for (GroupMemberInfo info : silenceMembers) {
-				sb.append(info.getUserInfo().getUserName());
-				sb.append("\n");
+			StringBuilder stringBuilder = new StringBuilder();
+			stringBuilder.append("用户:" + mNames);
+			if (result == null) {
+				stringBuilder.append(", 没有被禁言");
+			} else {
+				stringBuilder.append(", 已被禁言\n")
+						.append("禁言开始时间:").append(result.getSilenceStartTime()).append("\n")
+						.append("禁言结束时间：").append(result.getSilenceEndTime()).append("\n");
 			}
-			mTv_showGroupInfo.append("群成员禁言信息列表(这里获取name,需要其他信息请自行获取)：\n" + sb.toString());
-			Toast.makeText(getApplicationContext(), "获取成功", Toast.LENGTH_SHORT).show();
+			mTv_showSilenceInfo.setText(stringBuilder);
 		} else {
-			Log.i("GetGroupInfoActivity", "groupInfo.getGroupMembers" + ", responseCode = " + responseCode + " ; Desc = " + responseMessage);
-			Toast.makeText(getApplicationContext(), "获取失败", Toast.LENGTH_SHORT).show();
-		}
-	}
-});
-
-//判断用户是否被禁言
-JMessageClient.getGroupInfo(mGetId, new GetGroupInfoCallback() {
-	@Override
-	public void gotResult(int i, String s, GroupInfo groupInfo) {
-		if (i == 0) {
-			mProgressDialog.dismiss();
-			Toast.makeText(getApplicationContext(), groupInfo.isKeepSilence(name, appKey) ? "已被禁言" : "没有被禁言或者用户不存在或不在指定群", Toast.LENGTH_SHORT).show();
-		} else {
-			mProgressDialog.dismiss();
-			Log.i("GetGroupInfoActivity", "groupInfo.getGroupMemberSilenceStatus" + ", responseCode = " + i + " ; Desc = " + s);
+			Log.i(TAG, "getGroupMemberSilence" + ", responseCode = " + responseCode + " ; Desc = " + responseMessage);
 			Toast.makeText(getApplicationContext(), "获取失败", Toast.LENGTH_SHORT).show();
 		}
 	}
