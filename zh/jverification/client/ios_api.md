@@ -85,10 +85,11 @@
     + 接口说明:
         + 获取号码认证token
     + 参数说明
-        + completion  参数是字典 返回token 、错误码等相关信息，token有效期1分钟, 一次认证后失效
-        + result 字典 获取到token时key有code、token两个字段，获取不到token时key为code和content字段
+        + completion  参数是字典 返回token、错误码等相关信息，token一次认证后失效
+        + result 字典 获取到token时key有operator、code、token字段，获取不到token时key为code和content字段
 
     + 调用示例:
+
 ~~~
     [JVERIFICATIONService getToken:^(NSDictionary *result) {
         NSLog(@"getToken result:%@", result)
@@ -140,7 +141,7 @@
         + 授权一键登录
     + 参数说明:
         + completion 登录结果
-        + result 字典 获取到token时key有operator、code、loginToken字段，获取不到token是key为code和content字段
+        + result 字典 获取到loginToken时key有operator、code、loginToken字段，获取不到loginToken时key为code和content字段
         + vc 当前控制器
 
     + 调用示例:
@@ -150,8 +151,6 @@
         NSLog(@"一键登录 result:%@", result);
     }];
 ~~~
-
-***说明***：如果您需要使用极光认证的一键登录功能，请在工作日9:00—18:00联系商务申请开通，TEL：400-612-5955
 
 ##SDK自定义授权页面UI样式
 
@@ -186,6 +185,57 @@
     [JVERIFICATIONService customUIWithConfig:telecomUIConfig];
 ~~~
 
+##SDK授权页面添加自定义控件
+
+###支持的版本
+开始支持的版本 2.1.0
+
+###接口定义
+
++ ***+ (void)customUIWithConfig:(JVUIConfig *)UIConfig customViews:(void(^)(UIView *customAreaView))customViewsBlk;***
+
+    + 接口说明:
+        + 自定义授权页面UI样式，并添加自定义控件
+    + 参数说明:
+        + UIConfig JVUIConfig的子类
+        + customViewsBlk 添加自定义视图的block
+
+    + 调用示例:
+
+~~~
+    /*移动*/
+    JVMobileUIConfig *mobileUIConfig = [[JVMobileUIConfig alloc] init];
+    mobileUIConfig.logoImg = [UIImage imageNamed:@"cmccLogo"];
+    [JVERIFICATIONService customUIWithConfig:mobileUIConfig customViews:^(UIView *customAreaView) {
+        //添加一个自定义label
+        UILabel *lable  = [[UILabel alloc] init];
+        lable.text = @"这是一个自定义label";
+        [lable sizeToFit];
+        lable.center = customAreaView.center;
+        [customAreaView addSubview:lable];
+    }];
+    
+    /*联通*/
+    JVUnicomUIConfig *unicomUIConfig = [[JVUnicomUIConfig alloc] init];
+    unicomUIConfig.logoImg = [UIImage imageNamed:@"cuccLogo"];
+    [JVERIFICATIONService customUIWithConfig:unicomUIConfig customViews:^(UIView *customAreaView) {
+        //添加自定义控件
+    }];
+    
+    /*电信*/
+    JVTelecomUIConfig *telecomUIConfig = [[JVTelecomUIConfig alloc] init];
+    telecomUIConfig.logoImg = [UIImage imageNamed:@"ctccLogo"];
+    telecomUIConfig.navColor = [UIColor redColor];
+    telecomUIConfig.appPrivacyOne = @[@"自定义协议1",@"https://www.jiguang.cn/push"];
+    telecomUIConfig.appPrivacyTwo = @[@"自定义协议2",@"https://www.jiguang.cn/media/news/143"];
+    [JVERIFICATIONService customUIWithConfig:telecomUIConfig customViews:^(UIView *customAreaView) {
+		//添加自定义控件
+    }];
+    
+~~~
+
+
+
 
 ##JVAuthConfig类
 
@@ -214,7 +264,32 @@
 
 |参数名称|参数类型|参数说明|
 |:-----:|:----:|:-----:|
+|navColor|UIColor|导航栏颜色|
+|barStyle|UIBarStyle|状态栏着色样式|
+|navText|NSAttributedString|导航栏标题|
+|navReturnImg|UIImage|导航返回图标|
+|navControl|UIBarButtonItem|导航栏右侧自定义控件|
 |logoImg|UIImage|LOGO图片|
+|logoWidth|CGFloat|LOGO图片宽度|
+|logoHeight|CGFloat|LOGO图片高度|
+|logoOffsetY|CGFloat|LOGO图片偏移量|
+|logoHidden|BOOL|LOGO图片隐藏|
+|logBtnText|NSString|登录按钮文本|
+|logBtnOffsetY|CGFloat|登录按钮Y偏移量|
+|logBtnTextColor|UIColor|登录按钮文本颜色|
+|logBtnImgs|NSArray|登录按钮背景图片添加到数组(顺序如下) @[激活状态的图片,失效状态的图片,高亮状态的图片]|
+|numberColor|UIColor|手机号码字体颜色|
+|numFieldOffsetY|CGFloat|号码栏Y偏移量|
+|uncheckedImg|UIImage|复选框未选中时图片|
+|checkedImg|UIImage|复选框选中时图片|
+|appPrivacyOne|NSArray|隐私条款一:数组（务必按顺序）@[条款名称,条款链接]|
+|appPrivacyTwo|NSArray|隐私条款二:数组（务必按顺序）@[条款名称,条款链接]|
+|appPrivacyColor|NSArray|隐私条款名称颜色 @[基础文字颜色,条款颜色]|
+|privacyOffsetY |CGFloat|隐私条款Y偏移量(注:此属性为与屏幕底部的距离)|
+|sloganOffsetY|CGFloat|slogan偏移量Y|
+|sloganTextColor|UIColor|slogan文字颜色|
+
+![JVerification](../image/cutomeUI_description.png)
 
 ##JVMobileUIConfig类
 
