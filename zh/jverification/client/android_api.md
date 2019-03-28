@@ -53,7 +53,7 @@
 	+ 参数说明：
 		+ context：android的上下文
 	+ 返回说明：
-       + 返回true代表可以使用；返回false建议使用其他验证方式。
+		+ 返回true代表可以使用；返回false建议使用其他验证方式。
 	+ 调用示例：
 
 ~~~
@@ -142,17 +142,17 @@
 
 ### 接口的定义
 + ***JVerificationInterface.loginAuth(final Context context, final VerifyListener listener)***
-   + 接口说明：
-      + 调起一键登录授权页面，在用户授权后获取loginToken
-   + 参数说明：
-      + context：android的上下文
-      + listener：接口回调
-   + 回调说明：
+	+ 接口说明：
+		+ 调起一键登录授权页面，在用户授权后获取loginToken
+	+ 参数说明：
+		+ context：android的上下文
+		+ listener：接口回调
+	+ 回调说明：
     ***onResult(int code, String  content, String operator)***
-      + code: 返回码，6000代表loginToken获取成功，6001代表loginToken获取失败，其他返回码详见描述
-      + content：返回码的解释信息，若获取成功，内容信息代表loginToken。
-      + operator：成功时为对应运营商，CM代表中国移动，CU代表中国联通，CT代表中国电信。失败时可能为null
-	+ 调用示例：
+		+ code: 返回码，6000代表loginToken获取成功，6001代表loginToken获取失败，其他返回码详见描述
+		+ content：返回码的解释信息，若获取成功，内容信息代表loginToken。
+		+ operator：成功时为对应运营商，CM代表中国移动，CU代表中国联通，CT代表中国电信。失败时可能为null
+		+ 调用示例：
 	
 ~~~			
 	JVerificationInterface.loginAuth(this, new VerifyListener() {
@@ -175,11 +175,11 @@
 ### 接口的定义
 
 + ***JVerificationInterface.setCustomUIWithConfig(JVerifyUIConfig uiConfig)***
-   + 接口说明：
-      + 修改授权页面主题，开发者可以通过 setCustomUIWithConfig 方法修改授权页面主题，需在 *loginAuth* 接口之前调用
-   + 参数说明：
-      + uiConfig：主题配置对象，开发者在JVerifyUIConfig.java类中调用对应的方法配置授权页中对应的元素
-   + 调用示例：
+	+ 接口说明：
+		+ 修改授权页面主题，开发者可以通过 setCustomUIWithConfig 方法修改授权页面主题，需在 *loginAuth* 接口之前调用
+	+ 参数说明：
+		+ uiConfig：主题配置对象，开发者在JVerifyUIConfig.java类中调用对应的方法配置授权页中对应的元素
+	+ 调用示例：
 
 ~~~
     JVerifyUIConfig uiConfig = new JVerifyUIConfig.Builder()
@@ -230,17 +230,17 @@
 
 + ***addCustomView(View view, boolean finishFlag,JVerifyUIClickCallback callback)***
 
-   + 接口说明： 
-      + 在授权页面添加自定义控件
-   + 参数说明：
-      + view：开发者传入自定义的控件，开发者需要提前设置好控件的布局属性，SDK只支持RelativeLayout布局
-      + finishFlag：是否在授权页面通过自定义控件的点击finish授权页面
-      + callback： 自定义控件的点击回调
-   + 回调说明： ***onClicked(Context context, View view)***               
-      + context：android的上下文
-      + view：自定义的控件的对象
+	+ 接口说明： 
+		+ 在授权页面添加自定义控件
+	+ 参数说明：
+		+ view：开发者传入自定义的控件，开发者需要提前设置好控件的布局属性，SDK只支持RelativeLayout布局
+		+ finishFlag：是否在授权页面通过自定义控件的点击finish授权页面
+		+ callback： 自定义控件的点击回调
+	+ 回调说明： ***onClicked(Context context, View view)***               
+		+ context：android的上下文
+		+ view：自定义的控件的对象
        
-   + 调用示例：
+	+ 调用示例：
 	
 ~~~
         Button mBtn = new Button(this);
