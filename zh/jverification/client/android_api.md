@@ -167,42 +167,163 @@
           });
 ~~~
 
-##SDK设置一键登录授权页面LOGO
+##SDK自定义授权页面UI样式
 
 ### 支持的版本
-开始支持的版本 2.0.0
-
-### 接口的定义
-+ ***JVerificationInterface.setLoginAuthLogo(String logoResourceName)***
-	+ 接口说明：
-		+ 设置自定义的Logo图，该Logo展示在授权页上部。
-	+ 参数说明：
-		+ logoResourceName：图片资源名称，请预置图片资源到drawable下
-	+ 调用示例：
-	
-~~~			
-	JVerificationInterface.setLoginAuthLogo("mylogo");
-~~~
-
-##SDK设置不同运营商授权页面LOGO
-
-#### 支持的版本
-开始支持的版本 2.0.0
+开始支持的版本 2.1.0
    
-#### 接口的定义
-+ ***JVerificationInterface.setLoginAuthLogo(String logoNameCM,String logoNameCU,String logoNameCT)***
+### 接口的定义
+
++ ***JVerificationInterface.setCustomUIWithConfig(JVerifyUIConfig uiConfig)***
 	+ 接口说明：
-		+ 设置自定义不同运营商的Logo图，该Logo展示在授权页上部。
+		+ 修改授权页面主题，开发者可以通过 setCustomUIWithConfig 方法修改授权页面主题，需在 *loginAuth* 接口之前调用
 	+ 参数说明：
-		+ logoNameCM：移动的图片资源名称，请预置图片资源到drawable下
-		+ logoNameCU：联通的图片资源名称，请预置图片资源到drawable下
-		+ logoNameCT：电信的图片资源名称，请预置图片资源到drawable下
+		+ uiConfig：主题配置对象，开发者在JVerifyUIConfig.java类中调用对应的方法配置授权页中对应的元素
 	+ 调用示例：
-	
-~~~			
-	JVerificationInterface.setLoginAuthLogo("logo_cm","logo_cu","logo_ct");
+
+~~~
+    JVerifyUIConfig uiConfig = new JVerifyUIConfig.Builder()
+                    .setNavColor(0xff0086d0)
+                    .setNavText("登录")
+                    .setNavTextColor(0xffffffff)
+                    .setNavReturnImgPath("umcsdk_return_bg")
+                    .setLogoWidth(70)
+                    .setLogoHeight(70)
+                    .setLogoHidden(false)
+                    .setNumberColor(0xff333333)
+                    .setLogBtnText("本机号码一键登录")
+                    .setLogBtnTextColor(0xffffffff)
+                    .setLogBtnImgPath("umcsdk_login_btn_bg")
+                    .setAppPrivacyOne("应用自定义服务条款一","https://www.jiguang.cn/about")
+                    .setAppPrivacyTwo("应用自定义服务条款二","https://www.jiguang.cn/about")
+                    .setAppPrivacyColor(0xff666666,0xff0085d0)
+                    .setUncheckedImgPath("umcsdk_uncheck_image")
+                    .setCheckedImgPath("umcsdk_check_image")
+                    .setSloganTextColor(0xff999999)
+                    .setLogoOffsetY(50)
+                    .setLogoImgPath("logo_cm")
+                    .setNumFieldOffsetY(170)
+                    .setSloganOffsetY(230)
+                    .setLogBtnOffsetY(254)
+                    .addCustomView(mBtn, true, new JVerifyUIClickCallback() {
+                        @Override
+                        public void onClicked(Context context, View view) {
+                            Toast.makeText(context,"动态注册的其他按钮",Toast.LENGTH_SHORT).show();
+                        }
+                    }).addCustomView(mBtn2, false, new JVerifyUIClickCallback() {
+                        @Override
+                        public void onClicked(Context context, View view) {
+                            Toast.makeText(context,"动态注册的其他按钮222",Toast.LENGTH_SHORT).show();
+                        }
+                    })
+                    .setPrivacyOffsetY(30).build();
+    JVerificationInterface.setCustomUIWithConfig(uiConfig);
+
 ~~~
 
+##SDK授权页面添加自定义控件
+
+### 支持的版本
+开始支持的版本 2.1.0
+   
+### 接口的定义
+
++ ***addCustomView(View view, boolean finishFlag,JVerifyUIClickCallback callback)***
+
+	+ 接口说明： 
+	   + 在授权页面添加自定义控件
+	+ 参数说明：
+       + view：开发者传入自定义的控件，开发者需要提前设置好控件的布局属性，SDK只支持RelativeLayout布局
+       + finishFlag：是否在授权页面通过自定义控件的点击finish授权页面
+       + callback： 自定义控件的点击回调
+   + 回调说明： ***onClicked(Context context, View view)***               
+      + context：android的上下文
+      + view：自定义的控件的对象
+       
+	+ 调用示例：
+	
+~~~
+        Button mBtn = new Button(this);
+        mBtn.setText("其他方式登录");
+        RelativeLayout.LayoutParams mLayoutParams1 = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT,RelativeLayout.LayoutParams.WRAP_CONTENT);
+        mLayoutParams1.setMargins(0, LoginUIHelper.dp2Pix(this,450.0f),0,0);
+        mBtn.setLayoutParams(mLayoutParams1);
+        new JVerifyUIConfig.Builder().addCustomView(mBtn, true, new JVerifyUIClickCallback() {
+                        @Override
+                        public void onClicked(Context context, View view) {
+                            Toast.makeText(context,"动态注册的其他按钮",Toast.LENGTH_SHORT).show();
+                        }
+                    });                                    
+        
+~~~
+
+
+
+
+
+##JVerifyUIConfig配置元素说明
+
+       + 授权页导航栏
+        
+       |方法|参数类型|说明|
+       |:-----:|:----:|:----:|
+       |setNavColor|int|设置导航栏颜色|
+       |setNavText|String|设置导航栏标题文字|
+       |setNavTextColor|int|设置导航栏标题文字颜色|
+       |setNavReturnImgPath|String|设置导航栏返回按钮图标|
+       
+       + 授权页logo
+       
+       |方法|参数类型|说明|
+       |:-----:|:----:|:----:|
+       |setLogoWidth|int|设置logo宽度（单位：dp）|
+       |setLogoHeight|int|设置logo高度（单位：dp）|
+       |setLogoHidden|boolean|隐藏logo|
+       |setLogoOffsetY|int|设置logo相对于标题栏下边缘y偏移|
+       |setLogoImgPath|String|设置logo图片|
+       
+       + 授权页号码栏
+       
+       |方法|参数类型|说明|
+       |:-----:|:----:|:----:|
+       |setNumberColor|int|设置手机号码字体颜色|
+       |setNumFieldOffsetY|int|设置号码栏相对于标题栏下边缘y偏移|
+       
+       + 授权页登录按钮
+       
+       |方法|参数类型|说明|
+       |:-----:|:----:|:----:|
+       |setLogBtnText|String|设置登录按钮文字|
+       |setLogBtnTextColor|int|设置登录按钮文字颜色|       
+       |setLogBtnImgPath|String|设置授权登录按钮图片|
+       |setLogBtnOffsetY|int|设置登录按钮相对于标题栏下边缘y偏移|
+       
+       + 授权页隐私栏
+       
+       |方法|参数类型|说明|
+       |:-----:|:----:|:----:|
+       |setAppPrivacyOne|String,String|设置开发者隐私条款1名称和URL(名称，url)|
+       |setAppPrivacyTwo|String,String|设置开发者隐私条款2名称和URL(名称，url)|       
+       |setAppPrivacyColor|int,int|设置隐私条款名称颜色(基础文字颜色，协议文字颜色)|
+       |setPrivacyOffsetY|int|设置隐私条款相对于授权页面底部下边缘y偏移|       
+       |setCheckedImgPath|String|设置复选框选中时图片|
+       |setUncheckedImgPath|String|设置复选框未选中时图片|  
+       
+       + 授权页slogan 
+       
+       |方法|参数类型|说明|
+       |:-----:|:----:|:----:|
+       |setSloganTextColor|int|设置移动slogan文字颜色|
+       |setSloganOffsetY|int|设置slogan相对于标题栏下边缘y偏移|
+       
+       + 开发者自定义控件
+       
+       |方法|参数类型|说明|
+       |:-----:|:----:|:----:|
+       |addCustomView|见以上方法定义|在授权页空白处添加自定义控件以及点击监听|
+
+![JVerification](../image/cutomeUI_description_android.png)
+       
 ##错误码
 
 |code|message|备注|
