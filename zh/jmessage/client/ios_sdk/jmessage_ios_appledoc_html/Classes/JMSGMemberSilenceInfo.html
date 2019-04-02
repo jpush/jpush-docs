@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 
-	<title>JMSGOptionalContent Class Reference</title>
+	<title>JMSGMemberSilenceInfo Class Reference</title>
 
 	<link rel="stylesheet" href="../css/style.css">
 	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
@@ -56,13 +56,11 @@
 	
 	<optgroup label="Properties">
 		
-		<option value="//api/name/noSaveOffline">noSaveOffline</option>
+		<option value="//api/name/user">user</option>
 		
-		<option value="//api/name/noSaveNotification">noSaveNotification</option>
+		<option value="//api/name/silenceStartTime">silenceStartTime</option>
 		
-		<option value="//api/name/needReadReceipt">needReadReceipt</option>
-		
-		<option value="//api/name/customNotification">customNotification</option>
+		<option value="//api/name/silenceEndTime">silenceEndTime</option>
 		
 	</optgroup>
 	
@@ -83,7 +81,7 @@
 		<div id="overview_contents" class="container">
 			<div id="content">
 				<main role="main">
-					<h1 class="title">JMSGOptionalContent Class Reference</h1>
+					<h1 class="title">JMSGMemberSilenceInfo Class Reference</h1>
 
 					
 					<div class="section section-specification"><table cellspacing="0"><tbody>
@@ -92,12 +90,18 @@
 	<td>NSObject</td>
 </tr><tr>
 	<th>Declared in</th>
-	<td>JMSGOptionalContent.h</td>
+	<td>JMSGGroup.h</td>
 </tr>
 						</tbody></table></div>
 					
 
                     
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>成员禁言信息类</p><p>如果是群组成员禁言，则可通过 <a href="../Classes/JMSGGroup.html#//api/name/getGroupMemberSilenceList:">[JMSGGroup getGroupMemberSilenceList:]</a>和 [JMSGGroup getGroupMemberSilence:appKey:handler:] 两个接口获取禁言信息；如果是聊天室成员禁言，则可通过 <a href="../Classes/JMSGChatRoom.html#//api/name/getChatRoomSilencesWithStart:count:handler:">[JMSGChatRoom getChatRoomSilencesWithStart:count:handler:]</a> 和 <a href="../Classes/JMSGChatRoom.html#//api/name/getChatRoomMemberSilenceWithUsername:appKey:handler:">[JMSGChatRoom getChatRoomMemberSilenceWithUsername:appKey:handler:]</a> 两个接口获取禁言信息</p>
+					</div>
 					
 					
 
@@ -112,8 +116,8 @@
 
 						<div class="task-list">
 							<div class="section-method">
-	<a name="//api/name/noSaveOffline" title="noSaveOffline"></a>
-	<h3 class="method-title"><code><a href="#//api/name/noSaveOffline">&nbsp;&nbsp;noSaveOffline</a></code>
+	<a name="//api/name/user" title="user"></a>
+	<h3 class="method-title"><code><a href="#//api/name/user">&nbsp;&nbsp;user</a></code>
 </h3>
 
 	<div class="method-info">
@@ -123,12 +127,12 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>不保存离线消息，NO，默认值，保存离线消息；YES，不保存离线消息</p>
+				<p>成员用户信息</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) BOOL noSaveOffline</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) JMSGUser *user</code></div>
 
 		    
 			
@@ -146,15 +150,15 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">JMSGOptionalContent.h</code></p>
+				<p><code class="declared-in-ref">JMSGGroup.h</code></p>
 			</div>
 			
 			
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/noSaveNotification" title="noSaveNotification"></a>
-	<h3 class="method-title"><code><a href="#//api/name/noSaveNotification">&nbsp;&nbsp;noSaveNotification</a></code>
+	<a name="//api/name/silenceStartTime" title="silenceStartTime"></a>
+	<h3 class="method-title"><code><a href="#//api/name/silenceStartTime">&nbsp;&nbsp;silenceStartTime</a></code>
 </h3>
 
 	<div class="method-info">
@@ -164,12 +168,12 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>不在状态栏显示消息，NO，默认值，状态栏显示消息；YES，状态栏不显示消息</p>
+				<p>群成员禁言开始时间</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) BOOL noSaveNotification</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign, readonly) UInt64 silenceStartTime</code></div>
 
 		    
 			
@@ -187,15 +191,15 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">JMSGOptionalContent.h</code></p>
+				<p><code class="declared-in-ref">JMSGGroup.h</code></p>
 			</div>
 			
 			
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/needReadReceipt" title="needReadReceipt"></a>
-	<h3 class="method-title"><code><a href="#//api/name/needReadReceipt">&nbsp;&nbsp;needReadReceipt</a></code>
+	<a name="//api/name/silenceEndTime" title="silenceEndTime"></a>
+	<h3 class="method-title"><code><a href="#//api/name/silenceEndTime">&nbsp;&nbsp;silenceEndTime</a></code>
 </h3>
 
 	<div class="method-info">
@@ -205,12 +209,12 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>设置这条消息的发送是否需要对方发送已读回执，NO，默认值</p>
+				<p>群成员禁言结束时间</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) BOOL needReadReceipt</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign, readonly) UInt64 silenceEndTime</code></div>
 
 		    
 			
@@ -228,53 +232,7 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">JMSGOptionalContent.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/customNotification" title="customNotification"></a>
-	<h3 class="method-title"><code><a href="#//api/name/customNotification">&nbsp;&nbsp;customNotification</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>自定义消息通知栏的内容</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) JMSGCustomNotification *customNotification</code></div>
-
-		    
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection discussion-section">
-				<h4 class="method-subtitle">Discussion</h4>
-				<p>这个属性可以具体参考 <a href="../Classes/JMSGCustomNotification.html">JMSGCustomNotification</a> 类</p>
-			</div>
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">JMSGOptionalContent.h</code></p>
+				<p><code class="declared-in-ref">JMSGGroup.h</code></p>
 			</div>
 			
 			
