@@ -459,6 +459,19 @@ JMSGMessage *message = [self.conversation createMessageWithContent:textContent];
 [self.conversation sendMessage:message optionalContent:option]
 ```
 
+### 取消消息发送
+上层在发送多媒体消息时，可能会有中途想取消发送的需求，此时就可以调用下面接口来完成对发送的消息取消发送。
+
+```
+/*!
+ * @abstract 取消正在发送的消息
+ *
+ * @discussion 在消息发送结果监听 [JMSGMessageDelegate onSendMessageResponse:error:] 里会返回对应的错误信息和错误码。
+ *
+ * @since 3.8.1
+ */
+- (void)cancelSendingMessage;
+```
 
 ### <span id="accept-message">接收消息<span>
 SDK 收到消息时会上抛消息，上层通过 [onReceiveMessage:error:](./jmessage_ios_appledoc_html/Protocols/JMSGMessageDelegate.html#//api/name/onReceiveMessage:error:) 或 [onSyncOfflineMessageConversation:offlineMessages:](./jmessage_ios_appledoc_html/Protocols/JMSGConversationDelegate.html#//api/name/onSyncOfflineMessageConversation:offlineMessages:)，开发者可以通过代理方法来拿到具体的 `message` 对象，进而执行 UI 刷新或者其他相关逻辑。[接收消息代理方法汇总](#message-accept-function)
@@ -625,6 +638,21 @@ SDK 升级到 3.1.0 版本后（或之后的版本），上层只需要做以下
  */
 @optional
 - (void)onReceiveMessageDownloadFailed:(JMSGMessage *)message;
+```
+
+### 取消多媒体消息下载
+上层在调用接口下载多媒体源文件时，如果在下载过程中想取消下载，可以调用此接口来实现。
+取消下载不一定是会成功的。
+
+```
+/*!
+ * @abstract 取消正在下载的多媒体文件
+ *
+ * @discussion 对于正在下载的多媒体源文件，可以调用此接口取消下载，现只能取消下载：大图、文件、视频等；下载接口的回调里会返回对应的错误码和错误信息。
+ *
+ * @since 3.8.1
+ */
+- (void)cancelDownloadOriginMedia;
 ```
 
 ### 撤回消息

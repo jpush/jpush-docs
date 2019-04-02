@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 
-	<title>JMSGGroupAdminApprovalEvent Class Reference</title>
+	<title>JMSGChatRoomEvent Class Reference</title>
 
 	<link rel="stylesheet" href="../css/style.css">
 	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
@@ -43,8 +43,6 @@
 							<select id="jump-to">
 	<option value="top">Jump To&#133;</option>
 	
-	<option value="overview">Overview</option>
-	
 
 	
 	
@@ -56,15 +54,11 @@
 	
 	<optgroup label="Properties">
 		
-		<option value="//api/name/isAgreeApply">isAgreeApply</option>
+		<option value="//api/name/chatRoom">chatRoom</option>
 		
-		<option value="//api/name/applyEventID">applyEventID</option>
+		<option value="//api/name/fromUser">fromUser</option>
 		
-		<option value="//api/name/groupID">groupID</option>
-		
-		<option value="//api/name/groupAdmin">groupAdmin</option>
-		
-		<option value="//api/name/users">users</option>
+		<option value="//api/name/targetList">targetList</option>
 		
 	</optgroup>
 	
@@ -85,7 +79,7 @@
 		<div id="overview_contents" class="container">
 			<div id="content">
 				<main role="main">
-					<h1 class="title">JMSGGroupAdminApprovalEvent Class Reference</h1>
+					<h1 class="title">JMSGChatRoomEvent Class Reference</h1>
 
 					
 					<div class="section section-specification"><table cellspacing="0"><tbody>
@@ -100,14 +94,6 @@
 					
 
                     
-					
-					<div class="section section-overview">
-						<a title="Overview" name="overview"></a>
-						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>管理员同意或者拒绝了某个入群申请，其他管理员会收到该通知，上层通过 <a href="../Protocols/JMSGGroupDelegate.html#//api/name/onReceiveGroupAdminApprovalEvent:">[JMSGGroupDelegate onReceiveGroupAdminApprovalEvent:]</a> 代理方法监听该事件</p>
-					</div>
-					
-					
 
 					
 					
@@ -120,8 +106,8 @@
 
 						<div class="task-list">
 							<div class="section-method">
-	<a name="//api/name/isAgreeApply" title="isAgreeApply"></a>
-	<h3 class="method-title"><code><a href="#//api/name/isAgreeApply">&nbsp;&nbsp;isAgreeApply</a></code>
+	<a name="//api/name/chatRoom" title="chatRoom"></a>
+	<h3 class="method-title"><code><a href="#//api/name/chatRoom">&nbsp;&nbsp;chatRoom</a></code>
 </h3>
 
 	<div class="method-info">
@@ -131,12 +117,12 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>管理员是否同意申请，YES：同意，NO：拒绝</p>
+				<p>聊天室</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign, readonly) BOOL isAgreeApply</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) JMSGChatRoom *chatRoom</code></div>
 
 		    
 			
@@ -161,8 +147,8 @@
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/applyEventID" title="applyEventID"></a>
-	<h3 class="method-title"><code><a href="#//api/name/applyEventID">&nbsp;&nbsp;applyEventID</a></code>
+	<a name="//api/name/fromUser" title="fromUser"></a>
+	<h3 class="method-title"><code><a href="#//api/name/fromUser">&nbsp;&nbsp;fromUser</a></code>
 </h3>
 
 	<div class="method-info">
@@ -172,12 +158,12 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>申请入群事件的事件 id</p>
+				<p>事件操作者</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) NSString *applyEventID</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) JMSGUser *fromUser</code></div>
 
 		    
 			
@@ -202,8 +188,8 @@
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/groupID" title="groupID"></a>
-	<h3 class="method-title"><code><a href="#//api/name/groupID">&nbsp;&nbsp;groupID</a></code>
+	<a name="//api/name/targetList" title="targetList"></a>
+	<h3 class="method-title"><code><a href="#//api/name/targetList">&nbsp;&nbsp;targetList</a></code>
 </h3>
 
 	<div class="method-info">
@@ -213,94 +199,12 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>群 gid</p>
+				<p>事件作用的用户列表</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) NSString *groupID</code></div>
-
-		    
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">JMSGNotificationEvent.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/groupAdmin" title="groupAdmin"></a>
-	<h3 class="method-title"><code><a href="#//api/name/groupAdmin">&nbsp;&nbsp;groupAdmin</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>操作的管理员</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) JMSGUser *groupAdmin</code></div>
-
-		    
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">JMSGNotificationEvent.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/users" title="users"></a>
-	<h3 class="method-title"><code><a href="#//api/name/users">&nbsp;&nbsp;users</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>申请或被邀请加入群的用户，即：实际入群的用户</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) NSArray JMSG_GENERIC ( __kindof JMSGUser **users</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) NSArray&lt;__kindofJMSGUser*&gt; *targetList</code></div>
 
 		    
 			

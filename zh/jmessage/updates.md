@@ -1,5 +1,32 @@
 # 最近更新
 
+### iOS SDK v3.8.1
+
+#### 更新时间
+
+2019-04-02
+
+#### ChangeLog
+
+##### BugFix
+
++ 修改一些已知 bug
+
+#### Feature
+
++ 新增：取消消息发送接口
++ 新增：取消多媒体消息下载接口
++ 新增：可设置时间的群禁言接口
++ 新增：聊天室禁言功能
+
+#### 升级提示
+
++ 建议升级
+
+#### 升级指南
++ 使用新版本的 JMessage.framework 文件替换原工程下的同名旧文件
+
+
 ### Android SDK v2.8.2
 
 #### 更新时间
@@ -2597,3 +2624,4 @@ getLatestType()、getLatestText()
 + 打开后请按照AndroidManifest的提示替换您的包名和APPKey；
 + 全局替换："import cn.jpush.im.android.demo.R;" 替换为 "import 您的包名.R;"
 + 如果是Android Studio用户注意检查 build.gradle 中的 applicationId 与你的包名一致
+ 

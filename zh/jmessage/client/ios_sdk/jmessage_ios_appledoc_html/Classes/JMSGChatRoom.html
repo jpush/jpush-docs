@@ -106,6 +106,14 @@
 		
 		<option value="//api/name/deleteAdminWithUsernames:appKey:handler:">- deleteAdminWithUsernames:appKey:handler:</option>
 		
+		<option value="//api/name/addChatRoomSilenceWithTime:usernames:appKey:handler:">- addChatRoomSilenceWithTime:usernames:appKey:handler:</option>
+		
+		<option value="//api/name/deleteChatRoomSilenceWithUsernames:appKey:handler:">- deleteChatRoomSilenceWithUsernames:appKey:handler:</option>
+		
+		<option value="//api/name/getChatRoomMemberSilenceWithUsername:appKey:handler:">- getChatRoomMemberSilenceWithUsername:appKey:handler:</option>
+		
+		<option value="//api/name/getChatRoomSilencesWithStart:count:handler:">- getChatRoomSilencesWithStart:count:handler:</option>
+		
 		<option value="//api/name/displayName">- displayName</option>
 		
 	</optgroup>
@@ -1244,6 +1252,301 @@
 		</div>
 	</div>
 </div><div class="section-method">
+	<a name="//api/name/addChatRoomSilenceWithTime:usernames:appKey:handler:" title="addChatRoomSilenceWithTime:usernames:appKey:handler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/addChatRoomSilenceWithTime:usernames:appKey:handler:">&ndash;&nbsp;addChatRoomSilenceWithTime:usernames:appKey:handler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>设置成员禁言（可设置禁言时间）</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)addChatRoomSilenceWithTime:(SInt64)<em>silenceTime</em> usernames:(NSArray *JMSG_NONNULL)<em>usernames</em> appKey:(NSString *JMSG_NULLABLE)<em>appkey</em> handler:(JMSGCompletionHandler JMSG_NULLABLE)<em>handler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>silenceTime</code></th>
+						<td><p>禁言时间戳，单位：毫秒，必须不小于5分钟，不大于1年</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>usernames</code></th>
+						<td><p>用户的 user<a href="#//api/name/name">name</a> 数组，一次最多500人</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>handler</code></th>
+						<td><p>结果回调，error = nil 时，表示成功</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>appKey</code></th>
+						<td><p>用户的 appKey，若传入空则默认使用本应用appKey，同一次设置的 usernames 必须在同一个 AppKey 下</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection availability">
+				<h4 class="method-subtitle parameter-title">Availability</h4>
+				<p>3.8.1</p>
+			</div>
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>只有房主和管理员可设置；设置成功的话上层会收到相应下发事件。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGChatRoom.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/deleteChatRoomSilenceWithUsernames:appKey:handler:" title="deleteChatRoomSilenceWithUsernames:appKey:handler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/deleteChatRoomSilenceWithUsernames:appKey:handler:">&ndash;&nbsp;deleteChatRoomSilenceWithUsernames:appKey:handler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>取消成员禁言</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)deleteChatRoomSilenceWithUsernames:(NSArray *JMSG_NONNULL)<em>usernames</em> appKey:(NSString *JMSG_NULLABLE)<em>appkey</em> handler:(JMSGCompletionHandler JMSG_NULLABLE)<em>handler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>usernames</code></th>
+						<td><p>用户的 user<a href="#//api/name/name">name</a> 数组，一次最多500人</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>handler</code></th>
+						<td><p>结果回调，error = nil 时，表示成功</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>appKey</code></th>
+						<td><p>用户的 appKey，若传入空则默认使用本应用appKey，同一次设置的 usernames 必须在同一个 AppKey 下</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection availability">
+				<h4 class="method-subtitle parameter-title">Availability</h4>
+				<p>3.8.1</p>
+			</div>
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>只有房主和管理员可设置；取消成功的话上层会收到相应下发事件。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGChatRoom.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/getChatRoomMemberSilenceWithUsername:appKey:handler:" title="getChatRoomMemberSilenceWithUsername:appKey:handler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/getChatRoomMemberSilenceWithUsername:appKey:handler:">&ndash;&nbsp;getChatRoomMemberSilenceWithUsername:appKey:handler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>获取禁言状态</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)getChatRoomMemberSilenceWithUsername:(NSString *JMSG_NONNULL)<em>username</em> appKey:(NSString *JMSG_NULLABLE)<em>appKey</em> handler:(JMSGCompletionHandler JMSG_NULLABLE)<em>handler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>username</code></th>
+						<td><p>用户名</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>appKey</code></th>
+						<td><p>用户所在应用 AppKey，不填这默认本应用</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>handler</code></th>
+						<td><p>结果回调，resultObject 是 <a href="../Classes/JMSGMemberSilenceInfo.html">JMSGMemberSilenceInfo</a> 类型
+若 error == nil &amp;&amp; resultObject != nil,该成员已被禁言
+若 error == nil &amp;&amp; resultObject == nil,该成员未被禁言
+若 error != nil ,请求失败，</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection availability">
+				<h4 class="method-subtitle parameter-title">Availability</h4>
+				<p>3.8.1</p>
+			</div>
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>详细信息可查看 <a href="../Classes/JMSGMemberSilenceInfo.html">JMSGMemberSilenceInfo</a> 类</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGChatRoom.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/getChatRoomSilencesWithStart:count:handler:" title="getChatRoomSilencesWithStart:count:handler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/getChatRoomSilencesWithStart:count:handler:">&ndash;&nbsp;getChatRoomSilencesWithStart:count:handler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>禁言列表</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)getChatRoomSilencesWithStart:(SInt64)<em>start</em> count:(SInt64)<em>count</em> handler:(void ( ^ ) ( NSArray&lt;__kindofJMSGMemberSilenceInfo*&gt; *JMSG_NULLABLE list , SInt64 total , NSError *JMSG_NULLABLE error ))<em>handler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>start</code></th>
+						<td><p>开始位置</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>count</code></th>
+						<td><p>需要获取的个数，必须大于 0</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>handler</code></th>
+						<td><p>结果回调</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection availability">
+				<h4 class="method-subtitle parameter-title">Availability</h4>
+				<p>3.8.1</p>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGChatRoom.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
 	<a name="//api/name/displayName" title="displayName"></a>
 	<h3 class="method-title"><code><a href="#//api/name/displayName">&ndash;&nbsp;displayName</a></code>
 </h3>
@@ -1304,7 +1607,7 @@
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2019 HXHG. All rights reserved. Updated: 2019-01-08</p>
+						<p class="copyright">Copyright &copy; 2019 HXHG. All rights reserved. Updated: 2019-04-01</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
