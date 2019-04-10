@@ -518,3 +518,7 @@ Content-Type: application/json; charset=utf-8
 + total_users： total users
 + send_msg_users ： number of users who sent the message
 + new_user： new users
+
+## 参考
+
+- 老版本 REST REPORT API：[REST REPORT API V1](./rest_api_im_report)

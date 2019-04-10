@@ -24,7 +24,7 @@ JMessage 服务器端报的错误码。有可能出现在各平台的 SDK 里。
 		<tr >
 			<td>898002</td>
 			<td>No such user</td>
-			<td>用户不存在</td>
+			<td>用户不存在, 并且指出了不存在的用户名称</td>
 		</tr>
 		<tr >
 			<td>898003</td>
@@ -239,8 +239,8 @@ JMessage 服务器端报的错误码。有可能出现在各平台的 SDK 里。
 			<td>Server response time out, please try again later</td>
 			<td>系统繁忙，稍后重试</td>
 		</tr>
-    <tr >
-      <td>899081</td>
+	<tr >
+	  <td>899081</td>
 			<td>room id no exist</td>
 			<td>聊天室ID不存在</td>
 		</tr>
@@ -342,7 +342,7 @@ JMessage 服务器端报的错误码。有可能出现在各平台的 SDK 里。
 		<tr >
 			<td>802002</td>
 			<td>username not match</td>
-            <td>登出用户名和登录用户名不匹配，登出失败</td>
+	        <td>登出用户名和登录用户名不匹配，登出失败</td>
 		</tr>
 		<tr >
 			<td>803001</td>
@@ -410,9 +410,9 @@ JMessage 服务器端报的错误码。有可能出现在各平台的 SDK 里。
 			<td>目标用户不存在</td>
 		</tr>
 		<tr >
-        	<td>805002</td>
+	    	<td>805002</td>
 	        <td>already is friend</td>
-            <td>添加好友失败：双方已经是好友</td>
+	        <td>添加好友失败：双方已经是好友</td>
 		</tr>
 		<tr >
 		    <td>805003</td>
@@ -719,7 +719,7 @@ JMessage 服务器端报的错误码。有可能出现在各平台的 SDK 里。
 			<td>owner can not leave chatroom</td>
 			<td>踢出或退出聊天室时，存在owner用户退出聊天室</td>
 		</tr>
-    <tr>
+	<tr>
 			<td>853001</td>
 			<td>chatroom not exist</td>
 			<td>更新不存在的聊天室信息</td>
@@ -728,7 +728,7 @@ JMessage 服务器端报的错误码。有可能出现在各平台的 SDK 里。
 			<td>853002</td>
 			<td>owner not in chatroom</td>
 			<td>更新聊天室owner时，新的owner并不在该聊天室中</td>
-    </tr>
+	</tr>
 		<tr>
 			<td>855001</td>
 			<td>out of time</td>
@@ -919,7 +919,7 @@ JMessage 服务器端报的错误码。有可能出现在各平台的 SDK 里。
 			<td>not enough rtc trial time</td>
 			<td>音视频服务试用时长不够，停用</td>
 		</tr>
-	
+
 </table>
 </div>
 
