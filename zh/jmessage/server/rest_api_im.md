@@ -1431,7 +1431,7 @@ Example Response
 < Content-Type: application/json
 ```
 
-### 添加群组成员
+#### 添加群组成员 V2
 
 批量增加群组的成员。
 
@@ -1458,7 +1458,7 @@ Example Response
 < Content-Type: application/json
 ```
 
-### 删除群组成员
+#### 删除群组成员 V2
 
 批量删除群组的成员。
 

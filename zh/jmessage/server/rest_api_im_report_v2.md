@@ -525,6 +525,6 @@ Content-Type: application/json; charset=utf-8
 + send_msg_users ：发送了消息的用户数
 + new_groups ：新增群组数
 
-## Reference
+## 参考
 
-- Old REST REPORT API：[REST REPORT API V1](./rest_api_im_report)
+- 老版 REST REPORT API：[REST REPORT API V1](../rest_api_im_report)
