@@ -1,5 +1,23 @@
 # 最近更新
 
+### REST API
+
+#### 更新时间
+
+2019-04-10
+
+#### ChangeLog
+
+##### BugFix
+
+- 修改连续获取消息时候，会出现重复消息的问题
+
+#### Feature
+
+- 优化：优化了no such user信息，列出了不存在的用户
+- 新增：批量用户状态查询添加v2接口
+- 新增：批量添加和删除群成员添加v2接口
+
 ### iOS SDK v3.8.1
 
 #### 更新时间
@@ -331,8 +349,8 @@
 	<uses-permission android:name="android.permission.RECORD_AUDIO" />  
 	<uses-permission android:name="android.permission.CAMERA" />  
 	<uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
-```   
-	
+```
+
 + 如果使用jcenter的方式集成JMRTC，不需要添加相关组件和资源，详细集成说明请参考官方[JMRTC集成指南](https://docs.jiguang.cn/jmessage/client/im_jmrtc_android/)
 
 ### JMRTC Android SDK v1.0.1
@@ -359,8 +377,8 @@
 	<uses-permission android:name="android.permission.RECORD_AUDIO" />  
 	<uses-permission android:name="android.permission.CAMERA" />  
 	<uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
-```   
-	
+```
+
 + 如果使用jcenter的方式集成JMRTC，不需要添加相关组件和资源，详细集成说明请参考官方[JMRTC集成指南](https://docs.jiguang.cn/jmessage/client/im_jmrtc_android/)
 
 ### Android SDK v2.6.1
@@ -435,7 +453,7 @@
 + 使用新版本的 JMessage.framework 文件替换原工程下的同名旧文件
 + 将新版本的 JMessage.framework 里的 JCore link 到工程中，详细参见官网集成文档
 
- 
+
 ### JMRTC Android SDK v1.0.0
 
 #### 更新时间
@@ -1890,10 +1908,10 @@
 	+ 设置备注名：[updateNotename](http://docs.jiguang.cn/jmessage/client/im_android_api_docs/cn/jpush/im/android/api/model/UserInfo.html#updateNoteName(java.lang.String,%20cn.jpush.im.api.BasicCallback))
 	+ 设置备注信息：[updateNoteText](http://docs.jiguang.cn/jmessage/client/im_android_api_docs/cn/jpush/im/android/api/model/UserInfo.html#updateNoteText(java.lang.String,%20cn.jpush.im.api.BasicCallback))
 	+ 将用户从好友列表中移除：[removeFromFriendList](http://docs.jiguang.cn/jmessage/client/im_android_api_docs/cn/jpush/im/android/api/model/UserInfo.html#removeFromFriendList(cn.jpush.im.api.BasicCallback))
-   
+  
 + ContactNotifyEvent 好友相关通知事件类
 	+ 具体定义见api doc: [ContactNotifyEvent](http://docs.jiguang.cn/jmessage/client/im_android_api_docs/cn/jpush/im/android/api/event/ContactNotifyEvent.html)
-   
+  
 + 增加两种message content类型：
 	+ 文件消息：[FileContent](http://docs.jiguang.cn/jmessage/client/im_android_api_docs/cn/jpush/im/android/api/content/FileContent.html)
 	+ 位置消息：[LocationContent](http://docs.jiguang.cn/jmessage/client/im_android_api_docs/cn/jpush/im/android/api/content/LocationContent.html)
@@ -2265,7 +2283,7 @@
 		+ groupinfo.setNoDisturb（int noDisturb,Callback callback）设置群组的免打扰状态
 		+ groupinfo.getNoDisturb() 获取群组的免打扰状态
 		+ groupinfo.getMaxMemberCount() 获取群成员的最大上限
- 
+
 
 
 ##### Bug Fix
@@ -2624,4 +2642,3 @@ getLatestType()、getLatestText()
 + 打开后请按照AndroidManifest的提示替换您的包名和APPKey；
 + 全局替换："import cn.jpush.im.android.demo.R;" 替换为 "import 您的包名.R;"
 + 如果是Android Studio用户注意检查 build.gradle 中的 applicationId 与你的包名一致
- 
