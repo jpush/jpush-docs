@@ -527,4 +527,4 @@ Content-Type: application/json; charset=utf-8
 
 ## 参考
 
-- 老版 REST REPORT API：[REST REPORT API V1](../rest_api_im_report)
+- 老版 REST REPORT API：[REST REPORT API V1](./rest_api_im_report)
