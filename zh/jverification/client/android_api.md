@@ -263,64 +263,64 @@
 
 ##JVerifyUIConfig配置元素说明
 
-       + 授权页导航栏
++ 授权页导航栏
         
-       |方法|参数类型|说明|
-       |:-----:|:----:|:----:|
-       |setNavColor|int|设置导航栏颜色|
-       |setNavText|String|设置导航栏标题文字|
-       |setNavTextColor|int|设置导航栏标题文字颜色|
-       |setNavReturnImgPath|String|设置导航栏返回按钮图标|
+|方法|参数类型|说明|
+|:-----:|:----:|:----:|
+|setNavColor|int|设置导航栏颜色|
+|setNavText|String|设置导航栏标题文字|
+|setNavTextColor|int|设置导航栏标题文字颜色|
+|setNavReturnImgPath|String|设置导航栏返回按钮图标|
        
-       + 授权页logo
++ 授权页logo
        
-       |方法|参数类型|说明|
-       |:-----:|:----:|:----:|
-       |setLogoWidth|int|设置logo宽度（单位：dp）|
-       |setLogoHeight|int|设置logo高度（单位：dp）|
-       |setLogoHidden|boolean|隐藏logo|
-       |setLogoOffsetY|int|设置logo相对于标题栏下边缘y偏移|
-       |setLogoImgPath|String|设置logo图片|
+|方法|参数类型|说明|
+|:-----:|:----:|:----:|
+|setLogoWidth|int|设置logo宽度（单位：dp）|
+|setLogoHeight|int|设置logo高度（单位：dp）|
+|setLogoHidden|boolean|隐藏logo|
+|setLogoOffsetY|int|设置logo相对于标题栏下边缘y偏移|
+|setLogoImgPath|String|设置logo图片|
        
-       + 授权页号码栏
++ 授权页号码栏
        
-       |方法|参数类型|说明|
-       |:-----:|:----:|:----:|
-       |setNumberColor|int|设置手机号码字体颜色|
-       |setNumFieldOffsetY|int|设置号码栏相对于标题栏下边缘y偏移|
+|方法|参数类型|说明|
+|:-----:|:----:|:----:|
+|setNumberColor|int|设置手机号码字体颜色|
+|setNumFieldOffsetY|int|设置号码栏相对于标题栏下边缘y偏移|
        
-       + 授权页登录按钮
++ 授权页登录按钮
        
-       |方法|参数类型|说明|
-       |:-----:|:----:|:----:|
-       |setLogBtnText|String|设置登录按钮文字|
-       |setLogBtnTextColor|int|设置登录按钮文字颜色|       
-       |setLogBtnImgPath|String|设置授权登录按钮图片|
-       |setLogBtnOffsetY|int|设置登录按钮相对于标题栏下边缘y偏移|
+|方法|参数类型|说明|
+|:-----:|:----:|:----:|
+|setLogBtnText|String|设置登录按钮文字|
+|setLogBtnTextColor|int|设置登录按钮文字颜色|       
+|setLogBtnImgPath|String|设置授权登录按钮图片|
+|setLogBtnOffsetY|int|设置登录按钮相对于标题栏下边缘y偏移|
        
-       + 授权页隐私栏
++ 授权页隐私栏
        
-       |方法|参数类型|说明|
-       |:-----:|:----:|:----:|
-       |setAppPrivacyOne|String,String|设置开发者隐私条款1名称和URL(名称，url)|
-       |setAppPrivacyTwo|String,String|设置开发者隐私条款2名称和URL(名称，url)|       
-       |setAppPrivacyColor|int,int|设置隐私条款名称颜色(基础文字颜色，协议文字颜色)|
-       |setPrivacyOffsetY|int|设置隐私条款相对于授权页面底部下边缘y偏移|       
-       |setCheckedImgPath|String|设置复选框选中时图片|
-       |setUncheckedImgPath|String|设置复选框未选中时图片|  
+|方法|参数类型|说明|
+|:-----:|:----:|:----:|
+|setAppPrivacyOne|String,String|设置开发者隐私条款1名称和URL(名称，url)|
+|setAppPrivacyTwo|String,String|设置开发者隐私条款2名称和URL(名称，url)|       
+|setAppPrivacyColor|int,int|设置隐私条款名称颜色(基础文字颜色，协议文字颜色)|
+|setPrivacyOffsetY|int|设置隐私条款相对于授权页面底部下边缘y偏移|       
+|setCheckedImgPath|String|设置复选框选中时图片|
+|setUncheckedImgPath|String|设置复选框未选中时图片|  
        
-       + 授权页slogan 
++ 授权页slogan 
        
-       |方法|参数类型|说明|
-       |:-----:|:----:|:----:|
-       |setSloganTextColor|int|设置移动slogan文字颜色|
-       |setSloganOffsetY|int|设置slogan相对于标题栏下边缘y偏移|
+|方法|参数类型|说明|
+|:-----:|:----:|:----:|
+|setSloganTextColor|int|设置移动slogan文字颜色|
+|setSloganOffsetY|int|设置slogan相对于标题栏下边缘y偏移|
        
-       + 开发者自定义控件
++ 开发者自定义控件
        
-       |方法|参数类型|说明|
-       |:-----:|:----:|:----:|
-       |addCustomView|见以上方法定义|在授权页空白处添加自定义控件以及点击监听|
+|方法|参数类型|说明|
+|:-----:|:----:|:----:|
+|addCustomView|见以上方法定义|在授权页空白处添加自定义控件以及点击监听|
 
 ![JVerification](../image/cutomeUI_description_android.png)
        
