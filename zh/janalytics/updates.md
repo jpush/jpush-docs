@@ -1,7 +1,30 @@
 # 最近更新
+
+### JAnalytics MiniProgram SDK v1.0.0
+
+#### 更新时间
+
++ 2019-04-17
+
+#### Change Log 
++ 微信小程序平台的数据统计，目前支持自定义事件。
+
+#### 升级提示
+
++ 我是第一版！
+
+####  升级指南
+
++ 首先解压您获取到的zip压缩包；
++ 导入 SDK 开发包：janalytics-m-1.x.x.js；
++ 导入SDK analysis 配置文件: janalytics-conf.js，并根据注释配置。详细请见JAnalytics MiniProgram SDK 集成指南中的说明，或者example中的示例。
+
+
+
 ### JAnalytics Android SDK v2.0.0
 
 #### 更新时间
+
 + 2019-02-14
 
 #### Change Log 
@@ -23,22 +46,30 @@
 用jcore-android-1.x.y.jar 替换项目中原有的极光jcore的jar文件，并删除原有极光jcore的jar文件。
 用对应CPU文件夹下的 libjcore1xy.so文件，替换项目中原有的极光so文件，并删除原有的极光so文件。
 + 更新AndroidManifest.xml。
-可根据压缩包根目录下的AndroidManifest文件（或集成指南），更新统计sdk所需权限、及相关组件等。注:如同一个应用集成了多个极光SDK，只需配置一次appkey与channel。
+可根据压缩包根目录下的AndroidManifest文件（或集成指南），更新统计sdk所需权限、及相关组件等。
+
+ 
+  ```
+  注意:如同一个应用集成了多个极光SDK，只需配置一次appkey与channel。
+
+  ```
+
 
 + 配置动态圈选插件
 参考【集成指南】的【本地工程配置】部分进行配置。
 
-#### JCenter方式集成升级指南
-+ 如果使用jcenter的方式集成JAnalytics，请参考官方【集成指南】的【JCenter 自动集成方式】部分。
+#### Jcenter方式集成升级指南
+如果使用jcenter的方式集成JAnalytics，请参考官方【集成指南】的【JCenter 自动集成方式】部分。
 
 
 ### JAnalytics iOS SDK v2.0.0
 
 #### 更新时间
+
 + 2019-02-14
 
 #### Change Log 
-+ 支持动态圈选功能(Beta版)，以及圈选数据统计上报。
++ 支持动态圈选(Beta版)，以及圈选数据统计上报。
 + 修改已知问题。
 
 #### 升级提示
@@ -51,16 +82,16 @@
 + 需要集成JCore1.1.8及以上版本，否则编译运行会报错。
 
 
-
 ### JAnalytics QuickApp SDK v1.1.0
 
 #### 更新时间
+
 + 2018-11-07
 
 #### Change Log 
++ 修复已知问题。
 + 增加deviceInfo和locInfo上报。
 + 新增账户维度统计。
-+ 修复已知问题。
 
 
 #### 升级提示
@@ -76,6 +107,7 @@
 ### JAnalytics Android SDK v1.2.2
 
 #### 更新时间
+
 + 2018-09-19
 
 #### Change Log 
@@ -97,6 +129,7 @@
 ### JAnalytics QuickApp SDK v1.0.0
 
 #### 更新时间
+
 + 2018-08-10
 
 #### Change Log 
@@ -117,6 +150,7 @@
 ### JAnalytics Android SDK v1.2.1
 
 #### 更新时间
+
 + 2018-04-12
 
 #### Change Log 
@@ -145,6 +179,7 @@
 ### JAnalytics iOS SDK v1.2.1
 
 #### 更新时间
+
 + 2018-03-12
 
 #### Change Log 
@@ -164,6 +199,7 @@
 ### JAnalytics iOS SDK v1.2.0
 
 #### 更新时间
+
 + 2018-01-15
 
 #### Change Log 
@@ -185,6 +221,7 @@
 ### JAnalytics Android SDK v1.2.0
 
 #### 更新时间
+
 + 2018-01-15
 
 #### Change Log 
@@ -214,6 +251,7 @@
 ### JAnalytics Android SDK v1.1.2
 
 #### 更新时间
+
 + 2017-07-26
 
 #### Change Log 
@@ -245,6 +283,7 @@
 ### JAnalytics iOS SDK v1.1.3
 
 #### 更新时间
+
 + 2017-07-05
 
 #### Change Log 
@@ -268,6 +307,7 @@
 ### JAnalytics Android SDK v1.1.1
 
 #### 更新时间
+
 + 2017-04-21
 
 #### Change Log 
@@ -298,6 +338,7 @@
 ### JAnalytics iOS SDK v1.1.2
 
 #### 更新时间
+
 + 2017-04-14
 
 #### Change Log 
@@ -313,7 +354,6 @@
 
 
 #### 升级指南
-
 + 首先解压您获取到的zip压缩包。
 + 更新库文件。
 
@@ -321,6 +361,7 @@
 ### JAnalytics iOS SDK v1.1.1
 
 #### 更新时间
+
 + 2017-02-13
 
 #### Change Log
