@@ -138,9 +138,17 @@
 		
 		<option value="//api/name/setGroupMemberSilence:username:appKey:handler:">- setGroupMemberSilence:username:appKey:handler:</option>
 		
+		<option value="//api/name/addGroupSilenceWithTime:usernames:appKey:handler:">- addGroupSilenceWithTime:usernames:appKey:handler:</option>
+		
+		<option value="//api/name/deleteGroupSilenceWithUsernames:appKey:handler:">- deleteGroupSilenceWithUsernames:appKey:handler:</option>
+		
 		<option value="//api/name/isSilenceMemberWithUsername:appKey:">- isSilenceMemberWithUsername:appKey:</option>
 		
+		<option value="//api/name/getGroupMemberSilenceWithUsername:appKey:handler:">- getGroupMemberSilenceWithUsername:appKey:handler:</option>
+		
 		<option value="//api/name/groupSilenceMembers">- groupSilenceMembers</option>
+		
+		<option value="//api/name/getGroupMemberSilenceList:">- getGroupMemberSilenceList:</option>
 		
 		<option value="//api/name/groupAnnouncementList:">- groupAnnouncementList:</option>
 		
@@ -2270,7 +2278,7 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>群成员禁言设置</p>
+				<p>群成员禁言设置(接口已过期)</p>
 			</div>
 			
 		    
@@ -2290,12 +2298,17 @@
 				
 					<tr>
 						<th scope="row" class="argument-name"><code>username</code></th>
+						<td><p>待设置的用户的 user<a href="#//api/name/name">name</a></p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>appKey</code></th>
 						<td><p>带待设置的用户的 appKey,若传入空则默认使用本应用appKey</p></td>
 					</tr>
 				
 					<tr>
 						<th scope="row" class="argument-name"><code>handler</code></th>
-						<td><p>结果回调</p></td>
+						<td><p>结果回调，error=nil,则表示成功</p></td>
 					</tr>
 				
 				</table>
@@ -2309,7 +2322,158 @@
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>注意: 目前 SDK 只支持群主设置群里某个用户禁言</p>
+				<p>接口已过期，请使用 [JMSGGroup addGroupSilenceWithTime:usernames:appKey:handler] 接口。新老接口请不要混用。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGGroup.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/addGroupSilenceWithTime:usernames:appKey:handler:" title="addGroupSilenceWithTime:usernames:appKey:handler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/addGroupSilenceWithTime:usernames:appKey:handler:">&ndash;&nbsp;addGroupSilenceWithTime:usernames:appKey:handler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>设置群成员禁言（可设置禁言时间）</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)addGroupSilenceWithTime:(SInt64)<em>silenceTime</em> usernames:(NSArray *JMSG_NONNULL)<em>usernames</em> appKey:(NSString *JMSG_NULLABLE)<em>appkey</em> handler:(JMSGCompletionHandler JMSG_NULLABLE)<em>handler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>silenceTime</code></th>
+						<td><p>禁言时间戳，单位：毫秒，必须不小于5分钟，不大于1年</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>usernames</code></th>
+						<td><p>用户的 user<a href="#//api/name/name">name</a> 数组，一次最多500人</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>handler</code></th>
+						<td><p>结果回调，error = nil 时，表示成功</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>appKey</code></th>
+						<td><p>用户的 appKey，若传入空则默认使用本应用appKey，同一次设置的 usernames 必须在同一个 AppKey 下</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection availability">
+				<h4 class="method-subtitle parameter-title">Availability</h4>
+				<p>3.8.1</p>
+			</div>
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>只有群主和管理员可设置；设置成功的话上层会收到相应下发事件。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGGroup.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/deleteGroupSilenceWithUsernames:appKey:handler:" title="deleteGroupSilenceWithUsernames:appKey:handler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/deleteGroupSilenceWithUsernames:appKey:handler:">&ndash;&nbsp;deleteGroupSilenceWithUsernames:appKey:handler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>取消群成员禁言</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)deleteGroupSilenceWithUsernames:(NSArray *JMSG_NONNULL)<em>usernames</em> appKey:(NSString *JMSG_NULLABLE)<em>appkey</em> handler:(JMSGCompletionHandler JMSG_NULLABLE)<em>handler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>usernames</code></th>
+						<td><p>用户的 user<a href="#//api/name/name">name</a> 数组，一次最多500人</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>handler</code></th>
+						<td><p>结果回调，error = nil 时，表示成功</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>appKey</code></th>
+						<td><p>用户的 appKey，若传入空则默认使用本应用appKey，同一次设置的 usernames 必须在同一个 AppKey 下</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection availability">
+				<h4 class="method-subtitle parameter-title">Availability</h4>
+				<p>3.8.1</p>
+			</div>
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>只有群主和管理员可设置；取消成功的话上层会收到相应下发事件。</p>
 			</div>
 			
 
@@ -2338,7 +2502,7 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>判断用户在该群内是否被禁言</p>
+				<p>判断用户在该群内是否被禁言（已过期，请使用 [JMSGGroup getGroupMemberSilenceWithUsername:] 方法）</p>
 			</div>
 			
 		    
@@ -2385,8 +2549,135 @@
 		</div>
 	</div>
 </div><div class="section-method">
+	<a name="//api/name/getGroupMemberSilenceWithUsername:appKey:handler:" title="getGroupMemberSilenceWithUsername:appKey:handler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/getGroupMemberSilenceWithUsername:appKey:handler:">&ndash;&nbsp;getGroupMemberSilenceWithUsername:appKey:handler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>获取禁言状态</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)getGroupMemberSilenceWithUsername:(NSString *JMSG_NONNULL)<em>username</em> appKey:(NSString *JMSG_NULLABLE)<em>appKey</em> handler:(JMSGCompletionHandler JMSG_NULLABLE)<em>handler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>username</code></th>
+						<td><p>用户名</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>appKey</code></th>
+						<td><p>用户所在应用 AppKey，不填这默认本应用</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>handler</code></th>
+						<td><p>结果回调，resultObject 是 <a href="../Classes/JMSGMemberSilenceInfo.html">JMSGMemberSilenceInfo</a> 类型；
+若 error == nil &amp;&amp; resultObject != nil,该成员已被禁言；
+若 error == nil &amp;&amp; resultObject == nil,该成员未被禁言；
+若 error != nil ,请求失败。</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection availability">
+				<h4 class="method-subtitle parameter-title">Availability</h4>
+				<p>3.8.1</p>
+			</div>
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>返回的 JMSGMemberSilenceInfo 对象有 user 信息，通过 <a href="#//api/name/memberInfoWithUsername:appkey:">[JMSGGroup memberInfoWithUsername:appkey:]</a> 可再次获取到 <a href="../Classes/JMSGGroupMemberInfo.html">JMSGGroupMemberInfo</a> 信息</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGGroup.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
 	<a name="//api/name/groupSilenceMembers" title="groupSilenceMembers"></a>
 	<h3 class="method-title"><code><a href="#//api/name/groupSilenceMembers">&ndash;&nbsp;groupSilenceMembers</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>禁言列表（已过期，请使用 [JMSGGroup getGroupSilenceList:] 方法）</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (NSArray JMSG_GENERIC ( __kindof JMSGUser *) *)groupSilenceMembers</code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>禁言的成员列表. NSArray 里成员类型是 <a href="../Classes/JMSGGroupMemberInfo.html">JMSGGroupMemberInfo</a></p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>返回的是 <a href="../Classes/JMSGUser.html">JMSGUser</a> 对象，无法直接查看禁言时间</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">JMSGGroup.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/getGroupMemberSilenceList:" title="getGroupMemberSilenceList:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/getGroupMemberSilenceList:">&ndash;&nbsp;getGroupMemberSilenceList:</a></code>
 </h3>
 
 	<div class="method-info">
@@ -2401,24 +2692,36 @@
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (NSArray JMSG_GENERIC ( __kindof JMSGUser *) *)groupSilenceMembers</code></div>
+			<div class="method-subsection method-declaration"><code>- (void)getGroupMemberSilenceList:(JMSGCompletionHandler JMSG_NULLABLE)<em>handler</em></code></div>
 
 		    
 			
-
-			
-			<div class="method-subsection return">
-				<h4 class="method-subtitle parameter-title">Return Value</h4>
-				<p>禁言的成员列表. NSArray 里成员类型是 <a href="../Classes/JMSGUser.html">JMSGUser</a></p>
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>handler</code></th>
+						<td><p>结果回调，resultObject 是 NSArray 类型，元素是 <a href="../Classes/JMSGMemberSilenceInfo.html">JMSGMemberSilenceInfo</a></p></td>
+					</tr>
+				
+				</table>
 			</div>
 			
 
 			
 
 			
+			<div class="method-subsection availability">
+				<h4 class="method-subtitle parameter-title">Availability</h4>
+				<p>3.8.1</p>
+			</div>
+			
+
+			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>仅在获取群成员成功后此接口才有效</p>
+				<p>返回的 JMSGMemberSilenceInfo 对象有 user 信息，通过 <a href="#//api/name/memberInfoWithUsername:appkey:">[JMSGGroup memberInfoWithUsername:appkey:]</a> 可再次获取到 <a href="../Classes/JMSGGroupMemberInfo.html">JMSGGroupMemberInfo</a> 信息</p>
 			</div>
 			
 
@@ -4002,7 +4305,7 @@ value(JsonString) = {
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2019 HXHG. All rights reserved. Updated: 2019-01-08</p>
+						<p class="copyright">Copyright &copy; 2019 HXHG. All rights reserved. Updated: 2019-04-01</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

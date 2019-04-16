@@ -619,23 +619,46 @@ JMSGConversation
 
 ### 群成员禁言
 禁言后用户可正常接收消息，但无法向被禁言的群组中发送消息，解禁后可正常发送消息。
-#### 群成员禁言状态设置
+
+老接口在 v3.8.1 过期，建议使用新接口。 
+#### 群成员禁言设置
 
 ```
 /*!
- * @abstract 群成员禁言设置
+ * @abstract 设置群成员禁言（可设置禁言时间）
  *
- * @param isSilence 是否禁言， YES:是 NO: 否
- * @param username  待设置的用户的 username
- * @param username  带待设置的用户的 appKey,若传入空则默认使用本应用appKey
- * @param handler   结果回调
+ * @param silenceTime 禁言时间戳，单位：毫秒，必须不小于5分钟，不大于1年
+ * @param usernames   用户的 username 数组，一次最多500人
+ * @param appKey      用户的 appKey，若传入空则默认使用本应用appKey，同一次设置的 usernames 必须在同一个 AppKey 下
+ * @param handler     结果回调，error = nil 时，表示成功
  *
- * @discussion 注意: 目前 SDK 只支持群主设置群里某个用户禁言
+ * @discussion 只有群主和管理员可设置；设置成功的话上层会收到相应下发事件。
+ *
+ * @since 3.8.1
  */
-- (void)setGroupMemberSilence:(BOOL)isSilence
-                     username:(NSString *JMSG_NONNULL)username
-                       appKey:(NSString *JMSG_NULLABLE)appKey
-                      handler:(JMSGCompletionHandler JMSG_NULLABLE)handler;
+- (void)addGroupSilenceWithTime:(SInt64)silenceTime
+                      usernames:(NSArray *JMSG_NONNULL)usernames
+                         appKey:(NSString *JMSG_NULLABLE)appkey
+                        handler:(JMSGCompletionHandler JMSG_NULLABLE)handler;
+```
+
+#### 取消群成员禁言
+
+```
+/*!
+ * @abstract 取消群成员禁言
+ *
+ * @param usernames  用户的 username 数组，一次最多500人
+ * @param appKey     用户的 appKey，若传入空则默认使用本应用appKey，同一次设置的 usernames 必须在同一个 AppKey 下
+ * @param handler   结果回调，error = nil 时，表示成功
+ *
+ * @discussion 只有群主和管理员可设置；取消成功的话上层会收到相应下发事件。
+ *
+ * @since 3.8.1
+ */
+- (void)deleteGroupSilenceWithUsernames:(NSArray *JMSG_NONNULL)usernames
+                                appKey:(NSString *JMSG_NULLABLE)appkey
+                               handler:(JMSGCompletionHandler JMSG_NULLABLE)handler;
 ```
 
 #### 获取禁言列表
@@ -644,24 +667,35 @@ JMSGConversation
 /*!
  * @abstract 禁言列表
  *
- * @return 禁言的成员列表. NSArray 里成员类型是 JMSGUser
+ * @param handler 结果回调，resultObject 是 NSArray 类型，元素是 JMSGMemberSilenceInfo
  *
- * @discussion 仅在获取群成员成功后此接口才有效
+ * @discussion 返回的 JMSGMemberSilenceInfo 对象有 user 信息，通过 [JMSGGroup memberInfoWithUsername:appkey:] 可再次获取到 JMSGGroupMemberInfo 信息
+ *
+ * @since 3.8.1
  */
-- (NSArray JMSG_GENERIC(__kindof JMSGUser *)*)groupSilenceMembers;
+- (void)getGroupMemberSilenceList:(JMSGCompletionHandler JMSG_NULLABLE)handler;
 ```
 
 #### 判断用户是否被禁言
 
 ```
 /*!
- * @abstract 判断用户在该群内是否被禁言
+ * @abstract 获取禁言状态
  *
- * @param username  待判断用户的用户名
- * @param appKey    待判断用户的appKey，若传入空则默认使用本应用appKey
+ * @param username 用户名
+ * @param appKey   用户所在应用 AppKey，不填这默认本应用
+ * @param handler  结果回调，resultObject 是 JMSGMemberSilenceInfo 类型；
+ *                 若 error == nil && resultObject != nil,该成员已被禁言；
+ *                 若 error == nil && resultObject == nil,该成员未被禁言；
+ *                 若 error != nil ,请求失败。
+ *
+ * @discussion 返回的 JMSGMemberSilenceInfo 对象有 user 信息，通过 [JMSGGroup memberInfoWithUsername:appkey:] 可再次获取到 JMSGGroupMemberInfo 信息
+ *
+ * @since 3.8.1
  */
-- (BOOL)isSilenceMemberWithUsername:(NSString *JMSG_NONNULL)username
-                             appKey:(NSString *JMSG_NULLABLE)appKey;
+- (void)getGroupMemberSilenceWithUsername:(NSString *JMSG_NONNULL)username
+                                   appKey:(NSString *JMSG_NULLABLE)appKey
+                                  handler:(JMSGCompletionHandler JMSG_NULLABLE)handler;
 ```
 
 ### 群公告

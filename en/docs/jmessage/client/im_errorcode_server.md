@@ -21,7 +21,7 @@ The error code reported by the JMessage server may appear in the SDK of each pla
 		</tr><tr>
 			<td>898002</td>
 			<td>No such user</td>
-			<td>User does not exist</td>
+			<td>User does not exist，and message contains users who does not exist</td>
 		</tr><tr>
 			<td>898003</td>
 			<td>Parameter invalid!</td>

@@ -138,7 +138,6 @@ pages:
   - REST API:
     - 'REST API': 'jmessage/server/rest_api_im.md'
     - 'REST Report V2': 'jmessage/server/rest_api_im_report_v2.md'
-    - 'REST Report': 'jmessage/server/rest_api_im_report.md'
     - 'Server ErrorCode 定义': 'jmessage/client/im_errorcode_server.md'
   - 高级:
     - '消息协议': 'jmessage/advanced/im_message_protocol.md'
@@ -150,6 +149,8 @@ pages:
     - 'Python SDK': 'jmessage/server/sdk/python_sdk.md'
     - 'PHP SDK': 'jmessage/server/sdk/php_sdk.md'
     - 'C# SDK': 'jmessage/server/sdk/csharp_sdk.md'
+  - 旧文档:
+    - 'REST Report': 'jmessage/server/rest_api_im_report.md'
   - 最近更新: 'jmessage/updates.md'
   - 资源下载: 'jmessage/resources.md'
 

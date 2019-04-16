@@ -423,6 +423,40 @@ JMessageClient.sendMessage(message);//使用默认控制参数发送消息
 //JMessageClient.sendMessage(message,options);//使用自定义的控制参数发送消息
 ```
 
+### 消息发送取消
+***Since 2.8.2*** 
+
+发送消息过程中如果想取消消息的发送，可调用本接口
+```
+    /**
+     * 取消消息的发送，如果消息需要上传附件(图片、语音、文件等)，上传会中断，消息状态变为{@link MessageStatus#send_cancelled}。
+     * <p>
+     * 注意取消操作不一定会成功，通过设置的消息发送回调{@link #setOnSendCompleteCallback(BasicCallback)}来获取消息发送最终结果，
+     * 如果消息发送被取消的话回调中错误码为{@link cn.jpush.im.android.ErrorCode.LOCAL_ERROR#LOCAL_OPERATION_CANCELLED}代表消息发送取消。
+     * @since 2.8.2
+     */
+    message.cancelSend();
+```
+#### 代码示例
+```
+message.setOnSendCompleteCallback(new BasicCallback() {
+	@Override
+	public void gotResult(int responseCode, String responseMessage) {
+		assertEquals(ErrorCode.LOCAL_ERROR.LOCAL_OPERATION_CANCELLED, responseCode);
+		assertEquals(MessageStatus.send_cancelled, message.getStatus());
+		latch.countDown();
+	}
+});
+JMessageClient.sendMessage(message);
+// 调用发送后状态会变成send_going
+try {
+	TimeUnit.MILLISECONDS.sleep(cancelTimeInMill);
+} catch (InterruptedException e) {
+	e.printStackTrace();
+}
+message.cancelSend();
+```
+
 ### 接收消息
 sdk收到消息时，会上抛消息事件[MessageEvent](../im_android_api_docs/cn/jpush/im/android/api/event/MessageEvent.html?_blank) 或 [OfflineMessageEvent](../im_android_api_docs/cn/jpush/im/android/api/event/OfflineMessageEvent.html)，开发者可以通过这个事件来拿到具体的Message对象，进而执行UI刷新或者其他相关逻辑。具体事件处理方法见[事件处理](./event)一节
 
@@ -492,6 +526,60 @@ sdk升级到2.1.0版本（或以上）后，上层需要针对消息接收的处
         System.out.println(String.format(Locale.SIMPLIFIED_CHINESE, "收到ConversationRefreshEvent事件,待刷新的会话是%s.\n", conversation.getTargetId()));
         System.out.println("事件发生的原因 : " + reason);
     }
+```
+
+### 消息附件下载取消
+***Since 2.8.2*** 
+下载消息附件(例如文件)时，想取消下载调用本接口
+```
+    /**
+     * 取消下载,手动下载后可调用此接口取消下载, 注意可以自动下载的文件不可取消
+     * <br/>
+     * 是否取消成功需要根据下载的回调来判断,如果取消成功，下载回调中错误码为{@link ErrorCode.LOCAL_ERROR#LOCAL_OPERATION_CANCELLED}
+     * @param message 该Content所对应的消息对象
+     * @since 2.8.2
+     */
+    messageContent.cancelDownload(Message message);
+```
+
+#### 代码示例
+```
+mDownload.setOnClickListener(new View.OnClickListener() {
+	@Override
+	public void onClick(View v) {
+		mTv_showText.setText("");
+		final ProgressDialog dialog = new ProgressDialog(ShowMessageActivity.this);
+		dialog.setTitle("提示");
+		dialog.setMessage("正在下载中...");
+		dialog.setButton(ProgressDialog.BUTTON_NEGATIVE, "取消下载", new DialogInterface.OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				cancelDownload();
+				dialog.dismiss();
+			}
+		});
+		dialog.setCanceledOnTouchOutside(true);
+		dialog.show();
+
+		if (message != null) {
+			FileContent content = (FileContent) message.getContent();
+			message.setOnContentDownloadProgressCallback(new ProgressUpdateCallback() {
+				@Override
+				public void onProgressUpdate(double percent) {
+					mTv_showText.append("文件下载中，进度:" + percent + "\n");
+				}
+			});
+		} else {
+			Toast.makeText(ShowMessageActivity.this, "未能获取到message对象", Toast.LENGTH_SHORT).show();
+		}
+	}
+});
+
+private void cancelDownload() {
+	if (message != null) {
+		message.getContent().cancelDownload(message);
+	}
+}
 ```
 
 

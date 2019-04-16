@@ -52,7 +52,7 @@ N/A
 + begin_time (必填) 记录开始时间 格式  yyyy-MM-dd HH:mm:ss  设置筛选条件大于等于begin time   
 + end_time (必填)   记录结束时间  格式 yyyy-MM-dd HH:mm:ss  设置筛选条件小于等于end time   
 + begin_time end_time 之间最大范围不得超过7天
-+ 	cursor  当第一次请求后如果后面有数据，会返回一个cursor回来用这个获取接下来的消息 (cursor 有效时间是120s，过期后需要重新通过第一个请求获得cursor，重新遍历)
+	 	cursor  当第一次请求后如果后面有数据，会返回一个cursor回来用这个获取接下来的消息 (cursor 有效时间是120s，过期后需要重新通过第一个请求获得cursor，重新遍历)
 + 查询的消息按发送时间升序排序
 
 ### Example Response  
@@ -525,3 +525,6 @@ Content-Type: application/json; charset=utf-8
 + send_msg_users ：发送了消息的用户数
 + new_groups ：新增群组数
 
+## 参考
+
+- 老版 REST REPORT API：[REST REPORT API V1](./rest_api_im_report)

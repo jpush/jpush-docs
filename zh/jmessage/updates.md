@@ -1,5 +1,73 @@
 # 最近更新
 
+### iOS SDK v3.8.1
+
+#### 更新时间
+
+2019-04-02
+
+#### ChangeLog
+
+##### BugFix
+
++ 修改一些已知 bug
+
+#### Feature
+
++ 新增：取消消息发送接口
++ 新增：取消多媒体消息下载接口
++ 新增：可设置时间的群禁言接口
++ 新增：聊天室禁言功能
+
+#### 升级提示
+
++ 建议升级
+
+#### 升级指南
++ 使用新版本的 JMessage.framework 文件替换原工程下的同名旧文件
+
+
+### Android SDK v2.8.2
+
+#### 更新时间
+
+2019-03-27
+
+#### ChangeLog
+
+##### BugFix:
++ 修复某些情况下用户信息extras未更新的问题
++ 修复用户反馈的一些其他bug
+
+##### NewFeature
++ 新增“取消消息发送”和“取消消息附件下载”功能
++ 群组和聊天室新增带时间参数的禁言接口，建议使用新的禁言接口
+
+#### 升级提示
++ 建议升级！
+
+#### 升级指南
++ 首先解压您获取到的 zip 压缩包
+
++ 更新库文件
+	+ 打开libs文件夹。添加jcore-android_v1.2.7.jar。用 jmessage-android_v2.8.2.jar 替换项目中原有的极光jar文件，并删除原有极光jar文件。用对应CPU文件夹下的 libjcore127.so 文件，替换项目中原有的libjcoreXXX.so文件，并删除原有的极光so文件，每种型号的so文件都可以在SDK下载包中找到。
+
++ 更新AndroidManifest.xml
+	+ 请参考 SDK下载包最新版本的 demo 来更新AndroidManifest.xml 文件配置。
+	***注意JMessage 从2.7.0版本开始新增了provider组件，如果项目中使用的JMessage是2.7.0之前的版本，集成时需要注意manifest中新增的provider组件的配置，  
+	新增组件：***
+```
+<!-- Required since JMessage 2.7.0 SDK 核心功能-->
+        <provider
+            android:name="cn.jpush.im.android.helpers.ipc.IMProvider"
+            android:authorities="您自己的包名.IMProvider"
+            android:exported="false" />
+```
++ 添加资源文件
+    + Android5.0以上，使用应用图标作为通知栏小图标可能显示异常，请参考res/drawable-xxxx/jmessage_notification_icon作为通知栏小图标。详情请见
+    Android SDK集成指南中的说明，或者demo中的示例
++ 如果使用jcenter的方式集成JMessage，不需要添加相关组件，详细集成说明请参考官方[集成指南](https://docs.jiguang.cn/jmessage/client/jmessage_android_guide/)
+
 ### Android SDK v2.8.1
 
 #### 更新时间
@@ -263,8 +331,8 @@
 	<uses-permission android:name="android.permission.RECORD_AUDIO" />  
 	<uses-permission android:name="android.permission.CAMERA" />  
 	<uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
-```   
-	
+```
+
 + 如果使用jcenter的方式集成JMRTC，不需要添加相关组件和资源，详细集成说明请参考官方[JMRTC集成指南](https://docs.jiguang.cn/jmessage/client/im_jmrtc_android/)
 
 ### JMRTC Android SDK v1.0.1
@@ -291,8 +359,8 @@
 	<uses-permission android:name="android.permission.RECORD_AUDIO" />  
 	<uses-permission android:name="android.permission.CAMERA" />  
 	<uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
-```   
-	
+```
+
 + 如果使用jcenter的方式集成JMRTC，不需要添加相关组件和资源，详细集成说明请参考官方[JMRTC集成指南](https://docs.jiguang.cn/jmessage/client/im_jmrtc_android/)
 
 ### Android SDK v2.6.1
@@ -367,7 +435,7 @@
 + 使用新版本的 JMessage.framework 文件替换原工程下的同名旧文件
 + 将新版本的 JMessage.framework 里的 JCore link 到工程中，详细参见官网集成文档
 
- 
+
 ### JMRTC Android SDK v1.0.0
 
 #### 更新时间
@@ -1822,10 +1890,10 @@
 	+ 设置备注名：[updateNotename](http://docs.jiguang.cn/jmessage/client/im_android_api_docs/cn/jpush/im/android/api/model/UserInfo.html#updateNoteName(java.lang.String,%20cn.jpush.im.api.BasicCallback))
 	+ 设置备注信息：[updateNoteText](http://docs.jiguang.cn/jmessage/client/im_android_api_docs/cn/jpush/im/android/api/model/UserInfo.html#updateNoteText(java.lang.String,%20cn.jpush.im.api.BasicCallback))
 	+ 将用户从好友列表中移除：[removeFromFriendList](http://docs.jiguang.cn/jmessage/client/im_android_api_docs/cn/jpush/im/android/api/model/UserInfo.html#removeFromFriendList(cn.jpush.im.api.BasicCallback))
-   
+  
 + ContactNotifyEvent 好友相关通知事件类
 	+ 具体定义见api doc: [ContactNotifyEvent](http://docs.jiguang.cn/jmessage/client/im_android_api_docs/cn/jpush/im/android/api/event/ContactNotifyEvent.html)
-   
+  
 + 增加两种message content类型：
 	+ 文件消息：[FileContent](http://docs.jiguang.cn/jmessage/client/im_android_api_docs/cn/jpush/im/android/api/content/FileContent.html)
 	+ 位置消息：[LocationContent](http://docs.jiguang.cn/jmessage/client/im_android_api_docs/cn/jpush/im/android/api/content/LocationContent.html)
@@ -2197,7 +2265,7 @@
 		+ groupinfo.setNoDisturb（int noDisturb,Callback callback）设置群组的免打扰状态
 		+ groupinfo.getNoDisturb() 获取群组的免打扰状态
 		+ groupinfo.getMaxMemberCount() 获取群成员的最大上限
- 
+
 
 
 ##### Bug Fix

@@ -1321,6 +1321,61 @@ POST /v1/groups/{Group id}/members
 < Content-Type: application/json
 ```
 
+### Add group members V2
+
+Batch add group members
+
+Group members will receive notifications of adding members
+
+```
+POST /v2/groups/{Group id}/addMembers
+```
+
+Request Params
+
+- gid group ID
+
+Example Request 
+
+```
+["test1", "test2"]
+```
+
+Example Response
+
+```
+< HTTP/1.1 204 NO CONTENT
+< Content-Type: application/json
+```
+
+### Delete group members V2
+
+Batch delete group members
+
+Group members will receive notifications of deleting members
+
+```
+POST /v2/groups/{Group id}/delMembers
+```
+
+Request Params
+
+- gid 群组ID
+
+Example Request 
+
+```
+["test1", "test2"]
+
+```
+
+Example Response
+
+```
+< HTTP/1.1 204 NO CONTENT
+< Content-Type: application/json
+```
+
 ### Get a list of group members
 
 ```

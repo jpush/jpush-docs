@@ -430,6 +430,66 @@ Response Data
 + 899003 username不合法
 + 899002 用户不存在
 
+### 批量用户在线状态查询v2
+
+```
+Post /v2/users/statuser
+```
+
+#### Example Request
+
+Request Header 
+
+```
+Post /v2/users/statuser
+Content-Type: application/json; charset=utf-8 
+```
+
+Request Params
+
+N/A
+
+Request Body
+
+["USER1","USER2"]
+
+#### Example Response
+
+Response Header
+
+```
+HTTP/1.1 200 
+Content-Type: application/json; charset=utf-8
+```
+
+Response Data
+
+```
+[{
+	"devices": [],
+	"username": "caiyh01",
+	"statuscode": 1, // 用户不存在，会有statusmsg
+	"statusmsg": "no_exist"
+}, {
+	"devices": [{
+		"login": false,
+		"online": false,
+		"platform": "a"
+	}],
+	"username": "Rauly",
+	"statuscode": 0 // 用户存在
+}]
+```
+
+- devices  设备登陆状态数组，没有登陆过数组为空
+- platform SDK各平台：a-Android，i-iOS，j-JS，w-Windows
+
+#### Error Code
+
+错误码
+
+- 899003 username不合法
+
 
 ### 修改密码
 
@@ -778,7 +838,7 @@ POST /v1/messages
 		</tr>
 		<tr >
 			<td>from_type</td>
-			<td>发送消息者身份 当前只限admin用户，必须先注册admin用户 （必填）</td>
+			<td>发送消息者的身份，可为“admin”，“user”  （必填）</td>
 		</tr>
 		<tr >
 			<td>msg_type</td>
@@ -1371,6 +1431,60 @@ Example Response
 < Content-Type: application/json
 ```
 
+#### 添加群组成员 V2
+
+批量增加群组的成员。
+
+群组成员将收到增加的通知。
+
+```
+POST /v2/groups/{Group id}/addMembers
+```
+
+Request Params
+
+- gid 群组ID
+
+Example Request 
+
+```
+["test1", "test2"]
+```
+
+Example Response
+
+```
+< HTTP/1.1 204 NO CONTENT
+< Content-Type: application/json
+```
+
+#### 删除群组成员 V2
+
+批量删除群组的成员。
+
+群组成员将收到删除的通知。
+
+```
+POST /v2/groups/{Group id}/delMembers
+```
+
+Request Params
+
+- gid 群组ID
+
+Example Request 
+
+```
+["test1", "test2"]
+```
+
+Example Response
+
+```
+< HTTP/1.1 204 NO CONTENT
+< Content-Type: application/json
+```
+
 ###  获取群组成员列表
 
     GET /v1/groups/{Group id}/members/
@@ -1482,10 +1596,10 @@ Example Request Body
 	"remove": [ 1000001111]
 }
 ```
-| 参数 | 含义 | 
-| -------- | -----: | 
-| add |添加群消息屏蔽的gid数组  （可选）| 
-|remove | 移除群消息屏蔽的gid数组 （可选）| 
+| 参数 | 含义 |
+| -------- | -----: |
+| add |添加群消息屏蔽的gid数组  （可选）|
+|remove | 移除群消息屏蔽的gid数组 （可选）|
 
 
 
@@ -2184,7 +2298,7 @@ Example Response
 Response Data
 
 N/A
- 
+
 
 ## 敏感词
 
@@ -2569,7 +2683,7 @@ Content-Type: application/json; charset=utf-8
 ```
 
 #### Example Request
-	
+
 	GET /v1/users/xiaoming/chatroom
 
 #### Example Response
