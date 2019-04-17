@@ -33,10 +33,10 @@ JAnalytics MiniProgram SDK 所有上报均为即时上报。即触发立马进�
 	+ 是一个完整的小程序项目，通过这个演示了 JAnalysis SDK 的基本用法，可以用来做参考。
 
 ## 集成方式
-参考：[MiniProgram SDK 集成指南](miniprogram_wx_guide)
+参考：[MiniProgram SDK 集成指南](miniprogram_guide)
 
 ## 接口说明
-参考：[MiniProgram SDK API](miniprogram_wx_api)
+参考：[MiniProgram SDK API](miniprogram_api)
 
 ## 技术支持
 
