@@ -94,7 +94,7 @@ ps:在 app.js onLaunch 调用初始化后可供每个页面使用，无需重复
 
 ### 更多 API
 
-其他 API 的使用方法请参考接口文档：[MiniProgram SDK API](./miniprogram_wx_api)
+其他 API 的使用方法请参考接口文档：[MiniProgram SDK API](./miniprogram_api)
 
 ### 运行 demo
 

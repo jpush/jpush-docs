@@ -39,10 +39,6 @@
             </div>
         </div>
     </div>
-</div>
- </div>
-        </div>
-    </div>
     <div class="col-md-6">
         <div class="thumbnail">
             <img src="../image/resource_miniprogram.png" alt="MiniProgram">
