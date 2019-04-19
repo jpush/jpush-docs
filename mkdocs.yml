@@ -238,5 +238,6 @@ pages:
   - REST API:
     - 'REST API 概述': 'jiot/server/restapi_intro.md'
     - 'REST API 定义': 'jiot/server/restapi.md'
+	- '回调说明': 'jiot/server/http_callback.md'
   - 最近更新: 'jiot/updates.md'
   - 资源下载: 'jiot/resources.md'
