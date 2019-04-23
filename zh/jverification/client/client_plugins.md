@@ -12,6 +12,10 @@
 
 官方地址：[https://github.com/jpush/jverification-react-native](https://github.com/jpush/jverification-react-native)
 
+### Flutter
+
+官方地址：[https://github.com/jpush/jverify-flutter-plugin](https://github.com/jpush/jverify-flutter-plugin)
+
 ## 技术支持
 
 - QQ 交流群：413602425

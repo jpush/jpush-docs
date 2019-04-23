@@ -76,7 +76,7 @@ handle :JIOT客户端的句柄
 
 ## SDK状态查询接口
 ### jiotGetConnStatus
-JIOT客户端状态查询。
+JIoT客户端状态查询。
 #### 接口定义
 ```
 JClientStatus jiotGetConnStatus(JHandle * handle);
@@ -186,6 +186,7 @@ typedef int jiotEventReportRsp(void* pContext, JHandle handle, const EventReport
 * handle:JIOT客户端句柄
 * Rsp:接收回复消息的结构体指针
 * errcode:错误码
+
 #### 返回值
 
 
@@ -231,10 +232,7 @@ typedef int jiotMsgDeliverReq(void* pContext, JHandle handle, MsgDeliverReq *Req
 * Req :接收属性设置消息的结构体指
 * errcode:错误码
 
-
 #### 返回值
-
-
 ## SDK回调函数指针结构体
 
 ```
