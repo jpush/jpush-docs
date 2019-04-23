@@ -1,6 +1,6 @@
 # 客户端集成插件
 
-除了原生的 Android SDK 与 iOS SDK 之外，极光推送提供主流的开发工具集成插件。
+除了原生的 Android SDK 与 iOS SDK 之外，极光统计提供主流的开发工具集成插件。
 
 ## 官方维护
 
@@ -19,4 +19,8 @@
 ### Hbuilder Demo
 
 官方地址：[https://github.com/jpush/janalytics-hbuilder-demo](https://github.com/jpush/janalytics-hbuilder-demo)
+
+### Flutter
+
+官方地址：[https://github.com/jpush/janalytics-flutter-plugin](https://github.com/jpush/janalytics-flutter-plugin)
 
