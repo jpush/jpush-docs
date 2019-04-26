@@ -58,7 +58,7 @@
 	
 ***说明 1***：使用android studio的开发者，如果使用jniLibs文件夹导入so文件，则仅需将所有cpu类型的文件夹拷进去；如果将so文件添加在module的libs文件夹下，注意在module的gradle配置中添加一下配置：
 
-
+~~~
         android {
             ......
             sourceSets {
@@ -70,7 +70,32 @@
             }
             ......
         }
+~~~
 
+***说明 2***：如果你的应用所选的targetSdkVersion >=28，设备在Android P 上是默认限制使用http请求的，开发者需要做如下配置：
+
++ 在res文件夹下创建一个xml文件夹，然后创建一个network_security_config.xml文件，文件内容如下：
+
+~~~
+        <?xml version="1.0" encoding="utf-8"?>
+        <network-security-config>
+            <base-config cleartextTrafficPermitted="true">
+                <trust-anchors>
+                    <certificates src="system" />
+                </trust-anchors>
+            </base-config>
+        </network-security-config>
+~~~
+
++ 在AndroidManifest.xml文件下的application标签增加以下属性：
+
+~~~
+    <application
+        ...
+        android:networkSecurityConfig="@xml/network_security_config"
+        ...
+        />
+~~~
 
 ###配置 AndroidManifest
 
@@ -110,6 +135,7 @@
         android:name="Your Application Name">
 
         <!-- since 2.0.0 optional 可选项，使用一键登录功能必须添加  -->
+        <!-- since 2.1.1 optional 可选项，通过screenOrientation设置授权页面横竖屏展示  -->
         <activity
             android:name="com.cmic.sso.sdk.activity.OAuthActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
@@ -117,6 +143,7 @@
             android:launchMode="singleTop">
         </activity>
         <!-- since 2.0.0 optional 可选项，使用一键登录功能必须添加  -->
+        <!-- since 2.1.1 optional 可选项，通过screenOrientation设置授权页面横竖屏展示  -->
         <activity
             android:name="com.cmic.sso.sdk.activity.LoginAuthActivity"
             android:theme="@android:style/Theme.Holo.NoActionBar"
@@ -125,6 +152,7 @@
             android:launchMode="singleTop">
         </activity>
         <!-- since 2.0.0 optional 可选项，使用一键登录功能必须添加  -->
+        <!-- since 2.1.1 optional 可选项，通过screenOrientation设置授权页面横竖屏展示  -->
         <activity android:name="cn.jiguang.verifysdk.CtLoginActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:theme="@android:style/Theme.Holo.NoActionBar"
