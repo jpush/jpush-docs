@@ -1,4 +1,40 @@
 # 最近更新
+### JPush iOS SDK v3.2.0
+
+#### 更新时间
++ 2019-04-28
+
+#### Change Log
++ 根据JCore 2.0进行JPush重构，性能优化
++ JCore 要求版本在2.0以上
++ 删除了setupWithOption:launchingOption 初始化接口，不再支持pushConfig.plist方式集成
++ 优化消息状态上报逻辑
++ 修复已知bug
+
+
+#### 升级提示
+
++ 建议升级！
+
+#### 升级指南
++ 3.2.0 版本的 JPush 只支持 2.0.0 及以上的 JCore 版本，升级 SDK 的时候请将 JCore 一起升级。
++ 3.1.2 版本的 JPush 只支持 1.2.6 及以上的 JCore 版本，升级 SDK 的时候请将 JCore 一起升级。
++ 3.1.1 版本的 JPush 只支持 1.2.3 及以上的 JCore 版本，升级 SDK 的时候请将 JCore 一起升级。
++ 3.0.7 版本开始压缩包中 Lib 新增了 Notification Service Extension SDK ，可用于统计通知送达，开发者请注意添加到 Libs 中，使用方式见集成指南。
++ 注意 3.0.0 及以上版本 JPush SDK 将不再支持处理器为 i386 的模拟器。
++ 添加libresolv.tbd库，否则编译运行会报错（2.2.0 及以上版本要求）
++ 替换 lib 文件夹里的文件:先删除项目里旧的 .a 和 .h 文件，重新导入新的 .a 和 .h 文件（注意新版本替换 APService.h 为 JPUSHService.h）
++ Xcode 7 环境下，替换原先导入的 libz.dylib 框架为 libz.tbd （特别留意）
++ 需要删除旧的 libPushSDK-Simulator.a （如果存在）
++ 关于 iOS 7 Background Push，JPush 提供一个教程文档：[iOS 7 Background Remote Notification](https://docs.jiguang.cn/jpush/client/iOS/ios_new_fetures/#ios-7-background-remote-notification)
++ 如果是 1.2.7 及之前版本升级 请在 Build Settings 里面，找到 Other Linker Flags，去掉 -all_load, -ObjC
++ 使用地理围栏功能时涉及以下相关配置：
+	- 位置权限配置。
+	- 选择Background Modes配置。 target -> capabilities ->Background Modes 选中Location updates。
+	- 注意registerLbsGeofenceDelegate: withLaunchOptions 方法最好在sdk初始化之前调用。
+	- Info.plist file 文件中加入 NSLocationAlwaysUsageDescription 这个字段的描述，避免上架AppStore被拒
+
+
 ### JPush Android SDK v3.2.0
 
 #### 更新时间
@@ -47,6 +83,7 @@
 + 建议升级！
 + 注意：不支持 Xcode 8.0 以下版本开启 bitcode。
 + 极光开发者服务 SDK 采用了模块化的使用模式，即一个核心（JCore）+ N 种服务（JPush，JAnalytics，...）的使用方式，方便开发者使用某一项服务或多项服务，极大的优化了多模块同时使用时功能模块重复的问题。
++ 需要在Info.plist file文件中加入 NSLocationAlwaysUsageDescription 这个字段的描述，避免上架被拒
 
 #### 升级指南
 + 3.1.2 版本的 JPush 只支持 1.2.6 及以上的 JCore 版本，升级 SDK 的时候请将 JCore 一起升级。
@@ -59,10 +96,11 @@
 + 需要删除旧的 libPushSDK-Simulator.a （如果存在）
 + 关于 iOS 7 Background Push，JPush 提供一个教程文档：[iOS 7 Background Remote Notification](https://docs.jiguang.cn/jpush/client/iOS/ios_new_fetures/#ios-7-background-remote-notification)
 + 如果是 1.2.7 及之前版本升级 请在 Build Settings 里面，找到 Other Linker Flags，去掉 -all_load, -ObjC
-+ 使用地理围栏功能时一下相关配置：
++ 使用地理围栏功能时涉及以下相关配置：
 	- 位置权限配置。
 	- 选择Background Modes配置。 target -> capabilities ->Background Modes 选中Location updates。
 	- 注意registerLbsGeofenceDelegate: withLaunchOptions 方法最好在sdk初始化之前调用。
+	- Info.plist file 文件中加入 NSLocationAlwaysUsageDescription 这个字段的描述，避免上架AppStore被拒
 
 
 ### JPush Android SDK v3.1.8
