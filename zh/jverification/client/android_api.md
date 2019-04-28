@@ -183,6 +183,7 @@
 
 ~~~
     JVerifyUIConfig uiConfig = new JVerifyUIConfig.Builder()
+                    .setAuthBGImgPath("main_bg")   
                     .setNavColor(0xff0086d0)
                     .setNavText("登录")
                     .setNavTextColor(0xffffffff)
@@ -262,6 +263,15 @@
 
 
 ##JVerifyUIConfig配置元素说明
+
++ 授权页背景
+    + 开始支持的版本：2.1.1
+    + 说明：
+        + 图片会默认拉伸铺满整个屏幕，建议使用 .9.png 格式的图片来解决不同尺寸屏幕的适配问题 
+
+|方法|参数类型|说明|
+|:-----:|:----:|:----:|
+|setAuthBGImgPath|String|设置背景图片|
 
 + 授权页导航栏
         

@@ -264,6 +264,7 @@
 
 |参数名称|参数类型|参数说明|
 |:-----:|:----:|:-----:|
+|authPageBackgroundImage|UIImage|授权页面背景图片|
 |navColor|UIColor|导航栏颜色|
 |barStyle|UIBarStyle|状态栏着色样式|
 |navText|NSAttributedString|导航栏标题|
