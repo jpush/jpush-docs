@@ -31,7 +31,7 @@
 
 + AndroidManifest.xml
     + 客户端嵌入 SDK 参考的配置文件
-+ libs/jcore-android.1.x.x.jar
++ libs/jcore-android.x.x.x.jar
     + 极光开发者服务的核心包。
 + libs/jpush-android-3.x.y.jar
     + JPush SDK 开发包。
@@ -131,9 +131,17 @@
             ......
 
             compile 'cn.jiguang.sdk:jpush:3.2.0'  // 此处以JPush 3.2.0 版本为例。
-            compile 'cn.jiguang.sdk:jcore:1.2.7'  // 此处以JCore 1.2.7 版本为例。
+            compile 'cn.jiguang.sdk:jcore:2.0.0'  // 此处以JCore 2.0.0 版本为例。
             ......
         }
+      ***注*** : **如果你使用的JCore是2.0.0及以上的版本，需要额外配置一个Service**，以在更多手机平台上获得更稳定的支持。（JCore1.x版本不需要）
+      <!-- 具体方式是按照下面的方式在AndroidManifest.xml配置一个自定义的Service，这个Service要继承JCommonService -->
+     <service android:name="xx.xx.XService"
+             android:process=":pushcore">
+             <intent-filter>
+                 <action android:name="cn.jiguang.user.service.action" />
+             </intent-filter>
+     </service>
 
 
 ***注*** : 如果在添加以上 abiFilter 配置之后 android Studio 出现以下提示：
@@ -174,7 +182,7 @@
 ## 手动集成步骤
 
 + 解压缩 jpush-android--3.x.x-release.zip 集成压缩包。
-+ 复制 libs/jcore-android-1.x.x.jar 到工程 libs/ 目录下。
++ 复制 libs/jcore-android-x.x.x.jar 到工程 libs/ 目录下。
 + 复制 libs/jpush-android-3.x.x.jar 到工程 libs/ 目录下。
 + 复制 libs/(cpu-type)/libjcore1xy.so 到你的工程中存放对应 cpu 类型的目录下。
 + 复制 res/ 中 drawable-hdpi, layout, values 文件夹中的资源文件到你的工程中 res/ 对应同名的目录下。
@@ -287,7 +295,7 @@ defaultConfig {
         />
 
         <!-- since 1.8.0 option 可选项。用于同一设备中不同应用的 JPush 服务相互拉起的功能。 -->
-        <!-- 若不启用该功能可删除该组件，或把 enabled 设置成 false ；App 不会被其他 App 拉起，但会拉起其他的 App。 -->
+        <!-- 若不启用该功能可删除该组件，或把 enabled 设置成 false ；拉起服务被关闭，App 不会通过拉起服务拉起其他的 App，也不会被其他 App 拉起。 -->
          <service
              android:name="cn.jpush.android.service.DaemonService"
              android:enabled="true"
@@ -355,6 +363,15 @@ defaultConfig {
             android:enabled="true"
             android:exported="false" >
         </service>
+        
+        <!-- Since JCore2.0.0 Required SDK核心功能-->
+        <!-- 这个Service要继承JCommonService -->
+         <service android:name="xx.xx.XService"
+                 android:process=":pushcore">
+                 <intent-filter>
+                     <action android:name="cn.jiguang.user.service.action" />
+                 </intent-filter>
+         </service>
 
         <!-- Required SDK 核心功能-->
         <receiver android:name="cn.jpush.android.service.AlarmReceiver" />
