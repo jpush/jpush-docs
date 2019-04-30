@@ -135,9 +135,10 @@
             ......
         }
 
-      ***注*** : **如果你使用的JCore是2.0.0及以上的版本，需要额外配置一个Service**，以在更多手机平台上获得更稳定的支持。（JCore1.x版本不需要）
+      ***注*** : **如果你使用的 JCore 是 2.0.0 及以上的版本，需要额外在 Androidmanifest 中配置一个Service**，以在更多手机平台上获得更稳定的支持，示例如下。（JCore1.x版本不需要）
 	
-	      <!-- 具体方式是按照下面的方式在AndroidManifest.xml配置一个自定义的Service，这个Service要继承JCommonService -->
+	     <!-- Since JCore2.0.0 Required SDK核心功能-->
+         <!-- 这个Service要继承JCommonService -->
 	     <service android:name="xx.xx.XService"
 	             android:process=":pushcore">
 	             <intent-filter>
