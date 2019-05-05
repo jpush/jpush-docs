@@ -65,7 +65,7 @@ curl --insecure -X POST -v http://api.iot.jiguang.cn/msg/v1/msg -H "Content-Type
 |--------|------|------|------|------|
 | seq_no | int | 必选 | 应用端的对于该该操作的id |该 id 应用在 15 分钟内不能重复使用，否则服务端会认为是重复请求 |
 | device_name | string | 必选 | 需要发送消息到的设备名称 | |
-| msg_body | string | 必选 | 发送的消息体的内容 | 二进制内容需先用base64 编码。 最大长度 2048 byte。|
+| msg_body | string | 必选 | 发送的消息体的内容 |最大长度 2048 byte。|
 | ttl | int | 可选 | 该消息的有效期 | 范围为0~604800秒（0到7天），请求中如不携带，服务器默认为86400秒（1天）|
 
 
