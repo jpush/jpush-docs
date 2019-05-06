@@ -1,5 +1,36 @@
 #最近更新
 
+##JVerification iOS SDK v2.1.4
+
+**更新时间**
+
+* 2019-05-06
+
+**Change Log**
+
+* 修改中国电信授权页面文案
+
+**升级建议**
+
+* 建议升级
+
+**升级指南**
+
++ 首先解压您获取到的zip压缩包
+
++ 更新库文件
+    + 打开libs文件夹
+    + 替换项目中原有的极光SDK文件
+        + account_login_sdk_noui_core.framework
+        + account_verify_sdk_core.framework
+        + EAccountApiSDK.framework
+        + jcore-ios-x.x.x.a
+        + jverification-ios-2.1.4.a
+        + TYRZSDK.framework
+    + 项目targets->build phases->link binary with libraries
+        + 增加libc++.1.tbd
+    + 在极光演示demo中，找到JVerificationResource.bundle，将这个bundle文件加到您的项目中 
+
 ##JVerification iOS SDK v2.1.3
 
 **更新时间**
