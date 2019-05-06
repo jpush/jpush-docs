@@ -104,10 +104,21 @@
         dependencies {
             ......
 
-            compile 'cn.jiguang.sdk:jmessage:2.8.2'  // 此处以JMessage 2.8.2 版本为例。
-            compile 'cn.jiguang.sdk:jcore:1.2.7'  // 此处以JCore 1.2.7 版本为例。
+            compile 'cn.jiguang.sdk:jmessage:2.9.0'  // 此处以JMessage 2.9.0 版本为例。
+            compile 'cn.jiguang.sdk:jcore:2.0.0'  // 此处以JCore 2.0.0 版本为例。
             ......
         }
+
+	  ***注*** : **JMessage 从2.9.0开始必须使用2.0.0以上版本的JCore，并且如果您需要使用 JCore 2.0.0 及以上的版本，需要额外在 AndroidManifest 中配置一个Service**，以在更多手机平台上获得更稳定的支持，示例如下。（JCore1.x版本不需要）
+
+	     <!-- Since JCore2.0.0 Required SDK核心功能-->
+		 <!-- 这个Service要继承JCommonService -->
+	     <service android:name="xx.xx.XService"
+	             android:process=":pushcore">
+	             <intent-filter>
+	                 <action android:name="cn.jiguang.user.service.action" />
+	             </intent-filter>
+	     </service>
 
 
 ***注*** : 如果在添加以上 abiFilter 配置之后android Studio出现以下提示：
@@ -121,7 +132,7 @@
 ### 手动集成步骤
 #### 解压SDK并导入
 + 解压缩 jmessage-sdk-android-2.X.Y.zip 集成压缩包。
-+ 复制 libs/jcore-android_v1.X.Y.jar 到工程 libs/ 目录下。
++ 复制 libs/jcore-android_2.X.Y.jar 到工程 libs/ 目录下。
 + 复制 libs/jmessage-android_2.X.Y.jar 到工程 libs/ 目录下。
 + 复制 libs/(cpu-type)/libjcore1xy.so 到你的工程中存放对应cpu类型的目录下。
 
@@ -221,6 +232,7 @@ defaultConfig {
 
         <!-- Required SDK 核心功能-->
         <!-- 可配置android:process参数将PushService放在其他进程中 -->
+		<!-- 如果JCore使用的是2.0.0及以上版本可移除本配置 -->
         <service
             android:name="cn.jpush.android.service.PushService"
             android:enabled="true"
@@ -230,6 +242,15 @@ defaultConfig {
                 <action android:name="cn.jpush.android.intent.REPORT" />
                 <action android:name="cn.jpush.android.intent.PushService" />
                 <action android:name="cn.jpush.android.intent.PUSH_TIME" />
+            </intent-filter>
+        </service>
+
+        <!-- Since JCore2.0.0 Required SDK核心功能-->
+        <!-- 这个Service要继承JCommonService -->
+        <service android:name="xx.xx.XService"
+                 android:process=":pushcore">
+            <intent-filter>
+                <action android:name="cn.jiguang.user.service.action" />
             </intent-filter>
         </service>
 
