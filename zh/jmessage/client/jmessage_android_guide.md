@@ -133,7 +133,7 @@
 #### 解压SDK并导入
 + 解压缩 jmessage-sdk-android-2.X.Y.zip 集成压缩包。
 + 复制 libs/jcore-android_2.X.Y.jar 到工程 libs/ 目录下。
-+ 复制 libs/jmessage-android_2.X.Y.jar 到工程 libs/ 目录下。
++ 复制 libs/jmessage-android-2.X.Y.jar 到工程 libs/ 目录下。
 + 复制 libs/(cpu-type)/libjcore1xy.so 到你的工程中存放对应cpu类型的目录下。
 
 ***说明 1***：若没有 res/drawable-xxxx/jmessage_notification_icon 这个资源默认使用应用图标作为通知 icon，在 5.0 以上系统将应用图标作为 statusbar icon 可能显示不正常，用户可定义没有阴影和渐变色的 icon 替换这个文件，文件名不要变。
