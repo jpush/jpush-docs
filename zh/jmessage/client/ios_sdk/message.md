@@ -445,6 +445,7 @@ JMSGOptionalContent *option = [[JMSGOptionalContent alloc] init];
 option.noSaveOffline = YES;//不保存离线消息
 option.noSaveNotification = YES;//不在状态栏显示消息
 option.needReadReceipt = YES;//否需要对方发送已读回执
+option.messageCount = 1;//设置消息发送时的未读数，默认为 1
     
 JMSGCustomNotification *custion = [[JMSGCustomNotification alloc] init];
 custion.enabled = YES;//是否启用自定义通知栏
