@@ -98,17 +98,28 @@ W/JIGUANG-JCore: [JCoreInterface] JCore init failed
 
 ## 什么是通道共享功能？需要怎么使用？
 极光的通道共享功能是利用极光 SDK 的高覆盖率，将各个应用中的长连接通道共享化，可以解决以下问题：<br/>
-1. APP（均需要集成极光 SDK ）进程间交互有效的情况下，针对某应用被杀死之后，极光也能通过共享通道将消息有效的下发到设备端并将该应用拉起。</br>
-2. 某应用处于后台时，如果被系统关闭网络后，无法及时收到消息；此时可以从共享通道正常将下发下发到SDK，保证消息及时性。<br/>
+
++ APP（均需要集成极光 SDK ）进程间交互有效的情况下，针对某应用被杀死之后，极光也能通过共享通道将消息有效的下发到设备端并将该应用拉起。</br>
++ 某应用处于后台时，如果被系统关闭网络后，无法及时收到消息；此时可以从共享通道正常将下发下发到SDK，保证消息及时性。<br/>
+
 使用方式：<br/>
-集成好极光的 SDK （SDK 版本 3.1.6 及以后版本）以后，即可使用通道共享功能。<br/>
-共享通道在启动的时候会扫描一遍其他应用，并拉起其它相关应用；当然，如果您的APP配置了共享通道，也可能被其他应用的共享通道拉起。共享通道主要用到 downloadprovider，如果要关闭，需要将它的 android:exported 设为 false（不能直接删除，因为 downloadprovider 是核心功能，删除会集成失败）。
+
++ 集成好极光的 SDK （SDK 版本 3.1.6 及以后版本）以后，即可使用通道共享功能。<br/>
+共享通道在启动时会扫描一遍手机上的其他应用，并拉起相关应用，即被杀死的 App 会被其他启动应用拉起，你的 App 启动也将拉起其他被杀死的应用。如果需要关闭该功能，将 Androidmanifest 中 downloadprovider 的 android:exported 设为 false 即可
+
 
 <br />
 
 
 ## 如果APP不想被其它应用拉起也不拉起其它应用怎么办？
-集成好极光的 SDK （SDK 版本 1.8.0 及以后版本），既有了应用相互拉起功能；如果希望不被其它应用拉起，可以将DaemonService组件的 enabled 设置成 false：此时您的 App 不会被其他 App 拉起，但会拉起其他的 App ；如果您还希望达到不拉起其它 App 的效果，请[联系商务](https://www.jiguang.cn/accounts/business_contact?fromPage=push_doc)开通VIP服务，极光VIP用户可以提供此功能支持。
+由于 Android 应用进程常被杀死导致长连接断开收不到消息，极光提供了拉起杀死应用的功能，从而保证 Android 消息的到达率。<br/>
+
++ 集成 JPush SDK 1.8.0 及以上 版本，默认有配置不同应用间的 JPush 服务相互拉起的功能。
++ 集成 JPush SDK 3.1.6 及以上版本，默认有配置通道共享功能，该功能也会相互拉起应用。
++ 如需关闭拉起服务，可在 Androidmanifest 中做如下操作：
+    + 将 DaemonService 组件的 enabled 设置成 false：此时您的 App 不会被其他 App 拉起，但会拉起其他的 App； 如果您还希望达到不拉起其它 App 的效果，请请[联系商务](https://www.jiguang.cn/accounts/business_contact?fromPage=push_doc)开通 VIP 服务，极光 VIP 用户可以提供此功能支持。
+    + 将 DownloadProvider 的 android:exported 设为 false ：即可关闭通道共享功能
+
 
 <br />
 
