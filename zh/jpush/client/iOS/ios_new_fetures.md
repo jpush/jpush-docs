@@ -63,7 +63,7 @@ iOS 12 中同一类型的通知会被合成一个通知组，用户可以通过�
 
 ### 说明
 iOS 10 新增了大量关于通知的新特性，详情参照极光官方的Blog。  
-请跳转至：[iOS 10 新特性](http://blog.jiguang.cn/newfeture_notification_ios10/)
+请跳转至：[iOS 10 新特性](https://blog.jiguang.cn/newfeture-notification-ios10/)
 
 ## iOS 10 Service Extension
 
