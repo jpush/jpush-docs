@@ -46,7 +46,7 @@
     </div>
     <div class="col-md-6">
         <div class="thumbnail">
-            <img src="../img/resource_android" alt="android">
+            <img src="../img/resource_android.png" alt="android">
             <div class="caption">
                 <h4>Android SDK</h4>
                 <ul>

@@ -42,7 +42,6 @@ void jiotRelease();
 #### 返回值
 无
 
-
 ## 状态查询接口
 ### jiotGetConnStatus
 查询JIOT客户端的连接状态
@@ -53,25 +52,29 @@ int jiotGetConnStatus();
 #### 返回值
 int  jClient的状态
 
-
-
 ## 发送上行消息接口
+
 ### jiotPropertyReportReq
 JIOT客户端上报设备属性
+
 #### 接口定义
 JiotResult jiotPropertyReportReq(PropertyReport properyReport);
+
 #### 参数说明
 * properyReport 设备属性
+
 #### 返回值
 * 客户端实时返回结果
 
 ### jiotEventReportReq
 JIOT客户端上报事件请求
+
 #### 接口定义
 JiotResult jiotEventReportReq(EventReport eventReport);
 
 #### 参数说明
 * eventReport 上报事件
+
 #### 返回值
 * 客户端实时返回结果
 
@@ -82,13 +85,15 @@ JiotResult jiotVersionReportReq(VersionReportReq versionReportReq);
 
 #### 参数说明
 versionReportReq 设备版本
+
 #### 返回值
 客户端实时返回结果
 
-### 
+### jiotPropertySetRsp
 JIOT客户端回复属性设置请求的回复
 #### 接口定义
 JiotResult jiotPropertySetRsp(PropertySetRsp propertySetRsp);
+
 #### 参数说明
 * propertySetRsp 属性设置回复
 #### 返回值
@@ -103,7 +108,6 @@ JiotResult jiotMsgDeliverRsp(MsgDeliverRsp msgDeliverRsp);
 #### 返回值
 客户端实时返回结果
 
-
 ## 调试日志设置接口
 
 ### jiotSetLogLevel
@@ -114,7 +118,6 @@ void jiotSetLogLevel(int level);
 * level 日志等级
 #### 返回值
 无
-
 
 ## 下行消息回调接口
 ### jiotPropertyReportRsp
@@ -158,7 +161,6 @@ void jiotMsgDeliverReq(MsgDeliverReq msgDeliverReq,int errorCode);
 
 #### 返回值
 无
-
 
 ## sdk连接状态回调接口
 ### jiotConnectedHandle
