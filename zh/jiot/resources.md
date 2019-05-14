@@ -3,7 +3,7 @@
 ## 客户端 SDK 下载
 
 <div class="row client downloads">
-    <div class="col-md-4">
+    <div class="col-md-6">
         <div class="thumbnail">
             <img src="../img/resource_arm.png" alt="ARMv7">
             <div class="caption">
@@ -16,7 +16,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-6">
         <div class="thumbnail">
             <img src="../img/resource_x86.png" alt="x86">
             <div class="caption">
@@ -29,7 +29,9 @@
             </div>
         </div>
     </div>
-    <div class="col-md-4">
+</div>	
+<div class="row client downloads">	
+    <div class="col-md-6">
         <div class="thumbnail">
             <img src="../img/resource_8266.png" alt="8266">
             <div class="caption">
@@ -39,6 +41,19 @@
                     <li><a href="../client/c_sdk_api">接口说明文档</a></li>
                 </ul>
                 <p><a href="https://www.jiguang.cn/downloads/sdk/iot_esp8266/" class="btn btn-default" role="button">下载</a></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="thumbnail">
+            <img src="../img/resource_android" alt="android">
+            <div class="caption">
+                <h4>Android SDK</h4>
+                <ul>
+                    <li><a href="../client/android_sdk_guide">集成指南</a></li>
+                    <li><a href="../client/android_sdk_api">接口说明文档</a></li>
+                </ul>
+                <p><a href="https://sdkfiledl.jiguang.cn/public/jiot-android-1.0.0-release.tar.gz" class="btn btn-default" role="button">下载</a></p>
             </div>
         </div>
     </div>
