@@ -55,13 +55,13 @@
 
 ### 1.使用IDE工具Android Studio 导入Example 模块
 在 Android Studio 中，打开一个工程， 通过 File -> Open... 打开 JIoT Example 所在目录
-![]()
+![import](image/android_sdk_import.png)
 
 ### 2.运行Demo
 在 Android Studio 中，运行这个Module， 通过 点击“绿色三角形”运行Example模块（前提是能够通过adb控制一个Android设备
-![]()
+![run](image/adnroid_sdk_run.png)
 ### 3.查看Android设备Demo运行状况
-![]()
+![demo](image/android_demo.png)
 
 ## demo使用帮助
 ### 属性设置验证步骤:

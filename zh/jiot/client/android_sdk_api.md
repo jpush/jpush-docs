@@ -220,20 +220,6 @@ void jiotMessageTimeoutHandle(long seqNo);
 
 
 
-```java
-
-
-/**
-* 客户端消息发送超时
-* seqNo 消息序号
-*/
-void jiotMessageTimeoutHandle(long seqNo);
-
-```
-
-
-
-
 
 
 
