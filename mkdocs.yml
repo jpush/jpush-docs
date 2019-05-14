@@ -239,7 +239,7 @@ pages:
     - 'C SDK 集成指南': 'jiot/client/c_sdk_guide.md'
     - 'C SDK ESP8266 集成指南': 'jiot/client/c_sdk_8266_guide.md'
     - 'C SDK 接口说明文档': 'jiot/client/c_sdk_api.md'
-    - 'Android 集成指南': 'jiot/client/android_sdk_guide.md
+    - 'Android 集成指南': 'jiot/client/android_sdk_guide.md'
     - 'Android 接口说明文档': 'jiot/client/android_sdk_api.md'
   - REST API:
     - 'REST API 概述': 'jiot/server/restapi_intro.md'
