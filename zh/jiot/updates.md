@@ -2,8 +2,10 @@
 ### JIoT Android SDK  1.0.0
 #### 更新时间
 + 2019-05-14
+
 #### 适用平台
 Android 系统
+
 #### Change Log
 + Android 版本首次发布
 
