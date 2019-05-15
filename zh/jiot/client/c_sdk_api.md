@@ -36,6 +36,20 @@ int jiotRegister(JHandle handle,void* pContext, JClientMessageCallback *cb);
 
 ####  返回值
   无
+  
+### jiotConn
+通过SIS获取MQTT的地址和端口，并连接MQTT服务端
+#### 接口定义
+```
+int jiotConn(JHandle handle，const DeviceInfo *pDev);
+```
+#### 参数说明
+* handle :JIOT客户端的句柄
+* pDev :设备三元组
+
+####  返回值
+* 0成功，非0失败
+
 
 ## SDK释放接口
 ### jiotDisConn
@@ -71,8 +85,6 @@ handle :JIOT客户端的句柄
 
 #### 返回值
 无
-
-
 
 ## SDK状态查询接口
 ### jiotGetConnStatus
