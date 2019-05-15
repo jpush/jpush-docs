@@ -130,21 +130,24 @@
         dependencies {
             ......
 
-            compile 'cn.jiguang.sdk:jpush:3.2.0'  // 此处以JPush 3.2.0 版本为例。
-            compile 'cn.jiguang.sdk:jcore:2.0.0'  // 此处以JCore 2.0.0 版本为例。
+            compile 'cn.jiguang.sdk:jpush:3.3.0'  // 此处以JPush 3.3.0 版本为例。
+            compile 'cn.jiguang.sdk:jcore:2.0.1'  // 此处以JCore 2.0.1 版本为例。
             ......
         }
 
       ***注*** : **如果你使用的 JCore 是 2.0.0 及以上的版本，需要额外在 Androidmanifest 中配置一个Service**，以在更多手机平台上获得更稳定的支持，示例如下。（JCore1.x版本不需要）
 	
 	     <!-- Since JCore2.0.0 Required SDK核心功能-->
-         <!-- 这个Service继承JCommonService即可，可以在更多手机平台上使得推送通道保持的更稳定 -->
+	     <!-- 可配置android:process参数将Service放在其他进程中；android:enabled属性不能是false -->
+         <!-- 这个是自定义Service，要继承极光JCommonService，可以在更多手机平台上使得推送通道保持的更稳定 -->
 	     <service android:name="xx.xx.XService"
-	             android:process=":pushcore">
-	             <intent-filter>
-	                 <action android:name="cn.jiguang.user.service.action" />
-	             </intent-filter>
-	     </service>
+                 android:enabled="true"
+                 android:exported="false"
+                 android:process=":pushcore">
+                 <intent-filter>
+                     <action android:name="cn.jiguang.user.service.action" />
+                 </intent-filter>
+             </service>
 
 
 ***注*** : 如果在添加以上 abiFilter 配置之后 android Studio 出现以下提示：
@@ -368,8 +371,11 @@ defaultConfig {
         </service>
         
         <!-- Since JCore2.0.0 Required SDK核心功能-->
-        <!-- 这个Service要继承JCommonService即可，可以在更多手机平台上使得推送通道保持的更稳定 -->
+	<!-- 可配置android:process参数将Service放在其他进程中；android:enabled属性不能是false -->
+        <!-- 这个是自定义Service，要继承极光JCommonService，可以在更多手机平台上使得推送通道保持的更稳定 -->
          <service android:name="xx.xx.XService"
+                 android:enabled="true"
+                 android:exported="false"
                  android:process=":pushcore">
                  <intent-filter>
                      <action android:name="cn.jiguang.user.service.action" />
@@ -381,6 +387,7 @@ defaultConfig {
 
         <!-- Required since 3.0.7 -->
         <!-- 新的 tag/alias 接口结果返回需要开发者配置一个自定的广播 -->
+        <!-- 3.3.0开始所有事件将通过该类回调 -->
         <!-- 该广播需要继承 JPush 提供的 JPushMessageReceiver 类, 并如下新增一个 Intent-Filter -->
         <receiver
             android:name="自定义 Receiver"
@@ -393,6 +400,7 @@ defaultConfig {
         </receiver>
 
         <!-- User defined. 用户自定义的广播接收器-->
+        <!--3.3.0开始可以通过继承 JPushMessageReceiver 并配置来接收事件，可以不再使用该方式-->
          <receiver
              android:name="您自己定义的 Receiver"
              android:enabled="true"
@@ -419,7 +427,19 @@ defaultConfig {
                 <action android:name="cn.jpush.android.intent.WakedReceiver" />
                 <category android:name="${applicationId}" />
             </intent-filter>
-    	  </receiver>
+        </receiver>
+        
+        <!--Required SDK核心功能 since 3.3.0-->
+        <activity
+            android:name="cn.jpush.android.service.JNotifyActivity"
+            android:exported="true"
+            android:taskAffinity="jpush.custom"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar">
+            <intent-filter>
+                <action android:name="cn.jpush.android.intent.JNotifyActivity" />
+                <category android:name="您应用的包名" />
+            </intent-filter>
+        </activity>
 
         <!-- Required. For publish channel feature -->
         <!-- JPUSH_CHANNEL 是为了方便开发者统计 APK 分发渠道。-->
