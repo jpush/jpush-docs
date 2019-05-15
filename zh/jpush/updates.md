@@ -3,12 +3,12 @@
 
 #### 更新时间
 
-+ 2019-05-15
++ 2019-05-16
 
 #### Change Log
 + 长连接接入优化
 + 事件回调方式修改
-+ AndroidManifest.xml组建配置优化
++ AndroidManifest.xml新增组建配置
 + 适配Android Q
 + 修复已知问题
 
