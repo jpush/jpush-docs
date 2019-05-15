@@ -26,12 +26,13 @@ JHandle jiotInit();
 注册JIOT客户端的回调函数
 #### 接口定义
 ```
-int jiotRegister(JHandle handle,void* pContext, JClientMessageCallback *cb);
+void jiotRegister(JHandle handle,void* pContext, JClientMessageCallback *cb,JClientHandleCallback *handleCb);
 
 ```
 #### 参数说明
 * handle :JIOT客户端的句柄
 * pContext:设备的上下文信息
+* handleCb：sdk连接状态回调函数结构体
 * cb: 客户端处理下行报文的回调函数结构体
 
 ####  返回值
@@ -245,7 +246,9 @@ typedef int jiotMsgDeliverReq(void* pContext, JHandle handle, MsgDeliverReq *Req
 * errcode:错误码
 
 #### 返回值
-## SDK回调函数指针结构体
+无
+
+## SDK消息回调函数指针结构体
 
 ```
 struct JClientMessageCallback
@@ -257,6 +260,80 @@ struct JClientMessageCallback
     jiotMsgDeliverReq *_cbMsgDeliverReq;
 } ;
 
+```
+## SDK状态回调函数接口
+
+### jiotConnectedHandle
+客户端mqtt连接成功。
+#### 接口定义
+```
+typedef int jiotConnectedHandle(void* pContext);
+```
+#### 参数说明
+* pContext:用户注册的上下文信息
+####  返回值
+ 无 
+ 
+### jiotConnectFailHandle
+客户端mqtt连接失败
+#### 接口定义
+```
+typedef int jiotConnectFailHandle(void* pContext,int errCode);
+```
+#### 参数说明
+ * pContext:用户注册的上下文信息
+ * errCode JIOT客户端异常错误码
+####  返回值
+ 无
+
+### jiotSubscribeFailHandle
+客户端subscirbe失败，ACL不通过。
+#### 接口定义
+```
+typedef int jiotSubscribeFailHandle(void* pContext,char * TopicFilter);
+```
+#### 参数说明
+*  pContext: 用户注册的上下文信息
+*  TopicFilter: JIOT订阅的topic
+####  返回值
+ 无 
+ 
+### jiotPublishFailHandle
+客户端publish失败，ACL不通过
+#### 接口定义
+```
+typedef int jiotPublishFailHandle(void* pContext,long long seqNo);
+
+```
+#### 参数说明
+* pContext:用户注册的上下文信息
+* seqNo : 消息序号
+####  返回值
+ 无
+ 
+### jiotMessageTimeoutHandle
+客户端消息发送超时。
+#### 接口定义
+```
+typedef int jiotMessageTimeoutHandle(void* pContext,long long seqNo);
+```
+#### 参数说明
+* pContext:用户注册的上下文信息
+* seqNo : 消息序号
+####  返回值
+ 无
+ 
+## SDK状态回调函数指针结构体
+```
+typedef struct JClientHandleCallback
+{
+    jiotConnectedHandle *_cbConnectedHandle; //mqtt连接成功
+    jiotConnectFailHandle *_cbConnectFailHandle; //mqtt连接失败
+    jiotDisconnectHandle *_cbDisconnectHandle; //mqtt连接中断
+    jiotSubscribeFailHandle *_cbSubscribeFailHandle; //消息subscirbe失败，ACL不通过
+    jiotPublishFailHandle *_cbPublishFailHandle; //消息publish失败，ACL不通过。由于MQTT3.1.1版本不支持，所以SDK暂时不支持,后续再开放
+    jiotMessageTimeoutHandle *_cbMessageTimeoutHandle; //消息发送超时
+} JClientHandleCallback;
 ```
 ## 错误码
 ### SDK底层返回的错误码
