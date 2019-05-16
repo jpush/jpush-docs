@@ -231,7 +231,7 @@ curl --insecure -X POST -v https://api.iot.jiguang.cn/device/v1/devices -H "Cont
 | --- | --- | --- | --- | --- |
 | device | 设备对象数组	| 必填 | 待创建的设备对象 |每个设备对象包括一个 name 和mark 每个请求最大支持添加1000个设备|
 | name | string	| 必填 | 设备的名字 |只支持数字、 英文字母和-_@. 长度为4~24 字符|
-| mark | string	| 可选 | 设备的名字 | 长度为0~128 字符 |
+| mark | string	| 可选 | 设备的备注 | 长度为0~128 字符 |
 
 ### 返回示例:
 ```
