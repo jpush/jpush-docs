@@ -167,6 +167,8 @@ JPush SDK 提供的推送服务是默认开启的。
 
 开始的版本：最初。
 
+**注：** 3.3.0开始提供新的消息回调方式，如采用新的回调方式进行处理，将不再回调该类。具体请参考新的消息回调方式。
+
 ### 功能说明
 
 JPush SDK 收到推送，通过广播的方式，转发给开发者 App，这样开发者就可以灵活地进行处理。
@@ -178,7 +180,7 @@ JPush SDK 收到推送，通过广播的方式，转发给开发者 App，这样
 + 接收到推送的自定义消息，则没有被处理
 + 可以正常收到通知，用户点击打开应用主界面
 
-### 接受广播
+### 接收广播
 
 如果全部类型的广播都接收，则需要在 AndroidManifest.xml 里添加如下的配置信息：
 
@@ -822,6 +824,7 @@ JPush 服务的连接状态发生变化。（注：不是指 Android 系统的�
 1. 新的消息回调方式中相关回调类。
 2. 新的 tag 与 alias 操作回调会在开发者定义的该类的子类中触发。
 3. 手机号码设置的回调会在开发者定义的该类的子类中触发。
+4. 3.3.0 版本开始，通过该类进行事件处理之后，原来通过自定义 Receiver 接收的事件，将不再回调给自定义 Receiver，而是回调到JPushMessageReceiver，否则，还是回调到自定义  Receiver。
 
 该类为回调父类，开发者需要继承该类并[在 Manifest 中配置](https://docs.jiguang.cn/jpush/client/Android/android_guide/#_5)您对应实现的类，接口操作的结果会在您配置的类中的如下方法中回调。
 
@@ -980,6 +983,144 @@ alias 相关的操作会在此方法中回调结果。
 
 	public String getMobileNumber();
 
+### Method - onMessage
+
+收到自定义消息回调
+
+####  支持的版本
+
+开始支持的版本：3.3.0
+
+#### 方法定义
+
+     public void onMessage(Context context, CustomMessage customMessage)
+
+#### 参数定义
+
++ context
+	+ 应用的 Application Context。
++ CustomMessage
+	+ 接收自定义消息内容
+
+### Method - onNotifyMessageArrived
+
+收到通知回调
+
+####  支持的版本
+
+开始支持的版本：3.3.0
+
+#### 方法定义
+
+	public void onNotifyMessageArrived(Context context, NotificationMessage message)
+
+#### 参数定义
+
++ context
+	+ 应用的 Application Context。
++ NotificationMessage
+	+ 接收到的通知内容
+
+### Method - onNotifyMessageOpened
+
+点击通知回调
+
+####  支持的版本
+
+开始支持的版本：3.3.0
+
+#### 方法定义
+
+	public void onNotifyMessageOpened(Context context, NotificationMessage message)
+
+#### 参数定义
+
++ context
+	+ 应用的 Application Context。
++ NotificationMessage
+	+ 点击的通知内容
+
+### Method - onNotifyMessageDismiss
+
+清除通知回调
+
+####  支持的版本
+
+开始支持的版本：3.3.0
+
+说明:
+
+1.同时删除多条通知，可能不会多次触发清除通知的回调
+
+2.只有用户手动清除才有回调，调接口清除不会有回调
+
+#### 方法定义
+
+	public void onNotifyMessageDismiss(Context context, NotificationMessage message)
+
+#### 参数定义
+
++ context
+	+ 应用的 Application Context。
++ NotificationMessage
+	+ 清除的通知内容
+
+### Method - onRegister
+
+注册成功回调
+
+####  支持的版本
+
+开始支持的版本：3.3.0
+
+#### 方法定义
+
+	public void onRegister(Context context, String registrationId)
+
+#### 参数定义
+
++ context
+	+ 应用的 Application Context。
++ registrationId
+	+ 注册id
+
+### Method - onConnected
+
+长连接状态回调
+
+####  支持的版本
+
+开始支持的版本：3.3.0
+
+#### 方法定义
+
+	public void onConnected(Context context, boolean isConnected)
+
+#### 参数定义
+
++ context
+	+ 应用的 Application Context。
++ isConnected
+	+ 长连接状态
+
+### Method - onCommandResult
+
+注册失败回调
+
+####  支持的版本
+
+开始支持的版本：3.3.0
+
+#### 方法定义
+
+	public void onCommandResult(Context context, CmdMessage cmdMessage)
+
+#### 参数定义
+
++ context
+	+ 应用的 Application Context。
++ CmdMessage
+	+ 错误信息
 
 ## 老别名 alias 与标签 tag 接口
 1.5.0 ～ 3.0.6 版本提供的别名与标签接口都是覆盖的逻辑，从 3.0.7 版本开始不再维护（但仍会继续保留）。建议开发者使用 3.0.7 开始提供的新 tag、alias 接口。
