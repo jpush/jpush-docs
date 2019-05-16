@@ -8,7 +8,7 @@
 #### Change Log
 + 长连接接入优化
 + 事件回调方式修改
-+ AndroidManifest.xml新增组建配置
++ AndroidManifest.xml新增组件配置
 + 适配Android Q
 + 修复已知问题
 

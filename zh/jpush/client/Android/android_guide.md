@@ -91,7 +91,7 @@
             ......
         }
 
-        allprojets {
+        allprojects {
             repositories {
                 jcenter()
             }
@@ -263,6 +263,7 @@ defaultConfig {
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
     <!-- Optional. Required for location feature -->
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" /> <!-- 用于开启 debug 版本的应用在 6.0 系统上的层叠窗口权限 -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
@@ -371,7 +372,7 @@ defaultConfig {
         </service>
         
         <!-- Since JCore2.0.0 Required SDK核心功能-->
-	<!-- 可配置android:process参数将Service放在其他进程中；android:enabled属性不能是false -->
+	    <!-- 可配置android:process参数将Service放在其他进程中；android:enabled属性不能是false -->
         <!-- 这个是自定义Service，要继承极光JCommonService，可以在更多手机平台上使得推送通道保持的更稳定 -->
          <service android:name="xx.xx.XService"
                  android:enabled="true"
