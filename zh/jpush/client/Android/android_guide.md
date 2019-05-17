@@ -75,6 +75,20 @@
             		……
             	</service>
 
+                <!-- Required since 3.0.7 -->
+                <!-- 新的 tag/alias 接口结果返回需要开发者配置一个自定的广播 -->
+                <!-- 3.3.0开始所有事件将通过该类回调 -->
+                <!-- 该广播需要继承 JPush 提供的 JPushMessageReceiver 类, 并如下新增一个 Intent-Filter -->
+                <receiver
+                    android:name="自定义 Receiver"
+                    android:enabled="true" 
+                    android:exported="false" >
+                    <intent-filter>
+                        <action android:name="cn.jpush.android.intent.RECEIVE_MESSAGE" />
+                        <category android:name="您应用的包名" />
+                    </intent-filter>
+                </receiver>
+
             ……
           </application>
 
