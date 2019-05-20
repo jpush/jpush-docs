@@ -73,7 +73,31 @@
     ...
 ~~~
 
-##SDK获取号码认证token
+##SDK获取号码认证token（新）
+
+###支持的版本
+开始支持的版本 2.2.0
+
++ **+ (void)getToken:(NSTimeInterval)timeout completion:(void (^)(NSDictionary * result))completion;**
+
+    + 接口说明:
+        + 获取手机号校验token
+    + 参数说明
+        + completion  参数是字典 返回token 、错误码等相关信息，token有效期1分钟, 一次认证后失效
+        + result 字典 获取到token时key有operator、code、token字段，获取不到token是key为code和content字段
+        + timeout 超时时间。单位ms，合法范围3000~10000。
+
+    + 调用示例:
+    + 
+~~~
+    [JVERIFICATIONService getToken:(NSTimeInterval)timeout completion:^(NSDictionary *result) {
+        NSLog(@"getToken result:%@", result)
+        //TODO:获取token后相关操作
+    }];
+~~~
+
+
+##SDK获取号码认证token（旧）
 
 ###支持的版本
 开始支持的版本 1.0.0
@@ -83,7 +107,7 @@
 + ***+ (void)getToken:(void (^)(NSDictionary * result))completion;***
 
     + 接口说明:
-        + 获取号码认证token
+        + 获取号码认证token，此接口已废弃，建议使用新接口
     + 参数说明
         + completion  参数是字典 返回token、错误码等相关信息，token一次认证后失效
         + result 字典 获取到token时key有operator、code、token字段，获取不到token时key为code和content字段
@@ -126,7 +150,29 @@
     }];
 ~~~
 
-***说明***：开发者调用该接口，需要在管理控制台找到该应用，并在［认证设置］-［其他设置］中开启［SDK发起认证］。
+***说明***：开发者调用该接口，需要在管理控制台找到该应用，并在［认证设置］-［其他设置］中开启［SDK发起认证］，建议从开发者服务端发起号码认证。
+
+##SDK登录预取号
+
+###支持的版本
+开始支持的版本 2.2.0
+
++ ***+ (void)preLogin:(NSTimeInterval)timeout completion:(void (^)(NSDictionary *result))completion***
+
+    + 接口说明:
+        + 验证当前运营商网络是否可以进行一键登录操作，该方法会缓存取号信息，提高一键登录效率。建议发起一键登录前先调用此方法。
+    + 参数说明:
+        + completion 预取号结果
+        + result 字典 key为code和message两个字段
+        + timeout 超时时间。单位ms，合法范围3000~10000。
+
+    + 调用示例:
+
+~~~
+    [JVERIFICATIONService preLogin:5000 completion:^(NSDictionary *result) {
+        NSLog(@"登录预取号 result:%@", result);
+    }];
+~~~
 
 ##SDK请求授权一键登录
 
@@ -151,6 +197,8 @@
         NSLog(@"一键登录 result:%@", result);
     }];
 ~~~
+
+***说明***：获取到一键登录的loginToken后，将其返回给应用服务端，从服务端调用[REST API](https://docs.jiguang.cn/jverification/server/rest_api/loginTokenVerify_api/)来获取手机号码
 
 ##SDK自定义授权页面UI样式
 
@@ -344,3 +392,6 @@
 |6002|login cancel|用户取消登录|
 |6003|UI load error|UI加载异常|
 |6004|authorization requesting, please try again later|正在登录中，稍候再试|
+|7000|preLogin success|预取号成功|
+|7001|preLogin failed|预取号失败|
+|7002|preLogin requesting, please try again later|取号中|
