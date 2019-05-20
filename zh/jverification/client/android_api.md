@@ -64,7 +64,40 @@
         }
 ~~~
 
-##SDK获取号码认证token
+##SDK获取号码认证token（新）
+
+###支持的版本
+开始支持的版本 2.2.0
+
+###接口定义
++ ***JVerificationInterface.getToken(Context context,int timeOut, VerifyListener listener)***
+	+ 接口说明：
+		+ 在预定时间内获取当前在线的sim卡所在运营商及token，如果超过所设时间，接口回调返回超时。如果获取成功代表可以用来验证手机号，获取失败则建议做短信验证。
+	+ 参数说明：
+		+ context：android的上下文
+		+ timeOut: 超时时间（毫秒）,有效取值范围[3000,10000]
+		+ listener：接口回调
+	+ 回调说明：
+    ***onResult(int code, String  content, String operator)***
+  		+ code: 返回码，2000代表获取成功，其他为失败，详见错误码描述
+    	+ content：成功时为token，可用于调用验证手机号接口。token有效期为1分钟，超过时效需要重新获取才能使用。失败时为失败信息
+    	+ operator：成功时为对应运营商，CM代表中国移动，CU代表中国联通，CT代表中国电信。失败时可能为null
+  	+ 调用示例：
+
+~~~
+	JVerificationInterface.getToken(this, 5000,new VerifyListner{
+	    @Override
+        public void onResult(int code, String content, String operator) {
+	        if (code == 2000){
+	            Log.d(TAG, "token=" + content + ", operator=" + operator);
+            } else {
+            	Log.d(TAG, "code=" + code + ", message=" + content);
+            }
+	    });
+~~~
+
+
+##SDK获取号码认证token（旧）
 
 ###支持的版本
 开始支持的版本 1.0.0
@@ -73,7 +106,7 @@
 
 + ***JVerificationInterface.getToken(Context context, VerifyListener listener)***
 	+ 接口说明：
-		+ 获取当前在线的sim卡所在运营商及token。如果获取成功代表可以用来验证手机号。获取失败则建议做短信验证
+		+ 获取当前在线的sim卡所在运营商及token。如果获取成功代表可以用来验证手机号，获取失败则建议做短信验证。默认超时时长为5000ms，此接口已废弃，建议使用新接口。
 	+ 参数说明：
 		+ context：android的上下文
 		+ listener：接口回调
@@ -133,7 +166,35 @@
 	    });
 ~~~
 
-***说明***：开发者调用该接口，需要在管理控制台找到该应用，并在［认证设置］-［其他设置］中开启［SDK发起认证］。
+***说明***：开发者调用该接口，需要在管理控制台找到该应用，并在［认证设置］-［其他设置］中开启［SDK发起认证］，建议从开发者服务端发起号码认证。
+
+## SDK一键登录预取号
+
+###支持的版本
+开始支持的版本 2.2.0
+
+###接口定义
++ ***JVerificationInterface.preLogin(Context context, int timeOut, PreLoginListener listener){***
+	+ 接口说明：
+		+ 验证当前运营商网络是否可以进行一键登录操作，该方法会缓存取号信息，提高一键登录效率。建议发起一键登录前先调用此方法。
+	+ 参数说明：
+		+ context：android的上下文
+		+ timeOut: 超时时间（毫秒）,有效取值范围[3000,10000]
+		+ listener：接口回调
+	+ 回调说明：
+    ***onResult(int code, String  content, String operator)***
+  		+ code: 返回码，7000代表获取成功，其他为失败，详见错误码描述
+    	+ content：调用结果信息描述
+  	+ 调用示例：
+
+~~~
+        JVerificationInterface.preLogin(this, 5000,new PreLoginListener() {
+            @Override
+            public void onResult(final int code, final String content) {
+                Log.d(TAG,"[" + code + "]message=" +  content );
+            }
+        });
+~~~
 
 ##SDK请求授权一键登录
 
@@ -166,6 +227,8 @@
               }
           });
 ~~~
+
+***说明***：获取到一键登录的loginToken后，将其返回给应用服务端，从服务端调用[REST API](https://docs.jiguang.cn/jverification/server/rest_api/loginTokenVerify_api/)来获取手机号码
 
 ##SDK自定义授权页面UI样式
 
@@ -377,6 +440,9 @@
 |6002|fetch loginToken canceled|用户取消获取loginToken|
 |6003|UI 资源加载异常|未正常添加sdk所需的资源文件|
 |6004|authorization requesting, please try again later|正在登录中，稍后再试|
+|7000|preLogin success|sdk 预取号成功|
+|7001|preLogin failed|sdk 预取号失败|
+|7002|preLogin requesting, please try again later|正在预取号中，稍后再试|
 |-994|网络连接超时|   |
 |-996|网络连接断开|   |
 |-997|注册失败/登录失败|（一般是由于没有网络造成的）如果确保设备网络正常，还是一直遇到此问题，则还有另外一个原因：JPush 服务器端拒绝注册。而这个的原因一般是：你当前 App 的 Android 包名以及 AppKey，与你在 Portal 上注册的应用的 Android 包名与 AppKey 不相同。|
