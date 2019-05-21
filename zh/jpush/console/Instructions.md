@@ -6,57 +6,71 @@
 
 #### 创建应用 :  
 点击［创建应用］按钮即可;  
-![](image/create_application.png)
+![jpush_web](image/create_application.png)
 
 #### 配置应用信息：  
 Step1： 基本信息：输入应用名称 (必填), 上传一个图标；  
-配置 Android 平台信息：填写应用包名, JPush 系统会在后台根据你输入的包名生成的推送的 Android 应用 Demo, 该 Demo 包含了该配置的信息;  
-Step2： 配置 iOS 平台信息：上传相关环境的推送证书，并填写和证书配套的密码；  
-Step3： 配置 WinPhone 平台信息：选择是否开启即可；
+![jpush_web](image/create_application_step1.png)
+
+Step2： 配置 Android 平台信息：填写应用包名, JPush 系统会在后台根据你输入的包名生成的推送的 Android 应用 Demo, 该 Demo 包含了该配置的信息;  
+![jpush_web](image/create_application_step2.png)
+
+Step3： 配置 iOS 平台信息：上传相关环境的推送证书，并填写和证书配套的密码；  
+![jpush_web](image/create_application_step3.png)
+
+Step4： 配置 WinPhone 平台信息：选择是否开启即可；
+![jpush_web](image/create_application_step4.png)
 
 ```
 注意：Android 的包名和 iOS 的证书一旦配置，不允许修改；
 如果测试应用配置有误，可删除应用重新创建（应用信息 - 编辑 - 删除）；
 如果是线上应用的某一个平台配置有误需要更改，可联系 support@jpush.cn 处理。
 ```  
-
-![jpush_web](image/setting_application.png)  
-Step4： 信息配置完成后，查看应用信息如下：  
+ 
+Step5： 信息配置完成后，查看应用信息如下：  
 ![jpush_web](image/info_application.png)
 
 
 ## 应用管理
 
-点击［home］回到首页，可浏览所有应用的信息，点击应用名称或设置可查看应用详情，点击推送可去到发送通知页，编辑并推送通知，点击统计，可查看该应用的所有统计数据；  
+点击［应用管理］回到首页，可浏览所有应用的信息，点击应用名称或设置可查看应用详情，点击推送可去到发送通知页，编辑并推送通知，点击统计，可查看该应用的所有统计数据；  
+![jpush_web](image/manage_application_01.png)  
+
 ![jpush_web](image/manage_application.png)  
 
 应用详情如下  
-![jpush_web](image/application_moreinfo.png) 
+![jpush_web](image/info_application.png) 
  
 应用设置如下  
 ![jpush_web](image/application_moresetting.png)
 
 ## 分组管理
 
-点击［home］回到首页后，在左侧导航中点击［分组管理］，可浏览应用的分组管理信息并创建新分组，你可以将几个 App 分为一组，选择分组推送即可同时推送给组内所有的 App；  
+点击［应用管理］回到首页后，在导航中点击［分组管理］，可浏览应用的分组管理信息并创建新分组，你可以将几个 App 分为一组，选择分组推送即可同时推送给组内所有的 App；  
+![jpush_web](image/manage_application_01.png)  
+ 
 ![jpush_web](image/group_application.png)
 
 ## 报表下载
 
-点击［home］回到首页后，在左侧导航中点［报表下载］，可以根据时间对报表进行下载；  
+点击［应用管理］回到首页后，在导航中点［报表下载］，可以根据时间对报表进行下载； 
+![jpush_web](image/manage_application_01.png)  
+ 
 ![jpush_web](image/data_application.png)
 
 ## 发送通知
 
 路径：选择应用－>推送－>发送通知  
-填写推送内容后点击页面最下方的［立即发送］按钮即可；  
+填写推送内容后点击页面最下方的［发送预览］按钮即可；  
 该功能对应 Rest API - Push - [Notification](https://docs.jiguang.cn/jpush/server/push/rest_api_v3_push/#notification)
+
 ```
 注意：如果选择别名、标签、registrationID 推送，在输入一个值后需要回车确认。
 ```
+
 ![jpush_web](image/send_notification.png)
 
-Web 界面会弹出对话框, 提示是否发送, 选［发送吧］即可;  
+Web 界面会弹出发送预览页面, 选［确认］即可;  
 ![jpush_web](image/send_.png)
 
 推送成果后，弹出对话框，点击［去看看］即可查看推送结果;  
@@ -65,7 +79,7 @@ Web 界面会弹出对话框, 提示是否发送, 选［发送吧］即可;
 ## 自定义消息
 
 路径：选择应用－>推送－>自定义消息     
-填写推送内容后点击页面最下方的［立即发送］按钮即可；  
+填写推送内容后点击页面最下方的［发送预览］按钮即可；  
 该功能对应 Rest API - Push - [Message](https://docs.jiguang.cn/jpush/server/push/rest_api_v3_push/#message)
 ![jpush_web](image/send_message.png)
 
@@ -75,15 +89,15 @@ Web 界面会弹出对话框, 提示是否发送, 选［发送吧］即可;
 可通过模板发送 landing page、弹窗、信息流等形式的富媒体消息，或者直接通过URL发送预先编辑好的页面；      
 该功能不支持调 API 推送，仅支持官网控制台推送
 
-### 通过 landing page 模板发送
+### 通过全屏式模板发送
 
-* Step1：路径：选择应用－>推送－>富媒体消息－>模版－>landing page，目前 landing page 只提供一种通用模板；  
+* Step1：路径：选择应用－>推送－>富媒体消息－>模版－>全屏式模板；  
 ![jpush_web](image/landingpage_1.png)
 
-* Step2：进入模板内容编辑页面，填写所有内容，左侧可预览内容的展示效果，单击［下一步］；  
+* Step2：进入模板内容编辑页面，填写所有内容，右侧可预览内容的展示效果，单击［下一步］；  
 ![jpush_web](image/landingpage_2.png)
 
-* Step3：单击［预览富媒体页面］，可预览刚刚编辑完成的 landing page 模板；单击页面最下方的［立即发送］按钮，即可完成该 landing page 的推送；  
+* Step3：单击［预览富媒体页面］，可预览刚刚编辑完成的全屏式富媒体模板；单击页面最下方的［发送预览］按钮，按照提示操作，即可完成该全屏式富媒体的推送；  
 ![jpush_web](image/landingpage_3.png)
 
 ### 通过弹窗模板发送
@@ -91,10 +105,10 @@ Web 界面会弹出对话框, 提示是否发送, 选［发送吧］即可;
 * Step1：选择应用－>推送－>富媒体消息－>模版－>弹窗，挑选适合的模板；  
 ![jpush_web](image/popup_1.png)
 
-* Step2：进入模板内容编辑页面，填写所有内容，左侧可预览内容的展示效果，单击下一步；  
+* Step2：进入模板内容编辑页面，填写所有内容，右侧可预览内容的展示效果，单击下一步；  
 ![jpush_web](image/popup_2.png)
 
-* Step3：单击［预览富媒体页面］，可以预览刚刚编辑完成的弹窗模板，单击页面最下方的［立即发送］按钮，即可完成该弹窗的推送；  
+* Step3：单击［预览富媒体页面］，可以预览刚刚编辑完成的弹窗模板，单击页面最下方的［发送预览］按钮，按照提示操作，即可完成该弹窗的推送；  
 ![jpush_web](image/popup_3.png)
 
 ### 通过信息流模板发送
@@ -102,28 +116,25 @@ Web 界面会弹出对话框, 提示是否发送, 选［发送吧］即可;
 * Step1：路径：选择应用－>推送－>富媒体消息－>模版－>信息流，挑选适合的模板；  
 ![jpush_web](image/Informationflow_1.png)
 
-* Step2：进入模板内容编辑页面，填写所有内容，左侧可预览内容的展示效果，单击下一步；  
+* Step2：进入模板内容编辑页面，填写所有内容，右侧可预览内容的展示效果，单击下一步；  
 ![jpush_web](image/Informationflow_2.png)
 
-* Step3：单击［预览富媒体页面］，可以预览刚刚编辑完成的弹窗模板，单击页面最下方的［立即发送］按钮，即可完成该信息流的推送；  
+* Step3：单击［预览富媒体页面］，可以预览刚刚编辑完成的弹窗模板，单击页面最下方的［发送预览］按钮，按照提示操作，即可完成该信息流的推送；  
 ![jpush_web](image/informationflow_3.png)
 
 ### 通过URL发送通知
 
-* Step1：路径：选择应用－>推送－>富媒体消息－>URL；  
+* Step1：路径：选择应用－>推送－>富媒体消息－>URL，单击［下一步］按钮，由于通知的大小有限制，URL不可过长，若URL超过限制长度，请自行转成短地址再输入； 
 ![jpush_web](image/url_1.png)
 
-* Step2：输入需要推送的页面的URL，单击［下一步］按钮，由于通知的大小有限制，URL不可过长，若URL超过限制长度，请自行转成短地址再输入；  
-![image](image/url_2.png)
-
-* Step3：URL不提供页面预览功能，请确保输入正确的URL，在发送通知页面填写通知内容（该内容将展示到通知栏上，不填写则不展示），单击页面最下方的［立即发送］按钮，即可完成URL推送；  
-![jpush_web](image/url_3.png)
+* Step2：URL不提供页面预览功能，请确保输入正确的URL，在发送通知页面填写通知内容（该内容将展示到通知栏上，不填写则不展示），单击页面最下方的［发送预览］按钮，按照提示操作，即可完成URL推送；  
+![jpush_web](image/url_2.png)
 
 ## 推送历史
 
 路径：选择应用－>推送－>推送历史  
 在右边可以浏览推送的历史数据，包含推送时间，内容，类型，IOS 目标|成功，Android 目标|成功，Winphone 目标|成功，操作；
-点开操作中的 i，可以展开消息详情，查看详细的推送内容。
+点开操作中的[详情]，可以展开消息详情，查看详细的推送内容。
 
 ![jpush_web](image/send_history.png)
 
@@ -146,7 +157,7 @@ Web 界面会弹出对话框, 提示是否发送, 选［发送吧］即可;
 
 路径：选择应用－>推送－>定时消息  
 右边的下拉菜单中可以选择［通知］还是［自定义消息］的定时推送消息；   
-该功能对应 Rest API - Schedule - [创建定时任务](https://docs.jiguang.cn/jpush/server/push/rest_api_push_schedule/#_4)，调 API 创建的定时任务只能调 API 获取，官网不展示。
+该功能对应 Rest API - Schedule - [创建定时任务](https://docs.jiguang.cn/jpush/server/push/rest_api_push_schedule/#_4)。
 ![jpush_web](image/Schedule_send.png)
 
 ### 定速推送
