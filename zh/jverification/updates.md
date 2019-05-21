@@ -1,5 +1,74 @@
 #最近更新
 
+##JVerification iOS SDK v2.2.0
+
+**更新时间**
+
+* 2019-05-20
+
+**Change Log**
+
+* 升级中国联通SDK
+* 新增预取号功能，提高一键登录成功率
+* 获取号码认证token接口新增超时设置
+* 优化双卡设备判断网络是否支持的逻辑
+* 修复已知问题
+
+**升级建议**
+
+* 建议升级
+
+**升级指南**
+
++ 首先解压您获取到的zip压缩包
+
++ 更新库文件
+    + 打开libs文件夹
+    + 替换项目中原有的极光SDK文件
+        + account_login_sdk_noui_core.framework
+        + account_verify_sdk_core.framework
+        + EAccountApiSDK.framework
+        + jcore-ios-x.x.x.a
+        + jverification-ios-2.2.0.a
+        + TYRZSDK.framework
+    + 项目targets->build phases->link binary with libraries
+        + 增加libc++.1.tbd
+    + 在极光演示demo中，找到JVerificationResource.bundle，将这个bundle文件加到您的项目中 
+
+##JVerification Android SDK v2.2.0
+
+**更新时间**
+
+* 2019-05-20
+
+**Change Log**
+
+* 升级中国联通SDK
+* 新增预取号功能，提高一键登录成功率
+* 获取号码认证token接口新增超时设置
+* 修复已知问题
+
+**升级建议**
+
+* 建议升级
+
+**升级指南**
+
++ 首先解压您获取到的zip压缩包
+
++ 更新库文件
+    + 打开libs文件夹
+    + 用jverification-android-v2.1.1.jar 替换项目中原有的极光认证sdk的jar文件
+    + 用jcore-android-v2.x.x.jar 替换项目中原有的极光jcore的jar文件
+    + 用对应CPU文件夹下的 libjcore2xy.so文件，替换项目中原有的极光so文件
+    + 用对应CPU文件夹下的 libCtaApiLib.so文件，添加到项目中
+
++ 更新AndroidManifest.xml
+    + 压缩包根目录下有示例 AndroidManifest 文件，请对照示例更新和JVerification相关的组件属性，permission 等配置，并在中文提示的位置替换你的包名和 appKey
+
++ 拷贝SDK所必须的资源文件
+    + 压缩包根目录下有res文件夹，将该文件夹下的所有文件复制到项目res下面对应的文件夹中
+
 ##JVerification iOS SDK v2.1.5
 
 **更新时间**

@@ -37,10 +37,10 @@
 
 注：如果无法导入最新版本，请执行 pod repo update master 这个命令来升级本机的 pod 库，然后重新 pod 'JVerification'
 
-+ 如果需要安装指定版本则使用以下方式（以2.1.0版本为例）：
++ 如果需要安装指定版本则使用以下方式（以2.2.0版本为例）：
 
 ~~~
-    pod 'JVerification', '2.1.0'
+    pod 'JVerification', '2.2.0'
 ~~~
 
 **选择 2：手动导入**
@@ -48,8 +48,8 @@
 + 在极光官网下载最新 SDK
 + 请在自己的工程中导入libs文件夹下的SDK文件:
 
-    * jcore-ios-1.2.6.a  jcore版本 1.2.3及其以上
-    * jverification-ios-2.1.0.a jverification版本 2.0.0及其以上
+    * jcore-ios-2.0.0.a  jcore版本 1.2.3及其以上
+    * jverification-ios-2.2.0.a jverification版本 2.0.0及其以上
     * account_verify_sdk_core.framework
     * account_login_sdk_noui_core.framework
     * TYRZSDK.framework
@@ -75,8 +75,8 @@
     * TYRZSDK.framework
     * account_login_sdk_noui_core.framework
     * EAccountApiSDK.framework
-    * jcore-ios-1.2.6.a  jcore版本 1.2.3及其以上
-    * jverification-ios-2.1.0.a jverification版本 2.0.0及其以上
+    * jcore-ios-2.0.0.a  jcore版本 1.2.3及其以上
+    * jverification-ios-2.2.0.a jverification版本 2.0.0及其以上
     
 
 ##配置资源
@@ -113,7 +113,7 @@
 ##运行Demo
 
 压缩包附带的 demo 是一个 API 演示例子。你可以将它导入到你的工程，并将你的
-AppKey 填入到 demo 的 ViewController 中，设置上BundleID然后直接运行起来测试。
+AppKey 填入到 demo 的 ViewController 中，设置上Bundle ID然后直接运行起来测试。
 
 ##技术支持
 

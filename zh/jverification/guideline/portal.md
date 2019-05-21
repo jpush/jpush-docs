@@ -38,11 +38,11 @@ Step4：开发者类型选择［企业认证］<br>
 Step1：登入控制台<br>
 Step2：点击［创建应用］按钮<br>
 
-![JVerification](../image/addapp1.jpg)
+![JVerification](../image/newportal1.png)
 
 Step3：填写［应用名称］和［应用图标］，其中［应用名称］为必填。<br>
 
-![JVerification](../image/addapp2.jpg)
+![JVerification](../image/newportal2.png)
 
 ##认证设置
 
@@ -56,7 +56,7 @@ Step3：左侧菜单栏选择［极光认证］<br>
 Step4：补充［应用分类］和［应用简介］并点击［保存］按钮，Android需填写［应用包名］和［应用标签］，iOS应用需填写［Bundle ID］，点击［提交审核］按钮<br>
 Step5: 待Step4审核通过后，在［一键登录设置］中，选择开通的平台，并填写RSA加密公钥，点击［提交审核］按钮<br>
 
-![JVerification](../image/verification_setting.png)
+![JVerification](../image/newportal3.png)
 
 ##查看数据
 

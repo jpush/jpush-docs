@@ -35,7 +35,7 @@
 
 + AndroidManifest.xml
     + 客户端嵌入SDK参考的配置文件
-+ libs/jcore-android_v1.x.x.jar
++ libs/jcore-android_v2.x.x.jar
     + sdk 核心包
 + libs/xxx/xx.so
     + sdk需要用的so文件
@@ -50,7 +50,7 @@
 ##手动集成步骤
 
 + 解压缩 jverification-android-2.x.x-release.zip 集成压缩包。
-+ 复制 libs/jcore-android-1.x.x.jar 到工程 libs/ 目录下。
++ 复制 libs/jcore-android-2.x.x.jar 到工程 libs/ 目录下。
 + 复制 libs/jverification-android-2.x.x.jar 到工程 libs/ 目录下。
 + 复制 res/xxx 到工程 res/xxx 对应的目录下。
 + 复制 libs/(cpu-type)/xxx.so 到你的工程中存放对应cpu类型的目录下。
@@ -113,18 +113,22 @@
     <!-- Required  -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
+
 
     <!-- Optional -->
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" /> <!-- 用于开启 debug 版本的应用在6.0 系统上 层叠窗口权限 -->
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
     <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+
     
 
     <application
@@ -182,7 +186,6 @@
 		-keep class com.cmic.** { *; }
 		-dontwarn com.unicom.**
 		-keep class com.unicom.** { *; }
-
 		-dontwarn cn.com.chinatelecom.**
 		-keep class cn.com.chinatelecom.** { *; }
 
