@@ -47,7 +47,6 @@ SDK支持在快应用平台v1000及以后版本上使用。
 创建应用之后返回用户主页面可以看到应用清单，点选你刚才创建的应用来查看应用信息。
 
 ![jpush_android_guide](../image/jpush_app_info.png)
-![jpush_android_guide](../image/jpush_app_info_2.png)
 
 
 ##本地工程配置

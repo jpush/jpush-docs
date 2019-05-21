@@ -60,7 +60,6 @@ distributionUrl=https\://services.gradle.org/distributions/gradle-3.3-all.zip
 创建好应用后，如果想要查看该应用的详细信息，可点击应用条目右侧的「设置」按钮进入【应用信息】页面。
 
 ![jpush_android_guide](../image/jpush_app_info.png)
-![jpush_android_guide](../image/jpush_app_info_2.png)
 
 
 ## JCenter 自动集成方式
