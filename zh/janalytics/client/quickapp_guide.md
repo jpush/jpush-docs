@@ -37,7 +37,7 @@ SDK支持在快应用平台v1000及以后版本上使用。
 
 ###Portal上创建应用
 
-使用注册账号登陆，进入极光控制台后，点击“创建应用”按钮，进入创建应用的界面。填上你的应用程序的名称以及应用包名这二项就可以了，最后点击最下方的 “创建我的应用”按钮，创建应用完毕。
+使用注册账号登陆，进入极光控制台-应用管理，点击「创建应用」按钮，进入创建应用的界面。输入应用名称和上传好应用图标（非必填），点击「确认」即可创建应用。
 
 ![jpush_android_guide](../image/jpush_app_create.png)
 ![jpush_android_guide](../image/jpush_app_create_2.png)
@@ -47,6 +47,7 @@ SDK支持在快应用平台v1000及以后版本上使用。
 创建应用之后返回用户主页面可以看到应用清单，点选你刚才创建的应用来查看应用信息。
 
 ![jpush_android_guide](../image/jpush_app_info.png)
+![jpush_android_guide](../image/jpush_app_info_2.png)
 
 
 ##本地工程配置
