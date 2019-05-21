@@ -2,7 +2,7 @@
 
  <div id=“getappkey”></div>
 ## appkey如何获得？
-在[极光开发者控制台](https://www.jiguang.cn/accounts/login/form)创建应用后，可在该位置查看appkey。如图
+在[极光开发者控制台](https://www.jiguang.cn/dev2/#/overview/appCardList)创建应用后，进入该应用的设置，可在该位置查看appkey。如图
 ![shiyong](../image/appkey.png)
 
 
@@ -122,7 +122,7 @@
 音视频服务为付费功能，开通音视频服务，需保证音视频账户余额不低于400.00元。
 
 #### 充值方式
-登录[极光开发者服务后台](https://www.jiguang.cn/accounts/login/form)，进入业务设置 - 账户充值，可用微信进行账户充值
+登录[极光开发者服务后台](https://www.jiguang.cn/dev2/#/accounts/recharge/im)，点击右上方个人信息下拉中的“音视频账户” ，可进入账户充值页面。使用微信进行账户充值
 ![chongzhi](../image/chongzhi.png)
 
 #### 开通服务
@@ -147,7 +147,7 @@
 
 <br />
 ## <span id="multi-platfrom">多端同时在线功能如何开启？具体规则是什么？</span>
-多端同时在线功能可在[极光控制台](https://www.jiguang.cn/accounts/login/form)开启，选择“应用设置”中的 “IM 设置”，点击启用按钮进行开启。需要注意的是此功能开启后不支持关闭。
+多端同时在线功能可在[极光控制台](https://www.jiguang.cn/dev2/#/overview/appCardList)开启，选择“应用设置”中的 “IM 设置”，点击启用按钮进行开启。需要注意的是此功能开启后不支持关闭。
 ![多端在线](../image/online.png)
 
 功能说明：支持移动端（ Android 、 iOS ），PC端，Web端（JS、微信小程序），多端同时在线，端内平台之间互踢。    

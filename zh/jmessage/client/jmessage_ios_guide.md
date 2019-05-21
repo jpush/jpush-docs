@@ -15,12 +15,13 @@
 
 ### 1、在极光 Web控制台上创建应用
 
-* 登录<a href="https://www.jiguang.cn/accounts/login/form" target="_blank">极光Web控制台</a>，创建应用，上传 APNs 证书。
+* 登录<a href="https://www.jiguang.cn/dev2/#/overview/appCardList" target="_blank">极光开发者控制台</a>，在应用列表创建应用，进入“应用设置”中的“im设置”。完成上传证书和填写证书密码。
+* 
 如果对 Apple APNs 证书不太了解，请参考[iOS 证书设置指南](https://docs.jiguang.cn/jpush/client/iOS/ios_cer_guide/)。
 
 ![jmessage_ios][0]
 
-* 创建成功后自动生成 AppKey 用以标识该应用。这个后续要用到。
+* 创建应用后，可在此处查看该应用的 AppKey 。
 
 ![jmessage_ios][1]
 
