@@ -414,7 +414,7 @@ defaultConfig {
         </receiver>
 
         <!-- User defined. 用户自定义的广播接收器-->
-        <!--3.3.0开始可以通过继承 JPushMessageReceiver 并配置来接收事件，可以不再使用该方式-->
+        <!--3.3.0开始可以通过继承 JPushMessageReceiver并配置来接收所有事件回调，这样将不再使用此处自定义方式回调；建议开发者都是用新的JPushMessageReceiver方式进行。-->
          <receiver
              android:name="您自己定义的 Receiver"
              android:enabled="true"
