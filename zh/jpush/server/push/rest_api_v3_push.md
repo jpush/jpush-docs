@@ -480,14 +480,14 @@ Android 平台上的通知，JPush SDK 按照一定的通知栏样式展示。
 			<td>可选</td>
 			<td>通知栏大图标</td>
 			<td>图标路径可以是以http或https开头的网络图片，如：http:jiguang.cn/logo.png ,图标大小不超过 30 k;
-也可以是位于drawable资源文件夹的图标路径，如：R.drawable.lg_icon； </td>
+也可以是位于drawable资源文件夹的图标路径，如：R.drawable.lg_icon；<br/>如果有此字段值，推送一定走极光自有通道下发。 </td>
 		</tr>
 		<tr >
 			<td>intent</td>
 			<td>JSON Object</td>
 			<td>可选</td>
 			<td>指定跳转页面</td>
-			<td>使用 intent 里的 url 指定点击通知栏后跳转的目标页面。</td>
+			<td>使用 intent 里的 url 指定点击通知栏后跳转的目标页面;<br/>如果有此字段值，推送一定走极光自有通道下发。</td>
 		</tr>
 	</table>
 </div>
