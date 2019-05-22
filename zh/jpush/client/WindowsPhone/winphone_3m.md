@@ -19,7 +19,9 @@ img[alt=jpush_winphone_3m] { width: 500px; }
 ### Portal 上创建应用
 创建帐号进入极光推送后，首先显示的是创建应用的界面。填上你的应用程序的名称，保存后在推送设置页面展开 WinPhone 设置，选择启动 WinPhone。
 
-![jpush_winphone_3m](../image/20180813-141457.png)
+![jpush_winphone_3m](../image/wp_01.png)
+
+![jpush_winphone_3m](../image/wp_02.png)
 
 ### 下载应用 Example
 
@@ -55,11 +57,10 @@ img[alt=jpush_winphone_3m] { width: 500px; }
 做下一步动作之前，请确保你的手机上的网络是可用的。
 
 ### Portal 上推送通知
-![jpush_winphone_3m](../image/20180814-165428.png)
 
 发送消息时，选中需要的平台（Windows phone）
 
-![jpush_winphone_3m](../image/20180814-165516.png)
+![jpush_winphone_3m](../image/wp_sendnotification.png)
 
 在上述步骤安装 JPush Example 的手机上，你就可以收到推送的通知了
 
