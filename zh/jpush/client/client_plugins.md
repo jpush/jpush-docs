@@ -8,7 +8,7 @@
 
 官方插件地址包含：安装方法、demo（example 文件夹内）、API 文档、常见问题，请开发者仔细参阅。
 
-#### PhoneGap / Cordova / Ionic
+#### PhoneGap / Cordova / Ionic
 
 官方地址：[https://github.com/jpush/jpush-phonegap-plugin](https://github.com/jpush/jpush-phonegap-plugin)
 
