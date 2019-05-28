@@ -84,7 +84,7 @@
 ```
 
 ![](image/eventdetails1.png)
-
+![](image/eventdetails2.png)
 
 
 ## 圈选事件类型范围说明
