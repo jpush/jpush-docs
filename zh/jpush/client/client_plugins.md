@@ -53,7 +53,8 @@
 
 用 C# 创建 Android, iOS, Mac, Windows 应用。
 
-+ 文章：[将 JPush（java 库）集成到 xamarin 工程中](http://smilehyh.blog.163.com/blog/static/123343886201362110857402/)
++ 代码：开源在 Github 上 - [基于 Xamarin 极光推送示例](https://github.com/gruan01/Xamarin-Example/tree/master/Notification)
++ 文章：[Xamarin 使用极光推送 详细教程](https://www.cnblogs.com/KendoCross/p/4488706.html)
 
 ### 技术支持
 
