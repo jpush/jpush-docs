@@ -603,7 +603,7 @@ JPush SDK 提供的 API 接口，都主要集中在 cn.jpush.android.api.JPushIn
 ```
 [JPushInterface] action:init
 .......
-[PushService] Login succeed!
+[ConnectingHelper] Login succeed
 ```
 
 如图所示，客户端启动分为 4 步：
