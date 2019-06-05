@@ -156,6 +156,11 @@
       <td>群聊会话群组ID无效</td>
     </tr>
     <tr>
+      <td>866005</td>
+      <td>This conversation has no avatar</td>
+      <td>获取群聊会话头像失败</td>
+    </tr>
+    <tr>
       <td>867001</td>
       <td>GroupId is invalid</td>
       <td>无效的群组ID</td>
