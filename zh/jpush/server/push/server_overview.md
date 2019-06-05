@@ -160,7 +160,7 @@ JPush API 对访问次数，具有频率控制。即一定的时间窗口内，A
 	   }
 	}
 
-如果您的应用被加入黑名单，请发邮件到 [support&#64;jpush.cn](mailto:support&#64;jpush.cn) 以进一步沟通协调。
+如果您的应用被加入黑名单，请发邮件到 [support&#64;jpush.cn](mailto:support@jpush.cn) 以进一步沟通协调。
 
 ## 参考
 
