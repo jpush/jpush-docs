@@ -34,7 +34,6 @@
       <td>Network result is invalid</td>
       <td>服务器端返回的数据非预期</td>
     </tr>
-    
     <tr>
       <td>861004</td>
       <td>DB Migrating failed</td>
