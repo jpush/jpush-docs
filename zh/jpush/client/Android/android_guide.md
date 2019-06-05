@@ -146,7 +146,9 @@
                  <intent-filter>
                      <action android:name="cn.jiguang.user.service.action" />
                  </intent-filter>
-         </service>        
+         </service>    
+         
+      ***注*** : **从JPush3.0.7开始，需要配置继承JPushMessageReceiver的广播，原来如果配了MyReceiver现在可以弃用。示例如下。
 
          <!-- Required since 3.0.7 -->
          <!-- 新的 tag/alias 接口结果返回需要开发者配置一个自定的广播 -->
@@ -414,7 +416,8 @@ defaultConfig {
         </receiver>
 
         <!-- User defined. 用户自定义的广播接收器-->
-        <!--3.3.0开始可以通过继承 JPushMessageReceiver并配置来接收所有事件回调，这样将不再使用此处自定义方式回调；建议开发者都是用新的JPushMessageReceiver方式进行。-->
+        <!-- 这是3.3.0之前版本的接收方式，3.3.0开始是通过继承 JPushMessageReceiver并配置来接收所有事件回调。>
+        <!-- 如果仍然需要在这个Receiver里接收，需要在JPushMessageReceiver 的子类里不重写对应的回调方法，或者重写方法且调用super-->
          <receiver
              android:name="您自己定义的 Receiver"
              android:enabled="true"

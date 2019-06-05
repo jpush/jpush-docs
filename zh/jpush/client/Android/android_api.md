@@ -167,7 +167,11 @@ JPush SDK 提供的推送服务是默认开启的。
 
 开始的版本：最初。
 
-**注：** 3.3.0开始提供[新的消息回调方式](https://docs.jiguang.cn/jpush/client/Android/android_api/#_66)，如采用新的回调方式进行处理，将不再回调该类。具体请参考新的消息回调方式。
+**注：** 3.3.0开始使用[新的消息回调方式](https://docs.jiguang.cn/jpush/client/Android/android_api/#_66)
+如果你依然需要在这个Receiver里接收到回调，则使用新的回调方式以后，不重写对应回调的方法，或者重写回调方法且调用super方法
+如果你不需要在这个Receiver接收，则使用新的回调方式，然后重写对应回调方法，不调用super方法。
+具体请参考新的消息回调方式。
+
 
 ### 功能说明
 
@@ -824,7 +828,10 @@ JPush 服务的连接状态发生变化。（注：不是指 Android 系统的�
 1. 新的消息回调方式中相关回调类。
 2. 新的 tag 与 alias 操作回调会在开发者定义的该类的子类中触发。
 3. 手机号码设置的回调会在开发者定义的该类的子类中触发。
-4. 3.3.0 版本开始，通过该类进行事件处理之后，原来通过自定义 Receiver 接收的事件，将不再回调给自定义 Receiver，而是回调到JPushMessageReceiver，否则，还是回调到自定义  Receiver。
+4. 新回调方式与旧的自定义Receiver兼容：  
+配置了此Receiver以后，默认是也会发广播给旧Receiver的  
+对于onMessage、onNotifyMessageArrived、onNotifyMessageOpened、onMultiActionClicked  
+如果重写了这些方法，则需要调用super才会发给旧Receiver  
 
 该类为回调父类，开发者需要继承该类并[在 Manifest 中配置](https://docs.jiguang.cn/jpush/client/Android/android_guide/#_5)您对应实现的类，接口操作的结果会在您配置的类中的如下方法中回调。
 
@@ -989,7 +996,11 @@ alias 相关的操作会在此方法中回调结果。
 
 ####  支持的版本
 
-开始支持的版本：3.3.0
+开始支持的版本：3.3.0  
+*** 说明 *** 
+如果需要在旧版本的Receiver接收cn.jpush.android.intent.MESSAGE_RECEIVED广播  
+可以不重写此方法，或者重写此方法且调用super.onMessage  
+如果重写此方法，没有调用super，则不会发送  
 
 #### 方法定义
 
@@ -1008,7 +1019,11 @@ alias 相关的操作会在此方法中回调结果。
 
 ####  支持的版本
 
-开始支持的版本：3.3.0
+开始支持的版本：3.3.0  
+*** 说明 *** 
+如果需要在旧版本的Receiver接收cn.jpush.android.intent.NOTIFICATION_RECEIVED广播  
+可以不重写此方法，或者重写此方法且调用super.onNotifyMessageArrived  
+如果重写此方法，没有调用super，则不会发送  
 
 #### 方法定义
 
@@ -1027,7 +1042,11 @@ alias 相关的操作会在此方法中回调结果。
 
 ####  支持的版本
 
-开始支持的版本：3.3.0
+开始支持的版本：3.3.0  
+*** 说明 *** 
+如果需要在旧版本的Receiver接收cn.jpush.android.intent.NOTIFICATION_OPENED广播  
+可以不重写此方法，或者重写此方法且调用super.onNotifyMessageOpened  
+如果重写此方法，没有调用super，则不会发送  
 
 #### 方法定义
 
