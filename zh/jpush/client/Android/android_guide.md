@@ -129,7 +129,7 @@
         dependencies {
             ......
 
-            compile 'cn.jiguang.sdk:jpush:3.3.1'  // 此处以JPush 3.3.1 版本为例。
+            compile 'cn.jiguang.sdk:jpush:3.3.2'  // 此处以JPush 3.3.2 版本为例。
             compile 'cn.jiguang.sdk:jcore:2.0.1'  // 此处以JCore 2.0.1 版本为例。
             ......
         }
