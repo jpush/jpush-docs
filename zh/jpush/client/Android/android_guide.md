@@ -648,7 +648,7 @@ JPush SDK 为了尽可能提高开发者在国外设备的推送送达率，对�
 
 + 请仔细阅读文档，查看是否有遗漏。 [Android FAQ](../Android/android_faq/)
 + 你可以到极光社区搜索类似问题
-+ 给我们的 support 发邮件 [support&#64;jpush.cn](mailto:support&#64;jpush.cn)
++ 给我们的 support 发邮件 [support&@jpush.cn](mailto:support@jpush.cn)
 
 为了更快速的解决问题，在寻求帮助时，请提供下列信息：
 
