@@ -1000,7 +1000,7 @@ alias 相关的操作会在此方法中回调结果。
 *** 说明 *** 
 如果需要在旧版本的Receiver接收cn.jpush.android.intent.MESSAGE_RECEIVED广播  
 可以不重写此方法，或者重写此方法且调用super.onMessage  
-如果重写此方法，没有调用super，则不会发送  
+如果重写此方法，没有调用super，则不会发送广播到旧版本Receiver  
 
 #### 方法定义
 
@@ -1023,7 +1023,7 @@ alias 相关的操作会在此方法中回调结果。
 *** 说明 *** 
 如果需要在旧版本的Receiver接收cn.jpush.android.intent.NOTIFICATION_RECEIVED广播  
 可以不重写此方法，或者重写此方法且调用super.onNotifyMessageArrived  
-如果重写此方法，没有调用super，则不会发送  
+如果重写此方法，没有调用super，则不会发送广播到旧版本Receiver  
 
 #### 方法定义
 
@@ -1046,7 +1046,7 @@ alias 相关的操作会在此方法中回调结果。
 *** 说明 *** 
 如果需要在旧版本的Receiver接收cn.jpush.android.intent.NOTIFICATION_OPENED广播  
 可以不重写此方法，或者重写此方法且调用super.onNotifyMessageOpened  
-如果重写此方法，没有调用super，则不会发送  
+如果重写此方法，没有调用super，则不会发送广播到旧版本Receiver    
 
 #### 方法定义
 
@@ -1140,6 +1140,34 @@ alias 相关的操作会在此方法中回调结果。
 	+ 应用的 Application Context。
 + CmdMessage
 	+ 错误信息
+
+
+### Method - onMultiActionClicked
+
+通知的MultiAction回调
+
+####  支持的版本
+
+开始支持的版本：3.3.2  
+*** 说明 *** 
+如果需要在旧版本的Receiver接收cn.jpush.android.intent.NOTIFICATION_CLICK_ACTION广播  
+可以不重写此方法，或者重写此方法且调用super.onMultiActionClicked  
+如果重写此方法，没有调用super，则不会发送广播到旧版本Receiver  
+
+
+#### 方法定义
+
+	 public void onMultiActionClicked(Context context,Intent intent)
+
+#### 参数定义
+
++ context
+	+ 应用的 Application Context。
++ intent
+	+ 点击后触发的Intent	
+	
+***说明*** 注意这个方法里面禁止再调super.onMultiActionClicked,因为会导致逻辑混乱
+
 
 ## 老别名 alias 与标签 tag 接口
 1.5.0 ～ 3.0.6 版本提供的别名与标签接口都是覆盖的逻辑，从 3.0.7 版本开始不再维护（但仍会继续保留）。建议开发者使用 3.0.7 开始提供的新 tag、alias 接口。
@@ -2027,3 +2055,16 @@ public static void setMaxGeofenceNumber(Context context, int maxNumber)
 #### 参数说明
 + context 是应用的 ApplicationContext
 + maxNumber 最多允许保存的地理围栏个数
+
+### API  deleteGeofence 
+#### 功能说明
+删除指定id的地理围栏
+
+#### 接口定义
+```
+public static void deleteGeofence(Context context, String geofenceid)
+```
+
+#### 参数说明
++ context 是应用的 ApplicationContext
++ geofenceid 地理围栏的id

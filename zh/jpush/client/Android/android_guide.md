@@ -274,7 +274,6 @@ defaultConfig {
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
     <!-- Optional. Required for location feature -->
@@ -509,10 +508,6 @@ defaultConfig {
     <tr >
       <td>READ_EXTERNAL_STORAGE</td>
       <td>允许应用读取外部存储。</td>
-    </tr>
-    <tr >
-      <td>WRITE_SETTINGS</td>
-      <td>允许应用读写系统设置项。</td>
     </tr>
     <tr >
       <td>VIBRATE</td>
