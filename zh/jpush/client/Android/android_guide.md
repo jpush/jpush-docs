@@ -510,6 +510,10 @@ defaultConfig {
       <td>允许应用读取外部存储。</td>
     </tr>
     <tr >
+      <td>WRITE_SETTINGS</td>
+      <td>允许应用读取系统设置项。 该权限从 JPush 3.3.2 版本开始变为可选权限，在 3.3.2 前版本为必须权限。</td>
+    </tr>
+    <tr >
       <td>VIBRATE</td>
       <td>允许应用震动。 该权限从 JPush 3.1.5 版本开始变为可选权限，在 3.1.5 前版本为必须权限。</td>
     </tr>
