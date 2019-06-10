@@ -3,6 +3,10 @@
 ## 使用提示
 本文是 JIoT Android SDK 标准的集成指南文档。用以指导 SDK 的使用方法，默认读者已经熟悉 Android Studio 的基本使用方法，以及具有一定的 Android 编程知识基础。
 本篇指南匹配的 JIoT Android SDK 版本为：1.0.0 及以后版本。
+
+## Android 系统版本支持
+支持  Android 4.0 及以上版本。
+
 ## jiot-android-1.0.0-release.tar.gz 集成压缩包内容
 
 * libs/jiot-android-1.x.x.jar
