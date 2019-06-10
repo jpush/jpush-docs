@@ -174,7 +174,32 @@
     }];
 ~~~
 
-##SDK请求授权一键登录
+##SDK请求授权一键登录（新）
+
+###支持的版本
+开始支持的版本 2.3.0
+
++ **+ (void)getAuthorizationWithController:(UIViewController *)vc hide:(BOOL)hide completion:(void (^)(NSDictionary *result))completion**
+
+    + 接口说明:
+        + 授权一键登录
+    + 参数说明:
+        + completion 登录结果
+        + result 字典 获取到token时key有operator、code、loginToken字段，获取不到token是key为code和content字段
+        + vc 当前控制器
+        + hide 完成后是否自动隐藏授权页，默认YES。若此字段设置为NO，请在收到一键登录回调后调用SDK提供的关闭授权页面方法。
+
+    + 调用示例:
+
+~~~
+    [JVERIFICATIONService getAuthorizationWithController:self hide:YES completion:^(NSDictionary *result) {
+        NSLog(@"一键登录 result:%@", result);
+    }];
+~~~
+
+***说明***：获取到一键登录的loginToken后，将其返回给应用服务端，从服务端调用[REST API](https://docs.jiguang.cn/jverification/server/rest_api/loginTokenVerify_api/)来获取手机号码
+
+##SDK请求授权一键登录（旧）
 
 ###支持的版本
 开始支持的版本 2.0.0
@@ -198,7 +223,21 @@
     }];
 ~~~
 
-***说明***：获取到一键登录的loginToken后，将其返回给应用服务端，从服务端调用[REST API](https://docs.jiguang.cn/jverification/server/rest_api/loginTokenVerify_api/)来获取手机号码
+##SDK关闭授权页面
+
+###支持的版本
+开始支持的版本 2.3.0
+
++ **+ (void)dismissLoginController;**
+
+    + 接口说明:
+        + 关闭授权页
+
+    + 调用示例:
+
+~~~
+    [JVERIFICATIONService dismissLoginController];
+~~~
 
 ##SDK自定义授权页面UI样式
 
