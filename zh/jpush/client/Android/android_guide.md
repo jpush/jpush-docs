@@ -378,7 +378,7 @@ defaultConfig {
             </intent-filter>
         </activity>
 
-        <!-- Required SDK 核心功能-->
+        <!-- 注意此配置在 JPush 3.2.0 及以前版本是必须配置，3.2.0 以后版本已废弃此配置-->
         <service
             android:name="cn.jpush.android.service.DownloadService"
             android:enabled="true"
