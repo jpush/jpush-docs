@@ -34,7 +34,6 @@
       <td>Network result is invalid</td>
       <td>服务器端返回的数据非预期</td>
     </tr>
-    
     <tr>
       <td>861004</td>
       <td>DB Migrating failed</td>
@@ -154,6 +153,11 @@
       <td>866003</td>
       <td>Conversation groupId is invalid</td>
       <td>群聊会话群组ID无效</td>
+    </tr>
+    <tr>
+      <td>866005</td>
+      <td>This conversation has no avatar</td>
+      <td>获取群聊会话头像失败</td>
     </tr>
     <tr>
       <td>867001</td>
