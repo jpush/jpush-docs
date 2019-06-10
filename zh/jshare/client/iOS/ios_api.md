@@ -153,7 +153,8 @@ text | 是 | NSString|分享文本|不超过10KB
 参数 |是否必须|参数类型|参数说明|备注
 ---- |-----|----|----|----
 mediaType | 是| NS_ENUM | 分享类型| JSHAREImage
-image| 否 | NSData|图片|大小不能超过 10M，
+title| 否 | NSString|标题|长度不能超过 512
+image| 是 | NSData|图片|大小不能超过 10M，
 ```
     NSString *imageURL = @"http://img2.3lian.com/2014/f5/63/d/23.jpg";
     NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:imageURL]];
@@ -169,7 +170,7 @@ title| 否 | NSString|音乐标题|长度不能超过 512
 text| 否 | NSString|音乐描述|长度不能超过 1K
 mediaDataUrl| 否 | NSString |音乐资源 Url |点击播放按钮可直接播放 url ,长度不能超过 10K
 Url| 是 | String|跳转Url|点击跳转页面 url,长度不能超过 10K
-thumbnail | 否 | NSDate|缩略图|大小不能超过 32K,
+thumbnail | 否 | NSData|缩略图|大小不能超过 32K,
 ```
     message.mediaType = JSHAREAudio;
     message.url =  @"https://y.qq.com/n/yqq/song/003RCA7t0y6du5.html";
@@ -215,7 +216,7 @@ thumbnail| 否 | NSDate|缩略图|不超过32K，当分享JSHARELink类型时没
 参数 |是否必须|参数类型|参数说明|备注
 ---- |-----|----|----|----
 mediaType | 是| NS_ENUM | 分享类型| JSHAREEmoticon
-emoticonData | 否 | NSData|表情|大小不能超过 10M，
+emoticonData | 是 | NSData|表情|大小不能超过 10M，
 ```
     message.mediaType = JSHAREEmoticon;
     NSString *filePath = [[NSBundle mainBundle] pathForResource:@"res6" ofType:@"gif"];
@@ -228,7 +229,7 @@ emoticonData | 否 | NSData|表情|大小不能超过 10M，
 ---- |-----|----|----|----
 mediaType | 是| NS_ENUM | 分享类型| JSHAREFile
 fileData| 是 | NSData|文件的数据|大小不能超过10M
-fileExt| 是 | NSString|文件后缀名|最大 64 字符
+fileExt| 否 | NSString|文件后缀名|最大 64 字符
 ```
     message.mediaType = JSHAREFile;
     NSString *filePath = [[NSBundle mainBundle] pathForResource:@"jiguang" ofType:@"mp4"];
@@ -257,13 +258,39 @@ fileData | 否 | NSData|对应APP的数据| 大小不能超过10M
     message.platform = platform;
 ```
 
+#### 9）分享小程序（仅支持分享到微信会话）
+参数 |是否必须|参数类型|参数说明|备注
+---- |-----|----|----|----
+mediaType | 是| NS_ENUM | 分享类型| JSHAREMiniProgram
+title| 是 | NSString|小程序title|长度不能超过 512
+text| 否 | NSString|小程序描述|长度不能超过 1K
+Url| 是 | NSString|兼容微信低版本网页地址|长度不能超过10k
+userName| 是 | NSString|小程序username |小程序原始ID获取方法：登录小程序管理后台-设置-基本设置-帐号信息
+path | 是 | NSString|小程序页面的路径| 小程序被用户点击后所打开的页面路径
+miniProgramType | 否 | NSString|小程序版本类型| 0正式版，1开发版，2体验版。默认0，正式版。
+withShareTicket | 否| Bool|是否使用带 shareTicket 的转发| 默认false,不使用带 shareTicket 的转发。
+image | 是 | NSData|小程序新版本的预览图| 最大128k
+```
+    message.mediaType = JSHAREMiniProgram;
+    message.title = @"小程序title";
+    message.text = @"小程序描述";
+    message.url = @"www.jiguang.cn";
+    message.userName = @"gh_d43f693ca31f";
+    message.path = @"pages/page";
+    message.miniProgramType = 0;
+    message.withShareTicket = YES;
+    message.image = imageData;
+    message.platform = JSHAREPlatformWechatSession;
+```
+
+
 ### QQ
 #### 1）分享文本
 
 参数 |是否必须|参数类型|参数说明|备注
 ---- |-----|----|----|----
 mediaType | 是| NS_ENUM| 分享类型| JSHAREText
-text | 是 | NSString|分享文本|最大 1536 字符
+text | 是 | NSString|分享文本|最大1536字符
 
 ```
     message.text = @"JShare SDK支持主流社交平台、帮助开发者轻松实现社会化功能！";
@@ -293,7 +320,7 @@ text | 否 | NSString|分享内容的描述|最大 512 字符
 mediaType | 是| NS_ENUM | 分享类型| JSHARELink
 title| 否 | NSString|标题|长度不能超过 128
 text| 否 | NSString|描述|长度不能超过 512
-Url| 是 | NSString|跳转Url|点击跳转页面 url,长度不能超过 512
+Url| 是 | NSString|跳转Url|点击跳转页面 url,长度不能超过 1024
 thumbnail| 否 | NSDate|缩略图|不超过1M，当分享时没有提供缩略图时，若image参数不为空，JSHARE将会裁剪此参数提供的图片去适配缩略图。
 
 ```
@@ -315,7 +342,7 @@ thumbnail| 否 | NSDate|缩略图|不超过1M，当分享时没有提供缩略�
 mediaType | 是| NS_ENUM | 分享类型| JSHAREAudio
 title| 否 | NSString|标题|长度不能超过 128
 text| 否 | NSString|描述|长度不能超过 512
-Url| 是 | NSString|跳转Url|点击跳转页面 url,长度不能超过 512
+Url| 是 | NSString|跳转Url|点击跳转页面 url,长度不能超过 1024
 thumbnail| 否 | NSDate|缩略图|不超过1M，当分享时没有提供缩略图时，若image参数不为空，JSHARE将会裁剪此参数提供的图片去适配缩略图。
 mediaDataUrl| 否 | NSString |音乐资源 Url |点击播放按钮可直接播放 url
 
@@ -332,7 +359,7 @@ mediaDataUrl| 否 | NSString |音乐资源 Url |点击播放按钮可直接播�
 mediaType | 是| NS_ENUM | 分享类型| JSHAREVideo
 title| 否 | NSString|标题|长度不能超过 128
 text| 否 | NSString|描述|长度不能超过 512
-Url| 是 | NSString|跳转Url|点击跳转页面 url,长度不能超过 512
+Url| 是 | NSString|跳转Url|点击跳转页面 url,长度不能超过 1024
 thumbnail| 否 | NSDate|缩略图|不超过1M，当分享时没有提供缩略图时，若image参数不为空，JSHARE将会裁剪此参数提供的图片去适配缩略图。
 
 ```
@@ -347,7 +374,7 @@ thumbnail| 否 | NSDate|缩略图|不超过1M，当分享时没有提供缩略�
 参数 |是否必须|参数类型|参数说明|备注
 ---- |-----|----|----|----
 mediaType | 是| NS_ENUM| 分享类型| JSHAREText
-text | 是 | NSString|分享文本|最大 1536 字符
+text | 是 | NSString|分享文本|最大128字符
 
 ```
     message.text = @"JShare SDK支持主流社交平台、帮助开发者轻松实现社会化功能！";
@@ -446,7 +473,7 @@ videoAssetURL | 是 | NSString| 本地视频AssetURL |分享本地视频到 QQ �
 参数 |是否必须|参数类型|参数说明|备注
 ---- |-----|----|----|----
 mediaType | 是| NS_ENUM| 分享类型| JSHAREText
-text | 是 | NSString|分享文本|不超过 140 字符
+text | 是 | NSString|分享文本|不超过140个中文字符
 
 ```
     message.text = @"JShare SDK支持主流社交平台、帮助开发者轻松实现社会化功能！";
@@ -459,7 +486,7 @@ text | 是 | NSString|分享文本|不超过 140 字符
 ---- |-----|----|----|----
 mediaType | 是| NS_ENUM | 分享类型| JSHAREImage
 image| 是 | NSData|图片|大小不能超过 10 M，
-text | 否 | NSString|分享内容的描述|不超过 140 字符
+text | 否 | NSString|分享内容的描述|不超过140个中文字符
 ```
     NSString *imageURL = @"http://img2.3lian.com/2014/f5/63/d/23.jpg";
     NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:imageURL]];
@@ -473,9 +500,9 @@ text | 否 | NSString|分享内容的描述|不超过 140 字符
 ---- |-----|----|----|----
 mediaType | 是| NS_ENUM | 分享类型| JSHARELink
 title| 否 | NSString|标题|长度不能超过 1 K
-text| 否 | NSString|描述|长度不能超过 140 字符
-Url| 是 | NSString|跳转Url|最大 512 字符。
-thumbnail| 否 | NSDate|缩略图|大小小于32k，当分享没有提供缩略图时，若image参数不为空，JSHARE将会裁剪此参数提供的图片去适配缩略图。
+text| 否 | NSString|描述|长度不能超过 140个中文字符
+Url| 是 | NSString|跳转Url|最大 255 字符。
+thumbnail| 否 | NSData|缩略图|小于32k，当分享没有提供缩略图时，若image参数不为空，JSHARE将会裁剪此参数提供的图片去适配缩略图。当最终未获得缩略图时，可能导致链接在客户端上无法正常跳转。建议填写。
 
 ```
 	 message.mediaType = JSHARELink;
@@ -496,8 +523,8 @@ thumbnail| 否 | NSDate|缩略图|大小小于32k，当分享没有提供缩略�
 ---- |-----|----|----|----
 mediaType | 是| NS_ENUM | 分享类型| JSHARELink
 title| 否 | NSString|标题|长度不能超过 1 K，且不为空
-text| 否 | NSString|描述|长度不能超过 1 K
-Url| 是 | NSString|跳转Url|最大 512 字符。
+text| 否 | NSString|描述|长度不能超过 140个中文字符
+Url| 是 | NSString|跳转Url|最大 255 字符。
 thumbnail| 否 | NSDate|缩略图|大小小于32k，当分享没有提供缩略图时，若image参数不为空，JSHARE将会裁剪此参数提供的图片去适配缩略图。
 ```
     message.mediaType = JSHARELink;
@@ -514,19 +541,7 @@ thumbnail| 否 | NSDate|缩略图|大小小于32k，当分享没有提供缩略�
 
 ### Facebook, Facebook Messenger
 
-#### 1）分享文本 (Messenger 不支持)
-
-参数 |是否必须|参数类型|参数说明|备注
----- |-----|----|----|----
-mediaType | 是| NS_ENUM| 分享类型| JSHAREText
-text | 是 | NSString|分享文本|
-
-```
-    message.text = @"JShare SDK支持主流社交平台、帮助开发者轻松实现社会化功能！";
-    message.platform = platform;
-    message.mediaType = JSHAREText;
-```
-#### 2)分享图片
+#### 1)分享图片
 
 参数 |是否必须|参数类型|参数说明|备注
 ---- |-----|----|----|----
@@ -541,7 +556,7 @@ text | 否 | NSString|文本|
     message.platform = platform;
 ```
 
-#### 3）分享视频
+#### 2）分享视频
 参数 |是否必须|参数类型|参数说明|备注
 ---- |-----|----|----|----
 mediaType | 是| NS_ENUM | 分享类型| JSHAREVideo
@@ -554,7 +569,7 @@ videoAssetURL | 是 | NSString | 视频参数 |分享到视频类型至 facebook
     message.platform = platform;
 ```
   
-#### 4)分享链接
+#### 3)分享链接
 参数 |是否必须|参数类型|参数说明|备注
 ---- |-----|----|----|----
 mediaType | 是| NS_ENUM | 分享类型| JSHARELink
@@ -575,7 +590,7 @@ Url| 是 | NSString|跳转Url|分享点击跳转的 url
 参数 |是否必须|参数类型|参数说明|备注
 ---- |-----|----|----|----
 mediaType | 是| NS_ENUM| 分享类型| JSHAREText
-text | 是 | NSString|分享文本|
+text | 是 | NSString|分享文本| 不超过140个中文字符
 
 ```
     message.text = @"JShare SDK支持主流社交平台、帮助开发者轻松实现社会化功能！";
@@ -688,7 +703,7 @@ appName | 否 | NSString|第三方客户端应用名称|
 #### 3）分享图文
 参数 |是否必须|参数类型|参数说明|备注
 ---- |-----|----|----|----
-mediaType | 是| NS_ENUM | 分享类型| JSHARGraphic
+mediaType | 是| NS_ENUM | 分享类型| JSHAREGraphic
 thumbUrl| 否 | NSString|图片|网络缩略图地址
 image| 否 | NSData|图片|分享单张图片，暂无限制。
 images| 否| NSArray|图片|分享多张图片用images ，图片数组的元素需要为 NSData 类型，图片数量限制为9张。
@@ -702,7 +717,7 @@ className | 否 | NSString|点击消息时跳转第三方android客户端的类�
 appName | 否 | NSString|第三方客户端应用名称|
 
 ```    
-    message.mediaType = JSHARGraphic;
+    message.mediaType = JSHAREGraphic;
     message.platform = JSHAREPlatformJChatPro;
     message.text = @"欢迎使用极光社会化组件 JShare，SDK 包体积小，集成简单，支持主流社交平台、帮助开发者轻松实现社会化功能";
     message.title = @"极光社会化组件";
