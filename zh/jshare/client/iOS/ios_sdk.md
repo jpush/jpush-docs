@@ -147,7 +147,7 @@ JSHAREMessage *message = [JSHAREMessage message];
 ```
 - (IBAction)shareGraphic:(id)sender {
     JSHAREMessage *message = [JSHAREMessage message];
-    message.mediaType = JSHARGraphic;
+    message.mediaType = JSHAREGraphic;
     message.url = @"http://tech.qq.com/zt2012/tmtdecode/252.htm";
     message.text = @"欢迎使用极光社会化组件 JShare，SDK 包体积小，集成简单，支持主流社交平台、帮助开发者轻松实现社会化功能";
     message.title = @"极光社会化组件";
