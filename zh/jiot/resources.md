@@ -53,7 +53,7 @@
                     <li><a href="../client/android_sdk_guide">集成指南</a></li>
                     <li><a href="../client/android_sdk_api">接口说明文档</a></li>
                 </ul>
-                <p><a href="https://sdkfiledl.jiguang.cn/public/jiot-android-1.0.0-release.tar.gz" class="btn btn-default" role="button">下载</a></p>
+                <p><a href="https://www.jiguang.cn/downloads/sdk/iot_android" class="btn btn-default" role="button">下载</a></p>
             </div>
         </div>
     </div>
