@@ -40,7 +40,7 @@
 + 如果需要安装指定版本则使用以下方式（以2.2.0版本为例）：
 
 ~~~
-    pod 'JVerification', '2.2.0'
+    pod 'JVerification', '2.3.0'
 ~~~
 
 **选择 2：手动导入**
@@ -48,8 +48,8 @@
 + 在极光官网下载最新 SDK
 + 请在自己的工程中导入libs文件夹下的SDK文件:
 
-    * jcore-ios-2.0.0.a  jcore版本 1.2.3及其以上
-    * jverification-ios-2.2.0.a jverification版本 2.0.0及其以上
+    * jcore-ios-2.0.2.a  jcore版本 1.2.3及其以上
+    * jverification-ios-2.3.0.a jverification版本 2.0.0及其以上
     * account_verify_sdk_core.framework
     * account_login_sdk_noui_core.framework
     * TYRZSDK.framework
@@ -75,8 +75,8 @@
     * TYRZSDK.framework
     * account_login_sdk_noui_core.framework
     * EAccountApiSDK.framework
-    * jcore-ios-2.0.0.a  jcore版本 1.2.3及其以上
-    * jverification-ios-2.2.0.a jverification版本 2.0.0及其以上
+    * jcore-ios-2.0.2.a  jcore版本 1.2.3及其以上
+    * jverification-ios-2.3.0.a jverification版本 2.0.0及其以上
     
 
 ##配置资源

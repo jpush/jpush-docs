@@ -196,7 +196,42 @@
         });
 ~~~
 
-##SDK请求授权一键登录
+##SDK请求授权一键登录（新）
+
+### 支持的版本
+开始支持的版本 2.3.0
+
+### 接口的定义
++ ***JVerificationInterface.loginAuth(final Context context, boolean autoFinish, final VerifyListener listener)***
+	+ 接口说明：
+		+ 调起一键登录授权页面，在用户授权后获取loginToken
+	+ 参数说明：
+		+ context：android的上下文
+		+ boolean：是否自动关闭授权页，true - 是，false - 否；若此字段设置为false，请在收到一键登录回调后调用SDK提供的关闭授权页面方法。
+		+ listener：接口回调
+    + 回调说明：
+    ***onResult(int code, String  content, String operator)***
+        + code: 返回码，6000代表loginToken获取成功，6001代表loginToken获取失败，其他返回码详见描述
+        + content：返回码的解释信息，若获取成功，内容信息代表loginToken。
+        + operator：成功时为对应运营商，CM代表中国移动，CU代表中国联通，CT代表中国电信。失败时可能为null
+	+ 调用示例：
+
+~~~
+	JVerificationInterface.loginAuth(this, false, new VerifyListener() {
+         @Override
+              public void onResult(int code, String content, String operator) {
+                 if (code == 6000){
+                    Log.d(TAG, "code=" + code + ", token=" + content+" ,operator="+operator);
+                }else{
+                    Log.d(TAG, "code=" + code + ", message=" + content);
+                }
+              }
+          });
+~~~
+
+***说明***：获取到一键登录的loginToken后，将其返回给应用服务端，从服务端调用[REST API](https://docs.jiguang.cn/jverification/server/rest_api/loginTokenVerify_api/)来获取手机号码
+
+##SDK请求授权一键登录（旧）
 
 ### 支持的版本
 开始支持的版本 2.0.0
@@ -228,7 +263,20 @@
           });
 ~~~
 
-***说明***：获取到一键登录的loginToken后，将其返回给应用服务端，从服务端调用[REST API](https://docs.jiguang.cn/jverification/server/rest_api/loginTokenVerify_api/)来获取手机号码
+##SDK关闭授权页面
+
+### 支持的版本
+开始支持的版本 2.3.0
+
+### 接口的定义
++ ***JVerificationInterface.dismissLoginAuthActivity()***
+	+ 接口说明：
+		+ 关闭登录授权页，如果当前授权正在进行，则loginAuth接口会立即触发6002取消回调。
+	+ 调用示例：
+
+~~~
+	JVerificationInterface.dismissLoginAuthActivity();
+~~~
 
 ##SDK自定义授权页面UI样式
 

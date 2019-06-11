@@ -1,5 +1,37 @@
 #最近更新
 
+##JVerification Android SDK v2.3.0
+
+**更新时间**
+
+* 2019-06-11
+
+**Change Log**
+
+* 新增一键登录接口，可设置参数是否自动关闭授权页面
+* 新增关闭授权页面接口
+
+**升级建议**
+
+* 建议升级
+
+**升级指南**
+
++ 首先解压您获取到的zip压缩包
+
++ 更新库文件
+    + 打开libs文件夹
+    + 用jverification-android-v2.3.0.jar 替换项目中原有的极光认证sdk的jar文件
+    + 用jcore-android-v2.x.x.jar 替换项目中原有的极光jcore的jar文件
+    + 用对应CPU文件夹下的 libjcore2xy.so文件，替换项目中原有的极光so文件
+    + 用对应CPU文件夹下的 libCtaApiLib.so文件，添加到项目中
+
++ 更新AndroidManifest.xml
+    + 压缩包根目录下有示例 AndroidManifest 文件，请对照示例更新和JVerification相关的组件属性，permission 等配置，并在中文提示的位置替换你的包名和 appKey
+
++ 拷贝SDK所必须的资源文件
+    + 压缩包根目录下有res文件夹，将该文件夹下的所有文件复制到项目res下面对应的文件夹中
+
 ##JVerification iOS SDK v2.3.0
 
 **更新时间**
@@ -91,7 +123,7 @@
 
 + 更新库文件
     + 打开libs文件夹
-    + 用jverification-android-v2.1.1.jar 替换项目中原有的极光认证sdk的jar文件
+    + 用jverification-android-v2.2.0.jar 替换项目中原有的极光认证sdk的jar文件
     + 用jcore-android-v2.x.x.jar 替换项目中原有的极光jcore的jar文件
     + 用对应CPU文件夹下的 libjcore2xy.so文件，替换项目中原有的极光so文件
     + 用对应CPU文件夹下的 libCtaApiLib.so文件，添加到项目中
