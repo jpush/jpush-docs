@@ -12,33 +12,45 @@ Click the [Create Application] button;
 #### Configure application information：
 
 Step 1: Basic information: enter the application name (required), and upload an icon;
-Configure android platform information: after filling in the application package name, JPush system will generate the pushed Android application Demo in the background according to the package name you entered. The Demo will contain the configuration information.
+![jpush_web](image/create_application_step1.png)
 
-Step 2: Configure iOS platform information: upload the push certificate of relevant environment and fill in the password matching the certificate；
+Step 2: Configure android platform information: after filling in the application package name, JPush system will generate the pushed Android application Demo in the background according to the package name you entered. The Demo will contain the configuration information.
+![jpush_web](image/create_application_step2.png)
 
-Step 3: Configure WinPhone platform information: select whether to open it
-![jpush_web](image/setting_application.png)
+Step 3: Configure iOS platform information: upload the push certificate of relevant environment and fill in the password matching the certificate；
+![jpush_web](image/create_application_step3.png)
 
-Step 4:  After the information is configured, check the application information as follows
+Step 4: Configure WinPhone platform information: select whether to open it
+![jpush_web](image/create_application_step4.png)
+
+Step 5:  After the information is configured, check the application information as follows
 ![jpush_web](image/info_application.png)
 
 ## Application Management
 
 Click [home] to return to the home page, you can browse all the application information. Click on the application name or settings to view the application details, click on the push to go to the send notification page, edit and push the notification. Click on the statistics, you can view all the statistics of the application ;
+![jpush_web](image/manage_application_01.png)  
+
+![jpush_web](image/manage_application.png)  
+
 Application details are as follows
-![jpush_web](image/manage_application.png)
+![jpush_web](image/info_application.png) 
 
 Application settings are as follows：
-![jpush_web](image/application_moreinfo.png)
+![jpush_web](image/application_moresetting.png)
 
 ## Group Management
 
 After clicking [home] to return to the home page, click [Group Management] in the left navigation to browse the application's group management information and create a new group;
+![jpush_web](image/manage_application_01.png)  
+ 
 ![jpush_web](image/group_application.png)
 
 ## Report Download
 After clicking [home] to return to the home page, click [Report download] at the left navigation center to download the report according to the time.
-![jpush_web](image/send_notification.png)
+![jpush_web](image/manage_application_01.png)  
+ 
+![jpush_web](image/data_application.png)
 
 ## Send Notification
 Path: Select Application -> Push -> Send Notification
@@ -67,7 +79,7 @@ Step1: Path: Select Application -> Push -> Rich Media Messages -> Templates -> l
 ![jpush_web](image/landingpage_1.png)
 
 Step2: Enter the editing page of template content, fill in all the contents, preview the display effect of on the left, then click [Next]
-![jpush_web](image/landingpage_1.png)
+![jpush_web](image/landingpage_2.png)
 
 Step3: Click [Preview Rich Media Page] to preview the landing page template that has just been edited; click the [Send Now] button at the bottom of the page to complete the pushing of the landing page.
 ![jpush_web](image/landingpage_3.png)
@@ -95,14 +107,11 @@ Step3：Click [Preview Rich Media Page] to preview the popup template that has j
 ![jpush_web](image/informationflow_3.png)
 
 ## Send notifications via URL
-Step1: Path: Select Application -> Push -> Rich Media Message -> URL
+Step1: Path: Select Application -> Push -> Rich Media Message -> URL, and click the [Next] button. Since the size of the notification is limited, the URL cannot be too long. If the URL exceeds the limit length, please convert it into a short address and enter it again;
 ![jpush_web](image/url_1.png)
 
-Step2: Input the URL of the page to be pushed, and click the [Next] button. Since the size of the notification is limited, the URL cannot be too long. If the URL exceeds the limit length, please convert it into a short address and enter it again;
-![image](image/url_2.png)
-
-Step3: URL does not provide page preview function. Please make sure to enter the correct URL. Click the [Send Now] button at the bottom of the page to complete the URL push
-![jpush_web](image/url_3.png)
+Step2: URL does not provide page preview function. Please make sure to enter the correct URL. Click the [Send Now] button at the bottom of the page to complete the URL push
+![jpush_web](image/url_2.png)
 
 ## Push History
 
@@ -160,7 +169,7 @@ JPush statistics include: push statistics, user statistics, API statistics, acti
 You can select the statistical time range in the upper right corner of the report, or you can customize the query range. The specific statistics period is shown in the figure below. The unit size is: hour, day, month.
 Example: If you select "yesterday",
 The data presented in the report is in units of hours; if you select “Last 7 days”, the data presented in the report is in days.
-![jpush_web](image/statistics_1.png)
+![jpush_web](image/statistics_time.png)
 
 ## Statistical Description
 
