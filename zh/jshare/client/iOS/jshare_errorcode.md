@@ -134,33 +134,33 @@
     </tr>
     <tr>
       <td>41014</td>
-      <td>image is empty</td>
-      <td>图片参数为空</td>
+      <td>image is nil</td>
+      <td>图片参数为nil</td>
     </tr>
     <tr>
       <td>41015</td>
-      <td>audio url is empty</td>
-      <td>音频 url 参数为空</td>
+      <td>audio url is nil</td>
+      <td>音频 url 参数为nil</td>
     </tr>
     <tr>
       <td>41016</td>
-      <td>video url is empty</td>
-      <td>视频 url 参数为空</td>
+      <td>video url is nil</td>
+      <td>视频 url 参数为nil</td>
     </tr>
     <tr>
       <td>41017</td>
-      <td>app url is empty</td>
-      <td>app Url 参数为空</td>
+      <td>app url is nil</td>
+      <td>app Url 参数为nil</td>
     </tr>
     <tr>
       <td>41018</td>
-      <td>emotion is empty</td>
-      <td>emotion 参数为空</td>
+      <td>emotion is nil</td>
+      <td>emotion 参数为nil</td>
     </tr>
     <tr>
       <td>41019</td>
-      <td>file is empty</td>
-      <td>文件参数为空</td>
+      <td>file is nil</td>
+      <td>文件参数为nil</td>
     </tr>
     <tr>
       <td>41020</td>
@@ -169,13 +169,13 @@
     </tr>
     <tr>
       <td>41021</td>
-      <td>url is empty</td>
-      <td>Url 参数为空</td>
+      <td>url is nil</td>
+      <td>Url 参数为nil</td>
     </tr>
         <tr>
       <td>41022</td>
-      <td>text is empty	</td>
-      <td>文本参数为空</td>
+      <td>text is nil	</td>
+      <td>文本参数为nil</td>
     </tr>
         <tr>
       <td>41023</td>
@@ -189,8 +189,8 @@
     </tr>
         <tr>
       <td>41025</td>
-      <td>title is empty</td>
-      <td>title 为空</td>
+      <td>title is nil</td>
+      <td>title 参数为nil</td>
     </tr>
         <tr>
       <td>41026</td>
@@ -209,10 +209,35 @@
     </tr>
     <tr>
       <td>41029</td>
-      <td>can't share image and video together</td>
-      <td>不能同时分享图片和视频</td>
+      <td>share image and video together</td>
+      <td>同时分享图片和视频</td>
     </tr>
-        <tr>
+    
+    <tr>
+      <td>41030</td>
+      <td>userName is nil </td>
+      <td>参数username为nil</td>
+    </tr>
+    
+    <tr>
+      <td>41031</td>
+      <td>path is nil </td>
+      <td>参数path为nil</td>
+    </tr>
+    
+    <tr>
+      <td>41032</td>
+      <td>videoData is nil </td>
+      <td>videoData为nil</td>
+    </tr>
+    
+    <tr>
+      <td>41033</td>
+      <td>miniProgramType is invalid</td>
+      <td>无效的miniProgramType</td>
+    </tr>
+    
+    <tr>
       <td>42001</td>
       <td>invalid credential</td>
       <td>不合法的调用凭证</td>

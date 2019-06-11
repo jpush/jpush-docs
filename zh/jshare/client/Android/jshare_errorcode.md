@@ -62,10 +62,15 @@
       <td>shareParams missing</td>
       <td>缺少 shareParams</td>
     </tr>
-        <tr>
+    <tr>
       <td>40012</td>
       <td>platform haven't  configuration</td>
       <td>platform 没配置</td>
+    </tr>
+    <tr>
+      <td>40013</td>
+      <td>appname missing</td>
+      <td>缺失 appname 参数</td>
     </tr>
     <tr>
       <td>41001</td>
@@ -138,6 +143,12 @@
       <td>视频 url 参数为空</td>
     </tr>
     <tr>
+      <td>41017</td>
+      <td>video url is empty</td>
+      <td>视频 path 参数为空</td>
+    </tr>
+
+    <tr>
       <td>41018</td>
       <td>emotion is empty</td>
       <td>emotion 参数为空</td>
@@ -146,6 +157,11 @@
       <td>41019</td>
       <td>file is empty</td>
       <td>文件参数为空</td>
+    </tr>
+    <tr>
+      <td>41019</td>
+      <td>image count out of limit</td>
+      <td>图像计数超出限制</td>
     </tr>
     <tr>
       <td>41021</td>
@@ -189,6 +205,22 @@
       <td>can't share image and video together</td>
       <td>不能同时分享图片和视频</td>
     </tr>
+    <tr>
+      <td>41030</td>
+      <td>Mini Program userName is Empty.</td>
+      <td>userName 参数为空</td>
+    </tr>
+    <tr>
+      <td>41031</td>
+      <td>Mini Program Type Error.</td>
+      <td>小程序类型错误</td>
+    </tr>
+    <tr>
+      <td>41032</td>
+      <td>thumb size out of limit or thumb is null.</td>
+      <td>图片为空或超出限制</td>
+    </tr>
+    
     <tr>
       <td>42001</td>
       <td>invalid credential</td>
