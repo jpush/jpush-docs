@@ -26,7 +26,6 @@
 	- 位置权限配置。
 	- 选择Background Modes配置。 target -> capabilities ->Background Modes 选中Location updates。
 	- 注意registerLbsGeofenceDelegate: withLaunchOptions 方法最好在sdk初始化之前调用。
-	- Info.plist file 文件中加入 NSLocationAlwaysUsageDescription 这个字段的描述，避免上架AppStore被拒
 
 
 ### JPush Android SDK v3.3.2
