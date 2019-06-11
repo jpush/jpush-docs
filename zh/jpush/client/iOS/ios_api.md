@@ -1557,6 +1557,30 @@ iOS 11 以上版本必须有地理位置Always Use 权限，才能生效。
 	[JPUSHService registerLbsGeofenceDelegate:self withLaunchOptions:launchOptions];
 }
 ```
+
+### Method - removeGeofenceWithIdentifier:
+
+调用此 API 删除地理围栏
+
+#### 支持的版本
+
+开始支持的版本：3.2.1
+
+#### 接口定义
+
+    + (void)removeGeofenceWithIdentifier:(NSString *)geofenceId;
+
+#### 参数说明
+
+* geofenceId 
+    * 字符串类型，地理围栏id，创建地理围栏时会产生地理围栏id。
+    
+#### 调用说明
+
+``` 
+[JPUSHService removeGeofenceWithIdentifier:@"geofenceId"];
+```
+
 ### Delegate Method - jpushGeofenceIdentifer:didEnterRegion: error:
 
 用户进入地理围栏区域触发的回调。
@@ -1568,7 +1592,7 @@ iOS 11 以上版本必须有地理位置Always Use 权限，才能生效。
 
 #### 参数说明
 * geofenceId 
-    * 地理位栏唯一id
+    * 地理围栏唯一id
     * NSString 字符串类型
 *  userInfo
     * NSDictionary 类型。
@@ -1587,7 +1611,7 @@ iOS 11 以上版本必须有地理位置Always Use 权限，才能生效。
 
 #### 参数说明
 * geofenceId 
-    * 地理位栏唯一id
+    * 地理围栏唯一id
     * NSString 字符串类型
 *  userInfo
     * NSDictionary 类型。
