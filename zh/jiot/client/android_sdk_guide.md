@@ -5,9 +5,9 @@
 本篇指南匹配的 JIoT Android SDK 版本为：1.0.0 及以后版本。
 
 ## Android 系统版本支持
-支持  Android 4.0 及以上版本。
+兼容 Android 4.0 及以上版本。
 
-## jiot-android-1.0.0-release.tar.gz 集成压缩包内容
+## jiot-android-1.x.x-release.zip 集成压缩包内容
 
 * libs/jiot-android-1.x.x.jar
     * JIoT SDK 开发包。
@@ -21,7 +21,7 @@
     * 是一个完整的 Android 项目，通过这个演示了 JIoT SDK 的基本用法，可以用来做参考。
 
 ## 手动集成步骤
-* 解压缩 jiot-android-1.x.x-release.tar.gz 集成压缩包。
+* 解压缩 jiot-android-1.x.x-release.zip 集成压缩包。
 * 复制 libs/jiot-android-1.x.x.jar 到工程 libs/ 目录下。
 * 复制 libs/(cpu-type)/libjiot1xy.so ， libs/(cpu-type)/libssl.so ， libs/(cpu-type)/libcrypto.so 到你的工程中存放对应 cpu 类型的目录下。
 
