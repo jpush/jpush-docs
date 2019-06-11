@@ -1,4 +1,33 @@
-# 最近更新
+# 最近更新### JPush iOS SDK v3.2.1
+
+#### 更新时间
++ 2019-06-11
+
+#### Change Log
++ 地理围栏新增回调及删除功能
++ 修复已知bug
+
+
+#### 升级提示
+
++ 建议升级！
+
+#### 升级指南
++ 3.2.1 版本的 JPush 只支持 2.0.0 及以上的 JCore 版本，升级 SDK 的时候请将 JCore 一起升级。
++ 注意 3.0.0 及以上版本 JPush SDK 将不再支持处理器为 i386 的模拟器。
++ 添加libresolv.tbd库，否则编译运行会报错（2.2.0 及以上版本要求）
++ 替换 lib 文件夹里的文件:先删除项目里旧的 .a 和 .h 文件，重新导入新的 .a 和 .h 文件（注意新版本替换 APService.h 为 JPUSHService.h）
++ Xcode 7 环境下，替换原先导入的 libz.dylib 框架为 libz.tbd （特别留意）
++ 需要删除旧的 libPushSDK-Simulator.a （如果存在）
++ 关于 iOS 7 Background Push，JPush 提供一个教程文档：[iOS 7 Background Remote Notification](https://docs.jiguang.cn/jpush/client/iOS/ios_new_fetures/#ios-7-background-remote-notification)
++ 如果是 1.2.7 及之前版本升级 请在 Build Settings 里面，找到 Other Linker Flags，去掉 -all_load, -ObjC
++ 使用地理围栏功能时涉及以下相关配置：
+	- 位置权限配置。
+	- 选择Background Modes配置。 target -> capabilities ->Background Modes 选中Location updates。
+	- 注意registerLbsGeofenceDelegate: withLaunchOptions 方法最好在sdk初始化之前调用。
+	- Info.plist file 文件中加入 NSLocationAlwaysUsageDescription 这个字段的描述，避免上架AppStore被拒
+
+
 ### JPush Android SDK v3.3.2
 
 #### 更新时间
