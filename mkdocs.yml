@@ -88,6 +88,10 @@ pages:
     - 'QuickApp SDK 概述': 'janalytics/client/quickapp_sdk.md'
     - 'QuickApp SDK 集成指南': 'janalytics/client/quickapp_guide.md'
     - 'QuickApp SDK API': 'janalytics/client/quickapp_api.md'
+  - Web:
+    - 'Web SDK 概述': 'janalytics/client/web_sdk.md'
+    - 'Web SDK 集成指南': 'janalytics/client/web_guide.md'
+    - 'Web SDK API': 'janalytics/client/web_api.md'
   - MiniProgram:
     - 'MiniProgram SDK 概述': 'janalytics/client/miniprogram_sdk.md'
     - 'MiniProgram SDK 集成指南': 'janalytics/client/miniprogram_guide.md'

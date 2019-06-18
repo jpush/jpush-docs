@@ -1,5 +1,29 @@
 # 最近更新
 
+### JAnalytics Web SDK v1.0.0
+
+#### 更新时间
+
++ 2019-06-18
+
+#### Change Log 
++ 支持自定义事件。
++ 用户行为数据上报。
++ 位置数据可选上报。
+
+#### 升级提示
+
++ 我是第一版！
+
+#### 升级指南
+
++ 首先解压您获取到的zip压缩包；
++ 导入 SDK 开发包：janalytics-web-1.x.x.js；
+详细请见JAnalytics Web SDK 集成指南中的说明，或者 example 中的示例。
+
+
+
+
 ### JAnalytics MiniProgram SDK v1.0.0
 
 #### 更新时间
@@ -13,7 +37,7 @@
 
 + 我是第一版！
 
-####  升级指南
+#### 升级指南
 
 + 首先解压您获取到的zip压缩包；
 + 导入 SDK 开发包：janalytics-m-1.x.x.js；
