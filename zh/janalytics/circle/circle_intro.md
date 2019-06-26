@@ -84,6 +84,7 @@
 ```
 
 ![](image/eventdetails1.png)
+![](image/eventdetails2.png)
 
 
 
