@@ -72,7 +72,6 @@
 + 更新AndroidManifest.xml。
 可根据压缩包根目录下的AndroidManifest文件（或集成指南），更新统计sdk所需权限、及相关组件等。
 
- 
   ```
   注意:如同一个应用集成了多个极光SDK，只需配置一次appkey与channel。
 
