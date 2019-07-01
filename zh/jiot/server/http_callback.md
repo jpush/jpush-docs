@@ -29,5 +29,16 @@ Step4：点击选择需要使用的回调接口
 | event | json | |上报事件的结构体 | |
 | name | string |  | 事件的名称 | |
 | content | string |  | 事件的内容 | |
-| time | int |  | 事件发生的时间 | |
+| time | int |  | 事件发生的时间戳| |
 | type | int  |  | 事件的类型 | 0:信息，1：告警， 2：故障 |
+
+## 消息回调消息格式
+当个消息送达设备的时候，结果会通过 http 回调的方式发送给客户的系统。目前只支持将成功的记录通知到客户。
+### 参数说明:
+| 关键字 | 类型 | 选项  | 含义 | 说明 |
+| --- | --- | --- | --- | --- |
+| product_key | string | | 产品的product key| |
+| device_name | string |  | 设备的 device_name | |
+| message_id| int| | 消息发送时返回该消息的消息 id | |
+| msg_status | int |  |0:成功，其他:失败| |
+| time | int |  | 事件发生的时间戳 | |
