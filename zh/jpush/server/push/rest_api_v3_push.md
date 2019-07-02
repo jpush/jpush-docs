@@ -1005,7 +1005,7 @@ POST  https://api.jpush.cn/v3/push/batch/alias/single
 pushlist
 	必填参数。JSON类型
 cid值
-	必填参数。JSON类型，取值：push（默认），JSON具体字段参考下面表格说明
+	必填参数。JSON类型，取值：push（默认），JSON Value部分具体字段参考下面表格说明
 ```
 <div class="table-d" align="center" >
 	<table border="1" width = "100%">
@@ -1047,6 +1047,44 @@ cid值
 	</table>
 </div>
 
+完整参数示例：
+```
+{"pushlist":{
+    "cid1":{     
+        "platform": "all",
+        "target": "aliasvalue1",       // 此处填写的是regid值或者alias值
+        "notification": {
+            ...    // 省略参数同push api部分
+        },
+        "message": {
+            ...   // 省略参数同push api部分
+        },
+        "sms_message":{
+            ...  // 省略参数同push api部分
+        },
+        "options": {
+            ...  // 省略参数同push api部分
+        }
+    },
+    "cid2":{     
+        "platform": "all",
+        "target": "aliasvalue2",       // 此处填写的是regid值或者alias值
+        "notification": {
+            ...
+        },
+        "message": {
+            ...
+        },
+        "sms_message":{
+            ...
+        },
+        "options": {
+            ...
+        }
+    },
+    ...
+}}
+```
 
 **Response**
 
