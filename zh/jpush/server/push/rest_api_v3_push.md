@@ -1005,9 +1005,8 @@ POST  https://api.jpush.cn/v3/push/batch/alias/single
 pushlist
 	必填参数。JSON类型
 cid值
-	必填参数。CID 类型。取值：push（默认）
-body
-    必填参数。JSON类型，具体字段参考下面表格说明
+	必填参数。JSON类型，取值：push（默认）
+    JSON具体字段参考下面表格说明
 ```
 <div class="table-d" align="center" >
 	<table border="1" width = "100%">
