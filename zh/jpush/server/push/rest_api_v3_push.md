@@ -958,7 +958,7 @@ curl --insecure -X POST -v https://api.jpush.cn/v3/grouppush -H "Content-Type: a
 ```
 
 
-## Batch Push API：批量单推（VIP专属接口） 
+## 批量单推（VIP专属接口） 
 
 ### 调用地址
 POST  https://api.jpush.cn/v3/push/batch/regid/single <br/>
