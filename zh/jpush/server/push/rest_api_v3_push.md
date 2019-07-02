@@ -961,8 +961,7 @@ curl --insecure -X POST -v https://api.jpush.cn/v3/grouppush -H "Content-Type: a
 ## Batch Push API：批量单推（VIP专属接口） 
 
 ### 调用地址
-POST  https://api.jpush.cn/v3/push/batch/regid/single
-
+POST  https://api.jpush.cn/v3/push/batch/regid/single <br/>
 POST  https://api.jpush.cn/v3/push/batch/alias/single
 
 ***注***：/v3/push/batch/regid/single 针对的是RegID方式批量单推，/v3/push/batch/alias/single 针对的是Alias方式批量单推
@@ -988,7 +987,28 @@ POST  https://api.jpush.cn/v3/push/batch/alias/single
 
 ```
 
-### 关键字段说明
+### 调用示例
+
+**Request Header**
+
+> POST /v3/push/batch/regid/single HTTP/1.1
+> Authorization: Basic N2Q0MzFlNDJkZmE2YTZkNjkzYWMyZDA0OjVlOTg3YWM2ZDJlMDRkOTVhOWQ4ZjBkMQ==
+
+或者
+> POST /v3/push/batch/alias/single HTTP/1.1
+> Authorization: Basic N2Q0MzFlNDJkZmE2YTZkNjkzYWMyZDA0OjVlOTg3YWM2ZDJlMDRkOTVhOWQ4ZjBkMQ==
+
+
+**Request Params**
+
+```
+pushlist
+	必填参数。JSON类型
+cid值
+	必填参数。CID 类型。取值：push（默认）
+body
+    必填参数。JSON类型，具体字段参考下面表格说明
+```
 <div class="table-d" align="center" >
 	<table border="1" width = "100%">
 		<tr  bgcolor="#D3D3D3" >
@@ -1030,46 +1050,70 @@ POST  https://api.jpush.cn/v3/push/batch/alias/single
 </div>
 
 
-### 调用示例
+**Response Header**
 
+成功返回：
 ```
-{"pushlist":{
-    "${cid值1}":{     
-        "platform": "all",
-        "target": "e001ddhijd",       // 此处填写的是regid值或者alias值
-        "notification": {
-            ...
-        },
-        "message": {
-            ...
-        },
-        "sms_message":{
-            ...
-        },
-        "options": {
-            ...
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+ 
+Success Response Data
+{
+    "cid1"：{
+        "msg_id":134123478
+    },
+    "cid1"：{
+        "msg_id":134123478,
+        "error":{
+            "code":1011,
+            "message":"****"
         }
     },
-    "${cid值2}":{     
-        "platform": "all",
-        "target": "e001ddhijd",       // 此处填写的是regid值或者alias值
-        "notification": {
-            ...
-        },
-        "message": {
-            ...
-        },
-        "sms_message":{
-            ...
-        },
-        "options": {
-            ...
+    "cid3"：{
+        "error":{
+            "code":1009,
+            "message":"****"
         }
     },
     ...
-}}
+}
+```
+
+失败返回：
+```
+HTTP/1.1 400 OK
+Content-Type: application/json; charset=utf-8
+ 
+ Failed Response Data 
+{
+    "error":{
+        "message":"Authen failed",
+        "code":1004
+    }
+}
+```
+
+
+**Response Params**
 
 ```
+	针对每一个单推cid的响应结果
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ## 推送校验 API
