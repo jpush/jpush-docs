@@ -1048,7 +1048,7 @@ cid值
 </div>
 
 
-**Response Header**
+**Response**
 
 成功返回：
 ```
@@ -1090,28 +1090,6 @@ Content-Type: application/json; charset=utf-8
     }
 }
 ```
-
-
-**Response Params**
-
-```
-	针对每一个单推cid的响应结果
-```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 ## 推送校验 API
