@@ -46,6 +46,61 @@
 + example
     + 是一个完整的 Android 项目，通过这个演示了 JVerification SDK 的基本用法，可以用来做参考。
 
+## jcenter 自动集成步骤
+
+***说明*** ： 使用 jcenter 自动集成的开发者，不需要在项目中添加 jar 和 so，jcenter 会自动完成依赖；在 AndroidManifest.xml 中不需要添加任何 SDK 相关的配置，jcenter 会自动导入。
+
++ 确认 android studio 的 Project 根目录的主 gradle 中配置了 jcenter 支持。（新建 project 默认配置就支持）
+
+~~~
+        buildscript {
+            repositories {
+                jcenter()
+            }
+            ......
+        }
+
+        allprojects {
+            repositories {
+                jcenter()
+            }
+        }
+~~~
+
++ 在 module 的 gradle 中添加依赖和 AndroidManifest 的替换变量。
+
+~~~
+        android {
+            ......
+            defaultConfig {
+                applicationId "com.xxx.xxx" // 您应用的包名.
+                ......
+
+                ndk {
+                    //选择要添加的对应 cpu 类型的 .so 库。
+                    abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a'
+                    // 还可以添加 'x86', 'x86_64'
+                }
+
+                manifestPlaceholders = [
+                    JPUSH_PKGNAME : applicationId,
+                    JPUSH_APPKEY : "你的 Appkey ", //Portal上注册的包名对应的 appKey.
+                    JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
+                ]
+                ......
+            }
+            ......
+        }
+
+
+        dependencies {
+            ......
+
+            compile 'cn.jiguang.sdk:jverification:2.3.0'  // 此处以2.3.0 版本为例。
+            compile 'cn.jiguang.sdk:jcore:2.0.1'  // 此处以JCore 2.0.1 版本为例。
+            ......
+        }
+~~~
 
 ##手动集成步骤
 
@@ -123,7 +178,6 @@
     <!-- Optional -->
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" /> <!-- 用于开启 debug 版本的应用在6.0 系统上 层叠窗口权限 -->
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
-    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
     <uses-permission android:name="android.permission.GET_TASKS" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />

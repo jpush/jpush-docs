@@ -87,12 +87,14 @@
  
 **关于页面流做如下说明：**
 
-1. 开发者自己决定activity和fragment是否是一个页面。在相应的方法调用onPageStart和onPageEnd方法，并且需要是成对调用
+1. 在android 4.0及以上版本，默认上报activity页面流。android 4.0以下需要开发者自己调用onPageStart和onPageEnd 方法上报activity页面流。
+
+2. 开发者自己决定activity和fragment是否是一个页面。在相应的方法调用onPageStart和onPageEnd方法，并且需要是成对调用。
 	
-2. 当activity中包含多个fragment，每个fragment都需当做页面统计时，基于fragment的切换模式，提供以下建议
+3. 当activity中包含多个fragment，每个fragment都需当做页面统计时，基于fragment的切换模式，提供以下建议：
 	+ replace模式:这种模式切换fragment，则是正常进行onResume和onPause的生命周期。
-	+ viewpage中包含多个fragment进行切换：这种模式切换需在fragment中监听 setUserVisibleHint接口，通过其返回的参数进行onPageStart和onPageEnd的调用
-	+ show/hide模式:这种模式下切换fragment需要监听onHiddenChanged接口来确认fragment是否显示。并需要在onResume中也需要调用onPageStart(onPause不需要调用onPageEnd)
+	+ viewpage中包含多个fragment进行切换：这种模式切换需在fragment中监听 setUserVisibleHint接口，通过其返回的参数进行onPageStart和onPageEnd的调用。
+	+ show/hide模式:这种模式下切换fragment需要监听onHiddenChanged接口来确认fragment是否显示。并需要在onResume中也需要调用onPageStart(onPause不需要调用onPageEnd)。
 
 ##自定义事件统计 API
 
@@ -105,8 +107,8 @@
 
 **关于自定义事件做如下说明：**
 
-1. 字符串字段（key与 value）限制大小不超过256字节，超过限制的key或value该事件将会被丢弃.
-2. 自定义键值对数目不能超过10个，超过10个限制该事件将会被丢弃.
+1. 字符串字段（key与 value）限制大小不超过256字节，超过限制的key或value该事件将会被丢弃。
+2. 自定义键值对数目不能超过10个，超过10个限制该事件将会被丢弃。
 
 调用示例：
 

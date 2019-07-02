@@ -84,6 +84,7 @@
 ```
 
 ![](image/eventdetails1.png)
+![](image/eventdetails2.png)
 
 
 
@@ -106,7 +107,7 @@ JAnalytics SDK V2.0.0（ios，android）功能目前支持常见的控件类型�
 
 ### android
 + 目前支持浏览事件的控件有：
-位于Activity或Fragment内的View、TextView、EditText、Button、ImageView、CheckBox、RadioButton、Switch、SeekBar、RatingBar、RecyclerView、ListView。
+位于Activity或Fragment内的View、TextView、EditText、Button、ImageView、CheckBox、RadioButton、Switch、SeekBar、RatingBar、RecyclerView、ListView、Dialog、Popmenu。
 + 以上所述控件如果开发者设置了监听事件（例如setOnClickListener），通过圈选可以获取统计到点击数据。
 + 对于列表类型的控件，如RecyclerView、ListView、GridView、ViewPager这类可复用Item的控件，圈选时可以选择整个Item。
 + Ratingbar、ProgressBar这种评分、进度条控件，支持细化到可监听值变化。

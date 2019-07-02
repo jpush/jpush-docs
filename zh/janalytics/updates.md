@@ -1,4 +1,67 @@
 # 最近更新
+### JAnalytics Android SDK v2.1.0
+
+#### 更新时间
+
++ 2019-07-02
+
+#### Change Log 
++ 优化动态圈选埋点功能，新增支持Dialog、Popmenu控件圈选。
++ 修复一些已知的问题。
+
+#### 升级提示
+
++ 如果想使用动态圈选功能，必须升级。
++ 在使用动态圈选功能时，如遇到问题，欢迎随时反馈。
++ 升级后若不想启动态圈选功能，请移除动态圈选插件的依赖：apply plugin: 'cn.jiguang.android.analytics'。
+
+#### 手动集成升级指南
+
++ 首先解压您获取到的zip压缩包。
++ 更新库文件。
+打开libs文件夹。
+用janalytics-android-x.y.z.jar 替换项目中原有的极光统计sdk的jar文件，并删除原有极光统计sdk的jar文件。
+用jcore-android-x.y.z.jar 替换项目中原有的极光jcore的jar文件，并删除原有极光jcore的jar文件。
+用对应CPU文件夹下的 libjcore1xy.so文件，替换项目中原有的极光so文件，并删除原有的极光so文件。
++ 更新AndroidManifest.xml。
+可根据压缩包根目录下的AndroidManifest文件（或集成指南），更新统计sdk所需权限、及相关组件等。
+
+```
+  注意:如同一个应用集成了多个极光SDK，只需配置一次appkey与channel。
+``` 
+
++ 配置动态圈选插件
+参考【集成指南】的【本地工程配置】部分进行配置。
+
+#### Jcenter方式集成升级指南
+如果使用jcenter的方式集成JAnalytics，请参考官方【集成指南】的【JCenter 自动集成方式】部分。
+
+
+
+
+### JAnalytics Web SDK v1.0.0
+
+#### 更新时间
+
++ 2019-06-25
+
+#### Change Log 
++ 支持自定义事件。
++ 用户行为数据上报。
++ 位置数据可选上报。
+
+#### 升级提示
+
++ 我是第一版！
+
+#### 升级指南
+
++ 首先解压您获取到的zip压缩包；
++ 导入 SDK 开发包：janalytics-web-1.x.x.js；
+详细请见JAnalytics Web SDK 集成指南中的说明，或者 example 中的示例。
+
+
+
 
 ### JAnalytics MiniProgram SDK v1.0.0
 
@@ -13,7 +76,7 @@
 
 + 我是第一版！
 
-####  升级指南
+#### 升级指南
 
 + 首先解压您获取到的zip压缩包；
 + 导入 SDK 开发包：janalytics-m-1.x.x.js；
@@ -48,12 +111,9 @@
 + 更新AndroidManifest.xml。
 可根据压缩包根目录下的AndroidManifest文件（或集成指南），更新统计sdk所需权限、及相关组件等。
 
- 
-  ```
+```
   注意:如同一个应用集成了多个极光SDK，只需配置一次appkey与channel。
-
-  ```
-
+``` 
 
 + 配置动态圈选插件
 参考【集成指南】的【本地工程配置】部分进行配置。

@@ -7,7 +7,7 @@ https://api.iot.jiguang.cn/device/v1/property
 ### 请求示例:
 
 ```
-curl --insecure -X POST -v http://api.iot.jiguang.cn/device/v1/property -H "Content-Type: application/json" -u "7d431e42dfa6a6d693ac2d04:5e987ac6d2e04d95a9d8f0d1" -d '{"seq_no":1, "device_name":"your device_name", "version":1, "properties":[ {"name":"p1", "value":"v1"}]}'
+curl --insecure -X POST -v https://api.iot.jiguang.cn/device/v1/property -H "Content-Type: application/json" -u "7d431e42dfa6a6d693ac2d04:5e987ac6d2e04d95a9d8f0d1" -d '{"seq_no":1, "device_name":"your device_name", "version":1, "properties":[ {"name":"p1", "value":"v1"}]}'
 > POST /device/v1/property HTTP/1.1
 > Authorization: Basic N2Q0MzFlNDJkZmE2YTZkNjkzYWMyZDA0OjVlOTg3YWM2ZDJlMDRkOTVhOWQ4ZjBkMQ==
 ```
@@ -54,7 +54,7 @@ https://api.iot.jiguang.cn/msg/v1/msg
 ### 请求示例:
 
 ```
-curl --insecure -X POST -v http://api.iot.jiguang.cn/msg/v1/msg -H "Content-Type: application/json" -u "7d431e42dfa6a6d693ac2d04:5e987ac6d2e04d95a9d8f0d1" -d '{"seq_no":1, "device_name":"your device_name", "msg_body":"this is the first msg"}'
+curl --insecure -X POST -v https://api.iot.jiguang.cn/msg/v1/msg -H "Content-Type: application/json" -u "7d431e42dfa6a6d693ac2d04:5e987ac6d2e04d95a9d8f0d1" -d '{"seq_no":1, "device_name":"your device_name", "msg_body":"this is the first msg"}'
 > POST /msg/v1/msg HTTP/1.1
 > Authorization: Basic N2Q0MzFlNDJkZmE2YTZkNjkzYWMyZDA0OjVlOTg3YWM2ZDJlMDRkOTVhOWQ4ZjBkMQ==
 
