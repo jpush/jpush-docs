@@ -66,7 +66,7 @@ distributionUrl=https\://services.gradle.org/distributions/gradle-3.3-all.zip
 
 ***说明1*** ：  使用jcenter自动集成的开发者，不需要在项目中添加jar，jcenter会自动完成依赖；jcenter 也会自动导入 JAnalytics 所需的权限和 meta-data 节点进你项目的 AndroidManifest 中。
 
-***说明2*** ： 想添加动态圈选功能的开发者，将以下集成步骤与动态圈选相关的配置加上即可.
+***说明2*** ： 想添加动态圈选功能的开发者，将以下集成步骤与动态圈选相关的配置加上即可。
 
 + 确认android studio的 Project 根目录的主 gradle 中配置了jcenter支持。
 
@@ -146,7 +146,7 @@ distributionUrl=https\://services.gradle.org/distributions/gradle-3.3-all.zip
 
 ##本地工程配置  
 
-***说明*** ： 想添加动态圈选功能的开发者，需要将以下集成步骤与动态圈选相关的配置加上即可.
+***说明*** ： 想添加动态圈选功能的开发者，需要将以下集成步骤与动态圈选相关的配置加上即可。
 
 + 解压压缩包，将libs下的所有文件复制到工程的libs下面.
 	+ jcore 和 janalytics 两个 jar 文件。
