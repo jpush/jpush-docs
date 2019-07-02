@@ -957,6 +957,121 @@ groupkey 可以在创建的分组信息中获取，使用起来同 appkey 类似
 curl --insecure -X POST -v https://api.jpush.cn/v3/grouppush -H "Content-Type: application/json" -u "group-e4c938578ee598be517a2243:71d1dc4dae126674ed386b7b" -d '{"platform":["android"],"audience":"all","notification":{"android":{"alert":"notification content","title":"notification title"}},"message":{"msg_content":"message content"}}'
 ```
 
+
+## Batch Push API：批量单推（VIP专属接口） 
+
+### 调用地址
+POST  https://api.jpush.cn/v3/push/batch/regid/single
+
+POST  https://api.jpush.cn/v3/push/batch/alias/single
+
+***注***：/v3/push/batch/regid/single 针对的是RegID方式批量单推，/v3/push/batch/alias/single 针对的是Alias方式批量单推
+
+### 功能说明
+如果您在给每个用户的推送内容都不同的情况下，可以使用此接口。
+
+如需要开通此接口，请联系：[商务客服](https://www.jiguang.cn/accounts/business_contact?fromPage=push_doc)
+
+### 调用说明
+使用此接口前，您需要配合使用 [cid:推送唯一标识符](https://docs.jiguang.cn/jpush/server/push/rest_api_v3_push/#cid) 接口提前获取到 cid 池，获取时 type=push 或者不传递 type 值；获取到cid值后，传递参数格式如下：
+
+```
+{"pushlist":{
+    "cid值1":{     
+        ...
+    },
+    "cid值2":{     
+        ...
+    },
+    ...
+}}
+
+```
+
+### 关键字段说明
+<div class="table-d" align="center" >
+	<table border="1" width = "100%">
+		<tr  bgcolor="#D3D3D3" >
+			<th>关键字</th>
+			<th >选项</th>
+			<th >含义</th>
+		</tr>
+		<tr >
+			<td>platform</td>
+			<td>必填</td>
+			<td>推送平台设置</td>
+		</tr>
+		<tr >
+			<td>target</td>
+			<td>必填</td>
+			<td>推送设备指定。<br/>如果是调用RegID方式批量单推接口（/v3/push/batch/regid/single），那此处就是指定regid值；<br/>如果是调用Alias方式批量单推接口（/v3/push/batch/alias/single），那此处就是指定alias值。</td>
+		</tr>
+		<tr >
+			<td>notification</td>
+			<td>可选</td>
+			<td>通知内容体。是被推送到客户端的内容。与 message 一起二者必须有其一，可以二者并存</td>
+		</tr>
+		<tr >
+			<td>message</td>
+			<td>可选</td>
+			<td>消息内容体。是被推送到客户端的内容。与 notification 一起二者必须有其一，可以二者并存 </td>
+		</tr>
+		<tr>
+			<td>sms_message</td>
+			<td>可选</td>
+			<td>短信渠道补充送达内容体</td>
+		</tr>
+		<tr >
+			<td>options</td>
+			<td>可选</td>
+			<td>推送参数 </td>
+		</tr>
+	</table>
+</div>
+
+
+### 调用示例
+
+```
+{"pushlist":{
+    "${cid值1}":{     
+        "platform": "all",
+        "target": "e001ddhijd",       // 此处填写的是regid值或者alias值
+        "notification": {
+            ...
+        },
+        "message": {
+            ...
+        },
+        "sms_message":{
+            ...
+        },
+        "options": {
+            ...
+        }
+    },
+    "${cid值2}":{     
+        "platform": "all",
+        "target": "e001ddhijd",       // 此处填写的是regid值或者alias值
+        "notification": {
+            ...
+        },
+        "message": {
+            ...
+        },
+        "sms_message":{
+            ...
+        },
+        "options": {
+            ...
+        }
+    },
+    ...
+}}
+
+```
+
+
 ## 推送校验 API
 
 ### 调用地址
@@ -1074,6 +1189,18 @@ POST https://api.jpush.cn/v3/push/validate
 			<td>2005</td>
 			<td>信息发送量超出合理范围。</td>
 			<td>检测到目标用户累计发送消息量过大，超过合理的使用范围，需要检查业务逻辑或者联系技术支持。</td>
+			<td>403</td>
+		</tr>
+		<tr>
+			<td>2006</td>
+			<td>非VIP用户。</td>
+			<td>接口只针对VIP用户开放。</td>
+			<td>403</td>
+		</tr>
+		<tr>
+			<td>2007</td>
+			<td>无权调用此接口。</td>
+			<td>请联系商务开通使用权限。</td>
 			<td>403</td>
 		</tr>
 	</table>
