@@ -362,14 +362,12 @@ curl -v https://report.jpush.cn/v3/messages/detail?msg_ids=269978303 -u "7d431e4
 JSON Array
 
 + msg_id 查询的消息 ID
-
 + jpush 极光通道统计数据，走极光通道下发的普通Android用户通知/自定义消息 以及 iOS用户自定义消息总体情况
 	+ target 推送目标数
 	+ online_push 在线推送数
 	+ received 推送送达数
 	+ click 用户点击数
-	+ msg_click 自定义消息点击数
-	
+	+ msg_click 自定义消息点击数	
 + android_pns Android厂商通道统计数据，走厂商通道下发统计数据
 	+ pns_target   通过厂商通道推送目标数
 	+ pns_sent     推送到厂商通道成功数
@@ -390,8 +388,7 @@ JSON Array
 	    + sent     推送到VIVO平台成功数
 	+ fcm_detail    推送到FCM通道详情
 	    + target  FCM用户目标数
-	    + sent     推送到FCM平台成功数
-     
+	    + sent     推送到FCM平台成功数     
 + ios iOS 统计数据
 	+ apns_target APNs 通知推送目标数	
 	+ apns_sent  APNs 通知成功推送数，发送到APNs服务器成功
@@ -399,7 +396,6 @@ JSON Array
 	+ apns_click 通知点击数
 	+ msg_target 自定义消息目标数
 	+ msg_received    自定义消息送达数
-
 + winphone Winphone 统计数据
      + mpns_target MPNs 通知推送目标数
      + mpns_sent    MPNS 通知成功推送数
