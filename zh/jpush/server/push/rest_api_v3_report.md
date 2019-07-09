@@ -19,7 +19,7 @@ https://report.jpush.cn/v3
 
 
 
-##  送达统计
+##  送达统计（旧）
 
 Received API 以 msg_id 作为参数，去获取该 msg_id 的送达统计数据。  
 如果一次 API 调用推送有很多对象（比如广播推送），则此 API 返回的统计数据会因为持续有客户端送达而持续增加。
@@ -74,6 +74,69 @@ JSON Array.
 + ios\_apns_received iOS 通知送达到设备。如果无项数据则为 null。统计该项请参考 [集成指南高级功能-通知送达统计](../../client/iOS/ios_guide_new/#_9) 。
 + ios\_msg_received  iOS 自定义消息送达数。如果无此项数据则为 null。
 + wp\_mpns_sent       winphone通知送达。如果无此项数据则为 null。
+
+
+##  送达统计详情（新）
+
+Received API 以 msg_id 作为参数，去获取该 msg_id 的送达统计数据。  
+如果一次 API 调用推送有很多对象（比如广播推送），则此 API 返回的统计数据会因为持续有客户端送达而持续增加。
+
+此接口和“送达统计”旧接口区别在于：此接口会根据消息是通过极光自有通道下发、Android厂商通道下发进行数据统计区分，如果您的应用开通了Android厂商通道支持，建议使用此接口。
+
+每条推送消息的送达统计数据最多保留一个月。即发起推送请求后从最后一个推送送达记录时间点开始保留一个月，如果保留期间有新的送达，将在这个新送达的时间点起再往后保留一个月。
+
+### 调用地址
+
+GET /v3/received/detail
+
+### 请求示例
+
+```
+curl -v https://report.jpush.cn/v3/received/detail?msg_ids=1613113584,1229760629 -u "7d431e42dfa6a6d693ac2d04:5e987ac6d2e04d95a9d8f0d1"
+
+< GET /v3/received/detail?msg_ids=1613113584,1229760629 HTTP/1.1
+< Authorization: Basic N2Q0MzFlNDJkZmE2YTZkNjkzYWMyZDA0OjVlOTg3YWM2ZDJlMDRkOTVhOWQ4ZjBkMQ==
+```
+
+**Request Params**
+
++ msg_ids 推送 API 返回的 msg_id 列表，多个 msg_id 用逗号隔开，最多支持 100 个 msg_id。
+
+### 返回示例
+
+```
+< HTTP/1.1 200 OK 
+< Content-Type: application/json
+<
+[
+   {"msg_id":"1613113584",
+    "jpush_received":62,
+    "android_pns_sent":12,
+    "ios_apns_sent":11,
+    "ios_apns_received":5,
+    "ios_msg_received": 3,
+    "wp_mpns_sent" : 3},
+ 
+   {"msg_id":"1229760629",
+    "jpush_received":56,
+    "android_pns_sent":12,
+    "ios_apns_sent":33,
+    "ios_apns_received":17,
+    "ios_msg_received": 3, 
+    "wp_mpns_sent" : null}
+]
+```
+**Response Params**
+
+JSON Array.
+
++ jpush_received 极光通道用户送达数；包含普通Android用户的通知+自定义消息送达，iOS用户自定义消息送达；如果无此项数据则为 null。
++ android\_pns_sent Android厂商用户推送到厂商服务器成功数，计算方式同 Android厂商成功数；如果无此项数据则为 null。
++ ios\_apns_sent iOS 通知推送到 APNs 成功。如果无此项数据则为 null。
++ ios\_apns_received iOS 通知送达到设备。如果无项数据则为 null。统计该项请参考 [集成指南高级功能-通知送达统计](../../client/iOS/ios_guide_new/#_9) 。
++ ios\_msg_received  iOS 自定义消息送达数。如果无此项数据则为 null。
++ wp\_mpns_sent       winphone通知送达。如果无此项数据则为 null。
+
 
 ## 送达状态查询
 
@@ -135,7 +198,7 @@ Content-Type: application/json; charset=utf-8
 + 4: 系统异常。
 
 
-## 消息统计（VIP 专属接口）
+## 消息统计（VIP 专属接口，旧）
 
 与“送达统计” API 不同的是，该 API 提供更多的针对一个 msgid 的统计数据。
 
@@ -208,6 +271,139 @@ JSON Array
      + click 用户点击数
 
 
+## 消息统计详情（VIP 专属接口，新）
+
+与“送达统计” API 不同的是，该 API 提供更多的针对一个 msgid 的统计数据。
+
+与“消息统计” 旧接口相比，此接口获取到的数据更详细，而且如果您的应用开通了Android厂商通道，建议使用此接口。
+
+如需要开通此接口，请联系：[商务客服](https://www.jiguang.cn/accounts/business_contact?fromPage=push_doc)
+
+### 调用地址
+
+GET /messages/detail
+
+### 请求示例
+
+```
+curl -v https://report.jpush.cn/v3/messages/detail?msg_ids=269978303 -u "7d431e42dfa6a6d693ac2d04:5e987ac6d2e04d95a9d8f0d1"
+  
+> GET /v3/messages/detail?msg_ids=269978303 HTTP/1.1
+> Authorization: Basic N2Q0MzFlNDJkZmE2YTZkNjkzYWMyZDA0OjVlOTg3YWM2ZDJlMDRkOTVhOWQ4ZjBkMQ==
+```
+
+**Request Params**
+
++ msg_ids 多个 msg_id 用逗号隔开，最多支持 100 个 msg_id。
+
+### 返回示例
+
+```
+< HTTP/1.1 200 OK
+< Content-Type: application/json
+<
+[
+ {
+   "msg_id": 123456789,
+   "jpush": {
+       "target": 110,
+       "online_push": 90,
+       "received": 100,
+       "click": 80,
+       "msg_click":60 
+    },
+    "android_pns":{
+       "pns_target": 100,
+       "pns_sent": 100,
+       "xm_detail":{
+            "target": 2
+            "sent": 1
+       },
+       "hw_detail":{
+            "target": 2
+            "sent": 1
+       },
+       "mz_detail":{
+            "target": 2
+            "sent": 1
+       },
+       "oppo_detail":{
+            "target": 2
+            "sent": 1
+       },
+       "vivo_detail":{
+            "target": 2
+            "sent": 1
+       },
+       "fcm_detail":{
+            "target": 2
+            "sent": 1
+       }
+    },
+    "ios": {
+       "apns_target": 100,
+       "apns_sent": 100,
+       "apns_received": 60,
+       "apns_click": 100,
+       "msg_target": 80,
+       "msg_received": 80
+    },
+   "winphone": {
+      "mpns_target": 100,
+      "mpns_sent": 100,
+      "click": 100
+   }  
+ }
+]
+```
+
+**Response Params**
+
+JSON Array
+
++ msg_id 查询的消息 ID
+
++ jpush 极光通道统计数据，走极光通道下发的普通Android用户通知/自定义消息 以及 iOS用户自定义消息总体情况
+	+ target 推送目标数
+	+ online_push 在线推送数
+	+ received 推送送达数
+	+ click 用户点击数
+	+ msg_click 自定义消息点击数
+	
++ android_pns Android厂商通道统计数据，走厂商通道下发统计数据
+	+ pns_target   通过厂商通道推送目标数
+	+ pns_sent     推送到厂商通道成功数
+	+ xm_detail    推送到小米通道详情
+	    + target  小米用户目标数
+	    + sent     推送到小米平台成功数
+	+ hw_detail    推送到华为通道详情
+	    + target  华为用户目标数
+	    + sent     推送到华为平台成功数
+	+ mz_detail    推送到魅族通道详情
+	    + target  魅族用户目标数
+	    + sent     推送到魅族平台成功数
+	+ oppo_detail    推送到OPPO通道详情
+	    + target  OPPO用户目标数
+	    + sent     推送到OPPO平台成功数
+	+ vivo_detail    推送都VIVO通道详情
+	    + target  VIVO用户目标数
+	    + sent     推送到VIVO平台成功数
+	+ fcm_detail    推送到FCM通道详情
+	    + target  FCM用户目标数
+	    + sent     推送到FCM平台成功数
+     
++ ios iOS 统计数据
+	+ apns_target APNs 通知推送目标数	
+	+ apns_sent  APNs 通知成功推送数，发送到APNs服务器成功
+	+ apns_received APNs 通知送达数，APNs 服务器下发到设备成功，统计该项请参考 [集成指南高级功能-通知送达统计](../../client/iOS/ios_guide_new/#_9) 
+	+ apns_click 通知点击数
+	+ msg_target 自定义消息目标数
+	+ msg_received    自定义消息送达数
+
++ winphone Winphone 统计数据
+     + mpns_target MPNs 通知推送目标数
+     + mpns_sent    MPNS 通知成功推送数
+     + click  MPNs 通知用户点击数
 
 
 ## 用户统计（VIP 专属接口）
