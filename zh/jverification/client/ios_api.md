@@ -35,6 +35,27 @@
     [JVERIFICATIONService setupWithConfig:config];
 ~~~
 
+##SDK获取初始化状态
+
+###支持的版本
+开始支持的版本 2.3.2
+
++ **+ (BOOL)isSetupClient**
+
+	+ 接口说明:
+		+ 初始化是否完成
+	+  返回值说明
+		+ YES 初始化完成
+		+ NO 初始化未完成
+	+ 调用示例:
+
+~~~
+BOOL isSetupClient = [JVERIFICATIONService isSetupClient];
+if (isSetupClient) {
+//初始化完成，可以进行后续操作
+}
+~~~
+
 ##SDK设置debug模式
 
 ###支持的版本
@@ -357,6 +378,7 @@
 |navText|NSAttributedString|导航栏标题|
 |navReturnImg|UIImage|导航返回图标|
 |navControl|UIBarButtonItem|导航栏右侧自定义控件|
+|navCustom|BOOL|导航栏是否隐藏|
 |logoImg|UIImage|LOGO图片|
 |logoWidth|CGFloat|LOGO图片宽度|
 |logoHeight|CGFloat|LOGO图片高度|
@@ -367,12 +389,14 @@
 |logBtnTextColor|UIColor|登录按钮文本颜色|
 |logBtnImgs|NSArray|登录按钮背景图片添加到数组(顺序如下) @[激活状态的图片,失效状态的图片,高亮状态的图片]|
 |numberColor|UIColor|手机号码字体颜色|
+|numberSize|CGFloat|手机号码字体大小|
 |numFieldOffsetY|CGFloat|号码栏Y偏移量|
 |uncheckedImg|UIImage|复选框未选中时图片|
 |checkedImg|UIImage|复选框选中时图片|
 |appPrivacyOne|NSArray|隐私条款一:数组（务必按顺序）@[条款名称,条款链接]|
 |appPrivacyTwo|NSArray|隐私条款二:数组（务必按顺序）@[条款名称,条款链接]|
 |appPrivacyColor|NSArray|隐私条款名称颜色 @[基础文字颜色,条款颜色]|
+|privacyState|BOOL|隐私条款check框默认状态 默认:NO|
 |privacyOffsetY |CGFloat|隐私条款Y偏移量(注:此属性为与屏幕底部的距离)|
 |sloganOffsetY|CGFloat|slogan偏移量Y|
 |sloganTextColor|UIColor|slogan文字颜色|
