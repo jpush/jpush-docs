@@ -14,7 +14,7 @@
 
 您可使用安卓手机扫描二维码下载Demo，快速体验极光认证功能。
 
-![JVerification](../image/qr_code.png)
+![JVerification](../image/qr_code2.png)
 
 ##快速开始
 
