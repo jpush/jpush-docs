@@ -26,5 +26,6 @@
 
 ### Unity3D
 
-官方地址：[https://github.com/jpush/janalytics-flutter-plugin](https://github.com/jpush/janalytics-unity3d-plugin)
+官方地址：[https://github.com/jpush/janalytics-unity3d-plugin](https://github.com/jpush/janalytics-unity3d-plugin)
+
 
