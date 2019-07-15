@@ -39,8 +39,9 @@
 
 ~~~
 	- (void)viewDidAppear:(BOOL)animated {
-	    [JANALYTICSService startLogPageView:@"first_page_flow"];
-	}
+    [JANALYTICSService startLogPageView:@"first_page_flow"];
+    [super viewDidAppear:animated];
+}
 ~~~
 
 + ***\+ (void)stopLogPageView:(NSString \*)pageName***
@@ -54,8 +55,9 @@
 
 ~~~
 	- (void)viewDidDisappear:(BOOL)animated {
-	    [JANALYTICSService stopLogPageView:@"first_page_flow"];
-	}
+    [JANALYTICSService stopLogPageView:@"first_page_flow"];
+    [super viewDidDisappear:animated];
+}
 ~~~
 
 ##SDK 地理位置统计
