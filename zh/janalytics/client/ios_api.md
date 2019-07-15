@@ -38,7 +38,7 @@
 	+ 调用示例：
 
 ~~~
-	- (void)viewDidAppear:(BOOL)animated {
+- (void)viewDidAppear:(BOOL)animated {
     [JANALYTICSService startLogPageView:@"first_page_flow"];
     [super viewDidAppear:animated];
 }
@@ -54,7 +54,7 @@
 	+ 调用示例：
 
 ~~~
-	- (void)viewDidDisappear:(BOOL)animated {
+- (void)viewDidDisappear:(BOOL)animated {
     [JANALYTICSService stopLogPageView:@"first_page_flow"];
     [super viewDidDisappear:animated];
 }
