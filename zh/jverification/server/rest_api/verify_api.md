@@ -20,8 +20,6 @@
 |:---:|:---:|:---:|
 |token|True|运营商下发的token|
 |phone|True|待认证的手机号码|
-|carrier|True|客户端 *getToken* 接口返回的运营商，中国移动传“CM”、中国联通传“CU”、中国电信传“CT”|
-|platform|True|应用的手机操作系统，安卓传“a”、iOS传“i”|
 |exID|False|开发者自定义的id，非必填|
 
 ##响应示例

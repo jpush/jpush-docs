@@ -22,6 +22,23 @@
 	JVerificationInterface.init(this);
 ~~~
 
+##获取sdk初始化是否成功标识
+
+### 支持的版本
+开始支持的版本 2.3.2
+
+### 接口的定义
++ ***JVerificationInterface.isInitSuccess()***
+	+ 接口说明：
+		+ 获取sdk是否整体初始化成功的标识
+	+ 返回结果
+	    + boolean : true - 成功，false - 失败
+    + 调用示例：
+    
+~~~
+	boolean isSuccess = JVerificationInterface.isInitSuccess();
+~~~
+
 ##SDK设置debug模式
 
 ###支持的版本
@@ -392,6 +409,8 @@
 |setNavText|String|设置导航栏标题文字|
 |setNavTextColor|int|设置导航栏标题文字颜色|
 |setNavReturnImgPath|String|设置导航栏返回按钮图标|
+|setNavTransparent|boolean|设置导航栏背景是否隐藏，默认不透明。since 2.3.2|
+
        
 + 授权页logo
        
@@ -408,6 +427,7 @@
 |方法|参数类型|说明|
 |:-----:|:----:|:----:|
 |setNumberColor|int|设置手机号码字体颜色|
+|setNumberSize|Number|设置手机号码字体大小（单位：sp）。since 2.3.2|
 |setNumFieldOffsetY|int|设置号码栏相对于标题栏下边缘y偏移|
        
 + 授权页登录按钮
@@ -429,6 +449,7 @@
 |setPrivacyOffsetY|int|设置隐私条款相对于授权页面底部下边缘y偏移|       
 |setCheckedImgPath|String|设置复选框选中时图片|
 |setUncheckedImgPath|String|设置复选框未选中时图片|  
+|setPrivacyState|boolean|设置隐私条款默认选中状态，默认不选中。since 2.3.2|
        
 + 授权页slogan 
        
