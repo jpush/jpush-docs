@@ -1944,7 +1944,7 @@ public static void addLocalNotification(Context context, JPushLocalNotification 
 
 #### 参数说明
 + context 是应用的 ApplicationContext
-+ notification 是本地通知对象
++ notification 是本地通知对象；建议notificationId设置为正整数，为0或者负数时会导致本地通知无法清除。
 
 #### 调用说明
 本接口可以在 JPushInterface.init 之后任何地方调用
@@ -1957,12 +1957,12 @@ public static void removeLocalNotification(Context context, long notificationId)
 
 #### 参数说明
 + context 是应用的 ApplicationContext
-+ notificationId 是要移除的本地通知的 ID
++ notificationId 是要移除的本地通知的 ID，注意notificationId为0或者负数的通知无法移除
 
 #### 调用说明
 本接口可以在 JPushInterface.init 之后任何地方调用
 
-### API  clearLocalNotifications 移除所有的本地通知
+### API  clearLocalNotifications 移除所有的本地通知，注意notificationId为0或者负数时通知无法移除
 
 #### 接口定义
 ```
@@ -2019,6 +2019,33 @@ map.put("test", "111") ;
 JSONObject json = new JSONObject(map) ;
 ln.setExtras(json.toString()) ;
 JPushInterface.addLocalNotification(getApplicationContext(), ln);
+```
+
+## NotificationChannel配置
+### 支持的版本
+开始支持的版本：3.3.4
+### 功能说明：
+Android8.0以后通知都走NotificationChannel了。开发者可以自行定义NotificationChannel，然后在API推送的时候可以指定channelId推送；
+在Android8.0及以上的机型，通知会先查找对应channelId的channel，通知的重要等级、声音、震动、呼吸灯由channel决定；
+如果没有找到channelId，或者处于静默时间内，则走默认的极光channel。
+
+自定义NotificationChannel示例
+```
+    private void initChannel(){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationManager nm = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+            if (nm != null){
+                NotificationChannelGroup notificationChannelGroup = new NotificationChannelGroup("MyGroupId", "自定义通知组");
+                nm.createNotificationChannelGroup(notificationChannelGroup);
+
+                NotificationChannel notificationChannel = new NotificationChannel("MyChannelId", "自定义通知", NotificationManager.IMPORTANCE_HIGH);
+                notificationChannel.setGroup("MyGroupId");
+                notificationChannel.enableLights(true);
+                notificationChannel.enableVibration(true);
+                nm.createNotificationChannel(notificationChannel);
+            }
+        }
+    }
 ```
 
 ##地理围栏 API

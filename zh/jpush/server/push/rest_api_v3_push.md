@@ -416,7 +416,14 @@ Android 平台上的通知，JPush SDK 按照一定的通知栏样式展示。
 			<td>int</td>
 			<td>可选</td>
 			<td>通知栏样式 ID</td>
-			<td>Android SDK 可<a href="https://docs.jiguang.cn/jpush/client/Android/android_api/#api_8">设置通知栏样式</a>，这里根据样式 ID 来指定该使用哪套样式。</td>
+			<td>Android SDK 可<a href="https://docs.jiguang.cn/jpush/client/Android/android_api/#api_8">设置通知栏样式</a>，这里根据样式 ID 来指定该使用哪套样式，android 8.0 开始建议采用<a href="https://docs.jiguang.cn/jpush/client/Android/android_api/#api_11">NotificationChannel配置</a>。</td>
+		</tr>
+		<tr >
+			<td>channel_id</td>
+			<td>String</td>
+			<td>可选</td>
+			<td>android通知channel_id</td>
+			<td>不超过1000字符，Android 8.0开始可以进行<a href="https://docs.jiguang.cn/jpush/client/Android/android_api/#api_11">NotificationChannel配置</a>，这里根据channel ID 来指定通知栏展示效果。</td>
 		</tr>
 		<tr >
 			<td>priority</td>
