@@ -70,7 +70,7 @@ JIOT客户端上报设备属性
 
 #### 接口定义
 ```
-JiotResult jiotPropertyReportReq(PropertyReport properyReport);
+JiotResult jiotPropertyReportReq(PropertyReportReq properyReport);
 ```
 
 #### 参数说明
@@ -84,7 +84,7 @@ JIOT客户端上报事件请求
 
 #### 接口定义
 ```
-JiotResult jiotEventReportReq(EventReport eventReport);
+JiotResult jiotEventReportReq(EventReportReq eventReport);
 ```
 
 #### 参数说明
