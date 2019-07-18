@@ -107,7 +107,7 @@ JIOT客户端上报设备属性请求
 
 #### 接口定义
 ```
-JiotResult jiotPropertyReportReq(JHandle handle,PropertyReport *pReq);
+JiotResult jiotPropertyReportReq(JHandle handle,PropertyReportReq *pReq);
 ```
 #### 参数说明
 * handle :JIOT客户端的句柄
@@ -120,7 +120,7 @@ JIOT客户端上报设备事件请求。
 
 #### 接口定义
 ```
-JiotResult jiotEventReportReq(JHandle handle,EventReport *pReq);
+JiotResult jiotEventReportReq(JHandle handle,EventReportReq *pReq);
 
 ```
 #### 参数说明
