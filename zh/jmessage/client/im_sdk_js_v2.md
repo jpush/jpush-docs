@@ -1034,7 +1034,7 @@ JMessage#sendSingleCustom()
    JIM.sendSingleCustom({
                  'target_username' : '<targetName>',
 		 'target_nickname' : '<targetNickname>',
-                 'custome' : '<json object>'
+                 'custom' : '<json object>'
                  'appkey' : '<targetAppkey>'
                }).onSuccess(function(data , msg) {
                   //data.code 返回码
