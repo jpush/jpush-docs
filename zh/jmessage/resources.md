@@ -27,7 +27,7 @@
             <img src="../image/resource_ios.png" alt="iOS">
 
             <div class="caption">
-            <h4><span>iOS SDK</span><span class="version">v3.9.0</span></h4>
+            <h4><span>iOS SDK</span><span class="version">v3.9.1</span></h4>
                 <div class="download-options">
 			        <div class="option"><input type="checkbox" checked onclick="return false;"><span  style=" margin-right: 20px;">IM即时通讯</span></div>
                   <div class="option"><input type="checkbox" class="ios-voice"><span>实时音视频</span></div>
