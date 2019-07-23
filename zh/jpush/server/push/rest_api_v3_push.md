@@ -423,7 +423,7 @@ Android 平台上的通知，JPush SDK 按照一定的通知栏样式展示。
 			<td>String</td>
 			<td>可选</td>
 			<td>android通知channel_id</td>
-			<td>不超过1000字符，Android 8.0开始可以进行<a href="https://docs.jiguang.cn/jpush/client/Android/android_api/#api_11">NotificationChannel配置</a>，这里根据channel ID 来指定通知栏展示效果。</td>
+			<td>不超过1000字节，Android 8.0开始可以进行<a href="https://docs.jiguang.cn/jpush/client/Android/android_api/#api_11">NotificationChannel配置</a>，这里根据channel ID 来指定通知栏展示效果。</td>
 		</tr>
 		<tr >
 			<td>priority</td>
