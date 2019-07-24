@@ -92,7 +92,7 @@
 		+ 在预定时间内获取当前在线的sim卡所在运营商及token，如果超过所设时间，接口回调返回超时。如果获取成功代表可以用来验证手机号，获取失败则建议做短信验证。
 	+ 参数说明：
 		+ context：android的上下文
-		+ timeOut: 超时时间（毫秒）,有效取值范围[3000,10000]
+		+ timeOut: 超时时间（毫秒）,有效取值范围(0,10000],若小于等于0则取默认值5000.大于10000则取10000.为保证获取token的成功率，建议设置为3000-5000ms.
 		+ listener：接口回调
 	+ 回调说明：
     ***onResult(int code, String  content, String operator)***
@@ -196,10 +196,10 @@
 		+ 验证当前运营商网络是否可以进行一键登录操作，该方法会缓存取号信息，提高一键登录效率。建议发起一键登录前先调用此方法。
 	+ 参数说明：
 		+ context：android的上下文
-		+ timeOut: 超时时间（毫秒）,有效取值范围[3000,10000]
+		+ timeOut: 超时时间（毫秒）,有效取值范围(0,10000],若小于等于0则取默认值5000.大于10000则取10000, 为保证预取号的成功率，建议设置为3000-5000ms.
 		+ listener：接口回调
 	+ 回调说明：
-    ***onResult(int code, String  content, String operator)***
+    ***onResult(int code, String  content)***
   		+ code: 返回码，7000代表获取成功，其他为失败，详见错误码描述
     	+ content：调用结果信息描述
   	+ 调用示例：
@@ -386,7 +386,41 @@
         
 ~~~
 
+##SDK授权页面顶部导航栏添加自定义控件
 
+### 支持的版本
+开始支持的版本 2.3.2
+
+### 接口的定义
+
++ ***addNavControlView(View view, JVerifyUIClickCallback callback)***
+
+	+ 接口说明：
+	   + 在授权页中顶部导航栏添加自定义控件
+	+ 参数说明：
+       + view：开发者传入自定义的控件，开发者需要提前设置好控件的布局属性，SDK只支持RelativeLayout布局
+       + callback： 自定义控件的点击回调
+   + 回调说明：
+      + ***onClicked(Context context, View view)***
+         + context：android的上下文
+         + view：自定义的控件的对象
+
+	+ 调用示例：
+
+~~~
+        Button navBtn = new Button(this);
+        navBtn.setText("导航栏按钮");
+        RelativeLayout.LayoutParams navBtnParam = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT,RelativeLayout.LayoutParams.WRAP_CONTENT);
+        navBtnParam.addRule(RelativeLayout.ALIGN_PARENT_RIGHT,RelativeLayout.TRUE);
+        navBtn.setLayoutParams(navBtnParam);
+        new JVerifyUIConfig.Builder().addNavControlView(navBtn, new JVerifyUIClickCallback() {
+                        @Override
+                        public void onClicked(Context context, View view) {
+                            Toast.makeText(context,"导航栏按钮点击",Toast.LENGTH_SHORT).show();
+                        }
+                    });
+
+~~~
 
 
 
@@ -463,6 +497,8 @@
 |方法|参数类型|说明|
 |:-----:|:----:|:----:|
 |addCustomView|见以上方法定义|在授权页空白处添加自定义控件以及点击监听|
+|addNavControlView|见以上方法定义|在授权页面顶部导航栏添加自定义控件以及点击监听|
+
 
 ![JVerification](../image/cutomeUI_description_android.png)
        

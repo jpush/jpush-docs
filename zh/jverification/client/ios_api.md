@@ -106,7 +106,7 @@ if (isSetupClient) {
     + 参数说明
         + completion  参数是字典 返回token 、错误码等相关信息，token有效期1分钟, 一次认证后失效
         + result 字典 获取到token时key有operator、code、token字段，获取不到token是key为code和content字段
-        + timeout 超时时间。单位ms，合法范围3000~10000。
+        + timeout 超时时间（毫秒）,有效取值范围(0,10000],若小于等于0则取默认值5000.大于10000则取10000.为保证获取token的成功率，建议设置为3000-5000ms.
 
     + 调用示例:
     + 
@@ -185,7 +185,7 @@ if (isSetupClient) {
     + 参数说明:
         + completion 预取号结果
         + result 字典 key为code和message两个字段
-        + timeout 超时时间。单位ms，合法范围3000~10000。
+        + timeout 超时时间（毫秒）,有效取值范围(0,10000],若小于等于0则取默认值5000.大于10000则取10000.为保证获取token的成功率，建议设置为3000-5000ms.
 
     + 调用示例:
 
@@ -341,8 +341,6 @@ if (isSetupClient) {
     }];
     
 ~~~
-
-
 
 
 ##JVAuthConfig类
