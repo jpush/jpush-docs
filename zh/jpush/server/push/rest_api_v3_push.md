@@ -430,7 +430,7 @@ Android 平台上的通知，JPush SDK 按照一定的通知栏样式展示。
 			<td>int</td>
 			<td>可选</td>
 			<td>通知栏展示优先级</td>
-			<td>默认为 0，范围为 -2～2 ，其他值将会被忽略而采用默认。</td>
+			<td>默认为 0，范围为 -2～2。</td>
 		</tr>
 		<tr >
 			<td>category</td>
