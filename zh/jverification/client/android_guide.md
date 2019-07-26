@@ -96,8 +96,8 @@
         dependencies {
             ......
 
-            compile 'cn.jiguang.sdk:jverification:2.3.0'  // 此处以2.3.0 版本为例。
-            compile 'cn.jiguang.sdk:jcore:2.0.1'  // 此处以JCore 2.0.1 版本为例。
+            compile 'cn.jiguang.sdk:jverification:2.3.4'  // 此处以2.3.4 版本为例。
+            compile 'cn.jiguang.sdk:jcore:2.1.2'  // 此处以JCore 2.1.2 版本为例。
             ......
         }
 ~~~
