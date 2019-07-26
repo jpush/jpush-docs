@@ -59,3 +59,12 @@ make flash
 make monitor
 ```
 
+## 集成jiot-sdk到项目中
+项目工程以乐鑫SDK中“examples/get-started/project_template”为例。
+1. 将解压出来的jiot-sdk文件夹拷贝到project_template/components文件夹中。
+2. 在project_template/build目录中创建文件夹jiot-sdk。
+3. 将project_template/components/jiot-sdk/lib/libjiot-c-sdk.a文件拷贝到project_template/build/jiot-sdk/目录下，并重命名为libjiot-sdk.a（即jiot-demo中“copy_jiot-lib.sh”执行过程）。
+4. make all即可找到jiot的头文件和库文件，完成编译。
+
+注意，project_template/build/目录中文件为make生成文件，如果执行make clean等操作，需要重新拷贝库文件，即执行步骤3。
+

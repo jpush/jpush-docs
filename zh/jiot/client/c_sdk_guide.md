@@ -98,3 +98,11 @@ libcrypto.so (libc6,hard-float) => /path/to/ssl/libcrypto.so.1.0.2
 6. 修改makefile添加依赖库的路径，比如ssl库在"/path/to/ssl/"目录下，可参考如下配置：
      LIBDIR = -L/path/to/ssl
 7. 保存makefile后，执行make编译命令即可生成执行文件。
+
+### 编译程序
+
+下面以demo.c文件为例，引入jiot-sdk下的头文件和库文件即可编译出demo。
+
+```
+gcc -o demo demo.c -Ijiot-sdk/include/jclient/ -Ljiot-sdk/lib/ -ljiot_c_sdk -lpthread -lssl -lcrypto
+```
