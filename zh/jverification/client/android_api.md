@@ -4,6 +4,33 @@
 
 * JVerificationInterface，包含SDK所有接口
 
+##SDK初始化（新增回调参数）
+
+###支持的版本
+开始支持的版本 2.3.6
+
+###接口定义
+
++ ***JVerificationInterface.init(Context context,RequestCallback<String> callback)***
+	+ 接口说明：
+		+ 初始化接口。建议在Application的onCreate中调用
+	+ 参数说明：
+		+ context：android的上下文
+		+ callback：回调接口
+	+ 回调说明：***onResult(int code, String msg)***
+  		+ code: 返回码，8000代表初始化成功，其他为失败，详见错误码描述
+    	+ msg：结果描述
+	+ 调用示例：
+
+~~~
+	JVerificationInterface.init(this, new RequestCallback<String>() {
+                @Override
+                public void onResult(int code, String msg) {
+                    Log.d("tag","code = " + code + " msg = " + msg);
+                }
+            });
+~~~
+
 ##SDK初始化
 
 ###支持的版本
@@ -548,6 +575,9 @@
 |7000|preLogin success|sdk 预取号成功|
 |7001|preLogin failed|sdk 预取号失败|
 |7002|preLogin requesting, please try again later|正在预取号中，稍后再试|
+|8000|init success|初始化成功|
+|8004|init failed|初始化失败，详见日志|
+|8005|init timeout|初始化超时，稍后再试|
 |-994|网络连接超时|   |
 |-996|网络连接断开|   |
 |-997|注册失败/登录失败|（一般是由于没有网络造成的）如果确保设备网络正常，还是一直遇到此问题，则还有另外一个原因：JPush 服务器端拒绝注册。而这个的原因一般是：你当前 App 的 Android 包名以及 AppKey，与你在 Portal 上注册的应用的 Android 包名与 AppKey 不相同。|
