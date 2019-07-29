@@ -10,6 +10,34 @@
 6. JVUnicomUIConfig类，JVUIConfig的子类，联通登录界面UI配置类
 7. JVTelecomUIConfig类，JVUIConfig的子类，电信登录界面UI配置类
 
+##SDK初始化(新增回调参数)
+
+###支持的版本
+开始支持的版本 2.3.6
+
+###接口定义
+
++ ***+ setupWithConfig:(JVAuthConfig \* )config;***
+
+    + 接口说明:
+        + 初始化接口
+    + 参数说明
+        + config 配置类
+    + 调用示例:
+
+~~~
+    // 如需使用 IDFA 功能请添加此代码并在初始化配置类中设置 advertisingId
+    NSString *idfaStr = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
+    
+    JVAuthConfig *config = [[JVAuthConfig alloc] init];
+    config.appKey = @"AppKey copied from JiGuang Portal application";
+    config.advertisingId = idfaStr;
+    config.authBlock = ^(NSDictionary *result) {
+        NSLog(@"初始化结果 result:%@", result);
+    };
+    [JVERIFICATIONService setupWithConfig:config];
+~~~
+
 ##SDK初始化
 
 ###支持的版本
@@ -17,7 +45,7 @@
 
 ###接口定义
 
-+ ***+  setupWithConfig:(JVAuthConfig * )config;***
++ ***+  setupWithConfig:(JVAuthConfig \* )config;***
 
     + 接口说明:
         + 初始化接口
@@ -40,7 +68,7 @@
 ###支持的版本
 开始支持的版本 2.3.2
 
-+ **+ (BOOL)isSetupClient**
++ ***+ (BOOL)isSetupClient***
 
 	+ 接口说明:
 		+ 初始化是否完成
@@ -99,7 +127,7 @@ if (isSetupClient) {
 ###支持的版本
 开始支持的版本 2.2.0
 
-+ **+ (void)getToken:(NSTimeInterval)timeout completion:(void (^)(NSDictionary * result))completion;**
++ ***+ (void)getToken:(NSTimeInterval)timeout completion:(void (^)(NSDictionary \* result))completion;***
 
     + 接口说明:
         + 获取手机号校验token
@@ -125,7 +153,7 @@ if (isSetupClient) {
 
 ###接口定义
 
-+ ***+ (void)getToken:(void (^)(NSDictionary * result))completion;***
++ ***+ (void)getToken:(void (^)(NSDictionary \* result))completion;***
 
     + 接口说明:
         + 获取号码认证token，此接口已废弃，建议使用新接口
@@ -151,7 +179,7 @@ if (isSetupClient) {
 
 ###接口定义
 
-+ ***+ (void)verifyNumber:(JVAuthEntity * )entity result:(void (^)(NSDictionary * result))completion;***
++ ***+ (void)verifyNumber:(JVAuthEntity * )entity result:(void (^)(NSDictionary \* result))completion;***
 
     + 接口说明:
         + 发起号码认证，验证手机号码和本机SIM卡号码是否一致
@@ -178,7 +206,7 @@ if (isSetupClient) {
 ###支持的版本
 开始支持的版本 2.2.0
 
-+ ***+ (void)preLogin:(NSTimeInterval)timeout completion:(void (^)(NSDictionary *result))completion***
++ ***+ (void)preLogin:(NSTimeInterval)timeout completion:(void (^)(NSDictionary \*result))completion***
 
     + 接口说明:
         + 验证当前运营商网络是否可以进行一键登录操作，该方法会缓存取号信息，提高一键登录效率。建议发起一键登录前先调用此方法。
@@ -200,7 +228,7 @@ if (isSetupClient) {
 ###支持的版本
 开始支持的版本 2.3.0
 
-+ **+ (void)getAuthorizationWithController:(UIViewController *)vc hide:(BOOL)hide completion:(void (^)(NSDictionary *result))completion**
++ ***+ (void)getAuthorizationWithController:(UIViewController \*)vc hide:(BOOL)hide completion:(void (^)(NSDictionary \*result))completion***
 
     + 接口说明:
         + 授权一键登录
@@ -227,7 +255,7 @@ if (isSetupClient) {
 
 ###接口定义
 
-+ ***+ (void)getAuthorizationWithController:(UIViewController *)vc completion:(void (^)(NSDictionary *result))completion***
++ ***+ (void)getAuthorizationWithController:(UIViewController \*)vc completion:(void (^)(NSDictionary *result))completion***
 
     + 接口说明:
         + 授权一键登录
@@ -249,7 +277,7 @@ if (isSetupClient) {
 ###支持的版本
 开始支持的版本 2.3.0
 
-+ **+ (void)dismissLoginController;**
++ ***+ (void)dismissLoginController;***
 
     + 接口说明:
         + 关闭授权页
@@ -267,7 +295,7 @@ if (isSetupClient) {
 
 ###接口定义
 
-+ ***+ (void)customUIWithConfig:(JVUIConfig *)UIConfig;***
++ ***+ (void)customUIWithConfig:(JVUIConfig \*)UIConfig;***
 
     + 接口说明:
         + 自定义授权页面UI样式
@@ -300,7 +328,7 @@ if (isSetupClient) {
 
 ###接口定义
 
-+ ***+ (void)customUIWithConfig:(JVUIConfig *)UIConfig customViews:(void(^)(UIView *customAreaView))customViewsBlk;***
++ ***+ (void)customUIWithConfig:(JVUIConfig *)UIConfig customViews:(void(^)(UIView \*customAreaView))customViewsBlk;***
 
     + 接口说明:
         + 自定义授权页面UI样式，并添加自定义控件
@@ -353,6 +381,7 @@ if (isSetupClient) {
 |channel|NSString|应用发布渠道，可选|
 |advertisingId|NSString|广告标识符，可选|
 |isProduction|BOOL|是否生产环境。如果为开发状态，设置为NO；如果为生产状态，应改为YES。可选，默认为NO|
+|authBlock|Block|初始化回调，包含code和content两个参数。10s未完成则返回超时|
 
 ##JVAuthEntity类
 
@@ -456,3 +485,5 @@ if (isSetupClient) {
 |7000|preLogin success|预取号成功|
 |7001|preLogin failed|预取号失败|
 |7002|preLogin requesting, please try again later|取号中|
+|8000|init success|初始化成功|
+|8005|init timeout|初始化超时|
