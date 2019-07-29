@@ -255,7 +255,7 @@ if (isSetupClient) {
 
 ###接口定义
 
-+ ***+ (void)getAuthorizationWithController:(UIViewController \*)vc completion:(void (^)(NSDictionary *result))completion***
++ ***+ (void)getAuthorizationWithController:(UIViewController \*)vc completion:(void (^)(NSDictionary \*result))completion***
 
     + 接口说明:
         + 授权一键登录
@@ -328,7 +328,7 @@ if (isSetupClient) {
 
 ###接口定义
 
-+ ***+ (void)customUIWithConfig:(JVUIConfig *)UIConfig customViews:(void(^)(UIView \*customAreaView))customViewsBlk;***
++ ***+ (void)customUIWithConfig:(JVUIConfig \*)UIConfig customViews:(void(^)(UIView \*customAreaView))customViewsBlk;***
 
     + 接口说明:
         + 自定义授权页面UI样式，并添加自定义控件
