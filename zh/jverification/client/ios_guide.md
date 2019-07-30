@@ -25,6 +25,10 @@
 
 ##接入配置
 
+###Build Settings
+
++ 需要在Build Setting -> Linking ->Other Linker Flags 添加-ObjC
+
 ###添加SDK到工程中
 
 **选择 1: Cocoapods 导入**
@@ -48,35 +52,31 @@
 + 在极光官网下载最新 SDK
 + 请在自己的工程中导入libs文件夹下的SDK文件:
 
-    * jcore-ios-2.x.x.a  jcore版本 1.2.3及其以上
-    * jverification-ios-2.3.6.a jverification版本 2.0.0及其以上
-    * account_verify_sdk_core.framework
-    * account_login_sdk_noui_core.framework
-    * TYRZSDK.framework
-    * JVERIFICATIONService.h
-    * EAccountApiSDK.framework
+    + JVERIFICATIONService.h
 
 + 为工程添加相应的Frameworks，需要为项目添加的Frameworks如下
 
-    * AdSupport.framework（获取 IDFA 需要；如果不使用 IDFA，请不要添加）
-    * CoreLocation.framework
-    * CFNetwork.framework
-    * CoreFoundation.framework
-    * libresolv.tbd
-    * libz.tbd
-    * libc++.1.tbd
-    * CoreTelephony.framework
-    * SystemConfiguration.framework
-    * Security.framework
-    * CoreGraphics.framework
-    * libsqlite3.tbd
-    * MobileCoreServices.framework
-    * account_verify_sdk_core.framework
-    * TYRZSDK.framework
-    * account_login_sdk_noui_core.framework
-    * EAccountApiSDK.framework
-    * jcore-ios-2.0.2.a  jcore版本 1.2.3及其以上
-    * jverification-ios-2.3.0.a jverification版本 2.0.0及其以上
+    + AdSupport.framework（获取 IDFA 需要；如果不使用 IDFA，请不要添加）
+    + CoreLocation.framework
+    + CFNetwork.framework
+    + CoreFoundation.framework
+    + libresolv.tbd
+    + libz.tbd
+    + libc++.1.tbd
+    + CoreTelephony.framework
+    + SystemConfiguration.framework
+    + Security.framework
+    + CoreGraphics.framework
+    + libsqlite3.tbd
+    + MobileCoreServices.framework
+    + account\_verify\_sdk\_core.framework
+    + TYRZSDK.framework
+    + account\_login\_sdk\_noui\_core.framework
+    + EAccountApiSDK.framework
+    + jcore-ios-x.x.x.a  jcore版本 1.2.3及其以上
+    + jverification-ios-x.x.x.a
+    
+***说明：***jcore-ios-x.x.x.a 、jverification-ios-x.x.x.a 、account\_verify\_sdk\_core.framework 、account\_login\_sdk\_noui\_core.framework 、TYRZSDK.framework 和 EAccountApiSDK.framework 在 SDK 中 libs 文件夹下
     
 
 ##配置资源
@@ -85,7 +85,7 @@
 
 ##接入代码
 
-请将以下代码添加到引用JAuthHelper.h头文件的的相关类中
+请将以下代码添加到引用JVERIFICATIONService.h头文件的的相关类中
 
 ~~~
     //引入JVERIFICATIONService.h头文件
@@ -94,12 +94,11 @@
 	#import <AdSupport/AdSupport.h>
 ~~~
 
-接入的JVerification SDK的应用，必须先初始化JAuthHelper,否则将会无法正常使用，请将以下代码添加到合适的位置
+接入的JVerification SDK的应用，必须先初始化JVERIFICATIONService，否则将会无法正常使用，请将以下代码添加到合适的位置
 
 ~~~
-    // 如需使用 IDFA 功能请添加此代码并在初始化配置类中设置 advertisingId
+    //如需使用 IDFA 功能请添加此代码并在初始化配置类中设置 advertisingId
     NSString *idfaStr = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
-    
     JVAuthConfig *config = [[JVAuthConfig alloc] init];
     config.appKey = @"your appkey";
     config.advertisingId = idfaStr;
