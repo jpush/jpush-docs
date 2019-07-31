@@ -26,8 +26,8 @@ img[alt=jpush_ios] { width: 800px; }
 * README 文件：SDK 相关说明
 * demo 文件夹：示例
 
-###IDFA
-从JPUSH3.2.2版本开始，极光提供 idfa 和 noidfa 两个版本。 idfa 版本是标准版，默认自动采集 IDFA 数据， noidfa 版本不自动采集。极光建议开发者使 idfa 版本。当然，如果开发者不想使⽤IDFA 或者担忧采集 IDFA 而未集成任何广告服务遭到 Apple 拒绝，请使用 noidfa 版本。
+### IDFA
+从JPUSH3.2.2版本开始，极光提供 idfa 和 noidfa 两个版本。 idfa 版本是标准版，默认自动采集 IDFA 数据， noidfa 版本不自动采集。极光建议开发者使 idfa 版本。当然，如果开发者不想使⽤ IDFA 或者担忧采集 IDFA 而未集成任何广告服务遭到 Apple 拒绝，请使用 noidfa 版本。
 
 ## 创建应用
 * 在 JPush 的管理 Portal 上创建应用，创建成功后自动生成 AppKey 用以标识该应用。
