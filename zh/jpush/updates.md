@@ -1,5 +1,30 @@
 # 最近更新
 
+### JPush iOS SDK v3.2.2
+
+#### 更新时间
++ 2019-07-31
+
+#### Change Log
++ 提供获取IDFA版本和不获取IDFA版本，供开发者选择
++ 修复已知问题
+
+#### 升级提示
+
++ 建议升级！
+
+#### 升级指南
++ 3.2.2 版本开始，默认的标准包是获取IDFA版本，需添加 AdSupport.framework 库支持（如果缺少）
++ 3.2.2 版本的 JPush 需要 2.1.1 及以上的 JCore 版本，升级 SDK 的时候请将 JCore 一起升级。
++ 注意 3.0.0 及以上版本 JPush SDK 将不再支持处理器为 i386 的模拟器。
++ 替换 lib 文件夹里的文件:先删除项目里旧的 .a 和 .h 文件，重新导入新的 .a 和 .h 文件（注意新版本替换 APService.h 为 JPUSHService.h）
++ Xcode 7 环境下，替换原先导入的 libz.dylib 框架为 libz.tbd （特别留意）
++ 需要删除旧的 libPushSDK-Simulator.a （如果存在）
++ 使用地理围栏功能时涉及以下相关配置：
+	- 位置权限配置。
+	- 选择Background Modes配置。 target -> capabilities ->Background Modes 选中Location updates。
+	- 注意registerLbsGeofenceDelegate: withLaunchOptions 方法最好在sdk初始化之前调用。
+
 ### JPush Android SDK v3.3.4
 
 #### 更新时间
