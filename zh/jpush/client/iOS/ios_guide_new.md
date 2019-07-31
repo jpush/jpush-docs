@@ -20,8 +20,14 @@ img[alt=jpush_ios] { width: 800px; }
 * lib 文件夹：包含头文件 JPUSHService.h，静态库文件 jpush-ios-x.x.x.a，jcore-ios-x.x.x.a（请注意：模拟器不支持 APNs）
     * jcore-ios-1.x.x.a 支持的 iOS 版本为 6.0 及以上版本
     * jcore-ios-2.x.x.a 支持的 iOS 版本为 7.0 及以上版本
+* lib-noidfa 文件夹：包含头文件 JPUSHService.h，静态库文件 jpush-noidfa-ios-x.x.x.a，jcore-ios-x.x.x.a（请注意：模拟器不支持 APNs）
+    * jcore-ios-1.x.x.a 支持的 iOS 版本为 6.0 及以上版本
+    * jcore-ios-2.x.x.a 支持的 iOS 版本为 7.0 及以上版本
 * README 文件：SDK 相关说明
 * demo 文件夹：示例
+
+###IDFA
+从JPUSH3.2.2版本开始，极光提供 idfa 和 noidfa 两个版本。 idfa 版本是标准版，默认自动采集 IDFA 数据， noidfa 版本不自动采集。极光建议开发者使 idfa 版本。当然，如果开发者不想使⽤IDFA 或者担忧采集 IDFA 而未集成任何广告服务遭到 Apple 拒绝，请使用 noidfa 版本。
 
 ## 创建应用
 * 在 JPush 的管理 Portal 上创建应用，创建成功后自动生成 AppKey 用以标识该应用。
@@ -38,18 +44,37 @@ img[alt=jpush_ios] { width: 800px; }
 
 * 通过 Cocoapods 下载地址：
 
-```
-pod 'JPush'
-```
-```
-注：如果无法导入最新版本，请执行 pod repo update master 这个命令来升级本机的 pod 库，然后重新 pod 'JPush'
-```
-* 如果需要安装指定版本则使用以下方式（以 3.1.0 版本为例）：
-
-```
-pod 'JPush', '3.1.0'
-```
-
+	**1. 如果使用标准版本(需要特别注意以下“注意事项”)**
+	
+	```
+	pod 'JPush'
+	```
+	```
+	注：如果无法导入最新版本，请执行 pod repo update master 这个命令来升级本机的 pod 库，然后重新 pod 'JPush'
+	```
+	* 如果需要安装指定版本则使用以下方式（以 3.2.2 版本为例）：
+	
+	```
+	pod 'JPush', '3.2.2'
+	```
+	**注意事项**
+	
+	App在提交苹果审核时，对“此App是否使用广告标识符(IDFA)？”，需要选择“是”，并且需要根据App使用广告情况，勾选以下选项
+	
+	* 在App内投放广告 -- 确认是的话需要勾选
+	* 标明此App安装来自先前投放的特定广告 -- 确认是的话需要勾选
+	* 标明此App中发生的操作来自先前投放的广告 -- 确认是的话需要勾选
+	
+	勾选可参考以下示图：
+	![jpush_ios][8]
+	
+	**2. 如果使用无IDFA版本**
+	
+	3.2.2及以上版本，需要安装指定版本（以 3.2.2 版本为例）：
+	
+	```
+	pod 'JPush', '3.2.2-noidfa'
+	```
 
 **选择 2：手动导入**
 
@@ -387,3 +412,4 @@ iOS 10 新增的 Notification Service Extension 功能，用 mutable-content 字
 [4]: mailto:support&#64;jpush.cn
 [6]: ../image/ios_http.png
 [7]: ../image/capabilities_intro.jpg
+[8]: ../image/cocoapods_intro.png
