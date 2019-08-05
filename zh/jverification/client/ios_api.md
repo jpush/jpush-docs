@@ -639,15 +639,15 @@ if (isSetupClient) {
 &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;constant:(CGFloat)c;***
 
 + 接口说明:
-   + 创建JVLayoutConstraint布局对象
+	+ 创建JVLayoutConstraint布局对象
 
 + 接口说明:
-    + attr1 约束类型
-    + relation 与参照视图之间的约束关系
-    + item 参照item
-    + attr2 参照item约束类型
-    + multiplier 乘数
-    + c 常量
+	+ attr1 约束类型
+	+ relation 与参照视图之间的约束关系
+	+ item 参照item
+	+ attr2 参照item约束类型
+	+ multiplier 乘数
+	+ c 常量
 
 + 调用示例:
 
