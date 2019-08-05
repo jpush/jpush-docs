@@ -1,5 +1,40 @@
 #最近更新
 
+##JVerification iOS SDK v2.3.8
+
+**更新时间**
+
+* 2019-08-05
+
+**Change Log**
+
+* 新增支持授权页面弹窗样式
+* 新增JVLayoutConstraint布局类，使用约束布局替代Frame布局，并兼容原有控件的Frame布局
+* 新增支持设置授权页面自动旋转，支持强制屏幕方向
+* 新增支持修改隐私协议文案
+* 新增支持自定义授权页面loading
+
+**升级建议**
+
+* 建议升级
+
+**升级指南**
+
++ 首先解压您获取到的zip压缩包
+
++ 更新库文件
+    + 打开libs文件夹
+    + 替换项目中原有的极光SDK文件
+        + account\_login\_sdk\_noui\_core.framework
+        + account\_verify\_sdk\_core.framework
+        + EAccountApiSDK.framework
+        + jcore-ios-x.x.x.a
+        + jverification-ios-2.3.8.a
+        + TYRZSDK.framework
+    + 项目targets->build phases->link binary with libraries
+        + 增加libc++.1.tbd
+    + 在极光演示demo中，找到JVerificationResource.bundle，将这个bundle文件加到您的项目中
+
 ##JVerification Android SDK v2.3.8
 
 **更新时间**
@@ -92,7 +127,7 @@
         + account_verify_sdk_core.framework
         + EAccountApiSDK.framework
         + jcore-ios-x.x.x.a
-        + jverification-ios-2.3.4.a
+        + jverification-ios-2.3.6.a
         + TYRZSDK.framework
     + 项目targets->build phases->link binary with libraries
         + 增加libc++.1.tbd
