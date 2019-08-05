@@ -25,10 +25,6 @@
 
 ##接入配置
 
-###Build Settings
-
-+ 需要在Build Setting -> Linking ->Other Linker Flags 添加-ObjC
-
 ###添加SDK到工程中
 
 **选择 1: Cocoapods 导入**
@@ -78,6 +74,21 @@
     
 ***说明：***jcore-ios-x.x.x.a 、jverification-ios-x.x.x.a 、account\_verify\_sdk\_core.framework 、account\_login\_sdk\_noui\_core.framework 、TYRZSDK.framework 和 EAccountApiSDK.framework 在 SDK 中 libs 文件夹下
     
+##工程配置
+
+#### 配置-ObjC  
+ 设置工程 TARGETS -> Build Settings -> Other Links Flags， 设置 -ObjC
+ 
+#### 配置支持Http传输  
+ 右键打开工程plist文件，加入以下代码
+ 
+~~~
+    <key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
+~~~
 
 ##配置资源
 
