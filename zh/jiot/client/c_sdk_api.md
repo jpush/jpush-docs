@@ -32,8 +32,8 @@ void jiotRegister(JHandle handle,void* pContext, JClientMessageCallback *cb,JCli
 #### 参数说明
 * handle :JIOT客户端的句柄
 * pContext:设备的上下文信息
-* handleCb：sdk连接状态回调函数结构体
 * cb: 客户端处理下行报文的回调函数结构体
+* handleCb: 客户端处理接收状态回调函数
 
 ####  返回值
   无
@@ -48,10 +48,9 @@ int jiotConn(JHandle handle，const DeviceInfo *pDev);
 * handle :JIOT客户端的句柄
 * pDev :设备三元组
 
-####  返回值
-* 0成功，非0失败
-
-
+#### 返回值
+ 成功返回JIOT_SUCCESS，失败返回对应错误码
+ 
 ## SDK释放接口
 ### jiotDisConn
 断开连接MQTT服务端。
@@ -139,32 +138,7 @@ JiotResult jiotVersionReportReq(JHandle handle, const VersionReportReq * pReq);
 #### 参数说明
 * handle :JIOT客户端的句柄
 * pReq :上报消息的结构体指针
-#### 返回值
-返回值结构体，内容为错误码和seqNO
 
-### jiotPropertySetRsp
-JIOT客户端回复属性设置请求的回复
-#### 接口定义
-```
-JiotResult jiotPropertySetRsp(JHandle handle, const PropertySetRsp * Rsp);
-```
-#### 参数说明
-* handle :JIOT客户端的句柄
-* Rsp :属性设置回复结构体指针
-
-#### 返回值
-返回值结构体，内容为错误码和seqNO
-
-### jiotMsgDeliverRsp
-JIOT客户端回复消息下发请求的回复
-
-#### 接口定义
-```
-JiotResult jiotMsgDeliverRsp(JHandle handle,const MsgDeliverRsp * Rsp);
-```
-#### 参数说明
-* handle :JIOT客户端的句柄
-* Rsp :属性设置回复结构体指针
 #### 返回值
 返回值结构体，内容为错误码和seqNO
 
@@ -253,15 +227,16 @@ typedef int jiotMsgDeliverReq(void* pContext, JHandle handle, MsgDeliverReq *Req
 ```
 struct JClientMessageCallback
 {
-    jiotPropertyReportResp *_cbPropertyReportResp; 
-    jiotEventReportResp *_cbEventReportResp; 
-    jiotVersionReportReq *_cbVersionReportReq;
+    jiotPropertyReportRsp *_cbPropertyReportRsp; 
+    jiotEventReportRsp *_cbEventReportRsp; 
+    jiotVersionReportRsp *_cbVersionReportRsp;
     jiotPropertySetReq *_cbPropertySetReq; 
     jiotMsgDeliverReq *_cbMsgDeliverReq;
 } ;
 
 ```
-## SDK状态回调函数接口
+
+## SDK事件回调函数接口
 
 ### jiotConnectedHandle
 客户端mqtt连接成功。
@@ -281,13 +256,26 @@ typedef int jiotConnectedHandle(void* pContext);
 typedef int jiotConnectFailHandle(void* pContext,int errCode);
 ```
 #### 参数说明
- * pContext:用户注册的上下文信息
- * errCode JIOT客户端异常错误码
-####  返回值
- 无
+* pContext:用户注册的上下文信息
+* errCode JIOT客户端异常错误码
+
+#### 返回值
+
+### jiotDisconnectHandle
+客户端mqtt连接断开。
+
+#### 接口定义
+```
+typedef int jiotDisconnectHandle(void* pContext);
+```
+#### 参数说明
+* pContext:用户注册的上下文信息
+
+#### 返回值
 
 ### jiotSubscribeFailHandle
-客户端subscirbe失败，ACL不通过。
+客户端subscirbe失败。
+
 #### 接口定义
 ```
 typedef int jiotSubscribeFailHandle(void* pContext,char * TopicFilter);
@@ -299,7 +287,8 @@ typedef int jiotSubscribeFailHandle(void* pContext,char * TopicFilter);
  无 
  
 ### jiotPublishFailHandle
-客户端publish失败，ACL不通过
+客户端publish失败。（需要mqtt-V5.0支持该功能）
+
 #### 接口定义
 ```
 typedef int jiotPublishFailHandle(void* pContext,long long seqNo);
@@ -323,16 +312,16 @@ typedef int jiotMessageTimeoutHandle(void* pContext,long long seqNo);
 ####  返回值
  无
  
-## SDK状态回调函数指针结构体
+## SDK的事件回调函数指针结构体
 ```
 typedef struct JClientHandleCallback
 {
-    jiotConnectedHandle *_cbConnectedHandle; //mqtt连接成功
-    jiotConnectFailHandle *_cbConnectFailHandle; //mqtt连接失败
-    jiotDisconnectHandle *_cbDisconnectHandle; //mqtt连接中断
-    jiotSubscribeFailHandle *_cbSubscribeFailHandle; //消息subscirbe失败，ACL不通过
-    jiotPublishFailHandle *_cbPublishFailHandle; //消息publish失败，ACL不通过。由于MQTT3.1.1版本不支持，所以SDK暂时不支持,后续再开放
-    jiotMessageTimeoutHandle *_cbMessageTimeoutHandle; //消息发送超时
+    jiotConnectedHandle       *_cbConnectedHandle;        
+    jiotConnectFailHandle     *_cbConnectFailHandle;      
+    jiotDisconnectHandle      *_cbDisconnectHandle;       
+    jiotSubscribeFailHandle   *_cbSubscribeFailHandle;    
+    jiotPublishFailHandle     *_cbPublishFailHandle;      
+    jiotMessageTimeoutHandle  *_cbMessageTimeoutHandle;   
 } JClientHandleCallback;
 ```
 ## 错误码
