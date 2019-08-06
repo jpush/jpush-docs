@@ -36,6 +36,26 @@ JPush 提供了 5 种模板，开发者可以通过填充模板的内容，发�
 
 Android 开发者参考文档：[Rich Push 开发指南](../advanced/rich_push/)
 
+
+### 地理围栏
+JPush 支持开发者直接通过极光推送的控制台，通过地图圈选一个经纬度范围，创建一个虚拟的栅栏围出一个虚拟地理边界，当开发者APP的用户进入、离开这个区域，或在该区域内活动时，设备APP可以自动接收通知，实现准确的消息推送，把有用的信息，在合适的地方，推送给合适的人。
+地理围栏当前支持 Android、iOS 平台，为更好的使用地理围栏的功能，建议更新当前 Android SDK 版本至 v3.1.8 及以上，更新当前 iOS SDK 版本至 v3.1.2 及以上。
+
+
+控制台操作文档：[地理围栏](https://docs.jiguang.cn/jpush/console/Instructions/#_18) <br/>
+Android 开发者参考文档：[地理围栏](https://docs.jiguang.cn/jpush/client/Android/android_api/#api_11) <br/>
+iOS 开发者参考文档：[地理围栏](https://docs.jiguang.cn/jpush/client/iOS/ios_api/#_158)
+
+
+### 日活优化
+为了帮助开发者增加其APP的用户粘性，提升活跃度，尽可能的唤醒其APP沉默用户，JPush 提供了“早上好” 的功能。<br/>
+
+#### 早上好
+可以通过极光推送的控制台自行开启，开启后将会每天自动推送最新的天下大事或者生活小贴士等多类型视频多媒体消息到开发者APP的全量用户，从而更好的传达信息，带来更丰富的用户互动。<br/>
+使用指南参考文档：[早上好](https://docs.jiguang.cn/jpush/console/Instructions/#_19)<br/>
+此功能目前仅支持 Android 平台，为更好的使用早上好的功能，需要更新您集成的 Android SDK 版本至官方最新版本。<br/>
+
+
 ### 本地通知
 本地通知 API 不依赖于网络，无网条件下依旧可以触发；本地通知的定时时间是自发送时算起的，不受中间关机等操作的影响。
 本地通知与网络推送的通知是相互独立的，不受保留最近通知条数上限的限制。
