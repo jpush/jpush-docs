@@ -228,6 +228,32 @@ if (isSetupClient) {
 ##SDK请求授权一键登录（新）
 
 ###支持的版本
+开始支持的版本 2.4.0
+
++ ***+ (void)getAuthorizationWithController:(UIViewController \*)vc hide:(BOOL)hide completion:(void (^)(NSDictionary \*result))completion actionBlock:(void(^)(NSInteger type, NSString \*content))actionBlock***
+
+    + 接口说明:
+        + 授权登录
+    + 参数说明:
+        + completion 登录结果
+        + result 字典 获取到token时key有operator、code、loginToken字段，获取不到token是key为code和content字段
+        + vc 当前控制器
+        + hide 完成后是否自动隐藏授权页。
+        + actionBlock  授权页事件触发回调。包含type和content两个参数，type为事件类型，content为事件描述。 type = 1,授权页被关闭
+
+    + 调用示例:
+
+~~~
+    [JVERIFICATIONService getAuthorizationWithController:self hide:YES completion:^(NSDictionary *result) {
+        NSLog(@"一键登录 result:%@", result);
+    } actionBlock:^(NSInteger type, NSString *content) {
+        NSLog(@"一键登录 actionBlock :%ld %@", (long)type , content);
+    }];
+~~~
+
+##SDK请求授权一键登录（旧）
+
+###支持的版本
 开始支持的版本 2.3.0
 
 + ***+ (void)getAuthorizationWithController:(UIViewController \*)vc hide:(BOOL)hide completion:(void (^)(NSDictionary \*result))completion***
