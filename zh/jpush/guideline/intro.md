@@ -1,6 +1,7 @@
 # JPush 产品简介
 
 <br/>
+![jpush_web](image/jpushlogo.png)
 
 JPush 是经过考验的大规模 App 推送平台，每天推送消息数超过 5 亿条。
 开发者集成 SDK 后，可以通过调用 API 推送消息。同时，JPush 提供可视化的 web 端控制台发送通知，统计分析推送效果。
