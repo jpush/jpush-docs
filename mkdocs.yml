@@ -254,6 +254,6 @@ pages:
   - 资源下载: 'jiot/resources.md'
 
 - 合规指南:
-  - 极光开发者应用合规指南:
+  - 合规指南:
     - '极光开发者应用合规指南': 'compliance_guide/app_compliance_guide/app_compliance_guide.md'
   

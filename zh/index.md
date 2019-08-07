@@ -192,4 +192,15 @@
 </div>
 </div>
 
+<div class="row">
+<div class="panel panel-default">
+<div class="panel-heading">合规指南</div>
+<div class="panel-body">
+    <ul>
+    <li><a href="/compliance_guide/app_compliance_guide/">极光开发者应用合规指南</a></li>
+    </ul>
+</div>
+</div>
+</div>
+
 </div>
