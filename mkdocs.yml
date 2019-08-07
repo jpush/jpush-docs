@@ -252,3 +252,8 @@ pages:
     - '回调说明': 'jiot/server/http_callback.md'
   - 最近更新: 'jiot/updates.md'
   - 资源下载: 'jiot/resources.md'
+
+- 合规指南:
+  - 极光开发者应用合规指南:
+    - '极光开发者应用合规指南': 'compliance_guide/app_compliance_guide/app_compliance_guide.md'
+  
