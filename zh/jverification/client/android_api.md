@@ -4,6 +4,33 @@
 
 * JVerificationInterface，包含SDK所有接口
 
+##SDK初始化（新增回调参数）
+
+###支持的版本
+开始支持的版本 2.3.6
+
+###接口定义
+
++ ***JVerificationInterface.init(Context context,RequestCallback<String> callback)***
+	+ 接口说明：
+		+ 初始化接口。建议在Application的onCreate中调用
+	+ 参数说明：
+		+ context：android的上下文
+		+ callback：回调接口
+	+ 回调说明：***onResult(int code, String msg)***
+  		+ code: 返回码，8000代表初始化成功，其他为失败，详见错误码描述
+    	+ msg：结果描述
+	+ 调用示例：
+
+~~~
+	JVerificationInterface.init(this, new RequestCallback<String>() {
+                @Override
+                public void onResult(int code, String msg) {
+                    Log.d("tag","code = " + code + " msg = " + msg);
+                }
+            });
+~~~
+
 ##SDK初始化
 
 ###支持的版本
@@ -311,7 +338,7 @@
 
 ~~~
     JVerifyUIConfig uiConfig = new JVerifyUIConfig.Builder()
-                    .setAuthBGImgPath("main_bg")   
+                    .setAuthBGImgPath("main_bg")
                     .setNavColor(0xff0086d0)
                     .setNavText("登录")
                     .setNavTextColor(0xffffffff)
@@ -334,6 +361,9 @@
                     .setNumFieldOffsetY(170)
                     .setSloganOffsetY(230)
                     .setLogBtnOffsetY(254)
+                    .setNumberSize(18)
+                    .setPrivacyState(false)
+                    .setNavTransparent(false)
                     .addCustomView(mBtn, true, new JVerifyUIClickCallback() {
                         @Override
                         public void onClicked(Context context, View view) {
@@ -344,8 +374,12 @@
                         public void onClicked(Context context, View view) {
                             Toast.makeText(context,"动态注册的其他按钮222",Toast.LENGTH_SHORT).show();
                         }
-                    })
-                    .setPrivacyOffsetY(30).build();
+                    }).addNavControlView(navBtn, new JVerifyUIClickCallback() {
+                        @Override
+                        public void onClicked(Context context, View view) {
+                        Toast.makeText(context,"导航栏按钮点击",Toast.LENGTH_SHORT).show();
+                        }
+                    }).setPrivacyOffsetY(30).build();
     JVerificationInterface.setCustomUIWithConfig(uiConfig);
 
 ~~~
@@ -426,81 +460,158 @@
 
 ##JVerifyUIConfig配置元素说明
 
-+ 授权页背景
-    + 开始支持的版本：2.1.1
-    + 说明：
-        + 图片会默认拉伸铺满整个屏幕，建议使用 .9.png 格式的图片来解决不同尺寸屏幕的适配问题 
+***x轴未设置偏移则所有组件默认横向居中***
 
-|方法|参数类型|说明|
-|:-----:|:----:|:----:|
-|setAuthBGImgPath|String|设置背景图片|
++ 设置授权页背景
+	+ 支持的版本 ：2.1.1
+	+ 说明：图片会默认拉伸铺满整个屏幕，适配不同尺寸手机，建议使用 .9.png 图片来解决适配问题。
+
+	|方法|参数类型|说明|
+	|:-----:|:----:|:----:|
+	|setAuthBGImgPath|String|设置背景图片|
+
+
 
 + 授权页导航栏
-        
-|方法|参数类型|说明|
-|:-----:|:----:|:----:|
-|setNavColor|int|设置导航栏颜色|
-|setNavText|String|设置导航栏标题文字|
-|setNavTextColor|int|设置导航栏标题文字颜色|
-|setNavReturnImgPath|String|设置导航栏返回按钮图标|
-|setNavTransparent|boolean|设置导航栏背景是否隐藏，默认不透明。since 2.3.2|
 
-       
+	|方法|参数类型|说明|
+	|:-----:|:----:|:----:|
+	|setNavColor|int|设置导航栏颜色|
+	|setNavText|String|设置导航栏标题文字|
+	|setNavTextColor|int|设置导航栏标题文字颜色|
+	|setNavReturnImgPath|String|设置导航栏返回按钮图标|
+	|setNavTransparent|boolean|设置导航栏背景是否透明。默认不透明。since 2.3.2|
+
 + 授权页logo
-       
-|方法|参数类型|说明|
-|:-----:|:----:|:----:|
-|setLogoWidth|int|设置logo宽度（单位：dp）|
-|setLogoHeight|int|设置logo高度（单位：dp）|
-|setLogoHidden|boolean|隐藏logo|
-|setLogoOffsetY|int|设置logo相对于标题栏下边缘y偏移|
-|setLogoImgPath|String|设置logo图片|
-       
-+ 授权页号码栏
-       
-|方法|参数类型|说明|
-|:-----:|:----:|:----:|
-|setNumberColor|int|设置手机号码字体颜色|
-|setNumberSize|Number|设置手机号码字体大小（单位：sp）。since 2.3.2|
-|setNumFieldOffsetY|int|设置号码栏相对于标题栏下边缘y偏移|
-       
-+ 授权页登录按钮
-       
-|方法|参数类型|说明|
-|:-----:|:----:|:----:|
-|setLogBtnText|String|设置登录按钮文字|
-|setLogBtnTextColor|int|设置登录按钮文字颜色|       
-|setLogBtnImgPath|String|设置授权登录按钮图片|
-|setLogBtnOffsetY|int|设置登录按钮相对于标题栏下边缘y偏移|
-       
-+ 授权页隐私栏
-       
-|方法|参数类型|说明|
-|:-----:|:----:|:----:|
-|setAppPrivacyOne|String,String|设置开发者隐私条款1名称和URL(名称，url)|
-|setAppPrivacyTwo|String,String|设置开发者隐私条款2名称和URL(名称，url)|       
-|setAppPrivacyColor|int,int|设置隐私条款名称颜色(基础文字颜色，协议文字颜色)|
-|setPrivacyOffsetY|int|设置隐私条款相对于授权页面底部下边缘y偏移|       
-|setCheckedImgPath|String|设置复选框选中时图片|
-|setUncheckedImgPath|String|设置复选框未选中时图片|  
-|setPrivacyState|boolean|设置隐私条款默认选中状态，默认不选中。since 2.3.2|
-       
-+ 授权页slogan 
-       
-|方法|参数类型|说明|
-|:-----:|:----:|:----:|
-|setSloganTextColor|int|设置移动slogan文字颜色|
-|setSloganOffsetY|int|设置slogan相对于标题栏下边缘y偏移|
-       
-+ 开发者自定义控件
-       
-|方法|参数类型|说明|
-|:-----:|:----:|:----:|
-|addCustomView|见以上方法定义|在授权页空白处添加自定义控件以及点击监听|
-|addNavControlView|见以上方法定义|在授权页面顶部导航栏添加自定义控件以及点击监听|
 
+	|方法|参数类型|说明|
+	|:-----:|:----:|:----:|
+	|setLogoWidth|int|设置logo宽度（单位：dp）|
+	|setLogoHeight|int|设置logo高度（单位：dp）|
+	|setLogoHidden|boolean|隐藏logo|
+	|setLogoOffsetY|int|设置logo相对于标题栏下边缘y偏移|
+	|setLogoImgPath|String|设置logo图片|
+	|setLogoOffsetX|int|设置logo相对于屏幕左边x轴偏移。since 2.3.8|
+
++ 授权页号码栏
+
+   |方法|参数类型|说明|
+   |:-----:|:----:|:----:|
+   |setNumberColor|int|设置手机号码字体颜色|
+   |setNumberSize|Number|设置手机号码字体大小（单位：sp）。since 2.3.2|
+   |setNumFieldOffsetY|int|设置号码栏相对于标题栏下边缘y偏移|
+   |setNumFieldOffsetX|int|设置号码栏相对于屏幕左边x轴偏移。since 2.3.8|
+
++ 授权页登录按钮
+
+   |方法|参数类型|说明|
+   |:-----:|:----:|:----:|
+   |setLogBtnText|String|设置登录按钮文字|
+   |setLogBtnTextColor|int|设置登录按钮文字颜色|
+   |setLogBtnImgPath|String|设置授权登录按钮图片|
+   |setLogBtnOffsetY|int|设置登录按钮相对于标题栏下边缘y偏移|
+   |setLogBtnOffsetX|int|设置登录按钮相对于屏幕左边x轴偏移。since 2.3.8|
+   |setLogBtnWidth|int|设置登录按钮宽度。since 2.3.8|
+   |setLogBtnHeight|int|设置登录按钮高度。since 2.3.8|
+   |setLogBtnTextSize|int|设置登录按钮字体大小。since 2.3.8|
+
++ 授权页隐私栏
+
+   |方法|参数类型|说明|
+   |:-----:|:----:|:----|
+   |setAppPrivacyOne|String,String|设置开发者隐私条款1名称和URL(名称，url)|
+   |setAppPrivacyTwo|String,String|设置开发者隐私条款2名称和URL(名称，url)|
+   |setAppPrivacyColor|int,int|设置隐私条款名称颜色(基础文字颜色，协议文字颜色)|
+   |setPrivacyOffsetY|int|设置隐私条款相对于授权页面底部下边缘y偏移|
+   |setCheckedImgPath|String|设置复选框选中时图片|
+   |setUncheckedImgPath|String|设置复选框未选中时图片|
+   |setPrivacyState|boolean|设置隐私条款默认选中状态，默认不选中。since 2.3.2|
+   |setPrivacyOffsetX|int|设置隐私条款相对于屏幕左边x轴偏移。since 2.3.8|
+   |setPrivacyTextCenterGravity|int|设置隐私条款文字是否居中对齐（默认左对齐）。since 2.3.8|
+   |setPrivacyText|String,String,String,String|设置隐私条款名称外的文字。<br>如：登录即同意...和...、...并使用本机号码登录<br>参数1为："登录即同意"。<br>参数2为："和"。<br>参数3为："、"。<br>参数4为："并使用本机号码登录"。<br>since 2.3.8|
+
++ 授权页slogan
+
+   |方法|参数类型|说明|
+   |:-----:|:----:|:----:|
+   |setSloganTextColor|int|设置移动slogan文字颜色|
+   |setSloganOffsetY|int|设置slogan相对于标题栏下边缘y偏移|
+   |setSloganOffsetX|int|设置slogan相对于屏幕左边x轴偏移。since 2.3.8|
+   |setSloganBottomOffsetY|int|设置slogan相对于屏幕底部下边缘y轴偏移。since 2.3.8|
+
++ 开发者自定义控件
+
+   |方法|参数类型|说明|
+   |:-----:|:----:|:----:|
+   |addCustomView|见以上方法定义|在授权页空白处添加自定义控件以及点击监听|
+   |addNavControlView|见以上方法定义|在授权页面顶部导航栏添加自定义控件以及点击监听|
 
 ![JVerification](../image/cutomeUI_description_android.png)
+
+##授权页弹窗模式
+
+### 支持的版本
+开始支持的版本 2.3.8
+
+### 接口定义
+
++ ***setDialogTheme(int dialogWidth, int dialogHeight, int offsetX, int offsetY, boolean isBottom)***
+
+	+ 接口说明：
+	   + 设置授权页为弹窗模式
+	+ 参数说明：
+       + dialogWidth:窗口宽度，单位dp
+       + dialogHeight:窗口高度，单位dp
+       + offsetX:窗口相对屏幕中心的x轴偏移量，单位dp
+       + offsetY:窗口相对屏幕中心的y轴偏移量，单位dp
+       + isBottom: 窗口是否居屏幕底部。设置后offsetY将失效
+
+	+ 调用示例：
+
+~~~
+    new JVerifyUIConfig.Builder().setDialogTheme(410, 390, 0, 0, false)
+~~~
+
+### 窗口模式样式设置
+
+####在manifest中为授权页activity设置窗口样式style
+
+AndroidManifest.xml
+
+~~~
+<activity android:name="cn.jiguang.verifysdk.CtLoginActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:theme="@style/ActivityDialogStyle"   <!-- 设置自定义style -->
+            android:screenOrientation="unspecified"
+            android:launchMode="singleTop">
+</activity>
+~~~
+
+####style中增加具体弹窗样式
+
+res/values/styles.xml
+
+~~~
+<style name="ActivityDialogStyle">
+		 <!--隐藏action bar和title bar-->
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <!--背景透明-->
+        <item name="android:windowIsTranslucent">true</item>
+        <!--dialog圆角-->
+        <item name="android:windowBackground">@drawable/dialog_bg</item>
+</style>
+~~~
+
+####定义窗口圆角属性
+
+res/drawable/dialog_bg.xml
+
+~~~
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <corners android:radius="5dp"/>
+</shape>
+~~~
        
 ##错误码
 
@@ -548,6 +659,9 @@
 |7000|preLogin success|sdk 预取号成功|
 |7001|preLogin failed|sdk 预取号失败|
 |7002|preLogin requesting, please try again later|正在预取号中，稍后再试|
+|8000|init success|初始化成功|
+|8004|init failed|初始化失败，详见日志|
+|8005|init timeout|初始化超时，稍后再试|
 |-994|网络连接超时|   |
 |-996|网络连接断开|   |
 |-997|注册失败/登录失败|（一般是由于没有网络造成的）如果确保设备网络正常，还是一直遇到此问题，则还有另外一个原因：JPush 服务器端拒绝注册。而这个的原因一般是：你当前 App 的 Android 包名以及 AppKey，与你在 Portal 上注册的应用的 Android 包名与 AppKey 不相同。|

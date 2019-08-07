@@ -1,5 +1,137 @@
 #最近更新
 
+##JVerification iOS SDK v2.3.8
+
+**更新时间**
+
+* 2019-08-05
+
+**Change Log**
+
+* 新增支持授权页面弹窗样式
+* 新增JVLayoutConstraint布局类，使用约束布局替代Frame布局，并兼容原有控件的Frame布局
+* 新增支持设置授权页面自动旋转，支持强制屏幕方向
+* 新增支持修改隐私协议文案
+
+**升级建议**
+
+* 建议升级
+
+**升级指南**
+
++ 首先解压您获取到的zip压缩包
+
++ 更新库文件
+    + 打开libs文件夹
+    + 替换项目中原有的极光SDK文件
+        + account\_login\_sdk\_noui\_core.framework
+        + account\_verify\_sdk\_core.framework
+        + EAccountApiSDK.framework
+        + jcore-ios-x.x.x.a
+        + jverification-ios-2.3.8.a
+        + TYRZSDK.framework
+    + 项目targets->build phases->link binary with libraries
+        + 增加libc++.1.tbd
+    + 在极光演示demo中，找到JVerificationResource.bundle，将这个bundle文件加到您的项目中
+
+##JVerification Android SDK v2.3.8
+
+**更新时间**
+
+* 2019-08-01
+
+**Change Log**
+
+* 新增支持授权页面弹窗样式
+* 新增支持授权页面控件设置X轴方向偏移
+* 新增支持授权页面slogan设置相对屏幕底部Y偏移
+* 新增支持授权页面登录按钮设置高度、宽度、字体大小
+* 新增支持授权页面隐私协议栏设置文本对齐方式、自定义协议名称之外的文本
+
+**升级建议**
+
+* 建议升级
+
+**升级指南**
+
++ 首先解压您获取到的zip压缩包
+
++ 更新库文件
+    + 打开libs文件夹
+    + 用jverification-android-v2.3.8.jar 替换项目中原有的极光认证sdk的jar文件
+    + 用jcore-android-v2.x.x.jar 替换项目中原有的极光jcore的jar文件
+    + 用对应CPU文件夹下的 libjcore2xy.so文件，替换项目中原有的极光so文件
+    + 用对应CPU文件夹下的 libCtaApiLib.so文件，添加到项目中
+
++ 更新AndroidManifest.xml
+    + 压缩包根目录下有示例 AndroidManifest 文件，请对照示例更新和JVerification相关的组件属性，permission 等配置，并在中文提示的位置替换你的包名和 appKey
+
++ 拷贝SDK所必须的资源文件
+    + 压缩包根目录下有res文件夹，将该文件夹下的所有文件复制到项目res下面对应的文件夹中
+
+##JVerification Android SDK v2.3.6
+
+**更新时间**
+
+* 2019-07-29
+
+**Change Log**
+
+* 新增初始化回调参数
+* 优化运营商判断逻辑
+
+**升级建议**
+
+* 建议升级
+
+**升级指南**
+
++ 首先解压您获取到的zip压缩包
+
++ 更新库文件
+    + 打开libs文件夹
+    + 用jverification-android-v2.3.6.jar 替换项目中原有的极光认证sdk的jar文件
+    + 用jcore-android-v2.x.x.jar 替换项目中原有的极光jcore的jar文件
+    + 用对应CPU文件夹下的 libjcore2xy.so文件，替换项目中原有的极光so文件
+    + 用对应CPU文件夹下的 libCtaApiLib.so文件，添加到项目中
+
++ 更新AndroidManifest.xml
+    + 压缩包根目录下有示例 AndroidManifest 文件，请对照示例更新和JVerification相关的组件属性，permission 等配置，并在中文提示的位置替换你的包名和 appKey
+
++ 拷贝SDK所必须的资源文件
+    + 压缩包根目录下有res文件夹，将该文件夹下的所有文件复制到项目res下面对应的文件夹中
+
+##JVerification iOS SDK v2.3.6
+
+**更新时间**
+
+* 2019-07-29
+
+**Change Log**
+
+* 新增初始化回调参数
+
+**升级建议**
+
+* 建议升级
+
+**升级指南**
+
++ 首先解压您获取到的zip压缩包
+
++ 更新库文件
+    + 打开libs文件夹
+    + 替换项目中原有的极光SDK文件
+        + account_login_sdk_noui_core.framework
+        + account_verify_sdk_core.framework
+        + EAccountApiSDK.framework
+        + jcore-ios-x.x.x.a
+        + jverification-ios-2.3.6.a
+        + TYRZSDK.framework
+    + 项目targets->build phases->link binary with libraries
+        + 增加libc++.1.tbd
+    + 在极光演示demo中，找到JVerificationResource.bundle，将这个bundle文件加到您的项目中 
+
 ##JVerification Android SDK v2.3.4
 
 **更新时间**

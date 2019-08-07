@@ -1,4 +1,19 @@
 # 最近更新
+### JIoT C SDK  1.0.5
+#### 更新时间
++ 2019-08-06
+
+#### 适用平台
+ARMv7, x86, ESP8266,M5311
+#### Change Log
++ 新增SDK事件回调接口
++ 移除jiotPropertySetRsp和jiotMsgDeliverRsp接口，sdk收到消息时直接回复rsp，不需要主动回复
++ 新增针对中移物联网的M5311 NB-IoT模组的支持
+
+#### 升级提示
++ 首先解压您获取到的压缩包
++ 更新库文件
+
 ### JIoT Android SDK  1.0.2
 #### 更新时间
 + 2019-07-03

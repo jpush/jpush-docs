@@ -16,6 +16,11 @@
 
 官方地址：[https://github.com/jpush/jverify-flutter-plugin](https://github.com/jpush/jverify-flutter-plugin)
 
+### Cordova
+
+官方地址：[https://github.com/jpush/JVerification-cordova-plugin](https://github.com/jpush/JVerification-cordova-plugin)
+
+
 ## 技术支持
 
 - QQ 交流群：413602425
