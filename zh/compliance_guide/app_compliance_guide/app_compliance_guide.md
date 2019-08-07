@@ -115,6 +115,6 @@
 
 [《App违法违规收集使用个人信息自评估指南》](http://pip.tc260.org.cn/jbxt/privacy/detail/20190302114600934277)
 
-[《App违法违规收集使用个人信息行为认定方法（征求意见稿）》》](http://pip.tc260.org.cn/jbxt/privacy/detail/2019050519520713219)
+[《App违法违规收集使用个人信息行为认定方法（征求意见稿）》](http://pip.tc260.org.cn/jbxt/privacy/detail/2019050519520713219)
 
 
