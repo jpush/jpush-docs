@@ -38,14 +38,15 @@ jiot-sdk-v1.0.2-esp8266 及以上版本，支持乐鑫 ESP8266 Wi-Fi 模块（�
 依次运行以下命令
 ```
 cd jiot-demo
-cp -r ../jiot-sdk/ components/
+cp -r ../jiot-c-sdk/ components/
 ./copy_jiot-lib.sh
 make all
 ```
 
 注意:
 * 如果make all后，提示配置工程，直接回车使用默认配置即可。
-* 如果执行了make clean或删除jiot-demo/build目录，在“make all”前需要执行“copy_jiot-lib.sh”。
+* 如果执行了make clean或删除jiot-demo/build目录，在make all前需要执行copy_jiot-lib.sh。
+* 如果修改了jiot-demo的文件夹名称，需要执行make clean和copy_jiot-lib.sh。
 
 #### 运行 Demo
 
