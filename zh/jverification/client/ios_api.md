@@ -731,6 +731,7 @@ if (isSetupClient) {
 |barStyle|UIBarStyle|状态栏着色样式|
 |navText|NSAttributedString|导航栏标题|
 |navReturnImg|UIImage|导航返回图标|
+|navReturnHidden|BOOL|导航栏默认的返回按钮隐藏，默认为不隐藏|
 |navControl|UIBarButtonItem|导航栏右侧自定义控件|
 
 + LOGO
@@ -780,6 +781,7 @@ if (isSetupClient) {
 |appPrivacyTwo|NSArray|隐私条款二:数组（务必按顺序）@[条款名称,条款链接]|
 |appPrivacyColor|UIImage|隐私条款名称颜色 @[基础文字颜色,条款颜色]|
 |privacyOffsetY |CGFloat|隐私条款Y偏移量(注:此属性为与屏幕底部的距离)|
+|privacyTextFontSize|CGFloat|隐私条款字体大小，默认12|
 |privacyComponents|NSArray|隐私条款拼接文本数组|
 |privacyConstraints|NSArray|隐私条款布局对象|
 

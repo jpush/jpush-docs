@@ -1,5 +1,71 @@
 #最近更新
 
+##JVerification iOS SDK v2.4.1
+
+**更新时间**
+
+* 2019-08-09
+
+**Change Log**
+
+* 新增授权页面关闭的回调
+* 新增设置授权页面隐私栏字体大小
+* 新增设置授权页面导航栏返回按钮隐藏
+
+**升级建议**
+
+* 建议升级
+
+**升级指南**
+
++ 首先解压您获取到的zip压缩包
+
++ 更新库文件
+    + 打开libs文件夹
+    + 替换项目中原有的极光SDK文件
+        + account\_login\_sdk\_noui\_core.framework
+        + account\_verify\_sdk\_core.framework
+        + EAccountApiSDK.framework
+        + jcore-ios-x.x.x.a
+        + jverification-ios-2.4.1.a
+        + TYRZSDK.framework
+    + 项目targets->build phases->link binary with libraries
+        + 增加libc++.1.tbd
+    + 在极光演示demo中，找到JVerificationResource.bundle，将这个bundle文件加到您的项目中
+
+##JVerification Android SDK v2.4.1
+
+**更新时间**
+
+* 2019-08-09
+
+**Change Log**
+
+* 新增授权页面关闭的回调
+* 授权页面支持沉浸式状态栏
+* 新增设置授权页面导航栏标题、隐私栏字体大小
+* 新增设置授权页面导航栏返回按钮隐藏
+* 优化设置授权页面登录按钮大小的逻辑
+* 修复已知问题
+
+**升级建议**
+
+* 建议升级
+
+**升级指南**
+
++ 首先解压您获取到的zip压缩包
+
++ 更新库文件
+    + 打开libs文件夹
+    + 用jverification-android-v2.4.1.jar 替换项目中原有的极光认证sdk的jar文件
+    + 用jcore-android-v2.x.x.jar 替换项目中原有的极光jcore的jar文件
+    + 用对应CPU文件夹下的 libjcore2xy.so文件，替换项目中原有的极光so文件
+    + 用对应CPU文件夹下的 libCtaApiLib.so文件，添加到项目中
+
++ 更新AndroidManifest.xml
+    + 压缩包根目录下有示例 AndroidManifest 文件，请对照示例更新和JVerification相关的组件属性，permission 等配置，并在中文提示的位置替换你的包名和 appKey
+
 ##JVerification iOS SDK v2.3.8
 
 **更新时间**

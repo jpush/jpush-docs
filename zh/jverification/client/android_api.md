@@ -513,6 +513,10 @@
 	|:-----:|:----:|:----:|
 	|setAuthBGImgPath|String|设置背景图片|
 
++ 状态栏
+	|方法|参数类型|说明|
+	|:-----:|:----:|:----:|
+	|setStatusBarColorWithNav|boolean|设置状态栏与导航栏同色。仅在android 5.0以上设备生效。 since 2.4.1|
 
 
 + 授权页导航栏
@@ -524,6 +528,10 @@
 	|setNavTextColor|int|设置导航栏标题文字颜色|
 	|setNavReturnImgPath|String|设置导航栏返回按钮图标|
 	|setNavTransparent|boolean|设置导航栏背景是否透明。默认不透明。since 2.3.2|
+	|setNavTextSize|int|设置导航栏标题文字字体大小（单位：sp）。since 2.4.1|
+	|setNavReturnBtnHidden|boolean|设置导航栏返回按钮是否隐藏。默认不隐藏。since 2.4.1|
+
+
 
 + 授权页logo
 
@@ -572,6 +580,8 @@
    |setPrivacyOffsetX|int|设置隐私条款相对于屏幕左边x轴偏移。since 2.3.8|
    |setPrivacyTextCenterGravity|boolean|设置隐私条款文字是否居中对齐（默认左对齐）。since 2.3.8|
    |setPrivacyText|String,String,String,String|设置隐私条款名称外的文字。<br>如：登录即同意...和...、...并使用本机号码登录<br>参数1为："登录即同意"。<br>参数2为："和"。<br>参数3为："、"。<br>参数4为："并使用本机号码登录"。<br>since 2.3.8|
+   |setPrivacyTextSize|int|设置隐私条款文字字体大小（单位：sp）。since 2.4.1|
+
 
 + 授权页slogan
 
